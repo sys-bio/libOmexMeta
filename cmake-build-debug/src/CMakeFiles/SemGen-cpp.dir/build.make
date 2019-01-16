@@ -57,27 +57,27 @@ include src/CMakeFiles/SemGen-cpp.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/SemGen-cpp.dir/flags.make
 
-src/CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.o: src/CMakeFiles/SemGen-cpp.dir/flags.make
-src/CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.o: ../test/testSemGen.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.o"
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.o -c /Users/studentuser/Desktop/SemGen-cpp/test/testSemGen.cpp
+src/CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.o: src/CMakeFiles/SemGen-cpp.dir/flags.make
+src/CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.o: ../test/AllTests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.o"
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.o -c /Users/studentuser/Desktop/SemGen-cpp/test/AllTests.cpp
 
-src/CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.i"
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/studentuser/Desktop/SemGen-cpp/test/testSemGen.cpp > CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.i
+src/CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.i"
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/studentuser/Desktop/SemGen-cpp/test/AllTests.cpp > CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.i
 
-src/CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.s"
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/studentuser/Desktop/SemGen-cpp/test/testSemGen.cpp -o CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.s
+src/CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.s"
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/studentuser/Desktop/SemGen-cpp/test/AllTests.cpp -o CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.s
 
 # Object files for target SemGen-cpp
 SemGen__cpp_OBJECTS = \
-"CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.o"
+"CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.o"
 
 # External object files for target SemGen-cpp
 SemGen__cpp_EXTERNAL_OBJECTS =
 
-../lib/libSemGen-cpp.a: src/CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.o
+../lib/libSemGen-cpp.a: src/CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.o
 ../lib/libSemGen-cpp.a: src/CMakeFiles/SemGen-cpp.dir/build.make
 ../lib/libSemGen-cpp.a: src/CMakeFiles/SemGen-cpp.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../../lib/libSemGen-cpp.a"

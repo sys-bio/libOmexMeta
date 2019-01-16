@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/studentuser/Desktop/SemGen-cpp/test/testSemGen.cpp" "/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.o"
+  "/Users/studentuser/Desktop/SemGen-cpp/test/AllTests.cpp" "/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 

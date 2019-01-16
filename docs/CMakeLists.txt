@@ -12,8 +12,8 @@ if(DOXYGEN_FOUND)
   # Configure the doxygen config file with current settings:
   configure_file(documentation-config.doxygen.in ${CMAKE_CURRENT_BINARY_DIR}/documentation-config.doxygen @ONLY)
 
-  # Set the name of the target : "doc" if it doesn't already exist and "doc<projectname>" if it does.
-  # This way we make sure to have a single "doc" target. Either it is the one of the top directory or
+  # Set the name of the target : "docs" if it doesn't already exist and "docs<projectname>" if it does.
+  # This way we make sure to have a single "docs" target. Either it is the one of the top directory or
   # it is the one of the subproject that we are compiling alone.
   set(DOC_TARGET_NAME "doc")
   if(TARGET doc)

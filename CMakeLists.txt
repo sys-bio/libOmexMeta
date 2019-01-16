@@ -25,7 +25,7 @@ endif()
 
 # Enable documentation with -DENABLE_DOC=1
 if(ENABLE_DOC)
-    add_subdirectory(doc)
+    add_subdirectory(docs)
 endif()
 
 # Enable code testing with -DENABLE_TESTING=1

@@ -129,10 +129,19 @@
 		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/include/Example.h">
 			<Option target="SemGen-cpp"/>
 		</Unit>
+		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/include/definitions/PropertyType.h">
+			<Option target="SemGen-cpp"/>
+		</Unit>
+		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/include/definitions/RDFNamespace.h">
+			<Option target="SemGen-cpp"/>
+		</Unit>
+		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/include/definitions/SemSimTypes.h">
+			<Option target="SemGen-cpp"/>
+		</Unit>
 		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/src/main.cpp">
 			<Option target="SemGen-cpp-bin"/>
 		</Unit>
-		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/test/testSemGen.cpp">
+		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/test/AllTests.cpp">
 			<Option target="SemGen-cpp"/>
 		</Unit>
 		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/CMakeLists.txt">
