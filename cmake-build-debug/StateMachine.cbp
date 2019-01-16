@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="StateMachine"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;CMake Files\src\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="StateMachine-bin">
+				<Option output="/Users/studentuser/Desktop/SemGen-cpp/bin/StateMachine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/../bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/Users/studentuser/Desktop/SemGen-cpp/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 StateMachine-bin"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="StateMachine-bin/fast">
+				<Option output="/Users/studentuser/Desktop/SemGen-cpp/bin/StateMachine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/../bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/Users/studentuser/Desktop/SemGen-cpp/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 StateMachine-bin/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="StateMachine">
+				<Option output="/Users/studentuser/Desktop/SemGen-cpp/lib/libStateMachine.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/Users/studentuser/Desktop/SemGen-cpp/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 StateMachine"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="StateMachine/fast">
+				<Option output="/Users/studentuser/Desktop/SemGen-cpp/lib/libStateMachine.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/Users/studentuser/Desktop/SemGen-cpp/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 StateMachine/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/src/Machine.cpp">
+			<Option target="StateMachine-bin"/>
+			<Option target="StateMachine"/>
+		</Unit>
+		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/src/States/AbstractState.cpp">
+			<Option target="StateMachine-bin"/>
+			<Option target="StateMachine"/>
+		</Unit>
+		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/src/States/NormalState.cpp">
+			<Option target="StateMachine-bin"/>
+			<Option target="StateMachine"/>
+		</Unit>
+		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/src/States/SoldOutState.cpp">
+			<Option target="StateMachine-bin"/>
+			<Option target="StateMachine"/>
+		</Unit>
+		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/src/main.cpp">
+			<Option target="StateMachine-bin"/>
+		</Unit>
+		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
