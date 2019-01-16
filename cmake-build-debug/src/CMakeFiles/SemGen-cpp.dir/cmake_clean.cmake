@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.o"
+  "CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.o"
   "../../lib/libSemGen-cpp.pdb"
   "../../lib/libSemGen-cpp.a"
 )

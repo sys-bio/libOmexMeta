@@ -140,32 +140,32 @@ SemGen-cpp/fast:
 	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/build
 .PHONY : SemGen-cpp/fast
 
-__/test/testSemGen.o: __/test/testSemGen.cpp.o
+__/test/AllTests.o: __/test/AllTests.cpp.o
 
-.PHONY : __/test/testSemGen.o
+.PHONY : __/test/AllTests.o
 
 # target to build an object file
-__/test/testSemGen.cpp.o:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.o
-.PHONY : __/test/testSemGen.cpp.o
+__/test/AllTests.cpp.o:
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.o
+.PHONY : __/test/AllTests.cpp.o
 
-__/test/testSemGen.i: __/test/testSemGen.cpp.i
+__/test/AllTests.i: __/test/AllTests.cpp.i
 
-.PHONY : __/test/testSemGen.i
+.PHONY : __/test/AllTests.i
 
 # target to preprocess a source file
-__/test/testSemGen.cpp.i:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.i
-.PHONY : __/test/testSemGen.cpp.i
+__/test/AllTests.cpp.i:
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.i
+.PHONY : __/test/AllTests.cpp.i
 
-__/test/testSemGen.s: __/test/testSemGen.cpp.s
+__/test/AllTests.s: __/test/AllTests.cpp.s
 
-.PHONY : __/test/testSemGen.s
+.PHONY : __/test/AllTests.s
 
 # target to generate assembly for a file
-__/test/testSemGen.cpp.s:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.s
-.PHONY : __/test/testSemGen.cpp.s
+__/test/AllTests.cpp.s:
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.s
+.PHONY : __/test/AllTests.cpp.s
 
 main.o: main.cpp.o
 
@@ -204,9 +204,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... SemGen-cpp-bin"
 	@echo "... SemGen-cpp"
-	@echo "... __/test/testSemGen.o"
-	@echo "... __/test/testSemGen.i"
-	@echo "... __/test/testSemGen.s"
+	@echo "... __/test/AllTests.o"
+	@echo "... __/test/AllTests.i"
+	@echo "... __/test/AllTests.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
