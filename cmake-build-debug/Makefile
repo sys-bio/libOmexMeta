@@ -111,30 +111,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named StateMachine-bin
+# Target rules for targets named SemGen-cpp-bin
 
 # Build rule for target.
-StateMachine-bin: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 StateMachine-bin
-.PHONY : StateMachine-bin
+SemGen-cpp-bin: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 SemGen-cpp-bin
+.PHONY : SemGen-cpp-bin
 
 # fast build rule for target.
-StateMachine-bin/fast:
-	$(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/build
-.PHONY : StateMachine-bin/fast
+SemGen-cpp-bin/fast:
+	$(MAKE) -f src/CMakeFiles/SemGen-cpp-bin.dir/build.make src/CMakeFiles/SemGen-cpp-bin.dir/build
+.PHONY : SemGen-cpp-bin/fast
 
 #=============================================================================
-# Target rules for targets named StateMachine
+# Target rules for targets named SemGen-cpp
 
 # Build rule for target.
-StateMachine: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 StateMachine
-.PHONY : StateMachine
+SemGen-cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 SemGen-cpp
+.PHONY : SemGen-cpp
 
 # fast build rule for target.
-StateMachine/fast:
-	$(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/build
-.PHONY : StateMachine/fast
+SemGen-cpp/fast:
+	$(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/build
+.PHONY : SemGen-cpp/fast
 
 # Help Target
 help:
@@ -144,8 +144,8 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... StateMachine-bin"
-	@echo "... StateMachine"
+	@echo "... SemGen-cpp-bin"
+	@echo "... SemGen-cpp"
 .PHONY : help
 
 

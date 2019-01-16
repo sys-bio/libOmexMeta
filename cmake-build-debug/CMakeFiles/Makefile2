@@ -68,14 +68,14 @@ CMAKE_BINARY_DIR = /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug
 # Directory level rules for directory src
 
 # Convenience name for "all" pass in the directory.
-src/all: src/CMakeFiles/StateMachine-bin.dir/all
-src/all: src/CMakeFiles/StateMachine.dir/all
+src/all: src/CMakeFiles/SemGen-cpp-bin.dir/all
+src/all: src/CMakeFiles/SemGen-cpp.dir/all
 
 .PHONY : src/all
 
 # Convenience name for "clean" pass in the directory.
-src/clean: src/CMakeFiles/StateMachine-bin.dir/clean
-src/clean: src/CMakeFiles/StateMachine.dir/clean
+src/clean: src/CMakeFiles/SemGen-cpp-bin.dir/clean
+src/clean: src/CMakeFiles/SemGen-cpp.dir/clean
 
 .PHONY : src/clean
 
@@ -85,76 +85,76 @@ src/preinstall:
 .PHONY : src/preinstall
 
 #=============================================================================
-# Target rules for target src/CMakeFiles/StateMachine-bin.dir
+# Target rules for target src/CMakeFiles/SemGen-cpp-bin.dir
 
 # All Build rule for target.
-src/CMakeFiles/StateMachine-bin.dir/all:
-	$(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/depend
-	$(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/CMakeFiles --progress-num=6,7,8,9,10,11 "Built target StateMachine-bin"
-.PHONY : src/CMakeFiles/StateMachine-bin.dir/all
+src/CMakeFiles/SemGen-cpp-bin.dir/all:
+	$(MAKE) -f src/CMakeFiles/SemGen-cpp-bin.dir/build.make src/CMakeFiles/SemGen-cpp-bin.dir/depend
+	$(MAKE) -f src/CMakeFiles/SemGen-cpp-bin.dir/build.make src/CMakeFiles/SemGen-cpp-bin.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target SemGen-cpp-bin"
+.PHONY : src/CMakeFiles/SemGen-cpp-bin.dir/all
 
 # Include target in all.
-all: src/CMakeFiles/StateMachine-bin.dir/all
+all: src/CMakeFiles/SemGen-cpp-bin.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-src/CMakeFiles/StateMachine-bin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/CMakeFiles 6
-	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/StateMachine-bin.dir/all
+src/CMakeFiles/SemGen-cpp-bin.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/SemGen-cpp-bin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/CMakeFiles 0
-.PHONY : src/CMakeFiles/StateMachine-bin.dir/rule
+.PHONY : src/CMakeFiles/SemGen-cpp-bin.dir/rule
 
 # Convenience name for target.
-StateMachine-bin: src/CMakeFiles/StateMachine-bin.dir/rule
+SemGen-cpp-bin: src/CMakeFiles/SemGen-cpp-bin.dir/rule
 
-.PHONY : StateMachine-bin
-
-# clean rule for target.
-src/CMakeFiles/StateMachine-bin.dir/clean:
-	$(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/clean
-.PHONY : src/CMakeFiles/StateMachine-bin.dir/clean
+.PHONY : SemGen-cpp-bin
 
 # clean rule for target.
-clean: src/CMakeFiles/StateMachine-bin.dir/clean
+src/CMakeFiles/SemGen-cpp-bin.dir/clean:
+	$(MAKE) -f src/CMakeFiles/SemGen-cpp-bin.dir/build.make src/CMakeFiles/SemGen-cpp-bin.dir/clean
+.PHONY : src/CMakeFiles/SemGen-cpp-bin.dir/clean
+
+# clean rule for target.
+clean: src/CMakeFiles/SemGen-cpp-bin.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target src/CMakeFiles/StateMachine.dir
+# Target rules for target src/CMakeFiles/SemGen-cpp.dir
 
 # All Build rule for target.
-src/CMakeFiles/StateMachine.dir/all:
-	$(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/depend
-	$(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target StateMachine"
-.PHONY : src/CMakeFiles/StateMachine.dir/all
+src/CMakeFiles/SemGen-cpp.dir/all:
+	$(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/depend
+	$(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target SemGen-cpp"
+.PHONY : src/CMakeFiles/SemGen-cpp.dir/all
 
 # Include target in all.
-all: src/CMakeFiles/StateMachine.dir/all
+all: src/CMakeFiles/SemGen-cpp.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-src/CMakeFiles/StateMachine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/CMakeFiles 5
-	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/StateMachine.dir/all
+src/CMakeFiles/SemGen-cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/SemGen-cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug/CMakeFiles 0
-.PHONY : src/CMakeFiles/StateMachine.dir/rule
+.PHONY : src/CMakeFiles/SemGen-cpp.dir/rule
 
 # Convenience name for target.
-StateMachine: src/CMakeFiles/StateMachine.dir/rule
+SemGen-cpp: src/CMakeFiles/SemGen-cpp.dir/rule
 
-.PHONY : StateMachine
-
-# clean rule for target.
-src/CMakeFiles/StateMachine.dir/clean:
-	$(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/clean
-.PHONY : src/CMakeFiles/StateMachine.dir/clean
+.PHONY : SemGen-cpp
 
 # clean rule for target.
-clean: src/CMakeFiles/StateMachine.dir/clean
+src/CMakeFiles/SemGen-cpp.dir/clean:
+	$(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/clean
+.PHONY : src/CMakeFiles/SemGen-cpp.dir/clean
+
+# clean rule for target.
+clean: src/CMakeFiles/SemGen-cpp.dir/clean
 
 .PHONY : clean
 

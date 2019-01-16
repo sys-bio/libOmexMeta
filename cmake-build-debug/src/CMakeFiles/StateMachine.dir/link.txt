@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc ../../lib/libStateMachine.a  CMakeFiles/StateMachine.dir/Machine.cpp.o CMakeFiles/StateMachine.dir/States/AbstractState.cpp.o CMakeFiles/StateMachine.dir/States/NormalState.cpp.o CMakeFiles/StateMachine.dir/States/SoldOutState.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib ../../lib/libStateMachine.a

@@ -148,7 +148,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=StateMachine
+CMAKE_PROJECT_NAME:STATIC=SemGen-cpp
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/Library/Developer/CommandLineTools/usr/bin/ranlib
@@ -222,10 +222,10 @@ ENABLE_TESTING:BOOL=OFF
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/sbin/sysctl
 
 //Value Computed by CMake
-StateMachine_BINARY_DIR:STATIC=/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug
+SemGen-cpp_BINARY_DIR:STATIC=/Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug
 
 //Value Computed by CMake
-StateMachine_SOURCE_DIR:STATIC=/Users/studentuser/Desktop/SemGen-cpp
+SemGen-cpp_SOURCE_DIR:STATIC=/Users/studentuser/Desktop/SemGen-cpp
 
 
 ########################
