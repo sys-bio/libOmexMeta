@@ -126,6 +126,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/include/Example.h">
+			<Option target="SemGen-cpp"/>
+		</Unit>
 		<Unit filename="/Users/studentuser/Desktop/SemGen-cpp/src/main.cpp">
 			<Option target="SemGen-cpp-bin"/>
 		</Unit>

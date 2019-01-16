@@ -1,7 +1,7 @@
 # SemGen-cpp
 
 [![Build Status](https://travis-ci.com/prakhar-agarwal/semgen-test.svg?branch=master)](https://travis-ci.com/prakhar-agarwal/semgen-test) 
-
+[![codecov](https://codecov.io/gh/prakhar-agarwal/SemGen-cpp/branch/master/graph/badge.svg)](https://codecov.io/gh/prakhar-agarwal/SemGen-cpp) 
 
 ## Pre-requisites
     doxygen
