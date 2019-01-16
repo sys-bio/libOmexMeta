@@ -1,2 +1,2 @@
-# Empty dependencies file for StateMachine.
+# Empty dependencies file for SemGen-cpp.
 # This may be replaced when dependencies are built.

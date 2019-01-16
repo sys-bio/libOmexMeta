@@ -111,154 +111,61 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/StateMachine-bin.dir/rule:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/StateMachine-bin.dir/rule
-.PHONY : src/CMakeFiles/StateMachine-bin.dir/rule
+src/CMakeFiles/SemGen-cpp-bin.dir/rule:
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/SemGen-cpp-bin.dir/rule
+.PHONY : src/CMakeFiles/SemGen-cpp-bin.dir/rule
 
 # Convenience name for target.
-StateMachine-bin: src/CMakeFiles/StateMachine-bin.dir/rule
+SemGen-cpp-bin: src/CMakeFiles/SemGen-cpp-bin.dir/rule
 
-.PHONY : StateMachine-bin
+.PHONY : SemGen-cpp-bin
 
 # fast build rule for target.
-StateMachine-bin/fast:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/build
-.PHONY : StateMachine-bin/fast
+SemGen-cpp-bin/fast:
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp-bin.dir/build.make src/CMakeFiles/SemGen-cpp-bin.dir/build
+.PHONY : SemGen-cpp-bin/fast
 
 # Convenience name for target.
-src/CMakeFiles/StateMachine.dir/rule:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/StateMachine.dir/rule
-.PHONY : src/CMakeFiles/StateMachine.dir/rule
+src/CMakeFiles/SemGen-cpp.dir/rule:
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/SemGen-cpp.dir/rule
+.PHONY : src/CMakeFiles/SemGen-cpp.dir/rule
 
 # Convenience name for target.
-StateMachine: src/CMakeFiles/StateMachine.dir/rule
+SemGen-cpp: src/CMakeFiles/SemGen-cpp.dir/rule
 
-.PHONY : StateMachine
+.PHONY : SemGen-cpp
 
 # fast build rule for target.
-StateMachine/fast:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/build
-.PHONY : StateMachine/fast
+SemGen-cpp/fast:
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/build
+.PHONY : SemGen-cpp/fast
 
-Machine.o: Machine.cpp.o
+__/test/testSemGen.o: __/test/testSemGen.cpp.o
 
-.PHONY : Machine.o
-
-# target to build an object file
-Machine.cpp.o:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/Machine.cpp.o
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/Machine.cpp.o
-.PHONY : Machine.cpp.o
-
-Machine.i: Machine.cpp.i
-
-.PHONY : Machine.i
-
-# target to preprocess a source file
-Machine.cpp.i:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/Machine.cpp.i
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/Machine.cpp.i
-.PHONY : Machine.cpp.i
-
-Machine.s: Machine.cpp.s
-
-.PHONY : Machine.s
-
-# target to generate assembly for a file
-Machine.cpp.s:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/Machine.cpp.s
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/Machine.cpp.s
-.PHONY : Machine.cpp.s
-
-States/AbstractState.o: States/AbstractState.cpp.o
-
-.PHONY : States/AbstractState.o
+.PHONY : __/test/testSemGen.o
 
 # target to build an object file
-States/AbstractState.cpp.o:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/States/AbstractState.cpp.o
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/States/AbstractState.cpp.o
-.PHONY : States/AbstractState.cpp.o
+__/test/testSemGen.cpp.o:
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.o
+.PHONY : __/test/testSemGen.cpp.o
 
-States/AbstractState.i: States/AbstractState.cpp.i
+__/test/testSemGen.i: __/test/testSemGen.cpp.i
 
-.PHONY : States/AbstractState.i
-
-# target to preprocess a source file
-States/AbstractState.cpp.i:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/States/AbstractState.cpp.i
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/States/AbstractState.cpp.i
-.PHONY : States/AbstractState.cpp.i
-
-States/AbstractState.s: States/AbstractState.cpp.s
-
-.PHONY : States/AbstractState.s
-
-# target to generate assembly for a file
-States/AbstractState.cpp.s:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/States/AbstractState.cpp.s
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/States/AbstractState.cpp.s
-.PHONY : States/AbstractState.cpp.s
-
-States/NormalState.o: States/NormalState.cpp.o
-
-.PHONY : States/NormalState.o
-
-# target to build an object file
-States/NormalState.cpp.o:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/States/NormalState.cpp.o
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/States/NormalState.cpp.o
-.PHONY : States/NormalState.cpp.o
-
-States/NormalState.i: States/NormalState.cpp.i
-
-.PHONY : States/NormalState.i
+.PHONY : __/test/testSemGen.i
 
 # target to preprocess a source file
-States/NormalState.cpp.i:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/States/NormalState.cpp.i
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/States/NormalState.cpp.i
-.PHONY : States/NormalState.cpp.i
+__/test/testSemGen.cpp.i:
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.i
+.PHONY : __/test/testSemGen.cpp.i
 
-States/NormalState.s: States/NormalState.cpp.s
+__/test/testSemGen.s: __/test/testSemGen.cpp.s
 
-.PHONY : States/NormalState.s
-
-# target to generate assembly for a file
-States/NormalState.cpp.s:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/States/NormalState.cpp.s
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/States/NormalState.cpp.s
-.PHONY : States/NormalState.cpp.s
-
-States/SoldOutState.o: States/SoldOutState.cpp.o
-
-.PHONY : States/SoldOutState.o
-
-# target to build an object file
-States/SoldOutState.cpp.o:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/States/SoldOutState.cpp.o
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/States/SoldOutState.cpp.o
-.PHONY : States/SoldOutState.cpp.o
-
-States/SoldOutState.i: States/SoldOutState.cpp.i
-
-.PHONY : States/SoldOutState.i
-
-# target to preprocess a source file
-States/SoldOutState.cpp.i:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/States/SoldOutState.cpp.i
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/States/SoldOutState.cpp.i
-.PHONY : States/SoldOutState.cpp.i
-
-States/SoldOutState.s: States/SoldOutState.cpp.s
-
-.PHONY : States/SoldOutState.s
+.PHONY : __/test/testSemGen.s
 
 # target to generate assembly for a file
-States/SoldOutState.cpp.s:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/States/SoldOutState.cpp.s
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine.dir/build.make src/CMakeFiles/StateMachine.dir/States/SoldOutState.cpp.s
-.PHONY : States/SoldOutState.cpp.s
+__/test/testSemGen.cpp.s:
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp.dir/build.make src/CMakeFiles/SemGen-cpp.dir/__/test/testSemGen.cpp.s
+.PHONY : __/test/testSemGen.cpp.s
 
 main.o: main.cpp.o
 
@@ -266,7 +173,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/main.cpp.o
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp-bin.dir/build.make src/CMakeFiles/SemGen-cpp-bin.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -275,7 +182,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/main.cpp.i
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp-bin.dir/build.make src/CMakeFiles/SemGen-cpp-bin.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -284,7 +191,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/StateMachine-bin.dir/build.make src/CMakeFiles/StateMachine-bin.dir/main.cpp.s
+	cd /Users/studentuser/Desktop/SemGen-cpp/cmake-build-debug && $(MAKE) -f src/CMakeFiles/SemGen-cpp-bin.dir/build.make src/CMakeFiles/SemGen-cpp-bin.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -295,20 +202,11 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... StateMachine-bin"
-	@echo "... StateMachine"
-	@echo "... Machine.o"
-	@echo "... Machine.i"
-	@echo "... Machine.s"
-	@echo "... States/AbstractState.o"
-	@echo "... States/AbstractState.i"
-	@echo "... States/AbstractState.s"
-	@echo "... States/NormalState.o"
-	@echo "... States/NormalState.i"
-	@echo "... States/NormalState.s"
-	@echo "... States/SoldOutState.o"
-	@echo "... States/SoldOutState.i"
-	@echo "... States/SoldOutState.s"
+	@echo "... SemGen-cpp-bin"
+	@echo "... SemGen-cpp"
+	@echo "... __/test/testSemGen.o"
+	@echo "... __/test/testSemGen.i"
+	@echo "... __/test/testSemGen.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
