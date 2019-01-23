@@ -7,7 +7,7 @@ file(GLOB_RECURSE SOURCES
 set(LIBRARY_NAME ${PROJECT_NAME})
 
 # Define the library
-set(LIB_SOURCES ${SOURCES} ../test/AllTests.cpp ../include/Example.h ../include/semsim/definitions/PropertyType.h ../include/semsim/definitions/RDFNamespace.h ../include/semsim/definitions/SemSimTypes.h)
+set(LIB_SOURCES ${SOURCES} ../test/AllTests.cpp ../include/Example.h ../include/semsim/definitions/SemSimTypes.h)
 list(REMOVE_ITEM LIB_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 add_library(${LIBRARY_NAME} STATIC ${LIB_SOURCES})
 
