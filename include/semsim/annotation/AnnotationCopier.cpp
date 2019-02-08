@@ -78,7 +78,6 @@ namespace semsim
 			allmappedvars->addAll(getAllMappedVariables(ds, ds, std::unordered_set<MappableVariable*>()));
 			copyAllAnnotations(ds, allmappedvars, semsimlib);
 
-//JAVA TO C++ CONVERTER TODO TASK: A 'delete allmappedvars' statement was not added since allmappedvars was passed to a method or constructor. Handle memory management manually.
 			return allmappedvars;
 		}
 
@@ -97,7 +96,6 @@ namespace semsim
 
 			}
 
-//JAVA TO C++ CONVERTER TODO TASK: A 'delete allmappedvars' statement was not added since allmappedvars was used in a 'return' or 'throw' statement.
 			return allmappedvars;
 		}
 
@@ -107,7 +105,6 @@ namespace semsim
 			allmappedvars->addAll(getAllLocallyMappedVariables(ds, ds, std::unordered_set<MappableVariable*>()));
 			copyAllAnnotations(ds, allmappedvars, semsimlib);
 
-//JAVA TO C++ CONVERTER TODO TASK: A 'delete allmappedvars' statement was not added since allmappedvars was passed to a method or constructor. Handle memory management manually.
 			return allmappedvars;
 		}
 

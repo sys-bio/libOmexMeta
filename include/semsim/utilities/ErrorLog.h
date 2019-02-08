@@ -3,7 +3,6 @@
 #include <list>
 #include <optional>
 
-//JAVA TO C++ CONVERTER NOTE: Forward class declarations:
 namespace semsim { namespace utilities { class ErrorEntry; } }
 
 namespace semsim
@@ -14,7 +13,7 @@ namespace semsim
 
 		/**
 		 * Class for storing errors that may occur when processing models and associated data
-		 * @author mneal
+		 *
 		 *
 		 */
 		class ErrorLog

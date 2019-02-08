@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 
-//JAVA TO C++ CONVERTER NOTE: Forward class declarations:
 namespace semsim { namespace definitions { class ReferenceOntologies; } }
 
 namespace semsim

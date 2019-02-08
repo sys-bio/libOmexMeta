@@ -8,7 +8,7 @@ namespace semsim
 
 		/**
 		 * Convenience class for performing case-insensitive comparisons between Strings
-		 * @author mneal
+		 *
 		 *
 		 */
 		class CaseInsensitiveComparator : public Comparator<std::wstring>

@@ -1,7 +1,5 @@
 #include <string>
-#include <any>
 
-//JAVA TO C++ CONVERTER NOTE: Forward class declarations:
 namespace semsim { namespace annotation { class Relation; } }
 
 namespace semsim
@@ -95,6 +93,5 @@ namespace semsim
 
 			bool equals(std::any obj) override;
 		};
-
 	}
 }

@@ -4,10 +4,8 @@ namespace semsim
 {
 	namespace annotation
 	{
-
 		using com::hp::hpl::jena::rdf::model::Property;
 		using org::semanticweb::owlapi::model::IRI;
-
 
 		/**
 		 * Interface that provides methods for getting information about
@@ -36,6 +34,5 @@ namespace semsim
 			/** @return The relation instantiated as an RDF property*/
 			virtual Property *getRDFproperty() = 0;
 		};
-
 	}
 }
