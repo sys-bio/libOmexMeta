@@ -1,14 +1,12 @@
 #include <string>
 #include <optional>
 
-//JAVA TO C++ CONVERTER NOTE: Forward class declarations:
 namespace semsim { namespace model { namespace collection { class SemSimModel; } } }
 
 namespace semsim
 {
 	namespace model
 	{
-
 
 		using SemSimObject = semsim::SemSimObject;
 		using SemSimTypes = semsim::definitions::SemSimTypes;

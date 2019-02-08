@@ -20,9 +20,6 @@ namespace semsim
 			static const std::wstring KYOTO_ENCYCLOPEDIA_OF_GENES_AND_GENOMES_PATHWAY_KB_FULLNAME;
 			static const std::wstring KYOTO_ENCYCLOPEDIA_OF_GENES_AND_GENOMES_REACTION_KB_FULLNAME;
 			static const std::wstring UNIPROT_FULLNAME;
-
-
-
 		};
 
 	}

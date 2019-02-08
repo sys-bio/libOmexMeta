@@ -1,7 +1,5 @@
 #include "Annotation.h"
 #include <string>
-
-//JAVA TO C++ CONVERTER NOTE: Forward class declarations:
 namespace semsim { namespace annotation { class Ontology; } }
 namespace semsim { class SemSimLibrary; }
 namespace semsim { namespace annotation { class Relation; } }

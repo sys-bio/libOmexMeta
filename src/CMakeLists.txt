@@ -7,7 +7,7 @@ file(GLOB_RECURSE SOURCES
 set(LIBRARY_NAME ${PROJECT_NAME})
 
 # Define the library
-set(LIB_SOURCES ${SOURCES} ../test/AllTests.cpp ../include/Example.h)
+set(LIB_SOURCES ${SOURCES} ../test/AllTests.cpp)
 list(REMOVE_ITEM LIB_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 add_library(${LIBRARY_NAME} STATIC ${LIB_SOURCES})
 

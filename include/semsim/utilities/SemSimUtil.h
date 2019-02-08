@@ -9,7 +9,6 @@
 #include "stringhelper.h"
 #include "stringbuilder.h"
 
-//JAVA TO C++ CONVERTER NOTE: Forward class declarations:
 namespace semsim { namespace model { namespace collection { class SemSimModel; } } }
 namespace semsim { namespace model { namespace computational { namespace datastructures { class DataStructure; } } } }
 namespace semsim { namespace model { namespace physical { namespace object { class CompositePhysicalEntity; } } } }
@@ -181,8 +180,6 @@ namespace semsim
 			 */
 		public:
 			template<typename T1>
-//JAVA TO C++ CONVERTER TODO TASK: There is no native C++ template equivalent to this generic constraint:
-//ORIGINAL LINE: public static semsim.model.physical.object.CompositePhysicalEntity getEquivalentCompositeEntityIfAlreadyInMap(semsim.model.physical.object.CompositePhysicalEntity cpe, java.util.Map<? extends semsim.model.physical.PhysicalModelComponent, java.net.URI> map)
 			static CompositePhysicalEntity *getEquivalentCompositeEntityIfAlreadyInMap(CompositePhysicalEntity *cpe, std::unordered_map<T1> map);
 
 

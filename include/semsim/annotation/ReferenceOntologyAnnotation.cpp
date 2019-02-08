@@ -11,7 +11,6 @@ namespace semsim
 
 		ReferenceOntologyAnnotation::ReferenceOntologyAnnotation(Relation *relation, URI *uri, const std::wstring &valueDescription, SemSimLibrary *lib) : Annotation(relation, uri)
 		{
-//JAVA TO C++ CONVERTER TODO TASK: There is no native C++ equivalent to 'toString':
 			refontology = lib->getOntologyfromTermURI(uri->toString());
 			setReferenceURI(uri);
 			setValueDescription(valueDescription);
@@ -28,7 +27,6 @@ namespace semsim
 			{
 				if (getReferenceURI() != nullptr)
 				{
-//JAVA TO C++ CONVERTER TODO TASK: There is no native C++ equivalent to 'toString':
 					return getReferenceURI()->toString();
 				}
 				else

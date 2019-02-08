@@ -1,7 +1,6 @@
 #include <string>
 #include <optional>
 
-//JAVA TO C++ CONVERTER NOTE: Forward class declarations:
 namespace semsim { class SemSimLibrary; }
 namespace semsim { namespace annotation { class ReferenceOntologyAnnotation; } }
 
@@ -16,7 +15,7 @@ namespace semsim
 		/**
 		 * Interface for physical model classes that are defined against
 		 * controlled knowledge resource terms.
-		 * @author mneal
+		 *
 		 *
 		 */
 		class ReferenceTerm

@@ -8,9 +8,7 @@ namespace semsim
 	namespace definitions
 	{
 
-
 		using org::sbml::jsbml::CVTerm::Qualifier;
-
 
 		using Relation = semsim::annotation::Relation;
 

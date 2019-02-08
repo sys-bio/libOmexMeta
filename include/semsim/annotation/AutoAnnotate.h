@@ -3,7 +3,6 @@
 #include <unordered_set>
 #include <optional>
 
-//JAVA TO C++ CONVERTER NOTE: Forward class declarations:
 namespace semsim { namespace model { namespace computational { namespace units { class UnitFactor; } } } }
 namespace semsim { class SemSimLibrary; }
 namespace semsim { namespace model { namespace collection { class SemSimModel; } } }

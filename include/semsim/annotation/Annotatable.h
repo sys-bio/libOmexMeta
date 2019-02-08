@@ -1,7 +1,5 @@
 #include <string>
 #include <optional>
-
-//JAVA TO C++ CONVERTER NOTE: Forward class declarations:
 namespace semsim { namespace annotation { class Annotation; } }
 namespace semsim { class SemSimLibrary; }
 namespace semsim { namespace annotation { class Relation; } }
@@ -11,11 +9,7 @@ namespace semsim
 {
 	namespace annotation
 	{
-
-
-
 		using SemSimLibrary = semsim::SemSimLibrary;
-
 		/**
 		 * Interface providing methods for annotating
 		 * SemSim model elements.
@@ -23,20 +17,14 @@ namespace semsim
 		 */
 		class Annotatable
 		{
-
-
 			/** @return All SemSim Annotations applied to this object */
 		public:
 			virtual Set<Annotation*> *getAnnotations() = 0;
-
-
 			/**
 			 * Set the SemSim Annotations for an object
 			 * @param annset The set of annotations to apply
 			 */
 			virtual void setAnnotations(Set<Annotation*> *annset) = 0;
-
-
 			/**
 			 * Add a SemSim {@link Annotation} to this object
 			 * @param ann The {@link Annotation} to add
@@ -55,8 +43,6 @@ namespace semsim
 			 * @param lib A SemSimLibrary instance
 			 */
 			virtual void addReferenceOntologyAnnotation(Relation *relation, URI *uri, const std::wstring &description, SemSimLibrary *lib) = 0;
-
-
 			/**
 			 * Get all SemSim {@link ReferenceOntologyAnnotation}s applied to an object
 			 * that use a specific {@link SemSimRelation}.
@@ -66,13 +52,10 @@ namespace semsim
 			 * that use the specified {@link SemSimRelation}.
 			 */
 			virtual Set<ReferenceOntologyAnnotation*> *getReferenceOntologyAnnotations(Relation *relation) = 0;
-
-
 			/**
 			 * Delete all {@link ReferenceOntologyAnnotation}s applied to this object
 			 */
 			virtual void removeAllReferenceAnnotations() = 0;
-
 			/**
 			 * @return True if an object has at least one {@link Annotation}, otherwise false.
 			 */

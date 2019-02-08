@@ -9,7 +9,7 @@ namespace semsim
 
 	/**
 	 * Class representing elements within a SemSim model
-	 * @author mneal
+	 *
 	 *
 	 */
 	class SemSimObject

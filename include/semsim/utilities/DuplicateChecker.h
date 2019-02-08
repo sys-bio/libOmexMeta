@@ -1,6 +1,5 @@
 #include <unordered_set>
 
-//JAVA TO C++ CONVERTER NOTE: Forward class declarations:
 namespace semsim { namespace model { namespace collection { class SemSimModel; } } }
 namespace semsim { namespace model { namespace physical { class PhysicalProcess; } } }
 namespace semsim { namespace model { namespace physical { class PhysicalForce; } } }

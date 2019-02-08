@@ -1,4 +1,3 @@
-//JAVA TO C++ CONVERTER NOTE: Forward class declarations:
 namespace semsim { class SemSimObject; }
 
 namespace semsim
@@ -11,7 +10,7 @@ namespace semsim
 
 		/**
 		 * Comparator for comparing the names of SemSimObjects, ignoring case
-		 * @author mneal
+		 *
 		 *
 		 */
 		class SemSimComponentComparator : public Comparator<SemSimObject*>

@@ -8,7 +8,7 @@ namespace semsim
 
 		/**
 		 * An entry in a SemSim {@link ErrorLog}
-		 * @author mneal
+		 *
 		 *
 		 */
 		class ErrorEntry : public Comparable<ErrorEntry*>
