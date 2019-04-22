@@ -1,4 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/prakharagarwal/Desktop/libsemgen
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/prakharagarwal/Desktop/semgen_code/libsemgen
 CMake Deprecation Warning at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.14/Modules/UseSWIG.cmake:559 (message):
   SWIG_ADD_MODULE is deprecated.  Use SWIG_ADD_LIBRARY instead.
 Call Stack (most recent call first):
@@ -19,4 +19,4 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 -- LIBXML2_FOUND=TRUE
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/prakharagarwal/Desktop/libsemgen/cmake-build-debug
+-- Build files have been written to: /Users/prakharagarwal/Desktop/semgen_code/libsemgen/cmake-build-debug
