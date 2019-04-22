@@ -4,6 +4,7 @@ project(libsemgen)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall -Wextra -Wno-unused-parameter -fPIC")
 
 include_directories(/usr/local/include)
+include_directories(/Users/prakharagarwal/Desktop/semgen_code/)
 
 set(CMAKE_CXX_STANDARD 14)
 
