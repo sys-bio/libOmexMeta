@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc ../../lib/libSemGen-cpp.a  CMakeFiles/SemGen-cpp.dir/__/test/AllTests.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib ../../lib/libSemGen-cpp.a

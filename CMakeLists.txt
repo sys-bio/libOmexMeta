@@ -1,37 +1,42 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.13)
+project(libsemgen)
 
-project(SemGen-cpp)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall -Wextra -Wno-unused-parameter -fPIC")
 
-# Set output directories
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../bin")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../lib") 
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/../lib")
+include_directories(/usr/local/include)
 
-option(ENABLE_DOC "Generates the documentation target" OFF)
-option(ENABLE_COVERAGE "Generates the coverage build" OFF)
-option(ENABLE_TESTING "Turns on testing" OFF)
+set(CMAKE_CXX_STANDARD 14)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
-include_directories(include)
+# Add cellml, sbml
+add_library(a cellml.cpp sbml.cpp sbml.h)
 
-# Enable code coverage with -DENABLE_COVERAGE=1
-if(ENABLE_COVERAGE)
-    set(CMAKE_BUILD_TYPE "Coverage")
-    include(CodeCoverage)
-    setup_target_for_coverage(${PROJECT_NAME}_coverage ${PROJECT_NAME}_test coverage)
-endif()
+# Set up public headers for cellml
+set_target_properties(a PROPERTIES PUBLIC_HEADER "cellml.h")
 
+# Create main and link to cellml
+add_library(${PROJECT_NAME} libsemgen.cpp)
+target_link_libraries(${PROJECT_NAME} a)
 
-# Enable documentation with -DENABLE_DOC=1
-if(ENABLE_DOC)
-    add_subdirectory(docs)
-endif()
+# Set up public headers for swig-example
+set_target_properties(libsemgen PROPERTIES PUBLIC_HEADER "libsemgen.h")
 
-# Enable code testing with -DENABLE_TESTING=1
-if(ENABLE_TESTING OR ENABLE_COVERAGE)
-    enable_testing()                                                                          #
-    add_subdirectory(test)
-endif()
+# Add install target
+install(TARGETS ${PROJECT_NAME} a
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib/static
+        PUBLIC_HEADER DESTINATION include)
 
-add_subdirectory(src)
+# Add swig subdirectory
+add_subdirectory(swig)
+
+#ADD_SUBDIRECTORY(SBML_test)
+#ADD_SUBDIRECTORY(SBML)
+
+find_package(LibXml2 REQUIRED)
+
+message(STATUS LIBXML2_FOUND = ${LIBXML2_FOUND})
+include_directories(${LIBXML2_INCLUDE_DIR})
+
+target_link_libraries(${PROJECT_NAME} ${LIBXML2_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} /usr/local/lib/libsbml.5.dylib)
