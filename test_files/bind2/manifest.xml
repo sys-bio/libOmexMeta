@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<omexManifest xmlns="https://identifiers.org/combine.specifications/omex-manifest">
+  <content xmlns="" location="." format="https://identifiers.org/combine.specifications/omex" />
+  <content xmlns="" location="./manifest.xml" format="https://identifiers.org/combine.specifications/omex-manifest" />
+<content location="./model/bind2_sbml.sbml" format="http://identifiers.org/combine.specifications/sbml" /><content location="./model/bind2_sbml.rdf" format="http://identifiers.org/combine.specifications/omex-metadata" /></omexManifest>

@@ -1,0 +1,356 @@
+<rdf:RDF
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:semsim="http://www.bhi.washington.edu/SemSim#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+    xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+    xmlns:ro="http://www.obofoundry.org/ro/ro.owl#" > 
+  <rdf:Description rdf:about="./bind2_sbml.sbml#sink_5">
+    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_14"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_13">
+    <bqbiol:is rdf:resource="http://identifiers.org/fma/Intercellular_junction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_0">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_1"/>
+    <bqbiol:is rdf:resource="http://identifiers.org/fma/Portion_of_cytosol"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#source_1">
+    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_8"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_21">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_22"/>
+    <bqbiol:is rdf:resource="http://identifiers.org/fma/Portion_of_cytosol"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_4">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_5"/>
+    <bqbiol:is rdf:resource="https://identifiers.org/chebi/CHEBI:39124"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#mediator_3">
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_16"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#phi.phi3_c2">
+    <dcterms:description>Rate of change in IP3 receptors from the inactive state to open state in cell 2</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_8">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_9"/>
+    <bqbiol:is rdf:resource="https://identifiers.org/chebi/CHEBI:39124"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#phi.phi_1_c2">
+    <dcterms:description>Rate of change in IP3 receptors from the open state to closed state in cell 2</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#sink_1">
+    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_10"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#phi.phi1_c1">
+    <dcterms:description>Rate of change in IP3 receptors from the closed state to open state in cell 1</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#metaid0">
+    <semsim:modelName>bindschadler_sneyd_2001</semsim:modelName>
+    <semsim:hasCellMLdocumentation>&lt;documentation xmlns="http://cellml.org/tmp-documentation"&gt;
+  &lt;article&gt;
+    &lt;articleinfo&gt;
+      &lt;title&gt;A Bifurcation Analysis of Two Coupled Calcium Oscillators&lt;/title&gt;
+      &lt;author&gt;
+        &lt;firstname&gt;Catherine&lt;/firstname&gt;
+        &lt;surname&gt;Lloyd&lt;/surname&gt;
+        &lt;affiliation&gt;
+          &lt;shortaffil&gt;Auckland Bioengineering Institute, The University of Auckland&lt;/shortaffil&gt;
+        &lt;/affiliation&gt;
+      &lt;/author&gt;
+    &lt;/articleinfo&gt;
+    &lt;section id="sec_status"&gt;
+      &lt;title&gt;Model Status&lt;/title&gt;
+      &lt;para&gt;This CellML model runs in both OpenCell and COR to produce an oscillating output similar to that from the original published model. The units have been checked and they are consistent.&lt;/para&gt;
+    &lt;/section&gt;
+    &lt;sect1 id="sec_structure"&gt;
+      &lt;title&gt;Model Structure&lt;/title&gt;
+      &lt;para&gt;ABSTRACT: In many cell types, asynchronous or synchronous oscillations in the concentration of intracellular free calcium occur in adjacent cells that are coupled by gap junctions. Such oscillations are believed to underlie oscillatory intercellular calcium waves in some cell types, and thus it is important to understand how they occur and are modified by intercellular coupling. Using a previous model of intracellular calcium oscillations in pancreatic acinar cells, this article explores the effects of coupling two cells with a simple linear diffusion term. Depending on the concentration of a signal molecule, inositol (1,4,5)-trisphosphate, coupling two identical cells by diffusion can give rise to synchronized in-phase oscillations, as well as different-amplitude in-phase oscillations and same-amplitude antiphase oscillations. Coupling two nonidentical cells leads to more complex behaviors such as cascades of period doubling and multiply periodic solutions. This study is a first step towards understanding the role and significance of the diffusion of calcium through gap junctions in the coordination of oscillatory calcium waves in a variety of cell types.&lt;/para&gt;
+      &lt;para&gt;The original paper reference is cited below:&lt;/para&gt;
+      &lt;para&gt;
+        A bifurcation analysis of two coupled calcium oscillators, Michael Bindschadler and James Sneyd, 2001,
+        &lt;emphasis&gt;CHAOS&lt;/emphasis&gt;
+        , 11, 237-246.
+        &lt;ulink url="http://www.ncbi.nlm.nih.gov/pubmed/12779457"&gt;PubMed ID: 12779457&lt;/ulink&gt;
+      &lt;/para&gt;
+      &lt;informalfigure float="0" id="fig_cell_diagram"&gt;
+        &lt;mediaobject&gt;
+          &lt;imageobject&gt;
+            &lt;objectinfo&gt;
+              &lt;title&gt;cell diagram&lt;/title&gt;
+            &lt;/objectinfo&gt;
+            &lt;imagedata fileref="bindschadler_2001.png" /&gt;
+          &lt;/imageobject&gt;
+          &lt;caption&gt;Schematic diagram of the IP3 receptor model.  The receptor with its three possible states: X, Y, and Z; representing open, shut and inactive respectively, is embedded within a model of intracellular calcium dynamics.&lt;/caption&gt;
+        &lt;/mediaobject&gt;
+      &lt;/informalfigure&gt;
+    &lt;/sect1&gt;
+  &lt;/article&gt;
+&lt;/documentation&gt;</semsim:hasCellMLdocumentation>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#model_parameters_j_leak">
+    <bqbiol:isPropertyOf rdf:resource="./bind2_sbml.sbml#process_5"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/OPB_00592"/>
+    <dcterms:description>Ca leakage across the cell membrane</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#process_2">
+    <semsim:hasMediatorParticipant rdf:resource="./bind2_sbml.sbml#mediator_2"/>
+    <semsim:hasSinkParticipant rdf:resource="./bind2_sbml.sbml#sink_2"/>
+    <semsim:hasSourceParticipant rdf:resource="./bind2_sbml.sbml#source_2"/>
+    <semsim:name>Intercellular diffusion between two pancreatic acinar cells</semsim:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#model_parameters.R3">
+    <dcterms:description>Constant for rate equation represented by phi 2</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#source_5">
+    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_20"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#model_parameters.r2">
+    <dcterms:description>Constant for rate equation represented by phi 1</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#phi.phi2_c2">
+    <dcterms:description>Rate of change in IP3 receptors from the closed state to inactive state in cell 2</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#h1.h1">
+    <dcterms:description>Cell 1 active IP3 receptors on the endoplasmic reticulum in the open and shut states</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#j_receptor.j_receptor_c2">
+    <bqbiol:isPropertyOf rdf:resource="./bind2_sbml.sbml#process_0"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/OPB_00592"/>
+    <dcterms:description>Ca flow through the IP3 receptor in cell 2</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_18">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_19"/>
+    <semsim:name>ATPase pumps</semsim:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#model_parameters.kf">
+    <dcterms:description>Constant for calculation of Ca flow via IP3 receptor channels</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#model_parameters.k3">
+    <dcterms:description>Constant for rate equation represented by phi 3</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_12">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_13"/>
+    <bqbiol:is rdf:resource="https://identifiers.org/chebi/CHEBI:39124"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#source_0">
+    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_4"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_1">
+    <semsim:name>First pancreatic acinar cell</semsim:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_20">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_21"/>
+    <bqbiol:is rdf:resource="https://identifiers.org/chebi/CHEBI:39124"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#source_4">
+    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_10"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#mediator_4">
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_18"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_5">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_3"/>
+    <bqbiol:is rdf:resource="http://identifiers.org/fma/Endoplasmic_reticulum"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#sink_0">
+    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#process_0">
+    <semsim:hasMediatorParticipant rdf:resource="./bind2_sbml.sbml#mediator_0"/>
+    <semsim:hasSinkParticipant rdf:resource="./bind2_sbml.sbml#sink_0"/>
+    <semsim:hasSourceParticipant rdf:resource="./bind2_sbml.sbml#source_0"/>
+    <semsim:name>Ca flow from endoplasmic reticulum to cytoplasm in cell 2</semsim:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_9">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_1"/>
+    <bqbiol:is rdf:resource="http://identifiers.org/fma/Endoplasmic_reticulum"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#mediator_0">
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#phi.phi_1_c1">
+    <dcterms:description>Rate of change in IP3 receptors from the open state to closed state in cell 1</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#h2.h2">
+    <dcterms:description>Cell 2 active IP3 receptors on the endoplasmic reticulum in the open and shut states</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#metaid1">
+    <bqbiol:is rdf:resource="./bind2_sbml.sbml#entity_0"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#sink_4">
+    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_14"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#process_5">
+    <semsim:hasMediatorParticipant rdf:resource="./bind2_sbml.sbml#mediator_5"/>
+    <semsim:hasSinkParticipant rdf:resource="./bind2_sbml.sbml#sink_5"/>
+    <semsim:hasSourceParticipant rdf:resource="./bind2_sbml.sbml#source_5"/>
+    <semsim:name>Ca leakage across cell membrane</semsim:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#model_parameters.p">
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/OPB_00340"/>
+    <dcterms:description>IP3 receptor concentration</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#process_1">
+    <semsim:hasMediatorParticipant rdf:resource="./bind2_sbml.sbml#mediator_1"/>
+    <semsim:hasSinkParticipant rdf:resource="./bind2_sbml.sbml#sink_1"/>
+    <semsim:hasSourceParticipant rdf:resource="./bind2_sbml.sbml#source_1"/>
+    <semsim:name>Ca flow from endoplasmic reticulum to cytoplasm in cell 1</semsim:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_17">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_3"/>
+    <bqbiol:is rdf:resource="http://identifiers.org/fma/Plasma_membrane"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#model_parameters.Vp">
+    <dcterms:description>Constant for calculation of Ca flow via ATPase pumps</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_15">
+    <bqbiol:is rdf:resource="http://identifiers.org/fma/Portion_of_extracellular_matrix"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_23">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_22"/>
+    <bqbiol:is rdf:resource="http://identifiers.org/fma/Plasma_membrane"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#model_parameters.k2">
+    <dcterms:description>Constant for rate equation represented by phi 2</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_11">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_9"/>
+    <semsim:name>IP3 Ca channel</semsim:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_2">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_3"/>
+    <bqbiol:is rdf:resource="http://identifiers.org/fma/Portion_of_cytosol"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#source_3">
+    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#mediator_5">
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_23"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#model_parameters.R5">
+    <dcterms:description>Constant for rate equation represented by phi 3</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_6">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_2"/>
+    <bqbiol:is rdf:resource="https://identifiers.org/chebi/CHEBI:39124"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#mediator_1">
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_11"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#sink_3">
+    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_14"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#j_pump_j_pump_c1">
+    <bqbiol:isPropertyOf rdf:resource="./bind2_sbml.sbml#process_4"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/OPB_00592"/>
+    <dcterms:description>Ca flow out of cell 1 via ATPase pumps</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#metaid2">
+    <bqbiol:is rdf:resource="http://purl.obolibrary.org/obo/CHEBI_39124"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#j_receptor_j_receptor_c1">
+    <bqbiol:isPropertyOf rdf:resource="./bind2_sbml.sbml#process_1"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/OPB_00592"/>
+    <dcterms:description>Ca flow through the IP3 receptor in cell 1</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#model_parameters.R1">
+    <dcterms:description>Constant for rate equation represented by phi 1</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#process_4">
+    <semsim:hasMediatorParticipant rdf:resource="./bind2_sbml.sbml#mediator_4"/>
+    <semsim:hasSinkParticipant rdf:resource="./bind2_sbml.sbml#sink_4"/>
+    <semsim:hasSourceParticipant rdf:resource="./bind2_sbml.sbml#source_4"/>
+    <semsim:name>Ca out of cell 1 cytoplasm to extracellular matrix via ATPase pumps</semsim:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#j_pump.j_pump_c2">
+    <bqbiol:isPropertyOf rdf:resource="./bind2_sbml.sbml#process_3"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/OPB_00592"/>
+    <dcterms:description>Ca flow out of cell 2 via ATPase pumps</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#model_parameters.r4">
+    <dcterms:description>Constant for rate equation represented by phi 2</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_16">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_17"/>
+    <semsim:name>ATPase pumps</semsim:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_14">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_15"/>
+    <bqbiol:is rdf:resource="https://identifiers.org/chebi/CHEBI:39124"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#model_parameters.k1">
+    <dcterms:description>Constant for rate equation represented by phi -1</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#model_parameters.D">
+    <dcterms:description>Intercellular coupling permeability rate constant.</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_22">
+    <bqbiol:is rdf:resource="https://identifiers.org/cl/CL:0002064"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#environment_time">
+    <dcterms:description>Time</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#source_2">
+    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_10"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_10">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_0"/>
+    <bqbiol:is rdf:resource="https://identifiers.org/chebi/CHEBI:39124"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_3">
+    <semsim:name>Second pancreatic acinar cell</semsim:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#phi.phi3_c1">
+    <dcterms:description>Rate of change in IP3 receptors from the inactive state to open state in cell 1</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_7">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_5"/>
+    <semsim:name>IP3 Ca channel</semsim:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#mediator_2">
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_12"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#model_parameters.Kp">
+    <dcterms:description>Constant for calculation of Ca flow via ATPase pumps</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#metaid3">
+    <bqbiol:is rdf:resource="./bind2_sbml.sbml#entity_2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#sink_2">
+    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="./bind2_sbml.sbml#entity_6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#j_diffusion.j_diffusion">
+    <bqbiol:isPropertyOf rdf:resource="./bind2_sbml.sbml#process_2"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/OPB_00592"/>
+    <dcterms:description>Diffusion of Ca between coupled cells</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#phi.phi1_c2">
+    <dcterms:description>Rate of change in IP3 receptors from the closed state to open state in cell 2</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#process_3">
+    <semsim:hasMediatorParticipant rdf:resource="./bind2_sbml.sbml#mediator_3"/>
+    <semsim:hasSinkParticipant rdf:resource="./bind2_sbml.sbml#sink_3"/>
+    <semsim:hasSourceParticipant rdf:resource="./bind2_sbml.sbml#source_3"/>
+    <semsim:name>Ca out of cell 2 cytoplasm to extracellular matrix via ATPase pumps</semsim:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#phi.phi2_c1">
+    <dcterms:description>Rate of change in IP3 receptors from the closed state to inactive state in cell 1</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="./bind2_sbml.sbml#entity_19">
+    <bqbiol:isPartOf rdf:resource="./bind2_sbml.sbml#entity_1"/>
+    <bqbiol:is rdf:resource="http://identifiers.org/fma/Plasma_membrane"/>
+  </rdf:Description>
+</rdf:RDF>

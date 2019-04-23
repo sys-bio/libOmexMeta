@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model metaid="metaid0" id="bind2_sbml">
+    <listOfUnitDefinitions>
+      <unitDefinition id="second_order_rate">
+        <listOfUnits>
+          <unit scale="0" kind="litre" multiplier="1" exponent="1" />
+          <unit scale="-6" kind="mole" multiplier="1" exponent="-1" />
+          <unit scale="0" kind="second" multiplier="1" exponent="-1" />
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="per_second">
+        <listOfUnits>
+          <unit scale="0" kind="second" multiplier="1" exponent="-1" />
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="micro_molar_per_second">
+        <listOfUnits>
+          <unit scale="-6" kind="mole" multiplier="1" exponent="1" />
+          <unit scale="0" kind="litre" multiplier="1" exponent="-1" />
+          <unit scale="0" kind="second" multiplier="1" exponent="-1" />
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="micro_molar">
+        <listOfUnits>
+          <unit scale="-6" kind="mole" multiplier="1" exponent="1" />
+          <unit scale="0" kind="litre" multiplier="1" exponent="-1" />
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment constant="true" id="compartment_0" size="1" metaid="metaid1" spatialDimensions="3" />
+      <compartment constant="true" id="compartment_1" size="1" metaid="metaid3" spatialDimensions="3" />
+    </listOfCompartments>
+    <listOfSpecies>
+      <species boundaryCondition="true" constant="false" metaid="metaid2" hasOnlySubstanceUnits="false" compartment="compartment_0" id="c1" initialConcentration="0.3" />
+      <species boundaryCondition="true" constant="false" hasOnlySubstanceUnits="false" compartment="compartment_1" id="c2" initialConcentration="0.1" />
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter constant="true" id="D" units="per_second" metaid="model_parameters.D" />
+      <parameter constant="true" id="time" units="second" metaid="environment_time" />
+      <parameter constant="false" id="h1" metaid="h1.h1" value="0.8" />
+      <parameter constant="false" id="phi_1_c2" units="per_second" metaid="phi.phi_1_c2" />
+      <parameter constant="false" id="phi_1_c1" units="per_second" metaid="phi.phi_1_c1" />
+      <parameter constant="true" id="Vp" units="micro_molar_per_second" metaid="model_parameters.Vp" />
+      <parameter constant="true" id="kf" units="micro_molar_per_second" metaid="model_parameters.kf" />
+      <parameter constant="false" id="h2" metaid="h2.h2" value="0.1" />
+      <parameter constant="false" id="phi1_c1" units="second_order_rate" metaid="phi.phi1_c1" />
+      <parameter constant="false" id="phi1_c2" units="second_order_rate" metaid="phi.phi1_c2" />
+      <parameter constant="true" id="r4" units="per_second" metaid="model_parameters.r4" />
+      <parameter constant="true" id="r2" units="second_order_rate" metaid="model_parameters.r2" />
+      <parameter constant="false" id="phi2_c2" units="per_second" metaid="phi.phi2_c2" />
+      <parameter constant="true" id="Kp" units="micro_molar" metaid="model_parameters.Kp" />
+      <parameter constant="false" id="phi2_c1" units="per_second" metaid="phi.phi2_c1" />
+      <parameter constant="true" id="R5" units="micro_molar" metaid="model_parameters.R5" />
+      <parameter constant="true" id="R3" units="micro_molar" metaid="model_parameters.R3" />
+      <parameter constant="true" id="R1" units="micro_molar" metaid="model_parameters.R1" />
+      <parameter constant="true" id="k3" units="micro_molar_per_second" metaid="model_parameters.k3" />
+      <parameter constant="true" id="k1" units="micro_molar_per_second" metaid="model_parameters.k1" />
+      <parameter constant="true" id="k2" units="micro_molar_per_second" metaid="model_parameters.k2" />
+      <parameter constant="false" id="phi3_c2" units="per_second" metaid="phi.phi3_c2" />
+      <parameter constant="false" id="phi3_c1" units="per_second" metaid="phi.phi3_c1" />
+      <parameter constant="true" id="p" units="micro_molar" metaid="model_parameters.p" />
+      <parameter constant="false" id="j_receptor_c1" units="micro_molar_per_second" metaid="j_receptor_j_receptor_c1" />
+      <parameter constant="true" id="j_leak" units="micro_molar_per_second" metaid="model_parameters_j_leak" />
+      <parameter constant="false" id="j_pump_c2" units="micro_molar_per_second" metaid="j_pump.j_pump_c2" />
+      <parameter constant="false" id="j_diffusion" units="micro_molar_per_second" metaid="j_diffusion.j_diffusion" />
+      <parameter constant="false" id="j_pump_c1" units="micro_molar_per_second" metaid="j_pump_j_pump_c1" />
+      <parameter constant="false" id="j_receptor_c2" units="micro_molar_per_second" metaid="j_receptor.j_receptor_c2" />
+    </listOfParameters>
+    <listOfRules>
+      <rateRule variable="c1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <plus />
+            <apply>
+              <minus />
+              <ci> j_receptor_c1 </ci>
+              <ci> j_pump_c1 </ci>
+            </apply>
+            <ci> j_leak </ci>
+            <ci> j_diffusion </ci>
+          </apply>
+        </math>
+            </rateRule>
+      <rateRule variable="c2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <plus />
+            <apply>
+              <minus />
+              <ci> j_receptor_c2 </ci>
+              <ci> j_pump_c2 </ci>
+            </apply>
+            <ci> j_leak </ci>
+            <ci> j_diffusion </ci>
+          </apply>
+        </math>
+            </rateRule>
+      <rateRule variable="h1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version1/core">        
+          <apply>
+            <minus />
+            <apply>
+              <times />
+              <ci> phi3_c1 </ci>
+              <apply>
+                <minus />
+                <cn sbml:units="dimensionless"> 1 </cn>
+                <ci> h1 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <divide />
+              <apply>
+                <times />
+                <ci> phi1_c1 </ci>
+                <ci> phi2_c1 </ci>
+                <ci> h1 </ci>
+                <ci> p </ci>
+              </apply>
+              <apply>
+                <plus />
+                <apply>
+                  <times />
+                  <ci> phi1_c1 </ci>
+                  <ci> p </ci>
+                </apply>
+                <ci> phi_1_c1 </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+            </rateRule>
+      <assignmentRule variable="phi_1_c2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide />
+            <ci> k1 </ci>
+            <apply>
+              <plus />
+              <ci> R3 </ci>
+              <ci> c2 </ci>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="phi_1_c1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide />
+            <ci> k1 </ci>
+            <apply>
+              <plus />
+              <ci> R3 </ci>
+              <ci> c1 </ci>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <rateRule variable="h2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version1/core">        
+          <apply>
+            <minus />
+            <apply>
+              <times />
+              <ci> phi3_c2 </ci>
+              <apply>
+                <minus />
+                <cn sbml:units="dimensionless"> 1 </cn>
+                <ci> h2 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <divide />
+              <apply>
+                <times />
+                <ci> phi1_c2 </ci>
+                <ci> phi2_c2 </ci>
+                <ci> h2 </ci>
+                <ci> p </ci>
+              </apply>
+              <apply>
+                <plus />
+                <apply>
+                  <times />
+                  <ci> phi1_c2 </ci>
+                  <ci> p </ci>
+                </apply>
+                <ci> phi_1_c2 </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+            </rateRule>
+      <assignmentRule variable="phi1_c1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide />
+            <apply>
+              <times />
+              <ci> r2 </ci>
+              <ci> c1 </ci>
+            </apply>
+            <apply>
+              <plus />
+              <ci> R1 </ci>
+              <ci> c1 </ci>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="phi1_c2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide />
+            <apply>
+              <times />
+              <ci> r2 </ci>
+              <ci> c2 </ci>
+            </apply>
+            <apply>
+              <plus />
+              <ci> R1 </ci>
+              <ci> c2 </ci>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="phi2_c2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide />
+            <apply>
+              <plus />
+              <ci> k2 </ci>
+              <apply>
+                <times />
+                <ci> r4 </ci>
+                <ci> c2 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <plus />
+              <ci> R3 </ci>
+              <ci> c2 </ci>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="phi2_c1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide />
+            <apply>
+              <plus />
+              <ci> k2 </ci>
+              <apply>
+                <times />
+                <ci> r4 </ci>
+                <ci> c1 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <plus />
+              <ci> R3 </ci>
+              <ci> c1 </ci>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="phi3_c2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide />
+            <ci> k3 </ci>
+            <apply>
+              <plus />
+              <ci> R5 </ci>
+              <ci> c2 </ci>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="phi3_c1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <divide />
+            <ci> k3 </ci>
+            <apply>
+              <plus />
+              <ci> R5 </ci>
+              <ci> c1 </ci>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="j_receptor_c1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version1/core">        
+          <apply>
+            <times />
+            <ci> kf </ci>
+            <apply>
+              <power />
+              <apply>
+                <divide />
+                <apply>
+                  <times />
+                  <ci> p </ci>
+                  <ci> h1 </ci>
+                  <ci> phi1_c1 </ci>
+                </apply>
+                <apply>
+                  <plus />
+                  <apply>
+                    <times />
+                    <ci> phi1_c1 </ci>
+                    <ci> p </ci>
+                  </apply>
+                  <ci> phi_1_c1 </ci>
+                </apply>
+              </apply>
+              <cn sbml:units="dimensionless"> 4 </cn>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="j_pump_c2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version1/core">        
+          <apply>
+            <divide />
+            <apply>
+              <times />
+              <ci> Vp </ci>
+              <apply>
+                <power />
+                <ci> c2 </ci>
+                <cn sbml:units="dimensionless"> 2 </cn>
+              </apply>
+            </apply>
+            <apply>
+              <plus />
+              <apply>
+                <power />
+                <ci> Kp </ci>
+                <cn sbml:units="dimensionless"> 2 </cn>
+              </apply>
+              <apply>
+                <power />
+                <ci> c2 </ci>
+                <cn sbml:units="dimensionless"> 2 </cn>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="j_diffusion">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <times />
+            <ci> D </ci>
+            <apply>
+              <minus />
+              <ci> c2 </ci>
+              <ci> c1 </ci>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="j_pump_c1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version1/core">        
+          <apply>
+            <divide />
+            <apply>
+              <times />
+              <ci> Vp </ci>
+              <apply>
+                <power />
+                <ci> c1 </ci>
+                <cn sbml:units="dimensionless"> 2 </cn>
+              </apply>
+            </apply>
+            <apply>
+              <plus />
+              <apply>
+                <power />
+                <ci> Kp </ci>
+                <cn sbml:units="dimensionless"> 2 </cn>
+              </apply>
+              <apply>
+                <power />
+                <ci> c1 </ci>
+                <cn sbml:units="dimensionless"> 2 </cn>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+      <assignmentRule variable="j_receptor_c2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:sbml="http://www.sbml.org/sbml/level3/version1/core">        
+          <apply>
+            <times />
+            <ci> kf </ci>
+            <apply>
+              <power />
+              <apply>
+                <divide />
+                <apply>
+                  <times />
+                  <ci> p </ci>
+                  <ci> h2 </ci>
+                  <ci> phi1_c2 </ci>
+                </apply>
+                <apply>
+                  <plus />
+                  <apply>
+                    <times />
+                    <ci> phi1_c2 </ci>
+                    <ci> p </ci>
+                  </apply>
+                  <ci> phi_1_c2 </ci>
+                </apply>
+              </apply>
+              <cn sbml:units="dimensionless"> 4 </cn>
+            </apply>
+          </apply>
+        </math>
+            </assignmentRule>
+    </listOfRules>
+  </model>
+</sbml>

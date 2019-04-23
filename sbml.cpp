@@ -600,6 +600,3 @@ int printAnnotation_helper(char* filename){
     }
     delete document;
 }
-
-
-
