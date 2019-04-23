@@ -275,6 +275,33 @@ libsemgen.cpp.s:
 	$(MAKE) -f CMakeFiles/libsemgen.dir/build.make CMakeFiles/libsemgen.dir/libsemgen.cpp.s
 .PHONY : libsemgen.cpp.s
 
+omex.o: omex.cpp.o
+
+.PHONY : omex.o
+
+# target to build an object file
+omex.cpp.o:
+	$(MAKE) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/omex.cpp.o
+.PHONY : omex.cpp.o
+
+omex.i: omex.cpp.i
+
+.PHONY : omex.i
+
+# target to preprocess a source file
+omex.cpp.i:
+	$(MAKE) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/omex.cpp.i
+.PHONY : omex.cpp.i
+
+omex.s: omex.cpp.s
+
+.PHONY : omex.s
+
+# target to generate assembly for a file
+omex.cpp.s:
+	$(MAKE) -f CMakeFiles/a.dir/build.make CMakeFiles/a.dir/omex.cpp.s
+.PHONY : omex.cpp.s
+
 sbml.o: sbml.cpp.o
 
 .PHONY : sbml.o
@@ -325,6 +352,9 @@ help:
 	@echo "... libsemgen.o"
 	@echo "... libsemgen.i"
 	@echo "... libsemgen.s"
+	@echo "... omex.o"
+	@echo "... omex.i"
+	@echo "... omex.s"
 	@echo "... sbml.o"
 	@echo "... sbml.i"
 	@echo "... sbml.s"

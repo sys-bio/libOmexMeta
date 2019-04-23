@@ -3,6 +3,7 @@
     swig
     libsbml
     libcellml
+    libzip (http://macappstore.org/libzip/)
     
 ## Usage 
     mkdir build
@@ -10,5 +11,6 @@
     cmake ..
     make
     
+
    
 
