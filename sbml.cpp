@@ -19,7 +19,8 @@ print_element_names(xmlNode * a_node)
     }
 }
 
-void parseXML(std::string s){
+void
+parseXML(std::string s){
 
     xmlNode *root_element = NULL;
     const xmlChar * content = (const unsigned  char *)s.c_str();
@@ -36,7 +37,8 @@ void parseXML(std::string s){
     xmlCleanupParser();
 }
 
-void printModel() { std::string mS = "void"; std::cout<<"Usage: Provide SBML file as input parameter"<< std::endl ;}
+void
+printModel() { std::string mS = "void"; std::cout<<"Usage: Provide SBML file as input parameter"<< std::endl ;}
 
 int printSBMLModel(char* filename){
 
@@ -83,8 +85,8 @@ int printSBMLModel(char* filename){
     return 0;
 }
 
-void printModel(char* filename) { std::cout<<filename; std::cout<<printSBMLModel(filename)<<std::endl;}
-
+void
+printModel(char* filename) { std::cout<<filename; std::cout<<printSBMLModel(filename)<<std::endl;}
 void
 printFunctionDefinition (unsigned int n, const FunctionDefinition* fd)
 {

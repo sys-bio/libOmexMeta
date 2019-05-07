@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD 14)
 # Add cellml, sbml
 add_library(a cellml.cpp sbml.cpp sbml.h omex.cpp omex.h)
 
+
 # Set up public headers for cellml
 set_target_properties(a PROPERTIES PUBLIC_HEADER "cellml.h")
 
