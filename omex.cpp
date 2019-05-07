@@ -520,7 +520,7 @@ print_xpath_nodes(xmlNodeSetPtr nodes, FILE* output) {
     assert(output);
     size = (nodes) ? nodes->nodeNr : 0;
 
-    fprintf(output, "Result (%d nodes):\n", size);
+    //fprintf(output, "Result (%d nodes):\n", size);
     for(i = 0; i < size; ++i) {
         assert(nodes->nodeTab[i]);
 
@@ -539,9 +539,10 @@ print_xpath_nodes(xmlNodeSetPtr nodes, FILE* output) {
         } else if(nodes->nodeTab[i]->type == XML_ELEMENT_NODE) {
             cur = nodes->nodeTab[i];
             if(cur->ns) {
-                std::cout<<xmlNodeGetContent(cur);
+
                 fprintf(output, "= element node \"%s:%s\"\n",
                         cur->ns->href, cur->name);
+                std::cout<<xmlNodeGetContent(cur)<<std::endl;
             } else {
                 fprintf(output, "= element node \"%s\"\n",
                         cur->name);
@@ -574,10 +575,8 @@ void getAllEntities_RDF(char *filename){
 }
 
 void getAllEntities_SBML(char *filename){
-
     getXPATHnamespace(filename, "/*[local-name()='sbml']/*[local-name()='model']/*[local-name()='listOfParameters']//@id");
 }
-
 
 void getInfo_SBML(char *filename, char *id){
 
@@ -594,15 +593,34 @@ void getInfo_SBML(char *filename, char *id){
 
 void getInfo_RDF(char *filename, char *id){
 
+
+
+
+    //std::cout<<"Description"<<std::endl;
+
     std::string str = "";
-    //rdf:Description[@rdf:about='./bind2_sbml.sbml#sink_1']
     str = "//rdf:Description[@rdf:about='./bind2_sbml.sbml#";
     str += id;
-    str += "']//@*";
+    str += "']//dcterms:description";
     char query[str.size() + 1];
     strcpy(query, str.c_str());
 
-    std::cout<<"new\n";
+    parseXPATH(filename,query, "dcterms=http://purl.org/dc/terms/ "
+                               "semsim=http://www.bhi.washington.edu/SemSim# "
+                               "rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns# "
+                               "bqmodel=http://biomodels.net/model-qualifiers/ "
+                               "bqbiol=http://biomodels.net/biology-qualifiers/ "
+                               "ro=http://www.obofoundry.org/ro/ro.owl#");
+
+
+    str = "";
+    str = "//rdf:Description[@rdf:about='./bind2_sbml.sbml#";
+    str += id;
+    str += "']//@*";
+    query[str.size() + 1];
+    strcpy(query, str.c_str());
+
+    std::cout<<"Debug :: new\n";
     parseXPATH(filename, query, "dcterms=http://purl.org/dc/terms/ "
                                 "semsim=http://www.bhi.washington.edu/SemSim# "
                                 "rdf=http://www.w3.org/1999/02/22-rdf-syntax-ns# "
@@ -610,7 +628,7 @@ void getInfo_RDF(char *filename, char *id){
                                 "bqbiol=http://biomodels.net/biology-qualifiers/ "
                                 "ro=http://www.obofoundry.org/ro/ro.owl#" );
 
-    std::cout<<"old\n";
+    std::cout<<"Debug :: old\n";
     getXPATHnamespace(filename, query);
 }
 
