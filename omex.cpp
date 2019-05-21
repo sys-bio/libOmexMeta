@@ -593,9 +593,6 @@ void getInfo_SBML(char *filename, char *id){
 
 void getInfo_RDF(char *filename, char *id){
 
-
-
-
     //std::cout<<"Description"<<std::endl;
 
     std::string str = "";
@@ -631,5 +628,227 @@ void getInfo_RDF(char *filename, char *id){
     std::cout<<"Debug :: old\n";
     getXPATHnamespace(filename, query);
 }
+
+// Redland
+
+#include <stdarg.h>
+#include <unistd.h>
+
+#include <redland.h>
+
+void getRDFmodel(char *filename){
+    librdf_world* world;
+    librdf_storage* storage;
+    librdf_parser* parser;
+    librdf_model* model;
+    librdf_stream* stream;
+    librdf_node *subject, *predicate;
+    librdf_iterator* iterator;
+    librdf_statement *partial_statement, *statement2;
+    librdf_uri *uri;
+    char *parser_name=NULL;
+    int count;
+    raptor_world *raptor_world_ptr;
+    raptor_iostream* iostr;
+    world = librdf_new_world();
+    librdf_world_open(world);
+    raptor_world_ptr = librdf_world_get_raptor(world);
+
+    uri=librdf_new_uri(world, (const unsigned char*)filename);
+    if(!uri) {
+        fprintf(stderr, "Failed to create URI\n");
+    }
+
+    storage=librdf_new_storage(world, "memory", "test", NULL);
+    if(!storage) {
+        fprintf(stderr, "Failed to create new storage\n");
+    }
+
+    model=librdf_new_model(world, storage, NULL);
+    if(!model) {
+        fprintf(stderr, "Failed to create model\n");
+    }
+
+    parser=librdf_new_parser(world, parser_name, NULL, NULL);
+    if(!parser) {
+        fprintf(stderr, " Failed to create new parser\n");
+    }
+
+
+    /* PARSE the URI as RDF/XML*/
+    fprintf(stdout, "Parsing URI %s\n",librdf_uri_as_string(uri));
+    if(librdf_parser_parse_into_model(parser, uri, uri, model)) {
+        fprintf(stderr, "Failed to parse RDF into model\n");
+    }
+    librdf_free_parser(parser);
+
+
+    /* Print out the model*/
+    fprintf(stdout, "Resulting model is:\n");
+    iostr = raptor_new_iostream_to_file_handle(raptor_world_ptr, stdout);
+    librdf_model_write(model, iostr);
+    raptor_free_iostream(iostr);
+
+
+//    subject=librdf_new_node_from_uri_string(world, (const unsigned char*)"file:///Users/prakharagarwal/Desktop/semgen_code/libsemgen/test_files/bind2.omex/model/bind2_sbml.sbml#phi.phi2_c1");
+//    predicate=librdf_new_node_from_uri_string(world, (const unsigned char*)"http://purl.org/dc/terms/description");
+//    if(!subject || !predicate) {
+//        fprintf(stderr, "Failed to create nodes for searching\n");
+//    }
+//
+//
+//    partial_statement=librdf_new_statement(world);
+//    librdf_statement_set_subject(partial_statement, subject);
+//    librdf_statement_set_predicate(partial_statement, predicate);
+//
+//
+//    /* QUERY TEST 2 - use get_targets to do match */
+////    fprintf(stdout, " Trying to get targets\n");
+//    iterator=librdf_model_get_targets(model, subject, predicate);
+//    if(!iterator)  {
+//        fprintf(stderr, "librdf_model_get_targets failed to return iterator for searching\n");
+//    }
+//
+//    count=0;
+//    while(!librdf_iterator_end(iterator)) {
+//        librdf_node *target;
+//
+//        target=(librdf_node*)librdf_iterator_get_object(iterator);
+//        if(!target) {
+//            fprintf(stderr, "librdf_iterator_get_object returned NULL\n");
+//            break;
+//        }
+//
+//        fputs("  Matched target: ", stdout);
+//        librdf_node_print(target, stdout);
+//        fputc('\n', stdout);
+//
+//        count++;
+//        librdf_iterator_next(iterator);
+//    }
+//    librdf_free_iterator(iterator);
+//
+//    librdf_free_statement(partial_statement);
+    /* the above does this since they are still attached */
+    /* librdf_free_node(predicate); */
+    /* librdf_free_node(object); */
+
+    librdf_free_model(model);
+
+    librdf_free_storage(storage);
+
+    librdf_free_uri(uri);
+
+    librdf_free_world(world);
+
+#ifdef LIBRDF_MEMORY_DEBUG
+    librdf_memory_report(stderr);
+#endif
+}
+
+void getRDFmodel_EntityInfo(char *filename, char *subject_query, char *predicate_query){
+    librdf_world* world;
+    librdf_storage* storage;
+    librdf_parser* parser;
+    librdf_model* model;
+    librdf_stream* stream;
+    librdf_node *subject, *predicate;
+    librdf_iterator* iterator;
+    librdf_statement *partial_statement, *statement2;
+    librdf_uri *uri;
+    char *parser_name=NULL;
+    int count;
+    raptor_world *raptor_world_ptr;
+    raptor_iostream* iostr;
+    world = librdf_new_world();
+    librdf_world_open(world);
+    raptor_world_ptr = librdf_world_get_raptor(world);
+
+    uri=librdf_new_uri(world, (const unsigned char*)filename);
+    if(!uri) {
+        fprintf(stderr, "Failed to create URI\n");
+    }
+
+    storage=librdf_new_storage(world, "memory", "test", NULL);
+    if(!storage) {
+        fprintf(stderr, "Failed to create new storage\n");
+    }
+
+    model=librdf_new_model(world, storage, NULL);
+    if(!model) {
+        fprintf(stderr, "Failed to create model\n");
+    }
+
+    parser=librdf_new_parser(world, parser_name, NULL, NULL);
+    if(!parser) {
+        fprintf(stderr, " Failed to create new parser\n");
+    }
+
+
+    /* PARSE the URI as RDF/XML*/
+    fprintf(stdout, "Parsing URI %s\n",librdf_uri_as_string(uri));
+    if(librdf_parser_parse_into_model(parser, uri, uri, model)) {
+        fprintf(stderr, "Failed to parse RDF into model\n");
+    }
+    librdf_free_parser(parser);
+
+
+    subject=librdf_new_node_from_uri_string(world, (const unsigned char*)subject_query);
+    predicate=librdf_new_node_from_uri_string(world, (const unsigned char*)predicate_query);
+    if(!subject || !predicate) {
+        fprintf(stderr, "Failed to create nodes for searching\n");
+    }
+
+
+    partial_statement=librdf_new_statement(world);
+    librdf_statement_set_subject(partial_statement, subject);
+    librdf_statement_set_predicate(partial_statement, predicate);
+
+
+    /* QUERY TEST - using get_targets to do match */
+    fprintf(stdout, " Trying to get targets\n");
+    iterator=librdf_model_get_targets(model, subject, predicate);
+    if(!iterator)  {
+        fprintf(stderr, "librdf_model_get_targets failed to return iterator for searching\n");
+    }
+
+    count=0;
+    while(!librdf_iterator_end(iterator)) {
+        librdf_node *target;
+
+        target=(librdf_node*)librdf_iterator_get_object(iterator);
+        if(!target) {
+            fprintf(stderr, "librdf_iterator_get_object returned NULL\n");
+            break;
+        }
+
+        fputs("  Matched target: ", stdout);
+        librdf_node_print(target, stdout);
+        fputc('\n', stdout);
+
+        count++;
+        librdf_iterator_next(iterator);
+    }
+    librdf_free_iterator(iterator);
+    fprintf(stderr, "got %d target nodes\n", count);
+
+    librdf_free_statement(partial_statement);
+    /* the above does this since they are still attached */
+    /* librdf_free_node(predicate); */
+    /* librdf_free_node(object); */
+
+    librdf_free_model(model);
+
+    librdf_free_storage(storage);
+
+    librdf_free_uri(uri);
+
+    librdf_free_world(world);
+
+#ifdef LIBRDF_MEMORY_DEBUG
+    librdf_memory_report(stderr);
+#endif
+}
+
 
 
