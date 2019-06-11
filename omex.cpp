@@ -3,7 +3,7 @@
 #include "pugixml-1.9/src/pugixml.hpp"
 #include <pugixml-1.9/src/pugiconfig.hpp>
 
-#include <zlib.h>
+#include <zip.h>
 
 #include <libxml/parser.h>
 #include <libxml/tree.h>
