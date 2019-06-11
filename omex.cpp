@@ -1,5 +1,17 @@
 #include "omex.h"
+
 #include "pugixml-1.9/src/pugixml.hpp"
+#include <pugixml-1.9/src/pugiconfig.hpp>
+
+#include <zlib.h>
+
+#include <libxml/parser.h>
+#include <libxml/tree.h>
+#include <libxml/xmlmemory.h>
+#include <libxml/xpathInternals.h>
+#include <libxml/xpath.h>
+#include <libxml/xinclude.h>
+#include <libxml/xmlIO.h>
 
 void readOMEX(char *OMEXfilename, char *filename, char *model_sbml)
 {
@@ -849,6 +861,3 @@ void getRDFmodel_EntityInfo(char *filename, char *subject_query, char *predicate
     librdf_memory_report(stderr);
 #endif
 }
-
-
-

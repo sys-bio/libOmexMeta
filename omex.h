@@ -1,4 +1,3 @@
-#include <zip.h>
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
@@ -25,4 +24,3 @@ void getInfo_SBML(char *filename, char *id);
 void getInfo_RDF(char *filename, char *id);
 void getRDFmodel(char *filename);
 void getRDFmodel_EntityInfo(char *filename, char *subject_query, char *predicate_query);
-
