@@ -12,13 +12,17 @@ include_directories(${ZLIB_INCLUDE_DIRS})
 find_package(PugiXML REQUIRED)
 include_directories(${PUGIXML_INCLUDE_DIR})
 
+find_package(LibZip REQUIRED)
+include_directories(${PUGIXML_INCLUDE_DIR})
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall -Wextra -Wno-unused-parameter -fPIC")
 
-include_directories(/usr/local/include)
-include_directories(/Users/prakharagarwal/Desktop/semgen_code/)
-include_directories(/usr/local/Cellar/libzip/1.5.2)
-include_directories(/Users/prakharagarwal/Desktop/semgen_code/raptor2-2.0.15/src)
-include_directories(/Users/prakharagarwal/Desktop/semgen_code/rasqal-0.9.33/src)
+# include_directories(/usr/local/include)
+# include_directories(/Users/prakharagarwal/Desktop/semgen_code/)
+# include_directories(/usr/local/Cellar/libzip/1.5.2)
+include_directories(/home/poltergeist/home/etc/install/raptor2-2.0.15/include/raptor2)
+include_directories(/home/poltergeist/home/etc/install/rasqal-0.9.33/include/rasqal)
+include_directories(/home/poltergeist/home/etc/install/redland-1.0.17/include)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -48,10 +52,17 @@ Configuration Summary
       zlib include dir          ${ZLIB_INCLUDE_DIRS}
       PugiXML library           ${PUGIXML_LIBRARY}
       PugiXML include dir       ${PUGIXML_INCLUDE_DIR}
-
-    Dependencies (packages marked with *** are required):
+      libzip  library           ${LIBZIP_LIBRARY}
+      libzip include dir (zip)  ${LIBZIP_INCLUDE_DIR_ZIP}
+      libzip include dir (zipconf) ${LIBZIP_INCLUDE_DIR_ZIPCONF}
     "
 )
+
+include_directories(${LIBXML2_INCLUDE_DIRS})
+include_directories(${ZLIB_INCLUDE_DIRS})
+include_directories(${PUGIXML_INCLUDE_DIR})
+include_directories(${LIBZIP_INCLUDE_DIR_ZIP})
+include_directories(${LIBZIP_INCLUDE_DIR_ZIPCONF})
 
 # Add cellml, sbml
 add_library(semanticio cellml.cpp sbml.cpp sbml.h omex.cpp omex.h)
