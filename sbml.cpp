@@ -14,7 +14,7 @@ print_element_names(xmlNode * a_node)
 
     for (cur_node = a_node; cur_node; cur_node = cur_node->next) {
         if (cur_node->type == XML_ELEMENT_NODE) {
-            cout<<("node type: Element, name: %s\n", cur_node->name)<<endl;
+            cout << "node type: Element, name: %s\n" << cur_node->name << endl;
         }
         print_element_names(cur_node->children);
     }
@@ -24,7 +24,7 @@ void
 parseXML(std::string s){
 
     xmlNode *root_element = NULL;
-    const xmlChar * content = (const unsigned  char *)s.c_str();
+    // const xmlChar * content = (const unsigned  char *)s.c_str();
     xmlDocPtr doc = xmlReadMemory(s.c_str(), s.length(), "noname.xml", NULL, 0);
     root_element = xmlDocGetRootElement(doc);
 
@@ -254,11 +254,6 @@ int updateSID (char* filename, char* output, char* oldSId, char* newSId ){
     }
     SBMLDocument* document;
     SBMLReader reader;
-#ifdef __BORLANDC__
-    unsigned long start, stop;
-#else
-    unsigned long long start, stop;
-#endif
 
     document = reader.readSBML(filename);
 
@@ -480,7 +475,7 @@ int printAnnotation_helper(char* filename){
     /* Model */
     Model* m = document->getModel();
     printAnnotation(m);
-    for(int i = 0; i < m->getNumReactions(); i++)
+    for(unsigned int i = 0; i < m->getNumReactions(); i++)
     {
         Reaction* re = m->getReaction(i);
         printAnnotation(re);
@@ -602,4 +597,6 @@ int printAnnotation_helper(char* filename){
         printAnnotation(sp);
     }
     delete document;
+
+    return 0;
 }
