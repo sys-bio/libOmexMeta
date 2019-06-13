@@ -4,16 +4,10 @@ project(libsemgen)
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
 
 find_package(LibXml2 REQUIRED)
-include_directories(${LIBXML2_INCLUDE_DIR})
-
 find_package(ZLIB REQUIRED)
-include_directories(${ZLIB_INCLUDE_DIRS})
-
 find_package(PugiXML REQUIRED)
-include_directories(${PUGIXML_INCLUDE_DIR})
-
 find_package(LibZip REQUIRED)
-include_directories(${PUGIXML_INCLUDE_DIR})
+find_package(libSBML REQUIRED)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall -Wextra -Wno-unused-parameter -fPIC")
 
@@ -52,9 +46,11 @@ Configuration Summary
       zlib include dir          ${ZLIB_INCLUDE_DIRS}
       PugiXML library           ${PUGIXML_LIBRARY}
       PugiXML include dir       ${PUGIXML_INCLUDE_DIR}
-      libzip  library           ${LIBZIP_LIBRARY}
+      libzip library            ${LIBZIP_LIBRARY}
       libzip include dir (zip)  ${LIBZIP_INCLUDE_DIR_ZIP}
       libzip include dir (zipconf) ${LIBZIP_INCLUDE_DIR_ZIPCONF}
+      libSBML library           ${libSBML_LIBRARIES}
+      libSBML include dir       ${libSBML_INCLUDE_DIRS}
     "
 )
 
@@ -63,6 +59,7 @@ include_directories(${ZLIB_INCLUDE_DIRS})
 include_directories(${PUGIXML_INCLUDE_DIR})
 include_directories(${LIBZIP_INCLUDE_DIR_ZIP})
 include_directories(${LIBZIP_INCLUDE_DIR_ZIPCONF})
+include_directories(${libSBML_INCLUDE_DIRS})
 
 # Add cellml, sbml
 add_library(semanticio cellml.cpp sbml.cpp sbml.h omex.cpp omex.h)
@@ -90,7 +87,8 @@ install(TARGETS ${PROJECT_NAME} semanticio
 #ADD_SUBDIRECTORY(SBML_test)
 #ADD_SUBDIRECTORY(SBML)
 
-target_link_libraries(${PROJECT_NAME} /extra/docker/whlbldr/install/libsbml-experimental-cos5-nons/lib64/libsbml-static.a)
+# target_link_libraries(${PROJECT_NAME} /extra/docker/whlbldr/install/libsbml-experimental-cos5-nons/lib64/libsbml-static.a)
+target_link_libraries(${PROJECT_NAME} libSBML_LIBRARIES)
 target_link_libraries(${PROJECT_NAME} LibXml2::LibXml2)
 target_link_libraries(${PROJECT_NAME} ZLIB::ZLIB)
 target_link_libraries(${PROJECT_NAME} /home/poltergeist/home/etc/install/redland-1.0.17/lib/librdf.a)
