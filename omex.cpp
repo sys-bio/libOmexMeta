@@ -1,7 +1,7 @@
 #include "omex.h"
 
-#include "pugixml-1.9/src/pugixml.hpp"
-#include <pugixml-1.9/src/pugiconfig.hpp>
+#include "pugixml.hpp"
+#include "pugiconfig.hpp"
 
 #include <zip.h>
 
@@ -12,6 +12,8 @@
 #include <libxml/xpath.h>
 #include <libxml/xinclude.h>
 #include <libxml/xmlIO.h>
+
+#include <cassert>
 
 void readOMEX(char *OMEXfilename, char *filename, char *model_sbml)
 {
