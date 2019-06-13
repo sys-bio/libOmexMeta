@@ -2,15 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <libxml/parser.h>
-#include <libxml/tree.h>
-#include <libxml/xmlmemory.h>
-#include <libxml/xpathInternals.h>
-#include <libxml/xpath.h>
-#include <libxml/xinclude.h>
-#include <libxml/xmlIO.h>
-
-#include <pugixml-1.9/src/pugiconfig.hpp>
 
 void readOMEX(char *OMEXfilename, char *model_rdf, char *model_sbml);
 void addOMEX(char* path, char* filename);
