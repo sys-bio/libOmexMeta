@@ -3,8 +3,6 @@
 
 namespace semsim
 {
-	namespace annotation
-	{
 		using namespace org::apache::commons::lang3::builder;
 
 		Annotation::Annotation(Relation *relation, std::any value)
@@ -86,5 +84,4 @@ namespace semsim
 			EqualsBuilder tempVar();
 			return (&tempVar)->append(relation, rhs->relation)->append(valueDescription, rhs->valueDescription)->append(value, rhs->value).isEquals();
 		}
-	}
 }

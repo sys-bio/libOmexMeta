@@ -1,15 +1,12 @@
-#include <string>
+# ifndef SEMSIM_ANNOTATION_H_
+# define SEMSIM_ANNOTATION_H_
 
-namespace semsim { namespace annotation { class Relation; } }
+# include <string>
+# include "semsim/annotation/Relation.h"
+# include "semsim/annotation/Resource.h"
 
 namespace semsim
 {
-	namespace annotation
-	{
-
-		// using namespace org::apache::commons::lang3::builder;
-
-
 		/**
 		 * A SemSim annotation provides additional information about
 		 * a SemSim model or one of its elements. Annotations can be used
@@ -20,10 +17,17 @@ namespace semsim
 		{
 
 		protected:
-			std::wstring valueDescription;
-			Relation *relation;
-			std::any value;
+			std::string valueDescription_;
+			Relation relation_;
+			Resource resource_;
 
+
+		public:
+			/// Destructor
+			virtual ~Annotation()
+			{
+				delete relation;
+			}
 
 			/**
 			 * Constructor without a free-text description of the annotation.
@@ -31,13 +35,7 @@ namespace semsim
 			 * and the annotation value
 			 * @param value The annotation value
 			 */
-		public:
-			virtual ~Annotation()
-			{
-				delete relation;
-			}
-
-			Annotation(Relation *relation, std::any value);
+			Annotation(const Relation& relation, const Resource& value);
 
 			/**
 			 * Constructor that includes a free-text description of the annotation.
@@ -46,7 +44,7 @@ namespace semsim
 			 * @param value The annotation value
 			 * @param valueDescription A free-text description of the annotation value
 			 */
-			Annotation(Relation *relation, std::any value, const std::wstring &valueDescription);
+			Annotation(const Relation& relation, const Resource& value, const std::string &valueDescription);
 			/**
 			 * Constructor for copying an Annotation
 			 * @param tocopy The Annotation to copy
@@ -93,5 +91,6 @@ namespace semsim
 
 			bool equals(std::any obj) override;
 		};
-	}
 }
+
+# endif
