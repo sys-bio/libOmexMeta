@@ -11,6 +11,7 @@ find_package(libSBML REQUIRED)
 find_package(Raptor2 REQUIRED)
 find_package(Rasqal REQUIRED)
 find_package(LibRDF REQUIRED)
+# consider adding https://github.com/uriparser/uriparser for uri handling
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++03 -Wall -Wextra -Wno-unused-parameter -fPIC")
 
@@ -20,7 +21,7 @@ set(CMAKE_C_VISIBILITY_PRESET hidden)
 set(ENABLE_STATIC_LIB TRUE CACHE BOOL "Build static libraries?")
 set(ENABLE_SHARED_LIB TRUE CACHE BOOL "Build shared libraries?")
 
-set(CMAKE_CXX_STANDARD 03)
+set(CMAKE_CXX_STANDARD 98)
 
 message(STATUS "
 -------------------------------------------------------------------------------
