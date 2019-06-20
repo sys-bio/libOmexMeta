@@ -4,17 +4,18 @@ project(libsemgen)
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
 
 find_package(LibXml2 REQUIRED)
-find_package(ZLIB REQUIRED)
+find_package(ZLIB    REQUIRED)
 find_package(PugiXML REQUIRED)
-find_package(LibZip REQUIRED)
+find_package(LibZip  REQUIRED)
 find_package(libSBML REQUIRED)
+find_package(Raptor2 REQUIRED)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall -Wextra -Wno-unused-parameter -fPIC")
 
 # include_directories(/usr/local/include)
 # include_directories(/Users/prakharagarwal/Desktop/semgen_code/)
 # include_directories(/usr/local/Cellar/libzip/1.5.2)
-include_directories(/home/poltergeist/home/etc/install/raptor2-2.0.15/include/raptor2)
+# include_directories(/home/poltergeist/home/etc/install/raptor2-2.0.15/include/raptor2)
 include_directories(/home/poltergeist/home/etc/install/rasqal-0.9.33/include/rasqal)
 include_directories(/home/poltergeist/home/etc/install/redland-1.0.17/include)
 
@@ -51,6 +52,8 @@ Configuration Summary
       libzip include dir (zipconf) ${LIBZIP_INCLUDE_DIR_ZIPCONF}
       libSBML library           ${libSBML_LIBRARIES}
       libSBML include dir       ${libSBML_INCLUDE_DIRS}
+      Raptor library            ${Raptor2_LIBRARIES}
+      Raptor include dir        ${Raptor2_INCLUDE_DIRS}
     "
 )
 
@@ -60,6 +63,7 @@ include_directories(${PUGIXML_INCLUDE_DIR})
 include_directories(${LIBZIP_INCLUDE_DIR_ZIP})
 include_directories(${LIBZIP_INCLUDE_DIR_ZIPCONF})
 include_directories(${libSBML_INCLUDE_DIRS})
+include_directories(${Raptor2_INCLUDE_DIRS})
 
 # Add cellml, sbml
 add_library(semanticio cellml.cpp sbml.cpp sbml.h omex.cpp omex.h)
@@ -88,9 +92,9 @@ install(TARGETS ${PROJECT_NAME} semanticio
 #ADD_SUBDIRECTORY(SBML)
 
 # target_link_libraries(${PROJECT_NAME} /extra/docker/whlbldr/install/libsbml-experimental-cos5-nons/lib64/libsbml-static.a)
-target_link_libraries(${PROJECT_NAME} libSBML_LIBRARIES)
+target_link_libraries(${PROJECT_NAME} ${libSBML_LIBRARIES})
 target_link_libraries(${PROJECT_NAME} LibXml2::LibXml2)
 target_link_libraries(${PROJECT_NAME} ZLIB::ZLIB)
 target_link_libraries(${PROJECT_NAME} /home/poltergeist/home/etc/install/redland-1.0.17/lib/librdf.a)
-target_link_libraries(${PROJECT_NAME} /home/poltergeist/home/etc/install/raptor2-2.0.15/lib/libraptor2.a)
+target_link_libraries(${PROJECT_NAME} ${Raptor2_LIBRARIES})
 target_link_libraries(${PROJECT_NAME} /home/poltergeist/home/etc/install/rasqal-0.9.33/lib/librasqal.a)
