@@ -27,13 +27,6 @@ if ( NOT( RASQAL_INCLUDE_DIR AND RASQAL_LIBRARIES ) OR NOT RASQAL_FOUND )
   include(MacroEnsureVersion)
   find_package(PkgConfig)
 
-  # By default look for version 2.0
-  if (NOT Rasqal_FIND_VERSION )
-    set( Rasqal_FIND_VERSION "2.0")
-    set( Rasqal_FIND_VERSION_MAJOR "2" )
-    set( Rasqal_FIND_VERSION_MINOR "0" )
-  endif ()
-
   if ( NOT WIN32 )
     pkg_check_modules(PC_RASQAL QUIET rasqal)
     if ( PC_RASQAL_FOUND )
@@ -58,22 +51,11 @@ if ( NOT( RASQAL_INCLUDE_DIR AND RASQAL_LIBRARIES ) OR NOT RASQAL_FOUND )
     endif ()
   endif ()
 
-  if (RASQAL_VERSION)
-    MACRO_ENSURE_VERSION("1.4.16" ${RASQAL_VERSION} RASQAL_HAVE_TRIG)
-  endif (RASQAL_VERSION)
-
   mark_as_advanced(RASQAL_INCLUDE_DIR RASQAL_LIBRARIES)
 
 endif () # Check for cached values
 
 mark_as_advanced(RASQAL_VERSION)
-
-if (NOT VRASQAL_FOUND AND Rasqal_FIND_VERSION_MAJOR EQUAL "2" AND NOT Rasqal_FIND_QUIET )
-  pkg_check_modules(PC_RASQAL QUIET rasqal)
-  if (PC_RASQAL_FOUND)
-    message( STATUS "You have rasqal1 version ${PC_RASQAL_VERSION} installed. Please update." )
-  endif ()
-endif ()
 
 set(Rasqal_PROCESS_INCLUDES RASQAL_INCLUDES)
 set(Rasqal_PROCESS_LIBS RASQAL_LIBS)
