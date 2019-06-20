@@ -21,29 +21,31 @@ namespace semsim {
          */
         class Ontology {
           private:
-            std::wstring fullname;
-            std::wstring nickname;
-            std::wstring bioportalnamespace;
-            std::vector<std::wstring> namespaces = std::vector<std::wstring>();
-            std::wstring description;
+            std::string fullname;
+            std::string nickname;
+            std::string bioportalnamespace;
+            std::vector<std::string> namespaces = std::vector<std::string>();
+            std::string description;
 
+          public:
             /**
+             * Main constructor.
              * @param name Full name of ontology
-             * @param abrev Nickname of ontology
+             * @param abbrev Nickname of ontology
              * @param ns Array of namespaces used for this ontology
              * @param desc Textual description of ontology
              * @param bpns BioPortal namespace of the ontology
              */
-          public:
-            Ontology(const std::wstring& name, const std::wstring& abrev, std::vector<std::wstring>& ns, const std::wstring& desc, const std::wstring& bpns);
+            Ontology(const std::string& name, const std::string& abbrev, std::vector<std::string>& ns, const std::string& desc, const std::string& bpns);
 
             /**
+             * Constructor without BioPortal info.
              * @param name Full name of ontology
              * @param abrev Nickname of ontology
              * @param ns Array of namespaces used for this ontology
              * @param desc Textual description of ontology
              */
-            Ontology(const std::wstring& name, const std::wstring& abrev, std::vector<std::wstring>& ns, const std::wstring& desc);
+            Ontology(const std::string& name, const std::string& abrev, std::vector<std::string>& ns, const std::string& desc);
 
             /**
              * Constructor for creating an {@link Ontology} class
@@ -58,32 +60,32 @@ namespace semsim {
              * @return Whether the namespace is in the array of namespaces associated
              * with this ontology
              */
-            virtual bool hasNamespace(const std::wstring& nspace);
+            virtual bool hasNamespace(const std::string& nspace);
 
             /**
              * @return Full name of ontology
              */
-            virtual std::wstring getFullName();
+            virtual std::string getFullName();
 
             /**
-             * @return Nickname of ontology
+             * @return Abbreviated name of ontology
              */
-            virtual std::wstring getNickName();
+            virtual std::string getAbbreviation();
 
             /**
              * @return The BioPortal namespace of the ontology
              */
-            virtual std::wstring getBioPortalNamespace();
+            virtual std::string getBioPortalNamespace();
 
             /**
              * @return The set of namespaces associated with the ontology
              */
-            virtual std::vector<std::wstring> getNameSpaces();
+            virtual std::vector<std::string> getNamespaces();
 
             /**
              * @return A free-text description of the ontology
              */
-            virtual std::wstring getDescription();
+            virtual std::string getDescription();
         };
 
     }

@@ -1,14 +1,6 @@
-#include <string>
-#include <optional>
-
-namespace semsim {
-    class SemSimLibrary;
-}
-namespace semsim {
-    namespace annotation {
-        class ReferenceOntologyAnnotation;
-    }
-}
+# ifndef SEMSIM_REFERENCE_TERM_H_
+# define SEMSIM_REFERENCE_TERM_H_
+# include <string>
 
 namespace semsim {
     namespace annotation {
@@ -58,3 +50,5 @@ namespace semsim {
 
     }
 }
+
+# endif

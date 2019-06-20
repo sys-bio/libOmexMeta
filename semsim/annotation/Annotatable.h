@@ -1,21 +1,12 @@
-#include <string>
-#include <set>
+# ifndef SEMSIM_ANNOTATABLE_H_
+# define SEMSIM_ANNOTATABLE_H_
+
+# include <string>
+# include <set>
+
 namespace semsim {
     namespace annotation {
         class Annotation;
-    }
-}
-namespace semsim {
-    class SemSimLibrary;
-}
-namespace semsim {
-    namespace annotation {
-        class Relation;
-    }
-}
-namespace semsim {
-    namespace annotation {
-        class ReferenceOntologyAnnotation;
     }
 }
 
