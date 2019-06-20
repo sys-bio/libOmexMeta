@@ -21,10 +21,8 @@ namespace semsim {
 
 
       public:
-        /// Destructor
-        virtual ~Annotation() {
-            delete relation;
-        }
+        /// Virtual destructor for base classes
+        virtual ~Annotation() {}
 
         /**
          * Constructor without a free-text description of the annotation.
@@ -58,7 +56,7 @@ namespace semsim {
         /**
          * @return The free-text description of the annotation value
          */
-        virtual const std::string& getValueDescription();
+        virtual const std::string& getValueDescription() const;
 
         /**
          * Set the relationship between the object being annotated and the annotation value
