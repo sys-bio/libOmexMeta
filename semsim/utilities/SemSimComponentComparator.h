@@ -1,23 +1,22 @@
-namespace semsim { class SemSimObject; }
+namespace semsim {
+    class SemSimObject;
+}
 
-namespace semsim
-{
-	namespace utilities
-	{
+namespace semsim {
+    namespace utilities {
 
 
-		using SemSimObject = semsim::SemSimObject;
+        using SemSimObject = semsim::SemSimObject;
 
-		/**
-		 * Comparator for comparing the names of SemSimObjects, ignoring case
-		 *
-		 *
-		 */
-		class SemSimComponentComparator : public Comparator<SemSimObject*>
-		{
-		public:
-			virtual int compare(SemSimObject *A, SemSimObject *B);
-		};
+        /**
+         * Comparator for comparing the names of SemSimObjects, ignoring case
+         *
+         *
+         */
+        class SemSimComponentComparator : public Comparator<SemSimObject*> {
+          public:
+            virtual int compare(SemSimObject* A, SemSimObject* B);
+        };
 
-	}
+    }
 }

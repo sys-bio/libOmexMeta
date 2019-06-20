@@ -4,12 +4,12 @@
 # include <string>
 
 namespace semsim {
-  class Resource {
-  public:
-    Resource(const std::string& uri)
-      : uri_(uri) {}
-  protected:
-    std::string uri_;
-  };
+    class Resource {
+      public:
+        Resource(const std::string& uri)
+            : uri_(uri) {}
+      protected:
+        std::string uri_;
+    };
 }
 # endif
