@@ -12,7 +12,7 @@ find_package(Raptor2 REQUIRED)
 find_package(Rasqal REQUIRED)
 find_package(LibRDF REQUIRED)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall -Wextra -Wno-unused-parameter -fPIC")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++03 -Wall -Wextra -Wno-unused-parameter -fPIC")
 
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_C_VISIBILITY_PRESET hidden)
@@ -20,7 +20,7 @@ set(CMAKE_C_VISIBILITY_PRESET hidden)
 set(ENABLE_STATIC_LIB TRUE CACHE BOOL "Build static libraries?")
 set(ENABLE_SHARED_LIB TRUE CACHE BOOL "Build shared libraries?")
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 03)
 
 message(STATUS "
 -------------------------------------------------------------------------------
@@ -84,39 +84,7 @@ install(TARGETS semanticio
 # Set up public headers for cellml
 # set_target_properties(semanticio PROPERTIES PUBLIC_HEADER "cellml.h")
 
-# Create main and link to cellml
-if (ENABLE_SHARED_LIB)
-  add_library(semgen SHARED libsemgen.cpp)
-  # set_target_properties(semgen PROPERTIES PUBLIC_HEADER "libsemgen.h")
-endif ()
-if (ENABLE_STATIC_LIB)
-  add_library(semgen-static STATIC libsemgen.cpp)
-  # set_target_properties(semgen-static PROPERTIES PUBLIC_HEADER "libsemgen.h")
-endif ()
-
-# Add swig subdirectory
+add_subdirectory(semsim)
 # add_subdirectory(swig)
-
-if (${ENABLE_SHARED_LIB})
-  list(APPEND LIBRARIES semgen)
-endif ()
-if (${ENABLE_STATIC_LIB})
-  list(APPEND LIBRARIES semgen-static)
-endif ()
-foreach(l ${LIBRARIES})
-  message("Library ${l}")
-  target_link_libraries(${l} semanticio)
-  target_link_libraries(${l} ${libSBML_LIBRARIES})
-  target_link_libraries(${l} LibXml2::LibXml2)
-  target_link_libraries(${l} ZLIB::ZLIB)
-  target_link_libraries(${l} ${Raptor2_LIBRARIES})
-  target_link_libraries(${l} ${Rasqal_LIBRARIES})
-  target_link_libraries(${l} ${LibRDF_LIBRARIES})
-  install(TARGETS ${l}
-          RUNTIME DESTINATION bin
-          LIBRARY DESTINATION lib
-          ARCHIVE DESTINATION lib
-          PUBLIC_HEADER DESTINATION include)
-endforeach ()
 # target_link_libraries(semgen /usr/local/Cellar/raptor/2.0.15/lib/libraptor2.dylib)
 # target_link_libraries(semgen-static /usr/local/Cellar/raptor/2.0.15/lib/libraptor2.dylib)
