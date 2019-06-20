@@ -5,92 +5,81 @@
 # include "semsim/annotation/Relation.h"
 # include "semsim/annotation/Resource.h"
 
-namespace semsim
-{
-		/**
-		 * A SemSim annotation provides additional information about
-		 * a SemSim model or one of its elements. Annotations can be used
-		 * to define the physical meaning of a SemSim model or model element,
-		 * identify model authors, link a model to its PubMed ID, etc.
-		 */
-		class Annotation
-		{
+namespace semsim {
+    /**
+     * A SemSim annotation provides additional information about
+     * a SemSim model or one of its elements. Annotations can be used
+     * to define the physical meaning of a SemSim model or model element,
+     * identify model authors, link a model to its PubMed ID, etc.
+     */
+    class Annotation {
 
-		protected:
-			std::string valueDescription_;
-			Relation relation_;
-			Resource resource_;
+      protected:
+        std::string valueDescription_;
+        Relation relation_;
+        Resource resource_;
 
 
-		public:
-			/// Destructor
-			virtual ~Annotation()
-			{
-				delete relation;
-			}
+      public:
+        /// Destructor
+        virtual ~Annotation() {
+            delete relation;
+        }
 
-			/**
-			 * Constructor without a free-text description of the annotation.
-			 * @param relation Indicates the relationship between the object being annotated
-			 * and the annotation value
-			 * @param value The annotation value
-			 */
-			Annotation(const Relation& relation, const Resource& value);
+        /**
+         * Constructor without a free-text description of the annotation.
+         * @param relation Indicates the relationship between the object being annotated
+         * and the annotation value
+         * @param value The annotation value
+         */
+        Annotation(const Relation& relation, const Resource& value);
 
-			/**
-			 * Constructor that includes a free-text description of the annotation.
-			 * @param relation Indicates the relationship between the object being annotated
-			 * and the annotation value
-			 * @param value The annotation value
-			 * @param valueDescription A free-text description of the annotation value
-			 */
-			Annotation(const Relation& relation, const Resource& value, const std::string &valueDescription);
-			/**
-			 * Constructor for copying an Annotation
-			 * @param tocopy The Annotation to copy
-			 */
-			Annotation(const Annotation &tocopy);
+        /**
+         * Constructor that includes a free-text description of the annotation.
+         * @param relation Indicates the relationship between the object being annotated
+         * and the annotation value
+         * @param value The annotation value
+         * @param valueDescription A free-text description of the annotation value
+         */
+        Annotation(const Relation& relation, const Resource& value, const std::string& valueDescription);
 
-			/**
-			 * Set the free-text description for the annotation value
-			 * @param valueDescription The free-text description
-			 */
-			virtual void setValueDescription(const std::wstring &valueDescription);
+        /**
+         * Constructor for copying an Annotation
+         * @param tocopy The Annotation to copy
+         */
+        Annotation(const Annotation& tocopy);
 
-			/**
-			 * @return The free-text description of the annotation value
-			 */
-			virtual std::wstring getValueDescription();
+        /**
+         * Set the free-text description for the annotation value
+         * @param valueDescription The free-text description
+         */
+        virtual void setValueDescription(const std::string& valueDescription);
 
-			/**
-			 * Set the relationship between the object being annotated and the annotation value
-			 * @param relation The relation (AKA predicate, qualifier) between the object being annotated and the annotation value
-			 */
-			virtual void setRelation(Relation *relation);
+        /**
+         * @return The free-text description of the annotation value
+         */
+        virtual const std::string& getValueDescription();
 
-			/** @return The relationship between the object being annotated and the annotation value */
-			virtual Relation *getRelation();
+        /**
+         * Set the relationship between the object being annotated and the annotation value
+         * @param relation The relation (AKA predicate, qualifier) between the object being annotated and the annotation value
+         */
+        virtual void setRelation(const Relation& relation);
 
-			/**
-			 * Set the annotation value
-			 * @param value The annotation value
-			 */
-			virtual void setValue(std::any value);
+        /** @return The relationship between the object being annotated and the annotation value */
+        virtual const Relation& getRelation() const;
 
-			/**
-			 * @return The annotation value
-			 */
-			virtual std::any getValue();
+        /**
+         * Set the annotation value
+         * @param value The annotation value
+         */
+        virtual void setValue(const Resource& value);
 
-			/**
-			 * Create a copy of the annotation
-			 */
-			virtual Annotation *clone() throw(CloneNotSupportedException);
-
-			int hashCode() override;
-
-			bool equals(std::any obj) override;
-		};
+        /**
+         * @return The annotation value
+         */
+        virtual const Resource& getValue() const;
+    };
 }
 
 # endif
