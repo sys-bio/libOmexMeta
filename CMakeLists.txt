@@ -10,6 +10,7 @@ find_package(LibZip  REQUIRED)
 find_package(libSBML REQUIRED)
 find_package(Raptor2 REQUIRED)
 find_package(Rasqal REQUIRED)
+find_package(LibRDF REQUIRED)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall -Wextra -Wno-unused-parameter -fPIC")
 
@@ -18,7 +19,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall -Wextra -Wno-unused-par
 # include_directories(/usr/local/Cellar/libzip/1.5.2)
 # include_directories(/home/poltergeist/home/etc/install/raptor2-2.0.15/include/raptor2)
 # include_directories(/home/poltergeist/home/etc/install/rasqal-0.9.33/include/rasqal)
-include_directories(/home/poltergeist/home/etc/install/redland-1.0.17/include)
+# include_directories(/home/poltergeist/home/etc/install/redland-1.0.17/include)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -57,6 +58,8 @@ Configuration Summary
       Raptor include dir        ${Raptor2_INCLUDE_DIRS}
       Rasqal library            ${Rasqal_LIBRARIES}
       Rasqal include dir        ${Rasqal_INCLUDE_DIRS}
+      LibRDF library            ${LibRDF_LIBRARIES}
+      LibRDF include dir        ${LibRDF_INCLUDE_DIRS}
     "
 )
 
@@ -68,6 +71,7 @@ include_directories(${LIBZIP_INCLUDE_DIR_ZIPCONF})
 include_directories(${libSBML_INCLUDE_DIRS})
 include_directories(${Raptor2_INCLUDE_DIRS})
 include_directories(${Rasqal_INCLUDE_DIRS})
+include_directories(${LibRDF_INCLUDE_DIRS})
 
 # Add cellml, sbml
 add_library(semanticio cellml.cpp sbml.cpp sbml.h omex.cpp omex.h)
@@ -102,3 +106,4 @@ target_link_libraries(${PROJECT_NAME} ZLIB::ZLIB)
 target_link_libraries(${PROJECT_NAME} /home/poltergeist/home/etc/install/redland-1.0.17/lib/librdf.a)
 target_link_libraries(${PROJECT_NAME} ${Raptor2_LIBRARIES})
 target_link_libraries(${PROJECT_NAME} ${Rasqal_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${LibRDF_LIBRARIES})
