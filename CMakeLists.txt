@@ -14,12 +14,11 @@ find_package(LibRDF REQUIRED)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall -Wextra -Wno-unused-parameter -fPIC")
 
-# include_directories(/usr/local/include)
-# include_directories(/Users/prakharagarwal/Desktop/semgen_code/)
-# include_directories(/usr/local/Cellar/libzip/1.5.2)
-# include_directories(/home/poltergeist/home/etc/install/raptor2-2.0.15/include/raptor2)
-# include_directories(/home/poltergeist/home/etc/install/rasqal-0.9.33/include/rasqal)
-# include_directories(/home/poltergeist/home/etc/install/redland-1.0.17/include)
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+set(CMAKE_C_VISIBILITY_PRESET hidden)
+
+set(ENABLE_STATIC_LIB TRUE CACHE BOOL "Build static libraries?")
+set(ENABLE_SHARED_LIB TRUE CACHE BOOL "Build shared libraries?")
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -74,36 +73,50 @@ include_directories(${Rasqal_INCLUDE_DIRS})
 include_directories(${LibRDF_INCLUDE_DIRS})
 
 # Add cellml, sbml
-add_library(semanticio cellml.cpp sbml.cpp sbml.h omex.cpp omex.h)
+add_library(semanticio STATIC cellml.cpp sbml.cpp sbml.h omex.cpp omex.h)
 
-# Set up public headers for cellml
-set_target_properties(semanticio PROPERTIES PUBLIC_HEADER "cellml.h")
-
-# Create main and link to cellml
-add_library(${PROJECT_NAME} libsemgen.cpp)
-target_link_libraries(${PROJECT_NAME} semanticio)
-
-# Set up public headers for swig-example
-set_target_properties(libsemgen PROPERTIES PUBLIC_HEADER "libsemgen.h")
-
-# Add install target
-install(TARGETS ${PROJECT_NAME} semanticio
+install(TARGETS semanticio
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
         PUBLIC_HEADER DESTINATION include)
 
+# Set up public headers for cellml
+# set_target_properties(semanticio PROPERTIES PUBLIC_HEADER "cellml.h")
+
+# Create main and link to cellml
+if (ENABLE_SHARED_LIB)
+  add_library(semgen SHARED libsemgen.cpp)
+  # set_target_properties(semgen PROPERTIES PUBLIC_HEADER "libsemgen.h")
+endif ()
+if (ENABLE_STATIC_LIB)
+  add_library(semgen-static STATIC libsemgen.cpp)
+  # set_target_properties(semgen-static PROPERTIES PUBLIC_HEADER "libsemgen.h")
+endif ()
+
 # Add swig subdirectory
 # add_subdirectory(swig)
 
-#ADD_SUBDIRECTORY(SBML_test)
-#ADD_SUBDIRECTORY(SBML)
-
-# target_link_libraries(${PROJECT_NAME} /extra/docker/whlbldr/install/libsbml-experimental-cos5-nons/lib64/libsbml-static.a)
-target_link_libraries(${PROJECT_NAME} ${libSBML_LIBRARIES})
-target_link_libraries(${PROJECT_NAME} LibXml2::LibXml2)
-target_link_libraries(${PROJECT_NAME} ZLIB::ZLIB)
-target_link_libraries(${PROJECT_NAME} /home/poltergeist/home/etc/install/redland-1.0.17/lib/librdf.a)
-target_link_libraries(${PROJECT_NAME} ${Raptor2_LIBRARIES})
-target_link_libraries(${PROJECT_NAME} ${Rasqal_LIBRARIES})
-target_link_libraries(${PROJECT_NAME} ${LibRDF_LIBRARIES})
+if (${ENABLE_SHARED_LIB})
+  list(APPEND LIBRARIES semgen)
+endif ()
+if (${ENABLE_STATIC_LIB})
+  list(APPEND LIBRARIES semgen-static)
+endif ()
+foreach(l ${LIBRARIES})
+  message("Library ${l}")
+  target_link_libraries(${l} semanticio)
+  target_link_libraries(${l} ${libSBML_LIBRARIES})
+  target_link_libraries(${l} LibXml2::LibXml2)
+  target_link_libraries(${l} ZLIB::ZLIB)
+  target_link_libraries(${l} ${Raptor2_LIBRARIES})
+  target_link_libraries(${l} ${Rasqal_LIBRARIES})
+  target_link_libraries(${l} ${LibRDF_LIBRARIES})
+  install(TARGETS ${l}
+          RUNTIME DESTINATION bin
+          LIBRARY DESTINATION lib
+          ARCHIVE DESTINATION lib
+          PUBLIC_HEADER DESTINATION include)
+endforeach ()
+# target_link_libraries(semgen /usr/local/Cellar/raptor/2.0.15/lib/libraptor2.dylib)
+# target_link_libraries(semgen-static /usr/local/Cellar/raptor/2.0.15/lib/libraptor2.dylib)
