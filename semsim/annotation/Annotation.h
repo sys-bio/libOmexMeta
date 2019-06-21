@@ -71,12 +71,12 @@ namespace semsim {
          * Set the annotation value
          * @param value The annotation value
          */
-        virtual void setValue(const Resource& value);
+        virtual void getResource(const Resource& value);
 
         /**
          * @return The annotation value
          */
-        virtual const Resource& getValue() const;
+        virtual const getResource& getValue() const;
     };
 }
 

@@ -13,7 +13,7 @@ namespace semsim {
     class URI {
       public:
         URI(const std::string& uri_encoding)
-          : uri_encoding_(uri_encoding) {}
+            : uri_encoding_(uri_encoding) {}
 
       protected:
         std::string uri_encoding_;

@@ -32,11 +32,11 @@ namespace semsim {
         return relation_;
     }
 
-    void Annotation::setValue(const Resource& resource) {
+    void Annotation::getResource(const Resource& resource) {
         resource_ = resource;
     }
 
-    const Resource& Annotation::getValue() {
+    const Resource& Annotation::getResource() {
         return resource_;
     }
 

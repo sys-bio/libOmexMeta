@@ -5,8 +5,4 @@
 #include "ReferenceOntologyAnnotation.h"
 
 namespace semsim {
-    namespace annotation {
-        using SemSimLibrary = semsim::SemSimLibrary;
-        using SemSimRelation = semsim::definitions::SemSimRelations::SemSimRelation;
-    }
 }
