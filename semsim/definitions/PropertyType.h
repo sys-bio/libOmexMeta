@@ -22,7 +22,7 @@ namespace semsim {
          * A first order reaction rate constant used to determine a reaction rate,
          *  the fluid resistance term in an instance of Ohm's Law for fluids.
          */
-        class PropertyType final {
+        class PropertyType {
           public:
             static PropertyType PropertyOfPhysicalEntity;
             static PropertyType PropertyOfPhysicalProcess;
@@ -30,7 +30,7 @@ namespace semsim {
             static PropertyType Unknown;
 
           private:
-            static std::vector<PropertyType> valueList;
+            // static std::vector<PropertyType> valueList;
 
             class StaticConstructor {
               public:

@@ -6,37 +6,25 @@ namespace semsim {
 
         Ontology::Ontology(const std::string& name,
                            const std::string& abrev,
-                           std::vector<std::string>& ns,
-                           const std::string& desc,
-                           const std::string& bpns) {
-            fullname_ = name;
-            abbrev_ = abrev;
-            description_ = desc;
-            for (auto s : ns) {
-                namespaces_.push_back(s.trim());
-            }
-            bioportal_namespace_ = bpns;
-        }
+                           std::vector<std::string>& namespaces,
+                           const std::string& description,
+                           const std::string& bioportal_ns)
+            : fullname_(fullname),
+              abbrev_(abbrev),
+              namespaces_(namespaces),
+              description_(description),
+              bioportal_ns_(bioportal_ns)
+        {}
 
         Ontology::Ontology(const std::string& name,
                            const std::string& abrev,
-                           std::vector<std::string>& ns,
-                           const std::string& desc) {
-            fullname_ = name;
-            abbrev_ = abrev;
-            description_ = desc;
-            for (auto s : ns) {
-                namespaces_.push_back(s.trim());
-            }
-        }
-
-        Ontology::Ontology(ReferenceOntology ro) {
-            fullname_ = ro.getFullName();
-            abbrev_ = ro.getNickName();
-            bioportal_namespace_ = ro.getBioPortalNamespace();
-            namespaces_ = ro.getNamespaces();
-            description_ = ro.getDescription();
-        }
+                           std::vector<std::string>& namespaces,
+                           const std::string& description)
+            : fullname_(fullname),
+              abbrev_(abbrev),
+              namespaces_(namespaces),
+              description_(description)
+        {}
 
         bool Ontology::hasNamespace(const std::string& nspace) {
             for (Namespaces::const_iterator i=namespaces_.begin(); i!=namespaces_.end(); ++i) {
@@ -55,7 +43,7 @@ namespace semsim {
         }
 
         std::string Ontology::getBioPortalNamespace() {
-            return bioportal_namespace_;
+            return bioportal_ns_;
         }
 
         // std::vector<std::string> Ontology::getNameSpaces() {
