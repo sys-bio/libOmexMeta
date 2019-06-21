@@ -11,6 +11,8 @@ find_package(libSBML REQUIRED)
 find_package(Raptor2 REQUIRED)
 find_package(Rasqal REQUIRED)
 find_package(LibRDF REQUIRED)
+# https://stackoverflow.com/questions/20746936/cmake-of-what-use-is-find-package-if-you-need-to-specify-cmake-module-path-an?rq=1
+find_package(libcellml CONFIG REQUIRED)
 # consider adding https://github.com/uriparser/uriparser for uri handling
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++03 -Wall -Wextra -Wno-unused-parameter -fPIC")
@@ -22,6 +24,10 @@ set(ENABLE_STATIC_LIB TRUE CACHE BOOL "Build static libraries?")
 set(ENABLE_SHARED_LIB TRUE CACHE BOOL "Build shared libraries?")
 
 set(CMAKE_CXX_STANDARD 98)
+
+# diagnostics
+get_target_property(LIBCELLML_LIBS cellml LOCATION)
+get_target_property(LIBCELLML_INCLUDE_DIRS cellml INTERFACE_INCLUDE_DIRECTORIES)
 
 message(STATUS "
 -------------------------------------------------------------------------------
@@ -60,6 +66,8 @@ Configuration Summary
       Rasqal include dir        ${Rasqal_INCLUDE_DIRS}
       LibRDF library            ${LibRDF_LIBRARIES}
       LibRDF include dir        ${LibRDF_INCLUDE_DIRS}
+      LibCellML (optional)      ${LIBCELLML_LIBS}
+      LibRDF include dir        ${LIBCELLML_INCLUDE_DIRS}
     "
 )
 
