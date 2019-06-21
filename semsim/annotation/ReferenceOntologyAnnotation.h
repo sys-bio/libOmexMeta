@@ -16,7 +16,7 @@
 //
 // namespace semsim {
 //     namespace annotation {
-// 
+//
 //
 //         using SemSimLibrary = semsim::SemSimLibrary;
 //

@@ -5,12 +5,6 @@
 # include <set>
 
 namespace semsim {
-    namespace annotation {
-        class Annotation;
-    }
-}
-
-namespace semsim {
     /**
      * Interface providing methods for annotating
      * SemSim model elements.

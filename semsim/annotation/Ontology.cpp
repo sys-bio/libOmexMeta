@@ -4,60 +4,66 @@ namespace semsim {
     namespace annotation {
         using ReferenceOntology = semsim::definitions::ReferenceOntologies::ReferenceOntology;
 
-        Ontology::Ontology(const std::wstring& name, const std::wstring& abrev, std::vector<std::wstring>& ns, const std::wstring& desc, const std::wstring& bpns) {
-            fullname = name;
-            nickname = abrev;
-            description = desc;
+        Ontology::Ontology(const std::string& name,
+                           const std::string& abrev,
+                           std::vector<std::string>& ns,
+                           const std::string& desc,
+                           const std::string& bpns) {
+            fullname_ = name;
+            abbrev_ = abrev;
+            description_ = desc;
             for (auto s : ns) {
-                namespaces.push_back(s.trim());
+                namespaces_.push_back(s.trim());
             }
-            bioportalnamespace = bpns;
+            bioportal_namespace_ = bpns;
         }
 
-        Ontology::Ontology(const std::wstring& name, const std::wstring& abrev, std::vector<std::wstring>& ns, const std::wstring& desc) {
-            fullname = name;
-            nickname = abrev;
-            description = desc;
+        Ontology::Ontology(const std::string& name,
+                           const std::string& abrev,
+                           std::vector<std::string>& ns,
+                           const std::string& desc) {
+            fullname_ = name;
+            abbrev_ = abrev;
+            description_ = desc;
             for (auto s : ns) {
-                namespaces.push_back(s.trim());
+                namespaces_.push_back(s.trim());
             }
         }
 
         Ontology::Ontology(ReferenceOntology ro) {
-            fullname = ro.getFullName();
-            nickname = ro.getNickName();
-            bioportalnamespace = ro.getBioPortalNamespace();
-            namespaces = ro.getNamespaces();
-            description = ro.getDescription();
+            fullname_ = ro.getFullName();
+            abbrev_ = ro.getNickName();
+            bioportal_namespace_ = ro.getBioPortalNamespace();
+            namespaces_ = ro.getNamespaces();
+            description_ = ro.getDescription();
         }
 
-        bool Ontology::hasNamespace(const std::wstring& nspace) {
-            for (auto ns : namespaces) {
-                if (nspace == ns) {
+        bool Ontology::hasNamespace(const std::string& nspace) {
+            for (Namespaces::const_iterator i=namespaces_.begin(); i!=namespaces_.end(); ++i) {
+                if (*i == ns)
                     return true;
-                }
             }
             return false;
         }
 
-        std::wstring Ontology::getFullName() {
-            return std::wstring(fullname);
+        std::string Ontology::getFullName() {
+            return std::string(fullname_);
         }
 
-        std::wstring Ontology::getNickName() {
-            return std::wstring(nickname);
+        std::string Ontology::getNickName() {
+            return std::string(abbrev_);
         }
 
-        std::wstring Ontology::getBioPortalNamespace() {
-            return bioportalnamespace;
+        std::string Ontology::getBioPortalNamespace() {
+            return bioportal_namespace_;
         }
 
-        std::vector<std::wstring> Ontology::getNameSpaces() {
-            return namespaces;
-        }
+        // std::vector<std::string> Ontology::getNameSpaces() {
+        //     return namespaces_;
+        // }
 
-        std::wstring Ontology::getDescription() {
-            return description;
+        std::string Ontology::getDescription() {
+            return description_;
         }
     }
 }
