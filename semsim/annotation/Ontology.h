@@ -23,34 +23,38 @@ namespace semsim {
           private:
             std::string fullname_;
             std::string abbrev_;
-            std::string bioportal_namespace_;
-            typedef std::vector<std::string> Namespaces;
+            std::string bioportal_ns_;
             Namespaces namespaces_ = std::vector<std::string>();
             std::string description_;
 
           public:
+            typedef std::vector<std::string> Namespaces;
+
             /**
              * Main constructor.
              * @param name Full name of ontology
              * @param abbrev Nickname of ontology
              * @param ns Array of namespaces used for this ontology
-             * @param desc Textual description of ontology
+             * @param description Textual description of ontology
              * @param bpns BioPortal namespace of the ontology
              */
             Ontology(const std::string& name,
                      const std::string& abbrev,
-                     std::vector<std::string>& ns,
-                     const std::string& desc,
-                     const std::string& bpns);
+                     const Namespaces& namespaces,
+                     const std::string& description,
+                     const std::string& bioportal_ns);
 
             /**
              * Constructor without BioPortal info.
              * @param name Full name of ontology
              * @param abrev Nickname of ontology
              * @param ns Array of namespaces used for this ontology
-             * @param desc Textual description of ontology
+             * @param description Textual description of ontology
              */
-            Ontology(const std::string& name, const std::string& abrev, std::vector<std::string>& ns, const std::string& desc);
+            Ontology(const std::string& name,
+                     const std::string& abrev,
+                     const Namespaces& namespaces,
+                     const std::string& description);
 
             /**
              * Constructor for creating an {@link Ontology} class
@@ -58,7 +62,8 @@ namespace semsim {
              * @param ro The {@link ReferenceOntology} that will have
              * its information copied to this class.
              */
-            Ontology(ReferenceOntology ro);
+            // use copy constructor
+            // Ontology(ReferenceOntology ro);
 
             /**
              * @param nspace Namespace to test for association with the ontology
