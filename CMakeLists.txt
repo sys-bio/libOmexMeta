@@ -19,7 +19,8 @@ cmake_policy(SET CMP0086 NEW)
 # consider using https://cpp-netlib.org/ if networking is required (also handles URIs)
 # otherwise consider adding https://github.com/uriparser/uriparser for uri handling
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++03 -Wall -Wextra -Wno-unused-parameter -fPIC")
+set(SEMSIM_CXX_STANDARD 98 CACHE STRING "The C++ standard to use (11 or 98)")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++${SEMSIM_CXX_STANDARD} -Wall -Wextra -Wno-unused-parameter -fPIC")
 
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_C_VISIBILITY_PRESET hidden)
@@ -27,7 +28,10 @@ set(CMAKE_C_VISIBILITY_PRESET hidden)
 set(ENABLE_STATIC_LIB TRUE CACHE BOOL "Build static libraries?")
 set(ENABLE_SHARED_LIB TRUE CACHE BOOL "Build shared libraries?")
 
-set(CMAKE_CXX_STANDARD 98)
+set(CMAKE_CXX_STANDARD ${SEMSIM_CXX_STANDARD})
+
+# bindings
+option(BUILD_PYTHON "Build Python SWIG module" ON)
 
 # diagnostics
 get_target_property(LIBCELLML_LIBS cellml LOCATION)
@@ -72,6 +76,9 @@ Configuration Summary
       LibRDF include dir        ${LibRDF_INCLUDE_DIRS}
       LibCellML (optional)      ${LIBCELLML_LIBS}
       LibRDF include dir        ${LIBCELLML_INCLUDE_DIRS}
+
+    Language bindings:
+      Python                    ${BUILD_PYTHON}
     "
 )
 
@@ -100,7 +107,6 @@ install(TARGETS semanticio
 add_subdirectory(semsim)
 
 # Add subdirectories for each language if desired
-option(BUILD_PYTHON "Build Python SWIG module" ON)
 if(BUILD_PYTHON)
   find_package (Python COMPONENTS Interpreter Development)
   if (Python_FOUND)
