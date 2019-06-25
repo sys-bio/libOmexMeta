@@ -13,6 +13,7 @@ find_package(Rasqal REQUIRED)
 find_package(LibRDF REQUIRED)
 # https://stackoverflow.com/questions/20746936/cmake-of-what-use-is-find-package-if-you-need-to-specify-cmake-module-path-an?rq=1
 find_package(libcellml CONFIG REQUIRED)
+find_package(SWIG)
 # consider using https://cpp-netlib.org/ if networking is required (also handles URIs)
 # otherwise consider adding https://github.com/uriparser/uriparser for uri handling
 
@@ -95,6 +96,18 @@ install(TARGETS semanticio
 # set_target_properties(semanticio PROPERTIES PUBLIC_HEADER "cellml.h")
 
 add_subdirectory(semsim)
+
+# Add subdirectories for each language if desired
+option(BUILD_PYTHON "Build Python SWIG module" ON)
+if(BUILD_PYTHON)
+  find_package (Python COMPONENTS Interpreter Development)
+  if (Python_FOUND)
+    include_directories(${PYTHON_INCLUDE_PATH})
+    add_subdirectory(swig/python)
+  else()
+    message(SEND_ERROR "BUILD_PYTHON is enabled but could not find a suitable Python runtime environment")
+  endif()
+endif()
 # add_subdirectory(swig)
 # target_link_libraries(semgen /usr/local/Cellar/raptor/2.0.15/lib/libraptor2.dylib)
 # target_link_libraries(semgen-static /usr/local/Cellar/raptor/2.0.15/lib/libraptor2.dylib)

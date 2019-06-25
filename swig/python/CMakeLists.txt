@@ -1,14 +1,22 @@
-# Include python
-find_package(PythonLibs REQUIRED)
-include_directories(${PYTHON_INCLUDE_PATH})
-
 set(CMAKE_SWIG_FLAGS "")
-set_source_files_properties(../${PROJECT_NAME}.i PROPERTIES CPLUSPLUS ON)
+set_source_files_properties(../semsim.i PROPERTIES CPLUSPLUS ON)
 include_directories(../..)
 
 # Add swig module
-swig_add_module(semgen python ../${PROJECT_NAME}.i)
-swig_link_libraries(semgen ${PROJECT_NAME} ${PYTHON_LIBRARIES})
+swig_add_library(
+  semsim_python
+  LANGUAGE python
+  OUTPUT_DIR python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages
+  ../semsim.i)
+if (WIN32)
+  swig_link_libraries(semsim_python semsim Python::Module)
+else()
+  if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    set_target_properties(semsim_python PROPERTIES LINK_FLAGS "-Wl,--no-undefined")
+  else()
+    set_target_properties(semsim_python PROPERTIES LINK_FLAGS "-undefined dynamic_lookup" INSTALL_RPATH "@loader_path/../../lib;@loader_path/" INSTALL_NAME_DIR "@rpath")
+  endif()
+endif()
 
 # Files to install with Python
 set(PYTHON_INSTALL_FILES
@@ -26,6 +34,10 @@ configure_file(${SETUP_PY_IN} ${SETUP_PY_OUT})
 #        COMPONENT swig-python)
 
 # Install target to call setup.py
-add_custom_target(install-python
-        DEPENDS _semgen
-        COMMAND python ${SETUP_PY_OUT} install)
+# add_custom_target(install-python
+#         DEPENDS _semgen
+#         COMMAND python ${SETUP_PY_OUT} install)
+
+install(TARGETS semsim_python
+        DESTINATION python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages
+        )
