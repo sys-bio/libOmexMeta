@@ -1,6 +1,5 @@
-#include "ReferenceTerm.h"
-#include "../SemSimLibrary.h"
-#include "ReferenceOntologyAnnotation.h"
+#include "semsim/annotation/ReferenceTerm.h"
+#include "semsim/annotation/ReferenceOntologyAnnotation.h"
 
 namespace semsim {
 }

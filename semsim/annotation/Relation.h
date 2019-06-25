@@ -25,7 +25,7 @@ namespace semsim {
         }
 
         /** @return The URI of the relation as a string*/
-        const std::string& getURIasString() const {
+        std::string getURIasString() const {
           return uri_.toString();
         }
 

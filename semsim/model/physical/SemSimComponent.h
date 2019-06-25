@@ -2,6 +2,8 @@
 # define SEMSIM_COMPONENT_H_
 
 # include "semsim/definitions/SemSimTypes.h"
+# include "semsim/SemSimObject.h"
+# include "semsim/annotation/URI.h"
 
 # include <string>
 
@@ -25,7 +27,7 @@ namespace semsim {
          * Copy constructor.
          * @param other The SemSimComponent to copy
          */
-        SemSimComponent(const SemSimComponent& other);
+        // SemSimComponent(const SemSimComponent& other);
 
         /**
          * Whether this component has an annotation that defines

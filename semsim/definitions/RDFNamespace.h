@@ -30,76 +30,69 @@ namespace semsim {
         static RDFNamespace VCARD;
 
       private:
-        static std::vector<RDFNamespace> valueList;
-
-        class StaticConstructor {
-          public:
-            StaticConstructor();
-        };
-
-        static StaticConstructor staticConstructor;
+        // static std::vector<RDFNamespace> valueList;
 
       public:
-        enum class InnerEnum {
-            PKB,
-            SEMSIM,
-            OPB,
-            RO,
-            BQB,
-            BQM,
-            RDF,
-            DCTERMS,
-            DCTERMS11,
-            MATHML,
-            XLINK,
-            CELLML1_0,
-            CELLML1_1,
-            BQS,
-            CMETA,
-            DOC,
-            VCARD
-        };
+        // enum class InnerEnum {
+        //     PKB,
+        //     SEMSIM,
+        //     OPB,
+        //     RO,
+        //     BQB,
+        //     BQM,
+        //     RDF,
+        //     DCTERMS,
+        //     DCTERMS11,
+        //     MATHML,
+        //     XLINK,
+        //     CELLML1_0,
+        //     CELLML1_1,
+        //     BQS,
+        //     CMETA,
+        //     DOC,
+        //     VCARD
+        // };
 
-        const InnerEnum innerEnumValue;
+        // const InnerEnum innerEnumValue;
       private:
         const std::string nameValue;
-        const int ordinalValue;
-        static int nextOrdinal;
+        // const int ordinalValue;
+        // static int nextOrdinal;
 
       private:
         std::string namespace_Renamed;
         std::string owlid;
 
       public:
-        RDFNamespace(const std::string& name, InnerEnum innerEnum, const std::string& namespace_Renamed, const std::string& id);
+        // RDFNamespace(const std::string& name, InnerEnum innerEnum, const std::string& namespace_Renamed, const std::string& id);
 
         /**
          * @return The RDF namespace as a string (e.g. http://www.w3.org/1998/Math/MathML)
          */
-        virtual std::string getNamespaceAsString();
+        std::string getNamespaceAsString();
 
         /**
          * @return A prefix for the namespace
          */
-        virtual std::string getOWLid();
+        std::string getOWLid();
 
         /**
          * @return The namespace as a JDom Namespace object
          */
-        virtual org::jdom::Namespace* createJdomNamespace();
+        // org::jdom::Namespace* createJdomNamespace();
 
       public:
-        bool operator == (const RDFNamespace& other);
+        // bool operator == (const RDFNamespace& other);
 
-        bool operator != (const RDFNamespace& other);
+        // bool operator != (const RDFNamespace& other);
 
-        static std::vector<RDFNamespace> values();
+        // static std::vector<RDFNamespace> values();
 
-        int ordinal();
+        // int ordinal();
 
-        std::string toString();
+        // std::string toString();
 
-        static RDFNamespace valueOf(const std::string& name);
+        // static RDFNamespace valueOf(const std::string& name);
     };
 }
 
