@@ -12,7 +12,7 @@ Make sure [git](https://git-scm.com/) is installed and clone the libsemgen sourc
 git clone https://github.com/sys-bio/libsemgen.git
 ```
 
-Make sure you have [homebrew][https://brew.sh/] installed and install the following dependencies:
+Make sure you have [homebrew](https://brew.sh/) installed and install the following dependencies:
 
 ```bash
 brew install pugixml libzip raptor rasqal redland
