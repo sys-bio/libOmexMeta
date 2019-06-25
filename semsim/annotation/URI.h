@@ -1,5 +1,5 @@
-# ifndef SEMSIM_RELATION_H_
-# define SEMSIM_RELATION_H_
+# ifndef SEMSIM_URI_H_
+# define SEMSIM_URI_H_
 
 # include <string>
 # include "semsim/annotation/URI.h"

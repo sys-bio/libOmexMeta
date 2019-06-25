@@ -1,5 +1,8 @@
-#include <string>
-#include <vector>
+# ifndef SEMSIM_PROPERTY_TYPE_H_
+# define SEMSIM_PROPERTY_TYPE_H_
+
+# include <string>
+# include <vector>
 
 namespace semsim {
     /**
@@ -75,3 +78,5 @@ namespace semsim {
         static PropertyType valueOf(const std::string& name);
     };
 }
+
+# endif

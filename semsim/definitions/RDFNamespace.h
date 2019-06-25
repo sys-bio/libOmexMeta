@@ -1,5 +1,8 @@
-#include <string>
-#include <vector>
+# ifndef SEMSIM_RDF_NAMESPACE_H_
+# define SEMSIM_RDF_NAMESPACE_H_
+
+# include <string>
+# include <vector>
 
 namespace semsim {
     /**
@@ -99,3 +102,5 @@ namespace semsim {
         static RDFNamespace valueOf(const std::string& name);
     };
 }
+
+# endif

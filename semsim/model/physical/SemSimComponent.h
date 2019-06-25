@@ -1,57 +1,51 @@
-#include <string>
-#include <optional>
+# ifndef SEMSIM_COMPONENT_H_
+# define SEMSIM_COMPONENT_H_
+
+# include "semsim/definitions/SemSimTypes.h"
+
+# include <string>
 
 namespace semsim {
-    namespace model {
-        namespace collection {
-            class SemSimModel;
-        }
-    }
-}
+    /**
+     * A SemSimComponent is a {@link SemSimObject} that includes
+     * semantic features. The most important feature of a component
+     * is its definition URI, which is specified by an annotation.
+     */
+    class SemSimComponent : public SemSimObject {
 
-namespace semsim {
-    namespace model {
+      protected:
+        URI referenceuri;
 
-        using SemSimObject = semsim::SemSimObject;
-        using SemSimTypes = semsim::definitions::SemSimTypes;
-        using SemSimModel = semsim::model::collection::SemSimModel;
+      public:
+        virtual ~SemSimComponent() {}
+
+        // SemSimComponent(SemSimTypes type);
 
         /**
-         * A SemSimComponent is a {@link SemSimObject} that represents a computational
-         * or physical model element
+         * Copy constructor.
+         * @param other The SemSimComponent to copy
          */
-        class SemSimComponent : public SemSimObject {
+        SemSimComponent(const SemSimComponent& other);
 
-          protected:
-            URI* referenceuri = URI::create(std::wstring(L""));
+        /**
+         * Whether this component has an annotation that defines
+         * its semantic meaning, either physically (for entities
+         * that represent physical quantities) or otherwise.
+         * @return Whether this component has a semantic definition (supplied via an annotation)
+         */
+        bool hasDefinitionAnnotation();
 
-          public:
-            virtual ~SemSimComponent() {
-                delete referenceuri;
-            }
+        /** @return Whether the component is a physical component. Method
+         * is overriden by subclasses. */
+        // bool isPhysicalComponent();
 
-            SemSimComponent(SemSimTypes type);
-
-            /**
-             * Copy constructor
-             * @param ssctocopy The SemSimComponent to copy
-             */
-            SemSimComponent(const SemSimComponent& ssctocopy);
-
-            /** @return Whether the component's physical meaning is defined with an annotation */
-            virtual std::optional<bool> hasPhysicalDefinitionAnnotation();
-
-            /** @return Whether the component is a physical component. Method
-             * is overriden by subclasses. */
-            virtual std::optional<bool> isPhysicalComponent();
-
-            /**
-             * Add the component to a specified {@link SemSimModel}
-             * @param model The specified {@link SemSimModel}
-             * @return The SemSimComponent added to the model
-             */
-            virtual SemSimComponent* addToModel(SemSimModel* model) = 0;
-        };
-
-    }
+        /**
+         * Add the component to a specified {@link SemSimModel}
+         * @param model The specified {@link SemSimModel}
+         * @return The SemSimComponent added to the model
+         */
+        // const SemSimComponent& addToModel(SemSimModel& model) = 0;
+    };
 }
+
+# endif
