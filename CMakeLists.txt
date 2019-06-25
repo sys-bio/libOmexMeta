@@ -14,6 +14,8 @@ find_package(LibRDF REQUIRED)
 # https://stackoverflow.com/questions/20746936/cmake-of-what-use-is-find-package-if-you-need-to-specify-cmake-module-path-an?rq=1
 find_package(libcellml CONFIG REQUIRED)
 find_package(SWIG)
+cmake_policy(SET CMP0078 NEW)
+cmake_policy(SET CMP0086 NEW)
 # consider using https://cpp-netlib.org/ if networking is required (also handles URIs)
 # otherwise consider adding https://github.com/uriparser/uriparser for uri handling
 

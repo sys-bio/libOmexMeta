@@ -1,13 +1,13 @@
+include(UseSWIG)
 set(CMAKE_SWIG_FLAGS "")
-set_source_files_properties(../semsim.i PROPERTIES CPLUSPLUS ON)
-include_directories(../..)
+set_source_files_properties(../semsim.i PROPERTIES CPLUSPLUS ON SWIG_MODULE_NAME semsim)
 
 # Add swig module
 swig_add_library(
   semsim_python
   LANGUAGE python
   OUTPUT_DIR python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages
-  ../semsim.i)
+  SOURCES ../semsim.i)
 if (WIN32)
   swig_link_libraries(semsim_python semsim Python::Module)
 else()
