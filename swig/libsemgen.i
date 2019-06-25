@@ -2,8 +2,8 @@
 
 // Add necessary symbols to generated header
 %{
-#include "libsemgen.h"
+#include "semgen.h"
 %}
 
 // Process symbols in header
-%include "libsemgen.h"
+%include "semgen.h"
