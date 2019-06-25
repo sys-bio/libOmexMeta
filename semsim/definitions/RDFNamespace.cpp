@@ -47,16 +47,16 @@ namespace semsim {
         RDFNamespace::StaticConstructor RDFNamespace::staticConstructor;
         int RDFNamespace::nextOrdinal = 0;
 
-        RDFNamespace::RDFNamespace(const std::wstring& name, InnerEnum innerEnum, const std::wstring& namespace_Renamed, const std::wstring& id) : nameValue(name), ordinalValue(nextOrdinal++), innerEnumValue(innerEnum) {
+        RDFNamespace::RDFNamespace(const std::string& name, InnerEnum innerEnum, const std::string& namespace_Renamed, const std::string& id) : nameValue(name), ordinalValue(nextOrdinal++), innerEnumValue(innerEnum) {
             this->namespace_Renamed = namespace_Renamed;
             owlid = id;
         }
 
-        std::wstring RDFNamespace::getNamespaceAsString() {
+        std::string RDFNamespace::getNamespaceAsString() {
             return namespace_Renamed;
         }
 
-        std::wstring RDFNamespace::getOWLid() {
+        std::string RDFNamespace::getOWLid() {
             return owlid;
         }
 
@@ -80,11 +80,11 @@ namespace semsim {
             return ordinalValue;
         }
 
-        std::wstring RDFNamespace::toString() {
+        std::string RDFNamespace::toString() {
             return nameValue;
         }
 
-        RDFNamespace RDFNamespace::valueOf(const std::wstring& name) {
+        RDFNamespace RDFNamespace::valueOf(const std::string& name) {
             for (auto enumInstance : RDFNamespace::valueList) {
                 if (enumInstance.nameValue == name) {
                     return enumInstance;

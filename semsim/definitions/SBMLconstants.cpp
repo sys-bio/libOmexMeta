@@ -3,17 +3,17 @@
 namespace semsim {
     namespace definitions {
         using SemSimLibrary = semsim::SemSimLibrary;
-        const std::unordered_map<std::wstring, std::wstring> SBMLconstants::SBML_LEVEL_2_RESERVED_UNITS_MAP;
-        java::util::Set<std::wstring>* const SBMLconstants::SBML_LEVEL_3_BASE_UNITS;
-        java::util::Set<std::wstring>* const SBMLconstants::SBML_LEVEL_2_VERSION_2_BASE_UNITS;
-        java::util::Set<std::wstring>* const SBMLconstants::SBML_LEVEL_2_VERSION_1_BASE_UNITS;
+        const std::unordered_map<std::string, std::string> SBMLconstants::SBML_LEVEL_2_RESERVED_UNITS_MAP;
+        java::util::Set<std::string>* const SBMLconstants::SBML_LEVEL_3_BASE_UNITS;
+        java::util::Set<std::string>* const SBMLconstants::SBML_LEVEL_2_VERSION_2_BASE_UNITS;
+        java::util::Set<std::string>* const SBMLconstants::SBML_LEVEL_2_VERSION_1_BASE_UNITS;
         java::util::Set<java::net::URI*>* const SBMLconstants::OPB_PROPERTIES_FOR_COMPARTMENTS;
         java::util::Set<java::net::URI*>* const SBMLconstants::OPB_PROPERTIES_FOR_SPECIES;
         java::util::Set<java::net::URI*>* const SBMLconstants::OPB_PROPERTIES_FOR_REACTIONS;
 
         SBMLconstants::StaticConstructor::StaticConstructor() {
             // Mapping between reserved units in SBML level 2 models and their default base units
-            LinkedHashMap<std::wstring, std::wstring>* map0 = new LinkedHashMap<std::wstring, std::wstring>();
+            LinkedHashMap<std::string, std::string>* map0 = new LinkedHashMap<std::string, std::string>();
             map0->put(L"substance", L"mole");
             map0->put(L"volume", L"litre");
             map0->put(L"area", L"square metre");
@@ -21,7 +21,7 @@ namespace semsim {
             map0->put(L"time", L"second");
             SBML_LEVEL_2_RESERVED_UNITS_MAP = Collections::unmodifiableMap(map0);
             // SBML level 3 base unit set
-            Set<std::wstring>* set0 = std::unordered_set<std::wstring>();
+            Set<std::string>* set0 = std::unordered_set<std::string>();
             set0->add(L"ampere");
             set0->add(L"farad");
             set0->add(L"joule");
@@ -56,10 +56,10 @@ namespace semsim {
             set0->add(L"pascal");
             set0->add(L"tesla");
             SBML_LEVEL_3_BASE_UNITS = Collections::unmodifiableSet(set0);
-            SBML_LEVEL_2_VERSION_2_BASE_UNITS = std::unordered_set<std::wstring>();
+            SBML_LEVEL_2_VERSION_2_BASE_UNITS = std::unordered_set<std::string>();
             SBML_LEVEL_2_VERSION_2_BASE_UNITS->addAll(SBML_LEVEL_3_BASE_UNITS);
             SBML_LEVEL_2_VERSION_2_BASE_UNITS->remove(L"avogadro");
-            SBML_LEVEL_2_VERSION_1_BASE_UNITS = std::unordered_set<std::wstring>();
+            SBML_LEVEL_2_VERSION_1_BASE_UNITS = std::unordered_set<std::string>();
             SBML_LEVEL_2_VERSION_1_BASE_UNITS->addAll(SBML_LEVEL_2_VERSION_2_BASE_UNITS);
             SBML_LEVEL_2_VERSION_1_BASE_UNITS->add(L"Celsius");
             Set<URI*>* set1 = std::unordered_set<URI*>();

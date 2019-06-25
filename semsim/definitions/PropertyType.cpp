@@ -18,11 +18,11 @@ namespace semsim {
     PropertyType::StaticConstructor PropertyType::staticConstructor;
     int PropertyType::nextOrdinal = 0;
 
-    PropertyType::PropertyType(const std::wstring& name, InnerEnum innerEnum, const std::wstring& name) : nameValue(name), ordinalValue(nextOrdinal++), innerEnumValue(innerEnum) {
+    PropertyType::PropertyType(const std::string& name, InnerEnum innerEnum, const std::string& name) : nameValue(name), ordinalValue(nextOrdinal++), innerEnumValue(innerEnum) {
         _name = name;
     }
 
-    std::wstring PropertyType::ToString() {
+    std::string PropertyType::ToString() {
         return _name;
     }
 
@@ -42,7 +42,7 @@ namespace semsim {
         return ordinalValue;
     }
 
-    PropertyType PropertyType::valueOf(const std::wstring& name) {
+    PropertyType PropertyType::valueOf(const std::string& name) {
         for (auto enumInstance : PropertyType::valueList) {
             if (enumInstance.nameValue == name) {
                 return enumInstance;

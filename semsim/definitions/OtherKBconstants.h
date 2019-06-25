@@ -1,3 +1,6 @@
+# ifndef SEMSIM_OTHER_KB_CONSTANTS_H_
+# define SEMSIM_OTHER_KB_CONSTANTS_H_
+
 #include <string>
 
 namespace semsim {
@@ -17,3 +20,5 @@ namespace semsim {
         static const std::string UNIPROT_FULLNAME;
     };
 }
+
+# endif
