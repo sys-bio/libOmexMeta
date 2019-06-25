@@ -12,25 +12,43 @@ namespace semsim {
      */
     class Relation {
       public:
-        virtual const std::string& getName() = 0;
+        Relation(const std::string& name, const URI& uri, const std::string& description)
+          : name_(name), uri_(uri), description_(description) {}
+
+        const std::string& getName() const {
+          return name_;
+        }
 
         /** @return The URI of the relation */
-        virtual const URI& getURI() = 0;
+        const URI& getURI() const {
+          return uri_;
+        }
 
         /** @return The URI of the relation as a string*/
-        virtual const std::string& getURIasString() = 0;
+        const std::string& getURIasString() const {
+          return uri_.toString();
+        }
 
         /** @return The free-text description of the relation*/
-        virtual const std::string& getDescription() = 0;
+        const std::string& getDescription() const {
+          return description_;
+        }
 
         /** @return The relation encoded for SPARQL queries*/
-        virtual const std::string& getSPARQLCode() = 0;
+        // virtual const std::string& getSPARQLCode(){
+        //
+        // }
 
         /** @return The IRI of the relation*/
         // virtual IRI* getIRI() = 0;
 
         /** @return The relation instantiated as an RDF property*/
         // virtual Property* getRDFproperty() = 0;
+
+      protected:
+        std::string name_;
+        URI uri_;
+        std::string description_;
     };
 }
 

@@ -12,11 +12,15 @@ namespace semsim {
      */
     class URI {
       public:
-        URI(const std::string& uri_encoding)
-            : uri_encoding_(uri_encoding) {}
+        URI(const std::string& uri)
+            : encoded_uri_(uri) {}
+
+        std::string toString() const {
+          return encoded_uri_;
+        }
 
       protected:
-        std::string uri_encoding_;
+        std::string encoded_uri_;
     };
 
 }
