@@ -23,19 +23,19 @@ set (SEMSIM_SOURCES
 
 # Create main and link to cellml
 if (ENABLE_SHARED_LIB)
-  add_library(semgen SHARED ${SEMSIM_SOURCES})
+  add_library(semsim SHARED ${SEMSIM_SOURCES})
   # set_target_properties(semgen PROPERTIES PUBLIC_HEADER "libsemgen.h")
 endif ()
 if (ENABLE_STATIC_LIB)
-  add_library(semgen-static STATIC ${SEMSIM_SOURCES})
+  add_library(semsim-static STATIC ${SEMSIM_SOURCES})
   # set_target_properties(semgen-static PROPERTIES PUBLIC_HEADER "libsemgen.h")
 endif ()
 
 if (${ENABLE_SHARED_LIB})
-  list(APPEND LIBRARIES semgen)
+  list(APPEND LIBRARIES semsim)
 endif ()
 if (${ENABLE_STATIC_LIB})
-  list(APPEND LIBRARIES semgen-static)
+  list(APPEND LIBRARIES semsim-static)
 endif ()
 foreach(l ${LIBRARIES})
   message("Library ${l}")
