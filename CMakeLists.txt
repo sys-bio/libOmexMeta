@@ -13,7 +13,8 @@ find_package(Rasqal REQUIRED)
 find_package(LibRDF REQUIRED)
 # https://stackoverflow.com/questions/20746936/cmake-of-what-use-is-find-package-if-you-need-to-specify-cmake-module-path-an?rq=1
 find_package(libcellml CONFIG REQUIRED)
-# consider adding https://github.com/uriparser/uriparser for uri handling
+# consider using https://cpp-netlib.org/ if networking is required (also handles URIs)
+# otherwise consider adding https://github.com/uriparser/uriparser for uri handling
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++03 -Wall -Wextra -Wno-unused-parameter -fPIC")
 
