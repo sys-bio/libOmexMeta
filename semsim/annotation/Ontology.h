@@ -1,7 +1,6 @@
 # ifndef SEMSIM_ONTOLOGY_H_
 # define SEMSIM_ONTOLOGY_H_
 
-# include "semsim/definitions/ReferenceOntologies.h"
 # include <string>
 # include <vector>
 
@@ -12,13 +11,6 @@ namespace semsim {
      * textual description, etc.
      */
     class Ontology {
-      private:
-        std::string fullname_;
-        std::string abbrev_;
-        std::string bioportal_ns_;
-        Namespaces namespaces_ = std::vector<std::string>();
-        std::string description_;
-
       public:
         typedef std::vector<std::string> Namespaces;
 
@@ -88,6 +80,13 @@ namespace semsim {
          * @return A free-text description of the ontology
          */
         virtual const std::string& getDescription() const;
+
+      protected:
+          std::string fullname_;
+          std::string abbrev_;
+          std::string bioportal_ns_;
+          Namespaces namespaces_ = std::vector<std::string>();
+          std::string description_;
     };
 }
 

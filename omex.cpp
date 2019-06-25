@@ -26,7 +26,7 @@ void readOMEX(char *OMEXfilename, char *filename, char *model_sbml)
 
 
     struct zip_stat sb;
-    int r, len;
+    int len;
     long long sum;
     char buffer[10000];
 
@@ -49,13 +49,13 @@ void readOMEX(char *OMEXfilename, char *filename, char *model_sbml)
                 }
 
                 sum = 0;
-                while (sum != sb.size) {
+                while (sum != (long long)sb.size) {
                     len = zip_fread(zf, buffer, 100);
                     if (len < 0) {
                         fprintf(stderr, "boese, boese\n");
                         exit(102);
                     }
-                    printf("%s", buffer, len);
+                    printf("%s", buffer);
                     sum += len;
                 }
                 zip_fclose(zf);

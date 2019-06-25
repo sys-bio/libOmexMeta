@@ -1,8 +1,9 @@
 # ifndef SEMSIM_ANNOTATABLE_H_
 # define SEMSIM_ANNOTATABLE_H_
 
+# include "semsim/annotation/Annotatable.h"
 # include <string>
-# include <set>
+# include <vector>
 
 namespace semsim {
     /**
@@ -13,7 +14,7 @@ namespace semsim {
     class Annotatable {
         /** @return All SemSim Annotations applied to this object */
       public:
-        typedef set<Annotation> Annotations;
+        typedef std::vector<Annotation> Annotations;
 
         virtual const Annotations&* getAnnotations() = 0;
         /**
@@ -65,3 +66,5 @@ namespace semsim {
     };
 
 }
+
+# endif

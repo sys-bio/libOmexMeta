@@ -13,7 +13,6 @@ namespace semsim {
      * identify model authors, link a model to its PubMed ID, etc.
      */
     class Annotation {
-
       protected:
         std::string valueDescription_;
         Relation relation_;
