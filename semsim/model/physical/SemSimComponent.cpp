@@ -1,14 +1,14 @@
 #include "SemSimComponent.h"
 
 namespace semsim {
-    SemSimComponent::SemSimComponent(SemSimTypes type) : semsim::SemSimObject(type) {
-    }
+    // SemSimComponent::SemSimComponent(SemSimTypes type) : semsim::SemSimObject(type) {
+    // }
 
-    SemSimComponent::SemSimComponent(const SemSimComponent& other) : semsim::SemSimObject(other) {
-        referenceuri = other.referenceuri;
-    }
+    // SemSimComponent::SemSimComponent(const SemSimComponent& other) : semsim::SemSimObject(other) {
+    //     referenceuri = other.referenceuri;
+    // }
 
-    bool SemSimComponent::hasPhysicalDefinitionAnnotation() {
+    bool SemSimComponent::hasDefinitionAnnotation() {
         return referenceuri.toString().size();
     }
 

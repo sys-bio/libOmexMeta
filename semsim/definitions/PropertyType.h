@@ -33,49 +33,49 @@ namespace semsim {
       private:
         // static std::vector<PropertyType> valueList;
 
-        class StaticConstructor {
-          public:
-            StaticConstructor();
-        };
-
-        static StaticConstructor staticConstructor;
+        // class StaticConstructor {
+        //   public:
+        //     StaticConstructor();
+        // };
+        //
+        // static StaticConstructor staticConstructor;
 
       public:
-        enum class InnerEnum {
-            PropertyOfPhysicalEntity,
-            PropertyOfPhysicalProcess,
-            PropertyOfPhysicalForce,
-            Unknown
-        };
+        // enum InnerEnum {
+        //     PropertyOfPhysicalEntity,
+        //     PropertyOfPhysicalProcess,
+        //     PropertyOfPhysicalForce,
+        //     Unknown
+        // };
 
-        const InnerEnum innerEnumValue;
+        // const InnerEnum innerEnumValue;
       private:
         const std::string nameValue;
-        const int ordinalValue;
-        static int nextOrdinal;
+        // const int ordinalValue;
+        // static int nextOrdinal;
 
+      protected:
         // String representation of enum
-      private:
-        const std::string _name;
+        const std::string desc_;
 
-        PropertyType(const std::string& name, InnerEnum innerEnum, const std::string& name);
+        // PropertyType(const std::string& name, InnerEnum innerEnum, const std::string& name);
 
+      public:
         /**
          * Returns the name of the property type as a string.
          */
-      public:
-        virtual std::string ToString();
+        // const std::string& ToString();
 
       public:
-        bool operator == (const PropertyType& other);
+        // bool operator == (const PropertyType& other);
 
-        bool operator != (const PropertyType& other);
+        // bool operator != (const PropertyType& other);
 
-        static std::vector<PropertyType> values();
+        // static std::vector<PropertyType> values();
 
-        int ordinal();
+        // int ordinal();
 
-        static PropertyType valueOf(const std::string& name);
+        // static PropertyType valueOf(const std::string& name);
     };
 }
 

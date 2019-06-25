@@ -36,7 +36,7 @@ namespace semsim {
          * @param description Textual description of ontology
          */
         Ontology(const std::string& name,
-                 const std::string& abrev,
+                 const std::string& abbrev,
                  const Namespaces& namespaces,
                  const std::string& description);
 
@@ -50,26 +50,26 @@ namespace semsim {
         // Ontology(ReferenceOntology ro);
 
         /**
-         * @param nspace Namespace to test for association with the ontology
+         * @param ns Namespace to test for association with the ontology
          * @return Whether the namespace is in the array of namespaces associated
          * with this ontology
          */
-        virtual bool hasNamespace(const std::string& nspace) const;
+        bool hasNamespace(const std::string& ns) const;
 
         /**
          * @return Full name of ontology
          */
-        virtual const std::string& getFullName() const;
+        const std::string& getName() const;
 
         /**
          * @return Abbreviated name of ontology
          */
-        virtual const std::string& getAbbreviation() const;
+        const std::string& getAbbreviation() const;
 
         /**
          * @return The BioPortal namespace of the ontology
          */
-        virtual const std::string& getBioPortalNamespace() const;
+        const std::string& getBioPortalNamespace() const;
 
         /**
          * @return The set of namespaces associated with the ontology
@@ -82,11 +82,11 @@ namespace semsim {
         virtual const std::string& getDescription() const;
 
       protected:
-          std::string fullname_;
+          std::string name_;
           std::string abbrev_;
-          std::string bioportal_ns_;
           Namespaces namespaces_ = std::vector<std::string>();
           std::string description_;
+          std::string bioportal_ns_;
     };
 }
 

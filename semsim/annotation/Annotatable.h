@@ -1,7 +1,7 @@
 # ifndef SEMSIM_ANNOTATABLE_H_
 # define SEMSIM_ANNOTATABLE_H_
 
-# include "semsim/annotation/Annotatable.h"
+# include "semsim/annotation/Annotation.h"
 # include <string>
 # include <vector>
 
@@ -16,17 +16,28 @@ namespace semsim {
       public:
         typedef std::vector<Annotation> Annotations;
 
-        virtual const Annotations&* getAnnotations() = 0;
+        /**
+         * Get the annotations for this object.
+         * @return The currently applied annotations
+         */
+        const Annotations& getAnnotations() const;
+
+        /**
+         * Get the annotations for this object.
+         * @return The currently applied annotations
+         */
+        Annotations& getAnnotations();
+
         /**
          * Set the SemSim Annotations for an object
          * @param annset The set of annotations to apply
          */
-        virtual void setAnnotations(const Annotations& annset) = 0;
+        // virtual void setAnnotations(const Annotations& annset) = 0;
         /**
          * Add a SemSim {@link Annotation} to this object
          * @param ann The {@link Annotation} to add (will be copied).
          */
-        virtual void addAnnotation(const Annotation& ann) = 0;
+        // virtual void addAnnotation(const Annotation& ann) = 0;
 
         /**
          * Add a SemSim {@link ReferenceOntologyAnnotation} to an object
@@ -56,13 +67,16 @@ namespace semsim {
         /**
          * @return True if an object has at least one {@link Annotation}, otherwise false.
          */
-        bool isAnnotated() = 0;
+        // bool isAnnotated() = 0;
 
 
         /**
          * @return True if an object has at least one {@link ReferenceOntologyAnnotation}, otherwise false;
          */
-        bool hasPhysicalDefinitionAnnotation() = 0;
+        // bool hasPhysicalDefinitionAnnotation() = 0;
+
+      protected:
+        Annotations annotations_;
     };
 
 }

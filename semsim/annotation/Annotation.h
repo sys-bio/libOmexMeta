@@ -14,9 +14,9 @@ namespace semsim {
      */
     class Annotation {
       protected:
-        std::string valueDescription_;
         Relation relation_;
         Resource resource_;
+        std::string valueDescription_;
 
 
       public:
@@ -44,38 +44,38 @@ namespace semsim {
          * Constructor for copying an Annotation
          * @param tocopy The Annotation to copy
          */
-        Annotation(const Annotation& tocopy);
+        // Annotation(const Annotation& tocopy);
 
         /**
          * Set the free-text description for the annotation value
          * @param valueDescription The free-text description
          */
-        virtual void setValueDescription(const std::string& valueDescription);
+        void setValueDescription(const std::string& valueDescription);
 
         /**
          * @return The free-text description of the annotation value
          */
-        virtual const std::string& getValueDescription() const;
+        const std::string& getValueDescription() const;
 
         /**
          * Set the relationship between the object being annotated and the annotation value
          * @param relation The relation (AKA predicate, qualifier) between the object being annotated and the annotation value
          */
-        virtual void setRelation(const Relation& relation);
+        void setRelation(const Relation& relation);
 
         /** @return The relationship between the object being annotated and the annotation value */
-        virtual const Relation& getRelation() const;
+        const Relation& getRelation() const;
 
         /**
          * Set the annotation value
          * @param value The annotation value
          */
-        virtual void getResource(const Resource& value);
+        void setResource(const Resource& value);
 
         /**
          * @return The annotation value
          */
-        virtual const getResource& getValue() const;
+        const Resource& getResource() const;
     };
 }
 

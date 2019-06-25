@@ -4,7 +4,7 @@
 # include <string>
 # include <vector>
 
-# include "semsim/definitions/SemSimRelations.h"
+# include "semsim/annotation/Relation.h"
 
 namespace semsim {
 
@@ -77,7 +77,7 @@ namespace semsim {
          * @return The SemSimRelation value for the URI key or else null if not found
          */
         // static Relation* getRelationFromURI(URI* uri);
-    }
+    };
 
 
     class SemSimRelation : public Relation {
@@ -183,7 +183,7 @@ namespace semsim {
         // static SemSimRelation BQM_IS_INSTANCE_OF;
         //
         // static SemSimRelation UNKNOWN;
-    }
+    };
 
 }
 
