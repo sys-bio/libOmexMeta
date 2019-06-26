@@ -2,8 +2,9 @@
 
 // Add necessary symbols to generated header
 %{
-#include "semgen.h"
+#define SWIG_FILE_WITH_INIT
+#include "semsim/semsim.h"
 %}
 
 // Process symbols in header
-%include "semgen.h"
+%include "semsim/semsim.h"

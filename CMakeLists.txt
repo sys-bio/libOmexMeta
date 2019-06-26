@@ -1,7 +1,32 @@
-cmake_minimum_required(VERSION 3.12.0)
+cmake_minimum_required(VERSION 3.14.0)
 project(libsemgen)
 
+# modules
+
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
+
+# global settings
+
+set(SEMSIM_CXX_STANDARD 98 CACHE STRING "The C++ standard to use (11 or 98)")
+if ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+  # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++${SEMSIM_CXX_STANDARD} -Wall -Wextra -fPIC")
+endif()
+
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+set(CMAKE_C_VISIBILITY_PRESET hidden)
+
+set(ENABLE_STATIC_LIB TRUE CACHE BOOL "Build static libraries?")
+set(ENABLE_SHARED_LIB TRUE CACHE BOOL "Build shared libraries?")
+
+set(CMAKE_CXX_STANDARD ${SEMSIM_CXX_STANDARD})
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+# bindings
+
+option(BUILD_PYTHON "Build Python SWIG module" ON)
+
+# dependencies
 
 find_package(LibXml2 REQUIRED)
 find_package(ZLIB    REQUIRED)
@@ -12,26 +37,12 @@ find_package(Raptor2 REQUIRED)
 find_package(Rasqal REQUIRED)
 find_package(LibRDF REQUIRED)
 # https://stackoverflow.com/questions/20746936/cmake-of-what-use-is-find-package-if-you-need-to-specify-cmake-module-path-an?rq=1
-find_package(libcellml CONFIG REQUIRED)
+find_package(libcellml CONFIG)
 find_package(SWIG)
 cmake_policy(SET CMP0078 NEW)
 cmake_policy(SET CMP0086 NEW)
 # consider using https://cpp-netlib.org/ if networking is required (also handles URIs)
 # otherwise consider adding https://github.com/uriparser/uriparser for uri handling
-
-set(SEMSIM_CXX_STANDARD 98 CACHE STRING "The C++ standard to use (11 or 98)")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++${SEMSIM_CXX_STANDARD} -Wall -Wextra -Wno-unused-parameter -fPIC")
-
-set(CMAKE_CXX_VISIBILITY_PRESET hidden)
-set(CMAKE_C_VISIBILITY_PRESET hidden)
-
-set(ENABLE_STATIC_LIB TRUE CACHE BOOL "Build static libraries?")
-set(ENABLE_SHARED_LIB TRUE CACHE BOOL "Build shared libraries?")
-
-set(CMAKE_CXX_STANDARD ${SEMSIM_CXX_STANDARD})
-
-# bindings
-option(BUILD_PYTHON "Build Python SWIG module" ON)
 
 # diagnostics
 get_target_property(LIBCELLML_LIBS cellml LOCATION)
@@ -75,7 +86,7 @@ Configuration Summary
       LibRDF library            ${LibRDF_LIBRARIES}
       LibRDF include dir        ${LibRDF_INCLUDE_DIRS}
       LibCellML (optional)      ${LIBCELLML_LIBS}
-      LibRDF include dir        ${LIBCELLML_INCLUDE_DIRS}
+      LibCellML include dir     ${LIBCELLML_INCLUDE_DIRS}
 
     Language bindings:
       Python                    ${BUILD_PYTHON}

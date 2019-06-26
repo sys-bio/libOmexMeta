@@ -46,6 +46,9 @@ foreach(l ${LIBRARIES})
   target_link_libraries(${l} ${Raptor2_LIBRARIES})
   target_link_libraries(${l} ${Rasqal_LIBRARIES})
   target_link_libraries(${l} ${LibRDF_LIBRARIES})
+  if (${LIBCELLML_LIBS})
+    target_link_libraries(${l} ${LIBCELLML_LIBS})
+  endif()
   install(TARGETS ${l}
           RUNTIME DESTINATION bin
           LIBRARY DESTINATION lib

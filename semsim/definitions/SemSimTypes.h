@@ -8,7 +8,7 @@ namespace semsim {
     /**
      * Enum and functions for the different types of objects used in SemSim models
      */
-    class SemSimTypes final {
+    class SemSimTypes {
       // public:
       //   static SemSimTypes SEMSIM_COMPONENT;
       //   static SemSimTypes MODEL;
