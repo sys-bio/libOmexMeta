@@ -1,13 +1,13 @@
+# ifndef SEMSIM_H_
+# define SEMSIM_H_
+
+# include "semsim/Preproc.h"
 // #include <string>
 // #include <zip.h>
 
-# ifndef SWIG
-# define XXX __attribute__((visibility ("default")))
-# else
-# define XXX
-# endif
-
-XXX void libsemgen_hello();
+// #define SEMSIM_PUBLIC
+// #pragma message "abc"
+SEMSIM_PUBLIC void libsemgen_hello();
 // void cellml_hello();
 // void sbml_hello();
 // void printModel();
@@ -27,3 +27,5 @@ XXX void libsemgen_hello();
 // void getInfo_RDF(char *filename, char *id);
 // void getRDFmodel(char *filename);
 // void getRDFmodel_EntityInfo(char *filename, char *subject_query, char *predicate_query);
+
+# endif
