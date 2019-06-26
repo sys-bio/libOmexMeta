@@ -1,10 +1,11 @@
 %module semgen
 
-// Add necessary symbols to generated header
+%include "semsim/Preproc.h"
+
 %{
 #define SWIG_FILE_WITH_INIT
-#include "semsim/semsim.h"
+#include "semsim/SemSim.h"
 %}
 
 // Process symbols in header
-%include "semsim/semsim.h"
+%include "semsim/SemSim.h"

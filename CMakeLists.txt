@@ -26,6 +26,7 @@ set(ENABLE_SHARED_LIB TRUE CACHE BOOL "Build shared libraries?")
 
 set(CMAKE_CXX_STANDARD ${SEMSIM_CXX_STANDARD})
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+add_compile_definitions(SEMSIM_INTERNAL_BUILD)
 
 # bindings
 
