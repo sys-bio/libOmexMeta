@@ -4,12 +4,14 @@ set_source_files_properties(../semsim.i PROPERTIES CPLUSPLUS ON SWIG_MODULE_NAME
 
 include_directories(${Python_INCLUDE_DIRS})
 
-# Add swig module
+# swig module for semsim
 swig_add_library(
   semsim_python
   LANGUAGE python
-  OUTPUT_DIR python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages
+  OUTPUT_DIR python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages/semsim
   SOURCES ../semsim.i)
+
+# target settings
 set_target_properties(semsim_python PROPERTIES LIBRARY_OUTPUT_NAME module)
 if (WIN32)
   swig_link_libraries(semsim_python semsim Python::Module)
@@ -26,10 +28,19 @@ set(PYTHON_INSTALL_FILES
         ${CMAKE_CURRENT_BINARY_DIR}/semgen.py
         ${CMAKE_CURRENT_BINARY_DIR}/_semgen.so)
 
-# Configure setup.py and copy to output directory
-set(SETUP_PY_IN ${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in)
-set(SETUP_PY_OUT ${CMAKE_CURRENT_BINARY_DIR}/setup.py)
-configure_file(${SETUP_PY_IN} ${SETUP_PY_OUT})
+# Configure generated python files
+configure_file(setup.py.in setup.py @ONLY)
+configure_file(src/__init__.py.in __init__.py @ONLY)
+
+install(
+  FILES ${CMAKE_CURRENT_BINARY_DIR}/setup.py
+  DESTINATION python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages
+)
+
+install(
+  FILES ${CMAKE_CURRENT_BINARY_DIR}/__init__.py
+  DESTINATION python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages/semsim
+)
 
 # Declare install target for python
 #install(TARGETS swig_example
@@ -42,5 +53,5 @@ configure_file(${SETUP_PY_IN} ${SETUP_PY_OUT})
 #         COMMAND python ${SETUP_PY_OUT} install)
 
 install(TARGETS semsim_python
-        DESTINATION python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages
+        DESTINATION python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages/semsim
         )

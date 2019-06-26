@@ -84,7 +84,7 @@ namespace semsim {
       protected:
           std::string name_;
           std::string abbrev_;
-          Namespaces namespaces_ = std::vector<std::string>();
+          Namespaces namespaces_;
           std::string description_;
           std::string bioportal_ns_;
     };
