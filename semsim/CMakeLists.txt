@@ -19,6 +19,7 @@ set (SEMSIM_SOURCES
   utilities/ErrorLog.cpp
   utilities/SemSimComponentComparator.cpp
   SemSimObject.cpp
+  semsim.cpp
 )
 
 # Create main and link to cellml
