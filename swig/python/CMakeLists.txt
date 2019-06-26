@@ -12,9 +12,10 @@ swig_add_library(
   SOURCES ../semsim.i)
 
 # target settings
-set_target_properties(semsim_python PROPERTIES LIBRARY_OUTPUT_NAME module)
+swig_link_libraries(semsim_python semsim-static)
+set_target_properties(semsim_python PROPERTIES LIBRARY_OUTPUT_NAME semsim)
 if (WIN32)
-  swig_link_libraries(semsim_python semsim-static Python::Module)
+  swig_link_libraries(semsim_python Python::Module)
 else()
   if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     # set_target_properties(semsim_python PROPERTIES LINK_FLAGS "-Wl,--no-undefined")
