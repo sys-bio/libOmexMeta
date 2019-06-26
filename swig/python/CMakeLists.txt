@@ -2,17 +2,20 @@ include(UseSWIG)
 set(CMAKE_SWIG_FLAGS "")
 set_source_files_properties(../semsim.i PROPERTIES CPLUSPLUS ON SWIG_MODULE_NAME semsim)
 
+include_directories(${Python_INCLUDE_DIRS})
+
 # Add swig module
 swig_add_library(
   semsim_python
   LANGUAGE python
   OUTPUT_DIR python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages
   SOURCES ../semsim.i)
+set_target_properties(semsim_python PROPERTIES LIBRARY_OUTPUT_NAME module)
 if (WIN32)
   swig_link_libraries(semsim_python semsim Python::Module)
 else()
   if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    set_target_properties(semsim_python PROPERTIES LINK_FLAGS "-Wl,--no-undefined")
+    # set_target_properties(semsim_python PROPERTIES LINK_FLAGS "-Wl,--no-undefined")
   else()
     set_target_properties(semsim_python PROPERTIES LINK_FLAGS "-undefined dynamic_lookup" INSTALL_RPATH "@loader_path/../../lib;@loader_path/" INSTALL_NAME_DIR "@rpath")
   endif()
