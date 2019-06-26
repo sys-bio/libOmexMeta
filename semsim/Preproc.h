@@ -1,11 +1,6 @@
 # ifndef SEMSIM_PREPROC_H_
 # define SEMSIM_PREPROC_H_
 
-// #ifndef SWIG
-// #define SEMSIM_PUBLIC __attribute__ ((visibility ("default")))
-// #else
-// #define SEMSIM_PUBLIC
-// #endif
 #if defined _WIN32 || defined __CYGWIN__
   #ifdef SEMSIM_INTERNAL_BUILD
     #ifdef __GNUC__
