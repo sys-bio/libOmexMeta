@@ -43,16 +43,7 @@ install(
   DESTINATION python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages/semsim
 )
 
-# Declare install target for python
-#install(TARGETS swig_example
-#        COMMAND "${PYTHON_EXECUTABLE} setup.py"
-#        COMPONENT swig-python)
-
-# Install target to call setup.py
-# add_custom_target(install-python
-#         DEPENDS _semgen
-#         COMMAND python ${SETUP_PY_OUT} install)
-
-install(TARGETS semsim_python
-        DESTINATION python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages/semsim
-        )
+install(
+  TARGETS semsim_python
+  DESTINATION python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages/semsim
+)

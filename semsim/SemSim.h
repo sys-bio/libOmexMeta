@@ -3,10 +3,7 @@
 
 # include "semsim/Preproc.h"
 // #include <string>
-// #include <zip.h>
 
-// #define SEMSIM_PUBLIC
-// #pragma message "abc"
 SEMSIM_PUBLIC void libsemgen_hello();
 // void cellml_hello();
 // void sbml_hello();
