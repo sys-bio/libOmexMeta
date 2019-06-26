@@ -1,0 +1,3 @@
+from ._module import *
+
+__version__ = '@PROJECT_VERSION@'

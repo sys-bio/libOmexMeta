@@ -9,7 +9,7 @@ namespace semsim {
      * Enumeration of various RDF namespaces used in biosimulation modeling formats.
      *
      */
-    class RDFNamespace final {
+    class RDFNamespace {
       public:
         static RDFNamespace PKB;
         static RDFNamespace SEMSIM;

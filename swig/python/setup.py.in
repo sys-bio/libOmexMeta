@@ -14,7 +14,7 @@ class CompiledLibInstall(setuptools.command.install.install):
         :return:
         """
         # Get filenames from CMake variable
-        filenames = '${PYTHON_INSTALL_FILES}'.split(';')
+        filenames = '@PYTHON_INSTALL_FILES@'.split(';')
 
         # Directory to install to
         install_dir = get_python_lib()
@@ -26,7 +26,7 @@ class CompiledLibInstall(setuptools.command.install.install):
 if __name__ == '__main__':
     setuptools.setup(
         name='libsemgen',
-        version='1.0.0-dev',
+        version='@PROJECT_VERSION@',
         packages=['libsemgen'],
         license='Apache License 2.0',
         author='Prakhar Agarwal',
