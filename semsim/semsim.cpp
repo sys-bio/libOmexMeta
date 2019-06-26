@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "cellml.h"
-#include "libsemgen.h"
+#include "semsim/semsim.h"
 
 void libsemgen_hello()
 {

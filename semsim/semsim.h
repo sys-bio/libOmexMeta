@@ -1,9 +1,13 @@
-#include <string>
-#include <zip.h>
-using namespace std;
+// #include <string>
+// #include <zip.h>
 
+# ifndef SWIG
+# define XXX __attribute__((visibility ("default")))
+# else
+# define XXX
+# endif
 
-void libsemgen_hello();
+XXX void libsemgen_hello();
 // void cellml_hello();
 // void sbml_hello();
 // void printModel();
