@@ -3,7 +3,7 @@
 
 # include "semsim/definitions/SemSimTypes.h"
 # include "semsim/SemSimObject.h"
-# include "semsim/annotation/URI.h"
+# include "semsim/URI.h"
 
 # include <string>
 

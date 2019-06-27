@@ -2,7 +2,7 @@
 # define SEMSIM_RELATION_H_
 
 # include <string>
-# include "semsim/annotation/URI.h"
+# include "semsim/URI.h"
 
 namespace semsim {
 
