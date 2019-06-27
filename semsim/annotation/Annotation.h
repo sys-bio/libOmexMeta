@@ -1,3 +1,4 @@
+// DEPRECATED
 # ifndef SEMSIM_ANNOTATION_H_
 # define SEMSIM_ANNOTATION_H_
 
@@ -12,7 +13,7 @@ namespace semsim {
      * to define the physical meaning of a SemSim model or model element,
      * identify model authors, link a model to its PubMed ID, etc.
      */
-    class Annotation {
+    class Annotationx {
       protected:
         Relation relation_;
         Resource resource_;
