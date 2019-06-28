@@ -1,6 +1,6 @@
 set (SEMSIM_SOURCES
-  annotation/Annotatable.cpp
-  annotation/Annotation.cpp
+  # annotation/Annotatable.cpp
+  # annotation/Annotation.cpp
   annotation/AnnotationCopier.cpp
   annotation/Ontology.cpp
   annotation/ReferenceOntologyAnnotation.cpp
