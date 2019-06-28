@@ -53,7 +53,7 @@ namespace semsim {
         // http://cpptruths.blogspot.com/2012/06/perfect-forwarding-of-parameter-groups.html
         template <class ...T>
         DomainDescriptor(T&&... args)
-          : terms_(std::forwardargs...) {}
+          : terms_(std::forward(args)...) {}
         # endif
 
         /// @return @p true if this descriptor is empty
