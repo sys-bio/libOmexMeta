@@ -1,8 +1,14 @@
 # ifndef SEMSIM_H_
 # define SEMSIM_H_
 
+// important classes (includes may be redundant - that's okay)
 # include "semsim/Preproc.h"
-// #include <string>
+# include "semsim/Relation.h"
+# include "semsim/Resource.h"
+# include "semsim/DomainDescriptor.h"
+# include "semsim/PhysicalProperty.h"
+# include "semsim/Annotation.h"
+# include "semsim/SemSimObject.h"
 
 SEMSIM_PUBLIC void libsemgen_hello();
 // void cellml_hello();

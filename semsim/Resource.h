@@ -30,7 +30,7 @@ namespace semsim {
          * Move-construct from URI.
          * @param uri The URI of the resource
          */
-        DomainDescriptor(URI&& uri)
+        Resource(URI&& uri)
           : uri_(std::move(uri)) {}
         # endif
 
@@ -38,16 +38,16 @@ namespace semsim {
          * Construct directly from the UTF-8 string-encoded URI.
          * @param uri The UTF-8 string-encoded URI of the resource
          */
-        Resource(const std::string& uri)
-          : uri_(uri) {}
+        // Resource(const std::string& uri)
+        //   : uri_(uri) {}
 
         # if __cplusplus >= 201103L
         /**
          * Move-construct directly from the UTF-8 string-encoded URI.
          * @param uri The UTF-8 string-encoded URI of the resource
          */
-        Resource(std::string&& uri)
-          : uri_(std::move(uri)) {}
+        // Resource(std::string&& uri)
+        //   : uri_(std::move(uri)) {}
         # endif
 
       protected:

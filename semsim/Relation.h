@@ -7,8 +7,10 @@
 namespace semsim {
 
     /**
-     * A resource is an ontology term that forms
-     * the "object" part of an RDF triple.
+     * A relation is the predicate part of an RDF triple.
+     * SemSim primarily uses the
+     * <a href="http://co.mbine.org/standards/qualifiers">BioModels biology qualifiers</a>
+     * for describing model elements.
      */
     SEMSIM_PUBLIC class Relation {
       public:
@@ -16,11 +18,11 @@ namespace semsim {
          * Construct from URI.
          * @param uri The URI of the ontology term
          */
-        Resource(const URI& uri)
+        Relation(const URI& uri)
           : uri_(uri) {}
 
         # if __cplusplus >= 201103L
-        DomainDescriptor(URI&& uri)
+        Relation(URI&& uri)
           : uri_(std::move(uri)) {}
         # endif
 
