@@ -58,6 +58,13 @@ namespace semsim {
         }
 
         /**
+         * @return The @ref EntityDescriptor describing the physical entity of this annotation.
+         */
+        const EntityDescriptor& getEntity() const {
+          return entity_;
+        }
+
+        /**
          * This function returns @p true if the physical domain
          * descriptor is empty. The domain describes "where"
          * the physical entity is located. It is typically empty for
@@ -74,6 +81,13 @@ namespace semsim {
         }
 
         /**
+         * @return The @ref EntityDescriptor describing the physical entity of this annotation.
+         */
+        const DomainDescriptor& getDomain() const {
+          return domain_;
+        }
+
+        /**
          * This function returns @p true if this annotation
          * can be encoded in an SBML model (i.e. its domain
          * descriptor must be empty).
@@ -85,6 +99,12 @@ namespace semsim {
         bool isSBMLCompatible() const {
           return isDomainEmpty();
         }
+
+      protected:
+        /// Stores the physical entity descriptor for this annotation
+        EntityDescriptor entity_;
+        /// Stores the physical domain descriptor for this annotation
+        DomainDescriptor domain_;
     }
 }
 
