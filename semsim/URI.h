@@ -1,6 +1,8 @@
 # ifndef SEMSIM_URI_H_
 # define SEMSIM_URI_H_
 
+# include "semsim/Preproc.h"
+
 # include <string>
 
 namespace semsim {
@@ -9,10 +11,15 @@ namespace semsim {
      * A URI class used in semgen.
      * @param uri_encoding A string encoding of the URI.
      */
-    class URI {
+    SEMSIM_PUBLIC class URI {
       public:
         URI(const std::string& uri)
-            : encoded_uri_(uri) {}
+          : encoded_uri_(uri) {}
+
+        # if __cplusplus >= 201103L
+        URI(std::string&& uri)
+          : encoded_uri_(std::move(uri)) {}
+        # endif
 
         std::string toString() const {
           return encoded_uri_;

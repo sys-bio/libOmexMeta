@@ -1,6 +1,6 @@
 // DEPRECATED
-# ifndef SEMSIM_ANNOTATION_H_
-# define SEMSIM_ANNOTATION_H_
+# ifndef SEMSIM_ANNOTATIONX_H_
+# define SEMSIM_ANNOTATIONX_H_
 
 # include <string>
 # include "semsim/annotation/Relation.h"

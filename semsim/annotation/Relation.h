@@ -1,5 +1,5 @@
-# ifndef SEMSIM_RELATION_H_
-# define SEMSIM_RELATION_H_
+# ifndef SEMSIM_RELATIONX_H_
+# define SEMSIM_RELATIONX_H_
 
 # include <string>
 # include "semsim/URI.h"
@@ -10,7 +10,7 @@ namespace semsim {
      * Interface that provides methods for getting information about
      * relations (AKA predicates, AKA qualifiers) used in annotations.
      */
-    class Relation {
+    class Relationx {
       public:
         Relation(const std::string& name, const URI& uri, const std::string& description)
           : name_(name), uri_(uri), description_(description) {}
