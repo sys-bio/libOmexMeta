@@ -25,10 +25,12 @@ set (SEMSIM_SOURCES
 # Create main and link to cellml
 if (ENABLE_SHARED_LIB)
   add_library(semsim SHARED ${SEMSIM_SOURCES})
+  target_include_directories(semsim PUBLIC .)
   # set_target_properties(semgen PROPERTIES PUBLIC_HEADER "libsemgen.h")
 endif ()
 if (ENABLE_STATIC_LIB)
   add_library(semsim-static STATIC ${SEMSIM_SOURCES})
+  target_include_directories(semsim-static PUBLIC .)
   # set_target_properties(semgen-static PROPERTIES PUBLIC_HEADER "libsemgen.h")
   set_target_properties(semsim-static PROPERTIES OUTPUT_NAME semsim)
 endif ()

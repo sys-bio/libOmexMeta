@@ -108,7 +108,7 @@ include_directories(${libSBML_INCLUDE_DIRS})
 include_directories(${Raptor2_INCLUDE_DIRS})
 include_directories(${Rasqal_INCLUDE_DIRS})
 include_directories(${LibRDF_INCLUDE_DIRS})
-target_include_directories(semsim PUBLIC semsim)
+include_directories(.)
 
 # Add cellml, sbml
 add_library(semanticio STATIC cellml.cpp sbml.cpp sbml.h omex.cpp omex.h)

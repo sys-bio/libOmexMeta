@@ -6,4 +6,5 @@ doc/
 test/
 SBML/
 cmake-build-debug/
-
+/docs/html
+/docs/latex
