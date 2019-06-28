@@ -16,27 +16,27 @@ namespace semsim {
       public:
         /// Construct from a resource
         PhysicalProperty(const Resource& resource)
-          resource_(resource) {}
+          : resource_(resource) {}
 
         # if __cplusplus >= 201103L
         /// Move-construct from a resource
         PhysicalProperty(Resource&& resource)
-          resource_(std::move(resource)) {}
+          : resource_(std::move(resource)) {}
         # endif
 
         /// Construct directly from a string that contains the resource URI
         PhysicalProperty(const std::string& resource)
-          resource_(resource) {}
+          : resource_(resource) {}
 
         # if __cplusplus >= 201103L
         /// Move-construct directly from a string that contains the resource URI
         PhysicalProperty(std::string&& resource)
-          resource_(std::move(resource)) {}
+          : resource_(std::move(resource)) {}
         # endif
 
       protected:
         Resource resource_;
-    }
+    };
 }
 
 # endif

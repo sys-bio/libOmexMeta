@@ -1,24 +1,24 @@
 set (SEMSIM_SOURCES
   # annotation/Annotatable.cpp
   # annotation/Annotation.cpp
-  annotation/AnnotationCopier.cpp
-  annotation/Ontology.cpp
-  annotation/ReferenceOntologyAnnotation.cpp
-  annotation/ReferenceTerm.cpp
-  annotation/Relation.cpp
-  definitions/OtherKBconstants.cpp
-  definitions/PropertyType.cpp
-  definitions/RDFNamespace.cpp
-  definitions/SBMLconstants.cpp
-  definitions/SemSimRelations.cpp
-  definitions/SemSimTypes.cpp
-  model/physical/SemSimComponent.cpp
-  utilities/CaseInsensitiveComparator.cpp
-  utilities/DuplicateChecker.cpp
-  utilities/ErrorEntry.cpp
-  utilities/ErrorLog.cpp
-  utilities/SemSimComponentComparator.cpp
-  SemSimObject.cpp
+  # annotation/AnnotationCopier.cpp
+  # annotation/Ontology.cpp
+  # annotation/ReferenceOntologyAnnotation.cpp
+  # annotation/ReferenceTerm.cpp
+  # annotation/Relation.cpp
+  # definitions/OtherKBconstants.cpp
+  # definitions/PropertyType.cpp
+  # definitions/RDFNamespace.cpp
+  # definitions/SBMLconstants.cpp
+  # definitions/SemSimRelations.cpp
+  # definitions/SemSimTypes.cpp
+  # model/physical/SemSimComponent.cpp
+  # utilities/CaseInsensitiveComparator.cpp
+  # utilities/DuplicateChecker.cpp
+  # utilities/ErrorEntry.cpp
+  # utilities/ErrorLog.cpp
+  # utilities/SemSimComponentComparator.cpp
+  # SemSimObject.cpp
   SemSim.cpp
 )
 

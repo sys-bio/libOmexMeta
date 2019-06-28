@@ -8,7 +8,7 @@
 # include "semsim/DomainDescriptor.h"
 # include "semsim/PhysicalProperty.h"
 # include "semsim/Annotation.h"
-# include "semsim/SemSimObject.h"
+// # include "semsim/SemSimObject.h"
 
 SEMSIM_PUBLIC void libsemgen_hello();
 // void cellml_hello();
