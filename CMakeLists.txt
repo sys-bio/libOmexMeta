@@ -28,27 +28,45 @@ set(CMAKE_CXX_STANDARD ${SEMSIM_CXX_STANDARD})
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_compile_definitions(SEMSIM_INTERNAL_BUILD)
 
-# bindings
-
-option(BUILD_PYTHON "Build Python SWIG module" ON)
-option(BUILD_DOCS "Build the documentation (requires Doxygen)" ON)
-
 # dependencies
 
 find_package(LibXml2 REQUIRED)
 find_package(ZLIB    REQUIRED)
 find_package(PugiXML REQUIRED)
 find_package(LibZip  REQUIRED)
-find_package(libSBML REQUIRED)
+find_package(libSBML)
 find_package(Raptor2 REQUIRED)
 find_package(Rasqal  REQUIRED)
 find_package(LibRDF  REQUIRED)
 # https://stackoverflow.com/questions/20746936/cmake-of-what-use-is-find-package-if-you-need-to-specify-cmake-module-path-an?rq=1
 find_package(libcellml CONFIG)
 find_package(SWIG)
+
+find_package(Python COMPONENTS Interpreter Development)
+# check the Python version
+if(Python_VERSION_MAJOR EQUAL 3 AND Python_VERSION_MINOR LESS 4)
+    message(SEND_ERROR "Supported Python versions are 2.7 and >= 3.4. You have ${Python_VERSION}.")
+elseif(Python_VERSION_MAJOR EQUAL 2 AND Python_VERSION_MINOR LESS 7)
+  message(SEND_ERROR "Supported Python versions are 2.7 and >= 3.4. You have ${Python_VERSION}.")
+elseif(Python_VERSION_MAJOR EQUAL 1)
+  message(SEND_ERROR "Supported Python versions are 2.7 and >= 3.4. You have ${Python_VERSION}.")
+endif()
+
 find_package(Doxygen)
+
 # consider using https://cpp-netlib.org/ if networking is required (also handles URIs)
 # otherwise consider adding https://github.com/uriparser/uriparser for uri handling
+
+# automatically configured options
+option(ENABLE_SBML_SUPPORT "Enable support for SBML models" ${libSBML_FOUND})
+option(ENABLE_CELLML_SUPPORT "Enable support for CellML models" ${LIBCELLML_FOUND})
+option(BUILD_DOCS "Build the documentation (requires Doxygen)" ${Doxygen_FOUND})
+# bindings
+if (${SWIG_FOUND} AND ${PYTHON_FOUND})
+  option(BUILD_PYTHON "Build Python SWIG module" ON)
+else()
+  option(BUILD_PYTHON "Build Python SWIG module" OFF)
+endif()
 
 # diagnostics
 get_target_property(LIBCELLML_LIBS cellml LOCATION)
@@ -94,8 +112,11 @@ Configuration Summary
       LibCellML (optional)      ${LIBCELLML_LIBS}
       LibCellML include dir     ${LIBCELLML_INCLUDE_DIRS}
 
-    Language bindings:
-      Python                    ${BUILD_PYTHON}
+    Options:
+      SBML support              ${ENABLE_SBML_SUPPORT}
+      CellML suppert            ${ENABLE_CELLML_SUPPORT}
+      Python bindings           ${BUILD_PYTHON}
+      Generate documentation    ${BUILD_DOCS}
     "
 )
 
@@ -126,18 +147,21 @@ add_subdirectory(semsim)
 
 # Add subdirectories for each language if desired
 if(BUILD_PYTHON)
-  find_package (Python COMPONENTS Interpreter Development)
   if (Python_FOUND)
     include_directories(${PYTHON_INCLUDE_PATH})
     add_subdirectory(swig/python)
   else()
-    message(SEND_ERROR "BUILD_PYTHON is enabled but could not find a suitable Python runtime environment")
+    message(SEND_ERROR "BUILD_PYTHON is enabled but a suitable Python runtime environment was not found")
   endif()
 endif()
 # add_subdirectory(swig)
 # target_link_libraries(semgen /usr/local/Cellar/raptor/2.0.15/lib/libraptor2.dylib)
 # target_link_libraries(semgen-static /usr/local/Cellar/raptor/2.0.15/lib/libraptor2.dylib)
 
-if (Doxygen_FOUND AND BUILD_DOCS)
-  add_subdirectory(docs)
+if (BUILD_DOCS)
+  if (Doxygen_FOUND)
+    add_subdirectory(docs)
+  else()
+    message(SEND_ERROR "BUILD_DOCS was specified but Doxygen was not found")
+  endif()
 endif()
