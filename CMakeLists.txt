@@ -31,6 +31,7 @@ add_compile_definitions(SEMSIM_INTERNAL_BUILD)
 # bindings
 
 option(BUILD_PYTHON "Build Python SWIG module" ON)
+option(BUILD_DOCS "Build the documentation (requires Doxygen)" ON)
 
 # dependencies
 
@@ -45,6 +46,7 @@ find_package(LibRDF  REQUIRED)
 # https://stackoverflow.com/questions/20746936/cmake-of-what-use-is-find-package-if-you-need-to-specify-cmake-module-path-an?rq=1
 find_package(libcellml CONFIG)
 find_package(SWIG)
+find_package(Doxygen)
 # consider using https://cpp-netlib.org/ if networking is required (also handles URIs)
 # otherwise consider adding https://github.com/uriparser/uriparser for uri handling
 
@@ -106,7 +108,7 @@ include_directories(${libSBML_INCLUDE_DIRS})
 include_directories(${Raptor2_INCLUDE_DIRS})
 include_directories(${Rasqal_INCLUDE_DIRS})
 include_directories(${LibRDF_INCLUDE_DIRS})
-include_directories(.)
+target_include_directories(semsim PUBLIC semsim)
 
 # Add cellml, sbml
 add_library(semanticio STATIC cellml.cpp sbml.cpp sbml.h omex.cpp omex.h)
@@ -135,3 +137,7 @@ endif()
 # add_subdirectory(swig)
 # target_link_libraries(semgen /usr/local/Cellar/raptor/2.0.15/lib/libraptor2.dylib)
 # target_link_libraries(semgen-static /usr/local/Cellar/raptor/2.0.15/lib/libraptor2.dylib)
+
+if (Doxygen_FOUND AND BUILD_DOCS)
+  add_subdirectory(docs)
+endif()
