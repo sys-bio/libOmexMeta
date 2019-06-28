@@ -19,7 +19,7 @@ namespace semsim {
           ss << root << t;
           return  Resource(ss.str());
         }
-    }
+    };
 }
 
 # endif

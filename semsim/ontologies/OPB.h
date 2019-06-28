@@ -7,7 +7,7 @@
 
 namespace semsim {
     /**
-     * Class for the Ontology of Physics in Biology.
+     * Class for the <a href="http://bioportal.bioontology.org/ontologies/OPB">Ontology of Physics for Biology</a>.
      * Holds static members that represent terms.
      */
     SEMSIM_PUBLIC class OPB : public Ontology {
@@ -19,7 +19,7 @@ namespace semsim {
         }
 
         SEMSIM_CONSTEXPR static Resource fluid_volume = get(154);
-    }
+    };
 }
 
 # endif

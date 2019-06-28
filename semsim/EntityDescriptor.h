@@ -5,7 +5,7 @@
 
 namespace semsim {
     SEMSIM_PUBLIC class EntityDescriptor {
-    }
+    };
 }
 
 # endif

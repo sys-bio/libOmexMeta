@@ -64,7 +64,7 @@ namespace semsim {
       protected:
         /// A sequence of descriptor terms joined by structural relations
         DescriptorTerms terms_;
-    }
+    };
 }
 
 # endif

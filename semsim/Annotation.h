@@ -111,7 +111,7 @@ namespace semsim {
         PhysicalProperty property_;
         /// Stores the physical domain descriptor for this annotation
         DomainDescriptor domain_;
-    }
+    };
 }
 
 # endif
