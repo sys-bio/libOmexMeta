@@ -1,6 +1,8 @@
 # ifndef SEMSIM_ANNOTATION_H_
 # define SEMSIM_ANNOTATION_H_
 
+# include "semsim/Preproc.h"
+
 namespace semsim {
     /**
      * The main class for storing all info related to the
@@ -29,7 +31,7 @@ namespace semsim {
      * model applies) are not expressible in SBML and **must** instead be
      * written out to the OMEX RDF metadata.
      */
-    class Annotation {
+    SEMSIM_PUBLIC class Annotation {
       public:
         /**
          * Construct an Annotation given a physical entity description ("what" is being described?)
