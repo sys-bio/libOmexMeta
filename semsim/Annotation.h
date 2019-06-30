@@ -46,6 +46,7 @@ namespace semsim {
      */
     class SEMSIM_PUBLIC Annotation {
       public:
+        /// The type used to store the list of definition URIs
         typedef std::vector<Resource> Definitions;
         /**
          * Construct an Annotation given a physical entity description ("what" is being described?)

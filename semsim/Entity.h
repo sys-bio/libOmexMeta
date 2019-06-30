@@ -33,7 +33,9 @@ namespace semsim {
      */
     class SEMSIM_PUBLIC Entity {
       public:
+        /// The type used to store the list of definition URIs
         typedef std::vector<Resource> Definitions;
+        /// The type used to store the list of entity descriptors
         typedef std::vector<EntityDescriptor> Descriptors;
 
         /// Construct from a definition URI
