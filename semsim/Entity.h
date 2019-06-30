@@ -65,7 +65,7 @@ namespace semsim {
          * Treat the return type as opaque, as it may change
          * to some other iterable in a future release.
          *
-         * @return An iterable of @ref EntityDescriptor elements.
+         * @return An iterable of @ref Resource "Resources".
          */
         const Definitions& getDefinitions() const {
           return definitions_;
@@ -76,10 +76,17 @@ namespace semsim {
          * Treat the return type as opaque, as it may change
          * to some other iterable in a future release.
          *
-         * @return An iterable of @ref EntityDescriptor elements.
+         * @return An iterable of @ref Resource "Resources".
          */
         Definitions& getDefinitions() {
           return definitions_;
+        }
+
+        /**
+         * Add a definition to this entity.
+         */
+        void addDefinitions(const Resource& definition) {
+          definitions_.pish_back(definition);
         }
 
         /// Get the number of @ref EntityDescriptor elements contained in this @ref Entity.
