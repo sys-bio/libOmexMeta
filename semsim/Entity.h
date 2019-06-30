@@ -67,7 +67,7 @@ namespace semsim {
          *
          * @return An iterable of @ref EntityDescriptor elements.
          */
-        const Descriptors& getDefinitions() const {
+        const Definitions& getDefinitions() const {
           return definitions_;
         }
 
@@ -78,7 +78,7 @@ namespace semsim {
          *
          * @return An iterable of @ref EntityDescriptor elements.
          */
-        Descriptors& getDefinitions() {
+        Definitions& getDefinitions() {
           return definitions_;
         }
 
