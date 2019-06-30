@@ -12,7 +12,7 @@ namespace semsim {
      * <a href="http://bioportal.bioontology.org/ontologies/OPB">Ontology of Physics for Biology</a>,
      * which can be accessed using the @ref OPB class.
      */
-    SEMSIM_PUBLIC class PhysicalProperty {
+    class SEMSIM_PUBLIC PhysicalProperty {
       public:
         /// Construct from a resource
         PhysicalProperty(const Resource& resource)

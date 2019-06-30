@@ -31,7 +31,7 @@ namespace semsim {
      * // uses C++11 syntax (compile in C++11 mode)
      * @endcode
      */
-    SEMSIM_PUBLIC class CompositeAnnotation {
+    class SEMSIM_PUBLIC CompositeAnnotation {
       public:
         /**
          * Construct an Annotation given a physical entity description ("what" is being described?)

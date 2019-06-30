@@ -12,7 +12,7 @@ namespace semsim {
      * <a href="http://co.mbine.org/standards/qualifiers">BioModels biology qualifiers</a>
      * for describing model elements.
      */
-    SEMSIM_PUBLIC class Relation {
+    class SEMSIM_PUBLIC Relation {
       public:
         /**
          * Construct from URI.
