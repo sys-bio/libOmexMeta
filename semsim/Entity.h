@@ -13,6 +13,16 @@ namespace semsim {
      * The entity describes "what" a model element is and "where" it
      * is located in the physical world through a linear chain of descriptor terms
      * contained in the @ref EntityDescriptor element.
+     *
+     * An @ref Entity contains one or more *definition terms* (i.e. ontology resource URIs)
+     * that define what the entity is.
+     * A valid definition term could be <a href="https://identifiers.org/CHEBI:17234">CHEBI:17234</a>, which represents glucose
+     * (in the case of a chemical reaction network model) or
+     * <a href="http://identifiers.org/fma/FMA:9670">FMA:9670</a>, which represents blood
+     * (in the case of a physiological model).
+     *
+     * An @ref Entity also has @ref EntityDescriptor "EntityDescriptors", which
+     * serve to refine the entity by e.g. describing "where" it is in the physical world.
      * Currently, an @ref Entity can have zero or one @ref EntityDescriptor elements.
      * In the future, this may be extended to allow multiple @ref EntityDescriptor elements.
      */
@@ -82,6 +92,11 @@ namespace semsim {
         /// Get the @ref EntityDescriptor reference at index @p k.
         EntityDescriptor& getDescriptor(std::size_t k) {
           return descriptors_.at(k);
+        }
+
+        /// @return Whether this @ref Entity is empty (i.e. has no descriptors) or not.
+        bool isEmpty() const {
+          return !descriptors_.size();
         }
 
       protected:

@@ -5,7 +5,7 @@
 # include "semsim/Preproc.h"
 # include "semsim/Relation.h"
 # include "semsim/Resource.h"
-# include "semsim/DomainDescriptor.h"
+# include "semsim/Entity.h"
 # include "semsim/PhysicalProperty.h"
 # include "semsim/Annotation.h"
 // # include "semsim/SemSimObject.h"
