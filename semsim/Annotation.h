@@ -44,7 +44,7 @@ namespace semsim {
      * model applies) are not expressible in SBML and **must** instead be
      * written out to the OMEX RDF metadata.
      */
-    SEMSIM_PUBLIC class Annotation {
+    class SEMSIM_PUBLIC Annotation {
       public:
         typedef std::vector<Resource> Definitions;
         /**

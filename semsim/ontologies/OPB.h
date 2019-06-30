@@ -10,7 +10,7 @@ namespace semsim {
      * Class for the <a href="http://bioportal.bioontology.org/ontologies/OPB">Ontology of Physics for Biology</a>.
      * Holds static members that represent terms.
      */
-    SEMSIM_PUBLIC class OPB : public Ontology {
+    class SEMSIM_PUBLIC OPB : public Ontology {
       public:
         SEMSIM_CONSTEXPR static std::string root = "http://identifiers.org/opb/OPB_";
 

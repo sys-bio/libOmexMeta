@@ -27,7 +27,7 @@ namespace semsim {
      * Relation qual = bqb::hasTaxon;
      * @endcode
      */
-    SEMSIM_PUBLIC class bqb {
+    class SEMSIM_PUBLIC bqb {
       public:
         SEMSIM_CONSTEXPR static std::string root = "http://biomodels.net/biology-qualifiers/";
 

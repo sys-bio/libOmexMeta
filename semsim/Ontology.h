@@ -12,7 +12,7 @@ namespace semsim {
      * Class for the Ontology of Physics in Biology.
      * Holds static members that represent terms.
      */
-    SEMSIM_PUBLIC class OPB : public Ontology {
+    class SEMSIM_PUBLIC Ontology {
       protected:
         static Resource resolve(const std::string& root, const OntologyTerm& t, int n_digits) {
           std::stringstream ss;

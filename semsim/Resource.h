@@ -16,7 +16,7 @@ namespace semsim {
      * Resource myresource("https://identifiers.org/GO:0005829");
      * @endcode
      */
-    SEMSIM_PUBLIC class Resource {
+    class SEMSIM_PUBLIC Resource {
       public:
         /**
          * Construct from URI.
