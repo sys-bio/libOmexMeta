@@ -1,5 +1,5 @@
-# ifndef SEMSIM_ANNOTATION_H_
-# define SEMSIM_ANNOTATION_H_
+# ifndef SEMSIM_COMPOSITE_ANNOTATION_H_
+# define SEMSIM_COMPOSITE_ANNOTATION_H_
 
 # include "semsim/Preproc.h"
 # include "semsim/PhysicalProperty.h"
@@ -7,44 +7,31 @@
 
 namespace semsim {
     /**
-     * The plain annotation class is designed to represent
-     * traditional CV term annotations found in SBML models.
-     * These types of annotations are not as expressive
-     * as @ref CompositeAnnotation "CompositeAnnotations"
-     * and can only point to one or more @ref Resource "Resources"
-     * which define the entity.
-     * Overusing definition URIs is generally bad practice and,
-     * ideally, one should use a single definition URI that best
-     * captures the model element.
+     * Composite annotations allow more precise descriptions of model
+     * elements than plain @ref Annotation "Annotations".
+     * Whereas plain annotations specify the *chemical identity* of an SBML
+     * species or the *physiological identity* of a CellML variable,
+     * composite annotations also provide two additional pieces of information:
+     * the @ref PhysicalProperty of an element, which specifies the physical
+     * quantity the element represents (e.g. *concentration* or *amount* of an
+     * SBML species; *liquid volume* or *electric current* of a CellML variable),
+     * and a linear chain of terms (the @ref EntityDescriptor) that describes
+     * *what* the element is (e.g. the chemical identity of an SBML species)
+     * and *where* it is in the physical world.
+     * For example, to describe an SBML species representing the
+     * *cytosolic glucose concentration in a pancreatic beta cell*,
+     * one would need to specify that the species represents
+     * glucose (<a href="https://identifiers.org/CHEBI:17234">CHEBI:17234</a>)
+     * inside the cytosolic compartment (<a href="https://identifiers.org/GO:0005829">GO:0005829</a>)
+     * of a pancreatic beta cell (<a href="https://identifiers.org/CL:0000169">CL:0000169</a>).
+     * The following code snippet illustrates how to construct a @ref CompositeAnnotation
+     * for this example:
      *
-     * IGNORE:
-     * The main class for storing all info related to the
-     * annotation of a particular model element, i.e. any
-     * physical quantity in the model. Examples of model
-     * elements include SBML species concentrations,
-     * compartment volumes, or any CellML variable that
-     * represents a physical quantity (e.g. volume of the
-     * left ventricle in the
-     * <a href="https://github.com/combine-org/Annotations/blob/master/nonstandardized/CellML/smith_chase_nokes_shaw_wake_2004.omex">
-     * Smith et al. example</a>).
-     * Unlike the Java SemSim library, in this project,
-     * **all** annotations in SemSim are encoded in the composite annotation
-     * scheme (whether they are "true" composite annotations or not)
-     * because its generality makes processing easier.
-     * Traditional SBML annotations (which are called "CV terms")
-     * consist of a single <a href="http://co.mbine.org/standards/qualifiers">qualifier</a> (e.g. bqb:is)
-     * and a resource (usually an ontology term).
-     * These annotations describe the "what" but not the "where"
-     * parts of a composite annotation.
-     * This means that the domain descriptor will be empty.
-     * You can check whether an annotation is SBML-compatible
-     * by calling @ref Annotation::isSBMLCompatible
-     * True composite annotations (which can include a domain descriptor
-     * with multiple terms describing the physical domain where the
-     * model applies) are not expressible in SBML and **must** instead be
-     * written out to the OMEX RDF metadata.
+     * @code
+     * // uses C++11 syntax (compile in C++11 mode)
+     * @endcode
      */
-    SEMSIM_PUBLIC class Annotation {
+    SEMSIM_PUBLIC class CompositeAnnotation {
       public:
         /**
          * Construct an Annotation given a physical entity description ("what" is being described?)
@@ -59,8 +46,8 @@ namespace semsim {
          * @param entity The descriptor for the physical entity in this annotation. The entity tells you "what" the annotation describes.
          * @param domain The descriptor for the physical domain that the model entity applies to. This tells you "where". For example, if the annotation describes "cytosolic glucose concentration in a pancreatic beta cell", the "where" part would be the "cytosol of a pancreatic beta cell".
          */
-        Annotation(const PhysicalProperty& property, const DomainDescriptor& domain)
-          : property_(property), domain_(domain) {}
+        Annotation(const PhysicalProperty& property, const Entity& entity)
+          : property_(property), entity_(domain) {}
 
         /**
          * This function returns @p true if the physical entity
@@ -80,9 +67,11 @@ namespace semsim {
         // }
 
         /**
-         * This function returns @p true if the physical domain
-         * descriptor is empty. The domain describes "where"
-         * the physical entity is located. It is typically empty for
+         * This function returns @p true if the @ref Entity element of this composite annotation is empty.
+         * The entity describes "what" the model element is and "where"
+         * the it is located.
+         * IGNORE:
+         * It is typically empty for
          * annotations read in from SBML models, since SBML has
          * no way of expressing the "where" part of a composite annotation.
          * However, if the SBML entity is a **species** that resides in
@@ -91,15 +80,15 @@ namespace semsim {
          * and this function will return false).
          * @return Whether the physical domain descriptor is empty.
          */
-        bool isDomainEmpty() const {
+        bool isEntityEmpty() const {
           return domain_.isEmpty();
         }
 
         /**
          * @return The @ref EntityDescriptor describing the physical entity of this annotation.
          */
-        const DomainDescriptor& getDomain() const {
-          return domain_;
+        const Entity& getEntity() const {
+          return entity_;
         }
 
         /**
@@ -111,9 +100,9 @@ namespace semsim {
          * *compartment* that the entity resides in.
          * @return [description]
          */
-        bool isSBMLCompatible() const {
-          return isDomainEmpty();
-        }
+        // bool isSBMLCompatible() const {
+        //   return isDomainEmpty();
+        // }
 
       protected:
         /// Stores the physical entity descriptor for this annotation
@@ -121,7 +110,7 @@ namespace semsim {
         /// Stores the physical property for this annotation
         PhysicalProperty property_;
         /// Stores the physical domain descriptor for this annotation
-        DomainDescriptor domain_;
+        Entity entity_;
     };
 }
 
