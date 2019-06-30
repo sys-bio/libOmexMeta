@@ -46,6 +46,7 @@ namespace semsim {
      */
     SEMSIM_PUBLIC class Annotation {
       public:
+        typedef std::vector<Resource> Definitions;
         /**
          * Construct an Annotation given a physical entity description ("what" is being described?)
          * and a domain descriptor ("where" does the entity reside?)
@@ -59,8 +60,8 @@ namespace semsim {
          * @param entity The descriptor for the physical entity in this annotation. The entity tells you "what" the annotation describes.
          * @param domain The descriptor for the physical domain that the model entity applies to. This tells you "where". For example, if the annotation describes "cytosolic glucose concentration in a pancreatic beta cell", the "where" part would be the "cytosol of a pancreatic beta cell".
          */
-        Annotation(const PhysicalProperty& property, const DomainDescriptor& domain)
-          : property_(property), domain_(domain) {}
+        Annotation(const Resource& definition)
+          : definitions_(1,definition) {}
 
         /**
          * This function returns @p true if the physical entity
@@ -91,16 +92,16 @@ namespace semsim {
          * and this function will return false).
          * @return Whether the physical domain descriptor is empty.
          */
-        bool isDomainEmpty() const {
-          return domain_.isEmpty();
-        }
+        // bool isDomainEmpty() const {
+        //   return domain_.isEmpty();
+        // }
 
         /**
          * @return The @ref EntityDescriptor describing the physical entity of this annotation.
          */
-        const DomainDescriptor& getDomain() const {
-          return domain_;
-        }
+        // const DomainDescriptor& getDomain() const {
+        //   return domain_;
+        // }
 
         /**
          * This function returns @p true if this annotation
@@ -111,17 +112,19 @@ namespace semsim {
          * *compartment* that the entity resides in.
          * @return [description]
          */
-        bool isSBMLCompatible() const {
-          return isDomainEmpty();
-        }
+        // bool isSBMLCompatible() const {
+        //   return isDomainEmpty();
+        // }
 
       protected:
         /// Stores the physical entity descriptor for this annotation
         // EntityDescriptor entity_;
         /// Stores the physical property for this annotation
-        PhysicalProperty property_;
+        // PhysicalProperty property_;
         /// Stores the physical domain descriptor for this annotation
-        DomainDescriptor domain_;
+        // DomainDescriptor domain_;
+        /// Collection of definition URIs for this annotation
+        Definitions definitions_;
     };
 }
 
