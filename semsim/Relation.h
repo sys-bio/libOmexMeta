@@ -8,7 +8,7 @@ namespace semsim {
 
     /**
      * A relation is the predicate part of an RDF triple.
-     * SemSim primarily uses the
+     * SemSim uses the
      * <a href="http://co.mbine.org/standards/qualifiers">BioModels biology qualifiers</a>
      * for describing model elements.
      */

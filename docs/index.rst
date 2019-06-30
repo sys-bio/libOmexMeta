@@ -13,6 +13,22 @@ Welcome to SemSim's documentation!
 Docs
 ====
 
+ .. doxygenclass:: semsim::URI
+    :members:
+ .. doxygenclass:: semsim::Relation
+    :members:
+ .. doxygenclass:: semsim::Resource
+    :members:
+ .. doxygenclass:: semsim::Entity
+    :members:
+ .. doxygenclass:: semsim::EntityDescriptor
+    :members:
+ .. doxygenclass:: semsim::DescriptorTerm
+    :members:
+ .. doxygenclass:: semsim::PhysicalProperty
+    :members:
+ .. doxygenclass:: semsim::CompositeAnnotation
+    :members:
  .. doxygenclass:: semsim::Annotation
     :members:
 
