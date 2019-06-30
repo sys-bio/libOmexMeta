@@ -65,7 +65,7 @@ namespace semsim {
 
         # if __cplusplus >= 201103L
         /// Move-construct from an @ref EntityDescriptor
-        Entity(Resource&& definition)
+        Annotation(Resource&& definition)
           : definitions_({std::move(definition)}) {}
         # endif
 
@@ -104,8 +104,8 @@ namespace semsim {
         /**
          * Add a definition to this annotation.
          */
-        void addDefinitions(const Resource& definition) {
-          definitions_.pish_back(definition);
+        void addDefinition(const Resource& definition) {
+          definitions_.push_back(definition);
         }
 
         /**

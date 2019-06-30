@@ -85,8 +85,8 @@ namespace semsim {
         /**
          * Add a definition to this entity.
          */
-        void addDefinitions(const Resource& definition) {
-          definitions_.pish_back(definition);
+        void addDefinition(const Resource& definition) {
+          definitions_.push_back(definition);
         }
 
         /// Get the number of @ref EntityDescriptor elements contained in this @ref Entity.
