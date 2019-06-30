@@ -63,6 +63,51 @@ namespace semsim {
         Annotation(const Resource& definition)
           : definitions_(1,definition) {}
 
+        # if __cplusplus >= 201103L
+        /// Move-construct from an @ref EntityDescriptor
+        Entity(Resource&& definition)
+          : definitions_({std::move(definition)}) {}
+        # endif
+
+        /// Get the number of @ref EntityDescriptor elements contained in this @ref Entity.
+        std::size_t getNumDefinitions() const {
+          return definitions_.size();
+        }
+
+        /// Get the definition at index @p k.
+        const Resource& getDefinition(std::size_t k) const {
+          return definitions_.at(k);
+        }
+
+        /**
+         * Get an iterable range of definitions.
+         * Treat the return type as opaque, as it may change
+         * to some other iterable in a future release.
+         *
+         * @return An iterable of @ref Resource "Resources".
+         */
+        const Definitions& getDefinitions() const {
+          return definitions_;
+        }
+
+        /**
+         * Get an iterable range of definitions.
+         * Treat the return type as opaque, as it may change
+         * to some other iterable in a future release.
+         *
+         * @return An iterable of @ref Resource "Resources".
+         */
+        Definitions& getDefinitions() {
+          return definitions_;
+        }
+
+        /**
+         * Add a definition to this annotation.
+         */
+        void addDefinitions(const Resource& definition) {
+          definitions_.pish_back(definition);
+        }
+
         /**
          * This function returns @p true if the physical entity
          * descriptor is empty. This should not be the case
@@ -123,6 +168,8 @@ namespace semsim {
         // PhysicalProperty property_;
         /// Stores the physical domain descriptor for this annotation
         // DomainDescriptor domain_;
+
+
         /// Collection of definition URIs for this annotation
         Definitions definitions_;
     };
