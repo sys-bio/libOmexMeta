@@ -1,4 +1,6 @@
 % http://guitarpenguin.is-programmer.com/posts/48869.html
+% fix tex4ht:
+% https://tex.stackexchange.com/questions/185349/error-using-pgfsysdriver-with-tex4ht-only-shows-up-with-texlive-2014-ok-with-t
 \documentclass{article}
 \def\pgfsysdriver{pgfsys-tex4ht.def}
 %There is specialized output driver for use with tex4ht in Tikz. Using it, diagrams are saved in SVG.
@@ -8,7 +10,7 @@
 \usetikzlibrary{positioning,chains,fit,shapes,calc}
 \usetikzlibrary{arrows,shadows,trees}
 \begin{document}
-\begin{tikzpicture}[->,>=stealth',shorten >=5pt,auto,node distance=1cm]
+\begin{tikzpicture}[->,>=stealth',node distance=1cm]
 \tikzstyle{every state}=[fill=purple, draw=none, text=white]
 \node[state, scale=0.6] (A) at (0,0) {$0$};
 \node[state, scale=0.6, fill=violet] (B) at (3,0) {$1$};
