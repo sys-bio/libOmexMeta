@@ -1,24 +1,24 @@
 % http://guitarpenguin.is-programmer.com/posts/48869.html
 % fix tex4ht:
 % https://tex.stackexchange.com/questions/185349/error-using-pgfsysdriver-with-tex4ht-only-shows-up-with-texlive-2014-ok-with-t
+
 \documentclass{article}
 \def\pgfsysdriver{pgfsys-tex4ht.def}
 %There is specialized output driver for use with tex4ht in Tikz. Using it, diagrams are saved in SVG.
 \usepackage{tikz}
 \usepackage{pgf}
+
 \usetikzlibrary{automata}
 \usetikzlibrary{positioning,chains,fit,shapes,calc}
 \usetikzlibrary{arrows,shadows,trees}
+
 \begin{document}
 \begin{tikzpicture}[->,>=stealth',node distance=1cm]
-% \tikzstyle{every block}=[fill=purple, draw=none, text=white]
-\node[scale=0.6] (CompositeAnnotation) at (0,0) {Composite Annotation};
-\node[scale=0.6, fill=violet] (B) at (3,0) {$1$};
-\path (CompositeAnnotation) edge [bend left=10] node {\scriptsize{Tr(0, 40)}} (B)
-      (CompositeAnnotation) edge [bend left=45] node {\scriptsize{Tr(-35,-20)}} (B)
-      (CompositeAnnotation) edge [bend left=90] node {\scriptsize{Tr(35,-20)}} (B)
-      (B) edge [bend left=10] node {\scriptsize{Tr(-40,0)}} (CompositeAnnotation)
-      (B) edge [bend left=45] node {\scriptsize{Tr(35,20)}} (CompositeAnnotation)
-      (B) edge [bend left=90] node {\scriptsize{Tr(-35,20)}} (CompositeAnnotation);
+
+  % \tikzstyle{every block}=[fill=purple, draw=none, text=white]
+  \node[rectangle] (CompositeAnnotation) at (10,0) {Composite Annotation};
+  \node[rectangle,below left = of CompositeAnnotation] (PhysicalProperty) {PhysicalProperty};
+  \path (CompositeAnnotation) edge [bend left=10] node {\scriptsize{Tr(0, 40)}} (PhysicalProperty);
+
 \end{tikzpicture}
 \end{document}
