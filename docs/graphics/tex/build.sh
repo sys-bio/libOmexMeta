@@ -9,9 +9,10 @@ set -o verbose
 cd "$( dirname "$0:A" )"
 BASE_DIR=`pwd`
 cd ..
+rm -rf html
 mkdir -p html
 cd $_
 
 for f in $BASE_DIR/*.tex; do
-  htlatex $f
+  htlatex $f </dev/null
 done

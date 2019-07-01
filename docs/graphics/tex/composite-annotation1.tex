@@ -11,14 +11,14 @@
 \usetikzlibrary{arrows,shadows,trees}
 \begin{document}
 \begin{tikzpicture}[->,>=stealth',node distance=1cm]
-\tikzstyle{every state}=[fill=purple, draw=none, text=white]
-\node[state, scale=0.6] (A) at (0,0) {$0$};
-\node[state, scale=0.6, fill=violet] (B) at (3,0) {$1$};
-\path (A) edge [bend left=10] node {\scriptsize{Tr(0, 40)}} (B)
-      (A) edge [bend left=45] node {\scriptsize{Tr(-35,-20)}} (B)
-      (A) edge [bend left=90] node {\scriptsize{Tr(35,-20)}} (B)
-      (B) edge [bend left=10] node {\scriptsize{Tr(-40,0)}} (A)
-      (B) edge [bend left=45] node {\scriptsize{Tr(35,20)}} (A)
-      (B) edge [bend left=90] node {\scriptsize{Tr(-35,20)}} (A);
+% \tikzstyle{every block}=[fill=purple, draw=none, text=white]
+\node[scale=0.6] (CompositeAnnotation) at (0,0) {Composite Annotation};
+\node[scale=0.6, fill=violet] (B) at (3,0) {$1$};
+\path (CompositeAnnotation) edge [bend left=10] node {\scriptsize{Tr(0, 40)}} (B)
+      (CompositeAnnotation) edge [bend left=45] node {\scriptsize{Tr(-35,-20)}} (B)
+      (CompositeAnnotation) edge [bend left=90] node {\scriptsize{Tr(35,-20)}} (B)
+      (B) edge [bend left=10] node {\scriptsize{Tr(-40,0)}} (CompositeAnnotation)
+      (B) edge [bend left=45] node {\scriptsize{Tr(35,20)}} (CompositeAnnotation)
+      (B) edge [bend left=90] node {\scriptsize{Tr(-35,20)}} (CompositeAnnotation);
 \end{tikzpicture}
 \end{document}
