@@ -9,3 +9,4 @@ cmake-build-debug/
 /docs/html
 /docs/latex
 /docs/graphics/html
+/texput.log
