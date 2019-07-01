@@ -7,6 +7,7 @@
 %There is specialized output driver for use with tex4ht in Tikz. Using it, diagrams are saved in SVG.
 \usepackage{tikz}
 \usepackage{pgf}
+\usetikzlibrary{arrows.meta}
 
 \usetikzlibrary{automata}
 \usetikzlibrary{positioning,chains,fit,shapes,calc}
@@ -19,8 +20,8 @@
   \node[block] (CompositeAnnotation) at (10,0) {CompositeAnnotation};
   \node[block,below left = 2cm and 1cm of CompositeAnnotation] (PhysicalProperty) {PhysicalProperty};
   \node[block,below right = 2cm and 1cm of CompositeAnnotation] (Entity) {Entity};
-  \draw (CompositeAnnotation.south) to [out=-90,in=90] (PhysicalProperty.north);
-  \draw (CompositeAnnotation.south) to [out=-90,in=90] (Entity.north);
+  \draw[-{Latex[length=3mm]}] (CompositeAnnotation.south) to [out=-90,in=90] (PhysicalProperty.north);
+  \draw[-{Latex[length=3mm]}] (CompositeAnnotation.south) to [out=-90,in=90] (Entity.north);
 
 \end{tikzpicture}
 \end{document}
