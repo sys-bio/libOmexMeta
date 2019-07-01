@@ -15,10 +15,12 @@
 \begin{document}
 \begin{tikzpicture}[->,>=stealth',node distance=1cm]
 
-  % \tikzstyle{every block}=[fill=purple, draw=none, text=white]
-  \node[rectangle] (CompositeAnnotation) at (10,0) {Composite Annotation};
-  \node[rectangle,below left = of CompositeAnnotation] (PhysicalProperty) {PhysicalProperty};
-  \path (CompositeAnnotation) edge [bend left=10] node {\scriptsize{Tr(0, 40)}} (PhysicalProperty);
+  \tikzstyle{block}=[fill=purple, draw=none, text=white]
+  \node[block] (CompositeAnnotation) at (10,0) {Composite Annotation};
+  \node[block,below left = 3cm and 2cm of CompositeAnnotation] (PhysicalProperty) {PhysicalProperty};
+  \node[block,below right = 3cm and 2cm of CompositeAnnotation] (Entity) {Entity};
+  \draw (CompositeAnnotation.south) to [out=-90,in=90] (PhysicalProperty.north);
+  \draw (CompositeAnnotation.south) to [out=-90,in=90] (Entity.north);
 
 \end{tikzpicture}
 \end{document}
