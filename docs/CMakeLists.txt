@@ -34,3 +34,11 @@ add_custom_target(Sphinx ALL
                   ${SPHINX_SOURCE} ${SPHINX_BUILD}
                   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
                   COMMENT "Generating documentation with Sphinx")
+
+# copy graphics dir
+file(GLOB GRAPHICS_FILES graphics/html/*)
+
+foreach(f ${GRAPHICS_FILES})
+  get_filename_component(fn ${f} NAME)
+  configure_file(${f} docs/sphinx/graphics/${fn} COPYONLY)
+endforeach ()
