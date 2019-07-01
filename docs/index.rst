@@ -54,13 +54,13 @@ Thus, semantic annotations are the only way to establish biological meaning in C
 
 To address these drawbacks, we developed `SimSem/SemGen <http://sbp.bhi.washington.edu/projects/semgen>`_.
 SemSim is a library for working with semantic annotations in SBML and CellML models, and SemGen
-is a GUI application for annotating models.
+is a GUI application for annotating models :cite:`10.1093/bioinformatics/bty829`.
 Both SemSim and SemGen were written in Java.
 This project aims to provide a C++ / Python (via an extension module) implementation with a lean / reduced feature set.
 
 In both projects (Java/C++), the main goal is to provide a tool for working with *composite annotations*,
 which are designed to address the limitations of current annotation systems in CellML and SBML.
-We have previously described composite annotations :cite:`1987:nelson`.
+We have previously described composite annotations :cite:`gennari2011multiple,neal2018harmonizing`.
 
 .. toctree::
    :maxdepth: 1
