@@ -43,7 +43,7 @@ namespace semsim {
          * a entity descriptor from a list of terms
          * passed in as arguments.
          *
-         * @code
+         * @code{.cpp}
          * EntityDescriptor mydesc = EntityDescriptor(DescriptorTerm(),
          *                                            DescriptorTerm());
          * @endcode

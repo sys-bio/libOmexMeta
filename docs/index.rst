@@ -7,27 +7,24 @@ Welcome to SemSim's documentation!
 ==================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
+
+   cppapi/uri.rst
+   cppapi/relation.rst
+   cppapi/physical_property.rst
+   cppapi/composite_annotation.rst
 
 Docs
 ====
 
- .. doxygenclass:: semsim::URI
-    :members:
- .. doxygenclass:: semsim::Relation
-    :members:
+
+
  .. doxygenclass:: semsim::Resource
-    :members:
- .. doxygenclass:: semsim::Entity
     :members:
  .. doxygenclass:: semsim::EntityDescriptor
     :members:
  .. doxygenclass:: semsim::DescriptorTerm
-    :members:
- .. doxygenclass:: semsim::PhysicalProperty
-    :members:
- .. doxygenclass:: semsim::CompositeAnnotation
     :members:
  .. doxygenclass:: semsim::Annotation
     :members:

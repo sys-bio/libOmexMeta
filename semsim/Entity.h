@@ -101,7 +101,7 @@ namespace semsim {
          * Treat the return type as opaque, as it may change
          * to some other iterable in a future release.
          *
-         * @code
+         * @code{.cpp}
          * Entity e();
          * // C++11 range-based for
          * for(const EntityDescriptor& d : e.getDescriptors()) {
@@ -119,7 +119,7 @@ namespace semsim {
          * Treat the return type as opaque, as it may change
          * to some other iterable in a future release.
          *
-         * @code
+         * @code{.cpp}
          * Entity e();
          * // C++11 range-based for
          * for(const EntityDescriptor& d : e.getDescriptors()) {
