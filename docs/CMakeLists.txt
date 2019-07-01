@@ -4,7 +4,7 @@ get_target_property(SEMSIM_PUBLIC_HEADER_DIR semsim INTERFACE_INCLUDE_DIRECTORIE
 file(GLOB_RECURSE SEMSIM_PUBLIC_HEADERS ${SEMSIM_PUBLIC_HEADER_DIR}/*.h)
 
 set(DOXYGEN_INPUT_DIR ${PROJECT_SOURCE_DIR}/semsim)
-set(DOXYGEN_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/docs/doxygen)
+set(DOXYGEN_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/doxygen)
 set(DOXYGEN_INDEX_FILE ${DOXYGEN_OUTPUT_DIR}/html/index.html)
 set(DOXYFILE_IN ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in)
 set(DOXYFILE_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
@@ -25,7 +25,9 @@ add_custom_target(Doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
 find_package(Sphinx REQUIRED)
 
 set(SPHINX_SOURCE ${CMAKE_CURRENT_SOURCE_DIR})
-set(SPHINX_BUILD ${CMAKE_CURRENT_BINARY_DIR}/docs/sphinx)
+set(SPHINX_BUILD ${CMAKE_CURRENT_BINARY_DIR}/sphinx)
+
+configure_file(refs.bib refs.bib COPYONLY)
 
 add_custom_target(Sphinx ALL
                   COMMAND ${SPHINX_EXECUTABLE} -b html
@@ -33,6 +35,7 @@ add_custom_target(Sphinx ALL
                   -Dbreathe_projects.SemSim=${DOXYGEN_OUTPUT_DIR}/xml
                   ${SPHINX_SOURCE} ${SPHINX_BUILD}
                   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+                  DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/refs.bib
                   COMMENT "Generating documentation with Sphinx")
 
 # copy graphics dir
@@ -40,5 +43,5 @@ file(GLOB GRAPHICS_FILES graphics/html/*)
 
 foreach(f ${GRAPHICS_FILES})
   get_filename_component(fn ${f} NAME)
-  configure_file(${f} docs/sphinx/graphics/${fn} COPYONLY)
+  configure_file(${f} sphinx/graphics/${fn} COPYONLY)
 endforeach ()

@@ -53,10 +53,14 @@ Unlike SBML, CellML does not have a structured way of specifying what model elem
 Thus, semantic annotations are the only way to establish biological meaning in CellML models.
 
 To address these drawbacks, we developed `SimSem/SemGen <http://sbp.bhi.washington.edu/projects/semgen>`_.
-SemSim is a Java library for working with semantic annotations in SBML and CellML models, and SemGen
+SemSim is a library for working with semantic annotations in SBML and CellML models, and SemGen
 is a GUI application for annotating models.
 Both SemSim and SemGen were written in Java.
 This project aims to provide a C++ / Python (via an extension module) implementation with a lean / reduced feature set.
+
+In both projects (Java/C++), the main goal is to provide a tool for working with *composite annotations*,
+which are designed to address the limitations of current annotation systems in CellML and SBML.
+We have previously described composite annotations :cite:`1987:nelson`.
 
 .. toctree::
    :maxdepth: 1
@@ -69,9 +73,15 @@ This project aims to provide a C++ / Python (via an extension module) implementa
    cppapi/entity_descriptor.rst
    cppapi/descriptor_term.rst
    cppapi/physical_property.rst
-   Something
-     cppapi/composite_annotation.rst
+   cppapi/composite_annotation.rst
    cppapi/annotation.rst
+
+References
+==========
+
+.. bibliography:: refs.bib
+   :cited:
+   :style: plain
 
 Indices and tables
 ==================

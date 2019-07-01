@@ -33,6 +33,7 @@ release = '0.1.0'
 extensions = [
     'breathe',
     'sphinx.ext.autosectionlabel',
+    'sphinxcontrib.bibtex',
 ]
 
 breathe_default_project = "SemSim"
