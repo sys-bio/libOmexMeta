@@ -8,26 +8,17 @@ Welcome to SemSim's documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents:
+   :caption: C++ API:
 
    cppapi/uri.rst
    cppapi/relation.rst
+   cppapi/resource.rst
+   cppapi/entity.rst
+   cppapi/entity_descriptor.rst
+   cppapi/descriptor_term.rst
    cppapi/physical_property.rst
    cppapi/composite_annotation.rst
-
-Docs
-====
-
-
-
- .. doxygenclass:: semsim::Resource
-    :members:
- .. doxygenclass:: semsim::EntityDescriptor
-    :members:
- .. doxygenclass:: semsim::DescriptorTerm
-    :members:
- .. doxygenclass:: semsim::Annotation
-    :members:
+   cppapi/annotation.rst
 
 Indices and tables
 ==================
