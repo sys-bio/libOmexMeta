@@ -8,8 +8,8 @@
 namespace semsim {
     /**
      * Composite annotations allow more precise descriptions of model
-     * elements than plain @ref Annotation "Annotations".
-     * Whereas plain annotations specify the *chemical identity* of an SBML
+     * elements than singular ("plain") @ref Annotation "Annotations".
+     * Whereas singular annotations specify the *chemical identity* of an SBML
      * species or the *physiological identity* of a CellML variable,
      * composite annotations also provide two additional pieces of information:
      * the @ref PhysicalProperty of an element, which specifies the physical
@@ -18,6 +18,7 @@ namespace semsim {
      * and a linear chain of terms (the @ref EntityDescriptor) that describes
      * *what* the element is (e.g. the chemical identity of an SBML species)
      * and *where* it is in the physical world.
+     *
      * For example, to describe an SBML species representing the
      * *cytosolic glucose concentration in a pancreatic beta cell*,
      * one would need to specify that the species represents
@@ -27,7 +28,7 @@ namespace semsim {
      * The following code snippet illustrates how to construct a @ref CompositeAnnotation
      * for this example:
      *
-     * @code
+     * @code{.cpp}
      * // uses C++11 syntax (compile in C++11 mode)
      * @endcode
      */

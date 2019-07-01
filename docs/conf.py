@@ -32,6 +32,7 @@ release = '0.1.0'
 # ones.
 extensions = [
     'breathe',
+    'sphinx.ext.autosectionlabel',
 ]
 
 breathe_default_project = "SemSim"

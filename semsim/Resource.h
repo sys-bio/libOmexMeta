@@ -11,7 +11,7 @@ namespace semsim {
      * the "object" part of an RDF triple).
      * Example:
      *
-     * @code
+     * @code{.cpp}
      * // identifies the cytosolic compartment of a cell
      * Resource myresource("https://identifiers.org/GO:0005829");
      * @endcode

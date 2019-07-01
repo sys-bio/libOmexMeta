@@ -11,7 +11,7 @@ namespace semsim {
      * <a href="http://co.mbine.org/standards/qualifiers">BioModels biolocial qualifers</a>.
      * The members are:
      *
-     * @code
+     * @code{.cpp}
      * Relation qual = bqb::encodes;
      * Relation qual = bqb::hasPart;
      * Relation qual = bqb::hasProperty;
