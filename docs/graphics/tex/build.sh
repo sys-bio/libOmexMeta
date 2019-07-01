@@ -13,5 +13,5 @@ mkdir -p html
 cd $_
 
 for f in $BASE_DIR/*.tex; do
-  htlatex -interaction nonstopmode --halt-on-error $f
+  htlatex "--interaction=nonstopmode" $f >/dev/null
 done
