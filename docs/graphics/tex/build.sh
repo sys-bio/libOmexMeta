@@ -16,3 +16,8 @@ cd $_
 for f in $BASE_DIR/*.tex; do
   htlatex $f </dev/null
 done
+
+# fix links in svgs
+for f in $BASE_DIR/../html/*.svg; do
+  sed -Ei 's:href="([^"]+)" >([^<>]+)</a>:href="\1" target="_parent">\2</a>:g' $f
+done
