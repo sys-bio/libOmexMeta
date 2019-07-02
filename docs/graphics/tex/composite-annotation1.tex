@@ -18,9 +18,10 @@
 \begin{tikzpicture}[->,>=stealth',node distance=1cm]
 
   \tikzstyle{block}=[fill=white, draw={rgb:red,225;green,228;blue,229}, text={rgb:red,64;green,112;blue,160}, scale=1.0, inner sep=10pt]
-  \node[block] (CompositeAnnotation) at (10,0) {\href{https://www.google.com/}{CompositeAnnotation}};
-  \node[block,below left = 2cm and 1cm of CompositeAnnotation] (PhysicalProperty) {PhysicalProperty};
-  \node[block,below right = 2cm and 1cm of CompositeAnnotation] (Entity) {Entity};
+  \node[block] (CompositeAnnotation) at (10,0) {\href{../cppapi/composite_annotation.html}{CompositeAnnotation}};
+  \node[block,below left = 2cm and 1cm of CompositeAnnotation]
+    (PhysicalProperty) {\href{../cppapi/physical_property.html}{PhysicalProperty}};
+  \node[block,below right = 2cm and 1cm of CompositeAnnotation] (Entity) {\href{../cppapi/entity.html}{Entity}};
   \draw[-{Latex[length=3mm]}] (CompositeAnnotation.south) to [out=-90,in=90] (PhysicalProperty.north);
   \draw[-{Latex[length=3mm]}] (CompositeAnnotation.south) to [out=-90,in=90] (Entity.north);
 

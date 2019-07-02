@@ -7,7 +7,8 @@
 # include "semsim/Resource.h"
 # include "semsim/Entity.h"
 # include "semsim/PhysicalProperty.h"
-# include "semsim/Annotation.h"
+# include "semsim/SingularAnnotation.h"
+# include "semsim/CompositeAnnotation.h"
 // # include "semsim/SemSimObject.h"
 
 SEMSIM_PUBLIC void libsemgen_hello();

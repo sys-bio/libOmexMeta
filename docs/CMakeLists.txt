@@ -29,6 +29,8 @@ set(SPHINX_BUILD ${CMAKE_CURRENT_BINARY_DIR}/sphinx)
 
 configure_file(refs.bib refs.bib COPYONLY)
 
+file(GLOB GRAPHICS_FILES graphics/html/*)
+
 add_custom_target(Sphinx ALL
                   COMMAND ${SPHINX_EXECUTABLE} -b html
                   # Tell Breathe where to find the Doxygen output
@@ -36,11 +38,10 @@ add_custom_target(Sphinx ALL
                   ${SPHINX_SOURCE} ${SPHINX_BUILD}
                   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
                   DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/refs.bib
+                  DEPENDS ${GRAPHICS_FILES}
                   COMMENT "Generating documentation with Sphinx")
 
 # copy graphics dir
-file(GLOB GRAPHICS_FILES graphics/html/*)
-
 foreach(f ${GRAPHICS_FILES})
   get_filename_component(fn ${f} NAME)
   configure_file(${f} sphinx/graphics/${fn} COPYONLY)

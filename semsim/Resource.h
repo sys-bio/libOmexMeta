@@ -7,7 +7,7 @@
 namespace semsim {
 
     /**
-     * A resource is an ontology term (forms
+     * A resource is an ontology term (
      * the "object" part of an RDF triple).
      * Example:
      *

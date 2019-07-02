@@ -47,8 +47,8 @@ namespace semsim {
          * @param entity The descriptor for the physical entity in this annotation. The entity tells you "what" the annotation describes.
          * @param domain The descriptor for the physical domain that the model entity applies to. This tells you "where". For example, if the annotation describes "cytosolic glucose concentration in a pancreatic beta cell", the "where" part would be the "cytosol of a pancreatic beta cell".
          */
-        Annotation(const PhysicalProperty& property, const Entity& entity)
-          : property_(property), entity_(domain) {}
+        CompositeAnnotation(const PhysicalProperty& property, const Entity& entity)
+          : property_(property), entity_(entity) {}
 
         /**
          * This function returns @p true if the physical entity
@@ -82,7 +82,7 @@ namespace semsim {
          * @return Whether the physical domain descriptor is empty.
          */
         bool isEntityEmpty() const {
-          return domain_.isEmpty();
+          return entity_.isEmpty();
         }
 
         /**

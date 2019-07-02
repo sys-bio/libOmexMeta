@@ -44,7 +44,7 @@ namespace semsim {
      * model applies) are not expressible in SBML and **must** instead be
      * written out to the OMEX RDF metadata.
      */
-    class SEMSIM_PUBLIC Annotation {
+    class SEMSIM_PUBLIC SingularAnnotation {
       public:
         /// The type used to store the list of definition URIs
         typedef std::vector<Resource> Definitions;
@@ -61,12 +61,12 @@ namespace semsim {
          * @param entity The descriptor for the physical entity in this annotation. The entity tells you "what" the annotation describes.
          * @param domain The descriptor for the physical domain that the model entity applies to. This tells you "where". For example, if the annotation describes "cytosolic glucose concentration in a pancreatic beta cell", the "where" part would be the "cytosol of a pancreatic beta cell".
          */
-        Annotation(const Resource& definition)
+        SingularAnnotation(const Resource& definition)
           : definitions_(1,definition) {}
 
         # if __cplusplus >= 201103L
         /// Move-construct from an @ref EntityDescriptor
-        Annotation(Resource&& definition)
+        SingularAnnotation(Resource&& definition)
           : definitions_({std::move(definition)}) {}
         # endif
 
