@@ -5,12 +5,17 @@
 # include "semsim/Preproc.h"
 # include "semsim/Relation.h"
 # include "semsim/Resource.h"
+# include "semsim/EntityBase.h"
 # include "semsim/Entity.h"
 # include "semsim/PhysicalProperty.h"
 # include "semsim/SingularAnnotation.h"
 # include "semsim/CompositeAnnotation.h"
 # include "semsim/Component.h"
 # include "semsim/Model.h"
+# include "semsim/sbml/SBMLModel.h"
+# include "semsim/sbml/SBMLImporter.h"
+
+# include "semsim/BiomodelsQualifiers.h"
 // # include "semsim/SemSimObject.h"
 
 SEMSIM_PUBLIC void libsemgen_hello();

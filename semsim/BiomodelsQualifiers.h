@@ -27,11 +27,25 @@ namespace semsim {
      * Relation qual = bqb::hasTaxon;
      * @endcode
      */
-    class SEMSIM_PUBLIC bqb {
+    class __attribute__ ((visibility ("default"))) bqb {
       public:
-        SEMSIM_CONSTEXPR static std::string root = "http://biomodels.net/biology-qualifiers/";
+        const static std::string root;
 
-        SEMSIM_CONSTEXPR static Relation is = Relation(root+"is");
+        void doIt() {}
+
+        __attribute__ ((visibility ("default"))) const static Relation is;
+        const static Relation hasPart;
+        const static Relation isPartOf;
+        const static Relation isVersionOf;
+        const static Relation hasVersion;
+        const static Relation isHomologTo;
+        const static Relation isDescribedBy;
+        const static Relation isEncodedBy;
+        const static Relation encodes;
+        const static Relation occursIn;
+        const static Relation hasProperty;
+        const static Relation isPropertyOf;
+        const static Relation hasTaxon;
     };
 }
 # endif

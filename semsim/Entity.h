@@ -3,6 +3,7 @@
 
 # include "semsim/Preproc.h"
 # include "semsim/Resource.h"
+# include "semsim/EntityBase.h"
 # include "semsim/EntityDescriptor.h"
 
 # include <string>
@@ -31,65 +32,24 @@ namespace semsim {
      * Currently, an @ref Entity can have zero or one @ref EntityDescriptor elements.
      * In the future, this may be extended to allow multiple @ref EntityDescriptor elements.
      */
-    class SEMSIM_PUBLIC Entity {
+    class SEMSIM_PUBLIC Entity : public EntityBase {
       public:
-        /// The type used to store the list of definition URIs. Treat as opaque.
-        typedef std::vector<Resource> Definitions;
         /// The type used to store the list of entity descriptors. Treat as opaque.
         typedef std::vector<EntityDescriptor> Descriptors;
 
         /// Construct from a definition URI
         Entity(const Resource& definition)
-          : definitions_(1,definition) {}
+          : EntityBase(definition) {}
 
         /// Construct from an @ref EntityDescriptor
         Entity(const Resource& definition, const EntityDescriptor& d)
-          : definitions_(1,definition), descriptors_(1,d) {}
+          : EntityBase(definition), descriptors_(1,d) {}
 
         # if __cplusplus >= 201103L
         /// Move-construct from an @ref EntityDescriptor
         Entity(Resource&& definition, EntityDescriptor&& d)
-          : definitions_({std::move(definition)}), descriptors_({std::move(d)}) {}
+          : EntityBase({std::move(definition)}), descriptors_({std::move(d)}) {}
         # endif
-
-        /// Get the number of @ref EntityDescriptor elements contained in this @ref Entity.
-        std::size_t getNumDefinitions() const {
-          return definitions_.size();
-        }
-
-        /// Get the definition at index @p k.
-        const Resource& getDefinition(std::size_t k) const {
-          return definitions_.at(k);
-        }
-
-        /**
-         * Get an iterable range of definitions.
-         * Treat the return type as opaque, as it may change
-         * to some other iterable in a future release.
-         *
-         * @return An iterable of @ref Resource "Resources".
-         */
-        const Definitions& getDefinitions() const {
-          return definitions_;
-        }
-
-        /**
-         * Get an iterable range of definitions.
-         * Treat the return type as opaque, as it may change
-         * to some other iterable in a future release.
-         *
-         * @return An iterable of @ref Resource "Resources".
-         */
-        Definitions& getDefinitions() {
-          return definitions_;
-        }
-
-        /**
-         * Add a definition to this entity.
-         */
-        void addDefinition(const Resource& definition) {
-          definitions_.push_back(definition);
-        }
 
         /// Get the number of @ref EntityDescriptor elements contained in this @ref Entity.
         std::size_t getNumDescriptors() const {
@@ -142,13 +102,8 @@ namespace semsim {
           return descriptors_.at(k);
         }
 
-        /// @return Whether this @ref Entity is empty (i.e. has no definitions).
-        bool isEmpty() const {
-          return !definitions_.size();
-        }
-
       protected:
-        Definitions definitions_;
+        /// Stores all descriptors.
         Descriptors descriptors_;
     };
 

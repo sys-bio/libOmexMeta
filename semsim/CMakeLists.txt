@@ -19,6 +19,7 @@ set (SEMSIM_SOURCES
   # utilities/ErrorLog.cpp
   # utilities/SemSimComponentComparator.cpp
   # SemSimObject.cpp
+  BiomodelsQualifiers.cpp
   SemSim.cpp
 )
 
@@ -38,13 +39,13 @@ endif ()
 if (${ENABLE_SHARED_LIB})
   list(APPEND LIBRARIES semsim)
   if(NOT DEFINED SEMSIM_LIBRARY)
-    set(SEMSIM_LIBRARY semsim)
+    set(SEMSIM_LIBRARY semsim PARENT_SCOPE)
   endif()
 endif ()
 if (${ENABLE_STATIC_LIB})
   list(APPEND LIBRARIES semsim-static)
   if(NOT DEFINED SEMSIM_LIBRARY)
-    set(SEMSIM_LIBRARY semsim-static)
+    set(SEMSIM_LIBRARY semsim-static PARENT_SCOPE)
   endif()
 endif ()
 foreach(l ${LIBRARIES})

@@ -17,7 +17,7 @@ namespace semsim {
 
         /// Add a new component to the model (copy)
         void addComponent(const Component& component) {
-          components_.emplace_back(component);
+          components_.push_back(component);
         }
 
         # if __cplusplus >= 201103L
