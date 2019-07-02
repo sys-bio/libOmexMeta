@@ -9,6 +9,8 @@
 # include "semsim/PhysicalProperty.h"
 # include "semsim/SingularAnnotation.h"
 # include "semsim/CompositeAnnotation.h"
+# include "semsim/Component.h"
+# include "semsim/Model.h"
 // # include "semsim/SemSimObject.h"
 
 SEMSIM_PUBLIC void libsemgen_hello();

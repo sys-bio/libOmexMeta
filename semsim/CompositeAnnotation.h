@@ -2,6 +2,7 @@
 # define SEMSIM_COMPOSITE_ANNOTATION_H_
 
 # include "semsim/Preproc.h"
+# include "semsim/AnnotationBase.h"
 # include "semsim/PhysicalProperty.h"
 # include "semsim/Entity.h"
 
@@ -32,7 +33,7 @@ namespace semsim {
      * // uses C++11 syntax (compile in C++11 mode)
      * @endcode
      */
-    class SEMSIM_PUBLIC CompositeAnnotation {
+    class SEMSIM_PUBLIC CompositeAnnotation : public AnnotationBase {
       public:
         /**
          * Construct an Annotation given a physical entity description ("what" is being described?)
@@ -49,6 +50,16 @@ namespace semsim {
          */
         CompositeAnnotation(const PhysicalProperty& property, const Entity& entity)
           : property_(property), entity_(entity) {}
+
+        /// Copy constructor
+        CompositeAnnotation(const CompositeAnnotation& other)
+          :property_(other.property_), entity_(other.entity_) {}
+
+        # if __cplusplus >= 201103L
+        /// Move constructor
+        CompositeAnnotation(CompositeAnnotation&& other)
+          :property_(std::move(other.property_)), entity_(std::move(other.entity_)) {}
+        # endif
 
         /**
          * This function returns @p true if the physical entity
@@ -104,6 +115,12 @@ namespace semsim {
         // bool isSBMLCompatible() const {
         //   return isDomainEmpty();
         // }
+
+
+        /// Create a copy of this object using the correct derived class's type.
+        virtual AnnotationBase* clone() const {
+          return new CompositeAnnotation(*this);
+        }
 
       protected:
         /// Stores the physical entity descriptor for this annotation

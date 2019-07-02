@@ -18,7 +18,7 @@ namespace semsim {
      * ideally, one should use a single definition URI that best
      * captures the model element.
      */
-    class SEMSIM_PUBLIC SingularAnnotation {
+    class SEMSIM_PUBLIC SingularAnnotation : public AnnotationBase {
       public:
         /// The type used to store the list of definition URIs
         typedef std::vector<Resource> Definitions;
@@ -44,6 +44,16 @@ namespace semsim {
         /// Move-construct from an @ref EntityDescriptor
         SingularAnnotation(Resource&& definition)
           : definitions_({std::move(definition)}) {}
+        # endif
+
+        /// Copy constructor
+        SingularAnnotation(const SingularAnnotation& other)
+          :definitions_(other.definitions_) {}
+
+        # if __cplusplus >= 201103L
+        /// Move constructor
+        SingularAnnotation(SingularAnnotation&& other)
+          :definitions_(std::move(other.definitions_)) {}
         # endif
 
         /// Get the number of @ref EntityDescriptor elements contained in this @ref Entity.
@@ -85,6 +95,10 @@ namespace semsim {
           definitions_.push_back(definition);
         }
 
+        /// Create a copy of this object using the correct derived class's type.
+        virtual AnnotationBase* clone() const {
+          return new SingularAnnotation(*this);
+        }
       protected:
         /// Collection of definition URIs for this annotation
         Definitions definitions_;
