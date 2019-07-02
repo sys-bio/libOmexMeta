@@ -4,5 +4,7 @@
 PhysicalProperty
 ****************
 
+.. highlight:: c++
+
 .. doxygenclass:: semsim::PhysicalProperty
    :members:

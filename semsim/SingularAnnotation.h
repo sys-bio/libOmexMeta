@@ -30,7 +30,7 @@ namespace semsim {
          * # include "semsim/SemSim.h"
          * using namespace semsim;
          * // will automatically get assigned a "bqb:is" relation
-         * // pointing to CHEBI::15361
+         * // pointing to CHEBI:15361
          * SingularAnnotation a(CHEBI::get(15361));
          * \endcode
          *

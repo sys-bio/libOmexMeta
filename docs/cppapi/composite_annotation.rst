@@ -4,6 +4,8 @@
 CompositeAnnotation
 *******************
 
+.. highlight:: c++
+
 A :ref:`CompositeAnnotation` contains two elements:
 a :ref:`PhysicalProperty` and an :ref:`Entity`:
 

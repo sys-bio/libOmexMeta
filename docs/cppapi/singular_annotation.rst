@@ -4,5 +4,7 @@
 SingularAnnotation
 ******************
 
+.. highlight:: c++
+
 .. doxygenclass:: semsim::SingularAnnotation
    :members:
