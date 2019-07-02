@@ -26,4 +26,11 @@
   #endif
 #endif
 
+// constexpr
+# if __cplusplus >= 201103L
+  #define SEMSIM_CONSTEXPR constexpr
+# else
+  #define SEMSIM_CONSTEXPR const
+# endif
+
 # endif
