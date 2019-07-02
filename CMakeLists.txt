@@ -21,9 +21,6 @@ endif()
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_C_VISIBILITY_PRESET hidden)
 
-set(ENABLE_STATIC_LIB TRUE CACHE BOOL "Build static libraries?")
-set(ENABLE_SHARED_LIB TRUE CACHE BOOL "Build shared libraries?")
-
 set(CMAKE_CXX_STANDARD ${SEMSIM_CXX_STANDARD})
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_compile_definitions(SEMSIM_INTERNAL_BUILD)
@@ -59,11 +56,14 @@ find_package(Doxygen)
 # consider using https://cpp-netlib.org/ if networking is required (also handles URIs)
 # otherwise consider adding https://github.com/uriparser/uriparser for uri handling
 
-# automatically configured options
+# build options (some defaults are automatically configured)
+set(ENABLE_STATIC_LIB TRUE CACHE BOOL "Build static libraries?")
+set(ENABLE_SHARED_LIB TRUE CACHE BOOL "Build shared libraries?")
 option(ENABLE_SBML_SUPPORT "Enable support for SBML models" ${libSBML_FOUND})
 option(ENABLE_CELLML_SUPPORT "Enable support for CellML models" ${LIBCELLML_FOUND})
 option(ENABLE_UNIT_TESTS "Enable unit tests" ${Catch2_FOUND})
 option(BUILD_DOCS "Build the documentation (requires Doxygen)" ${Doxygen_FOUND})
+option(ENABLE_EXAMPLES "Build example programs" ON)
 # bindings
 if (${SWIG_FOUND} AND ${PYTHON_FOUND})
   option(BUILD_PYTHON "Build Python SWIG module" ON)
@@ -176,4 +176,8 @@ if (BUILD_DOCS)
   else()
     message(SEND_ERROR "BUILD_DOCS was specified but Doxygen was not found")
   endif()
+endif()
+
+if (ENABLE_EXAMPLES)
+  add_subdirectory(examples)
 endif()
