@@ -18,6 +18,8 @@ C++ API
    physical_property.rst
    composite_annotation.rst
    singular_annotation.rst
+   component.rst
+   model.rst
 
 References
 ==========
