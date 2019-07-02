@@ -4,5 +4,7 @@
 Entity
 ******
 
+.. highlight:: c++
+
 .. doxygenclass:: semsim::Entity
    :members:

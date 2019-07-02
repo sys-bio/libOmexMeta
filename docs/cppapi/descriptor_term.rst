@@ -4,5 +4,7 @@
 DescriptorTerm
 **************
 
+.. highlight:: c++
+
 .. doxygenclass:: semsim::DescriptorTerm
    :members:

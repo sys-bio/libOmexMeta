@@ -3,6 +3,8 @@
 C++ API
 =======
 
+.. highlight:: c++
+
 .. toctree::
    :maxdepth: 1
    :caption: C++ API:

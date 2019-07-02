@@ -4,5 +4,7 @@
 EntityDescriptor
 ****************
 
+.. highlight:: c++
+
 .. doxygenclass:: semsim::EntityDescriptor
    :members:
