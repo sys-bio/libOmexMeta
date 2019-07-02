@@ -63,18 +63,10 @@ which are designed to address the limitations of current annotation systems in C
 We have previously described composite annotations :cite:`gennari2011multiple,neal2018harmonizing`.
 
 .. toctree::
-   :maxdepth: 1
-   :caption: C++ API:
+   :maxdepth: 2
+   :caption: Contents:
 
-   cppapi/uri.rst
-   cppapi/relation.rst
-   cppapi/resource.rst
-   cppapi/entity.rst
-   cppapi/entity_descriptor.rst
-   cppapi/descriptor_term.rst
-   cppapi/physical_property.rst
-   cppapi/composite_annotation.rst
-   cppapi/annotation.rst
+   cppapi/index.rst
 
 References
 ==========
