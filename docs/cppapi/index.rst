@@ -15,7 +15,7 @@ C++ API
    descriptor_term.rst
    physical_property.rst
    composite_annotation.rst
-   annotation.rst
+   singular_annotation.rst
 
 References
 ==========

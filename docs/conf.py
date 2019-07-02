@@ -37,6 +37,9 @@ extensions = [
 ]
 
 breathe_default_project = "SemSim"
+# breathe_domain_by_extension = {
+#         "h" : "cpp",
+#         }
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
