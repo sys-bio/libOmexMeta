@@ -40,7 +40,9 @@ find_package(Rasqal  REQUIRED)
 find_package(LibRDF  REQUIRED)
 # https://stackoverflow.com/questions/20746936/cmake-of-what-use-is-find-package-if-you-need-to-specify-cmake-module-path-an?rq=1
 find_package(libcellml CONFIG)
+find_package(Combine CONFIG REQUIRED)
 find_package(SWIG)
+find_package(Catch2 CONFIG)
 
 find_package(Python COMPONENTS Interpreter Development)
 # check the Python version
@@ -60,6 +62,7 @@ find_package(Doxygen)
 # automatically configured options
 option(ENABLE_SBML_SUPPORT "Enable support for SBML models" ${libSBML_FOUND})
 option(ENABLE_CELLML_SUPPORT "Enable support for CellML models" ${LIBCELLML_FOUND})
+option(ENABLE_UNIT_TESTS "Enable unit tests" ${Catch2_FOUND})
 option(BUILD_DOCS "Build the documentation (requires Doxygen)" ${Doxygen_FOUND})
 # bindings
 if (${SWIG_FOUND} AND ${PYTHON_FOUND})
@@ -69,8 +72,13 @@ else()
 endif()
 
 # diagnostics
+get_target_property(LIBCOMBINE_LIBS Combine LOCATION)
+get_target_property(LIBCOMBINE_INCLUDE_DIRS Combine INTERFACE_INCLUDE_DIRECTORIES)
+
 get_target_property(LIBCELLML_LIBS cellml LOCATION)
 get_target_property(LIBCELLML_INCLUDE_DIRS cellml INTERFACE_INCLUDE_DIRECTORIES)
+
+get_target_property(CATCH2_INCLUDE_DIRS Catch2::Catch2 INTERFACE_INCLUDE_DIRECTORIES)
 
 message(STATUS "
 -------------------------------------------------------------------------------
@@ -109,12 +117,16 @@ Configuration Summary
       Rasqal include dir        ${Rasqal_INCLUDE_DIRS}
       LibRDF library            ${LibRDF_LIBRARIES}
       LibRDF include dir        ${LibRDF_INCLUDE_DIRS}
+      libCombine                ${LIBCOMBINE_LIBS}
+      libCombine include dir    ${LIBCOMBINE_INCLUDE_DIRS}
       LibCellML (optional)      ${LIBCELLML_LIBS}
       LibCellML include dir     ${LIBCELLML_INCLUDE_DIRS}
+      Catch2 include (optional) ${CATCH2_INCLUDE_DIRS}
 
     Options:
       SBML support              ${ENABLE_SBML_SUPPORT}
       CellML suppert            ${ENABLE_CELLML_SUPPORT}
+      Unit tests (req. Catch)   ${ENABLE_UNIT_TESTS}
       Python bindings           ${BUILD_PYTHON}
       Generate documentation    ${BUILD_DOCS}
     "
