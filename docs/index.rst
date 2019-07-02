@@ -47,7 +47,7 @@ in the model, but there are still quite a few key pieces of biological informati
 This information can also be encoded in / extracted from SBML with some difficulty, but not in a form suitable
 for automated semantic logic (such as would be possible in `OWL <https://www.w3.org/TR/owl2-overview/>`_).
 
-The situation with CellML is even worse.
+Semantic annotations play an even more important role in CellML models.
 Unlike SBML, CellML does not have a structured way of specifying what model elements represent
 (abstractions such as species, reactions, and comaprtments are lost).
 Thus, semantic annotations are the only way to establish biological meaning in CellML models.
