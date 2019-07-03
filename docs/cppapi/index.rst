@@ -11,6 +11,7 @@ C++ API
 
    uri.rst
    relation.rst
+   biomodels_qualifiers.rst
    resource.rst
    entity.rst
    entity_descriptor.rst
