@@ -1,6 +1,6 @@
 .. SemSim documentation master file
 
-SemSim: Enabling Better Semantic Information in Systems Biology Models
+libSemSim: Enabling Better Semantic Information in Systems Biology Models
 ======================================================================
 
 Introduction
@@ -52,15 +52,33 @@ Unlike SBML, CellML does not have a structured way of specifying what model elem
 (abstractions such as species, reactions, and comaprtments are lost).
 Thus, semantic annotations are the only way to establish biological meaning in CellML models.
 
-To address these drawbacks, we developed `SimSem/SemGen <http://sbp.bhi.washington.edu/projects/semgen>`_.
+To address these drawbacks, we previously developed `SimSem/SemGen <http://sbp.bhi.washington.edu/projects/semgen>`_.
 SemSim is a library for working with semantic annotations in SBML and CellML models, and SemGen
 is a GUI application for annotating models :cite:`10.1093/bioinformatics/bty829`.
 Both SemSim and SemGen were written in Java.
-This project aims to provide a C++ / Python (via an extension module) implementation with a lean / reduced feature set.
+This project (libSemSim) aims to provide a C++ / Python (via an extension module) implementation with a lean / reduced feature set.
 
 In both projects (Java/C++), the main goal is to provide a tool for working with *composite annotations*,
 which are designed to address the limitations of current annotation systems in CellML and SBML.
-We have previously described composite annotations :cite:`gennari2011multiple,neal2018harmonizing`.
+We have previously described the benefits and use cases of composite annotations
+:cite:`gennari2011multiple,neal2018harmonizing`.
+
+Basic Usage
+===========
+
+There are two principal classes in libSemSim: :ref:`SingularAnnotation` and :ref:`CompositeAnnotation`.
+Singular annotations are equivalent to traditional SBML CV terms and are only useful for linking
+model elements to ontology terms.
+They allow the user to describe the *chemical identity* of an SBML species (for example).
+Composite annotations are much more expressive.
+In addition to describing the chemical identity of a model element, they
+allow for describing *physical quantity* being modeled (is it a molecule concentration or amount?),
+the *physical domain* where the model element occurs (e.g. the cytosol, nucleus, mitochondrion intermembrane space, etc.),
+and the *cell type* being model (e.g. a pancreatic beta cell).
+While SBML currently allows expressing some (but not all) of these concepts, extracting this
+information requires considerable effort.
+On the other hand, libSemSim uses RDF files contained in `COMBINE Archives <https://combinearchive.org/index/>`_ for encoding all annotation`information.
+The RDF content is suitable for querying or using with semantic reasoning engines such as `OWL <https://www.w3.org/OWL/>`_.`
 
 .. toctree::
    :maxdepth: 2

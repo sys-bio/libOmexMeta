@@ -30,7 +30,8 @@ namespace semsim {
      * for this example:
      *
      * @code{.cpp}
-     * // uses C++11 syntax (compile in C++11 mode)
+     * // this example assumes you are using C++11 mode
+     * // (controlled by the SEMSIM_CXX_STANDARD CMake variable)
      * @endcode
      */
     class SEMSIM_PUBLIC CompositeAnnotation : public AnnotationBase {

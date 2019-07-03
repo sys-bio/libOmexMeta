@@ -9,6 +9,19 @@ namespace semsim {
     /**
      * This class contains all members from the collection of
      * <a href="http://co.mbine.org/standards/qualifiers">BioModels biolocial qualifers</a>.
+     * BioModels biology qualifiers are used as predicates in RDF to annotation singular and composite annotations.
+     * The most important relation is @c bqb::is, which is used to *define* elements in a model.
+     * When building annotations, you should always define elements with a single
+     * definition URI using @ref EntityBase::addDefinition "SingularAnnotation::addDefinition"
+     * or @ref EntityBase::addDefinition "Entity::addDefinition" on the @ref Entity
+     * object contained in a @ref CompositeAnnotation (which you can get using @ref CompositeAnnotation::getEntity).
+     * When you define elements using one of these functions, the definitions will
+     * automatically use the @c bqb::is qualifier.
+     *
+     * Another important qualifier is @c bqb::isPropertyOf. This is automatically
+     * inserted by libSemSim when serializing the @ref PhysicalProperty of
+     * @ref CompositeAnnotation "CompositeAnnotations".
+     *
      * The members are:
      *
      * @code{.cpp}
@@ -30,8 +43,6 @@ namespace semsim {
     class __attribute__ ((visibility ("default"))) bqb {
       public:
         const static std::string root;
-
-        void doIt() {}
 
         __attribute__ ((visibility ("default"))) const static Relation is;
         const static Relation hasPart;
