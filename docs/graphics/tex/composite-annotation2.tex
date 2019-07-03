@@ -24,12 +24,19 @@
   \node[block,below right = 2cm and 1cm of CompositeAnnotation] (Entity) {\href{../cppapi/entity.html}{Entity}};
   \node[block,below = 1cm of Entity] (EntityDescriptor) {\href{../cppapi/entity_descriptor.html}{EntityDescriptor}};
   \node[block,below = 1cm of EntityDescriptor] (DescriptorTerm1) {\href{../cppapi/term.html}{DescriptorTerm}};
-  \node[block,below = 1cm of EntityDescriptor] (DescriptorTerm2) {\href{../cppapi/term.html}{DescriptorTerm}};
+  \node[block,below = 1cm of DescriptorTerm1]  (DescriptorTerm2) {\href{../cppapi/term.html}{DescriptorTerm}};
+  \node[block,below = 1cm of DescriptorTerm2,draw=none]  (MoreTerms) {\href{../cppapi/term.html}{...}};
 
-  \draw[-{Latex[length=3mm]}] (CompositeAnnotation.south) to [out=-90,in=90] (PhysicalProperty.north);
-  \draw[-{Latex[length=3mm]}] (CompositeAnnotation.south) to [out=-90,in=90] (Entity.north);
+  \path[-{Latex[length=3mm]}] (CompositeAnnotation.south) edge [out=-90,in=90] node [label=Contains] {} (PhysicalProperty.north);
+  \path[-{Latex[length=3mm]}] (CompositeAnnotation.south) edge [out=-90,in=90] node [label=Contains] {} (Entity.north);
   % relationship between property and entity
-  \draw[-{Latex[length=3mm]}] (PhysicalProperty.east) node {isPropertyOf} (Entity.west);
+  % \draw[-{Latex[length=3mm]}] (PhysicalProperty.east) node {isPropertyOf} (Entity.west);
+  \path[-{Latex[length=3mm]}]  (PhysicalProperty.east) edge node [label=isPropertyOf] {} (Entity.west);
+  % descriptor term chain
+  \path[-{Latex[length=3mm]}] (Entity.south) edge node [label={[align=left]right:Contains}] {} (EntityDescriptor.north);
+  \path[-{Latex[length=3mm]}] (EntityDescriptor.south) edge node [label={[align=left]right:Contains}] {} (DescriptorTerm1.north);
+  \path[-{Latex[length=3mm]}] (DescriptorTerm1.south) edge node [label={[align=left]right:Structural relation}] {} (DescriptorTerm2.north);
+  \path[-{Latex[length=3mm]}] (DescriptorTerm2.south) edge node [label={[align=left]right:Structural relation}] {} (MoreTerms.north);
 
 \end{tikzpicture}
 \end{document}

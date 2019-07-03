@@ -37,6 +37,7 @@ add_custom_target(Sphinx ALL
                   -Dbreathe_projects.SemSim=${DOXYGEN_OUTPUT_DIR}/xml
                   ${SPHINX_SOURCE} ${SPHINX_BUILD}
                   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+                  DEPENDS ${DOXYGEN_INDEX_FILE}
                   DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/refs.bib
                   DEPENDS ${GRAPHICS_FILES}
                   COMMENT "Generating documentation with Sphinx")
