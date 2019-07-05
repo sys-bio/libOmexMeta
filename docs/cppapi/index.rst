@@ -22,17 +22,4 @@ C++ API
    component.rst
    model.rst
    ontologies.rst
-
-References
-==========
-
-.. bibliography:: refs.bib
-   :cited:
-   :style: plain
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   sbml.rst

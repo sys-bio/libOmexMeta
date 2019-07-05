@@ -22,7 +22,9 @@ int main() {
   LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m->createSpecies();
   s->setCompartment("cytosol");
   s->setId("glucose");
-  s->setInitialAmount(0);
+  s->setInitialConcentration(0);
+  s->setUnits("mole");
+  s->setHasOnlySubstanceUnits(false);
 
   // create import reaction for glucose
   LIBSBML_CPP_NAMESPACE_QUALIFIER Reaction* reaction = m->createReaction();

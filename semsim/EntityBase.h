@@ -106,9 +106,13 @@ namespace semsim {
           ss << spaces(indent) << "definitions:\n";
           for (const Definitions::const_iterator i(definitions_.begin()); i!=definitions_.end(); ++i)
             ss << spaces(indent) << "  " << i->toString() << "\n";
-          ss << spaces(indent) << "extraneous terms:\n";
-          for (const Definitions::const_iterator i(terms_.begin()); i!=terms_.end(); ++i)
-            ss << spaces(indent) << "  " << i->toString() << "\n";
+          if (terms_.size()) {
+            ss << spaces(indent) << "extraneous terms:\n";
+            for (const Definitions::const_iterator i(terms_.begin()); i!=terms_.end(); ++i)
+              ss << spaces(indent) << "  " << i->toString() << "\n";
+          } else {
+            ss << spaces(indent) << "extraneous terms: none\n";
+          }
           return ss.str();
         }
 

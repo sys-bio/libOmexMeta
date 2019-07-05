@@ -3,7 +3,7 @@
 
 # include "semsim/Preproc.h"
 # include "semsim/Ontology.h"
-# include "semsim/PhysicalProperty.h"
+// # include "semsim/PhysicalProperty.h"
 
 namespace semsim {
     /**
@@ -26,6 +26,11 @@ namespace semsim {
         static Resource get(OntologyTerm t) {
           return resolve("http://identifiers.org/opb/OPB_", t, 5);
         }
+
+        /// Use the return value of @p get to construct a @ref PhysicalProperty
+        // static PhysicalProperty getPhysicalProperty(OntologyTerm t) {
+        //   return PhysicalProperty(get(t));
+        // }
 
         // SEMSIM_CONSTEXPR static Resource fluid_volume = get(154);
     };
