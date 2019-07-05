@@ -10,6 +10,9 @@ A :ref:`CompositeAnnotation` contains two elements:
 a :ref:`PhysicalProperty` and an :ref:`Entity`.
 The :ref:`PhysicalProperty` describes the type of quantity being modeled, e.g.
 molecule concentration (Molar), amount (moles or grams), fluid volume (L), pressure (Pa), etc.
+A composite annotation always contains **exactly one** physical property.
+When the model is exported to RDF, the physical property will be encoded using an isPropertyOf
+relation (see :ref:`bqb::isPropertyOf`).
 
 .. raw:: html
 

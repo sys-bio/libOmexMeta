@@ -44,8 +44,8 @@ or `UniProt <https://www.uniprot.org/>`_ (if amino acid sequence / organism *is*
 Using these ontology terms, we can encode the *chemical identity* of the variables
 in the model, but there are still quite a few key pieces of biological information that are missing.
 *Where* does this reaction take place? *What* type(s) of cell does it occur in?
-This information can also be encoded in / extracted from SBML with some difficulty, but not in a form suitable
-for automated semantic logic (such as would be possible in `OWL <https://www.w3.org/TR/owl2-overview/>`_).
+Some of this information can also be encoded in / extracted from SBML with some difficulty, but not in a form suitable
+for automated semantic logic (such as would be possible using `OWL <https://www.w3.org/TR/owl2-overview/>`_).
 
 Semantic annotations play an even more important role in CellML models.
 Unlike SBML, CellML does not have a structured way of specifying what model elements represent
