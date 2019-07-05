@@ -8,7 +8,7 @@ An :ref:`EntityDescriptor` describes "what" a model element is and "where" it is
 An entity descriptor is essentially a linear chain of descriptor terms joined by
 *structural relations*, which are `BioModels qualifiers <http://co.mbine.org/standards/qualifiers>`_ that describe the relationship between subsequent entries in the descriptor term sequence.
 For example, if an annotation describes *cytosolic glucose concentration in a pancreatic beta cell*, then
-the entity descriptor would be the:
+the entity descriptor would be:
 
 .. raw:: html
 
