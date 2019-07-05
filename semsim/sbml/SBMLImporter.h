@@ -64,7 +64,23 @@ namespace semsim {
       }
 
       protected:
-        SingularAnnotation CVToAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
+        /// Extract the annotation for any SBML element
+        AnnotationPtr ExtractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
+          return AnnotationPtr(new SingularAnnotation(
+            ExtractSingularAnnotation(s);
+          ));
+        }
+
+        /// Extract the annotation for a species - can be composite if inside a compartment
+        AnnotationPtr ExtractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
+          for (unsigned int k=0; k<m->getNumCompartments(); ++k) {
+            LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m->getCompartment(k);
+            if (c->isSetIdAttribute() && s->getCompartment() == c->getId())
+              return ExtractCompositeAnnotation
+          }
+        }
+
+        SingularAnnotation ExtractSingularAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
           SingularAnnotation result;
           for (unsigned int i=0; i<s->getNumCVTerms(); ++i) {
             LIBSBML_CPP_NAMESPACE_QUALIFIER CVTerm* t = s->getCVTerm(i);
@@ -79,6 +95,7 @@ namespace semsim {
                     result.addDefinition(Resource(t->getResourceURI(i)));
                   }
                 } else {
+                  // all other qualifiers
                   result.addExtraneousTerm(
                     Term(
                       getRelationFromSBMLQual(t->getBiologicalQualifierType()),
