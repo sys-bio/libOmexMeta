@@ -8,26 +8,6 @@
 namespace semsim {
     /**
      * An @ref EntityDescriptor describes "what" a model element is and "where" it is located in the physical world.
-     * An entity descriptor is essentially a linear chain of descriptor terms joined by
-     * *structural relations*, which are <a href="http://co.mbine.org/standards/qualifiers">BioModels qualifiers</a> that describe the relationship between subsequent
-     * entries in the descriptor term sequence.
-     * For example, if an annotation describes
-     * *cytosolic glucose concentration in a pancreatic beta cell*, then
-     * the entity descriptor would be the:
-     *
-     * <a href="https://identifiers.org/CHEBI:17234">glucose</a>
-     *  -> <a href="http://co.mbine.org/standards/qualifiers">occursIn</a>(structural relation) ->
-     * <a href="https://identifiers.org/GO:0005829">cytosolic compartment</a>
-     *  -> <a href="http://co.mbine.org/standards/qualifiers">isPartOf</a>(structural relation) ->
-     * <a href="https://identifiers.org/CL:0000169">pancreatic beta cell</a>
-     *
-     * Consider another example from an physiological model.
-     * Suppose the model contains a variable that represents the
-     * *volume of blood in the left ventricle*:
-     *
-     * <a href="http://identifiers.org/fma/FMA:9670">blood</a>
-     * -> <a href="http://co.mbine.org/standards/qualifiers">isPartOf</a>(structural relation) ->
-     * <a href="http://identifiers.org/fma/FMA:9466">left ventricle</a>
      */
     class SEMSIM_PUBLIC EntityDescriptor {
       public:
