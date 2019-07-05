@@ -50,6 +50,10 @@ namespace semsim {
         //   : uri_(std::move(uri)) {}
         # endif
 
+        std::string toString() const {
+          return uri_.toString();
+        }
+
       protected:
         URI uri_;
     };

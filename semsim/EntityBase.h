@@ -101,6 +101,17 @@ namespace semsim {
           return !definitions_.size();
         }
 
+        std::string toString(std::size_t indent) const {
+          std::stringstream ss;
+          ss << spaces(indent) << "definitions:\n";
+          for (const Definitions::const_iterator i(definitions_.begin()); i!=definitions_.end(); ++i)
+            ss << spaces(indent) << "  " << i->toString() << "\n";
+          ss << spaces(indent) << "extraneous terms:\n";
+          for (const Definitions::const_iterator i(terms_.begin()); i!=terms_.end(); ++i)
+            ss << spaces(indent) << "  " << i->toString() << "\n";
+          return ss.str();
+        }
+
       protected:
         /// Collection of definition URIs for this annotation / entity
         Definitions definitions_;

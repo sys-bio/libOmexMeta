@@ -34,6 +34,10 @@ namespace semsim {
           return resource_;
         }
 
+        std::string toString() const {
+          return relation_.toString() + "->" + resource_.toString();
+        }
+
       protected:
         Relation relation_;
         Resource resource_;
