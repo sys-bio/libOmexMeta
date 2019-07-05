@@ -11,10 +11,20 @@ namespace semsim {
      */
     class SEMSIM_PUBLIC CHEBI : public Ontology {
       public:
-        SEMSIM_CONSTEXPR static std::string root = "http://identifiers.org/CHEBI:";
+        // const static std::string root = "http://identifiers.org/CHEBI:";
 
-        static Resource get(const OntologyTerm& t) {
-          return resolve(root, t, 5);
+        /**
+         * Get the full URI of an ontology term given its numeric value.
+         * @param  t The numeric value of the ontology term.
+         * @return   The correct full URI for the resource in ChEBI.
+         *
+         * @code{.cpp}
+         * // returns "https://identifiers.org/CHEBI:17234" (glucose)
+         * Resource r = CHEBI::get(17234);
+         * @endcode
+         */
+        static Resource get(OntologyTerm t) {
+          return resolve("http://identifiers.org/CHEBI:", t, 5);
         }
     };
 }

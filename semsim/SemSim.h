@@ -18,6 +18,10 @@
 # include "semsim/BiomodelsQualifiers.h"
 // # include "semsim/SemSimObject.h"
 
+# include "semsim/Ontology.h"
+# include "semsim/ontologies/CHEBI.h"
+# include "semsim/ontologies/OPB.h"
+
 SEMSIM_PUBLIC void libsemgen_hello();
 // void cellml_hello();
 // void sbml_hello();

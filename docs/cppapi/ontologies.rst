@@ -9,6 +9,7 @@ Ontologies
    :maxdepth: 1
    :caption: Ontologies
 
+   ontology.rst
    chebi.rst
    opb.rst
 
