@@ -80,6 +80,18 @@ information requires considerable effort.
 On the other hand, libSemSim uses RDF files contained in `COMBINE Archives <https://combinearchive.org/index/>`_ for encoding all annotation`information.
 The RDF content is suitable for querying or using with semantic reasoning engines such as `OWL <https://www.w3.org/OWL/>`_.`
 
+Reading / Constructing Models
+=============================
+
+:ref:`Models <Model>` in libSemSim are essentially shadowed copies of SBML or CellML models
+containing additional semantic information encoded in the two major annotation classes mentioned above.
+In most cases, you will construct a libSemSim model by first reading in an SBML or CellML model,
+adding semantic information via :ref:`CompositeAnnotations <CompositeAnnotation>`, and writing the results
+to a COMBINE Archive containing the original SBML / CellML model and an RDF file containing all annotation information.
+By default, libSemSim will strip the annotation information out of an SBML or CellML model and encode it in RDF instead.
+
+TODO: code example
+
 .. toctree::
    :maxdepth: 3
    :caption: Contents:
