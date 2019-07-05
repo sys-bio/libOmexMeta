@@ -21,6 +21,7 @@ C++ API
    singular_annotation.rst
    component.rst
    model.rst
+   ontologies.rst
 
 References
 ==========
