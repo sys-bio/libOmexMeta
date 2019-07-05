@@ -6,7 +6,7 @@ C++ API
 .. highlight:: c++
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: C++ API:
 
    uri.rst

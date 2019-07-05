@@ -40,7 +40,7 @@ namespace semsim {
      * Relation qual = bqb::hasTaxon;
      * @endcode
      */
-    class __attribute__ ((visibility ("default"))) bqb {
+    class SEMSIM_PUBLIC bqb {
       public:
         const static std::string root;
 

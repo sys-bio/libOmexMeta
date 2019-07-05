@@ -81,7 +81,7 @@ On the other hand, libSemSim uses RDF files contained in `COMBINE Archives <http
 The RDF content is suitable for querying or using with semantic reasoning engines such as `OWL <https://www.w3.org/OWL/>`_.`
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    cppapi/index.rst
