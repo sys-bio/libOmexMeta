@@ -16,22 +16,25 @@ namespace semsim {
      */
     class SEMSIM_PUBLIC Component {
       public:
-        // Construct from a singular annotation
+        /// Empty constructor
+        Component() {}
+
+        /// Construct from a singular annotation
         Component(const SingularAnnotation& annotation)
           : annotation_(new SingularAnnotation(annotation)) {}
 
         # if __cplusplus >= 201103L
-        // Move-construct from a singular annotation
+        /// Move-construct from a singular annotation
         Component(SingularAnnotation&& annotation)
           : annotation_(new SingularAnnotation(std::move(annotation))) {}
         # endif
 
-        // Construct from a composite annotation
+        /// Construct from a composite annotation
         Component(const CompositeAnnotation& annotation)
           : annotation_(new CompositeAnnotation(annotation)) {}
 
         # if __cplusplus >= 201103L
-        // Move-construct from a composite annotation
+        /// Move-construct from a composite annotation
         Component(CompositeAnnotation&& annotation)
           : annotation_(new CompositeAnnotation(std::move(annotation))) {}
         # endif
@@ -58,6 +61,39 @@ namespace semsim {
       AnnotationBase& getAnnotation() {
         return *annotation_;
       }
+
+      /**
+       * Manually set the annotation (from a raw pointer).
+       * This @ref Component will own the passed raw pointer.
+       * If the @ref Component currently has an annotation set,
+       * it will be freed.
+       * @param annotation The annotation for this @ref Component to own.
+       */
+      void setAnnotation(AnnotationBase* annotation) {
+        annotation_.reset(annotation);
+      }
+
+      /**
+       * Manually set the annotation (copy the passed annotation).
+       * If the @ref Component currently has an annotation set,
+       * it will be freed.
+       * @param annotation The annotation for this @ref Component to own.
+       */
+      void setAnnotation(const AnnotationBase& annotation) {
+        annotation_.reset(annotation.clone());
+      }
+
+      # if __cplusplus >= 201103L
+      /**
+       * Manually set the annotation.
+       * If the @ref Object currently has an annotation set,
+       * it will be freed.
+       * @param annotation The annotation for this @ref Object to own.
+       */
+      void setAnnotation(AnnotationPtr&& annotation) {
+        annotation_ = std::move(annotation);
+      }
+      # endif
 
       protected:
         AnnotationPtr annotation_;

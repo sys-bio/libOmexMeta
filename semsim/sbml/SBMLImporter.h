@@ -18,15 +18,23 @@ namespace semsim {
      */
     class SEMSIM_PUBLIC SBMLImporter {
       public:
-        SBMLImporter(LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument* d)
-          : m_(d->getModel()) {
-            for(unsigned int k=0; k<m->getNumSpecies(); ++k) {
-              LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m->getSpecies(k);
-              result.addComponent(Component(
-                CVToAnnotation(s)
-              ));
-            }
-          }
+      /**
+       * Construct a libSemSim @ref SBMLModel from an SBML document.
+       * @param d The input SBML document.
+       */
+      SBMLImporter(LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument* d)
+        : m_(d->getModel()), result_(d->getModel()) {
+        for(unsigned int k=0; k<m->getNumCompartments(); ++k) {
+          LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m->getSpecies(k);
+          if (c->isSetIdAttribute())
+            result.setComponentAnnotation(extractAnnotation(c));
+        }
+        for(unsigned int k=0; k<m->getNumSpecies(); ++k) {
+          LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m->getSpecies(k);
+          if (s->isSetIdAttribute())
+            result.setComponentAnnotation(extractAnnotation(s));
+        }
+      }
 
       /// Return the @ref SBMLModel converted from this document
       SBMLModel& getSBMLModel() {
@@ -73,20 +81,29 @@ namespace semsim {
 
       protected:
         /// Extract the annotation for any SBML element
-        AnnotationPtr ExtractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
+        AnnotationPtr extractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
           return AnnotationPtr(new SingularAnnotation(
-            ExtractSingularAnnotation(s);
+            extractSingularAnnotation(s);
           ));
         }
 
         /// Extract the annotation for a species - can be composite using automatic inference logic
-        AnnotationPtr ExtractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
+        AnnotationPtr extractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
           try {
-            return ExtractCompositeAnnotation(s);
+            return extractCompositeAnnotation(s);
           } catch(std::domain_error) {
             // either the PhysicalProperty or Entity inference failed
-            return ExtractSingularAnnotation(s);
+            return AnnotationPtr(new SingularAnnotation(
+              extractSingularAnnotation(s);
+            ));
           }
+        }
+
+        /// Extract the annotation for a compartment
+        AnnotationPtr extractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c) {
+          return AnnotationPtr(new SingularAnnotation(
+            extractSingularAnnotation(s);
+          ));
         }
 
         /**
@@ -95,9 +112,9 @@ namespace semsim {
          * @param  s The SBML object
          * @return   A singular annotation containing all bqb:is terms as definitions and all other relations as extraneous terms.
          */
-        SingularAnnotation ExtractSingularAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
+        SingularAnnotation extractSingularAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
           SingularAnnotation result;
-          PopulateDefinitionsAndTerms(s, result);
+          populateDefinitionsAndTerms(s, result);
           return result;
         }
 
@@ -118,7 +135,7 @@ namespace semsim {
          * The @ref EntityDescriptor may contain the enclosing compartment
          * (if any) referenced with a bqb:occursIn qualifier.
          */
-        EntityDescriptor ExtractSpeciesEntityDescriptor(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
+        EntityDescriptor extractSpeciesEntityDescriptor(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
           EntityDescriptor result;
           for (unsigned int k=0; k<m_->getNumCompartments(); ++k) {
             LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m_->getCompartment(k);
@@ -139,30 +156,24 @@ namespace semsim {
          * If the species is contained in a compartment, the compartment
          * will be included in the @ref EntityDescriptor using the bqb:occursIn qualifier.
          */
-        Entity ExtractSpeciesEntity(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
+        Entity extractSpeciesEntity(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
           Entity result;
-          PopulateDefinitionsAndTerms(s, result);
-          result.addDescriptor(ExtractSpeciesEntityDescriptor(s));
+          populateDefinitionsAndTerms(s, result);
+          result.addDescriptor(extractSpeciesEntityDescriptor(s));
           return result;
         }
 
-        /// Find a Compartment from a given sid; throw if not found
-        LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* GetDefinitionURIFor(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
-          for (unsigned int i=0; i<s->getNumCVTerms(); ++i) {
-            LIBSBML_CPP_NAMESPACE_QUALIFIER CVTerm* t = s->getCVTerm(i);
-            switch(t->getQualifierType()) {
-              case LIBSBML_CPP_NAMESPACE_QUALIFIER MODEL_QUALIFIER:
-                // not handled
-                break;
-              case LIBSBML_CPP_NAMESPACE_QUALIFIER BIOLOGICAL_QUALIFIER:
-                // only bqb::is qualifiers can be used to *define* entities
-                if (t->getBiologicalQualifierType() == LIBSBML_CPP_NAMESPACE_QUALIFIER BQB_IS)
-                  return Resource(t->getResourceURI(i));
-              default:
-                break;
-            }
-          }
-          throw std::out_of_range("No definition URI for element");
+        /// Return a @ref Object weak pointer for the specified object (if it is in the @ref SBMLModel).
+        Object* getComponentFor(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
+          if (result_.hasElement(s))
+            return result_.getObject(s);
+          else
+            throw std::out_of_range("No such object in model");
+        }
+
+        /// Return a @ref Resource for the specified object (if it is in the @ref SBMLModel).
+        Resource getResourceFor(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
+          return Resource(getComponentFor(s));
         }
 
         /**
@@ -172,7 +183,7 @@ namespace semsim {
          * @param s The input SBML object
          * @param s The object to populate. Can be either a @ref SingularAnnotation or @ref Entity.
          */
-        static void PopulateDefinitionsAndTerms(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, EntityBase& e) {
+        static void populateDefinitionsAndTerms(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, EntityBase& e) {
           for (unsigned int i=0; i<s->getNumCVTerms(); ++i) {
             LIBSBML_CPP_NAMESPACE_QUALIFIER CVTerm* t = s->getCVTerm(i);
             switch(t->getQualifierType()) {
@@ -213,7 +224,7 @@ namespace semsim {
         CompositeAnnotation ExtractCompositeAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
           return CompositeAnnotation(
             GetSpeciesPhysicalProperty(s,m_),
-            ExtractSpeciesEntity(s,m_)
+            extractSpeciesEntity(s,m_)
           );
         }
 

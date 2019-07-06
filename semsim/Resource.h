@@ -7,14 +7,20 @@
 namespace semsim {
 
     /**
-     * A resource is an ontology term (
+     * A @ref Resource is an ontology term (
      * the "object" part of an RDF triple).
+     * This is an *external resource*.
      * Example:
      *
      * @code{.cpp}
      * // identifies the cytosolic compartment of a cell
      * Resource myresource("https://identifiers.org/GO:0005829");
      * @endcode
+     *
+     * A @ref Resource can also point to an element of the @ref Model
+     * (an *internal resource*, useful in @ref CompositeAnnotation "CompositeAnnotations"),
+     * in which case its definition URI will be whatever the element's
+     * URI is at the time of serialization.
      */
     class SEMSIM_PUBLIC Resource {
       public:
@@ -23,7 +29,7 @@ namespace semsim {
          * @param uri The URI of the resource
          */
         Resource(const URI& uri)
-          : uri_(uri) {}
+          : uri_(uri), element_(NULL) {}
 
         # if __cplusplus >= 201103L
         /**
@@ -31,8 +37,15 @@ namespace semsim {
          * @param uri The URI of the resource
          */
         Resource(URI&& uri)
-          : uri_(std::move(uri)) {}
+          : uri_(std::move(uri)), element_(NULL) {}
         # endif
+
+        /**
+         * Construct from URI.
+         * @param uri The URI of the resource
+         */
+        Resource(const Object* element)
+          : element_(element) {}
 
         /**
          * Construct directly from the UTF-8 string-encoded URI.
@@ -55,7 +68,10 @@ namespace semsim {
         }
 
       protected:
+        /// A URI (set for external resources)
         URI uri_;
+        /// A weak pointer to an element in the model (set for internal resources)
+        Object* element_;
     };
 }
 # endif

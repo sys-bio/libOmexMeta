@@ -66,7 +66,7 @@ namespace semsim {
          * @param entity The descriptor for the physical entity in this annotation. The entity tells you "what" the annotation describes.
          * @param domain The descriptor for the physical domain that the model entity applies to. This tells you "where". For example, if the annotation describes "cytosolic glucose concentration in a pancreatic beta cell", the "where" part would be the "cytosol of a pancreatic beta cell".
          */
-        CompositeAnnotation(PhysicalProperty&* property, Entity*& entity)
+        CompositeAnnotation(PhysicalProperty&& property, Entity&& entity)
           : property_(std::move(property)), entity_(std::move(entity)) {}
         # endif
 
