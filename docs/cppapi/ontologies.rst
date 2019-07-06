@@ -12,17 +12,3 @@ Ontologies
    ontology.rst
    chebi.rst
    opb.rst
-
-References
-==========
-
-.. bibliography:: refs.bib
-   :cited:
-   :style: plain
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
