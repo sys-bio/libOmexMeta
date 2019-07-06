@@ -123,7 +123,11 @@ namespace semsim {
           for (unsigned int k=0; k<m_->getNumCompartments(); ++k) {
             LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m_->getCompartment(k);
             if (c->isSetIdAttribute() && s->getCompartment() == c->getId()) {
-              result.addTerm(DescriptorTerm(bqb::occursIn, ));
+              try {
+                result.addTerm(DescriptorTerm(bqb::occursIn, GetDefinitionURIFor(s)));
+              } catch (std::out_of_range) {
+                // no definition uri - do nothing
+              }
             }
           }
           return result;
@@ -140,6 +144,25 @@ namespace semsim {
           PopulateDefinitionsAndTerms(s, result);
           result.addDescriptor(ExtractSpeciesEntityDescriptor(s));
           return result;
+        }
+
+        /// Find a Compartment from a given sid; throw if not found
+        LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* GetDefinitionURIFor(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
+          for (unsigned int i=0; i<s->getNumCVTerms(); ++i) {
+            LIBSBML_CPP_NAMESPACE_QUALIFIER CVTerm* t = s->getCVTerm(i);
+            switch(t->getQualifierType()) {
+              case LIBSBML_CPP_NAMESPACE_QUALIFIER MODEL_QUALIFIER:
+                // not handled
+                break;
+              case LIBSBML_CPP_NAMESPACE_QUALIFIER BIOLOGICAL_QUALIFIER:
+                // only bqb::is qualifiers can be used to *define* entities
+                if (t->getBiologicalQualifierType() == LIBSBML_CPP_NAMESPACE_QUALIFIER BQB_IS)
+                  return Resource(t->getResourceURI(i));
+              default:
+                break;
+            }
+          }
+          throw std::out_of_range("No definition URI for element");
         }
 
         /**

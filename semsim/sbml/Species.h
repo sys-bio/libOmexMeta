@@ -3,22 +3,11 @@
 
 # include "semsim/Preproc.h"
 # include "semsim/ontologies/OPB.h"
+# include "semsim/sbml/Accessors.h"
 
 # include "sbml/SBMLTypes.h"
 
 namespace semsim {
-
-    /// Find a UnitDefinition from a given sid; throw if not found
-    LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* findUnitDefinition(
-      const std::string& sid,
-      LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
-      for (unsigned int k=0; k<m->getNumUnitDefinitions(); ++k) {
-        LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* u = m->getUnitDefinition(k);
-        if (u->isSetIdAttribute() && u->getId() == sid)
-          return u;
-      }
-      throw new std::out_of_range("No such UnitDefinition");
-    }
 
     /**
      * Return @c true if the UnitDefinition is concentration-based,
