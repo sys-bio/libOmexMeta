@@ -39,6 +39,18 @@ namespace semsim {
           return !terms_.size();
         }
 
+        /// Add a descriptor term to the sequence of terms
+        void addTerm(const DescriptorTerm& t) {
+          terms_.push_back(t);
+        }
+
+        # if __cplusplus >= 201103L
+        /// Add a descriptor term to the sequence of terms
+        void addTerm(DescriptorTerm&& t) {
+          terms_.emplace_back(std::move(t));
+        }
+        # endif
+
       protected:
         /// A sequence of descriptor terms joined by structural relations
         DescriptorTerms terms_;

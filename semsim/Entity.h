@@ -92,6 +92,24 @@ namespace semsim {
           return descriptors_;
         }
 
+        /**
+         * Add an @ref EntityDescriptor to this @ref Entity (copy).
+         * @param d The descriptor to add.
+         */
+        void addDescriptor(const EntityDescriptor& d) {
+          descriptors_.push_back(d);
+        }
+
+        # if __cplusplus >= 201103L
+        /**
+         * Add an @ref EntityDescriptor to this @ref Entity (move).
+         * @param d The descriptor to add.
+         */
+        void addDescriptor(EntityDescriptor&& d) {
+          descriptors_.emplace_back(std::move(d));
+        }
+        # endif
+
         /// Get the @ref EntityDescriptor at index @p k.
         const EntityDescriptor& getDescriptor(std::size_t k) const {
           return descriptors_.at(k);

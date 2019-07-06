@@ -10,3 +10,4 @@ SBML
    :caption: SBML
 
    sbml_importer.rst
+   sbml_functions.rst
