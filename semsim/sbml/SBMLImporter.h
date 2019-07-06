@@ -15,6 +15,17 @@ namespace semsim {
      * and converting them into SemSim @ref Model "Models",
      * which contain semantic information about the original
      * SBML model.
+     * Most of the functions documented for this class are protected
+     * methods used to implement internal logic.
+     * Usage of this class is as follows:
+     *
+     * @code{.cpp}
+     * // import the SBML
+     * semsim::SBMLImporter importer(d);
+     * // get the libSemSim wrapper for the SBML model
+     * const semsim::SBMLModel& model = importer.getSBMLModel();
+     * // do something with the semsim::SBMLModel
+     * @endcode
      */
     class SEMSIM_PUBLIC SBMLImporter {
       public:
