@@ -20,7 +20,7 @@ namespace semsim {
      * Usage of this class is as follows:
      *
      * @code{.cpp}
-     * // import the SBML
+     * // import the SBML document
      * semsim::SBMLImporter importer(d);
      * // get the libSemSim wrapper for the SBML model
      * const semsim::SBMLModel& model = importer.getSBMLModel();
