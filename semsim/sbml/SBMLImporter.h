@@ -18,18 +18,25 @@ namespace semsim {
      */
     class SEMSIM_PUBLIC SBMLImporter {
       public:
-        /// Import a model from an SBML document
-        SBMLModel importSBMLDocument(LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument* d) {
-          SBMLModel result;
-          LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m=d->getModel();
-          for(unsigned int k=0; k<m->getNumSpecies(); ++k) {
-            LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m->getSpecies(k);
-            result.addComponent(Component(
-              CVToAnnotation(s)
-            ));
+        SBMLImporter(LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument* d)
+          : m_(d->getModel()) {
+            for(unsigned int k=0; k<m->getNumSpecies(); ++k) {
+              LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m->getSpecies(k);
+              result.addComponent(Component(
+                CVToAnnotation(s)
+              ));
+            }
           }
-          return result;
-        }
+
+      /// Return the @ref SBMLModel converted from this document
+      SBMLModel& getSBMLModel() {
+        return result_;
+      }
+
+      /// Return the @ref SBMLModel converted from this document
+      const SBMLModel& getSBMLModel() const {
+        return result_;
+      }
 
       static const Relation& getRelationFromSBMLQual(LIBSBML_CPP_NAMESPACE_QUALIFIER BiolQualifierType_t q) {
         switch (q) {
@@ -74,10 +81,11 @@ namespace semsim {
 
         /// Extract the annotation for a species - can be composite using automatic inference logic
         AnnotationPtr ExtractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
-          for (unsigned int k=0; k<m->getNumCompartments(); ++k) {
-            LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m->getCompartment(k);
-            if (c->isSetIdAttribute() && s->getCompartment() == c->getId())
-              return ExtractCompositeAnnotation
+          try {
+            return ExtractCompositeAnnotation(s);
+          } catch(std::domain_error) {
+            // either the PhysicalProperty or Entity inference failed
+            return ExtractSingularAnnotation(s);
           }
         }
 
@@ -89,46 +97,59 @@ namespace semsim {
          */
         SingularAnnotation ExtractSingularAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
           SingularAnnotation result;
-          for (unsigned int i=0; i<s->getNumCVTerms(); ++i) {
-            LIBSBML_CPP_NAMESPACE_QUALIFIER CVTerm* t = s->getCVTerm(i);
-            switch(t->getQualifierType()) {
-              case LIBSBML_CPP_NAMESPACE_QUALIFIER MODEL_QUALIFIER:
-                // not handled
-                break;
-              case LIBSBML_CPP_NAMESPACE_QUALIFIER BIOLOGICAL_QUALIFIER:
-                // only bqb::is qualifiers can be used to *define* entities
-                if (t->getBiologicalQualifierType() == LIBSBML_CPP_NAMESPACE_QUALIFIER BQB_IS) {
-                  for (unsigned int i=0; i<t->getNumResources(); ++i) {
-                    result.addDefinition(Resource(t->getResourceURI(i)));
-                  }
-                } else {
-                  // all other qualifiers
-                  result.addExtraneousTerm(
-                    Term(
-                      getRelationFromSBMLQual(t->getBiologicalQualifierType()),
-                      Resource(t->getResourceURI(i))
-                    )
-                  );
-                }
-                break;
-              default:
-                break;
+          PopulateDefinitionsAndTerms(s, result);
+          return result;
+        }
+
+        /**
+         * Extract an @ref Entity from an SBML object.
+         * Uses identical logic to @ref ExtractSingularAnnotation
+         * @param  s The SBML object
+         * @return   A singular annotation containing all bqb:is terms as definitions and all other relations as extraneous terms.
+         */
+        // Entity ExtractEntity(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
+        //   Entity result;
+        //   PopulateDefinitionsAndTerms(s, result);
+        //   return result;
+        // }
+
+        /**
+         * Extract the @ref EntityDescriptor for an SBML species.
+         * The @ref EntityDescriptor may contain the enclosing compartment
+         * (if any) referenced with a bqb:occursIn qualifier.
+         */
+        EntityDescriptor ExtractSpeciesEntityDescriptor(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
+          EntityDescriptor result;
+          for (unsigned int k=0; k<m_->getNumCompartments(); ++k) {
+            LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m_->getCompartment(k);
+            if (c->isSetIdAttribute() && s->getCompartment() == c->getId()) {
+              result.addTerm(DescriptorTerm(bqb::occursIn, ));
             }
           }
           return result;
         }
 
         /**
-         * Extract a composite annotation from an SBML Species.
-         * There are several pieces of information libSemSim tries to use to
-         * automatically construct composite annotations for SBML species.
-         * @li The @ref PhysicalProperty can sometimes be deduced from substance attributes and units. See @ref SpeciesUnitsToPhysicalProperty.
-         * @li If the species is contained in a compartment, the @ref EntityDescriptor can contain a reference to the compartment with a bqb:occursIn qualifier.
-         * @param  s The input SBML species.
-         * @return   The automatically inferred composite annotation.
+         * Try to deduce the @ref Entity
+         * from an SBML species.
+         * If the species is contained in a compartment, the compartment
+         * will be included in the @ref EntityDescriptor using the bqb:occursIn qualifier.
          */
-        CompositeAnnotation ExtractCompositeAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
-          SingularAnnotation result;
+        Entity ExtractSpeciesEntity(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
+          Entity result;
+          PopulateDefinitionsAndTerms(s, result);
+          result.addDescriptor(ExtractSpeciesEntityDescriptor(s));
+          return result;
+        }
+
+        /**
+         * Populate the *definitions* (URIs specified in CV terms via bqb:is terms)
+         * and extraneous terms (URIs specified using any other qualifier)
+         * for a @ref SingularAnnotation or @ref Entity in a @ref CompositeAnnotation.
+         * @param s The input SBML object
+         * @param s The object to populate. Can be either a @ref SingularAnnotation or @ref Entity.
+         */
+        static void PopulateDefinitionsAndTerms(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, EntityBase& e) {
           for (unsigned int i=0; i<s->getNumCVTerms(); ++i) {
             LIBSBML_CPP_NAMESPACE_QUALIFIER CVTerm* t = s->getCVTerm(i);
             switch(t->getQualifierType()) {
@@ -139,11 +160,11 @@ namespace semsim {
                 // only bqb::is qualifiers can be used to *define* entities
                 if (t->getBiologicalQualifierType() == LIBSBML_CPP_NAMESPACE_QUALIFIER BQB_IS) {
                   for (unsigned int i=0; i<t->getNumResources(); ++i) {
-                    result.addDefinition(Resource(t->getResourceURI(i)));
+                    e.addDefinition(Resource(t->getResourceURI(i)));
                   }
                 } else {
                   // all other qualifiers
-                  result.addExtraneousTerm(
+                  e.addExtraneousTerm(
                     Term(
                       getRelationFromSBMLQual(t->getBiologicalQualifierType()),
                       Resource(t->getResourceURI(i))
@@ -155,8 +176,26 @@ namespace semsim {
                 break;
             }
           }
-          return result;
         }
+
+        /**
+         * Extract a composite annotation from an SBML Species.
+         * There are several pieces of information libSemSim tries to use to
+         * automatically construct composite annotations for SBML species.
+         * @li The @ref PhysicalProperty can sometimes be deduced from substance attributes and units. See @ref SpeciesToPhysicalProperty.
+         * @li If the species is contained in a compartment, the @ref EntityDescriptor can contain a reference to the compartment with a bqb:occursIn qualifier.
+         * @param  s The input SBML species.
+         * @return   The automatically inferred composite annotation.
+         */
+        CompositeAnnotation ExtractCompositeAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
+          return CompositeAnnotation(
+            GetSpeciesPhysicalProperty(s,m_),
+            ExtractSpeciesEntity(s,m_)
+          );
+        }
+
+        LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m_;
+        SBMLModel result_;
     };
 
 }
