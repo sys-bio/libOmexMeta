@@ -34,7 +34,7 @@ int main() {
   s->setCompartment("cytosol");
   s->setId("glucose");
   s->setInitialConcentration(0);
-  s->setUnits("Molar");
+  s->setUnits("molar");
   s->setHasOnlySubstanceUnits(false);
 
   // create import reaction for glucose
