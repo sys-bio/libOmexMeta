@@ -6,7 +6,7 @@
 namespace semsim {
 
     /// Simply returns a number of whitespaces
-    std::string spaces(std::size_t k) {
+    inline std::string spaces(std::size_t k) {
       return std::string(k,' ');
     }
 

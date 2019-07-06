@@ -13,7 +13,7 @@ namespace semsim {
      * Return @c true if the UnitDefinition is concentration-based,
      * @c false otherwise.
      */
-    bool UnitDefIsConc(
+    inline bool UnitDefIsConc(
       LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* ud) {
       if (ud->getNumUnits() != 2)
         return false;
@@ -40,7 +40,7 @@ namespace semsim {
      * Return false if the units are not concentration-based
      * or a deduction cannot be made.
      */
-    bool SubstanceUnitsAreConc(
+    inline bool SubstanceUnitsAreConc(
       LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s,
       LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
       try {
@@ -69,7 +69,7 @@ namespace semsim {
      *
      * If none of these rules matches, a @c std::domain_error is thrown.
      */
-    PhysicalProperty GetSpeciesPhysicalProperty(
+    inline PhysicalProperty GetSpeciesPhysicalProperty(
       LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s,
       LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
       if (s->isSetHasOnlySubstanceUnits() && s->getHasOnlySubstanceUnits())
