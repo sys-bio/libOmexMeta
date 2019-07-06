@@ -13,19 +13,19 @@ namespace semsim {
     class SEMSIM_PUBLIC Model {
       public:
         /// The type used to store the collection of @ref Component "Components". Treat as opaque.
-        typedef std::vector<Component> Components;
+        typedef std::vector<ComponentPtr> Components;
 
         /// Add a new component to the model (copy)
-        Component& addComponent(const Component& component) {
-          components_.push_back(component);
-          return components_.back();
+        Component* addComponent(const Component& component) {
+          components_.push_back(ComponentPtr(new Component(component)));
+          return &*components_.back();
         }
 
         # if __cplusplus >= 201103L
         /// Add a new component to the model (move)
-        Component& addComponent(Component&& component) {
-          components_.emplace_back(std::move(component));
-          return components_.back();
+        Component* addComponent(Component&& component) {
+          components_.emplace_back(new Component(std::move(component)));
+          return &*components_.back();
         }
         # endif
 

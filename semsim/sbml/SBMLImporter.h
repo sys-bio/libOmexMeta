@@ -24,15 +24,15 @@ namespace semsim {
        */
       SBMLImporter(LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument* d)
         : m_(d->getModel()), result_(d->getModel()) {
-        for(unsigned int k=0; k<m->getNumCompartments(); ++k) {
-          LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m->getSpecies(k);
+        for(unsigned int k=0; k<m_->getNumCompartments(); ++k) {
+          LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m_->getCompartment(k);
           if (c->isSetIdAttribute())
-            result.setComponentAnnotation(extractAnnotation(c));
+            result_.setComponentAnnotation(c->getId(), extractAnnotation(c));
         }
-        for(unsigned int k=0; k<m->getNumSpecies(); ++k) {
-          LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m->getSpecies(k);
+        for(unsigned int k=0; k<m_->getNumSpecies(); ++k) {
+          LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m_->getSpecies(k);
           if (s->isSetIdAttribute())
-            result.setComponentAnnotation(extractAnnotation(s));
+            result_.setComponentAnnotation(s->getId(), extractAnnotation(s));
         }
       }
 
@@ -83,18 +83,20 @@ namespace semsim {
         /// Extract the annotation for any SBML element
         AnnotationPtr extractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
           return AnnotationPtr(new SingularAnnotation(
-            extractSingularAnnotation(s);
+            extractSingularAnnotation(s)
           ));
         }
 
         /// Extract the annotation for a species - can be composite using automatic inference logic
         AnnotationPtr extractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
           try {
-            return extractCompositeAnnotation(s);
+            return AnnotationPtr(new CompositeAnnotation(
+              extractCompositeAnnotation(s)
+            ));
           } catch(std::domain_error) {
             // either the PhysicalProperty or Entity inference failed
             return AnnotationPtr(new SingularAnnotation(
-              extractSingularAnnotation(s);
+              extractSingularAnnotation(s)
             ));
           }
         }
@@ -102,7 +104,7 @@ namespace semsim {
         /// Extract the annotation for a compartment
         AnnotationPtr extractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c) {
           return AnnotationPtr(new SingularAnnotation(
-            extractSingularAnnotation(s);
+            extractSingularAnnotation(c)
           ));
         }
 
@@ -141,7 +143,7 @@ namespace semsim {
             LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m_->getCompartment(k);
             if (c->isSetIdAttribute() && s->getCompartment() == c->getId()) {
               try {
-                result.addTerm(DescriptorTerm(bqb::occursIn, GetDefinitionURIFor(s)));
+                result.addTerm(DescriptorTerm(bqb::occursIn, result_.getComponent(s->getId())));
               } catch (std::out_of_range) {
                 // no definition uri - do nothing
               }
@@ -164,9 +166,9 @@ namespace semsim {
         }
 
         /// Return a @ref Object weak pointer for the specified object (if it is in the @ref SBMLModel).
-        Object* getComponentFor(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
-          if (result_.hasElement(s))
-            return result_.getObject(s);
+        Component* getComponentFor(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
+          if (s->isSetIdAttribute() && result_.hasComponent(s->getId()))
+            return result_.getComponent(s->getId());
           else
             throw std::out_of_range("No such object in model");
         }
@@ -221,10 +223,10 @@ namespace semsim {
          * @param  s The input SBML species.
          * @return   The automatically inferred composite annotation.
          */
-        CompositeAnnotation ExtractCompositeAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
+        CompositeAnnotation extractCompositeAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
           return CompositeAnnotation(
             GetSpeciesPhysicalProperty(s,m_),
-            extractSpeciesEntity(s,m_)
+            extractSpeciesEntity(s)
           );
         }
 

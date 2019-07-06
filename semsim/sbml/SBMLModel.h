@@ -5,7 +5,11 @@
 # include "semsim/Model.h"
 
 # include "sbml/SBMLTypes.h"
-
+# if __cplusplus >= 201103L
+# include <unordered_map>
+# else
+# include <tr1/unordered_map>
+# endif
 
 namespace semsim {
 
@@ -25,17 +29,19 @@ namespace semsim {
           : Model() {
           for(unsigned int k=0; k<m->getNumSpecies(); ++k) {
             LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m->getCompartment(k);
-            if (c->isSetIdAttribute())
-              Component *o = &result.addComponent(Component());
-              element_map_.insert(c, o);
-              element_id_map_.insert(c->getId(), o);
+            if (c->isSetIdAttribute()) {
+              Component *o = addComponent(Component());
+              element_map_.insert(std::make_pair(c, o));
+              element_id_map_.insert(std::make_pair(c->getId(), o));
+            }
           }
           for(unsigned int k=0; k<m->getNumSpecies(); ++k) {
             LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m->getSpecies(k);
-            if (s->isSetIdAttribute())
-              Component *o = &result.addComponent(Component());
-              element_map_.insert(s, o);
-              element_id_map_.insert(s->getId(), o);
+            if (s->isSetIdAttribute()) {
+              Component *o = addComponent(Component());
+              element_map_.insert(std::make_pair(s, o));
+              element_id_map_.insert(std::make_pair(s->getId(), o));
+            }
           }
         }
 
@@ -49,6 +55,30 @@ namespace semsim {
           if (hasComponent(id))
             element_id_map_.find(id)->second->setAnnotation(annotation);
         }
+
+        /**
+         * Set the annotation of a @ref Component based on SBML id.
+         * Do nothing if the id is not mapped.
+         * @param id         The id of an SBML element.
+         * @param annotation The annotation for the component.
+         */
+        void setComponentAnnotation(const std::string id, const AnnotationPtr& annotation) {
+          if (hasComponent(id))
+            element_id_map_.find(id)->second->setAnnotation(*annotation);
+        }
+
+        # if __cplusplus >= 201103L
+        /**
+         * Set the annotation of a @ref Component based on SBML id.
+         * Do nothing if the id is not mapped.
+         * @param id         The id of an SBML element.
+         * @param annotation The annotation for the component.
+         */
+        void setComponentAnnotation(const std::string id, AnnotationPtr&& annotation) {
+          if (hasComponent(id))
+            element_id_map_.find(id)->second->setAnnotation(std::move(annotation));
+        }
+        # endif
 
         /**
          * Check whether a @ref Component exists for the given SBML id.
@@ -66,10 +96,10 @@ namespace semsim {
          * @param  id The id of an SBML element.
          * @return    The component for the given SBML id (if it exists).
          */
-        const Component& getComponent(const std::string id) const {
+        const Component* getComponent(const std::string id) const {
           if (!hasComponent(id))
             throw std::out_of_range("Component does not exist in mapping table");
-          return *element_id_map_.find(id)->second;
+          return element_id_map_.find(id)->second;
         }
 
         /**
@@ -78,10 +108,10 @@ namespace semsim {
          * @param  id The id of an SBML element.
          * @return    The component for the given SBML id (if it exists).
          */
-        Component& getComponent(const std::string id) {
+        Component* getComponent(const std::string id) {
           if (!hasComponent(id))
             throw std::out_of_range("Component does not exist in mapping table");
-          return *element_id_map_.find(id)->second;
+          return element_id_map_.find(id)->second;
         }
       protected:
         /// Maps SBML model elements to corresponding libSemSim @ref Component.

@@ -99,6 +99,13 @@ namespace semsim {
         AnnotationPtr annotation_;
     };
 
+    /**
+     * An owning pointer for a @ref Component.
+     * Automatically uses std::unique_ptr or std::tr1::shared_ptr depending on C++ standard.
+     * @see UniquePtr.
+     */
+    typedef UniquePtr<Component>::type ComponentPtr;
+
 }
 
 # endif

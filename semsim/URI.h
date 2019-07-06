@@ -13,14 +13,20 @@ namespace semsim {
      */
     class SEMSIM_PUBLIC URI {
       public:
+        /// Empty constructor
+        URI() {}
+
+        /// Construct from string-encoded URI
         URI(const std::string& uri)
           : encoded_uri_(uri) {}
 
         # if __cplusplus >= 201103L
+        /// Construct from string-encoded URI
         URI(std::string&& uri)
           : encoded_uri_(std::move(uri)) {}
         # endif
 
+        /// Convert to human-readable string
         std::string toString() const {
           return encoded_uri_;
         }
