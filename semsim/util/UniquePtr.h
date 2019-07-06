@@ -16,8 +16,8 @@ namespace semsim {
      * implementation of unique_ptr (in C++03) and
      * the standard implementation in C++11.
      * The contained @p type definition will
-     * resolve to the tr1 unique_ptr or the C++11
-     * standard unique_ptr depending on the current
+     * resolve to tr1::shared_ptr (C++03) or
+     * std::unique_ptr (C++11) depending on the current
      * C++ standard being used to compile the source.
      *
      * @code
@@ -26,7 +26,7 @@ namespace semsim {
      * UniquePtr<MyClass> ptr = new MyClass();
      * // the type of ptr will be
      * std::unique_ptr<MyClass> in C++11 and
-     * std::tr1::unique_ptr<MyClass> in C++03.
+     * std::tr1::shared_ptr<MyClass> in C++03.
      * @endcode
      */
     template <typename T>

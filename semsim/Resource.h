@@ -5,6 +5,7 @@
 # include "semsim/URI.h"
 
 namespace semsim {
+    class Component;
 
     /**
      * A @ref Resource is an ontology term (
@@ -44,7 +45,7 @@ namespace semsim {
          * Construct from URI.
          * @param uri The URI of the resource
          */
-        Resource(const Object* element)
+        Resource(Component* element)
           : element_(element) {}
 
         /**
@@ -71,7 +72,7 @@ namespace semsim {
         /// A URI (set for external resources)
         URI uri_;
         /// A weak pointer to an element in the model (set for internal resources)
-        Object* element_;
+        Component* element_;
     };
 }
 # endif

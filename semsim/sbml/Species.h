@@ -14,8 +14,7 @@ namespace semsim {
      * @c false otherwise.
      */
     bool UnitDefIsConc(
-      LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* ud,
-      LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
+      LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* ud) {
       if (ud->getNumUnits() != 2)
         return false;
       int n_mass=0;
@@ -53,6 +52,7 @@ namespace semsim {
         // unit def was not found - SBML is invalid
         return false;
       }
+      return false;
     }
 
     /**
@@ -88,6 +88,7 @@ namespace semsim {
         s->getSubstanceUnits() == "item"))
         return PhysicalProperty(OPB::get(1389));
       else if (s->isSetSubstanceUnits() && SubstanceUnitsAreConc(s, m))
+        return PhysicalProperty(OPB::get(425));
       else
         throw std::domain_error("Could not deduce PhysicalProperty");
     }
