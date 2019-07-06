@@ -8,7 +8,7 @@
 
 namespace semsim {
     /// Find a UnitDefinition from a given sid; throw if not found
-    LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* findUnitDefinition(
+    inline LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* findUnitDefinition(
       const std::string& sid,
       LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
       for (unsigned int k=0; k<m->getNumUnitDefinitions(); ++k) {
@@ -20,7 +20,7 @@ namespace semsim {
     }
 
     /// Find a Compartment from a given sid; throw if not found
-    LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* findCompartment(
+    inline LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* findCompartment(
       const std::string& sid,
       LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
       for (unsigned int k=0; k<m->getNumCompartments(); ++k) {
