@@ -18,12 +18,23 @@ int main() {
   comp->setSize(1);
   comp->setConstant(true);
 
+  LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* unitdef = model->createUnitDefinition();
+  unitdef->setId("molar");
+
+  LIBSBML_CPP_NAMESPACE_QUALIFIER Unit* unit = unitdef->createUnit();
+  unit->setKind(UNIT_KIND_MOLES);
+  unit->setExponent(1);
+
+  unit = unitdef->createUnit();
+  unit->setKind(UNIT_KIND_LITRE);
+  unit->setExponent(-1);
+
   // create the species for glucose
   LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m->createSpecies();
   s->setCompartment("cytosol");
   s->setId("glucose");
   s->setInitialConcentration(0);
-  s->setUnits("mole");
+  s->setUnits("Molar");
   s->setHasOnlySubstanceUnits(false);
 
   // create import reaction for glucose
