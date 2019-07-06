@@ -18,15 +18,15 @@ int main() {
   comp->setSize(1);
   comp->setConstant(true);
 
-  LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* unitdef = model->createUnitDefinition();
+  LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* unitdef = m->createUnitDefinition();
   unitdef->setId("molar");
 
   LIBSBML_CPP_NAMESPACE_QUALIFIER Unit* unit = unitdef->createUnit();
-  unit->setKind(UNIT_KIND_MOLES);
+  unit->setKind(LIBSBML_CPP_NAMESPACE_QUALIFIER UNIT_KIND_MOLE);
   unit->setExponent(1);
 
   unit = unitdef->createUnit();
-  unit->setKind(UNIT_KIND_LITRE);
+  unit->setKind(LIBSBML_CPP_NAMESPACE_QUALIFIER UNIT_KIND_LITRE);
   unit->setExponent(-1);
 
   // create the species for glucose
@@ -57,8 +57,8 @@ int main() {
 
   std::cerr << "SBML output:\n" << sbml_writer.writeSBMLToString(d) << "\n";
 
-  SBMLImporter importer;
-  SBMLModel model = importer.importSBMLDocument(d);
+  SBMLImporter importer(d);
+  const SBMLModel& model = importer.getSBMLModel();
 
   return 0;
 }
