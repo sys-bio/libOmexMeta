@@ -1,7 +1,7 @@
 .. _sbml:
 
-SBML
-====
+SBML Import / Export
+====================
 
 .. highlight:: c++
 
