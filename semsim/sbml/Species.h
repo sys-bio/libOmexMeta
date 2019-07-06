@@ -13,15 +13,15 @@ namespace semsim {
      * Return @c true if the UnitDefinition is concentration-based,
      * @c false otherwise.
      */
-    bool SubstanceUnitsAreConc(
+    bool UnitDefIsConc(
       LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* ud,
       LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
-      if (u.getNumUnits() != 2)
+      if (ud->getNumUnits() != 2)
         return false;
       int n_mass=0;
       int d_vol =0;
-      for(unsigned int k=0; k<ud.getNumUnits(); ++k) {
-        LIBSBML_CPP_NAMESPACE_QUALIFIER Unit* u = ud.getUnit(k);
+      for(unsigned int k=0; k<ud->getNumUnits(); ++k) {
+        LIBSBML_CPP_NAMESPACE_QUALIFIER Unit* u = ud->getUnit(k);
         if ((!u->isSetExponent() || u->getExponent() == 1) &&
             (u->isMole() || u->isGram() || u->isKilogram() || u->isItem()))
           n_mass++;
@@ -41,7 +41,7 @@ namespace semsim {
      * Return false if the units are not concentration-based
      * or a deduction cannot be made.
      */
-    PhysicalProperty SubstanceUnitsAreConc(
+    bool SubstanceUnitsAreConc(
       LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s,
       LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
       try {

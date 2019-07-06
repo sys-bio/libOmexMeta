@@ -37,6 +37,9 @@ namespace semsim {
         /// The type used to store the list of entity descriptors. Treat as opaque.
         typedef std::vector<EntityDescriptor> Descriptors;
 
+        /// Empty constructot
+        Entity() : EntityBase() {}
+
         /// Construct from a definition URI
         Entity(const Resource& definition)
           : EntityBase(definition) {}

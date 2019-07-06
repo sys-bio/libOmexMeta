@@ -16,14 +16,16 @@ namespace semsim {
         typedef std::vector<Component> Components;
 
         /// Add a new component to the model (copy)
-        void addComponent(const Component& component) {
+        Component& addComponent(const Component& component) {
           components_.push_back(component);
+          return components_.back();
         }
 
         # if __cplusplus >= 201103L
         /// Add a new component to the model (move)
-        void addComponent(Component&& component) {
+        Component& addComponent(Component&& component) {
           components_.emplace_back(std::move(component));
+          return components_.back();
         }
         # endif
 
@@ -53,6 +55,7 @@ namespace semsim {
         }
 
       protected:
+        // Stores the @ref Component "Components" for this model.
         Components components_;
     };
 

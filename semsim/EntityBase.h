@@ -4,8 +4,10 @@
 # include "semsim/Preproc.h"
 # include "semsim/Resource.h"
 # include "semsim/EntityDescriptor.h"
+# include "semsim/util/Indent.h"
 
 # include <string>
+# include <sstream>
 
 namespace semsim {
 
@@ -104,11 +106,11 @@ namespace semsim {
         std::string toString(std::size_t indent) const {
           std::stringstream ss;
           ss << spaces(indent) << "definitions:\n";
-          for (const Definitions::const_iterator i(definitions_.begin()); i!=definitions_.end(); ++i)
+          for (Definitions::const_iterator i(definitions_.begin()); i!=definitions_.end(); ++i)
             ss << spaces(indent) << "  " << i->toString() << "\n";
           if (terms_.size()) {
             ss << spaces(indent) << "extraneous terms:\n";
-            for (const Definitions::const_iterator i(terms_.begin()); i!=terms_.end(); ++i)
+            for (Terms::const_iterator i(terms_.begin()); i!=terms_.end(); ++i)
               ss << spaces(indent) << "  " << i->toString() << "\n";
           } else {
             ss << spaces(indent) << "extraneous terms: none\n";
