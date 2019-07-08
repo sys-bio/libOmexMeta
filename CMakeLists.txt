@@ -4,7 +4,7 @@ cmake_policy(SET CMP0048 NEW)
 cmake_policy(SET CMP0078 NEW)
 cmake_policy(SET CMP0086 NEW)
 
-project(libsemgen VERSION 0.1.0)
+project(libsemgen LANGUAGES CXX VERSION 0.1.0)
 
 # modules
 
@@ -61,7 +61,7 @@ set(ENABLE_STATIC_LIB TRUE CACHE BOOL "Build static libraries?")
 set(ENABLE_SHARED_LIB TRUE CACHE BOOL "Build shared libraries?")
 option(ENABLE_SBML_SUPPORT "Enable support for SBML models" ${libSBML_FOUND})
 option(ENABLE_CELLML_SUPPORT "Enable support for CellML models" ${LIBCELLML_FOUND})
-option(ENABLE_UNIT_TESTS "Enable unit tests" ${Catch2_FOUND})
+option(ENABLE_TESTS "Enable tests" ${Catch2_FOUND})
 option(BUILD_DOCS "Build the documentation (requires Doxygen)" ${Doxygen_FOUND})
 option(ENABLE_EXAMPLES "Build example programs" ON)
 # bindings
@@ -126,7 +126,7 @@ Configuration Summary
     Options:
       SBML support              ${ENABLE_SBML_SUPPORT}
       CellML suppert            ${ENABLE_CELLML_SUPPORT}
-      Unit tests (req. Catch)   ${ENABLE_UNIT_TESTS}
+      Tests (requires Catch)    ${ENABLE_TESTS}
       Python bindings           ${BUILD_PYTHON}
       Generate documentation    ${BUILD_DOCS}
     "
@@ -176,6 +176,10 @@ if (BUILD_DOCS)
   else()
     message(SEND_ERROR "BUILD_DOCS was specified but Doxygen was not found")
   endif()
+endif()
+
+if (ENABLE_TESTS)
+  add_subdirectory(tests)
 endif()
 
 if (ENABLE_EXAMPLES)
