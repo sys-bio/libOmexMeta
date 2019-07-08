@@ -40,7 +40,17 @@ namespace semsim {
         # endif
 
         Component(const Component& other)
-          : annotation_(other.getAnnotation().clone()) {}
+          : annotation_(other.hasAnnotation() ? other.getAnnotation().clone() : NULL) {}
+
+        # if __cplusplus >= 201103L
+        /// Move-construct from a composite annotation
+        Component(Component&& other)
+          : annotation_(std::move(other.annotation_)) {}
+        # endif
+
+        bool hasAnnotation() const {
+          return !!annotation_;
+        }
 
         /**
          * Get this component's annotation.
@@ -49,6 +59,8 @@ namespace semsim {
          * class for annotations.
          */
         const AnnotationBase& getAnnotation() const {
+          if (!annotation_)
+            throw std::runtime_error("No annotation set");
           return *annotation_;
         }
 
@@ -59,6 +71,8 @@ namespace semsim {
        * class for annotations.
        */
       AnnotationBase& getAnnotation() {
+        if (!annotation_)
+          throw std::runtime_error("No annotation set");
         return *annotation_;
       }
 
