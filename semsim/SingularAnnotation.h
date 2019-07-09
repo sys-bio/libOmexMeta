@@ -30,22 +30,22 @@ namespace semsim {
          * using namespace semsim;
          * // will automatically get assigned a "bqb:is" relation
          * // pointing to CHEBI:15361
-         * SingularAnnotation a(CHEBI::get(15361));
+         * SingularAnnotation a("metaid", CHEBI::get(15361));
          * \endcode
          *
          * Generally, a model element should be defined using
          * only a single URI.
          */
-        SingularAnnotation(const Resource& definition)
-          : EntityBase(definition) {}
+        SingularAnnotation(const std::string& metaid, const Resource& definition)
+          : EntityBase(metaid, definition) {}
 
         /// Empty constructor
         SingularAnnotation() {}
 
         # if __cplusplus >= 201103L
         /// Move-construct from an @ref EntityDescriptor
-        SingularAnnotation(Resource&& definition)
-          : EntityBase({std::move(definition)}) {}
+        SingularAnnotation(const std::string& metaid, Resource&& definition)
+          : EntityBase(metaid, {std::move(definition)}) {}
         # endif
 
         /// Copy constructor

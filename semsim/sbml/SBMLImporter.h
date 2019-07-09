@@ -5,6 +5,7 @@
 # include "semsim/sbml/SBMLModel.h"
 # include "semsim/sbml/Species.h"
 # include "semsim/BiomodelsQualifiers.h"
+# include "semsim/sbml/MetaIDs.h"
 
 # include "sbml/SBMLTypes.h"
 
@@ -127,7 +128,9 @@ namespace semsim {
          * @return   A singular annotation containing all bqb:is terms as definitions and all other relations as extraneous terms.
          */
         SingularAnnotation extractSingularAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
-          SingularAnnotation result;
+          if (s->isSetMetaId())
+            throw std::runtime_error("This SBML object does not have an assigned meta id")
+          SingularAnnotation result(s->getMetaId());
           populateDefinitionsAndTerms(s, result);
           return result;
         }
@@ -171,7 +174,9 @@ namespace semsim {
          * will be included in the @ref EntityDescriptor using the bqb:occursIn qualifier.
          */
         Entity extractSpeciesEntity(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
-          Entity result;
+          if (!s->isSetMetaId())
+            throw std::runtime_error("The SBML species is missing a meta id");
+          Entity result(s->getMetaId());
           populateDefinitionsAndTerms(s, result);
           result.addDescriptor(extractSpeciesEntityDescriptor(s));
           return result;
