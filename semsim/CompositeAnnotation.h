@@ -141,6 +141,24 @@ namespace semsim {
           return new CompositeAnnotation(*this);
         }
 
+        /**
+         * Serialize this annotation to RDF using the Raptor library.
+         * The RDF serialization format is chosen when initializing the
+         * @c raptor_serializer, and must be done before calling this function.
+         * @param world      Raptor world object. Must be initialized prior to calling this function.
+         * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
+         */
+        virtual void serializeToRDF(raptor_world* world, raptor_serializer* serializer) const {
+          entity_.serializeToRDF(getURI());
+        }
+
+        /**
+         * @return the URI for this element (usually a local identifier).
+         */
+        const URI& getURI() const {
+          return uri_;
+        }
+
       protected:
         /// Stores the physical entity descriptor for this annotation
         // EntityDescriptor entity_;
@@ -148,6 +166,8 @@ namespace semsim {
         PhysicalProperty property_;
         /// Stores the physical domain descriptor for this annotation
         Entity entity_;
+        /// Stores the URI of this element (usu. a local identifier)
+        URI uri_;
     };
 }
 

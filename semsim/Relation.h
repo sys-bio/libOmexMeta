@@ -30,6 +30,13 @@ namespace semsim {
           return uri_.toString();
         }
 
+        /**
+         * @return the URI for this relation.
+         */
+        const URI& getURI() const {
+          return uri_;
+        }
+
       protected:
         URI uri_;
     };
