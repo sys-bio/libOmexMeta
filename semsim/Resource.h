@@ -68,10 +68,25 @@ namespace semsim {
           return uri_.toString();
         }
 
+        /**
+         * @return the URI for this resource.
+         */
+        const URI& getURI() const {
+          return uri_;
+        }
+
+        /**
+         * @return @c true if this resource points to a local @ref Component
+         * (as opposed to an external URI).
+         */
+        bool isLocal() const {
+          return element_;
+        }
+
       protected:
-        /// A URI (set for external resources)
+        /// A URI (for external resources)
         URI uri_;
-        /// A weak pointer to an element in the model (set for internal resources)
+        /// A weak pointer to an element in the model (set for internal / local resources)
         Component* element_;
     };
 }

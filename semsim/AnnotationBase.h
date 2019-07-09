@@ -20,6 +20,15 @@ namespace semsim {
          */
         virtual AnnotationBase* clone() const = 0;
 
+        /**
+         * Serialize this annotation to RDF using the Raptor library.
+         * The RDF serialization format is chosen when initializing the
+         * @c raptor_serializer, and must be done before calling this function.
+         * @param world      Raptor world object. Must be initialized prior to calling this function.
+         * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
+         */
+        virtual void serializeToRDF(raptor_world* world, raptor_serializer* serializer) = 0;
+
       protected:
     };
 

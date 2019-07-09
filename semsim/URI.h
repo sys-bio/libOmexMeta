@@ -31,6 +31,32 @@ namespace semsim {
           return encoded_uri_;
         }
 
+        /// Convert to encoded UTF-8 URI string (possibly different from human-readable string).
+        std::string encode() const {
+          return encoded_uri_;
+        }
+
+        /**
+         * Append to the fragment part of the URI.
+         * @param  suffix The string to append to the fragment.
+         * @return        The new URI.
+         */
+        URI appendToFrag(const std::string& suffix) const {
+          // TODO: URI processing
+          return URI(encoded_uri_+suffix);
+        }
+
+        /**
+         * Set the fragment part of the URI to the given string
+         * and return it as a new URI.
+         * @param  suffix The string to append to the fragment.
+         * @return        The new URI.
+         */
+        URI withFrag(const std::string& suffix) const {
+          // TODO: URI processing
+          return URI(encoded_uri_+"#"+suffix);
+        }
+
       protected:
         std::string encoded_uri_;
     };

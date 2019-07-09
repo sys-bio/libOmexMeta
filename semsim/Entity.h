@@ -123,6 +123,21 @@ namespace semsim {
           return descriptors_.at(k);
         }
 
+        /**
+         * Serialize this entity to RDF using the Raptor library.
+         * The RDF serialization format is chosen when initializing the
+         * @c raptor_serializer, and must be done before calling this function.
+         * @param base_uri   The base URI of this object (usually the metaid of the component this is attached to).
+         * @param world      Raptor world object. Must be initialized prior to calling this function.
+         * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
+         * @return the URI for this entity.
+         */
+        void serializeToRDF(raptor_world* world, raptor_serializer* serializer) const {
+          EntityBase::serializeToRDF(base_uri, world, serializer);
+          for (Descriptors::const_iterator i(descriptors_.begin()); i!=descriptors_.end(); ++i)
+            i->serializeToRDF(metaid_, world, serializer);
+        }
+
       protected:
         /// Stores all descriptors.
         Descriptors descriptors_;
