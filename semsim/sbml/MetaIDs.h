@@ -48,7 +48,7 @@ namespace semsim {
      * @param m [description]
      */
     void assignMetaIds(LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
-      for(unsigned int k=0; k<m->getNumSpecies(); ++k) {
+      for(unsigned int k=0; k<m->getNumCompartments(); ++k) {
         LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m->getCompartment(k);
         if (!c->isSetMetaId()) {
           for(int k;;++k) {
