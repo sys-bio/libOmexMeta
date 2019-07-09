@@ -135,7 +135,7 @@ namespace semsim {
         void serializeToRDF(raptor_world* world, raptor_serializer* serializer) const {
           EntityBase::serializeToRDF(base_uri, world, serializer);
           for (Descriptors::const_iterator i(descriptors_.begin()); i!=descriptors_.end(); ++i)
-            i->serializeToRDF(metaid_, world, serializer);
+            i->serializeToRDF(uri_, metaid_, world, serializer);
         }
 
       protected:
