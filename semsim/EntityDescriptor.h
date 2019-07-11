@@ -9,6 +9,7 @@
 
 # include <vector>
 # include <sstream>
+# include <iostream>
 
 namespace semsim {
     /**
@@ -69,13 +70,18 @@ namespace semsim {
          */
         void serializeToRDF(const URI& sbml_base_uri, const std::string& metaid, raptor_world* world, raptor_serializer* serializer) const {
           unsigned int k=0;
-          URI last_uri=sbml_base_uri;
+          URI last_uri=sbml_base_uri.withFrag(metaid);
           for (DescriptorTerms::const_iterator i(terms_.begin()); i!=terms_.end(); ++i) {
-            std::stringstream ss_this;
-            ss_this << metaid << "_term" << ++k;
-            URI next_uri=sbml_base_uri.withFrag(ss_this.str());
-            serializeDescriptorTermToRDF(*i, last_uri, next_uri, world, serializer);
-            last_uri = next_uri;
+            if (!i->getResource().isLocal()) {
+              std::stringstream ss_this;
+              ss_this << metaid << "_term" << ++k;
+              URI next_uri=sbml_base_uri.withFrag(ss_this.str());
+              serializeDescriptorTermToRDF(*i, last_uri, next_uri, world, serializer);
+              last_uri = next_uri;
+            } else {
+              std::cerr << "term uri: " << i->getResource().getURI().encode() << "\n";
+              serializeDescriptorTermToRDF(*i, last_uri, i->getResource().getURI(), world, serializer);
+            }
           }
         }
 
@@ -86,22 +92,23 @@ namespace semsim {
               const URI& term_uri,
               raptor_world* world,
               raptor_serializer* serializer) const {
-
-          // term definition triple
-          raptor_statement* s = raptor_new_statement(world);
-          s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)term_uri.encode().c_str());
-          s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)bqb::is.getURI().encode().c_str());
-          s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)term.getResource().getURI().encode().c_str());
-          raptor_serializer_serialize_statement(serializer, s);
-          raptor_free_statement(s);
-
           // term structural relation triple
-          s = raptor_new_statement(world);
+          raptor_statement* s = raptor_new_statement(world);
           s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)linked_uri.encode().c_str());
           s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)term.getRelation().getURI().encode().c_str());
           s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)term_uri.encode().c_str());
           raptor_serializer_serialize_statement(serializer, s);
           raptor_free_statement(s);
+
+          // term definition triple
+          if (!term.getResource().isLocal()) {
+            s = raptor_new_statement(world);
+            s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)term_uri.encode().c_str());
+            s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)bqb::is.getURI().encode().c_str());
+            s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)term.getResource().getURI().encode().c_str());
+            raptor_serializer_serialize_statement(serializer, s);
+            raptor_free_statement(s);
+          }
         }
 
         /// A sequence of descriptor terms joined by structural relations
