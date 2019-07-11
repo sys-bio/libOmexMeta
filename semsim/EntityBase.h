@@ -10,6 +10,7 @@
 
 # include <string>
 # include <sstream>
+# include <iostream>
 
 namespace semsim {
 
@@ -138,6 +139,7 @@ namespace semsim {
          * @return the URI for this entity.
          */
         void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const {
+          std::cerr << "serialize " << metaid_ << " definitions " << definitions_.size() << ", terms " << terms_.size() << "\n";
           for(Definitions::const_iterator i(definitions_.begin()); i!=definitions_.end(); ++i)
             serializeDefinition(*i, sbml_base_uri, world, serializer);
           for(Terms::const_iterator i(terms_.begin()); i!=terms_.end(); ++i)
