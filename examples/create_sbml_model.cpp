@@ -13,10 +13,18 @@ int main() {
   LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m = d->createModel();
   m->setId("beta_cell_model");
 
+  // create a compartment to represent the cytosol
   LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* comp = m->createCompartment();
   comp->setId("cytosol");
   comp->setSize(1);
   comp->setConstant(true);
+
+  // add a CV term for the cytosol
+  LIBSBML_CPP_NAMESPACE_QUALIFIER CVTerm *cv_cytosol = new LIBSBML_CPP_NAMESPACE_QUALIFIER CVTerm();
+  cv_cytosol->setQualifierType(LIBSBML_CPP_NAMESPACE_QUALIFIER BIOLOGICAL_QUALIFIER);
+  cv_cytosol->setBiologicalQualifierType(LIBSBML_CPP_NAMESPACE_QUALIFIER BQB_IS);
+  cv_cytosol->addResource(GO::get(5829).getURI().encode());
+  comp->addCVTerm(cv_cytosol);
 
   LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* unitdef = m->createUnitDefinition();
   unitdef->setId("molar");
@@ -36,6 +44,13 @@ int main() {
   s->setInitialConcentration(0);
   s->setUnits("molar");
   s->setHasOnlySubstanceUnits(false);
+
+  // add a CV term to glucose
+  LIBSBML_CPP_NAMESPACE_QUALIFIER CVTerm *cv_glucose = new LIBSBML_CPP_NAMESPACE_QUALIFIER CVTerm();
+  cv_glucose->setQualifierType(LIBSBML_CPP_NAMESPACE_QUALIFIER BIOLOGICAL_QUALIFIER);
+  cv_glucose->setBiologicalQualifierType(LIBSBML_CPP_NAMESPACE_QUALIFIER BQB_IS);
+  cv_glucose->addResource(CHEBI::get(17234).getURI().encode());
+  s->addCVTerm(cv_glucose);
 
   // create import reaction for glucose
   LIBSBML_CPP_NAMESPACE_QUALIFIER Reaction* reaction = m->createReaction();

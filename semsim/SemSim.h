@@ -21,6 +21,7 @@
 # include "semsim/Ontology.h"
 # include "semsim/ontologies/CHEBI.h"
 # include "semsim/ontologies/OPB.h"
+# include "semsim/ontologies/GO.h"
 
 SEMSIM_PUBLIC void libsemgen_hello();
 // void cellml_hello();
