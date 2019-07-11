@@ -53,35 +53,35 @@ namespace semsim {
         /**
          * Set the annotation of a @ref Component based on SBML id.
          * Do nothing if the id is not mapped.
-         * @param id         The id of an SBML element.
+         * @param id         The SBML element.
          * @param annotation The annotation for the component.
          */
-        void setComponentAnnotation(const std::string id, const AnnotationBase& annotation) {
-          if (hasComponent(id))
-            element_id_map_.find(id)->second->setAnnotation(annotation);
+        void setComponentAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, const AnnotationBase& annotation) {
+          if (hasComponent(s))
+            element_map_.find(s)->second->setAnnotation(annotation);
         }
 
         /**
          * Set the annotation of a @ref Component based on SBML id.
          * Do nothing if the id is not mapped.
-         * @param id         The id of an SBML element.
+         * @param s         The SBML element.
          * @param annotation The annotation for the component.
          */
-        void setComponentAnnotation(const std::string id, const AnnotationPtr& annotation) {
-          if (hasComponent(id))
-            element_id_map_.find(id)->second->setAnnotation(*annotation);
+        void setComponentAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, const AnnotationPtr& annotation) {
+          if (hasComponent(s))
+            element_map_.find(s)->second->setAnnotation(*annotation);
         }
 
         # if __cplusplus >= 201103L
         /**
          * Set the annotation of a @ref Component based on SBML id.
          * Do nothing if the id is not mapped.
-         * @param id         The id of an SBML element.
+         * @param id         The SBML element.
          * @param annotation The annotation for the component.
          */
-        void setComponentAnnotation(const std::string id, AnnotationPtr&& annotation) {
-          if (hasComponent(id))
-            element_id_map_.find(id)->second->setAnnotation(std::move(annotation));
+        void setComponentAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, AnnotationPtr&& annotation) {
+          if (hasComponent(s))
+            element_map_.find(s)->second->setAnnotation(std::move(annotation));
         }
         # endif
 
@@ -93,6 +93,16 @@ namespace semsim {
          */
         bool hasComponent(const std::string id) const {
           return !(element_id_map_.find(id) == element_id_map_.end());
+        }
+
+        /**
+         * Check whether a @ref Component exists for the given SBML element.
+         * (species and compartments should return true).
+         * @param  s The SBML element.
+         * @return    Whether the SBML element has been mapped to a libSemSim @ref Component or not.
+         */
+        bool hasComponent(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) const {
+          return !(element_map_.find(s) == element_map_.end());
         }
 
         /**

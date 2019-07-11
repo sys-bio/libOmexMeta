@@ -40,12 +40,12 @@ namespace semsim {
         for(unsigned int k=0; k<m_->getNumCompartments(); ++k) {
           LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m_->getCompartment(k);
           if (c->isSetIdAttribute())
-            result_.setComponentAnnotation(c->getId(), extractAnnotation(c));
+            result_.setComponentAnnotation(c, extractAnnotation(c));
         }
         for(unsigned int k=0; k<m_->getNumSpecies(); ++k) {
           LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m_->getSpecies(k);
           if (s->isSetIdAttribute())
-            result_.setComponentAnnotation(s->getId(), extractAnnotation(s));
+            result_.setComponentAnnotation(s, extractAnnotation(s));
         }
       }
 
@@ -128,7 +128,7 @@ namespace semsim {
          * @return   A singular annotation containing all bqb:is terms as definitions and all other relations as extraneous terms.
          */
         SingularAnnotation extractSingularAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
-          if (s->isSetMetaId())
+          if (!s->isSetMetaId())
             throw std::runtime_error("This SBML object does not have an assigned meta id");
           SingularAnnotation result(s->getMetaId());
           populateDefinitionsAndTerms(s, result);

@@ -62,6 +62,8 @@ int main() {
   SBMLImporter importer(d);
   const SBMLModel& model = importer.getSBMLModel();
 
+  std::cerr << "**********************************************************\n";
+
   std::cerr << "RDF serialization of annotations:\n" << model.getRDF("./mymodel", "turtle") << "\n";
 
   return 0;
