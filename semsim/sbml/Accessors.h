@@ -32,14 +32,15 @@ namespace semsim {
     }
 
     /// @return @c true if a compartment with the specified meta id exists
-    inline LIBSBML_CPP_NAMESPACE_QUALIFIER bool hasCompartmentWithMetaId(
+    inline bool hasCompartmentWithMetaId(
       const std::string& metaid,
       LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
       for (unsigned int k=0; k<m->getNumCompartments(); ++k) {
         LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m->getCompartment(k);
         if (c->isSetMetaId() && c->getMetaId() == metaid)
-          return c;
+          return true;
       }
+      return false;
     }
 }
 # endif

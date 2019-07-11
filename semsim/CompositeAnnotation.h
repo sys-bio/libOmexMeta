@@ -124,7 +124,7 @@ namespace semsim {
 
         /**
          * This function returns @p true if this annotation
-         * can be encoded in an SBML model (i.e. its domain
+           * can be encoded in an SBML model (i.e. its domain
          * descriptor must be empty).
          * The only exception to this is when the domain descriptor
          * consists of a single term, and that term describes the
@@ -148,8 +148,8 @@ namespace semsim {
          * @param world      Raptor world object. Must be initialized prior to calling this function.
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          */
-        virtual void serializeToRDF(raptor_world* world, raptor_serializer* serializer) const {
-          entity_.serializeToRDF(getURI());
+        virtual void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const {
+          entity_.serializeToRDF(sbml_base_uri, world, serializer);
         }
 
         /**

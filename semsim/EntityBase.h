@@ -129,7 +129,7 @@ namespace semsim {
         }
 
         /**
-         * Serialize this annotation to RDF using the Raptor library.
+         * Serialize this @ref EntityBase to RDF using the Raptor library.
          * The RDF serialization format is chosen when initializing the
          * @c raptor_serializer, and must be done before calling this function.
          * @param sbml_base_uri   The base URI of the SBML document relative to this (e.g. a relative path in a COMBINE archive).
@@ -139,9 +139,9 @@ namespace semsim {
          */
         void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const {
           for(Definitions::const_iterator i(definitions_.begin()); i!=definitions_.end(); ++i)
-            serializeDefinition(*i, sbml_base_uri, raptor_world* world, raptor_serializer* serializer);
+            serializeDefinition(*i, sbml_base_uri, world, serializer);
           for(Terms::const_iterator i(terms_.begin()); i!=terms_.end(); ++i)
-            serializeTerm(*i, sbml_base_uri, raptor_world* world, raptor_serializer* serializer);
+            serializeTerm(*i, sbml_base_uri, world, serializer);
         }
 
       protected:
@@ -151,9 +151,9 @@ namespace semsim {
               const URI& sbml_base_uri,
               raptor_world* world,
               raptor_serializer* serializer) const {
-          std::string this_uri = sbml_base_uri_.withFrag(metaid_);
+          URI this_uri = sbml_base_uri.withFrag(metaid_);
           raptor_statement* s = raptor_new_statement(world);
-          s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)this_uri.c_str());
+          s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)this_uri.encode().c_str());
           s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)bqb::is.getURI().encode().c_str());
           s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)def.getURI().encode().c_str());
           raptor_serializer_serialize_statement(serializer, s);
@@ -165,11 +165,11 @@ namespace semsim {
               const URI& sbml_base_uri,
               raptor_world* world,
               raptor_serializer* serializer) const {
-          std::string this_uri = sbml_base_uri_.withFrag(metaid_);
+          URI this_uri = sbml_base_uri.withFrag(metaid_);
           raptor_statement* s = raptor_new_statement(world);
-          s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)this_uri.c_str());
+          s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)this_uri.encode().c_str());
           s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)term.getRelation().getURI().encode().c_str());
-          s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)term.getURI().encode().c_str());
+          s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)term.getResource().getURI().encode().c_str());
           raptor_serializer_serialize_statement(serializer, s);
           raptor_free_statement(s);
         }

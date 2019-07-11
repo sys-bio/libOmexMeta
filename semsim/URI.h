@@ -20,6 +20,10 @@ namespace semsim {
         URI(const std::string& uri)
           : encoded_uri_(uri) {}
 
+        /// Construct from a string literal
+        URI(const char* uri)
+          : encoded_uri_(uri) {}
+
         # if __cplusplus >= 201103L
         /// Construct from string-encoded URI
         URI(std::string&& uri)

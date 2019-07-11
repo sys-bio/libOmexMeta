@@ -15,6 +15,9 @@ namespace semsim {
         /// The type used to store the collection of @ref Component "Components". Treat as opaque.
         typedef std::vector<ComponentPtr> Components;
 
+        /// Virtual destructor
+        virtual ~Model() {}
+
         /// Add a new component to the model (copy)
         Component* addComponent(const Component& component) {
           components_.push_back(ComponentPtr(new Component(component)));
@@ -53,6 +56,20 @@ namespace semsim {
         std::size_t getNumComponents() const {
           return components_.size();
         }
+
+        /**
+         * Get the RDF serialization of this model.
+         * The serialized RDF will always need to refer back
+         * to the original SBML or CellML model using a URI.
+         * Usually, the RDF will be written to a COMBINE archive
+         * along with the model, in which case the @p sbml_base_uri
+         * argument should be the relative path to the model file
+         * in the COMBINE archive.
+         * @param  format        The RDF serialization format. Choices include "rdfxml", "ntriples", "turtle", "trig", "rss-tag-soup", "grddl", "rdfa", "json", and "nquads".
+         * @param  sbml_base_uri A URI that points to the original model file. Usually a relative path in a COMBINE archive.
+         * @return               A string representation of the RDF for model using the desired RDF serialization format.
+         */
+        virtual std::string getRDF(const URI& sbml_base_uri, const std::string& format="rdfxml") const = 0;
 
       protected:
         // Stores the @ref Component "Components" for this model.
