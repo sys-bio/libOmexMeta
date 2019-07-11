@@ -37,34 +37,20 @@ namespace semsim {
     class SEMSIM_PUBLIC CompositeAnnotation : public AnnotationBase {
       public:
         /**
-         * Construct an Annotation given a physical entity description ("what" is being described?)
-         * and a domain descriptor ("where" does the entity reside?)
-         * All annotations in SemSim are encoded as *composite* annotations.
-         * Traditional SBML "CV term"-style annotations are expressible
-         * in this more general framework, and are automatically converted
-         * into composite annotations when they are read.
-         * If the annotation only uses SBML CV term-style features
-         * (i.e. the domain descriptor is empty), then the annotation
-         * can be written back to the SBML file.
-         * @param entity The descriptor for the physical entity in this annotation. The entity tells you "what" the annotation describes.
-         * @param domain The descriptor for the physical domain that the model entity applies to. This tells you "where". For example, if the annotation describes "cytosolic glucose concentration in a pancreatic beta cell", the "where" part would be the "cytosol of a pancreatic beta cell".
+         * Construct a @ref CompositeAnnotation given a physical property (what is the quantity being represented - chemical concentration, fluid volume, etc.?)
+         * and a domain descriptor ("what" is the chemical identity and "where" does the entity reside in physical space?)
+         * @param property The physical property of this composite annotation. Always provided.
+         * @param entity The entity contains all information outside of the physical property. This tells you "what" the element is (e.g. by specifying chemical identity) and "where". For example, if the annotation describes "cytosolic glucose concentration in a pancreatic beta cell", the entity would contain a definition (glycose) and two *structural relations* specifying the entity is *occurs in* the cytosol, which in turn *is part of* a pancreatic beta cell.
          */
         CompositeAnnotation(const PhysicalProperty& property, const Entity& entity)
           : property_(property), entity_(entity) {}
 
         # if __cplusplus >= 201103L
         /**
-         * Construct an Annotation given a physical entity description ("what" is being described?)
-         * and a domain descriptor ("where" does the entity reside?)
-         * All annotations in SemSim are encoded as *composite* annotations.
-         * Traditional SBML "CV term"-style annotations are expressible
-         * in this more general framework, and are automatically converted
-         * into composite annotations when they are read.
-         * If the annotation only uses SBML CV term-style features
-         * (i.e. the domain descriptor is empty), then the annotation
-         * can be written back to the SBML file.
-         * @param entity The descriptor for the physical entity in this annotation. The entity tells you "what" the annotation describes.
-         * @param domain The descriptor for the physical domain that the model entity applies to. This tells you "where". For example, if the annotation describes "cytosolic glucose concentration in a pancreatic beta cell", the "where" part would be the "cytosol of a pancreatic beta cell".
+         * Construct a @ref CompositeAnnotation given a physical property (what is the quantity being represented - chemical concentration, fluid volume, etc.?)
+         * and a domain descriptor ("what" is the chemical identity and "where" does the entity reside in physical space?)
+         * @param property The physical property of this composite annotation. Always provided.
+         * @param entity The entity contains all information outside of the physical property. This tells you "what" the element is (e.g. by specifying chemical identity) and "where". For example, if the annotation describes "cytosolic glucose concentration in a pancreatic beta cell", the entity would contain a definition (glycose) and two *structural relations* specifying the entity is *occurs in* the cytosol, which in turn *is part of* a pancreatic beta cell.
          */
         CompositeAnnotation(PhysicalProperty&& property, Entity&& entity)
           : property_(std::move(property)), entity_(std::move(entity)) {}

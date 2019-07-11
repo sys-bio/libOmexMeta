@@ -67,7 +67,7 @@ Basic Usage
 ===========
 
 There are two principal classes in libSemSim: :ref:`SingularAnnotation` and :ref:`CompositeAnnotation`.
-Singular annotations are equivalent to traditional SBML CV terms and are only useful for linking
+Singular annotations are equivalent to traditional MIRIAM annotations (using SBML CV terms) and are only useful for linking
 model elements to ontology terms.
 They allow the user to describe the *chemical identity* of an SBML species (for example).
 Composite annotations are much more expressive.
