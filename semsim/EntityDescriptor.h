@@ -9,7 +9,6 @@
 
 # include <vector>
 # include <sstream>
-# include <iostream>
 
 namespace semsim {
     /**
@@ -79,7 +78,6 @@ namespace semsim {
               serializeDescriptorTermToRDF(*i, last_uri, next_uri, world, serializer);
               last_uri = next_uri;
             } else {
-              std::cerr << "term uri: " << i->getResource().getURI().encode() << "\n";
               serializeDescriptorTermToRDF(*i, last_uri, i->getResource().getURI(), world, serializer);
             }
           }
