@@ -13,7 +13,7 @@ namespace semsim {
      * @param  metaid The meta id to check for.
      * @return        @c true if the model contains the given meta id.
      */
-    bool modelContainsMetaId(LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m, const std::string& metaid) {
+    inline bool modelContainsMetaId(LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m, const std::string& metaid) {
       for(unsigned int k=0; k<m->getNumSpecies(); ++k) {
         LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* x = m->getCompartment(k);
         if (x->isSetMetaId() && x->getMetaId() == metaid)
@@ -35,10 +35,11 @@ namespace semsim {
           return true;
       }
       for(unsigned int k=0; k<m->getNumEvents(); ++k) {
-        LIBSBML_CPP_NAMESPACE_QUALIFIER Event* x = m->getParameter(k);
+        LIBSBML_CPP_NAMESPACE_QUALIFIER Event* x = m->getEvent(k);
         if (x->isSetMetaId() && x->getMetaId() == metaid)
           return true;
       }
+      return false;
     }
 
     /**
@@ -47,26 +48,30 @@ namespace semsim {
      * elements to have assigned meta ids.
      * @param m [description]
      */
-    void assignMetaIds(LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
+    inline void assignMetaIds(LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
       for(unsigned int k=0; k<m->getNumCompartments(); ++k) {
         LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m->getCompartment(k);
         if (!c->isSetMetaId()) {
-          for(int k;;++k) {
+          for(int k=0;;++k) {
             std::stringstream ss;
             ss << "compartment" << k;
-            if (!modelContainsMetaId(m, ss.str()))
+            if (!modelContainsMetaId(m, ss.str())) {
               c->setMetaId(ss.str());
+              break;
+            }
           }
         }
       }
       for(unsigned int k=0; k<m->getNumSpecies(); ++k) {
         LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m->getSpecies(k);
         if (!s->isSetMetaId()) {
-          for(int k;;++k) {
+          for(int k=0;;++k) {
             std::stringstream ss;
             ss << "species" << k;
-            if (!modelContainsMetaId(m, ss.str()))
+            if (!modelContainsMetaId(m, ss.str())) {
               s->setMetaId(ss.str());
+              break;
+            }
           }
         }
       }

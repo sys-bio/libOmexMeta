@@ -38,20 +38,20 @@ namespace semsim {
         typedef std::vector<EntityDescriptor> Descriptors;
 
         /// Empty constructot
-        Entity() : EntityBase() {}
+        Entity(const std::string& metaid) : EntityBase(metaid) {}
 
         /// Construct from a definition URI
-        Entity(const Resource& definition)
-          : EntityBase(definition) {}
+        Entity(const std::string& metaid, const Resource& definition)
+          : EntityBase(metaid, definition) {}
 
         /// Construct from an @ref EntityDescriptor
-        Entity(const Resource& definition, const EntityDescriptor& d)
-          : EntityBase(definition), descriptors_(1,d) {}
+        Entity(const std::string& metaid, const Resource& definition, const EntityDescriptor& d)
+          : EntityBase(metaid, definition), descriptors_(1,d) {}
 
         # if __cplusplus >= 201103L
         /// Move-construct from an @ref EntityDescriptor
-        Entity(Resource&& definition, EntityDescriptor&& d)
-          : EntityBase({std::move(definition)}), descriptors_({std::move(d)}) {}
+        Entity(const std::string& metaid, Resource&& definition, EntityDescriptor&& d)
+          : EntityBase(metaid, {std::move(definition)}), descriptors_({std::move(d)}) {}
         # endif
 
         /// Get the number of @ref EntityDescriptor elements contained in this @ref Entity.
@@ -132,10 +132,10 @@ namespace semsim {
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          * @return the URI for this entity.
          */
-        void serializeToRDF(raptor_world* world, raptor_serializer* serializer) const {
-          EntityBase::serializeToRDF(base_uri, world, serializer);
+        void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const {
+          EntityBase::serializeToRDF(sbml_base_uri, world, serializer);
           for (Descriptors::const_iterator i(descriptors_.begin()); i!=descriptors_.end(); ++i)
-            i->serializeToRDF(uri_, metaid_, world, serializer);
+            i->serializeToRDF(sbml_base_uri, metaid_, world, serializer);
         }
 
       protected:

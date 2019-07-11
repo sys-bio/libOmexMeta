@@ -3,7 +3,12 @@
 
 # include "semsim/Preproc.h"
 # include "semsim/DescriptorTerm.h"
+# include "semsim/BiomodelsQualifiers.h"
+
+# include <raptor2.h>
+
 # include <vector>
+# include <sstream>
 
 namespace semsim {
     /**
@@ -52,22 +57,23 @@ namespace semsim {
         # endif
 
         /**
-         * Serialize this entity to RDF using the Raptor library.
+         * Serialize this entity descriptor to RDF using the Raptor library.
          * This function should only be called from the @ref Entity class.
          * The RDF serialization format is chosen when initializing the
          * @c raptor_serializer, and must be done before calling this function.
-         * @param base_metaid   The meta id of the entity this descriptor is attached to.
+         * @param sbml_base_uri   The base URI of the SBML model (usu. a relative path in a COMBINE archive).
+         * @param metaid   The meta id of the entity this descriptor is attached to.
          * @param world      Raptor world object. Must be initialized prior to calling this function.
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          * @return the URI for this entity.
          */
-        void serializeToRDF(const URI& base_uri, const std::string& metaid, raptor_world* world, raptor_serializer* serializer) const {
+        void serializeToRDF(const URI& sbml_base_uri, const std::string& metaid, raptor_world* world, raptor_serializer* serializer) const {
           unsigned int k=0;
-          URI last_uri=base_uri;
+          URI last_uri=sbml_base_uri;
           for (DescriptorTerms::const_iterator i(terms_.begin()); i!=terms_.end(); ++i) {
             std::stringstream ss_this;
             ss_this << metaid << "_term" << ++k;
-            std::string next_uri=base_uri.withFrag(ss_this.str());
+            URI next_uri=sbml_base_uri.withFrag(ss_this.str());
             serializeDescriptorTermToRDF(*i, last_uri, next_uri, world, serializer);
             last_uri = next_uri;
           }

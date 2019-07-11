@@ -57,8 +57,12 @@ int main() {
 
   std::cerr << "SBML output:\n" << sbml_writer.writeSBMLToString(d) << "\n";
 
+  // importing the model into libSemSim will automatically
+  // add metaids for any annotatable SBML elements that lack them
   SBMLImporter importer(d);
   const SBMLModel& model = importer.getSBMLModel();
+
+  std::cerr << "RDF serialization of annotations:\n" << model.getRDF("./mymodel", "turtle") << "\n";
 
   return 0;
 }

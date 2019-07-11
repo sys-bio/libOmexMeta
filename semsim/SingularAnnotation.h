@@ -39,8 +39,9 @@ namespace semsim {
         SingularAnnotation(const std::string& metaid, const Resource& definition)
           : EntityBase(metaid, definition) {}
 
-        /// Empty constructor
-        SingularAnnotation() {}
+        /// Constructor specifying only the meta id (defintions to be added later by user)
+        SingularAnnotation(const std::string& metaid)
+          : EntityBase(metaid) {}
 
         # if __cplusplus >= 201103L
         /// Move-construct from an @ref EntityDescriptor
@@ -61,6 +62,20 @@ namespace semsim {
         /// Create a copy of this object using the correct derived class's type.
         virtual AnnotationBase* clone() const {
           return new SingularAnnotation(*this);
+        }
+
+        /**
+         * Serialize this annotation to RDF using the Raptor library.
+         * This function just delegates to the @ref EntityBase serialization logic.
+         * The RDF serialization format is chosen when initializing the
+         * @c raptor_serializer, and must be done before calling this function.
+         * @param sbml_base_uri   The base URI of the SBML document relative to this (e.g. a relative path in a COMBINE archive).
+         * @param world      Raptor world object. Must be initialized prior to calling this function.
+         * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
+         * @return the URI for this entity.
+         */
+        void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const {
+          EntityBase::serializeToRDF(sbml_base_uri, world, serializer);
         }
     };
 }

@@ -129,7 +129,7 @@ namespace semsim {
          */
         SingularAnnotation extractSingularAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
           if (s->isSetMetaId())
-            throw std::runtime_error("This SBML object does not have an assigned meta id")
+            throw std::runtime_error("This SBML object does not have an assigned meta id");
           SingularAnnotation result(s->getMetaId());
           populateDefinitionsAndTerms(s, result);
           return result;
