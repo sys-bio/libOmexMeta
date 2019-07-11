@@ -10,7 +10,6 @@
 
 # include <string>
 # include <sstream>
-# include <iostream>
 
 namespace semsim {
 
@@ -46,6 +45,11 @@ namespace semsim {
         /// Construct from a meta id for this entity
         EntityBase(const std::string& metaid)
           : metaid_(metaid) {}
+
+        /// Get the meta id for this element
+        const std::string& getMetaId() const {
+          return metaid_;
+        }
 
         /// Get the number of @ref EntityDescriptor elements contained in this @ref EntityBase.
         std::size_t getNumDefinitions() const {
@@ -139,7 +143,7 @@ namespace semsim {
          * @return the URI for this entity.
          */
         void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const {
-          std::cerr << "serialize " << metaid_ << " definitions " << definitions_.size() << ", terms " << terms_.size() << "\n";
+          // std::cerr << "serialize " << metaid_ << " definitions " << definitions_.size() << ", terms " << terms_.size() << "\n";
           for(Definitions::const_iterator i(definitions_.begin()); i!=definitions_.end(); ++i)
             serializeDefinition(*i, sbml_base_uri, world, serializer);
           for(Terms::const_iterator i(terms_.begin()); i!=terms_.end(); ++i)
@@ -158,6 +162,10 @@ namespace semsim {
           s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)this_uri.encode().c_str());
           s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)bqb::is.getURI().encode().c_str());
           s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)def.getURI().encode().c_str());
+          // s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)"x");
+          // s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)"y");
+          // s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)"z");
+          // std::cerr << "serialize statement " << this_uri.encode() << " -> " << bqb::is.getURI().encode() << " -> " << def.getURI().encode() << "\n";
           raptor_serializer_serialize_statement(serializer, s);
           raptor_free_statement(s);
         }

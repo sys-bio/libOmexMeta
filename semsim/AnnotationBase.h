@@ -4,6 +4,8 @@
 # include "semsim/Preproc.h"
 # include "semsim/util/UniquePtr.h"
 
+# include <raptor2.h>
+
 namespace semsim {
     /**
      * The base class for annotations.
@@ -29,6 +31,9 @@ namespace semsim {
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          */
         virtual void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const = 0;
+
+        /// Get the meta id for this element
+        virtual const std::string& getMetaId() const = 0;
 
       protected:
     };

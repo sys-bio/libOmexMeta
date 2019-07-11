@@ -59,6 +59,11 @@ namespace semsim {
           :EntityBase(std::move(other)) {}
         # endif
 
+        /// Get the meta id for this element.
+        const std::string& getMetaId() const {
+          return EntityBase::getMetaId();
+        }
+
         /// Create a copy of this object using the correct derived class's type.
         virtual AnnotationBase* clone() const {
           return new SingularAnnotation(*this);

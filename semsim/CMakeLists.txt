@@ -20,6 +20,7 @@ set (SEMSIM_SOURCES
   # utilities/SemSimComponentComparator.cpp
   # SemSimObject.cpp
   BiomodelsQualifiers.cpp
+  Resource.cpp
   SemSim.cpp
 )
 
