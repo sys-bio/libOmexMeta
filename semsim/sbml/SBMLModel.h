@@ -147,7 +147,7 @@ namespace semsim {
           if (!serializer)
             throw std::runtime_error("Could not create Raptor serializer for format "+format);
 
-          raptor_uri* base_uri = raptor_new_uri(world, (const unsigned char*)"./");
+          raptor_uri* base_uri = raptor_new_uri(world, (const unsigned char*)"");
 
           raptor_serializer_set_namespace(serializer, raptor_new_uri(world, (const unsigned char*)"http://biomodels.net/biology-qualifiers/"), (const unsigned char*)"bqb");
 
