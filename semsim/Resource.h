@@ -70,9 +70,10 @@ namespace semsim {
 
         /**
          * Get a string representing the (possibly local) URI for this resource.
-         * @return the URI for this resource.
+         * @param base If this resource points to a local @ref Component, this parameter should be the relative path of the SBML document. Otherwise, the default value should be used.
+         * @return The URI for this resource.
          */
-        URI getURI() const;
+        URI getURI(const URI& base=URI()) const;
 
         /**
          * @return @c true if this resource points to a local @ref Component

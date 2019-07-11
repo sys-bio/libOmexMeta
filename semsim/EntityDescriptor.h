@@ -78,7 +78,7 @@ namespace semsim {
               serializeDescriptorTermToRDF(*i, last_uri, next_uri, world, serializer);
               last_uri = next_uri;
             } else {
-              serializeDescriptorTermToRDF(*i, last_uri, i->getResource().getURI(), world, serializer);
+              serializeDescriptorTermToRDF(*i, last_uri, i->getResource().getURI(sbml_base_uri), world, serializer);
             }
           }
         }
