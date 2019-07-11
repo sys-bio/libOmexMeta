@@ -1,6 +1,7 @@
 # include <semsim/SemSim.h>
 
 # include "sbml/SBMLTypes.h"
+#include <sbml/annotation/CVTerm.h>
 
 # include <iostream>
 
@@ -16,6 +17,7 @@ int main() {
   // create a compartment to represent the cytosol
   LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* comp = m->createCompartment();
   comp->setId("cytosol");
+  comp->setMetaId("cytosol");
   comp->setSize(1);
   comp->setConstant(true);
 
@@ -41,6 +43,7 @@ int main() {
   LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m->createSpecies();
   s->setCompartment("cytosol");
   s->setId("glucose");
+  s->setMetaId("glucose");
   s->setInitialConcentration(0);
   s->setUnits("molar");
   s->setHasOnlySubstanceUnits(false);
