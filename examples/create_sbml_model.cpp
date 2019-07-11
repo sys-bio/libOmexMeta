@@ -73,7 +73,11 @@ int main() {
 
   LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLWriter sbml_writer;
 
-  std::cerr << "SBML output:\n" << sbml_writer.writeSBMLToString(d) << "\n";
+  std::cerr << "**********************************************************\n";
+  std::cerr << "SBML output:\n";
+  std::cerr << "**********************************************************\n\n";
+
+  std::cerr << sbml_writer.writeSBMLToString(d) << "\n";
 
   // importing the model into libSemSim will automatically
   // add metaids for any annotatable SBML elements that lack them
@@ -82,7 +86,10 @@ int main() {
 
   std::cerr << "**********************************************************\n";
 
-  std::cerr << "RDF serialization of annotations:\n" << model.getRDF("./mymodel", "turtle") << "\n";
+  std::cerr << "RDF serialization of annotations:\n";
+  std::cerr << "**********************************************************\n\n";
+
+  std::cerr << model.getRDF("./mymodel", "turtle") << "\n";
 
   return 0;
 }
