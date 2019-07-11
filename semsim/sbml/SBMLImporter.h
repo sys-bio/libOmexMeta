@@ -158,7 +158,7 @@ namespace semsim {
             LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m_->getCompartment(k);
             if (c->isSetIdAttribute() && s->getCompartment() == c->getId()) {
               try {
-                result.addTerm(DescriptorTerm(bqb::occursIn, result_.getComponent(s->getId())));
+                result.addTerm(DescriptorTerm(bqb::occursIn, result_.getComponent(c)));
               } catch (std::out_of_range) {
                 // no definition uri - do nothing
               }
@@ -185,7 +185,7 @@ namespace semsim {
         /// Return a @ref Object weak pointer for the specified object (if it is in the @ref SBMLModel).
         Component* getComponentFor(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
           if (s->isSetIdAttribute() && result_.hasComponent(s->getId()))
-            return result_.getComponent(s->getId());
+            return result_.getComponent(s);
           else
             throw std::out_of_range("No such object in model");
         }
