@@ -3,11 +3,11 @@
 
 namespace semsim {
 
-URI Resource::getURI() const {
+URI Resource::getURI(const URI& base) const {
   if (!isLocal())
     return uri_;
   else
-    return URI("#"+element_->getAnnotation().getMetaId());
+    return URI(base.withFrag(element_->getAnnotation().getMetaId()));
 }
 
 }
