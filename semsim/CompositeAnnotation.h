@@ -80,6 +80,11 @@ namespace semsim {
           :property_(std::move(other.property_)), entity_(std::move(other.entity_)) {}
         # endif
 
+        /// Get the meta id for this element.
+        const std::string& getMetaId() const {
+          return getEntity().getMetaId();
+        }
+
         /**
          * This function returns @p true if the physical entity
          * descriptor is empty. This should not be the case

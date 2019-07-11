@@ -69,11 +69,10 @@ namespace semsim {
         }
 
         /**
+         * Get a string representing the (possibly local) URI for this resource.
          * @return the URI for this resource.
          */
-        const URI& getURI() const {
-          return uri_;
-        }
+        URI getURI() const;
 
         /**
          * @return @c true if this resource points to a local @ref Component

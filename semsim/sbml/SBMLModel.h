@@ -153,10 +153,10 @@ namespace semsim {
           size_t length;
           raptor_serializer_start_to_string(serializer, base_uri, &output, &length);
 
-          raptor_serializer_serialize_end(serializer);
-
           for (Components::const_iterator i=components_.begin(); i!=components_.end(); ++i)
             (*i)->getAnnotation().serializeToRDF(sbml_base_uri, world, serializer);
+
+          raptor_serializer_serialize_end(serializer);
 
           raptor_free_serializer(serializer);
           raptor_free_world(world);
@@ -164,6 +164,23 @@ namespace semsim {
           std::string result((char*)output);
           free(output);
           return result;
+
+          // void* output;
+          // size_t length;
+          // raptor_serializer_start_to_file_handle(serializer, base_uri, stdout);
+          //
+          // raptor_serializer_serialize_end(serializer);
+          //
+          // for (Components::const_iterator i=components_.begin(); i!=components_.end(); ++i)
+          //   (*i)->getAnnotation().serializeToRDF(sbml_base_uri, world, serializer);
+          //
+          // raptor_free_serializer(serializer);
+          // raptor_free_world(world);
+          //
+          // std::string result((char*)output);
+          // free(output);
+          // return result;
+          // return "abc";
         }
 
       protected:
