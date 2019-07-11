@@ -149,6 +149,8 @@ namespace semsim {
 
           raptor_uri* base_uri = raptor_new_uri(world, (const unsigned char*)"./");
 
+          raptor_serializer_set_namespace(serializer, raptor_new_uri(world, (const unsigned char*)"http://biomodels.net/biology-qualifiers/"), (const unsigned char*)"bqb");
+
           void* output;
           size_t length;
           raptor_serializer_start_to_string(serializer, base_uri, &output, &length);
@@ -164,23 +166,6 @@ namespace semsim {
           std::string result((char*)output);
           free(output);
           return result;
-
-          // void* output;
-          // size_t length;
-          // raptor_serializer_start_to_file_handle(serializer, base_uri, stdout);
-          //
-          // raptor_serializer_serialize_end(serializer);
-          //
-          // for (Components::const_iterator i=components_.begin(); i!=components_.end(); ++i)
-          //   (*i)->getAnnotation().serializeToRDF(sbml_base_uri, world, serializer);
-          //
-          // raptor_free_serializer(serializer);
-          // raptor_free_world(world);
-          //
-          // std::string result((char*)output);
-          // free(output);
-          // return result;
-          // return "abc";
         }
 
       protected:
