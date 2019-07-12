@@ -85,7 +85,7 @@ c.setAnnotation(c.getAnnotation().makeComposite(PhysicalProperty(OPB.get(523))))
 # now add a descriptor term specifying that the cytoplasm
 #is part of a pancreatic beta cell (CL:0000169)
 c.getCompositeAnnotation().addTerm(
-    bqb.isPartOf.fget(), # the relation (the cytoplasm *is part of* ...)
+    bqb.isPartOf, # the relation (the cytoplasm *is part of* ...)
     CL.get(169)   # the resource (pancreatic beta cell)
 )
 

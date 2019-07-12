@@ -45,6 +45,8 @@
 %ignore semsim::SBMLImporter::SBMLImporter(SBMLDocument*);
 %ignore semsim::SBMLImporter::getRelationFromSBMLQual;
 
+%rename (bqb_wrapper) semsim::bqb;
+
 %include "semsim/Preproc.h"
 %include "semsim/util/UniquePtr.h"
 %include "semsim/URI.h"
