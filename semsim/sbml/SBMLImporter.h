@@ -49,6 +49,15 @@ namespace semsim {
         }
       }
 
+      # if __cplusplus >= 201103L
+      /**
+       * Construct from an SBML string
+       * @param sbml The raw SBML content
+       */
+      SBMLImporter(const std::string& sbml)
+        : SBMLImporter(LIBSBML_CPP_NAMESPACE_QUALIFIER readSBMLFromString(sbml.c_str())) {}
+      # endif
+
       /// Return the @ref SBMLModel converted from this document
       SBMLModel& getSBMLModel() {
         return result_;
