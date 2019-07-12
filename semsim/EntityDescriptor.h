@@ -56,6 +56,11 @@ namespace semsim {
         }
         # endif
 
+        /// Shortcut for constructing & adding a descriptor term
+        void addTerm(const Relation& relation, const Resource& resource) {
+          terms_.push_back(DescriptorTerm(relation, resource));
+        }
+
         /**
          * Serialize this entity descriptor to RDF using the Raptor library.
          * This function should only be called from the @ref Entity class.
@@ -74,7 +79,7 @@ namespace semsim {
             if (!i->getResource().isLocal()) {
               std::stringstream ss_this;
               ss_this << metaid << "_term" << ++k;
-              URI next_uri=sbml_base_uri.withFrag(ss_this.str());
+              URI next_uri="#"+ss_this.str();
               serializeDescriptorTermToRDF(*i, last_uri, next_uri, world, serializer);
               last_uri = next_uri;
             } else {
