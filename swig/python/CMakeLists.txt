@@ -4,6 +4,7 @@ set_source_files_properties(../semsim.i PROPERTIES CPLUSPLUS ON SWIG_MODULE_NAME
 
 include_directories(${Python_INCLUDE_DIRS})
 
+# set_property(SOURCE ../semsim.i PROPERTY COMPILE_DEFINITIONS LIBSBML_CPP_NAMESPACE_QUALIFIER=libsbml)
 # swig module for semsim
 swig_add_library(
   semsim_python

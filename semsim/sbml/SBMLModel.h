@@ -14,6 +14,10 @@
 # include <tr1/unordered_map>
 # endif
 
+# if defined SWIG
+# define LIBSBML_CPP_NAMESPACE_QUALIFIER
+# endif
+
 namespace semsim {
 
     /**
