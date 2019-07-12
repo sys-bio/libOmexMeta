@@ -26,11 +26,12 @@
 %ignore semsim::AnnotationBase::makeComposite;
 //%rename (makeComposite_) semsim::AnnotationBase::makeComposite;
 
-//%extend semsim::AnnotationBase {
-//  AnnotationBase* makeComposite_(const PhysicalProperty& prop) const {
-//    return new semsim::CompositeAnnotation(*this, prop);
-//  }
-//}
+%extend semsim::AnnotationBase {
+  AnnotationBase* makeComposite_(const PhysicalProperty& prop) {
+    return ($self)->makeComposite(prop).release();
+    // return new semsim::CompositeAnnotation(*($self), prop);
+  }
+}
 
 %ignore semsim::SBMLModel::SBMLModel(Model*);
 %ignore semsim::SBMLModel::setComponentAnnotation;

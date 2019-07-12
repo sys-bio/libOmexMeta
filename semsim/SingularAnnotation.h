@@ -89,6 +89,11 @@ namespace semsim {
          * @return A new composite annotation
          */
         AnnotationPtr makeComposite(const PhysicalProperty& prop) const;
+
+        /// Get the local URI of this entity
+        URI getURI(const URI& base) const {
+          return base.withFrag(metaid_);
+        }
     };
 }
 

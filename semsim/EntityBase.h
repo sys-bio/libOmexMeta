@@ -51,6 +51,16 @@ namespace semsim {
           return metaid_;
         }
 
+        /// Set the meta id
+        void setMetaId(const std::string& metaid) {
+          metaid_ = metaid;
+        }
+
+        /// Get the local URI of this entity
+        virtual URI getURI(const URI& base) const {
+          return "#"+metaid_;
+        }
+
         /// Get the number of @ref EntityDescriptor elements contained in this @ref EntityBase.
         std::size_t getNumDefinitions() const {
           return definitions_.size();
@@ -157,15 +167,12 @@ namespace semsim {
               const URI& sbml_base_uri,
               raptor_world* world,
               raptor_serializer* serializer) const {
-          URI this_uri = sbml_base_uri.withFrag(metaid_);
+          URI this_uri = getURI(sbml_base_uri);
+
           raptor_statement* s = raptor_new_statement(world);
           s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)this_uri.encode().c_str());
           s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)bqb::is.getURI().encode().c_str());
           s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)def.getURI().encode().c_str());
-          // s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)"x");
-          // s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)"y");
-          // s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)"z");
-          // std::cerr << "serialize statement " << this_uri.encode() << " -> " << bqb::is.getURI().encode() << " -> " << def.getURI().encode() << "\n";
           raptor_serializer_serialize_statement(serializer, s);
           raptor_free_statement(s);
         }
@@ -175,7 +182,8 @@ namespace semsim {
               const URI& sbml_base_uri,
               raptor_world* world,
               raptor_serializer* serializer) const {
-          URI this_uri = sbml_base_uri.withFrag(metaid_);
+          URI this_uri = getURI(sbml_base_uri);
+
           raptor_statement* s = raptor_new_statement(world);
           s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)this_uri.encode().c_str());
           s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)term.getRelation().getURI().encode().c_str());

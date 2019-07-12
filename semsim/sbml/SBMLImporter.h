@@ -185,7 +185,7 @@ namespace semsim {
         Entity extractSpeciesEntity(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
           if (!s->isSetMetaId())
             throw std::runtime_error("The SBML species is missing a meta id");
-          Entity result(s->getMetaId());
+          Entity result(s->getMetaId()+"_entity");
           populateDefinitionsAndTerms(s, result);
           result.addDescriptor(extractSpeciesEntityDescriptor(s));
           return result;
@@ -250,7 +250,10 @@ namespace semsim {
          * @return   The automatically inferred composite annotation.
          */
         CompositeAnnotation extractCompositeAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
+          if (!s->isSetMetaId())
+            throw std::runtime_error("The SBML species is missing a meta id");
           return CompositeAnnotation(
+            s->getMetaId(),
             GetSpeciesPhysicalProperty(s,m_),
             extractSpeciesEntity(s)
           );

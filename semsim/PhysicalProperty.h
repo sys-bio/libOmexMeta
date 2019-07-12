@@ -34,6 +34,20 @@ namespace semsim {
           : resource_(std::move(resource)) {}
         # endif
 
+        /**
+         * @return The @ref Resource for this @ref PhysicalProperty.
+         */
+        const Resource& getResource() const {
+          return resource_;
+        }
+
+        /**
+         * @return The @ref Resource for this @ref PhysicalProperty.
+         */
+        Resource& getResource() {
+          return resource_;
+        }
+
       protected:
         Resource resource_;
     };
