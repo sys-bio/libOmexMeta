@@ -5,6 +5,7 @@
 # include "semsim/AnnotationBase.h"
 # include "semsim/PhysicalProperty.h"
 # include "semsim/Entity.h"
+# include "semsim/SingularAnnotation.h"
 
 namespace semsim {
     /**
@@ -65,6 +66,16 @@ namespace semsim {
         CompositeAnnotation(CompositeAnnotation&& other)
           :property_(std::move(other.property_)), entity_(std::move(other.entity_)) {}
         # endif
+
+        /**
+         * Construct from a singular annotation.
+         * Copy all definitions and terms.
+         * @param other The singular annotation to copy.
+         * @param property The physical property to assign to the composite annotation.
+         * @param
+         */
+        CompositeAnnotation(const SingularAnnotation& other, const PhysicalProperty& property)
+          : property_(property), entity_(other) {}
 
         /// Get the meta id for this element.
         const std::string& getMetaId() const {
@@ -148,6 +159,17 @@ namespace semsim {
          */
         const URI& getURI() const {
           return uri_;
+        }
+
+        /**
+         * Convert singular annotations to composite annotations
+         * by copying their definitions and terms.
+         * Effect when called on an instance of @ref CompositeAnnotation
+         * is to create a clone.
+         * @return A new composite annotation
+         */
+        AnnotationPtr makeComposite(const PhysicalProperty& prop) const {
+          return AnnotationPtr(clone());
         }
 
       protected:

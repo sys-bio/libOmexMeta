@@ -5,7 +5,6 @@
 # include "semsim/AnnotationBase.h"
 # include "semsim/PhysicalProperty.h"
 # include "semsim/EntityBase.h"
-# include "semsim/Entity.h"
 
 namespace semsim {
     /**
@@ -82,6 +81,14 @@ namespace semsim {
         void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const {
           EntityBase::serializeToRDF(sbml_base_uri, world, serializer);
         }
+
+        /**
+         * Convert singular annotations to composite annotations
+         * by copying their definitions and terms.
+         * @param prop The physical property to assign to the composite annotation.
+         * @return A new composite annotation
+         */
+        AnnotationPtr makeComposite(const PhysicalProperty& prop) const;
     };
 }
 

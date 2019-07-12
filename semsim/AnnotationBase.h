@@ -3,6 +3,7 @@
 
 # include "semsim/Preproc.h"
 # include "semsim/util/UniquePtr.h"
+# include "semsim/PhysicalProperty.h"
 
 # include <raptor2.h>
 
@@ -34,6 +35,14 @@ namespace semsim {
 
         /// Get the meta id for this element
         virtual const std::string& getMetaId() const = 0;
+
+        /**
+         * Convert singular annotations to composite annotations
+         * by copying their definitions and terms.
+         * @param prop The physical property to assign to the composite annotation.
+         * @return A new composite annotation
+         */
+        virtual UniquePtr<AnnotationBase>::type makeComposite(const PhysicalProperty& prop) const = 0;
 
       protected:
     };

@@ -1,3 +1,7 @@
+# in this file, we show a minimal example of constructing
+# an SBML model containing composite annotations
+# we want to describe "cytosolic glucose in a pancreatic beta cell"
+
 import antimony
 
 # load a simple SBML model with MIRIAM-style annotations
@@ -63,3 +67,16 @@ print('**********************************************************')
 # (which is actually a URI)
 # for COMBINE archives, this will be a relative path inside the archive
 print(model.getRDF('./my-sbml-file.xml', 'turtle'))
+
+# this isn't bad - the RDF already contains a composite annotation
+# telling is that the species "glucose" is inside the "cytosol"
+# we currently have "cytosolic glucose"
+# however - what we want is "cytosolic glucose in a pancreatic beta cell"
+# to describe this, we need to annotate the compartment (not the species!)
+# and describe the cell type it is part of
+
+# the compartment currently has a *singular annotation*, which can't
+# represent membership in a "pancreatic beta cell", so we change this to
+# a composite annotation
+c = model.getComponentForId('cytosol')
+c.setAnnotation(c.getAnnotation().makeComposite())

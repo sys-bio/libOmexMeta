@@ -1,5 +1,10 @@
 %module semgen
 
+%{
+#define SWIG_FILE_WITH_INIT
+#include "semsim/SemSim.h"
+%}
+
 // C++ std::string handling
 %include "std_string.i"
 
@@ -18,10 +23,14 @@
 
 %include "semsim/Preproc.h"
 
-%{
-#define SWIG_FILE_WITH_INIT
-#include "semsim/SemSim.h"
-%}
+%ignore semsim::AnnotationBase::makeComposite;
+//%rename (makeComposite_) semsim::AnnotationBase::makeComposite;
+
+//%extend semsim::AnnotationBase {
+//  AnnotationBase* makeComposite_(const PhysicalProperty& prop) const {
+//    return new semsim::CompositeAnnotation(*this, prop);
+//  }
+//}
 
 %ignore semsim::SBMLModel::SBMLModel(Model*);
 %ignore semsim::SBMLModel::setComponentAnnotation;
@@ -32,17 +41,18 @@
 %ignore semsim::SBMLImporter::getRelationFromSBMLQual;
 
 %include "semsim/Preproc.h"
+%include "semsim/util/UniquePtr.h"
 %include "semsim/URI.h"
 %include "semsim/Relation.h"
 %include "semsim/Resource.h"
 %include "semsim/Term.h"
 %include "semsim/DescriptorTerm.h"
 %include "semsim/EntityBase.h"
-%include "semsim/EntityDescriptor.h"
-%include "semsim/Entity.h"
 %include "semsim/PhysicalProperty.h"
 %include "semsim/AnnotationBase.h"
 %include "semsim/SingularAnnotation.h"
+%include "semsim/EntityDescriptor.h"
+%include "semsim/Entity.h"
 %include "semsim/CompositeAnnotation.h"
 %include "semsim/Component.h"
 %include "semsim/Model.h"
