@@ -1,7 +1,6 @@
 # include <semsim/SemSim.h>
 
 # include "sbml/SBMLTypes.h"
-#include <sbml/annotation/CVTerm.h>
 
 # include <iostream>
 
