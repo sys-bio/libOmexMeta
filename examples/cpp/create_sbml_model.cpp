@@ -112,5 +112,12 @@ int main() {
   Component* c = model.getComponentForId("cytosol");
   c->setAnnotation(c->getAnnotation().makeComposite(OPB::get(523))); // 523 is spatial volume
 
+  std::cerr << "**********************************************************\n";
+
+  std::cerr << "RDF serialization with cell type annotation:\n";
+  std::cerr << "**********************************************************\n\n";
+
+  std::cerr << model.getRDF("./mymodel", "turtle") << "\n";
+
   return 0;
 }
