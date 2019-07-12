@@ -24,7 +24,7 @@
 %include "semsim/Preproc.h"
 
 %ignore semsim::AnnotationBase::makeComposite;
-//%rename (makeComposite_) semsim::AnnotationBase::makeComposite;
+%rename (makeComposite) semsim::AnnotationBase::makeComposite_;
 
 %extend semsim::AnnotationBase {
   AnnotationBase* makeComposite_(const PhysicalProperty& prop) {
@@ -60,7 +60,7 @@
 %include "semsim/sbml/SBMLModel.h"
 %include "semsim/sbml/SBMLImporter.h"
 
-// %include "semsim/BiomodelsQualifiers.h"
+%include "biomodels_quals.i"
 
 %include "semsim/Ontology.h"
 %include "semsim/ontologies/CHEBI.h"

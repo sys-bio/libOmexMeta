@@ -80,3 +80,10 @@ print(model.getRDF('./my-sbml-file.xml', 'turtle'))
 # a composite annotation
 c = model.getComponentForId('cytosol')
 c.setAnnotation(c.getAnnotation().makeComposite())
+
+# now add a descriptor term specifying that the cytoplasm
+/#is part of a pancreatic beta cell (CL:0000169)
+c->getAnnotation().addTerm(
+    bqb.isPartOf, # the relation (the cytoplasm *is part of* ...)
+    CL.get(169)   # the resource (pancreatic beta cell)
+)
