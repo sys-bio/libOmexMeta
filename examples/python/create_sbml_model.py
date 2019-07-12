@@ -51,6 +51,7 @@ print(sbml)
 
 # import the model into libSemSim
 import semsim
+from semsim import OPB, CL, PhysicalProperty, bqb
 
 # importing the model into libSemSim will automatically
 # add metaids for any annotatable SBML elements that lack them
@@ -79,11 +80,20 @@ print(model.getRDF('./my-sbml-file.xml', 'turtle'))
 # represent membership in a "pancreatic beta cell", so we change this to
 # a composite annotation
 c = model.getComponentForId('cytosol')
-c.setAnnotation(c.getAnnotation().makeComposite())
+c.setAnnotation(c.getAnnotation().makeComposite(PhysicalProperty(OPB.get(523))))
 
 # now add a descriptor term specifying that the cytoplasm
-/#is part of a pancreatic beta cell (CL:0000169)
-c->getAnnotation().addTerm(
-    bqb.isPartOf, # the relation (the cytoplasm *is part of* ...)
+#is part of a pancreatic beta cell (CL:0000169)
+c.getCompositeAnnotation().addTerm(
+    bqb.isPartOf.fget(), # the relation (the cytoplasm *is part of* ...)
     CL.get(169)   # the resource (pancreatic beta cell)
 )
+
+print('**********************************************************')
+print('RDF serialization with cell type annotation:')
+print('**********************************************************')
+
+# the RDF always needs the location of the original SBML file
+# (which is actually a URI)
+# for COMBINE archives, this will be a relative path inside the archive
+print(model.getRDF('./my-sbml-file.xml', 'turtle'))
