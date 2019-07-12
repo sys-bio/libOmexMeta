@@ -33,6 +33,10 @@
   }
 }
 
+//%typemap(out) AnnotationBase& Component::getAnnotation {
+    //$result = SWIG_NewPointerObj(SWIG_as_voidptr($1), SWIGTYPE_p_semsim__CompositeAnnotation, $owner);
+//}
+
 %ignore semsim::SBMLModel::SBMLModel(Model*);
 %ignore semsim::SBMLModel::setComponentAnnotation;
 %ignore semsim::SBMLModel::hasComponent;
@@ -66,5 +70,6 @@
 %include "semsim/ontologies/CHEBI.h"
 %include "semsim/ontologies/OPB.h"
 %include "semsim/ontologies/GO.h"
+%include "semsim/ontologies/CL.h"
 
 %include "semsim/SemSim.h"
