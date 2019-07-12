@@ -49,7 +49,7 @@ namespace semsim {
         }
       }
 
-      # if __cplusplus >= 201103L
+      # if __cplusplus >= 201103L || defined SWIG
       /**
        * Construct from an SBML string
        * @param sbml The raw SBML content

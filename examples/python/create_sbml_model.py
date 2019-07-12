@@ -50,7 +50,7 @@ import semsim
 
 # importing the model into libSemSim will automatically
 # add metaids for any annotatable SBML elements that lack them
-importer = semsim.SBMLImporter()
+importer = semsim.SBMLImporter(sbml)
 
 model = importer.getSBMLModel()
 

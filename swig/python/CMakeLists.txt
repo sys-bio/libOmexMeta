@@ -11,6 +11,7 @@ swig_add_library(
   LANGUAGE python
   OUTPUT_DIR python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages/semsim
   SOURCES ../semsim.i)
+set_property(TARGET semsim_python PROPERTY CXX_STANDARD_REQUIRED 11)
 
 # target settings
 swig_link_libraries(semsim_python semsim-static)
@@ -46,5 +47,10 @@ install(
 
 install(
   TARGETS semsim_python
+  DESTINATION python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages/semsim
+)
+
+install(
+  FILES ${CMAKE_CURRENT_BINARY_DIR}/python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages/semsim/semsim.py
   DESTINATION python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages/semsim
 )
