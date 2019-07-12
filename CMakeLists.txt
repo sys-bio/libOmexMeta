@@ -157,8 +157,11 @@ install(TARGETS semanticio
 
 add_subdirectory(semsim)
 
-# Add subdirectories for each language if desired
+# Recurse into subdirectories for each wrapper language if specified
 if(BUILD_PYTHON)
+  if (NOT (${SEMSIM_CXX_STANDARD} EQUAL 11))
+    message(SEND_ERROR "Python bindings require C++11 to be used")
+  endif()
   if (Python_FOUND)
     include_directories(${PYTHON_INCLUDE_PATH})
     add_subdirectory(swig/python)
@@ -166,9 +169,6 @@ if(BUILD_PYTHON)
     message(SEND_ERROR "BUILD_PYTHON is enabled but a suitable Python runtime environment was not found")
   endif()
 endif()
-# add_subdirectory(swig)
-# target_link_libraries(semgen /usr/local/Cellar/raptor/2.0.15/lib/libraptor2.dylib)
-# target_link_libraries(semgen-static /usr/local/Cellar/raptor/2.0.15/lib/libraptor2.dylib)
 
 if (BUILD_DOCS)
   if (Doxygen_FOUND)

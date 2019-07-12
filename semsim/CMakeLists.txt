@@ -21,6 +21,7 @@ set (SEMSIM_SOURCES
   # SemSimObject.cpp
   BiomodelsQualifiers.cpp
   Resource.cpp
+  SingularAnnotation.cpp
   SemSim.cpp
 )
 

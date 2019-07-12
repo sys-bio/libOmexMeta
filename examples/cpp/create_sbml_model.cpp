@@ -90,7 +90,7 @@ int main() {
   // importing the model into libSemSim will automatically
   // add metaids for any annotatable SBML elements that lack them
   SBMLImporter importer(d);
-  const SBMLModel& model = importer.getSBMLModel();
+  SBMLModel& model = importer.getSBMLModel();
 
   std::cerr << "**********************************************************\n";
 
@@ -98,6 +98,19 @@ int main() {
   std::cerr << "**********************************************************\n\n";
 
   std::cerr << model.getRDF("./mymodel", "turtle") << "\n";
+
+  // this isn't bad - the RDF already contains a composite annotation
+  // telling is that the species "glucose" is inside the "cytosol"
+  // we currently have "cytosolic glucose"
+  // however - what we want is "cytosolic glucose in a pancreatic beta cell"
+  // to describe this, we need to annotate the compartment (not the species!)
+  // and describe the cell type it is part of
+
+  // the compartment currently has a *singular annotation*, which can't
+  // represent membership in a "pancreatic beta cell", so we change this to
+  // a composite annotation
+  Component* c = model.getComponentForId("cytosol");
+  c->setAnnotation(c->getAnnotation().makeComposite(OPB::get(523))); // 523 is spatial volume
 
   return 0;
 }

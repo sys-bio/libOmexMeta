@@ -5,6 +5,7 @@
 # include "semsim/Resource.h"
 # include "semsim/EntityBase.h"
 # include "semsim/EntityDescriptor.h"
+# include "semsim/SingularAnnotation.h"
 
 # include <string>
 
@@ -53,6 +54,10 @@ namespace semsim {
         Entity(const std::string& metaid, Resource&& definition, EntityDescriptor&& d)
           : EntityBase(metaid, {std::move(definition)}), descriptors_({std::move(d)}) {}
         # endif
+
+        /// Construct from a singular annotation. Copy all definitions and terms.
+        Entity(const SingularAnnotation& annotation)
+          : EntityBase(annotation) {}
 
         /// Get the number of @ref EntityDescriptor elements contained in this @ref Entity.
         std::size_t getNumDescriptors() const {

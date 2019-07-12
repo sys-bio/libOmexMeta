@@ -122,7 +122,7 @@ namespace semsim {
         }
 
         /**
-         * Return the component corresponding to the given SBML element id (if it exists in the mapping table).
+         * Return the component corresponding to the given SBML element (if it exists in the mapping table).
          * Compartments and species should exist in the mapping table.
          * @param  s The SBML element.
          * @return    The component for the given SBML id (if it exists).
@@ -131,6 +131,30 @@ namespace semsim {
           if (!hasComponent(s))
             throw std::out_of_range("Component does not exist in mapping table");
           return element_map_.find(s)->second;
+        }
+
+        /**
+         * Return the component corresponding to the given SBML element id (if it exists in the mapping table).
+         * Compartments and species should exist in the mapping table.
+         * @param  id The SBML id.
+         * @return    The component for the given SBML id (if it exists).
+         */
+        const Component* getComponentForId(const std::string& id) const {
+          if (!hasComponent(id))
+            throw std::out_of_range("Component does not exist in mapping table");
+          return element_id_map_.find(id)->second;
+        }
+
+        /**
+         * Return the component corresponding to the given SBML element id (if it exists in the mapping table).
+         * Compartments and species should exist in the mapping table.
+         * @param  id The SBML id.
+         * @return    The component for the given SBML id (if it exists).
+         */
+        Component* getComponentForId(const std::string& id) {
+          if (!hasComponent(id))
+            throw std::out_of_range("Component does not exist in mapping table");
+          return element_id_map_.find(id)->second;
         }
 
         /**
