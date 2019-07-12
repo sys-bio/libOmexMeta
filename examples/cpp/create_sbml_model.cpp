@@ -111,9 +111,14 @@ int main() {
   // a composite annotation
   Component* c = model.getComponentForId("cytosol");
   c->setAnnotation(c->getAnnotation().makeComposite(OPB::get(523))); // 523 is spatial volume
+  // now add a descriptor term specifying that the cytoplasm
+  // is part of a pancreatic beta cell (CL:0000169)
+  c->getCompositeAnnotation().addTerm(
+    bqb::isPartOf, // the relation (the cytoplasm *is part of* ...)
+    CL::get(169)   // the resource (pancreatic beta cell)
+  );
 
   std::cerr << "**********************************************************\n";
-
   std::cerr << "RDF serialization with cell type annotation:\n";
   std::cerr << "**********************************************************\n\n";
 

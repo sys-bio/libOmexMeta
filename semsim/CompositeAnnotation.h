@@ -122,6 +122,26 @@ namespace semsim {
         }
 
         /**
+         * @return The @ref EntityDescriptor describing the physical entity of this annotation.
+         */
+        Entity& getEntity() {
+          return entity_;
+        }
+
+        /**
+         * Shortcut for adding a descriptor term to the last entity descriptor
+         * (often, there is just one entity descriptor).
+         * Create a new @ref EntityDescriptor if none exist.
+         * @param relation The relation that the new term should use.
+         * @param resource The resource that the term should point to.
+         */
+        void addTerm(const Relation& relation, const Resource& resource) {
+          if(getEntity().getNumDescriptors() < 1)
+            getEntity().addDescriptor(EntityDescriptor());
+          getEntity().getDescriptors().back().addTerm(relation, resource);
+        }
+
+        /**
          * This function returns @p true if this annotation
            * can be encoded in an SBML model (i.e. its domain
          * descriptor must be empty).

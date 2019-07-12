@@ -77,6 +77,30 @@ namespace semsim {
       }
 
       /**
+       * Get this component's annotation and cast it
+       * to a composite annotation.
+       * It is an error to call this method unless
+       * the component's annotation is a composite annotation.
+       */
+      const CompositeAnnotation& getCompositeAnnotation() const {
+        if (!annotation_)
+          throw std::runtime_error("No annotation set");
+        return dynamic_cast<const CompositeAnnotation&>(*annotation_);
+      }
+
+      /**
+       * Get this component's annotation and cast it
+       * to a composite annotation.
+       * It is an error to call this method unless
+       * the component's annotation is a composite annotation.
+       */
+      CompositeAnnotation& getCompositeAnnotation() {
+        if (!annotation_)
+          throw std::runtime_error("No annotation set");
+        return dynamic_cast<CompositeAnnotation&>(*annotation_);
+      }
+
+      /**
        * Manually set the annotation (from a raw pointer).
        * This @ref Component will own the passed raw pointer.
        * If the @ref Component currently has an annotation set,
