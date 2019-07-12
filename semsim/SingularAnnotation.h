@@ -10,7 +10,7 @@
 namespace semsim {
     /**
      * The singular / "plain" annotation class is designed to represent
-     * traditional CV term annotations found in SBML models.
+     * traditional MIRIAM annotations found in SBML models.
      * These types of annotations are not as expressive
      * as @ref CompositeAnnotation "CompositeAnnotations"
      * and can only point to one or more @ref Resource "Resources"

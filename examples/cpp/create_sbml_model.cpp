@@ -34,10 +34,14 @@ int main() {
   LIBSBML_CPP_NAMESPACE_QUALIFIER Unit* unit = unitdef->createUnit();
   unit->setKind(LIBSBML_CPP_NAMESPACE_QUALIFIER UNIT_KIND_MOLE);
   unit->setExponent(1);
+  unit->setMultiplier(1);
+  unit->setScale(1);
 
   unit = unitdef->createUnit();
   unit->setKind(LIBSBML_CPP_NAMESPACE_QUALIFIER UNIT_KIND_LITRE);
   unit->setExponent(-1);
+  unit->setMultiplier(1);
+  unit->setScale(1);
 
   // create the species for glucose
   LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m->createSpecies();
@@ -47,6 +51,8 @@ int main() {
   s->setInitialConcentration(0);
   s->setUnits("molar");
   s->setHasOnlySubstanceUnits(false);
+  s->setConstant(false);
+  s->setBoundaryCondition(false);
 
   // add a CV term to glucose
   LIBSBML_CPP_NAMESPACE_QUALIFIER CVTerm *cv_glucose = new LIBSBML_CPP_NAMESPACE_QUALIFIER CVTerm();
@@ -58,8 +64,11 @@ int main() {
   // create import reaction for glucose
   LIBSBML_CPP_NAMESPACE_QUALIFIER Reaction* reaction = m->createReaction();
   reaction->setId("glucose_import");
+  reaction->setReversible(false);
+
   LIBSBML_CPP_NAMESPACE_QUALIFIER SpeciesReference* sr = reaction->createProduct();
   sr->setSpecies("glucose");
+  sr->setConstant(false);
   LIBSBML_CPP_NAMESPACE_QUALIFIER KineticLaw* k = reaction->createKineticLaw();
   LIBSBML_CPP_NAMESPACE_QUALIFIER Parameter* p = k->createParameter();
   p->setId("glucose_import_rate");
