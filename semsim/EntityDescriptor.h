@@ -69,7 +69,7 @@ namespace semsim {
          */
         void serializeToRDF(const URI& sbml_base_uri, const std::string& metaid, raptor_world* world, raptor_serializer* serializer) const {
           unsigned int k=0;
-          URI last_uri=sbml_base_uri.withFrag(metaid);
+          URI last_uri="#"+metaid;
           for (DescriptorTerms::const_iterator i(terms_.begin()); i!=terms_.end(); ++i) {
             if (!i->getResource().isLocal()) {
               std::stringstream ss_this;
