@@ -97,6 +97,7 @@ TODO: code example
    :caption: Contents:
 
    cppapi/index.rst
+   examples/index.rst
 
 References
 ==========
