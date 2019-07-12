@@ -172,6 +172,13 @@ namespace semsim {
           return result;
         }
 
+        # ifdef SWIG
+        /// For swig
+        std::string getRDF(const std::string& sbml_base_uri, const std::string& format="rdfxml") const {
+          return getRDF(sbml_base_uri, format);
+        }
+        # endif
+
       protected:
         /// Maps SBML model elements to corresponding libSemSim @ref Component.
         SEMSIM_TR1_NAMESPACE_QUAL unordered_map<LIBSBML_CPP_NAMESPACE_QUALIFIER SBase*,Component*> element_map_;
