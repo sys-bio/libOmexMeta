@@ -44,7 +44,7 @@ namespace semsim {
       public:
         const static std::string root;
 
-        __attribute__ ((visibility ("default"))) const static Relation is;
+        const static Relation is;
         const static Relation hasPart;
         const static Relation isPartOf;
         const static Relation isVersionOf;
