@@ -86,6 +86,7 @@ Expected Output
   **********************************************************
   RDF serialization of annotations:
   **********************************************************
+
   @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
   @prefix bqb: <http://biomodels.net/biology-qualifiers/> .
 
@@ -104,6 +105,7 @@ Expected Output
   **********************************************************
   RDF serialization with cell type annotation:
   **********************************************************
+
   @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
   @prefix bqb: <http://biomodels.net/biology-qualifiers/> .
 
@@ -125,3 +127,11 @@ Expected Output
   <./my-sbml-file.xml#beta_cell_model.glucose>
       bqb:is <http://identifiers.org/opb/OPB_00425> ;
       bqb:isPropertyOf <#beta_cell_model.glucose_entity> .
+
+  **********************************************************
+  Humanized version of the annotation information
+  (ontology terms replaced by human-readable names):
+  **********************************************************
+
+  OPB:spatial volume -> (isPropertyOf) -> #beta_cell_model.cytosol -> (is) -> GO:cytoplasm -> (isPartOf) -> CL:type B pancreatic cell
+  OPB:chemical concentration -> (isPropertyOf) -> #beta_cell_model.glucose -> (is) -> CHEBI:glucose -> (occursIn) -> #beta_cell_model.cytosol

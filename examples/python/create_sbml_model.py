@@ -62,7 +62,7 @@ model = importer.getSBMLModel()
 # print the extracted annotations as RDF
 print('**********************************************************')
 print('RDF serialization of annotations:')
-print('**********************************************************')
+print('**********************************************************\n')
 
 # the RDF always needs the location of the original SBML file
 # (which is actually a URI)
@@ -91,9 +91,16 @@ c.getCompositeAnnotation().addTerm(
 
 print('**********************************************************')
 print('RDF serialization with cell type annotation:')
-print('**********************************************************')
+print('**********************************************************\n')
 
 # the RDF always needs the location of the original SBML file
 # (which is actually a URI)
 # for COMBINE archives, this will be a relative path inside the archive
 print(model.getRDF('./my-sbml-file.xml', 'turtle'))
+
+print('**********************************************************')
+print('Humanized version of the annotation information')
+print('(ontology terms replaced by human-readable names):')
+print('**********************************************************\n')
+
+print(model.humanize())
