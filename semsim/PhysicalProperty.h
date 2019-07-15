@@ -48,6 +48,15 @@ namespace semsim {
           return resource_;
         }
 
+        /**
+         * Return a human--readable representation of the annotation
+         * information. Ontology terms will be replaced with human-readable
+         * names.
+         */
+        std::string humanize() const {
+          return resource_.humanize();
+        }
+
       protected:
         Resource resource_;
     };

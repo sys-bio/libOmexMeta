@@ -44,6 +44,13 @@ namespace semsim {
          */
         virtual UniquePtr<AnnotationBase>::type makeComposite(const PhysicalProperty& prop) const = 0;
 
+        /**
+         * Return a human--readable representation of the annotation
+         * information. Ontology terms will be replaced with human-readable
+         * names.
+         */
+        virtual std::string humanize() const = 0;
+
       protected:
     };
 

@@ -61,6 +61,11 @@ namespace semsim {
           return URI(encoded_uri_+"#"+suffix);
         }
 
+        /// Comparison operator
+        bool operator==(const URI& other) const {
+          return encoded_uri_ == other.encoded_uri_;
+        }
+
       protected:
         std::string encoded_uri_;
     };

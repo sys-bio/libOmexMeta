@@ -160,6 +160,15 @@ namespace semsim {
             serializeTerm(*i, sbml_base_uri, world, serializer);
         }
 
+        /**
+         * Return a human--readable representation of the annotation
+         * information. Ontology terms will be replaced with human-readable
+         * names.
+         */
+        virtual std::string humanize() const {
+          return metaid_ + " -> (is) -> " + humanizeDefintions();
+        }
+
       protected:
 
         void serializeDefinition(
@@ -190,6 +199,16 @@ namespace semsim {
           s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)term.getResource().getURI().encode().c_str());
           raptor_serializer_serialize_statement(serializer, s);
           raptor_free_statement(s);
+        }
+
+        std::string humanizeDefintions() const {
+          std::stringstream ss;
+          for (Definitions::const_iterator i=definitions_.begin(); i!=definitions_.end(); ++i) {
+            if (i!=definitions_.begin())
+              ss << "/";
+            ss << i->humanize();
+          }
+          return ss.str();
         }
 
         /// The metaid for this entity - will be used to construct a URI in the serialized RDF

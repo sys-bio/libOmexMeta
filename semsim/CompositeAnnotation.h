@@ -198,6 +198,15 @@ namespace semsim {
           return AnnotationPtr(clone());
         }
 
+        /**
+         * Return a human--readable representation of the annotation
+         * information. Ontology terms will be replaced with human-readable
+         * names.
+         */
+        std::string humanize() const {
+          return property_.humanize() + " -> (isPropertyOf) -> " + "#" + metaid_ + entity_.humanize();
+        }
+
       protected:
         virtual void serializePhysicalPropertyToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const {
           const URI& phys_prop_uri = sbml_base_uri.withFrag(metaid_);

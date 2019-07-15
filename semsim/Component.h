@@ -133,6 +133,18 @@ namespace semsim {
       }
       # endif
 
+      /**
+       * Return a human--readable representation of the annotation
+       * information. Ontology terms will be replaced with human-readable
+       * names.
+       */
+      std::string humanize() const {
+        if (annotation_)
+          return annotation_->humanize();
+        else
+          return "";
+      }
+
       protected:
         AnnotationPtr annotation_;
     };

@@ -94,6 +94,15 @@ namespace semsim {
         URI getURI(const URI& base) const {
           return base.withFrag(metaid_);
         }
+
+        /**
+         * Return a human--readable representation of the annotation
+         * information. Ontology terms will be replaced with human-readable
+         * names.
+         */
+        std::string humanize() const {
+          return EntityBase::humanize();
+        }
     };
 }
 

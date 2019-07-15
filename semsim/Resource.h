@@ -4,6 +4,8 @@
 # include "semsim/Preproc.h"
 # include "semsim/URI.h"
 
+# include <stdexcept>
+
 namespace semsim {
     class Component;
 
@@ -82,6 +84,13 @@ namespace semsim {
         bool isLocal() const {
           return element_;
         }
+
+        /**
+         * Return a human--readable representation of the annotation
+         * information. Ontology terms will be replaced with human-readable
+         * names.
+         */
+        std::string humanize() const;
 
       protected:
         /// A URI (for external resources)
