@@ -124,12 +124,12 @@ int main() {
 
   std::cerr << model.getRDF("./mymodel.xml", "turtle") << "\n";
 
-std::cerr << "**********************************************************\n";
-std::cerr << "Humanized version of the annotation information\n";
-std::cerr << "(ontology terms replaced by human-readable names):\n";
-std::cerr << "**********************************************************\n\n";
+  std::cerr << "**********************************************************\n";
+  std::cerr << "Humanized version of the annotation information\n";
+  std::cerr << "(ontology terms replaced by human-readable names):\n";
+  std::cerr << "**********************************************************\n\n";
 
-std::cerr << model.humanize() << "\n";
+  std::cerr << model.humanize() << "\n";
 
   return 0;
 }
