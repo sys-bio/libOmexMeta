@@ -97,7 +97,7 @@ int main() {
   std::cerr << "RDF serialization of annotations:\n";
   std::cerr << "**********************************************************\n\n";
 
-  std::cerr << model.getRDF("./mymodel", "turtle") << "\n";
+  std::cerr << model.getRDF("./mymodel.xml", "turtle") << "\n";
 
   // this isn't bad - the RDF already contains a composite annotation
   // telling is that the species "glucose" is inside the "cytosol"
@@ -122,7 +122,14 @@ int main() {
   std::cerr << "RDF serialization with cell type annotation:\n";
   std::cerr << "**********************************************************\n\n";
 
-  std::cerr << model.getRDF("./mymodel", "turtle") << "\n";
+  std::cerr << model.getRDF("./mymodel.xml", "turtle") << "\n";
+
+std::cerr << "**********************************************************\n";
+std::cerr << "Humanized version of the annotation information\n";
+std::cerr << "(ontology terms replaced by human-readable names):\n";
+std::cerr << "**********************************************************\n\n";
+
+std::cerr << model.humanize() << "\n";
 
   return 0;
 }

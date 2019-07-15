@@ -88,6 +88,15 @@ namespace semsim {
           }
         }
 
+        /**
+         * Return a human--readable representation of the annotation
+         * information. Ontology terms will be replaced with human-readable
+         * names.
+         */
+        std::string humanize() const {
+          return humanizeTerms();
+        }
+
       protected:
         void serializeDescriptorTermToRDF(
               const DescriptorTerm& term,
@@ -112,6 +121,17 @@ namespace semsim {
             raptor_serializer_serialize_statement(serializer, s);
             raptor_free_statement(s);
           }
+        }
+
+        std::string humanizeTerms() const {
+          std::stringstream ss;
+          for (DescriptorTerms::const_iterator i=terms_.begin(); i!=terms_.end(); ++i) {
+            ss << " -> ";
+            ss << "("+i->getRelation().humanize()+")";
+            ss << " -> ";
+            ss << i->getResource().humanize();
+          }
+          return ss.str();
         }
 
         /// A sequence of descriptor terms joined by structural relations

@@ -71,6 +71,18 @@ namespace semsim {
          */
         virtual std::string getRDF(const URI& sbml_base_uri, const std::string& format="rdfxml") const = 0;
 
+        /**
+         * Return a human--readable representation of the annotation
+         * information. Ontology terms will be replaced with human-readable
+         * names.
+         */
+        std::string humanize() const {
+          std::string result;
+          for (Components::const_iterator i=components_.begin(); i!= components_.end(); ++i)
+            result += (*i)->humanize()+"\n";
+          return result;
+        }
+
       protected:
         // Stores the @ref Component "Components" for this model.
         Components components_;

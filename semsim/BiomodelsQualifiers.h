@@ -57,6 +57,8 @@ namespace semsim {
         const static Relation hasProperty;
         const static Relation isPropertyOf;
         const static Relation hasTaxon;
+
+        static std::string humanizeQualifier(const Relation& q);
     };
 }
 # endif

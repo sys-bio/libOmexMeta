@@ -37,6 +37,18 @@ namespace semsim {
           return uri_;
         }
 
+        /**
+         * Return a human--readable representation of the annotation
+         * information. Ontology terms will be replaced with human-readable
+         * names.
+         */
+        std::string humanize() const;
+
+        /// Comparison operator
+        bool operator==(const Relation& other) const {
+          return uri_ == other.uri_;
+        }
+
       protected:
         URI uri_;
     };

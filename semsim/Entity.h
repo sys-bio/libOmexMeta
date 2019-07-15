@@ -143,7 +143,23 @@ namespace semsim {
             i->serializeToRDF(sbml_base_uri, metaid_, world, serializer);
         }
 
+        /**
+         * Return a human--readable representation of the annotation
+         * information. Ontology terms will be replaced with human-readable
+         * names.
+         */
+        virtual std::string humanize() const {
+          return " -> (is) -> " + humanizeDefintions() + humanizeDescriptors();
+        }
+
       protected:
+        std::string humanizeDescriptors() const {
+          if (descriptors_.size() == 1)
+            return descriptors_.at(0).humanize();
+          else
+            return "";
+        }
+
         /// Stores all descriptors.
         Descriptors descriptors_;
     };
