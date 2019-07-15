@@ -120,3 +120,11 @@ Expected Output
   <./mymodel#glucose>
       bqb:is <http://identifiers.org/opb/OPB_00425> ;
       bqb:isPropertyOf <#glucose_entity> .
+
+  **********************************************************
+  Humanized version of the annotation information
+  (ontology terms replaced by human-readable names):
+  **********************************************************
+
+  OPB:spatial volume -> (isPropertyOf) -> #cytosol -> (is) -> GO:cytoplasm -> (isPartOf) -> CL:type B pancreatic cell
+  OPB:chemical concentration -> (isPropertyOf) -> #glucose -> (is) -> CHEBI:glucose -> (occursIn) -> #cytosol
