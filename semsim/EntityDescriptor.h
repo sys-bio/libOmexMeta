@@ -63,7 +63,7 @@ namespace semsim {
         //   : terms_(std::forward<T>(arg)) {}
 
         /**
-         * std::initializer_list move constructor.
+         * std::initializer_list constructor.
          * This constructor allows you to create
          * a entity descriptor from a list of terms
          * passed in as arguments.
