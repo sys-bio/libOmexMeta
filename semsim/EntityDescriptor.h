@@ -21,6 +21,14 @@ namespace semsim {
         /// Empty constructor
         EntityDescriptor() {}
 
+        /// Copy constructor
+        EntityDescriptor(const EntityDescriptor& other)
+          : terms_(other.terms_) {}
+
+        /// Move constructor
+        EntityDescriptor(EntityDescriptor&& other)
+          : terms_(std::move(other.terms_)) {}
+
         # if __cplusplus >= 201103L
         /**
          * Variadic move constructor.
@@ -36,7 +44,7 @@ namespace semsim {
         // http://cpptruths.blogspot.com/2012/06/perfect-forwarding-of-parameter-groups.html
         template <class ...T>
         EntityDescriptor(T&&... args)
-          : terms_(std::forward(args)...) {}
+          : terms_(std::forward<T>(args)...) {}
         # endif
 
         /// @return @p true if this descriptor is empty
