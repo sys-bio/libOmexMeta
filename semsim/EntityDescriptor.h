@@ -29,7 +29,7 @@ namespace semsim {
         EntityDescriptor(EntityDescriptor&& other)
           : terms_(std::move(other.terms_)) {}
 
-        # if __cplusplus >= 201103L
+        # if __cplusplus >= 201103L && !defined(SWIG)
         /**
          * Variadic move constructor.
          * This constructor allows you to create
@@ -42,9 +42,41 @@ namespace semsim {
          * @endcode
          */
         // http://cpptruths.blogspot.com/2012/06/perfect-forwarding-of-parameter-groups.html
-        template <class ...T>
-        EntityDescriptor(T&&... args)
-          : terms_(std::forward<T>(args)...) {}
+        // template <class ...T>
+        // EntityDescriptor(T&&... args)
+        //   : terms_(std::forward<T>(args)...) {}
+
+        /**
+         * std::initializer_list move constructor.
+         * This constructor allows you to create
+         * a entity descriptor from a list of terms
+         * passed in as arguments.
+         *
+         * @code{.cpp}
+         * EntityDescriptor mydesc = EntityDescriptor(DescriptorTerm(),
+         *                                            DescriptorTerm());
+         * @endcode
+         */
+        // https://stackoverflow.com/questions/28370970/forwarding-initializer-list-expressions
+        // template <class T>
+        // explicit EntityDescriptor(T&& arg)
+        //   : terms_(std::forward<T>(arg)) {}
+
+        /**
+         * std::initializer_list move constructor.
+         * This constructor allows you to create
+         * a entity descriptor from a list of terms
+         * passed in as arguments.
+         *
+         * @code{.cpp}
+         * EntityDescriptor mydesc = EntityDescriptor(DescriptorTerm(),
+         *                                            DescriptorTerm());
+         * @endcode
+         */
+        // https://stackoverflow.com/questions/28370970/forwarding-initializer-list-expressions
+        template <class T>
+        explicit EntityDescriptor(std::initializer_list<T> l)
+          : terms_(l) {}
         # endif
 
         /// @return @p true if this descriptor is empty
