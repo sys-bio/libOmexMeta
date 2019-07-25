@@ -137,6 +137,8 @@ Configuration Summary
       CellML suppert            ${ENABLE_CELLML_SUPPORT}
       Tests (requires Catch)    ${ENABLE_TESTS}
       Python bindings           ${BUILD_PYTHON}
+      Python interpreter        ${Python_EXECUTABLE}
+      Python include directory  ${PYTHON_INCLUDE_PATH}
       Generate documentation    ${BUILD_DOCS}
     "
 )
