@@ -75,10 +75,19 @@ endif()
 get_target_property(LIBCOMBINE_LIBS Combine LOCATION)
 get_target_property(LIBCOMBINE_INCLUDE_DIRS Combine INTERFACE_INCLUDE_DIRECTORIES)
 
-get_target_property(LIBCELLML_LIBS cellml LOCATION)
-get_target_property(LIBCELLML_INCLUDE_DIRS cellml INTERFACE_INCLUDE_DIRECTORIES)
+if (cellml_FOUND)
+  get_target_property(LIBCELLML_LIBS cellml LOCATION)
+  get_target_property(LIBCELLML_INCLUDE_DIRS cellml INTERFACE_INCLUDE_DIRECTORIES)
+else()
+  set(LIBCELLML_LIBS "")
+  set(LIBCELLML_INCLUDE_DIRS "")
+endif()
 
-get_target_property(CATCH2_INCLUDE_DIRS Catch2::Catch2 INTERFACE_INCLUDE_DIRECTORIES)
+if (Catch2_FOUND)
+  get_target_property(CATCH2_INCLUDE_DIRS Catch2::Catch2 INTERFACE_INCLUDE_DIRECTORIES)
+else()
+  set(CATCH2_INCLUDE_DIRS "")
+endif ()
 
 message(STATUS "
 -------------------------------------------------------------------------------
