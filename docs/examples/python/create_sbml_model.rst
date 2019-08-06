@@ -3,7 +3,7 @@ Create & Annotate An SBML Model
 
 .. literalinclude:: ../../../examples/python/create_sbml_model.py
    :language: python
-   :emphasize-lines: 53,54,58,60,70,82-83,87-90,99,106
+   :emphasize-lines: 53,54,58,60,70,82-83,87-90,99,106,108
    :linenos:
 
 Expected Output

@@ -77,4 +77,6 @@
 %include "semsim/ontologies/GO.h"
 %include "semsim/ontologies/CL.h"
 
+%include "semsim/omex/OmexOutput.h"
+
 %include "semsim/SemSim.h"
