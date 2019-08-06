@@ -49,32 +49,3 @@ Next, you will need to build and install libSBML 5.18.0 or later. Refer to the [
 CMAKE_PREFIX_PATH=/path/to/libsbml-installtion:$CMAKE_PREFIX_PATH cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/path/to/libsemgen-install /path/to/libsemgen-src
 make -j4 install
 ```
-
- ## Pre-requisites
-    cmake
-    swig (http://macappstore.org/swig/)
-    libsbml
-    libcellml
-    libzip (http://macappstore.org/libzip/)
-    LibXml2 (http://macappstore.org/libxml2/)
-    automake
-    aclocal
-    autoconf
-    autoheader
-    libtoolize
-    gtkdocize (http://macappstore.org/gtk-doc/)
-    librdf
-    raptor
-    rasqal
-    glibtoolize (required if installing on MAC OSX)
-        - Update libtoolize in autogen.sh configuration files for Raptor and Rasqal
-        - Replace libtoolize with glibtoolize
-        - GLIBTOOLIZE=/usr/local/bin/glibtoolize ./autogen.sh
-
-
-
-## Usage
-    mkdir build
-    cd build
-    cmake ..
-    make
