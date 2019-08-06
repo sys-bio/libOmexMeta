@@ -4,10 +4,12 @@
 # include "semsim/Preproc.h"
 # include "semsim/Model.h"
 # include "semsim/sbml/MetaIDs.h"
+# include "semsim/sbml/Annotations.h"
 
 # include <raptor2.h>
 
 # include "sbml/SBMLTypes.h"
+
 # if __cplusplus >= 201103L
 # include <unordered_map>
 # else
@@ -32,11 +34,12 @@ namespace semsim {
          * and a corresponding mapping table.
          * @param m The SBML model to use for initialization.
          */
-        SBMLModel(LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m)
-          : Model() {
+        SBMLModel(LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument* d)
+          : Model(), d_(d) {
+          LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m = d->getModel();
           // all elements must have meta ids
           assignMetaIds(m);
-          for(unsigned int k=0; k<m->getNumSpecies(); ++k) {
+          for(unsigned int k=0; k<m->getNumCompartments(); ++k) {
             LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m->getCompartment(k);
             if (c->isSetIdAttribute()) {
               Component *o = addComponent(Component());
@@ -52,6 +55,7 @@ namespace semsim {
               element_id_map_.insert(std::make_pair(s->getId(), o));
             }
           }
+          stripAnnotations(d_);
         }
 
         /**
@@ -203,11 +207,29 @@ namespace semsim {
         }
         # endif
 
+        /**
+         * Return the XML encoding of the attached SBML or CellML model.
+         * @return The XML content.
+         */
+        std::string encodeXML() const {
+          LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLWriter w;
+          return w.writeSBMLToString(d_);
+        }
+
+        /**
+         * @return "sbml" if an SBML model, "cellml" if a cellml model.
+         */
+        virtual const std::string& getFormat() const {
+          return "sbml";
+        }
+
       protected:
         /// Maps SBML model elements to corresponding libSemSim @ref Component.
         SEMSIM_TR1_NAMESPACE_QUAL unordered_map<LIBSBML_CPP_NAMESPACE_QUALIFIER SBase*,Component*> element_map_;
         /// Maps SBML model elements to corresponding libSemSim @ref Component.
         SEMSIM_TR1_NAMESPACE_QUAL unordered_map<std::string,Component*> element_id_map_;
+        /// Stores the SBML model
+        LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument* d_;
     };
 
 }

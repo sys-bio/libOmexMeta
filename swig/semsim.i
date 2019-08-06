@@ -37,13 +37,16 @@
     //$result = SWIG_NewPointerObj(SWIG_as_voidptr($1), SWIGTYPE_p_semsim__CompositeAnnotation, $owner);
 //}
 
-%ignore semsim::SBMLModel::SBMLModel(Model*);
+%ignore semsim::SBMLModel::SBMLModel(SBMLDocument*);
 %ignore semsim::SBMLModel::setComponentAnnotation;
 %ignore semsim::SBMLModel::hasComponent;
 %ignore semsim::SBMLModel::getComponent;
 
 %ignore semsim::SBMLImporter::SBMLImporter(SBMLDocument*);
 %ignore semsim::SBMLImporter::getRelationFromSBMLQual;
+
+%ignore semsim::stripAnnotationsFromElement;
+%ignore semsim::stripAnnotations;
 
 %rename (bqb_wrapper) semsim::bqb;
 

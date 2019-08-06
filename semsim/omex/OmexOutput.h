@@ -1,7 +1,9 @@
-# ifndef SEMSIM_OMEX_ACCESSORS_H_
-# define SEMSIM_OMEX_ACCESSORS_H_
+# ifndef SEMSIM_OMEX_OUTPUT_H_
+# define SEMSIM_OMEX_OUTPUT_H_
 
 # include "semsim/Preproc.h"
+# include "semsim/Model.h"
+
 
 namespace semsim {
     /**
@@ -14,7 +16,7 @@ namespace semsim {
      */
     void exportToOmex(const Model& model,
       const std::string& archive_path,
-      const std::string& sbml_entry_path="./sbml.xml",
+      const std::string& sbml_entry_path="./model.xml",
       const std::string& rdf_entry_path="./annotations.xml");
 }
 # endif

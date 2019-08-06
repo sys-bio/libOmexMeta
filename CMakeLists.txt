@@ -18,9 +18,6 @@ if ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Da
   # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++${SEMSIM_CXX_STANDARD} -Wall -Wextra -fPIC")
 endif()
 
-set(CMAKE_CXX_VISIBILITY_PRESET hidden)
-set(CMAKE_C_VISIBILITY_PRESET hidden)
-
 set(CMAKE_CXX_STANDARD ${SEMSIM_CXX_STANDARD})
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_compile_definitions(SEMSIM_INTERNAL_BUILD)
@@ -152,6 +149,7 @@ include_directories(${libSBML_INCLUDE_DIRS})
 include_directories(${Raptor2_INCLUDE_DIRS})
 include_directories(${Rasqal_INCLUDE_DIRS})
 include_directories(${LibRDF_INCLUDE_DIRS})
+include_directories(${LIBCOMBINE_INCLUDE_DIRS})
 include_directories(.)
 
 # Add cellml, sbml
