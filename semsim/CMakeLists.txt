@@ -25,6 +25,7 @@ set (SEMSIM_SOURCES
   SingularAnnotation.cpp
   SemSim.cpp
   omex/OmexOutput.cpp
+  omex/SBMLOmex.cpp
 )
 
 # Create main and link to cellml

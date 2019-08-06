@@ -15,6 +15,9 @@ namespace semsim {
         /// The type used to store the collection of @ref Component "Components". Treat as opaque.
         typedef std::vector<ComponentPtr> Components;
 
+        // Empty ctor
+        Model() {}
+
         /// Virtual destructor
         virtual ~Model() {}
 
@@ -92,9 +95,11 @@ namespace semsim {
         /**
          * @return "sbml" if an SBML model, "cellml" if a cellml model.
          */
-        virtual const std::string& getFormat() const = 0;
+        virtual std::string getFormat() const = 0;
 
       protected:
+        Model(const Model& other) {}
+
         // Stores the @ref Component "Components" for this model.
         Components components_;
     };

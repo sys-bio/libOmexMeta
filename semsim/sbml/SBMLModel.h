@@ -219,7 +219,7 @@ namespace semsim {
         /**
          * @return "sbml" if an SBML model, "cellml" if a cellml model.
          */
-        virtual const std::string& getFormat() const {
+        virtual std::string getFormat() const {
           return "sbml";
         }
 
