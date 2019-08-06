@@ -2,7 +2,6 @@
 # define SEMSIM_SBML_ACCESSORS_H_
 
 # include "semsim/Preproc.h"
-# include "semsim/ontologies/OPB.h"
 
 # include "sbml/SBMLTypes.h"
 

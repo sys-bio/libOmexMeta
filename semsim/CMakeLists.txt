@@ -24,6 +24,7 @@ set (SEMSIM_SOURCES
   Resource.cpp
   SingularAnnotation.cpp
   SemSim.cpp
+  omex/OmexOutput.cpp
 )
 
 # Create main and link to cellml
@@ -59,6 +60,7 @@ foreach(l ${LIBRARIES})
   target_link_libraries(${l} ${Raptor2_LIBRARIES})
   target_link_libraries(${l} ${Rasqal_LIBRARIES})
   target_link_libraries(${l} ${LibRDF_LIBRARIES})
+  target_link_libraries(${l} ${LIBCOMBINE_LIBS})
   if (${LIBCELLML_LIBS})
     target_link_libraries(${l} ${LIBCELLML_LIBS})
   endif()

@@ -131,5 +131,7 @@ int main() {
 
   std::cerr << model.humanize() << "\n";
 
+  exportToOmex(model,"/tmp/combine.omex");
+
   return 0;
 }

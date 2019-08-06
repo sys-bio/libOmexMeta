@@ -83,6 +83,17 @@ namespace semsim {
           return result;
         }
 
+        /**
+         * Return the XML encoding of the attached SBML or CellML model.
+         * @return The XML content.
+         */
+        virtual std::string encodeXML() const = 0;
+
+        /**
+         * @return "sbml" if an SBML model, "cellml" if a cellml model.
+         */
+        virtual const std::string& getFormat() const = 0;
+
       protected:
         // Stores the @ref Component "Components" for this model.
         Components components_;
