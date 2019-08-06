@@ -25,6 +25,7 @@
 # include "semsim/ontologies/CL.h"
 
 # include "semsim/omex/OmexOutput.h"
+# include "semsim/omex/SBMLOmex.h"
 
 SEMSIM_PUBLIC void libsemgen_hello();
 // void cellml_hello();
