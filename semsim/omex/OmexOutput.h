@@ -16,7 +16,7 @@ namespace semsim {
      */
     void exportToOmex(const Model& model,
       const std::string& archive_path,
-      const std::string& sbml_entry_path="./model.xml",
+      const std::string& model_entry_path="./model.xml",
       const std::string& rdf_entry_path="./annotations.xml");
 }
 # endif
