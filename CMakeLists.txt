@@ -152,18 +152,6 @@ include_directories(${LibRDF_INCLUDE_DIRS})
 include_directories(${LIBCOMBINE_INCLUDE_DIRS})
 include_directories(.)
 
-# Add cellml, sbml
-add_library(semanticio STATIC cellml.cpp sbml.cpp sbml.h omex.cpp omex.h)
-
-install(TARGETS semanticio
-        RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib
-        PUBLIC_HEADER DESTINATION include)
-
-# Set up public headers for cellml
-# set_target_properties(semanticio PROPERTIES PUBLIC_HEADER "cellml.h")
-
 add_subdirectory(semsim)
 
 # Recurse into subdirectories for each wrapper language if specified
