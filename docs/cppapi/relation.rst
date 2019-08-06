@@ -7,5 +7,5 @@ Relation
 .. highlight:: c++
 
 
-.. doxygenclass:: semsim::URI
+.. doxygenclass:: semsim::Relation
    :members:
