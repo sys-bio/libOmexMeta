@@ -51,7 +51,7 @@ print(sbml)
 
 # import the model into libSemSim
 import semsim
-from semsim import OPB, CL, PhysicalProperty, bqb
+from semsim import OPB, CL, PhysicalProperty, bqb, exportToOmex
 
 # importing the model into libSemSim will automatically
 # add metaids for any annotatable SBML elements that lack them
@@ -104,3 +104,5 @@ print('(ontology terms replaced by human-readable names):')
 print('**********************************************************\n')
 
 print(model.humanize())
+
+exportToOmex(model, '/tmp/combine-python.omex')
