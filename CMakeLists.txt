@@ -26,8 +26,6 @@ add_compile_definitions(SEMSIM_INTERNAL_BUILD)
 
 find_package(LibXml2 REQUIRED)
 find_package(ZLIB    REQUIRED)
-find_package(PugiXML REQUIRED)
-find_package(LibZip  REQUIRED)
 find_package(libSBML)
 find_package(Raptor2 REQUIRED)
 find_package(Rasqal  REQUIRED)
@@ -110,11 +108,6 @@ Configuration Summary
       libxml2 include dirs      ${LIBXML2_INCLUDE_DIRS}
       zlib library              ${ZLIB_LIBRARIES}
       zlib include dir          ${ZLIB_INCLUDE_DIRS}
-      PugiXML library           ${PUGIXML_LIBRARY}
-      PugiXML include dir       ${PUGIXML_INCLUDE_DIR}
-      libzip library            ${LIBZIP_LIBRARY}
-      libzip include dir (zip)  ${LIBZIP_INCLUDE_DIR_ZIP}
-      libzip include dir (zipconf) ${LIBZIP_INCLUDE_DIR_ZIPCONF}
       libSBML library           ${libSBML_LIBRARIES}
       libSBML include dir       ${libSBML_INCLUDE_DIRS}
       Raptor library            ${Raptor2_LIBRARIES}
@@ -125,7 +118,7 @@ Configuration Summary
       LibRDF include dir        ${LibRDF_INCLUDE_DIRS}
       libCombine                ${LIBCOMBINE_LIBS}
       libCombine include dir    ${LIBCOMBINE_INCLUDE_DIRS}
-      LibCellML (optional)      ${LIBCELLML_LIBS}
+      LibCellML                 ${LIBCELLML_LIBS}
       LibCellML include dir     ${LIBCELLML_INCLUDE_DIRS}
       Catch2 include (optional) ${CATCH2_INCLUDE_DIRS}
 
@@ -176,6 +169,8 @@ if (BUILD_DOCS)
 endif()
 
 if (ENABLE_TESTS)
+  include(CTest)
+  enable_testing()
   add_subdirectory(tests)
 endif()
 
