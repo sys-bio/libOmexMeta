@@ -1,8 +1,12 @@
 cmake_minimum_required(VERSION 3.14.0)
 
-cmake_policy(SET CMP0048 NEW)
-cmake_policy(SET CMP0078 NEW)
-cmake_policy(SET CMP0086 NEW)
+cmake_policy(SET CMP0003 NEW) # useless
+cmake_policy(SET CMP0028 NEW) # double-colon
+cmake_policy(SET CMP0042 NEW) # macos rpath
+cmake_policy(SET CMP0048 NEW) # can set project version
+cmake_policy(SET CMP0060 NEW) # useless
+cmake_policy(SET CMP0078 NEW) # used to set target name for swig
+cmake_policy(SET CMP0086 NEW) # pass -module flag to swig
 
 project(libsemgen LANGUAGES CXX VERSION 0.1.0)
 
@@ -21,6 +25,9 @@ endif()
 set(CMAKE_CXX_STANDARD ${SEMSIM_CXX_STANDARD})
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_compile_definitions(SEMSIM_INTERNAL_BUILD)
+# https://gitlab.kitware.com/cmake/cmake/issues/16589
+set(CMAKE_MACOSX_RPATH ON)
+SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 # dependencies
 
@@ -104,6 +111,15 @@ Configuration Summary
     Installation prefix:        ${CMAKE_INSTALL_PREFIX}
 
     Options:
+      SBML support              ${ENABLE_SBML_SUPPORT}
+      CellML suppert            ${ENABLE_CELLML_SUPPORT}
+      Tests (requires Catch)    ${ENABLE_TESTS}
+      Python bindings           ${BUILD_PYTHON}
+      Python interpreter        ${Python_EXECUTABLE}
+      Python include directory  ${PYTHON_INCLUDE_PATH}
+      Generate documentation    ${BUILD_DOCS}
+
+    Dependencies:
       libxml2 library           ${LIBXML2_LIBRARIES}
       libxml2 include dirs      ${LIBXML2_INCLUDE_DIRS}
       zlib library              ${ZLIB_LIBRARIES}
@@ -121,15 +137,6 @@ Configuration Summary
       LibCellML                 ${LIBCELLML_LIBS}
       LibCellML include dir     ${LIBCELLML_INCLUDE_DIRS}
       Catch2 include (optional) ${CATCH2_INCLUDE_DIRS}
-
-    Options:
-      SBML support              ${ENABLE_SBML_SUPPORT}
-      CellML suppert            ${ENABLE_CELLML_SUPPORT}
-      Tests (requires Catch)    ${ENABLE_TESTS}
-      Python bindings           ${BUILD_PYTHON}
-      Python interpreter        ${Python_EXECUTABLE}
-      Python include directory  ${PYTHON_INCLUDE_PATH}
-      Generate documentation    ${BUILD_DOCS}
     "
 )
 
