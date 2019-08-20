@@ -7,7 +7,8 @@
 
 namespace semsim {
     /**
-     * Read a Combine archive and return a @ref Model with annotation information.
+     * Read an SBML file and annotation metadata from a Combine archive and
+     * return a @ref Model with annotation information.
      * @param archive_path    The path for the Combine archive.
      * @param sbml_entry_path The path to the SBML file within the archive.
      * @param rdf_entry_path  The path to the annotation RDF metadata within the archive.
