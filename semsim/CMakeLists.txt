@@ -26,6 +26,7 @@ set (SEMSIM_SOURCES
   SemSim.cpp
   omex/OmexOutput.cpp
   omex/SBMLOmex.cpp
+  rdf/RDFReader.cpp
 )
 
 # Create main and link to cellml
