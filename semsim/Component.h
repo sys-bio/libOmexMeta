@@ -43,10 +43,13 @@ namespace semsim {
           : annotation_(other.hasAnnotation() ? other.getAnnotation().clone() : NULL) {}
 
         # if __cplusplus >= 201103L
-        /// Move-construct from a composite annotation
+        /// Move-construct from a component
         Component(Component&& other)
           : annotation_(std::move(other.annotation_)) {}
         # endif
+
+        /// Virtual destructor
+        ~Component() {}
 
         bool hasAnnotation() const {
           return !!annotation_;
@@ -85,6 +88,8 @@ namespace semsim {
       const CompositeAnnotation& getCompositeAnnotation() const {
         if (!annotation_)
           throw std::runtime_error("No annotation set");
+        if (!annotation_->isComposite())
+          throw std::runtime_error("Annotation is not composite");
         return dynamic_cast<const CompositeAnnotation&>(*annotation_);
       }
 
@@ -97,6 +102,8 @@ namespace semsim {
       CompositeAnnotation& getCompositeAnnotation() {
         if (!annotation_)
           throw std::runtime_error("No annotation set");
+        if (!annotation_->isComposite())
+          throw std::runtime_error("Annotation is not composite");
         return dynamic_cast<CompositeAnnotation&>(*annotation_);
       }
 
@@ -145,8 +152,46 @@ namespace semsim {
           return "";
       }
 
+      /// Return @c true if this component has a meta id (required for serialization).
+      bool hasMetaId() const {
+        if (annotation_)
+          return true;
+        else if (metaid_.size() > 0)
+          return true;
+        else
+          return false;
+      }
+
+      /// Get the meta id of this component.
+      const std::string& getMetaId() const {
+        if (metaid_.size())
+          return metaid_;
+        else if (annotation_)
+          return annotation_->getMetaId();
+        else
+          throw std::runtime_error("Meta id of component is not set.");
+      }
+
+      /// Set the meta id of this component.
+      void setMetaId(const std::string& metaid) {
+        metaid_ = metaid;
+      }
+
+      /**
+       * Serialize this annotation to RDF using the Raptor library.
+       * @param sbml_base_uri   The base URI of the SBML document relative to this (e.g. a relative path in a COMBINE archive).
+       * @param world      Raptor world object. Must be initialized prior to calling this function.
+       * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
+       * @return the URI for this entity.
+       */
+      virtual void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const {
+        if (annotation_)
+          getAnnotation().serializeToRDF(sbml_base_uri, world, serializer);
+      }
+
       protected:
         AnnotationPtr annotation_;
+        std::string metaid_;
     };
 
     /**

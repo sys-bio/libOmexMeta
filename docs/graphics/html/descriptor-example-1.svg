@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?> 
+<?xml-stylesheet href="descriptor-example.css" type="text/css"?> 
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="425.50577pt" height="37.74228pt" viewBox="257.32048 -20.39893 425.50577 37.74228 "> 
+<g transform="translate(0, 17.34335 ) scale(1,-1) translate(0,20.39893 )"> 
+<g>
+ <g stroke="rgb(0.0%,0.0%,0.0%)">
+ <g fill="rgb(0.0%,0.0%,0.0%)">
+ <g stroke-width="0.4pt">
+ <g>
+ <g>
+ <g fill="rgb(100.0%,100.0%,100.0%)">
+ <g stroke="rgb(32.99103%,33.43048%,33.57849%)">
+ <g>
+ <g fill="rgb(100.0%,100.0%,100.0%)">
+ <g stroke="rgb(32.99103%,33.43048%,33.57849%)">
+ <path d=" M  257.52048 -13.47221 h  54.01392 v  26.94443 h  -54.01392 Z  " />
+ </g>
+ </g>
+ </g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,267.52048,-3.47221)">
+ <g fill="rgb(19.04907%,33.33282%,47.61963%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(17.00696,0)" text-anchor="middle"  font-size="10"> 
+<a 
+href="https://identifiers.org/CHEBI:17234" target="_parent">Glucose</a></text> 
+</g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <g fill="rgb(100.0%,100.0%,100.0%)">
+ <g stroke="rgb(32.99103%,33.43048%,33.57849%)">
+ <g>
+ <g fill="rgb(100.0%,100.0%,100.0%)">
+ <g stroke="rgb(32.99103%,33.43048%,33.57849%)">
+ <path d=" M  383.06627 -14.44444 h  121.75021 v  28.88889 h  -121.75021 Z  " />
+ </g>
+ </g>
+ </g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,393.06627,-2.5)">
+ <g fill="rgb(19.04907%,33.33282%,47.61963%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(50.8751,0)" text-anchor="middle"  font-size="10"> 
+<a 
+href="https://identifiers.org/GO:0005829" target="_parent">Cytosolic compartment</a></text> 
+</g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <g fill="rgb(100.0%,100.0%,100.0%)">
+ <g stroke="rgb(32.99103%,33.43048%,33.57849%)">
+ <g>
+ <g fill="rgb(100.0%,100.0%,100.0%)">
+ <g stroke="rgb(32.99103%,33.43048%,33.57849%)">
+ <path d=" M  576.34836 -13.47221 h  106.2779 v  26.94443 h  -106.2779 Z  " />
+ </g>
+ </g>
+ </g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,586.34836,-3.47221)">
+ <g fill="rgb(19.04907%,33.33282%,47.61963%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(43.13895,0)" text-anchor="middle"  font-size="10"> 
+<a 
+href="https://identifiers.org/CL:0000169" target="_parent">Pancreatic beta cell</a></text> 
+</g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <path d=" M  311.73439 0.0 C  339.47374 0.0 355.12692 0.0 374.53046 0.0  " style="fill:none"/>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,374.53046,0.0)">
+ <g>
+ <g stroke-dasharray="none" stroke-dashoffset="0.0pt">
+ <g stroke-linejoin="miter">
+ <path d=" M  7.51122 0.0 C  6.5888 0.22232 2.53418 1.48212 0.0 2.85306 L  0.0 -2.85306 C  2.53418 -1.48212 6.5888 -0.22232 7.51122 0.0 Z  " />
+ </g>
+ </g>
+ </g>
+  </g>
+ </g>
+ <g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,347.30031,0.0)">
+ <g fill="rgb(0.0%,0.0%,0.0%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+</text> 
+</g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,328.92528,7.06595)">
+ <g fill="rgb(0.0%,0.0%,0.0%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(18.37503,0)" text-anchor="middle"  font-size="10"> 
+<a 
+href="http://co.mbine.org/standards/qualifiers" target="_parent">occursIn</a></text> 
+</g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,347.30031,0.0)">
+ <g fill="rgb(0.0%,0.0%,0.0%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+</text> 
+</g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,321.16138,-14.56595)">
+ <g fill="rgb(0.0%,0.0%,0.0%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(26.13893,0)" text-anchor="middle"  font-size="10"> 
+(Struct rel.)</text> 
+</g>
+ </g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <path d=" M  505.01648 0.0 C  532.75583 0.0 548.40901 0.0 567.81255 0.0  " style="fill:none"/>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,567.81255,0.0)">
+ <g>
+ <g stroke-dasharray="none" stroke-dashoffset="0.0pt">
+ <g stroke-linejoin="miter">
+ <path d=" M  7.51122 0.0 C  6.5888 0.22232 2.53418 1.48212 0.0 2.85306 L  0.0 -2.85306 C  2.53418 -1.48212 6.5888 -0.22232 7.51122 0.0 Z  " />
+ </g>
+ </g>
+ </g>
+  </g>
+ </g>
+ <g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,540.58238,0.0)">
+ <g fill="rgb(0.0%,0.0%,0.0%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+</text> 
+</g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,522.1379,7.06595)">
+ <g fill="rgb(0.0%,0.0%,0.0%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(18.44449,0)" text-anchor="middle"  font-size="10"> 
+<a 
+href="http://co.mbine.org/standards/qualifiers" target="_parent">isPartOf</a></text> 
+</g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,540.58238,0.0)">
+ <g fill="rgb(0.0%,0.0%,0.0%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+</text> 
+</g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,514.44345,-14.56595)">
+ <g fill="rgb(0.0%,0.0%,0.0%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(26.13893,0)" text-anchor="middle"  font-size="10"> 
+(Struct rel.)</text> 
+</g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ 
+                                                                                                                                </g> 
+</svg> 

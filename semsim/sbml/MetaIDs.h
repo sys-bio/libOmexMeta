@@ -39,7 +39,10 @@ namespace semsim {
         if (x->isSetMetaId() && x->getMetaId() == metaid)
           return true;
       }
-      return false;
+      if (m->getElementByMetaId(metaid) != NULL)
+        return true;
+      else
+        return false;
     }
 
     /**
@@ -70,6 +73,19 @@ namespace semsim {
             ss << "species" << k;
             if (!modelContainsMetaId(m, ss.str())) {
               s->setMetaId(ss.str());
+              break;
+            }
+          }
+        }
+      }
+      for(unsigned int k=0; k<m->getNumReactions(); ++k) {
+        LIBSBML_CPP_NAMESPACE_QUALIFIER Reaction* r = m->getReaction(k);
+        if (!r->isSetMetaId()) {
+          for(int k=0;;++k) {
+            std::stringstream ss;
+            ss << "reaction" << k;
+            if (!modelContainsMetaId(m, ss.str())) {
+              r->setMetaId(ss.str());
               break;
             }
           }

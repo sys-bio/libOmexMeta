@@ -76,7 +76,7 @@ namespace semsim {
          */
         CompositeAnnotation(const SingularAnnotation& other, const PhysicalProperty& property)
           : metaid_(other.getMetaId()), property_(property), entity_(other) {
-            entity_.setMetaId(metaid_+"_entity");
+            entity_.setMetaId(metaid_);
           }
 
         /**
@@ -207,16 +207,20 @@ namespace semsim {
           return property_.humanize() + " -> (isPropertyOf) -> " + "#" + metaid_ + entity_.humanize();
         }
 
+        virtual bool isComposite() const {
+          return true;
+        }
+
       protected:
         virtual void serializePhysicalPropertyToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const {
-          const URI& phys_prop_uri = sbml_base_uri.withFrag(metaid_);
+          const URI& phys_prop_uri = sbml_base_uri.withFrag(metaid_+"_property");
           const URI& phys_prop_def = property_.getResource().getURI();
           URI entity_uri = entity_.getURI(sbml_base_uri);
 
           // serialize physical property definition
           raptor_statement* s = raptor_new_statement(world);
           s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)phys_prop_uri.encode().c_str());
-          s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)bqb::is.getURI().encode().c_str());
+          s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)bqb::isVersionOf.getURI().encode().c_str());
           s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)phys_prop_def.encode().c_str());
           raptor_serializer_serialize_statement(serializer, s);
           raptor_free_statement(s);

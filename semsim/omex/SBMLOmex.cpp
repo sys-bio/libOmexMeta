@@ -1,5 +1,6 @@
 # include "semsim/omex/SBMLOmex.h"
 # include "semsim/sbml/SBMLImporter.h"
+# include "semsim/rdf/RDFReader.h"
 
 # include "combine/combinearchive.h"
 # include "combine/knownformats.h"
@@ -18,9 +19,11 @@ namespace semsim {
       if (!d || d->getNumErrors())
         throw std::runtime_error("Errors reading SBML");
 
-      std::string rdf = archive.extractEntryToString(model_entry_path);
+      std::string rdf = archive.extractEntryToString(rdf_entry_path);
 
       SBMLImporter importer(d);
-      return importer.getSBMLModel();
+      SBMLModel& result = importer.getSBMLModel();
+      applyRDFAnnotationsToModel(result, rdf);
+      return std::move(result);
     }
 }

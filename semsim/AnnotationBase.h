@@ -51,6 +51,8 @@ namespace semsim {
          */
         virtual std::string humanize() const = 0;
 
+        virtual bool isComposite() const = 0;
+
       protected:
     };
 

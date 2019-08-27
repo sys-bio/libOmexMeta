@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?> 
+<?xml-stylesheet href="descriptor-example2.css" type="text/css"?> 
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="195.84871pt" height="37.74228pt" viewBox="261.34128 -20.39893 195.84871 37.74228 "> 
+<g transform="translate(0, 17.34335 ) scale(1,-1) translate(0,20.39893 )"> 
+<g>
+ <g stroke="rgb(0.0%,0.0%,0.0%)">
+ <g fill="rgb(0.0%,0.0%,0.0%)">
+ <g stroke-width="0.4pt">
+ <g>
+ <g>
+ <g fill="rgb(100.0%,100.0%,100.0%)">
+ <g stroke="rgb(32.99103%,33.43048%,33.57849%)">
+ <g>
+ <g fill="rgb(100.0%,100.0%,100.0%)">
+ <g stroke="rgb(32.99103%,33.43048%,33.57849%)">
+ <path d=" M  261.54128 -13.47221 h  45.97232 v  26.94443 h  -45.97232 Z  " />
+ </g>
+ </g>
+ </g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,271.54128,-3.47221)">
+ <g fill="rgb(19.04907%,33.33282%,47.61963%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(12.98616,0)" text-anchor="middle"  font-size="10"> 
+<a 
+href="http://identifiers.org/fma/FMA:9670" target="_parent">Blood</a></text> 
+</g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <g fill="rgb(100.0%,100.0%,100.0%)">
+ <g stroke="rgb(32.99103%,33.43048%,33.57849%)">
+ <g>
+ <g fill="rgb(100.0%,100.0%,100.0%)">
+ <g stroke="rgb(32.99103%,33.43048%,33.57849%)">
+ <path d=" M  379.04547 -13.47221 h  77.94452 v  26.94443 h  -77.94452 Z  " />
+ </g>
+ </g>
+ </g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,389.04547,-3.47221)">
+ <g fill="rgb(19.04907%,33.33282%,47.61963%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(28.97226,0)" text-anchor="middle"  font-size="10"> 
+<a 
+href="http://identifiers.org/fma/FMA:9466" target="_parent">Left ventricle</a></text> 
+</g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <path d=" M  307.7136 0.0 C  335.45294 0.0 351.10612 0.0 370.50966 0.0  " style="fill:none"/>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,370.50966,0.0)">
+ <g>
+ <g stroke-dasharray="none" stroke-dashoffset="0.0pt">
+ <g stroke-linejoin="miter">
+ <path d=" M  7.51122 0.0 C  6.5888 0.22232 2.53418 1.48212 0.0 2.85306 L  0.0 -2.85306 C  2.53418 -1.48212 6.5888 -0.22232 7.51122 0.0 Z  " />
+ </g>
+ </g>
+ </g>
+  </g>
+ </g>
+ <g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,343.2795,0.0)">
+ <g fill="rgb(0.0%,0.0%,0.0%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+</text> 
+</g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,324.835,7.06595)">
+ <g fill="rgb(0.0%,0.0%,0.0%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(18.44449,0)" text-anchor="middle"  font-size="10"> 
+<a 
+href="http://co.mbine.org/standards/qualifiers" target="_parent">isPartOf</a></text> 
+</g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,343.2795,0.0)">
+ <g fill="rgb(0.0%,0.0%,0.0%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+</text> 
+</g>
+ </g>
+ </g>
+ </g>
+ <g>
+ <g>
+ <g transform="matrix(1.0,0.0,0.0,1.0,317.14056,-14.56595)">
+ <g fill="rgb(0.0%,0.0%,0.0%)">
+ <text style="stroke:none" transform="scale(1,-1) translate(26.13893,0)" text-anchor="middle"  font-size="10"> 
+(Struct rel.)</text> 
+</g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ </g>
+ 
+                                                           </g> 
+</svg> 

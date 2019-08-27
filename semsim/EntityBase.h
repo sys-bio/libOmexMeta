@@ -33,6 +33,12 @@ namespace semsim {
           : metaid_(metaid), definitions_(1,definition) {}
 
         # if __cplusplus >= 201103L
+        /// Move constructor
+        EntityBase(EntityBase&& other)
+          : metaid_(std::move(other.metaid_)),
+            definitions_(std::move(other.definitions_)),
+            terms_(std::move(other.terms_)) {}
+
         /// Move-construct from an @ref EntityDescriptor
         EntityBase(const std::string& metaid, Resource&& definition)
           : metaid_(metaid), definitions_({std::move(definition)}) {}
@@ -45,6 +51,12 @@ namespace semsim {
         /// Construct from a meta id for this entity
         EntityBase(const std::string& metaid)
           : metaid_(metaid) {}
+
+        /// Copy constructor
+        EntityBase(const EntityBase& other)
+          : metaid_(other.metaid_),
+            definitions_(other.definitions_),
+            terms_(other.terms_) {}
 
         /// Get the meta id for this element
         const std::string& getMetaId() const {
