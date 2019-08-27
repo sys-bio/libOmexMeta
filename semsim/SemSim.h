@@ -11,6 +11,7 @@
 # include "semsim/SingularAnnotation.h"
 # include "semsim/CompositeAnnotation.h"
 # include "semsim/Component.h"
+# include "semsim/Process.h"
 # include "semsim/Model.h"
 # include "semsim/sbml/SBMLModel.h"
 # include "semsim/sbml/SBMLImporter.h"

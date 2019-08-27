@@ -3,6 +3,7 @@
 
 # include "semsim/Preproc.h"
 # include "semsim/Component.h"
+# include "semsim/Process.h"
 
 namespace semsim {
 
@@ -21,10 +22,20 @@ namespace semsim {
         /// Virtual destructor
         virtual ~Model() {}
 
+        /// Move ctor
+        Model(Model&& other)
+          : components_(std::move(other.components_)) {}
+
         /// Add a new component to the model (copy)
         Component* addComponent(const Component& component) {
           components_.push_back(ComponentPtr(new Component(component)));
           return &*components_.back();
+        }
+
+        /// Add a new component to the model (copy)
+        Process* addComponent(const Process& component) {
+          components_.push_back(ComponentPtr(new Process(component)));
+          return (Process*)&*components_.back();
         }
 
         # if __cplusplus >= 201103L
@@ -32,6 +43,12 @@ namespace semsim {
         Component* addComponent(Component&& component) {
           components_.emplace_back(new Component(std::move(component)));
           return &*components_.back();
+        }
+
+        /// Add a new physical process to the model (move)
+        Process* addComponent(Process&& component) {
+          components_.emplace_back(new Process(std::move(component)));
+          return (Process*)&*components_.back();
         }
         # endif
 
@@ -96,6 +113,47 @@ namespace semsim {
          * @return "sbml" if an SBML model, "cellml" if a cellml model.
          */
         virtual std::string getFormat() const = 0;
+
+        /**
+         * @return @c true if the model has a component with this meta id, false otherwise.
+         * @param  metaid The meta id to look for.
+         */
+        bool hasComponentWithMetaId(const std::string& metaid) const {
+          // std::cerr << "num components: " << components_.size() << "\n";
+          for (Components::const_iterator i=components_.begin(); i!=components_.end(); ++i) {
+            // if ((*i)->hasMetaId())
+              // std::cerr << "meta id of component " << (*i)->getMetaId() << " vs " << metaid << "\n";
+            // else
+              // std::cerr << "component doesn't have metaid\n";
+            if ((*i)->hasMetaId() && (*i)->getMetaId() == metaid)
+              return true;
+          }
+          return false;
+        }
+
+        /**
+         * @return @c true if the model has a component with this meta id, false otherwise.
+         * @param  metaid The meta id to look for.
+         */
+        Component& findComponentWithMetaId(const std::string& metaid) {
+          for (Components::const_iterator i=components_.begin(); i!=components_.end(); ++i) {
+            if ((*i)->hasMetaId() && (*i)->getMetaId() == metaid)
+              return **i;
+          }
+          throw std::runtime_error("No component with meta id " + metaid);
+        }
+
+        /**
+         * @return @c true if the model has a component with this meta id, false otherwise.
+         * @param  metaid The meta id to look for.
+         */
+        const Component& findComponentWithMetaId(const std::string& metaid) const {
+          for (Components::const_iterator i=components_.begin(); i!=components_.end(); ++i) {
+            if ((*i)->hasMetaId() && (*i)->getMetaId() == metaid)
+              return **i;
+          }
+          throw std::runtime_error("No component with meta id " + metaid);
+        }
 
       protected:
         Model(const Model& other) {}

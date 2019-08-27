@@ -64,6 +64,16 @@ namespace semsim {
           return descriptors_.size();
         }
 
+        /// Copy constructor
+        Entity(const Entity& other)
+          : EntityBase(other), descriptors_(other.descriptors_) {}
+
+        # if __cplusplus >= 201103L
+        /// Move constructor
+        Entity(Entity&& other)
+          : EntityBase(std::move(other)), descriptors_(other.descriptors_) {}
+        # endif
+
         /**
          * Get an iterable range of entity descriptors.
          * Treat the return type as opaque, as it may change

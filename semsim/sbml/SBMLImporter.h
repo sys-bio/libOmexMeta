@@ -39,14 +39,20 @@ namespace semsim {
         : m_(d->getModel()), result_(d) {
         for(unsigned int k=0; k<m_->getNumCompartments(); ++k) {
           LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m_->getCompartment(k);
-          if (c->isSetIdAttribute())
+          if (c->isSetMetaId())
             result_.setComponentAnnotation(c, extractAnnotation(c));
         }
         for(unsigned int k=0; k<m_->getNumSpecies(); ++k) {
           LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m_->getSpecies(k);
-          if (s->isSetIdAttribute())
+          if (s->isSetMetaId())
             result_.setComponentAnnotation(s, extractAnnotation(s));
         }
+        for(unsigned int k=0; k<m_->getNumReactions(); ++k) {
+          LIBSBML_CPP_NAMESPACE_QUALIFIER Reaction* r = m_->getReaction(k);
+          if (r->isSetMetaId())
+            result_.setComponentAnnotation(r, extractAnnotation(r));
+        }
+        stripAnnotations(d);
       }
 
       # if __cplusplus >= 201103L || defined SWIG
@@ -130,6 +136,13 @@ namespace semsim {
           ));
         }
 
+        /// Extract the annotation for a compartment
+        AnnotationPtr extractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Reaction* r) {
+          return AnnotationPtr(new SingularAnnotation(
+            extractSingularAnnotation(r)
+          ));
+        }
+
         /**
          * Extract a singular annotation from an SBML object.
          * This method is used when a composite annotation cannot be inferred.
@@ -185,7 +198,7 @@ namespace semsim {
         Entity extractSpeciesEntity(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) {
           if (!s->isSetMetaId())
             throw std::runtime_error("The SBML species is missing a meta id");
-          Entity result(s->getMetaId()+"_entity");
+          Entity result(s->getMetaId());
           populateDefinitionsAndTerms(s, result);
           result.addDescriptor(extractSpeciesEntityDescriptor(s));
           return result;

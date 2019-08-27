@@ -103,6 +103,10 @@ namespace semsim {
         std::string humanize() const {
           return EntityBase::humanize();
         }
+
+        virtual bool isComposite() const {
+          return false;
+        }
     };
 }
 

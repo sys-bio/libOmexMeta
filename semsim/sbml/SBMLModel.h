@@ -41,22 +41,42 @@ namespace semsim {
           assignMetaIds(m);
           for(unsigned int k=0; k<m->getNumCompartments(); ++k) {
             LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m->getCompartment(k);
-            if (c->isSetIdAttribute()) {
+            if (c->isSetMetaId()) {
               Component *o = addComponent(Component());
               element_map_.insert(std::make_pair(c, o));
-              element_id_map_.insert(std::make_pair(c->getId(), o));
+              o->setMetaId(c->getMetaId());
+              if (c->isSetIdAttribute())
+                element_id_map_.insert(std::make_pair(c->getId(), o));
             }
           }
           for(unsigned int k=0; k<m->getNumSpecies(); ++k) {
             LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m->getSpecies(k);
-            if (s->isSetIdAttribute()) {
+            if (s->isSetMetaId()) {
               Component *o = addComponent(Component());
               element_map_.insert(std::make_pair(s, o));
-              element_id_map_.insert(std::make_pair(s->getId(), o));
+              o->setMetaId(s->getMetaId());
+              if (s->isSetIdAttribute())
+                element_id_map_.insert(std::make_pair(s->getId(), o));
             }
           }
-          stripAnnotations(d_);
+          for(unsigned int k=0; k<m->getNumReactions(); ++k) {
+            LIBSBML_CPP_NAMESPACE_QUALIFIER Reaction* r = m->getReaction(k);
+            if (r->isSetMetaId()) {
+              Component *o = addComponent(Process());
+              element_map_.insert(std::make_pair(r, o));
+              o->setMetaId(r->getMetaId());
+              if (r->isSetIdAttribute())
+                element_id_map_.insert(std::make_pair(r->getId(), o));
+            }
+          }
         }
+
+        /// Move constructor
+        SBMLModel(SBMLModel&& other)
+          : Model(std::move(other)),
+            element_map_(std::move(other.element_map_)),
+            element_id_map_(std::move(other.element_id_map_)),
+            d_(other.d_) {}
 
         /**
          * Set the annotation of a @ref Component based on SBML id.
@@ -188,7 +208,7 @@ namespace semsim {
           raptor_serializer_start_to_string(serializer, base_uri, &output, &length);
 
           for (Components::const_iterator i=components_.begin(); i!=components_.end(); ++i)
-            (*i)->getAnnotation().serializeToRDF(sbml_base_uri, world, serializer);
+            (*i)->serializeToRDF(sbml_base_uri, world, serializer);
 
           raptor_serializer_serialize_end(serializer);
 

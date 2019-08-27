@@ -13,7 +13,7 @@ namespace semsim {
      * @param rdf_format The format of the RDF annotations. Choices include "rdfxml", "ntriples", "turtle", "trig", "rss-tag-soup", "grddl", "rdfa", "json", and "nquads".
      */
     void applyRDFAnnotationsToModel(
-      const Model& model,
+      Model& model,
       const std::string& rdf,
       const std::string& rdf_format="rdfxml");
 }

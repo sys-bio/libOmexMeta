@@ -27,7 +27,6 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_compile_definitions(SEMSIM_INTERNAL_BUILD)
 # https://gitlab.kitware.com/cmake/cmake/issues/16589
 set(CMAKE_MACOSX_RPATH ON)
-SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 # dependencies
 
@@ -124,7 +123,7 @@ Configuration Summary
       libxml2 include dirs      ${LIBXML2_INCLUDE_DIRS}
       zlib library              ${ZLIB_LIBRARIES}
       zlib include dir          ${ZLIB_INCLUDE_DIRS}
-      libSBML library           ${libSBML_LIBRARIES}
+      libSBML library           ${libSBML_LIBRARY}
       libSBML include dir       ${libSBML_INCLUDE_DIRS}
       Raptor library            ${Raptor2_LIBRARIES}
       Raptor include dir        ${Raptor2_INCLUDE_DIRS}
