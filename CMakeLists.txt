@@ -127,9 +127,9 @@ Configuration Summary
       libSBML include dir       ${libSBML_INCLUDE_DIRS}
       Raptor library            ${Raptor2_LIBRARIES}
       Raptor include dir        ${Raptor2_INCLUDE_DIRS}
-      Rasqal library            ${Rasqal_LIBRARIES}
+      Rasqal library (optional) ${Rasqal_LIBRARIES}
       Rasqal include dir        ${Rasqal_INCLUDE_DIRS}
-      LibRDF library            ${LibRDF_LIBRARIES}
+      LibRDF library (optional) ${LibRDF_LIBRARIES}
       LibRDF include dir        ${LibRDF_INCLUDE_DIRS}
       libCombine                ${LIBCOMBINE_LIBS}
       libCombine include dir    ${LIBCOMBINE_INCLUDE_DIRS}
