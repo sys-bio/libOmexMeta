@@ -5,7 +5,9 @@
 # include "semsim/sbml/SBMLModel.h"
 # include "semsim/sbml/Species.h"
 # include "semsim/BiomodelsQualifiers.h"
+# include "semsim/SemSimQualifiers.h"
 # include "semsim/sbml/MetaIDs.h"
+# include "semsim/ontologies/SBO.h"
 
 # include "sbml/SBMLTypes.h"
 
@@ -51,6 +53,12 @@ namespace semsim {
           LIBSBML_CPP_NAMESPACE_QUALIFIER Reaction* r = m_->getReaction(k);
           if (r->isSetMetaId())
             result_.setComponentAnnotation(r, extractAnnotation(r));
+          assignParticipants(*result_.getProcess(r), r);
+        }
+        for(unsigned int k=0; k<m_->getNumParameters(); ++k) {
+          LIBSBML_CPP_NAMESPACE_QUALIFIER Parameter* p = m_->getParameter(k);
+          if (p->isSetMetaId())
+            result_.setComponentAnnotation(p, extractAnnotation(p));
         }
         stripAnnotations(d);
       }
@@ -143,6 +151,13 @@ namespace semsim {
           ));
         }
 
+        /// Extract the annotation for a parameter
+        AnnotationPtr extractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Parameter* p) {
+          return AnnotationPtr(new SingularAnnotation(
+            extractSingularAnnotation(p)
+          ));
+        }
+
         /**
          * Extract a singular annotation from an SBML object.
          * This method is used when a composite annotation cannot be inferred.
@@ -154,8 +169,24 @@ namespace semsim {
             throw std::runtime_error("This SBML object does not have an assigned meta id");
           SingularAnnotation result(s->getMetaId());
           populateDefinitionsAndTerms(s, result);
+          populateSBOTerm(s, result);
           return result;
         }
+
+
+       SingularAnnotation extractSingularAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Parameter* p) {
+         if (!p->isSetMetaId())
+           throw std::runtime_error("This SBML object does not have an assigned meta id");
+         SingularAnnotation result=extractSingularAnnotation((LIBSBML_CPP_NAMESPACE_QUALIFIER SBase*)p);
+         if (p->isSetValue())
+          result.addExtraneousTerm(
+            Term(
+              semsim::hasValue,
+              p->getValue()
+            )
+          );
+         return result;
+       }
 
         /**
          * Extract an @ref Entity from an SBML object.
@@ -200,6 +231,7 @@ namespace semsim {
             throw std::runtime_error("The SBML species is missing a meta id");
           Entity result(s->getMetaId());
           populateDefinitionsAndTerms(s, result);
+          populateSBOTerm(s, result);
           result.addDescriptor(extractSpeciesEntityDescriptor(s));
           return result;
         }
@@ -239,17 +271,33 @@ namespace semsim {
                   }
                 } else {
                   // all other qualifiers
-                  e.addExtraneousTerm(
-                    Term(
-                      getRelationFromSBMLQual(t->getBiologicalQualifierType()),
-                      Resource(t->getResourceURI(i))
-                    )
-                  );
+                  for (unsigned int i=0; i<t->getNumResources(); ++i) {
+                    e.addExtraneousTerm(
+                      Term(
+                        getRelationFromSBMLQual(t->getBiologicalQualifierType()),
+                        Resource(t->getResourceURI(i))
+                      )
+                    );
+                  }
                 }
                 break;
               default:
                 break;
             }
+          }
+        }
+
+        /**
+         * Populate the SBO term if it exists.
+         */
+        static void populateSBOTerm(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, EntityBase& e) {
+          if (s->isSetSBOTerm()) {
+            e.addExtraneousTerm(
+              Term(
+                semsim::hasSBOTerm,
+                SBO::get(s->getSBOTerm())
+              )
+            );
           }
         }
 
@@ -272,9 +320,68 @@ namespace semsim {
           );
         }
 
+        std::string makeUniqueMetaId(const Model& model, const std::string& base) {
+          for (unsigned int k=0; k<1000; ++k) {
+            std::stringstream ss;
+            ss << base << k;
+            if (!model.containsMetaId(ss.str()))
+              return ss.str();
+          }
+          throw std::runtime_error("Unable to create unique meta id.");
+        }
+
+        void assignParticipants(Process& process, LIBSBML_CPP_NAMESPACE_QUALIFIER Reaction* r) {
+          for(unsigned int k=0; k<r->getNumReactants(); ++k) {
+            LIBSBML_CPP_NAMESPACE_QUALIFIER SpeciesReference* p = r->getReactant(k);
+            process.addSource(Source(
+              makeUniqueMetaId(result_,"source"),
+              result_.getComponent(m_->getElementBySId(p->getSpecies())),
+              p->isSetStoichiometry() ? p->getStoichiometry() : 1));
+          }
+          for(unsigned int k=0; k<r->getNumProducts(); ++k) {
+            LIBSBML_CPP_NAMESPACE_QUALIFIER SpeciesReference* p = r->getProduct(k);
+            process.addSink(Sink(
+              makeUniqueMetaId(result_,"sink"),
+              result_.getComponent(m_->getElementBySId(p->getSpecies())),
+              p->isSetStoichiometry() ? p->getStoichiometry() : 1));
+          }
+          for(unsigned int k=0; k<r->getNumModifiers(); ++k) {
+            LIBSBML_CPP_NAMESPACE_QUALIFIER ModifierSpeciesReference* p = r->getModifier(k);
+            process.addMediator(Mediator(
+              makeUniqueMetaId(result_,"mediator"),
+              result_.getComponent(m_->getElementBySId(p->getSpecies()))));
+          }
+        }
+
         LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m_;
         SBMLModel result_;
     };
+
+    /**
+     * Helper function for importing an SBML file.
+     * @param sbml_path    The path to the SBML file.
+     */
+    inline SBMLModel importSBMLFromFile(
+      const std::string& sbml_path) {
+      LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLReader reader;
+      LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument* d = reader.readSBMLFromFile(sbml_path);
+      if (d->getNumErrors()) {
+        // if all are warnings, continue - else abort
+        for(unsigned int i=0; i<d->getNumErrors(); ++i) {
+          if (!d->getError(i)->isWarning()) {
+            std::stringstream ss;
+            ss << d->getNumErrors() << " errors in SBML document.\n";
+            for(unsigned int j=0; j<d->getNumErrors(); ++j) {
+              if (!d->getError(j)->isWarning())
+                ss << "Error " << j+1 << ": " <<d->getError(j)->getMessage() << "\n";
+            }
+            throw std::runtime_error("Errors reading SBML:\n"+ss.str());
+          }
+        }
+      }
+      SBMLImporter i(d);
+      return std::move(i.getSBMLModel());
+    }
 
 }
 

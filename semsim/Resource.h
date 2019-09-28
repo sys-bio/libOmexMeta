@@ -92,6 +92,21 @@ namespace semsim {
          */
         std::string humanize() const;
 
+        /**
+         * Test whether this @ref Resource instance points to the same
+         * object as the other @ref Resource instance.
+         * @param other A @ref Resource instance to test against.
+         * @return @c true if both instances point to the same object.
+         */
+        bool operator==(const Resource& other) const {
+          if (!isLocal() && !other.isLocal())
+            return uri_ == other.uri_;
+          else if (isLocal() && other.isLocal())
+            return element_ == other.element_;
+          else
+            return false;
+        }
+
       protected:
         /// A URI (for external resources)
         URI uri_;

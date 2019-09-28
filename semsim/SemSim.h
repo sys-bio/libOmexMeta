@@ -8,10 +8,17 @@
 # include "semsim/EntityBase.h"
 # include "semsim/Entity.h"
 # include "semsim/PhysicalProperty.h"
+
 # include "semsim/SingularAnnotation.h"
 # include "semsim/CompositeAnnotation.h"
+
 # include "semsim/Component.h"
+# include "semsim/Participant.h"
+# include "semsim/Source.h"
+# include "semsim/Sink.h"
+# include "semsim/Mediator.h"
 # include "semsim/Process.h"
+
 # include "semsim/Model.h"
 # include "semsim/sbml/SBMLModel.h"
 # include "semsim/sbml/SBMLImporter.h"
@@ -27,6 +34,11 @@
 
 # include "semsim/omex/OmexOutput.h"
 # include "semsim/omex/SBMLOmex.h"
+
+# include "semsim/query/RasqalQueryResult.h"
+# include "semsim/query/RasqalQuery.h"
+
+# include "semsim/path/path.hpp"
 
 SEMSIM_PUBLIC void libsemgen_hello();
 // void cellml_hello();

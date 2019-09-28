@@ -33,6 +33,8 @@ namespace semsim {
          */
         virtual void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const = 0;
 
+        virtual std::string getRDF(const URI& sbml_base_uri, const std::string& format="rdfxml") const = 0;
+
         /// Get the meta id for this element
         virtual const std::string& getMetaId() const = 0;
 

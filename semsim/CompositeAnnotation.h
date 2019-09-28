@@ -172,6 +172,33 @@ namespace semsim {
           serializePhysicalPropertyToRDF(sbml_base_uri, world, serializer);
         }
 
+        virtual std::string getRDF(const URI& sbml_base_uri, const std::string& format="rdfxml") const {
+          raptor_world* world = raptor_new_world();
+          raptor_serializer* serializer = raptor_new_serializer(world, format.c_str());
+          if (!serializer)
+            throw std::runtime_error("Could not create Raptor serializer for format "+format);
+
+          raptor_uri* base_uri = raptor_new_uri(world, (const unsigned char*)"");
+
+          raptor_serializer_set_namespace(serializer, raptor_new_uri(world, (const unsigned char*)bqb::root.c_str()), (const unsigned char*)"bqb");
+          raptor_serializer_set_namespace(serializer, raptor_new_uri(world, (const unsigned char*)semsim::root.c_str()), (const unsigned char*)"semsim");
+
+          void* output;
+          size_t length;
+          raptor_serializer_start_to_string(serializer, base_uri, &output, &length);
+
+          serializeToRDF(sbml_base_uri, world, serializer);
+
+          raptor_serializer_serialize_end(serializer);
+
+          raptor_free_serializer(serializer);
+          raptor_free_world(world);
+
+          std::string result((char*)output);
+          free(output);
+          return result;
+        }
+
         /**
          * @return the URI for this element (usually a local identifier).
          */
@@ -218,20 +245,10 @@ namespace semsim {
           URI entity_uri = entity_.getURI(sbml_base_uri);
 
           // serialize physical property definition
-          raptor_statement* s = raptor_new_statement(world);
-          s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)phys_prop_uri.encode().c_str());
-          s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)bqb::isVersionOf.getURI().encode().c_str());
-          s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)phys_prop_def.encode().c_str());
-          raptor_serializer_serialize_statement(serializer, s);
-          raptor_free_statement(s);
+          SerializeURIStatement(phys_prop_uri.encode(), bqb::isVersionOf.getURI().encode(), phys_prop_def.encode(), world, serializer);
 
           // serialize physical property to entity linkage
-          s = raptor_new_statement(world);
-          s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)phys_prop_uri.encode().c_str());
-          s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)bqb::isPropertyOf.getURI().encode().c_str());
-          s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)entity_uri.encode().c_str());
-          raptor_serializer_serialize_statement(serializer, s);
-          raptor_free_statement(s);
+          SerializeURIStatement(phys_prop_uri.encode(), bqb::isPropertyOf.getURI().encode(), entity_uri.encode(), world, serializer);
         }
 
         /// Stores the URI of this element (usu. a local identifier)

@@ -24,7 +24,7 @@ namespace semsim {
          * @endcode
          */
         static Resource get(OntologyTerm t) {
-          return resolve("http://identifiers.org/CHEBI:", t, 5);
+          return resolve("https://identifiers.org/CHEBI:", t, 5);
         }
     };
 }

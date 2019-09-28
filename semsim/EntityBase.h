@@ -5,6 +5,7 @@
 # include "semsim/Resource.h"
 # include "semsim/EntityDescriptor.h"
 # include "semsim/util/Indent.h"
+# include "semsim/RaptorUtils.h"
 
 # include <raptor2.h>
 
@@ -113,6 +114,20 @@ namespace semsim {
         }
 
         /**
+         * Check whether the entity's list of definitions contains a term that matches
+         * the supplied definition.
+         * @param definition The definition to match against.
+         * @return @c true if this entity has a definition that matches the given definition
+         */
+        bool matchesDefinition(const Resource& definition) {
+          for(Definitions::const_iterator i=definitions_.begin(); i!=definitions_.end(); ++i) {
+            if ((*i) == definition)
+              return true;
+          }
+          return false;
+        }
+
+        /**
          * Add an extraneous term that cannot be classified as a definition
          * because it does not use the bqb:is qualifier.
          * Common causes are using bqb:isVersionOf, which is too non-committal
@@ -190,12 +205,7 @@ namespace semsim {
               raptor_serializer* serializer) const {
           URI this_uri = getURI(sbml_base_uri);
 
-          raptor_statement* s = raptor_new_statement(world);
-          s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)this_uri.encode().c_str());
-          s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)bqb::is.getURI().encode().c_str());
-          s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)def.getURI().encode().c_str());
-          raptor_serializer_serialize_statement(serializer, s);
-          raptor_free_statement(s);
+          SerializeURIStatement(this_uri.encode(), bqb::is.getURI().encode(), def.getURI().encode(), world, serializer);
         }
 
         void serializeTerm(
@@ -205,12 +215,10 @@ namespace semsim {
               raptor_serializer* serializer) const {
           URI this_uri = getURI(sbml_base_uri);
 
-          raptor_statement* s = raptor_new_statement(world);
-          s->subject = raptor_new_term_from_uri_string(world, (const unsigned char*)this_uri.encode().c_str());
-          s->predicate = raptor_new_term_from_uri_string(world, (const unsigned char*)term.getRelation().getURI().encode().c_str());
-          s->object = raptor_new_term_from_uri_string(world, (const unsigned char*)term.getResource().getURI().encode().c_str());
-          raptor_serializer_serialize_statement(serializer, s);
-          raptor_free_statement(s);
+          if (!term.isValue())
+            SerializeURIStatement(this_uri.encode(), term.getRelation().getURI().encode(), term.getResource().getURI().encode(), world, serializer);
+          else
+            SerializeURIStatement(this_uri.encode(), term.getRelation().getURI().encode(), term.getValue(), world, serializer);
         }
 
         std::string humanizeDefintions() const {
