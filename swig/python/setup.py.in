@@ -8,6 +8,7 @@ if __name__ == '__main__':
         name='libsemsim',
         version='@PROJECT_VERSION@',
         packages=['semsim'],
+        package_data={'semsim': ['*.so*', '*.dll', '*.dylib*', '*.pyd']},
         license='Apache License 2.0',
         author='J Kyle Medley, Prakhar Agarwal'
     )
