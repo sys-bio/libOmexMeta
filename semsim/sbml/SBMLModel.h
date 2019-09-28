@@ -3,6 +3,9 @@
 
 # include "semsim/Preproc.h"
 # include "semsim/Model.h"
+# include "semsim/Process.h"
+# include "semsim/BiomodelsQualifiers.h"
+# include "semsim/SemSimQualifiers.h"
 # include "semsim/sbml/MetaIDs.h"
 # include "semsim/sbml/Annotations.h"
 
@@ -67,6 +70,16 @@ namespace semsim {
               o->setMetaId(r->getMetaId());
               if (r->isSetIdAttribute())
                 element_id_map_.insert(std::make_pair(r->getId(), o));
+            }
+          }
+          for(unsigned int k=0; k<m->getNumParameters(); ++k) {
+            LIBSBML_CPP_NAMESPACE_QUALIFIER Parameter* p = m->getParameter(k);
+            if (p->isSetMetaId()) {
+              Component *o = addComponent(Component());
+              element_map_.insert(std::make_pair(p, o));
+              o->setMetaId(p->getMetaId());
+              if (p->isSetIdAttribute())
+                element_id_map_.insert(std::make_pair(p->getId(), o));
             }
           }
         }
@@ -134,6 +147,16 @@ namespace semsim {
         }
 
         /**
+         * Check whether a @ref Process exists for the given SBML element.
+         * (species and compartments should return true).
+         * @param  s The SBML element.
+         * @return    Whether the SBML element has been mapped to a libSemSim @ref Process or not.
+         */
+        bool hasProcess(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) const {
+          return !(element_map_.find(s) == element_map_.end()) && element_map_.find(s)->second->isProcess();
+        }
+
+        /**
          * Return the component corresponding to the given SBML element id (if it exists in the mapping table).
          * Compartments and species should exist in the mapping table.
          * @param  s The SBML element.
@@ -155,6 +178,18 @@ namespace semsim {
           if (!hasComponent(s))
             throw std::out_of_range("Component does not exist in mapping table");
           return element_map_.find(s)->second;
+        }
+
+        /**
+         * Return the physical process corresponding to the given SBML element (if it exists in the mapping table).
+         * Compartments and species should exist in the mapping table.
+         * @param  s The SBML element.
+         * @return    The physical process for the given SBML id (if it exists).
+         */
+        Process* getProcess(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
+          if (!hasProcess(s))
+            throw std::out_of_range("Component does not exist in mapping table");
+          return dynamic_cast<Process*>(element_map_.find(s)->second);
         }
 
         /**
@@ -201,7 +236,8 @@ namespace semsim {
 
           raptor_uri* base_uri = raptor_new_uri(world, (const unsigned char*)"");
 
-          raptor_serializer_set_namespace(serializer, raptor_new_uri(world, (const unsigned char*)"http://biomodels.net/biology-qualifiers/"), (const unsigned char*)"bqb");
+          raptor_serializer_set_namespace(serializer, raptor_new_uri(world, (const unsigned char*)bqb::root.c_str()), (const unsigned char*)"bqb");
+          raptor_serializer_set_namespace(serializer, raptor_new_uri(world, (const unsigned char*)semsim::root.c_str()), (const unsigned char*)"semsim");
 
           void* output;
           size_t length;

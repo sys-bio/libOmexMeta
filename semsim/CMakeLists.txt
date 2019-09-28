@@ -24,6 +24,9 @@ set (SEMSIM_SOURCES
   Resource.cpp
   SingularAnnotation.cpp
   SemSim.cpp
+  SemSimQualifiers.cpp
+  query/RasqalQuery.cpp
+  query/RasqalQueryResult.cpp
   omex/OmexOutput.cpp
   omex/SBMLOmex.cpp
   rdf/RDFReader.cpp
@@ -55,16 +58,23 @@ if (${ENABLE_STATIC_LIB})
   endif()
 endif ()
 foreach(l ${LIBRARIES})
-  target_link_libraries(${l} sbml)
-  target_link_libraries(${l} LibXml2::LibXml2)
+  # target_link_libraries(${l} sbml)
+  target_link_libraries(${l} ${libSBML_LIBRARY})
+  # target_link_libraries(${l} LibXml2::LibXml2)
   target_link_libraries(${l} ZLIB::ZLIB)
   target_link_libraries(${l} ${Raptor2_LIBRARIES})
-  # target_link_libraries(${l} ${Rasqal_LIBRARIES})
+  target_link_libraries(${l} ${Rasqal_LIBRARIES})
   # target_link_libraries(${l} ${LibRDF_LIBRARIES})
   target_link_libraries(${l} ${LIBCOMBINE_LIBS})
   if (${LIBCELLML_LIBS})
     target_link_libraries(${l} ${LIBCELLML_LIBS})
   endif()
+  target_link_libraries(${l} ${LIBXML2_LIBRARIES})
+  target_link_libraries(${l} ${EXTRA_LIBS})
+  if (CMAKE_SYSTEM_NAME MATCHES "CYGWIN")
+    target_link_libraries(${l} uuid)
+  endif ()
+
   install(TARGETS ${l}
           RUNTIME DESTINATION bin
           LIBRARY DESTINATION lib

@@ -51,8 +51,24 @@ namespace semsim {
         /// Virtual destructor
         ~Component() {}
 
+        /// Create a copy of this component
+        virtual Component* clone() const {
+          return new Component(*this);
+        }
+
+        /// @return @c true if the component has an annotation (singular or composite).
         bool hasAnnotation() const {
           return !!annotation_;
+        }
+
+        /// @return @c true if the component has a composite annotation
+        bool hasCompositeAnnotation() const {
+          return annotation_ && annotation_->isComposite();
+        }
+
+        /// @return @c true if the component has a singular annotation
+        bool hasSingularAnnotation() const {
+          return annotation_ && !annotation_->isComposite();
         }
 
         /**
@@ -177,6 +193,11 @@ namespace semsim {
         metaid_ = metaid;
       }
 
+      /// Get the local URI of this component
+      virtual URI getURI(const URI& base) const {
+        return base.withFrag(getMetaId());
+      }
+
       /**
        * Serialize this annotation to RDF using the Raptor library.
        * @param sbml_base_uri   The base URI of the SBML document relative to this (e.g. a relative path in a COMBINE archive).
@@ -187,6 +208,21 @@ namespace semsim {
       virtual void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const {
         if (annotation_)
           getAnnotation().serializeToRDF(sbml_base_uri, world, serializer);
+      }
+
+      virtual bool isProcess() const {
+        return false;
+      }
+
+      virtual bool containsMetaId(const std::string& metaid) const {
+        return metaid_ == metaid;
+      }
+
+      std::string getRDF(const URI& sbml_base_uri, const std::string& format="rdfxml") const {
+        if (hasAnnotation())
+          return annotation_->getRDF(sbml_base_uri, format);
+        else
+          throw std::runtime_error("No annotation");
       }
 
       protected:

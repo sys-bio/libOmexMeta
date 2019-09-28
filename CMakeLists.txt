@@ -35,10 +35,10 @@ find_package(ZLIB    REQUIRED)
 find_package(libSBML)
 find_package(Raptor2 REQUIRED)
 find_package(Rasqal)
-find_package(LibRDF)
+# find_package(LibRDF)
 # https://stackoverflow.com/questions/20746936/cmake-of-what-use-is-find-package-if-you-need-to-specify-cmake-module-path-an?rq=1
 find_package(libcellml CONFIG)
-find_package(Combine CONFIG REQUIRED)
+find_package(Combine-static CONFIG REQUIRED)
 find_package(SWIG)
 find_package(Catch2 CONFIG)
 
@@ -73,8 +73,8 @@ else()
 endif()
 
 # diagnostics
-get_target_property(LIBCOMBINE_LIBS Combine LOCATION)
-get_target_property(LIBCOMBINE_INCLUDE_DIRS Combine INTERFACE_INCLUDE_DIRECTORIES)
+get_target_property(LIBCOMBINE_LIBS Combine-static LOCATION)
+get_target_property(LIBCOMBINE_INCLUDE_DIRS Combine-static INTERFACE_INCLUDE_DIRECTORIES)
 
 if (cellml_FOUND)
   get_target_property(LIBCELLML_LIBS cellml LOCATION)
@@ -147,7 +147,7 @@ include_directories(${LIBZIP_INCLUDE_DIR_ZIPCONF})
 include_directories(${libSBML_INCLUDE_DIRS})
 include_directories(${Raptor2_INCLUDE_DIRS})
 include_directories(${Rasqal_INCLUDE_DIRS})
-include_directories(${LibRDF_INCLUDE_DIRS})
+# include_directories(${LibRDF_INCLUDE_DIRS})
 include_directories(${LIBCOMBINE_INCLUDE_DIRS})
 include_directories(.)
 

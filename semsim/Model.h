@@ -22,6 +22,13 @@ namespace semsim {
         /// Virtual destructor
         virtual ~Model() {}
 
+        /// Copy ctor
+        Model(const Model& other) {
+          for (Components::const_iterator i=other.components_.begin(); i!=other.components_.end(); ++i) {
+            components_.push_back(ComponentPtr((*i)->clone()));
+          }
+        }
+
         /// Move ctor
         Model(Model&& other)
           : components_(std::move(other.components_)) {}
@@ -155,9 +162,15 @@ namespace semsim {
           throw std::runtime_error("No component with meta id " + metaid);
         }
 
-      protected:
-        Model(const Model& other) {}
+        bool containsMetaId(const std::string& metaid) const {
+          for (Components::const_iterator i=components_.begin(); i!=components_.end(); ++i) {
+            if ((*i)->containsMetaId(metaid))
+              return true;
+          }
+          return false;
+        }
 
+      protected:
         // Stores the @ref Component "Components" for this model.
         Components components_;
     };

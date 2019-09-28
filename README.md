@@ -6,19 +6,37 @@ CMake uses a separate build directory for storing compiled object files and inte
 
 ### macOS
 
-Make sure [git](https://git-scm.com/) is installed and clone the libsemgen source:
+Install [git](https://git-scm.com/), CMake 3.14 or greater, Homebrew. Clone the sources:
 
 ```bash
 git clone https://github.com/sys-bio/libsemgen.git
 ```
 
-#### Dependencies
+Create and change to a build directory from which to run CMake. libsemsim requires the following dependencies:
 
-Make sure you have [homebrew](https://brew.sh/) installed and install the following dependencies:
+* libSBML (with namespaces enabled)
+* libCombine
+* Raptor2
+* Rasqal
+* Swig
+* Catch2 (optional, for building tests)
+* libCellML (optional, not used)
+
+On Mac, some of these can be installed as follows:
 
 ```bash
 brew install zlib raptor rasqal redland
 ```
+
+See the respective project pages for how to build and install these packages. Once these packages are install, invoke CMake with the following signature:
+
+```bash
+CMAKE_PREFIX_PATH=/path/to/libsbml/lib/cmake:/path/to/libcellml/lib/cmake:/path/to/libcombine/lib/cmake:/path/to/catch2/lib/cmake/Catch2:$CMAKE_PREFIX_PATH cmake -DCMAKE_INSTALL_PREFIX=/path/to/install/libsemsim /path/to/src/libsemsim
+```
+
+Then build the release target using XCode. libSemSim will automatically find the currently active Python interpreter (if available) and use it to generate bindings. If you want to use another Python interpreter, add it to your PATH.
+
+Finally, to build the documentation, make sure you have the following packages installed: `sphinx breathe sphinxcontrib-bibtex sphinx_rtd_theme`.
 
 #### SBML Support
 

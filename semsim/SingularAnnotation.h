@@ -5,6 +5,7 @@
 # include "semsim/AnnotationBase.h"
 # include "semsim/PhysicalProperty.h"
 # include "semsim/EntityBase.h"
+# include "semsim/SemSimQualifiers.h"
 
 namespace semsim {
     /**
@@ -80,6 +81,33 @@ namespace semsim {
          */
         void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const {
           EntityBase::serializeToRDF(sbml_base_uri, world, serializer);
+        }
+
+        virtual std::string getRDF(const URI& sbml_base_uri, const std::string& format="rdfxml") const {
+          raptor_world* world = raptor_new_world();
+          raptor_serializer* serializer = raptor_new_serializer(world, format.c_str());
+          if (!serializer)
+            throw std::runtime_error("Could not create Raptor serializer for format "+format);
+
+          raptor_uri* base_uri = raptor_new_uri(world, (const unsigned char*)"");
+
+          raptor_serializer_set_namespace(serializer, raptor_new_uri(world, (const unsigned char*)bqb::root.c_str()), (const unsigned char*)"bqb");
+          raptor_serializer_set_namespace(serializer, raptor_new_uri(world, (const unsigned char*)semsim::root.c_str()), (const unsigned char*)"semsim");
+
+          void* output;
+          size_t length;
+          raptor_serializer_start_to_string(serializer, base_uri, &output, &length);
+
+          serializeToRDF(sbml_base_uri, world, serializer);
+
+          raptor_serializer_serialize_end(serializer);
+
+          raptor_free_serializer(serializer);
+          raptor_free_world(world);
+
+          std::string result((char*)output);
+          free(output);
+          return result;
         }
 
         /**
