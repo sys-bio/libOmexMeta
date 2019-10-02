@@ -1,3 +1,7 @@
+## Documetnation
+
+https://sys-bio.github.io/libsemsim-docs/
+
 ## Installation
 
 ### Using CMake
