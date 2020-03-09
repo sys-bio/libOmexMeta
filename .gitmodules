@@ -1,0 +1,6 @@
+[submodule "third_party/libSBML-dependencies"]
+	path = third_party/libSBML-dependencies
+	url = https://github.com/sbmlteam/libSBML-dependencies.git
+[submodule "third_party/libsbml"]
+	path = third_party/libsbml
+	url = https://github.com/opencor/libsbml.git
