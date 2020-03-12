@@ -59,9 +59,9 @@ if (${ENABLE_STATIC_LIB})
 endif ()
 foreach(l ${LIBRARIES})
   # target_link_libraries(${l} sbml)
-  target_link_libraries(${l} ${libSBML_LIBRARY})
+  target_link_libraries(${l} ${LIBSBML_LIBRARY})
   # target_link_libraries(${l} LibXml2::LibXml2)
-  target_link_libraries(${l} ZLIB::ZLIB)
+  target_link_libraries(${l} ${ZLIB_LIBRARY})
   target_link_libraries(${l} ${Raptor2_LIBRARIES})
   target_link_libraries(${l} ${Rasqal_LIBRARIES})
   # target_link_libraries(${l} ${LibRDF_LIBRARIES})
@@ -81,3 +81,11 @@ foreach(l ${LIBRARIES})
           ARCHIVE DESTINATION lib
           PUBLIC_HEADER DESTINATION include)
 endforeach ()
+
+add_dependencies(semsim
+        libsbml
+        raptor2
+        libCombine
+        )
+
+
