@@ -7,7 +7,7 @@
 # include "semsim/util/Indent.h"
 # include "semsim/RaptorUtils.h"
 
-# include <raptor2.h>
+# include "raptor2.h"
 
 # include <string>
 # include <sstream>

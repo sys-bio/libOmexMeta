@@ -4,3 +4,21 @@
 [submodule "third_party/libsbml"]
 	path = third_party/libsbml
 	url = https://github.com/opencor/libsbml.git
+[submodule "third_party/libCombine"]
+	path = third_party/libCombine
+	url = https://github.com/sbmlteam/libCombine.git
+[submodule "third_party/zipper"]
+	path = third_party/zipper
+	url = https://github.com/fbergmann/zipper.git
+[submodule "third_party/Catch2"]
+	path = third_party/Catch2
+	url = https://github.com/catchorg/Catch2.git
+[submodule "third_party/winflexbison"]
+	path = third_party/winflexbison
+	url = https://github.com/lexxmark/winflexbison.git
+[submodule "third_party/rdf-raptor"]
+	path = third_party/rdf-raptor
+	url = https://github.com/ruby-rdf/rdf-raptor.git
+[submodule "third_party/raptor"]
+	path = third_party/raptor
+	url = https://github.com/dajobe/raptor.git
