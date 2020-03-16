@@ -26,12 +26,15 @@ namespace semsim {
 
         static void addTermToEntity(EntityBase &entity, const Relation &relation, const Resource &resource);
 
-        static void
-        addTermToCompositeAnnotation(CompositeAnnotation &annotation, const Relation &relation,
-                                     const Resource &resource);
+        static void addTermToCompositeAnnotation(
+                CompositeAnnotation &annotation,
+                const Relation &relation,
+                const Resource &resource);
 
-        static void
-        addTermToSingularAnnotation(SingularAnnotation &annotation, const Relation &relation, const Resource &resource);
+        static void addTermToSingularAnnotation(
+                SingularAnnotation &annotation,
+                const Relation &relation,
+                const Resource &resource);
 
         static void addTermToAnnotation(AnnotationBase &annotation, const Relation &relation, const Resource &resource);
 
@@ -43,7 +46,7 @@ namespace semsim {
          * @param rdf        The RDF annotations to apply.
          * @param rdf_format The format of the RDF annotations. Choices include "rdfxml", "ntriples", "turtle", "trig", "rss-tag-soup", "grddl", "rdfa", "json", and "nquads".
          */
-        void applyRDFAnnotationsToModel(
+        static void applyRDFAnnotationsToModel(
                 Model &model,
                 const std::string &rdf,
                 const std::string &rdf_format = "rdfxml");
