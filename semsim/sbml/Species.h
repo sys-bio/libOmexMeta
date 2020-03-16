@@ -14,24 +14,24 @@ namespace semsim {
      * @c false otherwise.
      */
     inline bool UnitDefIsConc(
-      LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* ud) {
-      if (ud->getNumUnits() != 2)
-        return false;
-      int n_mass=0;
-      int d_vol =0;
-      for(unsigned int k=0; k<ud->getNumUnits(); ++k) {
-        LIBSBML_CPP_NAMESPACE_QUALIFIER Unit* u = ud->getUnit(k);
-        if ((!u->isSetExponent() || u->getExponent() == 1) &&
-            (u->isMole() || u->isGram() || u->isKilogram() || u->isItem()))
-          n_mass++;
-        if ((u->isSetExponent() && u->getExponent() == -1) &&
-            (u->isLitre()))
-          d_vol++;
-        if ((u->isSetExponent() && u->getExponent() == -3) &&
-            u->isMetre())
-          d_vol++;
-      }
-      return n_mass == 1 && d_vol == 1;
+            LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition *ud) {
+        if (ud->getNumUnits() != 2)
+            return false;
+        int n_mass = 0;
+        int d_vol = 0;
+        for (unsigned int k = 0; k < ud->getNumUnits(); ++k) {
+            LIBSBML_CPP_NAMESPACE_QUALIFIER Unit *u = ud->getUnit(k);
+            if ((!u->isSetExponent() || u->getExponent() == 1) &&
+                (u->isMole() || u->isGram() || u->isKilogram() || u->isItem()))
+                n_mass++;
+            if ((u->isSetExponent() && u->getExponent() == -1) &&
+                (u->isLitre()))
+                d_vol++;
+            if ((u->isSetExponent() && u->getExponent() == -3) &&
+                u->isMetre())
+                d_vol++;
+        }
+        return n_mass == 1 && d_vol == 1;
     }
 
     /**
@@ -41,18 +41,19 @@ namespace semsim {
      * or a deduction cannot be made.
      */
     inline bool SubstanceUnitsAreConc(
-      LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s,
-      LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
-      try {
-        if (s->isSetUnits()) {
-          LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* u = findUnitDefinition(s->getUnits(), m);
-          return UnitDefIsConc(u);
+            LIBSBML_CPP_NAMESPACE_QUALIFIER Species *s,
+            LIBSBML_CPP_NAMESPACE_QUALIFIER Model *m) {
+        Accessors accessors;
+        try {
+            if (s->isSetUnits()) {
+                LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition *u = accessors.findUnitDefinition(s->getUnits(), m);
+                return UnitDefIsConc(u);
+            }
+        } catch (std::out_of_range) {
+            // unit def was not found - SBML is invalid
+            return false;
         }
-      } catch (std::out_of_range) {
-        // unit def was not found - SBML is invalid
         return false;
-      }
-      return false;
     }
 
     /**
@@ -70,27 +71,27 @@ namespace semsim {
      * If none of these rules matches, a @c std::domain_error is thrown.
      */
     inline PhysicalProperty GetSpeciesPhysicalProperty(
-      LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s,
-      LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) {
-      if (s->isSetHasOnlySubstanceUnits() && s->getHasOnlySubstanceUnits())
-        return PhysicalProperty(OPB::get(1389));
-      if (s->isSetHasOnlySubstanceUnits() && !s->getHasOnlySubstanceUnits())
-        return PhysicalProperty(OPB::get(425));
-      else if ( s->isSetInitialAmount() && !s->isSetInitialConcentration())
-        return PhysicalProperty(OPB::get(1389));
-      else if (!s->isSetInitialAmount() &&  s->isSetInitialConcentration())
-        return PhysicalProperty(OPB::get(425));
-      else if (
-        s->isSetSubstanceUnits() && (
-        s->getSubstanceUnits() == "kilgram" ||
-        s->getSubstanceUnits() == "gram" ||
-        s->getSubstanceUnits() == "mole" ||
-        s->getSubstanceUnits() == "item"))
-        return PhysicalProperty(OPB::get(1389));
-      else if (s->isSetSubstanceUnits() && SubstanceUnitsAreConc(s, m))
-        return PhysicalProperty(OPB::get(425));
-      else
-        throw std::domain_error("Could not deduce PhysicalProperty");
+            LIBSBML_CPP_NAMESPACE_QUALIFIER Species *s,
+            LIBSBML_CPP_NAMESPACE_QUALIFIER Model *m) {
+        if (s->isSetHasOnlySubstanceUnits() && s->getHasOnlySubstanceUnits())
+            return PhysicalProperty(OPB::get(1389));
+        if (s->isSetHasOnlySubstanceUnits() && !s->getHasOnlySubstanceUnits())
+            return PhysicalProperty(OPB::get(425));
+        else if (s->isSetInitialAmount() && !s->isSetInitialConcentration())
+            return PhysicalProperty(OPB::get(1389));
+        else if (!s->isSetInitialAmount() && s->isSetInitialConcentration())
+            return PhysicalProperty(OPB::get(425));
+        else if (
+                s->isSetSubstanceUnits() && (
+                        s->getSubstanceUnits() == "kilgram" ||
+                        s->getSubstanceUnits() == "gram" ||
+                        s->getSubstanceUnits() == "mole" ||
+                        s->getSubstanceUnits() == "item"))
+            return PhysicalProperty(OPB::get(1389));
+        else if (s->isSetSubstanceUnits() && SubstanceUnitsAreConc(s, m))
+            return PhysicalProperty(OPB::get(425));
+        else
+            throw std::domain_error("Could not deduce PhysicalProperty");
     }
 
 }
