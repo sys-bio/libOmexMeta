@@ -1,8 +1,30 @@
-add_executable(sbml_tests sbml_tests.cpp)
-target_link_libraries(sbml_tests ${SEMSIM_LIBRARY} Catch2::Catch2)
+add_executable(semsim-tests
+        sbml_tests.cpp
+        )
+
+target_include_directories(semsim-tests PRIVATE ${GOOGLETEST_SOURCE}/googletest/include)
+
+target_link_libraries(semsim-tests
+        ${SEMSIM_STATIC_LIBRARY}
+        gtest gtest_main
+        )
 
 add_test(sbml_tests sbml_tests)
 
-include(CTest)
-include(Catch)
-# catch_discover_tests(sbml_tests)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

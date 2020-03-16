@@ -4,7 +4,6 @@
 # include "semsim/Preproc.h"
 # include "semsim/Resource.h"
 # include "semsim/EntityDescriptor.h"
-# include "semsim/util/Indent.h"
 # include "semsim/RaptorUtils.h"
 
 # include "raptor2.h"
@@ -157,15 +156,15 @@ namespace semsim {
         /// Convert to human-readable string.
         std::string toString(std::size_t indent) const {
           std::stringstream ss;
-          ss << spaces(indent) << "definitions:\n";
+          ss << "    " << "definitions:\n";
           for (Definitions::const_iterator i(definitions_.begin()); i!=definitions_.end(); ++i)
-            ss << spaces(indent) << "  " << i->toString() << "\n";
+            ss << "    " << "  " << i->toString() << "\n";
           if (terms_.size()) {
-            ss << spaces(indent) << "extraneous terms:\n";
+            ss << "    " << "extraneous terms:\n";
             for (Terms::const_iterator i(terms_.begin()); i!=terms_.end(); ++i)
-              ss << spaces(indent) << "  " << i->toString() << "\n";
+              ss << "    " << "  " << i->toString() << "\n";
           } else {
-            ss << spaces(indent) << "extraneous terms: none\n";
+            ss << "    " << "extraneous terms: none\n";
           }
           return ss.str();
         }

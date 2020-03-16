@@ -1,8 +1,8 @@
 # ifndef SEMSIM_ANNOTATION_BASE_H_
 # define SEMSIM_ANNOTATION_BASE_H_
 
+# include <memory>
 # include "semsim/Preproc.h"
-# include "semsim/util/UniquePtr.h"
 # include "semsim/PhysicalProperty.h"
 
 # include <raptor2.h>
@@ -12,16 +12,16 @@ namespace semsim {
      * The base class for annotations.
      */
     class SEMSIM_PUBLIC AnnotationBase {
-      public:
+    public:
         /// Virtual destructor
-        virtual ~AnnotationBase() {}
+        virtual ~AnnotationBase() = default;
 
         /**
          * Create a copy of this object using the correct derived class's type.
          * The object's type will depend on the runtime type of the callee,
          * but will be returned as a pointer to the base class @ref AnnotationBase.
          */
-        virtual AnnotationBase* clone() const = 0;
+        virtual AnnotationBase *clone() const = 0;
 
         /**
          * Serialize this annotation to RDF using the Raptor library.
@@ -31,12 +31,13 @@ namespace semsim {
          * @param world      Raptor world object. Must be initialized prior to calling this function.
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          */
-        virtual void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const = 0;
+        virtual void
+        serializeToRDF(const URI &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const = 0;
 
-        virtual std::string getRDF(const URI& sbml_base_uri, const std::string& format="rdfxml") const = 0;
+        virtual std::string getRDF(const URI &sbml_base_uri, const std::string &format = "rdfxml") const = 0;
 
         /// Get the meta id for this element
-        virtual const std::string& getMetaId() const = 0;
+        virtual const std::string &getMetaId() const = 0;
 
         /**
          * Convert singular annotations to composite annotations
@@ -44,7 +45,7 @@ namespace semsim {
          * @param prop The physical property to assign to the composite annotation.
          * @return A new composite annotation
          */
-        virtual UniquePtr<AnnotationBase>::type makeComposite(const PhysicalProperty& prop) const = 0;
+        virtual std::unique_ptr<AnnotationBase> makeComposite(const PhysicalProperty &prop) const = 0;
 
         /**
          * Return a human--readable representation of the annotation
@@ -55,7 +56,7 @@ namespace semsim {
 
         virtual bool isComposite() const = 0;
 
-      protected:
+    protected:
     };
 
     /**
@@ -63,7 +64,7 @@ namespace semsim {
      * (either @ref CompositeAnnotation or @ref SingularAnnotation).
      * @see UniquePtr.
      */
-    typedef UniquePtr<AnnotationBase>::type AnnotationPtr;
+    typedef std::unique_ptr<AnnotationBase> AnnotationPtr;
 }
 
 # endif

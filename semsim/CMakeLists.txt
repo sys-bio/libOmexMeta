@@ -1,35 +1,53 @@
 
 set(SEMSIM_SOURCES
-        # annotation/Annotatable.cpp
-        # annotation/Annotation.cpp
-        # annotation/AnnotationCopier.cpp
-        # annotation/Ontology.cpp
-        # annotation/ReferenceOntologyAnnotation.cpp
-        # annotation/ReferenceTerm.cpp
-        # annotation/Relation.cpp
-        # definitions/OtherKBconstants.cpp
-        # definitions/PropertyType.cpp
-        # definitions/RDFNamespace.cpp
-        # definitions/SBMLconstants.cpp
-        # definitions/SemSimRelations.cpp
-        # definitions/SemSimTypes.cpp
-        # model/physical/SemSimComponent.cpp
-        # utilities/CaseInsensitiveComparator.cpp
-        # utilities/DuplicateChecker.cpp
-        # utilities/ErrorEntry.cpp
-        # utilities/ErrorLog.cpp
-        # utilities/SemSimComponentComparator.cpp
-        # SemSimObject.cpp
-        BiomodelsQualifiers.cpp
-        Relation.cpp
-        Resource.cpp
-        SingularAnnotation.cpp
-        SemSim.cpp
-        SemSimQualifiers.cpp
-        omex/OmexOutput.cpp
-        omex/SBMLOmex.cpp
-        rdf/RDFReader.cpp
+        omex/OmexOutput.h omex/OmexOutput.cpp
+        omex/SBMLOmex.h omex/SBMLOmex.cpp
+        ontologies/CHEBI.h
+        ontologies/CL.h
+        ontologies/GO.h
+        ontologies/OPB.h
+        ontologies/SBO.h
+        path/path.hpp
+        query/Condition.h
+        query/IdentityCondition.h
+        query/Query.h
+        query/QueryResults.h
+
+        query/SelectQuery.h
+        rdf/RDFReader.h rdf/RDFReader.cpp
+
+        AnnotationBase.h
+        BiomodelsQualifiers.h BiomodelsQualifiers.cpp
+        Component.h
+        CompositeAnnotation.h
+        DescriptorTerm.h
+        Entity.h
+        EntityBase.h
+        EntityDescriptor.h
+        Mediator.h
+        Model.h
+        Ontology.h
+        Participant.h
+        PhysicalProperty.h
+        Preproc.h
+        Process.h
+        RaptorUtils.h
+        Relation.h Relation.cpp
+        Resource.h Resource.cpp
+        SemSim.h SemSim.cpp
+        SemSimQualifiers.h SemSimQualifiers.cpp
+        SingularAnnotation.h SingularAnnotation.cpp
+        Sink.h
+        Source.h
+        Term.h
+        URI.h
         )
+
+if (WITH_RASQAL)
+    list(APPEND ${SOURCES}
+            query/RasqalQuery.h query/RasqalQuery.cpp
+            query/RasqalQueryResult.h query/RasqalQueryResult.cpp)
+endif ()
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
@@ -66,7 +84,7 @@ foreach (l ${LIBRARIES})
     # libsbml
     target_include_directories(${l} PRIVATE ${LIBSBML_INCLUDE_DIR})
     target_link_libraries(${l} PRIVATE ${LIBSBML_LIB})
-#    target_link_libraries(${l} PRIVATE ${LIBSBML_STATIC_LIB})
+    #    target_link_libraries(${l} PRIVATE ${LIBSBML_STATIC_LIB})
 
     # zlib
     target_include_directories(${l} PRIVATE ${ZLIB_INCLUDE_DIR})
@@ -81,7 +99,7 @@ foreach (l ${LIBRARIES})
     # libcombine
     target_include_directories(${l} PRIVATE ${LIBCOMBINE_INCLUDE_DIR})
     target_link_libraries(${l} PRIVATE ${LIBCOMBINE_LIB})
-#    target_link_libraries(${l} PRIVATE ${LIBCOMBINE_STATIC_LIB})
+    #    target_link_libraries(${l} PRIVATE ${LIBCOMBINE_STATIC_LIB})
 
     # catch2
     #    target_include_directories(${l} PUBLIC ${CATCH2_INCLUDE_DIR})
@@ -94,10 +112,10 @@ foreach (l ${LIBRARIES})
     # any extra libs
     message(STATUS "LIBSBML_DEPS_INSTALL_PREFIX ${LIBSBML_DEPS_INSTALL_PREFIX}")
     target_link_libraries(${l} PRIVATE ${LIBBZ2_LIBRARY})
-    target_include_directories(${l} PRIVATE ${LIBBZ2_INCLUDE_DIR} )
+    target_include_directories(${l} PRIVATE ${LIBBZ2_INCLUDE_DIR})
 
     target_link_libraries(${l} PRIVATE ${LIBBZ_LIBRARY})
-    target_include_directories(${l} PRIVATE ${LIBBZ_INCLUDE_DIR} )
+    target_include_directories(${l} PRIVATE ${LIBBZ_INCLUDE_DIR})
 
     # not sure what this is for
     if (CYGWIN)
