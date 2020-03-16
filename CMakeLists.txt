@@ -55,21 +55,21 @@ set(LIBSBML_BINARY_DIR ${LIBSBML_SOURCE_DIR}/build)
 set(LIBSBML_INSTALL_PREFIX ${LIBSBML_SOURCE_DIR}/INSTALL)
 set(LIBSBML_INCLUDE_DIR "${LIBSBML_INSTALL_PREFIX}/include")
 set(LIBSBML_LIB_DIR "${LIBSBML_INSTALL_PREFIX}/lib")
-set(LIBSBML_LIB "${LIBSBML_LIB_DIR}/libsbml.dll.a")
+#set(LIBSBML_LIB "${LIBSBML_LIB_DIR}/libsbml.dll.a")
 set(LIBSBML_STATIC_LIB "${LIBSBML_LIB_DIR}/libsbml-static.a")
 set(ZIPPER_SOURCE_DIR ${THIRD_PARTY_DIRS}/zipper)
 set(ZIPPER_BINARY_DIR ${ZIPPER_SOURCE_DIR}/build)
 set(ZIPPER_INSTALL_PREFIX ${ZIPPER_SOURCE_DIR}/INSTALL)
 set(ZIPPER_INCLUDE_DIR "${ZIPPER_INSTALL_PREFIX}/include")
 set(ZIPPER_LIB_DIR "${ZIPPER_INSTALL_PREFIX}/lib")
-set(ZIPPER_LIB "${ZIPPER_LIB_DIR}/libZipper-static.a")
+#set(ZIPPER_LIB "${ZIPPER_LIB_DIR}/libZipper-static.a")
 set(LIBCOMBINE_SOURCE_DIR ${THIRD_PARTY_DIRS}/libCombine)
 set(LIBCOMBINE_BINARY_DIR ${LIBCOMBINE_SOURCE_DIR}/build)
 set(LIBCOMBINE_INSTALL_PREFIX ${LIBCOMBINE_SOURCE_DIR}/INSTALL)
 set(LIBCOMBINE_INCLUDE_DIR "${LIBCOMBINE_INSTALL_PREFIX}/include")
 set(LIBCOMBINE_LIB_DIR "${LIBCOMBINE_INSTALL_PREFIX}/lib")
-set(LIBCOMBINE_LIB "${LIBCOMBINE_LIB_DIR}/libCombine${CMAKE_SHARED_LIBRARY_SUFFIX}")
-set(LIBCOMBINE_STATIC_LIB "${LIBCOMBINE_LIB_DIR}/libCombine-static${CMAKE_STATIC_LIBRARY_SUFFIX}")
+#set(LIBCOMBINE_LIB "${LIBCOMBINE_LIB_DIR}/libCombine${CMAKE_SHARED_LIBRARY_SUFFIX}")
+#set(LIBCOMBINE_STATIC_LIB "${LIBCOMBINE_LIB_DIR}/libCombine-static${CMAKE_STATIC_LIBRARY_SUFFIX}")
 set(CATCH2_SOURCE_DIR ${THIRD_PARTY_DIRS}/Catch2)
 set(CATCH2_BINARY_DIR ${CATCH2_SOURCE_DIR}/build)
 set(CATCH2_INSTALL_PREFIX ${CATCH2_SOURCE_DIR}/INSTALL)
@@ -77,11 +77,11 @@ set(CATCH2_INCLUDE_DIR "${CATCH2_INSTALL_PREFIX}/include")
 set(CATCH2_LIB_DIR "${CATCH2_INSTALL_PREFIX}/lib")
 set(CATCH2_LIB "${CATCH2_LIB_DIR}/Catch2${CMAKE_SHARED_LIBRARY_SUFFIX}")
 #set(CATCH2_LIB "${CATCH2_LIB_DIR}/Catch2-static${CMAKE_STATIC_LIBRARY_SUFFIX}")
-set(RAPTOR2_SOURCE_DIR ${THIRD_PARTY_DIRS}/raptor)
-set(RAPTOR2_BINARY_DIR ${RAPTOR2_SOURCE_DIR}/build)
-set(RAPTOR2_INSTALL_PREFIX ${RAPTOR2_SOURCE_DIR}/INSTALL)
-set(RAPTOR2_INCLUDE_DIR "${RAPTOR2_INSTALL_PREFIX}/include")
-set(RAPTOR2_LIB_DIR "${RAPTOR2_INSTALL_PREFIX}/lib")
+#set(RAPTOR2_SOURCE_DIR ${THIRD_PARTY_DIRS}/raptor)
+#set(RAPTOR2_BINARY_DIR ${RAPTOR2_SOURCE_DIR}/build)
+#set(RAPTOR2_INSTALL_PREFIX ${RAPTOR2_SOURCE_DIR}/INSTALL)
+#set(RAPTOR2_INCLUDE_DIR "${RAPTOR2_INSTALL_PREFIX}/include")
+#set(RAPTOR2_LIB_DIR "${RAPTOR2_INSTALL_PREFIX}/lib")
 #set(RAPTOR2_LIB "${RAPTOR2_LIB_DIR}/raptor${CMAKE_SHARED_LIBRARY_SUFFIX}")
 #set(RAPTOR2_LIB "${RAPTOR2_LIB_DIR}/raptor-static${CMAKE_STATIC_LIBRARY_SUFFIX}")
 set(RASQAL_SOURCE_DIR ${THIRD_PARTY_DIRS}/rasqal)
@@ -120,6 +120,22 @@ if (NOT ${ZLIB_LIBRARY_FOUND})
     message(FATAL_ERROR "ZLIB library not found")
 endif ()
 
+find_library(LIBSBML_LIB
+        NAMES libsbml.dll.a libsbml
+        PATHS ${LIBSBML_LIB_DIR}
+        REQUIRED
+        )
+find_library(ZIPPER_LIB
+        NAMES libZipper-static.a libZipper-static
+        PATHS ${ZIPPER_LIB_DIR}
+        REQUIRED
+        )
+find_library(LIBCOMBINE_LIB
+        NAMES libCombine.dll.a
+        PATHS ${LIBCOMBINE_LIB_DIR}
+        REQUIRED
+        )
+
 set(LIBZ_LIBRARY ${ZLIB_LIBRARY})
 
 find_library(ZIPPER_LIBRARY
@@ -145,6 +161,7 @@ find_library(LIBXML2_LIBRARY
         PATHS
 #        /usr/lib /usr/local/lib
         ${LIBSBML_DEPS_INSTALL_PREFIX}/lib
+        ${CYG_ROOT}
         ${CMAKE_OSX_SYSROOT}/usr/lib
         NO_DEFAULT_PATH
         REQUIRED
@@ -158,6 +175,15 @@ find_path(LIBXML2_INCLUDE_DIR
 find_path(ZLIB_INCLUDE_DIR
         NAMES zlib z libzlib
         PATHS ${LIBSBML_DEPS_INCLUDE_DIR}
+        )
+
+find_library(RAPTOR2_LIBRARY
+        NAMES libraptor2 raptor2
+        PATHS /usr/include
+        )
+
+find_path(RAPTOR2_INCLUDE_DIR
+        NAMES raptor2
         )
 
 
@@ -195,56 +221,22 @@ find_library(RASQAL_LIBRARY
         REQUIRED
         )
 
+find_library(LIBBZ_LIBRARY
+        NAMES libbz2 bz bz2
+        PATHS ${LIBSBML_DEPS_LIB_DIR}
+        )
 
-#set(LIBSBML_DEPS_INCLUDE_DIR "${LIBSBML_DEPS_INSTALL_PREFIX}/include")
-#set(LIBSBML_DEPS_LIB_DIR "${LIBSBML_DEPS_INSTALL_PREFIX}/lib")
-#set(LIBSBML_DEPS_LIB "${LIBSBML_DEPS_LIB_DIR}/libsbml.${CMAKE_SHARED_LIBRARY_SUFFIX}")
+
+find_path(LIBBZ_INCLUDE_DIR
+        NAMES libbz2 bz bz2 bzip2/bzlib.h
+        PATHS ${LIBSBML_DEPS_INCLUDE_DIR}
+        )
+
 
 
 #find_package(combine PATHS C:/cygwin64/usr/local/lib/cmake REQUIRED)
 #find_package(Catch2 PATHS C:/cygwin64/usr/local/lib/cmake/Catch2)
 #find_package(SWIG)
-#
-#
-#MESSAGE(STATUS "
-#
-#CYGWIN variables:
-#
-#    CYG_ROOT            ${CYG_ROOT}
-#    CYG_LIB_DIR         ${CYG_LIB_DIR}
-#    CYG_BIN_DIR         ${CYG_BIN_DIR}
-#    CYG_INCLUDE_DIR     ${CYG_INCLUDE_DIR}
-#
-#Variables for building submodule dependencies:
-#
-#    LIBSBML_DEPS_SOURCE_DIR         ${LIBSBML_DEPS_SOURCE_DIR}
-#    LIBSBML_DEPS_BINARY_DIR         ${LIBSBML_DEPS_BINARY_DIR}
-#    LIBSBML_DEPS_INSTALL_PREFIX        ${LIBSBML_DEPS_INSTALL_PREFIX}
-#
-#    LIBSBML_SOURCE_DIR              ${LIBSBML_SOURCE_DIR}
-#    LIBSBML_BINARY_DIR              ${LIBSBML_BINARY_DIR}
-#    LIBSBML_INSTALL_PREFIX             ${LIBSBML_INSTALL_PREFIX}
-#
-#    ZIPPER_SOURCE_DIR               ${ZIPPER_SOURCE_DIR}
-#    ZIPPER_BINARY_DIR               ${ZIPPER_BINARY_DIR}
-#    ZIPPER_INSTALL_PREFIX              ${ZIPPER_INSTALL_PREFIX}
-#
-#    LIBCOMBINE_SOURCE_DIR           ${LIBCOMBINE_SOURCE_DIR}
-#    LIBCOMBINE_BINARY_DIR           ${LIBCOMBINE_BINARY_DIR}
-#    LIBCOMBINE_INSTALL_PREFIX          ${LIBCOMBINE_INSTALL_PREFIX}
-#
-#    CATCH2_SOURCE_DIR               ${CATCH2_SOURCE_DIR}
-#    CATCH2_BINARY_DIR               ${CATCH2_BINARY_DIR}
-#    CATCH2_INSTALL_PREFIX              ${CATCH2_INSTALL_PREFIX}
-#
-#Variables for building libsemsim:
-#
-#    ZIPPER_LIBRARY                  ${ZIPPER_LIBRARY}
-#    RAPTOR2_LIBRARY                 ${RAPTOR2_LIBRARY}
-#    RASQAL_LIBRARY                  ${RASQAL_LIBRARY}
-#")
-#
-#
 #find_package(Python COMPONENTS Interpreter Development)
 ## check the Python version
 #if (Python_VERSION_MAJOR EQUAL 3 AND Python_VERSION_MINOR LESS 4)
@@ -325,6 +317,12 @@ message(STATUS "
         Generate documentation    ${BUILD_DOCS}
 
     Paths:
+        Cygwin specific paths
+            CYG_ROOT              ${CYG_ROOT}
+            CYG_LIB_DIR           ${CYG_LIB_DIR}
+            CYG_BIN_DIR           ${CYG_BIN_DIR}
+            CYG_INCLUDE_DIR       ${CYG_INCLUDE_DIR}
+
         libsbml dependencies
             LIBSBML_DEPS_SOURCE_DIR            ${LIBSBML_DEPS_SOURCE_DIR}
             LIBSBML_DEPS_BINARY_DIR            ${LIBSBML_DEPS_BINARY_DIR}
@@ -390,10 +388,13 @@ message(STATUS "
             LIBXML2_LIBRARIES                   ${LIBXML2_LIBRARIES}
             LIBXML2_INCLUDE_DIRS                ${LIBXML2_INCLUDE_DIRS}
 
-
         zlib
             ZLIB_LIBRARY                       ${ZLIB_LIBRARY}
             ZLIB_INCLUDE_DIR                   ${ZLIB_INCLUDE_DIR}
+
+        bzlib
+            LIBBZ_LIBRARY                      ${LIBBZ_LIBRARY}
+            LIBBZ_INCLUDE_DIR                  ${LIBBZ_INCLUDE_DIR}
     ")
 
 message(STATUS "adding subdir")

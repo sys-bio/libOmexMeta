@@ -65,7 +65,8 @@ foreach (l ${LIBRARIES})
 
     # libsbml
     target_include_directories(${l} PRIVATE ${LIBSBML_INCLUDE_DIR})
-    target_link_libraries(${l} PRIVATE ${LIBSBML_STATIC_LIB})
+    target_link_libraries(${l} PRIVATE ${LIBSBML_LIB})
+#    target_link_libraries(${l} PRIVATE ${LIBSBML_STATIC_LIB})
 
     # zlib
     target_include_directories(${l} PRIVATE ${ZLIB_INCLUDE_DIR})
@@ -79,7 +80,7 @@ foreach (l ${LIBRARIES})
 
     # libcombine
     target_include_directories(${l} PRIVATE ${LIBCOMBINE_INCLUDE_DIR})
-    target_link_libraries(${l} PRIVATE D:/libsemsim/third_party/libCombine/INSTALL/lib/libCombine.dll.a)
+    target_link_libraries(${l} PRIVATE ${LIBCOMBINE_LIB})
 #    target_link_libraries(${l} PRIVATE ${LIBCOMBINE_STATIC_LIB})
 
     # catch2
@@ -91,10 +92,12 @@ foreach (l ${LIBRARIES})
     target_link_libraries(${l} PRIVATE ${RAPTOR2_LIBRARY})
 
     # any extra libs
-    target_link_libraries(${l} PRIVATE D:/libsemsim/third_party/libSBML-dependencies/INSTALL/lib/libbz2.a)
-    target_link_libraries(${l} PRIVATE C:/cygwin64/lib/libxml2.dll.a)
-    target_link_libraries(${l} PRIVATE D:/libsemsim/third_party/libSBML-dependencies/INSTALL/lib/libzlib.a)
-#    target_link_libraries(${l} PRIVATE ${EXTRA_LIBS})
+    message(STATUS "LIBSBML_DEPS_INSTALL_PREFIX ${LIBSBML_DEPS_INSTALL_PREFIX}")
+    target_link_libraries(${l} PRIVATE ${LIBBZ2_LIBRARY})
+    target_include_directories(${l} PRIVATE ${LIBBZ2_INCLUDE_DIR} )
+
+    target_link_libraries(${l} PRIVATE ${LIBBZ_LIBRARY})
+    target_include_directories(${l} PRIVATE ${LIBBZ_INCLUDE_DIR} )
 
     # not sure what this is for
     if (CYGWIN)
@@ -112,7 +115,6 @@ endforeach ()
 
 add_dependencies(semsim
         libsbml
-        raptor2
         libCombine
         zipper
         libsbml-dependencies

@@ -43,7 +43,11 @@ ExternalProject_Add(libsbml
 # For some reason semi-colon lists go wrong when passed directly to CMAKE_ARGS
 # so we can use a different delimiter for the list instead.
 # https://stackoverflow.com/questions/45414507/pass-a-list-of-prefix-paths-to-externalproject-add-in-cmake-args
-set(EXTRA "D:/libsemsim/third_party/libSBML-dependencies/INSTALL/lib/libbz2.a" "C:/cygwin64/lib/libxml2.dll.a" "D:/libsemsim/third_party/libSBML-dependencies/INSTALL/lib/libzlib.a")
+set(EXTRA
+        "C:/cygwin64/lib/libxml2.dll.a"
+        "${LIBSBML_DEPS_INSTALL_PRFIX}/lib/libbz2.a"
+        "${LIBSBML_DEPS_INSTALL_PRFIX}/lib/libzlib.a"
+        )
 string(REPLACE ";" "|" EXTRA "${EXTRA}")
 
 ExternalProject_Add(libCombine
@@ -51,15 +55,14 @@ ExternalProject_Add(libCombine
         BINARY_DIR ${LIBCOMBINE_BINARY_DIR}
         DEPENDS
         zipper libsbml
-        LIST_SEPARATOR |
+        LIST_SEPARATOR | # for EXTRA_LIBS argument
         CMAKE_ARGS
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
             -DCMAKE_INSTALL_PREFIX=${LIBCOMBINE_INSTALL_PREFIX}
-            -DZIPPER_INSTALL_PREFIX=D:/libsemsim/third_party/zipper/INSTALL
-            -DLIBSBML_DEPS_INSTALL_PREFIX=D:/libsemsim/third_party/libSBML-dependencies/INSTALL
-            -DLIBSBML_INSTALL_PREFIX=D:/libsemsim/third_party/libsbml/INSTALL
-            -DEXTRA_LIBS=${EXTRA}
-
+            -DZIPPER_INSTALL_PREFIX=${ZIPPER_INSTALL_PREFIX}
+            -DLIBSBML_DEPS_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
+            -DLIBSBML_INSTALL_PREFIX=${LIBSBML_INSTALL_PREFIX}
+            -DEXTRA_LIBS=${LIBBZ_LIBRARY}|${LIBXML2_LIBRARY}|${ZLIB_LIBRARY}
         )
 
 
@@ -72,13 +75,14 @@ ExternalProject_Add(libCombine
 #            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 #        )
 
-ExternalProject_Add(raptor2
-        SOURCE_DIR ${RAPTOR2_SOURCE_DIR}
-        BINARY_DIR ${RAPTOR2_BINARY_DIR}
-        CMAKE_ARGS
-            -DCMAKE_INSTALL_PREFIX=${RAPTOR2_INSTALL_PREFIX}
-            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-        )
+#ExternalProject_Add(raptor2
+#        SOURCE_DIR ${RAPTOR2_SOURCE_DIR}
+#        BINARY_DIR ${RAPTOR2_BINARY_DIR}
+#        PATHS ${RAPTOR_LIB_DIR}
+#        CMAKE_ARGS
+#            -DCMAKE_INSTALL_PREFIX=${RAPTOR2_INSTALL_PREFIX}
+#            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+#        )
 
 
 #ExternalProject_Add(rasqal
