@@ -4,14 +4,14 @@
 # include <iostream>
 
 namespace semsim {
-    static std::string RaptorURIToString(raptor_uri* u) {
+    std::string RDFReader::RaptorURIToString(raptor_uri* u) {
       unsigned char* c = raptor_uri_to_string(u);
       std::string result((const char*)c);
       raptor_free_memory(c);
       return result;
     }
 
-    static URI RaptorTermToURI(raptor_term* t) {
+    URI RDFReader::RaptorTermToURI(raptor_term* t) {
       if (!t)
         throw std::runtime_error("Raptor term is null");
       switch (t->type) {
@@ -22,7 +22,7 @@ namespace semsim {
       }
     }
 
-    static std::string RaptorTermToRepr(raptor_term* t) {
+    std::string RDFReader::RaptorTermToRepr(raptor_term* t) {
       if (!t)
         throw std::runtime_error("Raptor term is null");
       switch (t->type) {
@@ -37,11 +37,11 @@ namespace semsim {
       }
     }
 
-    static bool isMetaId(const std::string& uri) {
+    bool RDFReader::isMetaId(const std::string& uri) {
       return uri.find("#") != std::string::npos;
     }
 
-    static bool isMetaId(raptor_term *t) {
+    bool RDFReader::isMetaId(raptor_term *t) {
       if (!t)
         throw std::runtime_error("Raptor term is null");
       switch (t->type) {
@@ -52,11 +52,11 @@ namespace semsim {
       }
     }
 
-    static std::string extractMetaId(const std::string& uri) {
+    std::string RDFReader::extractMetaId(const std::string& uri) {
       return uri.substr(uri.find("#")+1, std::string::npos);
     }
 
-    static std::string extractMetaId(raptor_term *t) {
+    std::string RDFReader::extractMetaId(raptor_term *t) {
       if (!t)
         throw std::runtime_error("Raptor term is null");
       switch (t->type) {
@@ -67,29 +67,29 @@ namespace semsim {
       }
     }
 
-    static void addTermToEntity(EntityBase& entity, const Relation& relation, const Resource& resource) {
+    void RDFReader::addTermToEntity(EntityBase& entity, const Relation& relation, const Resource& resource) {
       if (relation == bqb::is)
         entity.addDefinition(resource);
       else
         entity.addExtraneousTerm(Term(relation, resource));
     }
 
-    static void addTermToCompositeAnnotation(CompositeAnnotation& annotation, const Relation& relation, const Resource& resource) {
+     void RDFReader::addTermToCompositeAnnotation(CompositeAnnotation& annotation, const Relation& relation, const Resource& resource) {
       addTermToEntity(annotation.getEntity(), relation, resource);
     }
 
-    static void addTermToSingularAnnotation(SingularAnnotation& annotation, const Relation& relation, const Resource& resource) {
+    void RDFReader::addTermToSingularAnnotation(SingularAnnotation& annotation, const Relation& relation, const Resource& resource) {
       addTermToEntity(annotation, relation, resource);
     }
 
-    static void addTermToAnnotation(AnnotationBase& annotation, const Relation& relation, const Resource& resource) {
+    void RDFReader::addTermToAnnotation(AnnotationBase& annotation, const Relation& relation, const Resource& resource) {
       if (annotation.isComposite())
         addTermToCompositeAnnotation(dynamic_cast<CompositeAnnotation&>(annotation), relation, resource);
       else
         addTermToSingularAnnotation(dynamic_cast<SingularAnnotation&>(annotation), relation, resource);
     }
 
-    static void process_triple(void* user_data, raptor_statement* triple) {
+    void RDFReader::process_triple(void* user_data, raptor_statement* triple) {
       Model& model=*(Model*)user_data;
       if (isMetaId(triple->subject)) {
         std::string metaid = extractMetaId(triple->subject);
@@ -104,7 +104,7 @@ namespace semsim {
       }
     }
 
-    void applyRDFAnnotationsToModel(Model& model, const std::string& rdf, const std::string& rdf_format) {
+    void RDFReader::applyRDFAnnotationsToModel(Model& model, const std::string& rdf, const std::string& rdf_format) {
       raptor_world* world = raptor_new_world();
       raptor_parser* rdf_parser = raptor_new_parser(world, "rdfxml");
       raptor_parser_set_statement_handler(rdf_parser, &model, process_triple);
