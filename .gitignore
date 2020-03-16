@@ -3,3 +3,6 @@
 .DS_Store
 /texput.log
 cmake-build-*
+INSTALL
+cmake-build*
+build
