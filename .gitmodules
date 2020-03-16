@@ -22,3 +22,6 @@
 [submodule "third_party/raptor"]
 	path = third_party/raptor
 	url = https://github.com/dajobe/raptor.git
+[submodule "third_party/rasqal"]
+	path = third_party/rasqal
+	url = https://github.com/dajobe/rasqal.git

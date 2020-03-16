@@ -15,9 +15,11 @@ ExternalProject_Add(zipper
         SOURCE_DIR ${ZIPPER_SOURCE_DIR}
         BINARY_DIR ${ZIPPER_BINARY_DIR}
         CMAKE_ARGS
-        -DCMAKE_INSTALL_PREFIX=${ZIPPER_INSTALL_PREFIX}
-        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-        -DLIBSBML_DEPS_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
+        -DCMAKE_INSTALL_PREFIX=D:/libsemsim/third_party/zipper/install
+        -DCMAKE_BUILD_TYPE=Debug
+        -DLIBSBML_DEPS_INSTALL_PREFIX=D:/libsemsim/third_party/libSBML-dependencies/INSTALL
+        -DLIBZ_LIBRARY=D:/libsemsim/third_party/libSBML-dependencies/INSTALL/lib/libzlib.a
+        -DLIBZ_INCLUDE_DIR=D:/libsemsim/third_party/libSBML-dependencies/INSTALL/include
         )
 
 
@@ -30,24 +32,37 @@ ExternalProject_Add(libsbml
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
             -DCMAKE_INSTALL_PREFIX=${LIBSBML_INSTALL_PREFIX}
             -WITH_LIBXML=ON
-            -DWITH_CPP_NAMESPACE=OFF
+            #todo despite there being logic for handling the libsbml namespace
+            #   it looks as though there is a namespace clash between libsbml::model
+            #   and libsemsim::model when namespaces for libsbml are set to OFF.
+            #todo Double check the truth of this and rectify.
+            -DWITH_CPP_NAMESPACE=ON
             -DLIBSBML_DEPENDENCY_DIR=${LIBSBML_DEPS_INSTALL_PREFIX}
         )
 
+# For some reason semi-colon lists go wrong when passed directly to CMAKE_ARGS
+# so we can use a different delimiter for the list instead.
+# https://stackoverflow.com/questions/45414507/pass-a-list-of-prefix-paths-to-externalproject-add-in-cmake-args
+set(EXTRA "D:/libsemsim/third_party/libSBML-dependencies/INSTALL/lib/libbz2.a" "C:/cygwin64/lib/libxml2.dll.a" "D:/libsemsim/third_party/libSBML-dependencies/INSTALL/lib/libzlib.a")
+string(REPLACE ";" "|" EXTRA "${EXTRA}")
 
 ExternalProject_Add(libCombine
         SOURCE_DIR ${LIBCOMBINE_SOURCE_DIR}
         BINARY_DIR ${LIBCOMBINE_BINARY_DIR}
         DEPENDS
         zipper libsbml
+        LIST_SEPARATOR |
         CMAKE_ARGS
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
             -DCMAKE_INSTALL_PREFIX=${LIBCOMBINE_INSTALL_PREFIX}
-            -DCMAKE_PREFIX_PATH=D:/libsemsim/third_party/libsbml/INSTALL
             -DZIPPER_INSTALL_PREFIX=D:/libsemsim/third_party/zipper/INSTALL
             -DLIBSBML_DEPS_INSTALL_PREFIX=D:/libsemsim/third_party/libSBML-dependencies/INSTALL
-            -DEXTRA_LIBS=D:/libsemsim/third_party/libSBML-dependencies/INSTALL/lib/libbz2.a;C:/cygwin64/lib/libxml2.dll.a;D:/libsemsim/third_party/libSBML-dependencies/INSTALL/lib/libzlib.a        -DZIPPER_INSTALL_PREFIX=D:/libsemsim/third_party/zipper/INSTALL
+            -DLIBSBML_INSTALL_PREFIX=D:/libsemsim/third_party/libsbml/INSTALL
+            -DEXTRA_LIBS=${EXTRA}
+
         )
+
+
 
 #ExternalProject_Add(catch2
 #        SOURCE_DIR ${CATCH2_SOURCE_DIR}
@@ -56,13 +71,14 @@ ExternalProject_Add(libCombine
 #            -DCMAKE_INSTALL_PREFIX=${CATCH2_INSTALL_PREFIX}
 #            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 #        )
-#ExternalProject_Add(raptor2
-#        SOURCE_DIR ${RAPTOR2_SOURCE_DIR}
-#        BINARY_DIR ${RAPTOR2_BINARY_DIR}
-#        CMAKE_ARGS
-#            -DCMAKE_INSTALL_PREFIX=${RAPTOR2_INSTALL_PREFIX}
-#            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-#        )
+
+ExternalProject_Add(raptor2
+        SOURCE_DIR ${RAPTOR2_SOURCE_DIR}
+        BINARY_DIR ${RAPTOR2_BINARY_DIR}
+        CMAKE_ARGS
+            -DCMAKE_INSTALL_PREFIX=${RAPTOR2_INSTALL_PREFIX}
+            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        )
 
 
 #ExternalProject_Add(rasqal

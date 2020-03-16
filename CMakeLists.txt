@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14.0)
+cmake_minimum_required(VERSION 3.15)
 
 cmake_policy(SET CMP0003 NEW) # useless
 cmake_policy(SET CMP0028 NEW) # double-colon
@@ -50,7 +50,6 @@ set(LIBSBML_DEPS_BINARY_DIR ${THIRD_PARTY_DIRS}/libsbml-dependencies/build)
 set(LIBSBML_DEPS_INSTALL_PREFIX ${LIBSBML_DEPS_SOURCE_DIR}/INSTALL)
 set(LIBSBML_DEPS_INCLUDE_DIR ${LIBSBML_DEPS_INSTALL_PREFIX}/include)
 set(LIBSBML_DEPS_LIB_DIR ${LIBSBML_DEPS_INSTALL_PREFIX}/lib)
-
 set(LIBSBML_SOURCE_DIR ${THIRD_PARTY_DIRS}/libsbml)
 set(LIBSBML_BINARY_DIR ${LIBSBML_SOURCE_DIR}/build)
 set(LIBSBML_INSTALL_PREFIX ${LIBSBML_SOURCE_DIR}/INSTALL)
@@ -58,21 +57,12 @@ set(LIBSBML_INCLUDE_DIR "${LIBSBML_INSTALL_PREFIX}/include")
 set(LIBSBML_LIB_DIR "${LIBSBML_INSTALL_PREFIX}/lib")
 set(LIBSBML_LIB "${LIBSBML_LIB_DIR}/libsbml.dll.a")
 set(LIBSBML_STATIC_LIB "${LIBSBML_LIB_DIR}/libsbml-static.a")
-
-#set(ZLIB_SOURCE_DIR ${THIRD_PARTY_DIRS}/zlib)
-#set(ZLIB_BINARY_DIR ${ZLIB_SOURCE_DIR}/build)
-#set(ZLIB_INSTALL_PREFIX ${ZLIB_SOURCE_DIR}/INSTALL)
-#set(ZLIB_INCLUDE_DIR "${ZLIB_INSTALL_PREFIX}/include")
-#set(ZLIB_LIB_DIR "${ZLIB_INSTALL_PREFIX}/lib")
-#set(ZLIB_LIB "${ZLIB_LIB_DIR}/libZipper-static${CMAKE_STATIC_LIBRARY_PREFIX}")
-
 set(ZIPPER_SOURCE_DIR ${THIRD_PARTY_DIRS}/zipper)
 set(ZIPPER_BINARY_DIR ${ZIPPER_SOURCE_DIR}/build)
 set(ZIPPER_INSTALL_PREFIX ${ZIPPER_SOURCE_DIR}/INSTALL)
 set(ZIPPER_INCLUDE_DIR "${ZIPPER_INSTALL_PREFIX}/include")
 set(ZIPPER_LIB_DIR "${ZIPPER_INSTALL_PREFIX}/lib")
 set(ZIPPER_LIB "${ZIPPER_LIB_DIR}/libZipper-static.a")
-
 set(LIBCOMBINE_SOURCE_DIR ${THIRD_PARTY_DIRS}/libCombine)
 set(LIBCOMBINE_BINARY_DIR ${LIBCOMBINE_SOURCE_DIR}/build)
 set(LIBCOMBINE_INSTALL_PREFIX ${LIBCOMBINE_SOURCE_DIR}/INSTALL)
@@ -80,7 +70,6 @@ set(LIBCOMBINE_INCLUDE_DIR "${LIBCOMBINE_INSTALL_PREFIX}/include")
 set(LIBCOMBINE_LIB_DIR "${LIBCOMBINE_INSTALL_PREFIX}/lib")
 set(LIBCOMBINE_LIB "${LIBCOMBINE_LIB_DIR}/libCombine${CMAKE_SHARED_LIBRARY_SUFFIX}")
 set(LIBCOMBINE_STATIC_LIB "${LIBCOMBINE_LIB_DIR}/libCombine-static${CMAKE_STATIC_LIBRARY_SUFFIX}")
-
 set(CATCH2_SOURCE_DIR ${THIRD_PARTY_DIRS}/Catch2)
 set(CATCH2_BINARY_DIR ${CATCH2_SOURCE_DIR}/build)
 set(CATCH2_INSTALL_PREFIX ${CATCH2_SOURCE_DIR}/INSTALL)
@@ -88,7 +77,6 @@ set(CATCH2_INCLUDE_DIR "${CATCH2_INSTALL_PREFIX}/include")
 set(CATCH2_LIB_DIR "${CATCH2_INSTALL_PREFIX}/lib")
 set(CATCH2_LIB "${CATCH2_LIB_DIR}/Catch2${CMAKE_SHARED_LIBRARY_SUFFIX}")
 #set(CATCH2_LIB "${CATCH2_LIB_DIR}/Catch2-static${CMAKE_STATIC_LIBRARY_SUFFIX}")
-
 set(RAPTOR2_SOURCE_DIR ${THIRD_PARTY_DIRS}/raptor)
 set(RAPTOR2_BINARY_DIR ${RAPTOR2_SOURCE_DIR}/build)
 set(RAPTOR2_INSTALL_PREFIX ${RAPTOR2_SOURCE_DIR}/INSTALL)
@@ -96,7 +84,6 @@ set(RAPTOR2_INCLUDE_DIR "${RAPTOR2_INSTALL_PREFIX}/include")
 set(RAPTOR2_LIB_DIR "${RAPTOR2_INSTALL_PREFIX}/lib")
 #set(RAPTOR2_LIB "${RAPTOR2_LIB_DIR}/raptor${CMAKE_SHARED_LIBRARY_SUFFIX}")
 #set(RAPTOR2_LIB "${RAPTOR2_LIB_DIR}/raptor-static${CMAKE_STATIC_LIBRARY_SUFFIX}")
-
 set(RASQAL_SOURCE_DIR ${THIRD_PARTY_DIRS}/rasqal)
 set(RASQAL_BINARY_DIR ${RASQAL_SOURCE_DIR}/build)
 set(RASQAL_INSTALL_PREFIX ${RASQAL_SOURCE_DIR}/INSTALL)
@@ -128,9 +115,11 @@ find_library(ZLIB_LIBRARY
         DEPENDS
         libsbml-dependencies
         )
+
 if (NOT ${ZLIB_LIBRARY_FOUND})
     message(FATAL_ERROR "ZLIB library not found")
 endif ()
+
 set(LIBZ_LIBRARY ${ZLIB_LIBRARY})
 
 find_library(ZIPPER_LIBRARY
@@ -142,7 +131,7 @@ find_library(ZIPPER_LIBRARY
         )
 
 
-find_library(ICONV_LIB
+find_library(ICONV_LIBRARY
         NAMES iconv libiconv
         PATHS /usr/lib /usr/local/lib ${CYG_LIB_DIR}
         ${CMAKE_OSX_SYSROOT}/usr/lib
@@ -152,7 +141,7 @@ find_library(ICONV_LIB
 message(STATUS "ICONV_LIB ${ICONV_LIB}")
 
 find_library(LIBXML2_LIBRARY
-        NAMES libxml2 xml2
+        NAMES libxml2
         PATHS
 #        /usr/lib /usr/local/lib
         ${LIBSBML_DEPS_INSTALL_PREFIX}/lib
@@ -160,54 +149,60 @@ find_library(LIBXML2_LIBRARY
         NO_DEFAULT_PATH
         REQUIRED
         )
-MESSAGE(STATUS "LIBSBML_DEPS_INSTALL_PREFIX ${CMAKE_STATIC_LIBRARY_PREFIX} ")
-MESSAGE(STATUS "LIBSBML_DEPS_INSTALL_PREFIX ${LIBSBML_DEPS_INSTALL_PREFIX}")
-MESSAGE(STATUS "LIBXML2_LIBRARY ${LIBXML2_LIBRARY}")
 
-MESSAGE(STATUS "LIBSBML_INCLUDE_DIR ${LIBSBML_INCLUDE_DIR}")
+find_path(LIBXML2_INCLUDE_DIR
+        NAMES libxml2
+        )
+
+
+find_path(ZLIB_INCLUDE_DIR
+        NAMES zlib z libzlib
+        PATHS ${LIBSBML_DEPS_INCLUDE_DIR}
+        )
+
+
 include_directories(${CMAKE_SOURCE_DIR})
 include_directories(${LIBCOMBINE_INCLUDE_DIR})
 include_directories(${LIBSBML_INCLUDE_DIR})
 include_directories(${ZIPPER_INCLUDE_DIR})
 include_directories(${CYG_INCLUDE_DIR}/raptor2)
-include_directories(${CYG_INCLUDE_DIR}/rasqal)
-#
-#find_library(LIBSBML
-#        NAMES Zipper-static Zipper libZipper-static libZipper
-#        PATHS /usr/lib /usr/local/lib ${ZIPPER_LIB_DIR}
-#        ${CMAKE_OSX_SYSROOT}/usr/lib
-#        DOC "The file name of the ZIPPER library."
-#        REQUIRED
-#        )
-#
-#if (NOT ${ZIPPER_LIBRARY_FOUND})
-#    message(FATAL_ERROR "zipper library not found")
-#endif ()
 
-#find_library(RAPTOR2_LIBRARY
-#        NAMES libraptor2 raptor2 libraptor2-static raptor2-static
-#        PATHS /usr/lib /usr/local/lib ${CYG_LIB_DIR}
-#        ${CMAKE_OSX_SYSROOT}/usr/lib
-#        DOC "The file name of the raptor2 library."
-#        REQUIRED
-#        )
+find_library(LIBSBML_LIBRARY
+        NAMES Zipper-static Zipper libZipper-static libZipper
+        PATHS /usr/lib /usr/local/lib ${ZIPPER_LIB_DIR}
+        ${CMAKE_OSX_SYSROOT}/usr/lib
+        DOC "The file name of the ZIPPER library."
+        REQUIRED
+        )
+
+if (NOT ${ZIPPER_LIBRARY_FOUND})
+    message(FATAL_ERROR "zipper library not found")
+endif ()
 #
-#find_library(RASQAL_LIBRARY
-#        NAMES librasqal librasqal-static rasqal rasqal-static
-#        PATHS /usr/lib /usr/local/lib ${CYG_LIB_DIR}
-#        ${CMAKE_OSX_SYSROOT}/usr/lib
-#        DOC "The file name of the rasqal library."
-#        REQUIRED
-#        )
-#
-#
-##set(LIBSBML_DEPS_INCLUDE_DIR "${LIBSBML_DEPS_INSTALL_PREFIX}/include")
-##set(LIBSBML_DEPS_LIB_DIR "${LIBSBML_DEPS_INSTALL_PREFIX}/lib")
-##set(LIBSBML_DEPS_LIB "${LIBSBML_DEPS_LIB_DIR}/libsbml.${CMAKE_SHARED_LIBRARY_SUFFIX}")
-#
-#
-##find_package(combine PATHS C:/cygwin64/usr/local/lib/cmake REQUIRED)
-##find_package(Catch2 PATHS C:/cygwin64/usr/local/lib/cmake/Catch2)
+find_library(RAPTOR2_LIBRARY
+        NAMES libraptor2 raptor2 libraptor2-static raptor2-static
+        PATHS /usr/lib /usr/local/lib ${CYG_LIB_DIR}
+        ${CMAKE_OSX_SYSROOT}/usr/lib
+        DOC "The file name of the raptor2 library."
+        REQUIRED
+        )
+
+find_library(RASQAL_LIBRARY
+        NAMES librasqal librasqal-static rasqal rasqal-static
+        PATHS /usr/lib /usr/local/lib ${CYG_LIB_DIR}
+        ${CMAKE_OSX_SYSROOT}/usr/lib
+        DOC "The file name of the rasqal library."
+        REQUIRED
+        )
+
+
+#set(LIBSBML_DEPS_INCLUDE_DIR "${LIBSBML_DEPS_INSTALL_PREFIX}/include")
+#set(LIBSBML_DEPS_LIB_DIR "${LIBSBML_DEPS_INSTALL_PREFIX}/lib")
+#set(LIBSBML_DEPS_LIB "${LIBSBML_DEPS_LIB_DIR}/libsbml.${CMAKE_SHARED_LIBRARY_SUFFIX}")
+
+
+#find_package(combine PATHS C:/cygwin64/usr/local/lib/cmake REQUIRED)
+#find_package(Catch2 PATHS C:/cygwin64/usr/local/lib/cmake/Catch2)
 #find_package(SWIG)
 #
 #
@@ -279,10 +274,10 @@ include_directories(${CYG_INCLUDE_DIR}/rasqal)
 #else ()
 #    option(BUILD_PYTHON "Build Python SWIG module" OFF)
 #endif ()
-#
-## diagnostics
-##get_target_property(LIBCOMBINE_LIBS libCombine-static LOCATION)
-##get_target_property(LIBCOMBINE_INCLUDE_DIRS libCombine-static INTERFACE_INCLUDE_DIRECTORIES)
+
+# diagnostics
+#get_target_property(LIBCOMBINE_LIBS libCombine-static LOCATION)
+#get_target_property(LIBCOMBINE_INCLUDE_DIRS libCombine-static INTERFACE_INCLUDE_DIRECTORIES)
 #
 #if (cellml_FOUND)
 #    get_target_property(LIBCELLML_LIBS cellml LOCATION)
@@ -297,71 +292,141 @@ include_directories(${CYG_INCLUDE_DIR}/rasqal)
 #else ()
 #    set(CATCH2_INCLUDE_DIRS "")
 #endif ()
-#
-#message(STATUS "
-##-------------------------------------------------------------------------------
-##Configuration Summary
-##-------------------------------------------------------------------------------
-#
-#    Configured on host $ENV{COMPUTERNAME} ${HOSTNAME}
-#      host OS                   ${CMAKE_SYSTEM_NAME}
-#      host architecture         ${CMAKE_SYSTEM_PROCESSOR}
-#
-#    General flags:
-#      CC                        ${CMAKE_C_COMPILER}
-#      CXX                       ${CMAKE_CXX_COMPILER}
-#      CPPFLAGS                  ${BUILD_DEFINITIONS}
-#      CFLAGS                    ${CMAKE_C_FLAGS}
-#      CXXFLAGS                  ${CMAKE_CXX_FLAGS}
-#      LDFLAGS                   ${CMAKE_EXE_LINKER_FLAGS}
-#
-#    Installation prefix:        ${CMAKE_INSTALL_PREFIX}
-#
-#    Options:
-#      SBML support              ${ENABLE_SBML_SUPPORT}
-#      CellML suppert            ${ENABLE_CELLML_SUPPORT}
-#      Tests (requires Catch)    ${ENABLE_TESTS}
-#      Python bindings           ${BUILD_PYTHON}
-#      Python interpreter        ${Python_EXECUTABLE}
-#      Python include directory  ${PYTHON_INCLUDE_PATH}
-#      Generate documentation    ${BUILD_DOCS}
-#
-#
-#    "
-#        )
-#
 
+find_package(LibXml2 REQUIRED)
+
+
+message(STATUS "
+#-------------------------------------------------------------------------------
+#Configuration Summary
+#-------------------------------------------------------------------------------
+
+    Configured on host $ENV{COMPUTERNAME} ${HOSTNAME}
+        host OS                   ${CMAKE_SYSTEM_NAME}
+        host architecture         ${CMAKE_SYSTEM_PROCESSOR}
+
+    General flags:
+        CC                        ${CMAKE_C_COMPILER}
+        CXX                       ${CMAKE_CXX_COMPILER}
+        CPPFLAGS                  ${BUILD_DEFINITIONS}
+        CFLAGS                    ${CMAKE_C_FLAGS}
+        CXXFLAGS                  ${CMAKE_CXX_FLAGS}
+        LDFLAGS                   ${CMAKE_EXE_LINKER_FLAGS}
+
+    Installation prefix:        ${CMAKE_INSTALL_PREFIX}
+
+    Options:
+        SBML support              ${ENABLE_SBML_SUPPORT}
+        CellML suppert            ${ENABLE_CELLML_SUPPORT}
+        Tests (requires Catch)    ${ENABLE_TESTS}
+        Python bindings           ${BUILD_PYTHON}
+        Python interpreter        ${Python_EXECUTABLE}
+        Python include directory  ${PYTHON_INCLUDE_PATH}
+        Generate documentation    ${BUILD_DOCS}
+
+    Paths:
+        libsbml dependencies
+            LIBSBML_DEPS_SOURCE_DIR            ${LIBSBML_DEPS_SOURCE_DIR}
+            LIBSBML_DEPS_BINARY_DIR            ${LIBSBML_DEPS_BINARY_DIR}
+            LIBSBML_DEPS_INSTALL_PREFIX        ${LIBSBML_DEPS_INSTALL_PREFIX}
+            LIBSBML_DEPS_INCLUDE_DIR           ${LIBSBML_DEPS_INCLUDE_DIR}
+            LIBSBML_DEPS_LIB_DIR               ${LIBSBML_DEPS_LIB_DIR}
+
+        libsbml
+            LIBSBML_SOURCE_DIR                 ${LIBSBML_SOURCE_DIR}
+            LIBSBML_BINARY_DIR                 ${LIBSBML_BINARY_DIR}
+            LIBSBML_INSTALL_PREFIX             ${LIBSBML_INSTALL_PREFIX}
+            LIBSBML_INCLUDE_DIR                ${LIBSBML_INCLUDE_DIR}
+            LIBSBML_LIB_DIR                    ${LIBSBML_LIB_DIR}
+            LIBSBML_LIB                        ${LIBSBML_LIB}
+            LIBSBML_STATIC_LIB                 ${LIBSBML_STATIC_LIB}
+
+        zipper
+            ZIPPER_SOURCE_DIR                  ${ZIPPER_SOURCE_DIR}
+            ZIPPER_BINARY_DIR                  ${ZIPPER_BINARY_DIR}
+            ZIPPER_INSTALL_PREFIX              ${ZIPPER_INSTALL_PREFIX}
+            ZIPPER_INCLUDE_DIR                 ${ZIPPER_INCLUDE_DIR}
+            ZIPPER_LIB_DIR                     ${ZIPPER_LIB_DIR}
+            ZIPPER_LIBRARY                     ${ZIPPER_LIBRARY}
+
+        libcombine
+            LIBCOMBINE_SOURCE_DIR              ${LIBCOMBINE_SOURCE_DIR}
+            LIBCOMBINE_BINARY_DIR              ${LIBCOMBINE_BINARY_DIR}
+            LIBCOMBINE_INSTALL_PREFIX          ${LIBCOMBINE_INSTALL_PREFIX}
+            LIBCOMBINE_INCLUDE_DIR             ${LIBCOMBINE_INCLUDE_DIR}
+            LIBCOMBINE_LIB_DIR                 ${LIBCOMBINE_LIB_DIR}
+            LIBCOMBINE_LIB                     ${LIBCOMBINE_LIB}
+            LIBCOMBINE_STATIC_LIB              ${LIBCOMBINE_STATIC_LIB}
+
+        catch2
+            CATCH2_SOURCE_DIR                  ${CATCH2_SOURCE_DIR}
+            CATCH2_BINARY_DIR                  ${CATCH2_BINARY_DIR}
+            CATCH2_INSTALL_PREFIX              ${CATCH2_INSTALL_PREFIX}
+            CATCH2_INCLUDE_DIR                 ${CATCH2_INCLUDE_DIR}
+            CATCH2_LIB_DIR                     ${CATCH2_LIB_DIR}
+            CATCH2_LIBRARY                     ${CATCH2_LIBRARY}
+
+        raptor
+            RAPTOR2_SOURCE_DIR                 ${RAPTOR2_SOURCE_DIR}
+            RAPTOR2_BINARY_DIR                 ${RAPTOR2_BINARY_DIR}
+            RAPTOR2_INSTALL_PREFIX             ${RAPTOR2_INSTALL_PREFIX}
+            RAPTOR2_INCLUDE_DIR                ${RAPTOR2_INCLUDE_DIR}
+            RAPTOR2_LIB_DIR                    ${RAPTOR2_LIB_DIR}
+            RAPTOR2_LIBRARY                    ${RAPTOR2_LIBRARY}
+
+        rasqal
+            RASQAL_SOURCE_DIR                  ${RASQAL_SOURCE_DIR}
+            RASQAL_BINARY_DIR                  ${RASQAL_BINARY_DIR}
+            RASQAL_INSTALL_PREFIX              ${RASQAL_INSTALL_PREFIX}
+            RASQAL_INCLUDE_DIR                 ${RASQAL_INCLUDE_DIR}
+            RASQAL_LIB_DIR                     ${RASQAL_LIB_DIR}
+
+        libxml2
+            LIBXML2_LIBRARY                    ${LIBXML2_LIBRARY}
+            LIBXML2_INCLUDE_DIR                ${LIBXML2_INCLUDE_DIR}
+
+            LibXml2_FOUND                       ${LibXml2_FOUND}
+            LIBXML2_DEFINITIONS                 ${LIBXML2_DEFINITIONS}
+            LIBXML2_LIBRARIES                   ${LIBXML2_LIBRARIES}
+            LIBXML2_INCLUDE_DIRS                ${LIBXML2_INCLUDE_DIRS}
+
+
+        zlib
+            ZLIB_LIBRARY                       ${ZLIB_LIBRARY}
+            ZLIB_INCLUDE_DIR                   ${ZLIB_INCLUDE_DIR}
+    ")
+
+message(STATUS "adding subdir")
+add_subdirectory(semsim)
+
+# Recurse into subdirectories for each wrapper language if specified
+#if (BUILD_PYTHON)
+#    if (NOT (${SEMSIM_CXX_STANDARD} EQUAL 11))
+#        message(SEND_ERROR "Python bindings require C++11 to be used")
+#    endif ()
+#    if (Python_FOUND)
+#        include_directories(${PYTHON_INCLUDE_PATH})
+#        add_subdirectory(swig/python)
+#    else ()
+#        message(SEND_ERROR "BUILD_PYTHON is enabled but a suitable Python runtime environment was not found")
+#    endif ()
+#endif ()
 #
+#if (BUILD_DOCS)
+#    if (Doxygen_FOUND)
+#        add_subdirectory(docs)
+#    else ()
+#        message(SEND_ERROR "BUILD_DOCS was specified but Doxygen was not found")
+#    endif ()
+#endif ()
 #
-#add_subdirectory(semsim)
+#if (ENABLE_TESTS)
+#    include(CTest)
+#    enable_testing()
+#    add_subdirectory(tests)
+#endif ()
 #
-## Recurse into subdirectories for each wrapper language if specified
-##if (BUILD_PYTHON)
-##    if (NOT (${SEMSIM_CXX_STANDARD} EQUAL 11))
-##        message(SEND_ERROR "Python bindings require C++11 to be used")
-##    endif ()
-##    if (Python_FOUND)
-##        include_directories(${PYTHON_INCLUDE_PATH})
-##        add_subdirectory(swig/python)
-##    else ()
-##        message(SEND_ERROR "BUILD_PYTHON is enabled but a suitable Python runtime environment was not found")
-##    endif ()
-##endif ()
-##
-##if (BUILD_DOCS)
-##    if (Doxygen_FOUND)
-##        add_subdirectory(docs)
-##    else ()
-##        message(SEND_ERROR "BUILD_DOCS was specified but Doxygen was not found")
-##    endif ()
-##endif ()
-##
-##if (ENABLE_TESTS)
-##    include(CTest)
-##    enable_testing()
-##    add_subdirectory(tests)
-##endif ()
-##
-##if (ENABLE_EXAMPLES)
-##    add_subdirectory(examples)
-##endif ()
+#if (ENABLE_EXAMPLES)
+#    add_subdirectory(examples)
+#endif ()
+#
