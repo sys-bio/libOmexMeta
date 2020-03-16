@@ -35,8 +35,8 @@
 # include "semsim/omex/OmexOutput.h"
 # include "semsim/omex/SBMLOmex.h"
 
-# include "semsim/query/RasqalQueryResult.h"
-# include "semsim/query/RasqalQuery.h"
+//# include "semsim/query/RasqalQueryResult.h"
+//# include "semsim/query/RasqalQuery.h"
 
 # include "semsim/path/path.hpp"
 
