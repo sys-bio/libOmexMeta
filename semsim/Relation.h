@@ -21,10 +21,7 @@ namespace semsim {
         Relation(const URI& uri)
           : uri_(uri) {}
 
-        # if __cplusplus >= 201103L
-        Relation(URI&& uri)
-          : uri_(std::move(uri)) {}
-        # endif
+        Relation(URI&& uri) : uri_(std::move(uri)) {}
 
         std::string toString() const {
           return uri_.toString();

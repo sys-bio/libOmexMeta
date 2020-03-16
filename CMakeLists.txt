@@ -91,6 +91,7 @@ set(RASQAL_INCLUDE_DIR "${RASQAL_INSTALL_PREFIX}/include")
 set(RASQAL_LIB_DIR "${RASQAL_INSTALL_PREFIX}/lib")
 #set(RASQAL_LIB "${RASQAL_LIB_DIR}/libCombine-static${CMAKE_SHARED_LIBRARY_SUFFIX}")
 
+set(GOOGLETEST_SOURCE ${THIRD_PARTY_DIRS}/googletest)
 
 set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/INSTALL/${CMAKE_BUILD_TYPE}")
 
@@ -231,7 +232,6 @@ find_path(LIBBZ_INCLUDE_DIR
         NAMES libbz2 bz bz2 bzip2/bzlib.h
         PATHS ${LIBSBML_DEPS_INCLUDE_DIR}
         )
-
 
 
 #find_package(combine PATHS C:/cygwin64/usr/local/lib/cmake REQUIRED)
@@ -395,10 +395,15 @@ message(STATUS "
         bzlib
             LIBBZ_LIBRARY                      ${LIBBZ_LIBRARY}
             LIBBZ_INCLUDE_DIR                  ${LIBBZ_INCLUDE_DIR}
+
+        googletest
+            GOOGLETEST_SOURCE                  ${GOOGLETEST_SOURCE}
     ")
 
 message(STATUS "adding subdir")
 add_subdirectory(semsim)
+add_subdirectory(tests)
+
 
 # Recurse into subdirectories for each wrapper language if specified
 #if (BUILD_PYTHON)

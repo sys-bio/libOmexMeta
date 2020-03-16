@@ -235,7 +235,7 @@ namespace semsim {
      * Automatically uses std::unique_ptr or std::tr1::shared_ptr depending on C++ standard.
      * @see UniquePtr.
      */
-    typedef UniquePtr<Component>::type ComponentPtr;
+    typedef std::unique_ptr<Component> ComponentPtr;
 
 }
 
