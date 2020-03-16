@@ -2,7 +2,7 @@
 # define SEMSIM_GO_H_
 
 # include "semsim/Preproc.h"
-# include "semsim/Ontology.h"
+# include "Ontology.h"
 # include "semsim/PhysicalProperty.h"
 
 namespace semsim {

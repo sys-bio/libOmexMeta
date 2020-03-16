@@ -26,7 +26,7 @@ set(SEMSIM_SOURCES
         EntityDescriptor.h
         Mediator.h
         Model.h
-        Ontology.h
+        ontologies/Ontology.h
         Participant.h
         PhysicalProperty.h
         Preproc.h

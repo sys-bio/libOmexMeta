@@ -26,7 +26,7 @@
 # include "semsim/BiomodelsQualifiers.h"
 // # include "semsim/SemSimObject.h"
 
-# include "semsim/Ontology.h"
+# include "semsim/ontologies/Ontology.h"
 # include "semsim/ontologies/CHEBI.h"
 # include "semsim/ontologies/OPB.h"
 # include "semsim/ontologies/GO.h"
@@ -38,7 +38,6 @@
 //# include "semsim/query/RasqalQueryResult.h"
 //# include "semsim/query/RasqalQuery.h"
 
-# include "semsim/path/path.hpp"
 
 SEMSIM_PUBLIC void libsemgen_hello();
 // void cellml_hello();

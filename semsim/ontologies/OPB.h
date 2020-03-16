@@ -2,7 +2,7 @@
 # define SEMSIM_OPB_H_
 
 # include "semsim/Preproc.h"
-# include "semsim/Ontology.h"
+# include "Ontology.h"
 // # include "semsim/PhysicalProperty.h"
 
 namespace semsim {
@@ -11,7 +11,6 @@ namespace semsim {
      */
     class SEMSIM_PUBLIC OPB : public Ontology {
       public:
-        // SEMSIM_CONSTEXPR static std::string root = "http://identifiers.org/opb/OPB_";
 
         /**
          * Get the full URI of an ontology term given its numeric value.
@@ -27,12 +26,6 @@ namespace semsim {
           return resolve("https://identifiers.org/opb/OPB_", t, 5);
         }
 
-        /// Use the return value of @p get to construct a @ref PhysicalProperty
-        // static PhysicalProperty getPhysicalProperty(OntologyTerm t) {
-        //   return PhysicalProperty(get(t));
-        // }
-
-        // SEMSIM_CONSTEXPR static Resource fluid_volume = get(154);
     };
 }
 

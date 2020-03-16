@@ -1,6 +1,7 @@
 # ifndef SEMSIM_ONTOLOGY_H_
 # define SEMSIM_ONTOLOGY_H_
 
+#include <iomanip>
 # include "semsim/Preproc.h"
 # include "semsim/PhysicalProperty.h"
 
@@ -23,7 +24,7 @@ namespace semsim {
          * @return          The correct full URI for the resource in the ontology.
          */
         static Resource resolve(const std::string& root, OntologyTerm t, int n_digits) {
-          std::stringstream ss;
+          std::ostringstream ss;
           ss << root << std::setfill('0') << std::setw(n_digits) << t;
           return  Resource(ss.str());
         }
