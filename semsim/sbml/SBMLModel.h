@@ -41,7 +41,7 @@ namespace semsim {
           : Model(), d_(d) {
           LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m = d->getModel();
           // all elements must have meta ids
-          assignMetaIds(m);
+          MetaID::assignMetaIds(m);
           for(unsigned int k=0; k<m->getNumCompartments(); ++k) {
             LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m->getCompartment(k);
             if (c->isSetMetaId()) {

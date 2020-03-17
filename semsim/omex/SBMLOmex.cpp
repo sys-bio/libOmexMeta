@@ -23,8 +23,7 @@ namespace semsim {
 
       SBMLImporter importer(d);
       SBMLModel& result = importer.getSBMLModel();
-      RDFReader rdfReader;
-      rdfReader.applyRDFAnnotationsToModel(result, rdf);
+      RDFReader::applyRDFAnnotationsToModel(result, rdf);
       return std::move(result);
     }
 }
