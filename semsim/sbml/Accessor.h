@@ -7,7 +7,7 @@
 
 namespace semsim {
 
-    class Accessors {
+    class Accessor {
     public:
         /// Find a UnitDefinition from a given sid; throw if not found
         static inline LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition *findUnitDefinition(
