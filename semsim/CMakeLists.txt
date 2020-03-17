@@ -7,7 +7,6 @@ set(SEMSIM_SOURCES
         ontologies/GO.h
         ontologies/OPB.h
         ontologies/SBO.h
-        path/path.hpp
         query/Condition.h
         query/IdentityCondition.h
         query/Query.h
