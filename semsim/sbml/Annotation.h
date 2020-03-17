@@ -51,10 +51,7 @@ namespace semsim {
                 LIBSBML_CPP_NAMESPACE_QUALIFIER Parameter *x = m->getParameter(k);
                 stripAnnotationsFromElement(x);
             }
-            for (unsigned int k = 0; k < m->getNumParameters(); ++k) {
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Parameter *x = m->getParameter(k);
-                stripAnnotationsFromElement(x);
-            }
+
             for (unsigned int k = 0; k < m->getNumRules(); ++k) {
                 LIBSBML_CPP_NAMESPACE_QUALIFIER Rule *x = m->getRule(k);
                 stripAnnotationsFromElement(x);
