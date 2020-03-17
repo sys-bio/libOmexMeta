@@ -60,7 +60,7 @@ namespace semsim {
           if (p->isSetMetaId())
             result_.setComponentAnnotation(p, extractAnnotation(p));
         }
-        stripAnnotations(d);
+        Annotations::stripAnnotations(d);
       }
 
       # if __cplusplus >= 201103L || defined SWIG
