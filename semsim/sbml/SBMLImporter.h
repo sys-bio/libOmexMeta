@@ -6,7 +6,7 @@
 # include "semsim/sbml/Species.h"
 # include "semsim/BiomodelsQualifiers.h"
 # include "semsim/SemSimQualifiers.h"
-# include "semsim/sbml/MetaIDs.h"
+# include "semsim/sbml/MetaID.h"
 # include "semsim/ontologies/SBO.h"
 
 # include "sbml/SBMLTypes.h"
@@ -60,7 +60,7 @@ namespace semsim {
           if (p->isSetMetaId())
             result_.setComponentAnnotation(p, extractAnnotation(p));
         }
-        Annotations::stripAnnotations(d);
+        Annotation::stripAnnotations(d);
       }
 
       # if __cplusplus >= 201103L || defined SWIG
@@ -315,12 +315,12 @@ namespace semsim {
             throw std::runtime_error("The SBML species is missing a meta id");
           return CompositeAnnotation(
             s->getMetaId(),
-            GetSpeciesPhysicalProperty(s,m_),
+            Species::GetSpeciesPhysicalProperty(s,m_),
             extractSpeciesEntity(s)
           );
         }
 
-        std::string makeUniqueMetaId(const Model& model, const std::string& base) {
+        static std::string makeUniqueMetaId(const Model& model, const std::string& base) {
           for (unsigned int k=0; k<1000; ++k) {
             std::stringstream ss;
             ss << base << k;

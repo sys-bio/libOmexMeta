@@ -7,7 +7,7 @@
 
 namespace semsim {
 
-    class Annotations {
+    class Annotation {
     public:
         /**
          * Strip CV terms and SBO terms from an SBML element.

@@ -10,7 +10,7 @@
 namespace semsim {
     /**
      * Composite annotations allow more precise descriptions of model
-     * elements than singular ("plain") @ref Annotation "Annotations".
+     * elements than singular ("plain") @ref Annotation "Annotation".
      * Whereas singular annotations specify the *chemical identity* of an SBML
      * species or the *physiological identity* of a CellML variable,
      * composite annotations also provide two additional pieces of information:

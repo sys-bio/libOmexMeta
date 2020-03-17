@@ -1,7 +1,7 @@
 # ifndef SEMSIM_QUERY_CONDITION_H_
 # define SEMSIM_QUERY_CONDITION_H_
 
-
+#include "semsim/SemSim.h"
 
 namespace semsim {
 
@@ -11,7 +11,7 @@ namespace semsim {
     class SEMSIM_PUBLIC Condition {
       public:
         /// Virtual dtor
-        virtual ~Condition()
+        virtual ~Condition();
 
         /// @return @c true if the condition matches the given element.
         virtual bool matches(const Component& component) = 0;

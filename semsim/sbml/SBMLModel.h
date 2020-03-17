@@ -6,8 +6,8 @@
 # include "semsim/Process.h"
 # include "semsim/BiomodelsQualifiers.h"
 # include "semsim/SemSimQualifiers.h"
-# include "semsim/sbml/MetaIDs.h"
-# include "semsim/sbml/Annotations.h"
+# include "semsim/sbml/MetaID.h"
+# include "semsim/sbml/Annotation.h"
 
 # include <raptor2.h>
 
