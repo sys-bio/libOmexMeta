@@ -82,8 +82,8 @@ foreach (l ${LIBRARIES})
 
     # libsbml
     target_include_directories(${l} PRIVATE ${LIBSBML_INCLUDE_DIR})
-    target_link_libraries(${l} PRIVATE ${LIBSBML_LIB})
-    #    target_link_libraries(${l} PRIVATE ${LIBSBML_STATIC_LIB})
+    target_link_libraries(${l} PRIVATE ${LIBSBML_LIBRARY})
+    #    target_link_libraries(${l} PRIVATE ${LIBSBML_STATIC_LIBRARY})
 
     # zlib
     target_include_directories(${l} PRIVATE ${ZLIB_INCLUDE_DIR})
@@ -97,7 +97,7 @@ foreach (l ${LIBRARIES})
 
     # libcombine
     target_include_directories(${l} PRIVATE ${LIBCOMBINE_INCLUDE_DIR})
-    target_link_libraries(${l} PRIVATE ${LIBCOMBINE_LIB})
+    target_link_libraries(${l} PRIVATE ${LIBCOMBINE_LIBRARY})
     #    target_link_libraries(${l} PRIVATE ${LIBCOMBINE_STATIC_LIB})
 
     # catch2

@@ -55,20 +55,20 @@ set(LIBSBML_BINARY_DIR ${LIBSBML_SOURCE_DIR}/build)
 set(LIBSBML_INSTALL_PREFIX ${LIBSBML_SOURCE_DIR}/INSTALL)
 set(LIBSBML_INCLUDE_DIR "${LIBSBML_INSTALL_PREFIX}/include")
 set(LIBSBML_LIB_DIR "${LIBSBML_INSTALL_PREFIX}/lib")
-#set(LIBSBML_LIB "${LIBSBML_LIB_DIR}/libsbml.dll.a")
-set(LIBSBML_STATIC_LIB "${LIBSBML_LIB_DIR}/libsbml-static.a")
+#set(LIBSBML_LIBRARY "${LIBSBML_LIB_DIR}/libsbml.dll.a")
+set(LIBSBML_STATIC_LIBRARY "${LIBSBML_LIB_DIR}/libsbml-static.a")
 set(ZIPPER_SOURCE_DIR ${THIRD_PARTY_DIRS}/zipper)
 set(ZIPPER_BINARY_DIR ${ZIPPER_SOURCE_DIR}/build)
 set(ZIPPER_INSTALL_PREFIX ${ZIPPER_SOURCE_DIR}/INSTALL)
 set(ZIPPER_INCLUDE_DIR "${ZIPPER_INSTALL_PREFIX}/include")
 set(ZIPPER_LIB_DIR "${ZIPPER_INSTALL_PREFIX}/lib")
-#set(ZIPPER_LIB "${ZIPPER_LIB_DIR}/libZipper-static.a")
+#set(ZIPPER_LIBRARY "${ZIPPER_LIB_DIR}/libZipper-static.a")
 set(LIBCOMBINE_SOURCE_DIR ${THIRD_PARTY_DIRS}/libCombine)
 set(LIBCOMBINE_BINARY_DIR ${LIBCOMBINE_SOURCE_DIR}/build)
 set(LIBCOMBINE_INSTALL_PREFIX ${LIBCOMBINE_SOURCE_DIR}/INSTALL)
 set(LIBCOMBINE_INCLUDE_DIR "${LIBCOMBINE_INSTALL_PREFIX}/include")
 set(LIBCOMBINE_LIB_DIR "${LIBCOMBINE_INSTALL_PREFIX}/lib")
-#set(LIBCOMBINE_LIB "${LIBCOMBINE_LIB_DIR}/libCombine${CMAKE_SHARED_LIBRARY_SUFFIX}")
+#set(LIBCOMBINE_LIBRARY "${LIBCOMBINE_LIB_DIR}/libCombine${CMAKE_SHARED_LIBRARY_SUFFIX}")
 #set(LIBCOMBINE_STATIC_LIB "${LIBCOMBINE_LIB_DIR}/libCombine-static${CMAKE_STATIC_LIBRARY_SUFFIX}")
 set(CATCH2_SOURCE_DIR ${THIRD_PARTY_DIRS}/Catch2)
 set(CATCH2_BINARY_DIR ${CATCH2_SOURCE_DIR}/build)
@@ -121,17 +121,17 @@ if (NOT ${ZLIB_LIBRARY_FOUND})
     message(FATAL_ERROR "ZLIB library not found")
 endif ()
 
-find_library(LIBSBML_LIB
+find_library(LIBSBML_LIBRARY
         NAMES libsbml.dll.a libsbml
         PATHS ${LIBSBML_LIB_DIR}
         REQUIRED
         )
-find_library(ZIPPER_LIB
+find_library(ZIPPER_LIBRARY
         NAMES libZipper-static.a libZipper-static
         PATHS ${ZIPPER_LIB_DIR}
         REQUIRED
         )
-find_library(LIBCOMBINE_LIB
+find_library(LIBCOMBINE_LIBRARY
         NAMES libCombine.dll.a
         PATHS ${LIBCOMBINE_LIB_DIR}
         REQUIRED
@@ -336,8 +336,8 @@ message(STATUS "
             LIBSBML_INSTALL_PREFIX             ${LIBSBML_INSTALL_PREFIX}
             LIBSBML_INCLUDE_DIR                ${LIBSBML_INCLUDE_DIR}
             LIBSBML_LIB_DIR                    ${LIBSBML_LIB_DIR}
-            LIBSBML_LIB                        ${LIBSBML_LIB}
-            LIBSBML_STATIC_LIB                 ${LIBSBML_STATIC_LIB}
+            LIBSBML_LIBRARY                        ${LIBSBML_LIBRARY}
+            LIBSBML_STATIC_LIBRARY                 ${LIBSBML_STATIC_LIBRARY}
 
         zipper
             ZIPPER_SOURCE_DIR                  ${ZIPPER_SOURCE_DIR}
@@ -353,7 +353,7 @@ message(STATUS "
             LIBCOMBINE_INSTALL_PREFIX          ${LIBCOMBINE_INSTALL_PREFIX}
             LIBCOMBINE_INCLUDE_DIR             ${LIBCOMBINE_INCLUDE_DIR}
             LIBCOMBINE_LIB_DIR                 ${LIBCOMBINE_LIB_DIR}
-            LIBCOMBINE_LIB                     ${LIBCOMBINE_LIB}
+            LIBCOMBINE_LIBRARY                     ${LIBCOMBINE_LIBRARY}
             LIBCOMBINE_STATIC_LIB              ${LIBCOMBINE_STATIC_LIB}
 
         catch2
@@ -403,6 +403,7 @@ message(STATUS "
 message(STATUS "adding subdir")
 add_subdirectory(semsim)
 add_subdirectory(tests)
+add_subdirectory(${GOOGLETEST_SOURCE})
 
 
 # Recurse into subdirectories for each wrapper language if specified
