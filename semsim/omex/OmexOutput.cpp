@@ -23,7 +23,7 @@ namespace semsim {
                 );
 
         std::stringstream s2;
-        s2 << model.getRDF(model_entry_path), // get model annotation rdf
+        s2 << model.getRDF(model_entry_path, "rdfxml"), // get model annotation rdf
                 archive.addFile(
                         s2, // buffer with rdf/xml contents
                         rdf_entry_path, // entry path in the archive

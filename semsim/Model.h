@@ -20,18 +20,17 @@ namespace semsim {
         Model() {}
 
         /// Virtual destructor
-        virtual ~Model() {}
+        virtual ~Model() = default;
 
         /// Copy ctor
         Model(const Model& other) {
-          for (Components::const_iterator i=other.components_.begin(); i!=other.components_.end(); ++i) {
-            components_.push_back(ComponentPtr((*i)->clone()));
+          for (const auto & component : other.components_) {
+            components_.push_back(ComponentPtr(component->clone()));
           }
         }
 
         /// Move ctor
-        Model(Model&& other)
-          : components_(std::move(other.components_)) {}
+        Model(Model&& other) noexcept : components_(std::move(other.components_)) {}
 
         /// Add a new component to the model (copy)
         Component* addComponent(const Component& component) {
@@ -45,7 +44,6 @@ namespace semsim {
           return (Process*)&*components_.back();
         }
 
-        # if __cplusplus >= 201103L
         /// Add a new component to the model (move)
         Component* addComponent(Component&& component) {
           components_.emplace_back(new Component(std::move(component)));
@@ -57,7 +55,6 @@ namespace semsim {
           components_.emplace_back(new Process(std::move(component)));
           return (Process*)&*components_.back();
         }
-        # endif
 
         /**
          * Get the collection of components contained in this model.
@@ -96,7 +93,7 @@ namespace semsim {
          * @param  sbml_base_uri A URI that points to the original model file. Usually a relative path in a COMBINE archive.
          * @return               A string representation of the RDF for model using the desired RDF serialization format.
          */
-        virtual std::string getRDF(const URI& sbml_base_uri, const std::string& format="rdfxml") const = 0;
+        virtual std::string getRDF(const URI& sbml_base_uri, const std::string& format) const = 0;
 
         /**
          * Return a human--readable representation of the annotation
@@ -105,8 +102,8 @@ namespace semsim {
          */
         std::string humanize() const {
           std::string result;
-          for (Components::const_iterator i=components_.begin(); i!= components_.end(); ++i)
-            result += (*i)->humanize()+"\n";
+          for (const auto & component : components_)
+            result += component->humanize()+"\n";
           return result;
         }
 
@@ -126,13 +123,8 @@ namespace semsim {
          * @param  metaid The meta id to look for.
          */
         bool hasComponentWithMetaId(const std::string& metaid) const {
-          // std::cerr << "num components: " << components_.size() << "\n";
-          for (Components::const_iterator i=components_.begin(); i!=components_.end(); ++i) {
-            // if ((*i)->hasMetaId())
-              // std::cerr << "meta id of component " << (*i)->getMetaId() << " vs " << metaid << "\n";
-            // else
-              // std::cerr << "component doesn't have metaid\n";
-            if ((*i)->hasMetaId() && (*i)->getMetaId() == metaid)
+          for (const auto & component : components_) {
+            if (component->hasMetaId() && component->getMetaId() == metaid)
               return true;
           }
           return false;
@@ -143,9 +135,9 @@ namespace semsim {
          * @param  metaid The meta id to look for.
          */
         Component& findComponentWithMetaId(const std::string& metaid) {
-          for (Components::const_iterator i=components_.begin(); i!=components_.end(); ++i) {
-            if ((*i)->hasMetaId() && (*i)->getMetaId() == metaid)
-              return **i;
+          for (const auto & component : components_) {
+            if (component->hasMetaId() && component->getMetaId() == metaid)
+              return *component;
           }
           throw std::runtime_error("No component with meta id " + metaid);
         }
@@ -155,16 +147,16 @@ namespace semsim {
          * @param  metaid The meta id to look for.
          */
         const Component& findComponentWithMetaId(const std::string& metaid) const {
-          for (Components::const_iterator i=components_.begin(); i!=components_.end(); ++i) {
-            if ((*i)->hasMetaId() && (*i)->getMetaId() == metaid)
-              return **i;
+          for (const auto & component : components_) {
+            if (component->hasMetaId() && component->getMetaId() == metaid)
+              return *component;
           }
           throw std::runtime_error("No component with meta id " + metaid);
         }
 
         bool containsMetaId(const std::string& metaid) const {
-          for (Components::const_iterator i=components_.begin(); i!=components_.end(); ++i) {
-            if ((*i)->containsMetaId(metaid))
+          for (const auto & component : components_) {
+            if (component->containsMetaId(metaid))
               return true;
           }
           return false;
