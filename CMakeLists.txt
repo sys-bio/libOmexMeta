@@ -121,6 +121,8 @@ if (NOT ${ZLIB_LIBRARY_FOUND})
     message(FATAL_ERROR "ZLIB library not found")
 endif ()
 
+set(LIBZ_LIBRARY ${ZLIB_LIBRARY}) # for libsbml, which uses different name
+
 find_library(LIBSBML_LIBRARY
         NAMES libsbml.dll.a libsbml
         PATHS ${LIBSBML_LIB_DIR}
@@ -177,6 +179,9 @@ find_path(ZLIB_INCLUDE_DIR
         NAMES zlib z libzlib
         PATHS ${LIBSBML_DEPS_INCLUDE_DIR}
         )
+
+set(LIBZ_INCLUDE_DIR ${ZLIB_INCLUDE_DIR}) # for libsbml, which uses different name
+
 
 find_library(RAPTOR2_LIBRARY
         NAMES libraptor2 raptor2
@@ -391,6 +396,8 @@ message(STATUS "
         zlib
             ZLIB_LIBRARY                       ${ZLIB_LIBRARY}
             ZLIB_INCLUDE_DIR                   ${ZLIB_INCLUDE_DIR}
+            LIBZ_LIBRARY                       ${LIBZ_LIBRARY}
+            LIBZ_INCLUDE_DIR                   ${LIBZ_INCLUDE_DIR}
 
         bzlib
             LIBBZ_LIBRARY                      ${LIBBZ_LIBRARY}

@@ -20,36 +20,29 @@ namespace semsim {
         Component() {}
 
         /// Construct from a singular annotation
-        Component(const SingularAnnotation& annotation)
+        explicit Component(const SingularAnnotation& annotation)
           : annotation_(new SingularAnnotation(annotation)) {}
 
-        # if __cplusplus >= 201103L
         /// Move-construct from a singular annotation
-        Component(SingularAnnotation&& annotation)
+        explicit Component(SingularAnnotation&& annotation)
           : annotation_(new SingularAnnotation(std::move(annotation))) {}
-        # endif
 
         /// Construct from a composite annotation
-        Component(const CompositeAnnotation& annotation)
+        explicit Component(const CompositeAnnotation& annotation)
           : annotation_(new CompositeAnnotation(annotation)) {}
 
-        # if __cplusplus >= 201103L
         /// Move-construct from a composite annotation
-        Component(CompositeAnnotation&& annotation)
+        explicit Component(CompositeAnnotation&& annotation)
           : annotation_(new CompositeAnnotation(std::move(annotation))) {}
-        # endif
 
         Component(const Component& other)
-          : annotation_(other.hasAnnotation() ? other.getAnnotation().clone() : NULL) {}
+          : annotation_(other.hasAnnotation() ? other.getAnnotation().clone() : nullptr) {}
 
-        # if __cplusplus >= 201103L
         /// Move-construct from a component
-        Component(Component&& other)
-          : annotation_(std::move(other.annotation_)) {}
-        # endif
+        Component(Component&& other) noexcept : annotation_(std::move(other.annotation_)) {}
 
         /// Virtual destructor
-        ~Component() {}
+        ~Component() = default;
 
         /// Create a copy of this component
         virtual Component* clone() const {

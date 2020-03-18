@@ -32,6 +32,7 @@ ExternalProject_Add(libsbml
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
             -DCMAKE_INSTALL_PREFIX=${LIBSBML_INSTALL_PREFIX}
             -WITH_LIBXML=ON
+            -DENABLE_LAYOUT=ON
             #todo despite there being logic for handling the libsbml namespace
             #   it looks as though there is a namespace clash between libsbml::model
             #   and libsemsim::model when namespaces for libsbml are set to OFF.
