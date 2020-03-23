@@ -5,7 +5,7 @@
 # include "semsim/Preproc.h"
 # include "semsim/PhysicalProperty.h"
 
-# include "raptor2/raptor2.h"
+# include "raptor2.h"
 
 namespace semsim {
     /**

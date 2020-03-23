@@ -6,7 +6,7 @@
 # include "semsim/EntityDescriptor.h"
 # include "semsim/RaptorUtils.h"
 
-# include "raptor2/raptor2.h"
+# include "raptor2.h"
 
 # include <string>
 # include <sstream>

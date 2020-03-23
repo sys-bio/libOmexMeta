@@ -1,7 +1,7 @@
 # ifndef SEMSIM_RAPTOR_UTILS_H_
 # define SEMSIM_RAPTOR_UTILS_H_
 
-# include <raptor2/raptor2.h>
+# include <raptor2.h>
 
 # include <iostream>
 
