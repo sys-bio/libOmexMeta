@@ -3,7 +3,7 @@
 
 # include "semsim/Preproc.h"
 # include "semsim/sbml/SBMLModel.h"
-# include "semsim/sbml/Species.h"
+# include "semsim/sbml/SBMLSpecies.h"
 # include "semsim/BiomodelsQualifiers.h"
 # include "semsim/SemSimQualifiers.h"
 # include "semsim/sbml/MetaID.h"
@@ -315,7 +315,7 @@ namespace semsim {
                 throw std::runtime_error("The SBML species is missing a meta id");
             return CompositeAnnotation(
                     s->getMetaId(),
-                    Species::GetSpeciesPhysicalProperty(s, m_),
+                    SBMLSpecies::GetSpeciesPhysicalProperty(s, m_),
                     extractSpeciesEntity(s)
             );
         }

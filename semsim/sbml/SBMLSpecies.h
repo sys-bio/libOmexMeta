@@ -9,7 +9,7 @@
 
 namespace semsim {
 
-    class Species {
+    class SBMLSpecies {
     public:
         /**
          * Return @c true if the UnitDefinition is concentration-based,
