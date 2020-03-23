@@ -2,47 +2,57 @@
 set(SEMSIM_SOURCES
         omex/OmexOutput.h omex/OmexOutput.cpp
         omex/SBMLOmex.h omex/SBMLOmex.cpp
-        ontologies/CHEBI.h
-        ontologies/CL.h
-        ontologies/GO.h
-        ontologies/OPB.h
-        ontologies/SBO.h
-        query/Condition.h
-        query/IdentityCondition.h
-        query/Query.h
-        query/QueryResults.h
+#        ontologies/CHEBI.h
+#        ontologies/CL.h
+#        ontologies/GO.h
+#        ontologies/OPB.h
+#        ontologies/SBO.h
+#        query/Condition.h
+#        query/IdentityCondition.h
+#        query/Query.h
+#        query/QueryResults.h
+#
+#        BiomodelsQualifiers.h BiomodelsQualifiers.cpp
+#
+#        query/RasqalQuery.h query/RasqalQuery.cpp
+#        query/RasqalQueryResult.h query/RasqalQueryResult.cpp
+#        query/SelectQuery.h
 
-        query/RasqalQuery.h query/RasqalQuery.cpp
-        query/RasqalQueryResult.h query/RasqalQueryResult.cpp
-        query/SelectQuery.h
-        RDFReader.h RDFReader.cpp
-
-        AnnotationBase.h
-        BiomodelsQualifiers.h BiomodelsQualifiers.cpp
-        Component.h
-        CompositeAnnotation.h
-        DescriptorTerm.h
-        Entity.h
-        EntityBase.h
-        EntityDescriptor.h
-        Mediator.h
-        Model.h
-        ontologies/Ontology.h
-        Participant.h
-        PhysicalProperty.h
-        Preproc.h
-        Process.h
-        RaptorUtils.h
-        Relation.h Relation.cpp
-        Resource.h Resource.cpp
-        SemSim.h SemSim.cpp
-        SemSimQualifiers.h SemSimQualifiers.cpp
-        SingularAnnotation.h SingularAnnotation.cpp
-        Sink.h
-        Source.h
-        Term.h
-        URI.h
-        Error.h)
+#        sbml/Accessor.h
+#        sbml/Annotation.h
+#        sbml/MetaID.h
+#        sbml/SBMLImporter.h
+#        sbml/SBMLModel.h
+#        RDFReader.h RDFReader.cpp
+#
+#        AnnotationBase.h
+#        BiomodelsQualifiers.h BiomodelsQualifiers.cpp
+#        Component.h
+#        CompositeAnnotation.h
+#        DescriptorTerm.h
+#        Entity.h
+#        EntityBase.h
+#        EntityDescriptor.h
+#        Mediator.h
+#        Model.h
+#        ontologies/Ontology.h
+#        Participant.h
+#        PhysicalProperty.h
+#        Preproc.h
+#        Process.h
+#        RaptorUtils.h
+#        Relation.h Relation.cpp
+#        Resource.h Resource.cpp
+#        SemSim.h SemSim.cpp
+#        SemSimQualifiers.h SemSimQualifiers.cpp
+#        SingularAnnotation.h SingularAnnotation.cpp
+#        Sink.h
+#        Source.h
+#        Term.h
+#        URI.h
+#        Error.h
+        sbmlTest.h
+        )
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -54,7 +64,7 @@ set(SEMSIM_LIBRARY semsim)
 add_library(${SEMSIM_STATIC_LIBRARY} STATIC ${SEMSIM_SOURCES})
 
 # shared library
-add_library(${SEMSIM_LIBRARY} SHARED ${SEMSIM_SOURCES})
+add_library(${SEMSIM_LIBRARY} SHARED ${SEMSIM_SOURCES} sbmlTest.h)
 
 list(APPEND LIBRARIES ${SEMSIM_STATIC_LIBRARY} ${SEMSIM_LIBRARY})
 
@@ -68,6 +78,8 @@ foreach (l ${LIBRARIES})
             ${LIBXML2_INCLUDE_DIR}
             ${LIBSBML_DEPS_INCLUDE_DIR}
             ${LIBSBML_INCLUDE_DIR}
+
+
             ${ZLIB_INCLUDE_DIR}
             ${ZIPPER_INCLUDE_DIR}
             ${LIBCOMBINE_INCLUDE_DIR}
@@ -85,7 +97,7 @@ foreach (l ${LIBRARIES})
             ${LIBXML2_STATIC_LIBRARY}
             ${LIBSBML_STATIC_LIBRARY}
 #            /mnt/d/libsemsim/third_party/libsbml/INSTALL/lib/libsbml.so
-            
+
             ${LIBCOMBINE_STATIC_LIB}
             ${RAPTOR2_LIBRARY}
             ${RASQAL_LIBRARY}

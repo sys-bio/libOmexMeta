@@ -54,7 +54,7 @@ set(LIBSBML_DEPS_INSTALL_PREFIX ${LIBSBML_DEPS_SOURCE_DIR}/INSTALL)
 set(LIBSBML_DEPS_INCLUDE_DIR ${LIBSBML_DEPS_INSTALL_PREFIX}/include)
 set(LIBSBML_DEPS_LIB_DIR ${LIBSBML_DEPS_INSTALL_PREFIX}/lib)
 
-set(LIBSBML_SOURCE_DIR ${THIRD_PARTY_DIRS}/libsbml)
+set(LIBSBML_SOURCE_DIR ${THIRD_PARTY_DIRS}/libsbml-5.18.0)
 set(LIBSBML_BINARY_DIR ${LIBSBML_SOURCE_DIR}/build)
 set(LIBSBML_INSTALL_PREFIX ${LIBSBML_SOURCE_DIR}/INSTALL)
 
@@ -153,6 +153,7 @@ ExternalProject_Add(libsbml
         #todo Double check the truth of this and rectify.
         -DWITH_CPP_NAMESPACE=ON
         -DLIBSBML_DEPENDENCY_DIR=${LIBSBML_DEPS_INSTALL_PREFIX}
+        -DLIBSBML_SKIP_SHARED_LIBRARY=OFF
         )
 
 # find the libsbml library and include dire
@@ -163,8 +164,8 @@ find_library(LIBSBML_STATIC_LIBRARY
         )
 
 find_path(LIBSBML_INCLUDE_DIR
-        NAMES SBMLTypes.h
-        PATHS ${LIBSBML_INSTALL_PREFIX}/include/sbml
+        NAMES sbml/SBMLTypes.h
+        PATHS ${LIBSBML_INSTALL_PREFIX}/include
         REQUIRED
         )
 
