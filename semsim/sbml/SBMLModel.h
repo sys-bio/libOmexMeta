@@ -9,7 +9,7 @@
 # include "semsim/sbml/MetaID.h"
 # include "semsim/sbml/Annotation.h"
 
-# include <raptor2.h>
+# include <raptor2/raptor2.h>
 
 # include "sbml/SBMLTypes.h"
 

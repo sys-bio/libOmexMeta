@@ -17,9 +17,9 @@ ExternalProject_Add(zipper
         CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=D:/libsemsim/third_party/zipper/install
         -DCMAKE_BUILD_TYPE=Debug
-        -DLIBSBML_DEPS_INSTALL_PREFIX=D:/libsemsim/third_party/libSBML-dependencies/INSTALL
-        -DLIBZ_LIBRARY=D:/libsemsim/third_party/libSBML-dependencies/INSTALL/lib/libzlib.a
-        -DLIBZ_INCLUDE_DIR=D:/libsemsim/third_party/libSBML-dependencies/INSTALL/include
+        -DLIBSBML_DEPS_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
+        -DLIBZ_LIBRARY=${LIBZ_LIBRARY}
+        -DLIBZ_INCLUDE_DIR=${LIBZ_INCLUDE_DIR}
         )
 
 

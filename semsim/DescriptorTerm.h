@@ -17,11 +17,9 @@ namespace semsim {
         DescriptorTerm(const Relation& relation, const Resource& resource)
           : Term(relation,resource) {}
 
-        # if __cplusplus >= 201103L
         /// Move-construct from a @ref Resource (URI) and @ref Relation
         DescriptorTerm(Relation&& relation, Resource&& resource)
           : Term(std::move(relation),std::move(resource)) {}
-        # endif
     };
 }
 
