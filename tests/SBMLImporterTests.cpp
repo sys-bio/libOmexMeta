@@ -29,6 +29,15 @@ class SBMLImporterTest : public ::testing::Test {
 
 TEST_F(SBMLImporterTest, test){
     SBMLImporter sbmlImporter(sbmlDocument);
+    SBMLModel &sbmlModel = sbmlImporter.getSBMLModel();
+//    Components components = sbmlModel.getComponents();
+
+//    cout << &components[0] << endl;
+//    for (auto i : components){
+//        cout << i << endl;
+//    }
+//    std::string h = sbmlModel.humanize();
+//    cout << h << endl;
 
 //    cout <<  sbmlImporter.getSBMLModel()
 }

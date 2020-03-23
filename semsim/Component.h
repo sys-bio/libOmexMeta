@@ -45,6 +45,7 @@ namespace semsim {
         ~Component() = default;
 
         /// Create a copy of this component
+        /// todo should this just be the copy constructor?
         virtual Component* clone() const {
           return new Component(*this);
         }
@@ -137,7 +138,6 @@ namespace semsim {
         annotation_.reset(annotation.clone());
       }
 
-      # if __cplusplus >= 201103L
       /**
        * Manually set the annotation.
        * If the @ref Object currently has an annotation set,
@@ -147,7 +147,6 @@ namespace semsim {
       void setAnnotation(AnnotationPtr&& annotation) {
         annotation_ = std::move(annotation);
       }
-      # endif
 
       /**
        * Return a human--readable representation of the annotation
@@ -165,15 +164,12 @@ namespace semsim {
       bool hasMetaId() const {
         if (annotation_)
           return true;
-        else if (metaid_.size() > 0)
-          return true;
-        else
-          return false;
+        else return !metaid_.empty();
       }
 
       /// Get the meta id of this component.
       const std::string& getMetaId() const {
-        if (metaid_.size())
+        if (!metaid_.empty())
           return metaid_;
         else if (annotation_)
           return annotation_->getMetaId();

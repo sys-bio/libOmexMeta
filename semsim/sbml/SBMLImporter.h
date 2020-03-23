@@ -64,16 +64,13 @@ namespace semsim {
             Annotation::stripAnnotations(d);
         }
 
-# if __cplusplus >= 201103L || defined SWIG
-
         /**
          * Construct from an SBML string
          * @param sbml The raw SBML content
          */
-        SBMLImporter(const std::string &sbml)
+        explicit SBMLImporter(const std::string &sbml)
                 : SBMLImporter(LIBSBML_CPP_NAMESPACE_QUALIFIER readSBMLFromString(sbml.c_str())) {}
 
-# endif
 
         /// Return the @ref SBMLModel converted from this document
         SBMLModel &getSBMLModel() {
@@ -167,7 +164,7 @@ namespace semsim {
          * @param  s The SBML object
          * @return   A singular annotation containing all bqb:is terms as definitions and all other relations as extraneous terms.
          */
-        SingularAnnotation extractSingularAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase *s) {
+        static SingularAnnotation extractSingularAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase *s) {
             if (!s->isSetMetaId())
                 throw std::runtime_error("This SBML object does not have an assigned meta id");
             SingularAnnotation result(s->getMetaId());
@@ -177,7 +174,7 @@ namespace semsim {
         }
 
 
-        SingularAnnotation extractSingularAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Parameter *p) {
+        static SingularAnnotation extractSingularAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Parameter *p) {
             if (!p->isSetMetaId())
                 throw std::runtime_error("This SBML object does not have an assigned meta id");
             SingularAnnotation result = extractSingularAnnotation((LIBSBML_CPP_NAMESPACE_QUALIFIER SBase *) p);

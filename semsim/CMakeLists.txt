@@ -13,7 +13,7 @@ set(SEMSIM_SOURCES
         query/QueryResults.h
 
         query/SelectQuery.h
-        rdf/RDFReader.h rdf/RDFReader.cpp
+        RDFReader.h RDFReader.cpp
 
         AnnotationBase.h
         BiomodelsQualifiers.h BiomodelsQualifiers.cpp
@@ -40,7 +40,7 @@ set(SEMSIM_SOURCES
         Source.h
         Term.h
         URI.h
-        )
+        Error.h)
 
 if (WITH_RASQAL)
     list(APPEND ${SOURCES}
@@ -60,66 +60,39 @@ add_library(semsim SHARED ${SEMSIM_SOURCES})
 set(SEMSIM_STATIC_LIBRARY semsim-static)
 set(SEMSIM_LIBRARY semsim)
 list(APPEND LIBRARIES semsim-static semsim)
-message(STATUS "LIBRARIES: ${LIBRARIES}")
 
 # includes and linking
 foreach (l ${LIBRARIES})
-    message(STATUS "l ${l}")
 
-    target_include_directories(${l} PRIVATE ${CYG_INCLUDE_DIR})
-    target_include_directories(${l} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+    target_include_directories(${l} PUBLIC
+            ${CMAKE_SOURCE_DIR}
+            ${CMAKE_CURRENT_SOURCE_DIR}
+            ${CYG_INCLUDE_DIR}
+            ${LIBXML2_INCLUDE_DIR}
+            ${LIBSBML_DEPS_INCLUDE_DIR}
+            ${LIBSBML_INCLUDE_DIR}
+            ${ZLIB_INCLUDE_DIR}
+            ${ZIPPER_INCLUDE_DIR}
+            ${LIBCOMBINE_INCLUDE_DIR}
+            ${LIBBZ2_INCLUDE_DIR}
+            ${LIBBZ_INCLUDE_DIR}
+            ${RAPTOR2_INCLUDE_DIR}
+            ${RASQAL_INCLUDE_DIR}
+            ${REDLAND_INCLUDE_DIR}
+            )
 
-    # libxml
-    if (LIBXML2_LIB_DIR_FOUND)
-        target_include_directories(${l} PRIVATE ${LIBXML2_INCLUDE_DIR})
-        target_link_libraries(${l} PRIVATE ${LIBXML2_LIBRARIES})
-    endif ()
-
-    #    target_link_libraries(${l} PUBLIC )
-
-    # libsbml dependency package
-    target_include_directories(${l} PRIVATE ${LIBSBML_DEPS_INCLUDE_DIR})
-
-    # libsbml
-    target_include_directories(${l} PRIVATE ${LIBSBML_INCLUDE_DIR})
-    target_link_libraries(${l} PRIVATE ${LIBSBML_LIBRARY})
-    #    target_link_libraries(${l} PRIVATE ${LIBSBML_STATIC_LIBRARY})
-
-    # zlib
-    target_include_directories(${l} PRIVATE ${ZLIB_INCLUDE_DIR})
-    target_link_libraries(${l} PRIVATE ${ZLIB_LIBRARY})
-
-    # zipper
-    message(STATUS "ZIPPER_INCLUDE_DIR ${ZIPPER_INCLUDE_DIR}")
-    message(STATUS "ZIPPER_LIBRARY ${ZIPPER_LIBRARY}")
-    target_include_directories(${l} PRIVATE ${ZIPPER_INCLUDE_DIR})
-    target_link_libraries(${l} PRIVATE ${ZIPPER_LIBRARY})
-
-    # libcombine
-    target_include_directories(${l} PRIVATE ${LIBCOMBINE_INCLUDE_DIR})
-    target_link_libraries(${l} PRIVATE ${LIBCOMBINE_LIBRARY})
-    #    target_link_libraries(${l} PRIVATE ${LIBCOMBINE_STATIC_LIB})
-
-    # catch2
-    #    target_include_directories(${l} PUBLIC ${CATCH2_INCLUDE_DIR})
-    #    target_link_libraries(${l} PUBLIC ${CATCH2_LIB})
-
-    #raptor2
-    target_include_directories(${l} PRIVATE ${RAPTOR2_INCLUDE_DIR})
-    target_link_libraries(${l} PRIVATE ${RAPTOR2_LIBRARY})
-
-    # any extra libs
-    message(STATUS "LIBSBML_DEPS_INSTALL_PREFIX ${LIBSBML_DEPS_INSTALL_PREFIX}")
-    target_link_libraries(${l} PRIVATE ${LIBBZ2_LIBRARY})
-    target_include_directories(${l} PRIVATE ${LIBBZ2_INCLUDE_DIR})
-
-    target_link_libraries(${l} PRIVATE ${LIBBZ_LIBRARY})
-    target_include_directories(${l} PRIVATE ${LIBBZ_INCLUDE_DIR})
-
-    # not sure what this is for
-    if (CYGWIN)
-        target_link_libraries(${l} PRIVATE uuid)
-    endif ()
+    target_link_libraries(${l} PUBLIC
+            ${LIBXML2_LIBRARIES}
+            ${LIBSBML_LIBRARY}
+            ${ZLIB_LIBRARY}
+            ${ZIPPER_LIBRARY}
+            ${LIBCOMBINE_LIBRARY}
+            ${LIBBZ2_LIBRARY}
+            ${LIBBZ_LIBRARY}
+            ${RAPTOR2_LIBRARY}
+            ${RASQAL_LIBRARY}
+            ${REDLAND_LIBRARY}
+            )
 
 
     install(TARGETS ${l}
