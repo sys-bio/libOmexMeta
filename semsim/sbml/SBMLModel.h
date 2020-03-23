@@ -1,6 +1,10 @@
 # ifndef SEMSIM_SBML_MODEL_H_
 # define SEMSIM_SBML_MODEL_H_
 
+# include "sbml/SBMLTypes.h"
+
+# include <raptor2.h>
+
 # include "semsim/Preproc.h"
 # include "semsim/Model.h"
 # include "semsim/Process.h"
@@ -9,9 +13,7 @@
 # include "semsim/sbml/MetaID.h"
 # include "semsim/sbml/Annotation.h"
 
-# include <raptor2/raptor2.h>
 
-# include "sbml/SBMLTypes.h"
 
 # if __cplusplus >= 201103L
 # include <unordered_map>

@@ -10,6 +10,7 @@ cmake_policy(SET CMP0078 NEW) # used to set target name for swig
 cmake_policy(SET CMP0086 NEW) # pass -module flag to swig
 
 project(libsemgen LANGUAGES CXX VERSION 0.1.0)
+include(ExternalProject)
 
 # modules
 
@@ -37,11 +38,18 @@ if (CYGWIN)
     set(CYG_INCLUDE_DIR ${CYG_ROOT}/usr/include)
 endif ()
 
+set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/INSTALL/${CMAKE_BUILD_TYPE}")
+
+##########################################################################
 # variables for building semsim dependencies
+#
 set(THIRD_PARTY_DIRS ${CMAKE_SOURCE_DIR}/third_party)
 
+# google test source dir
+set(GOOGLETEST_SOURCE ${THIRD_PARTY_DIRS}/googletest)
+
 set(LIBSBML_DEPS_SOURCE_DIR ${THIRD_PARTY_DIRS}/libsbml-dependencies)
-set(LIBSBML_DEPS_BINARY_DIR ${THIRD_PARTY_DIRS}/libsbml-dependencies/build)
+set(LIBSBML_DEPS_BINARY_DIR ${LIBSBML_DEPS_SOURCE_DIR}/build)
 set(LIBSBML_DEPS_INSTALL_PREFIX ${LIBSBML_DEPS_SOURCE_DIR}/INSTALL)
 set(LIBSBML_DEPS_INCLUDE_DIR ${LIBSBML_DEPS_INSTALL_PREFIX}/include)
 set(LIBSBML_DEPS_LIB_DIR ${LIBSBML_DEPS_INSTALL_PREFIX}/lib)
@@ -49,249 +57,196 @@ set(LIBSBML_DEPS_LIB_DIR ${LIBSBML_DEPS_INSTALL_PREFIX}/lib)
 set(LIBSBML_SOURCE_DIR ${THIRD_PARTY_DIRS}/libsbml)
 set(LIBSBML_BINARY_DIR ${LIBSBML_SOURCE_DIR}/build)
 set(LIBSBML_INSTALL_PREFIX ${LIBSBML_SOURCE_DIR}/INSTALL)
-set(LIBSBML_INCLUDE_DIR "${LIBSBML_INSTALL_PREFIX}/include")
-set(LIBSBML_LIB_DIR "${LIBSBML_INSTALL_PREFIX}/lib")
-#set(LIBSBML_LIBRARY "${LIBSBML_LIB_DIR}/libsbml.dll.a")
 
-set(LIBSBML_STATIC_LIBRARY "${LIBSBML_LIB_DIR}/libsbml-static.a")
 set(ZIPPER_SOURCE_DIR ${THIRD_PARTY_DIRS}/zipper)
 set(ZIPPER_BINARY_DIR ${ZIPPER_SOURCE_DIR}/build)
 set(ZIPPER_INSTALL_PREFIX ${ZIPPER_SOURCE_DIR}/INSTALL)
-set(ZIPPER_INCLUDE_DIR "${ZIPPER_INSTALL_PREFIX}/include")
 set(ZIPPER_LIB_DIR "${ZIPPER_INSTALL_PREFIX}/lib")
-set(ZIPPER_LIBRARY "${ZIPPER_LIB_DIR}/libZipper-static.a")
 
 set(LIBCOMBINE_SOURCE_DIR ${THIRD_PARTY_DIRS}/libCombine)
 set(LIBCOMBINE_BINARY_DIR ${LIBCOMBINE_SOURCE_DIR}/build)
 set(LIBCOMBINE_INSTALL_PREFIX ${LIBCOMBINE_SOURCE_DIR}/INSTALL)
-set(LIBCOMBINE_INCLUDE_DIR "${LIBCOMBINE_INSTALL_PREFIX}/include")
 set(LIBCOMBINE_LIB_DIR "${LIBCOMBINE_INSTALL_PREFIX}/lib")
-set(LIBCOMBINE_LIBRARY "${LIBCOMBINE_LIB_DIR}/libCombine${CMAKE_SHARED_LIBRARY_SUFFIX}")
-set(LIBCOMBINE_STATIC_LIB "${LIBCOMBINE_LIB_DIR}/libCombine-static${CMAKE_STATIC_LIBRARY_SUFFIX}")
 
-#set(CATCH2_SOURCE_DIR ${THIRD_PARTY_DIRS}/Catch2)
-#set(CATCH2_BINARY_DIR ${CATCH2_SOURCE_DIR}/build)
-#set(CATCH2_INSTALL_PREFIX ${CATCH2_SOURCE_DIR}/INSTALL)
-#set(CATCH2_INCLUDE_DIR "${CATCH2_INSTALL_PREFIX}/include")
-#set(CATCH2_LIB_DIR "${CATCH2_INSTALL_PREFIX}/lib")
-#set(CATCH2_LIB "${CATCH2_LIB_DIR}/Catch2${CMAKE_SHARED_LIBRARY_SUFFIX}")
-##set(CATCH2_LIB "${CATCH2_LIB_DIR}/Catch2-static${CMAKE_STATIC_LIBRARY_SUFFIX}")
-##set(RAPTOR2_SOURCE_DIR ${THIRD_PARTY_DIRS}/raptor)
-##set(RAPTOR2_BINARY_DIR ${RAPTOR2_SOURCE_DIR}/build)
-##set(RAPTOR2_INSTALL_PREFIX ${RAPTOR2_SOURCE_DIR}/INSTALL)
-##set(RAPTOR2_INCLUDE_DIR "${RAPTOR2_INSTALL_PREFIX}/include")
-##set(RAPTOR2_LIB_DIR "${RAPTOR2_INSTALL_PREFIX}/lib")
-##set(RAPTOR2_LIB "${RAPTOR2_LIB_DIR}/raptor${CMAKE_SHARED_LIBRARY_SUFFIX}")
-##set(RAPTOR2_LIB "${RAPTOR2_LIB_DIR}/raptor-static${CMAKE_STATIC_LIBRARY_SUFFIX}")
-##set(RASQAL_SOURCE_DIR ${THIRD_PARTY_DIRS}/rasqal)
-##set(RASQAL_BINARY_DIR ${RASQAL_SOURCE_DIR}/build)
-##set(RASQAL_INSTALL_PREFIX ${RASQAL_SOURCE_DIR}/INSTALL)
-##set(RASQAL_INCLUDE_DIR "${RASQAL_INSTALL_PREFIX}/include")
-##set(RASQAL_LIB_DIR "${RASQAL_INSTALL_PREFIX}/lib")
-##set(RASQAL_LIB "${RASQAL_LIB_DIR}/libCombine-static${CMAKE_SHARED_LIBRARY_SUFFIX}")
+#######################################################################
+#   Build third party libs
 #
-#set(GOOGLETEST_SOURCE ${THIRD_PARTY_DIRS}/googletest)
+
+# build libsbml-dependencies, which itself has no dependencies
+ExternalProject_Add(libsbml-dependencies
+        SOURCE_DIR ${LIBSBML_DEPS_SOURCE_DIR}
+        BINARY_DIR ${LIBSBML_DEPS_BINARY_DIR}
+        CMAKE_ARGS
+        -DCMAKE_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        )
+
+# find zlib to give to zipper which depends on it
+find_library(ZLIB_STATIC_LIBRARY
+        NAMES zlib.a libzlib.a zlib.dll libzlib.dll
+        PATHS ${LIBSBML_DEPS_LIB_DIR}
+        REQUIRED
+        )
+
+find_path(ZLIB_INCLUDE_DIR
+        NAMES zlib/zlib.h
+        PATHS ${LIBSBML_DEPS_INCLUDE_DIR}
+        REQUIRED
+        )
+
+# build zipper
+ExternalProject_Add(zipper
+        SOURCE_DIR ${ZIPPER_SOURCE_DIR}
+        BINARY_DIR ${ZIPPER_BINARY_DIR}
+        #        DEPENDS zlib
+        CMAKE_ARGS
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        -DCMAKE_INSTALL_PREFIX=${ZIPPER_INSTALL_PREFIX}
+        -DLIBSBML_DEPS_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
+        -DZLIB_LIBRARY=${ZLIB_STATIC_LIBRARY}
+        -DZLIB_INCLUDE_DIR=${ZLIB_INCLUDE_DIR}
+        )
+
+# find zipper lib and include dirs
+find_library(ZIPPER_STATIC_LIBRARY
+        NAMES libZipper-static.a libZipper-static
+        PATHS ${ZIPPER_INSTALL_PREFIX}/lib
+        )
+find_path(ZIPPER_INCLUDE_DIR
+        NAMES zipper/zipper.h
+        PATHS ${ZIPPER_INSTALL_PREFIX}/include
+        )
+
+# find bz library and include dirs
+find_library(LIBBZ_STATIC_LIBRARY
+        NAMES libbz2.a
+        PATHS ${LIBSBML_DEPS_LIB_DIR}
+        )
+find_path(LIBBZ_INCLUDE_DIR
+        NAMES bzip2/bzlib.h
+        PATHS ${LIBSBML_DEPS_INCLUDE_DIR}
+        )
+
+# get libxml2 libraries
+find_library(LIBXML2_STATIC_LIBRARY
+        NAMES libxml2.a
+        )
+
+find_path(LIBXML2_INCLUDE_DIR
+        NAMES libxml/parser.h
+        PATHS /usr/local/include/libxml2
+        )
+
+# build libsbml
+ExternalProject_Add(libsbml
+        SOURCE_DIR ${LIBSBML_SOURCE_DIR}
+        BINARY_DIR ${LIBSBML_BINARY_DIR}
+        DEPENDS libsbml-dependencies
+        CMAKE_ARGS
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        -DCMAKE_INSTALL_PREFIX=${LIBSBML_INSTALL_PREFIX}
+        -WITH_LIBXML=ON
+        -DENABLE_LAYOUT=ON
+        #todo despite there being logic for handling the libsbml namespace
+        #   it looks as though there is a namespace clash between libsbml::model
+        #   and libsemsim::model when namespaces for libsbml are set to OFF.
+        #todo Double check the truth of this and rectify.
+        -DWITH_CPP_NAMESPACE=ON
+        -DLIBSBML_DEPENDENCY_DIR=${LIBSBML_DEPS_INSTALL_PREFIX}
+        )
+
+# find the libsbml library and include dire
+find_library(LIBSBML_STATIC_LIBRARY
+        NAMES libsbml-static.a libsbml-static.lib
+        PATHS ${LIBSBML_INSTALL_PREFIX}/lib
+        REQUIRED
+        )
+
+find_path(LIBSBML_INCLUDE_DIR
+        NAMES SBMLTypes.h
+        PATHS ${LIBSBML_INSTALL_PREFIX}/include/sbml
+        REQUIRED
+        )
+
+# build libcombine
+ExternalProject_Add(libCombine
+        SOURCE_DIR ${LIBCOMBINE_SOURCE_DIR}
+        BINARY_DIR ${LIBCOMBINE_BINARY_DIR}
+        DEPENDS
+        zipper libsbml
+        LIST_SEPARATOR | # for EXTRA_LIBS argument
+        CMAKE_ARGS
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        -DCMAKE_INSTALL_PREFIX=${LIBCOMBINE_INSTALL_PREFIX}
+        -DZIPPER_INSTALL_PREFIX=${ZIPPER_INSTALL_PREFIX}
+        -DLIBSBML_DEPS_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
+        -DLIBSBML_INSTALL_PREFIX=${LIBSBML_INSTALL_PREFIX}
+        -DEXTRA_LIBS=${LIBBZ_STATIC_LIBRARY}|${ZLIB_STATIC_LIBRARY}|xml2 # works on linux, will need changing on windows
+        )
+find_library(LIBCOMBINE_STATIC_LIB
+        NAMES libcombine-static.a
+        PATHS ${LIBCOMBINE_INSTALL_PREFIX}/lib
+        )
+find_path(LIBCOMBINE_INCLUDE_DIR
+        NAMES combine/combinearchive.h
+        PATHS ${LIBCOMBINE_INSTALL_PREFIX}/include
+        )
+
+##################################################
+# get redland libraries for linking
 #
-#set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/INSTALL/${CMAKE_BUILD_TYPE}")
-#
-#
-#include(ExternalProject)
-#
-#
-#################################################################
-## get handle to dependency libraries
-#
-#find_library(ZLIB_LIBRARY
-#        NAMES zlib-static zlib libzlib-static libzlib
-#        PATHS /usr/lib /usr/local/lib ${CYG_LIB_DIR}
-#        ${CMAKE_OSX_SYSROOT}/usr/lib
-#        ${LIBSBML_DEPS_INSTALL_PREFIX}/lib
-#        DOC "The file name of the ZIPPER library."
-#
-#        DEPENDS
-#        libsbml-dependencies
-#        )
-#find_path(ZLIB_INCLUDE_DIR
-#        NAMES zlib z libzlib
-#        PATHS ${LIBSBML_DEPS_INCLUDE_DIR}
-#        )
-#
-#if (NOT ${ZLIB_LIBRARY_FOUND})
-#    message(FATAL_ERROR "ZLIB library not found")
-#endif ()
-#
-#set(LIBZ_LIBRARY ${ZLIB_LIBRARY}) # for libsbml, which uses different name
-#set(LIBZ_INCLUDE_DIR ${ZLIB_INCLUDE_DIR}) # for libsbml, which uses different name
-#
-#
-#################################################################
-## add the third party directory to build the dependencies
-#add_subdirectory(third_party)
-#
-#find_library(LIBSBML_LIBRARY
-#        NAMES libsbml.dll.a libsbml
-#        PATHS ${LIBSBML_LIB_DIR}
-#
-#        )
-#find_library(ZIPPER_LIBRARY
-#        NAMES libZipper-static.a libZipper-static
-#        PATHS ${ZIPPER_LIB_DIR}
-#
-#        )
-#find_library(LIBCOMBINE_LIBRARY
-#        NAMES libCombine.dll.a
-#        PATHS ${LIBCOMBINE_LIB_DIR}
-#
-#        )
-#find_library(LIBCOMBINE_STATIC_LIBRARY
-#        NAMES libCombine-static.a
-#        PATHS ${LIBCOMBINE_LIB_DIR}
-#
-#        )
-#
-#set(LIBZ_LIBRARY ${ZLIB_LIBRARY})
-#
-#find_library(ZIPPER_LIBRARY
-#        NAMES Zipper-static Zipper libZipper-static libZipper
-#        PATHS /usr/lib /usr/local/lib ${ZIPPER_LIB_DIR}
-#        ${CMAKE_OSX_SYSROOT}/usr/lib
-#        DOC "The file name of the ZIPPER library."
-#
-#        )
-#
-#
-#find_library(ICONV_LIBRARY
-#        NAMES iconv libiconv
-#        PATHS /usr/lib /usr/local/lib ${CYG_LIB_DIR}
-#        ${CMAKE_OSX_SYSROOT}/usr/lib
-#        DOC "The file name of the ICONV library."
-#
-#        )
-#
-#find_library(LIBXML2_LIBRARY
-#        NAMES libxml2.a libxml2.lib libxml2
-#        PATHS
-#        /usr/lib /usr/local/lib
-#        ${LIBSBML_DEPS_INSTALL_PREFIX}/lib
-#        ${CYG_ROOT}
-#        NO_DEFAULT_PATH
-#
-#        )
-#
-#find_path(LIBXML2_INCLUDE_DIR
-#        NAMES libxml2
-#        )
-#
-#
-#
-#message(STATUS "top: ZLIB_INCLUDE_DIR ${ZLIB_INCLUDE_DIR}")
-#set(LIBZ_INCLUDE_DIR ${ZLIB_INCLUDE_DIR}) # for libsbml, which uses different name
-#
-#set(REDLAND_ROOT "/home/ciaran/Software/redland" CACHE PATH "A directory containing the redland libraries, raptor2, rasqal and redland")
-#set(RAPTOR2_INSTALL_PREFIX ${REDLAND_ROOT}/raptor2-2.0.15/install)
-#set(RASQAL_INSTALL_PREFIX ${REDLAND_ROOT}/rasqal-0.9.33/install)
-#set(REDLAND_INSTALL_PREFIX ${REDLAND_ROOT}/redland-1.0.17/install)
-#
-## check we have the redland libraries
-#if (NOT EXISTS ${RAPTOR2_INSTALL_PREFIX})
-#    MESSAGE(FATAL_ERROR "RAPTOR2_INSTALL_PREFIX ${RAPTOR2_INSTALL_PREFIX} does not exist")
-#endif ()
-#if (NOT EXISTS ${RASQAL_INSTALL_PREFIX})
-#    MESSAGE(FATAL_ERROR "RASQAL_INSTALL_PREFIX ${RASQAL_INSTALL_PREFIX} does not exist")
-#endif ()
-#if (NOT EXISTS ${REDLAND_INSTALL_PREFIX})
-#    MESSAGE(FATAL_ERROR "REDLAND_INSTALL_PREFIX ${REDLAND_INSTALL_PREFIX} does not exist")
-#endif ()
-#
-## raptor2
-#find_library(RAPTOR2_LIBRARY
-#        NAMES libraptor2 raptor2
-#        PATHS ${RAPTOR2_INSTALL_PREFIX}/lib
-#
-#        )
-#
-#find_path(RAPTOR2_INCLUDE_DIR
-#        NAMES raptor2/raptor2.h
-#        PATHS ${RAPTOR2_INSTALL_PREFIX}/include
-#
-#        )
-#
-## rasqal
-#find_library(RASQAL_LIBRARY
-#        NAMES librasqal rasqal
-#        PATHS ${RASQAL_INSTALL_PREFIX}/lib
-#
-#        )
-#
-#find_path(RASQAL_INCLUDE_DIR
-#        NAMES rasqal/rasqal.h
-#        PATHS ${RASQAL_INSTALL_PREFIX}/include
-#        NO_DEFAULT_PATH
-#
-#        )
-#
-## redland api
-#find_library(REDLAND_LIBRARY
-#        NAMES librdf rdf
-#        PATHS ${REDLAND_INSTALL_PREFIX}/lib
-#
-#        )
-#
-#find_path(REDLAND_INCLUDE_DIR
-#        NAMES librdf.h
-#        PATHS ${REDLAND_INSTALL_PREFIX}/include
-#
-#        )
-#
-#
-#include_directories(${CMAKE_SOURCE_DIR})
-#include_directories(${LIBCOMBINE_INCLUDE_DIR})
-#include_directories(${LIBSBML_INCLUDE_DIR})
-#include_directories(${ZIPPER_INCLUDE_DIR})
-#include_directories(${CYG_INCLUDE_DIR}/raptor2)
-#
-#find_library(LIBSBML_LIBRARY
-#        NAMES Zipper-static Zipper libZipper-static libZipper
-#        PATHS /usr/lib /usr/local/lib ${ZIPPER_LIB_DIR}
-#        ${CMAKE_OSX_SYSROOT}/usr/lib
-#        DOC "The file name of the ZIPPER library."
-#
-#        )
-#
-#if (NOT ${ZIPPER_LIBRARY_FOUND})
-#    message(FATAL_ERROR "zipper library not found")
-#endif ()
-##
-#find_library(RAPTOR2_LIBRARY
-#        NAMES libraptor2 raptor2 libraptor2-static raptor2-static
-#        PATHS /usr/lib /usr/local/lib ${CYG_LIB_DIR}
-#        ${CMAKE_OSX_SYSROOT}/usr/lib
-#        DOC "The file name of the raptor2 library."
-#
-#        )
-#
-#find_library(RASQAL_LIBRARY
-#        NAMES librasqal librasqal-static rasqal rasqal-static
-#        PATHS /usr/lib /usr/local/lib ${CYG_LIB_DIR}
-#        ${CMAKE_OSX_SYSROOT}/usr/lib
-#        DOC "The file name of the rasqal library."
-#
-#        )
-#
-#find_library(LIBBZ_LIBRARY
-#        NAMES libbz2 bz bz2
-#        PATHS ${LIBSBML_DEPS_LIB_DIR}
-#        )
-#
-#
-#find_path(LIBBZ_INCLUDE_DIR
-#        NAMES libbz2 bz bz2 bzip2/bzlib.h
-#        PATHS ${LIBSBML_DEPS_INCLUDE_DIR}
-#        )
-#
-#
-##find_package(combine PATHS C:/cygwin64/usr/local/lib/cmake )
-##find_package(Catch2 PATHS C:/cygwin64/usr/local/lib/cmake/Catch2)
+
+set(REDLAND_ROOT "/home/ciaran/Software/redland" CACHE PATH "A directory containing the redland libraries, raptor2, rasqal and redland")
+set(RAPTOR2_INSTALL_PREFIX ${REDLAND_ROOT}/raptor2-2.0.15/install)
+set(RASQAL_INSTALL_PREFIX ${REDLAND_ROOT}/rasqal-0.9.33/install)
+set(REDLAND_INSTALL_PREFIX ${REDLAND_ROOT}/redland-1.0.17/install)
+
+# check we have the redland libraries
+if (NOT EXISTS ${RAPTOR2_INSTALL_PREFIX})
+    MESSAGE(FATAL_ERROR "RAPTOR2_INSTALL_PREFIX ${RAPTOR2_INSTALL_PREFIX} does not exist")
+endif ()
+if (NOT EXISTS ${RASQAL_INSTALL_PREFIX})
+    MESSAGE(FATAL_ERROR "RASQAL_INSTALL_PREFIX ${RASQAL_INSTALL_PREFIX} does not exist")
+endif ()
+if (NOT EXISTS ${REDLAND_INSTALL_PREFIX})
+    MESSAGE(FATAL_ERROR "REDLAND_INSTALL_PREFIX ${REDLAND_INSTALL_PREFIX} does not exist")
+endif ()
+
+# raptor2
+find_library(RAPTOR2_STATIC_LIBRARY
+        NAMES libraptor2.a raptor2.a
+        PATHS ${RAPTOR2_INSTALL_PREFIX}/lib
+        )
+
+find_path(RAPTOR2_INCLUDE_DIR
+        NAMES raptor2.h
+        PATHS ${RAPTOR2_INSTALL_PREFIX}/include/raptor2
+        )
+
+# rasqal
+find_library(RASQAL_STATIC_LIBRARY
+        NAMES librasqal.a rasqal.a
+        PATHS ${RASQAL_INSTALL_PREFIX}/lib
+        )
+
+find_path(RASQAL_INCLUDE_DIR
+        NAMES rasqal.h
+        PATHS ${RASQAL_INSTALL_PREFIX}/include/rasqal
+        NO_DEFAULT_PATH
+        )
+
+# redland api
+find_library(REDLAND_STATIC_LIBRARY
+        NAMES librdf.a rdf.a
+        PATHS ${REDLAND_INSTALL_PREFIX}/lib
+        )
+
+find_path(REDLAND_INCLUDE_DIR
+        NAMES librdf.h
+        PATHS ${REDLAND_INSTALL_PREFIX}/include
+        )
+
+
 ##find_package(SWIG)
 ##find_package(Python COMPONENTS Interpreter Development)
 ### check the Python version
@@ -344,7 +299,7 @@ set(LIBCOMBINE_STATIC_LIB "${LIBCOMBINE_LIB_DIR}/libCombine-static${CMAKE_STATIC
 #find_package(LibXml2 )
 #
 #
-#add_subdirectory(semsim)
+add_subdirectory(semsim)
 #add_subdirectory(tests)
 #add_subdirectory(${GOOGLETEST_SOURCE})
 #
@@ -422,16 +377,25 @@ message(STATUS "
             LIBSBML_DEPS_INCLUDE_DIR           ${LIBSBML_DEPS_INCLUDE_DIR}
             LIBSBML_DEPS_LIB_DIR               ${LIBSBML_DEPS_LIB_DIR}
 
-        libsbml
-            LIBSBML_INCLUDE_DIR                ${LIBSBML_INCLUDE_DIR}
-            LIBSBML_LIB_DIR                    ${LIBSBML_LIB_DIR}
-            LIBSBML_LIBRARY                    ${LIBSBML_LIBRARY}
-            LIBSBML_STATIC_LIBRARY             ${LIBSBML_STATIC_LIBRARY}
+        bzlib
+            LIBBZ_STATIC_LIBRARY                      ${LIBBZ_STATIC_LIBRARY}
+            LIBBZ_INCLUDE_DIR                  ${LIBBZ_INCLUDE_DIR}
+
+        zlib
+            ZLIB_STATIC_LIBRARY                        ${ZLIB_STATIC_LIBRARY}
+            ZLIB_INCLUDE_DIR                    ${ZLIB_INCLUDE_DIR}
 
         zipper
             ZIPPER_INCLUDE_DIR                 ${ZIPPER_INCLUDE_DIR}
-            ZIPPER_LIB_DIR                     ${ZIPPER_LIB_DIR}
-            ZIPPER_LIBRARY                     ${ZIPPER_LIBRARY}
+            ZIPPER_STATIC_LIBRARY              ${ZIPPER_STATIC_LIBRARY}
+
+        libxml2
+            LIBXML2_STATIC_LIBRARY             ${LIBXML2_STATIC_LIBRARY}
+            LIBXML2_INCLUDE_DIR                ${LIBXML2_INCLUDE_DIR}
+
+        libsbml
+            LIBSBML_INCLUDE_DIR                ${LIBSBML_INCLUDE_DIR}
+            LIBSBML_STATIC_LIBRARY             ${LIBSBML_STATIC_LIBRARY}
 
         libcombine
             LIBCOMBINE_INCLUDE_DIR             ${LIBCOMBINE_INCLUDE_DIR}
@@ -439,37 +403,18 @@ message(STATUS "
             LIBCOMBINE_STATIC_LIB              ${LIBCOMBINE_STATIC_LIB}
 
         Redland libraries
-            REDLAND_ROOT          ${REDLAND_ROOT}
+            REDLAND_ROOT                       ${REDLAND_ROOT}
             raptor
-                RAPTOR2_INCLUDE_DIR                ${RAPTOR2_INCLUDE_DIR}
-                RAPTOR2_LIBRARY                    ${RAPTOR2_LIBRARY}
+                RAPTOR2_INCLUDE_DIR            ${RAPTOR2_INCLUDE_DIR}
+                RAPTOR2_STATIC_LIBRARY         ${RAPTOR2_STATIC_LIBRARY}
 
             rasqal
-                RASQAL_INCLUDE_DIR                 ${RASQAL_INCLUDE_DIR}
-                RASQAL_LIBRARY                     ${RASQAL_LIBRARY}
+                RASQAL_INCLUDE_DIR             ${RASQAL_INCLUDE_DIR}
+                RASQAL_STATIC_LIBRARY          ${RASQAL_STATIC_LIBRARY}
 
             librdf
-                REDLAND_LIBRARY       ${REDLAND_LIBRARY}
-                REDLAND_INCLUDE_DIR   ${REDLAND_INCLUDE_DIR}
-
-        libxml2
-            LIBXML2_LIBRARY                    ${LIBXML2_LIBRARY}
-            LIBXML2_INCLUDE_DIR                ${LIBXML2_INCLUDE_DIR}
-
-            LibXml2_FOUND                       ${LibXml2_FOUND}
-            LIBXML2_DEFINITIONS                 ${LIBXML2_DEFINITIONS}
-            LIBXML2_LIBRARIES                   ${LIBXML2_LIBRARIES}
-            LIBXML2_INCLUDE_DIRS                ${LIBXML2_INCLUDE_DIRS}
-
-        zlib
-            ZLIB_LIBRARY                       ${ZLIB_LIBRARY}
-            ZLIB_INCLUDE_DIR                   ${ZLIB_INCLUDE_DIR}
-            LIBZ_LIBRARY                       ${LIBZ_LIBRARY}
-            LIBZ_INCLUDE_DIR                   ${LIBZ_INCLUDE_DIR}
-
-        bzlib
-            LIBBZ_LIBRARY                      ${LIBBZ_LIBRARY}
-            LIBBZ_INCLUDE_DIR                  ${LIBBZ_INCLUDE_DIR}
+                REDLAND_STATIC_LIBRARY          ${REDLAND_STATIC_LIBRARY}
+                REDLAND_INCLUDE_DIR             ${REDLAND_INCLUDE_DIR}
 
         googletest
             GOOGLETEST_SOURCE                  ${GOOGLETEST_SOURCE}

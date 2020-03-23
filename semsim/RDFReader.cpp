@@ -1,6 +1,6 @@
 # include "RDFReader.h"
 
-# include "raptor2/raptor2.h"
+# include "raptor2.h"
 # include <iostream>
 
 namespace semsim {

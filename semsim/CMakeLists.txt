@@ -12,6 +12,8 @@ set(SEMSIM_SOURCES
         query/Query.h
         query/QueryResults.h
 
+        query/RasqalQuery.h query/RasqalQuery.cpp
+        query/RasqalQueryResult.h query/RasqalQueryResult.cpp
         query/SelectQuery.h
         RDFReader.h RDFReader.cpp
 
@@ -42,29 +44,24 @@ set(SEMSIM_SOURCES
         URI.h
         Error.h)
 
-if (WITH_RASQAL)
-    list(APPEND ${SOURCES}
-            query/RasqalQuery.h query/RasqalQuery.cpp
-            query/RasqalQueryResult.h query/RasqalQueryResult.cpp)
-endif ()
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-# static library
-add_library(semsim-static STATIC ${SEMSIM_SOURCES})
-
-# shared library
-add_library(semsim SHARED ${SEMSIM_SOURCES})
-
-
 set(SEMSIM_STATIC_LIBRARY semsim-static)
 set(SEMSIM_LIBRARY semsim)
-list(APPEND LIBRARIES semsim-static semsim)
+
+# static library
+add_library(${SEMSIM_STATIC_LIBRARY} STATIC ${SEMSIM_SOURCES})
+
+# shared library
+add_library(${SEMSIM_LIBRARY} SHARED ${SEMSIM_SOURCES})
+
+list(APPEND LIBRARIES ${SEMSIM_STATIC_LIBRARY} ${SEMSIM_LIBRARY})
 
 # includes and linking
 foreach (l ${LIBRARIES})
 
-    target_include_directories(${l} PUBLIC
+    target_include_directories(${l} PUBLIC # make public so include dirs propagate into test binaries
             ${CMAKE_SOURCE_DIR}
             ${CMAKE_CURRENT_SOURCE_DIR}
             ${CYG_INCLUDE_DIR}
@@ -81,19 +78,19 @@ foreach (l ${LIBRARIES})
             ${REDLAND_INCLUDE_DIR}
             )
 
-    target_link_libraries(${l} PUBLIC
-            ${LIBXML2_LIBRARIES}
-            ${LIBSBML_LIBRARY}
-            ${ZLIB_LIBRARY}
-            ${ZIPPER_LIBRARY}
-            ${LIBCOMBINE_LIBRARY}
-            ${LIBBZ2_LIBRARY}
-            ${LIBBZ_LIBRARY}
+    target_link_libraries(${l} PUBLIC # make public so libraries propagate into test binaries
+            ${LIBBZ_STATIC_LIBRARY}
+            ${ZLIB_STATIC_LIBRARY}
+            ${ZIPPER_STATIC_LIBRARY}
+            ${LIBXML2_STATIC_LIBRARY}
+            ${LIBSBML_STATIC_LIBRARY}
+#            /mnt/d/libsemsim/third_party/libsbml/INSTALL/lib/libsbml.so
+            
+            ${LIBCOMBINE_STATIC_LIB}
             ${RAPTOR2_LIBRARY}
             ${RASQAL_LIBRARY}
             ${REDLAND_LIBRARY}
             )
-
 
     install(TARGETS ${l}
             RUNTIME DESTINATION bin

@@ -5,7 +5,7 @@
 # include "semsim/DescriptorTerm.h"
 # include "semsim/BiomodelsQualifiers.h"
 
-# include <raptor2/raptor2.h>
+# include <raptor2.h>
 
 # include <vector>
 # include <sstream>
