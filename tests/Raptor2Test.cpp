@@ -12,7 +12,7 @@
 #include "gtest/gtest.h"
 
 #include "raptor2.h"
-#include "Error.h"
+#include "semsim/Error.h"
 
 class RDFExamples {
 public:

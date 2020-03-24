@@ -24,7 +24,6 @@ if ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Da
 endif ()
 
 set(CMAKE_CXX_STANDARD ${SEMSIM_CXX_STANDARD})
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_compile_definitions(SEMSIM_INTERNAL_BUILD)
 # https://gitlab.kitware.com/cmake/cmake/issues/16589
 set(CMAKE_MACOSX_RPATH ON)
@@ -63,7 +62,12 @@ set(ZIPPER_BINARY_DIR ${ZIPPER_SOURCE_DIR}/build)
 set(ZIPPER_INSTALL_PREFIX ${ZIPPER_SOURCE_DIR}/INSTALL)
 set(ZIPPER_LIB_DIR "${ZIPPER_INSTALL_PREFIX}/lib")
 
-set(LIBCOMBINE_SOURCE_DIR ${THIRD_PARTY_DIRS}/libCombine)
+set(ZLIB_SOURCE_DIR ${THIRD_PARTY_DIRS}/zlib-1.2.11)
+set(ZLIB_BINARY_DIR ${ZLIB_SOURCE_DIR}/build)
+set(ZLIB_INSTALL_PREFIX ${ZLIB_SOURCE_DIR}/INSTALL)
+set(ZLIB_LIB_DIR "${ZLIB_INSTALL_PREFIX}/lib")
+
+set(LIBCOMBINE_SOURCE_DIR ${THIRD_PARTY_DIRS}/libCombine-0.2.3)
 set(LIBCOMBINE_BINARY_DIR ${LIBCOMBINE_SOURCE_DIR}/build)
 set(LIBCOMBINE_INSTALL_PREFIX ${LIBCOMBINE_SOURCE_DIR}/INSTALL)
 set(LIBCOMBINE_LIB_DIR "${LIBCOMBINE_INSTALL_PREFIX}/lib")
@@ -81,16 +85,27 @@ ExternalProject_Add(libsbml-dependencies
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         )
 
+# build zlib
+ExternalProject_Add(zlib
+        SOURCE_DIR ${ZLIB_SOURCE_DIR}
+        BINARY_DIR ${ZLIB_BUILD_DIR}
+        CMAKE_ARGS
+        -DCMAKE_INSTALL_PREFIX=${ZLIB_INSTALL_PREFIX}
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        )
+
+
+
 # find zlib to give to zipper which depends on it
 find_library(ZLIB_STATIC_LIBRARY
-        NAMES zlib.a libzlib.a zlib.dll libzlib.dll
-        PATHS ${LIBSBML_DEPS_LIB_DIR}
+        NAMES libz.a z.a zlib.a libzlib.a zlib.dll libzlib.dll
+        PATHS ${ZLIB_INSTALL_PREFIX}/lib
         REQUIRED
         )
 
 find_path(ZLIB_INCLUDE_DIR
-        NAMES zlib/zlib.h
-        PATHS ${LIBSBML_DEPS_INCLUDE_DIR}
+        NAMES zlib.h
+        PATHS ${ZLIB_INSTALL_PREFIX}/include
         REQUIRED
         )
 
@@ -179,11 +194,19 @@ ExternalProject_Add(libCombine
         CMAKE_ARGS
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_INSTALL_PREFIX=${LIBCOMBINE_INSTALL_PREFIX}
-        -DZIPPER_INSTALL_PREFIX=${ZIPPER_INSTALL_PREFIX}
-        -DLIBSBML_DEPS_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
-        -DLIBSBML_INSTALL_PREFIX=${LIBSBML_INSTALL_PREFIX}
-        -DEXTRA_LIBS=${LIBBZ_STATIC_LIBRARY}|${ZLIB_STATIC_LIBRARY}|xml2 # works on linux, will need changing on windows
+        -DLIBSBML_LIBRARY=${LIBSBML_STATIC_LIBRARY}
+        -DLIBSBML_INCLUDE_DIR=${LIBSBML_INCLUDE_DIR}
+        -DZIPPER_INCLUDE_DIR=${ZIPPER_INCLUDE_DIR}
+        -DZIPPER_LIBRARY=${ZIPPER_STATIC_LIBRARY}
+        -DEXTRA_LIBS=xml2|bz2|z|iconv #linux only, will need to change for windows
         )
+#-DCMAKE_BUILD_TYPE=Debug
+#-DCMAKE_INSTALL_PREFIX=/mnt/d/libsemsim/third_party/libCombine/install.solo
+#-DZIPPER_INSTALL_PREFIX=/mnt/d/libsemsim/third_party/zipper/INSTALL
+#-DLIBSBML_DEPS_INSTALL_PREFIX=/mnt/d/libsemsim/third_party/libSBML-dependencies/INSTALL
+#-DLIBSBML_INSTALL_PREFIX=/mnt/d/libsemsim/third_party/libsbml-5.18.0/INSTALL
+#-DEXTRA_LIBS=/mnt/d/libsemsim/third_party/libSBML-dependencies/INSTALL/lib/libbz2.a;/mnt/d/libsemsim/third_party/libSBML-dependencies/INSTALL/lib/libzlib.a;xml2
+
 find_library(LIBCOMBINE_STATIC_LIB
         NAMES libcombine-static.a
         PATHS ${LIBCOMBINE_INSTALL_PREFIX}/lib
@@ -248,6 +271,18 @@ find_path(REDLAND_INCLUDE_DIR
         )
 
 
+#############################################
+# add semsim and tests
+
+
+add_subdirectory(semsim)
+add_subdirectory(tests)
+add_subdirectory(${GOOGLETEST_SOURCE})
+
+#####################################################
+# Python stuff: written by previous developer
+# Unused by me, leave commented out for now
+
 ##find_package(SWIG)
 ##find_package(Python COMPONENTS Interpreter Development)
 ### check the Python version
@@ -299,12 +334,9 @@ find_path(REDLAND_INCLUDE_DIR
 #
 #find_package(LibXml2 )
 #
-#
-add_subdirectory(semsim)
-#add_subdirectory(tests)
-#add_subdirectory(${GOOGLETEST_SOURCE})
-#
-#
+
+
+
 ## Recurse into subdirectories for each wrapper language if specified
 ##if (BUILD_PYTHON)
 ##    if (NOT (${SEMSIM_CXX_STANDARD} EQUAL 11))

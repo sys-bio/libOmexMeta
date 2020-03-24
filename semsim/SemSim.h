@@ -21,7 +21,7 @@
 //
 //# include "semsim/Model.h"
 //# include "semsim/sbml/SBMLModel.h"
-# include "semsim/sbml/SBMLImporter.h"
+# include "SBMLImporter.h"
 //
 //# include "semsim/BiomodelsQualifiers.h"
 //// # include "semsim/SemSimObject.h"

@@ -1,0 +1,9 @@
+doc
+*.bak
+*.user
+.idea/
+.vs
+.vscode
+build
+temp_deviser_file.xml
+.DS_Store
