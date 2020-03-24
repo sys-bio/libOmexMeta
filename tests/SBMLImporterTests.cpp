@@ -3,8 +3,7 @@
 //
 
 #include "gtest/gtest.h"
-#include "semsim/sbml/SBMLImporter.h"
-
+#include "semsim/SBMLImporter.h"
 #include "ModelStrings.h"
 
 using namespace semsim;

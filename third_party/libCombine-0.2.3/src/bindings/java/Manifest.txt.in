@@ -1,0 +1,4 @@
+Name: org.sbml.libcombine
+Implementation-Title: "@PACKAGE_NAME@ Java API"
+Implementation-Version: "@LIBCOMBINE_VERSION@"
+Implementation-Vendor: "Frank T. Bergmann"

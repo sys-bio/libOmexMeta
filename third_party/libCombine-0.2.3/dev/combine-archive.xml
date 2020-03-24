@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package name="Combine" fullname="Combine Archive" version="1" required="false">
+  <language name="OMEX" baseClass="CaBase" documentClass="OmexManifest" prefix="Ca" libraryName="libCombine" isPackage="false" uses_ASTNode="true" uses_XMLNode="true">
+    <library_version major="1" minor="0" revision="0"/>
+    <language_versions>
+      <version level="1" version="1" namespace="http://identifiers.org/combine.specifications/omex-manifest"/>
+    </language_versions>
+  </language>
+  <versions>
+    <pkgVersion level="3" version="1" pkg_version="1">
+      <elements>
+        <element name="Content" typeCode="LIB_COMBINE_CONTENT" hasListOf="true" hasChildren="false" hasMath="false" childrenOverwriteElementName="false" minNumListOfChildren="0" maxNumListOfChildren="0" abstract="false" elementName="content">
+          <attributes>
+            <attribute name="location" required="true" type="string" abstract="false"/>
+            <attribute name="format" required="true" type="string" abstract="false"/>
+            <attribute name="master" required="false" type="bool" abstract="false"/>
+            <attribute name="crossRef" required="false" type="inline_lo_element" element="CrossRef" abstract="false"/>
+          </attributes>
+        </element>
+        <element name="OmexManifest" typeCode="LIB_COMBINE_OMEXMANIFEST" hasListOf="false" hasChildren="false" hasMath="false" childrenOverwriteElementName="false" abstract="false">
+          <attributes>
+            <attribute name="content" required="false" type="inline_lo_element" element="Content" abstract="false"/>
+          </attributes>
+        </element>
+        <element name="CrossRef" typeCode="LIB_COMBINE_CROSSREF" hasListOf="true" hasChildren="false" hasMath="false" childrenOverwriteElementName="false" minNumListOfChildren="0" maxNumListOfChildren="0" abstract="false" elementName="crossRef">
+          <attributes>
+            <attribute name="location" required="true" type="string" abstract="false"/>
+          </attributes>
+        </element>
+      </elements>
+    </pkgVersion>
+  </versions>
+</package>
