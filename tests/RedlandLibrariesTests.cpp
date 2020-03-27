@@ -12,6 +12,11 @@
 #include "gtest/gtest.h"
 
 #include "raptor2.h"
+//#include "librdf.h"
+//#include "rasqal.h"
+//#include "rdf_init.h"
+#include "redland.h"
+
 #include "semsim/Error.h"
 
 class RDFExamples {
@@ -93,97 +98,58 @@ TEST(RedlandTests, TestInitialiseAndTearDownRaptor) {
 
 
 TEST(RedlandTests, TestNTripleParser) {
-    // collect ntriple into a stream obj
-    raptor_iostream *stream;
-//    stream << RDFExamples::rdf_ntriples_example() << std::endl;
-//
-    // Initialise raptor
-    raptor_world *world;
-    world = raptor_new_world();
-//
-//    raptor_parser* rdf_parser;
-//    rdf_parser = raptor_new_parser(world, "ntriple");
-//
-//    if (rdf_parser == nullptr){
-//        throw semsim::NullPointerException("rdf_parser is nullprt");
-//    }
-//
-//    raptor_uri_s uri = "http://bigasterisk.com";
-//    raptor_parser_parse_iostream(rdf_parser, ntriple_stream, );
-//
-//    // free memory used by raptor
-    raptor_free_world(world);
+    librdf_world_s *world;
+    librdf_storage *storage;
+    librdf_parser *parser;
+    librdf_model *model;
+    librdf_stream *stream;
+    librdf_node *subject, *predicate;
+    librdf_iterator *iterator;
+    librdf_statement *partial_statement, *statement;
+    const char *input = RDFExamples::rdf_ntriples_example();
+    librdf_uri *uri;
+    char *parser_name = nullptr;
+    int count;
+    raptor_world *raptor_world_ptr;
+    raptor_iostream *iostream;
 
+    world = librdf_new_world();
+    librdf_world_open(world);
+    raptor_world_ptr = librdf_world_get_raptor(world);
+
+    uri = librdf_new_uri(world, (const unsigned char *) "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
+
+    storage = librdf_new_storage(world, "memory", "test", nullptr);
+
+    model = librdf_new_model(world, storage, nullptr);
+
+    parser = librdf_new_parser(world, "rdfxml", nullptr, nullptr);
+
+//    fprintf(stdout, "Parsing URI %s", librdf_uri_as_string(uri));
+
+    librdf_free_parser(parser);
+
+    statement = librdf_new_statement_from_nodes(world,
+            librdf_new_node_from_uri_string(world, (const unsigned char*)"http://www.dajobe.org/"),
+            librdf_new_node_from_uri_string(world, (const unsigned char*)"http://purl.org/dc/elements/1.1/title"),
+            librdf_new_node_from_literal(world, (const unsigned char*)"My home Page", nullptr, 0)
+            );
+
+    librdf_model_add_statement(model, statement);
+
+    librdf_free_statement(statement);
+
+//    fprintf(stdout, "Resulting model is:");
+    iostream = raptor_new_iostream_to_file_handle(raptor_world_ptr, stdout);
+//    const char* actual = raptor_write_string_iostream_finish(iostream);
+    const char* expected = "<http://www.dajobe.org/> <http://purl.org/dc/elements/1.1/title> \"My home Page\".";
+//    librdf_model_write(model, iostream);
+    raptor_free_iostream(iostream);
+    ASSERT_STREQ(expected, actual);
 }
 
-TEST(RedlandTests, TestCodeFromGithub) {
-    // example code here: https://stackoverflow.com/questions/48387060/using-raptor-rdf-parser-toolkit-to-generate-a-foaf-rdfxml-file/48490811#48490811
-    raptor_world *world = NULL;
-    raptor_serializer *rdf_serializer = NULL;
-    unsigned char *uri_string;
-    raptor_uri *base_uri;
-    raptor_statement *triple;
-
-    world = raptor_new_world();
-
-//    uri_string = raptor_uri_filename_to_uri_string(argv[1]);
-//    base_uri = raptor_new_uri(world, uri_string);
-//
-//    rdf_serializer = raptor_new_serializer(world, "rdfxml-abbrev");
-//    raptor_serializer_start_to_file_handle(rdf_serializer, base_uri, stdout);
-//
-//    const unsigned char *foaf_prefix = (const unsigned char *) "foaf";
-//    raptor_uri *foaf_uri = raptor_new_uri(world, (const unsigned char *) "http://xmlns.com/foaf/0.1/");
-//    raptor_serializer_set_namespace(rdf_serializer, foaf_uri, foaf_prefix);
-//
-//    const unsigned char *rdf_prefix = (const unsigned char *) "rdf";
-//    raptor_uri *rdf_uri = raptor_new_uri(world, (const unsigned char *) "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
-//    raptor_serializer_set_namespace(rdf_serializer, rdf_uri, rdf_prefix);
-//
-//    {
-//        raptor_statement *triple = NULL;
-//        triple = raptor_new_statement(world);
-//
-//        triple->subject = raptor_new_term_from_blank(world, (const unsigned char *) "b1");
-//        triple->predicate = raptor_new_term_from_uri_string(world,
-//                                                            (const unsigned char *) "http://xmlns.com/foaf/0.1/name");
-//        triple->object = raptor_new_term_from_literal(world, (unsigned char *) "Jimmy Wales", NULL, NULL);
-//
-//        raptor_serializer_serialize_statement(rdf_serializer, triple);
-//        raptor_free_statement(triple);
-//    }
-//
-//    {
-//        raptor_statement *triple = NULL;
-//        triple = raptor_new_statement(world);
-//
-//        triple->subject = raptor_new_term_from_blank(world, (const unsigned char *) "b1");
-//        triple->predicate = raptor_new_term_from_uri_string(world,
-//                                                            (const unsigned char *) "http://xmlns.com/foaf/0.1/mbox");
-//        triple->object = raptor_new_term_from_uri_string(world, (unsigned char *) "mailto:jwales@bomis.com");
-//
-//        raptor_serializer_serialize_statement(rdf_serializer, triple);
-//        raptor_free_statement(triple);
-//    }
-//
-//    {
-//        raptor_statement *triple = NULL;
-//        triple = raptor_new_statement(world);
-//
-//        triple->subject = raptor_new_term_from_blank(world, (const unsigned char *) "b1");
-//        triple->predicate = raptor_new_term_from_uri_string(world,
-//                                                            (const unsigned char *) "http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-//        triple->object = raptor_new_term_from_uri_string(world, (unsigned char *) "http://xmlns.com/foaf/0.1/Person");
-//
-//        raptor_serializer_serialize_statement(rdf_serializer, triple);
-//        raptor_free_statement(triple);
-//    }
-//
-//    raptor_serializer_serialize_end(rdf_serializer);
-//    raptor_free_serializer(rdf_serializer);
-//    raptor_free_uri(base_uri);
-//    raptor_free_memory(uri_string);
-    raptor_free_world(world);
+TEST(RedlandTests, TestCodeFromGithub6765) {
+    std::cout << "aodncialdbaldc" << std:: endl;
 }
 
 

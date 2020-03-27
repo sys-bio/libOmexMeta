@@ -95,7 +95,6 @@ ExternalProject_Add(zlib
         )
 
 
-
 # find zlib to give to zipper which depends on it
 find_library(ZLIB_STATIC_LIBRARY
         NAMES libz.a z.a zlib.a libzlib.a zlib.dll libzlib.dll
@@ -220,42 +219,48 @@ find_path(LIBCOMBINE_INCLUDE_DIR
 # get redland libraries for linking
 #
 
-set(REDLAND_ROOT "/home/ciaran/Software/redland" CACHE PATH "A directory containing the redland libraries, raptor2, rasqal and redland")
-set(RAPTOR2_INSTALL_PREFIX ${REDLAND_ROOT}/raptor2-2.0.15/install)
+set(REDLAND_ROOT "/mnt/d/redland" CACHE PATH "A directory containing the redland libraries, raptor2, rasqal and redland")
+
+set(RAPTOR2_INSTALL_PREFIX ${REDLAND_ROOT}/raptor2-2.0.15/install.linux)
 set(RASQAL_INSTALL_PREFIX ${REDLAND_ROOT}/rasqal-0.9.33/install)
 set(REDLAND_INSTALL_PREFIX ${REDLAND_ROOT}/redland-1.0.17/install)
 
-# check we have the redland libraries
-if (NOT EXISTS ${RAPTOR2_INSTALL_PREFIX})
-    MESSAGE(FATAL_ERROR "RAPTOR2_INSTALL_PREFIX ${RAPTOR2_INSTALL_PREFIX} does not exist")
-endif ()
-if (NOT EXISTS ${RASQAL_INSTALL_PREFIX})
-    MESSAGE(FATAL_ERROR "RASQAL_INSTALL_PREFIX ${RASQAL_INSTALL_PREFIX} does not exist")
-endif ()
-if (NOT EXISTS ${REDLAND_INSTALL_PREFIX})
-    MESSAGE(FATAL_ERROR "REDLAND_INSTALL_PREFIX ${REDLAND_INSTALL_PREFIX} does not exist")
-endif ()
+
+## check we have the redland libraries
+#if (NOT EXISTS ${RAPTOR2_INSTALL_PREFIX})
+#    MESSAGE(FATAL_ERROR "RAPTOR2_INSTALL_PREFIX ${RAPTOR2_INSTALL_PREFIX} does not exist")
+#endif ()
+#if (NOT EXISTS ${RASQAL_INSTALL_PREFIX})
+#    MESSAGE(FATAL_ERROR "RASQAL_INSTALL_PREFIX ${RASQAL_INSTALL_PREFIX} does not exist")
+#endif ()
+#if (NOT EXISTS ${REDLAND_INSTALL_PREFIX})
+#    MESSAGE(FATAL_ERROR "REDLAND_INSTALL_PREFIX ${REDLAND_INSTALL_PREFIX} does not exist")
+#endif ()
 
 # raptor2
 find_library(RAPTOR2_STATIC_LIBRARY
         NAMES libraptor2.a raptor2.a
         PATHS ${RAPTOR2_INSTALL_PREFIX}/lib
+        /usr/local/lib
         )
 
 find_path(RAPTOR2_INCLUDE_DIR
         NAMES raptor2.h
         PATHS ${RAPTOR2_INSTALL_PREFIX}/include/raptor2
+        /usr/local/include/raptor2
         )
 
 # rasqal
 find_library(RASQAL_STATIC_LIBRARY
         NAMES librasqal.a rasqal.a
         PATHS ${RASQAL_INSTALL_PREFIX}/lib
+        /usr/local/lib
         )
 
 find_path(RASQAL_INCLUDE_DIR
         NAMES rasqal.h
         PATHS ${RASQAL_INSTALL_PREFIX}/include/rasqal
+        /usr/local/include/rasqal
         NO_DEFAULT_PATH
         )
 
@@ -263,19 +268,23 @@ find_path(RASQAL_INCLUDE_DIR
 find_library(REDLAND_STATIC_LIBRARY
         NAMES librdf.a rdf.a
         PATHS ${REDLAND_INSTALL_PREFIX}/lib
+        /usr/local/lib
+
         )
 
 find_path(REDLAND_INCLUDE_DIR
         NAMES librdf.h
         PATHS ${REDLAND_INSTALL_PREFIX}/include
+        /usr/local/include
         )
 
 
 #############################################
 # add semsim and tests
 
-
 add_subdirectory(semsim)
+
+enable_testing()
 add_subdirectory(tests)
 add_subdirectory(${GOOGLETEST_SOURCE})
 
@@ -334,7 +343,6 @@ add_subdirectory(${GOOGLETEST_SOURCE})
 #
 #find_package(LibXml2 )
 #
-
 
 
 ## Recurse into subdirectories for each wrapper language if specified
@@ -411,20 +419,20 @@ message(STATUS "
             LIBSBML_DEPS_LIB_DIR               ${LIBSBML_DEPS_LIB_DIR}
 
         bzlib
-            LIBBZ_STATIC_LIBRARY                      ${LIBBZ_STATIC_LIBRARY}
             LIBBZ_INCLUDE_DIR                  ${LIBBZ_INCLUDE_DIR}
+            LIBBZ_STATIC_LIBRARY               ${LIBBZ_STATIC_LIBRARY}
 
         zlib
-            ZLIB_STATIC_LIBRARY                        ${ZLIB_STATIC_LIBRARY}
-            ZLIB_INCLUDE_DIR                    ${ZLIB_INCLUDE_DIR}
+            ZLIB_INCLUDE_DIR                   ${ZLIB_INCLUDE_DIR}
+            ZLIB_STATIC_LIBRARY                ${ZLIB_STATIC_LIBRARY}
 
         zipper
             ZIPPER_INCLUDE_DIR                 ${ZIPPER_INCLUDE_DIR}
             ZIPPER_STATIC_LIBRARY              ${ZIPPER_STATIC_LIBRARY}
 
         libxml2
-            LIBXML2_STATIC_LIBRARY             ${LIBXML2_STATIC_LIBRARY}
             LIBXML2_INCLUDE_DIR                ${LIBXML2_INCLUDE_DIR}
+            LIBXML2_STATIC_LIBRARY             ${LIBXML2_STATIC_LIBRARY}
 
         libsbml
             LIBSBML_INCLUDE_DIR                ${LIBSBML_INCLUDE_DIR}
@@ -446,8 +454,8 @@ message(STATUS "
                 RASQAL_STATIC_LIBRARY          ${RASQAL_STATIC_LIBRARY}
 
             librdf
-                REDLAND_STATIC_LIBRARY          ${REDLAND_STATIC_LIBRARY}
                 REDLAND_INCLUDE_DIR             ${REDLAND_INCLUDE_DIR}
+                REDLAND_STATIC_LIBRARY          ${REDLAND_STATIC_LIBRARY}
 
         googletest
             GOOGLETEST_SOURCE                  ${GOOGLETEST_SOURCE}
