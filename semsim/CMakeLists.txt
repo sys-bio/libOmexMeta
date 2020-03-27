@@ -7,13 +7,11 @@ set(SEMSIM_SOURCES
         ontologies/GO.h
         ontologies/OPB.h
         ontologies/SBO.h
+
         query/Condition.h
         query/IdentityCondition.h
         query/Query.h
         query/QueryResults.h
-
-        BiomodelsQualifiers.h BiomodelsQualifiers.cpp
-
         query/RasqalQuery.h query/RasqalQuery.cpp
         query/RasqalQueryResult.h query/RasqalQueryResult.cpp
         query/SelectQuery.h
@@ -87,9 +85,10 @@ target_include_directories(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so incl
         ${ZIPPER_INCLUDE_DIR}
         ${LIBCOMBINE_INCLUDE_DIR}
         ${LIBBZ_INCLUDE_DIR}
-        ${RAPTOR2_INCLUDE_DIR}
-        ${RASQAL_INCLUDE_DIR}
+
         ${REDLAND_INCLUDE_DIR}
+        ${RASQAL_INCLUDE_DIR}
+        ${RAPTOR2_INCLUDE_DIR}
 
         )
 
@@ -100,10 +99,21 @@ target_link_libraries(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so libraries
         ${ZIPPER_STATIC_LIBRARY}
         ${LIBCOMBINE_STATIC_LIB}
         ${LIBBZ_STATIC_LIBRARY}
-        ${RAPTOR2_LIBRARY}
-        ${RASQAL_LIBRARY}
         ${REDLAND_LIBRARY}
+        ${RASQAL_LIBRARY}
+        ${RAPTOR2_LIBRARY}
         )
+
+get_target_property(Y ${SEMSIM_STATIC_LIBRARY} LINK_LIBRARIES)
+MESSAGE(STATUS "Y
+/usr/local/lib/libxml2.a;
+/mnt/d/libsemsim/third_party/libsbml-5.18.0/INSTALL/lib/libsbml-static.a;
+/usr/lib/x86_64-linux-gnu/libz.a;
+/mnt/d/libsemsim/third_party/zipper/INSTALL/lib/libZipper-static.a;
+/mnt/d/libsemsim/third_party/libCombine-0.2.3/INSTALL/lib/libcombine-static.a;
+/usr/local/lib/libbz2.a
+"
+)
 
 target_include_directories(${SEMSIM_LIBRARY} PUBLIC # make public so include dirs propagate into test binaries
         ${CMAKE_SOURCE_DIR}
@@ -120,7 +130,6 @@ target_include_directories(${SEMSIM_LIBRARY} PUBLIC # make public so include dir
         ${RAPTOR2_INCLUDE_DIR}
         ${RASQAL_INCLUDE_DIR}
         ${REDLAND_INCLUDE_DIR}
-
         )
 
 target_link_libraries(${SEMSIM_LIBRARY} PUBLIC # make public so libraries propagate into test binaries
@@ -133,23 +142,10 @@ target_link_libraries(${SEMSIM_LIBRARY} PUBLIC # make public so libraries propag
         ${RAPTOR2_LIBRARY}
         ${RASQAL_LIBRARY}
         ${REDLAND_LIBRARY}
-        dl bz2 z
+        dl bz2 z curl xslt
         )
 
 get_target_property(X ${SEMSIM_LIBRARY} LINK_LIBRARIES)
-
-MESSAGE(STATUS "
-
-/usr/local/lib/libxml2.a;
-/mnt/d/libsemsim/third_party/libsbml-5.18.0/INSTALL/lib/libsbml-static.a;
-/mnt/d/libsemsim/third_party/zipper/INSTALL/lib/libZipper-static.a;
-/mnt/d/libsemsim/third_party/libCombine-0.2.3/INSTALL/lib/libcombine-static.a;
-dl;
-m;
-bz2;
-z
-
-")
 
 
 MESSAGE(STATUS "X ${X}")

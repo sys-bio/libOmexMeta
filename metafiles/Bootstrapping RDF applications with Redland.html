@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0040)https://www.dajobe.org/papers/xtech2005/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>Bootstrapping RDF applications with Redland</title><meta name="GENERATOR" content="Modular DocBook HTML Stylesheet Version 1.79"><meta name="KEYWORD" content="RDF"><meta name="KEYWORD" content="Query Language"><meta name="KEYWORD" content="SPARQL"><meta name="KEYWORD" content="Semantic Web"><style></style><script async="" src="./Bootstrapping RDF applications with Redland_files/adblocker-chromeglobalinjectjs.js.download"></script></head><body class="article" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="ARTICLE"><div class="TITLEPAGE"><h1 class="title"><a name="AEN1">Bootstrapping RDF applications with Redland</a></h1><h3 class="author"><a name="AEN4">David Beckett</a></h3><div class="affiliation"><span class="jobtitle">Senior Technical Researcher<br></span><span class="orgname">Institute for Learning and Research Technology (ILRT),
+          <a href="http://www.bris.ac.uk/" target="_top">University of Bristol</a>
+       <br></span><div class="address"><p class="address"><br>
+	Bristol<br>
+	UK<br>
+	<code class="email">&lt;<a href="http://www.dajobe.org/">www.dajobe.org</a>&gt;</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></div></div><div><div class="abstract"><p></p><a name="AEN23"></a><p>	Redland<a href="https://www.dajobe.org/papers/xtech2005/#Redland">[Redland]</a>
+	is a set of mature RDF open source libraries written
+	in C providing a foundation layer of technology for semantic
+	web applications including language bindings to C#, Perl,
+	Python and Ruby as well as others.
+      </p><p>	This paper describes how Redland aims to provide an
+	out-of-the box solution to either add semantic web support to
+	an application or to build a new RDF application.  The design
+	approach of Redland is based on a C core with wrapping
+	language bindings and this is explained along with the pros
+	and cons.  The different Redland libraries and their
+	relationships is described along with how they provide parts
+	of the functionality so that a full RDF API is not always
+	even needed to access the world of RDF data.
+      </p><p>	Redland provides multiple ways to get RDF data in, either
+	from RDF syntaxes, RSS XML messy data or directly as native
+	RDF triples.  This data can be manipulated using the main API
+	and the results used to generate new formats.  The paper
+	explains the process using one of the Redland language
+	bindings.
+      </p><p>	The RDF query language support that Redland provides with
+	<acronym class="acronym">RDQL</acronym> and W3C <acronym class="acronym">SPARQL</acronym>
+	language enable compact but powerful ways to access and
+	manipulate data, and allow typical semantic web scenarios of
+	semi-structured data to be delt with, along with tracking
+	context.  The paper also describes some of the novel features
+	that SPARQL provides.
+      </p><p></p></div></div><hr></div><div class="TOC"><dl><dt><b>Table of Contents</b></dt><dt>1. <a href="https://www.dajobe.org/papers/xtech2005/#sec-intro">Introduction</a></dt><dt>2. <a href="https://www.dajobe.org/papers/xtech2005/#sec-design">Design approach of Redland</a></dt><dt>3. <a href="https://www.dajobe.org/papers/xtech2005/#sec-objects-in-c">Redland API style - Object-based in C</a></dt><dt>4. <a href="https://www.dajobe.org/papers/xtech2005/#sec-bindings">Language Bindings to C</a></dt><dt>5. <a href="https://www.dajobe.org/papers/xtech2005/#sec-data">RDF Input, Output and Storage</a></dt><dt>6. <a href="https://www.dajobe.org/papers/xtech2005/#sec-contexts">Data Management and Tracking with Redland Contexts</a></dt><dt>7. <a href="https://www.dajobe.org/papers/xtech2005/#sec-manipulation">RDF API - RDF Data Access and Manipulation</a></dt><dt>8. <a href="https://www.dajobe.org/papers/xtech2005/#sec-query">Query Languages - RDQL and SPARQL</a></dt><dt>9. <a href="https://www.dajobe.org/papers/xtech2005/#sec-conclusion">Conclusion</a></dt><dt><a href="https://www.dajobe.org/papers/xtech2005/#AEN218">Bibliography</a></dt></dl></div><div class="section"><h2 class="section"><a name="sec-intro">1. Introduction</a></h2><p>Redland is a mature Free Software / Open Source library written in C
+designed to enable RDF support in existing applications and to provide
+a way for new RDF-based applications to be built easily.  Ease for
+applications developer here means that the average programmer
+should be able to pick up the library and in an afternoon be able to
+get the job done in a screenful of code at most.  This meant Redland
+had to be usable from a wide variety of programming languages, be
+portable and flexible in using whatever functionality a wide variety
+of open systems provide, and be licensed such that it could work with
+many users.
+</p><p>Any required external libraries have to be widely available
+where critical - Redland's key requirements are an XML parser
+- where it allows either expat or libxml to be used which are
+widely available - and some me sort of persistent store where
+there are many choices.  The optional parts appear in Redland
+as modules or in object terms, multiple implementations of
+interfaces that provide parsers, serialisers, triple stores,
+query languages and so on.
+</p><p>The portability and flexible configuration was aided by the
+use of the GNU autotools for discovering and enabling the
+features available on individual systems.  automake,
+autoconf, and libtool (although quite complex in themselves)
+enable the portable use of very system-specific detail such as
+shared-library / DLL / OSX framework, bundle, module, dynamic loading
+to be removed from the main codebase.
+</p><p>One major consideration is what licenses the free software / open
+source software <acronym class="acronym">FS/OSS</acronym> is under.  Most developers
+are either using or familiar with the GNU GPL, so Redland is available
+under a compatible license set - the LGPL/GPL dual license.  This is
+not always a suitable license, so a third alternative is the Apache
+2.0 license which is used by a large number of projects from the
+Apache Foundation including the well known HTTP server.
+</p><p>Documentation is another consideration in ensuring easy access to
+software.  All the Redland libraries have news, release notes, and
+detailed changelogs and also include reference documentation which
+needs to be kept in synchronisation with the code in order to be
+useful.  The main Redland RDF API ensures this by creating
+documentation derived directly from the C sources in a Javadoc-style,
+building DocBook XML, that builds into an HTML API or PDF reference.
+Raptor and Rasqal have detailed Unix manual page for the smaller
+APIs, as do each of the command line utilities.  All of the APIs and
+language bindings come with examples and some have individual test
+suites (Perl, Python, C#).  All of this is available in each release
+and is the main content that builds the Redland web site.  The
+missing parts at present in documentation terms are tutorials and
+comprehensive examples of the entire API, although some of the test
+suite do exercise the majority of the API and provides useful example
+code.
+</p></div><div class="section"><hr><h2 class="section"><a name="sec-design">2. Design approach of Redland</a></h2><p>Redland was designed as a family of four C libraries covering
+major parts of the functionality.
+</p><p></p><div class="variablelist"><p><b>Redland Components</b></p><dl><dt>Raptor RDF Parser Toolkit<a href="https://www.dajobe.org/papers/xtech2005/#Raptor">[Raptor]</a></dt><dd><p>parsing, serialising, URIs, WWW
+retrieval, Unicode and XML</p></dd><dt>Rasqal RDF Query Library<a href="https://www.dajobe.org/papers/xtech2005/#Rasqal">[Rasqal]</a></dt><dd><p>query syntax support and query
+execution engine (using Raptor)</p></dd><dt>Redland<a href="https://www.dajobe.org/papers/xtech2005/#Redland">[Redland]</a></dt><dd><p>user API to all features and triple storage (using
+Raptor and Rasqal)</p></dd><dt>Redland Bindings<a href="https://www.dajobe.org/papers/xtech2005/#Bindings">[Bindings]</a></dt><dd><p>language bindings to Redland (using Redland)
+</p></dd></dl></div><p>This split allowed development of the libraries to proceed at different
+rates, and to concentrate specific detail on one technology such as
+XML into just one place (Raptor, for parsing and serialising).  This
+also allowed useful subsets of the full library set to be available
+and to enable separate use without the full Redland RDF API.
+In particular parsing (Raptor) and querying (Rasqal) are used in
+external applications to interoperate.  An application can use
+Raptor alone to get RDF data in and out from syntaxes without
+having to even have any RDF processing or understanding in the code.
+(The command-line user need not even learn the RDF API of Redland,
+as the parsing, querying and API calls can be done from simple
+RDF utility programs, one for each library.)
+</p><p>The language bindings are a separate part so that those developers
+that just need a C, C++ or related language (Obj-C) interface do not
+need to use them.  When these are packaged up into binary packages as
+done for Linux, they are split into further per-language packages, so
+that the minimum number of libraries need be installed by a developer
+starting from a set of compiled binary packages.
+</p><p>The Redland API library (aka librdf) uses and wraps all the
+functionality that Raptor and Rasqal deliver, and adds the extra
+RDF-specific functionality of storing RDF graphs, manipulating them
+and making a full and coherent user RDF API above the parsing and
+querying libraries.  To a user of a language binding above the RDF
+API, the distinction between Raptor, Rasqal and Redland itself is
+not noticeable in normal use.
+</p></div><div class="section"><hr><h2 class="section"><a name="sec-objects-in-c">3. Redland API style - Object-based in C</a></h2><p>Every web programming language provides access to C and most
+desktop applications are still written in C / C++.  
+Thus to provide access across multiple systems and languages,
+the Redland libraries were written in portable ANSI C99. 
+This however, did not mean that the API needed to be solely a set of
+functions in the single flat namespace that C provides.  This would
+deliver a unnatural API when reflected into other language bindings.
+As not all web languages are based on an object model, C provides a
+better basis than C++ (which requires objects) to deliver a
+consistent API that does not require object support in the language.
+</p><p>Redland provides an object model in C with constructor functions,
+destructor functions and method functions that can be accessed via
+any language that can call C.  Languages such as Tcl where there are
+no objects can use them without need for further work, and those
+where object support is evolving such as moving from PHP3 to PHP4 to
+PHP5 can use them or not as the versions and support
+provides.  Languages with objects such as Perl, Python and C# can map
+the Redland objects can be mapped to match language concepts.
+</p><p>In Redland a class called <span class="emphasis"><i class="emphasis">FOO</i></span> is defined as a C
+typedef <tt class="literal">librdf_foo</tt>. The constructors for the
+class are defined as functions with signatures like:
+</p><pre class="programlisting">  librdf_foo* librdf_new_foo(void)
+</pre><p>which takes no parameters.  Constructors usually have parameters and
+are named in a similar way with an extra part appropriate for the
+name for example:
+</p><pre class="programlisting">  librdf_foo* librdf_new_foo_with_options(char *options)
+</pre><p>A copy constructor may also be defined which has a signature:</p><pre class="programlisting">  librdf_foo* librdf_new_foo_from_foo(librdf_foo* old_foo)
+</pre><p>A destructor is always defined with the function signature:</p><pre class="programlisting">  void librdf_free_foo(librdf_foo* foo)
+</pre><p>Methods of the class have names starting with
+<tt class="literal">librdf_foo_</tt> and examples could be:
+</p><pre class="programlisting">  /* accessor functions to object part 'thing' */
+  int librdf_foo_set_thing(librdf_foo* foo, char *thing)
+  char *librdf_foo_get_thing(librdf_foo* foo)
+</pre><p>Clearly there can be no inheritance or method overloading using this
+model.  Redland handles this by having interface classes such as
+storage that have multiple implementations for the classes that
+implement the storage 'interface'.  In the language bindings, native
+inheritance can be used to provide convenience wrapper classes, such
+as a particular storage implementation.
+</p><p>Compiling in C provides a RDF core library with high performance,
+small memory footprint and low memory use, especially with the
+Redland use of streaming explained later.  There are of course
+several downsides to using C that are well known - the memory
+management and absence of OO support features like reference
+counting, exceptions and proper strings in the language.
+</p><p>To try to reduce these problems as much as possible, Redland
+undergoes lots of testing especially by the use of debugging malloc
+systems and processor memory simulators such as Valgrind <a href="https://www.dajobe.org/papers/xtech2005/#Valgrind">[Valgrind]</a>. Each Redland C module also comes with multiple
+built in unit-tests.
+</p><p>Redland is regularly built and tested on over a dozen different Linux
+/ Unix systems from BSDen to Solaris and architectures (such as the
+11 architectures supported by Debian GNU/Linux) and is also built on
+Apple OSX and Win32 by external users.  Redland is automatically
+tested using the SourceForge compile farm to track build and test
+failures, and a bug tracker used to follow up user reports.
+</p></div><div class="section"><hr><h2 class="section"><a name="sec-bindings">4. Language Bindings to C</a></h2><p>There are several common web development languages that operate on
+a dynamic scripting model such as Perl, Python and Ruby.  These present
+a class and object model to the user, which can map to Redland's model.
+Redland uses swig<a href="https://www.dajobe.org/papers/xtech2005/#SWIG">[SWIG]</a> to generate bindings to
+these scripting languages based on a pseudo-C description.  It
+generates the interface C code to do the marshalling/unmarshalling
+of arguments to functions and their  return values along with whatever
+type-checking is possible.  This allows concentrating on encoding
+more natural bindings on top of the raw SWIG conversion of the functions,
+to use the different features in the language bindings.
+</p><p>The class <span class="emphasis"><i class="emphasis">foo</i></span> with a
+constructor, destructor and two methods could
+mapped as shown in <a href="https://www.dajobe.org/papers/xtech2005/#objectsinc-ex">Example 1</a>:
+</p><div class="example"><a name="objectsinc-ex"></a><p><b>Example 1. Functions for Redland Objects in C for class <span class="emphasis"><i class="emphasis">foo</i></span></b></p><pre class="programlisting">  librdf_foo* librdf_new_foo(void);
+
+  void librdf_free_foo(librdf_foo* foo);
+
+  int librdf_foo_set_thing(librdf_foo* foo, char *thing);
+  char *librdf_foo_get_thing(librdf_foo* foo);
+</pre></div><p>SWIG would convert that into similar-named functions that would
+be callable in the target binding language, converting the
+<tt class="literal">librdf_foo</tt> typedef into a typed object
+pointer which the marshalling code would check.
+</p><p>This would not look like objects to the target language, so
+all the Redland bindings that map to object-based languages
+provide wrapper classes.   In Python it would be
+something like in <a href="https://www.dajobe.org/papers/xtech2005/#pythonfoo-ex">Example 2</a> where SWIG presents
+the mapped functions as appearing in the Redland class:
+</p><div class="example"><a name="pythonfoo-ex"></a><p><b>Example 2. Python binding for the class <span class="emphasis"><i class="emphasis">foo</i></span></b></p><pre class="programlisting">  class Foo:
+    def __init__(self):
+      self._native=Redland.librdf_new_foo()
+
+    def __del__(self):
+      Redland.librdf_free_foo(self._native)
+
+    def set_thing(self, value):
+      return Redland.librdf_foo_set_thing(self._native, value)
+
+    def thing(self):
+    return Redland.librdf_foo_get_thing(self._native)
+</pre></div><p>So to the Python programmer, the Redland implementation detail is
+lost and it looks and works like a regular python class as shown
+in <a href="https://www.dajobe.org/papers/xtech2005/#python-ex">Example 3</a>:
+</p><div class="example"><a name="python-ex"></a><p><b>Example 3. Python example</b></p><pre class="programlisting">  import RDF
+
+  foo=RDF.Foo()
+  foo.set_thing("blah")
+  print foo.thing()
+</pre></div><p>This scheme has been fully implemented for the core binding languages
+for Redland - Python, Perl, Ruby.  C# has it's own equivalent to
+SWIG and calls C directly but the wrapper classes work in the same fashion.
+Tcl and PHP remain flat functional mappings and Java although using
+this scheme, is not a core binding language for Redland.  An third
+party maintainer has developed Objective-C bindings in the same fashion
+for OSX.
+</p><p>Each language requires it's own additional customisation for
+individual features that are in one language but not another, such as
+using Python generators to wrap Redland iterators, Perl arrays around
+lists or detail with the additional management aspects that occur
+near strings and Unicode.
+</p></div><div class="section"><hr><h2 class="section"><a name="sec-data">5. RDF Input, Output and Storage</a></h2><p>It is important that it is easy for data to be easily input and
+output from a system and Redland provides multiple (7+) parsers and
+serialisers (3+) operating on syntaxes.  The parsers can read RDF
+syntaxes such as RDF/XML and generate RDF triples, the serialisers do
+the reverse and generate syntaxes from an RDF graph.  These are
+integrated into the API so that reading and writing to and from
+strings, local files and URIs is a single method call.
+</p><p>However not all data is neatly stored in RDF files, so Redland
+includes two parsers that allow manipulating of the input form
+into RDF triples - an RSS tag soup parser that can read most any
+version of "RSS" up to and including the ongoing Atom work, 
+and a GRDDL parser that can read XHTML that include built-in
+transformation information using XSLT.  This set of scraping
+tools development is ongoing.
+</p><p>Redland provides multiple backends for storing RDF graphs, using a
+<span class="emphasis"><i class="emphasis">storage</i></span> interface abstraction.  The choice of
+storage can depend not only on the system that Redland is configured
+and built on, but on the features they provide as they include a
+range of stores going from in-memory storage without indexes,
+persistent stores in static files, simple database files up to using
+a relational database (MySQL).  The tradeoffs between the storage
+modules and their different features are described in the
+documentation.
+</p></div><div class="section"><hr><h2 class="section"><a name="sec-contexts">6. Data Management and Tracking with Redland Contexts</a></h2><p>One frequent use of RDF data is to aggregate content from a variety of
+data sources into one RDF graph (data store) and then to manipulate
+and query the result.  At this point the user often wants to find out
+where the result came from - which sources formed part of it.  Redland
+provides a feature for managing this called contexts which allow sets
+of triples in a data store to be marked with a URI when added and to
+get back this URI when searching.  This enables this common problem
+and also allows an additional one to be solved - updating a graph when
+an original source content changes, as the contexts api allows removal
+of all triples associated with a context, so that new data can be
+loaded if need be.
+</p><p>With Redland contexts, each triple can be marked as having multiple
+nodes called <span class="emphasis"><i class="emphasis">context nodes</i></span> such as C1, C2.
+These are regular Redland nodes so can appear in triples themselves.
+<a href="https://www.dajobe.org/papers/xtech2005/#contextgraph">Table 1</a> shows four triples that appear
+in the the subject of two triples. The context nodes are assigned
+when the triples are added to the Redland graph, but otherwise they
+are no different from any other graph node.  The first 2 triples are
+in context C1, and could be from the same graph.  Triples 1,3 and 4
+are in context C2 and could be from a separate graph that was
+aggregated.  The last two triples provide extra information about
+the contexts (graphs) themselves such as where, when they were
+added to the Redland model or other data management information.
+</p><div class="table"><a name="contextgraph"></a><p><b>Table 1. Redland RDF graph with contexts</b></p><table border="1" class="CALSTABLE"><colgroup><col><col><col></colgroup><thead><tr><th>&nbsp;</th><th>Triple</th><th>Contexts</th></tr></thead><tbody><tr><td>1.</td><td>(s1, p1, o1)</td><td>C1, C2</td></tr><tr><td>2.</td><td>(s2, p2, o2)</td><td>C1</td></tr><tr><td>3.</td><td>(s3, p3, o3)</td><td>C2</td></tr><tr><td>4.</td><td>(s4, p4, o4)</td><td>C2</td></tr><tr><td>5.</td><td>(C1, p5, o5)</td><td>&nbsp;</td></tr><tr><td>6.</td><td>(C2, p6, o6)</td><td>&nbsp;</td></tr></tbody></table></div><p>This is made available by methods on the stream and iterator
+classes after making an API call that returns them.  It allows getting
+the context node for the current result - triple or node returned
+from the stream.  In pseudo code, like this:</p><pre class="programlisting">  stream=model.find_statement(s, p, o)
+  statement=stream.current()
+  context_node=stream.context()
+</pre><p>Methods of the model class provide additional contexts control
+including listing all the context nodes in a graph, listing all the
+triples with a given context and to bulk add/delete triples
+associated with a context - a common use case.</p><p>Redland contexts can be used for several different techniques
+of recording context depending on how the context nodes are
+associated with the triples, which is application specific, and is
+done at the time the triples are added to the graph. The uses could
+include the following, although this is not an exhaustive
+list:</p><p></p><div class="variablelist"><dl><dt>Enable true graph merging / updating / demerging</dt><dd><p>Identify the subgraphs (sets of triples from
+particular sources) with context nodes.</p></dd><dt>Triple Identity</dt><dd><p>Add each triple with a different context node. RDF's
+model does not assign identity to triples. There is reification also
+which might be used with this approach.</p></dd><dt>Triple Provenance</dt><dd><p>Use the context node as the subject of other triples
+about the triple that is returned.</p></dd><dt>Subgraphs</dt><dd><p>Similar to the merging approach but consider the RDF
+graph to be a set of graphs and manipulate them as
+such.</p></dd></dl></div></div><div class="section"><hr><h2 class="section"><a name="sec-manipulation">7. RDF API - RDF Data Access and Manipulation</a></h2><p>The Redland API contains the full set of triple-level manipulation to
+RDF graph, integrated with the parsing and serialising by streams
+that provide access to a sequence of triples, which allows data to be
+generated lazily, on-demand by the application where possible.  This
+enables the use of a minimum of resources when performing model
+operations or operating across a protocol or API.
+</p><p>In addition to the low-level API calls to add a triple, remove a
+triple and similar, the RDF graphs can be searched for patterns of
+triples using a triple pattern matching call
+<tt class="literal">find_statements</tt>:
+</p><pre class="programlisting">  /* ... set statement parts to what is needed, leaving wildcards NULL .. */
+  predicate = librdf_new_node_from_uri_string(world, "http;//example.org/pred");
+  statement = librdf_new_statement_from_nodes(NULL, predicate, NULL);
+
+  /* find matching triples in the graph ('model') matching statement */
+  stream = librdf_model_find_statements(model, statement)
+</pre><p>which gives a stream of RDF triple results (or in Python, a generator
+of them; and in Perl, an array)
+</p><p>This requires for more complex API interactions, quite a few objects,
+classes and method calls.  This also means that the application
+developer has to be involved with the detail of the API and cannot
+express application-centric problems, in RDF terms such as graph
+triples.  This has been solved in other areas by the development
+of query languages, explained in the next section.
+</p></div><div class="section"><hr><h2 class="section"><a name="sec-query">8. Query Languages - RDQL and SPARQL</a></h2><p>Query languages aid the application developer to do a lot of
+data model access, selection and formatting in a compact format,
+as well as provide a standardisation point for the developer
+across multiple implementations.
+Redland presently has support for two RDF query languages
+<acronym class="acronym">RDQL</acronym><a href="https://www.dajobe.org/papers/xtech2005/#RDQL">[RDQL]</a>
+which has been a defacto standard
+RDF query language for several years and
+<acronym class="acronym">SPARQL</acronym> <a href="https://www.dajobe.org/papers/xtech2005/#SPARQL">[SPARQL]</a>,
+which is currently being standardised by the W3C RDF Data Access
+Working Group (<acronym class="acronym">DAWG</acronym>).  The language is still under
+development and the final syntax and feature set is not finally
+decided.
+</p><p>SPARQL was developed as a standard RDF query language, that is, with
+RDF concepts at the core - triples and graphs and with support for
+the unique requirements of the semantic web that have been found from
+the earlier query language work.  These include supporting the
+semi-structured nature and schemalessness of RDF by allowing queries
+with optional parts to succeed (SPARQL <tt class="literal">OPTIONAL</tt>)
+with partial matches and not requiring all the types of data to be
+pre-declared before a query (as SQL does).
+</p><p>SPARQL <tt class="literal">OPTIONAL</tt> allow such things as querying
+for multiple properties of a resource in one go, without necessarily
+requiring that all of them are present:
+</p><div class="example"><a name="optionalex"></a><p><b>Example 4. SPARQL Optionals</b></p><pre class="programlisting">  PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+  SELECT ?name ?mbox
+  WHERE  { ?r rdf:type foaf:Person }
+	 OPTIONAL { ?r foaf:name  ?name }
+	 OPTIONAL { ?r foaf:mbox  ?mbox }
+</pre></div><p>which could find for each FOAF Person object,  bindings for
+the names and email address, where known.  In a lower-level API
+call this would typically need several queries or multiple API calls
+to perform.
+</p><p>The experience of running RDF query languages on the web led to
+the language enabling web integration in several aspects.  The
+contexts feature of Redland and similar implementations in some earlier
+RDQL support was used to return information on where aggregated RDF
+data came from originally, by tracking the source graph URIs.  SPARQL
+makes this available both in forming queries and in binding
+results by the <tt class="literal">GRAPH</tt> operator, taking either
+a URI argument to restrict a query to triples from graph or
+a variable, to return the provenance of a triple:
+</p><div class="example"><a name="graphex"></a><p><b>Example 5. SPARQL <tt class="literal">GRAPH</tt></b></p><pre class="programlisting">  PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+  SELECT ?g ?name
+  WHERE  { ?r rdf:type foaf:Person }
+	 GRAPH ?g { ?r foaf:name  ?name }
+</pre></div><p>which returns the names of the people (FOAF Person classes) in the graph
+and the original graph in which the triple was found.  In common
+semantic web applications where data is integrated, this allows the
+application developer to deal with issues of provenance and trust
+and data management.  Redland supports manipulating contexts which
+maps directly to the <tt class="literal">GRAPH</tt> support.
+</p><p>Finally SPARQL has a full set of supported operators on RDF literals,
+simple XML Schema datatypes (plus a few others such as dateTime)
+along with operators on them from XQuery Functions and Operators.
+It also has several other features including creating RDF graphs
+as results in addition to variable bindings, which allows novel
+possibilities of chaining RDF graph creation.  Redland's query
+language support is provided by Rasqal<a href="https://www.dajobe.org/papers/xtech2005/#Rasqal">[Rasqal]</a>
+which lazily evaluates the queries, so that results are generated
+and produced only as they are needed - streaming.
+</p></div><div class="section"><hr><h2 class="section"><a name="sec-conclusion">9. Conclusion</a></h2><p>Redland is a mature FS/OSS C set of libraries providing a core RDF
+library that enables fast development of RDF applications in multiple
+languages and high performance with it's tested and compact C core.
+</p></div><a name="AEN218"></a><hr><h1><a name="AEN218"></a>Bibliography</h1><div class="bibliomixed"><a name="Redland"></a><p class="bibliomixed">	Redland
+	<i class="citetitle">Redland RDF Application Framework</i>
+	D. Beckett available at 
+	<a href="http://librdf.org/" target="_top">http://librdf.org/</a>
+      </p></div><div class="bibliomixed"><a name="Raptor"></a><p class="bibliomixed">	Raptor
+	<i class="citetitle">Raptor RDF Parser Toolkit</i>
+	D. Beckett available at 
+	<a href="http://librdf.org/raptor/" target="_top">http://librdf.org/raptor/</a>
+      </p></div><div class="bibliomixed"><a name="Rasqal"></a><p class="bibliomixed">	Rasqal
+	<i class="citetitle">Rasqal RDF Query Library</i>
+	D. Beckett available at 
+	<a href="http://librdf.org/rasqal/" target="_top">http://librdf.org/rasqal/</a>
+      </p></div><div class="bibliomixed"><a name="Bindings"></a><p class="bibliomixed">	Redland Bindings
+	<i class="citetitle">Redland Language Bindings</i>
+	D. Beckett available at 
+	<a href="http://librdf.org/bindings/" target="_top">http://librdf.org/bindings/</a>
+      </p></div><div class="bibliomixed"><a name="Valgrind"></a><p class="bibliomixed">	Valgrind
+	<i class="citetitle">Valgrind</i>
+        Julian Seward et al, an x86 process simulator, available at
+	<a href="http://valgrind.org/" target="_top">http://valgrind.org/</a>
+      </p></div><div class="bibliomixed"><a name="SWIG"></a><p class="bibliomixed">	SWIG
+	<i class="citetitle">Simplified Wrapper and Interface Generator</i>
+        tool for connecting programs written in C and C++ with a
+        variety of high-level programming languages.  Available at
+	<a href="http://www.swig.org/" target="_top">http://www.swig.org/</a>
+      </p></div><div class="bibliomixed"><a name="SPARQL"></a><p class="bibliomixed">	SPARQL
+	<i class="citetitle">SPARQL Query Language for RDF</i>
+         Eric Prud'hommeaux and Andy Seaborne (editors),
+         W3C Working Draft of 17 February 2005, work in progess. Available at
+	<a href="http://www.w3.org/TR/2005/WD-rdf-sparql-query-20050217/" target="_top">http://www.w3.org/TR/2005/WD-rdf-sparql-query-20050217/</a>
+      </p></div><div class="bibliomixed"><a name="RDQL"></a><p class="bibliomixed">	RDQL
+	<i class="citetitle">RDQL - A Query Language for RDF</i>
+         Andy Seaborne, HP Labs, W3C Member Submission, 9 January 2004.  Available at
+	<a href="http://www.w3.org/Submission/2004/SUBM-RDQL-20040109/" target="_top">http://www.w3.org/Submission/2004/SUBM-RDQL-20040109/</a>
+      </p></div></div>
+</body></html>
