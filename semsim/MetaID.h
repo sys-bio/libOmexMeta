@@ -16,29 +16,29 @@ namespace semsim {
          * @param  metaid The meta id to check for.
          * @return        @c true if the model contains the given meta id.
          */
-        static inline bool modelContainsMetaId(LIBSBML_CPP_NAMESPACE_QUALIFIER Model *m, const std::string &metaid) {
+        static inline bool modelContainsMetaId(libsbml:: Model *m, const std::string &metaid) {
             for (unsigned int k = 0; k < m->getNumSpecies(); ++k) {
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment *x = m->getCompartment(k);
+                libsbml:: Compartment *x = m->getCompartment(k);
                 if (x->isSetMetaId() && x->getMetaId() == metaid)
                     return true;
             }
             for (unsigned int k = 0; k < m->getNumSpecies(); ++k) {
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Species *x = m->getSpecies(k);
+                libsbml:: Species *x = m->getSpecies(k);
                 if (x->isSetMetaId() && x->getMetaId() == metaid)
                     return true;
             }
             for (unsigned int k = 0; k < m->getNumReactions(); ++k) {
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Reaction *x = m->getReaction(k);
+                libsbml:: Reaction *x = m->getReaction(k);
                 if (x->isSetMetaId() && x->getMetaId() == metaid)
                     return true;
             }
             for (unsigned int k = 0; k < m->getNumParameters(); ++k) {
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Parameter *x = m->getParameter(k);
+                libsbml:: Parameter *x = m->getParameter(k);
                 if (x->isSetMetaId() && x->getMetaId() == metaid)
                     return true;
             }
             for (unsigned int k = 0; k < m->getNumEvents(); ++k) {
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Event *x = m->getEvent(k);
+                libsbml:: Event *x = m->getEvent(k);
                 if (x->isSetMetaId() && x->getMetaId() == metaid)
                     return true;
             }
@@ -51,9 +51,9 @@ namespace semsim {
          * elements to have assigned meta ids.
          * @param m [description]
          */
-        static inline void assignMetaIds(LIBSBML_CPP_NAMESPACE_QUALIFIER Model *m) {
+        static inline void assignMetaIds(libsbml:: Model *m) {
             for (unsigned int k = 0; k < m->getNumCompartments(); ++k) {
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment *c = m->getCompartment(k);
+                libsbml:: Compartment *c = m->getCompartment(k);
                 if (!c->isSetMetaId()) {
                     for (int k = 0;; ++k) {
                         std::stringstream ss;
@@ -66,7 +66,7 @@ namespace semsim {
                 }
             }
             for (unsigned int k = 0; k < m->getNumSpecies(); ++k) {
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Species *s = m->getSpecies(k);
+                libsbml:: Species *s = m->getSpecies(k);
                 if (!s->isSetMetaId()) {
                     for (int k = 0;; ++k) {
                         std::stringstream ss;
@@ -79,7 +79,7 @@ namespace semsim {
                 }
             }
             for (unsigned int k = 0; k < m->getNumReactions(); ++k) {
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Reaction *r = m->getReaction(k);
+                libsbml:: Reaction *r = m->getReaction(k);
                 if (!r->isSetMetaId()) {
                     for (int k = 0;; ++k) {
                         std::stringstream ss;

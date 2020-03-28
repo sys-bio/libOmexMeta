@@ -14,24 +14,24 @@ namespace semsim {
      * A @ref Component is any element of an SBML or CellML model.
      * It can represent an SBML species, reaction, or compartment.
      */
-    class SEMSIM_PUBLIC Model {
+    class SEMSIM_PUBLIC SemSimModel {
     public:
 
         // Empty ctor
-        Model() {}
+        SemSimModel() {}
 
         /// Virtual destructor
-        virtual ~Model() = default;
+        virtual ~SemSimModel() = default;
 
         /// Copy ctor
-        Model(const Model &other) {
+        SemSimModel(const SemSimModel &other) {
             for (const auto &component : other.components_) {
                 components_.push_back(ComponentPtr(component->clone()));
             }
         }
 
         /// Move ctor
-        Model(Model &&other) noexcept : components_(std::move(other.components_)) {}
+        SemSimModel(SemSimModel &&other) noexcept : components_(std::move(other.components_)) {}
 
         /// Add a new component to the model (copy)
         Component *addComponent(const Component &component) {

@@ -2,7 +2,7 @@
 # define SEMSIM_SBML_OMEX_H_
 
 # include "semsim/Preproc.h"
-# include "semsim/Model.h"
+# include "semsim/SemSimModel.h"
 # include "semsim/SBMLModel.h"
 
 namespace semsim {

@@ -6,7 +6,7 @@
 
 namespace semsim {
     void exportToOmex(
-            const Model &model,
+            const SemSimModel &model,
             const std::string &archive_path,
             const std::string &model_entry_path,
             const std::string &rdf_entry_path) {
