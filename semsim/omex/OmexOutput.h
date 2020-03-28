@@ -2,7 +2,7 @@
 # define SEMSIM_OMEX_OUTPUT_H_
 
 # include "semsim/Preproc.h"
-# include "semsim/Model.h"
+# include "semsim/SemSimModel.h"
 
 
 namespace semsim {
@@ -14,7 +14,7 @@ namespace semsim {
      * @param model_entry_path The path to the model file (SBML or CellML) within the archive.
      * @param rdf_entry_path   The path to the annotation RDF metadata within the archive.
      */
-    void exportToOmex(const Model& model,
+    void exportToOmex(const SemSimModel& model,
       const std::string& archive_path,
       const std::string& model_entry_path="./model.xml",
       const std::string& rdf_entry_path="./annotations.xml");

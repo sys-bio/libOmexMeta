@@ -13,8 +13,8 @@ namespace semsim {
       if (!archive.initializeFromArchive(archive_path))
         throw std::runtime_error("Unable to import Combine archive");
 
-      LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLReader reader;
-      LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument* d = reader.readSBMLFromString(archive.extractEntryToString(model_entry_path));
+      libsbml:: SBMLReader reader;
+      libsbml:: SBMLDocument* d = reader.readSBMLFromString(archive.extractEntryToString(model_entry_path));
 
       if (!d || d->getNumErrors())
         throw std::runtime_error("Errors reading SBML");

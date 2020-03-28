@@ -6,7 +6,8 @@
 # include <raptor2.h>
 
 # include "Preproc.h"
-# include "Model.h"
+# include "SemSimModel.h"
+
 # include "Process.h"
 # include "BiomodelsQualifiers.h"
 # include "SemSimQualifiers.h"
@@ -22,7 +23,7 @@
 # endif
 
 # if defined SWIG
-# define LIBSBML_CPP_NAMESPACE_QUALIFIER
+# define libsbml::
 # endif
 
 namespace semsim {
@@ -30,7 +31,7 @@ namespace semsim {
     /**
      * This class represents an SBML model imported into SemSim.
      */
-    class SEMSIM_PUBLIC SBMLModel : public Model {
+    class SEMSIM_PUBLIC SBMLModel : public SemSimModel {
       public:
         /**
          * Construct from an SBML model.
@@ -39,13 +40,13 @@ namespace semsim {
          * and a corresponding mapping table.
          * @param m The SBML model to use for initialization.
          */
-        SBMLModel(LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument* d)
-          : Model(), d_(d) {
-          LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m = d->getModel();
+        SBMLModel(libsbml:: SBMLDocument* d)
+          : SemSimModel(), d_(d) {
+          libsbml:: Model* m = d->getModel();
           // all elements must have meta ids
           MetaID::assignMetaIds(m);
           for(unsigned int k=0; k<m->getNumCompartments(); ++k) {
-            LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c = m->getCompartment(k);
+            libsbml:: Compartment* c = m->getCompartment(k);
             if (c->isSetMetaId()) {
               Component *o = addComponent(Component());
               element_map_.insert(std::make_pair(c, o));
@@ -55,7 +56,7 @@ namespace semsim {
             }
           }
           for(unsigned int k=0; k<m->getNumSpecies(); ++k) {
-            LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s = m->getSpecies(k);
+            libsbml:: Species* s = m->getSpecies(k);
             if (s->isSetMetaId()) {
               Component *o = addComponent(Component());
               element_map_.insert(std::make_pair(s, o));
@@ -65,7 +66,7 @@ namespace semsim {
             }
           }
           for(unsigned int k=0; k<m->getNumReactions(); ++k) {
-            LIBSBML_CPP_NAMESPACE_QUALIFIER Reaction* r = m->getReaction(k);
+            libsbml:: Reaction* r = m->getReaction(k);
             if (r->isSetMetaId()) {
               Component *o = addComponent(Process());
               element_map_.insert(std::make_pair(r, o));
@@ -75,7 +76,7 @@ namespace semsim {
             }
           }
           for(unsigned int k=0; k<m->getNumParameters(); ++k) {
-            LIBSBML_CPP_NAMESPACE_QUALIFIER Parameter* p = m->getParameter(k);
+            libsbml:: Parameter* p = m->getParameter(k);
             if (p->isSetMetaId()) {
               Component *o = addComponent(Component());
               element_map_.insert(std::make_pair(p, o));
@@ -88,7 +89,7 @@ namespace semsim {
 
         /// Move constructor
         SBMLModel(SBMLModel&& other)
-          : Model(std::move(other)),
+          : SemSimModel(std::move(other)),
             element_map_(std::move(other.element_map_)),
             element_id_map_(std::move(other.element_id_map_)),
             d_(other.d_) {}
@@ -99,7 +100,7 @@ namespace semsim {
          * @param id         The SBML element.
          * @param annotation The annotation for the component.
          */
-        void setComponentAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, const AnnotationBase& annotation) {
+        void setComponentAnnotation(libsbml:: SBase* s, const AnnotationBase& annotation) {
           if (hasComponent(s))
             element_map_.find(s)->second->setAnnotation(annotation);
         }
@@ -110,7 +111,7 @@ namespace semsim {
          * @param s         The SBML element.
          * @param annotation The annotation for the component.
          */
-        void setComponentAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, const AnnotationPtr& annotation) {
+        void setComponentAnnotation(libsbml:: SBase* s, const AnnotationPtr& annotation) {
           if (hasComponent(s))
             element_map_.find(s)->second->setAnnotation(*annotation);
         }
@@ -122,7 +123,7 @@ namespace semsim {
          * @param id         The SBML element.
          * @param annotation The annotation for the component.
          */
-        void setComponentAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, AnnotationPtr&& annotation) {
+        void setComponentAnnotation(libsbml:: SBase* s, AnnotationPtr&& annotation) {
           if (hasComponent(s))
             element_map_.find(s)->second->setAnnotation(std::move(annotation));
         }
@@ -144,7 +145,7 @@ namespace semsim {
          * @param  s The SBML element.
          * @return    Whether the SBML element has been mapped to a libSemSim @ref Component or not.
          */
-        bool hasComponent(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) const {
+        bool hasComponent(libsbml:: SBase* s) const {
           return !(element_map_.find(s) == element_map_.end());
         }
 
@@ -154,7 +155,7 @@ namespace semsim {
          * @param  s The SBML element.
          * @return    Whether the SBML element has been mapped to a libSemSim @ref Process or not.
          */
-        bool hasProcess(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) const {
+        bool hasProcess(libsbml:: SBase* s) const {
           return !(element_map_.find(s) == element_map_.end()) && element_map_.find(s)->second->isProcess();
         }
 
@@ -164,7 +165,7 @@ namespace semsim {
          * @param  s The SBML element.
          * @return    The component for the given SBML id (if it exists).
          */
-        const Component* getComponent(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) const {
+        const Component* getComponent(libsbml:: SBase* s) const {
           if (!hasComponent(s))
             throw std::out_of_range("Component does not exist in mapping table");
           return element_map_.find(s)->second;
@@ -176,7 +177,7 @@ namespace semsim {
          * @param  s The SBML element.
          * @return    The component for the given SBML id (if it exists).
          */
-        Component* getComponent(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
+        Component* getComponent(libsbml:: SBase* s) {
           if (!hasComponent(s))
             throw std::out_of_range("Component does not exist in mapping table");
           return element_map_.find(s)->second;
@@ -188,7 +189,7 @@ namespace semsim {
          * @param  s The SBML element.
          * @return    The physical process for the given SBML id (if it exists).
          */
-        Process* getProcess(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) {
+        Process* getProcess(libsbml:: SBase* s) {
           if (!hasProcess(s))
             throw std::out_of_range("Component does not exist in mapping table");
           return dynamic_cast<Process*>(element_map_.find(s)->second);
@@ -270,7 +271,7 @@ namespace semsim {
          * @return The XML content.
          */
         std::string encodeXML() const {
-          LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLWriter w;
+          libsbml:: SBMLWriter w;
           return w.writeSBMLToString(d_);
         }
 
@@ -283,11 +284,11 @@ namespace semsim {
 
       protected:
         /// Maps SBML model elements to corresponding libSemSim @ref Component.
-        SEMSIM_TR1_NAMESPACE_QUAL unordered_map<LIBSBML_CPP_NAMESPACE_QUALIFIER SBase*,Component*> element_map_;
+        SEMSIM_TR1_NAMESPACE_QUAL unordered_map<libsbml:: SBase*,Component*> element_map_;
         /// Maps SBML model elements to corresponding libSemSim @ref Component.
         SEMSIM_TR1_NAMESPACE_QUAL unordered_map<std::string,Component*> element_id_map_;
         /// Stores the SBML model
-        LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument* d_;
+        libsbml:: SBMLDocument* d_;
     };
 
 }

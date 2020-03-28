@@ -9,11 +9,11 @@ namespace semsim {
     class Accessor {
     public:
         /// Find a UnitDefinition from a given sid; throw if not found
-        static LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition *findUnitDefinition(
+        static libsbml:: UnitDefinition *findUnitDefinition(
                 const std::string &sid,
                 libsbml::Model *m) {
             for (unsigned int k = 0; k < m->getNumUnitDefinitions(); ++k) {
-                LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition *u = m->getUnitDefinition(k);
+                libsbml:: UnitDefinition *u = m->getUnitDefinition(k);
                 if (u->isSetIdAttribute() && u->getId() == sid)
                     return u;
             }
@@ -21,11 +21,11 @@ namespace semsim {
         }
 
         /// Find a Compartment from a given sid; throw if not found
-        static LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment *findCompartment(
+        static libsbml:: Compartment *findCompartment(
                 const std::string &sid,
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Model *m) {
+                libsbml:: Model *m) {
             for (unsigned int k = 0; k < m->getNumCompartments(); ++k) {
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment *c = m->getCompartment(k);
+                libsbml:: Compartment *c = m->getCompartment(k);
                 if (c->isSetIdAttribute() && c->getId() == sid)
                     return c;
             }
@@ -35,9 +35,9 @@ namespace semsim {
         /// @return @c true if a compartment with the specified meta id exists
         static  bool hasCompartmentWithMetaId(
                 const std::string &metaid,
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Model *m) {
+                libsbml:: Model *m) {
             for (unsigned int k = 0; k < m->getNumCompartments(); ++k) {
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment *c = m->getCompartment(k);
+                libsbml:: Compartment *c = m->getCompartment(k);
                 if (c->isSetMetaId() && c->getMetaId() == metaid)
                     return true;
             }
