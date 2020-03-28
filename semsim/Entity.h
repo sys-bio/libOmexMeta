@@ -33,17 +33,17 @@ namespace semsim {
      * Currently, an @ref Entity can have zero or one @ref EntityDescriptor elements.
      * In the future, this may be extended to allow multiple @ref EntityDescriptor elements.
      */
-    class SEMSIM_PUBLIC Entity : public EntityBase {
-      public:
+    class Entity : public EntityBase {
+    public:
         /// The type used to store the list of entity descriptors. Treat as opaque.
         typedef std::vector<EntityDescriptor> Descriptors;
 
         /// Empty constructot
-        Entity(const std::string& metaid) : EntityBase(metaid) {}
+        Entity(const std::string &metaid) : EntityBase(metaid) {}
 
         /// Construct from a definition URI
-        Entity(const std::string& metaid, const Resource& definition)
-          : EntityBase(metaid, definition) {}
+        Entity(const std::string &metaid, const Resource &definition)
+                : EntityBase(metaid, definition) {}
 
         /// Construct from an @ref EntityDescriptor
         Entity(const std::string& metaid, const Resource& definition, const EntityDescriptor& d)

@@ -17,8 +17,8 @@ namespace semsim {
      * A @ref Process is a component that represents a physical process.
      * It has sources and sinks, as well as its own annotation element.
      */
-    class SEMSIM_PUBLIC Process : public Component {
-      protected:
+    class Process : public Component {
+    protected:
         /// Container for sources, treat as opaque
         typedef std::vector<Source> Sources;
         /// Container for sinks, treat as opaque
@@ -26,17 +26,18 @@ namespace semsim {
         /// Container for mediators, treat as opaque
         typedef std::vector<Mediator> Mediators;
 
-      public:
+    public:
         /// Empty constructor
         Process() {}
 
         /// Construct from a singular annotation
-        Process(const SingularAnnotation& annotation)
-          : Component(annotation) {}
+        Process(const SingularAnnotation &annotation)
+                : Component(annotation) {}
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
+
         /// Move-construct from a singular annotation
-        Process(SingularAnnotation&& annotation)
+        Process(SingularAnnotation &&annotation)
           : Component(std::move(annotation)) {}
         # endif
 

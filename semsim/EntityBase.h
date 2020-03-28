@@ -21,18 +21,18 @@ namespace semsim {
      *
      * An @ref EntityBase will always have its own URI in the serialized RDF.
      */
-    class SEMSIM_PUBLIC EntityBase {
-      public:
+    class EntityBase {
+    public:
         /// The type used to store the list of definition URIs. Treat as opaque.
         typedef std::vector<Resource> Definitions;
         /// The type used to store the list of extraneous terms. Treat as opaque.
         typedef std::vector<Term> Terms;
 
         /// Construct from a definition URI
-        EntityBase(const std::string& metaid, const Resource& definition)
-          : metaid_(metaid), definitions_(1,definition) {}
+        EntityBase(const std::string &metaid, const Resource &definition)
+                : metaid_(metaid), definitions_(1, definition) {}
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
         /// Move constructor
         EntityBase(EntityBase&& other)
           : metaid_(std::move(other.metaid_)),

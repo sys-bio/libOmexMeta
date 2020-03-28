@@ -16,17 +16,18 @@ namespace semsim {
      * @c begin and @c end iterators can be used to access
      * elements returned by the query.
      */
-    class SEMSIM_PUBLIC RasqalQueryResult {
-      public:
-        RasqalQueryResult(rasqal_query_results* results)
-          : results_(results) {}
+    class RasqalQueryResult {
+    public:
+        RasqalQueryResult(rasqal_query_results *results)
+                : results_(results) {}
+
         ~RasqalQueryResult();
 
         /// Converts the query results to a string
         std::string toString();
 
         /// Converts the query results to an RDF string
-        std::string toRDFString(const std::string& format="rdfxml");
+        std::string toRDFString(const std::string &format = "rdfxml");
 
         /// Converts the query results to a list
         std::vector<std::vector<std::string> > asList();

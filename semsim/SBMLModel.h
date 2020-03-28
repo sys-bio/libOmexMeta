@@ -31,8 +31,8 @@ namespace semsim {
     /**
      * This class represents an SBML model imported into SemSim.
      */
-    class SEMSIM_PUBLIC SBMLModel : public SemSimModel {
-      public:
+    class SBMLModel : public SemSimModel {
+    public:
         /**
          * Construct from an SBML model.
          * Creates libSemSim @ref Component "Components"
@@ -40,18 +40,18 @@ namespace semsim {
          * and a corresponding mapping table.
          * @param m The SBML model to use for initialization.
          */
-        SBMLModel(libsbml:: SBMLDocument* d)
-          : SemSimModel(), d_(d) {
-          libsbml:: Model* m = d->getModel();
-          // all elements must have meta ids
-          MetaID::assignMetaIds(m);
-          for(unsigned int k=0; k<m->getNumCompartments(); ++k) {
-            libsbml:: Compartment* c = m->getCompartment(k);
-            if (c->isSetMetaId()) {
-              Component *o = addComponent(Component());
-              element_map_.insert(std::make_pair(c, o));
-              o->setMetaId(c->getMetaId());
-              if (c->isSetIdAttribute())
+        SBMLModel(libsbml::SBMLDocument *d)
+                : SemSimModel(), d_(d) {
+            libsbml::Model *m = d->getModel();
+            // all elements must have meta ids
+            MetaID::assignMetaIds(m);
+            for (unsigned int k = 0; k < m->getNumCompartments(); ++k) {
+                libsbml::Compartment *c = m->getCompartment(k);
+                if (c->isSetMetaId()) {
+                    Component *o = addComponent(Component());
+                    element_map_.insert(std::make_pair(c, o));
+                    o->setMetaId(c->getMetaId());
+                    if (c->isSetIdAttribute())
                 element_id_map_.insert(std::make_pair(c->getId(), o));
             }
           }

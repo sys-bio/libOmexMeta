@@ -12,18 +12,18 @@ namespace semsim {
      * A @ref Sink is a @ref Participant that is produced
      * by a reaction (the end point of the reaction).
      */
-    class SEMSIM_PUBLIC Sink : public Participant {
-      public:
+    class Sink : public Participant {
+    public:
         /**
          * Construct from the given component and multiplier.
          * @param component A pre-existing component in the model associated with a species.
          * @param multiplier The stoichiometric coefficient for this participant in the reaction.
          */
-        Sink(const std::string& id, Component* component, double multiplier=1)
-          : id_(id), component_(component), multiplier_(multiplier) {}
+        Sink(const std::string &id, Component *component, double multiplier = 1)
+                : id_(id), component_(component), multiplier_(multiplier) {}
 
-        bool containsMetaId(const std::string& metaid) const {
-          return id_ == metaid;
+        bool containsMetaId(const std::string &metaid) const {
+            return id_ == metaid;
         }
 
         /**

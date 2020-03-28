@@ -14,18 +14,18 @@ namespace semsim {
      * A @ref Component is any element of an SBML or CellML model.
      * It can represent an SBML species, reaction, or compartment.
      */
-    class SEMSIM_PUBLIC Component {
-      public:
+    class Component {
+    public:
         /// Empty constructor
         Component() {}
 
         /// Construct from a singular annotation
-        explicit Component(const SingularAnnotation& annotation)
-          : annotation_(new SingularAnnotation(annotation)) {}
+        explicit Component(const SingularAnnotation &annotation)
+                : annotation_(new SingularAnnotation(annotation)) {}
 
         /// Move-construct from a singular annotation
-        explicit Component(SingularAnnotation&& annotation)
-          : annotation_(new SingularAnnotation(std::move(annotation))) {}
+        explicit Component(SingularAnnotation &&annotation)
+                : annotation_(new SingularAnnotation(std::move(annotation))) {}
 
         /// Construct from a composite annotation
         explicit Component(const CompositeAnnotation& annotation)

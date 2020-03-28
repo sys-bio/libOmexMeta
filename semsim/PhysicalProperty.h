@@ -12,27 +12,31 @@ namespace semsim {
      * <a href="http://bioportal.bioontology.org/ontologies/OPB">Ontology of Physics for Biology</a>,
      * which can be accessed using the @ref OPB class.
      */
-    class SEMSIM_PUBLIC PhysicalProperty {
-      public:
+    class PhysicalProperty {
+    public:
         /// Construct from a resource
-        PhysicalProperty(const Resource& resource)
-          : resource_(resource) {}
+        PhysicalProperty(const Resource &resource)
+                : resource_(resource) {}
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
+
         /// Move-construct from a resource
-        PhysicalProperty(Resource&& resource)
-          : resource_(std::move(resource)) {}
-        # endif
+        PhysicalProperty(Resource &&resource)
+                : resource_(std::move(resource)) {}
+
+# endif
 
         /// Construct directly from a string that contains the resource URI
-        PhysicalProperty(const std::string& resource)
-          : resource_(resource) {}
+        PhysicalProperty(const std::string &resource)
+                : resource_(resource) {}
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
+
         /// Move-construct directly from a string that contains the resource URI
-        PhysicalProperty(std::string&& resource)
-          : resource_(std::move(resource)) {}
-        # endif
+        PhysicalProperty(std::string &&resource)
+                : resource_(std::move(resource)) {}
+
+# endif
 
         /**
          * @return The @ref Resource for this @ref PhysicalProperty.

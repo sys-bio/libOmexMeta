@@ -9,8 +9,8 @@ namespace semsim {
     /**
      * Class for the Cell Ontology.
      */
-    class SEMSIM_PUBLIC CL : public Ontology {
-      public:
+    class CL : public Ontology {
+    public:
         // const static std::string root = "http://identifiers.org/CHEBI:";
 
         /**

@@ -31,22 +31,22 @@ namespace semsim {
      * // do something with the semsim::SBMLModel
      * @endcode
      */
-    class SEMSIM_PUBLIC SBMLImporter {
+    class SBMLImporter {
     public:
         /**
          * Construct a libSemSim @ref SBMLModel from an SBML document.
          * @param d The input SBML document.
          */
-        explicit SBMLImporter(libsbml:: SBMLDocument *d)
+        explicit SBMLImporter(libsbml::SBMLDocument *d)
                 : m_(d->getModel()), result_(d) {
 
             for (unsigned int k = 0; k < m_->getNumCompartments(); ++k) {
-                libsbml:: Compartment *c = m_->getCompartment(k);
+                libsbml::Compartment *c = m_->getCompartment(k);
                 if (c->isSetMetaId())
                     result_.setComponentAnnotation(c, extractAnnotation(c));
             }
             for (unsigned int k = 0; k < m_->getNumSpecies(); ++k) {
-                libsbml:: Species *s = m_->getSpecies(k);
+                libsbml::Species *s = m_->getSpecies(k);
                 if (s->isSetMetaId())
                     result_.setComponentAnnotation(s, extractAnnotation(s));
             }

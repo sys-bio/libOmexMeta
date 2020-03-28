@@ -32,7 +32,7 @@ set(SEMSIM_SOURCES
         EntityBase.h
         EntityDescriptor.h
         Mediator.h
-        Model.h
+        SBMLModel.h
         ontologies/Ontology.h
         Participant.h
         PhysicalProperty.h
@@ -94,10 +94,10 @@ target_include_directories(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so incl
 
 target_link_libraries(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so libraries propagate into test binaries
         ${LIBXML2_STATIC_LIBRARY}
-        ${LIBSBML_STATIC_LIBRARY}
         ${ZLIB_STATIC_LIBRARY}
-        ${ZIPPER_STATIC_LIBRARY}
         ${LIBCOMBINE_STATIC_LIB}
+        ${ZIPPER_STATIC_LIBRARY}
+        ${LIBSBML_STATIC_LIBRARY}
         ${LIBBZ_STATIC_LIBRARY}
         ${REDLAND_LIBRARY}
         ${RASQAL_LIBRARY}

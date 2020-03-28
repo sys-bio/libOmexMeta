@@ -12,16 +12,16 @@ namespace semsim {
      * <a href="http://co.mbine.org/standards/qualifiers">BioModels biology qualifiers</a>
      * for describing model elements.
      */
-    class SEMSIM_PUBLIC Relation {
-      public:
+    class Relation {
+    public:
         /**
          * Construct from URI.
          * @param uri The URI of the ontology term
          */
-        Relation(const URI& uri)
-          : uri_(uri) {}
+        Relation(const URI &uri)
+                : uri_(uri) {}
 
-        Relation(URI&& uri) : uri_(std::move(uri)) {}
+        Relation(URI &&uri) : uri_(std::move(uri)) {}
 
         std::string toString() const {
           return uri_.toString();

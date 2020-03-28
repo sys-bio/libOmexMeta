@@ -12,18 +12,18 @@ namespace semsim {
      * A @ref Source is a @ref Participant that is consumed
      * by a reaction.
      */
-    class SEMSIM_PUBLIC Source : public Participant {
-      public:
+    class Source : public Participant {
+    public:
         /**
          * Construct from the given component and multiplier.
          * @param component A pre-existing component in the model associated with a species.
          * @param multiplier The stoichiometric coefficient for this participant in the reaction.
          */
-        Source(const std::string& id, Component* component, double multiplier=1)
-          : id_(id), component_(component), multiplier_(multiplier) {}
+        Source(const std::string &id, Component *component, double multiplier = 1)
+                : id_(id), component_(component), multiplier_(multiplier) {}
 
-        bool containsMetaId(const std::string& metaid) const {
-          return id_ == metaid;
+        bool containsMetaId(const std::string &metaid) const {
+            return id_ == metaid;
         }
 
         /**

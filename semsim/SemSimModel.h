@@ -14,7 +14,7 @@ namespace semsim {
      * A @ref Component is any element of an SBML or CellML model.
      * It can represent an SBML species, reaction, or compartment.
      */
-    class SEMSIM_PUBLIC SemSimModel {
+    class SemSimModel {
     public:
 
         // Empty ctor
