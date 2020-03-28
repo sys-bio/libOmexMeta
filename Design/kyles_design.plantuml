@@ -1,0 +1,4 @@
+@startuml
+Car : drive()
+Dog : bark()
+@enduml

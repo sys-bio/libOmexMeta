@@ -11,18 +11,18 @@ namespace semsim {
      * A URI class used in semgen.
      * @param uri_encoding A string encoding of the URI.
      */
-    class SEMSIM_PUBLIC URI {
-      public:
+    class URI {
+    public:
         /// Empty constructor
         URI() {}
 
         /// Construct from string-encoded URI
-        URI(const std::string& uri)
-          : encoded_uri_(uri) {}
+        URI(const std::string &uri)
+                : encoded_uri_(uri) {}
 
         /// Construct from a string literal
-        URI(const char* uri)
-          : encoded_uri_(uri) {}
+        URI(const char *uri)
+                : encoded_uri_(uri) {}
 
         # if __cplusplus >= 201103L
         /// Construct from string-encoded URI

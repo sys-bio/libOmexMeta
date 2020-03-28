@@ -35,18 +35,18 @@ namespace semsim {
      * // (controlled by the SEMSIM_CXX_STANDARD CMake variable)
      * @endcode
      */
-    class SEMSIM_PUBLIC CompositeAnnotation : public AnnotationBase {
-      public:
+    class CompositeAnnotation : public AnnotationBase {
+    public:
         /**
          * Construct a @ref CompositeAnnotation given a physical property (what is the quantity being represented - chemical concentration, fluid volume, etc.?)
          * and a domain descriptor ("what" is the chemical identity and "where" does the entity reside in physical space?)
          * @param property The physical property of this composite annotation. Always provided.
          * @param entity The entity contains all information outside of the physical property. This tells you "what" the element is (e.g. by specifying chemical identity) and "where". For example, if the annotation describes "cytosolic glucose concentration in a pancreatic beta cell", the entity would contain a definition (glycose) and two *structural relations* specifying the entity is *occurs in* the cytosol, which in turn *is part of* a pancreatic beta cell.
          */
-        CompositeAnnotation(const std::string& metaid, const PhysicalProperty& property, const Entity& entity)
-          : metaid_(metaid), property_(property), entity_(entity) {}
+        CompositeAnnotation(const std::string &metaid, const PhysicalProperty &property, const Entity &entity)
+                : metaid_(metaid), property_(property), entity_(entity) {}
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
         /**
          * Construct a @ref CompositeAnnotation given a physical property (what is the quantity being represented - chemical concentration, fluid volume, etc.?)
          * and a domain descriptor ("what" is the chemical identity and "where" does the entity reside in physical space?)

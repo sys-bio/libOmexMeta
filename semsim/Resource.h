@@ -25,23 +25,25 @@ namespace semsim {
      * in which case its definition URI will be whatever the element's
      * URI is at the time of serialization.
      */
-    class SEMSIM_PUBLIC Resource {
-      public:
+    class Resource {
+    public:
         /**
          * Construct from URI.
          * @param uri The URI of the resource
          */
-        Resource(const URI& uri)
-          : uri_(uri), element_(NULL) {}
+        Resource(const URI &uri)
+                : uri_(uri), element_(NULL) {}
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
+
         /**
          * Move-construct from URI.
          * @param uri The URI of the resource
          */
-        Resource(URI&& uri)
-          : uri_(std::move(uri)), element_(NULL) {}
-        # endif
+        Resource(URI &&uri)
+                : uri_(std::move(uri)), element_(NULL) {}
+
+# endif
 
         /**
          * Construct from URI.

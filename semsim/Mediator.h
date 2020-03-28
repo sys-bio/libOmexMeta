@@ -12,18 +12,18 @@ namespace semsim {
      * A @ref Mediator is a @ref Participant that is neither
      * produced nor consumed in a reaction (e.g. a catalyst).
      */
-    class SEMSIM_PUBLIC Mediator : public Participant {
-      public:
+    class Mediator : public Participant {
+    public:
         /**
          * Construct from the given component and multiplier.
          * @param component A pre-existing component in the model associated with a species.
          * @param multiplier The stoichiometric coefficient for this participant in the reaction.
          */
-        Mediator(const std::string& id, Component* component, double multiplier=1)
-          : id_(id), component_(component), multiplier_(multiplier) {}
+        Mediator(const std::string &id, Component *component, double multiplier = 1)
+                : id_(id), component_(component), multiplier_(multiplier) {}
 
-        bool containsMetaId(const std::string& metaid) const {
-          return id_ == metaid;
+        bool containsMetaId(const std::string &metaid) const {
+            return id_ == metaid;
         }
 
         /**

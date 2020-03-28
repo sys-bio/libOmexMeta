@@ -11,7 +11,7 @@ message(STATUS "ZIPPER_STATIC_LIBRARY ${ZIPPER_STATIC_LIBRARY}")
 target_link_libraries(semsim-tests PRIVATE
         $<TARGET_FILE:semsim-static>
         gtest gtest_main
-        ${LIBSBML_STATIC_LyIBRARY}
+        ${LIBSBML_STATIC_LIBRARY}
         ${LIBXML2_STATIC_LIBRARY}
         ${LIBBZ_STATIC_LIBRARY}
         ${ZLIB_STATIC_LIBRARY}

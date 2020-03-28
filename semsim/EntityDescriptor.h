@@ -14,16 +14,16 @@ namespace semsim {
     /**
      * An @ref EntityDescriptor describes "what" a model element is and "where" it is located in the physical world.
      */
-    class SEMSIM_PUBLIC EntityDescriptor {
-      public:
+    class EntityDescriptor {
+    public:
         typedef std::vector<DescriptorTerm> DescriptorTerms;
 
         /// Empty constructor
         EntityDescriptor() {}
 
         /// Copy constructor
-        EntityDescriptor(const EntityDescriptor& other)
-          : terms_(other.terms_) {}
+        EntityDescriptor(const EntityDescriptor &other)
+                : terms_(other.terms_) {}
 
         /// Move constructor
         EntityDescriptor(EntityDescriptor&& other)
