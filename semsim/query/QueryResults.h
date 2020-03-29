@@ -2,6 +2,8 @@
 # define SEMSIM_QUERY_QUERY_RESULTS_H_
 
 
+#include <vector>
+#include <semsim/Component.h>
 
 namespace semsim {
 
@@ -10,7 +12,7 @@ namespace semsim {
      * @c begin and @c end iterators can be used to access
      * elements returned by the query.
      */
-    class SEMSIM_PUBLIC QueryResults {
+    class QueryResults {
       protected:
         typedef std::vector<Component*> ComponentRefs;
         ComponentRefs refs_;
@@ -28,10 +30,10 @@ namespace semsim {
         typedef ComponentRefs::const_iterator const_iterator;
 
         /// @return A const iterator to the beginning of the resutls.
-        const_iterator begin() const { return refs.begin(); }
-
-        /// @return A const iterator to the beginning of the resutls.
-        const_iterator end() const { return refs.end(); }
+//        const_iterator begin() const { return refs.begin(); }
+//
+//        / @return A const iterator to the beginning of the resutls.
+//        const_iterator end() const { return refs.end(); }
 
     };
 
