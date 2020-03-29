@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="211px" preserveAspectRatio="none" style="width:308px;height:211px;background:#000000;" version="1.1" viewBox="0 0 308 211" width="308px" zoomAndPan="magnify"><defs/><g><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="261" x="5" y="19">Dot Executable: /opt/local/bin/dot</text><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="145" x="5" y="35.2969">File does not exist</text><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="291" x="5" y="51.5938">Cannot find Graphviz. You should try</text><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="0" x="10" y="67.8906"/><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="79" x="5" y="84.1875">@startuml</text><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="57" x="5" y="100.4844">testdot</text><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="72" x="5" y="116.7813">@enduml</text><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="0" x="10" y="133.0781"/><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="17" x="10" y="149.375">or</text><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="0" x="10" y="165.6719"/><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="227" x="5" y="181.9688">java -jar plantuml.jar -testdot</text><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="0" x="10" y="198.2656"/><!--MD5=[98f84554449002f0ab3fef5ea97287b3]
+@startuml
+
+
+
+
+
+
+namespace semsim {
+	class Accessor {
+		+{static} findCompartment(const std::string& sid, LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) : LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment*
+		+{static} findUnitDefinition(const std::string& sid, libsbml::Model* m) : LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition*
+		+{static} hasCompartmentWithMetaId(const std::string& metaid, LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) : bool
+	}
+}
+
+
+namespace semsim {
+	class Annotation {
+		+{static} stripAnnotations(LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument* d) : void
+		+{static} stripAnnotationsFromElement(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* x) : void
+	}
+}
+
+
+namespace semsim {
+	class CHEBI {
+		+{static} get(OntologyTerm t) : Resource
+	}
+}
+
+
+namespace semsim {
+	class CL {
+		+{static} get(OntologyTerm t) : Resource
+	}
+}
+
+
+namespace semsim {
+	class CompositeAnnotation {
+		+CompositeAnnotation(const std::string& metaid, const PhysicalProperty& property, const Entity& entity)
+		+CompositeAnnotation(const std::string& metaid, PhysicalProperty&& property, Entity&& entity)
+		+CompositeAnnotation(const CompositeAnnotation& other)
+		+CompositeAnnotation(CompositeAnnotation&& other)
+		+CompositeAnnotation(const SingularAnnotation& other, const PhysicalProperty& property)
+		+clone() : AnnotationBase* {query}
+		+makeComposite(const PhysicalProperty& prop) : AnnotationPtr {query}
+		#entity_ : Entity
+		+getEntity() : Entity& {query}
+		+getEntity() : Entity&
+		#property_ : PhysicalProperty
+		+isComposite() : bool {query}
+		+isEntityEmpty() : bool {query}
+		+getRDF(const URI& sbml_base_uri, const std::string& format) : std::string {query}
+		+humanize() : std::string {query}
+		#metaid_ : std::string
+		+getMetaId() : std::string& {query}
+		+addTerm(const Relation& relation, const Resource& resource) : void
+		#serializePhysicalPropertyToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) : void {query}
+		+serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) : void {query}
+		+setMetaId(const std::string& metaid) : void
+	}
+}
+
+
+namespace semsim {
+	class DescriptorTerm {
+		+DescriptorTerm(const Relation& relation, const Resource& resource)
+		+DescriptorTerm(Relation&& relation, Resource&& resource)
+	}
+}
+
+
+namespace semsim {
+	class Entity {
+		+Entity(const std::string& metaid)
+		+Entity(const std::string& metaid, const Resource& definition)
+		+Entity(const std::string& metaid, const Resource& definition, const EntityDescriptor& d)
+		+Entity(const std::string& metaid, Resource&& definition, EntityDescriptor&& d)
+		+Entity(const SingularAnnotation& annotation)
+		+Entity(const Entity& other)
+		+Entity(Entity&& other)
+		+descriptors_() : ) ,
+		#descriptors_ : Descriptors
+		+getDescriptors() : Descriptors& {query}
+		+getDescriptors() : Descriptors&
+		+getDescriptor(std::size_t k) : EntityDescriptor& {query}
+		+getDescriptor(std::size_t k) : EntityDescriptor&
+		+getNumDescriptors() : std::size_t {query}
+		+humanize() : std::string {query}
+		#humanizeDescriptors() : std::string {query}
+		+addDescriptor(const EntityDescriptor& d) : void
+		+addDescriptor(EntityDescriptor&& d) : void
+		+serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) : void {query}
+	}
+}
+
+
+namespace semsim {
+	class Exception {
+		+Exception(const char* message)
+		+Exception(std::string message)
+		+~Exception()
+		+what() : char* {query}
+		#msg_ : std::string
+	}
+}
+
+
+namespace semsim {
+	class GO {
+		+{static} get(OntologyTerm t) : Resource
+	}
+}
+
+
+namespace semsim {
+	class Mediator {
+		+Mediator(const std::string& id, Component* component, double multiplier)
+		#component_ : Component*
+		+serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) : URI {query}
+		+containsMetaId(const std::string& metaid) : bool {query}
+		#multiplier_ : double
+		#id_ : std::string
+	}
+}
+
+
+namespace semsim {
+	class MetaID {
+		+{static} modelContainsMetaId(LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m, const std::string& metaid) : bool
+		+{static} assignMetaIds(LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) : void
+	}
+}
+
+
+class ModelStrings {
+	+ModelStrings()
+	+{static} Teusink2000() : std::string
+}
+
+
+namespace semsim {
+	class NullPointerException {
+		-Exception : using Exception::
+	}
+}
+
+
+namespace semsim {
+	class OPB {
+		+{static} get(OntologyTerm t) : Resource
+	}
+}
+
+
+namespace semsim {
+	class Process {
+		+Process()
+		+Process(const SingularAnnotation& annotation)
+		+Process(SingularAnnotation&& annotation)
+		+Process(const CompositeAnnotation& annotation)
+		+Process(CompositeAnnotation&& annotation)
+		+Process(const Process& other)
+		+Process(Process&& other)
+		+clone() : Component* {query}
+		#mediators_ : Mediators
+		#sinks_ : Sinks
+		#sources_ : Sources
+		+containsMetaId(const std::string& metaid) : bool {query}
+		+isProcess() : bool {query}
+		+addMediator(const Mediator& mediator) : void
+		+addSink(const Sink& sink) : void
+		+addSource(const Source& source) : void
+		+serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) : void {query}
+	}
+}
+
+
+namespace semsim {
+	abstract class Query {
+		+~Query()
+		+{abstract} run(Model& model) : QueryResults {query}
+	}
+}
+
+
+namespace semsim {
+	class QueryResults {
+		#refs_ : ComponentRefs
+		+begin() : iterator
+		+end() : iterator
+	}
+}
+
+
+namespace semsim {
+	class RDFReader {
+		+{static} RaptorTermToURI(raptor_term* t) : URI
+		+{static} isMetaId(const std::string& uri) : bool
+		+{static} isMetaId(raptor_term* t) : bool
+		+{static} RaptorTermToRepr(raptor_term* t) : std::string
+		+{static} RaptorURIToString(raptor_uri* u) : std::string
+		+{static} extractMetaId(const std::string& uri) : std::string
+		+{static} extractMetaId(raptor_term* t) : std::string
+		+{static} addTermToAnnotation(AnnotationBase& annotation, const Relation& relation, const Resource& resource) : void
+		+{static} addTermToCompositeAnnotation(CompositeAnnotation& annotation, const Relation& relation, const Resource& resource) : void
+		+{static} addTermToEntity(EntityBase& entity, const Relation& relation, const Resource& resource) : void
+		+{static} addTermToSingularAnnotation(SingularAnnotation& annotation, const Relation& relation, const Resource& resource) : void
+		+{static} applyRDFAnnotationsToModel(Model& model, const std::string& rdf, const std::string& rdf_format) : void
+		+{static} process_triple(void* user_data, raptor_statement* triple) : void
+	}
+}
+
+
+namespace semsim {
+	class SBMLModel {
+		+SBMLModel(LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument* d)
+		+SBMLModel(SBMLModel&& other)
+		+getComponent(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) : Component* {query}
+		+getComponent(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) : Component*
+		+getComponentForId(const std::string& id) : Component* {query}
+		+getComponentForId(const std::string& id) : Component*
+		#d_ : LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument*
+		+getProcess(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) : Process*
+		#element_map_ : SEMSIM_TR1_NAMESPACE_QUAL unordered_map<LIBSBML_CPP_NAMESPACE_QUALIFIER SBase*, Component*>
+		#element_id_map_ : SEMSIM_TR1_NAMESPACE_QUAL unordered_map<std::string, Component*>
+		+hasComponent(const std::string id) : bool {query}
+		+hasComponent(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) : bool {query}
+		+hasProcess(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) : bool {query}
+		+encodeXML() : std::string {query}
+		+getFormat() : std::string {query}
+		+getRDF(const URI& sbml_base_uri, const std::string& format) : std::string {query}
+		+getRDF(const std::string& sbml_base_uri, const std::string& format) : std::string {query}
+		+setComponentAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, const AnnotationBase& annotation) : void
+		+setComponentAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, const AnnotationPtr& annotation) : void
+		+setComponentAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, AnnotationPtr&& annotation) : void
+	}
+}
+
+
+namespace semsim {
+	class SBMLSpecies {
+		+{static} GetSpeciesPhysicalProperty(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s, LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) : PhysicalProperty
+		+{static} SubstanceUnitsAreConc(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s, LIBSBML_CPP_NAMESPACE_QUALIFIER Model* m) : bool
+		+{static} UnitDefIsConc(LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition* ud) : bool
+	}
+}
+
+
+namespace semsim {
+	class SBO {
+		+{static} get(OntologyTerm t) : Resource
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+{static} hasMediatorParticipant : const static Relation
+		+{static} hasMultiplier : const static Relation
+		+{static} hasPhysicalEntityReference : const static Relation
+		+{static} hasSBOTerm : const static Relation
+		+{static} hasSinkParticipant : const static Relation
+		+{static} hasSourceParticipant : const static Relation
+		+{static} hasValue : const static Relation
+		+{static} root : const static std::string
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+SelectQuery(ConditionPtr&& where)
+		#where_ : ConditionPtr
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+~Participant()
+	}
+}
+
+
+namespace semsim {
+	abstract class SEMSIM_PUBLIC {
+		+~Condition()
+		+{abstract} matches(const Component& component) : bool
+	}
+}
+
+
+namespace semsim {
+	abstract class SEMSIM_PUBLIC {
+		+Model()
+		+Model(const Model& other)
+		+Model(Model&& other) noexcept: components_(std::move(othercomponents_))
+		+~Model()
+		+findComponentWithMetaId(const std::string& metaid) : Component&
+		+findComponentWithMetaId(const std::string& metaid) : Component& {query}
+		+addComponent(const Component& component) : Component*
+		+addComponent(Component&& component) : Component*
+		+getComponents() : Components& {query}
+		+getComponents() : Components&
+		+addComponent(const Process& component) : Process*
+		+addComponent(Process&& component) : Process*
+		+containsMetaId(const std::string& metaid) : bool {query}
+		+hasComponentWithMetaId(const std::string& metaid) : bool {query}
+		#components_ : semsim::Components
+		+getNumComponents() : std::size_t {query}
+		+{abstract} encodeXML() : std::string {query}
+		+{abstract} getFormat() : std::string {query}
+		+{abstract} getRDF(const URI& sbml_base_uri, const std::string& format) : std::string {query}
+		+humanize() : std::string {query}
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+{static} encodes : const static Relation
+		+{static} hasPart : const static Relation
+		+{static} hasProperty : const static Relation
+		+{static} hasTaxon : const static Relation
+		+{static} hasVersion : const static Relation
+		+{static} is : const static Relation
+		+{static} isDescribedBy : const static Relation
+		+{static} isEncodedBy : const static Relation
+		+{static} isHomologTo : const static Relation
+		+{static} isPartOf : const static Relation
+		+{static} isPropertyOf : const static Relation
+		+{static} isVersionOf : const static Relation
+		+{static} occursIn : const static Relation
+		+{static} root : const static std::string
+		+{static} humanizeQualifier(const Relation& q) : std::string
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+EntityBase(const std::string& metaid, const Resource& definition)
+		+EntityBase(EntityBase&& other)
+		+EntityBase(const std::string& metaid, Resource&& definition)
+		+EntityBase(const std::string& metaid)
+		+EntityBase(const EntityBase& other)
+		#definitions_ : Definitions
+		+getDefinitions() : Definitions& {query}
+		+getDefinitions() : Definitions&
+		+getDefinition(std::size_t k) : Resource& {query}
+		#terms_ : Terms
+		+getURI(const URI& base) : URI {query}
+		+isEmpty() : bool {query}
+		+matchesDefinition(const Resource& definition) : bool
+		+getNumDefinitions() : std::size_t {query}
+		+humanize() : std::string {query}
+		#humanizeDefintions() : std::string {query}
+		#metaid_ : std::string
+		+toString(std::size_t indent) : std::string {query}
+		+getMetaId() : std::string& {query}
+		+addDefinition(const Resource& definition) : void
+		+addExtraneousTerm(const Term& term) : void
+		+addExtraneousTerm(Term&& term) : void
+		#serializeDefinition(const Resource& def, const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) : void {query}
+		#serializeTerm(const Term& term, const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) : void {query}
+		+serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) : void {query}
+		+setMetaId(const std::string& metaid) : void
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+{static} resolve(const std::string& root, unsigned int t, int n_digits) : Resource
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+URI()
+		+URI(const std::string& uri)
+		+URI(const char* uri)
+		+URI(std::string&& uri)
+		+appendToFrag(const std::string& suffix) : URI {query}
+		+withFrag(const std::string& suffix) : URI {query}
+		+operator==(const URI& other) : bool {query}
+		+encode() : std::string {query}
+		#encoded_uri_ : std::string
+		+toString() : std::string {query}
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+Relation(const URI& uri)
+		+Relation(URI&& uri)
+		#uri_ : URI
+		+getURI() : URI& {query}
+		+operator==(const Relation& other) : bool {query}
+		+humanize() : std::string {query}
+		+toString() : std::string {query}
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+Component()
+		+Component(const SingularAnnotation& annotation)
+		+Component(SingularAnnotation&& annotation)
+		+Component(const CompositeAnnotation& annotation)
+		+Component(CompositeAnnotation&& annotation)
+		+Component(const Component& other)
+		+Component(Component&& other) noexcept: annotation_(std::move(otherannotation_))
+		+~Component()
+		+getAnnotation() : AnnotationBase& {query}
+		+getAnnotation() : AnnotationBase&
+		#annotation_ : AnnotationPtr
+		+clone() : Component* {query}
+		+getCompositeAnnotation() : CompositeAnnotation& {query}
+		+getCompositeAnnotation() : CompositeAnnotation&
+		+getURI(const URI& base) : URI {query}
+		+containsMetaId(const std::string& metaid) : bool {query}
+		+hasAnnotation() : bool {query}
+		+hasCompositeAnnotation() : bool {query}
+		+hasMetaId() : bool {query}
+		+hasSingularAnnotation() : bool {query}
+		+isProcess() : bool {query}
+		+getRDF(const URI& sbml_base_uri, const std::string& format) : std::string {query}
+		+humanize() : std::string {query}
+		#metaid_ : std::string
+		+getMetaId() : std::string& {query}
+		+serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) : void {query}
+		+setAnnotation(AnnotationBase* annotation) : void
+		+setAnnotation(const AnnotationBase& annotation) : void
+		+setAnnotation(AnnotationPtr&& annotation) : void
+		+setMetaId(const std::string& metaid) : void
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+Term(const Relation& relation, const Resource& resource)
+		+Term(Relation&& relation, Resource&& resource)
+		+Term(const Relation& relation, const double value)
+		#relation_ : Relation
+		+getRelation() : Relation& {query}
+		#resource_ : Resource
+		+getResource() : Resource& {query}
+		+isValue() : bool {query}
+		#is_value_ : bool
+		+getValue() : double {query}
+		#value_ : double
+		+toString() : std::string {query}
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+PhysicalProperty(const Resource& resource)
+		+PhysicalProperty(Resource&& resource)
+		+PhysicalProperty(const std::string& resource)
+		+PhysicalProperty(std::string&& resource)
+		#resource_ : Resource
+		+getResource() : Resource& {query}
+		+getResource() : Resource&
+		+humanize() : std::string {query}
+	}
+}
+
+
+namespace semsim {
+	abstract class SEMSIM_PUBLIC {
+		+~AnnotationBase()
+		+{abstract} clone() : AnnotationBase* {query}
+		+{abstract} isComposite() : bool {query}
+		+{abstract} getRDF(const URI& sbml_base_uri, const std::string& format) : std::string {query}
+		+{abstract} humanize() : std::string {query}
+		+{abstract} getMetaId() : std::string& {query}
+		+{abstract} makeComposite(const PhysicalProperty& prop) : std::unique_ptr<AnnotationBase> {query}
+		+{abstract} serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) : void {query}
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+IdentityCondition(const Resource& resource)
+		#resource_ : Resource
+		+matchEntity(const EntityBase& entity) : bool {query}
+		+matches(const Component& component) : bool {query}
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+Resource(const URI& uri)
+		+Resource(URI&& uri)
+		+Resource(Component* element)
+		#element_ : Component*
+		+getURI(const URI& base) : URI {query}
+		#uri_ : URI
+		+isLocal() : bool {query}
+		+operator==(const Resource& other) : bool {query}
+		+humanize() : std::string {query}
+		+toString() : std::string {query}
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+RasqalQueryResult(rasqal_query_results* results)
+		+~RasqalQueryResult()
+		#results_ : rasqal_query_results*
+		+toRDFString(const std::string& format) : std::string
+		+toString() : std::string
+		+asList() : std::vector<std::vector<std::string> >
+		#toRaptorGraph(raptor_world* world, raptor_serializer* serializer) : void
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+EntityDescriptor()
+		+EntityDescriptor(const EntityDescriptor& other)
+		+EntityDescriptor(EntityDescriptor&& other)
+		+EntityDescriptor(std::initializer_list<T> l)
+		#terms_ : DescriptorTerms
+		+isEmpty() : bool {query}
+		+humanize() : std::string {query}
+		#humanizeTerms() : std::string {query}
+		+addTerm(const DescriptorTerm& t) : void
+		+addTerm(DescriptorTerm&& t) : void
+		+addTerm(const Relation& relation, const Resource& resource) : void
+		#serializeDescriptorTermToRDF(const DescriptorTerm& term, const URI& linked_uri, const URI& term_uri, raptor_world* world, raptor_serializer* serializer) : void {query}
+		+serializeToRDF(const URI& sbml_base_uri, const std::string& metaid, raptor_world* world, raptor_serializer* serializer) : void {query}
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+RasqalQuery(const std::string& rdf, const std::string& format, bool is_file)
+		+~RasqalQuery()
+		+run(const std::string& query) : RasqalQueryResult
+		#raptor_iostr_ : raptor_iostream*
+		#base_uri_ : raptor_uri*
+		#uri_ : raptor_uri*
+		#raptor_world_ : raptor_world*
+		#dg_ : rasqal_data_graph*
+		#query_ : rasqal_query*
+		#rasqal_world_ : rasqal_world*
+		#rdf_ : std::string
+		#uri_string_ : unsigned char*
+	}
+}
+
+
+namespace semsim {
+	class SEMSIM_PUBLIC {
+		+SBMLImporter(LIBSBML_CPP_NAMESPACE_QUALIFIER SBMLDocument* d)
+		+SBMLImporter(const std::string& sbml)
+		#extractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) : AnnotationPtr
+		#extractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) : AnnotationPtr
+		#extractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Compartment* c) : AnnotationPtr
+		#extractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Reaction* r) : AnnotationPtr
+		#extractAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Parameter* p) : AnnotationPtr
+		#getComponentFor(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) : Component*
+		#extractCompositeAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) : CompositeAnnotation
+		#extractSpeciesEntity(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) : Entity
+		#extractSpeciesEntityDescriptor(LIBSBML_CPP_NAMESPACE_QUALIFIER Species* s) : EntityDescriptor
+		#m_ : LIBSBML_CPP_NAMESPACE_QUALIFIER Model*
+		+{static} getRelationFromSBMLQual(LIBSBML_CPP_NAMESPACE_QUALIFIER BiolQualifierType_t q) : Relation&
+		#getResourceFor(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) : Resource
+		#result_ : SBMLModel
+		+getSBMLModel() : SBMLModel&
+		+getSBMLModel() : SBMLModel& {query}
+		#{static} extractSingularAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s) : SingularAnnotation
+		#{static} extractSingularAnnotation(LIBSBML_CPP_NAMESPACE_QUALIFIER Parameter* p) : SingularAnnotation
+		#{static} makeUniqueMetaId(const Model& model, const std::string& base) : std::string
+		#assignParticipants(Process& process, LIBSBML_CPP_NAMESPACE_QUALIFIER Reaction* r) : void
+		#{static} populateDefinitionsAndTerms(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, EntityBase& e) : void
+		#{static} populateSBOTerm(LIBSBML_CPP_NAMESPACE_QUALIFIER SBase* s, EntityBase& e) : void
+	}
+}
+
+
+namespace semsim {
+	class SemSimObject {
+		+SemSimObject(SemSimTypes type)
+		#semsimtype : SemSimTypes
+		+hasDescription() : bool {query}
+		+hasMetadataID() : bool {query}
+		+hasName() : bool {query}
+		#description : std::string
+		#metadataID : std::string
+		#name : std::string
+		+getDescription() : std::string& {query}
+		+getMetadataID() : std::string& {query}
+		+getName() : std::string& {query}
+		+copyDescription(const SemSimObject& other) : void
+		+setDescription(const std::string& description) : void
+		+setMetadataID(const std::string& metadataID) : void
+		+setName(const std::string& name) : void
+	}
+}
+
+
+namespace semsim {
+	class SingularAnnotation {
+		+SingularAnnotation(const std::string& metaid, const Resource& definition)
+		+SingularAnnotation(const std::string& metaid)
+		+SingularAnnotation(const std::string& metaid, Resource&& definition)
+		+SingularAnnotation(const SingularAnnotation& other)
+		+SingularAnnotation(SingularAnnotation&& other)
+		+clone() : AnnotationBase* {query}
+		+makeComposite(const PhysicalProperty& prop) : AnnotationPtr {query}
+		+getURI(const URI& base) : URI {query}
+		+isComposite() : bool {query}
+		+getRDF(const URI& sbml_base_uri, const std::string& format) : std::string {query}
+		+humanize() : std::string {query}
+		+getMetaId() : std::string& {query}
+		+serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) : void {query}
+	}
+}
+
+
+namespace semsim {
+	class Sink {
+		+Sink(const std::string& id, Component* component, double multiplier)
+		#component_ : Component*
+		+serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) : URI {query}
+		+containsMetaId(const std::string& metaid) : bool {query}
+		#multiplier_ : double
+		#id_ : std::string
+	}
+}
+
+
+namespace semsim {
+	class Source {
+		+Source(const std::string& id, Component* component, double multiplier)
+		#component_ : Component*
+		+serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) : URI {query}
+		+containsMetaId(const std::string& metaid) : bool {query}
+		#multiplier_ : double
+		#id_ : std::string
+	}
+}
+
+
+
+
+
+
+namespace semsim {
+	Exception <|- - NullPointerException
+}
+
+
+
+
+
+
+namespace semsim {
+	CompositeAnnotation *- - Entity
+}
+
+
+namespace semsim {
+	NullPointerException *- - Exception
+}
+
+
+namespace semsim {
+	SEMSIM_PUBLIC "20" *- - SBMLModel
+}
+
+
+
+
+
+@enduml
+
+PlantUML version 1.2020.05(Thu Mar 19 21:17:32 GMT 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.6+10-post-Ubuntu-1ubuntu118.04.1
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>
