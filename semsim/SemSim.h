@@ -2,7 +2,7 @@
 # define SEMSIM_H_
 
 // important classes (includes may be redundant - that's okay)
-# include "semsim/Preproc.h"
+//# include "semsim/Preproc.h"
 # include "semsim/Relation.h"
 # include "semsim/Resource.h"
 # include "semsim/EntityBase.h"
