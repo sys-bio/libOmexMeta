@@ -10,7 +10,7 @@ namespace semsim {
      * Class for the Chemical Entities of Biological Interest (<a href="https://www.ebi.ac.uk/chebi/">CHEBI</a>) database.
      */
     class SEMSIM_PUBLIC CHEBI : public Ontology {
-      public:
+    public:
         /**
          * Get the full URI of an ontology term given its numeric value.
          * @param  t The numeric value of the ontology term.
@@ -22,7 +22,7 @@ namespace semsim {
          * @endcode
          */
         static Resource get(OntologyTerm t) {
-          return resolve("https://identifiers.org/CHEBI:", t, 5);
+            return resolve("https://identifiers.org/CHEBI:", t, 5);
         }
     };
 }

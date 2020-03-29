@@ -19,7 +19,7 @@
 //# include "semsim/Mediator.h"
 //# include "semsim/Process.h"
 //
-//# include "semsim/Model.h"
+//# include "semsim/SemsimModel.h"
 //# include "semsim/sbml/SBMLModel.h"
 # include "SBMLImporter.h"
 //

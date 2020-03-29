@@ -10,7 +10,7 @@ namespace semsim {
      * This class contains all the SemSim qualifiers.
      */
     class SEMSIM_PUBLIC semsim {
-      public:
+    public:
         const static std::string root;
 
         const static Relation hasSinkParticipant;

@@ -13,39 +13,43 @@ namespace semsim {
      * which can be accessed using the @ref OPB class.
      */
     class SEMSIM_PUBLIC PhysicalProperty {
-      public:
+    public:
         /// Construct from a resource
-        PhysicalProperty(const Resource& resource)
-          : resource_(resource) {}
+        PhysicalProperty(const Resource &resource)
+                : resource_(resource) {}
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
+
         /// Move-construct from a resource
-        PhysicalProperty(Resource&& resource)
-          : resource_(std::move(resource)) {}
-        # endif
+        PhysicalProperty(Resource &&resource)
+                : resource_(std::move(resource)) {}
+
+# endif
 
         /// Construct directly from a string that contains the resource URI
-        PhysicalProperty(const std::string& resource)
-          : resource_(resource) {}
+        PhysicalProperty(const std::string &resource)
+                : resource_(resource) {}
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
+
         /// Move-construct directly from a string that contains the resource URI
-        PhysicalProperty(std::string&& resource)
-          : resource_(std::move(resource)) {}
-        # endif
+        PhysicalProperty(std::string &&resource)
+                : resource_(std::move(resource)) {}
+
+# endif
 
         /**
          * @return The @ref Resource for this @ref PhysicalProperty.
          */
-        const Resource& getResource() const {
-          return resource_;
+        const Resource &getResource() const {
+            return resource_;
         }
 
         /**
          * @return The @ref Resource for this @ref PhysicalProperty.
          */
-        Resource& getResource() {
-          return resource_;
+        Resource &getResource() {
+            return resource_;
         }
 
         /**
@@ -54,10 +58,10 @@ namespace semsim {
          * names.
          */
         std::string humanize() const {
-          return resource_.humanize();
+            return resource_.humanize();
         }
 
-      protected:
+    protected:
         Resource resource_;
     };
 }

@@ -10,7 +10,7 @@ namespace semsim {
      * Class for the <a href="http://bioportal.bioontology.org/ontologies/OPB">Ontology of Physics for Biology</a>.
      */
     class SEMSIM_PUBLIC OPB : public Ontology {
-      public:
+    public:
 
         /**
          * Get the full URI of an ontology term given its numeric value.
@@ -23,7 +23,7 @@ namespace semsim {
          * @endcode
          */
         static Resource get(OntologyTerm t) {
-          return resolve("https://identifiers.org/opb/OPB_", t, 5);
+            return resolve("https://identifiers.org/opb/OPB_", t, 5);
         }
 
     };

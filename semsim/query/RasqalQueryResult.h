@@ -17,24 +17,25 @@ namespace semsim {
      * elements returned by the query.
      */
     class SEMSIM_PUBLIC RasqalQueryResult {
-      public:
-        RasqalQueryResult(rasqal_query_results* results)
-          : results_(results) {}
+    public:
+        RasqalQueryResult(rasqal_query_results *results)
+                : results_(results) {}
+
         ~RasqalQueryResult();
 
         /// Converts the query results to a string
         std::string toString();
 
         /// Converts the query results to an RDF string
-        std::string toRDFString(const std::string& format="rdfxml");
+        std::string toRDFString(const std::string &format = "rdfxml");
 
         /// Converts the query results to a list
         std::vector<std::vector<std::string> > asList();
 
-      protected:
-        void toRaptorGraph(raptor_world* world, raptor_serializer* serializer);
+    protected:
+        void toRaptorGraph(raptor_world *world, raptor_serializer *serializer);
 
-        rasqal_query_results* results_;
+        rasqal_query_results *results_;
     };
 
 }

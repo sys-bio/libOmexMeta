@@ -9,24 +9,25 @@ namespace semsim {
      * The base class for all conditions in queries.
      */
     class SEMSIM_PUBLIC IdentityCondition {
-      public:
+    public:
         /// Construct a matching rule for the given resource.
-        IdentityCondition(const Resource& resource)
-          : resource_(resource) {}
+        IdentityCondition(const Resource &resource)
+                : resource_(resource) {}
 
         /// @return @c true if the condition matches the given element.
-        virtual bool matches(const Component& component) const {
-          if (component.hasCompositeAnnotation())
-            return matchEntity(component.getCompositeAnnotation().getEntity());
-          else
-            return matchEntity(component.getSingularAnnotation());
+        virtual bool matches(const Component &component) const {
+            if (component.hasCompositeAnnotation())
+                return matchEntity(component.getCompositeAnnotation().getEntity());
+            else
+                return matchEntity(component.getSingularAnnotation());
         }
 
         /// @return @c true if the entity matches the resource of this condition.
-        bool matchEntity(const EntityBase& entity) const {
-          return resource_.matchesDefinition(entity);
+        bool matchEntity(const EntityBase &entity) const {
+            return resource_.matchesDefinition(entity);
         }
-      protected:
+
+    protected:
         Resource resource_;
     };
 

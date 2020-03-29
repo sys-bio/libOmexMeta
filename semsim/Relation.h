@@ -13,25 +13,25 @@ namespace semsim {
      * for describing model elements.
      */
     class SEMSIM_PUBLIC Relation {
-      public:
+    public:
         /**
          * Construct from URI.
          * @param uri The URI of the ontology term
          */
-        Relation(const URI& uri)
-          : uri_(uri) {}
+        Relation(const URI &uri)
+                : uri_(uri) {}
 
-        Relation(URI&& uri) : uri_(std::move(uri)) {}
+        Relation(URI &&uri) : uri_(std::move(uri)) {}
 
         std::string toString() const {
-          return uri_.toString();
+            return uri_.toString();
         }
 
         /**
          * @return the URI for this relation.
          */
-        const URI& getURI() const {
-          return uri_;
+        const URI &getURI() const {
+            return uri_;
         }
 
         /**
@@ -42,11 +42,11 @@ namespace semsim {
         std::string humanize() const;
 
         /// Comparison operator
-        bool operator==(const Relation& other) const {
-          return uri_ == other.uri_;
+        bool operator==(const Relation &other) const {
+            return uri_ == other.uri_;
         }
 
-      protected:
+    protected:
         URI uri_;
     };
 }
