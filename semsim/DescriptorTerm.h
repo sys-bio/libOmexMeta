@@ -12,14 +12,14 @@ namespace semsim {
      * to describe "where" a model element is in the physical world.
      */
     class SEMSIM_PUBLIC DescriptorTerm : public Term {
-      public:
+    public:
         /// Construct from a @ref Resource (URI) and @ref Relation
-        DescriptorTerm(const Relation& relation, const Resource& resource)
-          : Term(relation,resource) {}
+        DescriptorTerm(const Relation &relation, const Resource &resource)
+                : Term(relation, resource) {}
 
         /// Move-construct from a @ref Resource (URI) and @ref Relation
-        DescriptorTerm(Relation&& relation, Resource&& resource)
-          : Term(std::move(relation),std::move(resource)) {}
+        DescriptorTerm(Relation &&relation, Resource &&resource)
+                : Term(std::move(relation), std::move(resource)) {}
     };
 }
 

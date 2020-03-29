@@ -11,13 +11,13 @@ namespace semsim {
      *
      */
     class SemSimObject {
-      protected:
+    protected:
         std::string name;
         std::string description;
         std::string metadataID;
         SemSimTypes semsimtype;
 
-      public:
+    public:
         SemSimObject(SemSimTypes type);
 
         /**
@@ -27,10 +27,10 @@ namespace semsim {
         // SemSimObject(const SemSimObject& other);
 
         /** @return The object's free-text description */
-        const std::string& getDescription() const;
+        const std::string &getDescription() const;
 
         /** @return The object's name */
-        const std::string& getName() const;
+        const std::string &getName() const;
 
         /** @return Whether the object has an associated name*/
         bool hasName() const;
@@ -45,19 +45,19 @@ namespace semsim {
          * Set the object's name
          * @param name The name to apply
          */
-        void setName(const std::string& name);
+        void setName(const std::string &name);
 
         /**
          * Set the component's free-text description
          * @param description The free-text description
          */
-        void setDescription(const std::string& description);
+        void setDescription(const std::string &description);
 
         /**
          * Copy this object's description from another SemSimObject
          * @param other The object with the description we want to copy
          */
-        void copyDescription(const SemSimObject& other);
+        void copyDescription(const SemSimObject &other);
 
         /**
          * Set the component's metadata ID. These ID's are often used
@@ -67,7 +67,7 @@ namespace semsim {
          *
          * @param metadataID The ID to apply
          */
-        void setMetadataID(const std::string& metadataID);
+        void setMetadataID(const std::string &metadataID);
 
         /**
          * @return The component's metadata ID. These ID's are used
@@ -75,7 +75,7 @@ namespace semsim {
          * to link XML elements to RDF statements that describe
          * the elements.
          */
-        const std::string& getMetadataID() const;
+        const std::string &getMetadataID() const;
 
 
         /** @return This object's SemSimType */

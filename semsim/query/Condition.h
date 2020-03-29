@@ -9,12 +9,12 @@ namespace semsim {
      * The base class for all conditions in queries.
      */
     class SEMSIM_PUBLIC Condition {
-      public:
+    public:
         /// Virtual dtor
         virtual ~Condition();
 
         /// @return @c true if the condition matches the given element.
-        virtual bool matches(const Component& component) = 0;
+        virtual bool matches(const Component &component) = 0;
     };
 
     /**

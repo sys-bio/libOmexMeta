@@ -13,10 +13,10 @@ namespace semsim {
      * elements returned by the query.
      */
     class QueryResults {
-      protected:
-        typedef std::vector<Component*> ComponentRefs;
+    protected:
+        typedef std::vector<Component *> ComponentRefs;
         ComponentRefs refs_;
-      public:
+    public:
         /// Iterator type for the query results.
         typedef ComponentRefs::iterator iterator;
 

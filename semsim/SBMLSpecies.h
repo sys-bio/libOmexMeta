@@ -16,13 +16,13 @@ namespace semsim {
          * @c false otherwise.
          */
         static inline bool UnitDefIsConc(
-                LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition *ud) {
+                libsbml::UnitDefinition *ud) {
             if (ud->getNumUnits() != 2)
                 return false;
             int n_mass = 0;
             int d_vol = 0;
             for (unsigned int k = 0; k < ud->getNumUnits(); ++k) {
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Unit *u = ud->getUnit(k);
+                libsbml::Unit *u = ud->getUnit(k);
                 if ((!u->isSetExponent() || u->getExponent() == 1) &&
                     (u->isMole() || u->isGram() || u->isKilogram() || u->isItem()))
                     n_mass++;
@@ -43,12 +43,12 @@ namespace semsim {
          * or a deduction cannot be made.
          */
         static inline bool SubstanceUnitsAreConc(
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Species *s,
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Model *m) {
+                libsbml::Species *s,
+                libsbml::Model *m) {
             Accessor accessors;
             try {
                 if (s->isSetUnits()) {
-                    LIBSBML_CPP_NAMESPACE_QUALIFIER UnitDefinition *u = accessors.findUnitDefinition(s->getUnits(), m);
+                    libsbml::UnitDefinition *u = accessors.findUnitDefinition(s->getUnits(), m);
                     return UnitDefIsConc(u);
                 }
             } catch (std::out_of_range) {
@@ -73,8 +73,8 @@ namespace semsim {
          * If none of these rules matches, a @c std::domain_error is thrown.
          */
         static inline PhysicalProperty GetSpeciesPhysicalProperty(
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Species *s,
-                LIBSBML_CPP_NAMESPACE_QUALIFIER Model *m) {
+                libsbml::Species *s,
+                libsbml::Model *m) {
             if (s->isSetHasOnlySubstanceUnits() && s->getHasOnlySubstanceUnits())
                 return PhysicalProperty(OPB::get(1389));
             if (s->isSetHasOnlySubstanceUnits() && !s->getHasOnlySubstanceUnits())

@@ -34,45 +34,49 @@ namespace semsim {
      * In the future, this may be extended to allow multiple @ref EntityDescriptor elements.
      */
     class SEMSIM_PUBLIC Entity : public EntityBase {
-      public:
+    public:
         /// The type used to store the list of entity descriptors. Treat as opaque.
         typedef std::vector<EntityDescriptor> Descriptors;
 
         /// Empty constructot
-        Entity(const std::string& metaid) : EntityBase(metaid) {}
+        Entity(const std::string &metaid) : EntityBase(metaid) {}
 
         /// Construct from a definition URI
-        Entity(const std::string& metaid, const Resource& definition)
-          : EntityBase(metaid, definition) {}
+        Entity(const std::string &metaid, const Resource &definition)
+                : EntityBase(metaid, definition) {}
 
         /// Construct from an @ref EntityDescriptor
-        Entity(const std::string& metaid, const Resource& definition, const EntityDescriptor& d)
-          : EntityBase(metaid, definition), descriptors_(1,d) {}
+        Entity(const std::string &metaid, const Resource &definition, const EntityDescriptor &d)
+                : EntityBase(metaid, definition), descriptors_(1, d) {}
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
+
         /// Move-construct from an @ref EntityDescriptor
-        Entity(const std::string& metaid, Resource&& definition, EntityDescriptor&& d)
-          : EntityBase(metaid, {std::move(definition)}), descriptors_({std::move(d)}) {}
-        # endif
+        Entity(const std::string &metaid, Resource &&definition, EntityDescriptor &&d)
+                : EntityBase(metaid, {std::move(definition)}), descriptors_({std::move(d)}) {}
+
+# endif
 
         /// Construct from a singular annotation. Copy all definitions and terms.
-        Entity(const SingularAnnotation& annotation)
-          : EntityBase(annotation) {}
+        Entity(const SingularAnnotation &annotation)
+                : EntityBase(annotation) {}
 
         /// Get the number of @ref EntityDescriptor elements contained in this @ref Entity.
         std::size_t getNumDescriptors() const {
-          return descriptors_.size();
+            return descriptors_.size();
         }
 
         /// Copy constructor
-        Entity(const Entity& other)
-          : EntityBase(other), descriptors_(other.descriptors_) {}
+        Entity(const Entity &other)
+                : EntityBase(other), descriptors_(other.descriptors_) {}
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
+
         /// Move constructor
-        Entity(Entity&& other)
-          : EntityBase(std::move(other)), descriptors_(other.descriptors_) {}
-        # endif
+        Entity(Entity &&other)
+                : EntityBase(std::move(other)), descriptors_(other.descriptors_) {}
+
+# endif
 
         /**
          * Get an iterable range of entity descriptors.
@@ -88,8 +92,8 @@ namespace semsim {
          * @endcode
          * @return An iterable of @ref EntityDescriptor elements.
          */
-        const Descriptors& getDescriptors() const {
-          return descriptors_;
+        const Descriptors &getDescriptors() const {
+            return descriptors_;
         }
 
         /**
@@ -106,36 +110,38 @@ namespace semsim {
          * @endcode
          * @return An iterable of @ref EntityDescriptor elements.
          */
-        Descriptors& getDescriptors() {
-          return descriptors_;
+        Descriptors &getDescriptors() {
+            return descriptors_;
         }
 
         /**
          * Add an @ref EntityDescriptor to this @ref Entity (copy).
          * @param d The descriptor to add.
          */
-        void addDescriptor(const EntityDescriptor& d) {
-          descriptors_.push_back(d);
+        void addDescriptor(const EntityDescriptor &d) {
+            descriptors_.push_back(d);
         }
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
+
         /**
          * Add an @ref EntityDescriptor to this @ref Entity (move).
          * @param d The descriptor to add.
          */
-        void addDescriptor(EntityDescriptor&& d) {
-          descriptors_.emplace_back(std::move(d));
+        void addDescriptor(EntityDescriptor &&d) {
+            descriptors_.emplace_back(std::move(d));
         }
-        # endif
+
+# endif
 
         /// Get the @ref EntityDescriptor at index @p k.
-        const EntityDescriptor& getDescriptor(std::size_t k) const {
-          return descriptors_.at(k);
+        const EntityDescriptor &getDescriptor(std::size_t k) const {
+            return descriptors_.at(k);
         }
 
         /// Get the @ref EntityDescriptor reference at index @p k.
-        EntityDescriptor& getDescriptor(std::size_t k) {
-          return descriptors_.at(k);
+        EntityDescriptor &getDescriptor(std::size_t k) {
+            return descriptors_.at(k);
         }
 
         /**
@@ -147,10 +153,10 @@ namespace semsim {
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          * @return the URI for this entity.
          */
-        void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const {
-          EntityBase::serializeToRDF(sbml_base_uri, world, serializer);
-          for (Descriptors::const_iterator i(descriptors_.begin()); i!=descriptors_.end(); ++i)
-            i->serializeToRDF(sbml_base_uri, metaid_, world, serializer);
+        void serializeToRDF(const URI &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
+            EntityBase::serializeToRDF(sbml_base_uri, world, serializer);
+            for (Descriptors::const_iterator i(descriptors_.begin()); i != descriptors_.end(); ++i)
+                i->serializeToRDF(sbml_base_uri, metaid_, world, serializer);
         }
 
         /**
@@ -159,15 +165,15 @@ namespace semsim {
          * names.
          */
         virtual std::string humanize() const {
-          return " -> (is) -> " + humanizeDefintions() + humanizeDescriptors();
+            return " -> (is) -> " + humanizeDefintions() + humanizeDescriptors();
         }
 
-      protected:
+    protected:
         std::string humanizeDescriptors() const {
-          if (descriptors_.size() == 1)
-            return descriptors_.at(0).humanize();
-          else
-            return "";
+            if (descriptors_.size() == 1)
+                return descriptors_.at(0).humanize();
+            else
+                return "";
         }
 
         /// Stores all descriptors.
