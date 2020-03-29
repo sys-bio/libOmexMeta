@@ -1,6 +1,7 @@
 # include "semsim/omex/SBMLOmex.h"
 # include "semsim/SBMLImporter.h"
 # include "semsim/RDFReader.h"
+# include "semsim/SemSim.h"
 
 # include "combine/combinearchive.h"
 # include "combine/knownformats.h"

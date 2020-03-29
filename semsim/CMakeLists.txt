@@ -36,7 +36,7 @@ set(SEMSIM_SOURCES
         ontologies/Ontology.h
         Participant.h
         PhysicalProperty.h
-        Preproc.h
+#        Preproc.h
         Process.h
         RaptorUtils.h
         Relation.h Relation.cpp
@@ -95,10 +95,10 @@ target_include_directories(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so incl
 target_link_libraries(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so libraries propagate into test binaries
         ${LIBXML2_STATIC_LIBRARY}
         ${ZLIB_STATIC_LIBRARY}
-        ${LIBCOMBINE_STATIC_LIB}
         ${ZIPPER_STATIC_LIBRARY}
-        ${LIBSBML_STATIC_LIBRARY}
         ${LIBBZ_STATIC_LIBRARY}
+        ${LIBSBML_STATIC_LIBRARY}
+        ${LIBCOMBINE_STATIC_LIB}
         ${REDLAND_LIBRARY}
         ${RASQAL_LIBRARY}
         ${RAPTOR2_LIBRARY}
