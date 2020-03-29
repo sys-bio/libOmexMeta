@@ -16,21 +16,14 @@ namespace semsim {
          * @c false otherwise.
          */
         static inline bool UnitDefIsConc(
-<<<<<<< HEAD
-                libsbml:: UnitDefinition *ud) {
-=======
                 libsbml::UnitDefinition *ud) {
->>>>>>> ciaran-develop
             if (ud->getNumUnits() != 2)
                 return false;
             int n_mass = 0;
             int d_vol = 0;
             for (unsigned int k = 0; k < ud->getNumUnits(); ++k) {
-<<<<<<< HEAD
-                libsbml:: Unit *u = ud->getUnit(k);
-=======
+
                 libsbml::Unit *u = ud->getUnit(k);
->>>>>>> ciaran-develop
                 if ((!u->isSetExponent() || u->getExponent() == 1) &&
                     (u->isMole() || u->isGram() || u->isKilogram() || u->isItem()))
                     n_mass++;
@@ -51,21 +44,13 @@ namespace semsim {
          * or a deduction cannot be made.
          */
         static inline bool SubstanceUnitsAreConc(
-<<<<<<< HEAD
-                libsbml:: Species *s,
-                libsbml:: Model *m) {
-            Accessor accessors;
-            try {
-                if (s->isSetUnits()) {
-                    libsbml:: UnitDefinition *u = accessors.findUnitDefinition(s->getUnits(), m);
-=======
+
                 libsbml::Species *s,
                 libsbml::Model *m) {
             Accessor accessors;
             try {
                 if (s->isSetUnits()) {
                     libsbml::UnitDefinition *u = accessors.findUnitDefinition(s->getUnits(), m);
->>>>>>> ciaran-develop
                     return UnitDefIsConc(u);
                 }
             } catch (std::out_of_range) {
@@ -90,13 +75,9 @@ namespace semsim {
          * If none of these rules matches, a @c std::domain_error is thrown.
          */
         static inline PhysicalProperty GetSpeciesPhysicalProperty(
-<<<<<<< HEAD
-                libsbml:: Species *s,
-                libsbml:: Model *m) {
-=======
+
                 libsbml::Species *s,
                 libsbml::Model *m) {
->>>>>>> ciaran-develop
             if (s->isSetHasOnlySubstanceUnits() && s->getHasOnlySubstanceUnits())
                 return PhysicalProperty(OPB::get(1389));
             if (s->isSetHasOnlySubstanceUnits() && !s->getHasOnlySubstanceUnits())

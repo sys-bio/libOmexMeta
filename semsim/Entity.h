@@ -33,11 +33,8 @@ namespace semsim {
      * Currently, an @ref Entity can have zero or one @ref EntityDescriptor elements.
      * In the future, this may be extended to allow multiple @ref EntityDescriptor elements.
      */
-<<<<<<< HEAD
     class Entity : public EntityBase {
-=======
-    class SEMSIM_PUBLIC Entity : public EntityBase {
->>>>>>> ciaran-develop
+
     public:
         /// The type used to store the list of entity descriptors. Treat as opaque.
         typedef std::vector<EntityDescriptor> Descriptors;

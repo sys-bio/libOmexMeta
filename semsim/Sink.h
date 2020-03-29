@@ -12,11 +12,8 @@ namespace semsim {
      * A @ref Sink is a @ref Participant that is produced
      * by a reaction (the end point of the reaction).
      */
-<<<<<<< HEAD
     class Sink : public Participant {
-=======
-    class SEMSIM_PUBLIC Sink : public Participant {
->>>>>>> ciaran-develop
+
     public:
         /**
          * Construct from the given component and multiplier.

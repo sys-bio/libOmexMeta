@@ -10,6 +10,7 @@
 
 # include <string>
 # include <sstream>
+#include <utility>
 
 namespace semsim {
 
@@ -21,11 +22,7 @@ namespace semsim {
      *
      * An @ref EntityBase will always have its own URI in the serialized RDF.
      */
-<<<<<<< HEAD
     class EntityBase {
-=======
-    class SEMSIM_PUBLIC EntityBase {
->>>>>>> ciaran-develop
     public:
         /// The type used to store the list of definition URIs. Treat as opaque.
         typedef std::vector<Resource> Definitions;
@@ -33,40 +30,29 @@ namespace semsim {
         typedef std::vector<Term> Terms;
 
         /// Construct from a definition URI
-        EntityBase(const std::string &metaid, const Resource &definition)
-                : metaid_(metaid), definitions_(1, definition) {}
-<<<<<<< HEAD
+        EntityBase(std::string metaid, const Resource &definition)
+                : metaid_(std::move(metaid)), definitions_(1, definition) {}
 
-# if __cplusplus >= 201103L
-=======
-
-# if __cplusplus >= 201103L
-
->>>>>>> ciaran-develop
         /// Move constructor
-        EntityBase(EntityBase &&other)
+        EntityBase(EntityBase &&other) noexcept
                 : metaid_(std::move(other.metaid_)),
                   definitions_(std::move(other.definitions_)),
                   terms_(std::move(other.terms_)) {}
 
         /// Move-construct from an @ref EntityDescriptor
-        EntityBase(const std::string &metaid, Resource &&definition)
-                : metaid_(metaid), definitions_({std::move(definition)}) {}
+        EntityBase(std::string metaid, Resource &&definition)
+                : metaid_(std::move(metaid)), definitions_({std::move(definition)}) {}
 
         /// Move-construct from an @ref EntityDescriptor
         EntityBase(std::string &&metaid, Resource &&definition)
                 : metaid_(std::move(metaid)), definitions_({std::move(definition)}) {}
 
-# endif
-
         /// Construct from a meta id for this entity
-        EntityBase(const std::string &metaid)
+        explicit EntityBase(const std::string &metaid)
                 : metaid_(metaid) {}
 
         /// Copy constructor
-        EntityBase(const EntityBase &other)
-                : metaid_(other.metaid_),
-                  definitions_(other.definitions_),
+        EntityBase(const EntityBase &other): metaid_(other.metaid_), definitions_(other.definitions_),
                   terms_(other.terms_) {}
 
         /// Get the meta id for this element
@@ -130,8 +116,8 @@ namespace semsim {
          * @return @c true if this entity has a definition that matches the given definition
          */
         bool matchesDefinition(const Resource &definition) {
-            for (Definitions::const_iterator i = definitions_.begin(); i != definitions_.end(); ++i) {
-                if ((*i) == definition)
+            for (const auto & i : definitions_) {
+                if (i == definition)
                     return true;
             }
             return false;
@@ -147,8 +133,6 @@ namespace semsim {
             terms_.push_back(term);
         }
 
-# if __cplusplus >= 201103L
-
         /**
          * Add an extraneous term that cannot be classified as a definition
          * because it does not use the bqb:is qualifier.
@@ -159,23 +143,21 @@ namespace semsim {
             terms_.emplace_back(std::move(term));
         }
 
-# endif
-
         /// @return Whether this @ref Entity is empty (i.e. has no definitions).
         bool isEmpty() const {
-            return !definitions_.size();
+            return definitions_.empty();
         }
 
         /// Convert to human-readable string.
         std::string toString(std::size_t indent) const {
             std::stringstream ss;
             ss << "    " << "definitions:\n";
-            for (Definitions::const_iterator i(definitions_.begin()); i != definitions_.end(); ++i)
-                ss << "    " << "  " << i->toString() << "\n";
-            if (terms_.size()) {
+            for (const auto & definition : definitions_)
+                ss << "    " << "  " << definition.toString() << "\n";
+            if (!terms_.empty()) {
                 ss << "    " << "extraneous terms:\n";
-                for (Terms::const_iterator i(terms_.begin()); i != terms_.end(); ++i)
-                    ss << "    " << "  " << i->toString() << "\n";
+                for (const auto & term : terms_)
+                    ss << "    " << "  " << term.toString() << "\n";
             } else {
                 ss << "    " << "extraneous terms: none\n";
             }
@@ -193,10 +175,10 @@ namespace semsim {
          */
         void serializeToRDF(const URI &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
             // std::cerr << "serialize " << metaid_ << " definitions " << definitions_.size() << ", terms " << terms_.size() << "\n";
-            for (Definitions::const_iterator i(definitions_.begin()); i != definitions_.end(); ++i)
-                serializeDefinition(*i, sbml_base_uri, world, serializer);
-            for (Terms::const_iterator i(terms_.begin()); i != terms_.end(); ++i)
-                serializeTerm(*i, sbml_base_uri, world, serializer);
+            for (const auto & definition : definitions_)
+                serializeDefinition(definition, sbml_base_uri, world, serializer);
+            for (const auto & term : terms_)
+                serializeTerm(term, sbml_base_uri, world, serializer);
         }
 
         /**
@@ -238,7 +220,7 @@ namespace semsim {
 
         std::string humanizeDefintions() const {
             std::stringstream ss;
-            for (Definitions::const_iterator i = definitions_.begin(); i != definitions_.end(); ++i) {
+            for (auto i = definitions_.begin(); i != definitions_.end(); ++i) {
                 if (i != definitions_.begin())
                     ss << "/";
                 ss << i->humanize();

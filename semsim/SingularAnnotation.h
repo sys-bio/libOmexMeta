@@ -19,11 +19,7 @@ namespace semsim {
      * ideally, one should use a single definition URI that best
      * captures the model element.
      */
-<<<<<<< HEAD
     class SingularAnnotation : public AnnotationBase, public EntityBase {
-=======
-    class SEMSIM_PUBLIC SingularAnnotation : public AnnotationBase, public EntityBase {
->>>>>>> ciaran-develop
     public:
         /**
          * Construct a SingularAnnotation given a definition URL.

@@ -8,8 +8,8 @@ set(SEMSIM_SOURCES
         ontologies/OPB.h
         ontologies/SBO.h
 
-        query/Condition.h
-        query/IdentityCondition.h
+#        query/Condition.h
+#        query/IdentityCondition.h
         #        query/Query.h
         #        query/QueryResults.h
         query/RasqalQuery.h query/RasqalQuery.cpp
