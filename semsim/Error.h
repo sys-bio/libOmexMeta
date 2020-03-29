@@ -48,7 +48,7 @@ namespace semsim {
     };
 
 
-    class NullPointerException: public Exception {
+    class NullPointerException : public Exception {
         using Exception::Exception;
     };
 

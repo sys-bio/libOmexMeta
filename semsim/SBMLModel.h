@@ -1,37 +1,39 @@
 # ifndef SEMSIM_SBML_MODEL_H_
 # define SEMSIM_SBML_MODEL_H_
 
-# include "../third_party/libsbml-5.18.0/INSTALL/include/sbml/SBMLTypes.h"
-
+# include "sbml/SBMLTypes.h"
 # include <raptor2.h>
-
 # include "Preproc.h"
+<<<<<<< HEAD
 # include "SemSimModel.h"
 
+=======
+# include "SemsimModel.h"
+>>>>>>> ciaran-develop
 # include "Process.h"
 # include "BiomodelsQualifiers.h"
 # include "SemSimQualifiers.h"
 # include "MetaID.h"
 # include "Annotation.h"
-
-
-
-# if __cplusplus >= 201103L
 # include <unordered_map>
-# else
-# include <tr1/unordered_map>
-# endif
 
+<<<<<<< HEAD
 # if defined SWIG
 # define libsbml::
 # endif
+=======
+>>>>>>> ciaran-develop
 
 namespace semsim {
 
     /**
      * This class represents an SBML model imported into SemSim.
      */
+<<<<<<< HEAD
     class SBMLModel : public SemSimModel {
+=======
+    class SEMSIM_PUBLIC SBMLModel : public SemsimModel {
+>>>>>>> ciaran-develop
     public:
         /**
          * Construct from an SBML model.
@@ -41,7 +43,11 @@ namespace semsim {
          * @param m The SBML model to use for initialization.
          */
         SBMLModel(libsbml::SBMLDocument *d)
+<<<<<<< HEAD
                 : SemSimModel(), d_(d) {
+=======
+                : SemsimModel(), d_(d) {
+>>>>>>> ciaran-develop
             libsbml::Model *m = d->getModel();
             // all elements must have meta ids
             MetaID::assignMetaIds(m);
@@ -52,6 +58,7 @@ namespace semsim {
                     element_map_.insert(std::make_pair(c, o));
                     o->setMetaId(c->getMetaId());
                     if (c->isSetIdAttribute())
+<<<<<<< HEAD
                 element_id_map_.insert(std::make_pair(c->getId(), o));
             }
           }
@@ -83,16 +90,57 @@ namespace semsim {
               o->setMetaId(p->getMetaId());
               if (p->isSetIdAttribute())
                 element_id_map_.insert(std::make_pair(p->getId(), o));
+=======
+                        element_id_map_.insert(std::make_pair(c->getId(), o));
+                }
             }
-          }
+            for (unsigned int k = 0; k < m->getNumSpecies(); ++k) {
+                libsbml::Species *s = m->getSpecies(k);
+                if (s->isSetMetaId()) {
+                    Component *o = addComponent(Component());
+                    element_map_.insert(std::make_pair(s, o));
+                    o->setMetaId(s->getMetaId());
+                    if (s->isSetIdAttribute())
+                        element_id_map_.insert(std::make_pair(s->getId(), o));
+                }
+            }
+            for (unsigned int k = 0; k < m->getNumReactions(); ++k) {
+                libsbml::Reaction *r = m->getReaction(k);
+                if (r->isSetMetaId()) {
+                    Component *o = addComponent(Process());
+                    element_map_.insert(std::make_pair(r, o));
+                    o->setMetaId(r->getMetaId());
+                    if (r->isSetIdAttribute())
+                        element_id_map_.insert(std::make_pair(r->getId(), o));
+                }
+            }
+            for (unsigned int k = 0; k < m->getNumParameters(); ++k) {
+                libsbml::Parameter *p = m->getParameter(k);
+                if (p->isSetMetaId()) {
+                    Component *o = addComponent(Component());
+                    element_map_.insert(std::make_pair(p, o));
+                    o->setMetaId(p->getMetaId());
+                    if (p->isSetIdAttribute())
+                        element_id_map_.insert(std::make_pair(p->getId(), o));
+                }
+>>>>>>> ciaran-develop
+            }
         }
 
         /// Move constructor
+<<<<<<< HEAD
         SBMLModel(SBMLModel&& other)
           : SemSimModel(std::move(other)),
             element_map_(std::move(other.element_map_)),
             element_id_map_(std::move(other.element_id_map_)),
             d_(other.d_) {}
+=======
+        SBMLModel(SBMLModel &&other)
+                : SemsimModel(std::move(other)),
+                  element_map_(std::move(other.element_map_)),
+                  element_id_map_(std::move(other.element_id_map_)),
+                  d_(other.d_) {}
+>>>>>>> ciaran-develop
 
         /**
          * Set the annotation of a @ref Component based on SBML id.
@@ -100,9 +148,15 @@ namespace semsim {
          * @param id         The SBML element.
          * @param annotation The annotation for the component.
          */
+<<<<<<< HEAD
         void setComponentAnnotation(libsbml:: SBase* s, const AnnotationBase& annotation) {
           if (hasComponent(s))
             element_map_.find(s)->second->setAnnotation(annotation);
+=======
+        void setComponentAnnotation(libsbml::SBase *s, const AnnotationBase &annotation) {
+            if (hasComponent(s))
+                element_map_.find(s)->second->setAnnotation(annotation);
+>>>>>>> ciaran-develop
         }
 
         /**
@@ -111,23 +165,37 @@ namespace semsim {
          * @param s         The SBML element.
          * @param annotation The annotation for the component.
          */
+<<<<<<< HEAD
         void setComponentAnnotation(libsbml:: SBase* s, const AnnotationPtr& annotation) {
           if (hasComponent(s))
             element_map_.find(s)->second->setAnnotation(*annotation);
+=======
+        void setComponentAnnotation(libsbml::SBase *s, const AnnotationPtr &annotation) {
+            if (hasComponent(s))
+                element_map_.find(s)->second->setAnnotation(*annotation);
+>>>>>>> ciaran-develop
         }
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
+
         /**
          * Set the annotation of a @ref Component based on SBML id.
          * Do nothing if the id is not mapped.
          * @param id         The SBML element.
          * @param annotation The annotation for the component.
          */
+<<<<<<< HEAD
         void setComponentAnnotation(libsbml:: SBase* s, AnnotationPtr&& annotation) {
           if (hasComponent(s))
             element_map_.find(s)->second->setAnnotation(std::move(annotation));
+=======
+        void setComponentAnnotation(libsbml::SBase *s, AnnotationPtr &&annotation) {
+            if (hasComponent(s))
+                element_map_.find(s)->second->setAnnotation(std::move(annotation));
+>>>>>>> ciaran-develop
         }
-        # endif
+
+# endif
 
         /**
          * Check whether a @ref Component exists for the given SBML id.
@@ -136,7 +204,7 @@ namespace semsim {
          * @return    Whether the SBML element has been mapped to a libSemSim @ref Component or not.
          */
         bool hasComponent(const std::string id) const {
-          return !(element_id_map_.find(id) == element_id_map_.end());
+            return !(element_id_map_.find(id) == element_id_map_.end());
         }
 
         /**
@@ -145,8 +213,13 @@ namespace semsim {
          * @param  s The SBML element.
          * @return    Whether the SBML element has been mapped to a libSemSim @ref Component or not.
          */
+<<<<<<< HEAD
         bool hasComponent(libsbml:: SBase* s) const {
           return !(element_map_.find(s) == element_map_.end());
+=======
+        bool hasComponent(libsbml::SBase *s) const {
+            return !(element_map_.find(s) == element_map_.end());
+>>>>>>> ciaran-develop
         }
 
         /**
@@ -155,8 +228,13 @@ namespace semsim {
          * @param  s The SBML element.
          * @return    Whether the SBML element has been mapped to a libSemSim @ref Process or not.
          */
+<<<<<<< HEAD
         bool hasProcess(libsbml:: SBase* s) const {
           return !(element_map_.find(s) == element_map_.end()) && element_map_.find(s)->second->isProcess();
+=======
+        bool hasProcess(libsbml::SBase *s) const {
+            return !(element_map_.find(s) == element_map_.end()) && element_map_.find(s)->second->isProcess();
+>>>>>>> ciaran-develop
         }
 
         /**
@@ -165,10 +243,17 @@ namespace semsim {
          * @param  s The SBML element.
          * @return    The component for the given SBML id (if it exists).
          */
+<<<<<<< HEAD
         const Component* getComponent(libsbml:: SBase* s) const {
           if (!hasComponent(s))
             throw std::out_of_range("Component does not exist in mapping table");
           return element_map_.find(s)->second;
+=======
+        const Component *getComponent(libsbml::SBase *s) const {
+            if (!hasComponent(s))
+                throw std::out_of_range("Component does not exist in mapping table");
+            return element_map_.find(s)->second;
+>>>>>>> ciaran-develop
         }
 
         /**
@@ -177,10 +262,17 @@ namespace semsim {
          * @param  s The SBML element.
          * @return    The component for the given SBML id (if it exists).
          */
+<<<<<<< HEAD
         Component* getComponent(libsbml:: SBase* s) {
           if (!hasComponent(s))
             throw std::out_of_range("Component does not exist in mapping table");
           return element_map_.find(s)->second;
+=======
+        Component *getComponent(libsbml::SBase *s) {
+            if (!hasComponent(s))
+                throw std::out_of_range("Component does not exist in mapping table");
+            return element_map_.find(s)->second;
+>>>>>>> ciaran-develop
         }
 
         /**
@@ -189,10 +281,17 @@ namespace semsim {
          * @param  s The SBML element.
          * @return    The physical process for the given SBML id (if it exists).
          */
+<<<<<<< HEAD
         Process* getProcess(libsbml:: SBase* s) {
           if (!hasProcess(s))
             throw std::out_of_range("Component does not exist in mapping table");
           return dynamic_cast<Process*>(element_map_.find(s)->second);
+=======
+        Process *getProcess(libsbml::SBase *s) {
+            if (!hasProcess(s))
+                throw std::out_of_range("Component does not exist in mapping table");
+            return dynamic_cast<Process *>(element_map_.find(s)->second);
+>>>>>>> ciaran-develop
         }
 
         /**
@@ -201,10 +300,10 @@ namespace semsim {
          * @param  id The SBML id.
          * @return    The component for the given SBML id (if it exists).
          */
-        const Component* getComponentForId(const std::string& id) const {
-          if (!hasComponent(id))
-            throw std::out_of_range("Component does not exist in mapping table");
-          return element_id_map_.find(id)->second;
+        const Component *getComponentForId(const std::string &id) const {
+            if (!hasComponent(id))
+                throw std::out_of_range("Component does not exist in mapping table");
+            return element_id_map_.find(id)->second;
         }
 
         /**
@@ -213,10 +312,10 @@ namespace semsim {
          * @param  id The SBML id.
          * @return    The component for the given SBML id (if it exists).
          */
-        Component* getComponentForId(const std::string& id) {
-          if (!hasComponent(id))
-            throw std::out_of_range("Component does not exist in mapping table");
-          return element_id_map_.find(id)->second;
+        Component *getComponentForId(const std::string &id) {
+            if (!hasComponent(id))
+                throw std::out_of_range("Component does not exist in mapping table");
+            return element_id_map_.find(id)->second;
         }
 
         /**
@@ -231,64 +330,81 @@ namespace semsim {
          * @param  sbml_base_uri A URI that points to the original model file. Usually a relative path in a COMBINE archive.
          * @return               A string representation of the RDF for model using the desired RDF serialization format.
          */
-        std::string getRDF(const URI& sbml_base_uri, const std::string& format="rdfxml") const {
-          raptor_world* world = raptor_new_world();
-          raptor_serializer* serializer = raptor_new_serializer(world, format.c_str());
-          if (!serializer)
-            throw std::runtime_error("Could not create Raptor serializer for format "+format);
+        std::string getRDF(const URI &sbml_base_uri, const std::string &format = "rdfxml") const {
+            raptor_world *world = raptor_new_world();
+            raptor_serializer *serializer = raptor_new_serializer(world, format.c_str());
+            if (!serializer)
+                throw std::runtime_error("Could not create Raptor serializer for format " + format);
 
-          raptor_uri* base_uri = raptor_new_uri(world, (const unsigned char*)"");
+            raptor_uri *base_uri = raptor_new_uri(world, (const unsigned char *) "");
 
-          raptor_serializer_set_namespace(serializer, raptor_new_uri(world, (const unsigned char*)bqb::root.c_str()), (const unsigned char*)"bqb");
-          raptor_serializer_set_namespace(serializer, raptor_new_uri(world, (const unsigned char*)semsim::root.c_str()), (const unsigned char*)"semsim");
+            raptor_serializer_set_namespace(serializer,
+                                            raptor_new_uri(world, (const unsigned char *) bqb::root.c_str()),
+                                            (const unsigned char *) "bqb");
+            raptor_serializer_set_namespace(serializer,
+                                            raptor_new_uri(world, (const unsigned char *) semsim::root.c_str()),
+                                            (const unsigned char *) "semsim");
 
-          void* output;
-          size_t length;
-          raptor_serializer_start_to_string(serializer, base_uri, &output, &length);
+            void *output;
+            size_t length;
+            raptor_serializer_start_to_string(serializer, base_uri, &output, &length);
 
-          for (Components::const_iterator i=components_.begin(); i!=components_.end(); ++i)
-            (*i)->serializeToRDF(sbml_base_uri, world, serializer);
+            for (Components::const_iterator i = components_.begin(); i != components_.end(); ++i)
+                (*i)->serializeToRDF(sbml_base_uri, world, serializer);
 
-          raptor_serializer_serialize_end(serializer);
+            raptor_serializer_serialize_end(serializer);
 
-          raptor_free_serializer(serializer);
-          raptor_free_world(world);
+            raptor_free_serializer(serializer);
+            raptor_free_world(world);
 
-          std::string result((char*)output);
-          free(output);
-          return result;
+            std::string result((char *) output);
+            free(output);
+            return result;
         }
 
-        # ifdef SWIG
+# ifdef SWIG
         /// For swig
         std::string getRDF(const std::string& sbml_base_uri, const std::string& format="rdfxml") const {
           return getRDF(sbml_base_uri, format);
         }
-        # endif
+# endif
 
         /**
          * Return the XML encoding of the attached SBML or CellML model.
          * @return The XML content.
          */
         std::string encodeXML() const {
+<<<<<<< HEAD
           libsbml:: SBMLWriter w;
           return w.writeSBMLToString(d_);
+=======
+            libsbml::SBMLWriter w;
+            return w.writeSBMLToString(d_);
+>>>>>>> ciaran-develop
         }
 
         /**
          * @return "sbml" if an SBML model, "cellml" if a cellml model.
          */
         virtual std::string getFormat() const {
-          return "sbml";
+            return "sbml";
         }
 
-      protected:
+    protected:
         /// Maps SBML model elements to corresponding libSemSim @ref Component.
+<<<<<<< HEAD
         SEMSIM_TR1_NAMESPACE_QUAL unordered_map<libsbml:: SBase*,Component*> element_map_;
+=======
+        SEMSIM_TR1_NAMESPACE_QUAL unordered_map<libsbml::SBase *, Component *> element_map_;
+>>>>>>> ciaran-develop
         /// Maps SBML model elements to corresponding libSemSim @ref Component.
-        SEMSIM_TR1_NAMESPACE_QUAL unordered_map<std::string,Component*> element_id_map_;
+        SEMSIM_TR1_NAMESPACE_QUAL unordered_map<std::string, Component *> element_id_map_;
         /// Stores the SBML model
+<<<<<<< HEAD
         libsbml:: SBMLDocument* d_;
+=======
+        libsbml::SBMLDocument *d_;
+>>>>>>> ciaran-develop
     };
 
 }

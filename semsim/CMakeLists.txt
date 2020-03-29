@@ -10,8 +10,8 @@ set(SEMSIM_SOURCES
 
         query/Condition.h
         query/IdentityCondition.h
-#        query/Query.h
-#        query/QueryResults.h
+        #        query/Query.h
+        #        query/QueryResults.h
         query/RasqalQuery.h query/RasqalQuery.cpp
         query/RasqalQueryResult.h query/RasqalQueryResult.cpp
         query/SelectQuery.h
@@ -32,11 +32,11 @@ set(SEMSIM_SOURCES
         EntityBase.h
         EntityDescriptor.h
         Mediator.h
-        SBMLModel.h
+        SemsimModel.h
         ontologies/Ontology.h
         Participant.h
         PhysicalProperty.h
-#        Preproc.h
+        Preproc.h
         Process.h
         RaptorUtils.h
         Relation.h Relation.cpp
@@ -93,11 +93,11 @@ target_include_directories(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so incl
         )
 
 target_link_libraries(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so libraries propagate into test binaries
-        ${ZLIB_STATIC_LIBRARY}
-        ${ZIPPER_STATIC_LIBRARY}
-        ${LIBBZ_STATIC_LIBRARY}
-        ${LIBSBML_STATIC_LIBRARY}
         ${LIBCOMBINE_STATIC_LIB}
+        ${ZIPPER_STATIC_LIBRARY}
+        ${ZLIB_STATIC_LIBRARY}
+        ${LIBSBML_STATIC_LIB}
+        ${LIBBZ_STATIC_LIBRARY}
         ${REDLAND_LIBRARY}
         ${RASQAL_LIBRARY}
         ${RAPTOR2_LIBRARY}
@@ -113,7 +113,7 @@ MESSAGE(STATUS "Y
 /mnt/d/libsemsim/third_party/libCombine-0.2.3/INSTALL/lib/libcombine-static.a;
 /usr/local/lib/libbz2.a
 "
-)
+        )
 
 target_include_directories(${SEMSIM_LIBRARY} PUBLIC # make public so include dirs propagate into test binaries
         ${CMAKE_SOURCE_DIR}
@@ -135,10 +135,10 @@ target_include_directories(${SEMSIM_LIBRARY} PUBLIC # make public so include dir
 target_link_libraries(${SEMSIM_LIBRARY} PUBLIC # make public so libraries propagate into test binaries
         ${LIBXML2_STATIC_LIBRARY}
         ${LIBSBML_STATIC_LIBRARY}
-#        ${ZLIB_STATIC_LIBRARY}
+        #        ${ZLIB_STATIC_LIBRARY}
         ${ZIPPER_STATIC_LIBRARY}
         ${LIBCOMBINE_STATIC_LIB}
-#        ${LIBBZ_STATIC_LIBRARY}
+        #        ${LIBBZ_STATIC_LIBRARY}
         ${RAPTOR2_LIBRARY}
         ${RASQAL_LIBRARY}
         ${REDLAND_LIBRARY}

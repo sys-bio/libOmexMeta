@@ -8,7 +8,7 @@ namespace semsim {
     /**
      * The base class for all conditions in queries.
      */
-    class IdentityCondition {
+    class SEMSIM_PUBLIC IdentityCondition {
     public:
         /// Construct a matching rule for the given resource.
         IdentityCondition(const Resource &resource)
@@ -23,10 +23,11 @@ namespace semsim {
         }
 
         /// @return @c true if the entity matches the resource of this condition.
-        bool matchEntity(const EntityBase& entity) const {
-          return resource_.matchesDefinition(entity);
+        bool matchEntity(const EntityBase &entity) const {
+            return resource_.matchesDefinition(entity);
         }
-      protected:
+
+    protected:
         Resource resource_;
     };
 

@@ -11,7 +11,7 @@ namespace semsim {
      * A URI class used in semgen.
      * @param uri_encoding A string encoding of the URI.
      */
-    class URI {
+    class SEMSIM_PUBLIC URI {
     public:
         /// Empty constructor
         URI() {}
@@ -24,20 +24,22 @@ namespace semsim {
         URI(const char *uri)
                 : encoded_uri_(uri) {}
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
+
         /// Construct from string-encoded URI
-        URI(std::string&& uri)
-          : encoded_uri_(std::move(uri)) {}
-        # endif
+        URI(std::string &&uri)
+                : encoded_uri_(std::move(uri)) {}
+
+# endif
 
         /// Convert to human-readable string
         std::string toString() const {
-          return encoded_uri_;
+            return encoded_uri_;
         }
 
         /// Convert to encoded UTF-8 URI string (possibly different from human-readable string).
         std::string encode() const {
-          return encoded_uri_;
+            return encoded_uri_;
         }
 
         /**
@@ -45,9 +47,9 @@ namespace semsim {
          * @param  suffix The string to append to the fragment.
          * @return        The new URI.
          */
-        URI appendToFrag(const std::string& suffix) const {
-          // TODO: URI processing
-          return URI(encoded_uri_+suffix);
+        URI appendToFrag(const std::string &suffix) const {
+            // TODO: URI processing
+            return URI(encoded_uri_ + suffix);
         }
 
         /**
@@ -56,17 +58,17 @@ namespace semsim {
          * @param  suffix The string to append to the fragment.
          * @return        The new URI.
          */
-        URI withFrag(const std::string& suffix) const {
-          // TODO: URI processing
-          return URI(encoded_uri_+"#"+suffix);
+        URI withFrag(const std::string &suffix) const {
+            // TODO: URI processing
+            return URI(encoded_uri_ + "#" + suffix);
         }
 
         /// Comparison operator
-        bool operator==(const URI& other) const {
-          return encoded_uri_ == other.encoded_uri_;
+        bool operator==(const URI &other) const {
+            return encoded_uri_ == other.encoded_uri_;
         }
 
-      protected:
+    protected:
         std::string encoded_uri_;
     };
 

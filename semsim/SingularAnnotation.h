@@ -19,7 +19,11 @@ namespace semsim {
      * ideally, one should use a single definition URI that best
      * captures the model element.
      */
+<<<<<<< HEAD
     class SingularAnnotation : public AnnotationBase, public EntityBase {
+=======
+    class SEMSIM_PUBLIC SingularAnnotation : public AnnotationBase, public EntityBase {
+>>>>>>> ciaran-develop
     public:
         /**
          * Construct a SingularAnnotation given a definition URL.
@@ -36,37 +40,41 @@ namespace semsim {
          * Generally, a model element should be defined using
          * only a single URI.
          */
-        SingularAnnotation(const std::string& metaid, const Resource& definition)
-          : EntityBase(metaid, definition) {}
+        SingularAnnotation(const std::string &metaid, const Resource &definition)
+                : EntityBase(metaid, definition) {}
 
         /// Constructor specifying only the meta id (defintions to be added later by user)
-        SingularAnnotation(const std::string& metaid)
-          : EntityBase(metaid) {}
+        SingularAnnotation(const std::string &metaid)
+                : EntityBase(metaid) {}
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
+
         /// Move-construct from an @ref EntityDescriptor
-        SingularAnnotation(const std::string& metaid, Resource&& definition)
-          : EntityBase(metaid, {std::move(definition)}) {}
-        # endif
+        SingularAnnotation(const std::string &metaid, Resource &&definition)
+                : EntityBase(metaid, {std::move(definition)}) {}
+
+# endif
 
         /// Copy constructor
-        SingularAnnotation(const SingularAnnotation& other)
-          :EntityBase(other) {}
+        SingularAnnotation(const SingularAnnotation &other)
+                : EntityBase(other) {}
 
-        # if __cplusplus >= 201103L
+# if __cplusplus >= 201103L
+
         /// Move constructor
-        SingularAnnotation(SingularAnnotation&& other)
-          :EntityBase(std::move(other)) {}
-        # endif
+        SingularAnnotation(SingularAnnotation &&other)
+                : EntityBase(std::move(other)) {}
+
+# endif
 
         /// Get the meta id for this element.
-        const std::string& getMetaId() const {
-          return EntityBase::getMetaId();
+        const std::string &getMetaId() const {
+            return EntityBase::getMetaId();
         }
 
         /// Create a copy of this object using the correct derived class's type.
-        virtual AnnotationBase* clone() const {
-          return new SingularAnnotation(*this);
+        virtual AnnotationBase *clone() const {
+            return new SingularAnnotation(*this);
         }
 
         /**
@@ -79,35 +87,39 @@ namespace semsim {
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          * @return the URI for this entity.
          */
-        void serializeToRDF(const URI& sbml_base_uri, raptor_world* world, raptor_serializer* serializer) const {
-          EntityBase::serializeToRDF(sbml_base_uri, world, serializer);
+        void serializeToRDF(const URI &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
+            EntityBase::serializeToRDF(sbml_base_uri, world, serializer);
         }
 
-        virtual std::string getRDF(const URI& sbml_base_uri, const std::string& format="rdfxml") const {
-          raptor_world* world = raptor_new_world();
-          raptor_serializer* serializer = raptor_new_serializer(world, format.c_str());
-          if (!serializer)
-            throw std::runtime_error("Could not create Raptor serializer for format "+format);
+        virtual std::string getRDF(const URI &sbml_base_uri, const std::string &format = "rdfxml") const {
+            raptor_world *world = raptor_new_world();
+            raptor_serializer *serializer = raptor_new_serializer(world, format.c_str());
+            if (!serializer)
+                throw std::runtime_error("Could not create Raptor serializer for format " + format);
 
-          raptor_uri* base_uri = raptor_new_uri(world, (const unsigned char*)"");
+            raptor_uri *base_uri = raptor_new_uri(world, (const unsigned char *) "");
 
-          raptor_serializer_set_namespace(serializer, raptor_new_uri(world, (const unsigned char*)bqb::root.c_str()), (const unsigned char*)"bqb");
-          raptor_serializer_set_namespace(serializer, raptor_new_uri(world, (const unsigned char*)semsim::root.c_str()), (const unsigned char*)"semsim");
+            raptor_serializer_set_namespace(serializer,
+                                            raptor_new_uri(world, (const unsigned char *) bqb::root.c_str()),
+                                            (const unsigned char *) "bqb");
+            raptor_serializer_set_namespace(serializer,
+                                            raptor_new_uri(world, (const unsigned char *) semsim::root.c_str()),
+                                            (const unsigned char *) "semsim");
 
-          void* output;
-          size_t length;
-          raptor_serializer_start_to_string(serializer, base_uri, &output, &length);
+            void *output;
+            size_t length;
+            raptor_serializer_start_to_string(serializer, base_uri, &output, &length);
 
-          serializeToRDF(sbml_base_uri, world, serializer);
+            serializeToRDF(sbml_base_uri, world, serializer);
 
-          raptor_serializer_serialize_end(serializer);
+            raptor_serializer_serialize_end(serializer);
 
-          raptor_free_serializer(serializer);
-          raptor_free_world(world);
+            raptor_free_serializer(serializer);
+            raptor_free_world(world);
 
-          std::string result((char*)output);
-          free(output);
-          return result;
+            std::string result((char *) output);
+            free(output);
+            return result;
         }
 
         /**
@@ -116,11 +128,11 @@ namespace semsim {
          * @param prop The physical property to assign to the composite annotation.
          * @return A new composite annotation
          */
-        AnnotationPtr makeComposite(const PhysicalProperty& prop) const;
+        AnnotationPtr makeComposite(const PhysicalProperty &prop) const;
 
         /// Get the local URI of this entity
-        URI getURI(const URI& base) const {
-          return base.withFrag(metaid_);
+        URI getURI(const URI &base) const {
+            return base.withFrag(metaid_);
         }
 
         /**
@@ -129,11 +141,11 @@ namespace semsim {
          * names.
          */
         std::string humanize() const {
-          return EntityBase::humanize();
+            return EntityBase::humanize();
         }
 
         virtual bool isComposite() const {
-          return false;
+            return false;
         }
     };
 }

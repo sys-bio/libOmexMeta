@@ -12,7 +12,7 @@ namespace semsim {
      * <a href="http://co.mbine.org/standards/qualifiers">BioModels biology qualifiers</a>
      * for describing model elements.
      */
-    class Relation {
+    class SEMSIM_PUBLIC Relation {
     public:
         /**
          * Construct from URI.
@@ -24,14 +24,14 @@ namespace semsim {
         Relation(URI &&uri) : uri_(std::move(uri)) {}
 
         std::string toString() const {
-          return uri_.toString();
+            return uri_.toString();
         }
 
         /**
          * @return the URI for this relation.
          */
-        const URI& getURI() const {
-          return uri_;
+        const URI &getURI() const {
+            return uri_;
         }
 
         /**
@@ -42,11 +42,11 @@ namespace semsim {
         std::string humanize() const;
 
         /// Comparison operator
-        bool operator==(const Relation& other) const {
-          return uri_ == other.uri_;
+        bool operator==(const Relation &other) const {
+            return uri_ == other.uri_;
         }
 
-      protected:
+    protected:
         URI uri_;
     };
 }

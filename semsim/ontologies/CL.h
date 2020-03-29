@@ -9,7 +9,7 @@ namespace semsim {
     /**
      * Class for the Cell Ontology.
      */
-    class CL : public Ontology {
+    class SEMSIM_PUBLIC CL : public Ontology {
     public:
         // const static std::string root = "http://identifiers.org/CHEBI:";
 
@@ -24,7 +24,7 @@ namespace semsim {
          * @endcode
          */
         static Resource get(OntologyTerm t) {
-          return resolve("https://identifiers.org/CL:", t, 7);
+            return resolve("https://identifiers.org/CL:", t, 7);
         }
     };
 }

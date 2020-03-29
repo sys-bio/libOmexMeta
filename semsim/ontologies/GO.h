@@ -9,7 +9,7 @@ namespace semsim {
     /**
      * Class for the Chemical Entities of Biological Interest (<a href="https://www.ebi.ac.uk/chebi/">CHEBI</a>) database.
      */
-    class GO : public Ontology {
+    class SEMSIM_PUBLIC GO : public Ontology {
     public:
         // const static std::string root = "http://identifiers.org/CHEBI:";
 
@@ -24,7 +24,7 @@ namespace semsim {
          * @endcode
          */
         static Resource get(OntologyTerm t) {
-          return resolve("https://identifiers.org/GO:", t, 7);
+            return resolve("https://identifiers.org/GO:", t, 7);
         }
     };
 }

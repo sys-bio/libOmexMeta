@@ -12,7 +12,7 @@ namespace semsim {
      * A term contains a qualifier and a resource.
      * The qualifier is typically one of the BioModels qualifiers.
      */
-    class Term {
+    class SEMSIM_PUBLIC Term {
     public:
         /// Construct from a @ref Resource (URI) and @ref Relation
         Term(const Relation &relation, const Resource &resource)
@@ -36,23 +36,23 @@ namespace semsim {
         }
 
         /// @return The @ref Resource of this term.
-        const Resource& getResource() const {
-          return resource_;
+        const Resource &getResource() const {
+            return resource_;
         }
 
         std::string toString() const {
-          return relation_.toString() + "->" + resource_.toString();
+            return relation_.toString() + "->" + resource_.toString();
         }
 
         const bool isValue() const {
-          return is_value_;
+            return is_value_;
         }
 
         const double getValue() const {
-          return value_;
+            return value_;
         }
 
-      protected:
+    protected:
         Relation relation_;
         Resource resource_;
         bool is_value_;

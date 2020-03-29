@@ -9,7 +9,7 @@ namespace semsim {
      * A query to select a subset of elements of a model
      * based on certain criteria.
      */
-    class SelectQuery {
+    class SEMSIM_PUBLIC SelectQuery {
     public:
 # if __cplusplus >= 201103L
 
