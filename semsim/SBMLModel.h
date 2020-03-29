@@ -30,11 +30,7 @@ namespace semsim {
     /**
      * This class represents an SBML model imported into SemSim.
      */
-<<<<<<< Updated upstream
     class SEMSIM_PUBLIC SBMLModel : public Model {
-=======
-    class SEMSIM_PUBLIC SBMLModel : public SemSimModel {
->>>>>>> Stashed changes
       public:
         /**
          * Construct from an SBML model.
