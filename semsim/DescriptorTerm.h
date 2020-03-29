@@ -11,7 +11,7 @@ namespace semsim {
      * A descriptor term is used as part of a @ref DomainDescriptor
      * to describe "where" a model element is in the physical world.
      */
-    class DescriptorTerm : public Term {
+    class SEMSIM_PUBLIC DescriptorTerm : public Term {
     public:
         /// Construct from a @ref Resource (URI) and @ref Relation
         DescriptorTerm(const Relation &relation, const Resource &resource)

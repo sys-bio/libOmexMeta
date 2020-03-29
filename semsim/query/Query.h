@@ -2,9 +2,8 @@
 # define SEMSIM_QUERY_QUERY_H_
 
 
-#include <memory>
+#include <semsim/SemsimModel.h>
 #include "QueryResults.h"
-#include "semsim/SemSimModel.h"
 
 namespace semsim {
 
@@ -12,7 +11,7 @@ namespace semsim {
      * The base class for all queries in libSemSim.
      */
     class Query {
-      public:
+    public:
         /// Virtual dtor
         virtual ~Query() = default;
 
@@ -22,7 +21,7 @@ namespace semsim {
          * @param  model The model to run the query on.
          * @return       The query results.
          */
-        virtual QueryResults run(SemSimModel &model) const = 0;
+        virtual QueryResults run(SemsimModel &model) const = 0;
     };
 
     /**
@@ -30,8 +29,7 @@ namespace semsim {
      * Automatically uses std::unique_ptr or std::tr1::shared_ptr depending on C++ standard.
      * @see UniquePtr.
      */
-
-    typedef std::unique_ptr<Query>  QueryPtr;
+    typedef std::unique_ptr<Query> QueryPtr;
 
 }
 

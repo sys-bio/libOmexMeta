@@ -12,7 +12,7 @@ namespace semsim {
     /**
      * Base class for all ontologies.
      */
-    class Ontology {
+    class SEMSIM_PUBLIC Ontology {
     public:
         /**
          * Given a root URI (usually from identifiers.org), a numeric term, and the
@@ -24,9 +24,9 @@ namespace semsim {
          * @return          The correct full URI for the resource in the ontology.
          */
         static Resource resolve(const std::string &root, OntologyTerm t, int n_digits) {
-          std::ostringstream ss;
-          ss << root << std::setfill('0') << std::setw(n_digits) << t;
-          return  Resource(ss.str());
+            std::ostringstream ss;
+            ss << root << std::setfill('0') << std::setw(n_digits) << t;
+            return Resource(ss.str());
         }
     };
 }

@@ -11,9 +11,9 @@
 class ModelStrings {
 public:
 
-    ModelStrings () = default;
+    ModelStrings() = default;
 
-    static std::string Teusink2000(){
+    static std::string Teusink2000() {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"
                "    <model metaid=\"metaid_0000002\" id=\"BIOMD0000000064_url\">\n"

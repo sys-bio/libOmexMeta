@@ -2,7 +2,7 @@
 
 namespace semsim {
     SemSimObject::SemSimObject(SemSimTypes type)
-      : semsimtype(type) {}
+            : semsimtype(type) {}
 
     // SemSimObject::SemSimObject(const SemSimObject& other)
     //   : semsimtype(other.semsimtype),
@@ -10,11 +10,11 @@ namespace semsim {
     //     description(other.description),
     //     metadataID(other.metadataID) {}
 
-    const std::string& SemSimObject::getDescription() const {
+    const std::string &SemSimObject::getDescription() const {
         return description;
     }
 
-    const std::string& SemSimObject::getName() const {
+    const std::string &SemSimObject::getName() const {
         return name;
     }
 
@@ -34,25 +34,25 @@ namespace semsim {
         return (metadataID != "" && metadataID != "");
     }
 
-    void SemSimObject::setName(const std::string& name) {
+    void SemSimObject::setName(const std::string &name) {
         this->name = name;
     }
 
-    void SemSimObject::setDescription(const std::string& description) {
+    void SemSimObject::setDescription(const std::string &description) {
         this->description = description;
     }
 
-    void SemSimObject::copyDescription(const SemSimObject& other) {
+    void SemSimObject::copyDescription(const SemSimObject &other) {
         setDescription(other.getDescription());
     }
 
-    void SemSimObject::setMetadataID(const std::string& metadataID) {
+    void SemSimObject::setMetadataID(const std::string &metadataID) {
         if (metadataID != "") {
             this->metadataID = metadataID;
         }
     }
 
-    const std::string& SemSimObject::getMetadataID() const {
+    const std::string &SemSimObject::getMetadataID() const {
         return metadataID;
     }
 

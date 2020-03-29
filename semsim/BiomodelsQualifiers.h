@@ -40,7 +40,7 @@ namespace semsim {
      * Relation qual = bqb::hasTaxon;
      * @endcode
      */
-    class bqb {
+    class SEMSIM_PUBLIC bqb {
     public:
         const static std::string root;
 
@@ -58,7 +58,7 @@ namespace semsim {
         const static Relation isPropertyOf;
         const static Relation hasTaxon;
 
-        static std::string humanizeQualifier(const Relation& q);
+        static std::string humanizeQualifier(const Relation &q);
     };
 }
 # endif

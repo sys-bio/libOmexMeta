@@ -16,7 +16,7 @@ namespace semsim {
      * @c begin and @c end iterators can be used to access
      * elements returned by the query.
      */
-    class RasqalQuery {
+    class SEMSIM_PUBLIC RasqalQuery {
     public:
         RasqalQuery(const std::string &rdf, const std::string &format = "turtle", bool is_file = false);
 

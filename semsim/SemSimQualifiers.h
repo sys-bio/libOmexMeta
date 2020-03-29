@@ -9,7 +9,11 @@ namespace semsim {
     /**
      * This class contains all the SemSim qualifiers.
      */
+<<<<<<< HEAD
     class semsim {
+=======
+    class SEMSIM_PUBLIC semsim {
+>>>>>>> ciaran-develop
     public:
         const static std::string root;
 

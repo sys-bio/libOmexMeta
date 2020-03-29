@@ -3,6 +3,7 @@
 
 // important classes (includes may be redundant - that's okay)
 //# include "semsim/Preproc.h"
+<<<<<<< HEAD
 # include "semsim/Relation.h"
 # include "semsim/Resource.h"
 # include "semsim/EntityBase.h"
@@ -21,6 +22,26 @@
 
 # include "semsim/SemSimModel.h"
 # include "semsim/SBMLModel.h"
+=======
+//# include "semsim/Relation.h"
+//# include "semsim/Resource.h"
+//# include "semsim/EntityBase.h"
+//# include "semsim/Entity.h"
+//# include "semsim/PhysicalProperty.h"
+//
+//# include "semsim/SingularAnnotation.h"
+//# include "semsim/CompositeAnnotation.h"
+//
+//# include "semsim/Component.h"
+//# include "semsim/Participant.h"
+//# include "semsim/Source.h"
+//# include "semsim/Sink.h"
+//# include "semsim/Mediator.h"
+//# include "semsim/Process.h"
+//
+//# include "semsim/SemsimModel.h"
+//# include "semsim/sbml/SBMLModel.h"
+>>>>>>> ciaran-develop
 # include "SBMLImporter.h"
 
 # include "semsim/BiomodelsQualifiers.h"

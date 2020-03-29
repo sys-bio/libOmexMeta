@@ -93,7 +93,7 @@ namespace semsim {
     }
 
     void RDFReader::process_triple(void *user_data, raptor_statement *triple) {
-        SemSimModel &model = *(SemSimModel *) user_data;
+        SemsimModel &model = *(SemsimModel *) user_data;
         if (isMetaId(triple->subject)) {
             std::string metaid = extractMetaId(triple->subject);
             if (model.hasComponentWithMetaId(metaid)) {
@@ -108,7 +108,8 @@ namespace semsim {
         }
     }
 
-    void RDFReader::applyRDFAnnotationsToModel(SemSimModel &model, const std::string &rdf, const std::string &rdf_format) {
+    void
+    RDFReader::applyRDFAnnotationsToModel(SemsimModel &model, const std::string &rdf, const std::string &rdf_format) {
         raptor_world *world = raptor_new_world();
         raptor_parser *rdf_parser = raptor_new_parser(world, "rdfxml");
         raptor_parser_set_statement_handler(rdf_parser, &model, process_triple);

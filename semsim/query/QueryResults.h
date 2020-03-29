@@ -1,13 +1,9 @@
 # ifndef SEMSIM_QUERY_QUERY_RESULTS_H_
 # define SEMSIM_QUERY_QUERY_RESULTS_H_
 
-<<<<<<< HEAD
-#include "semsim/Component.h"
-=======
 
 #include <vector>
 #include <semsim/Component.h>
->>>>>>> ciaran-develop
 
 namespace semsim {
 
@@ -17,13 +13,8 @@ namespace semsim {
      * elements returned by the query.
      */
     class QueryResults {
-<<<<<<< HEAD
     protected:
         typedef std::vector<Component *> ComponentRefs;
-=======
-      protected:
-        typedef std::vector<Component*> ComponentRefs;
->>>>>>> ciaran-develop
         ComponentRefs refs_;
     public:
         /// Iterator type for the query results.
@@ -38,17 +29,10 @@ namespace semsim {
         /// Const iterator type for the query results.
         typedef ComponentRefs::const_iterator const_iterator;
 
-<<<<<<< HEAD
-//        /// @return A const iterator to the beginning of the resutls.
-//        const_iterator begin() const { return refs.begin(); }
-//
-//        /// @return A const iterator to the beginning of the resutls.
-=======
         /// @return A const iterator to the beginning of the resutls.
 //        const_iterator begin() const { return refs.begin(); }
 //
 //        / @return A const iterator to the beginning of the resutls.
->>>>>>> ciaran-develop
 //        const_iterator end() const { return refs.end(); }
 
     };

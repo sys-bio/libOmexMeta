@@ -2,20 +2,20 @@
 # define SEMSIM_SBML_OMEX_H_
 
 # include "semsim/Preproc.h"
-# include "semsim/SemSimModel.h"
+# include "semsim/SemsimModel.h"
 # include "semsim/SBMLModel.h"
 
 namespace semsim {
     /**
      * Read an SBML file and annotation metadata from a Combine archive and
-     * return a @ref Model with annotation information.
+     * return a @ref SemsimModel with annotation information.
      * @param archive_path    The path for the Combine archive.
      * @param sbml_entry_path The path to the SBML file within the archive.
      * @param rdf_entry_path  The path to the annotation RDF metadata within the archive.
      */
     SBMLModel importSBMLOmex(
-      const std::string& archive_path,
-      const std::string& sbml_entry_path,
-      const std::string& rdf_entry_path);
+            const std::string &archive_path,
+            const std::string &sbml_entry_path,
+            const std::string &rdf_entry_path);
 }
 # endif

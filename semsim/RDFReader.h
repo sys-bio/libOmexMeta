@@ -2,7 +2,7 @@
 # define SEMSIM_RDF_RDFREADER_H_
 
 # include "semsim/Preproc.h"
-# include "semsim/SemSimModel.h"
+# include "semsim/SemsimModel.h"
 # include "SBMLModel.h"
 
 namespace semsim {
@@ -47,7 +47,7 @@ namespace semsim {
          * @param rdf_format The format of the RDF annotations. Choices include "rdfxml", "ntriples", "turtle", "trig", "rss-tag-soup", "grddl", "rdfa", "json", and "nquads".
          */
         static void applyRDFAnnotationsToModel(
-                SemSimModel &model,
+                SemsimModel &model,
                 const std::string &rdf,
                 const std::string &rdf_format = "rdfxml");
     };

@@ -16,7 +16,7 @@ namespace semsim {
      * @c begin and @c end iterators can be used to access
      * elements returned by the query.
      */
-    class RasqalQueryResult {
+    class SEMSIM_PUBLIC RasqalQueryResult {
     public:
         RasqalQueryResult(rasqal_query_results *results)
                 : results_(results) {}
@@ -32,10 +32,10 @@ namespace semsim {
         /// Converts the query results to a list
         std::vector<std::vector<std::string> > asList();
 
-      protected:
-        void toRaptorGraph(raptor_world* world, raptor_serializer* serializer);
+    protected:
+        void toRaptorGraph(raptor_world *world, raptor_serializer *serializer);
 
-        rasqal_query_results* results_;
+        rasqal_query_results *results_;
     };
 
 }
