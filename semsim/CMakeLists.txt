@@ -93,7 +93,6 @@ target_include_directories(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so incl
         )
 
 target_link_libraries(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so libraries propagate into test binaries
-        ${LIBXML2_STATIC_LIBRARY}
         ${ZLIB_STATIC_LIBRARY}
         ${ZIPPER_STATIC_LIBRARY}
         ${LIBBZ_STATIC_LIBRARY}
@@ -102,6 +101,7 @@ target_link_libraries(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so libraries
         ${REDLAND_LIBRARY}
         ${RASQAL_LIBRARY}
         ${RAPTOR2_LIBRARY}
+        ${LIBXML2_STATIC_LIBRARY}
         )
 
 get_target_property(Y ${SEMSIM_STATIC_LIBRARY} LINK_LIBRARIES)
