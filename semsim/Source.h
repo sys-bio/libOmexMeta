@@ -12,11 +12,8 @@ namespace semsim {
      * A @ref Source is a @ref Participant that is consumed
      * by a reaction.
      */
-<<<<<<< HEAD
     class Source : public Participant {
-=======
-    class SEMSIM_PUBLIC Source : public Participant {
->>>>>>> ciaran-develop
+
     public:
         /**
          * Construct from the given component and multiplier.

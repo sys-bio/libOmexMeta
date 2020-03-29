@@ -11,7 +11,7 @@ namespace semsim {
     class SEMSIM_PUBLIC Condition {
     public:
         /// Virtual dtor
-        virtual ~Condition();
+        virtual ~Condition() = default;
 
         /// @return @c true if the condition matches the given element.
         virtual bool matches(const Component &component) = 0;

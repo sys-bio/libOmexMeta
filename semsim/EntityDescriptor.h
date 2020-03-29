@@ -14,11 +14,7 @@ namespace semsim {
     /**
      * An @ref EntityDescriptor describes "what" a model element is and "where" it is located in the physical world.
      */
-<<<<<<< HEAD
     class EntityDescriptor {
-=======
-    class SEMSIM_PUBLIC EntityDescriptor {
->>>>>>> ciaran-develop
     public:
         typedef std::vector<DescriptorTerm> DescriptorTerms;
 
@@ -33,38 +29,6 @@ namespace semsim {
         EntityDescriptor(EntityDescriptor &&other)
                 : terms_(std::move(other.terms_)) {}
 
-# if __cplusplus >= 201103L && !defined(SWIG)
-        /**
-         * Variadic move constructor.
-         * This constructor allows you to create
-         * a entity descriptor from a list of terms
-         * passed in as arguments.
-         *
-         * @code{.cpp}
-         * EntityDescriptor mydesc = EntityDescriptor(DescriptorTerm(),
-         *                                            DescriptorTerm());
-         * @endcode
-         */
-        // http://cpptruths.blogspot.com/2012/06/perfect-forwarding-of-parameter-groups.html
-        // template <class ...T>
-        // EntityDescriptor(T&&... args)
-        //   : terms_(std::forward<T>(args)...) {}
-
-        /**
-         * std::initializer_list move constructor.
-         * This constructor allows you to create
-         * a entity descriptor from a list of terms
-         * passed in as arguments.
-         *
-         * @code{.cpp}
-         * EntityDescriptor mydesc = EntityDescriptor(DescriptorTerm(),
-         *                                            DescriptorTerm());
-         * @endcode
-         */
-        // https://stackoverflow.com/questions/28370970/forwarding-initializer-list-expressions
-        // template <class T>
-        // explicit EntityDescriptor(T&& arg)
-        //   : terms_(std::forward<T>(arg)) {}
 
         /**
          * std::initializer_list constructor.
@@ -82,7 +46,7 @@ namespace semsim {
         explicit EntityDescriptor(std::initializer_list<T> l)
                 : terms_(l) {}
 
-# endif
+
 
         /// @return @p true if this descriptor is empty
         bool isEmpty() const {
@@ -94,14 +58,10 @@ namespace semsim {
             terms_.push_back(t);
         }
 
-# if __cplusplus >= 201103L
-
         /// Add a descriptor term to the sequence of terms
         void addTerm(DescriptorTerm &&t) {
             terms_.emplace_back(std::move(t));
         }
-
-# endif
 
         /// Shortcut for constructing & adding a descriptor term
         void addTerm(const Relation &relation, const Resource &resource) {

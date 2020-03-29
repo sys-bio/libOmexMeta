@@ -1,6 +1,9 @@
 # ifndef SEMSIM_QUERY_IDENTITY_CONDITION_H_
 # define SEMSIM_QUERY_IDENTITY_CONDITION_H_
 
+#include <semsim/EntityBase.h>
+
+#include <utility>
 # include "semsim/Resource.h"
 
 namespace semsim {
@@ -11,8 +14,8 @@ namespace semsim {
     class SEMSIM_PUBLIC IdentityCondition {
     public:
         /// Construct a matching rule for the given resource.
-        IdentityCondition(const Resource &resource)
-                : resource_(resource) {}
+        explicit IdentityCondition(Resource resource)
+                : resource_(std::move(resource)) {}
 
         /// @return @c true if the condition matches the given element.
         virtual bool matches(const Component &component) const {

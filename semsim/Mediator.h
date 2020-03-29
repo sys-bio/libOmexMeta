@@ -12,11 +12,7 @@ namespace semsim {
      * A @ref Mediator is a @ref Participant that is neither
      * produced nor consumed in a reaction (e.g. a catalyst).
      */
-<<<<<<< HEAD
     class Mediator : public Participant {
-=======
-    class SEMSIM_PUBLIC Mediator : public Participant {
->>>>>>> ciaran-develop
     public:
         /**
          * Construct from the given component and multiplier.
