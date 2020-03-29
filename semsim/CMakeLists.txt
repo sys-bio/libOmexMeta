@@ -10,8 +10,8 @@ set(SEMSIM_SOURCES
 
         query/Condition.h
         query/IdentityCondition.h
-        query/Query.h
-        query/QueryResults.h
+#        query/Query.h
+#        query/QueryResults.h
         query/RasqalQuery.h query/RasqalQuery.cpp
         query/RasqalQueryResult.h query/RasqalQueryResult.cpp
         query/SelectQuery.h
