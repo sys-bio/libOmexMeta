@@ -1,69 +1,39 @@
 @startuml
-
-!define abstract &#123;abstract&#125;
-skinparam componentStyle uml2
 skinparam monochrome true
 
-title Model generation factory
-
-
-
-interface Model  {}
-
-class SBMLModel {}
-
-class CellMLModel {}
-
-Model <|--  SBMLModel
-Model <|--  CellMLModel
-
-class ModelFactory {
-    + virtual createModel() : Model
+enum ModelType {
+    SBML_ANNOTATED
+    SBML_NOT_ANNOTATED
 }
 
-interface SBMLFactory {
-    + createModel() : SBMLModel
-    + getModelAsStr() : std::string
+class SBMLFactory {
+    + getModel(ModelType type) : SBMLModel*
+    + getModelStr(ModelType type) : std::string
 }
 
-class SBMLModel1 {
-}
-class SBMLModel3 {
-}
-class SBMLModel2 {
+class SBMLModel{
+    + virtual buildModel() : SBMLModel*
 }
 
-SBMLModel <|-- SBMLModel1
-SBMLModel <|-- SBMLModel2
-SBMLModel <|-- SBMLModel3
-
-
-interface CellMLFactory {
-    + createModel() : CellMLModel
-    + getModelAsStr() : std::string
+class AnnotatedSBMLModel {
+    + virtual buildModel() : SBMLModel*
 }
 
-ModelFactory <|-- SBMLFactory
-ModelFactory <|-- CellMLFactory
+class NotAnnotatedSBMLModel {
+    + virtual buildModel() : SBMLModel*
+}
 
+SBMLModel <|-- NotAnnotatedSBMLModel
+SBMLModel <|-- AnnotatedSBMLModel
+
+
+class Client <<Test>>{
+    Client(SBMLFactory : ModelType)
+}
+
+SBMLFactory <-- Client
+ModelType <-- Client
 SBMLModel <-- SBMLFactory
-CellMLModel <-- CellMLFactory
-
-'class Model {
-'    + virtual getModel()
-'    + virtual getModelAsStr() : std::string
-'}
-
-'class SBMLAnnotated
-'class SBMLNotAnnotated
-'class CellMLAnnotated
-'class CellMLNotAnnotated
-'
-'Model <|-- SBMLAnnotated
-'Model <|-- SBMLNotAnnotated
-'Model <|-- CellMLAnnotated
-'Model <|-- CellMLNotAnnotated
-'
 
 
 
