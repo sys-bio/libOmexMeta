@@ -8,7 +8,7 @@ namespace semsim {
     /**
      * The base class for all conditions in queries.
      */
-    class SEMSIM_PUBLIC Condition {
+    class  Condition {
     public:
         /// Virtual dtor
         virtual ~Condition() = default;

@@ -1,7 +1,7 @@
 # ifndef SEMSIM_QUERY_RASQAL_QUERY_RESULT_H_
 # define SEMSIM_QUERY_RASQAL_QUERY_RESULT_H_
 
-# include "semsim/Preproc.h"
+
 
 # include "raptor2.h"
 # include "rasqal.h"
@@ -16,7 +16,7 @@ namespace semsim {
      * @c begin and @c end iterators can be used to access
      * elements returned by the query.
      */
-    class SEMSIM_PUBLIC RasqalQueryResult {
+    class  RasqalQueryResult {
     public:
         RasqalQueryResult(rasqal_query_results *results)
                 : results_(results) {}

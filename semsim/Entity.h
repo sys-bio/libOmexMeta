@@ -1,7 +1,7 @@
 # ifndef SEMSIM_ENTITY_H_
 # define SEMSIM_ENTITY_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/Resource.h"
 # include "semsim/EntityBase.h"
 # include "semsim/EntityDescriptor.h"

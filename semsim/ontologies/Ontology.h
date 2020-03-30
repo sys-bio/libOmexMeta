@@ -2,7 +2,7 @@
 # define SEMSIM_ONTOLOGY_H_
 
 #include <iomanip>
-# include "semsim/Preproc.h"
+
 # include "semsim/PhysicalProperty.h"
 
 namespace semsim {
@@ -12,7 +12,7 @@ namespace semsim {
     /**
      * Base class for all ontologies.
      */
-    class SEMSIM_PUBLIC Ontology {
+    class  Ontology {
     public:
         /**
          * Given a root URI (usually from identifiers.org), a numeric term, and the

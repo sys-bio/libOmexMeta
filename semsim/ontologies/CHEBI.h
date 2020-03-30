@@ -1,7 +1,7 @@
 # ifndef SEMSIM_CHEBI_H_
 # define SEMSIM_CHEBI_H_
 
-# include "semsim/Preproc.h"
+
 # include "Ontology.h"
 # include "semsim/PhysicalProperty.h"
 
@@ -9,7 +9,7 @@ namespace semsim {
     /**
      * Class for the Chemical Entities of Biological Interest (<a href="https://www.ebi.ac.uk/chebi/">CHEBI</a>) database.
      */
-    class SEMSIM_PUBLIC CHEBI : public Ontology {
+    class  CHEBI : public Ontology {
     public:
         /**
          * Get the full URI of an ontology term given its numeric value.

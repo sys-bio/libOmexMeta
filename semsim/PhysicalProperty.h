@@ -1,7 +1,7 @@
 # ifndef SEMSIM_PHYSICAL_PROPERTY_H_
 # define SEMSIM_PHYSICAL_PROPERTY_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/Resource.h"
 
 namespace semsim {
@@ -12,7 +12,7 @@ namespace semsim {
      * <a href="http://bioportal.bioontology.org/ontologies/OPB">Ontology of Physics for Biology</a>,
      * which can be accessed using the @ref OPB class.
      */
-    class SEMSIM_PUBLIC PhysicalProperty {
+    class  PhysicalProperty {
     public:
         /// Construct from a resource
         PhysicalProperty(const Resource &resource)

@@ -1,7 +1,7 @@
 # ifndef SEMSIM_CL_H_
 # define SEMSIM_CL_H_
 
-# include "semsim/Preproc.h"
+
 # include "Ontology.h"
 # include "semsim/PhysicalProperty.h"
 
@@ -9,7 +9,7 @@ namespace semsim {
     /**
      * Class for the Cell Ontology.
      */
-    class SEMSIM_PUBLIC CL : public Ontology {
+    class  CL : public Ontology {
     public:
         // const static std::string root = "http://identifiers.org/CHEBI:";
 

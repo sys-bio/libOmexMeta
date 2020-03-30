@@ -1,7 +1,7 @@
 # ifndef SEMSIM_COMPONENT_H_
 # define SEMSIM_COMPONENT_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/AnnotationBase.h"
 # include "semsim/SingularAnnotation.h"
 # include "semsim/CompositeAnnotation.h"
@@ -14,7 +14,7 @@ namespace semsim {
      * A @ref Component is any element of an SBML or CellML model.
      * It can represent an SBML species, reaction, or compartment.
      */
-    class SEMSIM_PUBLIC Component {
+    class  Component {
     public:
         /// Empty constructor
         Component() {}

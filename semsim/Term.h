@@ -1,7 +1,7 @@
 # ifndef SEMSIM_TERM_H_
 # define SEMSIM_TERM_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/Resource.h"
 
 # include <string>
@@ -12,7 +12,7 @@ namespace semsim {
      * A term contains a qualifier and a resource.
      * The qualifier is typically one of the BioModels qualifiers.
      */
-    class SEMSIM_PUBLIC Term {
+    class  Term {
     public:
         /// Construct from a @ref Resource (URI) and @ref Relation
         Term(const Relation &relation, const Resource &resource)

@@ -3,7 +3,7 @@
 
 # include "sbml/SBMLTypes.h"
 # include <raptor2.h>
-# include "Preproc.h"
+
 # include "SemsimModel.h"
 # include "Process.h"
 # include "BiomodelsQualifiers.h"
@@ -18,7 +18,7 @@ namespace semsim {
     /**
      * This class represents an SBML model imported into SemSim.
      */
-    class SEMSIM_PUBLIC SBMLModel : public SemsimModel {
+    class  SemSimSBMLModel : public SemsimModel {
     public:
         /**
          * Construct from an SBML model.
@@ -27,7 +27,7 @@ namespace semsim {
          * and a corresponding mapping table.
          * @param m The SBML model to use for initialization.
          */
-        SBMLModel(libsbml::SBMLDocument *d)
+        explicit SemSimSBMLModel(libsbml::SBMLDocument *d)
                 : SemsimModel(), d_(d) {
             libsbml::Model *m = d->getModel();
             // all elements must have meta ids
@@ -75,12 +75,22 @@ namespace semsim {
         }
 
         /// Move constructor
+        SemSimSBMLModel(SemSimSBMLModel &&other) noexcept :
+                SemsimModel(std::move(other)),
+                element_map_(std::move(other.element_map_)),
+                element_id_map_(std::move(other.element_id_map_)),
+                d_(other.d_) {
+        }
 
-        SBMLModel(SBMLModel &&other) noexcept
-                : SemsimModel(std::move(other)),
-                  element_map_(std::move(other.element_map_)),
-                  element_id_map_(std::move(other.element_id_map_)),
-                  d_(other.d_) {}
+        /// copy assignment operator
+        SemSimSBMLModel &operator=(const SemSimSBMLModel &other) {
+            if (this != &other) {
+                this->d_ = other.d_;
+                this->element_id_map_ = other.element_id_map_;
+                this->element_map_ = other.element_map_;
+            }
+            return *this;
+        }
 
         /**
          * Set the annotation of a @ref Component based on SBML id.
@@ -286,9 +296,9 @@ namespace semsim {
     protected:
         /// Maps SBML model elements to corresponding libSemSim @ref Component.
 
-        SEMSIM_TR1_NAMESPACE_QUAL unordered_map<libsbml::SBase *, Component *> element_map_;
+        std::unordered_map<libsbml::SBase *, Component *> element_map_;
         /// Maps SBML model elements to corresponding libSemSim @ref Component.
-        SEMSIM_TR1_NAMESPACE_QUAL unordered_map<std::string, Component *> element_id_map_;
+        std:: unordered_map<std::string, Component *> element_id_map_;
         /// Stores the SBML model
 
         libsbml::SBMLDocument *d_;

@@ -1,14 +1,14 @@
 # ifndef SEMSIM_SBO_H_
 # define SEMSIM_SBO_H_
 
-# include "semsim/Preproc.h"
+
 # include "Ontology.h"
 
 namespace semsim {
     /**
      * Class for the <a href="http://bioportal.bioontology.org/ontologies/OPB">Ontology of Physics for Biology</a>.
      */
-    class SEMSIM_PUBLIC SBO : public Ontology {
+    class  SBO : public Ontology {
     public:
         /**
          * Get the full URI of an ontology term given its numeric value.

@@ -1,8 +1,8 @@
 # ifndef SEMSIM_SBML_IMPORTER_H_
 # define SEMSIM_SBML_IMPORTER_H_
 
-# include "semsim/Preproc.h"
-# include "SBMLModel.h"
+
+# include "SemSimSBMLModel.h"
 # include "SBMLSpecies.h"
 # include "semsim/BiomodelsQualifiers.h"
 # include "semsim/SemSimQualifiers.h"
@@ -27,43 +27,46 @@ namespace semsim {
      * // import the SBML document
      * semsim::SBMLImporter importer(d);
      * // get the libSemSim wrapper for the SBML model
-     * const semsim::SBMLModel& model = importer.getSBMLModel();
-     * // do something with the semsim::SBMLModel
+     * const semsim::SemSimSBMLModel& model = importer.getSemSimSBMLModel();
+     * // do something with the semsim::SemSimSBMLModel
      * @endcode
      */
     class SBMLImporter {
     public:
+
+        libsbml::SBMLDocument* sbmlDocument;
+        libsbml::Model *sbmlModel;
+        SemSimSBMLModel importedSBMLModel;
         /**
-         * Construct a libSemSim @ref SBMLModel from an SBML document.
-         * @param d The input SBML document.
+         * Construct a libSemSim @ref SemSimSBMLModel from an SBML document.
+         * @param sbmlDocument The input SBML document.
          */
-        explicit SBMLImporter(libsbml::SBMLDocument *d)
-                : m_(d->getModel()), result_(d) {
+        explicit SBMLImporter(libsbml::SBMLDocument *sbmlDocument) : importedSBMLModel(sbmlDocument){
+            this->sbmlDocument = sbmlDocument;
+            this->sbmlModel = this->sbmlDocument->getModel();
 
-            for (unsigned int k = 0; k < m_->getNumCompartments(); ++k) {
-                libsbml::Compartment *c = m_->getCompartment(k);
+            for (unsigned int k = 0; k < sbmlModel->getNumCompartments(); ++k) {
+                libsbml::Compartment *c = sbmlModel->getCompartment(k);
                 if (c->isSetMetaId())
-                    result_.setComponentAnnotation(c, extractAnnotation(c));
+                    importedSBMLModel.setComponentAnnotation(c, extractAnnotation(c));
             }
-            for (unsigned int k = 0; k < m_->getNumSpecies(); ++k) {
-                libsbml::Species *s = m_->getSpecies(k);
+            for (unsigned int k = 0; k < sbmlModel->getNumSpecies(); ++k) {
+                libsbml::Species *s = sbmlModel->getSpecies(k);
                 if (s->isSetMetaId())
-                    result_.setComponentAnnotation(s, extractAnnotation(s));
+                    importedSBMLModel.setComponentAnnotation(s, extractAnnotation(s));
             }
-            for (unsigned int k = 0; k < m_->getNumReactions(); ++k) {
-
-                libsbml::Reaction *r = m_->getReaction(k);
+            for (unsigned int k = 0; k < sbmlModel->getNumReactions(); ++k) {
+                libsbml::Reaction *r = sbmlModel->getReaction(k);
                 if (r->isSetMetaId())
-                    result_.setComponentAnnotation(r, extractAnnotation(r));
-                assignParticipants(*result_.getProcess(r), r);
+                    importedSBMLModel.setComponentAnnotation(r, extractAnnotation(r));
+                assignParticipants(*importedSBMLModel.getProcess(r), r);
             }
-            for (unsigned int k = 0; k < m_->getNumParameters(); ++k) {
-
-                libsbml::Parameter *p = m_->getParameter(k);
+            for (unsigned int k = 0; k < sbmlModel->getNumParameters(); ++k) {
+                libsbml::Parameter *p = sbmlModel->getParameter(k);
                 if (p->isSetMetaId())
-                    result_.setComponentAnnotation(p, extractAnnotation(p));
+                    importedSBMLModel.setComponentAnnotation(p, extractAnnotation(p));
             }
-            Annotation::stripAnnotations(d);
+            Annotation::stripAnnotations(sbmlDocument);
         }
 
         /**
@@ -74,14 +77,9 @@ namespace semsim {
                 : SBMLImporter(libsbml::readSBMLFromString(sbml.c_str())) {}
 
 
-        /// Return the @ref SBMLModel converted from this document
-        SBMLModel &getSBMLModel() {
-            return result_;
-        }
-
-        /// Return the @ref SBMLModel converted from this document
-        const SBMLModel &getSBMLModel() const {
-            return result_;
+        /// Return the @ref SemSimSBMLModel converted from this document
+        SemSimSBMLModel &getSemSimSBMLModel() {
+            return importedSBMLModel;
         }
 
         static const Relation &getRelationFromSBMLQual(libsbml::BiolQualifierType_t q) {
@@ -209,11 +207,11 @@ namespace semsim {
          */
         EntityDescriptor extractSpeciesEntityDescriptor(libsbml::Species *s) {
             EntityDescriptor result;
-            for (unsigned int k = 0; k < m_->getNumCompartments(); ++k) {
-                libsbml::Compartment *c = m_->getCompartment(k);
+            for (unsigned int k = 0; k < sbmlModel->getNumCompartments(); ++k) {
+                libsbml::Compartment *c = sbmlModel->getCompartment(k);
                 if (c->isSetIdAttribute() && s->getCompartment() == c->getId()) {
                     try {
-                        result.addTerm(DescriptorTerm(bqb::occursIn, result_.getComponent(c)));
+                        result.addTerm(DescriptorTerm(bqb::occursIn, importedSBMLModel.getComponent(c)));
                     } catch (std::out_of_range) {
                         // no definition uri - do nothing
                     }
@@ -238,15 +236,15 @@ namespace semsim {
             return result;
         }
 
-        /// Return a @ref Object weak pointer for the specified object (if it is in the @ref SBMLModel).
+        /// Return a @ref Object weak pointer for the specified object (if it is in the @ref SemSimSBMLModel).
         Component *getComponentFor(libsbml::SBase *s) {
-            if (s->isSetIdAttribute() && result_.hasComponent(s->getId()))
-                return result_.getComponent(s);
+            if (s->isSetIdAttribute() && importedSBMLModel.hasComponent(s->getId()))
+                return importedSBMLModel.getComponent(s);
             else
                 throw std::out_of_range("No such object in model");
         }
 
-        /// Return a @ref Resource for the specified object (if it is in the @ref SBMLModel).
+        /// Return a @ref Resource for the specified object (if it is in the @ref SemSimSBMLModel).
         Resource getResourceFor(libsbml::SBase *s) {
             return Resource(getComponentFor(s));
         }
@@ -317,7 +315,7 @@ namespace semsim {
                 throw std::runtime_error("The SBML species is missing a meta id");
             return CompositeAnnotation(
                     s->getMetaId(),
-                    SBMLSpecies::GetSpeciesPhysicalProperty(s, m_),
+                    SBMLSpecies::GetSpeciesPhysicalProperty(s, sbmlModel),
                     extractSpeciesEntity(s)
             );
         }
@@ -336,34 +334,32 @@ namespace semsim {
             for (unsigned int k = 0; k < r->getNumReactants(); ++k) {
                 libsbml::SpeciesReference *p = r->getReactant(k);
                 process.addSource(Source(
-                        makeUniqueMetaId(result_, "source"),
-                        result_.getComponent(m_->getElementBySId(p->getSpecies())),
+                        makeUniqueMetaId(importedSBMLModel, "source"),
+                        importedSBMLModel.getComponent(sbmlModel->getElementBySId(p->getSpecies())),
                         p->isSetStoichiometry() ? p->getStoichiometry() : 1));
             }
             for (unsigned int k = 0; k < r->getNumProducts(); ++k) {
                 libsbml::SpeciesReference *p = r->getProduct(k);
                 process.addSink(Sink(
-                        makeUniqueMetaId(result_, "sink"),
-                        result_.getComponent(m_->getElementBySId(p->getSpecies())),
+                        makeUniqueMetaId(importedSBMLModel, "sink"),
+                        importedSBMLModel.getComponent(sbmlModel->getElementBySId(p->getSpecies())),
                         p->isSetStoichiometry() ? p->getStoichiometry() : 1));
             }
             for (unsigned int k = 0; k < r->getNumModifiers(); ++k) {
                 libsbml::ModifierSpeciesReference *p = r->getModifier(k);
                 process.addMediator(Mediator(
-                        makeUniqueMetaId(result_, "mediator"),
-                        result_.getComponent(m_->getElementBySId(p->getSpecies()))));
+                        makeUniqueMetaId(importedSBMLModel, "mediator"),
+                        importedSBMLModel.getComponent(sbmlModel->getElementBySId(p->getSpecies()))));
             }
         }
 
-        libsbml::Model *m_;
-        SBMLModel result_;
     };
 
     /**
      * Helper function for importing an SBML file.
      * @param sbml_path    The path to the SBML file.
      */
-    inline SBMLModel importSBMLFromFile(
+    inline SemSimSBMLModel importSBMLFromFile(
             const std::string &sbml_path) {
         libsbml::SBMLReader reader;
         libsbml::SBMLDocument *d = reader.readSBMLFromFile(sbml_path);
@@ -382,7 +378,7 @@ namespace semsim {
             }
         }
         SBMLImporter i(d);
-        return std::move(i.getSBMLModel());
+        return std::move(i.getSemSimSBMLModel());
     }
 
 }

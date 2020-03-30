@@ -665,7 +665,7 @@ $ cc_prop = true
 $ i    = 1
 $ idel = 1
 $ MT_LOOP:
-$ if f$type(result_'i') .eqs. "STRING"
+$ if f$type(importedSBMLModel'i') .eqs. "STRING"
 $ then
 $   set message/nofac/noident/nosever/notext
 $   on error then continue

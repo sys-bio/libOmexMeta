@@ -1,9 +1,9 @@
 # ifndef SEMSIM_SBML_OMEX_H_
 # define SEMSIM_SBML_OMEX_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/SemsimModel.h"
-# include "semsim/SBMLModel.h"
+# include "semsim/SemSimSBMLModel.h"
 
 namespace semsim {
     /**
@@ -13,7 +13,7 @@ namespace semsim {
      * @param sbml_entry_path The path to the SBML file within the archive.
      * @param rdf_entry_path  The path to the annotation RDF metadata within the archive.
      */
-    SBMLModel importSBMLOmex(
+    SemSimSBMLModel importSBMLOmex(
             const std::string &archive_path,
             const std::string &sbml_entry_path,
             const std::string &rdf_entry_path);

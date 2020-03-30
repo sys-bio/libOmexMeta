@@ -1,7 +1,7 @@
 # ifndef SEMSIM_SBML_SPECIES_H_
 # define SEMSIM_SBML_SPECIES_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/ontologies/OPB.h"
 # include "Accessor.h"
 

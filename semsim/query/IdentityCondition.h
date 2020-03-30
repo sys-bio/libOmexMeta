@@ -11,7 +11,7 @@ namespace semsim {
     /**
      * The base class for all conditions in queries.
      */
-    class SEMSIM_PUBLIC IdentityCondition {
+    class  IdentityCondition {
     public:
         /// Construct a matching rule for the given resource.
         explicit IdentityCondition(Resource resource)

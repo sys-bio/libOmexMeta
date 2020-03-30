@@ -7,8 +7,8 @@
 # include "combine/omexdescription.h"
 
 namespace semsim {
-    SBMLModel importSBMLOmex(const std::string &archive_path, const std::string &model_entry_path,
-                             const std::string &rdf_entry_path) {
+    SemSimSBMLModel importSBMLOmex(const std::string &archive_path, const std::string &model_entry_path,
+                                   const std::string &rdf_entry_path) {
         LIBCOMBINE_CPP_NAMESPACE_QUALIFIER CombineArchive archive;
 
         if (!archive.initializeFromArchive(archive_path))
@@ -23,7 +23,7 @@ namespace semsim {
         std::string rdf = archive.extractEntryToString(rdf_entry_path);
 
         SBMLImporter importer(d);
-        SBMLModel &result = importer.getSBMLModel();
+        SemSimSBMLModel &result = importer.getSemSimSBMLModel();
         RDFReader::applyRDFAnnotationsToModel(result, rdf);
         return std::move(result);
     }

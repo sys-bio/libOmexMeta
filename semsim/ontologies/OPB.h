@@ -1,7 +1,7 @@
 # ifndef SEMSIM_OPB_H_
 # define SEMSIM_OPB_H_
 
-# include "semsim/Preproc.h"
+
 # include "Ontology.h"
 // # include "semsim/PhysicalProperty.h"
 
@@ -9,7 +9,7 @@ namespace semsim {
     /**
      * Class for the <a href="http://bioportal.bioontology.org/ontologies/OPB">Ontology of Physics for Biology</a>.
      */
-    class SEMSIM_PUBLIC OPB : public Ontology {
+    class  OPB : public Ontology {
     public:
 
         /**
