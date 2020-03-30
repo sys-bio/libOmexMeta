@@ -3,7 +3,7 @@ add_executable(semsim-tests
 #        LibSBMLTests.cpp
         ModelStrings.h
         RedlandLibrariesTests.cpp
-        CreateSBMLModelTests.cpp)
+        CreateSBMLModelTests.cpp SBMLTestModel.h)
 
 message(STATUS "ZLIB_STATIC_LIBRARY ${ZLIB_STATIC_LIBRARY}")
 message(STATUS "ZIPPER_STATIC_LIBRARY ${ZIPPER_STATIC_LIBRARY}")
