@@ -1,7 +1,7 @@
 # ifndef SEMSIM_COMPOSITE_ANNOTATION_H_
 # define SEMSIM_COMPOSITE_ANNOTATION_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/AnnotationBase.h"
 # include "semsim/PhysicalProperty.h"
 # include "semsim/Entity.h"
@@ -35,7 +35,7 @@ namespace semsim {
      * // (controlled by the SEMSIM_CXX_STANDARD CMake variable)
      * @endcode
      */
-    class SEMSIM_PUBLIC CompositeAnnotation : public AnnotationBase {
+    class  CompositeAnnotation : public AnnotationBase {
     public:
         /**
          * Construct a @ref CompositeAnnotation given a physical property (what is the quantity being represented - chemical concentration, fluid volume, etc.?)

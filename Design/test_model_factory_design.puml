@@ -7,24 +7,24 @@ enum ModelType {
 }
 
 class SBMLFactory {
-    + getModel(ModelType type) : SBMLModel*
+    + getModel(ModelType type) : SemSimSBMLModel*
     + getModelStr(ModelType type) : std::string
 }
 
-class SBMLModel{
-    + virtual buildModel() : SBMLModel*
+class SemSimSBMLModel{
+    + virtual buildModel() : SemSimSBMLModel*
 }
 
 class AnnotatedSBMLModel {
-    + virtual buildModel() : SBMLModel*
+    + virtual buildModel() : SemSimSBMLModel*
 }
 
 class NotAnnotatedSBMLModel {
-    + virtual buildModel() : SBMLModel*
+    + virtual buildModel() : SemSimSBMLModel*
 }
 
-SBMLModel <|-- NotAnnotatedSBMLModel
-SBMLModel <|-- AnnotatedSBMLModel
+SemSimSBMLModel <|-- NotAnnotatedSBMLModel
+SemSimSBMLModel <|-- AnnotatedSBMLModel
 
 
 class Client <<Test>>{
@@ -33,7 +33,7 @@ class Client <<Test>>{
 
 SBMLFactory <-- Client
 ModelType <-- Client
-SBMLModel <-- SBMLFactory
+SemSimSBMLModel <-- SBMLFactory
 
 
 

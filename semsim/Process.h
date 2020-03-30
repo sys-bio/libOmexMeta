@@ -1,7 +1,7 @@
 # ifndef SEMSIM_PROCESS_H_
 # define SEMSIM_PROCESS_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/Component.h"
 # include "semsim/Participant.h"
 # include "semsim/Source.h"
@@ -17,7 +17,7 @@ namespace semsim {
      * A @ref Process is a component that represents a physical process.
      * It has sources and sinks, as well as its own annotation element.
      */
-    class SEMSIM_PUBLIC Process : public Component {
+    class  Process : public Component {
     protected:
         /// Container for sources, treat as opaque
         typedef std::vector<Source> Sources;

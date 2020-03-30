@@ -20,7 +20,7 @@ set(SEMSIM_SOURCES
         Annotation.h
         MetaID.h
         SBMLImporter.h
-        SBMLModel.h
+        SemSimSBMLModel.h
         RDFReader.h RDFReader.cpp
 
         AnnotationBase.h
@@ -36,7 +36,7 @@ set(SEMSIM_SOURCES
         ontologies/Ontology.h
         Participant.h
         PhysicalProperty.h
-        Preproc.h
+#        Preproc.h
         Process.h
         RaptorUtils.h
         Relation.h Relation.cpp

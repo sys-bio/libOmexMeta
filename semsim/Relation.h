@@ -1,7 +1,7 @@
 # ifndef SEMSIM_RELATION_H_
 # define SEMSIM_RELATION_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/URI.h"
 
 namespace semsim {
@@ -12,7 +12,7 @@ namespace semsim {
      * <a href="http://co.mbine.org/standards/qualifiers">BioModels biology qualifiers</a>
      * for describing model elements.
      */
-    class SEMSIM_PUBLIC Relation {
+    class  Relation {
     public:
         /**
          * Construct from URI.

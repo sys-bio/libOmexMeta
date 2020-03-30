@@ -6,7 +6,7 @@ namespace semsim {
     /**
      * A @ref Participant is the base class of reactants / products in a reaction.
      */
-    class SEMSIM_PUBLIC Participant {
+    class  Participant {
     public:
         /// Virtual dtor
         virtual ~Participant() {}

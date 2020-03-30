@@ -1,7 +1,7 @@
 # ifndef SEMSIM_BIOMODELS_QUALIFIERS_H_
 # define SEMSIM_BIOMODELS_QUALIFIERS_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/Relation.h"
 
 namespace semsim {
@@ -40,7 +40,7 @@ namespace semsim {
      * Relation qual = bqb::hasTaxon;
      * @endcode
      */
-    class SEMSIM_PUBLIC bqb {
+    class  bqb {
     public:
         const static std::string root;
 

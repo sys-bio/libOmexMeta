@@ -1,7 +1,7 @@
 # ifndef SEMSIM_ENTITY_DESCRIPTOR_H_
 # define SEMSIM_ENTITY_DESCRIPTOR_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/DescriptorTerm.h"
 # include "semsim/BiomodelsQualifiers.h"
 

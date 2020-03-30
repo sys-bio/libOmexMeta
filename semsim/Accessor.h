@@ -1,7 +1,7 @@
 # ifndef SEMSIM_SBML_ACCESSORS_H_
 # define SEMSIM_SBML_ACCESSORS_H_
 
-# include "Preproc.h"
+
 # include "../third_party/libsbml-5.18.0/INSTALL/include/sbml/SBMLTypes.h"
 
 namespace semsim {

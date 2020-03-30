@@ -4918,7 +4918,7 @@
 											"top": 509,
 											"width": 468.53515625,
 											"height": 20,
-											"text": "«SBMLModel»+importEBMLOmex()",
+											"text": "«SemSimSBMLModel»+importEBMLOmex()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8635,7 +8635,7 @@
 								"$ref": "AAAAAAFw5LZjL3O+ERI="
 							},
 							"name": "importEBMLOmex",
-							"stereotype": "SBMLModel"
+							"stereotype": "SemSimSBMLModel"
 						},
 						{
 							"_type": "UMLOperation",
@@ -9563,7 +9563,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFw5HgGh26aCr8="
 					},
-					"name": "SBMLModel",
+					"name": "SemSimSBMLModel",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -9825,7 +9825,7 @@
 											"top": 453,
 											"width": 74.3818359375,
 											"height": 13,
-											"text": "SBMLModel"
+											"text": "SemSimSBMLModel"
 										},
 										{
 											"_type": "LabelView",
@@ -40118,7 +40118,7 @@
 													"top": 439,
 													"width": 74.3818359375,
 													"height": 13,
-													"text": "SBMLModel"
+													"text": "SemSimSBMLModel"
 												},
 												{
 													"_type": "LabelView",
@@ -44688,7 +44688,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFw7eXxX4XUmy8="
 							},
-							"name": "SBMLModel",
+							"name": "SemSimSBMLModel",
 							"ownedElements": [
 								{
 									"_type": "UMLGeneralization",

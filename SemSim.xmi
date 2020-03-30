@@ -120,7 +120,7 @@
 				</ownedOperation>
 				<ownedOperation xmi:id="AAAAAAFw5MAa93T2YaU=" name="importEBMLOmex" visibility="public" isStatic="false" isLeaf="false" concurrency="sequential" isQuery="false" isAbstract="false" xmi:type="uml:Operation">
 					<xmi:Extension extender="StarUML">
-						<stereotype value="SBMLModel"/>
+						<stereotype value="SemSimSBMLModel"/>
 					</xmi:Extension>
 				</ownedOperation>
 				<ownedOperation xmi:id="AAAAAAFw5M7Hc3pdtGI=" name="applyRdfAnnotationToModel" visibility="public" isStatic="false" isLeaf="false" concurrency="sequential" isQuery="false" isAbstract="false" xmi:type="uml:Operation">
@@ -261,7 +261,7 @@
 			</packagedElement>
 			<packagedElement xmi:id="AAAAAAFw7YnLiWoh4ZE=" name="Dummy" visibility="public" isAbstract="false" isFinalSpecialization="false" isLeaf="false" xmi:type="uml:Class" isActive="false"/>
 			<packagedElement xmi:id="AAAAAAFw7ZIeD35k/MQ=" name="SBMLImporter" visibility="public" isAbstract="false" isFinalSpecialization="false" isLeaf="false" xmi:type="uml:Class" isActive="false"/>
-			<packagedElement xmi:id="AAAAAAFw7ZJvuH878VU=" name="SBMLModel" visibility="public" isAbstract="false" isFinalSpecialization="false" isLeaf="false" xmi:type="uml:Class" isActive="false">
+			<packagedElement xmi:id="AAAAAAFw7ZJvuH878VU=" name="SemSimSBMLModel" visibility="public" isAbstract="false" isFinalSpecialization="false" isLeaf="false" xmi:type="uml:Class" isActive="false">
 				<generalization xmi:id="AAAAAAFw7ZKePX/bPh0=" visibility="public" xmi:type="uml:Generalization" specific="AAAAAAFw7ZJvuH878VU=" general="AAAAAAFw7YlSjWWRa+Y="/>
 			</packagedElement>
 			<packagedElement xmi:id="AAAAAAFw7aDF9oIn2Q4=" name="Components" visibility="public" isAbstract="false" isFinalSpecialization="false" isLeaf="false" xmi:type="uml:Class" isActive="false"/>

@@ -1,7 +1,7 @@
 # ifndef SEMSIM_RESOURCE_H_
 # define SEMSIM_RESOURCE_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/URI.h"
 
 # include <stdexcept>
@@ -25,7 +25,7 @@ namespace semsim {
      * in which case its definition URI will be whatever the element's
      * URI is at the time of serialization.
      */
-    class SEMSIM_PUBLIC Resource {
+    class  Resource {
     public:
         /**
          * Construct from URI.

@@ -1,7 +1,7 @@
 # ifndef SEMSIM_QUERY_RASQAL_QUERY_H_
 # define SEMSIM_QUERY_RASQAL_QUERY_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/query/RasqalQueryResult.h"
 
 # include "raptor2.h"
@@ -16,7 +16,7 @@ namespace semsim {
      * @c begin and @c end iterators can be used to access
      * elements returned by the query.
      */
-    class SEMSIM_PUBLIC RasqalQuery {
+    class  RasqalQuery {
     public:
         RasqalQuery(const std::string &rdf, const std::string &format = "turtle", bool is_file = false);
 

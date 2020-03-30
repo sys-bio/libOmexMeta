@@ -1,7 +1,7 @@
 # ifndef SEMSIM_SINGULAR_ANNOTATION_H_
 # define SEMSIM_SINGULAR_ANNOTATION_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/AnnotationBase.h"
 # include "semsim/PhysicalProperty.h"
 # include "semsim/EntityBase.h"

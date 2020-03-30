@@ -1,9 +1,9 @@
 # ifndef SEMSIM_RDF_RDFREADER_H_
 # define SEMSIM_RDF_RDFREADER_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/SemsimModel.h"
-# include "SBMLModel.h"
+# include "SemSimSBMLModel.h"
 
 namespace semsim {
 

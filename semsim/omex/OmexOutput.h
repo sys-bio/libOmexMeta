@@ -1,7 +1,7 @@
 # ifndef SEMSIM_OMEX_OUTPUT_H_
 # define SEMSIM_OMEX_OUTPUT_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/SemsimModel.h"
 
 

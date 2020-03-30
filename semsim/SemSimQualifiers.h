@@ -1,7 +1,7 @@
 # ifndef SEMSIM_SEMSIM_QUALIFIERS_H_
 # define SEMSIM_SEMSIM_QUALIFIERS_H_
 
-# include "semsim/Preproc.h"
+
 # include "semsim/Relation.h"
 
 namespace semsim {
