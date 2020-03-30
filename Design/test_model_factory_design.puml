@@ -1,0 +1,78 @@
+@startuml
+
+!define abstract &#123;abstract&#125;
+skinparam componentStyle uml2
+skinparam monochrome true
+
+title Model generation factory
+
+
+
+interface Model  {}
+
+class SBMLModel {}
+
+class CellMLModel {}
+
+Model <|--  SBMLModel
+Model <|--  CellMLModel
+
+class ModelFactory {
+    + virtual createModel() : Model
+}
+
+interface SBMLFactory {
+    + createModel() : SBMLModel
+    + getModelAsStr() : std::string
+}
+
+class SBMLModel1 {
+}
+class SBMLModel3 {
+}
+class SBMLModel2 {
+}
+
+SBMLModel <|-- SBMLModel1
+SBMLModel <|-- SBMLModel2
+SBMLModel <|-- SBMLModel3
+
+
+interface CellMLFactory {
+    + createModel() : CellMLModel
+    + getModelAsStr() : std::string
+}
+
+ModelFactory <|-- SBMLFactory
+ModelFactory <|-- CellMLFactory
+
+SBMLModel <-- SBMLFactory
+CellMLModel <-- CellMLFactory
+
+'class Model {
+'    + virtual getModel()
+'    + virtual getModelAsStr() : std::string
+'}
+
+'class SBMLAnnotated
+'class SBMLNotAnnotated
+'class CellMLAnnotated
+'class CellMLNotAnnotated
+'
+'Model <|-- SBMLAnnotated
+'Model <|-- SBMLNotAnnotated
+'Model <|-- CellMLAnnotated
+'Model <|-- CellMLNotAnnotated
+'
+
+
+
+
+
+
+
+
+
+
+
+@enduml
