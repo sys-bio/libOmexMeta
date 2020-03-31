@@ -1,6 +1,10 @@
 //
 // Created by Ciaran on 3/30/2020.
 //
+
+//
+// Created by Ciaran on 3/30/2020.
+//
 #include "gtest/gtest.h"
 #include <semsim/SemSim.h>
 #include "sbml/SBMLTypes.h"
@@ -8,16 +12,16 @@
 
 #include "SBMLFactory.h"
 
-class SemSimSbmlModelNotAnnotatedTests : public ::testing::Test {
+class ComponentTests : public ::testing::Test {
 protected:
     libsbml::SBMLDocument *doc;
 
-    SemSimSbmlModelNotAnnotatedTests()  {
+    ComponentTests()  {
         doc = semsim_test::SBMLFactory::getSBMLDocument(semsim_test::SBML_NOT_ANNOTATED);
     };
 };
 
-TEST_F(SemSimSbmlModelNotAnnotatedTests, test2){
+TEST_F(ComponentTests, test2){
     semsim::SemSimSBMLModel model(doc);
 
 }

@@ -19,7 +19,7 @@ TEST(LibSBMLTests, TestWeCanExtractModelNameUsingLibsbml){
     libsbml::SBMLDocument* doc;
     libsbml::SBMLReader reader;
     doc = reader.readSBMLFromString(teusink_str);
-    unsigned int actual = doc->getModel()->getNumReactions();
+    unsigned int actual = doc->getSBMLDocument()->getNumReactions();
     unsigned int expected = 17;
     ASSERT_EQ(expected, actual);
 }

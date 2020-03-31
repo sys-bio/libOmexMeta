@@ -32,8 +32,10 @@ namespace semsim {
          * @param world      Raptor world object. Must be initialized prior to calling this function.
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          */
-        virtual void
-        serializeToRDF(const URI &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const = 0;
+        virtual void serializeToRDF(
+                const URI &sbml_base_uri,
+                raptor_world *world,
+                raptor_serializer *serializer) const = 0;
 
         virtual std::string getRDF(const URI &sbml_base_uri, const std::string &format) const = 0;
 
@@ -41,6 +43,7 @@ namespace semsim {
         virtual const std::string &getMetaId() const = 0;
 
         /**
+         * todo move this method to singular annotation concrete clas
          * Convert singular annotations to composite annotations
          * by copying their definitions and terms.
          * @param prop The physical property to assign to the composite annotation.
