@@ -13,7 +13,7 @@ protected:
     libsbml::SBMLDocument *doc;
 
     SemSimModelNotAnnotatedTests()  {
-        doc = semsim_test::SBMLFactory::getModel(semsim_test::SBML_NOT_ANNOTATED);
+        doc = semsim_test::SBMLFactory::getSBMLDocument(semsim_test::SBML_NOT_ANNOTATED);
     };
 };
 

@@ -15,7 +15,7 @@ protected:
     SBMLDocument *doc;
 
     NotAnnotatedSBMLImporterTests()  {
-        doc = semsim_test::SBMLFactory::getModel(semsim_test::SBML_NOT_ANNOTATED);
+        doc = semsim_test::SBMLFactory::getSBMLDocument(semsim_test::SBML_NOT_ANNOTATED);
     };
 };
 
@@ -24,7 +24,7 @@ protected:
     SBMLDocument *doc;
 
     AnnotatedSBMLImporterTests()  {
-        doc = semsim_test::SBMLFactory::getModel(semsim_test::SBML_ANNOTATED);
+        doc = semsim_test::SBMLFactory::getSBMLDocument(semsim_test::SBML_ANNOTATED);
     };
 };
 

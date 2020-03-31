@@ -125,15 +125,16 @@ namespace semsim_test {
             comp->setSize(1);
             comp->setConstant(true);
 
+            // create molar unit
             UnitDefinition *unitdef = m->createUnitDefinition();
             unitdef->setId("molar");
-
             Unit *unit = unitdef->createUnit();
             unit->setKind(UNIT_KIND_MOLE);
             unit->setExponent(1);
             unit->setMultiplier(1);
             unit->setScale(1);
 
+            // create litre unit
             unit = unitdef->createUnit();
             unit->setKind(UNIT_KIND_LITRE);
             unit->setExponent(-1);
@@ -145,7 +146,7 @@ namespace semsim_test {
             s->setCompartment("cytosol");
             s->setId("glucose");
             s->setMetaId("glucose");
-            s->setInitialConcentration(0);
+            s->setInitialConcentration(10);
             s->setUnits("molar");
             s->setHasOnlySubstanceUnits(false);
             s->setConstant(false);
@@ -170,11 +171,9 @@ namespace semsim_test {
 
 
     class SBMLFactory {
-    private:
-        SBMLWriter writer;
     public:
 
-        static SBMLDocument *getModel(ModelType modelType) {
+        static SBMLDocument *getSBMLDocument(ModelType modelType) {
             if (modelType == SBML_ANNOTATED)
                 return SBMLAnnotated().buildModel();
             else if (modelType == SBML_NOT_ANNOTATED)
@@ -184,8 +183,9 @@ namespace semsim_test {
             }
         }
 
-        std::string getModelStr(ModelType modelType) {
-            SBMLDocument *doc = getModel(modelType);
+        static std::string getModelStr(ModelType modelType) {
+            SBMLWriter writer;
+            SBMLDocument *doc = getSBMLDocument(modelType);
             return writer.writeSBMLToString(doc);
         }
     };

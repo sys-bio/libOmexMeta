@@ -16,10 +16,11 @@ namespace semsim {
      */
     class EntityDescriptor {
     public:
+
         typedef std::vector<DescriptorTerm> DescriptorTerms;
 
         /// Empty constructor
-        EntityDescriptor() {}
+        EntityDescriptor() = default;
 
         /// Copy constructor
         EntityDescriptor(const EntityDescriptor &other)

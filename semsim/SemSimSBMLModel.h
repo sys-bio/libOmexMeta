@@ -31,7 +31,8 @@ namespace semsim {
                 : SemsimModel(), d_(d) {
             libsbml::Model *m = d->getModel();
             // all elements must have meta ids
-            MetaID::assignMetaIds(m);
+            MetaID metaId(*m);
+            metaId.assignMetaIds();
             for (unsigned int k = 0; k < m->getNumCompartments(); ++k) {
                 libsbml::Compartment *c = m->getCompartment(k);
                 if (c->isSetMetaId()) {
