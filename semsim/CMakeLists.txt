@@ -50,6 +50,7 @@ set(SEMSIM_SOURCES
         URI.h
         Error.h
         sbmlTest.h
+        url.h url.cpp
         )
 
 

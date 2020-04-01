@@ -13,7 +13,7 @@ namespace semsim {
     class URI {
     public:
         /// Empty constructor
-        URI() = default;
+        URI() {}
 
         /// Construct from string-encoded URI
         URI(const std::string &uri)
@@ -25,7 +25,7 @@ namespace semsim {
 
 
         /// Construct from string-encoded URI
-        explicit URI(std::string &&uri)
+        URI(std::string &&uri)
                 : encoded_uri_(std::move(uri)) {}
 
 

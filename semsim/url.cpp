@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#include "url.hpp"
+#include "url.h"
 #include <algorithm>
 #include <cstdlib>
 #include <iterator>
@@ -32,7 +32,7 @@
 
 
 
-namespace {
+namespace semsim {
 
 static const uint8_t tbl[256] = {
     0,0,0,0, 0,0,0,0,     // NUL SOH STX ETX  EOT ENQ ACK BEL
@@ -548,7 +548,7 @@ class encode_query_val {
 
 
 // Copy assignment
-void Url::assign(const Url &url) {
+void semsim::Url::assign(const Url &url) {
     m_parse=url.m_parse;
     m_built=url.m_built;
     if (m_parse) {
@@ -567,7 +567,7 @@ void Url::assign(const Url &url) {
 
 
 // Move assignment
-void Url::assign(Url&& url) {
+void semsim::Url::assign(Url&& url) {
     m_parse=url.m_parse;
     m_built=url.m_built;
     if (m_parse) {
@@ -585,7 +585,7 @@ void Url::assign(Url&& url) {
 }
 
 
-Url &Url::scheme(const std::string& s) {
+semsim::Url &semsim::Url::scheme(const std::string& s) {
     if (!is_scheme(s))
         throw Url::parse_error("Invalid scheme '"+s+"'");
     lazy_parse();
@@ -601,7 +601,7 @@ Url &Url::scheme(const std::string& s) {
 }
 
 
-Url &Url::user_info(const std::string& s) {
+semsim::Url &semsim::Url::user_info(const std::string& s) {
     if (s.length()>256)
         throw Url::parse_error("User info is longer than 256 characters '"+s+"'");
     lazy_parse();
@@ -613,7 +613,7 @@ Url &Url::user_info(const std::string& s) {
 }
 
 
-Url &Url::host(const std::string& h, std::uint8_t ip_v) {
+semsim::Url &semsim::Url::host(const std::string& h, std::uint8_t ip_v) {
     if (h.length()>253)
         throw Url::parse_error("Host is longer than 253 characters '"+h+"'");
     lazy_parse();
@@ -649,7 +649,7 @@ Url &Url::host(const std::string& h, std::uint8_t ip_v) {
 }
 
 
-Url &Url::port(const std::string& p) {
+semsim::Url &semsim::Url::port(const std::string& p) {
     if (!is_port(p))
         throw Url::parse_error("Invalid port '"+p+"'");
     lazy_parse();
@@ -664,7 +664,7 @@ Url &Url::port(const std::string& p) {
 }
 
 
-Url &Url::path(const std::string& p) {
+semsim::Url &semsim::Url::path(const std::string& p) {
     if (p.length()>8000)
         throw Url::parse_error("Path is longer than 8000 characters '"+p+"'");
     lazy_parse();
@@ -677,7 +677,7 @@ Url &Url::path(const std::string& p) {
 }
 
 
-Url &Url::fragment(const std::string& f) {
+semsim::Url &semsim::Url::fragment(const std::string& f) {
     if (f.length()>256)
         throw Url::parse_error("Fragment is longer than 256 characters '"+f+"'");
     lazy_parse();
@@ -689,7 +689,7 @@ Url &Url::fragment(const std::string& f) {
 }
 
 
-Url &Url::clear() {
+semsim::Url &semsim::Url::clear() {
     m_url.clear();
     m_scheme.clear();
     m_user.clear();
@@ -705,7 +705,7 @@ Url &Url::clear() {
 }
 
 
-void Url::parse_url() const {
+void semsim::Url::parse_url() const {
     if (m_url.empty()) {
         const_cast<Url*>(this)->clear();
         m_parse=m_built=true;
@@ -864,7 +864,7 @@ void Url::parse_url() const {
 }
 
 
-void Url::build_url() const {
+void semsim::Url::build_url() const {
     lazy_parse();
     std::stringstream url;
     if (!m_scheme.empty())
@@ -922,7 +922,7 @@ void Url::build_url() const {
 
 
 // Output
-std::ostream& Url::output(std::ostream &o) const {
+std::ostream& semsim::Url::output(std::ostream &o) const {
     lazy_parse();
     if(!m_built) build_url();
     o<<"Url:{url("<<m_url<<")";
