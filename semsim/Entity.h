@@ -71,13 +71,10 @@ namespace semsim {
         Entity(const Entity &other)
                 : EntityBase(other), descriptors_(other.descriptors_) {}
 
-# if __cplusplus >= 201103L
-
         /// Move constructor
         Entity(Entity &&other)
                 : EntityBase(std::move(other)), descriptors_(other.descriptors_) {}
 
-# endif
 
         /**
          * Get an iterable range of entity descriptors.
@@ -123,8 +120,6 @@ namespace semsim {
             descriptors_.push_back(d);
         }
 
-# if __cplusplus >= 201103L
-
         /**
          * Add an @ref EntityDescriptor to this @ref Entity (move).
          * @param d The descriptor to add.
@@ -133,7 +128,6 @@ namespace semsim {
             descriptors_.emplace_back(std::move(d));
         }
 
-# endif
 
         /// Get the @ref EntityDescriptor at index @p k.
         const EntityDescriptor &getDescriptor(std::size_t k) const {
@@ -154,7 +148,7 @@ namespace semsim {
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          * @return the URI for this entity.
          */
-        void serializeToRDF(const URI &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
+        void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
             EntityBase::serializeToRDF(sbml_base_uri, world, serializer);
             for (Descriptors::const_iterator i(descriptors_.begin()); i != descriptors_.end(); ++i)
                 i->serializeToRDF(sbml_base_uri, metaid_, world, serializer);
@@ -165,7 +159,7 @@ namespace semsim {
          * information. Ontology terms will be replaced with human-readable
          * names.
          */
-        virtual std::string humanize() const {
+        std::string humanize() const override {
             return " -> (is) -> " + humanizeDefintions() + humanizeDescriptors();
         }
 

@@ -31,28 +31,20 @@ namespace semsim {
         Process() {}
 
         /// Construct from a singular annotation
-        Process(const SingularAnnotation &annotation)
+        Process(SingularAnnotation &annotation)
                 : Component(annotation) {}
-
-# if __cplusplus >= 201103L
 
         /// Move-construct from a singular annotation
         Process(SingularAnnotation &&annotation)
                 : Component(std::move(annotation)) {}
 
-# endif
-
         /// Construct from a composite annotation
         Process(const CompositeAnnotation &annotation)
                 : Component(annotation) {}
 
-# if __cplusplus >= 201103L
-
         /// Move-construct from a composite annotation
         Process(CompositeAnnotation &&annotation)
                 : Component(std::move(annotation)) {}
-
-# endif
 
         Process(const Process &other)
                 : Component(other) {
@@ -104,34 +96,33 @@ namespace semsim {
 
         /**
          * Serialize this process to RDF using the Raptor library.
-         * @param sbml_base_uri   The base URI of the SBML document relative to this (e.g. a relative path in a COMBINE archive).
+         * @param sbml_base_uri   The base Url of the SBML document relative to this (e.g. a relative path in a COMBINE archive).
          * @param world      Raptor world object. Must be initialized prior to calling this function.
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
-         * @return the URI for this entity.
+         * @return the Url for this entity.
          */
-        virtual void
-        serializeToRDF(const URI &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
+        virtual void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
             getAnnotation().serializeToRDF(sbml_base_uri, world, serializer);
-            URI this_uri = getURI(sbml_base_uri);
+            Url this_uri = getURI(sbml_base_uri);
 
             // serialize the participants
             for (Sources::const_iterator i = sources_.begin(); i != sources_.end(); ++i) {
-                URI participant_uri = i->serializeToRDF(sbml_base_uri, world, serializer);
+                Url participant_uri = i->serializeToRDF(sbml_base_uri, world, serializer);
 
-                SerializeURIStatement(this_uri.encode(), semsim::hasSourceParticipant.getURI().encode(),
-                                      participant_uri.encode(), world, serializer);
+                SerializeURIStatement(this_uri.str(), semsim::hasSourceParticipant.getURI().str(),
+                                      participant_uri.str(), world, serializer);
             }
             for (Sinks::const_iterator i = sinks_.begin(); i != sinks_.end(); ++i) {
-                URI participant_uri = i->serializeToRDF(sbml_base_uri, world, serializer);
+                Url participant_uri = i->serializeToRDF(sbml_base_uri, world, serializer);
 
-                SerializeURIStatement(this_uri.encode(), semsim::hasSinkParticipant.getURI().encode(),
-                                      participant_uri.encode(), world, serializer);
+                SerializeURIStatement(this_uri.str(), semsim::hasSinkParticipant.getURI().str(),
+                                      participant_uri.str(), world, serializer);
             }
             for (Mediators::const_iterator i = mediators_.begin(); i != mediators_.end(); ++i) {
-                URI participant_uri = i->serializeToRDF(sbml_base_uri, world, serializer);
+                Url participant_uri = i->serializeToRDF(sbml_base_uri, world, serializer);
 
-                SerializeURIStatement(this_uri.encode(), semsim::hasMediatorParticipant.getURI().encode(),
-                                      participant_uri.encode(), world, serializer);
+                SerializeURIStatement(this_uri.str(), semsim::hasMediatorParticipant.getURI().str(),
+                                      participant_uri.str(), world, serializer);
             }
         }
 

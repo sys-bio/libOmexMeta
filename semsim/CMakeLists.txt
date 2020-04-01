@@ -47,7 +47,6 @@ set(SEMSIM_SOURCES
         Sink.h
         Source.h
         Term.h
-        URI.h
         Error.h
         sbmlTest.h
         url.h url.cpp

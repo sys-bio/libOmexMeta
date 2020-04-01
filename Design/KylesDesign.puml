@@ -366,7 +366,7 @@ namespace semsim {
 		+run(const std::string& query) : RasqalQueryResult
 		#raptor_iostr_ : raptor_iostream*
 		#base_uri_ : raptor_uri*
-		#uri_ : raptor_uri*
+		#url_ : raptor_uri*
 		#raptor_world_ : raptor_world*
 		#dg_ : rasqal_data_graph*
 		#query_ : rasqal_query*
@@ -394,7 +394,7 @@ namespace semsim {
 	class Relation {
 		+Relation(const URI& uri)
 		+Relation(URI&& uri)
-		#uri_ : URI
+		#url_ : URI
 		+getURI() : URI& {query}
 		+operator==(const Relation& other) : bool {query}
 		+humanize() : std::string {query}
@@ -410,7 +410,7 @@ namespace semsim {
 		+Resource(Component* element)
 		#element_ : Component*
 		+getURI(const URI& base) : URI {query}
-		#uri_ : URI
+		#url_ : URI
 		+isLocal() : bool {query}
 		+operator==(const Resource& other) : bool {query}
 		+humanize() : std::string {query}

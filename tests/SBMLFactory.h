@@ -53,7 +53,7 @@ namespace semsim_test {
             auto *cv_cytosol = new CVTerm();
             cv_cytosol->setQualifierType(BIOLOGICAL_QUALIFIER);
             cv_cytosol->setBiologicalQualifierType(BQB_IS);
-            cv_cytosol->addResource(semsim::GO::get(5829).getURI().encode());
+            cv_cytosol->addResource(semsim::GO::get(5829).getURI().str());
             comp->addCVTerm(cv_cytosol);
 
             UnitDefinition *unitdef = m->createUnitDefinition();
@@ -86,7 +86,7 @@ namespace semsim_test {
             auto *cv_glucose = new CVTerm();
             cv_glucose->setQualifierType(BIOLOGICAL_QUALIFIER);
             cv_glucose->setBiologicalQualifierType(BQB_IS);
-            cv_glucose->addResource(semsim::CHEBI::get(17234).getURI().encode());
+            cv_glucose->addResource(semsim::CHEBI::get(17234).getURI().str());
             s->addCVTerm(cv_glucose);
 
             // create import reaction for glucose

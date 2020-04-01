@@ -1,7 +1,7 @@
 # ifndef SEMSIM_RDF_RDFREADER_H_
 # define SEMSIM_RDF_RDFREADER_H_
 
-
+# include "semsim/url.h"
 # include "semsim/SemsimModel.h"
 # include "SemSimSBMLModel.h"
 
@@ -12,7 +12,7 @@ namespace semsim {
         static std::string RaptorURIToString(raptor_uri *u);
 
 
-        static URI RaptorTermToURI(raptor_term *t);
+        static Url RaptorTermToURI(raptor_term *t);
 
         static std::string RaptorTermToRepr(raptor_term *t);
 

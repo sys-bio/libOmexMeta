@@ -2,7 +2,7 @@
 # define SEMSIM_RELATION_H_
 
 
-# include "semsim/URI.h"
+# include "semsim/Url.h"
 
 namespace semsim {
 
@@ -16,22 +16,22 @@ namespace semsim {
     public:
         /**
          * Construct from URI.
-         * @param uri The URI of the ontology term
+         * @param url The URI of the ontology term
          */
-        Relation(const URI &uri)
-                : uri_(uri) {}
+        Relation(const Url &url)
+                : url_(url) {}
 
-        Relation(URI &&uri) : uri_(std::move(uri)) {}
+        Relation(Url &&uri) : url_(std::move(uri)) {}
 
         std::string toString() const {
-            return uri_.toString();
+            return url_.str();
         }
 
         /**
          * @return the URI for this relation.
          */
-        const URI &getURI() const {
-            return uri_;
+        const Url &getURI() const {
+            return url_;
         }
 
         /**
@@ -43,11 +43,11 @@ namespace semsim {
 
         /// Comparison operator
         bool operator==(const Relation &other) const {
-            return uri_ == other.uri_;
+            return url_.str() == other.url_.str();
         }
 
     protected:
-        URI uri_;
+        Url url_;
     };
 }
 # endif
