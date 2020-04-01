@@ -25,3 +25,30 @@ TEST_F(ComponentTests, test2){
     semsim::SemSimSBMLModel model(doc);
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

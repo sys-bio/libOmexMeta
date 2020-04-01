@@ -4,7 +4,11 @@ add_executable(semsim-tests
 #        RedlandLibrariesTests.cpp
         SBMLImporterTests.cpp
         SBMLFactory.h
-        SemSimSBMLModelTests.cpp SemSimModelTests.cpp ComponentTests.cpp MetaIDTests.cpp)
+        SemSimSBMLModelTests.cpp
+        SemSimModelTests.cpp
+        ComponentTests.cpp
+        MetaIDTests.cpp
+        URITests.cpp)
 
 
 target_link_libraries(semsim-tests PRIVATE
