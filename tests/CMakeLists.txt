@@ -8,7 +8,8 @@ add_executable(semsim-tests
         SemSimModelTests.cpp
         ComponentTests.cpp
         MetaIDTests.cpp
-        URITests.cpp)
+        UrlTests.cpp
+        )
 
 
 target_link_libraries(semsim-tests PRIVATE

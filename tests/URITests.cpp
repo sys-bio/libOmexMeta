@@ -11,6 +11,15 @@ protected:
     };
 };
 
-TEST_F(URLTests, test2){
+TEST_F(URLTests, TestGetString){
+    semsim::URI uri(uri_str);
+    ASSERT_STREQ(uri_str.c_str(), uri.toString().c_str());
+}
+
+TEST_F(URLTests, TestConcatonationWithPlusSymbol){
+    semsim::URI uri(uri_str);
+}
+
+TEST_F(URLTests, TestConcatonationWithPlusSymbo2l){
     semsim::URI uri(uri_str);
 }
