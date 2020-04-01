@@ -925,8 +925,6 @@ void semsim::Url::build_url() const {
 std::ostream& semsim::Url::output(std::ostream &o) const {
     lazy_parse();
     if(!m_built) build_url();
-    o<<"Url:{url("<<m_url<<")";
-    if (!m_scheme.empty()) o << " scheme("<<m_scheme<<")";
     if (!m_user.empty()) o << " user_info("<<m_user<<")";
     if (m_ip_v!=-1) o << " host("<<m_host<<") IPv("<<(int)m_ip_v<<")";
     if (!m_port.empty()) o << " port("<<m_port<<")";
