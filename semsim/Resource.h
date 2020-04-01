@@ -2,7 +2,7 @@
 # define SEMSIM_RESOURCE_H_
 
 
-# include "semsim/URI.h"
+# include "semsim/url.h"
 
 # include <stdexcept>
 
@@ -31,19 +31,17 @@ namespace semsim {
          * Construct from URI.
          * @param uri The URI of the resource
          */
-        Resource(const URI &uri)
-                : uri_(uri), element_(NULL) {}
+        Resource(const Url &url)
+                : url_(url), element_(nullptr) {}
 
-# if __cplusplus >= 201103L
 
         /**
          * Move-construct from URI.
          * @param uri The URI of the resource
          */
-        Resource(URI &&uri)
-                : uri_(std::move(uri)), element_(NULL) {}
+        Resource(Url &&uri)
+                : url_(std::move(uri)), element_(nullptr) {}
 
-# endif
 
         /**
          * Construct from URI.
@@ -52,24 +50,8 @@ namespace semsim {
         Resource(Component *element)
                 : element_(element) {}
 
-        /**
-         * Construct directly from the UTF-8 string-encoded URI.
-         * @param uri The UTF-8 string-encoded URI of the resource
-         */
-        // Resource(const std::string& uri)
-        //   : uri_(uri) {}
-
-# if __cplusplus >= 201103L
-        /**
-         * Move-construct directly from the UTF-8 string-encoded URI.
-         * @param uri The UTF-8 string-encoded URI of the resource
-         */
-        // Resource(std::string&& uri)
-        //   : uri_(std::move(uri)) {}
-# endif
-
         std::string toString() const {
-            return uri_.toString();
+            return url_.str();
         }
 
         /**
@@ -77,7 +59,7 @@ namespace semsim {
          * @param base If this resource points to a local @ref Component, this parameter should be the relative path of the SBML document. Otherwise, the default value should be used.
          * @return The URI for this resource.
          */
-        URI getURI(const URI &base = URI()) const;
+        Url getURI(Url base = Url()) const;
 
         /**
          * @return @c true if this resource points to a local @ref Component
@@ -102,7 +84,7 @@ namespace semsim {
          */
         bool operator==(const Resource &other) const {
             if (!isLocal() && !other.isLocal())
-                return uri_ == other.uri_;
+                return url_.str() == other.url_.str();
             else if (isLocal() && other.isLocal())
                 return element_ == other.element_;
             else
@@ -111,7 +93,7 @@ namespace semsim {
 
     protected:
         /// A URI (for external resources)
-        URI uri_;
+        Url url_;
         /// A weak pointer to an element in the model (set for internal / local resources)
         Component *element_;
     };

@@ -4,6 +4,7 @@
 
 # include "semsim/DescriptorTerm.h"
 # include "semsim/BiomodelsQualifiers.h"
+#include "url.h"
 
 # include <raptor2.h>
 
@@ -74,21 +75,21 @@ namespace semsim {
          * This function should only be called from the @ref Entity class.
          * The RDF serialization format is chosen when initializing the
          * @c raptor_serializer, and must be done before calling this function.
-         * @param sbml_base_uri   The base URI of the SBML model (usu. a relative path in a COMBINE archive).
+         * @param sbml_base_uri   The base Url of the SBML model (usu. a relative path in a COMBINE archive).
          * @param metaid   The meta id of the entity this descriptor is attached to.
          * @param world      Raptor world object. Must be initialized prior to calling this function.
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
-         * @return the URI for this entity.
+         * @return the Url for this entity.
          */
-        void serializeToRDF(const URI &sbml_base_uri, const std::string &metaid, raptor_world *world,
+        void serializeToRDF(const Url &sbml_base_uri, const std::string &metaid, raptor_world *world,
                             raptor_serializer *serializer) const {
             unsigned int k = 0;
-            URI last_uri = "#" + metaid;
+            Url last_uri = "#" + metaid;
             for (DescriptorTerms::const_iterator i(terms_.begin()); i != terms_.end(); ++i) {
                 if (!i->getResource().isLocal()) {
                     std::stringstream ss_this;
                     ss_this << metaid << "_term" << ++k;
-                    URI next_uri = "#" + ss_this.str();
+                    Url next_uri = "#" + ss_this.str();
                     serializeDescriptorTermToRDF(*i, last_uri, next_uri, world, serializer);
                     last_uri = next_uri;
                 } else {
@@ -110,27 +111,27 @@ namespace semsim {
     protected:
         void serializeDescriptorTermToRDF(
                 const DescriptorTerm &term,
-                const URI &linked_uri,
-                const URI &term_uri,
+                const Url &linked_uri,
+                const Url &term_uri,
                 raptor_world *world,
                 raptor_serializer *serializer) const {
             // term structural relation triple
             raptor_statement *s = raptor_new_statement(world);
-            s->subject = raptor_new_term_from_uri_string(world, (const unsigned char *) linked_uri.encode().c_str());
+            s->subject = raptor_new_term_from_uri_string(world, (const unsigned char *) linked_uri.str().c_str());
             s->predicate = raptor_new_term_from_uri_string(world,
-                                                           (const unsigned char *) term.getRelation().getURI().encode().c_str());
-            s->object = raptor_new_term_from_uri_string(world, (const unsigned char *) term_uri.encode().c_str());
+                                                           (const unsigned char *) term.getRelation().getURI().str().c_str());
+            s->object = raptor_new_term_from_uri_string(world, (const unsigned char *) term_uri.str().c_str());
             raptor_serializer_serialize_statement(serializer, s);
             raptor_free_statement(s);
 
             // term definition triple
             if (!term.getResource().isLocal()) {
                 s = raptor_new_statement(world);
-                s->subject = raptor_new_term_from_uri_string(world, (const unsigned char *) term_uri.encode().c_str());
+                s->subject = raptor_new_term_from_uri_string(world, (const unsigned char *) term_uri.str().c_str());
                 s->predicate = raptor_new_term_from_uri_string(world,
-                                                               (const unsigned char *) bqb::is.getURI().encode().c_str());
+                                                               (const unsigned char *) bqb::is.getURI().str().c_str());
                 s->object = raptor_new_term_from_uri_string(world,
-                                                            (const unsigned char *) term.getResource().getURI().encode().c_str());
+                                                            (const unsigned char *) term.getResource().getURI().str().c_str());
                 raptor_serializer_serialize_statement(serializer, s);
                 raptor_free_statement(s);
             }

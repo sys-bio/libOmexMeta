@@ -6,6 +6,7 @@
 # include "semsim/PhysicalProperty.h"
 # include "semsim/EntityBase.h"
 # include "semsim/SemSimQualifiers.h"
+# include "semsim/url.h"
 
 namespace semsim {
     /**
@@ -15,8 +16,8 @@ namespace semsim {
      * as @ref CompositeAnnotation "CompositeAnnotations"
      * and can only point to one or more @ref Resource "Resources"
      * which define the entity.
-     * Overusing definition URIs is generally bad practice and,
-     * ideally, one should use a single definition URI that best
+     * Overusing definition Urls is generally bad practice and,
+     * ideally, one should use a single definition Url that best
      * captures the model element.
      */
     class SingularAnnotation : public AnnotationBase, public EntityBase {
@@ -34,7 +35,7 @@ namespace semsim {
          * \endcode
          *
          * Generally, a model element should be defined using
-         * only a single URI.
+         * only a single Url.
          */
         SingularAnnotation(const std::string &metaid, const Resource &definition)
                 : EntityBase(metaid, definition) {}
@@ -43,25 +44,17 @@ namespace semsim {
         SingularAnnotation(const std::string &metaid)
                 : EntityBase(metaid) {}
 
-# if __cplusplus >= 201103L
-
         /// Move-construct from an @ref EntityDescriptor
         SingularAnnotation(const std::string &metaid, Resource &&definition)
                 : EntityBase(metaid, {std::move(definition)}) {}
-
-# endif
 
         /// Copy constructor
         SingularAnnotation(const SingularAnnotation &other)
                 : EntityBase(other) {}
 
-# if __cplusplus >= 201103L
-
         /// Move constructor
         SingularAnnotation(SingularAnnotation &&other)
                 : EntityBase(std::move(other)) {}
-
-# endif
 
         /// Get the meta id for this element.
         const std::string &getMetaId() const {
@@ -69,7 +62,7 @@ namespace semsim {
         }
 
         /// Create a copy of this object using the correct derived class's type.
-        virtual AnnotationBase *clone() const {
+        AnnotationBase *clone() const override {
             return new SingularAnnotation(*this);
         }
 
@@ -78,16 +71,16 @@ namespace semsim {
          * This function just delegates to the @ref EntityBase serialization logic.
          * The RDF serialization format is chosen when initializing the
          * @c raptor_serializer, and must be done before calling this function.
-         * @param sbml_base_uri   The base URI of the SBML document relative to this (e.g. a relative path in a COMBINE archive).
+         * @param sbml_base_Url   The base Url of the SBML document relative to this (e.g. a relative path in a COMBINE archive).
          * @param world      Raptor world object. Must be initialized prior to calling this function.
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
-         * @return the URI for this entity.
+         * @return the Url for this entity.
          */
-        void serializeToRDF(const URI &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
+        void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const override {
             EntityBase::serializeToRDF(sbml_base_uri, world, serializer);
         }
 
-        virtual std::string getRDF(const URI &sbml_base_uri, const std::string &format = "rdfxml") const {
+        std::string getRDF(Url &sbml_base_uri, const std::string &format) const override {
             raptor_world *world = raptor_new_world();
             raptor_serializer *serializer = raptor_new_serializer(world, format.c_str());
             if (!serializer)
@@ -124,11 +117,11 @@ namespace semsim {
          * @param prop The physical property to assign to the composite annotation.
          * @return A new composite annotation
          */
-        AnnotationPtr makeComposite(const PhysicalProperty &prop) const;
+        AnnotationPtr makeComposite(const PhysicalProperty &prop) const override;
 
-        /// Get the local URI of this entity
-        URI getURI(const URI &base) const {
-            return base.withFrag(metaid_);
+        /// Get the local URL of this entity
+        Url getURI(Url &base) const override {
+            return base.fragment(metaid_);
         }
 
         /**
@@ -136,11 +129,11 @@ namespace semsim {
          * information. Ontology terms will be replaced with human-readable
          * names.
          */
-        std::string humanize() const {
+        std::string humanize() const override {
             return EntityBase::humanize();
         }
 
-        virtual bool isComposite() const {
+        bool isComposite() const override {
             return false;
         }
     };

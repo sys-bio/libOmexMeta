@@ -46,8 +46,6 @@ namespace semsim {
         CompositeAnnotation(const std::string &metaid, const PhysicalProperty &property, const Entity &entity)
                 : metaid_(metaid), property_(property), entity_(entity) {}
 
-# if __cplusplus >= 201103L
-
         /**
          * Construct a @ref CompositeAnnotation given a physical property (what is the quantity being represented - chemical concentration, fluid volume, etc.?)
          * and a domain descriptor ("what" is the chemical identity and "where" does the entity reside in physical space?)
@@ -57,20 +55,14 @@ namespace semsim {
         CompositeAnnotation(const std::string &metaid, PhysicalProperty &&property, Entity &&entity)
                 : metaid_(metaid), property_(std::move(property)), entity_(std::move(entity)) {}
 
-# endif
-
         /// Copy constructor
         CompositeAnnotation(const CompositeAnnotation &other)
                 : metaid_(other.metaid_), property_(other.property_), entity_(other.entity_) {}
-
-# if __cplusplus >= 201103L
 
         /// Move constructor
         CompositeAnnotation(CompositeAnnotation &&other)
                 : metaid_(std::move(other.metaid_)), property_(std::move(other.property_)),
                   entity_(std::move(other.entity_)) {}
-
-# endif
 
         /**
          * Construct from a singular annotation.
@@ -83,23 +75,6 @@ namespace semsim {
                 : metaid_(other.getMetaId()), property_(property), entity_(other) {
             entity_.setMetaId(metaid_);
         }
-
-        /**
-         * This function returns @p true if the physical entity
-         * descriptor is empty. This should not be the case
-         * for any useful annotation.
-         * @return Whether the physical entity descriptor is empty.
-         */
-        // bool isEntityEmpty() const {
-        // return entity_.isEmpty();
-        // }
-
-        /**
-         * @return The @ref EntityDescriptor describing the physical entity of this annotation.
-         */
-        // const EntityDescriptor& getEntity() const {
-        //   return entity_;
-        // }
 
         /**
          * This function returns @p true if the @ref Entity element of this composite annotation is empty.
@@ -146,22 +121,9 @@ namespace semsim {
             getEntity().getDescriptors().back().addTerm(relation, resource);
         }
 
-        /**
-         * This function returns @p true if this annotation
-           * can be encoded in an SBML model (i.e. its domain
-         * descriptor must be empty).
-         * The only exception to this is when the domain descriptor
-         * consists of a single term, and that term describes the
-         * *compartment* that the entity resides in.
-         * @return [description]
-         */
-        // bool isSBMLCompatible() const {
-        //   return isDomainEmpty();
-        // }
-
 
         /// Create a copy of this object using the correct derived class's type.
-        virtual AnnotationBase *clone() const {
+        AnnotationBase *clone() const override {
             return new CompositeAnnotation(*this);
         }
 
@@ -172,13 +134,12 @@ namespace semsim {
          * @param world      Raptor world object. Must be initialized prior to calling this function.
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          */
-        virtual void
-        serializeToRDF(const URI &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
+        void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const  {
             entity_.serializeToRDF(sbml_base_uri, world, serializer);
             serializePhysicalPropertyToRDF(sbml_base_uri, world, serializer);
         }
 
-        virtual std::string getRDF(const URI &sbml_base_uri, const std::string &format = "rdfxml") const {
+        std::string getRDF(Url &sbml_base_uri, const std::string &format = "rdfxml") const {
             raptor_world *world = raptor_new_world();
             raptor_serializer *serializer = raptor_new_serializer(world, format.c_str());
             if (!serializer)
@@ -210,9 +171,9 @@ namespace semsim {
         }
 
         /**
-         * @return the URI for this element (usually a local identifier).
+         * @return the Url for this element (usually a local identifier).
          */
-        const std::string &getMetaId() const {
+        const std::string &getMetaId() const override {
             return metaid_;
         }
 
@@ -231,7 +192,7 @@ namespace semsim {
          * is to create a clone.
          * @return A new composite annotation
          */
-        AnnotationPtr makeComposite(const PhysicalProperty &prop) const {
+        AnnotationPtr makeComposite(const PhysicalProperty &prop) const override {
             return AnnotationPtr(clone());
         }
 
@@ -240,31 +201,31 @@ namespace semsim {
          * information. Ontology terms will be replaced with human-readable
          * names.
          */
-        std::string humanize() const {
+        std::string humanize() const override {
             return property_.humanize() + " -> (isPropertyOf) -> " + "#" + metaid_ + entity_.humanize();
         }
 
-        virtual bool isComposite() const {
+        bool isComposite() const override {
             return true;
         }
 
     protected:
-        virtual void serializePhysicalPropertyToRDF(const URI &sbml_base_uri, raptor_world *world,
+        virtual void serializePhysicalPropertyToRDF(Url &sbml_base_uri, raptor_world *world,
                                                     raptor_serializer *serializer) const {
-            const URI &phys_prop_uri = sbml_base_uri.withFrag(metaid_ + "_property");
-            const URI &phys_prop_def = property_.getResource().getURI();
-            URI entity_uri = entity_.getURI(sbml_base_uri);
+            const Url &phys_prop_uri = sbml_base_uri.fragment(metaid_ + "_property");
+            const Url &phys_prop_def = property_.getResource().getURI();
+            Url entity_uri = entity_.getURI(sbml_base_uri);
 
             // serialize physical property definition
-            SerializeURIStatement(phys_prop_uri.encode(), bqb::isVersionOf.getURI().encode(), phys_prop_def.encode(),
+            SerializeURIStatement(phys_prop_uri.str(), bqb::isVersionOf.getURI().str(), phys_prop_def.str(),
                                   world, serializer);
 
             // serialize physical property to entity linkage
-            SerializeURIStatement(phys_prop_uri.encode(), bqb::isPropertyOf.getURI().encode(), entity_uri.encode(),
+            SerializeURIStatement(phys_prop_uri.str(), bqb::isPropertyOf.getURI().str(), entity_uri.str(),
                                   world, serializer);
         }
 
-        /// Stores the URI of this element (usu. a local identifier)
+        /// Stores the Url of this element (usu. a local identifier)
         std::string metaid_;
         /// Stores the physical property for this annotation
         PhysicalProperty property_;

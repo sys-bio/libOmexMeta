@@ -85,16 +85,16 @@ namespace semsim {
         /**
          * Get the RDF serialization of this model.
          * The serialized RDF will always need to refer back
-         * to the original SBML or CellML model using a URI.
+         * to the original SBML or CellML model using a Url.
          * Usually, the RDF will be written to a COMBINE archive
          * along with the model, in which case the @p sbml_base_uri
          * argument should be the relative path to the model file
          * in the COMBINE archive.
          * @param  format        The RDF serialization format. Choices include "rdfxml", "ntriples", "turtle", "trig", "rss-tag-soup", "grddl", "rdfa", "json", and "nquads".
-         * @param  sbml_base_uri A URI that points to the original model file. Usually a relative path in a COMBINE archive.
+         * @param  sbml_base_uri A Url that points to the original model file. Usually a relative path in a COMBINE archive.
          * @return               A string representation of the RDF for model using the desired RDF serialization format.
          */
-        virtual std::string getRDF(const URI &sbml_base_uri, const std::string &format) const = 0;
+        virtual std::string getRDF(Url &sbml_base_uri, const std::string &format) const = 0;
 
         /**
          * Return a human--readable representation of the annotation

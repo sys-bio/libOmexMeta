@@ -5,6 +5,7 @@
 # include "semsim/AnnotationBase.h"
 # include "semsim/SingularAnnotation.h"
 # include "semsim/CompositeAnnotation.h"
+#include "url.h"
 
 # include <string>
 
@@ -20,7 +21,7 @@ namespace semsim {
         Component() {}
 
         /// Construct from a singular annotation
-        explicit Component(const SingularAnnotation &annotation)
+        explicit Component(SingularAnnotation &annotation)
                 : annotation_(new SingularAnnotation(annotation)) {}
 
         /// Move-construct from a singular annotation
@@ -182,22 +183,29 @@ namespace semsim {
             metaid_ = metaid;
         }
 
-        /// Get the local URI of this component
-        virtual URI getURI(const URI &base) const {
-            return base.withFrag(getMetaId());
+        /// Get the local Url of this component
+        virtual Url getURI(Url &base) const {
+            std::string metaid = getMetaId();
+            return base.fragment(metaid);
         }
 
         /**
          * Serialize this annotation to RDF using the Raptor library.
-         * @param sbml_base_uri   The base URI of the SBML document relative to this (e.g. a relative path in a COMBINE archive).
+         * @param sbml_base_uri   The base Url of the SBML document relative to this (e.g. a relative path in a COMBINE archive).
          * @param world      Raptor world object. Must be initialized prior to calling this function.
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
-         * @return the URI for this entity.
+         * @return the Url for this entity.
          */
-        virtual void
-        serializeToRDF(const URI &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
+        virtual void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const  {
             if (annotation_)
                 getAnnotation().serializeToRDF(sbml_base_uri, world, serializer);
+        }
+
+        virtual std::string getRDF(Url &sbml_base_uri, const std::string &format = "rdfxml") const {
+            if (hasAnnotation())
+                return annotation_->getRDF(sbml_base_uri, format);
+            else
+                throw std::runtime_error("No annotation");
         }
 
         virtual bool isProcess() const {
@@ -206,13 +214,6 @@ namespace semsim {
 
         virtual bool containsMetaId(const std::string &metaid) const {
             return metaid_ == metaid;
-        }
-
-        std::string getRDF(const URI &sbml_base_uri, const std::string &format = "rdfxml") const {
-            if (hasAnnotation())
-                return annotation_->getRDF(sbml_base_uri, format);
-            else
-                throw std::runtime_error("No annotation");
         }
 
     protected:

@@ -3,28 +3,28 @@
 
 namespace semsim {
 
-    URI Resource::getURI(const URI &base) const {
+    Url Resource::getURI(Url base) const {
         if (!isLocal())
-            return uri_;
+            return url_;
         else
-            return URI(base.withFrag(element_->getAnnotation().getMetaId()));
+            return Url(base.fragment(element_->getAnnotation().getMetaId()));
     }
 
     std::string Resource::humanize() const {
         if (element_)
             return "#" + element_->getAnnotation().getMetaId();
-        else if (uri_ == "https://identifiers.org/GO:0005829")
+        else if (url_.str() == "https://identifiers.org/GO:0005829")
             return "GO:cytoplasm";
-        else if (uri_ == "https://identifiers.org/CL:0000169")
+        else if (url_.str() == "https://identifiers.org/CL:0000169")
             return "CL:type B pancreatic cell";
-        else if (uri_ == "http://identifiers.org/CHEBI:17234")
+        else if (url_.str() == "http://identifiers.org/CHEBI:17234")
             return "CHEBI:glucose";
-        else if (uri_ == "http://identifiers.org/opb/OPB_00425")
+        else if (url_.str() == "http://identifiers.org/opb/OPB_00425")
             return "OPB:chemical concentration";
-        else if (uri_ == "http://identifiers.org/opb/OPB_00523")
+        else if (url_.str() == "http://identifiers.org/opb/OPB_00523")
             return "OPB:spatial volume";
         else
-            throw std::runtime_error("Resource not recognized " + uri_.toString());
+            throw std::runtime_error("Resource not recognized " + url_.str());
     }
 
 }

@@ -20,7 +20,7 @@ namespace semsim {
      * and extraneous SBML CV terms (resources linked with any other qualifier).
      * Extraneous terms are not very useful for semantic information extraction.
      *
-     * An @ref EntityBase will always have its own URI in the serialized RDF.
+     * An @ref EntityBase will always have its own Url in the serialized RDF.
      */
     class EntityBase {
     public:
@@ -29,7 +29,7 @@ namespace semsim {
         /// The type used to store the list of extraneous terms. Treat as opaque.
         typedef std::vector<Term> Terms;
 
-        /// Construct from a definition URI
+        /// Construct from a definition Url
         EntityBase(std::string metaid, const Resource &definition)
                 : metaid_(std::move(metaid)), definitions_(1, definition) {}
 
@@ -65,8 +65,8 @@ namespace semsim {
             metaid_ = metaid;
         }
 
-        /// Get the local URI of this entity
-        virtual URI getURI(const URI &base) const {
+        /// Get the local Url of this entity
+        virtual Url getURI(Url &base) const {
             return "#" + metaid_;
         }
 
@@ -168,12 +168,12 @@ namespace semsim {
          * Serialize this @ref EntityBase to RDF using the Raptor library.
          * The RDF serialization format is chosen when initializing the
          * @c raptor_serializer, and must be done before calling this function.
-         * @param sbml_base_uri   The base URI of the SBML document relative to this (e.g. a relative path in a COMBINE archive).
+         * @param sbml_base_uri   The base Url of the SBML document relative to this (e.g. a relative path in a COMBINE archive).
          * @param world      Raptor world object. Must be initialized prior to calling this function.
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
-         * @return the URI for this entity.
+         * @return the Url for this entity.
          */
-        void serializeToRDF(const URI &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
+        void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
             // std::cerr << "serialize " << metaid_ << " definitions " << definitions_.size() << ", terms " << terms_.size() << "\n";
             for (const auto & definition : definitions_)
                 serializeDefinition(definition, sbml_base_uri, world, serializer);
@@ -194,27 +194,27 @@ namespace semsim {
 
         void serializeDefinition(
                 const Resource &def,
-                const URI &sbml_base_uri,
+                Url &sbml_base_uri,
                 raptor_world *world,
                 raptor_serializer *serializer) const {
-            URI this_uri = getURI(sbml_base_uri);
+            Url this_uri = getURI(sbml_base_uri);
 
-            SerializeURIStatement(this_uri.encode(), bqb::is.getURI().encode(), def.getURI().encode(), world,
+            SerializeURIStatement(this_uri.str(), bqb::is.getURI().str(), def.getURI().str(), world,
                                   serializer);
         }
 
         void serializeTerm(
                 const Term &term,
-                const URI &sbml_base_uri,
+                Url &sbml_base_uri,
                 raptor_world *world,
                 raptor_serializer *serializer) const {
-            URI this_uri = getURI(sbml_base_uri);
+            Url this_uri = getURI(sbml_base_uri);
 
             if (!term.isValue())
-                SerializeURIStatement(this_uri.encode(), term.getRelation().getURI().encode(),
-                                      term.getResource().getURI().encode(), world, serializer);
+                SerializeURIStatement(this_uri.str(), term.getRelation().getURI().str(),
+                                      term.getResource().getURI().str(), world, serializer);
             else
-                SerializeURIStatement(this_uri.encode(), term.getRelation().getURI().encode(), term.getValue(), world,
+                SerializeURIStatement(this_uri.str(), term.getRelation().getURI().str(), term.getValue(), world,
                                       serializer);
         }
 
@@ -228,10 +228,10 @@ namespace semsim {
             return ss.str();
         }
 
-        /// The metaid for this entity - will be used to construct a URI in the serialized RDF
+        /// The metaid for this entity - will be used to construct a Url in the serialized RDF
         std::string metaid_;
-        /// The base URI for this entity (everything but the fragment part)
-        // URI base_uri_;
+        /// The base Url for this entity (everything but the fragment part)
+        // Url base_uri_;
         /// Collection of definition URIs for this annotation / entity
         Definitions definitions_;
         /// Collection of extraneous terms

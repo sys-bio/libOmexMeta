@@ -18,17 +18,13 @@ namespace semsim {
         Term(const Relation &relation, const Resource &resource)
                 : relation_(relation), resource_(resource), is_value_(false) {}
 
-# if __cplusplus >= 201103L
-
         /// Move-construct from a @ref Resource (URI) and @ref Relation
         Term(Relation &&relation, Resource &&resource)
                 : relation_(std::move(relation)), resource_(std::move(resource)), is_value_(false) {}
 
-# endif
-
         /// Construct from a @ref Resource (URI) and a double value (literal)
         Term(const Relation &relation, const double value)
-                : relation_(relation), value_(value), resource_(""), is_value_(true) {}
+                : relation_(relation), value_(value), resource_(Url("")), is_value_(true) {}
 
         /// @return The @ref Resource of this term.
         const Relation &getRelation() const {

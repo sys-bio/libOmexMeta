@@ -41,7 +41,8 @@ TEST_F(NotAnnotatedSBMLImporterTests, test1){
 TEST_F(AnnotatedSBMLImporterTests, TestRDFGeneration) {
     semsim::SBMLImporter importer(doc);
     semsim::SemSimSBMLModel &model = importer.getSemSimSBMLModel();
-    std::string rdf = model.getRDF("./mymodel.xml", "turtle");
+    semsim::Url modelpath("./mymodel.xml");
+    std::string rdf = model.getRDF(modelpath, "turtle");
     const char *actual = rdf.c_str();
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqb: <http://biomodels.net/biology-qualifiers/> .\n"

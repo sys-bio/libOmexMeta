@@ -11,12 +11,12 @@ namespace semsim {
         return result;
     }
 
-    URI RDFReader::RaptorTermToURI(raptor_term *t) {
+    Url RDFReader::RaptorTermToURI(raptor_term *t) {
         if (!t)
             throw std::runtime_error("Raptor term is null");
         switch (t->type) {
             case RAPTOR_TERM_TYPE_URI:
-                return URI(RaptorURIToString(t->value.uri));
+                return Url(RaptorURIToString(t->value.uri));
             default:
                 throw std::runtime_error("Raptor term is wrong type - not a URI");
         }
