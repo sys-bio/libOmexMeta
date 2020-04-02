@@ -27,4 +27,9 @@ namespace semsim {
             throw std::runtime_error("Resource not recognized " + url_.str());
     }
 
+    std::ostream &operator<<(std::ostream &os, Resource &resource) {
+        os << resource.url_.str();
+        return os;
+    }
+
 }

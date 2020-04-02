@@ -1,0 +1,51 @@
+order of testing classes
+------------------------
+
+
+Term
+Relation
+
+AnnotationBase	
+EntityBase
+SingularAnnotation
+CompositeAnnotation
+Component
+SemSimSBMLModel
+SemsimModel
+SBMLImporter
+
+
+Things done wrong in libsemsim
+-------------------------------
+- Reliance on implicit conversion for instantiating objects with multiple types. Very annoying. 
+- No conformance to the rule of three/five
+- Never use explicit qualifier. 
+- Had a class which had the same name as as the namespace. 
+- is it ormal to have  a const nd non const version of a member func to support r and l values
+- chunks of copy and pasted code
+- functions with unused parameters (inheritance?)
+- Often written in unclear code, hasn't done things in a way which makes them more readable for other developers
+	- often poor readability
+	- lots of chained functions 
+- missing constructors
+- Some files split into header and implementations, others just headers. Randomly
+- Uses the same function to return two different types. WHAT? 
+
+Annotation constructors
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
