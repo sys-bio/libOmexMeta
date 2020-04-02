@@ -18,7 +18,7 @@ namespace semsim {
     class  Component {
     public:
         /// Empty constructor
-        Component() {}
+        Component() = default;
 
         /// Construct from a singular annotation
         explicit Component(SingularAnnotation &annotation)

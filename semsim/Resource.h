@@ -5,6 +5,7 @@
 # include "semsim/url.h"
 
 # include <stdexcept>
+#include <utility>
 
 namespace semsim {
     class Component;
@@ -25,26 +26,66 @@ namespace semsim {
      * in which case its definition URI will be whatever the element's
      * URI is at the time of serialization.
      */
-    class  Resource {
+    class Resource {
     public:
         /**
          * Construct from URI.
          * @param uri The URI of the resource
          */
-        Resource(const Url &url)
-                : url_(url), element_(nullptr) {}
-
+        explicit Resource(Url url)
+                : url_(std::move(url)), element_(nullptr) {}
 
         /**
-         * Move-construct from URI.
+         * Construct from string.
          * @param uri The URI of the resource
          */
-        Resource(Url &&uri)
-                : url_(std::move(uri)), element_(nullptr) {}
+        explicit Resource(const std::string &url)
+                : url_(Url(url)), element_(nullptr) {}
 
+        /*
+         * copy constructor
+         */
+        Resource(const Resource &resource) {
+            if (this != &resource) {
+                this->url_ = resource.url_;
+                this->element_ = resource.element_;
+            }
+        }
+
+        /*
+         * move constructor
+         */
+        Resource(Resource &&resource) noexcept {
+            if (this != &resource) {
+                this->url_ = std::move(resource.url_);
+                this->element_ = resource.element_;
+            }
+        }
+
+        /*
+         * copy assignment operator
+         */
+        Resource &operator=(const Resource &resource) {
+            if (this != &resource) {
+                this->url_ = resource.url_;
+                this->element_ = resource.element_;
+            }
+            return *this;
+        }
+
+        /*
+         * move assignment operator
+         */
+        Resource &operator=(Resource &&resource) noexcept {
+            if (this != &resource) {
+                this->url_ = resource.url_;
+                this->element_ = resource.element_;
+            }
+            return *this;
+        }
 
         /**
-         * Construct from URI.
+         * Construct from element.
          * @param uri The URI of the resource
          */
         Resource(Component *element)
@@ -60,6 +101,10 @@ namespace semsim {
          * @return The URI for this resource.
          */
         Url getURI(Url base = Url()) const;
+
+        Component* getElement(){
+            return element_;
+        }
 
         /**
          * @return @c true if this resource points to a local @ref Component
@@ -90,6 +135,8 @@ namespace semsim {
             else
                 return false;
         }
+
+        friend std::ostream &operator<<(std::ostream &os, Resource &resource);
 
     protected:
         /// A URI (for external resources)
