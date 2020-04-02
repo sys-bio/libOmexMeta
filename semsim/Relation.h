@@ -2,6 +2,8 @@
 # define SEMSIM_RELATION_H_
 
 
+#include <utility>
+
 # include "semsim/url.h"
 
 namespace semsim {
@@ -18,10 +20,14 @@ namespace semsim {
          * Construct from URI.
          * @param url The URI of the ontology term
          */
-        Relation(const Url &url)
-                : url_(url) {}
-
-        Relation(Url &&uri) : url_(std::move(uri)) {}
+        explicit Relation(Url url)
+                : url_(std::move(url)) {}
+        /**
+         * Construct from string.
+         * @param url The URI of the ontology term
+         */
+        explicit Relation(const std::string &url)
+                : url_(Url(url)) {}
 
         std::string toString() const {
             return url_.str();
