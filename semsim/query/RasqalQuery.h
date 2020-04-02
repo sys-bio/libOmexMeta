@@ -18,11 +18,11 @@ namespace semsim {
      */
     class  RasqalQuery {
     public:
-        RasqalQuery(const std::string &rdf, const std::string &format = "turtle", bool is_file = false);
+        RasqalQuery( std::string &rdf,  std::string &format = "turtle", bool is_file = false);
 
         ~RasqalQuery();
 
-        RasqalQueryResult run(const std::string &query);
+        RasqalQueryResult run( std::string &query);
 
     protected:
         std::string rdf_;

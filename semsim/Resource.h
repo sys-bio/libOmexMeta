@@ -5,6 +5,7 @@
 # include "semsim/url.h"
 
 # include <stdexcept>
+#include <utility>
 
 namespace semsim {
     class Component;
@@ -25,32 +26,51 @@ namespace semsim {
      * in which case its definition URI will be whatever the element's
      * URI is at the time of serialization.
      */
-    class  Resource {
+    class Resource {
     public:
         /**
          * Construct from URI.
          * @param uri The URI of the resource
          */
-        Resource(const Url &url)
-                : url_(url), element_(nullptr) {}
-
-
-        /**
-         * Move-construct from URI.
-         * @param uri The URI of the resource
-         */
-        Resource(Url &&uri)
-                : url_(std::move(uri)), element_(nullptr) {}
-
+        explicit Resource(Url url)
+                : url_(std::move(url)), element_(nullptr) {}
 
         /**
-         * Construct from URI.
+         * Construct from string.
          * @param uri The URI of the resource
          */
-        Resource(Component *element)
+        explicit Resource( std::string &url)
+                : url_(Url(url)), element_(nullptr) {}
+
+
+        /*
+         * Copy constructor
+         */
+        Resource(Resource &resource);
+
+        /*
+         * Copy assignment constructor
+         */
+        Resource &operator=( Resource &resource);
+
+        /*
+         * Move constructor
+         */
+        Resource(Resource &&resource) noexcept ;
+
+        /*
+         * Move assignment constructor
+         */
+        Resource &operator=(Resource &&resource) noexcept ;
+
+        /**
+         * Construct from a Component*.
+         * @param element
+         */
+        explicit Resource(Component *element)
                 : element_(element) {}
 
-        std::string toString() const {
+        std::string toString()  {
             return url_.str();
         }
 
@@ -59,14 +79,14 @@ namespace semsim {
          * @param base If this resource points to a local @ref Component, this parameter should be the relative path of the SBML document. Otherwise, the default value should be used.
          * @return The URI for this resource.
          */
-        Url getURI(Url base = Url()) const;
+        Url getURI(Url base = Url()) ;
 
         /**
          * @return @c true if this resource points to a local @ref Component
          * (as opposed to an external URI).
          */
-        bool isLocal() const {
-            return element_;
+        bool isLocal()  {
+            return element_; //todo: why is this a boolean. Looks like a Component* to me!
         }
 
         /**
@@ -74,26 +94,17 @@ namespace semsim {
          * information. Ontology terms will be replaced with human-readable
          * names.
          */
-        std::string humanize() const;
+        std::string humanize() ;
 
-        /**
-         * Test whether this @ref Resource instance points to the same
-         * object as the other @ref Resource instance.
-         * @param other A @ref Resource instance to test against.
-         * @return @c true if both instances point to the same object.
-         */
-        bool operator==(const Resource &other) const {
-            if (!isLocal() && !other.isLocal())
-                return url_.str() == other.url_.str();
-            else if (isLocal() && other.isLocal())
-                return element_ == other.element_;
-            else
-                return false;
-        }
+                friend std::ostream &operator<<(std::ostream &os, Resource &resource);
 
-    protected:
+        bool operator==( Resource &rhs) ;
+
+        bool operator!=( Resource &rhs) ;
+
         /// A URI (for external resources)
         Url url_;
+    protected:
         /// A weak pointer to an element in the model (set for internal / local resources)
         Component *element_;
     };

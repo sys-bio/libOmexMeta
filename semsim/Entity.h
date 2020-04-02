@@ -40,35 +40,31 @@ namespace semsim {
         typedef std::vector<EntityDescriptor> Descriptors;
 
         /// Empty constructot
-        Entity(const std::string &metaid) : EntityBase(metaid) {}
+        explicit Entity(std::string &metaid) : EntityBase(metaid) {}
 
         /// Construct from a definition URI
-        Entity(const std::string &metaid, const Resource &definition)
+        Entity( std::string &metaid,  Resource &definition)
                 : EntityBase(metaid, definition) {}
 
         /// Construct from an @ref EntityDescriptor
-        Entity(const std::string &metaid, const Resource &definition, const EntityDescriptor &d)
+        Entity( std::string &metaid,  Resource &definition,  EntityDescriptor &d)
                 : EntityBase(metaid, definition), descriptors_(1, d) {}
 
-# if __cplusplus >= 201103L
-
         /// Move-construct from an @ref EntityDescriptor
-        Entity(const std::string &metaid, Resource &&definition, EntityDescriptor &&d)
+        Entity( std::string &metaid, Resource &&definition, EntityDescriptor &&d)
                 : EntityBase(metaid, {std::move(definition)}), descriptors_({std::move(d)}) {}
 
-# endif
-
         /// Construct from a singular annotation. Copy all definitions and terms.
-        Entity(const SingularAnnotation &annotation)
+        Entity(SingularAnnotation &annotation)
                 : EntityBase(annotation) {}
 
         /// Get the number of @ref EntityDescriptor elements contained in this @ref Entity.
-        std::size_t getNumDescriptors() const {
+        std::size_t getNumDescriptors()  {
             return descriptors_.size();
         }
 
         /// Copy constructor
-        Entity(const Entity &other)
+        Entity(Entity &other)
                 : EntityBase(other), descriptors_(other.descriptors_) {}
 
         /// Move constructor
@@ -84,13 +80,13 @@ namespace semsim {
          * @code{.cpp}
          * Entity e();
          * // C++11 range-based for
-         * for(const EntityDescriptor& d : e.getDescriptors()) {
+         * for( EntityDescriptor& d : e.getDescriptors()) {
          *   // do something with d
          * }
          * @endcode
          * @return An iterable of @ref EntityDescriptor elements.
          */
-        const Descriptors &getDescriptors() const {
+         Descriptors &getDescriptors()  {
             return descriptors_;
         }
 
@@ -102,7 +98,7 @@ namespace semsim {
          * @code{.cpp}
          * Entity e();
          * // C++11 range-based for
-         * for(const EntityDescriptor& d : e.getDescriptors()) {
+         * for( EntityDescriptor& d : e.getDescriptors()) {
          *   // do something with d
          * }
          * @endcode
@@ -116,7 +112,7 @@ namespace semsim {
          * Add an @ref EntityDescriptor to this @ref Entity (copy).
          * @param d The descriptor to add.
          */
-        void addDescriptor(const EntityDescriptor &d) {
+        void addDescriptor( EntityDescriptor &d) {
             descriptors_.push_back(d);
         }
 
@@ -130,7 +126,7 @@ namespace semsim {
 
 
         /// Get the @ref EntityDescriptor at index @p k.
-        const EntityDescriptor &getDescriptor(std::size_t k) const {
+         EntityDescriptor &getDescriptor(std::size_t k)  {
             return descriptors_.at(k);
         }
 
@@ -148,7 +144,7 @@ namespace semsim {
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          * @return the URI for this entity.
          */
-        void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
+        void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer)  {
             EntityBase::serializeToRDF(sbml_base_uri, world, serializer);
             for (Descriptors::const_iterator i(descriptors_.begin()); i != descriptors_.end(); ++i)
                 i->serializeToRDF(sbml_base_uri, metaid_, world, serializer);
@@ -159,12 +155,12 @@ namespace semsim {
          * information. Ontology terms will be replaced with human-readable
          * names.
          */
-        std::string humanize() const override {
+        std::string humanize()  override {
             return " -> (is) -> " + humanizeDefintions() + humanizeDescriptors();
         }
 
     protected:
-        std::string humanizeDescriptors() const {
+        std::string humanizeDescriptors()  {
             if (descriptors_.size() == 1)
                 return descriptors_.at(0).humanize();
             else

@@ -21,7 +21,7 @@ namespace semsim {
          * @param  model The model to run the query on.
          * @return       The query results.
          */
-        virtual QueryResults run(SemsimModel &model) const = 0;
+        virtual QueryResults run(SemsimModel &model)  = 0;
     };
 
     /**

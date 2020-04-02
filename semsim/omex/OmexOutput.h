@@ -14,9 +14,9 @@ namespace semsim {
      * @param model_entry_path The path to the model file (SBML or CellML) within the archive.
      * @param rdf_entry_path   The path to the annotation RDF metadata within the archive.
      */
-    void exportToOmex(const SemsimModel &model,
-                      const std::string &archive_path,
-                      const std::string &model_entry_path = "./model.xml",
-                      const std::string &rdf_entry_path = "./annotations.xml");
+    void exportToOmex( SemsimModel &model,
+                       std::string &archive_path,
+                       std::string &model_entry_path = "./model.xml",
+                       std::string &rdf_entry_path = "./annotations.xml");
 }
 # endif

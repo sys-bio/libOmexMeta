@@ -39,14 +39,14 @@ namespace semsim {
                 : Component(std::move(annotation)) {}
 
         /// Construct from a composite annotation
-        Process(const CompositeAnnotation &annotation)
+        Process( CompositeAnnotation &annotation)
                 : Component(annotation) {}
 
         /// Move-construct from a composite annotation
         Process(CompositeAnnotation &&annotation)
                 : Component(std::move(annotation)) {}
 
-        Process(const Process &other)
+        Process( Process &other)
                 : Component(other) {
             for (Sources::const_iterator i = other.sources_.begin(); i != other.sources_.end(); ++i)
                 sources_.push_back(*i);
@@ -65,7 +65,7 @@ namespace semsim {
 # endif
 
         /// Create a copy of this physical process
-        virtual Component *clone() const {
+        virtual Component *clone()  {
             return new Process(*this);
         }
 
@@ -73,7 +73,7 @@ namespace semsim {
          * Add a new @ref Source to the physical process.
          * @param source The @ref Source to add.
          */
-        void addSource(const Source &source) {
+        void addSource( Source &source) {
             sources_.push_back(source);
         }
 
@@ -81,7 +81,7 @@ namespace semsim {
          * Add a new @ref Source to the physical process.
          * @param source The @ref Source to add.
          */
-        void addSink(const Sink &sink) {
+        void addSink( Sink &sink) {
             sinks_.push_back(sink);
         }
 
@@ -89,7 +89,7 @@ namespace semsim {
          * Add a new @ref Mediator to the physical process.
          * @param source The @ref Source to add.
          */
-        void addMediator(const Mediator &mediator) {
+        void addMediator( Mediator &mediator) {
             mediators_.push_back(mediator);
         }
 
@@ -101,7 +101,7 @@ namespace semsim {
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          * @return the Url for this entity.
          */
-        virtual void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
+        virtual void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer)  {
             getAnnotation().serializeToRDF(sbml_base_uri, world, serializer);
             Url this_uri = getURI(sbml_base_uri);
 
@@ -126,11 +126,11 @@ namespace semsim {
             }
         }
 
-        virtual bool isProcess() const {
+        virtual bool isProcess()  {
             return true;
         }
 
-        virtual bool containsMetaId(const std::string &metaid) const {
+        virtual bool containsMetaId( std::string &metaid)  {
             if (metaid_ == metaid)
                 return true;
             else {

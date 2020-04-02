@@ -42,23 +42,23 @@ namespace semsim {
      */
     class  bqb {
     public:
-        const static std::string root;
+         static std::string root;
 
-        const static Relation is;
-        const static Relation hasPart;
-        const static Relation isPartOf;
-        const static Relation isVersionOf;
-        const static Relation hasVersion;
-        const static Relation isHomologTo;
-        const static Relation isDescribedBy;
-        const static Relation isEncodedBy;
-        const static Relation encodes;
-        const static Relation occursIn;
-        const static Relation hasProperty;
-        const static Relation isPropertyOf;
-        const static Relation hasTaxon;
+         static Relation is;
+         static Relation hasPart;
+         static Relation isPartOf;
+         static Relation isVersionOf;
+         static Relation hasVersion;
+         static Relation isHomologTo;
+         static Relation isDescribedBy;
+         static Relation isEncodedBy;
+         static Relation encodes;
+         static Relation occursIn;
+         static Relation hasProperty;
+         static Relation isPropertyOf;
+         static Relation hasTaxon;
 
-        static std::string humanizeQualifier(const Relation &q);
+        static std::string humanizeQualifier( Relation &q);
     };
 }
 # endif

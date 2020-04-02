@@ -22,7 +22,7 @@ namespace semsim {
          * @return        @c true if the model contains the given meta id.
          */
 
-        bool contains(const std::string &metaid) {
+        bool contains( std::string &metaid) {
             // compartments
             for (unsigned int k = 0; k < m.getNumCompartments(); ++k) {
                 libsbml::Compartment *x = m.getCompartment(k);

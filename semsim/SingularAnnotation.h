@@ -37,19 +37,19 @@ namespace semsim {
          * Generally, a model element should be defined using
          * only a single Url.
          */
-        SingularAnnotation(const std::string &metaid, const Resource &definition)
+        SingularAnnotation( std::string &metaid,  Resource &definition)
                 : EntityBase(metaid, definition) {}
 
         /// Constructor specifying only the meta id (defintions to be added later by user)
-        SingularAnnotation(const std::string &metaid)
+        SingularAnnotation(std::string &metaid)
                 : EntityBase(metaid) {}
 
         /// Move-construct from an @ref EntityDescriptor
-        SingularAnnotation(const std::string &metaid, Resource &&definition)
+        SingularAnnotation( std::string &metaid, Resource &&definition)
                 : EntityBase(metaid, {std::move(definition)}) {}
 
         /// Copy constructor
-        SingularAnnotation(const SingularAnnotation &other)
+        SingularAnnotation(SingularAnnotation &other)
                 : EntityBase(other) {}
 
         /// Move constructor
@@ -57,12 +57,13 @@ namespace semsim {
                 : EntityBase(std::move(other)) {}
 
         /// Get the meta id for this element.
-        const std::string &getMetaId() const {
+         std::string &getMetaId()  {
             return EntityBase::getMetaId();
         }
 
         /// Create a copy of this object using the correct derived class's type.
-        AnnotationBase *clone() const override {
+        // todo: Why not just use the copy constructor for cloning?
+        AnnotationBase *clone() override {
             return new SingularAnnotation(*this);
         }
 
@@ -76,24 +77,24 @@ namespace semsim {
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          * @return the Url for this entity.
          */
-        void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const override {
+        void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer)  override {
             EntityBase::serializeToRDF(sbml_base_uri, world, serializer);
         }
 
-        std::string getRDF(Url &sbml_base_uri, const std::string &format) const override {
+        std::string getRDF(Url &sbml_base_uri,  std::string &format)  override {
             raptor_world *world = raptor_new_world();
             raptor_serializer *serializer = raptor_new_serializer(world, format.c_str());
             if (!serializer)
                 throw std::runtime_error("Could not create Raptor serializer for format " + format);
 
-            raptor_uri *base_uri = raptor_new_uri(world, (const unsigned char *) "");
+            raptor_uri *base_uri = raptor_new_uri(world, ( unsigned char *) "");
 
             raptor_serializer_set_namespace(serializer,
-                                            raptor_new_uri(world, (const unsigned char *) bqb::root.c_str()),
-                                            (const unsigned char *) "bqb");
+                                            raptor_new_uri(world, ( unsigned char *) bqb::root.c_str()),
+                                            ( unsigned char *) "bqb");
             raptor_serializer_set_namespace(serializer,
-                                            raptor_new_uri(world, (const unsigned char *) semsim::root.c_str()),
-                                            (const unsigned char *) "semsim");
+                                            raptor_new_uri(world, ( unsigned char *) semsim::root.c_str()),
+                                            ( unsigned char *) "semsim");
 
             void *output;
             size_t length;
@@ -117,10 +118,10 @@ namespace semsim {
          * @param prop The physical property to assign to the composite annotation.
          * @return A new composite annotation
          */
-        AnnotationPtr makeComposite(const PhysicalProperty &prop) const override;
+        AnnotationPtr makeComposite(PhysicalProperty &prop) override;
 
         /// Get the local URL of this entity
-        Url getURI(Url &base) const override {
+        Url getURI(Url &base)  override {
             return base.fragment(metaid_);
         }
 
@@ -129,11 +130,11 @@ namespace semsim {
          * information. Ontology terms will be replaced with human-readable
          * names.
          */
-        std::string humanize() const override {
+        std::string humanize()  override {
             return EntityBase::humanize();
         }
 
-        bool isComposite() const override {
+        bool isComposite()  override {
             return false;
         }
     };

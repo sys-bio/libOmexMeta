@@ -30,7 +30,7 @@ namespace semsim {
         typedef std::vector<Term> Terms;
 
         /// Construct from a definition Url
-        EntityBase(std::string metaid, const Resource &definition)
+        EntityBase(std::string metaid,  Resource &definition)
                 : metaid_(std::move(metaid)), definitions_(1, definition) {}
 
         /// Move constructor
@@ -48,35 +48,35 @@ namespace semsim {
                 : metaid_(std::move(metaid)), definitions_({std::move(definition)}) {}
 
         /// Construct from a meta id for this entity
-        explicit EntityBase(const std::string &metaid)
+        explicit EntityBase(std::string &metaid)
                 : metaid_(metaid) {}
 
         /// Copy constructor
-        EntityBase(const EntityBase &other): metaid_(other.metaid_), definitions_(other.definitions_),
+        EntityBase(EntityBase &other): metaid_(other.metaid_), definitions_(other.definitions_),
                   terms_(other.terms_) {}
 
         /// Get the meta id for this element
-        const std::string &getMetaId() const {
+         std::string &getMetaId()  {
             return metaid_;
         }
 
         /// Set the meta id
-        void setMetaId(const std::string &metaid) {
+        void setMetaId( std::string &metaid) {
             metaid_ = metaid;
         }
 
         /// Get the local Url of this entity
-        virtual Url getURI(Url &base) const {
+        virtual Url getURI(Url &base)  {
             return "#" + metaid_;
         }
 
         /// Get the number of @ref EntityDescriptor elements contained in this @ref EntityBase.
-        std::size_t getNumDefinitions() const {
+        std::size_t getNumDefinitions()  {
             return definitions_.size();
         }
 
         /// Get the definition at index @p k.
-        const Resource &getDefinition(std::size_t k) const {
+         Resource &getDefinition(std::size_t k)  {
             return definitions_.at(k);
         }
 
@@ -87,7 +87,7 @@ namespace semsim {
          *
          * @return An iterable of @ref Resource "Resources".
          */
-        const Definitions &getDefinitions() const {
+         Definitions &getDefinitions()  {
             return definitions_;
         }
 
@@ -105,7 +105,7 @@ namespace semsim {
         /**
          * Add a definition to this entity.
          */
-        void addDefinition(const Resource &definition) {
+        void addDefinition( Resource &definition) {
             definitions_.push_back(definition);
         }
 
@@ -115,8 +115,8 @@ namespace semsim {
          * @param definition The definition to match against.
          * @return @c true if this entity has a definition that matches the given definition
          */
-        bool matchesDefinition(const Resource &definition) {
-            for (const auto & i : definitions_) {
+        bool matchesDefinition( Resource &definition) {
+            for ( auto & i : definitions_) {
                 if (i == definition)
                     return true;
             }
@@ -129,7 +129,7 @@ namespace semsim {
          * Common causes are using bqb:isVersionOf, which is too non-committal
          * to be semantically useful.
          */
-        void addExtraneousTerm(const Term &term) {
+        void addExtraneousTerm( Term &term) {
             terms_.push_back(term);
         }
 
@@ -144,19 +144,19 @@ namespace semsim {
         }
 
         /// @return Whether this @ref Entity is empty (i.e. has no definitions).
-        bool isEmpty() const {
+        bool isEmpty()  {
             return definitions_.empty();
         }
 
         /// Convert to human-readable string.
-        std::string toString(std::size_t indent) const {
+        std::string toString(std::size_t indent)  {
             std::stringstream ss;
             ss << "    " << "definitions:\n";
-            for (const auto & definition : definitions_)
+            for ( auto & definition : definitions_)
                 ss << "    " << "  " << definition.toString() << "\n";
             if (!terms_.empty()) {
                 ss << "    " << "extraneous terms:\n";
-                for (const auto & term : terms_)
+                for ( auto & term : terms_)
                     ss << "    " << "  " << term.toString() << "\n";
             } else {
                 ss << "    " << "extraneous terms: none\n";
@@ -173,11 +173,11 @@ namespace semsim {
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          * @return the Url for this entity.
          */
-        void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const {
+        void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer)  {
             // std::cerr << "serialize " << metaid_ << " definitions " << definitions_.size() << ", terms " << terms_.size() << "\n";
-            for (const auto & definition : definitions_)
+            for ( auto & definition : definitions_)
                 serializeDefinition(definition, sbml_base_uri, world, serializer);
-            for (const auto & term : terms_)
+            for ( auto & term : terms_)
                 serializeTerm(term, sbml_base_uri, world, serializer);
         }
 
@@ -186,17 +186,17 @@ namespace semsim {
          * information. Ontology terms will be replaced with human-readable
          * names.
          */
-        virtual std::string humanize() const {
+        virtual std::string humanize()  {
             return metaid_ + " -> (is) -> " + humanizeDefintions();
         }
 
     protected:
 
         void serializeDefinition(
-                const Resource &def,
+                 Resource &def,
                 Url &sbml_base_uri,
                 raptor_world *world,
-                raptor_serializer *serializer) const {
+                raptor_serializer *serializer)  {
             Url this_uri = getURI(sbml_base_uri);
 
             SerializeURIStatement(this_uri.str(), bqb::is.getURI().str(), def.getURI().str(), world,
@@ -204,10 +204,10 @@ namespace semsim {
         }
 
         void serializeTerm(
-                const Term &term,
+                 Term &term,
                 Url &sbml_base_uri,
                 raptor_world *world,
-                raptor_serializer *serializer) const {
+                raptor_serializer *serializer)  {
             Url this_uri = getURI(sbml_base_uri);
 
             if (!term.isValue())
@@ -218,7 +218,7 @@ namespace semsim {
                                       serializer);
         }
 
-        std::string humanizeDefintions() const {
+        std::string humanizeDefintions()  {
             std::stringstream ss;
             for (auto i = definitions_.begin(); i != definitions_.end(); ++i) {
                 if (i != definitions_.begin())

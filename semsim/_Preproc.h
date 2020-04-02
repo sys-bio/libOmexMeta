@@ -31,7 +31,7 @@
 #define SEMSIM_CONSTEXPR constexpr
 #define SEMSIM_TR1_NAMESPACE_QUAL std::
 # else
-#define SEMSIM_CONSTEXPR const
+#define SEMSIM_CONSTEXPR
 #define SEMSIM_TR1_NAMESPACE_QUAL std::tr1::
 # endif
 

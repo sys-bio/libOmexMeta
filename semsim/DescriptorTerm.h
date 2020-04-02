@@ -14,12 +14,12 @@ namespace semsim {
     class  DescriptorTerm : public Term {
     public:
         /// Construct from a @ref Resource (URI) and @ref Relation
-        DescriptorTerm(const Relation &relation, const Resource &resource)
+        DescriptorTerm(Relation &relation, Resource &resource)
                 : Term(relation, resource) {}
 
         /// Move-construct from a @ref Resource (URI) and @ref Relation
         DescriptorTerm(Relation &&relation, Resource &&resource)
-                : Term(std::move(relation), std::move(resource)) {}
+                : Term(relation, resource) {}
     };
 }
 

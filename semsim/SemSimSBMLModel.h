@@ -84,7 +84,7 @@ namespace semsim {
         }
 
         /// copy assignment operator
-        SemSimSBMLModel &operator=(const SemSimSBMLModel &other) {
+        SemSimSBMLModel &operator=( SemSimSBMLModel &other) {
             if (this != &other) {
                 this->d_ = other.d_;
                 this->element_id_map_ = other.element_id_map_;
@@ -99,7 +99,7 @@ namespace semsim {
          * @param id         The SBML element.
          * @param annotation The annotation for the component.
          */
-        void setComponentAnnotation(libsbml::SBase *s, const AnnotationBase &annotation) {
+        void setComponentAnnotation(libsbml::SBase *s,  AnnotationBase &annotation) {
             if (hasComponent(s))
                 element_map_.find(s)->second->setAnnotation(annotation);
         }
@@ -111,7 +111,7 @@ namespace semsim {
          * @param annotation The annotation for the component.
          */
 
-        void setComponentAnnotation(libsbml::SBase *s, const AnnotationPtr &annotation) {
+        void setComponentAnnotation(libsbml::SBase *s,  AnnotationPtr &annotation) {
             if (hasComponent(s))
                 element_map_.find(s)->second->setAnnotation(*annotation);
         }
@@ -138,7 +138,7 @@ namespace semsim {
          * @param  id The id of an SBML element.
          * @return    Whether the SBML element has been mapped to a libSemSim @ref Component or not.
          */
-        bool hasComponent(const std::string id) const {
+        bool hasComponent( std::string id)  {
             return !(element_id_map_.find(id) == element_id_map_.end());
         }
 
@@ -148,7 +148,7 @@ namespace semsim {
          * @param  s The SBML element.
          * @return    Whether the SBML element has been mapped to a libSemSim @ref Component or not.
          */
-        bool hasComponent(libsbml::SBase *s) const {
+        bool hasComponent(libsbml::SBase *s)  {
             return !(element_map_.find(s) == element_map_.end());
         }
 
@@ -159,7 +159,7 @@ namespace semsim {
          * @return    Whether the SBML element has been mapped to a libSemSim @ref Process or not.
          */
 
-        bool hasProcess(libsbml::SBase *s) const {
+        bool hasProcess(libsbml::SBase *s)  {
             return !(element_map_.find(s) == element_map_.end()) && element_map_.find(s)->second->isProcess();
         }
 
@@ -170,7 +170,7 @@ namespace semsim {
          * @return    The component for the given SBML id (if it exists).
          */
 
-        const Component *getComponent(libsbml::SBase *s) const {
+         Component *getComponent(libsbml::SBase *s)  {
             if (!hasComponent(s))
                 throw std::out_of_range("Component does not exist in mapping table");
             return element_map_.find(s)->second;
@@ -208,7 +208,7 @@ namespace semsim {
          * @param  id The SBML id.
          * @return    The component for the given SBML id (if it exists).
          */
-        const Component *getComponentForId(const std::string &id) const {
+         Component *getComponentForId( std::string &id)  {
             if (!hasComponent(id))
                 throw std::out_of_range("Component does not exist in mapping table");
             return element_id_map_.find(id)->second;
@@ -220,7 +220,7 @@ namespace semsim {
          * @param  id The SBML id.
          * @return    The component for the given SBML id (if it exists).
          */
-        Component *getComponentForId(const std::string &id) {
+        Component *getComponentForId( std::string &id) {
             if (!hasComponent(id))
                 throw std::out_of_range("Component does not exist in mapping table");
             return element_id_map_.find(id)->second;
@@ -238,20 +238,20 @@ namespace semsim {
          * @param  sbml_base_uri A Url that points to the original model file. Usually a relative path in a COMBINE archive.
          * @return               A string representation of the RDF for model using the desired RDF serialization format.
          */
-        std::string getRDF(Url &sbml_base_uri, const std::string &format = "rdfxml") const {
+        std::string getRDF(Url &sbml_base_uri,  std::string &format = "rdfxml")  {
             raptor_world *world = raptor_new_world();
             raptor_serializer *serializer = raptor_new_serializer(world, format.c_str());
             if (!serializer)
                 throw std::runtime_error("Could not create Raptor serializer for format " + format);
 
-            raptor_uri *base_uri = raptor_new_uri(world, (const unsigned char *) "");
+            raptor_uri *base_uri = raptor_new_uri(world, ( unsigned char *) "");
 
             raptor_serializer_set_namespace(serializer,
-                                            raptor_new_uri(world, (const unsigned char *) bqb::root.c_str()),
-                                            (const unsigned char *) "bqb");
+                                            raptor_new_uri(world, ( unsigned char *) bqb::root.c_str()),
+                                            ( unsigned char *) "bqb");
             raptor_serializer_set_namespace(serializer,
-                                            raptor_new_uri(world, (const unsigned char *) semsim::root.c_str()),
-                                            (const unsigned char *) "semsim");
+                                            raptor_new_uri(world, ( unsigned char *) semsim::root.c_str()),
+                                            ( unsigned char *) "semsim");
 
             void *output;
             size_t length;
@@ -272,7 +272,7 @@ namespace semsim {
 
 # ifdef SWIG
         /// For swig
-        std::string getRDF(const std::string& sbml_base_uri, const std::string& format="rdfxml") const {
+        std::string getRDF( std::string& sbml_base_uri,  std::string& format="rdfxml")  {
           return getRDF(sbml_base_uri, format);
         }
 # endif
@@ -281,7 +281,7 @@ namespace semsim {
          * Return the XML encoding of the attached SBML or CellML model.
          * @return The XML content.
          */
-        std::string encodeXML() const {
+        std::string encodeXML()  {
 
             libsbml::SBMLWriter w;
             return w.writeSBMLToString(d_);
@@ -290,7 +290,7 @@ namespace semsim {
         /**
          * @return "sbml" if an SBML model, "cellml" if a cellml model.
          */
-        virtual std::string getFormat() const {
+        virtual std::string getFormat()  {
             return "sbml";
         }
 

@@ -3,7 +3,7 @@
 
 namespace semsim {
 
-    AnnotationPtr SingularAnnotation::makeComposite(const PhysicalProperty &prop) const {
+    AnnotationPtr SingularAnnotation::makeComposite(PhysicalProperty &prop) {
         return AnnotationPtr(new CompositeAnnotation(*this, prop));
     }
 

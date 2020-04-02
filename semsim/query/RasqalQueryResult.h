@@ -27,7 +27,7 @@ namespace semsim {
         std::string toString();
 
         /// Converts the query results to an RDF string
-        std::string toRDFString(const std::string &format = "rdfxml");
+        std::string toRDFString( std::string &format = "rdfxml");
 
         /// Converts the query results to a list
         std::vector<std::vector<std::string> > asList();

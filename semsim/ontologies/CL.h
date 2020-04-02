@@ -11,7 +11,7 @@ namespace semsim {
      */
     class  CL : public Ontology {
     public:
-        // const static std::string root = "http://identifiers.org/CHEBI:";
+        //  static std::string root = "http://identifiers.org/CHEBI:";
 
         /**
          * Get the full URI of an ontology term given its numeric value.
