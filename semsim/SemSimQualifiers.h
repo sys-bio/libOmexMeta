@@ -11,15 +11,15 @@ namespace semsim {
      */
     class semsim {
     public:
-        const static std::string root;
+         static std::string root;
 
-        const static Relation hasSinkParticipant;
-        const static Relation hasSourceParticipant;
-        const static Relation hasMediatorParticipant;
-        const static Relation hasMultiplier;
-        const static Relation hasPhysicalEntityReference;
-        const static Relation hasSBOTerm;
-        const static Relation hasValue;
+         static Relation hasSinkParticipant;
+         static Relation hasSourceParticipant;
+         static Relation hasMediatorParticipant;
+         static Relation hasMultiplier;
+         static Relation hasPhysicalEntityReference;
+         static Relation hasSBOTerm;
+         static Relation hasValue;
     };
 }
 # endif

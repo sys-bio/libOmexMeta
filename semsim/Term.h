@@ -15,36 +15,32 @@ namespace semsim {
     class  Term {
     public:
         /// Construct from a @ref Resource (URI) and @ref Relation
-        Term(const Relation &relation, const Resource &resource)
+        Term(Relation &relation, Resource &resource)
                 : relation_(relation), resource_(resource), is_value_(false) {}
 
-        /// Move-construct from a @ref Resource (URI) and @ref Relation
-        Term(Relation &&relation, Resource &&resource)
-                : relation_(std::move(relation)), resource_(std::move(resource)), is_value_(false) {}
-
         /// Construct from a @ref Resource (URI) and a double value (literal)
-        Term(const Relation &relation, const double value)
-                : relation_(relation), value_(value), resource_(Url("")), is_value_(true) {}
+        Term(Relation &relation, double value)
+                : relation_(relation),  resource_(Url("")), value_(value), is_value_(true) {}
 
         /// @return The @ref Resource of this term.
-        const Relation &getRelation() const {
+         Relation &getRelation()  {
             return relation_;
         }
 
         /// @return The @ref Resource of this term.
-        const Resource &getResource() const {
+         Resource &getResource()  {
             return resource_;
         }
 
-        std::string toString() const {
+        std::string toString()  {
             return relation_.toString() + "->" + resource_.toString();
         }
 
-        const bool isValue() const {
+        bool isValue()  {
             return is_value_;
         }
 
-        const double getValue() const {
+        double getValue()  {
             return value_;
         }
 

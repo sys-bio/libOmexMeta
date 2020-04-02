@@ -14,7 +14,7 @@ namespace semsim {
         virtual ~Condition() = default;
 
         /// @return @c true if the condition matches the given element.
-        virtual bool matches(const Component &component) = 0;
+        virtual bool matches( Component &component) = 0;
     };
 
     /**

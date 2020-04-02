@@ -10,7 +10,7 @@ namespace semsim {
     public:
         /// Find a UnitDefinition from a given sid; throw if not found
         static libsbml::UnitDefinition *findUnitDefinition(
-                const std::string &sid,
+                 std::string &sid,
                 libsbml::Model *m) {
             for (unsigned int k = 0; k < m->getNumUnitDefinitions(); ++k) {
                 libsbml::UnitDefinition *u = m->getUnitDefinition(k);
@@ -22,7 +22,7 @@ namespace semsim {
 
         /// Find a Compartment from a given sid; throw if not found
         static libsbml::Compartment *findCompartment(
-                const std::string &sid,
+                 std::string &sid,
                 libsbml::Model *m) {
             for (unsigned int k = 0; k < m->getNumCompartments(); ++k) {
                 libsbml::Compartment *c = m->getCompartment(k);
@@ -34,7 +34,7 @@ namespace semsim {
 
         /// @return @c true if a compartment with the specified meta id exists
         static bool hasCompartmentWithMetaId(
-                const std::string &metaid,
+                 std::string &metaid,
                 libsbml::Model *m) {
             for (unsigned int k = 0; k < m->getNumCompartments(); ++k) {
                 libsbml::Compartment *c = m->getCompartment(k);

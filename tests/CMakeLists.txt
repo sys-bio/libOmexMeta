@@ -9,7 +9,8 @@ add_executable(semsim-tests
         ComponentTests.cpp
         MetaIDTests.cpp
         UrlTests.cpp
-        )
+        TermTests.cpp
+        ResourceTests.cpp)
 
 
 target_link_libraries(semsim-tests PRIVATE

@@ -29,11 +29,11 @@ namespace semsim {
         /// Const iterator type for the query results.
         typedef ComponentRefs::const_iterator const_iterator;
 
-        /// @return A const iterator to the beginning of the resutls.
-//        const_iterator begin() const { return refs.begin(); }
+        /// @return A  iterator to the beginning of the resutls.
+//        const_iterator begin()  { return refs.begin(); }
 //
-//        / @return A const iterator to the beginning of the resutls.
-//        const_iterator end() const { return refs.end(); }
+//        / @return A  iterator to the beginning of the resutls.
+//        const_iterator end()  { return refs.end(); }
 
     };
 

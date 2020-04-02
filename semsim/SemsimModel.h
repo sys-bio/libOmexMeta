@@ -24,8 +24,8 @@ namespace semsim {
         virtual ~SemsimModel() = default;
 
         /// Copy ctor
-        SemsimModel(const SemsimModel &other) {
-            for (const auto &component : other.components_) {
+        SemsimModel( SemsimModel &other) {
+            for ( auto &component : other.components_) {
                 components_.push_back(ComponentPtr(component->clone()));
             }
         }
@@ -34,13 +34,13 @@ namespace semsim {
         SemsimModel(SemsimModel &&other) noexcept : components_(std::move(other.components_)) {}
 
         /// Add a new component to the model (copy)
-        Component *addComponent(const Component &component) {
+        Component *addComponent( Component &component) {
             components_.push_back(ComponentPtr(new Component(component)));
             return &*components_.back();
         }
 
         /// Add a new component to the model (copy)
-        Process *addComponent(const Process &component) {
+        Process *addComponent( Process &component) {
             components_.push_back(ComponentPtr(new Process(component)));
             return (Process *) &*components_.back();
         }
@@ -62,7 +62,7 @@ namespace semsim {
          * The return type is guaranteed to be iterable.
          * Otherwise, treat it as opaque.
          */
-        const Components &getComponents() const {
+         Components &getComponents()  {
             return components_;
         }
 
@@ -78,7 +78,7 @@ namespace semsim {
         /**
          * Get the number of components in the model.
          */
-        std::size_t getNumComponents() const {
+        std::size_t getNumComponents()  {
             return components_.size();
         }
 
@@ -94,16 +94,16 @@ namespace semsim {
          * @param  sbml_base_uri A Url that points to the original model file. Usually a relative path in a COMBINE archive.
          * @return               A string representation of the RDF for model using the desired RDF serialization format.
          */
-        virtual std::string getRDF(Url &sbml_base_uri, const std::string &format) const = 0;
+        virtual std::string getRDF(Url &sbml_base_uri,  std::string &format)  = 0;
 
         /**
          * Return a human--readable representation of the annotation
          * information. Ontology terms will be replaced with human-readable
          * names.
          */
-        std::string humanize() const {
+        std::string humanize()  {
             std::string result;
-            for (const auto &component : components_)
+            for ( auto &component : components_)
                 result += component->humanize() + "\n";
             return result;
         }
@@ -112,19 +112,19 @@ namespace semsim {
          * Return the XML encoding of the attached SBML or CellML model.
          * @return The XML content.
          */
-        virtual std::string encodeXML() const = 0;
+        virtual std::string encodeXML()  = 0;
 
         /**
          * @return "sbml" if an SBML model, "cellml" if a cellml model.
          */
-        virtual std::string getFormat() const = 0;
+        virtual std::string getFormat()  = 0;
 
         /**
          * @return @c true if the model has a component with this meta id, false otherwise.
          * @param  metaid The meta id to look for.
          */
-        bool hasComponentWithMetaId(const std::string &metaid) const {
-            for (const auto &component : components_) {
+        bool hasComponentWithMetaId( std::string &metaid)  {
+            for ( auto &component : components_) {
                 if (component->hasMetaId() && component->getMetaId() == metaid)
                     return true;
             }
@@ -135,8 +135,8 @@ namespace semsim {
          * @return @c true if the model has a component with this meta id, false otherwise.
          * @param  metaid The meta id to look for.
          */
-        Component &findComponentWithMetaId(const std::string &metaid) {
-            for (const auto &component : components_) {
+        Component &findComponentWithMetaId( std::string &metaid) {
+            for ( auto &component : components_) {
                 if (component->hasMetaId() && component->getMetaId() == metaid)
                     return *component;
             }
@@ -147,16 +147,16 @@ namespace semsim {
          * @return @c true if the model has a component with this meta id, false otherwise.
          * @param  metaid The meta id to look for.
          */
-        const Component &findComponentWithMetaId(const std::string &metaid) const {
-            for (const auto &component : components_) {
+         Component &findComponentWithMetaId( std::string &metaid)  {
+            for ( auto &component : components_) {
                 if (component->hasMetaId() && component->getMetaId() == metaid)
                     return *component;
             }
             throw std::runtime_error("No component with meta id " + metaid);
         }
 
-        bool containsMetaId(const std::string &metaid) const {
-            for (const auto &component : components_) {
+        bool containsMetaId( std::string &metaid)  {
+            for ( auto &component : components_) {
                 if (component->containsMetaId(metaid))
                     return true;
             }

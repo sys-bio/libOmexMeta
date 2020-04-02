@@ -24,7 +24,7 @@ namespace semsim {
         EntityDescriptor() = default;
 
         /// Copy constructor
-        EntityDescriptor(const EntityDescriptor &other)
+        EntityDescriptor( EntityDescriptor &other)
                 : terms_(other.terms_) {}
 
         /// Move constructor
@@ -49,14 +49,13 @@ namespace semsim {
                 : terms_(l) {}
 
 
-
         /// @return @p true if this descriptor is empty
-        bool isEmpty() const {
+        bool isEmpty()  {
             return !terms_.size();
         }
 
         /// Add a descriptor term to the sequence of terms
-        void addTerm(const DescriptorTerm &t) {
+        void addTerm(DescriptorTerm &t) {
             terms_.push_back(t);
         }
 
@@ -66,7 +65,7 @@ namespace semsim {
         }
 
         /// Shortcut for constructing & adding a descriptor term
-        void addTerm(const Relation &relation, const Resource &resource) {
+        void addTerm(Relation &relation, Resource &resource) {
             terms_.push_back(DescriptorTerm(relation, resource));
         }
 
@@ -81,8 +80,8 @@ namespace semsim {
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          * @return the Url for this entity.
          */
-        void serializeToRDF(const Url &sbml_base_uri, const std::string &metaid, raptor_world *world,
-                            raptor_serializer *serializer) const {
+        void serializeToRDF( Url &sbml_base_uri,  std::string &metaid, raptor_world *world,
+                            raptor_serializer *serializer)  {
             unsigned int k = 0;
             Url last_uri = "#" + metaid;
             for (DescriptorTerms::const_iterator i(terms_.begin()); i != terms_.end(); ++i) {
@@ -104,40 +103,40 @@ namespace semsim {
          * information. Ontology terms will be replaced with human-readable
          * names.
          */
-        std::string humanize() const {
+        std::string humanize()  {
             return humanizeTerms();
         }
 
     protected:
         void serializeDescriptorTermToRDF(
-                const DescriptorTerm &term,
-                const Url &linked_uri,
-                const Url &term_uri,
+                 DescriptorTerm &term,
+                 Url &linked_uri,
+                 Url &term_uri,
                 raptor_world *world,
-                raptor_serializer *serializer) const {
+                raptor_serializer *serializer)  {
             // term structural relation triple
             raptor_statement *s = raptor_new_statement(world);
-            s->subject = raptor_new_term_from_uri_string(world, (const unsigned char *) linked_uri.str().c_str());
+            s->subject = raptor_new_term_from_uri_string(world, ( unsigned char *) linked_uri.str().c_str());
             s->predicate = raptor_new_term_from_uri_string(world,
-                                                           (const unsigned char *) term.getRelation().getURI().str().c_str());
-            s->object = raptor_new_term_from_uri_string(world, (const unsigned char *) term_uri.str().c_str());
+                                                           ( unsigned char *) term.getRelation().getURI().str().c_str());
+            s->object = raptor_new_term_from_uri_string(world, ( unsigned char *) term_uri.str().c_str());
             raptor_serializer_serialize_statement(serializer, s);
             raptor_free_statement(s);
 
             // term definition triple
             if (!term.getResource().isLocal()) {
                 s = raptor_new_statement(world);
-                s->subject = raptor_new_term_from_uri_string(world, (const unsigned char *) term_uri.str().c_str());
+                s->subject = raptor_new_term_from_uri_string(world, ( unsigned char *) term_uri.str().c_str());
                 s->predicate = raptor_new_term_from_uri_string(world,
-                                                               (const unsigned char *) bqb::is.getURI().str().c_str());
+                                                               ( unsigned char *) bqb::is.getURI().str().c_str());
                 s->object = raptor_new_term_from_uri_string(world,
-                                                            (const unsigned char *) term.getResource().getURI().str().c_str());
+                                                            ( unsigned char *) term.getResource().getURI().str().c_str());
                 raptor_serializer_serialize_statement(serializer, s);
                 raptor_free_statement(s);
             }
         }
 
-        std::string humanizeTerms() const {
+        std::string humanizeTerms()  {
             std::stringstream ss;
             for (DescriptorTerms::const_iterator i = terms_.begin(); i != terms_.end(); ++i) {
                 ss << " -> ";

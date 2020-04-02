@@ -29,14 +29,14 @@ namespace semsim {
                 : annotation_(new SingularAnnotation(std::move(annotation))) {}
 
         /// Construct from a composite annotation
-        explicit Component(const CompositeAnnotation &annotation)
+        explicit Component(CompositeAnnotation &annotation)
                 : annotation_(new CompositeAnnotation(annotation)) {}
 
         /// Move-construct from a composite annotation
         explicit Component(CompositeAnnotation &&annotation)
                 : annotation_(new CompositeAnnotation(std::move(annotation))) {}
 
-        Component(const Component &other)
+        Component(Component &other)
                 : annotation_(other.hasAnnotation() ? other.getAnnotation().clone() : nullptr) {}
 
         /// Move-construct from a component
@@ -47,22 +47,22 @@ namespace semsim {
 
         /// Create a copy of this component
         /// todo should this just be the copy constructor?
-        virtual Component *clone() const {
+        virtual Component *clone() {
             return new Component(*this);
         }
 
         /// @return @c true if the component has an annotation (singular or composite).
-        bool hasAnnotation() const {
+        bool hasAnnotation()  {
             return !!annotation_;
         }
 
         /// @return @c true if the component has a composite annotation
-        bool hasCompositeAnnotation() const {
+        bool hasCompositeAnnotation()  {
             return annotation_ && annotation_->isComposite();
         }
 
         /// @return @c true if the component has a singular annotation
-        bool hasSingularAnnotation() const {
+        bool hasSingularAnnotation()  {
             return annotation_ && !annotation_->isComposite();
         }
 
@@ -72,7 +72,7 @@ namespace semsim {
          * but it will be returned as a pointer to the base
          * class for annotations.
          */
-        const AnnotationBase &getAnnotation() const {
+         AnnotationBase &getAnnotation()  {
             if (!annotation_)
                 throw std::runtime_error("No annotation set");
             return *annotation_;
@@ -96,12 +96,12 @@ namespace semsim {
          * It is an error to call this method unless
          * the component's annotation is a composite annotation.
          */
-        const CompositeAnnotation &getCompositeAnnotation() const {
+         CompositeAnnotation &getCompositeAnnotation()  {
             if (!annotation_)
                 throw std::runtime_error("No annotation set");
             if (!annotation_->isComposite())
                 throw std::runtime_error("Annotation is not composite");
-            return dynamic_cast<const CompositeAnnotation &>(*annotation_);
+            return dynamic_cast< CompositeAnnotation &>(*annotation_);
         }
 
         /**
@@ -135,7 +135,7 @@ namespace semsim {
          * it will be freed.
          * @param annotation The annotation for this @ref Component to own.
          */
-        void setAnnotation(const AnnotationBase &annotation) {
+        void setAnnotation(AnnotationBase &annotation) {
             annotation_.reset(annotation.clone());
         }
 
@@ -154,7 +154,7 @@ namespace semsim {
          * information. Ontology terms will be replaced with human-readable
          * names.
          */
-        std::string humanize() const {
+        std::string humanize()  {
             if (annotation_)
                 return annotation_->humanize();
             else
@@ -162,14 +162,14 @@ namespace semsim {
         }
 
         /// Return @c true if this component has a meta id (required for serialization).
-        bool hasMetaId() const {
+        bool hasMetaId()  {
             if (annotation_)
                 return true;
             else return !metaid_.empty();
         }
 
         /// Get the meta id of this component.
-        const std::string &getMetaId() const {
+         std::string &getMetaId()  {
             if (!metaid_.empty())
                 return metaid_;
             else if (annotation_)
@@ -179,12 +179,12 @@ namespace semsim {
         }
 
         /// Set the meta id of this component.
-        void setMetaId(const std::string &metaid) {
+        void setMetaId( std::string &metaid) {
             metaid_ = metaid;
         }
 
         /// Get the local Url of this component
-        virtual Url getURI(Url &base) const {
+        virtual Url getURI(Url &base)  {
             std::string metaid = getMetaId();
             return base.fragment(metaid);
         }
@@ -196,23 +196,23 @@ namespace semsim {
          * @param serializer Raptor serializer object. Must be initialized prior to calling this function.
          * @return the Url for this entity.
          */
-        virtual void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer) const  {
+        virtual void serializeToRDF(Url &sbml_base_uri, raptor_world *world, raptor_serializer *serializer)   {
             if (annotation_)
                 getAnnotation().serializeToRDF(sbml_base_uri, world, serializer);
         }
 
-        virtual std::string getRDF(Url &sbml_base_uri, const std::string &format = "rdfxml") const {
+        virtual std::string getRDF(Url &sbml_base_uri,  std::string &format = "rdfxml")  {
             if (hasAnnotation())
                 return annotation_->getRDF(sbml_base_uri, format);
             else
                 throw std::runtime_error("No annotation");
         }
 
-        virtual bool isProcess() const {
+        virtual bool isProcess()  {
             return false;
         }
 
-        virtual bool containsMetaId(const std::string &metaid) const {
+        virtual bool containsMetaId( std::string &metaid)  {
             return metaid_ == metaid;
         }
 

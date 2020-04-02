@@ -18,7 +18,7 @@ namespace semsim {
                 : resource_(std::move(resource)) {}
 
         /// @return @c true if the condition matches the given element.
-        virtual bool matches(const Component &component) const {
+        virtual bool matches( Component &component)  {
             if (component.hasCompositeAnnotation())
                 return matchEntity(component.getCompositeAnnotation().getEntity());
             else
@@ -26,7 +26,7 @@ namespace semsim {
         }
 
         /// @return @c true if the entity matches the resource of this condition.
-        bool matchEntity(const EntityBase &entity) const {
+        bool matchEntity( EntityBase &entity)  {
             return resource_.matchesDefinition(entity);
         }
 

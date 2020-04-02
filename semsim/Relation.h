@@ -18,19 +18,19 @@ namespace semsim {
          * Construct from URI.
          * @param url The URI of the ontology term
          */
-        Relation(const Url &url)
+        Relation( Url &url)
                 : url_(url) {}
 
         Relation(Url &&uri) : url_(std::move(uri)) {}
 
-        std::string toString() const {
+        std::string toString()  {
             return url_.str();
         }
 
         /**
          * @return the URI for this relation.
          */
-        const Url &getURI() const {
+         Url &getURI()  {
             return url_;
         }
 
@@ -39,10 +39,10 @@ namespace semsim {
          * information. Ontology terms will be replaced with human-readable
          * names.
          */
-        std::string humanize() const;
+        std::string humanize() ;
 
         /// Comparison operator
-        bool operator==(const Relation &other) const {
+        bool operator==( Relation &other)  {
             return url_.str() == other.url_.str();
         }
 

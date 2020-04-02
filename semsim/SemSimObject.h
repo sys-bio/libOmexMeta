@@ -24,40 +24,40 @@ namespace semsim {
          * Copy constructor
          * @param objtocopy The object to copy
          */
-        // SemSimObject(const SemSimObject& other);
+        // SemSimObject( SemSimObject& other);
 
         /** @return The object's free-text description */
-        const std::string &getDescription() const;
+         std::string &getDescription() ;
 
         /** @return The object's name */
-        const std::string &getName() const;
+         std::string &getName() ;
 
         /** @return Whether the object has an associated name*/
-        bool hasName() const;
+        bool hasName() ;
 
         /** @return Whether the object has an associated textual description */
-        bool hasDescription() const;
+        bool hasDescription() ;
 
         /** @return Whether the object has an associated metadata ID */
-        bool hasMetadataID() const;
+        bool hasMetadataID() ;
 
         /**
          * Set the object's name
          * @param name The name to apply
          */
-        void setName(const std::string &name);
+        void setName( std::string &name);
 
         /**
          * Set the component's free-text description
          * @param description The free-text description
          */
-        void setDescription(const std::string &description);
+        void setDescription( std::string &description);
 
         /**
          * Copy this object's description from another SemSimObject
          * @param other The object with the description we want to copy
          */
-        void copyDescription(const SemSimObject &other);
+        void copyDescription( SemSimObject &other);
 
         /**
          * Set the component's metadata ID. These ID's are often used
@@ -67,7 +67,7 @@ namespace semsim {
          *
          * @param metadataID The ID to apply
          */
-        void setMetadataID(const std::string &metadataID);
+        void setMetadataID( std::string &metadataID);
 
         /**
          * @return The component's metadata ID. These ID's are used
@@ -75,7 +75,7 @@ namespace semsim {
          * to link XML elements to RDF statements that describe
          * the elements.
          */
-        const std::string &getMetadataID() const;
+         std::string &getMetadataID() ;
 
 
         /** @return This object's SemSimType */

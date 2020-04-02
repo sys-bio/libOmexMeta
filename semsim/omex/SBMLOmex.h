@@ -14,8 +14,8 @@ namespace semsim {
      * @param rdf_entry_path  The path to the annotation RDF metadata within the archive.
      */
     SemSimSBMLModel importSBMLOmex(
-            const std::string &archive_path,
-            const std::string &sbml_entry_path,
-            const std::string &rdf_entry_path);
+             std::string &archive_path,
+             std::string &sbml_entry_path,
+             std::string &rdf_entry_path);
 }
 # endif

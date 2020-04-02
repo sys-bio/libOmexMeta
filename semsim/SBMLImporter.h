@@ -27,7 +27,7 @@ namespace semsim {
      * // import the SBML document
      * semsim::SBMLImporter importer(d);
      * // get the libSemSim wrapper for the SBML model
-     * const semsim::SemSimSBMLModel& model = importer.getSemSimSBMLModel();
+     *  semsim::SemSimSBMLModel& model = importer.getSemSimSBMLModel();
      * // do something with the semsim::SemSimSBMLModel
      * @endcode
      */
@@ -73,7 +73,7 @@ namespace semsim {
          * Construct from an SBML string
          * @param sbml The raw SBML content
          */
-        explicit SBMLImporter(const std::string &sbml)
+        explicit SBMLImporter( std::string &sbml)
                 : SBMLImporter(libsbml::readSBMLFromString(sbml.c_str())) {}
 
 
@@ -82,7 +82,7 @@ namespace semsim {
             return importedSBMLModel;
         }
 
-        static const Relation &getRelationFromSBMLQual(libsbml::BiolQualifierType_t q) {
+        static  Relation &getRelationFromSBMLQual(libsbml::BiolQualifierType_t q) {
             switch (q) {
                 case libsbml::BQB_IS:
                     return bqb::is;
@@ -320,7 +320,7 @@ namespace semsim {
             );
         }
 
-        static std::string makeUniqueMetaId(const SemsimModel &model, const std::string &base) {
+        static std::string makeUniqueMetaId( SemsimModel &model,  std::string &base) {
             for (unsigned int k = 0; k < 1000; ++k) {
                 std::stringstream ss;
                 ss << base << k;
@@ -360,7 +360,7 @@ namespace semsim {
      * @param sbml_path    The path to the SBML file.
      */
     inline SemSimSBMLModel importSBMLFromFile(
-            const std::string &sbml_path) {
+             std::string &sbml_path) {
         libsbml::SBMLReader reader;
         libsbml::SBMLDocument *d = reader.readSBMLFromFile(sbml_path);
         if (d->getNumErrors()) {

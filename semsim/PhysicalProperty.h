@@ -15,33 +15,26 @@ namespace semsim {
     class  PhysicalProperty {
     public:
         /// Construct from a resource
-        PhysicalProperty(const Resource &resource)
+        PhysicalProperty(Resource &resource)
                 : resource_(resource) {}
-
-# if __cplusplus >= 201103L
 
         /// Move-construct from a resource
         PhysicalProperty(Resource &&resource)
                 : resource_(std::move(resource)) {}
 
-# endif
-
         /// Construct directly from a string that contains the resource URI
-        PhysicalProperty(const std::string &resource)
+        PhysicalProperty( std::string &resource)
                 : resource_(resource) {}
-
-# if __cplusplus >= 201103L
 
         /// Move-construct directly from a string that contains the resource URI
         PhysicalProperty(std::string &&resource)
                 : resource_(std::move(resource)) {}
 
-# endif
 
         /**
          * @return The @ref Resource for this @ref PhysicalProperty.
          */
-        const Resource &getResource() const {
+         Resource &getResource()  {
             return resource_;
         }
 
@@ -57,7 +50,7 @@ namespace semsim {
          * information. Ontology terms will be replaced with human-readable
          * names.
          */
-        std::string humanize() const {
+        std::string humanize()  {
             return resource_.humanize();
         }
 

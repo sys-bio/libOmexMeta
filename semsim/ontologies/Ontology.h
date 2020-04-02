@@ -23,7 +23,7 @@ namespace semsim {
          * @param  n_digits The number of digits in the URI format of the ontology term.
          * @return          The correct full URI for the resource in the ontology.
          */
-        static Resource resolve(const std::string &root, OntologyTerm t, int n_digits) {
+        static Resource resolve( std::string &root, OntologyTerm t, int n_digits) {
             std::ostringstream ss;
             ss << root << std::setfill('0') << std::setw(n_digits) << t;
             return Resource(ss.str());

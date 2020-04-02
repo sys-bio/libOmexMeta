@@ -16,27 +16,27 @@ namespace semsim {
 
         static std::string RaptorTermToRepr(raptor_term *t);
 
-        static bool isMetaId(const std::string &uri);
+        static bool isMetaId( std::string &uri);
 
         static bool isMetaId(raptor_term *t);
 
-        static std::string extractMetaId(const std::string &uri);
+        static std::string extractMetaId( std::string &uri);
 
         static std::string extractMetaId(raptor_term *t);
 
-        static void addTermToEntity(EntityBase &entity, const Relation &relation, const Resource &resource);
+        static void addTermToEntity(EntityBase &entity,  Relation &relation,  Resource &resource);
 
         static void addTermToCompositeAnnotation(
                 CompositeAnnotation &annotation,
-                const Relation &relation,
-                const Resource &resource);
+                 Relation &relation,
+                 Resource &resource);
 
         static void addTermToSingularAnnotation(
                 SingularAnnotation &annotation,
-                const Relation &relation,
-                const Resource &resource);
+                 Relation &relation,
+                 Resource &resource);
 
-        static void addTermToAnnotation(AnnotationBase &annotation, const Relation &relation, const Resource &resource);
+        static void addTermToAnnotation(AnnotationBase &annotation,  Relation &relation,  Resource &resource);
 
         static void process_triple(void *user_data, raptor_statement *triple);
 
@@ -48,8 +48,8 @@ namespace semsim {
          */
         static void applyRDFAnnotationsToModel(
                 SemsimModel &model,
-                const std::string &rdf,
-                const std::string &rdf_format = "rdfxml");
+                 std::string &rdf,
+                 std::string &rdf_format = "rdfxml");
     };
 }
 # endif

@@ -92,4 +92,15 @@ TEST_F(UrlTests, TestScheme) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
+TEST_F(UrlTests, TestEquality) {
+    Url u1(url_str5);
+    Url u2(url_str5);
+    ASSERT_EQ(u1, u2);
+}
+TEST_F(UrlTests, TestInequality) {
+    Url u1(url_str5);
+    Url u2(url_str4);
+    ASSERT_NE(u1, u2);
+}
+
 
