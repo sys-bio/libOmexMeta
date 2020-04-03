@@ -7,6 +7,8 @@
 # include <stdexcept>
 #include <utility>
 
+// todo consider breaking Resource functionality up into internal and external (single responsibility principle SRP)
+
 namespace semsim {
     class Component;
 
@@ -39,38 +41,59 @@ namespace semsim {
          * Construct from string.
          * @param uri The URI of the resource
          */
-        explicit Resource( std::string &url)
+        explicit Resource(const std::string &url)
                 : url_(Url(url)), element_(nullptr) {}
 
+        /*
+         * copy constructor
+         */
+        Resource(const Resource &resource) {
+            if (this != &resource) {
+                this->url_ = resource.url_;
+                this->element_ = resource.element_;
+            }
+        }
 
         /*
-         * Copy constructor
+         * move constructor
          */
-        Resource(Resource &resource);
+        Resource(Resource &&resource) noexcept {
+            if (this != &resource) {
+                this->url_ = std::move(resource.url_);
+                this->element_ = resource.element_;
+            }
+        }
 
         /*
-         * Copy assignment constructor
+         * copy assignment operator
          */
-        Resource &operator=( Resource &resource);
+        Resource &operator=(const Resource &resource) {
+            if (this != &resource) {
+                this->url_ = resource.url_;
+                this->element_ = resource.element_;
+            }
+            return *this;
+        }
 
         /*
-         * Move constructor
+         * move assignment operator
          */
-        Resource(Resource &&resource) noexcept ;
-
-        /*
-         * Move assignment constructor
-         */
-        Resource &operator=(Resource &&resource) noexcept ;
+        Resource &operator=(Resource &&resource) noexcept {
+            if (this != &resource) {
+                this->url_ = resource.url_;
+                this->element_ = resource.element_;
+            }
+            return *this;
+        }
 
         /**
-         * Construct from a Component*.
-         * @param element
+         * Construct from element.
+         * @param uri The URI of the resource
          */
-        explicit Resource(Component *element)
+        Resource(Component *element)
                 : element_(element) {}
 
-        std::string toString()  {
+        std::string toString() const {
             return url_.str();
         }
 
@@ -79,14 +102,18 @@ namespace semsim {
          * @param base If this resource points to a local @ref Component, this parameter should be the relative path of the SBML document. Otherwise, the default value should be used.
          * @return The URI for this resource.
          */
-        Url getURI(Url base = Url()) ;
+        Url getURI(Url base = Url()) const;
+
+        Component* getElement(){
+            return element_;
+        }
 
         /**
          * @return @c true if this resource points to a local @ref Component
          * (as opposed to an external URI).
          */
-        bool isLocal()  {
-            return element_; //todo: why is this a boolean. Looks like a Component* to me!
+        bool isLocal() const {
+            return element_;
         }
 
         /**
@@ -94,17 +121,28 @@ namespace semsim {
          * information. Ontology terms will be replaced with human-readable
          * names.
          */
-        std::string humanize() ;
+        std::string humanize() const;
 
-                friend std::ostream &operator<<(std::ostream &os, Resource &resource);
+        /**
+         * Test whether this @ref Resource instance points to the same
+         * object as the other @ref Resource instance.
+         * @param other A @ref Resource instance to test against.
+         * @return @c true if both instances point to the same object.
+         */
+        bool operator==(const Resource &other) const {
+            if (!isLocal() && !other.isLocal())
+                return url_.str() == other.url_.str();
+            else if (isLocal() && other.isLocal())
+                return element_ == other.element_;
+            else
+                return false;
+        }
 
-        bool operator==( Resource &rhs) ;
+        friend std::ostream &operator<<(std::ostream &os, Resource &resource);
 
-        bool operator!=( Resource &rhs) ;
-
+    protected:
         /// A URI (for external resources)
         Url url_;
-    protected:
         /// A weak pointer to an element in the model (set for internal / local resources)
         Component *element_;
     };
