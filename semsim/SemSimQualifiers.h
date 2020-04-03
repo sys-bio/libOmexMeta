@@ -9,6 +9,7 @@ namespace semsim {
     /**
      * This class contains all the SemSim qualifiers.
      */
+     // todo rename this class
     class semsim {
     public:
         const static std::string root;

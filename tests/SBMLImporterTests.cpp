@@ -68,6 +68,11 @@ TEST_F(AnnotatedSBMLImporterTests, TestRDFGeneration) {
     ASSERT_STREQ(expected, actual);
 }
 
+TEST_F(AnnotatedSBMLImporterTests, TestRDFGeneration2) {
+    semsim::SBMLImporter importer(doc);
+    semsim::SemSimSBMLModel &model = importer.getSemSimSBMLModel();
+}
+
 //    // this isn't bad - the RDF already contains a composite annotation
 //    // telling is that the species "glucose" is inside the "cytosol"
 //    // we currently have "cytosolic glucose"
