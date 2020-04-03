@@ -2,8 +2,9 @@
 # define SEMSIM_SBML_ANNOTATIONS_H_
 
 
+// todo incoporate these functionality into annotation class
 
-# include "../third_party/libsbml-5.18.0/INSTALL/include/sbml/SBMLTypes.h"
+# include "sbml/SBMLTypes.h"
 
 namespace semsim {
 
