@@ -7,6 +7,8 @@
 # include <stdexcept>
 #include <utility>
 
+// todo consider breaking Resource functionality up into internal and external (single responsibility principle SRP)
+
 namespace semsim {
     class Component;
 
