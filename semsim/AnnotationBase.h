@@ -9,9 +9,6 @@
 # include "raptor2.h"
 
 namespace semsim {
-    class AnnotationBase; // forward declaration for defining AnnotationPtr
-    typedef std::unique_ptr<AnnotationBase> AnnotationPtr;
-
     /**
      * The base class for annotations.
      */
@@ -25,7 +22,7 @@ namespace semsim {
          * The object's type will depend on the runtime type of the callee,
          * but will be returned as a pointer to the base class @ref AnnotationBase.
          */
-        virtual AnnotationBase *clone() = 0;
+        virtual AnnotationBase *clone() const = 0;
 
         /**
          * Serialize this annotation to RDF using the Raptor library.
@@ -38,12 +35,12 @@ namespace semsim {
         virtual void serializeToRDF(
                 Url &sbml_base_uri,
                 raptor_world *world,
-                raptor_serializer *serializer)  = 0;
+                raptor_serializer *serializer) const = 0;
 
-        virtual std::string getRDF(Url &sbml_base_uri,  std::string &format)  = 0;
+        virtual std::string getRDF(Url &sbml_base_uri, const std::string &format) const = 0;
 
         /// Get the meta id for this element
-        virtual  std::string &getMetaId()  = 0;
+        virtual const std::string &getMetaId() const = 0;
 
         /**
          * todo move this method to singular annotation concrete clas
@@ -52,16 +49,19 @@ namespace semsim {
          * @param prop The physical property to assign to the composite annotation.
          * @return A new composite annotation
          */
-        virtual AnnotationPtr makeComposite(PhysicalProperty &prop) = 0;
+        virtual std::unique_ptr<AnnotationBase> makeComposite(const PhysicalProperty &prop) const = 0;
 
         /**
          * Return a human--readable representation of the annotation
          * information. Ontology terms will be replaced with human-readable
          * names.
          */
-        virtual std::string humanize()  = 0;
+        virtual std::string humanize() const = 0;
 
-        virtual bool isComposite()  = 0;
+        /*
+         * todo move to concrete class
+         */
+        virtual bool isComposite() const = 0;
 
     protected:
     };
@@ -71,7 +71,7 @@ namespace semsim {
      * (either @ref CompositeAnnotation or @ref SingularAnnotation).
      * @see UniquePtr.
      */
-
+    typedef std::unique_ptr<AnnotationBase> AnnotationPtr;
 }
 
 # endif

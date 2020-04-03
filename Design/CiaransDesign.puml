@@ -1,0 +1,156 @@
+@startuml
+skinparam monochrome true
+
+'Base class for all annotations
+class Annotation {
+    + serialize() : std::string
+    + iscomposite() : bool
+}
+'Q) Conceptually, could we use an isa relationshop between singular annotation and Triple?
+
+'Should these be strings??
+'each attribute here should themselves be an annotation unit?
+'class ModelLevelAnnotation {
+'    + pubmedID : Triple
+'    + author : Triple
+'    + description : Triple
+'}
+'
+'Triple <-- ModelLevelAnnotation
+'SingularAnnotation <|-- ModelLevelAnnotation
+
+class SingularAnnotation {
+    + triple : Triple
+    + serialize() :std::string
+}
+
+'Not sure what type the physicalEntity / physicalProperty should have.
+'Not sure what the physicalEntity should be called.
+'From section 2.27 of omex metadata spec: physical entity, process, force or dependency that bears the physical property.
+class CompositeAnnotation {
+    + physicalProperty : PhysicalProperty
+    + physicalEntity : Entity*
+    + serialize() :std::string
+}
+
+SingularAnnotation --|> Annotation
+CompositeAnnotation --|> Annotation
+Triple <-- SingularAnnotation
+
+
+'Its possible this may serve as feedback for Max's document. The way its currently
+'structured, leads us to think model level, semantic, non-semantic and composite
+'annotations are separate types of annotation. Is this the case? Or are model level
+'annotations also singular/composite annotations? From this document, the relationship
+'between these types of annotation are not completly clear
+
+'AnnotationBase <|-- SingularAnnotation
+'AnnotationBase <|-- CompositeAnnotation
+
+'Should there be some kind of interface to the identifiers.org website?
+class Uri {
+    - uri_str : std::string
+    + parse() : void
+}
+
+
+class Subject {
+    + metaId : std::string
+    + uri : Uri
+}
+
+interface Predicate {}
+
+class Resource {
+    + url : Url
+}
+
+class ResourceUrl {}
+
+class ResourceLiteral {}
+
+Resource <|-- ResourceUrl
+Resource <|-- ResourceLiteral
+
+note top of Resource
+    Object part of rdf.
+end note
+
+
+class Triple {
+    + subject : Subject
+    + predicate : Predicate
+    + resource : Resource*
+}
+
+Subject <-- Triple
+Predicate <-- Triple
+Resource <-- Triple
+
+
+Uri <-- Subject
+Uri <-- Predicate
+Uri <-- Resource
+
+'Triple <-- AnnotationBase
+
+class BiomodelsQualifier {
+
+}
+
+class DublinCoreMetadataQualifier {
+
+}
+
+class OPB {
+
+}
+
+class FMA {
+
+}
+
+Predicate <|-- BiomodelsQualifier
+Predicate <|-- DublinCoreMetadataQualifier
+Predicate <|-- OPB
+Predicate <|-- FMA
+
+
+
+class PhysicalProperty {
+    + triple : Triple*
+}
+Triple <-- PhysicalProperty
+
+interface Entity {
+    + triple : Triple
+}
+Triple <-- Entity
+
+class PhysicalEntity {}
+class PhysicalProcess {}
+class PhysicalForce {}
+class PhysicalDependency {}
+
+Entity <|-- PhysicalEntity
+Entity <|-- PhysicalProcess
+Entity <|-- PhysicalForce
+Entity <|-- PhysicalDependency
+
+Entity <-- CompositeAnnotation
+PhysicalProperty <-- CompositeAnnotation
+
+
+class AnnotationList {
+    + annotations : std::unique_ptr<Annotation>
+    + fromSBML() : static AnnotationList
+    + fromCellML() : static AnnotationList
+}
+
+Annotation <-- AnnotationList
+
+
+
+
+
+@enduml
