@@ -58,6 +58,9 @@ namespace semsim {
          */
         virtual std::string humanize() const = 0;
 
+        /*
+         * todo move to concrete class
+         */
         virtual bool isComposite() const = 0;
 
     protected:
