@@ -1,15 +1,10 @@
 add_executable(semsim-tests
-#        SBMLImporterTests.cpp
-#        LibSBMLTests.cpp
-#        RedlandLibrariesTests.cpp
-        SBMLImporterTests.cpp
         SBMLFactory.h
-        SemSimSBMLModelTests.cpp
-        SemSimModelTests.cpp
-        ComponentTests.cpp
-        MetaIDTests.cpp
         UrlTests.cpp
-        TermTests.cpp ResourceTests.cpp RelationTests.cpp)
+        SubjectTests.cpp
+        PredicateTests.cpp
+        ResourceTests.cpp
+        )
 
 
 target_link_libraries(semsim-tests PRIVATE
@@ -34,11 +29,6 @@ target_link_libraries(semsim-tests PRIVATE
         c
         )
 
-get_target_property(X semsim-tests LINK_LIBRARIES )
-
-
-
-message(STATUS "REDLAND_INCLUDE_DIR ${REDLAND_INCLUDE_DIR}")
 target_include_directories(semsim-tests PRIVATE
         ${CMAKE_SOURCE_DIR}
         ${GOOGLETEST_SOURCE}/googletest/include

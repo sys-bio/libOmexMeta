@@ -6,7 +6,7 @@
 # include "semsim/PhysicalProperty.h"
 # include "semsim/EntityBase.h"
 # include "semsim/SemSimQualifiers.h"
-# include "semsim/url.h"
+# include "semsim/uri.h"
 
 // todo Think seriously about the need for multiple inheritance here. I suspect simple composition would be better.
 
