@@ -27,13 +27,13 @@ TEST_F(SubjectTests, TestGetMetaId) {
 TEST_F(SubjectTests, TestStringUri) {
     std::string url_str = "www.notarealaddress.com";
     semsim::Subject subject(url_str);
-    const std::string& expected = subject.getMetaId();
+    const std::string &expected = subject.getMetaId();
     ASSERT_STREQ(url_str.c_str(), expected.c_str());
 }
 
 TEST_F(SubjectTests, TestGetUri) {
     semsim::Subject subject(uri_str1);
-    std::string expected = subject.getMetaId();
+    const std::string &expected = subject.getMetaId();
     ASSERT_STREQ(expected.c_str(), uri_str1.c_str());
 }
 
