@@ -18,6 +18,8 @@ namespace semsim {
     public:
         Triple(Subject subject, Predicate predicate, Resource resource);
 
+//        Triple(Subject subject, Predicate predicate, Resource resource);
+
         const Subject &getSubject() const;
 
         const Predicate &getPredicate() const;

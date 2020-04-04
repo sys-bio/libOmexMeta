@@ -8,21 +8,17 @@
 #include "iostream"
 #include "uri.h"
 
-
 namespace semsim {
     class Subject {
     private:
         std::string metaId;
-        Uri uri;
 
     public:
-        Subject(std::string metaId, Uri uri) : metaId(std::move(metaId)), uri(std::move(uri)) {};
+        explicit Subject(std::string metaId) : metaId(std::move(metaId)) {};
 
-        Subject(std::string metaId, std::string uri) : metaId(std::move(metaId)), uri(Uri(std::move(uri))) {};
+//        Subject(std::string metaId) : metaId(std::move(metaId)), uri(Uri(std::move(uri))) {};
 
         const std::string &getMetaId() const;
-
-        const Uri &getUri() const;
 
         bool operator==(const Subject &rhs) const;
 

@@ -29,7 +29,7 @@ public:
 
 TEST_F(TripleTests, te){
 
-//    semsim::Triple triple(subj)
+//    semsim::Triple triple(subject_str)
 
 }
 
