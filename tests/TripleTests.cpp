@@ -3,6 +3,7 @@
 //
 
 #include <semsim/Predicate.h>
+#include <semsim/Triple.h>
 #include "gtest/gtest.h"
 
 
@@ -11,7 +12,8 @@ public:
 
     std::string subject_str;
     std::string predicate_str;
-    std::string object_str;
+    std::string resource_namespace;
+    std::string resource_id;
 
     semsim::Uri subject_uri;
     semsim::Uri predicate_uri;
@@ -20,11 +22,14 @@ public:
     void SetUp() override {
         subject_str = "./MyModel#metaid_0";
         predicate_str = "http://biomodels.net/biology-qualifiers/is";
-        object_str = "https://identifiers.org/uniprot:P0DP23";
+        resource_namespace = "uniprot";
+        resource_namespace = "P0DP23";
     }
 };
 
 TEST_F(TripleTests, te){
+
+//    semsim::Triple triple(subj)
 
 }
 

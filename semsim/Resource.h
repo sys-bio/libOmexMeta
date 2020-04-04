@@ -8,6 +8,7 @@
 #include <iostream>
 #include "semsim/Resource.h"
 #include "semsim/uri.h"
+#include "sstream"
 
 namespace semsim {
     class Resource {
@@ -22,6 +23,8 @@ namespace semsim {
         Resource(std::string resourceNamespace,
                  std::string identifier);
 
+        Resource(std::string resource);
+
         const std::string &getIdentifiersBase() const;
 
         const std::string &getResourceNamespace() const;
@@ -35,6 +38,23 @@ namespace semsim {
         friend std::ostream &operator<<(std::ostream &os, const Resource &resource);
 
         std::string build() const;
+
+        static std::vector<std::string> splitStringBy(std::string str, char delimiter) {
+            std::vector<std::string> tokens;
+            if (str.find(delimiter) == std::string::npos) {
+                // just return the string in the vector
+                tokens.push_back(str);
+                return tokens;
+            }
+            std::string token;
+            std::istringstream is(str);
+            while (std::getline(is, token, delimiter)) {
+                std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+                if (!token.empty())
+                    tokens.push_back(token);
+            }
+            return tokens;
+        }
     };
 
 

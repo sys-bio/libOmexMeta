@@ -7,6 +7,7 @@
 #include <utility>
 #include "uri.h"
 #include "sstream"
+#include "iterator"
 
 namespace semsim {
 
@@ -37,7 +38,7 @@ namespace semsim {
         return !(rhs == *this);
     }
 
-    std::ostream &operator<<(std::ostream &os, const Resource& resource) {
+    std::ostream &operator<<(std::ostream &os, const Resource &resource) {
         os << "Resource(" << resource.build() << ")";
         return os;
     }
@@ -48,6 +49,28 @@ namespace semsim {
            << resource_namespace << "/"
            << identifier;
         return os.str();
+    }
+
+    static std::vector<std::string> splitStringBy(std::string delimiter);
+
+    Resource::Resource(std::string identifier) {
+        std::vector<std::string> vec;
+        if (identifier.find('/') != std::string::npos) {
+            // process identifier of form namespace/identifier
+            vec = splitStringBy(identifier, '/');
+            if (vec.size() != 2)
+                throw std::logic_error("Was expecting a vector of size 2");
+        } else if (identifier.find(':') != std::string::npos) {
+            // process identifier of form namespace:identifier
+            vec = splitStringBy(identifier, ':');
+            if (vec.size() != 2)
+                throw std::logic_error("Was expecting a vector of size 2");
+        } else {
+            throw std::logic_error("input string ("+ identifier +") does not contain "
+                                   "either one of the accepted delimiters (\"/\" or \":\")");
+        }
+        this->resource_namespace = vec[0];
+        this->identifier = vec[1];
     }
 
 }
