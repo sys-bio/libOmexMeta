@@ -12,23 +12,29 @@
 namespace semsim {
     class Resource {
     private:
-        std::string metaId;
-        Uri uri;
+        std::string identifiers_base = "https://identifiers.org";
+        std::string resource_namespace;
+        std::string identifier;
+
 
     public:
-        Resource(std::string metaId, Uri uri) : metaId(std::move(metaId)), uri(std::move(uri)) {};
 
-        Resource(std::string metaId, std::string uri) : metaId(std::move(metaId)), uri(Uri(std::move(uri))) {};
+        Resource(std::string resourceNamespace,
+                 std::string identifier);
 
-        std::string &getMetaId();
+        const std::string &getIdentifiersBase() const;
 
-        Uri &getUri();
+        const std::string &getResourceNamespace() const;
+
+        const std::string &getIdentifier() const;
 
         bool operator==(const Resource &rhs) const;
 
         bool operator!=(const Resource &rhs) const;
 
-        friend std::ostream &operator<<(std::ostream &os, Resource &resource);
+        friend std::ostream &operator<<(std::ostream &os, const Resource &resource);
+
+        std::string build() const;
     };
 
 

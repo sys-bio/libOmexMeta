@@ -20,15 +20,15 @@ namespace semsim {
 
         Subject(std::string metaId, std::string uri) : metaId(std::move(metaId)), uri(Uri(std::move(uri))) {};
 
-        std::string &getMetaId();
+        const std::string &getMetaId() const;
 
-        Uri &getUri();
+        const Uri &getUri() const;
 
         bool operator==(const Subject &rhs) const;
 
         bool operator!=(const Subject &rhs) const;
 
-        friend std::ostream &operator<<(std::ostream &os, Subject &subject);
+        friend std::ostream &operator<<(std::ostream &os, const Subject &subject);
     };
 
 }

@@ -5,13 +5,7 @@
 #include "semsim/Subject.h"
 
 namespace semsim {
-    std::string &Subject::getMetaId() {
-        return metaId;
-    }
 
-    Uri &Subject::getUri() {
-        return uri;
-    }
 
     bool Subject::operator==(const Subject &rhs) const {
         return metaId == rhs.metaId &&
@@ -22,9 +16,17 @@ namespace semsim {
         return !(rhs == *this);
     }
 
-    std::ostream &operator<<(std::ostream &os, Subject &subject) {
+    std::ostream &operator<<(std::ostream &os, const Subject &subject) {
         os << "Subject(metaId=" << subject.getMetaId() << ", uri=" << subject.getUri().str() << ")";
         return os;
+    }
+
+    const std::string &Subject::getMetaId() const {
+        return metaId;
+    }
+
+    const Uri &Subject::getUri() const {
+        return uri;
     }
 
 
