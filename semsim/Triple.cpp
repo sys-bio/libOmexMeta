@@ -9,8 +9,8 @@
 namespace semsim {
 
     Triple::Triple(Subject subject, Predicate predicate, Resource resource) : subject(std::move(subject)),
-                                                                                                   predicate(std::move(predicate)),
-                                                                                                   resource(std::move(resource)) {}
+                                                                              predicate(std::move(predicate)),
+                                                                              resource(std::move(resource)) {}
 
     const Subject &Triple::getSubject() const {
         return subject;
@@ -36,11 +36,11 @@ namespace semsim {
 
     std::ostream &operator<<(std::ostream &os, const Triple &triple) {
         os << "Triple(subject="
-            << triple.getSubject()
-            <<", predicate="
-            << triple.predicate
-            << ", resource="
-            << triple.resource;
+           << triple.getSubject()
+           << ", predicate="
+           << triple.predicate
+           << ", resource="
+           << triple.resource;
         return os;
     }
 }
