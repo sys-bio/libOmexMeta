@@ -53,16 +53,23 @@ class Uri {
     + parse() : void
 }
 
-
 class Subject {
     + metaId : std::string
     + uri : Uri
 }
+note left of Subject
+    Should subject have
+    a reference to the
+    model elemenet it
+    represents? I'd argue
+    that this is what the metaid
+    is for.
+end note
 
 interface Predicate {}
 
 class Resource {
-    + url : Url
+    + url : Uri
 }
 
 class ResourceUrl {}
