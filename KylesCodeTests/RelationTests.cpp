@@ -1,7 +1,7 @@
 
 
 
-#include <semsim/url.h>
+#include <semsim/uri.h>
 #include <semsim/Resource.h>
 #include <sbml/SBMLTypes.h>
 #include "gtest/gtest.h"

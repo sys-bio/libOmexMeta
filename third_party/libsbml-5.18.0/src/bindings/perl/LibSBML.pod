@@ -24676,7 +24676,8 @@ to search across all registered converters for one matching particular
 properties.
     
 @param props the properties to match.
-@return C<true> if this converter's properties match, C<false>
+@return C<true> if this converter's properties match, C<false
+>
 otherwise.
 
 

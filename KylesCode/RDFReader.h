@@ -1,7 +1,7 @@
 # ifndef SEMSIM_RDF_RDFREADER_H_
 # define SEMSIM_RDF_RDFREADER_H_
 
-# include "semsim/url.h"
+# include "semsim/uri.h"
 # include "semsim/SemsimModel.h"
 # include "SemSimSBMLModel.h"
 

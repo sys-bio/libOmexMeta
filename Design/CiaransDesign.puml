@@ -148,13 +148,13 @@ Entity <-- CompositeAnnotation
 PhysicalProperty <-- CompositeAnnotation
 
 
-class AnnotationList {
+class ListOfAnnotations {
     + annotations : std::unique_ptr<Annotation>
-    + fromSBML() : static AnnotationList
-    + fromCellML() : static AnnotationList
+    + fromSBML() : static ListOfAnnotations
+    + fromCellML() : static ListOfAnnotations
 }
 
-Annotation <-- AnnotationList
+Annotation <-- ListOfAnnotations
 
 
 

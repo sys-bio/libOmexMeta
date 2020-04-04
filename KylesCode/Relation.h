@@ -4,7 +4,7 @@
 
 #include <utility>
 
-# include "semsim/url.h"
+# include "semsim/uri.h"
 
 namespace semsim {
 
