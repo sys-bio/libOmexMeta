@@ -14,9 +14,8 @@ namespace semsim {
         std::string metaId;
 
     public:
-        explicit Subject(std::string metaId) : metaId(std::move(metaId)) {};
 
-//        Subject(std::string metaId) : metaId(std::move(metaId)), uri(Uri(std::move(uri))) {};
+        explicit Subject(std::string metaId) : metaId(std::move(metaId)) {};
 
         const std::string &getMetaId() const;
 

@@ -3,7 +3,10 @@ set(SEMSIM_SOURCES
         uri.h uri.cpp
         Subject.h Subject.cpp
         Predicate.cpp Predicate.h
-        Resource.cpp Resource.h)
+        Resource.cpp Resource.h
+        Triple.h Triple.cpp
+        semsim.h
+        )
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -15,7 +18,7 @@ set(SEMSIM_LIBRARY semsim)
 add_library(${SEMSIM_STATIC_LIBRARY} STATIC ${SEMSIM_SOURCES})
 
 # shared library
-add_library(${SEMSIM_LIBRARY} SHARED ${SEMSIM_SOURCES} semsim.h Triple.cpp Triple.h)
+add_library(${SEMSIM_LIBRARY} SHARED ${SEMSIM_SOURCES})
 if (UNIX)
     MESSAGE(STATUS "LINUX BUILDS")
     #fPIC for linux shared library builds
