@@ -15,7 +15,7 @@ set(SEMSIM_LIBRARY semsim)
 add_library(${SEMSIM_STATIC_LIBRARY} STATIC ${SEMSIM_SOURCES})
 
 # shared library
-add_library(${SEMSIM_LIBRARY} SHARED ${SEMSIM_SOURCES} semsim.h)
+add_library(${SEMSIM_LIBRARY} SHARED ${SEMSIM_SOURCES} semsim.h Triple.cpp Triple.h)
 if (UNIX)
     MESSAGE(STATUS "LINUX BUILDS")
     #fPIC for linux shared library builds

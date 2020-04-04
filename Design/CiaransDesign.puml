@@ -53,6 +53,16 @@ class Uri {
     + parse() : void
 }
 
+note right of Uri
+    Might be
+    a good
+    idea to
+    have a
+    url subclass
+    for identifiers
+    .org
+end note
+
 class Subject {
     + metaId : std::string
     + uri : Uri
@@ -66,10 +76,14 @@ note left of Subject
     is for.
 end note
 
-interface Predicate {}
+interface Predicate {
+    + uri : Uri
+}
 
 class Resource {
-    + url : Uri
+    - identifiers_base: std::string
+    - namespace : std::string
+    - identifier : std::string
 }
 
 class ResourceUrl {}

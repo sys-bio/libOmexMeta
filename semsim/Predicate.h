@@ -18,18 +18,16 @@ namespace semsim {
     public:
 
         explicit Predicate(Uri uri);
-
         explicit Predicate(std::string uri);
 
         const Uri &getUri() const;
 
+        friend std::ostream &operator<<(std::ostream &os, const Predicate &predicate);
+
         bool operator==(const Predicate &rhs) const;
 
         bool operator!=(const Predicate &rhs) const;
-
-        friend std::ostream &operator<<(std::ostream &os, const Predicate &predicate);
     };
 }
-
 
 #endif //LIBSEMGEN_PREDICATE_H
