@@ -4,7 +4,7 @@ set(SEMSIM_SOURCES
         Subject.h Subject.cpp
         Predicate.cpp Predicate.h
         Resource.cpp Resource.h
-#        Triple.h Triple.cpp
+        Triple.h Triple.cpp
         semsim.h
         IRDF.h
         ControlledVocabulary.cpp ControlledVocabulary.h)

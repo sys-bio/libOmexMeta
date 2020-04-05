@@ -19,8 +19,6 @@ namespace semsim {
     public:
         Triple(Subject subject, Predicate predicate, Resource resource);
 
-        Triple(std::string subject, std::string predicate, std::string resource);
-
         const Subject &getSubject() const;
 
         const Predicate &getPredicate() const;

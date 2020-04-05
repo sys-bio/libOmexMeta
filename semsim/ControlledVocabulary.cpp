@@ -7,6 +7,8 @@
 #include <iostream>
 #include <memory>
 
+
+//todo should I relabel ControlledVocabulary to Term???
 namespace semsim {
     ControlledVocabulary::ControlledVocabulary(std::string qualifier) : qualifier(std::move(qualifier)) {}
 
