@@ -23,6 +23,13 @@ class SingularAnnotation {
     + triple : Triple
     + serialize() :std::string
 }
+note right of SingularAnnotation
+    Should I have a
+    RDF interface for
+    methods such as
+    serialize?
+
+end note
 
 'Not sure what type the physicalEntity / physicalProperty should have.
 'Not sure what the physicalEntity should be called.
@@ -53,39 +60,43 @@ class Uri {
     + parse() : void
 }
 
-note right of Uri
-    Might be
-    a good
-    idea to
-    have a
-    url subclass
-    for identifiers
-    .org
-end note
-
 class Subject {
-    + metaId : std::string
-    + uri : Uri
+    + metaId : Uri
 }
-note left of Subject
-    Should subject have
-    a reference to the
-    model elemenet it
-    represents? I'd argue
-    that this is what the metaid
-    is for.
-end note
 
 interface Predicate {
-    + uri : Uri
+    + cv : ControlledVocabulary*
 }
+class ControlledVocabulary <<abstract>> {
+    + namespace : std::string
+    + root      : std::string
+    + qualifier : std::string
+    + getUri() : Uri
+}
+ControlledVocabulary <-- Predicate
+Uri <-- ControlledVocabulary
+
+class BiomodelsQualifier {}
+class OPB {}
+class CHEBI {}
+ControlledVocabulary <|-- BiomodelsQualifier
+ControlledVocabulary <|-- OPB
+ControlledVocabulary <|-- CHEBI
+
 
 class Resource {
     - identifiers_base: std::string
     - namespace : std::string
     - identifier : std::string
 }
-
+note right of Resource
+    This class implements
+    a Resource as a web
+    resource resolvable by
+    identifiers.org but
+    not a resource from a
+    literal.
+end note
 class ResourceUrl {}
 
 class ResourceLiteral {}
@@ -110,31 +121,30 @@ Resource <-- Triple
 
 
 Uri <-- Subject
-Uri <-- Predicate
 Uri <-- Resource
 
 'Triple <-- AnnotationBase
-
-class BiomodelsQualifier {
-
-}
-
-class DublinCoreMetadataQualifier {
-
-}
-
-class OPB {
-
-}
-
-class FMA {
-
-}
-
-Predicate <|-- BiomodelsQualifier
-Predicate <|-- DublinCoreMetadataQualifier
-Predicate <|-- OPB
-Predicate <|-- FMA
+'
+'class BiomodelsQualifier {
+'
+'}
+'
+'class DublinCoreMetadataQualifier {
+'
+'}
+'
+'class OPB {
+'
+'}
+'
+'class FMA {
+'
+'}
+'
+'Predicate <|-- BiomodelsQualifier
+'Predicate <|-- DublinCoreMetadataQualifier
+'Predicate <|-- OPB
+'Predicate <|-- FMA
 
 
 
