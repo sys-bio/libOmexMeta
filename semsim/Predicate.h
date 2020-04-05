@@ -27,6 +27,8 @@ namespace semsim {
         friend std::ostream &operator<<(std::ostream &os, const Predicate &predicate);
 
         Uri getUri();
+
+        const std::shared_ptr<ControlledVocabulary> &getTerm() const;
     };
 
 }

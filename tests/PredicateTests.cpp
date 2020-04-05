@@ -49,14 +49,6 @@ TEST_F(PredicateTests, TestStream) {
     ASSERT_STREQ(expected.c_str(), os.str().c_str());
 }
 
-//TEST_F(PredicateTests, TestStreamOperator) {
-//    semsim::Predicate predicate1(uri);
-//    std::ostringstream os;
-//    os << predicate1;
-//    std::string expected = "Predicate(uri=http://www.example.com/)";
-//    ASSERT_STREQ(expected.c_str(), os.str().c_str());
-//}
-
 
 
 

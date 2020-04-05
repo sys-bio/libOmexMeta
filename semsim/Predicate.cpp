@@ -27,6 +27,10 @@ namespace semsim {
     Uri Predicate::getUri() {
         return term->getUri();
     }
+
+    const std::shared_ptr<ControlledVocabulary> &Predicate::getTerm() const {
+        return term;
+    }
 }
 
 

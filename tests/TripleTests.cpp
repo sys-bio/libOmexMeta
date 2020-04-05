@@ -26,7 +26,7 @@ public:
             resource_namespace("uniprot"),
             resource_id("P0DP23"),
             subject(semsim::Subject(subject_str)),
-            predicate(semsim::Predicate(predicate_str)),
+            predicate(semsim::BiomodelsQualifier("is").make_shared()),
             resource(semsim::Resource(resource_namespace, resource_id)) {}
 };
 
@@ -39,9 +39,9 @@ TEST_F(TripleTests, TestSubjectMetaId) {
 
 TEST_F(TripleTests, TestPredicate) {
     semsim::Triple triple(subject, predicate, resource);
-    std::string subject_metaid = triple.getPredicate().getUri().str();
+    semsim::Predicate predicate1 = triple.getPredicate();
     std::string expected = predicate_str;
-    ASSERT_STREQ(expected.c_str(), subject_metaid.c_str());
+    ASSERT_STREQ(expected.c_str(), predicate1.getUri().str().c_str());
 }
 
 TEST_F(TripleTests, TestResource) {
@@ -51,36 +51,17 @@ TEST_F(TripleTests, TestResource) {
     ASSERT_STREQ(expected.c_str(), resource_id.c_str());
 }
 
-
-TEST_F(TripleTests, TestResourceFromString) {
-    semsim::Triple triple(subject_str, predicate_str, resource_namespace + "/" + resource_id);
-    std::string actual = triple.getResource().getIdentifier();
-    std::string expected = resource_id;
-    ASSERT_STREQ(expected.c_str(), resource_id.c_str());
-}
-
-
-TEST_F(TripleTests, TestSubjectMetaIdFromString) {
-    semsim::Triple triple(subject_str, predicate_str, resource_namespace + "/" + resource_id);
-    std::string subject_metaid = triple.getSubject().getMetaId();
-    std::string expected = subject_str;
-    ASSERT_STREQ(expected.c_str(), subject_metaid.c_str());
-}
-
-TEST_F(TripleTests, TestPredicateFromString) {
-    semsim::Triple triple(subject_str, predicate_str, resource_namespace + "/" + resource_id);
-    std::string subject_metaid = triple.getPredicate().getUri().str();
-    std::string expected = predicate_str;
-    ASSERT_STREQ(expected.c_str(), subject_metaid.c_str());
-}
-
-TEST_F(TripleTests, TestSerialize) {
-    semsim::Triple triple(subject_str, predicate_str, resource_namespace + "/" + resource_id);
-    triple.serialize("rdfxml");
-
-
-
-
+TEST_F(TripleTests, TestSerializeATripleToRdfXmlAbbrv) {
+    semsim::Triple triple(subject, predicate, resource);
+    std::string actual = triple.serialize("rdfxml-abbrev");
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqb=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "  <rdf:Description rdf:about=\"./MyModel#metaid_0\">\n"
+                           "    <bqb:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 

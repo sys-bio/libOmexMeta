@@ -44,25 +44,14 @@ namespace semsim {
         return os;
     }
 
-    Triple::Triple(std::string subject, std::string predicate, std::string resource) :
-            subject(
-                    Subject(std::move(subject))
-            ),
-            predicate(
-                    Predicate(std::make_unique<ControlledVocabulary>(predicate))
-            ),
-            resource(
-                    Resource(std::move(resource))
-            ) {}
-
-
+    // todo i suspect you'll have to move some of this code into a higher level object
+    //  so that we can call down and seralize several rdf statements at once
+    //  via the iostream feature. For now, keep itlke this.
     std::string Triple::serialize(std::string format) {
         raptor_world *world = raptor_new_world();
-//        unsigned char *uri_string = raptor_uri_filename_to_uri_string("./MyModel.xml");
-        raptor_uri *base_uri = raptor_new_uri(world, (const unsigned char *) "");
+        // todo work out whether base uri should be a file name of the model.
 
-
-        /* Make a triple with URI subject, URI predicate, literal object */
+        // create raptor triple
         raptor_statement *triple = raptor_new_statement(world);
         triple->subject = raptor_new_term_from_uri_string(
                 world,
@@ -75,93 +64,46 @@ namespace semsim {
         );
         triple->object = raptor_new_term_from_uri_string(world, (const unsigned char *) resource.build().c_str());
 
-        /* Write the triple */
+        // make a raptor serializer
         raptor_serializer *rdf_serializer = nullptr;
         rdf_serializer = raptor_new_serializer(world, format.c_str());
         if (!rdf_serializer)
             throw std::runtime_error("Could not create Raptor serializer for format " + format);
-        std::string prefix = "bqb";
-        raptor_uri *u;
 
-//        raptor_uri_to_relative_uri_string()
-        std::string x = "http://biomodels.net/biology-qualifiers";
-
-        u = raptor_new_uri(world, (const unsigned char *) x.c_str());
-//        raptor_uri_filename_to_uri_string(u);
-
-        raptor_serializer_set_namespace(rdf_serializer, u, (const unsigned char *) prefix.c_str());
-//        raptor_serializer_set_namespace_from_namespace()
-
-        raptor_serializer_start_to_file_handle(rdf_serializer, base_uri, stdout);
+        // add a namespace for the predicate uri
+        raptor_uri *predicate_uri = raptor_new_uri(
+                world,
+                (const unsigned char *) predicate.getTerm()->getRoot().c_str());
+        raptor_serializer_set_namespace(
+                rdf_serializer,
+                predicate_uri,
+                (const unsigned char *) predicate.getTerm()->getCvNamespace().c_str());
+        void *string;  /* destination for string */
+        size_t length; /* length of constructed string */
+        raptor_serializer_start_to_string(rdf_serializer, nullptr, &string, &length);
+//        const char *filename = "./raptor.rdf";
+//        raptor_serializer_start_to_filename(rdf_serializer, filename);
         raptor_serializer_serialize_statement(rdf_serializer, triple);
-
         /* Delete the triple */
         raptor_free_statement(triple);
 
         raptor_serializer_serialize_end(rdf_serializer);
+        auto *pstr = static_cast<const char *>(string);
+
+        // free memory
         raptor_free_serializer(rdf_serializer);
-
-        raptor_free_uri(base_uri);
-
         raptor_free_world(world);
 
-
-        return "not yet implemented";
+        return static_cast<std::string>(pstr);
     }
-//            SemsimModel &model = *(SemsimModel *) user_data;
-//        if (isMetaId(triple->subject)) {
-//            std::string metaid = extractMetaId(triple->subject);
-//            if (model.hasComponentWithMetaId(metaid)) {
-//                Component &component = model.findComponentWithMetaId(metaid);
-//                if (!component.hasAnnotation()) {
-//                    component.setAnnotation(SingularAnnotation(metaid));
-//                }
-//                addTermToAnnotation(component.getAnnotation(), Relation(RaptorTermToURI(triple->predicate)),
-//                                    Resource(RaptorTermToURI(triple->object)));
-//                // std::cerr << metaid << " " << RaptorTermToRepr(triple->predicate) << " " << RaptorTermToRepr(triple->object) << "\n";
-//            }
-//        }
-}
-/*
- * Does it make sense to set a namespace on the triple itself? Probably not.
- * However, surely the namespaces can be extracted directly from the urls?
- * but then what about the prefixes? These should be stndardized - ie.e bqb,
- * Perhaps I could just include logic for the common ones and an interace to users to
- * specify their own?
- *
- * Also, the subject url is absolute, where we want to keep it relative.
- *
- * A triple in raptor is a statement - possibly. So a Triple should
- * also have a statement.
- */
 
-//        std::string getRDF(Url &sbml_base_uri,  std::string &format)  override {
-//            raptor_world *world = raptor_new_world();
-//            raptor_serializer *serializer = raptor_new_serializer(world, format.c_str());
-//            if (!serializer)
-//                throw std::runtime_error("Could not create Raptor serializer for format " + format);
-//
-//            raptor_uri *base_uri = raptor_new_uri(world, ( unsigned char *) "");
-//
-//            raptor_serializer_set_namespace(serializer,
-//                                            raptor_new_uri(world, ( unsigned char *) bqb::root.c_str()),
-//                                            ( unsigned char *) "bqb");
-//            raptor_serializer_set_namespace(serializer,
-//                                            raptor_new_uri(world, ( unsigned char *) semsim::root.c_str()),
-//                                            ( unsigned char *) "semsim");
-//
-//            void *output;
-//            size_t length;
-//            raptor_serializer_start_to_string(serializer, base_uri, &output, &length);
-//
-//            serializeToRDF(sbml_base_uri, world, serializer);
-//
-//            raptor_serializer_serialize_end(serializer);
-//
-//            raptor_free_serializer(serializer);
-//            raptor_free_world(world);
-//
-//            std::string result((char *) output);
-//            free(output);
-//            return result;
-//        }
+
+}
+
+
+/*
+ * I wonder whether its possible to wrap the serialisation
+ * up in a builder pattern. So users would do somethinglike:
+ *
+ *      statement.serialise().with_format('format').to_output(output)
+ */

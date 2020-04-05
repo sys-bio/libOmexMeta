@@ -4,7 +4,7 @@ add_executable(semsim-tests
         SubjectTests.cpp
         PredicateTests.cpp
         ResourceTests.cpp
-#        TripleTests.cpp
+        TripleTests.cpp
         ControlledVocabularyTests.cpp
         )
 
