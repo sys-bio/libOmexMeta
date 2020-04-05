@@ -5,9 +5,10 @@
 #ifndef LIBSEMGEN_CONTROLLEDVOCABULARY_H
 #define LIBSEMGEN_CONTROLLEDVOCABULARY_H
 
-#include "iostream"
-#include "sstream"
 #include <algorithm>
+#include <memory>
+#include <iostream>
+#include <sstream>
 #include "uri.h"
 
 namespace semsim {
@@ -18,7 +19,7 @@ namespace semsim {
     protected:
         std::vector<std::string> valid_terms;
 
-        virtual void setValidTerms() = 0;
+        virtual void setValidTerms();
 
         void verify() ;
 
@@ -44,6 +45,8 @@ namespace semsim {
         friend std::ostream &operator<<(std::ostream &os, const ControlledVocabulary &vocabulary);
 
         Uri getUri() const;
+
+        std::shared_ptr<ControlledVocabulary> make_shared();
 
     };
 

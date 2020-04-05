@@ -4,7 +4,9 @@ add_executable(semsim-tests
         SubjectTests.cpp
         PredicateTests.cpp
         ResourceTests.cpp
-        TripleTests.cpp ControlledVocabularyTests.cpp)
+#        TripleTests.cpp
+        ControlledVocabularyTests.cpp
+        )
 
 
 target_link_libraries(semsim-tests PRIVATE

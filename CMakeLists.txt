@@ -12,19 +12,23 @@ cmake_policy(SET CMP0086 NEW) # pass -module flag to swig
 project(libsemgen LANGUAGES CXX VERSION 0.1.0)
 include(ExternalProject)
 
+
 # modules
-
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
-
 # global settings
 
-set(SEMSIM_CXX_STANDARD 11 CACHE STRING "The C++ standard to use (11 or 98)")
+set (CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_FLAGS "-std=c++14")
+
+add_compile_definitions(SEMSIM_INTERNAL_BUILD)
+message(STATUS "CMAKE_CXX_STANDARD ${CMAKE_CXX_STANDARD}")
+message(STATUS "CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}")
+
 if ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 endif ()
 
-set(CMAKE_CXX_STANDARD ${SEMSIM_CXX_STANDARD})
-add_compile_definitions(SEMSIM_INTERNAL_BUILD)
 # https://gitlab.kitware.com/cmake/cmake/issues/16589
 set(CMAKE_MACOSX_RPATH ON)
 

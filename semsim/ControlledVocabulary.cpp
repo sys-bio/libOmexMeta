@@ -4,7 +4,8 @@
 
 #include "ControlledVocabulary.h"
 
-#include <utility>
+#include <iostream>
+#include <memory>
 
 namespace semsim {
     ControlledVocabulary::ControlledVocabulary(std::string qualifier) : qualifier(std::move(qualifier)) {}
@@ -63,6 +64,17 @@ namespace semsim {
             throw std::invalid_argument(os.str());
         }
     }
+
+    void ControlledVocabulary::setValidTerms() {}
+
+    std::shared_ptr<ControlledVocabulary> ControlledVocabulary::make_shared() {
+        return std::make_shared<ControlledVocabulary>(*this);
+    }
+
+//    std::shared_ptr<int> ControlledVocabulary::make_shared() {
+//        return std::make_shared<int>(4);
+//    }
+
 
     BiomodelsQualifier::BiomodelsQualifier(const std::string &qualifier)
             : ControlledVocabulary(qualifier) {
