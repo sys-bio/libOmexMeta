@@ -9,16 +9,17 @@
 #include "Subject.h"
 #include "Predicate.h"
 #include "Resource.h"
+#include "IRDF.h"
 
 namespace semsim {
-    class Triple {
+    class Triple : private IRDF {
         Subject subject;
         Predicate predicate;
         Resource resource;
     public:
         Triple(Subject subject, Predicate predicate, Resource resource);
 
-//        Triple(Subject subject, Predicate predicate, Resource resource);
+        Triple(std::string subject, std::string predicate, std::string resource);
 
         const Subject &getSubject() const;
 
@@ -31,6 +32,8 @@ namespace semsim {
         bool operator!=(const Triple &rhs) const;
 
         friend std::ostream &operator<<(std::ostream &os, const Triple &triple);
+
+        std::string serialize(std::string format) override;
     };
 }
 

@@ -42,14 +42,13 @@ namespace semsim {
         static std::vector<std::string> splitStringBy(std::string str, char delimiter) {
             std::vector<std::string> tokens;
             if (str.find(delimiter) == std::string::npos) {
-                // just return the string in the vector
+                // return the string in the vector
                 tokens.push_back(str);
                 return tokens;
             }
             std::string token;
             std::istringstream is(str);
             while (std::getline(is, token, delimiter)) {
-                std::cout << __FILE__ << ":" << __LINE__ << std::endl;
                 if (!token.empty())
                     tokens.push_back(token);
             }

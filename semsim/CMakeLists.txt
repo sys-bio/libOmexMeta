@@ -6,7 +6,7 @@ set(SEMSIM_SOURCES
         Resource.cpp Resource.h
         Triple.h Triple.cpp
         semsim.h
-        )
+        IRDF.h ControlledVocabulary.cpp ControlledVocabulary.h)
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
