@@ -1,36 +1,34 @@
 @startuml
 skinparam monochrome true
 
+
+
 'Base class for all annotations
 class Annotation {
     + serialize() : std::string
     + iscomposite() : bool
 }
-'Q) Conceptually, could we use an isa relationshop between singular annotation and Triple?
-
-'Should these be strings??
-'each attribute here should themselves be an annotation unit?
-'class ModelLevelAnnotation {
-'    + pubmedID : Triple
-'    + author : Triple
-'    + description : Triple
-'}
-'
-'Triple <-- ModelLevelAnnotation
-'SingularAnnotation <|-- ModelLevelAnnotation
+'todo Conceptually, could we use an isa relationshop between singular annotation and Triple?
 
 class SingularAnnotation {
     + triple : Triple
     + serialize() :std::string
 }
-note right of SingularAnnotation
+note top of SingularAnnotation
     Should I have a
     RDF interface for
     methods such as
     serialize?
-
 end note
 
+note left of SingularAnnotation
+    Q) Can we use an
+    "is-a" relationship
+    between Triple and
+    SingularAnnotation?
+    i.e inheritance not
+    composition.
+end note
 'Not sure what type the physicalEntity / physicalProperty should have.
 'Not sure what the physicalEntity should be called.
 'From section 2.27 of omex metadata spec: physical entity, process, force or dependency that bears the physical property.
@@ -44,22 +42,15 @@ SingularAnnotation --|> Annotation
 CompositeAnnotation --|> Annotation
 Triple <-- SingularAnnotation
 
-
-'Its possible this may serve as feedback for Max's document. The way its currently
-'structured, leads us to think model level, semantic, non-semantic and composite
-'annotations are separate types of annotation. Is this the case? Or are model level
-'annotations also singular/composite annotations? From this document, the relationship
-'between these types of annotation are not completly clear
-
-'AnnotationBase <|-- SingularAnnotation
-'AnnotationBase <|-- CompositeAnnotation
-
-'Should there be some kind of interface to the identifiers.org website?
 class Uri {
     - uri_str : std::string
     + parse() : void
 }
-
+note right of Uri
+    This class is overkill now.
+    May be better to reimplement
+    or remove.
+end note
 class Subject {
     + metaId : Uri
 }
@@ -67,12 +58,15 @@ class Subject {
 interface Predicate {
     + cv : ControlledVocabulary*
 }
-class ControlledVocabulary <<abstract>> {
+class ControlledVocabulary <<BaseClass>> {
     + namespace : std::string
     + root      : std::string
     + qualifier : std::string
     + getUri() : Uri
 }
+note top of ControlledVocabulary
+    Rename to Term???
+end note
 ControlledVocabulary <-- Predicate
 Uri <-- ControlledVocabulary
 
@@ -95,7 +89,10 @@ note right of Resource
     resource resolvable by
     identifiers.org but
     not a resource from a
-    literal.
+    literal. However,
+    might be better to
+    just use a string for
+    literal?
 end note
 class ResourceUrl {}
 
@@ -121,32 +118,6 @@ Resource <-- Triple
 
 
 Uri <-- Subject
-Uri <-- Resource
-
-'Triple <-- AnnotationBase
-'
-'class BiomodelsQualifier {
-'
-'}
-'
-'class DublinCoreMetadataQualifier {
-'
-'}
-'
-'class OPB {
-'
-'}
-'
-'class FMA {
-'
-'}
-'
-'Predicate <|-- BiomodelsQualifier
-'Predicate <|-- DublinCoreMetadataQualifier
-'Predicate <|-- OPB
-'Predicate <|-- FMA
-
-
 
 class PhysicalProperty {
     + triple : Triple*
@@ -176,6 +147,8 @@ class ListOfAnnotations {
     + annotations : std::unique_ptr<Annotation>
     + fromSBML() : static ListOfAnnotations
     + fromCellML() : static ListOfAnnotations
+    + toSBML() :    void
+    + toCellML() :  void
 }
 
 Annotation <-- ListOfAnnotations

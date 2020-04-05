@@ -5,6 +5,7 @@
 #include <utility>
 #include "raptor2.h"
 #include "Triple.h"
+'todo Conceptually, could we use an isa relationshop between singular annotation and Triple?
 
 namespace semsim {
 
