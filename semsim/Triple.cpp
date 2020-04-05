@@ -45,15 +45,21 @@ namespace semsim {
     }
 
     Triple::Triple(std::string subject, std::string predicate, std::string resource) :
-            subject(Subject(std::move(subject))),
-            predicate(Predicate(std::move(predicate))),
-            resource(Resource(std::move(resource))) {}
+            subject(
+                    Subject(std::move(subject))
+            ),
+            predicate(
+                    Predicate(std::make_unique<ControlledVocabulary>(predicate))
+            ),
+            resource(
+                    Resource(std::move(resource))
+            ) {}
 
 
     std::string Triple::serialize(std::string format) {
         raptor_world *world = raptor_new_world();
 //        unsigned char *uri_string = raptor_uri_filename_to_uri_string("./MyModel.xml");
-        raptor_uri *base_uri = raptor_new_uri(world, (const unsigned char*) "");
+        raptor_uri *base_uri = raptor_new_uri(world, (const unsigned char *) "");
 
 
         /* Make a triple with URI subject, URI predicate, literal object */

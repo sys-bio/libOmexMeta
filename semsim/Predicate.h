@@ -7,27 +7,28 @@
 
 #include <utility>
 #include <ostream>
+#include <memory>
 
 #include "semsim/uri.h"
+#include "semsim/ControlledVocabulary.h"
 
 namespace semsim {
     class Predicate {
     private:
-        Uri uri;
+        std::shared_ptr<ControlledVocabulary> term;
 
     public:
-
-        explicit Predicate(Uri uri);
-        explicit Predicate(std::string uri);
-
-        const Uri &getUri() const;
-
-        friend std::ostream &operator<<(std::ostream &os, const Predicate &predicate);
+        explicit Predicate(const std::shared_ptr<ControlledVocabulary> &term);
 
         bool operator==(const Predicate &rhs) const;
 
         bool operator!=(const Predicate &rhs) const;
+
+        friend std::ostream &operator<<(std::ostream &os, const Predicate &predicate);
+
+        Uri getUri();
     };
+
 }
 
 #endif //LIBSEMGEN_PREDICATE_H
