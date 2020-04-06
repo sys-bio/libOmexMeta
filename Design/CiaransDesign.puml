@@ -1,46 +1,14 @@
 @startuml
-skinparam monochrome true
+skinparam backgroundcolor white
 
-
-
-'Base class for all annotations
-class Annotation {
-    + serialize() : std::string
-    + iscomposite() : bool
-}
-'todo Conceptually, could we use an isa relationshop between singular annotation and Triple?
-
-class SingularAnnotation {
-    + triple : Triple
-    + serialize() :std::string
-}
-note top of SingularAnnotation
-    Should I have a
-    RDF interface for
-    methods such as
-    serialize?
-end note
-
-note left of SingularAnnotation
-    Q) Can we use an
-    "is-a" relationship
-    between Triple and
-    SingularAnnotation?
-    i.e inheritance not
-    composition.
-end note
-'Not sure what type the physicalEntity / physicalProperty should have.
-'Not sure what the physicalEntity should be called.
-'From section 2.27 of omex metadata spec: physical entity, process, force or dependency that bears the physical property.
-class CompositeAnnotation {
-    + physicalProperty : PhysicalProperty
-    + physicalEntity : Entity*
-    + serialize() :std::string
+skinparam class {
+	BackgroundColor FFF0DE
+	ArrowColor grey
+	BorderColor grey
+	BackgroundColor<<NotYetImplemented>> FFA436
 }
 
-SingularAnnotation --|> Annotation
-CompositeAnnotation --|> Annotation
-Triple <-- SingularAnnotation
+
 
 class Uri {
     - uri_str : std::string
@@ -96,7 +64,7 @@ note right of Resource
 end note
 class ResourceUrl {}
 
-class ResourceLiteral {}
+class ResourceLiteral <<NotYetImplemented>>{}
 
 Resource <|-- ResourceUrl
 Resource <|-- ResourceLiteral
@@ -110,40 +78,98 @@ class Triple {
     + subject : Subject
     + predicate : Predicate
     + resource : Resource*
+    + serialize() : std::string
 }
 
 Subject <-- Triple
 Predicate <-- Triple
 Resource <-- Triple
 
+class ListOfTriples <<NotYetImplemented>>{
+    + triples : std::vector<Triple*>
+    + serialize() : std::string
+}
+
+interface IRDF {
+    + serialize() : std::string
+}
+
+IRDF <|-- Triple
+IRDF <|-- ListOfTriples
+IRDF <|-- SingularAnnotation
+Triple<-- ListOfTriples
 
 Uri <-- Subject
 
-class PhysicalProperty {
+class PhysicalProperty <<NotYetImplemented>>{
     + triple : Triple*
 }
 Triple <-- PhysicalProperty
 
-interface Entity {
+interface Entity<<NotYetImplemented>> {
     + triple : Triple
 }
 Triple <-- Entity
 
-class PhysicalEntity {}
-class PhysicalProcess {}
-class PhysicalForce {}
-class PhysicalDependency {}
+class PhysicalEntity <<NotYetImplemented>>{}
+class PhysicalProcess<<NotYetImplemented>> {}
+class PhysicalForce <<NotYetImplemented>>{}
+class PhysicalDependency <<NotYetImplemented>>{}
 
 Entity <|-- PhysicalEntity
 Entity <|-- PhysicalProcess
 Entity <|-- PhysicalForce
 Entity <|-- PhysicalDependency
 
+
+'Base class for all annotations
+class Annotation<<NotYetImplemented>> {
+    + serialize() : std::string
+    + iscomposite() : bool
+}
+note right of Annotation
+    Base class for annotations.
+    Primarily for polymorphism.
+end note
+'todo Conceptually, could we use an isa relationshop between singular annotation and Triple?
+
+class SingularAnnotation <<NotYetImplemented>>{
+    + triple : Triple
+    + serialize() :std::string
+}
+note top of SingularAnnotation
+    Should I have a
+    RDF interface for
+    methods such as
+    serialize?
+end note
+
+note left of SingularAnnotation
+    Q) Can we use an
+    "is-a" relationship
+    between Triple and
+    SingularAnnotation?
+    i.e inheritance not
+    composition.
+end note
+'Not sure what type the physicalEntity / physicalProperty should have.
+'Not sure what the physicalEntity should be called.
+'From section 2.27 of omex metadata spec: physical entity, process, force or dependency that bears the physical property.
+class CompositeAnnotation<<NotYetImplemented>> {
+    + physicalProperty : PhysicalProperty
+    + physicalEntity : Entity*
+    + serialize() :std::string
+}
+
+SingularAnnotation --|> Annotation
+CompositeAnnotation --|> Annotation
+Triple <-- SingularAnnotation
+
 Entity <-- CompositeAnnotation
 PhysicalProperty <-- CompositeAnnotation
 
 
-class ListOfAnnotations {
+class ListOfAnnotations <<NotYetImplemented>>{
     + annotations : std::unique_ptr<Annotation>
     + fromSBML() : static ListOfAnnotations
     + fromCellML() : static ListOfAnnotations
@@ -152,8 +178,6 @@ class ListOfAnnotations {
 }
 
 Annotation <-- ListOfAnnotations
-
-
 
 
 
