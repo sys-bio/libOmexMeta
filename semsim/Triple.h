@@ -53,7 +53,7 @@ namespace semsim {
         static void from_xml(std::string xml);
 
     private:
-        static void parseTriple(void *user_data, raptor_statement *triple);
+        static void parseTriple(void *user_data, raptor_statement *raptor_triple);
     };
 }
 

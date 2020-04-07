@@ -1393,7 +1393,7 @@
 					</ownedOperation>
 				</packagedElement>
 				<packagedElement xmi:id="AAAAAAFw7eXyb4cZIlQ=" name="RDFReader" visibility="package" isAbstract="false" isFinalSpecialization="false" isLeaf="false" xmi:type="uml:Class" isActive="false">
-					<ownedOperation xmi:id="AAAAAAFw7eXyb4cagVI=" name="RaptorURIToString" visibility="public" isStatic="false" isLeaf="false" concurrency="sequential" isQuery="false" isAbstract="false" xmi:type="uml:Operation">
+					<ownedOperation xmi:id="AAAAAAFw7eXyb4cagVI=" name="raptorUriToString" visibility="public" isStatic="false" isLeaf="false" concurrency="sequential" isQuery="false" isAbstract="false" xmi:type="uml:Operation">
 						<ownedParameter xmi:id="AAAAAAFw7eXyb4cbEFU=" name="u" visibility="public" isStatic="false" isLeaf="false" type="AAAAAAFw7eXytYgBqkw=" isReadOnly="false" isOrdered="false" isUnique="false" direction="in" xmi:type="uml:Parameter"/>
 						<ownedParameter xmi:id="AAAAAAFw7eXyb4ccgVE=" visibility="public" isStatic="false" isLeaf="false" type="AAAAAAFw7eXyb4cagVI=" isReadOnly="false" isOrdered="false" isUnique="false" direction="return" xmi:type="uml:Parameter"/>
 					</ownedOperation>

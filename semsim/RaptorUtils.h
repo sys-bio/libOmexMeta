@@ -10,13 +10,22 @@
 #include "uri.h"
 
 namespace semsim {
+    /*
+     * A set of static utility functions for interfacing with
+     * raptor library. Mostly these are not stictly necessary
+     * since it is possible to just use the raptor library directly.
+     * However, havng these functions here is convenient for
+     * remembering how to use the raptor library.
+     */
     class RaptorUtils {
     public:
-        static std::string RaptorURIToString(raptor_uri *u);
+        static std::string raptorUriToString(raptor_uri *u);
 
-        static Uri RaptorTermToURI(raptor_term *t);
+        static raptor_uri *raptorStringToUri(raptor_world *world, const unsigned char *str);
 
-        static raptor_uri* raptorStringToUri();
+        static raptor_term *raptorUriToTerm(raptor_world *world, raptor_uri *uri);
+
+        static const unsigned char *raptorTermToString(raptor_term *term);
 
     };
 
@@ -28,6 +37,7 @@ namespace semsim {
         static void raptorStatementPrintStatement(void *user_data, raptor_statement *triple);
 
     };
+
 
 }
 

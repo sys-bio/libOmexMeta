@@ -51463,7 +51463,7 @@
 											"top": 216,
 											"width": 913.7578125,
 											"height": 13,
-											"text": "+RaptorURIToString(u: raptor_uri*): RaptorURIToString",
+											"text": "+RaptorURIToString(u: raptor_uri*): raptorUriToString",
 											"horizontalAlignment": 0
 										},
 										{
