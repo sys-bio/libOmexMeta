@@ -102,10 +102,10 @@ TEST_F(TripleTests, TestSerializeATripleToRdfXmlAbbrv) {
 }
 
 
-//TEST_F(TripleTests, TestReadFromXml) {
-//    semsim::Triple triple = semsim::Triple::from_xml(sample_annotation1);
+TEST_F(TripleTests, TestReadFromXml) {
+    semsim::Triple::from_xml(sample_annotation1);
 //    std::cout << triple.getResource() << std::endl;
-//}
+}
 
 
 

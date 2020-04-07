@@ -50,10 +50,10 @@ namespace semsim {
 
         static void from_xml2(std::string xml);
 
-        static Triple from_xml(std::string xml);
+        static void from_xml(std::string xml);
 
     private:
-        void parseTriple(void *user_data, raptor_statement *triple);
+        static void parseTriple(void *user_data, raptor_statement *triple);
     };
 }
 

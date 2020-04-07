@@ -168,17 +168,59 @@ namespace semsim {
         raptor_free_world(world);
     }
 
-    Triple Triple::from_xml(std::string xml) {
+//    Triple Triple::from_xml3(std::string xml) {
+//
+//        // create needed objects
+//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+//        raptor_world *world = raptor_new_world();
+//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+//        raptor_parser *rdf_parser = raptor_new_parser(world, "rdfxml");
+//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+//        unsigned char *uri_string = raptor_uri_filename_to_uri_string(R"(/mnt/d/libsemsim/tests/Teusink2000.xml)");
+//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+//        raptor_uri *uri = raptor_new_uri(world, uri_string);
+//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+//        raptor_uri *base_uri = raptor_uri_copy(uri);
+//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+//
+//        // set the raptor parser statement handler
+//        raptor_parser_set_statement_handler(rdf_parser, nullptr, parseTriple);
+//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+//
+//        // do parsing
+//        raptor_parser_parse_file(rdf_parser, uri, base_uri);
+//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+//
+//        // free memory
+//        raptor_free_parser(rdf_parser);
+//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+//        raptor_free_uri(base_uri);
+//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+//        raptor_free_uri(uri);
+//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+//        raptor_free_memory(uri_string);
+//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+//        raptor_free_world(world);
+//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+//
+//    }
 
-        raptor_world *world = raptor_new_world();
+    void Triple::from_xml(std::string xml) {
 
-        raptor_parser *rdf_parser = raptor_new_parser(world, "rdfxml");
+        raptor_world *world = nullptr;
+        raptor_parser *rdf_parser = nullptr;
+        unsigned char *uri_string;
+        raptor_uri *uri, *base_uri;
 
-        raptor_parser_set_statement_handler(rdf_parser, nullptr, RaptorStatementHandler::printStatementNTriples);
+        world = raptor_new_world();
 
-        unsigned char *uri_string = raptor_uri_filename_to_uri_string(R"(/mnt/d/libsemsim/tests/Teusink2000.xml)");
-        raptor_uri *uri = raptor_new_uri(world, uri_string);
-        raptor_uri *base_uri = raptor_uri_copy(uri);
+        rdf_parser = raptor_new_parser(world, "rdfxml");
+
+        raptor_parser_set_statement_handler(rdf_parser, nullptr, RaptorStatementHandler::raptorStatementPrintStatement);
+
+        uri_string = raptor_uri_filename_to_uri_string(R"(/mnt/d/libsemsim/tests/Teusink2000.xml)");
+        uri = raptor_new_uri(world, uri_string);
+        base_uri = raptor_uri_copy(uri);
 
         raptor_parser_parse_file(rdf_parser, uri, base_uri);
 
@@ -190,6 +232,8 @@ namespace semsim {
 
         raptor_free_world(world);
 
+        //todo this function should return a triple but does not
+
     }
 
     /*
@@ -198,14 +242,8 @@ namespace semsim {
      */
 
     void Triple::parseTriple(void *user_data, raptor_statement *triple) {
-//        triple->subject->
-        auto &x = triple->subject->value.uri;
-        const unsigned char *y = raptor_uri_to_string(x);
-        std::string subject_result((const char *) y);
-        this->subject = Subject(subject_result);
-//        std::string x = static_cast<std::string>(triple->subject->value.uri)
-//        raptor_statement_print(triple, stdout);
-//        fputc('\n\n', stdout);
+        raptor_statement_print_as_ntriples(triple, stdout);
+        fputc('\n', stdout);
     }
 
 }
