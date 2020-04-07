@@ -346,7 +346,7 @@ namespace semsim {
 		+{static} isMetaId(const std::string& uri) : bool
 		+{static} isMetaId(raptor_term* t) : bool
 		+{static} RaptorTermToRepr(raptor_term* t) : std::string
-		+{static} RaptorURIToString(raptor_uri* u) : std::string
+		+{static} raptorUriToString(raptor_uri* u) : std::string
 		+{static} extractMetaId(const std::string& uri) : std::string
 		+{static} extractMetaId(raptor_term* t) : std::string
 		+{static} addTermToAnnotation(AnnotationBase& annotation, const Relation& relation, const Resource& resource) : void
