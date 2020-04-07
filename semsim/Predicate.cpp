@@ -24,7 +24,7 @@ namespace semsim {
         return os;
     }
 
-    Uri Predicate::getUri() {
+    Uri Predicate::getUri() const {
         return term->getUri();
     }
 

@@ -7,7 +7,7 @@ set(SEMSIM_SOURCES
         Triple.h Triple.cpp
         semsim.h
         IRDF.h
-        ControlledVocabulary.cpp ControlledVocabulary.h)
+        ControlledVocabulary.cpp ControlledVocabulary.h RaptorUtils.cpp RaptorUtils.h)
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)

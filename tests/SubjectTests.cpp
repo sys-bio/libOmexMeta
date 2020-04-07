@@ -18,6 +18,11 @@ public:
     }
 };
 
+TEST_F(SubjectTests, TestDefaultConstructor) {
+    semsim::Subject subject;
+    ASSERT_TRUE(true); // if you get this far the test passes
+}
+
 TEST_F(SubjectTests, TestGetMetaId) {
     semsim::Subject subject("x");
     std::string expected = subject.getMetaId();

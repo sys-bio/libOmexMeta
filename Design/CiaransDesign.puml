@@ -97,7 +97,7 @@ interface IRDF {
 IRDF <|-- Triple
 IRDF <|-- ListOfTriples
 IRDF <|-- SingularAnnotation
-Triple<-- ListOfTriples
+ListOfTriples --> Triple
 
 Uri <-- Subject
 
