@@ -26,6 +26,11 @@ TEST_F(ResourceTests, TestGetResourceNamespace) {
     ASSERT_STREQ(expected.c_str(), ns2.c_str());
 }
 
+TEST_F(ResourceTests, TestDefaultConstructor) {
+    semsim::Resource resource;
+    ASSERT_TRUE(true); // if the test gets this far its passed.
+}
+
 
 TEST_F(ResourceTests, TestGetUri) {
     semsim::Resource resource(ns, id);

@@ -18,6 +18,9 @@ namespace semsim {
         std::shared_ptr<ControlledVocabulary> term;
 
     public:
+
+        Predicate() = default;
+
         explicit Predicate(const std::shared_ptr<ControlledVocabulary> &term);
 
         bool operator==(const Predicate &rhs) const;
@@ -26,7 +29,7 @@ namespace semsim {
 
         friend std::ostream &operator<<(std::ostream &os, const Predicate &predicate);
 
-        Uri getUri();
+        Uri getUri() const;
 
         const std::shared_ptr<ControlledVocabulary> &getTerm() const;
     };

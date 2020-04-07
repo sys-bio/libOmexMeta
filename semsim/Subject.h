@@ -14,6 +14,7 @@ namespace semsim {
         std::string metaId;
 
     public:
+        Subject() = default;
 
         explicit Subject(std::string metaId) : metaId(std::move(metaId)) {};
 

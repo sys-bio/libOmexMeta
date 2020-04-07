@@ -17,8 +17,9 @@ namespace semsim {
         std::string resource_namespace;
         std::string identifier;
 
-
     public:
+
+        Resource() = default;
 
         Resource(std::string resourceNamespace,
                  std::string identifier);

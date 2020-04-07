@@ -19,6 +19,11 @@ public:
     }
 };
 
+TEST_F(PredicateTests, TestDefaultConstructor) {
+    semsim::Predicate predicate;
+    ASSERT_TRUE(true); // if you get this far, the test passes
+}
+
 TEST_F(PredicateTests, TestGetUriFromBiomodelsQualifier) {
     semsim::BiomodelsQualifier is("is");
     semsim::Predicate predicate(is.make_shared());
