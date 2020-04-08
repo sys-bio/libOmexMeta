@@ -6,7 +6,9 @@ add_executable(semsim-tests
         ResourceTests.cpp
         TripleTests.cpp
         ControlledVocabularyTests.cpp
-        RaptorUtilsTests.cpp)
+        RaptorUtilsTests.cpp
+        LibRDFModelTests.cpp
+        )
 
 
 target_link_libraries(semsim-tests PRIVATE

@@ -969,3 +969,12 @@ bool semsim::Uri::operator!=(const semsim::Uri &rhs) const {
     return !(rhs == *this);
 }
 
+//std::string semsim::Uri::end() {
+//    std::string lastBit = this->m_url.Substring(input.LastIndexOf('/'));
+//    return std::__cxx11::string();
+//}
+//
+//std::string semsim::Uri::pruneEnd() {
+//    return std::__cxx11::string();
+//}
+

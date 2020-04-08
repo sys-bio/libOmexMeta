@@ -285,6 +285,18 @@ namespace semsim {
 
         friend std::ostream &operator<<(std::ostream &os, const Uri &uri);
 
+        /*
+         * return just the last part of the url, i.e.
+         * after the last "/" but before a fragment
+         * if one exists.
+         */
+        std::string end();
+
+        /*
+         * return the url up until the last part of the url.
+         */
+        std::string pruneEnd();
+
     private:
         void assign(const Uri &url);
 

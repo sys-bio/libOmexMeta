@@ -81,12 +81,12 @@ namespace semsim {
     BiomodelsQualifier::BiomodelsQualifier(const std::string &qualifier)
             : ControlledVocabulary(qualifier) {
         setValidTerms();
-        setRoot("http://biomodels.net/biology-qualifiers/");
-        setCvNamespace("bqb");
+        setRoot("http://biomodels.net/biology-qualifiers/"); //namespace;
+        setCvNamespace("bqb"); //prefix
         verify();
     }
 
-    void BiomodelsQualifier::setValidTerms() {
+    void BiomodelsQualifier::setValidTerms() { //term
         this->valid_terms = {
                 "is",
                 "hasPart",

@@ -9,6 +9,7 @@
 #include <memory>
 #include <iostream>
 #include <sstream>
+#include <unordered_map>
 #include "uri.h"
 
 namespace semsim {
@@ -24,6 +25,8 @@ namespace semsim {
         void verify() ;
 
     public:
+        ControlledVocabulary() = default;
+
         explicit ControlledVocabulary(std::string qualifier);
 
         const std::string &getCvNamespace() const;
@@ -56,6 +59,28 @@ namespace semsim {
 
     protected:
         void setValidTerms() override;
+    };
+
+    /*
+     * A mapping between commonly used namespaces and
+     * their links
+     */
+    class PredicateNamespaces {
+    public:
+
+        PredicateNamespaces() = default;
+
+        static std::unordered_map<std::string, std::string> getNamespaces()  {
+           std::unordered_map<std::string, std::string> namespaces;
+           namespaces["bqb"] = "http://biomodels.net/biology-qualifiers";
+           return namespaces;
+        }
+
+        //todo idea: implement a register namespace method so users
+        // can register their own namespaces. Practically, this would mean
+        // just adding a new key value pair into the ns dict.
+
+
     };
 
 
