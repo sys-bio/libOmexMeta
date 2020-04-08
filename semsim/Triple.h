@@ -48,7 +48,7 @@ namespace semsim {
 
         std::string serialize(std::string format) override;
 
-        static void from_xml2(std::string xml);
+//        static void from_xml2(std::string xml);
 
         static void from_xml(std::string xml);
 

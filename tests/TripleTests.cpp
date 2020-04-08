@@ -103,7 +103,9 @@ TEST_F(TripleTests, TestSerializeATripleToRdfXmlAbbrv) {
 
 
 TEST_F(TripleTests, TestReadFromXml) {
+    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
     semsim::Triple::from_xml(sample_annotation1);
+    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
 //    std::cout << triple.getResource() << std::endl;
 }
 

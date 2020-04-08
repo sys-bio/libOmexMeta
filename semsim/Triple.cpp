@@ -3,9 +3,13 @@
 //
 
 #include <utility>
+#include <algorithm>
+#include <cstring>
 #include "raptor2.h"
+#include "librdf.h"
 #include "Triple.h"
 #include "semsim/RaptorUtils.h"
+#include "semsim/uri.h"
 
 //'todo Conceptually, could we use an isa relationshop between singular annotation and Triple?
 
@@ -135,114 +139,117 @@ namespace semsim {
         return static_cast<std::string>(pstr);
     }
 
-    void Triple::from_xml2(std::string xml) {
-        // create raptor world object
-        raptor_world *world = raptor_new_world();
-
-        // create a raptor parser object
-        raptor_parser *rdf_parser = raptor_new_parser(world, "rdfxml");
-
-//        // create a raptor parser statement handler
-//        raptor_parser_set_statement_handler(rdf_parser, nullptr, print_triple);
-//        size_t size = 0;
-//        raptor_iostream *iostream = raptor_new_iostream_from_string(world, (void *) xml.c_str(), size);
-//        if (!(iostream)) {
-//            throw std::logic_error("iostream not created");
-//        }
-//        const unsigned char *uri_string = raptor_uri_filename_to_uri_string("./MyModel");
-//        raptor_uri *uri = raptor_new_uri(world, uri_string);
-//
-//        raptor_parser_parse_iostream(rdf_parser, iostream, uri);
-//
-//        void *sp;
-//        raptor_iostream_string_write(sp, iostream);
-//
-//        const auto *s = static_cast<const char *>(sp);
-//
-//        printf(s);
-
-        raptor_free_parser(rdf_parser);
-
-//        raptor_free_uri(uri);
-
-        raptor_free_world(world);
-    }
-
-//    Triple Triple::from_xml3(std::string xml) {
-//
-//        // create needed objects
-//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-//        raptor_world *world = raptor_new_world();
-//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-//        raptor_parser *rdf_parser = raptor_new_parser(world, "rdfxml");
-//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-//        unsigned char *uri_string = raptor_uri_filename_to_uri_string(R"(/mnt/d/libsemsim/tests/Teusink2000.xml)");
-//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-//        raptor_uri *uri = raptor_new_uri(world, uri_string);
-//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-//        raptor_uri *base_uri = raptor_uri_copy(uri);
-//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-//
-//        // set the raptor parser statement handler
-//        raptor_parser_set_statement_handler(rdf_parser, nullptr, parseTriple);
-//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-//
-//        // do parsing
-//        raptor_parser_parse_file(rdf_parser, uri, base_uri);
-//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-//
-//        // free memory
-//        raptor_free_parser(rdf_parser);
-//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-//        raptor_free_uri(base_uri);
-//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-//        raptor_free_uri(uri);
-//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-//        raptor_free_memory(uri_string);
-//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-//        raptor_free_world(world);
-//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-//
-//    }
-
     void Triple::from_xml(std::string xml) {
-        Triple triple;
-        raptor_world *world = nullptr;
-        raptor_parser *rdf_parser = nullptr;
-        unsigned char *uri_string;
-        raptor_uri *uri, *base_uri;
+        librdf_world *world = librdf_new_world();
+        librdf_world_open(world);
+        raptor_world *raptor_world_ptr = librdf_world_get_raptor(world);
 
-        world = raptor_new_world();
 
-        rdf_parser = raptor_new_parser(world, "rdfxml");
+        librdf_storage *storage = librdf_new_storage(world, "memory", "test", nullptr);
+        if (!storage) {
+            fprintf(stderr, "Failed to create new storage\n");
+        }
 
-        raptor_parser_set_statement_handler(rdf_parser, &triple, parseTriple);
+        librdf_model *model = librdf_new_model(world, storage, nullptr);
+        if (!model) {
+            fprintf(stderr, "Failed to create model\n");
+        }
 
-        uri_string = raptor_uri_filename_to_uri_string(R"(/mnt/d/libsemsim/tests/Teusink2000.xml)");
-        uri = raptor_new_uri(world, uri_string);
-        base_uri = raptor_uri_copy(uri);
+        librdf_parser *parser = librdf_new_parser(world, reinterpret_cast<const char *>("rdfxml"), nullptr, nullptr);
+        if (!parser) {
+            fprintf(stderr, "Failed to create new parser\n");
+        }
 
-        raptor_parser_parse_file(rdf_parser, uri, base_uri);
+//        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+//        librdf_uri *uri = librdf_new_uri(world,
+//                                         (const unsigned char *) "http://www.ebi.ac.uk/biomodels-main/download?mid=BIOMD0000000064");
+//
+        raptor_uri *uri = librdf_new_uri_from_filename(world, (const char *) "/mnt/d/libsemsim/tests/Teusink2000.xml");
+        if (!uri) {
+            fprintf(stderr, "Failed to create URI\n");
+        }
 
-        raptor_free_parser(rdf_parser);
+        /* PARSE the URI as RDF/XML*/
+        fprintf(stdout, "Parsing URI %s\n", librdf_uri_as_string(uri));
+        librdf_parser_parse_into_model(parser, uri, uri, model);
+//        librdf_parser_parse_string_into_model(parser, (const unsigned char *) xml.c_str(), uri, model);
+        librdf_free_parser(parser);
 
-        raptor_free_uri(base_uri);
-        raptor_free_uri(uri);
-        raptor_free_memory(uri_string);
+//        /* Print out the model*/
+        fprintf(stdout, "Resulting model is:\n");
+        raptor_iostream* iostr = raptor_new_iostream_to_file_handle(raptor_world_ptr, stdout);
+        librdf_model_write(model, iostr);
+        raptor_free_iostream(iostr);
 
-        raptor_free_world(world);
 
-        //todo this function should return a triple but does not
+
+        librdf_statement *statement2 = librdf_new_statement_from_nodes(world, librdf_new_node_from_uri_string(world,
+                                                                                                              (const unsigned char *) "http://www.dajobe.org/"),
+                                                                       librdf_new_node_from_uri_string(world,
+                                                                                                       (const unsigned char *) "http://purl.org/dc/elements/1.1/title"),
+                                                                       librdf_new_node_from_literal(world,
+                                                                                                    (const unsigned char *) "My Home Page",
+                                                                                                    nullptr, 0)
+        );
+        librdf_model_add_statement(model, statement2);
+
+        /* Free what we just used to add to the model - now it should be stored */
+        librdf_free_statement(statement2);
+
+
+//        /* Print out the model*/
+//        fprintf(stdout, "\n\n\n\nResulting model is:\n");
+//        raptor_iostream *iostr = raptor_new_iostream_to_file_handle(raptor_world_ptr, stdout);
+//        librdf_model_write(model, iostr);
+//        raptor_free_iostream(iostr);
+
+
+        unsigned char* string = librdf_model_to_string(model, uri, "rdfxml", NULL, NULL);
+        if (!string)
+            printf("Failed to serialize model\n");
+        else {
+            printf("Made a %d byte string\n", (int) strlen((char *) string));
+            free(string);
+        }
+        printf("%s", string);
+
+        librdf_free_model(model);
+
+        librdf_free_storage(storage);
+
+        librdf_free_uri(uri);
+
+        librdf_free_world(world);
+        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
 
     }
-
-    /*
-     * Use kyles raptor utils class for putting things
-     * like UriToString.
-     */
 
     void Triple::parseTriple(void *user_data, raptor_statement *raptor_triple) {
-        Triple* myTriple = (Triple*)user_data;
+        Triple *myTriple = (Triple *) user_data;
+
+        // pull subject from raptor triple object
+        myTriple->subject = Subject(RaptorUtils::raptorUriToString(raptor_triple->subject->value.uri));
+
+        // pull the predicate from the triple obj
+        semsim::Uri predicate_uri(RaptorUtils::raptorUriToString(raptor_triple->predicate->value.uri));
+
+        // Look up namespace to see if we already have an acronym for it
+        std::string root;
+        std::string ns;
+        for (auto &it: PredicateNamespaces::getNamespaces()) {
+            if (predicate_uri.str().find(it.second) != std::string::npos) {
+                ns = it.first;
+                root = it.second;
+                break;
+            }
+        }
+
+        ControlledVocabulary controlledVocabulary;
+//        Predicate predicate1()
+
+
+
+
 
         raptor_statement_print_as_ntriples(raptor_triple, stdout);
         fputc('\n', stdout);
