@@ -5,6 +5,8 @@
 #include <stdexcept>
 #include <utility>
 #include "Writer.h"
+#include "semsim/SemSim.h"
+
 
 void semsim::Writer::setWorld(librdf_world *w) {
     this->world = w;
@@ -12,9 +14,9 @@ void semsim::Writer::setWorld(librdf_world *w) {
 
 semsim::Writer::Writer(librdf_world *world, librdf_model *model, std::string format, const std::string &baseUri) {
     this->world = world;
-    this->raptorWorld = librdf_world_get_raptor(world);
+    this->raptor_world_ = librdf_world_get_raptor(world);
     this->format = std::move(format);
-    this->baseUri = librdf_new_uri(world, (const unsigned char *) baseUri.c_str());
+    this->base_uri_ = librdf_new_uri(world, (const unsigned char *) baseUri.c_str());
     this->model = model;
 
     librdf_serializer_check_name(world, (const char *) this->format.c_str());
@@ -31,9 +33,23 @@ void semsim::Writer::registerNamespace(const std::string &ns, const std::string 
 }
 
 std::string semsim::Writer::toString() {
-    raptor_iostream *iostream = raptor_new_iostream_to_file_handle(raptorWorld, stdout);
+    void *string = nullptr;
+    raptor_iostream *iostr = raptor_new_iostream_to_string(raptor_world_, (void **) &string, nullptr, malloc);
+    if (!iostr)
+        throw std::invalid_argument("You did a baad");
+
+    int failure = librdf_serializer_serialize_model_to_iostream(serializer, base_uri_, model, iostr);
+    if (failure){ // i.e. if non-0
+        throw std::logic_error("Could not write model.");
+    }
+    std::string output_string((const char*)string);
+    return output_string;
+}
+
+std::string semsim::Writer::print() {
+    raptor_iostream *iostream = raptor_new_iostream_to_file_handle(raptor_world_, stdout);
     registerNamespace("http://biomodels.net/biology-qualifiers/", "bqbiol");
-    librdf_serializer_serialize_model_to_iostream(serializer, baseUri, model, iostream);
+    librdf_serializer_serialize_model_to_iostream(serializer, base_uri_, model, iostream);
 }
 
 void semsim::Writer::toFile(std::string format) {
@@ -43,3 +59,5 @@ void semsim::Writer::toFile(std::string format) {
 void semsim::Writer::setFormat(const std::string &format) {
     Writer::format = format;
 }
+
+
