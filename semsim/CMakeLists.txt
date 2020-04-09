@@ -9,7 +9,9 @@ set(SEMSIM_SOURCES
         IRDF.h
         ControlledVocabulary.cpp ControlledVocabulary.h
         RaptorUtils.cpp RaptorUtils.h
-        LibRDFModel.cpp LibRDFModel.h)
+        RDF.cpp RDF.h
+        Writer.h Writer.cpp
+        Reader.h Reader.cpp)
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
