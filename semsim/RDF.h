@@ -5,19 +5,23 @@
 #ifndef LIBSEMGEN_RDF_H
 #define LIBSEMGEN_RDF_H
 
+#include <unordered_map>
 #include "librdf.h"
 #include "Writer.h"
 
 namespace semsim {
     class RDF {
     private:
-        librdf_world *world;
-        librdf_storage *storage;
-        librdf_parser *parser;
-        librdf_model *model;
-        raptor_world *raptor_world_ptr;
-        std::string name = "semsim";
-        librdf_uri *uri;
+        librdf_world *world_;
+        librdf_storage *storage_;
+        librdf_parser *parser_;
+        librdf_model *model_;
+        raptor_world *raptor_world_ptr_;
+        std::string name_ = "semsim";
+        librdf_uri *uri_;
+
+        std::unordered_map<std::string, std::string> namespaces_;
+
 
         semsim::Writer makeWriter(const std::string &format, const std::string &base_uri);
 
@@ -41,6 +45,10 @@ namespace semsim {
 
         bool operator!=(const RDF &rhs) const;
 
+        void setNamespaces(const std::unordered_map<std::string, std::string> &namespaces);
+
+        const std::unordered_map<std::string, std::string> &getNamespaces() const;
+
         static RDF fromUrl(std::string url);
 
         static RDF fromML(std::string filename);
@@ -49,9 +57,7 @@ namespace semsim {
 
         void fromString(std::string str);
 
-        void toString(std::string format, std::string base_uri="./SemsimModel");
-
-        void registerNamespace(std::string ns, std::string prefix);
+        std::string toString(std::string format, std::string base_uri = "./SemsimModel");
 
         void toFile(std::string format);
 
