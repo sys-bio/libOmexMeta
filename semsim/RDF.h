@@ -55,6 +55,8 @@ namespace semsim {
 
         void toFile(std::string format);
 
+        void addStatement(std::string subject, std::string predicate, std::string resource);
+
 
 
 

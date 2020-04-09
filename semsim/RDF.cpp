@@ -74,7 +74,7 @@ semsim::RDF &semsim::RDF::operator=(const semsim::RDF &libRdfModel) {
         this->model = libRdfModel.model;
         this->raptor_world_ptr = libRdfModel.raptor_world_ptr;
         this->name = libRdfModel.name;
-    this->uri = libRdfModel.uri;
+        this->uri = libRdfModel.uri;
     }
     return *this;
 }
@@ -87,7 +87,7 @@ semsim::RDF &semsim::RDF::operator=(semsim::RDF &&libRdfModel) noexcept {
         this->model = libRdfModel.model;
         this->raptor_world_ptr = libRdfModel.raptor_world_ptr;
         this->name = std::move(libRdfModel.name);
-    this->uri = libRdfModel.uri;
+        this->uri = libRdfModel.uri;
     }
     return *this;
 }
@@ -144,7 +144,7 @@ void semsim::RDF::toString(std::string format, std::string base_uri) {
     writer.toString();
 }
 
-librdf_serializer* semsim::RDF::makeSerializer(std::string format){
+librdf_serializer *semsim::RDF::makeSerializer(std::string format) {
 
 }
 
@@ -152,8 +152,17 @@ void semsim::RDF::registerNamespace(std::string ns, std::string prefix) {
 
 }
 
-semsim::Writer semsim::RDF::makeWriter(const std::string& format, const std::string &base_uri) {
+semsim::Writer semsim::RDF::makeWriter(const std::string &format, const std::string &base_uri) {
     Writer writer(world, model, format, base_uri);
+}
+
+void semsim::RDF::addStatement(std::string subject, std::string predicate, std::string resource) {
+    librdf_statement* statement = librdf_new_statement_from_nodes(
+            world,
+            librdf_new_node_from_uri_string(world, (const unsigned char *) "http://www.dajobe.org/"),
+            librdf_new_node_from_uri_string(world, (const unsigned char *) "http://purl.org/dc/elements/1.1/title"),
+            librdf_new_node_from_literal(world, (const unsigned char *) "My Home Page", nullptr, 0)
+    );
 }
 
 
