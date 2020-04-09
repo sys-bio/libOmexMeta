@@ -51,7 +51,6 @@ public:
         semsim::Writer writer(world, model, std::move(output_format));
         writer.registerNamespace("http://purl.org/dc/elements/1.1/", "dc");
         std::string actual = writer.toString();
-        std::cout << "actual: \n"<<actual << std::endl;
         ASSERT_STREQ(expected.c_str(), actual.c_str());
     }
 
@@ -69,28 +68,27 @@ TEST_F(WriterTests, TestWriteModelToRdfXml) {
                            "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
                            "    <dc:title>My Home Page</dc:title>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>";
+                           "</rdf:RDF>\n";
     test_writer("rdfxml", expected);
 }
 
 TEST_F(WriterTests, TestWriteModelTontriples) {
-    std::string expected = R"(<http://www.dajobe.org/> <http://purl.org/dc/elements/1.1/title> \"My Home Page\" .\n)";
-    test_writer("ntiples", expected);
+    std::string expected = "<http://www.dajobe.org/> <http://purl.org/dc/elements/1.1/title> \"My Home Page\" .\n";
+    test_writer("ntriples", expected);
 }
+//todo test output format validator
 
 TEST_F(WriterTests, TestWriteModelToturtle) {
     std::string expected = "@base <./semsim_model.xml> .\n"
                            "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://purl.org/dc/elements/1.1/> .\n"
+                           "@prefix dc: <http://purl.org/dc/elements/1.1/> .\n"
                            "\n"
                            "<http://www.dajobe.org/>\n"
-                           "    <http://purl.org/dc/elements/1.1/title> \"My Home Page\" .";
-    test_writer("ntiples", expected);
+                           "    dc:title \"My Home Page\" .\n\n";
+    test_writer("turtle", expected);
 }
 
 TEST_F(WriterTests, TestWriteModelTotrig3) {
-
-
     auto x0 = librdf_serializer_get_description(world, 0);
     auto x1 = librdf_serializer_get_description(world, 1);
     auto x2 = librdf_serializer_get_description(world, 2);
@@ -142,7 +140,7 @@ TEST_F(WriterTests, Testrdfxmlabbrev){
                            "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
                            "    <dc:title>My Home Page</dc:title>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>";
+                           "</rdf:RDF>\n";
     test_writer("rdfxml-abbrev", expected);
 }
 TEST_F(WriterTests, Testrdfxml){
@@ -151,7 +149,7 @@ TEST_F(WriterTests, Testrdfxml){
                            "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
                            "    <dc:title>My Home Page</dc:title>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>";
+                           "</rdf:RDF>\n";
     test_writer("rdfxml", expected);
 }
 TEST_F(WriterTests, Testrss1point0){
@@ -178,7 +176,7 @@ TEST_F(WriterTests, Testdot){
                            "\t\"LMy Home Page\" [ label=\"My Home Page\", shape = record ];\n"
                            "\n"
                            "\tlabel=\"\\n\\nModel:\\n./semsim_model.xml\\n\\nNamespaces:\\ndc: http://purl.org/dc/elements/1.1/\\n\";\n"
-                           "}";
+                           "}\n";
     test_writer("dot", expected);
 }
 TEST_F(WriterTests, TestJsonTriples){
@@ -200,11 +198,11 @@ TEST_F(WriterTests, TestJsonTriples){
                            "      \n"
                            "      }\n"
                            "    ]\n"
-                           "  }";
+                           "  }\n";
     test_writer("json-triples", expected);
 }
 TEST_F(WriterTests, Testjson){
-    std::string expected = "{\n"
+    std::string expected = "\n{\n"
                            "  \"http://www.dajobe.org/\" : {\n"
                            "    \"http://purl.org/dc/elements/1.1/title\" : [ {\n"
                            "        \"value\" : \"My Home Page\",\n"
@@ -213,7 +211,7 @@ TEST_F(WriterTests, Testjson){
                            "      \n"
                            "      ]\n"
                            "    }\n"
-                           "  }";
+                           "  }\n";
     test_writer("json", expected);
 }
 TEST_F(WriterTests, Testhtml){
@@ -239,7 +237,7 @@ TEST_F(WriterTests, Testhtml){
                            "  </table>\n"
                            "  <p>Total number of triples: <span class=\"count\">1</span>.</p>\n"
                            "</body>\n"
-                           "</html>";
+                           "</html>\n";
     test_writer("html", expected);
 }
 TEST_F(WriterTests, Testnquads){
