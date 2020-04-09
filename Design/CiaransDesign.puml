@@ -201,6 +201,16 @@ class LibRDFModel {
 
 }
 
+class Serializer {
+    world: librdf_world*
+    serializer: librdf_serializer*
+
+    makeSerializer():
+    registerNamespace(): void
+    toString(): std::string
+    toFile(): void
+}
+
 
 
 
