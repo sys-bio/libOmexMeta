@@ -32,14 +32,13 @@ semsim::RDF::RDF() {
     uri_ = librdf_new_uri(world_, (const unsigned char *) "./Test.xml");
 
     // add some predefined namespaces for the serializer.
-    namespaces_["bqb"] = "http://biomodels.net/biology-qualifiers";
+    namespaces_["dcterms"] = "http://purl.org/dc/terms/";
+    namespaces_["bqbiol"] = "http://biomodels.net/biology-qualifers/";
+    namespaces_["bqmodel"] = "http://biomodels.net/model-qualifers/";
+    namespaces_["semsim"] = "http://www.bhi.washington.edu/semsim#";
 
 }
 
-
-/*******************************************************
- * Destructor
- */
 semsim::RDF::~RDF() {
     librdf_free_model(model_);
     librdf_free_parser(parser_);
@@ -169,6 +168,10 @@ void semsim::RDF::setNamespaces(const std::unordered_map<std::string, std::strin
 
 const std::unordered_map<std::string, std::string> &semsim::RDF::getNamespaces() const {
     return namespaces_;
+}
+
+semsim::RDF semsim::RDF::fromOmex(std::string filename) {
+    return semsim::RDF();
 }
 
 
