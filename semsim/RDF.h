@@ -55,6 +55,9 @@ namespace semsim {
 
         static RDF fromRDF(std::string filename);
 
+        static RDF fromOmex(std::string filename);
+
+
         void fromString(std::string str);
 
         std::string toString(std::string format, std::string base_uri = "./SemsimModel");

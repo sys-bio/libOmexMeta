@@ -8,26 +8,33 @@
 #include "semsim/SemSim.h"
 #include "AnnotationSamples.h"
 
-class RDFTests : public ::testing::Test {
+# include "combine/combinearchive.h"
+# include "combine/knownformats.h"
+# include "combine/omexdescription.h"
+
+#include "curl/curl.h"
+#include "SBMLFactory.h"
+
+class ReadAndWriteTests : public ::testing::Test {
 
 public:
 
     AnnoationSamples samples;
 
-    RDFTests() = default;
+    ReadAndWriteTests() = default;
 
 
 };
 
 
-TEST_F(RDFTests, TestDefaultConstructor) {
+TEST_F(ReadAndWriteTests, TestDefaultConstructor) {
     semsim::RDF rdf;
     ASSERT_TRUE(true); // If we get this far we've passed
 }
 
-TEST_F(RDFTests, TestWriteToTurtleString) {
+TEST_F(ReadAndWriteTests, TestWriteToTurtleString) {
     semsim::RDF rdf;
-    rdf.fromString(samples.sample_annotation1);
+    rdf.fromString(samples.singular_annotation1);
     std::string actual = rdf.toString("turtle");
     std::string expected = "@base <./SemsimModel> .\n"
                            "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -38,9 +45,9 @@ TEST_F(RDFTests, TestWriteToTurtleString) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(RDFTests, TestWriteToTurtleString2) {
+TEST_F(ReadAndWriteTests, TestWriteToTurtleString2) {
     semsim::RDF rdf;
-    rdf.fromString(samples.sample_annotation2);
+    rdf.fromString(samples.singular_annotation2);
     std::string actual = rdf.toString("turtle");
     std::string expected = "@base <./SemsimModel> .\n"
                            "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -54,9 +61,9 @@ TEST_F(RDFTests, TestWriteToTurtleString2) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(RDFTests, TestWriteToTurtleString3) {
+TEST_F(ReadAndWriteTests, TestWriteToTurtleString3) {
     semsim::RDF rdf;
-    rdf.fromString(samples.sample_annotation3);
+    rdf.fromString(samples.singular_annotation3);
     std::string actual = rdf.toString("turtle");
     std::string expected = "@base <./SemsimModel> .\n"
                            "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -71,12 +78,28 @@ TEST_F(RDFTests, TestWriteToTurtleString3) {
 }
 
 
-TEST_F(RDFTests, TestThatMakeSerializerFunctionBreaksWithWrongFormatArgument){
+
+TEST_F(ReadAndWriteTests, TestThatMakeSerializerFunctionBreaksWithWrongFormatArgument){
 
 }
 
 
 
+class WWWTests : public ::testing::Test {
+
+public:
+
+    AnnoationSamples samples;
+    semsim_test::SBMLFactory factory;
+
+    WWWTests() = default;
+
+
+};
+
+TEST_F(WWWTests, t){
+    semsim_test::SBMLFactory::getSBMLDocument(semsim_test::SBML_BIOMD0000000695);
+}
 
 
 

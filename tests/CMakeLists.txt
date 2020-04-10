@@ -19,6 +19,7 @@ target_link_libraries(semsim-tests PRIVATE
         ${LIBBZ_STATIC_LIBRARY}
         ${ZLIB_STATIC_LIBRARY}
         ${ZIPPER_STATIC_LIBRARY}
+        ${LIBCOMBINE_STATIC_LIB}
         ${REDLAND_STATIC_LIBRARY}
         ${RASQAL_STATIC_LIBRARY}
         ${RAPTOR2_STATIC_LIBRARY}
@@ -45,6 +46,7 @@ target_include_directories(semsim-tests PRIVATE
         ${RAPTOR2_INCLUDE_DIR}
         ${RASQAL_INCLUDE_DIR}
         ${REDLAND_INCLUDE_DIR}
+        ${LIBCOMBINE_INCLUDE_DIR}
         )
 
 add_dependencies(semsim-tests
