@@ -11,7 +11,7 @@ set(SEMSIM_SOURCES
         RaptorUtils.cpp RaptorUtils.h
         RDF.cpp RDF.h
         Writer.h Writer.cpp
-        Reader.h Reader.cpp)
+        Reader.h Reader.cpp RedlandWrapper.cpp RedlandWrapper.h CombineArchive.cpp CombineArchive.h CurlGet.cpp CurlGet.h)
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -62,6 +62,8 @@ target_link_libraries(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so libraries
         ${RASQAL_LIBRARY}
         ${RAPTOR2_LIBRARY}
         ${LIBXML2_STATIC_LIBRARY}
+        dl bz2 z curl xslt
+
         )
 
 

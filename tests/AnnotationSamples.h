@@ -17,35 +17,33 @@ public:
                                        "    <rdf:Description rdf:about=\"#metaid_1\">\n"
                                        "        <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                                        "    </rdf:Description>\n"
+                                       "</rdf:RDF>\n";
+
+    std::string singular_annotation2 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+                                       "    <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                                       "             xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
+                                       "             xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">\n"
+                                       "    <rdf:Description rdf:about=\"./MyModel.xml#modelmeta1\">\n"
+                                       "        <bqmodel:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\" />\n"
+                                       "    </rdf:Description>\n"
+                                       "</rdf:RDF>\n";
+
+    std::string singular_annotation3 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+                                       "    <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                                       "             xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">\n"
+                                       "    <rdf:Description rdf:about=\"./MyModel.xml#meta1\">\n"
+                                       "        <bqbiol:is rdf:resource=\"https://identifiers.org/chebi/CHEBI:15422\" />\n"
+                                       "    </rdf:Description>\n"
+                                       "</rdf:RDF>\n";
+
+    std::string singular_annotation4 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+                                       "    <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\""
+                                       "             xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
+                                       "             xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">\n"
+                                       "    <rdf:Description rdf:about=\"./MyModel.xml#meta2\">\n"
+                                       "    <dcterms:description>Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n"
+                                       "    </rdf:Description>\n"
                                        "</rdf:RDF>";
-
-    std::string singular_annotation2 = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                                       "         xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
-                                       "         xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\"\n"
-                                       "         xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                                       "         xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\">\n"
-                                       "    <rdf:Description rdf:about=\"#metaid_1\">\n"
-                                       "        <bqbiol:is>\n"
-                                       "            <rdf:Bag>\n"
-                                       "                <rdf:li rdf:resource=\"http://identifiers.org/chebi/CHEBI:15343\"/>\n"
-                                       "            </rdf:Bag>\n"
-                                       "        </bqbiol:is>\n"
-                                       "    </rdf:Description>\n"
-                                       "</rdf:RDF>\n";
-
-    std::string singular_annotation3 = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                                       "         xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
-                                       "         xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\"\n"
-                                       "         xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                                       "         xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\">\n"
-                                       "    <rdf:Description rdf:about=\"#metaid_2\">\n"
-                                       "        <bqbiol:is>\n"
-                                       "            <rdf:Bag>\n"
-                                       "                <rdf:li rdf:resource=\"http://identifiers.org/chebi/CHEBI:28907\"/>\n"
-                                       "            </rdf:Bag>\n"
-                                       "        </bqbiol:is>\n"
-                                       "    </rdf:Description>\n"
-                                       "</rdf:RDF>\n";
 
     std::string composite_annotation_pe = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                                           "         xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">\n"

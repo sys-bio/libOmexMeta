@@ -51,9 +51,9 @@ public:
         semsim::Writer writer(world, model, std::move(output_format));
         writer.registerNamespace("http://purl.org/dc/elements/1.1/", "dc");
         std::string actual = writer.toString();
+        std::cout << actual << std::endl;
         ASSERT_STREQ(expected.c_str(), actual.c_str());
     }
-
 };
 
 
@@ -117,17 +117,7 @@ TEST_F(WriterTests, TestWriteModelTotrig3) {
 
 
 TEST_F(WriterTests, TestWriteModelToRdfxmlXmp) {
-    std::string expected = "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
-                           "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
-                           "<rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xml:base=\"./semsim_model.xml\">\n"
-                           "  <rdf:Description rdf:about=\"\">\n"
-                           "    <dc:title>My Home Page</dc:title>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
-                           "</x:xmpmeta>\n"
-                           "<?xpacket end='r'?>\n";
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<?xpacket begin='\xEF\xBB\xBF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n<rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n   xml:base=\"./semsim_model.xml\">\n  <rdf:Description rdf:about=\"\">\n    <dc:title>My Home Page</dc:title>\n  </rdf:Description>\n</rdf:RDF>\n</x:xmpmeta>\n<?xpacket end='r'?>\n";
     test_writer("rdfxml-xmp", expected);
 }
 
@@ -244,6 +234,7 @@ TEST_F(WriterTests, Testnquads){
     std::string expected = "<http://www.dajobe.org/> <http://purl.org/dc/elements/1.1/title> \"My Home Page\" .\n";
     test_writer("nquads", expected);
 }
+
 
 
 

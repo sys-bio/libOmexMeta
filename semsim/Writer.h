@@ -11,11 +11,11 @@
 
 namespace semsim {
     class Writer {
-        librdf_world *world;
+        librdf_world *world_;
         raptor_world *raptor_world_ptr_;
         std::string format;
         librdf_uri *base_uri_;
-        librdf_model *model;
+        librdf_model *model_;
         librdf_serializer *serializer;
 
         std::vector<std::string> valid_writer_names = {
@@ -33,12 +33,12 @@ namespace semsim {
 
     public:
 
-        Writer(librdf_world *world, librdf_model *model, std::string format,
+        Writer(librdf_world *world_, librdf_model *model_, std::string format,
                const std::string &base_uri = "./semsim_model.xml");
 
         void setFormat(const std::string &format);
 
-        void setWorld(librdf_world *world);
+        void setWorld(librdf_world *world_);
 
         std::string toString();
 
@@ -48,6 +48,7 @@ namespace semsim {
 
         std::string print();
 
+        void setOption(const std::string &option, const std::string &value);
     };
 }
 

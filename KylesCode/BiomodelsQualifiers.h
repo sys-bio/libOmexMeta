@@ -8,7 +8,7 @@ namespace semsim {
 
     /**
      * This class contains all members from the collection of
-     * <a href="http://co.mbine.org/standards/qualifiers">BioModels biolocial qualifers</a>.
+     * <a href="http://co.mbine.org/standards/qualifiers">BioModels biolocial qualifiers</a>.
      * BioModels biology qualifiers are used as predicates in RDF to annotation singular and composite annotations.
      * The most important relation is @c bqb::is, which is used to *define* elements in a model.
      * When building annotations, you should always define elements with a single

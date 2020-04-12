@@ -8,6 +8,9 @@
 
 class RedlandWrapper {
 
+public:
+    RedlandWrapper();
+
 };
 
 
