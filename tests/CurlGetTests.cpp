@@ -25,7 +25,7 @@ public:
     void TearDown() override {
     };
 
-    static int removeFile(std::string filename) {
+    static int removeFile(const std::string& filename) {
         if (std::remove(filename.c_str()) != 0)
             perror("File deletion failed");
         else
