@@ -14,12 +14,14 @@ add_executable(semsim-tests
 target_link_libraries(semsim-tests PRIVATE
         $<TARGET_FILE:semsim-static>
         gtest gtest_main
-        ${LIBSBML_STATIC_LIBRARY}
-        ${LIBXML2_STATIC_LIBRARY}
-        ${LIBBZ_STATIC_LIBRARY}
-        ${ZLIB_STATIC_LIBRARY}
-        ${ZIPPER_STATIC_LIBRARY}
         ${LIBCOMBINE_STATIC_LIB}
+        ${ZIPPER_STATIC_LIBRARY}
+
+        ${LIBSBML_STATIC_LIBRARY}
+        ${ZLIB_STATIC_LIBRARY}
+        ${LIBBZ_STATIC_LIBRARY}
+        ${LIBXML2_STATIC_LIBRARY}
+
         ${REDLAND_STATIC_LIBRARY}
         ${RASQAL_STATIC_LIBRARY}
         ${RAPTOR2_STATIC_LIBRARY}
