@@ -23,8 +23,6 @@ public:
     CurlGetTests() = default;
 
     void TearDown() override {
-        removeFile(regular_webpage_filename);
-        removeFile(omex_filename);
     };
 
     static int removeFile(std::string filename) {
