@@ -17,7 +17,7 @@ include(ExternalProject)
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
 # global settings
 
-set (CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "-std=c++14")
 
@@ -76,10 +76,35 @@ set(LIBCOMBINE_BINARY_DIR ${LIBCOMBINE_SOURCE_DIR}/build)
 set(LIBCOMBINE_INSTALL_PREFIX ${LIBCOMBINE_SOURCE_DIR}/INSTALL)
 set(LIBCOMBINE_LIB_DIR "${LIBCOMBINE_INSTALL_PREFIX}/lib")
 
+set(CURLCPP_SOURCE_DIR ${THIRD_PARTY_DIRS}/curlcpp-1.2)
+set(CURLCPP_BINARY_DIR ${CURLCPP_SOURCE_DIR}/build)
+set(CURLCPP_INSTALL_PREFIX ${CURLCPP_SOURCE_DIR}/INSTALL)
+set(CURLCPP_LIB_DIR "${CURLCPP_SOURCE_DIR}/lib")
+
 #######################################################################
 #   Build third party libs
 #
 
+## build curlcpp
+#ExternalProject_Add(curlcpp
+#        SOURCE_DIR ${CURLCPP_SOURCE_DIR}
+#        BINARY_DIR ${CURLCPP_BINARY_DIR}
+#        CMAKE_ARGS
+#        -DCMAKE_INSTALL_PREFIX=${CURLCPP_INSTALL_PREFIX}
+#        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+#        )
+#
+#find_library(CURLCPP_STATIC_LIB
+#        NAMES curl-static.a libcurl-static.a
+#        PATHS ${CURL_INSTALL_PREFIX}/lib
+#        )
+#find_path(CURLCPP_INCLUDE_DIR
+#        NAMES curl_easy.h
+#        PATHS ${CURL_INSTALL_PREFIX}/include
+#        )
+#ADD_SUBDIRECTORY(${THIRD_PARTY_DIRS}/curlcpp-1.2) # Change `ext/curlcpp` to a directory according to your setup
+#INCLUDE_DIRECTORIES(${CURLCPP_SOURCE_DIR}/include)
+#
 # build libsbml-dependencies, which itself has no dependencies
 ExternalProject_Add(libsbml-dependencies
         SOURCE_DIR ${LIBSBML_DEPS_SOURCE_DIR}
@@ -203,12 +228,6 @@ ExternalProject_Add(libCombine
         -DZIPPER_LIBRARY=${ZIPPER_STATIC_LIBRARY}
         -DEXTRA_LIBS=xml2|bz2|z|iconv #linux only, will need to change for windows
         )
-#-DCMAKE_BUILD_TYPE=Debug
-#-DCMAKE_INSTALL_PREFIX=/mnt/d/libsemsim/third_party/libCombine/install.solo
-#-DZIPPER_INSTALL_PREFIX=/mnt/d/libsemsim/third_party/zipper/INSTALL
-#-DLIBSBML_DEPS_INSTALL_PREFIX=/mnt/d/libsemsim/third_party/libSBML-dependencies/INSTALL
-#-DLIBSBML_INSTALL_PREFIX=/mnt/d/libsemsim/third_party/libsbml-5.18.0/INSTALL
-#-DEXTRA_LIBS=/mnt/d/libsemsim/third_party/libSBML-dependencies/INSTALL/lib/libbz2.a;/mnt/d/libsemsim/third_party/libSBML-dependencies/INSTALL/lib/libzlib.a;xml2
 
 find_library(LIBCOMBINE_STATIC_LIB
         NAMES libcombine-static.a
@@ -229,17 +248,6 @@ set(RAPTOR2_INSTALL_PREFIX ${REDLAND_ROOT}/raptor2-2.0.15/install.linux)
 set(RASQAL_INSTALL_PREFIX ${REDLAND_ROOT}/rasqal-0.9.33/install)
 set(REDLAND_INSTALL_PREFIX ${REDLAND_ROOT}/redland-1.0.17/install)
 
-
-## check we have the redland libraries
-#if (NOT EXISTS ${RAPTOR2_INSTALL_PREFIX})
-#    MESSAGE(FATAL_ERROR "RAPTOR2_INSTALL_PREFIX ${RAPTOR2_INSTALL_PREFIX} does not exist")
-#endif ()
-#if (NOT EXISTS ${RASQAL_INSTALL_PREFIX})
-#    MESSAGE(FATAL_ERROR "RASQAL_INSTALL_PREFIX ${RASQAL_INSTALL_PREFIX} does not exist")
-#endif ()
-#if (NOT EXISTS ${REDLAND_INSTALL_PREFIX})
-#    MESSAGE(FATAL_ERROR "REDLAND_INSTALL_PREFIX ${REDLAND_INSTALL_PREFIX} does not exist")
-#endif ()
 
 # raptor2
 find_library(RAPTOR2_STATIC_LIBRARY

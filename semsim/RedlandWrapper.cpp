@@ -3,3 +3,7 @@
 //
 
 #include "RedlandWrapper.h"
+
+RedlandWrapper::RedlandWrapper() {
+
+}

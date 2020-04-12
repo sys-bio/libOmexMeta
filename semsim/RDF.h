@@ -14,7 +14,6 @@ namespace semsim {
     private:
         librdf_world *world_;
         librdf_storage *storage_;
-        librdf_parser *parser_;
         librdf_model *model_;
         raptor_world *raptor_world_ptr_;
         std::string name_ = "semsim";
@@ -55,17 +54,22 @@ namespace semsim {
 
         static RDF fromRDF(std::string filename);
 
-        static RDF fromOmex(std::string filename);
-
-
-        void fromString(std::string str);
+        static RDF fromOmex(std::string filename_or_url);
 
         std::string toString(std::string format, std::string base_uri = "./SemsimModel");
+
+        void fromString(const std::string &str, std::string format = "guess");
 
         void toFile(std::string format);
 
         void addStatement(std::string subject, std::string predicate, std::string resource);
 
+        static std::ostringstream listOptions();
+
+        void setOption();
+
+    };
+}
 
 
 
@@ -81,8 +85,5 @@ namespace semsim {
 //    + toString(std::string format) : std::string
 //    + toFile(std::string format) : std::string
 
-        librdf_serializer *makeSerializer(std::string format);
-    };
-}
 
 #endif //LIBSEMGEN_RDF_H
