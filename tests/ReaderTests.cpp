@@ -20,17 +20,12 @@ public:
     librdf_model *model;
 
     ReaderTests() {
-        world = librdf_new_world();
-        librdf_world_open(world);
-        raptor_world_ptr = librdf_world_get_raptor(world);
-        storage = librdf_new_storage(world, "memory", "semsim_store", nullptr);
-        if (!storage) {
-            throw std::invalid_argument("Failed to create new storage\n");
-        }
-        model = librdf_new_model(world, storage, nullptr);
-        if (!model) {
-            throw std::invalid_argument("Failed to create model\n");
-        }
+
+        semsim::LibrdfObjectsTuple objectsTuple = semsim::RDF::init();
+        world = std::get<0>(objectsTuple);
+        raptor_world_ptr = std::get<1>(objectsTuple);
+        storage = std::get<2>(objectsTuple);
+        model = std::get<3>(objectsTuple);
     };
 
     void assertModelSizesAreDifferentAfterParsing(const std::string &annotation_string) {
@@ -38,7 +33,7 @@ public:
         int size_before = librdf_model_size(model);
         reader.fromString(annotation_string);
         int size_after = librdf_model_size(model);
-        ASSERT_NE(size_before, size_after);
+        ASSERT_GT(size_after, size_before);
     }
 };
 
@@ -70,7 +65,8 @@ TEST_F(ReaderTests, TestGetOptions) {
             if (serializer_opt) {
                 os << serializer_opt->option << "," << serializer_opt->name << "," << serializer_opt->label << ","
                    << serializer_opt->domain
-                   << "," << serializer_opt->value_type << "," << raptor_uri_to_string(serializer_opt->uri) << std::endl;
+                   << "," << serializer_opt->value_type << "," << raptor_uri_to_string(serializer_opt->uri)
+                   << std::endl;
             }
         }
         i++;
@@ -155,6 +151,7 @@ TEST_F(ReaderTests, TestFromStringTabular_data1) {
 }
 
 TEST_F(ReaderTests, TestReaderReadsNamespaces) {
+    // todo: finish working out whether namespaces are ported into model when reading
     semsim::Reader reader(world, model, "rdfxml");
     reader.fromString(samples.singular_annotation1);
 
@@ -176,15 +173,35 @@ TEST_F(ReaderTests, TestReaderReadsNamespaces) {
         std::cout << prefix << " " << nss << std::endl;
         count--;
     }
+}
 
-
+TEST_F(ReaderTests, TestEqualityBetweenModelPtrs) {
+    semsim::SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);
+    semsim::Reader reader(world, model, "rdfxml");
+    ASSERT_EQ(model, reader.getModel());
 }
 
 
 TEST_F(ReaderTests, TestSBMLFromFile1) {
     semsim::SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);
+    std::cout << model << std::endl;
 
+    semsim::Reader reader(world, model, "rdfxml");
+    int size_before = librdf_model_size(model);
+    reader.fromFile(samples.sbml_filename1);
+    int size_after = librdf_model_size(model);
+    std::cout << reader.getModel() << std::endl;
+
+    std::cout << size_before << std::endl;
+    std::cout << size_after << std::endl;
+
+    raptor_iostream *iostream = raptor_new_iostream_to_file_handle(reader.getRaptorWorld(), stdout);
+    librdf_serializer *serializer = librdf_new_serializer(world, "rdfxml", nullptr, nullptr);
+    raptor_uri *uri = raptor_new_uri(raptor_world_ptr, reinterpret_cast<const unsigned char *>("./base.xml"));
+    librdf_serializer_serialize_model_to_iostream(serializer, uri, reader.getModel(), iostream);
 }
+//ASSERT_GT(size_after, size_before);
+//}
 
 
 

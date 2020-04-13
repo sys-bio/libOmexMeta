@@ -18,7 +18,7 @@
  * places so they are pulled out of the RDF constructor into their own function.
  * This method is static so it can be used without instantiating RDF.
  */
-semsim::RDF::LibrdfObjectsTuple semsim::RDF::init() {
+semsim::LibrdfObjectsTuple semsim::RDF::init() {
     // init librdf world object
     librdf_world *world_ = librdf_new_world();
     librdf_world_open(world_);
@@ -50,18 +50,23 @@ semsim::RDF::RDF() {
 
     // unpack redland library objects
     world_ = std::get<0>(objectsTuple);
-    raptor_world_ptr_ = std::get<1>(objectsTuple);
+    raptor_world_ = std::get<1>(objectsTuple);
     storage_ = std::get<2>(objectsTuple);
     model_ = std::get<3>(objectsTuple);
 
+    // add some predefined namespaces for the serializer.
+    declareNamespaces();
 
-    uri_ = librdf_new_uri(world_, (const unsigned char *) "./Test.xml");
+}
+
+semsim::RDF::RDF(librdf_world *world, raptor_world *raptor_world_, librdf_storage *storage, librdf_model *model) :
+        world_(world),
+        raptor_world_(raptor_world_),
+        storage_(storage),
+        model_(model) {
 
     // add some predefined namespaces for the serializer.
-    namespaces_["dcterms"] = "http://purl.org/dc/terms/";
-    namespaces_["bqbiol"] = "http://biomodels.net/biology-qualifiers/";
-    namespaces_["bqmodel"] = "http://biomodels.net/model-qualifiers/";
-    namespaces_["semsim"] = "http://www.bhi.washington.edu/semsim#";
+    declareNamespaces();
 
 }
 
@@ -69,25 +74,28 @@ semsim::RDF::~RDF() {
     librdf_free_model(model_);
     librdf_free_storage(storage_);
     librdf_free_world(world_);
-    librdf_free_uri(uri_);
+}
+
+void semsim::RDF::declareNamespaces() {
+    // add some predefined namespaces for the serializer.
+    namespaces_["dcterms"] = "http://purl.org/dc/terms/";
+    namespaces_["bqbiol"] = "http://biomodels.net/biology-qualifiers/";
+    namespaces_["bqmodel"] = "http://biomodels.net/model-qualifiers/";
+    namespaces_["semsim"] = "http://www.bhi.washington.edu/semsim#";
 }
 
 semsim::RDF::RDF(const semsim::RDF &libRdfModel) {
     this->world_ = libRdfModel.world_;
     this->storage_ = libRdfModel.storage_;
     this->model_ = libRdfModel.model_;
-    this->raptor_world_ptr_ = libRdfModel.raptor_world_ptr_;
-    this->name_ = libRdfModel.name_;
-    this->uri_ = libRdfModel.uri_;
+    this->raptor_world_ = libRdfModel.raptor_world_;
 }
 
 semsim::RDF::RDF(semsim::RDF &&libRdfModel) noexcept {
     this->world_ = libRdfModel.world_;
     this->storage_ = libRdfModel.storage_;
     this->model_ = libRdfModel.model_;
-    this->raptor_world_ptr_ = libRdfModel.raptor_world_ptr_;
-    this->name_ = std::move(libRdfModel.name_);
-    this->uri_ = libRdfModel.uri_;
+    this->raptor_world_ = libRdfModel.raptor_world_;
 }
 
 semsim::RDF &semsim::RDF::operator=(const semsim::RDF &libRdfModel) {
@@ -95,9 +103,7 @@ semsim::RDF &semsim::RDF::operator=(const semsim::RDF &libRdfModel) {
         this->world_ = libRdfModel.world_;
         this->storage_ = libRdfModel.storage_;
         this->model_ = libRdfModel.model_;
-        this->raptor_world_ptr_ = libRdfModel.raptor_world_ptr_;
-        this->name_ = libRdfModel.name_;
-        this->uri_ = libRdfModel.uri_;
+        this->raptor_world_ = libRdfModel.raptor_world_;
     }
     return *this;
 }
@@ -107,9 +113,7 @@ semsim::RDF &semsim::RDF::operator=(semsim::RDF &&libRdfModel) noexcept {
         this->world_ = libRdfModel.world_;
         this->storage_ = libRdfModel.storage_;
         this->model_ = libRdfModel.model_;
-        this->raptor_world_ptr_ = libRdfModel.raptor_world_ptr_;
-        this->name_ = std::move(libRdfModel.name_);
-        this->uri_ = libRdfModel.uri_;
+        this->raptor_world_ = libRdfModel.raptor_world_;
     }
     return *this;
 }
@@ -118,12 +122,40 @@ bool semsim::RDF::operator==(const semsim::RDF &rhs) const {
     return world_ == rhs.world_ &&
            storage_ == rhs.storage_ &&
            model_ == rhs.model_ &&
-           raptor_world_ptr_ == rhs.raptor_world_ptr_ &&
-           name_ == rhs.name_;
+           raptor_world_ == rhs.raptor_world_;
 }
 
 bool semsim::RDF::operator!=(const semsim::RDF &rhs) const {
     return !(rhs == *this);
+}
+
+
+/***************************************************************
+ *  getters and setters
+ */
+librdf_world *semsim::RDF::getWorld() const {
+    return world_;
+}
+
+librdf_storage *semsim::RDF::getStorage() const {
+    return storage_;
+}
+
+librdf_model *semsim::RDF::getModel() const {
+    return model_;
+}
+
+raptor_world *semsim::RDF::getRaptorWorld() const {
+    return raptor_world_;
+}
+
+
+const std::unordered_map<std::string, std::string> &semsim::RDF::getNamespaces() const {
+    return namespaces_;
+}
+
+void semsim::RDF::setNamespaces(const std::unordered_map<std::string, std::string> &namespaces) {
+    namespaces_ = namespaces;
 }
 
 semsim::RDF semsim::RDF::fromUrl(std::string url) {
@@ -141,7 +173,7 @@ semsim::RDF semsim::RDF::fromUrl(std::string url) {
     return semsim::RDF();
 }
 
-semsim::RDF semsim::RDF::fromML(const std::string &filename, std::string format) {
+semsim::RDF semsim::RDF::fromXML(const std::string &filename, std::string format) {
     LibrdfObjectsTuple objectsTuple = RDF::init();
 
     // unpack redland library objects
@@ -150,11 +182,33 @@ semsim::RDF semsim::RDF::fromML(const std::string &filename, std::string format)
     librdf_storage *storage = std::get<2>(objectsTuple);
     librdf_model *model = std::get<3>(objectsTuple);
 
+    // Read the xml
     Reader reader(world, model, std::move(format));
-//    RDF rdf = reader.fromFile(filename);
 
+    // construct an RDF object for return
+    semsim::RDF rdf;
+    rdf.setWorld(world);
+    rdf.setRaptorWorld(raptor_world_ptr);
+    rdf.setStorage(storage);
+    rdf.setModel(model);
 
-    return semsim::RDF();
+    return rdf;
+}
+
+void semsim::RDF::setWorld(librdf_world *world) {
+    world_ = world;
+}
+
+void semsim::RDF::setStorage(librdf_storage *storage) {
+    storage_ = storage;
+}
+
+void semsim::RDF::setModel(librdf_model *model) {
+    model_ = model;
+}
+
+void semsim::RDF::setRaptorWorld(raptor_world *raptorWorldPtr) {
+    raptor_world_ = raptorWorldPtr;
 }
 
 semsim::RDF semsim::RDF::fromRDF(std::string filename) {
@@ -162,10 +216,9 @@ semsim::RDF semsim::RDF::fromRDF(std::string filename) {
 }
 
 
-void semsim::RDF::toFile(std::string format) {
-
-}
-
+/*************************************************
+ * to/from operations
+ */
 
 void semsim::RDF::fromString(const std::string &str, std::string format) {
     Reader reader(world_, model_, std::move(format));
@@ -175,6 +228,21 @@ void semsim::RDF::fromString(const std::string &str, std::string format) {
 std::string semsim::RDF::toString(std::string format, std::string base_uri) {
     Writer writer = makeWriter(format, base_uri);
     return writer.toString();
+}
+
+void semsim::RDF::toFile(std::string format) {
+
+}
+
+
+/********************************************************************
+ * Other methods
+ */
+
+
+
+semsim::RDF semsim::RDF::fromOmex(std::string filename_or_url) {
+    return semsim::RDF();
 }
 
 semsim::Writer semsim::RDF::makeWriter(const std::string &format, const std::string &base_uri) {
@@ -194,17 +262,6 @@ void semsim::RDF::addStatement(std::string subject, std::string predicate, std::
     );
 }
 
-void semsim::RDF::setNamespaces(const std::unordered_map<std::string, std::string> &namespaces) {
-    namespaces_ = namespaces;
-}
-
-const std::unordered_map<std::string, std::string> &semsim::RDF::getNamespaces() const {
-    return namespaces_;
-}
-
-semsim::RDF semsim::RDF::fromOmex(std::string filename_or_url) {
-    return semsim::RDF();
-}
 
 std::ostringstream semsim::RDF::listOptions() {
     raptor_world *raptor_world_ptr = raptor_new_world();

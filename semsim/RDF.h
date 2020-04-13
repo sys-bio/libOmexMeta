@@ -10,28 +10,27 @@
 #include "Writer.h"
 
 namespace semsim {
+    typedef std::tuple<librdf_world *, raptor_world *, librdf_storage *, librdf_model *> LibrdfObjectsTuple;
+
     class RDF {
     private:
         librdf_world *world_;
+        raptor_world *raptor_world_;
         librdf_storage *storage_;
         librdf_model *model_;
-        raptor_world *raptor_world_ptr_;
-        std::string name_ = "semsim"; // todo: Unused?
-        librdf_uri *uri_; //todo needed?
-
-        typedef std::tuple<librdf_world *, raptor_world *, librdf_storage *, librdf_model *> LibrdfObjectsTuple;
 
         std::unordered_map<std::string, std::string> namespaces_;
 
-        //todo refactor makeWriter into the writer class only.
         semsim::Writer makeWriter(const std::string &format, const std::string &base_uri);
+
 
     public:
 
         static LibrdfObjectsTuple init();
 
-
         RDF();
+
+        RDF(librdf_world *world, raptor_world *raptor_world_, librdf_storage *storage, librdf_model *model);
 
         ~RDF();
 
@@ -53,7 +52,7 @@ namespace semsim {
 
         static RDF fromUrl(std::string url);
 
-        static semsim::RDF fromML(const std::string &filename, std::string format);
+        static semsim::RDF fromXML(const std::string &filename, std::string format);
 
         static RDF fromRDF(std::string filename);
 
@@ -71,13 +70,30 @@ namespace semsim {
 
         void setOption();
 
+        librdf_world *getWorld() const;
+
+        librdf_storage *getStorage() const;
+
+        librdf_model *getModel() const;
+
+        raptor_world *getRaptorWorld() const;
+
+        void setWorld(librdf_world *world);
+
+        void setStorage(librdf_storage *storage);
+
+        void setModel(librdf_model *model);
+
+        void setRaptorWorld(raptor_world *raptorWorldPtr);
+
+        void declareNamespaces();
     };
 }
 
 
 
 //    + fromWWW() : static RDF
-//    + fromML() : static RDF
+//    + fromXML() : static RDF
 //    + fromRDF() : static RDF
 //    + fromModel() : static RDF
 //    + load

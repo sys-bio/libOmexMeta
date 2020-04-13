@@ -25,6 +25,10 @@ public:
 
     RDFTests() = default;
 
+    void TearDown() override {
+        samples.removeAllFilesIfTheyExist();
+    }
+
 
 };
 
@@ -578,7 +582,7 @@ TEST_F(ReadAndWriteTests, singularannotation3nquads) {
 
 
 TEST_F(ReadAndWriteTests, singularannotation4ntriples) {
-    std::string expected =  "<MyModel.xml#meta2> <http://purl.org/dc/terms/description> \"Cardiomyocyte cytosolic ATP concentration\" .\n";
+    std::string expected = "<MyModel.xml#meta2> <http://purl.org/dc/terms/description> \"Cardiomyocyte cytosolic ATP concentration\" .\n";
     assertReadAndWrite(samples.singular_annotation4, "ntriples", expected);
 }
 
@@ -1589,29 +1593,29 @@ TEST_F(ReadAndWriteTests, compositeannotationpfrdfxmlxmp) {
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationpfrdfxmlabbrev) {
-    std::string expected ="<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                          "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                          "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
-                          "   xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
-                          "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                          "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
-                          "   xml:base=\"./SemsimModel\">\n"
-                          "  <rdf:Description rdf:about=\"MyModel.sbml#force_0\">\n"
-                          "    <semsim:hasSinkParticipant rdf:resource=\"MyModel.sbml#sink_0\"/>\n"
-                          "    <semsim:hasSourceParticipant rdf:resource=\"MyModel.sbml#source_0\"/>\n"
-                          "  </rdf:Description>\n"
-                          "  <rdf:Description rdf:about=\"MyModel.sbml#parameter_metaid_0\">\n"
-                          "    <bqbiol:isPropertyOf rdf:resource=\"MyModel.sbml#force_0\"/>\n"
-                          "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB_01058\"/>\n"
-                          "  </rdf:Description>\n"
-                          "  <rdf:Description rdf:about=\"MyModel.sbml#sink_0\">\n"
-                          "    <semsim:hasPhysicalEntityReference rdf:resource=\"MyModel.sbml#species_metaid_1\"/>\n"
-                          "  </rdf:Description>\n"
-                          "  <rdf:Description rdf:about=\"MyModel.sbml#source_0\">\n"
-                          "    <semsim:hasPhysicalEntityReference rdf:resource=\"MyModel.sbml#species_metaid_0\"/>\n"
-                          "  </rdf:Description>\n"
-                          "</rdf:RDF>\n"
-                          "";
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
+                           "   xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
+                           "  <rdf:Description rdf:about=\"MyModel.sbml#force_0\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"MyModel.sbml#sink_0\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"MyModel.sbml#source_0\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"MyModel.sbml#parameter_metaid_0\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"MyModel.sbml#force_0\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB_01058\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"MyModel.sbml#sink_0\">\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"MyModel.sbml#species_metaid_1\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"MyModel.sbml#source_0\">\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"MyModel.sbml#species_metaid_0\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.composite_annotation_pf, "rdfxml-abbrev", expected);
 }
 
@@ -2163,24 +2167,25 @@ TEST_F(ReadAndWriteTests, tabulardatanquads) {
     assertReadAndWrite(samples.tabular_data1, "nquads", expected);
 }
 
-/*******************************************************
- * Test RDF class with combine functionality
+/******************************************************************************
+ * ReadAndWriteTests for sbml files
  */
-class RDFTestsCombine : public ::testing::Test {
-public:
-    std::string gold_standard_url1 = "https://auckland.figshare.com/ndownloader/files/17432333";
-    std::string gold_standard_url2 = "https://auckland.figshare.com/ndownloader/files/15425522";
-    std::string gold_standard_url3 = "https://auckland.figshare.com/ndownloader/files/15425513";
-    std::string gold_standard_url4 = "https://auckland.figshare.com/ndownloader/files/15425546";
-    std::string gold_standard_url5 = "https://auckland.figshare.com/ndownloader/files/17432366";
-    RDFTestsCombine(){
 
-    }
-};
+TEST_F(ReadAndWriteTests, SBML1) {
+    semsim::SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);
 
-TEST_F(RDFTestsCombine, test){
+    semsim::RDF rdf = semsim::RDF::fromXML(samples.sbml_filename1, "rdfxml");
+//    std::string extracted = rdf.toString("rdfxml");
+//    std::cout << extracted << std::endl;
+
+
+    raptor_iostream *iostream = raptor_new_iostream_to_file_handle(rdf.getRaptorWorld(), stdout);
+    librdf_serializer *serializer = librdf_new_serializer(rdf.getWorld(), "rdfxml", nullptr, nullptr);
+    raptor_uri *uri = raptor_new_uri(rdf.getRaptorWorld(), reinterpret_cast<const unsigned char *>("./base.xml"));
+    librdf_serializer_serialize_model_to_iostream(serializer, uri, rdf.getModel(), iostream);
 
 }
+
 
 
 

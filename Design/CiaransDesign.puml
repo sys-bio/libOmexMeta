@@ -189,7 +189,7 @@ class LibRDFModel {
     - raptor_iostream* iostr;
     - librdf_uri *uri;
     + fromWWW() : static LibRDFModel
-    + fromML() : static LibRDFModel
+    + fromXML() : static LibRDFModel
     + fromRDF() : static LibRDFModel
     + fromString() : static LibRDFModel
     + query() : LibRDFModel

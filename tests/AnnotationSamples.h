@@ -7,6 +7,7 @@
 
 
 #include <string>
+#include "semsim/SemSim.h"
 
 class AnnotationSamples {
 public:
@@ -31,6 +32,22 @@ public:
     std::string gold_standard_filename3 = "./goldstandard3.omex";
     std::string gold_standard_filename4 = "./goldstandard4.omex";
     std::string gold_standard_filename5 = "./goldstandard5.omex";
+
+    // collect all files into a iterable object for easy removal
+    std::vector<std::string> all_files = {
+            sbml_url1,
+            sbml_filename1,
+            gold_standard_url1,
+            gold_standard_url2,
+            gold_standard_url3,
+            gold_standard_url4,
+            gold_standard_url5,
+            gold_standard_filename1,
+            gold_standard_filename2,
+            gold_standard_filename3,
+            gold_standard_filename4,
+            gold_standard_filename5,
+    };
 
 
     std::string singular_annotation1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -138,6 +155,13 @@ public:
                                 "        <bqbiol:isPartOf rdf:resource=\"http://identifiers.org/fma/FMA:18228\"/>\n"
                                 "    </rdf:Description>"
                                 "</rdf:RDF>\n";
+
+    void removeAllFilesIfTheyExist() {
+        for (auto &file : this->all_files) {
+            semsim::SemsimUtils::removeIfExists(file);
+        }
+    }
+
 };
 
 

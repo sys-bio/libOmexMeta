@@ -367,7 +367,7 @@ namespace semsim {
 		#raptor_iostr_ : raptor_iostream*
 		#base_uri_ : raptor_uri*
 		#url_ : raptor_uri*
-		#raptor_world_ptr_ : raptor_world*
+		#raptor_world_ : raptor_world*
 		#dg_ : rasqal_data_graph*
 		#query_ : rasqal_query*
 		#rasqal_world_ : rasqal_world*
