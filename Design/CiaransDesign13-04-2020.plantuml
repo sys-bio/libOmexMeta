@@ -1,0 +1,401 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+namespace semsim {
+	class BiomodelsQualifier {
+		+BiomodelsQualifier(const std::string& qualifier)
+		#setValidTerms() : void
+	}
+}
+
+
+namespace semsim {
+	class ControlledVocabulary {
+		+ControlledVocabulary()
+		+ControlledVocabulary(std::string qualifier)
+		+getUri() : Uri {query}
+		+operator!=(const ControlledVocabulary& rhs) : bool {query}
+		+operator==(const ControlledVocabulary& rhs) : bool {query}
+		+operator<<(std::ostream& os, const ControlledVocabulary& vocabulary) : std : : ostream&
+		+make_shared() : std::shared_ptr<ControlledVocabulary>
+		-cv_namespace : std::string
+		-qualifier : std::string
+		-root : std::string
+		+getCvNamespace() : std::string& {query}
+		+getQualifier() : std::string& {query}
+		+getRoot() : std::string& {query}
+		#valid_terms : std::vector<std::string>
+		+getValidTerms() : std::vector<std::string>& {query}
+		+setCvNamespace(const std::string& cvNamespace) : void
+		+setRoot(const std::string& root) : void
+		#setValidTerms() : void
+		#verify() : void
+	}
+}
+
+
+namespace semsim {
+	class CurlGet {
+		+CurlGet()
+		+{static} download(const std::string& url, const std::string& output_filename) : int
+		-{static} curlWriteCallback(void* data, size_t size, size_t nmemb, void* userp) : size_t
+	}
+}
+
+
+abstract class IRDF {
+	+{abstract} serialize(std::string format) : std::string
+}
+
+
+namespace semsim {
+	class Predicate {
+		+Predicate()
+		+Predicate(const std::shared_ptr<ControlledVocabulary>& term)
+		+getUri() : Uri {query}
+		+operator!=(const Predicate& rhs) : bool {query}
+		+operator==(const Predicate& rhs) : bool {query}
+		+operator<<(std::ostream& os, const Predicate& predicate) : std : : ostream&
+		-term : std::shared_ptr<ControlledVocabulary>
+		+getTerm() : std::shared_ptr<ControlledVocabulary>& {query}
+	}
+}
+
+
+namespace semsim {
+	class PredicateNamespaces {
+		+PredicateNamespaces()
+		+{static} getNamespaces() : std::unordered_map<std::string , std::string>
+	}
+}
+
+
+namespace semsim {
+	class RDF {
+		+RDF()
+		+RDF(librdf_world* world, raptor_world* raptor_world_, librdf_storage* storage, librdf_model* model)
+		+RDF(const RDF& libRdfModel)
+		+RDF(RDF&& libRdfModel)
+		+~RDF()
+		+{static} init() : LibrdfObjectsTuple
+		+{static} fromOmex(std::string filename_or_url) : RDF
+		+{static} fromRDF(std::string filename) : RDF
+		+{static} fromUrl(std::string url) : RDF
+		+operator=(const RDF& libRdfModel) : RDF&
+		+operator=(RDF&& libRdfModel) : RDF&
+		+operator!=(const RDF& rhs) : bool {query}
+		+operator==(const RDF& rhs) : bool {query}
+		+getModel() : librdf_model* {query}
+		-model_ : librdf_model*
+		+getStorage() : librdf_storage* {query}
+		-storage_ : librdf_storage*
+		+getWorld() : librdf_world* {query}
+		-world_ : librdf_world*
+		+getRaptorWorld() : raptor_world* {query}
+		-raptor_world_ : raptor_world*
+		+{static} fromXML(const std::string& filename, std::string format) : semsim::RDF
+		-makeWriter(const std::string& format, const std::string& base_uri) : semsim::Writer
+		+{static} listOptions() : std::ostringstream
+		+toString(std::string format, std::string base_uri) : std::string
+		+getNamespaces() : std::unordered_map<const char* , char*>& {query}
+		-namespaces_ : std::unordered_map<const char*, const char*>
+		+addStatement(std::string subject, std::string predicate, std::string resource) : void
+		+declareNamespaces() : void
+		+fromString(const std::string& str, std::string format) : void
+		+setModel(librdf_model* model) : void
+		+setNamespaces(const std::unordered_map<const char*, const char*>& namespaces) : void
+		+setOption() : void
+		+setRaptorWorld(raptor_world* raptorWorldPtr) : void
+		+setStorage(librdf_storage* storage) : void
+		+setWorld(librdf_world* world) : void
+		+toFile(std::string format) : void
+	}
+}
+
+
+namespace semsim {
+	class RaptorStatementHandler {
+		+{static} raptorStatementPrintAsNTriples(void* user_data, raptor_statement* triple) : void
+		+{static} raptorStatementPrintStatement(void* user_data, raptor_statement* triple) : void
+	}
+}
+
+
+namespace semsim {
+	class RaptorUtils {
+		+{static} raptorUriToTerm(raptor_world* world, raptor_uri* uri) : raptor_term*
+		+{static} raptorStringToUri(raptor_world* world, const unsigned char* str) : raptor_uri*
+		+{static} raptorUriToString(raptor_uri* u) : std::string
+		+{static} raptorTermToString(raptor_term* term) : unsigned char*
+	}
+}
+
+
+namespace semsim {
+	class Reader {
+		+Reader(librdf_world* world, librdf_model* model, std::string format)
+		+getModel() : librdf_model* {query}
+		-model_ : librdf_model*
+		+getParser() : librdf_parser* {query}
+		-makeParser(std::string format) : librdf_parser*
+		-parser_ : librdf_parser*
+		-baseUri_ : librdf_uri*
+		+getBaseUri() : librdf_uri* {query}
+		+getWorld() : librdf_world* {query}
+		-world_ : librdf_world*
+		+getRaptorWorld() : raptor_world* {query}
+		-raptor_world_ptr_ : raptor_world*
+		-format_ : std::string
+		+fromString(const std::string& rdf_string) : std::string
+		+getFormat() : std::string& {query}
+		+parseNamespacesWithPrefix() : std::unordered_map<const char* , char*>
+		+getValidParserNames() : std::vector<std::string>& {query}
+		+fromFile(const std::string& filename) : void
+		+setBaseUri(const std::string& baseUri) : void
+		+setFormat(const std::string& f) : void
+		+setOption(const std::string& option, const std::string& value) : void
+	}
+}
+
+
+class RedlandWrapper {
+	+RedlandWrapper()
+}
+
+
+namespace semsim {
+	class Resource {
+		+Resource()
+		+Resource(std::string resourceNamespace, std::string identifier)
+		+Resource(std::string resource)
+		+operator!=(const Resource& rhs) : bool {query}
+		+operator==(const Resource& rhs) : bool {query}
+		+operator<<(std::ostream& os, const Resource& resource) : std : : ostream&
+		+build() : std::string {query}
+		-identifier : std::string
+		-identifiers_base : std::string
+		-resource_namespace : std::string
+		+getIdentifier() : std::string& {query}
+		+getIdentifiersBase() : std::string& {query}
+		+getResourceNamespace() : std::string& {query}
+		+{static} splitStringBy(std::string str, char delimiter) : std::vector<std::string>
+	}
+}
+
+
+namespace semsim {
+	class SemsimCombineArchive {
+		+{static} fromFile(const std::string& file) : SemsimCombineArchive
+		+{static} fromUrl(const std::string& url, const std::string& output_filename) : semsim::SemsimCombineArchive
+		+CombineArchive : using CombineArchive::
+	}
+}
+
+
+namespace semsim {
+	class SemsimUtils {
+		+SemsimUtils()
+		+{static} exists(const std::string& filename) : bool
+		+{static} removeFile(const std::string& filename) : int
+		+{static} download(const std::string& url, const std::string filename) : void
+		+{static} removeIfExists(const std::string& filename) : void
+	}
+}
+
+
+namespace semsim {
+	class Subject {
+		+Subject()
+		+Subject(std::string metaId)
+		+operator!=(const Subject& rhs) : bool {query}
+		+operator==(const Subject& rhs) : bool {query}
+		+operator<<(std::ostream& os, const Subject& subject) : std : : ostream&
+		-metaId : std::string
+		+getMetaId() : std::string& {query}
+	}
+}
+
+
+namespace semsim {
+	class Triple {
+		+Triple(Subject subject, Predicate predicate, Resource resource)
+		+Triple()
+		+Triple(const Triple& triple)
+		+Triple(Triple&& triple)
+		+~Triple()
+		-predicate : Predicate
+		+getPredicate() : Predicate& {query}
+		-resource : Resource
+		+getResource() : Resource& {query}
+		-subject : Subject
+		+getSubject() : Subject& {query}
+		+operator=(const Triple& triple) : Triple&
+		+operator=(Triple&& triple) : Triple&
+		+operator!=(const Triple& rhs) : bool {query}
+		+operator==(const Triple& rhs) : bool {query}
+		+operator<<(std::ostream& os, const Triple& triple) : std : : ostream&
+		+serialize(std::string format) : std::string
+		+{static} from_xml(std::string xml) : void
+		-{static} parseTriple(void* user_data, raptor_statement* raptor_triple) : void
+	}
+}
+
+
+namespace semsim {
+	class Uri {
+		+Uri()
+		+Uri(const Uri& url)
+		+Uri(Uri&& url) noexcept: m_ip_v(-1)
+		+Uri(std::string url_str)
+		+query(size_t i) : KeyVal&
+		+set_query(size_t i) : KeyVal&
+		+query() : Query&
+		+set_query() : Query&
+		+add_query(KeyVal& kv) : Uri&
+		+add_query(std::string& key, std::string& val) : Uri&
+		+add_query(std::string& key) : Uri&
+		+clear() : Uri&
+		+fragment(const std::string& f) : Uri&
+		+host(const std::string& h, uint8_t ip_v) : Uri&
+		+operator=(std::string& url_str) : Uri&
+		+operator=(const Uri& url) : Uri&
+		+operator=(Uri&& url) : Uri&
+		+path(const std::string& str) : Uri&
+		+port(const std::string& str) : Uri&
+		+port(std::uint16_t num) : Uri&
+		+scheme(const std::string& s) : Uri&
+		+set_query(Query& q) : Uri&
+		+str(std::string& url_str) : Uri&
+		+user_info(const std::string& s) : Uri&
+		+operator!=(const Uri& rhs) : bool {query}
+		+operator==(const Uri& rhs) : bool {query}
+		-m_query : mutable Query
+		-m_ip_v : mutable std::int8_t
+		-m_fragment : mutable std::string
+		-m_host : mutable std::string
+		-m_path : mutable std::string
+		-m_port : mutable std::string
+		-m_scheme : mutable std::string
+		-m_url : mutable std::string
+		-m_user : mutable std::string
+		+operator<<(std::ostream& os, const Uri& uri) : std : : ostream&
+		+ip_version() : std::int8_t
+		+output(std::ostream& o) : std::ostream& {query}
+		+end() : std::string
+		+pruneEnd() : std::string
+		+str() : std::string {query}
+		+fragment() : std::string&
+		+host() : std::string&
+		+path() : std::string&
+		+port() : std::string&
+		+scheme() : std::string& {query}
+		+user_info() : std::string&
+		-assign(const Uri& url) : void
+		-assign(Uri&& url) : void
+		-build_url() : void {query}
+		-lazy_parse() : void {query}
+		-parse_url() : void {query}
+	}
+}
+
+
+namespace semsim::Uri {
+	class Uri::KeyVal {
+		+KeyVal()
+		+KeyVal(std::string key, std::string& val)
+		+KeyVal(std::string key)
+		+operator!=(const KeyVal& rhs) : bool {query}
+		+operator==(const KeyVal& rhs) : bool {query}
+		+operator<<(std::ostream& o, const KeyVal& kv) : std : : ostream&
+		-m_key : std::string
+		-m_val : std::string
+		+key() : std::string&
+		+val() : std::string&
+		+key(const std::string& k) : void
+		+swap(KeyVal& q) : void
+		+val(const std::string& v) : void
+	}
+}
+
+
+namespace semsim::Uri {
+	class Uri::build_error {
+		+build_error(const std::string& reason)
+	}
+}
+
+
+namespace semsim::Uri {
+	class Uri::parse_error {
+		+parse_error(const std::string& reason)
+	}
+}
+
+
+namespace semsim {
+	class Writer {
+		+Writer(librdf_world* world_, librdf_model* model_, std::string format, const std::string& base_uri)
+		-model_ : librdf_model*
+		-serializer : librdf_serializer*
+		-base_uri_ : librdf_uri*
+		-world_ : librdf_world*
+		-raptor_world_ptr_ : raptor_world*
+		-format : std::string
+		+print() : std::string
+		+toString() : std::string
+		+registerNamespace(const std::string& ns, const std::string& prefix) : void
+		+setFormat(const std::string& format) : void
+		+setOption(const std::string& option, const std::string& value) : void
+		+setWorld(librdf_world* world_) : void
+		+toFile(std::string format) : void
+	}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+namespace semsim {
+	ControlledVocabulary <|-- BiomodelsQualifier
+}
+
+
+.IRDF <|-- semsim.Triple
+
+
+
+
+
+/' Aggregation relationships '/
+
+namespace semsim {
+	Predicate *-- ControlledVocabulary
+}
+
+
+namespace semsim {
+	Triple *-- Predicate
+}
+
+
+namespace semsim {
+	Triple *-- Resource
+}
+
+
+namespace semsim {
+	Triple *-- Subject
+}
+
+
+
+
+
+@enduml
