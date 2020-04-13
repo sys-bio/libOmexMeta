@@ -16,17 +16,20 @@ namespace semsim {
         librdf_storage *storage_;
         librdf_model *model_;
         raptor_world *raptor_world_ptr_;
-        std::string name_ = "semsim";
-        librdf_uri *uri_;
+        std::string name_ = "semsim"; // todo: Unused?
+        librdf_uri *uri_; //todo needed?
+
+        typedef std::tuple<librdf_world *, raptor_world *, librdf_storage *, librdf_model *> LibrdfObjectsTuple;
 
         std::unordered_map<std::string, std::string> namespaces_;
 
-
+        //todo refactor makeWriter into the writer class only.
         semsim::Writer makeWriter(const std::string &format, const std::string &base_uri);
 
-        //todo ensure serializer is in constructor and equality operators...
-
     public:
+
+        static LibrdfObjectsTuple init();
+
 
         RDF();
 
