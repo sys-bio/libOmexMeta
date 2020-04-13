@@ -2173,17 +2173,22 @@ TEST_F(ReadAndWriteTests, tabulardatanquads) {
 
 TEST_F(ReadAndWriteTests, SBML1) {
     semsim::SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);
-
     semsim::RDF rdf = semsim::RDF::fromXML(samples.sbml_filename1, "rdfxml");
-//    std::string extracted = rdf.toString("rdfxml");
-//    std::cout << extracted << std::endl;
+    std::string extracted = rdf.toString("rdfxml");
+    std::cout << extracted << std::endl;
+    int expected = 32;
+    int actual = sizeof(extracted);
+    ASSERT_EQ(expected, actual);
+}
 
-
-    raptor_iostream *iostream = raptor_new_iostream_to_file_handle(rdf.getRaptorWorld(), stdout);
-    librdf_serializer *serializer = librdf_new_serializer(rdf.getWorld(), "rdfxml", nullptr, nullptr);
-    raptor_uri *uri = raptor_new_uri(rdf.getRaptorWorld(), reinterpret_cast<const unsigned char *>("./base.xml"));
-    librdf_serializer_serialize_model_to_iostream(serializer, uri, rdf.getModel(), iostream);
-
+TEST_F(ReadAndWriteTests, CELLML1) {
+    semsim::SemsimUtils::download(samples.cellml_url1, samples.cellml_filename1);
+    semsim::RDF rdf = semsim::RDF::fromXML(samples.cellml_filename1, "turtle");
+    std::string extracted = rdf.toString("rdfxml");
+    std::cout << extracted << std::endl;
+//    int expected = 32;
+//    int actual = sizeof(extracted);
+//    ASSERT_EQ(expected, actual);
 }
 
 

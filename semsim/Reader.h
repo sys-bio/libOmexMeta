@@ -70,7 +70,7 @@ namespace semsim {
 
         const std::vector<std::string> &getValidParserNames() const;
 
-        std::unordered_map<std::string, std::string> parseNamespaces();
+        std::unordered_map<const char*, const char*> parseNamespacesWithPrefix();
 
         void setOption(const std::string &option, const std::string& value);
     };
