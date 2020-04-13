@@ -13,25 +13,47 @@
  * Constructors
  */
 
-//todo consider moving the contents of the rdf constructor to
-//  another function called init. Make this function static and
-//  return a tuple of the model, storage and world. Then this can
-//  be used in all static RDF::from*() methods.
-semsim::RDF::RDF() {
-    world_ = librdf_new_world();
+/*
+ * Initialiser for librdf/raptor objects. These commands are needed in multiple
+ * places so they are pulled out of the RDF constructor into their own function.
+ * This method is static so it can be used without instantiating RDF.
+ */
+semsim::RDF::LibrdfObjectsTuple semsim::RDF::init() {
+    // init librdf world object
+    librdf_world *world_ = librdf_new_world();
     librdf_world_open(world_);
-    raptor_world_ptr_ = librdf_world_get_raptor(world_);
-    //todo are there other possible varients to the storage_name argument?
-    //todo does the name argument to new storage matter?
-    //todo how does the options argument work?
-    storage_ = librdf_new_storage(world_, "memory", "semsim_store", nullptr);
+
+    // init raptor world obj
+    raptor_world *raptor_world_ptr_ = librdf_world_get_raptor(world_);
+    if (!raptor_world_ptr_) {
+        throw std::invalid_argument("failed to create a raptor_world* object from librdf_world");
+    }
+
+    // init raptor world obj
+    //todo work out and make use of the arguments to librdf_new_storage
+    librdf_storage *storage_ = librdf_new_storage(world_, "memory", "semsim_store", nullptr);
     if (!storage_) {
         throw std::invalid_argument("Failed to create new storage\n");
     }
-    model_ = librdf_new_model(world_, storage_, nullptr);
+    librdf_model *model_ = librdf_new_model(world_, storage_, nullptr);
     if (!model_) {
         throw std::invalid_argument("Failed to create model\n");
     }
+    LibrdfObjectsTuple objectsTuple(world_, raptor_world_ptr_, storage_, model_);
+
+    return objectsTuple;
+}
+
+
+semsim::RDF::RDF() {
+    LibrdfObjectsTuple objectsTuple = RDF::init();
+
+    // unpack redland library objects
+    world_ = std::get<0>(objectsTuple);
+    raptor_world_ptr_ = std::get<1>(objectsTuple);
+    storage_ = std::get<2>(objectsTuple);
+    model_ = std::get<3>(objectsTuple);
+
 
     uri_ = librdf_new_uri(world_, (const unsigned char *) "./Test.xml");
 
@@ -120,10 +142,14 @@ semsim::RDF semsim::RDF::fromUrl(std::string url) {
 }
 
 semsim::RDF semsim::RDF::fromML(const std::string &filename, std::string format) {
-    std::cout << "parsing filename: " << filename << std::endl;
-    librdf_world *world = librdf_new_world();
-    librdf_storage *storage = librdf_new_storage(world, "memory", "semsim_store", nullptr);
-    librdf_model *model = librdf_new_model(world, storage, nullptr);
+    LibrdfObjectsTuple objectsTuple = RDF::init();
+
+    // unpack redland library objects
+    librdf_world *world = std::get<0>(objectsTuple);
+    raptor_world *raptor_world_ptr = std::get<1>(objectsTuple);
+    librdf_storage *storage = std::get<2>(objectsTuple);
+    librdf_model *model = std::get<3>(objectsTuple);
+
     Reader reader(world, model, std::move(format));
 //    RDF rdf = reader.fromFile(filename);
 
@@ -211,6 +237,7 @@ std::ostringstream semsim::RDF::listOptions() {
     };
     return os;
 }
+
 
 
 
