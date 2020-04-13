@@ -21,7 +21,7 @@ class RDFTests : public ::testing::Test {
 
 public:
 
-    AnnoationSamples samples;
+    AnnotationSamples samples;
 
     RDFTests() = default;
 
@@ -77,7 +77,7 @@ class ReadAndWriteTests : public ::testing::Test {
 
 public:
 
-    AnnoationSamples samples;
+    AnnotationSamples samples;
 
     ReadAndWriteTests() = default;
 

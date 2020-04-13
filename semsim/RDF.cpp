@@ -12,10 +12,18 @@
 /*******************************************************
  * Constructors
  */
+
+//todo consider moving the contents of the rdf constructor to
+//  another function called init. Make this function static and
+//  return a tuple of the model, storage and world. Then this can
+//  be used in all static RDF::from*() methods.
 semsim::RDF::RDF() {
     world_ = librdf_new_world();
     librdf_world_open(world_);
     raptor_world_ptr_ = librdf_world_get_raptor(world_);
+    //todo are there other possible varients to the storage_name argument?
+    //todo does the name argument to new storage matter?
+    //todo how does the options argument work?
     storage_ = librdf_new_storage(world_, "memory", "semsim_store", nullptr);
     if (!storage_) {
         throw std::invalid_argument("Failed to create new storage\n");
@@ -111,7 +119,15 @@ semsim::RDF semsim::RDF::fromUrl(std::string url) {
     return semsim::RDF();
 }
 
-semsim::RDF semsim::RDF::fromML(std::string filename) {
+semsim::RDF semsim::RDF::fromML(const std::string &filename, std::string format) {
+    std::cout << "parsing filename: " << filename << std::endl;
+    librdf_world *world = librdf_new_world();
+    librdf_storage *storage = librdf_new_storage(world, "memory", "semsim_store", nullptr);
+    librdf_model *model = librdf_new_model(world, storage, nullptr);
+    Reader reader(world, model, std::move(format));
+//    RDF rdf = reader.fromFile(filename);
+
+
     return semsim::RDF();
 }
 

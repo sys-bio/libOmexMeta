@@ -6,14 +6,14 @@
 #include <unordered_map>
 #include "gtest/gtest.h"
 #include "AnnotationSamples.h"
-#include "librdf.h"
-#include "semsim/Reader.h"
 #include "raptor2.h"
+#include "semsim/SemSim.h"
+#include "semsim/Reader.h"
 
 class ReaderTests : public ::testing::Test {
 public:
 
-    AnnoationSamples samples;
+    AnnotationSamples samples;
     librdf_world *world;
     raptor_world *raptor_world_ptr;
     librdf_storage *storage;
@@ -33,7 +33,7 @@ public:
         }
     };
 
-    void assertModelSizesAreDifferentAfterParsing(std::string annotation_string) {
+    void assertModelSizesAreDifferentAfterParsing(const std::string &annotation_string) {
         semsim::Reader reader(world, model, "rdfxml");
         int size_before = librdf_model_size(model);
         reader.fromString(annotation_string);
@@ -48,41 +48,6 @@ TEST_F(ReaderTests, TestReaderInstantiation) {
     ASSERT_TRUE(true);
 }
 
-/*
- *
- *
- * raptor_domain:
- * @RAPTOR_DOMAIN_IOSTREAM: I/O stream
- * @RAPTOR_DOMAIN_NAMESPACE: XML Namespace / namespace stack
- * @RAPTOR_DOMAIN_PARSER: RDF Parser
- * @RAPTOR_DOMAIN_QNAME: XML QName
- * @RAPTOR_DOMAIN_SAX2:  XML SAX2
- * @RAPTOR_DOMAIN_SERIALIZER: RDF Serializer
- * @RAPTOR_DOMAIN_TERM: RDF Term
- * @RAPTOR_DOMAIN_TURTLE_WRITER: Turtle Writer
- * @RAPTOR_DOMAIN_URI: RDF Uri
- * @RAPTOR_DOMAIN_WORLD: RDF world
- * @RAPTOR_DOMAIN_WWW: WWW
- * @RAPTOR_DOMAIN_XML_WRITER: XML Writer
- * @RAPTOR_DOMAIN_NONE: Internal
- * @RAPTOR_DOMAIN_LAST: Internal
- *
- *   RAPTOR_DOMAIN_NONE, // None
- *   RAPTOR_DOMAIN_IOSTREAM,
- *   RAPTOR_DOMAIN_NAMESPACE,
- *   RAPTOR_DOMAIN_PARSER,
- *   RAPTOR_DOMAIN_QNAME,
- *   RAPTOR_DOMAIN_SAX2,
- *   RAPTOR_DOMAIN_SERIALIZER,
- *   RAPTOR_DOMAIN_TERM,
- *   RAPTOR_DOMAIN_TURTLE_WRITER,
- *   RAPTOR_DOMAIN_URI,
- *   RAPTOR_DOMAIN_WORLD,
- *   RAPTOR_DOMAIN_WWW,
- *   RAPTOR_DOMAIN_XML_WRITER,
- *   RAPTOR_DOMAIN_LAST = RAPTOR_DOMAIN_XML_WRITER
- *   raptor_domain;
- */
 
 TEST_F(ReaderTests, TestGetOptions) {
     raptor_domain domain;
@@ -212,6 +177,12 @@ TEST_F(ReaderTests, TestReaderReadsNamespaces) {
         count--;
     }
 
+
+}
+
+
+TEST_F(ReaderTests, TestSBMLFromFile1) {
+    semsim::SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);
 
 }
 

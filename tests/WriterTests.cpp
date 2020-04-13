@@ -18,7 +18,7 @@
 class WriterTests : public ::testing::Test {
 
 public:
-    AnnoationSamples samples;
+    AnnotationSamples samples;
     librdf_world *world;
     raptor_world *raptor_world_ptr;
     librdf_storage *storage;

@@ -191,8 +191,8 @@ void CombineArchive::addMetadataToArchive(OmexDescription& desc, Zipper *zipper)
   if (desc.isEmpty() || zipper == NULL || mpManifest == NULL)
     return;
 
-  std::string fileName = getNextFilename("metadata", ".rdf");
-  std::stringstream content; content << desc.toXML();
+  std::string fileName = getNextFilename("metadata", ".Frdf");
+    std::stringstream content; content << desc.toXML();
   zipper->add(content, fileName);
 
   CaContent* entry = mpManifest->createContent();
@@ -393,7 +393,6 @@ std::vector<std::string>
 CombineArchive::getAllLocations() const
 {
   std::vector<std::string> result;
-
   if (mpManifest == NULL)
     return result;
 
