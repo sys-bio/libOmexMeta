@@ -8,8 +8,30 @@
 
 #include <string>
 
-class AnnoationSamples {
+class AnnotationSamples {
 public:
+
+    // urls and filepaths for some sbml samples
+    std::string sbml_url1 = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml";
+
+    std::string sbml_filename1 = "./sbml_file1.sbml";
+
+    // urls and filepaths for some cellml samples
+
+
+    // urls and filepaths for the gold standard omex archives
+    std::string gold_standard_url1 = "https://auckland.figshare.com/ndownloader/files/17432333";
+    std::string gold_standard_url2 = "https://auckland.figshare.com/ndownloader/files/15425522";
+    std::string gold_standard_url3 = "https://auckland.figshare.com/ndownloader/files/15425513";
+    std::string gold_standard_url4 = "https://auckland.figshare.com/ndownloader/files/15425546";
+    std::string gold_standard_url5 = "https://auckland.figshare.com/ndownloader/files/17432366";
+
+    std::string gold_standard_filename1 = "./goldstandard1.omex";
+    std::string gold_standard_filename2 = "./goldstandard2.omex";
+    std::string gold_standard_filename3 = "./goldstandard3.omex";
+    std::string gold_standard_filename4 = "./goldstandard4.omex";
+    std::string gold_standard_filename5 = "./goldstandard5.omex";
+
 
     std::string singular_annotation1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                                        "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"

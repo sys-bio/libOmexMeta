@@ -50,7 +50,7 @@ namespace semsim {
 
         static RDF fromUrl(std::string url);
 
-        static RDF fromML(std::string filename);
+        static semsim::RDF fromML(const std::string &filename, std::string format);
 
         static RDF fromRDF(std::string filename);
 
