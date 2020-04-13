@@ -150,11 +150,11 @@ raptor_world *semsim::RDF::getRaptorWorld() const {
 }
 
 
-const std::unordered_map<std::string, std::string> &semsim::RDF::getNamespaces() const {
+const std::unordered_map<const char*, const char*> &semsim::RDF::getNamespaces() const {
     return namespaces_;
 }
 
-void semsim::RDF::setNamespaces(const std::unordered_map<std::string, std::string> &namespaces) {
+void semsim::RDF::setNamespaces(const std::unordered_map<const char*, const char*> &namespaces) {
     namespaces_ = namespaces;
 }
 
@@ -184,13 +184,13 @@ semsim::RDF semsim::RDF::fromXML(const std::string &filename, std::string format
 
     // Read the xml
     Reader reader(world, model, std::move(format));
+    reader.fromFile(filename);
 
-    // construct an RDF object for return
-    semsim::RDF rdf;
-    rdf.setWorld(world);
-    rdf.setRaptorWorld(raptor_world_ptr);
-    rdf.setStorage(storage);
-    rdf.setModel(model);
+    // construct an RDF object
+    semsim::RDF rdf(world, raptor_world_ptr, storage, model);
+
+    // pull "seen" namespaces out of the parser and pass them to RDF class
+    rdf.namespaces_ = reader.parseNamespacesWithPrefix();
 
     return rdf;
 }
@@ -211,18 +211,19 @@ void semsim::RDF::setRaptorWorld(raptor_world *raptorWorldPtr) {
     raptor_world_ = raptorWorldPtr;
 }
 
-semsim::RDF semsim::RDF::fromRDF(std::string filename) {
-    return semsim::RDF();
-}
-
 
 /*************************************************
  * to/from operations
  */
 
+semsim::RDF semsim::RDF::fromRDF(std::string filename) {
+    return semsim::RDF();
+}
+
 void semsim::RDF::fromString(const std::string &str, std::string format) {
     Reader reader(world_, model_, std::move(format));
     reader.fromString(str);
+    namespaces_ = reader.parseNamespacesWithPrefix();
 }
 
 std::string semsim::RDF::toString(std::string format, std::string base_uri) {
@@ -235,15 +236,15 @@ void semsim::RDF::toFile(std::string format) {
 }
 
 
+semsim::RDF semsim::RDF::fromOmex(std::string filename_or_url) {
+    return semsim::RDF();
+}
+
 /********************************************************************
  * Other methods
  */
 
 
-
-semsim::RDF semsim::RDF::fromOmex(std::string filename_or_url) {
-    return semsim::RDF();
-}
 
 semsim::Writer semsim::RDF::makeWriter(const std::string &format, const std::string &base_uri) {
     Writer writer(world_, model_, format, base_uri);

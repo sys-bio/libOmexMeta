@@ -51,7 +51,7 @@ semsim::Writer::Writer(librdf_world *world, librdf_model *model, std::string for
     // set raptor options
     setOption("relativeURIs", "1");
     setOption("xmlDeclaration", "1");
-    setOption("writeBaseURI", "1");
+    setOption("writeBaseURI", "0");
 }
 
 void semsim::Writer::registerNamespace(const std::string &ns, const std::string &prefix) {

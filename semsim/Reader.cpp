@@ -51,7 +51,7 @@ librdf_parser *semsim::Reader::makeParser(std::string format) {
     setOption("scanForRDF", "1");
     setOption("allowNonNsAttributes", "0");
     setOption("allowOtherParsetypes", "1");
-    setOption("allowBagID", "0");
+    setOption("allowBagID", "1");
     setOption("allowRDFtypeRDFlist", "1");
     setOption("normalizeLanguage", "1");
     setOption("nonNFCfatal", "0");
@@ -62,8 +62,18 @@ librdf_parser *semsim::Reader::makeParser(std::string format) {
 }
 
 std::string semsim::Reader::fromString(const std::string &rdf_string) {
+    // use a default base uri?
     librdf_parser_parse_string_into_model(parser_, (const unsigned char *) rdf_string.c_str(), baseUri_, model_);
 
+}
+
+void semsim::Reader::fromFile(const std::string &filename) {
+    raptor_uri *uri = librdf_new_uri_from_filename(world_, (const char *) filename.c_str());
+    if (!uri) {
+        fprintf(stderr, "Failed to create URI\n");
+    }
+    baseUri_ = uri;
+    librdf_parser_parse_into_model(parser_, uri, baseUri_, model_);
 }
 
 void semsim::Reader::setOption(const std::string &option, const std::string &value) {
@@ -74,33 +84,33 @@ void semsim::Reader::setOption(const std::string &option, const std::string &val
     librdf_parser_set_feature(parser_, uri, node);
 }
 
-std::unordered_map<std::string, std::string> semsim::Reader::parseNamespaces() {
+std::unordered_map<const char *, const char *> semsim::Reader::parseNamespacesWithPrefix() {
     int count = librdf_parser_get_namespaces_seen_count(parser_);
-    count -= 1; //(0 indexed C)
-
-    std::unordered_map<std::string, std::string> map;
+    std::unordered_map<const char *, const char *> map;
     raptor_uri *ns_uri;
     unsigned char *ns;
     const char *prefix;
-    std::string nss;
-    while (count >= 0) {
-        ns_uri = librdf_parser_get_namespaces_seen_uri(parser_, count);
+    const char *nss;
+    for (int i = 0; i < count; i++) {
+        ns_uri = librdf_parser_get_namespaces_seen_uri(parser_, i);
+        if (!ns_uri) {
+            throw std::logic_error("couldn't get namespace uri");
+        }
+
         ns = raptor_uri_to_string(ns_uri);
+        if (!ns) {
+            throw std::logic_error("convert namespace uri to string");
+        }
+
         nss = (const char *) ns;
-        prefix = librdf_parser_get_namespaces_seen_prefix(parser_, count);
-        map[prefix] = nss;
-        count--;
+        prefix = librdf_parser_get_namespaces_seen_prefix(parser_, i);
+        if (prefix) {
+            map[prefix] = nss;
+        }
     }
     return map;
 }
 
-void semsim::Reader::fromFile(const std::string &filename) {
-    raptor_uri *uri = librdf_new_uri_from_filename(world_, (const char *) filename.c_str());
-    if (!uri) {
-        fprintf(stderr, "Failed to create URI\n");
-    }
-    librdf_parser_parse_into_model(parser_, uri, baseUri_, model_);
-}
 
 void semsim::Reader::setBaseUri(const std::string &baseUri) {
     this->baseUri_ = librdf_new_uri(world_, (const unsigned char *) baseUri.c_str());

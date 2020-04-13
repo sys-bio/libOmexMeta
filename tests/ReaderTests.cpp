@@ -181,6 +181,15 @@ TEST_F(ReaderTests, TestEqualityBetweenModelPtrs) {
     ASSERT_EQ(model, reader.getModel());
 }
 
+TEST_F(ReaderTests, TestParseNamespaces) {
+    semsim::SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);
+    semsim::Reader reader(world, model, "rdfxml");
+    reader.fromFile(samples.sbml_filename1);
+    auto x = reader.parseNamespacesWithPrefix();
+    int size = x.size();
+    ASSERT_EQ(6, size);
+}
+
 
 TEST_F(ReaderTests, TestSBMLFromFile1) {
     semsim::SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);

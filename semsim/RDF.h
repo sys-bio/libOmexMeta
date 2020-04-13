@@ -19,7 +19,7 @@ namespace semsim {
         librdf_storage *storage_;
         librdf_model *model_;
 
-        std::unordered_map<std::string, std::string> namespaces_;
+        std::unordered_map<const char*, const char*> namespaces_;
 
         semsim::Writer makeWriter(const std::string &format, const std::string &base_uri);
 
@@ -46,9 +46,9 @@ namespace semsim {
 
         bool operator!=(const RDF &rhs) const;
 
-        void setNamespaces(const std::unordered_map<std::string, std::string> &namespaces);
+        void setNamespaces(const std::unordered_map<const char*, const char*> &namespaces);
 
-        const std::unordered_map<std::string, std::string> &getNamespaces() const;
+        const std::unordered_map<const char*, const char*> &getNamespaces() const;
 
         static RDF fromUrl(std::string url);
 

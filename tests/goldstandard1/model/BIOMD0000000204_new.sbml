@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model metaid="metaid_0000002" id="BIOMD0000000204_new">
+    <listOfUnitDefinitions>
+      <unitDefinition id="Time">
+</unitDefinition>
+      <unitDefinition id="Volume">
+</unitDefinition>
+      <unitDefinition id="substance_per_volume">
+</unitDefinition>
+      <unitDefinition id="substance_per_time">
+        <listOfUnits>
+          <unit scale="0" kind="second" multiplier="1" exponent="-1" />
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="substance">
+</unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment constant="true" size="1" metaid="metaid0" name="compartment" id="compartment" spatialDimensions="3" />
+    </listOfCompartments>
+    <listOfSpecies>
+      <species boundaryCondition="true" constant="false" metaid="metaid1" hasOnlySubstanceUnits="false" compartment="compartment" name="degradation" id="degradation" initialConcentration="0" />
+      <species boundaryCondition="true" constant="false" metaid="metaid2" hasOnlySubstanceUnits="false" compartment="compartment" name="NANOG_Gene" id="NANOG_Gene" initialConcentration="0" />
+      <species boundaryCondition="true" constant="false" metaid="metaid3" hasOnlySubstanceUnits="false" compartment="compartment" name="targetGene" id="targetGene" initialConcentration="0.01" />
+      <species boundaryCondition="true" constant="true" metaid="metaid4" hasOnlySubstanceUnits="false" compartment="compartment" id="SOX2" initialConcentration="0.01" />
+      <species boundaryCondition="true" constant="true" metaid="metaid5" hasOnlySubstanceUnits="false" compartment="compartment" id="NANOG" initialConcentration="0.01" />
+      <species boundaryCondition="true" constant="false" metaid="metaid6" hasOnlySubstanceUnits="false" compartment="compartment" name="OCT4_Gene" id="OCT4_Gene" initialConcentration="0" />
+      <species boundaryCondition="true" constant="false" metaid="metaid7" hasOnlySubstanceUnits="false" compartment="compartment" name="SOX2_Gene" id="SOX2_Gene" initialConcentration="0" />
+      <species boundaryCondition="false" constant="false" metaid="metaid8" hasOnlySubstanceUnits="false" compartment="compartment" name="OCT4_SOX2" id="OCT4_SOX2" initialConcentration="0.1" />
+      <species boundaryCondition="true" constant="false" metaid="metaid9" hasOnlySubstanceUnits="false" compartment="compartment" name="A" id="A" initialConcentration="10" />
+      <species boundaryCondition="false" constant="false" metaid="metaid10" hasOnlySubstanceUnits="false" compartment="compartment" name="Target Gene" id="Protein" initialConcentration="0" />
+      <species boundaryCondition="true" constant="false" metaid="metaid11" hasOnlySubstanceUnits="false" compartment="compartment" id="p53" initialConcentration="0" />
+      <species boundaryCondition="true" constant="true" metaid="metaid12" hasOnlySubstanceUnits="false" compartment="compartment" id="OCT4" initialConcentration="0.01" />
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter constant="true" id="a3" metaid="metaid_0000006" value="0.5" />
+      <parameter constant="true" id="eta1" metaid="metaid_0000003" value="0.0001" />
+      <parameter constant="true" id="eta3" metaid="metaid_0000022" value="0.0001" />
+      <parameter constant="true" id="eta5" metaid="metaid_0000012" value="0.0001" />
+      <parameter constant="true" id="f1" metaid="metaid_0000016" value="0.001" />
+      <parameter constant="true" id="f2" metaid="metaid_0000015" value="0.001" />
+      <parameter constant="true" id="eta7" metaid="metaid_0000031" value="0.0001" />
+      <parameter constant="true" id="f3" metaid="metaid_0000017" value="0.05" />
+      <parameter constant="true" id="b1" metaid="metaid_0000008" value="0.0011" />
+      <parameter constant="true" id="b2" metaid="metaid_0000009" value="0.001" />
+      <parameter constant="true" id="b3" metaid="metaid_0000010" value="0.001" />
+      <parameter constant="true" id="k3c" metaid="metaid_0000021" value="5" />
+      <parameter constant="true" id="f" metaid="metaid_0000007" value="1000" />
+      <parameter constant="true" id="e1" metaid="metaid_0000013" value="0.01" />
+      <parameter constant="true" id="e2" metaid="metaid_0000014" value="0.1" />
+      <parameter constant="true" id="a1" metaid="metaid_0000004" value="1" />
+      <parameter constant="true" id="a2" metaid="metaid_0000005" value="0.01" />
+      <parameter constant="true" id="h2" metaid="metaid_0000033" value="1" />
+      <parameter constant="true" id="d1" metaid="metaid_0000026" value="0.0011" />
+      <parameter constant="true" id="d2" metaid="metaid_0000027" value="0.001" />
+      <parameter constant="true" id="d3" metaid="metaid_0000028" value="0.001" />
+      <parameter constant="true" id="k1c" metaid="metaid_0000019" value="0.05" />
+      <parameter constant="true" id="h1" metaid="metaid_0000032" value="0.0011" />
+      <parameter constant="true" id="gamma3" metaid="metaid_0000029" value="1" />
+      <parameter constant="true" id="gamma4" metaid="metaid_0000034" value="0.01" />
+      <parameter constant="true" id="gamma1" metaid="metaid_0000011" value="1" />
+      <parameter constant="true" id="gamma2" metaid="metaid_0000018" value="1" />
+      <parameter constant="true" id="g1" metaid="metaid_0000030" value="0.1" />
+      <parameter constant="true" id="c1" metaid="metaid_0000023" value="1" />
+      <parameter constant="true" id="k2c" metaid="metaid_0000020" value="0.001" />
+      <parameter constant="true" id="c2" metaid="metaid_0000024" value="0.01" />
+      <parameter constant="true" id="c3" metaid="metaid_0000025" value="0.5" />
+    </listOfParameters>
+    <listOfRules>
+      <rateRule variable="degradation">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <cn> 0 </cn>
+        </math>
+            </rateRule>
+      <rateRule variable="NANOG_Gene">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <cn> 0 </cn>
+        </math>
+            </rateRule>
+      <rateRule variable="targetGene">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <cn> 0 </cn>
+        </math>
+            </rateRule>
+      <rateRule variable="OCT4_Gene">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <cn> 0 </cn>
+        </math>
+            </rateRule>
+      <rateRule variable="SOX2_Gene">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <cn> 0 </cn>
+        </math>
+            </rateRule>
+      <rateRule variable="A">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <cn> 0 </cn>
+        </math>
+            </rateRule>
+      <rateRule variable="p53">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <cn> 0 </cn>
+        </math>
+            </rateRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction fast="false" id="J6" metaid="metaid13" reversible="true">
+        <listOfReactants>
+          <speciesReference stoichiometry="1" constant="false" species="SOX2_Gene" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference stoichiometry="1" constant="true" species="SOX2" />
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="A" />
+          <modifierSpeciesReference species="NANOG" />
+          <modifierSpeciesReference species="OCT4_SOX2" />
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <divide />
+              <apply>
+                <plus />
+                <ci> eta3 </ci>
+                <apply>
+                  <times />
+                  <ci> c1 </ci>
+                  <ci> A </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> c2 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> c3 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                  <ci> NANOG </ci>
+                </apply>
+              </apply>
+              <apply>
+                <plus />
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide />
+                  <ci> eta3 </ci>
+                  <ci> f </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> d1 </ci>
+                  <ci> A </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> d2 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> d3 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                  <ci> NANOG </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction fast="false" id="J1" metaid="metaid14" reversible="true">
+        <listOfReactants>
+          <speciesReference stoichiometry="1" constant="true" species="OCT4" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference stoichiometry="1" constant="false" species="degradation" />
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times />
+              <ci> gamma1 </ci>
+              <ci> OCT4 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction fast="false" id="J7" metaid="metaid15" reversible="true">
+        <listOfReactants>
+          <speciesReference stoichiometry="1" constant="true" species="SOX2" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference stoichiometry="1" constant="false" species="degradation" />
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times />
+              <ci> gamma3 </ci>
+              <ci> SOX2 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction fast="false" id="J0" metaid="metaid16" reversible="true">
+        <listOfReactants>
+          <speciesReference stoichiometry="1" constant="false" species="OCT4_Gene" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference stoichiometry="1" constant="true" species="OCT4" />
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="A" />
+          <modifierSpeciesReference species="NANOG" />
+          <modifierSpeciesReference species="OCT4_SOX2" />
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <divide />
+              <apply>
+                <plus />
+                <ci> eta1 </ci>
+                <apply>
+                  <times />
+                  <ci> a1 </ci>
+                  <ci> A </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> a2 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> a3 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                  <ci> NANOG </ci>
+                </apply>
+              </apply>
+              <apply>
+                <plus />
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide />
+                  <ci> eta1 </ci>
+                  <ci> f </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> b1 </ci>
+                  <ci> A </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> b2 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> b3 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                  <ci> NANOG </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction fast="false" id="J3" metaid="metaid17" reversible="true">
+        <listOfReactants>
+          <speciesReference stoichiometry="1" constant="true" species="NANOG" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference stoichiometry="1" constant="false" species="degradation" />
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times />
+              <ci> gamma2 </ci>
+              <ci> NANOG </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction fast="false" id="J4" metaid="metaid18" reversible="true">
+        <listOfReactants>
+          <speciesReference stoichiometry="1" constant="true" species="SOX2" />
+          <speciesReference stoichiometry="1" constant="true" species="OCT4" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference stoichiometry="1" constant="false" species="OCT4_SOX2" />
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <minus />
+              <apply>
+                <times />
+                <ci> k1c </ci>
+                <ci> OCT4 </ci>
+                <ci> SOX2 </ci>
+              </apply>
+              <apply>
+                <times />
+                <ci> k2c </ci>
+                <ci> OCT4_SOX2 </ci>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction fast="false" id="J2" metaid="metaid19" reversible="true">
+        <listOfReactants>
+          <speciesReference stoichiometry="1" constant="false" species="NANOG_Gene" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference stoichiometry="1" constant="true" species="NANOG" />
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="p53" />
+          <modifierSpeciesReference species="OCT4_SOX2" />
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <divide />
+              <apply>
+                <plus />
+                <ci> eta5 </ci>
+                <apply>
+                  <times />
+                  <ci> e1 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> e2 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                  <ci> NANOG </ci>
+                </apply>
+              </apply>
+              <apply>
+                <plus />
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide />
+                  <ci> eta5 </ci>
+                  <ci> f </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> f2 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> f1 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                  <ci> NANOG </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> f3 </ci>
+                  <ci> p53 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction fast="false" id="J9" metaid="metaid20" reversible="true">
+        <listOfReactants>
+          <speciesReference stoichiometry="1" constant="false" species="Protein" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference stoichiometry="1" constant="false" species="degradation" />
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times />
+              <ci> gamma4 </ci>
+              <ci> Protein </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction fast="false" id="J5" metaid="metaid21" reversible="true">
+        <listOfReactants>
+          <speciesReference stoichiometry="1" constant="false" species="OCT4_SOX2" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference stoichiometry="1" constant="false" species="degradation" />
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <times />
+              <ci> k3c </ci>
+              <ci> OCT4_SOX2 </ci>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction fast="false" id="J8" metaid="metaid22" reversible="true">
+        <listOfReactants>
+          <speciesReference stoichiometry="1" constant="false" species="targetGene" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference stoichiometry="1" constant="false" species="Protein" />
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="NANOG" />
+          <modifierSpeciesReference species="OCT4_SOX2" />
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <divide />
+              <apply>
+                <plus />
+                <apply>
+                  <times />
+                  <ci> g1 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                </apply>
+                <ci> eta7 </ci>
+              </apply>
+              <apply>
+                <plus />
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide />
+                  <ci> eta7 </ci>
+                  <ci> f2 </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> h1 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                </apply>
+                <apply>
+                  <times />
+                  <ci> h2 </ci>
+                  <ci> OCT4_SOX2 </ci>
+                  <ci> NANOG </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
