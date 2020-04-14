@@ -30,14 +30,6 @@ namespace semsim {
     };
 
 
-    class RaptorStatementHandler {
-    public:
-        static void raptorStatementPrintAsNTriples(void *user_data, raptor_statement *triple);
-
-        static void raptorStatementPrintStatement(void *user_data, raptor_statement *triple);
-
-    };
-
 
 }
 
