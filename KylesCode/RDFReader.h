@@ -11,7 +11,6 @@ namespace semsim {
     public:
         static std::string RaptorURIToString(raptor_uri *u);
 
-
         static Url RaptorTermToURI(raptor_term *t);
 
         static std::string RaptorTermToRepr(raptor_term *t);

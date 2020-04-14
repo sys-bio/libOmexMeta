@@ -23,6 +23,7 @@ namespace semsim {
 
         std::string generate() const;
 
+        std::string generate(long n) const;
 
         int maxNumber() const;
 
