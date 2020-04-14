@@ -41,9 +41,7 @@ Uri <-- ControlledVocabulary
 class BiomodelsQualifier {}
 class OPB {}
 class CHEBI {}
-ControlledVocabulary <|-- BiomodelsQualifier
-ControlledVocabulary <|-- OPB
-ControlledVocabulary <|-- CHEBI
+
 
 
 class Resource {
@@ -66,8 +64,6 @@ class ResourceUrl {}
 
 class ResourceLiteral <<NotYetImplemented>>{}
 
-Resource <|-- ResourceUrl
-Resource <|-- ResourceLiteral
 
 note top of Resource
     Object part of rdf.
@@ -81,10 +77,6 @@ class Triple {
     + serialize() : std::string
 }
 
-Subject <-- Triple
-Predicate <-- Triple
-Resource <-- Triple
-
 class ListOfTriples <<NotYetImplemented>>{
     + triples : std::vector<Triple*>
     + serialize() : std::string
@@ -94,33 +86,18 @@ interface IRDF {
     + serialize() : std::string
 }
 
-IRDF <|-- Triple
-IRDF <|-- ListOfTriples
-IRDF <|-- SingularAnnotation
-ListOfTriples --> Triple
-
-Uri <-- Subject
-
 class PhysicalProperty <<NotYetImplemented>>{
     + triple : Triple*
 }
-Triple <-- PhysicalProperty
 
 interface Entity<<NotYetImplemented>> {
     + triple : Triple
 }
-Triple <-- Entity
 
 class PhysicalEntity <<NotYetImplemented>>{}
 class PhysicalProcess<<NotYetImplemented>> {}
 class PhysicalForce <<NotYetImplemented>>{}
 class PhysicalDependency <<NotYetImplemented>>{}
-
-Entity <|-- PhysicalEntity
-Entity <|-- PhysicalProcess
-Entity <|-- PhysicalForce
-Entity <|-- PhysicalDependency
-
 
 'Base class for all annotations
 class Annotation<<NotYetImplemented>> {
@@ -161,13 +138,6 @@ class CompositeAnnotation<<NotYetImplemented>> {
     + serialize() :std::string
 }
 
-SingularAnnotation --|> Annotation
-CompositeAnnotation --|> Annotation
-Triple <-- SingularAnnotation
-
-Entity <-- CompositeAnnotation
-PhysicalProperty <-- CompositeAnnotation
-
 
 class ListOfAnnotations <<NotYetImplemented>>{
     + annotations : std::unique_ptr<Annotation>
@@ -176,8 +146,6 @@ class ListOfAnnotations <<NotYetImplemented>>{
     + toSBML() :    void
     + toCellML() :  void
 }
-
-Annotation <-- ListOfAnnotations
 
 
 class LibRDFModel {
@@ -211,6 +179,37 @@ class Serializer {
     toFile(): void
 }
 
+
+IRDF <|-- Triple
+IRDF <|-- ListOfTriples
+IRDF <|-- SingularAnnotation
+ListOfTriples --> Triple
+
+Subject <-- Triple
+Predicate <-- Triple
+Resource <-- Triple
+ControlledVocabulary <|-- BiomodelsQualifier
+ControlledVocabulary <|-- OPB
+ControlledVocabulary <|-- CHEBI
+Resource <|-- ResourceUrl
+Resource <|-- ResourceLiteral
+
+Uri <-- Subject
+Triple <-- PhysicalProperty
+Triple <-- Entity
+Entity <|-- PhysicalEntity
+Entity <|-- PhysicalProcess
+Entity <|-- PhysicalForce
+Entity <|-- PhysicalDependency
+
+SingularAnnotation --|> Annotation
+CompositeAnnotation --|> Annotation
+Triple <-- SingularAnnotation
+
+Entity <-- CompositeAnnotation
+PhysicalProperty <-- CompositeAnnotation
+
+Annotation <-- ListOfAnnotations
 
 
 

@@ -8,7 +8,7 @@ add_executable(semsim-tests
         ControlledVocabularyTests.cpp
         RaptorUtilsTests.cpp
         RDFTests.cpp
-        WriterTests.cpp AnnotationSamples.h ReaderTests.cpp SemsimCombineArchiveTests.cpp CurlGetTests.cpp SemsimUtilsTests.cpp)
+        WriterTests.cpp AnnotationSamples.h ReaderTests.cpp SemsimCombineArchiveTests.cpp CurlGetTests.cpp SemsimUtilsTests.cpp learningLibXml.h TreeTests.cpp XmlAssistantTests.cpp)
 
 
 target_link_libraries(semsim-tests PRIVATE

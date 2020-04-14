@@ -26,15 +26,4 @@ namespace semsim {
     }
 
 
-    void RaptorStatementHandler::raptorStatementPrintAsNTriples(void *user_data, raptor_statement *triple) {
-        raptor_statement_print_as_ntriples(triple, stdout);
-        fputc('\n', stdout);
-    }
-
-
-    void RaptorStatementHandler::raptorStatementPrintStatement(void *user_data, raptor_statement *triple) {
-        raptor_statement_print(triple, stdout);
-        fputc('\n', stdout);
-    }
-
 }
