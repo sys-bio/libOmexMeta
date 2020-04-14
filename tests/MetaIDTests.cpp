@@ -25,6 +25,25 @@ TEST_F(MetaIDTests, TestCountDigits2) {
     ASSERT_EQ(actual, expected);
 }
 
+TEST_F(MetaIDTests, TestCountDigits3) {
+    int actual = semsim::MetaID::countDigits(0);
+    int expected = 1;
+    ASSERT_EQ(actual, expected);
+}
+
+TEST_F(MetaIDTests, TestCountDigits4) {
+    int actual = semsim::MetaID::countDigits(7);
+    int expected = 1;
+    ASSERT_EQ(actual, expected);
+}
+
+TEST_F(MetaIDTests, TestCountDigits5) {
+    int actual = semsim::MetaID::countDigits(1);
+    int expected = 1;
+    ASSERT_EQ(actual, expected);
+}
+
+
 TEST_F(MetaIDTests, TestMaxNumber1) {
     semsim::MetaID metaId("metaId", 4, 3);
     int actual = metaId.maxNumber();
@@ -55,6 +74,20 @@ TEST_F(MetaIDTests, TestGenerate2) {
     semsim::MetaID metaId("SemsimID", 1453, 6);
     std::string actual = metaId.generate();
     std::string expected = "SemsimID001453";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(MetaIDTests, TestGenerate3) {
+    semsim::MetaID metaId("SemsimID", 1453, 6);
+    std::string actual = metaId.generate(9);
+    std::string expected = "SemsimID000009";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(MetaIDTests, TestGenerate4) {
+    semsim::MetaID metaId("SemsimID", 0, 4);
+    std::string actual = metaId.generate();
+    std::string expected = "SemsimID0000";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 

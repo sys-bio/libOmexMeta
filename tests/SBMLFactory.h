@@ -112,21 +112,21 @@ public:
 
     SBMLDocument *buildModel() override {
         SBMLDocument *doc;
-        Model *m;
+        Model *sbml_model_ptr;
         std::string xml;
 
         doc = new SBMLDocument(3, 2);
-        m = doc->createModel("beta_cell_model");
+        sbml_model_ptr = doc->createModel("TestModelNotAnnotated");
 
         // create a compartment to represent the cytosol
-        Compartment *comp = m->createCompartment();
+        Compartment *comp = sbml_model_ptr->createCompartment();
         comp->setId("cytosol");
         comp->setMetaId("cytosol");
         comp->setSize(1);
         comp->setConstant(true);
 
         // create molar unit
-        UnitDefinition *unitdef = m->createUnitDefinition();
+        UnitDefinition *unitdef = sbml_model_ptr->createUnitDefinition();
         unitdef->setId("molar");
         Unit *unit = unitdef->createUnit();
         unit->setKind(UNIT_KIND_MOLE);
@@ -141,30 +141,65 @@ public:
         unit->setMultiplier(1);
         unit->setScale(1);
 
-        // create the species for glucose
-        Species *s = m->createSpecies();
-        s->setCompartment("cytosol");
-        s->setId("glucose");
-        s->setMetaId("glucose");
-        s->setInitialConcentration(10);
-        s->setUnits("molar");
-        s->setHasOnlySubstanceUnits(false);
-        s->setConstant(false);
-        s->setBoundaryCondition(false);
+        Species *X = sbml_model_ptr->createSpecies();
+        X->setCompartment("cytosol");
+        X->setId("X");
+        X->setMetaId("Meta00001");
+        X->setInitialConcentration(10);
+        X->setUnits("molar");
+        X->setHasOnlySubstanceUnits(false);
+        X->setConstant(false);
+        X->setBoundaryCondition(false);
 
-        // create import reaction for glucose
-        Reaction *reaction = m->createReaction();
-        reaction->setId("glucose_import");
-        reaction->setReversible(false);
+        Species *Y = sbml_model_ptr->createSpecies();
+        Y->setCompartment("cytosol");
+        Y->setId("Y");
+        Y->setInitialConcentration(20);
+        Y->setUnits("molar");
+        Y->setHasOnlySubstanceUnits(false);
+        Y->setConstant(false);
+        Y->setBoundaryCondition(false);
 
-        SpeciesReference *sr = reaction->createProduct();
-        sr->setSpecies("glucose");
+        Species *Z = sbml_model_ptr->createSpecies();
+        Z->setCompartment("cytosol");
+        Z->setId("Y");
+        Z->setInitialConcentration(15);
+        Z->setUnits("molar");
+        Z->setHasOnlySubstanceUnits(false);
+        Z->setConstant(false);
+        Z->setBoundaryCondition(false);
+
+        Reaction *x2y = sbml_model_ptr->createReaction();
+        x2y->setId("X2Y");
+        x2y->setReversible(false);
+
+        // add Y as product for reaction
+        SpeciesReference *sr = x2y->createProduct();
+        sr->setSpecies("Y");
         sr->setConstant(false);
-        KineticLaw *k = reaction->createKineticLaw();
+
+        KineticLaw *k = x2y->createKineticLaw();
         Parameter *p = k->createParameter();
-        p->setId("glucose_import_rate");
+        p->setId("kx2y");
         p->setValue(1);
-        k->setMath(SBML_parseL3FormulaWithModel("glucose_import_rate", m));
+        k->setMath(SBML_parseL3FormulaWithModel("x*kx2y", sbml_model_ptr));
+
+        Reaction *y2z = sbml_model_ptr->createReaction();
+        y2z->setId("y2z");
+        y2z->setReversible(false);
+
+        // add Y as product for reaction
+        SpeciesReference *sr2 = y2z->createProduct();
+        sr2->setSpecies("Z");
+        sr2->setConstant(false);
+
+        KineticLaw *k2 = y2z->createKineticLaw();
+        Parameter *p2 = k->createParameter();
+        p2->setId("ky2z");
+        p2->setValue(1);
+        k2->setMath(SBML_parseL3FormulaWithModel("y*ky2z", sbml_model_ptr));
+
+
         return doc;
     }
 };

@@ -38,6 +38,9 @@ int semsim::MetaID::maxNumber() const {
 }
 
 int semsim::MetaID::countDigits(long n) {
+    if (n == 0) {
+        return 1;
+    }
     int count = 0;
     while (n != 0) {
         n = n / 10;
@@ -47,10 +50,12 @@ int semsim::MetaID::countDigits(long n) {
 }
 
 std::string semsim::MetaID::generate() const {
+    return generate(number_);
+}
 
-
+std::string semsim::MetaID::generate(long n) const {
     // work out how many 0's we need to pad the ID
-    int number_of_digits_in_number = countDigits(number_);
+    int number_of_digits_in_number = countDigits(n);
     if (number_of_digits_in_number > num_digits_) {
         throw std::logic_error("This should never happen as it was caught in the "
                                "last check");
@@ -62,7 +67,7 @@ std::string semsim::MetaID::generate() const {
     for (int i = 0; i < padding_needed; i++) {
         os << "0";
     }
-    os << number_;
+    os << n;
     return os.str();
 }
 

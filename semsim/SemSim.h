@@ -14,6 +14,7 @@ do {                                        \
 #include "semsim/RDF.h"
 #include "semsim/CurlGet.h"
 #include "semsim/SemsimUtils.h"
+#include "semsim/MetaID.h"
 
 // these may be included in the finished product
 #include "semsim/uri.h"
