@@ -31,19 +31,27 @@ void semsim::XmlAssistant::addMetaIdsRecursion(xmlNode *a_node, std::vector<std:
     xmlNode *cur_node = nullptr;
     long count = 0;
     for (cur_node = a_node; cur_node; cur_node = cur_node->next) {
+        // isolate element nodes
         if (cur_node->type == XML_ELEMENT_NODE) {
-            bool has_meta_id = xmlHasProp(cur_node, (const xmlChar *) "metaid");
-            if (!has_meta_id) {
-                // if the metaid attribute is missing from element, we generate it and give it a value
-                std::string id;
-                semsim::XmlAssistant::generateMetaId(seen_metaids, count, metaId, id);
-                xmlNewProp(cur_node, (const xmlChar *) "metaid", (const xmlChar *) id.c_str());
-                seen_metaids.push_back(id);
-                count += 1;
-            } else {
-                // if the metaid attribute is already there, we just take note by adding it to seen_metaids.
-                xmlChar *id = xmlGetProp(cur_node, (const xmlChar *) "metaid");
-                seen_metaids.emplace_back((const char *) id);
+            if (std::find(getValidElements().begin(), getValidElements().end(),
+                          std::string((const char *) cur_node->name)) != getValidElements().end()
+                ||
+                (getValidElements().size() == 1 && strcmp(getValidElements()[0].c_str(), (const char *) "All") != 0)) {
+                // if the node name is in our list of valid element or if valid_elements_ = ["All"]
+                // test to see whether the element has the metaid attribute
+                bool has_meta_id = xmlHasProp(cur_node, (const xmlChar *) "metaid");
+                if (!has_meta_id) {
+                    // if the metaid attribute is missing from element, we generate it and give it a value
+                    std::string id;
+                    semsim::XmlAssistant::generateMetaId(seen_metaids, count, metaId, id);
+                    xmlNewProp(cur_node, (const xmlChar *) "metaid", (const xmlChar *) id.c_str());
+                    seen_metaids.push_back(id);
+                    count += 1;
+                } else {
+                    // if the metaid attribute is already there, we just take note by adding it to seen_metaids.
+                    xmlChar *id = xmlGetProp(cur_node, (const xmlChar *) "metaid");
+                    seen_metaids.emplace_back((const char *) id);
+                }
             }
         }
         // recursion, we do this for every node
@@ -76,4 +84,12 @@ std::string semsim::XmlAssistant::addMetaIds() {
     xmlCleanupParser();
     std::string x = std::string((const char *) s);
     return x;
+}
+
+const std::vector<std::string> &semsim::SBMLAssistant::getValidElements() const {
+    return valid_elements_;
+}
+
+const std::vector<std::string> &semsim::CellMLAssistant::getValidElements() const {
+    return valid_elements_;
 }
