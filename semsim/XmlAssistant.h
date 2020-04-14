@@ -16,7 +16,7 @@ namespace semsim {
         std::string base_;
 
     public:
-        XmlAssistant(std::string xml, std::string base);
+        XmlAssistant(std::string xml, std::string base = "MetaID");
 
         void addMetaIds();
 
