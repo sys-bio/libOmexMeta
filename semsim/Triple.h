@@ -13,7 +13,6 @@
 #include "IRDF.h"
 
 
-//todo get some real singular annotations and parse into a Triple. Does it work?
 namespace semsim {
     class Triple : private IRDF {
         Subject subject;
@@ -22,8 +21,11 @@ namespace semsim {
     public:
         Triple(Subject subject, Predicate predicate, Resource resource);
 
+        Triple(std::string subject, std::string predicate, std::string resource);
+
         Triple() = default;
 
+        //todo Triple doesn't use pointers therefore default constructors are okay.
         ~Triple() = default;
 
         Triple(const Triple &triple);

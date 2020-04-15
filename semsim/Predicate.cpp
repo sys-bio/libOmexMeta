@@ -1,36 +1,106 @@
 //
-// Created by Ciaran on 4/4/2020.
+// Created by Ciaran on 4/5/2020.
 //
 
 #include "Predicate.h"
-#include "ControlledVocabulary.h"
 
+#include <iostream>
+#include <memory>
+
+
+//todo should I relabel Predicate to Term???
 namespace semsim {
+    Predicate::Predicate(std::string qualifier) : qualifier(std::move(qualifier)) {}
 
-    Predicate::Predicate(const std::shared_ptr<ControlledVocabulary> &term) {
-        this->term = term;
+    const std::string &Predicate::getCvNamespace() const {
+        return cv_namespace;
     }
 
     bool Predicate::operator==(const Predicate &rhs) const {
-        return *term == *rhs.term;
+        return cv_namespace == rhs.cv_namespace &&
+               root == rhs.root &&
+               qualifier == rhs.qualifier;
+    }
+
+    std::ostream &operator<<(std::ostream &os, const Predicate &vocabulary) {
+        os << vocabulary.getUri().str();
+        return os;
     }
 
     bool Predicate::operator!=(const Predicate &rhs) const {
         return !(rhs == *this);
     }
 
-    std::ostream &operator<<(std::ostream &os, const Predicate &predicate) {
-        os << "Predicate(" << *predicate.term << ")";
-        return os;
+    const std::string &Predicate::getRoot() const {
+        return root;
+    }
+
+    const std::string &Predicate::getQualifier() const {
+        return qualifier;
+    }
+
+    const std::vector<std::string> &Predicate::getValidTerms() const {
+        return valid_terms;
+    }
+
+    void Predicate::setRoot(const std::string &root) {
+        Predicate::root = root;
     }
 
     Uri Predicate::getUri() const {
-        return term->getUri();
+        return Uri(root + qualifier);
     }
 
-    const std::shared_ptr<ControlledVocabulary> &Predicate::getTerm() const {
-        return term;
+    void Predicate::setCvNamespace(const std::string &cvNamespace) {
+        cv_namespace = cvNamespace;
+    }
+
+    void Predicate::verify() {
+        if (!(std::find(valid_terms.begin(), valid_terms.end(), qualifier) != valid_terms.end())) {
+            std::ostringstream os;
+            os << "Invalid qualifier given. Qualifiers available for " << cv_namespace
+               << " include: ";
+            for (auto &i : valid_terms) {
+                os << i << ", ";
+            }
+            throw std::invalid_argument(os.str());
+        }
+    }
+
+    void Predicate::setValidTerms() {}
+
+    std::shared_ptr<Predicate> Predicate::make_shared() {
+        return std::make_shared<Predicate>(*this);
+    }
+
+//    std::shared_ptr<int> Predicate::make_shared() {
+//        return std::make_shared<int>(4);
+//    }
+
+
+    BiomodelsQualifier::BiomodelsQualifier(const std::string &qualifier)
+            : Predicate(qualifier) {
+        setValidTerms();
+        setRoot("http://biomodels.net/biology-qualifiers/"); //namespace;
+        setCvNamespace("bqb"); //prefix
+        verify();
+    }
+
+    void BiomodelsQualifier::setValidTerms() { //term
+        this->valid_terms = {
+                "is",
+                "hasPart",
+                "isPartOf",
+                "isVersionOf",
+                "hasVersion",
+                "isHomologTo",
+                "isDescribedBy",
+                "isEncodedBy",
+                "encodes",
+                "occursIn",
+                "hasProperty",
+                "isPropertyOf",
+                "hasTaxon"
+        };
     }
 }
-
-

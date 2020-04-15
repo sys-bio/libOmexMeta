@@ -28,7 +28,7 @@ namespace semsim {
 
         void addMetaIdsRecursion(xmlNode *a_node, std::vector<std::string> &seen_metaids);
 
-        void generateMetaId(std::vector<std::string> &seen_metaids, long count, MetaID metaid_gen, std::string &id);
+        void generateMetaId(std::vector<std::string> &seen_metaids, long count, const MetaID& metaid_gen, std::string &id);
 
         std::vector<std::string> valid_elements_{"Any"};
 
@@ -36,7 +36,7 @@ namespace semsim {
 
         explicit XmlAssistant(std::string xml, std::string base = "MetaID", int metaid_num_digits = 4);
 
-        std::string addMetaIds();
+        std::pair<std::string, std::vector<std::string>> addMetaIds();
 
         virtual const std::vector<std::string> &getValidElements() const;
     };
@@ -85,6 +85,7 @@ namespace semsim {
     public:
 
         static XmlAssistantPtr generate(const std::string& xml, XmlAssistantType type);
+
 
 
     };

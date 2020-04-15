@@ -3,7 +3,7 @@
 //
 
 #include "gtest/gtest.h"
-#include "semsim/ControlledVocabulary.h"
+#include "semsim/Predicate.h"
 
 
 class ControlledVocabularyTests : public ::testing::Test {

@@ -28,9 +28,9 @@ TEST_F(XmlAssistantTests, TestValidElements) {
 TEST_F(XmlAssistantTests, TestMetaIdsAll) {
     semsim::MetaID metaId("SemsimMetaid", 0, 4);
     std::string sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
-    semsim::XmlAssistant xmlAssistant(sbml,
-                                      "SemsimMetaid", 4);
-    sbml = xmlAssistant.addMetaIds();
+    semsim::XmlAssistant xmlAssistant(sbml, "SemsimMetaid", 4);
+    auto sbml_and_meta_ids = xmlAssistant.addMetaIds();
+    sbml = sbml_and_meta_ids.first;
     std::string expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                            "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\" metaid=\"SemsimMetaid0000\">\n"
                            "  <model id=\"TestModelNotAnnotated\" metaid=\"SemsimMetaid0001\">\n"
@@ -111,7 +111,8 @@ TEST_F(XmlAssistantTests, TestMetaIdsSBML) {
     std::string sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
     semsim::SBMLAssistant assistant(sbml,
                                     "SemsimMetaid", 4);
-    sbml = assistant.addMetaIds();
+    auto sbml_with_metaids = assistant.addMetaIds();
+    sbml = sbml_with_metaids.first;
     std::string expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                            "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\">\n"
                            "  <model id=\"TestModelNotAnnotated\" metaid=\"SemsimMetaid0000\">\n"
@@ -175,8 +176,11 @@ TEST_F(XmlAssistantTests, TestXmlFactory1) {
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
             semsim::ASSISTANT_TYPE_SBML);
 
-    std::string with_metaid = assistantPtr->addMetaIds();
-    std::cout << with_metaid << std::endl;
+    auto  with_metaid = assistantPtr->addMetaIds();
+    std::cout << with_metaid.first << std::endl;
+    for (auto &i : with_metaid.second){
+        std::cout << i << std::endl;
+    }
 
 //    semsim::XmlAssistantPtr x = xmlAssistantFactory(
 //            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),

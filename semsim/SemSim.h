@@ -23,7 +23,7 @@ do {                                        \
 #include "semsim/Subject.h"
 #include "semsim/Resource.h"
 #include "semsim/Predicate.h"
-#include "semsim/ControlledVocabulary.h"
+#include "semsim/Predicate.h"
 #include "semsim/SemsimCombineArchive.h"
 
 #endif //LIBSEMGEN_SEMSIM_H
