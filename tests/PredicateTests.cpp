@@ -3,7 +3,7 @@
 //
 #include <memory>
 #include <semsim/Predicate.h>
-#include "semsim/ControlledVocabulary.h"
+#include "semsim/Predicate.h"
 #include "gtest/gtest.h"
 
 

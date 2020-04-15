@@ -9,33 +9,28 @@
 class XmlAssistant;
 
 #include "XmlAssistant.h"
+#include "Predicate.h"
+#include "Resource.h"
+#include "Triple.h"
 
 namespace semsim {
 
-    template<class T>
     class Editor {
     private:
         std::string xml_;
-//        XmlAssistantPtr assistantPtr_;
+        std::vector<std::string> metaids_;
 
     public:
-        std::string addMetaIds() {
-            T xmlAssistant(xml_);
-            return xmlAssistant.addMetaIds();
-        }
+        const std::string &getXml() const;
 
+        const std::vector<std::string> &getMetaids() const;
 
-        explicit Editor(std::string xml) :
-                xml_(std::move(xml)) {
-        }
+        explicit Editor(std::string xml, XmlAssistantType type);
 
-        std::string getMetaIds() {
-            return std::__cxx11::string();
-        }
-
-        void addAnnotation() {
-
-        }
+        void addAnnotation(std::string metaid, Predicate cvterm, std::string resource) ;
+        void addAnnotation(std::string metaid, Predicate cvterm, Resource resource) ;
+        void addAnnotation(Triple triple);
+        void addAnnotation(TripleList tripleList);
         //overloaded
 
         void removeAnnotation() {

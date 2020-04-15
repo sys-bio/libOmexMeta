@@ -2,16 +2,15 @@
 set(SEMSIM_SOURCES
         uri.h uri.cpp
         Subject.h Subject.cpp
-        Predicate.cpp Predicate.h
         Resource.cpp Resource.h
         Triple.h Triple.cpp
         semsim.h
         IRDF.h
-        ControlledVocabulary.cpp ControlledVocabulary.h
+        Predicate.cpp Predicate.h
         RaptorUtils.cpp RaptorUtils.h
         RDF.cpp RDF.h
         Writer.h Writer.cpp
-        Reader.h Reader.cpp SemsimCombineArchive.cpp SemsimCombineArchive.h CurlGet.cpp CurlGet.h SemsimUtils.cpp SemsimUtils.h XmlAssistant.cpp XmlAssistant.h MetaID.cpp MetaID.h Editor.h)
+        Reader.h Reader.cpp SemsimCombineArchive.cpp SemsimCombineArchive.h CurlGet.cpp CurlGet.h SemsimUtils.cpp SemsimUtils.h XmlAssistant.cpp XmlAssistant.h MetaID.cpp MetaID.h Editor.h Editor.cpp TripleList.cpp TripleList.h)
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)

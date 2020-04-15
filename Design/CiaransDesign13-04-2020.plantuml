@@ -39,21 +39,21 @@ abstract class IRDF {
 +{abstract} serialize(std::string format) : std::string
 }
 
-class Predicate {
-    +Predicate()
-    +Predicate(const std::shared_ptr<ControlledVocabulary>& term)
-    +getUri() : Uri 
-    +operator!=(const Predicate& rhs) : bool 
-    +operator==(const Predicate& rhs) : bool 
-    +operator<<(std::ostream& os, const Predicate& predicate) : std : : ostream&
-    -term : std::shared_ptr<ControlledVocabulary>
-    +getTerm() : std::shared_ptr<ControlledVocabulary>& 
-}
+'class Predicate {
+'    +Predicate()
+'    +Predicate(const std::shared_ptr<ControlledVocabulary>& term)
+'    +getUri() : Uri
+'    +operator!=(const Predicate& rhs) : bool
+'    +operator==(const Predicate& rhs) : bool
+'    +operator<<(std::ostream& os, const Predicate& predicate) : std : : ostream&
+'    -term : std::shared_ptr<ControlledVocabulary>
+'    +getTerm() : std::shared_ptr<ControlledVocabulary>&
+'}
 
-class PredicateNamespaces {
-    +PredicateNamespaces()
-    +{static} getNamespaces() : std::unordered_map<std::string , std::string>
-}
+'class PredicateNamespaces {
+'    +PredicateNamespaces()
+'    +{static} getNamespaces() : std::unordered_map<std::string , std::string>
+'}
 
 
 class RaptorUtils {
@@ -177,12 +177,11 @@ IRDF <|-- ListOfTriples
 IRDF <|-- SingularAnnotation
 ListOfTriples --> Triple
 
-Subject <-- Triple
-Predicate <-- Triple
-Resource <-- Triple
+Subject *-- Triple
+ControlledVocabulary *-- Triple
+Resource *-- Triple
 ControlledVocabulary <|-- BiomodelsQualifier
-Resource <|-- ResourceUrl
-Resource <|-- ResourceLiteral
+
 
 Uri <-- Subject
 Triple <-- PhysicalProperty
