@@ -72,5 +72,8 @@ namespace semsim {
 
     };
 
+    typedef std::unique_ptr<XmlAssistant> XmlAssistantPtr;
+
+
 }
 #endif //LIBSEMGEN_XMLASSISTANT_H
