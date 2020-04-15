@@ -11,10 +11,15 @@
 #include <libxml/parser.h>
 #include <libxml/tree.h>
 #include <memory>
-#include "semsim/Editor.h"
 #include "semsim/MetaID.h"
 
 namespace semsim {
+    enum XmlAssistantType {
+        ASSISTANT_TYPE_SBML,
+        ASSISTANT_TYPE_CELLML,
+        ASSISTANT_TYPE_OTHER,
+
+    };
 
     class XmlAssistant {
         std::string xml_;
@@ -76,6 +81,12 @@ namespace semsim {
 
     typedef std::unique_ptr<XmlAssistant> XmlAssistantPtr;
 
+    class XmlAssistantFactory {
+    public:
 
+        static XmlAssistantPtr generate(const std::string& xml, XmlAssistantType type);
+
+
+    };
 }
 #endif //LIBSEMGEN_XMLASSISTANT_H
