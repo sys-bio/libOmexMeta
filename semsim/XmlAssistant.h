@@ -10,7 +10,9 @@
 #include "iostream"
 #include <libxml/parser.h>
 #include <libxml/tree.h>
-#include "semsim/SemSim.h"
+#include <memory>
+#include "semsim/Editor.h"
+#include "semsim/MetaID.h"
 
 namespace semsim {
 
