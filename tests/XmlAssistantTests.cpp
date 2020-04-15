@@ -170,4 +170,17 @@ TEST_F(XmlAssistantTests, TestMetaIdsSBML) {
     ASSERT_STREQ(expected.c_str(), sbml.c_str());
 }
 
+TEST_F(XmlAssistantTests, TestXmlFactory1) {
+    semsim::XmlAssistantPtr assistantPtr = semsim::XmlAssistantFactory::generate(
+            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            semsim::ASSISTANT_TYPE_SBML);
 
+    std::string with_metaid = assistantPtr->addMetaIds();
+    std::cout << with_metaid << std::endl;
+
+//    semsim::XmlAssistantPtr x = xmlAssistantFactory(
+//            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+//            semsim::ASSISTANT_TYPE_SBML
+//    );
+
+}

@@ -93,3 +93,22 @@ const std::vector<std::string> &semsim::SBMLAssistant::getValidElements() const 
 const std::vector<std::string> &semsim::CellMLAssistant::getValidElements() const {
     return valid_elements_;
 }
+
+semsim::XmlAssistantPtr semsim::XmlAssistantFactory::generate(const std::string& xml, XmlAssistantType type) {
+    switch (type) {
+        case semsim::ASSISTANT_TYPE_SBML: {
+            semsim::SBMLAssistant sbmlAssistant(xml);
+            return std::make_unique<semsim::SBMLAssistant>(sbmlAssistant);
+        }
+        case semsim::ASSISTANT_TYPE_CELLML: {
+            semsim::CellMLAssistant cellMlAssistant(xml);
+            return std::make_unique<semsim::CellMLAssistant>(cellMlAssistant);
+        }
+        case semsim::ASSISTANT_TYPE_OTHER: {
+            semsim::XmlAssistant xmlAssistant(xml);
+            return std::make_unique<semsim::XmlAssistant>(xmlAssistant);
+        }
+        default:
+            throw std::invalid_argument("Not a correct type");
+    }
+}
