@@ -10,8 +10,6 @@
 class XmlAssistantTests : public ::testing::Test {
 public:
 
-    SBMLFactory factory;
-
     XmlAssistantTests() {
 
     }

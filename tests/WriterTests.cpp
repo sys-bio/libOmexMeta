@@ -64,7 +64,7 @@ TEST_F(WriterTests, TestDefaultConstructor) {
 
 TEST_F(WriterTests, TestWriteModelToRdfXml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"./semsim_model.xml\">\n"
+                           "<rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
                            "    <dc:title>My Home Page</dc:title>\n"
                            "  </rdf:Description>\n"
@@ -79,12 +79,12 @@ TEST_F(WriterTests, TestWriteModelTontriples) {
 //todo test output format validator
 
 TEST_F(WriterTests, TestWriteModelToturtle) {
-    std::string expected = "@base <./semsim_model.xml> .\n"
-                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix dc: <http://purl.org/dc/elements/1.1/> .\n"
                            "\n"
                            "<http://www.dajobe.org/>\n"
-                           "    dc:title \"My Home Page\" .\n\n";
+                           "    dc:title \"My Home Page\" .\n\n"
+                           "";
     test_writer("turtle", expected);
 }
 
@@ -117,7 +117,18 @@ TEST_F(WriterTests, TestWriteModelTotrig3) {
 
 
 TEST_F(WriterTests, TestWriteModelToRdfxmlXmp) {
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<?xpacket begin='\xEF\xBB\xBF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n<rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n   xml:base=\"./semsim_model.xml\">\n  <rdf:Description rdf:about=\"\">\n    <dc:title>My Home Page</dc:title>\n  </rdf:Description>\n</rdf:RDF>\n</x:xmpmeta>\n<?xpacket end='r'?>\n";
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
+                           "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
+                           "<rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "  <rdf:Description rdf:about=\"\">\n"
+                           "    <dc:title>My Home Page</dc:title>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n"
+                           "</x:xmpmeta>\n"
+                           "<?xpacket end='r'?>\n"
+                           "";
     test_writer("rdfxml-xmp", expected);
 }
 
@@ -125,8 +136,7 @@ TEST_F(WriterTests, TestWriteModelToRdfxmlXmp) {
 TEST_F(WriterTests, Testrdfxmlabbrev){
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xml:base=\"./semsim_model.xml\">\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
                            "    <dc:title>My Home Page</dc:title>\n"
                            "  </rdf:Description>\n"
@@ -135,7 +145,7 @@ TEST_F(WriterTests, Testrdfxmlabbrev){
 }
 TEST_F(WriterTests, Testrdfxml){
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"./semsim_model.xml\">\n"
+                           "<rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
                            "    <dc:title>My Home Page</dc:title>\n"
                            "  </rdf:Description>\n"
