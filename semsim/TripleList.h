@@ -17,7 +17,7 @@ namespace semsim {
 
         TripleList() = default;
 
-        explicit TripleList(std::vector<Triple> triple_list);
+        explicit TripleList(const std::vector<Triple> &triples);
 
         bool operator==(const TripleList &rhs) const;
 
@@ -27,7 +27,7 @@ namespace semsim {
 
         void push_back(const Triple& triple);
 
-
+        void emplace_back(const Subject &subject, const Predicate &predicate, const Resource &resource);
 
     };
 }

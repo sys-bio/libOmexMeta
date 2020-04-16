@@ -10,7 +10,15 @@ set(SEMSIM_SOURCES
         RaptorUtils.cpp RaptorUtils.h
         RDF.cpp RDF.h
         Writer.h Writer.cpp
-        Reader.h Reader.cpp SemsimCombineArchive.cpp SemsimCombineArchive.h CurlGet.cpp CurlGet.h SemsimUtils.cpp SemsimUtils.h XmlAssistant.cpp XmlAssistant.h MetaID.cpp MetaID.h Editor.h Editor.cpp TripleList.cpp TripleList.h)
+        Reader.h Reader.cpp
+        SemsimCombineArchive.cpp SemsimCombineArchive.h
+        CurlGet.cpp CurlGet.h
+        SemsimUtils.cpp SemsimUtils.h
+        XmlAssistant.cpp XmlAssistant.h
+        MetaID.cpp MetaID.h
+        Editor.h Editor.cpp
+        TripleList.cpp TripleList.h
+        )
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
