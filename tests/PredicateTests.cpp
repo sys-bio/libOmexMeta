@@ -6,21 +6,21 @@
 #include "semsim/Predicate.h"
 
 
-class ControlledVocabularyTests : public ::testing::Test {
+class PredicateTests : public ::testing::Test {
 public:
-    std::string bqb_root;
+    std::string bqb_ns;
 
-    ControlledVocabularyTests() : bqb_root("http://biomodels.net/biology-qualifiers/") {}
+    PredicateTests() : bqb_ns("http://biomodels.net/biology-qualifiers/") {}
 };
 
-TEST_F(ControlledVocabularyTests, TestUri) {
+TEST_F(PredicateTests, TestUri) {
     semsim::BiomodelsQualifier bqb_is("is");
-    std::string expected = bqb_root + "is";
+    std::string expected = bqb_ns + "is";
     ASSERT_STREQ(expected.c_str(), bqb_is.getUri().str().c_str());
 }
 
 
-TEST_F(ControlledVocabularyTests, TestFailure) {
+TEST_F(PredicateTests, TestFailure) {
     ASSERT_THROW(semsim::BiomodelsQualifier bqb_is("isa"), std::invalid_argument);
 }
 

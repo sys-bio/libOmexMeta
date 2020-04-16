@@ -20,15 +20,15 @@ class ControlledVocabulary {
     +operator==(const ControlledVocabulary& rhs) : bool 
     +operator<<(std::ostream& os, const ControlledVocabulary& vocabulary) : std : : ostream&
     +make_shared() : std::shared_ptr<ControlledVocabulary>
-    -cv_namespace : std::string
+    -prefix_ : std::string
     -qualifier : std::string
     -root : std::string
-    +getCvNamespace() : std::string& 
-    +getQualifier() : std::string& 
+    +getPrefix() : std::string&
+    +getTerm() : std::string&
     +getRoot() : std::string& 
     #valid_terms : std::vector<std::string>
     +getValidTerms() : std::vector<std::string>& 
-    +setCvNamespace(const std::string& cvNamespace) : void
+    +setPrefix(const std::string& cvNamespace) : void
     +setRoot(const std::string& root) : void
     #setValidTerms() : void
     #verify() : void

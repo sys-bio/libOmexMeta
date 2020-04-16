@@ -14,9 +14,9 @@
 
 namespace semsim {
     class Predicate {
-        std::string root;
-        std::string cv_namespace;
-        std::string qualifier;
+        std::string namespace_;
+        std::string prefix_;
+        std::string term_;
     protected:
         std::vector<std::string> valid_terms;
 
@@ -27,17 +27,17 @@ namespace semsim {
     public:
         Predicate() = default;
 
-        explicit Predicate(std::string qualifier);
+        explicit Predicate(std::string term_);
 
-        const std::string &getCvNamespace() const;
+        const std::string &getPrefix() const;
 
-        void setRoot(const std::string &root);
+        void setNamespace(const std::string &namespace_);
 
-        void setCvNamespace(const std::string &cvNamespace);
+        void setPrefix(const std::string &prefix);
 
-        const std::string &getRoot() const;
+        const std::string &getNamespace() const;
 
-        const std::string &getQualifier() const;
+        const std::string &getTerm() const;
 
         const std::vector<std::string> &getValidTerms() const;
 
@@ -59,7 +59,7 @@ namespace semsim {
     public:
         BiomodelsQualifier() = default;
 
-        explicit BiomodelsQualifier(const std::string &qualifier);
+        explicit BiomodelsQualifier(const std::string &term_);
 
     protected:
         void setValidTerms() override;
@@ -70,16 +70,14 @@ namespace semsim {
     public:
         DCTerms() = default;
 
-        explicit DCTerms(const std::string &qualifier);
+        explicit DCTerms(const std::string &term_);
 
     protected:
         void setValidTerms() override;
     };
 
-    /*
-     * A mapping between commonly used namespaces and
-     * their links
-     */
+
+    // todo do i need to delete this class??
     class PredicateNamespaces {
     public:
 
