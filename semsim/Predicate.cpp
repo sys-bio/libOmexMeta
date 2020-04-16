@@ -103,4 +103,11 @@ namespace semsim {
                 "hasTaxon"
         };
     }
+
+    DCTerms::DCTerms(const std::string &qualifier) {
+        setValidTerms();
+        setRoot("http://purl.org/dc/terms/"); //namespace;
+        setCvNamespace("bqb"); //prefix
+        verify();
+    }
 }

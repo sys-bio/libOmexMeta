@@ -5,7 +5,6 @@ set(SEMSIM_SOURCES
         Resource.cpp Resource.h
         Triple.h Triple.cpp
         semsim.h
-        IRDF.h
         Predicate.cpp Predicate.h
         RaptorUtils.cpp RaptorUtils.h
         RDF.cpp RDF.h
@@ -17,7 +16,7 @@ set(SEMSIM_SOURCES
         XmlAssistant.cpp XmlAssistant.h
         MetaID.cpp MetaID.h
         Editor.h Editor.cpp
-        TripleList.cpp TripleList.h
+#        TripleList.cpp TripleList.h
         )
 
 

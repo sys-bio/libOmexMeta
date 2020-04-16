@@ -15,7 +15,7 @@ add_executable(semsim-tests
         SemsimUtilsTests.cpp
         XmlAssistantTests.cpp
         MetaIDTests.cpp
-        TripleListTests.cpp
+#        TripleListTests.cpp
         EditorTests.cpp
         )
 

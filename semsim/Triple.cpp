@@ -25,6 +25,11 @@ namespace semsim {
             predicate_ptr_(std::make_unique<Predicate>(predicate)),
             resource_(std::move(resource)) {}
 
+    Triple::Triple(std::string subject, const Predicate &predicate, const std::string& resource) :
+            subject_(Subject(std::move(subject))),
+            predicate_ptr_(std::make_unique<Predicate>(predicate)),
+            resource_(Resource(resource)) {}
+
     Triple::Triple(const Triple &other) :
             subject_(other.subject_),
             predicate_ptr_(std::make_unique<Predicate>(*other.predicate_ptr_)),
@@ -34,6 +39,7 @@ namespace semsim {
             subject_(other.subject_),
             predicate_ptr_(std::make_unique<Predicate>(*other.predicate_ptr_)),
             resource_(other.resource_) {}
+
 
     Triple &Triple::operator=(const Triple &triple) {
         if (this != &triple) {

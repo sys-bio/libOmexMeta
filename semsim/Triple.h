@@ -5,12 +5,11 @@
 #ifndef LIBSEMGEN_TRIPLE_H
 #define LIBSEMGEN_TRIPLE_H
 
-#include "raptor2.h"
 #include <ostream>
-#include "Subject.h"
-#include "Predicate.h"
-#include "Resource.h"
-#include "IRDF.h"
+#include "librdf.h"
+#include "semsim/Subject.h"
+#include "semsim/Predicate.h"
+#include "semsim/Resource.h"
 
 
 namespace semsim {
@@ -43,6 +42,8 @@ namespace semsim {
 
         Triple(Subject subject, const Predicate &predicate, Resource resource);
 
+        Triple(std::string subject, const Predicate &predicate, const std::string &resource);
+
         Triple() = default;
 
         Triple(const Triple &other);
@@ -69,9 +70,13 @@ namespace semsim {
 
         static void from_xml(std::string xml);
 
+        librdf_statement *toStatement();
+
     private:
         static void parseTriple(void *user_data, raptor_statement *raptor_triple);
     };
+
+    typedef std::vector<std::vector<Triple>> TripleList;
 }
 
 #endif //LIBSEMGEN_TRIPLE_H
