@@ -28,8 +28,6 @@ public:
     void TearDown() override {
         samples.removeAllFilesIfTheyExist();
     }
-
-
 };
 
 TEST_F(RDFTests, TestGetOptions) {
@@ -74,6 +72,15 @@ TEST_F(RDFTests, TestGetOptions) {
                            "39,wwwSslVerifyPeer,SSL verify peer certficate,3,1,http://feature.librdf.org/raptor-wwwSslVerifyPeer\n"
                            "40,wwwSslVerifyHost,SSL verify host matching,3,1,http://feature.librdf.org/raptor-wwwSslVerifyHost\n";
     ASSERT_STREQ(expected.c_str(), os.str().c_str());
+}
+
+TEST_F(RDFTests, test){
+    semsim::RDF rdf;
+    semsim::Editor editor = rdf.toEditor(
+            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            semsim::ASSISTANT_TYPE_SBML);
+
+
 }
 
 

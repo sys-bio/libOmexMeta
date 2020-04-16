@@ -148,6 +148,19 @@ TEST_F(TripleTests, TestTripleGetResource) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
+TEST_F(TripleTests, TestTripleFromStrings) {
+    semsim::Triple triple1("metaid001", predicate, "uniprot:P07362");
+    std::string actual = triple1.getResource().build();
+    std::string expected = "https://identifiers.org/uniprot/P07362";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(TripleTests, TestToStatement) {
+    semsim::Triple triple1("metaid001", predicate, "uniprot:P07362");
+//    triple1.toStatement();
+
+}
+
 //TEST_F(TripleTests, TestSerializeATripleToRdfXmlAbbrv) {
 //    semsim::Triple triple(subject, predicate, resource);
 //    std::string actual = triple.serialize("rdfxml-abbrev");

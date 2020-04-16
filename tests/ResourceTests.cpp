@@ -91,6 +91,13 @@ TEST_F(ResourceTests, TestFromString3) {
     ASSERT_THROW(semsim::Resource resource1("genecardsABL1"), std::logic_error);
 }
 
+TEST_F(ResourceTests, TestFromString4) {
+    semsim::Resource resource1("https://identifiers.org/uniprot/P0DP23");
+    const std::string &actual = resource1.getIdentifier();
+    std::string expected = "P0DP23";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
 TEST_F(ResourceTests, TestBuild) {
     semsim::Resource resource1("genecards:ABL1");
     std::string expected = "https://identifiers.org/genecards/ABL1";

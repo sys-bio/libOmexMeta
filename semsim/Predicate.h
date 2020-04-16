@@ -65,6 +65,17 @@ namespace semsim {
         void setValidTerms() override;
     };
 
+
+    class DCTerms : public Predicate {
+    public:
+        DCTerms() = default;
+
+        explicit DCTerms(const std::string &qualifier);
+
+    protected:
+        void setValidTerms() override;
+    };
+
     /*
      * A mapping between commonly used namespaces and
      * their links

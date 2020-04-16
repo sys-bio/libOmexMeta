@@ -7,9 +7,14 @@
 
 #include <unordered_map>
 #include "librdf.h"
-#include "Writer.h"
+#include "semsim/Writer.h"
+#include "semsim/Editor.h"
+#include "semsim/XmlAssistant.h"
 
 namespace semsim {
+
+    class Editor; // forward declaration
+
     typedef std::tuple<librdf_world *, raptor_world *, librdf_storage *, librdf_model *> LibrdfObjectsTuple;
 
     class RDF {
@@ -64,11 +69,11 @@ namespace semsim {
 
         void toFile(std::string format);
 
+        Editor toEditor(std::string xml, XmlAssistantType type);
+
         void addStatement(std::string subject, std::string predicate, std::string resource);
 
         static std::ostringstream listOptions();
-
-        void setOption();
 
         librdf_world *getWorld() const;
 
