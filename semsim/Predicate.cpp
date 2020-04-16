@@ -10,16 +10,16 @@
 
 //todo should I relabel Predicate to Term???
 namespace semsim {
-    Predicate::Predicate(std::string qualifier) : qualifier(std::move(qualifier)) {}
+    Predicate::Predicate(std::string term) : term_(std::move(term)) {}
 
-    const std::string &Predicate::getCvNamespace() const {
-        return cv_namespace;
+    const std::string &Predicate::getPrefix() const {
+        return prefix_;
     }
 
     bool Predicate::operator==(const Predicate &rhs) const {
-        return cv_namespace == rhs.cv_namespace &&
-               root == rhs.root &&
-               qualifier == rhs.qualifier;
+        return prefix_ == rhs.prefix_ &&
+               namespace_ == rhs.namespace_ &&
+               term_ == rhs.term_;
     }
 
     std::ostream &operator<<(std::ostream &os, const Predicate &vocabulary) {
@@ -31,34 +31,34 @@ namespace semsim {
         return !(rhs == *this);
     }
 
-    const std::string &Predicate::getRoot() const {
-        return root;
+    const std::string &Predicate::getNamespace() const {
+        return namespace_;
     }
 
-    const std::string &Predicate::getQualifier() const {
-        return qualifier;
+    const std::string &Predicate::getTerm() const {
+        return term_;
     }
 
     const std::vector<std::string> &Predicate::getValidTerms() const {
         return valid_terms;
     }
 
-    void Predicate::setRoot(const std::string &root) {
-        Predicate::root = root;
+    void Predicate::setNamespace(const std::string &namespace_) {
+        this->namespace_ = namespace_;
     }
 
     Uri Predicate::getUri() const {
-        return Uri(root + qualifier);
+        return Uri(namespace_ + term_);
     }
 
-    void Predicate::setCvNamespace(const std::string &cvNamespace) {
-        cv_namespace = cvNamespace;
+    void Predicate::setPrefix(const std::string &prefix) {
+        prefix_ = prefix;
     }
 
     void Predicate::verify() {
-        if (!(std::find(valid_terms.begin(), valid_terms.end(), qualifier) != valid_terms.end())) {
+        if (!(std::find(valid_terms.begin(), valid_terms.end(), term_) != valid_terms.end())) {
             std::ostringstream os;
-            os << "Invalid qualifier given. Qualifiers available for " << cv_namespace
+            os << "Invalid term given. Terms available for " << prefix_
                << " include: ";
             for (auto &i : valid_terms) {
                 os << i << ", ";
@@ -81,8 +81,8 @@ namespace semsim {
     BiomodelsQualifier::BiomodelsQualifier(const std::string &qualifier)
             : Predicate(qualifier) {
         setValidTerms();
-        setRoot("http://biomodels.net/biology-qualifiers/"); //namespace;
-        setCvNamespace("bqb"); //prefix
+        setNamespace("http://biomodels.net/biology-qualifiers/"); //namespace;
+        setPrefix("bqb"); //prefix
         verify();
     }
 
@@ -106,8 +106,14 @@ namespace semsim {
 
     DCTerms::DCTerms(const std::string &qualifier) {
         setValidTerms();
-        setRoot("http://purl.org/dc/terms/"); //namespace;
-        setCvNamespace("bqb"); //prefix
+        setNamespace("http://purl.org/dc/terms/"); //namespace;
+        setPrefix("dc"); //prefix
         verify();
+    }
+
+    void DCTerms::setValidTerms() {
+        this->valid_terms = {
+                "description"
+        };
     }
 }

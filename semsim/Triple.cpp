@@ -120,11 +120,11 @@ namespace semsim {
         // add a namespace for the predicate_ uri
         raptor_uri *predicate_uri = raptor_new_uri(
                 world,
-                (const unsigned char *) predicate_ptr_->getRoot().c_str());
+                (const unsigned char *) predicate_ptr_->getNamespace().c_str());
         raptor_serializer_set_namespace(
                 rdf_serializer,
                 predicate_uri,
-                (const unsigned char *) predicate_ptr_->getCvNamespace().c_str());
+                (const unsigned char *) predicate_ptr_->getPrefix().c_str());
         void *string;  /* destination for string */
         size_t length; /* length of constructed string */
         raptor_serializer_start_to_string(rdf_serializer, nullptr, &string, &length);
