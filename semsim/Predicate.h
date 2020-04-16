@@ -22,7 +22,7 @@ namespace semsim {
 
         virtual void setValidTerms();
 
-        void verify() ;
+        void verify();
 
     public:
         Predicate() = default;
@@ -53,8 +53,12 @@ namespace semsim {
 
     };
 
+    typedef std::unique_ptr<Predicate> PredicatePtr;
+
     class BiomodelsQualifier : public Predicate {
     public:
+        BiomodelsQualifier() = default;
+
         explicit BiomodelsQualifier(const std::string &qualifier);
 
     protected:
@@ -70,10 +74,10 @@ namespace semsim {
 
         PredicateNamespaces() = default;
 
-        static std::unordered_map<std::string, std::string> getNamespaces()  {
-           std::unordered_map<std::string, std::string> namespaces;
-           namespaces["bqb"] = "http://biomodels.net/biology-qualifiers";
-           return namespaces;
+        static std::unordered_map<std::string, std::string> getNamespaces() {
+            std::unordered_map<std::string, std::string> namespaces;
+            namespaces["bqb"] = "http://biomodels.net/biology-qualifiers";
+            return namespaces;
         }
 
         //todo idea: implement a register namespace method so users

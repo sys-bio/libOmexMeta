@@ -24,7 +24,7 @@ namespace semsim {
         Resource(std::string resourceNamespace,
                  std::string identifier);
 
-        Resource(std::string resource);
+        Resource(const std::string &resource);
 
         const std::string &getIdentifiersBase() const;
 

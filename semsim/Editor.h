@@ -12,6 +12,7 @@ class XmlAssistant;
 #include "Predicate.h"
 #include "Resource.h"
 #include "Triple.h"
+#include "TripleList.h"
 
 namespace semsim {
 
@@ -27,9 +28,12 @@ namespace semsim {
 
         explicit Editor(std::string xml, XmlAssistantType type);
 
-        void addAnnotation(std::string metaid, Predicate cvterm, std::string resource) ;
-        void addAnnotation(std::string metaid, Predicate cvterm, Resource resource) ;
+        void addAnnotation(std::string metaid, Predicate cvterm, std::string resource);
+
+        void addAnnotation(std::string metaid, Predicate cvterm, Resource resource);
+
         void addAnnotation(Triple triple);
+
         void addAnnotation(TripleList tripleList);
         //overloaded
 

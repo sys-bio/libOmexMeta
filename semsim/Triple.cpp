@@ -15,61 +15,60 @@
 
 namespace semsim {
 
-    Triple::Triple(Subject subject, Predicate predicate, Resource resource) : subject(std::move(subject)),
-                                                                              predicate(std::move(predicate)),
-                                                                              resource(std::move(resource)) {}
+    Triple::Triple(Subject subject, PredicatePtr predicate_ptr, Resource resource) :
+            subject_(std::move(subject)),
+            predicate_ptr_(std::move(predicate_ptr)),
+            resource_(std::move(resource)) {}
 
+    Triple::Triple(Subject subject, const Predicate &predicate, Resource resource) :
+            subject_(std::move(subject)),
+            predicate_ptr_(std::make_unique<Predicate>(predicate)),
+            resource_(std::move(resource)) {}
 
-    Triple::Triple(const Triple &triple) {
-        if (*this != triple) {
-            this->subject = triple.subject;
-            this->predicate = triple.predicate;
-            this->resource = triple.resource;
-        }
-    }
+    Triple::Triple(const Triple &other) :
+            subject_(other.subject_),
+            predicate_ptr_(std::make_unique<Predicate>(*other.predicate_ptr_)),
+            resource_(other.resource_) {}
 
-    Triple::Triple(Triple &&triple) noexcept {
-        if (this != &triple) {
-            this->subject = std::move(triple.subject);
-            this->predicate = std::move(triple.predicate);
-            this->resource = std::move(triple.resource);
-        }
-    }
+    Triple::Triple(const Triple &&other) noexcept :
+            subject_(other.subject_),
+            predicate_ptr_(std::make_unique<Predicate>(*other.predicate_ptr_)),
+            resource_(other.resource_) {}
 
     Triple &Triple::operator=(const Triple &triple) {
         if (this != &triple) {
-            this->subject = triple.subject;
-            this->predicate = triple.predicate;
-            this->resource = triple.resource;
+            this->subject_ = triple.subject_;
+            this->predicate_ptr_ = std::make_unique<Predicate>(*triple.predicate_ptr_);
+            this->resource_ = triple.resource_;
         }
         return *this;
     }
 
     Triple &Triple::operator=(Triple &&triple) noexcept {
         if (this != &triple) {
-            this->subject = std::move(triple.subject);
-            this->predicate = std::move(triple.predicate);
-            this->resource = std::move(triple.resource);
+            this->subject_ = triple.subject_;
+            this->predicate_ptr_ = std::make_unique<Predicate>(*triple.predicate_ptr_);
+            this->resource_ = triple.resource_;
         }
         return *this;
     }
 
     const Subject &Triple::getSubject() const {
-        return subject;
+        return subject_;
     }
 
-    const Predicate &Triple::getPredicate() const {
-        return predicate;
+    const PredicatePtr &Triple::getPredicate() const {
+        return predicate_ptr_;
     }
 
     const Resource &Triple::getResource() const {
-        return resource;
+        return resource_;
     }
 
     bool Triple::operator==(const Triple &rhs) const {
-        return subject == rhs.subject &&
-               predicate == rhs.predicate &&
-               resource == rhs.resource;
+        return subject_ == rhs.subject_ &&
+               predicate_ptr_ == rhs.predicate_ptr_ &&
+               resource_ == rhs.resource_;
     }
 
     bool Triple::operator!=(const Triple &rhs) const {
@@ -77,11 +76,11 @@ namespace semsim {
     }
 
     std::ostream &operator<<(std::ostream &os, const Triple &triple) {
-        os << "Triple(subject="
+        os << "Triple(subject_="
            << triple.getSubject().getMetaId()
-           << ", predicate="
-           << triple.getPredicate().getUri().str()
-           << ", resource="
+           << ", predicate_="
+           << triple.getPredicate()->getUri().str()
+           << ", resource_="
            << triple.getResource().build();
         return os;
     }
@@ -97,14 +96,14 @@ namespace semsim {
         raptor_statement *triple = raptor_new_statement(world);
         triple->subject = raptor_new_term_from_uri_string(
                 world,
-                (const unsigned char *) subject.getMetaId().c_str()
+                (const unsigned char *) subject_.getMetaId().c_str()
         );
 
         triple->predicate = raptor_new_term_from_uri_string(
                 world,
-                (const unsigned char *) predicate.getUri().str().c_str()
+                (const unsigned char *) predicate_ptr_->getUri().str().c_str()
         );
-        triple->object = raptor_new_term_from_uri_string(world, (const unsigned char *) resource.build().c_str());
+        triple->object = raptor_new_term_from_uri_string(world, (const unsigned char *) resource_.build().c_str());
 
         // make a raptor serializer
         raptor_serializer *rdf_serializer = nullptr;
@@ -112,14 +111,14 @@ namespace semsim {
         if (!rdf_serializer)
             throw std::runtime_error("Could not create Raptor serializer for format " + format);
 
-        // add a namespace for the predicate uri
+        // add a namespace for the predicate_ uri
         raptor_uri *predicate_uri = raptor_new_uri(
                 world,
-                (const unsigned char *) predicate.getTerm()->getRoot().c_str());
+                (const unsigned char *) predicate_ptr_->getRoot().c_str());
         raptor_serializer_set_namespace(
                 rdf_serializer,
                 predicate_uri,
-                (const unsigned char *) predicate.getTerm()->getCvNamespace().c_str());
+                (const unsigned char *) predicate_ptr_->getCvNamespace().c_str());
         void *string;  /* destination for string */
         size_t length; /* length of constructed string */
         raptor_serializer_start_to_string(rdf_serializer, nullptr, &string, &length);
@@ -177,10 +176,9 @@ namespace semsim {
 
 //        /* Print out the model*/
         fprintf(stdout, "Resulting model is:\n");
-        raptor_iostream* iostr = raptor_new_iostream_to_file_handle(raptor_world_ptr, stdout);
+        raptor_iostream *iostr = raptor_new_iostream_to_file_handle(raptor_world_ptr, stdout);
         librdf_model_write(model, iostr);
         raptor_free_iostream(iostr);
-
 
 
         librdf_statement *statement2 = librdf_new_statement_from_nodes(world, librdf_new_node_from_uri_string(world,
@@ -204,7 +202,7 @@ namespace semsim {
 //        raptor_free_iostream(iostr);
 
 
-        unsigned char* string = librdf_model_to_string(model, uri, "rdfxml", NULL, NULL);
+        unsigned char *string = librdf_model_to_string(model, uri, "rdfxml", NULL, NULL);
         if (!string)
             printf("Failed to serialize model\n");
         else {
@@ -225,12 +223,12 @@ namespace semsim {
     }
 
     void Triple::parseTriple(void *user_data, raptor_statement *raptor_triple) {
-        Triple *myTriple = (Triple *) user_data;
+        auto *myTriple = (Triple *) user_data;
 
-        // pull subject from raptor triple object
-        myTriple->subject = Subject(RaptorUtils::raptorUriToString(raptor_triple->subject->value.uri));
+        // pull subject_ from raptor triple object
+        myTriple->subject_ = Subject(RaptorUtils::raptorUriToString(raptor_triple->subject->value.uri));
 
-        // pull the predicate from the triple obj
+        // pull the predicate_ from the triple obj
         semsim::Uri predicate_uri(RaptorUtils::raptorUriToString(raptor_triple->predicate->value.uri));
 
         // Look up namespace to see if we already have an acronym for it
@@ -244,16 +242,10 @@ namespace semsim {
             }
         }
 
-        ControlledVocabulary controlledVocabulary;
-//        Predicate predicate1()
-
-
-
-
-
         raptor_statement_print_as_ntriples(raptor_triple, stdout);
         fputc('\n', stdout);
     }
+
 
 }
 

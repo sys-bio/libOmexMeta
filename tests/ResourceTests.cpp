@@ -82,13 +82,36 @@ TEST_F(ResourceTests, TestFromString1) {
 
 TEST_F(ResourceTests, TestFromString2) {
     semsim::Resource resource1("genecards:ABL1");
-    const std::string& actual = resource1.getResourceNamespace();
+    const std::string &actual = resource1.getResourceNamespace();
     std::string expected = "genecards";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(ResourceTests, TestFromString3) {
     ASSERT_THROW(semsim::Resource resource1("genecardsABL1"), std::logic_error);
+}
+
+TEST_F(ResourceTests, TestBuild) {
+    semsim::Resource resource1("genecards:ABL1");
+    std::string expected = "https://identifiers.org/genecards/ABL1";
+    std::string actual = resource1.build();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(ResourceTests, TestBuild2) {
+    semsim::Resource resource1("genecards", "ABL1");
+    std::string expected = "https://identifiers.org/genecards/ABL1";
+    std::string actual = resource1.build();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(ResourceTests, TestBuildFromResourceInAVector) {
+    semsim::Resource resource1("genecards", "ABL1");
+    semsim::Resource resource2("genecards", "ABL2");
+    std::vector<semsim::Resource> vec = {resource1, resource2};
+    std::string expected = "https://identifiers.org/genecards/ABL1";
+    std::string actual = vec[0].build();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 

@@ -53,7 +53,7 @@ namespace semsim {
 
     static std::vector<std::string> splitStringBy(std::string delimiter);
 
-    Resource::Resource(std::string identifier) {
+    Resource::Resource(const std::string &identifier) {
         std::vector<std::string> vec;
         if (identifier.find('/') != std::string::npos) {
             // process identifier of form namespace/identifier
