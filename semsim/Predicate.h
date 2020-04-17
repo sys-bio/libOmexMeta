@@ -80,26 +80,6 @@ namespace semsim {
     };
 
 
-    // todo do i need to delete this class??
-    class PredicateNamespaces {
-    public:
-
-        PredicateNamespaces() = default;
-
-        static std::unordered_map<std::string, std::string> getNamespaces() {
-            std::unordered_map<std::string, std::string> namespaces;
-            namespaces["bqb"] = "http://biomodels.net/biology-qualifiers";
-            return namespaces;
-        }
-
-        //todo idea: implement a register namespace method so users
-        // can register their own namespaces. Practically, this would mean
-        // just adding a new key value pair into the ns dict.
-
-
-    };
-
-
 }
 
 #endif //LIBSEMGEN_PREDICATE_H

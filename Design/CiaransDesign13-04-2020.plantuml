@@ -363,7 +363,15 @@ CombineArchive <|-- SemsimCombineArchive :extension
 
 
 
+class RDFTerm {
 
+}
+
+class URITerm {}
+
+class LiteralTerm {}
+
+class BlankTerm {}
 
 
 

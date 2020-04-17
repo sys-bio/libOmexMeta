@@ -1,22 +1,23 @@
 add_executable(semsim-tests
-        SBMLFactory.h
-        UrlTests.cpp
-        SubjectTests.cpp
-        ResourceTests.cpp
-        TripleTests.cpp
-        PredicateTests.cpp
-        RaptorUtilsTests.cpp
-        RDFTests.cpp
-        WriterTests.cpp
-        AnnotationSamples.h
-        ReaderTests.cpp
-        SemsimCombineArchiveTests.cpp
-        CurlGetTests.cpp
-        SemsimUtilsTests.cpp
-        XmlAssistantTests.cpp
-        MetaIDTests.cpp
-#        TripleListTests.cpp
-        EditorTests.cpp
+#        SBMLFactory.h
+#        UrlTests.cpp
+#        SubjectTests.cpp
+#        ResourceTests.cpp
+#        TripleTests.cpp
+#        PredicateTests.cpp
+#        RaptorUtilsTests.cpp
+#        RDFTests.cpp
+#        WriterTests.cpp
+#        AnnotationSamples.h
+#        ReaderTests.cpp
+#        SemsimCombineArchiveTests.cpp
+#        CurlGetTests.cpp
+#        SemsimUtilsTests.cpp
+#        XmlAssistantTests.cpp
+#        MetaIDTests.cpp
+#        EditorTests.cpp
+#        TermTests.cpp
+        RDFNodeTests.cpp
         )
 
 
