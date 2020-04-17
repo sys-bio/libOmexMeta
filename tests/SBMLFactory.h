@@ -26,7 +26,7 @@ class SBMLModel {
 public:
     SBMLModel() = default;
 
-    virtual SBMLDocument *buildModel() = 0;
+    virtual SBMLDocument *strModel() = 0;
 
 };
 
@@ -34,7 +34,7 @@ class SBMLAnnotated : SBMLModel {
 public:
     SBMLAnnotated() = default;
 
-    SBMLDocument *buildModel() override {
+    SBMLDocument *strModel() override {
         SBMLDocument *doc;
         Model *m;
         std::string xml;
@@ -110,7 +110,7 @@ class SBMLNotAnnotated : SBMLModel {
 public:
     SBMLNotAnnotated() = default;
 
-    SBMLDocument *buildModel() override {
+    SBMLDocument *strModel() override {
         SBMLDocument *doc;
         Model *sbml_model_ptr;
         std::string xml;
@@ -210,9 +210,9 @@ public:
 
     static SBMLDocument *getSBMLDocument(ModelType modelType) {
         if (modelType == SBML_ANNOTATED)
-            return SBMLAnnotated().buildModel();
+            return SBMLAnnotated().strModel();
         else if (modelType == SBML_NOT_ANNOTATED)
-            return SBMLNotAnnotated().buildModel();
+            return SBMLNotAnnotated().strModel();
 //            else if (modelType == SBML_BIOMD0000000695)
             //Download https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000695.3?filename=BIOMD0000000695_url.xml
 //                SBMLModel::curlGet();

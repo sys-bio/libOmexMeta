@@ -868,7 +868,7 @@ void semsim::Uri::parse_url() const {
 }
 
 
-void semsim::Uri::build_url() const {
+void semsim::Uri::str_url() const {
     lazy_parse();
     std::stringstream url;
     if (!m_scheme.empty())
@@ -888,31 +888,31 @@ void semsim::Uri::build_url() const {
                 url << ":" << m_port;
     } else {
         if (!m_user.empty())
-            throw Uri::build_error("User info defined, but host is empty");
+            throw Uri::str_error("User info defined, but host is empty");
         if (!m_port.empty())
-            throw Uri::build_error("Port defined, but host is empty");
+            throw Uri::str_error("Port defined, but host is empty");
         if (!m_path.empty()) {
             const char *b = m_path.data(), *e = b + m_path.length(), *p = find_first_of(b, e, ":/");
             if (p != e && *p == ':')
-                throw Uri::build_error("The first segment of the relative path can't contain ':'");
+                throw Uri::str_error("The first segment of the relative path can't contain ':'");
         }
     }
     if (!m_path.empty()) {
         if (m_path[0] != '/' && !m_host.empty())
-            throw Uri::build_error("Path must start with '/' when host is not empty");
+            throw Uri::str_error("Path must start with '/' when host is not empty");
         url << encode(m_path, 0x0F);
     }
     if (!m_query.empty()) {
         url << "?";
         auto it = m_query.begin(), end = m_query.end();
         if (it->key().empty())
-            throw Uri::build_error("First query entry has no key");
+            throw Uri::str_error("First query entry has no key");
         url << encode_query_key(it->key(), 0x1F);
         if (!it->val().empty())
             url << "=" << encode_query_val(it->val(), 0x1F);
         while (++it != end) {
             if (it->key().empty())
-                throw Uri::build_error("A query entry has no key");
+                throw Uri::str_error("A query entry has no key");
             url << "&" << encode_query_key(it->key(), 0x1F);
             if (!it->val().empty())
                 url << "=" << encode_query_val(it->val(), 0x1F);
@@ -928,7 +928,7 @@ void semsim::Uri::build_url() const {
 // Output
 std::ostream &semsim::Uri::output(std::ostream &o) const {
     lazy_parse();
-    if (!m_built) build_url();
+    if (!m_built) str_url();
     if (!m_user.empty()) o << " user_info(" << m_user << ")";
     if (m_ip_v != -1) o << " host(" << m_host << ") IPv(" << (int) m_ip_v << ")";
     if (!m_port.empty()) o << " port(" << m_port << ")";

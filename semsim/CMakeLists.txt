@@ -31,8 +31,8 @@ add_library(${SEMSIM_STATIC_LIBRARY} STATIC ${SEMSIM_SOURCES})
 # shared library
 add_library(${SEMSIM_LIBRARY} SHARED ${SEMSIM_SOURCES})
 if (UNIX)
-    MESSAGE(STATUS "LINUX BUILDS")
-    #fPIC for linux shared library builds
+    MESSAGE(STATUS "LINUX strS")
+    #fPIC for linux shared library strs
     set_property(TARGET ${SEMSIM_LIBRARY} PROPERTY POSITION_INDEPENDENT_CODE ON)
 endif ()
 
