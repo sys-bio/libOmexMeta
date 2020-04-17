@@ -9,7 +9,6 @@
 class PredicateTests : public ::testing::Test {
 public:
     std::string bqb_ns;
-
     PredicateTests() : bqb_ns("http://biomodels.net/biology-qualifiers/") {}
 };
 
