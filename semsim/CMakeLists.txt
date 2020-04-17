@@ -1,22 +1,23 @@
 
 set(SEMSIM_SOURCES
-        uri.h uri.cpp
+#        uri.h uri.cpp
+        RDFNode.cpp RDFNode.h
         Subject.h Subject.cpp
-        Resource.cpp Resource.h
-        Triple.h Triple.cpp
-        semsim.h
-        Predicate.cpp Predicate.h
-        RaptorUtils.cpp RaptorUtils.h
-        RDF.cpp RDF.h
-        Writer.h Writer.cpp
-        Reader.h Reader.cpp
-        SemsimCombineArchive.cpp SemsimCombineArchive.h
-        CurlGet.cpp CurlGet.h
-        SemsimUtils.cpp SemsimUtils.h
-        XmlAssistant.cpp XmlAssistant.h
-        MetaID.cpp MetaID.h
-        Editor.h Editor.cpp
-#        TripleList.cpp TripleList.h
+#        Resource.cpp Resource.h
+#        Triple.h Triple.cpp
+#        semsim.h
+#        Predicate.cpp Predicate.h
+#        RaptorUtils.cpp RaptorUtils.h
+#        RDF.cpp RDF.h
+#        Writer.h Writer.cpp
+#        Reader.h Reader.cpp
+#        SemsimCombineArchive.cpp SemsimCombineArchive.h
+#        CurlGet.cpp CurlGet.h
+#        SemsimUtils.cpp SemsimUtils.h
+#        XmlAssistant.cpp XmlAssistant.h
+#        MetaID.cpp MetaID.h
+#        Editor.h Editor.cpp
+#        RDFTerm.cpp RDFTerm.h
         )
 
 

@@ -13,114 +13,52 @@
 
 namespace semsim {
 
-
-    Resource::Resource(std::string resourceNamespace, std::string identifier) :
-            resource_namespace(std::move(resourceNamespace)),
-            identifier(std::move(identifier)) {}
-
-    const std::string &Resource::getResourceNamespace() const {
-        return resource_namespace;
+    Resource::Resource(RDFTerm *rdf_term_ptr) {
+        this->rdf_term_ptr_ = rdf_term_ptr->clone();
     }
 
-    const std::string &Resource::getIdentifier() const {
-        return identifier;
+    Resource::Resource(const RDFTerm *rdf_term_ptr) {
+        this->rdf_term_ptr_ = rdf_term_ptr->clone();
     }
 
-    bool Resource::operator==(const Resource &rhs) const {
-        return identifiers_base == rhs.identifiers_base &&
-               resource_namespace == rhs.resource_namespace &&
-               identifier == rhs.identifier;
+    Resource::~Resource() {
+        delete this->rdf_term_ptr_;
     }
 
-    bool Resource::operator!=(const Resource &rhs) const {
-        return !(rhs == *this);
+    Resource::Resource(const Resource &resource) {
+        this->rdf_term_ptr_ = resource.rdf_term_ptr_;
+        delete resource.rdf_term_ptr_;
     }
 
-    std::ostream &operator<<(std::ostream &os, const Resource &resource) {
-        os << "Resource(" << resource.str() << ")";
-        return os;
+    Resource::Resource(const Resource &&resource) noexcept {
+        this->rdf_term_ptr_ = resource.rdf_term_ptr_;
+        delete resource.rdf_term_ptr_;
     }
 
-    std::string Resource::str() const {
-        if (is_literal_) {
-            return this->literal;
+    Resource &Resource::operator=(const Resource &resource) {
+        if (this != &resource) {
+            this->rdf_term_ptr_ = resource.rdf_term_ptr_;
         }
-
-        std::ostringstream os;
-        os << identifiers_base << "/"
-           << resource_namespace << "/"
-           << identifier;
-        return os.str();
+        return *this;
     }
 
-    static std::vector<std::string> splitStringBy(std::string delimiter);
-
-    Resource::Resource(const std::string &identifier) {
-        std::regex http_regex("https://");
-        std::regex identifiers_org_form1("^(?![https://])([A-Za-z0-9]*):{1}(\\S*)");
-        std::regex identifiers_org_form2("^(?![https://])([A-Za-z0-9]*)/{1}(\\S*)");
-
-        std::smatch m;
-
-        // check whether user has given full url
-        if (std::regex_search(identifier, http_regex)) {
-            // if yes, and it isn't an identifiers.org link, throw an error
-            if (identifier.rfind("https://identifiers.org/", 0) != 0) {
-                std::ostringstream err;
-                err << __FILE__ << ":" << __LINE__ << ": Url \"" << identifier << "\" detected but it doesn't "
-                                                                                  "start with \"https://identifiers.org\". All "
-                                                      "resources must be resolvable with "
-                                                      "\"https://identifiers.org\". For example:"
-                                                      "\"https://identifiers.org/uniprot/P0DP23\"" << std::endl;
-                throw std::invalid_argument(err.str());
-            }
-            // otherwise, extract the needed bits from the url
-            std::vector<std::string> html_vec = splitStringBy(identifier, '/');
-            int html_vec_size = html_vec.size();
-            // we want the second to last and last elements in the split url
-            this->resource_namespace = html_vec[html_vec_size - 2];
-            this->identifier = html_vec[html_vec_size - 1];
+    Resource &Resource::operator=(Resource &&resource) noexcept {
+        if (this != &resource) {
+            this->rdf_term_ptr_ = resource.rdf_term_ptr_;
         }
-
-            // if its not html string check for form uniprot:identifier
-        else if (std::regex_search(identifier, m, identifiers_org_form1)) {
-            this->resource_namespace = m[1];
-            this->identifier = m[2];
-        }
-
-            // if its not html string check for form uniprot/identifier
-        else if (std::regex_search(identifier, m, identifiers_org_form2)) {
-            this->resource_namespace = m[1];
-            this->identifier = m[2];
-        } else {
-            // its a literal
-            is_literal_ = true;
-            literal = identifier;
-        }
-    }
+        return *this;
+    };
 
 
-    std::vector<std::string> Resource::splitStringBy(const std::string &str, char delimiter) {
-        std::vector<std::string> tokens;
-        if (str.find(delimiter) == std::string::npos) {
-            // return the string in the vector
-            tokens.push_back(str);
-            return tokens;
-        }
-        std::string token;
-        std::istringstream is(str);
-        while (std::getline(is, token, delimiter)) {
-            if (!token.empty())
-                tokens.push_back(token);
-        }
-        return tokens;
-    }
-
-    bool Resource::isLiteral() const {
-        return is_literal_;
+    std::string Resource::str() {
+        return this->rdf_term_ptr_->str();
     }
 
 
 }
+
+
+
+
 
 

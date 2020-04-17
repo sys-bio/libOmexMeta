@@ -9,41 +9,30 @@
 #include "semsim/Resource.h"
 #include "semsim/uri.h"
 #include "sstream"
+#include "semsim/RDFTerm.h"
 
 namespace semsim {
     class Resource {
-    private:
-
-        std::string identifiers_base = "https://identifiers.org";
-        std::string resource_namespace;
-        std::string identifier;
-        std::string literal;
-        bool is_literal_ = false;
+        RDFTerm *rdf_term_ptr_;
 
     public:
-        bool isLiteral() const;
-        Resource(const std::string &identifier);
+        Resource(RDFTerm *rdf_term_ptr);
 
-        Resource() = default;
+        Resource(const RDFTerm *rdf_term_ptr);
 
-        Resource(std::string resourceNamespace,
-                 std::string identifier);
+        ~Resource();
 
-        const std::string &getResourceNamespace() const;
+        Resource(const Resource &resource);
 
-        const std::string &getIdentifier() const;
+        Resource(const Resource &&resource) noexcept;
 
-        bool operator==(const Resource &rhs) const;
+        Resource &operator=(const Resource &resource);
 
-        bool operator!=(const Resource &rhs) const;
+        Resource &operator=(Resource &&resource) noexcept;
 
-        friend std::ostream &operator<<(std::ostream &os, const Resource &resource);
+        std::string str();
 
-        std::string str() const;
-
-        static std::vector<std::string> splitStringBy(const std::string& str, char delimiter);
     };
-
 
 }
 
