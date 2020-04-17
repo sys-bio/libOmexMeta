@@ -144,6 +144,15 @@ TEST_F(ResourceTests, TestResourceFromLiteral) {
 }
 
 
+TEST_F(ResourceTests, TestResourceFrom) {
+    std::string id = "#metaid1";
+    semsim::Resource resource("./some/place/on/disk", id);
+    std::string actual = resource.str();
+    std::cout << actual << std::endl;
+//    ASSERT_STREQ(id.c_str(), actual.c_str());
+}
+
+
 
 
 

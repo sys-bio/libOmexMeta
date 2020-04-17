@@ -22,16 +22,12 @@ namespace semsim {
 
     public:
         bool isLiteral() const;
-
-    public:
         Resource(const std::string &identifier);
 
         Resource() = default;
 
         Resource(std::string resourceNamespace,
                  std::string identifier);
-
-        const std::string &getIdentifiersBase() const;
 
         const std::string &getResourceNamespace() const;
 

@@ -18,10 +18,6 @@ namespace semsim {
             resource_namespace(std::move(resourceNamespace)),
             identifier(std::move(identifier)) {}
 
-    const std::string &Resource::getIdentifiersBase() const {
-        return identifiers_base;
-    }
-
     const std::string &Resource::getResourceNamespace() const {
         return resource_namespace;
     }
