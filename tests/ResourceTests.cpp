@@ -75,7 +75,7 @@ TEST_F(ResourceTests, TestStringSpliter2) {
 
 TEST_F(ResourceTests, TestFromString1) {
     semsim::Resource resource1("genecards/ABL1");
-    const std::string& actual = resource1.getResourceNamespace();
+    const std::string &actual = resource1.getResourceNamespace();
     std::string expected = "genecards";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -105,6 +105,20 @@ TEST_F(ResourceTests, Teststr) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
+TEST_F(ResourceTests, TestResourceWithColinInName) {
+    semsim::Resource resource1("fma:FMA:9697");
+    std::string expected = "https://identifiers.org/fma/FMA:9697";
+    std::string actual = resource1.str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(ResourceTests, TestResourceWithColinInName2) {
+    semsim::Resource resource1("fma/FMA:9697");
+    std::string expected = "https://identifiers.org/fma/FMA:9697";
+    std::string actual = resource1.str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
 TEST_F(ResourceTests, Teststr2) {
     semsim::Resource resource1("genecards", "ABL1");
     std::string expected = "https://identifiers.org/genecards/ABL1";
@@ -128,6 +142,8 @@ TEST_F(ResourceTests, TestResourceFromLiteral) {
     std::string actual = resource.str();
     ASSERT_STREQ(literal.c_str(), actual.c_str());
 }
+
+
 
 
 

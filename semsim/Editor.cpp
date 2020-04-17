@@ -37,12 +37,6 @@ void semsim::Editor::checkValidMetaid(const std::string &metaid) {
     }
 }
 
-void semsim::Editor::addAnnotation(std::string metaid, semsim::PredicatePtr predicateptr, const std::string &resource) {
-    checkValidMetaid(metaid);
-    Triple triple(std::move(metaid), *predicateptr, resource, world_);
-    std::vector<Triple> vec = {triple};
-    triple_list_.push_back(vec);
-}
 
 const semsim::TripleList &semsim::Editor::getTripleList() const {
     return triple_list_;
@@ -58,12 +52,21 @@ void semsim::Editor::toRDF(RDF &rdf) {
 
 }
 
-void semsim::Editor::addAnnotation(std::string metaid, std::string is_version_of_resource, std::string is_property_of_resource,
-                                   std::string is_resource, std::string is_part_of_resource) {
+
+void semsim::Editor::addAnnotation(std::string metaid, semsim::PredicatePtr predicateptr, const std::string &resource) {
+    checkValidMetaid(metaid);
+    Triple triple(std::move(metaid), *predicateptr, resource, world_);
+    std::vector<Triple> vec = {triple};
+    triple_list_.push_back(vec);
+}
+
+void semsim::Editor::addAnnotation(const std::string &metaid, const std::string &is_version_of_resource,
+                                   const std::string &is_property_of_resource,
+                                   const std::string &is_resource, const std::string &is_part_of_resource) {
     Triple triple1(metaid, BiomodelsQualifier("isVersionOf"), is_version_of_resource, world_);
     // todo put some check in to ensure that the metaid is_resource in the model
     Triple triple2(metaid, BiomodelsQualifier("isPropertyOf"), is_property_of_resource, world_);
-    Triple triple3(is_property_of_resource, BiomodelsQualifier("is"), is_property_of_resource, world_);
+    Triple triple3(is_property_of_resource, BiomodelsQualifier("is"), is_resource, world_);
     Triple triple4(is_property_of_resource, BiomodelsQualifier("isPartOf"), is_part_of_resource, world_);
     std::vector<Triple> triples = {triple1, triple2, triple3, triple4};
     triple_list_.push_back(triples);
