@@ -148,16 +148,15 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(EditorTests, Test) {
+TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalEntity) {
     semsim::RDF rdf;
     semsim::Editor editor = rdf.toEditor(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
             semsim::ASSISTANT_TYPE_SBML);
     editor.addAnnotation(
-            "SemsimMetaid0008",
-            std::make_unique<semsim::Predicate>(semsim::DCTerms("Description")),
-            "Cardiomyocyte cytosolic ATP concentration"
-            );
+            "SemsimMetaid0018", "opb/OPB_00154", "SemsimMetaid0014",
+            "fma/FMA:9670", "fma/FMA:18228"
+    );
     editor.toRDF(rdf);
 
     std::string actual = rdf.toString("rdfxml", "./MyModel.xml");

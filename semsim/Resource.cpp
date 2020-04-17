@@ -61,8 +61,8 @@ namespace semsim {
 
     Resource::Resource(const std::string &identifier) {
         std::regex http_regex("https://");
-        std::regex identifiers_org_form1(R"(^(?![https://])(\S*)\:(\S*))");
-        std::regex identifiers_org_form2(R"(^(?![https://])(\S*)/(\S*))");
+        std::regex identifiers_org_form1("^(?![https://])([A-Za-z0-9]*):{1}(\\S*)");
+        std::regex identifiers_org_form2("^(?![https://])([A-Za-z0-9]*)/{1}(\\S*)");
 
         std::smatch m;
 
@@ -71,8 +71,8 @@ namespace semsim {
             // if yes, and it isn't an identifiers.org link, throw an error
             if (identifier.rfind("https://identifiers.org/", 0) != 0) {
                 std::ostringstream err;
-                err << __FILE__ << ":" << __LINE__ << ": Url \""<< identifier << "\" detected but it doesn't "
-                                                      "start with \"https://identifiers.org\". All "
+                err << __FILE__ << ":" << __LINE__ << ": Url \"" << identifier << "\" detected but it doesn't "
+                                                                                  "start with \"https://identifiers.org\". All "
                                                       "resources must be resolvable with "
                                                       "\"https://identifiers.org\". For example:"
                                                       "\"https://identifiers.org/uniprot/P0DP23\"" << std::endl;
