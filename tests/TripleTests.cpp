@@ -62,8 +62,11 @@ public:
     semsim::Resource resource;
     semsim::BiomodelsQualifier predicate;
 
+    librdf_world *world_;
+
 
     TripleTests() {
+        world_ = librdf_new_world();
         this->subject = semsim::Subject(subject_str);
         this->resource = semsim::Resource(resource_namespace, resource_id);
         this->predicate = semsim::BiomodelsQualifier("is");
@@ -74,7 +77,8 @@ TEST_F(TripleTests, TestInstantiationFromUniquePtr) {
     semsim::Triple triple(
             subject,
             std::make_unique<semsim::Predicate>(predicate),
-            resource
+            resource,
+            world_
     );
     ASSERT_TRUE(true); // if we get this far the test has passed
 }
@@ -83,7 +87,8 @@ TEST_F(TripleTests, TestInstantiationFromPredicateValue) {
     semsim::Triple triple(
             subject,
             predicate,
-            resource
+            resource,
+            world_
     );
     ASSERT_TRUE(true); // if we get this far the test has passed
 }
@@ -92,7 +97,8 @@ TEST_F(TripleTests, TestInstantiation3) {
     semsim::Triple triple(
             subject,
             semsim::BiomodelsQualifier("is"),
-            resource
+            resource,
+            world_
     );
     ASSERT_TRUE(true); // if we get this far the test has passed
 }
@@ -101,7 +107,8 @@ TEST_F(TripleTests, TestSubjectMetaId) {
     semsim::Triple triple(
             subject,
             predicate,
-            resource
+            resource,
+            world_
     );
     std::string subject_metaid = triple.getSubject().getMetaId();
     std::string expected = subject_str;
@@ -112,7 +119,8 @@ TEST_F(TripleTests, TestSubjectMetaId2) {
     semsim::Triple triple(
             subject,
             std::make_unique<semsim::Predicate>(predicate),
-            resource
+            resource,
+            world_
     );
     std::string subject_metaid = triple.getSubject().getMetaId();
     std::string expected = subject_str;
@@ -120,28 +128,28 @@ TEST_F(TripleTests, TestSubjectMetaId2) {
 }
 
 TEST_F(TripleTests, TestPredicate1) {
-    semsim::Triple triple(subject, predicate, resource);
+    semsim::Triple triple(subject, predicate, resource, world_);
     std::string expected = predicate_str;
     ASSERT_STREQ(expected.c_str(), triple.getPredicate()->getUri().str().c_str());
 }
 
 
 TEST_F(TripleTests, TestPredicate2) {
-    semsim::Triple triple(subject, std::make_unique<semsim::Predicate>(predicate), resource);
+    semsim::Triple triple(subject, std::make_unique<semsim::Predicate>(predicate), resource, world_);
     std::string expected = predicate_str;
     ASSERT_STREQ(expected.c_str(), triple.getPredicate()->getUri().str().c_str());
 }
 
 TEST_F(TripleTests, TestResource) {
-    semsim::Triple triple(subject, predicate, resource);
+    semsim::Triple triple(subject, predicate, resource, world_);
     std::string actual = triple.getResource().getIdentifier();
     std::string expected = resource_id;
     ASSERT_STREQ(expected.c_str(), resource_id.c_str());
 }
 
 TEST_F(TripleTests, TestTripleGetResource) {
-    semsim::Triple triple1(subject, predicate, resource);
-    semsim::Triple triple2(subject, predicate, resource);
+    semsim::Triple triple1(subject, predicate, resource, world_);
+    semsim::Triple triple2(subject, predicate, resource, world_);
     std::vector<semsim::Triple> vec = {triple1, triple2};
     std::string actual = vec[0].getResource().str();
     std::string expected = "https://identifiers.org/uniprot/P0DP23";
@@ -149,16 +157,38 @@ TEST_F(TripleTests, TestTripleGetResource) {
 }
 
 TEST_F(TripleTests, TestTripleFromStrings) {
-    semsim::Triple triple1("metaid001", predicate, "uniprot:P07362");
+    semsim::Triple triple1("metaid001", predicate, "uniprot:P07362", world_);
     std::string actual = triple1.getResource().str();
     std::string expected = "https://identifiers.org/uniprot/P07362";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(TripleTests, TestToStatement) {
-    semsim::Triple triple1("metaid001", predicate, "uniprot:P07362");
-//    triple1.toStatement();
+TEST_F(TripleTests, TestToStatementSubject) {
+    semsim::Triple triple1("metaid001", predicate, "uniprot:P07362", world_);
+    librdf_statement *statement = triple1.toStatement();
+    auto x = librdf_statement_get_subject(statement); // anonymous struct
+    std::string actual = (const char *) librdf_uri_as_string(x->value.uri);
+    std::string expected = "metaid001";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
 
+TEST_F(TripleTests, TestToStatementPrediacte) {
+    semsim::Triple triple1("metaid001", predicate, "uniprot:P07362", world_);
+    librdf_statement *statement = triple1.toStatement();
+    auto x = librdf_statement_get_predicate(statement); // anonymous struct
+    std::string actual = (const char *) librdf_uri_as_string(x->value.uri);
+    std::string expected = "http://biomodels.net/biology-qualifiers/is";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
+TEST_F(TripleTests, TestToStatementResource) {
+    semsim::Triple triple1("metaid001", predicate, "uniprot:P07362", world_);
+    librdf_statement *statement = triple1.toStatement();
+    raptor_term *x = librdf_statement_get_object(statement); // anonymous struct
+    const char *actual = (const char *) librdf_uri_as_string(x->value.uri);
+    const char *expected = "https://identifiers.org/uniprot/P07362";
+    ASSERT_STREQ(expected, actual);
 }
 
 //TEST_F(TripleTests, TestSerializeATripleToRdfXmlAbbrv) {

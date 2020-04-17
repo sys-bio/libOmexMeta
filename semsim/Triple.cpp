@@ -15,30 +15,35 @@
 
 namespace semsim {
 
-    Triple::Triple(Subject subject, PredicatePtr predicate_ptr, Resource resource) :
+    Triple::Triple(Subject subject, PredicatePtr predicate_ptr, Resource resource, librdf_world *world) :
             subject_(std::move(subject)),
             predicate_ptr_(std::move(predicate_ptr)),
-            resource_(std::move(resource)) {}
+            resource_(std::move(resource)),
+            world_(world) {}
 
-    Triple::Triple(Subject subject, const Predicate &predicate, Resource resource) :
+    Triple::Triple(Subject subject, const Predicate &predicate, Resource resource, librdf_world *world) :
             subject_(std::move(subject)),
             predicate_ptr_(std::make_unique<Predicate>(predicate)),
-            resource_(std::move(resource)) {}
+            resource_(std::move(resource)),
+            world_(world) {}
 
-    Triple::Triple(std::string subject, const Predicate &predicate, const std::string& resource) :
+    Triple::Triple(std::string subject, const Predicate &predicate, const std::string &resource, librdf_world *world) :
             subject_(Subject(std::move(subject))),
             predicate_ptr_(std::make_unique<Predicate>(predicate)),
-            resource_(Resource(resource)) {}
+            resource_(Resource(resource)),
+            world_(world) {}
 
     Triple::Triple(const Triple &other) :
             subject_(other.subject_),
             predicate_ptr_(std::make_unique<Predicate>(*other.predicate_ptr_)),
-            resource_(other.resource_) {}
+            resource_(other.resource_),
+            world_(other.world_) {}
 
     Triple::Triple(const Triple &&other) noexcept :
             subject_(other.subject_),
             predicate_ptr_(std::make_unique<Predicate>(*other.predicate_ptr_)),
-            resource_(other.resource_) {}
+            resource_(other.resource_),
+            world_(other.world_) {}
 
 
     Triple &Triple::operator=(const Triple &triple) {
@@ -46,6 +51,7 @@ namespace semsim {
             this->subject_ = triple.subject_;
             this->predicate_ptr_ = std::make_unique<Predicate>(*triple.predicate_ptr_);
             this->resource_ = triple.resource_;
+            this->world_ = triple.world_;
         }
         return *this;
     }
@@ -55,9 +61,19 @@ namespace semsim {
             this->subject_ = triple.subject_;
             this->predicate_ptr_ = std::make_unique<Predicate>(*triple.predicate_ptr_);
             this->resource_ = triple.resource_;
+            this->world_ = triple.world_;
         }
         return *this;
     }
+
+    librdf_world *Triple::getWorld() const {
+        return world_;
+    }
+
+    void Triple::setWorld(librdf_world *world) {
+        world_ = world;
+    }
+
 
     const Subject &Triple::getSubject() const {
         return subject_;
@@ -74,7 +90,8 @@ namespace semsim {
     bool Triple::operator==(const Triple &rhs) const {
         return subject_ == rhs.subject_ &&
                predicate_ptr_ == rhs.predicate_ptr_ &&
-               resource_ == rhs.resource_;
+               resource_ == rhs.resource_ &&
+               world_ == rhs.world_;
     }
 
     bool Triple::operator!=(const Triple &rhs) const {
@@ -91,12 +108,8 @@ namespace semsim {
         return os;
     }
 
-    // todo i suspect you'll have to move some of this code into a higher level object
-    //  so that we can call down and seralize several rdf statements at once
-    //  via the iostream feature. For now, keep itlke this.
     std::string Triple::serialize(std::string format) {
-        raptor_world *world = raptor_new_world();
-        // todo work out whether base uri should be a file name of the model.
+        raptor_world *world = librdf_world_get_raptor(world_);
 
         // create raptor triple
         raptor_statement *triple = raptor_new_statement(world);
@@ -252,6 +265,43 @@ namespace semsim {
         fputc('\n', stdout);
     }
 
+    librdf_statement *Triple::toStatement() {
+        librdf_statement *statement;
+        if (getResource().isLiteral()) {
+            statement = librdf_new_statement_from_nodes(
+                    world_,
+                    librdf_new_node_from_uri(
+                            world_,
+                            librdf_new_uri(world_, (const unsigned char *) getSubject().getMetaId().c_str())
+                    ),
+                    librdf_new_node_from_uri(
+                            world_,
+                            librdf_new_uri(world_, (const unsigned char *) getPredicate()->str().c_str())
+                    ),
+                    //todo what is this xml_language argument? What difference does it make
+                    // does it cause the rdf:Bag problem? What is id_wf_xml? How does this
+                    // impact output?
+
+                    // todo note: the is_wf_xml flag DOES make a different to
+                    //  xml output.
+                    librdf_new_node_from_literal(world_, (const unsigned char *) getResource().str().c_str(),
+                                                 nullptr, 0
+                    )
+            );
+        } else {
+            statement = librdf_new_statement_from_nodes(
+                    world_, librdf_new_node_from_uri(world_, librdf_new_uri(
+                            world_, (const unsigned char *) getSubject().getMetaId().c_str())
+                    ),
+                    librdf_new_node_from_uri(world_, librdf_new_uri(
+                            world_, (const unsigned char *) getPredicate()->str().c_str())
+                    ),
+                    librdf_new_node_from_uri(world_, librdf_new_uri(
+                            world_, (const unsigned char *) getResource().str().c_str()))
+            );
+        }
+        return statement;
+    }
 
 }
 

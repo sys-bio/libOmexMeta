@@ -18,7 +18,7 @@ namespace semsim {
         std::string resource_namespace;
         std::string identifier;
         std::string literal;
-        bool is_literal_;
+        bool is_literal_ = false;
 
     public:
         bool isLiteral() const;

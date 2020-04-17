@@ -34,15 +34,18 @@ namespace semsim {
      */
     class Triple {
 
+
         Subject subject_;
         PredicatePtr predicate_ptr_;
         Resource resource_;
+        librdf_world *world_;
+
     public:
-        Triple(Subject subject, PredicatePtr predicate_ptr_, Resource resource);
+        Triple(Subject subject, PredicatePtr predicate_ptr, Resource resource, librdf_world *world);
 
-        Triple(Subject subject, const Predicate &predicate, Resource resource);
+        Triple(Subject subject, const Predicate &predicate, Resource resource, librdf_world *world);
 
-        Triple(std::string subject, const Predicate &predicate, const std::string &resource);
+        Triple(std::string subject, const Predicate &predicate, const std::string &resource, librdf_world *world);
 
         Triple() = default;
 
@@ -70,7 +73,13 @@ namespace semsim {
 
         static void from_xml(std::string xml);
 
-        librdf_statement *toStatement(); // if we want this we must pass librdf_model etc to Triple.
+        librdf_statement *toStatement();
+
+        librdf_world *getWorld() const;
+
+        void setWorld(librdf_world *world);
+
+        // if we want this we must pass librdf_model etc to Triple.
 
     private:
         static void parseTriple(void *user_data, raptor_statement *raptor_triple);
