@@ -120,6 +120,10 @@ namespace semsim {
         return tokens;
     }
 
+    bool Resource::isLiteral() const {
+        return is_literal_;
+    }
+
 
 }
 

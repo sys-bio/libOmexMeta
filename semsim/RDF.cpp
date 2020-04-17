@@ -244,25 +244,14 @@ semsim::RDF semsim::RDF::fromOmex(std::string filename_or_url) {
  * Other methods
  */
 
-
-
 semsim::Writer semsim::RDF::makeWriter(const std::string &format, const std::string &base_uri) {
     Writer writer(world_, model_, format, base_uri);
     for (auto &it : namespaces_) {
+        // todo only register namespace if its needed for writing
         writer.registerNamespace(it.second, it.first);
     }
     return writer;
 }
-
-void semsim::RDF::addStatement(std::string subject, std::string predicate, std::string resource) {
-    librdf_statement *statement = librdf_new_statement_from_nodes(
-            world_,
-            librdf_new_node_from_uri_string(world_, (const unsigned char *) "http://www.dajobe.org/"),
-            librdf_new_node_from_uri_string(world_, (const unsigned char *) "http://purl.org/dc/elements/1.1/title"),
-            librdf_new_node_from_literal(world_, (const unsigned char *) "My Home Page", nullptr, 0)
-    );
-}
-
 
 std::ostringstream semsim::RDF::listOptions() {
     raptor_world *raptor_world_ptr = raptor_new_world();

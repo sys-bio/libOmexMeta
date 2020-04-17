@@ -58,7 +58,7 @@ namespace semsim {
     void Predicate::verify() {
         if (!(std::find(valid_terms.begin(), valid_terms.end(), term_) != valid_terms.end())) {
             std::ostringstream os;
-            os << "Invalid term given. Terms available for " << prefix_
+            os << __FILE__<< ":"<<__LINE__ <<": Invalid term \""<< term_ <<"\"given. Terms available for " << prefix_
                << " include: ";
             for (auto &i : valid_terms) {
                 os << i << ", ";
@@ -73,6 +73,10 @@ namespace semsim {
         return std::make_shared<Predicate>(*this);
     }
 
+    std::string Predicate::str() {
+        return namespace_ + term_ ;
+    }
+
 //    std::shared_ptr<int> Predicate::make_shared() {
 //        return std::make_shared<int>(4);
 //    }
@@ -82,7 +86,7 @@ namespace semsim {
             : Predicate(qualifier) {
         setValidTerms();
         setNamespace("http://biomodels.net/biology-qualifiers/"); //namespace;
-        setPrefix("bqb"); //prefix
+        setPrefix("bqbiol"); //prefix
         verify();
     }
 
@@ -104,7 +108,7 @@ namespace semsim {
         };
     }
 
-    DCTerms::DCTerms(const std::string &qualifier) {
+    DCTerms::DCTerms(const std::string &qualifier) : Predicate(qualifier) {
         setValidTerms();
         setNamespace("http://purl.org/dc/terms/"); //namespace;
         setPrefix("dc"); //prefix
@@ -113,7 +117,11 @@ namespace semsim {
 
     void DCTerms::setValidTerms() {
         this->valid_terms = {
-                "description"
+                "Description"
         };
     }
+
+    //todo figure out the terms we want to include in DCTerms.
+    //todo figure out which other things like DCTerms we want to include
+    //todo figure out which elements of sbml / cellml are annotatable.
 }

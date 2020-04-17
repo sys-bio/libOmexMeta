@@ -18,7 +18,10 @@ namespace semsim {
         std::string resource_namespace;
         std::string identifier;
         std::string literal;
-        bool is_literal_{};
+        bool is_literal_;
+
+    public:
+        bool isLiteral() const;
 
     public:
         Resource(const std::string &identifier);
