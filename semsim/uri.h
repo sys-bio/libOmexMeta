@@ -41,10 +41,10 @@ namespace semsim {
             explicit parse_error(const std::string &reason) : std::invalid_argument(reason) {}
         };
 
-        // Exception that may be thrown when building an URL
-        class build_error : public std::runtime_error {
+        // Exception that may be thrown when string an URL
+        class str_error : public std::runtime_error {
         public:
-            explicit build_error(const std::string &reason) : std::runtime_error(reason) {}
+            explicit str_error(const std::string &reason) : std::runtime_error(reason) {}
         };
 
                 // Default constructor
@@ -86,9 +86,9 @@ namespace semsim {
         // Clear the Uri object
         Uri &clear();
 
-        // Build Uri if needed and return it as string
+        // str Uri if needed and return it as string
         std::string str() const {
-            if (!m_built) build_url();
+            if (!m_built) str_url();
             return m_url;
         }
 
@@ -302,7 +302,7 @@ namespace semsim {
 
         void assign(Uri &&url);
 
-        void build_url() const;
+        void str_url() const;
 
         void lazy_parse() const { if (!m_parse) parse_url(); }
 

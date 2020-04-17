@@ -5,9 +5,11 @@
 #include "semsim/Resource.h"
 
 #include <utility>
+#include <regex>
 #include "uri.h"
 #include "sstream"
 #include "iterator"
+#include "SemsimUtils.h"
 
 namespace semsim {
 
@@ -39,11 +41,15 @@ namespace semsim {
     }
 
     std::ostream &operator<<(std::ostream &os, const Resource &resource) {
-        os << "Resource(" << resource.build() << ")";
+        os << "Resource(" << resource.str() << ")";
         return os;
     }
 
-    std::string Resource::build() const {
+    std::string Resource::str() const {
+        if (is_literal_) {
+            return this->literal;
+        }
+
         std::ostringstream os;
         os << identifiers_base << "/"
            << resource_namespace << "/"
@@ -54,13 +60,18 @@ namespace semsim {
     static std::vector<std::string> splitStringBy(std::string delimiter);
 
     Resource::Resource(const std::string &identifier) {
-        std::vector<std::string> vec;
-        // check whether user has given full html
-        if (identifier.rfind("https://", 0) == 0) {
+        std::regex http_regex("https://");
+        std::regex identifiers_org_form1(R"(^(?![https://])(\S*)\:(\S*))");
+        std::regex identifiers_org_form2(R"(^(?![https://])(\S*)/(\S*))");
+
+        std::smatch m;
+
+        // check whether user has given full url
+        if (std::regex_search(identifier, http_regex)) {
             // if yes, and it isn't an identifiers.org link, throw an error
-            if (identifier.rfind("https://identifiers.org", 0) != 0) {
+            if (identifier.rfind("https://identifiers.org/", 0) != 0) {
                 std::ostringstream err;
-                err << __FILE__ << ":" << __LINE__ << ": url detected but it doesn't "
+                err << __FILE__ << ":" << __LINE__ << ": Url \""<< identifier << "\" detected but it doesn't "
                                                       "start with \"https://identifiers.org\". All "
                                                       "resources must be resolvable with "
                                                       "\"https://identifiers.org\". For example:"
@@ -75,27 +86,41 @@ namespace semsim {
             this->identifier = html_vec[html_vec_size - 1];
         }
 
-        // if the string isn't a url
-        else {
-            // check to see whether "/" is in the string
-            if (identifier.find('/') != std::string::npos) {
-                // if so, process identifier of form namespace/identifier
-                vec = splitStringBy(identifier, '/');
-                if (vec.size() != 2)
-                    throw std::logic_error("Was expecting a vector of size 2");
-            } else if (identifier.find(':') != std::string::npos) {
-                // otherwise process identifier of form namespace:identifier
-                vec = splitStringBy(identifier, ':');
-                if (vec.size() != 2)
-                    throw std::logic_error("Was expecting a vector of size 2");
-            } else {
-                // anything else is an error
-                throw std::logic_error("input string (" + identifier + ") does not contain "
-                                                                       "either one of the accepted delimiters (\"/\" or \":\")");
-            }
-            this->resource_namespace = vec[0];
-            this->identifier = vec[1];
+            // if its not html string check for form uniprot:identifier
+        else if (std::regex_search(identifier, m, identifiers_org_form1)) {
+            this->resource_namespace = m[1];
+            this->identifier = m[2];
+        }
+
+            // if its not html string check for form uniprot/identifier
+        else if (std::regex_search(identifier, m, identifiers_org_form2)) {
+            this->resource_namespace = m[1];
+            this->identifier = m[2];
+        } else {
+            // its a literal
+            is_literal_ = true;
+            literal = identifier;
         }
     }
 
+
+    std::vector<std::string> Resource::splitStringBy(const std::string &str, char delimiter) {
+        std::vector<std::string> tokens;
+        if (str.find(delimiter) == std::string::npos) {
+            // return the string in the vector
+            tokens.push_back(str);
+            return tokens;
+        }
+        std::string token;
+        std::istringstream is(str);
+        while (std::getline(is, token, delimiter)) {
+            if (!token.empty())
+                tokens.push_back(token);
+        }
+        return tokens;
+    }
+
+
 }
+
+

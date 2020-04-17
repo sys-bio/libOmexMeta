@@ -143,14 +143,14 @@ TEST_F(TripleTests, TestTripleGetResource) {
     semsim::Triple triple1(subject, predicate, resource);
     semsim::Triple triple2(subject, predicate, resource);
     std::vector<semsim::Triple> vec = {triple1, triple2};
-    std::string actual = vec[0].getResource().build();
+    std::string actual = vec[0].getResource().str();
     std::string expected = "https://identifiers.org/uniprot/P0DP23";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(TripleTests, TestTripleFromStrings) {
     semsim::Triple triple1("metaid001", predicate, "uniprot:P07362");
-    std::string actual = triple1.getResource().build();
+    std::string actual = triple1.getResource().str();
     std::string expected = "https://identifiers.org/uniprot/P07362";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }

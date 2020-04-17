@@ -87,7 +87,7 @@ namespace semsim {
            << ", predicate_="
            << triple.getPredicate()->getUri().str()
            << ", resource_="
-           << triple.getResource().build();
+           << triple.getResource().str();
         return os;
     }
 
@@ -109,7 +109,7 @@ namespace semsim {
                 world,
                 (const unsigned char *) predicate_ptr_->getUri().str().c_str()
         );
-        triple->object = raptor_new_term_from_uri_string(world, (const unsigned char *) resource_.build().c_str());
+        triple->object = raptor_new_term_from_uri_string(world, (const unsigned char *) resource_.str().c_str());
 
         // make a raptor serializer
         raptor_serializer *rdf_serializer = nullptr;
@@ -258,7 +258,7 @@ namespace semsim {
 
 /*
  * I wonder whether its possible to wrap the serialisation
- * up in a builder pattern. So users would do somethinglike:
+ * up in a strer pattern. So users would do somethinglike:
  *
  *      statement.serialise().with_format('format').to_output(output)
  */

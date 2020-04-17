@@ -66,7 +66,7 @@ void semsim::Editor::toRDF(RDF &rdf) {
                                                                              world_,
                                                                              librdf_new_uri(
                                                                                      world_,
-                                                                                     (const unsigned char *) tple.getResource().build().c_str()))
+                                                                                     (const unsigned char *) tple.getResource().str().c_str()))
             );
             librdf_model_add_statement(model_, stmt);
         }

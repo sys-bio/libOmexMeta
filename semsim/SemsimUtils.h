@@ -19,8 +19,9 @@ namespace semsim {
 
         static void removeIfExists(const std::string &filename);
 
+        static void download(const std::string &url, std::string filename);
 
-        static void download(const std::string &url, const std::string filename);
+        static bool isLinkResolvable(const std::string &url);
     };
 }
 
