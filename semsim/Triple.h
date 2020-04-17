@@ -70,7 +70,7 @@ namespace semsim {
 
         static void from_xml(std::string xml);
 
-        librdf_statement *toStatement();
+        librdf_statement *toStatement(); // if we want this we must pass librdf_model etc to Triple.
 
     private:
         static void parseTriple(void *user_data, raptor_statement *raptor_triple);

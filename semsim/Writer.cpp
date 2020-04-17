@@ -49,6 +49,7 @@ semsim::Writer::Writer(librdf_world *world, librdf_model *model, std::string for
     }
 
     //todo built interface to allow users to set options
+    //todo ask about which defaults they want
     //set raptor options
     setOption("relativeURIs", "1");
     setOption("xmlDeclaration", "1");
@@ -98,3 +99,5 @@ void semsim::Writer::setFormat(const std::string &format) {
 }
 
 
+//todo look into using concept schema part of librdf. This may solve the rdf:Bag problem.
+// Might also be able to use sbml/cellml schemas.

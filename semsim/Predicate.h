@@ -27,6 +27,7 @@ namespace semsim {
     public:
         Predicate() = default;
 
+        //todo figure out correct nomenclecture
         explicit Predicate(std::string term_);
 
         const std::string &getPrefix() const;
@@ -47,7 +48,9 @@ namespace semsim {
 
         friend std::ostream &operator<<(std::ostream &os, const Predicate &vocabulary);
 
-        Uri getUri() const;
+        Uri getUri() const; // deprecated. Use str instead
+
+        std::string str();
 
         std::shared_ptr<Predicate> make_shared();
 

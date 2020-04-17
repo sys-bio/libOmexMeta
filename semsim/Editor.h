@@ -60,13 +60,22 @@ namespace semsim {
         void removeAnnotation() {
 
         }
-        //overloaded
-
-        void addAnnotation(std::string metaid, PredicatePtr predicateptr, const std::string &resource);
 
         void toRDF(RDF &rdf);
 
         void checkValidMetaid(const std::string &metaid);
+
+
+        //overloaded
+        // singular signature
+        // todo consider whether to change the name 'metaid' to 'about', for rdf:about.
+        void addAnnotation(std::string metaid, PredicatePtr predicateptr, const std::string &resource);
+
+        void addAnnotation(std::string metaid, Resource isVersionOf,
+                std::string isPropertyOf, Resource is, Resource isPartOf);
+
+        void addAnnotation(std::string metaid, std::string is_version_of_resource, std::string is_property_of_resource,
+                           std::string is_resource, std::string is_part_of_resource);
     };
 
 
