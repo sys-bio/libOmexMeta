@@ -11,20 +11,17 @@
 
 namespace semsim {
 
-    Predicate2::Predicate2(
-            librdf_world *world,
-            const std::string &namespace_,
-            std::string term,
-            std::string prefix)
+    Predicate2::Predicate2(librdf_world *world, const std::string &namespace_,
+                           std::string term, std::string prefix)
             : world_(world), namespace_(namespace_), term_(std::move(term)),
               prefix_(std::move(prefix)) {
         if (namespace_.back() == '/') {
-            uri_ = namespace_ + term_;
+            this->uri_ = namespace_ + term_;
         } else {
-            uri_ = namespace_ + "/" + term_;
+            this->uri_ = namespace_ + "/" + term_;
         }
-        RDFURINode node(world_, uri_);
-        this->rdf_node_ptr_ = std::make_unique<RDFURINode>(node);
+        verify(valid_terms_, term);
+        this->uri_node_ = std::make_unique<RDFURINode>(RDFURINode(world_, uri_));
     }
 
     std::string Predicate2::str() {
@@ -32,20 +29,15 @@ namespace semsim {
     }
 
     librdf_node *Predicate2::toRdfNode() {
-        if (!rdf_node_ptr_) {
-            std::ostringstream err;
-            err << __FILE__ << ":" << __LINE__ << ": rdf_node_ptr_ has not been initialized" << std::endl;
-            throw std::invalid_argument(err.str());
-        }
-        return rdf_node_ptr_->toRdfNode();
+        return uri_node_->toRdfNode();
     }
 
-    int Predicate2::verify(std::vector<std::string> valid_terms, std::string term) {
+    int Predicate2::verify(std::vector<std::string> valid_terms, const std::string& term) {
         // when valled from the base Predicate class, accept anything
         if (valid_terms.size() == 1)
             if (valid_terms[0] == "All")
                 return 0;
-        // when called from any other class (which should have overridden valid_terms_), we do validatation
+        // when called from any other class (which should have overridden valid_terms), we do validatation
         if (!(std::find(valid_terms.begin(), valid_terms.end(), term) != valid_terms.end())) {
             std::ostringstream os;
             os << __FILE__ << ":" << __LINE__ << ": Invalid term \"" << term << "\"given. Terms available for "
@@ -58,29 +50,36 @@ namespace semsim {
         return 0;
     }
 
-    BiomodelsQualifiers::BiomodelsQualifiers(librdf_world *world, const std::string &term) {
-        this->world_ = world;
-        this->term_ = term;
-        Predicate2::verify(valid_terms_, term);
-        predicate = Predicate2(world_, namespace_, term_, prefix_);
+    const std::string &Predicate2::getNamespace() const {
+        return namespace_;
     }
 
-    std::string BiomodelsQualifiers::str() {
-        return predicate.str();
+    const std::string &Predicate2::getTerm() const {
+        return term_;
     }
 
-    librdf_node *BiomodelsQualifiers::toRdfNode() {
-        return predicate.toRdfNode();
+    const std::string &Predicate2::getPrefix() const {
+        return prefix_;
+    }
+
+    const std::string &Predicate2::getUri() const {
+        return uri_;
+    }
+
+    void Predicate2::setPrefix(const std::string &prefix) {
+        prefix_ = prefix;
+    }
+
+    BiomodelsQualifiers::BiomodelsQualifiers(librdf_world *world, const std::string &term) :
+        Predicate2(world, "http://biomodels.net/biology-qualifiers/", term, "bqbiol"){
+        verify(valid_terms_, term_);
+    }
+
+    DCTerm::DCTerm(librdf_world *world, const std::string &term) :
+        Predicate2(world, "http://purl.org/dc/terms/", term, "dc"){
+        verify(valid_terms_, term_);
     }
 
 
 }
 
-
-/*
- * ITs all about creating this rdf_node_ptr_ object. Since this is a
- * creational problm, should I try a factory?
- *
- * I want to create these subclasses objects without specifying
- * all the information that the superclass needs.
- */

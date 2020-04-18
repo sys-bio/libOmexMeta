@@ -17,42 +17,61 @@ namespace semsim {
         librdf_world *world_;
         std::string namespace_, term_, prefix_;
         std::string uri_;
-        RDFURINode uri_node; // predicates can only have type RDFUriNode
+        std::unique_ptr<RDFURINode> uri_node_; // predicates can only have type RDFUriNode
 
         std::vector<std::string> valid_terms_{"All"};
 
     public:
         Predicate2() = default;
 
-        explicit Predicate2(librdf_world *world, const std::string &namespace_,
-                            std::string term, std::string prefix);
+        void setPrefix(const std::string &prefix);
+
+        Predicate2(librdf_world *world, const std::string &namespace_,
+                   std::string term, std::string prefix);
 
         librdf_node *toRdfNode();
 
         std::string str();
 
-        static int verify(std::vector<std::string> valid_terms, std::string term);
+        const std::string &getNamespace() const;
+
+        const std::string &getTerm() const;
+
+        const std::string &getPrefix() const;
+
+        const std::string &getUri() const;
+
+        static int verify(std::vector<std::string> valid_terms, const std::string &term);
     };
 
-    class BiomodelsQualifiers {
+    class BiomodelsQualifiers : public Predicate2 {
     public:
-        // eg http://biomodels.net/biology-qualifiers/is => bqbiol:is
-        librdf_world *world_;
-        std::string term_;
-        std::string namespace_ = "http://biomodels.net/biology-qualifiers/";
-        std::string prefix_ = "bqbiol"; // eg bqbiol
         std::vector<std::string> valid_terms_{
-                "is"
+                "is",
+                "hasPart",
+                "isPartOf",
+                "isVersionOf",
+                "hasVersion",
+                "isHomologTo",
+                "isDescribedBy",
+                "isEncodedBy",
+                "encodes",
+                "occursIn",
+                "hasProperty",
+                "isPropertyOf",
+                "hasTaxon"};
+
+        BiomodelsQualifiers(librdf_world *world, const std::string &term);
+
+    };
+
+    class DCTerm : public Predicate2 {
+    public:
+        std::vector<std::string> valid_terms_{
+                "Description"
         };
 
-        Predicate2 predicate;
-
-        BiomodelsQualifiers(librdf_world *world,
-                            const std::string &term);
-
-        std::string str();
-
-        librdf_node *toRdfNode();
+        DCTerm(librdf_world *world, const std::string &term);
 
     };
 
