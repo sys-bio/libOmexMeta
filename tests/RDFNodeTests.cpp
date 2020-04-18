@@ -5,7 +5,6 @@
 #include "raptor2.h"
 #include <semsim/RDFNode.h>
 #include "gtest/gtest.h"
-#include "semsim/RDFTerm.h"
 
 class RDFNodeTests : public ::testing::Test {
 public:

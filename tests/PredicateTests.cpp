@@ -3,7 +3,7 @@
 //
 #include "librdf.h"
 #include "gtest/gtest.h"
-#include "semsim/Predicate2.h"
+#include "semsim/Predicate.h"
 
 
 class PredicateTests : public ::testing::Test {
@@ -31,14 +31,14 @@ public:
 };
 
 TEST_F(PredicateTests, TestCreateStaticFunctionFromBasePredicate) {
-    semsim::Predicate2 predicate2(world, bqb_ns, "is", "bqbiol");
+    semsim::Predicate predicate2(world, bqb_ns, "is", "bqbiol");
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     std::string actual = predicate2.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(PredicateTests, TestToRdfNode) {
-    semsim::Predicate2 predicate2(world, bqb_ns, "is", "bqbiol");
+    semsim::Predicate predicate2(world, bqb_ns, "is", "bqbiol");
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     librdf_node *node = predicate2.toRdfNode();
     const char *actual = (const char *) librdf_uri_as_string(node->value.uri);

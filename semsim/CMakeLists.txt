@@ -18,7 +18,7 @@ set(SEMSIM_SOURCES
 #        MetaID.cpp MetaID.h
 #        Editor.h Editor.cpp
 #        RDFTerm.cpp RDFTerm.h
-        Predicate2.cpp Predicate2.h)
+        Predicate.cpp Predicate.h)
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)

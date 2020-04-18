@@ -1,34 +1,52 @@
 //
-// Created by Ciaran on 4/5/2020.
+// Created by Ciaran on 4/17/2020.
 //
 
 #include "Predicate.h"
 
+#include <utility>
 #include <iostream>
-#include <memory>
+#include "librdf.h"
 
-
-//todo should I relabel Predicate to Term???
 namespace semsim {
-    Predicate::Predicate(std::string term) : term_(std::move(term)) {}
 
-    const std::string &Predicate::getPrefix() const {
-        return prefix_;
+    Predicate::Predicate(librdf_world *world, const std::string &namespace_,
+                         std::string term, std::string prefix)
+            : world_(world), namespace_(namespace_), term_(std::move(term)),
+              prefix_(std::move(prefix)) {
+        if (namespace_.back() == '/') {
+            this->uri_ = namespace_ + term_;
+        } else {
+            this->uri_ = namespace_ + "/" + term_;
+        }
+        verify(valid_terms_, term);
+        this->uri_node_ = std::make_unique<RDFURINode>(RDFURINode(world_, uri_));
     }
 
-    bool Predicate::operator==(const Predicate &rhs) const {
-        return prefix_ == rhs.prefix_ &&
-               namespace_ == rhs.namespace_ &&
-               term_ == rhs.term_;
+    std::string Predicate::str() {
+        return uri_;
     }
 
-    std::ostream &operator<<(std::ostream &os, const Predicate &vocabulary) {
-        os << vocabulary.getUri().str();
-        return os;
+    librdf_node *Predicate::toRdfNode() {
+        return uri_node_->toRdfNode();
     }
 
-    bool Predicate::operator!=(const Predicate &rhs) const {
-        return !(rhs == *this);
+    int Predicate::verify(std::vector<std::string> valid_terms, const std::string& term) {
+        // when valled from the base Predicate class, accept anything
+        if (valid_terms.size() == 1)
+            if (valid_terms[0] == "All")
+                return 0;
+        // when called from any other class (which should have overridden valid_terms), we do validatation
+        if (!(std::find(valid_terms.begin(), valid_terms.end(), term) != valid_terms.end())) {
+            std::ostringstream os;
+            os << __FILE__ << ":" << __LINE__ << ": Invalid term \"" << term << "\"given. Terms available for "
+               << " include: ";
+            for (auto &i : valid_terms) {
+                os << i << ", ";
+            }
+            throw std::invalid_argument(os.str());
+        }
+        return 0;
     }
 
     const std::string &Predicate::getNamespace() const {
@@ -39,88 +57,28 @@ namespace semsim {
         return term_;
     }
 
-    const std::vector<std::string> &Predicate::getValidTerms() const {
-        return valid_terms;
+    const std::string &Predicate::getPrefix() const {
+        return prefix_;
     }
 
-    void Predicate::setNamespace(const std::string &namespace_) {
-        this->namespace_ = namespace_;
-    }
-
-    Uri Predicate::getUri() const {
-        return Uri(namespace_ + term_);
+    const std::string &Predicate::getUri() const {
+        return uri_;
     }
 
     void Predicate::setPrefix(const std::string &prefix) {
         prefix_ = prefix;
     }
 
-    void Predicate::verify() {
-        if (!(std::find(valid_terms.begin(), valid_terms.end(), term_) != valid_terms.end())) {
-            std::ostringstream os;
-            os << __FILE__<< ":"<<__LINE__ <<": Invalid term \""<< term_ <<"\"given. Terms available for " << prefix_
-               << " include: ";
-            for (auto &i : valid_terms) {
-                os << i << ", ";
-            }
-            throw std::invalid_argument(os.str());
-        }
+    BiomodelsQualifiers::BiomodelsQualifiers(librdf_world *world, const std::string &term) :
+            Predicate(world, "http://biomodels.net/biology-qualifiers/", term, "bqbiol"){
+        verify(valid_terms_, term_);
     }
 
-    void Predicate::setValidTerms() {}
-
-    std::shared_ptr<Predicate> Predicate::make_shared() {
-        return std::make_shared<Predicate>(*this);
+    DCTerm::DCTerm(librdf_world *world, const std::string &term) :
+            Predicate(world, "http://purl.org/dc/terms/", term, "dc"){
+        verify(valid_terms_, term_);
     }
 
-    std::string Predicate::str() {
-        return namespace_ + term_ ;
-    }
 
-//    std::shared_ptr<int> Predicate::make_shared() {
-//        return std::make_shared<int>(4);
-//    }
-
-
-    BiomodelsQualifier::BiomodelsQualifier(const std::string &qualifier)
-            : Predicate(qualifier) {
-        setValidTerms();
-        setNamespace("http://biomodels.net/biology-qualifiers/"); //namespace;
-        setPrefix("bqbiol"); //prefix
-        verify();
-    }
-
-    void BiomodelsQualifier::setValidTerms() { //term
-        this->valid_terms = {
-                "is",
-                "hasPart",
-                "isPartOf",
-                "isVersionOf",
-                "hasVersion",
-                "isHomologTo",
-                "isDescribedBy",
-                "isEncodedBy",
-                "encodes",
-                "occursIn",
-                "hasProperty",
-                "isPropertyOf",
-                "hasTaxon"
-        };
-    }
-
-    DCTerms::DCTerms(const std::string &qualifier) : Predicate(qualifier) {
-        setValidTerms();
-        setPrefix("dc"); //prefix
-        verify();
-    }
-
-    void DCTerms::setValidTerms() {
-        this->valid_terms = {
-                "Description"
-        };
-    }
-
-    //todo figure out the terms we want to include in DCTerms.
-    //todo figure out which other things like DCTerms we want to include
-    //todo figure out which elements of sbml / cellml are annotatable.
 }
+
