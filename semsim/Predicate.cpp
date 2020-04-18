@@ -110,7 +110,6 @@ namespace semsim {
 
     DCTerms::DCTerms(const std::string &qualifier) : Predicate(qualifier) {
         setValidTerms();
-        setNamespace("http://purl.org/dc/terms/"); //namespace;
         setPrefix("dc"); //prefix
         verify();
     }
