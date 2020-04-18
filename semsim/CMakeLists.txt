@@ -3,7 +3,7 @@ set(SEMSIM_SOURCES
 #        uri.h uri.cpp
         RDFNode.cpp RDFNode.h
         Subject.h Subject.cpp
-#        Resource.cpp Resource.h
+        Resource.cpp Resource.h
 #        Triple.h Triple.cpp
 #        semsim.h
 #        Predicate.cpp Predicate.h
@@ -18,7 +18,7 @@ set(SEMSIM_SOURCES
 #        MetaID.cpp MetaID.h
 #        Editor.h Editor.cpp
 #        RDFTerm.cpp RDFTerm.h
-        )
+        Predicate2.cpp Predicate2.h)
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)

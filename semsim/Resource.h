@@ -5,32 +5,29 @@
 #ifndef LIBSEMGEN_RESOURCE_H
 #define LIBSEMGEN_RESOURCE_H
 
+#include "librdf.h"
 #include <iostream>
 #include "semsim/Resource.h"
 #include "semsim/uri.h"
 #include "sstream"
-#include "semsim/RDFTerm.h"
+#include "semsim/RDFNode.h"
 
 namespace semsim {
     class Resource {
-        RDFTerm *rdf_term_ptr_;
+        librdf_world* world_;
+        RDFNodePtr rdf_node_ptr_;
 
     public:
-        Resource(RDFTerm *rdf_term_ptr);
+        Resource(librdf_world *world, const RDFLiteralNode &node);
 
-        Resource(const RDFTerm *rdf_term_ptr);
+        Resource(librdf_world *world, const RDFURINode &node);
 
-        ~Resource();
-
-        Resource(const Resource &resource);
-
-        Resource(const Resource &&resource) noexcept;
-
-        Resource &operator=(const Resource &resource);
-
-        Resource &operator=(Resource &&resource) noexcept;
+        Resource(librdf_world *world, const RDFBlankNode &node);
 
         std::string str();
+
+        librdf_node *toRdfNode();
+
 
     };
 

@@ -7,6 +7,7 @@
 
 #include <string>
 #include <librdf.h>
+#include <memory>
 
 namespace semsim {
 
@@ -52,7 +53,6 @@ namespace semsim {
 
         librdf_node *toRdfNode() override;
 
-
     };
 
     class RDFBlankNode : public RDFNode {
@@ -66,6 +66,8 @@ namespace semsim {
 
 
     };
+
+    typedef std::unique_ptr<RDFNode> RDFNodePtr;
 
 }
 
