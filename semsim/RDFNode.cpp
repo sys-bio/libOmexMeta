@@ -49,7 +49,7 @@ namespace semsim {
     }
 
     std::string RDFURINode::str() {
-        return "not yet implemented";
+        return value_;
     }
 
     librdf_node *RDFURINode::toRdfNode() {

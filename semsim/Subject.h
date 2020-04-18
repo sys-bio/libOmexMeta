@@ -6,25 +6,34 @@
 #define LIBSEMGEN_SUBJECT_H
 
 #include "iostream"
-#include "uri.h"
+#include "semsim/RDFNode.h"
 
 namespace semsim {
     class Subject {
     private:
-        std::string metaId;
+        librdf_world *world_;
+
+        RDFNodePtr rdfNodePtr_;
 
     public:
         Subject() = default;
 
-        explicit Subject(std::string metaId) : metaId(std::move(metaId)) {};
+        Subject(librdf_world *world, const RDFBlankNode &node);
 
-        const std::string &getMetaId() const;
+        explicit Subject(librdf_world* world, const RDFURINode &node);
 
-        bool operator==(const Subject &rhs) const;
+        librdf_node *toRdfNode();
 
-        bool operator!=(const Subject &rhs) const;
+        std::string str();
 
-        friend std::ostream &operator<<(std::ostream &os, const Subject &subject);
+//        friend std::ostream &operator<<(std::ostream &os, const Subject &subject);
+//
+//        const std::string &getMetaId() const;
+//
+//        bool operator==(const Subject &rhs) const;
+//
+//        bool operator!=(const Subject &rhs) const;
+
     };
 
 }

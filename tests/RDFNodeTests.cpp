@@ -21,6 +21,8 @@ public:
 
     ~RDFNodeTests() override{
         librdf_free_world(world);
+        librdf_free_model(model);
+        librdf_free_storage(storage);
     }
 
 };

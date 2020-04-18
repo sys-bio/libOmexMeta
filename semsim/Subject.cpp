@@ -5,24 +5,41 @@
 #include "semsim/Subject.h"
 
 namespace semsim {
-
-
-    bool Subject::operator==(const Subject &rhs) const {
-        return metaId == rhs.metaId;
+    Subject::Subject(librdf_world* world, const RDFURINode &node)
+        : world_(world){
+        this->rdfNodePtr_ = std::make_unique<RDFURINode>(node);
+    }
+    Subject::Subject(librdf_world *world, const RDFBlankNode &node)
+        : world_(world){
+        this->rdfNodePtr_ = std::make_unique<RDFBlankNode>(node);
     }
 
-    bool Subject::operator!=(const Subject &rhs) const {
-        return !(rhs == *this);
+    librdf_node *Subject::toRdfNode() {
+        return rdfNodePtr_->toRdfNode();
     }
 
-    std::ostream &operator<<(std::ostream &os, const Subject &subject) {
-        os << "Subject(metaId=" << subject.getMetaId() << ")";
-        return os;
+    std::string Subject::str() {
+        return rdfNodePtr_->str();
     }
+//
+//    bool Subject::operator==(const Subject &rhs) const {
+//        return metaId == rhs.metaId;
+//    }
+//
+//    bool Subject::operator!=(const Subject &rhs) const {
+//        return !(rhs == *this);
+//    }
+//
+//    std::ostream &operator<<(std::ostream &os, const Subject &subject) {
+//        os << "Subject(metaId=" << subject.getMetaId() << ")";
+//        return os;
+//    }
+//
+//    const std::string &Subject::getMetaId() const {
+//        return metaId;
+//    }
 
-    const std::string &Subject::getMetaId() const {
-        return metaId;
-    }
+
 
 
 }
