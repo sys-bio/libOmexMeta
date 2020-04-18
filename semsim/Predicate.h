@@ -1,82 +1,78 @@
 //
-// Created by Ciaran on 4/5/2020.
+// Created by Ciaran on 4/17/2020.
 //
 
 #ifndef LIBSEMGEN_PREDICATE_H
 #define LIBSEMGEN_PREDICATE_H
 
+#include <librdf.h>
+#include <vector>
 #include <algorithm>
-#include <memory>
-#include <iostream>
 #include <sstream>
-#include <unordered_map>
-#include "uri.h"
+#include "RDFNode.h"
 
 namespace semsim {
     class Predicate {
-        std::string namespace_;
-        std::string prefix_;
-        std::string term_;
     protected:
-        std::vector<std::string> valid_terms;
+        librdf_world *world_;
+        std::string namespace_, term_, prefix_;
+        std::string uri_;
+        std::unique_ptr<RDFURINode> uri_node_; // predicates can only have type RDFUriNode
 
-        virtual void setValidTerms();
-
-        void verify();
+        std::vector<std::string> valid_terms_{"All"};
 
     public:
         Predicate() = default;
 
-        //todo figure out correct nomenclecture
-        explicit Predicate(std::string term_);
-
-        const std::string &getPrefix() const;
-
-        void setNamespace(const std::string &namespace_);
-
         void setPrefix(const std::string &prefix);
+
+        Predicate(librdf_world *world, const std::string &namespace_,
+                  std::string term, std::string prefix);
+
+        librdf_node *toRdfNode();
+
+        std::string str();
 
         const std::string &getNamespace() const;
 
         const std::string &getTerm() const;
 
-        const std::vector<std::string> &getValidTerms() const;
+        const std::string &getPrefix() const;
 
-        bool operator==(const Predicate &rhs) const;
+        const std::string &getUri() const;
 
-        bool operator!=(const Predicate &rhs) const;
+        static int verify(std::vector<std::string> valid_terms, const std::string &term);
+    };
 
-        friend std::ostream &operator<<(std::ostream &os, const Predicate &vocabulary);
+    class BiomodelsQualifiers : public Predicate {
+    public:
+        std::vector<std::string> valid_terms_{
+                "is",
+                "hasPart",
+                "isPartOf",
+                "isVersionOf",
+                "hasVersion",
+                "isHomologTo",
+                "isDescribedBy",
+                "isEncodedBy",
+                "encodes",
+                "occursIn",
+                "hasProperty",
+                "isPropertyOf",
+                "hasTaxon"};
 
-        Uri getUri() const; // deprecated. Use str instead
-
-        std::string str();
-
-        std::shared_ptr<Predicate> make_shared();
+        BiomodelsQualifiers(librdf_world *world, const std::string &term);
 
     };
 
-    typedef std::unique_ptr<Predicate> PredicatePtr;
-
-    class BiomodelsQualifier : public Predicate {
+    class DCTerm : public Predicate {
     public:
-        BiomodelsQualifier() = default;
+        std::vector<std::string> valid_terms_{
+                "Description"
+        };
 
-        explicit BiomodelsQualifier(const std::string &term_);
+        DCTerm(librdf_world *world, const std::string &term);
 
-    protected:
-        void setValidTerms() override;
-    };
-
-
-    class DCTerms : public Predicate {
-    public:
-        DCTerms() = default;
-
-        explicit DCTerms(const std::string &term_);
-
-    protected:
-        void setValidTerms() override;
     };
 
 
