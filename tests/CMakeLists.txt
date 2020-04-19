@@ -6,17 +6,17 @@ add_executable(semsim-tests
         PredicateTests.cpp
         ResourceTests.cpp
         TripleTests.cpp
-#        RaptorUtilsTests.cpp
-#        RDFTests.cpp
-#        WriterTests.cpp
-#        AnnotationSamples.h
-#        ReaderTests.cpp
-#        SemsimCombineArchiveTests.cpp
-#        CurlGetTests.cpp
-#        SemsimUtilsTests.cpp
+        AnnotationSamples.h
+        CurlGetTests.cpp
 #        XmlAssistantTests.cpp
 #        MetaIDTests.cpp
 #        EditorTests.cpp
+#        ReaderTests.cpp
+#        WriterTests.cpp
+#        RaptorUtilsTests.cpp
+#        RDFTests.cpp
+#        SemsimCombineArchiveTests.cpp
+#        SemsimUtilsTests.cpp
         )
 
 

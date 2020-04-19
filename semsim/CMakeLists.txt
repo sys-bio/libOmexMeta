@@ -1,24 +1,23 @@
 
 set(SEMSIM_SOURCES
-#        uri.h uri.cpp
+        CurlGet.cpp CurlGet.h
         RDFNode.cpp RDFNode.h
         Subject.h Subject.cpp
+        Predicate.h Predicate.cpp
         Resource.cpp Resource.h
         Triple.h Triple.cpp
-#        semsim.h
-#        Predicate.cpp Predicate.h
 #        RaptorUtils.cpp RaptorUtils.h
-#        RDF.cpp RDF.h
+#        SemsimCombineArchive.cpp SemsimCombineArchive.h
+
+        SemsimUtils.cpp SemsimUtils.h
+#        MetaID.cpp MetaID.h
+#        XmlAssistant.cpp XmlAssistant.h
+#        Editor.h Editor.cpp
 #        Writer.h Writer.cpp
 #        Reader.h Reader.cpp
-#        SemsimCombineArchive.cpp SemsimCombineArchive.h
-#        CurlGet.cpp CurlGet.h
-#        SemsimUtils.cpp SemsimUtils.h
-#        XmlAssistant.cpp XmlAssistant.h
-#        MetaID.cpp MetaID.h
-#        Editor.h Editor.cpp
-#        RDFTerm.cpp RDFTerm.h
-        Predicate.cpp Predicate.h)
+#        RDF.cpp RDF.h
+#        SemSim.h
+        )
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)

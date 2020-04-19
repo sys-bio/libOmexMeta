@@ -8,8 +8,6 @@
 #include "raptor2.h"
 #include "librdf.h"
 #include "Triple.h"
-#include "semsim/RaptorUtils.h"
-#include "semsim/uri.h"
 
 //'todo Conceptually, could we use an isa relationshop between singular annotation and Triple?
 

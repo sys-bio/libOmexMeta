@@ -3,7 +3,6 @@
 //
 
 #include <semsim/Resource.h>
-#include <semsim/uri.h>
 #include "gtest/gtest.h"
 #include "librdf.h"
 
