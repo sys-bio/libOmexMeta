@@ -8,7 +8,6 @@
 #include "librdf.h"
 #include <iostream>
 #include "semsim/Resource.h"
-#include "semsim/uri.h"
 #include "sstream"
 #include "semsim/RDFNode.h"
 

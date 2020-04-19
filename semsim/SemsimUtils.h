@@ -6,6 +6,7 @@
 #define LIBSEMGEN_SEMSIMUTILS_H
 
 #include <string>
+#include <vector>
 
 namespace semsim {
 
@@ -21,8 +22,8 @@ namespace semsim {
 
         static void download(const std::string &url, std::string filename);
 
-        static bool isLinkResolvable(const std::string &url);
-
+//        static bool isLinkResolvable(const std::string &url);
+//
         std::vector<std::string> splitStringBy(const std::string &str, char delimiter);
 
     };

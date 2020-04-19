@@ -19,7 +19,6 @@ do {                                        \
 #include "semsim/Editor.h"
 
 // these may be included in the finished product
-#include "semsim/uri.h"
 #include "semsim/Subject.h"
 #include "semsim/Resource.h"
 #include "semsim/Predicate.h"

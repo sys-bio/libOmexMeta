@@ -7,7 +7,6 @@
 
 #include <string>
 #include <raptor2.h>
-#include "uri.h"
 
 namespace semsim {
     /*

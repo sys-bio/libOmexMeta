@@ -35,18 +35,18 @@ void semsim::SemsimUtils::download(const std::string &url, const std::string fil
     semsim::CurlGet::download(url, filename);
 }
 
-    std::vector<std::string> SemsimUtils::splitStringBy(const std::string &str, char delimiter) {
-        std::vector<std::string> tokens;
-        if (str.find(delimiter) == std::string::npos) {
-            // return the string in the vector
-            tokens.push_back(str);
-            return tokens;
-        }
-        std::string token;
-        std::istringstream is(str);
-        while (std::getline(is, token, delimiter)) {
-            if (!token.empty())
-                tokens.push_back(token);
-        }
+std::vector<std::string> semsim::SemsimUtils::splitStringBy(const std::string &str, char delimiter) {
+    std::vector<std::string> tokens;
+    if (str.find(delimiter) == std::string::npos) {
+        // return the string in the vector
+        tokens.push_back(str);
         return tokens;
     }
+    std::string token;
+    std::istringstream is(str);
+    while (std::getline(is, token, delimiter)) {
+        if (!token.empty())
+            tokens.push_back(token);
+    }
+    return tokens;
+}
