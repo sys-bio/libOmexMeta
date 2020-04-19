@@ -67,7 +67,7 @@ namespace semsim {
 
     };
 
-    typedef std::unique_ptr<RDFNode> RDFNodePtr;
+    typedef std::shared_ptr<RDFNode> RDFNodePtr;
 
 }
 

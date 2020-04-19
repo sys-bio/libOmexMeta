@@ -47,7 +47,7 @@ TEST_F(PredicateTests, TestToRdfNode) {
 
 
 TEST_F(PredicateTests, TestToRdfNodebqb) {
-    semsim::BiomodelsQualifiers qualifiers(world, "is");
+    semsim::BiomodelsQualifier qualifiers(world, "is");
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     librdf_node *node = qualifiers.toRdfNode();
     const char *actual = (const char *) librdf_uri_as_string(node->value.uri);
@@ -55,12 +55,12 @@ TEST_F(PredicateTests, TestToRdfNodebqb) {
 }
 
 TEST_F(PredicateTests, TestToRdfNodebqbFails) {
-    ASSERT_THROW(semsim::BiomodelsQualifiers qualifiers(world, "isnot"),
+    ASSERT_THROW(semsim::BiomodelsQualifier qualifiers(world, "isnot"),
                  std::logic_error);
 }
 
 TEST_F(PredicateTests, TestToRdfNodebqqPrefix) {
-    semsim::BiomodelsQualifiers qualifiers(world, "is");
+    semsim::BiomodelsQualifier qualifiers(world, "is");
     std::string expected = "bqbiol";
     ASSERT_STREQ(expected.c_str(), qualifiers.getPrefix().c_str());
 }

@@ -5,13 +5,15 @@
 #include "semsim/Subject.h"
 
 namespace semsim {
-    Subject::Subject(librdf_world* world, const RDFURINode &node)
-        : world_(world){
-        this->rdfNodePtr_ = std::make_unique<RDFURINode>(node);
+
+    Subject::Subject(librdf_world *world, const RDFURINode &node)
+            : world_(world) {
+        this->rdfNodePtr_ = std::make_shared<RDFURINode>(node);
     }
+
     Subject::Subject(librdf_world *world, const RDFBlankNode &node)
-        : world_(world){
-        this->rdfNodePtr_ = std::make_unique<RDFBlankNode>(node);
+            : world_(world) {
+        this->rdfNodePtr_ = std::make_shared<RDFBlankNode>(node);
     }
 
     librdf_node *Subject::toRdfNode() {
@@ -21,25 +23,6 @@ namespace semsim {
     std::string Subject::str() {
         return rdfNodePtr_->str();
     }
-//
-//    bool Subject::operator==(const Subject &rhs) const {
-//        return metaId == rhs.metaId;
-//    }
-//
-//    bool Subject::operator!=(const Subject &rhs) const {
-//        return !(rhs == *this);
-//    }
-//
-//    std::ostream &operator<<(std::ostream &os, const Subject &subject) {
-//        os << "Subject(metaId=" << subject.getMetaId() << ")";
-//        return os;
-//    }
-//
-//    const std::string &Subject::getMetaId() const {
-//        return metaId;
-//    }
-
-
 
 
 }

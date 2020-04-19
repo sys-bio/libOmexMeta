@@ -20,7 +20,7 @@ namespace semsim {
             this->uri_ = namespace_ + "/" + term_;
         }
         verify(valid_terms_, term);
-        this->uri_node_ = std::make_unique<RDFURINode>(RDFURINode(world_, uri_));
+        this->uri_node_ = std::make_shared<RDFURINode>(RDFURINode(world_, uri_));
     }
 
     std::string Predicate::str() {
@@ -69,7 +69,7 @@ namespace semsim {
         prefix_ = prefix;
     }
 
-    BiomodelsQualifiers::BiomodelsQualifiers(librdf_world *world, const std::string &term) :
+    BiomodelsQualifier::BiomodelsQualifier(librdf_world *world, const std::string &term) :
             Predicate(world, "http://biomodels.net/biology-qualifiers/", term, "bqbiol"){
         verify(valid_terms_, term_);
     }

@@ -4,7 +4,7 @@ set(SEMSIM_SOURCES
         RDFNode.cpp RDFNode.h
         Subject.h Subject.cpp
         Resource.cpp Resource.h
-#        Triple.h Triple.cpp
+        Triple.h Triple.cpp
 #        semsim.h
 #        Predicate.cpp Predicate.h
 #        RaptorUtils.cpp RaptorUtils.h

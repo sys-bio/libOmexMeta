@@ -1,11 +1,11 @@
 add_executable(semsim-tests
 #        UrlTests.cpp
-#        SBMLFactory.h
+        SBMLFactory.h
         RDFNodeTests.cpp
         SubjectTests.cpp
         PredicateTests.cpp
         ResourceTests.cpp
-#        TripleTests.cpp
+        TripleTests.cpp
 #        RaptorUtilsTests.cpp
 #        RDFTests.cpp
 #        WriterTests.cpp

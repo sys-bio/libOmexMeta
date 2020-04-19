@@ -23,7 +23,6 @@ public:
         librdf_free_model(model);
         librdf_free_storage(storage);
     }
-
 };
 
 
