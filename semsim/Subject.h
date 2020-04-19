@@ -20,19 +20,11 @@ namespace semsim {
 
         Subject(librdf_world *world, const RDFBlankNode &node);
 
-        explicit Subject(librdf_world* world, const RDFURINode &node);
+        explicit Subject(librdf_world *world, const RDFURINode &node);
 
         librdf_node *toRdfNode();
 
         std::string str();
-
-//        friend std::ostream &operator<<(std::ostream &os, const Subject &subject);
-//
-//        const std::string &getMetaId() const;
-//
-//        bool operator==(const Subject &rhs) const;
-//
-//        bool operator!=(const Subject &rhs) const;
 
     };
 

@@ -17,7 +17,7 @@ namespace semsim {
         librdf_world *world_;
         std::string namespace_, term_, prefix_;
         std::string uri_;
-        std::unique_ptr<RDFURINode> uri_node_; // predicates can only have type RDFUriNode
+        std::shared_ptr<RDFURINode> uri_node_; // predicates can only have type RDFUriNode
 
         std::vector<std::string> valid_terms_{"All"};
 
@@ -44,7 +44,7 @@ namespace semsim {
         static int verify(std::vector<std::string> valid_terms, const std::string &term);
     };
 
-    class BiomodelsQualifiers : public Predicate {
+    class BiomodelsQualifier : public Predicate {
     public:
         std::vector<std::string> valid_terms_{
                 "is",
@@ -61,7 +61,9 @@ namespace semsim {
                 "isPropertyOf",
                 "hasTaxon"};
 
-        BiomodelsQualifiers(librdf_world *world, const std::string &term);
+        BiomodelsQualifier() = default;
+
+        BiomodelsQualifier(librdf_world *world, const std::string &term);
 
     };
 
@@ -71,9 +73,13 @@ namespace semsim {
                 "Description"
         };
 
+        DCTerm() = default;
+
         DCTerm(librdf_world *world, const std::string &term);
 
     };
+
+    typedef std::shared_ptr<Predicate> PredicatePtr;
 
 
 }

@@ -3,27 +3,21 @@
 //
 
 #include "semsim/Resource.h"
-
-#include <utility>
-#include <regex>
-#include "uri.h"
-#include "sstream"
-#include "iterator"
 #include "SemsimUtils.h"
 
 namespace semsim {
 
     Resource::Resource(librdf_world *world, const RDFLiteralNode& node) :
         world_(world){
-        this->rdf_node_ptr_ = std::make_unique<RDFLiteralNode>(node);
+        this->rdf_node_ptr_ = std::make_shared<RDFLiteralNode>(node);
     }
     Resource::Resource(librdf_world *world, const RDFURINode& node) :
         world_(world){
-        this->rdf_node_ptr_ = std::make_unique<RDFURINode>(node);
+        this->rdf_node_ptr_ = std::make_shared<RDFURINode>(node);
     }
     Resource::Resource(librdf_world *world, const RDFBlankNode& node) :
         world_(world){
-        this->rdf_node_ptr_ = std::make_unique<RDFBlankNode>(node);
+        this->rdf_node_ptr_ = std::make_shared<RDFBlankNode>(node);
     }
 
     std::string Resource::str() {

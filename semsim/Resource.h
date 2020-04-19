@@ -18,6 +18,8 @@ namespace semsim {
         RDFNodePtr rdf_node_ptr_;
 
     public:
+        Resource() = default;
+
         Resource(librdf_world *world, const RDFLiteralNode &node);
 
         Resource(librdf_world *world, const RDFURINode &node);

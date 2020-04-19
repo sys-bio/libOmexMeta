@@ -33,56 +33,26 @@ namespace semsim {
      *
      */
     class Triple {
-
-
+        librdf_world *world_;
         Subject subject_;
         PredicatePtr predicate_ptr_;
         Resource resource_;
-        librdf_world *world_;
-
     public:
-        Triple(Subject subject, PredicatePtr predicate_ptr, Resource resource, librdf_world *world);
 
-        Triple(Subject subject, const Predicate &predicate, Resource resource, librdf_world *world);
+        Triple(librdf_world *world, Subject subject, PredicatePtr predicate_ptr, Resource resource);
 
-        Triple(std::string subject, const Predicate &predicate, const std::string &resource, librdf_world *world);
+        Triple(librdf_world *world, Subject subject, Predicate predicate, Resource resource);
 
-        Triple() = default;
+        Subject getSubject() const;
 
-        Triple(const Triple &other);
+        PredicatePtr getPredicatePtr() const;
 
-        Triple(const Triple &&other) noexcept;
-
-        Triple &operator=(const Triple &triple);
-
-        Triple &operator=(Triple &&triple) noexcept;
-
-        const Subject &getSubject() const;
-
-        const PredicatePtr &getPredicate() const;
-
-        const Resource &getResource() const;
-
-        bool operator==(const Triple &rhs) const;
-
-        bool operator!=(const Triple &rhs) const;
-
-        friend std::ostream &operator<<(std::ostream &os, const Triple &triple);
-
-        std::string serialize(std::string format);
-
-        static void from_xml(std::string xml);
+        Resource getResource() const;
 
         librdf_statement *toStatement();
 
         librdf_world *getWorld() const;
 
-        void setWorld(librdf_world *world);
-
-        // if we want this we must pass librdf_model etc to Triple.
-
-    private:
-        static void parseTriple(void *user_data, raptor_statement *raptor_triple);
     };
 
     typedef std::vector<std::vector<Triple>> TripleList;

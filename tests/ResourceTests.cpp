@@ -103,15 +103,15 @@ TEST_F(ResourceTests, TestResourceUriFromRelativeFileOnDiskNode) {
 
 
 TEST_F(ResourceTests, TestResourceLiteral) {
-    semsim::Resource resource(world, semsim::RDFLiteralNode(world, "soggy biscuits"));
-    std::string expected = "soggy biscuits";
+    semsim::Resource resource(world, semsim::RDFLiteralNode(world, "biscuits"));
+    std::string expected = "biscuits";
     std::string actual = (const char*)librdf_node_get_literal_value(resource.toRdfNode());
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(ResourceTests, TestResourceBlank) {
-    semsim::Resource resource(world, semsim::RDFBlankNode(world, "soggy biscuits"));
-    std::string expected = "soggy biscuits";
+    semsim::Resource resource(world, semsim::RDFBlankNode(world, "biscuits"));
+    std::string expected = "biscuits";
     std::string actual = (const char*)librdf_node_get_blank_identifier(resource.toRdfNode());
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }

@@ -5,6 +5,7 @@
 #include <semsim/Predicate.h>
 #include <semsim/Resource.h>
 #include <semsim/Triple.h>
+#include "semsim/RDFNode.h"
 #include "gtest/gtest.h"
 
 
@@ -58,122 +59,128 @@ public:
                                      "</annotation>";
 
     semsim::Subject subject;
-//    semsim::BiomodelsQualifier predicate;
     semsim::Resource resource;
     semsim::BiomodelsQualifier predicate;
+    semsim::PredicatePtr predicatePtr;
 
     librdf_world *world_;
 
-
+    //todo subject could pass the world_ to the node
     TripleTests() {
         world_ = librdf_new_world();
-        this->subject = semsim::Subject(subject_str);
-        this->resource = semsim::Resource(resource_namespace, resource_id);
-        this->predicate = semsim::BiomodelsQualifier("is");
+        this->subject = semsim::Subject(world_, semsim::RDFURINode(world_, subject_str));
+        this->resource = semsim::Resource(world_, semsim::RDFURINode(world_, resource_namespace + "/" + resource_id));
+        this->predicate = semsim::BiomodelsQualifier(world_, "is");
+        predicatePtr = std::make_shared<semsim::Predicate>(predicate);
+
     }
 };
 
-TEST_F(TripleTests, TestInstantiationFromUniquePtr) {
-    semsim::Triple triple(
-            subject,
-            std::make_unique<semsim::Predicate>(predicate),
-            resource,
-            world_
-    );
+TEST_F(TripleTests, TestInstantiation1) {
+    semsim::Triple triple(world_,
+                          subject,
+                          std::make_shared<semsim::Predicate>(predicate),
+                          resource);
     ASSERT_TRUE(true); // if we get this far the test has passed
 }
 
-TEST_F(TripleTests, TestInstantiationFromPredicateValue) {
-    semsim::Triple triple(
-            subject,
-            predicate,
-            resource,
-            world_
-    );
-    ASSERT_TRUE(true); // if we get this far the test has passed
-}
-
-TEST_F(TripleTests, TestInstantiation3) {
-    semsim::Triple triple(
-            subject,
-            semsim::BiomodelsQualifier("is"),
-            resource,
-            world_
-    );
+TEST_F(TripleTests, TestInstantiation2) {
+    semsim::Triple triple(world_, subject, predicate, resource);
     ASSERT_TRUE(true); // if we get this far the test has passed
 }
 
 TEST_F(TripleTests, TestSubjectMetaId) {
-    semsim::Triple triple(
-            subject,
-            predicate,
-            resource,
-            world_
-    );
-    std::string subject_metaid = triple.getSubject().getMetaId();
-    std::string expected = subject_str;
-    ASSERT_STREQ(expected.c_str(), subject_metaid.c_str());
+    semsim::Triple triple(world_, subject,
+                          std::make_shared<semsim::Predicate>(predicate), resource);
+    std::string &expected = subject_str;
+    std::string actual = triple.getSubject().str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
+
 TEST_F(TripleTests, TestSubjectMetaId2) {
-    semsim::Triple triple(
-            subject,
-            std::make_unique<semsim::Predicate>(predicate),
-            resource,
-            world_
-    );
-    std::string subject_metaid = triple.getSubject().getMetaId();
-    std::string expected = subject_str;
-    ASSERT_STREQ(expected.c_str(), subject_metaid.c_str());
+    semsim::Triple triple(world_, subject,
+                          predicatePtr, resource);
+    std::string &expected = subject_str;
+    std::string actual = triple.getSubject().str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(TripleTests, TestPredicate1) {
-    semsim::Triple triple(subject, predicate, resource, world_);
+    semsim::Triple triple(world_, subject, predicate, resource);
     std::string expected = predicate_str;
-    ASSERT_STREQ(expected.c_str(), triple.getPredicate()->getUri().str().c_str());
+    ASSERT_STREQ(expected.c_str(), triple.getPredicatePtr()->str().c_str());
 }
 
 
 TEST_F(TripleTests, TestPredicate2) {
-    semsim::Triple triple(subject, std::make_unique<semsim::Predicate>(predicate), resource, world_);
+    semsim::Triple triple(world_, subject, predicate, resource);
     std::string expected = predicate_str;
-    ASSERT_STREQ(expected.c_str(), triple.getPredicate()->getUri().str().c_str());
+    const char *actual = (const char *) librdf_uri_as_string(
+            librdf_node_get_uri(triple.getPredicatePtr()->toRdfNode()));
+    ASSERT_STREQ(expected.c_str(), triple.getPredicatePtr()->str().c_str());
 }
 
+//TEST_F(TripleTests, TestPredicate3) {
+//    semsim::Triple triple(world_, subject, predicate, resource);
+//    std::string expected = predicate_str;
+//    std::cout << triple.getPredicatePtr()->str() << std::endl;
+//    std::cout << triple.getPredicatePtr()->getUri() << std::endl;
+//    std::cout << triple.getPredicatePtr()->getTerm() << std::endl;
+//    std::cout << triple.getPredicatePtr()->getNamespace() << std::endl;
+////    const char* actual = (const char*) librdf_uri_as_string(librdf_node_get_uri(triple.getPredicatePtr()->toRdfNode()));
+////    ASSERT_STREQ(expected.c_str(), triple.getPredicatePtr()->str().c_str());
+//}
+
+
+//
+//
+//TEST_F(TripleTests, TestPredicate2) {
+//    semsim::Triple triple(subject, std::make_unique<semsim::Predicate>(predicate), resource, world_);
+//    std::string expected = predicate_str;
+//    ASSERT_STREQ(expected.c_str(), triple.getPredicate()->getUri().str().c_str());
+//}
+//
 TEST_F(TripleTests, TestResource) {
-    semsim::Triple triple(subject, predicate, resource, world_);
-    std::string actual = triple.getResource().getIdentifier();
+    semsim::Triple triple(world_, subject, predicatePtr, resource);
+    std::string actual = triple.getResource().str();
+    std::string expected = resource_id;
+    ASSERT_STREQ(expected.c_str(), resource_id.c_str());
+}
+TEST_F(TripleTests, TestResource2) {
+    semsim::Triple triple(world_, subject, predicatePtr, resource);
+    std::string actual = (const char*)librdf_uri_to_string(librdf_node_get_uri(triple.getResource().toRdfNode()));
     std::string expected = resource_id;
     ASSERT_STREQ(expected.c_str(), resource_id.c_str());
 }
 
-TEST_F(TripleTests, TestTripleGetResource) {
-    semsim::Triple triple1(subject, predicate, resource, world_);
-    semsim::Triple triple2(subject, predicate, resource, world_);
+TEST_F(TripleTests, TestTripleVecGetResource) {
+    semsim::Triple triple1(world_, subject, predicatePtr, resource);
+    semsim::Triple triple2(world_, subject, predicatePtr, resource);
     std::vector<semsim::Triple> vec = {triple1, triple2};
-    std::string actual = vec[0].getResource().str();
+    std::string actual = (const char*) librdf_uri_to_string(librdf_node_get_uri(vec[0].getResource().toRdfNode()));
     std::string expected = "https://identifiers.org/uniprot/P0DP23";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(TripleTests, TestTripleFromStrings) {
-    semsim::Triple triple1("metaid001", predicate, "uniprot:P07362", world_);
-    std::string actual = triple1.getResource().str();
-    std::string expected = "https://identifiers.org/uniprot/P07362";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-}
-
+//TEST_F(TripleTests, TestTripleFromStrings) {
+//    semsim::Triple triple1("metaid001", predicatePtr, "uniprot:P07362", world_);
+//    std::string actual = triple1.getResource().str();
+//    std::string expected = "https://identifiers.org/uniprot/P07362";
+//    ASSERT_STREQ(expected.c_str(), actual.c_str());
+//}
+//
 TEST_F(TripleTests, TestToStatementSubject) {
-    semsim::Triple triple1("metaid001", predicate, "uniprot:P07362", world_);
+    semsim::Triple triple1(world_, subject, predicatePtr, resource);
     librdf_statement *statement = triple1.toStatement();
     auto x = librdf_statement_get_subject(statement); // anonymous struct
     std::string actual = (const char *) librdf_uri_as_string(x->value.uri);
-    std::string expected = "metaid001";
+    std::string expected =  "./MyModel#metaid_0";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(TripleTests, TestToStatementPrediacte) {
-    semsim::Triple triple1("metaid001", predicate, "uniprot:P07362", world_);
+    semsim::Triple triple1(world_, subject, predicatePtr, resource);
     librdf_statement *statement = triple1.toStatement();
     auto x = librdf_statement_get_predicate(statement); // anonymous struct
     std::string actual = (const char *) librdf_uri_as_string(x->value.uri);
@@ -183,35 +190,13 @@ TEST_F(TripleTests, TestToStatementPrediacte) {
 
 
 TEST_F(TripleTests, TestToStatementResource) {
-    semsim::Triple triple1("metaid001", predicate, "uniprot:P07362", world_);
+    semsim::Triple triple1(world_, subject, predicatePtr, resource);
     librdf_statement *statement = triple1.toStatement();
     raptor_term *x = librdf_statement_get_object(statement); // anonymous struct
     const char *actual = (const char *) librdf_uri_as_string(x->value.uri);
-    const char *expected = "https://identifiers.org/uniprot/P07362";
+    const char *expected = "https://identifiers.org/uniprot/P0DP23";
     ASSERT_STREQ(expected, actual);
 }
-
-//TEST_F(TripleTests, TestSerializeATripleToRdfXmlAbbrv) {
-//    semsim::Triple triple(subject, predicate, resource);
-//    std::string actual = triple.serialize("rdfxml-abbrev");
-//    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-//                           "<rdf:RDF xmlns:bqb=\"http://biomodels.net/biology-qualifiers/\"\n"
-//                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-//                           "  <rdf:Description rdf:about=\"./MyModel#metaid_0\">\n"
-//                           "    <bqb:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
-//                           "  </rdf:Description>\n"
-//                           "</rdf:RDF>\n";
-//    std::cout << actual << std::endl;
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//}
-//
-//
-//TEST_F(TripleTests, TestReadFromXml) {
-//    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-//    semsim::Triple::from_xml(sample_annotation1);
-//    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
-////    std::cout << triple.getResource() << std::endl;
-//}
 
 
 
