@@ -10,14 +10,14 @@ set(SEMSIM_SOURCES
 #        SemsimCombineArchive.cpp SemsimCombineArchive.h
 
         SemsimUtils.cpp SemsimUtils.h
-#        MetaID.cpp MetaID.h
-#        XmlAssistant.cpp XmlAssistant.h
-#        Editor.h Editor.cpp
-#        Writer.h Writer.cpp
-#        Reader.h Reader.cpp
-#        RDF.cpp RDF.h
-#        SemSim.h
-        )
+        MetaID.cpp MetaID.h
+        XmlAssistant.cpp XmlAssistant.h
+        Reader.h Reader.cpp
+        Editor.h Editor.cpp
+        Writer.h Writer.cpp
+        RDF.cpp RDF.h
+        SemSim.h
+        Participant.cpp Participant.h CompositeAnnotation.cpp CompositeAnnotation.h)
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)

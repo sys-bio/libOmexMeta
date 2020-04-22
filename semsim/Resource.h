@@ -13,7 +13,7 @@
 
 namespace semsim {
     class Resource {
-        librdf_world* world_;
+        librdf_world *world_;
         RDFNodePtr rdf_node_ptr_;
 
     public:
@@ -25,7 +25,7 @@ namespace semsim {
 
         Resource(librdf_world *world, const RDFBlankNode &node);
 
-        std::string str();
+        std::string str() const;
 
         librdf_node *toRdfNode();
 

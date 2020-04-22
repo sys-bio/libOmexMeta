@@ -1,5 +1,5 @@
 add_executable(semsim-tests
-#        UrlTests.cpp
+        SemsimUtilsTests.cpp
         SBMLFactory.h
         RDFNodeTests.cpp
         SubjectTests.cpp
@@ -8,16 +8,14 @@ add_executable(semsim-tests
         TripleTests.cpp
         AnnotationSamples.h
         CurlGetTests.cpp
-#        XmlAssistantTests.cpp
-#        MetaIDTests.cpp
-#        EditorTests.cpp
-#        ReaderTests.cpp
-#        WriterTests.cpp
-#        RaptorUtilsTests.cpp
-#        RDFTests.cpp
+        MetaIDTests.cpp
+        XmlAssistantTests.cpp
+        ReaderTests.cpp
+        WriterTests.cpp
+        EditorTests.cpp
+        RDFTests.cpp
 #        SemsimCombineArchiveTests.cpp
-#        SemsimUtilsTests.cpp
-        )
+        ParticipantTests.cpp)
 
 
 target_link_libraries(semsim-tests PRIVATE

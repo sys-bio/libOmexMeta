@@ -308,20 +308,20 @@ class Editor {
     + <<constructor>> Editor(std::string xml)
     - addMetaIds() : void
     + getMetaIds() : std::string
-    + addAnnotation() : void
+    + addPhysicalEntityAnnotation() : void
     + removeAnnotation() : void
 }
 note right of Editor
     - addMetaIds happens in
       constructor.
-    - addAnnotation is overloaded
+    - addSingleAnnotation is overloaded
       method with one signature
       per type of annotation.
 end note
 
 note top of Editor
     Design choice, overloaded
-    addAnnotation method or 5
+    addSingleAnnotation method or 5
     methods with descriptive names:
     singular, physicalEntity PhysicalProcess
     etc.

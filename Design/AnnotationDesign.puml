@@ -1,0 +1,131 @@
+@startuml
+
+class Subject {}
+class Predicate {}
+class Resource {}
+
+class Triple {}
+
+class SingularAnnotation
+
+class CompositeAnnotation {
+    + physicalProperty : PhysicalProperty
+    + propertyBearer : PropertyBearer
+}
+
+together CompositeAnnotationCompositions {
+class PhysicalProperty
+
+class PropertyBearer{
+    + PhysicalProperty
+}
+}
+together group1{
+class PhysicalEntity{
+' the thing (1) and where it is (0 or more)
+    + resources : vector<Resource>
+'thing being annotated
+    + subject : Subject
+    + id : MetaID
+}
+
+class PhysicalProcess {
+    + sources : vector<SourceParticipant>
+    + sinks : vector<SinkParticipant>
+    + mediator : vector<MediatorParticipant>
+
+}
+
+class PhysicalForce{
+    + sources : vector<SourceParticipant>
+    + sinks : vector<SinkParticipant>
+}
+}
+
+class Participant{
+    + physicalEntityReference : PhysicalEntity
+    + multiplier : double
+}
+
+together ProcessParticipants {
+class SourceParticipant
+
+class SinkParticipant
+
+class MediatorParticipant
+
+note left of MediatorParticipant
+    Multiplier is 0.0
+end note
+
+note bottom of SinkParticipant
+    multiplier = 0.0
+    when used in
+    physical force
+end note
+
+note bottom of SourceParticipant
+    multiplier = 0.0
+    when used in
+    physical force
+end note
+
+}
+Resource <|-- PhysicalProperty
+
+Triple <|-- SingularAnnotation
+Triple *-- Subject
+Triple *-- Predicate
+Triple *-- Resource
+
+CompositeAnnotation *-- PhysicalProperty
+CompositeAnnotation *-- PropertyBearer
+
+PropertyBearer <|-- PhysicalEntity
+PropertyBearer <|-- PhysicalProcess
+PropertyBearer <|-- PhysicalForce
+
+PhysicalEntity *--Participant : inheritance instead?
+Participant <|-- SourceParticipant
+Participant <|-- SinkParticipant
+Participant <|-- MediatorParticipant
+
+PhysicalProcess *-- SourceParticipant
+PhysicalProcess *-- SinkParticipant
+PhysicalProcess *-- MediatorParticipant
+
+PhysicalForce *-- SourceParticipant
+PhysicalForce *-- SinkParticipant
+
+note right of Triple
+    Most objects construct
+    Triple objects
+end note
+'Triple *-- PhysicalEntity : constructs
+'Triple *-- PhysicalProcess : constructs
+'Triple *-- PhysicalForce : constructs
+'Triple *-- MediatorParticipant : constructs
+'Triple *-- SourceParticipant : constructs
+'Triple *-- SinkParticipant : constructs
+
+note top of CompositeAnnotation
+- Diamond arrow means composition i.e. has-a
+- Open arrow means inheritance i.e. is-a
+end note
+
+note bottom of Subject
+    Triple classes and other lower
+    level components are
+    implemented but this UML
+    is shortened for brevity.
+end note
+
+'PhysicalProperty -[hidden]> PropertyBearer
+'PhysicalEntity -[hidden]> PhysicalProcess
+'PhysicalForce -[hidden]> PhysicalProcess
+
+
+
+
+
+@enduml
