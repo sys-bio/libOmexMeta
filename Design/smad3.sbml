@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1" xmlns:rdf="TheRdfLink">
+    <model metaid="A" id="A">
+        <listOfCompartments>
+            <compartment id="FibroblastCytosol" metaid="FibroblastCytosol" spatialDimensions="3" size="1"
+                         constant="true">
+                <Annotation>
+                    <rdf:Description rdf:about="./smad3.sbml#FibroblastCytosol">
+                        <!--cytosol -->
+                        <bqbiol:is rdf:resource="https://identifiers.org/fma/FMA:72564"></bqbiol:is>
+                        <!--Fibroblast -->
+                        <bqbiol:isPartOf rdf:resource="https://identifiers.org/fma/FMA:63877"></bqbiol:isPartOf>
+                    </rdf:Description>
+                </Annotation>
+            </compartment>
+            <compartment id="FibroblastNucleus" metaid="FibroblastNucleus" spatialDimensions="3" size="0.33"
+                         constant="true">
+                <Annotation>
+                    <rdf:Description rdf:about="./smad3.sbml#FibroblastNucleus">
+                        <!--Nucleus -->
+                        <bqbiol:is rdf:resource="https://identifiers.org/fma/FMA:263214"></bqbiol:is>
+                        <!--Fibroblast -->
+                        <bqbiol:isPartOf rdf:resource="https://identifiers.org/fma/FMA:63877"></bqbiol:isPartOf>
+                    </rdf:Description>
+                </Annotation>
+            </compartment>
+        </listOfCompartments>
+        <listOfSpecies>
+            <species id="smad3nuc" metaid="smad3nuc" compartment="FibroblastNucleus" initialConcentration="50"
+                     hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+                <Annotation>
+                    <!-- physical entity annotation representing Smad3 in the nucleus of a dermal fibroblast -->
+                    <rdf:Description rdf:about="./smad3.sbml#smad3nuc">
+                        <!-- Chemical concentration physical property -->
+                        <bqbiol:isVersionOf rdf:resource="http://bhi.washington.edu/OPB#OPB_00340"></bqbiol:isVersionOf>
+                        <!-- create a new physical entity ID so we can annotate it below. A bit confused about this
+                               since shouldn't this just be the metaid for smad3nuc??? -->
+                        <bqbiol:isPropertyOf rdf:resource="./smad3.sbml#physical_entity0"></bqbiol:isPropertyOf>
+                    </rdf:Description>
+                    <rdf:Description rdf:about="./smad3.sbml#entity0">
+                        <!-- Smad3 in PR-->
+                        <bqbiol:is rdf:resource="http://purl.obolibrary.org/obo/PR_000000365"></bqbiol:is>
+                        <!-- In the cytotosol compartment which has its own annotation -->
+                        <bqbiol:isPartOf rdf:resource="./smad3.sbml#FibroblastNucleus"></bqbiol:isPartOf>
+                    </rdf:Description>
+                </Annotation>
+            </species>
+            <species id="smad3cyt" metaid="smad3cyt" compartment="FibroblastCytosol" initialConcentration="100"
+                     hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+                <Annotation>
+                    <rdf:Description rdf:about="./smad3.sbml#smad3cyt">
+                        <!-- physical entity annotation representing Smad3 in the cytosol of a dermal fibroblast -->
+                        <bqbiol:isVersionOf rdf:resource="http://bhi.washington.edu/OPB#OPB_00340"></bqbiol:isVersionOf>
+                        <!-- A little confused by this bit: Its a property of Smad3nuc, but this information is already in the subject so
+                        it doesn't make sense to put it here as resource? -->
+                        <bqbiol:isPropertyOf rdf:resource="./smad3.sbml#entity1"></bqbiol:isPropertyOf>
+                    </rdf:Description>
+                    <rdf:Description rdf:about="./smad3.sbml#entity1">
+                        <!-- Smad3 in PR-->
+                        <bqbiol:is rdf:resource="http://purl.obolibrary.org/obo/PR_000000365"></bqbiol:is>
+                        <!-- In the cytotosol compartment which has its own annotation -->
+                        <bqbiol:isPartOf rdf:resource="./smad3.sbml#FibroblastCytosol"></bqbiol:isPartOf>
+                    </rdf:Description>
+                </Annotation>
+            </species>
+        </listOfSpecies>
+        <listOfParameters>
+            <parameter id="k1" metaid="k1" value="1" constant="true">
+                <Annotation>
+                    <rdf:Description rdf:about="./smad3.sbml#k1">
+                        <!--can't seem to locate an annotation for Smad3 cytosol to nuclear import rate -->
+                        <bqbiol:is rdf:resource="<?>"></bqbiol:is>
+                    </rdf:Description>
+                </Annotation>
+            </parameter>
+            <parameter id="k2" metaid="k2" value="0.1" constant="true">
+                <Annotation>
+                    <rdf:Description rdf:about="./smad3.sbml#k2">
+                        <!--can't seem to locate an annotation for Smad3 nuclear export rate -->
+                        <bqbiol:is rdf:resource="<?>"></bqbiol:is>
+                    </rdf:Description>
+                </Annotation>
+            </parameter>
+        </listOfParameters>
+        <listOfReactions>
+            <reaction id="Smad3Import" metaid="Smad3Import" reversible="false" fast="false">
+                <Annotation>
+                    <rdf:Description rdf:about="./smad3.sbml#Smad3Import">
+                        <!-- create new source and sink metaids -->
+                        <semsim:hasSourceParticipant rdf:resource="./smad3.sbml#source0"></semsim:hasSourceParticipant>
+                        <semsim:hasSinkParticipant rdf:resource="./smad3.sbml#sink0"></semsim:hasSinkParticipant>
+                    </rdf:Description>
+                    <!-- Specify that source0 is 1 smad3cyt -->
+                    <rdf:Description rdf:about="./smad3.sbml#source0">
+                        <semsim:hasMultiplier>1</semsim:hasMultiplier>
+                        <semsim:hasPhysicalEntityReference
+                                rdf:resource="./smad3.sbml#smad3cyt"></semsim:hasPhysicalEntityReference>
+                    </rdf:Description>
+                    <!-- Specify that sink0 is 1 smad3nuc -->
+                    <rdf:Description rdf:about="./smad3.sbml#source1">
+                        <semsim:hasMultiplier>1</semsim:hasMultiplier>
+                        <semsim:hasPhysicalEntityReference
+                                rdf:resource="./smad3.sbml#smad3nuc"></semsim:hasPhysicalEntityReference>
+                    </rdf:Description>
+                </Annotation>
+                <listOfReactants>
+                    <speciesReference species="smad3cyt" stoichiometry="1" constant="true"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <speciesReference species="smad3nuc" stoichiometry="1" constant="true"/>
+                </listOfProducts>
+                <kineticLaw>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <apply>
+                            <times/>
+                            <ci>k1</ci>
+                            <ci>smad3cyt</ci>
+                        </apply>
+                    </math>
+                </kineticLaw>
+            </reaction>
+            <reaction id="Smad3Export" metaid="Smad3Export" reversible="false" fast="false">
+                <Annotation>
+                    <!-- basically the reverse of ./smad3.sbml#Smad3Import -->
+                    <rdf:Description rdf:about="./smad3.sbml#Smad3Export">
+                        <semsim:hasSourceParticipant rdf:resource="./smad3.sbml#source1"></semsim:hasSourceParticipant>
+                        <semsim:hasSinkParticipant rdf:resource="./smad3.sbml#sink1"></semsim:hasSinkParticipant>
+                    </rdf:Description>
+                    <rdf:Description rdf:about="./smad3.sbml#source1">
+                        <semsim:hasMultiplier>1</semsim:hasMultiplier>
+                        <semsim:hasPhysicalEntityReference
+                                rdf:resource="./smad3.sbml#smad3nuc"></semsim:hasPhysicalEntityReference>
+                    </rdf:Description>
+                    <rdf:Description rdf:about="./smad3.sbml#sink1">
+                        <semsim:hasMultiplier>1</semsim:hasMultiplier>
+                        <semsim:hasPhysicalEntityReference
+                                rdf:resource="./smad3.sbml#smad3cyt"></semsim:hasPhysicalEntityReference>
+                    </rdf:Description>
+                </Annotation>
+                <listOfReactants>
+                    <speciesReference species="smad3nuc" stoichiometry="1" constant="true"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <speciesReference species="smad3cyt" stoichiometry="1" constant="true"/>
+                </listOfProducts>
+                <kineticLaw>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <apply>
+                            <times/>
+                            <ci>k2</ci>
+                            <ci>smad3nuc</ci>
+                        </apply>
+                    </math>
+                </kineticLaw>
+            </reaction>
+        </listOfReactions>
+    </model>
+</sbml>

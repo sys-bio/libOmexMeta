@@ -16,7 +16,7 @@ public:
     std::string sbml_url1 = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml";
     std::string sbml_filename1 = "./sbml_file1.sbml";
 
-    std::string cellml_url1 = "https://models.cellml.org/workspace/asthagiri_lauffenburger_2001/@@rawfile/eaae38522e8bf993977d16ca548bdadc0daaad57/asthagiri_lauffenburger_2001.cellml";
+    std::string cellml_url1 = "http://models.cellml.org/workspace/267/download/824b8eefc8d7ad0f077b5466c06e8b4793882482/NBC.cellml";
     std::string cellml_filename1 = "./cellml_file1.cellml";
 
     // urls and filepaths for some cellml samples

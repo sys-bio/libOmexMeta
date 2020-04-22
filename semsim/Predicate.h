@@ -79,6 +79,22 @@ namespace semsim {
 
     };
 
+    class SemSim : public Predicate {
+    public:
+        std::vector<std::string> valid_terms_{
+                "hasSourceParticipant",
+                "hasSinkParticipant",
+                "hasMediatorParticipant",
+                "hasMultiplier",
+                "hasPhysicalEntityReference",
+        };
+
+        SemSim() = default;
+
+        SemSim(librdf_world *world, const std::string &term);
+
+    };
+
     typedef std::shared_ptr<Predicate> PredicatePtr;
 
 

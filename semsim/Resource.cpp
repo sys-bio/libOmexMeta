@@ -20,7 +20,7 @@ namespace semsim {
         this->rdf_node_ptr_ = std::make_shared<RDFBlankNode>(node);
     }
 
-    std::string Resource::str() {
+    std::string Resource::str() const {
         return rdf_node_ptr_->str();
     }
 

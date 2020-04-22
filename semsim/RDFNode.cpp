@@ -6,6 +6,8 @@
 #include "RDFNode.h"
 #include "librdf.h"
 #include <regex>
+#include "semsim/SemSim.h"
+
 
 namespace semsim {
 
@@ -57,10 +59,11 @@ namespace semsim {
         std::regex identifiers_org_form2("^(?![https://])([A-Za-z0-9]*)/{1}(\\S*)");
 
         std::smatch m;
-
+        std::string x;
         if (std::regex_search(value_, m, identifiers_org_form1)) {
             // if its not html string check for form uniprot:identifier
-            return identifier_dot_org + std::string(m[1]) + "/" + std::string(m[2]);
+            x = identifier_dot_org + std::string(m[1]) + "/" + std::string(m[2]);
+            return x;
         } else if (std::regex_search(value_, m, identifiers_org_form2)) {
             // if its not html string check for form uniprot/identifier
             return identifier_dot_org + std::string(m[1]) + "/" + std::string(m[2]);

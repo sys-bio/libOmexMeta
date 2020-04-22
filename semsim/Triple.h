@@ -33,10 +33,11 @@ namespace semsim {
      *
      */
     class Triple {
-        librdf_world *world_;
         Subject subject_;
         PredicatePtr predicate_ptr_;
         Resource resource_;
+    protected:
+        librdf_world *world_;
     public:
 
         Triple(librdf_world *world, Subject subject, PredicatePtr predicate_ptr, Resource resource);
@@ -51,11 +52,15 @@ namespace semsim {
 
         librdf_statement *toStatement();
 
-        librdf_world *getWorld() const;
+        static std::vector<Triple>
+        connectionTriple(librdf_world *world, const std::string &subject, std::string isVersionOf,
+                         std::string isPropertyOf);
 
     };
 
     typedef std::vector<std::vector<Triple>> TripleList;
+
+
 }
 
 #endif //LIBSEMGEN_TRIPLE_H
