@@ -58,7 +58,6 @@ semsim::Writer::Writer(librdf_world *world, librdf_model *model, std::string for
 }
 
 void semsim::Writer::registerNamespace(const std::string &ns, const std::string &prefix) {
-    HERE();
     librdf_uri *ns_uri = librdf_new_uri(world_, (const unsigned char *) ns.c_str());
     librdf_serializer_set_namespace(serializer, ns_uri, (const char *) prefix.c_str());
     librdf_free_uri(ns_uri);
@@ -66,8 +65,6 @@ void semsim::Writer::registerNamespace(const std::string &ns, const std::string 
 
 void semsim::Writer::registerNamespace(const std::unordered_map<std::string, std::string>& ns_map) {
     for (auto &i : ns_map) {
-        HERE();
-        std::cout << i.first << ":" << i.second <<std::endl;
         registerNamespace(i.first, i.second);
     }
 }

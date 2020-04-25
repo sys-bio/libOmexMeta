@@ -115,11 +115,14 @@ TEST_F(ReadAndWriteTests, TestDefaultConstructor) {
 
 
 TEST_F(ReadAndWriteTests, singularannotation1turtle) {
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    std::string expected = "@base <./SemsimModel> .\n"
+                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "\n"
-                           "<semsimModel.xml#metaid_1>\n"
-                           "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n\n";
+                           "<SemsimModel.rdf#metaid_1>\n"
+                           "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n"
+                           "\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation1, "turtle", expected);
 }
 
@@ -128,34 +131,39 @@ TEST_F(ReadAndWriteTests, singularannotation1rdfxmlxmp) {
                            "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "</x:xmpmeta>\n"
-                           "<?xpacket end='r'?>\n";
+                           "<?xpacket end='r'?>\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation1, "rdfxml-xmp", expected);
 }
 
 TEST_F(ReadAndWriteTests, singularannotation1rdfxmlabbrev) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"semsimModel.xml#metaid_1\">\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
+                           "  <rdf:Description rdf:about=\"SemsimModel.rdf#metaid_1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation1, "rdfxml-abbrev", expected);
 }
 
 TEST_F(ReadAndWriteTests, singularannotation1rdfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"semsimModel.xml#metaid_1\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"./SemsimModel\">\n"
+                           "  <rdf:Description rdf:about=\"SemsimModel.rdf#metaid_1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation1, "rdfxml", expected);
 }
 
@@ -164,18 +172,19 @@ TEST_F(ReadAndWriteTests, singularannotation1dot) {
                            "\trankdir = LR;\n"
                            "\tcharset=\"utf-8\";\n"
                            "\n"
-                           "\t\"R./semsimModel.xml#metaid_1\" -> \"Rhttps://identifiers.org/uniprot/P0DP23\" [ label=\"bqbiol:is\" ];\n"
+                           "\t\"R./SemsimModel.rdf#metaid_1\" -> \"Rhttps://identifiers.org/uniprot/P0DP23\" [ label=\"bqbiol:is\" ];\n"
                            "\n"
                            "\t// Resources\n"
-                           "\t\"R./semsimModel.xml#metaid_1\" [ label=\"./semsimModel.xml#metaid_1\", shape = ellipse, color = blue ];\n"
+                           "\t\"R./SemsimModel.rdf#metaid_1\" [ label=\"./SemsimModel.rdf#metaid_1\", shape = ellipse, color = blue ];\n"
                            "\t\"Rhttps://identifiers.org/uniprot/P0DP23\" [ label=\"https://identifiers.org/uniprot/P0DP23\", shape = ellipse, color = blue ];\n"
                            "\n"
                            "\t// Anonymous nodes\n"
                            "\n"
                            "\t// Literals\n"
                            "\n"
-                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nrdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#\\n\";\n"
-                           "}\n";
+                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
+                           "}\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation1, "dot", expected);
 }
 
@@ -184,7 +193,7 @@ TEST_F(ReadAndWriteTests, singularannotation1jsontriples) {
                            "  \"triples\" : [\n"
                            "    {\n"
                            "      \"subject\" : {\n"
-                           "        \"value\" : \"semsimModel.xml#metaid_1\",\n"
+                           "        \"value\" : \"SemsimModel.rdf#metaid_1\",\n"
                            "        \"type\" : \"uri\"\n"
                            "        },\n"
                            "      \"predicate\" : {\n"
@@ -197,14 +206,15 @@ TEST_F(ReadAndWriteTests, singularannotation1jsontriples) {
                            "        }\n"
                            "      }\n"
                            "    ]\n"
-                           "  }\n";
+                           "  }\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation1, "json-triples", expected);
 }
 
 TEST_F(ReadAndWriteTests, singularannotation1json) {
     std::string expected = "\n"
                            "{\n"
-                           "  \"semsimModel.xml#metaid_1\" : {\n"
+                           "  \"SemsimModel.rdf#metaid_1\" : {\n"
                            "    \"http://biomodels.net/biology-qualifiers/is\" : [ {\n"
                            "        \"value\" : \"https://identifiers.org/uniprot/P0DP23\",\n"
                            "        \"type\" : \"uri\"\n"
@@ -233,19 +243,20 @@ TEST_F(ReadAndWriteTests, singularannotation1html) {
                            "      <th>Object</th>\n"
                            "    </tr>\n"
                            "    <tr class=\"triple\">\n"
-                           "      <td><span class=\"uri\"><a href=\"./semsimModel.xml#metaid_1\">./semsimModel.xml#metaid_1</a></span></td>\n"
+                           "      <td><span class=\"uri\"><a href=\"./SemsimModel.rdf#metaid_1\">./SemsimModel.rdf#metaid_1</a></span></td>\n"
                            "      <td><span class=\"uri\"><a href=\"http://biomodels.net/biology-qualifiers/is\">http://biomodels.net/biology-qualifiers/is</a></span></td>\n"
                            "      <td><span class=\"uri\"><a href=\"https://identifiers.org/uniprot/P0DP23\">https://identifiers.org/uniprot/P0DP23</a></span></td>\n"
                            "    </tr>\n"
                            "  </table>\n"
                            "  <p>Total number of triples: <span class=\"count\">1</span>.</p>\n"
                            "</body>\n"
-                           "</html>\n";
+                           "</html>\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation1, "html", expected);
 }
 
 TEST_F(ReadAndWriteTests, singularannotation1nquads) {
-    std::string expected = "<./semsimModel.xml#metaid_1> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/P0DP23> .\n";
+    std::string expected = "<./SemsimModel.rdf#metaid_1> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/P0DP23> .\n";
     assertReadAndWrite(samples.singular_annotation1, "nquads", expected);
 }
 
@@ -262,13 +273,15 @@ TEST_F(ReadAndWriteTests, singularannotation2ntriples) {
 }
 
 TEST_F(ReadAndWriteTests, singularannotation2turtle) {
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    std::string expected = "@base <./SemsimModel> .\n"
+                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
                            "\n"
                            "<MyModel.xml#modelmeta1>\n"
-                           "    bqmodel:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n\n";
-
+                           "    bqmodel:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n"
+                           "\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation2, "turtle", expected);
 }
 
@@ -278,13 +291,15 @@ TEST_F(ReadAndWriteTests, singularannotation2rdfxmlxmp) {
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
                            "    <bqmodel:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "</x:xmpmeta>\n"
-                           "<?xpacket end='r'?>\n";
+                           "<?xpacket end='r'?>\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation2, "rdfxml-xmp", expected);
 }
 
@@ -292,7 +307,8 @@ TEST_F(ReadAndWriteTests, singularannotation2rdfxmlabbrev) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#modelmeta1\">\n"
                            "    <bqmodel:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\"/>\n"
                            "  </rdf:Description>\n"
@@ -303,11 +319,12 @@ TEST_F(ReadAndWriteTests, singularannotation2rdfxmlabbrev) {
 
 TEST_F(ReadAndWriteTests, singularannotation2rdfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#modelmeta1\">\n"
                            "    <bqmodel:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation2, "rdfxml", expected);
 }
 
@@ -326,7 +343,7 @@ TEST_F(ReadAndWriteTests, singularannotation2dot) {
                            "\n"
                            "\t// Literals\n"
                            "\n"
-                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nrdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#\\nbqmodel: http://biomodels.net/model-qualifiers/\\n\";\n"
+                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nbqmodel: http://biomodels.net/model-qualifiers/\\n\";\n"
                            "}\n"
                            "";
     assertReadAndWrite(samples.singular_annotation2, "dot", expected);
@@ -414,7 +431,8 @@ TEST_F(ReadAndWriteTests, singularannotation3ntriples) {
 }
 
 TEST_F(ReadAndWriteTests, singularannotation3turtle) {
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    std::string expected = "@base <./SemsimModel> .\n"
+                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "\n"
                            "<MyModel.xml#meta1>\n"
@@ -429,7 +447,8 @@ TEST_F(ReadAndWriteTests, singularannotation3rdfxmlxmp) {
                            "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/chebi/CHEBI:15422\"/>\n"
                            "  </rdf:Description>\n"
@@ -443,7 +462,8 @@ TEST_F(ReadAndWriteTests, singularannotation3rdfxmlxmp) {
 TEST_F(ReadAndWriteTests, singularannotation3rdfxmlabbrev) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#meta1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/chebi/CHEBI:15422\"/>\n"
                            "  </rdf:Description>\n"
@@ -455,7 +475,7 @@ TEST_F(ReadAndWriteTests, singularannotation3rdfxmlabbrev) {
 
 TEST_F(ReadAndWriteTests, singularannotation3rdfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#meta1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/chebi/CHEBI:15422\"/>\n"
                            "  </rdf:Description>\n"
@@ -479,7 +499,7 @@ TEST_F(ReadAndWriteTests, singularannotation3dot) {
                            "\n"
                            "\t// Literals\n"
                            "\n"
-                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nrdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#\\n\";\n"
+                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
                            "}\n"
                            "";
     assertReadAndWrite(samples.singular_annotation3, "dot", expected);
@@ -568,7 +588,8 @@ TEST_F(ReadAndWriteTests, singularannotation4ntriples) {
 }
 
 TEST_F(ReadAndWriteTests, singularannotation4turtle) {
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    std::string expected = "@base <./SemsimModel> .\n"
+                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix dcterms: <http://purl.org/dc/terms/> .\n"
                            "\n"
@@ -585,7 +606,8 @@ TEST_F(ReadAndWriteTests, singularannotation4rdfxmlxmp) {
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
                            "    <dcterms:description>Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n"
                            "  </rdf:Description>\n"
@@ -600,7 +622,8 @@ TEST_F(ReadAndWriteTests, singularannotation4rdfxmlabbrev) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#meta2\">\n"
                            "    <dcterms:description>Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n"
                            "  </rdf:Description>\n"
@@ -611,7 +634,7 @@ TEST_F(ReadAndWriteTests, singularannotation4rdfxmlabbrev) {
 
 TEST_F(ReadAndWriteTests, singularannotation4rdfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#meta2\">\n"
                            "    <dcterms:description>Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n"
                            "  </rdf:Description>\n"
@@ -635,7 +658,7 @@ TEST_F(ReadAndWriteTests, singularannotation4dot) {
                            "\t// Literals\n"
                            "\t\"LCardiomyocyte cytosolic ATP concentration\" [ label=\"Cardiomyocyte cytosolic ATP concentration\", shape = record ];\n"
                            "\n"
-                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nrdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#\\ndcterms: http://purl.org/dc/terms/\\n\";\n"
+                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndcterms: http://purl.org/dc/terms/\\n\";\n"
                            "}\n"
                            "";
     assertReadAndWrite(samples.singular_annotation4, "dot", expected);
@@ -723,22 +746,24 @@ TEST_F(ReadAndWriteTests, singularannotation4nquads) {
 
 TEST_F(ReadAndWriteTests, compositeannotationpentriples) {
     std::string expected = "<MyModel.xml#VLV> <http://biomodels.net/biology-qualifiers/isVersionOf> <http://identifiers.org/opb/OPB_00154> .\n"
-                           "<MyModel.xml#VLV> <http://biomodels.net/biology-qualifiers/isPropertyOf> <./semsimModel.xml#entity_0> .\n"
-                           "<./semsimModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> .\n"
-                           "<./semsimModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .\n";
+                           "<MyModel.xml#VLV> <http://biomodels.net/biology-qualifiers/isPropertyOf> <./SemsimModel.rdf#entity_0> .\n"
+                           "<./SemsimModel.rdf#entity_0> <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> .\n"
+                           "<./SemsimModel.rdf#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .\n"
+                           "";
     assertReadAndWrite(samples.composite_annotation_pe, "ntriples", expected);
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationpeturtle) {
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    std::string expected = "@base <./SemsimModel> .\n"
+                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "\n"
-                           "<semsimModel.xml#entity_0>\n"
+                           "<SemsimModel.rdf#entity_0>\n"
                            "    bqbiol:is <http://identifiers.org/fma/FMA:9670> ;\n"
                            "    bqbiol:isPartOf <http://identifiers.org/fma/FMA:18228> .\n"
                            "\n"
                            "<MyModel.xml#VLV>\n"
-                           "    bqbiol:isPropertyOf <semsimModel.xml#entity_0> ;\n"
+                           "    bqbiol:isPropertyOf <SemsimModel.rdf#entity_0> ;\n"
                            "    bqbiol:isVersionOf <http://identifiers.org/opb/OPB_00154> .\n"
                            "\n"
                            "";
@@ -750,13 +775,14 @@ TEST_F(ReadAndWriteTests, compositeannotationperdfxmlxmp) {
                            "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
                            "    <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:9670\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"http://identifiers.org/fma/FMA:18228\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"semsimModel.xml#entity_0\"/>\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"SemsimModel.rdf#entity_0\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"http://identifiers.org/opb/OPB_00154\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
@@ -769,13 +795,14 @@ TEST_F(ReadAndWriteTests, compositeannotationperdfxmlxmp) {
 TEST_F(ReadAndWriteTests, compositeannotationperdfxmlabbrev) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"semsimModel.xml#entity_0\">\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
+                           "  <rdf:Description rdf:about=\"SemsimModel.rdf#entity_0\">\n"
                            "    <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:9670\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"http://identifiers.org/fma/FMA:18228\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#VLV\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"semsimModel.xml#entity_0\"/>\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"SemsimModel.rdf#entity_0\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"http://identifiers.org/opb/OPB_00154\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
@@ -790,14 +817,14 @@ TEST_F(ReadAndWriteTests, compositeannotationpedot) {
                            "\tcharset=\"utf-8\";\n"
                            "\n"
                            "\t\"RMyModel.xml#VLV\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n"
-                           "\t\"RMyModel.xml#VLV\" -> \"R./semsimModel.xml#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
-                           "\t\"R./semsimModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n"
-                           "\t\"R./semsimModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n"
+                           "\t\"RMyModel.xml#VLV\" -> \"R./SemsimModel.rdf#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
+                           "\t\"R./SemsimModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n"
+                           "\t\"R./SemsimModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n"
                            "\n"
                            "\t// Resources\n"
                            "\t\"RMyModel.xml#VLV\" [ label=\"MyModel.xml#VLV\", shape = ellipse, color = blue ];\n"
                            "\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n"
-                           "\t\"R./semsimModel.xml#entity_0\" [ label=\"./semsimModel.xml#entity_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"R./SemsimModel.rdf#entity_0\" [ label=\"./SemsimModel.rdf#entity_0\", shape = ellipse, color = blue ];\n"
                            "\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n"
                            "\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n"
                            "\n"
@@ -805,9 +832,8 @@ TEST_F(ReadAndWriteTests, compositeannotationpedot) {
                            "\n"
                            "\t// Literals\n"
                            "\n"
-                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nrdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#\\n\";\n"
-                           "}\n"
-                           "";
+                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
+                           "}\n";
     assertReadAndWrite(samples.composite_annotation_pe, "dot", expected);
 }
 
@@ -838,13 +864,13 @@ TEST_F(ReadAndWriteTests, compositeannotationpejsontriples) {
                            "        \"type\" : \"uri\"\n"
                            "        },\n"
                            "      \"object\" : {\n"
-                           "        \"value\" : \"semsimModel.xml#entity_0\",\n"
+                           "        \"value\" : \"SemsimModel.rdf#entity_0\",\n"
                            "        \"type\" : \"uri\"\n"
                            "        }\n"
                            "      },\n"
                            "    {\n"
                            "      \"subject\" : {\n"
-                           "        \"value\" : \"semsimModel.xml#entity_0\",\n"
+                           "        \"value\" : \"SemsimModel.rdf#entity_0\",\n"
                            "        \"type\" : \"uri\"\n"
                            "        },\n"
                            "      \"predicate\" : {\n"
@@ -858,7 +884,7 @@ TEST_F(ReadAndWriteTests, compositeannotationpejsontriples) {
                            "      },\n"
                            "    {\n"
                            "      \"subject\" : {\n"
-                           "        \"value\" : \"semsimModel.xml#entity_0\",\n"
+                           "        \"value\" : \"SemsimModel.rdf#entity_0\",\n"
                            "        \"type\" : \"uri\"\n"
                            "        },\n"
                            "      \"predicate\" : {\n"
@@ -879,7 +905,7 @@ TEST_F(ReadAndWriteTests, compositeannotationpejsontriples) {
 TEST_F(ReadAndWriteTests, compositeannotationpejson) {
     std::string expected = "\n"
                            "{\n"
-                           "  \"semsimModel.xml#entity_0\" : {\n"
+                           "  \"SemsimModel.rdf#entity_0\" : {\n"
                            "    \"http://biomodels.net/biology-qualifiers/is\" : [ {\n"
                            "        \"value\" : \"http://identifiers.org/fma/FMA:9670\",\n"
                            "        \"type\" : \"uri\"\n"
@@ -896,7 +922,7 @@ TEST_F(ReadAndWriteTests, compositeannotationpejson) {
                            "  ,\n"
                            "  \"MyModel.xml#VLV\" : {\n"
                            "    \"http://biomodels.net/biology-qualifiers/isPropertyOf\" : [ {\n"
-                           "        \"value\" : \"semsimModel.xml#entity_0\",\n"
+                           "        \"value\" : \"SemsimModel.rdf#entity_0\",\n"
                            "        \"type\" : \"uri\"\n"
                            "        }\n"
                            "      \n"
@@ -936,31 +962,31 @@ TEST_F(ReadAndWriteTests, compositeannotationpehtml) {
                            "    <tr class=\"triple\">\n"
                            "      <td><span class=\"uri\"><a href=\"MyModel.xml#VLV\">MyModel.xml#VLV</a></span></td>\n"
                            "      <td><span class=\"uri\"><a href=\"http://biomodels.net/biology-qualifiers/isPropertyOf\">http://biomodels.net/biology-qualifiers/isPropertyOf</a></span></td>\n"
-                           "      <td><span class=\"uri\"><a href=\"./semsimModel.xml#entity_0\">./semsimModel.xml#entity_0</a></span></td>\n"
+                           "      <td><span class=\"uri\"><a href=\"./SemsimModel.rdf#entity_0\">./SemsimModel.rdf#entity_0</a></span></td>\n"
                            "    </tr>\n"
                            "    <tr class=\"triple\">\n"
-                           "      <td><span class=\"uri\"><a href=\"./semsimModel.xml#entity_0\">./semsimModel.xml#entity_0</a></span></td>\n"
+                           "      <td><span class=\"uri\"><a href=\"./SemsimModel.rdf#entity_0\">./SemsimModel.rdf#entity_0</a></span></td>\n"
                            "      <td><span class=\"uri\"><a href=\"http://biomodels.net/biology-qualifiers/is\">http://biomodels.net/biology-qualifiers/is</a></span></td>\n"
                            "      <td><span class=\"uri\"><a href=\"http://identifiers.org/fma/FMA:9670\">http://identifiers.org/fma/FMA:9670</a></span></td>\n"
                            "    </tr>\n"
                            "    <tr class=\"triple\">\n"
-                           "      <td><span class=\"uri\"><a href=\"./semsimModel.xml#entity_0\">./semsimModel.xml#entity_0</a></span></td>\n"
+                           "      <td><span class=\"uri\"><a href=\"./SemsimModel.rdf#entity_0\">./SemsimModel.rdf#entity_0</a></span></td>\n"
                            "      <td><span class=\"uri\"><a href=\"http://biomodels.net/biology-qualifiers/isPartOf\">http://biomodels.net/biology-qualifiers/isPartOf</a></span></td>\n"
                            "      <td><span class=\"uri\"><a href=\"http://identifiers.org/fma/FMA:18228\">http://identifiers.org/fma/FMA:18228</a></span></td>\n"
                            "    </tr>\n"
                            "  </table>\n"
                            "  <p>Total number of triples: <span class=\"count\">4</span>.</p>\n"
                            "</body>\n"
-                           "</html>\n"
-                           "";
+                           "</html>\n";
     assertReadAndWrite(samples.composite_annotation_pe, "html", expected);
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationpenquads) {
     std::string expected = "<MyModel.xml#VLV> <http://biomodels.net/biology-qualifiers/isVersionOf> <http://identifiers.org/opb/OPB_00154> .\n"
-                           "<MyModel.xml#VLV> <http://biomodels.net/biology-qualifiers/isPropertyOf> <./semsimModel.xml#entity_0> .\n"
-                           "<./semsimModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> .\n"
-                           "<./semsimModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .\n";
+                           "<MyModel.xml#VLV> <http://biomodels.net/biology-qualifiers/isPropertyOf> <./SemsimModel.rdf#entity_0> .\n"
+                           "<./SemsimModel.rdf#entity_0> <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> .\n"
+                           "<./SemsimModel.rdf#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .\n"
+                           "";
     assertReadAndWrite(samples.composite_annotation_pe, "nquads", expected);
 }
 
@@ -987,9 +1013,9 @@ TEST_F(ReadAndWriteTests, compositeannotationppntriples) {
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationppturtle) {
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    std::string expected = "@base <./SemsimModel> .\n"
+                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
-                           "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "\n"
                            "<MyModel.xml#mediator_0>\n"
@@ -1011,8 +1037,7 @@ TEST_F(ReadAndWriteTests, compositeannotationppturtle) {
                            "<MyModel.xml#source_0>\n"
                            "    semsim:hasMultiplier \"1.0\" ;\n"
                            "    semsim:hasPhysicalEntityReference <MyModel.xml#species_metaid_0> .\n"
-                           "\n"
-                           "";
+                           "\n";
     assertReadAndWrite(samples.composite_annotation_pp, "turtle", expected);
 }
 
@@ -1021,9 +1046,9 @@ TEST_F(ReadAndWriteTests, compositeannotationpprdfxmlxmp) {
                            "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"MyModel.xml#species_metaid_2\"/>\n"
                            "  </rdf:Description>\n"
@@ -1052,14 +1077,13 @@ TEST_F(ReadAndWriteTests, compositeannotationpprdfxmlxmp) {
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationpprdfxmlabbrev) {
-    std::string expected = "\n"
-                           "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "         xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
-                           "         xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#mediator_0\">\n"
-                           "    <ns1:hasPhysicalEntityReference rdf:resource=\"MyModel.xml#species_metaid_2\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"MyModel.xml#species_metaid_2\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#process_metaid_0\">\n"
                            "    <semsim:hasMediatorParticipant rdf:resource=\"MyModel.xml#mediator_0\"/>\n"
@@ -1071,20 +1095,21 @@ TEST_F(ReadAndWriteTests, compositeannotationpprdfxmlabbrev) {
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB_00592\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#sink_0\">\n"
-                           "    <semsim:hasMultiplier>2.0</ns7:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier>2.0</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"MyModel.xml#species_metaid_1\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#source_0\">\n"
-                           "    <semsim:hasMultiplier>1.0</ns9:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"MyModel.xml#species_metaid_0\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.composite_annotation_pp, "rdfxml-abbrev", expected);
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationpprdfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\" xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#property_metaid_0\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"MyModel.xml#process_metaid_0\"/>\n"
                            "  </rdf:Description>\n"
@@ -1153,9 +1178,8 @@ TEST_F(ReadAndWriteTests, compositeannotationppdot) {
                            "\t\"L1.0\" [ label=\"1.0\", shape = record ];\n"
                            "\t\"L2.0\" [ label=\"2.0\", shape = record ];\n"
                            "\n"
-                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nbqmodel: http://biomodels.net/model-qualifiers/\\nsemsim: http://www.bhi.washington.edu/semsim#\\nrdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
-                           "}\n"
-                           "";
+                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
+                           "}\n";
     assertReadAndWrite(samples.composite_annotation_pp, "dot", expected);
 }
 
@@ -1499,10 +1523,11 @@ TEST_F(ReadAndWriteTests, compositeannotationpfntriples) {
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationpfturtle) {
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    std::string expected = "@base <./SemsimModel> .\n"
+                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
-                           "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
                            "\n"
                            "<MyModel.sbml#force_0>\n"
                            "    semsim:hasSinkParticipant <MyModel.sbml#sink_0> ;\n"
@@ -1517,8 +1542,8 @@ TEST_F(ReadAndWriteTests, compositeannotationpfturtle) {
                            "\n"
                            "<MyModel.sbml#source_0>\n"
                            "    semsim:hasPhysicalEntityReference <MyModel.sbml#species_metaid_0> .\n"
-                           "\n"
-                           "";
+                           "\n";
+
     assertReadAndWrite(samples.composite_annotation_pf, "turtle", expected);
 }
 
@@ -1529,7 +1554,8 @@ TEST_F(ReadAndWriteTests, compositeannotationpfrdfxmlxmp) {
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
                            "    <semsim:hasSinkParticipant rdf:resource=\"MyModel.sbml#sink_0\"/>\n"
                            "    <semsim:hasSourceParticipant rdf:resource=\"MyModel.sbml#source_0\"/>\n"
@@ -1556,7 +1582,8 @@ TEST_F(ReadAndWriteTests, compositeannotationpfrdfxmlabbrev) {
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"MyModel.sbml#force_0\">\n"
                            "    <semsim:hasSinkParticipant rdf:resource=\"MyModel.sbml#sink_0\"/>\n"
                            "    <semsim:hasSourceParticipant rdf:resource=\"MyModel.sbml#source_0\"/>\n"
@@ -1578,7 +1605,7 @@ TEST_F(ReadAndWriteTests, compositeannotationpfrdfxmlabbrev) {
 
 TEST_F(ReadAndWriteTests, compositeannotationpfrdfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\" xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"MyModel.sbml#parameter_metaid_0\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"MyModel.sbml#force_0\"/>\n"
                            "  </rdf:Description>\n"
@@ -1597,7 +1624,8 @@ TEST_F(ReadAndWriteTests, compositeannotationpfrdfxml) {
                            "  <rdf:Description rdf:about=\"MyModel.sbml#sink_0\">\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"MyModel.sbml#species_metaid_1\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.composite_annotation_pf, "rdfxml", expected);
 }
 
@@ -1626,9 +1654,8 @@ TEST_F(ReadAndWriteTests, compositeannotationpfdot) {
                            "\n"
                            "\t// Literals\n"
                            "\n"
-                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqmodel: http://biomodels.net/model-qualifiers/\\nrdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
-                           "}\n"
-                           "";
+                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nbqmodel: http://biomodels.net/model-qualifiers/\\n\";\n"
+                           "}\n";
     assertReadAndWrite(samples.composite_annotation_pf, "dot", expected);
 }
 
@@ -1851,24 +1878,25 @@ TEST_F(ReadAndWriteTests, compositeannotationpfnquads) {
 
 TEST_F(ReadAndWriteTests, tabulardatantriples) {
     std::string expected = "<MyData.csv#VleftCorArt> <http://biomodels.net/biology-qualifiers/isVersionOf> <http://identifiers.org/opb/OPB_00154> .\n"
-                           "<MyData.csv#VleftCorArt> <http://biomodels.net/biology-qualifiers/isPropertyOf> <./semsimModel.xml#entity_0> .\n"
-                           "<./semsimModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> .\n"
-                           "<./semsimModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .\n";
+                           "<MyData.csv#VleftCorArt> <http://biomodels.net/biology-qualifiers/isPropertyOf> <./SemsimModel.rdf#entity_0> .\n"
+                           "<./SemsimModel.rdf#entity_0> <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> .\n"
+                           "<./SemsimModel.rdf#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .\n";
     assertReadAndWrite(samples.tabular_data1, "ntriples", expected);
 }
 
 TEST_F(ReadAndWriteTests, tabulardataturtle) {
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    std::string expected = "@base <./SemsimModel> .\n"
+                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
                            "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix semsim: <http://www.bhi.washington.edu/semsim#> .\n"
                            "\n"
-                           "<semsimModel.xml#entity_0>\n"
+                           "<SemsimModel.rdf#entity_0>\n"
                            "    bqbiol:is <http://identifiers.org/fma/FMA:9670> ;\n"
                            "    bqbiol:isPartOf <http://identifiers.org/fma/FMA:18228> .\n"
                            "\n"
                            "<MyData.csv#VleftCorArt>\n"
-                           "    bqbiol:isPropertyOf <semsimModel.xml#entity_0> ;\n"
+                           "    bqbiol:isPropertyOf <SemsimModel.rdf#entity_0> ;\n"
                            "    bqbiol:isVersionOf <http://identifiers.org/opb/OPB_00154> .\n"
                            "\n"
                            "";
@@ -1882,18 +1910,20 @@ TEST_F(ReadAndWriteTests, tabulardatardfxmlxmp) {
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
                            "    <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:9670\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"http://identifiers.org/fma/FMA:18228\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"semsimModel.xml#entity_0\"/>\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"SemsimModel.rdf#entity_0\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"http://identifiers.org/opb/OPB_00154\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "</x:xmpmeta>\n"
-                           "<?xpacket end='r'?>\n";
+                           "<?xpacket end='r'?>\n"
+                           "";
     assertReadAndWrite(samples.tabular_data1, "rdfxml-xmp", expected);
 }
 
@@ -1902,32 +1932,34 @@ TEST_F(ReadAndWriteTests, tabulardatardfxmlabbrev) {
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
-                           "  <rdf:Description rdf:about=\"semsimModel.xml#entity_0\">\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
+                           "  <rdf:Description rdf:about=\"SemsimModel.rdf#entity_0\">\n"
                            "    <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:9670\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"http://identifiers.org/fma/FMA:18228\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"MyData.csv#VleftCorArt\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"semsimModel.xml#entity_0\"/>\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"SemsimModel.rdf#entity_0\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"http://identifiers.org/opb/OPB_00154\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     assertReadAndWrite(samples.tabular_data1, "rdfxml-abbrev", expected);
 }
 
 TEST_F(ReadAndWriteTests, tabulardatardfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\" xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"MyData.csv#VleftCorArt\">\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"http://identifiers.org/opb/OPB_00154\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"MyData.csv#VleftCorArt\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"semsimModel.xml#entity_0\"/>\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"SemsimModel.rdf#entity_0\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"semsimModel.xml#entity_0\">\n"
+                           "  <rdf:Description rdf:about=\"SemsimModel.rdf#entity_0\">\n"
                            "    <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:9670\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"semsimModel.xml#entity_0\">\n"
+                           "  <rdf:Description rdf:about=\"SemsimModel.rdf#entity_0\">\n"
                            "    <bqbiol:isPartOf rdf:resource=\"http://identifiers.org/fma/FMA:18228\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
@@ -1941,14 +1973,14 @@ TEST_F(ReadAndWriteTests, tabulardatadot) {
                            "\tcharset=\"utf-8\";\n"
                            "\n"
                            "\t\"RMyData.csv#VleftCorArt\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n"
-                           "\t\"RMyData.csv#VleftCorArt\" -> \"R./semsimModel.xml#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
-                           "\t\"R./semsimModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n"
-                           "\t\"R./semsimModel.xml#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n"
+                           "\t\"RMyData.csv#VleftCorArt\" -> \"R./SemsimModel.rdf#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
+                           "\t\"R./SemsimModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n"
+                           "\t\"R./SemsimModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n"
                            "\n"
                            "\t// Resources\n"
                            "\t\"RMyData.csv#VleftCorArt\" [ label=\"MyData.csv#VleftCorArt\", shape = ellipse, color = blue ];\n"
                            "\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n"
-                           "\t\"R./semsimModel.xml#entity_0\" [ label=\"./semsimModel.xml#entity_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"R./SemsimModel.rdf#entity_0\" [ label=\"./SemsimModel.rdf#entity_0\", shape = ellipse, color = blue ];\n"
                            "\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n"
                            "\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n"
                            "\n"
@@ -1956,7 +1988,7 @@ TEST_F(ReadAndWriteTests, tabulardatadot) {
                            "\n"
                            "\t// Literals\n"
                            "\n"
-                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nbqmodel: http://biomodels.net/model-qualifiers/\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nrdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#\\nsemsim: http://www.bhi.washington.edu/semsim#\\n\";\n"
+                           "\tlabel=\"\\n\\nModel:\\n./SemsimModel\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqmodel: http://biomodels.net/model-qualifiers/\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
                            "}\n"
                            "";
     assertReadAndWrite(samples.tabular_data1, "dot", expected);
@@ -1989,13 +2021,13 @@ TEST_F(ReadAndWriteTests, tabulardatajsontriples) {
                            "        \"type\" : \"uri\"\n"
                            "        },\n"
                            "      \"object\" : {\n"
-                           "        \"value\" : \"semsimModel.xml#entity_0\",\n"
+                           "        \"value\" : \"SemsimModel.rdf#entity_0\",\n"
                            "        \"type\" : \"uri\"\n"
                            "        }\n"
                            "      },\n"
                            "    {\n"
                            "      \"subject\" : {\n"
-                           "        \"value\" : \"semsimModel.xml#entity_0\",\n"
+                           "        \"value\" : \"SemsimModel.rdf#entity_0\",\n"
                            "        \"type\" : \"uri\"\n"
                            "        },\n"
                            "      \"predicate\" : {\n"
@@ -2009,7 +2041,7 @@ TEST_F(ReadAndWriteTests, tabulardatajsontriples) {
                            "      },\n"
                            "    {\n"
                            "      \"subject\" : {\n"
-                           "        \"value\" : \"semsimModel.xml#entity_0\",\n"
+                           "        \"value\" : \"SemsimModel.rdf#entity_0\",\n"
                            "        \"type\" : \"uri\"\n"
                            "        },\n"
                            "      \"predicate\" : {\n"
@@ -2022,15 +2054,14 @@ TEST_F(ReadAndWriteTests, tabulardatajsontriples) {
                            "        }\n"
                            "      }\n"
                            "    ]\n"
-                           "  }\n"
-                           "";
+                           "  }\n";
     assertReadAndWrite(samples.tabular_data1, "json-triples", expected);
 }
 
 TEST_F(ReadAndWriteTests, tabulardatajson) {
     std::string expected = "\n"
                            "{\n"
-                           "  \"semsimModel.xml#entity_0\" : {\n"
+                           "  \"SemsimModel.rdf#entity_0\" : {\n"
                            "    \"http://biomodels.net/biology-qualifiers/is\" : [ {\n"
                            "        \"value\" : \"http://identifiers.org/fma/FMA:9670\",\n"
                            "        \"type\" : \"uri\"\n"
@@ -2047,7 +2078,7 @@ TEST_F(ReadAndWriteTests, tabulardatajson) {
                            "  ,\n"
                            "  \"MyData.csv#VleftCorArt\" : {\n"
                            "    \"http://biomodels.net/biology-qualifiers/isPropertyOf\" : [ {\n"
-                           "        \"value\" : \"semsimModel.xml#entity_0\",\n"
+                           "        \"value\" : \"SemsimModel.rdf#entity_0\",\n"
                            "        \"type\" : \"uri\"\n"
                            "        }\n"
                            "      \n"
@@ -2059,7 +2090,8 @@ TEST_F(ReadAndWriteTests, tabulardatajson) {
                            "      \n"
                            "      ]\n"
                            "    }\n"
-                           "  }\n";
+                           "  }\n"
+                           "";
     assertReadAndWrite(samples.tabular_data1, "json", expected);
 }
 
@@ -2086,15 +2118,15 @@ TEST_F(ReadAndWriteTests, tabulardatahtml) {
                            "    <tr class=\"triple\">\n"
                            "      <td><span class=\"uri\"><a href=\"MyData.csv#VleftCorArt\">MyData.csv#VleftCorArt</a></span></td>\n"
                            "      <td><span class=\"uri\"><a href=\"http://biomodels.net/biology-qualifiers/isPropertyOf\">http://biomodels.net/biology-qualifiers/isPropertyOf</a></span></td>\n"
-                           "      <td><span class=\"uri\"><a href=\"./semsimModel.xml#entity_0\">./semsimModel.xml#entity_0</a></span></td>\n"
+                           "      <td><span class=\"uri\"><a href=\"./SemsimModel.rdf#entity_0\">./SemsimModel.rdf#entity_0</a></span></td>\n"
                            "    </tr>\n"
                            "    <tr class=\"triple\">\n"
-                           "      <td><span class=\"uri\"><a href=\"./semsimModel.xml#entity_0\">./semsimModel.xml#entity_0</a></span></td>\n"
+                           "      <td><span class=\"uri\"><a href=\"./SemsimModel.rdf#entity_0\">./SemsimModel.rdf#entity_0</a></span></td>\n"
                            "      <td><span class=\"uri\"><a href=\"http://biomodels.net/biology-qualifiers/is\">http://biomodels.net/biology-qualifiers/is</a></span></td>\n"
                            "      <td><span class=\"uri\"><a href=\"http://identifiers.org/fma/FMA:9670\">http://identifiers.org/fma/FMA:9670</a></span></td>\n"
                            "    </tr>\n"
                            "    <tr class=\"triple\">\n"
-                           "      <td><span class=\"uri\"><a href=\"./semsimModel.xml#entity_0\">./semsimModel.xml#entity_0</a></span></td>\n"
+                           "      <td><span class=\"uri\"><a href=\"./SemsimModel.rdf#entity_0\">./SemsimModel.rdf#entity_0</a></span></td>\n"
                            "      <td><span class=\"uri\"><a href=\"http://biomodels.net/biology-qualifiers/isPartOf\">http://biomodels.net/biology-qualifiers/isPartOf</a></span></td>\n"
                            "      <td><span class=\"uri\"><a href=\"http://identifiers.org/fma/FMA:18228\">http://identifiers.org/fma/FMA:18228</a></span></td>\n"
                            "    </tr>\n"
@@ -2108,9 +2140,9 @@ TEST_F(ReadAndWriteTests, tabulardatahtml) {
 
 TEST_F(ReadAndWriteTests, tabulardatanquads) {
     std::string expected = "<MyData.csv#VleftCorArt> <http://biomodels.net/biology-qualifiers/isVersionOf> <http://identifiers.org/opb/OPB_00154> .\n"
-                           "<MyData.csv#VleftCorArt> <http://biomodels.net/biology-qualifiers/isPropertyOf> <./semsimModel.xml#entity_0> .\n"
-                           "<./semsimModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> .\n"
-                           "<./semsimModel.xml#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .\n";
+                           "<MyData.csv#VleftCorArt> <http://biomodels.net/biology-qualifiers/isPropertyOf> <./SemsimModel.rdf#entity_0> .\n"
+                           "<./SemsimModel.rdf#entity_0> <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> .\n"
+                           "<./SemsimModel.rdf#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .\n";
     assertReadAndWrite(samples.tabular_data1, "nquads", expected);
 }
 
