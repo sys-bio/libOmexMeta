@@ -30,7 +30,7 @@ semsim::Writer::Writer(librdf_world *world, librdf_model *model, std::string for
     }
 
     this->format_ = std::move(format);
-    if (std::find(valid_writer_names.begin(), valid_writer_names.end(), this->format_) != valid_writer_names.end()) {
+    if (std::find(valid_writer_names.begin(), valid_writer_names.end(), this->format_) == valid_writer_names.end()) {
         std::ostringstream os;
         os << "Invalid format: \"" << this->format_ << "\". These are valid formats: ";
         for (auto &i : valid_writer_names) {
@@ -54,18 +54,28 @@ semsim::Writer::Writer(librdf_world *world, librdf_model *model, std::string for
     setOption("relativeURIs", "1");
     setOption("xmlDeclaration", "1");
     setOption("writeBaseURI", "1");
+
 }
 
 void semsim::Writer::registerNamespace(const std::string &ns, const std::string &prefix) {
+    HERE();
     librdf_uri *ns_uri = librdf_new_uri(world_, (const unsigned char *) ns.c_str());
     librdf_serializer_set_namespace(serializer, ns_uri, (const char *) prefix.c_str());
     librdf_free_uri(ns_uri);
 }
 
-void semsim::Writer::setOption(const std::string& option, const std::string& value) {
+void semsim::Writer::registerNamespace(const std::unordered_map<std::string, std::string>& ns_map) {
+    for (auto &i : ns_map) {
+        HERE();
+        std::cout << i.first << ":" << i.second <<std::endl;
+        registerNamespace(i.first, i.second);
+    }
+}
+
+void semsim::Writer::setOption(const std::string &option, const std::string &value) {
     std::string feature_uri_base = "http://feature.librdf.org/raptor-";
     raptor_uri *uri = raptor_new_uri(raptor_world_ptr_, (const unsigned char *) (feature_uri_base + option).c_str());
-    librdf_node* node = librdf_new_node_from_literal(world_, (const unsigned char*)value.c_str(), nullptr, 0);
+    librdf_node *node = librdf_new_node_from_literal(world_, (const unsigned char *) value.c_str(), nullptr, 0);
     librdf_serializer_set_feature(serializer, uri, node);
 }
 
@@ -86,7 +96,6 @@ std::string semsim::Writer::toString() {
 
 std::string semsim::Writer::print() {
     raptor_iostream *iostream = raptor_new_iostream_to_file_handle(raptor_world_ptr_, stdout);
-    registerNamespace("http://biomodels.net/biology-qualifiers/", "bqbiol");
     librdf_serializer_serialize_model_to_iostream(serializer, base_uri_, model_, iostream);
 }
 
@@ -95,9 +104,30 @@ void semsim::Writer::toFile(std::string format) {
 }
 
 void semsim::Writer::setFormat(const std::string &format) {
-    Writer::format = format;
+    Writer::format_ = format;
 }
+
 
 
 //todo look into using concept schema part of librdf. This may solve the rdf:Bag problem.
 // Might also be able to use sbml/cellml schemas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

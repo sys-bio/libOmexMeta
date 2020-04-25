@@ -185,9 +185,19 @@ TEST_F(ReaderTests, TestParseNamespaces) {
     semsim::SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);
     semsim::Reader reader(world, model, "rdfxml");
     reader.fromFile(samples.sbml_filename1);
-    auto x = reader.parseNamespacesWithPrefix();
-    int size = x.size();
-    ASSERT_EQ(6, size);
+    auto actual = reader.getSeenNamespaces();
+    std::vector<std::string> expected = {
+            "http://www.sbml.org/sbml/level2",
+            "http://www.w3.org/1999/xhtml",
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "http://biomodels.net/model-qualifiers/",
+            "http://www.w3.org/2001/vcard-rdf/3.0#",
+            "http://purl.org/dc/elements/1.1/",
+            "http://purl.org/dc/terms/",
+            "http://biomodels.net/biology-qualifiers/",
+            "http://www.w3.org/1998/Math/MathML",
+    };
+    ASSERT_EQ(expected, actual);
 }
 
 
@@ -249,6 +259,8 @@ TEST_F(ReaderTests, TestReadRDFBagFromTurtleString) {
 }
 //ASSERT_GT(size_after, size_before);
 //}
+
+
 
 
 

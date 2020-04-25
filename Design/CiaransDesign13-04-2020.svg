@@ -856,7 +856,7 @@ class RDF-->
         </text>
         <ellipse cx="923" cy="446.0547" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="136"
-              x="932" y="450.4736">declareNamespaces() : void
+              x="932" y="450.4736">propagateNamespacesFromParser() : void
         </text>
         <ellipse cx="923" cy="459.8906" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
@@ -944,7 +944,7 @@ class Reader-->
         </text>
         <rect fill="none" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1454.5" y="920.6719"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="98"
-              x="1466.5" y="928.0908">baseUri_ : librdf_uri*
+              x="1466.5" y="928.0908">base_uri_ : librdf_uri*
         </text>
         <rect fill="none" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1454.5" y="934.5078"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="105"
@@ -1566,7 +1566,7 @@ class RDF {
     +{static} fromUrl(std::string url) : RDF
     +{static} listOptions() : std::ostringstream
     +addStatement(std::string subject, std::string predicate, std::string resource) : void
-    +declareNamespaces() : void
+    +propagateNamespacesFromParser() : void
     +{static} fromXML(const std::string& filename, std::string format) : semsim::RDF
     +{static} fromString(const std::string& str, std::string format) : void
     +toFile(std::string format) : void
@@ -1589,7 +1589,7 @@ class Reader {
     +Reader(librdf_world* world, librdf_model* model, std::string format)
     -model_ : librdf_model*
     -parser_ : librdf_parser*
-    -baseUri_ : librdf_uri*
+    -base_uri_ : librdf_uri*
     -world_ : librdf_world*
     -raptor_world_ptr_ : raptor_world*
     -format_ : std::string

@@ -229,7 +229,7 @@ class RDF {
     +{static} fromUrl(std::string url) : RDF
     +{static} listOptions() : std::ostringstream
     +addStatement(std::string subject, std::string predicate, std::string resource) : void
-    +declareNamespaces() : void
+    +propagateNamespacesFromParser() : void
     +{static} fromXML(const std::string& filename, std::string format) : semsim::RDF
     +{static} fromString(const std::string& str, std::string format) : void
     +toFile(std::string format) : void
@@ -252,7 +252,7 @@ class Reader {
     +Reader(librdf_world* world, librdf_model* model, std::string format)
     -model_ : librdf_model*
     -parser_ : librdf_parser*
-    -baseUri_ : librdf_uri*
+    -base_uri_ : librdf_uri*
     -world_ : librdf_world*
     -raptor_world_ptr_ : raptor_world*
     -format_ : std::string

@@ -47,7 +47,7 @@ TEST_F(ParticipantTests, TestSinkParticipant1) {
     );
     std::string actual = sink.getPredicatePtr()->str();
     std::cout << actual << std::endl;
-    std::string expected = "http://www.bhi.washington.edu/semsim#/hasSinkParticipant";
+    std::string expected = "http://www.bhi.washington.edu/semsim/hasSinkParticipant";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 

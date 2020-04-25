@@ -74,11 +74,15 @@ TEST_F(RDFTests, TestGetOptions) {
     ASSERT_STREQ(expected.c_str(), os.str().c_str());
 }
 
-TEST_F(RDFTests, test){
-    semsim::RDF rdf;
-    semsim::Editor editor = rdf.toEditor(
-            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
-            semsim::ASSISTANT_TYPE_SBML);
+TEST_F(RDFTests, TestNamespacesSize){
+    semsim::RDF rdf = semsim::RDF::fromString(
+            samples.composite_annotation_pp
+            );
+    std::string s = rdf.toString("rdfxml-abbrev");
+
+    std::cout << s << std::endl;
+    int x = rdf.getNamespaces().size();
+    ASSERT_EQ(2, x);
 }
 
 
@@ -1048,13 +1052,14 @@ TEST_F(ReadAndWriteTests, compositeannotationpprdfxmlxmp) {
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationpprdfxmlabbrev) {
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
+    std::string expected = "\n"
+                           "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "         xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "         xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xml:base=\"./SemsimModel\">\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#mediator_0\">\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"MyModel.xml#species_metaid_2\"/>\n"
+                           "    <ns1:hasPhysicalEntityReference rdf:resource=\"MyModel.xml#species_metaid_2\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#process_metaid_0\">\n"
                            "    <semsim:hasMediatorParticipant rdf:resource=\"MyModel.xml#mediator_0\"/>\n"
@@ -1066,15 +1071,14 @@ TEST_F(ReadAndWriteTests, compositeannotationpprdfxmlabbrev) {
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB_00592\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#sink_0\">\n"
-                           "    <semsim:hasMultiplier>2.0</semsim:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier>2.0</ns7:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"MyModel.xml#species_metaid_1\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"MyModel.xml#source_0\">\n"
-                           "    <semsim:hasMultiplier>1.0</semsim:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier>1.0</ns9:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"MyModel.xml#species_metaid_0\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
-                           "";
+                           "</rdf:RDF>\n";
     assertReadAndWrite(samples.composite_annotation_pp, "rdfxml-abbrev", expected);
 }
 
