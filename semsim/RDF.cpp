@@ -78,7 +78,6 @@ semsim::RDF::~RDF() {
 
 std::unordered_map<std::string, std::string>
 semsim::RDF::propagateNamespacesFromParser(std::vector<std::string> seen_namespaces) {
-    HERE();
     std::unordered_map<std::string, std::string> keep_map;
     for (auto &seen_namespace : seen_namespaces) {
         auto iter = default_namespaces_.find(seen_namespace);
@@ -86,9 +85,7 @@ semsim::RDF::propagateNamespacesFromParser(std::vector<std::string> seen_namespa
             keep_map[seen_namespace] = default_namespaces_[seen_namespace];
         }
     }
-
     return keep_map;
-
 }
 
 semsim::RDF::RDF(const semsim::RDF &libRdfModel) {

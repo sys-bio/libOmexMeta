@@ -30,6 +30,8 @@ namespace semsim {
             "dot",
             "json-triples",
             "json",
+            "nquads",
+            "html",
         };
 
     public:
