@@ -24,7 +24,14 @@ namespace semsim {
         librdf_storage *storage_;
         librdf_model *model_;
 
-        std::unordered_map<const char *, const char *> namespaces_;
+        std::unordered_map<std::string, std::string> namespaces_;
+        std::vector<std::string> seen_namespaces_;
+        std::unordered_map<std::string, std::string> default_namespaces_ = {
+                {"http://purl.org/dc/terms/", "dcterms"},
+                {"http://biomodels.net/biology-qualifiers/", "bqbiol"},
+                {"http://biomodels.net/model-qualifiers/", "bqmodel"},
+                {"http://www.bhi.washington.edu/semsim#", "semsim"},
+        };
 
         semsim::Writer makeWriter(const std::string &format, const std::string &base_uri);
 
@@ -51,9 +58,9 @@ namespace semsim {
 
         bool operator!=(const RDF &rhs) const;
 
-        void setNamespaces(const std::unordered_map<const char *, const char *> &namespaces);
+        const std::unordered_map<std::string, std::string> &getNamespaces() const;
 
-        const std::unordered_map<const char *, const char *> &getNamespaces() const;
+        void setNamespaces(const std::unordered_map<std::string, std::string> &namespaces);
 
         static RDF fromUrl(std::string url);
 
@@ -93,10 +100,10 @@ namespace semsim {
 
         void setRaptorWorld(raptor_world *raptorWorldPtr);
 
-        void declareNamespaces();
+        std::unordered_map<std::string, std::string> propagateNamespacesFromParser(
+                std::vector<std::string> seen_namespaces);
 
-        semsim::RDF
-        query(std::string query_str, std::string query_format = "sparql", std::string results_mime_type = "text/csv");
+        semsim::RDF query(std::string query_str, std::string query_format = "sparql", std::string results_mime_type = "text/csv");
 
     };
 }

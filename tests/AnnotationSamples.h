@@ -51,6 +51,20 @@ public:
             gold_standard_filename5,
     };
 
+    std::string rdf_xml_example7 = "<?xml version=\"1.0\"?>\n"
+                                   "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                                   "            xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
+                                   "            xmlns:ex=\"http://example.org/stuff/1.0/\">\n"
+                                   "  <rdf:Description rdf:about=\"http://www.w3.org/TR/rdf-syntax-grammar\"\n"
+                                   "             dc:title=\"RDF1.1 XML Syntax\">\n"
+                                   "    <ex:editor>\n"
+                                   "      <rdf:Description ex:fullName=\"Dave Beckett\">\n"
+                                   "        <ex:homePage rdf:resource=\"http://purl.org/net/dajobe/\" />\n"
+                                   "      </rdf:Description>\n"
+                                   "    </ex:editor>\n"
+                                   "  </rdf:Description>\n"
+                                   "</rdf:RDF>\n";
+
 
     std::string singular_annotation1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                                        "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -100,8 +114,7 @@ public:
 
     std::string composite_annotation_pp = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                                           "         xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                                          "         xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
-                                          "         xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\">\n"
+                                          "         xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
                                           "    <rdf:Description rdf:about=\"./MyModel.xml#property_metaid_0\">\n"
                                           "        <bqbiol:isPropertyOf rdf:resource=\"./MyModel.xml#process_metaid_0\"/>\n"
                                           "        <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB_00592\"/>\n"

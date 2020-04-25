@@ -49,7 +49,6 @@ public:
 
     void test_writer(std::string output_format, const std::string& expected) {
         semsim::Writer writer(world, model, std::move(output_format));
-        writer.registerNamespace("http://purl.org/dc/elements/1.1/", "dc");
         std::string actual = writer.toString();
         std::cout << actual << std::endl;
         ASSERT_STREQ(expected.c_str(), actual.c_str());

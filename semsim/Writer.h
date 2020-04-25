@@ -8,6 +8,7 @@
 #include <librdf.h>
 #include <string>
 #include <vector>
+#include "unordered_map"
 
 namespace semsim {
     class Writer {
@@ -46,9 +47,12 @@ namespace semsim {
 
         void registerNamespace(const std::string &ns, const std::string &prefix);
 
+        void registerNamespace(const std::unordered_map<std::string, std::string> &ns_map);
+
         std::string print();
 
         void setOption(const std::string &option, const std::string &value);
+
     };
 }
 

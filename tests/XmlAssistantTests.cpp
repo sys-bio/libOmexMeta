@@ -10,15 +10,18 @@
 class XmlAssistantTests : public ::testing::Test {
 public:
 
-    XmlAssistantTests() {
+    std::string sbml;
 
+    XmlAssistantTests() {
+        sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
     }
+
+
 };
 
 
 TEST_F(XmlAssistantTests, TestValidElements) {
     semsim::MetaID metaId("SemsimMetaid", 0, 4);
-    std::string sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
     semsim::XmlAssistant xmlAssistant(sbml, "ID", 4);
     const std::vector<std::string> &actual = xmlAssistant.getValidElements();
     std::vector<std::string> expected = {"Any"};
@@ -26,7 +29,6 @@ TEST_F(XmlAssistantTests, TestValidElements) {
 }
 
 TEST_F(XmlAssistantTests, TestMetaIdsAll) {
-    std::string sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
     semsim::XmlAssistant xmlAssistant(sbml, "SemsimMetaid", 4);
     auto sbml_and_meta_ids = xmlAssistant.addMetaIds();
     sbml = sbml_and_meta_ids.first;
@@ -91,7 +93,6 @@ TEST_F(XmlAssistantTests, TestMetaIdsAll) {
 
 TEST_F(XmlAssistantTests, TestValidElementsSBML) {
     semsim::MetaID metaId("SemsimMetaid", 0, 4);
-    std::string sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
     semsim::SBMLAssistant assistant(sbml, "ID", 4);
     const std::vector<std::string> &actual = assistant.getValidElements();
     std::vector<std::string> expected = {
@@ -108,9 +109,7 @@ TEST_F(XmlAssistantTests, TestValidElementsSBML) {
 
 TEST_F(XmlAssistantTests, TestMetaIdsSBML) {
     semsim::MetaID metaId("SemsimMetaid", 0, 4);
-    std::string sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
-    semsim::SBMLAssistant assistant(sbml,
-                                    "SemsimMetaid", 4);
+    semsim::SBMLAssistant assistant(sbml, "SemsimMetaid", 4);
     auto sbml_with_metaids = assistant.addMetaIds();
     sbml = sbml_with_metaids.first;
     std::string expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -171,20 +170,19 @@ TEST_F(XmlAssistantTests, TestMetaIdsSBML) {
     ASSERT_STREQ(expected.c_str(), sbml.c_str());
 }
 
-TEST_F(XmlAssistantTests, TestXmlFactory1) {
-    semsim::XmlAssistantPtr assistantPtr = semsim::XmlAssistantFactory::generate(
-            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
-            semsim::ASSISTANT_TYPE_SBML);
 
-    auto  with_metaid = assistantPtr->addMetaIds();
-    std::cout << with_metaid.first << std::endl;
-    for (auto &i : with_metaid.second){
-        std::cout << i << std::endl;
-    }
 
-//    semsim::XmlAssistantPtr x = xmlAssistantFactory(
-//            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
-//            semsim::ASSISTANT_TYPE_SBML
-//    );
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
