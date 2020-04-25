@@ -42,7 +42,7 @@ librdf_parser *semsim::Reader::makeParser(std::string format) {
         }
         throw std::invalid_argument(os.str());
     }
-    parser_ = librdf_new_parser(world_, (const char *) format.c_str(), nullptr, nullptr);
+    parser_ = librdf_new_parser(world_, format.c_str(), nullptr, nullptr);
     if (!parser_) {
         throw std::invalid_argument("Failed to create new parser\n");
     }

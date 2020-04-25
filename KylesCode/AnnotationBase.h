@@ -4,7 +4,7 @@
 # include <memory>
 # include "iostream"
 
-# include "semsim/PhysicalProperty.h"
+# include "semsim/PhysicalPropertyResource.h"
 
 # include "raptor2.h"
 

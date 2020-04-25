@@ -3,7 +3,7 @@
 
 
 # include "semsim/AnnotationBase.h"
-# include "semsim/PhysicalProperty.h"
+# include "semsim/PhysicalPropertyResource.h"
 # include "semsim/Entity.h"
 # include "semsim/SingularAnnotation.h"
 

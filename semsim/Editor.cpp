@@ -38,7 +38,7 @@ void semsim::Editor::checkValidMetaid(const std::string &metaid) {
 }
 
 
-const semsim::TripleList &semsim::Editor::getTripleList() const {
+const semsim::NestedTriples &semsim::Editor::getTripleList() const {
     return triple_list_;
 }
 
@@ -67,7 +67,7 @@ void semsim::Editor::addSingleAnnotation(Triple triple) {
     triple_list_.push_back(vec);
 }
 
-void semsim::Editor::addAnnotation(TripleList tripleList) {
+void semsim::Editor::addAnnotation(NestedTriples tripleList) {
     for (auto &inner_triple_vec: tripleList) {
         triple_list_.push_back(inner_triple_vec);
     }
@@ -149,6 +149,12 @@ void semsim::Editor::addPhysicalProcessAnnotation(
         }
     }
     triple_list_.push_back(triples);
+}
+
+void semsim::Editor::addCompositeAnnotation(semsim::PhysicalPhenomenonPtr phenomenonPtr) {
+    for (auto &triple : phenomenonPtr->toTriples()) {
+        librdf_model_add_statement(model_, triple.toStatement());
+    }
 }
 
 

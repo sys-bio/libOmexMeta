@@ -223,9 +223,9 @@ class RDF {
     -raptor_world_ : raptor_world*
     -makeWriter(const std::string& format, const std::string& base_uri) : semsim::Writer
     -namespaces_ : std::unordered_map<const char*, const char*>
-    +{static} init() : LibrdfObjectsTuple
+    +{static} init() : LibRDFObjectsTuple
     +{static} fromOmex(std::string filename_or_url) : RDF
-    +{static} fromRDF(std::string filename) : RDF
+    +{static} fromFile(std::string filename) : RDF
     +{static} fromUrl(std::string url) : RDF
     +{static} listOptions() : std::ostringstream
     +addStatement(std::string subject, std::string predicate, std::string resource) : void

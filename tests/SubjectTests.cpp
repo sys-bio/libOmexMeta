@@ -8,9 +8,10 @@
 
 class SubjectTests : public ::testing::Test {
 public:
-    librdf_world* world;
-    librdf_model* model;
-    librdf_storage* storage;
+    librdf_world *world;
+    librdf_model *model;
+    librdf_storage *storage;
+
     SubjectTests() {
         world = librdf_new_world();
         storage = librdf_new_storage(world, "memory", "test", nullptr);
@@ -18,7 +19,7 @@ public:
 
     }
 
-    ~SubjectTests() override{
+    ~SubjectTests() override {
         librdf_free_world(world);
         librdf_free_model(model);
         librdf_free_storage(storage);
@@ -42,6 +43,15 @@ TEST_F(SubjectTests, TestStringUri) {
     semsim::Subject subject(world, semsim::RDFURINode(world, url_str));
     const std::string &expected = subject.str();
     ASSERT_STREQ(url_str.c_str(), expected.c_str());
+}
+
+TEST_F(SubjectTests, TestToNode) {
+    std::string url_str = "https://www.notarealaddress.com";
+    semsim::RDFURINode node(semsim::RDFURINode(world, url_str));
+    semsim::Subject subject(world, node);
+    librdf_node *n = subject.toRdfNode();
+    const char *actual = (const char *) librdf_uri_as_string(librdf_node_get_uri(n));
+    ASSERT_STREQ(url_str.c_str(), actual);
 }
 
 //TEST_F(SubjectTests, TestEqualityOperator) {

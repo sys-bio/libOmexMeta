@@ -13,7 +13,7 @@ namespace semsim {
     class Writer {
         librdf_world *world_;
         raptor_world *raptor_world_ptr_;
-        std::string format;
+        std::string format_;
         librdf_uri *base_uri_;
         librdf_model *model_;
         librdf_serializer *serializer;
@@ -33,7 +33,7 @@ namespace semsim {
 
     public:
 
-        Writer(librdf_world *world_, librdf_model *model_, std::string format,
+        Writer(librdf_world *world_, librdf_model *model_, std::string format = "rdfxml-abbrev",
                const std::string &base_uri = "./semsim_model.xml");
 
         void setFormat(const std::string &format);

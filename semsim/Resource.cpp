@@ -11,21 +11,23 @@ namespace semsim {
         world_(world){
         this->rdf_node_ptr_ = std::make_shared<RDFLiteralNode>(node);
     }
-    Resource::Resource(librdf_world *world, const RDFURINode& node) :
-        world_(world){
+
+    Resource::Resource(librdf_world *world, const RDFURINode &node) :
+            world_(world) {
         this->rdf_node_ptr_ = std::make_shared<RDFURINode>(node);
     }
-    Resource::Resource(librdf_world *world, const RDFBlankNode& node) :
-        world_(world){
+
+    Resource::Resource(librdf_world *world, const RDFBlankNode &node) :
+            world_(world) {
         this->rdf_node_ptr_ = std::make_shared<RDFBlankNode>(node);
+    }
+
+    librdf_node *Resource::toRdfNode() const {
+        return rdf_node_ptr_->toRdfNode();
     }
 
     std::string Resource::str() const {
         return rdf_node_ptr_->str();
-    }
-
-    librdf_node *Resource::toRdfNode() {
-        return rdf_node_ptr_->toRdfNode();
     }
 
 }

@@ -158,7 +158,7 @@ class LibRDFModel {
     - librdf_uri *uri;
     + fromWWW() : static LibRDFModel
     + fromXML() : static LibRDFModel
-    + fromRDF() : static LibRDFModel
+    + fromFile() : static LibRDFModel
     + fromString() : static LibRDFModel
     + query() : LibRDFModel
     + addStatement() : LibRDFModel

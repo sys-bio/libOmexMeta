@@ -9,29 +9,23 @@ class Triple {}
 class SingularAnnotation
 
 class CompositeAnnotation {
-    + physicalProperty : PhysicalProperty
-    + propertyBearer : PhysicalPhenomenon
+    + propertyBearer : PhysicalPhenomenon*
 }
 
 together CompositeAnnotationCompositions {
 class PhysicalProperty
 
 class PhysicalPhenomenon{
-    + subject: Subject
-    +
+    + subject_metaid: Subject
+    + physicalProp: PhysicalProperty
+    + createMetaId: std::string
 }
 }
 
-class Entity {
-
-}
 together group1{
 class PhysicalEntity{
-' the thing (1) and where it is (0 or more)
-    + resources : vector<Resource>
-'thing being annotated
-    + subject : Subject
-    + id : MetaID
+    + is : Resource
+    + isPartOf : vector<Resource>
 }
 
 class PhysicalProcess {
@@ -47,7 +41,7 @@ class PhysicalForce{
 }
 }
 
-class Participant{
+class Participant {
     + physicalEntityReference : PhysicalEntity
     + multiplier : double
 }

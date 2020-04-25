@@ -17,7 +17,7 @@ namespace semsim {
          *                 Hence, responsibility for deleting the char* lies
          *                 with the caller.
          */
-        explicit Exception( char *message) :
+        explicit Exception(const char *message) :
                 msg_(message) {
         }
 
@@ -33,11 +33,11 @@ namespace semsim {
         ~Exception() noexcept override = default;
 
         /** Returns a pointer to the (constant) error description.
-         *  @return A pointer to a  char*. The underlying memory
+         *  @return A pointer to a const char*. The underlying memory
          *          is in posession of the Exception object. Callers must
          *          not attempt to free the memory.
          */
-         char *what()  noexcept override {
+        const char *what() const noexcept override {
             return msg_.c_str();
         }
 
@@ -47,8 +47,19 @@ namespace semsim {
         std::string msg_;
     };
 
-
     class NullPointerException : public Exception {
+        using Exception::Exception;
+    };
+
+    class InappropriateResourceException : public Exception {
+        using Exception::Exception;
+    };
+
+    class NotImplementedException : public Exception {
+        using Exception::Exception;
+    };
+
+    class LibRDFException : public Exception {
         using Exception::Exception;
     };
 

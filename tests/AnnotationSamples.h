@@ -158,6 +158,67 @@ public:
                                 "    </rdf:Description>"
                                 "</rdf:RDF>\n";
 
+    std::string rdf_turtle_bag_example = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.\n"
+                                         "@prefix s:   <http://example.org/students/vocab#>.\n"
+                                         "\n"
+                                         "<http://example.org/courses/6.001>\n"
+                                         "    s:students [\n"
+                                         "        a rdf:Bag;\n"
+                                         "        rdf:_1 <http://example.org/students/Amy>;\n"
+                                         "        rdf:_2 <http://example.org/students/Mohamed>;\n"
+                                         "        rdf:_3 <http://example.org/students/Johann>;\n"
+                                         "        rdf:_4 <http://example.org/students/Maria>;\n"
+                                         "        rdf:_5 <http://example.org/students/Phuong>;\n"
+                                         "    ].";
+
+    std::string rdf_xml_seq_example = "<?xml version=\"1.0\"?>\n"
+                                      "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                                      "  <rdf:Seq rdf:about=\"http://example.org/favourite-fruit\">\n"
+                                      "    <rdf:_1 rdf:resource=\"http://example.org/banana\"/>\n"
+                                      "    <rdf:_2 rdf:resource=\"http://example.org/apple\"/>\n"
+                                      "    <rdf:_3 rdf:resource=\"http://example.org/pear\"/>\n"
+                                      "  </rdf:Seq>\n"
+                                      "</rdf:RDF>";
+
+    std::string rdf_xml_bag_example = "<?xml version=\"1.0\"?>\n"
+                                      "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                                      "  <rdf:Bag rdf:about=\"http://example.org/favourite-fruit\">\n"
+                                      "    <rdf:_1 rdf:resource=\"http://example.org/banana\"/>\n"
+                                      "    <rdf:_2 rdf:resource=\"http://example.org/apple\"/>\n"
+                                      "    <rdf:_3 rdf:resource=\"http://example.org/pear\"/>\n"
+                                      "  </rdf:Bag>\n"
+                                      "</rdf:RDF>";
+
+    std::string rdf_turtle_basic_example = "@base <http://example.org/> .\n"
+                                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                                           "@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n"
+                                           "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
+                                           "@prefix rel: <http://www.perceive.net/schemas/relationship/> .\n"
+                                           "\n"
+                                           "<#green-goblin>\n"
+                                           "    rel:enemyOf <#spiderman> ;\n"
+                                           "    a foaf:Person ;    # in the context of the Marvel universe\n"
+                                           "    foaf:name \"Green Goblin\" .\n"
+                                           "\n"
+                                           "<#spiderman>\n"
+                                           "    rel:enemyOf <#green-goblin> ;\n"
+                                           "    a foaf:Person ;\n"
+                                           "    foaf:name \"Spiderman\", \"Человек-паук\"@ru .";
+
+    std::string rdf_xml_collection_type_example = "<?xml version=\"1.0\"?>\n"
+                                                  "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                                                  "            xmlns:ex=\"http://example.org/stuff/1.0/\">\n"
+                                                  "\n"
+                                                  "  <rdf:Description rdf:about=\"http://example.org/basket\">\n"
+                                                  "    <ex:hasFruit rdf:parseType=\"Collection\">\n"
+                                                  "      <rdf:Description rdf:about=\"http://example.org/banana\"/>\n"
+                                                  "      <rdf:Description rdf:about=\"http://example.org/apple\"/>\n"
+                                                  "      <rdf:Description rdf:about=\"http://example.org/pear\"/>\n"
+                                                  "    </ex:hasFruit>\n"
+                                                  "  </rdf:Description>\n"
+                                                  "\n"
+                                                  "</rdf:RDF>";
+
     void removeAllFilesIfTheyExist() {
         for (auto &file : this->all_files) {
             semsim::SemsimUtils::removeIfExists(file);

@@ -10,12 +10,14 @@
 #include "semsim/Resource.h"
 #include "sstream"
 #include "semsim/RDFNode.h"
+#include <vector>
 
 namespace semsim {
     class Resource {
+
+    protected:
         librdf_world *world_;
         RDFNodePtr rdf_node_ptr_;
-
     public:
         Resource() = default;
 
@@ -25,12 +27,13 @@ namespace semsim {
 
         Resource(librdf_world *world, const RDFBlankNode &node);
 
+        librdf_node *toRdfNode() const;
+
         std::string str() const;
 
-        librdf_node *toRdfNode();
-
-
     };
+
+    typedef std::vector<Resource> Resources;
 
 }
 

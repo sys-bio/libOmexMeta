@@ -15,7 +15,7 @@ namespace semsim {
 
     class Editor; // forward declaration
 
-    typedef std::tuple<librdf_world *, raptor_world *, librdf_storage *, librdf_model *> LibrdfObjectsTuple;
+    typedef std::tuple<librdf_world *, raptor_world *, librdf_storage *, librdf_model *> LibRDFObjectsTuple;
 
     class RDF {
     private:
@@ -24,14 +24,14 @@ namespace semsim {
         librdf_storage *storage_;
         librdf_model *model_;
 
-        std::unordered_map<const char*, const char*> namespaces_;
+        std::unordered_map<const char *, const char *> namespaces_;
 
         semsim::Writer makeWriter(const std::string &format, const std::string &base_uri);
 
 
     public:
 
-        static LibrdfObjectsTuple init();
+        static LibRDFObjectsTuple init();
 
         RDF();
 
@@ -51,21 +51,25 @@ namespace semsim {
 
         bool operator!=(const RDF &rhs) const;
 
-        void setNamespaces(const std::unordered_map<const char*, const char*> &namespaces);
+        void setNamespaces(const std::unordered_map<const char *, const char *> &namespaces);
 
-        const std::unordered_map<const char*, const char*> &getNamespaces() const;
+        const std::unordered_map<const char *, const char *> &getNamespaces() const;
 
         static RDF fromUrl(std::string url);
 
         static semsim::RDF fromXML(const std::string &filename, std::string format);
 
-        static RDF fromRDF(std::string filename);
+        static RDF fromFile(std::string filename);
 
         static RDF fromOmex(std::string filename_or_url);
 
         std::string toString(std::string format, std::string base_uri = "./SemsimModel");
 
-        void fromString(const std::string &str, std::string format = "guess");
+        static RDF fromString(const std::string &str, std::string format = "guess");
+
+        static RDF fromStream(librdf_stream *stream);
+
+        librdf_stream *toStream();
 
         void toFile(std::string format);
 
@@ -90,6 +94,10 @@ namespace semsim {
         void setRaptorWorld(raptor_world *raptorWorldPtr);
 
         void declareNamespaces();
+
+        semsim::RDF
+        query(std::string query_str, std::string query_format = "sparql", std::string results_mime_type = "text/csv");
+
     };
 }
 
@@ -97,7 +105,7 @@ namespace semsim {
 
 //    + fromWWW() : static RDF
 //    + fromXML() : static RDF
-//    + fromRDF() : static RDF
+//    + fromFile() : static RDF
 //    + fromModel() : static RDF
 //    + load
 //    + query() : RDF

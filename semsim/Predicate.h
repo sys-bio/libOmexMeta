@@ -42,6 +42,7 @@ namespace semsim {
         const std::string &getUri() const;
 
         static int verify(std::vector<std::string> valid_terms, const std::string &term);
+
     };
 
     class BiomodelsQualifier : public Predicate {
