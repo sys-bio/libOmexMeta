@@ -58,7 +58,8 @@ namespace semsim {
 
     };
 
-    typedef std::vector<std::vector<Triple>> TripleList;
+    typedef std::vector<Triple> Triples;
+    typedef std::vector<std::vector<Triple>> NestedTriples;
 
 
 }

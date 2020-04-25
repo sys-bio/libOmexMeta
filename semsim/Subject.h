@@ -12,19 +12,18 @@ namespace semsim {
     class Subject {
     private:
         librdf_world *world_;
-
-        RDFNodePtr rdfNodePtr_;
+        RDFNodePtr rdf_node_ptr_;
 
     public:
         Subject() = default;
 
         Subject(librdf_world *world, const RDFBlankNode &node);
 
-        explicit Subject(librdf_world *world, const RDFURINode &node);
+        Subject(librdf_world *world, const RDFURINode &node);
 
-        librdf_node *toRdfNode();
+        librdf_node *toRdfNode() const;
 
-        std::string str();
+        std::string str() const;
 
     };
 

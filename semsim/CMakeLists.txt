@@ -17,7 +17,7 @@ set(SEMSIM_SOURCES
         Writer.h Writer.cpp
         RDF.cpp RDF.h
         SemSim.h
-        Participant.cpp Participant.h CompositeAnnotation.cpp CompositeAnnotation.h)
+        Participant.cpp Participant.h CompositeAnnotation.cpp CompositeAnnotation.h PhysicalEntity.cpp PhysicalEntity.h PhysicalPhenomenon.cpp PhysicalPhenomenon.h PhysicalProcess.cpp PhysicalProcess.h PhysicalPropertyResource.cpp PhysicalPropertyResource.h AnnotationType.h PhysicalForce.cpp PhysicalForce.h Query.cpp Query.h)
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)

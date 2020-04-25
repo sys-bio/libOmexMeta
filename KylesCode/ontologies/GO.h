@@ -3,7 +3,7 @@
 
 
 # include "Ontology.h"
-# include "semsim/PhysicalProperty.h"
+# include "semsim/PhysicalPropertyResource.h"
 
 namespace semsim {
     /**

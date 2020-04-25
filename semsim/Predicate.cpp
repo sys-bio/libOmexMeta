@@ -80,7 +80,7 @@ namespace semsim {
     }
 
     SemSim::SemSim(librdf_world *world, const std::string &term) :
-            Predicate(world, "http://www.bhi.washington.edu/semsim#", term, "semsim"){
+            Predicate(world, "http://www.bhi.washington.edu/semsim/", term, "semsim") {
         verify(valid_terms_, term_);
     }
 

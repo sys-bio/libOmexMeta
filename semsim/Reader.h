@@ -23,27 +23,17 @@ namespace semsim {
         librdf_parser *makeParser(std::string format = "guess");
 
         std::vector<std::string> valid_parser_names = {
+                "rdfxml",
                 "ntriples",
                 "turtle",
-                "rdfxml-xmp",
-                "rdfxml-abbrev",
-                "rdfxml",
-                "rss-1.0",
-                "atom",
-                "dot",
-                "json-triples",
-                "json",
+                "trig",
+                "rss-tag-soup",
+                "grddl",
                 "guess",
+                "rdfa",
+                "nquads",
         };
-//                        "rdfxml",
-//                "ntriples",
-//                "turtle",
-//                "trig",
-//                "rss-tag-soup",
-//                "grddl",
-//                "guess",
-//                "rdfa",
-//                "nquads",
+
 
     public:
         librdf_model *getModel() const;

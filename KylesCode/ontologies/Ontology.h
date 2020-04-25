@@ -3,7 +3,7 @@
 
 #include <iomanip>
 
-# include "semsim/PhysicalProperty.h"
+# include "semsim/PhysicalPropertyResource.h"
 
 namespace semsim {
     /// Numeric type used to represent an ontology term (e.g. 5623 in https://identifiers.org/GO:0005623).

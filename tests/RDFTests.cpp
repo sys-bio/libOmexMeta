@@ -79,8 +79,6 @@ TEST_F(RDFTests, test){
     semsim::Editor editor = rdf.toEditor(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
             semsim::ASSISTANT_TYPE_SBML);
-
-
 }
 
 
@@ -93,8 +91,7 @@ public:
     ReadAndWriteTests() = default;
 
     void assertReadAndWrite(std::string input_annot, std::string input_format, const std::string &expected_output) {
-        semsim::RDF rdf;
-        rdf.fromString(std::move(input_annot), "rdfxml");
+        semsim::RDF rdf = semsim::RDF::fromString(std::move(input_annot), "rdfxml");
         std::string actual = rdf.toString(std::move(input_format));
         std::cout << actual << std::endl;
         ASSERT_STREQ(expected_output.c_str(), actual.c_str());
@@ -2127,17 +2124,29 @@ TEST_F(ReadAndWriteTests, SBML1) {
     ASSERT_EQ(expected, actual);
 }
 
-TEST_F(ReadAndWriteTests, CELLML1) {
-    semsim::SemsimUtils::download(samples.cellml_url1, samples.cellml_filename1);
-    semsim::RDF rdf = semsim::RDF::fromXML(samples.cellml_filename1, "turtle");
-    std::string extracted = rdf.toString("rdfxml");
-    std::cout << extracted << std::endl;
-//    int expected = 32;
-//    int actual = sizeof(extracted);
-//    ASSERT_EQ(expected, actual);
+TEST_F(ReadAndWriteTests, tesjhbt) {
+    std::string q = "PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
+                    "SELECT ?x ?y ?z\n"
+                    "WHERE {?x ?y ?z }";
+    semsim::RDF rdf = semsim::RDF::fromString(samples.composite_annotation_pp, "rdfxml");
+//    std::cout << rdf.toString("turtle") << std::endl;
+    semsim::RDF subrdf = rdf.query(q);
+    std::cout << subrdf.toString("rdfxml") << std::endl;
+
+
 }
 
-
+//TEST_F(ReadAndWriteTests, CELLML1) {
+//    semsim::SemsimUtils::download(samples.cellml_url1, samples.cellml_filename1);
+//    semsim::RDF rdf = semsim::RDF::fromXML(samples.cellml_filename1, "turtle");
+//    std::string extracted = rdf.toString("rdfxml");
+//    std::cout << extracted << std::endl;
+////    int expected = 32;
+////    int actual = sizeof(extracted);
+////    ASSERT_EQ(expected, actual);
+//}
+//
+//
 
 
 

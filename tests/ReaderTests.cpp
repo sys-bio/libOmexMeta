@@ -21,7 +21,7 @@ public:
 
     ReaderTests() {
 
-        semsim::LibrdfObjectsTuple objectsTuple = semsim::RDF::init();
+        semsim::LibRDFObjectsTuple objectsTuple = semsim::RDF::init();
         world = std::get<0>(objectsTuple);
         raptor_world_ptr = std::get<1>(objectsTuple);
         storage = std::get<2>(objectsTuple);
@@ -208,6 +208,44 @@ TEST_F(ReaderTests, TestSBMLFromFile1) {
     librdf_serializer *serializer = librdf_new_serializer(world, "rdfxml", nullptr, nullptr);
     raptor_uri *uri = raptor_new_uri(raptor_world_ptr, reinterpret_cast<const unsigned char *>("./base.xml"));
     librdf_serializer_serialize_model_to_iostream(serializer, uri, reader.getModel(), iostream);
+}
+//ASSERT_GT(size_after, size_before);
+//}
+
+TEST_F(ReaderTests, TestReadRDFBagFromTurtleString) {
+    semsim::Reader reader(world, model, "rdfxml");
+//    reader.fromString(samples.rdf_turtle_bag_example);
+    semsim::SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);
+    reader.fromFile(samples.sbml_filename1);
+
+    int num = librdf_parser_get_namespaces_seen_count(reader.getParser());
+    std::string prefix;
+    std::string ns;
+    std::cout << "num: " << num << std::endl;
+    for (int i = 0; i < num; i++) {
+//        prefix = librdf_parser_get_namespaces_seen_prefix(reader.getParser(), i);
+
+        ns = (const char *) librdf_uri_as_string(
+                librdf_parser_get_namespaces_seen_uri(reader.getParser(), i)
+        );
+        std::cout << ns << std::endl;
+    }
+    std::cout << librdf_uri_as_string(
+            librdf_parser_get_namespaces_seen_uri(reader.getParser(), 1)
+    ) << std::endl;
+    raptor_iostream *iostream = raptor_new_iostream_to_file_handle(reader.getRaptorWorld(), stdout);
+    librdf_serializer *serializer = librdf_new_serializer(world, "rdfxml-abbrev", nullptr, nullptr);
+
+
+    raptor_uri *uri = raptor_new_uri(raptor_world_ptr, reinterpret_cast<const unsigned char *>("./base.xml"));
+//    librdf_serializer_serialize_model_to_iostream(serializer, uri, reader.getModel(), iostream);
+
+//    librdf_stream* stream = librdf_model_as_stream(reader.getModel());
+//    librdf_stream_write(stream, iostream);
+
+
+
+
 }
 //ASSERT_GT(size_after, size_before);
 //}

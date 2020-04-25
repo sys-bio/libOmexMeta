@@ -14,6 +14,7 @@ class XmlAssistant;
 #include "semsim/Triple.h"
 #include "semsim/Participant.h"
 #include "semsim/RDF.h"
+#include "PhysicalPhenomenon.h"
 
 
 // todo implement this logic from Maxes email
@@ -50,39 +51,41 @@ namespace semsim {
     private:
         std::string xml_;
         std::vector<std::string> metaids_;
-        TripleList triple_list_;
+        NestedTriples triple_list_;
         librdf_world *world_;
         librdf_model *model_;
 
         // probably need to send our librdf model etc to the editor
     public:
-        const TripleList &getTripleList() const;
+        const NestedTriples &getTripleList() const;
 
     public:
         explicit Editor(const std::string &xml, XmlAssistantType type,
                 librdf_world *world,
                 librdf_model *model);
 
-
         const std::string &getXml() const;
 
         const std::vector<std::string> &getMetaids() const;
 
-
         void addSingleAnnotation(Subject subject, PredicatePtr predicate_ptr, Resource resource);
 
-        std::vector<Triple> connectionTriple(const std::string& subject, std::string isVersionOf, std::string isPropertyOf);
+        std::vector<Triple>
+        connectionTriple(const std::string &subject, std::string isVersionOf, std::string isPropertyOf);
 
-        std::vector<Triple> connectionTriple(const std::string& subject, std::string isVersionOf, std::vector<std::string> isPropertyOf);
-
+        std::vector<Triple>
+        connectionTriple(const std::string &subject, std::string isVersionOf, std::vector<std::string> isPropertyOf);
 
         void addSingleAnnotation(Triple triple);
 
-        void addAnnotation(TripleList tripleList);
+        void addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr);
+
+        void addAnnotation(NestedTriples tripleList);
         //overloaded
 
         // physical entity
-        void addPhysicalEntityAnnotation(const std::string& subject, std::string isVersionOf, const std::string& isPropertyOf, Resource is, Resource isPartOf);
+        void addPhysicalEntityAnnotation(const std::string &subject, std::string isVersionOf,
+                                         const std::string &isPropertyOf, Resource is, Resource isPartOf);
 
         // physical process
         void addPhysicalProcessAnnotation(

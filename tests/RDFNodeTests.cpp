@@ -39,20 +39,34 @@ TEST_F(RDFNodeTests, TestLiteral2){
     ASSERT_STREQ(expected, actual);
 }
 
-TEST_F(RDFNodeTests, TestURI){
+TEST_F(RDFNodeTests, TestURI) {
     semsim::RDFURINode rdfuriNode(world, "https://en.wikipedia.org/wiki/Adolf_Hitler");
-    unsigned char* actual = raptor_uri_to_string(
+    unsigned char *actual = raptor_uri_to_string(
             librdf_node_get_uri(rdfuriNode.toRdfNode()));
-    ASSERT_STREQ("https://en.wikipedia.org/wiki/Adolf_Hitler", (const char*)actual);
+    ASSERT_STREQ("https://en.wikipedia.org/wiki/Adolf_Hitler", (const char *) actual);
 }
 
-TEST_F(RDFNodeTests, TestBlank){
+TEST_F(RDFNodeTests, TestURI2) {
+    semsim::RDFURINode rdfuriNode(world, "https://www.notarealaddress.com");
+    unsigned char *actual = raptor_uri_to_string(
+            librdf_node_get_uri(rdfuriNode.toRdfNode()));
+    ASSERT_STREQ("https://www.notarealaddress.com", (const char *) actual);
+}
+
+TEST_F(RDFNodeTests, TestToNode) {
+    std::string url_str = "https://www.notarealaddress.com";
+    semsim::RDFURINode node(world, url_str);
+    librdf_node *n = node.toRdfNode();
+    const char *actual = reinterpret_cast<const char *>(raptor_uri_to_string(
+            librdf_node_get_uri(node.toRdfNode())));
+    ASSERT_STREQ(url_str.c_str(), actual);
+}
+
+TEST_F(RDFNodeTests, TestBlank) {
     semsim::RDFBlankNode rdfBlankNode(world, "placeholder");
-    unsigned char* actual = librdf_node_get_blank_identifier(rdfBlankNode.toRdfNode());
-    ASSERT_STREQ("placeholder", (const char*)actual);
+    unsigned char *actual = librdf_node_get_blank_identifier(rdfBlankNode.toRdfNode());
+    ASSERT_STREQ("placeholder", (const char *) actual);
 }
-
-
 
 
 

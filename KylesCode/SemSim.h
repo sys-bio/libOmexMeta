@@ -7,7 +7,7 @@
 # include "semsim/Resource.h"
 # include "semsim/EntityBase.h"
 # include "semsim/Entity.h"
-# include "semsim/PhysicalProperty.h"
+# include "semsim/PhysicalPropertyResource.h"
 
 # include "semsim/SingularAnnotation.h"
 # include "semsim/CompositeAnnotation.h"

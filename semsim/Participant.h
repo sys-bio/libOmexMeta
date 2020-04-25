@@ -30,7 +30,7 @@ namespace semsim {
         Participant(librdf_world *world, std::string subject, PredicatePtr predicate, Resource resource, double multiplier,
                     std::string physicalEntityReference);
 
-        std::vector<Triple> toTriples();
+        std::vector<Triple> toTriples() const;
 
         PredicatePtr getPredicatePtr();
 
@@ -52,41 +52,44 @@ namespace semsim {
     typedef std::shared_ptr<Participant> ParticipantPtr;
 
 
-
-    class ParticipantSource : public Participant {
+    class SourceParticipant : public Participant {
 
     public:
-        ParticipantSource(librdf_world *world, std::string subject, Resource resource,
+        SourceParticipant(librdf_world *world, std::string subject, Resource resource,
                           double multiplier,
                           std::string physicalEntityReference);
     };
 
 
-    class ParticipantSink : public Participant {
+    class SinkParticipant : public Participant {
     private:
 
         double multiplier_;
         std::string physicalEntityReference_;
     public:
 
-    ParticipantSink(
-            librdf_world *world, std::string subject, Resource resource,
-            double multiplier, std::string physicalEntityReference);
+        SinkParticipant(
+                librdf_world *world, std::string subject, Resource resource,
+                double multiplier, std::string physicalEntityReference);
 
     };
 
 
-    class ParticipantMediator : public Participant {
+    class MediatorParticipant : public Participant {
     private:
         double multiplier_ = 0.0;
 
     public:
 
-    ParticipantMediator(
-            librdf_world *world, std::string subject, Resource resource,
-            std::string physicalEntityReference);
+        MediatorParticipant(
+                librdf_world *world, std::string subject, Resource resource,
+                std::string physicalEntityReference);
 
     };
+
+    typedef std::vector<SourceParticipant> Sources;
+    typedef std::vector<MediatorParticipant> Mediators;
+    typedef std::vector<SinkParticipant> Sinks;
 
 }
 

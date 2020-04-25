@@ -18,7 +18,7 @@
  * places so they are pulled out of the RDF constructor into their own function.
  * This method is static so it can be used without instantiating RDF.
  */
-semsim::LibrdfObjectsTuple semsim::RDF::init() {
+semsim::LibRDFObjectsTuple semsim::RDF::init() {
     // init librdf world object
     librdf_world *world_ = librdf_new_world();
     librdf_world_open(world_);
@@ -39,14 +39,14 @@ semsim::LibrdfObjectsTuple semsim::RDF::init() {
     if (!model_) {
         throw std::invalid_argument("Failed to create model\n");
     }
-    LibrdfObjectsTuple objectsTuple(world_, raptor_world_ptr_, storage_, model_);
+    LibRDFObjectsTuple objectsTuple(world_, raptor_world_ptr_, storage_, model_);
 
     return objectsTuple;
 }
 
 
 semsim::RDF::RDF() {
-    LibrdfObjectsTuple objectsTuple = RDF::init();
+    LibRDFObjectsTuple objectsTuple = RDF::init();
 
     // unpack redland library objects
     world_ = std::get<0>(objectsTuple);
@@ -81,7 +81,7 @@ void semsim::RDF::declareNamespaces() {
     namespaces_["dcterms"] = "http://purl.org/dc/terms/";
     namespaces_["bqbiol"] = "http://biomodels.net/biology-qualifiers/";
     namespaces_["bqmodel"] = "http://biomodels.net/model-qualifiers/";
-    namespaces_["semsim"] = "http://www.bhi.washington.edu/semsim#";
+    namespaces_["semsim"] = "http://www.bhi.washington.edu/semsim/";
 }
 
 semsim::RDF::RDF(const semsim::RDF &libRdfModel) {
@@ -150,11 +150,11 @@ raptor_world *semsim::RDF::getRaptorWorld() const {
 }
 
 
-const std::unordered_map<const char*, const char*> &semsim::RDF::getNamespaces() const {
+const std::unordered_map<const char *, const char *> &semsim::RDF::getNamespaces() const {
     return namespaces_;
 }
 
-void semsim::RDF::setNamespaces(const std::unordered_map<const char*, const char*> &namespaces) {
+void semsim::RDF::setNamespaces(const std::unordered_map<const char *, const char *> &namespaces) {
     namespaces_ = namespaces;
 }
 
@@ -174,7 +174,7 @@ semsim::RDF semsim::RDF::fromUrl(std::string url) {
 }
 
 semsim::RDF semsim::RDF::fromXML(const std::string &filename, std::string format) {
-    LibrdfObjectsTuple objectsTuple = RDF::init();
+    LibRDFObjectsTuple objectsTuple = RDF::init();
 
     // unpack redland library objects
     librdf_world *world = std::get<0>(objectsTuple);
@@ -216,20 +216,34 @@ void semsim::RDF::setRaptorWorld(raptor_world *raptorWorldPtr) {
  * to/from operations
  */
 
-semsim::RDF semsim::RDF::fromRDF(std::string filename) {
+semsim::RDF semsim::RDF::fromFile(std::string filename) {
     return semsim::RDF();
 }
 
-void semsim::RDF::fromString(const std::string &str, std::string format) {
-    Reader reader(world_, model_, std::move(format));
+semsim::RDF semsim::RDF::fromString(const std::string &str, std::string format) {
+    RDF rdf;
+    Reader reader(rdf.getWorld(), rdf.getModel(), std::move(format));
     reader.fromString(str);
-    namespaces_ = reader.parseNamespacesWithPrefix();
+    rdf.namespaces_ = reader.parseNamespacesWithPrefix();
+    return rdf;
 }
 
 std::string semsim::RDF::toString(std::string format, std::string base_uri) {
     Writer writer = makeWriter(format, base_uri);
     return writer.toString();
 }
+
+
+semsim::RDF semsim::RDF::fromStream(librdf_stream *stream) {
+    RDF rdf;
+    librdf_model_add_statements(rdf.model_, stream);
+    return rdf;
+}
+
+librdf_stream *semsim::RDF::toStream() {
+    return librdf_model_as_stream(model_);
+}
+
 
 void semsim::RDF::toFile(std::string format) {
 
@@ -287,6 +301,138 @@ std::ostringstream semsim::RDF::listOptions() {
 
 semsim::Editor semsim::RDF::toEditor(std::string xml, semsim::XmlAssistantType type) {
     return Editor(xml, type, world_, model_);
+}
+
+semsim::RDF semsim::RDF::query(std::string query_str, std::string query_format, std::string results_mime_type) {
+    RDF rdf;
+    std::string format = "turtle";
+    unsigned char *string;
+    size_t length;
+
+    librdf_query *query = librdf_new_query(
+            world_, query_format.c_str(), nullptr,
+            (const unsigned char *) query_str.c_str(), nullptr
+    );
+
+    librdf_query_results *results = librdf_model_query_execute(model_, query);
+    if (!results) {
+        throw LibRDFException("No results");
+    }
+
+    std::cout << librdf_query_results_is_bindings(results) << std::endl;
+    std::cout << librdf_query_results_is_boolean(results) << std::endl;
+    string = librdf_query_results_to_counted_string2(
+            results, format.c_str(), results_mime_type.c_str(), nullptr, nullptr, &length);
+    if (!string) {
+        throw LibRDFException("No workey");
+    }
+    std::cout << string << "\n\n\n\n\n" << std::endl;
+
+
+//    if (librdf_query_results_is_bindings(results) ||
+//        librdf_query_results_is_boolean(results)) {
+//        HERE();
+
+//    } else {
+//    HERE();
+    /* triples */
+//    librdf_serializer *serializer;
+//    librdf_stream *stream;
+
+//    serializer = librdf_new_serializer(world_, format.c_str(), nullptr, nullptr);
+//    if (!serializer) {
+//        throw LibRDFException("No workey");
+//    }
+
+    librdf_stream *stream = librdf_query_results_as_stream(results);
+    if (!stream) {
+        throw LibRDFException("Stream no workey");
+    }
+//    librdf_query_res
+//    string = librdf_serializer_serialize_stream_to_counted_string(
+//            serializer, nullptr, stream, &length);
+//    if (!string) {
+//        throw LibRDFException("No workey");
+//
+//    }
+    int x = librdf_model_add_statements(rdf.getModel(), stream);
+    std::cout << "x is :" << x << std::endl;
+    librdf_free_stream(stream);
+    std::cout << rdf.toString("rdfxml") << std::endl;
+
+    raptor_uri *u = librdf_get_concept_schema_namespace(world_);
+    raptor_uri *u2 = librdf_get_concept_ms_namespace(world_);
+
+    std::cout << librdf_uri_as_string(u) << std::endl;
+    std::cout << librdf_uri_as_string(u2) << std::endl;
+
+    std::vector<raptor_uri *> j = {
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_Alt),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_Bag),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_Property),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_Seq),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_Statement),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_object),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_predicate),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_subject),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_type),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_value),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_li),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_RDF),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_Description),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_aboutEach),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_MS_aboutEachPrefix),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_RS_nodeID),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_RS_List),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_RS_first),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_RS_rest),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_RS_nil),
+            librdf_get_concept_uri_by_index(world_, LIBRDF_CONCEPT_RS_XMLLiteral)
+    };
+    std::vector<librdf_node *> asresources = {
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_Alt),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_Bag),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_Property),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_Seq),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_Statement),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_object),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_predicate),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_subject),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_type),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_value),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_li),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_RDF),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_Description),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_aboutEach),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_MS_aboutEachPrefix),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_RS_nodeID),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_RS_List),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_RS_first),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_RS_rest),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_RS_nil),
+            librdf_get_concept_resource_by_index(world_, LIBRDF_CONCEPT_RS_XMLLiteral)
+    };
+    int count = 0;
+    for (auto &i : j) {
+        std::cout << count << " " << librdf_uri_as_string(i) << std::endl;
+        count++;
+    }
+    size_t len;
+
+//    int y = librdf_conce(model_, asresources[1]);
+//    std::cout << "y: " << y << std::endl;
+//    }
+
+//    std::cout << string << std::endl;
+//
+//
+//    free(string);
+
+
+    librdf_free_query_results(results);
+    librdf_free_query(query);
+    return rdf;
+
 }
 
 

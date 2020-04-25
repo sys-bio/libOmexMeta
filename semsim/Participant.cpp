@@ -20,7 +20,7 @@ namespace semsim {
 
     }
 
-    std::vector<Triple> Participant::toTriples() {
+    std::vector<Triple> Participant::toTriples() const {
 
         std::vector<Triple> triples;
         triples.emplace_back(
@@ -77,7 +77,7 @@ namespace semsim {
         return physicalEntityReference_;
     }
 
-    ParticipantSource::ParticipantSource(
+    SourceParticipant::SourceParticipant(
             librdf_world *world, std::string subject, Resource resource,
             double multiplier, std::string physicalEntityReference)
             : Participant(world, subject,
@@ -86,7 +86,7 @@ namespace semsim {
 
     }
 
-    ParticipantSink::ParticipantSink(
+    SinkParticipant::SinkParticipant(
             librdf_world *world, std::string subject, Resource resource,
             double multiplier, std::string physicalEntityReference)
             : Participant(world, subject,
@@ -95,7 +95,7 @@ namespace semsim {
 
     }
 
-    ParticipantMediator::ParticipantMediator(
+    MediatorParticipant::MediatorParticipant(
             librdf_world *world, std::string subject, Resource resource,
             std::string physicalEntityReference)
             : Participant(world, subject,
@@ -105,7 +105,7 @@ namespace semsim {
     }
 //
 //
-//    ParticipantSink::ParticipantSink(
+//    SinkParticipant::SinkParticipant(
 //            librdf_world *world, Subject subject, Resource resource,
 //            double multiplier, std::string physicalEntityReference)
 //            : Participant(world, std::move(subject), std::__cxx11::string(),
@@ -113,13 +113,13 @@ namespace semsim {
 //                          std::move(resource), std::__cxx11::string()),
 //              multiplier_(multiplier), physicalEntityReference_(std::move(physicalEntityReference)) {}
 //
-//    std::vector<Triple> ParticipantSink::toTriples() {
+//    std::vector<Triple> SinkParticipant::toTriples() {
 //        return Participant::toTriples_(world_, getSubject(), "hasParticipantSink", getResource(),
 //                                       multiplier_, physicalEntityReference_);
 //    };
 //
 //
-//    ParticipantMediator::ParticipantMediator(
+//    MediatorParticipant::MediatorParticipant(
 //            librdf_world *world, Subject subject, Resource resource,
 //            std::string physicalEntityReference)
 //            : Participant(world, std::move(subject), std::__cxx11::string(),
@@ -127,8 +127,8 @@ namespace semsim {
 //                          std::move(resource), std::__cxx11::string()),
 //              physicalEntityReference_(std::move(physicalEntityReference)) {}
 //
-//    std::vector<Triple> ParticipantMediator::toTriples() {
-//        return Participant::toTriples_(world_, getSubject(), "ParticipantSource", getResource(),
+//    std::vector<Triple> MediatorParticipant::toTriples() {
+//        return Participant::toTriples_(world_, getSubject(), "SourceParticipant", getResource(),
 //                                       0.0, physicalEntityReference_);
 //    };
 

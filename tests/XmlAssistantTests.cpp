@@ -26,11 +26,11 @@ TEST_F(XmlAssistantTests, TestValidElements) {
 }
 
 TEST_F(XmlAssistantTests, TestMetaIdsAll) {
-    semsim::MetaID metaId("SemsimMetaid", 0, 4);
     std::string sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
     semsim::XmlAssistant xmlAssistant(sbml, "SemsimMetaid", 4);
     auto sbml_and_meta_ids = xmlAssistant.addMetaIds();
     sbml = sbml_and_meta_ids.first;
+    std::cout << sbml << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                            "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\" metaid=\"SemsimMetaid0000\">\n"
                            "  <model id=\"TestModelNotAnnotated\" metaid=\"SemsimMetaid0001\">\n"

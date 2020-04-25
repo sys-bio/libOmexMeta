@@ -29,16 +29,16 @@ semsim::Writer::Writer(librdf_world *world, librdf_model *model, std::string for
         throw std::invalid_argument("model_ argument invalid");
     }
 
-    this->format = std::move(format);
-    if (std::find(valid_writer_names.begin(), valid_writer_names.end(), format) != valid_writer_names.end()) {
+    this->format_ = std::move(format);
+    if (std::find(valid_writer_names.begin(), valid_writer_names.end(), this->format_) != valid_writer_names.end()) {
         std::ostringstream os;
-        os << "Invalid format: \"" << format << "\". These are valid formats: ";
+        os << "Invalid format: \"" << this->format_ << "\". These are valid formats: ";
         for (auto &i : valid_writer_names) {
             os << i << ", ";
         }
         throw std::invalid_argument(os.str());
     }
-    serializer = librdf_new_serializer(world_, this->format.c_str(), nullptr, nullptr);
+    serializer = librdf_new_serializer(world_, this->format_.c_str(), nullptr, nullptr);
     if (!serializer) {
         throw std::invalid_argument("Failed to create serializer\n");
     }
