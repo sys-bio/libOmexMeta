@@ -79,6 +79,7 @@ void semsim::Editor::addSingleAnnotation(
 void semsim::Editor::addSingleAnnotation(Triple triple) {
     std::vector<Triple> vec = {triple};
     triple_list_.push_back(vec);
+
 }
 
 void semsim::Editor::addAnnotation(NestedTriples tripleList) {
@@ -170,6 +171,7 @@ void semsim::Editor::addCompositeAnnotation(semsim::PhysicalPhenomenonPtr phenom
         librdf_model_add_statement(model_, triple.toStatement());
     }
 }
+
 
 
 

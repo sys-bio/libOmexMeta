@@ -104,8 +104,6 @@ namespace semsim {
 
         void removeAnnotation();
 
-
-
         void toRDF();
 
         void checkValidMetaid(const std::string &metaid);
@@ -123,7 +121,7 @@ namespace semsim {
 //                           const std::string &is_property_of_resource,
 //                           const std::string &is_resource, const std::string &is_part_of_resource);
         void addAnnotation(std::vector<Triple> triples);
-    };
+
 
 
 }

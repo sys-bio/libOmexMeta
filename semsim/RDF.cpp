@@ -276,9 +276,6 @@ void semsim::RDF::toFile(std::string format) {
 semsim::Writer semsim::RDF::makeWriter(const std::string &format, const std::string &base_uri) {
     Writer writer(world_, model_, format, base_uri);
     writer.registerNamespace(namespaces_);
-//    for (auto &it : namespaces_) {
-//        writer.registerNamespace(it.second, it.first);
-//    }
     return writer;
 }
 
@@ -319,7 +316,8 @@ std::ostringstream semsim::RDF::listOptions() {
 }
 
 semsim::Editor semsim::RDF::toEditor(std::string xml, semsim::XmlAssistantType type) {
-    return Editor(xml, type, world_, model_);
+    Editor editor = Editor(xml, type, world_, model_);
+    return editor;
 }
 
 semsim::RDF semsim::RDF::query(std::string query_str, std::string query_format, std::string results_mime_type) {
