@@ -35,7 +35,7 @@ namespace semsim {
         return Triple(
                 world_,
                 subject_metaid,
-                BiomodelsQualifier(world_, "isVersionOf"),
+                BiomodelsBiologyQualifier(world_, "isVersionOf"),
                 Resource(world_, RDFURINode(world_, rdf_node_ptr_->str()))
         );
     }
@@ -44,7 +44,7 @@ namespace semsim {
         return Triple(
                 world_,
                 Subject(world_, RDFURINode(world_, subject_metaid)),
-                BiomodelsQualifier(world_, "isVersionOf"),
+                BiomodelsBiologyQualifier(world_, "isVersionOf"),
                 Resource(world_, RDFURINode(world_, rdf_node_ptr_->str()))
         );
     }

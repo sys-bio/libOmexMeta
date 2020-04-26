@@ -45,6 +45,8 @@ class XmlAssistant;
 
 namespace semsim {
 
+    typedef std::unordered_map<std::string, std::string> NamespaceMap;
+
     class RDF; // forward declaration
 
     class Editor {
@@ -54,19 +56,20 @@ namespace semsim {
         NestedTriples triple_list_;
         librdf_world *world_;
         librdf_model *model_;
-        std::unordered_map<std::string, std::string> namespaces_{};
-    public:
-        const std::unordered_map<std::string, std::string> &getNamespaces() const;
+        std::unordered_map<std::string, std::string> &namespaces_;
 
-        void setNamespaces(const std::unordered_map<std::string, std::string> &namespaces);
-        // probably need to send our librdf model etc to the editor
+        void extractNamespacesFromTriplesVector(Triples triples);
     public:
+        const NamespaceMap &getNamespaces() const;
+
+        void setNamespaces(const NamespaceMap &namespaces);
+
+        // probably need to send our librdf model etc to the editor
         const NestedTriples &getTripleList() const;
 
-    public:
         explicit Editor(const std::string &xml, XmlAssistantType type,
                         librdf_world *world,
-                        librdf_model *model);
+                        librdf_model *model, NamespaceMap &ns_map);
 
         const std::string &getXml() const;
 
@@ -74,19 +77,13 @@ namespace semsim {
 
         void addSingleAnnotation(Subject subject, PredicatePtr predicate_ptr, Resource resource);
 
-        std::vector<Triple>
-        connectionTriple(const std::string &subject, std::string isVersionOf, std::string isPropertyOf);
-
-        std::vector<Triple>
-        connectionTriple(const std::string &subject, std::string isVersionOf, std::vector<std::string> isPropertyOf);
-
         void addNamespace(std::string ns, std::string prefix);
 
         void addSingleAnnotation(Triple triple);
 
         void addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr);
 
-        void addAnnotation(NestedTriples tripleList);
+        void addAnnotationFromNestedTriples(NestedTriples tripleList);
         //overloaded
 
         // physical entity
@@ -108,21 +105,9 @@ namespace semsim {
 
         void checkValidMetaid(const std::string &metaid);
 
+        void addAnnotationFromTriples(std::vector<Triple> triples);
 
-        //overloaded
-        // singular signature
-//        // todo consider whether to change the name 'metaid' to 'about', for rdf:about.
-//        void addSingleAnnotation(std::string metaid, PredicatePtr predicateptr, const std::string &resource);
-//
-//        void addSingleAnnotation(std::string metaid, Resource isVersionOf,
-//                           std::string isPropertyOf, Resource is, Resource isPartOf);
-//
-//        void addSingleAnnotation(const std::string &metaid, const std::string &is_version_of_resource,
-//                           const std::string &is_property_of_resource,
-//                           const std::string &is_resource, const std::string &is_part_of_resource);
-        void addAnnotation(std::vector<Triple> triples);
-
-
+    };
 
 }
 

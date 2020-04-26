@@ -26,7 +26,7 @@ namespace semsim {
         return sinks_;
     }
 
-    std::string PhysicalForce::createMetaId(std::string base_metaid) {
+    std::string PhysicalForce::createMetaId(std::string base_metaid) const {
         return "PhysicalForceMetaidPlaceholder";
     }
 

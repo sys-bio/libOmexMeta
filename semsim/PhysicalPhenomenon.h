@@ -19,7 +19,7 @@ namespace semsim {
         PhysicalPropertyResource physical_property_;
         AnnotationType type_;
 
-        virtual std::string createMetaId(std::string id_base);
+        virtual std::string createMetaId(std::string id_base) const;
 
     public:
         PhysicalPhenomenon(librdf_world *world, Subject metaid, PhysicalPropertyResource propertyResource,

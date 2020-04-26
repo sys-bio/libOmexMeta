@@ -38,7 +38,7 @@ end note
 ControlledVocabulary <-- Predicate
 Uri <-- ControlledVocabulary
 
-class BiomodelsQualifier {}
+class BiomodelsBiologyQualifier {}
 class OPB {}
 class CHEBI {}
 
@@ -188,7 +188,7 @@ ListOfTriples --> Triple
 Subject <-- Triple
 Predicate <-- Triple
 Resource <-- Triple
-ControlledVocabulary <|-- BiomodelsQualifier
+ControlledVocabulary <|-- BiomodelsBiologyQualifier
 ControlledVocabulary <|-- OPB
 ControlledVocabulary <|-- CHEBI
 Resource <|-- ResourceUrl

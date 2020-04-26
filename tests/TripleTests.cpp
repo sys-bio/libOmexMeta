@@ -60,7 +60,7 @@ public:
 
     semsim::Subject subject;
     semsim::Resource resource;
-    semsim::BiomodelsQualifier predicate;
+    semsim::BiomodelsBiologyQualifier predicate;
     semsim::PredicatePtr predicatePtr;
 
     librdf_world *world_;
@@ -70,7 +70,7 @@ public:
         world_ = librdf_new_world();
         this->subject = semsim::Subject(world_, semsim::RDFURINode(world_, subject_str));
         this->resource = semsim::Resource(world_, semsim::RDFURINode(world_, resource_namespace + "/" + resource_id));
-        this->predicate = semsim::BiomodelsQualifier(world_, "is");
+        this->predicate = semsim::BiomodelsBiologyQualifier(world_, "is");
         predicatePtr = std::make_shared<semsim::Predicate>(predicate);
 
     }

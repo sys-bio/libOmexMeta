@@ -29,7 +29,7 @@ namespace semsim {
         return mediators_;
     }
 
-    std::string PhysicalProcess::createMetaId(std::string base_metaid) {
+    std::string PhysicalProcess::createMetaId(std::string base_metaid) const {
         return "PhysicalProcessMetaidPlaceholder";
     }
 

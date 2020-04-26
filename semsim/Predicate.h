@@ -26,6 +26,8 @@ namespace semsim {
 
         void setPrefix(const std::string &prefix);
 
+        void setNamespace(const std::string &ns);
+
         Predicate(librdf_world *world, const std::string &namespace_,
                   std::string term, std::string prefix);
 
@@ -45,7 +47,7 @@ namespace semsim {
 
     };
 
-    class BiomodelsQualifier : public Predicate {
+    class BiomodelsBiologyQualifier : public Predicate {
     public:
         std::vector<std::string> valid_terms_{
                 "is",
@@ -60,11 +62,27 @@ namespace semsim {
                 "occursIn",
                 "hasProperty",
                 "isPropertyOf",
-                "hasTaxon"};
+                "hasTaxon"
+        };
 
-        BiomodelsQualifier() = default;
+        BiomodelsBiologyQualifier() = default;
 
-        BiomodelsQualifier(librdf_world *world, const std::string &term);
+        BiomodelsBiologyQualifier(librdf_world *world, const std::string &term);
+
+    };
+    class BiomodelsModelQualifier : public Predicate {
+    public:
+        std::vector<std::string> valid_terms_{
+            "is",
+            "isDerivedFrom",
+            "isDescribedBy",
+            "isInstanceOf",
+            "hasInstance",
+        };
+
+        BiomodelsModelQualifier() = default;
+
+        BiomodelsModelQualifier(librdf_world *world, const std::string &term);
 
     };
 

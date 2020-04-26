@@ -7,9 +7,11 @@
 #include "librdf.h"
 
 #include <utility>
+#include "semsim/SemsimUtils.h"
 
-semsim::Editor::Editor(const std::string &xml, XmlAssistantType type, librdf_world *world, librdf_model *model)
-        : world_(world), model_(model) {
+semsim::Editor::Editor(const std::string &xml, XmlAssistantType type,
+                       librdf_world *world, librdf_model *model, NamespaceMap &nsmap)
+        : world_(world), model_(model), namespaces_(nsmap) {
     semsim::XmlAssistantPtr xmlAssistantPtr = XmlAssistantFactory::generate(xml, type);
     std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
     xml_ = xml_and_metaids.first;
@@ -51,6 +53,13 @@ const semsim::NestedTriples &semsim::Editor::getTripleList() const {
     return triple_list_;
 }
 
+void semsim::Editor::extractNamespacesFromTriplesVector(std::vector<Triple> triples) {
+    for (auto &triple: triples) {
+        namespaces_[triple.getPredicatePtr()->getNamespace()] = triple.getPredicatePtr()->getPrefix();
+    }
+}
+
+
 void semsim::Editor::toRDF() {
     for (auto &annot : triple_list_) {
         for (auto &triple : annot) {
@@ -62,7 +71,7 @@ void semsim::Editor::toRDF() {
 }
 
 
-void semsim::Editor::addNamespace(std::string ns, std::string prefix) {}() {
+void semsim::Editor::addNamespace(std::string ns, std::string prefix) {
     namespaces_[ns] = prefix;
 }
 
@@ -70,107 +79,48 @@ void semsim::Editor::addNamespace(std::string ns, std::string prefix) {}() {
 void semsim::Editor::addSingleAnnotation(
         semsim::Subject subject, semsim::PredicatePtr predicate_ptr,
         semsim::Resource resource) {
+    if (!predicate_ptr){
+        std::ostringstream err;
+        err << __FILE__<<":"<<__LINE__<<":PredicatePtr argument is null"<<std::endl;
+        throw NullPointerException(err.str());
+    }
     checkValidMetaid(subject.str());
-    Triple triple(world_, std::move(subject), std::move(predicate_ptr), std::move(resource));
+    Triple triple(world_, std::move(subject), predicate_ptr, std::move(resource));
     std::vector<Triple> vec = {triple};
     triple_list_.push_back(vec);
+    for (auto &it : namespaces_){
+        std::cout << "ns: " << it.first << ": " << it.second << std::endl;
+    }
+    namespaces_[predicate_ptr->getNamespace()] = predicate_ptr->getPrefix();
 }
 
 void semsim::Editor::addSingleAnnotation(Triple triple) {
     std::vector<Triple> vec = {triple};
     triple_list_.push_back(vec);
+    namespaces_[triple.getPredicatePtr()->getNamespace()] = triple.getPredicatePtr()->getPrefix();
 
 }
 
-void semsim::Editor::addAnnotation(NestedTriples tripleList) {
+void semsim::Editor::addAnnotationFromNestedTriples(NestedTriples tripleList) {
     for (auto &inner_triple_vec: tripleList) {
+        extractNamespacesFromTriplesVector(inner_triple_vec);
         triple_list_.push_back(inner_triple_vec);
     }
 }
 
-void semsim::Editor::addAnnotation(std::vector<Triple> triples) {
+void semsim::Editor::addAnnotationFromTriples(Triples triples) {
+    extractNamespacesFromTriplesVector(triples);
     triple_list_.push_back(triples);
+
 }
 
-std::vector<semsim::Triple> semsim::Editor::connectionTriple(
-        const std::string &subject, std::string isVersionOf, std::string isPropertyOf) {
-    Triple triple1(
-            world_,
-            Subject(world_, RDFURINode(world_, subject)),
-            std::make_shared<BiomodelsQualifier>(BiomodelsQualifier(world_, "isVersionOf")),
-            Resource(world_, RDFURINode(world_, std::move(isVersionOf)))
-    );
-    Triple triple2(
-            world_,
-            Subject(world_, RDFURINode(world_, subject)),
-            std::make_shared<BiomodelsQualifier>(BiomodelsQualifier(world_, "isPropertyOf")),
-            Resource(world_, RDFURINode(world_, std::move(isPropertyOf)))
-    );
-    return std::vector<Triple>({triple1, triple2});
-}
-
-std::vector<semsim::Triple> semsim::Editor::connectionTriple(
-        const std::string &subject, std::string isVersionOf, std::vector<std::string> isPropertyOf) {
-    std::vector<Triple> triples;
-    triples.push_back(
-            Triple(
-                    world_,
-                    Subject(world_, RDFURINode(world_, subject)),
-                    std::make_shared<BiomodelsQualifier>(BiomodelsQualifier(world_, "isVersionOf")),
-                    Resource(world_, RDFURINode(world_, std::move(isVersionOf)))
-            )
-    );
-    for (auto &it : isPropertyOf) {
-        triples.push_back(
-                Triple(world_,
-                       Subject(world_, RDFURINode(world_, subject)),
-                       std::make_shared<BiomodelsQualifier>(BiomodelsQualifier(world_, "isPropertyOf")),
-                       Resource(world_, RDFURINode(world_, std::move(it)))
-                )
-        );
-    }
-    return triples;
-}
-
-void semsim::Editor::addPhysicalEntityAnnotation(const std::string &subject, std::string isVersionOf,
-                                                 const std::string &isPropertyOf,
-                                                 semsim::Resource is, semsim::Resource isPartOf) {
-
-    std::vector<Triple> triples = connectionTriple(subject, std::move(isVersionOf), isPropertyOf);
-    Triple triple3(
-            world_,
-            Subject(world_, RDFURINode(world_, isPropertyOf)),
-            std::make_shared<BiomodelsQualifier>(BiomodelsQualifier(world_, "is")),
-            std::move(is)
-    );
-    Triple triple4(
-            world_,
-            Subject(world_, RDFURINode(world_, isPropertyOf)),
-            std::make_shared<BiomodelsQualifier>(BiomodelsQualifier(world_, "isPartOf")),
-            std::move(isPartOf)
-    );
-    triples.push_back(triple3);
-    triples.push_back(triple4);
-    triple_list_.push_back(triples);
-}
-
-void semsim::Editor::addPhysicalProcessAnnotation(
-        std::string subject, std::string isVersionOf, std::string isPropertyOf,
-        std::vector<ParticipantPtr> participants) {
-    std::vector<Triple> triples = connectionTriple(subject, isVersionOf, isPropertyOf);
-    for (auto &participant : participants) {
-        for (auto &triple : participant->toTriples()) {
-            triples.push_back(triple);
-        }
-    }
-    triple_list_.push_back(triples);
-}
 
 void semsim::Editor::addCompositeAnnotation(semsim::PhysicalPhenomenonPtr phenomenonPtr) {
     for (auto &triple : phenomenonPtr->toTriples()) {
         librdf_model_add_statement(model_, triple.toStatement());
     }
 }
+
 
 
 

@@ -316,8 +316,7 @@ std::ostringstream semsim::RDF::listOptions() {
 }
 
 semsim::Editor semsim::RDF::toEditor(std::string xml, semsim::XmlAssistantType type) {
-    Editor editor = Editor(xml, type, world_, model_);
-    return editor;
+    return Editor(xml, type, world_, model_, namespaces_);
 }
 
 semsim::RDF semsim::RDF::query(std::string query_str, std::string query_format, std::string results_mime_type) {
