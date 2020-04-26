@@ -10,7 +10,7 @@
 
 namespace semsim {
     class PhysicalProcess : public PhysicalPhenomenon {
-
+    private:
         Sources sources_;
         Sinks sinks_;
         Mediators mediators_;
@@ -24,7 +24,7 @@ namespace semsim {
                 PhysicalPropertyResource physicalProperty,
                 Sources sources, Sinks sinks, Mediators mediators);
 
-        std::string createMetaId(std::string base_metaid) override;
+        std::string createMetaId(std::string base_metaid) const override;
 
         const Sources &getSources() const;
 

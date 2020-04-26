@@ -23,7 +23,7 @@ namespace semsim {
         return type_;
     }
 
-    std::string PhysicalPhenomenon::createMetaId(std::string id_base) {
+    std::string PhysicalPhenomenon::createMetaId(std::string id_base) const {
         return "emptyplaceholder";
     }
 

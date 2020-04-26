@@ -55,13 +55,13 @@ namespace semsim {
         Triple triple1(
                 world_,
                 Subject(world_, RDFURINode(world_, subject)),
-                std::make_shared<BiomodelsQualifier>(BiomodelsQualifier(world_, "isVersionOf")),
+                std::make_shared<BiomodelsBiologyQualifier>(BiomodelsBiologyQualifier(world_, "isVersionOf")),
                 Resource(world_, RDFURINode(world_, std::move(isVersionOf)))
         );
         Triple triple2(
                 world_,
                 Subject(world_, RDFURINode(world_, subject)),
-                std::make_shared<BiomodelsQualifier>(BiomodelsQualifier(world_, "isPropertyOf")),
+                std::make_shared<BiomodelsBiologyQualifier>(BiomodelsBiologyQualifier(world_, "isPropertyOf")),
                 Resource(world_, RDFURINode(world_, std::move(isPropertyOf)))
         );
         return std::vector<Triple>({triple1, triple2});

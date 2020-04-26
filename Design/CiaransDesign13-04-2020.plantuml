@@ -6,8 +6,8 @@
 
 /' Objects '/
 
-class BiomodelsQualifier {
-    +BiomodelsQualifier(const std::string& qualifier)
+class BiomodelsBiologyQualifier {
+    +BiomodelsBiologyQualifier(const std::string& qualifier)
     #setValidTerms() : void
 }
 
@@ -180,7 +180,7 @@ ListOfTriples --> Triple
 Subject *-- Triple
 ControlledVocabulary *-- Triple
 Resource *-- Triple
-ControlledVocabulary <|-- BiomodelsQualifier
+ControlledVocabulary <|-- BiomodelsBiologyQualifier
 
 
 Uri <-- Subject

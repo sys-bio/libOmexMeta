@@ -68,14 +68,23 @@ namespace semsim {
     void Predicate::setPrefix(const std::string &prefix) {
         prefix_ = prefix;
     }
+    void Predicate::setNamespace(const std::string &ns) {
+        namespace_ = ns;
+    }
 
-    BiomodelsQualifier::BiomodelsQualifier(librdf_world *world, const std::string &term) :
+    BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(librdf_world *world, const std::string &term) :
             Predicate(world, "http://biomodels.net/biology-qualifiers/", term, "bqbiol"){
         verify(valid_terms_, term_);
+
+    }
+    BiomodelsModelQualifier::BiomodelsModelQualifier(librdf_world *world, const std::string &term) :
+            Predicate(world, "http://biomodels.net/model-qualifiers/", term, "bqmodel"){
+        verify(valid_terms_, term_);
+
     }
 
     DCTerm::DCTerm(librdf_world *world, const std::string &term) :
-            Predicate(world, "http://purl.org/dc/terms/", term, "dc"){
+            Predicate(world, "http://purl.org/dc/terms/", term, "dcterms"){
         verify(valid_terms_, term_);
     }
 

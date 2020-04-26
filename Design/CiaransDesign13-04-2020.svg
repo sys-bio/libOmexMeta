@@ -12,19 +12,19 @@
         </filter>
     </defs>
     <g><!--MD5=[2f380d99272917c9afe1e0d649b0631c]
-class BiomodelsQualifier-->
-        <rect fill="#FEFECE" filter="url(#f1pade0lt0jcgx)" height="75.6719" id="BiomodelsQualifier"
+class BiomodelsBiologyQualifier-->
+        <rect fill="#FEFECE" filter="url(#f1pade0lt0jcgx)" height="75.6719" id="BiomodelsBiologyQualifier"
               style="stroke: #A80036; stroke-width: 1.5;" width="249" x="3900.5" y="984.5"/>
         <ellipse cx="3967.75" cy="1000.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
         <path d="M3970.5156,996.375 Q3970.6719,996.1563 3970.8594,996.0469 Q3971.0469,995.9375 3971.2656,995.9375 Q3971.6406,995.9375 3971.875,996.1953 Q3972.1094,996.4531 3972.1094,997.0625 L3972.1094,998.5156 Q3972.1094,999.125 3971.875,999.3906 Q3971.6406,999.6563 3971.2656,999.6563 Q3970.9219,999.6563 3970.7188,999.4531 Q3970.5156,999.2656 3970.4063,998.75 Q3970.3594,998.3906 3970.1719,998.2031 Q3969.8438,997.8281 3969.2344,997.6094 Q3968.625,997.3906 3968,997.3906 Q3967.2344,997.3906 3966.6016,997.7188 Q3965.9688,998.0469 3965.4766,998.7969 Q3964.9844,999.5469 3964.9844,1000.5781 L3964.9844,1001.6719 Q3964.9844,1002.9063 3965.875,1003.7266 Q3966.7656,1004.5469 3968.3594,1004.5469 Q3969.2969,1004.5469 3969.9531,1004.2969 Q3970.3438,1004.1406 3970.7656,1003.7031 Q3971.0313,1003.4375 3971.1797,1003.3594 Q3971.3281,1003.2813 3971.5313,1003.2813 Q3971.8594,1003.2813 3972.1172,1003.5391 Q3972.375,1003.7969 3972.375,1004.1406 Q3972.375,1004.4844 3972.0313,1004.8906 Q3971.5313,1005.4688 3970.7344,1005.7969 Q3969.6563,1006.25 3968.3594,1006.25 Q3966.8438,1006.25 3965.6406,1005.625 Q3964.6563,1005.125 3963.9688,1004.0547 Q3963.2813,1002.9844 3963.2813,1001.7031 L3963.2813,1000.5469 Q3963.2813,999.2188 3963.8984,998.0703 Q3964.5156,996.9219 3965.6094,996.3047 Q3966.7031,995.6875 3967.9375,995.6875 Q3968.6719,995.6875 3969.3203,995.8516 Q3969.9688,996.0156 3970.5156,996.375 Z "/>
         <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="106"
-              x="3988.25" y="1005.4102">BiomodelsQualifier
+              x="3988.25" y="1005.4102">BiomodelsBiologyQualifier
         </text>
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="3901.5" x2="4148.5" y1="1016.5" y2="1016.5"/>
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="3901.5" x2="4148.5" y1="1024.5" y2="1024.5"/>
         <ellipse cx="3911.5" cy="1035.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="223"
-              x="3920.5" y="1039.9189">BiomodelsQualifier(const std::string&amp; qualifier)
+              x="3920.5" y="1039.9189">BiomodelsBiologyQualifier(const std::string&amp; qualifier)
         </text>
         <polygon fill="#FFFF44" points="3911.5,1044.3359,3915.5,1048.3359,3911.5,1052.3359,3907.5,1048.3359"
                  style="stroke: #B38D22; stroke-width: 1.0;"/>
@@ -1309,7 +1309,7 @@ link ListOfTriples to Triple--><path d="M4508.98,1046.615 C4519.62,1080.085 4541
 reverse link Subject to Triple--><path d="M4772.08,1100.375 C4770.89,1148.373 4769.3,1211.873 4767.85,1269.94 " fill="none" id="Subject&lt;-Triple" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="4772.21,1095.191,4767.9876,1104.0888,4772.0858,1100.1895,4775.9851,1104.2876,4772.21,1095.191" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[ebe945fa2670b5bb38f4f06f89f500ee]
 reverse link Predicate to Triple--><path d="M5102.7,1105.674 C5052.48,1152.954 4987.73,1213.903 4928.32,1269.826 " fill="none" id="Predicate&lt;-Triple" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="5106.6,1102.007,5097.3054,1105.2643,5102.9597,1105.4345,5102.7894,1111.0888,5106.6,1102.007" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[9315d82e453b838ec3ef847af8999d5e]
 reverse link Resource to Triple--><path d="M5472.74,1146.748 C5450.2,1163.176 5426.55,1178.857 5403,1192 C5254.56,1274.857 5070.93,1338.065 4938.67,1377.512 " fill="none" id="Resource&lt;-Triple" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="5476.94,1143.673,5467.3168,1145.7692,5472.9078,1146.6296,5472.0474,1152.2207,5476.94,1143.673" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[00b0bbe5972f4eec2cdb0177d3ad25e1]
-reverse link ControlledVocabulary to BiomodelsQualifier--><path d="M4025,567.59 C4025,711.48 4025,904.19 4025,984.23 " fill="none" id="ControlledVocabulary&lt;-BiomodelsQualifier" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="4018,567.18,4025,547.18,4032,567.18,4018,567.18" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[731f18e9b4c431563528285376e43efb]
+reverse link ControlledVocabulary to BiomodelsBiologyQualifier--><path d="M4025,567.59 C4025,711.48 4025,904.19 4025,984.23 " fill="none" id="ControlledVocabulary&lt;-BiomodelsBiologyQualifier" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="4018,567.18,4025,547.18,4032,567.18,4018,567.18" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[731f18e9b4c431563528285376e43efb]
 reverse link Resource to ResourceUrl--><path d="M5590.53,1163.405 C5574.56,1251.122 5555.49,1355.916 5547.19,1401.469 " fill="none" id="Resource&lt;-ResourceUrl" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="5583.68,1161.964,5594.15,1143.542,5597.45,1164.472,5583.68,1161.964" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[5d54d5b14e07f2e17008693f68d75b47]
 reverse link Resource to ResourceLiteral--><path d="M5641.47,1163.405 C5657.44,1251.122 5676.51,1355.916 5684.81,1401.469 " fill="none" id="Resource&lt;-ResourceLiteral" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="5634.55,1164.472,5637.85,1143.542,5648.32,1161.964,5634.55,1164.472" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[98e266842c3e48f15a046e7d19679034]
 reverse link Uri to Subject--><path d="M4774,780.24 C4774,845.11 4774,905.58 4774,949.75 " fill="none" id="Uri&lt;-Subject" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="4774,775.16,4770,784.16,4774,780.16,4778,784.16,4774,775.16" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[421c2439504af32964c21a0fb04c2d46]
@@ -1343,8 +1343,8 @@ link PredicateNamespaces to KeyGen--><!--MD5=[83a350ef1ccdf71b537e9c50985fc42d]
 
 
 
-class BiomodelsQualifier {
-    +BiomodelsQualifier(const std::string& qualifier)
+class BiomodelsBiologyQualifier {
+    +BiomodelsBiologyQualifier(const std::string& qualifier)
     #setValidTerms() : void
 }
 
@@ -1516,7 +1516,7 @@ ListOfTriples - -> Triple
 Subject <- - Triple
 Predicate <- - Triple
 Resource <- - Triple
-ControlledVocabulary <|- - BiomodelsQualifier
+ControlledVocabulary <|- - BiomodelsBiologyQualifier
 Resource <|- - ResourceUrl
 Resource <|- - ResourceLiteral
 

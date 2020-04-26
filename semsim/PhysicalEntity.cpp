@@ -30,7 +30,7 @@ semsim::PhysicalEntity::PhysicalEntity(
  * physicalXX elements since they are burried
  *    ... what if we just add them to the addepted terms in xml assistant?
  */
-std::string semsim::PhysicalEntity::createMetaId(std::string base_metaid) {
+std::string semsim::PhysicalEntity::createMetaId(std::string base_metaid) const {
     return "entityMetaidPlaceholder";
 }
 
@@ -43,17 +43,17 @@ const semsim::Resource &semsim::PhysicalEntity::getIdentityResource() const {
 }
 
 
-semsim::Triple semsim::PhysicalEntity::whatTriple() {
+semsim::Triple semsim::PhysicalEntity::whatTriple() const {
     // the "what" part of the physical entity:
     return Triple(
             world_,
             subject_metaid_,
-            std::make_shared<Predicate>(BiomodelsQualifier(world_, "is")),
+            std::make_shared<Predicate>(BiomodelsBiologyQualifier(world_, "is")),
             getIdentityResource()
     );
 }
 
-semsim::Triples semsim::PhysicalEntity::whereTriple() {
+semsim::Triples semsim::PhysicalEntity::whereTriple() const {
     RDFURINode entity_metaid_node = RDFURINode(world_, createMetaId("entity"));
     Triples triples;
     // the "where" part of the physical entity
@@ -61,14 +61,14 @@ semsim::Triples semsim::PhysicalEntity::whereTriple() {
         triples.emplace_back(
                 world_,
                 Subject(world_, entity_metaid_node),
-                std::make_shared<Predicate>(BiomodelsQualifier(world_, "isPartOf")),
+                std::make_shared<Predicate>(BiomodelsBiologyQualifier(world_, "isPartOf")),
                 locationResource
         );
     }
     return triples;
 }
 
-semsim::Triples semsim::PhysicalEntity::toTriples() {
+semsim::Triples semsim::PhysicalEntity::toTriples() const {
     Triples triples = {
             physical_property_.toIsVersionOfTriple(subject_metaid_),
             whatTriple()
