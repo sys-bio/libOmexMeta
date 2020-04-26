@@ -25,6 +25,15 @@ const std::vector<std::string> &semsim::Editor::getMetaids() const {
     return metaids_;
 }
 
+const std::unordered_map<std::string, std::string> &semsim::Editor::getNamespaces() const {
+    return namespaces_;
+}
+
+void semsim::Editor::setNamespaces(const std::unordered_map<std::string, std::string> &namespaces) {
+    namespaces_ = namespaces;
+}
+
+
 void semsim::Editor::checkValidMetaid(const std::string &metaid) {
     if (std::find(metaids_.begin(), metaids_.end(), metaid) == metaids_.end()) {
         std::ostringstream err;
@@ -46,16 +55,21 @@ void semsim::Editor::toRDF() {
     for (auto &annot : triple_list_) {
         for (auto &triple : annot) {
             librdf_statement *stmt = triple.toStatement();
+            //todo add get namespace to triple
             librdf_model_add_statement(model_, stmt);
         }
     }
-
 }
 
 
-void
-semsim::Editor::addSingleAnnotation(semsim::Subject subject, semsim::PredicatePtr predicate_ptr,
-                                    semsim::Resource resource) {
+void semsim::Editor::addNamespace(std::string ns, std::string prefix) {}() {
+    namespaces_[ns] = prefix;
+}
+
+
+void semsim::Editor::addSingleAnnotation(
+        semsim::Subject subject, semsim::PredicatePtr predicate_ptr,
+        semsim::Resource resource) {
     checkValidMetaid(subject.str());
     Triple triple(world_, std::move(subject), std::move(predicate_ptr), std::move(resource));
     std::vector<Triple> vec = {triple};
@@ -156,8 +170,6 @@ void semsim::Editor::addCompositeAnnotation(semsim::PhysicalPhenomenonPtr phenom
         librdf_model_add_statement(model_, triple.toStatement());
     }
 }
-
-
 
 
 
