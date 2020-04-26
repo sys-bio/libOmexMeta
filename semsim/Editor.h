@@ -54,15 +54,19 @@ namespace semsim {
         NestedTriples triple_list_;
         librdf_world *world_;
         librdf_model *model_;
+        std::unordered_map<std::string, std::string> namespaces_{};
+    public:
+        const std::unordered_map<std::string, std::string> &getNamespaces() const;
 
+        void setNamespaces(const std::unordered_map<std::string, std::string> &namespaces);
         // probably need to send our librdf model etc to the editor
     public:
         const NestedTriples &getTripleList() const;
 
     public:
         explicit Editor(const std::string &xml, XmlAssistantType type,
-                librdf_world *world,
-                librdf_model *model);
+                        librdf_world *world,
+                        librdf_model *model);
 
         const std::string &getXml() const;
 
@@ -75,6 +79,8 @@ namespace semsim {
 
         std::vector<Triple>
         connectionTriple(const std::string &subject, std::string isVersionOf, std::vector<std::string> isPropertyOf);
+
+        void addNamespace(std::string ns, std::string prefix);
 
         void addSingleAnnotation(Triple triple);
 
@@ -92,15 +98,13 @@ namespace semsim {
                 std::string subject, std::string isVersionOf, std::string isPropertyOf,
                 std::vector<ParticipantPtr> participants);
 
-
         // physical force
         void addPhysicalForceAnnotation(
                 std::string subject, std::string isVersionOf, std::string isPropertyOf);
 
+        void removeAnnotation();
 
-        void removeAnnotation() {
 
-        }
 
         void toRDF();
 
