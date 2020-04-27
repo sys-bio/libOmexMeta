@@ -70,6 +70,7 @@ note bottom of SourceParticipant
 end note
 
 }
+
 Resource <|-- PhysicalProperty
 
 Triple <|-- SingularAnnotation

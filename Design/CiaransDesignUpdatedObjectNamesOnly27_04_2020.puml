@@ -5,8 +5,46 @@
 
 
 /' Objects '/
+namespace Legend {
+    class Parent
+    class Child
+    class Component
+    class LargerObject
 
-namespace semsim {
+    Parent <|-- Child : Inheritance relationship
+    LargerObject "1" *-- "many" Component : Aggregation relationship
+    note right of LargerObject
+        The LargerObject has
+        a "has-a" 1 to many
+        relationship with
+        Component
+    end note
+    note left of Parent
+        The child has
+        a "is-a"  relationship
+        with Parent.
+    end note
+
+}
+
+    together {
+        class PhysicalForce
+        class PhysicalEntity
+        class PhysicalProcess
+    }
+
+    together {
+        class Editor
+        class Reader
+        class Writer
+    }
+
+    together {
+        class MetaID
+        class CellMLAssistant
+        class SBMLAssistant
+    }
+
 
 	abstract class RDFNode {
 	    + str() : std::string
@@ -23,52 +61,49 @@ namespace semsim {
 
 	class RDFURINode
 
-	class Predicate {
-	    toRdfNode() : librdf_node*
-	}
+
+
 	class Subject {
 	    toRdfNode() : librdf_node*
 	}
-	class Resource{
+	class Predicate {
 	    toRdfNode() : librdf_node*
 	}
-	class TripleList
-	class Triple{
-	    toRdfNode() : librdf_node*
-	}
-
+	class PredicatePtr <<typedef shared_ptr>>
 
 	class BiomodelsBiologyQualifier
 
 	class BiomodelsModelQualifier
 
-	class CellMLAssistant
+    class SemSim
 
-	class CompositeAnnotation
+    class DCTerm
 
 
+	class Resource{
+	    toRdfNode() : librdf_node*
+	}
 
-	class CurlGet
 
-	class DCTerm
-
-	class Editor
+	class Triple{
+	    toStatement() : librdf_statement*
+	}
 
 	class Exception
-
 	class InappropriateResourceException
-
+	class NotImplementedException
+	class NullPointerException
 	class LibRDFException
 
-	class MediatorParticipant
-
-	class MetaID
-
-	class NotImplementedException
-
-	class NullPointerException
 
 	class Participant
+
+	class SinkParticipant
+
+	class SourceParticipant
+	class MediatorParticipant
+
+
 
 	class PhysicalEntity
 
@@ -76,434 +111,113 @@ namespace semsim {
 
 	class PhysicalPhenomenon
 
+	class PhysicalPhenomenonPtr <<typedef shared_ptr>>
+
 	class PhysicalProcess
 
 	class PhysicalPropertyResource
 
 
-	class RDF
-
-	class RaptorUtils
+	class RDF {
+	    fromString(std::string xml, XmlAssistantType type)
+	}
 
 	class Reader
 
 
 
+	class Editor {
+	    addSingularAnnotation(Triple triple)
+	    addCompositeAnnotation(PhysicalPhenomenon pp)
+	}
+	class XmlAssistant
 	class SBMLAssistant
+	class CellMLAssistant
+	class XmlAssistantPtr <<typedef shared_ptr>>
 
-	class SemSim
+	class MetaID
+	class CurlGet
 
-
-	class SemsimCombineArchive
 
 	class SemsimUtils
 
 
-	class SinkParticipant
-
-	class SourceParticipant
-
-
-
-
-
-
 	class Writer
 
-	class XmlAssistant
-
-
-	class XmlAssistantFactory
-
-	enum AnnotationType
-
-	enum XmlAssistantType
 
 
 /' Inheritance relationships '/
 
-	RDFNode <|-- RDFBlankNode
-	RDFNode <|-- RDFLiteralNode
-	RDFNode <|-- RDFURINode
+    RDFNode <|-- RDFBlankNode
+    RDFNode <|-- RDFLiteralNode
+    RDFNode <|-- RDFURINode
+    RDFNode <-- RDFNodePtr : ptr to
 
-	RDFNode <-- RDFNodePtr : ptr to
+     Subject	 *-- Triple
+     Predicate	 *-- Triple
+     Resource	 *-- Triple
 
-	Subject *-- Triple
-	Predicate *-- Triple
-	Resource *-- Triple
+     RDFNodePtr	 *-- Subject
+     RDFNodePtr	 *-- Predicate
+     RDFNodePtr	 *-- Resource
 
-	RDFNodePtr *-- Subject
-	RDFNodePtr *-- Predicate
-	RDFNodePtr *-- Resource
+     Predicate <|-- BiomodelsBiologyQualifier
+     Predicate <|-- BiomodelsModelQualifier
+     Predicate <|-- SemSim
+     Predicate <|-- DCTerm
+
+     Predicate <-- PredicatePtr
 
 
-'	Resource <|-- PhysicalPropertyResource
-'
-'	Exception <|-- InappropriateResourceException
-'	Exception <|-- LibRDFException
-'	Exception <|-- NotImplementedException
-'	Exception <|-- NullPointerException
-'
-'	Participant <|-- MediatorParticipant
-'	Participant <|-- SinkParticipant
-'	Participant <|-- SourceParticipant
-'
-'	PhysicalPhenomenon <|-- PhysicalEntity
-'	PhysicalPhenomenon <|-- PhysicalForce
-'	PhysicalPhenomenon <|-- PhysicalProcess
-'
-'	Predicate <|-- BiomodelsBiologyQualifier
-'	Predicate <|-- BiomodelsModelQualifier
-'	Predicate <|-- DCTerm
-'	Predicate <|-- SemSim
-'
+    Resource <|-- PhysicalPropertyResource
 
-'
-'	XmlAssistant <|-- CellMLAssistant
-'	XmlAssistant <|-- SBMLAssistant
-'
-'/' Aggregation relationships '/
-'
-'    CellMLAssistant *-- XmlAssistant
-'	CompositeAnnotation *-- PhysicalPhenomenon
-'	CompositeAnnotation *-- PhysicalPropertyResource
-'	InappropriateResourceException *-- Exception
-'	LibRDFException *-- Exception
-'	NotImplementedException *-- Exception
-'	NullPointerException *-- Exception
-'	Participant *-- Resource
-'	PhysicalEntity *-- MetaID
-'	PhysicalEntity *-- Resource
-'	PhysicalPhenomenon *-- PhysicalPropertyResource
-'	PhysicalPhenomenon *-- Subject
-'	Predicate *-- RDFURINode
-'	SBMLAssistant *-- XmlAssistant
-'	Triple *-- Resource
-'	Triple *-- Subject
-'	TripleList *-- Triple
-'
-'
-'
-'
-'
-'
-'/' Dependency relationships '/
-'
-'
-'	AnnotationType <.. PhysicalPhenomenon
-'
-'
-'
-'
-'	MetaID <.. MetaID
-'
-'
-'
-'
-'	MetaID <.. MetaID
-'
-'
-'
-'
-'	MetaID <.. XmlAssistant
-'
-'
-'
-'
-'	Participant <.. Editor
-'
-'
-'
-'
-'	PhysicalPhenomenon <.. CompositeAnnotation
-'
-'
-'
-'
-'	PhysicalPhenomenon <.. CompositeAnnotation
-'
-'
-'
-'
-'	PhysicalPhenomenon <.. Editor
-'
-'
-'
-'
-'	PhysicalPropertyResource <.. CompositeAnnotation
-'
-'
-'
-'
-'	PhysicalPropertyResource <.. CompositeAnnotation
-'
-'
-'
-'
-'	PhysicalPropertyResource <.. PhysicalEntity
-'
-'
-'
-'
-'	PhysicalPropertyResource <.. PhysicalForce
-'
-'
-'
-'
-'	PhysicalPropertyResource <.. PhysicalPhenomenon
-'
-'
-'
-'
-'	PhysicalPropertyResource <.. PhysicalProcess
-'
-'
-'
-'
-'	Predicate <.. Editor
-'
-'
-'
-'
-'	Predicate <.. Participant
-'
-'
-'
-'
-'	Predicate <.. Participant
-'
-'
-'
-'
-'	Predicate <.. Triple
-'
-'
-'
-'
-'	Predicate <.. Triple
-'
-'
-'
-'
-'	Predicate <.. TripleList
-'
-'
-'
-'
-'	RDF <.. RDF
-'
-'
-'
-'
-'	RDF <.. RDF
-'
-'
-'
-'
-'	RDF <.. RDF
-'
-'
-'
-'
-'	RDF <.. RDF
-'
-'
-'
-'
-'	RDF <.. RDF
-'
-'
-'
-'
-'	RDF <.. RDF
-'
-'
-'
-'
-'	RDFBlankNode <.. Resource
-'
-'
-'
-'
-'	RDFBlankNode <.. Subject
-'
-'
-'
-'
-'	RDFLiteralNode <.. Resource
-'
-'
-'
-'
-'	RDFURINode <.. PhysicalPropertyResource
-'
-'
-'
-'
-'	RDFURINode <.. Resource
-'
-'
-'
-'
-'	RDFURINode <.. Subject
-'
-'
-'
-'
-'	Resource <.. Editor
-'
-'
-'
-'
-'	Resource <.. Editor
-'
-'
-'
-'
-'	Resource <.. Editor
-'
-'
-'
-'
-'	Resource <.. MediatorParticipant
-'
-'
-'
-'
-'	Resource <.. Participant
-'
-'
-'
-'
-'	Resource <.. PhysicalEntity
-'
-'
-'
-'
-'	Resource <.. PhysicalEntity
-'
-'
-'
-'
-'	Resource <.. SinkParticipant
-'
-'
-'
-'
-'	Resource <.. SourceParticipant
-'
-'
-'
-'
-'	Resource <.. Triple
-'
-'
-'
-'
-'	Resource <.. Triple
-'
-'
-'
-'
-'	Resource <.. TripleList
-'
-'
-'
-'
-'	Subject <.. Editor
-'
-'
-'
-'
-'	Subject <.. PhysicalEntity
-'
-'
-'
-'
-'	Subject <.. PhysicalForce
-'
-'
-'
-'
-'	Subject <.. PhysicalPhenomenon
-'
-'
-'
-'
-'	Subject <.. PhysicalProcess
-'
-'
-'
-'
-'	Subject <.. PhysicalPropertyResource
-'
-'
-'
-'
-'	Subject <.. Triple
-'
-'
-'
-'
-'	Subject <.. Triple
-'
-'
-'
-'
-'	Subject <.. TripleList
-'
-'
-'
-'
-'	Triple <.. Editor
-'
-'
-'
-'
-'	Triple <.. Editor
-'
-'
-'
-'
-'	Triple <.. Editor
-'
-'
-'
-'
-'	Triple <.. Editor
-'
-'
-'
-'
-'	Triple <.. TripleList
-'
-'
-'
-'
-'	Triple <.. TripleList
-'
-'
-'
-'
-'	TripleList <.. TripleList
-'
-'
-'
-'
-'	TripleList <.. TripleList
-'
-'
-'
-'
-'	XmlAssistant <.. Editor
-'
-'
-'
-'
-'	XmlAssistant <.. RDF
-'
-'
-'
-'
-'	XmlAssistant <.. XmlAssistantFactory}
+
+    PhysicalPhenomenon <|-- PhysicalEntity
+    PhysicalPhenomenon <|-- PhysicalProcess
+    PhysicalPhenomenon <|-- PhysicalForce
+
+    PhysicalEntity *--Participant : inheritance instead?
+    Participant <|-- SourceParticipant
+    Participant <|-- SinkParticipant
+    Participant <|-- MediatorParticipant
+
+    PhysicalProcess *-- SourceParticipant
+    PhysicalProcess *-- SinkParticipant
+    PhysicalProcess *-- MediatorParticipant
+
+    PhysicalForce *-- SourceParticipant
+    PhysicalForce *-- SinkParticipant
+
+
+    RDF *-- Editor
+    RDF *-- Reader
+    RDF *-- Writer
+
+    SemsimUtils --* Reader
+    SemsimUtils *-- CurlGet
+
+    note bottom of CurlGet
+        Downloads from URL
+    end note
+
+    PhysicalPhenomenon *-- PhysicalPropertyResource
+    PhysicalPhenomenonPtr --> Editor : takes as argument
+    Triple --> Editor : takes as argument
+
+    XmlAssistant <|-- SBMLAssistant
+    XmlAssistant <|-- CellMLAssistant
+    XmlAssistant <-- XmlAssistantPtr
+    Editor *-- XmlAssistantPtr : adds metaid's
+
+    MetaID --* XmlAssistant
+
+    Exception <|-- NullPointerException
+    Exception <|-- NotImplementedException
+    Exception <|-- InappropriateResourceException
+    Exception <|-- LibRDFException
+
+
+
+
+
 @enduml
