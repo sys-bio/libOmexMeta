@@ -69,7 +69,7 @@ public:
     std::string singular_annotation1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                                        "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                                        "         xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">\n"
-                                       "    <rdf:Description rdf:about=\"#metaid_1\">\n"
+                                       "    <rdf:Description rdf:about=\"metaid_1\">\n"
                                        "        <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                                        "    </rdf:Description>\n"
                                        "</rdf:RDF>\n";

@@ -13,12 +13,12 @@
 
 using namespace std;
 
-semsim::Reader::Reader(librdf_world *world, librdf_model *model, std::string format, const std::string& base_uri) {
+semsim::Reader::Reader(librdf_world *world, librdf_model *model, std::string format) {
     this->world_ = world;
     this->raptor_world_ptr_ = librdf_world_get_raptor(this->world_);
     this->model_ = model;
     this->format_ = std::move(format);
-    this->base_uri_ = librdf_new_uri(this->world_, (const unsigned char *) base_uri.c_str());
+//    this->base_uri_ = librdf_new_uri(this->world_, (const unsigned char *) base_uri_.c_str());
 
     // generate new parsesr
     this->parser_ = makeParser(this->format_);
@@ -63,7 +63,7 @@ librdf_parser *semsim::Reader::makeParser(std::string format) {
 
 std::string semsim::Reader::fromString(const std::string &rdf_string) {
     // use a default base uri?
-    librdf_parser_parse_string_into_model(parser_, (const unsigned char *) rdf_string.c_str(), base_uri_, model_);
+    librdf_parser_parse_string_into_model(parser_, (const unsigned char *) rdf_string.c_str(), getBaseUri(), model_);
 
 }
 

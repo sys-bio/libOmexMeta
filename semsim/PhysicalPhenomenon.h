@@ -10,7 +10,6 @@
 #include "semsim/AnnotationType.h"
 #include "semsim/Triple.h"
 
-// todo rename physical phenomenon to physical world/universe ?
 namespace semsim {
     class PhysicalPhenomenon {
     protected:
@@ -18,8 +17,6 @@ namespace semsim {
         Subject subject_metaid_;
         PhysicalPropertyResource physical_property_;
         AnnotationType type_;
-
-        virtual std::string createMetaId(std::string id_base) const;
 
     public:
         PhysicalPhenomenon(librdf_world *world, Subject metaid, PhysicalPropertyResource propertyResource,
@@ -33,8 +30,9 @@ namespace semsim {
 
         const PhysicalPropertyResource getPhysicalProperty() const;
 
-        virtual std::vector<Triple> toTriples() const;
+        virtual Triples toTriples() const;
 
+        virtual std::string createMetaId(librdf_model *model, std::string id_base) const;
     };
 
     typedef std::shared_ptr<PhysicalPhenomenon> PhysicalPhenomenonPtr;

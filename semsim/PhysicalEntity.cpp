@@ -30,7 +30,7 @@ semsim::PhysicalEntity::PhysicalEntity(
  * physicalXX elements since they are burried
  *    ... what if we just add them to the addepted terms in xml assistant?
  */
-std::string semsim::PhysicalEntity::createMetaId(std::string base_metaid) const {
+std::string semsim::PhysicalEntity::createMetaId(librdf_model *model, std::string base_metaid) const {
     return "entityMetaidPlaceholder";
 }
 
@@ -54,7 +54,7 @@ semsim::Triple semsim::PhysicalEntity::whatTriple() const {
 }
 
 semsim::Triples semsim::PhysicalEntity::whereTriple() const {
-    RDFURINode entity_metaid_node = RDFURINode(world_, createMetaId("entity"));
+    RDFURINode entity_metaid_node = RDFURINode(world_, createMetaId(nullptr, "entity"));
     Triples triples;
     // the "where" part of the physical entity
     for (auto &locationResource : getLocationResources()) {

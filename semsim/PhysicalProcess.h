@@ -24,7 +24,7 @@ namespace semsim {
                 PhysicalPropertyResource physicalProperty,
                 Sources sources, Sinks sinks, Mediators mediators);
 
-        std::string createMetaId(std::string base_metaid) const override;
+        std::string createMetaId(librdf_model *model, std::string base_metaid) const override;
 
         const Sources &getSources() const;
 

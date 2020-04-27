@@ -73,7 +73,7 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation1) {
     editor.addSingleAnnotation(triple);
     editor.toRDF();
 
-    std::string actual = rdf.toString("rdfxml", "./MyModel.xml");
+    std::string actual = rdf.toString("rdfxml", "MyModel.rdf");
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"./MyModel.xml\">\n"
@@ -97,7 +97,7 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation2) {
     );
     editor.toRDF();
 
-    std::string actual = rdf.toString("turtle", "./MyModel.xml");
+    std::string actual = rdf.toString("turtle", std::__cxx11::string());
     std::string expected = "@base <./MyModel.xml> .\n"
                            "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -122,7 +122,7 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation3) {
     );
     editor.toRDF();
 
-    std::string actual = rdf.toString("rdfxml", "./MyModel.xml");
+    std::string actual = rdf.toString("rdfxml", std::__cxx11::string());
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"./MyModel.xml\">\n"
                            "  <rdf:Description rdf:about=\"SemsimMetaid0008\">\n"
@@ -146,7 +146,7 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     );
     editor.toRDF();
 
-    std::string actual = rdf.toString("rdfxml", "./MyModel.xml");
+    std::string actual = rdf.toString("rdfxml", std::__cxx11::string());
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"./MyModel.xml\">\n"
                            "  <rdf:Description rdf:about=\"SemsimMetaid0008\">\n"
@@ -170,23 +170,22 @@ TEST_F(EditorTests, TestCompositeAnnotationPhysicalEntity) {
             std::make_shared<semsim::PhysicalEntity>(
                     semsim::PhysicalEntity(
                             world,
-                            semsim::Subject(world, semsim::RDFURINode(world, "Metaid0034")),
+                            semsim::Subject(world, semsim::RDFURINode(world, "VLV")),
                             semsim::PhysicalPropertyResource(
                                     // chemical concentration
-                                    world, semsim::RDFURINode(world, "OPB:OPB_00340")
+                                    world, semsim::RDFURINode(world, "OPB:OPB_00154")
                             ),
-                            semsim::Resource(world, semsim::RDFURINode(world, "obo/PR_000000365")), // is smad3
+                            semsim::Resource(world, semsim::RDFURINode(world, "fma:FMA:9670")), // is smad3
                             std::vector<semsim::Resource>(
-                                    {semsim::Resource(world,
-                                                      semsim::RDFURINode(world,
-                                                                         "https://identifiers.org/fma/FMA:72564")),
-                                     semsim::Resource(world, semsim::RDFURINode(world, "fma:FMA:63877"))
+                                    {
+                                            semsim::Resource(world, semsim::RDFURINode(world, "fma/FMA:9697"))
                                     })
                     )
             )
     );
     editor.toRDF();
-    std::string actual = rdf.toString("rdfxml");
+    std::string actual = rdf.toString("rdfxml", std::__cxx11::string());
+    std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "         xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
@@ -247,7 +246,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
     );
 
     editor.toRDF();
-    std::string actual = rdf.toString("rdfxml-abbrev", "./MyModel.xml");
+    std::string actual = rdf.toString("rdfxml-abbrev", std::__cxx11::string());
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -309,7 +308,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
     );
 
     editor.toRDF();
-    std::string actual = rdf.toString("rdfxml-abbrev", "./MyModel.xml");
+    std::string actual = rdf.toString("rdfxml-abbrev", std::__cxx11::string());
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"

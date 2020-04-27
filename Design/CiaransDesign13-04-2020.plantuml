@@ -221,7 +221,7 @@ class RDF {
     -storage_ : librdf_storage*
     -world_ : librdf_world*
     -raptor_world_ : raptor_world*
-    -makeWriter(const std::string& format, const std::string& base_uri) : semsim::Writer
+    -makeWriter(const std::string& format, const std::string& base_uri_) : semsim::Writer
     -namespaces_ : std::unordered_map<const char*, const char*>
     +{static} init() : LibRDFObjectsTuple
     +{static} fromOmex(std::string filename_or_url) : RDF
@@ -233,7 +233,7 @@ class RDF {
     +{static} fromXML(const std::string& filename, std::string format) : semsim::RDF
     +{static} fromString(const std::string& str, std::string format) : void
     +toFile(std::string format) : void
-    +toString(std::string format, std::string base_uri) : std::string
+    +toString(std::string format, std::string base_uri_) : std::string
     +toEditor() : Editor
     +getModel() : librdf_model*
     +getStorage() : librdf_storage*
@@ -287,7 +287,7 @@ class SemsimUtils {
 }
 
 class Writer {
-    +Writer(librdf_world* world_, librdf_model* model_, std::string format, const std::string& base_uri)
+    +Writer(librdf_world* world_, librdf_model* model_, std::string format, const std::string& base_uri_)
     -model_ : librdf_model*
     -serializer : librdf_serializer*
     -base_uri_ : librdf_uri*
