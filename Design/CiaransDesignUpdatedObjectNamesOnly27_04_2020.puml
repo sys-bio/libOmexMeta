@@ -45,6 +45,11 @@ namespace Legend {
         class SBMLAssistant
     }
 
+    together {
+        class PhysicalPhenomenon
+        class PhysicalPhenomenonPtr
+    }
+
 
 	abstract class RDFNode {
 	    + str() : std::string
@@ -119,17 +124,29 @@ namespace Legend {
 
 
 	class RDF {
-	    fromString(std::string xml, XmlAssistantType type)
+	    fromString(std::string xml)
+	    fromFile(std::string filename)
+	    fromURL(std::string url)
+	    fromOmex(std::string filename_or_url)
+	    toString(std::string format, std::string base_uri)
+	    toFile(std::string filename, std::string format)
+	    toOmex(std::string filename, std::string format)
+	    query(std::string query, std::string query_language)
+	    toEditor(std::string xml, XmlAssistantType type)
+
 	}
 
 	class Reader
-
-
 
 	class Editor {
 	    addSingularAnnotation(Triple triple)
 	    addCompositeAnnotation(PhysicalPhenomenon pp)
 	}
+	note top of Editor{
+	There is still a bit of work
+	to do on the Editor class
+	}
+
 	class XmlAssistant
 	class SBMLAssistant
 	class CellMLAssistant
@@ -154,7 +171,7 @@ namespace Legend {
     RDFNode <-- RDFNodePtr : ptr to
 
      Subject	 *-- Triple
-     Predicate	 *-- Triple
+     PredicatePtr *-- Triple
      Resource	 *-- Triple
 
      RDFNodePtr	 *-- Subject
@@ -201,13 +218,15 @@ namespace Legend {
     end note
 
     PhysicalPhenomenon *-- PhysicalPropertyResource
+    PhysicalPhenomenonPtr -->  PhysicalPhenomenon
+
     PhysicalPhenomenonPtr --> Editor : takes as argument
     Triple --> Editor : takes as argument
 
     XmlAssistant <|-- SBMLAssistant
     XmlAssistant <|-- CellMLAssistant
     XmlAssistant <-- XmlAssistantPtr
-    Editor *-- XmlAssistantPtr : adds metaid's
+    Editor *-- XmlAssistantPtr : mechanism for adding metaid's specifically for an XML
 
     MetaID --* XmlAssistant
 
@@ -215,6 +234,27 @@ namespace Legend {
     Exception <|-- NotImplementedException
     Exception <|-- InappropriateResourceException
     Exception <|-- LibRDFException
+
+'    PhysicalPropertyResource "1" *-- "many" Triple
+'    PhysicalEntity "1" *-- "many" Triple
+'    PhysicalProcess "1" *-- "many" Triple
+'    PhysicalForce "1" *-- "many" Triple
+'    Participant "1" *-- "many" Triple
+
+    note left of PhysicalPhenomenon {
+        All objects used by or that
+        inherit from PhysicalPhenomenon
+        have a "toTriples()" method for creating
+        vectors of Triple objects.
+    }
+
+     note right of RDF  {
+        The RDF and Editor
+        classes are currently
+        the only front end
+        classes intended for
+        use by users
+        }
 
 
 
