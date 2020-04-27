@@ -66,9 +66,10 @@ public:
                                    "</rdf:RDF>\n";
 
 
-    std::string singular_annotation1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-                                       "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                                       "         xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">\n"
+    std::string singular_annotation1 = "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                                       "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                                       "   xml:base=\"file://./base-uri.rdf\">\n"
+//                                       "   xml:base=\"file:///mnt/d/libsemsim/tests/base-uri.rdf\">\n"
                                        "    <rdf:Description rdf:about=\"metaid_1\">\n"
                                        "        <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                                        "    </rdf:Description>\n"
