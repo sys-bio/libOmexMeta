@@ -826,7 +826,7 @@ class RDF-->
         </text>
         <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="920" y="346.2031"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="397"
-              x="932" y="353.6221">makeWriter(const std::string&amp; format, const std::string&amp; base_uri) :
+              x="932" y="353.6221">makeWriter(const std::string&amp; format, const std::string&amp; base_uri_) :
             semsim::Writer
         </text>
         <ellipse cx="923" cy="363.0391" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
@@ -874,7 +874,7 @@ class RDF-->
         </text>
         <ellipse cx="923" cy="501.3984" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="283"
-              x="932" y="505.8174">toString(std::string format, std::string base_uri) : std::string
+              x="932" y="505.8174">toString(std::string format, std::string base_uri_) : std::string
         </text>
         <ellipse cx="923" cy="515.2344" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="80"
@@ -1114,7 +1114,7 @@ class Writer-->
         <ellipse cx="931.5" cy="1035.5156" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="465"
               x="940.5" y="1039.9346">Writer(librdf_world* world_, librdf_model* model_, std::string format, const
-            std::string&amp; base_uri)
+            std::string&amp; base_uri_)
         </text>
         <ellipse cx="931.5" cy="1049.3516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="86"
@@ -1558,7 +1558,7 @@ class RDF {
     -storage_ : librdf_storage*
     -world_ : librdf_world*
     -raptor_world_ : raptor_world*
-    -makeWriter(const std::string& format, const std::string& base_uri) : semsim::Writer
+    -makeWriter(const std::string& format, const std::string& base_uri_) : semsim::Writer
     -namespaces_ : std::unordered_map<const char*, const char*>
     +{static} init() : LibRDFObjectsTuple
     +{static} fromOmex(std::string filename_or_url) : RDF
@@ -1570,7 +1570,7 @@ class RDF {
     +{static} fromXML(const std::string& filename, std::string format) : semsim::RDF
     +{static} fromString(const std::string& str, std::string format) : void
     +toFile(std::string format) : void
-    +toString(std::string format, std::string base_uri) : std::string
+    +toString(std::string format, std::string base_uri_) : std::string
     +toEditor() : Editor
     +getModel() : librdf_model*
     +getStorage() : librdf_storage*
@@ -1624,7 +1624,7 @@ class SemsimUtils {
 }
 
 class Writer {
-    +Writer(librdf_world* world_, librdf_model* model_, std::string format, const std::string& base_uri)
+    +Writer(librdf_world* world_, librdf_model* model_, std::string format, const std::string& base_uri_)
     -model_ : librdf_model*
     -serializer : librdf_serializer*
     -base_uri_ : librdf_uri*

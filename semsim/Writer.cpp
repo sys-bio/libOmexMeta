@@ -12,8 +12,8 @@ void semsim::Writer::setWorld(librdf_world *w) {
     this->world_ = w;
 }
 
-semsim::Writer::Writer(librdf_world *world, librdf_model *model, std::string format, const std::string &base_uri) {
-    this->world_ = world;
+semsim::Writer::Writer(librdf_world *world_, librdf_model *model_, std::string base_uri, std::string format) {
+    this->world_ = world_;
 
     if (!world_) {
         throw std::invalid_argument("World argument invalid");
@@ -21,10 +21,10 @@ semsim::Writer::Writer(librdf_world *world, librdf_model *model, std::string for
 
     this->base_uri_ = librdf_new_uri(world_, (const unsigned char *) base_uri.c_str());
     if (!base_uri_) {
-        throw std::invalid_argument("base_uri argument invalid");
+        throw std::invalid_argument("base_uri_ argument invalid");
     }
 
-    this->model_ = model;
+    this->model_ = model_;
     if (!model_) {
         throw std::invalid_argument("model_ argument invalid");
     }

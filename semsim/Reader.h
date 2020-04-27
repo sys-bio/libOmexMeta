@@ -17,7 +17,7 @@ namespace semsim {
         std::string format_;
         librdf_model *model_;
         librdf_parser *parser_;
-        librdf_uri *base_uri_;
+        librdf_uri* base_uri_;
 
         // create a parser object
         librdf_parser *makeParser(std::string format = "guess");
@@ -40,7 +40,7 @@ namespace semsim {
 
         void setBaseUri(const std::string &baseUri);
 
-        Reader(librdf_world *world, librdf_model *model, std::string format = "guess", const std::string& base_uri="./SemsimModel.rdf");
+        Reader(librdf_world *world, librdf_model *model, std::string format = "guess");
 
         void setFormat(const std::string &f);
 
@@ -56,7 +56,7 @@ namespace semsim {
 
         librdf_parser *getParser() const;
 
-        librdf_uri *getBaseUri() const;
+        librdf_uri* getBaseUri() const;
 
         const std::vector<std::string> &getValidParserNames() const;
 

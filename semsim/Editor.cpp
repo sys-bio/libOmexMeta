@@ -116,7 +116,9 @@ void semsim::Editor::addAnnotationFromTriples(Triples triples) {
 
 
 void semsim::Editor::addCompositeAnnotation(semsim::PhysicalPhenomenonPtr phenomenonPtr) {
-    for (auto &triple : phenomenonPtr->toTriples()) {
+    Triples triples = phenomenonPtr->toTriples();
+    extractNamespacesFromTriplesVector(triples);
+    for (auto &triple : triples ) {
         librdf_model_add_statement(model_, triple.toStatement());
     }
 }

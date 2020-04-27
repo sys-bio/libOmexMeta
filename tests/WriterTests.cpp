@@ -48,7 +48,7 @@ public:
     };
 
     void test_writer(std::string output_format, const std::string& expected) {
-        semsim::Writer writer(world, model, std::move(output_format));
+        semsim::Writer writer(world, model, "./semsim_model.xml" , std::move(output_format));
         std::string actual = writer.toString();
         std::cout << actual << std::endl;
         ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -57,7 +57,7 @@ public:
 
 
 TEST_F(WriterTests, TestDefaultConstructor) {
-    semsim::Writer writer(world, model, "rdfxml");
+    semsim::Writer writer(world, model, "./semsim_model.xml", "rdfxml");
     ASSERT_TRUE(true); // test passes if it gets this far.
 }
 
@@ -247,6 +247,19 @@ TEST_F(WriterTests, Testhtml){
 TEST_F(WriterTests, Testnquads){
     std::string expected = "<http://www.dajobe.org/> <http://purl.org/dc/elements/1.1/title> \"My Home Page\" .\n";
     test_writer("nquads", expected);
+}
+
+TEST_F(WriterTests, TestBaseUri){
+    semsim::Writer writer(world, model, "base_uri.rdf");
+    std::string actual = writer.toString();
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"base_uri.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
+                           "    <ns1:title xmlns:ns1=\"http://purl.org/dc/elements/1.1/\">My Home Page</ns1:title>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 

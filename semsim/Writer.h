@@ -36,8 +36,8 @@ namespace semsim {
 
     public:
 
-        Writer(librdf_world *world_, librdf_model *model_, std::string format = "rdfxml-abbrev",
-               const std::string &base_uri = "./semsim_model.xml");
+        Writer(librdf_world *world_, librdf_model *model_, std::string base_uri,
+               std::string format = "rdfxml-abbrev");
 
         void setFormat(const std::string &format);
 

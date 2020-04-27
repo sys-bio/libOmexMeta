@@ -78,12 +78,20 @@ TEST_F(RDFTests, TestNamespacesSize){
     semsim::RDF rdf = semsim::RDF::fromString(
             samples.composite_annotation_pp
             );
-    std::string s = rdf.toString("rdfxml-abbrev");
+    std::string s = rdf.toString("rdfxml-abbrev", std::__cxx11::string());
 
     std::cout << s << std::endl;
     int x = rdf.getNamespaces().size();
     ASSERT_EQ(2, x);
 }
+
+TEST_F(RDFTests, TestBaseUri){
+    semsim::RDF rdf;
+    std::string expected = "./semsim_model.rdf";
+    std::string actual = (const char*) librdf_uri_as_string(rdf.getBaseUri());
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
 
 
 class ReadAndWriteTests : public ::testing::Test {
@@ -96,7 +104,7 @@ public:
 
     void assertReadAndWrite(std::string input_annot, std::string input_format, const std::string &expected_output) {
         semsim::RDF rdf = semsim::RDF::fromString(std::move(input_annot), "rdfxml");
-        std::string actual = rdf.toString(std::move(input_format));
+        std::string actual = rdf.toString(std::move(input_format), std::__cxx11::string());
         std::cout << actual << std::endl;
         ASSERT_STREQ(expected_output.c_str(), actual.c_str());
     }
@@ -2153,7 +2161,7 @@ TEST_F(ReadAndWriteTests, tabulardatanquads) {
 TEST_F(ReadAndWriteTests, SBML1) {
     semsim::SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);
     semsim::RDF rdf = semsim::RDF::fromXML(samples.sbml_filename1, "rdfxml");
-    std::string extracted = rdf.toString("rdfxml");
+    std::string extracted = rdf.toString("rdfxml", std::__cxx11::string());
     std::cout << extracted << std::endl;
     int expected = 32;
     int actual = sizeof(extracted);
@@ -2167,7 +2175,7 @@ TEST_F(ReadAndWriteTests, tesjhbt) {
     semsim::RDF rdf = semsim::RDF::fromString(samples.composite_annotation_pp, "rdfxml");
 //    std::cout << rdf.toString("turtle") << std::endl;
     semsim::RDF subrdf = rdf.query(q);
-    std::cout << subrdf.toString("rdfxml") << std::endl;
+    std::cout << subrdf.toString("rdfxml", std::__cxx11::string()) << std::endl;
 
 
 }

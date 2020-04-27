@@ -53,10 +53,9 @@ semsim::RDF::RDF() {
     raptor_world_ = std::get<1>(objectsTuple);
     storage_ = std::get<2>(objectsTuple);
     model_ = std::get<3>(objectsTuple);
+    setBaseUri(librdf_new_uri(getWorld(), (const unsigned char *) "./semsim_model.rdf"));
 
     // add some predefined namespaces for the serializer.
-
-
 }
 
 semsim::RDF::RDF(librdf_world *world, raptor_world *raptor_world_, librdf_storage *storage, librdf_model *model) :
@@ -64,6 +63,7 @@ semsim::RDF::RDF(librdf_world *world, raptor_world *raptor_world_, librdf_storag
         raptor_world_(raptor_world_),
         storage_(storage),
         model_(model) {
+    setBaseUri(librdf_new_uri(getWorld(), (const unsigned char *) "./semsim_model.rdf"));
 
     // add some predefined namespaces for the serializer.
 
@@ -253,8 +253,9 @@ semsim::RDF semsim::RDF::fromOmex(std::string filename_or_url) {
     return semsim::RDF();
 }
 
-std::string semsim::RDF::toString(std::string format, std::string base_uri) {
-    Writer writer = makeWriter(format, base_uri);
+std::string semsim::RDF::toString(const std::string &format, std::string base_uri) {
+    setBaseUri(base_uri);
+    Writer writer = makeWriter(format);
     return writer.toString();
 }
 
@@ -273,8 +274,8 @@ void semsim::RDF::toFile(std::string format) {
  * Other methods
  */
 
-semsim::Writer semsim::RDF::makeWriter(const std::string &format, const std::string &base_uri) {
-    Writer writer(world_, model_, format, base_uri);
+semsim::Writer semsim::RDF::makeWriter(const std::string &format) {
+    Writer writer(world_, model_, getBaseUriAsString(), format);
     writer.registerNamespace(namespaces_);
     return writer;
 }
@@ -374,7 +375,7 @@ semsim::RDF semsim::RDF::query(std::string query_str, std::string query_format, 
     int x = librdf_model_add_statements(rdf.getModel(), stream);
     std::cout << "x is :" << x << std::endl;
     librdf_free_stream(stream);
-    std::cout << rdf.toString("rdfxml") << std::endl;
+    std::cout << rdf.toString("rdfxml", std::__cxx11::string()) << std::endl;
 
     raptor_uri *u = librdf_get_concept_schema_namespace(world_);
     raptor_uri *u2 = librdf_get_concept_ms_namespace(world_);
@@ -449,6 +450,22 @@ semsim::RDF semsim::RDF::query(std::string query_str, std::string query_format, 
     librdf_free_query(query);
     return rdf;
 
+}
+
+librdf_uri *semsim::RDF::getBaseUri() const {
+    return base_uri_;
+}
+
+std::string semsim::RDF::getBaseUriAsString() const {
+    return std::string((const char *) librdf_uri_as_string(base_uri_));
+}
+
+void semsim::RDF::setBaseUri(const std::string &baseUri) {
+    base_uri_ = librdf_new_uri(world_, (const unsigned char *) baseUri.c_str());
+}
+
+void semsim::RDF::setBaseUri(librdf_uri *baseUri) {
+    base_uri_ = baseUri;
 }
 
 

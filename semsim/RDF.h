@@ -25,6 +25,7 @@ namespace semsim {
         raptor_world *raptor_world_;
         librdf_storage *storage_;
         librdf_model *model_;
+        librdf_uri* base_uri_;
 
         NamespaceMap namespaces_;
         std::vector<std::string> seen_namespaces_;
@@ -35,10 +36,16 @@ namespace semsim {
                 {"http://www.bhi.washington.edu/semsim#",    "semsim"},
         };
 
-        semsim::Writer makeWriter(const std::string &format, const std::string &base_uri);
-
+        semsim::Writer makeWriter(const std::string &format);
 
     public:
+        librdf_uri* getBaseUri() const;
+
+        std::string getBaseUriAsString() const;
+
+        void setBaseUri(const std::string &baseUri);
+
+        void setBaseUri(librdf_uri* base_uri);
 
         static LibRDFObjectsTuple init();
 
@@ -72,7 +79,7 @@ namespace semsim {
 
         static RDF fromOmex(std::string filename_or_url);
 
-        std::string toString(std::string format, std::string base_uri = "./SemsimModel");
+        std::string toString(const std::string& format, std::string base_uri);
 
         static RDF fromString(const std::string &str, std::string format = "guess");
 
@@ -105,8 +112,8 @@ namespace semsim {
         std::unordered_map<std::string, std::string> propagateNamespacesFromParser(
                 std::vector<std::string> seen_namespaces);
 
-        semsim::RDF
-        query(std::string query_str, std::string query_format = "sparql", std::string results_mime_type = "text/csv");
+        semsim::RDF query(
+                std::string query_str, std::string query_format = "sparql", std::string results_mime_type = "text/csv");
 
     };
 }
