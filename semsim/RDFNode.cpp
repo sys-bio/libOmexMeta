@@ -73,6 +73,7 @@ namespace semsim {
     }
 
     librdf_node *RDFURINode::toRdfNode() {
+        // todo does str need to be relative to base???
         return librdf_new_node_from_uri_string(world_, (const unsigned char *) str().c_str());
     }
 

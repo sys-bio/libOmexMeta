@@ -20,7 +20,7 @@ namespace semsim {
             resource_(std::move(resource)) {}
 
 
-    Triple::Triple(librdf_world *world, Subject subject, Predicate predicate, Resource resource) :
+    Triple::Triple(librdf_world *world, Subject subject, const Predicate& predicate, Resource resource) :
             world_(world),
             subject_(std::move(subject)),
             predicate_ptr_(std::make_shared<Predicate>(predicate)),
@@ -39,32 +39,12 @@ namespace semsim {
     }
 
     librdf_statement *Triple::toStatement() {
-        subject_.toRdfNode();
-        predicate_ptr_->toRdfNode();
-        resource_.toRdfNode();
         return librdf_new_statement_from_nodes(
                 world_,
                 subject_.toRdfNode(),
                 predicate_ptr_->toRdfNode(),
                 resource_.toRdfNode()
         );
-    }
-
-    std::vector<Triple> connectionTriple(librdf_world *world_, const std::string &subject, std::string isVersionOf,
-                                         std::string isPropertyOf) {
-        Triple triple1(
-                world_,
-                Subject(world_, RDFURINode(world_, subject)),
-                std::make_shared<BiomodelsBiologyQualifier>(BiomodelsBiologyQualifier(world_, "isVersionOf")),
-                Resource(world_, RDFURINode(world_, std::move(isVersionOf)))
-        );
-        Triple triple2(
-                world_,
-                Subject(world_, RDFURINode(world_, subject)),
-                std::make_shared<BiomodelsBiologyQualifier>(BiomodelsBiologyQualifier(world_, "isPropertyOf")),
-                Resource(world_, RDFURINode(world_, std::move(isPropertyOf)))
-        );
-        return std::vector<Triple>({triple1, triple2});
     }
 
 

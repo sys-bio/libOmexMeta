@@ -29,7 +29,7 @@ namespace semsim {
         std::string id_str = id.generate();
         std::ostringstream q;
 
-        q << "BASE <base-uri.rdf> \n"
+        q << "BASE <https://base-uri.rdf> \n"
              "SELECT ?y ?z\n"
              "WHERE {\n"
              "  <metaid_1> ?y ?z\n"

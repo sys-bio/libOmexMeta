@@ -1,0 +1,1109 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+namespace semsim {
+
+	class BiomodelsBiologyQualifier {
+		+BiomodelsBiologyQualifier()
+		+BiomodelsBiologyQualifier(librdf_world* world, const std::string& term)
+	}
+
+
+
+
+	class BiomodelsModelQualifier {
+		+BiomodelsModelQualifier()
+		+BiomodelsModelQualifier(librdf_world* world, const std::string& term)
+	}
+
+
+
+
+	class CellMLAssistant {
+		+getValidElements() : std::vector<std::string>& {query}
+		+XmlAssistant : using XmlAssistant::
+	}
+
+
+
+
+	class CompositeAnnotation {
+		+CompositeAnnotation(PhysicalPropertyResource physicalProperty, PhysicalPhenomenon propertyBearer)
+		-type : AnnotationType
+		-propertyBearer_ : PhysicalPhenomenon
+		+getPhysicalPhenomenon() : PhysicalPhenomenon& {query}
+		-physicalProperty_ : PhysicalPropertyResource
+		+getPhysicalProperty() : PhysicalPropertyResource& {query}
+		+setPhysicalPhenomenon(const PhysicalPhenomenon& propertyBearer) : void
+		+setPhysicalProperty(const PhysicalPropertyResource& physicalProperty) : void
+	}
+
+
+
+	class CurlGet {
+		+CurlGet()
+		+{static} download(const std::string& url, const std::string& output_filename) : int
+		-{static} curlWriteCallback(void* data, size_t size, size_t nmemb, void* userp) : size_t
+	}
+
+
+
+
+	class DCTerm {
+		+DCTerm()
+		+DCTerm(librdf_world* world, const std::string& term)
+	}
+
+
+
+
+	class Editor {
+		+Editor(const std::string& xml, XmlAssistantType type, librdf_world* world, librdf_model* model, semsim::NamespaceMap ns_map)
+		+getNamespaces() : NamespaceMap& {query}
+		-triple_list_ : NestedTriples
+		+getTripleList() : NestedTriples& {query}
+		-model_ : librdf_model*
+		-world_ : librdf_world*
+		-xml_ : std::string
+		+getXml() : std::string& {query}
+		-namespaces_ : std::unordered_map<std::string, std::string>&
+		-metaids_ : std::vector<std::string>
+		+getMetaids() : std::vector<std::string>& {query}
+		+addAnnotationFromNestedTriples(NestedTriples tripleList) : void
+		+addAnnotationFromTriples(std::vector<Triple> triples) : void
+		+addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr) : void
+		+addNamespace(std::string ns, std::string prefix) : void
+		+addPhysicalEntityAnnotation(const std::string& subject, std::string isVersionOf, const std::string& isPropertyOf, Resource is, Resource isPartOf) : void
+		+addPhysicalForceAnnotation(std::string subject, std::string isVersionOf, std::string isPropertyOf) : void
+		+addPhysicalProcessAnnotation(std::string subject, std::string isVersionOf, std::string isPropertyOf, std::vector<ParticipantPtr> participants) : void
+		+addSingleAnnotation(Subject subject, PredicatePtr predicate_ptr, Resource resource) : void
+		+addSingleAnnotation(Triple triple) : void
+		+checkValidMetaid(const std::string& metaid) : void
+		-extractNamespacesFromTriplesVector(Triples triples) : void
+		+removeAnnotation() : void
+		+setNamespaces(semsim::NamespaceMap namespaces) : void
+		+toRDF() : void
+	}
+
+
+
+
+	class Exception {
+		+Exception(const char* message)
+		+Exception(std::string message)
+		+~Exception()
+		+what() : char* {query}
+		#msg_ : std::string
+	}
+
+
+
+
+	class InappropriateResourceException {
+		-Exception : using Exception::
+	}
+
+
+
+
+	class LibRDFException {
+		-Exception : using Exception::
+	}
+
+
+
+
+	class MediatorParticipant {
+		+MediatorParticipant(librdf_world* world, std::string subject, Resource resource, std::string physicalEntityReference)
+		-multiplier_ : double
+	}
+
+
+
+
+	class MetaID {
+		+MetaID(std::string base, long number, int num_digits)
+		+operator!=(const MetaID& rhs) : bool {query}
+		+operator==(const MetaID& rhs) : bool {query}
+		+{static} countDigits(long n) : int
+		+maxNumber() : int {query}
+		-num_digits_ : int
+		-number_ : long
+		-base_ : std::string
+		+generate() : std::string {query}
+		+generate(long n) : std::string {query}
+	}
+
+
+
+
+	class NotImplementedException {
+		-Exception : using Exception::
+	}
+
+
+
+
+	class NullPointerException {
+		-Exception : using Exception::
+	}
+
+
+
+
+	class Participant {
+		+Participant(librdf_world* world, std::string subject, PredicatePtr predicate, Resource resource, double multiplier, std::string physicalEntityReference)
+		+getPredicatePtr() : PredicatePtr
+		-predicate_ptr_ : PredicatePtr
+		-resource_ : Resource
+		+getResource() : Resource& {query}
+		+getMultiplier() : double {query}
+		-multiplier_ : double
+		+getWorld() : librdf_world* {query}
+		-world_ : librdf_world*
+		-physicalEntityReference_ : std::string
+		-subject_ : std::string
+		+getPhysicalEntityReference() : std::string& {query}
+		+getSubject() : std::string& {query}
+		+toTriples() : std::vector<Triple> {query}
+		+setPredicatePtr(PredicatePtr predicate_ptr) : void
+	}
+
+
+
+
+	class PhysicalEntity {
+		+PhysicalEntity()
+		+PhysicalEntity(librdf_world* world, Subject metaid, PhysicalPropertyResource physicalProperty, Resource is, Resources is_part_of)
+		-is_ : Resource
+		+getIdentityResource() : Resource& {query}
+		-isPartOf_ : Resources
+		+getLocationResources() : Resources& {query}
+		+whatTriple() : Triple {query}
+		+toTriples() : Triples {query}
+		+whereTriple() : semsim::Triples {query}
+		-{static} metaid_ : static std::vector<MetaID>
+		+createMetaId(librdf_model* model, std::string base_metaid) : std::string {query}
+	}
+
+
+
+
+	class PhysicalForce {
+		+PhysicalForce()
+		+PhysicalForce(librdf_world* world, Subject metaid, PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks)
+		-sinks_ : Sinks
+		+getSinks() : Sinks& {query}
+		-sources_ : Sources
+		+getSources() : Sources& {query}
+		+toTriples() : Triples {query}
+		+createMetaId(librdf_model* model, std::string base_metaid) : std::string {query}
+	}
+
+
+
+
+	class PhysicalPhenomenon {
+		+PhysicalPhenomenon(librdf_world* world, Subject metaid, PhysicalPropertyResource propertyResource, AnnotationType type)
+		+PhysicalPhenomenon()
+		+getType() : AnnotationType {query}
+		#type_ : AnnotationType
+		+getPhysicalProperty() : PhysicalPropertyResource {query}
+		#physical_property_ : PhysicalPropertyResource
+		+getSubject() : Subject {query}
+		#subject_metaid_ : Subject
+		+toTriples() : Triples {query}
+		#world_ : librdf_world*
+		+createMetaId(librdf_model* model, std::string id_base) : std::string {query}
+	}
+
+
+
+
+	class PhysicalProcess {
+		+PhysicalProcess()
+		+PhysicalProcess(librdf_world* world, Subject metaid, PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks, Mediators mediators)
+		-mediators_ : Mediators
+		+getMediators() : Mediators& {query}
+		-sinks_ : Sinks
+		+getSinks() : Sinks& {query}
+		-sources_ : Sources
+		+getSources() : Sources& {query}
+		+toTriples() : Triples {query}
+		+createMetaId(librdf_model* model, std::string base_metaid) : std::string {query}
+	}
+
+
+
+
+	class PhysicalPropertyResource {
+		+PhysicalPropertyResource()
+		+PhysicalPropertyResource(librdf_world* world, RDFURINode node)
+		+PhysicalPropertyResource(librdf_world* world, std::string node)
+		+toIsVersionOfTriple(Subject subject_metaid) : Triple {query}
+		+toIsVersionOfTriple(std::string subject_metaid) : Triple {query}
+		-validate() : void
+	}
+
+
+
+
+	class Predicate {
+		+Predicate()
+		+Predicate(librdf_world* world, const std::string& namespace_, std::string term, std::string prefix)
+		+{static} verify(std::vector<std::string> valid_terms, const std::string& term) : int
+		+toRdfNode() : librdf_node*
+		#world_ : librdf_world*
+		#uri_node_ : std::shared_ptr<RDFURINode>
+		#namespace_ : std::string
+		#prefix_ : std::string
+		+str() : std::string
+		#term_ : std::string
+		#uri_ : std::string
+		+getNamespace() : std::string& {query}
+		+getPrefix() : std::string& {query}
+		+getTerm() : std::string& {query}
+		+getUri() : std::string& {query}
+		+setNamespace(const std::string& ns) : void
+		+setPrefix(const std::string& prefix) : void
+	}
+
+
+
+
+	class Query {
+	}
+
+
+
+
+	class RDF {
+		+RDF()
+		+RDF(librdf_world* world, raptor_world* raptor_world_, librdf_storage* storage, librdf_model* model)
+		+RDF(const RDF& libRdfModel)
+		+RDF(RDF&& libRdfModel)
+		+~RDF()
+		+toEditor(std::string xml, XmlAssistantType type) : Editor
+		+{static} init() : LibRDFObjectsTuple
+		+{static} fromFile(std::string filename) : RDF
+		+{static} fromOmex(std::string filename_or_url) : RDF
+		+{static} fromStream(librdf_stream* stream) : RDF
+		+{static} fromString(const std::string& str, std::string format) : RDF
+		+{static} fromUrl(std::string url) : RDF
+		+operator=(const RDF& libRdfModel) : RDF&
+		+operator=(RDF&& libRdfModel) : RDF&
+		+operator!=(const RDF& rhs) : bool {query}
+		+operator==(const RDF& rhs) : bool {query}
+		+getModel() : librdf_model* {query}
+		-model_ : librdf_model*
+		+getStorage() : librdf_storage* {query}
+		-storage_ : librdf_storage*
+		+toStream() : librdf_stream*
+		-base_uri_ : librdf_uri*
+		+getBaseUri() : librdf_uri* {query}
+		+getWorld() : librdf_world* {query}
+		-world_ : librdf_world*
+		+getRaptorWorld() : raptor_world* {query}
+		-raptor_world_ : raptor_world*
+		-namespaces_ : semsim::NamespaceMap
+		+{static} fromXML(const std::string& filename, std::string format) : semsim::RDF
+		+query(std::string query_str, std::string query_format, std::string results_mime_type) : semsim::RDF
+		-makeWriter(const std::string& format) : semsim::Writer
+		+{static} listOptions() : std::ostringstream
+		+getBaseUriAsString() : std::string {query}
+		+toString(const std::string& format, std::string base_uri) : std::string
+		+propagateNamespacesFromParser(std::vector<std::string> seen_namespaces) : std::unordered_map<std::string , std::string>
+		+getNamespaces() : std::unordered_map<std::string , std::string>& {query}
+		-seen_namespaces_ : std::vector<std::string>
+		+setBaseUri(const std::string& baseUri) : void
+		+setBaseUri(librdf_uri* base_uri) : void
+		+setModel(librdf_model* model) : void
+		+setNamespaces(const std::unordered_map<std::string, std::string>& namespaces) : void
+		+setRaptorWorld(raptor_world* raptorWorldPtr) : void
+		+setStorage(librdf_storage* storage) : void
+		+setWorld(librdf_world* world) : void
+		+toFile(std::string format) : void
+	}
+
+
+
+
+	class RDFBlankNode {
+		+RDFBlankNode(librdf_world* world, std::string value, const char* xml_language, bool is_wf_xml)
+		+toRdfNode() : librdf_node*
+		+str() : std::string
+	}
+
+
+
+
+	class RDFLiteralNode {
+		+RDFLiteralNode(librdf_world* world, std::string value, std::string data_type, const char* xml_language, bool is_wf_xml)
+		-is_typed_literal : bool
+		+toRdfNode() : librdf_node*
+		-data_type_uri : std::string
+		+str() : std::string
+	}
+
+
+
+
+	abstract class RDFNode {
+		+RDFNode(librdf_world* world, std::string value, const char* xml_language, bool is_wf_xml)
+		#is_wf_xml_ : bool
+		#xml_language_ : const char*
+		+{abstract} toRdfNode() : librdf_node*
+		#world_ : librdf_world*
+		+{abstract} str() : std::string
+		#value_ : std::string
+	}
+
+
+
+
+	class RDFURINode {
+		+RDFURINode(librdf_world* world, std::string value, const char* xmlLanguage, bool isWfXml)
+		+toRdfNode() : librdf_node*
+		+str() : std::string
+	}
+
+
+
+
+	class RaptorUtils {
+		+{static} raptorUriToTerm(raptor_world* world, raptor_uri* uri) : raptor_term*
+		+{static} raptorStringToUri(raptor_world* world, const unsigned char* str) : raptor_uri*
+		+{static} raptorUriToString(raptor_uri* u) : std::string
+		+{static} raptorTermToString(raptor_term* term) : unsigned char*
+	}
+
+
+
+
+	class Reader {
+		+Reader(librdf_world* world, librdf_model* model, std::string format)
+		+getModel() : librdf_model* {query}
+		-model_ : librdf_model*
+		+getParser() : librdf_parser* {query}
+		-makeParser(std::string format) : librdf_parser*
+		-parser_ : librdf_parser*
+		-base_uri_ : librdf_uri*
+		+getBaseUri() : librdf_uri* {query}
+		+getWorld() : librdf_world* {query}
+		-world_ : librdf_world*
+		+getRaptorWorld() : raptor_world* {query}
+		-raptor_world_ptr_ : raptor_world*
+		-format_ : std::string
+		+fromString(const std::string& rdf_string) : std::string
+		+getFormat() : std::string& {query}
+		+getSeenNamespaces() : std::vector<std::string>
+		+getValidParserNames() : std::vector<std::string>& {query}
+		+fromFile(const std::string& filename) : void
+		+setBaseUri(const std::string& baseUri) : void
+		+setFormat(const std::string& f) : void
+		+setOption(const std::string& option, const std::string& value) : void
+	}
+
+
+
+
+	class Resource {
+		+Resource()
+		+Resource(librdf_world* world, const RDFLiteralNode& node)
+		+Resource(librdf_world* world, const RDFURINode& node)
+		+Resource(librdf_world* world, const RDFBlankNode& node)
+		#rdf_node_ptr_ : RDFNodePtr
+		+toRdfNode() : librdf_node* {query}
+		#world_ : librdf_world*
+		+str() : std::string {query}
+	}
+
+
+
+
+	class SBMLAssistant {
+		+getValidElements() : std::vector<std::string>& {query}
+		+XmlAssistant : using XmlAssistant::
+	}
+
+
+
+
+	class SemSim {
+		+SemSim()
+		+SemSim(librdf_world* world, const std::string& term)
+	}
+
+
+
+
+	class SemsimCombineArchive {
+		+{static} fromFile(const std::string& file) : SemsimCombineArchive
+		+{static} fromUrl(const std::string& url, const std::string& output_filename) : semsim::SemsimCombineArchive
+		+CombineArchive : using CombineArchive::
+	}
+
+
+
+
+	class SemsimUtils {
+		+SemsimUtils()
+		+{static} exists(const std::string& filename) : bool
+		+{static} removeFile(const std::string& filename) : int
+		+splitStringBy(const std::string& str, char delimiter) : std::vector<std::string>
+		+{static} download(const std::string& url, std::string filename) : void
+		+{static} removeIfExists(const std::string& filename) : void
+	}
+
+
+
+
+	class SinkParticipant {
+		+SinkParticipant(librdf_world* world, std::string subject, Resource resource, double multiplier, std::string physicalEntityReference)
+		-multiplier_ : double
+		-physicalEntityReference_ : std::string
+	}
+
+
+
+
+	class SourceParticipant {
+		+SourceParticipant(librdf_world* world, std::string subject, Resource resource, double multiplier, std::string physicalEntityReference)
+	}
+
+
+
+
+	class Subject {
+		+Subject()
+		+Subject(librdf_world* world, const RDFBlankNode& node)
+		+Subject(librdf_world* world, const RDFURINode& node)
+		-rdf_node_ptr_ : RDFNodePtr
+		+toRdfNode() : librdf_node* {query}
+		-world_ : librdf_world*
+		+str() : std::string {query}
+	}
+
+
+
+
+	class Triple {
+		+Triple(librdf_world* world, Subject subject, PredicatePtr predicate_ptr, Resource resource)
+		+Triple(librdf_world* world, Subject subject, const Predicate& predicate, Resource resource)
+		+getPredicatePtr() : PredicatePtr {query}
+		-predicate_ptr_ : PredicatePtr
+		+getResource() : Resource {query}
+		-resource_ : Resource
+		+getSubject() : Subject {query}
+		-subject_ : Subject
+		+toStatement() : librdf_statement*
+		#world_ : librdf_world*
+	}
+
+
+
+
+	class TripleList {
+		+TripleList()
+		+TripleList(const std::vector<Triple>& triples)
+		+operator!=(const TripleList& rhs) : bool {query}
+		+operator==(const TripleList& rhs) : bool {query}
+		+operator[](unsigned long n) : semsim : : Triple&
+		-triple_list_ : std::vector<Triple>
+		+emplace_back(const Subject& subject, const Predicate& predicate, const Resource& resource) : void
+		+push_back(const Triple& triple) : void
+	}
+
+
+
+
+	class Writer {
+		+Writer(librdf_world* world_, librdf_model* model_, std::string base_uri, std::string format)
+		-model_ : librdf_model*
+		-serializer : librdf_serializer*
+		-base_uri_ : librdf_uri*
+		-world_ : librdf_world*
+		-raptor_world_ptr_ : raptor_world*
+		-format_ : std::string
+		+print() : std::string
+		+toString() : std::string
+		+registerNamespace(const std::string& ns, const std::string& prefix) : void
+		+registerNamespace(const std::unordered_map<std::string, std::string>& ns_map) : void
+		+setFormat(const std::string& format) : void
+		+setOption(const std::string& option, const std::string& value) : void
+		+setWorld(librdf_world* world_) : void
+		+toFile(std::string format) : void
+	}
+
+
+
+
+	class XmlAssistant {
+		+XmlAssistant(std::string xml, std::string base, int metaid_num_digits)
+		-metaid_num_digits_ : int
+		+addMetaIds() : std::pair<std::string , std::vector<std::string> >
+		-metaid_base : std::string
+		-xml_ : std::string
+		+getValidElements() : std::vector<std::string>& {query}
+		-addMetaIdsRecursion(xmlNode* a_node, std::vector<std::string>& seen_metaids) : void
+		-generateMetaId(std::vector<std::string>& seen_metaids, long count, const MetaID& metaid_gen, std::string& id) : void
+	}
+
+
+
+
+	class XmlAssistantFactory {
+		+{static} generate(const std::string& xml, XmlAssistantType type) : XmlAssistantPtr
+	}
+
+
+
+
+	enum AnnotationType {
+		PHYSICAL_ENTITY
+		PHYSICAL_FORCE
+		PHYSICAL_PROCESS
+		SINGULAR
+	}
+
+
+
+
+	enum XmlAssistantType {
+		ASSISTANT_TYPE_CELLML
+		ASSISTANT_TYPE_OTHER
+		ASSISTANT_TYPE_SBML
+	}
+
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+	Exception <|-- InappropriateResourceException
+
+
+
+
+	Exception <|-- LibRDFException
+
+
+
+
+	Exception <|-- NotImplementedException
+
+
+
+
+	Exception <|-- NullPointerException
+
+
+
+
+	Participant <|-- MediatorParticipant
+
+
+
+
+	Participant <|-- SinkParticipant
+
+
+
+
+	Participant <|-- SourceParticipant
+
+
+
+
+	PhysicalPhenomenon <|-- PhysicalEntity
+
+
+
+
+	PhysicalPhenomenon <|-- PhysicalForce
+
+
+
+
+	PhysicalPhenomenon <|-- PhysicalProcess
+
+
+
+
+	Predicate <|-- BiomodelsBiologyQualifier
+
+
+
+
+	Predicate <|-- BiomodelsModelQualifier
+
+
+
+
+	Predicate <|-- DCTerm
+
+
+
+
+	Predicate <|-- SemSim
+
+
+
+
+	RDFNode <|-- RDFBlankNode
+
+
+
+
+	RDFNode <|-- RDFLiteralNode
+
+
+
+
+	RDFNode <|-- RDFURINode
+
+
+
+
+	Resource <|-- PhysicalPropertyResource
+
+
+
+
+	XmlAssistant <|-- CellMLAssistant
+
+
+
+
+	XmlAssistant <|-- SBMLAssistant
+
+
+
+
+
+
+/' Aggregation relationships '/
+
+
+	CellMLAssistant *-- XmlAssistant
+
+
+
+
+	CompositeAnnotation *-- PhysicalPhenomenon
+
+
+
+
+	CompositeAnnotation *-- PhysicalPropertyResource
+
+
+
+
+	InappropriateResourceException *-- Exception
+
+
+
+
+	LibRDFException *-- Exception
+
+
+
+
+	NotImplementedException *-- Exception
+
+
+
+
+	NullPointerException *-- Exception
+
+
+
+
+	Participant *-- Resource
+
+
+
+
+	PhysicalEntity *-- MetaID
+
+
+
+
+	PhysicalEntity *-- Resource
+
+
+
+
+	PhysicalPhenomenon *-- PhysicalPropertyResource
+
+
+
+
+	PhysicalPhenomenon *-- Subject
+
+
+
+
+	Predicate *-- RDFURINode
+
+
+
+
+	SBMLAssistant *-- XmlAssistant
+
+
+
+
+	Triple *-- Resource
+
+
+
+
+	Triple *-- Subject
+
+
+
+
+	TripleList *-- Triple
+
+
+
+
+
+
+
+/' Dependency relationships '/
+
+
+	AnnotationType <.. PhysicalPhenomenon
+
+
+
+
+	MetaID <.. MetaID
+
+
+
+
+	MetaID <.. MetaID
+
+
+
+
+	MetaID <.. XmlAssistant
+
+
+
+
+	Participant <.. Editor
+
+
+
+
+	PhysicalPhenomenon <.. CompositeAnnotation
+
+
+
+
+	PhysicalPhenomenon <.. CompositeAnnotation
+
+
+
+
+	PhysicalPhenomenon <.. Editor
+
+
+
+
+	PhysicalPropertyResource <.. CompositeAnnotation
+
+
+
+
+	PhysicalPropertyResource <.. CompositeAnnotation
+
+
+
+
+	PhysicalPropertyResource <.. PhysicalEntity
+
+
+
+
+	PhysicalPropertyResource <.. PhysicalForce
+
+
+
+
+	PhysicalPropertyResource <.. PhysicalPhenomenon
+
+
+
+
+	PhysicalPropertyResource <.. PhysicalProcess
+
+
+
+
+	Predicate <.. Editor
+
+
+
+
+	Predicate <.. Participant
+
+
+
+
+	Predicate <.. Participant
+
+
+
+
+	Predicate <.. Triple
+
+
+
+
+	Predicate <.. Triple
+
+
+
+
+	Predicate <.. TripleList
+
+
+
+
+	RDF <.. RDF
+
+
+
+
+	RDF <.. RDF
+
+
+
+
+	RDF <.. RDF
+
+
+
+
+	RDF <.. RDF
+
+
+
+
+	RDF <.. RDF
+
+
+
+
+	RDF <.. RDF
+
+
+
+
+	RDFBlankNode <.. Resource
+
+
+
+
+	RDFBlankNode <.. Subject
+
+
+
+
+	RDFLiteralNode <.. Resource
+
+
+
+
+	RDFURINode <.. PhysicalPropertyResource
+
+
+
+
+	RDFURINode <.. Resource
+
+
+
+
+	RDFURINode <.. Subject
+
+
+
+
+	Resource <.. Editor
+
+
+
+
+	Resource <.. Editor
+
+
+
+
+	Resource <.. Editor
+
+
+
+
+	Resource <.. MediatorParticipant
+
+
+
+
+	Resource <.. Participant
+
+
+
+
+	Resource <.. PhysicalEntity
+
+
+
+
+	Resource <.. PhysicalEntity
+
+
+
+
+	Resource <.. SinkParticipant
+
+
+
+
+	Resource <.. SourceParticipant
+
+
+
+
+	Resource <.. Triple
+
+
+
+
+	Resource <.. Triple
+
+
+
+
+	Resource <.. TripleList
+
+
+
+
+	Subject <.. Editor
+
+
+
+
+	Subject <.. PhysicalEntity
+
+
+
+
+	Subject <.. PhysicalForce
+
+
+
+
+	Subject <.. PhysicalPhenomenon
+
+
+
+
+	Subject <.. PhysicalProcess
+
+
+
+
+	Subject <.. PhysicalPropertyResource
+
+
+
+
+	Subject <.. Triple
+
+
+
+
+	Subject <.. Triple
+
+
+
+
+	Subject <.. TripleList
+
+
+
+
+	Triple <.. Editor
+
+
+
+
+	Triple <.. Editor
+
+
+
+
+	Triple <.. Editor
+
+
+
+
+	Triple <.. Editor
+
+
+
+
+	Triple <.. TripleList
+
+
+
+
+	Triple <.. TripleList
+
+
+
+
+	TripleList <.. TripleList
+
+
+
+
+	TripleList <.. TripleList
+
+
+
+
+	XmlAssistant <.. Editor
+
+
+
+
+	XmlAssistant <.. RDF
+
+
+
+
+	XmlAssistant <.. XmlAssistantFactory
+
+
+}
+
+
+
+@enduml
