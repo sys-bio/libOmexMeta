@@ -6,7 +6,8 @@
 #include <utility>
 #include "Writer.h"
 #include "semsim/SemSim.h"
-
+#include <regex>
+#include "semsim/Error.h"
 
 void semsim::Writer::setWorld(librdf_world *w) {
     this->world_ = w;
@@ -18,7 +19,7 @@ semsim::Writer::Writer(librdf_world *world_, librdf_model *model_, std::string b
     if (!world_) {
         throw std::invalid_argument("World argument invalid");
     }
-
+    this->validateBaseUri();
     this->base_uri_ = librdf_new_uri(world_, (const unsigned char *) base_uri.c_str());
     if (!base_uri_) {
         throw std::invalid_argument("base_uri_ argument invalid");
@@ -63,7 +64,7 @@ void semsim::Writer::registerNamespace(const std::string &ns, const std::string 
     librdf_free_uri(ns_uri);
 }
 
-void semsim::Writer::registerNamespace(const std::unordered_map<std::string, std::string>& ns_map) {
+void semsim::Writer::registerNamespace(const std::unordered_map<std::string, std::string> &ns_map) {
     for (auto &i : ns_map) {
         registerNamespace(i.first, i.second);
     }
@@ -102,6 +103,18 @@ void semsim::Writer::toFile(std::string format) {
 
 void semsim::Writer::setFormat(const std::string &format) {
     Writer::format_ = format;
+}
+
+void semsim::Writer::validateBaseUri() {
+    std::regex file_regex("^file://");
+    std::smatch m;
+    std::string uri_str = (const char*) librdf_uri_as_string(base_uri_);
+    if (uri_str.rfind("file://", 0) != 0){
+        std::ostringstream err;
+        err << "base uri: " << base_uri_ << " should ";
+        err << "begin with file://";
+        throw ValueException(err.str());
+    }
 }
 
 

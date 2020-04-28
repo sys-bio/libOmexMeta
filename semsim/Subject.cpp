@@ -9,6 +9,7 @@ namespace semsim {
     Subject::Subject(librdf_world *world, const RDFURINode &node)
             : world_(world) {
         this->rdf_node_ptr_ = std::make_shared<RDFURINode>(node);
+
     }
 
     Subject::Subject(librdf_world *world, const RDFBlankNode &node)

@@ -101,24 +101,45 @@ namespace Legend {
 	class LibRDFException
 
 
-	class Participant
+	class Participant {
+	    toTriples : std::vector<Triple>
+    }
 
-	class SinkParticipant
+	class SinkParticipant{
+	    toTriples : std::vector<Triple>
+    }
 
-	class SourceParticipant
-	class MediatorParticipant
+	class SourceParticipant{
+	    toTriples : std::vector<Triple>
+    }
+	class MediatorParticipant{
+	    toTriples : std::vector<Triple>
+    }
 
 
 
-	class PhysicalEntity
+	class PhysicalEntity {
+	    toTriples : std::vector<Triple>
+	}
 
-	class PhysicalForce
+	class PhysicalForce {
+	    toTriples : std::vector<Triple>
+    }
 
-	class PhysicalPhenomenon
+	class PhysicalPhenomenon {
+	    toTriples : std::vector<Triple>
+    }
+
+    note top of PhysicalPhenomenon {
+        aka PropertyBearer. The
+        name is negotiable.
+    }
 
 	class PhysicalPhenomenonPtr <<typedef shared_ptr>>
 
-	class PhysicalProcess
+	class PhysicalProcess {
+	    toTriples : std::vector<Triple>
+    }
 
 	class PhysicalPropertyResource
 

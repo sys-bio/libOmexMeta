@@ -14,14 +14,13 @@ add_executable(semsim-tests
         WriterTests.cpp
         EditorTests.cpp
         RDFTests.cpp
-        #        SemsimCombineArchiveTests.cpp
         ParticipantTests.cpp
         PhysicalPropertyTests.cpp
         PhysicalEntityTests.cpp
         PhysicalPhenomenonTests.cpp
-        CompositeAnnotationTests.cpp
         PhysicalProcessTests.cpp
         PhysicalForceTests.cpp
+        SemsimCombineArchiveTests.cpp
         )
 
 
