@@ -10,8 +10,8 @@
 
 #include "combine/combinearchive.h"
 #include "omex/CaContent.h"
-#include "omex/CaReader.h"
 #include "omex/CaOmexManifest.h"
+#include "omex/CaReader.h"
 #include "combine/omexdescription.h"
 
 class SemsimCombineArchiveTests : public ::testing::Test {
@@ -23,25 +23,40 @@ public:
 
 };
 
-TEST_F(SemsimCombineArchiveTests, TestThatUrlIsNotFil3e) {
+TEST_F(SemsimCombineArchiveTests, TestThatUrlIsNotFile) {
     semsim::SemsimCombineArchive combineArchive = semsim::SemsimCombineArchive::fromUrl(
             samples.gold_standard_url2, samples.gold_standard_filename2);
     combineArchive.cleanUp();
 }
 
 TEST_F(SemsimCombineArchiveTests, Testy) {
-    std::string filename = "/mnt/d/libsemsim/tests/goldstandard1.omex";
+    std::string filename = "/mnt/d/libsemsim/tests/Smith_2004.omex";
 
     CombineArchive combineArchive;
     combineArchive.initializeFromArchive(filename);
 
     int num_entries = combineArchive.getNumEntries();
 
-    std::cout << num_entries << std::endl;
+    std::cout << "number of entries: " << num_entries << std::endl;
     auto locs = combineArchive.getAllLocations();
     for (auto &it : locs) {
         std::cout << it << std::endl;
     }
+
+    OmexDescription description = combineArchive.getMetadataForLocation(locs[1]);
+    std::cout << description.toXML() << std::endl;
+
+//    const CaContent *entry = combineArchive.getEntry(1);
+//    std::cout << entry->getLocation() << std::endl;
+//    std::cout << entry->getAnnotationString() << std::endl;
+    std::cout << combineArchive.extractEntryToString("./model/smith_2004.rdf") << std::endl;
+
+
+//    std::cout << entry->getCrossRef(0) << std::endl;
+//    for (unsigned int i = 0; i < entry->getNumCrossRefs(); i++) {
+//        std::cout << i << ": " << entry->getCrossRef(i)->getLocation() << std::endl;
+//    }
+
 }
 
 TEST_F(SemsimCombineArchiveTests, Testz) {

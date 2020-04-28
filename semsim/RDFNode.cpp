@@ -55,25 +55,42 @@ namespace semsim {
         std::string identifier_dot_org = "https://identifiers.org/";
         std::regex identifiers_regex(identifier_dot_org);
         std::regex http_regex("https://");
-        std::regex identifiers_org_form1("^(?![https://])([A-Za-z0-9]*):{1}(\\S*)");
-        std::regex identifiers_org_form2("^(?![https://])([A-Za-z0-9]*)/{1}(\\S*)");
+        std::regex identifiers_org_form1("^(?!file://)(?!https://)([A-Za-z0-9]+)/(\\S*)");
+        std::regex identifiers_org_form2("^(?!file://)(?!https://)([A-Za-z0-9]+):(\\S*)");
+        std::regex file_regex("file://");
 
         std::smatch m;
         std::string x;
+        // if we find identifiers.org form 1
         if (std::regex_search(value_, m, identifiers_org_form1)) {
-            // if its not html string check for form uniprot:identifier
-            x = identifier_dot_org + std::string(m[1]) + "/" + std::string(m[2]);
-            return x;
-        } else if (std::regex_search(value_, m, identifiers_org_form2)) {
-            // if its not html string check for form uniprot/identifier
             return identifier_dot_org + std::string(m[1]) + "/" + std::string(m[2]);
-        } else {
+        }
+
+            // if we find identifiers.org form 2
+        else if (std::regex_search(value_, m, identifiers_org_form2)) {
+            return identifier_dot_org + std::string(m[1]) + "/" + std::string(m[2]);
+        }
+
+            // if we find a file pattern
+        else if (std::regex_search(value_, m, file_regex)) {
             return value_;
         }
+
+            // if we find a file pattern
+        else if (std::regex_search(value_, m, http_regex)) {
+            return value_;
+        }
+
+            // all other entries are considered local uri/iri's
+        else {
+            return  value_;
+        }
+
     }
 
     librdf_node *RDFURINode::toRdfNode() {
         // todo does str need to be relative to base???
+
         return librdf_new_node_from_uri_string(world_, (const unsigned char *) str().c_str());
     }
 
@@ -82,7 +99,7 @@ namespace semsim {
  * RDFBlankNode implementation
  */
     RDFBlankNode::RDFBlankNode(librdf_world *world, std::string value, const char *xml_language, bool is_wf_xml) :
-            RDFNode(world, value, xml_language, is_wf_xml) {
+            RDFNode(world, std::move(value), xml_language, is_wf_xml) {
 
     }
 

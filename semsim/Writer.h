@@ -34,6 +34,7 @@ namespace semsim {
             "html",
         };
 
+        void validateBaseUri();
     public:
 
         Writer(librdf_world *world_, librdf_model *model_, std::string base_uri,
@@ -42,6 +43,7 @@ namespace semsim {
         void setFormat(const std::string &format);
 
         void setWorld(librdf_world *world_);
+
 
         std::string toString();
 

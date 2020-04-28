@@ -6,9 +6,6 @@ set(SEMSIM_SOURCES
         Predicate.h Predicate.cpp
         Resource.cpp Resource.h
         Triple.h Triple.cpp
-#        RaptorUtils.cpp RaptorUtils.h
-#        SemsimCombineArchive.cpp SemsimCombineArchive.h
-
         SemsimUtils.cpp SemsimUtils.h
         MetaID.cpp MetaID.h
         XmlAssistant.cpp XmlAssistant.h
@@ -17,7 +14,17 @@ set(SEMSIM_SOURCES
         Writer.h Writer.cpp
         RDF.cpp RDF.h
         SemSim.h
-        Participant.cpp Participant.h PhysicalEntity.cpp PhysicalEntity.h PhysicalPhenomenon.cpp PhysicalPhenomenon.h PhysicalProcess.cpp PhysicalProcess.h PhysicalPropertyResource.cpp PhysicalPropertyResource.h AnnotationType.h PhysicalForce.cpp PhysicalForce.h Query.cpp Query.h)
+        Participant.cpp Participant.h
+        PhysicalEntity.cpp PhysicalEntity.h
+        PhysicalPhenomenon.cpp PhysicalPhenomenon.h
+        PhysicalProcess.cpp PhysicalProcess.h
+        PhysicalPropertyResource.cpp PhysicalPropertyResource.h
+        AnnotationType.h
+        PhysicalForce.cpp PhysicalForce.h
+        Query.cpp Query.h
+        SemsimCombineArchive.cpp SemsimCombineArchive.h
+
+        )
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
