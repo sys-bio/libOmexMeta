@@ -20,24 +20,26 @@ namespace semsim {
         librdf_serializer *serializer;
 
         std::vector<std::string> valid_writer_names = {
-            "ntriples",
-            "turtle",
-            "rdfxml-xmp",
-            "rdfxml-abbrev",
-            "rdfxml",
-            "rss-1.0",
-            "atom",
-            "dot",
-            "json-triples",
-            "json",
-            "nquads",
-            "html",
+                "ntriples",
+                "turtle",
+                "rdfxml-xmp",
+                "rdfxml-abbrev",
+                "rdfxml",
+                "rss-1.0",
+                "atom",
+                "dot",
+                "json-triples",
+                "json",
+                "nquads",
+                "html",
         };
 
         void validateBaseUri();
+
     public:
 
-        Writer(librdf_world *world_, librdf_model *model_, std::string base_uri,
+        Writer(librdf_world *world_, librdf_model *model_,
+               const std::string& base_uri = "file://annotation.rdf",
                std::string format = "rdfxml-abbrev");
 
         void setFormat(const std::string &format);

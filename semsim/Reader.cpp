@@ -13,12 +13,12 @@
 
 using namespace std;
 
-semsim::Reader::Reader(librdf_world *world, librdf_model *model, std::string format) {
+semsim::Reader::Reader(librdf_world *world, librdf_model *model, std::string format, std::string base_uri) {
     this->world_ = world;
     this->raptor_world_ptr_ = librdf_world_get_raptor(this->world_);
     this->model_ = model;
     this->format_ = std::move(format);
-//    this->base_uri_ = librdf_new_uri(this->world_, (const unsigned char *) base_uri_.c_str());
+    this->base_uri_ = librdf_new_uri(this->world_, (const unsigned char *) base_uri.c_str());
 
     // generate new parsesr
     this->parser_ = makeParser(this->format_);
@@ -32,7 +32,7 @@ void semsim::Reader::setFormat(const std::string &f) {
     this->parser_ = makeParser(f);
 }
 
-librdf_parser *semsim::Reader::makeParser(std::string format) {
+librdf_parser *semsim::Reader::makeParser(const std::string& format) {
     if (std::find(valid_parser_names.begin(), valid_parser_names.end(), format) == valid_parser_names.end()) {
         std::ostringstream os;
         os << __FILE__ << ":" << __LINE__ << ": Format \"" << format
@@ -42,6 +42,7 @@ librdf_parser *semsim::Reader::makeParser(std::string format) {
         }
         throw std::invalid_argument(os.str());
     }
+    //todo read in  mime type from omex manifest, if you can
     parser_ = librdf_new_parser(world_, format.c_str(), nullptr, nullptr);
     if (!parser_) {
         throw std::invalid_argument("Failed to create new parser\n");
@@ -63,7 +64,7 @@ librdf_parser *semsim::Reader::makeParser(std::string format) {
 
 std::string semsim::Reader::fromString(const std::string &rdf_string) {
     // use a default base uri?
-    librdf_parser_parse_string_into_model(parser_, (const unsigned char *) rdf_string.c_str(), getBaseUri(), model_);
+    librdf_parser_parse_string_into_model(parser_, (const unsigned char *) rdf_string.c_str(), base_uri_, model_);
 
 }
 

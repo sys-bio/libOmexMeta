@@ -48,7 +48,8 @@ public:
     };
 
     void test_writer(std::string output_format, const std::string& expected) {
-        semsim::Writer writer(world, model, "./semsim_model.xml" , std::move(output_format));
+        semsim::Writer writer(world, model, "file://./semsim_model.xml" , std::move(output_format));
+        writer.registerNamespace("http://purl.org/dc/elements/1.1/", "dcterms");
         std::string actual = writer.toString();
         std::cout << actual << std::endl;
         ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -63,9 +64,9 @@ TEST_F(WriterTests, TestDefaultConstructor) {
 
 TEST_F(WriterTests, TestWriteModelToRdfXml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"./semsim_model.xml\">\n"
+                           "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./semsim_model.xml\">\n"
                            "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
-                           "    <dc:title>My Home Page</dc:title>\n"
+                           "    <dcterms:title>My Home Page</dcterms:title>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     test_writer("rdfxml", expected);
@@ -78,13 +79,12 @@ TEST_F(WriterTests, TestWriteModelTontriples) {
 //todo test output format validator
 
 TEST_F(WriterTests, TestWriteModelToturtle) {
-    std::string expected = "@base <./semsim_model.xml> .\n"
+    std::string expected = "@base <file://./semsim_model.xml> .\n"
                            "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <http://purl.org/dc/elements/1.1/> .\n"
+                           "@prefix dcterms: <http://purl.org/dc/elements/1.1/> .\n"
                            "\n"
                            "<http://www.dajobe.org/>\n"
-                           "    dc:title \"My Home Page\" .\n"
-                           "\n";
+                           "    dcterms:title \"My Home Page\" .\n\n";
     test_writer("turtle", expected);
 }
 
@@ -120,11 +120,11 @@ TEST_F(WriterTests, TestWriteModelToRdfxmlXmp) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
-                           "<rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
+                           "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/elements/1.1/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xml:base=\"./semsim_model.xml\">\n"
+                           "   xml:base=\"file://./semsim_model.xml\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
-                           "    <dc:title>My Home Page</dc:title>\n"
+                           "    <dcterms:title>My Home Page</dcterms:title>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "</x:xmpmeta>\n"
@@ -136,11 +136,11 @@ TEST_F(WriterTests, TestWriteModelToRdfxmlXmp) {
 
 TEST_F(WriterTests, Testrdfxmlabbrev){
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
+                           "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/elements/1.1/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xml:base=\"./semsim_model.xml\">\n"
+                           "   xml:base=\"file://./semsim_model.xml\">\n"
                            "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
-                           "    <dc:title>My Home Page</dc:title>\n"
+                           "    <dcterms:title>My Home Page</dcterms:title>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
@@ -148,28 +148,21 @@ TEST_F(WriterTests, Testrdfxmlabbrev){
 }
 TEST_F(WriterTests, Testrdfxml){
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"./semsim_model.xml\">\n"
+                           "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./semsim_model.xml\">\n"
                            "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
-                           "    <dc:title>My Home Page</dc:title>\n"
+                           "    <dcterms:title>My Home Page</dcterms:title>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
     test_writer("rdfxml", expected);
 }
-TEST_F(WriterTests, Testrss1point0){
-    std::string expected = "";
-    test_writer("rss-1.0", expected);
-}
-TEST_F(WriterTests, Testatom){
-    std::string expected = "";
-    test_writer("atom", expected);
-}
+
 TEST_F(WriterTests, Testdot){
     std::string expected = "digraph {\n"
                            "\trankdir = LR;\n"
                            "\tcharset=\"utf-8\";\n"
                            "\n"
-                           "\t\"Rhttp://www.dajobe.org/\" -> \"LMy Home Page\" [ label=\"dc:title\" ];\n"
+                           "\t\"Rhttp://www.dajobe.org/\" -> \"LMy Home Page\" [ label=\"dcterms:title\" ];\n"
                            "\n"
                            "\t// Resources\n"
                            "\t\"Rhttp://www.dajobe.org/\" [ label=\"http://www.dajobe.org/\", shape = ellipse, color = blue ];\n"
@@ -179,8 +172,9 @@ TEST_F(WriterTests, Testdot){
                            "\t// Literals\n"
                            "\t\"LMy Home Page\" [ label=\"My Home Page\", shape = record ];\n"
                            "\n"
-                           "\tlabel=\"\\n\\nModel:\\n./semsim_model.xml\\n\\nNamespaces:\\ndc: http://purl.org/dc/elements/1.1/\\n\";\n"
-                           "}\n";
+                           "\tlabel=\"\\n\\nModel:\\nfile://./semsim_model.xml\\n\\nNamespaces:\\ndcterms: http://purl.org/dc/elements/1.1/\\n\";\n"
+                           "}\n"
+                           "";
     test_writer("dot", expected);
 }
 TEST_F(WriterTests, TestJsonTriples){
@@ -248,23 +242,6 @@ TEST_F(WriterTests, Testnquads){
     std::string expected = "<http://www.dajobe.org/> <http://purl.org/dc/elements/1.1/title> \"My Home Page\" .\n";
     test_writer("nquads", expected);
 }
-
-TEST_F(WriterTests, TestBaseUri){
-    semsim::Writer writer(world, model, "base_uri.rdf");
-    std::string actual = writer.toString();
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xml:base=\"base_uri.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
-                           "    <ns1:title xmlns:ns1=\"http://purl.org/dc/elements/1.1/\">My Home Page</ns1:title>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-}
-
-
-//todo note down the librdf error = No RSS channel found...
-
 
 
 

@@ -53,7 +53,7 @@ semsim::RDF::RDF() {
     raptor_world_ = std::get<1>(objectsTuple);
     storage_ = std::get<2>(objectsTuple);
     model_ = std::get<3>(objectsTuple);
-    setBaseUri(librdf_new_uri(getWorld(), (const unsigned char *) "./semsim_model.rdf"));
+    base_uri_ = librdf_new_uri(getWorld(), (const unsigned char *) "file://./semsim_model.rdf");
 
     // add some predefined namespaces for the serializer.
 }
@@ -63,7 +63,7 @@ semsim::RDF::RDF(librdf_world *world, raptor_world *raptor_world_, librdf_storag
         raptor_world_(raptor_world_),
         storage_(storage),
         model_(model) {
-    setBaseUri(librdf_new_uri(getWorld(), (const unsigned char *) "./semsim_model.rdf"));
+    base_uri_ = librdf_new_uri(getWorld(), (const unsigned char *) "file://./semsim_model.rdf");
 
     // add some predefined namespaces for the serializer.
 
@@ -205,7 +205,7 @@ semsim::RDF semsim::RDF::fromFile(std::string filename) {
 
 semsim::RDF semsim::RDF::fromString(const std::string &str, std::string format) {
     RDF rdf;
-    Reader reader(rdf.getWorld(), rdf.getModel(), std::move(format));
+    Reader reader(rdf.getWorld(), rdf.getModel(), std::move(format), "file://./annotations.rdf");
     reader.fromString(str);
 
     // pull "seen" namespaces out of the parser and pass them to RDF class
@@ -227,7 +227,7 @@ semsim::RDF semsim::RDF::fromXML(const std::string &filename, std::string format
     librdf_model *model = std::get<3>(objectsTuple);
 
     // Read the xml
-    Reader reader(world, model, std::move(format));
+    Reader reader(world, model, std::move(format), "file://./annotations.rdf");
     reader.fromFile(filename);
 
     // construct an RDF object
@@ -249,11 +249,11 @@ semsim::RDF semsim::RDF::fromStream(librdf_stream *stream) {
     return rdf;
 }
 
-semsim::RDF semsim::RDF::fromOmex(std::string filename_or_url) {
+semsim::RDF semsim::RDF::fromOmex(const std::string& filename_or_url) {
     return semsim::RDF();
 }
 
-std::string semsim::RDF::toString(const std::string &format, std::string base_uri) {
+std::string semsim::RDF::toString(const std::string &format, const std::string& base_uri) {
     setBaseUri(base_uri);
     Writer writer = makeWriter(format);
     return writer.toString();
@@ -375,7 +375,7 @@ semsim::RDF semsim::RDF::query(std::string query_str, std::string query_format, 
     int x = librdf_model_add_statements(rdf.getModel(), stream);
     std::cout << "x is :" << x << std::endl;
     librdf_free_stream(stream);
-    std::cout << rdf.toString("rdfxml", std::__cxx11::string()) << std::endl;
+    std::cout << rdf.toString("rdfxml", "file://./annotations.rdf") << std::endl;
 
     raptor_uri *u = librdf_get_concept_schema_namespace(world_);
     raptor_uri *u2 = librdf_get_concept_ms_namespace(world_);

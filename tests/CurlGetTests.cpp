@@ -57,7 +57,7 @@ public:
 
 TEST_F(CurlGetTests, TestDownloadHtml) {
     //38kb
-    downloadAndCheckSize(regular_webpage_url, regular_webpage_filename, 39041);
+    downloadAndCheckSize(regular_webpage_url, regular_webpage_filename, 39053);
 }
 
 TEST_F(CurlGetTests, TestDownloadOmexFile) {

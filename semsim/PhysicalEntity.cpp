@@ -5,12 +5,6 @@
 #include "semsim/PhysicalEntity.h"
 #include "semsim/Triple.h"
 
-// todo perhaps the observer pattern for metaid's:
-//  the observed is a class storing all metaids in use.
-//  The observers are objects that need to know the metaids.
-//  Could have a superclass of all observers for implementing the method
-//  that receives observations???
-
 semsim::PhysicalEntity::PhysicalEntity(
         librdf_world *world,
         Subject metaid,

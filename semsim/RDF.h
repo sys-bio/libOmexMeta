@@ -77,9 +77,9 @@ namespace semsim {
 
         static RDF fromFile(std::string filename);
 
-        static RDF fromOmex(std::string filename_or_url);
+        static RDF fromOmex(const std::string& filename_or_url);
 
-        std::string toString(const std::string& format, std::string base_uri);
+        std::string toString(const std::string& format, const std::string& base_uri);
 
         static RDF fromString(const std::string &str, std::string format = "guess");
 
