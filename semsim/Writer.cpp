@@ -13,17 +13,18 @@ void semsim::Writer::setWorld(librdf_world *w) {
     this->world_ = w;
 }
 
-semsim::Writer::Writer(librdf_world *world_, librdf_model *model_, std::string base_uri, std::string format) {
+semsim::Writer::Writer(librdf_world *world_, librdf_model *model_,
+                       const std::string& base_uri, std::string format) {
     this->world_ = world_;
 
     if (!world_) {
         throw std::invalid_argument("World argument invalid");
     }
-    this->validateBaseUri();
     this->base_uri_ = librdf_new_uri(world_, (const unsigned char *) base_uri.c_str());
     if (!base_uri_) {
         throw std::invalid_argument("base_uri_ argument invalid");
     }
+    this->validateBaseUri();
 
     this->model_ = model_;
     if (!model_) {
@@ -79,10 +80,9 @@ void semsim::Writer::setOption(const std::string &option, const std::string &val
 
 std::string semsim::Writer::toString() {
     void *string = nullptr;
-    raptor_world *r = librdf_world_get_raptor(world_);
     raptor_iostream *iostr = raptor_new_iostream_to_string(raptor_world_ptr_, (void **) &string, nullptr, malloc);
     if (!iostr)
-        throw std::invalid_argument("You did a baad");
+        throw std::invalid_argument("raptor_iostream was not created in semsim::Writer::toString()");
 
     int failure = librdf_serializer_serialize_model_to_iostream(serializer, base_uri_, model_, iostr);
     if (failure) { // i.e. if non-0
@@ -108,12 +108,11 @@ void semsim::Writer::setFormat(const std::string &format) {
 void semsim::Writer::validateBaseUri() {
     std::regex file_regex("^file://");
     std::smatch m;
-    std::string uri_str = (const char*) librdf_uri_as_string(base_uri_);
-    if (uri_str.rfind("file://", 0) != 0){
-        std::ostringstream err;
-        err << "base uri: " << base_uri_ << " should ";
-        err << "begin with file://";
-        throw ValueException(err.str());
+    std::string uri_str = (const char *) librdf_uri_as_string(base_uri_);
+    std::cout << uri_str << std::endl;
+    if (uri_str.rfind("file://", 0) != 0) {
+        uri_str = "file://" + uri_str;
+        base_uri_ = librdf_new_uri(world_, (const unsigned char *) uri_str.c_str());
     }
 }
 

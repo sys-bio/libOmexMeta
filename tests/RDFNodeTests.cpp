@@ -78,7 +78,7 @@ TEST_F(RDFNodeTests, TestURIFromFile2) {
     semsim::RDFURINode rdfuriNode(world, "/mnt/d/libsemsim/tests/rdfxml.rdf");
     unsigned char *actual = raptor_uri_to_string(
             librdf_node_get_uri(rdfuriNode.toRdfNode()));
-    ASSERT_STREQ("file:///mnt/d/libsemsim/tests/rdfxml.rdf", (const char *) actual);
+    ASSERT_STREQ("/mnt/d/libsemsim/tests/rdfxml.rdf", (const char *) actual);
 }
 
 TEST_F(RDFNodeTests, TestURIFromFile3) {
@@ -113,7 +113,7 @@ TEST_F(RDFNodeTests, TestURIFromFile7) {
     semsim::RDFURINode rdfuriNode(world, ".\\tests\\rdfxml.rdf");
     unsigned char *actual = raptor_uri_to_string(
             librdf_node_get_uri(rdfuriNode.toRdfNode()));
-    ASSERT_STREQ("file://.\\tests\\rdfxml.rdf", (const char *) actual);
+    ASSERT_STREQ(".\\tests\\rdfxml.rdf", (const char *) actual);
 }
 
 
@@ -121,7 +121,7 @@ TEST_F(RDFNodeTests, TestURIFromFile8) {
     semsim::RDFURINode rdfuriNode(world, "./tests/rdfxml.rdf");
     unsigned char *actual = raptor_uri_to_string(
             librdf_node_get_uri(rdfuriNode.toRdfNode()));
-    ASSERT_STREQ("file://./tests/rdfxml.rdf", (const char *) actual);
+    ASSERT_STREQ("./tests/rdfxml.rdf", (const char *) actual);
 }
 
 TEST_F(RDFNodeTests, TestToNode) {

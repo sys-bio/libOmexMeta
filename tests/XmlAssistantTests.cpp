@@ -5,7 +5,8 @@
 #include "gtest/gtest.h"
 #include "SBMLFactory.h"
 #include "semsim/XmlAssistant.h"
-
+#include <chrono>
+#include <thread>
 
 class XmlAssistantTests : public ::testing::Test {
 public:
@@ -29,6 +30,8 @@ TEST_F(XmlAssistantTests, TestValidElements) {
 }
 
 TEST_F(XmlAssistantTests, TestMetaIdsAll) {
+    // time delay
+    std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::seconds(1));
     semsim::XmlAssistant xmlAssistant(sbml, "SemsimMetaid", 4);
     auto sbml_and_meta_ids = xmlAssistant.addMetaIds();
     sbml = sbml_and_meta_ids.first;
@@ -108,6 +111,8 @@ TEST_F(XmlAssistantTests, TestValidElementsSBML) {
 }
 
 TEST_F(XmlAssistantTests, TestMetaIdsSBML) {
+    std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::seconds(1));
+
     semsim::MetaID metaId("SemsimMetaid", 0, 4);
     semsim::SBMLAssistant assistant(sbml, "SemsimMetaid", 4);
     auto sbml_with_metaids = assistant.addMetaIds();

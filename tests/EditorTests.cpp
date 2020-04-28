@@ -30,7 +30,6 @@ public:
 
 TEST_F(EditorTests, TestMetaIds) {
     semsim::RDF rdf;
-    // todo this is a weak test: I should really go and get all the metaids using libxml for comparison
     semsim::Editor editor = rdf.toEditor(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
             semsim::ASSISTANT_TYPE_SBML);
@@ -76,11 +75,12 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation1) {
     std::string actual = rdf.toString("rdfxml", "MyModel.rdf");
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"./MyModel.xml\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://MyModel.rdf\">\n"
                            "  <rdf:Description rdf:about=\"SemsimMetaid0014\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -97,15 +97,14 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation2) {
     );
     editor.toRDF();
 
-    std::string actual = rdf.toString("turtle", std::__cxx11::string());
-    std::string expected = "@base <./MyModel.xml> .\n"
+    std::string actual = rdf.toString("turtle", "file://./annotations.rdf");
+    std::string expected = "@base <file://./annotations.rdf> .\n"
                            "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "\n"
                            "<SemsimMetaid0008>\n"
-                           "    bqbiol:isDescribedBy <pubmed:12991237> .\n"
-                           "\n"
-                           "";
+                           "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n"
+                           "\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -122,11 +121,11 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation3) {
     );
     editor.toRDF();
 
-    std::string actual = rdf.toString("rdfxml", std::__cxx11::string());
+    std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"./MyModel.xml\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"SemsimMetaid0008\">\n"
-                           "    <bqbiol:isDescribedBy rdf:resource=\"pubmed:12991237\"/>\n"
+                           "    <bqbiol:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
@@ -146,9 +145,9 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     );
     editor.toRDF();
 
-    std::string actual = rdf.toString("rdfxml", std::__cxx11::string());
+    std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"./MyModel.xml\">\n"
+                           "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"SemsimMetaid0008\">\n"
                            "    <dcterms:Description rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">Cardiomyocyte cytosolic ATP concentration</dcterms:Description>\n"
                            "  </rdf:Description>\n"
@@ -184,12 +183,12 @@ TEST_F(EditorTests, TestCompositeAnnotationPhysicalEntity) {
             )
     );
     editor.toRDF();
-    std::string actual = rdf.toString("rdfxml", std::__cxx11::string());
+    std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "         xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "         xml:base=\"./MyModel.xml\">\n"
+                           "         xml:base=\"file://MyModel.xml\">\n"
                            "    <rdf:Description rdf:about=\"VLV\">\n"
                            "        <bqbiol:isVersionOf rdf:resource=\"http://identifiers.org/opb/OPB_00154\"/>\n"
                            "        <bqbiol:isPropertyOf rdf:resource=\"#entity_0\"/>\n"
@@ -246,27 +245,27 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
     );
 
     editor.toRDF();
-    std::string actual = rdf.toString("rdfxml-abbrev", std::__cxx11::string());
+    std::string actual = rdf.toString("rdfxml-abbrev", "file://./annotations.rdf");
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "         xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "         xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
-                           "         xml:base=\"./MyModel.xml\">\n"
+                           "         xml:base=\"file://MyModel.xml\">\n"
                            "    <rdf:Description rdf:about=\"property_metaid_0\">\n"
                            "        <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB_00592\"/>\n"
-                           "        <bqbiol:isPropertyOf rdf:resource=\"./MyModel.xml#process_metaid_0\"/>\n"
+                           "        <bqbiol:isPropertyOf rdf:resource=\"file://MyModel.xml#process_metaid_0\"/>\n"
                            "    </rdf:Description>\n"
                            "    <rdf:Description rdf:about=\"source_0\">\n"
                            "        <semsim:hasMultiplier>1.0</semsim:hasMultiplier>\n"
-                           "        <semsim:hasPhysicalEntityReference rdf:resource=\"./MyModel.xml#species_metaid_0\"/>\n"
+                           "        <semsim:hasPhysicalEntityReference rdf:resource=\"file://MyModel.xml#species_metaid_0\"/>\n"
                            "    </rdf:Description>\n"
                            "    <rdf:Description rdf:about=\"sink_0\">\n"
                            "        <semsim:hasMultiplier>2.0</semsim:hasMultiplier>\n"
-                           "        <semsim:hasPhysicalEntityReference rdf:resource=\"./MyModel.xml#species_metaid_1\"/>\n"
+                           "        <semsim:hasPhysicalEntityReference rdf:resource=\"file://MyModel.xml#species_metaid_1\"/>\n"
                            "    </rdf:Description>\n"
                            "    <rdf:Description rdf:about=\"#mediator_0\">\n"
-                           "        <semsim:hasPhysicalEntityReference rdf:resource=\"./MyModel.xml#species_metaid_2\"/>\n"
+                           "        <semsim:hasPhysicalEntityReference rdf:resource=\"file://MyModel.xml#species_metaid_2\"/>\n"
                            "    </rdf:Description>\n"
                            "</rdf:RDF>\n";
     std::cout << actual << std::endl;
@@ -308,13 +307,13 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
     );
 
     editor.toRDF();
-    std::string actual = rdf.toString("rdfxml-abbrev", std::__cxx11::string());
+    std::string actual = rdf.toString("rdfxml-abbrev", "file://./annotations.rdf");
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "         xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "         xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
-                           "         xml:base=\"./MyModel.xml\">\n"
+                           "         xml:base=\"file://MyModel.xml\">\n"
                            "    <rdf:Description rdf:about=\"parameter_metaid_0\">\n"
                            "        <bqbiol:isPropertyOf rdf:resource=\"./MyModel.sbml#force_0\"/>\n"
                            "        <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB_01058\"/>\n"

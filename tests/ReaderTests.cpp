@@ -28,7 +28,7 @@ public:
         model = std::get<3>(objectsTuple);
     };
 
-    void assertModelSizesAreDifferentAfterParsing(const std::string &annotation_string) {
+    void assertModelSizesAreDifferentAfterParsing(const std::string &annotation_string) const {
         semsim::Reader reader(world, model, "rdfxml");
         int size_before = librdf_model_size(model);
         reader.fromString(annotation_string);
@@ -39,9 +39,19 @@ public:
 
 
 TEST_F(ReaderTests, TestReaderInstantiation) {
-    semsim::Reader reader(world, model, "rdfxml");
+    semsim::Reader reader(world, model, "rdfxml", "file://./annotations.rdf");
     ASSERT_TRUE(true);
 }
+
+
+TEST_F(ReaderTests, TestReaderGetBastURI) {
+    semsim::Reader reader(world, model, "rdfxml", "file://Base");
+    std::string x = (const char*) librdf_uri_as_string(reader.getBaseUri());
+    std::string expected = "file://Base";
+    ASSERT_STREQ(x.c_str(), expected.c_str());
+}
+
+
 
 
 TEST_F(ReaderTests, TestGetOptions) {
@@ -78,7 +88,7 @@ TEST_F(ReaderTests, TestGetOptions) {
 }
 
 TEST_F(ReaderTests, TestReaderInstantiation3) {
-    semsim::Reader reader(world, model, "rdfxml");
+    semsim::Reader reader(world, model, "rdfxml", "file://./annotations.rdf");
     librdf_parser *parser = reader.getParser();
 //    librdf_parser_set_feature(parser, (raptor_option*)0, nullptr, 1);
     unsigned int num_raptor_options = raptor_option_get_count();
@@ -151,8 +161,7 @@ TEST_F(ReaderTests, TestFromStringTabular_data1) {
 }
 
 TEST_F(ReaderTests, TestReaderReadsNamespaces) {
-    // todo: finish working out whether namespaces are ported into model when reading
-    semsim::Reader reader(world, model, "rdfxml");
+    semsim::Reader reader(world, model, "rdfxml", "file://./annotations.rdf");
     reader.fromString(samples.singular_annotation1);
 
     librdf_parser *parser = reader.getParser();
@@ -177,13 +186,13 @@ TEST_F(ReaderTests, TestReaderReadsNamespaces) {
 
 TEST_F(ReaderTests, TestEqualityBetweenModelPtrs) {
     semsim::SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);
-    semsim::Reader reader(world, model, "rdfxml");
+    semsim::Reader reader(world, model, "rdfxml", "file://./annotations.rdf");
     ASSERT_EQ(model, reader.getModel());
 }
 
 TEST_F(ReaderTests, TestParseNamespaces) {
     semsim::SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);
-    semsim::Reader reader(world, model, "rdfxml");
+    semsim::Reader reader(world, model, "rdfxml", "file://./annotations.rdf");
     reader.fromFile(samples.sbml_filename1);
     auto actual = reader.getSeenNamespaces();
     std::vector<std::string> expected = {
@@ -205,7 +214,7 @@ TEST_F(ReaderTests, TestSBMLFromFile1) {
     semsim::SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);
     std::cout << model << std::endl;
 
-    semsim::Reader reader(world, model, "rdfxml");
+    semsim::Reader reader(world, model, "rdfxml", "file://./annotations.rdf");
     int size_before = librdf_model_size(model);
     reader.fromFile(samples.sbml_filename1);
     int size_after = librdf_model_size(model);
@@ -223,7 +232,7 @@ TEST_F(ReaderTests, TestSBMLFromFile1) {
 //}
 
 TEST_F(ReaderTests, TestReadRDFBagFromTurtleString) {
-    semsim::Reader reader(world, model, "rdfxml");
+    semsim::Reader reader(world, model, "rdfxml", "file://./annotations.rdf");
 //    reader.fromString(samples.rdf_turtle_bag_example);
     semsim::SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);
     reader.fromFile(samples.sbml_filename1);

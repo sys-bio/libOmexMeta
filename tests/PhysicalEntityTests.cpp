@@ -33,9 +33,6 @@ public:
     };
 };
 
-//todo consider whether you should implement a wrapper for librdf_world
-//  as a singleton. Will that help for preventing the need for passing world
-//  everywhere? ?
 
 TEST_F(PhysicalEntityTests, TestGetSubjectMetaidStr) {
     semsim::RDF rdf;
@@ -221,8 +218,6 @@ TEST_F(PhysicalEntityTests, TestToTriple) {
     semsim::Triples triples = physicalEntity.toTriples();
     std::ostringstream actual;
 
-    // todo look at the concept of the context node in streams. Perhaps
-    //  this could help me group the annotations by metaid?
     for (auto &triple : triples) {
         actual << triple.getResource().str() << std::endl;
     }

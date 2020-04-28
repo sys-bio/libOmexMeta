@@ -54,10 +54,10 @@ namespace semsim {
     std::string RDFURINode::str() {
         std::string identifier_dot_org = "https://identifiers.org/";
         std::regex identifiers_regex(identifier_dot_org);
-        std::regex http_regex("https://");
-        std::regex identifiers_org_form1("^(?!file://)(?!https://)([A-Za-z0-9]+)/(\\S*)");
-        std::regex identifiers_org_form2("^(?!file://)(?!https://)([A-Za-z0-9]+):(\\S*)");
-        std::regex file_regex("file://");
+        std::regex http_regex("^https://");
+        std::regex identifiers_org_form1("^(?!file://)(?!https://)(?!http://)([A-Za-z0-9]+)[/:]{1}(\\S*)");
+//        std::regex identifiers_org_form2("^(?!file://)(?!https://)(?!http://)([A-Za-z0-9]+):(\\S*)");
+        std::regex file_regex("^file://");
 
         std::smatch m;
         std::string x;
@@ -65,23 +65,6 @@ namespace semsim {
         if (std::regex_search(value_, m, identifiers_org_form1)) {
             return identifier_dot_org + std::string(m[1]) + "/" + std::string(m[2]);
         }
-
-            // if we find identifiers.org form 2
-        else if (std::regex_search(value_, m, identifiers_org_form2)) {
-            return identifier_dot_org + std::string(m[1]) + "/" + std::string(m[2]);
-        }
-
-            // if we find a file pattern
-        else if (std::regex_search(value_, m, file_regex)) {
-            return value_;
-        }
-
-            // if we find a file pattern
-        else if (std::regex_search(value_, m, http_regex)) {
-            return value_;
-        }
-
-            // all other entries are considered local uri/iri's
         else {
             return  value_;
         }
