@@ -1,6 +1,8 @@
 @startuml
 
-class Subject {}
+class Subject {
+    + English : std:string
+}
 class Predicate {}
 class Resource {}
 

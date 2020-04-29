@@ -47,6 +47,16 @@ namespace semsim {
         );
     }
 
+    Triple Triple::fromStatement(librdf_world* world, librdf_statement *statement) {
+        Subject subject(world, statement->subject);
+        PredicatePtr predicatePtr = std::make_shared<Predicate>(
+                Predicate(world, statement->predicate)
+                );
+        Resource resource(world, statement->object);
+
+        return Triple(world, subject, predicatePtr, resource);
+    }
+
 
 }
 

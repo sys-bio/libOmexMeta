@@ -30,6 +30,11 @@ namespace semsim {
         return rdf_node_ptr_->str();
     }
 
+    Resource::Resource(librdf_world *world, librdf_node *node)
+        : world_(world), rdf_node_ptr_(RDFNode::fromRDFNode(world, node)){
+
+    }
+
 }
 
 

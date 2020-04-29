@@ -27,6 +27,8 @@ namespace semsim {
 
         Resource(librdf_world *world, const RDFBlankNode &node);
 
+        Resource(librdf_world* world, librdf_node* node);
+
         librdf_node *toRdfNode() const;
 
         std::string str() const;

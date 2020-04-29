@@ -34,6 +34,8 @@ namespace semsim {
 
         librdf_statement *toStatement();
 
+        static Triple fromStatement(librdf_world *world, librdf_statement* statement);
+
     };
 
     typedef std::vector<Triple> Triples;
