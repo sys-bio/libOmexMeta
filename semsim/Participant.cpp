@@ -21,7 +21,6 @@ namespace semsim {
     }
 
     Triples Participant::toTriples() const {
-
         Triples triples;
         triples.emplace_back(
                 world_,

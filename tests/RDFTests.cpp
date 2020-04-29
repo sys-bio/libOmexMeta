@@ -2170,14 +2170,35 @@ TEST_F(ReadAndWriteTests, SBML1) {
     ASSERT_EQ(expected, actual);
 }
 
+TEST_F(ReadAndWriteTests, TestCount) {
+    semsim::RDF rdf = semsim::RDF::fromString(samples.rdf_xml_seq_example, "rdfxml");
+    int actual = rdf.triplesCount();
+    int expected = 4;
+    ASSERT_EQ(expected, actual);
+}
+
+TEST_F(ReadAndWriteTests, TestToTriples) {
+    semsim::RDF rdf = semsim::RDF::fromString(samples.rdf_xml_seq_example, "rdfxml");
+    semsim::Triples triples = rdf.toTriples();
+    std::ostringstream actual;
+    for (auto &it : triples) {
+        actual << it.getSubject().str() << it.getPredicatePtr()->str() << it.getResource().str() << std::endl;
+    }
+    std::string expected = "http://example.org/favourite-fruithttp:/www.w3.org/1999/02/22-rdf-syntax-ns#typehttp://www.w3.org/1999/02/22-rdf-syntax-ns#Seq\n"
+                           "http://example.org/favourite-fruithttp:/www.w3.org/1999/02/22-rdf-syntax-ns#_1http://example.org/banana\n"
+                           "http://example.org/favourite-fruithttp:/www.w3.org/1999/02/22-rdf-syntax-ns#_2http://example.org/apple\n"
+                           "http://example.org/favourite-fruithttp:/www.w3.org/1999/02/22-rdf-syntax-ns#_3http://example.org/pear\n";
+    ASSERT_STREQ(expected.c_str(), actual.str().c_str());
+}
+
 TEST_F(ReadAndWriteTests, tesjhbt) {
     std::string q = "PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
                     "SELECT ?x ?y ?z\n"
                     "WHERE {?x ?y ?z }";
     semsim::RDF rdf = semsim::RDF::fromString(samples.composite_annotation_pp, "rdfxml");
 //    std::cout << rdf.toString("turtle") << std::endl;
-    semsim::RDF subrdf = rdf.query(q);
-    std::cout << subrdf.toString("rdfxml", "file://./annotations.rdf") << std::endl;
+//    semsim::RDF subrdf = rdf.query(q);
+//    std::cout << subrdf.toString("rdfxml", "file://./annotations.rdf") << std::endl;
 
 
 }

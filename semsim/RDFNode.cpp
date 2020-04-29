@@ -161,7 +161,7 @@ namespace semsim {
         }
 
         std::string RDFBlankNode::str() {
-            return "note yet imple";
+            return value_;
         }
 
         librdf_node *RDFBlankNode::toRdfNode() {

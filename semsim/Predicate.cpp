@@ -40,9 +40,6 @@ namespace semsim {
             prefix_ = "NotSet";
         }
 
-        std::cout << "prefix " << prefix_ << std::endl;
-
-
         if (namespace_.back() == '/') {
             this->uri_ = namespace_ + term_;
         } else {

@@ -107,6 +107,7 @@ namespace semsim {
          **/
         int getBindingsCount();
 
+        void runQuery();
 
     public:
 
