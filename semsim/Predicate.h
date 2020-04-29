@@ -10,11 +10,11 @@
 #include <algorithm>
 #include <sstream>
 #include "RDFNode.h"
+#include "unordered_map"
 
 namespace semsim {
     class Predicate {
     protected:
-        Predicate(librdf_world *world, librdf_node *node);
 
         librdf_world *world_;
         std::string namespace_, term_, prefix_;
@@ -35,7 +35,7 @@ namespace semsim {
         Predicate(librdf_world *world, const std::string &namespace_,
                   std::string term, std::string prefix);
 
-        Predicate(librdf_world *world, librdf_node * node, std::string &namespace_,
+        Predicate(librdf_world *world, librdf_node *node, std::string &namespace_,
                   std::string term, std::string prefix);
 
         librdf_node *toRdfNode();
@@ -52,6 +52,7 @@ namespace semsim {
 
         static int verify(std::vector<std::string> valid_terms, const std::string &term);
 
+        Predicate(librdf_world *world, librdf_node *node);
     };
 
     class BiomodelsBiologyQualifier : public Predicate {
@@ -77,14 +78,15 @@ namespace semsim {
         BiomodelsBiologyQualifier(librdf_world *world, const std::string &term);
 
     };
+
     class BiomodelsModelQualifier : public Predicate {
     public:
         std::vector<std::string> valid_terms_{
-            "is",
-            "isDerivedFrom",
-            "isDescribedBy",
-            "isInstanceOf",
-            "hasInstance",
+                "is",
+                "isDerivedFrom",
+                "isDescribedBy",
+                "isInstanceOf",
+                "hasInstance",
         };
 
         BiomodelsModelQualifier() = default;

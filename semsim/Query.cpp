@@ -118,7 +118,7 @@ namespace semsim {
     }
 
     ResultsMap Query::resultsAsMap() {
-        librdf_query_results* results_copy = nullptr;
+        librdf_query_results *results_copy = nullptr;
         results_copy = query_results_;
         ResultsMap map;
         for (int i = 0; i < getBindingsCount(); i++) {
@@ -140,38 +140,18 @@ namespace semsim {
         return map;
     }
 
-    ResultsMap Query::resultsAsMap2() {
-        librdf_stream* stream = resultsAsLibRdfStream();
-        bool done= false;
-        while (!done){
-            librdf_statement* stmt = librdf_stream_get_object(stream);
-            Triple triple::from_librdf_statement(stmt);
-            librdf_stream_next(stream);
-        }
-
-
-
-
-        librdf_query_results* results_copy = nullptr;
-        results_copy = query_results_;
-        ResultsMap map;
-        for (int i = 0; i < getBindingsCount(); i++) {
-            std::string binding_name = getBindingsName(i);
-            map[getBindingsName(i)] = std::vector<std::string>();
-        }
+    Triples Query::resultsAsTriples() {
+        librdf_stream *stream = resultsAsLibRdfStream();
         bool done = false;
+        Triples triples;
         while (!done) {
-            for (auto &key : map) {
-                map[key.first].push_back(getBindingValueByName(key.first));
-            }
-            int failed = next();
-            if (failed) {
+            librdf_statement *stmt = librdf_stream_get_object(stream);
+            triples.push_back(Triple::fromStatement(world_, stmt));
+            int finished = librdf_stream_next(stream);
+            if (finished)
                 done = true;
-            }
         }
-
-        librdf_query_results_finished(query_results_);
-        return map;
+        return triples;
     }
 
 
