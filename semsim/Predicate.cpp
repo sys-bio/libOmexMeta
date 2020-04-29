@@ -36,7 +36,7 @@ namespace semsim {
         }
         namespace_ = os1.str();
         term_ = v[v.size()];
-        prefix_ = Predicate::prefix_map(namespace_);
+        prefix_ = Predicate::prefix_map()[namespace_];
 
 
         if (namespace_.back() == '/') {
@@ -59,6 +59,8 @@ namespace semsim {
                 {"http://www.bhi.washington.edu/semsim#",    "semsim"},
         };
     }
+
+
 
     std::string Predicate::str() {
         return uri_;

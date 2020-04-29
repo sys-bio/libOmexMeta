@@ -122,8 +122,7 @@ namespace semsim {
 
         std::string resultAsStr(const std::string &output_format);
 
-
-        ResultsMap resultsAsMap2();
+        Triples resultsAsTriples();
     };
 }
 
