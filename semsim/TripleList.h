@@ -11,13 +11,13 @@
 namespace semsim {
     class TripleList {
     private:
-        std::vector<Triple> triple_list_;
+        Triples triple_list_;
 
     public:
 
         TripleList() = default;
 
-        explicit TripleList(const std::vector<Triple> &triples);
+        explicit TripleList(const Triples &triples);
 
         bool operator==(const TripleList &rhs) const;
 

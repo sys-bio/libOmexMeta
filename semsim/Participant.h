@@ -10,6 +10,7 @@
 #include "semsim/Resource.h"
 #include "Subject.h"
 #include "Triple.h"
+#include "Triples.h"
 
 
 namespace semsim {
@@ -30,7 +31,7 @@ namespace semsim {
         Participant(librdf_world *world, std::string subject, PredicatePtr predicate, Resource resource, double multiplier,
                     std::string physicalEntityReference);
 
-        std::vector<Triple> toTriples() const;
+        Triples toTriples() const;
 
         PredicatePtr getPredicatePtr();
 

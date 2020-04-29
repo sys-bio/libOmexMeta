@@ -6,6 +6,7 @@
 #include <librdf.h>
 #include <gtest/gtest.h>
 #include <semsim/RDF.h>
+#include <semsim/Triples.h>
 #include "SBMLFactory.h"
 #include "AnnotationSamples.h"
 #include "semsim/Query.h"
@@ -63,13 +64,10 @@ TEST_F(QueryTests, TestgetResultsAsMap) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(QueryTests, TestgetResultsAsMapTwice) {
+TEST_F(QueryTests, TestgetResultsAsTriples) {
     semsim::Query query(rdf3.getWorld(), rdf3.getModel(), q);
-//    semsim::ResultsMap resultsMap = query.resultsAsMap();
-//    semsim::ResultsMap resultsMap2 = query.resultsAsMap();
-//    std::string expected = "http://biomodels.net/biology-qualifiers/is";
-//    std::string actual = resultsMap2["z"][2];
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    semsim::Triples triples = query.resultsAsTriples();
+
 }
 
 

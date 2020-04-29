@@ -20,9 +20,9 @@ namespace semsim {
 
     }
 
-    std::vector<Triple> Participant::toTriples() const {
+    Triples Participant::toTriples() const {
 
-        std::vector<Triple> triples;
+        Triples triples;
         triples.emplace_back(
                 world_,
                 Subject(world_, RDFURINode(world_, subject_)),
@@ -113,7 +113,7 @@ namespace semsim {
 //                          std::move(resource), std::__cxx11::string()),
 //              multiplier_(multiplier), physicalEntityReference_(std::move(physicalEntityReference)) {}
 //
-//    std::vector<Triple> SinkParticipant::toTriples() {
+//    Triples SinkParticipant::toTriples() {
 //        return Participant::toTriples_(world_, getSubject(), "hasParticipantSink", getResource(),
 //                                       multiplier_, physicalEntityReference_);
 //    };
@@ -127,7 +127,7 @@ namespace semsim {
 //                          std::move(resource), std::__cxx11::string()),
 //              physicalEntityReference_(std::move(physicalEntityReference)) {}
 //
-//    std::vector<Triple> MediatorParticipant::toTriples() {
+//    Triples MediatorParticipant::toTriples() {
 //        return Participant::toTriples_(world_, getSubject(), "SourceParticipant", getResource(),
 //                                       0.0, physicalEntityReference_);
 //    };

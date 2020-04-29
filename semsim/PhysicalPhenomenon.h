@@ -9,6 +9,7 @@
 #include "semsim/PhysicalPropertyResource.h"
 #include "semsim/AnnotationType.h"
 #include "semsim/Triple.h"
+#include "semsim/Triples.h"
 
 namespace semsim {
     class PhysicalPhenomenon {

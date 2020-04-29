@@ -53,7 +53,7 @@ const semsim::NestedTriples &semsim::Editor::getTripleList() const {
     return triple_list_;
 }
 
-void semsim::Editor::extractNamespacesFromTriplesVector(std::vector<Triple> triples) {
+void semsim::Editor::extractNamespacesFromTriplesVector(Triples triples) {
     for (auto &triple: triples) {
         namespaces_[triple.getPredicatePtr()->getNamespace()] = triple.getPredicatePtr()->getPrefix();
     }
@@ -86,7 +86,7 @@ void semsim::Editor::addSingleAnnotation(
     }
     checkValidMetaid(subject.str());
     Triple triple(world_, std::move(subject), predicate_ptr, std::move(resource));
-    std::vector<Triple> vec = {triple};
+    Triples vec = {triple};
     triple_list_.push_back(vec);
     for (auto &it : namespaces_){
         std::cout << "ns: " << it.first << ": " << it.second << std::endl;
@@ -95,7 +95,7 @@ void semsim::Editor::addSingleAnnotation(
 }
 
 void semsim::Editor::addSingleAnnotation(Triple triple) {
-    std::vector<Triple> vec = {triple};
+    Triples vec = {triple};
     triple_list_.push_back(vec);
     namespaces_[triple.getPredicatePtr()->getNamespace()] = triple.getPredicatePtr()->getPrefix();
 
