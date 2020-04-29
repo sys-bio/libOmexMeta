@@ -39,7 +39,7 @@ public:
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
     semsim::PhysicalProcess process(
-            world,
+            world, nullptr,
             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
             physical_property,
             std::vector<semsim::SourceParticipant>(
@@ -78,7 +78,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
     semsim::PhysicalProcess process(
-            world,
+            world, nullptr,
             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
             physical_property,
             std::vector<semsim::SourceParticipant>(
@@ -134,7 +134,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
     semsim::PhysicalProcess process(
-            world,
+            world, nullptr,
             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
             physical_property,
             std::vector<semsim::SourceParticipant>(
@@ -176,7 +176,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
     semsim::RDF rdf;
 
     semsim::PhysicalProcess process(
-            world,
+            world, nullptr,
             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
             physical_property,
             std::vector<semsim::SourceParticipant>(

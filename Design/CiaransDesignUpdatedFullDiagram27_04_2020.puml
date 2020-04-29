@@ -235,7 +235,7 @@ namespace semsim {
 		-sources_ : Sources
 		+getSources() : Sources& {query}
 		+toTriples() : Triples {query}
-		+createMetaId(librdf_model* model, std::string base_metaid) : std::string {query}
+		+generateMetaId(librdf_model* model, std::string base_metaid) : std::string {query}
 	}
 
 

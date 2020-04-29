@@ -23,10 +23,10 @@ namespace semsim {
 
         PhysicalEntity() = default;
 
-        PhysicalEntity(librdf_world *world, Subject metaid, PhysicalPropertyResource physicalProperty, Resource is,
+        PhysicalEntity(librdf_world *world, librdf_model *model, Subject metaid, PhysicalPropertyResource physicalProperty, Resource is,
                        Resources is_part_of);
 
-        std::string createMetaId(librdf_model *model, std::string base_metaid) const override;
+        std::string createMetaId() const;
 
         const Resource &getIdentityResource() const;
 
@@ -37,7 +37,6 @@ namespace semsim {
         Triple whatTriple() const;
 
         semsim::Triples whereTriple() const;
-
 
     };
 }

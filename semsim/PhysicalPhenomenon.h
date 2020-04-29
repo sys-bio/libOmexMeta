@@ -15,13 +15,16 @@ namespace semsim {
     class PhysicalPhenomenon {
     protected:
         librdf_world *world_;
+        librdf_model *model_;
         Subject subject_metaid_;
         PhysicalPropertyResource physical_property_;
         AnnotationType type_;
 
+        std::string generateMetaId(std::string id_base) const;
+
     public:
-        PhysicalPhenomenon(librdf_world *world, Subject metaid, PhysicalPropertyResource propertyResource,
-                           AnnotationType type);
+        PhysicalPhenomenon(librdf_world *world, librdf_model *model, Subject metaid,
+                           PhysicalPropertyResource propertyResource, AnnotationType type);
 
         PhysicalPhenomenon();
 
@@ -33,7 +36,6 @@ namespace semsim {
 
         virtual Triples toTriples() const;
 
-        virtual std::string createMetaId(librdf_model *model, std::string id_base) const;
     };
 
     typedef std::shared_ptr<PhysicalPhenomenon> PhysicalPhenomenonPtr;

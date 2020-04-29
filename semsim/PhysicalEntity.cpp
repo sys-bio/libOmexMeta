@@ -4,28 +4,22 @@
 
 #include "semsim/PhysicalEntity.h"
 #include "semsim/Triple.h"
+#include "Query.h"
 
 semsim::PhysicalEntity::PhysicalEntity(
         librdf_world *world,
+        librdf_model *model,
         Subject metaid,
         semsim::PhysicalPropertyResource physicalProperty,
         semsim::Resource is,
         semsim::Resources is_part_of)
-        : PhysicalPhenomenon(world, metaid, physicalProperty, PHYSICAL_ENTITY),
+        : PhysicalPhenomenon(world, model, metaid, physicalProperty, PHYSICAL_ENTITY),
           is_(is), isPartOf_(is_part_of) {
 
 }
 
-/*
- * The problem: We need to ensure these identifiers are unique.
- * Get xmlassistnat classes to store the located
- * metaids in a variable that can be passed to the editor.
- * We'll need to do something special for finding the metaid of existing
- * physicalXX elements since they are burried
- *    ... what if we just add them to the addepted terms in xml assistant?
- */
-std::string semsim::PhysicalEntity::createMetaId(librdf_model *model, std::string base_metaid) const {
-    return "entityMetaidPlaceholder";
+std::string semsim::PhysicalEntity::createMetaId() const {
+    return generateMetaId("PhysicalEntity");
 }
 
 const semsim::Resources &semsim::PhysicalEntity::getLocationResources() const {
@@ -48,7 +42,7 @@ semsim::Triple semsim::PhysicalEntity::whatTriple() const {
 }
 
 semsim::Triples semsim::PhysicalEntity::whereTriple() const {
-    RDFURINode entity_metaid_node = RDFURINode(world_, createMetaId(nullptr, "entity"));
+    RDFURINode entity_metaid_node = RDFURINode(world_, generateMetaId(createMetaId()));
     Triples triples;
     // the "where" part of the physical entity
     for (auto &locationResource : getLocationResources()) {

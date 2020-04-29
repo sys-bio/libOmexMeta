@@ -20,7 +20,7 @@ class PhysicalProperty
 class PhysicalPhenomenon{
     + subject_metaid: Subject
     + physicalProp: PhysicalProperty
-    + createMetaId: std::string
+    + generateMetaId: std::string
 }
 }
 

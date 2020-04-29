@@ -37,7 +37,7 @@ public:
 
 TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
     semsim::PhysicalPhenomenon phenomenon(
-            world,
+            world, nullptr,
             semsim::Subject(world, semsim::RDFURINode(world, "metaid004")),
             semsim::PhysicalPropertyResource(world, "OPB:OPB_12345"),
             semsim::PHYSICAL_ENTITY
@@ -49,7 +49,7 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
 
 TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
     semsim::PhysicalPhenomenon phenomenon(
-            world,
+            world, nullptr,
             semsim::Subject(world, semsim::RDFURINode(world, "metaid004")),
             semsim::PhysicalPropertyResource(world, "OPB:OPB_12345"),
             semsim::PHYSICAL_ENTITY
@@ -65,7 +65,7 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
 
 TEST_F(PhysicalPhenomenonTests, TestPhysicalProperty) {
     semsim::PhysicalPhenomenon phenomenon(
-            world,
+            world, nullptr,
             semsim::Subject(world, semsim::RDFURINode(world, "metaid004")),
             semsim::PhysicalPropertyResource(world, "OPB:OPB_12345"),
             semsim::PHYSICAL_ENTITY
@@ -135,7 +135,7 @@ TEST_F(PhysicalPhenomenonTests, Test) {
 //            semsim::PHYSICAL_ENTITY
 //    );
 //    HERE();
-//    phenomenon.createMetaId(rdf.getModel(), "Phenomenon");
+//    phenomenon.generateMetaId(rdf.getModel(), "Phenomenon");
 //    HERE();
 //
 //    librdf_uri* base = librdf_new_uri(world, (const unsigned char*)"./baseuri.rdf");
