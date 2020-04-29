@@ -10,9 +10,10 @@
 
 namespace semsim {
 
-    PhysicalProcess::PhysicalProcess(librdf_world *world, Subject metaid, PhysicalPropertyResource physicalProperty,
-                                     Sources sources, Sinks sinks, Mediators mediators)
-            : PhysicalPhenomenon(world, metaid, physicalProperty, PHYSICAL_PROCESS),
+    PhysicalProcess::PhysicalProcess(librdf_world *world, librdf_model *model, Subject metaid,
+                                     PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks,
+                                     Mediators mediators)
+            : PhysicalPhenomenon(world, model, metaid, physicalProperty, PHYSICAL_PROCESS),
               sources_(sources), sinks_(sinks), mediators_(mediators) {
 
     }
@@ -29,13 +30,13 @@ namespace semsim {
         return mediators_;
     }
 
-    std::string PhysicalProcess::createMetaId(librdf_model *model, std::string base_metaid) const {
-        return "PhysicalProcessMetaidPlaceholder";
+    std::string PhysicalProcess::createMetaId() const {
+        return generateMetaId("PhysicalProcess");
     }
 
     Triples PhysicalProcess::toTriples() const {
         Triples triples = {
-                physical_property_.toIsVersionOfTriple("AMetaid004")
+                physical_property_.toIsVersionOfTriple(createMetaId())
         };
 
         for (auto &source : sources_) {

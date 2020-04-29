@@ -211,7 +211,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
     editor.addCompositeAnnotation(
             std::make_shared<semsim::PhysicalProcess>(
                     semsim::PhysicalProcess(
-                            world,
+                            world, nullptr,
                             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
                             semsim::PhysicalPropertyResource(world, "OPB:OPB1234"),
                             std::vector<semsim::SourceParticipant>(

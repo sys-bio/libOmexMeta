@@ -11,9 +11,9 @@
 
 namespace semsim {
 
-    PhysicalForce::PhysicalForce(librdf_world *world, Subject metaid, PhysicalPropertyResource physicalProperty,
+    PhysicalForce::PhysicalForce(librdf_world *world,librdf_model *model,  Subject metaid, PhysicalPropertyResource physicalProperty,
                                  Sources sources, Sinks sinks)
-            : PhysicalPhenomenon(world, metaid, physicalProperty, PHYSICAL_PROCESS),
+            : PhysicalPhenomenon(world, model, metaid, physicalProperty, PHYSICAL_PROCESS),
               sources_(sources), sinks_(sinks) {
 
     }
@@ -26,13 +26,13 @@ namespace semsim {
         return sinks_;
     }
 
-    std::string PhysicalForce::createMetaId(librdf_model *model, std::string base_metaid) const {
-        return "PhysicalForceMetaidPlaceholder";
+    std::string PhysicalForce::createMetaId() const {
+    return generateMetaId("PhysicalForce");
     }
 
     Triples PhysicalForce::toTriples() const {
         Triples triples = {
-                physical_property_.toIsVersionOfTriple("AMetaid004")
+                physical_property_.toIsVersionOfTriple(createMetaId())
         };
 
         for (auto &source : sources_) {
