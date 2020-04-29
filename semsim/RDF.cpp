@@ -8,6 +8,7 @@
 #include "RDF.h"
 #include "semsim/SemSim.h"
 #include "Reader.h"
+#include "Query.h"
 
 /*******************************************************
  * Constructors
@@ -333,7 +334,7 @@ void semsim::RDF::setBaseUri(librdf_uri *baseUri) {
     base_uri_ = baseUri;
 }
 
-int semsim::RDF::triplesCount() const {
+int semsim::RDF::size() const {
     librdf_stream *stream = librdf_model_as_stream(getModel());
     if (!stream) {
         throw LibRDFException("Query::resultsAsTriples: stream object null");
@@ -362,6 +363,23 @@ semsim::Triples semsim::RDF::toTriples() {
     }
     return triples;
 }
+
+std::string semsim::RDF::queryResultsAsStr(const std::string &query_str, std::string results_format) {
+    return semsim::Query(world_, model_, query_str).resultsAsStr(results_format);
+}
+
+semsim::ResultsMap semsim::RDF::queryResultsAsMap(const std::string &query_str) {
+    return semsim::Query(world_, model_, query_str).resultsAsMap();
+}
+
+semsim::Triples semsim::RDF::queryResultsAsTriples(const std::string &query_str) {
+    return queryResultsAsRDF(query_str).toTriples();
+}
+
+semsim::RDF semsim::RDF::queryResultsAsRDF(const std::string &query_str) {
+    return RDF::fromString(queryResultsAsStr(query_str, "rdfxml"), "rdfxml");
+}
+
 
 
 

@@ -10,6 +10,7 @@
 #include "semsim/Writer.h"
 #include "semsim/Editor.h"
 #include "semsim/XmlAssistant.h"
+#include "semsim/Query.h"
 
 namespace semsim {
 
@@ -25,7 +26,7 @@ namespace semsim {
         raptor_world *raptor_world_;
         librdf_storage *storage_;
         librdf_model *model_;
-        librdf_uri* base_uri_;
+        librdf_uri *base_uri_;
 
         NamespaceMap namespaces_;
         std::vector<std::string> seen_namespaces_;
@@ -39,13 +40,13 @@ namespace semsim {
         semsim::Writer makeWriter(const std::string &format);
 
     public:
-        librdf_uri* getBaseUri() const;
+        librdf_uri *getBaseUri() const;
 
         std::string getBaseUriAsString() const;
 
         void setBaseUri(const std::string &baseUri);
 
-        void setBaseUri(librdf_uri* base_uri);
+        void setBaseUri(librdf_uri *base_uri);
 
         static LibRDFObjectsTuple init();
 
@@ -77,9 +78,9 @@ namespace semsim {
 
         static RDF fromFile(std::string filename);
 
-        static RDF fromOmex(const std::string& filename_or_url);
+        static RDF fromOmex(const std::string &filename_or_url);
 
-        std::string toString(const std::string& format, const std::string& base_uri);
+        std::string toString(const std::string &format, const std::string &base_uri);
 
         static RDF fromString(const std::string &str, std::string format = "guess");
 
@@ -112,10 +113,15 @@ namespace semsim {
         std::unordered_map<std::string, std::string> propagateNamespacesFromParser(
                 std::vector<std::string> seen_namespaces);
 
-        semsim::RDF query(const std::string &query_str,
-                          std::string results_mime_type = "text/csv");
+        std::string queryResultsAsStr(const std::string &query_str, std::string results_format);
 
-        int triplesCount() const;
+        semsim::ResultsMap queryResultsAsMap(const std::string &query_str);
+
+        semsim::RDF queryResultsAsRDF(const std::string &query_str);
+
+        semsim::Triples queryResultsAsTriples(const std::string &query_str);
+
+        int size() const;
 
         Triples toTriples();
     };

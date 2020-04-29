@@ -59,7 +59,7 @@ public:
 
 TEST_F(QueryTests, TestStr) {
     semsim::Query query(rdf.getWorld(), rdf.getModel(), q);
-    std::string actual = query.resultAsStr("csv");
+    std::string actual = query.resultsAsStr("csv");
     std::string expected = "x,y,z\r\n"
                            "file://./MyModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\r\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -87,44 +87,6 @@ TEST_F(QueryTests, TestResultsAsStream) {
     librdf_stream *stream = query.resultsAsLibRdfStream();
     ASSERT_TRUE(stream); // aka not null
 }
-
-TEST_F(QueryTests, TestResultsAsRDF) {
-    semsim::Query query(rdf2.getWorld(), rdf2.getModel(), q);
-    semsim::RDF rdf = query.resultsAsRDF();
-    std::string actual = rdf.toString("turtle", "./base.xml");
-    std::string expected = "@base <file://./base.xml> .\n"
-                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "\n"
-                           "[]\n"
-                           "    a <http://www.w3.org/2001/sw/DataAccess/tests/result-set#ResultSet> ;\n"
-                           "    <http://www.w3.org/2001/sw/DataAccess/tests/result-set#resultVariable> \"x\", \"y\", \"z\" ;\n"
-                           "    <http://www.w3.org/2001/sw/DataAccess/tests/result-set#solution> [\n"
-                           "        <http://www.w3.org/2001/sw/DataAccess/tests/result-set#binding> [\n"
-                           "            <http://www.w3.org/2001/sw/DataAccess/tests/result-set#value> <MyModel.xml#meta2> ;\n"
-                           "            <http://www.w3.org/2001/sw/DataAccess/tests/result-set#variable> \"x\"\n"
-                           "        ], [\n"
-                           "            <http://www.w3.org/2001/sw/DataAccess/tests/result-set#value> <http://purl.org/dc/terms/description> ;\n"
-                           "            <http://www.w3.org/2001/sw/DataAccess/tests/result-set#variable> \"y\"\n"
-                           "        ], [\n"
-                           "            <http://www.w3.org/2001/sw/DataAccess/tests/result-set#value> \"Cardiomyocyte cytosolic ATP concentration\" ;\n"
-                           "            <http://www.w3.org/2001/sw/DataAccess/tests/result-set#variable> \"z\"\n"
-                           "        ]\n"
-                           "    ] .\n"
-                           "\n";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-}
-
-TEST_F(QueryTests, TestgetResultsAsTriples) {
-    semsim::Query query(rdf3.getWorld(), rdf3.getModel(), q);
-    semsim::Triples triples = query.resultsAsTriples();
-    std::ostringstream actual;
-    for (auto &it : triples) {
-        actual << it.getSubject().str() << std::endl;
-    }
-    std::string expected = "asdf";
-    ASSERT_STREQ(expected.c_str(), actual.str().c_str());
-}
-
 
 
 

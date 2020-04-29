@@ -6,8 +6,10 @@
 #define LIBSEMGEN_QUERY_H
 
 #include <librdf.h>
-#include "string"
-#include "semsim/RDF.h"
+#include <string>
+#include <unordered_map>
+#include <vector>
+#include "semsim/Triples.h"
 
 namespace semsim {
 
@@ -117,11 +119,11 @@ namespace semsim {
 
         librdf_stream *resultsAsLibRdfStream();
 
-        RDF resultsAsRDF();
+//        RDF resultsAsRDF();
 
         ResultsMap resultsAsMap();
 
-        std::string resultAsStr(const std::string &output_format);
+        std::string resultsAsStr(const std::string &output_format);
 
         Triples resultsAsTriples();
     };
