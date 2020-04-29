@@ -105,7 +105,7 @@ namespace semsim {
 
         void checkValidMetaid(const std::string &metaid);
 
-        void addAnnotationFromTriples(std::vector<Triple> triples);
+        void addAnnotationFromTriples(Triples triples);
 
     };
 

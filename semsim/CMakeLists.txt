@@ -24,7 +24,7 @@ set(SEMSIM_SOURCES
         Query.cpp Query.h
         SemsimCombineArchive.cpp SemsimCombineArchive.h
 
-        )
+        Triples.cpp Triples.h)
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)

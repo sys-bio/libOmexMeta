@@ -7,6 +7,7 @@
 
 #include "iostream"
 #include "semsim/RDFNode.h"
+#include <vector>
 
 namespace semsim {
     class Subject {
@@ -28,6 +29,7 @@ namespace semsim {
         std::string str() const;
 
     };
+    typedef std::vector<Subject> Subjects;
 
 }
 

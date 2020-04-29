@@ -38,10 +38,6 @@ namespace semsim {
 
     };
 
-    typedef std::vector<Triple> Triples;
-    typedef std::vector<std::vector<Triple>> NestedTriples;
-
-
 }
 
 #endif //LIBSEMGEN_TRIPLE_H

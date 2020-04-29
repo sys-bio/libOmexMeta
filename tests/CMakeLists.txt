@@ -21,7 +21,7 @@ add_executable(semsim-tests
         PhysicalProcessTests.cpp
         PhysicalForceTests.cpp
         SemsimCombineArchiveTests.cpp
-        QueryTests.cpp)
+        QueryTests.cpp TripplesTests.cpp)
 
 
 target_link_libraries(semsim-tests PRIVATE

@@ -124,6 +124,8 @@ namespace semsim {
     };
 
     typedef std::shared_ptr<Predicate> PredicatePtr;
+    typedef std::vector<Predicate> Predicates;
+    typedef std::vector<PredicatePtr> PredicatePtrs;
 
 
 }

@@ -15,7 +15,7 @@ bool semsim::TripleList::operator!=(const semsim::TripleList &rhs) const {
     return !(rhs == *this);
 }
 
-//semsim::TripleList::TripleList(std::vector<Triple> triple_list)
+//semsim::TripleList::TripleList(Triples triple_list)
 //        : triple_list_(std::move(triple_list)) {
 //}
 
@@ -23,7 +23,7 @@ semsim::Triple &semsim::TripleList::operator[](unsigned long n) {
     return triple_list_.operator[](n);
 }
 
-semsim::TripleList::TripleList(const std::vector<Triple> &triples) {
+semsim::TripleList::TripleList(const Triples &triples) {
     this->triple_list_ = triples;
 }
 

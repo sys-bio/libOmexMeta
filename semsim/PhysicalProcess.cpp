@@ -56,7 +56,7 @@ namespace semsim {
         return triples;
     }
 
-    std::vector<Triple> toTriples();
+    Triples toTriples();
 
 
 }
