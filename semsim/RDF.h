@@ -71,7 +71,7 @@ namespace semsim {
 
         void setNamespaces(const std::unordered_map<std::string, std::string> &namespaces);
 
-        static RDF fromUrl(std::string url);
+        static RDF fromUrl(std::string url, std::string filename);
 
         static semsim::RDF fromXML(const std::string &filename, std::string format);
 
@@ -112,9 +112,12 @@ namespace semsim {
         std::unordered_map<std::string, std::string> propagateNamespacesFromParser(
                 std::vector<std::string> seen_namespaces);
 
-        semsim::RDF query(
-                const std::string& query_str, std::string query_format = "sparql", std::string results_mime_type = "text/csv");
+        semsim::RDF query(const std::string &query_str,
+                          std::string results_mime_type = "text/csv");
 
+        int triplesCount() const;
+
+        Triples toTriples();
     };
 }
 

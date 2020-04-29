@@ -157,19 +157,9 @@ raptor_world *semsim::RDF::getRaptorWorld() const {
     return raptor_world_;
 }
 
-semsim::RDF semsim::RDF::fromUrl(std::string url) {
-//        librdf_uri *uri = librdf_new_uri(world,
-//                                         (const unsigned char *) "http://www.ebi.ac.uk/biomodels-main/download?mid=BIOMD0000000064");
-//
-//    raptor_uri *uri = librdf_new_uri_from_filename(world, (const char *) "/mnt/d/libsemsim/tests/Teusink2000.xml");
-//    if (!uri) {
-//        fprintf(stderr, "Failed to create URI\n");
-//    }
-
-    /* PARSE the URI as RDF/XML*/
-//    fprintf(stdout, "Parsing URI %s\n", librdf_uri_as_string(uri));
-//    librdf_parser_parse_into_model(parser, uri, uri, model);
-    return semsim::RDF();
+semsim::RDF semsim::RDF::fromUrl(std::string url, std::string filename) {
+    SemsimUtils::download(url, filename);
+    return semsim::RDF::fromFile(filename);
 }
 
 void semsim::RDF::setWorld(librdf_world *world) {
@@ -327,90 +317,6 @@ semsim::Editor semsim::RDF::toEditor(std::string xml, semsim::XmlAssistantType t
     return Editor(xml, type, world_, model_, namespaces_);
 }
 
-semsim::RDF semsim::RDF::query(const std::string &query_str, std::string query_format, std::string results_mime_type) {
-    RDF rdf;
-    std::string format = "turtle";
-    unsigned char *string;
-    size_t length;
-
-    librdf_query *query = librdf_new_query(
-            world_, query_format.c_str(), nullptr,
-            (const unsigned char *) query_str.c_str(), nullptr
-    );
-
-    librdf_query_results *results = librdf_model_query_execute(model_, query);
-    if (!results) {
-        throw LibRDFException("No results");
-    }
-
-    std::cout << librdf_query_results_is_bindings(results) << std::endl;
-    std::cout << librdf_query_results_is_boolean(results) << std::endl;
-    string = librdf_query_results_to_counted_string2(
-            results, format.c_str(), results_mime_type.c_str(), nullptr, nullptr, &length);
-    if (!string) {
-        throw LibRDFException("No workey");
-    }
-    std::cout << string << "\n\n\n\n\n" << std::endl;
-
-
-//    if (librdf_query_results_is_bindings(results) ||
-//        librdf_query_results_is_boolean(results)) {
-//        HERE();
-
-//    } else {
-//    HERE();
-    /* triples */
-//    librdf_serializer *serializer;
-//    librdf_stream *stream;
-
-//    serializer = librdf_new_serializer(world_, format.c_str(), nullptr, nullptr);
-//    if (!serializer) {
-//        throw LibRDFException("No workey");
-//    }
-
-    librdf_stream *stream = librdf_query_results_as_stream(results);
-    if (!stream) {
-        throw LibRDFException("Stream no workey");
-    }
-//    librdf_query_res
-//    string = librdf_serializer_serialize_stream_to_counted_string(
-//            serializer, nullptr, stream, &length);
-//    if (!string) {
-//        throw LibRDFException("No workey");
-//
-//    }
-    int x = librdf_model_add_statements(rdf.getModel(), stream);
-    std::cout << "x is :" << x << std::endl;
-    librdf_free_stream(stream);
-    std::cout << rdf.toString("rdfxml", "file://./annotations.rdf") << std::endl;
-
-    raptor_uri *u = librdf_get_concept_schema_namespace(world_);
-    raptor_uri *u2 = librdf_get_concept_ms_namespace(world_);
-
-    std::cout << librdf_uri_as_string(u) << std::endl;
-    std::cout << librdf_uri_as_string(u2) << std::endl;
-
-    int count = 0;
-//    for (auto &i : j) {
-//        std::cout << count << " " << librdf_uri_as_string(i) << std::endl;
-//        count++;
-//    }
-//    size_t len;
-
-//    int y = librdf_conce(model_, asresources[1]);
-//    std::cout << "y: " << y << std::endl;
-//    }
-
-//    std::cout << string << std::endl;
-//
-//
-//    free(string);
-    librdf_free_query_results(results);
-    librdf_free_query(query);
-    return rdf;
-
-}
-
 librdf_uri *semsim::RDF::getBaseUri() const {
     return base_uri_;
 }
@@ -427,6 +333,35 @@ void semsim::RDF::setBaseUri(librdf_uri *baseUri) {
     base_uri_ = baseUri;
 }
 
+int semsim::RDF::triplesCount() const {
+    librdf_stream *stream = librdf_model_as_stream(getModel());
+    if (!stream) {
+        throw LibRDFException("Query::resultsAsTriples: stream object null");
+    }
+    int count = 0;
+    while (!librdf_stream_end(stream)) {
+        count++;
+        librdf_stream_next(stream);
+    }
+    return count;
+}
+
+semsim::Triples semsim::RDF::toTriples() {
+    librdf_stream *stream = librdf_model_as_stream(getModel());
+    if (!stream) {
+        throw LibRDFException("RDF::toTriples: stream object null");
+    }
+    Triples triples;
+    while (!librdf_stream_end(stream)) {
+        librdf_statement *statement = librdf_stream_get_object(stream);
+        if (!statement) {
+            throw LibRDFException("RDF::toTriples(): statement is null");
+        }
+        triples.emplace_back(world_, statement);
+        librdf_stream_next(stream);
+    }
+    return triples;
+}
 
 
 

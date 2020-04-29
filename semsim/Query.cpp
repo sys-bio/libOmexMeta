@@ -23,6 +23,11 @@ namespace semsim {
         if (!model_) {
             throw LibRDFException("Model is null");
         }
+        runQuery();
+
+    }
+
+    void Query::runQuery() {
         librdf_query *q = librdf_new_query(
                 world_, (const char *) "sparql",
                 nullptr, (const unsigned char *) query_.c_str(), nullptr
@@ -39,7 +44,6 @@ namespace semsim {
             qerr2 << __FILE__ << ":" << __LINE__ << ": librdf_query_results object was not created";
             throw LibRDFException(qerr2.str());
         }
-
     }
 
     bool Query::isBoolean() {
@@ -59,7 +63,8 @@ namespace semsim {
     }
 
     RDF Query::resultsAsRDF() {
-        return RDF();
+        RDF rdf = RDF::fromString(resultAsStr("rdfxml"), "rdfxml");
+        return rdf;
     }
 
     int Query::getCount() {
@@ -118,8 +123,6 @@ namespace semsim {
     }
 
     ResultsMap Query::resultsAsMap() {
-        librdf_query_results *results_copy = nullptr;
-        results_copy = query_results_;
         ResultsMap map;
         for (int i = 0; i < getBindingsCount(); i++) {
             std::string binding_name = getBindingsName(i);
@@ -136,22 +139,16 @@ namespace semsim {
             }
         }
 
-        librdf_query_results_finished(query_results_);
+        // we rerun the query to overwrite the query_results_
+        // variable with a fresh object (since once you've
+        // hit the end you can't seem to go back).
+        // todo look more into this.
+        runQuery();
         return map;
     }
 
     Triples Query::resultsAsTriples() {
-        librdf_stream *stream = resultsAsLibRdfStream();
-        bool done = false;
-        Triples triples;
-        while (!done) {
-            librdf_statement *stmt = librdf_stream_get_object(stream);
-            triples.push_back(Triple::fromStatement(world_, stmt));
-            int finished = librdf_stream_next(stream);
-            if (finished)
-                done = true;
-        }
-        return triples;
+        return resultsAsRDF().toTriples();
     }
 
 

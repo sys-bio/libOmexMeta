@@ -39,7 +39,6 @@ namespace semsim {
 
         int size();
 
-
         std::vector<semsim::Triple>::iterator begin();
 
         std::vector<semsim::Triple>::iterator end();
