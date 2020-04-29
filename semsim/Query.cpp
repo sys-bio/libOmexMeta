@@ -62,10 +62,10 @@ namespace semsim {
         return librdf_query_results_as_stream(query_results_);
     }
 
-    RDF Query::resultsAsRDF() {
-        RDF rdf = RDF::fromString(resultAsStr("rdfxml"), "rdfxml");
-        return rdf;
-    }
+//    RDF Query::resultsAsRDF() {
+//        RDF rdf = RDF::fromString(resultsAsStr("rdfxml"), "rdfxml");
+//        return rdf;
+//    }
 
     int Query::getCount() {
         return librdf_query_results_get_count(query_results_);
@@ -97,7 +97,7 @@ namespace semsim {
         return librdf_query_results_get_bindings_count(query_results_);
     }
 
-    std::string Query::resultAsStr(const std::string &output_format) {
+    std::string Query::resultsAsStr(const std::string &output_format) {
         if (std::find(valid_output_formats_.begin(), valid_output_formats_.end(), output_format) ==
             valid_output_formats_.end()) {
             std::ostringstream err;
@@ -147,9 +147,9 @@ namespace semsim {
         return map;
     }
 
-    Triples Query::resultsAsTriples() {
-        return resultsAsRDF().toTriples();
-    }
+//    Triples Query::resultsAsTriples() {
+//        return resultsAsRDF().toTriples();
+//    }
 
 
     std::string Query::getBindingsName(int index) {
