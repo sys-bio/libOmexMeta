@@ -113,7 +113,7 @@ namespace semsim {
                 std::vector<std::string> seen_namespaces);
 
         semsim::RDF query(
-                std::string query_str, std::string query_format = "sparql", std::string results_mime_type = "text/csv");
+                const std::string& query_str, std::string query_format = "sparql", std::string results_mime_type = "text/csv");
 
     };
 }

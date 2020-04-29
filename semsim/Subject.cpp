@@ -3,6 +3,7 @@
 //
 
 #include "semsim/Subject.h"
+#include "semsim/Error.h"
 
 namespace semsim {
 
@@ -24,6 +25,11 @@ namespace semsim {
 
     std::string Subject::str() const {
         return rdf_node_ptr_->str();
+    }
+
+    Subject::Subject(librdf_world *world, librdf_node *node)
+        : world_(world), rdf_node_ptr_(RDFNode::fromRDFNode(world, node)){
+
     }
 
 

@@ -14,6 +14,8 @@
 namespace semsim {
     class Predicate {
     protected:
+        Predicate(librdf_world *world, librdf_node *node);
+
         librdf_world *world_;
         std::string namespace_, term_, prefix_;
         std::string uri_;
@@ -22,6 +24,8 @@ namespace semsim {
         std::vector<std::string> valid_terms_{"All"};
 
     public:
+        static std::unordered_map<std::string, std::string> prefix_map();
+
         Predicate() = default;
 
         void setPrefix(const std::string &prefix);
@@ -29,6 +33,9 @@ namespace semsim {
         void setNamespace(const std::string &ns);
 
         Predicate(librdf_world *world, const std::string &namespace_,
+                  std::string term, std::string prefix);
+
+        Predicate(librdf_world *world, librdf_node * node, std::string &namespace_,
                   std::string term, std::string prefix);
 
         librdf_node *toRdfNode();

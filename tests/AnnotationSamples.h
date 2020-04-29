@@ -107,7 +107,7 @@ public:
                                           "        <bqbiol:isVersionOf rdf:resource=\"http://identifiers.org/opb/OPB_00154\"/>\n"
                                           "        <bqbiol:isPropertyOf rdf:resource=\"#entity_0\"/>\n"
                                           "    </rdf:Description>\n"
-                                          "    <rdf:Description rdf:about=\"#entity_0\">\n"
+                                          "    <rdf:Description rdf:about=\"#entity_1\">\n"
                                           "        <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:9670\" />\n"
                                           "        <bqbiol:isPartOf rdf:resource=\"http://identifiers.org/fma/FMA:18228\"/>\n"
                                           "    </rdf:Description>\n"

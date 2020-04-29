@@ -26,6 +26,9 @@ namespace semsim {
 
         virtual librdf_node *toRdfNode() = 0;
 
+        static std::string getValue(librdf_node *node);
+
+        static std::shared_ptr<RDFNode> fromRDFNode(librdf_world* world, librdf_node* node);
     };
 
     class RDFLiteralNode : public RDFNode {
@@ -35,6 +38,10 @@ namespace semsim {
     public:
 
         RDFLiteralNode(librdf_world *world, std::string value,
+                std::string data_type="http://www.w3.org/2001/XMLSchema#string",
+                const char *xml_language = nullptr, bool is_wf_xml = false);
+
+        RDFLiteralNode(librdf_world *world, librdf_node* node,
                 std::string data_type="http://www.w3.org/2001/XMLSchema#string",
                 const char *xml_language = nullptr, bool is_wf_xml = false);
 
@@ -49,6 +56,8 @@ namespace semsim {
 
         explicit RDFURINode(librdf_world *world, std::string value, const char *xmlLanguage = nullptr, bool isWfXml = false);
 
+        RDFURINode(librdf_world *world, librdf_node *node,const char *xmlLanguage = nullptr, bool isWfXml = false);
+
         std::string str() override;
 
         librdf_node *toRdfNode() override;
@@ -59,6 +68,8 @@ namespace semsim {
     public:
 
         explicit RDFBlankNode(librdf_world *world, std::string value, const char *xml_language= nullptr, bool is_wf_xml = false);
+
+        RDFBlankNode(librdf_world *world, librdf_node *node, const char *xmlLanguage = nullptr, bool isWfXml = false);
 
         std::string str() override;
 

@@ -6,7 +6,9 @@
 
 #include <utility>
 #include <iostream>
+#include <unordered_map>
 #include "librdf.h"
+#include "SemsimUtils.h"
 
 namespace semsim {
 
@@ -19,8 +21,43 @@ namespace semsim {
         } else {
             this->uri_ = namespace_ + "/" + term_;
         }
-        verify(valid_terms_, term);
+        verify(valid_terms_, term_);
         this->uri_node_ = std::make_shared<RDFURINode>(RDFURINode(world_, uri_));
+    }
+
+    Predicate::Predicate(librdf_world *world, librdf_node *node)
+            : world_(world), uri_node_(std::make_shared<RDFURINode>(world, node)) {
+
+        std::string val = uri_node_->str();
+        std::vector<std::string> v = SemsimUtils::splitStringBy(val, '/');
+        std::ostringstream os1;
+        for (int i=0; i<v.size()-1; i++){
+            os1 << v[i]<<"/";
+        }
+        namespace_ = os1.str();
+        term_ = v[v.size()];
+        prefix_ = Predicate::prefix_map(namespace_);
+
+
+        if (namespace_.back() == '/') {
+            this->uri_ = namespace_ + term_;
+        } else {
+            this->uri_ = namespace_ + "/" + term_;
+        }
+        verify(valid_terms_, term_);
+        this->uri_node_ = std::make_shared<RDFURINode>(
+                RDFURINode(world_, node)
+        );
+
+    }
+
+    std::unordered_map<std::string, std::string> Predicate::prefix_map() {
+        return std::unordered_map<std::string, std::string> {
+                {"http://purl.org/dc/terms/",                "dcterms"},
+                {"http://biomodels.net/biology-qualifiers/", "bqbiol"},
+                {"http://biomodels.net/model-qualifiers/",   "bqmodel"},
+                {"http://www.bhi.washington.edu/semsim#",    "semsim"},
+        };
     }
 
     std::string Predicate::str() {
@@ -31,7 +68,7 @@ namespace semsim {
         return uri_node_->toRdfNode();
     }
 
-    int Predicate::verify(std::vector<std::string> valid_terms, const std::string& term) {
+    int Predicate::verify(std::vector<std::string> valid_terms, const std::string &term) {
         // when valled from the base Predicate class, accept anything
         if (valid_terms.size() == 1)
             if (valid_terms[0] == "All")
@@ -68,23 +105,26 @@ namespace semsim {
     void Predicate::setPrefix(const std::string &prefix) {
         prefix_ = prefix;
     }
+
     void Predicate::setNamespace(const std::string &ns) {
         namespace_ = ns;
     }
 
+
     BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(librdf_world *world, const std::string &term) :
-            Predicate(world, "http://biomodels.net/biology-qualifiers/", term, "bqbiol"){
+            Predicate(world, "http://biomodels.net/biology-qualifiers/", term, "bqbiol") {
         verify(valid_terms_, term_);
 
     }
+
     BiomodelsModelQualifier::BiomodelsModelQualifier(librdf_world *world, const std::string &term) :
-            Predicate(world, "http://biomodels.net/model-qualifiers/", term, "bqmodel"){
+            Predicate(world, "http://biomodels.net/model-qualifiers/", term, "bqmodel") {
         verify(valid_terms_, term_);
 
     }
 
     DCTerm::DCTerm(librdf_world *world, const std::string &term) :
-            Predicate(world, "http://purl.org/dc/terms/", term, "dcterms"){
+            Predicate(world, "http://purl.org/dc/terms/", term, "dcterms") {
         verify(valid_terms_, term_);
     }
 
