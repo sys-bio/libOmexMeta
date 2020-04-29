@@ -27,16 +27,20 @@ namespace semsim {
 
     Predicate::Predicate(librdf_world *world, librdf_node *node)
             : world_(world), uri_node_(std::make_shared<RDFURINode>(world, node)) {
-
         std::string val = uri_node_->str();
         std::vector<std::string> v = SemsimUtils::splitStringBy(val, '/');
         std::ostringstream os1;
-        for (int i=0; i<v.size()-1; i++){
+        for (unsigned long i=0; i<v.size()-1; i++){
             os1 << v[i]<<"/";
         }
         namespace_ = os1.str();
-        term_ = v[v.size()];
+        term_ = v[v.size()-1];
         prefix_ = Predicate::prefix_map()[namespace_];
+        if (prefix_.empty()){
+            prefix_ = "NotSet";
+        }
+
+        std::cout << "prefix " << prefix_ << std::endl;
 
 
         if (namespace_.back() == '/') {

@@ -20,9 +20,6 @@ public:
     }
 
     ~SubjectTests() override {
-        librdf_free_world(world);
-        librdf_free_model(model);
-        librdf_free_storage(storage);
     }
 
 };
@@ -54,25 +51,19 @@ TEST_F(SubjectTests, TestToNode) {
     ASSERT_STREQ(url_str.c_str(), actual);
 }
 
-//TEST_F(SubjectTests, TestEqualityOperator) {
-//    semsim::Subject subject1(uri_str1);
-//    semsim::Subject subject2(uri_str1);
-//    ASSERT_EQ(subject1, subject2);
-//}
-//
-//TEST_F(SubjectTests, TestInequalityOperator) {
-//    semsim::Subject subject1(uri_str1 + "x");
-//    semsim::Subject subject2(uri_str1);
-//    ASSERT_NE(subject1, subject2);
-//}
-//
-//TEST_F(SubjectTests, TestStreamOperator) {
-//    semsim::Subject subject1(uri_str1);
-//    std::ostringstream os;
-//    os << subject1;
-//    std::string expected = "Subject(metaId=http://www.example.com/)";
-//    ASSERT_STREQ(expected.c_str(), os.str().c_str());
-//}
+
+TEST_F(SubjectTests, TestFromUriNode) {
+    std::string url_str = "https://www.notarealaddress.com";
+    librdf_node* node = librdf_new_node_from_uri_string(world, (const unsigned char*)url_str.c_str());
+    semsim::Subject subject(world, node);
+    librdf_node *n = subject.toRdfNode();
+    const char *actual = (const char *) librdf_uri_as_string(librdf_node_get_uri(n));
+    ASSERT_STREQ(url_str.c_str(), actual);
+}
+
+
+
+
 
 
 

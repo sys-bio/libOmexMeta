@@ -198,6 +198,36 @@ TEST_F(TripleTests, TestToStatementResource) {
     ASSERT_STREQ(expected, actual);
 }
 
+TEST_F(TripleTests, TestFromStatementSubject) {
+    semsim::Triple triple1(world_, subject, predicatePtr, resource);
+    // quickly create a statement
+    librdf_statement *statement = triple1.toStatement();
+    semsim::Triple triple2 = semsim::Triple::fromStatement(world_, statement);
+    std::string actual = triple2.getSubject().str();
+    std::string expected = "./MyModel#metaid_0";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(TripleTests, TestFromStatementResource) {
+    semsim::Triple triple1(world_, subject, predicatePtr, resource);
+    // quickly create a statement
+    librdf_statement *statement = triple1.toStatement();
+    semsim::Triple triple2 = semsim::Triple::fromStatement(world_, statement);
+    std::string actual = triple2.getResource().str();
+    std::string expected = "https://identifiers.org/uniprot/P0DP23";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(TripleTests, TestFromStatementPredicate) {
+    semsim::Triple triple1(world_, subject, predicatePtr, resource);
+    // quickly create a statement
+    librdf_statement *statement = triple1.toStatement();
+    semsim::Triple triple2 = semsim::Triple::fromStatement(world_, statement);
+    std::string actual = triple2.getPredicatePtr()->str();
+    std::string expected = "http:/biomodels.net/biology-qualifiers/is";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
 
 
 

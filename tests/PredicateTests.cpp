@@ -162,6 +162,44 @@ TEST_F(PredicateTests, TestBqModelGetPrefixFromPtrToBaseClassvsdf) {
 
 
 
+TEST_F(PredicateTests, TestFromUriNode) {
+    std::string url_str = "https://www.notarealaddress.com";
+    librdf_node* node = librdf_new_node_from_uri_string(world, (const unsigned char*)url_str.c_str());
+    semsim::Predicate predicate(world, node);
+    librdf_node *n = predicate.toRdfNode();
+    const char *actual = (const char *) librdf_uri_as_string(librdf_node_get_uri(n));
+    ASSERT_STREQ(url_str.c_str(), actual);
+}
+
+
+TEST_F(PredicateTests, TestFromUriNodeNamespace) {
+    std::string url_str = "https://www.notarealaddress.com/nota/term";
+    librdf_node* node = librdf_new_node_from_uri_string(world, (const unsigned char*)url_str.c_str());
+    semsim::Predicate predicate(world, node);
+    const std::string& actual = predicate.getNamespace();
+    std::string expected = "https://www.notarealaddress.com/nota/";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestFromUriNodeTerm) {
+    std::string url_str = "https://www.notarealaddress.com/nota/term";
+    librdf_node* node = librdf_new_node_from_uri_string(world, (const unsigned char*)url_str.c_str());
+    semsim::Predicate predicate(world, node);
+    const std::string& actual = predicate.getTerm();
+    std::string expected = "term";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestFromUriNodePrefix) {
+    std::string url_str = "https://www.notarealaddress.com/nota/term";
+    librdf_node* node = librdf_new_node_from_uri_string(world, (const unsigned char*)url_str.c_str());
+    semsim::Predicate predicate(world, node);
+    const std::string& actual = predicate.getPrefix();
+    std::string expected = "NotSet";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
 
 
 
