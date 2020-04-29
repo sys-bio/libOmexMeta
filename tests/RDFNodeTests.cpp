@@ -140,6 +140,31 @@ TEST_F(RDFNodeTests, TestBlank) {
 }
 
 
+TEST_F(RDFNodeTests, TestUriNodeFromLibrdfNode) {
+    librdf_node* node = librdf_new_node_from_uri_string(world, (const unsigned char*)"file://./MyModel.xml");
+    semsim::RDFURINode rdfuriNode(world, node);
+    std::string expected = "file://./MyModel.xml";
+    std::string actual = (const char*) librdf_uri_to_string(librdf_node_get_uri(rdfuriNode.toRdfNode()));
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(RDFNodeTests, TestBlankNodeFromLibrdfNode) {
+    librdf_node* node = librdf_new_node_from_blank_identifier(world, (const unsigned char*)"file://./MyModel.xml");
+    semsim::RDFBlankNode blankNode(world, node);
+    std::string expected = "file://./MyModel.xml";
+    std::string actual = (const char*) librdf_node_get_blank_identifier(blankNode.toRdfNode());
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(RDFNodeTests, TestLiteralNodeFromLibrdfNode) {
+    librdf_node* node = librdf_new_node_from_literal(world, (const unsigned char*)"file://./MyModel.xml", nullptr, false);
+    semsim::RDFLiteralNode literalNode(world, node);
+    std::string expected = "file://./MyModel.xml";
+    std::string actual = (const char*) librdf_node_get_blank_identifier(literalNode.toRdfNode());
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
 
 
 
