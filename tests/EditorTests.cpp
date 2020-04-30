@@ -192,7 +192,7 @@ TEST_F(EditorTests, TestCompositeAnnotationPhysicalEntity) {
                            "         xml:base=\"file://MyModel.xml\">\n"
                            "    <rdf:Description rdf:about=\"VLV\">\n"
                            "        <bqbiol:isVersionOf rdf:resource=\"http://identifiers.org/opb/OPB_00154\"/>\n"
-                           "        <bqbiol:isPropertyOf rdf:resource=\"#entity_0\"/>\n"
+                           "        <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
                            "    </rdf:Description>\n"
                            "    <rdf:Description rdf:about=\"#entity_0\">\n"
                            "        <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:9670\"/>\n"

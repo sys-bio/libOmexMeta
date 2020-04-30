@@ -109,7 +109,7 @@ TEST_F(ParticipantTests, TestParticipantVecToTriples) {
 
     std::vector<semsim::Triple> triples;
     for (auto &i : participants){
-        for (auto &j : i->toTriples()){
+        for (auto &j : i->toTriples("metaid")){
             triples.push_back(j);
         }
     }

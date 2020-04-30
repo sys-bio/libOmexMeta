@@ -109,7 +109,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
             )
     );
 
-    semsim::Triples sources_triples = process.getSources()[0].toTriples();
+    semsim::Triples sources_triples = process.getSources()[0].toTriples("metaid");
     std::ostringstream actual;
     for (auto &it : sources_triples) {
         librdf_node_type node_type = librdf_node_get_type(it.getResource().toRdfNode());
@@ -218,7 +218,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriples) {
 
     semsim::PhysicalProcess process(
             world, model,
-            semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
+            semsim::Subject(world, semsim::RDFURINode(world, "VLV")),
             physical_property,
             std::vector<semsim::SourceParticipant>(
                     {semsim::SourceParticipant(
@@ -251,6 +251,32 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriples) {
 
     std::string actual = triples.str();
     std::cout << actual << std::endl;
-    std::string expected = "asf";
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"MediatorID\">\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference3\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"PhysicalProcess0000\">\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorID\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkID\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceID\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"SinkID\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"SourceID\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"VLV\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 

@@ -94,7 +94,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSource) {
             )
     );
 
-    semsim::Triples sources_triples = force.getSources()[0].toTriples();
+    semsim::Triples sources_triples = force.getSources()[0].toTriples("sources_metaid");
     std::ostringstream actual;
     for (auto &it : sources_triples) {
         librdf_node_type node_type = librdf_node_get_type(it.getResource().toRdfNode());
@@ -180,5 +180,60 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
     int expected = 9;
     int actual = triples.size();
     ASSERT_EQ(expected, actual);
+}
+
+
+TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
+    semsim::PhysicalForce force(
+            world,
+            model,
+            semsim::Subject(world, semsim::RDFURINode(world, "ForceId0000")),
+            physical_property,
+            std::vector<semsim::SourceParticipant>(
+                    {semsim::SourceParticipant(
+                            world,
+                            "SourceId1",
+                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
+                            1.0,
+                            "PhysicalEntityReference1"
+                    )}
+            ),
+            std::vector<semsim::SinkParticipant>(
+                    {semsim::SinkParticipant(
+                            world,
+                            "SinkId1",
+                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
+                            1.0,
+                            "PhysicalEntityReference2"
+                    )}
+            )
+    );
+
+    semsim::Triples triples = force.toTriples();
+    std::string actual = triples.str();
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"ForceId0000\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalForce0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"PhysicalForce0000\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkID\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceID\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"SinkID\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"SourceID\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 

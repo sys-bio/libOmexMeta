@@ -26,12 +26,14 @@ namespace semsim {
         PredicatePtr predicate_ptr_;
         double multiplier_;
         std::string physicalEntityReference_;
+    protected:
+        std::string participant_metaid_;
     public:
 
         Participant(librdf_world *world, std::string subject, PredicatePtr predicate, Resource resource, double multiplier,
                     std::string physicalEntityReference);
 
-        Triples toTriples() const;
+        Triples toTriples(std::string process_metaid) const;
 
         PredicatePtr getPredicatePtr();
 
@@ -46,6 +48,8 @@ namespace semsim {
         double getMultiplier() const;
 
         const std::string &getPhysicalEntityReference() const;
+
+
     };
 
 

@@ -4,8 +4,11 @@
 #include <sys/stat.h>
 #include <stdexcept>
 #include <sstream>
+#include <librdf.h>
 #include "SemsimUtils.h"
 #include "CurlGet.h"
+#include "Query.h"
+#include "MetaID.h"
 
 bool semsim::SemsimUtils::exists(const std::string &filename) {
     struct stat buffer{};
@@ -50,3 +53,26 @@ std::vector<std::string> semsim::SemsimUtils::splitStringBy(const std::string &s
     }
     return tokens;
 }
+
+std::string semsim::SemsimUtils::generateUniqueMetaid(
+        librdf_world *world, librdf_model *model, std::string metaid_base) {
+
+    std::string q = "SELECT ?subject ?predicate ?object\n"
+                    "WHERE {?subject ?predicate ?object}";
+    Query query(world, model, q);
+    ResultsMap results_map = query.resultsAsMap();
+    std::vector<std::string> subjects = results_map["subject"];
+    int count = 0;
+    std::string metaid;
+    while (true) {
+        MetaID metaId(metaid_base, count, 4);
+        metaid = metaId.generate();
+        if (std::find(subjects.begin(), subjects.end(), metaId.generate()) == subjects.end()) {
+            break;
+        }
+        count++;
+    }
+    return metaid;
+}
+
+

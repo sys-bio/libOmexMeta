@@ -20,28 +20,37 @@ namespace semsim {
 
     }
 
-    Triples Participant::toTriples() const {
+    Triples Participant::toTriples(std::string process_metaid) const {
+        if (participant_metaid_.empty()){
+            throw NullPointerException("Participant::toTriples: For developers. "
+                                       "participant_metaid_ variable is "
+                                       "nullptr meaning the Participant class is directly"
+                                       "being used - not one of its subclasses.");
+        }
         Triples triples;
+
+        // have source participant triple
         triples.emplace_back(
                 world_,
-                Subject(world_, RDFURINode(world_, subject_)),
+                Subject(world_, RDFURINode(world_, process_metaid)),
                 predicate_ptr_, //term is hasSourceParticipant etc.
-                resource_
+                Resource(world_, RDFURINode(world_, participant_metaid_))
         );
+        Subject participant_subject(world_, RDFURINode(world_, participant_metaid_));
 
         triples.emplace_back(
                 world_,
-                Subject(world_, RDFURINode(world_, resource_.str())),
+                participant_subject,
                 std::make_shared<SemSim>(SemSim(world_, "hasPhysicalEntityReference")),
                 Resource(world_, RDFURINode(world_, physicalEntityReference_))
         );
-        if (multiplier_ != 0.0) {
+        if (multiplier_ > 0.0) {
             std::ostringstream multiplier_os;
             multiplier_os << multiplier_;
             triples.emplace_back(
                     world_,
-                    Subject(world_, RDFURINode(world_, resource_.str())),
-                    std::make_shared<SemSim>(SemSim(world_, "hasMultiplier")),
+                    participant_subject,
+          std::make_shared<SemSim>(SemSim(world_, "hasMultiplier")),
                     Resource(world_, RDFLiteralNode(world_, multiplier_os.str()))
             );
         }
@@ -82,7 +91,7 @@ namespace semsim {
             : Participant(world, subject,
                           std::make_shared<SemSim>(SemSim(world, "hasSourceParticipant")),
                           resource, multiplier, physicalEntityReference) {
-
+            participant_metaid_ = "SourceID";
     }
 
     SinkParticipant::SinkParticipant(
@@ -91,7 +100,7 @@ namespace semsim {
             : Participant(world, subject,
                           std::make_shared<SemSim>(SemSim(world, "hasSinkParticipant")),
                           resource, multiplier, physicalEntityReference) {
-
+            participant_metaid_ = "SinkID";
     }
 
     MediatorParticipant::MediatorParticipant(
@@ -100,36 +109,7 @@ namespace semsim {
             : Participant(world, subject,
                           std::make_shared<SemSim>(SemSim(world, "hasMediatorParticipant")),
                           resource, 0.0, physicalEntityReference) {
-
+            participant_metaid_ = "MediatorID";
     }
-//
-//
-//    SinkParticipant::SinkParticipant(
-//            librdf_world *world, Subject subject, Resource resource,
-//            double multiplier, std::string physicalEntityReference)
-//            : Participant(world, std::move(subject), std::__cxx11::string(),
-//                          std::make_shared<SemSim>(SemSim(world, "hasSourceParticipant")),
-//                          std::move(resource), std::__cxx11::string()),
-//              multiplier_(multiplier), physicalEntityReference_(std::move(physicalEntityReference)) {}
-//
-//    Triples SinkParticipant::toTriples() {
-//        return Participant::toTriples_(world_, getSubject(), "hasParticipantSink", getResource(),
-//                                       multiplier_, physicalEntityReference_);
-//    };
-//
-//
-//    MediatorParticipant::MediatorParticipant(
-//            librdf_world *world, Subject subject, Resource resource,
-//            std::string physicalEntityReference)
-//            : Participant(world, std::move(subject), std::__cxx11::string(),
-//                          std::make_shared<SemSim>(SemSim(world, "hasMediatorParticipant")),
-//                          std::move(resource), std::__cxx11::string()),
-//              physicalEntityReference_(std::move(physicalEntityReference)) {}
-//
-//    Triples MediatorParticipant::toTriples() {
-//        return Participant::toTriples_(world_, getSubject(), "SourceParticipant", getResource(),
-//                                       0.0, physicalEntityReference_);
-//    };
-
 
 }
