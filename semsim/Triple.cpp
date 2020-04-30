@@ -8,6 +8,7 @@
 #include "raptor2.h"
 #include "librdf.h"
 #include "Triple.h"
+#include "Writer.h"
 
 //'todo Conceptually, could we use an isa relationshop between singular annotation and Triple?
 
@@ -57,6 +58,10 @@ namespace semsim {
         return Triple(world, subject, predicatePtr, resource);
     }
 
+
+    std::string Triple::str(std::string format, std::string base) {
+        return Writer(*this, base, format).toString();
+    }
 
 }
 

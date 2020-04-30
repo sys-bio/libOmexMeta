@@ -48,11 +48,11 @@ namespace semsim {
                const std::string &base_uri = "file://annotation.rdf",
                std::string format = "rdfxml-abbrev");
 
-        Writer(librdf_world *world_, Triple triple,
+        Writer(Triple triple,
                const std::string &base_uri = "file://annotation.rdf",
                std::string format = "rdfxml-abbrev");
 
-        Writer(librdf_world *world, Triples triples,
+        Writer(Triples triples,
                const std::string &base_uri = "file://annotation.rdf",
                std::string format = "rdfxml-abbrev");
 

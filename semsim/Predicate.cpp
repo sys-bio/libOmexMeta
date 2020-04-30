@@ -17,7 +17,7 @@ namespace semsim {
                          std::string term, std::string prefix)
             : world_(world), namespace_(namespace_), term_(std::move(term)),
               prefix_(std::move(prefix)) {
-        if (namespace_.back() == '/') {
+        if (namespace_.back() == '/' || namespace_.back() == '#') {
             this->uri_ = namespace_ + term_;
         } else {
             this->uri_ = namespace_ + "/" + term_;
@@ -28,15 +28,36 @@ namespace semsim {
 
     Predicate::Predicate(librdf_world *world, librdf_node *node)
             : world_(world), uri_node_(std::make_shared<RDFURINode>(world, node)) {
+        // some logic for processing the uri in a node to automatically produce the fields we want.
         std::string val = uri_node_->str();
+
+        // split the uri by '/'
         std::vector<std::string> v = SemsimUtils::splitStringBy(val, '/');
         std::ostringstream os;
-        os << v[0] << "//"; //https//
+        // add protocol portion which should always be the first bit
+        os << v[0] << "//";
+
+        // add the middle portion to the stream.
         for (unsigned long i = 1; i < v.size() - 1; i++) {
             os << v[i] << "/"; // other parts of the url - up until the last bit
         }
+        // When predicate ends in '#' we need different logic to when the predicate ends in '/'
+        if (v[v.size() - 1].find('#') != std::string::npos){
+            // split last portion by '#' such as .../semsim#hasSourceParticipant
+            std::vector<std::string> last_bit = SemsimUtils::splitStringBy(v[v.size() - 1], '#');
+            if (last_bit.size() != 2){
+                throw std::logic_error("Predicate::Predicate(): For developers. Should never have more than two "
+                                       "strings in this vector of strings");
+            }
+            // into semsim# and hasSourceParticipant
+            os << last_bit[0] << "#";
+            term_ = last_bit[1];
+        } else {
+            term_ = v[v.size() - 1];
+        }
+
         namespace_ = os.str();
-        term_ = v[v.size() - 1];
+
         prefix_ = Predicate::prefix_map()[namespace_];
         if (prefix_.empty()) {
             prefix_ = "NotSet";
@@ -137,7 +158,7 @@ namespace semsim {
     }
 
     SemSim::SemSim(librdf_world *world, const std::string &term) :
-            Predicate(world, "http://www.bhi.washington.edu/semsim/", term, "semsim") {
+            Predicate(world, "http://www.bhi.washington.edu/semsim#", term, "semsim") {
         verify(valid_terms_, term_);
     }
 

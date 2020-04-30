@@ -254,7 +254,7 @@ TEST_F(WriterTests, WriterTestFromTriple) {
 
     semsim::Triple triple(world, subject, predicatePtr, resource);
 
-    semsim::Writer writer(world, triple);
+    semsim::Writer writer(triple);
     std::cout << writer.toString() << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
@@ -280,7 +280,7 @@ TEST_F(WriterTests, WriterTestFromTriples) {
     semsim::Triple triple2(world, subject, predicatePtr2, resource);
     semsim::Triples triples({triple1, triple2});
 
-    semsim::Writer writer(world, triples);
+    semsim::Writer writer(triples);
     std::cout << writer.toString() << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"

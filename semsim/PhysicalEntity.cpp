@@ -42,13 +42,12 @@ semsim::Triple semsim::PhysicalEntity::what() const {
 }
 
 semsim::Triples semsim::PhysicalEntity::where() const {
-    RDFURINode entity_metaid_node = RDFURINode(world_, generateMetaId(createMetaId()));
     Triples triples;
     // the "where" part of the physical entity
     for (auto &locationResource : getLocationResources()) {
         triples.emplace_back(
                 world_,
-                Subject(world_, entity_metaid_node),
+                Subject(world_, RDFURINode(world_, createMetaId())),
                 std::make_shared<Predicate>(BiomodelsBiologyQualifier(world_, "isPartOf")),
                 locationResource
         );
@@ -66,3 +65,20 @@ semsim::Triples semsim::PhysicalEntity::toTriples() const {
     }
     return triples;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
