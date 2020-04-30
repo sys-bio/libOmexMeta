@@ -36,6 +36,8 @@ namespace semsim {
 
         static Triple fromStatement(librdf_world *world, librdf_statement* statement);
 
+        std::string str(std::string format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
+
     };
 
 }

@@ -43,7 +43,7 @@ namespace semsim {
 
         std::vector<semsim::Triple>::iterator end();
 
-        std::string str(std::string format);
+        std::string str(std::string format = "rdfxml-abbrev", std::string base="file://./annotations.rdf");
     };
 
     typedef std::vector<Triples> NestedTriples;

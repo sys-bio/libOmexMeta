@@ -83,7 +83,6 @@ TEST_F(PredicateTests, TestDCTermGetNamespace) {
     semsim::DCTerm term(world, "Description");
     std::string expected = "http://purl.org/dc/terms/";
     std::string actual = term.getNamespace();
-    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -91,7 +90,6 @@ TEST_F(PredicateTests, TestDCTermGetPrefix) {
     semsim::DCTerm term(world, "Description");
     std::string expected = "dcterms";
     std::string actual = term.getPrefix();
-    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -99,7 +97,6 @@ TEST_F(PredicateTests, TestBqBiolGetNamespace) {
     semsim::BiomodelsBiologyQualifier term(world, "is");
     std::string expected = "http://biomodels.net/biology-qualifiers/";
     std::string actual = term.getNamespace();
-    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -108,7 +105,6 @@ TEST_F(PredicateTests, TestBqBiolGetPrefix) {
     semsim::BiomodelsBiologyQualifier term(world, "is");
     std::string expected = "bqbiol";
     std::string actual = term.getPrefix();
-    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -117,7 +113,6 @@ TEST_F(PredicateTests, TestBqModelGetNamespace) {
     semsim::BiomodelsModelQualifier term(world, "is");
     std::string expected = "http://biomodels.net/model-qualifiers/";
     std::string actual = term.getNamespace();
-    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -126,7 +121,6 @@ TEST_F(PredicateTests, TestBqModelGetPrefix) {
     semsim::BiomodelsModelQualifier term(world, "is");
     std::string expected = "bqmodel";
     std::string actual = term.getPrefix();
-    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -136,7 +130,6 @@ TEST_F(PredicateTests, TestBqModelGetPrefixFromPtr) {
     std::shared_ptr<semsim::BiomodelsModelQualifier> term_ptr = std::make_shared<semsim::BiomodelsModelQualifier>(term);
     std::string expected = "bqmodel";
     std::string actual = term_ptr->getPrefix();
-    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -146,7 +139,6 @@ TEST_F(PredicateTests, TestBqModelGetPrefixFromPtrToBaseClass) {
     std::shared_ptr<semsim::Predicate> term_ptr = std::make_shared<semsim::BiomodelsModelQualifier>(term);
     std::string expected = "bqmodel";
     std::string actual = term_ptr->getPrefix();
-    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -156,7 +148,23 @@ TEST_F(PredicateTests, TestBqModelGetPrefixFromPtrToBaseClassvsdf) {
             std::make_shared<semsim::Predicate>(semsim::BiomodelsBiologyQualifier(world, "is"));
     std::string expected = "bqbiol";
     std::string actual = term_ptr->getPrefix();
-    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestSemsimPredicatePrefix) {
+    std::shared_ptr<semsim::Predicate> term_ptr =
+            std::make_shared<semsim::Predicate>(semsim::SemSim(world, "hasSourceParticipant"));
+    std::string expected = "semsim";
+    std::string actual = term_ptr->getPrefix();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
+TEST_F(PredicateTests, TestSemsimPredicateNamespace) {
+    std::shared_ptr<semsim::Predicate> term_ptr =
+            std::make_shared<semsim::Predicate>(semsim::SemSim(world, "hasSourceParticipant"));
+    std::string expected = "http://www.bhi.washington.edu/semsim#";
+    std::string actual = term_ptr->getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -187,6 +195,33 @@ TEST_F(PredicateTests, TestFromUriNodeNamespaceWhenPrefixIsKnown) {
     semsim::Predicate predicate(world, node);
     const std::string &actual = predicate.getNamespace();
     std::string expected = "https://biomodels.net/biology-qualifiers/";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestNamespaceWhenItEndsWithHash) {
+    std::string url_str = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
+    librdf_node *node = librdf_new_node_from_uri_string(world, (const unsigned char *) url_str.c_str());
+    semsim::Predicate predicate(world, node);
+    const std::string &actual = predicate.getNamespace();
+    std::string expected = "http://www.bhi.washington.edu/semsim#";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestPrefixWhenNamespaceEndsWithHash) {
+    std::string url_str = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
+    librdf_node *node = librdf_new_node_from_uri_string(world, (const unsigned char *) url_str.c_str());
+    semsim::Predicate predicate(world, node);
+    const std::string &actual = predicate.getPrefix();
+    std::string expected = "semsim";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestTermWhenNamespaceEndsWithHash) {
+    std::string url_str = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
+    librdf_node *node = librdf_new_node_from_uri_string(world, (const unsigned char *) url_str.c_str());
+    semsim::Predicate predicate(world, node);
+    const std::string &actual = predicate.getTerm();
+    std::string expected = "hasSourceParticipant";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 

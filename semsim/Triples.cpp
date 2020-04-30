@@ -3,6 +3,7 @@
 //
 #include "semsim/Error.h"
 #include "semsim/Triples.h"
+#include "semsim/Writer.h"
 
 namespace semsim {
 
@@ -66,10 +67,8 @@ namespace semsim {
         return triples_.end();
     }
 
-    std::string Triples::str(std::string format) {
-        return "empty";
-        //todo implement a writeTriples function in Writer
-//        throw NotImplementedException("Not yet impemented");
+    std::string Triples::str(std::string format, std::string base) {
+        return Writer(*this, base, format).toString();
     }
 
 

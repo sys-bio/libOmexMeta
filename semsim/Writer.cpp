@@ -64,8 +64,9 @@ semsim::Writer::Writer(librdf_world *world, librdf_model *model,
     init(world, model, base_uri, format);
 }
 
-semsim::Writer::Writer(librdf_world *world, semsim::Triple triple, const std::string &base_uri, std::string format) {
+semsim::Writer::Writer(semsim::Triple triple, const std::string &base_uri, std::string format) {
     // when creating a writer from a Triple, we just create a locally scoped rdf model and storage
+    librdf_world *world = librdf_new_world();
     librdf_storage *storage = librdf_new_storage(world, "memory", "triple_store", nullptr);
     if (!storage) {
         throw LibRDFException("Writer::Writer: storage not created");
@@ -88,8 +89,9 @@ semsim::Writer::Writer(librdf_world *world, semsim::Triple triple, const std::st
     }
 }
 
-semsim::Writer::Writer(librdf_world *world, semsim::Triples triples, const std::string &base_uri, std::string format) {
+semsim::Writer::Writer(semsim::Triples triples, const std::string &base_uri, std::string format) {
     // when creating a writer from a Triple, we just create a locally scoped rdf model and storage
+    librdf_world *world = librdf_new_world();
     librdf_storage *storage = librdf_new_storage(world, "memory", "triples_store", nullptr);
     if (!storage) {
         throw LibRDFException("Writer::Writer: storage not created");

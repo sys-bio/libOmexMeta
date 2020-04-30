@@ -39,7 +39,7 @@ public:
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
     semsim::PhysicalProcess process(
-            world, nullptr,
+            world, model,
             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
             physical_property,
             std::vector<semsim::SourceParticipant>(
@@ -78,7 +78,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
     semsim::PhysicalProcess process(
-            world, nullptr,
+            world, model,
             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
             physical_property,
             std::vector<semsim::SourceParticipant>(
@@ -134,7 +134,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
     semsim::PhysicalProcess process(
-            world, nullptr,
+            world, model,
             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
             physical_property,
             std::vector<semsim::SourceParticipant>(
@@ -176,7 +176,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
     semsim::RDF rdf;
 
     semsim::PhysicalProcess process(
-            world, nullptr,
+            world, model,
             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
             physical_property,
             std::vector<semsim::SourceParticipant>(
@@ -211,5 +211,46 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
     int expected = 9;
     int actual = triples.size();
     ASSERT_EQ(expected, actual);
+}
+
+TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriples) {
+    semsim::RDF rdf;
+
+    semsim::PhysicalProcess process(
+            world, model,
+            semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
+            physical_property,
+            std::vector<semsim::SourceParticipant>(
+                    {semsim::SourceParticipant(
+                            world,
+                            "SourceId1",
+                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
+                            1.0,
+                            "PhysicalEntityReference1"
+                    )}
+            ),
+            std::vector<semsim::SinkParticipant>(
+                    {semsim::SinkParticipant(
+                            world,
+                            "SinkId1",
+                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
+                            1.0,
+                            "PhysicalEntityReference2"
+                    )}
+            ),
+            std::vector<semsim::MediatorParticipant>(
+                    {semsim::MediatorParticipant(
+                            world,
+                            "MediatorID1",
+                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier005")),
+                            "PhysicalEntityReference3"
+                    )}
+            )
+    );
+    semsim::Triples triples = process.toTriples();
+
+    std::string actual = triples.str();
+    std::cout << actual << std::endl;
+    std::string expected = "asf";
 }
 
