@@ -34,9 +34,9 @@ namespace semsim {
 
         Triples toTriples() const override ;
 
-        Triple whatTriple() const;
+        Triple what() const;
 
-        semsim::Triples whereTriple() const;
+        semsim::Triples where() const;
 
     };
 }

@@ -38,6 +38,7 @@ TEST_F(PhysicalEntityTests, TestGetSubjectMetaidStr) {
     semsim::RDF rdf;
     semsim::PhysicalEntity physicalEntity(
             world,
+            model,
             semsim::Subject(world, semsim::RDFURINode(world, "Metaid0034")),
             physical_property,
             semsim::Resource(world, semsim::RDFURINode(world, "obo/PR_000000365")), // is smad3
@@ -55,6 +56,7 @@ TEST_F(PhysicalEntityTests, TestGetSubjectMetaidFromNode) {
     semsim::RDF rdf;
     semsim::PhysicalEntity physicalEntity(
             world,
+            model,
             semsim::Subject(world, semsim::RDFURINode(world, "Metaid0034")),
             physical_property,
             semsim::Resource(world, semsim::RDFURINode(world, "obo/PR_000000365")), // is smad3
@@ -73,6 +75,7 @@ TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyNode) {
     semsim::RDF rdf;
     semsim::PhysicalEntity physicalEntity(
             world,
+            model,
             semsim::Subject(world, semsim::RDFURINode(world, "Metaid0034")),
             physical_property,
             semsim::Resource(world, semsim::RDFURINode(world, "obo/PR_000000365")), // is smad3
@@ -91,6 +94,7 @@ TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyStr) {
     semsim::RDF rdf;
     semsim::PhysicalEntity physicalEntity(
             world,
+            model,
             semsim::Subject(world, semsim::RDFURINode(world, "Metaid0034")),
             physical_property,
             semsim::Resource(world, semsim::RDFURINode(world, "obo/PR_000000365")), // is smad3
@@ -109,6 +113,7 @@ TEST_F(PhysicalEntityTests, TestIdentityResourceStr) {
     semsim::RDF rdf;
     semsim::PhysicalEntity physicalEntity(
             world,
+            model,
             semsim::Subject(world, semsim::RDFURINode(world, "Metaid0034")),
             physical_property,
             semsim::Resource(world, semsim::RDFURINode(world, "obo/PR_000000365")), // is smad3
@@ -127,6 +132,7 @@ TEST_F(PhysicalEntityTests, TestIdentityResourceNode) {
     semsim::RDF rdf;
     semsim::PhysicalEntity physicalEntity(
             world,
+            model,
             semsim::Subject(world, semsim::RDFURINode(world, "Metaid0034")),
             physical_property,
             semsim::Resource(world, semsim::RDFURINode(world, "obo/PR_000000365")), // is smad3
@@ -145,6 +151,7 @@ TEST_F(PhysicalEntityTests, TestLocationResourceStr) {
     semsim::RDF rdf;
     semsim::PhysicalEntity physicalEntity(
             world,
+            model,
             semsim::Subject(world, semsim::RDFURINode(world, "Metaid0034")),
             physical_property,
             semsim::Resource(world, semsim::RDFURINode(world, "obo/PR_000000365")), // is smad3
@@ -166,6 +173,7 @@ TEST_F(PhysicalEntityTests, TestLocationResourceNode) {
     semsim::RDF rdf;
     semsim::PhysicalEntity physicalEntity(
             world,
+            model,
             semsim::Subject(world, semsim::RDFURINode(world, "Metaid0034")),
             physical_property,
             semsim::Resource(world, semsim::RDFURINode(world, "obo/PR_000000365")), // is smad3
@@ -187,6 +195,7 @@ TEST_F(PhysicalEntityTests, TestToTripleSize) {
     semsim::RDF rdf;
     semsim::PhysicalEntity physicalEntity(
             world,
+            model,
             semsim::Subject(world, semsim::RDFURINode(world, "Metaid0034")),
             physical_property,
             semsim::Resource(world, semsim::RDFURINode(world, "obo/PR_000000365")), // is smad3
@@ -207,6 +216,7 @@ TEST_F(PhysicalEntityTests, TestToTriple) {
     semsim::RDF rdf;
     semsim::PhysicalEntity physicalEntity(
             world,
+            model,
             semsim::Subject(world, semsim::RDFURINode(world, "Metaid0034")),
             physical_property,
             semsim::Resource(world, semsim::RDFURINode(world, "obo/PR_000000365")), // is smad3
@@ -227,6 +237,37 @@ TEST_F(PhysicalEntityTests, TestToTriple) {
                            "https://identifiers.org/fma/FMA:63877\n";
 
     ASSERT_STREQ(actual.str().c_str(), expected.c_str());
+
+}
+
+TEST_F(PhysicalEntityTests, TestWhereTriple) {
+    semsim::RDF rdf;
+    semsim::PhysicalEntity physicalEntity(
+            world,
+            model,
+            semsim::Subject(world, semsim::RDFURINode(world, "Metaid0034")),
+            physical_property,
+            semsim::Resource(world, semsim::RDFURINode(world, "obo/PR_000000365")), // is smad3
+            std::vector<semsim::Resource>(
+                    {semsim::Resource(world, semsim::RDFURINode(world, "https://identifiers.org/fma/FMA:72564")),
+                     semsim::Resource(world, semsim::RDFURINode(world, "fma:FMA:63877"))
+                    })
+    );
+    semsim::Triples triples = physicalEntity.where();
+
+
+//    semsim::Triples triples = physicalEntity.toTriples();
+//    std::ostringstream actual;
+//
+//    for (auto &triple : triples) {
+//        actual << triple.getResource().str() << std::endl;
+//    }
+//    std::string expected = "https://identifiers.org/OPB/OPB_00340\n"
+//                           "https://identifiers.org/obo/PR_000000365\n"
+//                           "https://identifiers.org/fma/FMA:72564\n"
+//                           "https://identifiers.org/fma/FMA:63877\n";
+//
+//    ASSERT_STREQ(actual.str().c_str(), expected.c_str());
 
 }
 

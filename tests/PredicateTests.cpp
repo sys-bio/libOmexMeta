@@ -174,29 +174,49 @@ TEST_F(PredicateTests, TestFromUriNode) {
 
 TEST_F(PredicateTests, TestFromUriNodeNamespace) {
     std::string url_str = "https://www.notarealaddress.com/nota/term";
-    librdf_node* node = librdf_new_node_from_uri_string(world, (const unsigned char*)url_str.c_str());
+    librdf_node *node = librdf_new_node_from_uri_string(world, (const unsigned char *) url_str.c_str());
     semsim::Predicate predicate(world, node);
-    const std::string& actual = predicate.getNamespace();
+    const std::string &actual = predicate.getNamespace();
     std::string expected = "https://www.notarealaddress.com/nota/";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestFromUriNodeNamespaceWhenPrefixIsKnown) {
+    std::string url_str = "https://biomodels.net/biology-qualifiers/is";
+    librdf_node *node = librdf_new_node_from_uri_string(world, (const unsigned char *) url_str.c_str());
+    semsim::Predicate predicate(world, node);
+    const std::string &actual = predicate.getNamespace();
+    std::string expected = "https://biomodels.net/biology-qualifiers/";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(PredicateTests, TestFromUriNodeTerm) {
     std::string url_str = "https://www.notarealaddress.com/nota/term";
-    librdf_node* node = librdf_new_node_from_uri_string(world, (const unsigned char*)url_str.c_str());
+    librdf_node *node = librdf_new_node_from_uri_string(world, (const unsigned char *) url_str.c_str());
     semsim::Predicate predicate(world, node);
-    const std::string& actual = predicate.getTerm();
+    const std::string &actual = predicate.getTerm();
     std::string expected = "term";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(PredicateTests, TestFromUriNodePrefix) {
     std::string url_str = "https://www.notarealaddress.com/nota/term";
-    librdf_node* node = librdf_new_node_from_uri_string(world, (const unsigned char*)url_str.c_str());
+    librdf_node *node = librdf_new_node_from_uri_string(world, (const unsigned char *) url_str.c_str());
     semsim::Predicate predicate(world, node);
-    const std::string& actual = predicate.getPrefix();
+    const std::string &actual = predicate.getPrefix();
     std::string expected = "NotSet";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestNamespaceKnownWhenNamespaceIsKnown) {
+    std::string ns = "http://purl.org/dc/terms/";
+    ASSERT_TRUE(semsim::Predicate::namespaceKnown(ns));
+}
+
+
+TEST_F(PredicateTests, TestNamespaceKnownWhenNamespaceIsNotKnown) {
+    std::string ns = "http://www.notarealaddress.com/nota/";
+    ASSERT_FALSE(semsim::Predicate::namespaceKnown(ns));
 }
 
 

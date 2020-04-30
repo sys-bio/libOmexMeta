@@ -9,6 +9,8 @@
 #include <string>
 #include <vector>
 #include "unordered_map"
+#include "Triple.h"
+#include "Triples.h"
 
 namespace semsim {
     class Writer {
@@ -36,16 +38,27 @@ namespace semsim {
 
         void validateBaseUri();
 
+        void init(librdf_world *world, librdf_model *model,
+                  const std::string &base_uri,
+                  std::string format);
+
     public:
 
-        Writer(librdf_world *world_, librdf_model *model_,
-               const std::string& base_uri = "file://annotation.rdf",
+        Writer(librdf_world *world, librdf_model *model,
+               const std::string &base_uri = "file://annotation.rdf",
+               std::string format = "rdfxml-abbrev");
+
+        Writer(librdf_world *world_, Triple triple,
+               const std::string &base_uri = "file://annotation.rdf",
+               std::string format = "rdfxml-abbrev");
+
+        Writer(librdf_world *world, Triples triples,
+               const std::string &base_uri = "file://annotation.rdf",
                std::string format = "rdfxml-abbrev");
 
         void setFormat(const std::string &format);
 
         void setWorld(librdf_world *world_);
-
 
         std::string toString();
 

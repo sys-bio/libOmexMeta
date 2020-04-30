@@ -169,6 +169,7 @@ TEST_F(EditorTests, TestCompositeAnnotationPhysicalEntity) {
             std::make_shared<semsim::PhysicalEntity>(
                     semsim::PhysicalEntity(
                             world,
+                            model,
                             semsim::Subject(world, semsim::RDFURINode(world, "VLV")),
                             semsim::PhysicalPropertyResource(
                                     // chemical concentration
@@ -211,7 +212,8 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
     editor.addCompositeAnnotation(
             std::make_shared<semsim::PhysicalProcess>(
                     semsim::PhysicalProcess(
-                            world, nullptr,
+                            world,
+                            model,
                             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
                             semsim::PhysicalPropertyResource(world, "OPB:OPB1234"),
                             std::vector<semsim::SourceParticipant>(
@@ -282,6 +284,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
             std::make_shared<semsim::PhysicalForce>(
                     semsim::PhysicalForce(
                             world,
+                            model,
                             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
                             semsim::PhysicalPropertyResource(world, "OPB:OPB1234"),
                             std::vector<semsim::SourceParticipant>(

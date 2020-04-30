@@ -1,8 +1,8 @@
 //
 // Created by Ciaran on 4/29/2020.
 //
-
-#include "Triples.h"
+#include "semsim/Error.h"
+#include "semsim/Triples.h"
 
 namespace semsim {
 
@@ -64,6 +64,12 @@ namespace semsim {
 
     std::vector<Triple>::iterator Triples::end() {
         return triples_.end();
+    }
+
+    std::string Triples::str(std::string format) {
+        return "empty";
+        //todo implement a writeTriples function in Writer
+//        throw NotImplementedException("Not yet impemented");
     }
 
 

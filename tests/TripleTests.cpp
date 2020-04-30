@@ -224,7 +224,7 @@ TEST_F(TripleTests, TestFromStatementPredicate) {
     librdf_statement *statement = triple1.toStatement();
     semsim::Triple triple2 = semsim::Triple::fromStatement(world_, statement);
     std::string actual = triple2.getPredicatePtr()->str();
-    std::string expected = "http:/biomodels.net/biology-qualifiers/is";
+    std::string expected = "http://biomodels.net/biology-qualifiers/is";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 

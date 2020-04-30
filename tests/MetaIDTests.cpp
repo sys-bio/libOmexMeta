@@ -105,6 +105,14 @@ TEST_F(MetaIDTests, TestInequality1) {
 }
 
 
+TEST_F(MetaIDTests, Test0) {
+    semsim::MetaID metaId1("PhysicalEntity", 0, 4);
+    std::string expected = "PhysicalEntity0000";
+    std::string actual = metaId1.generate();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
 
 
 

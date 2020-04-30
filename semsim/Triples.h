@@ -42,6 +42,8 @@ namespace semsim {
         std::vector<semsim::Triple>::iterator begin();
 
         std::vector<semsim::Triple>::iterator end();
+
+        std::string str(std::string format);
     };
 
     typedef std::vector<Triples> NestedTriples;

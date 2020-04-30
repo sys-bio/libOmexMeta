@@ -39,6 +39,7 @@ public:
 TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
     semsim::PhysicalForce force(
             world,
+            model,
             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
             physical_property,
             std::vector<semsim::SourceParticipant>(
@@ -70,6 +71,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
 TEST_F(PhysicalForceTests, TestPhysicalForceSource) {
     semsim::PhysicalForce force(
             world,
+            model,
             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
             physical_property,
             std::vector<semsim::SourceParticipant>(
@@ -118,6 +120,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSource) {
 TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
     semsim::PhysicalForce force(
             world,
+            model,
             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
             physical_property,
             std::vector<semsim::SourceParticipant>(
@@ -150,6 +153,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
 TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
     semsim::PhysicalForce force(
             world,
+            model,
             semsim::Subject(world, semsim::RDFURINode(world, "MetaId004")),
             physical_property,
             std::vector<semsim::SourceParticipant>(

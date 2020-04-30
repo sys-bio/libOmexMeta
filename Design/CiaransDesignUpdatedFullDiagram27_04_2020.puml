@@ -184,9 +184,9 @@ namespace semsim {
 		+getIdentityResource() : Resource& {query}
 		-isPartOf_ : Resources
 		+getLocationResources() : Resources& {query}
-		+whatTriple() : Triple {query}
+		+what() : Triple {query}
 		+toTriples() : Triples {query}
-		+whereTriple() : semsim::Triples {query}
+		+where() : semsim::Triples {query}
 		-{static} metaid_ : static std::vector<MetaID>
 		+createMetaId(librdf_model* model, std::string base_metaid) : std::string {query}
 	}
