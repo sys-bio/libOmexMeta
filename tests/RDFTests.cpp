@@ -132,10 +132,8 @@ TEST_F(RDFTests, testQueryResultsAsMap) {
                     "WHERE {?x ?y ?z }";
     semsim::RDF rdf = semsim::RDF::fromString(samples.singular_annotation4, "rdfxml");
     semsim::ResultsMap map = rdf.queryResultsAsMap(q);
-    std::string actual = map["x"][1];
-    std::string expected = "x,y,z\n"
-                           "file://./MyModel.xml#meta2,http://purl.org/dc/terms/description,Cardiomyocyte cytosolic ATP concentration\n"
-                           "";
+    std::string actual = map["x"][0];
+    std::string expected = "file://./MyModel.xml#meta2";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }

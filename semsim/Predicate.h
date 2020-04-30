@@ -35,8 +35,7 @@ namespace semsim {
         Predicate(librdf_world *world, const std::string &namespace_,
                   std::string term, std::string prefix);
 
-        Predicate(librdf_world *world, librdf_node *node, std::string &namespace_,
-                  std::string term, std::string prefix);
+        Predicate(librdf_world *world, librdf_node *node);
 
         librdf_node *toRdfNode();
 
@@ -52,7 +51,7 @@ namespace semsim {
 
         static int verify(std::vector<std::string> valid_terms, const std::string &term);
 
-        Predicate(librdf_world *world, librdf_node *node);
+        static bool namespaceKnown(std::string ns);
     };
 
     class BiomodelsBiologyQualifier : public Predicate {

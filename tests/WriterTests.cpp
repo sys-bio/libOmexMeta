@@ -9,10 +9,7 @@
 
 #include <semsim/Writer.h>
 
-#include <utility>
 #include "gtest/gtest.h"
-#include "semsim/RDF.h"
-#include "semsim/SemSim.h"
 #include "AnnotationSamples.h"
 
 class WriterTests : public ::testing::Test {
@@ -47,8 +44,8 @@ public:
         librdf_model_add_statement(model, statement);
     };
 
-    void test_writer(std::string output_format, const std::string& expected) {
-        semsim::Writer writer(world, model, "file://./semsim_model.xml" , std::move(output_format));
+    void test_writer(std::string output_format, const std::string &expected) {
+        semsim::Writer writer(world, model, "file://./semsim_model.xml", std::move(output_format));
         writer.registerNamespace("http://purl.org/dc/elements/1.1/", "dcterms");
         std::string actual = writer.toString();
         std::cout << actual << std::endl;
@@ -134,7 +131,7 @@ TEST_F(WriterTests, TestWriteModelToRdfxmlXmp) {
 }
 
 
-TEST_F(WriterTests, Testrdfxmlabbrev){
+TEST_F(WriterTests, Testrdfxmlabbrev) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/elements/1.1/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -146,7 +143,8 @@ TEST_F(WriterTests, Testrdfxmlabbrev){
                            "";
     test_writer("rdfxml-abbrev", expected);
 }
-TEST_F(WriterTests, Testrdfxml){
+
+TEST_F(WriterTests, Testrdfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./semsim_model.xml\">\n"
                            "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
@@ -157,7 +155,7 @@ TEST_F(WriterTests, Testrdfxml){
     test_writer("rdfxml", expected);
 }
 
-TEST_F(WriterTests, Testdot){
+TEST_F(WriterTests, Testdot) {
     std::string expected = "digraph {\n"
                            "\trankdir = LR;\n"
                            "\tcharset=\"utf-8\";\n"
@@ -177,7 +175,8 @@ TEST_F(WriterTests, Testdot){
                            "";
     test_writer("dot", expected);
 }
-TEST_F(WriterTests, TestJsonTriples){
+
+TEST_F(WriterTests, TestJsonTriples) {
     std::string expected = "{\n"
                            "  \"triples\" : [\n"
                            "    {\n"
@@ -199,7 +198,8 @@ TEST_F(WriterTests, TestJsonTriples){
                            "  }\n";
     test_writer("json-triples", expected);
 }
-TEST_F(WriterTests, Testjson){
+
+TEST_F(WriterTests, Testjson) {
     std::string expected = "\n{\n"
                            "  \"http://www.dajobe.org/\" : {\n"
                            "    \"http://purl.org/dc/elements/1.1/title\" : [ {\n"
@@ -212,7 +212,8 @@ TEST_F(WriterTests, Testjson){
                            "  }\n";
     test_writer("json", expected);
 }
-TEST_F(WriterTests, Testhtml){
+
+TEST_F(WriterTests, Testhtml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\"\n"
                            "        \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n"
@@ -238,10 +239,78 @@ TEST_F(WriterTests, Testhtml){
                            "</html>\n";
     test_writer("html", expected);
 }
-TEST_F(WriterTests, Testnquads){
+
+TEST_F(WriterTests, Testnquads) {
     std::string expected = "<http://www.dajobe.org/> <http://purl.org/dc/elements/1.1/title> \"My Home Page\" .\n";
     test_writer("nquads", expected);
 }
+
+
+TEST_F(WriterTests, WriterTestFromTriple) {
+    semsim::Subject subject = semsim::Subject(world, semsim::RDFURINode(world, "Soooobject"));
+    semsim::Resource resource = semsim::Resource(world, semsim::RDFURINode(world, "resource/identifier"));
+    semsim::BiomodelsBiologyQualifier predicate = semsim::BiomodelsBiologyQualifier(world, "is");
+    semsim::PredicatePtr predicatePtr = std::make_shared<semsim::Predicate>(predicate);
+
+    semsim::Triple triple(world, subject, predicatePtr, resource);
+
+    semsim::Writer writer(world, triple);
+    std::cout << writer.toString() << std::endl;
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"file://annotation.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"Soooobject\">\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/resource/identifier\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    std::string actual = writer.toString();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(WriterTests, WriterTestFromTriples) {
+    semsim::Subject subject = semsim::Subject(world, semsim::RDFURINode(world, "Soooobject"));
+    semsim::Resource resource = semsim::Resource(world, semsim::RDFURINode(world, "resource/identifier"));
+    semsim::BiomodelsBiologyQualifier predicate = semsim::BiomodelsBiologyQualifier(world, "is");
+    semsim::BiomodelsBiologyQualifier predicate2 = semsim::BiomodelsBiologyQualifier(world, "isPartOf");
+    semsim::PredicatePtr predicatePtr = std::make_shared<semsim::Predicate>(predicate);
+    semsim::PredicatePtr predicatePtr2 = std::make_shared<semsim::Predicate>(predicate2);
+
+    semsim::Triple triple1(world, subject, predicatePtr, resource);
+    semsim::Triple triple2(world, subject, predicatePtr2, resource);
+    semsim::Triples triples({triple1, triple2});
+
+    semsim::Writer writer(world, triples);
+    std::cout << writer.toString() << std::endl;
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"file://annotation.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"Soooobject\">\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/resource/identifier\"/>\n"
+                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/resource/identifier\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n"
+                           "";
+    std::string actual = writer.toString();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

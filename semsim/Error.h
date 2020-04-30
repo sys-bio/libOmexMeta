@@ -1,11 +1,8 @@
-#include <utility>
-
-//
-// Created by Ciaran on 3/19/2020.
-//
-
 #ifndef LIBSEMGEN_ERROR_H
 #define LIBSEMGEN_ERROR_H
+
+#include "exception"
+#include "iostream"
 
 namespace semsim {
     /// https://stackoverflow.com/questions/8152720/correct-way-to-inherit-from-stdexception

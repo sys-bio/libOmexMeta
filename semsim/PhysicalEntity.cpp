@@ -31,7 +31,7 @@ const semsim::Resource &semsim::PhysicalEntity::getIdentityResource() const {
 }
 
 
-semsim::Triple semsim::PhysicalEntity::whatTriple() const {
+semsim::Triple semsim::PhysicalEntity::what() const {
     // the "what" part of the physical entity:
     return Triple(
             world_,
@@ -41,7 +41,7 @@ semsim::Triple semsim::PhysicalEntity::whatTriple() const {
     );
 }
 
-semsim::Triples semsim::PhysicalEntity::whereTriple() const {
+semsim::Triples semsim::PhysicalEntity::where() const {
     RDFURINode entity_metaid_node = RDFURINode(world_, generateMetaId(createMetaId()));
     Triples triples;
     // the "where" part of the physical entity
@@ -59,9 +59,9 @@ semsim::Triples semsim::PhysicalEntity::whereTriple() const {
 semsim::Triples semsim::PhysicalEntity::toTriples() const {
     Triples triples = {
             physical_property_.toIsVersionOfTriple(subject_metaid_),
-            whatTriple()
+            what()
     };
-    for (auto &trip : whereTriple()) {
+    for (auto &trip : where()) {
         triples.push_back(trip);
     }
     return triples;

@@ -23,7 +23,7 @@ namespace semsim {
     }
 
     std::string PhysicalPhenomenon::generateMetaId(std::string id_base) const {
-        std::string q = "SELECT ?subject ?predicate ?object"
+        std::string q = "SELECT ?subject ?predicate ?object\n"
                         "WHERE {?subject ?predicate ?object}";
         Query query(world_, model_, q);
         ResultsMap results_map = query.resultsAsMap();

@@ -2,13 +2,14 @@
 // Created by Ciaran on 4/17/2020.
 //
 
-#include "Predicate.h"
 
-#include <utility>
 #include <iostream>
 #include <unordered_map>
+#include <algorithm>
 #include "librdf.h"
-#include "SemsimUtils.h"
+
+#include "semsim/SemsimUtils.h"
+#include "semsim/Predicate.h"
 
 namespace semsim {
 
@@ -29,14 +30,15 @@ namespace semsim {
             : world_(world), uri_node_(std::make_shared<RDFURINode>(world, node)) {
         std::string val = uri_node_->str();
         std::vector<std::string> v = SemsimUtils::splitStringBy(val, '/');
-        std::ostringstream os1;
-        for (unsigned long i=0; i<v.size()-1; i++){
-            os1 << v[i]<<"/";
+        std::ostringstream os;
+        os << v[0] << "//"; //https//
+        for (unsigned long i = 1; i < v.size() - 1; i++) {
+            os << v[i] << "/"; // other parts of the url - up until the last bit
         }
-        namespace_ = os1.str();
-        term_ = v[v.size()-1];
+        namespace_ = os.str();
+        term_ = v[v.size() - 1];
         prefix_ = Predicate::prefix_map()[namespace_];
-        if (prefix_.empty()){
+        if (prefix_.empty()) {
             prefix_ = "NotSet";
         }
 
@@ -52,15 +54,18 @@ namespace semsim {
 
     }
 
+    bool Predicate::namespaceKnown(std::string ns) {
+        return (Predicate::prefix_map().find(ns) != Predicate::prefix_map().end());
+    }
+
     std::unordered_map<std::string, std::string> Predicate::prefix_map() {
-        return std::unordered_map<std::string, std::string> {
+        return std::unordered_map<std::string, std::string>{
                 {"http://purl.org/dc/terms/",                "dcterms"},
                 {"http://biomodels.net/biology-qualifiers/", "bqbiol"},
                 {"http://biomodels.net/model-qualifiers/",   "bqmodel"},
                 {"http://www.bhi.washington.edu/semsim#",    "semsim"},
         };
     }
-
 
 
     std::string Predicate::str() {
