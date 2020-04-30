@@ -245,8 +245,8 @@ namespace semsim {
 		+PhysicalPropertyResource()
 		+PhysicalPropertyResource(librdf_world* world, RDFURINode node)
 		+PhysicalPropertyResource(librdf_world* world, std::string node)
-		+toIsVersionOfTriple(Subject subject_metaid) : Triple {query}
-		+toIsVersionOfTriple(std::string subject_metaid) : Triple {query}
+		+isVersionOfTriple(Subject subject_metaid) : Triple {query}
+		+isVersionOf(std::string subject_metaid) : Triple {query}
 		-validate() : void
 	}
 

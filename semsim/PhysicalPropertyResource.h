@@ -9,6 +9,7 @@
 #include "semsim/RDFNode.h"
 #include "semsim/Error.h"
 #include "semsim/Triple.h"
+#include "semsim/Triples.h"
 
 namespace semsim {
     class PhysicalPropertyResource : public Resource {
@@ -23,9 +24,13 @@ namespace semsim {
 
         explicit PhysicalPropertyResource(librdf_world *world, std::string node);
 
-        Triple toIsVersionOfTriple(Subject subject_metaid) const;
+//        Triple isVersionOf(Subject subject_metaid) const;
 
-        Triple toIsVersionOfTriple(std::string subject_metaid) const;
+        Triple isVersionOfTriple(std::string subject_metaid) const;
+
+        Triple isPropertyOfTriple(std::string subject_metaid, std::string property_metaid) const;
+
+        Triples toTriples(std::string subject_metaid, std::string property_metaid) const;
     };
 }
 

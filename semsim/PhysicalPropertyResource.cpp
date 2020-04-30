@@ -4,6 +4,7 @@
 
 #include "PhysicalPropertyResource.h"
 #include "Triple.h"
+#include "Triples.h"
 #include <regex>
 
 namespace semsim {
@@ -30,23 +31,39 @@ namespace semsim {
             throw semsim::InappropriateResourceException(err.str());
         }
     }
+//
+//    Triple PhysicalPropertyResource::isVersionOf(Subject subject_metaid) const {
+//        return Triple(
+//                world_,
+//                subject_metaid,
+//                BiomodelsBiologyQualifier(world_, "isVersionOf"),
+//                Resource(world_, RDFURINode(world_, rdf_node_ptr_->str()))
+//        );
+//    }
 
-    Triple PhysicalPropertyResource::toIsVersionOfTriple(Subject subject_metaid) const {
-        return Triple(
-                world_,
-                subject_metaid,
-                BiomodelsBiologyQualifier(world_, "isVersionOf"),
-                Resource(world_, RDFURINode(world_, rdf_node_ptr_->str()))
-        );
-    }
-
-    Triple PhysicalPropertyResource::toIsVersionOfTriple(std::string subject_metaid) const {
+    Triple PhysicalPropertyResource::isVersionOfTriple(std::string subject_metaid) const {
         return Triple(
                 world_,
                 Subject(world_, RDFURINode(world_, subject_metaid)),
                 BiomodelsBiologyQualifier(world_, "isVersionOf"),
                 Resource(world_, RDFURINode(world_, rdf_node_ptr_->str()))
         );
+    }
+
+    Triple PhysicalPropertyResource::isPropertyOfTriple(std::string subject_metaid, std::string property_metaid) const {
+        return Triple(
+                world_,
+                Subject(world_, RDFURINode(world_, subject_metaid)),
+                BiomodelsBiologyQualifier(world_, "isPropertyOf"),
+                Resource(world_, RDFURINode(world_, property_metaid))
+        );
+    }
+
+    Triples PhysicalPropertyResource::toTriples(std::string subject_metaid, std::string property_metaid) const {
+        return Triples({
+            isVersionOfTriple(subject_metaid),
+            isPropertyOfTriple(subject_metaid, property_metaid),
+        });
     }
 
 

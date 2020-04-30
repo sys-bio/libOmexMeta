@@ -7,6 +7,7 @@
 #include "semsim/Participant.h"
 #include "semsim/PhysicalPropertyResource.h"
 #include "semsim/PhysicalPhenomenon.h"
+#include "SemsimUtils.h"
 
 namespace semsim {
 
@@ -35,22 +36,24 @@ namespace semsim {
     }
 
     Triples PhysicalProcess::toTriples() const {
-        Triples triples = {
-                physical_property_.toIsVersionOfTriple(createMetaId())
-        };
+        std::string process_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalProcess");
+
+        Subject process_metaid_subject(world_, RDFURINode(world_, process_metaid));
+
+        Triples triples = physical_property_.toTriples(subject_metaid_.str(), process_metaid);
 
         for (auto &source : sources_) {
-            for (auto &triple : source.toTriples()) {
+            for (auto &triple : source.toTriples(process_metaid)) {
                 triples.push_back(triple);
             }
         }
         for (auto &sink : sinks_) {
-            for (auto &triple : sink.toTriples()) {
+            for (auto &triple : sink.toTriples(process_metaid)) {
                 triples.push_back(triple);
             }
         }
         for (auto &mediator: mediators_) {
-            for (auto &triple : mediator.toTriples()) {
+            for (auto &triple : mediator.toTriples(process_metaid)) {
                 triples.push_back(triple);
             }
         }

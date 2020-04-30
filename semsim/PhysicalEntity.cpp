@@ -3,8 +3,11 @@
 //
 
 #include "semsim/PhysicalEntity.h"
+
+#include <utility>
 #include "semsim/Triple.h"
 #include "Query.h"
+#include "SemsimUtils.h"
 
 semsim::PhysicalEntity::PhysicalEntity(
         librdf_world *world,
@@ -13,8 +16,8 @@ semsim::PhysicalEntity::PhysicalEntity(
         semsim::PhysicalPropertyResource physicalProperty,
         semsim::Resource is,
         semsim::Resources is_part_of)
-        : PhysicalPhenomenon(world, model, metaid, physicalProperty, PHYSICAL_ENTITY),
-          is_(is), isPartOf_(is_part_of) {
+        : PhysicalPhenomenon(world, model, std::move(metaid), std::move(physicalProperty), PHYSICAL_ENTITY),
+          is_(std::move(is)), isPartOf_(std::move(is_part_of)) {
 
 }
 
@@ -31,37 +34,27 @@ const semsim::Resource &semsim::PhysicalEntity::getIdentityResource() const {
 }
 
 
-semsim::Triple semsim::PhysicalEntity::what() const {
-    // the "what" part of the physical entity:
-    return Triple(
+
+semsim::Triples semsim::PhysicalEntity::toTriples() const {
+    std::string property_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalEntity");
+    Triples triples = physical_property_.toTriples(subject_metaid_.str(), property_metaid);
+
+    // what part of physical entity triple
+    triples.emplace_back(
             world_,
-            subject_metaid_,
+            Subject(world_, RDFURINode(world_, property_metaid)),
             std::make_shared<Predicate>(BiomodelsBiologyQualifier(world_, "is")),
             getIdentityResource()
     );
-}
 
-semsim::Triples semsim::PhysicalEntity::where() const {
-    Triples triples;
     // the "where" part of the physical entity
     for (auto &locationResource : getLocationResources()) {
         triples.emplace_back(
                 world_,
-                Subject(world_, RDFURINode(world_, createMetaId())),
+                Subject(world_, RDFURINode(world_, property_metaid)),
                 std::make_shared<Predicate>(BiomodelsBiologyQualifier(world_, "isPartOf")),
                 locationResource
         );
-    }
-    return triples;
-}
-
-semsim::Triples semsim::PhysicalEntity::toTriples() const {
-    Triples triples = {
-            physical_property_.toIsVersionOfTriple(subject_metaid_),
-            what()
-    };
-    for (auto &trip : where()) {
-        triples.push_back(trip);
     }
     return triples;
 }
