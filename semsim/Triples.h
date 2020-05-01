@@ -48,6 +48,7 @@ namespace semsim {
 
     typedef std::vector<Triples> NestedTriples;
 
+    //todo implement equality operators
 }
 
 #endif //LIBSEMGEN_TRIPLES_H

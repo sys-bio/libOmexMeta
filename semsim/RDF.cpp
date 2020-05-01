@@ -238,7 +238,8 @@ semsim::RDF semsim::RDF::fromOmex(const std::string &filename_or_url) {
     return semsim::RDF();
 }
 
-std::string semsim::RDF::toString(const std::string &format, const std::string &base_uri) {
+std::string semsim::RDF::toString(const std::string &format="rdfxml-abbrev",
+        const std::string &base_uri="file://./annotations.rdf") {
     setBaseUri(base_uri);
     Writer writer = makeWriter(format);
     return writer.toString();

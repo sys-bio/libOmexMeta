@@ -13,6 +13,7 @@
 #include "semsim/PhysicalEntity.h"
 #include "semsim/AnnotationType.h"
 
+// todo consider using the builder pattern on physical* classes
 
 class PhysicalPhenomenonTests : public ::testing::Test {
 
@@ -100,7 +101,7 @@ TEST_F(PhysicalPhenomenonTests, Test) {
          "WHERE {\n"
          "  <metaid_1> ?y ?z\n"
          "}\n";
-    librdf_uri* base = librdf_new_uri(world, (const unsigned char*)"/mnt/d/libsemsim/tests/base-uri.rdf");
+//    librdf_uri* base = librdf_new_uri(world, (const unsigned char*)"/mnt/d/libsemsim/tests/base-uri.rdf");
     librdf_query *query = librdf_new_query(
             world, "sparql",
             nullptr,

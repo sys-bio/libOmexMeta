@@ -52,6 +52,4 @@ namespace semsim {
         return triples;
     }
     Triples toTriples();
-
-
 }
