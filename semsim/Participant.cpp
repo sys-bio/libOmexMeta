@@ -92,8 +92,7 @@ namespace semsim {
             : Participant(world, model, subject,
                           std::make_shared<SemSim>(SemSim(world, "hasSourceParticipant")),
                           resource, multiplier, physicalEntityReference) {
-        participant_metaid_ = semsim::SemsimUtils::generateUniqueMetaid(
-                world, model, "SourceID");
+        participant_metaid_ = subject;
     }
 
     SinkParticipant::SinkParticipant(
