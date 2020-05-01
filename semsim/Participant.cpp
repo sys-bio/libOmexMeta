@@ -11,7 +11,8 @@
 namespace semsim {
 
 
-    Participant::Participant(librdf_world *world, std::string subject, PredicatePtr predicate, Resource resource,
+    Participant::Participant(librdf_world *world, librdf_model *model, std::string subject, PredicatePtr predicate,
+                             Resource resource,
                              double multiplier,
                              std::string physicalEntityReference)
             : world_(world), subject_(std::move(subject)),
@@ -21,7 +22,7 @@ namespace semsim {
     }
 
     Triples Participant::toTriples(std::string process_metaid) const {
-        if (participant_metaid_.empty()){
+        if (participant_metaid_.empty()) {
             throw NullPointerException("Participant::toTriples: For developers. "
                                        "participant_metaid_ variable is "
                                        "nullptr meaning the Participant class is directly"
@@ -50,7 +51,7 @@ namespace semsim {
             triples.emplace_back(
                     world_,
                     participant_subject,
-          std::make_shared<SemSim>(SemSim(world_, "hasMultiplier")),
+                    std::make_shared<SemSim>(SemSim(world_, "hasMultiplier")),
                     Resource(world_, RDFLiteralNode(world_, multiplier_os.str()))
             );
         }
@@ -86,30 +87,33 @@ namespace semsim {
     }
 
     SourceParticipant::SourceParticipant(
-            librdf_world *world, std::string subject, Resource resource,
+            librdf_world *world, librdf_model *model, std::string subject, Resource resource,
             double multiplier, std::string physicalEntityReference)
-            : Participant(world, subject,
+            : Participant(world, model, subject,
                           std::make_shared<SemSim>(SemSim(world, "hasSourceParticipant")),
                           resource, multiplier, physicalEntityReference) {
-            participant_metaid_ = "SourceID";
+        participant_metaid_ = semsim::SemsimUtils::generateUniqueMetaid(
+                world, model, "SourceID");
     }
 
     SinkParticipant::SinkParticipant(
-            librdf_world *world, std::string subject, Resource resource,
+            librdf_world *world, librdf_model *model, std::string subject, Resource resource,
             double multiplier, std::string physicalEntityReference)
-            : Participant(world, subject,
+            : Participant(world, model, subject,
                           std::make_shared<SemSim>(SemSim(world, "hasSinkParticipant")),
                           resource, multiplier, physicalEntityReference) {
-            participant_metaid_ = "SinkID";
+        participant_metaid_ = semsim::SemsimUtils::generateUniqueMetaid(
+                world, model, "SinkID");
     }
 
     MediatorParticipant::MediatorParticipant(
-            librdf_world *world, std::string subject, Resource resource,
+            librdf_world *world, librdf_model *model, std::string subject, Resource resource,
             std::string physicalEntityReference)
-            : Participant(world, subject,
+            : Participant(world, model, subject,
                           std::make_shared<SemSim>(SemSim(world, "hasMediatorParticipant")),
                           resource, 0.0, physicalEntityReference) {
-            participant_metaid_ = "MediatorID";
+        participant_metaid_ = semsim::SemsimUtils::generateUniqueMetaid(
+                world, model, "MediatorID");
     }
 
 }

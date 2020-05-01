@@ -15,6 +15,7 @@ namespace semsim {
         Sinks sinks_;
         Mediators mediators_;
 
+
     public:
 
         PhysicalProcess() = default;
@@ -32,8 +33,6 @@ namespace semsim {
         const Mediators &getMediators() const;
 
         Triples toTriples() const override;
-
-        std::string createMetaId() const;
 
         PhysicalProcess &setAbout(std::string metaid);
 

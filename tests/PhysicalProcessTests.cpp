@@ -45,6 +45,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
             std::vector<semsim::SourceParticipant>(
                     {semsim::SourceParticipant(
                             world,
+                            model,
                             "SourceId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
@@ -54,6 +55,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
             std::vector<semsim::SinkParticipant>(
                     {semsim::SinkParticipant(
                             world,
+                            model,
                             "SinkId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
@@ -63,6 +65,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
             std::vector<semsim::MediatorParticipant>(
                     {semsim::MediatorParticipant(
                             world,
+                            model,
                             "MediatorID1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier005")),
                             "PhysicalEntityReference3"
@@ -84,6 +87,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
             std::vector<semsim::SourceParticipant>(
                     {semsim::SourceParticipant(
                             world,
+                            model,
                             "SourceId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
@@ -93,6 +97,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
             std::vector<semsim::SinkParticipant>(
                     {semsim::SinkParticipant(
                             world,
+                            model,
                             "SinkId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
@@ -102,6 +107,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
             std::vector<semsim::MediatorParticipant>(
                     {semsim::MediatorParticipant(
                             world,
+                            model,
                             "MediatorID1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier005")),
                             "PhysicalEntityReference3"
@@ -140,6 +146,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
             std::vector<semsim::SourceParticipant>(
                     {semsim::SourceParticipant(
                             world,
+                            model,
                             "SourceId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
@@ -149,6 +156,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
             std::vector<semsim::SinkParticipant>(
                     {semsim::SinkParticipant(
                             world,
+                            model,
                             "SinkId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
@@ -158,6 +166,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
             std::vector<semsim::MediatorParticipant>(
                     {semsim::MediatorParticipant(
                             world,
+                            model,
                             "MediatorID1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier005")),
                             "PhysicalEntityReference3"
@@ -182,6 +191,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
             std::vector<semsim::SourceParticipant>(
                     {semsim::SourceParticipant(
                             world,
+                            model,
                             "SourceId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
@@ -191,6 +201,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
             std::vector<semsim::SinkParticipant>(
                     {semsim::SinkParticipant(
                             world,
+                            model,
                             "SinkId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
@@ -200,6 +211,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
             std::vector<semsim::MediatorParticipant>(
                     {semsim::MediatorParticipant(
                             world,
+                            model,
                             "MediatorID1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier005")),
                             "PhysicalEntityReference3"
@@ -223,6 +235,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriples) {
             std::vector<semsim::SourceParticipant>(
                     {semsim::SourceParticipant(
                             world,
+                            model,
                             "SourceId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
@@ -232,6 +245,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriples) {
             std::vector<semsim::SinkParticipant>(
                     {semsim::SinkParticipant(
                             world,
+                            model,
                             "SinkId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
@@ -241,6 +255,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriples) {
             std::vector<semsim::MediatorParticipant>(
                     {semsim::MediatorParticipant(
                             world,
+                            model,
                             "MediatorID1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier005")),
                             "PhysicalEntityReference3"

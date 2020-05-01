@@ -28,7 +28,7 @@ public:
 
 
 TEST_F(ParticipantTests, TestSourceParticipant1) {
-    semsim::SourceParticipant source(world, "MetaId0014",
+    semsim::SourceParticipant source(world, model, "MetaId0014",
                                      semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
                                      1.0, "MetaId0015"
     );
@@ -41,7 +41,7 @@ TEST_F(ParticipantTests, TestSourceParticipant1) {
 }
 
 TEST_F(ParticipantTests, TestSinkParticipant1) {
-    semsim::SinkParticipant sink(world, "MetaId0014",
+    semsim::SinkParticipant sink(world, model, "MetaId0014",
                                  semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
                                  1.0, "MetaId0015"
     );
@@ -53,19 +53,19 @@ TEST_F(ParticipantTests, TestSinkParticipant1) {
 
 TEST_F(ParticipantTests, TestParticipantVec1) {
     semsim::MediatorParticipant mediator(
-            world, "MetaId0014",
+            world, model, "MetaId0014",
             semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
             "MetaId0015"
     );
 
     semsim::SourceParticipant source(
-            world, "MetaId0014",
+            world, model, "MetaId0014",
             semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
             1.0, "MetaId0015"
     );
 
     semsim::SinkParticipant sink(
-            world,
+            world, model,
             "MetaId0014",
             semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
             1.0, "MetaId0015"
@@ -83,19 +83,19 @@ TEST_F(ParticipantTests, TestParticipantVec1) {
 
 TEST_F(ParticipantTests, TestParticipantVecToTriples) {
     semsim::MediatorParticipant mediator(
-            world, "MetaId0014",
+            world, model, "MetaId0014",
             semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
             "MetaId0015"
     );
 
     semsim::SourceParticipant source(
-            world, "MetaId0014",
+            world, model, "MetaId0014",
             semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
             1.0, "MetaId0015"
     );
 
     semsim::SinkParticipant sink(
-            world,
+            world, model,
             "MetaId0014",
             semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
             1.0, "MetaId0015"
@@ -108,8 +108,8 @@ TEST_F(ParticipantTests, TestParticipantVecToTriples) {
     };
 
     std::vector<semsim::Triple> triples;
-    for (auto &i : participants){
-        for (auto &j : i->toTriples("metaid")){
+    for (auto &i : participants) {
+        for (auto &j : i->toTriples("metaid")) {
             triples.push_back(j);
         }
     }

@@ -220,6 +220,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
                             std::vector<semsim::SourceParticipant>(
                                     {semsim::SourceParticipant(
                                             world,
+                                            model,
                                             "SourceId1",
                                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                                             1.0,
@@ -229,6 +230,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
                             std::vector<semsim::SinkParticipant>(
                                     {semsim::SinkParticipant(
                                             world,
+                                            model,
                                             "SinkId1",
                                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                                             1.0,
@@ -238,6 +240,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
                             std::vector<semsim::MediatorParticipant>(
                                     {semsim::MediatorParticipant(
                                             world,
+                                            model,
                                             "MediatorID1",
                                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier005")),
                                             "PhysicalEntityReference3"
@@ -297,6 +300,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
                             std::vector<semsim::SourceParticipant>(
                                     {semsim::SourceParticipant(
                                             world,
+                                            model,
                                             "SourceId1",
                                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                                             1.0,
@@ -306,6 +310,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
                             std::vector<semsim::SinkParticipant>(
                                     {semsim::SinkParticipant(
                                             world,
+                                            model,
                                             "SinkId1",
                                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                                             1.0,

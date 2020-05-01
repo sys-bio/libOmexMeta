@@ -20,7 +20,8 @@ namespace semsim {
      * to group participant types into vector.
      */
     class Participant {
-        librdf_world* world_;
+        librdf_world *world_;
+        librdf_model *model_;
         std::string subject_;
         Resource resource_;
         PredicatePtr predicate_ptr_;
@@ -30,7 +31,8 @@ namespace semsim {
         std::string participant_metaid_;
     public:
 
-        Participant(librdf_world *world, std::string subject, PredicatePtr predicate, Resource resource, double multiplier,
+        Participant(librdf_world *world, librdf_model *model, std::string subject, PredicatePtr predicate,
+                    Resource resource, double multiplier,
                     std::string physicalEntityReference);
 
         Triples toTriples(std::string process_metaid) const;
@@ -53,14 +55,13 @@ namespace semsim {
     };
 
 
-
     typedef std::shared_ptr<Participant> ParticipantPtr;
 
 
     class SourceParticipant : public Participant {
 
     public:
-        SourceParticipant(librdf_world *world, std::string subject, Resource resource,
+        SourceParticipant(librdf_world *world, librdf_model *model, std::string subject, Resource resource,
                           double multiplier,
                           std::string physicalEntityReference);
     };
@@ -74,7 +75,7 @@ namespace semsim {
     public:
 
         SinkParticipant(
-                librdf_world *world, std::string subject, Resource resource,
+                librdf_world *world, librdf_model *model, std::string subject, Resource resource,
                 double multiplier, std::string physicalEntityReference);
 
     };
@@ -87,7 +88,7 @@ namespace semsim {
     public:
 
         MediatorParticipant(
-                librdf_world *world, std::string subject, Resource resource,
+                librdf_world *world, librdf_model *model, std::string subject, Resource resource,
                 std::string physicalEntityReference);
 
     };
