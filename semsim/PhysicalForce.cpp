@@ -68,6 +68,7 @@ namespace semsim {
         sources_.push_back(
                 SourceParticipant(
                         world_,
+                        model_,
                         std::move(source_metaid),
                         Resource(world_, RDFURINode(world_, std::move(source_resource))),
                         multiplier, std::move(physical_entity_reference)
@@ -81,6 +82,7 @@ namespace semsim {
         sinks_.push_back(
                 SinkParticipant(
                         world_,
+                        model_,
                         std::move(sink_metaid),
                         Resource(world_, RDFURINode(world_, std::move(sink_resource))),
                         multiplier, std::move(physical_entity_reference)

@@ -45,6 +45,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
             std::vector<semsim::SourceParticipant>(
                     {semsim::SourceParticipant(
                             world,
+                            model,
                             "SourceId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
@@ -54,6 +55,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
             std::vector<semsim::SinkParticipant>(
                     {semsim::SinkParticipant(
                             world,
+                            model,
                             "SinkId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
@@ -77,6 +79,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSource) {
             std::vector<semsim::SourceParticipant>(
                     {semsim::SourceParticipant(
                             world,
+                            model,
                             "SourceId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
@@ -86,6 +89,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSource) {
             std::vector<semsim::SinkParticipant>(
                     {semsim::SinkParticipant(
                             world,
+                            model,
                             "SinkId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
@@ -126,6 +130,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
             std::vector<semsim::SourceParticipant>(
                     {semsim::SourceParticipant(
                             world,
+                            model,
                             "SourceId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
@@ -135,6 +140,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
             std::vector<semsim::SinkParticipant>(
                     {semsim::SinkParticipant(
                             world,
+                            model,
                             "SinkId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
@@ -159,6 +165,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
             std::vector<semsim::SourceParticipant>(
                     {semsim::SourceParticipant(
                             world,
+                            model,
                             "SourceId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
@@ -168,6 +175,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
             std::vector<semsim::SinkParticipant>(
                     {semsim::SinkParticipant(
                             world,
+                            model,
                             "SinkId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
@@ -192,6 +200,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
             std::vector<semsim::SourceParticipant>(
                     {semsim::SourceParticipant(
                             world,
+                            model,
                             "SourceId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
@@ -201,6 +210,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
             std::vector<semsim::SinkParticipant>(
                     {semsim::SinkParticipant(
                             world,
+                            model,
                             "SinkId1",
                             semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
