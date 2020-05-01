@@ -33,7 +33,8 @@ namespace semsim {
     }
 
     Triples PhysicalForce::toTriples() const {
-        std::string force_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalForce", std::vector<std::string>());
+        std::string force_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalForce",
+                                                                     std::vector<std::string>());
 
         Subject force_metaid_subject(world_, RDFURINode(world_, force_metaid));
 
@@ -51,7 +52,7 @@ namespace semsim {
         }
         return triples;
     }
-    
+
     PhysicalForce &PhysicalForce::setAbout(std::string metaid) {
         about = Subject(world_, RDFURINode(world_, metaid));
         return (*this);
@@ -77,7 +78,7 @@ namespace semsim {
     }
 
     PhysicalForce &PhysicalForce::addSink(std::string sink_metaid, std::string sink_resource, double multiplier,
-                                              std::string physical_entity_reference) {
+                                          std::string physical_entity_reference) {
         sinks_.push_back(
                 SinkParticipant(
                         world_,
@@ -88,6 +89,11 @@ namespace semsim {
         );
 
         return (*this);
+    }
+
+    PhysicalForce::PhysicalForce(librdf_world *world, librdf_model *model)
+            : PhysicalPhenomenon(world, model) {
+
     }
 
 }
