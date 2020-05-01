@@ -1,0 +1,89 @@
+@startuml
+
+
+
+
+left to right direction
+:User:
+:Editor:
+:Creator:
+:Viewer:
+:Querier:
+User <|-- Editor
+User <|-- Creator
+User <|-- Viewer
+User <|-- Querier
+':application:
+':Omex archive:
+':Url:
+':File:
+':web user:
+':local user:
+
+(Omex archive) as omex
+(Remote file) as remote_file
+(Local xml file) as local_file
+(Information) as info
+
+Editor -> remote_file
+Viewer -> remote_file
+Querier -> remote_file
+'User -> local_file : creates
+'User -> remote_file : wants
+remote_file --> local_file : download
+remote_file --> omex : download
+rectangle libCombine {
+    (Compress) as compress
+    (Decompress) as decompress
+    (Manifest) as manifest
+}
+omex --> decompress
+
+
+(RDF File) as rdf_file
+
+rectangle libsemsim{
+    (RDF Graph) as rdf_graph
+    (create) as create
+    (Edit) as edit
+
+    local_file -> create
+    create -> rdf_graph
+    edit -> rdf_graph
+
+    Editor --> edit
+    Creator --> create
+
+'    local_file --> rdf_graph : parse
+    rdf_graph <--> rdf_file : parse/serialize
+    rdf_graph --> info : querying
+
+
+'    (Edit/Create) as modify
+'    User --> modify
+'    modify -- rdf_graph
+'    modify -- rdf_file
+
+}
+
+decompress --> local_file
+decompress --> rdf_file
+
+local_file --> compress
+rdf_file --> compress
+compress -> omex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml
