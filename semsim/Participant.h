@@ -27,8 +27,6 @@ namespace semsim {
         PredicatePtr predicate_ptr_;
         double multiplier_;
         std::string physicalEntityReference_;
-    protected:
-        std::string participant_metaid_;
     public:
 
         Participant(librdf_world *world, librdf_model *model, std::string subject, PredicatePtr predicate,
