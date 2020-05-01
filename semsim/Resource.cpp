@@ -35,6 +35,13 @@ namespace semsim {
 
     }
 
+    bool Resource::isSet() const {
+        if (rdf_node_ptr_){
+            return true;
+        }
+        return false;
+    }
+
 }
 
 

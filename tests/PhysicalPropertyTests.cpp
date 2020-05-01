@@ -93,6 +93,15 @@ TEST_F(PhysicalPropertyTests, TestToTriple3) {
 }
 
 
+TEST_F(PhysicalPropertyTests, TestIsSet) {
+    semsim::PhysicalPropertyResource resource = semsim::PhysicalPropertyResource(
+            world,
+            semsim::RDFURINode(world, "OPB/OPB_1234")
+    );
+    ASSERT_TRUE(resource.isSet());
+}
+
+
 
 
 

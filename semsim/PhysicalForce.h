@@ -34,6 +34,17 @@ namespace semsim {
         const Sinks &getSinks() const;
 
         Triples toTriples() const override;
+
+        PhysicalForce &setAbout(std::string metaid);
+
+        PhysicalForce &setPhysicalProperty(PhysicalPropertyResource physicalProperty);
+
+        PhysicalForce &addSource(std::string source_metaid, std::string source_resource, double multiplier,
+                                 std::string physical_entity_reference);
+
+        PhysicalForce &
+        addSink(std::string sink_metaid, std::string sink_resource, double multiplier,
+                std::string physical_entity_reference);
     };
 }
 

@@ -19,6 +19,10 @@ namespace semsim {
 
     }
 
+    PhysicalProcess::PhysicalProcess(librdf_world *world, librdf_model *model) : PhysicalPhenomenon(world, model) {
+
+    }
+
     const std::vector<SourceParticipant> &PhysicalProcess::getSources() const {
         return sources_;
     }
@@ -31,16 +35,28 @@ namespace semsim {
         return mediators_;
     }
 
-    std::string PhysicalProcess::createMetaId() const {
-        return generateMetaId("PhysicalProcess");
-    }
-
     Triples PhysicalProcess::toTriples() const {
-        std::string process_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalProcess");
+        if (!getAbout().isSet()) {
+            throw AnnotationBuilderException(
+                    "PhysicalProcess::toTriples(): Cannot create"
+                    " triples because the \"about\" information is not set. "
+                    "Use the setAbout() method."
+            );
+        }
+        if (!getPhysicalProperty().isSet()) {
+            throw AnnotationBuilderException(
+                    "PhysicalProcess::toTriples(): Cannot create"
+                    " triples because the \"physical_property\" information is not set. "
+                    "Use the setPhysicalProperty() method."
+            );
+        }
+
+
+        std::string process_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalProcess", std::vector<std::string>());
 
         Subject process_metaid_subject(world_, RDFURINode(world_, process_metaid));
 
-        Triples triples = physical_property_.toTriples(subject_metaid_.str(), process_metaid);
+        Triples triples = physical_property_.toTriples(about.str(), process_metaid);
 
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(process_metaid)) {
@@ -60,7 +76,58 @@ namespace semsim {
         return triples;
     }
 
-    Triples toTriples();
+    PhysicalProcess &PhysicalProcess::setAbout(std::string metaid) {
+        about = Subject(world_, RDFURINode(world_, metaid));
+        return (*this);
+    }
+
+    PhysicalProcess &PhysicalProcess::setPhysicalProperty(PhysicalPropertyResource physicalProperty) {
+        physical_property_ = std::move(physicalProperty);
+        return (*this);
+    }
+
+    PhysicalProcess &PhysicalProcess::addSource(
+            std::string source_metaid, std::string source_resource, double multiplier,
+            std::string physical_entity_reference) {
+        sources_.push_back(
+                SourceParticipant(
+                        world_,
+                        std::move(source_metaid),
+                        Resource(world_, RDFURINode(world_, std::move(source_resource))),
+                        multiplier, std::move(physical_entity_reference)
+                )
+        );
+        return (*this);
+    }
+
+    PhysicalProcess &PhysicalProcess::addSink(std::string sink_metaid, std::string sink_resource, double multiplier,
+                                              std::string physical_entity_reference) {
+        sinks_.push_back(
+                SinkParticipant(
+                        world_,
+                        std::move(sink_metaid),
+                        Resource(world_, RDFURINode(world_, std::move(sink_resource))),
+                        multiplier, std::move(physical_entity_reference)
+                )
+        );
+
+        return (*this);
+    }
+
+    PhysicalProcess &PhysicalProcess::addMediator(
+            std::string mediator_metaid, std::string mediator_resource, double multiplier,
+            std::string physical_entity_reference) {
+        mediators_.push_back(
+                MediatorParticipant(
+                        world_,
+                        std::move(mediator_metaid),
+                        Resource(world_, RDFURINode(world_, std::move(mediator_resource))),
+                        std::move(physical_entity_reference)
+                )
+        );
+
+        return (*this);
+    }
 
 
 }

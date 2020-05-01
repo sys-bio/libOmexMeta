@@ -14,29 +14,34 @@
 namespace semsim {
     class PhysicalEntity : public PhysicalPhenomenon {
     private:
-        Resource is_;
-        Resources isPartOf_;
-
-        static std::vector<MetaID> metaid_;
+        Resource identity_resource_;
+        Resources location_resources;
+        std::string resource;
 
     public:
 
         PhysicalEntity() = default;
 
-        PhysicalEntity(librdf_world *world, librdf_model *model, Subject metaid, PhysicalPropertyResource physicalProperty, Resource is,
+        PhysicalEntity(librdf_world *world, librdf_model *model, Subject metaid,
+                       PhysicalPropertyResource physicalProperty, Resource is,
                        Resources is_part_of);
 
-        std::string createMetaId() const;
+
+        PhysicalEntity(librdf_world *world, librdf_model *model);
+
+        Triples toTriples() const override;
 
         const Resource &getIdentityResource() const;
 
         const Resources &getLocationResources() const;
 
-        Triples toTriples() const override ;
+        PhysicalEntity &setAbout(std::string metaid);
 
-        Triple what() const;
+        PhysicalEntity & setPhysicalProperty(PhysicalPropertyResource physicalProperty);
 
-        semsim::Triples where() const;
+        PhysicalEntity & setIdentity(std::string resource);
+
+        PhysicalEntity & addLocation(std::string where);
 
     };
 }

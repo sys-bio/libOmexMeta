@@ -55,13 +55,18 @@ std::vector<std::string> semsim::SemsimUtils::splitStringBy(const std::string &s
 }
 
 std::string semsim::SemsimUtils::generateUniqueMetaid(
-        librdf_world *world, librdf_model *model, std::string metaid_base) {
+        librdf_world *world, librdf_model *model, std::string metaid_base,
+        std::vector<std::string> exclusions) {
 
     std::string q = "SELECT ?subject ?predicate ?object\n"
                     "WHERE {?subject ?predicate ?object}";
     Query query(world, model, q);
     ResultsMap results_map = query.resultsAsMap();
     std::vector<std::string> subjects = results_map["subject"];
+    // add other exclusions to the subjects like
+    for (auto &i : exclusions){
+        subjects.push_back(i);
+    }
     int count = 0;
     std::string metaid;
     while (true) {

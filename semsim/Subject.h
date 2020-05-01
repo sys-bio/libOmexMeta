@@ -28,6 +28,8 @@ namespace semsim {
 
         std::string str() const;
 
+        bool isSet() const;
+
     };
     typedef std::vector<Subject> Subjects;
 

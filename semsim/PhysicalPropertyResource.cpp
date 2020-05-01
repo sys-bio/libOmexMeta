@@ -61,9 +61,17 @@ namespace semsim {
 
     Triples PhysicalPropertyResource::toTriples(std::string subject_metaid, std::string property_metaid) const {
         return Triples({
-            isVersionOfTriple(subject_metaid),
-            isPropertyOfTriple(subject_metaid, property_metaid),
-        });
+                               isVersionOfTriple(subject_metaid),
+                               isPropertyOfTriple(subject_metaid, property_metaid),
+                       });
+    }
+
+
+    bool PhysicalPropertyResource::isSet() const {
+        if (rdf_node_ptr_) {
+            return true;
+        }
+        return false;
     }
 
 

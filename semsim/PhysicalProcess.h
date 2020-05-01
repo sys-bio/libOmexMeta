@@ -23,6 +23,8 @@ namespace semsim {
                         PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks,
                         Mediators mediators);
 
+        PhysicalProcess(librdf_world *world, librdf_model *model);
+
         const Sources &getSources() const;
 
         const Sinks &getSinks() const;
@@ -32,6 +34,21 @@ namespace semsim {
         Triples toTriples() const override;
 
         std::string createMetaId() const;
+
+        PhysicalProcess &setAbout(std::string metaid);
+
+        PhysicalProcess &setPhysicalProperty(PhysicalPropertyResource physicalProperty);
+
+        PhysicalProcess &addSource(std::string source_metaid, std::string source_identity, double multiplier,
+                                   std::string physical_entity_reference);
+
+        PhysicalProcess &addSink(std::string source_metaid, std::string sink_resource, double multiplier,
+                                 std::string physical_entity_reference);
+
+        PhysicalProcess &addMediator(std::string mediator_metaid, std::string mediator_resource, double multiplier,
+                                     std::string physical_entity_reference);
+
+
     };
 }
 

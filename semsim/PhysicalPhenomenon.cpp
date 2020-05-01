@@ -11,11 +11,18 @@ namespace semsim {
 
     PhysicalPhenomenon::PhysicalPhenomenon(librdf_world *world, librdf_model *model, Subject metaid,
                                            PhysicalPropertyResource propertyResource, AnnotationType type)
-            : world_(world), model_(model), subject_metaid_(metaid), physical_property_(propertyResource), type_(type) {
+            : world_(world), model_(model), about(metaid), physical_property_(propertyResource), type_(type) {
     }
 
+    PhysicalPhenomenon::PhysicalPhenomenon(librdf_world *world, librdf_model *model)
+        : world_(world), model_(model){
+
+    }
+
+    PhysicalPhenomenon::PhysicalPhenomenon() = default;
+
     Subject PhysicalPhenomenon::getSubject() const {
-        return subject_metaid_;
+        return about;
     }
 
     AnnotationType PhysicalPhenomenon::getType() const {
@@ -42,7 +49,7 @@ namespace semsim {
     }
 
 
-    const PhysicalPropertyResource PhysicalPhenomenon::getPhysicalProperty() const {
+    PhysicalPropertyResource PhysicalPhenomenon::getPhysicalProperty() const {
         return physical_property_;
     }
 
@@ -51,7 +58,28 @@ namespace semsim {
                                       "does cannot produce triples.");
     }
 
-    PhysicalPhenomenon::PhysicalPhenomenon() =
-    default;
+
+    Subject PhysicalPhenomenon::getAbout() const {
+        return about;
+    }
 
 }
+
+
+
+
+/*
+ * todo
+ *  How would we parse rdf back into a composite annotation
+ *  structure? It might be possible if composite annotations
+ *  themselves had an flag attribute which tells software which type of
+ *  annotation were dealing with. This would simplify the ascertaining of all
+ *  (say) physical process triples and enable us think about
+ *  reassembling them again
+ */
+
+
+
+
+
+
