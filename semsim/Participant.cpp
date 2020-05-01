@@ -21,12 +21,12 @@ namespace semsim {
     }
 
     Triples Participant::toTriples(std::string process_metaid) const {
-        if (participant_metaid_.empty()){
-            throw NullPointerException("Participant::toTriples: For developers. "
-                                       "participant_metaid_ variable is "
-                                       "nullptr meaning the Participant class is directly"
-                                       "being used - not one of its subclasses.");
-        }
+//        if (participant_metaid_.empty()){
+//            throw NullPointerException("Participant::toTriples: For developers. "
+//                                       "participant_metaid_ variable is "
+//                                       "nullptr meaning the Participant class is directly"
+//                                       "being used - not one of its subclasses.");
+//        }
         Triples triples;
 
         // have source participant triple
@@ -34,9 +34,9 @@ namespace semsim {
                 world_,
                 Subject(world_, RDFURINode(world_, process_metaid)),
                 predicate_ptr_, //term is hasSourceParticipant etc.
-                Resource(world_, RDFURINode(world_, participant_metaid_))
+                Resource(world_, RDFURINode(world_, subject_))
         );
-        Subject participant_subject(world_, RDFURINode(world_, participant_metaid_));
+        Subject participant_subject(world_, RDFURINode(world_, subject_));
 
         triples.emplace_back(
                 world_,
@@ -91,7 +91,6 @@ namespace semsim {
             : Participant(world, subject,
                           std::make_shared<SemSim>(SemSim(world, "hasSourceParticipant")),
                           resource, multiplier, physicalEntityReference) {
-            participant_metaid_ = "SourceID";
     }
 
     SinkParticipant::SinkParticipant(
@@ -100,7 +99,6 @@ namespace semsim {
             : Participant(world, subject,
                           std::make_shared<SemSim>(SemSim(world, "hasSinkParticipant")),
                           resource, multiplier, physicalEntityReference) {
-            participant_metaid_ = "SinkID";
     }
 
     MediatorParticipant::MediatorParticipant(
@@ -109,7 +107,6 @@ namespace semsim {
             : Participant(world, subject,
                           std::make_shared<SemSim>(SemSim(world, "hasMediatorParticipant")),
                           resource, 0.0, physicalEntityReference) {
-            participant_metaid_ = "MediatorID";
     }
 
 }

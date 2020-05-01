@@ -295,7 +295,37 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
 
     std::string actual = triples.str();
     std::cout << actual << std::endl;
-    std::string expected = "";
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"MediatorId1\">\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference3\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"PhysicalProcess0000\">\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorId1\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkId1\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceId1\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceId2\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"SinkId1\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"SourceId1\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"SourceId2\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">2</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference4\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"VLV\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
