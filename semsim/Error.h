@@ -63,6 +63,10 @@ namespace semsim {
         using Exception::Exception;
     };
 
+    class AnnotationBuilderException : public Exception {
+        using Exception::Exception;
+    };
+
 };
 
 #endif //LIBSEMGEN_ERROR_H

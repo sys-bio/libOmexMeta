@@ -32,5 +32,12 @@ namespace semsim {
 
     }
 
+    bool Subject::isSet() const {
+        if (rdf_node_ptr_){
+            return true;
+        }
+        return false;
+    }
+
 
 }

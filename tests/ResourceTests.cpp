@@ -127,6 +127,20 @@ TEST_F(ResourceTests, TestFromUriNode) {
 
 
 
+TEST_F(ResourceTests, TestIsSetWhenTrue) {
+    std::string url_str = "https://www.notarealaddress.com";
+    librdf_node* node = librdf_new_node_from_uri_string(world, (const unsigned char*)url_str.c_str());
+    semsim::Resource resource(world, node);
+    librdf_node *n = resource.toRdfNode();
+    const char *actual = (const char *) librdf_uri_as_string(librdf_node_get_uri(n));
+    ASSERT_TRUE(resource.isSet());
+}
+
+TEST_F(ResourceTests, TestIsSetWhenFalse) {
+    semsim::Resource resource;
+    ASSERT_FALSE(resource.isSet());
+}
+
 
 
 

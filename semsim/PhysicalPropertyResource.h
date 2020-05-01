@@ -31,6 +31,8 @@ namespace semsim {
         Triple isPropertyOfTriple(std::string subject_metaid, std::string property_metaid) const;
 
         Triples toTriples(std::string subject_metaid, std::string property_metaid) const;
+
+        bool isSet() const override ;
     };
 }
 

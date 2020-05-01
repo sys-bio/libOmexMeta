@@ -280,3 +280,22 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriples) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
+TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
+    semsim::RDF rdf;
+    semsim::PhysicalProcess process(world, model);
+    process.setAbout("VLV")
+        .setPhysicalProperty(physical_property)
+        .addSource("SourceId1", "fake/identifier003", 1.0, "PhysicalEntityReference1")
+        .addSource("SourceId2", "fake/identifier006", 2.0, "PhysicalEntityReference4")
+        .addSink("SinkId1", "fake/identifier004", 1.0, "PhysicalEntityReference2")
+        .addMediator("MediatorId1", "fake/identifier005", 1.0, "PhysicalEntityReference3");
+
+
+    semsim::Triples triples = process.toTriples();
+
+    std::string actual = triples.str();
+    std::cout << actual << std::endl;
+    std::string expected = "";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+

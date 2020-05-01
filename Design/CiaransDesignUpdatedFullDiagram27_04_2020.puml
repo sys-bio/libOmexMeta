@@ -180,9 +180,9 @@ namespace semsim {
 	class PhysicalEntity {
 		+PhysicalEntity()
 		+PhysicalEntity(librdf_world* world, Subject metaid, PhysicalPropertyResource physicalProperty, Resource is, Resources is_part_of)
-		-is_ : Resource
+		-identity_resource_ : Resource
 		+getIdentityResource() : Resource& {query}
-		-isPartOf_ : Resources
+		-location_resources : Resources
 		+getLocationResources() : Resources& {query}
 		+what() : Triple {query}
 		+toTriples() : Triples {query}
@@ -216,7 +216,7 @@ namespace semsim {
 		+getPhysicalProperty() : PhysicalPropertyResource {query}
 		#physical_property_ : PhysicalPropertyResource
 		+getSubject() : Subject {query}
-		#subject_metaid_ : Subject
+		#about : Subject
 		+toTriples() : Triples {query}
 		#world_ : librdf_world*
 		+createMetaId(librdf_model* model, std::string id_base) : std::string {query}

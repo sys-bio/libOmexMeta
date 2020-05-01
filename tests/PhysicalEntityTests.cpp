@@ -206,39 +206,11 @@ TEST_F(PhysicalEntityTests, TestToTripleSize) {
     );
 
     semsim::Triples triples = physicalEntity.toTriples();
-    int expected = 4;
+    int expected = 5;
     int actual = triples.size();
     ASSERT_EQ(expected, actual);
 }
 
-
-TEST_F(PhysicalEntityTests, TestToTriple) {
-    semsim::RDF rdf;
-    semsim::PhysicalEntity physicalEntity(
-            world,
-            model,
-            semsim::Subject(world, semsim::RDFURINode(world, "Metaid0034")),
-            physical_property,
-            semsim::Resource(world, semsim::RDFURINode(world, "obo/PR_000000365")), // is smad3
-            std::vector<semsim::Resource>(
-                    {semsim::Resource(world, semsim::RDFURINode(world, "https://identifiers.org/fma/FMA:72564")),
-                     semsim::Resource(world, semsim::RDFURINode(world, "fma:FMA:63877"))
-                    })
-    );
-    semsim::Triples triples = physicalEntity.toTriples();
-    std::ostringstream actual;
-
-    for (auto &triple : triples) {
-        actual << triple.getResource().str() << std::endl;
-    }
-    std::string expected = "https://identifiers.org/OPB/OPB_00340\n"
-                           "https://identifiers.org/obo/PR_000000365\n"
-                           "https://identifiers.org/fma/FMA:72564\n"
-                           "https://identifiers.org/fma/FMA:63877\n";
-
-    ASSERT_STREQ(actual.str().c_str(), expected.c_str());
-
-}
 
 TEST_F(PhysicalEntityTests, TestTriples) {
     semsim::RDF rdf;
@@ -270,6 +242,126 @@ TEST_F(PhysicalEntityTests, TestTriples) {
                            "</rdf:RDF>\n"
                            "";
     ASSERT_STREQ(physicalEntity.toTriples().str().c_str(), expected.c_str());
+}
+
+TEST_F(PhysicalEntityTests, TestPhysicalPropertyIsSet) {
+    semsim::RDF rdf;
+    semsim::PhysicalEntity physicalEntity(
+            world,
+            model,
+            semsim::Subject(world, semsim::RDFURINode(world, "Metaid0034")),
+            physical_property,
+            semsim::Resource(world, semsim::RDFURINode(world, "obo/PR_000000365")), // is smad3
+            std::vector<semsim::Resource>(
+                    {semsim::Resource(world, semsim::RDFURINode(world, "https://identifiers.org/fma/FMA:72564")),
+                     semsim::Resource(world, semsim::RDFURINode(world, "fma:FMA:63877"))
+                    })
+    );
+    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
+}
+
+
+TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderInterface) {
+    semsim::RDF rdf;
+    semsim::PhysicalEntity physicalEntity(world, model);
+
+    std::cout << __LINE__ <<": "<< physical_property.isSet() << std::endl;
+
+    physicalEntity.setAbout("Metaid0034")
+            .setPhysicalProperty(physical_property)
+            .setIdentity("obo/PR_000000365")
+            .addLocation("https://identifiers.org/fma/FMA:72564")
+            .addLocation("fma:FMA:63877");
+
+    std::cout << "physicalEntity: " << physicalEntity.getPhysicalProperty().isSet() << std::endl;
+
+    std::cout << physicalEntity.toTriples().str() << std::endl;
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"Metaid0034\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"PhysicalEntity0000\">\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/obo/PR_000000365\"/>\n"
+                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:63877\"/>\n"
+                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:72564\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n"
+                           "";
+    ASSERT_STREQ(physicalEntity.toTriples().str().c_str(), expected.c_str());
+}
+
+
+
+TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderIsPhysicalPropertySet) {
+    semsim::RDF rdf;
+    semsim::PhysicalEntity physicalEntity(world, model);
+    physicalEntity = physicalEntity.setPhysicalProperty(physical_property);
+    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
+}
+
+TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderAddTwoItems) {
+    semsim::RDF rdf;
+    semsim::PhysicalEntity physicalEntity(world, model);
+    physicalEntity = physicalEntity
+            .setPhysicalProperty(physical_property)
+            .setAbout("cheese");
+    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
+    ASSERT_TRUE(physicalEntity.getAbout().isSet());
+}
+
+TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderAddTwoItemsWhenYouAddPhysicalPropertySecond) {
+    semsim::RDF rdf;
+    semsim::PhysicalEntity physicalEntity(world, model);
+    physicalEntity.setAbout("cheese")
+            .setPhysicalProperty(physical_property);
+    ASSERT_TRUE(physicalEntity.getAbout().isSet());
+    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
+}
+
+TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilder) {
+    semsim::RDF rdf;
+    semsim::PhysicalEntity physicalEntity(world, model);
+    physicalEntity.setAbout("Metaid0034")
+            .setPhysicalProperty(physical_property)
+            .setIdentity("obo/PR_000000365")
+            .addLocation("https://identifiers.org/fma/FMA:72564")
+            .addLocation("fma:FMA:63877");
+    ASSERT_TRUE(physicalEntity.getAbout().isSet());
+    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
+}
+
+
+TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriples) {
+    semsim::RDF rdf;
+    semsim::PhysicalEntity physicalEntity(world, model);
+    physicalEntity.setAbout("Metaid0034")
+            .setPhysicalProperty(physical_property)
+            .setIdentity("obo/PR_000000365")
+            .addLocation("https://identifiers.org/fma/FMA:72564")
+            .addLocation("fma:FMA:63877");
+
+    std::string actual = physicalEntity.toTriples().str();
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"Metaid0034\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"PhysicalEntity0000\">\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/obo/PR_000000365\"/>\n"
+                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:63877\"/>\n"
+                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:72564\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n"
+                           "";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 

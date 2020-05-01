@@ -33,6 +33,7 @@ namespace semsim {
 
         std::string str() const;
 
+        virtual bool isSet() const;
     };
 
     typedef std::vector<Resource> Resources;

@@ -33,11 +33,11 @@ namespace semsim {
     }
 
     Triples PhysicalForce::toTriples() const {
-        std::string force_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalForce");
+        std::string force_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalForce", std::vector<std::string>());
 
         Subject force_metaid_subject(world_, RDFURINode(world_, force_metaid));
 
-        Triples triples = physical_property_.toTriples(subject_metaid_.str(), force_metaid);
+        Triples triples = physical_property_.toTriples(about.str(), force_metaid);
 
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(force_metaid)) {
@@ -51,5 +51,43 @@ namespace semsim {
         }
         return triples;
     }
-    Triples toTriples();
+    
+    PhysicalForce &PhysicalForce::setAbout(std::string metaid) {
+        about = Subject(world_, RDFURINode(world_, metaid));
+        return (*this);
+    }
+
+    PhysicalForce &PhysicalForce::setPhysicalProperty(PhysicalPropertyResource physicalProperty) {
+        physical_property_ = std::move(physicalProperty);
+        return (*this);
+    }
+
+    PhysicalForce &PhysicalForce::addSource(
+            std::string source_metaid, std::string source_resource, double multiplier,
+            std::string physical_entity_reference) {
+        sources_.push_back(
+                SourceParticipant(
+                        world_,
+                        std::move(source_metaid),
+                        Resource(world_, RDFURINode(world_, std::move(source_resource))),
+                        multiplier, std::move(physical_entity_reference)
+                )
+        );
+        return (*this);
+    }
+
+    PhysicalForce &PhysicalForce::addSink(std::string sink_metaid, std::string sink_resource, double multiplier,
+                                              std::string physical_entity_reference) {
+        sinks_.push_back(
+                SinkParticipant(
+                        world_,
+                        std::move(sink_metaid),
+                        Resource(world_, RDFURINode(world_, std::move(sink_resource))),
+                        multiplier, std::move(physical_entity_reference)
+                )
+        );
+
+        return (*this);
+    }
+
 }

@@ -63,6 +63,22 @@ TEST_F(SubjectTests, TestFromUriNode) {
 
 
 
+TEST_F(SubjectTests, TestIsSetWhenTrue) {
+    std::string url_str = "https://www.notarealaddress.com";
+    librdf_node* node = librdf_new_node_from_uri_string(world, (const unsigned char*)url_str.c_str());
+    semsim::Subject subject(world, node);
+    librdf_node *n = subject.toRdfNode();
+    const char *actual = (const char *) librdf_uri_as_string(librdf_node_get_uri(n));
+    ASSERT_TRUE(subject.isSet());
+}
+
+TEST_F(SubjectTests, TestIsSetWhenFalse) {
+    semsim::Subject subject;
+    ASSERT_FALSE(subject.isSet());
+}
+
+
+
 
 
 

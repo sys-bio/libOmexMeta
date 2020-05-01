@@ -8,6 +8,7 @@
 #include "semsim/Triple.h"
 #include "Query.h"
 #include "SemsimUtils.h"
+#include "memory"
 
 semsim::PhysicalEntity::PhysicalEntity(
         librdf_world *world,
@@ -17,27 +18,90 @@ semsim::PhysicalEntity::PhysicalEntity(
         semsim::Resource is,
         semsim::Resources is_part_of)
         : PhysicalPhenomenon(world, model, std::move(metaid), std::move(physicalProperty), PHYSICAL_ENTITY),
-          is_(std::move(is)), isPartOf_(std::move(is_part_of)) {
+          identity_resource_(std::move(is)), location_resources(std::move(is_part_of)) {
 
 }
 
-std::string semsim::PhysicalEntity::createMetaId() const {
-    return generateMetaId("PhysicalEntity");
+
+semsim::PhysicalEntity::PhysicalEntity(librdf_world *world, librdf_model *model) : PhysicalPhenomenon(world, model) {
 }
 
-const semsim::Resources &semsim::PhysicalEntity::getLocationResources() const {
-    return isPartOf_;
+
+semsim::PhysicalEntity& semsim::PhysicalEntity::setAbout(std::string metaid) {
+    this->about = Subject(world_, RDFURINode(world_, std::move(metaid)));
+    return *this;
+
+}
+
+semsim::PhysicalEntity & semsim::PhysicalEntity::setPhysicalProperty(PhysicalPropertyResource physicalProperty) {
+    PhysicalPhenomenon::physical_property_ = physicalProperty;
+    std::cout << physical_property_.isSet() << std::endl;
+    std::cout << physical_property_.str() << std::endl;
+    return *this;
+}
+
+
+semsim::PhysicalEntity & semsim::PhysicalEntity::setIdentity(std::string resource) {
+    // todo implement second argument which defaults to RDFUriNode
+    //  and controls whether we use literal/blank/uri node
+    identity_resource_ = Resource(world_, RDFURINode(world_, std::move(resource)));
+    return *this;
+}
+
+semsim::PhysicalEntity & semsim::PhysicalEntity::addLocation(std::string where) {
+    location_resources.push_back(
+            Resource(world_, RDFURINode(world_, where))
+    );
+    return *this;
 }
 
 const semsim::Resource &semsim::PhysicalEntity::getIdentityResource() const {
-    return is_;
+    return identity_resource_;
 }
 
-
+const semsim::Resources &semsim::PhysicalEntity::getLocationResources() const {
+    return location_resources;
+}
 
 semsim::Triples semsim::PhysicalEntity::toTriples() const {
-    std::string property_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalEntity");
-    Triples triples = physical_property_.toTriples(subject_metaid_.str(), property_metaid);
+    if (!getAbout().isSet()) {
+        throw AnnotationBuilderException(
+                "PhysicalEntity::toTriples(): Cannot create"
+                " triples because the \"about\" information is not set. "
+                "Use the setAbout() method."
+        );
+    }
+    if (!getPhysicalProperty().isSet()) {
+        throw AnnotationBuilderException(
+                "PhysicalEntity::toTriples(): Cannot create"
+                " triples because the \"physical_property\" information is not set. "
+                "Use the setPhysicalProperty() method."
+        );
+    }
+    if (getLocationResources().empty()) {
+        throw AnnotationBuilderException(
+                "PhysicalEntity::toTriples(): cannot create "
+                "triples object because the\"location\" information "
+                "is empty. Use the addLocation() method."
+        );
+    }
+    int count = 0;
+    for (auto &i : getLocationResources()) {
+        if (!i.isSet()) {
+            std::ostringstream err;
+            err << "PhysicalEntity::toTriples(): Cannot create"
+                   " triples because item ";
+            err << count << "of the \"location\" information is not set. ";
+            err << "Use the addLocation() method.";
+            throw AnnotationBuilderException(
+                    err.str()
+            );
+        }
+    }
+    // no exclusions needed here - we only generate 1 process metaid before commiting the triples
+    // to the model.
+    std::string property_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalEntity", std::vector<std::string>());
+    Triples triples = physical_property_.toTriples(about.str(), property_metaid);
 
     // what part of physical entity triple
     triples.emplace_back(
