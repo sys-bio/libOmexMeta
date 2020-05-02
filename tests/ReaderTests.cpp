@@ -266,8 +266,8 @@ TEST_F(ReaderTests, TestReadRDFBagFromTurtleString) {
 
 
 }
-//ASSERT_GT(size_after, size_before);
-//}
+ASSERT_GT(size_after, size_before);
+}
 
 
 

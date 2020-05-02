@@ -8,6 +8,8 @@
 #include <libxml/tree.h>
 #include "semsim/SemSim.h"
 
+#include "semsim/SemsimUtils.h"
+
 semsim::XmlAssistant::XmlAssistant(std::string xml, std::string base, int metaid_num_digits) :
         xml_(std::move(xml)), metaid_base(std::move(base)), metaid_num_digits_(metaid_num_digits) {
 }
@@ -16,7 +18,7 @@ const std::vector<std::string> &semsim::XmlAssistant::getValidElements() const {
     return valid_elements_;
 }
 
-void semsim::XmlAssistant::generateMetaId(std::vector<std::string> &seen_metaids, long count, const MetaID& metaid_gen,
+void semsim::XmlAssistant::generateMetaId(std::vector<std::string> &seen_metaids, long count, const MetaID &metaid_gen,
                                           std::string &id) {
     id = metaid_gen.generate(count);
 
@@ -36,7 +38,8 @@ void semsim::XmlAssistant::addMetaIdsRecursion(xmlNode *a_node, std::vector<std:
             // if the node name is in our list of valid elements or if valid_elements_ = ["All"]
             if (std::find(getValidElements().begin(), getValidElements().end(),
                           std::string((const char *) cur_node->name)) != getValidElements().end()
-                || (getValidElements().size() == 1 && strcmp(getValidElements()[0].c_str(), (const char *) "All") != 0)) {
+                ||
+                (getValidElements().size() == 1 && strcmp(getValidElements()[0].c_str(), (const char *) "All") != 0)) {
                 // test to see whether the element has the metaid attribute
                 bool has_meta_id = xmlHasProp(cur_node, (const xmlChar *) "metaid");
                 if (!has_meta_id) {
@@ -62,6 +65,7 @@ void semsim::XmlAssistant::addMetaIdsRecursion(xmlNode *a_node, std::vector<std:
 
 std::pair<std::string, std::vector<std::string>> semsim::XmlAssistant::addMetaIds() {
     LIBXML_TEST_VERSION;
+
     xmlDocPtr doc; /* the resulting document tree */
     doc = xmlParseDoc((const xmlChar *) xml_.c_str());
     if (doc == nullptr) {
@@ -78,11 +82,11 @@ std::pair<std::string, std::vector<std::string>> semsim::XmlAssistant::addMetaId
     xmlDocDumpMemory(doc, &s, &size);
     if (s == nullptr)
         throw std::bad_alloc();
+    std::string x = std::string((const char *) s);
     xmlFree(s);
 
     xmlFreeDoc(doc);
     xmlCleanupParser();
-    std::string x = std::string((const char *) s);
     std::pair<std::string, std::vector<std::string>> sbml_with_metaid(x, seen_metaids);
     return sbml_with_metaid;
 }
@@ -95,7 +99,7 @@ const std::vector<std::string> &semsim::CellMLAssistant::getValidElements() cons
     return valid_elements_;
 }
 
-semsim::XmlAssistantPtr semsim::XmlAssistantFactory::generate(const std::string& xml, XmlAssistantType type) {
+semsim::XmlAssistantPtr semsim::XmlAssistantFactory::generate(const std::string &xml, XmlAssistantType type) {
     switch (type) {
         case semsim::ASSISTANT_TYPE_SBML: {
             semsim::SBMLAssistant sbmlAssistant(xml);

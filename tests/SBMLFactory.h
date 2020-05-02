@@ -198,8 +198,6 @@ public:
         p2->setId("ky2z");
         p2->setValue(1);
         k2->setMath(SBML_parseL3FormulaWithModel("y*ky2z", sbml_model_ptr));
-
-
         return doc;
     }
 };

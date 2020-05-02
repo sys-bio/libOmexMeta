@@ -71,7 +71,7 @@ TEST_F(PhysicalPhenomenonTests, TestPhysicalProperty) {
             semsim::PhysicalPropertyResource(world, "OPB:OPB_12345"),
             semsim::PHYSICAL_ENTITY
     );
-    std::string expected = "OPB:OPB_12345";
+    std::string expected = "https://identifiers.org/OPB/OPB_12345";
     std::string actual = phenomenon.getPhysicalProperty().str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
