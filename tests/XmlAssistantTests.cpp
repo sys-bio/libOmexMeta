@@ -8,30 +8,16 @@
 #include <chrono>
 #include <thread>
 
-class XmlAssistantTests : public ::testing::Test {
-public:
-
-    std::string sbml;
-
-    XmlAssistantTests() {
-        sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
-    }
-
-
-};
-
-
-TEST_F(XmlAssistantTests, TestValidElements) {
+TEST(XmlAssistantTests, TestValidElements) {
     semsim::MetaID metaId("SemsimMetaid", 0, 4);
-    semsim::XmlAssistant xmlAssistant(sbml, "ID", 4);
+    semsim::XmlAssistant xmlAssistant(SBMLFactory::getModelStr(SBML_NOT_ANNOTATED), "ID", 4);
     const std::vector<std::string> &actual = xmlAssistant.getValidElements();
     std::vector<std::string> expected = {"Any"};
     ASSERT_EQ(expected, actual);
 }
 
-TEST_F(XmlAssistantTests, TestMetaIdsAll) {
-    // time delay
-    std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::seconds(1));
+TEST(XmlAssistantTests, TestMetaIdsAll) {
+    std::string sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
     semsim::XmlAssistant xmlAssistant(sbml, "SemsimMetaid", 4);
     auto sbml_and_meta_ids = xmlAssistant.addMetaIds();
     sbml = sbml_and_meta_ids.first;
@@ -94,8 +80,9 @@ TEST_F(XmlAssistantTests, TestMetaIdsAll) {
     ASSERT_STREQ(expected.c_str(), sbml.c_str());
 }
 
-TEST_F(XmlAssistantTests, TestValidElementsSBML) {
+TEST(XmlAssistantTests, TestValidElementsSBML) {
     semsim::MetaID metaId("SemsimMetaid", 0, 4);
+    std::string sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
     semsim::SBMLAssistant assistant(sbml, "ID", 4);
     const std::vector<std::string> &actual = assistant.getValidElements();
     std::vector<std::string> expected = {
@@ -110,9 +97,8 @@ TEST_F(XmlAssistantTests, TestValidElementsSBML) {
     ASSERT_EQ(expected, actual);
 }
 
-TEST_F(XmlAssistantTests, TestMetaIdsSBML) {
-    std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::seconds(1));
-
+TEST(XmlAssistantTests, TestMetaIdsSBML) {
+    std::string sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
     semsim::MetaID metaId("SemsimMetaid", 0, 4);
     semsim::SBMLAssistant assistant(sbml, "SemsimMetaid", 4);
     auto sbml_with_metaids = assistant.addMetaIds();

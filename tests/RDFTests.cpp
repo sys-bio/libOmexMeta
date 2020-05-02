@@ -105,6 +105,7 @@ TEST_F(RDFTests, TestToTriples) {
     for (auto &it : triples) {
         actual << it.getSubject().str() << it.getPredicatePtr()->str() << it.getResource().str() << std::endl;
     }
+    std::cout << actual.str() << std::endl;
     std::string expected = "http://example.org/favourite-fruithttp:/www.w3.org/1999/02/22-rdf-syntax-ns#typehttp://www.w3.org/1999/02/22-rdf-syntax-ns#Seq\n"
                            "http://example.org/favourite-fruithttp:/www.w3.org/1999/02/22-rdf-syntax-ns#_1http://example.org/banana\n"
                            "http://example.org/favourite-fruithttp:/www.w3.org/1999/02/22-rdf-syntax-ns#_2http://example.org/apple\n"
@@ -118,8 +119,8 @@ TEST_F(RDFTests, testQueryResultsAsStr) {
                     "WHERE {?x ?y ?z }";
     semsim::RDF rdf = semsim::RDF::fromString(samples.singular_annotation4, "rdfxml");
     std::string actual = rdf.queryResultsAsStr(q, "csv");
-    std::string expected = "x,y,z\n"
-                           "file://./MyModel.xml#meta2,http://purl.org/dc/terms/description,Cardiomyocyte cytosolic ATP concentration\n"
+    std::string expected = "x,y,z\r\n"
+                           "file://./MyModel.xml#meta2,http://purl.org/dc/terms/description,Cardiomyocyte cytosolic ATP concentration\r\n"
                            "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -130,7 +131,7 @@ TEST_F(RDFTests, testQueryResultsAsMap) {
     std::string q = "PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
                     "SELECT ?x ?y ?z\n"
                     "WHERE {?x ?y ?z }";
-    semsim::RDF rdf = semsim::RDF::fromString(samples.singular_annotation4, "rdfxml");
+    semsim::RDF rdf = semsim::RDF::fromString(samples.singular_annotation4, "t");
     semsim::ResultsMap map = rdf.queryResultsAsMap(q);
     std::string actual = map["x"][0];
     std::string expected = "file://./MyModel.xml#meta2";

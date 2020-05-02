@@ -131,9 +131,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
         }
 
     }
-    std::string expected = "https://identifiers.org/fake/identifier003\n"
-                           "PhysicalEntityReference1\n"
-                           "1\n";
+    std::string expected = "SourceId1\nPhysicalEntityReference1\n1\n";
     ASSERT_STREQ(expected.c_str(), actual.str().c_str());
 }
 
@@ -175,7 +173,8 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
     );
 
     semsim::Triples triples = process.toTriples();
-    int expected = 9;
+    std::cout << triples.str() << std::endl;
+    int expected = 10;
     int actual = triples.size();
     ASSERT_EQ(expected, actual);
 }
