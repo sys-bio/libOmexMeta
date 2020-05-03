@@ -26,7 +26,7 @@ Things done wrong in libsemsim
 - functions with unused parameters (inheritance?)
 - Often written in unclear code, hasn't done things in a way which makes them more readable for other developers
 	- often poor readability
-	- lots of chained functions 
+	- lots of unnessarily chained functions
 - missing constructors
 - Some files split into header and implementations, others just headers. Randomly
 - Uses the same function to return two different types. WHAT? 

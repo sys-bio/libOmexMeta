@@ -113,7 +113,7 @@ namespace semsim {
         std::unordered_map<std::string, std::string> propagateNamespacesFromParser(
                 std::vector<std::string> seen_namespaces);
 
-        std::string queryResultsAsStr(const std::string &query_str, std::string results_format);
+        std::string queryResultsAsStr(const std::string &query_str, const std::string& results_format);
 
         semsim::ResultsMap queryResultsAsMap(const std::string &query_str);
 

@@ -48,6 +48,7 @@ namespace semsim {
                                      std::string physical_entity_reference);
 
 
+        PhysicalProcess &setPhysicalProperty(const std::string &physicalProperty);
     };
 }
 
