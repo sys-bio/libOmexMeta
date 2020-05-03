@@ -365,7 +365,7 @@ semsim::Triples semsim::RDF::toTriples() {
     return triples;
 }
 
-std::string semsim::RDF::queryResultsAsStr(const std::string &query_str, std::string results_format) {
+std::string semsim::RDF::queryResultsAsStr(const std::string &query_str, const std::string& results_format) {
     return semsim::Query(world_, model_, query_str).resultsAsStr(results_format);
 }
 

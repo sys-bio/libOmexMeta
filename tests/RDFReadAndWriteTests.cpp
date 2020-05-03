@@ -679,9 +679,9 @@ TEST_F(ReadAndWriteTests, singularannotation4nquads) {
 
 TEST_F(ReadAndWriteTests, compositeannotationpentriples) {
     std::string expected = "<file://./MyModel.xml#VLV> <http://biomodels.net/biology-qualifiers/isVersionOf> <http://identifiers.org/opb/OPB_00154> .\n"
-                           "<file://./MyModel.xml#VLV> <http://biomodels.net/biology-qualifiers/isPropertyOf> <file://./annotations.rdf#entity_0> .\n"
-                           "<file://./annotations.rdf#entity_0> <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> .\n"
-                           "<file://./annotations.rdf#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .\n";
+                           "<file://./MyModel.xml#VLV> <http://biomodels.net/biology-qualifiers/isPropertyOf> <file://./MyModel.rdf#entity_0> .\n"
+                           "<file://./MyModel.rdf#entity_0> <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> .\n"
+                           "<file://./MyModel.rdf#entity_0> <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .\n";
     assertReadAndWrite(samples.composite_annotation_pe, "ntriples", expected);
 }
 
@@ -690,7 +690,7 @@ TEST_F(ReadAndWriteTests, compositeannotationpeturtle) {
                            "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "\n"
-                           "<MyModel.xml#VLV>\n"
+                           "<MyModel.xml#entity_0>\n"
                            "    bqbiol:isPropertyOf <#entity_0> ;\n"
                            "    bqbiol:isVersionOf <http://identifiers.org/opb/OPB_00154> .\n"
                            "\n"
@@ -710,12 +710,12 @@ TEST_F(ReadAndWriteTests, compositeannotationperdfxmlxmp) {
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"#entity_0\"/>\n"
-                           "    <bqbiol:isVersionOf rdf:resource=\"http://identifiers.org/opb/OPB_00154\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"\">\n"
                            "    <bqbiol:is rdf:resource=\"http://identifiers.org/fma/FMA:9670\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"http://identifiers.org/fma/FMA:18228\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"MyModel.rdf#entity_0\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"http://identifiers.org/opb/OPB_00154\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "</x:xmpmeta>\n"

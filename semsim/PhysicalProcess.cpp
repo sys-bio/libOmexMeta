@@ -86,6 +86,13 @@ namespace semsim {
         return (*this);
     }
 
+    //todo turn this into a factory whereby user enters string of PhysicalProperty
+    //  and we automatically pick out the correct OPB identifier
+    PhysicalProcess &PhysicalProcess::setPhysicalProperty(const std::string& physicalProperty) {
+        physical_property_ = PhysicalPropertyResource(world_, RDFURINode(world_, physicalProperty));
+        return (*this);
+    }
+
     PhysicalProcess &PhysicalProcess::addSource(
             std::string source_metaid, std::string source_resource, double multiplier,
             std::string physical_entity_reference) {

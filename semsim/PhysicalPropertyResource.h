@@ -24,8 +24,6 @@ namespace semsim {
 
         explicit PhysicalPropertyResource(librdf_world *world, std::string node);
 
-//        Triple isVersionOf(Subject subject_metaid) const;
-
         Triple isVersionOfTriple(std::string subject_metaid) const;
 
         Triple isPropertyOfTriple(std::string subject_metaid, std::string property_metaid) const;

@@ -219,7 +219,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
     );
     semsim::Triples triples = process.toTriples();
 
-    int expected = 9;
+    int expected = 10;
     int actual = triples.size();
     ASSERT_EQ(expected, actual);
 }
@@ -270,19 +270,19 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriples) {
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"MediatorID\">\n"
+                           "  <rdf:Description rdf:about=\"MediatorID1\">\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference3\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"PhysicalProcess0000\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorID\"/>\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkID\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceID\"/>\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorID1\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkId1\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceId1\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SinkID\">\n"
+                           "  <rdf:Description rdf:about=\"SinkId1\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SourceID\">\n"
+                           "  <rdf:Description rdf:about=\"SourceId1\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
@@ -290,14 +290,15 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriples) {
                            "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
     semsim::RDF rdf;
     semsim::PhysicalProcess process(world, model);
-    process.setAbout("VLV")
+    process.setAbout("property_metaid_0")
         .setPhysicalProperty(physical_property)
         .addSource("SourceId1", "fake/identifier003", 1.0, "PhysicalEntityReference1")
         .addSource("SourceId2", "fake/identifier006", 2.0, "PhysicalEntityReference4")
@@ -309,37 +310,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
 
     std::string actual = triples.str();
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
-                           "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"MediatorId1\">\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference3\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"PhysicalProcess0000\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorId1\"/>\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkId1\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceId1\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceId2\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SinkId1\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SourceId1\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SourceId2\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">2</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference4\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"VLV\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
-                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+    std::string expected = "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 

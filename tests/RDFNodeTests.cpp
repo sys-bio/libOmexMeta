@@ -165,6 +165,14 @@ TEST_F(RDFNodeTests, TestLiteralNodeFromLibrdfNode) {
 }
 
 
+TEST_F(RDFNodeTests, TestEqualityOperatorURI) {
+    librdf_node* node = librdf_new_node_from_uri_string(world, (const unsigned char*)"file://./MyModel.xml");
+    semsim::RDFURINode rdfuriNode(world, node);
+
+
+}
+
+
 
 
 
