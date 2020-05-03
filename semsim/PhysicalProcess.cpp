@@ -52,7 +52,8 @@ namespace semsim {
         }
 
 
-        std::string process_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalProcess", std::vector<std::string>());
+        std::string process_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalProcess",
+                                                                       std::vector<std::string>());
 
         Subject process_metaid_subject(world_, RDFURINode(world_, process_metaid));
 
@@ -88,34 +89,32 @@ namespace semsim {
 
     //todo turn this into a factory whereby user enters string of PhysicalProperty
     //  and we automatically pick out the correct OPB identifier
-    PhysicalProcess &PhysicalProcess::setPhysicalProperty(const std::string& physicalProperty) {
+    PhysicalProcess &PhysicalProcess::setPhysicalProperty(const std::string &physicalProperty) {
         physical_property_ = PhysicalPropertyResource(world_, RDFURINode(world_, physicalProperty));
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::addSource(
-            std::string source_metaid, std::string source_resource, double multiplier,
-            std::string physical_entity_reference) {
+    PhysicalProcess &PhysicalProcess::addSource(std::string source_metaid, double multiplier,
+                                                std::string physical_entity_reference) {
         sources_.push_back(
                 SourceParticipant(
                         world_,
                         model_,
                         std::move(source_metaid),
-                        Resource(world_, RDFURINode(world_, std::move(source_resource))),
-                        multiplier, std::move(physical_entity_reference)
+                        multiplier,
+                        std::move(physical_entity_reference)
                 )
         );
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::addSink(std::string sink_metaid, std::string sink_resource, double multiplier,
+    PhysicalProcess &PhysicalProcess::addSink(std::string sink_metaid, double multiplier,
                                               std::string physical_entity_reference) {
         sinks_.push_back(
                 SinkParticipant(
                         world_,
                         model_,
                         std::move(sink_metaid),
-                        Resource(world_, RDFURINode(world_, std::move(sink_resource))),
                         multiplier, std::move(physical_entity_reference)
                 )
         );
@@ -123,15 +122,13 @@ namespace semsim {
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::addMediator(
-            std::string mediator_metaid, std::string mediator_resource, double multiplier,
-            std::string physical_entity_reference) {
+    PhysicalProcess &PhysicalProcess::addMediator(std::string mediator_metaid, double multiplier,
+                                                  std::string physical_entity_reference) {
         mediators_.push_back(
                 MediatorParticipant(
                         world_,
                         model_,
                         std::move(mediator_metaid),
-                        Resource(world_, RDFURINode(world_, std::move(mediator_resource))),
                         std::move(physical_entity_reference)
                 )
         );

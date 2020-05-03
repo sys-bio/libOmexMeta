@@ -38,14 +38,12 @@ namespace semsim {
 
         PhysicalProcess &setPhysicalProperty(PhysicalPropertyResource physicalProperty);
 
-        PhysicalProcess &addSource(std::string source_metaid, std::string source_identity, double multiplier,
-                                   std::string physical_entity_reference);
+        PhysicalProcess &addSource(std::string source_metaid, double multiplier, std::string physical_entity_reference);
 
-        PhysicalProcess &addSink(std::string source_metaid, std::string sink_resource, double multiplier,
-                                 std::string physical_entity_reference);
+        PhysicalProcess &addSink(std::string sink_metaid, double multiplier, std::string physical_entity_reference);
 
-        PhysicalProcess &addMediator(std::string mediator_metaid, std::string mediator_resource, double multiplier,
-                                     std::string physical_entity_reference);
+        PhysicalProcess &addMediator(
+                std::string mediator_metaid, double multiplier, std::string physical_entity_reference);
 
 
         PhysicalProcess &setPhysicalProperty(const std::string &physicalProperty);

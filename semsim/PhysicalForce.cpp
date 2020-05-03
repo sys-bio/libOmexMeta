@@ -76,7 +76,6 @@ namespace semsim {
                         world_,
                         model_,
                         std::move(source_metaid),
-                        Resource(world_, RDFURINode(world_, std::move(source_resource))),
                         multiplier, std::move(physical_entity_reference)
                 )
         );
@@ -90,7 +89,6 @@ namespace semsim {
                         world_,
                         model_,
                         std::move(sink_metaid),
-                        Resource(world_, RDFURINode(world_, std::move(sink_resource))),
                         multiplier, std::move(physical_entity_reference)
                 )
         );

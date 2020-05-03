@@ -15,13 +15,10 @@ namespace semsim {
 
 
     Participant::Participant(librdf_world *world, librdf_model *model, std::string subject, PredicatePtr predicate,
-                             Resource resource,
-                             double multiplier,
-                             std::string physicalEntityReference)
+                             double multiplier, std::string physicalEntityReference)
             : world_(world), subject_(std::move(subject)),
-              resource_(std::move(resource)), predicate_ptr_(predicate),
+              predicate_ptr_(predicate),
               multiplier_(multiplier), physicalEntityReference_(std::move(physicalEntityReference)) {
-
     }
 
     Triples Participant::toTriples(std::string process_metaid) const {
@@ -49,7 +46,8 @@ namespace semsim {
                     world_,
                     participant_subject,
                     std::make_shared<SemSim>(SemSim(world_, "hasMultiplier")),
-                    Resource(world_, RDFLiteralNode(world_, multiplier_os.str()))
+                    Resource(world_, RDFLiteralNode(world_, multiplier_os.str(),
+                            "http://www.w3.org/2001/XMLSchema#double"))
             );
         }
         return triples;
@@ -71,10 +69,6 @@ namespace semsim {
         return subject_;
     }
 
-    const Resource &Participant::getResource() const {
-        return resource_;
-    }
-
     double Participant::getMultiplier() const {
         return multiplier_;
     }
@@ -83,28 +77,26 @@ namespace semsim {
         return physicalEntityReference_;
     }
 
-    SourceParticipant::SourceParticipant(
-            librdf_world *world, librdf_model *model, std::string subject, Resource resource,
-            double multiplier, std::string physicalEntityReference)
+    SourceParticipant::SourceParticipant(librdf_world *world, librdf_model *model, std::string subject,
+                                         double multiplier,
+                                         std::string physicalEntityReference)
             : Participant(world, model, subject,
-                          std::make_shared<SemSim>(SemSim(world, "hasSourceParticipant")),
-                          resource, multiplier, physicalEntityReference) {
+                          std::make_shared<SemSim>(SemSim(world, "hasSourceParticipant")), multiplier,
+                          physicalEntityReference) {
     }
 
-    SinkParticipant::SinkParticipant(
-            librdf_world *world, librdf_model *model, std::string subject, Resource resource,
-            double multiplier, std::string physicalEntityReference)
+    SinkParticipant::SinkParticipant(librdf_world *world, librdf_model *model, std::string subject, double multiplier,
+                                     std::string physicalEntityReference)
             : Participant(world, model, subject,
-                          std::make_shared<SemSim>(SemSim(world, "hasSinkParticipant")),
-                          resource, multiplier, physicalEntityReference) {
+                          std::make_shared<SemSim>(SemSim(world, "hasSinkParticipant")), multiplier,
+                          physicalEntityReference) {
     }
 
-    MediatorParticipant::MediatorParticipant(
-            librdf_world *world, librdf_model *model, std::string subject, Resource resource,
-            std::string physicalEntityReference)
+    MediatorParticipant::MediatorParticipant(librdf_world *world, librdf_model *model, std::string subject,
+                                             std::string physicalEntityReference)
             : Participant(world, model, subject,
-                          std::make_shared<SemSim>(SemSim(world, "hasMediatorParticipant")),
-                          resource, 0.0, physicalEntityReference) {
+                          std::make_shared<SemSim>(SemSim(world, "hasMediatorParticipant")), 0.0,
+                          physicalEntityReference) {
     }
 
 }

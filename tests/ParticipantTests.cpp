@@ -27,22 +27,8 @@ public:
 };
 
 
-TEST_F(ParticipantTests, TestSourceParticipant1) {
-    semsim::SourceParticipant source(world, model, "MetaId0014",
-                                     semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
-                                     1.0, "MetaId0015"
-    );
-    semsim::Resource resource = source.getResource();
-
-    std::string actual = resource.str();
-    std::cout << actual << std::endl;
-    std::string expected = "https://identifiers.org/opd/P02367";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-}
-
 TEST_F(ParticipantTests, TestSinkParticipant1) {
     semsim::SinkParticipant sink(world, model, "MetaId0014",
-                                 semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
                                  1.0, "MetaId0015"
     );
     std::string actual = sink.getPredicatePtr()->str();
@@ -54,20 +40,17 @@ TEST_F(ParticipantTests, TestSinkParticipant1) {
 TEST_F(ParticipantTests, TestParticipantVec1) {
     semsim::MediatorParticipant mediator(
             world, model, "MetaId0014",
-            semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
             "MetaId0015"
     );
 
     semsim::SourceParticipant source(
             world, model, "MetaId0014",
-            semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
             1.0, "MetaId0015"
     );
 
     semsim::SinkParticipant sink(
             world, model,
             "MetaId0014",
-            semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
             1.0, "MetaId0015"
     );
 
@@ -84,20 +67,17 @@ TEST_F(ParticipantTests, TestParticipantVec1) {
 TEST_F(ParticipantTests, TestParticipantVecToTriples) {
     semsim::MediatorParticipant mediator(
             world, model, "MetaId0014",
-            semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
             "MetaId0015"
     );
 
     semsim::SourceParticipant source(
             world, model, "MetaId0014",
-            semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
             1.0, "MetaId0015"
     );
 
     semsim::SinkParticipant sink(
             world, model,
             "MetaId0014",
-            semsim::Resource(world, semsim::RDFURINode(world, "opd:P02367")),
             1.0, "MetaId0015"
     );
 

@@ -23,15 +23,13 @@ namespace semsim {
         librdf_world *world_;
         librdf_model *model_;
         std::string subject_;
-        Resource resource_;
         PredicatePtr predicate_ptr_;
         double multiplier_;
         std::string physicalEntityReference_;
     public:
 
         Participant(librdf_world *world, librdf_model *model, std::string subject, PredicatePtr predicate,
-                    Resource resource, double multiplier,
-                    std::string physicalEntityReference);
+                    double multiplier, std::string physicalEntityReference);
 
         Triples toTriples(std::string process_metaid) const;
 
@@ -42,8 +40,6 @@ namespace semsim {
         librdf_world *getWorld() const;
 
         const std::string &getSubject() const;
-
-        const Resource &getResource() const;
 
         double getMultiplier() const;
 
@@ -59,8 +55,7 @@ namespace semsim {
     class SourceParticipant : public Participant {
 
     public:
-        SourceParticipant(librdf_world *world, librdf_model *model, std::string subject, Resource resource,
-                          double multiplier,
+        SourceParticipant(librdf_world *world, librdf_model *model, std::string subject, double multiplier,
                           std::string physicalEntityReference);
     };
 
@@ -72,9 +67,8 @@ namespace semsim {
         std::string physicalEntityReference_;
     public:
 
-        SinkParticipant(
-                librdf_world *world, librdf_model *model, std::string subject, Resource resource,
-                double multiplier, std::string physicalEntityReference);
+        SinkParticipant(librdf_world *world, librdf_model *model, std::string subject, double multiplier,
+                        std::string physicalEntityReference);
 
     };
 
@@ -85,9 +79,8 @@ namespace semsim {
 
     public:
 
-        MediatorParticipant(
-                librdf_world *world, librdf_model *model, std::string subject, Resource resource,
-                std::string physicalEntityReference);
+        MediatorParticipant(librdf_world *world, librdf_model *model, std::string subject,
+                            std::string physicalEntityReference);
 
     };
 

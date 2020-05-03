@@ -222,7 +222,6 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
                                             world,
                                             model,
                                             "SourceId1",
-                                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                                             1.0,
                                             "PhysicalEntityReference1"
                                     )}
@@ -232,7 +231,6 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
                                             world,
                                             model,
                                             "SinkId1",
-                                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                                             1.0,
                                             "PhysicalEntityReference2"
                                     )}
@@ -242,7 +240,6 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
                                             world,
                                             model,
                                             "MediatorID1",
-                                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier005")),
                                             "PhysicalEntityReference3"
                                     )}
                             )
@@ -271,14 +268,15 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
                            "    <semsim:hasSourceParticipant rdf:resource=\"SourceId1\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"SinkId1\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"SourceId1\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -301,7 +299,6 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
                                             world,
                                             model,
                                             "SourceId1",
-                                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                                             1.0,
                                             "PhysicalEntityReference1"
                                     )}
@@ -311,7 +308,6 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
                                             world,
                                             model,
                                             "SinkId1",
-                                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                                             1.0,
                                             "PhysicalEntityReference2"
                                     )}
@@ -337,11 +333,11 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
                            "    <semsim:hasSourceParticipant rdf:resource=\"SourceId1\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"SinkId1\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"SourceId1\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
