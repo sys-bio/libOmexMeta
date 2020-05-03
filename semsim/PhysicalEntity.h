@@ -43,6 +43,7 @@ namespace semsim {
 
         PhysicalEntity & addLocation(std::string where);
 
+        PhysicalEntity &setPhysicalProperty(const std::string &physicalProperty);
     };
 }
 

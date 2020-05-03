@@ -265,29 +265,22 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderInterface) {
     semsim::RDF rdf;
     semsim::PhysicalEntity physicalEntity(world, model);
 
-    std::cout << __LINE__ <<": "<< physical_property.isSet() << std::endl;
+    physicalEntity.setAbout("VLV")
+            .setPhysicalProperty("OPB:OPB_00154")
+            .setIdentity("fma/FMA:9690")
+            .addLocation("fma:FMA:18228");
 
-    physicalEntity.setAbout("Metaid0034")
-            .setPhysicalProperty(physical_property)
-            .setIdentity("obo/PR_000000365")
-            .addLocation("https://identifiers.org/fma/FMA:72564")
-            .addLocation("fma:FMA:63877");
-
-    std::cout << "physicalEntity: " << physicalEntity.getPhysicalProperty().isSet() << std::endl;
-
-    std::cout << physicalEntity.toTriples().str() << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"Metaid0034\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
-                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
-                           "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"PhysicalEntity0000\">\n"
-                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/obo/PR_000000365\"/>\n"
-                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:63877\"/>\n"
-                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:72564\"/>\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/fma/FMA:9690\"/>\n"
+                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:18228\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"VLV\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00154\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";

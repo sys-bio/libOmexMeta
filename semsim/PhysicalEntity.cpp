@@ -27,28 +27,31 @@ semsim::PhysicalEntity::PhysicalEntity(librdf_world *world, librdf_model *model)
 }
 
 
-semsim::PhysicalEntity& semsim::PhysicalEntity::setAbout(std::string metaid) {
+semsim::PhysicalEntity &semsim::PhysicalEntity::setAbout(std::string metaid) {
     this->about = Subject(world_, RDFURINode(world_, std::move(metaid)));
     return *this;
 
 }
 
-semsim::PhysicalEntity & semsim::PhysicalEntity::setPhysicalProperty(PhysicalPropertyResource physicalProperty) {
+semsim::PhysicalEntity &semsim::PhysicalEntity::setPhysicalProperty(PhysicalPropertyResource physicalProperty) {
     PhysicalPhenomenon::physical_property_ = physicalProperty;
-    std::cout << physical_property_.isSet() << std::endl;
-    std::cout << physical_property_.str() << std::endl;
+    return *this;
+}
+
+semsim::PhysicalEntity &semsim::PhysicalEntity::setPhysicalProperty(const std::string &physicalProperty) {
+    physical_property_ = PhysicalPropertyResource(world_, RDFURINode(world_, physicalProperty));
     return *this;
 }
 
 
-semsim::PhysicalEntity & semsim::PhysicalEntity::setIdentity(std::string resource) {
+semsim::PhysicalEntity &semsim::PhysicalEntity::setIdentity(std::string resource) {
     // todo implement second argument which defaults to RDFUriNode
     //  and controls whether we use literal/blank/uri node
     identity_resource_ = Resource(world_, RDFURINode(world_, std::move(resource)));
     return *this;
 }
 
-semsim::PhysicalEntity & semsim::PhysicalEntity::addLocation(std::string where) {
+semsim::PhysicalEntity &semsim::PhysicalEntity::addLocation(std::string where) {
     location_resources.push_back(
             Resource(world_, RDFURINode(world_, where))
     );

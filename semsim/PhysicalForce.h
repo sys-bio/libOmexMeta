@@ -47,6 +47,8 @@ namespace semsim {
         PhysicalForce &
         addSink(std::string sink_metaid, std::string sink_resource, double multiplier,
                 std::string physical_entity_reference);
+
+        PhysicalForce &setPhysicalProperty(const std::string &physicalProperty);
     };
 }
 

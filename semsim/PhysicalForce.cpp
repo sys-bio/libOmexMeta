@@ -63,6 +63,11 @@ namespace semsim {
         return (*this);
     }
 
+    PhysicalForce &PhysicalForce::setPhysicalProperty(const std::string &physicalProperty) {
+        physical_property_ = PhysicalPropertyResource(world_, RDFURINode(world_, physicalProperty));
+        return (*this);
+    }
+
     PhysicalForce &PhysicalForce::addSource(
             std::string source_metaid, std::string source_resource, double multiplier,
             std::string physical_entity_reference) {
