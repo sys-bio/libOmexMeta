@@ -133,11 +133,11 @@ public:
                                           "        <semsim:hasMultiplier>1.0</semsim:hasMultiplier>\n"
                                           "        <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid_0\"/>\n"
                                           "    </rdf:Description>\n"
-                                          "    <rdf:Description rdf:about=\"./MyModel.xml#sink_0\">\n"
+                                          "    <rdf:Description rdf:about=\"sink_0\">\n"
                                           "        <semsim:hasMultiplier>2.0</semsim:hasMultiplier>\n"
                                           "        <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid_1\"/>\n"
                                           "    </rdf:Description>"
-                                          "    <rdf:Description rdf:about=\"./MyModel.xml#mediator_0\">\n"
+                                          "    <rdf:Description rdf:about=\"mediator_0\">\n"
                                           "        <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid_2\"/>\n"
                                           "    </rdf:Description>"
                                           "</rdf:RDF>\n";

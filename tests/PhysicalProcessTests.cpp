@@ -47,7 +47,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
                             world,
                             model,
                             "SourceId1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
                             "PhysicalEntityReference1"
                     )}
@@ -57,7 +56,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
                             world,
                             model,
                             "SinkId1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
                             "PhysicalEntityReference2"
                     )}
@@ -67,7 +65,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
                             world,
                             model,
                             "MediatorID1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier005")),
                             "PhysicalEntityReference3"
                     )}
             )
@@ -89,7 +86,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
                             world,
                             model,
                             "SourceId1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
                             "PhysicalEntityReference1"
                     )}
@@ -99,7 +95,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
                             world,
                             model,
                             "SinkId1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
                             "PhysicalEntityReference2"
                     )}
@@ -109,7 +104,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
                             world,
                             model,
                             "MediatorID1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier005")),
                             "PhysicalEntityReference3"
                     )}
             )
@@ -146,7 +140,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
                             world,
                             model,
                             "SourceId1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
                             "PhysicalEntityReference1"
                     )}
@@ -156,7 +149,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
                             world,
                             model,
                             "SinkId1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
                             "PhysicalEntityReference2"
                     )}
@@ -166,7 +158,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
                             world,
                             model,
                             "MediatorID1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier005")),
                             "PhysicalEntityReference3"
                     )}
             )
@@ -192,7 +183,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
                             world,
                             model,
                             "SourceId1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
                             "PhysicalEntityReference1"
                     )}
@@ -202,7 +192,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
                             world,
                             model,
                             "SinkId1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
                             "PhysicalEntityReference2"
                     )}
@@ -212,7 +201,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
                             world,
                             model,
                             "MediatorID1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier005")),
                             "PhysicalEntityReference3"
                     )}
             )
@@ -236,7 +224,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriples) {
                             world,
                             model,
                             "SourceId1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier003")),
                             1.0,
                             "PhysicalEntityReference1"
                     )}
@@ -246,7 +233,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriples) {
                             world,
                             model,
                             "SinkId1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier004")),
                             1.0,
                             "PhysicalEntityReference2"
                     )}
@@ -256,7 +242,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriples) {
                             world,
                             model,
                             "MediatorID1",
-                            semsim::Resource(world, semsim::RDFURINode(world, "fake/identifier005")),
                             "PhysicalEntityReference3"
                     )}
             )
@@ -279,11 +264,11 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriples) {
                            "    <semsim:hasSourceParticipant rdf:resource=\"SourceId1\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"SinkId1\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"SourceId1\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"VLV\">\n"
@@ -303,17 +288,47 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
     semsim::PhysicalProcess process(world, model);
     process.setAbout("property_metaid_0")
             .setPhysicalProperty("opb/OPB_00592")
-            .addSource("source_0", "fake/identifier003", 1.0, "species_metaid0")
-            .addSource("source_1", "fake/identifier006", 2.0, "species_metaid1")
-            .addSink("sink_0", "fake/identifier004", 1.0, "species_metaid3")
-            .addMediator("mediator_0", "fake/identifier005", 1.0, "species_metaid4");
-
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2")
+            .addMediator("mediator_0", 1.0, "species_metaid2");
 
     semsim::Triples triples = process.toTriples();
 
     std::string actual = triples.str();
     std::cout << actual << std::endl;
-    std::string expected = "";
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"PhysicalProcess0000\">\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"mediator_0\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"sink_0\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"source_0\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"source_1\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"mediator_0\">\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid2\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"property_metaid_0\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB_00592\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"sink_0\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid2\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"source_0\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid0\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"source_1\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">2</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid1\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n"
+                           "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
