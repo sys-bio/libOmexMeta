@@ -21,9 +21,10 @@ namespace semsim {
     }
 
     void PhysicalPropertyResource::validate() {
-        std::string expected_prefix = "https://identifiers.org/OPB"; //todo case speific?
+        std::string expected_prefix1 = "https://identifiers.org/OPB"; //todo case speific?
+        std::string expected_prefix2 = "https://identifiers.org/opb"; //todo case speific?
         std::string uri = str();
-        if (uri.rfind(expected_prefix, 0) != 0) {
+        if ((uri.rfind(expected_prefix1, 0) != 0) && (uri.rfind(expected_prefix2, 0) != 0)) {
             std::ostringstream err;
             err << __FILE__ << ":" << __LINE__ << ": The uri generated (";
             err << uri << ") is not a OPB resource. Physical properties "
@@ -31,15 +32,6 @@ namespace semsim {
             throw semsim::InappropriateResourceException(err.str());
         }
     }
-//
-//    Triple PhysicalPropertyResource::isVersionOf(Subject subject_metaid) const {
-//        return Triple(
-//                world_,
-//                subject_metaid,
-//                BiomodelsBiologyQualifier(world_, "isVersionOf"),
-//                Resource(world_, RDFURINode(world_, rdf_node_ptr_->str()))
-//        );
-//    }
 
     Triple PhysicalPropertyResource::isVersionOfTriple(std::string subject_metaid) const {
         return Triple(

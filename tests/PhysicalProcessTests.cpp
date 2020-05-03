@@ -296,14 +296,17 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriples) {
 }
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
+    /*
+     * Question: do we need the *identity argument to source sink mediator?
+     */
     semsim::RDF rdf;
     semsim::PhysicalProcess process(world, model);
     process.setAbout("property_metaid_0")
-        .setPhysicalProperty(physical_property)
-        .addSource("SourceId1", "fake/identifier003", 1.0, "PhysicalEntityReference1")
-        .addSource("SourceId2", "fake/identifier006", 2.0, "PhysicalEntityReference4")
-        .addSink("SinkId1", "fake/identifier004", 1.0, "PhysicalEntityReference2")
-        .addMediator("MediatorId1", "fake/identifier005", 1.0, "PhysicalEntityReference3");
+            .setPhysicalProperty("opb/OPB_00592")
+            .addSource("source_0", "fake/identifier003", 1.0, "species_metaid0")
+            .addSource("source_1", "fake/identifier006", 2.0, "species_metaid1")
+            .addSink("sink_0", "fake/identifier004", 1.0, "species_metaid3")
+            .addMediator("mediator_0", "fake/identifier005", 1.0, "species_metaid4");
 
 
     semsim::Triples triples = process.toTriples();

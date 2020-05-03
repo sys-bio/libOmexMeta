@@ -7,7 +7,10 @@
 #include <utility>
 #include "semsim/SemSim.h"
 
-
+/*
+ * todo work on participant classes, are they doing what they should?
+ *  Does the resource argument need to be there? ? ?
+ */
 namespace semsim {
 
 
