@@ -12,6 +12,8 @@
 #include "semsim/Error.h"
 #include "semsim/SemsimUtils.h"
 
+// todo: Is laqrs a valid query language?
+
 namespace semsim {
 
     Query::Query(librdf_world *world, librdf_model *model, std::string query)
