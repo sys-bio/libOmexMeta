@@ -1,13 +1,4 @@
-# todo explore: https://stackoverflow.com/questions/16799164/compiling-a-library-redland-in-cygwin-using-gcc-and-using-the-output-in-visual/48428588#48428588
 cmake_minimum_required(VERSION 3.15)
-
-cmake_policy(SET CMP0003 NEW) # useless
-cmake_policy(SET CMP0028 NEW) # double-colon
-cmake_policy(SET CMP0042 NEW) # macos rpath
-cmake_policy(SET CMP0048 NEW) # can set project version
-cmake_policy(SET CMP0060 NEW) # useless
-cmake_policy(SET CMP0078 NEW) # used to set target name for swig
-cmake_policy(SET CMP0086 NEW) # pass -module flag to swig
 
 include(ExternalProject)
 
@@ -35,6 +26,7 @@ message(STATUS "CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}")
 if ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 endif ()
+
 
 # https://gitlab.kitware.com/cmake/cmake/issues/16589
 set(CMAKE_MACOSX_RPATH ON)
@@ -102,14 +94,65 @@ set(LIBRDF_LIB_DIR "${LIBRDF_INSTALL_PREFIX}/lib")
 # Superbuild magic
 #
 
+MESSAGE(STATUS "HAVE_DEPENDENCIES ${HAVE_DEPENDENCIES}")
+# empty variable for dep vars
+#include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/find-dependencies.cmake)
+#MESSAGE(STATUS "AFTER")
+
+SET(DEPENDENCIES "")
+# When user indicates they do not have the dependencies, we run the superbuild script
 if (NOT HAVE_DEPENDENCIES)
-message(STATUS "DOING SUPERBUILD")
+    message(STATUS HERE1)
+    # start the libsemsim-superbuild project
     project(libsemsim-superbuild)
+
+    # Build dependencies
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/superbuild.cmake)
+
+    # find libraries and include paths
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/find-dependencies.cmake)
+
+    #enable us to treat these as targets for dependencies
+    add_custom_target(raptor)
+    add_custom_target(rasqal)
+    add_custom_target(librdf)
+
+    # we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
+    ExternalProject_Add(libsemsim
+            DEPENDS zlib libsbml-dependencies zipper libsbml libCombine raptor rasqal librdf
+            SOURCE_DIR ${PROJECT_SOURCE_DIR}
+            CMAKE_ARGS -DHAVE_DEPENDENCIES=TRUE
+            BINARY_DIR ${CMAKE_BINARY_DIR}
+            )
     return() # stop after processing superbuild.cmake
 else ()
-message(STATUS "BUILDING LIBSEMSIM")
+    message(STATUS HERE2)
     project(libsemsim LANGUAGES CXX VERSION 0.1.1)
+    # find the dependencies
+
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/superbuild.cmake)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/find-dependencies.cmake)
+    #    message(STATUS ${DEPENDENCIES})
+    foreach (dep ${DEPENDENCIES})
+        if (NOT ${dep}_FOUND)
+            #if dependency not found, we turn HAVE_DEPENDENCIES to false
+            set(HAVE_DEPENDENCIES FALSE)
+            break()
+        endif ()
+    endforeach ()
+
+    # if a mistake was made and we detect missing dependencies, we turn off the
+    #  HAVE_DEPENDENCIES flag and build them
+    if (NOT ${HAVE_DEPENDENCIES})
+        # we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
+        ExternalProject_Add(libsemsim
+                DEPENDS zlib libsbml-dependencies zipper libsbml libCombine raptor rasqal librdf
+                SOURCE_DIR ${PROJECT_SOURCE_DIR}
+                CMAKE_ARGS -DHAVE_DEPENDENCIES=FALSE
+                BINARY_DIR ${CMAKE_BINARY_DIR}
+                )
+    endif ()
+    return()
 endif ()
 
 
@@ -121,7 +164,6 @@ add_subdirectory(semsim)
 enable_testing()
 add_subdirectory(tests)
 add_subdirectory(${GOOGLETEST_SOURCE})
-
 
 
 message(STATUS "
