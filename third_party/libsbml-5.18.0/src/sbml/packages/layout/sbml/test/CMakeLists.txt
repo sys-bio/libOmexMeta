@@ -1,4 +1,4 @@
-## @file    CMakeLists.txt
+## @file    superbuild.cmake
 ## @brief   CMake build script
 ## @author  Frank T. Bergmann
 ##

@@ -39,7 +39,7 @@ skip_dirs    = ['math-legacy', 'compress', 'test', '.deps', '.libs',
                 'test-data', 'subdir']
 
 skip_files   = ['extensiontypes.h', 'libsbml_wrap.h', 'libsbml_wrap-win.h',
-                'dirent.h', 'CMakeLists.txt', 'README.txt', 'extern.h',
+                'dirent.h', 'superbuild.cmake', 'README.txt', 'extern.h',
                 'common-documentation.h', 'common-sbmlerror-codes.h']
 
 skip_classes = ['is', 'endl', 'flush']
