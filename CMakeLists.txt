@@ -21,9 +21,6 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "-std=c++14")
 
-set(AUTOGEN_INSTALL_CMD "sudo apt install -y automake autotools-dev autoconf libtool gtk-doc-tools")
-execute_process(COMMAND ${AUTOGEN_INSTALL_CMD})
-
 add_compile_definitions(SEMSIM_INTERNAL_BUILD)
 message(STATUS "CMAKE_CXX_STANDARD ${CMAKE_CXX_STANDARD}")
 message(STATUS "CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}")
@@ -35,7 +32,7 @@ endif ()
 # https://gitlab.kitware.com/cmake/cmake/issues/16589
 set(CMAKE_MACOSX_RPATH ON)
 
-SET(THIRD_PARTY_DIR ${CMAKE_SOURCE_DIR}/third_party)
+SET(THIRD_PARTY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party)
 
 if (CYGWIN)
     set(CYG_ROOT C:/cygwin64 CACHE PATH "absolute path to cygwin root installation")
@@ -44,7 +41,7 @@ if (CYGWIN)
     set(CYG_INCLUDE_DIR ${CYG_ROOT}/usr/include)
 endif ()
 
-set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/INSTALL/${CMAKE_BUILD_TYPE}")
+set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/INSTALL/${CMAKE_BUILD_TYPE}/INSTALL/${CMAKE_BUILD_TYPE}")
 
 ##########################################################################
 # variables for building semsim dependencies
