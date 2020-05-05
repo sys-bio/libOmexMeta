@@ -111,7 +111,7 @@ set(PACKAGE_CONFIG_DIR "${CMAKE_INSTALL_LIBDIR}/cmake" CACHE PATH
 
 # PACKAGE_VERSION gets overridden by using other packages, so setting
 # the PROJECT_VERSION, which will be used when exporting targets in
-# src/superbuild.cmake
+# src/CMakeLists.txt
 set(PROJECT_VERSION ${PACKAGE_VERSION})
 
 if (WITH_DOXYGEN OR WITH_PYTHON)

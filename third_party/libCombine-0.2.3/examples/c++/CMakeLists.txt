@@ -1,4 +1,4 @@
-## @file    superbuild.cmake
+## @file    CMakeLists.txt
 ## @brief   CMake build script for C++ example programs
 ## @author  Frank T. Bergmann
 ##
