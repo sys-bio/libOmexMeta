@@ -1,0 +1,86 @@
+@echo off
+Setlocal EnableDelayedExpansion
+SET BASE_DIR=%~dp0
+SET NINJA=ninja -j 1
+SET VS_VERSION=12
+SET VS_PREFIX=vs%VS_VERSION%
+SET VS=%ProgramFiles(x86)%\Microsoft Visual Studio %VS_VERSION%.0\VC
+SET VSDIR=%VS%\bin
+call "%VS%\vcvarsall.bat" x86
+SET NINJA_OPTS=-DCMAKE_CXX_COMPILER:FILEPATH="%VSDIR%\cl.exe" -DCMAKE_C_COMPILER:FILEPATH="%VSDIR%\cl.exe" -DCMAKE_LINKER:FILEPATH="%VSDIR%\link.exe" 
+
+if not exist %BASE_DIR%\dist mkdir %BASE_DIR%\dist
+
+:: 
+:: Build release static runtime version
+:: 
+
+SET WITH_STATIC_RUNTIME=ON
+SET CMAKE_BUILD_TYPE=Release
+SET VARIANT=%VS_PREFIX%_release_x86_static
+SET CMAKE_OPTS=-DCMAKE_BUILD_TYPE:STRING=%CMAKE_BUILD_TYPE% -DBUILD_SHARED_LIBS:BOOL=OFF -DWITH_STATIC_RUNTIME:BOOL=%WITH_STATIC_RUNTIME% -DCMAKE_INSTALL_PREFIX=%BASE_DIR%\install_%VARIANT%
+
+mkdir %BASE_DIR%\%VARIANT%
+pushd %BASE_DIR%\%VARIANT%
+cmake -G "Ninja" %NINJA_OPTS% %CMAKE_OPTS% %* %BASE_DIR% 
+%NINJA%
+%NINJA% install
+cpack -G ZIP
+move "libSBML Dependencies-1.0.0-b1-win32.zip" %BASE_DIR%\dist\libSBML_dependencies_%VARIANT%.zip
+popd
+
+:: 
+:: Build release dynamic runtime version
+:: 
+
+SET WITH_STATIC_RUNTIME=OFF
+SET CMAKE_BUILD_TYPE=Release
+SET VARIANT=%VS_PREFIX%_release_x86
+SET CMAKE_OPTS=-DCMAKE_BUILD_TYPE:STRING=%CMAKE_BUILD_TYPE% -DBUILD_SHARED_LIBS:BOOL=OFF -DWITH_STATIC_RUNTIME:BOOL=%WITH_STATIC_RUNTIME% -DCMAKE_INSTALL_PREFIX=%BASE_DIR%\install_%VARIANT%
+
+mkdir %BASE_DIR%\%VARIANT%
+pushd %BASE_DIR%\%VARIANT%
+cmake -G "Ninja" %NINJA_OPTS% %CMAKE_OPTS% %* %BASE_DIR% 
+%NINJA%
+%NINJA% install
+cpack -G ZIP
+move "libSBML Dependencies-1.0.0-b1-win32.zip" %BASE_DIR%\dist\libSBML_dependencies_%VARIANT%.zip
+popd
+
+
+:: 
+:: Build debug static runtime version
+:: 
+
+SET WITH_STATIC_RUNTIME=ON
+SET CMAKE_BUILD_TYPE=Debug
+SET VARIANT=%VS_PREFIX%_debug_x86_static
+SET CMAKE_OPTS=-DCMAKE_BUILD_TYPE:STRING=%CMAKE_BUILD_TYPE% -DBUILD_SHARED_LIBS:BOOL=OFF -DWITH_STATIC_RUNTIME:BOOL=%WITH_STATIC_RUNTIME% -DCMAKE_INSTALL_PREFIX=%BASE_DIR%\install_%VARIANT%
+
+mkdir %BASE_DIR%\%VARIANT%
+pushd %BASE_DIR%\%VARIANT%
+cmake -G "Ninja" %NINJA_OPTS% %CMAKE_OPTS% %* %BASE_DIR% 
+%NINJA%
+%NINJA% install
+cpack -G ZIP
+move "libSBML Dependencies-1.0.0-b1-win32.zip" %BASE_DIR%\dist\libSBML_dependencies_%VARIANT%.zip
+popd
+
+:: 
+:: Build debug dynamic runtime version
+:: 
+
+SET WITH_STATIC_RUNTIME=OFF
+SET CMAKE_BUILD_TYPE=Debug
+SET VARIANT=%VS_PREFIX%_debug_x86
+SET CMAKE_OPTS=-DCMAKE_BUILD_TYPE:STRING=%CMAKE_BUILD_TYPE% -DBUILD_SHARED_LIBS:BOOL=OFF -DWITH_STATIC_RUNTIME:BOOL=%WITH_STATIC_RUNTIME% -DCMAKE_INSTALL_PREFIX=%BASE_DIR%\install_%VARIANT%
+
+mkdir %BASE_DIR%\%VARIANT%
+pushd %BASE_DIR%\%VARIANT%
+cmake -G "Ninja" %NINJA_OPTS% %CMAKE_OPTS% %* %BASE_DIR% 
+%NINJA%
+%NINJA% install
+cpack -G ZIP
+move "libSBML Dependencies-1.0.0-b1-win32.zip" %BASE_DIR%\dist\libSBML_dependencies_%VARIANT%.zip
+popd
+

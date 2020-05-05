@@ -1,0 +1,27 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "description": "Set of dependencies for compiling libSBML",
+  "name": "libSBML-dependencies",
+  "codeRepository": "https://github.com/sbmlteam/libSBML-dependencies",
+  "issueTracker": "https://github.com/sbmlteam/libSBML-dependencies/issues",
+  "license": "https://github.com/sbmlteam/libSBML-dependencies/blob/master/COPYING.txt",
+  "version": "0.0.0",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Frank",
+      "familyName": "Bergmann",
+      "affiliation": "University of Heidelberg",
+      "email": "frank.thomas.bergmann@gmail.com",
+      "@id": "https://orcid.org/0000-0001-5553-4702"
+    }],
+  "developmentStatus": "active",
+  "downloadUrl": "https://github.com/sbmlteam/libSBML-dependencies/archive/master.zip",
+  "keywords": [
+    "software",
+    "libSBML",
+    "SBML"
+  ],
+  "maintainer": "https://orcid.org/0000-0001-5553-4702",
+}
