@@ -33,7 +33,6 @@ set(SEMSIM_LIBRARY semsim)
 
 if (HAVE_DEPENDENCIES)
 
-
     # static library
     add_library(${SEMSIM_STATIC_LIBRARY} STATIC ${SEMSIM_SOURCES})
 
