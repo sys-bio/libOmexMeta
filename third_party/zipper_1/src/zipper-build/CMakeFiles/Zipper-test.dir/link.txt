@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -O3 -DNDEBUG  -Wl,--enable-auto-import CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.o CMakeFiles/Zipper-test.dir/test/main.cpp.o CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.o  -o Zipper-test.exe -Wl,--out-implib,libZipper-test.dll.a -Wl,--major-image-version,0,--minor-image-version,0 libZipper-static.a -lz 
