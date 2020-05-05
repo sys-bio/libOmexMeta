@@ -106,48 +106,24 @@ if (NOT HAVE_DEPENDENCIES)
 message(STATUS "DOING SUPERBUILD")
     project(libsemsim-superbuild)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/superbuild.cmake)
-    return() # stop after processing superbuild.cmake
-else ()
-message(STATUS "BUILDING LIBSEMSIM")
-    project(libsemsim LANGUAGES CXX VERSION 0.1.1)
-endif ()
 
+    add_custom_target(raptor)
+    add_custom_target(rasqal)
+    add_custom_target(librdf)
 
-#############################################
-# add semsim and tests
+    # we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
+    ExternalProject_Add(libsemsim
+            DEPENDS zlib libsbml-dependencies zipper libsbml libCombine raptor rasqal librdf
+            SOURCE_DIR ${PROJECT_SOURCE_DIR}
+            CMAKE_ARGS -DHAVE_DEPENDENCIES=TRUE
+            BINARY_DIR ${CMAKE_BINARY_DIR}
+            )
 
-add_subdirectory(semsim)
+    message(STATUS "
+    ###################################################################
+    #   Paths
+    #
 
-enable_testing()
-add_subdirectory(tests)
-add_subdirectory(${GOOGLETEST_SOURCE})
-
-
-
-message(STATUS "
-#-------------------------------------------------------------------------------
-#Configuration Summary
-#-------------------------------------------------------------------------------
-    Configured on host $ENV{COMPUTERNAME} ${HOSTNAME}
-        host OS                   ${CMAKE_SYSTEM_NAME}
-        host architecture         ${CMAKE_SYSTEM_PROCESSOR}
-    General flags:
-        CC                        ${CMAKE_C_COMPILER}
-        CXX                       ${CMAKE_CXX_COMPILER}
-        CPPFLAGS                  ${BUILD_DEFINITIONS}
-        CFLAGS                    ${CMAKE_C_FLAGS}
-        CXXFLAGS                  ${CMAKE_CXX_FLAGS}
-        LDFLAGS                   ${CMAKE_EXE_LINKER_FLAGS}
-    Installation prefix:        ${CMAKE_INSTALL_PREFIX}
-    Options:
-        SBML support              ${ENABLE_SBML_SUPPORT}
-        CellML suppert            ${ENABLE_CELLML_SUPPORT}
-        Tests (requires Catch)    ${ENABLE_TESTS}
-        Python bindings           ${BUILD_PYTHON}
-        Python interpreter        ${Python_EXECUTABLE}
-        Python include directory  ${PYTHON_INCLUDE_PATH}
-        Generate documentation    ${BUILD_DOCS}
-    Paths:
         Cygwin specific paths
             CYG_ROOT              ${CYG_ROOT}
             CYG_LIB_DIR           ${CYG_LIB_DIR}
@@ -188,4 +164,47 @@ message(STATUS "
                 REDLAND_STATIC_LIBRARY          ${REDLAND_STATIC_LIBRARY}
         googletest
             GOOGLETEST_SOURCE                  ${GOOGLETEST_SOURCE}
+    ")
+    return() # stop after processing superbuild.cmake
+else ()
+message(STATUS "BUILDING LIBSEMSIM")
+    project(libsemsim LANGUAGES CXX VERSION 0.1.1)
+    set(HAVE_DEPENDENCIES TRUE)
+endif ()
+
+
+#############################################
+# add semsim and tests
+
+add_subdirectory(semsim)
+
+enable_testing()
+add_subdirectory(tests)
+add_subdirectory(${GOOGLETEST_SOURCE})
+
+
+
+message(STATUS "
+#-------------------------------------------------------------------------------
+#Configuration Summary
+#-------------------------------------------------------------------------------
+    Configured on host $ENV{COMPUTERNAME} ${HOSTNAME}
+        host OS                   ${CMAKE_SYSTEM_NAME}
+        host architecture         ${CMAKE_SYSTEM_PROCESSOR}
+    General flags:
+        CC                        ${CMAKE_C_COMPILER}
+        CXX                       ${CMAKE_CXX_COMPILER}
+        CPPFLAGS                  ${BUILD_DEFINITIONS}
+        CFLAGS                    ${CMAKE_C_FLAGS}
+        CXXFLAGS                  ${CMAKE_CXX_FLAGS}
+        LDFLAGS                   ${CMAKE_EXE_LINKER_FLAGS}
+    Installation prefix:        ${CMAKE_INSTALL_PREFIX}
+    Options:
+        SBML support              ${ENABLE_SBML_SUPPORT}
+        CellML suppert            ${ENABLE_CELLML_SUPPORT}
+        Tests (requires Catch)    ${ENABLE_TESTS}
+        Python bindings           ${BUILD_PYTHON}
+        Python interpreter        ${Python_EXECUTABLE}
+        Python include directory  ${PYTHON_INCLUDE_PATH}
+        Generate documentation    ${BUILD_DOCS}
     ")
