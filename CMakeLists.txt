@@ -1,14 +1,6 @@
 # todo explore: https://stackoverflow.com/questions/16799164/compiling-a-library-redland-in-cygwin-using-gcc-and-using-the-output-in-visual/48428588#48428588
 cmake_minimum_required(VERSION 3.15)
 
-cmake_policy(SET CMP0003 NEW) # useless
-cmake_policy(SET CMP0028 NEW) # double-colon
-cmake_policy(SET CMP0042 NEW) # macos rpath
-cmake_policy(SET CMP0048 NEW) # can set project version
-cmake_policy(SET CMP0060 NEW) # useless
-cmake_policy(SET CMP0078 NEW) # used to set target name for swig
-cmake_policy(SET CMP0086 NEW) # pass -module flag to swig
-
 include(ExternalProject)
 
 set(HAVE_DEPENDENCIES FALSE CACHE BOOL "Automate dependency manegment")
