@@ -21,6 +21,9 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "-std=c++14")
 
+set(AUTOGEN_INSTALL_CMD "sudo apt install -y automake autotools-dev autoconf libtool gtk-doc-tools")
+execute_process(COMMAND ${AUTOGEN_INSTALL_CMD})
+
 add_compile_definitions(SEMSIM_INTERNAL_BUILD)
 message(STATUS "CMAKE_CXX_STANDARD ${CMAKE_CXX_STANDARD}")
 message(STATUS "CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}")
@@ -76,43 +79,25 @@ set(LIBCOMBINE_BINARY_DIR ${LIBCOMBINE_SOURCE_DIR}/build)
 set(LIBCOMBINE_INSTALL_PREFIX ${LIBCOMBINE_SOURCE_DIR}/INSTALL)
 set(LIBCOMBINE_LIB_DIR "${LIBCOMBINE_INSTALL_PREFIX}/lib")
 
-set(CURLCPP_SOURCE_DIR ${THIRD_PARTY_DIRS}/curlcpp-1.2)
-set(CURLCPP_BINARY_DIR ${CURLCPP_SOURCE_DIR}/build)
-set(CURLCPP_INSTALL_PREFIX ${CURLCPP_SOURCE_DIR}/INSTALL)
-set(CURLCPP_LIB_DIR "${CURLCPP_SOURCE_DIR}/lib")
+set(RAPTOR_SOURCE_DIR ${THIRD_PARTY_DIRS}/raptor2-2.0.15)
+set(RAPTOR_BINARY_DIR ${RAPTOR_SOURCE_DIR}/build)
+set(RAPTOR_INSTALL_PREFIX ${RAPTOR_SOURCE_DIR}/install_dir)
+set(RAPTOR_LIB_DIR "${RAPTOR_INSTALL_PREFIX}/lib")
+
+set(RASQAL_SOURCE_DIR ${THIRD_PARTY_DIRS}/rasqal-0.9.33)
+set(RASQAL_BINARY_DIR ${RASQAL_SOURCE_DIR}/build)
+set(RASQAL_INSTALL_PREFIX ${RASQAL_SOURCE_DIR}/install_dir)
+set(RASQAL_LIB_DIR "${RASQAL_INSTALL_PREFIX}/lib")
+
+set(LIBRDF_SOURCE_DIR ${THIRD_PARTY_DIRS}/redland-1.0.17)
+set(LIBRDF_BINARY_DIR ${LIBRDF_SOURCE_DIR}/build)
+set(LIBRDF_INSTALL_PREFIX ${LIBRDF_SOURCE_DIR}/install_dir)
+set(LIBRDF_LIB_DIR "${LIBRDF_INSTALL_PREFIX}/lib")
+
 
 #######################################################################
 #   Build third party libs
 #
-
-## build curlcpp
-#ExternalProject_Add(curlcpp
-#        SOURCE_DIR ${CURLCPP_SOURCE_DIR}
-#        BINARY_DIR ${CURLCPP_BINARY_DIR}
-#        CMAKE_ARGS
-#        -DCMAKE_INSTALL_PREFIX=${CURLCPP_INSTALL_PREFIX}
-#        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-#        )
-#
-#find_library(CURLCPP_STATIC_LIB
-#        NAMES curl-static.a libcurl-static.a
-#        PATHS ${CURL_INSTALL_PREFIX}/lib
-#        )
-#find_path(CURLCPP_INCLUDE_DIR
-#        NAMES curl_easy.h
-#        PATHS ${CURL_INSTALL_PREFIX}/include
-#        )
-#ADD_SUBDIRECTORY(${THIRD_PARTY_DIRS}/curlcpp-1.2) # Change `ext/curlcpp` to a directory according to your setup
-#INCLUDE_DIRECTORIES(${CURLCPP_SOURCE_DIR}/include)
-#
-# build libsbml-dependencies, which itself has no dependencies
-ExternalProject_Add(libsbml-dependencies
-        SOURCE_DIR ${LIBSBML_DEPS_SOURCE_DIR}
-        BINARY_DIR ${LIBSBML_DEPS_BINARY_DIR}
-        CMAKE_ARGS
-        -DCMAKE_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
-        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-        )
 
 # build zlib
 ExternalProject_Add(zlib
@@ -120,6 +105,15 @@ ExternalProject_Add(zlib
         BINARY_DIR ${ZLIB_BUILD_DIR}
         CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=${ZLIB_INSTALL_PREFIX}
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        )
+
+# build libsbml-dependencies, which itself has no dependencies
+ExternalProject_Add(libsbml-dependencies
+        SOURCE_DIR ${LIBSBML_DEPS_SOURCE_DIR}
+        BINARY_DIR ${LIBSBML_DEPS_BINARY_DIR}
+        CMAKE_ARGS
+        -DCMAKE_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         )
 
@@ -190,10 +184,6 @@ ExternalProject_Add(libsbml
         -DCMAKE_INSTALL_PREFIX=${LIBSBML_INSTALL_PREFIX}
         -WITH_LIBXML=ON
         -DENABLE_LAYOUT=ON
-        #todo despite there being logic for handling the libsbml namespace
-        #   it looks as though there is a namespace clash between libsbml::model
-        #   and libsemsim::model when namespaces for libsbml are set to OFF.
-        #todo Double check the truth of this and rectify.
         -DWITH_CPP_NAMESPACE=ON
         -DLIBSBML_DEPENDENCY_DIR=${LIBSBML_DEPS_INSTALL_PREFIX}
         -DLIBSBML_SKIP_SHARED_LIBRARY=OFF
@@ -242,12 +232,35 @@ find_path(LIBCOMBINE_INCLUDE_DIR
 # get redland libraries for linking
 #
 
-set(REDLAND_ROOT "/mnt/d/redland" CACHE PATH "A directory containing the redland libraries, raptor2, rasqal and redland")
+#set(REDLAND_ROOT "/mnt/d/redland" CACHE PATH "A directory containing the redland libraries, raptor2, rasqal and redland")
+#
+#set(RAPTOR2_INSTALL_PREFIX ${REDLAND_ROOT}/raptor2-2.0.15/install.linux)
+#set(RASQAL_INSTALL_PREFIX ${REDLAND_ROOT}/rasqal-0.9.33/install)
+#set(REDLAND_INSTALL_PREFIX ${REDLAND_ROOT}/redland-1.0.17/install)
 
-set(RAPTOR2_INSTALL_PREFIX ${REDLAND_ROOT}/raptor2-2.0.15/install.linux)
-set(RASQAL_INSTALL_PREFIX ${REDLAND_ROOT}/rasqal-0.9.33/install)
-set(REDLAND_INSTALL_PREFIX ${REDLAND_ROOT}/redland-1.0.17/install)
 
+# build raptor
+#file(MAKE_DIRECTORY ${RAPTOR_INSTALL_PREFIX})
+#file(MAKE_DIRECTORY ${RASQAL_INSTALL_PREFIX})
+#file(MAKE_DIRECTORY ${LIBRDF_INSTALL_PREFIX})
+#set(prefix "${RAPTOR_INSTALL_PREFIX}")
+#ExternalProject_Add(raptor
+#        SOURCE_DIR ${RAPTOR_SOURCE_DIR}
+#        BINARY_DIR ${RAPTOR_BINARY_DIR}
+#        MKDIR ${RAPTOR_INSTALL_PREFIX}
+#
+#        USES_TERMINAL_CONFIGURE 1
+#        USES_TERMINAL_BUILD 1
+#        USES_TERMINAL_INSTALL 1
+#        CONFIGURE_COMMAND "${RAPTOR_SOURCE_DIR}/autogen.sh" "--prefix=${RAPTOR_INSTALL_PREFIX}"
+#        BUILD_COMMAND "make"
+#        INSTALL_COMMAND "make install"
+#        )
+#ExternalProject_Add_Step(raptor
+#        CONFIGURE_
+#        COMMAND "${RAPTOR_SOURCE_DIR}/autogen.sh" "--prefix=${RAPTOR_INSTALL_PREFIX}"
+#        USES_TERMINAL 1
+#        )
 
 # raptor2
 find_library(RAPTOR2_STATIC_LIBRARY
@@ -262,6 +275,17 @@ find_path(RAPTOR2_INCLUDE_DIR
         /usr/local/include/raptor2
         )
 
+
+# build rasqal
+#ExternalProject_Add(rasqal
+#        SOURCE_DIR ${RASQAL_SOURCE_DIR}
+#        BINARY_DIR ${RASQAL_BINARY_DIR}
+#        DEPENDS raptor
+#        CONFIGURE_COMMAND "${RASQAL_SOURCE_DIR}/autogen.sh --prefix=${RASQAL_INSTALL_PREFIX}"
+#        BUILD_COMMAND "make"
+#        INSTALL_COMMAND "make install"
+#        )
+
 # rasqal
 find_library(RASQAL_STATIC_LIBRARY
         NAMES librasqal.a rasqal.a
@@ -273,9 +297,18 @@ find_path(RASQAL_INCLUDE_DIR
         NAMES rasqal.h
         PATHS ${RASQAL_INSTALL_PREFIX}/include/rasqal
         /usr/local/include/rasqal
-        NO_DEFAULT_PATH
         )
 
+
+## build librdf
+#ExternalProject_Add(librdf
+#        SOURCE_DIR ${LIBRDF_SOURCE_DIR}
+#        BINARY_DIR ${LIBRDF_BINARY_DIR}
+#        CONFIGURE_COMMAND "${LIBRDF_SOURCE_DIR}/autogen.sh --prefix=${LIBRDF_INSTALL_PREFIX}"
+#        DEPENDS raptor rasqal
+#        BUILD_COMMAND "make"
+#        INSTALL_COMMAND "make install"
+#        )
 # redland api
 find_library(REDLAND_STATIC_LIBRARY
         NAMES librdf.a rdf.a
@@ -299,6 +332,7 @@ add_subdirectory(semsim)
 enable_testing()
 add_subdirectory(tests)
 add_subdirectory(${GOOGLETEST_SOURCE})
+
 
 #####################################################
 # Python stuff: written by previous developer
