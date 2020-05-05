@@ -1,15 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
 
+
 include(ExternalProject)
 
-set(HAVE_DEPENDENCIES FALSE CACHE BOOL "Automate dependency manegment")
-MESSAGE(STATUS "HAVE_DEPENDENCIES ${HAVE_DEPENDENCIES}")
-SET(BUILD_TESTS ON CACHE BOOL "build the tests")
-
-# When we don't have dependencies we can't build the tests
-if (BUILD_TESTS AND NOT HAVE_DEPENDENCIES)
-    set(BUILD_TESTS OFF)
-endif ()
 
 # modules
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
@@ -90,10 +83,12 @@ set(LIBRDF_BINARY_DIR ${LIBRDF_SOURCE_DIR}/build)
 set(LIBRDF_INSTALL_PREFIX ${LIBRDF_SOURCE_DIR}/install_dir)
 set(LIBRDF_LIB_DIR "${LIBRDF_INSTALL_PREFIX}/lib")
 
-#################################################################
-# Superbuild magic
+
+#######################################################################
+#   Build third party libs
 #
 
+<<<<<<< HEAD
 MESSAGE(STATUS "HAVE_DEPENDENCIES ${HAVE_DEPENDENCIES}")
 # empty variable for dep vars
 #include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/find-dependencies.cmake)
@@ -154,6 +149,231 @@ else ()
     endif ()
     return()
 endif ()
+=======
+# build zlib
+ExternalProject_Add(zlib
+        SOURCE_DIR ${ZLIB_SOURCE_DIR}
+        BINARY_DIR ${ZLIB_BUILD_DIR}
+        CMAKE_ARGS
+        -DCMAKE_INSTALL_PREFIX=${ZLIB_INSTALL_PREFIX}
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        )
+
+# build libsbml-dependencies, which itself has no dependencies
+ExternalProject_Add(libsbml-dependencies
+        SOURCE_DIR ${LIBSBML_DEPS_SOURCE_DIR}
+        BINARY_DIR ${LIBSBML_DEPS_BINARY_DIR}
+        CMAKE_ARGS
+        -DCMAKE_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        )
+
+
+# find zlib to give to zipper which depends on it
+find_library(ZLIB_STATIC_LIBRARY
+        NAMES libz.a z.a zlib.a libzlib.a zlib.dll libzlib.dll
+        PATHS ${ZLIB_INSTALL_PREFIX}/lib
+        REQUIRED
+        )
+
+find_path(ZLIB_INCLUDE_DIR
+        NAMES zlib.h
+        PATHS ${ZLIB_INSTALL_PREFIX}/include
+        REQUIRED
+        )
+
+# build zipper
+ExternalProject_Add(zipper
+        SOURCE_DIR ${ZIPPER_SOURCE_DIR}
+        BINARY_DIR ${ZIPPER_BINARY_DIR}
+        #        DEPENDS zlib
+        CMAKE_ARGS
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        -DCMAKE_INSTALL_PREFIX=${ZIPPER_INSTALL_PREFIX}
+        -DLIBSBML_DEPS_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
+        -DZLIB_LIBRARY=${ZLIB_STATIC_LIBRARY}
+        -DZLIB_INCLUDE_DIR=${ZLIB_INCLUDE_DIR}
+        )
+
+# find zipper lib and include dirs
+find_library(ZIPPER_STATIC_LIBRARY
+        NAMES libZipper-static.a libZipper-static
+        PATHS ${ZIPPER_INSTALL_PREFIX}/lib
+        )
+find_path(ZIPPER_INCLUDE_DIR
+        NAMES zipper/zipper.h
+        PATHS ${ZIPPER_INSTALL_PREFIX}/include
+        )
+
+# find bz library and include dirs
+find_library(LIBBZ_STATIC_LIBRARY
+        NAMES libbz2.a
+        PATHS ${LIBSBML_DEPS_LIB_DIR}
+        )
+find_path(LIBBZ_INCLUDE_DIR
+        NAMES bzip2/bzlib.h
+        PATHS ${LIBSBML_DEPS_INCLUDE_DIR}
+        )
+
+# get libxml2 libraries
+find_library(LIBXML2_STATIC_LIBRARY
+        NAMES libxml2.a
+        )
+
+find_path(LIBXML2_INCLUDE_DIR
+        NAMES libxml/parser.h
+        PATHS /usr/local/include/libxml2
+        )
+
+# build libsbml
+ExternalProject_Add(libsbml
+        SOURCE_DIR ${LIBSBML_SOURCE_DIR}
+        BINARY_DIR ${LIBSBML_BINARY_DIR}
+        DEPENDS libsbml-dependencies
+        CMAKE_ARGS
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        -DCMAKE_INSTALL_PREFIX=${LIBSBML_INSTALL_PREFIX}
+        -WITH_LIBXML=ON
+        -DENABLE_LAYOUT=ON
+        -DWITH_CPP_NAMESPACE=ON
+        -DLIBSBML_DEPENDENCY_DIR=${LIBSBML_DEPS_INSTALL_PREFIX}
+        -DLIBSBML_SKIP_SHARED_LIBRARY=OFF
+        )
+
+# find the libsbml library and include dire
+find_library(LIBSBML_STATIC_LIBRARY
+        NAMES libsbml-static.a libsbml-static.lib
+        PATHS ${LIBSBML_INSTALL_PREFIX}/lib
+        REQUIRED
+        )
+
+find_path(LIBSBML_INCLUDE_DIR
+        NAMES sbml/SBMLTypes.h
+        PATHS ${LIBSBML_INSTALL_PREFIX}/include
+        REQUIRED
+        )
+
+# build libcombine
+ExternalProject_Add(libCombine
+        SOURCE_DIR ${LIBCOMBINE_SOURCE_DIR}
+        BINARY_DIR ${LIBCOMBINE_BINARY_DIR}
+        DEPENDS
+        zipper libsbml
+        LIST_SEPARATOR | # for EXTRA_LIBS argument
+        CMAKE_ARGS
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        -DCMAKE_INSTALL_PREFIX=${LIBCOMBINE_INSTALL_PREFIX}
+        -DLIBSBML_LIBRARY=${LIBSBML_STATIC_LIBRARY}
+        -DLIBSBML_INCLUDE_DIR=${LIBSBML_INCLUDE_DIR}
+        -DZIPPER_INCLUDE_DIR=${ZIPPER_INCLUDE_DIR}
+        -DZIPPER_LIBRARY=${ZIPPER_STATIC_LIBRARY}
+        -DEXTRA_LIBS=xml2|bz2|z|iconv #linux only, will need to change for windows
+        )
+
+find_library(LIBCOMBINE_STATIC_LIB
+        NAMES libcombine-static.a
+        PATHS ${LIBCOMBINE_INSTALL_PREFIX}/lib
+        )
+find_path(LIBCOMBINE_INCLUDE_DIR
+        NAMES combine/combinearchive.h
+        PATHS ${LIBCOMBINE_INSTALL_PREFIX}/include
+        )
+
+##################################################
+# get redland libraries for linking
+#
+
+#set(REDLAND_ROOT "/mnt/d/redland" CACHE PATH "A directory containing the redland libraries, raptor2, rasqal and redland")
+#
+#set(RAPTOR2_INSTALL_PREFIX ${REDLAND_ROOT}/raptor2-2.0.15/install.linux)
+#set(RASQAL_INSTALL_PREFIX ${REDLAND_ROOT}/rasqal-0.9.33/install)
+#set(REDLAND_INSTALL_PREFIX ${REDLAND_ROOT}/redland-1.0.17/install)
+
+
+# build raptor
+#file(MAKE_DIRECTORY ${RAPTOR_INSTALL_PREFIX})
+#file(MAKE_DIRECTORY ${RASQAL_INSTALL_PREFIX})
+#file(MAKE_DIRECTORY ${LIBRDF_INSTALL_PREFIX})
+#set(prefix "${RAPTOR_INSTALL_PREFIX}")
+#ExternalProject_Add(raptor
+#        SOURCE_DIR ${RAPTOR_SOURCE_DIR}
+#        BINARY_DIR ${RAPTOR_BINARY_DIR}
+#        MKDIR ${RAPTOR_INSTALL_PREFIX}
+#
+#        USES_TERMINAL_CONFIGURE 1
+#        USES_TERMINAL_BUILD 1
+#        USES_TERMINAL_INSTALL 1
+#        CONFIGURE_COMMAND "${RAPTOR_SOURCE_DIR}/autogen.sh" "--prefix=${RAPTOR_INSTALL_PREFIX}"
+#        BUILD_COMMAND "make"
+#        INSTALL_COMMAND "make install"
+#        )
+#ExternalProject_Add_Step(raptor
+#        CONFIGURE_
+#        COMMAND "${RAPTOR_SOURCE_DIR}/autogen.sh" "--prefix=${RAPTOR_INSTALL_PREFIX}"
+#        USES_TERMINAL 1
+#        )
+
+# raptor2
+find_library(RAPTOR2_STATIC_LIBRARY
+        NAMES libraptor2.a raptor2.a
+        PATHS ${RAPTOR2_INSTALL_PREFIX}/lib
+        /usr/local/lib
+        )
+
+find_path(RAPTOR2_INCLUDE_DIR
+        NAMES raptor2.h
+        PATHS ${RAPTOR2_INSTALL_PREFIX}/include/raptor2
+        /usr/local/include/raptor2
+        )
+
+
+# build rasqal
+#ExternalProject_Add(rasqal
+#        SOURCE_DIR ${RASQAL_SOURCE_DIR}
+#        BINARY_DIR ${RASQAL_BINARY_DIR}
+#        DEPENDS raptor
+#        CONFIGURE_COMMAND "${RASQAL_SOURCE_DIR}/autogen.sh --prefix=${RASQAL_INSTALL_PREFIX}"
+#        BUILD_COMMAND "make"
+#        INSTALL_COMMAND "make install"
+#        )
+
+# rasqal
+find_library(RASQAL_STATIC_LIBRARY
+        NAMES librasqal.a rasqal.a
+        PATHS ${RASQAL_INSTALL_PREFIX}/lib
+        /usr/local/lib
+        )
+
+find_path(RASQAL_INCLUDE_DIR
+        NAMES rasqal.h
+        PATHS ${RASQAL_INSTALL_PREFIX}/include/rasqal
+        /usr/local/include/rasqal
+        )
+
+
+## build librdf
+#ExternalProject_Add(librdf
+#        SOURCE_DIR ${LIBRDF_SOURCE_DIR}
+#        BINARY_DIR ${LIBRDF_BINARY_DIR}
+#        CONFIGURE_COMMAND "${LIBRDF_SOURCE_DIR}/autogen.sh --prefix=${LIBRDF_INSTALL_PREFIX}"
+#        DEPENDS raptor rasqal
+#        BUILD_COMMAND "make"
+#        INSTALL_COMMAND "make install"
+#        )
+# redland api
+find_library(REDLAND_STATIC_LIBRARY
+        NAMES librdf.a rdf.a
+        PATHS ${REDLAND_INSTALL_PREFIX}/lib
+        /usr/local/lib
+
+        )
+
+find_path(REDLAND_INCLUDE_DIR
+        NAMES librdf.h
+        PATHS ${REDLAND_INSTALL_PREFIX}/include
+        /usr/local/include
+        )
+>>>>>>> parent of 1a75db6... first proper build with linux superbuid
 
 
 #############################################
@@ -166,6 +386,99 @@ add_subdirectory(tests)
 add_subdirectory(${GOOGLETEST_SOURCE})
 
 
+<<<<<<< HEAD
+=======
+#####################################################
+# Python stuff: written by previous developer
+# Unused by me, leave commented out for now
+
+##find_package(SWIG)
+##find_package(Python COMPONENTS Interpreter Development)
+### check the Python version
+##if (Python_VERSION_MAJOR EQUAL 3 AND Python_VERSION_MINOR LESS 4)
+##    message(SEND_ERROR "Supported Python versions are 2.7 and >= 3.4. You have ${Python_VERSION}.")
+##elseif (Python_VERSION_MAJOR EQUAL 2 AND Python_VERSION_MINOR LESS 7)
+##    message(SEND_ERROR "Supported Python versions are 2.7 and >= 3.4. You have ${Python_VERSION}.")
+##elseif (Python_VERSION_MAJOR EQUAL 1)
+##    message(SEND_ERROR "Supported Python versions are 2.7 and >= 3.4. You have ${Python_VERSION}.")
+##endif ()
+##
+##find_package(Doxygen)
+##
+### consider using https://cpp-netlib.org/ if networking is required (also handles URIs)
+### otherwise consider adding https://github.com/uriparser/uriparser for uri handling
+##
+### build options (some defaults are automatically configured)
+##set(ENABLE_STATIC_LIB TRUE CACHE BOOL "Build static libraries?")
+##set(ENABLE_SHARED_LIB TRUE CACHE BOOL "Build shared libraries?")
+##option(ENABLE_SBML_SUPPORT "Enable support for SBML models" ${libSBML_FOUND})
+##option(ENABLE_CELLML_SUPPORT "Enable support for CellML models" ${LIBCELLML_FOUND})
+##option(ENABLE_TESTS "Enable tests" ${Catch2_FOUND})
+##option(BUILD_DOCS "Build the documentation (requires Doxygen)" ${Doxygen_FOUND})
+##option(ENABLE_EXAMPLES "Build example programs" ON)
+### bindings
+##if (${SWIG_FOUND} AND ${PYTHON_FOUND})
+##    option(BUILD_PYTHON "Build Python SWIG module" ON)
+##else ()
+##    option(BUILD_PYTHON "Build Python SWIG module" OFF)
+##endif ()
+#
+## diagnostics
+##get_target_property(LIBCOMBINE_LIBS libCombine-static LOCATION)
+##get_target_property(LIBCOMBINE_INCLUDE_DIRS libCombine-static INTERFACE_INCLUDE_DIRECTORIES)
+##
+##if (cellml_FOUND)
+##    get_target_property(LIBCELLML_LIBS cellml LOCATION)
+##    get_target_property(LIBCELLML_INCLUDE_DIRS cellml INTERFACE_INCLUDE_DIRECTORIES)
+##else ()
+##    set(LIBCELLML_LIBS "")
+##    set(LIBCELLML_INCLUDE_DIRS "")
+##endif ()
+##
+##if (Catch2_FOUND)
+##    get_target_property(CATCH2_INCLUDE_DIRS Catch2::Catch2 INTERFACE_INCLUDE_DIRECTORIES)
+##else ()
+##    set(CATCH2_INCLUDE_DIRS "")
+##endif ()
+#
+#find_package(LibXml2 )
+#
+
+
+## Recurse into subdirectories for each wrapper language if specified
+##if (BUILD_PYTHON)
+##    if (NOT (${SEMSIM_CXX_STANDARD} EQUAL 11))
+##        message(SEND_ERROR "Python bindings require C++11 to be used")
+##    endif ()
+##    if (Python_FOUND)
+##        include_directories(${PYTHON_INCLUDE_PATH})
+##        add_subdirectory(swig/python)
+##    else ()
+##        message(SEND_ERROR "BUILD_PYTHON is enabled but a suitable Python runtime environment was not found")
+##    endif ()
+##endif ()
+##
+##if (BUILD_DOCS)
+##    if (Doxygen_FOUND)
+##        add_subdirectory(docs)
+##    else ()
+##        message(SEND_ERROR "BUILD_DOCS was specified but Doxygen was not found")
+##    endif ()
+##endif ()
+##
+##if (ENABLE_TESTS)
+##    include(CTest)
+##    enable_testing()
+##    add_subdirectory(tests)
+##endif ()
+##
+##if (ENABLE_EXAMPLES)
+##    add_subdirectory(examples)
+##endif ()
+##
+
+
+>>>>>>> parent of 1a75db6... first proper build with linux superbuid
 message(STATUS "
 #-------------------------------------------------------------------------------
 #Configuration Summary
