@@ -64,8 +64,8 @@ if (NOT HAVE_DEPENDENCIES)
     add_custom_target(rasqal)
     add_custom_target(librdf)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/superbuild.cmake)
-
     return() # stop after processing superbuild.cmake
+
 else ()
     message(STATUS "BUILDING LIBSEMSIM")
     project(libsemsim LANGUAGES CXX VERSION 0.1.5)
@@ -84,9 +84,7 @@ endif ()
 
 #############################################
 # add semsim and tests
-#if (HAVE_DEPENDENCIES)
-#
-#endif (HAVE_DEPENDENCIES)
+
 
 
 message(STATUS "
