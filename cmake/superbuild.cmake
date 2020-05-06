@@ -26,7 +26,6 @@ ExternalProject_Add(libsbml-dependencies
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         )
 
-LookForDependencies()
 # build zipper
 ExternalProject_Add(zipper
         SOURCE_DIR ${ZIPPER_SOURCE_DIR}
@@ -58,7 +57,28 @@ ExternalProject_Add(libsbml
         -DLIBSBML_SKIP_SHARED_LIBRARY=ON
         )
 
+
+    message(STATUS "LIBSBML_INSTALL_PREFIX ${LIBSBML_INSTALL_PREFIX}")
+    # find the libsbml library and include dire
+    find_library(LIBSBML_STATIC_LIBRARY
+            NAMES libsbml-static.a libsbml-static.lib
+            PATHS ${LIBSBML_INSTALL_PREFIX}/lib
+            REQUIRED
+            )
+
+    message(STATUS "LIBSBML_STATIC_LIBRARY ${LIBSBML_STATIC_LIBRARY}")
+    find_path(LIBSBML_INCLUDE_DIR
+            NAMES sbml/SBMLTypes.h
+            PATHS ${LIBSBML_INSTALL_PREFIX}/include
+            REQUIRED
+            )
+    message(STATUS "LIBSBML_INCLUDE_DIR ${LIBSBML_INCLUDE_DIR}")
+
+
 LookForDependencies()
+message(STATUS "LIBSBML_STATIC_LIBRARY ${LIBSBML_STATIC_LIBRARY}")
+message(STATUS "LIBSBML_INCLUDE_DIR ${LIBSBML_INCLUDE_DIR}")
+
 # build libcombine
 ExternalProject_Add(libCombine
         SOURCE_DIR ${LIBCOMBINE_SOURCE_DIR}
@@ -75,6 +95,7 @@ ExternalProject_Add(libCombine
         -DZIPPER_LIBRARY=${ZIPPER_STATIC_LIBRARY}
         -DEXTRA_LIBS=xml2|bz2|z|iconv #linux only, will need to change for windows
         )
+add_dependencies(libCombine libsbml)
 
 LookForDependencies()
 

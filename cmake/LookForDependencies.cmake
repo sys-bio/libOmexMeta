@@ -46,7 +46,7 @@ function(LookForDependencies)
             PATHS /usr/local/include/libxml2
             )
 
-
+    message(STATUS "LIBSBML_INSTALL_PREFIX ${LIBSBML_INSTALL_PREFIX}")
     # find the libsbml library and include dire
     find_library(LIBSBML_STATIC_LIBRARY
             NAMES libsbml-static.a libsbml-static.lib
@@ -54,11 +54,13 @@ function(LookForDependencies)
             REQUIRED
             )
 
+    message(STATUS "LIBSBML_STATIC_LIBRARY ${LIBSBML_STATIC_LIBRARY}")
     find_path(LIBSBML_INCLUDE_DIR
             NAMES sbml/SBMLTypes.h
             PATHS ${LIBSBML_INSTALL_PREFIX}/include
             REQUIRED
             )
+    message(STATUS "LIBSBML_INCLUDE_DIR ${LIBSBML_INCLUDE_DIR}")
 
 
     find_library(LIBCOMBINE_STATIC_LIB
