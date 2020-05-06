@@ -1,8 +1,0 @@
-import os
-
-modpath=__path__[0]
-os.environ['PATH'] = os.path.join(modpath,'semsim:')+os.environ['PATH']
-
-from .semsim import *
-
-__version__ = '@PROJECT_VERSION@'
