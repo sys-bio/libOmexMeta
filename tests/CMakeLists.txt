@@ -67,7 +67,9 @@ target_include_directories(semsim-tests PRIVATE
 add_dependencies(semsim-tests
         semsim-static
         )
-
+install(TARGETS semsim-tests
+    DESTINATION ${CMAKE_INSTALL_PREFIX}
+    )
 
 
 

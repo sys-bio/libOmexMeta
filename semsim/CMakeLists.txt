@@ -77,7 +77,6 @@ target_link_libraries(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so libraries
         ${RAPTOR2_LIBRARY}
         ${LIBXML2_STATIC_LIBRARY}
         dl bz2 z curl xslt
-
         )
 
 
@@ -110,7 +109,8 @@ target_link_libraries(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so libraries
 #        dl bz2 z curl xslt
 #        )
 
-install(TARGETS ${LIBSEMSIM_STATIC_LIBRARY}
+message(STATUS "Installing to ${CMAKE_INSTALL_PREFIX}")
+install(TARGETS semsim-static
     DESTINATION ${CMAKE_INSTALL_PREFIX}
     )
 
