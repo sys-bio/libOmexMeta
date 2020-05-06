@@ -1,31 +1,58 @@
 message(STATUS "inside semsim cmakelists")
 
 set(SEMSIM_SOURCES
-        CurlGet.cpp CurlGet.h
-        RDFNode.cpp RDFNode.h
-        Subject.h Subject.cpp
-        Predicate.h Predicate.cpp
-        Resource.cpp Resource.h
-        Triple.h Triple.cpp
-        SemsimUtils.cpp SemsimUtils.h
-        MetaID.cpp MetaID.h
-        XmlAssistant.cpp XmlAssistant.h
-        Reader.h Reader.cpp
-        Editor.h Editor.cpp
-        Writer.h Writer.cpp
-        RDF.cpp RDF.h
-        SemSim.h
-        Participant.cpp Participant.h
-        PhysicalEntity.cpp PhysicalEntity.h
-        PhysicalPhenomenon.cpp PhysicalPhenomenon.h
-        PhysicalProcess.cpp PhysicalProcess.h
-        PhysicalPropertyResource.cpp PhysicalPropertyResource.h
-        AnnotationType.h
-        PhysicalForce.cpp PhysicalForce.h
-        Query.cpp Query.h
-        SemsimCombineArchive.cpp SemsimCombineArchive.h
+        "CurlGet.cpp"
+        "RDFNode.cpp"
+        "Subject.cpp"
+        "Predicate.cpp"
+        "Resource.cpp"
+        "Triple.cpp"
+        "SemsimUtils.cpp"
+        "MetaID.cpp"
+        "XmlAssistant.cpp"
+        "Reader.cpp"
+        "Editor.cpp"
+        "Writer.cpp"
+        "RDF.cpp"
+        "Participant.cpp"
+        "PhysicalEntity.cpp"
+        "PhysicalPhenomenon.cpp"
+        "PhysicalProcess.cpp"
+        "PhysicalPropertyResource.cpp"
+        "PhysicalForce.cpp"
+        "Query.cpp"
+        "SemsimCombineArchive.cpp"
+        "Triples.cpp"
+        )
 
-        Triples.cpp Triples.h)
+set(SEMSIM_HEADERS
+        "CurlGet.h"
+        "RDFNode.h"
+        "Subject.h"
+        "Predicate.h"
+        "Resource.h"
+        "Triple.h"
+        "SemsimUtils.h"
+        "MetaID.h"
+        "XmlAssistant.h"
+        "Reader.h"
+        "Editor.h"
+        "Writer.h"
+        "RDF.h"
+        "SemSim.h"
+        "Participant.h"
+        "PhysicalEntity.h"
+        "PhysicalPhenomenon.h"
+        "PhysicalProcess.h"
+        "PhysicalPropertyResource.h"
+        "AnnotationType.h"
+        "PhysicalForce.h"
+        "Query.h"
+        "SemsimCombineArchive.h"
+        "Triples.h"
+        )
+
+message(STATUS "SEMSIM_HEADERS ${SEMSIM_HEADERS}")
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
@@ -34,18 +61,10 @@ set(SEMSIM_LIBRARY semsim)
 
 
 # static library
-add_library(${SEMSIM_STATIC_LIBRARY} STATIC ${SEMSIM_SOURCES})
+add_library(${SEMSIM_STATIC_LIBRARY} STATIC ${SEMSIM_HEADERS} ${SEMSIM_SOURCES})
 
-# shared library
-#add_library(${SEMSIM_LIBRARY} SHARED ${SEMSIM_SOURCES})
-#if (UNIX)
-#    MESSAGE(STATUS "LINUX strS")
-#fPIC for linux shared library strs
-#    set_property(TARGET ${SEMSIM_LIBRARY} PROPERTY POSITION_INDEPENDENT_CODE ON)
-#endif ()
-
-
-list(APPEND LIBRARIES ${SEMSIM_STATIC_LIBRARY} ${SEMSIM_LIBRARY})
+# add target headers so they install correctly
+set_target_properties(semsim-static PROPERTIES PUBLIC_HEADER "${SEMSIM_HEADERS}")
 
 
 target_include_directories(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so include dirs propagate into test binaries
@@ -80,6 +99,31 @@ target_link_libraries(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so libraries
         )
 
 
+message(STATUS "Installing to ${CMAKE_INSTALL_PREFIX}")
+install(TARGETS semsim-static
+        EXPORT semsim-static.a
+        LIBRARY
+        DESTINATION lib
+        PUBLIC_HEADER DESTINATION include
+
+        )
+
+#    add_dependencies(semsim-static
+#            libsbml
+#            libCombine
+#            zipper
+#            libsbml-dependencies
+#            )
+
+# shared library
+#add_library(${SEMSIM_LIBRARY} SHARED ${SEMSIM_SOURCES})
+#if (UNIX)
+#    MESSAGE(STATUS "LINUX strS")
+#fPIC for linux shared library strs
+#    set_property(TARGET ${SEMSIM_LIBRARY} PROPERTY POSITION_INDEPENDENT_CODE ON)
+#endif ()
+
+
 #target_include_directories(${SEMSIM_LIBRARY} PUBLIC # make public so include dirs propagate into test binaries
 #        ${CMAKE_SOURCE_DIR}
 #        ${CYG_INCLUDE_DIR}
@@ -108,15 +152,3 @@ target_link_libraries(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so libraries
 #        ${REDLAND_LIBRARY}
 #        dl bz2 z curl xslt
 #        )
-
-message(STATUS "Installing to ${CMAKE_INSTALL_PREFIX}")
-install(TARGETS semsim-static
-    DESTINATION ${CMAKE_INSTALL_PREFIX}
-    )
-
-#    add_dependencies(semsim-static
-#            libsbml
-#            libCombine
-#            zipper
-#            libsbml-dependencies
-#            )
