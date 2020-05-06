@@ -41,6 +41,8 @@ MESSAGE(STATUS "HAVE_DEPENDENCIES ${HAVE_DEPENDENCIES}")
 # tests
 SET(BUILD_TESTS OFF CACHE BOOL "build the tests")
 
+SET(N 8 CACHE INT "number of cores to use for build. Passed onto -j for make")
+
 # When we don't have dependencies we can't build the tests
 if (BUILD_TESTS AND NOT HAVE_DEPENDENCIES)
     set(BUILD_TESTS OFF)
