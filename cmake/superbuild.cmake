@@ -61,7 +61,6 @@ find_path(ZIPPER_INCLUDE_DIR
         )
 
 
-
 # find bz library and include dirs
 find_library(LIBBZ_STATIC_LIBRARY
         NAMES libbz2.a
@@ -81,8 +80,6 @@ find_path(LIBXML2_INCLUDE_DIR
         NAMES libxml/parser.h
         PATHS /usr/local/include/libxml2
         )
-
-
 
 
 # build libsbml
@@ -130,9 +127,6 @@ ExternalProject_Add(libCombine
         -DZIPPER_LIBRARY=${ZIPPER_STATIC_LIBRARY}
         -DEXTRA_LIBS=xml2|bz2|z|iconv #linux only, will need to change for windows
         )
-
-
-
 
 
 find_library(LIBCOMBINE_STATIC_LIB
@@ -183,7 +177,6 @@ find_path(REDLAND_INCLUDE_DIR
         /usr/local/include
         )
 
-
 SET(DEPENDENCIES
         ${ZLIB_STATIC_LIBRARY}
         ${ZLIB_INCLUDE_DIR}
@@ -205,6 +198,15 @@ SET(DEPENDENCIES
         ${REDLAND_INCLUDE_DIR}
         )
 
+# we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
+ExternalProject_Add(libsemsim
+        DEPENDS zlib libsbml-dependencies zipper libsbml libCombine raptor rasqal librdf
+        SOURCE_DIR ${CMAKE_SOURCE_DIR}
+        BINARY_DIR ${CMAKE_BINARY_DIR}
+        INSTALL_DIR ""
+        CMAKE_ARGS
+        -DHAVE_DEPENDENCIES=TRUE
+        )
 
 ##################################################
 # get redland libraries for linking
@@ -243,7 +245,6 @@ SET(DEPENDENCIES
 # raptor2
 
 
-
 # build rasqal
 #ExternalProject_Add(rasqal
 #        SOURCE_DIR ${RASQAL_SOURCE_DIR}
@@ -253,7 +254,6 @@ SET(DEPENDENCIES
 #        BUILD_COMMAND "make"
 #        INSTALL_COMMAND "make install"
 #        )
-
 
 
 ## build librdf

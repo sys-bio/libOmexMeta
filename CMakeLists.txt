@@ -1,19 +1,69 @@
 # todo explore: https://stackoverflow.com/questions/16799164/compiling-a-library-redland-in-cygwin-using-gcc-and-using-the-output-in-visual/48428588#48428588
 cmake_minimum_required(VERSION 3.15)
 
-cmake_policy(SET CMP0003 NEW) # useless
-cmake_policy(SET CMP0028 NEW) # double-colon
-cmake_policy(SET CMP0042 NEW) # macos rpath
-cmake_policy(SET CMP0048 NEW) # can set project version
-cmake_policy(SET CMP0060 NEW) # useless
-cmake_policy(SET CMP0078 NEW) # used to set target name for swig
-cmake_policy(SET CMP0086 NEW) # pass -module flag to swig
+#cmake_policy(SET CMP0003 NEW) # useless
+#cmake_policy(SET CMP0028 NEW) # double-colon
+#cmake_policy(SET CMP0042 NEW) # macos rpath
+#cmake_policy(SET CMP0048 NEW) # can set project version
+#cmake_policy(SET CMP0060 NEW) # useless
+#cmake_policy(SET CMP0078 NEW) # used to set target name for swig
+#cmake_policy(SET CMP0086 NEW) # pass -module flag to swig
+
+function(PrintOutPaths)
+
+    message(STATUS "
+    ###################################################################
+    #   Library and Include Directory Summary
+    #
+    Cygwin specific paths
+        CYG_ROOT              ${CYG_ROOT}
+        CYG_LIB_DIR           ${CYG_LIB_DIR}
+        CYG_BIN_DIR           ${CYG_BIN_DIR}
+        CYG_INCLUDE_DIR       ${CYG_INCLUDE_DIR}
+    libsbml dependencies
+        LIBSBML_DEPS_INCLUDE_DIR           ${LIBSBML_DEPS_INCLUDE_DIR}
+        LIBSBML_DEPS_LIB_DIR               ${LIBSBML_DEPS_LIB_DIR}
+    bzlib
+        LIBBZ_INCLUDE_DIR                  ${LIBBZ_INCLUDE_DIR}
+        LIBBZ_STATIC_LIBRARY               ${LIBBZ_STATIC_LIBRARY}
+    zlib
+        ZLIB_INCLUDE_DIR                   ${ZLIB_INCLUDE_DIR}
+        ZLIB_STATIC_LIBRARY                ${ZLIB_STATIC_LIBRARY}
+    zipper
+        ZIPPER_INCLUDE_DIR                 ${ZIPPER_INCLUDE_DIR}
+        ZIPPER_STATIC_LIBRARY              ${ZIPPER_STATIC_LIBRARY}
+    libxml2
+        LIBXML2_INCLUDE_DIR                ${LIBXML2_INCLUDE_DIR}
+        LIBXML2_STATIC_LIBRARY             ${LIBXML2_STATIC_LIBRARY}
+    libsbml
+        LIBSBML_INCLUDE_DIR                ${LIBSBML_INCLUDE_DIR}
+        LIBSBML_STATIC_LIBRARY             ${LIBSBML_STATIC_LIBRARY}
+    libcombine
+        LIBCOMBINE_INCLUDE_DIR             ${LIBCOMBINE_INCLUDE_DIR}
+        LIBCOMBINE_LIBRARY                 ${LIBCOMBINE_LIBRARY}
+        LIBCOMBINE_STATIC_LIB              ${LIBCOMBINE_STATIC_LIB}
+    Redland libraries
+        REDLAND_ROOT                       ${REDLAND_ROOT}
+        raptor
+            RAPTOR2_INCLUDE_DIR            ${RAPTOR2_INCLUDE_DIR}
+            RAPTOR2_STATIC_LIBRARY         ${RAPTOR2_STATIC_LIBRARY}
+        rasqal
+            RASQAL_INCLUDE_DIR             ${RASQAL_INCLUDE_DIR}
+            RASQAL_STATIC_LIBRARY          ${RASQAL_STATIC_LIBRARY}
+        librdf
+            REDLAND_INCLUDE_DIR             ${REDLAND_INCLUDE_DIR}
+            REDLAND_STATIC_LIBRARY          ${REDLAND_STATIC_LIBRARY}
+    googletest
+        GOOGLETEST_SOURCE                  ${GOOGLETEST_SOURCE}
+    ")
+    endfunction()
 
 include(ExternalProject)
 
+
 set(HAVE_DEPENDENCIES FALSE CACHE BOOL "Automate dependency manegment")
 MESSAGE(STATUS "HAVE_DEPENDENCIES ${HAVE_DEPENDENCIES}")
-SET(BUILD_TESTS ON CACHE BOOL "build the tests")
+SET(BUILD_TESTS OFF CACHE BOOL "build the tests")
 
 # When we don't have dependencies we can't build the tests
 if (BUILD_TESTS AND NOT HAVE_DEPENDENCIES)
@@ -48,7 +98,7 @@ if (CYGWIN)
     set(CYG_INCLUDE_DIR ${CYG_ROOT}/usr/include)
 endif ()
 
-set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/INSTALL/${CMAKE_BUILD_TYPE}/INSTALL/${CMAKE_BUILD_TYPE}")
+set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/INSTALL/${CMAKE_BUILD_TYPE}")
 
 ##########################################################################
 # variables for building semsim dependencies
@@ -103,85 +153,33 @@ set(LIBRDF_LIB_DIR "${LIBRDF_INSTALL_PREFIX}/lib")
 #
 
 if (NOT HAVE_DEPENDENCIES)
-message(STATUS "DOING SUPERBUILD")
     project(libsemsim-superbuild)
-    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/superbuild.cmake)
 
+    PrintOutPaths()
     add_custom_target(raptor)
     add_custom_target(rasqal)
     add_custom_target(librdf)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/superbuild.cmake)
 
-    # we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
-    ExternalProject_Add(libsemsim
-            DEPENDS zlib libsbml-dependencies zipper libsbml libCombine raptor rasqal librdf
-            SOURCE_DIR ${PROJECT_SOURCE_DIR}
-            CMAKE_ARGS -DHAVE_DEPENDENCIES=TRUE
-            BINARY_DIR ${CMAKE_BINARY_DIR}
-            )
-
-    message(STATUS "
-    ###################################################################
-    #   Paths
-    #
-
-        Cygwin specific paths
-            CYG_ROOT              ${CYG_ROOT}
-            CYG_LIB_DIR           ${CYG_LIB_DIR}
-            CYG_BIN_DIR           ${CYG_BIN_DIR}
-            CYG_INCLUDE_DIR       ${CYG_INCLUDE_DIR}
-        libsbml dependencies
-            LIBSBML_DEPS_INCLUDE_DIR           ${LIBSBML_DEPS_INCLUDE_DIR}
-            LIBSBML_DEPS_LIB_DIR               ${LIBSBML_DEPS_LIB_DIR}
-        bzlib
-            LIBBZ_INCLUDE_DIR                  ${LIBBZ_INCLUDE_DIR}
-            LIBBZ_STATIC_LIBRARY               ${LIBBZ_STATIC_LIBRARY}
-        zlib
-            ZLIB_INCLUDE_DIR                   ${ZLIB_INCLUDE_DIR}
-            ZLIB_STATIC_LIBRARY                ${ZLIB_STATIC_LIBRARY}
-        zipper
-            ZIPPER_INCLUDE_DIR                 ${ZIPPER_INCLUDE_DIR}
-            ZIPPER_STATIC_LIBRARY              ${ZIPPER_STATIC_LIBRARY}
-        libxml2
-            LIBXML2_INCLUDE_DIR                ${LIBXML2_INCLUDE_DIR}
-            LIBXML2_STATIC_LIBRARY             ${LIBXML2_STATIC_LIBRARY}
-        libsbml
-            LIBSBML_INCLUDE_DIR                ${LIBSBML_INCLUDE_DIR}
-            LIBSBML_STATIC_LIBRARY             ${LIBSBML_STATIC_LIBRARY}
-        libcombine
-            LIBCOMBINE_INCLUDE_DIR             ${LIBCOMBINE_INCLUDE_DIR}
-            LIBCOMBINE_LIBRARY                 ${LIBCOMBINE_LIBRARY}
-            LIBCOMBINE_STATIC_LIB              ${LIBCOMBINE_STATIC_LIB}
-        Redland libraries
-            REDLAND_ROOT                       ${REDLAND_ROOT}
-            raptor
-                RAPTOR2_INCLUDE_DIR            ${RAPTOR2_INCLUDE_DIR}
-                RAPTOR2_STATIC_LIBRARY         ${RAPTOR2_STATIC_LIBRARY}
-            rasqal
-                RASQAL_INCLUDE_DIR             ${RASQAL_INCLUDE_DIR}
-                RASQAL_STATIC_LIBRARY          ${RASQAL_STATIC_LIBRARY}
-            librdf
-                REDLAND_INCLUDE_DIR             ${REDLAND_INCLUDE_DIR}
-                REDLAND_STATIC_LIBRARY          ${REDLAND_STATIC_LIBRARY}
-        googletest
-            GOOGLETEST_SOURCE                  ${GOOGLETEST_SOURCE}
-    ")
     return() # stop after processing superbuild.cmake
 else ()
-message(STATUS "BUILDING LIBSEMSIM")
-    project(libsemsim LANGUAGES CXX VERSION 0.1.1)
-    set(HAVE_DEPENDENCIES TRUE)
+    message(STATUS "BUILDING LIBSEMSIM")
+    project(libsemsim LANGUAGES CXX VERSION 0.1.5)
+    PrintOutPaths()
+    add_subdirectory(semsim)
+    if (BUILD_TESTS)
+        enable_testing()
+        add_subdirectory(tests)
+        add_subdirectory(${GOOGLETEST_SOURCE})
+    endif (BUILD_TESTS)
 endif ()
 
 
 #############################################
 # add semsim and tests
-
-add_subdirectory(semsim)
-
-enable_testing()
-add_subdirectory(tests)
-add_subdirectory(${GOOGLETEST_SOURCE})
-
+#if (HAVE_DEPENDENCIES)
+#
+#endif (HAVE_DEPENDENCIES)
 
 
 message(STATUS "
@@ -198,7 +196,7 @@ message(STATUS "
         CFLAGS                    ${CMAKE_C_FLAGS}
         CXXFLAGS                  ${CMAKE_CXX_FLAGS}
         LDFLAGS                   ${CMAKE_EXE_LINKER_FLAGS}
-    Installation prefix:        ${CMAKE_INSTALL_PREFIX}
+    Installation prefix:          ${CMAKE_INSTALL_PREFIX}
     Options:
         SBML support              ${ENABLE_SBML_SUPPORT}
         CellML suppert            ${ENABLE_CELLML_SUPPORT}
