@@ -12,21 +12,6 @@ ExternalProject_Add(zlib
         -DCMAKE_INSTALL_PREFIX=${ZLIB_INSTALL_PREFIX}
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         )
-find_library(ZLIB_STATIC_LIBRARY
-        NAMES libz.a z.a zlib.a libzlib.a zlib.dll libzlib.dll
-        PATHS ${ZLIB_INSTALL_PREFIX}/lib
-        REQUIRED
-        )
-
-find_path(ZLIB_INCLUDE_DIR
-        NAMES zlib.h
-        PATHS ${ZLIB_INSTALL_PREFIX}/include
-        REQUIRED
-        )
-
-# Subsequent targets depend on paths found by LookForDependencies
-#  so we need to update after each subproject is built
-#LookForDependencies()
 
 # build libsbml-dependencies, which itself has no dependencies
 ExternalProject_Add(libsbml-dependencies
@@ -48,26 +33,6 @@ ExternalProject_Add(zipper
         -DLIBSBML_DEPS_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
         -DZLIB_LIBRARY=${ZLIB_STATIC_LIBRARY}
         -DZLIB_INCLUDE_DIR=${ZLIB_INCLUDE_DIR}
-        )
-
-# find zipper lib and include dirs
-find_library(ZIPPER_STATIC_LIBRARY
-        NAMES libZipper-static.a libZipper-static
-        PATHS ${ZIPPER_INSTALL_PREFIX}/lib
-        )
-find_path(ZIPPER_INCLUDE_DIR
-        NAMES zipper/zipper.h
-        PATHS ${ZIPPER_INSTALL_PREFIX}/include
-        )
-
-# find bz library and include dirs
-find_library(LIBBZ_STATIC_LIBRARY
-        NAMES libbz2.a
-        PATHS ${LIBSBML_DEPS_LIB_DIR}
-        )
-find_path(LIBBZ_INCLUDE_DIR
-        NAMES bzip2/bzlib.h
-        PATHS ${LIBSBML_DEPS_INCLUDE_DIR}
         )
 
 # get libxml2 libraries
@@ -96,23 +61,6 @@ ExternalProject_Add(libsbml
         )
 
 
-message(STATUS "LIBSBML_INSTALL_PREFIX ${LIBSBML_INSTALL_PREFIX}")
-# find the libsbml library and include dire
-find_library(LIBSBML_STATIC_LIBRARY
-        NAMES libsbml-static.a libsbml-static.lib
-        PATHS ${LIBSBML_INSTALL_PREFIX}/lib
-        REQUIRED
-        )
-
-message(STATUS "LIBSBML_STATIC_LIBRARY ${LIBSBML_STATIC_LIBRARY}")
-find_path(LIBSBML_INCLUDE_DIR
-        NAMES sbml/SBMLTypes.h
-        PATHS ${LIBSBML_INSTALL_PREFIX}/include
-        REQUIRED
-        )
-
-
-
 # build libcombine
 ExternalProject_Add(libCombine
         SOURCE_DIR ${LIBCOMBINE_SOURCE_DIR}
@@ -129,15 +77,7 @@ ExternalProject_Add(libCombine
         -DZIPPER_LIBRARY=${ZIPPER_STATIC_LIBRARY}
         -DEXTRA_LIBS=xml2|bz2|z|iconv #linux only, will need to change for windows
         )
-add_dependencies(libCombine libsbml)
-find_library(LIBCOMBINE_STATIC_LIB
-        NAMES libcombine-static.a
-        PATHS ${LIBCOMBINE_INSTALL_PREFIX}/lib
-        )
-find_path(LIBCOMBINE_INCLUDE_DIR
-        NAMES combine/combinearchive.h
-        PATHS ${LIBCOMBINE_INSTALL_PREFIX}/include
-        )
+
 
 # we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
 ExternalProject_Add(libsemsim
@@ -187,68 +127,3 @@ find_path(REDLAND_INCLUDE_DIR
         PATHS ${REDLAND_INSTALL_PREFIX}/include
         /usr/local/include
         )
-
-##################################################
-# get redland libraries for linking
-#
-
-#set(REDLAND_ROOT "/mnt/d/redland" CACHE PATH "A directory containing the redland libraries, raptor2, rasqal and redland")
-#
-#set(RAPTOR2_INSTALL_PREFIX ${REDLAND_ROOT}/raptor2-2.0.15/install.linux)
-#set(RASQAL_INSTALL_PREFIX ${REDLAND_ROOT}/rasqal-0.9.33/install)
-#set(REDLAND_INSTALL_PREFIX ${REDLAND_ROOT}/redland-1.0.17/install)
-
-
-# build raptor
-#file(MAKE_DIRECTORY ${RAPTOR_INSTALL_PREFIX})
-#file(MAKE_DIRECTORY ${RASQAL_INSTALL_PREFIX})
-#file(MAKE_DIRECTORY ${LIBRDF_INSTALL_PREFIX})
-#set(prefix "${RAPTOR_INSTALL_PREFIX}")
-#ExternalProject_Add(raptor
-#        SOURCE_DIR ${RAPTOR_SOURCE_DIR}
-#        BINARY_DIR ${RAPTOR_BINARY_DIR}
-#        MKDIR ${RAPTOR_INSTALL_PREFIX}
-#
-#        USES_TERMINAL_CONFIGURE 1
-#        USES_TERMINAL_BUILD 1
-#        USES_TERMINAL_INSTALL 1
-#        CONFIGURE_COMMAND "${RAPTOR_SOURCE_DIR}/autogen.sh" "--prefix=${RAPTOR_INSTALL_PREFIX}"
-#        BUILD_COMMAND "make"
-#        INSTALL_COMMAND "make install"
-#        )
-#ExternalProject_Add_Step(raptor
-#        CONFIGURE_
-#        COMMAND "${RAPTOR_SOURCE_DIR}/autogen.sh" "--prefix=${RAPTOR_INSTALL_PREFIX}"
-#        USES_TERMINAL 1
-#        )
-
-# raptor2
-
-
-# build rasqal
-#ExternalProject_Add(rasqal
-#        SOURCE_DIR ${RASQAL_SOURCE_DIR}
-#        BINARY_DIR ${RASQAL_BINARY_DIR}
-#        DEPENDS raptor
-#        CONFIGURE_COMMAND "${RASQAL_SOURCE_DIR}/autogen.sh --prefix=${RASQAL_INSTALL_PREFIX}"
-#        BUILD_COMMAND "make"
-#        INSTALL_COMMAND "make install"
-#        )
-
-
-## build librdf
-#ExternalProject_Add(librdf
-#        SOURCE_DIR ${LIBRDF_SOURCE_DIR}
-#        BINARY_DIR ${LIBRDF_BINARY_DIR}
-#        CONFIGURE_COMMAND "${LIBRDF_SOURCE_DIR}/autogen.sh --prefix=${LIBRDF_INSTALL_PREFIX}"
-#        DEPENDS raptor rasqal
-#        BUILD_COMMAND "make"
-#        INSTALL_COMMAND "make install"
-#        )
-# redland api
-
-
-###############################################################
-# Call to build the original project
-#
-
