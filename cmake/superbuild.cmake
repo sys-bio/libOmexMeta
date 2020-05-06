@@ -79,6 +79,7 @@ find_path(LIBXML2_INCLUDE_DIR
         NAMES libxml/parser.h
         PATHS /usr/local/include/libxml2
         )
+
 # build libsbml
 ExternalProject_Add(libsbml
         SOURCE_DIR ${LIBSBML_SOURCE_DIR}
