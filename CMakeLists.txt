@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.15)
 include(ExternalProject)
 
 # load a custom function for finding all the dependencies if they exist.
-include(${CMAKE_SOURCE_DIR}/cmake/LookForDependencies.cmake)
+set(FIND_DEPENDENCIES_PATH ${CMAKE_SOURCE_DIR}/cmake/LookForDependencies.cmake)
 
 # load a custom function for printing out found paths to console
 include(${CMAKE_SOURCE_DIR}/cmake/PrintOutPaths.cmake)
@@ -71,7 +71,7 @@ else ()
     project(libsemsim LANGUAGES CXX VERSION 0.1.5)
     set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/INSTALL/${CMAKE_BUILD_TYPE}")
     message(STATUS "CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}")
-    LookForDependencies()
+    include(${FIND_DEPENDENCIES_PATH})
     PrintOutPaths()
     add_subdirectory(semsim)
     if (BUILD_TESTS)
