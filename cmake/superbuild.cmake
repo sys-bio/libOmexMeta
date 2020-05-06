@@ -8,6 +8,7 @@ include(ExternalProject)
 ExternalProject_Add(zlib
         SOURCE_DIR ${ZLIB_SOURCE_DIR}
         BINARY_DIR ${ZLIB_BUILD_DIR}
+        BUILD_COMMAND make -j${N}
         CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=${ZLIB_INSTALL_PREFIX}
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
@@ -17,6 +18,7 @@ ExternalProject_Add(zlib
 ExternalProject_Add(libsbml-dependencies
         SOURCE_DIR ${LIBSBML_DEPS_SOURCE_DIR}
         BINARY_DIR ${LIBSBML_DEPS_BINARY_DIR}
+        BUILD_COMMAND make -j${N}
         CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
@@ -26,6 +28,7 @@ ExternalProject_Add(libsbml-dependencies
 ExternalProject_Add(zipper
         SOURCE_DIR ${ZIPPER_SOURCE_DIR}
         BINARY_DIR ${ZIPPER_BINARY_DIR}
+        BUILD_COMMAND make -j${N}
         DEPENDS zlib
         CMAKE_ARGS
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
@@ -50,6 +53,7 @@ ExternalProject_Add(libsbml
         SOURCE_DIR ${LIBSBML_SOURCE_DIR}
         BINARY_DIR ${LIBSBML_BINARY_DIR}
         DEPENDS libsbml-dependencies
+        BUILD_COMMAND make -j${N}
         CMAKE_ARGS
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_INSTALL_PREFIX=${LIBSBML_INSTALL_PREFIX}
@@ -65,6 +69,7 @@ ExternalProject_Add(libsbml
 ExternalProject_Add(libCombine
         SOURCE_DIR ${LIBCOMBINE_SOURCE_DIR}
         BINARY_DIR ${LIBCOMBINE_BINARY_DIR}
+        BUILD_COMMAND make -j${N}
         DEPENDS
         zipper libsbml
         LIST_SEPARATOR | # for EXTRA_LIBS argument
@@ -83,6 +88,7 @@ ExternalProject_Add(libCombine
 ExternalProject_Add(libsemsim
         DEPENDS zlib libsbml-dependencies zipper libsbml libCombine raptor rasqal librdf
         SOURCE_DIR ${CMAKE_SOURCE_DIR}
+        BUILD_COMMAND make -j${N}
         BINARY_DIR ${CMAKE_BINARY_DIR}
         INSTALL_DIR ""
         CMAKE_ARGS
