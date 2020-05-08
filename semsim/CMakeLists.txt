@@ -64,38 +64,16 @@ set(SEMSIM_LIBRARY semsim)
 add_library(${SEMSIM_STATIC_LIBRARY} STATIC ${SEMSIM_HEADERS} ${SEMSIM_SOURCES})
 
 # add target headers so they install correctly
-    set_target_properties(semsim-static PROPERTIES PUBLIC_HEADER "${SEMSIM_HEADERS}")
+set_target_properties(semsim-static PROPERTIES PUBLIC_HEADER "${SEMSIM_HEADERS}")
 
 
 target_include_directories(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so include dirs propagate into test binaries
-        ${CMAKE_SOURCE_DIR}
-        ${CYG_INCLUDE_DIR}
-
-        ${LIBXML2_INCLUDE_DIR}
-        ${LIBSBML_DEPS_INCLUDE_DIR}
-        ${LIBSBML_INCLUDE_DIR}
-        ${ZLIB_INCLUDE_DIR}
-        ${ZIPPER_INCLUDE_DIR}
-        ${LIBCOMBINE_INCLUDE_DIR}
-        ${LIBBZ_INCLUDE_DIR}
-
-        ${REDLAND_INCLUDE_DIR}
-        ${RASQAL_INCLUDE_DIR}
-        ${RAPTOR2_INCLUDE_DIR}
-
+        ${INCLUDE_DIRS}
         )
 
+
 target_link_libraries(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so libraries propagate into test binaries
-        ${LIBCOMBINE_STATIC_LIB}
-        ${ZIPPER_STATIC_LIBRARY}
-        ${ZLIB_STATIC_LIBRARY}
-        ${LIBSBML_STATIC_LIB}
-        ${LIBBZ_STATIC_LIBRARY}
-        ${REDLAND_LIBRARY}
-        ${RASQAL_LIBRARY}
-        ${RAPTOR2_LIBRARY}
-        ${LIBXML2_STATIC_LIBRARY}
-        dl bz2 z curl xslt
+        ${LINK_LIBRARIES}
         )
 
 
@@ -105,50 +83,36 @@ install(TARGETS semsim-static
         LIBRARY
         DESTINATION lib
         PUBLIC_HEADER DESTINATION include
-
         )
 
-#    add_dependencies(semsim-static
-#            libsbml
-#            libCombine
-#            zipper
-#            libsbml-dependencies
-#            )
 
-# shared library
-#add_library(${SEMSIM_LIBRARY} SHARED ${SEMSIM_SOURCES})
-#if (UNIX)
-#    MESSAGE(STATUS "LINUX strS")
-#fPIC for linux shared library strs
-#    set_property(TARGET ${SEMSIM_LIBRARY} PROPERTY POSITION_INDEPENDENT_CODE ON)
-#endif ()
+if (BUILD_SHARED)
+    set(BUILD_SHARED_LIBS ON)
+    set(CMAKE_VERBOSE_MAKEFILE ON)
+    # shared library
+    add_library(semsim SHARED "${SEMSIM_HEADERS}" "${SEMSIM_SOURCES}")
+
+    #    target_link_options(semsim PUBLIC -Wl,--whole-archive)
+    #
+    message(STATUS "LIBBZ_INCLUDE_DIR ${LIBBZ_INCLUDE_DIR}")
+    target_include_directories(semsim PUBLIC # make public so include dirs propagate into test binaries
+            ${INCLUDE_DIRS}
+            )
+
+    target_link_libraries(semsim PUBLIC # make public so libraries propagate into test binaries
+            z
+            ${LINK_LIBRARIES}
+
+            )
+    set(x)
+    get_target_property(x semsim LINK_LIBRARIES)
+
+    message(STATUS "xASDFASD ${x}")
+    install(TARGETS semsim
+            LIBRARY
+            DESTINATION lib
+            PUBLIC_HEADER DESTINATION include
+            )
 
 
-#target_include_directories(${SEMSIM_LIBRARY} PUBLIC # make public so include dirs propagate into test binaries
-#        ${CMAKE_SOURCE_DIR}
-#        ${CYG_INCLUDE_DIR}
-#
-#        ${LIBXML2_INCLUDE_DIR}
-#        ${LIBSBML_DEPS_INCLUDE_DIR}
-#        ${LIBSBML_INCLUDE_DIR}
-#        ${ZLIB_INCLUDE_DIR}
-#        ${ZIPPER_INCLUDE_DIR}
-#        ${LIBCOMBINE_INCLUDE_DIR}
-#        ${LIBBZ_INCLUDE_DIR}
-#        ${RAPTOR2_INCLUDE_DIR}
-#        ${RASQAL_INCLUDE_DIR}
-#        ${REDLAND_INCLUDE_DIR}
-#        )
-
-#target_link_libraries(${SEMSIM_LIBRARY} PUBLIC # make public so libraries propagate into test binaries
-#        ${LIBCOMBINE_STATIC_LIB}
-#        ${LIBXML2_STATIC_LIBRARY}
-#        ${LIBSBML_STATIC_LIBRARY}
-#        #        ${ZLIB_STATIC_LIBRARY}
-#        ${ZIPPER_STATIC_LIBRARY}
-#        #        ${LIBBZ_STATIC_LIBRARY}
-#        ${RAPTOR2_LIBRARY}
-#        ${RASQAL_LIBRARY}
-#        ${REDLAND_LIBRARY}
-#        dl bz2 z curl xslt
-#        )
+endif ()
