@@ -20,7 +20,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "-std=c++14")
 
 if ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fPIC")
 endif ()
 
 # https://gitlab.kitware.com/cmake/cmake/issues/16589
@@ -113,7 +113,7 @@ else ()
 
 
     set(INCLUDE_DIRS
-            "${CMAKE_SOURCE_DIR}"
+            "${CMAKE_SOURCE_DIR}/src"
             "${LIBXML2_INCLUDE_DIR}"
             "${LIBSBML_DEPS_INCLUDE_DIR}"
             "${LIBSBML_INCLUDE_DIR}"
@@ -160,7 +160,7 @@ else ()
 
 
     PrintOutPaths()
-    add_subdirectory(semsim)
+    add_subdirectory(src/semsim)
 
     if (BUILD_TESTS)
         enable_testing()

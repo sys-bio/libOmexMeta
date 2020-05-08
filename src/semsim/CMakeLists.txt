@@ -23,6 +23,7 @@ set(SEMSIM_SOURCES
         "Query.cpp"
         "SemsimCombineArchive.cpp"
         "Triples.cpp"
+        "SemsimCApi.cpp"
         )
 
 set(SEMSIM_HEADERS
@@ -50,6 +51,7 @@ set(SEMSIM_HEADERS
         "Query.h"
         "SemsimCombineArchive.h"
         "Triples.h"
+        "SemsimCApi.h"
         )
 
 message(STATUS "SEMSIM_HEADERS ${SEMSIM_HEADERS}")
@@ -112,6 +114,10 @@ if (BUILD_SHARED)
             LIBRARY
             DESTINATION lib
             PUBLIC_HEADER DESTINATION include
+            )
+    install(TARGETS semsim
+            LIBRARY
+            DESTINATION ${CMAKE_SOURCE_DIR}/src/pysemsim
             )
 
 

@@ -7,7 +7,7 @@
 
 
 #include <string>
-#include <third_party/libCombine-0.2.3/INSTALL/include/combine/combinearchive.h>
+#include "combine/combinearchive.h"
 #include "CurlGet.h"
 
 /*

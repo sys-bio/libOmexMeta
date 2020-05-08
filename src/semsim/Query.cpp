@@ -8,9 +8,9 @@
 #include <iostream>
 #include <utility>
 #include "librdf.h"
-#include "semsim/Error.h"
-#include "semsim/Error.h"
-#include "semsim/SemsimUtils.h"
+#include "Error.h"
+#include "Error.h"
+#include "SemsimUtils.h"
 
 // todo: Is laqrs a valid query language?
 

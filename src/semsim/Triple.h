@@ -7,9 +7,9 @@
 
 #include <ostream>
 #include "librdf.h"
-#include "semsim/Subject.h"
-#include "semsim/Predicate.h"
-#include "semsim/Resource.h"
+#include "Subject.h"
+#include "Predicate.h"
+#include "Resource.h"
 
 
 namespace semsim {

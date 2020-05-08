@@ -6,7 +6,7 @@
 #define LIBSEMGEN_TRIPLELIST_H
 
 #include <vector>
-#include "semsim/Triple.h"
+#include "Triple.h"
 
 namespace semsim {
     class TripleList {

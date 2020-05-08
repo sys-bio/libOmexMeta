@@ -5,7 +5,7 @@
 #ifndef LIBSEMGEN_PHYSICALENTITY_H
 #define LIBSEMGEN_PHYSICALENTITY_H
 
-#include <src/semsim/PhysicalPropertyResource.h>
+#include <semsim/PhysicalPropertyResource.h>
 #include "Resource.h"
 #include "Subject.h"
 #include "PhysicalPhenomenon.h"

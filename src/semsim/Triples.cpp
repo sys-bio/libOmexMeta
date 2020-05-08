@@ -1,9 +1,9 @@
 //
 // Created by Ciaran on 4/29/2020.
 //
-#include "semsim/Error.h"
-#include "semsim/Triples.h"
-#include "semsim/Writer.h"
+#include "Error.h"
+#include "Triples.h"
+#include "Writer.h"
 
 namespace semsim {
 

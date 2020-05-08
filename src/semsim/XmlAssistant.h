@@ -11,7 +11,7 @@
 #include <libxml/parser.h>
 #include <libxml/tree.h>
 #include <memory>
-#include "semsim/MetaID.h"
+#include "MetaID.h"
 
 namespace semsim {
     enum XmlAssistantType {
