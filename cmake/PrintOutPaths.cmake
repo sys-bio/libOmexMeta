@@ -9,8 +9,8 @@ function(PrintOutPaths)
         LIBSBML_DEPS_INCLUDE_DIR           ${LIBSBML_DEPS_INCLUDE_DIR}
         LIBSBML_DEPS_LIB_DIR               ${LIBSBML_DEPS_LIB_DIR}
     bzlib
-        LIBBZ_INCLUDE_DIR                  ${LIBBZ_INCLUDE_DIR}
-        LIBBZ_STATIC_LIBRARY               ${LIBBZ_STATIC_LIBRARY}
+        BZ2_INCLUDE_DIR                    ${BZ2_INCLUDE_DIR}
+        BZ2_STATIC_LIBRARY                 ${BZ2_STATIC_LIBRARY}
     zlib
         ZLIB_INCLUDE_DIR                   ${ZLIB_INCLUDE_DIR}
         ZLIB_STATIC_LIBRARY                ${ZLIB_STATIC_LIBRARY}
@@ -25,8 +25,7 @@ function(PrintOutPaths)
         LIBSBML_STATIC_LIBRARY             ${LIBSBML_STATIC_LIBRARY}
     libcombine
         LIBCOMBINE_INCLUDE_DIR             ${LIBCOMBINE_INCLUDE_DIR}
-        LIBCOMBINE_LIBRARY                 ${LIBCOMBINE_LIBRARY}
-        LIBCOMBINE_STATIC_LIB              ${LIBCOMBINE_STATIC_LIB}
+        LIBCOMBINE_STATIC_LIBRARY          ${LIBCOMBINE_STATIC_LIBRARY}
     Redland libraries
         REDLAND_ROOT                       ${REDLAND_ROOT}
         raptor

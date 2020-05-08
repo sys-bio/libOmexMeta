@@ -12,6 +12,7 @@ ExternalProject_Add(zlib
         CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=${ZLIB_INSTALL_PREFIX}
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         )
 
 # build libsbml-dependencies, which itself has no dependencies
@@ -20,6 +21,7 @@ ExternalProject_Add(libsbml-dependencies
         BINARY_DIR ${LIBSBML_DEPS_BINARY_DIR}
         BUILD_COMMAND make -j${N}
         CMAKE_ARGS
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DCMAKE_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         )
@@ -31,6 +33,7 @@ ExternalProject_Add(zipper
         BUILD_COMMAND make -j${N}
         DEPENDS zlib
         CMAKE_ARGS
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_INSTALL_PREFIX=${ZIPPER_INSTALL_PREFIX}
         -DLIBSBML_DEPS_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
@@ -38,15 +41,30 @@ ExternalProject_Add(zipper
         -DZLIB_INCLUDE_DIR=${ZLIB_INCLUDE_DIR}
         )
 
-# get libxml2 libraries
-find_library(LIBXML2_STATIC_LIBRARY
-        NAMES libxml2.a
+# build zipper
+ExternalProject_Add(libxml2
+        SOURCE_DIR ${LIBXML2_SOURCE_DIR}
+        BINARY_DIR ${LIBXML2_BINARY_DIR}
+        BUILD_COMMAND make -j${N}
+        CMAKE_ARGS
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        -DCMAKE_INSTALL_PREFIX=${LIBXML2_INSTALL_PREFIX}
+        -DBUILD_SHARED_LIBS=OFF
+        -DLIBXML2_WITH_PYTHON=OFF
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+
         )
 
-find_path(LIBXML2_INCLUDE_DIR
-        NAMES libxml/parser.h
-        PATHS /usr/local/include/libxml2
-        )
+## get libxml2 libraries
+#find_library(LIBXML2_STATIC_LIBRARY
+#        NAMES libxml2.a
+#        )
+#
+#find_path(LIBXML2_INCLUDE_DIR
+#        NAMES libxml/parser.h
+#        PATHS /usr/local/include/libxml2
+#        )
 
 # build libsbml
 ExternalProject_Add(libsbml
@@ -55,6 +73,7 @@ ExternalProject_Add(libsbml
         DEPENDS libsbml-dependencies
         BUILD_COMMAND make -j${N}
         CMAKE_ARGS
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_INSTALL_PREFIX=${LIBSBML_INSTALL_PREFIX}
         -WITH_LIBXML=ON
@@ -70,28 +89,31 @@ ExternalProject_Add(libCombine
         SOURCE_DIR ${LIBCOMBINE_SOURCE_DIR}
         BINARY_DIR ${LIBCOMBINE_BINARY_DIR}
         BUILD_COMMAND make -j${N}
-        DEPENDS
-        zipper libsbml
+        DEPENDS zipper libsbml libxml2
         LIST_SEPARATOR | # for EXTRA_LIBS argument
         CMAKE_ARGS
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_INSTALL_PREFIX=${LIBCOMBINE_INSTALL_PREFIX}
         -DLIBSBML_LIBRARY=${LIBSBML_STATIC_LIBRARY}
         -DLIBSBML_INCLUDE_DIR=${LIBSBML_INCLUDE_DIR}
         -DZIPPER_INCLUDE_DIR=${ZIPPER_INCLUDE_DIR}
         -DZIPPER_LIBRARY=${ZIPPER_STATIC_LIBRARY}
-        -DEXTRA_LIBS=xml2|bz2|z|iconv #linux only, will need to change for windows
+        -DEXTRA_LIBS=${LIBXML2_STATIC_LIBRARY}|${BZ2_STATIC_LIBRARY}|${ZLIB_STATIC_LIBRARY}|iconv|lzma #linux only, will need to change for windows
         )
 
 
 # we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
 ExternalProject_Add(libsemsim
-        DEPENDS zlib libsbml-dependencies zipper libsbml libCombine raptor rasqal librdf
+        DEPENDS zlib libsbml-dependencies zipper
+        libsbml libCombine raptor rasqal librdf
+        libxml2
         SOURCE_DIR ${CMAKE_SOURCE_DIR}
         BUILD_COMMAND make -j${N}
         BINARY_DIR ${CMAKE_BINARY_DIR}
         INSTALL_DIR ""
         CMAKE_ARGS
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DHAVE_DEPENDENCIES=TRUE
         )
 
