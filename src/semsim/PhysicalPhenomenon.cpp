@@ -2,9 +2,9 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#include "semsim/PhysicalPhenomenon.h"
-#include "semsim/MetaID.h"
-#include "semsim/Error.h"
+#include "PhysicalPhenomenon.h"
+#include "MetaID.h"
+#include "Error.h"
 #include "Query.h"
 
 namespace semsim {

@@ -6,7 +6,7 @@
 #include <cstring>
 #include <utility>
 #include "RDF.h"
-#include "semsim/SemSim.h"
+#include "SemSim.h"
 #include "Reader.h"
 #include "Query.h"
 

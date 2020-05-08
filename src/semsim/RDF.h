@@ -7,10 +7,10 @@
 
 #include <unordered_map>
 #include "librdf.h"
-#include "semsim/Writer.h"
-#include "semsim/Editor.h"
-#include "semsim/XmlAssistant.h"
-#include "semsim/Query.h"
+#include "Writer.h"
+#include "Editor.h"
+#include "XmlAssistant.h"
+#include "Query.h"
 
 namespace semsim {
 

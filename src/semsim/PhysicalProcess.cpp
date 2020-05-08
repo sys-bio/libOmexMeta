@@ -3,10 +3,10 @@
 //
 
 #include <vector>
-#include "semsim/PhysicalProcess.h"
-#include "semsim/Participant.h"
-#include "semsim/PhysicalPropertyResource.h"
-#include "semsim/PhysicalPhenomenon.h"
+#include "PhysicalProcess.h"
+#include "Participant.h"
+#include "PhysicalPropertyResource.h"
+#include "PhysicalPhenomenon.h"
 #include "SemsimUtils.h"
 
 namespace semsim {

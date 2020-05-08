@@ -7,7 +7,7 @@
 
 #include "librdf.h"
 #include <string>
-#include "semsim/Resource.h"
+#include "Resource.h"
 #include "Subject.h"
 #include "Triple.h"
 #include "Triples.h"

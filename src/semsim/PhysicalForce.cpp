@@ -5,10 +5,10 @@
 #include "PhysicalForce.h"
 
 #include <vector>
-#include "semsim/Participant.h"
-#include "semsim/PhysicalPropertyResource.h"
-#include "semsim/PhysicalPhenomenon.h"
-#include "semsim/SemsimUtils.h"
+#include "Participant.h"
+#include "PhysicalPropertyResource.h"
+#include "PhysicalPhenomenon.h"
+#include "SemsimUtils.h"
 
 namespace semsim {
 

@@ -8,12 +8,12 @@
 
 class XmlAssistant;
 
-#include "semsim/XmlAssistant.h"
-#include "semsim/Predicate.h"
-#include "semsim/Resource.h"
-#include "semsim/Triple.h"
-#include "semsim/Participant.h"
-#include "semsim/RDF.h"
+#include "XmlAssistant.h"
+#include "Predicate.h"
+#include "Resource.h"
+#include "Triple.h"
+#include "Participant.h"
+#include "RDF.h"
 #include "PhysicalPhenomenon.h"
 
 
