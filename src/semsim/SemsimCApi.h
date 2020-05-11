@@ -7,15 +7,19 @@
 
 #include "RDF.h"
 
-extern "C"
-{
-//    semsim::RDF* RDF_new() {
-//        return new semsim::RDF();
-//    }
-//Foo *Foo_new(int n) { return new Foo(n); }
-//void Foo_bar(Foo *foo) { foo->bar(); }
-//int Foo_foobar(Foo *foo, int n) { return foo->foobar(n); }
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+semsim::RDF *RDF() ;
+
+void RDF_fromString(semsim::RDF *rdf_ptr, const char *str, const char *format);
+
+
+#ifdef __cplusplus
 }
+#endif
+
 
 
 

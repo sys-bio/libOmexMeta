@@ -128,13 +128,18 @@ else ()
     set(LINK_LIBRARIES
             # order matters: top of the dependency chain first
             # i.e. if A depends on B, A should come before B in this list
+            -Wl,--whole-archive
             "${LIBCOMBINE_STATIC_LIBRARY}"
-            "${LIBSBML_STATIC_LIB}"
+            "${LIBSBML_STATIC_LIBRARY}"
+            -Wl,--no-whole-archive
             "${ZIPPER_STATIC_LIBRARY}"
+            -Wl,--whole-archive
             "${ZLIB_STATIC_LIBRARY}"
+            "${BZ2_STATIC_LIBRARY}"
             #            "z"
             "${LIBXML2_STATIC_LIBRARY}"
-            #            libxml2
+            -Wl,--no-whole-archive
+            #            xml2
             #            xml2
             "iconv"
             #            "xslt"
