@@ -158,9 +158,9 @@ raptor_world *semsim::RDF::getRaptorWorld() const {
     return raptor_world_;
 }
 
-semsim::RDF semsim::RDF::fromUrl(std::string url, std::string filename) {
+semsim::RDF semsim::RDF::fromUrl(std::string url, std::string filename, std::string format) {
     SemsimUtils::download(url, filename);
-    return semsim::RDF::fromFile(filename);
+    return semsim::RDF::fromFile(filename, std::__cxx11::string());
 }
 
 void semsim::RDF::setWorld(librdf_world *world) {
@@ -184,7 +184,7 @@ void semsim::RDF::setRaptorWorld(raptor_world *raptorWorldPtr) {
  * to/from operations
  */
 
-semsim::RDF semsim::RDF::fromFile(std::string filename) {
+semsim::RDF semsim::RDF::fromFile(std::string filename, std::string format) {
     return semsim::RDF();
 }
 
@@ -234,7 +234,7 @@ semsim::RDF semsim::RDF::fromStream(librdf_stream *stream) {
     return rdf;
 }
 
-semsim::RDF semsim::RDF::fromOmex(const std::string &filename_or_url) {
+semsim::RDF semsim::RDF::fromOmex(const std::string &filename_or_url, std::string format) {
     return semsim::RDF();
 }
 

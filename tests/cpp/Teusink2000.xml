@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+    <rdf:Description rdf:about="#metaid_1">
+        <bqbiol:is rdf:resource="https://identifiers.org/uniprot/P0DP23"/>
+    </rdf:Description>
+</rdf:RDF>
