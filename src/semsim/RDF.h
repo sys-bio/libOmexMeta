@@ -26,8 +26,12 @@ namespace semsim {
         raptor_world *raptor_world_;
         librdf_storage *storage_;
         librdf_model *model_;
-        librdf_uri *base_uri_;
 
+
+        semsim::Writer makeWriter(const std::string &format);
+
+    public:
+        librdf_uri *base_uri_;
         NamespaceMap namespaces_;
         std::vector<std::string> seen_namespaces_;
         NamespaceMap default_namespaces_ = {
@@ -37,9 +41,6 @@ namespace semsim {
                 {"http://www.bhi.washington.edu/semsim#",    "semsim"},
         };
 
-        semsim::Writer makeWriter(const std::string &format);
-
-    public:
         librdf_uri *getBaseUri() const;
 
         std::string getBaseUriAsString() const;
@@ -72,13 +73,13 @@ namespace semsim {
 
         void setNamespaces(const std::unordered_map<std::string, std::string> &namespaces);
 
-        static RDF fromUrl(std::string url, std::string filename);
+        static RDF fromUrl(std::string url, std::string filename, std::string format);
 
         static semsim::RDF fromXML(const std::string &filename, std::string format);
 
-        static RDF fromFile(std::string filename);
+        static RDF fromFile(std::string filename, std::string format);
 
-        static RDF fromOmex(const std::string &filename_or_url);
+        static RDF fromOmex(const std::string &filename_or_url, std::string format);
 
         std::string toString(const std::string &format, const std::string &base_uri);
 

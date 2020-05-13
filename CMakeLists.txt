@@ -136,29 +136,14 @@ else ()
             -Wl,--whole-archive
             "${ZLIB_STATIC_LIBRARY}"
             "${BZ2_STATIC_LIBRARY}"
-            #            "z"
             "${LIBXML2_STATIC_LIBRARY}"
             -Wl,--no-whole-archive
-            #            xml2
-            #            xml2
             "iconv"
-            #            "xslt"
-            #            -Wl,--whole-archive
-            #            "${BZ2_STATIC_LIBRARY}"
-            #            "${REDLAND_STATIC_LIBRARY}"
-            #            "${RASQAL_STATIC_LIBRARY}"
-            #            "${RAPTOR2_STATIC_LIBRARY}"
             -L/usr/local/lib
             "rdf"
             "rasqal"
             "raptor2"
-            #            -lxml2 -lz -llzma -lm -ldl
-            #            -Wl,--no-whole-archive
-            ##            rdf
-            ##            rasqal
-            ##            raptor2
-            #            "dl"
-            #            "curl"
+
             )
 
     message(STATUS "REDLAND_LIBRARY ${REDLAND_LIBRARY}")
@@ -169,7 +154,7 @@ else ()
 
     if (BUILD_TESTS)
         enable_testing()
-        add_subdirectory(tests)
+        add_subdirectory(tests/cpp)
         add_subdirectory(${GOOGLETEST_SOURCE})
     endif (BUILD_TESTS)
 endif ()

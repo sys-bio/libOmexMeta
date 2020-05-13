@@ -4,17 +4,80 @@
 
 #include "SemsimCApi.h"
 #include <iostream>
+#include <cstring>
+#include "semsim/SemsimUtils.h"
 
-semsim::RDF * rdf_new_ptr(){
-    return new semsim::RDF();
+namespace semsim {
+    semsim::RDF *RDF_new_ptr() {
+        return new semsim::RDF();
+    }
+
+    void RDF_free(semsim::RDF *rdf_ptr) {
+        free(rdf_ptr);
+    }
+
+    void RDF_fromString(semsim::RDF *rdf_ptr, const char *str, const char *format) {
+        semsim::RDF rdf = semsim::RDF::fromString(str, format);
+        *rdf_ptr = rdf;
+    }
+
+    const char *RDF_toString(semsim::RDF *rdf_ptr, const char *format, const char *base_uri) {
+        // do not return a temporary object:
+        static std::string s = rdf_ptr->toString(format, base_uri);
+        const char *output_str = (const char *) s.c_str();
+        return output_str;
+    }
+
+    const char *RDF_getBaseUri(semsim::RDF *rdf_ptr) {
+        // do not return a temporary object:
+        static std::string str = rdf_ptr->getBaseUriAsString();
+        const char *cstr = str.c_str();
+        return cstr;
+    }
+
+    void RDF_setBaseUri(semsim::RDF *rdf_ptr, const char *uri) {
+        free(rdf_ptr->base_uri_);
+        rdf_ptr->setBaseUri(uri);
+    }
+
+    const char *RDF_queryResultsAsStr(semsim::RDF *rdf_ptr, const char *query_str, const char *results_format) {
+        static std::string query_results = rdf_ptr->queryResultsAsStr(query_str, results_format);
+        return query_results.c_str();
+    }
+
+    int RDF_size(semsim::RDF *rdf_ptr) {
+        return rdf_ptr->size();
+    }
+
 }
 
-void RDF_fromString(semsim::RDF *rdf_ptr, const char *str, const char *format) {
-    semsim::RDF rdf = semsim::RDF::fromString(std::string(str), std::string(format));
-    rdf_ptr = &rdf;
-}
 
 
-//int AFunctionCalledX() {
-//    return 4;
-//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
