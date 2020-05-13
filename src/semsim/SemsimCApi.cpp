@@ -28,15 +28,14 @@ namespace semsim {
         return output_str;
     }
 
-    const char *RDF_getBaseUri(semsim::RDF *rdf_ptr) {
-        // do not return a temporary object:
-        static std::string str = rdf_ptr->getBaseUriAsString();
-        const char *cstr = str.c_str();
+    char *RDF_getBaseUri(semsim::RDF *rdf_ptr) {
+        std::string str = rdf_ptr->getBaseUriAsString();
+        char *cstr = (char *) malloc(str.size());
+        strcpy(cstr, str.c_str());
         return cstr;
     }
 
     void RDF_setBaseUri(semsim::RDF *rdf_ptr, const char *uri) {
-        free(rdf_ptr->base_uri_);
         rdf_ptr->setBaseUri(uri);
     }
 

@@ -36,6 +36,8 @@ namespace semsim {
                 std::vector<std::string> exclusions = std::vector<std::string>()
         );
 
+        static std::string addFilePrefixToString(std::string str);
+
     };
 }
 

@@ -57,15 +57,29 @@ TEST_F(CAPITests, RDFToString) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(CAPITests, RDFsetBaseUriAsString) {
+TEST_F(CAPITests, RDFgetBaseUri) {
     semsim::RDF *rdf_ptr = semsim::RDF_new_ptr();
     semsim::RDF_fromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml");
-    semsim::RDF_setBaseUri(rdf_ptr, "annotation.rdf");
-    const char *actual = semsim::RDF_getBaseUri(rdf_ptr);
-    const char *expected = "annotation.rdf";
+    char *actual = semsim::RDF_getBaseUri(rdf_ptr);
     semsim::RDF_free(rdf_ptr);
+    std::cout << actual << std::endl;
+    const char *expected = "file://./semsim_model.rdf";
     ASSERT_STREQ(expected, actual);
+    free(actual);
 }
+
+TEST_F(CAPITests, RDFsetBaseUri) {
+    semsim::RDF *rdf_ptr = semsim::RDF_new_ptr();
+    semsim::RDF_fromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml");
+    semsim::RDF_setBaseUri(rdf_ptr, "ANewBaseUri.rdf");
+    char *actual = semsim::RDF_getBaseUri(rdf_ptr);
+    semsim::RDF_free(rdf_ptr);
+    std::cout << actual << std::endl;
+    const char *expected = "file://ANewBaseUri.rdf";
+    ASSERT_STREQ(expected, actual);
+    free(actual); // necessary because we allocated on heap.
+}
+
 
 TEST_F(CAPITests, RDFqueryResultsAsStr) {
     semsim::RDF *rdf_ptr = semsim::RDF_new_ptr();

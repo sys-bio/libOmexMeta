@@ -12,7 +12,7 @@ site.addsitedir(src_dir)
 import pysemsim
 
 
-class Test(unittest.TestCase):
+class TestRDF(unittest.TestCase):
     rdf_str = """<?xml version="1.0" encoding="utf-8"?>
     <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
@@ -50,10 +50,14 @@ class Test(unittest.TestCase):
     def test_get_base_uri(self):
         rdf = pysemsim.RDF.from_string(self.rdf_str, "rdfxml")
         uri = rdf.get_base_uri()
-        print("1", uri)
-        rdf.set_base_uri("uri")
+        self.assertEqual("file://./semsim_model.rdf", uri)
+
+    def test_set_base_uri(self):
+        rdf = pysemsim.RDF.from_string(self.rdf_str, "rdfxml")
+        rdf.set_base_uri("ABaseUri.rdf")
         uri = rdf.get_base_uri()
-        print("2", uri)
+        expected = "file:///mnt/d/libsemsim/tests/python/ABaseUri.rdf"
+        self.assertEqual(expected, uri)
 
     def test_query(self):
         rdf = pysemsim.RDF.from_string(self.rdf_str, "rdfxml")

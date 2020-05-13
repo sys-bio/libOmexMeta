@@ -45,7 +45,7 @@ namespace semsim {
 
         std::string getBaseUriAsString() const;
 
-        void setBaseUri(const std::string &baseUri);
+        void setBaseUri(std::string baseUri);
 
         void setBaseUri(librdf_uri *base_uri);
 
