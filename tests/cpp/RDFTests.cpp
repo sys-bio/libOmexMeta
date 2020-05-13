@@ -93,9 +93,18 @@ TEST_F(RDFTests, TestBaseUri) {
 TEST_F(RDFTests, TestSetBaseUri) {
     semsim::RDF rdf;
     rdf.setBaseUri("./new_semsim_model.rdf");
-    std::string expected = "./new_seemsim_model.rdf";
+    std::string expected = "file://./new_semsim_model.rdf";
     std::string actual = (const char *) librdf_uri_as_string(rdf.getBaseUri());
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(RDFTests, TestSetBaseUri2) {
+    semsim::RDF rdf = semsim::RDF::fromString(samples.singular_annotation1, "rdfxml");
+    auto *rdf_ptr = &rdf;
+    rdf_ptr->setBaseUri("nannotation.rdf");
+    std::string actual = rdf_ptr->getBaseUriAsString();
+    const char *expected = "file://nannotation.rdf";
+    ASSERT_STREQ(expected, actual.c_str());
 }
 
 

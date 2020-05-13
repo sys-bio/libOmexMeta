@@ -17,7 +17,9 @@ namespace semsim {
 
     void RDF_free(semsim::RDF *rdf_ptr);
 
-    const char *RDF_getBaseUri(semsim::RDF *rdf_ptr);
+    char *RDF_getBaseUri(semsim::RDF *rdf_ptr);
+
+    void RDF_setBaseUri(semsim::RDF *rdf_ptr, const char *uri);
 
     const char *RDF_toString(semsim::RDF *rdf_ptr, const char *format, const char *base_uri);
 
@@ -25,7 +27,6 @@ namespace semsim {
 
     const char *RDF_queryResultsAsStr(semsim::RDF *rdf_ptr, const char *query_str, const char *results_format);
 
-    void RDF_setBaseUri(semsim::RDF *rdf_ptr, const char *uri);
 
     int RDF_size(semsim::RDF *rdf_ptr);
 

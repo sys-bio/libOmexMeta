@@ -64,7 +64,7 @@ std::string semsim::SemsimUtils::generateUniqueMetaid(
     ResultsMap results_map = query.resultsAsMap();
     std::vector<std::string> subjects = results_map["subject"];
     // add other exclusions to the subjects like
-    for (auto &i : exclusions){
+    for (auto &i : exclusions) {
         subjects.push_back(i);
     }
     int count = 0;
@@ -78,6 +78,16 @@ std::string semsim::SemsimUtils::generateUniqueMetaid(
         count++;
     }
     return metaid;
+}
+
+std::string semsim::SemsimUtils::addFilePrefixToString(std::string str) {
+    std::string file_prefix = "file://";
+    if (str.rfind(file_prefix, 0) == 0) {
+        // str already starts with "file://" do nothing
+        return str;
+    }
+    return file_prefix + str;
+
 }
 
 

@@ -238,8 +238,8 @@ semsim::RDF semsim::RDF::fromOmex(const std::string &filename_or_url, std::strin
     return semsim::RDF();
 }
 
-std::string semsim::RDF::toString(const std::string &format="rdfxml-abbrev",
-        const std::string &base_uri="file://./annotations.rdf") {
+std::string semsim::RDF::toString(const std::string &format = "rdfxml-abbrev",
+                                  const std::string &base_uri = "file://./annotations.rdf") {
     setBaseUri(base_uri);
     Writer writer = makeWriter(format);
     return writer.toString();
@@ -327,11 +327,23 @@ std::string semsim::RDF::getBaseUriAsString() const {
     return std::string((const char *) librdf_uri_as_string(base_uri_));
 }
 
-void semsim::RDF::setBaseUri(const std::string &baseUri) {
-    base_uri_ = librdf_new_uri(world_, (const unsigned char *) baseUri.c_str());
+void semsim::RDF::setBaseUri(std::string baseUri) {
+    baseUri = semsim::SemsimUtils::addFilePrefixToString(baseUri);
+    librdf_uri *uri = librdf_new_uri(world_, (const unsigned char *) baseUri.c_str());
+    if (!uri) {
+        throw semsim::LibRDFException("semsim::RDF::setBaseUri: Unable to create a new librdf_uri instance. ");
+    }
+    base_uri_ = uri;
 }
 
 void semsim::RDF::setBaseUri(librdf_uri *baseUri) {
+    if (!baseUri) {
+        throw semsim::LibRDFException("semsim::RDF::setBaseUri: Unable to create a new librdf_uri instance. ");
+    }
+    // check if file:// prepended to baseUri and if not add it.
+    const char *str = (const char *) librdf_uri_to_string(baseUri);
+    str = semsim::SemsimUtils::addFilePrefixToString(std::string(str)).c_str();
+    baseUri = librdf_new_uri(world_, (const unsigned char *) str);
     base_uri_ = baseUri;
 }
 
@@ -365,7 +377,7 @@ semsim::Triples semsim::RDF::toTriples() {
     return triples;
 }
 
-std::string semsim::RDF::queryResultsAsStr(const std::string &query_str, const std::string& results_format) {
+std::string semsim::RDF::queryResultsAsStr(const std::string &query_str, const std::string &results_format) {
     return semsim::Query(world_, model_, query_str).resultsAsStr(results_format);
 }
 

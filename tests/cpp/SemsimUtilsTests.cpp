@@ -44,3 +44,11 @@ TEST_F(SemsimUtilsTests, TestRemoveIfExists2) {
     semsim::SemsimUtils::removeIfExists(fname); // should not error
     ASSERT_FALSE(semsim::SemsimUtils::exists(fname));
 }
+
+TEST_F(SemsimUtilsTests, TestPrefixFile) {
+    std::string fname = "./cheese_biscuits.blue";
+    fname = semsim::SemsimUtils::addFilePrefixToString(fname);
+    std::string expected = "file://./cheese_biscuits.blue";
+    std::string actual = fname;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
