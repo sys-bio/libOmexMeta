@@ -67,6 +67,7 @@ namespace semsim {
 
     };
 
+    typedef Triple SingularAnnotation;
 }
 
 #endif //LIBSEMGEN_TRIPLE_H

@@ -158,6 +158,33 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
 }
 
 
+TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
+    semsim::RDF rdf;
+    semsim::Editor editor = rdf.toEditor(
+            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            semsim::ASSISTANT_TYPE_SBML);
+
+    semsim::SingularAnnotation singularAnnotation(world);
+
+    singularAnnotation.setAbout("Metaid4")
+            .setPredicate("bqb", "isVersionOf")
+            .setResourceUri("uniprot:PD02635");
+
+    editor.addSingleAnnotation(singularAnnotation);
+    editor.toRDF();
+
+    std::string actual = rdf.toString("rdfxml", "MyModel.rdf");
+    std::cout << actual << std::endl;
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://MyModel.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"Metaid4\">\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/uniprot/PD02635\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
 TEST_F(EditorTests, TestCompositeAnnotationPhysicalEntity) {
     semsim::RDF rdf;
     semsim::Editor editor = rdf.toEditor(
