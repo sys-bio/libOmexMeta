@@ -19,7 +19,7 @@ namespace semsim {
  * RDF class methods
  */
 
-    semsim::RDF *RDF_new_ptr();
+    semsim::RDF *libsemsim_new_rdf();
 
     void RDF_free(semsim::RDF *rdf_ptr);
 
@@ -50,6 +50,8 @@ namespace semsim {
  *  Editor class
  */
 
+    Editor *libsemsim_new_editor(semsim::RDF *rdf_ptr);
+
     void Editor_addNamespace(Editor *editor_ptr, const char *namespace_, const char *prefix);
 
     void Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
@@ -66,6 +68,34 @@ namespace semsim {
 /*********************************************************************
  * SingularAnnotation class methods
  */
+    SingularAnnotation *new_singular_annotation(Editor *editor_ptr);
+
+    SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
+
+    SingularAnnotation *
+    SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_, const char *term);
+
+    SingularAnnotation *
+    SingularAnnotation_setPredicateNew(SingularAnnotation *singular_annotation, const char *namespace_,
+                                       const char *term, const char *prefix);
+
+    SingularAnnotation *
+    SingularAnnotation_setResourceLiteral(SingularAnnotation *singular_annotation, const char *literal);
+
+    SingularAnnotation *
+    SingularAnnotation_setResourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri);
+
+    SingularAnnotation *
+    SingularAnnotation_setResourceBlank(SingularAnnotation *singular_annotation, const char *blank_id);
+
+    const char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
+
+    const char *
+    SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format, const char *base_uri);
+
+    const char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
+
+    const char *SingularAnnotation_getResource(SingularAnnotation *singular_annotation);
 
 /*********************************************************************
  * PhysicalEntity class methods

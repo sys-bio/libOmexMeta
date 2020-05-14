@@ -10,3 +10,7 @@ build
 *.zip
 # some files in libxml2/test were breaking git. They are not essential and are ignored
 third_party/libxml2/test 
+__pycache__
+*.exe
+*.so
+*.dylib
