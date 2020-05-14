@@ -242,10 +242,10 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
 TEST_F(PhysicalForceTests, TestPhysicalForceBuilder) {
     semsim::PhysicalForce force(world, model);
     force.setAbout("Force5")
-        .setPhysicalProperty(physical_property)
-        .addSource("Source1", "identifiers/term", 1, "PhysicalEntityReference1")
-        .addSink("Sink1", "identifiers/term2", 2, "PhysicalEntityReference2")
-        .addSink("Sink2", "identifiers/term3", 1, "PhysicalEntityReference3");
+            .setPhysicalProperty(physical_property)
+            .addSource("Source1", 1, "PhysicalEntityReference1")
+            .addSink("Sink1", 2, "PhysicalEntityReference2")
+            .addSink("Sink2", 1, "PhysicalEntityReference3");
 
 
     semsim::Triples triples = force.toTriples();

@@ -69,7 +69,7 @@ namespace semsim {
     }
 
     PhysicalForce &PhysicalForce::addSource(
-            std::string source_metaid, std::string source_resource, double multiplier,
+            std::string source_metaid, double multiplier,
             std::string physical_entity_reference) {
         sources_.push_back(
                 SourceParticipant(
@@ -82,7 +82,7 @@ namespace semsim {
         return (*this);
     }
 
-    PhysicalForce &PhysicalForce::addSink(std::string sink_metaid, std::string sink_resource, double multiplier,
+    PhysicalForce &PhysicalForce::addSink(std::string sink_metaid, double multiplier,
                                           std::string physical_entity_reference) {
         sinks_.push_back(
                 SinkParticipant(
@@ -99,6 +99,14 @@ namespace semsim {
     PhysicalForce::PhysicalForce(librdf_world *world, librdf_model *model)
             : PhysicalPhenomenon(world, model) {
 
+    }
+
+    int PhysicalForce::getNumSources() {
+        return sources_.size();
+    }
+
+    int PhysicalForce::getNumSinks() {
+        return sinks_.size();
     }
 
 }
