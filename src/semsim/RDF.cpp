@@ -319,6 +319,10 @@ semsim::Editor semsim::RDF::toEditor(std::string xml, semsim::XmlAssistantType t
     return Editor(xml, type, world_, model_, namespaces_);
 }
 
+semsim::Editor *semsim::RDF::toEditorPtr(std::string xml, semsim::XmlAssistantType type) {
+    return new Editor(xml, type, world_, model_, namespaces_);
+}
+
 librdf_uri *semsim::RDF::getBaseUri() const {
     return base_uri_;
 }

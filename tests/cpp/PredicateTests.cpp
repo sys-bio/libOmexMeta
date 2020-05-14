@@ -254,6 +254,69 @@ TEST_F(PredicateTests, TestNamespaceKnownWhenNamespaceIsNotKnown) {
     ASSERT_FALSE(semsim::Predicate::namespaceKnown(ns));
 }
 
+TEST_F(PredicateTests, TestPredicateFactory) {
+    semsim::PredicatePtr predicatePtr = semsim::PredicateFactory(world, "bqb", "is");
+    std::string actual = predicatePtr->str();
+    std::string expected = "http://biomodels.net/biology-qualifiers/is";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestPredicateFactory1err) {
+    ASSERT_THROW(semsim::PredicateFactory(world, "unknown", "description"), std::invalid_argument);
+}
+
+TEST_F(PredicateTests, TestPredicateFactory2) {
+    semsim::PredicatePtr predicatePtr = semsim::PredicateFactory(world, "dc", "Description");
+    std::string actual = predicatePtr->str();
+    std::string expected = "http://purl.org/dc/terms/Description";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestPredicateFactory2err) {
+    ASSERT_THROW(semsim::PredicateFactory(world, "dc", "description"), std::invalid_argument);
+}
+
+TEST_F(PredicateTests, TestPredicateFactory3) {
+    semsim::PredicatePtr predicatePtr = semsim::PredicateFactory(world, "BiomodelsModelQualifier", "hasInstance");
+    std::string actual = predicatePtr->str();
+    std::string expected = "http://biomodels.net/model-qualifiers/hasInstance";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestPredicateFactory4) {
+    semsim::PredicatePtr predicatePtr = semsim::PredicateFactory(world, "BiomodelsModelQualifier", "hasInstance");
+    std::string actual = predicatePtr->str();
+    std::string expected = "http://biomodels.net/model-qualifiers/hasInstance";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
+TEST_F(PredicateTests, TestPredicateWithoutSubclass) {
+    semsim::Predicate predicate = semsim::Predicate(world, "ns", "term", "prefix");
+    std::string actual = predicate.str();
+    std::string expected = "ns/term";
+    ASSERT_STREQ(actual.c_str(), expected.c_str());
+}
+
+TEST_F(PredicateTests, TestPredicateWithoutSubclass2) {
+    semsim::PredicatePtr predicate = std::make_shared<semsim::Predicate>(
+            semsim::Predicate(world, "ns", "term", "prefix")
+    );
+    std::string actual = predicate->str();
+    std::string expected = "ns/term";
+    ASSERT_STREQ(actual.c_str(), expected.c_str());
+}
+
+TEST_F(PredicateTests, TestPredicateWithoutSubclass3) {
+    semsim::PredicatePtr predicate = std::make_shared<semsim::Predicate>(
+            semsim::Predicate(world, "https://stackoverflow.com/questions/", "how-do-you", "so")
+    );
+    std::string actual = predicate->str();
+    std::string expected = "https://stackoverflow.com/questions/how-do-you";
+    ASSERT_STREQ(actual.c_str(), expected.c_str());
+}
+
+
 
 
 

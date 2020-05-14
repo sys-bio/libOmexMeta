@@ -93,6 +93,8 @@ namespace semsim {
 
         Editor toEditor(std::string xml, XmlAssistantType type);
 
+        Editor *toEditorPtr(std::string xml, XmlAssistantType type);
+
         static std::ostringstream listOptions();
 
         librdf_world *getWorld() const;
