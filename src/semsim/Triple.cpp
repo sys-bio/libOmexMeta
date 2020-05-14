@@ -116,6 +116,5 @@ namespace semsim {
         return *this;
     }
 
-    typedef Triple SingularAnnotation;
 }
 

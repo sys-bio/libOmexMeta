@@ -50,6 +50,35 @@ namespace semsim {
  *  Editor class
  */
 
+    void Editor_addNamespace(Editor *editor_ptr, const char *namespace_, const char *prefix);
+
+    void Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
+
+//void Editor_addPhysicalEntity(Editor* editor_ptr, )
+//void Editor_addPhysicalProcess(Editor* editor_ptr, )
+//void Editor_addPhysicalForce(Editor* editor_ptr, )
+//void Editor_checkValidMetaid(Editor* editor_ptr, )
+
+/*********************************************************************
+ * Editor class methods
+ */
+
+/*********************************************************************
+ * SingularAnnotation class methods
+ */
+
+/*********************************************************************
+ * PhysicalEntity class methods
+ */
+
+/*********************************************************************
+ * PhysicalProcess class methods
+ */
+
+/*********************************************************************
+ * PhysicalForce class methods
+ */
+
 
 #ifdef __cplusplus
     }

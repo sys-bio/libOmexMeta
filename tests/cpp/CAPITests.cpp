@@ -9,6 +9,8 @@
 #include "AnnotationSamples.h"
 #include "semsim/SemsimCApi.h"
 #include "semsim/RDF.h"
+#include "SBMLFactory.h"
+#include "semsim/XmlAssistant.h"
 
 class CAPITests : public ::testing::Test {
 public:
@@ -95,6 +97,28 @@ TEST_F(CAPITests, RDFqueryResultsAsStr) {
                            "file://./MyModel.rdf#entity_0,http://biomodels.net/biology-qualifiers/is,http://identifiers.org/fma/FMA:9670\r\n"
                            "file://./MyModel.rdf#entity_0,http://biomodels.net/biology-qualifiers/isPartOf,http://identifiers.org/fma/FMA:18228\r\n";
     ASSERT_STREQ(expected.c_str(), results);
+}
+
+TEST_F(CAPITests, TestaddNamespace) {
+    semsim::RDF *rdf_ptr = semsim::RDF_new_ptr();
+    semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            semsim::ASSISTANT_TYPE_SBML
+    );
+    Editor_addNamespace(editor_ptr, "nameschpashe", "Prephiix");
+
+}
+
+TEST_F(CAPITests, TestAddSingularAnnotation) {
+    semsim::RDF *rdf_ptr = semsim::RDF_new_ptr();
+    semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            semsim::ASSISTANT_TYPE_SBML
+    );
+//    semsim::SingularAnnotation* singularAnnotation = libsemsim_new_singular_annotation(rdf_ptr);
+
+//    Editor_addNamespace(editor_ptr, "nameschpashe", "Prephiix");
+
 }
 
 

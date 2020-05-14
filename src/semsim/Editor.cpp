@@ -94,10 +94,10 @@ void semsim::Editor::addSingleAnnotation(
     namespaces_[predicate_ptr->getNamespace()] = predicate_ptr->getPrefix();
 }
 
-void semsim::Editor::addSingleAnnotation(Triple triple) {
-    Triples vec = {triple};
+void semsim::Editor::addSingleAnnotation(semsim::SingularAnnotation singularAnnotation) {
+    Triples vec = {singularAnnotation};
     triple_list_.push_back(vec);
-    namespaces_[triple.getPredicatePtr()->getNamespace()] = triple.getPredicatePtr()->getPrefix();
+    namespaces_[singularAnnotation.getPredicatePtr()->getNamespace()] = singularAnnotation.getPredicatePtr()->getPrefix();
 
 }
 

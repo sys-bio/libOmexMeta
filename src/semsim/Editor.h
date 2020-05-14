@@ -79,7 +79,7 @@ namespace semsim {
 
         void addNamespace(std::string ns, std::string prefix);
 
-        void addSingleAnnotation(Triple triple);
+        void addSingleAnnotation(SingularAnnotation singularAnnotation);
 
         void addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr);
 
