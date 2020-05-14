@@ -2,8 +2,7 @@
 // Created by Ciaran on 5/8/2020.
 //
 
-#include "SemsimCApi.h"
-#include <iostream>
+#include "semsim/SemsimCApi.h"
 #include <cstring>
 #include "semsim/SemsimUtils.h"
 
@@ -47,6 +46,15 @@ namespace semsim {
     int RDF_size(semsim::RDF *rdf_ptr) {
         return rdf_ptr->size();
     }
+
+    Editor *RDF_toEditor(semsim::RDF *rdf_ptr, const char *xml, semsim::XmlAssistantType type) {
+        return rdf_ptr->toEditorPtr(xml, type);
+    }
+
+/*********************************************************************
+ * Editor class methods
+ */
+
 
 }
 

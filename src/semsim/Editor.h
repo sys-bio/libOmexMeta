@@ -86,19 +86,6 @@ namespace semsim {
         void addAnnotationFromNestedTriples(NestedTriples tripleList);
         //overloaded
 
-        // physical entity
-        void addPhysicalEntityAnnotation(const std::string &subject, std::string isVersionOf,
-                                         const std::string &isPropertyOf, Resource is, Resource isPartOf);
-
-        // physical process
-        void addPhysicalProcessAnnotation(
-                std::string subject, std::string isVersionOf, std::string isPropertyOf,
-                std::vector<ParticipantPtr> participants);
-
-        // physical force
-        void addPhysicalForceAnnotation(
-                std::string subject, std::string isVersionOf, std::string isPropertyOf);
-
         void removeAnnotation();
 
         void toRDF();

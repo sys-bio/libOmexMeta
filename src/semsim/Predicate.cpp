@@ -42,10 +42,10 @@ namespace semsim {
             os << v[i] << "/"; // other parts of the url - up until the last bit
         }
         // When predicate ends in '#' we need different logic to when the predicate ends in '/'
-        if (v[v.size() - 1].find('#') != std::string::npos){
+        if (v[v.size() - 1].find('#') != std::string::npos) {
             // split last portion by '#' such as .../semsim#hasSourceParticipant
             std::vector<std::string> last_bit = SemsimUtils::splitStringBy(v[v.size() - 1], '#');
-            if (last_bit.size() != 2){
+            if (last_bit.size() != 2) {
                 throw std::logic_error("Predicate::Predicate(): For developers. Should never have more than two "
                                        "strings in this vector of strings");
             }
@@ -139,7 +139,6 @@ namespace semsim {
         namespace_ = ns;
     }
 
-
     BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(librdf_world *world, const std::string &term) :
             Predicate(world, "http://biomodels.net/biology-qualifiers/", term, "bqbiol") {
         verify(valid_terms_, term_);
@@ -163,5 +162,57 @@ namespace semsim {
     }
 
 
+    /*
+     * A factory function for creating PredicatePtr objects.
+     */
+    PredicatePtr PredicateFactory(librdf_world *world, std::string namespace_, const std::string &term) {
+
+        std::vector<std::string> valid_namespace_strings = {
+                "bqb",
+                "bqm",
+                "dc",
+                "ss",
+                "BiomodelsBiologyQualifier",
+                "BiomodelsModelQualifier",
+                "SemSim",
+        };
+
+        if (std::find(
+                valid_namespace_strings.begin(),
+                valid_namespace_strings.end(), namespace_
+        ) == valid_namespace_strings.end()) {
+            std::ostringstream os;
+            os << "Namespace \"" << namespace_ << "\" is not valid. These are ";
+            os << " valid namespaces: ";
+            for (auto &i : valid_namespace_strings) {
+                os << i << ", ";
+            }
+            os
+                    << ". Note, they are not case sensitive. See also \"setPredicateFromUri\" for using a predicate URI not built in.";
+            os << std::endl;
+            throw std::invalid_argument(os.str());
+        }
+        // ensure we only compare in lowercase
+        std::for_each(namespace_.begin(), namespace_.end(), [](char &c) {
+            c = std::tolower(c);
+        });
+
+
+        PredicatePtr predicatePtr;
+        if (namespace_ == "bqb" || namespace_ == "biomodelsbiologyqualifier") {
+            predicatePtr = std::make_shared<BiomodelsBiologyQualifier>(
+                    BiomodelsBiologyQualifier(world, term));
+        } else if (namespace_ == "bqm" || namespace_ == "biomodelsmodelqualifier") {
+            predicatePtr = std::make_shared<BiomodelsModelQualifier>(
+                    BiomodelsModelQualifier(world, term));
+        } else if (namespace_ == "dc" || namespace_ == "dcterms") {
+            predicatePtr = std::make_shared<DCTerm>(
+                    DCTerm(world, term));
+        } else if (namespace_ == "ss" || namespace_ == "semsim") {
+            predicatePtr = std::make_shared<SemSim>(
+                    SemSim(world, term));
+        };
+        return predicatePtr;
+    }
 }
 

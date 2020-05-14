@@ -7,11 +7,10 @@
 #include <semsim/Triple.h>
 #include "semsim/RDFNode.h"
 #include "gtest/gtest.h"
-
+#include "semsim/SemsimUtils.h"
 
 class TripleTests : public ::testing::Test {
 public:
-
 
     std::string subject_str = "./MyModel#metaid_0";
     std::string predicate_str = "http://biomodels.net/biology-qualifiers/is";
@@ -229,6 +228,74 @@ TEST_F(TripleTests, TestFromStatementPredicate) {
 }
 
 
+TEST_F(TripleTests, TestAbout) {
+    semsim::Triple triple(world_);
+    triple.setAbout("metaid2");
+    std::string expected = "metaid2";
+    std::string actual = triple.getAbout();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
+TEST_F(TripleTests, TestSetPredicate) {
+    semsim::Triple triple(world_);
+    triple.setPredicate("bqb", "is");
+    std::string expected = "http://biomodels.net/biology-qualifiers/is";
+    std::string actual = triple.getPredicatePtr()->str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(TripleTests, TestSetPredicate2) {
+    semsim::Triple triple(world_);
+    triple.setPredicateNew("https://stackoverflow.com/questions/", "how-do-you", "so");
+    std::string expected = "https://stackoverflow.com/questions/how-do-you";
+    semsim::PredicatePtr predicatePtr = triple.getPredicatePtr();
+    std::string actual = predicatePtr->str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(TripleTests, TestResourceLiteral) {
+    semsim::Triple triple(world_);
+    triple.setResourceLiteral("Annotating");
+    std::string expected = "Annotating";
+    std::string actual = triple.getResource().str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(TripleTests, TestResourceUri) {
+    semsim::Triple triple(world_);
+    triple.setResourceUri("AnnotatingUri");
+    std::string expected = "AnnotatingUri";
+    std::string actual = triple.getResource().str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(TripleTests, TestResourceBlank) {
+    semsim::Triple triple(world_);
+    triple.setResourceBlank("AnnotatingBlank");
+    std::string expected = "AnnotatingBlank";
+    std::string actual = triple.getResource().str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(TripleTests, TestBuilderPattern) {
+    semsim::Triple triple(world_);
+
+    triple.setAbout("metaid1")
+            .setPredicate("bqb", "is")
+            .setResourceUri("uniprot/PD4034");
+
+    std::string actual = triple.str();
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"metaid1\">\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/PD4034\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
 
 
 

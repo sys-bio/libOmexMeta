@@ -52,6 +52,7 @@ namespace semsim {
         static int verify(std::vector<std::string> valid_terms, const std::string &term);
 
         static bool namespaceKnown(std::string ns);
+
     };
 
     class BiomodelsBiologyQualifier : public Predicate {
@@ -126,7 +127,9 @@ namespace semsim {
     typedef std::vector<Predicate> Predicates;
     typedef std::vector<PredicatePtr> PredicatePtrs;
 
+    PredicatePtr PredicateFactory(librdf_world *world, std::string namespace_, const std::string &term);
 
 }
+
 
 #endif //LIBSEMGEN_PREDICATE_H
