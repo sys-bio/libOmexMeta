@@ -79,16 +79,16 @@ void semsim::Editor::addNamespace(std::string ns, std::string prefix) {
 void semsim::Editor::addSingleAnnotation(
         semsim::Subject subject, semsim::PredicatePtr predicate_ptr,
         semsim::Resource resource) {
-    if (!predicate_ptr){
+    if (!predicate_ptr) {
         std::ostringstream err;
-        err << __FILE__<<":"<<__LINE__<<":PredicatePtr argument is null"<<std::endl;
+        err << __FILE__ << ":" << __LINE__ << ":PredicatePtr argument is null" << std::endl;
         throw NullPointerException(err.str());
     }
     checkValidMetaid(subject.str());
     Triple triple(world_, std::move(subject), predicate_ptr, std::move(resource));
     Triples vec = {triple};
     triple_list_.push_back(vec);
-    for (auto &it : namespaces_){
+    for (auto &it : namespaces_) {
         std::cout << "ns: " << it.first << ": " << it.second << std::endl;
     }
     namespaces_[predicate_ptr->getNamespace()] = predicate_ptr->getPrefix();
@@ -118,7 +118,7 @@ void semsim::Editor::addAnnotationFromTriples(Triples triples) {
 void semsim::Editor::addCompositeAnnotation(semsim::PhysicalPhenomenonPtr phenomenonPtr) {
     Triples triples = phenomenonPtr->toTriples();
     extractNamespacesFromTriplesVector(triples);
-    for (auto &triple : triples ) {
+    for (auto &triple : triples) {
         librdf_model_add_statement(model_, triple.toStatement());
     }
 }
@@ -129,6 +129,30 @@ librdf_world *semsim::Editor::getWorld() const {
 
 librdf_model *semsim::Editor::getModel() const {
     return model_;
+}
+
+void semsim::Editor::addPhysicalEntity(PhysicalEntity physicalEntity) {
+    addCompositeAnnotation(
+            std::make_shared<PhysicalEntity>(physicalEntity)
+    );
+}
+
+void semsim::Editor::addPhysicalProcess(PhysicalProcess physicalProcess) {
+    addCompositeAnnotation(
+            std::make_shared<PhysicalProcess>(physicalProcess)
+    );
+
+}
+
+void semsim::Editor::addPhysicalForce(PhysicalForce physicalForce) {
+    addCompositeAnnotation(
+            std::make_shared<PhysicalForce>(physicalForce)
+    );
+
+}
+
+void semsim::Editor::removeAnnotation(std::string metaid) {
+
 }
 
 

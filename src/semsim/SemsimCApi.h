@@ -50,7 +50,7 @@ namespace semsim {
 //semsim::RDF* RDF_fromOmex(semsim::RDF* rdf_ptr, const char* filename_or_uri, const char* format);
 
 /*********************************************
- *  Editor class
+ *  Editor class methods
  */
 
     Editor *libsemsim_new_editor(semsim::RDF *rdf_ptr);
@@ -59,14 +59,16 @@ namespace semsim {
 
     void Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
 
-//void Editor_addPhysicalEntity(Editor* editor_ptr, )
-//void Editor_addPhysicalProcess(Editor* editor_ptr, )
-//void Editor_addPhysicalForce(Editor* editor_ptr, )
-//void Editor_checkValidMetaid(Editor* editor_ptr, )
+    void Editor_addPhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
 
-/*********************************************************************
- * Editor class methods
- */
+    void Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
+
+    void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
+
+    void Editor_checkValidMetaid(Editor *editor_ptr, const char *id);
+
+    void Editor_toRDF(Editor *editor_ptr);
+
 
 /*********************************************************************
  * SingularAnnotation class methods
@@ -76,7 +78,8 @@ namespace semsim {
     SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
 
     SingularAnnotation *
-    SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_, const char *term);
+    SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_,
+                                    const char *term);
 
     SingularAnnotation *
     SingularAnnotation_setPredicateNew(SingularAnnotation *singular_annotation, const char *namespace_,
@@ -154,7 +157,8 @@ namespace semsim {
             PhysicalProcess *physical_process, const char *mediator_metaid, double multiplier,
             const char *physical_entity_reference);
 
-    const char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
+    const char *
+    PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
 
     const char *PhysicalProcess_getAbout(PhysicalProcess *physical_process_ptr);
 
