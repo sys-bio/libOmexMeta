@@ -7,7 +7,7 @@
 #include "semsim/SemsimUtils.h"
 
 namespace semsim {
-    semsim::RDF *RDF_new_ptr() {
+    semsim::RDF *libsemsim_new_rdf() {
         return new semsim::RDF();
     }
 
@@ -67,16 +67,79 @@ namespace semsim {
 /*********************************************************************
  * SingularAnnotation class methods
  */
-    void SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
+    SingularAnnotation *new_singular_annotation(Editor *editor_ptr) {
+        return new SingularAnnotation(editor_ptr->getWorld());
+    }
 
-//void SingularAnnotation_setPredicate(SingularAnnotation* singular_annotation);
-//void SingularAnnotation_setPredicateNew(SingularAnnotation* singular_annotation);
-//void SingularAnnotation_setResourceLiteral(SingularAnnotation* singular_annotation);
-//void SingularAnnotation_setResourceUri(SingularAnnotation* singular_annotation);
-//void SingularAnnotation_setResourceBlank(SingularAnnotation* singular_annotation);
-//void SingularAnnotation_getAbout(SingularAnnotation* singular_annotation);
-//void SingularAnnotation_str(SingularAnnotation* singular_annotation);
+    void free_singular_annotation(SingularAnnotation *singularAnnotationPtr) {
+        free(singularAnnotationPtr);
+    }
 
+    SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about) {
+        singular_annotation->setAbout(about);
+        return singular_annotation;
+    };
+
+
+    SingularAnnotation *SingularAnnotation_setPredicate(
+            SingularAnnotation *singular_annotation, const char *namespace_, const char *term) {
+        singular_annotation->setPredicate(namespace_, term);
+        return singular_annotation;
+    }
+
+    SingularAnnotation *SingularAnnotation_setPredicateNew(
+            SingularAnnotation *singular_annotation, const char *namespace_,
+            const char *term, const char *prefix) {
+        singular_annotation->setPredicateNew(namespace_, term, prefix);
+        return singular_annotation;
+    }
+
+    SingularAnnotation *
+    SingularAnnotation_setResourceLiteral(SingularAnnotation *singular_annotation, const char *literal) {
+        singular_annotation->setResourceLiteral(literal);
+        return singular_annotation;
+    }
+
+    SingularAnnotation *
+    SingularAnnotation_setResourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri) {
+        singular_annotation->setResourceUri(identifiers_uri);
+        return singular_annotation;
+    }
+
+    SingularAnnotation *
+    SingularAnnotation_setResourceBlank(SingularAnnotation *singular_annotation, const char *blank_id) {
+        singular_annotation->setResourceBlank(blank_id);
+        return singular_annotation;
+    }
+
+    const char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation) {
+        std::string about = singular_annotation->getAbout();
+        char *cstr = (char *) malloc(about.size());
+        strcpy(cstr, about.c_str());
+        return cstr;
+    }
+
+    const char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation) {
+        std::string predicate_str = singular_annotation->getPredicatePtr()->str();
+        char *cstr = (char*) malloc(predicate_str.size());
+        strcpy(cstr, predicate_str.c_str());
+        return cstr;
+    }
+
+    const char *SingularAnnotation_getResource(SingularAnnotation *singular_annotation) {
+        std::string resource = singular_annotation->getResource().str();
+        char* cstr = (char*) malloc(resource.size());
+        strcpy(cstr, resource.c_str());
+        return cstr;
+    }
+
+    const char *SingularAnnotation_str(
+            SingularAnnotation *singular_annotation, const char *format, const char *base_uri) {
+        std::string str = singular_annotation->str(format, base_uri);
+        char* cstr = (char*) malloc(str.size());
+        strcpy(cstr, str.c_str());
+        return cstr;
+    }
 /*********************************************************************
  * PhysicalEntity class methods
  */

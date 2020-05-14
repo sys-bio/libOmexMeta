@@ -123,6 +123,14 @@ void semsim::Editor::addCompositeAnnotation(semsim::PhysicalPhenomenonPtr phenom
     }
 }
 
+librdf_world *semsim::Editor::getWorld() const {
+    return world_;
+}
+
+librdf_model *semsim::Editor::getModel() const {
+    return model_;
+}
+
 
 
 
