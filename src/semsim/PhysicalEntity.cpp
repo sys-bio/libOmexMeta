@@ -126,6 +126,10 @@ semsim::Triples semsim::PhysicalEntity::toTriples() const {
     return triples;
 }
 
+int semsim::PhysicalEntity::getNumLocations() {
+    return getLocationResources().size();
+}
+
 
 
 

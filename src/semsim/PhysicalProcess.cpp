@@ -136,5 +136,17 @@ namespace semsim {
         return (*this);
     }
 
+    int PhysicalProcess::getNumSources() {
+        return sources_.size();
+    }
+
+    int PhysicalProcess::getNumSinks() {
+        return sinks_.size();
+    }
+
+    int PhysicalProcess::getNumMediators() {
+        return mediators_.size();
+    }
+
 
 }

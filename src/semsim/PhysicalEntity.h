@@ -37,13 +37,15 @@ namespace semsim {
 
         PhysicalEntity &setAbout(std::string metaid);
 
-        PhysicalEntity & setPhysicalProperty(PhysicalPropertyResource physicalProperty);
+        PhysicalEntity &setPhysicalProperty(PhysicalPropertyResource physicalProperty);
 
-        PhysicalEntity & setIdentity(std::string resource);
+        PhysicalEntity &setIdentity(std::string resource);
 
-        PhysicalEntity & addLocation(std::string where);
+        PhysicalEntity &addLocation(std::string where);
 
         PhysicalEntity &setPhysicalProperty(const std::string &physicalProperty);
+
+        int getNumLocations();
     };
 }
 

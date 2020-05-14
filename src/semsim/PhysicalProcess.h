@@ -45,8 +45,13 @@ namespace semsim {
         PhysicalProcess &addMediator(
                 std::string mediator_metaid, double multiplier, std::string physical_entity_reference);
 
-
         PhysicalProcess &setPhysicalProperty(const std::string &physicalProperty);
+
+        int getNumSources();
+
+        int getNumSinks();
+
+        int getNumMediators();
     };
 }
 

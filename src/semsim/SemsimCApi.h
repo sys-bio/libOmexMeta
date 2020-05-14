@@ -8,6 +8,9 @@
 #include "semsim/RDF.h"
 #include "semsim/Editor.h"
 #include "semsim/XmlAssistant.h"
+#include "semsim/PhysicalEntity.h"
+#include "semsim/PhysicalProcess.h"
+#include "semsim/PhysicalForce.h"
 
 namespace semsim {
 
@@ -100,15 +103,87 @@ namespace semsim {
 /*********************************************************************
  * PhysicalEntity class methods
  */
+    PhysicalEntity *new_physical_entity(Editor *editor_ptr);
+
+    void free_physical_entity(PhysicalEntity *physical_entity_ptr);
+
+    PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about);
+
+    PhysicalEntity *PhysicalEntity_setPhysicalProperty(
+            PhysicalEntity *physical_entity_ptr, const char *physical_property);
+
+    PhysicalEntity *PhysicalEntity_setIdentity(
+            PhysicalEntity *physical_entity_ptr, const char *identity_resource);
+
+    PhysicalEntity *PhysicalEntity_addLocation(
+            PhysicalEntity *physical_entity_ptr, const char *location_resource);
+
+
+    const char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);
+
+    const char *PhysicalEntity_getPhysicalProperty(PhysicalEntity *physical_entity_ptr);
+
+    const char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr);
+
+    int PhysicalEntity_getNumLocations(PhysicalEntity *physicalEntity);
+
+    char **PhysicalEntity_getLocations(PhysicalEntity *physical_entity_ptr);
+
+    const char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
 
 /*********************************************************************
  * PhysicalProcess class methods
  */
+    PhysicalProcess *new_physical_process(Editor *editor_ptr);
+
+    PhysicalProcess *PhysicalProcess_setAbout(
+            PhysicalProcess *physical_process, const char *about);
+
+    PhysicalProcess *PhysicalProcess_setPhysicalProperty(
+            PhysicalProcess *physical_process, const char *physical_property);
+
+    PhysicalProcess *PhysicalProcess_addSource(
+            PhysicalProcess *physical_process, const char *source_metai, double multiplier,
+            const char *physical_entity_reference);
+
+    PhysicalProcess *PhysicalProcess_addSink(
+            PhysicalProcess *physical_process, const char *sink_metaid, double multiplier,
+            const char *physical_entity_reference);
+
+    PhysicalProcess *PhysicalProcess_addMediator(
+            PhysicalProcess *physical_process, const char *mediator_metaid, double multiplier,
+            const char *physical_entity_reference);
+
+    const char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
+
+    const char *PhysicalProcess_getAbout(PhysicalProcess *physical_process_ptr);
+
+    const char *PhysicalProcess_getPhysicalProperty(PhysicalProcess *physical_process_ptr);
 
 /*********************************************************************
  * PhysicalForce class methods
  */
+    PhysicalForce *new_physical_force(Editor *editor_ptr);
 
+    PhysicalForce *PhysicalForce_setAbout(
+            PhysicalForce *physical_force_ptr, const char *about);
+
+    PhysicalForce *PhysicalForce_addSource(
+            PhysicalForce *physical_force_ptr, const char *source_metaid, double multiplier,
+            const char *physical_entity_reference);
+
+    PhysicalForce *PhysicalForce_addSink(
+            PhysicalForce *physical_force_ptr, const char *sink_metaid, double multiplier,
+            const char *physical_entity_reference);
+
+    PhysicalForce *PhysicalForce_setPhysicalProperty(
+            PhysicalForce *physical_force_ptr, const char *physical_property);
+
+    int PhysicalForce_getNumSources(PhysicalForce *physicalForce);
+
+    int PhysicalForce_getNumSinks(PhysicalForce *physicalForce);
+
+    const char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
 
 #ifdef __cplusplus
     }
