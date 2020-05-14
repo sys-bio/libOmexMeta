@@ -63,6 +63,26 @@ namespace semsim {
         editor_ptr->addSingleAnnotation(*singularAnnotation);
     }
 
+    void Editor_addPhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity) {
+        editor_ptr->addPhysicalEntity(*physicalEntity);
+    }
+
+    void Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess) {
+        editor_ptr->addPhysicalProcess(*physicalProcess);
+    }
+
+    void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce) {
+        editor_ptr->addPhysicalForce(*physicalForce);
+    }
+
+    void Editor_checkValidMetaid(Editor *editor_ptr, const char *id) {
+        editor_ptr->checkValidMetaid(id);
+    }
+
+    void Editor_toRDF(Editor *editor_ptr) {
+        editor_ptr->toRDF();
+    }
+
 
 /*********************************************************************
  * SingularAnnotation class methods

@@ -8,14 +8,17 @@
 
 class XmlAssistant;
 
-#include "XmlAssistant.h"
-#include "Predicate.h"
-#include "Resource.h"
-#include "Triple.h"
-#include "Participant.h"
-#include "RDF.h"
-#include "PhysicalPhenomenon.h"
+#include "semsim/XmlAssistant.h"
+#include "semsim/Predicate.h"
+#include "semsim/Resource.h"
+#include "semsim/Triple.h"
+#include "semsim/Participant.h"
+#include "semsim/RDF.h"
+#include "semsim/PhysicalPhenomenon.h"
 
+#include "semsim/PhysicalEntity.h"
+#include "semsim/PhysicalProcess.h"
+#include "semsim/PhysicalForce.h"
 
 // todo implement this logic from Maxes email
 /*
@@ -59,6 +62,7 @@ namespace semsim {
         std::unordered_map<std::string, std::string> &namespaces_;
 
         void extractNamespacesFromTriplesVector(Triples triples);
+
     public:
         const NamespaceMap &getNamespaces() const;
 
@@ -87,10 +91,16 @@ namespace semsim {
 
         void addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr);
 
+        void addPhysicalEntity(PhysicalEntity physicalEntity);
+
+        void addPhysicalProcess(PhysicalProcess physicalProcess);
+
+        void addPhysicalForce(PhysicalForce physicalForce);
+
         void addAnnotationFromNestedTriples(NestedTriples tripleList);
         //overloaded
 
-        void removeAnnotation();
+        void removeAnnotation(std::string metaid);
 
         void toRDF();
 

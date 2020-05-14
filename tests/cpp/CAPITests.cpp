@@ -467,6 +467,96 @@ TEST_F(CAPITests, TestPhysicalForce) {
     free(editor_ptr);
 }
 
+TEST_F(CAPITests, TestEditorToRDF) {
+    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            semsim::ASSISTANT_TYPE_SBML
+    );
+    semsim::PhysicalProcess *physical_process_ptr = semsim::new_physical_process(editor_ptr);
+
+    physical_process_ptr = semsim::PhysicalProcess_setAbout(physical_process_ptr, "Metaid0937");
+    physical_process_ptr = semsim::PhysicalProcess_setPhysicalProperty(physical_process_ptr, "opb/opb93864");
+    physical_process_ptr = semsim::PhysicalProcess_addSink(
+            physical_process_ptr, "Sink9", 1.0, "Entity8");
+    physical_process_ptr = semsim::PhysicalProcess_addSource(
+            physical_process_ptr, "Source1", 1.0, "Entity8");
+    physical_process_ptr = semsim::PhysicalProcess_addMediator(
+            physical_process_ptr, "Mod4", 1.0, "Entity8");
+
+    semsim::PhysicalEntity *physical_entity_ptr = semsim::new_physical_entity(editor_ptr);
+    physical_entity_ptr = semsim::PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "opb/opb_465");
+    physical_entity_ptr = semsim::PhysicalEntity_setAbout(physical_entity_ptr, "metaid87");
+    physical_entity_ptr = semsim::PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot/PD7363");
+    physical_entity_ptr = semsim::PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8376");
+    physical_entity_ptr = semsim::PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8377");
+    physical_entity_ptr = semsim::PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8378");
+
+    semsim::PhysicalForce *physical_force_ptr = semsim::new_physical_force(editor_ptr);
+
+    physical_force_ptr = semsim::PhysicalForce_setAbout(physical_force_ptr, "Metaid0937");
+    physical_force_ptr = semsim::PhysicalForce_setPhysicalProperty(physical_force_ptr, "opb/opb93864");
+    physical_force_ptr = semsim::PhysicalForce_addSink(
+            physical_force_ptr, "Sink9", 1.0, "Entity8");
+    physical_force_ptr = semsim::PhysicalForce_addSource(
+            physical_force_ptr, "Source1", 1.0, "Entity9");
+
+
+    semsim::Editor_addPhysicalProcess(editor_ptr, physical_process_ptr);
+    semsim::Editor_addPhysicalEntity(editor_ptr, physical_entity_ptr);
+    semsim::Editor_addPhysicalForce(editor_ptr, physical_force_ptr);
+
+    semsim::Editor_toRDF(editor_ptr);
+    free(editor_ptr);
+
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"file://./Annot.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"Metaid0937\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalForce0000\"/>\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/opb93864\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"Mod4\">\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"Entity8\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"PhysicalEntity0000\">\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/PD7363\"/>\n"
+                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/FMA/fma:8376\"/>\n"
+                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/FMA/fma:8377\"/>\n"
+                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/FMA/fma:8378\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"PhysicalForce0000\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"Sink9\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"Source1\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"PhysicalProcess0000\">\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"Mod4\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"Sink9\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"Source1\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"Sink9\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"Entity8\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"Source1\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"Entity8\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"Entity9\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"metaid87\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/opb_465\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    std::string actual = semsim::RDF_toString(rdf_ptr, "rdfxml-abbrev", "./Annot.rdf");
+    std::cout << actual << std::endl;
+    free(rdf_ptr);
+
+
+}
 
 
 
