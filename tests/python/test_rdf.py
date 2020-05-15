@@ -11,6 +11,62 @@ site.addsitedir(src_dir)
 
 import pysemsim
 
+xml = """<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+  <model id="TestModelNotAnnotated">
+    <listOfUnitDefinitions>
+      <unitDefinition id="molar">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="1" multiplier="1"/>
+          <unit kind="litre" exponent="-1" scale="1" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="cytosol" id="cytosol" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="Meta00001" id="X" compartment="cytosol" initialConcentration="10" substanceUnits="molar" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Y" compartment="cytosol" initialConcentration="20" substanceUnits="molar" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Y" compartment="cytosol" initialConcentration="15" substanceUnits="molar" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction id="X2Y" reversible="false">
+        <listOfProducts>
+          <speciesReference species="Y" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> x </ci>
+              <ci> kx2y </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="kx2y" value="1"/>
+            <localParameter id="ky2z" value="1"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="y2z" reversible="false">
+        <listOfProducts>
+          <speciesReference species="Z" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> y </ci>
+              <ci> ky2z </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>"""
+
 
 class TestRDF(unittest.TestCase):
     rdf_str = """<?xml version="1.0" encoding="utf-8"?>
@@ -45,7 +101,7 @@ class TestRDF(unittest.TestCase):
 
     def test_to_string(self):
         rdf = pysemsim.RDF.from_string(self.rdf_str, "rdfxml")
-        rdf.to_string()
+        str(rdf)
 
     def test_get_base_uri(self):
         rdf = pysemsim.RDF.from_string(self.rdf_str, "rdfxml")
@@ -74,6 +130,239 @@ file://./source_0,http://www.bhi.washington.edu/semsim#hasPhysicalEntityReferenc
 """
         self.maxDiff = None
         actual = rdf.query(q, "csv")
+        self.assertEqual(expected, actual)
+
+
+class EditorTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        pass
+
+    def test_to_editor(self):
+        rdf = pysemsim.RDF()
+        editor = rdf.to_editor(xml, "sbml")
+        self.assertIsInstance(editor, pysemsim.Editor)
+
+    def test_singular_ann_str(self):
+        rdf = pysemsim.RDF()
+        editor = rdf.to_editor(xml, "sbml")
+        singular_annotation = editor.new_singular_annotation()
+        singular_annotation \
+            .set_about("metaid4") \
+            .set_predicate("bqb", "is") \
+            .set_resource_uri("uniprot:PD88776")
+
+        expected = '''<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xml:base="file://./Annotation.rdf">
+  <rdf:Description rdf:about="metaid4">
+    <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD88776"/>
+  </rdf:Description>
+</rdf:RDF>
+'''
+        actual = str(singular_annotation)
+        self.assertEqual(expected, actual)
+
+    def test_singular_ann_add_to_model(self):
+        rdf = pysemsim.RDF()
+        # todo use context maneger
+        editor = rdf.to_editor(xml, "sbml")
+        singular_annotation = editor.new_singular_annotation()
+        singular_annotation \
+            .set_about("metaid4") \
+            .set_predicate("bqb", "is") \
+            .set_resource_uri("uniprot:PD88776")
+
+        expected = '''<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xml:base="file://./Annotation.rdf">
+  <rdf:Description rdf:about="metaid4">
+    <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD88776"/>
+  </rdf:Description>
+</rdf:RDF>
+'''
+        editor.add_singular_annotation(singular_annotation)
+        editor.to_rdf()
+        actual = str(rdf)
+        print(actual)
+        self.assertEqual(expected, actual)
+
+    def test_physical_entity(self):
+        rdf = pysemsim.RDF()
+        editor = rdf.to_editor(xml, "sbml")
+        physical_entity = editor.new_physical_entity()
+        physical_entity \
+            .set_about("metaid87") \
+            .set_physical_property("opb/opb_275") \
+            .set_identity("uniprot/PD72514") \
+            .add_location("fma:FMA:7654")
+
+        expected = '''<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xml:base="file://./Annotation.rdf">
+  <rdf:Description rdf:about="PhysicalEntity0000">
+    <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD72514"/>
+    <bqbiol:isPartOf rdf:resource="https://identifiers.org/fma/FMA:7654"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="metaid87">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0000"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
+  </rdf:Description>
+</rdf:RDF>
+'''
+        actual = str(physical_entity)
+        print(actual)
+        self.assertEqual(expected, actual)
+
+    def test_physical_add_to_model(self):
+        rdf = pysemsim.RDF()
+        editor = rdf.to_editor(xml, "sbml")
+        physical_entity = editor.new_physical_entity()
+        physical_entity \
+            .set_about("metaid87") \
+            .set_physical_property("opb/opb_275") \
+            .set_identity("uniprot/PD72514") \
+            .add_location("fma:FMA:7654")
+
+        expected = '''<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xml:base="file://./Annotation.rdf">
+  <rdf:Description rdf:about="PhysicalEntity0000">
+    <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD72514"/>
+    <bqbiol:isPartOf rdf:resource="https://identifiers.org/fma/FMA:7654"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="metaid87">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0000"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
+  </rdf:Description>
+</rdf:RDF>
+'''
+        editor.add_physical_entity(physical_entity)
+        editor.to_rdf()
+        actual = str(rdf)
+        print(actual)
+        self.assertEqual(expected, actual)
+
+    def test_physical_process(self):
+        rdf = pysemsim.RDF()
+        editor = rdf.to_editor(xml, "sbml")
+        physical_process = editor.new_physical_process()
+        physical_process \
+            .set_about("metaid87") \
+            .set_physical_property("opb/opb_275") \
+            .add_source("metaid2", 1.0, "physicalEntity4") \
+            .add_sink("metaid3", 1.0, "PhysicalEntity7") \
+            .add_mediator("metaid002", 1.0, "PhysicalEntity9")
+
+        expected = '''<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:semsim="http://www.bhi.washington.edu/semsim#"
+   xml:base="file://./Annotation.rdf">
+  <rdf:Description rdf:about="PhysicalProcess0000">
+    <semsim:hasMediatorParticipant rdf:resource="metaid002"/>
+    <semsim:hasSinkParticipant rdf:resource="metaid3"/>
+    <semsim:hasSourceParticipant rdf:resource="metaid2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="metaid002">
+    <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="metaid2">
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="metaid3">
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="metaid87">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
+  </rdf:Description>
+</rdf:RDF>
+'''
+        actual = str(physical_process)
+        print(actual)
+        self.assertEqual(expected, actual)
+
+    def test_physical_force(self):
+        rdf = pysemsim.RDF()
+        editor = rdf.to_editor(xml, "sbml")
+        physical_force = editor.new_physical_force()
+        physical_force \
+            .set_about("metaid87") \
+            .set_physical_property("opb/opb_275") \
+            .add_source("metaid2", 1.0, "physicalEntity4") \
+            .add_sink("metaid3", 1.0, "PhysicalEntity7") \
+ \
+                expected = '''<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:semsim="http://www.bhi.washington.edu/semsim#"
+   xml:base="file://./Annotation.rdf">
+  <rdf:Description rdf:about="PhysicalForce0000">
+    <semsim:hasSinkParticipant rdf:resource="metaid3"/>
+    <semsim:hasSourceParticipant rdf:resource="metaid2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="metaid2">
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="metaid3">
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="metaid87">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalForce0000"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
+  </rdf:Description>
+</rdf:RDF>
+'''
+        actual = str(physical_force)
+        print(actual)
+        self.assertEqual(expected, actual)
+
+    def test_physical_force_Add_to_model(self):
+        rdf = pysemsim.RDF()
+        editor = rdf.to_editor(xml, "sbml")
+        physical_force = editor.new_physical_force()
+        physical_force \
+            .set_about("metaid87") \
+            .set_physical_property("opb/opb_275") \
+            .add_source("metaid2", 1.0, "physicalEntity4") \
+            .add_sink("metaid3", 1.0, "PhysicalEntity7") \
+ \
+                expected = '''<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:semsim="http://www.bhi.washington.edu/semsim#"
+   xml:base="file://./Annotation.rdf">
+  <rdf:Description rdf:about="PhysicalForce0000">
+    <semsim:hasSinkParticipant rdf:resource="metaid3"/>
+    <semsim:hasSourceParticipant rdf:resource="metaid2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="metaid2">
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="metaid3">
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="metaid87">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalForce0000"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
+  </rdf:Description>
+</rdf:RDF>
+'''
+        editor.add_physical_force(physical_force)
+        editor.to_rdf()
+        actual = str(rdf)
+        print(actual)
         self.assertEqual(expected, actual)
 
 
