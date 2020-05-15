@@ -26,7 +26,7 @@ public:
 
 
 TEST_F(CAPITests, RDFSize) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::RDF_fromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml");
     int actual = semsim::RDF_size(rdf_ptr);
     int expected = 1;
@@ -35,7 +35,7 @@ TEST_F(CAPITests, RDFSize) {
 }
 
 TEST_F(CAPITests, RDFfromString) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::RDF_fromString(rdf_ptr, samples.rdf_xml_seq_example.c_str(), "rdfxml");
     int actual = semsim::RDF_size(rdf_ptr);
     int expected = 4;
@@ -44,7 +44,7 @@ TEST_F(CAPITests, RDFfromString) {
 }
 
 TEST_F(CAPITests, RDFToString) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::RDF_fromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml");
     std::string actual = rdf_ptr->toString("rdfxml-abbrev", "annotation.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -60,7 +60,7 @@ TEST_F(CAPITests, RDFToString) {
 }
 
 TEST_F(CAPITests, RDFgetBaseUri) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::RDF_fromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml");
     char *actual = semsim::RDF_getBaseUri(rdf_ptr);
     semsim::RDF_free(rdf_ptr);
@@ -71,7 +71,7 @@ TEST_F(CAPITests, RDFgetBaseUri) {
 }
 
 TEST_F(CAPITests, RDFsetBaseUri) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::RDF_fromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml");
     semsim::RDF_setBaseUri(rdf_ptr, "ANewBaseUri.rdf");
     char *actual = semsim::RDF_getBaseUri(rdf_ptr);
@@ -84,7 +84,7 @@ TEST_F(CAPITests, RDFsetBaseUri) {
 
 
 TEST_F(CAPITests, RDFqueryResultsAsStr) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::RDF_fromString(rdf_ptr, samples.composite_annotation_pe.c_str(), "rdfxml");
 
     const char *query = "SELECT ?x ?y ?z \n"
@@ -100,7 +100,7 @@ TEST_F(CAPITests, RDFqueryResultsAsStr) {
 }
 
 TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
 
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
@@ -118,7 +118,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
 }
 
 TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
 
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
@@ -136,7 +136,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
 }
 
 TEST_F(CAPITests, TestSingularAnnotationSetPredicateNew) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
 
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
@@ -154,7 +154,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicateNew) {
 }
 
 TEST_F(CAPITests, TestSingularAnnotationSetResourceLiteral) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
 
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
@@ -172,7 +172,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceLiteral) {
 }
 
 TEST_F(CAPITests, TestSingularAnnotationSetResourceUri) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
 
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
@@ -190,7 +190,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceUri) {
 }
 
 TEST_F(CAPITests, TestSingularAnnotationSetResourceBlank) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
 
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
@@ -210,7 +210,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceBlank) {
 
 TEST_F(CAPITests, TestPhysicalEntity) {
     HERE();
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     HERE();
 
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
@@ -245,7 +245,7 @@ TEST_F(CAPITests, TestPhysicalEntity) {
 }
 
 TEST_F(CAPITests, TestPhysicalEntityAbout) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
             semsim::ASSISTANT_TYPE_SBML
@@ -262,7 +262,7 @@ TEST_F(CAPITests, TestPhysicalEntityAbout) {
 
 
 TEST_F(CAPITests, TestPhysicalEntityPhysicalProperty) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
             semsim::ASSISTANT_TYPE_SBML
@@ -278,7 +278,7 @@ TEST_F(CAPITests, TestPhysicalEntityPhysicalProperty) {
 }
 
 TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
             semsim::ASSISTANT_TYPE_SBML
@@ -294,7 +294,7 @@ TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
 }
 
 TEST_F(CAPITests, TestPhysicalEntityLocations) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
             semsim::ASSISTANT_TYPE_SBML
@@ -319,7 +319,7 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
 
 
 TEST_F(CAPITests, TestPhysicalEntityNumLocations) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
             semsim::ASSISTANT_TYPE_SBML
@@ -336,7 +336,7 @@ TEST_F(CAPITests, TestPhysicalEntityNumLocations) {
 
 
 TEST_F(CAPITests, TestPhysicalEntityStr) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
             semsim::ASSISTANT_TYPE_SBML
@@ -372,7 +372,7 @@ TEST_F(CAPITests, TestPhysicalEntityStr) {
 
 
 TEST_F(CAPITests, TestPhysicalProcess) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
             semsim::ASSISTANT_TYPE_SBML
@@ -423,7 +423,7 @@ TEST_F(CAPITests, TestPhysicalProcess) {
 }
 
 TEST_F(CAPITests, TestPhysicalForce) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
             semsim::ASSISTANT_TYPE_SBML
@@ -468,7 +468,7 @@ TEST_F(CAPITests, TestPhysicalForce) {
 }
 
 TEST_F(CAPITests, TestEditorToRDF) {
-    semsim::RDF *rdf_ptr = semsim::libsemsim_new_rdf();
+    semsim::RDF *rdf_ptr = semsim::new_rdf();
     semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
             semsim::ASSISTANT_TYPE_SBML

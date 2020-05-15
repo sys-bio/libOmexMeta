@@ -7,7 +7,7 @@
 #include "semsim/SemsimUtils.h"
 
 namespace semsim {
-    semsim::RDF *libsemsim_new_rdf() {
+    semsim::RDF *new_rdf() {
         return new semsim::RDF();
     }
 
@@ -369,6 +369,22 @@ namespace semsim {
         std::string str = physical_force_ptr->toTriples().str(format, base_uri);
         char *cstr = (char *) malloc(str.size());
         strcpy(cstr, str.c_str());
+        return cstr;
+    }
+
+
+    const char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr) {
+        std::string about = physical_force_ptr->getAbout().str();
+        char *cstr = (char *) malloc(about.size());
+        strcpy(cstr, about.c_str());
+        return cstr;
+    }
+
+
+    const char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr) {
+        std::string pp = physical_force_ptr->getPhysicalProperty().str();
+        char *cstr = (char *) malloc(pp.size());
+        strcpy(cstr, pp.c_str());
         return cstr;
     }
 

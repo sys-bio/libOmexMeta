@@ -18,7 +18,6 @@ namespace semsim {
         ASSISTANT_TYPE_SBML,
         ASSISTANT_TYPE_CELLML,
         ASSISTANT_TYPE_OTHER,
-
     };
 
     class XmlAssistant {

@@ -22,7 +22,7 @@ namespace semsim {
  * RDF class methods
  */
 
-    semsim::RDF *libsemsim_new_rdf();
+    semsim::RDF *new_rdf();
 
     void RDF_free(semsim::RDF *rdf_ptr);
 
@@ -188,6 +188,11 @@ namespace semsim {
     int PhysicalForce_getNumSinks(PhysicalForce *physicalForce);
 
     const char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
+
+    const char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
+
+
+    const char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr) ;
 
 #ifdef __cplusplus
     }

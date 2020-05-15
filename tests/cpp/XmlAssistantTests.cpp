@@ -99,6 +99,7 @@ TEST(XmlAssistantTests, TestValidElementsSBML) {
 
 TEST(XmlAssistantTests, TestMetaIdsSBML) {
     std::string sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
+    std::cout << sbml << std::endl;
     semsim::MetaID metaId("SemsimMetaid", 0, 4);
     semsim::SBMLAssistant assistant(sbml, "SemsimMetaid", 4);
     auto sbml_with_metaids = assistant.addMetaIds();
