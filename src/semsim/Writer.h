@@ -56,6 +56,8 @@ namespace semsim {
                const std::string &base_uri = "file://annotation.rdf",
                std::string format = "rdfxml-abbrev");
 
+        ~Writer();
+
         void setFormat(const std::string &format);
 
         void setWorld(librdf_world *world_);

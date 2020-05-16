@@ -28,7 +28,9 @@ namespace semsim {
 
         static std::string getValue(librdf_node *node);
 
-        static std::shared_ptr<RDFNode> fromRDFNode(librdf_world* world, librdf_node* node);
+        static std::shared_ptr<RDFNode> fromRDFNode(librdf_world *world, librdf_node *node);
+
+        ~RDFNode();
 
     };
 

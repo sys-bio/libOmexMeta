@@ -77,19 +77,20 @@ semsim::RDF::~RDF() {
         librdf_free_model(model_);
     }
 
-    if (this->storage_){
+    if (this->storage_) {
         librdf_free_storage(storage_);
     }
-    if (this->base_uri_){
+    if (this->base_uri_) {
         librdf_free_uri(base_uri_);
     }
-
-    if (this->raptor_world_){
-        raptor_free_world(raptor_world_);
-    }
-    if (this->world_){
+    if (this->world_) {
         librdf_free_world(world_);
     }
+
+    // I think raptor is already freed with rdf
+//    if (this->raptor_world_){
+//        raptor_free_world(raptor_world_);
+//    }
 
 }
 
