@@ -62,6 +62,9 @@ namespace semsim {
     }
 
     librdf_world *Participant::getWorld() const {
+        if (!world_) {
+            throw NullPointerException("Participant::getWorld(): world_");
+        }
         return world_;
     }
 

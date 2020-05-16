@@ -30,6 +30,10 @@ public:
     }
 };
 
+TEST_F(RDFTests, TestDestructor) {
+    semsim::RDF rdf;
+}
+
 TEST_F(RDFTests, TestGetOptions) {
     std::ostringstream os = semsim::RDF::listOptions();
     std::string expected = "option, name, label, domain, value type, url\n"

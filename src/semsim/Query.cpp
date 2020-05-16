@@ -20,10 +20,10 @@ namespace semsim {
             : world_(world), model_(model), query_(query) {
 
         if (!world_) {
-            throw LibRDFException("World is null");
+            throw LibRDFException("Query::Query(): World is null");
         }
         if (!model_) {
-            throw LibRDFException("Model is null");
+            throw LibRDFException("Query::Query(): Model is null");
         }
         runQuery();
 

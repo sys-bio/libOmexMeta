@@ -33,6 +33,15 @@ class Util:
     def crlf_to_lr(string: str) -> str:
         return string.replace('\r\n', '\n')
 
+    @staticmethod
+    def get_and_free_c_str(c_string_ptr: ct.c_int64) -> str:
+        free_func = Util.load_func(Util.load_lib(), "free_c_char_star", [ct.c_void_p], None)
+        string = ct.cast(c_string_ptr, ct.c_char_p).value
+        decoded_str = string.decode()
+        free_func(c_string_ptr)  # free the data
+        del c_string_ptr  # free the ptr
+        return decoded_str
+
 
 libsemsim = Util.load_lib()
 
@@ -59,7 +68,7 @@ class _XmlAssistantType:
 class RDF:
 
     def __init__(self):
-        RDF_new_cfunc = Util.load_func(libsemsim, "new_rdf", [], ct.c_int64)
+        RDF_new_cfunc = Util.load_func(libsemsim, "RDF_new", [], ct.c_int64)
 
         self._obj = RDF_new_cfunc()
 
@@ -67,9 +76,9 @@ class RDF:
         self._rdf_from_string_cfunc = Util.load_func(libsemsim, "RDF_fromString",
                                                      [ct.c_int64, ct.c_char_p, ct.c_char_p], None)
         self._rdf_to_string_cfunc = Util.load_func(libsemsim, "RDF_toString", [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                                   ct.c_char_p)
-        self._rdf_free_cfunc = Util.load_func(libsemsim, "RDF_free", [ct.c_int64], None)
-        self._rdf_getBaseUri_cfunc = Util.load_func(libsemsim, "RDF_getBaseUri", [ct.c_int64], ct.c_char_p)
+                                                   ct.c_void_p)
+        self._rdf_delete_cfunc = Util.load_func(libsemsim, "RDF_delete", [ct.c_int64], None)
+        self._rdf_getBaseUri_cfunc = Util.load_func(libsemsim, "RDF_getBaseUri", [ct.c_int64], ct.c_void_p)
         self._rdf_setBaseUri_cfunc = Util.load_func(libsemsim, "RDF_setBaseUri", [ct.c_int64, ct.c_char_p], None)
         self._rdf_queryResultsAsStr_cfunc = Util.load_func(libsemsim, "RDF_queryResultsAsStr",
                                                            [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_char_p)
@@ -81,9 +90,9 @@ class RDF:
         rdf._rdf_from_string_cfunc(rdf._obj, rdf_string.encode(), format.encode())
         return rdf
 
-    def __del__(self):
+    def delete(self):
         """destructor. Delete the dynamically allocated rdf object"""
-        self._rdf_free_cfunc(self._obj)
+        self._rdf_delete_cfunc(self._obj)
 
     def __len__(self):
         """Returns the number of individual Triples stored in the rdf model"""
@@ -93,10 +102,12 @@ class RDF:
         return self.to_string("rdfxml-abbrev", base_uri="./Annotation.rdf")
 
     def to_string(self, format: str, base_uri: str) -> str:
-        return self._rdf_to_string_cfunc(self._obj, format.encode(), base_uri.encode()).decode()
+        str_ptr = self._rdf_to_string_cfunc(self._obj, format.encode(), base_uri.encode())
+        thestring = Util.get_and_free_c_str(str_ptr)
+        return thestring
 
     def get_base_uri(self) -> str:
-        return self._rdf_getBaseUri_cfunc(self._obj).decode()
+        return Util.get_and_free_c_str(self._rdf_getBaseUri_cfunc(self._obj))
 
     def set_base_uri(self, uri: str) -> None:
         if not os.path.isfile(uri):
@@ -116,124 +127,132 @@ class RDF:
 class Editor:
 
     def __init__(self, editor_ptr):
-        self.editor_ptr = editor_ptr
+        self._editor_ptr = editor_ptr
 
-        self._addNamespace_func = Util.load_func(libsemsim, "Editor_addNamespace", [ct.c_int64, ct.c_char_p],
-                                                 ct.c_void_p)
-        self._addSingleAnnotation_func = Util.load_func(libsemsim, "Editor_addSingleAnnotation",
-                                                        [ct.c_int64, ct.c_int64], ct.c_void_p)
-        self._addPhysicalEntity_func = Util.load_func(libsemsim, "Editor_addPhysicalEntity", [ct.c_int64, ct.c_int64],
-                                                      ct.c_void_p)
-        self._addPhysicalProcess_func = Util.load_func(libsemsim, "Editor_addPhysicalProcess", [ct.c_int64, ct.c_int64],
+        self._addNamespace_cfunc = Util.load_func(libsemsim, "Editor_addNamespace", [ct.c_int64, ct.c_char_p],
+                                                  ct.c_void_p)
+        self._addSingleAnnotation_cfunc = Util.load_func(libsemsim, "Editor_addSingleAnnotation",
+                                                         [ct.c_int64, ct.c_int64], ct.c_void_p)
+        self._addPhysicalEntity_cfunc = Util.load_func(libsemsim, "Editor_addPhysicalEntity", [ct.c_int64, ct.c_int64],
                                                        ct.c_void_p)
-        self._addPhysicalForce_func = Util.load_func(libsemsim, "Editor_addPhysicalForce", [ct.c_int64, ct.c_int64],
-                                                     ct.c_void_p)
-        self._checkValidMetaid_func = Util.load_func(libsemsim, "Editor_checkValidMetaid", [ct.c_int64, ct.c_char_p],
-                                                     ct.c_void_p)
-        self._toRDF_func = Util.load_func(libsemsim, "Editor_toRDF", [ct.c_int64], ct.c_void_p)
+        self._addPhysicalProcess_cfunc = Util.load_func(libsemsim, "Editor_addPhysicalProcess", [ct.c_int64, ct.c_int64],
+                                                        ct.c_void_p)
+        self._addPhysicalForce_cfunc = Util.load_func(libsemsim, "Editor_addPhysicalForce", [ct.c_int64, ct.c_int64],
+                                                      ct.c_void_p)
+        self._checkValidMetaid_cfunc = Util.load_func(libsemsim, "Editor_checkValidMetaid", [ct.c_int64, ct.c_char_p],
+                                                      ct.c_void_p)
+        self._toRDF_cfunc = Util.load_func(libsemsim, "Editor_toRDF", [ct.c_int64], ct.c_void_p)
 
-        self._new_singular_annotation = Util.load_func(libsemsim, "new_singular_annotation", [ct.c_int64], ct.c_int64)
-        self._new_physical_entity = Util.load_func(libsemsim, "new_physical_entity", [ct.c_int64], ct.c_int64)
-        self._new_physical_process = Util.load_func(libsemsim, "new_physical_process", [ct.c_int64], ct.c_int64)
-        self._new_physical_force = Util.load_func(libsemsim, "new_physical_force", [ct.c_int64], ct.c_int64)
+        self._new_singular_annotation_cfunc = Util.load_func(libsemsim, "SingularAnnotation_new", [ct.c_int64], ct.c_int64)
+        self._new_physical_entity_cfunc = Util.load_func(libsemsim, "PhysicalEntity_new", [ct.c_int64], ct.c_int64)
+        self._new_physical_process_cfunc = Util.load_func(libsemsim, "PhysicalProcess_new", [ct.c_int64], ct.c_int64)
+        self._new_physical_force_cfunc = Util.load_func(libsemsim, "PhysicalForce_new", [ct.c_int64], ct.c_int64)
+        self._delete_cfunc = Util.load_func(libsemsim, "Editor_delete", [ct.c_int64], None)
 
     def add_namespace(self, namespace: str, prefix: str) -> None:
-        self._addNamespace_func(self.editor_ptr, namespace, str)
+        self._addNamespace_cfunc(self._editor_ptr, namespace, str)
 
     def add_singular_annotation(self, singular_annotation: SingularAnnotation) -> None:
-        self._addSingleAnnotation_func(self.editor_ptr, singular_annotation.get_ptr())
+        self._addSingleAnnotation_cfunc(self._editor_ptr, singular_annotation.get_ptr())
 
     def add_physical_entity(self, physical_entity: PhysicalEntity) -> None:
-        self._addPhysicalEntity_func(self.editor_ptr, physical_entity.get_ptr())
+        self._addPhysicalEntity_cfunc(self._editor_ptr, physical_entity.get_ptr())
 
     def add_physical_process(self, physical_process: PhysicalProcess) -> None:
-        self._addPhysicalProcess_func(self.editor_ptr, physical_process.get_ptr())
+        self._addPhysicalProcess_cfunc(self._editor_ptr, physical_process.get_ptr())
 
     def add_physical_force(self, physical_force: PhysicalForce) -> None:
-        self._addPhysicalForce_func(self.editor_ptr, physical_force.get_ptr())
+        self._addPhysicalForce_cfunc(self._editor_ptr, physical_force.get_ptr())
 
     def check_valid_metaid(self, id: str) -> None:
-        self._checkValidMetaid_func(self.editor_ptr, id)
+        self._checkValidMetaid_cfunc(self._editor_ptr, id)
 
     def to_rdf(self) -> None:
-        self._toRDF_func(self.editor_ptr)
+        self._toRDF_cfunc(self._editor_ptr)
 
     def new_singular_annotation(self) -> SingularAnnotation:
-        return SingularAnnotation(self._new_singular_annotation(self.editor_ptr))
+        return SingularAnnotation(self._new_singular_annotation_cfunc(self._editor_ptr))
 
     def new_physical_entity(self) -> PhysicalEntity:
-        return PhysicalEntity(self._new_physical_entity(self.editor_ptr))
+        return PhysicalEntity(self._new_physical_entity_cfunc(self._editor_ptr))
 
     def new_physical_process(self) -> PhysicalProcess:
-        return PhysicalProcess(self._new_physical_process(self.editor_ptr))
+        return PhysicalProcess(self._new_physical_process_cfunc(self._editor_ptr))
 
     def new_physical_force(self) -> PhysicalForce:
-        return PhysicalForce(self._new_physical_force(self.editor_ptr))
+        return PhysicalForce(self._new_physical_force_cfunc(self._editor_ptr))
 
+    def delete(self):
+        self._delete_cfunc(self._editor_ptr)
 
 class SingularAnnotation:
 
     def __init__(self, singular_annotation_ptr):
         self._singular_annotation_ptr = singular_annotation_ptr
 
-        self._setAbout = Util.load_func(libsemsim, "SingularAnnotation_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
-        self._setPredicate = Util.load_func(libsemsim, "SingularAnnotation_setPredicate",
-                                            [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
-        self._setPredicateNew = Util.load_func(libsemsim, "SingularAnnotation_setPredicateNew",
-                                               [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_int64)
-        self._setResourceLiteral = Util.load_func(libsemsim, "SingularAnnotation_setResourceLiteral",
-                                                  [ct.c_int64, ct.c_char_p], ct.c_int64)
-        self._setResourceUri = Util.load_func(libsemsim, "SingularAnnotation_setResourceUri", [ct.c_int64, ct.c_char_p],
-                                              ct.c_int64)
-        self._setResourceBlank = Util.load_func(libsemsim, "SingularAnnotation_setResourceBlank",
-                                                [ct.c_int64, ct.c_char_p], ct.c_int64)
-        self._getAbout = Util.load_func(libsemsim, "SingularAnnotation_getAbout", [ct.c_int64], ct.c_char_p)
-        self._str_func = Util.load_func(libsemsim, "SingularAnnotation_str", [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                        ct.c_char_p)
-        self._getPredicate = Util.load_func(libsemsim, "SingularAnnotation_getPredicate", [ct.c_int64], ct.c_char_p)
-        self._getResource = Util.load_func(libsemsim, "SingularAnnotation_getResource", [ct.c_int64], ct.c_char_p)
+        self._setAbout_cfunc = Util.load_func(libsemsim, "SingularAnnotation_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
+        self._setPredicate_cfunc = Util.load_func(libsemsim, "SingularAnnotation_setPredicate",
+                                                  [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+        self._setPredicateNew_cfunc = Util.load_func(libsemsim, "SingularAnnotation_setPredicateNew",
+                                                     [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_int64)
+        self._setResourceLiteral_cfunc = Util.load_func(libsemsim, "SingularAnnotation_setResourceLiteral",
+                                                        [ct.c_int64, ct.c_char_p], ct.c_int64)
+        self._setResourceUri_cfunc = Util.load_func(libsemsim, "SingularAnnotation_setResourceUri", [ct.c_int64, ct.c_char_p],
+                                                    ct.c_int64)
+        self._setResourceBlank_cfunc = Util.load_func(libsemsim, "SingularAnnotation_setResourceBlank",
+                                                      [ct.c_int64, ct.c_char_p], ct.c_int64)
+        self._getAbout_cfunc = Util.load_func(libsemsim, "SingularAnnotation_getAbout", [ct.c_int64], ct.c_void_p)
+        self._str_cfunc = Util.load_func(libsemsim, "SingularAnnotation_str", [ct.c_int64, ct.c_char_p, ct.c_char_p],
+                                         ct.c_void_p)
+        self._getPredicate_cfunc = Util.load_func(libsemsim, "SingularAnnotation_getPredicate", [ct.c_int64], ct.c_void_p)
+        self._getResource_cfunc = Util.load_func(libsemsim, "SingularAnnotation_getResource", [ct.c_int64], ct.c_void_p)
+        self._delete_cfunc = Util.load_func(libsemsim, "SingularAnnotation_delete", [ct.c_int64], None)
 
     def get_ptr(self):
         return self._singular_annotation_ptr
 
     def set_about(self, about: str) -> SingularAnnotation:
-        self._setAbout(self._singular_annotation_ptr, about.encode())
+        self._setAbout_cfunc(self._singular_annotation_ptr, about.encode())
         return self
 
     def set_predicate(self, namespace: str, term: str) -> SingularAnnotation:
-        self._setPredicate(self._singular_annotation_ptr, namespace.encode(), term.encode())
+        self._setPredicate_cfunc(self._singular_annotation_ptr, namespace.encode(), term.encode())
         return self
 
     def set_predicate_new(self, namespace: str, term: str, prefix: str) -> SingularAnnotation:
-        self._setPredicateNew(self._singular_annotation_ptr, namespace.encode(), term.encode(), prefix.encode())
+        self._setPredicateNew_cfunc(self._singular_annotation_ptr, namespace.encode(), term.encode(), prefix.encode())
         return self
 
     def set_resource_literal(self, literal: str) -> SingularAnnotation:
-        self._setResourceLiteral(self._singular_annotation_ptr, literal.encode())
+        self._setResourceLiteral_cfunc(self._singular_annotation_ptr, literal.encode())
         return self
 
     def set_resource_uri(self, uri: str) -> SingularAnnotation:
-        self._setResourceUri(self._singular_annotation_ptr, uri.encode())
+        self._setResourceUri_cfunc(self._singular_annotation_ptr, uri.encode())
         return self
 
     def set_resource_blank(self, blank_id: str) -> SingularAnnotation:
-        self._setResourceBlank(self._singular_annotation_ptr, blank_id.encode())
+        self._setResourceBlank_cfunc(self._singular_annotation_ptr, blank_id.encode())
         return self
 
     def get_about(self) -> str:
-        return self._getAbout(self._singular_annotation_ptr)
+        return Util.get_and_free_c_str(self._getAbout_cfunc(self._singular_annotation_ptr))
 
     def __str__(self):
-        return self.to_string("rdfxml-abbrev", "./Annotation.rdf").decode()
+        return self.to_string("rdfxml-abbrev", "./Annotation.rdf")
 
     def to_string(self, format: str, base_uri: str) -> str:
-        return self._str_func(self._singular_annotation_ptr, format.encode(), base_uri.encode())
+        return Util.get_and_free_c_str(
+            self._str_cfunc(self._singular_annotation_ptr, format.encode(), base_uri.encode()))
 
     def get_predicate(self) -> str:
-        return self._getPredicate(self._singular_annotation_ptr)
+        return Util.get_and_free_c_str(self._getPredicate_cfunc(self._singular_annotation_ptr))
 
     def get_resource(self) -> str:
-        return self._getResource(self._singular_annotation_ptr)
+        return Util.get_and_free_c_str(self._getResource_cfunc(self._singular_annotation_ptr))
+
+    def delete(self):
+        self._delete_cfunc(self._singular_annotation_ptr)
 
 
 class PhysicalEntity:
@@ -241,61 +260,65 @@ class PhysicalEntity:
     def __init__(self, physical_entity_ptr):
         self._physical_entity_ptr = physical_entity_ptr
 
-        self._setAbout = Util.load_func(libsemsim, "PhysicalEntity_setAbout", [ct.c_int64, ct.c_char_p], ct.c_void_p)
-        self._setPhysicalProperty = Util.load_func(libsemsim, "PhysicalEntity_setPhysicalProperty",
-                                                   [ct.c_int64, ct.c_char_p], ct.c_void_p)
-        self._setIdentity = Util.load_func(libsemsim, "PhysicalEntity_setIdentity", [ct.c_int64, ct.c_char_p],
-                                           ct.c_void_p)
-        self._addLocation = Util.load_func(libsemsim, "PhysicalEntity_addLocation", [ct.c_int64, ct.c_char_p],
-                                           ct.c_void_p)
-        self._getAbout = Util.load_func(libsemsim, "PhysicalEntity_getAbout", [ct.c_int64], ct.c_char_p)
-        self._getPhysicalProperty = Util.load_func(libsemsim, "PhysicalEntity_getPhysicalProperty", [ct.c_int64],
-                                                   ct.c_char_p)
-        self._getIdentity = Util.load_func(libsemsim, "PhysicalEntity_getIdentity", [ct.c_int64], ct.c_char_p)
-        self._getNumLocations = Util.load_func(libsemsim, "PhysicalEntity_getNumLocations", [ct.c_int64], ct.c_int)
-        self._getLocations = Util.load_func(libsemsim, "PhysicalEntity_getLocations", [ct.c_int64], ct.c_void_p)
-        self._str_func = Util.load_func(libsemsim, "PhysicalEntity_str", [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                        ct.c_char_p)
+        self._setAbout_cfunc = Util.load_func(libsemsim, "PhysicalEntity_setAbout", [ct.c_int64, ct.c_char_p], ct.c_void_p)
+        self._setPhysicalProperty_cfunc = Util.load_func(libsemsim, "PhysicalEntity_setPhysicalProperty",
+                                                         [ct.c_int64, ct.c_char_p], ct.c_void_p)
+        self._setIdentity_cfunc = Util.load_func(libsemsim, "PhysicalEntity_setIdentity", [ct.c_int64, ct.c_char_p],
+                                                 ct.c_void_p)
+        self._addLocation_cfunc = Util.load_func(libsemsim, "PhysicalEntity_addLocation", [ct.c_int64, ct.c_char_p],
+                                                 ct.c_void_p)
+        self._getAbout_cfunc = Util.load_func(libsemsim, "PhysicalEntity_getAbout", [ct.c_int64], ct.c_void_p)
+        self._getPhysicalProperty_cfunc = Util.load_func(libsemsim, "PhysicalEntity_getPhysicalProperty", [ct.c_int64],
+                                                         ct.c_void_p)
+        self._getIdentity_cfunc = Util.load_func(libsemsim, "PhysicalEntity_getIdentity", [ct.c_int64], ct.c_void_p)
+        self._getNumLocations_cfunc = Util.load_func(libsemsim, "PhysicalEntity_getNumLocations", [ct.c_int64], ct.c_int)
+        self._getLocations_cfunc = Util.load_func(libsemsim, "PhysicalEntity_getLocations", [ct.c_int64], ct.c_void_p)
+        self._str_cfunc = Util.load_func(libsemsim, "PhysicalEntity_str", [ct.c_int64, ct.c_char_p, ct.c_char_p],
+                                         ct.c_void_p)
+        self._delete_cfunc = Util.load_func(libsemsim, "PhysicalEntity_delete", [ct.c_int64], None)
 
     def get_ptr(self) -> ct.c_int64:
         return self._physical_entity_ptr
 
     def set_about(self, about: str) -> PhysicalEntity:
-        self._setAbout(self._physical_entity_ptr, about.encode())
+        self._setAbout_cfunc(self._physical_entity_ptr, about.encode())
         return self
 
     def set_physical_property(self, property: str) -> PhysicalEntity:
-        self._setPhysicalProperty(self.get_ptr(), property.encode())
+        self._setPhysicalProperty_cfunc(self.get_ptr(), property.encode())
         return self
 
     def set_identity(self, identity: str) -> PhysicalEntity:
-        self._setIdentity(self.get_ptr(), identity.encode())
+        self._setIdentity_cfunc(self.get_ptr(), identity.encode())
         return self
 
     def add_location(self, location: str) -> PhysicalEntity:
-        self._addLocation(self.get_ptr(), location.encode())
+        self._addLocation_cfunc(self.get_ptr(), location.encode())
         return self
 
     def get_about(self) -> str:
-        return self._getAbout(self.get_ptr())
+        return Util.get_and_free_c_str(self._getAbout_cfunc(self.get_ptr()))
 
     def get_physical_property(self) -> str:
-        return self._getPhysicalProperty(self.get_ptr())
+        return Util.get_and_free_c_str(self._getPhysicalProperty_cfunc(self.get_ptr()))
 
     def get_identity(self) -> str:
-        return self._getIdentity(self.get_ptr())
+        return Util.get_and_free_c_str(self._getIdentity_cfunc(self.get_ptr()))
 
     def get_num_locations(self) -> int:
-        return self._getNumLocations(self.get_ptr())
+        return self._getNumLocations_cfunc(self.get_ptr())
 
     def get_locations(self) -> List[str]:
-        return self._getLocations(self.get_ptr(), )
+        return self._getLocations_cfunc(self.get_ptr(), )
 
     def to_string(self, format: str, base_uri: str) -> str:
-        return self._str_func(self.get_ptr(), format.encode(), base_uri.encode()).decode()
+        return Util.get_and_free_c_str(self._str_cfunc(self.get_ptr(), format.encode(), base_uri.encode()))
 
     def __str__(self):
         return self.to_string("rdfxml-abbrev", "./Annotation.rdf")
+
+    def delete(self):
+        self._delete_cfunc(self._physical_entity_ptr)
 
 
 class PhysicalProcess:
@@ -303,56 +326,60 @@ class PhysicalProcess:
     def __init__(self, physical_process_ptr):
         self._physical_process_ptr = physical_process_ptr
 
-        self._setAbout = Util.load_func(libsemsim, "PhysicalProcess_setAbout", [ct.c_int64, ct.c_char_p], ct.c_void_p)
-        self._setPhysicalProperty = Util.load_func(libsemsim, "PhysicalProcess_setPhysicalProperty",
-                                                   [ct.c_int64, ct.c_char_p], ct.c_void_p)
-        self._addSource = Util.load_func(libsemsim, "PhysicalProcess_addSource",
-                                         [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_void_p)
-        self._addSink = Util.load_func(libsemsim, "PhysicalProcess_addSink",
-                                       [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_void_p)
-        self._addMediator = Util.load_func(libsemsim, "PhysicalProcess_addMediator",
-                                           [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_void_p)
-        self._str_func = Util.load_func(libsemsim, "PhysicalProcess_str",
-                                        [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_char_p)
-        self._getAbout = Util.load_func(libsemsim, "PhysicalProcess_getAbout", [ct.c_int64], ct.c_char_p)
-        self._getPhysicalProperty = Util.load_func(libsemsim, "PhysicalProcess_getPhysicalProperty", [ct.c_int64],
-                                                   ct.c_char_p)
+        self._setAbout_cfunc = Util.load_func(libsemsim, "PhysicalProcess_setAbout", [ct.c_int64, ct.c_char_p], ct.c_void_p)
+        self._setPhysicalProperty_cfunc = Util.load_func(libsemsim, "PhysicalProcess_setPhysicalProperty",
+                                                         [ct.c_int64, ct.c_char_p], ct.c_void_p)
+        self._addSource_cfunc = Util.load_func(libsemsim, "PhysicalProcess_addSource",
+                                               [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_void_p)
+        self._addSink_cfunc = Util.load_func(libsemsim, "PhysicalProcess_addSink",
+                                             [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_void_p)
+        self._addMediator_cfunc = Util.load_func(libsemsim, "PhysicalProcess_addMediator",
+                                                 [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_void_p)
+        self._str_cfunc = Util.load_func(libsemsim, "PhysicalProcess_str",
+                                         [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_void_p)
+        self._getAbout_cfunc = Util.load_func(libsemsim, "PhysicalProcess_getAbout", [ct.c_int64], ct.c_void_p)
+        self._getPhysicalProperty_cfunc = Util.load_func(libsemsim, "PhysicalProcess_getPhysicalProperty", [ct.c_int64],
+                                                         ct.c_void_p)
+        self._delete_cfunc = Util.load_func(libsemsim, "PhysicalProcess_delete", [ct.c_int64], None)
 
     def get_ptr(self):
         return self._physical_process_ptr
 
     def set_about(self, about: str) -> PhysicalProcess:
-        self._setAbout(self._physical_process_ptr, about.encode())
+        self._setAbout_cfunc(self._physical_process_ptr, about.encode())
         return self
 
     def set_physical_property(self, property: str) -> PhysicalProcess:
-        self._setPhysicalProperty(self._physical_process_ptr, property.encode())
+        self._setPhysicalProperty_cfunc(self._physical_process_ptr, property.encode())
         return self
 
     def add_source(self, source_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._addSource(self._physical_process_ptr, source_id.encode(), multiplier, physical_entity_reference.encode())
+        self._addSource_cfunc(self._physical_process_ptr, source_id.encode(), multiplier, physical_entity_reference.encode())
         return self
 
     def add_sink(self, sink_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._addSink(self._physical_process_ptr, sink_id.encode(), multiplier, physical_entity_reference.encode())
+        self._addSink_cfunc(self._physical_process_ptr, sink_id.encode(), multiplier, physical_entity_reference.encode())
         return self
 
     def add_mediator(self, mediator_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._addMediator(self._physical_process_ptr, mediator_id.encode(), multiplier,
-                          physical_entity_reference.encode())
+        self._addMediator_cfunc(self._physical_process_ptr, mediator_id.encode(), multiplier,
+                                physical_entity_reference.encode())
         return self
 
     def to_string(self, format: str, base_uri: str):
-        return self._str_func(self._physical_process_ptr, format.encode(), base_uri.encode()).decode()
+        return Util.get_and_free_c_str(self._str_cfunc(self._physical_process_ptr, format.encode(), base_uri.encode()))
 
     def __str__(self):
         return self.to_string("rdfxml-abbrev", "./Annotation.rdf")
 
     def get_about(self) -> str:
-        return self._getAbout(self._physical_process_ptr)
+        return Util.get_and_free_c_str(self._getAbout_cfunc(self._physical_process_ptr))
 
     def get_physical_property(self):
-        return self._getPhysicalProperty(self._physical_process_ptr)
+        return Util.get_and_free_c_str(self._getPhysicalProperty_cfunc(self._physical_process_ptr))
+
+    def delete(self):
+        self._delete_cfunc(self._physical_process_ptr)
 
 
 class PhysicalForce:
@@ -360,46 +387,50 @@ class PhysicalForce:
     def __init__(self, physical_force_ptr):
         self._physical_force_ptr = physical_force_ptr
 
-        self._setAbout = Util.load_func(libsemsim, "PhysicalForce_setAbout", [ct.c_int64, ct.c_char_p], ct.c_void_p)
-        self._setPhysicalProperty = Util.load_func(libsemsim, "PhysicalForce_setPhysicalProperty",
-                                                   [ct.c_int64, ct.c_char_p], ct.c_void_p)
-        self._addSource = Util.load_func(libsemsim, "PhysicalForce_addSource",
-                                         [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_void_p)
-        self._addSink = Util.load_func(libsemsim, "PhysicalForce_addSink",
-                                       [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_void_p)
-        self._str_func = Util.load_func(libsemsim, "PhysicalForce_str",
-                                        [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_char_p)
-        self._getAbout = Util.load_func(libsemsim, "PhysicalForce_getAbout", [ct.c_int64], ct.c_char_p)
-        self._getPhysicalProperty = Util.load_func(libsemsim, "PhysicalForce_getPhysicalProperty", [ct.c_int64],
-                                                   ct.c_char_p)
+        self._setAbout_cfunc = Util.load_func(libsemsim, "PhysicalForce_setAbout", [ct.c_int64, ct.c_char_p], ct.c_void_p)
+        self._setPhysicalProperty_cfunc = Util.load_func(libsemsim, "PhysicalForce_setPhysicalProperty",
+                                                         [ct.c_int64, ct.c_char_p], ct.c_void_p)
+        self._addSource_cfunc = Util.load_func(libsemsim, "PhysicalForce_addSource",
+                                               [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_void_p)
+        self._addSink_cfunc = Util.load_func(libsemsim, "PhysicalForce_addSink",
+                                             [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_void_p)
+        self._str_cfunc = Util.load_func(libsemsim, "PhysicalForce_str",
+                                         [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_void_p)
+        self._getAbout_cfunc = Util.load_func(libsemsim, "PhysicalForce_getAbout", [ct.c_int64], ct.c_void_p)
+        self._getPhysicalProperty_cfunc = Util.load_func(libsemsim, "PhysicalForce_getPhysicalProperty", [ct.c_int64],
+                                                         ct.c_void_p)
+        self._delete_cfunc = Util.load_func(libsemsim, "PhysicalForce_delete", [ct.c_int64], None)
 
     def get_ptr(self):
         return self._physical_force_ptr
 
     def set_about(self, about: str) -> PhysicalForce:
-        self._setAbout(self._physical_force_ptr, about.encode())
+        self._setAbout_cfunc(self._physical_force_ptr, about.encode())
         return self
 
     def set_physical_property(self, property: str) -> PhysicalForce:
-        self._setPhysicalProperty(self._physical_force_ptr, property.encode())
+        self._setPhysicalProperty_cfunc(self._physical_force_ptr, property.encode())
         return self
 
     def add_source(self, source_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
-        self._addSource(self._physical_force_ptr, source_id.encode(), multiplier, physical_entity_reference.encode())
+        self._addSource_cfunc(self._physical_force_ptr, source_id.encode(), multiplier, physical_entity_reference.encode())
         return self
 
     def add_sink(self, sink_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
-        self._addSink(self._physical_force_ptr, sink_id.encode(), multiplier, physical_entity_reference.encode())
+        self._addSink_cfunc(self._physical_force_ptr, sink_id.encode(), multiplier, physical_entity_reference.encode())
         return self
 
     def to_string(self, format: str, base_uri: str):
-        return self._str_func(self._physical_force_ptr, format.encode(), base_uri.encode()).decode()
+        return Util.get_and_free_c_str(self._str_cfunc(self._physical_force_ptr, format.encode(), base_uri.encode()))
 
     def __str__(self):
         return self.to_string("rdfxml-abbrev", "./Annotation.rdf")
 
     def get_about(self) -> str:
-        return self._getAbout(self._physical_force_ptr)
+        return Util.get_and_free_c_str(self._getAbout_cfunc(self._physical_force_ptr))
 
     def get_physical_property(self):
-        return self._getPhysicalProperty(self._physical_force_ptr)
+        return Util.get_and_free_c_str(self._getPhysicalProperty_cfunc(self._physical_force_ptr))
+
+    def delete(self):
+        self._delete_cfunc(self._physical_force_ptr)

@@ -18,19 +18,27 @@ namespace semsim {
     extern "C" {
 #endif
 
+        void free_c_char_star(char* c);
+
+        void free_c_char_star_star(char** c, int size);
+
+        char* _func_that_returns_dynamic_alloc_str();
+
+        char** _func_that_returns_dynamic_alloc_char_star_star();
+
 /***************************************************
  * RDF class methods
  */
 
-    semsim::RDF *new_rdf();
+    semsim::RDF *RDF_new();
 
-    void RDF_free(semsim::RDF *rdf_ptr);
+    void RDF_delete(semsim::RDF *rdf_ptr);
 
     char *RDF_getBaseUri(semsim::RDF *rdf_ptr);
 
     void RDF_setBaseUri(semsim::RDF *rdf_ptr, const char *uri);
 
-    const char *RDF_toString(semsim::RDF *rdf_ptr, const char *format, const char *base_uri);
+    char * RDF_toString(semsim::RDF *rdf_ptr, const char *format, const char *base_uri);
 
     void RDF_fromString(semsim::RDF *rdf_ptr, const char *str, const char *format);
 
@@ -53,8 +61,6 @@ namespace semsim {
  *  Editor class methods
  */
 
-    Editor *libsemsim_new_editor(semsim::RDF *rdf_ptr);
-
     void Editor_addNamespace(Editor *editor_ptr, const char *namespace_, const char *prefix);
 
     void Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
@@ -69,11 +75,15 @@ namespace semsim {
 
     void Editor_toRDF(Editor *editor_ptr);
 
+    void Editor_delete(Editor *editor_ptr);
+
 
 /*********************************************************************
  * SingularAnnotation class methods
  */
-    SingularAnnotation *new_singular_annotation(Editor *editor_ptr);
+    SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr);
+
+    void SingularAnnotation_delete(SingularAnnotation* singularAnnotation);
 
     SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
 
@@ -94,21 +104,21 @@ namespace semsim {
     SingularAnnotation *
     SingularAnnotation_setResourceBlank(SingularAnnotation *singular_annotation, const char *blank_id);
 
-    const char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
+    char * SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
 
-    const char *
+    char *
     SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format, const char *base_uri);
 
-    const char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
+    char * SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
 
-    const char *SingularAnnotation_getResource(SingularAnnotation *singular_annotation);
+    char *SingularAnnotation_getResource(SingularAnnotation *singular_annotation);
 
 /*********************************************************************
  * PhysicalEntity class methods
  */
-    PhysicalEntity *new_physical_entity(Editor *editor_ptr);
+    PhysicalEntity *PhysicalEntity_new(Editor *editor_ptr);
 
-    void free_physical_entity(PhysicalEntity *physical_entity_ptr);
+    void PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr);
 
     PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about);
 
@@ -122,22 +132,24 @@ namespace semsim {
             PhysicalEntity *physical_entity_ptr, const char *location_resource);
 
 
-    const char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);
+    char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);
 
-    const char *PhysicalEntity_getPhysicalProperty(PhysicalEntity *physical_entity_ptr);
+    char *PhysicalEntity_getPhysicalProperty(PhysicalEntity *physical_entity_ptr);
 
-    const char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr);
+    char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr);
 
     int PhysicalEntity_getNumLocations(PhysicalEntity *physicalEntity);
 
     char **PhysicalEntity_getLocations(PhysicalEntity *physical_entity_ptr);
 
-    const char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
+    char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
 
 /*********************************************************************
  * PhysicalProcess class methods
  */
-    PhysicalProcess *new_physical_process(Editor *editor_ptr);
+    PhysicalProcess *PhysicalProcess_new(Editor *editor_ptr);
+
+    void PhysicalProcess_delete(PhysicalProcess* physicalProcess);
 
     PhysicalProcess *PhysicalProcess_setAbout(
             PhysicalProcess *physical_process, const char *about);
@@ -157,17 +169,18 @@ namespace semsim {
             PhysicalProcess *physical_process, const char *mediator_metaid, double multiplier,
             const char *physical_entity_reference);
 
-    const char *
-    PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
+    char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
 
-    const char *PhysicalProcess_getAbout(PhysicalProcess *physical_process_ptr);
+    char *PhysicalProcess_getAbout(PhysicalProcess *physical_process_ptr);
 
-    const char *PhysicalProcess_getPhysicalProperty(PhysicalProcess *physical_process_ptr);
+    char *PhysicalProcess_getPhysicalProperty(PhysicalProcess *physical_process_ptr);
 
 /*********************************************************************
  * PhysicalForce class methods
  */
-    PhysicalForce *new_physical_force(Editor *editor_ptr);
+    PhysicalForce *PhysicalForce_new(Editor *editor_ptr);
+
+    void PhysicalForce_delete(PhysicalForce* physicalForce);
 
     PhysicalForce *PhysicalForce_setAbout(
             PhysicalForce *physical_force_ptr, const char *about);
@@ -187,12 +200,13 @@ namespace semsim {
 
     int PhysicalForce_getNumSinks(PhysicalForce *physicalForce);
 
-    const char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
+    char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
 
-    const char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
+    char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
+
+    char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr) ;
 
 
-    const char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr) ;
 
 #ifdef __cplusplus
     }
