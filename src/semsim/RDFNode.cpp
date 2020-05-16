@@ -21,8 +21,9 @@ namespace semsim {
               value_(std::move(value)),
               xml_language_(xml_language),
               is_wf_xml_(is_wf_xml) {
-
     }
+
+    RDFNode::~RDFNode() = default;
 
     /*
      * Retrive a value from a librdf_node object,

@@ -18,18 +18,19 @@ void semsim::Writer::init(librdf_world *world, librdf_model *model,
     this->world_ = world;
 
     if (!world) {
-        throw std::invalid_argument("World argument invalid");
+        throw NullPointerException("Writer::init: world");
     }
-    this->base_uri_ = librdf_new_uri(world, (const unsigned char *) base_uri.c_str());
-    if (!base_uri_) {
-        throw std::invalid_argument("base_uri_ argument invalid");
-    }
-    this->validateBaseUri();
 
     this->model_ = model;
     if (!model) {
-        throw std::invalid_argument("model argument invalid");
+        throw NullPointerException("Writer::init: model");
     }
+    auto base_uri_cstr = (unsigned char *) base_uri.c_str();
+    this->base_uri_ = librdf_new_uri(world, base_uri_cstr);
+    if (!base_uri_) {
+        throw NullPointerException("Writer::init: base_uri_");
+    }
+    this->validateBaseUri();
 
     this->format_ = std::move(format);
     if (std::find(valid_writer_names.begin(), valid_writer_names.end(), this->format_) == valid_writer_names.end()) {
@@ -42,12 +43,12 @@ void semsim::Writer::init(librdf_world *world, librdf_model *model,
     }
     serializer = librdf_new_serializer(world, this->format_.c_str(), nullptr, nullptr);
     if (!serializer) {
-        throw std::invalid_argument("Failed to create serializer\n");
+        throw NullPointerException("Writer::init: serializer");
     }
     this->raptor_world_ptr_ = librdf_world_get_raptor(world);
 
     if (!raptor_world_ptr_) {
-        throw std::invalid_argument("World argument invalid");
+        throw NullPointerException("Writer::init: raptor_world_ptr");
     }
 
     //todo built interface to allow users to set options
@@ -64,6 +65,14 @@ semsim::Writer::Writer(librdf_world *world, librdf_model *model,
     init(world, model, base_uri, format);
 }
 
+/*
+ * Todo this version of writer contains memory leaks, since RDF is responsuble for
+ *  freeing librdf structures yet here we create them again and do not (but cannot) free
+ *  I think this design is possible flawed here. Need a way of controlling Writer through RDF
+ *  since the model.
+ *
+ *  I think I need a subclass of Writer so i can create a separate destructor
+ */
 semsim::Writer::Writer(semsim::Triple triple, const std::string &base_uri, std::string format) {
     // when creating a writer from a Triple, we just create a locally scoped rdf model and storage
     librdf_world *world = librdf_new_world();
@@ -110,6 +119,10 @@ semsim::Writer::Writer(semsim::Triples triples, const std::string &base_uri, std
     }
 }
 
+semsim::Writer::~Writer() {
+    librdf_free_serializer(serializer);
+    librdf_free_uri(base_uri_);
+}
 
 void semsim::Writer::registerNamespace(const std::string &ns, const std::string &prefix) {
     librdf_uri *ns_uri = librdf_new_uri(world_, (const unsigned char *) ns.c_str());
@@ -128,19 +141,22 @@ void semsim::Writer::setOption(const std::string &option, const std::string &val
     raptor_uri *uri = raptor_new_uri(raptor_world_ptr_, (const unsigned char *) (feature_uri_base + option).c_str());
     librdf_node *node = librdf_new_node_from_literal(world_, (const unsigned char *) value.c_str(), nullptr, 0);
     librdf_serializer_set_feature(serializer, uri, node);
+    librdf_free_uri(uri);
+    librdf_free_node(node);
 }
 
 std::string semsim::Writer::toString() {
     void *string = nullptr;
     raptor_iostream *iostr = raptor_new_iostream_to_string(raptor_world_ptr_, (void **) &string, nullptr, malloc);
     if (!iostr)
-        throw std::invalid_argument("raptor_iostream was not created in semsim::Writer::toString()");
+        throw NullPointerException("Writer::toString(): raptor_iostream");
 
     int failure = librdf_serializer_serialize_model_to_iostream(serializer, base_uri_, model_, iostr);
     if (failure) { // i.e. if non-0
-        throw std::logic_error("Could not write model_.");
+        throw std::logic_error("Writer::toString(): Failed to serialize model.");
     }
     std::string output_string((const char *) string);
+    free(string);
     return output_string;
 }
 

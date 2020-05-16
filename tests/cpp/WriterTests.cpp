@@ -1,12 +1,3 @@
-//
-// Created by Ciaran on 4/9/2020.
-//
-
-//
-// Created by Ciaran on 4/8/2020.
-//
-
-
 #include <semsim/Writer.h>
 
 #include "gtest/gtest.h"
@@ -44,6 +35,14 @@ public:
         librdf_model_add_statement(model, statement);
     };
 
+    ~WriterTests() {
+        librdf_free_statement(statement);
+        librdf_free_model(model);
+        librdf_free_storage(storage);
+        librdf_free_world(world);
+    }
+
+
     void test_writer(std::string output_format, const std::string &expected) {
         semsim::Writer writer(world, model, "file://./semsim_model.xml", std::move(output_format));
         writer.registerNamespace("http://purl.org/dc/elements/1.1/", "dcterms");
@@ -73,7 +72,6 @@ TEST_F(WriterTests, TestWriteModelTontriples) {
     std::string expected = "<http://www.dajobe.org/> <http://purl.org/dc/elements/1.1/title> \"My Home Page\" .\n";
     test_writer("ntriples", expected);
 }
-//todo test output format validator
 
 TEST_F(WriterTests, TestWriteModelToturtle) {
     std::string expected = "@base <file://./semsim_model.xml> .\n"

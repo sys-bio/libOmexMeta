@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/4/2020.
 //
 
-#include "Subject.h"
-#include "Error.h"
+#include "semsim/Subject.h"
+#include "semsim/Error.h"
 
 namespace semsim {
 
@@ -19,8 +19,10 @@ namespace semsim {
     }
 
     librdf_node *Subject::toRdfNode() const {
-        //test for null!!
-        return rdf_node_ptr_->toRdfNode();
+        librdf_node *node = rdf_node_ptr_->toRdfNode();
+        if (!node) {
+            throw NullPointerException("Subject::ToRdfNode(): node object nullptr");
+        }
     }
 
     std::string Subject::str() const {
@@ -28,12 +30,13 @@ namespace semsim {
     }
 
     Subject::Subject(librdf_world *world, librdf_node *node)
-        : world_(world), rdf_node_ptr_(RDFNode::fromRDFNode(world, node)){
-
+            : world_(world), rdf_node_ptr_(RDFNode::fromRDFNode(world, node)) {
     }
 
+    Subject::~Subject() = default;
+
     bool Subject::isSet() const {
-        if (rdf_node_ptr_){
+        if (rdf_node_ptr_) {
             return true;
         }
         return false;
