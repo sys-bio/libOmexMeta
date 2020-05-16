@@ -14,8 +14,16 @@ namespace semsim {
             : world_(world), model_(model), about(metaid), physical_property_(propertyResource), type_(type) {
     }
 
-    PhysicalPhenomenon::PhysicalPhenomenon(librdf_world *world, librdf_model *model)
-        : world_(world), model_(model){
+    PhysicalPhenomenon::PhysicalPhenomenon(librdf_world *world, librdf_model *model) {
+        if (!world) {
+            throw NullPointerException("PhysicalPhenomenon::PhysicalPhenomenon: world argument is nullptr");
+        }
+        this->world_ = world;
+
+        if (!model) {
+            throw NullPointerException("PhysicalPhenomenon::PhysicalPhenomenon: model argument is nullptr");
+        }
+        this->model_ = model;
 
     }
 

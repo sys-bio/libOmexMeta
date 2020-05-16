@@ -22,23 +22,25 @@
 semsim::LibRDFObjectsTuple semsim::RDF::init() {
     // init librdf world object
     librdf_world *world_ = librdf_new_world();
+    if (!world_) {
+        throw NullPointerException("RDF::init(): world_");
+    }
     librdf_world_open(world_);
 
     // init raptor world obj
     raptor_world *raptor_world_ptr_ = librdf_world_get_raptor(world_);
     if (!raptor_world_ptr_) {
-        throw std::invalid_argument("failed to create a raptor_world* object from librdf_world");
+        throw NullPointerException("RDF::init(): raptor_world_ptr_");
     }
 
-    // init raptor world obj
     //todo work out and make use of the arguments to librdf_new_storage
     librdf_storage *storage_ = librdf_new_storage(world_, "memory", "semsim_store", nullptr);
     if (!storage_) {
-        throw std::invalid_argument("Failed to create new storage\n");
+        throw NullPointerException("RDF::init(): storage_");
     }
     librdf_model *model_ = librdf_new_model(world_, storage_, nullptr);
     if (!model_) {
-        throw std::invalid_argument("Failed to create model\n");
+        throw NullPointerException("RDF::init(): model_");
     }
     LibRDFObjectsTuple objectsTuple(world_, raptor_world_ptr_, storage_, model_);
 
@@ -64,18 +66,31 @@ semsim::RDF::RDF(librdf_world *world, raptor_world *raptor_world_, librdf_storag
         storage_(storage),
         model_(model) {
     base_uri_ = librdf_new_uri(getWorld(), (const unsigned char *) "file://./semsim_model.rdf");
-
-    // add some predefined namespaces for the serializer.
-
-
+    if (!base_uri_) {
+        throw NullPointerException("RDF::RDF(): base_uri_");
+    }
 }
 
 semsim::RDF::~RDF() {
-    // these free functions are not needed since
-    // the memory way not allocated with new!
-//    librdf_free_model(model_);
-//    librdf_free_storage(storage_);
-//    librdf_free_world(world_);
+
+    if (this->model_){
+        librdf_free_model(model_);
+    }
+
+    if (this->storage_){
+        librdf_free_storage(storage_);
+    }
+    if (this->base_uri_){
+        librdf_free_uri(base_uri_);
+    }
+
+    if (this->raptor_world_){
+        raptor_free_world(raptor_world_);
+    }
+    if (this->world_){
+        librdf_free_world(world_);
+    }
+
 }
 
 semsim::RDF::RDF(const semsim::RDF &libRdfModel) {

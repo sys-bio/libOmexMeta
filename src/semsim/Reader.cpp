@@ -32,7 +32,7 @@ void semsim::Reader::setFormat(const std::string &f) {
     this->parser_ = makeParser(f);
 }
 
-librdf_parser *semsim::Reader::makeParser(const std::string& format) {
+librdf_parser *semsim::Reader::makeParser(const std::string &format) {
     if (std::find(valid_parser_names.begin(), valid_parser_names.end(), format) == valid_parser_names.end()) {
         std::ostringstream os;
         os << __FILE__ << ":" << __LINE__ << ": Format \"" << format
@@ -62,10 +62,8 @@ librdf_parser *semsim::Reader::makeParser(const std::string& format) {
     return parser_;
 }
 
-std::string semsim::Reader::fromString(const std::string &rdf_string) {
-    // use a default base uri?
+void semsim::Reader::fromString(const std::string &rdf_string) {
     librdf_parser_parse_string_into_model(parser_, (const unsigned char *) rdf_string.c_str(), base_uri_, model_);
-
 }
 
 void semsim::Reader::fromFile(const std::string &filename) {
@@ -90,14 +88,28 @@ vector<string> semsim::Reader::getSeenNamespaces() {
     int number_of_prefixes_seen = librdf_parser_get_namespaces_seen_count(parser_);
     std::vector<std::string> namespaces;
     raptor_uri *ns_uri;
+    const char* uri_string;
     for (int i = 0; i < number_of_prefixes_seen; i++) {
         ns_uri = librdf_parser_get_namespaces_seen_uri(parser_, i);
         if (!ns_uri) {
-            throw std::logic_error("couldn't get namespace uri");
+            throw std::logic_error("semsim::Reader::getSeenNamespaces(): can't get namespace uri");
         }
-
-        namespaces.emplace_back((const char*)raptor_uri_to_string(ns_uri));
+        /*
+         * Note: the command:
+         *     const char* uri_string = (const char*) raptor_uri_to_string(ns_uri)
+         * is a memory leak because the unsigned char* returned by raptor_uri_to_string
+         * is unreachable and thus cannot be freed.
+         *
+         * Solution:
+         *      split the command into two lines.
+         */
+        unsigned char* s = raptor_uri_to_string(ns_uri);
+        uri_string = (const char *) s;
+        namespaces.push_back(std::string(uri_string));
+        free(s);
+        librdf_free_uri(ns_uri);
     }
+
     return namespaces;
 }
 

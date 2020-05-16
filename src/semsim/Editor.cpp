@@ -5,6 +5,7 @@
 #include "Editor.h"
 #include "RDF.h"
 #include "librdf.h"
+#include "semsim/Error.h"
 
 #include <utility>
 #include "SemsimUtils.h"
@@ -124,10 +125,17 @@ void semsim::Editor::addCompositeAnnotation(semsim::PhysicalPhenomenonPtr phenom
 }
 
 librdf_world *semsim::Editor::getWorld() const {
+    if (!world_) {
+        throw NullPointerException("semsim::Editor::getWorld(): world_");
+    }
     return world_;
 }
 
 librdf_model *semsim::Editor::getModel() const {
+    if (!model_) {
+        throw NullPointerException("semsim::Editor::getModel(): model_");
+
+    }
     return model_;
 }
 

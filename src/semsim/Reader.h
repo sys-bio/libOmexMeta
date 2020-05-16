@@ -45,7 +45,7 @@ namespace semsim {
 
         void setFormat(const std::string &f);
 
-        std::string fromString(const std::string &rdf_string);
+        void fromString(const std::string &rdf_string);
 
         void fromFile(const std::string &filename);
 
