@@ -24,6 +24,9 @@ set(SEMSIM_SOURCES
         "SemsimCombineArchive.cpp"
         "Triples.cpp"
         "SemsimCApi.cpp"
+        "RelandAPIWrappers/CWrapper.cpp"
+        "RelandAPIWrappers/LibrdfWorld.cpp"
+        "RelandAPIWrappers/RaptorWorld.cpp"
         )
 
 set(SEMSIM_HEADERS
@@ -52,6 +55,9 @@ set(SEMSIM_HEADERS
         "SemsimCombineArchive.h"
         "Triples.h"
         "SemsimCApi.h"
+        "RelandAPIWrappers/CWrapper.h"
+        "RelandAPIWrappers/LibrdfWorld.h"
+        "RelandAPIWrappers/RaptorWorld.h"
         )
 
 message(STATUS "SEMSIM_HEADERS ${SEMSIM_HEADERS}")

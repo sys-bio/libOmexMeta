@@ -22,6 +22,7 @@
 semsim::LibRDFObjectsTuple semsim::RDF::init() {
     // init librdf world object
     librdf_world *world_ = librdf_new_world();
+
     if (!world_) {
         throw NullPointerException("RDF::init(): world_");
     }

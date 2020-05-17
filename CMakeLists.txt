@@ -150,7 +150,7 @@ else ()
 
 
     PrintOutPaths()
-    add_subdirectory(src/semsim)
+    add_subdirectory(src)
 
     if (BUILD_TESTS)
         enable_testing()
