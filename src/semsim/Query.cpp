@@ -46,6 +46,7 @@ namespace semsim {
             qerr2 << __FILE__ << ":" << __LINE__ << ": librdf_query_results object was not created";
             throw LibRDFException(qerr2.str());
         }
+        librdf_free_query(q);
     }
 
     bool Query::isBoolean() {

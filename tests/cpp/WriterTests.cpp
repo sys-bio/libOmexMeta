@@ -252,8 +252,8 @@ TEST_F(WriterTests, WriterTestFromTriple) {
 
     semsim::Triple triple(world, subject, predicatePtr, resource);
 
-    semsim::Writer writer(triple);
-    std::cout << writer.toString() << std::endl;
+    semsim::TripleWriter tripleWriter(triple);
+    std::cout << tripleWriter.toString() << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -262,7 +262,7 @@ TEST_F(WriterTests, WriterTestFromTriple) {
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/resource/identifier\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
-    std::string actual = writer.toString();
+    std::string actual = tripleWriter.toString();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -278,8 +278,8 @@ TEST_F(WriterTests, WriterTestFromTriples) {
     semsim::Triple triple2(world, subject, predicatePtr2, resource);
     semsim::Triples triples({triple1, triple2});
 
-    semsim::Writer writer(triples);
-    std::cout << writer.toString() << std::endl;
+    semsim::TripleWriter tripleWriter(triples);
+    std::cout << tripleWriter.toString() << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -290,7 +290,7 @@ TEST_F(WriterTests, WriterTestFromTriples) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
-    std::string actual = writer.toString();
+    std::string actual = tripleWriter.toString();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 

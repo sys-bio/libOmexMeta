@@ -67,6 +67,7 @@ void semsim::Editor::toRDF() {
             librdf_statement *stmt = triple.toStatement();
             //todo add get namespace to triple
             librdf_model_add_statement(model_, stmt);
+            librdf_free_statement(stmt);
         }
     }
 }

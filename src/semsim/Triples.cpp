@@ -68,7 +68,7 @@ namespace semsim {
     }
 
     std::string Triples::str(std::string format, std::string base) {
-        return Writer(*this, base, format).toString();
+        return TripleWriter(*this, base, format).toString();
     }
 
 
