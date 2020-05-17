@@ -161,6 +161,22 @@ TEST_F(RDFTests, testQueryResultsAsMap) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
+TEST_F(RDFTests, TestSize) {
+    HERE();
+    std::string q = "PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
+                    "SELECT ?x ?y ?z\n"
+                    "WHERE {?x ?y ?z }";
+    HERE();
+    semsim::RDF rdf = semsim::RDF::fromString(samples.singular_annotation4, "rdfxml");
+    HERE();
+    int expected = 1;
+    HERE();
+    int actual = rdf.size();
+    HERE();
+    ASSERT_EQ(expected, actual);
+    HERE();
+}
+
 
 
 

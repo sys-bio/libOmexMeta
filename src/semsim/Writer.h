@@ -14,11 +14,9 @@
 
 namespace semsim {
     class Writer {
-        librdf_world *world_;
         raptor_world *raptor_world_ptr_;
         std::string format_;
-        librdf_uri *base_uri_;
-        librdf_model *model_;
+        std::string base_uri_;
         librdf_serializer *serializer;
 
         std::vector<std::string> valid_writer_names = {
@@ -38,21 +36,18 @@ namespace semsim {
 
         void validateBaseUri();
 
+    protected:
         void init(librdf_world *world, librdf_model *model,
                   const std::string &base_uri,
                   std::string format);
 
+        librdf_world *world_;
+        librdf_model *model_;
     public:
 
+        Writer();
+
         Writer(librdf_world *world, librdf_model *model,
-               const std::string &base_uri = "file://annotation.rdf",
-               std::string format = "rdfxml-abbrev");
-
-        Writer(Triple triple,
-               const std::string &base_uri = "file://annotation.rdf",
-               std::string format = "rdfxml-abbrev");
-
-        Writer(Triples triples,
                const std::string &base_uri = "file://annotation.rdf",
                std::string format = "rdfxml-abbrev");
 
@@ -70,11 +65,27 @@ namespace semsim {
 
         void registerNamespace(const std::unordered_map<std::string, std::string> &ns_map);
 
-        std::string print();
-
         void setOption(const std::string &option, const std::string &value);
 
     };
+
+    class TripleWriter : public Writer {
+        librdf_storage *storage_;
+    public:
+        using Writer::init;
+
+        TripleWriter(Triple triple,
+                     const std::string &base_uri = "file://annotation.rdf",
+                     std::string format = "rdfxml-abbrev");
+
+        TripleWriter(Triples triples,
+                     const std::string &base_uri = "file://annotation.rdf",
+                     std::string format = "rdfxml-abbrev");
+
+        ~TripleWriter();
+
+    };
+
 }
 
 #endif //LIBSEMGEN_WRITER_H

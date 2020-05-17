@@ -25,13 +25,7 @@ void semsim::Writer::init(librdf_world *world, librdf_model *model,
     if (!model) {
         throw NullPointerException("Writer::init: model");
     }
-    auto base_uri_cstr = (unsigned char *) base_uri.c_str();
-    this->base_uri_ = librdf_new_uri(world, base_uri_cstr);
-    if (!base_uri_) {
-        throw NullPointerException("Writer::init: base_uri_");
-    }
-    this->validateBaseUri();
-
+    base_uri_ = base_uri;
     this->format_ = std::move(format);
     if (std::find(valid_writer_names.begin(), valid_writer_names.end(), this->format_) == valid_writer_names.end()) {
         std::ostringstream os;
@@ -73,55 +67,10 @@ semsim::Writer::Writer(librdf_world *world, librdf_model *model,
  *
  *  I think I need a subclass of Writer so i can create a separate destructor
  */
-semsim::Writer::Writer(semsim::Triple triple, const std::string &base_uri, std::string format) {
-    // when creating a writer from a Triple, we just create a locally scoped rdf model and storage
-    librdf_world *world = librdf_new_world();
-    librdf_storage *storage = librdf_new_storage(world, "memory", "triple_store", nullptr);
-    if (!storage) {
-        throw LibRDFException("Writer::Writer: storage not created");
-    }
-    librdf_model *model = librdf_new_model(world, storage, nullptr);
-    if (!model) {
-        throw LibRDFException("Writer::Writer: model not created");
-    }
-
-    // add statements to the model
-    librdf_model_add_statement(model, triple.toStatement());
-
-    // initialize the writer
-    init(world, model, base_uri, format);
-
-    // determine whether we recognize the namespace and add it if we do.
-    std::string ns = triple.getPredicatePtr()->getNamespace();
-    if (triple.getPredicatePtr()->namespaceKnown(ns)) {
-        registerNamespace(ns, Predicate::prefix_map()[ns]);
-    }
-}
-
-semsim::Writer::Writer(semsim::Triples triples, const std::string &base_uri, std::string format) {
-    // when creating a writer from a Triple, we just create a locally scoped rdf model and storage
-    librdf_world *world = librdf_new_world();
-    librdf_storage *storage = librdf_new_storage(world, "memory", "triples_store", nullptr);
-    if (!storage) {
-        throw LibRDFException("Writer::Writer: storage not created");
-    }
-    librdf_model *model = librdf_new_model(world, storage, nullptr);
-    if (!model) {
-        throw LibRDFException("Writer::Writer: model not created");
-    }
-    init(world, model, base_uri, format);
-    for (auto &triple : triples) {
-        librdf_model_add_statement(model, triple.toStatement());
-        std::string ns = triple.getPredicatePtr()->getNamespace();
-        if (triple.getPredicatePtr()->namespaceKnown(ns)) {
-            registerNamespace(ns, Predicate::prefix_map()[triple.getPredicatePtr()->getNamespace()]);
-        }
-    }
-}
 
 semsim::Writer::~Writer() {
-    librdf_free_serializer(serializer);
-    librdf_free_uri(base_uri_);
+//    if(serializer)
+//        librdf_free_serializer(serializer);
 }
 
 void semsim::Writer::registerNamespace(const std::string &ns, const std::string &prefix) {
@@ -151,18 +100,23 @@ std::string semsim::Writer::toString() {
     if (!iostr)
         throw NullPointerException("Writer::toString(): raptor_iostream");
 
-    int failure = librdf_serializer_serialize_model_to_iostream(serializer, base_uri_, model_, iostr);
+    auto base_uri_cstr = (unsigned char *) base_uri_.c_str();
+    librdf_uri *uri = librdf_new_uri(world_, base_uri_cstr);
+    if (!uri) {
+        throw NullPointerException("Writer::toString: uri");
+    }
+    this->validateBaseUri();
+
+    int failure = librdf_serializer_serialize_model_to_iostream(serializer, uri, model_, iostr);
     if (failure) { // i.e. if non-0
         throw std::logic_error("Writer::toString(): Failed to serialize model.");
     }
     std::string output_string((const char *) string);
     free(string);
-    return output_string;
-}
+    librdf_free_uri(uri);
+    delete base_uri_cstr;
 
-std::string semsim::Writer::print() {
-    raptor_iostream *iostream = raptor_new_iostream_to_file_handle(raptor_world_ptr_, stdout);
-    librdf_serializer_serialize_model_to_iostream(serializer, base_uri_, model_, iostream);
+    return output_string;
 }
 
 void semsim::Writer::toFile(std::string format) {
@@ -176,19 +130,69 @@ void semsim::Writer::setFormat(const std::string &format) {
 void semsim::Writer::validateBaseUri() {
     std::regex file_regex("^file://");
     std::smatch m;
-    std::string uri_str = (const char *) librdf_uri_as_string(base_uri_);
+    librdf_uri *uri = librdf_new_uri(world_, reinterpret_cast<const unsigned char *>(base_uri_.c_str()));
+    std::string uri_str = (const char *) librdf_uri_as_string(uri);
     if (uri_str.rfind("file://", 0) != 0) {
         uri_str = "file://" + uri_str;
-        base_uri_ = librdf_new_uri(world_, (const unsigned char *) uri_str.c_str());
+        base_uri_ = uri_str;//librdf_new_uri(world_, (const unsigned char *) uri_str.c_str());
     }
 }
 
+semsim::Writer::Writer() = default;
 
 
-//todo look into using concept schema part of librdf. This may solve the rdf:Bag problem.
-// Might also be able to use sbml/cellml schemas.
+semsim::TripleWriter::TripleWriter(semsim::Triple triple, const std::string &base_uri, std::string format) {
+    // when creating a writer from a Triple, we just create a locally scoped rdf model and storage
+    librdf_world *world = librdf_new_world();
+    librdf_storage *storage = librdf_new_storage(world, "memory", "triple_store", nullptr);
+    if (!storage) {
+        throw LibRDFException("Writer::Writer: storage not created");
+    }
+    librdf_model *model = librdf_new_model(world, storage, nullptr);
+    if (!model) {
+        throw LibRDFException("Writer::Writer: model not created");
+    }
 
+    // add statements to the model
+    librdf_model_add_statement(model, triple.toStatement());
 
+    // initialize the writer
+    init(world, model, base_uri, format);
+
+    // determine whether we recognize the namespace and add it if we do.
+    std::string ns = triple.getPredicatePtr()->getNamespace();
+    if (triple.getPredicatePtr()->namespaceKnown(ns)) {
+        registerNamespace(ns, Predicate::prefix_map()[ns]);
+    }
+}
+
+semsim::TripleWriter::TripleWriter(semsim::Triples triples, const std::string &base_uri, std::string format) {
+    // when creating a writer from a Triple, we just create a locally scoped rdf model and storage
+    librdf_world *world = librdf_new_world();
+    storage_ = librdf_new_storage(world, "memory", "triples_store", nullptr);
+    if (!storage_) {
+        throw LibRDFException("Writer::Writer: storage not created");
+    }
+    librdf_model *model = librdf_new_model(world, storage_, nullptr);
+    if (!model) {
+        throw LibRDFException("Writer::Writer: model not created");
+    }
+    init(world, model, base_uri, std::move(format));
+    for (auto &triple : triples) {
+        librdf_model_add_statement(model, triple.toStatement());
+        std::string ns = triple.getPredicatePtr()->getNamespace();
+        if (triple.getPredicatePtr()->namespaceKnown(ns)) {
+            registerNamespace(ns, Predicate::prefix_map()[triple.getPredicatePtr()->getNamespace()]);
+        }
+    }
+}
+
+semsim::TripleWriter::~TripleWriter() {
+    librdf_free_storage(storage_);
+    librdf_free_model(model_);
+    librdf_free_world(world_);
+
+}
 
 
 

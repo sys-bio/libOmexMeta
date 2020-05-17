@@ -25,6 +25,12 @@ public:
         storage = std::get<2>(initializer);
         model = std::get<3>(initializer);
     };
+
+    ~EditorTests() {
+        librdf_free_model(model);
+        librdf_free_storage(storage);
+        librdf_free_world(world);
+    };
 };
 
 

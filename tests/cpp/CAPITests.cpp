@@ -46,12 +46,20 @@ TEST_F(CAPITests, FreeCharStar) {
 //}
 
 TEST_F(CAPITests, RDFfromString) {
+    HERE();
     semsim::RDF *rdf_ptr = semsim::RDF_new();
+    HERE();
     semsim::RDF_fromString(rdf_ptr, samples.rdf_xml_seq_example.c_str(), "rdfxml");
-    int actual = semsim::RDF_size(rdf_ptr);
-    int expected = 4;
-    ASSERT_EQ(expected, actual);
-    semsim::RDF_delete(rdf_ptr);
+    HERE();
+    std::cout << rdf_ptr->size() << std::endl;
+//    int actual = semsim::RDF_size(rdf_ptr);
+//    HERE();
+//    int expected = 4;
+//    HERE();
+//    ASSERT_EQ(expected, actual);
+//    HERE();
+////    semsim::RDF_delete(rdf_ptr);
+//    HERE();
 }
 
 TEST_F(CAPITests, RDFToString) {
