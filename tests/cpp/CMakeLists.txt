@@ -25,6 +25,8 @@ add_executable(semsim-tests
         TripplesTests.cpp
         RDFReadAndWriteTests.cpp
         CAPITests.cpp
+        RedlandAPITests/LibrdfWorldTests.cpp
+        RedlandAPITests/CWrapperTests.cpp
         )
 
 add_dependencies(semsim-tests semsim-static)
