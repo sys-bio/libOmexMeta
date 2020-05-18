@@ -15,6 +15,7 @@ namespace semsim {
 
         unsigned int getRefCount() const;
 
+    protected:
         void increment_ref_count();
 
         void decrement_ref_count();

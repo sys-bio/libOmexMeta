@@ -8,6 +8,8 @@
 #include "librdf.h"
 #include "CWrapper.h"
 #include "RaptorWorld.h"
+#include "LibrdfModel.h"
+#include "LibrdfStorage.h"
 
 
 namespace semsim {
@@ -22,24 +24,25 @@ namespace semsim {
 
         LibrdfWorld(LibrdfWorld &librdfWorld);
 
-        /*
-         * operator= cannot be implemented because if we
-         * copy assign, we need to increment the reference
-         * counts of both *this and *rhs, which with the const
-         * modifier, we cannot. We also cannot remove the
-         * const modifier, because it is a part of the
-         * copy assignment operator.
-         */
         LibrdfWorld &operator=(LibrdfWorld &librdfWorld);
 
-        LibrdfWorld(LibrdfWorld &&librdfWorld) noexcept = delete;
+        LibrdfWorld(LibrdfWorld &&librdfWorld) noexcept;
 
-        LibrdfWorld &operator=(LibrdfWorld &&librdfWorld) noexcept = delete;
+        LibrdfWorld &operator=(LibrdfWorld &&librdfWorld) noexcept;
 
         librdf_world *getWorld() const;
 
+        bool operator==(const LibrdfWorld &rhs) const;
+
+        bool operator!=(const LibrdfWorld &rhs) const;
+
         RaptorWorld getRaptor();
 
+//        LibrdfModel newModel(LibrdfStorage librdfStorage);
+
+        LibrdfStorage newStorage(const std::string& storage_name, const std::string& name, const std::string& options_string="");
+
+        LibrdfModel newModel(const LibrdfStorage& storage, const std::string& options_string);
     };
 }
 

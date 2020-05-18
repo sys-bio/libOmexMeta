@@ -17,14 +17,19 @@ namespace semsim {
 
         ~RaptorWorld();
 
-        RaptorWorld(const RaptorWorld &raptorWorld);
+        RaptorWorld(RaptorWorld &raptorWorld);
+
+        RaptorWorld &operator=(RaptorWorld &raptorWorld);
 
         RaptorWorld(RaptorWorld &&raptorWorld) noexcept;
 
-        RaptorWorld &operator=(const RaptorWorld &raptorWorld);
+        RaptorWorld &operator=(RaptorWorld &&raptorWorld) noexcept ;
 
-        RaptorWorld &operator=(RaptorWorld &&raptorWorld) noexcept;
+        raptor_world *getRaptorWorld() const;
 
+        bool operator==(const RaptorWorld &rhs) const;
+
+        bool operator!=(const RaptorWorld &rhs) const;
     };
 }
 
