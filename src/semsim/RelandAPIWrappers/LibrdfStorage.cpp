@@ -1,16 +1,78 @@
 #include <string>
+#include <memory>
+#include <utility>
+#include <iostream>
 #include "LibrdfStorage.h"
 
 namespace semsim {
 
+    LibrdfStorage::LibrdfStorage(librdf_storage *storage, std::string storage_name, std::string name,
+                                 std::string options)
+            : storage_(std::make_shared<librdf_storage *>(storage)), storage_name_(std::move(storage_name)),
+              name_(std::move(name)),
+              options_(std::move(options)) {
+    }
+
+    LibrdfStorage::~LibrdfStorage() {
+        if (storage_.use_count() == 1) {
+            librdf_free_storage(*storage_);
+        }
+    };
+
+    LibrdfStorage::LibrdfStorage(const LibrdfStorage &storage) {
+        this->storage_ = storage.storage_;
+        this->storage_name_ = storage.storage_name_;
+        this->name_ = storage.name_;
+        this->options_ = storage.options_;
+    };
+
+    LibrdfStorage &LibrdfStorage::operator=(const LibrdfStorage &storage) {
+        if (this != &storage) {
+            if (this->storage_ != nullptr) {
+                // if this storage was instantiated with
+                // a storage (which it probably was), get rid of
+                // it before we take a copy of storage.storage_
+                librdf_free_storage(*this->storage_);
+            }
+            this->storage_ = storage.storage_;
+            this->storage_name_ = storage.storage_name_;
+            this->name_ = storage.name_;
+            this->options_ = storage.options_;
+        };
+        return *this;
+    }
+
+    LibrdfStorage::LibrdfStorage(LibrdfStorage &&storage) noexcept {
+        this->storage_ = std::move(storage.storage_);
+        this->storage_name_ = std::move(storage.storage_name_);
+        this->name_ = std::move(storage.name_);
+        this->options_ = std::move(storage.options_);
+    }
+
+    LibrdfStorage &LibrdfStorage::operator=(LibrdfStorage &&storage) noexcept {
+        if (this != &storage) {
+            if (this->storage_ != nullptr) {
+                // if this storage was instantiated with
+                // a storage (which it probably was), get rid of
+                // it before we move storage.storage_ into this->storage_
+                librdf_free_storage(*this->storage_);
+            }
+            this->storage_ = std::move(storage.storage_);
+            this->storage_name_ = std::move(storage.storage_name_);
+            this->name_ = std::move(storage.name_);
+            this->options_ = std::move(storage.options_);
+        };
+        return *this;
+    }
+
     bool LibrdfStorage::operator==(const LibrdfStorage &rhs) const {
-        return storage_ == rhs.storage_ &&
+        return *storage_ == *rhs.storage_ &&
                storage_name_ == rhs.storage_name_ &&
                name_ == rhs.name_ &&
                options_ == rhs.options_;
     }
 
-    librdf_storage *LibrdfStorage::getStorage() const {
+    std::shared_ptr<librdf_storage *> LibrdfStorage::getStorage() const {
         return storage_;
     }
 
@@ -42,73 +104,5 @@ namespace semsim {
         return !(rhs == *this);
     }
 
-    LibrdfStorage::LibrdfStorage(librdf_storage *storage, std::string storage_name, std::string name,
-                                 std::string options)
-            : CWrapper(), storage_(storage), storage_name_(storage_name), name_(name),
-              options_(options) {
-        increment_ref_count();
-    }
-
-    LibrdfStorage::~LibrdfStorage() {
-        if (ref_count_ > 0) {
-            decrement_ref_count();
-        } else {
-            librdf_free_storage(storage_);
-        }
-    }
-
-    LibrdfStorage::LibrdfStorage(LibrdfStorage &librdfStorage) {
-        if (this != &librdfStorage) {
-            storage_ = librdfStorage.storage_;
-            storage_name_ = librdfStorage.storage_name_;
-            name_ = librdfStorage.name_;
-            options_ = librdfStorage.options_;
-
-            ref_count_ = librdfStorage.ref_count_;
-            increment_ref_count();
-            librdfStorage.increment_ref_count();
-        }
-    }
-
-    LibrdfStorage::LibrdfStorage(LibrdfStorage &&librdfStorage) noexcept {
-        if (this != &librdfStorage) {
-            storage_ = librdfStorage.storage_;
-            storage_name_ = librdfStorage.storage_name_;
-            name_ = librdfStorage.name_;
-            options_ = librdfStorage.options_;
-
-            storage_ = librdfStorage.storage_;
-            ref_count_ = librdfStorage.ref_count_;
-            librdfStorage.storage_ = nullptr;
-        }
-    }
-
-    LibrdfStorage &LibrdfStorage::operator=(LibrdfStorage &librdfStorage) {
-        if (this != &librdfStorage) {
-            storage_ = librdfStorage.storage_;
-            storage_name_ = librdfStorage.storage_name_;
-            name_ = librdfStorage.name_;
-            options_ = librdfStorage.options_;
-
-            ref_count_ = librdfStorage.ref_count_;
-            increment_ref_count();
-            librdfStorage.increment_ref_count();
-        }
-        return *this;
-    }
-
-    LibrdfStorage &LibrdfStorage::operator=(LibrdfStorage &&librdfStorage) noexcept {
-        if (this != &librdfStorage) {
-            storage_ = librdfStorage.storage_;
-            storage_name_ = librdfStorage.storage_name_;
-            name_ = librdfStorage.name_;
-            options_ = librdfStorage.options_;
-
-            storage_ = librdfStorage.storage_;
-            ref_count_ = librdfStorage.ref_count_;
-            librdfStorage.storage_ = nullptr;
-        }
-        return *this;
-    }
 
 }

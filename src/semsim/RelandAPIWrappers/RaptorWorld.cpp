@@ -3,59 +3,16 @@
 //
 
 #include <utility>
+#include <memory>
 #include "RaptorWorld.h"
 
 namespace semsim {
 
     RaptorWorld::RaptorWorld(raptor_world *world) {
-        this->raptor_world_ = world;
-        increment_ref_count();
+        raptor_world_ = std::make_shared<raptor_world *>(world);
     }
 
-    RaptorWorld::~RaptorWorld() {
-        if (ref_count_ > 0)
-            decrement_ref_count();
-        else
-            raptor_free_world(raptor_world_);
-    }
-
-    RaptorWorld::RaptorWorld(RaptorWorld &raptorWorld) {
-        if (this != &raptorWorld) {
-            raptor_world_ = raptorWorld.raptor_world_;
-            ref_count_ = raptorWorld.ref_count_;
-            increment_ref_count();
-            raptorWorld.increment_ref_count();
-        }
-    }
-
-    RaptorWorld &RaptorWorld::operator=(RaptorWorld &raptorWorld) {
-        if (this != &raptorWorld) {
-            raptor_world_ = raptorWorld.raptor_world_;
-            ref_count_ = raptorWorld.ref_count_;
-            increment_ref_count();
-            raptorWorld.increment_ref_count();
-        }
-        return *this;
-    }
-
-    RaptorWorld::RaptorWorld(RaptorWorld &&raptorWorld) noexcept {
-        if (this != &raptorWorld){
-            raptor_world_ = raptorWorld.raptor_world_;
-            ref_count_ = raptorWorld.ref_count_;
-            raptorWorld.raptor_world_ = nullptr;
-        }
-    }
-
-    RaptorWorld &RaptorWorld::operator=(RaptorWorld &&raptorWorld) noexcept {
-        if (this != &raptorWorld){
-            raptor_world_ = raptorWorld.raptor_world_;
-            ref_count_ = raptorWorld.ref_count_;
-            raptorWorld.raptor_world_ = nullptr;
-        }
-        return *this;
-    }
-
-    raptor_world *RaptorWorld::getRaptorWorld() const {
+    std::shared_ptr<raptor_world *> RaptorWorld::getRaptorWorld() const {
         return raptor_world_;
     }
 

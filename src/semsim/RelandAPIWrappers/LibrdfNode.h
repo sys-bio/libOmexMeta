@@ -6,30 +6,15 @@
 #define LIBSEMSIM_LIBRDFNODE_H
 
 #include <librdf.h>
-#include "CWrapper.h"
+#include <memory>
 
 namespace semsim {
-    class LibrdfNode : private CWrapper {
-        librdf_model *model_;
+    class LibrdfNode {
+        std::shared_ptr<librdf_node *> node_;
 
     public:
-        LibrdfNode(librdf_model *model);
+        explicit LibrdfNode(librdf_node *node);
 
-        ~LibrdfNode();
-
-        LibrdfNode(LibrdfNode &LibrdfNode);
-
-        LibrdfNode(LibrdfNode &&LibrdfNode) noexcept;
-
-        LibrdfNode &operator=(LibrdfNode &LibrdfNode);
-
-        LibrdfNode &operator=(LibrdfNode &&LibrdfNode) noexcept;
-
-        bool operator==(const LibrdfNode &rhs) const;
-
-        bool operator!=(const LibrdfNode &rhs) const;
-
-        librdf_model *getModel() const;
     };
 }
 

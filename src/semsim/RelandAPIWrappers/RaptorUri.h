@@ -7,30 +7,18 @@
 
 
 #include <librdf.h>
-#include "CWrapper.h"
+#include <memory>
+
 
 namespace semsim {
-    class RaptorUri : private CWrapper {
-        librdf_model *model_;
+    class RaptorUri {
+        std::shared_ptr<raptor_uri *> raptor_uri_;
 
     public:
-        RaptorUri(librdf_model *model);
+        explicit RaptorUri(raptor_uri *uri);
 
-        ~RaptorUri();
+        const std::shared_ptr<raptor_uri *> &getRaptorUri() const;
 
-        RaptorUri(RaptorUri &RaptorUri);
-
-        RaptorUri(RaptorUri &&RaptorUri) noexcept;
-
-        RaptorUri &operator=(RaptorUri &RaptorUri);
-
-        RaptorUri &operator=(RaptorUri &&RaptorUri) noexcept;
-
-        bool operator==(const RaptorUri &rhs) const;
-
-        bool operator!=(const RaptorUri &rhs) const;
-
-        librdf_model *getModel() const;
     };
 }
 

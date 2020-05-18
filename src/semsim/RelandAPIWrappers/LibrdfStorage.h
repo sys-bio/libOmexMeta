@@ -6,12 +6,12 @@
 #define LIBSEMSIM_LIBRDFSTORAGE_H
 
 #include <librdf.h>
-#include "CWrapper.h"
+
 #include <vector>
 
 namespace semsim {
-    class LibrdfStorage : public CWrapper {
-        librdf_storage* storage_;
+    class LibrdfStorage {
+        std::shared_ptr<librdf_storage *> storage_;
         std::string storage_name_;
         std::string name_;
         std::string options_;
@@ -23,23 +23,23 @@ namespace semsim {
 
     public:
 
-        LibrdfStorage(librdf_storage* storage, std::string storage_name, std::string name, std::string options);
+        LibrdfStorage(librdf_storage *storage, std::string storage_name, std::string name, std::string options);
 
         ~LibrdfStorage();
 
-        LibrdfStorage(LibrdfStorage &librdfStorage);
+        LibrdfStorage(const LibrdfStorage &storage);
 
-        LibrdfStorage(LibrdfStorage &&LibrdfStorage) noexcept;
+        LibrdfStorage &operator=(const LibrdfStorage &storage);
 
-        LibrdfStorage &operator=(LibrdfStorage &LibrdfStorage);
+        LibrdfStorage(LibrdfStorage &&storage) noexcept;
 
-        LibrdfStorage &operator=(LibrdfStorage &&LibrdfStorage) noexcept;
+        LibrdfStorage &operator=(LibrdfStorage &&storage) noexcept;
 
         bool operator==(const LibrdfStorage &rhs) const;
 
         bool operator!=(const LibrdfStorage &rhs) const;
 
-        librdf_storage *getStorage() const;
+        std::shared_ptr<librdf_storage *> getStorage() const;
 
         const std::string &getStorageName() const;
 
