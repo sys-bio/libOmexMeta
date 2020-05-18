@@ -6,31 +6,24 @@
 #define LIBSEMSIM_LIBRDFMODEL_H
 
 #include <librdf.h>
-#include "CWrapper.h"
+#include <memory>
+
 
 namespace semsim {
-    class LibrdfModel : private CWrapper {
-        librdf_model *model_;
+    class LibrdfModel {
+        std::shared_ptr<librdf_model *> model_;
         std::string options_;
 
     public:
-        LibrdfModel(librdf_model *model, std::string options="");
-
-        ~LibrdfModel();
-
-        LibrdfModel(LibrdfModel &librdfModel);
-
-        LibrdfModel(LibrdfModel &&librdfModel) noexcept;
-
-        LibrdfModel &operator=(LibrdfModel &librdfModel);
-
-        LibrdfModel &operator=(LibrdfModel &&librdfModel) noexcept;
+        explicit LibrdfModel(std::shared_ptr<librdf_model *> model, std::string options = "");
 
         bool operator==(const LibrdfModel &rhs) const;
 
         bool operator!=(const LibrdfModel &rhs) const;
 
-        librdf_model *getModel() const;
+        const std::string &getOptions() const;
+
+        const std::shared_ptr<librdf_model *> &getModel() const;
     };
 }
 

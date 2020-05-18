@@ -24,13 +24,13 @@ set(SEMSIM_SOURCES
         "SemsimCombineArchive.cpp"
         "Triples.cpp"
         "SemsimCApi.cpp"
-        "RelandAPIWrappers/CWrapper.cpp"
         "RelandAPIWrappers/LibrdfWorld.cpp"
         "RelandAPIWrappers/RaptorWorld.cpp"
         "RelandAPIWrappers/LibrdfModel.cpp"
         "RelandAPIWrappers/LibrdfNode.cpp"
         "RelandAPIWrappers/LibrdfStorage.cpp"
         "RelandAPIWrappers/RaptorWorld.cpp"
+        "RelandAPIWrappers/RaptorUri.cpp"
         )
 
 set(SEMSIM_HEADERS
@@ -59,13 +59,12 @@ set(SEMSIM_HEADERS
         "SemsimCombineArchive.h"
         "Triples.h"
         "SemsimCApi.h"
-        "RelandAPIWrappers/CWrapper.h"
         "RelandAPIWrappers/LibrdfWorld.h"
         "RelandAPIWrappers/RaptorWorld.h"
+        "RelandAPIWrappers/LibrdfStorage.h"
         "RelandAPIWrappers/LibrdfModel.h"
         "RelandAPIWrappers/LibrdfNode.h"
-        "RelandAPIWrappers/LibrdfStorage.h"
-        "RelandAPIWrappers/RaptorWorld.h"
+        "RelandAPIWrappers/RaptorUri.h"
         )
 
 message(STATUS "SEMSIM_HEADERS ${SEMSIM_HEADERS}")

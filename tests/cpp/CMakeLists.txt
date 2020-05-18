@@ -26,7 +26,6 @@ add_executable(semsim-tests
         RDFReadAndWriteTests.cpp
         CAPITests.cpp
         RedlandAPITests/LibrdfWorldTests.cpp
-        RedlandAPITests/CWrapperTests.cpp
         RedlandAPITests/RaptorWorldTests.cpp
         RedlandAPITests/LibrdfModelTests.cpp
         RedlandAPITests/LibrdfNodeTests.cpp
@@ -50,52 +49,18 @@ target_link_libraries(semsim-tests PUBLIC
         m
         c
         lzma
-#        "${LIBCOMBINE_STATIC_LIBRARY}"
-#        "${LIBSBML_STATIC_LIBRARY}"
-#        "${ZIPPER_STATIC_LIBRARY}"
-        #        "${ZLIB_STATIC_LIBRARY}"
-#        z
-#        "iconv"
-#        "lzma"
-#        "${BZ2_STATIC_LIBRARY}"
-#        "${REDLAND_STATIC_LIBRARY}"
-#        "${RASQAL_STATIC_LIBRARY}"
-#        "${RAPTOR2_STATIC_LIBRARY}"
-        #                "${LIBXML2_STATIC_LIBRARY}"
-#        "rdf"
-#        "rasqal"
-#        "raptor"
-#        "xml2"
-#        "xslt"
-#        "dl"
-#        "curl"
-#        "pthread"
-#        "pcre"
-#        "ltdl"
-        #        ${LINK_LIBRARIES}
-        #                z
-        #                ${REDLAND_STATIC_LIBRARY}
-        #                ${RASQAL_STATIC_LIBRARY}
-        #                ${RAPTOR2_STATIC_LIBRARY}
-        #
-        #                ${LIBCOMBINE_STATIC_LIBRARY}
-        #                ${ZIPPER_STATIC_LIBRARY}
-        #
-        #                ${LIBSBML_STATIC_LIBRARY}
-        #                ${LIBXML2_STATIC_LIBRARY}
-        #                ${ZLIB_STATIC_LIBRARY}
-        #                ${BZ2_STATIC_LIBRARY}
-        #                xslt
-        #
-        #                pcre
-        #                pthread
-        #                curl
-        #                lzma
-        #                m
-        #                c
         )
-get_target_property(y semsim-tests LINK_LIBRARIES)
-MESSAGE(STATUS "Y ${y}")
+
+set(CMAKE_VERBOSE_MAKEFILE 1)
+message(STATUS "HERE")
+message(STATUS "CMAKE_CXX_COMPILER ${CMAKE_CXX_COMPILER}")
+message(STATUS "CMAKE_CXX_COMPILER_ID ${CMAKE_CXX_COMPILER_ID}")
+if (CLANG)
+    message(STATUS "CLANG cmopiler")
+    SET(ADDRESS_SANITIZER_FLAGS "-fsatize=address")
+    SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${ADDRESS_SANITIZER_LINK_FLAGS}")
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ADDRESS_SANITIZER_FLAGS}")
+ENDIF ()
 
 
 MESSAGE(STATUS "INCLUDE_DIRS ${INCLUDE_DIRS}")

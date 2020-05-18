@@ -6,26 +6,16 @@
 #define LIBSEMSIM_RAPTORWORLD_H
 
 #include "librdf.h"
-#include "CWrapper.h"
+
 
 namespace semsim {
 
-    class RaptorWorld : public CWrapper {
-        raptor_world *raptor_world_;
+    class RaptorWorld {
+        std::shared_ptr<raptor_world *> raptor_world_;
     public:
-        RaptorWorld(raptor_world *world);
+        explicit RaptorWorld(raptor_world *world);
 
-        ~RaptorWorld();
-
-        RaptorWorld(RaptorWorld &raptorWorld);
-
-        RaptorWorld &operator=(RaptorWorld &raptorWorld);
-
-        RaptorWorld(RaptorWorld &&raptorWorld) noexcept;
-
-        RaptorWorld &operator=(RaptorWorld &&raptorWorld) noexcept ;
-
-        raptor_world *getRaptorWorld() const;
+        std::shared_ptr<raptor_world *> getRaptorWorld() const;
 
         bool operator==(const RaptorWorld &rhs) const;
 
