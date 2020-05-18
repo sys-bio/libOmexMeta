@@ -27,6 +27,10 @@ set(SEMSIM_SOURCES
         "RelandAPIWrappers/CWrapper.cpp"
         "RelandAPIWrappers/LibrdfWorld.cpp"
         "RelandAPIWrappers/RaptorWorld.cpp"
+        "RelandAPIWrappers/LibrdfModel.cpp"
+        "RelandAPIWrappers/LibrdfNode.cpp"
+        "RelandAPIWrappers/LibrdfStorage.cpp"
+        "RelandAPIWrappers/RaptorWorld.cpp"
         )
 
 set(SEMSIM_HEADERS
@@ -57,6 +61,10 @@ set(SEMSIM_HEADERS
         "SemsimCApi.h"
         "RelandAPIWrappers/CWrapper.h"
         "RelandAPIWrappers/LibrdfWorld.h"
+        "RelandAPIWrappers/RaptorWorld.h"
+        "RelandAPIWrappers/LibrdfModel.h"
+        "RelandAPIWrappers/LibrdfNode.h"
+        "RelandAPIWrappers/LibrdfStorage.h"
         "RelandAPIWrappers/RaptorWorld.h"
         )
 
