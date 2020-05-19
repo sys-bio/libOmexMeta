@@ -55,6 +55,14 @@ namespace semsim {
         return *this;
     }
 
+    const std::shared_ptr<librdf_node *> &LibrdfNode::getNode() const {
+        return node_;
+    }
+
+    bool LibrdfNode::operator!() const {
+        return !getNode();
+    }
+
     /*
      * Retrive a value from a librdf_node object,
      * regardless of its type.
@@ -81,14 +89,6 @@ namespace semsim {
                 throw LibRDFException("Unrecognized term type");
         }
         return value;
-    }
-
-    const std::shared_ptr<librdf_node *> &LibrdfNode::getNode() const {
-        return node_;
-    }
-
-    bool LibrdfNode::operator!() const {
-        return !getNode();
     }
 
 

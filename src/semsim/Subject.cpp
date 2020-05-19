@@ -26,6 +26,7 @@ namespace semsim {
         if (!node) {
             throw NullPointerException("Subject::ToRdfNode(): node object nullptr");
         }
+        return node;
     }
 
     std::string Subject::str() const {
@@ -33,13 +34,6 @@ namespace semsim {
     }
 
     Subject::~Subject() = default;
-
-    bool Subject::isSet() const {
-        if (rdf_node_ptr_) {
-            return true;
-        }
-        return false;
-    }
 
 
 }
