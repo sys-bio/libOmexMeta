@@ -16,7 +16,7 @@ namespace semsim {
 /***************************************************
  * RDFNode implementation
  */
-    RDFNode::RDFNode(librdf_world *world, std::string value, const char *xml_language, bool is_wf_xml)
+    RDFNode::RDFNode(LibrdfWorld world, std::string value, const char *xml_language, bool is_wf_xml)
             : world_(world),
               value_(std::move(value)),
               xml_language_(xml_language),
@@ -29,7 +29,7 @@ namespace semsim {
      * Retrive a value from a librdf_node object,
      * regardless of its type.
      */
-    std::string RDFNode::getValue(librdf_node *node) {
+    std::string RDFNode::getValue(LibrdfNode node) {
         std::string value;
         switch (node->type) {
             case RAPTOR_TERM_TYPE_URI: {
@@ -54,16 +54,16 @@ namespace semsim {
      * Creates a shared pointer to an RDFNode object given a librdf_world and
      * a librdf_node.
      */
-    std::shared_ptr<RDFNode> RDFNode::fromRDFNode(librdf_world *world, librdf_node *node) {
+    std::shared_ptr<RDFNode> RDFNode::fromRDFNode(LibrdfWorld world, LibrdfNode node) {
         switch (node->type) {
             case RAPTOR_TERM_TYPE_URI  : {
                 return std::make_shared<RDFURINode>(RDFURINode(world, node));
             }
             case RAPTOR_TERM_TYPE_LITERAL: {
-                return  std::make_shared<RDFLiteralNode>(RDFLiteralNode(world, node));
+                return std::make_shared<RDFLiteralNode>(RDFLiteralNode(world, node));
             }
             case RAPTOR_TERM_TYPE_BLANK: {
-                return  std::make_shared<RDFBlankNode>(RDFBlankNode(world, node));
+                return std::make_shared<RDFBlankNode>(RDFBlankNode(world, node));
             }
             default:
                 throw ValueException("Node not recognised");
@@ -75,11 +75,11 @@ namespace semsim {
  */
 
         RDFLiteralNode::RDFLiteralNode(
-                librdf_world * world, std::string
+                LibrdfWorld world, std::string
         value, std::string
-        data_type_uri,
-        const char *xml_language,
-        bool is_wf_xml)
+                data_type_uri,
+                const char *xml_language,
+                bool is_wf_xml)
         : RDFNode(world, std::move(value), xml_language, is_wf_xml),
                 data_type_uri(std::move(data_type_uri))
         {
@@ -90,29 +90,29 @@ namespace semsim {
             return value_;
         }
 
-        librdf_node *RDFLiteralNode::toRdfNode() {
-            return librdf_new_node_from_typed_literal(
-                    world_, (const unsigned char *) value_.c_str(), xml_language_,
-                    librdf_new_uri(world_, (const unsigned char *) data_type_uri.c_str()));
-        }
+    LibrdfNode RDFLiteralNode::toRdfNode() {
+        return librdf_new_node_from_typed_literal(
+                world_, (const unsigned char *) value_.c_str(), xml_language_,
+                librdf_new_uri(world_, (const unsigned char *) data_type_uri.c_str()));
+    }
 
 
-        RDFLiteralNode::RDFLiteralNode(librdf_world * world, librdf_node * node, std::string
-        data_type,
-        const char *xml_language,
-        bool is_wf_xml)
-        : RDFNode(world, RDFNode::getValue(node), xml_language, is_wf_xml), data_type_uri(std::move(data_type))
+    RDFLiteralNode::RDFLiteralNode(LibrdfWorld world, LibrdfNode node, std::string
+    data_type,
+                                   const char *xml_language,
+                                   bool is_wf_xml)
+            : RDFNode(world, RDFNode::getValue(node), xml_language, is_wf_xml), data_type_uri(std::move(data_type))
         {
         }
 
 /***************************************************
  * RDFUriNode implementation
  */
-        RDFURINode::RDFURINode(librdf_world * world, std::string
-        value,
-        const char *xmlLanguage,
-        bool isWfXml) :
-        RDFNode(world, std::move(value), xmlLanguage, isWfXml)
+    RDFURINode::RDFURINode(LibrdfWorld world, std::string
+    value,
+                           const char *xmlLanguage,
+                           bool isWfXml) :
+            RDFNode(world, std::move(value), xmlLanguage, isWfXml)
         {
 
         }
@@ -136,15 +136,15 @@ namespace semsim {
 
         }
 
-        librdf_node *RDFURINode::toRdfNode() {
-            return librdf_new_node_from_uri_string(world_, (const unsigned char *) str().c_str());
-        }
+    LibrdfNode RDFURINode::toRdfNode() {
+        return librdf_new_node_from_uri_string(world_, (const unsigned char *) str().c_str());
+    }
 
 
-        RDFURINode::RDFURINode(librdf_world * world, librdf_node * node,
-        const char *xml_language,
-        bool is_wf_xml)
-        : RDFNode(world, RDFNode::getValue(node), xml_language, is_wf_xml)
+    RDFURINode::RDFURINode(LibrdfWorld world, LibrdfNode node,
+                           const char *xml_language,
+                           bool is_wf_xml)
+            : RDFNode(world, RDFNode::getValue(node), xml_language, is_wf_xml)
         {
         }
 
@@ -152,11 +152,11 @@ namespace semsim {
 /***************************************************
  * RDFBlankNode implementation
  */
-        RDFBlankNode::RDFBlankNode(librdf_world * world, std::string
-        value,
-        const char *xml_language,
-        bool is_wf_xml) :
-        RDFNode(world, std::move(value), xml_language, is_wf_xml)
+    RDFBlankNode::RDFBlankNode(LibrdfWorld world, std::string
+    value,
+                               const char *xml_language,
+                               bool is_wf_xml) :
+            RDFNode(world, std::move(value), xml_language, is_wf_xml)
         {
 
         }
@@ -165,15 +165,15 @@ namespace semsim {
             return value_;
         }
 
-        librdf_node *RDFBlankNode::toRdfNode() {
-            return librdf_new_node_from_blank_identifier(
-                    world_, (const unsigned char *) value_.c_str());
-        }
+    LibrdfNode RDFBlankNode::toRdfNode() {
+        return librdf_new_node_from_blank_identifier(
+                world_, (const unsigned char *) value_.c_str());
+    }
 
-        RDFBlankNode::RDFBlankNode(librdf_world * world, librdf_node * node,
-        const char *xml_language,
-        bool is_wf_xml)
-        : RDFNode(world, RDFNode::getValue(node), xml_language, is_wf_xml)
+    RDFBlankNode::RDFBlankNode(LibrdfWorld world, LibrdfNode node,
+                               const char *xml_language,
+                               bool is_wf_xml)
+            : RDFNode(world, RDFNode::getValue(node), xml_language, is_wf_xml)
         {
         }
     }

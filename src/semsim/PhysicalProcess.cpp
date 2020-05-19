@@ -11,7 +11,7 @@
 
 namespace semsim {
 
-    PhysicalProcess::PhysicalProcess(librdf_world *world, librdf_model *model, Subject metaid,
+    PhysicalProcess::PhysicalProcess(LibrdfWorld world, LibrdfModel model, Subject metaid,
                                      PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks,
                                      Mediators mediators)
             : PhysicalPhenomenon(world, model, metaid, physicalProperty, PHYSICAL_PROCESS),
@@ -19,7 +19,7 @@ namespace semsim {
 
     }
 
-    PhysicalProcess::PhysicalProcess(librdf_world *world, librdf_model *model) : PhysicalPhenomenon(world, model) {
+    PhysicalProcess::PhysicalProcess(LibrdfWorld world, LibrdfModel model) : PhysicalPhenomenon(world, model) {
 
     }
 

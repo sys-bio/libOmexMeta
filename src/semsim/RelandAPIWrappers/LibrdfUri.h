@@ -12,10 +12,10 @@
 
 namespace semsim {
     class LibrdfUri {
-        std::shared_ptr<raptor_uri *> raptor_uri_;
+        std::shared_ptr<librdf_uri *> raptor_uri_;
 
     public:
-        explicit LibrdfUri(raptor_uri *uri);
+        explicit LibrdfUri(librdf_uri *uri);
 
         ~LibrdfUri();
 

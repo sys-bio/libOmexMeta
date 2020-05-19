@@ -27,9 +27,9 @@ namespace semsim {
 
         void push_back(Triple triple);
 
-        void emplace_back(librdf_world *world, librdf_statement *statement);
+        void emplace_back(LibrdfWorld world, librdf_statement *statement);
 
-        void emplace_back(librdf_world *world, Subject subject, PredicatePtr predicatePtr, Resource resource);
+        void emplace_back(LibrdfWorld world, Subject subject, PredicatePtr predicatePtr, Resource resource);
 
         Subjects getSubjects();
 

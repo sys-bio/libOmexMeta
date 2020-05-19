@@ -30,7 +30,7 @@ namespace semsim {
 
         bool operator!=(const LibrdfStorage &rhs) const;
 
-        std::shared_ptr<librdf_storage *> getStorage() const;
+        std::shared_ptr<LibrdfStorage> getStorage() const;
 
         const std::string &getStorageName() const;
 

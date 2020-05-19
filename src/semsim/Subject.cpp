@@ -7,19 +7,19 @@
 
 namespace semsim {
 
-    Subject::Subject(librdf_world *world, const RDFURINode &node)
+    Subject::Subject(LibrdfWorld world, const RDFURINode &node)
             : world_(world) {
         this->rdf_node_ptr_ = std::make_shared<RDFURINode>(node);
 
     }
 
-    Subject::Subject(librdf_world *world, const RDFBlankNode &node)
+    Subject::Subject(LibrdfWorld world, const RDFBlankNode &node)
             : world_(world) {
         this->rdf_node_ptr_ = std::make_shared<RDFBlankNode>(node);
     }
 
-    librdf_node *Subject::toRdfNode() const {
-        librdf_node *node = rdf_node_ptr_->toRdfNode();
+    LibrdfNode Subject::toRdfNode() const {
+        LibrdfNode node = rdf_node_ptr_->toRdfNode();
         if (!node) {
             throw NullPointerException("Subject::ToRdfNode(): node object nullptr");
         }
@@ -29,7 +29,7 @@ namespace semsim {
         return rdf_node_ptr_->str();
     }
 
-    Subject::Subject(librdf_world *world, librdf_node *node)
+    Subject::Subject(LibrdfWorld world, LibrdfNode node)
             : world_(world), rdf_node_ptr_(RDFNode::fromRDFNode(world, node)) {
     }
 

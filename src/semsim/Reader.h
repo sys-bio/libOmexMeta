@@ -12,10 +12,10 @@
 
 namespace semsim {
     class Reader {
-        librdf_world *world_;
+        LibrdfWorld world_;
         raptor_world *raptor_world_ptr_;
         std::string format_;
-        librdf_model *model_;
+        LibrdfModel model_;
         librdf_parser *parser_;
         librdf_uri* base_uri_;
 
@@ -36,12 +36,12 @@ namespace semsim {
 
 
     public:
-        librdf_model *getModel() const;
+        LibrdfModel getModel() const;
 
         void setBaseUri(const std::string &baseUri);
 
-        Reader(librdf_world *world, librdf_model *model,
-                std::string format = "guess", std::string base_uri = "file://./annotations.rdf");
+        Reader(LibrdfWorld world, LibrdfModel model,
+               std::string format = "guess", std::string base_uri = "file://./annotations.rdf");
 
         void setFormat(const std::string &f);
 
@@ -49,7 +49,7 @@ namespace semsim {
 
         void fromFile(const std::string &filename);
 
-        librdf_world *getWorld() const;
+        LibrdfWorld getWorld() const;
 
         raptor_world *getRaptorWorld() const;
 

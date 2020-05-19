@@ -59,7 +59,7 @@ namespace semsim {
         return raptorWorld;
     }
 
-    std::shared_ptr<librdf_world *> LibrdfWorld::getWorld() const {
+    std::shared_ptr<LibrdfWorld> LibrdfWorld::getWorld() const {
         return world_;
     }
 
@@ -79,31 +79,31 @@ namespace semsim {
         std::vector<std::string> valid_storage;
         std::vector<std::string> valid_options;
 
-        librdf_storage *storage = librdf_new_storage(
+        LibrdfStorage storage = librdf_new_storage(
                 *world_, storage_name.c_str(), name.c_str(), options_string.c_str());
         LibrdfStorage librdfStorage(storage);
         return librdfStorage;
     }
 
     LibrdfModel LibrdfWorld::newModel(const LibrdfStorage &storage, const std::string &options_string) {
-        librdf_model *model = librdf_new_model(*world_, *storage.getStorage(), options_string.c_str());
+        LibrdfModel model = librdf_new_model(*world_, *storage.getStorage(), options_string.c_str());
         LibrdfModel librdfModel(model);
         return librdfModel;
     }
 
     LibrdfNode LibrdfWorld::newNodeUriString(const std::string &string) {
-        librdf_node *node = librdf_new_node_from_uri_string(*world_, (const unsigned char *) string.c_str());
+        LibrdfNode node = librdf_new_node_from_uri_string(*world_, (const unsigned char *) string.c_str());
         return LibrdfNode(node);
     }
 
     LibrdfNode LibrdfWorld::newNodeUri(const LibrdfUri &raptorUri) {
-        librdf_node *node = librdf_new_node_from_uri(*world_, *raptorUri.getRaptorUri());
+        LibrdfNode node = librdf_new_node_from_uri(*world_, *raptorUri.getRaptorUri());
         return LibrdfNode(node);
     }
 
     LibrdfNode LibrdfWorld::newNodeLiteral(
             const std::string &literal, const char *xml_language, bool is_wf_xml) {
-        librdf_node *node = librdf_new_node_from_literal(
+        LibrdfNode node = librdf_new_node_from_literal(
                 *world_, (const unsigned char *) literal.c_str(), xml_language, (int) is_wf_xml);
         return LibrdfNode(node);
     }
@@ -121,13 +121,13 @@ namespace semsim {
         }
 
         LibrdfUri uri = newUri(data_type_url_tmp);
-        librdf_node *node = librdf_new_node_from_typed_literal(
+        LibrdfNode node = librdf_new_node_from_typed_literal(
                 *world_, (const unsigned char *) literal.c_str(), xml_language, *uri.getRaptorUri());
         return LibrdfNode(node);
     }
 
     LibrdfNode LibrdfWorld::newNodeBlank(const std::string &identifier) {
-        librdf_node *node = librdf_new_node_from_blank_identifier(*world_, (const unsigned char *) identifier.c_str());
+        LibrdfNode node = librdf_new_node_from_blank_identifier(*world_, (const unsigned char *) identifier.c_str());
         return LibrdfNode(node);
     }
 

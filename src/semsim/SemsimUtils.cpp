@@ -55,7 +55,7 @@ std::vector<std::string> semsim::SemsimUtils::splitStringBy(const std::string &s
 }
 
 std::string semsim::SemsimUtils::generateUniqueMetaid(
-        librdf_world *world, librdf_model *model, std::string metaid_base,
+        LibrdfWorld world, LibrdfModel model, std::string metaid_base,
         std::vector<std::string> exclusions) {
 
     std::string q = "SELECT ?subject ?predicate ?object\n"

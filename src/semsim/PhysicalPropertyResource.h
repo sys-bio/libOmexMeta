@@ -20,9 +20,9 @@ namespace semsim {
 
         PhysicalPropertyResource() = default;
 
-        explicit PhysicalPropertyResource(librdf_world *world, RDFURINode node);
+        explicit PhysicalPropertyResource(LibrdfWorld world, RDFURINode node);
 
-        explicit PhysicalPropertyResource(librdf_world *world, std::string node);
+        explicit PhysicalPropertyResource(LibrdfWorld world, std::string node);
 
         Triple isVersionOfTriple(std::string subject_metaid) const;
 

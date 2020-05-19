@@ -14,7 +14,7 @@
 namespace semsim {
 
 
-    Participant::Participant(librdf_world *world, librdf_model *model, std::string subject, PredicatePtr predicate,
+    Participant::Participant(LibrdfWorld world, LibrdfModel model, std::string subject, PredicatePtr predicate,
                              double multiplier, std::string physicalEntityReference)
             : world_(world), subject_(std::move(subject)),
               predicate_ptr_(predicate),
@@ -61,7 +61,7 @@ namespace semsim {
         predicate_ptr_ = std::move(predicate_ptr);
     }
 
-    librdf_world *Participant::getWorld() const {
+    LibrdfWorld Participant::getWorld() const {
         if (!world_) {
             throw NullPointerException("Participant::getWorld(): world_");
         }
@@ -80,7 +80,7 @@ namespace semsim {
         return physicalEntityReference_;
     }
 
-    SourceParticipant::SourceParticipant(librdf_world *world, librdf_model *model, std::string subject,
+    SourceParticipant::SourceParticipant(LibrdfWorld world, LibrdfModel model, std::string subject,
                                          double multiplier,
                                          std::string physicalEntityReference)
             : Participant(world, model, subject,
@@ -88,14 +88,14 @@ namespace semsim {
                           physicalEntityReference) {
     }
 
-    SinkParticipant::SinkParticipant(librdf_world *world, librdf_model *model, std::string subject, double multiplier,
+    SinkParticipant::SinkParticipant(LibrdfWorld world, LibrdfModel model, std::string subject, double multiplier,
                                      std::string physicalEntityReference)
             : Participant(world, model, subject,
                           std::make_shared<SemSim>(SemSim(world, "hasSinkParticipant")), multiplier,
                           physicalEntityReference) {
     }
 
-    MediatorParticipant::MediatorParticipant(librdf_world *world, librdf_model *model, std::string subject,
+    MediatorParticipant::MediatorParticipant(LibrdfWorld world, LibrdfModel model, std::string subject,
                                              std::string physicalEntityReference)
             : Participant(world, model, subject,
                           std::make_shared<SemSim>(SemSim(world, "hasMediatorParticipant")), 0.0,

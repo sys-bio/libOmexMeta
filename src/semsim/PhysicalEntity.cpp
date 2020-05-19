@@ -11,8 +11,8 @@
 #include "memory"
 
 semsim::PhysicalEntity::PhysicalEntity(
-        librdf_world *world,
-        librdf_model *model,
+        LibrdfWorld world,
+        LibrdfModel model,
         Subject metaid,
         semsim::PhysicalPropertyResource physicalProperty,
         semsim::Resource is,
@@ -23,7 +23,7 @@ semsim::PhysicalEntity::PhysicalEntity(
 }
 
 
-semsim::PhysicalEntity::PhysicalEntity(librdf_world *world, librdf_model *model) : PhysicalPhenomenon(world, model) {
+semsim::PhysicalEntity::PhysicalEntity(LibrdfWorld world, LibrdfModel model) : PhysicalPhenomenon(world, model) {
 }
 
 

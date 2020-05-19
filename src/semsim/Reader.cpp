@@ -13,7 +13,7 @@
 
 using namespace std;
 
-semsim::Reader::Reader(librdf_world *world, librdf_model *model, std::string format, std::string base_uri) {
+semsim::Reader::Reader(LibrdfWorld world, LibrdfModel model, std::string format, std::string base_uri) {
     this->world_ = world;
     this->raptor_world_ptr_ = librdf_world_get_raptor(this->world_);
     this->model_ = model;
@@ -79,7 +79,7 @@ void semsim::Reader::setOption(const std::string &option, const std::string &val
     // prefix for option uri's. Append with desired option for full uri.
     std::string feature_uri_base = "http://feature.librdf.org/raptor-";
     raptor_uri *uri = raptor_new_uri(raptor_world_ptr_, (const unsigned char *) (feature_uri_base + option).c_str());
-    librdf_node *node = librdf_new_node_from_literal(world_, (const unsigned char *) value.c_str(), nullptr, 0);
+    LibrdfNode node = librdf_new_node_from_literal(world_, (const unsigned char *) value.c_str(), nullptr, 0);
     librdf_parser_set_feature(parser_, uri, node);
 }
 
@@ -118,11 +118,11 @@ void semsim::Reader::setBaseUri(const std::string &baseUri) {
     this->base_uri_ = librdf_new_uri(world_, (const unsigned char *) baseUri.c_str());
 }
 
-librdf_model *semsim::Reader::getModel() const {
+LibrdfModel semsim::Reader::getModel() const {
     return model_;
 }
 
-librdf_world *semsim::Reader::getWorld() const {
+LibrdfWorld semsim::Reader::getWorld() const {
     return world_;
 }
 
@@ -138,7 +138,7 @@ librdf_parser *semsim::Reader::getParser() const {
     return parser_;
 }
 
-librdf_uri *semsim::Reader::getBaseUri() const {
+LibrdfUri semsim::Reader::getBaseUri() const {
     return base_uri_;
 }
 

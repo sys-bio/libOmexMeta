@@ -12,7 +12,7 @@
 
 namespace semsim {
 
-    PhysicalForce::PhysicalForce(librdf_world *world, librdf_model *model, Subject metaid,
+    PhysicalForce::PhysicalForce(LibrdfWorld world, LibrdfModel model, Subject metaid,
                                  PhysicalPropertyResource physicalProperty,
                                  Sources sources, Sinks sinks)
             : PhysicalPhenomenon(world, model, metaid, physicalProperty, PHYSICAL_PROCESS),
@@ -96,7 +96,7 @@ namespace semsim {
         return (*this);
     }
 
-    PhysicalForce::PhysicalForce(librdf_world *world, librdf_model *model)
+    PhysicalForce::PhysicalForce(LibrdfWorld world, LibrdfModel model)
             : PhysicalPhenomenon(world, model) {
 
     }

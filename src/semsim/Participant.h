@@ -20,15 +20,15 @@ namespace semsim {
      * to group participant types into vector.
      */
     class Participant {
-        librdf_world *world_;
-        librdf_model *model_;
+        LibrdfWorld world_;
+        LibrdfModel model_;
         std::string subject_;
         PredicatePtr predicate_ptr_;
         double multiplier_;
         std::string physicalEntityReference_;
     public:
 
-        Participant(librdf_world *world, librdf_model *model, std::string subject, PredicatePtr predicate,
+        Participant(LibrdfWorld world, LibrdfModel model, std::string subject, PredicatePtr predicate,
                     double multiplier, std::string physicalEntityReference);
 
         Triples toTriples(std::string process_metaid) const;
@@ -37,7 +37,7 @@ namespace semsim {
 
         void setPredicatePtr(PredicatePtr predicate_ptr);
 
-        librdf_world *getWorld() const;
+        LibrdfWorld getWorld() const;
 
         const std::string &getSubject() const;
 
@@ -55,7 +55,7 @@ namespace semsim {
     class SourceParticipant : public Participant {
 
     public:
-        SourceParticipant(librdf_world *world, librdf_model *model, std::string subject, double multiplier,
+        SourceParticipant(LibrdfWorld world, LibrdfModel model, std::string subject, double multiplier,
                           std::string physicalEntityReference);
     };
 
@@ -67,7 +67,7 @@ namespace semsim {
         std::string physicalEntityReference_;
     public:
 
-        SinkParticipant(librdf_world *world, librdf_model *model, std::string subject, double multiplier,
+        SinkParticipant(LibrdfWorld world, LibrdfModel model, std::string subject, double multiplier,
                         std::string physicalEntityReference);
 
     };
@@ -79,7 +79,7 @@ namespace semsim {
 
     public:
 
-        MediatorParticipant(librdf_world *world, librdf_model *model, std::string subject,
+        MediatorParticipant(LibrdfWorld world, LibrdfModel model, std::string subject,
                             std::string physicalEntityReference);
 
     };

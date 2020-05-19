@@ -6,7 +6,7 @@
 
 namespace semsim {
 
-    LibrdfUri::LibrdfUri(raptor_uri *uri)
+    LibrdfUri::LibrdfUri(librdf_uri *uri)
             : raptor_uri_(std::make_shared<raptor_uri *>(uri)) {
 
     }
