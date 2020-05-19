@@ -13,7 +13,7 @@
 
 namespace semsim {
 
-    Predicate::Predicate(librdf_world *world, const std::string &namespace_,
+    Predicate::Predicate(LibrdfWorld world, const std::string &namespace_,
                          std::string term, std::string prefix)
             : world_(world), namespace_(namespace_), term_(std::move(term)),
               prefix_(std::move(prefix)) {
@@ -26,7 +26,7 @@ namespace semsim {
         this->uri_node_ = std::make_shared<RDFURINode>(RDFURINode(world_, uri_));
     }
 
-    Predicate::Predicate(librdf_world *world, librdf_node *node)
+    Predicate::Predicate(LibrdfWorld world, LibrdfNode node)
             : world_(world), uri_node_(std::make_shared<RDFURINode>(world, node)) {
         // some logic for processing the uri in a node to automatically produce the fields we want.
         std::string val = uri_node_->str();
@@ -93,7 +93,7 @@ namespace semsim {
         return uri_;
     }
 
-    librdf_node *Predicate::toRdfNode() {
+    LibrdfNode Predicate::toRdfNode() {
         return uri_node_->toRdfNode();
     }
 
@@ -139,24 +139,24 @@ namespace semsim {
         namespace_ = ns;
     }
 
-    BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(librdf_world *world, const std::string &term) :
+    BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(LibrdfWorld world, const std::string &term) :
             Predicate(world, "http://biomodels.net/biology-qualifiers/", term, "bqbiol") {
         verify(valid_terms_, term_);
 
     }
 
-    BiomodelsModelQualifier::BiomodelsModelQualifier(librdf_world *world, const std::string &term) :
+    BiomodelsModelQualifier::BiomodelsModelQualifier(LibrdfWorld world, const std::string &term) :
             Predicate(world, "http://biomodels.net/model-qualifiers/", term, "bqmodel") {
         verify(valid_terms_, term_);
 
     }
 
-    DCTerm::DCTerm(librdf_world *world, const std::string &term) :
+    DCTerm::DCTerm(LibrdfWorld world, const std::string &term) :
             Predicate(world, "http://purl.org/dc/terms/", term, "dcterms") {
         verify(valid_terms_, term_);
     }
 
-    SemSim::SemSim(librdf_world *world, const std::string &term) :
+    SemSim::SemSim(LibrdfWorld world, const std::string &term) :
             Predicate(world, "http://www.bhi.washington.edu/semsim#", term, "semsim") {
         verify(valid_terms_, term_);
     }
@@ -165,7 +165,7 @@ namespace semsim {
     /*
      * A factory function for creating PredicatePtr objects.
      */
-    PredicatePtr PredicateFactory(librdf_world *world, std::string namespace_, const std::string &term) {
+    PredicatePtr PredicateFactory(LibrdfWorld world, std::string namespace_, const std::string &term) {
 
         std::vector<std::string> valid_namespace_strings = {
                 "bqb",

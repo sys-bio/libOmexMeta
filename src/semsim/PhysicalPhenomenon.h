@@ -14,8 +14,8 @@
 namespace semsim {
     class PhysicalPhenomenon {
     protected:
-        librdf_world *world_;
-        librdf_model *model_;
+        LibrdfWorld world_;
+        LibrdfModel model_;
         Subject about;
         PhysicalPropertyResource physical_property_;
         AnnotationType type_;
@@ -25,10 +25,10 @@ namespace semsim {
     public:
         PhysicalPhenomenon();
 
-        PhysicalPhenomenon(librdf_world *world, librdf_model *model, Subject metaid,
+        PhysicalPhenomenon(LibrdfWorld world, LibrdfModel model, Subject metaid,
                            PhysicalPropertyResource propertyResource, AnnotationType type);
 
-        PhysicalPhenomenon(librdf_world *world, librdf_model *model);
+        PhysicalPhenomenon(LibrdfWorld world, LibrdfModel model);
 
         Subject getAbout() const;
 

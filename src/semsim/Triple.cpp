@@ -13,19 +13,19 @@
 
 namespace semsim {
 
-    Triple::Triple(librdf_world *world)
+    Triple::Triple(LibrdfWorld world)
             : world_(world) {
 
     }
 
-    Triple::Triple(librdf_world *world, Subject subject, PredicatePtr predicate_ptr, Resource resource) :
+    Triple::Triple(LibrdfWorld world, Subject subject, PredicatePtr predicate_ptr, Resource resource) :
             world_(world),
             subject_(std::move(subject)),
             predicate_ptr_(std::move(predicate_ptr)),
             resource_(std::move(resource)) {}
 
 
-    Triple::Triple(librdf_world *world, Subject subject, const Predicate &predicate, Resource resource) :
+    Triple::Triple(LibrdfWorld world, Subject subject, const Predicate &predicate, Resource resource) :
             world_(world),
             subject_(std::move(subject)),
             predicate_ptr_(std::make_shared<Predicate>(predicate)),

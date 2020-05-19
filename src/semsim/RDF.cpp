@@ -21,7 +21,7 @@
  */
 semsim::LibRDFObjectsTuple semsim::RDF::init() {
     // init librdf world object
-    librdf_world *world_ = librdf_new_world();
+    LibrdfWorld world_ = librdf_new_world();
 
     if (!world_) {
         throw NullPointerException("RDF::init(): world_");
@@ -35,11 +35,11 @@ semsim::LibRDFObjectsTuple semsim::RDF::init() {
     }
 
     //todo work out and make use of the arguments to librdf_new_storage
-    librdf_storage *storage_ = librdf_new_storage(world_, "memory", "semsim_store", nullptr);
+    LibrdfStorage storage_ = librdf_new_storage(world_, "memory", "semsim_store", nullptr);
     if (!storage_) {
         throw NullPointerException("RDF::init(): storage_");
     }
-    librdf_model *model_ = librdf_new_model(world_, storage_, nullptr);
+    LibrdfModel model_ = librdf_new_model(world_, storage_, nullptr);
     if (!model_) {
         throw NullPointerException("RDF::init(): model_");
     }
@@ -61,7 +61,7 @@ semsim::RDF::RDF() {
 
 }
 
-semsim::RDF::RDF(librdf_world *world, raptor_world *raptor_world_, librdf_storage *storage, librdf_model *model) :
+semsim::RDF::RDF(LibrdfWorld world, raptor_world *raptor_world_, LibrdfStorage storage, LibrdfModel model) :
         world_(world),
         raptor_world_(raptor_world_),
         storage_(storage),
@@ -149,11 +149,11 @@ bool semsim::RDF::operator!=(const semsim::RDF &rhs) const {
 /***************************************************************
  *  getters and setters
  */
-librdf_world *semsim::RDF::getWorld() const {
+LibrdfWorld semsim::RDF::getWorld() const {
     return world_;
 }
 
-librdf_storage *semsim::RDF::getStorage() const {
+LibrdfStorage semsim::RDF::getStorage() const {
     return storage_;
 }
 
@@ -167,7 +167,7 @@ void semsim::RDF::setNamespaces(const std::unordered_map<std::string, std::strin
 }
 
 
-librdf_model *semsim::RDF::getModel() const {
+LibrdfModel semsim::RDF::getModel() const {
     return model_;
 }
 
@@ -180,15 +180,15 @@ semsim::RDF semsim::RDF::fromUrl(std::string url, std::string filename, std::str
     return semsim::RDF::fromFile(filename, std::__cxx11::string());
 }
 
-void semsim::RDF::setWorld(librdf_world *world) {
+void semsim::RDF::setWorld(LibrdfWorld world) {
     world_ = world;
 }
 
-void semsim::RDF::setStorage(librdf_storage *storage) {
+void semsim::RDF::setStorage(LibrdfStorage storage) {
     storage_ = storage;
 }
 
-void semsim::RDF::setModel(librdf_model *model) {
+void semsim::RDF::setModel(LibrdfModel model) {
     model_ = model;
 }
 
@@ -223,10 +223,10 @@ semsim::RDF semsim::RDF::fromXML(const std::string &filename, std::string format
     LibRDFObjectsTuple objectsTuple = RDF::init();
 
     // unpack redland library objects
-    librdf_world *world = std::get<0>(objectsTuple);
+    LibrdfWorld world = std::get<0>(objectsTuple);
     raptor_world *raptor_world_ptr = std::get<1>(objectsTuple);
-    librdf_storage *storage = std::get<2>(objectsTuple);
-    librdf_model *model = std::get<3>(objectsTuple);
+    LibrdfStorage storage = std::get<2>(objectsTuple);
+    LibrdfModel model = std::get<3>(objectsTuple);
 
     // Read the xml
     Reader reader(world, model, std::move(format), "file://./annotations.rdf");
@@ -340,7 +340,7 @@ semsim::Editor *semsim::RDF::toEditorPtr(std::string xml, semsim::XmlAssistantTy
     return new Editor(xml, type, world_, model_, namespaces_);
 }
 
-librdf_uri *semsim::RDF::getBaseUri() const {
+LibrdfUri semsim::RDF::getBaseUri() const {
     return base_uri_;
 }
 
@@ -350,14 +350,14 @@ std::string semsim::RDF::getBaseUriAsString() const {
 
 void semsim::RDF::setBaseUri(std::string baseUri) {
     baseUri = semsim::SemsimUtils::addFilePrefixToString(baseUri);
-    librdf_uri *uri = librdf_new_uri(world_, (const unsigned char *) baseUri.c_str());
+    LibrdfUri uri = librdf_new_uri(world_, (const unsigned char *) baseUri.c_str());
     if (!uri) {
         throw semsim::LibRDFException("semsim::RDF::setBaseUri: Unable to create a new librdf_uri instance. ");
     }
     base_uri_ = uri;
 }
 
-void semsim::RDF::setBaseUri(librdf_uri *baseUri) {
+void semsim::RDF::setBaseUri(LibrdfUri baseUri) {
     if (!baseUri) {
         throw semsim::LibRDFException("semsim::RDF::setBaseUri: Unable to create a new librdf_uri instance. ");
     }

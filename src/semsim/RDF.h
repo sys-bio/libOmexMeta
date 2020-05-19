@@ -11,6 +11,12 @@
 #include "Editor.h"
 #include "XmlAssistant.h"
 #include "Query.h"
+#include "semsim/RelandAPIWrappers/LibrdfWorld.h"
+#include "semsim/RelandAPIWrappers/LibrdfStorage.h"
+#include "semsim/RelandAPIWrappers/LibrdfModel.h"
+#include "semsim/RelandAPIWrappers/LibrdfNode.h"
+#include "semsim/RelandAPIWrappers/LibrdfUri.h"
+#include "semsim/RelandAPIWrappers/RaptorWorld.h"
 
 namespace semsim {
 
@@ -18,20 +24,20 @@ namespace semsim {
 
     typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
-    typedef std::tuple<librdf_world *, raptor_world *, librdf_storage *, librdf_model *> LibRDFObjectsTuple;
+    typedef std::tuple<LibrdfWorld, raptor_world *, LibrdfStorage, LibrdfModel> LibRDFObjectsTuple;
 
     class RDF {
     private:
-        librdf_world *world_;
-        raptor_world *raptor_world_;
-        librdf_storage *storage_;
-        librdf_model *model_;
+        LibrdfWorld world_;
+        RaptorWorld raptor_world_;
+        LibrdfStorage storage_;
+        LibrdfModel model_;
 
 
         semsim::Writer makeWriter(const std::string &format);
 
     public:
-        librdf_uri *base_uri_;
+        LibrdfUri base_uri_;
         NamespaceMap namespaces_;
         std::vector<std::string> seen_namespaces_;
         NamespaceMap default_namespaces_ = {
@@ -41,19 +47,19 @@ namespace semsim {
                 {"http://www.bhi.washington.edu/semsim#",    "semsim"},
         };
 
-        librdf_uri *getBaseUri() const;
+        LibrdfUri getBaseUri() const;
 
         std::string getBaseUriAsString() const;
 
         void setBaseUri(std::string baseUri);
 
-        void setBaseUri(librdf_uri *base_uri);
+        void setBaseUri(LibrdfUri base_uri);
 
         static LibRDFObjectsTuple init();
 
         RDF();
 
-        RDF(librdf_world *world, raptor_world *raptor_world_, librdf_storage *storage, librdf_model *model);
+        RDF(LibrdfWorld world, RaptorWorld raptor_world_, LibrdfStorage storage, LibrdfModel model);
 
         ~RDF();
 
@@ -97,19 +103,19 @@ namespace semsim {
 
         static std::ostringstream listOptions();
 
-        librdf_world *getWorld() const;
+        LibrdfWorld getWorld() const;
 
-        librdf_storage *getStorage() const;
+        LibrdfStorage getStorage() const;
 
-        librdf_model *getModel() const;
+        LibrdfModel getModel() const;
 
         raptor_world *getRaptorWorld() const;
 
-        void setWorld(librdf_world *world);
+        void setWorld(LibrdfWorld world);
 
-        void setStorage(librdf_storage *storage);
+        void setStorage(LibrdfStorage storage);
 
-        void setModel(librdf_model *model);
+        void setModel(LibrdfModel model);
 
         void setRaptorWorld(raptor_world *raptorWorldPtr);
 

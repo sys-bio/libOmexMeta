@@ -15,15 +15,15 @@
 namespace semsim {
     class Triple {
     protected:
-        librdf_world *world_{};
+        LibrdfWorld world_{};
         Subject subject_;
         PredicatePtr predicate_ptr_;
         Resource resource_;
     public:
 
-        explicit Triple(librdf_world *world);
+        explicit Triple(LibrdfWorld world);
 
-        Triple(librdf_world *world, Subject subject, PredicatePtr predicate_ptr, Resource resource);
+        Triple(LibrdfWorld world, Subject subject, PredicatePtr predicate_ptr, Resource resource);
 
         void setSubject(const Subject &subject);
 
@@ -31,7 +31,7 @@ namespace semsim {
 
         void setResource(const Resource &resource);
 
-        Triple(librdf_world *world, Subject subject, const Predicate &predicate, Resource resource);
+        Triple(LibrdfWorld world, Subject subject, const Predicate &predicate, Resource resource);
 
         Subject getSubject() const;
 
@@ -41,7 +41,7 @@ namespace semsim {
 
         librdf_statement *toStatement();
 
-        static Triple fromStatement(librdf_world *world, librdf_statement *statement);
+        static Triple fromStatement(LibrdfWorld world, librdf_statement *statement);
 
         std::string str(std::string format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
 

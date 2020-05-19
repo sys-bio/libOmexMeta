@@ -22,12 +22,12 @@ namespace semsim {
         triples_.push_back(triple);
     }
 
-    void Triples::emplace_back(librdf_world *world, Subject subject, PredicatePtr predicatePtr, Resource resource) {
+    void Triples::emplace_back(LibrdfWorld world, Subject subject, PredicatePtr predicatePtr, Resource resource) {
         triples_.emplace_back(world, subject, predicatePtr, resource);
 
     }
 
-    void Triples::emplace_back(librdf_world *world, librdf_statement *statement) {
+    void Triples::emplace_back(LibrdfWorld world, librdf_statement *statement) {
         triples_.push_back(Triple::fromStatement(world, statement));
     }
 

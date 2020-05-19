@@ -24,10 +24,10 @@ namespace semsim {
 
         PhysicalForce() = default;
 
-        PhysicalForce(librdf_world *world, librdf_model *model, Subject metaid, PhysicalPropertyResource physicalProperty,
+        PhysicalForce(LibrdfWorld world, LibrdfModel model, Subject metaid, PhysicalPropertyResource physicalProperty,
                       Sources sources, Sinks sinks);
 
-        PhysicalForce(librdf_world *world, librdf_model *model);
+        PhysicalForce(LibrdfWorld world, LibrdfModel model);
 
         std::string createMetaId() const;
 

@@ -37,17 +37,17 @@ namespace semsim {
         void validateBaseUri();
 
     protected:
-        void init(librdf_world *world, librdf_model *model,
+        void init(LibrdfWorld world, LibrdfModel model,
                   const std::string &base_uri,
                   std::string format);
 
-        librdf_world *world_;
-        librdf_model *model_;
+        LibrdfWorld world_;
+        LibrdfModel model_;
     public:
 
         Writer();
 
-        Writer(librdf_world *world, librdf_model *model,
+        Writer(LibrdfWorld world, LibrdfModel model,
                const std::string &base_uri = "file://annotation.rdf",
                std::string format = "rdfxml-abbrev");
 
@@ -55,7 +55,7 @@ namespace semsim {
 
         void setFormat(const std::string &format);
 
-        void setWorld(librdf_world *world_);
+        void setWorld(LibrdfWorld world_);
 
         std::string toString();
 
@@ -70,7 +70,7 @@ namespace semsim {
     };
 
     class TripleWriter : public Writer {
-        librdf_storage *storage_;
+        LibrdfStorage storage_;
     public:
         using Writer::init;
 

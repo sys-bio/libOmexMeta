@@ -16,8 +16,8 @@ namespace semsim {
     typedef std::unordered_map<std::string, std::vector<std::string>> ResultsMap;
 
     class Query {
-        librdf_world *world_;
-        librdf_model *model_;
+        LibrdfWorld world_;
+        LibrdfModel model_;
         std::string query_;
         librdf_query_results *query_results_;
         librdf_query_results *query_results_copy_;
@@ -113,7 +113,7 @@ namespace semsim {
 
     public:
 
-        Query(librdf_world *world, librdf_model *model, std::string query);
+        Query(LibrdfWorld world, LibrdfModel model, std::string query);
 
         ~Query();
 

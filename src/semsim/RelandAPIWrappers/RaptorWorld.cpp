@@ -64,19 +64,20 @@ namespace semsim {
         return !(rhs == *this);
     }
 
-    LibrdfUri RaptorWorld::newRaptorUri(std::string uri_string) {
+    LibrdfUri RaptorWorld::newRaptorUri(const std::string &uri_string) {
         raptor_uri *uri = raptor_new_uri(*raptor_world_, (const unsigned char *) uri_string.c_str());
         return LibrdfUri(uri);
     }
 
-    LibrdfUri RaptorWorld::newRaptorUriFromUriOrFileString(std::string uri_string, LibrdfUri raptor_base_uri,
-                                                           std::string file_or_uri) {
+    LibrdfUri
+    RaptorWorld::newRaptorUriFromUriOrFileString(const std::string &uri_string, const LibrdfUri &raptor_base_uri,
+                                                 const std::string &file_or_uri) {
         raptor_uri *uri = raptor_new_uri_from_uri_or_file_string(
                 *raptor_world_, *raptor_base_uri.getRaptorUri(), (const unsigned char *) file_or_uri.c_str());
         return LibrdfUri(uri);
     }
 
-    LibrdfUri RaptorWorld::newRaptorUriRelativeToBase(LibrdfUri raptor_base_uri, std::string uri_string) {
+    LibrdfUri RaptorWorld::newRaptorUriRelativeToBase(const LibrdfUri &raptor_base_uri, const std::string &uri_string) {
         raptor_uri *uri = raptor_new_uri_relative_to_base(
                 *raptor_world_, *raptor_base_uri.getRaptorUri(),
                 (const unsigned char *) uri_string.c_str());

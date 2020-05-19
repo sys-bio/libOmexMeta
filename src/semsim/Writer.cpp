@@ -9,11 +9,11 @@
 #include <regex>
 #include "Error.h"
 
-void semsim::Writer::setWorld(librdf_world *w) {
+void semsim::Writer::setWorld(LibrdfWorld w) {
     this->world_ = w;
 }
 
-void semsim::Writer::init(librdf_world *world, librdf_model *model,
+void semsim::Writer::init(LibrdfWorld world, LibrdfModel model,
                           const std::string &base_uri, std::string format) {
     this->world_ = world;
 
@@ -54,7 +54,7 @@ void semsim::Writer::init(librdf_world *world, librdf_model *model,
 
 }
 
-semsim::Writer::Writer(librdf_world *world, librdf_model *model,
+semsim::Writer::Writer(LibrdfWorld world, LibrdfModel model,
                        const std::string &base_uri, std::string format) {
     init(world, model, base_uri, format);
 }
@@ -74,7 +74,7 @@ semsim::Writer::~Writer() {
 }
 
 void semsim::Writer::registerNamespace(const std::string &ns, const std::string &prefix) {
-    librdf_uri *ns_uri = librdf_new_uri(world_, (const unsigned char *) ns.c_str());
+    LibrdfUri ns_uri = librdf_new_uri(world_, (const unsigned char *) ns.c_str());
     librdf_serializer_set_namespace(serializer, ns_uri, (const char *) prefix.c_str());
     librdf_free_uri(ns_uri);
 }
@@ -88,7 +88,7 @@ void semsim::Writer::registerNamespace(const std::unordered_map<std::string, std
 void semsim::Writer::setOption(const std::string &option, const std::string &value) {
     std::string feature_uri_base = "http://feature.librdf.org/raptor-";
     raptor_uri *uri = raptor_new_uri(raptor_world_ptr_, (const unsigned char *) (feature_uri_base + option).c_str());
-    librdf_node *node = librdf_new_node_from_literal(world_, (const unsigned char *) value.c_str(), nullptr, 0);
+    LibrdfNode node = librdf_new_node_from_literal(world_, (const unsigned char *) value.c_str(), nullptr, 0);
     librdf_serializer_set_feature(serializer, uri, node);
     librdf_free_uri(uri);
     librdf_free_node(node);
@@ -101,7 +101,7 @@ std::string semsim::Writer::toString() {
         throw NullPointerException("Writer::toString(): raptor_iostream");
 
     auto base_uri_cstr = (unsigned char *) base_uri_.c_str();
-    librdf_uri *uri = librdf_new_uri(world_, base_uri_cstr);
+    LibrdfUri uri = librdf_new_uri(world_, base_uri_cstr);
     if (!uri) {
         throw NullPointerException("Writer::toString: uri");
     }
@@ -130,7 +130,7 @@ void semsim::Writer::setFormat(const std::string &format) {
 void semsim::Writer::validateBaseUri() {
     std::regex file_regex("^file://");
     std::smatch m;
-    librdf_uri *uri = librdf_new_uri(world_, reinterpret_cast<const unsigned char *>(base_uri_.c_str()));
+    LibrdfUri uri = librdf_new_uri(world_, reinterpret_cast<const unsigned char *>(base_uri_.c_str()));
     std::string uri_str = (const char *) librdf_uri_as_string(uri);
     if (uri_str.rfind("file://", 0) != 0) {
         uri_str = "file://" + uri_str;
@@ -143,12 +143,12 @@ semsim::Writer::Writer() = default;
 
 semsim::TripleWriter::TripleWriter(semsim::Triple triple, const std::string &base_uri, std::string format) {
     // when creating a writer from a Triple, we just create a locally scoped rdf model and storage
-    librdf_world *world = librdf_new_world();
-    librdf_storage *storage = librdf_new_storage(world, "memory", "triple_store", nullptr);
+    LibrdfWorld world = librdf_new_world();
+    LibrdfStorage storage = librdf_new_storage(world, "memory", "triple_store", nullptr);
     if (!storage) {
         throw LibRDFException("Writer::Writer: storage not created");
     }
-    librdf_model *model = librdf_new_model(world, storage, nullptr);
+    LibrdfModel model = librdf_new_model(world, storage, nullptr);
     if (!model) {
         throw LibRDFException("Writer::Writer: model not created");
     }
@@ -168,12 +168,12 @@ semsim::TripleWriter::TripleWriter(semsim::Triple triple, const std::string &bas
 
 semsim::TripleWriter::TripleWriter(semsim::Triples triples, const std::string &base_uri, std::string format) {
     // when creating a writer from a Triple, we just create a locally scoped rdf model and storage
-    librdf_world *world = librdf_new_world();
+    LibrdfWorld world = librdf_new_world();
     storage_ = librdf_new_storage(world, "memory", "triples_store", nullptr);
     if (!storage_) {
         throw LibRDFException("Writer::Writer: storage not created");
     }
-    librdf_model *model = librdf_new_model(world, storage_, nullptr);
+    LibrdfModel model = librdf_new_model(world, storage_, nullptr);
     if (!model) {
         throw LibRDFException("Writer::Writer: model not created");
     }

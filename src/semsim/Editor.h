@@ -57,8 +57,8 @@ namespace semsim {
         std::string xml_;
         std::vector<std::string> metaids_;
         NestedTriples triple_list_;
-        librdf_world *world_;
-        librdf_model *model_;
+        LibrdfWorld world_;
+        LibrdfModel model_;
         std::unordered_map<std::string, std::string> &namespaces_;
 
         void extractNamespacesFromTriplesVector(Triples triples);
@@ -66,9 +66,9 @@ namespace semsim {
     public:
         const NamespaceMap &getNamespaces() const;
 
-        librdf_world *getWorld() const;
+        LibrdfWorld getWorld() const;
 
-        librdf_model *getModel() const;
+        LibrdfModel getModel() const;
 
         void setNamespaces(const NamespaceMap &namespaces);
 
@@ -76,8 +76,8 @@ namespace semsim {
         const NestedTriples &getTripleList() const;
 
         explicit Editor(const std::string &xml, XmlAssistantType type,
-                        librdf_world *world,
-                        librdf_model *model, NamespaceMap &ns_map);
+                        LibrdfWorld world,
+                        LibrdfModel model, NamespaceMap &ns_map);
 
         const std::string &getXml() const;
 

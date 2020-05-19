@@ -16,20 +16,20 @@ namespace semsim {
     class Resource {
 
     protected:
-        librdf_world *world_;
+        LibrdfWorld world_;
         RDFNodePtr rdf_node_ptr_;
     public:
         Resource() = default;
 
-        Resource(librdf_world *world, const RDFLiteralNode &node);
+        Resource(LibrdfWorld world, const RDFLiteralNode &node);
 
-        Resource(librdf_world *world, const RDFURINode &node);
+        Resource(LibrdfWorld world, const RDFURINode &node);
 
-        Resource(librdf_world *world, const RDFBlankNode &node);
+        Resource(LibrdfWorld world, const RDFBlankNode &node);
 
         Resource(librdf_world* world, librdf_node* node);
 
-        librdf_node *toRdfNode() const;
+        LibrdfNode toRdfNode() const;
 
         std::string str() const;
 

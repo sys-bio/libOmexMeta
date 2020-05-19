@@ -39,7 +39,7 @@ namespace semsim {
 
         const std::string &getOptions() const;
 
-        const std::shared_ptr<librdf_model *> &getModel() const;
+        const std::shared_ptr<LibrdfModel> &getModel() const;
     };
 }
 

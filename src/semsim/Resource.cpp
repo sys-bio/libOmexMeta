@@ -7,22 +7,22 @@
 
 namespace semsim {
 
-    Resource::Resource(librdf_world *world, const RDFLiteralNode& node) :
-        world_(world){
+    Resource::Resource(LibrdfWorld world, const RDFLiteralNode &node) :
+            world_(world){
         this->rdf_node_ptr_ = std::make_shared<RDFLiteralNode>(node);
     }
 
-    Resource::Resource(librdf_world *world, const RDFURINode &node) :
+    Resource::Resource(LibrdfWorld world, const RDFURINode &node) :
             world_(world) {
         this->rdf_node_ptr_ = std::make_shared<RDFURINode>(node);
     }
 
-    Resource::Resource(librdf_world *world, const RDFBlankNode &node) :
+    Resource::Resource(LibrdfWorld world, const RDFBlankNode &node) :
             world_(world) {
         this->rdf_node_ptr_ = std::make_shared<RDFBlankNode>(node);
     }
 
-    librdf_node *Resource::toRdfNode() const {
+    LibrdfNode Resource::toRdfNode() const {
         return rdf_node_ptr_->toRdfNode();
     }
 
@@ -30,8 +30,8 @@ namespace semsim {
         return rdf_node_ptr_->str();
     }
 
-    Resource::Resource(librdf_world *world, librdf_node *node)
-        : world_(world), rdf_node_ptr_(RDFNode::fromRDFNode(world, node)){
+    Resource::Resource(LibrdfWorld world, LibrdfNode node)
+            : world_(world), rdf_node_ptr_(RDFNode::fromRDFNode(world, node)){
 
     }
 

@@ -16,7 +16,7 @@
 
 namespace semsim {
 
-    Query::Query(librdf_world *world, librdf_model *model, std::string query)
+    Query::Query(LibrdfWorld world, LibrdfModel model, std::string query)
             : world_(world), model_(model), query_(query) {
 
         if (!world_) {
@@ -75,7 +75,7 @@ namespace semsim {
     }
 
     std::string Query::getBindingValueByName(const std::string &name) {
-        librdf_node *node = librdf_query_results_get_binding_value_by_name(query_results_, (const char *) name.c_str());
+        LibrdfNode node = librdf_query_results_get_binding_value_by_name(query_results_, (const char *) name.c_str());
         std::string value;
         switch (node->type) {
             case RAPTOR_TERM_TYPE_URI: {

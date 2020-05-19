@@ -11,7 +11,7 @@
 #include "SemsimUtils.h"
 
 semsim::Editor::Editor(const std::string &xml, XmlAssistantType type,
-                       librdf_world *world, librdf_model *model, NamespaceMap &nsmap)
+                       LibrdfWorld world, LibrdfModel model, NamespaceMap &nsmap)
         : world_(world), model_(model), namespaces_(nsmap) {
     semsim::XmlAssistantPtr xmlAssistantPtr = XmlAssistantFactory::generate(xml, type);
     std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
@@ -125,14 +125,14 @@ void semsim::Editor::addCompositeAnnotation(semsim::PhysicalPhenomenonPtr phenom
     }
 }
 
-librdf_world *semsim::Editor::getWorld() const {
+LibrdfWorld semsim::Editor::getWorld() const {
     if (!world_) {
         throw NullPointerException("semsim::Editor::getWorld(): world_");
     }
     return world_;
 }
 
-librdf_model *semsim::Editor::getModel() const {
+LibrdfModel semsim::Editor::getModel() const {
     if (!model_) {
         throw NullPointerException("semsim::Editor::getModel(): model_");
 

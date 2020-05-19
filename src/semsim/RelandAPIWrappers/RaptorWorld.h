@@ -32,13 +32,13 @@ namespace semsim {
 
         bool operator!=(const RaptorWorld &rhs) const;
 
-        LibrdfUri newRaptorUri(std::string uri_string);
+        LibrdfUri newRaptorUri(const std::string &uri_string);
 
         LibrdfUri newRaptorUriFromUriOrFileString(
-                std::string uri_string, LibrdfUri raptor_base_uri, std::string file_or_uri);
+                const std::string &uri_string, const LibrdfUri &raptor_base_uri, const std::string &file_or_uri);
 
         LibrdfUri newRaptorUriRelativeToBase(
-                LibrdfUri raptor_base_uri, std::string uri_string);
+                const LibrdfUri &raptor_base_uri, const std::string &uri_string);
     };
 }
 

@@ -9,13 +9,13 @@
 
 namespace semsim {
 
-    PhysicalPropertyResource::PhysicalPropertyResource(librdf_world *world, RDFURINode node)
+    PhysicalPropertyResource::PhysicalPropertyResource(LibrdfWorld world, RDFURINode node)
             : Resource(world, node) {
         validate();
     }
 
 
-    PhysicalPropertyResource::PhysicalPropertyResource(librdf_world *world, std::string node)
+    PhysicalPropertyResource::PhysicalPropertyResource(LibrdfWorld world, std::string node)
             : Resource(world, RDFURINode(world, node)) {
         validate();
     }

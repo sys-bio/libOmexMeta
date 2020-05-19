@@ -16,7 +16,7 @@ namespace semsim {
     class Predicate {
     protected:
 
-        librdf_world *world_;
+        LibrdfWorld world_;
         std::string namespace_, term_, prefix_;
         std::string uri_;
         std::shared_ptr<RDFURINode> uri_node_; // predicates can only have type RDFUriNode
@@ -32,12 +32,12 @@ namespace semsim {
 
         void setNamespace(const std::string &ns);
 
-        Predicate(librdf_world *world, const std::string &namespace_,
+        Predicate(LibrdfWorld world, const std::string &namespace_,
                   std::string term, std::string prefix);
 
-        Predicate(librdf_world *world, librdf_node *node);
+        Predicate(LibrdfWorld world, LibrdfNode node);
 
-        librdf_node *toRdfNode();
+        LibrdfNode toRdfNode();
 
         std::string str();
 
@@ -75,7 +75,7 @@ namespace semsim {
 
         BiomodelsBiologyQualifier() = default;
 
-        BiomodelsBiologyQualifier(librdf_world *world, const std::string &term);
+        BiomodelsBiologyQualifier(LibrdfWorld world, const std::string &term);
 
     };
 
@@ -91,7 +91,7 @@ namespace semsim {
 
         BiomodelsModelQualifier() = default;
 
-        BiomodelsModelQualifier(librdf_world *world, const std::string &term);
+        BiomodelsModelQualifier(LibrdfWorld world, const std::string &term);
 
     };
 
@@ -103,7 +103,7 @@ namespace semsim {
 
         DCTerm() = default;
 
-        DCTerm(librdf_world *world, const std::string &term);
+        DCTerm(LibrdfWorld world, const std::string &term);
 
     };
 
@@ -119,7 +119,7 @@ namespace semsim {
 
         SemSim() = default;
 
-        SemSim(librdf_world *world, const std::string &term);
+        SemSim(LibrdfWorld world, const std::string &term);
 
     };
 
@@ -127,7 +127,7 @@ namespace semsim {
     typedef std::vector<Predicate> Predicates;
     typedef std::vector<PredicatePtr> PredicatePtrs;
 
-    PredicatePtr PredicateFactory(librdf_world *world, std::string namespace_, const std::string &term);
+    PredicatePtr PredicateFactory(LibrdfWorld world, std::string namespace_, const std::string &term);
 
 }
 
