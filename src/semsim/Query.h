@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <vector>
 #include "Triples.h"
+#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {
 

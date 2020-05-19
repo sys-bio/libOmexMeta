@@ -10,6 +10,7 @@
 #include "Subject.h"
 #include "PhysicalPhenomenon.h"
 #include "MetaID.h"
+#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {
     class PhysicalEntity : public PhysicalPhenomenon {

@@ -11,6 +11,7 @@
 #include <sstream>
 #include "RDFNode.h"
 #include "unordered_map"
+#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {
     class Predicate {

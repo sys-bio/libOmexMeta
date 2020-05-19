@@ -11,12 +11,7 @@
 #include "Editor.h"
 #include "XmlAssistant.h"
 #include "Query.h"
-#include "semsim/RelandAPIWrappers/LibrdfWorld.h"
-#include "semsim/RelandAPIWrappers/LibrdfStorage.h"
-#include "semsim/RelandAPIWrappers/LibrdfModel.h"
-#include "semsim/RelandAPIWrappers/LibrdfNode.h"
-#include "semsim/RelandAPIWrappers/LibrdfUri.h"
-#include "semsim/RelandAPIWrappers/RaptorWorld.h"
+#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {
 

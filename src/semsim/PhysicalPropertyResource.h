@@ -10,6 +10,7 @@
 #include "Error.h"
 #include "Triple.h"
 #include "Triples.h"
+#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {
     class PhysicalPropertyResource : public Resource {

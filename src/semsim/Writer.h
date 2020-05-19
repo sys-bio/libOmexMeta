@@ -11,6 +11,7 @@
 #include "unordered_map"
 #include "Triple.h"
 #include "Triples.h"
+#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {
     class Writer {

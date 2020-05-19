@@ -10,7 +10,11 @@
 #include "Subject.h"
 #include "Predicate.h"
 #include "Resource.h"
+#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
 
+/*
+ * todo implement a "world::newTriple" method
+ */
 
 namespace semsim {
     class Triple {
