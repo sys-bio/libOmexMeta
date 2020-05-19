@@ -32,6 +32,7 @@ set(SEMSIM_SOURCES
         "RelandAPIWrappers/RaptorWorld.cpp"
         "RelandAPIWrappers/LibrdfUri.cpp"
         "RelandAPIWrappers/RedlandAPIWrapper.h"
+        "RelandAPIWrappers/LibrdfStatement.cpp"
         )
 
 set(SEMSIM_HEADERS
@@ -66,6 +67,7 @@ set(SEMSIM_HEADERS
         "RelandAPIWrappers/LibrdfModel.h"
         "RelandAPIWrappers/LibrdfNode.h"
         "RelandAPIWrappers/LibrdfUri.h"
+        "RelandAPIWrappers/LibrdfStatement.h"
         )
 
 message(STATUS "SEMSIM_HEADERS ${SEMSIM_HEADERS}")

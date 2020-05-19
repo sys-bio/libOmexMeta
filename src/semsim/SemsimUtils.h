@@ -7,6 +7,7 @@
 
 #include <string>
 #include <vector>
+#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
 
 // macro helpful for debugging
 #define HERE()                              \

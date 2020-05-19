@@ -8,6 +8,7 @@
 #include "iostream"
 #include "RDFNode.h"
 #include <vector>
+#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {
     class Subject {

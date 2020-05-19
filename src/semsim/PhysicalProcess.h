@@ -7,6 +7,7 @@
 
 #include "PhysicalPhenomenon.h"
 #include "Participant.h"
+#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {
     class PhysicalProcess : public PhysicalPhenomenon {
