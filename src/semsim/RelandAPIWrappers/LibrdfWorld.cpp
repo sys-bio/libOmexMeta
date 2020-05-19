@@ -16,29 +16,29 @@ namespace semsim {
         world_ = std::make_shared<librdf_world *>(world_tmp);
     }
 
-    LibrdfWorld::~LibrdfWorld() = default;
+    LibrdfWorld::~LibrdfWorld() {
+        if (world_.use_count() == 1) {
+            librdf_free_world(*world_);
+        }
+    };
 
     LibrdfWorld::LibrdfWorld(const LibrdfWorld &librdfWorld) {
-        if (this != &librdfWorld) {
-            std::cout << "copy constructor: this->world_.use_count(): " << this->world_.use_count() <<
-                      "librdfWorld->world_.use_count(): " << librdfWorld.world_.use_count() << std::endl;
-            this->world_ = librdfWorld.world_;
+        if (world_) {
+            librdf_free_world(*world_); // get rid of whats alreday there before we copy librdfWorld.world_
         }
+        world_ = librdfWorld.world_;
     }
 
     LibrdfWorld::LibrdfWorld(LibrdfWorld &&librdfWorld) noexcept {
-        if (this != &librdfWorld) {
-            std::cout << "Move constructor: this->world_.use_count(): " << this->world_.use_count() <<
-                      "librdfWorld->world_.use_count(): " << librdfWorld.world_.use_count() << std::endl;
-            this->world_ = std::move(librdfWorld.world_);
-        }
+        if (world_)
+            librdf_free_world(*world_);
+        world_ = std::move(librdfWorld.world_);
     }
 
     LibrdfWorld &LibrdfWorld::operator=(const LibrdfWorld &librdfWorld) {
         if (this != &librdfWorld) {
-            std::cout << "Copy assignment op: this->world_.use_count(): " << this->world_.use_count() <<
-                      "librdfWorld->world_.use_count(): " << librdfWorld.world_.use_count() << std::endl;
-
+            if (world_)
+                librdf_free_world(*world_);
             this->world_ = librdfWorld.world_;
         }
         return *this;
@@ -46,15 +46,12 @@ namespace semsim {
 
     LibrdfWorld &LibrdfWorld::operator=(LibrdfWorld &&librdfWorld) noexcept {
         if (this != &librdfWorld) {
-            std::cout << "Move assignment op: before move: this->world_.use_count(): " << this->world_.use_count() <<
-                      ", librdfWorld->world_.use_count(): " << librdfWorld.world_.use_count() << std::endl;
+            if (world_)
+                librdf_free_world(*world_);
             this->world_ = std::move(librdfWorld.world_);
-            std::cout << "Move assignment op: after move:  this->world_.use_count(): " << this->world_.use_count() <<
-                      ", librdfWorld->world_.use_count(): " << librdfWorld.world_.use_count() << std::endl;
         }
         return *this;
     }
-
 
     RaptorWorld LibrdfWorld::getRaptor() {
         raptor_world *raptor_world_ptr = librdf_world_get_raptor(*world_);
@@ -90,33 +87,35 @@ namespace semsim {
 
     LibrdfModel LibrdfWorld::newModel(const LibrdfStorage &storage, const std::string &options_string) {
         librdf_model *model = librdf_new_model(*world_, *storage.getStorage(), options_string.c_str());
-        LibrdfModel librdfModel(model, options_string);
+        LibrdfModel librdfModel(model);
         return librdfModel;
     }
 
-    LibrdfNode LibrdfWorld::newNodeUriString(std::string string) {
+    LibrdfNode LibrdfWorld::newNodeUriString(const std::string &string) {
         librdf_node *node = librdf_new_node_from_uri_string(*world_, (const unsigned char *) string.c_str());
         return LibrdfNode(node);
     }
 
-    LibrdfNode LibrdfWorld::newNodeUri(RaptorUri raptorUri) {
-        librdf_node *node = librdf_new_node_from_uri(*world_, *raptorUri.getUri());
+    LibrdfNode LibrdfWorld::newNodeUri(const RaptorUri &raptorUri) {
+        librdf_node *node = librdf_new_node_from_uri(*world_, *raptorUri.getRaptorUri());
         return LibrdfNode(node);
     }
 
-    LibrdfNode LibrdfWorld::newNodeLiteral(std::string literal, std::string xml_language, bool is_wf_xml) {
+    LibrdfNode
+    LibrdfWorld::newNodeLiteral(const std::string &literal, const std::string &xml_language, bool is_wf_xml) {
         librdf_node *node = librdf_new_node_from_literal(
                 *world_, (const unsigned char *) literal.c_str(), xml_language.c_str(), (int) is_wf_xml);
         return LibrdfNode(node);
     }
 
-    LibrdfNode LibrdfWorld::newNodeTypedLiteral(std::string literal, std::string xml_language, RaptorUri datatypeUri) {
+    LibrdfNode LibrdfWorld::newNodeTypedLiteral(const std::string &literal, const std::string &xml_language,
+                                                const RaptorUri &datatypeUri) {
         librdf_node *node = librdf_new_node_from_typed_literal(
-                *world_, (const unsigned char *) literal.c_str(), xml_language.c_str(), *datatypeUri.getUri());
+                *world_, (const unsigned char *) literal.c_str(), xml_language.c_str(), *datatypeUri.getRaptorUri());
         return LibrdfNode(node);
     }
 
-    LibrdfNode LibrdfWorld::newNodeBlank(std::string identifier) {
+    LibrdfNode LibrdfWorld::newNodeBlank(const std::string &identifier) {
         librdf_node *node = librdf_new_node_from_blank_identifier(*world_, (const unsigned char *) identifier.c_str());
         return LibrdfNode(node);
     }
@@ -124,14 +123,13 @@ namespace semsim {
 }
 
 
-/*
- * Saved for later: might need it?
- *
- *
- * Since LibrdfWorld is initialized with a world object,
- * We need to free it before we move the world from librdfWorld
- * over this this->world_.
-if (world_ != nullptr) { // most of this time world_ will not be nullptr.
-    librdf_free_world(*world_);
-}
- */
+
+
+
+
+
+
+
+
+
+

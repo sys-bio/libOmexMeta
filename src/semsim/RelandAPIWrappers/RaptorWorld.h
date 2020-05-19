@@ -16,20 +16,29 @@ namespace semsim {
     public:
         explicit RaptorWorld(raptor_world *world);
 
+        ~RaptorWorld();
+
+        RaptorWorld(const RaptorWorld &raptorWorld);
+
+        RaptorWorld(RaptorWorld &&raptorWorld) noexcept;
+
+        RaptorWorld &operator=(const RaptorWorld &raptorWorld);
+
+        RaptorWorld &operator=(RaptorWorld &&raptorWorld) noexcept;
+
         std::shared_ptr<raptor_world *> getRaptorWorld() const;
 
         bool operator==(const RaptorWorld &rhs) const;
 
         bool operator!=(const RaptorWorld &rhs) const;
 
-        RaptorUri newRaptorUri();
-
         RaptorUri newRaptorUri(std::string uri_string);
 
-        RaptorUri
-        newRaptorUriFromUriOrFileString(std::string uri_string, RaptorUri raptor_base_uri, std::string file_or_uri);
+        RaptorUri newRaptorUriFromUriOrFileString(
+                std::string uri_string, RaptorUri raptor_base_uri, std::string file_or_uri);
 
-        RaptorUri newRaptorUriRelativeToBase(RaptorUri raptor_base_uri, std::string uri_string);
+        RaptorUri newRaptorUriRelativeToBase(
+                RaptorUri raptor_base_uri, std::string uri_string);
     };
 }
 

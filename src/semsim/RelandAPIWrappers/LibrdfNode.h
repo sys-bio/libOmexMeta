@@ -25,6 +25,8 @@ namespace semsim {
 
         LibrdfNode &operator=(LibrdfNode &&librdfNode) noexcept;
 
+        std::string str();
+
     };
 }
 

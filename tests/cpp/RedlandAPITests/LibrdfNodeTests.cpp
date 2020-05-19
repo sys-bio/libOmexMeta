@@ -14,14 +14,58 @@ public:
 };
 
 
+TEST_F(LibrdfNodeTests, TestCopyCreate) {
+    semsim::LibrdfWorld librdfWorld;
+    std::string expected = "https://notarealaddress.com";
+    semsim::LibrdfNode node = librdfWorld.newNodeUriString(expected);
+    std::string actual = node.str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
 TEST_F(LibrdfNodeTests, TestCopyConstructor) {
     semsim::LibrdfWorld librdfWorld;
-    semsim::RaptorWorld raptorWorld1 = librdfWorld.getRaptor();
-    std::string expected = "https://notarealaddress.com";
-    semsim::RaptorUri raptorUri1 = raptorWorld1.newRaptorUri(expected);
-    semsim::RaptorUri raptorUri2 = raptorUri1;
-    ASSERT_STREQ(expected.c_str(), raptorUri1.str().c_str());
-    ASSERT_STREQ(expected.c_str(), raptorUri2.str().c_str());
+    std::string expected1 = "https://notarealaddress1.com";
+    semsim::LibrdfNode node1 = librdfWorld.newNodeUriString(expected1);
+    semsim::LibrdfNode node2 = node1;
+    std::string actual = node2.str();
+    ASSERT_STREQ(expected1.c_str(), actual.c_str());
+}
+
+
+TEST_F(LibrdfNodeTests, TestMoveConstructor) {
+    semsim::LibrdfWorld librdfWorld;
+    std::string expected1 = "https://notarealaddress1.com";
+    semsim::LibrdfNode node1 = librdfWorld.newNodeUriString(expected1);
+    semsim::LibrdfNode node2 = std::move(node1);
+    std::string actual = node2.str();
+    ASSERT_STREQ(expected1.c_str(), actual.c_str());
+}
+
+TEST_F(LibrdfNodeTests, TestAssignmentOperator) {
+    semsim::LibrdfWorld librdfWorld;
+    std::string expected1 = "https://notarealaddress1.com";
+    std::string expected2 = "https://notarealaddress2.com";
+    semsim::LibrdfNode node1 = librdfWorld.newNodeUriString(expected1);
+    semsim::LibrdfNode node2 = librdfWorld.newNodeUriString(expected2);
+    node2 = node1;
+    std::string actual = node2.str();
+    ASSERT_STREQ(expected1.c_str(), actual.c_str());
+}
+
+/*
+ * todo put the use_count check in librdfWorld and Raptororld
+ */
+
+TEST_F(LibrdfNodeTests, TestMoveAssignmentOperator) {
+    semsim::LibrdfWorld librdfWorld;
+    std::string expected1 = "https://notarealaddress1.com";
+    std::string expected2 = "https://notarealaddress2.com";
+    semsim::LibrdfNode node1 = librdfWorld.newNodeUriString(expected1);
+    semsim::LibrdfNode node2 = librdfWorld.newNodeUriString(expected2);
+    node1 = std::move(node2);
+    std::string actual = node1.str();
+    ASSERT_STREQ(expected2.c_str(), actual.c_str());
 }
 
 //TEST_F(LibrdfNodeTests, Test) {

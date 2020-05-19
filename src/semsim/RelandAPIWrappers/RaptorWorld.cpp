@@ -12,6 +12,46 @@ namespace semsim {
         raptor_world_ = std::make_shared<raptor_world *>(world);
     }
 
+    RaptorWorld::~RaptorWorld() {
+        if (raptor_world_.use_count() == 1) {
+            raptor_free_world(*raptor_world_);
+        }
+    }
+
+    RaptorWorld::RaptorWorld(const RaptorWorld &raptorWorld) {
+        if (raptor_world_) {
+            raptor_free_world(*raptor_world_);
+        }
+        raptor_world_ = raptorWorld.raptor_world_;
+    }
+
+    RaptorWorld::RaptorWorld(RaptorWorld &&raptorWorld) noexcept {
+        if (raptor_world_) {
+            raptor_free_world(*raptor_world_);
+        }
+        raptor_world_ = std::move(raptorWorld.raptor_world_);
+    }
+
+    RaptorWorld &RaptorWorld::operator=(const RaptorWorld &raptorWorld) {
+        if (this != &raptorWorld) {
+            if (raptor_world_) {
+                raptor_free_world(*raptor_world_);
+            }
+            raptor_world_ = raptorWorld.raptor_world_;
+        }
+        return *this;
+    }
+
+    RaptorWorld &RaptorWorld::operator=(RaptorWorld &&raptorWorld) noexcept {
+        if (this != &raptorWorld) {
+            if (raptor_world_) {
+                raptor_free_world(*raptor_world_);
+            }
+            raptor_world_ = std::move(raptorWorld.raptor_world_);
+        }
+        return *this;
+    }
+
     std::shared_ptr<raptor_world *> RaptorWorld::getRaptorWorld() const {
         return raptor_world_;
     }
@@ -42,4 +82,5 @@ namespace semsim {
                 (const unsigned char *) uri_string.c_str());
         return RaptorUri(uri);
     }
+
 }

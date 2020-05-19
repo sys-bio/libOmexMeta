@@ -45,15 +45,16 @@ namespace semsim {
 
         LibrdfModel newModel(const LibrdfStorage &storage, const std::string &options_string = std::string());
 
-        LibrdfNode newNodeUriString(std::string string);
+        LibrdfNode newNodeUriString(const std::string &string);
 
-        LibrdfNode newNodeUri(RaptorUri raptorUri);
+        LibrdfNode newNodeUri(const RaptorUri &raptorUri);
 
-        LibrdfNode newNodeBlank(std::string identifier);
+        LibrdfNode newNodeBlank(const std::string &identifier);
 
-        LibrdfNode newNodeLiteral(std::string literal, std::string xml_language, bool is_wf_xml);
+        LibrdfNode newNodeLiteral(const std::string &literal, const std::string &xml_language, bool is_wf_xml);
 
-        LibrdfNode newNodeTypedLiteral(std::string literal, std::string xml_language, RaptorUri datatypeUri);
+        LibrdfNode
+        newNodeTypedLiteral(const std::string &literal, const std::string &xml_language, const RaptorUri &datatypeUri);
     };
 }
 

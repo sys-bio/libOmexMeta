@@ -12,7 +12,6 @@ namespace semsim {
     class LibrdfStorage {
         std::shared_ptr<librdf_storage *> storage_;
 
-
     public:
 
         LibrdfStorage(librdf_storage *storage);
