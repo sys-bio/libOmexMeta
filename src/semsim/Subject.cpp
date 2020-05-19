@@ -19,6 +19,16 @@ namespace semsim {
             : rdf_node_ptr_(std::make_shared<RDFNode>(node)) {
     }
 
+    Subject Subject::uri(LibrdfWorld world, const std::string &uri) {
+        LibrdfNode node = world.newNodeUriString(uri);
+        return Subject(RDFURINode(node));
+    }
+
+    Subject Subject::blank(LibrdfWorld world, const std::string &blank) {
+        LibrdfNode node = world.newNodeBlank(blank);
+        return Subject(RDFBlankNode(node));
+    }
+
 
     LibrdfNode Subject::getNode() const {
         LibrdfNode node = rdf_node_ptr_->getNode();

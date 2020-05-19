@@ -11,6 +11,7 @@
 
 #include <utility>
 #include "semsim/Error.h"
+#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
 
 namespace semsim {
 
@@ -27,6 +28,10 @@ namespace semsim {
 
         explicit Subject(const RDFNode &node);
 
+        static Subject uri(LibrdfWorld world, const std::string &uri);
+
+        static Subject blank(LibrdfWorld world, const std::string &blank);
+
         ~Subject();
 
         LibrdfNode getNode() const;
@@ -34,6 +39,7 @@ namespace semsim {
         std::string str() const;
 
     };
+
     typedef std::vector<Subject> Subjects;
 
 }
