@@ -13,7 +13,7 @@ set(TEST_SOURCES
         SemsimUtilsTests.cpp
         SBMLFactory.h
         RDFNodeTests.cpp
-        #        SubjectTests.cpp
+        SubjectTests.cpp
         #        PredicateTests.cpp
         #        ResourceTests.cpp
         #        TripleTests.cpp
@@ -77,18 +77,11 @@ ENDIF ()
 MESSAGE(STATUS "INCLUDE_DIRS ${INCLUDE_DIRS}")
 target_include_directories(semsim-tests PRIVATE
         ${CMAKE_SOURCE_DIR}
+        ${CMAKE_SOURCE_DIR}/src
+        ${CMAKE_SOURCE_DIR}/src/semsim
+        ${CMAKE_CURRENT_SOURCE_DIR}/RedlandAPITests
         ${GOOGLETEST_SOURCE}/googletest/include
-        ..
         ${INCLUDE_DIRS}
-        #        ${LIBSBML_INCLUDE_DIR}
-        #        ${LIBXML2_INCLUDE_DIR}
-        #        ${BZ_INCLUDE_DIR}
-        #        ${ZLIB_INCLUDE_DIR}
-        #        ${ZIPPER_INCLUDE_DIR}
-        #        ${RAPTOR2_INCLUDE_DIR}
-        #        ${RASQAL_INCLUDE_DIR}
-        #        ${REDLAND_INCLUDE_DIR}
-        #        ${LIBCOMBINE_INCLUDE_DIR}
         )
 
 add_dependencies(semsim-tests

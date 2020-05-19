@@ -16,10 +16,6 @@ namespace semsim {
     class RDFNode {
     protected:
         LibrdfNode node_;
-//        LibrdfWorld world_;
-//        std::string value_;
-//        const char *xml_language_;
-//        bool is_wf_xml_ = false;
 
     public:
         const LibrdfNode &getNode() const;

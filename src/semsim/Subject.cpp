@@ -3,23 +3,26 @@
 //
 
 #include "semsim/Subject.h"
+
+#include <utility>
 #include "semsim/Error.h"
 
 namespace semsim {
 
-    Subject::Subject(LibrdfWorld world, const RDFURINode &node)
-            : world_(world) {
-        this->rdf_node_ptr_ = std::make_shared<RDFURINode>(node);
-
+    Subject::Subject(const RDFURINode &node)
+            : rdf_node_ptr_(std::make_shared<RDFURINode>(node)) {
     }
 
-    Subject::Subject(LibrdfWorld world, const RDFBlankNode &node)
-            : world_(world) {
-        this->rdf_node_ptr_ = std::make_shared<RDFBlankNode>(node);
+    Subject::Subject(const RDFBlankNode &node)
+            : rdf_node_ptr_(std::make_shared<RDFBlankNode>(node)) {
     }
 
-    LibrdfNode Subject::toRdfNode() const {
-        LibrdfNode node = rdf_node_ptr_->toRdfNode();
+    Subject::Subject(const RDFNode &node)
+            : rdf_node_ptr_(std::make_shared<RDFNode>(node)) {
+    }
+
+    LibrdfNode Subject::getNode() const {
+        LibrdfNode node = rdf_node_ptr_->getNode();
         if (!node) {
             throw NullPointerException("Subject::ToRdfNode(): node object nullptr");
         }
@@ -27,10 +30,6 @@ namespace semsim {
 
     std::string Subject::str() const {
         return rdf_node_ptr_->str();
-    }
-
-    Subject::Subject(LibrdfWorld world, LibrdfNode node)
-            : world_(world), rdf_node_ptr_(RDFNode::fromRDFNode(world, node)) {
     }
 
     Subject::~Subject() = default;

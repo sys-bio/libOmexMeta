@@ -8,26 +8,31 @@
 #include "iostream"
 #include "RDFNode.h"
 #include <vector>
-#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
+
 
 namespace semsim {
     class Subject {
     private:
-        LibrdfWorld world_;
         RDFNodePtr rdf_node_ptr_;
 
     public:
         Subject() = default;
 
-        Subject(LibrdfWorld world, const RDFBlankNode &node);
+        explicit Subject(const RDFBlankNode &node);
 
-        Subject(LibrdfWorld world, const RDFURINode &node);
+        explicit Subject(const RDFURINode &node);
 
-        Subject(LibrdfWorld world, LibrdfNode node);
+        explicit Subject(const RDFNode &node);
 
+//        Subject(LibrdfWorld world, const RDFBlankNode &node);
+//
+//        Subject(LibrdfWorld world, const RDFURINode &node);
+//
+//        Subject(LibrdfWorld world, LibrdfNode node);
+//
         ~Subject();
 
-        LibrdfNode toRdfNode() const;
+        LibrdfNode getNode() const;
 
         std::string str() const;
 

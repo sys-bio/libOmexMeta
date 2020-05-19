@@ -484,7 +484,7 @@ namespace semsim {
 		+Subject(librdf_world* world, const RDFBlankNode& node)
 		+Subject(librdf_world* world, const RDFURINode& node)
 		-rdf_node_ptr_ : RDFNodePtr
-		+toRdfNode() : librdf_node* {query}
+		+getNode() : librdf_node* {query}
 		-world_ : librdf_world*
 		+str() : std::string {query}
 	}

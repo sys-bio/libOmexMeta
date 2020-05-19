@@ -86,7 +86,7 @@ namespace Legend {
 
 
 	class Resource{
-	    toRdfNode() : librdf_node*
+	    getNode() : librdf_node*
 	}
 
 
