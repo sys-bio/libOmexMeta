@@ -11,6 +11,8 @@
 namespace semsim {
     class LibrdfNode {
         std::shared_ptr<librdf_node *> node_;
+    public:
+        const std::shared_ptr<librdf_node *> &getNode() const;
 
     public:
         explicit LibrdfNode(librdf_node *node);

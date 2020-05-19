@@ -6,7 +6,7 @@
 #define LIBSEMSIM_RAPTORWORLD_H
 
 #include "librdf.h"
-#include "RaptorUri.h"
+#include "LibrdfUri.h"
 
 
 namespace semsim {
@@ -32,13 +32,13 @@ namespace semsim {
 
         bool operator!=(const RaptorWorld &rhs) const;
 
-        RaptorUri newRaptorUri(std::string uri_string);
+        LibrdfUri newRaptorUri(std::string uri_string);
 
-        RaptorUri newRaptorUriFromUriOrFileString(
-                std::string uri_string, RaptorUri raptor_base_uri, std::string file_or_uri);
+        LibrdfUri newRaptorUriFromUriOrFileString(
+                std::string uri_string, LibrdfUri raptor_base_uri, std::string file_or_uri);
 
-        RaptorUri newRaptorUriRelativeToBase(
-                RaptorUri raptor_base_uri, std::string uri_string);
+        LibrdfUri newRaptorUriRelativeToBase(
+                LibrdfUri raptor_base_uri, std::string uri_string);
     };
 }
 
