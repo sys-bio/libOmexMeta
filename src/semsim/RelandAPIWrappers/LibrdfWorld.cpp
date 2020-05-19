@@ -96,22 +96,33 @@ namespace semsim {
         return LibrdfNode(node);
     }
 
-    LibrdfNode LibrdfWorld::newNodeUri(const RaptorUri &raptorUri) {
+    LibrdfNode LibrdfWorld::newNodeUri(const LibrdfUri &raptorUri) {
         librdf_node *node = librdf_new_node_from_uri(*world_, *raptorUri.getRaptorUri());
         return LibrdfNode(node);
     }
 
-    LibrdfNode
-    LibrdfWorld::newNodeLiteral(const std::string &literal, const std::string &xml_language, bool is_wf_xml) {
+    LibrdfNode LibrdfWorld::newNodeLiteral(
+            const std::string &literal, const char *xml_language, bool is_wf_xml) {
         librdf_node *node = librdf_new_node_from_literal(
-                *world_, (const unsigned char *) literal.c_str(), xml_language.c_str(), (int) is_wf_xml);
+                *world_, (const unsigned char *) literal.c_str(), xml_language, (int) is_wf_xml);
         return LibrdfNode(node);
     }
 
-    LibrdfNode LibrdfWorld::newNodeTypedLiteral(const std::string &literal, const std::string &xml_language,
-                                                const RaptorUri &datatypeUri) {
+    LibrdfNode LibrdfWorld::newNodeTypedLiteral(
+            const std::string &literal,
+            const std::string &datatypeUri,
+            const char *xml_language) {
+        std::string prefix = "http://www.w3.org/2001/XMLSchema#";
+        std::string data_type_url_tmp = std::string();
+        if (datatypeUri.rfind(prefix, 0) == 0) {
+            data_type_url_tmp = datatypeUri;
+        } else {
+            data_type_url_tmp = prefix + datatypeUri;
+        }
+
+        LibrdfUri uri = getRaptor().newRaptorUri(data_type_url_tmp);
         librdf_node *node = librdf_new_node_from_typed_literal(
-                *world_, (const unsigned char *) literal.c_str(), xml_language.c_str(), *datatypeUri.getRaptorUri());
+                *world_, (const unsigned char *) literal.c_str(), xml_language, *uri.getRaptorUri());
         return LibrdfNode(node);
     }
 
@@ -119,6 +130,13 @@ namespace semsim {
         librdf_node *node = librdf_new_node_from_blank_identifier(*world_, (const unsigned char *) identifier.c_str());
         return LibrdfNode(node);
     }
+
+
+    LibrdfUri LibrdfWorld::newUri(std::string uri_string) {
+        raptor_uri *uri = librdf_new_uri(*world_, (const unsigned char *) uri_string.c_str());
+        return LibrdfUri(uri);
+    }
+
 
 }
 

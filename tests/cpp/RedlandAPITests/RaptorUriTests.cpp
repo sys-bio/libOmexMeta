@@ -7,63 +7,55 @@
 #include "semsim/RelandAPIWrappers/RaptorWorld.h"
 #include "semsim/RelandAPIWrappers/LibrdfWorld.h"
 
-class RaptorUriTests : public ::testing::Test {
+class LibrdfUriTests : public ::testing::Test {
 
 public:
+    semsim::LibrdfWorld librdfWorld;
 
-    RaptorUriTests() = default;
+    LibrdfUriTests() = default;
 
 };
 
-TEST_F(RaptorUriTests, TestCreate) {
-    semsim::LibrdfWorld librdfWorld;
-    semsim::RaptorWorld raptorWorld1 = librdfWorld.getRaptor();
+TEST_F(LibrdfUriTests, TestCreate) {
     std::string expected = "https://notarealaddress.com";
-    semsim::RaptorUri raptorUri = raptorWorld1.newRaptorUri(expected);
-    std::string actual = raptorUri.str();
+    semsim::LibrdfUri librdfUri = librdfWorld.newUri(expected);
+    std::string actual = librdfUri.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(RaptorUriTests, TestCopyConstructor) {
+TEST_F(LibrdfUriTests, TestCopyConstructor) {
     semsim::LibrdfWorld librdfWorld;
-    semsim::RaptorWorld raptorWorld1 = librdfWorld.getRaptor();
     std::string expected = "https://notarealaddress.com";
-    semsim::RaptorUri raptorUri1 = raptorWorld1.newRaptorUri(expected);
-    semsim::RaptorUri raptorUri2 = raptorUri1;
-    ASSERT_STREQ(expected.c_str(), raptorUri1.str().c_str());
-    ASSERT_STREQ(expected.c_str(), raptorUri2.str().c_str());
+    semsim::LibrdfUri librdfUri1 = librdfWorld.newUri(expected);
+    semsim::LibrdfUri librdfUri2 = librdfUri1;
+    ASSERT_STREQ(expected.c_str(), librdfUri1.str().c_str());
+    ASSERT_STREQ(expected.c_str(), librdfUri2.str().c_str());
 }
 
-TEST_F(RaptorUriTests, TestMoveConstructor) {
+TEST_F(LibrdfUriTests, TestMoveConstructor) {
     std::string expected = "https://notarealaddress.com";
-    semsim::LibrdfWorld librdfWorld;
-    semsim::RaptorWorld raptorWorld1 = librdfWorld.getRaptor();
-    semsim::RaptorUri raptorUri1 = raptorWorld1.newRaptorUri(expected);
-    semsim::RaptorUri raptorUri2 = std::move(raptorUri1);
-    ASSERT_STREQ(raptorUri2.str().c_str(), expected.c_str());
+    semsim::LibrdfUri librdfUri1 = librdfWorld.newUri(expected);
+    semsim::LibrdfUri librdfUri2 = std::move(librdfUri1);
+    ASSERT_STREQ(librdfUri2.str().c_str(), expected.c_str());
 }
 
-TEST_F(RaptorUriTests, TestMobvrAssignment) {
+TEST_F(LibrdfUriTests, TestMobvrAssignment) {
     std::string expected = "https://notarealaddress1.com";
     std::string expected2 = "https://notarealaddress2.com";
-    semsim::LibrdfWorld librdfWorld;
-    semsim::RaptorWorld raptorWorld1 = librdfWorld.getRaptor();
-    semsim::RaptorUri raptorUri1 = raptorWorld1.newRaptorUri(expected);
-    semsim::RaptorUri raptorUri2 = raptorWorld1.newRaptorUri(expected2);
-    raptorUri1 = std::move(raptorUri2);
-    ASSERT_STREQ(raptorUri1.str().c_str(), expected2.c_str());
+    semsim::LibrdfUri librdfUri1 = librdfWorld.newUri(expected);
+    semsim::LibrdfUri librdfUri2 = librdfWorld.newUri(expected2);
+    librdfUri1 = std::move(librdfUri2);
+    ASSERT_STREQ(librdfUri1.str().c_str(), expected2.c_str());
 }
 
-TEST_F(RaptorUriTests, TestCopyAssignment) {
+TEST_F(LibrdfUriTests, TestCopyAssignment) {
     std::string expected = "https://notarealaddress1.com";
     std::string expected2 = "https://notarealaddress2.com";
-    semsim::LibrdfWorld librdfWorld;
-    semsim::RaptorWorld raptorWorld1 = librdfWorld.getRaptor();
-    semsim::RaptorUri raptorUri1 = raptorWorld1.newRaptorUri(expected);
-    semsim::RaptorUri raptorUri2 = raptorWorld1.newRaptorUri(expected2);
-    raptorUri1 = raptorUri2;
-    ASSERT_STREQ(raptorUri1.str().c_str(), expected2.c_str());
-    ASSERT_STREQ(raptorUri2.str().c_str(), expected2.c_str());
+    semsim::LibrdfUri librdfUri1 = librdfWorld.newUri(expected);
+    semsim::LibrdfUri librdfUri2 = librdfWorld.newUri(expected2);
+    librdfUri1 = librdfUri2;
+    ASSERT_STREQ(librdfUri1.str().c_str(), expected2.c_str());
+    ASSERT_STREQ(librdfUri2.str().c_str(), expected2.c_str());
 }
 
 
