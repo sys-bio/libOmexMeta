@@ -10,6 +10,8 @@
 #include "RaptorWorld.h"
 #include "LibrdfModel.h"
 #include "LibrdfStorage.h"
+#include "LibrdfNode.h"
+#include "RaptorUri.h"
 
 
 namespace semsim {
@@ -43,7 +45,15 @@ namespace semsim {
 
         LibrdfModel newModel(const LibrdfStorage &storage, const std::string &options_string = std::string());
 
+        LibrdfNode newNodeUriString(std::string string);
 
+        LibrdfNode newNodeUri(RaptorUri raptorUri);
+
+        LibrdfNode newNodeBlank(std::string identifier);
+
+        LibrdfNode newNodeLiteral(std::string literal, std::string xml_language, bool is_wf_xml);
+
+        LibrdfNode newNodeTypedLiteral(std::string literal, std::string xml_language, RaptorUri datatypeUri);
     };
 }
 
