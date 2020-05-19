@@ -11,8 +11,6 @@
 #include <sstream>
 #include <unordered_map>
 #include <iostream>
-#include <unordered_map>
-#include <algorithm>
 #include <utility>
 #include "RDFNode.h"
 #include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
