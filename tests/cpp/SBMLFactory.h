@@ -222,7 +222,7 @@ public:
     static std::string getModelStr(ModelType modelType) {
         SBMLWriter writer;
         SBMLDocument *doc = getSBMLDocument(modelType);
-        char* string_doc = writer.writeSBMLToString(doc);
+        char *string_doc = writer.writeSBMLToString(doc);
         SBMLDocument_free(doc);
         return string_doc;
     }

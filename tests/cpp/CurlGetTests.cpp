@@ -25,7 +25,7 @@ public:
     void TearDown() override {
     };
 
-    static int removeFile(const std::string& filename) {
+    static int removeFile(const std::string &filename) {
         if (std::remove(filename.c_str()) != 0)
             perror("File deletion failed");
         else
@@ -59,23 +59,31 @@ public:
     }
 };
 
-TEST_F(CurlGetTests, TestDownloadHtml) {
-    //38kb
-    downloadAndCheckSize(regular_webpage_url, regular_webpage_filename, 39053);
+TEST_F(CurlGetTests, TestDownloadHtml
+) {
+//38kb
+downloadAndCheckSize(regular_webpage_url, regular_webpage_filename,
+39053);
 }
 
-TEST_F(CurlGetTests, TestDownloadOmexFile) {
-    downloadAndCheckSize(omex_file_url, omex_filename, 4726);
+TEST_F(CurlGetTests, TestDownloadOmexFile
+) {
+downloadAndCheckSize(omex_file_url, omex_filename,
+4726);
 }
 
 
-TEST_F(CurlGetTests, TestDownloadSBMLFile) {
-    downloadAndCheckSize(sbml_file_url, sbml_filename, 236281);
+TEST_F(CurlGetTests, TestDownloadSBMLFile
+) {
+downloadAndCheckSize(sbml_file_url, sbml_filename,
+236281);
 }
 
 
-TEST_F(CurlGetTests, TestDownloadCellML) {
-    downloadAndCheckSize(cellml_file_url, cellml_filename, 60656);
+TEST_F(CurlGetTests, TestDownloadCellML
+) {
+downloadAndCheckSize(cellml_file_url, cellml_filename,
+60656);
 }
 
 

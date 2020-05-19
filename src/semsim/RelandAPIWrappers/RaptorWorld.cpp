@@ -57,7 +57,7 @@ namespace semsim {
     }
 
     bool RaptorWorld::operator==(const RaptorWorld &rhs) const {
-        return getRaptorWorld() == rhs.getRaptorWorld();
+        return raptor_world_ == rhs.raptor_world_;
     }
 
     bool RaptorWorld::operator!=(const RaptorWorld &rhs) const {
@@ -88,3 +88,14 @@ namespace semsim {
         return !getRaptorWorld();
     }
 }
+
+
+
+
+
+
+
+
+
+
+

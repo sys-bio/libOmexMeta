@@ -13,29 +13,29 @@ set(TEST_SOURCES
         SemsimUtilsTests.cpp
         SBMLFactory.h
         RDFNodeTests.cpp
-        SubjectTests.cpp
-        PredicateTests.cpp
-        ResourceTests.cpp
-        TripleTests.cpp
-        AnnotationSamples.h
-        CurlGetTests.cpp
-        MetaIDTests.cpp
-        XmlAssistantTests.cpp
-        ReaderTests.cpp
-        WriterTests.cpp
-        EditorTests.cpp
-        RDFTests.cpp
-        ParticipantTests.cpp
-        PhysicalPropertyTests.cpp
-        PhysicalEntityTests.cpp
-        PhysicalPhenomenonTests.cpp
-        PhysicalProcessTests.cpp
-        PhysicalForceTests.cpp
-        SemsimCombineArchiveTests.cpp
-        QueryTests.cpp
-        TripplesTests.cpp
-        RDFReadAndWriteTests.cpp
-        CAPITests.cpp
+        #        SubjectTests.cpp
+        #        PredicateTests.cpp
+        #        ResourceTests.cpp
+        #        TripleTests.cpp
+        #        AnnotationSamples.h
+        #        CurlGetTests.cpp
+        #        MetaIDTests.cpp
+        #        XmlAssistantTests.cpp
+        #        ReaderTests.cpp
+        #        WriterTests.cpp
+        #        EditorTests.cpp
+        #        RDFTests.cpp
+        #        ParticipantTests.cpp
+        #        PhysicalPropertyTests.cpp
+        #        PhysicalEntityTests.cpp
+        #        PhysicalPhenomenonTests.cpp
+        #        PhysicalProcessTests.cpp
+        #        PhysicalForceTests.cpp
+        #        SemsimCombineArchiveTests.cpp
+        #        QueryTests.cpp
+        #        TripplesTests.cpp
+        #        RDFReadAndWriteTests.cpp
+        #        CAPITests.cpp
         )
 
 if (REDLAND_WRAPPER_TESTS)

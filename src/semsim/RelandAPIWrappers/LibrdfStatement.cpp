@@ -2,6 +2,7 @@
 // Created by Ciaran on 5/19/2020.
 //
 
+#include <iostream>
 #include "LibrdfStatement.h"
 
 
@@ -20,7 +21,6 @@ namespace semsim {
     LibrdfStatement::LibrdfStatement(const LibrdfStatement &LibrdfStatement) {
         // If we already have a statement in this object, get rid
         // before we take LibrdfStatement.statement_ copy
-        std::cout << statement_ << std::endl;
         if (statement_ != nullptr) {
             librdf_free_statement(*statement_);
         }
@@ -37,7 +37,6 @@ namespace semsim {
 
     LibrdfStatement &LibrdfStatement::operator=(LibrdfStatement &&LibrdfStatement) noexcept {
         if (this != &LibrdfStatement) {
-            std::cout << "move assignment" << std::endl;
             librdf_free_statement(*this->statement_); // free current statement before taking theirs
             statement_ = std::move(LibrdfStatement.statement_);
         }

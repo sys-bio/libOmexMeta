@@ -54,31 +54,31 @@ std::vector<std::string> semsim::SemsimUtils::splitStringBy(const std::string &s
     return tokens;
 }
 
-std::string semsim::SemsimUtils::generateUniqueMetaid(
-        LibrdfWorld world, LibrdfModel model, std::string metaid_base,
-        std::vector<std::string> exclusions) {
-
-    std::string q = "SELECT ?subject ?predicate ?object\n"
-                    "WHERE {?subject ?predicate ?object}";
-    Query query(world, model, q);
-    ResultsMap results_map = query.resultsAsMap();
-    std::vector<std::string> subjects = results_map["subject"];
-    // add other exclusions to the subjects like
-    for (auto &i : exclusions) {
-        subjects.push_back(i);
-    }
-    int count = 0;
-    std::string metaid;
-    while (true) {
-        MetaID metaId(metaid_base, count, 4);
-        metaid = metaId.generate();
-        if (std::find(subjects.begin(), subjects.end(), metaId.generate()) == subjects.end()) {
-            break;
-        }
-        count++;
-    }
-    return metaid;
-}
+//std::string semsim::SemsimUtils::generateUniqueMetaid(
+//        LibrdfWorld world, LibrdfModel model, std::string metaid_base,
+//        std::vector<std::string> exclusions) {
+//
+//    std::string q = "SELECT ?subject ?predicate ?object\n"
+//                    "WHERE {?subject ?predicate ?object}";
+//    Query query(world, model, q);
+//    ResultsMap results_map = query.resultsAsMap();
+//    std::vector<std::string> subjects = results_map["subject"];
+//    // add other exclusions to the subjects like
+//    for (auto &i : exclusions) {
+//        subjects.push_back(i);
+//    }
+//    int count = 0;
+//    std::string metaid;
+//    while (true) {
+//        MetaID metaId(metaid_base, count, 4);
+//        metaid = metaId.generate();
+//        if (std::find(subjects.begin(), subjects.end(), metaId.generate()) == subjects.end()) {
+//            break;
+//        }
+//        count++;
+//    }
+//    return metaid;
+//}
 
 std::string semsim::SemsimUtils::addFilePrefixToString(std::string str) {
     std::string file_prefix = "file://";

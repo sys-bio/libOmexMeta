@@ -23,33 +23,49 @@ public:
 
 };
 
-TEST_F(SemsimCombineArchiveTests, TestThatUrlIsNotFile) {
-    semsim::SemsimCombineArchive combineArchive = semsim::SemsimCombineArchive::fromUrl(
-            samples.gold_standard_url2, samples.gold_standard_filename2);
-    combineArchive.cleanUp();
+TEST_F(SemsimCombineArchiveTests, TestThatUrlIsNotFile
+) {
+semsim::SemsimCombineArchive combineArchive = semsim::SemsimCombineArchive::fromUrl(
+        samples.gold_standard_url2, samples.gold_standard_filename2);
+combineArchive.
+
+cleanUp();
+
 }
 
-TEST_F(SemsimCombineArchiveTests, Testy) {
-    std::string filename = "/mnt/d/libsemsim/tests/Smith_2004.omex";
+TEST_F(SemsimCombineArchiveTests, Testy
+) {
+std::string filename = "/mnt/d/libsemsim/tests/Smith_2004.omex";
 
-    CombineArchive combineArchive;
-    combineArchive.initializeFromArchive(filename);
+CombineArchive combineArchive;
+combineArchive.
+initializeFromArchive(filename);
 
-    int num_entries = combineArchive.getNumEntries();
+int num_entries = combineArchive.getNumEntries();
 
-    std::cout << "number of entries: " << num_entries << std::endl;
-    auto locs = combineArchive.getAllLocations();
-    for (auto &it : locs) {
-        std::cout << it << std::endl;
-    }
+std::cout << "number of entries: " << num_entries <<
+std::endl;
+auto locs = combineArchive.getAllLocations();
+for (
+auto &it
+: locs) {
+std::cout << it <<
+std::endl;
+}
 
-    OmexDescription description = combineArchive.getMetadataForLocation(locs[1]);
-    std::cout << description.toXML() << std::endl;
+OmexDescription description = combineArchive.getMetadataForLocation(locs[1]);
+std::cout << description.
+
+toXML()
+
+<<
+std::endl;
 
 //    const CaContent *entry = combineArchive.getEntry(1);
 //    std::cout << entry->getLocation() << std::endl;
 //    std::cout << entry->getAnnotationString() << std::endl;
-    std::cout << combineArchive.extractEntryToString("./model/smith_2004.rdf") << std::endl;
+std::cout << combineArchive.extractEntryToString("./model/smith_2004.rdf") <<
+std::endl;
 
 
 //    std::cout << entry->getCrossRef(0) << std::endl;
@@ -59,16 +75,31 @@ TEST_F(SemsimCombineArchiveTests, Testy) {
 
 }
 
-TEST_F(SemsimCombineArchiveTests, Testz) {
-    semsim::SemsimCombineArchive archive;
-    archive.initializeFromArchive(samples.gold_standard_filename2);
+TEST_F(SemsimCombineArchiveTests, Testz
+) {
+semsim::SemsimCombineArchive archive;
+archive.
+initializeFromArchive(samples
+.gold_standard_filename2);
 
-    for (int i = 0; i < archive.getNumEntries(); i++) {
-        const CaContent *entry = archive.getEntry(i);
-        std::cout << entry->getFormat() << std::endl;
-        std::cout << "entry->getFormat()" << std::endl;
+for (
+int i = 0;
+i<archive.
 
-    }
+getNumEntries();
+
+i++) {
+const CaContent *entry = archive.getEntry(i);
+std::cout << entry->
+
+getFormat()
+
+<<
+std::endl;
+std::cout << "entry->getFormat()" <<
+std::endl;
+
+}
 
 //    auto *content = archive.getEntryByFormat("cellml");
 

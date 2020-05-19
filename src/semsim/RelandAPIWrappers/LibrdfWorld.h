@@ -38,6 +38,8 @@ namespace semsim {
 
         bool operator!=(const LibrdfWorld &rhs) const;
 
+        bool operator!() const;
+
         RaptorWorld getRaptor();
 
         LibrdfStorage newStorage(const std::string &storage_name, const std::string &name,
@@ -62,7 +64,6 @@ namespace semsim {
         LibrdfUri newUri(const std::string &uri_string);
 
 
-        bool operator!() const;
 
     };
 

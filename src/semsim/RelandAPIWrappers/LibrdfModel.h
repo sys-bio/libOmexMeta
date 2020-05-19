@@ -37,7 +37,7 @@ namespace semsim {
 
         bool operator!=(const LibrdfModel &rhs) const;
 
-        const std::shared_ptr<LibrdfModel> &getModel() const;
+        const std::shared_ptr<librdf_model *> &getModel() const;
 
         bool operator!() const;
 

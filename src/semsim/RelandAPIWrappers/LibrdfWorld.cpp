@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <memory>
+#include <regex>
+
 #include "LibrdfWorld.h"
 #include "LibrdfStorage.h"
 #include "semsim/SemsimUtils.h"
@@ -92,7 +94,22 @@ namespace semsim {
     }
 
     LibrdfNode LibrdfWorld::newNodeUriString(const std::string &string) {
-        librdf_node *node = librdf_new_node_from_uri_string(*world_, (const unsigned char *) string.c_str());
+
+        std::string identifier_dot_org = "https://identifiers.org/";
+        std::regex identifiers_regex(identifier_dot_org);
+        std::regex http_regex("^https://");
+        std::regex identifiers_org_form1("^(?!file://)(?!https://)(?!http://)([A-Za-z0-9]+)[/:]{1}(\\S*)");
+        std::regex file_regex("^file://");
+
+        std::smatch m;
+        std::string x;
+        // if we find identifiers.org form 1
+        if (std::regex_search(string, m, identifiers_org_form1)) {
+            x = identifier_dot_org + std::string(m[1]) + "/" + std::string(m[2]);
+        } else {
+            x = string;
+        }
+        librdf_node *node = librdf_new_node_from_uri_string(*world_, (const unsigned char *) x.c_str());
         return LibrdfNode(node);
     }
 
