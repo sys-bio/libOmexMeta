@@ -162,16 +162,7 @@ namespace semsim {
     }
 
     PredicatePtr LibrdfWorld::newPredicate(std::string namespace_, const std::string &term) {
-        std::string uri;
-        if (namespace_.back() == '/' || namespace_.back() == '#') {
-            uri = namespace_ + term;
-        } else {
-            uri = namespace_ + "/" + term;
-        }
-        /*
-         * Feed Predicate a node and extract + process the uri?
-         */
-        return PredicateFactory(namespace_, term);
+        return PredicateFactory(*this, namespace_, term);
     }
 
 
