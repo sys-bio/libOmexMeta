@@ -32,7 +32,7 @@ namespace semsim {
 
         std::shared_ptr<librdf_storage *> getStorage() const;
 
-        bool LibrdfStorage::operator!() const;
+        bool operator!() const;
 
     };
 }

@@ -32,7 +32,7 @@ namespace semsim {
 
         LibrdfWorld &operator=(LibrdfWorld &&librdfWorld) noexcept;
 
-        std::shared_ptr<LibrdfWorld> getWorld() const;
+        std::shared_ptr<librdf_world *> getWorld() const;
 
         bool operator==(const LibrdfWorld &rhs) const;
 
@@ -62,7 +62,7 @@ namespace semsim {
         LibrdfUri newUri(const std::string &uri_string);
 
 
-        bool LibrdfWorld::operator!() const;
+        bool operator!() const;
 
     };
 
