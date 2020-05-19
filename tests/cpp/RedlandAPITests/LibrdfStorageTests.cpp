@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/17/2020.
 //
 #include "gtest/gtest.h"
-#include "semsim/RelandAPIWrappers/LibrdfWorld.h"
-#include "semsim/RelandAPIWrappers/LibrdfStorage.h"
+#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrappers/LibrdfStorage.h"
 #include "iostream"
 
 class LibrdfStorageTests : public ::testing::Test {

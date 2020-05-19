@@ -10,7 +10,7 @@
 #include "Subject.h"
 #include "Resource.h"
 #include "Predicate.h"
-#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {
 

@@ -10,7 +10,7 @@
 #include "AnnotationType.h"
 #include "Triple.h"
 #include "Triples.h"
-#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {
     class PhysicalPhenomenon {

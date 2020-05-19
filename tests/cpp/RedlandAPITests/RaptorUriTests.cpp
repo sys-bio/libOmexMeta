@@ -4,8 +4,8 @@
 
 #include "gtest/gtest.h"
 
-#include "semsim/RelandAPIWrappers/RaptorWorld.h"
-#include "semsim/RelandAPIWrappers/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrappers/RaptorWorld.h"
+#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
 
 class LibrdfUriTests : public ::testing::Test {
 

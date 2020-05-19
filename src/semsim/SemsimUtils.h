@@ -7,7 +7,8 @@
 
 #include <string>
 #include <vector>
-#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrappers/LibrdfModel.h"
 
 // macro helpful for debugging
 #define HERE()                              \
@@ -32,10 +33,10 @@ namespace semsim {
         //
         static std::vector<std::string> splitStringBy(const std::string &str, char delimiter);
 
-        static std::string generateUniqueMetaid(
-                LibrdfWorld world, LibrdfModel model, std::string metaid_base,
-                std::vector<std::string> exclusions = std::vector<std::string>()
-        );
+//        static std::string generateUniqueMetaid(
+//                LibrdfWorld world, LibrdfModel model, std::string metaid_base,
+//                std::vector<std::string> exclusions = std::vector<std::string>()
+//        );
 
         static std::string addFilePrefixToString(std::string str);
 

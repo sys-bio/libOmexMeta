@@ -6,7 +6,7 @@
 #define LIBSEMGEN_METAID_H
 
 #include <string>
-#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {
     class MetaID {

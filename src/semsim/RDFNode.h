@@ -9,7 +9,7 @@
 #include <librdf.h>
 #include <memory>
 
-#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrappers/LibrdfNode.h"
 
 namespace semsim {
 
