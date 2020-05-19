@@ -1,41 +1,5 @@
 message(STATUS "inside semsim cmakelists")
 
-set(SEMSIM_SOURCES
-        "RelandAPIWrappers/LibrdfWorld.cpp"
-        "RelandAPIWrappers/RaptorWorld.cpp"
-        "RelandAPIWrappers/LibrdfModel.cpp"
-        "RelandAPIWrappers/LibrdfNode.cpp"
-        "RelandAPIWrappers/LibrdfStorage.cpp"
-        "RelandAPIWrappers/RaptorWorld.cpp"
-        "RelandAPIWrappers/LibrdfUri.cpp"
-        "RelandAPIWrappers/RedlandAPIWrapper.h"
-        "RelandAPIWrappers/LibrdfStatement.cpp"
-
-        "CurlGet.cpp"
-        "SemsimUtils.cpp"
-        "RDFNode.cpp"
-        #        "Subject.cpp"
-        #        "Predicate.cpp"
-        #        "Resource.cpp"
-        #        "Triple.cpp"
-        #        "MetaID.cpp"
-        #        "XmlAssistant.cpp"
-        #        "Reader.cpp"
-        #        "Editor.cpp"
-        #        "Writer.cpp"
-        #        "RDF.cpp"
-        #        "Participant.cpp"
-        #        "PhysicalEntity.cpp"
-        #        "PhysicalPhenomenon.cpp"
-        #        "PhysicalProcess.cpp"
-        #        "PhysicalPropertyResource.cpp"
-        #        "PhysicalForce.cpp"
-        #        "Query.cpp"
-        #        "SemsimCombineArchive.cpp"
-        #        "Triples.cpp"
-        #        "SemsimCApi.cpp"
-        )
-
 set(SEMSIM_HEADERS
         "RelandAPIWrappers/LibrdfWorld.h"
         "RelandAPIWrappers/RaptorWorld.h"
@@ -47,7 +11,7 @@ set(SEMSIM_HEADERS
 
         "SemsimUtils.h"
         "RDFNode.h"
-        #        "Subject.h"
+        "Subject.h"
         #        "CurlGet.h"
         #        "Predicate.h"
         #        "Resource.h"
@@ -70,6 +34,42 @@ set(SEMSIM_HEADERS
         #        "SemsimCombineArchive.h"
         #        "Triples.h"
         #        "SemsimCApi.h"
+        )
+
+set(SEMSIM_SOURCES
+        "RelandAPIWrappers/LibrdfWorld.cpp"
+        "RelandAPIWrappers/RaptorWorld.cpp"
+        "RelandAPIWrappers/LibrdfModel.cpp"
+        "RelandAPIWrappers/LibrdfNode.cpp"
+        "RelandAPIWrappers/LibrdfStorage.cpp"
+        "RelandAPIWrappers/RaptorWorld.cpp"
+        "RelandAPIWrappers/LibrdfUri.cpp"
+        "RelandAPIWrappers/RedlandAPIWrapper.h"
+        "RelandAPIWrappers/LibrdfStatement.cpp"
+
+        "CurlGet.cpp"
+        "SemsimUtils.cpp"
+        "RDFNode.cpp"
+        "Subject.cpp"
+        #        "Predicate.cpp"
+        #        "Resource.cpp"
+        #        "Triple.cpp"
+        #        "MetaID.cpp"
+        #        "XmlAssistant.cpp"
+        #        "Reader.cpp"
+        #        "Editor.cpp"
+        #        "Writer.cpp"
+        #        "RDF.cpp"
+        #        "Participant.cpp"
+        #        "PhysicalEntity.cpp"
+        #        "PhysicalPhenomenon.cpp"
+        #        "PhysicalProcess.cpp"
+        #        "PhysicalPropertyResource.cpp"
+        #        "PhysicalForce.cpp"
+        #        "Query.cpp"
+        #        "SemsimCombineArchive.cpp"
+        #        "Triples.cpp"
+        #        "SemsimCApi.cpp"
         )
 
 message(STATUS "SEMSIM_HEADERS ${SEMSIM_HEADERS}")

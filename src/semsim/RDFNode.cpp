@@ -88,7 +88,7 @@ namespace semsim {
 //        return value_;
 //    }
 
-//    LibrdfNode RDFLiteralNode::toRdfNode() {
+//    LibrdfNode RDFLiteralNode::getNode() {
 //        return librdf_new_node_from_typed_literal(
 //                world_, (const unsigned char *) value_.c_str(), xml_language_,
 //                librdf_new_uri(world_, (const unsigned char *) data_type_uri.c_str()));
@@ -137,7 +137,7 @@ namespace semsim {
 //
 //    }
 
-//    LibrdfNode RDFURINode::toRdfNode() {
+//    LibrdfNode RDFURINode::getNode() {
 //        return librdf_new_node_from_uri_string(world_, (const unsigned char *) str().c_str());
 //    }
 
@@ -168,7 +168,7 @@ namespace semsim {
 //        return value_;
 //    }
 
-//    LibrdfNode RDFBlankNode::toRdfNode() {
+//    LibrdfNode RDFBlankNode::getNode() {
 //        return librdf_new_node_from_blank_identifier(
 //                world_, (const unsigned char *) value_.c_str());
 //    }

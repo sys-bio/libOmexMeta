@@ -158,6 +158,14 @@ namespace semsim {
         return !getWorld();
     }
 
+    Subject LibrdfWorld::newSubjectUri(std::string subject_value) {
+        return Subject(RDFURINode(newNodeUriString(subject_value)));
+    }
+
+    Subject LibrdfWorld::newSubjectBlank(std::string subject_value) {
+        return Subject(RDFURINode(newNodeBlank(subject_value)));
+    }
+
 
 }
 

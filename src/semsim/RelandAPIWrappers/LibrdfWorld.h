@@ -13,6 +13,9 @@
 #include "LibrdfNode.h"
 #include "LibrdfUri.h"
 
+//#include "semsim/Subject.h"
+#include "semsim/Subject.h"
+
 
 namespace semsim {
 
@@ -63,7 +66,9 @@ namespace semsim {
 
         LibrdfUri newUri(const std::string &uri_string);
 
+        Subject newSubjectUri(std::string subject_value);
 
+        Subject newSubjectBlank(std::string subject_value);
 
     };
 

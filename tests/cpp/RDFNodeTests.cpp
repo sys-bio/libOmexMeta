@@ -158,7 +158,7 @@ TEST_F(RDFNodeTests, TestURIFromFile8) {
 //TEST_F(RDFNodeTests, TestToNode) {
 //    std::string url_str = "https://www.notarealaddress.com";
 //    semsim::RDFURINode node(world, url_str);
-//    LibrdfNode  n = node.toRdfNode();
+//    LibrdfNode  n = node.getNode();
 //    librdf_uri* uri = librdf_node_get_uri(n);
 //    unsigned char* s = raptor_uri_to_string(uri);
 //    const char *actual = (const char *)s;
@@ -180,7 +180,7 @@ TEST_F(RDFNodeTests, TestBlank) {
 //    librdf_node*  node = librdf_new_node_from_uri_string(world, (const unsigned char *) "file://./MyModel.xml");
 //    semsim::RDFURINode rdfuriNode(world_, node);
 //    std::string expected = "file://./MyModel.xml";
-//    std::string actual = (const char *) librdf_uri_to_string(librdf_node_get_uri(rdfuriNode.toRdfNode()));
+//    std::string actual = (const char *) librdf_uri_to_string(librdf_node_get_uri(rdfuriNode.getNode()));
 //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //}
 
@@ -188,7 +188,7 @@ TEST_F(RDFNodeTests, TestBlank) {
 //    LibrdfNode  node = librdf_new_node_from_blank_identifier(world, (const unsigned char *) "file://./MyModel.xml");
 //    semsim::RDFBlankNode blankNode(world, node);
 //    std::string expected = "file://./MyModel.xml";
-//    std::string actual = (const char *) librdf_node_get_blank_identifier(blankNode.toRdfNode());
+//    std::string actual = (const char *) librdf_node_get_blank_identifier(blankNode.getNode());
 //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //}
 //
@@ -197,7 +197,7 @@ TEST_F(RDFNodeTests, TestBlank) {
 //                                                     false);
 //    semsim::RDFLiteralNode literalNode(world, node);
 //    std::string expected = "file://./MyModel.xml";
-//    std::string actual = (const char *) librdf_node_get_blank_identifier(literalNode.toRdfNode());
+//    std::string actual = (const char *) librdf_node_get_blank_identifier(literalNode.getNode());
 //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //}
 
