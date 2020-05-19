@@ -5,8 +5,7 @@
 #include <semsim/Subject.h>
 #include "gtest/gtest.h"
 
-//#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
-#include "semsim/RelandAPIWrappers/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
 
 
 class SubjectTests : public ::testing::Test {

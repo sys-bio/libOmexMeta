@@ -1,13 +1,13 @@
 message(STATUS "inside semsim cmakelists")
 
 set(SEMSIM_HEADERS
-        "RelandAPIWrappers/LibrdfWorld.h"
-        "RelandAPIWrappers/RaptorWorld.h"
-        "RelandAPIWrappers/LibrdfStorage.h"
-        "RelandAPIWrappers/LibrdfModel.h"
-        "RelandAPIWrappers/LibrdfNode.h"
-        "RelandAPIWrappers/LibrdfUri.h"
-        "RelandAPIWrappers/LibrdfStatement.h"
+        "RedlandAPIWrappers/LibrdfWorld.h"
+        "RedlandAPIWrappers/RaptorWorld.h"
+        "RedlandAPIWrappers/LibrdfStorage.h"
+        "RedlandAPIWrappers/LibrdfModel.h"
+        "RedlandAPIWrappers/LibrdfNode.h"
+        "RedlandAPIWrappers/LibrdfUri.h"
+        "RedlandAPIWrappers/LibrdfStatement.h"
 
         "SemsimUtils.h"
         "RDFNode.h"
@@ -37,15 +37,15 @@ set(SEMSIM_HEADERS
         )
 
 set(SEMSIM_SOURCES
-        "RelandAPIWrappers/LibrdfWorld.cpp"
-        "RelandAPIWrappers/RaptorWorld.cpp"
-        "RelandAPIWrappers/LibrdfModel.cpp"
-        "RelandAPIWrappers/LibrdfNode.cpp"
-        "RelandAPIWrappers/LibrdfStorage.cpp"
-        "RelandAPIWrappers/RaptorWorld.cpp"
-        "RelandAPIWrappers/LibrdfUri.cpp"
-        "RelandAPIWrappers/RedlandAPIWrapper.h"
-        "RelandAPIWrappers/LibrdfStatement.cpp"
+        "RedlandAPIWrappers/LibrdfWorld.cpp"
+        "RedlandAPIWrappers/RaptorWorld.cpp"
+        "RedlandAPIWrappers/LibrdfModel.cpp"
+        "RedlandAPIWrappers/LibrdfNode.cpp"
+        "RedlandAPIWrappers/LibrdfStorage.cpp"
+        "RedlandAPIWrappers/RaptorWorld.cpp"
+        "RedlandAPIWrappers/LibrdfUri.cpp"
+        "RedlandAPIWrappers/RedlandAPIWrapper.h"
+        "RedlandAPIWrappers/LibrdfStatement.cpp"
 
         "CurlGet.cpp"
         "SemsimUtils.cpp"

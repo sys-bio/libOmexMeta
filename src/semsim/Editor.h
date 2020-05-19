@@ -19,7 +19,7 @@ class XmlAssistant;
 #include "semsim/PhysicalEntity.h"
 #include "semsim/PhysicalProcess.h"
 #include "semsim/PhysicalForce.h"
-#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
 
 // todo implement this logic from Maxes email
 /*

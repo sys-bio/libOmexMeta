@@ -1,6 +1,6 @@
 #include <cstdint>
 #include "gtest/gtest.h"
-#include "semsim/RelandAPIWrappers/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
 
 class LibrdfWorldTests : public ::testing::Test {
 

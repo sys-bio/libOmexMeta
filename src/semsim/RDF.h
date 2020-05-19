@@ -11,7 +11,7 @@
 #include "Editor.h"
 #include "XmlAssistant.h"
 #include "Query.h"
-#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {
 

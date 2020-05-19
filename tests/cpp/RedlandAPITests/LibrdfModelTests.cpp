@@ -3,8 +3,8 @@
 //
 
 #include "gtest/gtest.h"
-#include "semsim/RelandAPIWrappers/LibrdfWorld.h"
-#include "semsim/RelandAPIWrappers/LibrdfModel.h"
+#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrappers/LibrdfModel.h"
 #include "semsim/SemsimUtils.h"
 
 class LibrdfModelTests : public ::testing::Test {

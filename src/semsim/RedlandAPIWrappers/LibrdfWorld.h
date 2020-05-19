@@ -13,7 +13,6 @@
 #include "LibrdfNode.h"
 #include "LibrdfUri.h"
 
-//#include "semsim/Subject.h"
 #include "semsim/Subject.h"
 
 

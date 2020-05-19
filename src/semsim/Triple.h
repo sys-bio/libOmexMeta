@@ -6,12 +6,12 @@
 #define LIBSEMGEN_TRIPLE_H
 
 #include <ostream>
-#include <semsim/RelandAPIWrappers/LibrdfStatement.h>
 #include "librdf.h"
 #include "Subject.h"
 #include "Predicate.h"
 #include "Resource.h"
-#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrappers/LibrdfNode.h"
+#include "semsim/RedlandAPIWrappers/LibrdfStatement.h"
 
 /*
  * todo implement a "world::newTriple" method
