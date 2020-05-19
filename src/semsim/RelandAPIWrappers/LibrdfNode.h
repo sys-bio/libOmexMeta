@@ -29,6 +29,8 @@ namespace semsim {
 
         std::string str();
 
+        bool operator!() const;
+
     };
 }
 

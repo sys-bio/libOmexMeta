@@ -7,7 +7,7 @@
 namespace semsim {
 
     LibrdfStorage::LibrdfStorage(librdf_storage *storage)
-            : storage_(std::make_shared<librdf_storage * librdf_storage * >(storage)) {
+            : storage_(std::make_shared<librdf_storage *>(storage)) {
     }
 
     LibrdfStorage::~LibrdfStorage() {
@@ -50,12 +50,16 @@ namespace semsim {
         return *storage_ == *rhs.storage_;
     }
 
-    std::shared_ptr<LibrdfStorage> LibrdfStorage::getStorage() const {
+    std::shared_ptr<librdf_storage *> LibrdfStorage::getStorage() const {
         return storage_;
     }
 
     bool LibrdfStorage::operator!=(const LibrdfStorage &rhs) const {
         return !(rhs == *this);
+    }
+
+    bool LibrdfStorage::operator!() const {
+        return !storage_;
     }
 
 

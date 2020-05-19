@@ -83,8 +83,12 @@ namespace semsim {
         return value;
     }
 
-    const std::shared_ptr<LibrdfNode> &LibrdfNode::getNode() const {
+    const std::shared_ptr<librdf_node *> &LibrdfNode::getNode() const {
         return node_;
+    }
+
+    bool LibrdfNode::operator!() const {
+        return !getNode();
     }
 
 }

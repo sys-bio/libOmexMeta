@@ -9,6 +9,8 @@
 #include <librdf.h>
 #include <memory>
 
+#include "semsim/RelandAPIWrappers/RedlandAPIWrapper.h"
+
 namespace semsim {
 
     class RDFNode {

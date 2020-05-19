@@ -14,7 +14,7 @@ namespace semsim {
 
     public:
 
-        LibrdfStorage(librdf_storage *storage);
+        explicit LibrdfStorage(librdf_storage *storage);
 
         ~LibrdfStorage();
 
@@ -30,19 +30,9 @@ namespace semsim {
 
         bool operator!=(const LibrdfStorage &rhs) const;
 
-        std::shared_ptr<LibrdfStorage> getStorage() const;
+        std::shared_ptr<librdf_storage *> getStorage() const;
 
-        const std::string &getStorageName() const;
-
-        const std::string &getName() const;
-
-        const std::string &getOptions() const;
-
-        const std::vector<std::string> &getValidStorageNames() const;
-
-        const std::vector<std::string> &getValidStorage() const;
-
-        const std::vector<std::string> &getValidOptions() const;
+        bool LibrdfStorage::operator!() const;
 
     };
 }

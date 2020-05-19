@@ -21,7 +21,7 @@ namespace semsim {
         if (raptor_uri_ != nullptr) {
             raptor_free_uri(*raptor_uri_);
         }
-        raptor_uri_ = raptorUri.getRaptorUri();
+        raptor_uri_ = raptorUri.getUri();
     }
 
     LibrdfUri::LibrdfUri(LibrdfUri &&raptorUri) noexcept {
@@ -51,7 +51,7 @@ namespace semsim {
         return *this;
     }
 
-    const std::shared_ptr<raptor_uri *> &LibrdfUri::getRaptorUri() const {
+    const std::shared_ptr<raptor_uri *> &LibrdfUri::getUri() const {
         return raptor_uri_;
     }
 
@@ -59,10 +59,14 @@ namespace semsim {
         if (raptor_uri_ == nullptr) {
             throw NullPointerException("LibrdfUri::str(): raptor_uri_ ");
         }
-        unsigned char *cstr = raptor_uri_to_string(*getRaptorUri());
+        unsigned char *cstr = raptor_uri_to_string(*getUri());
         std::string str = (const char *) cstr;
         free(cstr);
         return str;
+    }
+
+    bool LibrdfUri::operator!() const {
+        return !getUri();
     }
 
 }
