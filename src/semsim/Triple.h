@@ -10,6 +10,14 @@
 #include "Subject.h"
 #include "Predicate.h"
 #include "Resource.h"
+#include <utility>
+#include <algorithm>
+#include <cstring>
+#include "raptor2.h"
+#include "librdf.h"
+#include "Writer.h"
+
+
 #include "semsim/RedlandAPIWrappers/LibrdfNode.h"
 #include "semsim/RedlandAPIWrappers/LibrdfStatement.h"
 

@@ -6,7 +6,6 @@
 #define LIBSEMGEN_EDITOR_H
 
 
-class XmlAssistant;
 
 #include "semsim/XmlAssistant.h"
 #include "semsim/Predicate.h"
@@ -20,7 +19,12 @@ class XmlAssistant;
 #include "semsim/PhysicalProcess.h"
 #include "semsim/PhysicalForce.h"
 #include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include "RDF.h"
+#include "librdf.h"
+#include "semsim/Error.h"
 
+#include <utility>
+#include "SemsimUtils.h"
 // todo implement this logic from Maxes email
 /*
  * Here's the basic logic that we use in SemGen to determine which OPB physical property is represented by a <species> in an SBML model:

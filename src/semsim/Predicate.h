@@ -9,13 +9,24 @@
 #include <vector>
 #include <algorithm>
 #include <sstream>
+#include <unordered_map>
+#include <iostream>
+#include <unordered_map>
+#include <algorithm>
+#include <utility>
 #include "RDFNode.h"
-#include "unordered_map"
-#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
+
+#include "SemsimUtils.h"
+
 
 namespace semsim {
+    class LibrdfWorld;
+
     class Predicate {
     protected:
+
+        Predicate(semsim::LibrdfWorld world, const RDFURINode &node);
 
         LibrdfWorld world_;
         std::string namespace_, term_, prefix_;

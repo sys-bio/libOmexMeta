@@ -2,13 +2,8 @@
 // Created by Ciaran on 5/17/2020.
 //
 
-#include <iostream>
-#include <memory>
-#include <regex>
 
 #include "LibrdfWorld.h"
-#include "LibrdfStorage.h"
-#include "semsim/SemsimUtils.h"
 
 namespace semsim {
 
@@ -158,12 +153,25 @@ namespace semsim {
         return !getWorld();
     }
 
-    Subject LibrdfWorld::newSubjectUri(std::string subject_value) {
+    Subject LibrdfWorld::newSubjectUri(const std::string &subject_value) {
         return Subject(RDFURINode(newNodeUriString(subject_value)));
     }
 
-    Subject LibrdfWorld::newSubjectBlank(std::string subject_value) {
+    Subject LibrdfWorld::newSubjectBlank(const std::string &subject_value) {
         return Subject(RDFURINode(newNodeBlank(subject_value)));
+    }
+
+    PredicatePtr LibrdfWorld::newPredicate(std::string namespace_, const std::string &term) {
+        std::string uri;
+        if (namespace_.back() == '/' || namespace_.back() == '#') {
+            uri = namespace_ + term;
+        } else {
+            uri = namespace_ + "/" + term;
+        }
+        /*
+         * Feed Predicate a node and extract + process the uri?
+         */
+        return PredicateFactory(namespace_, term);
     }
 
 

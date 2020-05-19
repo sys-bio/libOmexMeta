@@ -4,8 +4,6 @@
 
 #include "semsim/Subject.h"
 
-#include <utility>
-#include "semsim/Error.h"
 
 namespace semsim {
 
@@ -20,6 +18,7 @@ namespace semsim {
     Subject::Subject(const RDFNode &node)
             : rdf_node_ptr_(std::make_shared<RDFNode>(node)) {
     }
+
 
     LibrdfNode Subject::getNode() const {
         LibrdfNode node = rdf_node_ptr_->getNode();

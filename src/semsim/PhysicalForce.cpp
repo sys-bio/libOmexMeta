@@ -4,11 +4,6 @@
 
 #include "PhysicalForce.h"
 
-#include <vector>
-#include "Participant.h"
-#include "PhysicalPropertyResource.h"
-#include "PhysicalPhenomenon.h"
-#include "SemsimUtils.h"
 
 namespace semsim {
 

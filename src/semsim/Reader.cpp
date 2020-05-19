@@ -4,12 +4,6 @@
 
 #include "Reader.h"
 
-#include <utility>
-#include <stdexcept>
-#include <algorithm>
-#include <sstream>
-#include <unordered_map>
-#include "SemSim.h"
 
 using namespace std;
 

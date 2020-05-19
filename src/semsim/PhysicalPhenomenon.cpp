@@ -3,9 +3,7 @@
 //
 
 #include "PhysicalPhenomenon.h"
-#include "MetaID.h"
-#include "Error.h"
-#include "Query.h"
+
 
 namespace semsim {
 

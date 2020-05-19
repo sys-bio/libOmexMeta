@@ -2,12 +2,8 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#include <vector>
 #include "PhysicalProcess.h"
-#include "Participant.h"
-#include "PhysicalPropertyResource.h"
-#include "PhysicalPhenomenon.h"
-#include "SemsimUtils.h"
+
 
 namespace semsim {
 

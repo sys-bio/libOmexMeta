@@ -9,6 +9,13 @@
 #include <vector>
 #include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
 #include "semsim/RedlandAPIWrappers/LibrdfModel.h"
+#include <sys/stat.h>
+#include <stdexcept>
+#include <sstream>
+#include <librdf.h>
+#include "CurlGet.h"
+#include "Query.h"
+#include "MetaID.h"
 
 // macro helpful for debugging
 #define HERE()                              \

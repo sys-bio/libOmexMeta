@@ -2,13 +2,7 @@
 // Created by Ciaran on 4/4/2020.
 //
 
-#include <utility>
-#include <algorithm>
-#include <cstring>
-#include "raptor2.h"
-#include "librdf.h"
 #include "Triple.h"
-#include "Writer.h"
 
 
 namespace semsim {

@@ -4,10 +4,6 @@
 
 
 #include "RDFNode.h"
-#include "librdf.h"
-#include <regex>
-#include <utility>
-#include "SemSim.h"
 
 
 namespace semsim {

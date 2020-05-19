@@ -12,6 +12,13 @@
 #include "XmlAssistant.h"
 #include "Query.h"
 #include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include <string>
+#include <iostream>
+#include <cstring>
+#include <utility>
+
+#include "Reader.h"
+#include "Query.h"
 
 namespace semsim {
 

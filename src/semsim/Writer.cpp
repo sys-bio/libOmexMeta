@@ -2,12 +2,7 @@
 // Created by Ciaran on 4/9/2020.
 //
 
-#include <stdexcept>
-#include <utility>
 #include "Writer.h"
-#include "SemSim.h"
-#include <regex>
-#include "Error.h"
 
 void semsim::Writer::setWorld(LibrdfWorld w) {
     this->world_ = w;

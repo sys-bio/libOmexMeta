@@ -3,19 +3,14 @@
 //
 
 
-#include <iostream>
-#include <unordered_map>
-#include <algorithm>
-#include "librdf.h"
 
-#include "SemsimUtils.h"
 #include "Predicate.h"
 
 namespace semsim {
 
     Predicate::Predicate(LibrdfWorld world, const std::string &namespace_,
                          std::string term, std::string prefix)
-            : world_(world), namespace_(namespace_), term_(std::move(term)),
+            : world_(std::move(world)), namespace_(namespace_), term_(std::move(term)),
               prefix_(std::move(prefix)) {
         if (namespace_.back() == '/' || namespace_.back() == '#') {
             this->uri_ = namespace_ + term_;
@@ -23,11 +18,11 @@ namespace semsim {
             this->uri_ = namespace_ + "/" + term_;
         }
         verify(valid_terms_, term_);
-        this->uri_node_ = std::make_shared<RDFURINode>(RDFURINode(world_, uri_));
+        this->uri_node_ = std::make_shared<RDFURINode>(world_.newNodeUriString(uri_));
     }
 
-    Predicate::Predicate(LibrdfWorld world, LibrdfNode node)
-            : world_(world), uri_node_(std::make_shared<RDFURINode>(world, node)) {
+    Predicate::Predicate(LibrdfWorld world, const RDFURINode &node)
+            : world_(std::move(world)), uri_node_(std::make_shared<RDFURINode>(node)) {
         // some logic for processing the uri in a node to automatically produce the fields we want.
         std::string val = uri_node_->str();
 
