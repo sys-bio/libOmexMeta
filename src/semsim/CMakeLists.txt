@@ -31,6 +31,7 @@ set(SEMSIM_SOURCES
         "RelandAPIWrappers/LibrdfStorage.cpp"
         "RelandAPIWrappers/RaptorWorld.cpp"
         "RelandAPIWrappers/LibrdfUri.cpp"
+        "RelandAPIWrappers/RedlandAPIWrapper.h"
         )
 
 set(SEMSIM_HEADERS

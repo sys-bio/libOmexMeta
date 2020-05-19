@@ -28,9 +28,11 @@ namespace semsim {
 
         LibrdfUri &operator=(LibrdfUri &&raptorUri) noexcept;
 
-        const std::shared_ptr<raptor_uri *> &getRaptorUri() const;
+        const std::shared_ptr<raptor_uri *> &getUri() const;
 
         std::string str();
+
+        bool LibrdfUri::operator!() const;
     };
 }
 

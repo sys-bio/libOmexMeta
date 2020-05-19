@@ -60,8 +60,12 @@ namespace semsim {
         return !(rhs == *this);
     }
 
-    const std::shared_ptr<LibrdfModel> &LibrdfModel::getModel() const {
+    const std::shared_ptr<librdf_model *> &LibrdfModel::getModel() const {
         return model_;
+    }
+
+    bool LibrdfModel::operator!() const {
+        return !model_;
     }
 
 }

@@ -60,6 +60,10 @@ namespace semsim {
                 const char *xml_language = nullptr);
 
         LibrdfUri newUri(const std::string &uri_string);
+
+
+        bool LibrdfWorld::operator!() const;
+
     };
 
 }
