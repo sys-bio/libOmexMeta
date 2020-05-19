@@ -38,38 +38,59 @@ public:
 };
 
 
-TEST_F(TriplesTests, TestSize) {
-    semsim::Triple triple1(world,
-                           subject,
-                           predicatePtr,
-                           resource);
-    semsim::Triple triple2(world,
-                           subject,
-                           predicatePtr,
-                           resource);
-    semsim::Triples triples;
-    triples.push_back(triple1);
-    triples.push_back(triple2);
-    ASSERT_EQ(2, triples.size());
+TEST_F(TriplesTests, TestSize
+) {
+semsim::Triple triple1(world,
+                       subject,
+                       predicatePtr,
+                       resource);
+semsim::Triple triple2(world,
+                       subject,
+                       predicatePtr,
+                       resource);
+semsim::Triples triples;
+triples.
+push_back(triple1);
+triples.
+push_back(triple2);
+ASSERT_EQ(2, triples.
+
+size()
+
+);
 }
 
-TEST_F(TriplesTests, TestEmplaceBack1) {
-    semsim::Triples triples;
-    triples.emplace_back(world,
-                         subject,
-                         predicatePtr,
-                         resource);
-    ASSERT_EQ(1, triples.size());
+TEST_F(TriplesTests, TestEmplaceBack1
+) {
+semsim::Triples triples;
+triples.
+emplace_back(world,
+        subject,
+        predicatePtr,
+        resource
+);
+ASSERT_EQ(1, triples.
+
+size()
+
+);
 }
 
-TEST_F(TriplesTests, TestEmplaceBack2) {
-    semsim::Triple triple(world,
-                          subject,
-                          predicatePtr,
-                          resource);
-    librdf_statement *statement = triple.toStatement();
-    semsim::Triples triples;
-    triples.emplace_back(world, statement);
-    ASSERT_EQ(1, triples.size());
+TEST_F(TriplesTests, TestEmplaceBack2
+) {
+semsim::Triple triple(world,
+                      subject,
+                      predicatePtr,
+                      resource);
+librdf_statement *statement = triple.toStatement();
+semsim::Triples triples;
+triples.
+emplace_back(world, statement
+);
+ASSERT_EQ(1, triples.
+
+size()
+
+);
 }
 

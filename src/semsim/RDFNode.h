@@ -15,73 +15,52 @@ namespace semsim {
 
     class RDFNode {
     protected:
-        LibrdfWorld world_;
-        std::string value_;
-        const char *xml_language_;
-        bool is_wf_xml_ = false;
+        LibrdfNode node_;
+//        LibrdfWorld world_;
+//        std::string value_;
+//        const char *xml_language_;
+//        bool is_wf_xml_ = false;
 
     public:
+        const LibrdfNode &getNode() const;
 
-        RDFNode(LibrdfWorld world, std::string value, const char *xml_language, bool is_wf_xml);
+        explicit RDFNode(LibrdfNode node);
 
-        virtual std::string str() = 0;
-
-        virtual LibrdfNode toRdfNode() = 0;
-
-        static std::string getValue(LibrdfNode node);
-
-        static std::shared_ptr<RDFNode> fromRDFNode(LibrdfWorld world, LibrdfNode node);
+        virtual std::string str();
 
         ~RDFNode();
 
     };
 
     class RDFLiteralNode : public RDFNode {
-        bool is_typed_literal = false;
-        std::string data_type_uri;
 
     public:
 
-        RDFLiteralNode(LibrdfWorld world, std::string value,
-                       std::string data_type = "http://www.w3.org/2001/XMLSchema#string",
-                       const char *xml_language = nullptr, bool is_wf_xml = false);
+        explicit RDFLiteralNode(const LibrdfNode &node);
 
-        RDFLiteralNode(LibrdfWorld world, librdf_node *node,
-                       std::string data_type = "http://www.w3.org/2001/XMLSchema#string",
-                       const char *xml_language = nullptr, bool is_wf_xml = false);
+    };
 
-        std::string str() override;
+    class RDFTypedLiteralNode : public RDFNode {
 
-        LibrdfNode toRdfNode() override;
+    public:
+
+        explicit RDFTypedLiteralNode(LibrdfNode node);
+
+        std::string getType();
 
     };
 
     class RDFURINode : public RDFNode {
     public:
 
-        explicit RDFURINode(LibrdfWorld world, std::string value, const char *xmlLanguage = nullptr,
-                            bool isWfXml = false);
-
-        RDFURINode(LibrdfWorld world, LibrdfNode node, const char *xmlLanguage = nullptr, bool isWfXml = false);
-
-        std::string str() override;
-
-        LibrdfNode toRdfNode() override;
+        explicit RDFURINode(LibrdfNode node);
 
     };
 
     class RDFBlankNode : public RDFNode {
     public:
 
-        explicit RDFBlankNode(LibrdfWorld world, std::string value, const char *xml_language = nullptr,
-                              bool is_wf_xml = false);
-
-        RDFBlankNode(LibrdfWorld world, LibrdfNode node, const char *xmlLanguage = nullptr, bool isWfXml = false);
-
-        std::string str() override;
-
-        LibrdfNode toRdfNode() override;
-
+        explicit RDFBlankNode(LibrdfNode node);
 
     };
 

@@ -6,6 +6,7 @@
 #define LIBSEMGEN_TRIPLE_H
 
 #include <ostream>
+#include <semsim/RelandAPIWrappers/LibrdfStatement.h>
 #include "librdf.h"
 #include "Subject.h"
 #include "Predicate.h"
@@ -45,7 +46,7 @@ namespace semsim {
 
         librdf_statement *toStatement();
 
-        static Triple fromStatement(LibrdfWorld world, librdf_statement *statement);
+        static Triple fromStatement(LibrdfWorld world, LibrdfStatement statement);
 
         std::string str(std::string format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
 

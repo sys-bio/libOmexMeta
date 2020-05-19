@@ -1,7 +1,7 @@
+import ctypes as ct
 import os
 import site
 import unittest
-import ctypes as ct
 
 test_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 proj_dir = os.path.dirname(test_dir)
@@ -68,6 +68,7 @@ xml = """<?xml version="1.0" encoding="UTF-8"?>
   </model>
 </sbml>"""
 
+
 class UtilsTest(unittest.TestCase):
 
     def setUp(self) -> None:
@@ -77,12 +78,14 @@ class UtilsTest(unittest.TestCase):
         pass
 
     def test_load_func(self):
-        func_that_returns_a_str = pysemsim.Util.load_func(self.lib, "_func_that_returns_dynamic_alloc_str", [], ct.c_int64)
+        func_that_returns_a_str = pysemsim.Util.load_func(self.lib, "_func_that_returns_dynamic_alloc_str", [],
+                                                          ct.c_int64)
         self.assertTrue(callable(func_that_returns_a_str))
 
     def test_get_and_free_c_str(self):
         free_func = pysemsim.Util.load_func(self.lib, "free_c_char_star", [ct.c_int64], None)
-        func_that_returns_a_str = pysemsim.Util.load_func(self.lib, "_func_that_returns_dynamic_alloc_str", [], ct.c_int64)
+        func_that_returns_a_str = pysemsim.Util.load_func(self.lib, "_func_that_returns_dynamic_alloc_str", [],
+                                                          ct.c_int64)
         actual = pysemsim.Util.get_and_free_c_str(func_that_returns_a_str())
         expected = "ADynamicallyAllocatedStringForTesting"
         self.assertEqual(expected, actual)
@@ -168,7 +171,6 @@ class EditorTests(unittest.TestCase):
         self.assertIsInstance(self.editor, pysemsim.Editor)
 
     def test_singular_ann_str(self):
-
         singular_annotation = self.editor.new_singular_annotation()
         singular_annotation \
             .set_about("metaid4") \
@@ -210,7 +212,6 @@ class EditorTests(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_physical_entity(self):
-
         physical_entity = self.editor.new_physical_entity()
         physical_entity \
             .set_about("metaid87") \
@@ -239,7 +240,7 @@ class EditorTests(unittest.TestCase):
         ]
         for i in formats:
             actual = physical_entity.to_string(i, "./annotation.rdf")
-        #todo free() : invalid pointer warning on c end
+        # todo free() : invalid pointer warning on c end
         # actual = str(physical_entity)
         """
         str(physical_entity) is the cause of the free(): invalid pointer problem.
@@ -247,7 +248,6 @@ class EditorTests(unittest.TestCase):
         # self.assertEqual(expected, actual)
 
     def test_physical_add_to_model(self):
-
         physical_entity = self.editor.new_physical_entity()
         physical_entity \
             .set_about("metaid87") \
@@ -275,7 +275,6 @@ class EditorTests(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_physical_process(self):
-
         physical_process = self.editor.new_physical_process()
         physical_process \
             .set_about("metaid87") \
@@ -315,7 +314,6 @@ class EditorTests(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_physical_force(self):
-
         physical_force = self.editor.new_physical_force()
         physical_force \
             .set_about("metaid87") \
