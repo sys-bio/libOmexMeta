@@ -32,7 +32,7 @@ namespace semsim {
 
         std::string str();
 
-        bool LibrdfUri::operator!() const;
+        bool operator!() const;
     };
 }
 
