@@ -6,24 +6,16 @@
 #define LIBSEMSIM_LIBRDFSTORAGE_H
 
 #include <librdf.h>
-
 #include <vector>
 
 namespace semsim {
     class LibrdfStorage {
         std::shared_ptr<librdf_storage *> storage_;
-        std::string storage_name_;
-        std::string name_;
-        std::string options_;
 
-        //todo fill these in and write verification functinos for them.
-        std::vector<std::string> valid_storage_names;
-        std::vector<std::string> valid_storage;
-        std::vector<std::string> valid_options;
 
     public:
 
-        LibrdfStorage(librdf_storage *storage, std::string storage_name, std::string name, std::string options);
+        LibrdfStorage(librdf_storage *storage);
 
         ~LibrdfStorage();
 

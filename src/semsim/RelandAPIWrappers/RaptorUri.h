@@ -17,8 +17,20 @@ namespace semsim {
     public:
         explicit RaptorUri(raptor_uri *uri);
 
+        ~RaptorUri();
+
+
+        RaptorUri(const RaptorUri &raptorUri);
+
+        RaptorUri(RaptorUri &&raptorUri) noexcept;
+
+        RaptorUri &operator=(const RaptorUri &raptorUri);
+
+        RaptorUri &operator=(RaptorUri &&raptorUri) noexcept;
+
         const std::shared_ptr<raptor_uri *> &getRaptorUri() const;
 
+        std::string str();
     };
 }
 

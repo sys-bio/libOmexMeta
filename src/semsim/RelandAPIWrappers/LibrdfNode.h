@@ -15,6 +15,16 @@ namespace semsim {
     public:
         explicit LibrdfNode(librdf_node *node);
 
+        ~LibrdfNode();
+
+        LibrdfNode(const LibrdfNode &librdfNode);
+
+        LibrdfNode(LibrdfNode &&librdfNode) noexcept;
+
+        LibrdfNode &operator=(const LibrdfNode &librdfNode);
+
+        LibrdfNode &operator=(LibrdfNode &&librdfNode) noexcept;
+
     };
 }
 

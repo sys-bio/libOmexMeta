@@ -28,12 +28,10 @@ namespace semsim {
 
     LibrdfStorage &LibrdfStorage::operator=(const LibrdfStorage &storage) {
         if (this != &storage) {
-            if (this->storage_ != nullptr) {
-                // if this storage was instantiated with
-                // a storage (which it probably was), get rid of
-                // it before we take a copy of storage.storage_
-                librdf_free_storage(*this->storage_);
-            }
+            // if this storage was instantiated with
+            // a storage (which it probably was), get rid of
+            // it before we take a copy of storage.storage_
+            librdf_free_storage(*this->storage_);
             this->storage_ = storage.storage_;
             this->storage_name_ = storage.storage_name_;
             this->name_ = storage.name_;
@@ -51,12 +49,10 @@ namespace semsim {
 
     LibrdfStorage &LibrdfStorage::operator=(LibrdfStorage &&storage) noexcept {
         if (this != &storage) {
-            if (this->storage_ != nullptr) {
-                // if this storage was instantiated with
-                // a storage (which it probably was), get rid of
-                // it before we move storage.storage_ into this->storage_
-                librdf_free_storage(*this->storage_);
-            }
+            // if this storage was instantiated with
+            // a storage (which it probably was), get rid of
+            // it before we move storage.storage_ into this->storage_
+            librdf_free_storage(*this->storage_);
             this->storage_ = std::move(storage.storage_);
             this->storage_name_ = std::move(storage.storage_name_);
             this->name_ = std::move(storage.name_);

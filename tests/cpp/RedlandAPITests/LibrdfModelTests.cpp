@@ -16,51 +16,58 @@ public:
 };
 
 TEST_F(LibrdfModelTests, TestNew) {
-    HERE();
     semsim::LibrdfWorld world;
-    HERE();
+    auto world_ptr_int = reinterpret_cast<std::uintptr_t>(*world.getWorld());
     semsim::LibrdfStorage storage1 = world.newStorage("memory", "semsim_store1");
-    HERE();
     semsim::LibrdfModel model1 = world.newModel(storage1);
+    ASSERT_TRUE(true);
 }
 
 TEST_F(LibrdfModelTests, TestCopyConstructor) {
-    HERE();
     semsim::LibrdfWorld world;
-    HERE();
     semsim::LibrdfStorage storage1 = world.newStorage("memory", "semsim_store1");
-    HERE();
     semsim::LibrdfModel model1 = world.newModel(storage1);
-    HERE();
-    semsim::LibrdfStorage storage2 = storage1;
-    HERE();
-    ASSERT_EQ(storage1, storage2);
+    semsim::LibrdfModel model2 = model1;
+    ASSERT_EQ(model1, model2);
 }
 
 TEST_F(LibrdfModelTests, TestCopyAssignment) {
     semsim::LibrdfWorld world;
     semsim::LibrdfStorage storage1 = world.newStorage("memory", "semsim_store1");
-    semsim::LibrdfStorage storage2 = world.newStorage("memory", "semsim_store2");
-    storage2 = storage1;
-    ASSERT_EQ(storage1, storage2);
-    ASSERT_STREQ("semsim_store1", storage2.getName().c_str());
+    semsim::LibrdfModel model1 = world.newModel(storage1);
+    auto model1_ptr_int = reinterpret_cast<std::uintptr_t>(*model1.getModel());
+    semsim::LibrdfModel model2 = world.newModel(storage1);
+    auto model2_ptr_int_before = reinterpret_cast<std::uintptr_t>(*model2.getModel());
+    ASSERT_NE(model1_ptr_int, model2_ptr_int_before);
+    model2 = model1;
+    auto model2_ptr_int_after = reinterpret_cast<std::uintptr_t>(*model2.getModel());
+    ASSERT_EQ(model1_ptr_int, model2_ptr_int_after);
 }
 
 
 TEST_F(LibrdfModelTests, TestMoveConstructor) {
     semsim::LibrdfWorld world;
     semsim::LibrdfStorage storage1 = world.newStorage("memory", "semsim_store1");
-    semsim::LibrdfStorage storage2 = std::move(storage1);
-    ASSERT_NE(storage1, storage2);
+    semsim::LibrdfModel model1 = world.newModel(storage1);
+    auto model1_int_ptr = reinterpret_cast<std::uintptr_t>(*model1.getModel());
+    semsim::LibrdfModel model2 = std::move(model1);
+    auto model2_int_ptr = reinterpret_cast<std::uintptr_t>(*model2.getModel());
+    ASSERT_EQ(model1_int_ptr, model2_int_ptr);
 }
 
 TEST_F(LibrdfModelTests, TestMoveAssignment) {
     semsim::LibrdfWorld world;
+    // storage to model is 1:1
     semsim::LibrdfStorage storage1 = world.newStorage("memory", "semsim_store1");
     semsim::LibrdfStorage storage2 = world.newStorage("memory", "semsim_store2");
-    storage1 = std::move(storage2);
-    ASSERT_NE(storage1, storage2);
+    semsim::LibrdfModel model1 = world.newModel(storage1);
+    auto model1_int_ptr = reinterpret_cast<std::uintptr_t>(*model1.getModel());
+    semsim::LibrdfModel model2 = world.newModel(storage2);
+    model2 = std::move(model1);
+    auto model2_int_ptr = reinterpret_cast<std::uintptr_t>(*model2.getModel());
+    ASSERT_EQ(model1_int_ptr, model2_int_ptr);
 }
+
 
 
 
