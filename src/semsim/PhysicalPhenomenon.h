@@ -10,6 +10,9 @@
 #include "AnnotationType.h"
 #include "Triple.h"
 #include "Triples.h"
+#include "MetaID.h"
+#include "Error.h"
+#include "Query.h"
 #include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {

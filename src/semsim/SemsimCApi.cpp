@@ -3,8 +3,7 @@
 //
 
 #include "semsim/SemsimCApi.h"
-#include <cstring>
-#include "semsim/SemsimUtils.h"
+
 
 /*
  * Todo: Put checks in for nullptr in all functions

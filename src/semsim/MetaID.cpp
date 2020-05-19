@@ -2,9 +2,7 @@
 // Created by Ciaran on 4/14/2020.
 //
 
-#include <sstream>
-#include <utility>
-#include <iostream>
+
 #include "MetaID.h"
 
 semsim::MetaID::MetaID(std::string base, long number, int num_digits) :

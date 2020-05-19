@@ -12,6 +12,7 @@
 #include "Triple.h"
 #include "Triples.h"
 #include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include <utility>
 
 
 namespace semsim {

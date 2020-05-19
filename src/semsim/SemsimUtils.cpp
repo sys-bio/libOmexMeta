@@ -1,14 +1,7 @@
 //
 // Created by Ciaran on 4/13/2020.
 //
-#include <sys/stat.h>
-#include <stdexcept>
-#include <sstream>
-#include <librdf.h>
 #include "SemsimUtils.h"
-#include "CurlGet.h"
-#include "Query.h"
-#include "MetaID.h"
 
 bool semsim::SemsimUtils::exists(const std::string &filename) {
     struct stat buffer{};

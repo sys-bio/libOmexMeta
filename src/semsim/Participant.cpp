@@ -4,8 +4,7 @@
 
 #include "Participant.h"
 
-#include <utility>
-#include "SemSim.h"
+
 
 /*
  * todo work on participant classes, are they doing what they should?

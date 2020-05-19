@@ -259,7 +259,7 @@ namespace semsim {
 		+{static} verify(std::vector<std::string> valid_terms, const std::string& term) : int
 		+toRdfNode() : librdf_node*
 		#world_ : librdf_world*
-		#uri_node_ : std::shared_ptr<RDFURINode>
+		#node_ : std::shared_ptr<RDFURINode>
 		#namespace_ : std::string
 		#prefix_ : std::string
 		+str() : std::string

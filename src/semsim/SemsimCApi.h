@@ -11,6 +11,8 @@
 #include "semsim/PhysicalEntity.h"
 #include "semsim/PhysicalProcess.h"
 #include "semsim/PhysicalForce.h"
+#include <cstring>
+#include "semsim/SemsimUtils.h"
 
 namespace semsim {
 
@@ -18,9 +20,9 @@ namespace semsim {
     extern "C" {
 #endif
 
-        void free_c_char_star(char* c);
+    void free_c_char_star(char *c);
 
-        void free_c_char_star_star(char** c, int size);
+    void free_c_char_star_star(char **c, int size);
 
         char* _func_that_returns_dynamic_alloc_str();
 

@@ -12,6 +12,12 @@
 #include "Triple.h"
 #include "Triples.h"
 #include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include <stdexcept>
+#include <utility>
+
+#include <regex>
+#include "Error.h"
+
 
 namespace semsim {
     class Writer {

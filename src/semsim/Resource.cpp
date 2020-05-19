@@ -3,7 +3,6 @@
 //
 
 #include "Resource.h"
-#include "SemsimUtils.h"
 
 namespace semsim {
 

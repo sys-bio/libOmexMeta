@@ -4,11 +4,6 @@
 
 #include "PhysicalEntity.h"
 
-#include <utility>
-#include "Triple.h"
-#include "Query.h"
-#include "SemsimUtils.h"
-#include "memory"
 
 semsim::PhysicalEntity::PhysicalEntity(
         LibrdfWorld world,

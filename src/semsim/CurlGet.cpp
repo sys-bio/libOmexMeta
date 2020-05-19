@@ -2,11 +2,7 @@
 // Created by Ciaran on 4/11/2020.
 //
 
-#include <stdexcept>
-#include <iostream>
-#include <utility>
 #include "CurlGet.h"
-#include "SemSim.h"
 
 
 

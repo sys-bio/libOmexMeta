@@ -3,12 +3,7 @@
 //
 
 #include "Editor.h"
-#include "RDF.h"
-#include "librdf.h"
-#include "semsim/Error.h"
 
-#include <utility>
-#include "SemsimUtils.h"
 
 semsim::Editor::Editor(const std::string &xml, XmlAssistantType type,
                        LibrdfWorld world, LibrdfModel model, NamespaceMap &nsmap)

@@ -8,6 +8,9 @@
 #include <string>
 #include <librdf.h>
 #include <memory>
+#include "librdf.h"
+#include <regex>
+#include <utility>
 
 #include "semsim/RedlandAPIWrappers/LibrdfNode.h"
 

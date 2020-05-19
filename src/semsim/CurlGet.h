@@ -8,6 +8,7 @@
 
 #include <string>
 #include "curl/curl.h"
+#include <stdexcept>
 
 namespace semsim {
 

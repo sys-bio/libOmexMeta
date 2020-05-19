@@ -1,14 +1,8 @@
 //
 // Created by Ciaran on 4/8/2020.
 //
-#include <string>
-#include <iostream>
-#include <cstring>
-#include <utility>
 #include "RDF.h"
-#include "SemSim.h"
-#include "Reader.h"
-#include "Query.h"
+
 
 /*******************************************************
  * Constructors

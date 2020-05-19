@@ -7,6 +7,14 @@
 
 #include "librdf.h"
 
+#include <iostream>
+#include <memory>
+#include <regex>
+#include <semsim/Predicate.h>
+
+#include "LibrdfStorage.h"
+#include "semsim/SemsimUtils.h"
+
 #include "RaptorWorld.h"
 #include "LibrdfModel.h"
 #include "LibrdfStorage.h"
@@ -14,9 +22,13 @@
 #include "LibrdfUri.h"
 
 #include "semsim/Subject.h"
+#include "semsim/Predicate.h"
 
 
 namespace semsim {
+
+    class Predicate;
+
 
     class LibrdfWorld {
         std::shared_ptr<librdf_world *> world_;
@@ -65,9 +77,11 @@ namespace semsim {
 
         LibrdfUri newUri(const std::string &uri_string);
 
-        Subject newSubjectUri(std::string subject_value);
+        Subject newSubjectUri(const std::string &subject_value);
 
-        Subject newSubjectBlank(std::string subject_value);
+        Subject newSubjectBlank(const std::string &subject_value);
+
+        PredicatePtr newPredicate(std::string namespace_, const std::string &term);
 
     };
 

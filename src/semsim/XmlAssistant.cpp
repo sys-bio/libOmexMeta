@@ -3,12 +3,7 @@
 //
 
 #include "XmlAssistant.h"
-#include <utility>
-#include <libxml/parser.h>
-#include <libxml/tree.h>
-#include "SemSim.h"
 
-#include "SemsimUtils.h"
 
 semsim::XmlAssistant::XmlAssistant(std::string xml, std::string base, int metaid_num_digits) :
         xml_(std::move(xml)), metaid_base(std::move(base)), metaid_num_digits_(metaid_num_digits) {

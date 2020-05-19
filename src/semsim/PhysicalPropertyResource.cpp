@@ -3,9 +3,7 @@
 //
 
 #include "PhysicalPropertyResource.h"
-#include "Triple.h"
-#include "Triples.h"
-#include <regex>
+
 
 namespace semsim {
 

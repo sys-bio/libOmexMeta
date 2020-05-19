@@ -11,6 +11,14 @@
 #include <vector>
 #include "Triples.h"
 #include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <utility>
+#include "librdf.h"
+#include "Error.h"
+#include "Error.h"
+#include "SemsimUtils.h"
 
 namespace semsim {
 

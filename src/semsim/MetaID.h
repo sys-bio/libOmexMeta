@@ -7,6 +7,9 @@
 
 #include <string>
 #include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include <sstream>
+#include <utility>
+#include <iostream>
 
 namespace semsim {
     class MetaID {

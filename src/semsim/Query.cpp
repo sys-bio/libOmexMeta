@@ -3,14 +3,7 @@
 //
 
 #include "Query.h"
-#include <string>
-#include <sstream>
-#include <iostream>
-#include <utility>
-#include "librdf.h"
-#include "Error.h"
-#include "Error.h"
-#include "SemsimUtils.h"
+
 
 // todo: Is laqrs a valid query language?
 

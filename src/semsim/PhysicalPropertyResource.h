@@ -11,6 +11,9 @@
 #include "Triple.h"
 #include "Triples.h"
 #include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include "Triple.h"
+#include "Triples.h"
+#include <regex>
 
 namespace semsim {
     class PhysicalPropertyResource : public Resource {

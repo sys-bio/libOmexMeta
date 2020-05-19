@@ -10,6 +10,13 @@
 #include <vector>
 #include "unordered_map"
 
+#include <utility>
+#include <stdexcept>
+#include <algorithm>
+#include <sstream>
+#include <unordered_map>
+
+
 namespace semsim {
     class Reader {
         LibrdfWorld world_;
@@ -17,7 +24,7 @@ namespace semsim {
         std::string format_;
         LibrdfModel model_;
         librdf_parser *parser_;
-        librdf_uri* base_uri_;
+        librdf_uri *base_uri_;
 
         // create a parser object
         librdf_parser *makeParser(const std::string& format = "guess");

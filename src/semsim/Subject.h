@@ -9,8 +9,11 @@
 #include "RDFNode.h"
 #include <vector>
 
+#include <utility>
+#include "semsim/Error.h"
 
 namespace semsim {
+
     class Subject {
     private:
         RDFNodePtr rdf_node_ptr_;
@@ -24,12 +27,6 @@ namespace semsim {
 
         explicit Subject(const RDFNode &node);
 
-//        Subject(LibrdfWorld world, const RDFBlankNode &node);
-//
-//        Subject(LibrdfWorld world, const RDFURINode &node);
-//
-//        Subject(LibrdfWorld world, LibrdfNode node);
-//
         ~Subject();
 
         LibrdfNode getNode() const;
