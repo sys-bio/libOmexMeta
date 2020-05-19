@@ -34,6 +34,7 @@ namespace semsim {
 
         explicit RDFLiteralNode(const LibrdfNode &node);
 
+        std::string str() override;
     };
 
     class RDFTypedLiteralNode : public RDFNode {
@@ -44,6 +45,7 @@ namespace semsim {
 
         std::string getType();
 
+        std::string str() override;
     };
 
     class RDFURINode : public RDFNode {
@@ -51,6 +53,7 @@ namespace semsim {
 
         explicit RDFURINode(LibrdfNode node);
 
+        std::string str() override;
     };
 
     class RDFBlankNode : public RDFNode {
@@ -58,6 +61,7 @@ namespace semsim {
 
         explicit RDFBlankNode(LibrdfNode node);
 
+        std::string str() override;
     };
 
     typedef std::shared_ptr<RDFNode> RDFNodePtr;
