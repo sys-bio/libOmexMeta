@@ -19,10 +19,9 @@
 namespace semsim {
     class LibrdfModel {
         std::shared_ptr<librdf_model *> model_;
-        std::string options_;
 
     public:
-        explicit LibrdfModel(librdf_model *model, std::string options = "");
+        explicit LibrdfModel(librdf_model *model);
 
         ~LibrdfModel();
 

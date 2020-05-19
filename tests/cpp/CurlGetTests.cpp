@@ -48,9 +48,13 @@ public:
 
     static void downloadAndCheckSize(std::string url, std::string filename, int expected_size) {
         //38kb
+        HERE();
         semsim::CurlGet::download(url, filename);
+        HERE();
         int size = getFileSize(filename);
+        HERE();
         ASSERT_EQ(expected_size, size);
+        HERE();
         removeFile(filename);
     }
 };

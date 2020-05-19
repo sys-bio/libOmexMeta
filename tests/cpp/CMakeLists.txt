@@ -1,4 +1,15 @@
-add_executable(semsim-tests
+option(REDLAND_WRAPPER_TESTS "Whether to incluDe the Redland API wrapper tests" ON)
+
+set(REDLAND_WRAPPER_TEST_SOURCES
+        RedlandAPITests/LibrdfWorldTests.cpp
+        RedlandAPITests/RaptorWorldTests.cpp
+        RedlandAPITests/LibrdfModelTests.cpp
+        RedlandAPITests/LibrdfNodeTests.cpp
+        RedlandAPITests/LibrdfStorageTests.cpp
+        RedlandAPITests/RaptorUriTests.cpp
+        )
+
+set(TEST_SOURCES
         SemsimUtilsTests.cpp
         SBMLFactory.h
         RDFNodeTests.cpp
@@ -25,13 +36,13 @@ add_executable(semsim-tests
         TripplesTests.cpp
         RDFReadAndWriteTests.cpp
         CAPITests.cpp
-        RedlandAPITests/LibrdfWorldTests.cpp
-        RedlandAPITests/RaptorWorldTests.cpp
-        RedlandAPITests/LibrdfModelTests.cpp
-        RedlandAPITests/LibrdfNodeTests.cpp
-        RedlandAPITests/LibrdfStorageTests.cpp
-        RedlandAPITests/RaptorUriTests.cpp
         )
+
+if (REDLAND_WRAPPER_TESTS)
+    set(TEST_SOURCES ${TEST_SOURCES} ${REDLAND_WRAPPER_TEST_SOURCES})
+endif ()
+
+add_executable(semsim-tests ${TEST_SOURCES})
 
 add_dependencies(semsim-tests semsim-static)
 

@@ -33,7 +33,6 @@ TEST_F(LibrdfStorageTests, TestCopyAssignment) {
     semsim::LibrdfStorage storage2 = world.newStorage("memory", "semsim_store2");
     storage2 = storage1;
     ASSERT_EQ(storage1, storage2);
-    ASSERT_STREQ("semsim_store1", storage2.getName().c_str());
 }
 
 
