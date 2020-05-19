@@ -76,7 +76,33 @@ TEST_F(LibrdfNodeTests, TestTypedLiteral1) {
     semsim::LibrdfNode literal = world_.newNodeTypedLiteral("TypedLiteral");
     unsigned char *actual = librdf_node_get_literal_value(*literal.getNode());
     ASSERT_STREQ("TypedLiteral", (const char *) actual);
-    free(actual);
+}
+
+TEST_F(LibrdfNodeTests, TestBlank) {
+    // http://www.w3.org/2001/XMLSchema#string
+    semsim::LibrdfNode literal = world_.newNodeBlank("Blanky");
+    unsigned char *actual = librdf_node_get_blank_identifier(*literal.getNode());
+    ASSERT_STREQ("Blanky", (const char *) actual);
+}
+
+TEST_F(LibrdfNodeTests, TestNodeUri) {
+    std::string expected = "https://notarealaddress.com";
+    semsim::LibrdfUri uri = world_.newUri(expected);
+    semsim::LibrdfNode literal = world_.newNodeUri(uri);
+    unsigned char *actual = librdf_uri_to_string(
+            librdf_node_get_uri(*literal.getNode())
+    );
+    ASSERT_STREQ(expected.c_str(), (const char *) actual);
+}
+
+
+TEST_F(LibrdfNodeTests, TestNodeUriStr) {
+    std::string expected = "https://notarealaddress.com";
+    semsim::LibrdfNode literal = world_.newNodeUriString(expected);
+    unsigned char *actual = librdf_uri_to_string(
+            librdf_node_get_uri(*literal.getNode())
+    );
+    ASSERT_STREQ(expected.c_str(), (const char *) actual);
 }
 
 

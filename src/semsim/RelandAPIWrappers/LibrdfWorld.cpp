@@ -120,7 +120,7 @@ namespace semsim {
             data_type_url_tmp = prefix + datatypeUri;
         }
 
-        LibrdfUri uri = getRaptor().newRaptorUri(data_type_url_tmp);
+        LibrdfUri uri = newUri(data_type_url_tmp);
         librdf_node *node = librdf_new_node_from_typed_literal(
                 *world_, (const unsigned char *) literal.c_str(), xml_language, *uri.getRaptorUri());
         return LibrdfNode(node);
@@ -132,7 +132,7 @@ namespace semsim {
     }
 
 
-    LibrdfUri LibrdfWorld::newUri(std::string uri_string) {
+    LibrdfUri LibrdfWorld::newUri(const std::string &uri_string) {
         raptor_uri *uri = librdf_new_uri(*world_, (const unsigned char *) uri_string.c_str());
         return LibrdfUri(uri);
     }
