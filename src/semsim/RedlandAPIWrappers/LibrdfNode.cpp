@@ -114,7 +114,8 @@ namespace semsim {
         if (value.empty()) {
             throw NullPointerException(err.str());
         }
-        return value;
+        std::string output = value;
+        return output;
     }
 
     raptor_term_type LibrdfNode::getType() {
