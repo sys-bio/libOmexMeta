@@ -31,7 +31,7 @@ namespace semsim {
         std::string force_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalForce",
                                                                      std::vector<std::string>());
 
-        Subject force_metaid_subject(world_, RDFURINode(world_, force_metaid));
+        Subject force_metaid_subject(world_, RDFURINode(world_.newNodeUriString(force_metaid)));
 
         Triples triples = physical_property_.toTriples(about.str(), force_metaid);
 
@@ -49,7 +49,7 @@ namespace semsim {
     }
 
     PhysicalForce &PhysicalForce::setAbout(std::string metaid) {
-        about = Subject(world_, RDFURINode(world_, metaid));
+        about = Subject(world_, RDFURINode(world_.newNodeUriString(metaid)));
         return (*this);
     }
 
@@ -59,7 +59,7 @@ namespace semsim {
     }
 
     PhysicalForce &PhysicalForce::setPhysicalProperty(const std::string &physicalProperty) {
-        physical_property_ = PhysicalPropertyResource(world_, RDFURINode(world_, physicalProperty));
+        physical_property_ = PhysicalPropertyResource(world_, RDFURINode(world_.newNodeUriString(physicalProperty)));
         return (*this);
     }
 

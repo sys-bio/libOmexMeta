@@ -23,7 +23,7 @@ semsim::PhysicalEntity::PhysicalEntity(LibrdfWorld world, LibrdfModel model) : P
 
 
 semsim::PhysicalEntity &semsim::PhysicalEntity::setAbout(std::string metaid) {
-    this->about = Subject(world_, RDFURINode(world_, std::move(metaid)));
+    this->about = Subject(world_, RDFURINode(world_.newNodeUriString(std::move(metaid))));
     return *this;
 
 }
@@ -34,7 +34,7 @@ semsim::PhysicalEntity &semsim::PhysicalEntity::setPhysicalProperty(PhysicalProp
 }
 
 semsim::PhysicalEntity &semsim::PhysicalEntity::setPhysicalProperty(const std::string &physicalProperty) {
-    physical_property_ = PhysicalPropertyResource(world_, RDFURINode(world_, physicalProperty));
+    physical_property_ = PhysicalPropertyResource(world_, RDFURINode(world_.newNodeUriString(physicalProperty)));
     return *this;
 }
 
@@ -42,13 +42,13 @@ semsim::PhysicalEntity &semsim::PhysicalEntity::setPhysicalProperty(const std::s
 semsim::PhysicalEntity &semsim::PhysicalEntity::setIdentity(std::string resource) {
     // todo implement second argument which defaults to RDFUriNode
     //  and controls whether we use literal/blank/uri node
-    identity_resource_ = Resource(world_, RDFURINode(world_, std::move(resource)));
+    identity_resource_ = Resource(world_, RDFURINode(world_.newNodeUriString(std::move(resource))));
     return *this;
 }
 
 semsim::PhysicalEntity &semsim::PhysicalEntity::addLocation(std::string where) {
     location_resources.push_back(
-            Resource(world_, RDFURINode(world_, where))
+            Resource(world_, RDFURINode(world_.newNodeUriString(where)))
     );
     return *this;
 }
@@ -62,20 +62,20 @@ const semsim::Resources &semsim::PhysicalEntity::getLocationResources() const {
 }
 
 semsim::Triples semsim::PhysicalEntity::toTriples() const {
-    if (!getAbout().isSet()) {
-        throw AnnotationBuilderException(
-                "PhysicalEntity::toTriples(): Cannot create"
-                " triples because the \"about\" information is not set. "
-                "Use the setAbout() method."
-        );
-    }
-    if (!getPhysicalProperty().isSet()) {
-        throw AnnotationBuilderException(
-                "PhysicalEntity::toTriples(): Cannot create"
-                " triples because the \"physical_property\" information is not set. "
-                "Use the setPhysicalProperty() method."
-        );
-    }
+//    if (!getAbout().isSet()) {
+//        throw AnnotationBuilderException(
+//                "PhysicalEntity::toTriples(): Cannot create"
+//                " triples because the \"about\" information is not set. "
+//                "Use the setAbout() method."
+//        );
+//    }
+//    if (!getPhysicalProperty().isSet()) {
+//        throw AnnotationBuilderException(
+//                "PhysicalEntity::toTriples(): Cannot create"
+//                " triples because the \"physical_property\" information is not set. "
+//                "Use the setPhysicalProperty() method."
+//        );
+//    }
     if (getLocationResources().empty()) {
         throw AnnotationBuilderException(
                 "PhysicalEntity::toTriples(): cannot create "
@@ -98,13 +98,14 @@ semsim::Triples semsim::PhysicalEntity::toTriples() const {
     }
     // no exclusions needed here - we only generate 1 process metaid before commiting the triples
     // to the model.
-    std::string property_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalEntity", std::vector<std::string>());
+    std::string property_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalEntity",
+                                                                    std::vector<std::string>());
     Triples triples = physical_property_.toTriples(about.str(), property_metaid);
 
     // what part of physical entity triple
     triples.emplace_back(
             world_,
-            Subject(world_, RDFURINode(world_, property_metaid)),
+            Subject(world_, RDFURINode(world_.newNodeUriString(property_metaid))),
             std::make_shared<Predicate>(BiomodelsBiologyQualifier(world_, "is")),
             getIdentityResource()
     );
@@ -113,7 +114,7 @@ semsim::Triples semsim::PhysicalEntity::toTriples() const {
     for (auto &locationResource : getLocationResources()) {
         triples.emplace_back(
                 world_,
-                Subject(world_, RDFURINode(world_, property_metaid)),
+                Subject(world_, RDFURINode(world_.newNodeUriString(property_metaid))),
                 std::make_shared<Predicate>(BiomodelsBiologyQualifier(world_, "isPartOf")),
                 locationResource
         );

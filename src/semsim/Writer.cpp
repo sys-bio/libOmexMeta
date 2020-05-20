@@ -30,11 +30,11 @@ void semsim::Writer::init(LibrdfWorld world, LibrdfModel model,
         }
         throw std::invalid_argument(os.str());
     }
-    serializer = librdf_new_serializer(world, this->format_.c_str(), nullptr, nullptr);
+    serializer = librdf_new_serializer(*world.getWorld(), this->format_.c_str(), nullptr, nullptr);
     if (!serializer) {
         throw NullPointerException("Writer::init: serializer");
     }
-    this->raptor_world_ptr_ = librdf_world_get_raptor(world);
+    this->raptor_world_ptr_ = world.getRaptor();
 
     if (!raptor_world_ptr_) {
         throw NullPointerException("Writer::init: raptor_world_ptr");
@@ -69,9 +69,8 @@ semsim::Writer::~Writer() {
 }
 
 void semsim::Writer::registerNamespace(const std::string &ns, const std::string &prefix) {
-    LibrdfUri ns_uri = librdf_new_uri(world_, (const unsigned char *) ns.c_str());
-    librdf_serializer_set_namespace(serializer, ns_uri, (const char *) prefix.c_str());
-    librdf_free_uri(ns_uri);
+    LibrdfUri ns_uri = world_.newUri(ns);
+    librdf_serializer_set_namespace(serializer, *ns_uri.getUri(), (const char *) prefix.c_str());
 }
 
 void semsim::Writer::registerNamespace(const std::unordered_map<std::string, std::string> &ns_map) {
@@ -82,35 +81,29 @@ void semsim::Writer::registerNamespace(const std::unordered_map<std::string, std
 
 void semsim::Writer::setOption(const std::string &option, const std::string &value) {
     std::string feature_uri_base = "http://feature.librdf.org/raptor-";
-    raptor_uri *uri = raptor_new_uri(raptor_world_ptr_, (const unsigned char *) (feature_uri_base + option).c_str());
-    LibrdfNode node = librdf_new_node_from_literal(world_, (const unsigned char *) value.c_str(), nullptr, 0);
-    librdf_serializer_set_feature(serializer, uri, node);
-    librdf_free_uri(uri);
-    librdf_free_node(node);
+    LibrdfUri uri = world_.newUri(feature_uri_base + option);
+    LibrdfNode node = world_.newNodeLiteral(value);
+    librdf_serializer_set_feature(serializer, *uri.getUri(), *node.getNode());
 }
 
 std::string semsim::Writer::toString() {
     void *string = nullptr;
-    raptor_iostream *iostr = raptor_new_iostream_to_string(raptor_world_ptr_, (void **) &string, nullptr, malloc);
+    raptor_iostream *iostr = raptor_new_iostream_to_string(
+            *raptor_world_ptr_.getRaptorWorld(), (void **) &string, nullptr, malloc);
     if (!iostr)
         throw NullPointerException("Writer::toString(): raptor_iostream");
 
-    auto base_uri_cstr = (unsigned char *) base_uri_.c_str();
-    LibrdfUri uri = librdf_new_uri(world_, base_uri_cstr);
-    if (!uri) {
-        throw NullPointerException("Writer::toString: uri");
-    }
+    LibrdfUri uri = world_.newUri(base_uri_);
     this->validateBaseUri();
 
-    int failure = librdf_serializer_serialize_model_to_iostream(serializer, uri, model_, iostr);
+    int failure = librdf_serializer_serialize_model_to_iostream(
+            serializer, *uri.getUri(), *model_.getModel(), iostr);
     if (failure) { // i.e. if non-0
         throw std::logic_error("Writer::toString(): Failed to serialize model.");
     }
     std::string output_string((const char *) string);
     free(string);
-    librdf_free_uri(uri);
-    delete base_uri_cstr;
-
+    raptor_free_iostream(iostr);
     return output_string;
 }
 
@@ -125,11 +118,10 @@ void semsim::Writer::setFormat(const std::string &format) {
 void semsim::Writer::validateBaseUri() {
     std::regex file_regex("^file://");
     std::smatch m;
-    LibrdfUri uri = librdf_new_uri(world_, reinterpret_cast<const unsigned char *>(base_uri_.c_str()));
-    std::string uri_str = (const char *) librdf_uri_as_string(uri);
-    if (uri_str.rfind("file://", 0) != 0) {
-        uri_str = "file://" + uri_str;
-        base_uri_ = uri_str;//librdf_new_uri(world_, (const unsigned char *) uri_str.c_str());
+    LibrdfUri uri = world_.newUri(base_uri_);
+    if (uri.str().rfind("file://", 0) != 0) {
+        uri.str() = "file://" + uri.str();
+        base_uri_ = uri.str();
     }
 }
 
@@ -138,21 +130,21 @@ semsim::Writer::Writer() = default;
 
 semsim::TripleWriter::TripleWriter(semsim::Triple triple, const std::string &base_uri, std::string format) {
     // when creating a writer from a Triple, we just create a locally scoped rdf model and storage
-    LibrdfWorld world = librdf_new_world();
-    LibrdfStorage storage = librdf_new_storage(world, "memory", "triple_store", nullptr);
+    LibrdfWorld world;
+    LibrdfStorage storage = world.newStorage("memory", "triple_store");
     if (!storage) {
         throw LibRDFException("Writer::Writer: storage not created");
     }
-    LibrdfModel model = librdf_new_model(world, storage, nullptr);
+    LibrdfModel model = world.newModel(storage);
     if (!model) {
         throw LibRDFException("Writer::Writer: model not created");
     }
 
     // add statements to the model
-    librdf_model_add_statement(model, triple.toStatement());
+    model.addStatement(triple.toStatement());
 
     // initialize the writer
-    init(world, model, base_uri, format);
+    init(world, model, base_uri, std::move(format));
 
     // determine whether we recognize the namespace and add it if we do.
     std::string ns = triple.getPredicatePtr()->getNamespace();
@@ -163,18 +155,19 @@ semsim::TripleWriter::TripleWriter(semsim::Triple triple, const std::string &bas
 
 semsim::TripleWriter::TripleWriter(semsim::Triples triples, const std::string &base_uri, std::string format) {
     // when creating a writer from a Triple, we just create a locally scoped rdf model and storage
-    LibrdfWorld world = librdf_new_world();
-    storage_ = librdf_new_storage(world, "memory", "triples_store", nullptr);
-    if (!storage_) {
+    LibrdfWorld world;
+    LibrdfStorage storage = world.newStorage("memory", "triple_store");
+    if (!storage) {
         throw LibRDFException("Writer::Writer: storage not created");
     }
-    LibrdfModel model = librdf_new_model(world, storage_, nullptr);
+    LibrdfModel model = world.newModel(storage);
     if (!model) {
         throw LibRDFException("Writer::Writer: model not created");
     }
+
     init(world, model, base_uri, std::move(format));
     for (auto &triple : triples) {
-        librdf_model_add_statement(model, triple.toStatement());
+        model.addStatement(triple.toStatement());
         std::string ns = triple.getPredicatePtr()->getNamespace();
         if (triple.getPredicatePtr()->namespaceKnown(ns)) {
             registerNamespace(ns, Predicate::prefix_map()[triple.getPredicatePtr()->getNamespace()]);
@@ -182,12 +175,6 @@ semsim::TripleWriter::TripleWriter(semsim::Triples triples, const std::string &b
     }
 }
 
-semsim::TripleWriter::~TripleWriter() {
-    librdf_free_storage(storage_);
-    librdf_free_model(model_);
-    librdf_free_world(world_);
-
-}
 
 
 

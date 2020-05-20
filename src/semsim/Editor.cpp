@@ -59,10 +59,9 @@ void semsim::Editor::extractNamespacesFromTriplesVector(Triples triples) {
 void semsim::Editor::toRDF() {
     for (auto &annot : triple_list_) {
         for (auto &triple : annot) {
-            librdf_statement *stmt = triple.toStatement();
+            LibrdfStatement stmt = triple.toStatement();
             //todo add get namespace to triple
-            librdf_model_add_statement(model_, stmt);
-            librdf_free_statement(stmt);
+            librdf_model_add_statement(*model_.getModel(), *stmt.getStatement());
         }
     }
 }
@@ -116,18 +115,18 @@ void semsim::Editor::addCompositeAnnotation(semsim::PhysicalPhenomenonPtr phenom
     Triples triples = phenomenonPtr->toTriples();
     extractNamespacesFromTriplesVector(triples);
     for (auto &triple : triples) {
-        librdf_model_add_statement(model_, triple.toStatement());
+        model_.addStatement(triple.toStatement());
     }
 }
 
-LibrdfWorld semsim::Editor::getWorld() const {
+semsim::LibrdfWorld semsim::Editor::getWorld() const {
     if (!world_) {
         throw NullPointerException("semsim::Editor::getWorld(): world_");
     }
     return world_;
 }
 
-LibrdfModel semsim::Editor::getModel() const {
+semsim::LibrdfModel semsim::Editor::getModel() const {
     if (!model_) {
         throw NullPointerException("semsim::Editor::getModel(): model_");
 

@@ -48,7 +48,7 @@ namespace semsim {
 
         Resource getResource() const;
 
-        librdf_statement *toStatement();
+        LibrdfStatement toStatement();
 
         static Triple fromStatement(LibrdfWorld world, LibrdfStatement statement);
 

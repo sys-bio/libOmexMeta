@@ -29,7 +29,7 @@ TEST_F(SubjectTests, TestDefaultConstructor) {
 }
 
 TEST_F(SubjectTests, TestSubjectFromUri) {
-    semsim::Subject subject(world_, "meta754");;
+    semsim::Subject subject(world_, "meta754");
     std::string expected = subject.str();
     ASSERT_STREQ(expected.c_str(), "meta754");
 }

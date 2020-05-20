@@ -37,13 +37,14 @@ namespace semsim {
         return resource_;
     }
 
-    librdf_statement *Triple::toStatement() {
-        return librdf_new_statement_from_nodes(
+    LibrdfStatement Triple::toStatement() {
+        librdf_statement *stmt = librdf_new_statement_from_nodes(
                 *world_.getWorld(),
                 *subject_.getNode().getNode(),
                 *predicate_ptr_->getNode().getNode(),
                 *resource_.getNode().getNode()
         );
+        return LibrdfStatement(stmt);
     }
 
     Triple Triple::fromStatement(LibrdfWorld world, LibrdfStatement statement) {

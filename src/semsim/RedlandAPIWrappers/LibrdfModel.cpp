@@ -64,5 +64,11 @@ namespace semsim {
         return !model_;
     }
 
+    void LibrdfModel::addStatement(const LibrdfStatement &statement) {
+        librdf_model_add_statement(*getModel(), *statement.getStatement());
+    }
+
+    // todo add wrapper around librdf_model_add_statement
+
 }
 

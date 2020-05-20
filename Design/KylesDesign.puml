@@ -369,7 +369,7 @@ namespace semsim {
 		#url_ : raptor_uri*
 		#raptor_world_ : raptor_world*
 		#dg_ : rasqal_data_graph*
-		#query_ : rasqal_query*
+		#serializer_ : rasqal_query*
 		#rasqal_world_ : rasqal_world*
 		#rdf_ : std::string
 		#uri_string_ : unsigned char*
