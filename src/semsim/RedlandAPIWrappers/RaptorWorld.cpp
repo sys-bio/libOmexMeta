@@ -10,11 +10,12 @@ namespace semsim {
         raptor_world_ = std::make_shared<raptor_world *>(world);
     }
 
-    RaptorWorld::~RaptorWorld() {
-        if (raptor_world_.use_count() == 1) {
-            raptor_free_world(*raptor_world_);
-        }
-    }
+    RaptorWorld::~RaptorWorld() = default;
+//    RaptorWorld::~RaptorWorld() {
+//        if (raptor_world_.use_count() == 1) {
+//            raptor_free_world(*raptor_world_);
+//        }
+//    }
 
     RaptorWorld::RaptorWorld(const RaptorWorld &raptorWorld) {
         if (raptor_world_) {

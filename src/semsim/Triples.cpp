@@ -1,9 +1,7 @@
 //
 // Created by Ciaran on 4/29/2020.
 //
-#include "Error.h"
 #include "Triples.h"
-#include "Writer.h"
 
 namespace semsim {
 
@@ -68,6 +66,11 @@ namespace semsim {
     }
 
     std::string Triples::str(std::string format, std::string base) {
+//        LibrdfWorld world;
+//
+//        LibrdfStorage storage = world.newStorage("memory", "temp_storage");
+//        LibrdfModel model = world.newModel(storage);
+//        LibrdfSerializer serializer(librdf_new_serializer())
         return TripleWriter(*this, base, format).toString();
     }
 

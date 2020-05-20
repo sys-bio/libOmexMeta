@@ -4,6 +4,7 @@
 
 #include "LibrdfNode.h"
 
+
 /*
  * todo put name of exception in all error messages.
  */
@@ -58,6 +59,14 @@ namespace semsim {
         return node_;
     }
 
+    bool LibrdfNode::operator==(const LibrdfNode &rhs) const {
+        return *node_ == *rhs.node_;
+    }
+
+    bool LibrdfNode::operator!=(const LibrdfNode &rhs) const {
+        return !(rhs == *this);
+    }
+
     bool LibrdfNode::operator!() const {
         return !getNode();
     }
@@ -67,25 +76,43 @@ namespace semsim {
      * regardless of its type.
      */
     std::string LibrdfNode::str() {
+        HERE();
         if (!*node_) {
             throw NullPointerException("LibrdfNode::str(): NullPointerException: node_");
         }
+        HERE();
         std::string value;
+        HERE();
+        std::ostringstream err;
+        HERE();
+        err << "NullPointerException: LibrdfNode::str():";
+        HERE();
         switch ((*node_)->type) {
             case RAPTOR_TERM_TYPE_URI: {
+                HERE();
                 value = (const char *) librdf_uri_as_string(librdf_node_get_uri(*node_));
+                HERE();
+                err << "RAPTOR_TERM_TYPE_URI: ";
+                HERE();
                 break;
             }
             case RAPTOR_TERM_TYPE_LITERAL: {
+                err << "RAPTOR_TERM_TYPE_LITERAL: ";
                 value = (const char *) librdf_node_get_literal_value(*node_);
                 break;
             }
             case RAPTOR_TERM_TYPE_BLANK: {
+                err << "RAPTOR_TERM_TYPE_BLANK: ";
                 value = (const char *) librdf_node_get_blank_identifier(*node_);
                 break;
             }
             default:
-                throw LibRDFException("Unrecognized term type");
+                throw LibRDFException("LibRDFException: Librdf::Str() : Unrecognized term type");
+        }
+        err << "value is nullptr" << std::endl;
+        std::cout << "Value is: " << value << std::endl;
+        if (value.empty()) {
+            throw NullPointerException(err.str());
         }
         return value;
     }

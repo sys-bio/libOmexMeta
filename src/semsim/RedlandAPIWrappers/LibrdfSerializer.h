@@ -18,7 +18,7 @@ namespace semsim {
 
         LibrdfSerializer() = default;
 
-        explicit LibrdfSerializer(librdf_serializer *query_results);
+        explicit LibrdfSerializer(librdf_serializer *serializer);
 
         ~LibrdfSerializer();
 

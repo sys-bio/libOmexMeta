@@ -16,6 +16,7 @@
 #include "LibrdfModel.h"
 #include "LibrdfNode.h"
 #include "LibrdfUri.h"
+#include "LibrdfSerializer.h"
 
 
 //#include "semsim/SemsimUtils.h"
@@ -52,9 +53,9 @@ namespace semsim {
         RaptorWorld getRaptor();
 
         LibrdfStorage newStorage(const std::string &storage_name, const std::string &name,
-                                 const std::string &options_string = std::string());
+                                 const char *options_string = nullptr);
 
-        LibrdfModel newModel(const LibrdfStorage &storage, const std::string &options_string = std::string());
+        LibrdfModel newModel(const LibrdfStorage &storage, const char *options_string = nullptr);
 
         LibrdfNode newNodeUriString(const std::string &string) const;
 
@@ -71,6 +72,10 @@ namespace semsim {
                 const char *xml_language = nullptr) const;
 
         LibrdfUri newUri(std::string uri_string) const;
+
+        LibrdfStatement newStatementFromNodes(LibrdfNode subject, LibrdfNode predicate, LibrdfNode object);
+
+//        LibrdfSerializer newSerializer(std::string name);
 
 //        Subject newSubjectUri(const std::string &subject_value);
 //

@@ -69,7 +69,7 @@ namespace semsim {
     }
 
     LibrdfStorage LibrdfWorld::newStorage(const std::string &storage_name, const std::string &name,
-                                          const std::string &options_string) {
+                                          const char *options_string) {
 
         //todo fill these in and write verification statements for them.
         std::vector<std::string> valid_storage_names;
@@ -77,13 +77,13 @@ namespace semsim {
         std::vector<std::string> valid_options;
 
         librdf_storage *storage = librdf_new_storage(
-                *world_, storage_name.c_str(), name.c_str(), options_string.c_str());
+                *world_, storage_name.c_str(), name.c_str(), options_string);
         LibrdfStorage librdfStorage(storage);
         return librdfStorage;
     }
 
-    LibrdfModel LibrdfWorld::newModel(const LibrdfStorage &storage, const std::string &options_string) {
-        librdf_model *model = librdf_new_model(*world_, *storage.getStorage(), options_string.c_str());
+    LibrdfModel LibrdfWorld::newModel(const LibrdfStorage &storage, const char *options_string) {
+        librdf_model *model = librdf_new_model(*world_, *storage.getStorage(), options_string);
         LibrdfModel librdfModel(model);
         return librdfModel;
     }
@@ -151,6 +151,12 @@ namespace semsim {
 
     bool LibrdfWorld::operator!() const {
         return !getWorld();
+    }
+
+    LibrdfStatement LibrdfWorld::newStatementFromNodes(LibrdfNode subject, LibrdfNode predicate, LibrdfNode object) {
+        return LibrdfStatement(librdf_new_statement_from_nodes(
+                *world_, *subject.getNode(), *predicate.getNode(), *object.getNode())
+        );
     }
 
 //    Subject LibrdfWorld::newSubjectUri(const std::string &subject_value) {

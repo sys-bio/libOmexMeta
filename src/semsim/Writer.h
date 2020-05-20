@@ -5,8 +5,6 @@
 #ifndef LIBSEMSIM_WRITER_H
 #define LIBSEMSIM_WRITER_H
 
-#include "Triple.h"
-#include "Triples.h"
 #include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
 #include "Error.h"
 
@@ -21,15 +19,11 @@
 
 namespace semsim {
 
-    class Triple;
-
-    class Triples;
-
     class Writer {
         RaptorWorld raptor_world_ptr_;
         std::string format_;
         std::string base_uri_;
-        librdf_serializer *serializer;
+        LibrdfSerializer serializer;
 
         std::vector<std::string> valid_writer_names = {
                 "ntriples",
@@ -81,22 +75,6 @@ namespace semsim {
 
     };
 
-    class TripleWriter : public Writer {
-        LibrdfStorage storage_;
-    public:
-        using Writer::init;
-
-        explicit TripleWriter(Triple triple,
-                              const std::string &base_uri = "file://annotation.rdf",
-                              std::string format = "rdfxml-abbrev");
-
-        explicit TripleWriter(Triples triples,
-                              const std::string &base_uri = "file://annotation.rdf",
-                              std::string format = "rdfxml-abbrev");
-
-        ~TripleWriter();
-
-    };
 
 }
 

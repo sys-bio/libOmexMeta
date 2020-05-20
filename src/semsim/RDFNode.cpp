@@ -13,7 +13,7 @@ namespace semsim {
  * RDFNode implementation
  */
     RDFNode::RDFNode(LibrdfNode node)
-            : node_(std::move(node)) {
+            : node_(node) {
     }
 
     const LibrdfNode &RDFNode::getNode() const {
@@ -63,10 +63,7 @@ namespace semsim {
     }
 
     std::string RDFLiteralNode::str() {
-        unsigned char *val = librdf_node_get_literal_value(*node_.getNode());
-        std::string str = (const char *) val;
-        free(val);
-        return str;
+        return node_.str();
     }
 
 
@@ -87,10 +84,7 @@ namespace semsim {
     }
 
     std::string RDFTypedLiteralNode::str() {
-        unsigned char *val = librdf_node_get_literal_value(*node_.getNode());
-        std::string str = (const char *) val;
-        free(val);
-        return str;
+        return node_.str();
     }
 
 /***************************************************
@@ -98,15 +92,11 @@ namespace semsim {
  */
 
     RDFURINode::RDFURINode(LibrdfNode node)
-            : RDFNode(std::move(node)) {
+            : RDFNode(node) {
     }
 
     std::string RDFURINode::str() {
-        librdf_uri *uri = librdf_node_get_uri(*node_.getNode());
-        unsigned char *cstr = librdf_uri_to_string(uri);
-        std::string str = (const char *) cstr;
-        free(cstr);
-        return str;
+        return node_.str();
     }
 
 
@@ -114,14 +104,11 @@ namespace semsim {
  * RDFBlankNode implementation
  */
     RDFBlankNode::RDFBlankNode(LibrdfNode node)
-            : RDFNode(std::move(node)) {
+            : RDFNode(node) {
     }
 
     std::string RDFBlankNode::str() {
-        unsigned char *val = librdf_node_get_blank_identifier(*node_.getNode());
-        std::string str = (const char *) val;
-        free(val);
-        return str;
+        return node_.str();
     }
 
 }

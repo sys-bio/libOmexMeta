@@ -28,7 +28,9 @@ namespace semsim {
 
     LibrdfModel &LibrdfModel::operator=(const LibrdfModel &librdfModel) {
         if (this != &librdfModel) {
-            librdf_free_model(*this->model_);
+            if (this->model_) {
+                librdf_free_model(*this->model_);
+            }
             model_ = librdfModel.model_;
         }
         return *this;
@@ -36,8 +38,9 @@ namespace semsim {
 
     LibrdfModel &LibrdfModel::operator=(LibrdfModel &&librdfModel) noexcept {
         if (this != &librdfModel) {
-            std::cout << "move assignment" << std::endl;
-            librdf_free_model(*this->model_); // free current model before taking theirs
+            if (this->model_) {
+                librdf_free_model(*this->model_); // free current model before taking theirs
+            }
             model_ = std::move(librdfModel.model_);
         }
         return *this;

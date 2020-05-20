@@ -63,4 +63,17 @@ namespace semsim {
         return !statement_;
     }
 
+    LibrdfNode LibrdfStatement::getSubjectNode() {
+        return LibrdfNode(librdf_statement_get_subject(*statement_));
+    }
+
+    LibrdfNode LibrdfStatement::getPredicateNode() {
+        return LibrdfNode(librdf_statement_get_predicate(*statement_));
+    }
+
+    LibrdfNode LibrdfStatement::getObjectNode() {
+        return LibrdfNode(librdf_statement_get_object(*statement_));
+    }
+
+
 }

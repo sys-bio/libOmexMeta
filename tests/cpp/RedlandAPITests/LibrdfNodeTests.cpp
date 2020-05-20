@@ -89,21 +89,20 @@ TEST_F(LibrdfNodeTests, TestNodeUri) {
     std::string expected = "https://notarealaddress.com";
     semsim::LibrdfUri uri = world_.newUri(expected);
     semsim::LibrdfNode literal = world_.newNodeUri(uri);
-    unsigned char *actual = librdf_uri_to_string(
-            librdf_node_get_uri(*literal.getNode())
-    );
+    librdf_uri *uri_actual = librdf_node_get_uri(*literal.getNode());
+    unsigned char *actual = librdf_uri_to_string(uri_actual);
     ASSERT_STREQ(expected.c_str(), (const char *) actual);
+    free(actual);
 }
 
-
-TEST_F(LibrdfNodeTests, TestNodeUriStr) {
+TEST_F(LibrdfNodeTests, TestNodeUri2) {
     std::string expected = "https://notarealaddress.com";
-    semsim::LibrdfNode literal = world_.newNodeUriString(expected);
-    unsigned char *actual = librdf_uri_to_string(
-            librdf_node_get_uri(*literal.getNode())
-    );
-    ASSERT_STREQ(expected.c_str(), (const char *) actual);
+    semsim::LibrdfUri uri = world_.newUri(expected);
+    semsim::LibrdfNode literal = world_.newNodeUri(uri);
+    std::string actual = literal.str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
+
 
 
 
