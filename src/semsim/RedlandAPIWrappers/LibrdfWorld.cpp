@@ -88,7 +88,7 @@ namespace semsim {
         return librdfModel;
     }
 
-    LibrdfNode LibrdfWorld::newNodeUriString(const std::string &string) const {
+    LibrdfNode LibrdfWorld::newNodeUriString(const std::string &string) {
 
         std::string identifier_dot_org = "https://identifiers.org/";
         std::regex identifiers_regex(identifier_dot_org);
@@ -108,7 +108,7 @@ namespace semsim {
         return LibrdfNode(node);
     }
 
-    LibrdfNode LibrdfWorld::newNodeUri(const LibrdfUri &raptorUri) const {
+    LibrdfNode LibrdfWorld::newNodeUri(const LibrdfUri &raptorUri) {
         librdf_node *node = librdf_new_node_from_uri(*world_, *raptorUri.getUri());
         return LibrdfNode(node);
     }
@@ -123,7 +123,7 @@ namespace semsim {
     LibrdfNode LibrdfWorld::newNodeTypedLiteral(
             const std::string &literal,
             const std::string &datatypeUri,
-            const char *xml_language) const {
+            const char *xml_language) {
         std::string prefix = "http://www.w3.org/2001/XMLSchema#";
         std::string data_type_url_tmp = std::string();
         if (datatypeUri.rfind(prefix, 0) == 0) {
@@ -144,7 +144,7 @@ namespace semsim {
     }
 
 
-    LibrdfUri LibrdfWorld::newUri(const std::string &uri_string) {
+    LibrdfUri LibrdfWorld::newUri(std::string uri_string) {
         raptor_uri *uri = librdf_new_uri(*world_, (const unsigned char *) uri_string.c_str());
         return LibrdfUri(uri);
     }
