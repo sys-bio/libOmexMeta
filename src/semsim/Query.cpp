@@ -68,7 +68,8 @@ namespace semsim {
     }
 
     std::string Query::getBindingValueByName(const std::string &name) {
-        LibrdfNode node = librdf_query_results_get_binding_value_by_name(query_results_, (const char *) name.c_str());
+        LibrdfNode node = librdf_query_results_get_binding_value_by_name(
+                query_results_, (const char *) name.c_str());
         std::string value;
         switch (node->type) {
             case RAPTOR_TERM_TYPE_URI: {
@@ -135,7 +136,7 @@ namespace semsim {
             }
         }
 
-        // we rerun the query to overwrite the query_results_
+        // we rerun the query to overwrite the query_
         // variable with a fresh object (since once you've
         // hit the end you can't seem to go back).
         // todo look more into this.

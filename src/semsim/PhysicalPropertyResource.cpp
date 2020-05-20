@@ -14,7 +14,7 @@ namespace semsim {
 
 
     PhysicalPropertyResource::PhysicalPropertyResource(LibrdfWorld world, std::string node)
-            : Resource(world, RDFURINode(world, node)) {
+            : Resource(world, RDFURINode(world.newNodeUriString(node))) {
         validate();
     }
 
@@ -34,9 +34,9 @@ namespace semsim {
     Triple PhysicalPropertyResource::isVersionOfTriple(std::string subject_metaid) const {
         return Triple(
                 world_,
-                Subject(world_, RDFURINode(world_, subject_metaid)),
+                Subject(world_, RDFURINode(world_.newNodeUriString(subject_metaid))),
                 BiomodelsBiologyQualifier(world_, "isVersionOf"),
-                Resource(world_, RDFURINode(world_, rdf_node_ptr_->str()))
+                Resource(world_, RDFURINode(world_.newNodeUriString(rdf_node_ptr_->str())))
         );
     }
 

@@ -50,15 +50,17 @@ namespace semsim {
         librdf_statement *&statement_raw = *statement.getStatement();
         Subject subject(world, RDFURINode(world.newNodeUriString((const char *) statement_raw->subject)));
         PredicatePtr predicatePtr = std::make_shared<Predicate>(
-                Predicate(world, RDFURINode(world.newNodeUriString((const char *) statement_raw->predicate)));
+                Predicate(world, RDFURINode(world.newNodeUriString((const char *) statement_raw->predicate))
+                )
+        );
         Resource resource(world, RDFURINode(world.newNodeUriString((const char *) statement_raw->object)));
         return Triple(world, subject, predicatePtr, resource);
     }
 
 
-    std::string Triple::str(std::string format, std::string base) {
-        return TripleWriter(*this, base, format).toString();
-    }
+//    std::string Triple::str(std::string format, std::string base) {
+//        return TripleWriter(*this, base, format).toString();
+//    }
 
     void Triple::setSubject(const Subject &subject) {
         subject_ = subject;
