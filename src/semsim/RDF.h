@@ -27,7 +27,7 @@ namespace semsim {
 
     typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
-    typedef std::tuple<LibrdfWorld, raptor_world *, LibrdfStorage, LibrdfModel> LibRDFObjectsTuple;
+    typedef std::tuple<LibrdfWorld, RaptorWorld, LibrdfStorage, LibrdfModel> LibRDFObjectsTuple;
 
     class RDF {
     private:
@@ -64,15 +64,15 @@ namespace semsim {
 
         RDF(LibrdfWorld world, RaptorWorld raptor_world_, LibrdfStorage storage, LibrdfModel model);
 
-        ~RDF();
-
-        RDF(const RDF &libRdfModel);
-
-        RDF(RDF &&libRdfModel) noexcept;
-
-        RDF &operator=(const RDF &libRdfModel);
-
-        RDF &operator=(RDF &&libRdfModel) noexcept;
+//        ~RDF();
+//
+//        RDF(const RDF &libRdfModel);
+//
+//        RDF(RDF &&libRdfModel) noexcept;
+//
+//        RDF &operator=(const RDF &libRdfModel);
+//
+//        RDF &operator=(RDF &&libRdfModel) noexcept;
 
         bool operator==(const RDF &rhs) const;
 
@@ -112,7 +112,7 @@ namespace semsim {
 
         LibrdfModel getModel() const;
 
-        raptor_world *getRaptorWorld() const;
+        RaptorWorld getRaptorWorld() const;
 
         void setWorld(LibrdfWorld world);
 
@@ -120,7 +120,7 @@ namespace semsim {
 
         void setModel(LibrdfModel model);
 
-        void setRaptorWorld(raptor_world *raptorWorldPtr);
+        void setRaptorWorld(RaptorWorld raptorWorldPtr);
 
         std::unordered_map<std::string, std::string> propagateNamespacesFromParser(
                 std::vector<std::string> seen_namespaces);

@@ -56,21 +56,21 @@ namespace semsim {
 
         LibrdfModel newModel(const LibrdfStorage &storage, const std::string &options_string = std::string());
 
-        LibrdfNode newNodeUriString(const std::string &string);
+        LibrdfNode newNodeUriString(const std::string &string) const;
 
-        LibrdfNode newNodeUri(const LibrdfUri &raptorUri);
+        LibrdfNode newNodeUri(const LibrdfUri &raptorUri) const;
 
-        LibrdfNode newNodeBlank(const std::string &identifier);
+        LibrdfNode newNodeBlank(const std::string &identifier) const;
 
         LibrdfNode
-        newNodeLiteral(const std::string &literal, const char *xml_language = nullptr, bool is_wf_xml = false);
+        newNodeLiteral(const std::string &literal, const char *xml_language = nullptr, bool is_wf_xml = false) const;
 
         LibrdfNode newNodeTypedLiteral(
                 const std::string &literal,
                 const std::string &datatypeUri = "http://www.w3.org/2001/XMLSchema#string",
-                const char *xml_language = nullptr);
+                const char *xml_language = nullptr) const;
 
-        LibrdfUri newUri(std::string uri_string);
+        LibrdfUri newUri(std::string uri_string) const;
 
 //        Subject newSubjectUri(const std::string &subject_value);
 //

@@ -54,7 +54,7 @@ namespace semsim {
         return raptor_uri_;
     }
 
-    std::string LibrdfUri::str() {
+    std::string LibrdfUri::str() const {
         if (raptor_uri_ == nullptr) {
             throw NullPointerException("LibrdfUri::str(): raptor_uri_ ");
         }
@@ -66,6 +66,14 @@ namespace semsim {
 
     bool LibrdfUri::operator!() const {
         return !getUri();
+    }
+
+    bool LibrdfUri::operator==(const LibrdfUri &rhs) const {
+        return raptor_uri_ == rhs.raptor_uri_;
+    }
+
+    bool LibrdfUri::operator!=(const LibrdfUri &rhs) const {
+        return !(rhs == *this);
     }
 
 }

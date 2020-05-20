@@ -15,27 +15,23 @@
  */
 semsim::LibRDFObjectsTuple semsim::RDF::init() {
     // init librdf world object
-    LibrdfWorld world_ = librdf_new_world();
-
+    LibrdfWorld world_;
     if (!world_) {
-        throw NullPointerException("RDF::init(): world_");
+        throw NullPointerException("NullPointerException: RDF::init(): world_");
     }
-    librdf_world_open(world_);
-
     // init raptor world obj
-    raptor_world *raptor_world_ptr_ = librdf_world_get_raptor(world_);
+    RaptorWorld raptor_world_ptr_ = world_.getRaptor();
     if (!raptor_world_ptr_) {
-        throw NullPointerException("RDF::init(): raptor_world_ptr_");
+        throw NullPointerException("NullPointerException: RDF::init(): raptor_world");
     }
-
     //todo work out and make use of the arguments to librdf_new_storage
-    LibrdfStorage storage_ = librdf_new_storage(world_, "memory", "semsim_store", nullptr);
+    LibrdfStorage storage_ = world_.newStorage("memory", "semsim_store");
     if (!storage_) {
         throw NullPointerException("RDF::init(): storage_");
     }
-    LibrdfModel model_ = librdf_new_model(world_, storage_, nullptr);
+    LibrdfModel model_ = world_.newModel(storage_, nullptr);
     if (!model_) {
-        throw NullPointerException("RDF::init(): model_");
+        throw NullPointerException("NullPointerException: RDF::init(): model_");
     }
     LibRDFObjectsTuple objectsTuple(world_, raptor_world_ptr_, storage_, model_);
 
@@ -51,81 +47,81 @@ semsim::RDF::RDF() {
     raptor_world_ = std::get<1>(objectsTuple);
     storage_ = std::get<2>(objectsTuple);
     model_ = std::get<3>(objectsTuple);
-    base_uri_ = librdf_new_uri(getWorld(), (const unsigned char *) "file://./semsim_model.rdf");
+    base_uri_ = world_.newUri("file://./semsim_model.rdf");
 
 }
 
-semsim::RDF::RDF(LibrdfWorld world, raptor_world *raptor_world_, LibrdfStorage storage, LibrdfModel model) :
+semsim::RDF::RDF(LibrdfWorld world, RaptorWorld raptor_world_, LibrdfStorage storage, LibrdfModel model) :
         world_(world),
         raptor_world_(raptor_world_),
         storage_(storage),
         model_(model) {
-    base_uri_ = librdf_new_uri(getWorld(), (const unsigned char *) "file://./semsim_model.rdf");
+    base_uri_ = world_.newUri("file://./semsim_model.rdf");
     if (!base_uri_) {
         throw NullPointerException("RDF::RDF(): base_uri_");
     }
 }
 
-semsim::RDF::~RDF() {
+//semsim::RDF::~RDF() {
+//
+//    if (this->model_) {
+//        librdf_free_model(model_);
+//    }
+//
+//    if (this->storage_) {
+//        librdf_free_storage(storage_);
+//    }
+//    if (this->base_uri_) {
+//        librdf_free_uri(base_uri_);
+//    }
+//    if (this->world_) {
+//        librdf_free_world(world_);
+//    }
 
-    if (this->model_){
-        librdf_free_model(model_);
-    }
-
-    if (this->storage_) {
-        librdf_free_storage(storage_);
-    }
-    if (this->base_uri_) {
-        librdf_free_uri(base_uri_);
-    }
-    if (this->world_) {
-        librdf_free_world(world_);
-    }
-
-    // I think raptor is already freed with rdf
+// I think raptor is already freed with rdf
 //    if (this->raptor_world_){
 //        raptor_free_world(raptor_world_);
 //    }
 
-}
+//}
 
-semsim::RDF::RDF(const semsim::RDF &libRdfModel) {
-    this->world_ = libRdfModel.world_;
-    this->storage_ = libRdfModel.storage_;
-    this->model_ = libRdfModel.model_;
-    this->raptor_world_ = libRdfModel.raptor_world_;
-    this->base_uri_ = libRdfModel.base_uri_;
-}
-
-semsim::RDF::RDF(semsim::RDF &&libRdfModel) noexcept {
-    this->world_ = libRdfModel.world_;
-    this->storage_ = libRdfModel.storage_;
-    this->model_ = libRdfModel.model_;
-    this->raptor_world_ = libRdfModel.raptor_world_;
-    this->base_uri_ = libRdfModel.base_uri_;
-}
-
-semsim::RDF &semsim::RDF::operator=(const semsim::RDF &libRdfModel) {
-    if (this != &libRdfModel) {
-        this->world_ = libRdfModel.world_;
-        this->storage_ = libRdfModel.storage_;
-        this->model_ = libRdfModel.model_;
-        this->raptor_world_ = libRdfModel.raptor_world_;
-        this->base_uri_ = libRdfModel.base_uri_;
-    }
-    return *this;
-}
-
-semsim::RDF &semsim::RDF::operator=(semsim::RDF &&libRdfModel) noexcept {
-    if (this != &libRdfModel) {
-        this->world_ = libRdfModel.world_;
-        this->storage_ = libRdfModel.storage_;
-        this->model_ = libRdfModel.model_;
-        this->raptor_world_ = libRdfModel.raptor_world_;
-        this->base_uri_ = libRdfModel.base_uri_;
-    }
-    return *this;
-}
+//semsim::RDF::RDF(const semsim::RDF &libRdfModel) {
+//    this->world_ = libRdfModel.world_;
+//    this->storage_ = libRdfModel.storage_;
+//    this->model_ = libRdfModel.model_;
+//    this->raptor_world_ = libRdfModel.raptor_world_;
+//    this->base_uri_ = libRdfModel.base_uri_;
+//}
+//
+//semsim::RDF::RDF(semsim::RDF &&libRdfModel) noexcept {
+//    this->world_ = libRdfModel.world_;
+//    this->storage_ = libRdfModel.storage_;
+//    this->model_ = libRdfModel.model_;
+//    this->raptor_world_ = libRdfModel.raptor_world_;
+//    this->base_uri_ = libRdfModel.base_uri_;
+//}
+//
+//semsim::RDF &semsim::RDF::operator=(const semsim::RDF &libRdfModel) {
+//    if (this != &libRdfModel) {
+//        this->world_ = libRdfModel.world_;
+//        this->storage_ = libRdfModel.storage_;
+//        this->model_ = libRdfModel.model_;
+//        this->raptor_world_ = libRdfModel.raptor_world_;
+//        this->base_uri_ = libRdfModel.base_uri_;
+//    }
+//    return *this;
+//}
+//
+//semsim::RDF &semsim::RDF::operator=(semsim::RDF &&libRdfModel) noexcept {
+//    if (this != &libRdfModel) {
+//        this->world_ = libRdfModel.world_;
+//        this->storage_ = libRdfModel.storage_;
+//        this->model_ = libRdfModel.model_;
+//        this->raptor_world_ = libRdfModel.raptor_world_;
+//        this->base_uri_ = libRdfModel.base_uri_;
+//    }
+//    return *this;
+//}
 
 bool semsim::RDF::operator==(const semsim::RDF &rhs) const {
     return world_ == rhs.world_ &&
@@ -143,11 +139,11 @@ bool semsim::RDF::operator!=(const semsim::RDF &rhs) const {
 /***************************************************************
  *  getters and setters
  */
-LibrdfWorld semsim::RDF::getWorld() const {
+semsim::LibrdfWorld semsim::RDF::getWorld() const {
     return world_;
 }
 
-LibrdfStorage semsim::RDF::getStorage() const {
+semsim::LibrdfStorage semsim::RDF::getStorage() const {
     return storage_;
 }
 
@@ -161,11 +157,11 @@ void semsim::RDF::setNamespaces(const std::unordered_map<std::string, std::strin
 }
 
 
-LibrdfModel semsim::RDF::getModel() const {
+semsim::LibrdfModel semsim::RDF::getModel() const {
     return model_;
 }
 
-raptor_world *semsim::RDF::getRaptorWorld() const {
+semsim::RaptorWorld semsim::RDF::getRaptorWorld() const {
     return raptor_world_;
 }
 
@@ -186,7 +182,7 @@ void semsim::RDF::setModel(LibrdfModel model) {
     model_ = model;
 }
 
-void semsim::RDF::setRaptorWorld(raptor_world *raptorWorldPtr) {
+void semsim::RDF::setRaptorWorld(RaptorWorld raptorWorldPtr) {
     raptor_world_ = raptorWorldPtr;
 }
 
@@ -218,7 +214,7 @@ semsim::RDF semsim::RDF::fromXML(const std::string &filename, std::string format
 
     // unpack redland library objects
     LibrdfWorld world = std::get<0>(objectsTuple);
-    raptor_world *raptor_world_ptr = std::get<1>(objectsTuple);
+    RaptorWorld raptor_world_ptr = std::get<1>(objectsTuple);
     LibrdfStorage storage = std::get<2>(objectsTuple);
     LibrdfModel model = std::get<3>(objectsTuple);
 
@@ -238,13 +234,6 @@ semsim::RDF semsim::RDF::fromXML(const std::string &filename, std::string format
     return rdf;
 }
 
-semsim::RDF semsim::RDF::fromStream(librdf_stream *stream) {
-    RDF rdf;
-    librdf_model_add_statements(rdf.model_, stream);
-
-    return rdf;
-}
-
 semsim::RDF semsim::RDF::fromOmex(const std::string &filename_or_url, std::string format) {
     return semsim::RDF();
 }
@@ -255,12 +244,6 @@ std::string semsim::RDF::toString(const std::string &format = "rdfxml-abbrev",
     Writer writer = makeWriter(format);
     return writer.toString();
 }
-
-
-librdf_stream *semsim::RDF::toStream() {
-    return librdf_model_as_stream(model_);
-}
-
 
 void semsim::RDF::toFile(std::string format) {
 
@@ -334,17 +317,17 @@ semsim::Editor *semsim::RDF::toEditorPtr(std::string xml, semsim::XmlAssistantTy
     return new Editor(xml, type, world_, model_, namespaces_);
 }
 
-LibrdfUri semsim::RDF::getBaseUri() const {
+semsim::LibrdfUri semsim::RDF::getBaseUri() const {
     return base_uri_;
 }
 
 std::string semsim::RDF::getBaseUriAsString() const {
-    return std::string((const char *) librdf_uri_as_string(base_uri_));
+    return base_uri_.str(); //std::string((const char *) librdf_uri_as_string(base_uri_));
 }
 
 void semsim::RDF::setBaseUri(std::string baseUri) {
     baseUri = semsim::SemsimUtils::addFilePrefixToString(baseUri);
-    LibrdfUri uri = librdf_new_uri(world_, (const unsigned char *) baseUri.c_str());
+    LibrdfUri uri = world_.newUri(baseUri);
     if (!uri) {
         throw semsim::LibRDFException("semsim::RDF::setBaseUri: Unable to create a new librdf_uri instance. ");
     }
@@ -356,14 +339,13 @@ void semsim::RDF::setBaseUri(LibrdfUri baseUri) {
         throw semsim::LibRDFException("semsim::RDF::setBaseUri: Unable to create a new librdf_uri instance. ");
     }
     // check if file:// prepended to baseUri and if not add it.
-    const char *str = (const char *) librdf_uri_to_string(baseUri);
-    str = semsim::SemsimUtils::addFilePrefixToString(std::string(str)).c_str();
-    baseUri = librdf_new_uri(world_, (const unsigned char *) str);
-    base_uri_ = baseUri;
+    base_uri_ = world_.newUri(
+            semsim::SemsimUtils::addFilePrefixToString(baseUri.str())
+    );
 }
 
 int semsim::RDF::size() const {
-    librdf_stream *stream = librdf_model_as_stream(getModel());
+    librdf_stream *stream = librdf_model_as_stream(*getModel().getModel());
     if (!stream) {
         throw LibRDFException("Query::resultsAsTriples: stream object null");
     }
@@ -372,22 +354,26 @@ int semsim::RDF::size() const {
         count++;
         librdf_stream_next(stream);
     }
+    librdf_free_stream(stream);
     return count;
 }
 
 semsim::Triples semsim::RDF::toTriples() {
-    librdf_stream *stream = librdf_model_as_stream(getModel());
+    LibrdfStream stream(librdf_model_as_stream(*getModel().getModel()));
     if (!stream) {
         throw LibRDFException("RDF::toTriples: stream object null");
     }
     Triples triples;
-    while (!librdf_stream_end(stream)) {
-        librdf_statement *statement = librdf_stream_get_object(stream);
+    // todo turn this into method of LibrdfStream
+    while (!librdf_stream_end(*stream.getStream())) {
+        LibrdfStatement statement(
+                librdf_stream_get_object(*stream.getStream())
+        );
         if (!statement) {
             throw LibRDFException("RDF::toTriples(): statement is null");
         }
         triples.emplace_back(world_, statement);
-        librdf_stream_next(stream);
+        librdf_stream_next(*stream.getStream());
     }
     return triples;
 }

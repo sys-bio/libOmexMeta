@@ -32,26 +32,26 @@ namespace semsim {
     }
 
     Triples PhysicalProcess::toTriples() const {
-        if (!getAbout().isSet()) {
-            throw AnnotationBuilderException(
-                    "PhysicalProcess::toTriples(): Cannot create"
-                    " triples because the \"about\" information is not set. "
-                    "Use the setAbout() method."
-            );
-        }
-        if (!getPhysicalProperty().isSet()) {
-            throw AnnotationBuilderException(
-                    "PhysicalProcess::toTriples(): Cannot create"
-                    " triples because the \"physical_property\" information is not set. "
-                    "Use the setPhysicalProperty() method."
-            );
-        }
+//        if (!getAbout().isSet()) {
+//            throw AnnotationBuilderException(
+//                    "PhysicalProcess::toTriples(): Cannot create"
+//                    " triples because the \"about\" information is not set. "
+//                    "Use the setAbout() method."
+//            );
+//        }
+//        if (!getPhysicalProperty().isSet()) {
+//            throw AnnotationBuilderException(
+//                    "PhysicalProcess::toTriples(): Cannot create"
+//                    " triples because the \"physical_property\" information is not set. "
+//                    "Use the setPhysicalProperty() method."
+//            );
+//        }
 
 
         std::string process_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalProcess",
                                                                        std::vector<std::string>());
 
-        Subject process_metaid_subject(world_, RDFURINode(world_, process_metaid));
+        Subject process_metaid_subject(world_, RDFURINode(world_.newNodeUriString(process_metaid)));
 
         Triples triples = physical_property_.toTriples(about.str(), process_metaid);
 
@@ -74,7 +74,7 @@ namespace semsim {
     }
 
     PhysicalProcess &PhysicalProcess::setAbout(std::string metaid) {
-        about = Subject(world_, RDFURINode(world_, metaid));
+        about = Subject(world_, RDFURINode(world_.newNodeUriString(metaid)));
         return (*this);
     }
 
@@ -86,7 +86,7 @@ namespace semsim {
     //todo turn this into a factory whereby user enters string of PhysicalProperty
     //  and we automatically pick out the correct OPB identifier
     PhysicalProcess &PhysicalProcess::setPhysicalProperty(const std::string &physicalProperty) {
-        physical_property_ = PhysicalPropertyResource(world_, RDFURINode(world_, physicalProperty));
+        physical_property_ = PhysicalPropertyResource(world_, RDFURINode(world_.newNodeUriString(physicalProperty)));
         return (*this);
     }
 

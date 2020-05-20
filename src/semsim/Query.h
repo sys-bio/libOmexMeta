@@ -28,8 +28,8 @@ namespace semsim {
         LibrdfWorld world_;
         LibrdfModel model_;
         std::string query_;
-        librdf_query_results *query_results_;
-        librdf_query_results *query_results_copy_;
+        LibrdfQueryResults query_results_;
+        LibrdfQueryResults query_results_copy_;
 
         std::vector<std::string> valid_output_formats_ = {
                 "xml",

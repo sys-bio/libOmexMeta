@@ -55,3 +55,9 @@ namespace semsim {
     }
 
 }
+
+/*
+ * Todo implement librdf_query_results_get_binding_value_by_name(
+                query_results_, (const char *) name.c_str());
+                for use in Query.cpp
+ */

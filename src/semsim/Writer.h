@@ -26,7 +26,7 @@ namespace semsim {
     class Triples;
 
     class Writer {
-        raptor_world *raptor_world_ptr_;
+        RaptorWorld raptor_world_ptr_;
         std::string format_;
         std::string base_uri_;
         librdf_serializer *serializer;

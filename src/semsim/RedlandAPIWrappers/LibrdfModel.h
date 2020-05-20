@@ -9,6 +9,7 @@
 #include <memory>
 #include <string>
 #include <iostream>
+#include "LibrdfStatement.h"
 
 
 /*
@@ -44,6 +45,8 @@ namespace semsim {
         const std::shared_ptr<librdf_model *> &getModel() const;
 
         bool operator!() const;
+
+        void addStatement(const LibrdfStatement &statement);
 
     };
 }
