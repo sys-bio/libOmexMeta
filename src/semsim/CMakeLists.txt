@@ -1,6 +1,7 @@
 message(STATUS "inside semsim cmakelists")
 
 set(SEMSIM_HEADERS
+        "RedlandAPIWrappers/RedlandAPIWrapper.h"
         "RedlandAPIWrappers/LibrdfWorld.h"
         "RedlandAPIWrappers/RaptorWorld.h"
         "RedlandAPIWrappers/LibrdfStorage.h"
@@ -8,6 +9,8 @@ set(SEMSIM_HEADERS
         "RedlandAPIWrappers/LibrdfNode.h"
         "RedlandAPIWrappers/LibrdfUri.h"
         "RedlandAPIWrappers/LibrdfStatement.h"
+        "RedlandAPIWrappers/LibrdfQuery.h"
+        "RedlandAPIWrappers/LibrdfQueryResults.h"
 
         "SemsimUtils.h"
         "RDFNode.h"
@@ -43,8 +46,9 @@ set(SEMSIM_SOURCES
         "RedlandAPIWrappers/LibrdfStorage.cpp"
         "RedlandAPIWrappers/RaptorWorld.cpp"
         "RedlandAPIWrappers/LibrdfUri.cpp"
-        "RedlandAPIWrappers/RedlandAPIWrapper.h"
         "RedlandAPIWrappers/LibrdfStatement.cpp"
+        "RedlandAPIWrappers/LibrdfQuery.cpp"
+        "RedlandAPIWrappers/LibrdfQueryResults.cpp"
 
         "CurlGet.cpp"
         "SemsimUtils.cpp"
