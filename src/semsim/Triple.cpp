@@ -38,6 +38,7 @@ namespace semsim {
     }
 
     LibrdfStatement Triple::toStatement() {
+
         librdf_statement *stmt = librdf_new_statement_from_nodes(
                 *world_.getWorld(),
                 *subject_.getNode().getNode(),

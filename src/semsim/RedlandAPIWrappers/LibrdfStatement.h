@@ -9,6 +9,7 @@
 #include <librdf.h>
 #include <memory>
 #include <iostream>
+#include "semsim/RedlandAPIWrappers/LibrdfNode.h"
 
 namespace semsim {
     class LibrdfStatement {
@@ -37,6 +38,11 @@ namespace semsim {
 
         bool operator!() const;
 
+        LibrdfNode getSubjectNode();
+
+        LibrdfNode getPredicateNode();
+
+        LibrdfNode getObjectNode();
     };
 }
 

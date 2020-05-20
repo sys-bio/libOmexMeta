@@ -5,11 +5,12 @@
 #ifndef LIBSEMSIM_LIBRDFNODE_H
 #define LIBSEMSIM_LIBRDFNODE_H
 
+#include "semsim/Error.h"
 #include <librdf.h>
 #include <raptor2.h>
 #include <memory>
-#include "semsim/Error.h"
-
+#include <sstream>
+#include "semsim/HERE.h"
 
 namespace semsim {
     class LibrdfNode {
@@ -37,6 +38,10 @@ namespace semsim {
         std::string str();
 
         raptor_term_type getType();
+
+        bool operator==(const LibrdfNode &rhs) const;
+
+        bool operator!=(const LibrdfNode &rhs) const;
 
     };
 }

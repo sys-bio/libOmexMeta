@@ -10,8 +10,8 @@
 #include "semsim/Predicate.h"
 #include "semsim/Subject.h"
 #include "semsim/Resource.h"
-//#include "semsim/Writer.h"
 #include "semsim/Triple.h"
+#include "semsim/TripleWriter.h"
 #include "librdf.h"
 #include "raptor2.h"
 

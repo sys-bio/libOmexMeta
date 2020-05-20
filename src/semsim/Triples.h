@@ -10,10 +10,14 @@
 #include "semsim/Subject.h"
 #include "semsim/Resource.h"
 #include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/Error.h"
+#include "semsim/TripleWriter.h"
 
 #include <vector>
 
 namespace semsim {
+
+    class Triple;
 
     class Triples {
     private:

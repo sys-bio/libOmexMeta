@@ -17,11 +17,6 @@
 #include <sstream>
 
 
-// macro helpful for debugging
-#define HERE()                              \
-do {                                        \
-  std::cout << __FILE__ << ":" << __LINE__ << std::endl; \
-} while (0)
 
 namespace semsim {
 

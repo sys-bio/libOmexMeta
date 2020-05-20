@@ -16,5 +16,7 @@
 #include "semsim/RedlandAPIWrappers/LibrdfQuery.h"
 #include "semsim/RedlandAPIWrappers/LibrdfQueryResults.h"
 #include "semsim/RedlandAPIWrappers/LibrdfStream.h"
+#include "semsim/RedlandAPIWrappers/LibrdfSerializer.h"
+#include "semsim/RedlandAPIWrappers/LibrdfParser.h"
 
 #endif //LIBSEMSIM_REDLANDAPIWRAPPER_H

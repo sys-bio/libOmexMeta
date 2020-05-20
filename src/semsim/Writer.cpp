@@ -3,6 +3,8 @@
 //
 
 #include "Writer.h"
+#include "semsim/SemsimUtils.h"
+
 
 void semsim::Writer::setWorld(LibrdfWorld w) {
     this->world_ = w;
@@ -30,7 +32,9 @@ void semsim::Writer::init(LibrdfWorld world, LibrdfModel model,
         }
         throw std::invalid_argument(os.str());
     }
-    serializer = librdf_new_serializer(*world.getWorld(), this->format_.c_str(), nullptr, nullptr);
+    serializer = LibrdfSerializer(
+            librdf_new_serializer(*world.getWorld(), this->format_.c_str(), nullptr, nullptr)
+    );
     if (!serializer) {
         throw NullPointerException("Writer::init: serializer");
     }
@@ -70,7 +74,7 @@ semsim::Writer::~Writer() {
 
 void semsim::Writer::registerNamespace(const std::string &ns, const std::string &prefix) {
     LibrdfUri ns_uri = world_.newUri(ns);
-    librdf_serializer_set_namespace(serializer, *ns_uri.getUri(), (const char *) prefix.c_str());
+    librdf_serializer_set_namespace(*serializer.getSerializer(), *ns_uri.getUri(), (const char *) prefix.c_str());
 }
 
 void semsim::Writer::registerNamespace(const std::unordered_map<std::string, std::string> &ns_map) {
@@ -83,7 +87,7 @@ void semsim::Writer::setOption(const std::string &option, const std::string &val
     std::string feature_uri_base = "http://feature.librdf.org/raptor-";
     LibrdfUri uri = world_.newUri(feature_uri_base + option);
     LibrdfNode node = world_.newNodeLiteral(value);
-    librdf_serializer_set_feature(serializer, *uri.getUri(), *node.getNode());
+    librdf_serializer_set_feature(*serializer.getSerializer(), *uri.getUri(), *node.getNode());
 }
 
 std::string semsim::Writer::toString() {
@@ -97,13 +101,12 @@ std::string semsim::Writer::toString() {
     this->validateBaseUri();
 
     int failure = librdf_serializer_serialize_model_to_iostream(
-            serializer, *uri.getUri(), *model_.getModel(), iostr);
+            *serializer.getSerializer(), *uri.getUri(), *model_.getModel(), iostr);
     if (failure) { // i.e. if non-0
         throw std::logic_error("Writer::toString(): Failed to serialize model.");
     }
     std::string output_string((const char *) string);
     free(string);
-    raptor_free_iostream(iostr);
     return output_string;
 }
 
@@ -127,53 +130,6 @@ void semsim::Writer::validateBaseUri() {
 
 semsim::Writer::Writer() = default;
 
-
-semsim::TripleWriter::TripleWriter(semsim::Triple triple, const std::string &base_uri, std::string format) {
-    // when creating a writer from a Triple, we just create a locally scoped rdf model and storage
-    LibrdfWorld world;
-    LibrdfStorage storage = world.newStorage("memory", "triple_store");
-    if (!storage) {
-        throw LibRDFException("Writer::Writer: storage not created");
-    }
-    LibrdfModel model = world.newModel(storage);
-    if (!model) {
-        throw LibRDFException("Writer::Writer: model not created");
-    }
-
-    // add statements to the model
-    model.addStatement(triple.toStatement());
-
-    // initialize the writer
-    init(world, model, base_uri, std::move(format));
-
-    // determine whether we recognize the namespace and add it if we do.
-    std::string ns = triple.getPredicatePtr()->getNamespace();
-    if (triple.getPredicatePtr()->namespaceKnown(ns)) {
-        registerNamespace(ns, Predicate::prefix_map()[ns]);
-    }
-}
-
-semsim::TripleWriter::TripleWriter(semsim::Triples triples, const std::string &base_uri, std::string format) {
-    // when creating a writer from a Triple, we just create a locally scoped rdf model and storage
-    LibrdfWorld world;
-    LibrdfStorage storage = world.newStorage("memory", "triple_store");
-    if (!storage) {
-        throw LibRDFException("Writer::Writer: storage not created");
-    }
-    LibrdfModel model = world.newModel(storage);
-    if (!model) {
-        throw LibRDFException("Writer::Writer: model not created");
-    }
-
-    init(world, model, base_uri, std::move(format));
-    for (auto &triple : triples) {
-        model.addStatement(triple.toStatement());
-        std::string ns = triple.getPredicatePtr()->getNamespace();
-        if (triple.getPredicatePtr()->namespaceKnown(ns)) {
-            registerNamespace(ns, Predicate::prefix_map()[triple.getPredicatePtr()->getNamespace()]);
-        }
-    }
-}
 
 
 

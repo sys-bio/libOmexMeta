@@ -1,4 +1,5 @@
 #include "LibrdfSerializer.h"
+#include "LibrdfUri.h"
 
 namespace semsim {
 
@@ -53,5 +54,6 @@ namespace semsim {
     bool LibrdfSerializer::operator!() const {
         return !getSerializer();
     }
+
 
 }
