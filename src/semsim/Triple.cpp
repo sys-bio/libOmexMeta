@@ -39,20 +39,19 @@ namespace semsim {
 
     librdf_statement *Triple::toStatement() {
         return librdf_new_statement_from_nodes(
-                world_,
-                *subject_.getNode(),
-                *predicate_ptr_->getNode(),
-                *resource_.getNode()
+                *world_.getWorld(),
+                *subject_.getNode().getNode(),
+                *predicate_ptr_->getNode().getNode(),
+                *resource_.getNode().getNode()
         );
     }
 
-    Triple Triple::fromStatement(librdf_world* world, librdf_statement *statement) {
-        Subject subject(world, statement->subject);
+    Triple Triple::fromStatement(LibrdfWorld world, LibrdfStatement statement) {
+        librdf_statement *&statement_raw = *statement.getStatement();
+        Subject subject(world, RDFURINode(world.newNodeUriString((const char *) statement_raw->subject)));
         PredicatePtr predicatePtr = std::make_shared<Predicate>(
-                Predicate(world, statement->predicate)
-                );
-        Resource resource(world, statement->object);
-
+                Predicate(world, RDFURINode(world.newNodeUriString((const char *) statement_raw->predicate)));
+        Resource resource(world, RDFURINode(world.newNodeUriString((const char *) statement_raw->object)));
         return Triple(world, subject, predicatePtr, resource);
     }
 
@@ -74,7 +73,7 @@ namespace semsim {
     }
 
     semsim::Triple &semsim::Triple::setAbout(const std::string &about) {
-        subject_ = Subject(world_, RDFURINode(world_, about));
+        subject_ = Subject(world_, RDFURINode(world_.newNodeUriString(about)));
         return (*this);
     }
 
@@ -96,17 +95,17 @@ namespace semsim {
     }
 
     semsim::Triple &semsim::Triple::setResourceLiteral(const std::string &literal) {
-        resource_ = Resource(world_, RDFLiteralNode(world_, literal));
+        resource_ = Resource(world_, RDFLiteralNode(world_.newNodeLiteral(literal)));
         return *this;
     }
 
     semsim::Triple &semsim::Triple::setResourceUri(const std::string &identifiers_uri) {
-        resource_ = Resource(world_, RDFURINode(world_, identifiers_uri));
+        resource_ = Resource(world_, RDFURINode(world_.newNodeUriString(identifiers_uri)));
         return *this;
     }
 
     semsim::Triple &semsim::Triple::setResourceBlank(const std::string &blank_id) {
-        resource_ = Resource(world_, RDFBlankNode(world_, blank_id));
+        resource_ = Resource(world_, RDFBlankNode(world_.newNodeBlank(blank_id)));
         return *this;
     }
 

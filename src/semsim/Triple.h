@@ -11,6 +11,7 @@
 #include "semsim/Subject.h"
 #include "semsim/Resource.h"
 #include "semsim/Triple.h"
+#include "semsim/Writer.h"
 #include "librdf.h"
 #include "raptor2.h"
 

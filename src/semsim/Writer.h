@@ -86,13 +86,13 @@ namespace semsim {
     public:
         using Writer::init;
 
-        TripleWriter(Triple triple,
-                     const std::string &base_uri = "file://annotation.rdf",
-                     std::string format = "rdfxml-abbrev");
+        explicit TripleWriter(Triple triple,
+                              const std::string &base_uri = "file://annotation.rdf",
+                              std::string format = "rdfxml-abbrev");
 
-        TripleWriter(Triples triples,
-                     const std::string &base_uri = "file://annotation.rdf",
-                     std::string format = "rdfxml-abbrev");
+        explicit TripleWriter(Triples triples,
+                              const std::string &base_uri = "file://annotation.rdf",
+                              std::string format = "rdfxml-abbrev");
 
         ~TripleWriter();
 

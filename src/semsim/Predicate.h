@@ -25,7 +25,6 @@ namespace semsim {
     class Predicate {
     protected:
 
-        Predicate(semsim::LibrdfWorld world, const RDFURINode &node);
 
         LibrdfWorld world_;
         std::string namespace_, term_, prefix_;
@@ -35,9 +34,11 @@ namespace semsim {
         std::vector<std::string> valid_terms_{"All"};
 
     public:
-        static std::unordered_map<std::string, std::string> prefix_map();
-
         Predicate() = default;
+
+        Predicate(semsim::LibrdfWorld world, const RDFURINode &node);
+
+        static std::unordered_map<std::string, std::string> prefix_map();
 
         void setPrefix(const std::string &prefix);
 
