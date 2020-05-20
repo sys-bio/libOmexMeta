@@ -16,7 +16,7 @@ set(TEST_SOURCES
         SubjectTests.cpp
         PredicateTests.cpp
         ResourceTests.cpp
-        #        TripleTests.cpp
+        TripleTests.cpp
         #        AnnotationSamples.h
         #        CurlGetTests.cpp
         #        MetaIDTests.cpp

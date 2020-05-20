@@ -57,9 +57,9 @@ namespace semsim {
         return Triple(world, subject, predicatePtr, resource);
     }
 
-//    std::string Triple::str(std::string format, std::string base) {
-//        return TripleWriter(*this, base, format).toString();
-//    }
+    std::string Triple::str(std::string format, std::string base) {
+        return TripleWriter(*this, base, format).toString();
+    }
 
     void Triple::setSubject(const Subject &subject) {
         subject_ = subject;
