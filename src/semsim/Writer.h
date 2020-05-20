@@ -2,24 +2,29 @@
 // Created by Ciaran on 4/9/2020.
 //
 
-#ifndef LIBSEMGEN_WRITER_H
-#define LIBSEMGEN_WRITER_H
+#ifndef LIBSEMSIM_WRITER_H
+#define LIBSEMSIM_WRITER_H
+
+#include "Triple.h"
+#include "Triples.h"
+#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
+#include "Error.h"
 
 #include <librdf.h>
 #include <string>
 #include <vector>
 #include "unordered_map"
-#include "Triple.h"
-#include "Triples.h"
-#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
 #include <stdexcept>
 #include <utility>
-
 #include <regex>
-#include "Error.h"
 
 
 namespace semsim {
+
+    class Triple;
+
+    class Triples;
+
     class Writer {
         raptor_world *raptor_world_ptr_;
         std::string format_;
@@ -95,4 +100,4 @@ namespace semsim {
 
 }
 
-#endif //LIBSEMGEN_WRITER_H
+#endif //LIBSEMSIM_WRITER_H

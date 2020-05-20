@@ -26,17 +26,17 @@ namespace semsim {
         // have source participant triple
         triples.emplace_back(
                 world_,
-                Subject(world_, RDFURINode(world_, process_metaid)),
+                Subject(world_, RDFURINode(world_.newNodeUriString(process_metaid))),
                 predicate_ptr_, //term is hasSourceParticipant etc.
-                Resource(world_, RDFURINode(world_, subject_))
+                Resource(world_, RDFURINode(world_.newNodeUriString(subject_)))
         );
-        Subject participant_subject(world_, RDFURINode(world_, subject_));
+        Subject participant_subject(world_, RDFURINode(world_.newNodeUriString(subject_)));
 
         triples.emplace_back(
                 world_,
                 participant_subject,
                 std::make_shared<SemSim>(SemSim(world_, "hasPhysicalEntityReference")),
-                Resource(world_, RDFURINode(world_, physicalEntityReference_))
+                Resource(world_, RDFURINode(world_.newNodeUriString(physicalEntityReference_)))
         );
         if (multiplier_ > 0.0) {
             std::ostringstream multiplier_os;
@@ -45,8 +45,11 @@ namespace semsim {
                     world_,
                     participant_subject,
                     std::make_shared<SemSim>(SemSim(world_, "hasMultiplier")),
-                    Resource(world_, RDFLiteralNode(world_, multiplier_os.str(),
-                            "http://www.w3.org/2001/XMLSchema#double"))
+                    Resource(world_, RDFLiteralNode(
+                            world_.newNodeTypedLiteral(
+                                    multiplier_os.str(),
+                                    "http://www.w3.org/2001/XMLSchema#double"))
+                    )
             );
         }
         return triples;

@@ -69,10 +69,10 @@ namespace Legend {
 
 
 	class Subject {
-	    toRdfNode() : librdf_node*
+	    getNode() : librdf_node*
 	}
 	class Predicate {
-	    toRdfNode() : librdf_node*
+	    getNode() : librdf_node*
 	}
 	class PredicatePtr <<typedef shared_ptr>>
 

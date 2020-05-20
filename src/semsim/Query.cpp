@@ -24,7 +24,7 @@ namespace semsim {
 
     void Query::runQuery() {
         librdf_query *q = librdf_new_query(
-                world_, (const char *) "sparql",
+                *world_.getWorld(), (const char *) "sparql",
                 nullptr, (const unsigned char *) query_.c_str(), nullptr
         );
         if (!q) {
@@ -33,7 +33,7 @@ namespace semsim {
             throw LibRDFException(qerr.str());
         }
 
-        query_results_ = librdf_query_execute(q, model_);
+        query_results_ = librdf_query_execute(q, *model_.getModel());
         if (!query_results_) {
             std::ostringstream qerr2;
             qerr2 << __FILE__ << ":" << __LINE__ << ": librdf_query_results object was not created";

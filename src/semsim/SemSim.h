@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/4/2020.
 //
 
-#ifndef LIBSEMGEN_SEMSIM_H
-#define LIBSEMGEN_SEMSIM_H
+#ifndef LIBSEMSIM_SEMSIM_H
+#define LIBSEMSIM_SEMSIM_H
 
 #define HERE()                              \
 do {                                        \
@@ -25,4 +25,4 @@ do {                                        \
 #include "Predicate.h"
 #include "SemsimCombineArchive.h"
 
-#endif //LIBSEMGEN_SEMSIM_H
+#endif //LIBSEMSIM_SEMSIM_H

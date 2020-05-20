@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/17/2020.
 //
 
-#ifndef LIBSEMGEN_PREDICATE_H
-#define LIBSEMGEN_PREDICATE_H
+#ifndef LIBSEMSIM_PREDICATE_H
+#define LIBSEMSIM_PREDICATE_H
 
 #include <librdf.h>
 #include <vector>
@@ -12,14 +12,15 @@
 #include <unordered_map>
 #include <iostream>
 #include <utility>
-#include "RDFNode.h"
+#include "semsim/RDFNode.h"
+
 #include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
 
-#include "SemsimUtils.h"
+
+#include "semsim/SemsimUtils.h"
 
 
 namespace semsim {
-    class LibrdfWorld;
 
     class Predicate {
     protected:
@@ -47,7 +48,7 @@ namespace semsim {
 
         Predicate(LibrdfWorld world, LibrdfNode node);
 
-        LibrdfNode toRdfNode();
+        LibrdfNode getNode();
 
         std::string str();
 
@@ -142,4 +143,4 @@ namespace semsim {
 }
 
 
-#endif //LIBSEMGEN_PREDICATE_H
+#endif //LIBSEMSIM_PREDICATE_H

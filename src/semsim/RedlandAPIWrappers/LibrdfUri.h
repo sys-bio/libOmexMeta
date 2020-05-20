@@ -6,8 +6,9 @@
 #define LIBSEMSIM_LIBRDFURI_H
 
 
-#include <librdf.h>
 #include <memory>
+#include <librdf.h>
+#include "semsim/Error.h"
 
 
 namespace semsim {
@@ -15,6 +16,8 @@ namespace semsim {
         std::shared_ptr<librdf_uri *> raptor_uri_;
 
     public:
+        LibrdfUri() = default;
+
         explicit LibrdfUri(librdf_uri *uri);
 
         ~LibrdfUri();

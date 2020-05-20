@@ -14,7 +14,7 @@ set(TEST_SOURCES
         SBMLFactory.h
         RDFNodeTests.cpp
         SubjectTests.cpp
-        PredicateTests.cpp
+#        PredicateTests.cpp
         #        ResourceTests.cpp
         #        TripleTests.cpp
         #        AnnotationSamples.h

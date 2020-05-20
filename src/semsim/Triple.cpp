@@ -40,9 +40,9 @@ namespace semsim {
     librdf_statement *Triple::toStatement() {
         return librdf_new_statement_from_nodes(
                 world_,
-                subject_.toRdfNode(),
-                predicate_ptr_->toRdfNode(),
-                resource_.toRdfNode()
+                *subject_.getNode(),
+                *predicate_ptr_->getNode(),
+                *resource_.getNode()
         );
     }
 

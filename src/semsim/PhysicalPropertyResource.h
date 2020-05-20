@@ -2,14 +2,14 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#ifndef LIBSEMGEN_PHYSICALPROPERTYRESOURCE_H
-#define LIBSEMGEN_PHYSICALPROPERTYRESOURCE_H
+#ifndef LIBSEMSIM_PHYSICALPROPERTYRESOURCE_H
+#define LIBSEMSIM_PHYSICALPROPERTYRESOURCE_H
 
-#include "Resource.h"
-#include "RDFNode.h"
-#include "Error.h"
-#include "Triple.h"
-#include "Triples.h"
+#include "semsim/Resource.h"
+#include "semsim/RDFNode.h"
+#include "semsim/Error.h"
+#include "semsim/Triple.h"
+#include "semsim/Triples.h"
 #include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
 #include "Triple.h"
 #include "Triples.h"
@@ -38,4 +38,4 @@ namespace semsim {
     };
 }
 
-#endif //LIBSEMGEN_PHYSICALPROPERTYRESOURCE_H
+#endif //LIBSEMSIM_PHYSICALPROPERTYRESOURCE_H

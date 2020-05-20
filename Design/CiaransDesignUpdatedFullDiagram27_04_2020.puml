@@ -368,7 +368,7 @@ namespace semsim {
 
 	class RDFURINode {
 		+RDFURINode(librdf_world* world, std::string value, const char* xmlLanguage, bool isWfXml)
-		+toRdfNode() : librdf_node*
+		+getNode() : librdf_node*
 		+str() : std::string
 	}
 
@@ -418,7 +418,7 @@ namespace semsim {
 		+Resource(librdf_world* world, const RDFURINode& node)
 		+Resource(librdf_world* world, const RDFBlankNode& node)
 		#rdf_node_ptr_ : RDFNodePtr
-		+toRdfNode() : librdf_node* {query}
+		+getNode() : librdf_node* {query}
 		#world_ : librdf_world*
 		+str() : std::string {query}
 	}

@@ -2,28 +2,23 @@
 // Created by Ciaran on 4/4/2020.
 //
 
-#ifndef LIBSEMGEN_TRIPLE_H
-#define LIBSEMGEN_TRIPLE_H
-
-#include <ostream>
-#include "librdf.h"
-#include "Subject.h"
-#include "Predicate.h"
-#include "Resource.h"
-#include <utility>
-#include <algorithm>
-#include <cstring>
-#include "raptor2.h"
-#include "librdf.h"
-#include "Writer.h"
-
+#ifndef LIBSEMSIM_TRIPLE_H
+#define LIBSEMSIM_TRIPLE_H
 
 #include "semsim/RedlandAPIWrappers/LibrdfNode.h"
 #include "semsim/RedlandAPIWrappers/LibrdfStatement.h"
+#include "semsim/Predicate.h"
+#include "semsim/Subject.h"
+#include "semsim/Resource.h"
+#include "semsim/Triple.h"
+#include "librdf.h"
+#include "raptor2.h"
 
-/*
- * todo implement a "world::newTriple" method
- */
+#include <ostream>
+#include <utility>
+#include <algorithm>
+#include <cstring>
+
 
 namespace semsim {
     class Triple {
@@ -83,4 +78,4 @@ namespace semsim {
     typedef Triple SingularAnnotation;
 }
 
-#endif //LIBSEMGEN_TRIPLE_H
+#endif //LIBSEMSIM_TRIPLE_H

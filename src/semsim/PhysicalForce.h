@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#ifndef LIBSEMGEN_PHYSICALFORCE_H
-#define LIBSEMGEN_PHYSICALFORCE_H
+#ifndef LIBSEMSIM_PHYSICALFORCE_H
+#define LIBSEMSIM_PHYSICALFORCE_H
 
 
 #include "PhysicalPhenomenon.h"
@@ -62,4 +62,4 @@ namespace semsim {
     };
 }
 
-#endif //LIBSEMGEN_PHYSICALFORCE_H
+#endif //LIBSEMSIM_PHYSICALFORCE_H

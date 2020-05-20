@@ -29,21 +29,21 @@ TEST_F(SubjectTests, TestDefaultConstructor) {
 }
 
 TEST_F(SubjectTests, TestSubjectFromUri) {
-    semsim::Subject subject = world_.newSubjectUri("meta754");
+    semsim::Subject subject(world_, "meta754");;
     std::string expected = subject.str();
     ASSERT_STREQ(expected.c_str(), "meta754");
 }
 
 TEST_F(SubjectTests, TestStringUri) {
     std::string url_str = "https://www.notarealaddress.com";
-    semsim::Subject subject = world_.newSubjectUri(url_str);
+    semsim::Subject subject(world_, url_str);;
     const std::string &expected = subject.str();
     ASSERT_STREQ(url_str.c_str(), expected.c_str());
 }
 
 TEST_F(SubjectTests, TestGetNodeUri) {
     std::string url_str = "https://www.notarealaddress.com";
-    semsim::Subject subject = world_.newSubjectUri(url_str);
+    semsim::Subject subject(world_, url_str);;
     semsim::LibrdfNode n = subject.getNode();
     std::string actual = n.str();
     ASSERT_STREQ(url_str.c_str(), actual.c_str());
@@ -51,7 +51,7 @@ TEST_F(SubjectTests, TestGetNodeUri) {
 
 TEST_F(SubjectTests, TestGetNodeBlank) {
     std::string string = "blank";
-    semsim::Subject subject = world_.newSubjectBlank(string);
+    semsim::Subject subject(world_, string);;
     semsim::LibrdfNode n = subject.getNode();
     std::string actual = n.str();
     ASSERT_STREQ(string.c_str(), actual.c_str());

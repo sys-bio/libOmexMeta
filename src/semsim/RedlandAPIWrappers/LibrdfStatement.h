@@ -8,12 +8,15 @@
 
 #include <librdf.h>
 #include <memory>
+#include <iostream>
 
 namespace semsim {
     class LibrdfStatement {
         std::shared_ptr<librdf_statement *> statement_;
 
     public:
+        LibrdfStatement() = default;
+
         explicit LibrdfStatement(librdf_statement *statement);
 
         ~LibrdfStatement();

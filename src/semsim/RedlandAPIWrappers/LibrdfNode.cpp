@@ -3,7 +3,6 @@
 //
 
 #include "LibrdfNode.h"
-#include "semsim/Error.h"
 
 /*
  * todo put name of exception in all error messages.

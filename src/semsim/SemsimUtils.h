@@ -2,20 +2,20 @@
 // Created by Ciaran on 4/13/2020.
 //
 
-#ifndef LIBSEMGEN_SEMSIMUTILS_H
-#define LIBSEMGEN_SEMSIMUTILS_H
+#ifndef LIBSEMSIM_SEMSIMUTILS_H
+#define LIBSEMSIM_SEMSIMUTILS_H
 
+#include "semsim/Query.h"
+#include "semsim/CurlGet.h"
+#include "semsim/MetaID.h"
+
+#include <librdf.h>
 #include <string>
 #include <vector>
-#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
-#include "semsim/RedlandAPIWrappers/LibrdfModel.h"
 #include <sys/stat.h>
 #include <stdexcept>
 #include <sstream>
-#include <librdf.h>
-#include "CurlGet.h"
-#include "Query.h"
-#include "MetaID.h"
+
 
 // macro helpful for debugging
 #define HERE()                              \
@@ -37,17 +37,16 @@ namespace semsim {
 
         static void download(const std::string &url, std::string filename);
 
-        //
         static std::vector<std::string> splitStringBy(const std::string &str, char delimiter);
 
-//        static std::string generateUniqueMetaid(
-//                LibrdfWorld world, LibrdfModel model, std::string metaid_base,
-//                std::vector<std::string> exclusions = std::vector<std::string>()
-//        );
+        static std::string generateUniqueMetaid(
+                LibrdfWorld world, LibrdfModel model, std::string metaid_base,
+                std::vector<std::string> exclusions = std::vector<std::string>()
+        );
 
         static std::string addFilePrefixToString(std::string str);
 
     };
 }
 
-#endif //LIBSEMGEN_SEMSIMUTILS_H
+#endif //LIBSEMSIM_SEMSIMUTILS_H

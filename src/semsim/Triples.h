@@ -2,15 +2,16 @@
 // Created by Ciaran on 4/29/2020.
 //
 
-#ifndef LIBSEMGEN_TRIPLES_H
-#define LIBSEMGEN_TRIPLES_H
+#ifndef LIBSEMSIM_TRIPLES_H
+#define LIBSEMSIM_TRIPLES_H
+
+#include "semsim/Triple.h"
+#include "semsim/Predicate.h"
+#include "semsim/Subject.h"
+#include "semsim/Resource.h"
+#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
 
 #include <vector>
-#include "Triple.h"
-#include "Subject.h"
-#include "Resource.h"
-#include "Predicate.h"
-#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {
 
@@ -28,7 +29,7 @@ namespace semsim {
 
         void push_back(Triple triple);
 
-        void emplace_back(LibrdfWorld world, librdf_statement *statement);
+        void emplace_back(LibrdfWorld world, LibrdfStatement statement);
 
         void emplace_back(LibrdfWorld world, Subject subject, PredicatePtr predicatePtr, Resource resource);
 
@@ -40,9 +41,9 @@ namespace semsim {
 
         int size();
 
-        std::vector<semsim::Triple>::iterator begin();
+        std::vector<Triple>::iterator begin();
 
-        std::vector<semsim::Triple>::iterator end();
+        std::vector<Triple>::iterator end();
 
         std::string str(std::string format = "rdfxml-abbrev", std::string base="file://./annotations.rdf");
     };
@@ -52,4 +53,4 @@ namespace semsim {
     //todo implement equality operators
 }
 
-#endif //LIBSEMGEN_TRIPLES_H
+#endif //LIBSEMSIM_TRIPLES_H

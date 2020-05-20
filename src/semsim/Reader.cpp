@@ -5,14 +5,15 @@
 #include "Reader.h"
 
 
+
 using namespace std;
 
 semsim::Reader::Reader(LibrdfWorld world, LibrdfModel model, std::string format, std::string base_uri) {
     this->world_ = world;
-    this->raptor_world_ptr_ = librdf_world_get_raptor(this->world_);
+    this->raptor_world_ptr_ = world.getRaptor();
     this->model_ = model;
     this->format_ = std::move(format);
-    this->base_uri_ = librdf_new_uri(this->world_, (const unsigned char *) base_uri.c_str());
+    this->base_uri_ = world_.newUri(base_uri);
 
     // generate new parsesr
     this->parser_ = makeParser(this->format_);
@@ -37,7 +38,7 @@ librdf_parser *semsim::Reader::makeParser(const std::string &format) {
         throw std::invalid_argument(os.str());
     }
     //todo read in  mime type from omex manifest, if you can
-    parser_ = librdf_new_parser(world_, format.c_str(), nullptr, nullptr);
+    parser_ = librdf_new_parser(*world_.getWorld(), format.c_str(), nullptr, nullptr);
     if (!parser_) {
         throw std::invalid_argument("Failed to create new parser\n");
     }
@@ -57,24 +58,26 @@ librdf_parser *semsim::Reader::makeParser(const std::string &format) {
 }
 
 void semsim::Reader::fromString(const std::string &rdf_string) {
-    librdf_parser_parse_string_into_model(parser_, (const unsigned char *) rdf_string.c_str(), base_uri_, model_);
+    librdf_parser_parse_string_into_model(parser_, (const unsigned char *) rdf_string.c_str(), *base_uri_.getUri(),
+                                          *model_.getModel());
 }
 
 void semsim::Reader::fromFile(const std::string &filename) {
-    raptor_uri *uri = librdf_new_uri_from_filename(world_, (const char *) filename.c_str());
+    LibrdfUri uri = world_.newUri(filename);
     if (!uri) {
         fprintf(stderr, "Failed to create URI\n");
     }
     base_uri_ = uri;
-    librdf_parser_parse_into_model(parser_, uri, base_uri_, model_);
+    librdf_parser_parse_into_model(parser_, *uri.getUri(), *base_uri_.getUri(), *model_.getModel());
 }
 
 void semsim::Reader::setOption(const std::string &option, const std::string &value) {
     // prefix for option uri's. Append with desired option for full uri.
     std::string feature_uri_base = "http://feature.librdf.org/raptor-";
-    raptor_uri *uri = raptor_new_uri(raptor_world_ptr_, (const unsigned char *) (feature_uri_base + option).c_str());
-    LibrdfNode node = librdf_new_node_from_literal(world_, (const unsigned char *) value.c_str(), nullptr, 0);
-    librdf_parser_set_feature(parser_, uri, node);
+    raptor_uri *uri = raptor_new_uri(
+            *raptor_world_ptr_.getRaptorWorld(), (const unsigned char *) (feature_uri_base + option).c_str());
+    LibrdfNode node = world_.newNodeLiteral(value, nullptr, 0);
+    librdf_parser_set_feature(parser_, uri, *node.getNode());
 }
 
 
@@ -109,34 +112,35 @@ vector<string> semsim::Reader::getSeenNamespaces() {
 
 
 void semsim::Reader::setBaseUri(const std::string &baseUri) {
-    this->base_uri_ = librdf_new_uri(world_, (const unsigned char *) baseUri.c_str());
+    this->base_uri_ = world_.newUri(baseUri);
 }
 
-LibrdfModel semsim::Reader::getModel() const {
-    return model_;
+
+const std::vector<std::string> &semsim::Reader::getValidParserNames() const {
+    return valid_parser_names;
 }
 
-LibrdfWorld semsim::Reader::getWorld() const {
+const semsim::LibrdfWorld &semsim::Reader::getWorld() const {
     return world_;
 }
 
-raptor_world *semsim::Reader::getRaptorWorld() const {
+const semsim::RaptorWorld &semsim::Reader::getRaptorWorldPtr() const {
     return raptor_world_ptr_;
 }
 
-const std::string &semsim::Reader::getFormat() const {
+const string &semsim::Reader::getFormat() const {
     return format_;
+}
+
+const semsim::LibrdfModel &semsim::Reader::getModel() const {
+    return model_;
 }
 
 librdf_parser *semsim::Reader::getParser() const {
     return parser_;
 }
 
-LibrdfUri semsim::Reader::getBaseUri() const {
+const semsim::LibrdfUri &semsim::Reader::getBaseUri() const {
     return base_uri_;
-}
-
-const std::vector<std::string> &semsim::Reader::getValidParserNames() const {
-    return valid_parser_names;
 }
 

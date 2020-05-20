@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#ifndef LIBSEMGEN_ANNOTATIONTYPE_H
-#define LIBSEMGEN_ANNOTATIONTYPE_H
+#ifndef LIBSEMSIM_ANNOTATIONTYPE_H
+#define LIBSEMSIM_ANNOTATIONTYPE_H
 /*
  * AnnotationType enum is on its own to
  * protect against circular dependecies.
@@ -21,4 +21,4 @@ namespace semsim {
 }
 
 
-#endif //LIBSEMGEN_ANNOTATIONTYPE_H
+#endif //LIBSEMSIM_ANNOTATIONTYPE_H

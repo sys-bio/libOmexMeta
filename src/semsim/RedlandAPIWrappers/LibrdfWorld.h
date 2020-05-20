@@ -10,25 +10,20 @@
 #include <iostream>
 #include <memory>
 #include <regex>
-#include <semsim/Predicate.h>
 
 #include "LibrdfStorage.h"
-#include "semsim/SemsimUtils.h"
-
 #include "RaptorWorld.h"
 #include "LibrdfModel.h"
-#include "LibrdfStorage.h"
 #include "LibrdfNode.h"
 #include "LibrdfUri.h"
 
-#include "semsim/Subject.h"
-#include "semsim/Predicate.h"
+
+//#include "semsim/SemsimUtils.h"
+//#include "semsim/Subject.h"
+//#include "semsim/Predicate.h"
 
 
 namespace semsim {
-
-    class Predicate;
-
 
     class LibrdfWorld {
         std::shared_ptr<librdf_world *> world_;
@@ -61,9 +56,9 @@ namespace semsim {
 
         LibrdfModel newModel(const LibrdfStorage &storage, const std::string &options_string = std::string());
 
-        LibrdfNode newNodeUriString(const std::string &string);
+        LibrdfNode newNodeUriString(const std::string &string) const;
 
-        LibrdfNode newNodeUri(const LibrdfUri &raptorUri);
+        LibrdfNode newNodeUri(const LibrdfUri &raptorUri) const;
 
         LibrdfNode newNodeBlank(const std::string &identifier);
 
@@ -73,15 +68,15 @@ namespace semsim {
         LibrdfNode newNodeTypedLiteral(
                 const std::string &literal,
                 const std::string &datatypeUri = "http://www.w3.org/2001/XMLSchema#string",
-                const char *xml_language = nullptr);
+                const char *xml_language = nullptr) const;
 
         LibrdfUri newUri(const std::string &uri_string);
 
-        Subject newSubjectUri(const std::string &subject_value);
-
-        Subject newSubjectBlank(const std::string &subject_value);
-
-        PredicatePtr newPredicate(std::string namespace_, const std::string &term);
+//        Subject newSubjectUri(const std::string &subject_value);
+//
+//        Subject newSubjectBlank(const std::string &subject_value);
+//
+//        PredicatePtr newPredicate(std::string namespace_, const std::string &term);
 
     };
 

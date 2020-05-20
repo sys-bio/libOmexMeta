@@ -2,16 +2,17 @@
 // Created by Ciaran on 4/4/2020.
 //
 
-#ifndef LIBSEMGEN_SUBJECT_H
-#define LIBSEMGEN_SUBJECT_H
+#ifndef LIBSEMSIM_SUBJECT_H
+#define LIBSEMSIM_SUBJECT_H
 
 #include "iostream"
+#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
 #include "RDFNode.h"
 #include <vector>
 
 #include <utility>
 #include "semsim/Error.h"
-#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
+
 
 namespace semsim {
 
@@ -22,15 +23,15 @@ namespace semsim {
     public:
         Subject() = default;
 
-        explicit Subject(const RDFBlankNode &node);
+        explicit Subject(LibrdfWorld world, const RDFBlankNode &node);
 
-        explicit Subject(const RDFURINode &node);
+        explicit Subject(LibrdfWorld world, const RDFURINode &node);
 
         explicit Subject(const RDFNode &node);
 
-        static Subject uri(LibrdfWorld world, const std::string &uri);
+        static Subject fromUri(LibrdfWorld world, const std::string &uri);
 
-        static Subject blank(LibrdfWorld world, const std::string &blank);
+        static Subject fromBlank(LibrdfWorld world, const std::string &blank);
 
         ~Subject();
 
@@ -44,4 +45,4 @@ namespace semsim {
 
 }
 
-#endif //LIBSEMGEN_SUBJECT_H
+#endif //LIBSEMSIM_SUBJECT_H

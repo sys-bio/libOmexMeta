@@ -2,9 +2,8 @@
 // Created by Ciaran on 4/15/2020.
 //
 
-#ifndef LIBSEMGEN_EDITOR_H
-#define LIBSEMGEN_EDITOR_H
-
+#ifndef LIBSEMSIM_EDITOR_H
+#define LIBSEMSIM_EDITOR_H
 
 
 #include "semsim/XmlAssistant.h"
@@ -14,17 +13,17 @@
 #include "semsim/Participant.h"
 #include "semsim/RDF.h"
 #include "semsim/PhysicalPhenomenon.h"
-
 #include "semsim/PhysicalEntity.h"
 #include "semsim/PhysicalProcess.h"
 #include "semsim/PhysicalForce.h"
 #include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
-#include "RDF.h"
-#include "librdf.h"
 #include "semsim/Error.h"
+#include "semsim/SemsimUtils.h"
+#include "semsim/RDF.h"
+
+#include "librdf.h"
 
 #include <utility>
-#include "SemsimUtils.h"
 // todo implement this logic from Maxes email
 /*
  * Here's the basic logic that we use in SemGen to determine which OPB physical property is represented by a <species> in an SBML model:
@@ -117,4 +116,4 @@ namespace semsim {
 
 }
 
-#endif //LIBSEMGEN_EDITOR_H
+#endif //LIBSEMSIM_EDITOR_H

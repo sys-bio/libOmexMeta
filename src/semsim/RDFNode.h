@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/17/2020.
 //
 
-#ifndef LIBSEMGEN_RDFNODE_H
-#define LIBSEMGEN_RDFNODE_H
+#ifndef LIBSEMSIM_RDFNODE_H
+#define LIBSEMSIM_RDFNODE_H
 
 #include <string>
 #include <librdf.h>
@@ -71,4 +71,4 @@ namespace semsim {
 
 }
 
-#endif //LIBSEMGEN_RDFNODE_H
+#endif //LIBSEMSIM_RDFNODE_H

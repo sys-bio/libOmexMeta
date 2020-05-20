@@ -88,7 +88,7 @@ namespace semsim {
         return librdfModel;
     }
 
-    LibrdfNode LibrdfWorld::newNodeUriString(const std::string &string) {
+    LibrdfNode LibrdfWorld::newNodeUriString(const std::string &string) const {
 
         std::string identifier_dot_org = "https://identifiers.org/";
         std::regex identifiers_regex(identifier_dot_org);
@@ -108,7 +108,7 @@ namespace semsim {
         return LibrdfNode(node);
     }
 
-    LibrdfNode LibrdfWorld::newNodeUri(const LibrdfUri &raptorUri) {
+    LibrdfNode LibrdfWorld::newNodeUri(const LibrdfUri &raptorUri) const {
         librdf_node *node = librdf_new_node_from_uri(*world_, *raptorUri.getUri());
         return LibrdfNode(node);
     }
@@ -123,7 +123,7 @@ namespace semsim {
     LibrdfNode LibrdfWorld::newNodeTypedLiteral(
             const std::string &literal,
             const std::string &datatypeUri,
-            const char *xml_language) {
+            const char *xml_language) const {
         std::string prefix = "http://www.w3.org/2001/XMLSchema#";
         std::string data_type_url_tmp = std::string();
         if (datatypeUri.rfind(prefix, 0) == 0) {
@@ -153,17 +153,17 @@ namespace semsim {
         return !getWorld();
     }
 
-    Subject LibrdfWorld::newSubjectUri(const std::string &subject_value) {
-        return Subject(RDFURINode(newNodeUriString(subject_value)));
-    }
-
-    Subject LibrdfWorld::newSubjectBlank(const std::string &subject_value) {
-        return Subject(RDFURINode(newNodeBlank(subject_value)));
-    }
-
-    PredicatePtr LibrdfWorld::newPredicate(std::string namespace_, const std::string &term) {
-        return PredicateFactory(*this, namespace_, term);
-    }
+//    Subject LibrdfWorld::newSubjectUri(const std::string &subject_value) {
+//        return Subject(RDFURINode(newNodeUriString(subject_value)));
+//    }
+//
+//    Subject LibrdfWorld::newSubjectBlank(const std::string &subject_value) {
+//        return Subject(RDFURINode(newNodeBlank(subject_value)));
+//    }
+//
+//    PredicatePtr LibrdfWorld::newPredicate(std::string namespace_, const std::string &term) {
+//        return PredicateFactory(*this, namespace_, term);
+//    }
 
 
 }
