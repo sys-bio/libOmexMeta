@@ -44,6 +44,8 @@ namespace semsim {
 
         LibrdfNode getObjectNode();
     };
+
+
 }
 
 #endif //LIBSEMSIM_LIBRDFSTATEMENT_H
