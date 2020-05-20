@@ -13,6 +13,7 @@
 #include <utility>
 
 #include "semsim/RedlandAPIWrappers/LibrdfNode.h"
+#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
 
 namespace semsim {
 
@@ -29,6 +30,7 @@ namespace semsim {
 
         ~RDFNode();
 
+        static std::shared_ptr<RDFNode> fromRDFNode(LibrdfWorld world, LibrdfNode node);
     };
 
     class RDFLiteralNode : public RDFNode {

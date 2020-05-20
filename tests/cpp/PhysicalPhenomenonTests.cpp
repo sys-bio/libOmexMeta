@@ -69,7 +69,7 @@ semsim::PhysicalPhenomenon phenomenon(
 std::string expected = "metaid004";
 std::string actual = (const char *) librdf_uri_as_string(
         librdf_node_get_uri(
-                phenomenon.getSubject().toRdfNode()
+                phenomenon.getSubject().getNode()
         )
 );
 ASSERT_STREQ(expected

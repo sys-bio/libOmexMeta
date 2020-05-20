@@ -71,8 +71,8 @@ semsim::PhysicalProcess process(
         )
 );
 
-std::string actual = (const char *) librdf_uri_as_string(librdf_node_get_uri(process.getSubject().toRdfNode()));
-std::string expected = "MetaId004";
+std::string actual = (const char *) librdf_uri_as_string(librdf_node_get_uri(process.getSubject().getNode()));
+    std::string expected = "MetaId004";
 ASSERT_STREQ(expected
 .
 
@@ -125,26 +125,26 @@ std::ostringstream actual;
 for (
 auto &it
 : sources_triples) {
-librdf_node_type node_type = librdf_node_get_type(it.getResource().toRdfNode());
+    librdf_node_type node_type = librdf_node_get_type(it.getResource().getNode());
 
 if (node_type == LIBRDF_NODE_TYPE_RESOURCE) {
 actual <<
 librdf_uri_as_string(
         librdf_node_get_uri(
-        it.getResource().toRdfNode()
+                it.getResource().getNode()
 )
 ) <<
 std::endl;
 } else if (node_type == LIBRDF_NODE_TYPE_LITERAL) {
 actual <<
 librdf_node_get_literal_value(it
-.
+                                      .
 
-getResource()
+                                              getResource()
 
-.
+                                      .
 
-toRdfNode()
+                                              getNode()
 
 ) <<
 std::endl;

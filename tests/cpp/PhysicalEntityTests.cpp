@@ -76,9 +76,9 @@ semsim::PhysicalEntity physicalEntity(
                  semsim::Resource(world, semsim::RDFURINode(world, "https://identifiers.org/fma/FMA:63877"))
                 })
 );
-std::string actual = (const char *) librdf_uri_as_string(
-        librdf_node_get_uri(physicalEntity.getSubject().toRdfNode()));
-std::string expected = "Metaid0034";
+    std::string actual = (const char *) librdf_uri_as_string(
+            librdf_node_get_uri(physicalEntity.getSubject().getNode()));
+    std::string expected = "Metaid0034";
 ASSERT_STREQ(expected
 .
 
@@ -105,9 +105,9 @@ semsim::PhysicalEntity physicalEntity(
                  semsim::Resource(world, semsim::RDFURINode(world, "https://identifiers.org/fma/FMA:63877"))
                 })
 );
-std::string actual = (const char *) librdf_uri_as_string(
-        librdf_node_get_uri(physicalEntity.getPhysicalProperty().toRdfNode()));
-std::string expected = "https://identifiers.org/OPB/OPB_00340";
+    std::string actual = (const char *) librdf_uri_as_string(
+            librdf_node_get_uri(physicalEntity.getPhysicalProperty().getNode()));
+    std::string expected = "https://identifiers.org/OPB/OPB_00340";
 ASSERT_STREQ(expected
 .
 
@@ -192,9 +192,9 @@ semsim::PhysicalEntity physicalEntity(
                  semsim::Resource(world, semsim::RDFURINode(world, "fma:FMA:63877"))
                 })
 );
-std::string actual = (const char *) librdf_uri_as_string(
-        librdf_node_get_uri(physicalEntity.getIdentityResource().toRdfNode()));
-std::string expected = "https://identifiers.org/obo/PR_000000365";
+    std::string actual = (const char *) librdf_uri_as_string(
+            librdf_node_get_uri(physicalEntity.getIdentityResource().getNode()));
+    std::string expected = "https://identifiers.org/obo/PR_000000365";
 ASSERT_STREQ(expected
 .
 
@@ -277,8 +277,8 @@ getLocationResources()
 
 ) {
 actual <<
-librdf_uri_as_string(librdf_node_get_uri(it.toRdfNode())
-) <<
+       librdf_uri_as_string(librdf_node_get_uri(it.getNode())
+       ) <<
 std::endl;
 }
 std::string expected = "https://identifiers.org/fma/FMA:72564\n"

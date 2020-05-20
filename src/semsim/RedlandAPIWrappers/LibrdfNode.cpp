@@ -90,5 +90,9 @@ namespace semsim {
         return value;
     }
 
+    raptor_term_type LibrdfNode::getType() {
+        return (*node_)->type;
+    }
+
 
 }
