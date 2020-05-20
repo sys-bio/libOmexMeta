@@ -148,8 +148,8 @@ TEST_F(TripleTests, TestPredicate2
 ) {
 semsim::Triple triple(world_, subject, predicate, resource);
 std::string expected = predicate_str;
-const char *actual = (const char *) librdf_uri_as_string(
-        librdf_node_get_uri(triple.getPredicatePtr()->toRdfNode()));
+    const char *actual = (const char *) librdf_uri_as_string(
+            librdf_node_get_uri(triple.getPredicatePtr()->getNode()));
 ASSERT_STREQ(expected
 .
 
@@ -169,7 +169,7 @@ c_str()
 //    std::cout << triple.getPredicatePtr()->getUri() << std::endl;
 //    std::cout << triple.getPredicatePtr()->getTerm() << std::endl;
 //    std::cout << triple.getPredicatePtr()->getNamespace() << std::endl;
-////    const char* actual = (const char*) librdf_uri_as_string(librdf_node_get_uri(triple.getPredicatePtr()->toRdfNode()));
+////    const char* actual = (const char*) librdf_uri_as_string(librdf_node_get_uri(triple.getPredicatePtr()->getNode()));
 ////    ASSERT_STREQ(expected.c_str(), triple.getPredicatePtr()->str().c_str());
 //}
 
@@ -200,9 +200,9 @@ c_str()
 }
 TEST_F(TripleTests, TestResource2
 ) {
-semsim::Triple triple(world_, subject, predicatePtr, resource);
-std::string actual = (const char *) librdf_uri_to_string(librdf_node_get_uri(triple.getResource().toRdfNode()));
-std::string expected = resource_id;
+    semsim::Triple triple(world_, subject, predicatePtr, resource);
+    std::string actual = (const char *) librdf_uri_to_string(librdf_node_get_uri(triple.getResource().getNode()));
+    std::string expected = resource_id;
 ASSERT_STREQ(expected
 .
 
@@ -219,9 +219,9 @@ TEST_F(TripleTests, TestTripleVecGetResource
 ) {
 semsim::Triple triple1(world_, subject, predicatePtr, resource);
 semsim::Triple triple2(world_, subject, predicatePtr, resource);
-std::vector<semsim::Triple> vec = {triple1, triple2};
-std::string actual = (const char *) librdf_uri_to_string(librdf_node_get_uri(vec[0].getResource().toRdfNode()));
-std::string expected = "https://identifiers.org/uniprot/P0DP23";
+    std::vector<semsim::Triple> vec = {triple1, triple2};
+    std::string actual = (const char *) librdf_uri_to_string(librdf_node_get_uri(vec[0].getResource().getNode()));
+    std::string expected = "https://identifiers.org/uniprot/P0DP23";
 ASSERT_STREQ(expected
 .
 

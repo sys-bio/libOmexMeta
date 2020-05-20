@@ -21,13 +21,36 @@ namespace semsim {
     }
 
     std::string RDFNode::str() {
-        throw std::logic_error("Base class of RDF should not be used. "
-                               "The fact you are seeing this error means"
+        throw std::logic_error("Base class of RDFNode should not be used. "
+                               "The fact you are seeing this error means "
                                "there is a bug. Plase submit a github issue.");
         return std::__cxx11::string();
     }
 
     RDFNode::~RDFNode() = default;
+
+    /*
+     * Creates a shared pointer to an RDFNode object given a librdf_world and
+     * a librdf_node.
+     */
+    std::shared_ptr<RDFNode> RDFNode::fromRDFNode(LibrdfWorld world, LibrdfNode node) {
+        switch (node.getType()) {
+            case RAPTOR_TERM_TYPE_URI  : {
+                return std::make_shared<RDFURINode>(node);
+            }
+
+            case RAPTOR_TERM_TYPE_LITERAL: {
+                return std::make_shared<RDFLiteralNode>(node);
+            }
+
+            case RAPTOR_TERM_TYPE_BLANK: {
+                return std::make_shared<RDFBlankNode>(node);
+            }
+
+            default:
+                throw ValueException("Node not recognised");
+        }
+    }
 
 
 /***************************************************

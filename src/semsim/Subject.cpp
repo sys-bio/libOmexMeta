@@ -42,7 +42,11 @@ namespace semsim {
         return rdf_node_ptr_->str();
     }
 
-    Subject::~Subject() = default;
+    bool Subject::isSet() const {
+        return !rdf_node_ptr_->getNode();
+    }
+
+    semsim::Subject::~Subject() = default;
 
 
 }

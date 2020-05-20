@@ -63,7 +63,7 @@ semsim::Triple triple = semsim::PhysicalPropertyResource(
 
 std::string actual = (const char *) librdf_uri_as_string(
         librdf_node_get_uri(
-                triple.getSubject().toRdfNode()
+                triple.getSubject().getNode()
         )
 );
 std::string expected = "Entity0";
@@ -89,7 +89,7 @@ semsim::Triple triple = semsim::PhysicalPropertyResource(
 
 std::string actual = (const char *) librdf_uri_as_string(
         librdf_node_get_uri(
-                triple.getResource().toRdfNode()
+                triple.getResource().getNode()
         )
 );
 std::string expected = "https://identifiers.org/OPB/OPB_1234";

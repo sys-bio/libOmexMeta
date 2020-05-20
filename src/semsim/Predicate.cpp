@@ -21,7 +21,7 @@ namespace semsim {
         this->uri_node_ = std::make_shared<RDFURINode>(world_.newNodeUriString(uri_));
     }
 
-    Predicate::Predicate(LibrdfWorld world, const RDFURINode &node)
+    Predicate::Predicate(LibrdfWorld world, LibrdfNode node)
             : world_(std::move(world)), uri_node_(std::make_shared<RDFURINode>(node)) {
         // some logic for processing the uri in a node to automatically produce the fields we want.
         std::string val = uri_node_->str();

@@ -6,6 +6,7 @@
 #define LIBSEMSIM_LIBRDFNODE_H
 
 #include <librdf.h>
+#include <raptor2.h>
 #include <memory>
 #include "semsim/Error.h"
 
@@ -34,6 +35,8 @@ namespace semsim {
         bool operator!() const;
 
         std::string str();
+
+        raptor_term_type getType();
 
     };
 }
