@@ -22,6 +22,7 @@
 
 
 namespace semsim {
+
     class Triple {
     protected:
         LibrdfWorld world_{};
