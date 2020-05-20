@@ -7,6 +7,8 @@
 
 #include <librdf.h>
 #include <memory>
+#include <string>
+#include <iostream>
 
 
 /*
@@ -21,6 +23,8 @@ namespace semsim {
         std::shared_ptr<librdf_model *> model_;
 
     public:
+        LibrdfModel() = default;
+
         explicit LibrdfModel(librdf_model *model);
 
         ~LibrdfModel();

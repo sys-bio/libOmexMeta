@@ -114,6 +114,7 @@ else ()
 
     set(INCLUDE_DIRS
             "${CMAKE_SOURCE_DIR}/src"
+            "${CMAKE_SOURCE_DIR}/src/semsim/RedlandAPIWrappers"
             "${LIBXML2_INCLUDE_DIR}"
             "${LIBSBML_DEPS_INCLUDE_DIR}"
             "${LIBSBML_INCLUDE_DIR}"
@@ -143,7 +144,6 @@ else ()
             "rdf"
             "rasqal"
             "raptor2"
-
             )
 
     message(STATUS "REDLAND_LIBRARY ${REDLAND_LIBRARY}")

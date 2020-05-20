@@ -7,6 +7,8 @@
 
 #include <librdf.h>
 #include <memory>
+#include "semsim/Error.h"
+
 
 namespace semsim {
     class LibrdfNode {
@@ -15,6 +17,8 @@ namespace semsim {
         const std::shared_ptr<librdf_node *> &getNode() const;
 
     public:
+        LibrdfNode() = default;
+
         explicit LibrdfNode(librdf_node *node);
 
         ~LibrdfNode();

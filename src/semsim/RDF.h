@@ -2,23 +2,24 @@
 // Created by Ciaran on 4/8/2020.
 //
 
-#ifndef LIBSEMGEN_RDF_H
-#define LIBSEMGEN_RDF_H
+#ifndef LIBSEMSIM_RDF_H
+#define LIBSEMSIM_RDF_H
 
-#include <unordered_map>
-#include "librdf.h"
-#include "Writer.h"
-#include "Editor.h"
-#include "XmlAssistant.h"
-#include "Query.h"
+#include "semsim/Writer.h"
+#include "semsim/Editor.h"
+#include "semsim/XmlAssistant.h"
+#include "semsim/Query.h"
 #include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/Reader.h"
+#include "semsim/Query.h"
+
+#include "librdf.h"
+#include <unordered_map>
 #include <string>
 #include <iostream>
 #include <cstring>
 #include <utility>
 
-#include "Reader.h"
-#include "Query.h"
 
 namespace semsim {
 
@@ -153,4 +154,4 @@ namespace semsim {
 //    + toFile(std::string format) : std::string
 
 
-#endif //LIBSEMGEN_RDF_H
+#endif //LIBSEMSIM_RDF_H

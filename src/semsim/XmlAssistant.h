@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/14/2020.
 //
 
-#ifndef LIBSEMGEN_XMLASSISTANT_H
-#define LIBSEMGEN_XMLASSISTANT_H
+#ifndef LIBSEMSIM_XMLASSISTANT_H
+#define LIBSEMSIM_XMLASSISTANT_H
 
 
 #include <vector>
@@ -93,4 +93,4 @@ namespace semsim {
 
     };
 }
-#endif //LIBSEMGEN_XMLASSISTANT_H
+#endif //LIBSEMSIM_XMLASSISTANT_H

@@ -2,8 +2,6 @@
 // Created by Ciaran on 5/17/2020.
 //
 
-#include <utility>
-#include <memory>
 #include "RaptorWorld.h"
 
 namespace semsim {

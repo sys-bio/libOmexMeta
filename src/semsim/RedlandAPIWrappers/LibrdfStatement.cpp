@@ -2,7 +2,6 @@
 // Created by Ciaran on 5/19/2020.
 //
 
-#include <iostream>
 #include "LibrdfStatement.h"
 
 

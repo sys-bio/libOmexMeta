@@ -2,11 +2,7 @@
 // Created by Ciaran on 5/17/2020.
 //
 
-#include <string>
-#include <utility>
-#include <iostream>
 #include "LibrdfModel.h"
-#include "semsim/SemsimUtils.h"
 
 namespace semsim {
 

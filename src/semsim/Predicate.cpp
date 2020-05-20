@@ -4,7 +4,7 @@
 
 
 
-#include "Predicate.h"
+#include "semsim/Predicate.h"
 
 namespace semsim {
 
@@ -65,7 +65,7 @@ namespace semsim {
         }
         verify(valid_terms_, term_);
         this->uri_node_ = std::make_shared<RDFURINode>(
-                RDFURINode(world_, node)
+                RDFURINode(world_.newNodeUriString(this->uri_))
         );
 
     }
@@ -88,8 +88,8 @@ namespace semsim {
         return uri_;
     }
 
-    LibrdfNode Predicate::toRdfNode() {
-        return uri_node_->toRdfNode();
+    LibrdfNode Predicate::getNode() {
+        return uri_node_->getNode();
     }
 
     int Predicate::verify(std::vector<std::string> valid_terms, const std::string &term) {

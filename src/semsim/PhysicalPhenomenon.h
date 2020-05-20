@@ -2,17 +2,17 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#ifndef LIBSEMGEN_PhysicalPhenomenon_H
-#define LIBSEMGEN_PhysicalPhenomenon_H
+#ifndef LIBSEMSIM_PhysicalPhenomenon_H
+#define LIBSEMSIM_PhysicalPhenomenon_H
 
-#include "Subject.h"
-#include "PhysicalPropertyResource.h"
-#include "AnnotationType.h"
-#include "Triple.h"
-#include "Triples.h"
-#include "MetaID.h"
-#include "Error.h"
-#include "Query.h"
+#include "semsim/Subject.h"
+#include "semsim/PhysicalPropertyResource.h"
+#include "semsim/AnnotationType.h"
+#include "semsim/Triple.h"
+#include "semsim/Triples.h"
+#include "semsim/MetaID.h"
+#include "semsim/Error.h"
+#include "semsim/Query.h"
 #include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
 
 namespace semsim {
@@ -52,4 +52,4 @@ namespace semsim {
 
 }
 
-#endif //LIBSEMGEN_PhysicalPhenomenon_H
+#endif //LIBSEMSIM_PhysicalPhenomenon_H

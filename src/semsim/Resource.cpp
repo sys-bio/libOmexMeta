@@ -21,21 +21,22 @@ namespace semsim {
         this->rdf_node_ptr_ = std::make_shared<RDFBlankNode>(node);
     }
 
-    LibrdfNode Resource::toRdfNode() const {
-        return rdf_node_ptr_->toRdfNode();
+    LibrdfNode Resource::getNode() const {
+        return rdf_node_ptr_->getNode();
     }
 
     std::string Resource::str() const {
         return rdf_node_ptr_->str();
     }
 
-    Resource::Resource(LibrdfWorld world, LibrdfNode node)
-            : world_(world), rdf_node_ptr_(RDFNode::fromRDFNode(world, node)){
-
-    }
+//    Resource::Resource(LibrdfWorld world, LibrdfNode node)
+//            : world_(world), rdf_node_ptr_(
+//                    std::make_shared<RDFNode>(RDFNode::fromRDFNode(world, node)){
+//
+//    }
 
     bool Resource::isSet() const {
-        if (rdf_node_ptr_){
+        if (rdf_node_ptr_) {
             return true;
         }
         return false;

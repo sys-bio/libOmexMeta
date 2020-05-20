@@ -11,31 +11,21 @@ public:
 
     std::string bqb_ns = "http://biomodels.net/biology-qualifiers/";
 
-    librdf_world *world;
-    librdf_model *model;
-    librdf_storage *storage;
+    LibrdfWorld world;
 
     PredicateTests() {
-        world = librdf_new_world();
-        storage = librdf_new_storage(world, "memory", "test", nullptr);
-        model = librdf_new_model(world, storage, nullptr);
-
     }
 
     ~PredicateTests() override {
-        librdf_free_world(world);
-        librdf_free_model(model);
-        librdf_free_storage(storage);
     }
 
 };
 
-TEST_F(PredicateTests, TestCreateStaticFunctionFromBasePredicate
-) {
+TEST_F(PredicateTests, TestCreateStaticFunctionFromBasePredicate) {
     semsim::Predicate predicate2(world, bqb_ns, "is", "bqbiol");
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     std::string actual = predicate2.str();
-    ASSERT_STREQ(expected.c_str(), actual.c_str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 //TEST_F(PredicateTests, TestToRdfNode) {

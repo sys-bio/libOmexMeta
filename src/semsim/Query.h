@@ -2,23 +2,23 @@
 // Created by Ciaran on 4/24/2020.
 //
 
-#ifndef LIBSEMGEN_QUERY_H
-#define LIBSEMGEN_QUERY_H
+#ifndef LIBSEMSIM_QUERY_H
+#define LIBSEMSIM_QUERY_H
 
-#include <librdf.h>
-#include <string>
+#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/Error.h"
+#include "semsim/SemsimUtils.h"
+//#include "semsim/Triple.h"
+//#include "semsim/Triples.h"
+
+#include "librdf.h"
+
 #include <unordered_map>
 #include <vector>
-#include "Triples.h"
-#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
 #include <string>
 #include <sstream>
 #include <iostream>
 #include <utility>
-#include "librdf.h"
-#include "Error.h"
-#include "Error.h"
-#include "SemsimUtils.h"
 
 namespace semsim {
 
@@ -134,8 +134,8 @@ namespace semsim {
 
         std::string resultsAsStr(const std::string &output_format);
 
-        Triples resultsAsTriples();
+//        Triples resultsAsTriples();
     };
 }
 
-#endif //LIBSEMGEN_QUERY_H
+#endif //LIBSEMSIM_QUERY_H

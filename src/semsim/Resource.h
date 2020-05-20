@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/4/2020.
 //
 
-#ifndef LIBSEMGEN_RESOURCE_H
-#define LIBSEMGEN_RESOURCE_H
+#ifndef LIBSEMSIM_RESOURCE_H
+#define LIBSEMSIM_RESOURCE_H
 
 #include "librdf.h"
 #include <iostream>
@@ -30,7 +30,7 @@ namespace semsim {
 
         Resource(LibrdfWorld world, LibrdfNode node);
 
-        LibrdfNode toRdfNode() const;
+        LibrdfNode getNode() const;
 
         std::string str() const;
 
@@ -41,5 +41,5 @@ namespace semsim {
 
 }
 
-#endif //LIBSEMGEN_RESOURCE_H
+#endif //LIBSEMSIM_RESOURCE_H
 

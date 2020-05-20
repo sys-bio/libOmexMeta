@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/11/2020.
 //
 
-#ifndef LIBSEMGEN_CURLGET_H
-#define LIBSEMGEN_CURLGET_H
+#ifndef LIBSEMSIM_CURLGET_H
+#define LIBSEMSIM_CURLGET_H
 
 
 #include <string>
@@ -26,4 +26,4 @@ namespace semsim {
 }
 
 
-#endif //LIBSEMGEN_CURLGET_H
+#endif //LIBSEMSIM_CURLGET_H

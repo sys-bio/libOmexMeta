@@ -2,12 +2,12 @@
 // Created by Ciaran on 4/20/2020.
 //
 
-#ifndef LIBSEMGEN_PARTICIPANT_H
-#define LIBSEMGEN_PARTICIPANT_H
+#ifndef LIBSEMSIM_PARTICIPANT_H
+#define LIBSEMSIM_PARTICIPANT_H
 
 #include "librdf.h"
 #include <string>
-#include "Resource.h"
+#include "semsim/Resource.h"
 #include "Subject.h"
 #include "Triple.h"
 #include "Triples.h"
@@ -93,4 +93,4 @@ namespace semsim {
 }
 
 
-#endif //LIBSEMGEN_PARTICIPANT_H
+#endif //LIBSEMSIM_PARTICIPANT_H

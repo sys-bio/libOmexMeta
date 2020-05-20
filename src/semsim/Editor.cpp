@@ -2,7 +2,7 @@
 // Created by Ciaran on 4/15/2020.
 //
 
-#include "Editor.h"
+#include "semsim/Editor.h"
 
 
 semsim::Editor::Editor(const std::string &xml, XmlAssistantType type,

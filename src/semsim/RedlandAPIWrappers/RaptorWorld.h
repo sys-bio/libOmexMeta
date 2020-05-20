@@ -5,6 +5,8 @@
 #ifndef LIBSEMSIM_RAPTORWORLD_H
 #define LIBSEMSIM_RAPTORWORLD_H
 
+#include <utility>
+#include <memory>
 #include "librdf.h"
 #include "LibrdfUri.h"
 
@@ -14,6 +16,8 @@ namespace semsim {
     class RaptorWorld {
         std::shared_ptr<raptor_world *> raptor_world_;
     public:
+        RaptorWorld() = default;
+
         explicit RaptorWorld(raptor_world *world);
 
         ~RaptorWorld();

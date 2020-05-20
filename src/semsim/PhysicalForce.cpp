@@ -2,7 +2,7 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#include "PhysicalForce.h"
+#include "semsim/PhysicalForce.h"
 
 
 namespace semsim {

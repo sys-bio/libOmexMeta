@@ -27,7 +27,7 @@ namespace semsim {
 
     }
 
-    void Triples::emplace_back(LibrdfWorld world, librdf_statement *statement) {
+    void Triples::emplace_back(LibrdfWorld world, LibrdfStatement statement) {
         triples_.push_back(Triple::fromStatement(world, statement));
     }
 

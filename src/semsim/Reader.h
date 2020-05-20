@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/9/2020.
 //
 
-#ifndef LIBSEMGEN_READER_H
-#define LIBSEMGEN_READER_H
+#ifndef LIBSEMSIM_READER_H
+#define LIBSEMSIM_READER_H
 
 #include <librdf.h>
 #include <string>
@@ -16,15 +16,20 @@
 #include <sstream>
 #include <unordered_map>
 
+#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrappers/LibrdfModel.h"
+#include "semsim/RedlandAPIWrappers/RaptorWorld.h"
+#include "semsim/RedlandAPIWrappers/LibrdfUri.h"
+
 
 namespace semsim {
     class Reader {
         LibrdfWorld world_;
-        raptor_world *raptor_world_ptr_;
+        RaptorWorld raptor_world_ptr_;
         std::string format_;
         LibrdfModel model_;
         librdf_parser *parser_;
-        librdf_uri *base_uri_;
+        LibrdfUri base_uri_;
 
         // create a parser object
         librdf_parser *makeParser(const std::string& format = "guess");
@@ -43,7 +48,6 @@ namespace semsim {
 
 
     public:
-        LibrdfModel getModel() const;
 
         void setBaseUri(const std::string &baseUri);
 
@@ -56,22 +60,24 @@ namespace semsim {
 
         void fromFile(const std::string &filename);
 
-        LibrdfWorld getWorld() const;
+        const LibrdfWorld &getWorld() const;
 
-        raptor_world *getRaptorWorld() const;
+        const RaptorWorld &getRaptorWorldPtr() const;
 
         const std::string &getFormat() const;
 
+        const LibrdfModel &getModel() const;
+
         librdf_parser *getParser() const;
 
-        librdf_uri* getBaseUri() const;
+        const LibrdfUri &getBaseUri() const;
 
         const std::vector<std::string> &getValidParserNames() const;
 
-        void setOption(const std::string &option, const std::string& value);
+        void setOption(const std::string &option, const std::string &value);
 
         std::vector<std::string> getSeenNamespaces();
     };
 }
 
-#endif //LIBSEMGEN_READER_H
+#endif //LIBSEMSIM_READER_H

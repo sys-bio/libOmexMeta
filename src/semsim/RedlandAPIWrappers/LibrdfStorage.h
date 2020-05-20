@@ -6,13 +6,15 @@
 #define LIBSEMSIM_LIBRDFSTORAGE_H
 
 #include <librdf.h>
-#include <vector>
+#include <string>
+#include <memory>
 
 namespace semsim {
     class LibrdfStorage {
         std::shared_ptr<librdf_storage *> storage_;
 
     public:
+        LibrdfStorage() = default;
 
         explicit LibrdfStorage(librdf_storage *storage);
 

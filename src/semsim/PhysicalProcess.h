@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#ifndef LIBSEMGEN_PHYSICALPROCESS_H
-#define LIBSEMGEN_PHYSICALPROCESS_H
+#ifndef LIBSEMSIM_PHYSICALPROCESS_H
+#define LIBSEMSIM_PHYSICALPROCESS_H
 
 #include "PhysicalPhenomenon.h"
 #include "Participant.h"
@@ -61,4 +61,4 @@ namespace semsim {
     };
 }
 
-#endif //LIBSEMGEN_PHYSICALPROCESS_H
+#endif //LIBSEMSIM_PHYSICALPROCESS_H

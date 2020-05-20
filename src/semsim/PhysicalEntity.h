@@ -2,19 +2,19 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#ifndef LIBSEMGEN_PHYSICALENTITY_H
-#define LIBSEMGEN_PHYSICALENTITY_H
+#ifndef LIBSEMSIM_PHYSICALENTITY_H
+#define LIBSEMSIM_PHYSICALENTITY_H
 
 #include <semsim/PhysicalPropertyResource.h>
-#include "Resource.h"
-#include "Subject.h"
-#include "PhysicalPhenomenon.h"
-#include "MetaID.h"
+#include "semsim/Resource.h"
+#include "semsim/Subject.h"
+#include "semsim/PhysicalPhenomenon.h"
+#include "semsim/MetaID.h"
 #include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
 #include <utility>
-#include "Triple.h"
-#include "Query.h"
-#include "SemsimUtils.h"
+#include "semsim/Triple.h"
+#include "semsim/Query.h"
+#include "semsim/SemsimUtils.h"
 #include "memory"
 
 namespace semsim {
@@ -55,4 +55,4 @@ namespace semsim {
     };
 }
 
-#endif //LIBSEMGEN_PHYSICALENTITY_H
+#endif //LIBSEMSIM_PHYSICALENTITY_H
