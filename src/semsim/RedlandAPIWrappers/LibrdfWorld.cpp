@@ -153,7 +153,8 @@ namespace semsim {
         return !getWorld();
     }
 
-    LibrdfStatement LibrdfWorld::newStatementFromNodes(LibrdfNode subject, LibrdfNode predicate, LibrdfNode object) {
+    LibrdfStatement
+    LibrdfWorld::newStatementFromNodes(LibrdfNode &subject, LibrdfNode &predicate, LibrdfNode &object) const {
         return LibrdfStatement(librdf_new_statement_from_nodes(
                 *world_, *subject.getNode(), *predicate.getNode(), *object.getNode())
         );

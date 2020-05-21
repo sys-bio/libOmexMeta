@@ -45,6 +45,8 @@ endif ()
 
 add_executable(semsim-tests ${TEST_SOURCES})
 
+target_compile_options(semsim-tests PRIVATE -g)
+
 add_dependencies(semsim-tests semsim-static)
 
 message(STATUS "LINK_LIBRARIES ${LINK_LIBRARIES}")
