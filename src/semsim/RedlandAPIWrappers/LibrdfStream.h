@@ -11,26 +11,24 @@
 #include "semsim/Error.h"
 
 namespace semsim {
+    typedef std::shared_ptr<librdf_stream> stream_ptr;
+
     class LibrdfStream {
-        std::shared_ptr<librdf_stream *> stream_;
+        stream_ptr stream_;
     public:
-        const std::shared_ptr<librdf_stream *> &getStream() const;
+        const stream_ptr &getStream() const;
 
         LibrdfStream() = default;
 
         explicit LibrdfStream(librdf_stream *stream);
 
-        ~LibrdfStream();
-
-        LibrdfStream(const LibrdfStream &LibrdfStream);
-
-        LibrdfStream(LibrdfStream &&LibrdfStream) noexcept;
-
-        LibrdfStream &operator=(const LibrdfStream &LibrdfStream);
-
-        LibrdfStream &operator=(LibrdfStream &&LibrdfStream) noexcept;
-
         bool operator!() const;
+
+        bool operator==(const LibrdfStream &rhs) const;
+
+        bool operator!=(const LibrdfStream &rhs) const;
+
+        librdf_stream *get();
 
 
     };

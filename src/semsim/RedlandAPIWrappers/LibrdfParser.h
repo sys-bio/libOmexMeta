@@ -11,27 +11,24 @@
 #include "semsim/Error.h"
 
 namespace semsim {
+    typedef std::shared_ptr<librdf_parser> parser_ptr;
+
     class LibrdfParser {
-        std::shared_ptr<librdf_parser *> parser_;
+        parser_ptr parser_;
     public:
-        const std::shared_ptr<librdf_parser *> &getParser() const;
+        const parser_ptr &getParser() const;
 
         LibrdfParser() = default;
 
         explicit LibrdfParser(librdf_parser *query_results);
 
-        ~LibrdfParser();
-
-        LibrdfParser(const LibrdfParser &LibrdfParser);
-
-        LibrdfParser(LibrdfParser &&LibrdfParser) noexcept;
-
-        LibrdfParser &operator=(const LibrdfParser &LibrdfParser);
-
-        LibrdfParser &operator=(LibrdfParser &&LibrdfParser) noexcept;
-
         bool operator!() const;
 
+        bool operator==(const LibrdfParser &rhs) const;
+
+        bool operator!=(const LibrdfParser &rhs) const;
+
+        librdf_parser *get();
 
     };
 }

@@ -10,31 +10,26 @@
 #include <memory>
 
 namespace semsim {
+    typedef std::shared_ptr<librdf_storage> storage_ptr;
+
     class LibrdfStorage {
-        std::shared_ptr<librdf_storage *> storage_;
+
+        storage_ptr storage_;
 
     public:
         LibrdfStorage() = default;
 
         explicit LibrdfStorage(librdf_storage *storage);
 
-        ~LibrdfStorage();
-
-        LibrdfStorage(const LibrdfStorage &storage);
-
-        LibrdfStorage &operator=(const LibrdfStorage &storage);
-
-        LibrdfStorage(LibrdfStorage &&storage) noexcept;
-
-        LibrdfStorage &operator=(LibrdfStorage &&storage) noexcept;
-
         bool operator==(const LibrdfStorage &rhs) const;
 
         bool operator!=(const LibrdfStorage &rhs) const;
 
-        std::shared_ptr<librdf_storage *> getStorage() const;
+        storage_ptr getStorage() const;
 
         bool operator!() const;
+
+        librdf_storage *get();
 
     };
 }

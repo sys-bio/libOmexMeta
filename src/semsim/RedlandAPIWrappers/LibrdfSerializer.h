@@ -11,27 +11,24 @@
 #include "semsim/Error.h"
 
 namespace semsim {
+    typedef std::shared_ptr<librdf_serializer> serializer_ptr;
+
     class LibrdfSerializer {
-        std::shared_ptr<librdf_serializer *> serializer_;
+        serializer_ptr serializer_;
     public:
-        const std::shared_ptr<librdf_serializer *> &getSerializer() const;
+        const serializer_ptr &getSerializer() const;
 
         LibrdfSerializer() = default;
 
         explicit LibrdfSerializer(librdf_serializer *serializer);
 
-        ~LibrdfSerializer();
-
-        LibrdfSerializer(const LibrdfSerializer &LibrdfSerializer);
-
-        LibrdfSerializer(LibrdfSerializer &&LibrdfSerializer) noexcept;
-
-        LibrdfSerializer &operator=(const LibrdfSerializer &LibrdfSerializer);
-
-        LibrdfSerializer &operator=(LibrdfSerializer &&LibrdfSerializer) noexcept;
-
         bool operator!() const;
 
+        bool operator==(const LibrdfSerializer &rhs) const;
+
+        bool operator!=(const LibrdfSerializer &rhs) const;
+
+        librdf_serializer *get();
 
     };
 }

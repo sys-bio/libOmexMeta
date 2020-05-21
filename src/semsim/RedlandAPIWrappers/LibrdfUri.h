@@ -12,25 +12,16 @@
 
 
 namespace semsim {
+
+    typedef std::shared_ptr<librdf_uri> librdf_uri_ptr;
+
     class LibrdfUri {
-        std::shared_ptr<librdf_uri *> raptor_uri_;
+        librdf_uri_ptr librdf_uri_;
 
     public:
         LibrdfUri() = default;
 
         explicit LibrdfUri(librdf_uri *uri);
-
-        ~LibrdfUri();
-
-        LibrdfUri(const LibrdfUri &raptorUri);
-
-        LibrdfUri(LibrdfUri &&raptorUri) noexcept;
-
-        LibrdfUri &operator=(const LibrdfUri &raptorUri);
-
-        LibrdfUri &operator=(LibrdfUri &&raptorUri) noexcept;
-
-        const std::shared_ptr<raptor_uri *> &getUri() const;
 
         std::string str() const;
 
@@ -39,6 +30,11 @@ namespace semsim {
         bool operator!=(const LibrdfUri &rhs) const;
 
         bool operator!() const;
+
+        const librdf_uri_ptr &getLibrdfUri() const;
+
+        librdf_uri *get();
+
     };
 }
 

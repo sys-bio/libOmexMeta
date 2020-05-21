@@ -3,56 +3,30 @@
 namespace semsim {
 
     LibrdfQueryResults::LibrdfQueryResults(librdf_query_results *query_results) :
-            query_results_(std::make_shared<librdf_query_results *>(query_results)) {
+            query_results_(query_results_ptr(query_results)) {
 
     }
 
-    LibrdfQueryResults::~LibrdfQueryResults() {
-        if (query_results_.use_count() == 1) {
-            librdf_free_query_results(*query_results_);
-        }
-    }
-
-    LibrdfQueryResults::LibrdfQueryResults(const LibrdfQueryResults &LibrdfQueryResults) {
-        if (query_results_)
-            librdf_free_query_results(*query_results_); // Remove prexisting query_results before copy
-        query_results_ = LibrdfQueryResults.query_results_;
-    }
-
-    LibrdfQueryResults::LibrdfQueryResults(LibrdfQueryResults &&LibrdfQueryResults) noexcept {
-        if (query_results_) {
-            librdf_free_query_results(*query_results_);
-        }
-        query_results_ = std::move(LibrdfQueryResults.query_results_);
-    }
-
-    LibrdfQueryResults &LibrdfQueryResults::operator=(const LibrdfQueryResults &LibrdfQueryResults) {
-        if (this != &LibrdfQueryResults) {
-            if (query_results_) {
-                librdf_free_query_results(*query_results_);
-            }
-            query_results_ = LibrdfQueryResults.query_results_;
-        }
-        return *this;
-    }
-
-    LibrdfQueryResults &LibrdfQueryResults::operator=(LibrdfQueryResults &&LibrdfQueryResults) noexcept {
-        if (this != &LibrdfQueryResults) {
-            if (query_results_) {
-                librdf_free_query_results(*query_results_);
-            }
-            query_results_ = std::move(LibrdfQueryResults.query_results_);
-        }
-        return *this;
-    }
-
-    const std::shared_ptr<librdf_query_results *> &LibrdfQueryResults::getQueryResults() const {
+    const query_results_ptr &LibrdfQueryResults::getQueryResults() const {
         return query_results_;
     }
 
     bool LibrdfQueryResults::operator!() const {
         return !getQueryResults();
     }
+
+    bool LibrdfQueryResults::operator==(const LibrdfQueryResults &rhs) const {
+        return query_results_.get() == rhs.query_results_.get();
+    }
+
+    bool LibrdfQueryResults::operator!=(const LibrdfQueryResults &rhs) const {
+        return !(rhs == *this);
+    }
+
+    librdf_query_results *LibrdfQueryResults::get() {
+        return query_results_.get();
+    }
+
 
 }
 

@@ -10,27 +10,25 @@
 #include "semsim/Error.h"
 
 namespace semsim {
+    typedef std::shared_ptr<librdf_query_results> query_results_ptr;
+
     class LibrdfQueryResults {
-        std::shared_ptr<librdf_query_results *> query_results_;
+        query_results_ptr query_results_;
+
     public:
-        const std::shared_ptr<librdf_query_results *> &getQueryResults() const;
+        const query_results_ptr &getQueryResults() const;
 
         LibrdfQueryResults() = default;
 
         explicit LibrdfQueryResults(librdf_query_results *query_results);
 
-        ~LibrdfQueryResults();
-
-        LibrdfQueryResults(const LibrdfQueryResults &LibrdfQueryResults);
-
-        LibrdfQueryResults(LibrdfQueryResults &&LibrdfQueryResults) noexcept;
-
-        LibrdfQueryResults &operator=(const LibrdfQueryResults &LibrdfQueryResults);
-
-        LibrdfQueryResults &operator=(LibrdfQueryResults &&LibrdfQueryResults) noexcept;
-
         bool operator!() const;
 
+        bool operator==(const LibrdfQueryResults &rhs) const;
+
+        bool operator!=(const LibrdfQueryResults &rhs) const;
+
+        librdf_query_results *get();
 
     };
 }
