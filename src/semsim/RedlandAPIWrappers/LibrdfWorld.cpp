@@ -8,64 +8,24 @@
 namespace semsim {
 
     LibrdfWorld::LibrdfWorld() {
-        librdf_world *world_tmp = librdf_new_world();
-        librdf_world_open(world_tmp);
-        world_ = std::make_shared<librdf_world *>(world_tmp);
-    }
-
-    LibrdfWorld::~LibrdfWorld() {
-        if (world_.use_count() == 1) {
-            librdf_free_world(*world_);
-        }
-    };
-
-    LibrdfWorld::LibrdfWorld(const LibrdfWorld &librdfWorld) {
-        if (world_) {
-            librdf_free_world(*world_); // get rid of whats alreday there before we copy librdfWorld.world_
-        }
-        world_ = librdfWorld.world_;
-    }
-
-    LibrdfWorld::LibrdfWorld(LibrdfWorld &&librdfWorld) noexcept {
-        if (world_)
-            librdf_free_world(*world_);
-        world_ = std::move(librdfWorld.world_);
-    }
-
-    LibrdfWorld &LibrdfWorld::operator=(const LibrdfWorld &librdfWorld) {
-        if (this != &librdfWorld) {
-            if (world_)
-                librdf_free_world(*world_);
-            this->world_ = librdfWorld.world_;
-        }
-        return *this;
-    }
-
-    LibrdfWorld &LibrdfWorld::operator=(LibrdfWorld &&librdfWorld) noexcept {
-        if (this != &librdfWorld) {
-            if (world_)
-                librdf_free_world(*world_);
-            this->world_ = std::move(librdfWorld.world_);
-        }
-        return *this;
-    }
-
-    RaptorWorld LibrdfWorld::getRaptor() {
-        raptor_world *raptor_world_ptr = librdf_world_get_raptor(*world_);
-        RaptorWorld raptorWorld(raptor_world_ptr);
-        return raptorWorld;
-    }
-
-    std::shared_ptr<librdf_world *> LibrdfWorld::getWorld() const {
-        return world_;
+        world_ = std::shared_ptr<librdf_world>(librdf_new_world());
+        librdf_world_open(world_.get());
     }
 
     bool LibrdfWorld::operator==(const LibrdfWorld &rhs) const {
-        return getWorld() == rhs.getWorld();
+        return world_.get() == rhs.world_.get();
     }
 
     bool LibrdfWorld::operator!=(const LibrdfWorld &rhs) const {
         return !(rhs == *this);
+    }
+
+    const librdf_world_ptr &LibrdfWorld::getWorld() const {
+        return world_;
+    }
+
+    RaptorWorld LibrdfWorld::getRaptor() {
+        return RaptorWorld(librdf_world_get_raptor(world_.get()));
     }
 
     LibrdfStorage LibrdfWorld::newStorage(const std::string &storage_name, const std::string &name,
@@ -76,16 +36,16 @@ namespace semsim {
         std::vector<std::string> valid_storage;
         std::vector<std::string> valid_options;
 
-        librdf_storage *storage = librdf_new_storage(
-                *world_, storage_name.c_str(), name.c_str(), options_string);
-        LibrdfStorage librdfStorage(storage);
-        return librdfStorage;
+        return LibrdfStorage(
+                librdf_new_storage(
+                        world_.get(), storage_name.c_str(), name.c_str(), options_string)
+        );
     }
 
     LibrdfModel LibrdfWorld::newModel(const LibrdfStorage &storage, const char *options_string) {
-        librdf_model *model = librdf_new_model(*world_, *storage.getStorage(), options_string);
-        LibrdfModel librdfModel(model);
-        return librdfModel;
+        return LibrdfModel(
+                librdf_new_model(world_.get(), storage.get(), options_string);
+        )
     }
 
     LibrdfNode LibrdfWorld::newNodeUriString(const std::string &string) const {
@@ -104,20 +64,21 @@ namespace semsim {
         } else {
             x = string;
         }
-        librdf_node *node = librdf_new_node_from_uri_string(*world_, (const unsigned char *) x.c_str());
-        return LibrdfNode(node);
+        return LibrdfNode(librdf_new_node_from_uri_string(
+                world_.get(), (const unsigned char *) x.c_str()));
     }
 
     LibrdfNode LibrdfWorld::newNodeUri(const LibrdfUri &raptorUri) const {
-        librdf_node *node = librdf_new_node_from_uri(*world_, *raptorUri.getUri());
-        return LibrdfNode(node);
+        return LibrdfNode(
+                librdf_new_node_from_uri(world_.get(), raptorUri.get())
+        );
     }
 
     LibrdfNode LibrdfWorld::newNodeLiteral(
             const std::string &literal, const char *xml_language, bool is_wf_xml) const {
-        librdf_node *node = librdf_new_node_from_literal(
-                *world_, (const unsigned char *) literal.c_str(), xml_language, (int) is_wf_xml);
-        return LibrdfNode(node);
+        return LibrdfNode(librdf_new_node_from_literal(
+                world_.get(), (const unsigned char *) literal.c_str(), xml_language, (int) is_wf_xml)
+        );
     }
 
     LibrdfNode LibrdfWorld::newNodeTypedLiteral(
@@ -133,20 +94,21 @@ namespace semsim {
         }
 
         LibrdfUri uri = newUri(data_type_url_tmp);
-        librdf_node *node = librdf_new_node_from_typed_literal(
-                *world_, (const unsigned char *) literal.c_str(), xml_language, *uri.getUri());
-        return LibrdfNode(node);
+        return LibrdfNode(librdf_new_node_from_typed_literal(
+                world_.get(),
+                (const unsigned char *)
+                        literal.c_str(), xml_language, uri.get())
+        );
     }
 
     LibrdfNode LibrdfWorld::newNodeBlank(const std::string &identifier) const {
-        librdf_node *node = librdf_new_node_from_blank_identifier(*world_, (const unsigned char *) identifier.c_str());
-        return LibrdfNode(node);
+        return LibrdfNode(
+                librdf_new_node_from_blank_identifier(world_.get(), (const unsigned char *) identifier.c_str()));
     }
 
 
     LibrdfUri LibrdfWorld::newUri(std::string uri_string) const {
-        raptor_uri *uri = librdf_new_uri(*world_, (const unsigned char *) uri_string.c_str());
-        return LibrdfUri(uri);
+        return LibrdfUri(librdf_new_uri(world_.get(), (const unsigned char *) uri_string.c_str()));
     }
 
     bool LibrdfWorld::operator!() const {
@@ -156,8 +118,12 @@ namespace semsim {
     LibrdfStatement
     LibrdfWorld::newStatementFromNodes(LibrdfNode &subject, LibrdfNode &predicate, LibrdfNode &object) const {
         return LibrdfStatement(librdf_new_statement_from_nodes(
-                *world_, *subject.getNode(), *predicate.getNode(), *object.getNode())
+                world_.get(), subject.getNode().get(), predicate.getNode().get(), object.getNode().get())
         );
+    }
+
+    librdf_world *LibrdfWorld::get() {
+        return world_.get();
     }
 
 //    Subject LibrdfWorld::newSubjectUri(const std::string &subject_value) {

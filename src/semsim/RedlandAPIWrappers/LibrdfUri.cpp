@@ -6,74 +6,38 @@
 namespace semsim {
 
     LibrdfUri::LibrdfUri(librdf_uri *uri)
-            : raptor_uri_(std::make_shared<raptor_uri *>(uri)) {
+            : librdf_uri_(librdf_uri_ptr(uri)) {
 
-    }
-
-    LibrdfUri::~LibrdfUri() {
-        if (raptor_uri_.use_count() == 1) {
-            raptor_free_uri(*raptor_uri_);
-        }
-    }
-
-    LibrdfUri::LibrdfUri(const LibrdfUri &raptorUri) {
-        if (raptor_uri_ != nullptr) {
-            raptor_free_uri(*raptor_uri_);
-        }
-        raptor_uri_ = raptorUri.getUri();
-    }
-
-    LibrdfUri::LibrdfUri(LibrdfUri &&raptorUri) noexcept {
-        if (raptor_uri_ != nullptr) {
-            raptor_free_uri(*raptor_uri_);
-        }
-        raptor_uri_ = std::move(raptorUri.raptor_uri_);
-    }
-
-    LibrdfUri &LibrdfUri::operator=(const LibrdfUri &raptorUri) {
-        if (this != &raptorUri) {
-            if (raptor_uri_ != nullptr) {
-                raptor_free_uri(*raptor_uri_);
-            }
-            raptor_uri_ = raptorUri.raptor_uri_;
-        }
-        return *this;
-    }
-
-    LibrdfUri &LibrdfUri::operator=(LibrdfUri &&raptorUri) noexcept {
-        if (this != &raptorUri) {
-            if (raptor_uri_ != nullptr) {
-                raptor_free_uri(*raptor_uri_);
-            }
-            raptor_uri_ = std::move(raptorUri.raptor_uri_);
-        }
-        return *this;
-    }
-
-    const std::shared_ptr<raptor_uri *> &LibrdfUri::getUri() const {
-        return raptor_uri_;
     }
 
     std::string LibrdfUri::str() const {
-        if (raptor_uri_ == nullptr) {
-            throw NullPointerException("LibrdfUri::str(): raptor_uri_ ");
+        if (librdf_uri_ == nullptr) {
+            throw NullPointerException("LibrdfUri::str(): librdf_uri_ ");
         }
-        unsigned char *cstr = raptor_uri_to_string(*getUri());
+        unsigned char *cstr = raptor_uri_to_string(librdf_uri_.get());
         std::string str = (const char *) cstr;
         free(cstr);
         return str;
     }
 
+    const librdf_uri_ptr &LibrdfUri::getLibrdfUri() const {
+        return librdf_uri_;
+    }
+
     bool LibrdfUri::operator!() const {
-        return !getUri();
+        return !librdf_uri_;
     }
 
     bool LibrdfUri::operator==(const LibrdfUri &rhs) const {
-        return raptor_uri_ == rhs.raptor_uri_;
+        return librdf_uri_.get() == rhs.librdf_uri_.get();
     }
 
     bool LibrdfUri::operator!=(const LibrdfUri &rhs) const {
         return !(rhs == *this);
+    }
+
+    librdf_uri *LibrdfUri::get() {
+        return librdf_uri_.get();
     }
 
 }

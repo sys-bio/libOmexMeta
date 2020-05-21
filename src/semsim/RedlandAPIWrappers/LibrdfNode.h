@@ -13,25 +13,17 @@
 #include "semsim/HERE.h"
 
 namespace semsim {
+    typedef std::shared_ptr<librdf_node> node_ptr;
+
     class LibrdfNode {
-        std::shared_ptr<librdf_node *> node_;
-    public:
-        const std::shared_ptr<librdf_node *> &getNode() const;
+        node_ptr node_;
 
     public:
+        const node_ptr &getNode() const;
+
         LibrdfNode() = default;
 
         explicit LibrdfNode(librdf_node *node);
-
-        ~LibrdfNode();
-
-        LibrdfNode(const LibrdfNode &librdfNode);
-
-        LibrdfNode(LibrdfNode &&librdfNode) noexcept;
-
-        LibrdfNode &operator=(const LibrdfNode &librdfNode);
-
-        LibrdfNode &operator=(LibrdfNode &&librdfNode) noexcept;
 
         bool operator!() const;
 
@@ -42,6 +34,8 @@ namespace semsim {
         bool operator==(const LibrdfNode &rhs) const;
 
         bool operator!=(const LibrdfNode &rhs) const;
+
+        librdf_node *get();
 
     };
 }

@@ -26,29 +26,19 @@
 
 namespace semsim {
 
+    typedef std::shared_ptr<librdf_world> librdf_world_ptr;
+
     class LibrdfWorld {
-        std::shared_ptr<librdf_world *> world_;
+        librdf_world_ptr world_;
 
     public:
         LibrdfWorld();
-
-        ~LibrdfWorld();
-
-        LibrdfWorld(const LibrdfWorld &librdfWorld);
-
-        LibrdfWorld(LibrdfWorld &&librdfWorld) noexcept;
-
-        LibrdfWorld &operator=(const LibrdfWorld &librdfWorld);
-
-        LibrdfWorld &operator=(LibrdfWorld &&librdfWorld) noexcept;
-
-        std::shared_ptr<librdf_world *> getWorld() const;
 
         bool operator==(const LibrdfWorld &rhs) const;
 
         bool operator!=(const LibrdfWorld &rhs) const;
 
-        bool operator!() const;
+        const librdf_world_ptr &getWorld() const;
 
         RaptorWorld getRaptor();
 
@@ -74,6 +64,10 @@ namespace semsim {
         LibrdfUri newUri(std::string uri_string) const;
 
         LibrdfStatement newStatementFromNodes(LibrdfNode &subject, LibrdfNode &predicate, LibrdfNode &object) const;
+
+        librdf_world *get();
+
+
 
 //        LibrdfSerializer newSerializer(std::string name);
 

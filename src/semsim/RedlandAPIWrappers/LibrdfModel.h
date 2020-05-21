@@ -20,33 +20,27 @@
  */
 
 namespace semsim {
+    typedef std::shared_ptr<librdf_model> model_ptr;
+
     class LibrdfModel {
-        std::shared_ptr<librdf_model *> model_;
+        model_ptr model_;
 
     public:
         LibrdfModel() = default;
 
         explicit LibrdfModel(librdf_model *model);
 
-        ~LibrdfModel();
-
-        LibrdfModel(const LibrdfModel &librdfModel);
-
-        LibrdfModel(LibrdfModel &&librdfModel) noexcept;
-
-        LibrdfModel &operator=(const LibrdfModel &librdfModel);
-
-        LibrdfModel &operator=(LibrdfModel &&librdfModel) noexcept;
-
         bool operator==(const LibrdfModel &rhs) const;
 
         bool operator!=(const LibrdfModel &rhs) const;
 
-        const std::shared_ptr<librdf_model *> &getModel() const;
+        const model_ptr &getModel() const;
 
         bool operator!() const;
 
         void addStatement(const LibrdfStatement &statement);
+
+        librdf_model *get();
 
     };
 }
