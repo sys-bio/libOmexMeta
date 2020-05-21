@@ -4,7 +4,7 @@
 namespace semsim {
 
     LibrdfStorage::LibrdfStorage(librdf_storage *storage)
-            : storage_(std::shared_ptr<librdf_storage>(storage)) {
+            : storage_(storage_ptr(storage, librdf_free_storage)) {
     }
 
     bool LibrdfStorage::operator==(const LibrdfStorage &rhs) const {

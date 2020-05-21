@@ -3,7 +3,7 @@
 namespace semsim {
 
     LibrdfStream::LibrdfStream(librdf_stream *stream) :
-            stream_(stream_ptr(stream)) {
+            stream_(stream_ptr(stream, librdf_free_stream)) {
 
     }
 

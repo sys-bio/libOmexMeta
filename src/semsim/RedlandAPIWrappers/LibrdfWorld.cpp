@@ -6,9 +6,10 @@
 #include "LibrdfWorld.h"
 
 namespace semsim {
+    typedef std::shared_ptr<librdf_world> world_ptr;
 
     LibrdfWorld::LibrdfWorld() {
-        world_ = std::shared_ptr<librdf_world>(librdf_new_world());
+        world_ = world_ptr(librdf_new_world(), librdf_free_world);
         librdf_world_open(world_.get());
     }
 
@@ -42,14 +43,13 @@ namespace semsim {
         );
     }
 
-    LibrdfModel LibrdfWorld::newModel(const LibrdfStorage &storage, const char *options_string) {
-        return LibrdfModel(
-                librdf_new_model(world_.get(), storage.get(), options_string);
-        )
+    LibrdfModel LibrdfWorld::newModel(LibrdfStorage storage, const char *options_string) {
+        librdf_model *m = librdf_new_model(world_.get(), storage.get(), options_string);
+        LibrdfModel model = LibrdfModel(m);
+        return model;
     }
 
-    LibrdfNode LibrdfWorld::newNodeUriString(const std::string &string) const {
-
+    LibrdfNode LibrdfWorld::newNodeUriString(const std::string &string) {
         std::string identifier_dot_org = "https://identifiers.org/";
         std::regex identifiers_regex(identifier_dot_org);
         std::regex http_regex("^https://");
@@ -68,7 +68,7 @@ namespace semsim {
                 world_.get(), (const unsigned char *) x.c_str()));
     }
 
-    LibrdfNode LibrdfWorld::newNodeUri(const LibrdfUri &raptorUri) const {
+    LibrdfNode LibrdfWorld::newNodeUri(LibrdfUri raptorUri) const {
         return LibrdfNode(
                 librdf_new_node_from_uri(world_.get(), raptorUri.get())
         );
@@ -111,12 +111,8 @@ namespace semsim {
         return LibrdfUri(librdf_new_uri(world_.get(), (const unsigned char *) uri_string.c_str()));
     }
 
-    bool LibrdfWorld::operator!() const {
-        return !getWorld();
-    }
-
     LibrdfStatement
-    LibrdfWorld::newStatementFromNodes(LibrdfNode &subject, LibrdfNode &predicate, LibrdfNode &object) const {
+    LibrdfWorld::newStatementFromNodes(LibrdfNode subject, LibrdfNode predicate, LibrdfNode object) const {
         return LibrdfStatement(librdf_new_statement_from_nodes(
                 world_.get(), subject.getNode().get(), predicate.getNode().get(), object.getNode().get())
         );

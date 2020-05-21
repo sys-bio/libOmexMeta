@@ -8,7 +8,7 @@
 namespace semsim {
 
     LibrdfStatement::LibrdfStatement(librdf_statement *statement)
-            : statement_(statement_ptr(statement)) {
+            : statement_(statement_ptr(statement, librdf_free_statement)) {
     }
 
     bool LibrdfStatement::operator==(const LibrdfStatement &rhs) const {

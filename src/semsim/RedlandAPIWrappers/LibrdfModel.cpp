@@ -7,7 +7,7 @@
 namespace semsim {
 
     LibrdfModel::LibrdfModel(librdf_model *model)
-            : model_(model_ptr(model)) {
+            : model_(model_ptr(model, librdf_free_model)) {
     }
 
     bool LibrdfModel::operator==(const LibrdfModel &rhs) const {
@@ -26,7 +26,7 @@ namespace semsim {
         return !model_;
     }
 
-    void LibrdfModel::addStatement(const LibrdfStatement &statement) {
+    void LibrdfModel::addStatement(LibrdfStatement statement) {
         librdf_model_add_statement(get(), statement.get());
     }
 

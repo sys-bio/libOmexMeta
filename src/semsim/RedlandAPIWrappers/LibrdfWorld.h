@@ -45,11 +45,11 @@ namespace semsim {
         LibrdfStorage newStorage(const std::string &storage_name, const std::string &name,
                                  const char *options_string = nullptr);
 
-        LibrdfModel newModel(const LibrdfStorage &storage, const char *options_string = nullptr);
+        LibrdfModel newModel(LibrdfStorage storage, const char *options_string = nullptr);
 
-        LibrdfNode newNodeUriString(const std::string &string) const;
+        LibrdfNode newNodeUriString(const std::string &string);
 
-        LibrdfNode newNodeUri(const LibrdfUri &raptorUri) const;
+        LibrdfNode newNodeUri(LibrdfUri raptorUri) const;
 
         LibrdfNode newNodeBlank(const std::string &identifier) const;
 
@@ -63,7 +63,7 @@ namespace semsim {
 
         LibrdfUri newUri(std::string uri_string) const;
 
-        LibrdfStatement newStatementFromNodes(LibrdfNode &subject, LibrdfNode &predicate, LibrdfNode &object) const;
+        LibrdfStatement newStatementFromNodes(LibrdfNode subject, LibrdfNode predicate, LibrdfNode object) const;
 
         librdf_world *get();
 

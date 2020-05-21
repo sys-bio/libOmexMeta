@@ -4,7 +4,7 @@
 namespace semsim {
 
     LibrdfSerializer::LibrdfSerializer(librdf_serializer *serializer) :
-            serializer_(serializer_ptr(serializer)) {
+            serializer_(serializer_ptr(serializer, librdf_free_serializer)) {
 
     }
 
@@ -25,7 +25,7 @@ namespace semsim {
     }
 
     librdf_serializer *LibrdfSerializer::get() {
-        return node_.get();
+        return serializer_.get();
     }
 
 }
