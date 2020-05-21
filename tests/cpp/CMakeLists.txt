@@ -1,4 +1,4 @@
-option(REDLAND_WRAPPER_TESTS "Whether to incluDe the Redland API wrapper tests" ON)
+option(REDLAND_WRAPPER_TESTS "Whether to include the Redland API wrapper tests" ON)
 
 set(REDLAND_WRAPPER_TEST_SOURCES
         RedlandAPITests/LibrdfWorldTests.cpp
@@ -11,13 +11,13 @@ set(REDLAND_WRAPPER_TEST_SOURCES
         )
 
 set(TEST_SOURCES
-        SemsimUtilsTests.cpp
+        #        SemsimUtilsTests.cpp
         SBMLFactory.h
-        RDFNodeTests.cpp
-        SubjectTests.cpp
-        PredicateTests.cpp
-        ResourceTests.cpp
-        TripleTests.cpp
+        #        RDFNodeTests.cpp
+        #        SubjectTests.cpp
+        #        PredicateTests.cpp
+        #        ResourceTests.cpp
+        #        TripleTests.cpp
         #        AnnotationSamples.h
         #        CurlGetTests.cpp
         #        MetaIDTests.cpp

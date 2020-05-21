@@ -38,7 +38,7 @@ namespace semsim {
 
         bool operator!() const;
 
-        void addStatement(const LibrdfStatement &statement);
+        void addStatement(LibrdfStatement statement);
 
         librdf_model *get();
 

@@ -15,16 +15,36 @@ public:
 
 };
 
-TEST_F(LibrdfStatementTests, TestCopyConstructor) {
+TEST_F(LibrdfStatementTests, TestCreate) {
     semsim::LibrdfWorld world;
-    semsim::LibrdfStatement statement1 = world.newStatementFromNodes(
-            world.newNodeUriString("subject"),
-            world.newNodeUriString("predicate"),
-            world.newNodeUriString("resource")
-    );
-    semsim::LibrdfStatement statement2 = statement1;
-    ASSERT_EQ(statement1, statement2);
+    semsim::LibrdfNode subject = world.newNodeUriString("subject");
+    semsim::LibrdfNode predicate = world.newNodeUriString("predicate");
+    semsim::LibrdfNode resource = world.newNodeUriString("resource");
+
+    std::cout << subject.get() << std::endl;
+
+//    librdf_statement* stmt = librdf_new_statement_from_nodes(world.get(), subject.get(), predicate.get(), resource.get());
+////    librdf_node* node = librdf_statement_get_object(stmt);
+//
+//    librdf_free_statement(stmt);
+
+//    semsim::LibrdfStatement statement1 = world.newStatementFromNodes(subject, predicate, resource);
+
+
+//    semsim::LibrdfNode node = statement1.getSubjectNode();
+    int x = 4;
+
 }
+//TEST_F(LibrdfStatementTests, TestCopyConstructor) {
+//    semsim::LibrdfWorld world;
+//    semsim::LibrdfStatement statement1 = world.newStatementFromNodes(
+//            world.newNodeUriString("subject"),
+//            world.newNodeUriString("predicate"),
+//            world.newNodeUriString("resource")
+//    );
+//    semsim::LibrdfStatement statement2 = statement1;
+//    ASSERT_EQ(statement1, statement2);
+//}
 
 //TEST_F(LibrdfStatementTests, TestCopyAssignment) {
 //    semsim::LibrdfWorld world;
@@ -65,33 +85,33 @@ TEST_F(LibrdfStatementTests, TestCopyConstructor) {
 
 
 
-TEST_F(LibrdfStatementTests, TestGetSubject) {
+//TEST_F(LibrdfStatementTests, TestGetSubject) {
+//
+//    semsim::LibrdfWorld world;
+//    semsim::LibrdfNode subject = world.newNodeUriString("subject");
+//    semsim::LibrdfNode predicate = world.newNodeUriString("predicate");
+//    semsim::LibrdfNode resource = world.newNodeUriString("resource");
+//    semsim::LibrdfStatement statement1 = world.newStatementFromNodes(subject, predicate, resource);
+//    HERE();
+//    semsim::LibrdfNode n = statement1.getSubjectNode();
+//    std::string actual = n.str();
+////    std::string actual = statement1.getSubjectNode().str();
+//    std::string expected = "subject";
+//    HERE();
+//    ASSERT_EQ(expected.c_str(), actual.c_str());
+//    HERE();
+//}
 
-    semsim::LibrdfWorld world;
-    semsim::LibrdfNode subject = world.newNodeUriString("subject");
-    semsim::LibrdfNode predicate = world.newNodeUriString("predicate");
-    semsim::LibrdfNode resource = world.newNodeUriString("resource");
-    semsim::LibrdfStatement statement1 = world.newStatementFromNodes(subject, predicate, resource);
-    HERE();
-    semsim::LibrdfNode n = statement1.getSubjectNode();
-    std::string actual = n.str();
-//    std::string actual = statement1.getSubjectNode().str();
-    std::string expected = "subject";
-    HERE();
-    ASSERT_EQ(expected.c_str(), actual.c_str());
-    HERE();
-}
-
-TEST_F(LibrdfStatementTests, TestGetPredicate) {
-    semsim::LibrdfWorld world;
-    semsim::LibrdfNode subject = world.newNodeUriString("subject");
-    semsim::LibrdfNode predicate = world.newNodeUriString("predicate");
-    semsim::LibrdfNode resource = world.newNodeUriString("resource");
-    semsim::LibrdfStatement statement1 = world.newStatementFromNodes(
-            subject, predicate, resource
-    );
-    HERE();
-    statement1.getPredicateNode().str();
+//TEST_F(LibrdfStatementTests, TestGetPredicate) {
+//    semsim::LibrdfWorld world;
+//    semsim::LibrdfNode subject = world.newNodeUriString("subject");
+//    semsim::LibrdfNode predicate = world.newNodeUriString("predicate");
+//    semsim::LibrdfNode resource = world.newNodeUriString("resource");
+//    semsim::LibrdfStatement statement1 = world.newStatementFromNodes(
+//            subject, predicate, resource
+//    );
+//    HERE();
+//    statement1.getPredicateNode().str();
 //    semsim::LibrdfNode predicate_out = statement1.getPredicateNode();
 //    HERE();
 //    predicate_out.str();
@@ -99,16 +119,16 @@ TEST_F(LibrdfStatementTests, TestGetPredicate) {
 
 
 //    ASSERT_EQ("predicate", statement1.getPredicateNode().str());
-}
+//}
 
-TEST_F(LibrdfStatementTests, TestGetObject) {
-    semsim::LibrdfWorld world;
-    semsim::LibrdfStatement statement1 = world.newStatementFromNodes(
-            world.newNodeUriString("subject"),
-            world.newNodeUriString("predicate"),
-            world.newNodeUriString("resource")
-    );
-    ASSERT_EQ("resource", statement1.getObjectNode().str());
-}
+//TEST_F(LibrdfStatementTests, TestGetObject) {
+//    semsim::LibrdfWorld world;
+//    semsim::LibrdfStatement statement1 = world.newStatementFromNodes(
+//            world.newNodeUriString("subject"),
+//            world.newNodeUriString("predicate"),
+//            world.newNodeUriString("resource")
+//    );
+//    ASSERT_EQ("resource", statement1.getObjectNode().str());
+//}
 
 

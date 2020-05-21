@@ -31,7 +31,7 @@ namespace semsim {
 
         raptor_world *get();
 
-    }
+    };
 }
 
 #endif //LIBSEMSIM_RAPTORWORLD_H

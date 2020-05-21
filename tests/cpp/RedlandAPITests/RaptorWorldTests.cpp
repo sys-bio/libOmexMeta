@@ -12,13 +12,9 @@ public:
 };
 //
 //TEST_F(RaptorWorldTests, TestCopyConstructor) {
-//    HERE();
 //    semsim::LibrdfWorld librdfWorld;
-//    HERE();
 //    semsim::RaptorWorld raptorWorld1 = librdfWorld.getRaptor();
-//    HERE();
 //    semsim::RaptorWorld raptorWorld2 = raptorWorld1;
-//    HERE();
 //    ASSERT_EQ(raptorWorld1, raptorWorld2);
 //}
 //

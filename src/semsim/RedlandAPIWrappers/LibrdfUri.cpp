@@ -6,7 +6,7 @@
 namespace semsim {
 
     LibrdfUri::LibrdfUri(librdf_uri *uri)
-            : librdf_uri_(librdf_uri_ptr(uri)) {
+            : librdf_uri_(librdf_uri_ptr(uri, librdf_free_uri)) {
 
     }
 

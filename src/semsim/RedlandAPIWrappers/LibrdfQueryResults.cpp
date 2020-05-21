@@ -3,7 +3,7 @@
 namespace semsim {
 
     LibrdfQueryResults::LibrdfQueryResults(librdf_query_results *query_results) :
-            query_results_(query_results_ptr(query_results)) {
+            query_results_(query_results_ptr(query_results, librdf_free_query_results)) {
 
     }
 

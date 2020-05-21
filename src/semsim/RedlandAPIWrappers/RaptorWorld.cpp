@@ -7,7 +7,7 @@
 namespace semsim {
 
     RaptorWorld::RaptorWorld(raptor_world *world) :
-            raptor_world_(raptor_world_ptr(world)) {
+            raptor_world_(raptor_world_ptr(world, raptor_free_world)) {
     }
 
     raptor_world_ptr RaptorWorld::getRaptorWorld() const {

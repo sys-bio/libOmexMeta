@@ -12,7 +12,7 @@
 namespace semsim {
 
     LibrdfNode::LibrdfNode(librdf_node *node) :
-            node_(node_ptr(node)) {
+            node_(node_ptr(node, librdf_free_node)) {
 
     }
 

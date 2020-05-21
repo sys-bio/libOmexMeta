@@ -3,7 +3,7 @@
 namespace semsim {
 
     LibrdfParser::LibrdfParser(librdf_parser *parser) :
-            parser_(parser_ptr(parser)) {
+            parser_(parser_ptr(parser, librdf_free_parser)) {
 
     }
 

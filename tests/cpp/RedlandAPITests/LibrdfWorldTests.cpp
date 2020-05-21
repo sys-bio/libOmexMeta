@@ -33,10 +33,10 @@ TEST_F(LibrdfWorldTests, TestMoveConstructor) {
 
 TEST_F(LibrdfWorldTests, TestMoveAssignment) {
     semsim::LibrdfWorld world1;
-    auto world1_ptr_number = reinterpret_cast<std::uintptr_t>(*world1.getWorld());
+    auto world1_ptr_number = reinterpret_cast<std::uintptr_t>(world1.get());
     semsim::LibrdfWorld world2;
     world2 = std::move(world1);
-    auto world2_ptr_number = reinterpret_cast<std::uintptr_t>(*world2.getWorld());
+    auto world2_ptr_number = reinterpret_cast<std::uintptr_t>(world2.get());
     ASSERT_EQ(world1.getWorld(), nullptr);
     ASSERT_EQ(world1_ptr_number, world2_ptr_number);
 }
@@ -44,7 +44,7 @@ TEST_F(LibrdfWorldTests, TestMoveAssignment) {
 
 TEST_F(LibrdfWorldTests, TestThatICanDoSomethingWithLibrdfWorld) {
     semsim::LibrdfWorld world1;
-    librdf_storage *storage = librdf_new_storage(*world1.getWorld(), "memory", "storagename", nullptr);
+    librdf_storage *storage = librdf_new_storage(world1.get(), "memory", "storagename", nullptr);
     librdf_free_storage(storage);
     ASSERT_TRUE(true); // if we get this far we've passed
 }
