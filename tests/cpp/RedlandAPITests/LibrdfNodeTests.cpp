@@ -15,7 +15,7 @@ public:
 };
 
 
-TEST_F(LibrdfNodeTests, TestCopyCreate) {
+TEST_F(LibrdfNodeTests, TestCreate) {
     std::string expected = "https://notarealaddress.com";
     semsim::LibrdfNode node = world_.newNodeUriString(expected);
     std::string actual = node.str();

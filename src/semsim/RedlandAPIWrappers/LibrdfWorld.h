@@ -73,7 +73,7 @@ namespace semsim {
 
         LibrdfUri newUri(std::string uri_string) const;
 
-        LibrdfStatement newStatementFromNodes(LibrdfNode subject, LibrdfNode predicate, LibrdfNode object);
+        LibrdfStatement newStatementFromNodes(LibrdfNode &subject, LibrdfNode &predicate, LibrdfNode &object) const;
 
 //        LibrdfSerializer newSerializer(std::string name);
 
