@@ -30,6 +30,8 @@ namespace semsim {
 
         librdf_query_results *get();
 
+        std::string str(std::string format);
+
     };
 }
 

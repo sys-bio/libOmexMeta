@@ -27,6 +27,10 @@ namespace semsim {
         return query_results_.get();
     }
 
+    std::string LibrdfQueryResults::str(std::string format) {
+        return std::__cxx11::string();
+    }
+
 
 }
 

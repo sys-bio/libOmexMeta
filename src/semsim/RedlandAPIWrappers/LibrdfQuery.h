@@ -16,7 +16,7 @@ namespace semsim {
     class LibrdfQuery {
         query_ptr query_;
     public:
-        const query_ptr &getQueryResults() const;
+        const query_ptr &getQuery() const;
 
         LibrdfQuery() = default;
 

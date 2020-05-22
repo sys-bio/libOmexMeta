@@ -10,6 +10,8 @@
 #include <string>
 #include <iostream>
 #include "LibrdfStatement.h"
+#include "LibrdfQueryResults.h"
+#include "LibrdfQuery.h"
 
 
 /*
@@ -38,10 +40,11 @@ namespace semsim {
 
         bool operator!() const;
 
-        void addStatement(LibrdfStatement statement);
-
         librdf_model *get();
 
+        void addStatement(LibrdfStatement statement);
+
+        LibrdfQueryResults query(LibrdfQuery query);
     };
 }
 
