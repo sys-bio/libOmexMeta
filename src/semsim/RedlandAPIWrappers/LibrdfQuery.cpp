@@ -7,12 +7,12 @@ namespace semsim {
 
     }
 
-    const query_ptr &LibrdfQuery::getQueryResults() const {
+    const query_ptr &LibrdfQuery::getQuery() const {
         return query_;
     }
 
     bool LibrdfQuery::operator!() const {
-        return !getQueryResults();
+        return !getQuery();
     }
 
     bool LibrdfQuery::operator==(const LibrdfQuery &rhs) const {

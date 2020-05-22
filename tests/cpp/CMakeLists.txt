@@ -6,8 +6,14 @@ set(REDLAND_WRAPPER_TEST_SOURCES
         RedlandAPITests/LibrdfModelTests.cpp
         RedlandAPITests/LibrdfNodeTests.cpp
         RedlandAPITests/LibrdfStorageTests.cpp
-        RedlandAPITests/RaptorUriTests.cpp
         RedlandAPITests/LibrdfStatementTests.cpp
+
+        RedlandAPITests/LibrdfUriTests.cpp
+        RedlandAPITests/LibrdfParserTests.cpp
+        RedlandAPITests/LibrdfSerializerTests.cpp
+        RedlandAPITests/LibrdfQueryTests.cpp
+        RedlandAPITests/LibrdfQueryResultsTests.cpp
+        RedlandAPITests/LibrdfStreamTests.cpp
         )
 
 set(TEST_SOURCES

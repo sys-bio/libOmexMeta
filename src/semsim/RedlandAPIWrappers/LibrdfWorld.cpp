@@ -122,6 +122,60 @@ namespace semsim {
         return world_.get();
     }
 
+    LibrdfParser LibrdfWorld::newParser(const char *name, std::string mime_type, std::string uri_type) {
+        librdf_uri *uri_type_;
+        const char *mime_type_;
+        if (!uri_type.empty()) {
+            uri_type_ = librdf_new_uri(world_.get(), (const unsigned char *) uri_type.c_str());
+        } else {
+            uri_type_ = nullptr;
+        }
+        if (!mime_type.empty()) {
+            mime_type_ = mime_type.c_str();
+        } else {
+            mime_type_ = nullptr;
+        }
+        librdf_parser *parser = librdf_new_parser(world_.get(), name, mime_type_, uri_type_);
+        return LibrdfParser(parser);
+    }
+
+    LibrdfSerializer LibrdfWorld::newSerializer(const char *name, std::string mime_type, std::string uri_type) {
+        librdf_uri *uri_type_;
+        const char *mime_type_;
+        if (!uri_type.empty()) {
+            uri_type_ = librdf_new_uri(world_.get(), (const unsigned char *) uri_type.c_str());
+        } else {
+            uri_type_ = nullptr;
+        }
+        if (!mime_type.empty()) {
+            mime_type_ = mime_type.c_str();
+        } else {
+            mime_type_ = nullptr;
+        }
+        librdf_serializer *serializer = librdf_new_serializer(world_.get(), name, mime_type_, uri_type_);
+        return LibrdfSerializer(serializer);
+    }
+
+    LibrdfQuery
+    LibrdfWorld::newQuery(std::string query, std::string query_language_name, std::string uri, std::string base_uri) {
+        const char *query_language_name_ = query_language_name.c_str();
+        auto query_ = (const unsigned char *) query.c_str();
+        librdf_uri *uri_;
+        librdf_uri *base_uri_;
+        const char *mime_type_;
+        if (!uri.empty()) {
+            uri_ = librdf_new_uri(world_.get(), (const unsigned char *) uri.c_str());
+        } else {
+            uri_ = nullptr;
+        }
+        if (!base_uri.empty()) {
+            base_uri_ = librdf_new_uri(world_.get(), (const unsigned char *) base_uri.c_str());
+        } else {
+            base_uri_ = nullptr;
+        }
+        return LibrdfQuery(librdf_new_query(world_.get(), query_language_name_, uri_, query_, base_uri_));
+    }
+
 //    Subject LibrdfWorld::newSubjectUri(const std::string &subject_value) {
 //        return Subject(RDFURINode(newNodeUriString(subject_value)));
 //    }

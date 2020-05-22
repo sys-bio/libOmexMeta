@@ -3,6 +3,7 @@
 //
 
 #include "LibrdfModel.h"
+#include "LibrdfQuery.h"
 
 namespace semsim {
 
@@ -33,6 +34,12 @@ namespace semsim {
     librdf_model *LibrdfModel::get() {
         return model_.get();
     }
+
+    LibrdfQueryResults LibrdfModel::query(LibrdfQuery query) {
+        librdf_query_results *results = librdf_query_execute(query.get(), model_.get());
+        return LibrdfQueryResults(results);
+    }
+
 
     // todo add wrapper around librdf_model_add_statement
 
