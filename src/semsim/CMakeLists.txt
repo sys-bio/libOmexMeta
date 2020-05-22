@@ -57,9 +57,9 @@ set(SEMSIM_SOURCES
         "RedlandAPIWrappers/LibrdfSerializer.cpp"
         "RedlandAPIWrappers/LibrdfParser.cpp"
         "RedlandAPIWrappers/LibrdfStream.cpp"
-        #
-        #        "CurlGet.cpp"
-        #        "SemsimUtils.cpp"
+
+        #                "CurlGet.cpp"
+        #                "SemsimUtils.cpp"
         #        "RDFNode.cpp"
         #        "Subject.cpp"
         #        "Predicate.cpp"
