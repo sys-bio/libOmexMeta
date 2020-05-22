@@ -12,7 +12,13 @@
 #include <sstream>
 #include "semsim/HERE.h"
 
+/*
+ * Do I need to mirror the underlying structure of
+ * the librdf_node* object?
+ */
+
 namespace semsim {
+
     typedef std::shared_ptr<librdf_node> node_ptr;
 
     class LibrdfNode {

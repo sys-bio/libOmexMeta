@@ -118,6 +118,10 @@ namespace semsim {
         );
     }
 
+    LibrdfStatement LibrdfWorld::newStatement() const {
+        return LibrdfStatement(librdf_new_statement(world_.get()));
+    }
+
     librdf_world *LibrdfWorld::get() {
         return world_.get();
     }
@@ -175,6 +179,8 @@ namespace semsim {
         }
         return LibrdfQuery(librdf_new_query(world_.get(), query_language_name_, uri_, query_, base_uri_));
     }
+
+
 
 //    Subject LibrdfWorld::newSubjectUri(const std::string &subject_value) {
 //        return Subject(RDFURINode(newNodeUriString(subject_value)));

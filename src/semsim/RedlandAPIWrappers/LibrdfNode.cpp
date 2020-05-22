@@ -9,12 +9,78 @@
  * todo put name of exception in all error messages.
  */
 
+/*
+ * todo working theory: These destructors are not working
+ * properly with the move constructors because in 2003/5 when
+ * this package was built, there was no such thing as move
+ * semantics.
+ */
 namespace semsim {
+
+    void free_node(librdf_node *node) {
+        if (!node) {
+            std::cout << "Node already destructed" << std::endl;
+            return;
+        }
+
+        std::cout << (node->usage == -1) << std::endl;
+        std::cout << (node->usage == 0) << std::endl;
+        std::cout << (node->usage == 1) << std::endl;
+        if (node->usage == 0)
+            return;
+
+        std::cout << "Node usage: " << node->usage << std::endl;
+        if (--node->usage) {
+            std::cout << "Node usage: " << node->usage << std::endl;
+            return;
+        }
+//
+//        switch (node->type) {
+//            case RAPTOR_TERM_TYPE_URI:
+//                if (node->value.uri) {
+//                    raptor_free_uri(node->value.uri);
+//                    node->value.uri = nullptr;
+//                }
+//                break;
+//
+//            case RAPTOR_TERM_TYPE_BLANK:
+//                if (node->value.blank.string) {
+//                    free(node->value.blank.string);
+//                    node->value.blank.string = nullptr;
+//                }
+//                break;
+//
+//            case RAPTOR_TERM_TYPE_LITERAL:
+//                if (node->value.literal.string) {
+//                    free(node->value.literal.string);
+//                    node->value.literal.string = nullptr;
+//                }
+//
+//                if (node->value.literal.datatype) {
+//                    raptor_free_uri(node->value.literal.datatype);
+//                    node->value.literal.datatype = nullptr;
+//                }
+//
+//                if (node->value.literal.language) {
+//                    free(node->value.literal.language);
+//                    node->value.literal.language = nullptr;
+//                }
+//                break;
+//
+//            case RAPTOR_TERM_TYPE_UNKNOWN:
+//            default:
+//                break;
+//        }
+        free(node);
+    }
 
     LibrdfNode::LibrdfNode(librdf_node *node) :
             node_(node_ptr(node, librdf_free_node)) {
-
+//          int usage;
+//          raptor_term_type type;
+//          raptor_term_value value;
     }
+
 
     const node_ptr &LibrdfNode::getNode() const {
         return node_;

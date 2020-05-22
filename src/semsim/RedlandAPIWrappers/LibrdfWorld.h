@@ -67,6 +67,8 @@ namespace semsim {
 
         LibrdfStatement newStatementFromNodes(LibrdfNode subject, LibrdfNode predicate, LibrdfNode object) const;
 
+        LibrdfStatement newStatement() const;
+
         librdf_world *get();
 
         LibrdfParser newParser(const char *name, std::string mime_type = std::string(),

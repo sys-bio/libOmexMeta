@@ -38,6 +38,12 @@ namespace semsim {
 
         librdf_statement *get();
 
+        void setSubject(LibrdfNode node);
+
+        void setPredicate(LibrdfNode node);
+
+        void setResource(LibrdfNode node);
+
     };
 
 
