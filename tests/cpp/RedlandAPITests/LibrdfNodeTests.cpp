@@ -139,7 +139,7 @@ TEST_F(LibrdfNodeTests, TestUseNodsToMakeAStatement) {
 
     free(actual);
 //    librdf_free_uri(uri);
-    librdf_free_statement(stmt);
+    free(stmt);
 //    librdf_free_node(n);
 
 /*
