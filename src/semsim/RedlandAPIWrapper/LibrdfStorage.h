@@ -8,28 +8,25 @@
 #include <librdf.h>
 #include <string>
 #include <memory>
+#include "semsim/RedlandAPIWrapper/World.h"
 
 namespace semsim {
-    typedef std::shared_ptr<librdf_storage> storage_ptr;
 
     class LibrdfStorage {
 
-        storage_ptr storage_;
+        struct deleter {
+            void operator()(librdf_storage *storage);
+        };
+
+        std::unique_ptr<librdf_storage, deleter> storage_;
 
     public:
-        LibrdfStorage() = default;
-
         explicit LibrdfStorage(librdf_storage *storage);
 
-        bool operator==(const LibrdfStorage &rhs) const;
+        explicit LibrdfStorage(std::string storage_name = "memory", std::string name = "SemsimStore",
+                               std::string options = std::string());
 
-        bool operator!=(const LibrdfStorage &rhs) const;
-
-        storage_ptr getStorage() const;
-
-        bool operator!() const;
-
-        librdf_storage *get();
+        librdf_storage *get() const;
 
     };
 }

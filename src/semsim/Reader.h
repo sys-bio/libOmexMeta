@@ -16,7 +16,7 @@
 #include <sstream>
 #include <unordered_map>
 
-#include "semsim/RedlandAPIWrapper/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrapper/World.h"
 #include "semsim/RedlandAPIWrapper/LibrdfModel.h"
 #include "semsim/RedlandAPIWrapper/RaptorWorld.h"
 #include "semsim/RedlandAPIWrapper/LibrdfUri.h"

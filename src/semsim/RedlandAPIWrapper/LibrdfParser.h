@@ -9,26 +9,27 @@
 #include <librdf.h>
 #include <memory>
 #include "semsim/Error.h"
+#include "semsim/RedlandAPIWrapper/World.h"
+#include "LibrdfUri.h"
 
 namespace semsim {
-    typedef std::shared_ptr<librdf_parser> parser_ptr;
 
     class LibrdfParser {
-        parser_ptr parser_;
-    public:
-        const parser_ptr &getParser() const;
 
+        struct deleter {
+            void operator()(librdf_parser *parser);
+        };
+
+        std::unique_ptr<librdf_parser, deleter> parser_;
+    public:
         LibrdfParser() = default;
 
-        explicit LibrdfParser(librdf_parser *query_results);
+        explicit LibrdfParser(librdf_parser *parser);
 
-        bool operator!() const;
+        LibrdfParser(const char *name, const char *mime_type = nullptr,
+                     const char *type_uri = nullptr);
 
-        bool operator==(const LibrdfParser &rhs) const;
-
-        bool operator!=(const LibrdfParser &rhs) const;
-
-        librdf_parser *get();
+        librdf_parser *get() const;
 
     };
 }

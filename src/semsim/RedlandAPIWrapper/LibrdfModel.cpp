@@ -3,35 +3,27 @@
 //
 
 #include "LibrdfModel.h"
-#include "LibrdfQuery.h"
+
 
 namespace semsim {
 
+
+    void LibrdfModel::deleter::operator()(librdf_model *model) {
+        librdf_free_model(model);
+    }
+
     LibrdfModel::LibrdfModel(librdf_model *model)
-            : model_(model_ptr(model, librdf_free_model)) {
+            : model_(model) {
     }
 
-    bool LibrdfModel::operator==(const LibrdfModel &rhs) const {
-        return model_ == rhs.model_;
-    }
+    LibrdfModel::LibrdfModel(LibrdfStorage storage, const char *options)
+            : model_(librdf_new_model(World::getWorld(), std::move(storage).get(), options)) {}
 
-    bool LibrdfModel::operator!=(const LibrdfModel &rhs) const {
-        return !(rhs == *this);
-    }
-
-    const model_ptr &LibrdfModel::getModel() const {
-        return model_;
-    }
-
-    bool LibrdfModel::operator!() const {
-        return !model_;
-    }
-
-    void LibrdfModel::addStatement(LibrdfStatement statement) {
+    void LibrdfModel::addStatement(const LibrdfStatement &statement) const {
         librdf_model_add_statement(get(), statement.get());
     }
 
-    librdf_model *LibrdfModel::get() {
+    librdf_model *LibrdfModel::get() const {
         return model_.get();
     }
 

@@ -3,28 +3,28 @@
 namespace semsim {
 
     LibrdfQuery::LibrdfQuery(librdf_query *query) :
-            query_(query_ptr(query, librdf_free_query)) {
+            query_(query) {}
+
+    LibrdfQuery::LibrdfQuery(const std::string &query, const std::string &name, const unsigned char *uri,
+                             const char *base_uri) {
+        librdf_uri *uri_ = nullptr;
+        if (!uri)
+            uri_ = librdf_new_uri(World::getWorld(), uri);
+
+        librdf_uri *base_uri_ = nullptr;
+        if (!base_uri)
+            base_uri_ = librdf_new_uri(World::getWorld(), uri);
+        librdf_query *q = librdf_new_query(
+                World::getWorld(), name.c_str(), uri_, (const unsigned char *) query.c_str(), base_uri_);
+        query_ = std::unique_ptr<librdf_query, deleter>(q);
 
     }
 
-    const query_ptr &LibrdfQuery::getQuery() const {
-        return query_;
-    }
-
-    bool LibrdfQuery::operator!() const {
-        return !getQuery();
-    }
-
-    bool LibrdfQuery::operator==(const LibrdfQuery &rhs) const {
-        return query_.get() == rhs.query_.get();
-    }
-
-    bool LibrdfQuery::operator!=(const LibrdfQuery &rhs) const {
-        return !(rhs == *this);
-    }
-
-    librdf_query *LibrdfQuery::get() {
+    librdf_query *LibrdfQuery::get() const {
         return query_.get();
     }
 
+    void LibrdfQuery::deleter::operator()(librdf_query *query) {
+        librdf_free_query(query);
+    }
 }

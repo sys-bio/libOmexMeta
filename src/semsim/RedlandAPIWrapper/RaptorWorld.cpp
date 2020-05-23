@@ -26,7 +26,7 @@ namespace semsim {
         return !getRaptorWorld();
     }
 
-    raptor_world *RaptorWorld::get() {
+    raptor_world *RaptorWorld::get() const {
         return raptor_world_.get();
     }
 }

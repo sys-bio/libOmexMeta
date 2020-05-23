@@ -16,12 +16,6 @@ namespace semsim {
     typedef std::shared_ptr<librdf_uri> librdf_uri_ptr;
 
     class LibrdfUri {
-        /* the URI string */
-        std::string string_;
-        /* length of string */
-        unsigned int length_;
-        /* usage count */
-        int usage_;
 
         /*
          * If the deleter of std::unique_ptr is an empty
@@ -32,9 +26,7 @@ namespace semsim {
          *  https://stackoverflow.com/questions/61969200/what-is-the-purpose-of-wrapping-this-private-deleter-function-in-a-struct/61969274#61969274
          */
         struct deleter {
-            void operator()(librdf_uri *ptr) {
-                librdf_free_uri(ptr);
-            }
+            void operator()(librdf_uri *ptr);
         };
 
         std::unique_ptr<librdf_uri, deleter> librdf_uri_;
@@ -42,11 +34,11 @@ namespace semsim {
     public:
         LibrdfUri() = default;
 
-//        explicit LibrdfUri(librdf_uri *uri);
+        std::string str();
 
-        explicit LibrdfUri(std::string uri);
+        explicit LibrdfUri(const std::string &uri);
 
-        librdf_uri *get();
+        librdf_uri *get() const;
 
     };
 }

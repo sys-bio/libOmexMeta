@@ -3,14 +3,14 @@
 //
 
 
-#include "LibrdfWorld.h"
+#include "World.h"
 
 namespace semsim {
     typedef std::shared_ptr<librdf_world> world_ptr;
 
-    librdf_world *LibrdfWorld::world_ = nullptr;
+    librdf_world *World::world_ = nullptr;
 
-    librdf_world *LibrdfWorld::getWorld() {
+    librdf_world *World::getWorld() {
         if (world_ == nullptr) {
             world_ = librdf_new_world();
             librdf_world_open(world_);
@@ -18,26 +18,26 @@ namespace semsim {
         return world_;
     }
 
-    LibrdfWorld::LibrdfWorld() = default;
+    World::World() = default;
 
 
-//    bool LibrdfWorld::operator==(const LibrdfWorld &rhs) const {
+//    bool World::operator==(const World &rhs) const {
 //        return world_.get() == rhs.world_.get();
 //    }
 //
-//    bool LibrdfWorld::operator!=(const LibrdfWorld &rhs) const {
+//    bool World::operator!=(const World &rhs) const {
 //        return !(rhs == *this);
 //    }
 //
-//    const librdf_world_ptr &LibrdfWorld::getWorld() const {
+//    const librdf_world_ptr &World::getWorld() const {
 //        return world_;
 //    }
 //
-//    RaptorWorld LibrdfWorld::getRaptor() {
+//    RaptorWorld World::getRaptor() {
 //        return RaptorWorld(librdf_world_get_raptor(world_.get()));
 //    }
 //
-//    LibrdfStorage LibrdfWorld::newStorage(const std::string &storage_name, const std::string &name,
+//    LibrdfStorage World::newStorage(const std::string &storage_name, const std::string &name,
 //                                          const char *options_string) {
 //
 //        //todo fill these in and write verification statements for them.
@@ -51,13 +51,13 @@ namespace semsim {
 //        );
 //    }
 //
-//    LibrdfModel LibrdfWorld::newModel(LibrdfStorage storage, const char *options_string) {
+//    LibrdfModel World::newModel(LibrdfStorage storage, const char *options_string) {
 //        librdf_model *m = librdf_new_model(world_.get(), storage.get(), options_string);
 //        LibrdfModel model = LibrdfModel(m);
 //        return model;
 //    }
 //
-//    LibrdfNode LibrdfWorld::newNodeUriString(const std::string &string) {
+//    LibrdfNode World::newNodeUriString(const std::string &string) {
 //        std::string identifier_dot_org = "https://identifiers.org/";
 //        std::regex identifiers_regex(identifier_dot_org);
 //        std::regex http_regex("^https://");
@@ -76,20 +76,20 @@ namespace semsim {
 //                world_.get(), (const unsigned char *) x.c_str()));
 //    }
 //
-//    LibrdfNode LibrdfWorld::newNodeUri(LibrdfUri raptorUri) const {
+//    LibrdfNode World::newNodeUri(LibrdfUri raptorUri) const {
 //        return LibrdfNode(
 //                librdf_new_node_from_uri(world_.get(), raptorUri.get())
 //        );
 //    }
 //
-//    LibrdfNode LibrdfWorld::newNodeLiteral(
+//    LibrdfNode World::newNodeLiteral(
 //            const std::string &literal, const char *xml_language, bool is_wf_xml) const {
 //        return LibrdfNode(librdf_new_node_from_literal(
 //                world_.get(), (const unsigned char *) literal.c_str(), xml_language, (int) is_wf_xml)
 //        );
 //    }
 //
-//    LibrdfNode LibrdfWorld::newNodeTypedLiteral(
+//    LibrdfNode World::newNodeTypedLiteral(
 //            const std::string &literal,
 //            const std::string &datatypeUri,
 //            const char *xml_language) const {
@@ -109,32 +109,32 @@ namespace semsim {
 //        );
 //    }
 //
-//    LibrdfNode LibrdfWorld::newNodeBlank(const std::string &identifier) const {
+//    LibrdfNode World::newNodeBlank(const std::string &identifier) const {
 //        return LibrdfNode(
 //                librdf_new_node_from_blank_identifier(world_.get(), (const unsigned char *) identifier.c_str()));
 //    }
 //
 //
-//    LibrdfUri LibrdfWorld::newUri(std::string uri_string) const {
+//    LibrdfUri World::newUri(std::string uri_string) const {
 //        return LibrdfUri(librdf_new_uri(world_.get(), (const unsigned char *) uri_string.c_str()));
 //    }
 //
 //    LibrdfStatement
-//    LibrdfWorld::newStatementFromNodes(LibrdfNode subject, LibrdfNode predicate, LibrdfNode object) const {
+//    World::newStatementFromNodes(LibrdfNode subject, LibrdfNode predicate, LibrdfNode object) const {
 //        return LibrdfStatement(librdf_new_statement_from_nodes(
 //                world_.get(), subject.getNode().get(), predicate.getNode().get(), object.getNode().get())
 //        );
 //    }
 //
-//    LibrdfStatement LibrdfWorld::newStatement() const {
+//    LibrdfStatement World::newStatement() const {
 //        return LibrdfStatement(librdf_new_statement(world_.get()));
 //    }
 //
-//    librdf_world *LibrdfWorld::get() {
+//    librdf_world *World::get() const {
 //        return world_.get();
 //    }
 //
-//    LibrdfParser LibrdfWorld::newParser(const char *name, std::string mime_type, std::string uri_type) {
+//    LibrdfParser World::newParser(const char *name, std::string mime_type, std::string uri_type) {
 //        librdf_uri *uri_type_;
 //        const char *mime_type_;
 //        if (!uri_type.empty()) {
@@ -151,7 +151,7 @@ namespace semsim {
 //        return LibrdfParser(parser);
 //    }
 //
-//    LibrdfSerializer LibrdfWorld::newSerializer(const char *name, std::string mime_type, std::string uri_type) {
+//    LibrdfSerializer World::newSerializer(const char *name, std::string mime_type, std::string uri_type) {
 //        librdf_uri *uri_type_;
 //        const char *mime_type_;
 //        if (!uri_type.empty()) {
@@ -169,7 +169,7 @@ namespace semsim {
 //    }
 //
 //    LibrdfQuery
-//    LibrdfWorld::newQuery(std::string query, std::string query_language_name, std::string uri, std::string base_uri) {
+//    World::newQuery(std::string query, std::string query_language_name, std::string uri, std::string base_uri) {
 //        const char *query_language_name_ = query_language_name.c_str();
 //        auto query_ = (const unsigned char *) query.c_str();
 //        librdf_uri *uri_;
@@ -190,15 +190,15 @@ namespace semsim {
 
 
 
-//    Subject LibrdfWorld::newSubjectUri(const std::string &subject_value) {
+//    Subject World::newSubjectUri(const std::string &subject_value) {
 //        return Subject(RDFURINode(newNodeUriString(subject_value)));
 //    }
 //
-//    Subject LibrdfWorld::newSubjectBlank(const std::string &subject_value) {
+//    Subject World::newSubjectBlank(const std::string &subject_value) {
 //        return Subject(RDFURINode(newNodeBlank(subject_value)));
 //    }
 //
-//    PredicatePtr LibrdfWorld::newPredicate(std::string namespace_, const std::string &term) {
+//    PredicatePtr World::newPredicate(std::string namespace_, const std::string &term) {
 //        return PredicateFactory(*this, namespace_, term);
 //    }
 
