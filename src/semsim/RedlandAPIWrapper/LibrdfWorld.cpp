@@ -8,9 +8,9 @@
 namespace semsim {
     typedef std::shared_ptr<librdf_world> world_ptr;
 
-    LibrdfWorld *LibrdfWorld::world_ = nullptr;
+    librdf_world *LibrdfWorld::world_ = nullptr;
 
-    LibrdfWorld *LibrdfWorld::getWorld() {
+    librdf_world *LibrdfWorld::getWorld() {
         if (world_ == nullptr) {
             world_ = librdf_new_world();
             librdf_world_open(world_);
