@@ -32,6 +32,9 @@ set(HAVE_DEPENDENCIES FALSE CACHE BOOL
          automatically built before building libsemsim. When False
          The dependencies are assumed to already exist")
 
+option(BUILD_DOCS "Build libsemsim documentation" ON)
+
+
 MESSAGE(STATUS "HAVE_DEPENDENCIES ${HAVE_DEPENDENCIES}")
 
 # tests

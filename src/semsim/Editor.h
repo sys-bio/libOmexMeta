@@ -16,7 +16,7 @@
 #include "semsim/PhysicalEntity.h"
 #include "semsim/PhysicalProcess.h"
 #include "semsim/PhysicalForce.h"
-#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
 #include "semsim/Error.h"
 #include "semsim/SemsimUtils.h"
 #include "semsim/RDF.h"

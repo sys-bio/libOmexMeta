@@ -10,7 +10,7 @@
 #include "semsim/Subject.h"
 #include "semsim/PhysicalPhenomenon.h"
 #include "semsim/MetaID.h"
-#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
 #include <utility>
 #include "semsim/Triple.h"
 #include "semsim/Query.h"

@@ -3,8 +3,8 @@
 //
 
 #include "gtest/gtest.h"
-#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
-#include "semsim/RedlandAPIWrappers/LibrdfUri.h"
+#include "semsim/RedlandAPIWrapper/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrapper/LibrdfUri.h"
 #include "semsim/SemsimUtils.h"
 
 class LibrdfUriTests : public ::testing::Test {

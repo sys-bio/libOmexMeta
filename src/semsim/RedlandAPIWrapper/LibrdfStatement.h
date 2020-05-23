@@ -9,7 +9,7 @@
 #include <librdf.h>
 #include <memory>
 #include <iostream>
-#include "semsim/RedlandAPIWrappers/LibrdfNode.h"
+#include "semsim/RedlandAPIWrapper/LibrdfNode.h"
 
 namespace semsim {
     typedef std::shared_ptr<librdf_statement> statement_ptr;

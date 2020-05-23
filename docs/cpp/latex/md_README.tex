@@ -1,0 +1,77 @@
+\href{https://sys-bio.github.io/libsemsim-docs/}{\texttt{ https\+://sys-\/bio.\+github.\+io/libsemsim-\/docs/}}\hypertarget{md_README_autotoc_md1}{}\doxysection{Installation}\label{md_README_autotoc_md1}
+\hypertarget{md_README_autotoc_md2}{}\doxysubsection{Using C\+Make}\label{md_README_autotoc_md2}
+C\+Make uses a separate build directory for storing compiled object files and intermediate configure files. See \href{https://cmake.org/runningcmake/}{\texttt{ the C\+Make manual}}.\hypertarget{md_README_autotoc_md3}{}\doxysubsection{mac\+OS}\label{md_README_autotoc_md3}
+Install \href{https://git-scm.com/}{\texttt{ git}}, C\+Make 3.\+14 or greater, Homebrew. Clone the sources\+:
+
+
+\begin{DoxyCode}{0}
+    \DoxyCodeLine{git clone https://github.com/sys-\/bio/libsemgen.git}
+\end{DoxyCode}
+
+
+Create and change to a build directory from which to run C\+Make. libsemsim requires the following dependencies\+:
+
+
+\begin{DoxyItemize}
+    \item lib\+S\+B\+ML (with namespaces enabled)
+    \item lib\+Combine
+    \item Raptor2
+    \item Rasqal
+    \item Swig
+    \item Catch2 (optional, for building tests)
+    \item lib\+Cell\+ML (optional, not used)
+\end{DoxyItemize}
+
+On Mac, some of these can be installed as follows\+:
+
+
+\begin{DoxyCode}{0}
+    \DoxyCodeLine{brew install zlib raptor rasqal redland}
+\end{DoxyCode}
+
+
+See the respective project pages for how to build and install these packages. Once these packages are install, invoke C\+Make with the following signature\+:
+
+
+\begin{DoxyCode}{0}
+    \DoxyCodeLine{CMAKE\_PREFIX\_PATH=/path/to/libsbml/lib/cmake:/path/to/libcellml/lib/cmake:/path/to/libcombine/lib/cmake:/path/to/catch2/lib/cmake/Catch2:\$CMAKE\_PREFIX\_PATH cmake -\/DCMAKE\_INSTALL\_PREFIX=/path/to/install/libsemsim /path/to/src/libsemsim}
+\end{DoxyCode}
+
+
+Then build the release target using X\+Code. lib\+Sem\+Sim will automatically find the currently active Python interpreter (if available) and use it to generate bindings. If you want to use another Python interpreter, add it to your P\+A\+TH.
+
+Finally, to build the documentation, make sure you have the following packages installed\+: {\ttfamily sphinx breathe sphinxcontrib-\/bibtex sphinx\+\_\+rtd\+\_\+theme}.\hypertarget{md_README_autotoc_md4}{}\doxysubsubsection{S\+B\+M\+L Support}\label{md_README_autotoc_md4}
+In order to support loading S\+B\+ML models, you will need to build and install lib\+S\+B\+ML 5.\+18.\+0 or later. Refer to the \href{http://sbml.org/Software/libSBML}{\texttt{ lib\+S\+B\+ML building instructions}}. You may use the stable or experimental version.\hypertarget{md_README_autotoc_md5}{}\doxysubsubsection{Cell\+M\+L Support}\label{md_README_autotoc_md5}
+In order support loading Cell\+ML models (not implemented yet), you will need to build and install lib\+Cell\+ML from source. Refer to the \href{https://libcellml.readthedocs.io/en/latest/}{\texttt{ lib\+Cell\+ML}} documentation for building instructions.\hypertarget{md_README_autotoc_md6}{}\doxysubsubsection{Building lib\+Sem\+Sim}\label{md_README_autotoc_md6}
+Create an empty \char`\"{}build\char`\"{} directory for intermediate C\+Make files and compiled object files. Where you put this directory is up to you. Change to the directory and run the following command (making sure to substitute the appropriate paths for your machine)\+:
+
+
+\begin{DoxyCode}{0}
+    \DoxyCodeLine{CMAKE\_PREFIX\_PATH=/path/to/libsbml/lib/cmake:/path/to/libcellml/lib/cmake:/path/to/libcombine/lib/cmake:\$CMAKE\_PREFIX\_PATH PKG\_CONFIG\_PATH=/usr/local/Cellar/redland/1.0.17\_1/lib/pkgconfig:\$\_PKG\_CONFIG\_PATH cmake -\/DCMAKE\_BUILD\_TYPE=Release -\/DCMAKE\_INSTALL\_PREFIX=/path/to/libsemgen-\/install /path/to/libsemgen-\/src}
+    \DoxyCodeLine{make -\/j4 install}
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md7}{}\doxysubsection{Linux}\label{md_README_autotoc_md7}
+Make sure \href{https://git-scm.com/}{\texttt{ git}} is installed and clone the libsemgen source\+:
+
+
+\begin{DoxyCode}{0}
+    \DoxyCodeLine{git clone https://github.com/sys-\/bio/libsemgen.git}
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md8}{}\doxysubsubsection{Dependencies}\label{md_README_autotoc_md8}
+Install raptor, rasqal, and redland using your package manager. Instructions vary by distribution. On Fedora\+:
+
+
+\begin{DoxyCode}{0}
+    \DoxyCodeLine{sudo dnf -\/y install raptor2 raptor2-\/devel rasqal rasqal-\/devel redland redland-\/devel}
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md9}{}\doxysubsubsection{S\+B\+M\+L Support}\label{md_README_autotoc_md9}
+In order to support loading S\+B\+ML models, you will need to build and install lib\+S\+B\+ML 5.\+18.\+0 or later. Refer to the \href{http://sbml.org/Software/libSBML}{\texttt{ lib\+S\+B\+ML building instructions}}. You may use the stable or experimental version.\hypertarget{md_README_autotoc_md10}{}\doxysubsubsection{Cell\+M\+L Support}\label{md_README_autotoc_md10}
+In order support loading Cell\+ML models (not implemented yet), you will need to build and install lib\+Cell\+ML from source. Refer to the \href{https://libcellml.readthedocs.io/en/latest/}{\texttt{ lib\+Cell\+ML}} documentation for building instructions.\hypertarget{md_README_autotoc_md11}{}\doxysubsubsection{Building lib\+Sem\+Sim}\label{md_README_autotoc_md11}
+Create an empty \char`\"{}build\char`\"{} directory for intermediate C\+Make files and compiled object files. Where you put this directory is up to you. Change to the directory and run the following command (making sure to substitute the appropriate paths for your machine)\+:
+
+
+\begin{DoxyCode}{0}
+    \DoxyCodeLine{CMAKE\_PREFIX\_PATH=/path/to/libsbml/lib/cmake:/path/to/libcellml/lib/cmake:/path/to/libcombine/lib/cmake:\$CMAKE\_PREFIX\_PATH cmake -\/DCMAKE\_BUILD\_TYPE=Release -\/DCMAKE\_INSTALL\_PREFIX=/path/to/install/libsemgen /path/to/src/libsemgen}
+    \DoxyCodeLine{make -\/j4 install}
+\end{DoxyCode}
+ 

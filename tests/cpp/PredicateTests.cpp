@@ -5,7 +5,7 @@
 #include "gtest/gtest.h"
 #include "semsim/Predicate.h"
 
-#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
 
 class PredicateTests : public ::testing::Test {
 public:

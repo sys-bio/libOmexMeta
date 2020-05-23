@@ -7,7 +7,7 @@
 
 #include "semsim/RDFNode.h"
 #include "semsim/SemsimUtils.h"
-#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrapper/LibrdfWorld.h"
 
 class RDFNodeTests : public ::testing::Test {
 public:

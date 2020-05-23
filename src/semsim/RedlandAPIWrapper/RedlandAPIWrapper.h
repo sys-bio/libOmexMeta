@@ -6,17 +6,17 @@
 #define LIBSEMSIM_REDLANDAPIWRAPPER_H
 
 
-#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
-#include "semsim/RedlandAPIWrappers/RaptorWorld.h"
-#include "semsim/RedlandAPIWrappers/LibrdfStorage.h"
-#include "semsim/RedlandAPIWrappers/LibrdfModel.h"
-#include "semsim/RedlandAPIWrappers/LibrdfUri.h"
-#include "semsim/RedlandAPIWrappers/LibrdfNode.h"
-#include "semsim/RedlandAPIWrappers/LibrdfQuery.h"
-#include "semsim/RedlandAPIWrappers/LibrdfQuery.h"
-#include "semsim/RedlandAPIWrappers/LibrdfQueryResults.h"
-#include "semsim/RedlandAPIWrappers/LibrdfStream.h"
-#include "semsim/RedlandAPIWrappers/LibrdfSerializer.h"
-#include "semsim/RedlandAPIWrappers/LibrdfParser.h"
+#include "semsim/RedlandAPIWrapper/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrapper/RaptorWorld.h"
+#include "semsim/RedlandAPIWrapper/LibrdfStorage.h"
+#include "semsim/RedlandAPIWrapper/LibrdfModel.h"
+#include "semsim/RedlandAPIWrapper/LibrdfUri.h"
+#include "semsim/RedlandAPIWrapper/LibrdfNode.h"
+#include "semsim/RedlandAPIWrapper/LibrdfQuery.h"
+#include "semsim/RedlandAPIWrapper/LibrdfQuery.h"
+#include "semsim/RedlandAPIWrapper/LibrdfQueryResults.h"
+#include "semsim/RedlandAPIWrapper/LibrdfStream.h"
+#include "semsim/RedlandAPIWrapper/LibrdfSerializer.h"
+#include "semsim/RedlandAPIWrapper/LibrdfParser.h"
 
 #endif //LIBSEMSIM_REDLANDAPIWRAPPER_H

@@ -6,7 +6,7 @@
 #include "gtest/gtest.h"
 #include "librdf.h"
 
-#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
 
 class ResourceTests : public ::testing::Test {
 public:

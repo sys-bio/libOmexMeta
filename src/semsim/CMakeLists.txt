@@ -153,6 +153,29 @@ if (BUILD_SHARED)
 endif ()
 
 
+if (BUILD_DOCS)
+    # https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/
+    find_package(Doxygen REQUIRED)
+
+    set(DOXYGEN_INPUT_DIR "${CMAKE_SOURCE_DIR}/src/semsim")
+    set(DOXYGEN_OUTPUT_DIR "${CMAKE_SOURCE_DIR}/docs/cpp")
+    set(DOXYGEN_INDEX_FILE ${DOXYGEN_OUTPUT_DIR}/html/index.html)
+    set(DOXYFILE_IN ${CMAKE_SOURCE_DIR}/Doxyfile.in)
+    set(DOXYFILE_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+
+
+    configure_file(${DOXYFILE_IN} ${DOXYFILE_OUT} @ONLY)
+    file(MAKE_DIRECTORY ${DOXYGEN_OUTPUT_DIR})
+
+    add_custom_command(OUTPUT ${DOXYGEN_INDEX_FILE}
+            DEPENDS ${SEMSIM_HEADERS}
+            COMMAND ${DOXYGEN_EXECUTABLE} Doxyfile
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+            MAIN_DEPENDENCY Doxyfile
+            COMMENT "Generating docs")
+
+    add_custom_target(Doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
+endif ()
 
 
 

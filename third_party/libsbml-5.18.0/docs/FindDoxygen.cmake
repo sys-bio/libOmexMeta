@@ -102,7 +102,7 @@ IF(NOT DOXYGEN_SKIP_DOT)
   endif()
   if(DOXYGEN_DOT_EXECUTABLE)
     set(DOXYGEN_DOT_FOUND TRUE)
-    # The Doxyfile wants the path to Dot, not the entire path and executable
+    # The Doxyfile.in wants the path to Dot, not the entire path and executable
     get_filename_component(DOXYGEN_DOT_PATH "${DOXYGEN_DOT_EXECUTABLE}" PATH CACHE)
   endif()
   
@@ -118,7 +118,7 @@ if(APPLE)
 endif()
 
 # Maintain the _FOUND variables as "YES" or "NO" for backwards compatibility
-# (allows people to stuff them directly into Doxyfile with configure_file())
+# (allows people to stuff them directly into Doxyfile.in with configure_file())
 if(DOXYGEN_FOUND)
   set(DOXYGEN_FOUND "YES")
 else()

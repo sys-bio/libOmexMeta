@@ -6,7 +6,7 @@
 #define LIBSEMSIM_METAID_H
 
 #include <string>
-#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
 #include <sstream>
 #include <utility>
 #include <iostream>
