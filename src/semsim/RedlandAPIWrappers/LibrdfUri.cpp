@@ -40,4 +40,28 @@ namespace semsim {
         return librdf_uri_.get();
     }
 
+    unsigned char *LibrdfUri::getString() const {
+        return string;
+    }
+
+    void LibrdfUri::setString(unsigned char *string) {
+        LibrdfUri::string = string;
+    }
+
+    unsigned int LibrdfUri::getLength() const {
+        return length;
+    }
+
+    void LibrdfUri::setLength(unsigned int length) {
+        LibrdfUri::length = length;
+    }
+
+    int LibrdfUri::getUsage() const {
+        return usage;
+    }
+
+    void LibrdfUri::setUsage(int usage) {
+        LibrdfUri::usage = usage;
+    }
+
 }
