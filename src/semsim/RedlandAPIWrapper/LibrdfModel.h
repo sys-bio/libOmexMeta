@@ -12,8 +12,8 @@
 #include "LibrdfStatement.h"
 #include "LibrdfQueryResults.h"
 #include "LibrdfQuery.h"
-
-
+#include "LibrdfStorage.h"
+#include "World.h"
 /*
  * Todo librdf_model and librdf_storage are
  * strictly 1:1. Put checks in place to verify that
@@ -22,29 +22,26 @@
  */
 
 namespace semsim {
-    typedef std::shared_ptr<librdf_model> model_ptr;
 
     class LibrdfModel {
-        model_ptr model_;
+        struct deleter {
+            void operator()(librdf_model *model);
+        };
+
+        std::unique_ptr<librdf_model, deleter> model_;
 
     public:
         LibrdfModel() = default;
 
         explicit LibrdfModel(librdf_model *model);
 
-        bool operator==(const LibrdfModel &rhs) const;
+        explicit LibrdfModel(LibrdfStorage storage, const char *options = nullptr);
 
-        bool operator!=(const LibrdfModel &rhs) const;
-
-        const model_ptr &getModel() const;
-
-        bool operator!() const;
-
-        librdf_model *get();
-
-        void addStatement(LibrdfStatement statement);
+        [[nodiscard]] librdf_model *get() const;
 
         LibrdfQueryResults query(LibrdfQuery query);
+
+        void addStatement(const LibrdfStatement &statement) const;
     };
 }
 

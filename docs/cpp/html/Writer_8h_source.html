@@ -90,7 +90,7 @@
         <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define LIBSEMSIM_WRITER_H</span>
         </div>
         <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-        <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;semsim/RedlandAPIWrappers/LibrdfWorld.h&quot;</span>
+        <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;semsim/RedlandAPIWrappers/World.h&quot;</span>
         </div>
         <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;Error.h&quot;</span>
         </div>
@@ -162,14 +162,14 @@
                 class="keyword">protected</span>:
         </div>
         <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; <span
-                class="keywordtype">void</span> init(LibrdfWorld world, LibrdfModel model,
+                class="keywordtype">void</span> init(World world, LibrdfModel model,
         </div>
         <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; <span
                 class="keyword">const</span> std::string &amp;base_uri,
         </div>
         <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; std::string format);</div>
         <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-        <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; LibrdfWorld world_;</div>
+        <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; World world_;</div>
         <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; LibrdfModel model_;</div>
         <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; <span
                 class="keyword">public</span>:
@@ -180,7 +180,7 @@
         </div>
         <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
         <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; <a class="code"
-                                                                                          href="classsemsim_1_1Writer.html">Writer</a>(LibrdfWorld
+                                                                                          href="classsemsim_1_1Writer.html">Writer</a>(World
             world, LibrdfModel model,
         </div>
         <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; <span
@@ -199,7 +199,7 @@
         </div>
         <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
         <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; <span
-                class="keywordtype">void</span> setWorld(LibrdfWorld world_);
+                class="keywordtype">void</span> setWorld(World world_);
         </div>
         <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
         <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; std::string toString();</div>

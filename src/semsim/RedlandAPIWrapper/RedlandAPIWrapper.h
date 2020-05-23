@@ -6,7 +6,7 @@
 #define LIBSEMSIM_REDLANDAPIWRAPPER_H
 
 
-#include "semsim/RedlandAPIWrapper/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrapper/World.h"
 #include "semsim/RedlandAPIWrapper/RaptorWorld.h"
 #include "semsim/RedlandAPIWrapper/LibrdfStorage.h"
 #include "semsim/RedlandAPIWrapper/LibrdfModel.h"

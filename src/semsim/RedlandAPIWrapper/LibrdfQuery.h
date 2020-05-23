@@ -9,26 +9,28 @@
 #include <librdf.h>
 #include <memory>
 #include "semsim/Error.h"
+#include "semsim/RedlandAPIWrapper/World.h"
 
 namespace semsim {
-    typedef std::shared_ptr<librdf_query> query_ptr;
 
     class LibrdfQuery {
-        query_ptr query_;
-    public:
-        const query_ptr &getQuery() const;
 
+        struct deleter {
+            void operator()(librdf_query *query);
+        };
+
+        std::unique_ptr<librdf_query, deleter> query_;
+    public:
         LibrdfQuery() = default;
 
         explicit LibrdfQuery(librdf_query *query);
 
-        bool operator!() const;
+        explicit LibrdfQuery(const std::string &query,
+                             const std::string &name = "sparql",
+                             const unsigned char *uri = nullptr,
+                             const char *base_uri = nullptr);
 
-        bool operator==(const LibrdfQuery &rhs) const;
-
-        bool operator!=(const LibrdfQuery &rhs) const;
-
-        librdf_query *get();
+        [[nodiscard]] librdf_query *get() const;
 
     };
 }

@@ -12,37 +12,34 @@
 #include "semsim/RedlandAPIWrapper/LibrdfNode.h"
 
 namespace semsim {
-    typedef std::shared_ptr<librdf_statement> statement_ptr;
 
     class LibrdfStatement {
-        statement_ptr statement_;
+
+        LibrdfNode subject_;
+        LibrdfNode predicate_;
+        LibrdfNode resource_;
+
+        struct deleter {
+            void operator()(librdf_statement *statement);
+        };
+
+        std::unique_ptr<librdf_statement, deleter> statement_;
 
     public:
         LibrdfStatement() = default;
 
         explicit LibrdfStatement(librdf_statement *statement);
 
-        bool operator==(const LibrdfStatement &rhs) const;
+        explicit LibrdfStatement(LibrdfNode subject, LibrdfNode predicate, LibrdfNode resource);
 
-        bool operator!=(const LibrdfStatement &rhs) const;
+        librdf_statement *get() const;
 
-        bool operator!() const;
+        const LibrdfNode &getSubject() const;
 
-        LibrdfNode getSubjectNode();
+        const LibrdfNode &getPredicate() const;
 
-        LibrdfNode getPredicateNode();
+        const LibrdfNode &getResource() const;
 
-        LibrdfNode getObjectNode();
-
-        const statement_ptr &getStatement() const;
-
-        librdf_statement *get();
-
-        void setSubject(LibrdfNode node);
-
-        void setPredicate(LibrdfNode node);
-
-        void setResource(LibrdfNode node);
 
     };
 

@@ -13,7 +13,7 @@
 #include <utility>
 
 #include "semsim/RedlandAPIWrapper/LibrdfNode.h"
-#include "semsim/RedlandAPIWrapper/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrapper/World.h"
 
 namespace semsim {
 

@@ -3,27 +3,13 @@
 namespace semsim {
 
     LibrdfQueryResults::LibrdfQueryResults(librdf_query_results *query_results) :
-            query_results_(query_results_ptr(query_results, librdf_free_query_results)) {
+            query_results_(query_results) {}
 
+    void LibrdfQueryResults::deleter::operator()(librdf_query_results *query_results) {
+        librdf_free_query_results(query_results);
     }
 
-    const query_results_ptr &LibrdfQueryResults::getQueryResults() const {
-        return query_results_;
-    }
-
-    bool LibrdfQueryResults::operator!() const {
-        return !getQueryResults();
-    }
-
-    bool LibrdfQueryResults::operator==(const LibrdfQueryResults &rhs) const {
-        return query_results_.get() == rhs.query_results_.get();
-    }
-
-    bool LibrdfQueryResults::operator!=(const LibrdfQueryResults &rhs) const {
-        return !(rhs == *this);
-    }
-
-    librdf_query_results *LibrdfQueryResults::get() {
+    librdf_query_results *LibrdfQueryResults::get() const {
         return query_results_.get();
     }
 

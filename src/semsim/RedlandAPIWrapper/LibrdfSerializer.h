@@ -9,27 +9,30 @@
 #include <librdf.h>
 #include <memory>
 #include "semsim/Error.h"
+#include "semsim/RedlandAPIWrapper/World.h"
+#include "LibrdfUri.h"
 
 namespace semsim {
-    typedef std::shared_ptr<librdf_serializer> serializer_ptr;
 
     class LibrdfSerializer {
-        serializer_ptr serializer_;
-    public:
-        const serializer_ptr &getSerializer() const;
 
+        struct deleter {
+            void operator()(librdf_serializer *serializer);
+        };
+
+        std::unique_ptr<librdf_serializer, deleter> serializer_;
+    public:
         LibrdfSerializer() = default;
 
         explicit LibrdfSerializer(librdf_serializer *serializer);
 
-        bool operator!() const;
+        explicit LibrdfSerializer(const char *name, const char *mime_type = nullptr,
+                                  const char *type_uri = nullptr);
 
-        bool operator==(const LibrdfSerializer &rhs) const;
-
-        bool operator!=(const LibrdfSerializer &rhs) const;
-
-        librdf_serializer *get();
+        [[nodiscard]] librdf_serializer *get() const;
 
     };
 }
+
+
 #endif //LIBSEMSIM_LIBRDFSERIALIZER_H

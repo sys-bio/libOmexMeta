@@ -28,7 +28,7 @@ namespace semsim {
 
         bool operator!=(const LibrdfStream &rhs) const;
 
-        librdf_stream *get();
+        librdf_stream *get() const;
 
 
     };

@@ -8,101 +8,62 @@
 /*
  * todo put name of exception in all error messages.
  */
+#include "semsim/RedlandAPIWrapper/World.h"
 
-/*
- * todo working theory: These destructors are not working
- * properly with the move constructors because in 2003/5 when
- * this package was built, there was no such thing as move
- * semantics.
- */
 namespace semsim {
 
-    void free_node(librdf_node *node) {
-        if (!node) {
-            std::cout << "Node already destructed" << std::endl;
-            return;
+
+    void LibrdfNode::deleter::operator()(librdf_node *node) {
+        librdf_free_node(node);
+    }
+
+    LibrdfNode::LibrdfNode(librdf_node *node)
+            : node_(node) {
+
+    }
+
+    LibrdfNode LibrdfNode::fromUriString(const std::string &uri_string) {
+        return LibrdfNode(librdf_new_node_from_uri_string(
+                World::getWorld(), (const unsigned char *) uri_string.c_str())
+        );
+    }
+
+    LibrdfNode LibrdfNode::fromBlank(const std::string &blank) {
+        return LibrdfNode(
+                librdf_new_node_from_blank_identifier(
+                        World::getWorld(), (const unsigned char *) blank.c_str()
+                )
+        );
+    }
+
+    LibrdfNode
+    LibrdfNode::fromLiteral(const std::string &literal, std::string xml_language, std::string literal_datatype_uri) {
+        std::string literal_datatype_prefix = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+        if (literal_datatype_uri.rfind(literal_datatype_prefix, 0) != 0) {
+            literal_datatype_uri = literal_datatype_prefix + literal_datatype_uri;
         }
-
-        std::cout << (node->usage == -1) << std::endl;
-        std::cout << (node->usage == 0) << std::endl;
-        std::cout << (node->usage == 1) << std::endl;
-        if (node->usage == 0)
-            return;
-
-        std::cout << "Node usage: " << node->usage << std::endl;
-        if (--node->usage) {
-            std::cout << "Node usage: " << node->usage << std::endl;
-            return;
+        const char *xml_language_;
+        if (xml_language.empty()) {
+            xml_language_ = nullptr;
+        } else {
+            xml_language_ = xml_language.c_str();
         }
-//
-//        switch (node->type) {
-//            case RAPTOR_TERM_TYPE_URI:
-//                if (node->value.uri) {
-//                    raptor_free_uri(node->value.uri);
-//                    node->value.uri = nullptr;
-//                }
-//                break;
-//
-//            case RAPTOR_TERM_TYPE_BLANK:
-//                if (node->value.blank.string) {
-//                    free(node->value.blank.string);
-//                    node->value.blank.string = nullptr;
-//                }
-//                break;
-//
-//            case RAPTOR_TERM_TYPE_LITERAL:
-//                if (node->value.literal.string) {
-//                    free(node->value.literal.string);
-//                    node->value.literal.string = nullptr;
-//                }
-//
-//                if (node->value.literal.datatype) {
-//                    raptor_free_uri(node->value.literal.datatype);
-//                    node->value.literal.datatype = nullptr;
-//                }
-//
-//                if (node->value.literal.language) {
-//                    free(node->value.literal.language);
-//                    node->value.literal.language = nullptr;
-//                }
-//                break;
-//
-//            case RAPTOR_TERM_TYPE_UNKNOWN:
-//            default:
-//                break;
-//        }
-        free(node);
+        return LibrdfNode(
+                librdf_new_node_from_typed_literal(
+                        World::getWorld(),
+                        (const unsigned char *) literal.c_str(),
+                        xml_language_,
+                        LibrdfUri(literal_datatype_uri).get()
+                )
+        );
     }
 
-    LibrdfNode::LibrdfNode(librdf_node *node) :
-            node_(node_ptr(node, librdf_free_node)) {
-//          int usage;
-//          raptor_term_type type;
-//          raptor_term_value value;
-    }
-
-
-    const node_ptr &LibrdfNode::getNode() const {
-        return node_;
-    }
-
-    bool LibrdfNode::operator==(const LibrdfNode &rhs) const {
-        return node_.get() == rhs.node_.get();
-    }
-
-    bool LibrdfNode::operator!=(const LibrdfNode &rhs) const {
-        return !(rhs == *this);
-    }
-
-    bool LibrdfNode::operator!() const {
-        return !getNode();
-    }
 
     /*
      * Retrive a value from a librdf_node object,
      * regardless of its type.
      */
-    std::string LibrdfNode::str() {
+    std::string LibrdfNode::str() const {
         if (!node_) {
             throw NullPointerException("LibrdfNode::str(): NullPointerException: node_");
         }
@@ -141,7 +102,7 @@ namespace semsim {
         return node_.get()->type;
     }
 
-    librdf_node *LibrdfNode::get() {
+    librdf_node *LibrdfNode::get() const {
         return node_.get();
     }
 

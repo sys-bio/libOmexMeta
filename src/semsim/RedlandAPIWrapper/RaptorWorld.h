@@ -29,7 +29,7 @@ namespace semsim {
 
         bool operator!() const;
 
-        raptor_world *get();
+        raptor_world *get() const;
 
     };
 }

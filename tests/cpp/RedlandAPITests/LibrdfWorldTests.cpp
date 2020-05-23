@@ -1,6 +1,6 @@
 #include <cstdint>
 #include "gtest/gtest.h"
-#include "semsim/RedlandAPIWrapper/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrapper/World.h"
 
 using namespace semsim;
 
@@ -14,8 +14,8 @@ public:
 
 
 TEST_F(LibrdfWorldTests, TestSingleton) {
-    librdf_world *world1 = LibrdfWorld::getWorld();
-    librdf_world *world2 = LibrdfWorld::getWorld();
+    librdf_world *world1 = World::getWorld();
+    librdf_world *world2 = World::getWorld();
     ASSERT_EQ(world1, world2);
 }
 

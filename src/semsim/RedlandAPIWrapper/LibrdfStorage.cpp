@@ -4,28 +4,23 @@
 namespace semsim {
 
     LibrdfStorage::LibrdfStorage(librdf_storage *storage)
-            : storage_(storage_ptr(storage, librdf_free_storage)) {
-    }
+            : storage_(storage) {}
 
-    bool LibrdfStorage::operator==(const LibrdfStorage &rhs) const {
-        return storage_.get() == rhs.storage_.get();
-    }
+    LibrdfStorage::LibrdfStorage(std::string storage_name, std::string name, std::string options) :
+            storage_(
+                    librdf_new_storage(
+                            World::getWorld(), storage_name.c_str(),
+                            name.c_str(), options.c_str()
+                    )
+            ) {}
 
-    bool LibrdfStorage::operator!=(const LibrdfStorage &rhs) const {
-        return !(rhs == *this);
-    }
 
-    bool LibrdfStorage::operator!() const {
-        return !storage_;
-    }
-
-    storage_ptr LibrdfStorage::getStorage() const {
-        return storage_;
-    }
-
-    librdf_storage *LibrdfStorage::get() {
+    librdf_storage *LibrdfStorage::get() const {
         return storage_.get();
     }
 
 
+    void LibrdfStorage::deleter::operator()(librdf_storage *storage) {
+        librdf_free_storage(storage);
+    }
 }

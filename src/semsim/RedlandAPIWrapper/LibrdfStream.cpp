@@ -23,7 +23,7 @@ namespace semsim {
         return !(rhs == *this);
     }
 
-    librdf_stream *LibrdfStream::get() {
+    librdf_stream *LibrdfStream::get() const {
         return stream_.get();
     }
 

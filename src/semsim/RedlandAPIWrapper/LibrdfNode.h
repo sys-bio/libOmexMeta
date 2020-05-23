@@ -11,7 +11,7 @@
 #include <memory>
 #include <sstream>
 #include "semsim/HERE.h"
-
+#include "semsim/RedlandAPIWrapper/LibrdfUri.h"
 /*
  * Do I need to mirror the underlying structure of
  * the librdf_node* object?
@@ -19,30 +19,42 @@
 
 namespace semsim {
 
-    typedef std::shared_ptr<librdf_node> node_ptr;
+    typedef std::unique_ptr<librdf_node> librdf_node_ptr;
 
     class LibrdfNode {
-        node_ptr node_;
+
+//        raptor_term_value value;
+
+        struct deleter {
+            void operator()(librdf_node *node);
+        };
+
+        std::unique_ptr<librdf_node, deleter> node_;
 
     public:
-        const node_ptr &getNode() const;
-
         LibrdfNode() = default;
 
         explicit LibrdfNode(librdf_node *node);
 
-        bool operator!() const;
+        static LibrdfNode fromUriString(const std::string &uri_string);
 
-        std::string str();
+        static LibrdfNode fromBlank(const std::string &blank);
+
+        static LibrdfNode fromLiteral(const std::string &literal, std::string xml_language = std::string(),
+                                      std::string literal_datatype_uri = "string");
+
+
+//        std::string str();
+//
+//        raptor_term_type getType();
+//
+//        librdf_node *get();
 
         raptor_term_type getType();
 
-        bool operator==(const LibrdfNode &rhs) const;
+        librdf_node *get() const;
 
-        bool operator!=(const LibrdfNode &rhs) const;
-
-        librdf_node *get();
-
+        std::string str() const;
     };
 }
 

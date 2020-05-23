@@ -129,7 +129,7 @@
         <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; <span
                 class="keyword">protected</span>:
         </div>
-        <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; LibrdfWorld world_{};</div>
+        <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; World world_{};</div>
         <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; <a class="code"
                                                                                           href="classsemsim_1_1Subject.html">Subject</a>
             subject_;
@@ -145,12 +145,12 @@
         </div>
         <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
         <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; <span
-                class="keyword">explicit</span> <a class="code" href="classsemsim_1_1Triple.html">Triple</a>(LibrdfWorld
+                class="keyword">explicit</span> <a class="code" href="classsemsim_1_1Triple.html">Triple</a>(World
             world);
         </div>
         <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
         <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; <a class="code"
-                                                                                          href="classsemsim_1_1Triple.html">Triple</a>(LibrdfWorld
+                                                                                          href="classsemsim_1_1Triple.html">Triple</a>(World
             world, <a class="code" href="classsemsim_1_1Subject.html">Subject</a> subject, PredicatePtr predicate_ptr,
             <a class="code" href="classsemsim_1_1Resource.html">Resource</a> resource);
         </div>
@@ -172,7 +172,7 @@
         </div>
         <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
         <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; <a class="code"
-                                                                                          href="classsemsim_1_1Triple.html">Triple</a>(LibrdfWorld
+                                                                                          href="classsemsim_1_1Triple.html">Triple</a>(World
             world, <a class="code" href="classsemsim_1_1Subject.html">Subject</a> subject, <span
                     class="keyword">const</span> <a class="code" href="classsemsim_1_1Predicate.html">Predicate</a>
             &amp;predicate, <a class="code" href="classsemsim_1_1Resource.html">Resource</a> resource);
@@ -197,7 +197,7 @@
         <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
         <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; <span
                 class="keyword">static</span> <a class="code" href="classsemsim_1_1Triple.html">Triple</a>
-            fromStatement(LibrdfWorld world, LibrdfStatement statement);
+            fromStatement(World world, LibrdfStatement statement);
         </div>
         <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
         <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; std::string str(std::string
