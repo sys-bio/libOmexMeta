@@ -14,42 +14,10 @@ public:
 
 
 TEST_F(LibrdfWorldTests, TestSingleton) {
-    LibrdfWorld world1 = LibrdfWorld::getWorld();
-    LibrdfWorld world2 = LibrdfWorld::getWorld();
-    ASSERT_EQ(&world1, &world2);
+    librdf_world *world1 = LibrdfWorld::getWorld();
+    librdf_world *world2 = LibrdfWorld::getWorld();
+    ASSERT_EQ(world1, world2);
 }
-//
-//TEST_F(LibrdfWorldTests, TestCopyAssignment) {
-//    semsim::LibrdfWorld world1;
-//    semsim::LibrdfWorld world2;
-//    world2 = world1;
-//    ASSERT_EQ(world1, world2);
-//}
-//
-//
-//TEST_F(LibrdfWorldTests, TestMoveConstructor) {
-//    semsim::LibrdfWorld world1;
-//    semsim::LibrdfWorld world2 = std::move(world1);
-//    ASSERT_EQ(world1.getWorld(), nullptr);
-//}
-//
-//TEST_F(LibrdfWorldTests, TestMoveAssignment) {
-//    semsim::LibrdfWorld world1;
-//    auto world1_ptr_number = reinterpret_cast<std::uintptr_t>(world1.get());
-//    semsim::LibrdfWorld world2;
-//    world2 = std::move(world1);
-//    auto world2_ptr_number = reinterpret_cast<std::uintptr_t>(world2.get());
-//    ASSERT_EQ(world1.getWorld(), nullptr);
-//    ASSERT_EQ(world1_ptr_number, world2_ptr_number);
-//}
-//
-//
-//TEST_F(LibrdfWorldTests, TestThatICanDoSomethingWithLibrdfWorld) {
-//    semsim::LibrdfWorld world1;
-//    librdf_storage *storage = librdf_new_storage(world1.get(), "memory", "storagename", nullptr);
-//    librdf_free_storage(storage);
-//    ASSERT_TRUE(true); // if we get this far we've passed
-//}
 
 
 

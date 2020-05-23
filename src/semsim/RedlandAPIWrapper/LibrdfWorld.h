@@ -29,28 +29,30 @@
 namespace semsim {
 
     typedef std::shared_ptr<librdf_world> librdf_world_ptr;
+
     /*
      * @brief C++ wrapper around librdf_world.
      *
      * LibrdfWorld is a singleton
      * class. Other classes can use the LibrdfWorld
      * by call to LibrdfWorld::getWorld(). To implement
-     * the singleton, LibrdfWorld is allocated statically
+     * the singleton, librdf_world* is allocated statically
      * and therefore does not need to be destructed in the
-     * way that the other wrapper classes need to be.
+     * way that the other wrapper classes need to be
+     * (i.e. stack not heap)
      */
     class LibrdfWorld {
 
-        static LibrdfWorld *world_;
+        static librdf_world *world_;
 
         /*
-         * @brief Constructor for
+         * Private constructor prevents instancing
          */
         LibrdfWorld();
 
     public:
 
-        static LibrdfWorld *getWorld();
+        static librdf_world *getWorld();
 
 //        RaptorWorld getRaptor();
 
