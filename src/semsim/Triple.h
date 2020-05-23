@@ -5,8 +5,8 @@
 #ifndef LIBSEMSIM_TRIPLE_H
 #define LIBSEMSIM_TRIPLE_H
 
-#include "semsim/RedlandAPIWrappers/LibrdfNode.h"
-#include "semsim/RedlandAPIWrappers/LibrdfStatement.h"
+#include "semsim/RedlandAPIWrapper/LibrdfNode.h"
+#include "semsim/RedlandAPIWrapper/LibrdfStatement.h"
 #include "semsim/Predicate.h"
 #include "semsim/Subject.h"
 #include "semsim/Resource.h"

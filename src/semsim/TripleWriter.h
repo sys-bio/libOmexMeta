@@ -6,7 +6,7 @@
 #define LIBSEMSIM_TRIPLEWRITER_H
 
 
-#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
 #include "semsim/Writer.h"
 #include "semsim/Triple.h"
 #include "semsim/Triples.h"

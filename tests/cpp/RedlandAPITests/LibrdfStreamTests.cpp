@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/17/2020.
 //
 #include "gtest/gtest.h"
-#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
-#include "semsim/RedlandAPIWrappers/LibrdfStream.h"
+#include "semsim/RedlandAPIWrapper/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrapper/LibrdfStream.h"
 #include "iostream"
 
 class LibrdfStreamTests : public ::testing::Test {

@@ -1,0 +1,100 @@
+\hypertarget{classsemsim_1_1Exception}{}\doxysection{semsim\+::Exception Class Reference}
+\label{classsemsim_1_1Exception}\index{semsim::Exception@{semsim::Exception}}
+
+
+\href{https://stackoverflow.com/questions/8152720/correct-way-to-inherit-from-stdexception}{\texttt{ https\+://stackoverflow.\+com/questions/8152720/correct-\/way-\/to-\/inherit-\/from-\/stdexception}}
+
+
+
+
+{\ttfamily \#include $<$Error.\+h$>$}
+
+Inheritance diagram for semsim\+::Exception\+:\begin{figure}[H]
+                                                  \begin{center}
+                                                      \leavevmode
+                                                      \includegraphics[height=1.120000cm]{classsemsim_1_1Exception}
+                                                  \end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+    \item
+    \mbox{\hyperlink{classsemsim_1_1Exception_ae32b373f579fc88ca9a9b406327f6549}{Exception}} (const char $\ast$message)
+    \item
+    \mbox{\hyperlink{classsemsim_1_1Exception_acd15baba130b34cb81da8ce237406e99}{Exception}} (std\+::string message)
+    \item
+    \mbox{\hyperlink{classsemsim_1_1Exception_a3f2c9347cddce32086f53f360a7839ae}{$\sim$\+Exception}} () noexcept override=default
+    \item
+    const char $\ast$ \mbox{\hyperlink{classsemsim_1_1Exception_a301e9f6c7020ce7218811f4c0683ee77}{what}} () const noexcept override
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+    \item
+    std\+::string \mbox{\hyperlink{classsemsim_1_1Exception_a536284719db9cd57b8762e6e5a5a8820}{msg\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\href{https://stackoverflow.com/questions/8152720/correct-way-to-inherit-from-stdexception}{\texttt{ https\+://stackoverflow.\+com/questions/8152720/correct-\/way-\/to-\/inherit-\/from-\/stdexception}}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classsemsim_1_1Exception_ae32b373f579fc88ca9a9b406327f6549}\label{classsemsim_1_1Exception_ae32b373f579fc88ca9a9b406327f6549}}
+\index{semsim::Exception@{semsim::Exception}!Exception@{Exception}}
+\index{Exception@{Exception}!semsim::Exception@{semsim::Exception}}
+\doxysubsubsection{\texorpdfstring{Exception()}{Exception()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily semsim\+::\+Exception\+::\+Exception (\begin{DoxyParamCaption}
+                                                                  \item[{const char $\ast$}]{message }
+\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+Constructor (C strings).
+\begin{DoxyParams}{Parameters}
+{\em message}
+    & C-\/style string error message. The string contents are copied upon construction. Hence, responsibility for deleting the char$\ast$ lies with the caller. \\
+    \hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsemsim_1_1Exception_acd15baba130b34cb81da8ce237406e99}\label{classsemsim_1_1Exception_acd15baba130b34cb81da8ce237406e99}}
+\index{semsim::Exception@{semsim::Exception}!Exception@{Exception}}
+\index{Exception@{Exception}!semsim::Exception@{semsim::Exception}}
+\doxysubsubsection{\texorpdfstring{Exception()}{Exception()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily semsim\+::\+Exception\+::\+Exception (\begin{DoxyParamCaption}
+                                                                  \item[{std\+::string}]{message }
+\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+Constructor (C++ S\+TL strings).
+\begin{DoxyParams}{Parameters}
+{\em message}
+    & The error message. \\
+    \hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsemsim_1_1Exception_a3f2c9347cddce32086f53f360a7839ae}\label{classsemsim_1_1Exception_a3f2c9347cddce32086f53f360a7839ae}}
+\index{semsim::Exception@{semsim::Exception}!````~Exception@{$\sim$Exception}}
+\index{````~Exception@{$\sim$Exception}!semsim::Exception@{semsim::Exception}}
+\doxysubsubsection{\texorpdfstring{$\sim$Exception()}{~Exception()}}
+{\footnotesize\ttfamily semsim\+::\+Exception\+::$\sim$\+Exception (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+Destructor. Virtual to allow for subclassing.
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classsemsim_1_1Exception_a301e9f6c7020ce7218811f4c0683ee77}\label{classsemsim_1_1Exception_a301e9f6c7020ce7218811f4c0683ee77}}
+\index{semsim::Exception@{semsim::Exception}!what@{what}}
+\index{what@{what}!semsim::Exception@{semsim::Exception}}
+\doxysubsubsection{\texorpdfstring{what()}{what()}}
+{\footnotesize\ttfamily const char$\ast$ semsim\+::\+Exception\+::what (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [noexcept]}}
+
+Returns a pointer to the (constant) error description. \begin{DoxyReturn}{Returns}
+                                                           A pointer to a const char$\ast$. The underlying memory is in posession of the \mbox{\hyperlink{classsemsim_1_1Exception}{Exception}} object. Callers must not attempt to free the memory.
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classsemsim_1_1Exception_a536284719db9cd57b8762e6e5a5a8820}\label{classsemsim_1_1Exception_a536284719db9cd57b8762e6e5a5a8820}}
+\index{semsim::Exception@{semsim::Exception}!msg\_@{msg\_}}
+\index{msg\_@{msg\_}!semsim::Exception@{semsim::Exception}}
+\doxysubsubsection{\texorpdfstring{msg\_}{msg\_}}
+{\footnotesize\ttfamily std\+::string semsim\+::\+Exception\+::msg\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+Error message.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+                                                                             \item
+                                                                             src/semsim/Error.\+h
+\end{DoxyCompactItemize}

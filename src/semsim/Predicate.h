@@ -14,7 +14,7 @@
 #include <utility>
 #include "semsim/RDFNode.h"
 
-#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrapper/LibrdfWorld.h"
 
 
 #include "semsim/SemsimUtils.h"

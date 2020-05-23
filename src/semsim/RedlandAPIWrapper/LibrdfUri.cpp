@@ -9,11 +9,11 @@ namespace semsim {
 //            : librdf_uri_(librdf_uri_ptr(uri, librdf_free_uri)) {
 //
 //    }
-    LibrdfUri::LibrdfUri(std::string string) : string_(string) {
-        librdf_uri_ = std::unique_ptr<librdf_uri, deleter>(
-//                librdf_new_uri(World::getWorld(), (const unsigned char*) string_.c_str());
-        )
-    }
+//    LibrdfUri::LibrdfUri(std::string string) : string_(string) {
+//        librdf_uri_ = std::unique_ptr<librdf_uri, deleter>(
+////                librdf_new_uri(World::getWorld(), (const unsigned char*) string_.c_str());
+//        )
+//    }
 
 
 //    std::string LibrdfUri::str() const {

@@ -9,7 +9,7 @@
 #include "semsim/Editor.h"
 #include "semsim/XmlAssistant.h"
 #include "semsim/Query.h"
-#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
 #include "semsim/Reader.h"
 #include "semsim/Query.h"
 

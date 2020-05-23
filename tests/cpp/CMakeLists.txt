@@ -2,18 +2,18 @@ option(REDLAND_WRAPPER_TESTS "Whether to include the Redland API wrapper tests" 
 
 set(REDLAND_WRAPPER_TEST_SOURCES
         RedlandAPITests/LibrdfWorldTests.cpp
-        RedlandAPITests/RaptorWorldTests.cpp
-        RedlandAPITests/LibrdfModelTests.cpp
-        RedlandAPITests/LibrdfNodeTests.cpp
-        RedlandAPITests/LibrdfStorageTests.cpp
-        RedlandAPITests/LibrdfStatementTests.cpp
-
-        RedlandAPITests/LibrdfUriTests.cpp
-        RedlandAPITests/LibrdfParserTests.cpp
-        RedlandAPITests/LibrdfSerializerTests.cpp
-        RedlandAPITests/LibrdfQueryTests.cpp
-        RedlandAPITests/LibrdfQueryResultsTests.cpp
-        RedlandAPITests/LibrdfStreamTests.cpp
+        #        RedlandAPITests/RaptorWorldTests.cpp
+        #        RedlandAPITests/LibrdfModelTests.cpp
+        #        RedlandAPITests/LibrdfNodeTests.cpp
+        #        RedlandAPITests/LibrdfStorageTests.cpp
+        #        RedlandAPITests/LibrdfStatementTests.cpp
+        #
+        #        RedlandAPITests/LibrdfUriTests.cpp
+        #        RedlandAPITests/LibrdfParserTests.cpp
+        #        RedlandAPITests/LibrdfSerializerTests.cpp
+        #        RedlandAPITests/LibrdfQueryTests.cpp
+        #        RedlandAPITests/LibrdfQueryResultsTests.cpp
+        #        RedlandAPITests/LibrdfStreamTests.cpp
         )
 
 set(TEST_SOURCES

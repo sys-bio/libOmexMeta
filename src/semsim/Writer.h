@@ -5,7 +5,7 @@
 #ifndef LIBSEMSIM_WRITER_H
 #define LIBSEMSIM_WRITER_H
 
-#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrapper/LibrdfWorld.h"
 #include "Error.h"
 
 #include <librdf.h>

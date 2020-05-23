@@ -13,7 +13,7 @@
 #include "semsim/MetaID.h"
 #include "semsim/Error.h"
 #include "semsim/Query.h"
-#include "semsim/RedlandAPIWrappers/RedlandAPIWrapper.h"
+#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
 
 namespace semsim {
     class PhysicalPhenomenon {

@@ -6,7 +6,7 @@
 #define LIBSEMSIM_SUBJECT_H
 
 #include "iostream"
-#include "semsim/RedlandAPIWrappers/LibrdfWorld.h"
+#include "semsim/RedlandAPIWrapper/LibrdfWorld.h"
 #include "RDFNode.h"
 #include <vector>
 
