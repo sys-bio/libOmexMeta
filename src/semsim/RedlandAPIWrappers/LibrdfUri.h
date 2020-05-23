@@ -17,9 +17,26 @@ namespace semsim {
 
     class LibrdfUri {
         librdf_uri_ptr librdf_uri_;
-
+        /* the URI string */
+        unsigned char *string;
+        /* length of string */
+        unsigned int length;
+        /* usage count */
+        int usage;
     public:
         LibrdfUri() = default;
+
+        unsigned char *getString() const;
+
+        void setString(unsigned char *string);
+
+        unsigned int getLength() const;
+
+        void setLength(unsigned int length);
+
+        int getUsage() const;
+
+        void setUsage(int usage);
 
         explicit LibrdfUri(librdf_uri *uri);
 
