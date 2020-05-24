@@ -16,9 +16,9 @@ set(REDLAND_WRAPPER_TEST_SOURCES
         )
 
 set(TEST_SOURCES
-        #        SemsimUtilsTests.cpp
+        SemsimUtilsTests.cpp
         SBMLFactory.h
-        #        RDFNodeTests.cpp
+        RDFNodeTests.cpp
         #        SubjectTests.cpp
         #        PredicateTests.cpp
         #        ResourceTests.cpp

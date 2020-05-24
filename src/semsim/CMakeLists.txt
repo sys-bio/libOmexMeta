@@ -16,8 +16,8 @@ set(SEMSIM_HEADERS
         "RedlandAPIWrapper/LibrdfParser.h"
         "RedlandAPIWrapper/LibrdfStream.h"
 
-        #        "SemsimUtils.h"
-        #        "RDFNode.h"
+        "SemsimUtils.h"
+        "RDFNode.h"
         #        "Subject.h"
         #        "Predicate.h"
         #        "CurlGet.h"
@@ -60,9 +60,9 @@ set(SEMSIM_SOURCES
         "RedlandAPIWrapper/LibrdfParser.cpp"
         "RedlandAPIWrapper/LibrdfStream.cpp"
 
+        "SemsimUtils.cpp"
+        "RDFNode.cpp"
         #                "CurlGet.cpp"
-        #                "SemsimUtils.cpp"
-        #        "RDFNode.cpp"
         #        "Subject.cpp"
         #        "Predicate.cpp"
         #        "Resource.cpp"

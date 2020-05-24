@@ -22,7 +22,7 @@ namespace semsim {
         LibrdfNode node_;
 
     public:
-        const LibrdfNode &getNode() const;
+        [[nodiscard]] const LibrdfNode &getNode() const;
 
         explicit RDFNode(LibrdfNode node);
 
@@ -30,7 +30,7 @@ namespace semsim {
 
         ~RDFNode();
 
-        static std::shared_ptr<RDFNode> fromRDFNode(LibrdfWorld world, LibrdfNode node);
+        static std::unique_ptr<RDFNode> fromRDFNode(LibrdfNode node);
     };
 
     class RDFLiteralNode : public RDFNode {
@@ -50,6 +50,8 @@ namespace semsim {
 
         std::string getType();
 
+        [[maybe_unused]] std::string getLanguage();
+
         std::string str() override;
     };
 
@@ -59,6 +61,8 @@ namespace semsim {
         explicit RDFURINode(LibrdfNode node);
 
         std::string str() override;
+
+        [[nodiscard]] LibrdfUri getUri() const;
     };
 
     class RDFBlankNode : public RDFNode {
@@ -67,9 +71,9 @@ namespace semsim {
         explicit RDFBlankNode(LibrdfNode node);
 
         std::string str() override;
-    };
 
-    typedef std::shared_ptr<RDFNode> RDFNodePtr;
+        [[nodiscard]] std::string getBlankIdentifier() const;
+    };
 
 }
 
