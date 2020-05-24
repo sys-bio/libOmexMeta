@@ -16,12 +16,12 @@ set(REDLAND_WRAPPER_TEST_SOURCES
         )
 
 set(TEST_SOURCES
-        SemsimUtilsTests.cpp
         SBMLFactory.h
-        RDFNodeTests.cpp
-        #        SubjectTests.cpp
+        #        RDFNodeTests.cpp
+        SubjectTests.cpp
         #        PredicateTests.cpp
-        #        ResourceTests.cpp
+        #                ResourceTests.cpp
+        #        SemsimUtilsTests.cpp
         #        TripleTests.cpp
         #        AnnotationSamples.h
         #        CurlGetTests.cpp

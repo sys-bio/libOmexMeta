@@ -5,42 +5,36 @@
 #ifndef LIBSEMSIM_SUBJECT_H
 #define LIBSEMSIM_SUBJECT_H
 
-#include "iostream"
 #include "semsim/RedlandAPIWrapper/World.h"
-#include "RDFNode.h"
-#include <vector>
-
-#include <utility>
+#include "semsim/RedlandAPIWrapper/LibrdfNode.h"
 #include "semsim/Error.h"
+
+#include "iostream"
+#include <vector>
 
 
 namespace semsim {
 
     class Subject {
     private:
-        RDFNodePtr rdf_node_ptr_;
+        LibrdfNode node_;
 
     public:
         Subject() = default;
 
-        explicit Subject(LibrdfWorld world, const RDFBlankNode &node);
+        const LibrdfNode &getNode() const;
 
-        explicit Subject(LibrdfWorld world, const RDFURINode &node);
+        explicit Subject(LibrdfNode node);
 
-        explicit Subject(const RDFNode &node);
+        static Subject fromUri(const std::string &uri);
 
-        static Subject fromUri(LibrdfWorld world, const std::string &uri);
-
-        static Subject fromBlank(LibrdfWorld world, const std::string &blank);
+        static Subject fromBlank(const std::string &blank);
 
         ~Subject();
 
-        LibrdfNode getNode() const;
+        [[nodiscard]] std::string str() const;
 
-        std::string str() const;
-
-
-        bool isSet() const;
+        [[nodiscard]] bool isSet() const;
 
     };
 

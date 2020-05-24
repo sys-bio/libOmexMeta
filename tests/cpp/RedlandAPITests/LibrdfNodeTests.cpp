@@ -69,10 +69,29 @@ TEST_F(LibrdfNodeTests, TestLiteral1) {
     ASSERT_STREQ("Literal Node", (const char *) actual);
 }
 
+TEST_F(LibrdfNodeTests, TestLiteral2) {
+    // http://www.w3.org/2001/XMLSchema#string
+    LibrdfNode node = LibrdfNode::fromLiteral("Literal Node");
+    std::string actual = node.str();
+    ASSERT_STREQ("Literal Node", actual.c_str());
+}
+
 TEST_F(LibrdfNodeTests, TestTypedLiteral1) {
     LibrdfNode node = LibrdfNode::fromLiteral("TypedLiteral");
     unsigned char *actual = librdf_node_get_literal_value(node.get());
     ASSERT_STREQ("TypedLiteral", (const char *) actual);
+}
+
+TEST_F(LibrdfNodeTests, TestTypedLiteral2) {
+    LibrdfNode node = LibrdfNode::fromLiteral("TypedLiteral");
+    std::string actual = node.getLiteralDatatype();
+    ASSERT_STREQ("TypedLiteral", actual.c_str());
+}
+
+TEST_F(LibrdfNodeTests, TestTypedLiteral3) {
+    LibrdfNode node = LibrdfNode::fromLiteral("TypedLiteral");
+    std::string actual = node.getLiteralLanguage();
+    ASSERT_STREQ("TypedLiteral", actual.c_str());
 }
 
 TEST_F(LibrdfNodeTests, TestBlank) {

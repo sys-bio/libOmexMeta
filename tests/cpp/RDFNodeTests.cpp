@@ -24,16 +24,16 @@ public:
 
 TEST_F(RDFNodeTests, TestLiteral1) {
     std::string expected = "LiterallyAValue";
-    LibrdfNode node = world_.newNodeLiteral(expected);
+    LibrdfNode node = LibrdfNode::fromLiteral(expected);
     RDFLiteralNode literal(node);
-    unsigned char *uri = librdf_node_get_literal_value(*node.getNode());
+    unsigned char *uri = librdf_node_get_literal_value(*node.get());
     const char *actual = (const char *) uri;
     ASSERT_STREQ(expected.c_str(), actual);
 }
 
 TEST_F(RDFNodeTests, TestLiteralStr) {
     std::string expected = "LiterallyAValue";
-    LibrdfNode node = world_.newNodeLiteral(expected);
+    LibrdfNode node = LibrdfNode::fromLiteral(expected);
     RDFLiteralNode literal(node);
     std::string actual = literal.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -41,18 +41,14 @@ TEST_F(RDFNodeTests, TestLiteralStr) {
 
 
 TEST_F(RDFNodeTests, TestTypedLiteral) {
-    LibrdfNode typedLiteral = world_.newNodeTypedLiteral("Literal");
-    RDFTypedLiteralNode typedLiteralNode(typedLiteral);
-    raptor_uri *uri = librdf_node_get_literal_value_datatype_uri(*typedLiteralNode.getNode().getNode());
-    unsigned char *s = raptor_uri_to_string(uri);
-    std::string actual = (const char *) s;
+    LibrdfNode typedLiteral = LibrdfNode::fromLiteral("Literal");
+    std::string actual = typedLiteral.getRaptorTermType();
     const char *expected = "http://www.w3.org/2001/XMLSchema#string";
     ASSERT_STREQ(expected, actual.c_str());
-    free(s);
 }
 
 TEST_F(RDFNodeTests, TestTypedLiteral2) {
-    RDFTypedLiteralNode typedLiteralNode(world_.newNodeTypedLiteral("Literal"));
+    RDFTypedLiteralNode typedLiteralNode(LibrdfNode::fromLiteral("Literal"));
     std::string actual = typedLiteralNode.getType();
     const char *expected = "http://www.w3.org/2001/XMLSchema#string";
     ASSERT_STREQ(expected, actual.c_str());
@@ -62,7 +58,7 @@ TEST_F(RDFNodeTests, TestURI) {
     std::string expected = "https://webpaging.com";
     LibrdfNode node = world_.newNodeUriString(expected);
     RDFURINode rdfuriNode(node);
-    raptor_uri *uri = librdf_node_get_uri(*rdfuriNode.getNode().getNode());
+    raptor_uri *uri = librdf_node_get_uri(*rdfuriNode.get().get());
     unsigned char *s = raptor_uri_to_string(uri);
     std::string actual = (const char *) s;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -159,7 +155,7 @@ TEST_F(RDFNodeTests, TestURIFromFile8) {
 //TEST_F(RDFNodeTests, TestToNode) {
 //    std::string url_str = "https://www.notarealaddress.com";
 //    RDFURINode node(world, url_str);
-//    LibrdfNode  n = node.getNode();
+//    LibrdfNode  n = node.get();
 //    librdf_uri* uri = librdf_node_get_uri(n);
 //    unsigned char* s = raptor_uri_to_string(uri);
 //    const char *actual = (const char *)s;
@@ -181,7 +177,7 @@ TEST_F(RDFNodeTests, TestBlank) {
 //    librdf_node*  node = librdf_new_node_from_uri_string(world, (const unsigned char *) "file://./MyModel.xml");
 //    RDFURINode rdfuriNode(world_, node);
 //    std::string expected = "file://./MyModel.xml";
-//    std::string actual = (const char *) librdf_uri_to_string(librdf_node_get_uri(rdfuriNode.getNode()));
+//    std::string actual = (const char *) librdf_uri_to_string(librdf_node_get_uri(rdfuriNode.get()));
 //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //}
 
@@ -189,7 +185,7 @@ TEST_F(RDFNodeTests, TestBlank) {
 //    LibrdfNode  node = librdf_new_node_from_blank_identifier(world, (const unsigned char *) "file://./MyModel.xml");
 //    RDFBlankNode blankNode(world, node);
 //    std::string expected = "file://./MyModel.xml";
-//    std::string actual = (const char *) librdf_node_get_blank_identifier(blankNode.getNode());
+//    std::string actual = (const char *) librdf_node_get_blank_identifier(blankNode.get());
 //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //}
 //
@@ -198,7 +194,7 @@ TEST_F(RDFNodeTests, TestBlank) {
 //                                                     false);
 //    RDFLiteralNode literalNode(world, node);
 //    std::string expected = "file://./MyModel.xml";
-//    std::string actual = (const char *) librdf_node_get_blank_identifier(literalNode.getNode());
+//    std::string actual = (const char *) librdf_node_get_blank_identifier(literalNode.get());
 //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //}
 
