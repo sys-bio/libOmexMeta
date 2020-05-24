@@ -24,19 +24,21 @@ public:
     LibrdfNode subject = LibrdfNode::fromUriString("subject");
     LibrdfNode predicate = LibrdfNode::fromUriString("predicate");
     LibrdfNode resource = LibrdfNode::fromUriString("resource");
-    LibrdfQuery query;
+    LibrdfQuery query1;
+    LibrdfQuery query2;
     LibrdfStatement statement;
 
     LibrdfQueryResultsTests() {
         statement = LibrdfStatement(std::move(subject), std::move(predicate), std::move(resource));
-        query = LibrdfQuery(query_string);
+        query1 = LibrdfQuery(query_string);
+        query2 = LibrdfQuery(query_string);
         model.addStatement(statement);
     };
 
 };
 
 TEST_F(LibrdfQueryResultsTests, TestInstantiateQueryResults) {
-    LibrdfQueryResults results = model.query(std::move(query));
+    LibrdfQueryResults results = model.query(std::move(query1));
     ASSERT_NE(results.get(), nullptr);
 }
 
@@ -57,24 +59,23 @@ TEST_F(LibrdfQueryResultsTests, TestInstantiateQueryResults) {
 //
 
 TEST_F(LibrdfQueryResultsTests, TestMoveConstructor) {
-    LibrdfQueryResults results1 = model.query(std::move(query));
-    auto query_int_ptr = reinterpret_cast<std::uintptr_t>(query.get());
-    LibrdfQueryResults results2 = model.query(std::move(query));
-    auto queryResults2_int_ptr = reinterpret_cast<std::uintptr_t>(results1.get());
-    ASSERT_EQ(query.get(), nullptr);
-    ASSERT_EQ(query_int_ptr, queryResults2_int_ptr);
+    LibrdfQueryResults results1 = model.query(std::move(query1));
+    auto query_int_ptr1 = reinterpret_cast<std::uintptr_t>(results1.get());
+    LibrdfQueryResults results2 = std::move(results1);
+    auto query_int_ptr2 = reinterpret_cast<std::uintptr_t>(results2.get());
+    ASSERT_EQ(query_int_ptr1, query_int_ptr2);
 }
 
 TEST_F(LibrdfQueryResultsTests, TestMoveAssignment) {
-    LibrdfQueryResults results1 = model.query(std::move(query));
-    auto query_int_ptr1 = reinterpret_cast<std::uintptr_t>(query.get());
-    LibrdfQueryResults results2 = model.query(std::move(query));
-    auto query_int_ptr2 = reinterpret_cast<std::uintptr_t>(results1.get());
+    LibrdfQueryResults results1 = model.query(std::move(query1));
+    auto query_int_ptr1 = reinterpret_cast<std::uintptr_t>(query1.get());
+    LibrdfQueryResults results2 = model.query(std::move(query2));
+    auto query_int_ptr2 = reinterpret_cast<std::uintptr_t>(results2.get());
     results2 = std::move(results1);
     ASSERT_NE(query_int_ptr1, query_int_ptr2);
     ASSERT_EQ(results1.get(), nullptr);
 }
-//
+
 
 
 

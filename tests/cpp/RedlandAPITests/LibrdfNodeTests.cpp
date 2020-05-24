@@ -84,14 +84,14 @@ TEST_F(LibrdfNodeTests, TestTypedLiteral1) {
 
 TEST_F(LibrdfNodeTests, TestTypedLiteral2) {
     LibrdfNode node = LibrdfNode::fromLiteral("TypedLiteral");
-    std::string actual = node.getLiteralDatatype();
-    ASSERT_STREQ("TypedLiteral", actual.c_str());
+    std::string actual = node.getLiteralDatatype().str();
+    ASSERT_STREQ("http://www.w3.org/1999/02/22-rdf-syntax-ns#string", actual.c_str());
 }
 
 TEST_F(LibrdfNodeTests, TestTypedLiteral3) {
     LibrdfNode node = LibrdfNode::fromLiteral("TypedLiteral");
     std::string actual = node.getLiteralLanguage();
-    ASSERT_STREQ("TypedLiteral", actual.c_str());
+    ASSERT_STREQ("", actual.c_str());
 }
 
 TEST_F(LibrdfNodeTests, TestBlank) {

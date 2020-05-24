@@ -29,6 +29,7 @@ namespace semsim {
             void operator()(librdf_node *node);
         };
 
+    private:
         std::unique_ptr<librdf_node, deleter> node_;
 
     public:
@@ -36,20 +37,20 @@ namespace semsim {
 
         explicit LibrdfNode(librdf_node *node);
 
+        [[nodiscard]] librdf_node *get() const;
+
         static LibrdfNode fromUriString(const std::string &uri_string);
 
         static LibrdfNode fromBlank(const std::string &blank);
 
-        static LibrdfNode fromLiteral(const std::string &literal, std::string xml_language = std::string(),
+        static LibrdfNode fromLiteral(const std::string &literal, const std::string &xml_language = std::string(),
                                       std::string literal_datatype_uri = "string");
 
         raptor_term_type getRaptorTermType();
 
-        [[nodiscard]] librdf_node *get() const;
-
         [[nodiscard]] std::string str() const;
 
-        std::string getLiteralDatatype();
+        LibrdfUri getLiteralDatatype();
 
         std::string getLiteralLanguage();
 

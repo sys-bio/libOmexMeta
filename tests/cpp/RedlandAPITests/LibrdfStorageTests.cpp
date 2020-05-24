@@ -39,7 +39,7 @@ TEST_F(LibrdfStorageTests, TestInstantiateStorage) {
 
 TEST_F(LibrdfStorageTests, TestMoveConstructor) {
 
-    semsim::LibrdfStorage storage1 = LibrdfStorage("semsim_store1", "memory", std::__cxx11::string());
+    semsim::LibrdfStorage storage1 = LibrdfStorage();
     // get ptr as int before we move it to compare with storage 2
     auto storage1_int_ptr = reinterpret_cast<std::uintptr_t>(storage1.get());
     semsim::LibrdfStorage storage2 = std::move(storage1);
@@ -50,9 +50,9 @@ TEST_F(LibrdfStorageTests, TestMoveConstructor) {
 
 TEST_F(LibrdfStorageTests, TestMoveAssignment) {
 
-    semsim::LibrdfStorage storage1 = LibrdfStorage("semsim_store1", "memory", std::__cxx11::string());
+    semsim::LibrdfStorage storage1 = LibrdfStorage();
     auto storage1_int_ptr = reinterpret_cast<std::uintptr_t>(storage1.get());
-    semsim::LibrdfStorage storage2 = LibrdfStorage("semsim_store2", "memory", std::__cxx11::string());
+    semsim::LibrdfStorage storage2 = LibrdfStorage();
     auto storage2_int_ptr = reinterpret_cast<std::uintptr_t>(storage2.get());
     storage1 = std::move(storage2);
     ASSERT_NE(storage1_int_ptr, storage2_int_ptr);

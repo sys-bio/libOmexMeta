@@ -18,13 +18,25 @@ namespace semsim {
     }
 
     LibrdfNode::LibrdfNode(librdf_node *node)
-            : node_(node) {
-
-    }
+            : node_(node) {}
 
     LibrdfNode LibrdfNode::fromUriString(const std::string &uri_string) {
+        std::string identifier_dot_org = "https://identifiers.org/";
+        std::regex identifiers_regex(identifier_dot_org);
+        std::regex http_regex("^https://");
+        std::regex identifiers_org_form1("^(?!file://)(?!https://)(?!http://)([A-Za-z0-9]+)[/:]{1}(\\S*)");
+        std::regex file_regex("^file://");
+
+        std::smatch m;
+        std::string uri_string_;
+        // if we find identifiers.org form 1
+        if (std::regex_search(uri_string, m, identifiers_org_form1)) {
+            uri_string_ = identifier_dot_org + std::string(m[1]) + "/" + std::string(m[2]);
+        } else {
+            uri_string_ = uri_string;
+        }
         return LibrdfNode(librdf_new_node_from_uri_string(
-                World::getWorld(), (const unsigned char *) uri_string.c_str())
+                World::getWorld(), (const unsigned char *) uri_string_.c_str())
         );
     }
 
@@ -37,10 +49,12 @@ namespace semsim {
     }
 
     LibrdfNode
-    LibrdfNode::fromLiteral(const std::string &literal, std::string xml_language, std::string literal_datatype_uri) {
+    LibrdfNode::fromLiteral(const std::string &literal, const std::string &xml_language,
+                            std::string literal_datatype_uri) {
         std::string literal_datatype_prefix = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+        std::string literal_datatype_;
         if (literal_datatype_uri.rfind(literal_datatype_prefix, 0) != 0) {
-            literal_datatype_uri = literal_datatype_prefix + literal_datatype_uri;
+            literal_datatype_ = literal_datatype_prefix + literal_datatype_uri;
         }
         const char *xml_language_;
         if (xml_language.empty()) {
@@ -53,7 +67,7 @@ namespace semsim {
                         World::getWorld(),
                         (const unsigned char *) literal.c_str(),
                         xml_language_,
-                        LibrdfUri(literal_datatype_uri).get()
+                        librdf_new_uri(World::getWorld(), (const unsigned char *) literal_datatype_.c_str())
                 )
         );
     }
@@ -90,7 +104,6 @@ namespace semsim {
                 throw LibRDFException("LibRDFException: Librdf::Str() : Unrecognized term type");
         }
         err << "value is nullptr" << std::endl;
-        std::cout << "Value is: " << value << std::endl;
         if (value.empty()) {
             throw NullPointerException(err.str());
         }
@@ -111,12 +124,15 @@ namespace semsim {
      * if they are empty
      */
 
-    std::string LibrdfNode::getLiteralDatatype() {
-        return std::string((const char *) node_->value.literal.datatype);
+    LibrdfUri LibrdfNode::getLiteralDatatype() {
+        return LibrdfUri(node_->value.literal.datatype);
     }
 
     std::string LibrdfNode::getLiteralLanguage() {
-        return std::string((const char *) node_->value.literal.language);
+        const char *language = (const char *) node_->value.literal.language;
+        if (!language)
+            return std::string();
+        return std::string(language);
     }
 
     std::string LibrdfNode::getBlankIdentifier() {
@@ -126,6 +142,5 @@ namespace semsim {
     LibrdfUri LibrdfNode::getUri() {
         return LibrdfUri(node_->value.uri);
     }
-
 
 }

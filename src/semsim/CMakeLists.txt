@@ -2,7 +2,6 @@ message(STATUS "inside semsim cmakelists")
 
 set(SEMSIM_HEADERS
         "RedlandAPIWrapper/RedlandAPIWrapper.h"
-        "RedlandAPIWrapper/CWrapper.h"
         "RedlandAPIWrapper/World.h"
         "RedlandAPIWrapper/RaptorWorld.h"
         "RedlandAPIWrapper/LibrdfStorage.h"
@@ -19,9 +18,9 @@ set(SEMSIM_HEADERS
         "SemsimUtils.h"
         #        "RDFNode.h"
         "Subject.h"
-        #        "Predicate.h"
-        #        "CurlGet.h"
-        #        "Resource.h"
+        "Predicate.h"
+        "Resource.h"
+        "CurlGet.h"
         #        "Triple.h"
         #        "MetaID.h"
         #        "XmlAssistant.h"
@@ -45,7 +44,6 @@ set(SEMSIM_HEADERS
         RedlandAPIWrapper/RaptorTermValue.cpp RedlandAPIWrapper/RaptorTermValue.h)
 
 set(SEMSIM_SOURCES
-        "RedlandAPIWrapper/CWrapper.cpp"
         "RedlandAPIWrapper/World.cpp"
         "RedlandAPIWrapper/RaptorWorld.cpp"
         "RedlandAPIWrapper/LibrdfModel.cpp"
@@ -60,12 +58,12 @@ set(SEMSIM_SOURCES
         "RedlandAPIWrapper/LibrdfParser.cpp"
         "RedlandAPIWrapper/LibrdfStream.cpp"
 
-        #        "SemsimUtils.cpp"
+        "SemsimUtils.cpp"
         "Subject.cpp"
+        "Predicate.cpp"
+        "Resource.cpp"
         #        "RDFNode.cpp"
-        #                "CurlGet.cpp"
-        #        "Predicate.cpp"
-        #        "Resource.cpp"
+        "CurlGet.cpp"
         #        "Triple.cpp"
         #        "MetaID.cpp"
         #        "XmlAssistant.cpp"

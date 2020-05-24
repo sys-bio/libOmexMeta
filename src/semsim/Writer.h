@@ -5,7 +5,7 @@
 #ifndef LIBSEMSIM_WRITER_H
 #define LIBSEMSIM_WRITER_H
 
-#include "semsim/RedlandAPIWrapper/World.h"
+#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
 #include "Error.h"
 
 #include <librdf.h>
@@ -46,7 +46,6 @@ namespace semsim {
                   const std::string &base_uri,
                   std::string format);
 
-        LibrdfWorld world_;
         LibrdfModel model_;
     public:
 
@@ -59,8 +58,6 @@ namespace semsim {
         ~Writer();
 
         void setFormat(const std::string &format);
-
-        void setWorld(LibrdfWorld world_);
 
         std::string toString();
 

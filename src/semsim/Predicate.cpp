@@ -8,9 +8,9 @@
 
 namespace semsim {
 
-    Predicate::Predicate(LibrdfWorld world, const std::string &namespace_,
+    Predicate::Predicate(const std::string &namespace_,
                          std::string term, std::string prefix)
-            : world_(std::move(world)), namespace_(namespace_), term_(std::move(term)),
+            : namespace_(namespace_), term_(std::move(term)),
               prefix_(std::move(prefix)) {
         if (namespace_.back() == '/' || namespace_.back() == '#') {
             this->uri_ = namespace_ + term_;
@@ -18,11 +18,11 @@ namespace semsim {
             this->uri_ = namespace_ + "/" + term_;
         }
         verify(valid_terms_, term_);
-        this->uri_node_ = std::make_shared<RDFURINode>(world_.newNodeUriString(uri_));
+        this->uri_node_ = std::make_unique<LibrdfNode>(LibrdfNode::fromUriString(uri_));
     }
 
-    Predicate::Predicate(LibrdfWorld world, LibrdfNode node)
-            : world_(std::move(world)), uri_node_(std::make_shared<RDFURINode>(node)) {
+    Predicate::Predicate(LibrdfNode node)
+            : uri_node_(std::make_unique<LibrdfNode>(std::move(node))) {
         // some logic for processing the uri in a node to automatically produce the fields we want.
         std::string val = uri_node_->str();
 
@@ -64,13 +64,27 @@ namespace semsim {
             this->uri_ = namespace_ + "/" + term_;
         }
         verify(valid_terms_, term_);
-        this->uri_node_ = std::make_shared<RDFURINode>(
-                RDFURINode(world_.newNodeUriString(this->uri_))
-        );
+        uri_node_ = std::make_unique<LibrdfNode>(LibrdfNode::fromUriString(uri_));
 
     }
 
-    bool Predicate::namespaceKnown(std::string ns) {
+    const std::string &Predicate::getNamespace() const {
+        return namespace_;
+    }
+
+    const std::string &Predicate::getTerm() const {
+        return term_;
+    }
+
+    const std::string &Predicate::getPrefix() const {
+        return prefix_;
+    }
+
+    const std::string &Predicate::getUri() const {
+        return uri_;
+    }
+
+    bool Predicate::namespaceKnown(const std::string &ns) {
         return (Predicate::prefix_map().find(ns) != Predicate::prefix_map().end());
     }
 
@@ -88,8 +102,8 @@ namespace semsim {
         return uri_;
     }
 
-    LibrdfNode Predicate::getNode() {
-        return uri_node_->getNode();
+    const std::vector<std::string> &Predicate::getValidTerms() const {
+        return valid_terms_;
     }
 
     int Predicate::verify(std::vector<std::string> valid_terms, const std::string &term) {
@@ -110,49 +124,29 @@ namespace semsim {
         return 0;
     }
 
-    const std::string &Predicate::getNamespace() const {
-        return namespace_;
+    const std::unique_ptr<LibrdfNode> &Predicate::getNode() const {
+        return uri_node_;
     }
 
-    const std::string &Predicate::getTerm() const {
-        return term_;
-    }
-
-    const std::string &Predicate::getPrefix() const {
-        return prefix_;
-    }
-
-    const std::string &Predicate::getUri() const {
-        return uri_;
-    }
-
-    void Predicate::setPrefix(const std::string &prefix) {
-        prefix_ = prefix;
-    }
-
-    void Predicate::setNamespace(const std::string &ns) {
-        namespace_ = ns;
-    }
-
-    BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(LibrdfWorld world, const std::string &term) :
-            Predicate(world, "http://biomodels.net/biology-qualifiers/", term, "bqbiol") {
+    BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(const std::string &term) :
+            Predicate("http://biomodels.net/biology-qualifiers/", term, "bqbiol") {
         verify(valid_terms_, term_);
 
     }
 
-    BiomodelsModelQualifier::BiomodelsModelQualifier(LibrdfWorld world, const std::string &term) :
-            Predicate(world, "http://biomodels.net/model-qualifiers/", term, "bqmodel") {
+    BiomodelsModelQualifier::BiomodelsModelQualifier(const std::string &term) :
+            Predicate("http://biomodels.net/model-qualifiers/", term, "bqmodel") {
         verify(valid_terms_, term_);
 
     }
 
-    DCTerm::DCTerm(LibrdfWorld world, const std::string &term) :
-            Predicate(world, "http://purl.org/dc/terms/", term, "dcterms") {
+    DCTerm::DCTerm(const std::string &term) :
+            Predicate("http://purl.org/dc/terms/", term, "dcterms") {
         verify(valid_terms_, term_);
     }
 
-    SemSim::SemSim(LibrdfWorld world, const std::string &term) :
-            Predicate(world, "http://www.bhi.washington.edu/semsim#", term, "semsim") {
+    SemSim::SemSim(const std::string &term) :
+            Predicate("http://www.bhi.washington.edu/semsim#", term, "semsim") {
         verify(valid_terms_, term_);
     }
 
@@ -160,7 +154,7 @@ namespace semsim {
     /*
      * A factory function for creating PredicatePtr objects.
      */
-    PredicatePtr PredicateFactory(LibrdfWorld world, std::string namespace_, const std::string &term) {
+    PredicatePtr PredicateFactory(std::string namespace_, const std::string &term) {
 
         std::vector<std::string> valid_namespace_strings = {
                 "bqb",
@@ -196,16 +190,16 @@ namespace semsim {
         PredicatePtr predicatePtr;
         if (namespace_ == "bqb" || namespace_ == "biomodelsbiologyqualifier") {
             predicatePtr = std::make_shared<BiomodelsBiologyQualifier>(
-                    BiomodelsBiologyQualifier(world, term));
+                    BiomodelsBiologyQualifier(term));
         } else if (namespace_ == "bqm" || namespace_ == "biomodelsmodelqualifier") {
             predicatePtr = std::make_shared<BiomodelsModelQualifier>(
-                    BiomodelsModelQualifier(world, term));
+                    BiomodelsModelQualifier(term));
         } else if (namespace_ == "dc" || namespace_ == "dcterms") {
             predicatePtr = std::make_shared<DCTerm>(
-                    DCTerm(world, term));
+                    DCTerm(term));
         } else if (namespace_ == "ss" || namespace_ == "semsim") {
             predicatePtr = std::make_shared<SemSim>(
-                    SemSim(world, term));
+                    SemSim(term));
         };
         return predicatePtr;
     }
