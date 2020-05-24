@@ -7,43 +7,28 @@
 
 namespace semsim {
 
-    Subject::Subject(LibrdfWorld world, const RDFURINode &node)
-            : rdf_node_ptr_(std::make_shared<RDFURINode>(node)) {
+    Subject::Subject(LibrdfNode node)
+            : node_(std::move(node)) {
     }
 
-    Subject::Subject(LibrdfWorld world, const RDFBlankNode &node)
-            : rdf_node_ptr_(std::make_shared<RDFBlankNode>(node)) {
+    Subject Subject::fromUri(const std::string &uri) {
+        return Subject(LibrdfNode::fromUriString(uri));
     }
 
-    Subject::Subject(const RDFNode &node)
-            : rdf_node_ptr_(std::make_shared<RDFNode>(node)) {
-    }
-
-    Subject Subject::fromUri(LibrdfWorld world, const std::string &uri) {
-        LibrdfNode node = world.newNodeUriString(uri);
-        return Subject(RDFURINode(node));
-    }
-
-    Subject Subject::fromBlank(LibrdfWorld world, const std::string &blank) {
-        LibrdfNode node = world.newNodeBlank(blank);
-        return Subject(RDFBlankNode(node));
-    }
-
-
-    LibrdfNode Subject::getNode() const {
-        LibrdfNode node = rdf_node_ptr_->getNode();
-        if (!node) {
-            throw NullPointerException("Subject::ToRdfNode(): node object nullptr");
-        }
-        return node;
+    Subject Subject::fromBlank(const std::string &blank) {
+        return Subject(LibrdfNode::fromBlank(blank));
     }
 
     std::string Subject::str() const {
-        return rdf_node_ptr_->str();
+        return node_.str();
     }
 
     bool Subject::isSet() const {
-        return !rdf_node_ptr_->getNode();
+        return !node_.get();
+    }
+
+    const LibrdfNode &Subject::getNode() const {
+        return node_;
     }
 
     semsim::Subject::~Subject() = default;

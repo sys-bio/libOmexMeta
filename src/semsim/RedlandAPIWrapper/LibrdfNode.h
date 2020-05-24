@@ -43,18 +43,19 @@ namespace semsim {
         static LibrdfNode fromLiteral(const std::string &literal, std::string xml_language = std::string(),
                                       std::string literal_datatype_uri = "string");
 
+        raptor_term_type getRaptorTermType();
 
-//        std::string str();
-//
-//        raptor_term_type getType();
-//
-//        librdf_node *get();
+        [[nodiscard]] librdf_node *get() const;
 
-        raptor_term_type getType();
+        [[nodiscard]] std::string str() const;
 
-        librdf_node *get() const;
+        std::string getLiteralDatatype();
 
-        std::string str() const;
+        std::string getLiteralLanguage();
+
+        std::string getBlankIdentifier();
+
+        LibrdfUri getUri();
     };
 }
 

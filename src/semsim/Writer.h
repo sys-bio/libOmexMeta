@@ -20,7 +20,6 @@
 namespace semsim {
 
     class Writer {
-        RaptorWorld raptor_world_ptr_;
         std::string format_;
         std::string base_uri_;
         LibrdfSerializer serializer;
@@ -43,7 +42,7 @@ namespace semsim {
         void validateBaseUri();
 
     protected:
-        void init(LibrdfWorld world, LibrdfModel model,
+        void init(LibrdfModel model,
                   const std::string &base_uri,
                   std::string format);
 
@@ -53,7 +52,7 @@ namespace semsim {
 
         Writer();
 
-        Writer(LibrdfWorld world, LibrdfModel model,
+        Writer(LibrdfModel model,
                const std::string &base_uri = "file://annotation.rdf",
                std::string format = "rdfxml-abbrev");
 

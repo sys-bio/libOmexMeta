@@ -7,11 +7,9 @@
 
 #include "librdf.h"
 #include <iostream>
-#include "Resource.h"
 #include "sstream"
-#include "RDFNode.h"
 #include <vector>
-#include "SemsimUtils.h"
+
 
 namespace semsim {
     class Resource {

@@ -98,12 +98,33 @@ namespace semsim {
         return output;
     }
 
-    raptor_term_type LibrdfNode::getType() {
-        return node_.get()->type;
+    raptor_term_type LibrdfNode::getRaptorTermType() {
+        return node_->type;
     }
 
     librdf_node *LibrdfNode::get() const {
         return node_.get();
+    }
+
+    /*
+     * Todo consider putting error messages on the following methods
+     * if they are empty
+     */
+
+    std::string LibrdfNode::getLiteralDatatype() {
+        return std::string((const char *) node_->value.literal.datatype);
+    }
+
+    std::string LibrdfNode::getLiteralLanguage() {
+        return std::string((const char *) node_->value.literal.language);
+    }
+
+    std::string LibrdfNode::getBlankIdentifier() {
+        return std::string((const char *) node_->value.blank.string);
+    }
+
+    LibrdfUri LibrdfNode::getUri() {
+        return LibrdfUri(node_->value.uri);
     }
 
 
