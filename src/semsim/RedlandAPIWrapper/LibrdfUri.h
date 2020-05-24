@@ -13,8 +13,6 @@
 
 namespace semsim {
 
-    typedef std::shared_ptr<librdf_uri> librdf_uri_ptr;
-
     class LibrdfUri {
 
         /*
@@ -34,11 +32,13 @@ namespace semsim {
     public:
         LibrdfUri() = default;
 
-        std::string str();
+        std::string str() const;
 
         explicit LibrdfUri(const std::string &uri);
 
-        librdf_uri *get() const;
+        explicit LibrdfUri(librdf_uri *uri);
+
+        [[nodiscard]] librdf_uri *get() const;
 
     };
 }
