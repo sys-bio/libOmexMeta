@@ -5,19 +5,17 @@
 #ifndef LIBSEMSIM_PREDICATE_H
 #define LIBSEMSIM_PREDICATE_H
 
+#include "semsim/RedlandAPIWrapper/World.h"
+#include "semsim/SemsimUtils.h"
+
 #include <librdf.h>
+
 #include <vector>
 #include <algorithm>
 #include <sstream>
 #include <unordered_map>
 #include <iostream>
 #include <utility>
-#include "semsim/RDFNode.h"
-
-#include "semsim/RedlandAPIWrapper/World.h"
-
-
-#include "semsim/SemsimUtils.h"
 
 
 namespace semsim {
@@ -25,31 +23,30 @@ namespace semsim {
     class Predicate {
     protected:
 
-        LibrdfWorld world_;
         std::string namespace_, term_, prefix_;
         std::string uri_;
-        std::shared_ptr<RDFURINode> uri_node_; // predicates can only have type RDFUriNode
-
+        std::unique_ptr<LibrdfNode> uri_node_; //! predicates can only have type RDFUriNode
         std::vector<std::string> valid_terms_{"All"};
 
     public:
         Predicate() = default;
 
-
         static std::unordered_map<std::string, std::string> prefix_map();
 
-        void setPrefix(const std::string &prefix);
-
-        void setNamespace(const std::string &ns);
-
-        Predicate(LibrdfWorld world, const std::string &namespace_,
+        Predicate(const std::string &namespace_,
                   std::string term, std::string prefix);
 
-        Predicate(LibrdfWorld world, LibrdfNode node);
-
-        LibrdfNode getNode();
+        explicit Predicate(LibrdfNode node);
 
         std::string str();
+
+        static int verify(std::vector<std::string> valid_terms, const std::string &term);
+
+        static bool namespaceKnown(const std::string &ns);
+
+        const std::unique_ptr<LibrdfNode> &getNode() const;
+
+        const std::vector<std::string> &getValidTerms() const;
 
         const std::string &getNamespace() const;
 
@@ -58,11 +55,6 @@ namespace semsim {
         const std::string &getPrefix() const;
 
         const std::string &getUri() const;
-
-        static int verify(std::vector<std::string> valid_terms, const std::string &term);
-
-        static bool namespaceKnown(std::string ns);
-
     };
 
     class BiomodelsBiologyQualifier : public Predicate {
@@ -85,7 +77,7 @@ namespace semsim {
 
         BiomodelsBiologyQualifier() = default;
 
-        BiomodelsBiologyQualifier(LibrdfWorld world, const std::string &term);
+        BiomodelsBiologyQualifier(const std::string &term);
 
     };
 
@@ -101,7 +93,7 @@ namespace semsim {
 
         BiomodelsModelQualifier() = default;
 
-        BiomodelsModelQualifier(LibrdfWorld world, const std::string &term);
+        BiomodelsModelQualifier(const std::string &term);
 
     };
 
@@ -113,7 +105,7 @@ namespace semsim {
 
         DCTerm() = default;
 
-        DCTerm(LibrdfWorld world, const std::string &term);
+        DCTerm(const std::string &term);
 
     };
 
@@ -129,7 +121,7 @@ namespace semsim {
 
         SemSim() = default;
 
-        SemSim(LibrdfWorld world, const std::string &term);
+        SemSim(const std::string &term);
 
     };
 
@@ -137,7 +129,7 @@ namespace semsim {
     typedef std::vector<Predicate> Predicates;
     typedef std::vector<PredicatePtr> PredicatePtrs;
 
-    PredicatePtr PredicateFactory(LibrdfWorld world, std::string namespace_, const std::string &term);
+    PredicatePtr PredicateFactory(std::string namespace_, const std::string &term);
 
 }
 

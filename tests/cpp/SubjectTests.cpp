@@ -16,11 +16,6 @@ public:
     ~SubjectTests() override = default;
 };
 
-TEST_F(SubjectTests, TestDefaultConstructor) {
-    Subject subject;
-    ASSERT_TRUE(true); // if you get this far the test passes
-}
-
 TEST_F(SubjectTests, TestSubjectFromUri) {
     Subject subject(LibrdfNode::fromUriString("meta754"));
     std::string expected = subject.str();

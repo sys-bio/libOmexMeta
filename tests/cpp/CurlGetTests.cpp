@@ -4,7 +4,6 @@
 
 #include "gtest/gtest.h"
 #include "semsim/CurlGet.h"
-#include "semsim/SemSim.h"
 #include <iostream>
 #include <fstream>
 
@@ -46,15 +45,12 @@ public:
         return end - begin;
     }
 
-    static void downloadAndCheckSize(std::string url, std::string filename, int expected_size) {
-        //38kb
-        HERE();
+    static void downloadAndCheckSizeRange(std::string url, std::string filename, int expected_size_lower,
+                                          int expected_size_higher) {
         semsim::CurlGet::download(url, filename);
-        HERE();
         int size = getFileSize(filename);
-        HERE();
-        ASSERT_EQ(expected_size, size);
-        HERE();
+        ASSERT_LE(expected_size_lower, size);
+        ASSERT_GE(expected_size_higher, size);
         removeFile(filename);
     }
 };
@@ -62,28 +58,28 @@ public:
 TEST_F(CurlGetTests, TestDownloadHtml
 ) {
 //38kb
-downloadAndCheckSize(regular_webpage_url, regular_webpage_filename,
-39053);
+    downloadAndCheckSizeRange(regular_webpage_url, regular_webpage_filename,
+                              39053 - 100, 39053 + 100);
 }
 
 TEST_F(CurlGetTests, TestDownloadOmexFile
 ) {
-downloadAndCheckSize(omex_file_url, omex_filename,
-4726);
+    downloadAndCheckSizeRange(omex_file_url, omex_filename,
+                              4650, 4750);
 }
 
 
 TEST_F(CurlGetTests, TestDownloadSBMLFile
 ) {
-downloadAndCheckSize(sbml_file_url, sbml_filename,
-236281);
+    downloadAndCheckSizeRange(sbml_file_url, sbml_filename,
+                              236281 - 100, 236281 + 100);
 }
 
 
 TEST_F(CurlGetTests, TestDownloadCellML
 ) {
-downloadAndCheckSize(cellml_file_url, cellml_filename,
-60656);
+    downloadAndCheckSizeRange(cellml_file_url, cellml_filename,
+                              60656 - 100, 60656 + 100);
 }
 
 

@@ -6,6 +6,8 @@
 #define LIBSEMSIM_RESOURCE_H
 
 #include "librdf.h"
+#include "semsim/RedlandAPIWrapper/LibrdfNode.h"
+
 #include <iostream>
 #include "sstream"
 #include <vector>
@@ -15,24 +17,17 @@ namespace semsim {
     class Resource {
 
     protected:
-        LibrdfWorld world_;
-        RDFNodePtr rdf_node_ptr_;
+        LibrdfNode node_;
     public:
         Resource() = default;
 
-        Resource(LibrdfWorld world, const RDFLiteralNode &node);
+        [[nodiscard]] const LibrdfNode &getNode() const;
 
-        Resource(LibrdfWorld world, const RDFURINode &node);
+        explicit Resource(LibrdfNode node);
 
-        Resource(LibrdfWorld world, const RDFBlankNode &node);
+        [[nodiscard]] std::string str() const;
 
-        Resource(LibrdfWorld world, LibrdfNode node);
-
-        LibrdfNode getNode() const;
-
-        std::string str() const;
-
-        virtual bool isSet() const;
+        [[nodiscard]] virtual bool isSet() const;
     };
 
     typedef std::vector<Resource> Resources;
