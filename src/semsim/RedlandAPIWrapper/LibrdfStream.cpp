@@ -2,29 +2,18 @@
 
 namespace semsim {
 
+    LibrdfStream::LibrdfStream() :
+            stream_(librdf_new_empty_stream(World::getWorld())) {}
+
     LibrdfStream::LibrdfStream(librdf_stream *stream) :
-            stream_(stream_ptr(stream, librdf_free_stream)) {
-
-    }
-
-    const stream_ptr &LibrdfStream::getStream() const {
-        return stream_;
-    }
-
-    bool LibrdfStream::operator!() const {
-        return !getStream();
-    }
-
-    bool LibrdfStream::operator==(const LibrdfStream &rhs) const {
-        return stream_.get() == rhs.stream_.get();
-    }
-
-    bool LibrdfStream::operator!=(const LibrdfStream &rhs) const {
-        return !(rhs == *this);
-    }
+            stream_(std::unique_ptr<librdf_stream, deleter>(stream)) {}
 
     librdf_stream *LibrdfStream::get() const {
         return stream_.get();
+    }
+
+    void LibrdfStream::deleter::operator()(librdf_stream *stream) {
+        librdf_free_stream(stream);
     }
 
 }

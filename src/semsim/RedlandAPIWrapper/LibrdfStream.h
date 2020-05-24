@@ -9,27 +9,22 @@
 #include <librdf.h>
 #include <memory>
 #include "semsim/Error.h"
+#include "semsim/RedlandAPIWrapper/World.h"
 
 namespace semsim {
-    typedef std::shared_ptr<librdf_stream> stream_ptr;
 
     class LibrdfStream {
-        stream_ptr stream_;
-    public:
-        const stream_ptr &getStream() const;
+        struct deleter {
+            void operator()(librdf_stream *stream);
+        };
 
-        LibrdfStream() = default;
+        std::unique_ptr<librdf_stream, deleter> stream_;
+    public:
+        LibrdfStream();
 
         explicit LibrdfStream(librdf_stream *stream);
 
-        bool operator!() const;
-
-        bool operator==(const LibrdfStream &rhs) const;
-
-        bool operator!=(const LibrdfStream &rhs) const;
-
-        librdf_stream *get() const;
-
+        [[nodiscard]] librdf_stream *get() const;
 
     };
 }
