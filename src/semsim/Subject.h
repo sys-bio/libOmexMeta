@@ -22,7 +22,7 @@ namespace semsim {
     public:
         Subject() = default;
 
-        const LibrdfNode &getNode() const;
+        [[nodiscard]] const LibrdfNode &getNode() const;
 
         explicit Subject(LibrdfNode node);
 
@@ -30,7 +30,7 @@ namespace semsim {
 
         static Subject fromBlank(const std::string &blank);
 
-        ~Subject();
+//        ~Subject();
 
         [[nodiscard]] std::string str() const;
 

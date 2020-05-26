@@ -32,13 +32,15 @@ namespace semsim {
     public:
         LibrdfUri() = default;
 
-        std::string str() const;
+        [[nodiscard]] std::string str() const;
 
         explicit LibrdfUri(const std::string &uri);
 
         explicit LibrdfUri(librdf_uri *uri);
 
         [[nodiscard]] librdf_uri *get() const;
+
+        LibrdfUri clone() const;
 
     };
 }

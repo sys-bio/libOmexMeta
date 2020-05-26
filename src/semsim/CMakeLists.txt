@@ -16,12 +16,11 @@ set(SEMSIM_HEADERS
         "RedlandAPIWrapper/LibrdfStream.h"
 
         "SemsimUtils.h"
-        #        "RDFNode.h"
         "Subject.h"
         "Predicate.h"
         "Resource.h"
         "CurlGet.h"
-        #        "Triple.h"
+        "Triple.h"
         #        "MetaID.h"
         #        "XmlAssistant.h"
         #        "Reader.h"
@@ -41,7 +40,7 @@ set(SEMSIM_HEADERS
         #        "Triples.h"
         #        "SemsimCApi.h"
         #        "HERE.h"
-        RedlandAPIWrapper/RaptorTermValue.cpp RedlandAPIWrapper/RaptorTermValue.h)
+        RedlandAPIWrapper/RaptorTermValue.cpp RedlandAPIWrapper/RaptorTermValue.h Log.h)
 
 set(SEMSIM_SOURCES
         "RedlandAPIWrapper/World.cpp"
@@ -64,7 +63,7 @@ set(SEMSIM_SOURCES
         "Resource.cpp"
         #        "RDFNode.cpp"
         "CurlGet.cpp"
-        #        "Triple.cpp"
+        "Triple.cpp"
         #        "MetaID.cpp"
         #        "XmlAssistant.cpp"
         #        "Reader.cpp"
@@ -81,7 +80,7 @@ set(SEMSIM_SOURCES
         #        "Query.cpp"
         #        "Triples.cpp"
         #        "SemsimCApi.cpp"
-        RedlandAPIWrapper/RaptorTermValue.cpp RedlandAPIWrapper/RaptorTermValue.h)
+        RedlandAPIWrapper/RaptorTermValue.cpp RedlandAPIWrapper/RaptorTermValue.h Log.h)
 
 message(STATUS "SEMSIM_HEADERS ${SEMSIM_HEADERS}")
 
@@ -121,7 +120,7 @@ if (BUILD_SHARED)
     set(BUILD_SHARED_LIBS ON)
     set(CMAKE_VERBOSE_MAKEFILE ON)
     # shared library
-    add_library(semsim SHARED "${SEMSIM_HEADERS}" "${SEMSIM_SOURCES}")
+    add_library(semsim SHARED "${SEMSIM_HEADERS}" "${SEMSIM_SOURCES}" Preproc.h)
 
     #    target_link_options(semsim PUBLIC -Wl,--whole-archive)
     #

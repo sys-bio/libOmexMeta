@@ -139,6 +139,29 @@ TEST_F(LibrdfNodeTests, TestUseNodsToMakeAStatement) {
     free(actual);
     free(stmt);
 }
+//
+//TEST_F(LibrdfNodeTests, TestClone1) {
+//    LibrdfNode subject = LibrdfNode::fromUriString("subject");
+//    LibrdfNode subject_clone = subject.clone();
+//    ASSERT_NE(&subject.get()->type, &subject_clone.get()->type);
+//}
+//
+//TEST_F(LibrdfNodeTests, TestClone2) {
+//    LibrdfNode subject = LibrdfNode::fromUriString("subject");
+//    LibrdfNode subject_clone = subject.clone();
+//    ASSERT_NE(subject.get()->value.uri, subject_clone.get()->value.uri);
+//}
+
+//TEST_F(LibrdfNodeTests, TestClone3) {
+//    LibrdfNode subject = LibrdfNode::fromLiteral("Literal");
+//    LibrdfNode subject_clone = subject.clone();
+//    ASSERT_STREQ((const char*)subject.get()->value.literal.string,
+//                 (const char*)subject_clone.get()->value.literal.string);
+//    ASSERT_NE(subject.get()->value.literal.string,
+//            subject_clone.get()->value.literal.string);
+//    ASSERT_NE(&subject.get()->value.literal.string,
+//            &subject_clone.get()->value.literal.string);
+//}
 
 
 

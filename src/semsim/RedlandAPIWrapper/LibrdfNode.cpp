@@ -12,7 +12,6 @@
 
 namespace semsim {
 
-
     void LibrdfNode::deleter::operator()(librdf_node *node) {
         librdf_free_node(node);
     }
