@@ -1,6 +1,5 @@
 #include "LibrdfSerializer.h"
-#include "LibrdfNode.h"
-#include "LibrdfModel.h"
+
 
 namespace semsim {
 
@@ -24,18 +23,33 @@ namespace semsim {
     }
 
 
-    void *LibrdfSerializer::setNamespace(const std::string &ns, const std::string &prefix) const {
+    void LibrdfSerializer::setNamespace(const std::string &ns, const std::string &prefix) const {
         librdf_serializer_set_namespace(serializer_.get(), LibrdfUri(ns).get(), prefix.c_str());
     }
 
-    void *LibrdfSerializer::setFeature(const std::string &ns, const std::string &prefix) const {
+    void LibrdfSerializer::setFeature(const std::string &ns, const std::string &prefix) const {
         librdf_serializer_set_feature(serializer_.get(), LibrdfUri(ns).get(), LibrdfNode::fromLiteral(prefix).get());
+    }
+
+    std::string LibrdfSerializer::toString(const LibrdfUri &uri, const LibrdfModel &model) {
+        void *buffer_to_hold_string = nullptr;
+        raptor_iostream *ios = raptor_new_iostream_to_string(
+                World::getRaptor(), (void **) &buffer_to_hold_string, nullptr, malloc);
+        if (!ios)
+            throw NullPointerException("Writer::toString(): raptor_iostream");
+        librdf_serializer_serialize_model_to_iostream(
+                serializer_.get(), uri.get(), model.get(), ios
+        );
+        const char *s = (const char *) buffer_to_hold_string;
+        std::string output(s);
+        free(buffer_to_hold_string);
+        return output;
     }
 
     void LibrdfSerializer::deleter::operator()(librdf_serializer *serializer) {
         librdf_free_serializer(serializer);
     }
 
-    int toIOStream(const LibrdfUri &uri, const LibrdfModel *model,);
+    int toIOStream(const LibrdfUri &uri, const LibrdfModel *model, const RaptorIOStream &stream);
 }
 

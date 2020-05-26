@@ -41,9 +41,9 @@ namespace semsim {
 
         LibrdfQueryResults query(LibrdfQuery query);
 
-        void addStatement(const LibrdfStatement &statement) const;
-
         int size() const;
+
+        void addStatement(const LibrdfStatement &statement) const;
     };
 }
 

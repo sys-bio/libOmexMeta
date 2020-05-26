@@ -11,6 +11,11 @@
 #include "semsim/Error.h"
 #include "semsim/RedlandAPIWrapper/World.h"
 #include "LibrdfUri.h"
+#include "LibrdfModel.h"
+#include "RaptorIOStream.h"
+#include "LibrdfNode.h"
+#include "LibrdfModel.h"
+#include "semsim/Error.h"
 
 namespace semsim {
 
@@ -31,13 +36,11 @@ namespace semsim {
 
         [[nodiscard]] librdf_serializer *get() const;
 
-        void *setNamespace(const LibrdfUri &ns, const std::string &prefix) const;
+        void setNamespace(const std::string &ns, const std::string &prefix) const;
 
-        void *setFeature(const LibrdfUri &ns, const std::string &prefix) const;
+        void setFeature(const std::string &ns, const std::string &prefix) const;
 
-        void *setNamespace(const std::string &ns, const std::string &prefix) const;
-
-        void *setFeature(const std::string &ns, const std::string &prefix) const;
+        std::string toString(const LibrdfUri &uri, const LibrdfModel &model);
     };
 }
 
