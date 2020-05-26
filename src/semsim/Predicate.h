@@ -40,7 +40,7 @@ namespace semsim {
 
         std::string str();
 
-        static int verify(std::vector<std::string> valid_terms, const std::string &term);
+        static void verify(std::vector<std::string> valid_terms, const std::string &term);
 
         static bool namespaceKnown(const std::string &ns);
 
@@ -79,12 +79,12 @@ namespace semsim {
 
         explicit BiomodelsBiologyQualifier(const std::string &term);
 
+        void verify();
     };
 
     class BiomodelsModelQualifier : public Predicate {
     public:
         std::vector<std::string> valid_terms_{
-                "is",
                 "isDerivedFrom",
                 "isDescribedBy",
                 "isInstanceOf",
@@ -95,6 +95,7 @@ namespace semsim {
 
         explicit BiomodelsModelQualifier(const std::string &term);
 
+        void verify();
     };
 
     class DCTerm : public Predicate {
@@ -107,6 +108,7 @@ namespace semsim {
 
         explicit DCTerm(const std::string &term);
 
+        void verify();
     };
 
     class SemSim : public Predicate {
@@ -123,6 +125,7 @@ namespace semsim {
 
         explicit SemSim(const std::string &term);
 
+        void verify();
     };
 
     typedef std::unique_ptr<Predicate> PredicatePtr;

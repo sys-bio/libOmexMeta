@@ -8,71 +8,101 @@ namespace semsim {
 
     Triples::Triples() = default;
 
-    Triples::Triples(std::vector<Triple> triples) {
-        triples_ = triples;
+    Triples::Triples(Triple triple) {
+        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
     }
 
-    Triples::Triples(std::initializer_list <Triple> l){
-        triples_ = l;
+    Triples::Triples(std::vector<Triple> triples) {
+        for (auto &triple: triples) {
+            triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+        }
     }
 
     void Triples::push_back(Triple triple) {
-        triples_.push_back(triple);
+        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
     }
 
-    void Triples::emplace_back(LibrdfWorld world, Subject subject, PredicatePtr predicatePtr, Resource resource) {
-        triples_.emplace_back(world, subject, predicatePtr, resource);
-
+    void Triples::emplace_back(Subject subject, PredicatePtr predicatePtr, Resource resource) {
+        Triple triple(std::move(subject), std::move(predicatePtr), std::move(resource));
+        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
     }
 
-    void Triples::emplace_back(LibrdfWorld world, LibrdfStatement statement) {
-        triples_.push_back(Triple::fromStatement(world, statement));
+    void Triples::emplace_back(Subject subject, Predicate predicate, Resource resource) {
+        Triple triple(std::move(subject), std::move(predicate), std::move(resource));
+        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
     }
 
-    Subjects Triples::getSubjects() {
-        Subjects subjects;
+    void Triples::emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, Resource resource) {
+        Triple triple(std::move(subject), std::make_unique<BiomodelsBiologyQualifier>(std::move(predicate)),
+                      std::move(resource));
+        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+    }
+
+    void Triples::emplace_back(Subject subject, BiomodelsModelQualifier predicate, Resource resource) {
+        Triple triple(std::move(subject), std::make_unique<BiomodelsModelQualifier>(std::move(predicate)),
+                      std::move(resource));
+        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+    }
+
+    void Triples::emplace_back(Subject subject, DCTerm predicate, Resource resource) {
+        Triple triple(std::move(subject), std::make_unique<DCTerm>(std::move(predicate)), std::move(resource));
+        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+    }
+
+    void Triples::emplace_back(Subject subject, SemSim predicate, Resource resource) {
+        Triple triple(std::move(subject), std::make_unique<SemSim>(std::move(predicate)), std::move(resource));
+        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+    }
+
+    void Triples::emplace_back(LibrdfStatement statement) {
+        Triple triple = Triple::fromStatement(std::move(statement));
+        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+    }
+
+
+    std::vector<std::string> Triples::getSubjectsStr() {
+        std::vector<std::string> vec;
         for (auto &triple : triples_) {
-            subjects.push_back(triple.getSubject());
+            vec.push_back(triple->getSubjectStr());
         }
-        return subjects;
+        return vec;
     }
 
-    PredicatePtrs Triples::getPredicates() {
-        PredicatePtrs predicatePtrs;
+    std::vector<std::string> Triples::getPredicates() {
+        std::vector<std::string> vec;
         for (auto &triple: triples_) {
-            predicatePtrs.push_back(triple.getPredicatePtr());
+            vec.push_back(triple->getPredicateStr());
         }
-        return predicatePtrs;
+        return vec;
     }
 
-    Resources Triples::getResources() {
-        Resources resources;
+    std::vector<std::string> Triples::getResources() {
+        std::vector<std::string> vec;
         for (auto &triple: triples_) {
-            resources.push_back(triple.getResource());
+            vec.push_back(triple->getResourceStr());
         }
-        return resources;
+        return vec;
     }
 
     int Triples::size() {
         return triples_.size();
     }
 
-    std::vector<Triple>::iterator Triples::begin() {
+    UniqueTripleVector::iterator Triples::begin() {
         return triples_.begin();
     }
 
-    std::vector<Triple>::iterator Triples::end() {
+    UniqueTripleVector::iterator Triples::end() {
         return triples_.end();
     }
 
-    std::string Triples::str(std::string format, std::string base) {
+//    std::string Triples::str(std::string format, std::string base) {
 //        LibrdfWorld world;
-//
-//        LibrdfStorage storage = world.newStorage("memory", "temp_storage");
-//        LibrdfModel model = world.newModel(storage);
-//        LibrdfSerializer serializer(librdf_new_serializer())
-        return TripleWriter(*this, base, format).toString();
-    }
-
+////
+////        LibrdfStorage storage = world.newStorage("memory", "temp_storage");
+////        LibrdfModel model = world.newModel(storage);
+////        LibrdfSerializer serializer(librdf_new_serializer())
+//        return TripleWriter(*this, base, format).toString();
+//    }
 
 }

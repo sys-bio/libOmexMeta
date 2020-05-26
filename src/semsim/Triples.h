@@ -11,47 +11,60 @@
 #include "semsim/Resource.h"
 #include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
 #include "semsim/Error.h"
-#include "semsim/TripleWriter.h"
+//#include "semsim/TripleWriter.h"
 
 #include <vector>
 
 namespace semsim {
 
-    class Triple;
+//    class Triple;
+
+    typedef std::vector<std::unique_ptr<Triple>> UniqueTripleVector;
+    typedef std::vector<Triple> TripleVector;
 
     class Triples {
     private:
 
-        std::vector<Triple> triples_;
+        UniqueTripleVector triples_;
 
     public:
         Triples();
 
-        Triples(std::initializer_list<Triple> l);
+        explicit Triples(Triple triple);
 
         explicit Triples(std::vector<Triple> triples);
 
         void push_back(Triple triple);
 
-        void emplace_back(LibrdfWorld world, LibrdfStatement statement);
+        void emplace_back(LibrdfStatement statement);
 
-        void emplace_back(LibrdfWorld world, Subject subject, PredicatePtr predicatePtr, Resource resource);
+        void emplace_back(Subject subject, PredicatePtr predicatePtr, Resource resource);
 
-        Subjects getSubjects();
+        void emplace_back(Subject subject, Predicate predicate, Resource resource);
 
-        PredicatePtrs getPredicates();
+        void emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, Resource resource);
 
-        Resources getResources();
+        void emplace_back(Subject subject, BiomodelsModelQualifier predicate, Resource resource);
+
+        void emplace_back(Subject subject, DCTerm predicate, Resource resource);
+
+        void emplace_back(Subject subject, SemSim predicate, Resource resource);
+
+        std::vector<std::string> getSubjectsStr();
+
+        std::vector<std::string> getPredicates();
+
+        std::vector<std::string> getResources();
 
         int size();
 
-        std::vector<Triple>::iterator begin();
+        UniqueTripleVector::iterator begin();
 
-        std::vector<Triple>::iterator end();
+        UniqueTripleVector::iterator end();
 
-        std::string str(std::string format = "rdfxml-abbrev", std::string base="file://./annotations.rdf");
+        std::string str(std::string format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
+
     };
-
     typedef std::vector<Triples> NestedTriples;
 
     //todo implement equality operators

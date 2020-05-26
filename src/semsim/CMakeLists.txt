@@ -21,6 +21,7 @@ set(SEMSIM_HEADERS
         "Resource.h"
         "CurlGet.h"
         "Triple.h"
+        "Triples.h"
         #        "MetaID.h"
         #        "XmlAssistant.h"
         #        "Reader.h"
@@ -37,7 +38,6 @@ set(SEMSIM_HEADERS
         #        "AnnotationType.h"
         #        "PhysicalForce.h"
         #        "Query.h"
-        #        "Triples.h"
         #        "SemsimCApi.h"
         #        "HERE.h"
         RedlandAPIWrapper/RaptorTermValue.cpp RedlandAPIWrapper/RaptorTermValue.h Log.h)
@@ -64,6 +64,7 @@ set(SEMSIM_SOURCES
         #        "RDFNode.cpp"
         "CurlGet.cpp"
         "Triple.cpp"
+        "Triples.cpp"
         #        "MetaID.cpp"
         #        "XmlAssistant.cpp"
         #        "Reader.cpp"
@@ -78,7 +79,6 @@ set(SEMSIM_SOURCES
         #        "PhysicalPropertyResource.cpp"
         #        "PhysicalForce.cpp"
         #        "Query.cpp"
-        #        "Triples.cpp"
         #        "SemsimCApi.cpp"
         RedlandAPIWrapper/RaptorTermValue.cpp RedlandAPIWrapper/RaptorTermValue.h Log.h)
 

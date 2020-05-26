@@ -21,6 +21,7 @@ set(TEST_SOURCES
         ResourceTests.cpp
         CurlGetTests.cpp
         TripleTests.cpp
+        TripplesTests.cpp
         #        SemsimUtilsTests.cpp
         #        AnnotationSamples.h
         #        MetaIDTests.cpp
@@ -37,7 +38,6 @@ set(TEST_SOURCES
         #        PhysicalForceTests.cpp
         #        SemsimCombineArchiveTests.cpp
         #        QueryTests.cpp
-        #        TripplesTests.cpp
         #        RDFReadAndWriteTests.cpp
         #        CAPITests.cpp
         )
