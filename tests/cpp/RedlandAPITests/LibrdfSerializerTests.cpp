@@ -21,7 +21,6 @@ TEST_F(LibrdfSerializerTests, TestInstantiateSerializer) {
     ASSERT_NE(serializer1.get(), nullptr);
 }
 
-
 TEST_F(LibrdfSerializerTests, TestMoveConstructor) {
     LibrdfSerializer serializer1 = LibrdfSerializer("rdfxml");
     auto serializer1_int_ptr = reinterpret_cast<std::uintptr_t>(serializer1.get());
@@ -39,6 +38,65 @@ TEST_F(LibrdfSerializerTests, TestMoveAssignment) {
     serializer1 = std::move(serializer2);
     ASSERT_NE(serializer1_int_ptr, serializer2_int_ptr);
     ASSERT_EQ(serializer2.get(), nullptr);
+}
+
+
+TEST_F(LibrdfSerializerTests, TestToString) {
+    LibrdfStorage storage;
+    LibrdfModel model(storage);
+    LibrdfNode subject = LibrdfNode::fromUriString("https://subject.com");
+    LibrdfNode pred = LibrdfNode::fromUriString("https://predicate.com");
+    LibrdfNode res = LibrdfNode::fromUriString("https://resource.com");
+    LibrdfStatement statement(std::move(subject), std::move(pred), std::move(res));
+    model.addStatement(statement);
+    LibrdfSerializer serializer1 = LibrdfSerializer("rdfxml");
+    LibrdfUri uri("base_uri");
+    std::string actual = serializer1.toString(uri, model);
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"base_uri\">\n"
+                           "  <rdf:Description rdf:about=\"https://subject.com\">\n"
+                           "    <ns0:predicate.com xmlns:ns0=\"https://\" rdf:resource=\"https://resource.com\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
+TEST_F(LibrdfSerializerTests, TestToStringTurtle) {
+    LibrdfStorage storage;
+    LibrdfModel model(storage);
+    LibrdfNode subject = LibrdfNode::fromUriString("https://subject.com");
+    LibrdfNode pred = LibrdfNode::fromUriString("https://predicate.com");
+    LibrdfNode res = LibrdfNode::fromUriString("https://resource.com");
+    LibrdfStatement statement(std::move(subject), std::move(pred), std::move(res));
+    model.addStatement(statement);
+    LibrdfSerializer serializer1 = LibrdfSerializer("turtle");
+    LibrdfUri uri("base_uri");
+    std::string actual = serializer1.toString(uri, model);
+    std::string expected = "@base <base_uri> .\n"
+                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "\n"
+                           "<https://subject.com>\n"
+                           "    <https://predicate.com> <https://resource.com> .\n\n";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
+TEST_F(LibrdfSerializerTests, TestToStringNTriples) {
+    LibrdfStorage storage;
+    LibrdfModel model(storage);
+    LibrdfNode subject = LibrdfNode::fromUriString("https://subject.com");
+    LibrdfNode pred = LibrdfNode::fromUriString("https://predicate.com");
+    LibrdfNode res = LibrdfNode::fromUriString("https://resource.com");
+    LibrdfStatement statement(std::move(subject), std::move(pred), std::move(res));
+    model.addStatement(statement);
+    LibrdfSerializer serializer1 = LibrdfSerializer("ntriples");
+    LibrdfUri uri("base_uri");
+    std::string actual = serializer1.toString(uri, model);
+    std::string expected = "<https://subject.com> <https://predicate.com> <https://resource.com> .";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 

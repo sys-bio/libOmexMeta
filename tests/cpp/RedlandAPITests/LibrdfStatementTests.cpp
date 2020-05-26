@@ -25,6 +25,14 @@ TEST_F(LibrdfStatementTests, TestCreate) {
 
 }
 
+TEST_F(LibrdfStatementTests, TestCreate2) {
+    LibrdfStatement s = LibrdfStatement(
+            std::move(LibrdfNode::fromUriString("http://www.dajobe.org/")),
+            std::move(LibrdfNode::fromUriString("http://purl.org/dc/elements/1.1/title")),
+            std::move(LibrdfNode::fromLiteral("My Home Page"))
+    );
+}
+
 //TEST_F(LibrdfStatementTests, TestCopyConstructor) {
 //    semsim::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate), std::move(resource));
 //    semsim::LibrdfStatement statement2 = statement1;

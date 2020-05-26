@@ -7,6 +7,10 @@
 
 #include <memory>
 #include "librdf.h"
+#include "World.h"
+#include "semsim/Error.h"
+
+#include "utility"
 
 namespace semsim {
     class RaptorIOStream {
@@ -21,6 +25,8 @@ namespace semsim {
         explicit RaptorIOStream(raptor_iostream *iostream);
 
         [[nodiscard]] raptor_iostream *get() const;
+
+        static std::pair<RaptorIOStream, void *> newIOToString();
     };
 }
 

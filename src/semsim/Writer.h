@@ -25,6 +25,7 @@ namespace semsim {
         LibrdfSerializer serializer;
         const char *mime_type_;
         const char *type_uri_;
+        const LibrdfModel &model_;
 
         std::vector<std::string> valid_writer_names = {
                 "ntriples",
@@ -43,15 +44,12 @@ namespace semsim {
 
         void validateBaseUri();
 
-        const LibrdfModel &model_;
     public:
 
-        Writer();
-
-        Writer(const LibrdfModel &model,
-               std::string base_uri = "file://annotation.rdf",
-               std::string format = "rdfxml-abbrev",
-               const char *mime_type = nullptr, const char *type_uri = nullptr);
+        explicit Writer(const LibrdfModel &model,
+                        std::string base_uri = "file://annotation.rdf",
+                        std::string format = "rdfxml-abbrev",
+                        const char *mime_type = nullptr, const char *type_uri = nullptr);
 
         ~Writer();
 

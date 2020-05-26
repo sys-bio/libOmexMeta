@@ -18,10 +18,13 @@ namespace semsim {
     LibrdfStatement::LibrdfStatement(LibrdfNode subject, LibrdfNode predicate, LibrdfNode resource)
             : subject_(std::move(subject)),
               predicate_(std::move(predicate)),
-              resource_(std::move(resource)),
-              statement_(librdf_new_statement_from_nodes(
-                      World::getWorld(), subject.get(), predicate.get(), resource.get())
-              ) {}
+              resource_(std::move(resource)) {
+        statement_ = std::unique_ptr<librdf_statement, deleter>(
+                librdf_new_statement_from_nodes(
+                        World::getWorld(), subject_.get(), predicate_.get(), resource_.get()
+                )
+        );
+    }
 
     librdf_statement *LibrdfStatement::get() const {
         return statement_.get();

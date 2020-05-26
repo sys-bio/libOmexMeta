@@ -1,4 +1,5 @@
 #include <semsim/Writer.h>
+
 #include "AnnotationSamples.h"
 #include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
 
@@ -18,22 +19,15 @@ public:
 
         model = LibrdfModel(storage);
 
-        librdf_statement *s = librdf_new_statement_from_nodes(
-                World::getWorld(),
-                librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char *) "http://www.dajobe.org/"),
-                librdf_new_node_from_uri_string(World::getWorld(),
-                                                (const unsigned char *) "http://purl.org/dc/elements/1.1/title"),
-                librdf_new_node_from_literal(World::getWorld(), (const unsigned char *) "My Home Page", nullptr, 0)
+        statement = LibrdfStatement(
+                std::move(LibrdfNode::fromUriString("http://www.dajobe.org/")),
+                std::move(LibrdfNode::fromUriString("http://purl.org/dc/elements/1.1/title")),
+                std::move(LibrdfNode::fromLiteral("My Home Page"))
         );
-        statement = LibrdfStatement(s);
         model.addStatement(statement);
     };
 
-    ~WriterTests() {
-    }
-
-
-    void test_writer(std::string output_format, const std::string &expected) {
+    void test_writer(std::string output_format, const std::string &expected) const {
         semsim::Writer writer(model, "file://./semsim_model.xml", std::move(output_format));
         writer.registerNamespace("http://purl.org/dc/elements/1.1/", "dcterms");
         std::string actual = writer.toString();
@@ -52,14 +46,14 @@ TEST_F(WriterTests, TestWriteModelToRdfXml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./semsim_model.xml\">\n"
                            "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
-                           "    <dcterms:title>My Home Page</dcterms:title>\n"
+                           "    <dcterms:title rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">My Home Page</dcterms:title>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     test_writer("rdfxml", expected);
 }
 
 TEST_F(WriterTests, TestWriteModelTontriples) {
-    std::string expected = "<http://www.dajobe.org/> <http://purl.org/dc/elements/1.1/title> \"My Home Page\" .\n";
+    std::string expected = "<http://www.dajobe.org/> <http://purl.org/dc/elements/1.1/title> \"My Home Page\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#string> .\n";
     test_writer("ntriples", expected);
 }
 
@@ -69,48 +63,9 @@ TEST_F(WriterTests, TestWriteModelToturtle) {
                            "@prefix dcterms: <http://purl.org/dc/elements/1.1/> .\n"
                            "\n"
                            "<http://www.dajobe.org/>\n"
-                           "    dcterms:title \"My Home Page\" .\n\n";
+                           "    dcterms:title \"My Home Page\"^^rdf:string .\n\n";
     test_writer("turtle", expected);
 }
-
-//TEST_F(WriterTests, TestWriteModelTotrig3) {
-//auto x0 = librdf_serializer_get_description(0);
-//auto x1 = librdf_serializer_get_description(1);
-//auto x2 = librdf_serializer_get_description(2);
-//auto x3 = librdf_serializer_get_description(3);
-//auto x4 = librdf_serializer_get_description(4);
-//auto x5 = librdf_serializer_get_description(5);
-//auto x6 = librdf_serializer_get_description(6);
-//auto x7 = librdf_serializer_get_description(7);
-//auto x8 = librdf_serializer_get_description(8);
-//auto x9 = librdf_serializer_get_description(9);
-//auto x10 = librdf_serializer_get_description(10);
-//auto x11 = librdf_serializer_get_description(11);
-//std::cout << *x0->names <<
-//std::endl;
-//std::cout << *x1->names <<
-//std::endl;
-//std::cout << *x2->names <<
-//std::endl;
-//std::cout << *x3->names <<
-//std::endl;
-//std::cout << *x4->names <<
-//std::endl;
-//std::cout << *x5->names <<
-//std::endl;
-//std::cout << *x6->names <<
-//std::endl;
-//std::cout << *x7->names <<
-//std::endl;
-//std::cout << *x8->names <<
-//std::endl;
-//std::cout << *x9->names <<
-//std::endl;
-//std::cout << *x10->names <<
-//std::endl;
-//std::cout << *x11->names <<
-//std::endl;
-//}
 
 
 TEST_F(WriterTests, TestWriteModelToRdfxmlXmp) {
@@ -121,7 +76,7 @@ TEST_F(WriterTests, TestWriteModelToRdfxmlXmp) {
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xml:base=\"file://./semsim_model.xml\">\n"
                            "  <rdf:Description rdf:about=\"\">\n"
-                           "    <dcterms:title>My Home Page</dcterms:title>\n"
+                           "    <dcterms:title rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">My Home Page</dcterms:title>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "</x:xmpmeta>\n"
@@ -137,7 +92,7 @@ TEST_F(WriterTests, Testrdfxmlabbrev) {
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xml:base=\"file://./semsim_model.xml\">\n"
                            "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
-                           "    <dcterms:title>My Home Page</dcterms:title>\n"
+                           "    <dcterms:title rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">My Home Page</dcterms:title>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
@@ -148,7 +103,7 @@ TEST_F(WriterTests, Testrdfxml) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./semsim_model.xml\">\n"
                            "  <rdf:Description rdf:about=\"http://www.dajobe.org/\">\n"
-                           "    <dcterms:title>My Home Page</dcterms:title>\n"
+                           "    <dcterms:title rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">My Home Page</dcterms:title>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
@@ -160,7 +115,7 @@ TEST_F(WriterTests, Testdot) {
                            "\trankdir = LR;\n"
                            "\tcharset=\"utf-8\";\n"
                            "\n"
-                           "\t\"Rhttp://www.dajobe.org/\" -> \"LMy Home Page\" [ label=\"dcterms:title\" ];\n"
+                           "\t\"Rhttp://www.dajobe.org/\" -> \"LMy Home Page|Datatype: http://www.w3.org/1999/02/22-rdf-syntax-ns#string\" [ label=\"dcterms:title\" ];\n"
                            "\n"
                            "\t// Resources\n"
                            "\t\"Rhttp://www.dajobe.org/\" [ label=\"http://www.dajobe.org/\", shape = ellipse, color = blue ];\n"
@@ -168,7 +123,7 @@ TEST_F(WriterTests, Testdot) {
                            "\t// Anonymous nodes\n"
                            "\n"
                            "\t// Literals\n"
-                           "\t\"LMy Home Page\" [ label=\"My Home Page\", shape = record ];\n"
+                           "\t\"LMy Home Page|Datatype: http://www.w3.org/1999/02/22-rdf-syntax-ns#string\" [ label=\"My Home Page|Datatype: http://www.w3.org/1999/02/22-rdf-syntax-ns#string\", shape = record ];\n"
                            "\n"
                            "\tlabel=\"\\n\\nModel:\\nfile://./semsim_model.xml\\n\\nNamespaces:\\ndcterms: http://purl.org/dc/elements/1.1/\\n\";\n"
                            "}\n"
@@ -187,29 +142,34 @@ TEST_F(WriterTests, TestJsonTriples) {
                            "      \"predicate\" : {\n"
                            "        \"value\" : \"http://purl.org/dc/elements/1.1/title\",\n"
                            "        \"type\" : \"uri\"\n"
-                       "        },\n"
-                       "      \"object\" : {\n"
+                           "        },\n"
+                           "      \"object\" : {\n"
                            "        \"value\" : \"My Home Page\",\n"
+                           "        \"datatype\" : \"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\",\n"
                            "        \"type\" : \"literal\"\n"
                            "        }\n"
                            "      \n"
                            "      }\n"
                            "    ]\n"
-                           "  }\n";
+                           "  }\n"
+                           "";
     test_writer("json-triples", expected);
 }
 
 TEST_F(WriterTests, Testjson) {
-    std::string expected = "\n{\n"
+    std::string expected = "\n"
+                           "{\n"
                            "  \"http://www.dajobe.org/\" : {\n"
                            "    \"http://purl.org/dc/elements/1.1/title\" : [ {\n"
                            "        \"value\" : \"My Home Page\",\n"
+                           "        \"datatype\" : \"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\",\n"
                            "        \"type\" : \"literal\"\n"
                            "        }\n"
                            "      \n"
                            "      ]\n"
                            "    }\n"
-                           "  }\n";
+                           "  }\n"
+                           "";
     test_writer("json", expected);
 }
 
@@ -224,24 +184,25 @@ TEST_F(WriterTests, Testhtml) {
                            "<body>\n"
                            "  <table id=\"triples\" border=\"1\">\n"
                            "    <tr>\n"
-                       "      <th>Subject</th>\n"
-                       "      <th>Predicate</th>\n"
-                       "      <th>Object</th>\n"
-                       "    </tr>\n"
-                       "    <tr class=\"triple\">\n"
-                       "      <td><span class=\"uri\"><a href=\"http://www.dajobe.org/\">http://www.dajobe.org/</a></span></td>\n"
+                           "      <th>Subject</th>\n"
+                           "      <th>Predicate</th>\n"
+                           "      <th>Object</th>\n"
+                           "    </tr>\n"
+                           "    <tr class=\"triple\">\n"
+                           "      <td><span class=\"uri\"><a href=\"http://www.dajobe.org/\">http://www.dajobe.org/</a></span></td>\n"
                            "      <td><span class=\"uri\"><a href=\"http://purl.org/dc/elements/1.1/title\">http://purl.org/dc/elements/1.1/title</a></span></td>\n"
-                           "      <td><span class=\"literal\"><span class=\"value\">My Home Page</span></span></td>\n"
+                           "      <td><span class=\"literal\"><span class=\"value\">My Home Page</span>^^&lt;<span class=\"datatype\">http://www.w3.org/1999/02/22-rdf-syntax-ns#string</span>&gt;</span></td>\n"
                            "    </tr>\n"
                            "  </table>\n"
                            "  <p>Total number of triples: <span class=\"count\">1</span>.</p>\n"
                            "</body>\n"
-                           "</html>\n";
+                           "</html>\n"
+                           "";
     test_writer("html", expected);
 }
 
 TEST_F(WriterTests, Testnquads) {
-    std::string expected = "<http://www.dajobe.org/> <http://purl.org/dc/elements/1.1/title> \"My Home Page\" .\n";
+    std::string expected = "<http://www.dajobe.org/> <http://purl.org/dc/elements/1.1/title> \"My Home Page\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#string> .\n";
     test_writer("nquads", expected);
 }
 
