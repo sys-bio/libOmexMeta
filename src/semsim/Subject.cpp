@@ -31,7 +31,4 @@ namespace semsim {
         return node_;
     }
 
-    semsim::Subject::~Subject() = default;
-
-
 }

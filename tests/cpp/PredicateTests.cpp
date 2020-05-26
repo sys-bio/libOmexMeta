@@ -37,11 +37,27 @@ TEST_F(PredicateTests, TestGetNode) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
+TEST_F(PredicateTests, TestGetNodeFromPtr) {
+    Predicate predicate2(bqb_ns, "is", "bqbiol");
+    PredicatePtr ptr = std::make_unique<Predicate>(std::move(predicate2));
+    std::string expected = "http://biomodels.net/biology-qualifiers/is";
+    std::string actual = ptr->str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
 TEST_F(PredicateTests, TestGetNodebqb) {
     BiomodelsBiologyQualifier qualifiers("is");
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     std::string actual = qualifiers.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestGetNodeFromPtrBqB) {
+    BiomodelsBiologyQualifier qualifiers("is");
+    PredicatePtr ptr = std::make_unique<BiomodelsBiologyQualifier>(std::move(qualifiers));
+//    std::string expected = "http://biomodels.net/biology-qualifiers/is";
+//    std::string actual = ptr->str();
+//    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(PredicateTests, TestGetNodebqbFails) {

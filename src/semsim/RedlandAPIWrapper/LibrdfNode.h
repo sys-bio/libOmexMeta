@@ -12,6 +12,7 @@
 #include <sstream>
 #include "semsim/HERE.h"
 #include "semsim/RedlandAPIWrapper/LibrdfUri.h"
+#include "semsim/RedlandAPIWrapper/World.h"
 /*
  * Do I need to mirror the underlying structure of
  * the librdf_node* object?

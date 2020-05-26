@@ -10,14 +10,14 @@ namespace semsim {
 
     Predicate::Predicate(const std::string &namespace_,
                          std::string term, std::string prefix)
-            : namespace_(namespace_), term_(std::move(term)),
-              prefix_(std::move(prefix)) {
+            : namespace_(namespace_), term_(term),
+              prefix_(prefix) {
         if (namespace_.back() == '/' || namespace_.back() == '#') {
             this->uri_ = namespace_ + term_;
         } else {
             this->uri_ = namespace_ + "/" + term_;
         }
-        verify(valid_terms_, term_);
+//        Predicate::verify(valid_terms_, term_);
         this->uri_node_ = std::make_unique<LibrdfNode>(LibrdfNode::fromUriString(uri_));
     }
 
@@ -63,9 +63,8 @@ namespace semsim {
         } else {
             this->uri_ = namespace_ + "/" + term_;
         }
-        verify(valid_terms_, term_);
+        //Predicate::verify(valid_terms_, term_);
         uri_node_ = std::make_unique<LibrdfNode>(LibrdfNode::fromUriString(uri_));
-
     }
 
     const std::string &Predicate::getNamespace() const {
@@ -130,24 +129,23 @@ namespace semsim {
 
     BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(const std::string &term) :
             Predicate("http://biomodels.net/biology-qualifiers/", term, "bqbiol") {
-        verify(valid_terms_, term_);
-
+        Predicate::verify(valid_terms_, term_);
     }
 
     BiomodelsModelQualifier::BiomodelsModelQualifier(const std::string &term) :
             Predicate("http://biomodels.net/model-qualifiers/", term, "bqmodel") {
-        verify(valid_terms_, term_);
+        //Predicate::verify(valid_terms_, term_);
 
     }
 
     DCTerm::DCTerm(const std::string &term) :
             Predicate("http://purl.org/dc/terms/", term, "dcterms") {
-        verify(valid_terms_, term_);
+        //Predicate::verify(valid_terms_, term_);
     }
 
     SemSim::SemSim(const std::string &term) :
             Predicate("http://www.bhi.washington.edu/semsim#", term, "semsim") {
-        verify(valid_terms_, term_);
+        //Predicate::verify(valid_terms_, term_);
     }
 
 
@@ -166,18 +164,16 @@ namespace semsim {
                 "SemSim",
         };
 
-        if (std::find(
-                valid_namespace_strings.begin(),
-                valid_namespace_strings.end(), namespace_
-        ) == valid_namespace_strings.end()) {
+        if (std::find(valid_namespace_strings.begin(), valid_namespace_strings.end(), namespace_) ==
+            valid_namespace_strings.end()) {
             std::ostringstream os;
             os << "Namespace \"" << namespace_ << "\" is not valid. These are ";
             os << " valid namespaces: ";
             for (auto &i : valid_namespace_strings) {
                 os << i << ", ";
             }
-            os
-                    << ". Note, they are not case sensitive. See also \"setPredicateFromUri\" for using a predicate URI not built in.";
+            os << ". Note, they are not case sensitive. See also \"setPredicateFromUri\" ";
+            os << "for using a predicate URI not built in.";
             os << std::endl;
             throw std::invalid_argument(os.str());
         }
@@ -186,21 +182,26 @@ namespace semsim {
             c = std::tolower(c);
         });
 
-
         PredicatePtr predicatePtr;
         if (namespace_ == "bqb" || namespace_ == "biomodelsbiologyqualifier") {
-            predicatePtr = std::make_shared<BiomodelsBiologyQualifier>(
-                    BiomodelsBiologyQualifier(term));
+            predicatePtr = std::make_unique<BiomodelsBiologyQualifier>(
+                    BiomodelsBiologyQualifier(term)
+            );
         } else if (namespace_ == "bqm" || namespace_ == "biomodelsmodelqualifier") {
-            predicatePtr = std::make_shared<BiomodelsModelQualifier>(
-                    BiomodelsModelQualifier(term));
+            predicatePtr = std::make_unique<BiomodelsModelQualifier>(
+                    BiomodelsModelQualifier(term)
+            );
         } else if (namespace_ == "dc" || namespace_ == "dcterms") {
-            predicatePtr = std::make_shared<DCTerm>(
-                    DCTerm(term));
+            predicatePtr = std::make_unique<DCTerm>(
+                    DCTerm(term)
+            );
         } else if (namespace_ == "ss" || namespace_ == "semsim") {
-            predicatePtr = std::make_shared<SemSim>(
-                    SemSim(term));
-        };
+            predicatePtr = std::make_unique<SemSim>(
+                    SemSim(term)
+            );
+        } else {
+            throw std::invalid_argument("Invalid argument: PredicateFactory(): \"" + term + "\"");
+        }
         return predicatePtr;
     }
 }

@@ -11,7 +11,7 @@
 #include "semsim/Subject.h"
 #include "semsim/Resource.h"
 #include "semsim/Triple.h"
-#include "semsim/TripleWriter.h"
+//#include "semsim/TripleWriter.h"
 #include "librdf.h"
 #include "raptor2.h"
 
@@ -20,60 +20,62 @@
 #include <algorithm>
 #include <cstring>
 
+/*
+ * should inherit from librdf_statement?
+ */
 
 namespace semsim {
 
     class Triple {
     protected:
-        LibrdfWorld world_{};
         Subject subject_;
         PredicatePtr predicate_ptr_;
         Resource resource_;
     public:
 
-        explicit Triple(LibrdfWorld world);
+        explicit Triple() = default;
 
-        Triple(LibrdfWorld world, Subject subject, PredicatePtr predicate_ptr, Resource resource);
+        Triple(Subject subject, PredicatePtr predicate_ptr, Resource resource);
 
-        void setSubject(const Subject &subject);
+        Triple(Subject subject, Predicate predicate, Resource resource);
 
-        void setPredicatePtr(const PredicatePtr &predicatePtr);
+//        void setSubject(const Subject &subject);
+//
+//        void setPredicatePtr(const PredicatePtr &predicatePtr);
+//
+//        void setResource(const Resource &resource);
 
-        void setResource(const Resource &resource);
+        std::string getSubjectStr() const;
 
-        Triple(LibrdfWorld world, Subject subject, const Predicate &predicate, Resource resource);
+        std::string getPredicateStr() const;
 
-        Subject getSubject() const;
-
-        PredicatePtr getPredicatePtr() const;
-
-        Resource getResource() const;
+        std::string getResourceStr() const;
 
         LibrdfStatement toStatement();
 
-        static Triple fromStatement(LibrdfWorld world, LibrdfStatement statement);
+        static Triple fromStatement(LibrdfStatement statement);
 
-        std::string str(std::string format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
+//        std::string str(std::string format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
 
 
-        Triple &setAbout(const std::string &about);
+//        Triple &setAbout(const std::string &about);
 
         /*
          * Factory returning Prdicate of type namespace_ and
          * term of type term.
          */
-        Triple &setPredicate(const std::string &namespace_, const std::string &term);
-
-        Triple &setPredicateNew(
-                const std::string &namespace_, const std::string &term, const std::string &prefix);
-
-        Triple &setResourceLiteral(const std::string &literal);
-
-        Triple &setResourceUri(const std::string &identifiers_uri);
-
-        Triple &setResourceBlank(const std::string &blank_id);
-
-        std::string getAbout() const;
+//        Triple &setPredicate(const std::string &namespace_, const std::string &term);
+//
+//        Triple &setPredicateNew(
+//                const std::string &namespace_, const std::string &term, const std::string &prefix);
+//
+//        Triple &setResourceLiteral(const std::string &literal);
+//
+//        Triple &setResourceUri(const std::string &identifiers_uri);
+//
+//        Triple &setResourceBlank(const std::string &blank_id);
+//
+//        std::string getAbout() const;
 
     };
 

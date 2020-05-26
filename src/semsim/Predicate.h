@@ -7,7 +7,7 @@
 
 #include "semsim/RedlandAPIWrapper/World.h"
 #include "semsim/SemsimUtils.h"
-
+#include "semsim/Log.h"
 #include <librdf.h>
 
 #include <vector>
@@ -25,7 +25,7 @@ namespace semsim {
 
         std::string namespace_, term_, prefix_;
         std::string uri_;
-        std::unique_ptr<LibrdfNode> uri_node_; //! predicates can only have type RDFUriNode
+        std::unique_ptr<LibrdfNode> uri_node_; //! predicates can only have type uri
         std::vector<std::string> valid_terms_{"All"};
 
     public:
@@ -44,17 +44,17 @@ namespace semsim {
 
         static bool namespaceKnown(const std::string &ns);
 
-        const std::unique_ptr<LibrdfNode> &getNode() const;
+        [[nodiscard]] const std::unique_ptr<LibrdfNode> &getNode() const;
 
-        const std::vector<std::string> &getValidTerms() const;
+        [[nodiscard]] const std::vector<std::string> &getValidTerms() const;
 
-        const std::string &getNamespace() const;
+        [[nodiscard]] const std::string &getNamespace() const;
 
-        const std::string &getTerm() const;
+        [[nodiscard]] const std::string &getTerm() const;
 
-        const std::string &getPrefix() const;
+        [[nodiscard]] const std::string &getPrefix() const;
 
-        const std::string &getUri() const;
+        [[nodiscard]] const std::string &getUri() const;
     };
 
     class BiomodelsBiologyQualifier : public Predicate {
@@ -77,7 +77,7 @@ namespace semsim {
 
         BiomodelsBiologyQualifier() = default;
 
-        BiomodelsBiologyQualifier(const std::string &term);
+        explicit BiomodelsBiologyQualifier(const std::string &term);
 
     };
 
@@ -93,7 +93,7 @@ namespace semsim {
 
         BiomodelsModelQualifier() = default;
 
-        BiomodelsModelQualifier(const std::string &term);
+        explicit BiomodelsModelQualifier(const std::string &term);
 
     };
 
@@ -105,7 +105,7 @@ namespace semsim {
 
         DCTerm() = default;
 
-        DCTerm(const std::string &term);
+        explicit DCTerm(const std::string &term);
 
     };
 
@@ -121,11 +121,11 @@ namespace semsim {
 
         SemSim() = default;
 
-        SemSim(const std::string &term);
+        explicit SemSim(const std::string &term);
 
     };
 
-    typedef std::shared_ptr<Predicate> PredicatePtr;
+    typedef std::unique_ptr<Predicate> PredicatePtr;
     typedef std::vector<Predicate> Predicates;
     typedef std::vector<PredicatePtr> PredicatePtrs;
 
