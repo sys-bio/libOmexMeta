@@ -14,6 +14,18 @@ namespace semsim {
 
     class LibrdfStorage {
 
+        std::vector<std::string> valid_stores_ = {
+                "hashes",
+                "memory",
+                "file",
+                "mysql",
+                "postgresql",
+                "sqlite",
+                "tstore",
+                "uri",
+                "virtuoso",
+        };
+
         struct deleter {
             void operator()(librdf_storage *storage);
         };
@@ -23,10 +35,10 @@ namespace semsim {
     public:
         explicit LibrdfStorage(librdf_storage *storage);
 
-        explicit LibrdfStorage(std::string storage_name = "memory", std::string name = "SemsimStore",
-                               std::string options = std::string());
+        explicit LibrdfStorage(const std::string &storage_name = "memory", const std::string &name = "SemsimStore",
+                               const char *options = nullptr);
 
-        librdf_storage *get() const;
+        [[nodiscard]] librdf_storage *get() const;
 
     };
 }

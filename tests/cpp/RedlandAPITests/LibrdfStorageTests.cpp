@@ -17,7 +17,7 @@ public:
 };
 
 TEST_F(LibrdfStorageTests, TestInstantiateStorage) {
-    semsim::LibrdfStorage storage1 = LibrdfStorage("memory", "Storage1", std::string());
+    semsim::LibrdfStorage storage1 = LibrdfStorage("memory", "Storage1");
     ASSERT_NE(storage1.get(), nullptr);
 }
 
@@ -44,7 +44,6 @@ TEST_F(LibrdfStorageTests, TestMoveConstructor) {
     auto storage1_int_ptr = reinterpret_cast<std::uintptr_t>(storage1.get());
     semsim::LibrdfStorage storage2 = std::move(storage1);
     auto storage2_int_ptr = reinterpret_cast<std::uintptr_t>(storage2.get());
-    ASSERT_EQ(storage1.get(), nullptr);
     ASSERT_EQ(storage1_int_ptr, storage2_int_ptr);
 }
 
@@ -56,7 +55,6 @@ TEST_F(LibrdfStorageTests, TestMoveAssignment) {
     auto storage2_int_ptr = reinterpret_cast<std::uintptr_t>(storage2.get());
     storage1 = std::move(storage2);
     ASSERT_NE(storage1_int_ptr, storage2_int_ptr);
-    ASSERT_EQ(storage2.get(), nullptr);
 }
 
 

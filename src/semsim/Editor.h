@@ -54,8 +54,6 @@ namespace semsim {
 
     typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
-    class RDF; // forward declaration
-
     class Editor {
     private:
         std::string xml_;

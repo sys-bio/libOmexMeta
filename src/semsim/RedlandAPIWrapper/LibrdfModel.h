@@ -35,13 +35,15 @@ namespace semsim {
 
         explicit LibrdfModel(librdf_model *model);
 
-        explicit LibrdfModel(LibrdfStorage storage, const char *options = nullptr);
+        explicit LibrdfModel(const LibrdfStorage &storage, const char *options = nullptr);
 
         [[nodiscard]] librdf_model *get() const;
 
         LibrdfQueryResults query(LibrdfQuery query);
 
         void addStatement(const LibrdfStatement &statement) const;
+
+        int size() const;
     };
 }
 

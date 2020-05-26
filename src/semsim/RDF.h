@@ -5,13 +5,13 @@
 #ifndef LIBSEMSIM_RDF_H
 #define LIBSEMSIM_RDF_H
 
-#include "semsim/Writer.h"
-#include "semsim/Editor.h"
-#include "semsim/XmlAssistant.h"
-#include "semsim/Query.h"
 #include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
-#include "semsim/Reader.h"
-#include "semsim/Query.h"
+//#include "semsim/Writer.h"
+//#include "semsim/Editor.h"
+//#include "semsim/XmlAssistant.h"
+//#include "semsim/Query.h"
+//#include "semsim/Reader.h"
+//#include "semsim/Query.h"
 
 #include "librdf.h"
 #include <unordered_map>
@@ -23,21 +23,20 @@
 
 namespace semsim {
 
-    class Editor; // forward declaration
+//    class Editor; // forward declaration
 
     typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
-    typedef std::tuple<LibrdfWorld, RaptorWorld, LibrdfStorage, LibrdfModel> LibRDFObjectsTuple;
+//    typedef std::tuple<LibrdfWorld, RaptorWorld, LibrdfStorage, LibrdfModel> LibRDFObjectsTuple;
 
     class RDF {
     private:
-        LibrdfWorld world_;
-        RaptorWorld raptor_world_;
         LibrdfStorage storage_;
         LibrdfModel model_;
 
+        static std::vector<std::string> getValidParserNames();
 
-        semsim::Writer makeWriter(const std::string &format);
+//        semsim::Writer makeWriter(const std::string &format);
 
     public:
         LibrdfUri base_uri_;
@@ -50,19 +49,30 @@ namespace semsim {
                 {"http://www.bhi.washington.edu/semsim#",    "semsim"},
         };
 
-        LibrdfUri getBaseUri() const;
+        RDF(const std::string &storage_type = "memory", const std::string &storage_name = "SemsimStore",
+            const char *storage_options = nullptr, const char *model_options = nullptr);
 
-        std::string getBaseUriAsString() const;
+        static RDF fromString(const std::string &str, const std::string &format = "guess");
 
-        void setBaseUri(std::string baseUri);
+    };
+}
 
-        void setBaseUri(LibrdfUri base_uri);
 
-        static LibRDFObjectsTuple init();
 
-        RDF();
 
-        RDF(LibrdfWorld world, RaptorWorld raptor_world_, LibrdfStorage storage, LibrdfModel model);
+
+//        LibrdfUri getBaseUri() const;
+//
+//        std::string getBaseUriAsString() const;
+//
+//        void setBaseUri(std::string baseUri);
+//
+//        void setBaseUri(LibrdfUri base_uri);
+
+//        static LibRDFObjectsTuple init();
+
+
+//        RDF(LibrdfWorld world, RaptorWorld raptor_world_, LibrdfStorage storage, LibrdfModel model);
 
 //        ~RDF();
 //
@@ -73,71 +83,50 @@ namespace semsim {
 //        RDF &operator=(const RDF &libRdfModel);
 //
 //        RDF &operator=(RDF &&libRdfModel) noexcept;
-
-        bool operator==(const RDF &rhs) const;
-
-        bool operator!=(const RDF &rhs) const;
-
-        const std::unordered_map<std::string, std::string> &getNamespaces() const;
-
-        void setNamespaces(const std::unordered_map<std::string, std::string> &namespaces);
-
-        static RDF fromUrl(std::string url, std::string filename, std::string format);
-
-        static semsim::RDF fromXML(const std::string &filename, std::string format);
-
-        static RDF fromFile(std::string filename, std::string format);
-
-        static RDF fromOmex(const std::string &filename_or_url, std::string format);
-
-        std::string toString(const std::string &format, const std::string &base_uri);
-
-        static RDF fromString(const std::string &str, std::string format = "guess");
-
-        static RDF fromStream(librdf_stream *stream);
-
-        librdf_stream *toStream();
-
-        void toFile(std::string format);
-
-        Editor toEditor(std::string xml, XmlAssistantType type);
-
-        Editor *toEditorPtr(std::string xml, XmlAssistantType type);
-
-        static std::ostringstream listOptions();
-
-        LibrdfWorld getWorld() const;
-
-        LibrdfStorage getStorage() const;
-
-        LibrdfModel getModel() const;
-
-        RaptorWorld getRaptorWorld() const;
-
-        void setWorld(LibrdfWorld world);
-
-        void setStorage(LibrdfStorage storage);
-
-        void setModel(LibrdfModel model);
-
-        void setRaptorWorld(RaptorWorld raptorWorldPtr);
-
-        std::unordered_map<std::string, std::string> propagateNamespacesFromParser(
-                std::vector<std::string> seen_namespaces);
-
-        std::string queryResultsAsStr(const std::string &query_str, const std::string& results_format);
-
-        semsim::ResultsMap queryResultsAsMap(const std::string &query_str);
-
-        semsim::RDF queryResultsAsRDF(const std::string &query_str);
-
-        semsim::Triples queryResultsAsTriples(const std::string &query_str);
-
-        int size() const;
-
-        Triples toTriples();
-    };
-}
+//
+//        const std::unordered_map<std::string, std::string> &getNamespaces() const;
+//
+//        void setNamespaces(const std::unordered_map<std::string, std::string> &namespaces);
+//
+//        static RDF fromUrl(std::string url, std::string filename, std::string format);
+//
+//        static semsim::RDF fromXML(const std::string &filename, std::string format);
+//
+//        static RDF fromFile(std::string filename, std::string format);
+//
+//        static RDF fromOmex(const std::string &filename_or_url, std::string format);
+//
+//        std::string toString(const std::string &format, const std::string &base_uri);
+//
+//
+////        static RDF fromStream(librdf_stream *stream);
+////
+////        librdf_stream *toStream();
+//
+//        void toFile(std::string format);
+//
+////        Editor toEditor(std::string xml, XmlAssistantType type);
+////
+////        Editor *toEditorPtr(std::string xml, XmlAssistantType type);
+//
+//        static std::ostringstream listOptions();
+//
+//        std::unordered_map<std::string, std::string> propagateNamespacesFromParser(
+//                std::vector<std::string> seen_namespaces);
+//
+//        std::string queryResultsAsStr(const std::string &query_str, const std::string& results_format);
+//
+////        semsim::ResultsMap queryResultsAsMap(const std::string &query_str);
+////
+////        semsim::RDF queryResultsAsRDF(const std::string &query_str);
+////
+////        semsim::Triples queryResultsAsTriples(const std::string &query_str);
+////
+////        int size() const;
+////
+////        Triples toTriples();
+//    };
+//}
 
 
 

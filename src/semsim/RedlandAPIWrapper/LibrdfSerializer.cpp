@@ -1,4 +1,6 @@
 #include "LibrdfSerializer.h"
+#include "LibrdfNode.h"
+#include "LibrdfModel.h"
 
 namespace semsim {
 
@@ -22,8 +24,18 @@ namespace semsim {
     }
 
 
+    void *LibrdfSerializer::setNamespace(const std::string &ns, const std::string &prefix) const {
+        librdf_serializer_set_namespace(serializer_.get(), LibrdfUri(ns).get(), prefix.c_str());
+    }
+
+    void *LibrdfSerializer::setFeature(const std::string &ns, const std::string &prefix) const {
+        librdf_serializer_set_feature(serializer_.get(), LibrdfUri(ns).get(), LibrdfNode::fromLiteral(prefix).get());
+    }
+
     void LibrdfSerializer::deleter::operator()(librdf_serializer *serializer) {
         librdf_free_serializer(serializer);
     }
+
+    int toIOStream(const LibrdfUri &uri, const LibrdfModel *model,);
 }
 

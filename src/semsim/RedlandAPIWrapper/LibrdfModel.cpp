@@ -16,7 +16,7 @@ namespace semsim {
             : model_(model) {
     }
 
-    LibrdfModel::LibrdfModel(LibrdfStorage storage, const char *options)
+    LibrdfModel::LibrdfModel(const LibrdfStorage &storage, const char *options)
             : model_(librdf_new_model(World::getWorld(), std::move(storage).get(), options)) {}
 
     void LibrdfModel::addStatement(const LibrdfStatement &statement) const {
@@ -30,6 +30,10 @@ namespace semsim {
     LibrdfQueryResults LibrdfModel::query(LibrdfQuery query) {
         librdf_query_results *results = librdf_query_execute(query.get(), model_.get());
         return LibrdfQueryResults(results);
+    }
+
+    int LibrdfModel::size() const {
+        return librdf_model_size(model_.get());
     }
 
 
