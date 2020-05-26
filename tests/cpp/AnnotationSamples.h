@@ -7,7 +7,7 @@
 
 
 #include <string>
-#include "semsim/SemSim.h"
+#include "semsim/SemsimUtils.h"
 
 class AnnotationSamples {
 public:

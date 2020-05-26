@@ -17,7 +17,6 @@ namespace semsim {
         } else {
             this->uri_ = namespace_ + "/" + term_;
         }
-//        Predicate::verify(valid_terms_, term_);
         this->uri_node_ = std::make_unique<LibrdfNode>(LibrdfNode::fromUriString(uri_));
     }
 
@@ -63,7 +62,6 @@ namespace semsim {
         } else {
             this->uri_ = namespace_ + "/" + term_;
         }
-        //Predicate::verify(valid_terms_, term_);
         uri_node_ = std::make_unique<LibrdfNode>(LibrdfNode::fromUriString(uri_));
     }
 
@@ -105,11 +103,11 @@ namespace semsim {
         return valid_terms_;
     }
 
-    int Predicate::verify(std::vector<std::string> valid_terms, const std::string &term) {
+    void Predicate::verify(std::vector<std::string> valid_terms, const std::string &term) {
         // when valled from the base Predicate class, accept anything
         if (valid_terms.size() == 1)
             if (valid_terms[0] == "All")
-                return 0;
+                return;
         // when called from any other class (which should have overridden valid_terms), we do validatation
         if (!(std::find(valid_terms.begin(), valid_terms.end(), term) != valid_terms.end())) {
             std::ostringstream os;
@@ -120,7 +118,6 @@ namespace semsim {
             }
             throw std::invalid_argument(os.str());
         }
-        return 0;
     }
 
     const std::unique_ptr<LibrdfNode> &Predicate::getNode() const {
@@ -129,25 +126,45 @@ namespace semsim {
 
     BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(const std::string &term) :
             Predicate("http://biomodels.net/biology-qualifiers/", term, "bqbiol") {
+        /*
+         * note: verify cannot be a virtual function
+         * because I want to use it in the constructor.
+         * Therefore, I made Predicate::verify static
+         * to reduce code duplication.
+         */
+        verify();
+    }
+
+    void BiomodelsBiologyQualifier::verify() {
         Predicate::verify(valid_terms_, term_);
     }
 
     BiomodelsModelQualifier::BiomodelsModelQualifier(const std::string &term) :
             Predicate("http://biomodels.net/model-qualifiers/", term, "bqmodel") {
-        //Predicate::verify(valid_terms_, term_);
+        verify();
+    }
 
+    void BiomodelsModelQualifier::verify() {
+        Predicate::verify(valid_terms_, term_);
     }
 
     DCTerm::DCTerm(const std::string &term) :
             Predicate("http://purl.org/dc/terms/", term, "dcterms") {
-        //Predicate::verify(valid_terms_, term_);
+        verify();
+    }
+
+    void DCTerm::verify() {
+        Predicate::verify(valid_terms_, term_);
     }
 
     SemSim::SemSim(const std::string &term) :
             Predicate("http://www.bhi.washington.edu/semsim#", term, "semsim") {
-        //Predicate::verify(valid_terms_, term_);
+        verify();
     }
 
+    void SemSim::verify() {
+        Predicate::verify(valid_terms_, term_);
+    }
 
     /*
      * A factory function for creating PredicatePtr objects.

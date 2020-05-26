@@ -53,11 +53,14 @@ TEST_F(PredicateTests, TestGetNodebqb) {
 }
 
 TEST_F(PredicateTests, TestGetNodeFromPtrBqB) {
+    // todo This test exposes a memory leak that I haven't been
+    //  able to figure out yet. Save until later when you can confer
+    //  with Herbert or Lucian.
     BiomodelsBiologyQualifier qualifiers("is");
     PredicatePtr ptr = std::make_unique<BiomodelsBiologyQualifier>(std::move(qualifiers));
-//    std::string expected = "http://biomodels.net/biology-qualifiers/is";
-//    std::string actual = ptr->str();
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    std::string expected = "http://biomodels.net/biology-qualifiers/is";
+    std::string actual = ptr->str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(PredicateTests, TestGetNodebqbFails) {

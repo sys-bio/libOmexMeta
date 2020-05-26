@@ -71,7 +71,6 @@ public:
         this->resource = Resource(
                 LibrdfNode::fromUriString(resource_namespace + "/" + resource_id));
         this->predicate = BiomodelsBiologyQualifier("is");
-        predicatePtr = std::make_unique<Predicate>(std::move(std::move(predicate)));
 
     }
 };
@@ -107,7 +106,8 @@ TEST_F(TripleTests, TestSubjectMetaId2) {
 TEST_F(TripleTests, TestPredicate1) {
     Triple triple(std::move(subject), std::move(predicate), std::move(resource));
     std::string expected = predicate_str;
-    ASSERT_STREQ(expected.c_str(), triple.getPredicateStr().c_str());
+    std::string actal = triple.getPredicateStr();
+    ASSERT_STREQ(expected.c_str(), actal.c_str());
 }
 
 
