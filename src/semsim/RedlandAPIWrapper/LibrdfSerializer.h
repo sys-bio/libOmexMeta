@@ -31,6 +31,13 @@ namespace semsim {
 
         [[nodiscard]] librdf_serializer *get() const;
 
+        void *setNamespace(const LibrdfUri &ns, const std::string &prefix) const;
+
+        void *setFeature(const LibrdfUri &ns, const std::string &prefix) const;
+
+        void *setNamespace(const std::string &ns, const std::string &prefix) const;
+
+        void *setFeature(const std::string &ns, const std::string &prefix) const;
     };
 }
 

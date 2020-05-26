@@ -22,14 +22,14 @@ set(TEST_SOURCES
         CurlGetTests.cpp
         TripleTests.cpp
         TripplesTests.cpp
-        #        SemsimUtilsTests.cpp
+        SemsimUtilsTests.cpp
+        ReaderTests.cpp
+        WriterTests.cpp
+        #        RDFTests.cpp
         #        AnnotationSamples.h
         #        MetaIDTests.cpp
         #        XmlAssistantTests.cpp
-        #        ReaderTests.cpp
-        #        WriterTests.cpp
         #        EditorTests.cpp
-        #        RDFTests.cpp
         #        ParticipantTests.cpp
         #        PhysicalPropertyTests.cpp
         #        PhysicalEntityTests.cpp

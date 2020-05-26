@@ -18,6 +18,10 @@ namespace semsim {
         return world_;
     }
 
+    raptor_world *World::getRaptor() {
+        return librdf_world_get_raptor(World::getWorld());
+    }
+
     World::World() = default;
 
 

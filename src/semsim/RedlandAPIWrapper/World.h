@@ -67,6 +67,8 @@ namespace semsim {
 
         static librdf_world *getWorld();
 
+        static raptor_world *getRaptor();
+
 //        RaptorWorld getRaptor();
 
 //        LibrdfStorage newStorage(const std::string &storage_name = "memory", const std::string &name = "SemsimStorage",

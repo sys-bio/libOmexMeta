@@ -2,7 +2,6 @@
 // Created by Ciaran on 4/13/2020.
 //
 #include "gtest/gtest.h"
-#include "semsim/SemSim.h"
 #include "iostream"
 #include "AnnotationSamples.h"
 
