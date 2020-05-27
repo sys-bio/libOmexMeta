@@ -15,8 +15,13 @@ namespace semsim {
              const char *model_options) {
         storage_ = LibrdfStorage(storage_type, storage_name, storage_options);
         model_ = LibrdfModel(storage_, model_options);
-        base_uri_ = LibrdfUri(base_uri);
+        setBaseUri(base_uri);
     }
+
+
+/***************************************************************
+ *  getters and setters
+ */
 
     std::vector<std::string> RDF::getValidParserNames() {
         return std::vector<std::string>(
@@ -32,25 +37,10 @@ namespace semsim {
                 });
     }
 
-/***************************************************************
- *  getters and setters
- */
-//
-//    const std::unordered_map<std::string, std::string> &RDF::getNamespaces() const {
-//        return namespaces_;
-//    }
-//
-//    void RDF::setNamespaces(const std::unordered_map<std::string, std::string> &namespaces) {
-//        namespaces_ = namespaces;
-//    }
-
-
-
-
 /*************************************************
  * to/from operations
  */
-//
+
 //    RDF RDF::fromUrl(std::string url, std::string filename, std::string format) {
 //        SemsimUtils::download(url, filename);
 //        return RDF::fromFile(filename, std::__cxx11::string());
@@ -75,11 +65,11 @@ namespace semsim {
         Reader reader(rdf.getModel(), format, "file://./annotations.rdf");
         reader.fromString(str);
 
-//        // pull "seen" namespaces out of the parser and pass them to RDF class
-//        rdf.seen_namespaces_ = reader.getSeenNamespaces();
-//
-//        // Compare against predefined set of namespaces: keep ones we've seen
-//        rdf.namespaces_ = rdf.propagateNamespacesFromParser(rdf.seen_namespaces_);
+        // pull "seen" namespaces out of the parser and pass them to RDF class
+        rdf.seen_namespaces_ = reader.getSeenNamespaces();
+
+        // Compare against predefined set of namespaces: keep ones we've seen
+        rdf.namespaces_ = rdf.propagateNamespacesFromParser(rdf.seen_namespaces_);
 
         return rdf;
     }
@@ -129,20 +119,20 @@ namespace semsim {
         return model_.size();
     }
 
-    std::string RDF::toString(const std::string &format = "rdfxml-abbrev",
-                              const std::string &base_uri = "file://./annotations.rdf") {
-        setBaseUri(base_uri);
-        Writer writer(model_, base_uri_.str(), format);
+    std::string RDF::toString(const std::string &format, const std::string &base_uri) {
+        if (!base_uri.empty())
+            setBaseUri(base_uri);
+        Writer writer(model_, getBaseUri(), format);
         writer.registerNamespace(namespaces_);
         return writer.toString();
     }
 
-    const LibrdfUri &RDF::getBaseUri() const {
+    const std::string &RDF::getBaseUri() const {
         return base_uri_;
     }
 
-    void RDF::setBaseUri(const std::string base_uri) {
-        base_uri_ = LibrdfUri(base_uri);
+    void RDF::setBaseUri(std::string baseUri) {
+        base_uri_ = SemsimUtils::addFilePrefixToString(baseUri);
     }
 
     const NamespaceMap &RDF::getNamespaces() const {
@@ -164,8 +154,6 @@ namespace semsim {
         }
         return keep_map;
     }
-
-
 
 //    RDF RDF::fromXML(const std::string &filename, std::string format) {
 //        LibRDFObjectsTuple objectsTuple = RDF::init();
@@ -257,26 +245,22 @@ namespace semsim {
 //        return count;
 //    }
 //
-//    Triples RDF::toTriples() {
-//        LibrdfStream stream(librdf_model_as_stream(*getModel().getModel()));
-//        if (!stream) {
-//            throw LibRDFException("RDF::toTriples: stream object null");
-//        }
-//        Triples triples;
-//        // todo turn this into method of LibrdfStream
-//        while (!librdf_stream_end(*stream.getStream())) {
-//            LibrdfStatement statement(
-//                    librdf_stream_get_object(*stream.getStream())
-//            );
-//            if (!statement) {
-//                throw LibRDFException("RDF::toTriples(): statement is null");
-//            }
-//            triples.emplace_back(world_, statement);
-//            librdf_stream_next(*stream.getStream());
-//        }
-//        return triples;
-//    }
-//
+    Triples RDF::toTriples() {
+//        LibrdfStream stream = model_.toStream();
+        librdf_stream *stream = librdf_model_as_stream(model_.get());
+
+        Triples triples;
+        // todo turn this into method of LibrdfStream
+        while (!librdf_stream_end(stream)) {
+            LibrdfStatement statement(librdf_stream_get_object(stream));
+
+            std::cout << librdf_statement_get_subject(statement.get()) << std::endl;
+            triples.emplace_back(std::move(statement));
+            librdf_stream_next(stream);
+        }
+        return triples;
+    }
+
 //    std::string RDF::queryResultsAsStr(const std::string &query_str, const std::string &results_format) {
 //        return Query(world_, model_, query_str).resultsAsStr(results_format);
 //    }

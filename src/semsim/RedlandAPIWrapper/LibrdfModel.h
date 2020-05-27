@@ -14,6 +14,8 @@
 #include "LibrdfQuery.h"
 #include "LibrdfStorage.h"
 #include "World.h"
+#include "semsim/RedlandAPIWrapper/LibrdfStream.h"
+
 /*
  * Todo librdf_model and librdf_storage are
  * strictly 1:1. Put checks in place to verify that
@@ -40,6 +42,8 @@ namespace semsim {
         [[nodiscard]] librdf_model *get() const;
 
         LibrdfQueryResults query(LibrdfQuery query);
+
+        LibrdfStream toStream();
 
         int size() const;
 

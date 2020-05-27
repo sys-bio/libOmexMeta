@@ -60,7 +60,6 @@ public:
     Subject subject;
     Resource resource;
     BiomodelsBiologyQualifier predicate;
-    PredicatePtr predicatePtr;
 
 
     //todo subject could pass the world_ to the node
@@ -98,7 +97,7 @@ TEST_F(TripleTests, TestSubjectMetaId) {
 
 
 TEST_F(TripleTests, TestSubjectMetaId2) {
-    Triple triple(std::move(subject), std::move(predicatePtr), std::move(resource));
+    Triple triple(std::move(subject), std::move(predicate), std::move(resource));
     std::string &expected = subject_str;
     ASSERT_STREQ(expected.c_str(), triple.getSubjectStr().c_str());
 }
@@ -126,91 +125,108 @@ TEST_F(TripleTests, TestPredicate4) {
 }
 
 TEST_F(TripleTests, TestResource) {
-    Triple triple(std::move(subject), std::move(predicatePtr), std::move(resource));
+    Triple triple(std::move(subject), std::move(predicate), std::move(resource));
     std::string actual = triple.getResourceStr();
     std::string expected = resource_id;
     ASSERT_STREQ(expected.c_str(), resource_id.c_str());
 }
 
 TEST_F(TripleTests, TestResource2) {
-    Triple triple(std::move(subject), std::move(predicatePtr), std::move(resource));
+    Triple triple(std::move(subject), std::move(predicate), std::move(resource));
     std::string actual = triple.getResourceStr();
     std::string expected = resource_id;
     ASSERT_STREQ(expected.c_str(), resource_id.c_str());
 }
 
-//TEST_F(TripleTests, TestTripleVecGetResource) {
-//    Triple triple1(std::move(subject), std::move(predicatePtr), std::move(resource));
-//    Triple triple2(std::move(subject), std::move(predicatePtr), std::move(resource));
-//    std::vector<Triple> vec = {std::move(triple1), std::move(triple2)};
-//    std::string actual = vec[0].getResource().str();
-//    std::string expected = "https://identifiers.org/uniprot/P0DP23";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//}
-//
-//TEST_F(TripleTests, TestTripleVecGetResource2) {
-//    Triple triple1(std::move(subject), std::move(predicatePtr), std::move(resource));
-//    Triple triple2(std::move(subject), std::move(predicatePtr), std::move(resource));
-//    std::vector<Triple> vec = {std::move(triple1), std::move(triple2)};
-//    std::string actual = vec[0].getResource().str();
-//    std::string expected = "https://identifiers.org/uniprot/P0DP23";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//}
-//
-////
-//TEST_F(TripleTests, TestToStatementSubject) {
-//    Triple triple1(std::move(subject), std::move(predicatePtr), std::move(resource));
-//    LibrdfStatement statement = triple1.toStatement();
-//    std::string actual = statement.getSubject().str();
-//    std::string expected = "./MyModel#metaid_0";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//}
-//
-//TEST_F(TripleTests, TestToStatementPrediacte) {
-//    Triple triple1(std::move(subject), std::move(predicatePtr), std::move(resource));
-//    LibrdfStatement statement = triple1.toStatement();
-//    std::string actual = statement.getPredicate().str();
-//    std::string expected = "http://biomodels.net/biology-qualifiers/is";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str()
-//    );
-//}
-//
-//
-//TEST_F(TripleTests, TestToStatementResource) {
-//    Triple triple1(std::move(subject), std::move(predicatePtr), std::move(resource));
-//    LibrdfStatement statement = triple1.toStatement();
-//    std::string actual = statement.getResource().str();
-//    const char *expected = "https://identifiers.org/uniprot/P0DP23";
-//    ASSERT_STREQ(expected, actual.c_str());
-//}
-//
-//TEST_F(TripleTests, TestFromStatementSubject) {
-//    Triple triple1(std::move(subject), std::move(predicatePtr), std::move(resource));
-//    LibrdfStatement statement = triple1.toStatement();
-//    Triple triple2 = Triple::fromStatement( std::move(statement));
-//    std::string actual = triple2.getSubject().str();
-//    std::string expected = "./MyModel#metaid_0";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//}
-//
-//TEST_F(TripleTests, TestFromStatementResource) {
-//    Triple triple1(std::move(subject), std::move(predicatePtr), std::move(resource));
-//    LibrdfStatement statement = triple1.toStatement();
-//    Triple triple2 = Triple::fromStatement( std::move(statement));
-//    std::string actual = triple2.getResource().str();
-//    std::string expected = "https://identifiers.org/uniprot/P0DP23";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//}
-//
-//TEST_F(TripleTests, TestFromStatementPredicate) {
-//    Triple triple1(std::move(subject), std::move(predicatePtr), std::move(resource));
-//    LibrdfStatement statement = triple1.toStatement();
-//    Triple triple2 = Triple::fromStatement( std::move(statement));
-//    std::string actual = triple2.getPredicatePtr()->str();
-//    std::string expected = "http://biomodels.net/biology-qualifiers/is";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str()
-//    );
-//}
+TEST_F(TripleTests, TestTripleVecGetResource) {
+    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    std::vector<Triple> vec;
+    vec.push_back(std::move(triple1));
+    std::string actual = vec[0].getResourceStr();
+    std::string expected = "https://identifiers.org/uniprot/P0DP23";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(TripleTests, TestTripleVecGetResource2) {
+    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    std::vector<Triple> vec;
+    vec.push_back(std::move(triple1));
+    std::string actual = vec[0].getResourceStr();
+    std::string expected = "https://identifiers.org/uniprot/P0DP23";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
+TEST_F(TripleTests, TestToStatementSubject) {
+    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    LibrdfStatement statement = triple1.toStatement();
+    std::string actual = statement.getSubject().str();
+    std::string expected = "./MyModel#metaid_0";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(TripleTests, TestNullExceptionPred) {
+    PredicatePtr predicatePtr;
+    ASSERT_THROW(Triple triple1(std::move(subject), std::move(predicatePtr), std::move(resource)),
+                 NullPointerException);
+}
+
+TEST_F(TripleTests, TestNullExceptionSub) {
+    Subject subject1;
+    ASSERT_THROW(Triple triple1(std::move(subject1), std::move(predicate), std::move(resource)),
+                 NullPointerException);
+}
+
+TEST_F(TripleTests, TestNullExceptionRes) {
+    Resource resource1;
+    ASSERT_THROW(Triple triple1(std::move(subject), std::move(predicate), std::move(resource1)),
+                 NullPointerException);
+}
+
+TEST_F(TripleTests, TestToStatementPrediacte) {
+    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    LibrdfStatement statement = triple1.toStatement();
+    std::string actual = statement.getPredicate().str();
+    std::string expected = "http://biomodels.net/biology-qualifiers/is";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
+TEST_F(TripleTests, TestToStatementResource) {
+    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    LibrdfStatement statement = triple1.toStatement();
+    std::string actual = statement.getResource().str();
+    const char *expected = "https://identifiers.org/uniprot/P0DP23";
+    ASSERT_STREQ(expected, actual.c_str());
+}
+
+TEST_F(TripleTests, TestFromStatementSubject) {
+    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    LibrdfStatement statement = triple1.toStatement();
+    Triple triple2 = Triple::fromStatement(std::move(statement));
+    std::string actual = triple2.getSubjectStr();
+    std::string expected = "./MyModel#metaid_0";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(TripleTests, TestFromStatementResource) {
+    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    LibrdfStatement statement = triple1.toStatement();
+    Triple triple2 = Triple::fromStatement(std::move(statement));
+    std::string actual = triple2.getResourceStr();
+    std::string expected = "https://identifiers.org/uniprot/P0DP23";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(TripleTests, TestFromStatementPredicate) {
+    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    LibrdfStatement statement = triple1.toStatement();
+    Triple triple2 = Triple::fromStatement(std::move(statement));
+    std::string actual = triple2.getPredicateStr();
+    std::string expected = "http://biomodels.net/biology-qualifiers/is";
+    ASSERT_STREQ(expected.c_str(), actual.c_str()
+    );
+}
 
 
 //TEST_F(TripleTests, TestAbout) {
@@ -225,7 +241,7 @@ TEST_F(TripleTests, TestResource2) {
 //    Triple triple(world_);
 //    triple.setPredicate("bqb", "is");
 //    std::string expected = "http://biomodels.net/biology-qualifiers/is";
-//    std::string actual = triple.getPredicatePtr()->str();
+//    std::string actual = triple.getpredicate()->str();
 //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //}
 //
@@ -233,8 +249,8 @@ TEST_F(TripleTests, TestResource2) {
 //    Triple triple(world_);
 //    triple.setPredicateNew("https://stackoverflow.com/questions/", "how-do-you", "so");
 //    std::string expected = "https://stackoverflow.com/questions/how-do-you";
-//    PredicatePtr std::move(predicatePtr) = triple.getPredicatePtr();
-//    std::string actual = std::move(predicatePtr)->str();
+//    predicate std::move(predicate) = triple.getpredicate();
+//    std::string actual = std::move(predicate)->str();
 //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //}
 //

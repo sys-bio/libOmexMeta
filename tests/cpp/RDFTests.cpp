@@ -28,7 +28,7 @@ TEST_F(RDFTests, TestDestructor) {
 TEST_F(RDFTests, TestBaseUriIsSet) {
     RDF rdf;
     std::string expected = "Annotations.rdf";
-    std::string actual = rdf.getBaseUri().str();
+    std::string actual = rdf.getBaseUri();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -76,72 +76,68 @@ TEST_F(RDFTests, TestGetOptions) {
     ASSERT_STREQ(expected.c_str(), os.str().c_str());
 }
 
+TEST_F(RDFTests, TestNamespacesSize) {
+    RDF rdf = RDF::fromString(
+            samples.composite_annotation_pp
+    );
+    std::string s = rdf.toString("rdfxml-abbrev", "./annotations.rdf");
+    int x = rdf.getNamespaces().size();
+    ASSERT_EQ(2, x);
+}
+
+TEST_F(RDFTests, TestGetNamespacesTest) {
+    RDF rdf = RDF::fromString(
+            samples.composite_annotation_pp
+    );
+    auto ns = rdf.getNamespaces();
+    std::ostringstream actual;
+    for (auto &it: rdf.getNamespaces()) {
+        actual << it.first << it.second;
+    }
+    std::string expected = "http://www.bhi.washington.edu/semsim#semsimhttp://biomodels.net/biology-qualifiers/bqbiol";
+    ASSERT_STREQ(expected.c_str(), actual.str().c_str());
+}
+
+TEST_F(RDFTests, TestBaseUri) {
+    RDF rdf;
+    std::string expected = "file://./Annotations.rdf";
+    std::string actual = rdf.getBaseUri();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(RDFTests, TestSetBaseUri) {
+    RDF rdf;
+    rdf.setBaseUri("./new_semsim_model.rdf");
+    std::string expected = "file://./new_semsim_model.rdf";
+    std::string actual = rdf.getBaseUri();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
 TEST_F(RDFTests, TestCount) {
-    semsim::RDF rdf = semsim::RDF::fromString(samples.rdf_xml_seq_example, "rdfxml");
+    RDF rdf = RDF::fromString(samples.rdf_xml_seq_example, "rdfxml");
     int actual = rdf.size();
     int expected = 4;
-    ASSERT_EQ(expected, actual
-    );
+    ASSERT_EQ(expected, actual);
 }
-//TEST_F(RDFTests, TestNamespacesSize) {
-//    RDF rdf = RDF::fromString(
-//            samples.composite_annotation_pp
-//    );
-//    std::string s = rdf.toString("rdfxml-abbrev", "./annotations.rdf");
-//    int x = rdf.getNamespaces().size();
-//    ASSERT_EQ(2, x);
-//}
 
-//TEST_F(RDFTests, TestBaseUri) {
-//    RDF rdf;
-//    std::string expected = "file://./semsim_model.rdf";
-//    std::string actual = (const char *) librdf_uri_as_string(rdf.getBaseUri());
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//}
-//
-//TEST_F(RDFTests, TestSetBaseUri) {
-//    RDF rdf;
-//    rdf.setBaseUri("./new_semsim_model.rdf");
-//    std::string expected = "file://./new_semsim_model.rdf";
-//    std::string actual = (const char *) librdf_uri_as_string(rdf.getBaseUri());
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//}
-//
-//TEST_F(RDFTests, TestSetBaseUri2) {
-//    RDF rdf = RDF::fromString(samples.singular_annotation1, "rdfxml");
-//    auto *rdf_ptr = &rdf;
-//    rdf_ptr->setBaseUri("nannotation.rdf");
-//    std::string actual = rdf_ptr->getBaseUriAsString();
-//    const char *expected = "file://nannotation.rdf";
-//    ASSERT_STREQ(expected, actual.c_str());
-//}
-//
-//
-//TEST_F(RDFTests, TestCount) {
-//    RDF rdf = RDF::fromString(samples.rdf_xml_seq_example, "rdfxml");
-//    int actual = rdf.size();
-//    int expected = 4;
-//    ASSERT_EQ(expected, actual);
-//}
-//
-//TEST_F(RDFTests, TestToTriples) {
-//    RDF rdf = RDF::fromString(samples.rdf_xml_seq_example, "rdfxml");
-//    Triples triples = rdf.toTriples();
-//    std::ostringstream actual;
-//    for (auto &it: triples) {
-//        actual << it->getSubjectStr() <<
-//               it->getPredicateStr() << it->getResourceStr()
-//               << std::endl;
-//    }
-//    std::cout << actual.str() << std::endl;
-//    std::string expected = "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/typehttp://www.w3.org/1999/02/22-rdf-syntax-ns#Seq\n"
-//                           "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/_1http://example.org/banana\n"
-//                           "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/_2http://example.org/apple\n"
-//                           "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/_3http://example.org/pear\n"
-//                           "";
-//    ASSERT_STREQ(expected.c_str(), actual.str().c_str());
-//}
-//
+TEST_F(RDFTests, TestToTriples) {
+    RDF rdf = RDF::fromString(samples.rdf_xml_seq_example, "rdfxml");
+    Triples triples = rdf.toTriples();
+    std::ostringstream actual;
+    for (auto &it: triples) {
+        actual << it->getSubjectStr() <<
+               it->getPredicateStr() << it->getResourceStr()
+               << std::endl;
+    }
+    std::cout << actual.str() << std::endl;
+    std::string expected = "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/typehttp://www.w3.org/1999/02/22-rdf-syntax-ns#Seq\n"
+                           "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/_1http://example.org/banana\n"
+                           "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/_2http://example.org/apple\n"
+                           "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/_3http://example.org/pear\n"
+                           "";
+    ASSERT_STREQ(expected.c_str(), actual.str().c_str());
+}
+
 //TEST_F(RDFTests, testQueryResultsAsStr) {
 //    std::string q = "PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
 //                    "SELECT ?x ?y ?z\n"

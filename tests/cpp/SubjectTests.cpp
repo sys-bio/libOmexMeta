@@ -37,8 +37,15 @@ TEST_F(SubjectTests, TestGetNodeUri) {
 
 TEST_F(SubjectTests, TestGetNodeBlank) {
     std::string string = "blank";
-    Subject subject(LibrdfNode::fromUriString(string));
+    Subject subject(LibrdfNode::fromBlank(string));
     ASSERT_STREQ(string.c_str(), subject.getNode().str().c_str());
+}
+
+TEST_F(SubjectTests, TestGetNodeAsConstRef) {
+    std::string string = "blank";
+    Subject subject(LibrdfNode::fromUriString(string));
+    const LibrdfNode &node = subject.getNode();
+    ASSERT_STREQ(string.c_str(), node.str().c_str());
 }
 
 

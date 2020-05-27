@@ -30,9 +30,9 @@ namespace semsim {
         return librdf_parser_get_namespaces_seen_count(parser_.get());
     }
 
-    LibrdfUri LibrdfParser::getNamespacesSeenUri(int index) const {
+    std::string LibrdfParser::getNamespacesSeenUri(int index) const {
         librdf_uri *uri = librdf_parser_get_namespaces_seen_uri(parser_.get(), index);
-        return LibrdfUri(uri);
+        return (const char *) librdf_uri_as_string(uri);
     }
 
     std::string LibrdfParser::getNamespacesSeenPrefix(int index) const {

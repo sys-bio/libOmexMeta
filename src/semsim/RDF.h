@@ -8,6 +8,9 @@
 #include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
 #include "semsim/Reader.h"
 #include "semsim/Writer.h"
+#include "semsim/SemsimUtils.h"
+#include "semsim/Triple.h"
+#include "semsim/Triples.h"
 //#include "semsim/Editor.h"
 //#include "semsim/XmlAssistant.h"
 //#include "semsim/Query.h"
@@ -38,7 +41,7 @@ namespace semsim {
 //        semsim::Writer makeWriter(const std::string &format);
 
     public:
-        LibrdfUri base_uri_;
+        std::string base_uri_;
         NamespaceMap namespaces_;
         std::vector<std::string> seen_namespaces_;
         NamespaceMap default_namespaces_ = {
@@ -48,7 +51,7 @@ namespace semsim {
                 {"http://www.bhi.washington.edu/semsim#",    "semsim"},
         };
 
-        explicit RDF(const std::string &base_uri = "Annotations.rdf", const std::string &storage_type = "memory",
+        explicit RDF(const std::string &base_uri = "./Annotations.rdf", const std::string &storage_type = "memory",
                      const std::string &storage_name = "SemsimStore",
                      const char *storage_options = nullptr, const char *model_options = nullptr);
 
@@ -60,54 +63,25 @@ namespace semsim {
 
         int size() const;
 
-        std::string toString(const std::string &format, const std::string &base_uri);
+        std::string toString(const std::string &format = "rdfxml-abbrev", const std::string &base_uri = std::string());
 
-        const LibrdfUri &getBaseUri() const;
+        const std::string &getBaseUri() const;
+
+        void setBaseUri(const std::string base_uri);
 
         const NamespaceMap &getNamespaces() const;
 
         void setNamespaces(const NamespaceMap &namespaces);
 
-        void setBaseUri(const std::string base_uri);
-
         Writer makeWriter(const std::string &format);
 
         std::unordered_map<std::string, std::string>
         propagateNamespacesFromParser(std::vector<std::string> seen_namespaces);
+
+        Triples toTriples();
     };
 }
 
-
-
-
-
-//        LibrdfUri getBaseUri() const;
-//
-//        std::string getBaseUriAsString() const;
-//
-//        void setBaseUri(std::string baseUri);
-//
-//        void setBaseUri(LibrdfUri base_uri);
-
-//        static LibRDFObjectsTuple init();
-
-
-//        RDF(LibrdfWorld world, RaptorWorld raptor_world_, LibrdfStorage storage, LibrdfModel model);
-
-//        ~RDF();
-//
-//        RDF(const RDF &libRdfModel);
-//
-//        RDF(RDF &&libRdfModel) noexcept;
-//
-//        RDF &operator=(const RDF &libRdfModel);
-//
-//        RDF &operator=(RDF &&libRdfModel) noexcept;
-//
-//        const std::unordered_map<std::string, std::string> &getNamespaces() const;
-//
-//        void setNamespaces(const std::unordered_map<std::string, std::string> &namespaces);
-//
 //        static RDF fromUrl(std::string url, std::string filename, std::string format);
 //
 //        static semsim::RDF fromXML(const std::string &filename, std::string format);
@@ -143,7 +117,6 @@ namespace semsim {
 ////        semsim::Triples queryResultsAsTriples(const std::string &query_str);
 ////
 ////
-////        Triples toTriples();
 //    };
 //}
 

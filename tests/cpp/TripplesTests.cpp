@@ -97,12 +97,11 @@ TEST_F(TriplesTests, TestEmplaceBack6) {
 }
 
 
-//
-//TEST_F(TriplesTests, TestEmplaceBack2) {
-//    Triple triple1(std::move(subject), std::move(predicatePtr), std::move(resource));
-//    LibrdfStatement statement = triple1.toStatement();
-//    Triples triples;
-//    triples.emplace_back(std::move(statement));
-//    ASSERT_EQ(1, triples.size());
-//}
+TEST_F(TriplesTests, TestEmplaceBackStatement) {
+    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    LibrdfStatement statement = triple1.toStatement();
+    Triples triples;
+    triples.emplace_back(std::move(statement));
+    ASSERT_EQ(1, triples.size());
+}
 

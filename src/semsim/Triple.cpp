@@ -10,21 +10,41 @@ namespace semsim {
     Triple::Triple(Subject subject, PredicatePtr predicate_ptr, Resource resource)
             : subject_(std::move(subject)),
               predicate_ptr_(std::move(predicate_ptr)),
-              resource_(std::move(resource)) {}
+              resource_(std::move(resource)) {
+        checkForNull();
+    }
 
     Triple::Triple(Subject subject, Predicate predicate, Resource resource)
             : subject_(std::move(subject)),
               predicate_ptr_(std::make_unique<Predicate>(std::move(predicate))),
-              resource_(std::move(resource)) {}
+              resource_(std::move(resource)) {
+        checkForNull();
+    }
 
+    void Triple::checkForNull() {
+        if (!subject_.getNode().get())
+            throw NullPointerException("NullPointerException: Triple::Triple(): Subject node is null");
+
+        if (!predicate_ptr_) //todo another check on underlying pointer if possible (so far checking for null causes seg fault)
+            throw NullPointerException("NullPointerException: Triple::Triple(): Predicate node is null");
+
+        if (!resource_.getNode().get())
+            throw NullPointerException("NullPointerException: Triple::Triple(): Resource node is null");
+    }
 
     LibrdfStatement Triple::toStatement() {
+        librdf_node *s = subject_.getNode().get();
+        if (!s)
+            throw NullPointerException("NullPointerException: Triple::toStatement(): Subject node is null");
+        librdf_node *p = predicate_ptr_->getNode()->get();
+        if (!p)
+            throw NullPointerException("NullPointerException: Triple::toStatement(): Subject node is null");
+        librdf_node *r = resource_.getNode().get();
+        if (!r)
+            throw NullPointerException("NullPointerException: Triple::toStatement(): Subject node is null");
 
         librdf_statement *stmt = librdf_new_statement_from_nodes(
-                World::getWorld(),
-                subject_.getNode().get(),
-                predicate_ptr_->getNode()->get(),
-                resource_.getNode().get()
+                World::getWorld(), s, p, r
         );
         return LibrdfStatement(stmt);
     }
