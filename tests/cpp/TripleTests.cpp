@@ -7,55 +7,18 @@
 #include <semsim/Subject.h>
 #include <semsim/Triple.h>
 #include "gtest/gtest.h"
+#include "AnnotationSamples.h"
 
 using namespace semsim;
 
 class TripleTests : public ::testing::Test {
 public:
 
+    AnnotationSamples samples;
     std::string subject_str = "./MyModel#metaid_0";
     std::string predicate_str = "http://biomodels.net/biology-qualifiers/is";
     std::string resource_namespace = "uniprot";
     std::string resource_id = "P0DP23";
-
-    std::string sample_annotation1 = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                                     "<rdf:RDF xmlns:bqb=\"http://biomodels.net/biology-qualifiers/\"\n"
-                                     "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                                     "  <rdf:Description rdf:about=\"./MyModel#metaid_0\">\n"
-                                     "    <bqb:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
-                                     "  </rdf:Description>\n"
-                                     "</rdf:RDF>";
-    std::string sample_annotation2 = "<annotation>\n"
-                                     "    <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                                     "             xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
-                                     "             xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\"\n"
-                                     "             xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                                     "             xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\">\n"
-                                     "        <rdf:Description rdf:about=\"#metaid_1\">\n"
-                                     "            <bqbiol:is>\n"
-                                     "                <rdf:Bag>\n"
-                                     "                    <rdf:li rdf:resource=\"http://identifiers.org/chebi/CHEBI:15343\"/>\n"
-                                     "                </rdf:Bag>\n"
-                                     "            </bqbiol:is>\n"
-                                     "        </rdf:Description>\n"
-                                     "    </rdf:RDF>\n"
-                                     "</annotation>";
-
-    std::string sample_annotation3 = "<annotation>\n"
-                                     "    <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                                     "             xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
-                                     "             xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\"\n"
-                                     "             xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                                     "             xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\">\n"
-                                     "        <rdf:Description rdf:about=\"#metaid_2\">\n"
-                                     "            <bqbiol:is>\n"
-                                     "                <rdf:Bag>\n"
-                                     "                    <rdf:li rdf:resource=\"http://identifiers.org/chebi/CHEBI:28907\"/>\n"
-                                     "                </rdf:Bag>\n"
-                                     "            </bqbiol:is>\n"
-                                     "        </rdf:Description>\n"
-                                     "    </rdf:RDF>\n"
-                                     "</annotation>";
 
     Subject subject;
     Resource resource;
@@ -64,11 +27,11 @@ public:
 
     //todo subject could pass the world_ to the node
     TripleTests() {
-        this->subject = std::move(
-                Subject(std::move(LibrdfNode::fromUriString(subject_str))
-                ));
-        this->resource = Resource(
-                LibrdfNode::fromUriString(resource_namespace + "/" + resource_id));
+        subject = Subject(LibrdfNode::fromUriString(subject_str));
+//        this->subject = std::move(
+//                Subject(std::move(LibrdfNode::fromUriString(subject_str))
+//                ));
+        resource = Resource(LibrdfNode::fromUriString(resource_namespace + "/" + resource_id));
         this->predicate = BiomodelsBiologyQualifier("is");
 
     }
@@ -77,13 +40,13 @@ public:
 TEST_F(TripleTests, TestInstantiation1) {
     Triple triple(
             std::move(subject),
-            std::make_unique<Predicate>(std::move(std::move(predicate))),
+            std::make_unique<Predicate>(std::move(predicate)),
             std::move(resource));
     ASSERT_TRUE(true); // if we get this far the test has passed
 }
 
 TEST_F(TripleTests, TestInstantiation2) {
-    Triple triple(std::move(subject), std::move(std::move(predicate)), std::move(resource));
+    Triple triple(std::move(subject), std::move(predicate), std::move(resource));
     ASSERT_TRUE(true); // if we get this far the test has passed
 }
 
@@ -157,14 +120,6 @@ TEST_F(TripleTests, TestTripleVecGetResource2) {
 }
 
 
-TEST_F(TripleTests, TestToStatementSubject) {
-    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
-    LibrdfStatement statement = triple1.toStatement();
-    std::string actual = statement.getSubject().str();
-    std::string expected = "./MyModel#metaid_0";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-}
-
 TEST_F(TripleTests, TestNullExceptionPred) {
     PredicatePtr predicatePtr;
     ASSERT_THROW(Triple triple1(std::move(subject), std::move(predicatePtr), std::move(resource)),
@@ -181,6 +136,14 @@ TEST_F(TripleTests, TestNullExceptionRes) {
     Resource resource1;
     ASSERT_THROW(Triple triple1(std::move(subject), std::move(predicate), std::move(resource1)),
                  NullPointerException);
+}
+
+TEST_F(TripleTests, TestToStatementSubject) {
+    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    LibrdfStatement statement = triple1.toStatement();
+    std::string actual = statement.getSubject().str();
+    std::string expected = "./MyModel#metaid_0";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(TripleTests, TestToStatementPrediacte) {
