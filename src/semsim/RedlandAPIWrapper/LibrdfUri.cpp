@@ -7,6 +7,8 @@
 namespace semsim {
 
     void LibrdfUri::deleter::operator()(librdf_uri *ptr) {
+        if (!ptr)
+            return;
         librdf_free_uri(ptr);
     }
 
