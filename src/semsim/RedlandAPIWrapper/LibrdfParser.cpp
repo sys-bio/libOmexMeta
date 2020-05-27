@@ -31,14 +31,16 @@ namespace semsim {
     }
 
     LibrdfUri LibrdfParser::getNamespacesSeenUri(int index) const {
-        return LibrdfUri(librdf_parser_get_namespaces_seen_uri(parser_.get(), index));
+        librdf_uri *uri = librdf_parser_get_namespaces_seen_uri(parser_.get(), index);
+        return LibrdfUri(uri);
     }
 
     std::string LibrdfParser::getNamespacesSeenPrefix(int index) const {
         return std::string(librdf_parser_get_namespaces_seen_prefix(parser_.get(), index));
     }
 
-    void LibrdfParser::parseString(const std::string &rdf_string, const LibrdfModel &model, LibrdfUri base_uri) const {
+    void LibrdfParser::parseString(const std::string &rdf_string, const LibrdfModel &model,
+                                   const LibrdfUri &base_uri) const {
         librdf_parser_parse_string_into_model(
                 parser_.get(), (const unsigned char *) rdf_string.c_str(),
                 base_uri.get(), model.get());

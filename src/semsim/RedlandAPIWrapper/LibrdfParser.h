@@ -39,7 +39,8 @@ namespace semsim {
 
         [[nodiscard]] LibrdfUri getNamespacesSeenUri(int index) const;
 
-        void parseString(const std::string &rdf_string, const semsim::LibrdfModel &model, LibrdfUri base_uri) const;
+        void
+        parseString(const std::string &rdf_string, const semsim::LibrdfModel &model, const LibrdfUri &base_uri) const;
 
         std::string getNamespacesSeenPrefix(int index) const;
 

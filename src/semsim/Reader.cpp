@@ -61,17 +61,17 @@ namespace semsim {
     }
 
 
-    void Reader::fromFile(const std::string &filepath) {
-        LibrdfUri uri = LibrdfUri(filepath); // the filepath is the uri
-        base_uri_ = LibrdfUri(filepath); // we also use filepath for base uri
-        parser_.parseFilenameUriIntoModel(uri, base_uri_, model_);
-    }
-
-    void Reader::fromUri(const std::string &uri) {
-        LibrdfUri uri_ = LibrdfUri(uri);
-        base_uri_ = LibrdfUri(uri);
-        parser_.parseUriIntoModel(uri_, base_uri_, model_);
-    }
+//    void Reader::fromFile(const std::string &filepath) {
+//        LibrdfUri uri = LibrdfUri(filepath); // the filepath is the uri
+//        base_uri_ = LibrdfUri(filepath); // we also use filepath for base uri
+//        parser_.parseFilenameUriIntoModel(uri, base_uri_, model_);
+//    }
+//
+//    void Reader::fromUri(const std::string &uri) {
+//        LibrdfUri uri_ = LibrdfUri(uri);
+//        base_uri_ = LibrdfUri(uri);
+//        parser_.parseUriIntoModel(uri_, base_uri_, model_);
+//    }
 
     void Reader::setOption(const std::string &option, const std::string &value) {
         // prefix for option uri's. Append with desired option for full uri.

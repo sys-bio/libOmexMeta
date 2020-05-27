@@ -6,6 +6,7 @@
 #include "semsim/RedlandAPIWrapper/World.h"
 #include "semsim/RedlandAPIWrapper/LibrdfUri.h"
 #include "semsim/SemsimUtils.h"
+#include "raptor2.h"
 
 using namespace semsim;
 
@@ -39,22 +40,17 @@ TEST_F(LibrdfUriTests, TestStr) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(LibrdfUriTests, TestClone) {
-//    LibrdfUri uri("http://uri.com");
-//    LibrdfUri uri_clone = uri.clone();
-//    std::cout << &uri << ", " << &uri_clone << std::endl;
-//    std::cout << uri.get() << ", " << uri_clone.get() << std::endl;
-    LibrdfUri uri1("http://uri.com");
-    LibrdfUri uri2("http://uri.com");
-    std::cout << &uri1 << ", " << &uri2 << std::endl;
-    std::cout << uri1.get() << ", " << uri2.get() << std::endl;
+TEST_F(LibrdfUriTests, TestCopy) {
+    /*
+     * There is *no* copying of uri's because the constructor
+     * will store a uri on creation. If the same string
+     * used again for the uri, it is searched and returned.
+     */
+    librdf_uri *uri1 = librdf_new_uri(World::getWorld(), (const unsigned char *) "uri");
+    librdf_uri *uri2 = librdf_new_uri(World::getWorld(), (const unsigned char *) "uri");
+    librdf_uri *uri3 = librdf_new_uri_from_uri(uri1);
 
-//    ASSERT_STREQ( uri.str().c_str(),
-//                  uri_clone.str().c_str());
-//    ASSERT_NE(&uri, &uri_clone);
-//    ASSERT_NE(uri.get(), uri_clone.get());
-//    ASSERT_NE(&uri.get()->value.literal.string,
-//              &uri_clone.get()->value.literal.string);
+//    LibrdfUri uri1("http://uri.com");
+//    ASSERT_STREQ(uri1.str().c_str(), uri2.str().c_str());
+
 }
-
-

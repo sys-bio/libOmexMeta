@@ -32,6 +32,8 @@ namespace semsim {
     public:
         LibrdfUri() = default;
 
+//        LibrdfUri(const LibrdfUri& librdfUri);
+
         [[nodiscard]] std::string str() const;
 
         explicit LibrdfUri(const std::string &uri);
