@@ -25,7 +25,8 @@ set(TEST_SOURCES
         SemsimUtilsTests.cpp
         ReaderTests.cpp
         WriterTests.cpp
-        #        RDFTests.cpp
+        RDFTests.cpp
+        RDFReadAndWriteTests.cpp
         #        AnnotationSamples.h
         #        MetaIDTests.cpp
         #        XmlAssistantTests.cpp
@@ -38,7 +39,6 @@ set(TEST_SOURCES
         #        PhysicalForceTests.cpp
         #        SemsimCombineArchiveTests.cpp
         #        QueryTests.cpp
-        #        RDFReadAndWriteTests.cpp
         #        CAPITests.cpp
         )
 

@@ -107,24 +107,16 @@ TEST_F(ReaderTests, TestFromStringTabular_data1) {
     assertModelSizesAreDifferentAfterParsing(model, samples.tabular_data1);
 }
 
-//TEST_F(ReaderTests, TestParseNamespaces) {
-//    SemsimUtils::download(samples.sbml_url1, samples.sbml_filename1);
-//    Reader reader( model, "rdfxml", "file://./annotations.rdf");
-//    reader.fromFile(samples.sbml_filename1);
-//    auto actual = reader.getSeenNamespaces();
-//    std::vector<std::string> expected = {
-//            "http://www.sbml.org/sbml/level2",
-//            "http://www.w3.org/1999/xhtml",
-//            "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-//            "http://biomodels.net/model-qualifiers/",
-//            "http://www.w3.org/2001/vcard-rdf/3.0#",
-//            "http://purl.org/dc/elements/1.1/",
-//            "http://purl.org/dc/terms/",
-//            "http://biomodels.net/biology-qualifiers/",
-//            "http://www.w3.org/1998/Math/MathML",
-//    };
-//    ASSERT_EQ(expected, actual);
-//}
+TEST_F(ReaderTests, TestParseNamespaces) {
+    Reader reader(model, "rdfxml", "file://./annotations.rdf");
+    reader.fromString(samples.singular_annotation1);
+    auto actual = reader.getSeenNamespaces();
+    std::vector<std::string> expected = {
+            "http://biomodels.net/biology-qualifiers/",
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    };
+    ASSERT_EQ(expected, actual);
+}
 //
 //TEST_F(ReaderTests, Test1) {
 //    /*

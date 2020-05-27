@@ -6,11 +6,10 @@
 #define LIBSEMSIM_RDF_H
 
 #include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
-//#include "semsim/Writer.h"
+#include "semsim/Reader.h"
+#include "semsim/Writer.h"
 //#include "semsim/Editor.h"
 //#include "semsim/XmlAssistant.h"
-//#include "semsim/Query.h"
-//#include "semsim/Reader.h"
 //#include "semsim/Query.h"
 
 #include "librdf.h"
@@ -49,11 +48,32 @@ namespace semsim {
                 {"http://www.bhi.washington.edu/semsim#",    "semsim"},
         };
 
-        RDF(const std::string &storage_type = "memory", const std::string &storage_name = "SemsimStore",
-            const char *storage_options = nullptr, const char *model_options = nullptr);
+        explicit RDF(const std::string &base_uri = "Annotations.rdf", const std::string &storage_type = "memory",
+                     const std::string &storage_name = "SemsimStore",
+                     const char *storage_options = nullptr, const char *model_options = nullptr);
 
         static RDF fromString(const std::string &str, const std::string &format = "guess");
 
+        const LibrdfModel &getModel() const;
+
+        static std::ostringstream listOptions();
+
+        int size() const;
+
+        std::string toString(const std::string &format, const std::string &base_uri);
+
+        const LibrdfUri &getBaseUri() const;
+
+        const NamespaceMap &getNamespaces() const;
+
+        void setNamespaces(const NamespaceMap &namespaces);
+
+        void setBaseUri(const std::string base_uri);
+
+        Writer makeWriter(const std::string &format);
+
+        std::unordered_map<std::string, std::string>
+        propagateNamespacesFromParser(std::vector<std::string> seen_namespaces);
     };
 }
 
@@ -122,7 +142,6 @@ namespace semsim {
 ////
 ////        semsim::Triples queryResultsAsTriples(const std::string &query_str);
 ////
-////        int size() const;
 ////
 ////        Triples toTriples();
 //    };
