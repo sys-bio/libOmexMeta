@@ -44,14 +44,15 @@ TEST_F(LibrdfParserTests, TestMoveAssignment) {
     ASSERT_EQ(parser2.get(), nullptr);
 }
 
-TEST_F(LibrdfParserTests, TestParseSomething) {
+TEST_F(LibrdfParserTests, TestParseSomethingAndGetNamespace) {
     LibrdfStorage storage;
     LibrdfModel model(storage);
     LibrdfParser parser1 = LibrdfParser("rdfxml");
     LibrdfUri base("./base");
     parser1.parseString(samples.singular_annotation1, model, base);
-    const LibrdfUri &u = parser1.getNamespacesSeenUri(0);
-
+    std::string ns = parser1.getNamespacesSeenUri(0);
+    std::string expected = "http://biomodels.net/biology-qualifiers/";
+    ASSERT_STREQ(ns.c_str(), expected.c_str());
 }
 
 

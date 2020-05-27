@@ -77,6 +77,7 @@ namespace semsim {
 //
 //        std::string getAbout() const;
 
+        void checkForNull();
     };
 
     typedef Triple SingularAnnotation;

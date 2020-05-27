@@ -42,8 +42,6 @@ namespace semsim {
 
         [[nodiscard]] librdf_uri *get() const;
 
-        LibrdfUri clone() const;
-
     };
 }
 

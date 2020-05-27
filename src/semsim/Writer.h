@@ -47,7 +47,7 @@ namespace semsim {
     public:
 
         explicit Writer(const LibrdfModel &model,
-                        std::string base_uri = "file://annotation.rdf",
+                        std::string base_uri = "file://./annotation.rdf",
                         std::string format = "rdfxml-abbrev",
                         const char *mime_type = nullptr, const char *type_uri = nullptr);
 

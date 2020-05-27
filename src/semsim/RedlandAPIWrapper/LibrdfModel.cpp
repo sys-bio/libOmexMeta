@@ -36,6 +36,14 @@ namespace semsim {
         return librdf_model_size(model_.get());
     }
 
+    LibrdfStream LibrdfModel::toStream() {
+        LibrdfStream stream(librdf_model_as_stream(model_.get()));
+        if (!stream.get()) {
+            throw NullPointerException("NullPointerException: LibrdfModel::toStream(): stream object null");
+        }
+        return stream;
+    }
+
 
     // todo add wrapper around librdf_model_add_statement
 

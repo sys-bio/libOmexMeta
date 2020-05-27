@@ -25,9 +25,7 @@ public:
 
     static void assertReadAndWrite(const std::string &input_annot, const std::string &input_format,
                                    const std::string &expected_output) {
-        HERE();
         semsim::RDF rdf = semsim::RDF::fromString(input_annot, "rdfxml");
-        HERE();
         std::string actual = rdf.toString(input_format, "file://./annotations.rdf");
         std::cout << actual << std::endl;
         ASSERT_STREQ(expected_output.c_str(), actual.c_str());
