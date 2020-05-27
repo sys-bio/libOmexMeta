@@ -3,6 +3,7 @@
 //
 
 #include "Reader.h"
+
 namespace semsim {
 
     Reader::Reader(const LibrdfModel &model, std::string format,
@@ -81,13 +82,18 @@ namespace semsim {
 
 
     std::vector<std::string> Reader::getSeenNamespaces() {
+        HERE();
         int number_of_prefixes_seen = parser_.numNamespacesSeen();
+        HERE();
         std::vector<std::string> namespaces;
-        const char *uri_string;
+        HERE();
         for (int i = 0; i < number_of_prefixes_seen; i++) {
-            LibrdfUri ns_uri = parser_.getNamespacesSeenUri(i);
-            namespaces.push_back(ns_uri.str());
+            HERE();
+            const std::string &nsref = parser_.getNamespacesSeenUri(i).str();
+            namespaces.push_back(nsref);
+            HERE();
         }
+        HERE();
         return namespaces;
     }
 

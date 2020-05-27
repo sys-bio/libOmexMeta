@@ -8,7 +8,6 @@
 #include <utility>
 
 #include "sbml/SBMLTypes.h"
-#include "semsim/SemSim.h"
 
 using namespace libsbml;
 
