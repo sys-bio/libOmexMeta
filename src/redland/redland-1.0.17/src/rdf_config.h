@@ -283,7 +283,7 @@
 /* #undef LT_SHARED_LIB_MEMBER */
 
 /* Build storage backends as modules */
-#define MODULAR_LIBRDF 1
+#define MODULAR_LIBRDF 1 // commented out by cw on 29/05/2020
 
 /* Define if dlsym() requires a leading underscore in symbol names. */
 /* #undef NEED_USCORE */
