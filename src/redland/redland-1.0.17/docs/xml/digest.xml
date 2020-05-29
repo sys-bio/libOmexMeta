@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-digest">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-digest.top_of_page">digest</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>digest</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-digest.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="librdf-digest"><returnvalue>librdf_digest</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-digest">librdf_new_digest</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-free-digest">librdf_free_digest</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-digest-init">librdf_digest_init</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-digest-update">librdf_digest_update</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-digest-update-string">librdf_digest_update_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-digest-final">librdf_digest_final</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-digest-get-digest">librdf_digest_get_digest</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-digest-get-digest-length">librdf_digest_get_digest_length</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-digest-to-string">librdf_digest_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-digest-print">librdf_digest_print</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-digest.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-digest">librdf_digest</link></entry></row>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-digest-factory">librdf_digest_factory</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-digest.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-digest.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-new-digest" role="function">
+<title>librdf_new_digest&#160;()</title>
+<indexterm zone="librdf-new-digest"><primary>librdf_new_digest</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-digest"><returnvalue>librdf_digest</returnvalue></link>&#160;*
+librdf_new_digest (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                   <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-digest"><type>librdf_digest</type></link> object.</para>
+<para>After construction, data should be added to the digest using
+<link linkend="librdf-digest-update"><type>librdf_digest_update</type></link> or <link linkend="librdf-digest-update-string"><type>librdf_digest_update_string</type></link> with
+<link linkend="librdf-digest-final"><type>librdf_digest_final</type></link> to signify finishing.  Then the digest
+value can be returned directly with <link linkend="librdf-digest-get-digest"><type>librdf_digest_get_digest</type></link>
+of <link linkend="librdf-digest-get-digest-length"><type>librdf_digest_get_digest_length</type></link> bytes or as a hex encoded
+string with <link linkend="librdf-digest-to-string"><type>librdf_digest_to_string</type></link>.  The digest can be
+re-initialised for new data with <link linkend="librdf-digest-init"><type>librdf_digest_init</type></link>.</para>
+<refsect3 id="librdf-new-digest.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the digest name to use to create this digest</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-digest.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="librdf-digest"><type>librdf_digest</type></link> object or NULL</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-free-digest" role="function">
+<title>librdf_free_digest&#160;()</title>
+<indexterm zone="librdf-free-digest"><primary>librdf_free_digest</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_free_digest (<parameter><link linkend="librdf-digest"><type>librdf_digest</type></link> *digest</parameter>);</programlisting>
+<para>Destructor - destroy a <link linkend="librdf-digest"><type>librdf_digest</type></link> object.</para>
+<refsect3 id="librdf-free-digest.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>digest</para></entry>
+<entry role="parameter_description"><para>the digest</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-digest-init" role="function">
+<title>librdf_digest_init&#160;()</title>
+<indexterm zone="librdf-digest-init"><primary>librdf_digest_init</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_digest_init (<parameter><link linkend="librdf-digest"><type>librdf_digest</type></link> *digest</parameter>);</programlisting>
+<para>(Re)initialise the librdf_digest object.</para>
+<para>This is automatically called on construction but can be used to
+re-initialise the digest to the initial state for digesting new
+data.</para>
+<refsect3 id="librdf-digest-init.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>digest</para></entry>
+<entry role="parameter_description"><para>the digest</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-digest-update" role="function">
+<title>librdf_digest_update&#160;()</title>
+<indexterm zone="librdf-digest-update"><primary>librdf_digest_update</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_digest_update (<parameter><link linkend="librdf-digest"><type>librdf_digest</type></link> *digest</parameter>,
+                      <parameter>const unsigned <link linkend="char"><type>char</type></link> *buf</parameter>,
+                      <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Add more data to the librdf_digest object.</para>
+<refsect3 id="librdf-digest-update.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>digest</para></entry>
+<entry role="parameter_description"><para>the digest</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buf</para></entry>
+<entry role="parameter_description"><para>the data buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>the length of the data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-digest-update-string" role="function">
+<title>librdf_digest_update_string&#160;()</title>
+<indexterm zone="librdf-digest-update-string"><primary>librdf_digest_update_string</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_digest_update_string (<parameter><link linkend="librdf-digest"><type>librdf_digest</type></link> *digest</parameter>,
+                             <parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>);</programlisting>
+<para>Add a string to the librdf_digest object.</para>
+<refsect3 id="librdf-digest-update-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>digest</para></entry>
+<entry role="parameter_description"><para>the digest</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string to add</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-digest-final" role="function">
+<title>librdf_digest_final&#160;()</title>
+<indexterm zone="librdf-digest-final"><primary>librdf_digest_final</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_digest_final (<parameter><link linkend="librdf-digest"><type>librdf_digest</type></link> *digest</parameter>);</programlisting>
+<para>Finish the digesting of data.</para>
+<para>The digest can now be returned via <link linkend="librdf-digest-get-digest"><function>librdf_digest_get_digest()</function></link>.</para>
+<refsect3 id="librdf-digest-final.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>digest</para></entry>
+<entry role="parameter_description"><para>the digest</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-digest-get-digest" role="function">
+<title>librdf_digest_get_digest&#160;()</title>
+<indexterm zone="librdf-digest-get-digest"><primary>librdf_digest_get_digest</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+librdf_digest_get_digest (<parameter><link linkend="librdf-digest"><type>librdf_digest</type></link> *digest</parameter>);</programlisting>
+<para>Get the calculated digested value.</para>
+<refsect3 id="librdf-digest-get-digest.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>digest</para></entry>
+<entry role="parameter_description"><para>the digest</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-digest-get-digest.returns" role="returns">
+<title>Returns</title>
+<para> pointer to the memory containing the digest.  It will
+be <link linkend="librdf-digest-get-digest-length"><type>librdf_digest_get_digest_length</type></link> bytes in length.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-digest-get-digest-length" role="function">
+<title>librdf_digest_get_digest_length&#160;()</title>
+<indexterm zone="librdf-digest-get-digest-length"><primary>librdf_digest_get_digest_length</primary></indexterm>
+<programlisting language="C"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+librdf_digest_get_digest_length (<parameter><link linkend="librdf-digest"><type>librdf_digest</type></link> *digest</parameter>);</programlisting>
+<para>Get length of the calculated digested.</para>
+<refsect3 id="librdf-digest-get-digest-length.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>digest</para></entry>
+<entry role="parameter_description"><para>the digest</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-digest-get-digest-length.returns" role="returns">
+<title>Returns</title>
+<para> size of the digest in bytes</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-digest-to-string" role="function">
+<title>librdf_digest_to_string&#160;()</title>
+<indexterm zone="librdf-digest-to-string"><primary>librdf_digest_to_string</primary></indexterm>
+<programlisting language="C"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_digest_to_string (<parameter><link linkend="librdf-digest"><type>librdf_digest</type></link> *digest</parameter>);</programlisting>
+<para>Get a string representation of the digest object.</para>
+<refsect3 id="librdf-digest-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>digest</para></entry>
+<entry role="parameter_description"><para>the digest</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-digest-to-string.returns" role="returns">
+<title>Returns</title>
+<para> a newly allocated string that represents the digest.
+This must be released by the caller using <link linkend="librdf-free-memory"><function>librdf_free_memory()</function></link>.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-digest-print" role="function">
+<title>librdf_digest_print&#160;()</title>
+<indexterm zone="librdf-digest-print"><primary>librdf_digest_print</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_digest_print (<parameter><link linkend="librdf-digest"><type>librdf_digest</type></link> *digest</parameter>,
+                     <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *fh</parameter>);</programlisting>
+<para>Print the digest to a FILE handle.</para>
+<refsect3 id="librdf-digest-print.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>digest</para></entry>
+<entry role="parameter_description"><para>the digest</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fh</para></entry>
+<entry role="parameter_description"><para>file handle</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-digest.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="librdf-digest" role="typedef">
+<title>librdf_digest</title>
+<indexterm zone="librdf-digest"><primary>librdf_digest</primary></indexterm>
+<programlisting language="C">typedef struct librdf_digest_s librdf_digest;
+</programlisting>
+<para>Redland content digest class.</para>
+</refsect2>
+<refsect2 id="librdf-digest-factory" role="typedef">
+<title>librdf_digest_factory</title>
+<indexterm zone="librdf-digest-factory"><primary>librdf_digest_factory</primary></indexterm>
+<programlisting language="C">typedef struct librdf_digest_factory_s librdf_digest_factory;
+</programlisting>
+<para>Redland digest factory class.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

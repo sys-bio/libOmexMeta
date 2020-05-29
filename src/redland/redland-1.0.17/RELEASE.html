@@ -1,0 +1,3695 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>Redland librdf RDF API Library - Release Notes</title>
+  <style type="text/css">
+<!--
+pre
+{
+	margin: 1em 4em 1em 4em;
+	background-color: #eee;
+	padding: 0.5em;
+	border-color: #006;
+	border-width: 1px;
+	border-style: dotted;
+}
+-->
+  </style>
+</head>
+<body>
+
+  <h1>Redland librdf RDF API Library - Release Notes</h1>
+
+
+<h2 id="rel1_0_17"><a name="rel1_0_17">Redland 1.0.17 changes</a></h2>
+
+<p>Issues Fixed:</p>
+<ul>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=529">0000529</a>: MySql storage error on initial creation</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=540">0000540</a>: configure: remove obsolete  --with-xml-parser/--with-openssl-digests</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=541">0000541</a>: configure pkg-config checks not overridable</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=542">0000542</a>: win32_rdf_config.h doesn't work on MSVC2008</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=543">0000543</a>: assertion in rasqal_query_results_next_triple called from librdf_query_rasqal_query_results_next_statement</li>
+</ul>
+
+<h2>Concept class changes</h2>
+
+<p>Added <code>rdf:HTML</code> and <code>rdf:langString</code> from
+RDF 1.1.</p>
+
+<h2>Storage class changes</h2>
+
+<p>Update deprecated MySQL engine type syntax.  Patch from olberger on github.
+</p>
+
+<h2>Configuration and build fixes</h2>
+
+<p>Make configure restore CPPFLAGS after virtuoso test.  Helps
+portabilty and Debian hardening.
+</p>
+
+<p>Fixes to Win32 builds with MSVC2008 from Michael Stahl.</p>
+
+<h2>Internal fixes</h2>
+
+<p>Several alignment and error path fixes from clang and llvm.</p>
+
+<p>Fix <code>rasqal_query_results_next_triple()</code> call with NULL.
+Patch from Michael Stahl.</p>
+
+
+
+<h2 id="rel1_0_16"><a name="rel1_0_16">Redland 1.0.16 changes</a></h2>
+
+<p>Issues Fixed:</p>
+<ul>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=443">0000443</a>: &quot;1&quot;^^xsd:boolean does not evaluate as true</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=460">0000460</a>: librdf error - storages already registered</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=497">0000497</a>: &quot;1&quot;^^xsd:boolean and &quot;true&quot;^^xsd:boolean are not true</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=518">0000518</a>: Blank node parsing error</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=519">0000519</a>: SPARQL query-related methods crash on certain literals</li>
+</ul>
+
+<h3>General changes</h3>
+
+<p>
+Requires <a href="http://librdf.org/raptor/">Raptor</a> 2.0.7 or newer<br />
+</p>
+
+
+<h3>Model class changes</h3>
+
+<p><code>librdf_model_contains_statement()</code> now returns &gt; 0
+only for invalid statements according to the API contract.
+NULL statements are considered invalid.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=489">Issue #0000489</a>
+</p>
+
+
+<h3>Node class changes</h3>
+
+<p>All the constructors now normalize the nodes (Raptor terms) so
+that equality is a cheap pointer comparison.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=443">Issue #0000443</a>.
+</p>
+
+
+<h3>Query class changes</h3>
+
+<p><code>librdf_query_results_get_binding_value()</code> and
+<code>librdf_query_results_get_binding_name()</code> now fail when
+called with negative offsets.
+</p>
+
+
+<h3>Serializer class changes</h3>
+
+<p>Serializing (using Raptor) now sets the statement graph field to
+make serializing to N-Quads work.
+</p>
+
+
+<h3>Storage class changes</h3>
+
+<p>Loading the same storage multiple times no longer gives a runtime
+error.</p>
+
+<p><code>librdf_storage_contains_statement()</code> now returns &gt;
+0 only for invalid statements according to the API contract.  Uses
+<code>librdf_statement_is_complete()</code> for testing statement
+validity.
+</p>
+
+<p>hashes storage: Make matching a statement work when using graph
+names (redland contexts).
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=515">Issue
+#0000515</a>
+</p>
+
+<p>mysql storage: Defaulted storage configuration host to 'localhost'
+if it is not given.  Opening a store with missing configuration now
+reports the required keys.
+</p>
+
+<p>postgres storage: Fixed a bad malloc result test during query
+allocation that probably caused
+<code>librdf_model_find_statements()</code> to fail.  Fix from
+'zoggy' on github - thanks.  Made loading triples from a stream to
+postgresql actually work via
+<code>librdf_model_add_statements()</code>.  Defaulted storage
+configuration host to 'localhost' if it is not given.  Opening a
+store with missing configuration now reports the required keys.
+</p>
+
+
+<h3>Unicode module changes</h3>
+
+<p>Added <code>librdf_latin1_to_utf8_2()</code> with size_t args.
+Deprecates librdf_latin1_to_utf8().</p>
+
+<p>Added <code>librdf_utf8_to_latin1_2()</code> with size_t args and
+new default arg for replacing out of range characters. Deprecates
+librdf_utf8_to_latin1().</p>
+
+
+<h3>World class changes</h3>
+
+<p>Added <code>librdf_world_set_raptor_init_handler()</code> and
+<code>librdf_world_set_rasqal_init_handler()</code> methods to set
+handlers for configuring internal raptor and rasqal after they have
+been constructed but before they are initialized; before
+<code>raptor_world_open()</code> or <code>rasqal_world_open()</code>
+are run, respectively.  Added new typedefs
+<code>librdf_raptor_init_handler</code> and
+<code>librdf_rasqal_init_handler</code> for the handlers.
+</p>
+
+
+<h3>Other API changes</h3>
+
+<p>Added <code>librdf_license_string</code> and
+<code>librdf_home_url_string</code> static strings to public API
+following Raptor and Rasqal naming convention.
+</p>
+
+
+<h3>Other changes</h3>
+
+<p>No longer gives an error when the same storage module is attempted
+to be loaded more than once.  This is a harmless error and can be
+generated by installations that include the shared library storage
+module in a '.so' file and the '.la' file associated with it.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=460">Issue #0000460</a>
+</p>
+
+<p>Multiple fixes for newer GCC warnings.</p>
+
+<p>Multiple internal fixes for signed int conversions especially
+around size_t and allocation.</p>
+
+<p>Removed old debugging memory allocation options
+<code>--with-dmalloc</code> for dmalloc and
+<code>--with-memory-signing</code> for internal signing of memory
+blocks.  Valgrind and static analyzers replace this.
+</p>
+
+<p>Multiple portability fixes for building out of the source tree.
+Out of source tree 'make check' and 'make dist' should both work.
+Thanks to Daniel Richard G. for the patches.
+</p>
+
+<p>Multiple internal error path cleanup issues and int/size_t issues
+found via clang static analyzer.</p>
+
+<p>configure now looks for Oracle DB (aka Sleepycat DB aka Berkeley
+DB) 5.3</p>
+
+<p>autogen.sh now supports the NOCONFIGURE variable like
+Lib{XML2,XSLT}, aborts the run if an progrma fails and creates the
+NEWS if it does not exist to aid building from GIT and 'make dist'.</p>
+
+
+<h2 id="rel1_0_15"><a name="rel1_0_15">Redland 1.0.15 changes</a></h2>
+
+<p>Issues Fixed:</p>
+<ul>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=461">0000461</a>: librdf error - query language vsparql already registered</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=468">0000468</a>: xlc on AIX configure tests for both HAVE_BDB_OPEN_7_ARGS and HAVE_BDB_OPEN_6_ARGS pass</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=475">0000475</a>: Freeing a counted_string returned by redland on a modern Windows system crashes</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=478">0000478</a>: Object returned from librdf_stream_get_object must be copied, but may not copiable</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=483">0000483</a>: Documentation of librdf_parser_get_namespaces_seen_count return is incorrect</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=485">0000485</a>: No rule to make target `-lltdl', needed by `librdf.la'.  Stop.</li>
+</ul>
+
+
+<h3>General changes</h3>
+
+<p>Added new API functions <code>librdf_alloc_memory()</code>,
+<code>librdf_calloc_memory()</code> and <code>librdf_free_memory()</code>
+to allow freeing memory allocated inside librdf shared library, such
+as on windows with DLLs.  (Lauri Aalto)
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=475">Issue #0000475</a>
+</p>
+
+
+<h3>Hash class changes</h3>
+
+<p>Export <code>librdf_new_hash()</code> to the public API.
+</p>
+
+<p>BDB Hash now uses the newer 7 args open form in preference to the 6 args
+form. (Peter O'Gorman / pogma).
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=468">Issue #0000468</a>
+</p>
+
+
+<h3>Statement class changes</h3>
+
+<p>Reverted <code>librdf_new_statement_from_statement()</code> to the
+pre-<code>raptor_term</code> deep copy contract for the function.
+(Lauri Aalto)
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=478">Issue #0000478</a>
+</p>
+
+<p>Added <code>librdf_new_statement_from_statement2()</code>
+providing a shallow copy of statement which was the
+post-<code>raptor_term</code> semantics of
+<code>librdf_new_statement_from_statement()</code>.
+(Lauri Aalto)
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=478">Issue #0000478</a>
+</p>
+
+
+<h3>Storage class changes</h3>
+
+<p>Virtuoso storage:</p>
+<ul>
+<li>Added switch for VIRTUOSO_DV_TIMESTAMP_OBJ.</li>
+<li>Prevent virtuoso query being registered twice in non-modular build
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=461">Issue #0000461</a>.
+</li>
+</ul>
+
+
+<h3>Other changes</h3>
+
+<p>Fixed the parser test to actually test 3 parsers rather than a
+non-deterministic number.  Emits warnings when parser constructor
+fails since a syntax may not be supported.</p>
+
+<p>Set up the libltdl build dependencies and linking flags properly.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=485">Issue #0000485</a>
+</p>
+
+<p>Portability changes were made to rdfproc for windows.</p>
+
+<p>Add the <code>REDLAND_CALLBACK_STDCALL</code> attribute macro in
+the serializer log handler for windows.</p>
+
+<p>Multiple librdf and <code>rdfproc(1)</code> changes to allocate
+and free memory using librdf_alloc_memory, librdf_calloc_memory and
+librdf_free_memory to ensure memory is allocated correctly across
+libraries (DLLs). (Lauri Aalto).
+</p>
+
+<p>Several code style changes were made.
+</p>
+
+
+<h2 id="rel1_0_14"><a name="rel1_0_14">Redland 1.0.14 Changes</a></h2>
+
+<p>Rasqal minimum version is now 0.9.25 for the new
+<code>rasqal_world_get_query_language_description()</code> function.
+</p>
+
+<p>Issues Fixed:</p>
+<ul>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=">Issue #0000375</a>: Add functionality to parse from iostream (or similar)</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=">Issue #0000418</a>: SQLite driver adds duplicate statements if a conext is given.</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=">Issue #0000432</a>: Seg fault when getting a blank node after parsing RDF</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=">Issue #0000447</a>: fatal error: rdf_types.h: No such file or directory</li>
+</ul>
+
+<h3>Hash Class Changes</h3>
+
+<p>BDB Hash (name 'bdb'): Add checks for Oracle Berkeley DB 5.1, 5.0
+and 4.9 and updated <code>configure</code> messages with the new
+name.  The 5.x storage has the same API but has a new on-disk format
+that will require a use of the <code>db-upgrade(1)</code> utility in
+the utils directory.
+</p>
+
+<p>Fixed <code>librdf_hash_get_as_boolean()</code> 'false' string
+fixed to actually be a False value.
+</p>
+
+<h3>Node Class Changes</h3>
+
+<p><code>librdf_node_write()</code> is defined to now always write
+N-Triples format.</p>
+
+<p>Blank node ID generation and mapping from parsing is now
+consistently made across Redland librdf rather than relying on some
+Raptor defaults.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=432">Issue #0000432</a>
+</p>
+
+<p>Fixed URI reference leak in
+<code>librdf_new_node_from_uri_local_name()</code>
+and 
+<code>librdf_new_node_from_normalised_uri_string()</code>
+constructors.
+</p>
+
+
+<h3>Parser Class Changes</h3>
+
+<p>Do not report programmer errors via logging, just runtime
+errors.</p>
+
+<p>Added
+<code>librdf_parser_parse_iostream_as_stream()</code> and
+<code>librdf_parser_parse_iostream_into_model()</code>
+from patch by Norman Gray with style fixes by Lauri Aalto.  Thanks.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=375">Issue #0000375</a>
+</p>
+
+
+<h3>Query Class Changes</h3>
+
+<p>Added <code>librdf_query_language_get_description()</code> to
+return the full description of of the query language. Deprecates
+<code>librdf_query_languages_enumerate()</code>
+</p>
+
+
+<h3>Statement Class Changes</h3>
+
+<p>Restored <code>librdf_statement_decode_parts()</code> to the
+public ABI/API which was accidently removed.  It has been deprecated
+for <code>librdf_statement_decode2()</code> for some time and now
+always fails.
+</p>
+
+
+<h3>Storage Class Changes</h3>
+
+<p>Storage Hashes (name 'hashes'): Fixed a reference leak and shared
+values issue when cloning a storage.  The BDB hash type (current
+default) was updated for Oracle DB 5.1; see above.
+</p>
+
+<p>Storage SQLite (name 'sqlite'):
+Do not add duplicate statements if a context is given.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=418">Issue #0000418</a>.
+Fixed a librdf_node reference leak when serializing model with context nodes.
+</p>
+
+
+<h3>UTF8 Module</h3>
+
+<p>Made functions that were already declared in a public header file
+and documentation into part of the API.
+</p>
+
+<p>Added but deprecated for Raptor equivalents (they are wrappers for them):</p>
+<pre>
+  int librdf_unicode_char_to_utf8(librdf_unichar c,
+    unsigned char *output, int length);
+
+  int librdf_utf8_to_unicode_char(librdf_unichar *output,
+    const unsigned char *input, int length);
+</pre>
+
+<p>Added:</p>
+<pre>
+  unsigned char* librdf_utf8_to_latin1(const unsigned char *input,
+    int length, int *output_length);
+
+  unsigned char* librdf_latin1_to_utf8(const unsigned char *input,
+    int length, int *output_length);
+
+  void librdf_utf8_print(const unsigned char *input, int length,
+    FILE *stream);
+</pre>
+
+<h3>Other Changes</h3>
+
+<p>The internal Redland librdf AVL Tree implementation was removed
+and the 'trees' storage changed to use the AVL Tree implementation in
+Raptor (<code>raptor_avltree</code>) which is newer and has bug fixes
+beyond the Redland librdf version.
+</p>
+
+<p>Redland librdf was ran through the
+LLVM <a href="http://clang-analyzer.llvm.org/">clang</a> static code
+analyzer and several issues fixed, mostly in unused variables and
+values computed that were needed but also included a few use of
+uninitialized variables especially in error cases.  one problem
+fixed was in <code>librdf_world_set_feature()</code> to actually set
+the value for the genid base and genid counter features
+(<code>LIBRDF_WORLD_FEATURE_GENID_BASE</code> and
+<code>LIBRDF_WORLD_FEATURE_GENID_COUNTER</code> respectively)
+</p>
+
+<p><code>configure</code> now tries harder to find the Oracle
+Berkeley DB library using Debian multiarch directories if present.
+This is yet another heuristic and rather a hack.  For a consistent
+approach the <code>--with-bdb</code>, <code>--with-bdb-lib</code>,
+<code>--with-bdb-include</code> and <code>--with-bdb-dbname</code>
+options to <code>configure</code> should be used.
+</p>
+
+<p>Use <code>raptor.h</code> header from Raptor V2.
+</p>
+
+<p>Removed Raptor V1 support code as librdf no longer supports Raptor
+V1.</p>
+
+<p>Updated RPM spec file to make Redland librdf package require
+Raptor V2 (raptor2 package) and Rasqal (rasqal package).
+</p>
+
+<p>Add sanity checking when initialising Raptor so that there are
+always parsers and serializers, or something went very wrong and
+librdf will not work, so return an error.
+</p>
+
+<p>Removed internal cache module that no code used, didn't seem to
+entirely work and was never in the public API.
+</p>
+
+<p>Now configure generates the (untested) win32_rdf_config.h for
+(untested) WIN32 builds.
+</p>
+
+
+<h2 id="rel1_0_13"><a name="rel1_0_13">Redland 1.0.13 Changes</a></h2>
+
+<p>Raptor minimum version is now 2.0.0.  Raptor V1 support was removed.</p>
+
+<p>Rasqal minimum version is now 0.9.22.  Removed use of deprecated
+Rasqal functions that were conditioned on older rasqal versions.
+</p>
+
+
+<p>Issues Fixed:</p>
+<ul>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=325">Issue #0000325</a>: Make mime_types and syntax URIs available in parser and serialiser enumerations</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=404">Issue #0000404</a>: Parsing errors when parsing RDFa</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=419">Issue #0000419</a>: Syntax error when debugging enabled</li>
+</ul>
+
+
+<h3>Node class changes</h3>
+
+<p>Mark <code>librdf_node_to_string()</code> and
+<code>librdf_node_to_counted_string()</code> as deprecated.
+</p>
+
+
+<h3>Parser class changes</h3>
+
+<p><code>librdf_new_parser()</code> now logs failure to find a parser
+for the given name, type and/or uri rather than just returning NULL.
+</p>
+
+<p>Added <code>librdf_parser_get_description()</code> deprecating
+<code>librdf_parser_enumerate()</code>.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=325">Issue #0000325</a>
+</p>
+
+
+<h3>Query results class changes</h3>
+
+<p>Added <code>(librdf_query_results_formats_get_description()</code>
+deprecating
+<code>librdf_query_results_formats_enumerate()</code>.</p>
+
+<p>Removed toy 'triples' query language.  Use 'sparql' instead.
+</p>
+
+
+<h3>Serializer class changes</h3>
+
+<p><code>librdf_new_serializer()</code> now log failure to find a
+serializer by the given name, type and/or uri rather than just
+returning NULL.
+</p>
+
+<p>Added <code>librdf_serializer_get_description()</code> deprecating
+<code>librdf_serializer_enumerate()</code>.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=325">Issue #0000325</a>
+</p>
+
+<p>The graph name is now provided to Raptor serializers so that they
+can write out quads, if supported. At present this works with the
+'nquads' serializer.
+</p>
+
+
+<h3>Storage class changes</h3>
+
+<p><code>librdf_new_storage()</code>,
+<code>librdf_new_storage_with_options()</code> now log failure to
+find storage by the given name rather than just returning NULL.
+</p>
+
+
+<h3>Other changes</h3>
+
+<p>Add new generated version defines to librdf.h:
+<code>LIBRDF_VERSION</code>, <code>LIBRDF_VERSION_STRING</code>,
+<code>LIBRDF_VERSION_MAJOR</code>, <code>LIBRDF_VERSION_MAJOR</code>
+<code>LIBRDF_VERSION_MINOR</code> and
+<code>LIBRDF_VERSION_DECIMAL</code> (already in earlier versions).
+</p>
+
+<p>Removed all code in user build of library that calls abort() and
+replaced with an error log, then failure.
+</p>
+
+
+<h2 id="rel1_0_12"><a name="rel1_0_12">Redland 1.0.12 Changes</a></h2>
+
+<p>The main changes in this release are:</p>
+<ul>
+<li>Enable <code>librdf.h</code> to be used as the top-level header in addition to <code>redland.h</code></li>
+<li>Fix linking issues when building with GNU ld with DT_NEEDED disabled</li>
+</ul>
+
+<p>Issues Fixed:</p>
+<ul>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=329">Issue #0000329</a>: librdf_statement_is_complete is missing from the bindings (Redland.i)</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=348">Issue #0000348</a>: linking failure fix</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=391">Issue #0000391</a>: librdf_free_foo(0)</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=392">Issue #0000392</a>: librdf_stream_get_context returns void*</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=393">Issue #0000393</a>: librdf_storage_hashes_context_serialise_get_statement</li>
+</ul>
+
+
+<h3>General changes</h3>
+
+<p>The main header file for Redland librdf is <code>redland.h</code>
+but some applications used <code>librdf.h</code> direct, which no
+longer works in 1.0.11 since some Rasqal symbols were needed.
+<code>librdf.h</code> now includes the raptor and rasqal headers and
+<code>redland.h</code> is a simple wrapper around librdf.h
+</p>
+
+<p>Redland librdf now links with symbols in libraries used indirectly (only
+Raptor) to help systems that use GNU ld with a different linking
+model to previous versions.  This is quite technical and hard to
+understand but see Fedora's
+<a href="http://fedoraproject.org/wiki/Features/ChangeInImplicitDSOLinking">change in implicit DSO linking</a> and
+<a href="http://fedoraproject.org/wiki/UnderstandingDSOLinkChange">Understanding the (Proposed) Change to DSO Linking</a>
+that were introduced in Fedora Core 13 released in February 2010.
+Redland librdf was packed with patches to fix this, which are now merged
+into the sources.
+</p>
+
+
+<h3>Stream Class changes</h3>
+
+<p>Added <code>librdf_stream_get_context2()</code> returning a
+<code>librdf_node*</code> deprecating
+<code>librdf_stream_get_context()</code> that returns a void pointer.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=392">Issue #0000392</a>.
+</p>
+
+
+<h3>SWIG Bindings Interface</h3>
+
+<p>Export <code>librdf_statement_is_complete</code> to bindings languages.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=329">Issue #0000329</a>
+</p>
+
+<h3>Configuration changes</h3>
+
+<p>Rasqal minimum version has been 0.9.19 for some time but is now
+enforced in <code>configure</code>.</p>
+
+<p>Updated <code>configure</code> to work with newer autoconf that
+enforces <code>AC_LANG_SOURCE</code>.
+</p>
+
+<h3>Other changes</h3>
+
+<p>Updated examples to build with Raptor V2 also.
+</p>
+
+<p>The node and statement destructors for the Raptor V2 build now
+allow NULL pointers like the Raptor V1 versions.
+Related to
+<a href="http://bugs.librdf.org/mantis/view.php?id=391">Issue #0000391</a>
+which had already been fixed for other classes.
+</p>
+
+
+
+<h2 id="rel1_0_11"><a name="rel1_0_11">Redland 1.0.11 Changes</a></h2>
+
+<p>The main changes in this release are:</p>
+<ul>
+<li>Virtuoso storage backend querying now fully works</li>
+<li>Support building with Raptor V2 API as well as Raptor V1 API.  The Raptor V2 API is only used if <code>--enable-raptor2</code> is given to <code>configure</code>.</li>
+<li>Several new convenience APIs were added</li>
+<li>Several APIs were deprecated for better APIs calls</li>
+</ul>
+
+<p>Issues Fixed:</p>
+<ul>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=124">Issue #0000124</a>: Node, Statement and Model to_string should use N3 syntax</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=284">Issue #0000284</a>: Added storage and query interface support for Virtuoso QUAD store</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=321">Issue #0000321</a>: librdf_free_node after librdf_iterator_get_object in rdfproc</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=322">Issue #0000322</a>: rdfproc uses rasqal_ functions instead of librdf_ in option parsing</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=334">Issue #0000334</a>: rdfproc chatters unmercifully; hard to use in scripts</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=338">Issue #0000338</a>: librdf_query_results_to_counted_string cannot format a query result if the format name has no URI (csv, tsv)</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=341">Issue #0000341</a>: undefined symbol error from virtuoso storage .so</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=344">Issue #0000344</a>: It is hard to use table, csv, tsv results formats</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=350">Issue #0000350</a>: Redland Tree Storage crashes when loading two specific, valid, RDFMXL files</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=363">Issue #0000363</a>: Add method to the public API to allow enumeration of the query factories</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=366">Issue #0000366</a>: SELECTing list of named graphs doesn't return any results</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=371">Issue #0000371</a>: SPARQL queries in rdfproc using Virtuoso don't work</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=380">Issue #0000380</a>: SPARQL queries using Virtuoso do not work</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=382">Issue #0000382</a>: simple graph query returns no results</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=383">Issue #0000383</a>: rdfproc -n does not always make the store empty</li>
+</ul>
+
+<h3>Raptor V2 API support</h3>
+
+<p>This release adds support for building with Raptor V2 API as an
+alternate to the Raptor V1 API.  When built with Raptor V2 , librdf
+uses the Raptor V2 URI, Term and Statement to fully implement the
+librdf equivalents.  Specifically when this is enabled the following
+are typedefed as equivalent:</p>
+<ul>
+<li><code>librdf_uri</code> = <code>raptor_uri</code></li>
+<li><code>librdf_node</code> = <code>raptor_term</code></li>
+<li><code>librdf_statement</code> = <code>raptor_statement</code></li>
+</ul>
+
+<h3>Configuration and build changes</h3>
+
+<p>Added <code>--enable-raptor2</code> to enable librdf to build with
+Raptor V2 API.  This requires a rasqal built with Raptor V2 API (with
+the <code>--enable-raptor2</code> argument to Rasqal's
+<code>configure</code>).  The librdf <code>configure</code> will
+check that Rasqal was built this way and only enable Raptor V2 API
+support if it will work.
+</p>
+
+<p>The minimum Raptor version is now 1.4.19 (or Raptor V2 beta 1.9.0+)
+</p>
+
+<p>Tests now use the in-memory storage if the BDB (Sleepycat DB)
+storage is not available.
+</p>
+
+<p>Updated to prevent an error when used with autoconf 2.68+</p>
+
+
+<h3>Hash Class Changes</h3>
+
+<p>Exposed <code>librdf_hash_from_string()</code> function to public
+API for converting from a string to a <code>librdf_hash</code>
+object.  This is useful for building storage options.
+</p>
+
+<p>Added <code>librdf_hash_to_string()</code> function for converting
+a <code>librdf_hash</code> back ito a string, intended to be the
+opposite of <code>librdf_string_to_hash()</code> and takes a filter
+arg to help hide arguments such as 'password'.</p>
+
+<h3>Log Class Changes</h3>
+
+<p>Added a <code>LIBRDF_FROM_RAPTOR</code> log facility.
+</p>
+
+<h3>Model Class Changes</h3>
+
+<p>Added <code>librdf_model_write()</code> deprecating
+<code>librdf_model_print()</code> debug routine.
+</p>
+
+<h3>Node Class Changes</h3>
+
+<p>Added <code>librdf_new_node_from_counted_uri_string()</code>
+to make an RDF node from a URI string and length avoiding a <code>strlen()</code>.
+</p>
+
+<p>Added <code>librdf_node_get_counted_blank_identifier()</code>
+to return ID with length.
+</p>
+
+<p>Added <code>librdf_new_node_from_counted_blank_identifier()</code>
+with counted ID string.
+</p>
+
+<p>Added <code>librdf_node_new_static_node_iterator()</code> with
+world arg added deprecating
+<code>librdf_node_static_iterator_create()</code> without it.
+</p>
+
+<p><code>librdf_node_write()</code> added to write a redland node to
+an iostream, formatted as N-Triples.</p>
+
+<p>Adjusted <code>librdf_node_print()</code> to use
+<code>librdf_node_write()</code>.  If anyone was relying on this
+unsupported debug format, this changes the result.  Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=124">Issue#0000124</a>
+</p>
+
+<p>Deprecate <code>librdf_node_to_string()</code>,
+<code>librdf_node_to_counted_string()</code> for
+<code>librdf_node_write()</code> since these were really only meant
+for internal use.</p>
+
+<p>Adjusted <code>librdf_node_to_string()</code>,
+<code>librdf_node_to_counted_string()</code> to use construct an
+iostream to a string and use <code>librdf_node_write()</code> to
+create the strings.  Thus the format is now an N-Triples term rather
+than the older debug format.  These functions are still for debugging
+and deprecated for <code>librdf_node_write()</code>.
+</p>
+
+<h3>Query Class Changes</h3>
+
+<p>Fix rasqal query engine integration to allow querying over
+the Redland graph names (context URIs) and binding variables to the names.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=382">Issue #000382</a>.
+</p>
+
+<p>Fix query engine to prevent runtime warning for models with no
+contexts (graphs) when using GRAPH in a query.
+</p>
+
+<p>Added <code>librdf_query_languages_enumerate()</code> function
+to list supported query languages.
+</p>
+
+<p>Made the Virtuoso storage engine (name 'virtuoso') use the internal
+Rasqal query results formatting API rather than an internal copy of
+a few query result formatters.
+</p>
+
+<h3>Query Results Class Changes</h3>
+
+<p>Added
+<code>librdf_new_query_results_formatter2()</code> with
+name, mime type and fomrat URI args deprecating
+<code>librdf_new_query_results_formatter()</code> and
+<code>librdf_new_query_results_formatter_by_mime_type()</code>
+with a mixture.
+</p>
+
+<p>Altered all query result formatters to all take format name,
+mime_type and uri args.  Added
+<code>librdf_query_results_to_counted_string2()</code>,
+<code>librdf_query_results_to_string2()</code>,
+<code>librdf_query_results_to_file_handle2()</code>,
+<code>librdf_query_results_to_file2()</code> deprecating the
+functions without the 2 suffix.
+</p>
+
+<h3>Serializer Class Changes</h3>
+
+<p><code>librdf_serializer_serialize_stream_to_iostream()</code> and
+<code>librdf_serializer_serialize_model_to_iostream()</code> now
+document their ownership transfer of the <code>raptor_iostream</code>
+object.  Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=372">Issue #0000372</a>
+</p>
+
+<h3>Statement Class Changes</h3>
+
+<p>Added <code>librdf_statement_encode2()</code>,
+<code>librdf_statement_encode_parts2()</code>,
+<code>librdf_statement_decode2()</code> taking a world arg,
+deprecating those without the 2 suffx and no world arg.
+</p>
+
+<p>Added <code>librdf_statement_write()</code>
+using <code>librdf_node_write()</code> to format the statement as
+N-Triples.
+</p>
+
+<p>Adjusted <code>librdf_statement_to_string()</code> to 
+use librdf_statement_write() to write statement in N-Triples format
+rather than the previous format.
+</p>
+
+<h3>Stream Class Changes</h3>
+
+<p>Added <code>librdf_stream_write()</code> deprecating
+<code>librdf_stream_print()</code> debug routine.
+</p>
+
+<h3>Storage Class Changes</h3>
+
+<p><code>librdf_storage_context_remove_statement()</code> now checks
+that statement is non-NULL and allows NULL context.  Now matches
+function spec.
+</p>
+
+<p>Storage Postgresql (name 'postgresql'). Fix the
+contains-statement method as called by
+<code>librdf_storage_contains_statement()</code> to work using patch
+from Andrew Malton - thanks.
+</p>
+
+<p>Storage Trees (name 'trees'). Fix the crash bug when comparing
+nodes one of which has a language and the other doesn't.
+
+<a href="http://bugs.librdf.org/mantis/view.php?id=350">Issue #0000350</a>.
+</p>
+
+<p>Storage Virtuoso (name 'virtuoso'). Fix to use the internal Rasqal
+query formatting API to allow returning any result format.  This is
+not using a very efficient mechanism since it results in about 3
+copies of the result set: in librasqa;, librdf and virtuoso but it
+works and does not duplicate code.   Update the storage to support
+newer Virtuoso versions such as recent ODBC extensions. Added support
+for
+<code>SQL_DESC_COL_LITERAL_LANG</code>
+<code>SQL_DESC_COL_LITERAL_TYPE</code> and
+<code>SQL_DESC_COL_BOX_FLAGS</code> from
+Virtuoso ODBC Implementation - 
+<a href="http://docs.openlinksw.com/virtuoso/odbcimplementation.html#virtodbcsparql">Virtuoso ODBC RDF Extensions for SPASQL</a>.
+Tested with Virtuoso 5.0.13 open source edition.
+</p>
+
+<h3>URI Class Changes</h3>
+
+<p>Added <code>librdf_new_uri2()</code> taking a counted URI string
+argument, avoiding <code>strlen()</code>s.
+</p>
+
+<h3>World Class Changes</h3>
+
+<p>Export <code>librdf_world_set_raptor()</code> and
+<code>librdf_world_get_raptor()</code> to get/set the raptor world.
+These are only used when librdf is built with Raptor V2.
+</p>
+
+
+<h3>Internal changes</h3>
+
+<p><code>struct librdf_query_factory_s</code> methods
+<code>new_results_formatter</code> and
+<code>new_results_formatter_by_mime_type</code> are replaced by one
+<code>new_results_formatter</code> method that takes name, mime type
+and format URI args.  It also gains a
+<code>new_results_formatter2</code> factory method for query results
+formatting.  The only implementor of this factory is the internal
+Rasqal query results formatter.
+</p>
+
+<h3>Language Bindings (SWIG) changes</h3>
+
+<p>Exposed several functions (some new) that make sense to
+higher-level libraries bound to librdf via SWIG:</p>
+<ul>
+  <li><code>librdf_hash_from_string()</code> to build a hash from a string; useful for encoding storage options.</li>
+  <li><code>librdf_hash_to_string()</code> to turn a hash into a string; useful for decoding storage options.</li>
+  <li><code>librdf_model_add_typed_literal_statement()</code> to add a typed literal statement direct to a graph.</li>
+  <li><code>librdf_new_node_from_normalised_uri_string()</code> to create a URI node.</li>
+  <li><code>librdf_new_node_from_uri_local_name()</code> to create a URI node</li>
+  <li><code>librdf_node_get_li_ordinal()</code> to get the 1 from a rdf:_1 predicate node.</li>
+  <li><code>librdf_parser_check_name()</code> for checking parser names.</li>
+  <li><code>librdf_query_results_is_syntax()</code> to check if query result is a syntax.</li>
+  <li><code>librdf_query_results_to_file2()</code> supplementing the deprecated <code>librdf_query_results_to_file()</code></li>
+  <li><code>librdf_query_results_to_string2()</code> supplementing the deprecated <code>librdf_query_results_to_string()</code></li>
+  <li><code>librdf_serializer_check_name()</code> for checking serializer names.</li>
+  <li><code>librdf_serializer_serialize_stream_to_file()</code> to go along with it's pair that serializes a model to a file.</li>
+  <li><code>librdf_serializer_serialize_stream_to_string()</code> to go along with the pair that serializes a model to string.</li>
+  <li><code>librdf_world_set_logger()</code> to set for logging callbacks.</li>
+</ul>
+
+<h3>Other changes</h3>
+
+<p><code>rdfproc(1)</code> utility now send non-result information
+messages to stderr, indented to make this more useful for scripting.
+It also gains '-q' (--quiet) and '-V' options (--verbose) to control
+this output - entirely removing it (quiet) or being more verbose.
+That is '-q -v' is equivalent to the default verbosity.  Change based
+on patch by Norman Gray in issue - thanks!  Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=334">Issue #0000334</a>
+</p>
+
+<p><code>rdfproc(1)</code> utility now fails with error when using -n
+(make a new storage) to a read only operation such as a query.  Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=383">Issue #0000383</a>.
+</p>
+
+<p>Switched to GIT source control.
+</p>
+
+<p>Added HACKING.md documenting code style.
+</p>
+
+<p>Added <code>examples/example8.c</code> to show how to serializer
+query results to strings when queries return either variable bindings
+or triples forms.
+</p>
+
+
+<h2 id="rel1_0_10"><a name="rel1_0_10">Redland 1.0.10 Changes</a></h2>
+
+<p>The main changes in this release are:</p>
+
+<p>Added a <a href="http://sourceforge.net/projects/virtuoso/">Virtuoso</a> storage by Patrick van Kleef<br />
+Support <a href="http://librdf.org/rasqal/">Rasqal</a> 0.9.17 API<br />
+Fix compiling against sqlite 3.6.17 or newer<br />
+Fix modular storage dynamic loading linking problems.
+</p>
+
+<p>Building requires installed Raptor (1.4.17 or newer) and Rasqal
+(0.9.16 or newer) libraries, preferably with <code>pkg-config</code>
+to provide the compile/link details.
+</p>
+
+<p>Issues Fixed:</p>
+<ul>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=302">Issue #0000302</a>:  Modular storages fail to load from any other library or language binding (drobilla)</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=304">Issue #0000304</a>:  librdf_storage_trees_remove_statement returns wrong value (I think)</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=311">Issue #0000311</a>:  Incorrect literal comparison in tree structure</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=315">Issue #0000315</a>:  cannot compile library on linux 2.6.31</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=317">Issue #0000317</a>: rdf_init_test fails if threads are enables</li>
+</ul>
+
+
+<h3>Configuration and build changes</h3>
+
+<p>Default to environment LIBS, CPPFLAGS, LDFLAGS in
+<code>configure</code> to address Gentoo issue
+<a href="http://bugs.gentoo.org/show_bug.cgi?id=267405">267405</a>
+</p>
+
+<p>Make redland-src-config work for external raptor and rasqal again.
+This is for the maintainers only.
+</p>
+
+<p>Put modular build libltdl includes and libs into INTERNAL macros
+</p>
+
+
+<h3>Parser Class Changes</h3>
+
+<p><code>librdf_parser_check_name()</code> added to check if a parser name is
+valid:</p>
+<pre>
+  int librdf_parser_check_name(librdf_world* world, const char *name);
+</pre>
+
+<h3>Query Class Changes</h3>
+
+<p>Support Rasqal 0.9.17 API changes including versioned triple
+factory and triple sources, <code>RASQAL_LITERAL_UDT</code>
+user-defined datatype literals.  Use
+<code>rasqal_literal_get_rdf_term_type</code> when available or
+fall back to internal version.
+</p>
+
+<h3>Serializer Class Changes</h3>
+
+<p><code>librdf_serializer_check_name()</code> added to check if a
+serializer name is valid:</p>
+<pre>
+  int librdf_serializer_check_name(librdf_world* world, const char *name);
+</pre>
+
+<h3>Storage Class Changes</h3>
+
+<p>Update storage module link dependencies so that they depend on
+librdf library to prevent unresolved symbol errors.
+</p>
+
+<p>More validation of storage module names.</p>
+
+<p>Storages 'file' and 'uri'.  These get new storage option
+<code>format</code> with a name value to set the on disk / remote
+URI) syntax format.  For the both storages it has to be a legal
+parser name and for the file storage it has to be a legal serializer
+name too.  This pretty much limits the values to ntriples, rdfxml and
+turtle for the file storage (depending on how raptor is built).
+</p>
+
+<p>Storage 'postgresql'. Replace deprecated PQescapeString with
+PQescapeStringConn that takes a PGconn connection handle and when
+encoding takes into consideration any connection properties such as
+character encodings in force.</p>
+
+<p>Storage 'sqlite'. Change define SQLITE_API to REDLAND_SQLITE_API
+to allow redland to compile with sqlite 3.6.17 or newer where the
+SQLITE_API macro is defined.  Thanks to Samuli Suominen for the
+report and fix.
+</p>
+
+<p>Storage 'virtuoso'.  Added a <a href="http://sourceforge.net/projects/virtuoso/">Virtuoso</a> storage patch from
+<a href="http://bugs.librdf.org/mantis/view.php?id=284">Issue#0000284</a>
+by Patrick van Kleef with some parts omitted for passing through
+SPARQL queries that used rasqal internals.
+</p>
+
+
+<h3>Other changes</h3>
+
+<p>Export the list helper class to the public API, primarily for use
+by external storage modules.
+</p>
+
+<p><code>rdfproc</code> utility: for the 'parse' command, get the
+warning count from the warning_count_node, not the (just freed)
+error_count_node.</p>
+
+<p>Fix totally bogus memset in <code>librdf_cache_set_common()</code>
+that zeroed junk on the stack rather than the memory expected.
+</p>
+
+<h2 id="rel1_0_9"><a name="rel1_0_9">Redland 1.0.9 Changes</a></h2>
+
+<p>The main changes in this release are:</p>
+
+<p>Made storages modular by default - separate dynamically loaded
+modules discovered from presence in the
+<em>PREFIX</em><code>/lib/redland</code> directory.
+or from the directory defined in the
+<code>REDLAND_MODULE_PATH</code> environment variable directory.
+</p>
+
+<p>Building requires installed Raptor (1.4.18 or newer) and Rasqal libraries.
+</p>
+
+<p>Issues Fixed:</p>
+<ul>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=272">Issue #0000272</a>: Casts for g++</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=282">Issue #0000282</a>: Documentation fixes</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=283">Issue #0000283</a>: <code>librdf_new_node_from_blank_identifier()</code> read memory after free bug.</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=285">Issue #0000285</a>: <code>librdf_storage_postgresql_get_contexts()</code> fix</li>
+<li><a href="http://bugs.librdf.org/mantis/view.php?id=286">Issue #0000286</a>: multiple postgresql storage fixes.</li>
+</ul>
+
+
+<h3>General Changes</h3>
+
+<p>Developer builds from Subversion now require libtool 2.2.0 or
+newer to <code>libtoolize</code> from <code>configure.ac</code>.</p>
+
+<p><code>configure</code> now discovers Berkeley DB 4.7</p>
+
+<p><code>configure</code> options <code>--with-raptor=internal</code>
+and <code>--with-rasqal=internal</code> were removed.
+</p>
+
+<p>Removed openssl digest support - not used much and an extra large
+dependency. MD5 and SHA1 remain builtin.
+</p>
+
+
+<h3>Statement Class Changes</h3>
+
+<p>Fix to <code>librdf_statement_encode_parts()</code> for buffer
+overrun error that could occur with certain size buffers.  Patch from
+Lou Sakey - thanks.
+</p>
+
+
+<h3>Storage Class Changes</h3>
+
+<p>Made the redland storage module API
+<code>librdf_storage_factory</code> public.  What was called the
+storage <em>context</em> is now less confusingly called the storage
+<em>instance</em>.
+</p>
+
+<p>Moved iterator and stream <code>get_method</code> flags to public
+API as new enums since they are used by the storage modules API.
+</p>
+
+<p>Moved <code>librdf_log()</code> and <code>librdf_log_simple()</code>
+into public API to allow external storage modules to log messages.
+</p>
+
+<p>More checks for failure during storage instance allocation.
+</p>
+
+<p>postgresql storage: Fixes for "Numerous leaks, potential NULL
+pointer use, and dropped postgresql errors and buffer overruns in the
+postgresql storage module" based on patches in Issue #0000286.
+</p>
+
+<p>sqlite storage: Fixes to prevent deadlocks with <code>BEGIN
+IMMEDIATE</code> instead of the default <code>BEGIN DEFERRED</code>.
+No longer writes to the sqlite database when just querying.  Several
+other fixes.
+</p>
+
+<p>trees storage: Several fixes.
+</p>
+
+
+<h3>Other Changes</h3>
+
+<p>Multiple Win32 build fixes based on patches from Lou Sakey - thanks.
+</p>
+
+<p>Added <code>librdf_parser_guess_name2()</code> to SWIG API.
+</p>
+
+
+<h3>Internal Changes</h3>
+
+<p>Added LRU cache for internal use.</p>
+
+<p>Several autogen.sh updates for libltdl.</p>
+
+<p>Use libtool's <code>libltdl</code> to dynamially load storage
+modules.  Will link in a copy from sources if not present in the
+system from libtool.
+</p>
+
+<p>Internal raptor and rasqal sources removed - now use
+<code>pkg-config(1)</code> to find external libraries to compile and
+link to.
+</p>
+
+<p>Fixes for AVL Tree: update parent pointers when deleting - patch
+from Aymeric Barthe - thanks.
+</p>
+
+<p>Added internal support for upcoming Raptor V2 API.  Not yet enabled.
+Added <code>librdf_world_get_raptor()</code> and
+<code>librdf_world_set_raptor()</code> methods.
+Added <code>librdf_parser_guess_name2()</code> with librdf_world parameter
+and deprecated <code>librdf_parser_guess_name()</code> without it.
+</p>
+
+<p>Wrapped deprecated functions with <code>REDLAND_DISABLE_DEPRECATED</code>
+blocks.
+</p>
+
+
+
+
+<h2 id="rel1_0_8"><a name="rel1_0_8">Redland 1.0.8 Changes</a></h2>
+
+<p>The main changes in this release are:</p>
+
+<p>Updated to use 
+<a href="http://librdf.org/rasqal/">Rasqal</a> 0.9.16
+(<a href="http://librdf.org/rasqal/RELEASE.html#rel0_9_16">Rasqal 0.9.16 release notes</a>)
+from 0.9.15.  NOTE: Rasqal's ABI and API changed so Redland 1.0.8
+requires 0.9.16 or newer.
+</p>
+
+<p>Updated to use
+<a href="http://librdf.org/raptor/">Raptor</a> 1.4.18
+(<a href="http://librdf.org/raptor/RELEASE.html#rel1_4_18">Raptor 1.4.18 release notes</a>)
+from 1.4.16.
+</p>
+
+<p>Added a new in-memory indexed storage 'trees' using AVL Trees</p>
+
+<p>Issues Fixed:</p>
+<ul>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=256">0000256</a>: mysql reconnect not working (MySQL v5 only?)</li>
+</ul>
+
+<blockquote>
+<p><strong>NOTE:</strong> The next release of redland will NOT
+include raptor and rasqal in the tarball, they will be separate
+download dependencies.</p>
+
+<p><strong>NOTE</strong>: In the next release of redland, the
+<code>redland-config</code> utility that provides the compile and
+link args will be deprecated, generate a warning when run and will
+turn into a wrapper for <code>pkg-config redland ...</code>
+It will be removed in a future release.</p>
+</blockquote>
+
+
+<h3>General Changes</h3>
+
+<p><code>configure</code> was updated to ensure that redland 1.0.8+
+will work with rasqal 0.9.16 to 0.9.99 only.
+</p>
+
+<h3>Parser Class Changes</h3>
+
+<p><code>librdf_parser_set_feature()</code>  now handles setting
+feature values as strings or integers, depending on the required
+type (although Raptor will handle this too).
+</p>
+
+<p>Added <code>librdf_parser_parse_file_handle_as_stream()</code> and
+<code>librdf_parser_parse_file_handle_into_model()</code> helper
+methods.
+</p>
+
+<h3>Serializer Class Changes</h3>
+<p><code>librdf_serializer_set_feature()</code> now handles setting
+feature values as strings or integers, depending on the required
+type (although Raptor will handle this too).
+</p>
+
+<h3>Storage Class Changes</h3>
+<p>Added a new in-memory storage named "trees" by Dave Robillard that
+uses AVLTrees internally for faster indexed triple store/querying.
+This is an alpha quality storage since it is brand new and it may be
+changed in future.
+</p>
+
+<h3>Other Changes</h3>
+
+<p><code>LIBRDF_URI_RDF_MS</code>, <code>LIBRDF_URI_RDF_SCHEMA</code>
+public API macros changed definition to pass in a world parameter.
+</p>
+
+<p>Added <code>librdf_get_concept_ms_namespace()</code> and
+<code>librdf_get_concept_schema_namespace()</code> to make the
+concept macros above work.
+</p>
+
+<p>Added an rss2atom example program.</p>
+
+<p>Update configure to use autoconf 2.5.x <code>AC_CHECK_TYPES</code>
+for testing byte, u32 and u64.</p>
+
+<p>Fixes for resilence under low memory and allocation failures.</p>
+
+
+<h3>Internal Changes</h3>
+
+<p>Applied some updates from running the Linux 'sparse' utility.</p>
+
+<p>Allow get_context method calls in stream/iterator map functions.
+Originally
+<a href="http://lists.usefulinc.com/pipermail/redland-dev/2008-May/001756.html">reported on redland-dev 6 May 2008</a>
+by John Fieber.
+</p>
+
+<p>The storage method
+<code>librdf_storage_find_statements_in_context()</code> now uses the
+storage factory method find_statements_in_context if it exists,
+instead of always using the find_statements factory method and
+filtering.
+</p>
+
+
+<h2 id="rel1_0_7"><a name="rel1_0_7">Redland 1.0.7 Changes</a></h2>
+
+<p>The main changes in this release are:</p>
+
+<p>Updated to use 
+<a href="http://librdf.org/rasqal/">Rasqal</a> 0.9.15
+(<a href="http://librdf.org/rasqal/RELEASE.html#rel0_9_15">Rasqal 0.9.15 release notes</a>)
+from 0.9.14.  NOTE: Rasqal's API will change in 0.9.16 so Redland 1.0.7
+requires 0.9.15 exactly - no newer, no older.
+</p>
+
+<p>Updated to use
+<a href="http://librdf.org/raptor/">Raptor</a> 1.4.16
+(<a href="http://librdf.org/raptor/RELEASE.html#rel1_4_16">Raptor 1.4.16 release notes</a>)
+from 1.4.15.
+</p>
+
+
+<p>Added modular storage backends.  When
+<code>--enable-modular</code> is given to configure, all the storage
+major backends are compiled as dynamically loadable modules.  The
+memory, file and uri storages are always available.  This is not
+enabled by default as it is a new feature.
+</p>
+
+
+<p>Issues Fixed:</p>
+<ul>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=0000187">0000187</a>: "rdf_query_results.c", line 630: void function cannot return value</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=0000189">0000189</a>: librdf_uri_is_file_uri: wrong return value</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=0000203">0000203</a>: API declarations for Symbian portability</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=0000205">0000205</a>: Memory leak in rdf_query_rasqal.c</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=0000209">0000209</a>: Null dereference + assertion failures in minimal librdf setup-cleanup</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=0000213">0000213</a>: Multiple instances of world object make trouble</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=0000215">0000215</a>: librdf_new_node_from_typed_counted_literal() does not respect parameter lengths</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=0000218">0000218</a>: librdf_query_execute does not assert model parameter</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=0000229">0000229</a>: Segmentation fault when invoking librdf_new_model_from_model()</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=0000230">0000230</a>: on Gentoo/FreeBSD redland fails compilation due to a missing #define pthread.h</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=0000234">0000234</a>: autogen.sh $dir quoting</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=0000235">0000235</a>: $(EXEEXT) in tests</li>
+  <li><a href="http://bugs.librdf.org/mantis/view.php?id=0000236">0000236</a>: EOL issues when building svn version on cygwin</li>
+</ul>
+
+
+<h3>General Changes</h3>
+
+<p><code>configure</code> was updated to ensure that redland 1.0.7
+will work with rasqal 0.9.15 only due to the future API change coming
+in the next rasqal version.
+</p>
+
+<p>Make lots of writable static data truly constant especially from
+writable static data from rdf_concepts.  This causes a
+<strong>SOURCE COMPATIBILITY BREAK</strong>: the
+<code>rdf_concepts.h</code> public API node and uri
+macros now require a <code>librdf_world*</code> parameter.
+</p>
+
+
+<h3>Parser Class Changes</h3>
+
+<p>Added <code>librdf_parser_set_uri_filter()</code> and
+<code>librdf_parser_get_uri_filter()</code> to set and get parser
+URI filters, passed on into raptor.
+</p>
+
+<h3>Storage Class Changes</h3>
+
+<p>Several SQLite storage improvements and fixes were made:</p>
+<ul>
+<li>Added transaction support</li>
+<li>Handle SQL errors more gracefully</li>
+<li>the contains_statement method now works with a blank subject node.</li>
+<li>Resource allocation and low mwmory fixes</li>
+</ul>
+
+<h3>URI Class Changes</h3>
+
+<p>Added <code>librdf_uri_compare()</code> to compare uri objects
+rather than rely on stringifying them and comparing the strings.
+</p>
+
+
+<h3>Internal and Other Changes</h3>
+
+<p>Many low memory and error path, resource leak fixes for parsers,
+streams, module factory construction and module initialising.
+</p>
+
+<p><code>librdf_serializer_set_namespace()</code> now allows NULL uri
+and prefix to be given.
+</p>
+
+<p><code>librdf_storage_mysql_transaction_commit()</code> now
+terminates if there is no work to commit.
+</p>
+
+<p>autogen.sh version comparsion was fixed so that 1.10 is seen as
+newer than 1.9.
+</p>
+
+
+
+<h2 id="rel1_0_6"><a name="rel1_0_6">Redland 1.0.6 Changes</a></h2>
+
+<p>The main changes in this release are:</p>
+
+<p>Updated to use 
+<a href="http://librdf.org/rasqal/">Rasqal</a> 0.9.14
+(<a href="http://librdf.org/rasqal/RELEASE.html#rel0_9_14">Rasqal 0.9.14 release notes</a>)
+from 0.9.13.
+</p>
+
+<p>Updated to use
+<a href="http://librdf.org/raptor/">Raptor</a> 1.4.15
+(<a href="http://librdf.org/raptor/RELEASE.html#rel1_4_15">Raptor 1.4.15 release notes</a>)
+from 1.4.13.
+</p>
+
+<p>Plus a new transactions API for changes to the graph, implemented
+and tested for MySQL.</p>
+
+<p>Added a new query results formatter class to turn a query results
+object into a syntax.</p>
+
+
+<h3>Model Class Changes</h3>
+
+<p>Added a model transaction API:</p>
+<ul>
+<li><code>librdf_model_transaction_start()</code> to begin the transaction</li>
+<li><code>librdf_model_transaction_start_with_handle()</code> to begin it
+using an existing connection pointer (such as a MySQL connection)</li>
+<li><code>librdf_model_transaction_commit()</code> to commit the changes</li>
+<li><code>librdf_model_transaction_rollback()</code> to abort them (automatic
+if not  commited before a close)</li>
+<li><code>librdf_model_transaction_get_handle()</code> to
+get a handle associated with a connection.</li>
+</ul>
+<p>Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=38">Issue #0000038</a>
+</p>
+
+<p>Implemented the Transaction API for MySQL (tested) and PostgreSQL
+(not tested).
+</p>
+
+<p>Invert test in <code>librdf_model_add_submodel()</code>.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=175">Issue#0000175</a>
+</p>
+
+
+<h3>Parser Class Changes</h3>
+
+<p>Added <code>librdf_parser_guess_name()</code> to guess a parser
+name from content, similar to how a parser is constructed from
+content.
+</p>
+
+<p>Added functions to return the namespaces declared during a parse:
+<code>librdf_parser_get_namespaces_seen_count()</code> to return the
+number seen, <code>librdf_parser_get_namespaces_seen_prefix()</code> to
+get the prefix string and
+<code>librdf_parser_get_namespaces_seen_uri()</code> to get the
+<code>librdf_uri*</code>.
+</p>
+
+
+<h3>Query and Query Results Class Changes</h3>
+
+<p>Added a new <em>Query Results Formatter</em> class building
+<code>librdf_query_results_formatter*</code> objects
+to turn a query results into a syntax such as SPARQL query results
+formats, JSON.  New functions:</p>
+<ul>
+<li>Constructors: <code>librdf_new_query_results_formatter()</code> and
+<code>librdf_new_query_results_formatter_by_mime_type()</code>.
+</li>
+<li>Destructor: <code>librdf_free_query_results_formatter()</code></li>
+<li>Method: <code>librdf_query_results_formatter_write()</code>
+to write the query results to an iostream.</li>
+<li>Helper functions: <code>librdf_query_results_formats_check()</code>
+and <code>librdf_query_results_formats_enumerate()</code></li>
+</ul>
+
+<p>Added <code>librdf_query_results_is_syntax()</code> to
+check if a query result is a syntax, and not any of the other
+possibilities - bindings, boolean or graph.
+</p>
+
+
+<h3>Serializer Class Changes</h3>
+
+<p>Default to serializer named "rdfxml" if no name is given to ensure
+another rdfxml serializer such as XMP is not returned.
+</p>
+
+
+<h3>Storage Class Changes</h3>
+
+<p>The MySQL storage implements the transaction API.  It batches up
+all the pending insertions and aggregates them so that any set of
+triple writes during the transaction sequence are all done at one
+point, with 4 INSERTs only.
+</p>
+
+<p>Added a supporting
+functions <code>librdf_hash_interpret_template()</code> to
+interpolate variables into strings using a librdf_hash of
+key/values.</p>
+
+<p>The MySQL storage now takes an optional storage option 'layout'
+that can choose between the v1 and v2 SQL schemas (only the table
+type has changed).  The SQL fragments are described in Turtle files
+that are installed and read on startup.
+</p>
+
+
+<h3>Configuration and Build Changes</h3>
+
+<p><strong>Packagers note</strong>: two new files are installed into
+PREFIX/lib/redland for the MySQL schemas.  Without them installed,
+the MySQL storage will not work.
+</p>
+
+<p>Removed the <code>configure</code> script option
+<code>--enable-parsers</code> since Raptor is always required and
+always used inside Redland whether or not any parsers were configured.
+</p>
+
+<p>Use <code>pkg-config</code> Libs.private in
+<code>redland.pc</code> for internal dynamically linked libraries.
+</p>
+
+<p><code>redland-config</code> gains an --private-libs option to hold
+private libraries moved from --libs which now only contains -L and a
+-lrdf.
+</p>
+
+<p>Added a building utility <code>touch-mtime.pl</code>
+to handle <code>touch -r</code> which does not work on SunOS.
+Fixes 
+<a href="http://bugs.librdf.org/mantis/view.php?id=159">Issue #0000159</a>
+</p>
+
+
+<h3>Other Changes</h3>
+
+<p>Added <code>librdf_world_open()</code> for every public API
+constructor or function that mentions librdf_world* and could have
+failed to run <code>librdf_world_open()</code> after
+<code>librdf_new_world()</code>.  This makes
+<code>librdf_world_open()</code> entirely optional.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=173">Issue #0000173</a>
+</p>
+
+<p><code>rdfproc</code> gains an --transactions / -T option for
+enabling transactions on the command line and an --results / -r
+option to set the query results formatter name.
+</p>
+
+<p>Do not throw away the rasqal node type information now, it is needed
+later on in <code>FILTER</code> comparisons.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=153">Issue #0000153</a>
+</p>
+
+<p>Fix reference count problem in storages that caused connections
+to fail to free in MySQL.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=150">#0000150</a>
+</p>
+
+<p>Fix reference count / memory leak in file storage.
+</p>
+
+
+
+
+<h2 id="rel1_0_5"><a name="rel1_0_5">Redland 1.0.5 Changes</a></h2>
+
+<p>The main changes in this release are:</p>
+
+<p>Updated to use 
+<a href="http://librdf.org/rasqal/">Rasqal</a> 0.9.13
+(<a href="http://librdf.org/rasqal/RELEASE.html#rel0_9_13">Rasqal 0.9.13 release notes</a>)
+from 0.9.12.
+</p>
+
+<p>Updated to use
+<a href="http://librdf.org/raptor/">Raptor</a> 1.4.13
+(<a href="http://librdf.org/raptor/RELEASE.html#rel1_4_13">Raptor 1.4.13 release notes</a>)
+from 1.4.9.
+</p>
+
+<p>Plus several API additions and many bug fixes.</p>
+
+
+<h3>Configuration and Build Changes</h3>
+
+<p><code>configure</code> now removes un-necessary tests for C++ or
+F77++ compilers that libtool stupidly insists on.  Add lots of
+gcc <code>-W</code> flags when they are supported and in maintainer
+mode.
+</p>
+
+<p>Made <code>configure --with-threads</code> work.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=125">Issue #0000125</a>
+</p>
+
+
+<h3>Model Class Changes</h3>
+
+<p>Methods
+<code>librdf_model_add</code>,
+<code>librdf_model_add_statement</code>,
+<code>librdf_model_add_typed_literal_statement</code>,
+<code>librdf_model_add_string_literal_statement</code> and
+<code>librdf_model_contains_statement</code>
+now enforce only allowing legal RDF triples.
+</p>
+
+<p>Added <code>librdf_model_enumerate</code> to list all the
+model implementations - currently just one, a model over
+a storage.
+</p>
+
+
+<h3>Node Class Changes</h3>
+
+<p>The node class can now encode and decode long literals with length
+&gt;65535 using new encoding type 'N'.
+</p>
+
+<p>Added new constructor
+<code>librdf_new_node_from_typed_counted_literal</code>
+to build a typed node with a counted literal string.
+</p>
+
+
+<h3>Parser Class Changes</h3>
+
+<p>Changes to allow NULL base uris in parsing methods, but to fail if
+it is omitted but required.  Applies to
+<code>librdf_parser_parse_as_stream</code>,
+<code>librdf_parser_parse_into_model</code>,
+<code>librdf_parser_parse_string_as_stream</code>,
+<code>librdf_parser_parse_string_into_model</code>,
+<code>librdf_parser_parse_counted_string_as_stream</code>
+and
+<code>librdf_parser_parse_counted_string_into_model</code>
+</p>
+
+<p>Added <code>librdf_parser_get_accept_header</code> to get
+the <code>Accept</code> header that would be sent with a parser
+HTTP fetch of content.
+</p>
+
+
+<h3>Query Class Changes</h3>
+
+<p>Graph names in SPARQL now connect up to redland context nodes
+to allow SPARQL <code>GRAPH</code> to work.
+</p>
+
+
+<h3>Serializer Class Changes</h3>
+
+<p>Added new methods to serialize <code>librdf_stream</code>s of triples rather
+than just <code>librdf_model</code>:
+<code>librdf_serializer_serialize_stream_to_file_handle</code>,
+<code>librdf_serializer_serialize_stream_to_file</code>,
+<code>librdf_serializer_serialize_stream_to_string</code>,
+<code>librdf_serializer_serialize_stream_to_counted_string</code> and
+<code>librdf_serializer_serialize_stream_to_iostream</code>.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=92">Issue #0000092</a>
+</p>
+
+
+<h3>Storage Class Changes</h3>
+
+<p>Methods <code>librdf_storage_add_statement</code>,
+<code>librdf_storage_add_statements</code> and
+<code>librdf_storage_contains_statement</code>
+now enforce only allowing legal RDF triples.
+</p>
+
+<p>The <em>Memory</em> storage now supports deleting while iterating or
+streaming the storage.
+</p>
+
+<p>The <em>PostgreSQL</em> storage now accepts option 'database' like
+MySQL and other Redland relational databases in addition to the
+existing option it accepted, 'dbname'.
+</p>
+
+<p><em>SQLite</em> storage fixes:<br />
+</p>
+<p>
+Fix crash in <code>librdf_model_context_remove_statements</code>
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=103">Issue #0000103</a>
+</p>
+
+<p>Wrap all <code>sqlite_FREE</code> calls on error messages so that
+they are only called with SQLITE API v2.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=105">Issue #0000105</a>
+</p>
+
+<p>Check for no language or no datatype when they are NULL
+in <code>librdf_storage_sqlite_literal_helper</code>.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=136">Issue #0000136</a>
+</p>
+
+<p>Store pending queries while the database is locked doing
+a <code>SELECT</code> and do them once the select is done.  Such as
+deleting triples during a find or serialise.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=139">Issue #0000139</a>
+</p>
+
+
+<p>SQLite storage now has a 'synchronous' storage option which takes
+values 'off', 'normal' or 'full' allowing access to the sqlite pragma
+to control when commits are synchronised to file.
+</p>
+
+
+<h3>Other changes</h3>
+
+<p><code>rdfproc</code> now allows the base URI for parsing to be set
+to null with <code>-</code> and adjust messages to handle this.
+</p>
+
+<p>Added some more const fixes to heuristics.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=107">Issue #0000107</a>
+</p>
+
+<p>Autodocs for <code>librdf_new_node_from_blank_identifier</code>.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=114">Issue #0000114</a>
+</p>
+
+<p>If <code>librdf_storage_sqlite_statement_operator_helper</code> fails,
+free the stringbuffer.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=116">Issue #0000116</a>
+</p>
+
+<p>Do not read from stream when parsing returns a NULL pointer.
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=130">Issue #0000130</a>
+</p>
+
+<p>Fix debug call in <code>librdf_query_register_factory</code>,
+<code>librdf_storage_hashes_add_remove_statement</code> and
+<code>librdf_storage_hashes_contains_statement</code>
+Fixes
+<a href="http://bugs.librdf.org/mantis/view.php?id=132">Issue #0000132</a>
+</p>
+
+<p>Added rss2ical.c example to turn RSS/Atom 1.0 feeds into
+iCalendar using raptor, redland and SPARQL.
+</p>
+
+<p>Many minor fixes and changes due to adding lots of -W flags
+and using gcc4.
+</p>
+
+
+<h3>SWIG Bindings Interface</h3>
+
+<p>Fixed typo to declare <code>librdf_query_results_get_binding_value</code>
+to return a new object.
+</p>
+
+<p>Export new function <code>librdf_parser_get_accept_header</code>
+</p>
+
+<p>Export version strings and integer constants for raptor:
+(<code>raptor_version_string</code>,
+<code>raptor_version_major</code>,
+<code>raptor_version_minor</code>,
+<code>raptor_version_release</code>,
+<code>raptor_version_decimal</code>)
+and rasqal
+(<code>rasqal_version_string</code>,
+<code>rasqal_version_major</code>,
+<code>rasqal_version_minor</code>,
+<code>rasqal_version_release</code>,
+<code>rasqal_version_decimal</code>)
+</p>
+
+
+<h2 id="rel1_0_4"><a name="rel1_0_4">Redland 1.0.4 Changes</a></h2>
+
+<p>The main changes in this release are:</p>
+
+<p>Updated to use 
+<a href="http://librdf.org/rasqal/">Rasqal</a> 0.9.12
+(<a href="http://librdf.org/rasqal/RELEASE.html#rel0_9_12">Rasqal 0.9.12 release notes</a>)
+to update to SPARQL 2006-04-06 for JSON results
+</p>
+
+<p>Updated to use
+<a href="http://librdf.org/raptor/">Raptor</a> 1.4.9
+(<a href="http://librdf.org/raptor/RELEASE.html#rel1_4_9">Raptor 1.4.9 release notes</a>)
+</p>
+
+<p>Plus fixing some crash bugs in parsing and serializing.</p>
+
+
+<h3>Configuration and Build Changes</h3>
+
+<p>Now using <a href="http://subversion.tigris.org/">Subversion</a>
+for version control and the <a href="INSTALL.html">Redland installation instructions</a> explain how to get Redland from Subversion.</p>
+
+<p>Win32 fixes and VC build files updates from John Barstow.
+</p>
+
+<p>Let configure find BDB 4.4</p>
+
+
+<h3>Node Class Changes</h3>
+
+<p><code>librdf_new_node_from_literal</code>
+and <code>librdf_new_node_from_typed_literal</code> now accept empty
+strings as an alternative to a NULL language pointer.
+</p>
+
+
+<h3>Parser Class Changes</h3>
+
+<p>Add one more place where it needed handling old and new raptor
+statement predicate values
+<code>RAPTOR_IDENTIFIER_TYPE_RESOURCE</code> and
+<code>RAPTOR_IDENTIFIER_TYPE_PREDICATE</code>.
+</p>
+
+<p>Fixed a bad uses of flose() causing a crash in parsing a file or
+from a <code>FILE*</code> file handle when run under
+newer <code>glibc</code>s.
+</p>
+
+
+<h3>Serializer Class Changes</h3>
+
+<p>Fixed a bad uses of flose() causing a crash in serializing to a
+file when run under newer <code>glibc</code>s.
+</p>
+
+
+<h3>Storage Class Changes</h3>
+
+<p>Introduced a <code>UINT64_T_FMT</code> to handle formatting a 64-bit
+<code>unsigned</code> <code>int</code> in storages
+as <code>%llu</code> is not portable.
+</p>
+
+
+<h2 id="rel1_0_3"><a name="rel1_0_3">Redland 1.0.3 Changes</a></h2>
+
+<p>The main changes in this release are:</p>
+
+<p>Updated to use 
+<a href="http://librdf.org/rasqal/">Rasqal</a> 0.9.11
+(<a href="http://librdf.org/rasqal/RELEASE.html#rel0_9_11">Rasqal 0.9.11 release notes</a>)
+to update to SPARQL 2005-11-23
+</p>
+
+<p>Updated to use
+<a href="http://librdf.org/raptor/">Raptor</a> 1.4.8
+(<a href="http://librdf.org/raptor/RELEASE.html#rel1_4_8">Raptor 1.4.8 release notes</a>)
+</p>
+
+<p>A large source re-arrangement was performed for raptor and rasqal
+inside redland.  All C sources and headers that build the libraries
+were moved to the src dir, general documentation in the doc dir and
+utilities in the utils dir for each sub-library.
+</p>
+
+<p>Version Control change: Redland will be switching to use
+<a href="http://subversion.tigris.org/">Subversion</a>
+for version control after the 1.0.3 release.  Please check the
+<a href="http://svn.librdf.org/">Redland Subversion site</a>
+for the latest status or the online
+<a href="http://librdf.org/INSTALL.html">Redland installation notes</a>
+for the redland specific subversion installation information.
+</p>
+
+<p>A new PostgreSQL storage backend was added
+contributed by Shi Wenzhong based on the MySQL storage backend.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=46">issue #0000046</a>
+</p>
+
+
+<h3>Configuration Changes</h3>
+
+<p>The autogen.sh script for building from CVS was revamped to be
+more modular.</p>
+
+<p><code>configure</code> now takes an <code>--enable-gtk-doc</code>
+option to enable building of the documentation using the
+<code>gtk-doc</code> utility.  It is by default enabled only if the
+utility is available.
+</p>
+
+
+<h3>Documentation Changes</h3>
+
+<p>The GNOME <code>gtk-doc</code> program is now used to
+automatically extract documentation from source comments into
+reference documentation.  This is then merged with templates and
+additional documentation to provide a reference manual for redland
+as XML document which is turned into HTML along with GNOME devhelp
+support.</p>
+
+<h3>Portability Changes</h3>
+
+<p>Some win32 build fixes were made.</p>
+
+<h3>World Class Changes</h3>
+
+<p><code>librdf_world_get_genid()</code> was changed to include the
+process ID in the generated blank ID.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=37">Issue #0000037</a>
+(patch from Marc Powell).
+</p>
+
+<h3>Node Class changes</h3>
+
+<p><code>librdf_node_encode()</code>: Give an error when a node cannot
+be encoded due to string data being too long.
+</p>
+
+
+<h3>Serializer Class changes</h3>
+
+<p>Added <code>librdf_serializer_serialize_model_to_iostream()</code>, not
+exposed in the SWIG bindings.
+</p>
+
+
+<h3>Storage Class Changes</h3>
+
+<p>Added a PostgreSQL storage backend contributed by Shi Wenzhong
+based on the MySQL storage backend.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=46">Issue #0000046</a>
+</p>
+
+
+<h3>Other Changes</h3>
+
+<p>Deprecated <code>librdf_files_temporary_file_name()</code>.</p>
+
+<p>Deleted some function prototypes defined in headers but never had
+code: 
+<code>librdf_node_init()</code>,
+<code>librdf_iterator_finished()</code>,
+<code>librdf_storage_get()</code> and
+<code>librdf_world_set_uris_hash()</code>
+</p>
+
+<p>Added examples/example7.c to read from an RDF/XML file, add a
+triple and write it back.</p>
+
+
+
+<h2 id="rel1_0_2"><a name="rel1_0_2">Redland 1.0.2 Changes</a></h2>
+
+<p>The changes in this release are:</p>
+
+<ul>
+<li>Fix a crash when querying or searching with the model
+find_statements method and getting no results</li>
+
+<li>Update to use 
+<a href="http://librdf.org/rasqal/">Rasqal</a> 0.9.10
+(<a href="http://librdf.org/rasqal/RELEASE.html#rel0_9_10">Rasqal 0.9.10 release notes</a>)
+to provide query results sorting such as SPARQL <code>ORDER BY</code>
+and some SPARQL syntax updates.
+</li>
+
+<li>Update to use
+<a href="http://librdf.org/raptor/">Raptor</a> 1.4.7
+(<a href="http://librdf.org/raptor/RELEASE.html#rel1_4_7">Raptor 1.4.7 release notes</a>)
+to fix some crashes in the RSS tag soup parser and serializer.
+</li>
+</ul>
+
+
+<h2 id="rel1_0_1"><a name="rel1_0_1">Redland 1.0.1 Changes</a></h2>
+
+<p>The main changes in this release are to update to use 
+<a href="http://librdf.org/rasqal/">Rasqal</a> 0.9.9
+(<a href="http://librdf.org/rasqal/RELEASE.html#rel0_9_9">Rasqal 0.9.9 release notes</a>)
+to provide improved SPARQL query support for the revised syntax
+<a href="http://librdf.org/raptor/">Raptor</a> 1.4.6 
+(<a href="http://librdf.org/raptor/RELEASE.html#rel1_4_6">Raptor 1.4.6 release notes</a>)
+to
+provide a new GRDDL parser as well as updated RSS enclosures support
+with the RSS tag soup parser and RSS 1.0 serializer.
+</p>
+
+<p>The digest and hash classes now expose public API constructors,
+destructors and methods via their header files.</p>
+
+
+<h3>Configuration changes</h3>
+
+<p>Added <code>--with-memory-signing</code> to check when memory is
+allocated / freed across Redland libraries.
+</p>
+
+
+<h3>Portability Fixes</h3>
+
+<p>Added Win32 portability fixes and build configuration (John Barstow)</p>
+
+
+<h3>Binding API changes</h3>
+
+<p>The following changes were made to the bindings API as
+exported by the SWIG interface file <code>Redland.i</code>:</p>
+
+<p>The digest class was added:
+constructor <code>librdf_new_digest</code>, 
+destructor <code>librdf_free_digest</code>
+and methods <code>librdf_digest_init</code>, 
+<code>librdf_digest_update</code>, 
+<code>librdf_digest_update_string</code>, 
+<code>librdf_digest_final</code> and
+<code>librdf_digest_to_string</code>,.
+</p>
+
+<p>The hash class was added as selected functions:
+constructors <code>librdf_new_hash_from_string</code> and
+<code>librdf_new_hash_from_array_of_strings</code> and destructor
+<code>librdf_free_hash</code>.
+</p>
+
+<p>The query class methods
+<code>librdf_query_get_limit</code>,
+<code>librdf_query_set_limit</code>,
+<code>librdf_query_get_offset</code> and
+<code>librdf_query_set_offset</code> were added.
+</p>
+
+<p>Functions were added for accessing parts of structured log messages
+as <code>librdf_log_message</code> objects:
+<code>librdf_log_message_code</code>, 
+<code>librdf_log_message_level</code>, 
+<code>librdf_log_message_facility</code>, 
+<code>librdf_log_message_message</code>, 
+<code>librdf_log_message_locator</code>
+and <a href="http://librdf.org/raptor/">Raptor</a> <code>raptor_locator</code>
+objects:
+<code>raptor_locator_line</code>, 
+<code>raptor_locator_column</code>, 
+<code>raptor_locator_byte</code>, 
+<code>raptor_locator_file</code> and
+<code>raptor_locator_uri</code>.
+</p>
+
+
+<h3>Digest Class changes</h3>
+
+<p>This class was added to the public API in this release adding
+constructor <code>librdf_new_digest</code>,
+destructor <code>librdf_free_digest</code>
+and methods
+<code>librdf_digest_init</code>,
+<code>librdf_digest_update</code>,
+<code>librdf_digest_update_string</code>,
+<code>librdf_digest_final</code>,
+<code>librdf_digest_get_digest</code>,
+<code>librdf_digest_get_digest_length</code>,
+
+<code>librdf_digest_to_string</code> and
+<code>librdf_digest_print</code>
+</p>
+
+
+<h3>Hash Class changes</h3>
+
+<p>This class was added to the public API in this release adding
+constructors
+<code>librdf_new_hash_from_string</code>, 
+<code>librdf_new_hash_from_array_of_strings</code> and
+<code>librdf_new_hash_from_hash</code>;
+destructor
+<code>librdf_free_hash</code>;
+and methods
+<code>librdf_hash_get</code>, 
+<code>librdf_hash_get_as_boolean</code>, 
+<code>librdf_hash_get_as_long</code>, 
+<code>librdf_hash_get_del</code>, 
+<code>librdf_hash_put_strings</code>, 
+<code>librdf_hash_print</code>, 
+<code>librdf_hash_print_keys</code> and
+<code>librdf_hash_print_values</code>.
+</p>
+
+
+<h3>Iterator Class changes</h3>
+
+<p>Added a <code>librdf_new_empty_iterator</code> helper to make an
+always-empty iterator.</p>
+
+
+<h3>Log Class changes</h3>
+
+<p>Added <code>LIBRDF_FROM_MEMORY</code> facility.</p>
+
+
+<h3>Model Class changes</h3>
+
+<p>All methods returning an <code>librdf_iterator</code> or
+<code>librdf_stream</code> now return an empty iterator/stream rather
+than NULL when returning an empty result sequence.  Errors are still
+returned as NULL.</p>
+
+
+<h3>Node Class changes</h3>
+
+<p>Removed unused <code>LIBRDF_NODE_TYPE_RESERVED1</code> (#3) from
+<code>librdf_node_type</code> enum.</p>
+
+
+<h3>Query Class changes</h3>
+
+<p>Update to use Rasqal 0.9.9 API.  Redland 1.0.1 will not build with
+older Rasqal releases.</p>
+
+<p>The query API gains methods <code>librdf_query_get_limit</code>,
+<code>librdf_query_set_limit</code>,
+<code>librdf_query_get_offset</code> and
+<code>librdf_query_set_offset</code> for setting and getting query
+result limit (max results) and offsets (result to start from).</p>
+
+<p>Fixed some across-library memory allocation/frees between redland
+and rasqal that caused problems on win32. Requires rasqal 0.9.9 or
+newer.</p>
+
+
+<h3>Stream Class changes</h3>
+
+<p>Added a <code>librdf_new_empty_strea</code> helper to make an
+always-empty strea.</p>
+
+
+<h3>Storage Class changes</h3>
+
+<p>The MySQL store now uses a portable method across endiannesses to
+create a 64bit key.  This fixes 
+<a href="http://bugs.librdf.org/mantis/view.php?id=23">Issue #0000023</a>
+(Morten Frederiksen)</p>
+
+<blockquote><p><strong>NOTE: This matches the algorithm used for
+little-endian systems but big-endian stores will need to serialize
+the store before upgrading and reload afterwards.</strong></p></blockquote>
+
+<p>The MySQL store now uses connection pooling to prevent making a new
+connection to the database for each request.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=27">Issue #0000027</a>
+(Morten Frederiksen)
+</p>
+
+<p>The SQLite store now does not skip items with the factory methods
+for serializing, finding statements, serializing contexts and getting
+context statements.
+Fixes <a href="http://bugs.librdf.org/mantis/view.php?id=6">Issue #0000006</a>
+</p>
+
+<p>All store methods that return an <code>librdf_iterator</code> or
+<code>librdf_stream</code> now return an empty iterator/stream rather
+than NULL when returning an empty result sequence.  Errors are still
+returned as NULL.</p>
+
+
+<h3>Other changes</h3>
+
+<p>Added <code>REDLAND_INLINE</code> macro, which can be overridden if
+inline is not wanted.</p>
+
+
+<h2 id="rel1_0_0"><a name="rel1_0_0">Redland 1.0.0 Changes</a></h2>
+
+<p>This is Redland 1.0.0.</p>
+
+<p>The main changes in this release are to update to use 
+<a href="http://librdf.org/rasqal/">Rasqal</a> 0.9.6
+to provide improved SPARQL query support for optionals, CONSTRUCT, ASK, builtins,
+<a href="http://librdf.org/raptor/">Raptor</a> 1.4.4 to
+provide better serializing to RDF/XML and RSS 1.0 and better
+RSS tag soup parsing and
+a new experimental <a href="http://www.sqlite.org/">SQLite</a>
+storage supporting SQLite V2 and V3 libraries.
+</p>
+
+
+<h3>Configuration changes</h3>
+
+<p>The storages compiled into redland can be individually selected
+with the <code>--enable-storages=</code><em>LIST</em> configure
+option.
+</p>
+
+<p>The default for <code>--with-dmalloc</code> is now no.  Reason:
+<a href="http://valgrind.kde.org/">valgrind</a>.</p>
+
+
+<h3>Portability Fixes</h3>
+
+<p>Removed configure altering the search PATH - which was a bad idea
+as it makes the configure environment different from the user's.</p>
+
+<p>Added <code>/opt/local</code> to the BerkeleyDB / SleepycatDB
+search path to help darwinports.</p>
+
+<p>To help Redland built as an OSX Framework with ObjectiveC, Redland
+public headers can be put in a different directory structure if
+<code>LIBRDF_OBJC_FRAMEWORK</code> is defined in the build
+environment.  In this case the headers are found in a subdirectory
+<code>Redland</code>.  This only applies to the public Redland header
+files that <code>#include</code> other public header files -
+<code>redland.h</code> including <code>librdf.h</code>,
+<code>librdf.h</code> including several <code>rdf_*.h</code> files
+and Rasqal's <code>rasqal.h</code> including
+<code>raptor.h</code>. (Patch from René Puls)
+</p>
+
+
+<h3><code>rdfproc</code> RDF processor utility program changes</h3>
+
+<p>Added a <code>size</code> command calling
+<code>librdf_model_size</code>.</p>
+
+
+<h3>Model Class changes</h3>
+
+<p>Added <code>librdf_model_contains_context</code> to find a context
+node in a model.</p>
+
+<p>The <code>librdf_model_sync</code> now returns a success or failure
+int.</p>
+
+
+<h3>Parser Class Changes</h3>
+
+<p>Updated to <a href="http://librdf.org/raptor/">Raptor</a> 1.4.4
+providing an updated RSS tag soup parser with fixes for RSS 0.9,
+RSS.1.1 and Atom.</p>
+
+<p>The constructor now finds the correct parser when given NULL
+arguments for mime type or type URI.</p>
+
+
+<h3>Query Class changes</h3>
+
+<p>Update to <a href="http://librdf.org/rasqal/">Rasqal</a> 0.9.5
+providing improved SPARQL support: new optionals handling,
+<code>CONSTRUCT</code> to make RDF graphs, formatting of query
+results in the SPARQL XML format along with many other improvements
+and fixes.</p>
+
+
+<p>Added base_uri argument to <code>librdf_new_query</code></p>
+
+<p>Added
+<code>librdf_query_results_to_counted_string</code>,
+<code>librdf_query_results_to_string</code>,
+<code>librdf_query_results_to_file_handle</code> and
+<code>librdf_query_results_to_file</code>
+to get the results of a query written to a syntax using
+Rasqal's rasqal_query_results_write and Raptor's XML writer API.
+</p>
+
+<p>Added boolean returning methods:
+<code>librdf_query_results_is_bindings</code>,
+<code>librdf_query_results_is_boolean</code>,
+<code>librdf_query_results_is_graph</code> for testing result formats
+and <code>librdf_query_results_get_boolean</code> to get a boolean
+result back.</p>
+
+
+
+<h3>Serializer Class changes</h3>
+
+<p>Updated to <a href="http://librdf.org/raptor/">Raptor</a> 1.4.4
+providing a new XML writer API, an improved RDF/XML serializer
+allowing user namespace declarations and relative URIs, a new RSS 1.0
+serializer.</p>
+
+<p>The serializers now respect any user-declared namespaces done with
+<code>librdf_serializer_set_namespace</code> by passing it on to the
+Raptor serializer with <code>raptor_serialize_set_namespace</code>.
+At present only the Raptor RDF/XML serializer uses these
+user-declared namespace hints.
+</p>
+
+<p>The constructor now finds the correct serializer when given NULL
+arguments for mime type or type URI.</p>
+
+
+<h3>Storage Class changes</h3>
+
+<p>The storages compiled into redland can be individually selected
+with the <code>--enable-storages=</code><em>LIST</em> configure option.
+</p>
+
+<p>SQLite Storage.  A new experimental storage supporting
+<a href="http://www.sqlite.org/">SQLite</a> V2 and V3 libraries.
+</p>
+
+<p>MySQL storage.  Return failure early if the connection failed
+rather than try to continue opening the storage.</p>
+
+<p>MySQL storage.  Only use <code>mysql_real_escape_string</code> if
+a connection was made.  Do not try to free resources such as the
+mysql DB connection owned by iterators after an error, let
+<code>librdf_free_iterator</code> tidy up. (Patch from Morten
+Frederiksen)</p>
+
+
+<h3>URI Class changes</h3>
+
+<p>Handle resolving against a base URI with an omitted path.</p>
+
+
+<h3>Other changes</h3>
+
+<p>Removed <code>librdf_concept_labels</code> - never used or
+exported.</p>
+
+
+
+<h2 id="rel0_9_19"><a name="rel0_9_19">Redland 0.9.19 Changes</a></h2>
+
+<p>This is Redland 1.0 Release Candidate 2.</p>
+
+<p>Redland's License was changed from LGPL 2.1/MPL 1.1 to
+LGPL 2.1/Apache 2</p>
+
+<p>The main changes in this release are to update to use 
+<a href="http://librdf.org/rasqal/">Rasqal</a> 0.9.5
+to provide initial SPARQL query support and to use
+<a href="http://librdf.org/raptor/">Raptor</a> 1.4.2 to
+provide serializing to RDF/XML and N-Triples.</p>
+
+
+<h3><code>rdfproc</code> RDF processor utility program changes</h3>
+
+<p>Updated to allow an optional base URI for the
+<code>serialize</code> command and to handle the three forms
+of query results - bindings, graph or boolean.</p>
+
+
+<h3>Model Class changes</h3>
+
+<p>Added <code>librdf_model_to_string</code> and
+<code>librdf_model_to_counted_string</code> to serialize a model to a
+string using the Serializer class functionality.  Exported
+<code>librdf_model_to_string</code> to the language bindings.</p>
+
+
+<h3>Query Class changes</h3>
+
+<p>Now requires
+<a href="http://librdf.org/rasqal/">Rasqal</a> 0.9.5
+which provides initial support for the
+<a href="http://www.w3.org/TR/2004/WD-rdf-sparql-query-20041012/">
+SPARQL Query Language for RDF</a>,
+W3C Working Draft, 12 October 2004
+from the W3C RDF Data Access Working Group (DAWG).</p>
+
+
+<h3>Serializer Class changes</h3>
+
+<p>Pass on errors and warnings via the existing Redland logging
+mechanism.  Previously they all went to stderr, the default.</p>
+
+<p>Switched to use <a href="http://librdf.org/raptor/">Raptor</a> 1.4
+series serializing classes so now provides RDF/XML and N-Triples
+serializing and will gain any fugure serializing formats as Raptor
+adds them.</p>
+
+<p>Using the Raptor support, the serializers can now serialize to
+strings in addition to the existing serializing to FILE* and files.
+This is performed by the new methods:
+<code>librdf_serializer_serialize_model_to_file_handle</code>
+(deprecating <code>librdf_serializer_serialize_model</code>),
+<code>librdf_serializer_serialize_model_to_string</code>
+and <code>librdf_serializer_serialize_model_to_counted_string</code>.
+Exported <code>librdf_serializer_serialize_model_to_string</code>
+to the language bindings.</p>
+
+
+<h3>Storage Class changes</h3>
+
+<p><code>librdf_storage_context_add_statement</code> and
+<code>librdf_storage_context_add_statements</code> - 
+With a NULL context, call the non-context method as documented.</p>
+
+<p>Fixed bogus '+' in <code>get_contexts</code> method in the mysql
+storage.</p>
+
+
+<h3>World Class changes</h3>
+
+<p><code>librdf_world_get_feature</code> now returns a
+<code>librdf_node*</code>, <code>librdf_world_set_feature</code>
+takes a <code>librdf_node*</code> value.  Export these to
+the language bindings.
+</p>
+
+
+
+<h2 id="rel0_9_18"><a name="rel0_9_18">Redland 0.9.18 Changes</a></h2>
+
+<p>Revert the statement class usage counting - it broke things.</p>
+
+
+<h2 id="rel0_9_17"><a name="rel0_9_17">Redland 0.9.17 Changes</a></h2>
+
+<p>This is Redland 1.0 Release Candidate 1.</p>
+
+<p>The main changes in this release are the addition of the
+<a href="docs/api/query.html">Query</a> and
+<a href="docs/api/query_results.html">Query Results</a> classes, and
+the removal of the language bindings into the new
+<a href="http://librdf.org/bindings/">Redland Bindings</a>
+package.
+</p>
+
+<p>The interface between the Redland library and Redland Bindings
+when done via <a href="http://www.swig.org/">swig</a> is by the
+swig interface file <code>Redland.i</code> which is now installed in
+<code>/usr/share/redland/Redland.i</code>.</p>
+
+
+<h3>Portability changes</h3>
+
+<p>Several patches for building Redland natively on Win32 
+were provided by Jose Kahan.  These included
+adding an <code>win32_rdf_config.h</code> hard-coded config
+for Win32, using that in the all the C source files and adding an
+<code>REDLAND_STATIC</code> define to help statically linking Win32
+builds of Redland.
+</p>
+
+
+<h3>Configuration changes</h3>
+
+<p>Redland 0.9.17 requires Raptor 1.3.2 and Rasqal 0.9.1.  Installed
+versions are used if available by default, otherwise the copies in
+the source tree will be used.  The
+<code>--with-raptor=</code> and
+<code>--with-rasqal=</code> configure options with
+values <code>internal</code> or <code>system</code> can be
+used to select when both are available.
+</p>
+
+<p>Removed all the language binding-specific configuration code
+including options such as <code>--with-perl</code> that are now used
+by Redland Bindings.</p>
+
+
+<h3>Packaging changes</h3>
+
+<p>Updated the RPM spec file to remove building of the redland-perl
+and redland-python RPMs which are now made in the redland-bindings
+package.</p>
+
+<p>Added <code>-lrdf</code> to the pkgconfig redland.pc file (Curtis Hovey)</p>
+
+<p>Redland requires automake 1.7 and autoconf 2.54 to build from CVS.</p>
+
+
+<h3>Query and Query Result Classes</h3>
+
+<p>The <a href="docs/api/query.html">Query</a>
+(<code>librdf_query</code>) and
+<a href="docs/api/query_results.html">Query Results</a>
+(<code>librdf_query_results</code>) classes are new in Redland 0.9.17.
+They provide RDF query support with 
+<a href="http://www.w3.org/Submission/2004/SUBM-RDQL-20040109/">RDQL</a>
+using <a href="http://librdf.org/rasqal/">Rasqal</a>
+0.9.1, which is now included in the Redland distribution.</p>
+
+<p>The Query class has the following functions and methods:</p>
+<ul>
+<li><code>librdf_new_query</code> (constructor)</li>
+<li><code>librdf_new_query_from_query</code> (constructor)</li>
+<li><code>librdf_new_query_from_factory</code> (factory constructor)</li>
+<li><code>librdf_free_query</code> (destructor)</li>
+<li><code>librdf_query_execute</code></li>
+</ul>
+
+<p>The Query Results class has the following methods:</p>
+<ul>
+<li><code>librdf_query_results_as_stream</code></li>
+<li><code>librdf_query_results_get_count</code></li>
+<li><code>librdf_query_results_next</code></li>
+<li><code>librdf_query_results_finished</code></li>
+<li><code>librdf_query_results_get_bindings</code></li>
+<li><code>librdf_query_results_get_binding_value</code></li>
+<li><code>librdf_query_results_get_binding_name</code></li>
+<li><code>librdf_query_results_get_binding_value_by_name</code></li>
+<li><code>librdf_query_results_get_bindings_count</code></li>
+<li><code>librdf_free_query_results</code> (destructor)</li>
+</ul>
+
+
+<p>A new example example5.c was created to demonstrate using the
+query classes.</p>
+
+
+<h3>New Logging API</h3>
+
+<p>An enhanced logging API was added to provide enhanced information
+from log messages, error and warnings such as from parsing.  The new
+world method <code>librdf_world_set_logger</code> allows setting of
+the log handler callback which gives a
+<code>librdf_log_message</code>.  Parts of this the structure can be
+read by using the following new accessors methods:
+</p>
+
+<ul>
+<li><code>librdf_log_message_code</code></li>
+<li><code>librdf_log_message_level</code></li>
+<li><code>librdf_log_message_facility</code></li>
+<li><code>librdf_log_message_message</code></li>
+<li><code>librdf_log_message_locator</code></li>
+</ul>
+
+<p>The locator returns an <code>raptor_locator</code> that gives the
+line, column, byte offset, URI and/or filename of the message.
+Raptor 1.3.2+ provides accessor methods for that structure
+that are described in 
+<a href="http://librdf.org/raptor/libraptor.html">libraptor.3</a>.</p>
+
+
+<h3>Model Class changes</h3>
+
+<p>Check that duplicate statements are not added to models with the
+<code>librdf_model_add_statement</code> and
+<code>librdf_model_add_statements</code> methods.  The methods for
+adding statements with a context do not check.
+</p>
+
+<p>Added <code>librdf_model_query_execute</code> method to execute a
+<code>librdf_query</code> against a model, returning an
+<code>librdf_query_results</code></p>
+
+<p>Added <code>librdf_model_load</code> method that uses Raptor
+parser guessing to load content from a URI into a model.</p>
+
+<p>The contexts methods now give a run time warning if called when
+the model does not support contexts or the are not enabled.  The
+methods affected are:</p>
+<ul>
+<li><code>librdf_model_context_add_statement</code></li>
+<li><code>librdf_model_context_add_statements</code></li>
+<li><code>librdf_model_context_as_stream</code></li>
+<li><code>librdf_model_context_remove_statement</code></li>
+<li><code>librdf_model_context_remove_statements</code></li>
+<li><code>librdf_model_context_serialize</code></li>
+<li><code>librdf_model_find_statements_in_context</code></li>
+<li><code>librdf_model_get_contexts</code></li>
+</ul>
+
+<p>Fixed a memory leak
+inside <code>librdf_model_find_statements_in_context</code>.
+</p>
+
+
+<h3>Node Class changes</h3>
+
+<p>Fix assert bug in <code>librdf_node_get_blank_identifier</code>
+that caused it to always fail.</p>
+
+<p>A bug was fixed in <code>librdf_node_get_li_ordinal</code>
+to not always fail, returning -1</p>
+
+
+<h3>Parser Class changes</h3>
+
+<p>Deprecated methods <code>librdf_parser_set_error</code> and 
+<code>librdf_parser_set_warning</code> which never worked.  The
+new logging API works correctly with this code.</p>
+
+<h3>Storage Class changes</h3>
+
+<p>Where possible, check that duplicate statements are not added to
+stores with the <code>librdf_storage_add_statement</code> and
+<code>librdf_storage_add_statements</code> methods.  The methods for
+adding statements with a context do not check.
+</p>
+
+<p>The "mysql" storage was updated by
+<a href="http://purl.org/net/morten/">Morten Frederiksen</a>
+to revise the schema and to add two new features,
+controlled by new boolean storage options:</p>
+<ol>
+<li><code>bulk</code>: whether model/storage method add_statements
+should be optimized, until a model/storage sync operation</li>
+<li><code>merge</code>: whether to maintain a table with merged models</li>
+</ol>
+
+<p>Context methods will now give a run time warning if called and
+contexts are not supported or enabled.  The methods affected are:</p>
+<ul>
+<li><code>librdf_storage_context_add_statement</code></li>
+<li><code>librdf_storage_context_remove_statement</code></li>
+<li><code>librdf_storage_context_serialise</code></li>
+<li><code>librdf_storage_get_contexts</code></li>
+</ul>
+
+<p>Fixed a memory leak
+inside <code>librdf_storage_find_statements_in_context</code>.
+</p>
+
+<p>A bug was fixed in method
+<code>librdf_storage_node_stream_to_node_create</code> to allow the
+second node parameter to be NULL, so that methods
+<code>librdf_storage_get_arcs_out</code> and
+<code>librdf_storage_get_arcs_in</code> that can use it to work.</p>
+
+
+
+<h2 id="rel0_9_16"><a name="rel0_9_16">Redland 0.9.16 Changes</a></h2>
+
+<p>A small but important fix to make the installed C headers work
+correctly again.  The rdf_uri.h file had <code>#include
+rdf_digest.h</code> which is an internal header and not installed.
+This required removing two functions from the public API that
+returned <code>librdf_digest*</code>, but neither of them could be
+used since rdf_digest.h was not shipped.</p>
+
+<p>Patched librdf.h and raptor.h to <code>#include stdio.h</code> so
+that the empty program <code>#include &lt;redland.h&gt;</code>
+<code>main() {}</code> now works (ditto for raptor). </p>
+
+
+<h2 id="rel0_9_15"><a name="rel0_9_15">Redland 0.9.15 Changes</a></h2>
+
+<p>This version of Redland updates to use
+<a href="http://librdf.org/raptor/">Raptor</a>
+1.2.0 (<a href="http://librdf.org/raptor/NEWS.html">raptor news</a>)
+along with the new syntax
+<a href="http://www.dajobe.org/2004/01/turtle/">Turtle Terse RDF Triple Language</a>.
+</p>
+
+<p>Three new storage modules were added:</p>
+<ol>
+<li><a href="http://www.mysql.com/">MySQL</a> store written by <a href="http://purl.org/net/morten/">Morten Frederiksen</a> supporting the entire storage API include full contexts support.</li>
+<li><a href="http://triplestore.aktors.org/">AKT Triplestore</a> using MySQL inside 3store</li>
+<li>File and URI-backed in-memory store - read/write file, read only URI.</li>
+</ol>
+
+<p>The details of these modules are explained in much greater detail
+in the <a href="docs/storage.html">storage modules overview</a>
+including the features that they support.
+</p>
+
+<p>The runtime is now compiled with assertions to check for illegal
+use of NULL pointers in arguments, these will give warning messages
+(which can be disabled with <code>--disable-assert-messages</code>).
+The storage and model classes now track when open iterator and
+streams are operating on them and will not release resources until
+all the open iterators and streams are finished.
+</p>
+
+
+<h3>URI and Literal string type changes</h3>
+
+<p>There are many changes are to properly use and return UTF-8
+strings as <code>unsigned char*</code> for URIs (looking forward to
+Internationalized Resource Identifiers, IRIs emerging) and for RDF
+literal strings, plus other fixes to work better with C++ correcting
+the use of <code>const</code>.  Redland and Raptor now both compile
+cleanly with g++ 3.2, 3.3 and all warnings enabled.</p>
+
+
+<h3><code>rdfproc</code> RDF processor utility program changes</h3>
+
+<p><a href="utils/rdfproc.html">rdfproc</a> was extensively updated
+and it can now more easily work with any type of Redland store and
+has better support for working with contexts. The detailed changes
+are as follows:</p>
+
+<ul>
+<li>Added an -s TYPE option to specify a storage type</li>
+<li>Added an -t option for giving storage options</li>
+<li>Added an -p option to read the value of
+storage option <code>password</code> from standard input, to prevent
+exposing it as a parameter.</li>
+<li>The default of creating a new store was
+replaced; -n enables truncation or overwriting (the
+<code>write=yes</code> storage option).</li>
+<li> Now recognises <code>_:</code><em>abc</em> as blank node arguments.</li>
+<li>Parsing now return counts of errors and warnings if possible.</li>
+<li>The parse-stream command can take an optional context node</li>
+<li>Added a contexts command, to list the contexts in a model.</li>
+<li>Added support for environment variables RDFPROC_STORAGE_OPTIONS and
+RDFPROC_STORAGE_TYPE to provide default storage options (-t) and type (-s)</li>
+<li>Help message updated and correctly lists supported parsers</li>
+</ul>
+
+
+<h3>Configuration changes</h3>
+
+<p>Redland 0.9.15 requires Raptor 1.2.0 either installed otherwise
+the copy in the source tree will be installed.</p>
+
+<p><code>--with-mysql=</code><em>CONFIG</em> added to point to the
+mysql_config program for the MySQL backing store
+</p>
+
+<p><code>--with-threestore</code> added to enable the
+AKT Triplestore
+</p>
+
+<p><code>--disable-assert</code> added to disable
+compiling run-time assertions.
+</p>
+
+<p><code>--disable-assert-messages</code> added to disable
+compiling run-time assertion messages.
+</p>
+
+
+<h3>Packaging changes</h3>
+
+<p>A redland-python RPM package is now provided and the default RPM
+packaging now provides the MySQL store, in addition to the in-memory
+and BDB previously packaged.  The new file and uri stores are also
+available.  The full list of store modules is described further in the
+<a href="docs/storage.html">storage modules overview</a>.</p>
+
+
+<h3>Model Class changes</h3>
+
+<p>Methods
+<code>librdf_model_add_string_literal_statement</code> and
+<code>librdf_model_add_typed_literal_statement</code>
+now take a <code>const unsigned char* string</code>.
+Method
+<code>librdf_model_query_string</code> now takes
+a <code>const unsigned char* string</code> query.
+</p>
+
+<p>New methods were added
+<code>librdf_model_find_statements_in_context</code>
+to search for a statement matching only in a particular context,
+<code>librdf_model_find_statements_with_options</code> to
+allow options with searching (none used at present),
+and <code>librdf_model_get_contexts</code> to
+list the context nodes in a graph.
+</p>
+
+<p>Methods <code>librdf_model_get_feature</code>,
+<code>librdf_model_set_feature</code> were modified to take and return
+<code>librdf_node*</code> values.
+</p>
+
+
+<h3>Node Class changes</h3>
+
+<p>Constructors
+<code>librdf_new_node_from_uri_string</code>,
+<code>librdf_new_node_from_uri_local_name</code> and
+<code>librdf_new_node_from_normalised_uri_string</code>
+now take a <code>const unsigned char*
+string</code> URI string.
+Constructors
+<code>librdf_new_node_from_literal</code> and
+<code>librdf_new_node_from_typed_literal</code>
+now take a <code>const unsigned char* string</code> RDF literal.
+Constructor <code>librdf_new_node_from_blank_identifier</code>
+now takes a <code>const unsigned char* string</code> blank node identifier.
+</p>
+
+<p>Methods
+<code>librdf_node_get_literal_value</code>,
+<code>librdf_node_get_literal_value_as_counted_string</code> and
+<code>librdf_node_get_blank_identifier</code>
+now return a <code>const unsigned char* string</code> RDF literal,
+blank node identifier
+
+</p>
+
+<p>(Debugging methods <code>librdf_node_to_string</code> and
+<code>librdf_node_to_counted_string</code>where changed to return a
+<code>const unsigned char* string</code>)
+</p>
+
+
+<h3>Parser Class changes</h3>
+
+<p>Added methods
+<code>librdf_parser_parse_counted_string_as_stream</code> and
+<code>librdf_parser_parse_counted_string_into_model</code>
+for parsing a string with a given length rather than
+a C NUL-terminated string.</p>
+
+
+<p>Methods
+<code>librdf_parser_parse_string_as_stream</code> and
+<code>librdf_parser_parse_string_into_model</code>
+now take a <code>const unsigned char* string</code> syntax buffer.
+</p>
+
+<p>Methods
+<code>librdf_parser_get_feature</code>
+and <code>librdf_parser_set_feature</code>
+were modified to take and return <code>librdf_node*</code> values.
+</p>
+
+
+<h3>Query Class changes</h3>
+
+<p>Constructor <code>librdf_new_query</code> now takes a <code>const
+unsigned char* string</code> query.
+</p>
+
+
+
+
+<h3>Serializer Class changes</h3>
+
+<p>Added methods <code>librdf_serializer_get_feature</code> and
+<code>librdf_serializer_set_feature</code> taking and returning
+<code>librdf_node*</code> values like the methods for the model and
+parser classes.
+</p>
+
+
+<h3>Statement Class changes</h3>
+
+<p>The statement objects are now usage counted like most other
+objects so they are cheap to copy.  No user-API level changes
+are needed.</p>
+
+<p>(Debugging method <code>librdf_statement_to_string</code> now
+returns a <code>const unsigned char* string</code>)
+</p>
+
+<h3>URI Class changes</h3>
+
+<p>Constructors
+<code>librdf_new_uri</code>, 
+<code>librdf_new_uri_from_uri_local_name</code>,
+<code>librdf_new_uri_normalised_to_base</code> and
+<code>librdf_new_uri_relative_to_base</code>.
+now take a <code>const unsigned char* string</code> URI string.
+</p>
+
+<p>Methods
+<code>librdf_uri_as_string</code>,
+<code>librdf_uri_as_counted_string</code>,
+<code>librdf_uri_to_string</code> and
+<code>librdf_uri_to_counted_string</code>
+now return a <code>const unsigned char* string</code> URI string.
+</p>
+
+
+<h3>Java API Changes</h3>
+
+<p>Updated to match API changes above.  Fixes for OSX 10.3</p>
+
+<h3>Perl API changes</h3>
+
+<p>Updated to match API changes above.  Fixes for perl 5.8.1 and
+later which changed how <code>MakeMaker</code> installed.  Let perl
+install the files rather than try to force it based on the prefix
+argument to configure.  Make Parser method parse_string_into_model
+call the correct Redland function.  Added OSX Java directories
+to JDK search path.</p>
+
+
+<h3>PHP API Changes</h3>
+
+<p>Updated to match API changes above.  Redland is now started up and
+shutdown once in the PHP module code and does not need to called
+directly.</p>
+
+
+<h3>Python API changes</h3>
+
+<p>Updated to match API changes above.  Fix Node literal_values
+to work with datatype URIs.  Export the NS class.  Added
+a FileStorage class for the storage type <code>file</code>.
+Removed use of the python Distutils which was often
+getting the linking wrong.
+</p>
+
+<h3>Ruby API changes</h3>
+
+<p>Updated to match API changes above.</p>
+
+<h3>Tcl API changes</h3>
+
+<p>Updated to match API changes above.</p>
+
+
+<h3>Other changes</h3>
+
+<p>Redland now ships with both portable MD5 as well as (new in
+0.9.15) SHA1 digest implementations used if neither is available via
+an optimised library.</p>
+
+
+<h2 id="rel0_9_14"><a name="rel0_9_14">Redland 0.9.14 Changes</a></h2>
+
+<p>This version of Redland is an update mostly to synchronise
+with the 
+<a href="http://librdf.org/raptor/">Raptor</a> version 1.0.0 (RDF/XML and N-Triples parser) - see
+<a href="http://librdf.org/raptor/NEWS.html">Raptor NEWS</a>
+for the changes since 0.9.12.</p>
+
+<p>New in this version is the <a href="utils/rdfproc.html">rdfproc</a> utility
+which allows command line creation of redland stores, parsing
+of syntaxes and manipulation of the model.</p>
+
+
+<h3>Configuration changes</h3>
+
+<p>Added <code>--with-raptor</code> to either choose the system
+or internal raptor library.  If omittted, redland will guess
+and choose either the system one, if new enough or the internal
+one (always present).</p>
+
+
+<h3>Hash Class changes</h3>
+
+<p>Added a <code>librdf_hash_put_strings</code> helper method to put a pair of
+string values into a hash.  Useful for making model or storage
+options.</p>
+
+<h3>Node Class changes</h3>
+
+<p>Resource (URI) / literal / blank nodes are now interned on
+construction so there is only one object for each distinct
+<code>librdf_node</code> object. This reduces memory and makes
+copying cheaper at the cost of an increase in construction cost.
+Copying nodes is very common, since not only is it done for nodes but
+any time a statement is used or returned.  This interning was already
+done for the URI class but the change required
+<code>librdf_node</code> to be made immutable, which was done in
+0.9.13.</p>
+
+<h3>Storage Class changes</h3>
+
+<p>Added <code>librdf_storage_context_as_stream</code> deprecating
+<code>librdf_storage_context_serialise</code> to be consistent with the
+*as_stream method name changes to model.</p>
+
+<p>Added <code>librdf_new_storage_with_options</code> taking an
+<code>librdf_hash*</code>
+of options rather than the string of <code>librdf_new_storage</code>.</p>
+
+<p>Added new optional storage factory methods context_add_statements
+and context_remove_statements.  If omitted, the storage class
+implements them with context_add_statement and context_remove_statement.</p>
+
+
+<h3>Stream and Iterator Classes changes</h3>
+
+<p>Optimised the stream and iterator internals to do less factory
+method calls when looking for new items or the end of
+stream/iterator.  This should make them slightly faster.</p>
+
+
+<h3>Miscellaneous changes</h3>
+
+<p>Renamed Redland statics to be <code>librdf_*</code> rather than
+<code>redland_*</code>.  Added a one-line
+librdf_short_copyright_string.</p>
+
+
+<h3>Perl API Changes</h3>
+
+<p>Fixed the broken use of <tt>UNIVERSAL::isa</tt></p>
+
+
+
+<h2 id="rel0_9_13"><a name="rel0_9_13">Redland 0.9.13 Changes</a></h2>
+
+<p>This version of Redland is a major update to 0.9.12 changing the
+node class.  <code>librdf_node</code> objects are now immutable once created,
+higher-level language APIs no longer have deal with sharing or
+copying internals, some additional API support for parsing content
+from strings.</p>
+
+<p>This includes the stable and complete version 0.9.12 of the 
+<a href="http://librdf.org/raptor/">Raptor parser</a>
+which supports all of the revised RDF/XML syntax.</p>
+
+<p>Initial work was added on an ECMA CLI interface using
+the C# ("C sharp") language.</p>
+
+<p>Blank nodes generated by parsing the syntaxes are now
+generated more unique (not guaranteed) based on the Redland
+startup time and a serial number.</p>
+
+<p>The Perl, Python and Java APIs now always return new nodes
+and statements removing the need to consider sharing at this
+level.  This means that the following operation is legal in
+Perl, Python and Java:</p>
+<pre>
+# perl
+$n=RDF::Redland::Node->from_uri("http://example.org/foo");
+$s=new RDF::Redland::Statement($n, $n, $n);
+$model->add($s);
+
+# python
+n=RDF.Uri("http://example.org/foo")
+s=RDF.Statement(n, n, n) # n is used as a resource RDF.Node here
+model.add_statement(s)
+</pre>
+
+<h3>Configuration</h3>
+
+<p>Several improvements were made to the building and configuring
+including a better attempt to find matching Sleepycat/Berkeley DB
+header and library files (and support BDB up to 4.1), searching for
+installed Java JDKs and Tcl headers.  Each of the language interfaces
+can be individually enabled to be build, tested and installed with
+the main C library.</p>
+
+
+<h3>Node Class changes</h3>
+
+<p>The <code>librdf_node</code> class was modifed to make objects
+immutable once constructed, they cannot be modified.  The following
+set methods were consequently removed.</p>
+
+<ul>
+<li><code>librdf_node_set_blank_identifier</code></li>
+<li><code>librdf_node_set_li_ordinal</code></li>
+<li><code>librdf_node_set_literal_value</code></li>
+<li><code>librdf_node_set_type</code></li>
+<li><code>librdf_node_set_typed_literal_value</code></li>
+<li><code>librdf_node_set_uri</code></li>
+</ul>
+
+<p>The following utility methods were added (covering
+all the <code>librdf_node_get_type</code> values):</p>
+
+<ul>
+<li><code>librdf_node_is_blank</code> - return non-0 if the node is a blank node</li>
+<li><code>librdf_node_is_literal</code> - return non-0 if the node is a literal</li>
+<li><code>librdf_node_is_resource</code> - return non-0 if the node is a URI</li>
+</ul>
+
+<p>(These are reflected into the same methods on
+the Perl, Python and Java node classes)</p>
+
+<p><code>LIBRDF_NODE_TYPE_LI</code> as returned by <code>librdf_node_get_type</code>
+was deleted, it was never used.</p>
+
+<p>To support datatyped literals, the following method was added:</p>
+
+<ul>
+<li>librdf_node_get_literal_value_datatype_uri - get the typed literal datatype URI of the literal node</li>
+</ul>
+
+
+<h3>Model Class changes</h3>
+
+<p>Added <code>ibrdf_model_sync</code> to sync the model to the backing store.</p>
+
+<p>Added <code>librdf_model_as_stream</code> and
+<code>librdf_model_context_as_stream</code> to replace
+<code>librdf_model_context_serialise</code> and
+<code>librdf_model_context_serialize</code> respectively.  This was
+done both to reduce the confusion with the
+<code>librdf_serializer</code> class and the mixture of US/UK
+spelling of that word.  The old functions will remain for now.
+</p>
+
+
+
+<h3>Parser Class changes</h3>
+
+<p>Added <code>librdf_parser_parse_string_as_stream</code> and
+<code>librdf_parser_parse_string_into_model</code> to allow parsing
+content from strings.</p>
+
+
+<h3>Statement Class changes</h3>
+
+<p>Added <code>librdf_statement_is_complete</code> to test if a
+statement has all the subject, predicate and object fields assigned.
+Partial statements cannot be added to a model but can be used in
+matching statement queries with
+<code>librdf_model_find_statements</code>.</p>
+
+
+<h3>Storage Class changes</h3>
+
+<p>Added <code>librdf_storage_sync</code> to sync the backing store.
+(This is slightly internal to Redland, you should not be calling this
+directly)</p>
+
+
+<h3>Perl Interface Changes</h3>
+
+<p>Updated to make the object constructors less verbose and to allow
+Redland URI objects and native perl URIs to be used in place of
+Redland Nodes where convienent (such as in making Statements).  All
+existing code should work but can be shortened.
+A new <code>--with-perl</code> configure argument to enable the perl
+interface.
+</p>
+
+
+<h3>Python API changes</h3>
+
+<p>A major update to use Python 2.2+ idioms and features by Edd
+Dumbill with help from Matt Biddulph for unit tests.  A new
+<code>--with-python</code> configure argument to enable the python
+interface.  Edd wrote the following change log.</p>
+
+<p>General changes</p>
+<ul>
+  <li>Removed string exceptions and replaced with RedlandError ones</li>
+  <li>Where underlying Redland C objects were unexpectedly null, raise
+    exceptions rather than returning None, "" or [] as appropriate.</li>
+  <li>Raise exceptions if Redland C constructors fail in Python
+    constructors.</li>
+  <li>Did quite a lot of documentation updating, where possible
+    demonstrating preferred Pythonic usages.</li>
+  <li>Added more unit tests to test changed functionality.</li>
+</ul>
+
+<h4>RDF.Node class</h4>
+<ul>
+  <li>Constructor now accepts Uri to make a resource/property node, or
+    a string to make a string literal</li>
+  <li>Removed usage of node_type() in favour of is_resource(), is_blank()
+    etc methods.</li>
+  <li><strong>DEPRECATED</strong> get_blank_identifier() etc. methods in favour of
+    node.blank_identifier etc properties.  Raise exception if properties
+    inconsistent with the node type are requested.</li>
+</ul>
+
+<h4>RDF.Statement class</h4>
+<ul>
+  <li>No need to name subject, predicate, object in constructor any more.
+    Uris or string literals accepted in place of nodes in constructor
+    argument.</li>
+  <li>__getattr__ method deleted, using new-style property() for
+    subject, predicate, object</li>
+</ul>
+
+<h4>RDF.Model class</h4>
+
+<ul>
+  <li>Deleted get_*_iterator methods</li>
+  <li>Renamed sources() to get_sources(), targets() to get_targets(),
+    arcs() to get_predicates().  Retained old method names as aliases.</li>
+  <li>Added get_sources_context(), get_targets_context(),
+    get_predicates_context() which return (node, context) tuples.</li>
+  <li>Amended get_source(), get_sources() etc methods so that Uri and
+    string literals were acceptable as shortcut types for nodes.</li>
+  <li>Added find_statements_context() which returns (statement, context)
+    tuples.</li>
+  <li>Renamed context_remove_statements() to
+    remove_statements_with_context(). Retained old method name as an
+    alias.</li>
+  <li>Added __delitem__ method so del[statement] and del[statement,
+    context] work.</li>
+  <li>Added append() method so append(statement) and append(statement,
+    context) work.  Suggest that append() is used in preference to
+    add_statement() for Python idiomatic usage.</li>
+  <li><strong>DEPRECATED</strong> serialise() in favour of as_stream().</li>
+  <li>Added as_stream_context() to serialise (statement, context) tuples.</li>
+  <li>Exception raised if len() is attempted on model with a non-countable
+    storage.</li>
+  <li><strong>DEPRECATED</strong> Model.add(), Model.add_typed_literal_statement() usages:
+    now that constructing Statements is easier, it's incongruous to have
+    these in the model.  Additionally it saves reproducing various bits
+    of error checking that properly belong in the Node() constructor.</li>
+  <li>Implemented __contains__() so "if statement in model" and
+    "if (statement, context) in model" work as expected using the more
+    efficient Redland C methods where possible.</li>
+</ul>
+
+<h4>RDF.Stream class</h4>
+
+<ul>
+  <li><strong>DEPRECATED</strong> Stream.context_iter().  Use in preference the _context
+    variants of the appropriate Model methods.  This leads to fewer
+    lines of code.</li>
+</ul>
+
+<h4>RDF.Uri class</h4>
+
+<ul>
+  <li>Amended constructor so strings or Uri instances can be passed as
+    the first argument, without named parameters being required, and
+    the right thing still happen.</li>
+</ul>
+
+
+<h3>Java Interface Changes</h3>
+
+<p>Additions for the new API calls as outlined above (such
+as model/storage sync, parsing from strings etc.). New configure
+argument <code>--with-jdk</code> to pick the JDK in order to
+find the JNI headers.  See the <a href="docs/java.html">java API</a>
+page for details.</p>
+
+
+<h3>PHP, Ruby and Tcl Interfaces Changes</h3>
+
+<p>Updates in configuring and building these interfaces and new
+<code>--with-php</code>, <code>--with-ruby</code> and <code>--with-tcl</code>
+configure arguments.  See the corresponding API pages and
+installation documentation for details.  Tcl now tries to guess the
+includes directories.</p>
+
+
+<h3>Internal changes and fixes</h3>
+
+<ul>
+<li>Added Sleepycat/BDB 4.0 and 4.1 support - the open API changed again</li>
+
+<li>Split the <code>librdf_model</code> class into model interface
+(<code>librdf_model</code>) and implementation class
+(<code>librdf_model_storage</code>).</li>
+
+<li>Removed the old and outdated repat RDF parser.</li>
+
+<li>Removed the very old expat XML parser from the sources;
+much newer or expat or libxml2 are very widespread.</li>
+
+<li>Added simple thread support from patches by Seth Ladd with
+configuration option <code>--with-threads</code> that locks key shared
+classes to allow separate threads to work in the same memory
+space. The current locked classes are URI and World.</li>
+
+<li>Deleting statements in the in-memory store now works.</li>
+
+<li>Getting the context of iterators returned from in-memory
+sources, targets, arcs now works.</li>
+
+</ul>
+
+
+<h2 id="rel0_9_12"><a name="rel0_9_12">Redland 0.9.12 Changes</a></h2>
+
+<p>This version of Redland is a major update to 0.9.11 incorporating
+a much more improved, complete and stable version 0.9.7 of the 
+<a href="http://librdf.org/raptor/">Raptor parser</a>
+and a significant new feature, contexts.  The
+high-level language APIs received some updates and the start of two
+new languages APIs were added: <a href="docs/ruby.html">Ruby</a> and
+<a href="docs/php.html">PHP</a>.</p>
+
+<p>Several incompatible API changes were made in this release that
+effect the C interface and all the higher level language APIs.  These
+were made to support contexts and to fix some inconsistencies in the
+interface about object ownership.</p>
+
+<p>The persistent storage format was changed to support RDF typed
+literals and this requires an upgrade of any existing
+Berkeley/Sleepycat DB stores created by Redland 0.9.11 or earlier.  A
+utility <em>redland-db-upgrade</em> is provided that will create an
+updated store from an existing one.</p>
+
+<p>A Perl script <a href="utils/update-api-0912.pl">utils/update-api-0912.pl</a>
+can help automate the API changes as far as possible or warn about those
+that cannot be automatically updated.</p>
+
+
+<h3>New Feature - Contexts</h3>
+
+<p>This feature allows a Node to be given whenever a statement is
+added to a model which can can be retrieved from any model query that
+returns answers as an Iterator of Nodes or a Stream of Statements.
+Both of these classes gained a new method <code>get_context</code>
+that returns the original Node that was given when the statement
+corresponding to the answer was added to the model.</p>
+
+<p>The context node can also be used to add and remove sets of
+statements to/from a model, and each statement with a given
+context node can be listed as a stream of statements.</p>
+
+<p>Adding this feature required substantial internal changes to these
+two classes and the internal storage apis and implementations along
+with moderate code changes at the application level, which are
+described below.</p>
+
+<p>This feature can be used for the following (not an exhaustive list):</p>
+
+<ul>
+<li>Enable true graph merging / updating / demerging - identify the
+subgraphs with context nodes.</li>
+<li>Statement Identity - add each statement with a different context node</li>
+<li>Statement Provenance - use the context node as the subject of
+other statements about the statement that is returned.</li>
+</ul>
+
+
+<h3>Iterator Class Changes</h3>
+
+<p>The <a href="docs/api/iterator.html">Iterator</a>
+<code>get_next</code> method was split into <code>get_object</code>
+always returning a pointer to a shared object and the
+<code>next</code> method to advance the iterator.
+The <code>get_object</code> method is generally called
+<code>current</code> in the higher level language APIs.</p>
+
+<p>(Iterator and Stream now have consistent method names; they
+may be merged in future.)</p>
+
+<p>The <code>get_object</code> method now always returns a pointer to
+a shared object.  If this object is needed outside the scope of an
+iteration, it must be copied, which for Nodes is the copy constructor
+<code>librdf_new_node_from_node</code>.</p>
+
+<p>C example for Redland 0.9.11 and earlier:</p>
+<pre>
+  while(!librdf_iterator_end(iterator)) {
+    node=(librdf_node*)librdf_iterator_get_next(iterator);
+    /* do something with the node */
+  }
+</pre>
+
+<p>Redland 0.9.12:</p>
+<pre>
+  while(!librdf_iterator_end(iterator)) {
+    node=(librdf_node*)librdf_iterator_get_object(iterator);
+    /* do something with the node */
+    librdf_iterator_next(iterator);
+  }
+</pre>
+
+<p>A new method <code>get_context</code> was added returning a Node
+for the context of the original Statement that generated the Iterator
+Node.</p>
+
+<p>C Iterator context example:</p>
+<pre>
+  while(!librdf_iterator_end(iterator)) {
+    node=(librdf_node*)librdf_iterator_get_object(iterator);
+    context_node=(librdf_node*)librdf_iterator_get_context(iterator);
+    /* do something with the node and its context */
+    librdf_iterator_next(iterator);
+  }
+</pre>
+
+
+
+<h3>Model Class Changes</h3>
+
+<p>The <a href="docs/api/model.html">Model</a>
+<code>add_statement</code> method no longer takes ownership of the
+passed in statement object.  The caller now retains ownership and can
+reuse the statement several times and has responsibility for freeing it
+if need be (when it isn't shared).</p>
+
+<p>C example for Redland 0.9.11 and earlier:</p>
+<pre>
+  librdf_model_add_statement(model, statement);
+</pre>
+
+<p>Redland 0.9.12:</p>
+<pre>
+  librdf_model_add_statement(model, statement);
+  librdf_free_statement(statement);
+</pre>
+
+
+<p>C streaming statement example for Redland 0.9.11 and earlier:</p>
+<pre>
+  while(!librdf_stream_end(stream)) {
+    librdf_statement *statement=librdf_stream_next(stream); 
+    /* This statement is new, so could be added directly */
+    librdf_model_add_statement(model, statement);
+  }
+</pre>
+
+<p>Redland 0.9.12:</p>
+<pre>
+  while(!librdf_stream_end(stream)) {
+    librdf_statement *statement=librdf_stream_get_object(stream); 
+    /* This statement is now shared so can still be just added */
+    librdf_model_add_statement(model, statement);
+  }
+</pre>
+
+
+<p><code>librdf_model_add_string_literal_statement</code> lost the
+xml_space argument.</p>
+
+<p>A new method was added to add a Statement with
+an RDF datatyped literals object:</p>
+<pre>
+  int librdf_model_add_typed_literal_statement(librdf_model* model,
+     librdf_node* subject, 
+     librdf_node* predicate, 
+     char* string, char *xml_language, librdf_uri *datatype_uri);
+</pre>
+
+<p>This should be used in preference to
+<code>librdf_model_add_string_literal_statement</code> which remains
+in the API as a wrapper around the above.</p>
+
+<p>New methods were added to add, remove and list Statements to contexts.</p>
+
+<pre>
+  /* Add a single statement to the model with context */
+  int librdf_model_context_add_statement(librdf_model* model,
+    librdf_node* context, librdf_statement* statement);
+
+  /* Add all statements on the stream to the model with context */
+  int librdf_model_context_add_statements(librdf_model* model, 
+    librdf_node* context, librdf_stream* stream);
+
+  /* Remove a single statement from the model with the given context */
+  int librdf_model_context_remove_statement(librdf_model* model, 
+    librdf_node* context, librdf_statement* statement);
+
+  /* Remove all statements from the model with given context */
+  int librdf_model_context_remove_statements(librdf_model* model, 
+    librdf_node* context);
+
+  /* List all statements in the model with the given context */
+  librdf_stream* librdf_model_context_serialize(librdf_model* model, 
+    librdf_node* context);
+</pre>
+
+
+<h3>Node Class Changes</h3>
+
+<p>The <a href="docs/api/node.html">Node</a> class gained a new constructor:</p>
+<pre>
+  librdf_node* librdf_new_node_from_typed_literal(
+    librdf_world *world,
+    const char *string,
+    const char *xml_language, 
+    librdf_uri* datatype_uri);
+</pre>
+
+<p>that should be used in preference to
+<code>librdf_new_node_from_literal</code> which remains in the API as
+a wrapper around the above.  </p>
+
+<p><code>librdf_node_new_nodefrom_literal</code> lost the
+xml_space argument.</p>
+
+
+<h3>Parser Class Changes</h3>
+
+<p>The <a href="docs/api/parser.html">Parser</a> class has an updated
+<a href="http://librdf.org/raptor/">Raptor parser</a>
+version 0.9.7 - parsers named <code>raptor</code> for RDF/XML
+(MIME Type <code>application/rdf+xml</code>)
+and <code>ntriples</code> for N-Triples.  See the
+<a href="http://librdf.org/raptor/NEWS.html">Raptor NEWS</a>
+for the detailed changes since 0.9.5 in the last release of Redland.</p>
+
+<p>The Java SiRPAC parsers <code>sirpac-stanford</code>,
+<code>sirpac-w3c</code> and the W3C LibWWW parser <code>libwww</code>
+have been removed.  Raptor replaces them.</p>
+
+
+<h3>Serializer Class Changes</h3>
+
+<p>The <a href="docs/api/serializer.html">Serializer</a> class
+gained a new method:</p>
+
+<pre>
+  int librdf_serializer_serialize_model_to_file(
+    librdf_serializer* serializer,
+    const char *name,
+    librdf_uri* base_uri, 
+    librdf_model* model);
+</pre>
+
+<p>This writes the serialized model to a filename
+(rather than a file handle as done by 
+<code>librdf_serializer_serialize_model</code>)
+which is easier to use from higher level language APIs until a
+cross-language I/O abstraction is available.</p>
+
+<p>The class gained an RDF/XML serializer that can be called
+either by the name <code>rdfxml</code> or the
+MIME Type <code>application/rdf+xml</code>.  The
+examples in each language have been updated to demonstrate
+using this.</p>
+
+
+<h3>Storage Class Changes</h3>
+
+<p>The built in storage factories (<code>memory</code>,
+<code>hashes</code>) now both support contexts.  These are enabled by
+adding the storage option <code>contexts='yes'</code> to the options
+string.  The hashes storage additionally supports indexing predicates
+as an extra hash which can be enabled with <code>index-predicates='yes'</code>.
+This makes triple queries of the form
+(subject unknown, predicate known, object unknown) fast.
+</p>
+
+<p>C Example of creating a 0.9.12 storage that does contexts using
+on-disk Berkeley/Sleepycat DB:</p>
+<pre>
+   storage=librdf_new_storage(world,
+     "hashes", 
+      name,
+     "hash-type='bdb',write='yes',new='yes',contexts='yes'");
+</pre>
+
+
+<h3>Stream Class Changes</h3>
+
+<p>The <a href="docs/api/stream.html">Stream</a>
+<code>next</code> method was split into <code>get_object</code>
+always returning a pointer to a shared Statement and the
+<code>next</code> method to advance the iterator.
+The <code>get_object</code> method is generally called
+<code>current</code> in the higher level language APIs.</p>
+
+<p>(Iterator and Stream now have consistent method names; they
+may be merged in future.)</p>
+
+
+<p>C example for Redland 0.9.11 and earlier:</p>
+<pre>
+  while(!librdf_stream_end(stream)) {
+    statement=(librdf_statement*)librdf_stream_next(stream);
+    /* do something with the statement */
+  }
+</pre>
+
+<p>Redland 0.9.12:</p>
+<pre>
+  while(!librdf_stream_end(stream)) {
+    statement=(librdf_statement*)librdf_stream_get_object(stream);
+    /* do something with the statement */
+    librdf_stream_next(stream);
+  }
+</pre>
+
+
+<p>A new method <code>get_context</code> was added returning a Node
+for the context of the Statement.</p>
+
+<p>C Stream context example:</p>
+<pre>
+  while(!librdf_stream_end(stream)) {
+    statement=(librdf_statement*)librdf_stream_get_object(stream);
+    context_node=(librdf_node*)librdf_stream_get_context(iterator);
+    /* do something with the statement and its context node */
+    librdf_stream_next(stream);
+  }
+</pre>
+
+
+
+<h3>Perl Interface Changes</h3>
+
+<p>The <a href="docs/perl.html">Perl</a> interface
+moved to the <code>RDF::Redland</code> package (the <code>RDF</code>
+namespace was deprecated in 0.9.11).</p>
+
+<p>The interface was updated to receive Redland error and warning
+messages callbacks.  These can be set using the
+<code>RDF::Redland::set_error_handler</code>
+and <code>RDF::Redland::set_warning_handler</code> subroutines
+taking a subroutine argument.  They are called with a single
+scalar argument which is the Redland message.</p>
+
+<p>The interface was updated to match the Interator and Stream
+changes described above.</p>
+
+<p>Perl iterator example for Redland 0.9.11 and earlier:</p>
+<pre>
+  while(!$iterator->end) {
+    my $node=$iterator->next;
+    # do something with the node
+  }
+</pre>
+
+<p>Redland 0.9.12:</p>
+<pre>
+  while(!$iterator->end) {
+    my $node=$iterator->current;
+    # do something with the node
+    $iterator->next;
+  }
+</pre>
+
+
+<p>Perl stream example for Redland 0.9.11 and earlier:</p>
+<pre>
+  while(!$stream->end) {
+    my $statement=$stream->next;
+    # do something with the statement
+  }
+</pre>
+
+<p>Redland 0.9.12:</p>
+<pre>
+  while(!$stream->end) {
+    my $statement=$stream->current;
+    # do something with the statement
+    $stream->next;
+  }
+</pre>
+
+
+<p>Perl example of using the Serializer class:</p>
+
+<pre>
+  # Use any rdf/xml parser that is available
+  my $serializer=new RDF::Redland::Serializer("rdfxml");
+  $serializer->serialize_model_to_file("output.rdf", $uri, $model);
+</pre>
+
+
+<h3>Python API Changes</h3>
+
+<p>The <a href="docs/python.html">Python</a> interface
+gained pydoc comments, along with an
+<a href="docs/pydoc/RDF.html">HTML derived version</a>.
+</p>
+
+<p>The interface was updated to receive Redland error and warning
+messages callbacks as python exceptions.  These can be caught
+using the standard python try {} catch {} blocks.</p>
+
+<p>The interface was updated to match the Interator and Stream
+changes described above.</p>
+
+<p>Python iterator example for Redland 0.9.11 and earlier:</p>
+<pre>
+  while not iterator.end():
+    node=iterator.next()
+    # do something with the node
+</pre>
+
+<p>Redland 0.9.12:</p>
+<pre>
+  while not iterator.end():
+    node=iterator.current()
+    # do something with the node
+    iterator.next()
+</pre>
+
+
+<p>Python stream example for Redland 0.9.11 and earlier:</p>
+<pre>
+  while not stream.end():
+    statement=stream.next()
+    # do something with the statement
+</pre>
+
+<p>Redland 0.9.12:</p>
+<pre>
+  while not stream.end():
+    statement=stream.current()
+    # do something with the statement
+    stream.next()
+</pre>
+
+
+<p>Python example of using the Serializer class:</p>
+
+<pre>
+  # Use any rdf/xml parser that is available
+  serializer=RDF.Serializer()
+  serializer.serialize_model_to_file("output.rdf", model)
+</pre>
+
+
+
+<h3>Java Interface Changes</h3>
+
+<p>The <a href="docs/java.html">Java</a> classes were updated to have
+a <code>finished()</code> method that the user can call to cleanup
+objects replacing the rather useless Java <code>finalize()</code>
+method that gives no guarantees to when it is called.</p>
+
+<p>The Java API is still experimental and may change further.</p>
+
+
+<h2 id="rel_older"><a name="rel_older">Redland 0.9.1 - Redland 0.9.11 Changes</a></h2>
+
+<p>Release notes for 0.9.11 and earlier are in the
+<a href="NEWS.html">NEWS page</a> or
+<a href="ChangeLog">ChangeLog</a>
+</p>
+
+
+
+<hr />
+
+<p>Copyright (C) 2000-2013 <a href="http://www.dajobe.org/">Dave Beckett</a><br />Copyright (C) 2000-2005 <a href="http://www.bristol.ac.uk/">University of Bristol</a></p>
+
+</body>
+</html>

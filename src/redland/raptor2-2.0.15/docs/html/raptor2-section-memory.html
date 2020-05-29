@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>section-memory: Raptor RDF Syntax Library Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="Raptor RDF Syntax Library Manual">
+<link rel="up" href="reference-manual.html" title="Part II. Raptor Reference Manual">
+<link rel="prev" href="raptor2-section-general.html" title="section-general">
+<link rel="next" href="raptor2-section-avltree.html" title="section-avltree">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#raptor2-section-memory.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference-manual.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="raptor2-section-general.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="raptor2-section-avltree.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="raptor2-section-memory"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="raptor2-section-memory.top_of_page"></a>section-memory</span></h2>
+<p>section-memory</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="raptor2-section-memory.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-memory.html#raptor-free-memory" title="raptor_free_memory ()">raptor_free_memory</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-memory.html#raptor-alloc-memory" title="raptor_alloc_memory ()">raptor_alloc_memory</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-memory.html#raptor-calloc-memory" title="raptor_calloc_memory ()">raptor_calloc_memory</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-memory.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-memory.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="raptor-free-memory"></a><h3>raptor_free_memory ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+raptor_free_memory (<em class="parameter"><code><span class="type">void</span> *ptr</code></em>);</pre>
+<p>Free memory allocated inside raptor.</p>
+<p>Some systems require memory allocated in a library to
+be deallocated in that library.  This function allows
+memory allocated by raptor to be freed.</p>
+<p>Examples include the result of the '_to_' methods that returns
+allocated memory such as raptor_uri_filename_to_uri_string,
+raptor_uri_filename_to_uri_string
+and raptor_uri_uri_string_to_filename_fragment</p>
+<div class="refsect3">
+<a name="raptor-free-memory.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>ptr</p></td>
+<td class="parameter_description"><p>memory pointer</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-alloc-memory"></a><h3>raptor_alloc_memory ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span> *
+raptor_alloc_memory (<em class="parameter"><code><span class="type">size_t</span> size</code></em>);</pre>
+<p>Allocate memory inside raptor.</p>
+<p>Some systems require memory allocated in a library to
+be deallocated in that library.  This function allows
+memory to be allocated inside the raptor shared library
+that can be freed inside raptor either internally or via
+raptor_free_memory.</p>
+<p>Examples include using this in the <a class="link" href="raptor2-section-world.html#raptor-world-generate-bnodeid" title="raptor_world_generate_bnodeid ()"><code class="function">raptor_world_generate_bnodeid()</code></a> handler
+code to create new strings that will be used internally
+as short identifiers and freed later on by the parsers.</p>
+<div class="refsect3">
+<a name="raptor-alloc-memory.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>size</p></td>
+<td class="parameter_description"><p>size of memory to allocate</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-alloc-memory.returns"></a><h4>Returns</h4>
+<p> the address of the allocated memory or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-calloc-memory"></a><h3>raptor_calloc_memory ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span> *
+raptor_calloc_memory (<em class="parameter"><code><span class="type">size_t</span> nmemb</code></em>,
+                      <em class="parameter"><code><span class="type">size_t</span> size</code></em>);</pre>
+<p>Allocate zeroed array of items inside raptor.</p>
+<p>Some systems require memory allocated in a library to
+be deallocated in that library.  This function allows
+memory to be allocated inside the raptor shared library
+that can be freed inside raptor either internally or via
+raptor_free_memory.</p>
+<p>Examples include using this in the <a class="link" href="raptor2-section-world.html#raptor-world-generate-bnodeid" title="raptor_world_generate_bnodeid ()"><code class="function">raptor_world_generate_bnodeid()</code></a> handler
+code to create new strings that will be used internally
+as short identifiers and freed later on by the parsers.</p>
+<div class="refsect3">
+<a name="raptor-calloc-memory.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>nmemb</p></td>
+<td class="parameter_description"><p>number of members</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>size</p></td>
+<td class="parameter_description"><p>size of item</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-calloc-memory.returns"></a><h4>Returns</h4>
+<p> the address of the allocated memory or NULL on failure</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-memory.other_details"></a><h2>Types and Values</h2>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.27</div>
+</body>
+</html>

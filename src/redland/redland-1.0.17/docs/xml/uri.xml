@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-uri">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-uri.top_of_page">uri</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>uri</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-uri.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-uri">librdf_new_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-uri2">librdf_new_uri2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-uri-from-uri">librdf_new_uri_from_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-uri-from-uri-local-name">librdf_new_uri_from_uri_local_name</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-free-uri">librdf_free_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-uri-as-string">librdf_uri_as_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-uri-as-counted-string">librdf_uri_as_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-uri-print">librdf_uri_print</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-uri-to-string">librdf_uri_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-uri-to-counted-string">librdf_uri_to_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-uri-equals">librdf_uri_equals</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-uri-is-file-uri">librdf_uri_is_file_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-uri-to-filename">librdf_uri_to_filename</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-uri-normalised-to-base">librdf_new_uri_normalised_to_base</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-uri-relative-to-base">librdf_new_uri_relative_to_base</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-uri-from-filename">librdf_new_uri_from_filename</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-uri-compare">librdf_uri_compare</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="librdf-uri-filter-func">*librdf_uri_filter_func</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-uri.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-uri">librdf_uri</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-uri.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-uri.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-new-uri" role="function">
+<title>librdf_new_uri&#160;()</title>
+<indexterm zone="librdf-new-uri"><primary>librdf_new_uri</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+librdf_new_uri (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-uri"><type>librdf_uri</type></link> object from a URI string.</para>
+<para>A new URI is constructed from a copy of the string.  If the
+string is a NULL pointer or empty (0 length) then the result is NULL.</para>
+<refsect3 id="librdf-new-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>URI in string form</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-uri.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-uri"><type>librdf_uri</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-uri2" role="function">
+<title>librdf_new_uri2&#160;()</title>
+<indexterm zone="librdf-new-uri2"><primary>librdf_new_uri2</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+librdf_new_uri2 (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                 <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>,
+                 <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-uri"><type>librdf_uri</type></link> object from a counted URI string.</para>
+<para>A new URI is constructed from a copy of the string.  If the string
+is a NULL pointer or 0 length or empty (first byte is 0) then the
+result is NULL.</para>
+<refsect3 id="librdf-new-uri2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>URI in string form</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-uri2.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-uri"><type>librdf_uri</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-uri-from-uri" role="function">
+<title>librdf_new_uri_from_uri&#160;()</title>
+<indexterm zone="librdf-new-uri-from-uri"><primary>librdf_new_uri_from_uri</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+librdf_new_uri_from_uri (<parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *old_uri</parameter>);</programlisting>
+<para>Copy constructor - create a new librdf_uri object from an existing librdf_uri object.</para>
+<refsect3 id="librdf-new-uri-from-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>old_uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-uri-from-uri.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-uri"><type>librdf_uri</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-uri-from-uri-local-name" role="function">
+<title>librdf_new_uri_from_uri_local_name&#160;()</title>
+<indexterm zone="librdf-new-uri-from-uri-local-name"><primary>librdf_new_uri_from_uri_local_name</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+librdf_new_uri_from_uri_local_name (<parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *old_uri</parameter>,
+                                    <parameter>const unsigned <link linkend="char"><type>char</type></link> *local_name</parameter>);</programlisting>
+<para>Copy constructor - create a new librdf_uri object from an existing librdf_uri object and a local name.</para>
+<refsect3 id="librdf-new-uri-from-uri-local-name.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>old_uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>local_name</para></entry>
+<entry role="parameter_description"><para>local name to append to URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-uri-from-uri-local-name.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-uri"><type>librdf_uri</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-free-uri" role="function">
+<title>librdf_free_uri&#160;()</title>
+<indexterm zone="librdf-free-uri"><primary>librdf_free_uri</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_free_uri (<parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>);</programlisting>
+<para>Destructor - destroy a <link linkend="librdf-uri"><type>librdf_uri</type></link> object.</para>
+<refsect3 id="librdf-free-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-uri-as-string" role="function">
+<title>librdf_uri_as_string&#160;()</title>
+<indexterm zone="librdf-uri-as-string"><primary>librdf_uri_as_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_uri_as_string (<parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>);</programlisting>
+<para>Get a pointer to the string representation of the URI.</para>
+<para>Returns a shared pointer to the URI string representation. 
+Note: does not allocate a new string so the caller must not free it.</para>
+<refsect3 id="librdf-uri-as-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-uri-as-string.returns" role="returns">
+<title>Returns</title>
+<para> string representation of URI</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-uri-as-counted-string" role="function">
+<title>librdf_uri_as_counted_string&#160;()</title>
+<indexterm zone="librdf-uri-as-counted-string"><primary>librdf_uri_as_counted_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_uri_as_counted_string (<parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>,
+                              <parameter><link linkend="size-t"><type>size_t</type></link> *len_p</parameter>);</programlisting>
+<para>Get a pointer to the string representation of the URI with length.</para>
+<para>Returns a shared pointer to the URI string representation. 
+Note: does not allocate a new string so the caller must not free it.</para>
+<refsect3 id="librdf-uri-as-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len_p</para></entry>
+<entry role="parameter_description"><para>pointer to location to store length</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-uri-as-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> string representation of URI</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-uri-print" role="function">
+<title>librdf_uri_print&#160;()</title>
+<indexterm zone="librdf-uri-print"><primary>librdf_uri_print</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_uri_print (<parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>,
+                  <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *fh</parameter>);</programlisting>
+<para>Print the URI to the given file handle.</para>
+<refsect3 id="librdf-uri-print.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fh</para></entry>
+<entry role="parameter_description"><para>file handle</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-uri-to-string" role="function">
+<title>librdf_uri_to_string&#160;()</title>
+<indexterm zone="librdf-uri-to-string"><primary>librdf_uri_to_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_uri_to_string (<parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>);</programlisting>
+<para>Format the URI as a string.</para>
+<para>Note: this method allocates a new string since this is a _to_ method
+and the caller must free the resulting memory.</para>
+<refsect3 id="librdf-uri-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-uri-to-string.returns" role="returns">
+<title>Returns</title>
+<para> string representation of the URI or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-uri-to-counted-string" role="function">
+<title>librdf_uri_to_counted_string&#160;()</title>
+<indexterm zone="librdf-uri-to-counted-string"><primary>librdf_uri_to_counted_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_uri_to_counted_string (<parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>,
+                              <parameter><link linkend="size-t"><type>size_t</type></link> *len_p</parameter>);</programlisting>
+<para>Format the URI as a counted string.</para>
+<para>Note: this method allocates a new string since this is a _to_ method
+and the caller must free the resulting memory.</para>
+<refsect3 id="librdf-uri-to-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len_p</para></entry>
+<entry role="parameter_description"><para>pointer to location to store length</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-uri-to-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> string representation of the URI or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-uri-equals" role="function">
+<title>librdf_uri_equals&#160;()</title>
+<indexterm zone="librdf-uri-equals"><primary>librdf_uri_equals</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_uri_equals (<parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *first_uri</parameter>,
+                   <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *second_uri</parameter>);</programlisting>
+<para>Compare two librdf_uri objects for equality.</para>
+<refsect3 id="librdf-uri-equals.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>first_uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object 1</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>second_uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object 2</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-uri-equals.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if the objects are equal</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-uri-is-file-uri" role="function">
+<title>librdf_uri_is_file_uri&#160;()</title>
+<indexterm zone="librdf-uri-is-file-uri"><primary>librdf_uri_is_file_uri</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_uri_is_file_uri (<parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>);</programlisting>
+<para>Test if a URI points to a filename.</para>
+<refsect3 id="librdf-uri-is-file-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-uri-is-file-uri.returns" role="returns">
+<title>Returns</title>
+<para> Non zero if the URI points to a file</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-uri-to-filename" role="function">
+<title>librdf_uri_to_filename&#160;()</title>
+<indexterm zone="librdf-uri-to-filename"><primary>librdf_uri_to_filename</primary></indexterm>
+<programlisting language="C">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_uri_to_filename (<parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>);</programlisting>
+<para>Return pointer to filename of URI.</para>
+<para>Returns a pointer to a newly allocated buffer that
+the caller must free.  This will fail if the URI
+is not a file: URI.  This can be checked with <link linkend="librdf-uri-is-file-uri"><type>librdf_uri_is_file_uri</type></link></para>
+<refsect3 id="librdf-uri-to-filename.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-uri-to-filename.returns" role="returns">
+<title>Returns</title>
+<para> pointer to filename or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-uri-normalised-to-base" role="function">
+<title>librdf_new_uri_normalised_to_base&#160;()</title>
+<indexterm zone="librdf-new-uri-normalised-to-base"><primary>librdf_new_uri_normalised_to_base</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+librdf_new_uri_normalised_to_base (<parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>,
+                                   <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *source_uri</parameter>,
+                                   <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-uri"><type>librdf_uri</type></link> object from a URI string stripped of the source URI, made relative to the base URI.</para>
+<refsect3 id="librdf-new-uri-normalised-to-base.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>URI in string form</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>source_uri</para></entry>
+<entry role="parameter_description"><para>source URI to remove</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>base URI to add</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-uri-normalised-to-base.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-uri"><type>librdf_uri</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-uri-relative-to-base" role="function">
+<title>librdf_new_uri_relative_to_base&#160;()</title>
+<indexterm zone="librdf-new-uri-relative-to-base"><primary>librdf_new_uri_relative_to_base</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+librdf_new_uri_relative_to_base (<parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>,
+                                 <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-uri"><type>librdf_uri</type></link> object from a URI string relative to a base URI.</para>
+<para>An empty uri_string or NULL is equivalent to 
+librdf_new_uri_from_uri(base_uri)</para>
+<refsect3 id="librdf-new-uri-relative-to-base.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>absolute base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>relative URI string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-uri-relative-to-base.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-uri"><type>librdf_uri</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-uri-from-filename" role="function">
+<title>librdf_new_uri_from_filename&#160;()</title>
+<indexterm zone="librdf-new-uri-from-filename"><primary>librdf_new_uri_from_filename</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+librdf_new_uri_from_filename (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                              <parameter>const <link linkend="char"><type>char</type></link> *filename</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-uri"><type>librdf_uri</type></link> object from a filename.</para>
+<refsect3 id="librdf-new-uri-from-filename.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>Redland <link linkend="librdf-world"><type>librdf_world</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>filename</para></entry>
+<entry role="parameter_description"><para>filename</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-uri-from-filename.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-uri"><type>librdf_uri</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-uri-compare" role="function">
+<title>librdf_uri_compare&#160;()</title>
+<indexterm zone="librdf-uri-compare"><primary>librdf_uri_compare</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_uri_compare (<parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri1</parameter>,
+                    <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri2</parameter>);</programlisting>
+<para>Compare two librdf_uri objects lexicographically.</para>
+<para>A NULL URI is always less than (never equal to) a non-NULL URI.</para>
+<refsect3 id="librdf-uri-compare.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri1</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object 1 or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri2</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object 2 or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-uri-compare.returns" role="returns">
+<title>Returns</title>
+<para> &lt;0 if <parameter>uri1</parameter>
+is less than <parameter>uri2</parameter>
+, 0 if equal, &gt;0 if <parameter>uri1</parameter>
+is greater than <parameter>uri2</parameter>
+</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-uri-filter-func" role="function">
+<title>librdf_uri_filter_func&#160;()</title>
+<indexterm zone="librdf-uri-filter-func"><primary>librdf_uri_filter_func</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*librdf_uri_filter_func<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                           <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>);</programlisting>
+<para>Callback function for <link linkend="librdf-parser-set-uri-filter"><function>librdf_parser_set_uri_filter()</function></link></para>
+<refsect3 id="librdf-uri-filter-func.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> URI to check</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-uri-filter-func.returns" role="returns">
+<title>Returns</title>
+<para> non-0 to filter the URI</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-uri.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="librdf-uri" role="typedef">
+<title>librdf_uri</title>
+<indexterm zone="librdf-uri"><primary>librdf_uri</primary></indexterm>
+<programlisting language="C">typedef struct raptor_uri_s librdf_uri;
+</programlisting>
+<para>Redland URI class.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

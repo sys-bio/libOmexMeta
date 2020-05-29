@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-general">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-general.top_of_page">general</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>general</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-general.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-alloc-memory">librdf_alloc_memory</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-calloc-memory">librdf_calloc_memory</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-free-memory">librdf_free_memory</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-general.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-VERSION:CAPS">LIBRDF_VERSION</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-VERSION-MAJOR:CAPS">LIBRDF_VERSION_MAJOR</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-VERSION-MINOR:CAPS">LIBRDF_VERSION_MINOR</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-VERSION-RELEASE:CAPS">LIBRDF_VERSION_RELEASE</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-VERSION-STRING:CAPS">LIBRDF_VERSION_STRING</link></entry></row>
+<row><entry role="variable_type">extern const unsigned int </entry><entry role="function_name"><link linkend="librdf-version-decimal">librdf_version_decimal</link></entry></row>
+<row><entry role="variable_type">extern const unsigned int </entry><entry role="function_name"><link linkend="librdf-version-major">librdf_version_major</link></entry></row>
+<row><entry role="variable_type">extern const unsigned int </entry><entry role="function_name"><link linkend="librdf-version-release">librdf_version_release</link></entry></row>
+<row><entry role="variable_type">extern const unsigned int </entry><entry role="function_name"><link linkend="librdf-version-minor">librdf_version_minor</link></entry></row>
+<row><entry role="variable_type">extern const char * const </entry><entry role="function_name"><link linkend="librdf-version-string">librdf_version_string</link></entry></row>
+<row><entry role="variable_type">extern const char * const </entry><entry role="function_name"><link linkend="librdf-copyright-string">librdf_copyright_string</link></entry></row>
+<row><entry role="variable_type">extern const char * const </entry><entry role="function_name"><link linkend="librdf-short-copyright-string">librdf_short_copyright_string</link></entry></row>
+<row><entry role="variable_type">extern const char * const </entry><entry role="function_name"><link linkend="librdf-license-string">librdf_license_string</link></entry></row>
+<row><entry role="variable_type">extern const char * const </entry><entry role="function_name"><link linkend="librdf-home-url-string">librdf_home_url_string</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="REDLAND-DEPRECATED:CAPS">REDLAND_DEPRECATED</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-general.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-general.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-alloc-memory" role="function">
+<title>librdf_alloc_memory&#160;()</title>
+<indexterm zone="librdf-alloc-memory"><primary>librdf_alloc_memory</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+librdf_alloc_memory (<parameter><link linkend="size-t"><type>size_t</type></link> size</parameter>);</programlisting>
+<para>Allocate memory inside the library similar to <link linkend="malloc"><function>malloc()</function></link>.</para>
+<para>Required for some runtimes where memory must be freed within the same
+shared object it was allocated in.</para>
+<refsect3 id="librdf-alloc-memory.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>size</para></entry>
+<entry role="parameter_description"><para>alloc size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-alloc-memory.returns" role="returns">
+<title>Returns</title>
+<para> pointer to memory or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-calloc-memory" role="function">
+<title>librdf_calloc_memory&#160;()</title>
+<indexterm zone="librdf-calloc-memory"><primary>librdf_calloc_memory</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+librdf_calloc_memory (<parameter><link linkend="size-t"><type>size_t</type></link> nmemb</parameter>,
+                      <parameter><link linkend="size-t"><type>size_t</type></link> size</parameter>);</programlisting>
+<para>Allocate zeroed array of items inside the library similar to <link linkend="calloc"><function>calloc()</function></link>.</para>
+<para>Required for some runtimes where memory must be freed within the same
+shared object it was allocated in.</para>
+<refsect3 id="librdf-calloc-memory.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nmemb</para></entry>
+<entry role="parameter_description"><para>number of members</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>size</para></entry>
+<entry role="parameter_description"><para>size of member</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-calloc-memory.returns" role="returns">
+<title>Returns</title>
+<para> pointer to memory or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-free-memory" role="function">
+<title>librdf_free_memory&#160;()</title>
+<indexterm zone="librdf-free-memory"><primary>librdf_free_memory</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_free_memory (<parameter><link linkend="void"><type>void</type></link> *ptr</parameter>);</programlisting>
+<para>Free memory allocated in the library.</para>
+<para>Required for some runtimes where memory must be freed within the same
+shared object it was allocated in.</para>
+<refsect3 id="librdf-free-memory.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>ptr</para></entry>
+<entry role="parameter_description"><para>pointer to free</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-general.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="LIBRDF-VERSION:CAPS" role="macro">
+<title>LIBRDF_VERSION</title>
+<indexterm zone="LIBRDF-VERSION:CAPS"><primary>LIBRDF_VERSION</primary></indexterm>
+<programlisting language="C">#define LIBRDF_VERSION 10017
+</programlisting>
+<para>Redland librdf library version number</para>
+<para>Format: major * 10000 + minor * 100 + release</para>
+</refsect2>
+<refsect2 id="LIBRDF-VERSION-MAJOR:CAPS" role="macro">
+<title>LIBRDF_VERSION_MAJOR</title>
+<indexterm zone="LIBRDF-VERSION-MAJOR:CAPS"><primary>LIBRDF_VERSION_MAJOR</primary></indexterm>
+<programlisting language="C">#define LIBRDF_VERSION_MAJOR 1
+</programlisting>
+<para>Redland librdf library major version</para>
+</refsect2>
+<refsect2 id="LIBRDF-VERSION-MINOR:CAPS" role="macro">
+<title>LIBRDF_VERSION_MINOR</title>
+<indexterm zone="LIBRDF-VERSION-MINOR:CAPS"><primary>LIBRDF_VERSION_MINOR</primary></indexterm>
+<programlisting language="C">#define LIBRDF_VERSION_MINOR 0
+</programlisting>
+<para>Redland librdf library minor version</para>
+</refsect2>
+<refsect2 id="LIBRDF-VERSION-RELEASE:CAPS" role="macro">
+<title>LIBRDF_VERSION_RELEASE</title>
+<indexterm zone="LIBRDF-VERSION-RELEASE:CAPS"><primary>LIBRDF_VERSION_RELEASE</primary></indexterm>
+<programlisting language="C">#define LIBRDF_VERSION_RELEASE 17
+</programlisting>
+<para>Redland librdf library release</para>
+</refsect2>
+<refsect2 id="LIBRDF-VERSION-STRING:CAPS" role="macro">
+<title>LIBRDF_VERSION_STRING</title>
+<indexterm zone="LIBRDF-VERSION-STRING:CAPS"><primary>LIBRDF_VERSION_STRING</primary></indexterm>
+<programlisting language="C">#define LIBRDF_VERSION_STRING "1.0.17"
+</programlisting>
+<para>Redland librdf library version string</para>
+</refsect2>
+<refsect2 id="librdf-version-decimal" role="variable">
+<title>librdf_version_decimal</title>
+<indexterm zone="librdf-version-decimal"><primary>librdf_version_decimal</primary></indexterm>
+<programlisting language="C">extern const unsigned int librdf_version_decimal;
+</programlisting>
+<para>Library full version as a decimal integer.</para>
+<para>See also <link linkend="librdf-version-string"><type>librdf_version_string</type></link>.</para>
+</refsect2>
+<refsect2 id="librdf-version-major" role="variable">
+<title>librdf_version_major</title>
+<indexterm zone="librdf-version-major"><primary>librdf_version_major</primary></indexterm>
+<programlisting language="C">extern const unsigned int librdf_version_major;
+</programlisting>
+<para>Library major version number as a decimal integer.</para>
+</refsect2>
+<refsect2 id="librdf-version-release" role="variable">
+<title>librdf_version_release</title>
+<indexterm zone="librdf-version-release"><primary>librdf_version_release</primary></indexterm>
+<programlisting language="C">extern const unsigned int librdf_version_release;
+</programlisting>
+<para>Library release version number as a decimal integer.</para>
+</refsect2>
+<refsect2 id="librdf-version-minor" role="variable">
+<title>librdf_version_minor</title>
+<indexterm zone="librdf-version-minor"><primary>librdf_version_minor</primary></indexterm>
+<programlisting language="C">extern const unsigned int librdf_version_minor;
+</programlisting>
+<para>Library minor version number as a decimal integer.</para>
+</refsect2>
+<refsect2 id="librdf-version-string" role="variable">
+<title>librdf_version_string</title>
+<indexterm zone="librdf-version-string"><primary>librdf_version_string</primary></indexterm>
+<programlisting language="C">extern const char * const librdf_version_string;
+</programlisting>
+<para>Library full version as a string.</para>
+<para>See also <link linkend="librdf-version-decimal"><type>librdf_version_decimal</type></link>.</para>
+</refsect2>
+<refsect2 id="librdf-copyright-string" role="variable">
+<title>librdf_copyright_string</title>
+<indexterm zone="librdf-copyright-string"><primary>librdf_copyright_string</primary></indexterm>
+<programlisting language="C">extern const char * const librdf_copyright_string;
+</programlisting>
+<para>Copyright string (multiple lines).</para>
+</refsect2>
+<refsect2 id="librdf-short-copyright-string" role="variable">
+<title>librdf_short_copyright_string</title>
+<indexterm zone="librdf-short-copyright-string"><primary>librdf_short_copyright_string</primary></indexterm>
+<programlisting language="C">extern const char * const librdf_short_copyright_string;
+</programlisting>
+<para>Short copyright string (one line).</para>
+</refsect2>
+<refsect2 id="librdf-license-string" role="variable">
+<title>librdf_license_string</title>
+<indexterm zone="librdf-license-string"><primary>librdf_license_string</primary></indexterm>
+<programlisting language="C">extern const char * const librdf_license_string;
+</programlisting>
+<para>Redland librdf license string.</para>
+</refsect2>
+<refsect2 id="librdf-home-url-string" role="variable">
+<title>librdf_home_url_string</title>
+<indexterm zone="librdf-home-url-string"><primary>librdf_home_url_string</primary></indexterm>
+<programlisting language="C">extern const char * const librdf_home_url_string;
+</programlisting>
+<para>Redland librdf home page URL.</para>
+</refsect2>
+<refsect2 id="REDLAND-DEPRECATED:CAPS" role="macro">
+<title>REDLAND_DEPRECATED</title>
+<indexterm zone="REDLAND-DEPRECATED:CAPS"><primary>REDLAND_DEPRECATED</primary></indexterm>
+<programlisting language="C">#define REDLAND_DEPRECATED __attribute__((deprecated))
+</programlisting>
+</refsect2>
+
+</refsect1>
+
+</refentry>

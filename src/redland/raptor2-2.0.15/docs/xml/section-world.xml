@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-world">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-world.top_of_page">section-world</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-world</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-world.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="raptor-new-world">raptor_new_world</link></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-world-open">raptor_world_open</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-world">raptor_free_world</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-world-set-flag">raptor_world_set_flag</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-world-set-libxslt-security-preferences">raptor_world_set_libxslt_security_preferences</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-world-set-log-handler">raptor_world_set_log_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="raptor-syntax-description"><returnvalue>raptor_syntax_description</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-world-get-parser-description">raptor_world_get_parser_description</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-world-is-parser-name">raptor_world_is_parser_name</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-world-guess-parser-name">raptor_world_guess_parser_name</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="raptor-syntax-description"><returnvalue>raptor_syntax_description</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-world-get-serializer-description">raptor_world_get_serializer_description</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-world-is-serializer-name">raptor_world_is_serializer_name</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-world-generate-bnodeid">raptor_world_generate_bnodeid</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-world-set-generate-bnodeid-handler">raptor_world_set_generate_bnodeid_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-world-set-generate-bnodeid-parameters">raptor_world_set_generate_bnodeid_parameters</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-world-get-parsers-count">raptor_world_get_parsers_count</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-world-get-serializers-count">raptor_world_get_serializers_count</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-world.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-world">raptor_world</link></entry></row>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="raptor-world-flag">raptor_world_flag</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-world.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-world.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-new-world" role="macro">
+<title>raptor_new_world</title>
+<indexterm zone="raptor-new-world"><primary>raptor_new_world</primary></indexterm>
+<programlisting language="C">#define raptor_new_world() raptor_new_world_internal(RAPTOR_VERSION)
+</programlisting>
+<para>Allocate a new raptor_world object.</para>
+<para>Allocation of the world and initialization are decoupled to allow
+changing settings on the world object before init.</para>
+<para>Settings and configuration of the world may be made after creating
+the object and before the world is initialized using methods such
+as <link linkend="raptor-world-set-flag"><function>raptor_world_set_flag()</function></link>, <link linkend="raptor-world-set-log-handler"><function>raptor_world_set_log_handler()</function></link>,
+<link linkend="raptor-world-set-generate-bnodeid-handler"><function>raptor_world_set_generate_bnodeid_handler()</function></link>.  Some configuration
+may not be changed after initialization.</para>
+<para>The raptor_world is initialized with <link linkend="raptor-world-open"><function>raptor_world_open()</function></link>.</para>
+<refsect3 id="raptor-new-world.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>version_decimal</para></entry>
+<entry role="parameter_description"><para>raptor version as a decimal integer as defined by the macro <link linkend="RAPTOR-VERSION:CAPS"><type>RAPTOR_VERSION</type></link> and static int <link linkend="raptor-version-decimal"><type>raptor_version_decimal</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-world.returns" role="returns">
+<title>Returns</title>
+<para> uninitialized raptor_world object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-open" role="function">
+<title>raptor_world_open&#160;()</title>
+<indexterm zone="raptor-world-open"><primary>raptor_world_open</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_world_open (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>);</programlisting>
+<para>Initialise the raptor library.</para>
+<para>Initializes a <link linkend="raptor-world"><type>raptor_world</type></link> object created by <link linkend="raptor-new-world"><function>raptor_new_world()</function></link>.
+Allocation and initialization are decoupled to allow
+changing settings on the world object before init.</para>
+<para>The initialized world object is used with subsequent raptor API calls.</para>
+<refsect3 id="raptor-world-open.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-world-open.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-world" role="function">
+<title>raptor_free_world&#160;()</title>
+<indexterm zone="raptor-free-world"><primary>raptor_free_world</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_world (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>);</programlisting>
+<para>Terminate the raptor library.</para>
+<para>Destroys the raptor_world object and all related information.</para>
+<refsect3 id="raptor-free-world.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-set-flag" role="function">
+<title>raptor_world_set_flag&#160;()</title>
+<indexterm zone="raptor-world-set-flag"><primary>raptor_world_set_flag</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_world_set_flag (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                       <parameter><link linkend="raptor-world-flag"><type>raptor_world_flag</type></link> flag</parameter>,
+                       <parameter><link linkend="int"><type>int</type></link> value</parameter>);</programlisting>
+<para>Set library-wide configuration</para>
+<para>This function is used to control raptor-wide options across
+classes.  These options must be set before <link linkend="raptor-world-open"><function>raptor_world_open()</function></link> is
+called explicitly or implicitly (by creating a raptor object).
+There is no enumeration function for these flags because they are
+not user options and must be set before the library is
+initialised.  For similar reasons, there is no get function.</para>
+<para>See the <link linkend="raptor-world-flags"><type>raptor_world_flags</type></link> documentation for full details of
+what the flags mean.</para>
+<refsect3 id="raptor-world-set-flag.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>flag</para></entry>
+<entry role="parameter_description"><para>flag</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>value</para></entry>
+<entry role="parameter_description"><para>value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-world-set-flag.returns" role="returns">
+<title>Returns</title>
+<para> 0 on success, non-0 on failure: &lt;0 on errors (-1 if flag is unknown, -2 if value is illegal) and &gt;0 if world is already opened</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-set-libxslt-security-preferences" role="function">
+<title>raptor_world_set_libxslt_security_preferences&#160;()</title>
+<indexterm zone="raptor-world-set-libxslt-security-preferences"><primary>raptor_world_set_libxslt_security_preferences</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_world_set_libxslt_security_preferences
+                               (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                <parameter><link linkend="void"><type>void</type></link> *security_preferences</parameter>);</programlisting>
+<para>Set libxslt security preferences policy object</para>
+<para>The <parameter>security_preferences</parameter>
+ object will NOT become owned by
+<link linkend="raptor-world"><type>raptor_world</type></link>.</para>
+<para>If libxslt is compiled into the library, <parameter>security_preferences</parameter>
+
+should be an <link linkend="xsltSecurityPrefsPtr"><type>xsltSecurityPrefsPtr</type></link> and will be used to call
+<link linkend="xsltSetCtxtSecurityPrefs"><function>xsltSetCtxtSecurityPrefs()</function></link> when an XSLT engine is initialised.
+If <parameter>security_preferences</parameter>
+ is NULL, this will disable all raptor's
+calls to <link linkend="xsltSetCtxtSecurityPrefs"><function>xsltSetCtxtSecurityPrefs()</function></link>.</para>
+<para>If libxslt is not compiled in, the object set here is not used.</para>
+<refsect3 id="raptor-world-set-libxslt-security-preferences.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>security_preferences</para></entry>
+<entry role="parameter_description"><para>security preferences (an <link linkend="xsltSecurityPrefsPtr"><type>xsltSecurityPrefsPtr</type></link>) or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-world-set-libxslt-security-preferences.returns" role="returns">
+<title>Returns</title>
+<para> 0 on success, non-0 on failure: &lt;0 on errors and &gt;0 if world is already opened</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-set-log-handler" role="function">
+<title>raptor_world_set_log_handler&#160;()</title>
+<indexterm zone="raptor-world-set-log-handler"><primary>raptor_world_set_log_handler</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_world_set_log_handler (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                              <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                              <parameter><link linkend="raptor-log-handler"><type>raptor_log_handler</type></link> handler</parameter>);</programlisting>
+<para>Set the message (error, warning, info) handling function.</para>
+<para>The function will receive callbacks when messages are generated</para>
+<refsect3 id="raptor-world-set-log-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data to pass to function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>pointer to the function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-world-set-log-handler.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-get-parser-description" role="function">
+<title>raptor_world_get_parser_description&#160;()</title>
+<indexterm zone="raptor-world-get-parser-description"><primary>raptor_world_get_parser_description</primary></indexterm>
+<programlisting language="C">const <link linkend="raptor-syntax-description"><returnvalue>raptor_syntax_description</returnvalue></link>&#160;*
+raptor_world_get_parser_description (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                     <parameter>unsigned <link linkend="int"><type>int</type></link> counter</parameter>);</programlisting>
+<para>Get parser descriptive syntax information</para>
+<refsect3 id="raptor-world-get-parser-description.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>counter</para></entry>
+<entry role="parameter_description"><para>index into the list of parsers</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-world-get-parser-description.returns" role="returns">
+<title>Returns</title>
+<para> description or NULL if counter is out of range</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-is-parser-name" role="function">
+<title>raptor_world_is_parser_name&#160;()</title>
+<indexterm zone="raptor-world-is-parser-name"><primary>raptor_world_is_parser_name</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_world_is_parser_name (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                             <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>);</programlisting>
+<para>Check the name of a parser is known.</para>
+<refsect3 id="raptor-world-is-parser-name.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the syntax name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-world-is-parser-name.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if name is a known syntax name</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-guess-parser-name" role="function">
+<title>raptor_world_guess_parser_name&#160;()</title>
+<indexterm zone="raptor-world-guess-parser-name"><primary>raptor_world_guess_parser_name</primary></indexterm>
+<programlisting language="C">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_world_guess_parser_name (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> *mime_type</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> len</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *identifier</parameter>);</programlisting>
+<para>Guess a parser name for content.</para>
+<para>Find a parser by scoring recognition of the syntax by a block of
+characters, the content identifier or a mime type.  The content
+identifier is typically a filename or URI or some other identifier.</para>
+<para>If the guessing finds only low scores, NULL will be returned.</para>
+<refsect3 id="raptor-world-guess-parser-name.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>URI identifying the syntax (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>mime type identifying the content (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>buffer of content to guess (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>identifier</para></entry>
+<entry role="parameter_description"><para>identifier of content (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-world-guess-parser-name.returns" role="returns">
+<title>Returns</title>
+<para> a parser name or NULL if no guess could be made</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-get-serializer-description" role="function">
+<title>raptor_world_get_serializer_description&#160;()</title>
+<indexterm zone="raptor-world-get-serializer-description"><primary>raptor_world_get_serializer_description</primary></indexterm>
+<programlisting language="C">const <link linkend="raptor-syntax-description"><returnvalue>raptor_syntax_description</returnvalue></link>&#160;*
+raptor_world_get_serializer_description
+                               (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                <parameter>unsigned <link linkend="int"><type>int</type></link> counter</parameter>);</programlisting>
+<para>Get serializer descriptive syntax information</para>
+<refsect3 id="raptor-world-get-serializer-description.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>counter</para></entry>
+<entry role="parameter_description"><para>index into the list of serializers</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-world-get-serializer-description.returns" role="returns">
+<title>Returns</title>
+<para> description or NULL if counter is out of range</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-is-serializer-name" role="function">
+<title>raptor_world_is_serializer_name&#160;()</title>
+<indexterm zone="raptor-world-is-serializer-name"><primary>raptor_world_is_serializer_name</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_world_is_serializer_name (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>);</programlisting>
+<para>Check name of a serializer.</para>
+<refsect3 id="raptor-world-is-serializer-name.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the syntax name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-world-is-serializer-name.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if name is a known syntax name</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-generate-bnodeid" role="function">
+<title>raptor_world_generate_bnodeid&#160;()</title>
+<indexterm zone="raptor-world-generate-bnodeid"><primary>raptor_world_generate_bnodeid</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_world_generate_bnodeid (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>);</programlisting>
+<para>Generate an new blank node ID</para>
+<refsect3 id="raptor-world-generate-bnodeid.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-world-generate-bnodeid.returns" role="returns">
+<title>Returns</title>
+<para> newly allocated generated ID or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-set-generate-bnodeid-handler" role="function">
+<title>raptor_world_set_generate_bnodeid_handler&#160;()</title>
+<indexterm zone="raptor-world-set-generate-bnodeid-handler"><primary>raptor_world_set_generate_bnodeid_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_world_set_generate_bnodeid_handler
+                               (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                                <parameter><link linkend="raptor-generate-bnodeid-handler"><type>raptor_generate_bnodeid_handler</type></link> handler</parameter>);</programlisting>
+<para>Set the generate ID handler function.</para>
+<para>Sets the function to generate IDs for the library.  The handler is
+called with the <parameter>user_data</parameter>
+ parameter.</para>
+<para>The final argument of the callback method is user_bnodeid, the value of
+the rdf:nodeID attribute that the user provided if any (or NULL).
+It can either be returned directly as the generated value when present or
+modified.  The passed in value must be <link linkend="free"><function>free()</function></link>d if it is not used.</para>
+<para>If handler is NULL, the default method is used</para>
+<refsect3 id="raptor-world-set-generate-bnodeid-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-world"><type>raptor_world</type></link> world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data pointer for callback</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>generate ID callback function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-set-generate-bnodeid-parameters" role="function">
+<title>raptor_world_set_generate_bnodeid_parameters&#160;()</title>
+<indexterm zone="raptor-world-set-generate-bnodeid-parameters"><primary>raptor_world_set_generate_bnodeid_parameters</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_world_set_generate_bnodeid_parameters
+                               (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                <parameter><link linkend="char"><type>char</type></link> *prefix</parameter>,
+                                <parameter><link linkend="int"><type>int</type></link> base</parameter>);</programlisting>
+<para>Set default ID generation parameters.</para>
+<para>Sets the parameters for the default algorithm used to generate IDs.
+The default algorithm uses both <parameter>prefix</parameter>
+ and <parameter>base</parameter>
+ to generate a new
+identifier.   The exact identifier generated is not guaranteed to
+be a strict concatenation of <parameter>prefix</parameter>
+ and <parameter>base</parameter>
+ but will use both
+parts. The <parameter>prefix</parameter>
+ parameter is copied to generate an ID.</para>
+<para>For finer control of the generated identifiers, use
+<link linkend="raptor-world-set-generate-bnodeid-handler"><function>raptor_world_set_generate_bnodeid_handler()</function></link>.</para>
+<para>If <parameter>prefix</parameter>
+ is NULL, the default prefix is used (currently "genid")
+If <parameter>base</parameter>
+ is less than 1, it is initialised to 1.</para>
+<refsect3 id="raptor-world-set-generate-bnodeid-parameters.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-world"><type>raptor_world</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>prefix</para></entry>
+<entry role="parameter_description"><para>prefix string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base</para></entry>
+<entry role="parameter_description"><para>integer base identifier</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-get-parsers-count" role="function">
+<title>raptor_world_get_parsers_count&#160;()</title>
+<indexterm zone="raptor-world-get-parsers-count"><primary>raptor_world_get_parsers_count</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_world_get_parsers_count (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>);</programlisting>
+<para>Get number of parsers</para>
+<refsect3 id="raptor-world-get-parsers-count.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-world-get-parsers-count.returns" role="returns">
+<title>Returns</title>
+<para> number of parsers</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-get-serializers-count" role="function">
+<title>raptor_world_get_serializers_count&#160;()</title>
+<indexterm zone="raptor-world-get-serializers-count"><primary>raptor_world_get_serializers_count</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_world_get_serializers_count (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>);</programlisting>
+<para>Get number of serializers</para>
+<refsect3 id="raptor-world-get-serializers-count.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-world-get-serializers-count.returns" role="returns">
+<title>Returns</title>
+<para> number of serializers</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-world.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-world" role="typedef">
+<title>raptor_world</title>
+<indexterm zone="raptor-world"><primary>raptor_world</primary></indexterm>
+<programlisting language="C">typedef struct raptor_world_s raptor_world;
+</programlisting>
+<para>Raptor world class.</para>
+</refsect2>
+<refsect2 id="raptor-world-flag" role="enum">
+<title>enum raptor_world_flag</title>
+<indexterm zone="raptor-world-flag"><primary>raptor_world_flag</primary></indexterm>
+<para>Raptor world flags</para>
+<para>These are used by <link linkend="raptor-world-set-flags"><function>raptor_world_set_flags()</function></link> to control raptor-wide
+options across classes.  These must be set before
+<link linkend="raptor-world-open"><function>raptor_world_open()</function></link> is called explicitly or implicitly (by
+creating a raptor object).  There is no enumeration function for
+these flags because they are not user options and must be set
+before the library is initialised.  For similar reasons, there is
+no get function.</para>
+<para>If any libxml handler saving/restoring is enabled, any existing
+handler and context is saved before parsing and restored
+afterwards.  Otherwise, no saving/restoring is performed.</para>
+<refsect3 id="raptor-world-flag.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-WORLD-FLAG-LIBXML-GENERIC-ERROR-SAVE:CAPS">RAPTOR_WORLD_FLAG_LIBXML_GENERIC_ERROR_SAVE</para></entry>
+<entry role="enum_member_description"><para>if set (non-0 value) - save/restore the libxml generic error handler when raptor library initializes (default set)</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-WORLD-FLAG-LIBXML-STRUCTURED-ERROR-SAVE:CAPS">RAPTOR_WORLD_FLAG_LIBXML_STRUCTURED_ERROR_SAVE</para></entry>
+<entry role="enum_member_description"><para>if set (non-0 value) - save/restore the libxml structured error handler when raptor library terminates (default set)</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-WORLD-FLAG-URI-INTERNING:CAPS">RAPTOR_WORLD_FLAG_URI_INTERNING</para></entry>
+<entry role="enum_member_description"><para>if set (non-0 value) - each URI is saved interned in-memory and reused (default set)</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-WORLD-FLAG-WWW-SKIP-INIT-FINISH:CAPS">RAPTOR_WORLD_FLAG_WWW_SKIP_INIT_FINISH</para></entry>
+<entry role="enum_member_description"><para>if set (non-0 value) the raptor will neither initialise or terminate the lower level WWW library.  Usually in raptor initialising either curl_global_init (for libcurl) are called and in raptor cleanup, curl_global_cleanup is called.   This flag allows the application finer control over these libraries such as setting other global options or potentially calling and terminating raptor several times.  It does mean that applications which use this call must do their own extra work in order to allocate and free all resources to the system.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+
+</refentry>

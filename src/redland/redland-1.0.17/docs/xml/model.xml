@@ -1,0 +1,1814 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-model">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-model.top_of_page">model</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>model</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-model.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-enumerate">librdf_model_enumerate</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-model"><returnvalue>librdf_model</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-model">librdf_new_model</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-model"><returnvalue>librdf_model</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-model-with-options">librdf_new_model_with_options</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-model"><returnvalue>librdf_model</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-model-from-model">librdf_new_model_from_model</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-free-model">librdf_free_model</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-size">librdf_model_size</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-add">librdf_model_add</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-add-string-literal-statement">librdf_model_add_string_literal_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-add-typed-literal-statement">librdf_model_add_typed_literal_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-add-statement">librdf_model_add_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-add-statements">librdf_model_add_statements</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-remove-statement">librdf_model_remove_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-contains-statement">librdf_model_contains_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-has-arc-in">librdf_model_has_arc_in</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-has-arc-out">librdf_model_has_arc_out</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-as-stream">librdf_model_as_stream</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-serialise">librdf_model_serialise</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-find-statements">librdf_model_find_statements</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-find-statements-with-options">librdf_model_find_statements_with_options</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-get-sources">librdf_model_get_sources</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-get-arcs">librdf_model_get_arcs</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-get-targets">librdf_model_get_targets</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-get-source">librdf_model_get_source</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-get-arc">librdf_model_get_arc</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-get-target">librdf_model_get_target</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-get-arcs-in">librdf_model_get_arcs_in</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-get-arcs-out">librdf_model_get_arcs_out</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-add-submodel">librdf_model_add_submodel</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-remove-submodel">librdf_model_remove_submodel</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-print">librdf_model_print</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-context-add-statement">librdf_model_context_add_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-context-add-statements">librdf_model_context_add_statements</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-context-remove-statement">librdf_model_context_remove_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-context-remove-statements">librdf_model_context_remove_statements</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-context-as-stream">librdf_model_context_as_stream</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-context-serialize">librdf_model_context_serialize</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-contains-context">librdf_model_contains_context</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-supports-contexts">librdf_model_supports_contexts</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-query-results"><returnvalue>librdf_query_results</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-query-execute">librdf_model_query_execute</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-sync">librdf_model_sync</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-storage"><returnvalue>librdf_storage</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-get-storage">librdf_model_get_storage</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-load">librdf_model_load</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-to-counted-string">librdf_model_to_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-to-string">librdf_model_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-find-statements-in-context">librdf_model_find_statements_in_context</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-get-contexts">librdf_model_get_contexts</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-get-feature">librdf_model_get_feature</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-set-feature">librdf_model_set_feature</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-transaction-commit">librdf_model_transaction_commit</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-model-transaction-get-handle">librdf_model_transaction_get_handle</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-transaction-rollback">librdf_model_transaction_rollback</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-transaction-start">librdf_model_transaction_start</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-transaction-start-with-handle">librdf_model_transaction_start_with_handle</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-model-write">librdf_model_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-model.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-model">librdf_model</link></entry></row>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-model-factory">librdf_model_factory</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MODEL-FIND-OPTION-MATCH-SUBSTRING-LITERAL:CAPS">LIBRDF_MODEL_FIND_OPTION_MATCH_SUBSTRING_LITERAL</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MODEL-FEATURE-CONTEXTS:CAPS">LIBRDF_MODEL_FEATURE_CONTEXTS</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-model.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-model.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-model-enumerate" role="function">
+<title>librdf_model_enumerate&#160;()</title>
+<indexterm zone="librdf-model-enumerate"><primary>librdf_model_enumerate</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_enumerate (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                        <parameter>const unsigned <link linkend="int"><type>int</type></link> counter</parameter>,
+                        <parameter>const <link linkend="char"><type>char</type></link> **name</parameter>,
+                        <parameter>const <link linkend="char"><type>char</type></link> **label</parameter>);</programlisting>
+<para>Get information on models.</para>
+<refsect3 id="librdf-model-enumerate.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>counter</para></entry>
+<entry role="parameter_description"><para>index into the list of models</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>pointer to store the name of the model (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>label</para></entry>
+<entry role="parameter_description"><para>pointer to store syntax readable label (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-enumerate.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure of if counter is out of range</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-model" role="function">
+<title>librdf_new_model&#160;()</title>
+<indexterm zone="librdf-new-model"><primary>librdf_new_model</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-model"><returnvalue>librdf_model</returnvalue></link>&#160;*
+librdf_new_model (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                  <parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                  <parameter>const <link linkend="char"><type>char</type></link> *options_string</parameter>);</programlisting>
+<para>Constructor - create a new storage <link linkend="librdf-model"><type>librdf_model</type></link> object.</para>
+<para>The options are encoded as described in <link linkend="librdf-hash-from-string"><function>librdf_hash_from_string()</function></link>
+and can be NULL if none are required.</para>
+<refsect3 id="librdf-new-model.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>options_string</para></entry>
+<entry role="parameter_description"><para>options to initialise model</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-model.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-model"><type>librdf_model</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-model-with-options" role="function">
+<title>librdf_new_model_with_options&#160;()</title>
+<indexterm zone="librdf-new-model-with-options"><primary>librdf_new_model_with_options</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-model"><returnvalue>librdf_model</returnvalue></link>&#160;*
+librdf_new_model_with_options (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                               <parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                               <parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *options</parameter>);</programlisting>
+<para>Constructor - Create a new <link linkend="librdf-model"><type>librdf_model</type></link> with storage.</para>
+<para>Options are presently not used.</para>
+<refsect3 id="librdf-new-model-with-options.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> storage to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>options</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-hash"><type>librdf_hash</type></link> of options to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-model-with-options.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-model"><type>librdf_model</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-model-from-model" role="function">
+<title>librdf_new_model_from_model&#160;()</title>
+<indexterm zone="librdf-new-model-from-model"><primary>librdf_new_model_from_model</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-model"><returnvalue>librdf_model</returnvalue></link>&#160;*
+librdf_new_model_from_model (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Copy constructor - create a new librdf_model from an existing one.</para>
+<para>Creates a new model as a copy of the existing model in the same
+storage context.</para>
+<refsect3 id="librdf-new-model-from-model.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the existing <link linkend="librdf-model"><type>librdf_model</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-model-from-model.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-model"><type>librdf_model</type></link> or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-free-model" role="function">
+<title>librdf_free_model&#160;()</title>
+<indexterm zone="librdf-free-model"><primary>librdf_free_model</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_free_model (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Destructor - Destroy a <link linkend="librdf-model"><type>librdf_model</type></link> object.</para>
+<refsect3 id="librdf-free-model.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> model to destroy</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-size" role="function">
+<title>librdf_model_size&#160;()</title>
+<indexterm zone="librdf-model-size"><primary>librdf_model_size</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_size (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Get the number of statements in the model.</para>
+<para>WARNING: Not all underlying stores can return the size of the graph
+In which case the return value will be negative.</para>
+<refsect3 id="librdf-model-size.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-size.returns" role="returns">
+<title>Returns</title>
+<para> the number of statements or &lt;0 if not possible</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-add" role="function">
+<title>librdf_model_add&#160;()</title>
+<indexterm zone="librdf-model-add"><primary>librdf_model_add</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_add (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                  <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *subject</parameter>,
+                  <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *predicate</parameter>,
+                  <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *object</parameter>);</programlisting>
+<para>Create and add a new statement about a resource to the model.</para>
+<para>After this method, the <link linkend="librdf-node"><type>librdf_node</type></link> objects become owned by the model.
+All of subject, predicate and object must be non-NULL.</para>
+<refsect3 id="librdf-model-add.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>subject</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> of subject</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>predicate</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> of predicate</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>object</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> of object (literal or resource)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-add.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-add-string-literal-statement" role="function">
+<title>librdf_model_add_string_literal_statement&#160;()</title>
+<indexterm zone="librdf-model-add-string-literal-statement"><primary>librdf_model_add_string_literal_statement</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_add_string_literal_statement
+                               (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *subject</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *predicate</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *literal</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> *xml_language</parameter>,
+                                <parameter><link linkend="int"><type>int</type></link> is_wf_xml</parameter>);</programlisting>
+<para>Create and add a new statement about a literal to the model.</para>
+<para>The language can be set to NULL if not used.
+All of subject, predicate and literal must be non-NULL.</para>
+<para>0.9.12: xml_space argument deleted</para>
+<refsect3 id="librdf-model-add-string-literal-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>subject</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> of subject</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>predicate</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> of predicate</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>literal</para></entry>
+<entry role="parameter_description"><para>string literal conten</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_language</para></entry>
+<entry role="parameter_description"><para>language of literal</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>is_wf_xml</para></entry>
+<entry role="parameter_description"><para>literal is XML</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-add-string-literal-statement.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-add-typed-literal-statement" role="function">
+<title>librdf_model_add_typed_literal_statement&#160;()</title>
+<indexterm zone="librdf-model-add-typed-literal-statement"><primary>librdf_model_add_typed_literal_statement</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_add_typed_literal_statement
+                               (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *subject</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *predicate</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *literal</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> *xml_language</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *datatype_uri</parameter>);</programlisting>
+<para>Create and add a new statement about a typed literal to the model.</para>
+<para>After this method, the <link linkend="librdf-node"><type>librdf_node</type></link> subject and predicate become
+owned by the model.</para>
+<para>The language can be set to NULL if not used.
+All of subject, predicate and literal must be non-NULL.</para>
+<refsect3 id="librdf-model-add-typed-literal-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>subject</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> of subject</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>predicate</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> of predicate</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>literal</para></entry>
+<entry role="parameter_description"><para>string literal content</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_language</para></entry>
+<entry role="parameter_description"><para>language of literal</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>datatype_uri</para></entry>
+<entry role="parameter_description"><para>datatype <link linkend="librdf-uri"><type>librdf_uri</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-add-typed-literal-statement.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-add-statement" role="function">
+<title>librdf_model_add_statement&#160;()</title>
+<indexterm zone="librdf-model-add-statement"><primary>librdf_model_add_statement</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_add_statement (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                            <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Add a statement to the model.</para>
+<para>The passed-in statement is copied when added to the model, not
+shared with the model.  It must be a complete statement - all
+of subject, predicate, object parts must be present.</para>
+<para>Only statements that are legal RDF can be added: URI or blank subject,
+URI predicate and URI or blank or literal object (i.e. anything).</para>
+<para>If the statement already exists in the model, it is not added.
+Duplicate statements can be added when used with Redland Contexts
+such as with <link linkend="librdf-model-context-add-statement"><type>librdf_model_context_add_statement</type></link></para>
+<refsect3 id="librdf-model-add-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>statement object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-add-statement.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-add-statements" role="function">
+<title>librdf_model_add_statements&#160;()</title>
+<indexterm zone="librdf-model-add-statements"><primary>librdf_model_add_statements</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_add_statements (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                             <parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *statement_stream</parameter>);</programlisting>
+<para>Add a stream of statements to the model.</para>
+<para>If any of the statements are illegal RDF statements they will
+be skipped and not added.  See <link linkend="librdf-model-add-statement"><type>librdf_model_add_statement</type></link> for the detail.</para>
+<para>If any of the statements already exists in the store, they are not
+added unless Redland contexts are being used.  See also
+<link linkend="librdf-model-context-add-statements"><type>librdf_model_context_add_statements</type></link></para>
+<refsect3 id="librdf-model-add-statements.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement_stream</para></entry>
+<entry role="parameter_description"><para>stream of statements to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-add-statements.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-remove-statement" role="function">
+<title>librdf_model_remove_statement&#160;()</title>
+<indexterm zone="librdf-model-remove-statement"><primary>librdf_model_remove_statement</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_remove_statement (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                               <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Remove a known statement from the model.</para>
+<para>It must be a complete statement - all of subject, predicate, object
+parts must be present and a legal RDF triple.</para>
+<refsect3 id="librdf-model-remove-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>the statement</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-remove-statement.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-contains-statement" role="function">
+<title>librdf_model_contains_statement&#160;()</title>
+<indexterm zone="librdf-model-contains-statement"><primary>librdf_model_contains_statement</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_contains_statement (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                 <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Check for a statement in the model.</para>
+<para>It must be a complete statement - all of subject, predicate,
+object parts must be present and a legal RDF triple.  Use
+librdf_model_find_statements to search for partial statement
+matches.</para>
+<para>WARNING: librdf_model_contains_statement may not work correctly
+with stores using contexts.  In this case, a search using
+librdf_model_find_statements for a non-empty list will
+return the correct result.</para>
+<refsect3 id="librdf-model-contains-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>the statement</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-contains-statement.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if the model contains the statement (&gt;0 if the statement is illegal)</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-has-arc-in" role="function">
+<title>librdf_model_has_arc_in&#160;()</title>
+<indexterm zone="librdf-model-has-arc-in"><primary>librdf_model_has_arc_in</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_has_arc_in (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                         <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>,
+                         <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *property</parameter>);</programlisting>
+<para>Check if a node has a given property pointing to it.</para>
+<refsect3 id="librdf-model-has-arc-in.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> resource node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>property</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> property node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-has-arc-in.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if arc property does point to the resource node</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-has-arc-out" role="function">
+<title>librdf_model_has_arc_out&#160;()</title>
+<indexterm zone="librdf-model-has-arc-out"><primary>librdf_model_has_arc_out</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_has_arc_out (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                          <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>,
+                          <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *property</parameter>);</programlisting>
+<para>Check if a node has a given property pointing from it.</para>
+<refsect3 id="librdf-model-has-arc-out.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> resource node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>property</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> property node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-has-arc-out.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if arc property does point from the resource node</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-as-stream" role="function">
+<title>librdf_model_as_stream&#160;()</title>
+<indexterm zone="librdf-model-as-stream"><primary>librdf_model_as_stream</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_model_as_stream (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>List the model contents as a stream of statements.</para>
+<refsect3 id="librdf-model-as-stream.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-as-stream.returns" role="returns">
+<title>Returns</title>
+<para> a <link linkend="librdf-stream"><type>librdf_stream</type></link> or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-serialise" role="function" condition="deprecated:">
+<title>librdf_model_serialise&#160;()</title>
+<indexterm zone="librdf-model-serialise" role="deprecated"><primary>librdf_model_serialise</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_model_serialise (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<warning><para><literal>librdf_model_serialise</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Serialise the entire model as a stream (DEPRECATED).</para>
+<para>DEPRECATED to reduce confusion with the librdf_serializer class.
+Please use librdf_model_as_stream.</para>
+<refsect3 id="librdf-model-serialise.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-serialise.returns" role="returns">
+<title>Returns</title>
+<para> a <link linkend="librdf-stream"><type>librdf_stream</type></link> or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-find-statements" role="function">
+<title>librdf_model_find_statements&#160;()</title>
+<indexterm zone="librdf-model-find-statements"><primary>librdf_model_find_statements</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_model_find_statements (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                              <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Find matching statements in the model.</para>
+<para>The partial statement is a statement where the subject, predicate
+and/or object can take the value NULL which indicates a match with
+any value in the model</para>
+<refsect3 id="librdf-model-find-statements.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>the partial statement to match</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-find-statements.returns" role="returns">
+<title>Returns</title>
+<para> a <link linkend="librdf-stream"><type>librdf_stream</type></link> of statements (can be empty) or NULL
+on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-find-statements-with-options" role="function">
+<title>librdf_model_find_statements_with_options&#160;()</title>
+<indexterm zone="librdf-model-find-statements-with-options"><primary>librdf_model_find_statements_with_options</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_model_find_statements_with_options
+                               (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context_node</parameter>,
+                                <parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *options</parameter>);</programlisting>
+<para>Search the model for matching statements with match options.</para>
+<para>Searches the model for a (partial) statement as described in
+<link linkend="librdf-statement-match"><function>librdf_statement_match()</function></link> and returns a <link linkend="librdf-stream"><type>librdf_stream</type></link> of
+matching <link linkend="librdf-statement"><type>librdf_statement</type></link> objects.</para>
+<para>If options is given then the match is made according to
+the given options.  If options is NULL, this is equivalent
+to librdf_model_find_statements_in_context.</para>
+<refsect3 id="librdf-model-find-statements-with-options.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> partial statement to find</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context_node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context node or NULL.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>options</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-hash"><type>librdf_hash</type></link> of matching options or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-find-statements-with-options.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-stream"><type>librdf_stream</type></link> of matching statements (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-get-sources" role="function">
+<title>librdf_model_get_sources&#160;()</title>
+<indexterm zone="librdf-model-get-sources"><primary>librdf_model_get_sources</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+librdf_model_get_sources (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                          <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *arc</parameter>,
+                          <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *target</parameter>);</programlisting>
+<para>Return the sources (subjects) of arc in an RDF graph given arc (predicate) and target (object).</para>
+<para>Searches the model for arcs matching the given arc and target
+and returns a list of the source <link linkend="librdf-node"><type>librdf_node</type></link> objects as an iterator</para>
+<refsect3 id="librdf-model-get-sources.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>arc</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> arc</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>target</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> target</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-get-sources.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-iterator"><type>librdf_iterator</type></link> of <link linkend="librdf-node"><type>librdf_node</type></link> objects (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-get-arcs" role="function">
+<title>librdf_model_get_arcs&#160;()</title>
+<indexterm zone="librdf-model-get-arcs"><primary>librdf_model_get_arcs</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+librdf_model_get_arcs (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                       <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *source</parameter>,
+                       <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *target</parameter>);</programlisting>
+<para>Return the arcs (predicates) of an arc in an RDF graph given source (subject) and target (object).</para>
+<para>Searches the model for arcs matching the given source and target
+and returns a list of the arc <link linkend="librdf-node"><type>librdf_node</type></link> objects as an iterator</para>
+<refsect3 id="librdf-model-get-arcs.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>source</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> source</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>target</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> target</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-get-arcs.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-iterator"><type>librdf_iterator</type></link> of <link linkend="librdf-node"><type>librdf_node</type></link> objects (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-get-targets" role="function">
+<title>librdf_model_get_targets&#160;()</title>
+<indexterm zone="librdf-model-get-targets"><primary>librdf_model_get_targets</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+librdf_model_get_targets (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                          <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *source</parameter>,
+                          <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *arc</parameter>);</programlisting>
+<para>Return the targets (objects) of an arc in an RDF graph given source (subject) and arc (predicate).</para>
+<para>Searches the model for targets matching the given source and arc
+and returns a list of the source <link linkend="librdf-node"><type>librdf_node</type></link> objects as an iterator</para>
+<refsect3 id="librdf-model-get-targets.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>source</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> source</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>arc</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> arc</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-get-targets.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-iterator"><type>librdf_iterator</type></link> of <link linkend="librdf-node"><type>librdf_node</type></link> objects (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-get-source" role="function">
+<title>librdf_model_get_source&#160;()</title>
+<indexterm zone="librdf-model-get-source"><primary>librdf_model_get_source</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_model_get_source (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                         <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *arc</parameter>,
+                         <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *target</parameter>);</programlisting>
+<para>Return one source (subject) of arc in an RDF graph given arc (predicate) and target (object).</para>
+<para>Searches the model for arcs matching the given arc and target
+and returns one <link linkend="librdf-node"><type>librdf_node</type></link> object</para>
+<refsect3 id="librdf-model-get-source.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>arc</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> arc</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>target</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> target</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-get-source.returns" role="returns">
+<title>Returns</title>
+<para>  a new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-get-arc" role="function">
+<title>librdf_model_get_arc&#160;()</title>
+<indexterm zone="librdf-model-get-arc"><primary>librdf_model_get_arc</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_model_get_arc (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                      <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *source</parameter>,
+                      <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *target</parameter>);</programlisting>
+<para>Return one arc (predicate) of an arc in an RDF graph given source (subject) and target (object).</para>
+<para>Searches the model for arcs matching the given source and target
+and returns one <link linkend="librdf-node"><type>librdf_node</type></link> object</para>
+<refsect3 id="librdf-model-get-arc.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>source</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> source</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>target</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> target</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-get-arc.returns" role="returns">
+<title>Returns</title>
+<para>  a new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-get-target" role="function">
+<title>librdf_model_get_target&#160;()</title>
+<indexterm zone="librdf-model-get-target"><primary>librdf_model_get_target</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_model_get_target (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                         <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *source</parameter>,
+                         <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *arc</parameter>);</programlisting>
+<para>Return one target (object) of an arc in an RDF graph given source (subject) and arc (predicate).</para>
+<para>Searches the model for targets matching the given source and arc
+and returns one <link linkend="librdf-node"><type>librdf_node</type></link> object</para>
+<refsect3 id="librdf-model-get-target.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>source</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> source</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>arc</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> arc</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-get-target.returns" role="returns">
+<title>Returns</title>
+<para>  a new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-get-arcs-in" role="function">
+<title>librdf_model_get_arcs_in&#160;()</title>
+<indexterm zone="librdf-model-get-arcs-in"><primary>librdf_model_get_arcs_in</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+librdf_model_get_arcs_in (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                          <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Return the properties pointing to the given resource.</para>
+<refsect3 id="librdf-model-get-arcs-in.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> resource node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-get-arcs-in.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-iterator"><type>librdf_iterator</type></link> of <link linkend="librdf-node"><type>librdf_node</type></link> objects (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-get-arcs-out" role="function">
+<title>librdf_model_get_arcs_out&#160;()</title>
+<indexterm zone="librdf-model-get-arcs-out"><primary>librdf_model_get_arcs_out</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+librdf_model_get_arcs_out (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                           <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Return the properties pointing from the given resource.</para>
+<refsect3 id="librdf-model-get-arcs-out.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> resource node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-get-arcs-out.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-iterator"><type>librdf_iterator</type></link> of <link linkend="librdf-node"><type>librdf_node</type></link> objects (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-add-submodel" role="function">
+<title>librdf_model_add_submodel&#160;()</title>
+<indexterm zone="librdf-model-add-submodel"><primary>librdf_model_add_submodel</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_add_submodel (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                           <parameter><link linkend="librdf-model"><type>librdf_model</type></link> *sub_model</parameter>);</programlisting>
+<para>Add a sub-model to the model.</para>
+<para>FIXME: Not tested</para>
+<refsect3 id="librdf-model-add-submodel.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>sub_model</para></entry>
+<entry role="parameter_description"><para>the sub model to add</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-add-submodel.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-remove-submodel" role="function">
+<title>librdf_model_remove_submodel&#160;()</title>
+<indexterm zone="librdf-model-remove-submodel"><primary>librdf_model_remove_submodel</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_remove_submodel (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                              <parameter><link linkend="librdf-model"><type>librdf_model</type></link> *sub_model</parameter>);</programlisting>
+<para>Remove a sub-model from the model.</para>
+<para>FIXME: Not tested</para>
+<refsect3 id="librdf-model-remove-submodel.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>sub_model</para></entry>
+<entry role="parameter_description"><para>the sub model to remove</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-remove-submodel.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-print" role="function" condition="deprecated:">
+<title>librdf_model_print&#160;()</title>
+<indexterm zone="librdf-model-print" role="deprecated"><primary>librdf_model_print</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_model_print (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                    <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *fh</parameter>);</programlisting>
+<warning><para><literal>librdf_model_print</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Print the model.</para>
+<para>This method is for debugging and the format of the output should
+not be relied on.</para>
+<para><parameter>Deprecated</parameter>
+: Use <link linkend="librdf-model-write"><function>librdf_model_write()</function></link> to write to <link linkend="raptor-iostream"><type>raptor_iostream</type></link>
+which can be made to write to a string.  Use a <link linkend="librdf-serializer"><type>librdf_serializer</type></link>
+to write proper syntax formats.</para>
+<refsect3 id="librdf-model-print.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fh</para></entry>
+<entry role="parameter_description"><para>the FILE stream to print to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-context-add-statement" role="function">
+<title>librdf_model_context_add_statement&#160;()</title>
+<indexterm zone="librdf-model-context-add-statement"><primary>librdf_model_context_add_statement</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_context_add_statement (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                    <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context</parameter>,
+                                    <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Add a statement to a model with a context.</para>
+<para>It must be a complete statement - all
+of subject, predicate, object parts must be present.</para>
+<para>If <parameter>context</parameter>
+ is NULL, this is equivalent to librdf_model_add_statement</para>
+<refsect3 id="librdf-model-context-add-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> statement object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-context-add-statement.returns" role="returns">
+<title>Returns</title>
+<para> Non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-context-add-statements" role="function">
+<title>librdf_model_context_add_statements&#160;()</title>
+<indexterm zone="librdf-model-context-add-statements"><primary>librdf_model_context_add_statements</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_context_add_statements (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                     <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context</parameter>,
+                                     <parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>);</programlisting>
+<para>Add statements to a model with a context.</para>
+<para>If <parameter>context</parameter>
+ is NULL, this is equivalent to librdf_model_add_statements</para>
+<refsect3 id="librdf-model-context-add-statements.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-stream"><type>librdf_stream</type></link> stream object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-context-add-statements.returns" role="returns">
+<title>Returns</title>
+<para> Non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-context-remove-statement" role="function">
+<title>librdf_model_context_remove_statement&#160;()</title>
+<indexterm zone="librdf-model-context-remove-statement"><primary>librdf_model_context_remove_statement</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_context_remove_statement (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                       <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context</parameter>,
+                                       <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Remove a statement from a model in a context.</para>
+<para>It must be a complete statement - all of subject, predicate, object
+parts must be present.</para>
+<para>If <parameter>context</parameter>
+ is NULL, this is equivalent to librdf_model_remove_statement</para>
+<refsect3 id="librdf-model-context-remove-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> statement</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-context-remove-statement.returns" role="returns">
+<title>Returns</title>
+<para> Non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-context-remove-statements" role="function">
+<title>librdf_model_context_remove_statements&#160;()</title>
+<indexterm zone="librdf-model-context-remove-statements"><primary>librdf_model_context_remove_statements</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_context_remove_statements
+                               (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context</parameter>);</programlisting>
+<para>Remove statements from a model with the given context.</para>
+<refsect3 id="librdf-model-context-remove-statements.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-context-remove-statements.returns" role="returns">
+<title>Returns</title>
+<para> Non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-context-as-stream" role="function">
+<title>librdf_model_context_as_stream&#160;()</title>
+<indexterm zone="librdf-model-context-as-stream"><primary>librdf_model_context_as_stream</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_model_context_as_stream (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context</parameter>);</programlisting>
+<para>List all statements in a model context.</para>
+<refsect3 id="librdf-model-context-as-stream.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-context-as-stream.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-stream"><type>librdf_stream</type></link> of statements or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-context-serialize" role="function" condition="deprecated:">
+<title>librdf_model_context_serialize&#160;()</title>
+<indexterm zone="librdf-model-context-serialize" role="deprecated"><primary>librdf_model_context_serialize</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_model_context_serialize (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context</parameter>);</programlisting>
+<warning><para><literal>librdf_model_context_serialize</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>List all statements in a model context.</para>
+<para>DEPRECATED to reduce confusion with the librdf_serializer class.
+Please use librdf_model_context_as_stream.</para>
+<refsect3 id="librdf-model-context-serialize.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-context-serialize.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-stream"><type>librdf_stream</type></link> of statements or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-contains-context" role="function">
+<title>librdf_model_contains_context&#160;()</title>
+<indexterm zone="librdf-model-contains-context"><primary>librdf_model_contains_context</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_contains_context (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                               <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context</parameter>);</programlisting>
+<para>Check for a context in the model.</para>
+<refsect3 id="librdf-model-contains-context.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para>the contest</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-contains-context.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if the model contains the context node</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-supports-contexts" role="function">
+<title>librdf_model_supports_contexts&#160;()</title>
+<indexterm zone="librdf-model-supports-contexts"><primary>librdf_model_supports_contexts</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_supports_contexts (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Check if this model supports contexts</para>
+<refsect3 id="librdf-model-supports-contexts.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-supports-contexts.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if contexts are supported</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-query-execute" role="function">
+<title>librdf_model_query_execute&#160;()</title>
+<indexterm zone="librdf-model-query-execute"><primary>librdf_model_query_execute</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-query-results"><returnvalue>librdf_query_results</returnvalue></link>&#160;*
+librdf_model_query_execute (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                            <parameter><link linkend="librdf-query"><type>librdf_query</type></link> *query</parameter>);</programlisting>
+<para>Execute a query against the model.</para>
+<para>Run the given query against the model and return a <link linkend="librdf-stream"><type>librdf_stream</type></link> of
+matching <link linkend="librdf-statement"><type>librdf_statement</type></link> objects</para>
+<refsect3 id="librdf-model-query-execute.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>query</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query"><type>librdf_query</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-query-execute.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-query-results"><type>librdf_query_results</type></link> or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-sync" role="function">
+<title>librdf_model_sync&#160;()</title>
+<indexterm zone="librdf-model-sync"><primary>librdf_model_sync</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_sync (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Synchronise the model to the model implementation.</para>
+<refsect3 id="librdf-model-sync.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-sync.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-get-storage" role="function">
+<title>librdf_model_get_storage&#160;()</title>
+<indexterm zone="librdf-model-get-storage"><primary>librdf_model_get_storage</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-storage"><returnvalue>librdf_storage</returnvalue></link>&#160;*
+librdf_model_get_storage (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Return the storage of this model.</para>
+<para>Note: this can only return one storage, so model implementations
+that have multiple <link linkend="librdf-storage"><type>librdf_storage</type></link> internally may chose not to
+implement this.</para>
+<refsect3 id="librdf-model-get-storage.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-get-storage.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-storage"><type>librdf_storage</type></link> or NULL if this has no store</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-load" role="function">
+<title>librdf_model_load&#160;()</title>
+<indexterm zone="librdf-model-load"><primary>librdf_model_load</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_load (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                   <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>,
+                   <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                   <parameter>const <link linkend="char"><type>char</type></link> *mime_type</parameter>,
+                   <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *type_uri</parameter>);</programlisting>
+<para>Load content from a URI into the model.</para>
+<para>If the name field is NULL, the library will try to guess
+the parser to use from the uri, mime_type and type_uri fields.
+This is done via the raptor_guess_parser_name function.</para>
+<refsect3 id="librdf-model-load.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>the URI to read the content</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the name of the parser (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>the MIME type of the syntax (NULL if not used)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>type_uri</para></entry>
+<entry role="parameter_description"><para>URI identifying the syntax (NULL if not used)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-load.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-to-counted-string" role="function">
+<title>librdf_model_to_counted_string&#160;()</title>
+<indexterm zone="librdf-model-to-counted-string"><primary>librdf_model_to_counted_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_model_to_counted_string (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> *mime_type</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *type_uri</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> *string_length_p</parameter>);</programlisting>
+<para>Write serialized model to a string.</para>
+<para>If the name field is NULL, the default serializer will be used.</para>
+<para>Note: the returned string must be freed by the caller using <link linkend="librdf-free-memory"><function>librdf_free_memory()</function></link>.</para>
+<refsect3 id="librdf-model-to-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>base URI to use in serializing (or NULL if not used)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the name of the serializer (or NULL for default)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>the MIME type of the syntax (NULL if not used)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>type_uri</para></entry>
+<entry role="parameter_description"><para>URI identifying the syntax (NULL if not used)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string_length_p</para></entry>
+<entry role="parameter_description"><para>pointer to location to store string length (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-to-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> new string or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-to-string" role="function">
+<title>librdf_model_to_string&#160;()</title>
+<indexterm zone="librdf-model-to-string"><primary>librdf_model_to_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_model_to_string (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                        <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>,
+                        <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                        <parameter>const <link linkend="char"><type>char</type></link> *mime_type</parameter>,
+                        <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *type_uri</parameter>);</programlisting>
+<para>Write serialized model to a string.</para>
+<para>If the name field is NULL, the default serializer will be used.</para>
+<para>Note: the returned string must be freed by the caller.</para>
+<refsect3 id="librdf-model-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>base URI to use in serializing (or NULL if not used)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the name of the serializer (or NULL for default)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>the MIME type of the syntax (NULL if not used)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>type_uri</para></entry>
+<entry role="parameter_description"><para>URI identifying the syntax (NULL if not used)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-to-string.returns" role="returns">
+<title>Returns</title>
+<para> new string or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-find-statements-in-context" role="function">
+<title>librdf_model_find_statements_in_context&#160;()</title>
+<indexterm zone="librdf-model-find-statements-in-context"><primary>librdf_model_find_statements_in_context</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_model_find_statements_in_context
+                               (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context_node</parameter>);</programlisting>
+<para>Search the model for matching statements in a given context.</para>
+<para>Searches the model for a (partial) statement as described in
+<link linkend="librdf-statement-match"><function>librdf_statement_match()</function></link> in the given context and returns a
+<link linkend="librdf-stream"><type>librdf_stream</type></link> of matching <link linkend="librdf-statement"><type>librdf_statement</type></link> objects.  If
+context is NULL, this is equivalent to librdf_model_find_statements.</para>
+<refsect3 id="librdf-model-find-statements-in-context.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> partial statement to find</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context_node</para></entry>
+<entry role="parameter_description"><para>context <link linkend="librdf-node"><type>librdf_node</type></link> (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-find-statements-in-context.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-stream"><type>librdf_stream</type></link> of matching statements (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-get-contexts" role="function">
+<title>librdf_model_get_contexts&#160;()</title>
+<indexterm zone="librdf-model-get-contexts"><primary>librdf_model_get_contexts</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+librdf_model_get_contexts (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Return the list of contexts in the graph.</para>
+<para>Returns an iterator of <link linkend="librdf-node"><type>librdf_node</type></link> context nodes for each
+context in the graph.</para>
+<refsect3 id="librdf-model-get-contexts.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-get-contexts.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-iterator"><type>librdf_iterator</type></link> of context nodes or NULL on failure or if contexts are not supported</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-get-feature" role="function">
+<title>librdf_model_get_feature&#160;()</title>
+<indexterm zone="librdf-model-get-feature"><primary>librdf_model_get_feature</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_model_get_feature (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                          <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *feature</parameter>);</programlisting>
+<para>Get the value of a graph feature .</para>
+<refsect3 id="librdf-model-get-feature.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>feature</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> feature property</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-get-feature.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="librdf-node"><type>librdf_node</type></link> feature value or NULL if no such feature
+exists or the value is empty.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-set-feature" role="function">
+<title>librdf_model_set_feature&#160;()</title>
+<indexterm zone="librdf-model-set-feature"><primary>librdf_model_set_feature</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_set_feature (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                          <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *feature</parameter>,
+                          <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *value</parameter>);</programlisting>
+<para>Set the value of a graph feature.</para>
+<refsect3 id="librdf-model-set-feature.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-model"><type>librdf_model</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>feature</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> feature property</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>value</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> feature property value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-set-feature.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure (negative if no such feature)</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-transaction-commit" role="function">
+<title>librdf_model_transaction_commit&#160;()</title>
+<indexterm zone="librdf-model-transaction-commit"><primary>librdf_model_transaction_commit</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_transaction_commit (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Commit a transaction.</para>
+<refsect3 id="librdf-model-transaction-commit.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-transaction-commit.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure </para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-transaction-get-handle" role="function">
+<title>librdf_model_transaction_get_handle&#160;()</title>
+<indexterm zone="librdf-model-transaction-get-handle"><primary>librdf_model_transaction_get_handle</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+librdf_model_transaction_get_handle (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Get the current transaction handle.</para>
+<refsect3 id="librdf-model-transaction-get-handle.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-transaction-get-handle.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure </para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-transaction-rollback" role="function">
+<title>librdf_model_transaction_rollback&#160;()</title>
+<indexterm zone="librdf-model-transaction-rollback"><primary>librdf_model_transaction_rollback</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_transaction_rollback (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Rollback a transaction.</para>
+<refsect3 id="librdf-model-transaction-rollback.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-transaction-rollback.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure </para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-transaction-start" role="function">
+<title>librdf_model_transaction_start&#160;()</title>
+<indexterm zone="librdf-model-transaction-start"><primary>librdf_model_transaction_start</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_transaction_start (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Start a transaction</para>
+<refsect3 id="librdf-model-transaction-start.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-transaction-start.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-transaction-start-with-handle" role="function">
+<title>librdf_model_transaction_start_with_handle&#160;()</title>
+<indexterm zone="librdf-model-transaction-start-with-handle"><primary>librdf_model_transaction_start_with_handle</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_transaction_start_with_handle
+                               (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                <parameter><link linkend="void"><type>void</type></link> *handle</parameter>);</programlisting>
+<para>Start a transaction using an existing external transaction object.</para>
+<refsect3 id="librdf-model-transaction-start-with-handle.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handle</para></entry>
+<entry role="parameter_description"><para>the transaction object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-transaction-start-with-handle.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-model-write" role="function">
+<title>librdf_model_write&#160;()</title>
+<indexterm zone="librdf-model-write"><primary>librdf_model_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_model_write (<parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                    <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a model to an iostream in a debug format.</para>
+<para>This method is for debugging and the format of the output should
+not be relied on.  In particular, when contexts are used the
+result may be 4 nodes.</para>
+<refsect3 id="librdf-model-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the model object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>the iostream to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-model-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-model.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="librdf-model" role="typedef">
+<title>librdf_model</title>
+<indexterm zone="librdf-model"><primary>librdf_model</primary></indexterm>
+<programlisting language="C">typedef struct librdf_model_s librdf_model;
+</programlisting>
+<para>Redland model class.</para>
+</refsect2>
+<refsect2 id="librdf-model-factory" role="typedef">
+<title>librdf_model_factory</title>
+<indexterm zone="librdf-model-factory"><primary>librdf_model_factory</primary></indexterm>
+<programlisting language="C">typedef struct librdf_model_factory_s librdf_model_factory;
+</programlisting>
+<para>Redland model factory class.</para>
+</refsect2>
+<refsect2 id="LIBRDF-MODEL-FIND-OPTION-MATCH-SUBSTRING-LITERAL:CAPS" role="macro">
+<title>LIBRDF_MODEL_FIND_OPTION_MATCH_SUBSTRING_LITERAL</title>
+<indexterm zone="LIBRDF-MODEL-FIND-OPTION-MATCH-SUBSTRING-LITERAL:CAPS"><primary>LIBRDF_MODEL_FIND_OPTION_MATCH_SUBSTRING_LITERAL</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MODEL_FIND_OPTION_MATCH_SUBSTRING_LITERAL "http://feature.librdf.org/model-find-match-substring-literal"
+</programlisting>
+<para>Model find statement option.</para>
+<para>If set, the find statement uses substring matching.</para>
+</refsect2>
+<refsect2 id="LIBRDF-MODEL-FEATURE-CONTEXTS:CAPS" role="macro">
+<title>LIBRDF_MODEL_FEATURE_CONTEXTS</title>
+<indexterm zone="LIBRDF-MODEL-FEATURE-CONTEXTS:CAPS"><primary>LIBRDF_MODEL_FEATURE_CONTEXTS</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MODEL_FEATURE_CONTEXTS "http://feature.librdf.org/model-contexts"
+</programlisting>
+<para>Model feature contexts.</para>
+<para>If set, the model has redland contexts.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

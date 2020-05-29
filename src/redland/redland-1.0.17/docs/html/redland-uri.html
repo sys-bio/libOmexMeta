@@ -1,0 +1,806 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>uri: Redland RDF Library Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="Redland RDF Library Manual">
+<link rel="up" href="reference-manual.html" title="Part II. Reference Manual">
+<link rel="prev" href="redland-unicode.html" title="unicode">
+<link rel="next" href="redland-changes.html" title="API Changes">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#redland-uri.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference-manual.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="redland-unicode.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="redland-changes.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="redland-uri"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="redland-uri.top_of_page"></a>uri</span></h2>
+<p>uri</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="redland-uri.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-new-uri" title="librdf_new_uri ()">librdf_new_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-new-uri2" title="librdf_new_uri2 ()">librdf_new_uri2</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-new-uri-from-uri" title="librdf_new_uri_from_uri ()">librdf_new_uri_from_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-new-uri-from-uri-local-name" title="librdf_new_uri_from_uri_local_name ()">librdf_new_uri_from_uri_local_name</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-free-uri" title="librdf_free_uri ()">librdf_free_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-uri-as-string" title="librdf_uri_as_string ()">librdf_uri_as_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-uri-as-counted-string" title="librdf_uri_as_counted_string ()">librdf_uri_as_counted_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-uri-print" title="librdf_uri_print ()">librdf_uri_print</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-uri-to-string" title="librdf_uri_to_string ()">librdf_uri_to_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-uri-to-counted-string" title="librdf_uri_to_counted_string ()">librdf_uri_to_counted_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-uri-equals" title="librdf_uri_equals ()">librdf_uri_equals</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-uri-is-file-uri" title="librdf_uri_is_file_uri ()">librdf_uri_is_file_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-uri-to-filename" title="librdf_uri_to_filename ()">librdf_uri_to_filename</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-new-uri-normalised-to-base" title="librdf_new_uri_normalised_to_base ()">librdf_new_uri_normalised_to_base</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-new-uri-relative-to-base" title="librdf_new_uri_relative_to_base ()">librdf_new_uri_relative_to_base</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-new-uri-from-filename" title="librdf_new_uri_from_filename ()">librdf_new_uri_from_filename</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-uri.html#librdf-uri-compare" title="librdf_uri_compare ()">librdf_uri_compare</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="redland-uri.html#librdf-uri-filter-func" title="librdf_uri_filter_func ()">*librdf_uri_filter_func</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-uri.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="typedef_keyword">typedef</td>
+<td class="function_name"><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri">librdf_uri</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-uri.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="redland-uri.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="librdf-new-uri"></a><h3>librdf_new_uri ()</h3>
+<pre class="programlisting"><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+librdf_new_uri (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                <em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object from a URI string.</p>
+<p>A new URI is constructed from a copy of the string.  If the
+string is a NULL pointer or empty (0 length) then the result is NULL.</p>
+<div class="refsect3">
+<a name="librdf-new-uri.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>URI in string form</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-uri.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-uri2"></a><h3>librdf_new_uri2 ()</h3>
+<pre class="programlisting"><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+librdf_new_uri2 (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                 <em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>,
+                 <em class="parameter"><code><span class="type">size_t</span> length</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object from a counted URI string.</p>
+<p>A new URI is constructed from a copy of the string.  If the string
+is a NULL pointer or 0 length or empty (first byte is 0) then the
+result is NULL.</p>
+<div class="refsect3">
+<a name="librdf-new-uri2.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>URI in string form</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>length of string</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-uri2.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-uri-from-uri"></a><h3>librdf_new_uri_from_uri ()</h3>
+<pre class="programlisting"><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+librdf_new_uri_from_uri (<em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *old_uri</code></em>);</pre>
+<p>Copy constructor - create a new librdf_uri object from an existing librdf_uri object.</p>
+<div class="refsect3">
+<a name="librdf-new-uri-from-uri.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>old_uri</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-uri-from-uri.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-uri-from-uri-local-name"></a><h3>librdf_new_uri_from_uri_local_name ()</h3>
+<pre class="programlisting"><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+librdf_new_uri_from_uri_local_name (<em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *old_uri</code></em>,
+                                    <em class="parameter"><code>const unsigned <span class="type">char</span> *local_name</code></em>);</pre>
+<p>Copy constructor - create a new librdf_uri object from an existing librdf_uri object and a local name.</p>
+<div class="refsect3">
+<a name="librdf-new-uri-from-uri-local-name.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>old_uri</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>local_name</p></td>
+<td class="parameter_description"><p>local name to append to URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-uri-from-uri-local-name.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-free-uri"></a><h3>librdf_free_uri ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_free_uri (<em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri</code></em>);</pre>
+<p>Destructor - destroy a <a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object.</p>
+<div class="refsect3">
+<a name="librdf-free-uri.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-uri-as-string"></a><h3>librdf_uri_as_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+librdf_uri_as_string (<em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri</code></em>);</pre>
+<p>Get a pointer to the string representation of the URI.</p>
+<p>Returns a shared pointer to the URI string representation. 
+Note: does not allocate a new string so the caller must not free it.</p>
+<div class="refsect3">
+<a name="librdf-uri-as-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-uri-as-string.returns"></a><h4>Returns</h4>
+<p> string representation of URI</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-uri-as-counted-string"></a><h3>librdf_uri_as_counted_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+librdf_uri_as_counted_string (<em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri</code></em>,
+                              <em class="parameter"><code><span class="type">size_t</span> *len_p</code></em>);</pre>
+<p>Get a pointer to the string representation of the URI with length.</p>
+<p>Returns a shared pointer to the URI string representation. 
+Note: does not allocate a new string so the caller must not free it.</p>
+<div class="refsect3">
+<a name="librdf-uri-as-counted-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>len_p</p></td>
+<td class="parameter_description"><p>pointer to location to store length</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-uri-as-counted-string.returns"></a><h4>Returns</h4>
+<p> string representation of URI</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-uri-print"></a><h3>librdf_uri_print ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_uri_print (<em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri</code></em>,
+                  <em class="parameter"><code><span class="type">FILE</span> *fh</code></em>);</pre>
+<p>Print the URI to the given file handle.</p>
+<div class="refsect3">
+<a name="librdf-uri-print.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>fh</p></td>
+<td class="parameter_description"><p>file handle</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-uri-to-string"></a><h3>librdf_uri_to_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+librdf_uri_to_string (<em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri</code></em>);</pre>
+<p>Format the URI as a string.</p>
+<p>Note: this method allocates a new string since this is a _to_ method
+and the caller must free the resulting memory.</p>
+<div class="refsect3">
+<a name="librdf-uri-to-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-uri-to-string.returns"></a><h4>Returns</h4>
+<p> string representation of the URI or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-uri-to-counted-string"></a><h3>librdf_uri_to_counted_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+librdf_uri_to_counted_string (<em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri</code></em>,
+                              <em class="parameter"><code><span class="type">size_t</span> *len_p</code></em>);</pre>
+<p>Format the URI as a counted string.</p>
+<p>Note: this method allocates a new string since this is a _to_ method
+and the caller must free the resulting memory.</p>
+<div class="refsect3">
+<a name="librdf-uri-to-counted-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>len_p</p></td>
+<td class="parameter_description"><p>pointer to location to store length</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-uri-to-counted-string.returns"></a><h4>Returns</h4>
+<p> string representation of the URI or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-uri-equals"></a><h3>librdf_uri_equals ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_uri_equals (<em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *first_uri</code></em>,
+                   <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *second_uri</code></em>);</pre>
+<p>Compare two librdf_uri objects for equality.</p>
+<div class="refsect3">
+<a name="librdf-uri-equals.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>first_uri</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object 1</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>second_uri</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object 2</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-uri-equals.returns"></a><h4>Returns</h4>
+<p> non 0 if the objects are equal</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-uri-is-file-uri"></a><h3>librdf_uri_is_file_uri ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_uri_is_file_uri (<em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri</code></em>);</pre>
+<p>Test if a URI points to a filename.</p>
+<div class="refsect3">
+<a name="librdf-uri-is-file-uri.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-uri-is-file-uri.returns"></a><h4>Returns</h4>
+<p> Non zero if the URI points to a file</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-uri-to-filename"></a><h3>librdf_uri_to_filename ()</h3>
+<pre class="programlisting">const <span class="returnvalue">char</span> *
+librdf_uri_to_filename (<em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri</code></em>);</pre>
+<p>Return pointer to filename of URI.</p>
+<p>Returns a pointer to a newly allocated buffer that
+the caller must free.  This will fail if the URI
+is not a file: URI.  This can be checked with <a class="link" href="redland-uri.html#librdf-uri-is-file-uri" title="librdf_uri_is_file_uri ()"><span class="type">librdf_uri_is_file_uri</span></a></p>
+<div class="refsect3">
+<a name="librdf-uri-to-filename.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-uri-to-filename.returns"></a><h4>Returns</h4>
+<p> pointer to filename or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-uri-normalised-to-base"></a><h3>librdf_new_uri_normalised_to_base ()</h3>
+<pre class="programlisting"><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+librdf_new_uri_normalised_to_base (<em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>,
+                                   <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *source_uri</code></em>,
+                                   <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object from a URI string stripped of the source URI, made relative to the base URI.</p>
+<div class="refsect3">
+<a name="librdf-new-uri-normalised-to-base.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>URI in string form</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>source_uri</p></td>
+<td class="parameter_description"><p>source URI to remove</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>base URI to add</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-uri-normalised-to-base.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-uri-relative-to-base"></a><h3>librdf_new_uri_relative_to_base ()</h3>
+<pre class="programlisting"><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+librdf_new_uri_relative_to_base (<em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                 <em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object from a URI string relative to a base URI.</p>
+<p>An empty uri_string or NULL is equivalent to 
+librdf_new_uri_from_uri(base_uri)</p>
+<div class="refsect3">
+<a name="librdf-new-uri-relative-to-base.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>absolute base URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>relative URI string</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-uri-relative-to-base.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-uri-from-filename"></a><h3>librdf_new_uri_from_filename ()</h3>
+<pre class="programlisting"><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+librdf_new_uri_from_filename (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                              <em class="parameter"><code>const <span class="type">char</span> *filename</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object from a filename.</p>
+<div class="refsect3">
+<a name="librdf-new-uri-from-filename.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>Redland <a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>filename</p></td>
+<td class="parameter_description"><p>filename</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-uri-from-filename.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-uri-compare"></a><h3>librdf_uri_compare ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_uri_compare (<em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri1</code></em>,
+                    <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri2</code></em>);</pre>
+<p>Compare two librdf_uri objects lexicographically.</p>
+<p>A NULL URI is always less than (never equal to) a non-NULL URI.</p>
+<div class="refsect3">
+<a name="librdf-uri-compare.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri1</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object 1 or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri2</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> object 2 or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-uri-compare.returns"></a><h4>Returns</h4>
+<p> &lt;0 if <em class="parameter"><code>uri1</code></em>
+is less than <em class="parameter"><code>uri2</code></em>
+, 0 if equal, &gt;0 if <em class="parameter"><code>uri1</code></em>
+is greater than <em class="parameter"><code>uri2</code></em>
+</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-uri-filter-func"></a><h3>librdf_uri_filter_func ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+<span class="c_punctuation">(</span>*librdf_uri_filter_func<span class="c_punctuation">)</span> (<em class="parameter"><code><span class="type">void</span> *user_data</code></em>,
+                           <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri</code></em>);</pre>
+<p>Callback function for <a class="link" href="redland-parser.html#librdf-parser-set-uri-filter" title="librdf_parser_set_uri_filter ()"><code class="function">librdf_parser_set_uri_filter()</code></a></p>
+<div class="refsect3">
+<a name="librdf-uri-filter-func.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> URI to check</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-uri-filter-func.returns"></a><h4>Returns</h4>
+<p> non-0 to filter the URI</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="redland-uri.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="librdf-uri"></a><h3>librdf_uri</h3>
+<pre class="programlisting">typedef struct raptor_uri_s librdf_uri;
+</pre>
+<p>Redland URI class.</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.27</div>
+</body>
+</html>

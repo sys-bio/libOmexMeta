@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-parser">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-parser.top_of_page">section-parser</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-parser</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-parser.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="raptor-parser"><returnvalue>raptor_parser</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-parser">raptor_new_parser</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-parser"><returnvalue>raptor_parser</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-parser-for-content">raptor_new_parser_for_content</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-parser">raptor_free_parser</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-graph-mark-handler">*raptor_graph_mark_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-namespace-handler">*raptor_namespace_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-parser-set-statement-handler">raptor_parser_set_statement_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-parser-set-graph-mark-handler">raptor_parser_set_graph_mark_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-parser-set-namespace-handler">raptor_parser_set_namespace_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="raptor-syntax-description"><returnvalue>raptor_syntax_description</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-parser-get-description">raptor_parser_get_description</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-locator"><returnvalue>raptor_locator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-parser-get-locator">raptor_parser_get_locator</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-parser-parse-abort">raptor_parser_parse_abort</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-parser-parse-chunk">raptor_parser_parse_chunk</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-parser-parse-file">raptor_parser_parse_file</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-parser-parse-file-stream">raptor_parser_parse_file_stream</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-parser-parse-iostream">raptor_parser_parse_iostream</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-parser-parse-start">raptor_parser_parse_start</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-parser-parse-uri">raptor_parser_parse_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-parser-parse-uri-with-connection">raptor_parser_parse_uri_with_connection</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-parser-get-graph">raptor_parser_get_graph</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-parser-get-name">raptor_parser_get_name</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-parser-set-option">raptor_parser_set_option</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-parser-get-option">raptor_parser_get_option</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-parser-get-accept-header">raptor_parser_get_accept_header</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-parser-set-uri-filter">raptor_parser_set_uri_filter</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-world"><returnvalue>raptor_world</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-parser-get-world">raptor_parser_get_world</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-parser.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-parser">raptor_parser</link></entry></row>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="raptor-graph-mark-flags">raptor_graph_mark_flags</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-parser.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-parser.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-new-parser" role="function">
+<title>raptor_new_parser&#160;()</title>
+<indexterm zone="raptor-new-parser"><primary>raptor_new_parser</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-parser"><returnvalue>raptor_parser</returnvalue></link>&#160;*
+raptor_new_parser (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                   <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>);</programlisting>
+<para>Constructor - create a new raptor_parser object.</para>
+<refsect3 id="raptor-new-parser.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the parser name or NULL for default parser</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-parser.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-parser"><type>raptor_parser</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-parser-for-content" role="function">
+<title>raptor_new_parser_for_content&#160;()</title>
+<indexterm zone="raptor-new-parser-for-content"><primary>raptor_new_parser_for_content</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-parser"><returnvalue>raptor_parser</returnvalue></link>&#160;*
+raptor_new_parser_for_content (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                               <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                               <parameter>const <link linkend="char"><type>char</type></link> *mime_type</parameter>,
+                               <parameter>const unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                               <parameter><link linkend="size-t"><type>size_t</type></link> len</parameter>,
+                               <parameter>const unsigned <link linkend="char"><type>char</type></link> *identifier</parameter>);</programlisting>
+<para>Constructor - create a new raptor_parser.</para>
+<para>Uses <link linkend="raptor-world-guess-parser-name"><function>raptor_world_guess_parser_name()</function></link> to find a parser by scoring
+recognition of the syntax by a block of characters, the content
+identifier or a mime type.  The content identifier is typically a
+filename or URI or some other identifier.</para>
+<refsect3 id="raptor-new-parser-for-content.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>URI identifying the syntax (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>mime type identifying the content (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>buffer of content to guess (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>identifier</para></entry>
+<entry role="parameter_description"><para>identifier of content (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-parser-for-content.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-parser"><type>raptor_parser</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-parser" role="function">
+<title>raptor_free_parser&#160;()</title>
+<indexterm zone="raptor-free-parser"><primary>raptor_free_parser</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_parser (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *parser</parameter>);</programlisting>
+<para>Destructor - destroy a raptor_parser object.</para>
+<refsect3 id="raptor-free-parser.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>parser</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-parser"><type>raptor_parser</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-graph-mark-handler" role="function">
+<title>raptor_graph_mark_handler&#160;()</title>
+<indexterm zone="raptor-graph-mark-handler"><primary>raptor_graph_mark_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_graph_mark_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                              <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *graph</parameter>,
+                              <parameter><link linkend="int"><type>int</type></link> flags</parameter>);</programlisting>
+<para>Graph start/end mark handler function.</para>
+<para>Records start and end of graphs happening in a stream of generated
+<link linkend="raptor-statement"><type>raptor_statement</type></link> via the statement handler.  The callback starts a
+graph when <parameter>flags</parameter>
+ has <link linkend="RAPTOR-GRAPH-MARK-START:CAPS"><type>RAPTOR_GRAPH_MARK_START</type></link> bit set.</para>
+<para>The start and ends may be either declared in the syntax via some
+keyword or mechanism such as TRiG {} syntax when <parameter>flags</parameter>
+ has bit
+<link linkend="RAPTOR-GRAPH-MARK-DECLARED:CAPS"><type>RAPTOR_GRAPH_MARK_DECLARED</type></link> set, or be implied by the start/end of
+the data in other syntaxes, and the bit will be unset.</para>
+<refsect3 id="raptor-graph-mark-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>graph</para></entry>
+<entry role="parameter_description"><para>graph to report, NULL for the default graph</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>flags</para></entry>
+<entry role="parameter_description"><para>bitmask of <link linkend="raptor-graph-mark-flags"><type>raptor_graph_mark_flags</type></link> flags</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespace-handler" role="function">
+<title>raptor_namespace_handler&#160;()</title>
+<indexterm zone="raptor-namespace-handler"><primary>raptor_namespace_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_namespace_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                             <parameter><link linkend="raptor-namespace"><type>raptor_namespace</type></link> *nspace</parameter>);</programlisting>
+<para>XML Namespace declaration reporting handler set by 
+<link linkend="raptor-parser-set-namespace-handler"><function>raptor_parser_set_namespace_handler()</function></link>.</para>
+<refsect3 id="raptor-namespace-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nspace</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-namespace"><type>raptor_namespace</type></link> declared</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-set-statement-handler" role="function">
+<title>raptor_parser_set_statement_handler&#160;()</title>
+<indexterm zone="raptor-parser-set-statement-handler"><primary>raptor_parser_set_statement_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_parser_set_statement_handler (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *parser</parameter>,
+                                     <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                                     <parameter><link linkend="raptor-statement-handler"><type>raptor_statement_handler</type></link> handler</parameter>);</programlisting>
+<para>Set the statement handler function for the parser.</para>
+<para>Use this to set the function to receive statements as the parsing
+proceeds. The statement argument to <parameter>handler</parameter>
+ is shared and must be
+copied by the caller with <link linkend="raptor-statement-copy"><function>raptor_statement_copy()</function></link>.</para>
+<refsect3 id="raptor-parser-set-statement-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>parser</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-parser"><type>raptor_parser</type></link> parser object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data pointer for callback</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>new statement callback function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-set-graph-mark-handler" role="function">
+<title>raptor_parser_set_graph_mark_handler&#160;()</title>
+<indexterm zone="raptor-parser-set-graph-mark-handler"><primary>raptor_parser_set_graph_mark_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_parser_set_graph_mark_handler (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *parser</parameter>,
+                                      <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                                      <parameter><link linkend="raptor-graph-mark-handler"><type>raptor_graph_mark_handler</type></link> handler</parameter>);</programlisting>
+<para>Set the graph mark handler function for the parser.</para>
+<para>See <link linkend="raptor-graph-mark-handler"><type>raptor_graph_mark_handler</type></link> and <link linkend="raptor-graph-mark-flags"><type>raptor_graph_mark_flags</type></link> for
+the marks that may be returned by the handler.</para>
+<refsect3 id="raptor-parser-set-graph-mark-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>parser</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-parser"><type>raptor_parser</type></link> parser object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data pointer for callback</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>new graph callback function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-set-namespace-handler" role="function">
+<title>raptor_parser_set_namespace_handler&#160;()</title>
+<indexterm zone="raptor-parser-set-namespace-handler"><primary>raptor_parser_set_namespace_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_parser_set_namespace_handler (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *parser</parameter>,
+                                     <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                                     <parameter><link linkend="raptor-namespace-handler"><type>raptor_namespace_handler</type></link> handler</parameter>);</programlisting>
+<para>Set the namespace handler function for the parser.</para>
+<para>When a prefix/namespace is seen in a parser, call the given
+<parameter>handler</parameter>
+ with the prefix string and the <link linkend="raptor-uri"><type>raptor_uri</type></link> namespace URI.
+Either can be NULL for the default prefix or default namespace.</para>
+<para>The handler function does not deal with duplicates so any
+namespace may be declared multiple times.</para>
+<refsect3 id="raptor-parser-set-namespace-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>parser</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-parser"><type>raptor_parser</type></link> parser object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data pointer for callback</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>new namespace callback function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-get-description" role="function">
+<title>raptor_parser_get_description&#160;()</title>
+<indexterm zone="raptor-parser-get-description"><primary>raptor_parser_get_description</primary></indexterm>
+<programlisting language="C">const <link linkend="raptor-syntax-description"><returnvalue>raptor_syntax_description</returnvalue></link>&#160;*
+raptor_parser_get_description (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *rdf_parser</parameter>);</programlisting>
+<para>Get description of the syntaxes of the parser.</para>
+<para>The returned description is static and lives as long as the raptor
+library (raptor world).</para>
+<refsect3 id="raptor-parser-get-description.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_parser</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-parser"><type>raptor_parser</type></link> parser object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-get-description.returns" role="returns">
+<title>Returns</title>
+<para> description of syntax</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-get-locator" role="function">
+<title>raptor_parser_get_locator&#160;()</title>
+<indexterm zone="raptor-parser-get-locator"><primary>raptor_parser_get_locator</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-locator"><returnvalue>raptor_locator</returnvalue></link>&#160;*
+raptor_parser_get_locator (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *rdf_parser</parameter>);</programlisting>
+<para>Get the current raptor locator object.</para>
+<refsect3 id="raptor-parser-get-locator.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_parser</para></entry>
+<entry role="parameter_description"><para>raptor parser</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-get-locator.returns" role="returns">
+<title>Returns</title>
+<para> raptor locator</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-parse-abort" role="function">
+<title>raptor_parser_parse_abort&#160;()</title>
+<indexterm zone="raptor-parser-parse-abort"><primary>raptor_parser_parse_abort</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_parser_parse_abort (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *rdf_parser</parameter>);</programlisting>
+<para>Abort an ongoing parsing.</para>
+<para>Causes any ongoing generation of statements by a parser to be
+terminated and the parser to return controlto the application
+as soon as draining any existing buffers.</para>
+<para>Most useful inside <link linkend="raptor-parser-parse-file"><function>raptor_parser_parse_file()</function></link> or
+<link linkend="raptor-parser-parse-uri"><function>raptor_parser_parse_uri()</function></link> when the Raptor library is directing the
+parsing and when one of the callback handlers such as as set by
+<link linkend="raptor-parser-set-statement-handler"><function>raptor_parser_set_statement_handler()</function></link> requires to return to the main
+application code.</para>
+<refsect3 id="raptor-parser-parse-abort.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_parser</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-parser"><type>raptor_parser</type></link> parser object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-parse-chunk" role="function">
+<title>raptor_parser_parse_chunk&#160;()</title>
+<indexterm zone="raptor-parser-parse-chunk"><primary>raptor_parser_parse_chunk</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_parser_parse_chunk (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *rdf_parser</parameter>,
+                           <parameter>const unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                           <parameter><link linkend="size-t"><type>size_t</type></link> len</parameter>,
+                           <parameter><link linkend="int"><type>int</type></link> is_end</parameter>);</programlisting>
+<para>Parse a block of content into triples.</para>
+<para>This method can only be called after <link linkend="raptor-parser-parse-start"><function>raptor_parser_parse_start()</function></link> has
+initialised the parser.</para>
+<refsect3 id="raptor-parser-parse-chunk.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_parser</para></entry>
+<entry role="parameter_description"><para>RDF parser</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>content to parse</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>is_end</para></entry>
+<entry role="parameter_description"><para>non-0 if this is the end of the content (such as EOF)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-parse-chunk.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-parse-file" role="function">
+<title>raptor_parser_parse_file&#160;()</title>
+<indexterm zone="raptor-parser-parse-file"><primary>raptor_parser_parse_file</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_parser_parse_file (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *rdf_parser</parameter>,
+                          <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                          <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Parse RDF content at a file URI.</para>
+<para>If <parameter>uri</parameter>
+ is NULL (source is stdin), then the <parameter>base_uri</parameter>
+ is required.</para>
+<refsect3 id="raptor-parser-parse-file.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_parser</para></entry>
+<entry role="parameter_description"><para>parser</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>URI of RDF content or NULL to read from standard input</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL if the same)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-parse-file.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-parse-file-stream" role="function">
+<title>raptor_parser_parse_file_stream&#160;()</title>
+<indexterm zone="raptor-parser-parse-file-stream"><primary>raptor_parser_parse_file_stream</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_parser_parse_file_stream (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *rdf_parser</parameter>,
+                                 <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *stream</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *filename</parameter>,
+                                 <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Parse RDF content from a FILE*.</para>
+<para>After draining the FILE* stream (EOF), fclose is not called on it.</para>
+<refsect3 id="raptor-parser-parse-file-stream.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_parser</para></entry>
+<entry role="parameter_description"><para>parser</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>FILE* of RDF content</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>filename</para></entry>
+<entry role="parameter_description"><para>filename of content or NULL if it has no name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-parse-file-stream.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-parse-iostream" role="function">
+<title>raptor_parser_parse_iostream&#160;()</title>
+<indexterm zone="raptor-parser-parse-iostream"><primary>raptor_parser_parse_iostream</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_parser_parse_iostream (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *rdf_parser</parameter>,
+                              <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>,
+                              <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Parse content from an iostream</para>
+<para>If the parser requires a base URI and <parameter>base_uri</parameter>
+ is NULL, an error
+will be generated and the function will fail.</para>
+<refsect3 id="raptor-parser-parse-iostream.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_parser</para></entry>
+<entry role="parameter_description"><para>parser</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>iostream to read from</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-parse-iostream.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure, &lt;0 if a required base URI was missing</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-parse-start" role="function">
+<title>raptor_parser_parse_start&#160;()</title>
+<indexterm zone="raptor-parser-parse-start"><primary>raptor_parser_parse_start</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_parser_parse_start (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *rdf_parser</parameter>,
+                           <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>);</programlisting>
+<para>Start a parse of content with base URI.</para>
+<para>Parsers that need a base URI can be identified using a syntax
+description returned by <link linkend="raptor-world-get-parser-description"><function>raptor_world_get_parser_description()</function></link>
+statically or <link linkend="raptor-parser-get-description"><function>raptor_parser_get_description()</function></link> on a constructed
+parser.</para>
+<refsect3 id="raptor-parser-parse-start.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_parser</para></entry>
+<entry role="parameter_description"><para>RDF parser</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>base URI or may be NULL if no base URI is required</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-parse-start.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure, &lt;0 if a required base URI was missing</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-parse-uri" role="function">
+<title>raptor_parser_parse_uri&#160;()</title>
+<indexterm zone="raptor-parser-parse-uri"><primary>raptor_parser_parse_uri</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_parser_parse_uri (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *rdf_parser</parameter>,
+                         <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                         <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Parse the RDF content at URI.</para>
+<para>Sends an HTTP Accept: header whent the URI is of the HTTP protocol,
+see <link linkend="raptor-parser-parse-uri-with-connection"><function>raptor_parser_parse_uri_with_connection()</function></link> for details including
+how the <parameter>base_uri</parameter>
+ is used.</para>
+<refsect3 id="raptor-parser-parse-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_parser</para></entry>
+<entry role="parameter_description"><para>parser</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>URI of RDF content</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL if the same)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-parse-uri.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-parse-uri-with-connection" role="function">
+<title>raptor_parser_parse_uri_with_connection&#160;()</title>
+<indexterm zone="raptor-parser-parse-uri-with-connection"><primary>raptor_parser_parse_uri_with_connection</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_parser_parse_uri_with_connection
+                               (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *rdf_parser</parameter>,
+                                <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                                <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>,
+                                <parameter><link linkend="void"><type>void</type></link> *connection</parameter>);</programlisting>
+<para>Parse RDF content at URI using existing WWW connection.</para>
+<para>If <parameter>base_uri</parameter>
+ is not given and during resolution of the URI, a
+protocol redirection occurs, the final resolved URI will be
+used as the base URI.  If redirection does not occur, the
+base URI will be <parameter>uri</parameter>
+.</para>
+<para>If <parameter>base_uri</parameter>
+ is given, it overrides the process above.</para>
+<para>When <parameter>connection</parameter>
+ is NULL and a MIME Type exists for the parser
+type, this type is sent in an HTTP Accept: header in the form
+Accept: MIME-TYPE along with a wildcard of 0.1 quality, so MIME-TYPE is
+prefered rather than the sole answer.  The latter part may not be
+necessary but should ensure an HTTP 200 response.</para>
+<refsect3 id="raptor-parser-parse-uri-with-connection.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_parser</para></entry>
+<entry role="parameter_description"><para>parser</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>URI of RDF content</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL if the same)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>connection</para></entry>
+<entry role="parameter_description"><para>connection object pointer or NULL to create a new one</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-parse-uri-with-connection.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-get-graph" role="function">
+<title>raptor_parser_get_graph&#160;()</title>
+<indexterm zone="raptor-parser-get-graph"><primary>raptor_parser_get_graph</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_parser_get_graph (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *rdf_parser</parameter>);</programlisting>
+<para>Get the current graph for the parser</para>
+<para>The returned URI is owned by the caller and must be freed with
+<link linkend="raptor-free-uri"><function>raptor_free_uri()</function></link></para>
+<refsect3 id="raptor-parser-get-graph.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_parser</para></entry>
+<entry role="parameter_description"><para>parser</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-get-graph.returns" role="returns">
+<title>Returns</title>
+<para> raptor_uri* graph name or NULL for the default graph</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-get-name" role="function">
+<title>raptor_parser_get_name&#160;()</title>
+<indexterm zone="raptor-parser-get-name"><primary>raptor_parser_get_name</primary></indexterm>
+<programlisting language="C">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_parser_get_name (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *rdf_parser</parameter>);</programlisting>
+<para>Get the name of a parser.</para>
+<para>Use <link linkend="raptor-parser-get-description"><function>raptor_parser_get_description()</function></link> to get the alternate names and
+aliases as well as other descriptive values.</para>
+<refsect3 id="raptor-parser-get-name.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_parser</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-parser"><type>raptor_parser</type></link> parser object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-get-name.returns" role="returns">
+<title>Returns</title>
+<para> the short name for the parser.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-set-option" role="function">
+<title>raptor_parser_set_option&#160;()</title>
+<indexterm zone="raptor-parser-set-option"><primary>raptor_parser_set_option</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_parser_set_option (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *parser</parameter>,
+                          <parameter><link linkend="raptor-option"><type>raptor_option</type></link> option</parameter>,
+                          <parameter>const <link linkend="char"><type>char</type></link> *string</parameter>,
+                          <parameter><link linkend="int"><type>int</type></link> integer</parameter>);</programlisting>
+<para>Set parser option.</para>
+<para>If <parameter>string</parameter>
+ is not NULL and the option type is numeric, the string
+value is converted to an integer and used in preference to <parameter>integer</parameter>
+.</para>
+<para>If <parameter>string</parameter>
+ is NULL and the option type is not numeric, an error is
+returned.</para>
+<para>The <parameter>string</parameter>
+ values used are copied.</para>
+<para>The allowed options are available via
+<link linkend="raptor-world-get-option-description"><function>raptor_world_get_option_description()</function></link>.</para>
+<refsect3 id="raptor-parser-set-option.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>parser</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-parser"><type>raptor_parser</type></link> parser object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>option</para></entry>
+<entry role="parameter_description"><para>option to set from enumerated <link linkend="raptor-option"><type>raptor_option</type></link> values</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string option value (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>integer</para></entry>
+<entry role="parameter_description"><para>integer option value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-set-option.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure or if the option is unknown</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-get-option" role="function">
+<title>raptor_parser_get_option&#160;()</title>
+<indexterm zone="raptor-parser-get-option"><primary>raptor_parser_get_option</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_parser_get_option (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *parser</parameter>,
+                          <parameter><link linkend="raptor-option"><type>raptor_option</type></link> option</parameter>,
+                          <parameter><link linkend="char"><type>char</type></link> **string_p</parameter>,
+                          <parameter><link linkend="int"><type>int</type></link> *integer_p</parameter>);</programlisting>
+<para>Get parser option.</para>
+<para>Any string value returned in *<parameter>string_p</parameter>
+ is shared and must
+be copied by the caller.</para>
+<para>The allowed options are available via
+<link linkend="raptor-world-get-option-description"><function>raptor_world_get_option_description()</function></link>.</para>
+<refsect3 id="raptor-parser-get-option.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>parser</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-parser"><type>raptor_parser</type></link> parser object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>option</para></entry>
+<entry role="parameter_description"><para>option to get value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string_p</para></entry>
+<entry role="parameter_description"><para>pointer to where to store string value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>integer_p</para></entry>
+<entry role="parameter_description"><para>pointer to where to store integer value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-get-option.returns" role="returns">
+<title>Returns</title>
+<para> option value or &lt; 0 for an illegal option</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-get-accept-header" role="function">
+<title>raptor_parser_get_accept_header&#160;()</title>
+<indexterm zone="raptor-parser-get-accept-header"><primary>raptor_parser_get_accept_header</primary></indexterm>
+<programlisting language="C">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_parser_get_accept_header (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *rdf_parser</parameter>);</programlisting>
+<para>Get an HTTP Accept value for the parser.</para>
+<para>The returned string must be freed by the caller such as with
+<link linkend="raptor-free-memory"><function>raptor_free_memory()</function></link>.</para>
+<refsect3 id="raptor-parser-get-accept-header.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_parser</para></entry>
+<entry role="parameter_description"><para>parser</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-get-accept-header.returns" role="returns">
+<title>Returns</title>
+<para> a new Accept: header string or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-set-uri-filter" role="function">
+<title>raptor_parser_set_uri_filter&#160;()</title>
+<indexterm zone="raptor-parser-set-uri-filter"><primary>raptor_parser_set_uri_filter</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_parser_set_uri_filter (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *parser</parameter>,
+                              <parameter><link linkend="raptor-uri-filter-func"><type>raptor_uri_filter_func</type></link> filter</parameter>,
+                              <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>);</programlisting>
+<para>Set URI filter function for WWW retrieval.</para>
+<refsect3 id="raptor-parser-set-uri-filter.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>parser</para></entry>
+<entry role="parameter_description"><para>parser object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>filter</para></entry>
+<entry role="parameter_description"><para>URI filter function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>User data to pass to filter function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-parser-get-world" role="function">
+<title>raptor_parser_get_world&#160;()</title>
+<indexterm zone="raptor-parser-get-world"><primary>raptor_parser_get_world</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-world"><returnvalue>raptor_world</returnvalue></link>&#160;*
+raptor_parser_get_world (<parameter><link linkend="raptor-parser"><type>raptor_parser</type></link> *rdf_parser</parameter>);</programlisting>
+<para>Get the <link linkend="raptor-world"><type>raptor_world</type></link> object associated with a parser.</para>
+<refsect3 id="raptor-parser-get-world.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_parser</para></entry>
+<entry role="parameter_description"><para>parser</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-parser-get-world.returns" role="returns">
+<title>Returns</title>
+<para> raptor_world* pointer</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-parser.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-parser" role="typedef">
+<title>raptor_parser</title>
+<indexterm zone="raptor-parser"><primary>raptor_parser</primary></indexterm>
+<programlisting language="C">raptor_parser* raptor_parser;
+</programlisting>
+<para>Raptor Parser class</para>
+</refsect2>
+<refsect2 id="raptor-graph-mark-flags" role="enum">
+<title>enum raptor_graph_mark_flags</title>
+<indexterm zone="raptor-graph-mark-flags"><primary>raptor_graph_mark_flags</primary></indexterm>
+<para>Graph mark handler bitmask flags</para>
+<refsect3 id="raptor-graph-mark-flags.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-GRAPH-MARK-START:CAPS">RAPTOR_GRAPH_MARK_START</para></entry>
+<entry role="enum_member_description"><para>mark is start of graph (otherwise is end)</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-GRAPH-MARK-DECLARED:CAPS">RAPTOR_GRAPH_MARK_DECLARED</para></entry>
+<entry role="enum_member_description"><para>mark was declared in syntax rather than implict</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+
+</refentry>

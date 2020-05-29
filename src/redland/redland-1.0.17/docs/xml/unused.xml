@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-unused">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-unused.top_of_page">unused</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>unused</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-unused.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="REDLAND-PRINTF-FORMAT:CAPS">REDLAND_PRINTF_FORMAT</link><phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-basename">librdf_basename</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-log">librdf_log</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-log-simple">librdf_log_simple</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-unused.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="REDLAND-API:CAPS">REDLAND_API</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="REDLAND-CALLBACK-STDCALL:CAPS">REDLAND_CALLBACK_STDCALL</link></entry></row>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="librdf-concepts-index">librdf_concepts_index</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-unused.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-unused.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="REDLAND-PRINTF-FORMAT:CAPS" role="macro">
+<title>REDLAND_PRINTF_FORMAT()</title>
+<indexterm zone="REDLAND-PRINTF-FORMAT:CAPS"><primary>REDLAND_PRINTF_FORMAT</primary></indexterm>
+<programlisting language="C">#define             REDLAND_PRINTF_FORMAT(string_index, first_to_check_index)</programlisting>
+</refsect2>
+<refsect2 id="librdf-basename" role="function">
+<title>librdf_basename&#160;()</title>
+<indexterm zone="librdf-basename"><primary>librdf_basename</primary></indexterm>
+<programlisting language="C">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_basename (<parameter>const <link linkend="char"><type>char</type></link> *name</parameter>);</programlisting>
+<para>Get the basename of a path</para>
+<refsect3 id="librdf-basename.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>path</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-basename.returns" role="returns">
+<title>Returns</title>
+<para> filename part of a pathname</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-log" role="function">
+<title>librdf_log&#160;()</title>
+<indexterm zone="librdf-log"><primary>librdf_log</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_log (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+            <parameter><link linkend="int"><type>int</type></link> code</parameter>,
+            <parameter><link linkend="librdf-log-level"><type>librdf_log_level</type></link> level</parameter>,
+            <parameter><link linkend="librdf-log-facility"><type>librdf_log_facility</type></link> facility</parameter>,
+            <parameter><link linkend="void"><type>void</type></link> *locator</parameter>,
+            <parameter>const <link linkend="char"><type>char</type></link> *message</parameter>,
+            <parameter>...</parameter>);</programlisting>
+<para>Log a message.</para>
+<para>If world is NULL, the error ocurred in redland startup before
+the world was created.</para>
+<refsect3 id="librdf-log.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>code</para></entry>
+<entry role="parameter_description"><para>error code</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>level</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-log-level"><type>librdf_log_level</type></link> log level</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>facility</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-log-facility"><type>librdf_log_facility</type></link> log facility</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>locator</para></entry>
+<entry role="parameter_description"><para>raptor_locator if available or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>message</para></entry>
+<entry role="parameter_description"><para>message to record</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>...</para></entry>
+<entry role="parameter_description"><para>message parameters</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-log-simple" role="function">
+<title>librdf_log_simple&#160;()</title>
+<indexterm zone="librdf-log-simple"><primary>librdf_log_simple</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_log_simple (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                   <parameter><link linkend="int"><type>int</type></link> code</parameter>,
+                   <parameter><link linkend="librdf-log-level"><type>librdf_log_level</type></link> level</parameter>,
+                   <parameter><link linkend="librdf-log-facility"><type>librdf_log_facility</type></link> facility</parameter>,
+                   <parameter><link linkend="void"><type>void</type></link> *locator</parameter>,
+                   <parameter>const <link linkend="char"><type>char</type></link> *message</parameter>);</programlisting>
+<para>Log a message.</para>
+<para>If world is NULL, the error ocurred in redland startup before
+the world was created.</para>
+<refsect3 id="librdf-log-simple.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>code</para></entry>
+<entry role="parameter_description"><para>error code</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>level</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-log-level"><type>librdf_log_level</type></link> log level</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>facility</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-log-facility"><type>librdf_log_facility</type></link> log facility</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>locator</para></entry>
+<entry role="parameter_description"><para>raptor_locator if available or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>message</para></entry>
+<entry role="parameter_description"><para>message to record</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-unused.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="REDLAND-API:CAPS" role="macro">
+<title>REDLAND_API</title>
+<indexterm zone="REDLAND-API:CAPS"><primary>REDLAND_API</primary></indexterm>
+<programlisting language="C">#      define REDLAND_API
+</programlisting>
+</refsect2>
+<refsect2 id="REDLAND-CALLBACK-STDCALL:CAPS" role="macro">
+<title>REDLAND_CALLBACK_STDCALL</title>
+<indexterm zone="REDLAND-CALLBACK-STDCALL:CAPS"><primary>REDLAND_CALLBACK_STDCALL</primary></indexterm>
+<programlisting language="C">#    define REDLAND_CALLBACK_STDCALL _stdcall
+</programlisting>
+</refsect2>
+<refsect2 id="librdf-concepts-index" role="enum">
+<title>enum librdf_concepts_index</title>
+<indexterm zone="librdf-concepts-index"><primary>librdf_concepts_index</primary></indexterm>
+<refsect3 id="librdf-concepts-index.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-Alt">LIBRDF_CONCEPT_MS_Alt</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-Bag">LIBRDF_CONCEPT_MS_Bag</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-Property">LIBRDF_CONCEPT_MS_Property</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-Seq">LIBRDF_CONCEPT_MS_Seq</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-Statement">LIBRDF_CONCEPT_MS_Statement</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-object">LIBRDF_CONCEPT_MS_object</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-predicate">LIBRDF_CONCEPT_MS_predicate</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-subject">LIBRDF_CONCEPT_MS_subject</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-type">LIBRDF_CONCEPT_MS_type</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-value">LIBRDF_CONCEPT_MS_value</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-li">LIBRDF_CONCEPT_MS_li</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-RDF:CAPS">LIBRDF_CONCEPT_MS_RDF</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-Description">LIBRDF_CONCEPT_MS_Description</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-aboutEach">LIBRDF_CONCEPT_MS_aboutEach</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-MS-aboutEachPrefix">LIBRDF_CONCEPT_MS_aboutEachPrefix</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-RS-nodeID">LIBRDF_CONCEPT_RS_nodeID</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-RS-List">LIBRDF_CONCEPT_RS_List</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-RS-first">LIBRDF_CONCEPT_RS_first</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-RS-rest">LIBRDF_CONCEPT_RS_rest</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-RS-nil">LIBRDF_CONCEPT_RS_nil</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-RS-XMLLiteral">LIBRDF_CONCEPT_RS_XMLLiteral</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-Class">LIBRDF_CONCEPT_S_Class</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-ConstraintProperty">LIBRDF_CONCEPT_S_ConstraintProperty</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-ConstraintResource">LIBRDF_CONCEPT_S_ConstraintResource</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-Container">LIBRDF_CONCEPT_S_Container</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-ContainerMembershipProperty">LIBRDF_CONCEPT_S_ContainerMembershipProperty</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-Literal">LIBRDF_CONCEPT_S_Literal</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-Resource">LIBRDF_CONCEPT_S_Resource</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-comment">LIBRDF_CONCEPT_S_comment</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-domain">LIBRDF_CONCEPT_S_domain</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-isDefinedBy">LIBRDF_CONCEPT_S_isDefinedBy</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-label">LIBRDF_CONCEPT_S_label</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-range">LIBRDF_CONCEPT_S_range</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-seeAlso">LIBRDF_CONCEPT_S_seeAlso</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-subClassOf">LIBRDF_CONCEPT_S_subClassOf</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-S-subPropertyOf">LIBRDF_CONCEPT_S_subPropertyOf</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-FIRST-S-ID:CAPS">LIBRDF_CONCEPT_FIRST_S_ID</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-LAST-S-ID:CAPS">LIBRDF_CONCEPT_LAST_S_ID</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-RDF11-HTML:CAPS">LIBRDF_CONCEPT_RDF11_HTML</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-RDF11-langString">LIBRDF_CONCEPT_RDF11_langString</para></entry>
+<entry /><entry />
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-CONCEPT-LAST:CAPS">LIBRDF_CONCEPT_LAST</para></entry>
+<entry /><entry />
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+
+</refentry>

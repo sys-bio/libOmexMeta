@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-unicode">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-unicode.top_of_page">unicode</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>unicode</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-unicode.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-unicode-char-to-utf8">librdf_unicode_char_to_utf8</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-utf8-to-unicode-char">librdf_utf8_to_unicode_char</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-utf8-to-latin1">librdf_utf8_to_latin1</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-utf8-to-latin1-2">librdf_utf8_to_latin1_2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-latin1-to-utf8">librdf_latin1_to_utf8</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-latin1-to-utf8-2">librdf_latin1_to_utf8_2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-utf8-print">librdf_utf8_print</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-unicode.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-unichar">librdf_unichar</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-unicode.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-unicode.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-unicode-char-to-utf8" role="function" condition="deprecated:">
+<title>librdf_unicode_char_to_utf8&#160;()</title>
+<indexterm zone="librdf-unicode-char-to-utf8" role="deprecated"><primary>librdf_unicode_char_to_utf8</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_unicode_char_to_utf8 (<parameter><link linkend="librdf-unichar"><type>librdf_unichar</type></link> c</parameter>,
+                             <parameter>unsigned <link linkend="char"><type>char</type></link> *output</parameter>,
+                             <parameter><link linkend="int"><type>int</type></link> length</parameter>);</programlisting>
+<warning><para><literal>librdf_unicode_char_to_utf8</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Convert a Unicode character to UTF-8 encoding.</para>
+<para><parameter>deprecated</parameter>
+: Use <link linkend="raptor-unicode-utf8-string-put-char"><function>raptor_unicode_utf8_string_put_char()</function></link> noting that
+the length argument is a size_t.</para>
+<para>If buffer is NULL, then will calculate the length rather than
+perform it.  This can be used by the caller to allocate space
+and then re-call this function with the new buffer.</para>
+<refsect3 id="librdf-unicode-char-to-utf8.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>c</para></entry>
+<entry role="parameter_description"><para>Unicode character</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>output</para></entry>
+<entry role="parameter_description"><para>UTF-8 string buffer or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size (will be truncated to size_t)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-unicode-char-to-utf8.returns" role="returns">
+<title>Returns</title>
+<para> bytes written to output buffer or &lt;0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-utf8-to-unicode-char" role="function" condition="deprecated:">
+<title>librdf_utf8_to_unicode_char&#160;()</title>
+<indexterm zone="librdf-utf8-to-unicode-char" role="deprecated"><primary>librdf_utf8_to_unicode_char</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_utf8_to_unicode_char (<parameter><link linkend="librdf-unichar"><type>librdf_unichar</type></link> *output</parameter>,
+                             <parameter>const unsigned <link linkend="char"><type>char</type></link> *input</parameter>,
+                             <parameter><link linkend="int"><type>int</type></link> length</parameter>);</programlisting>
+<warning><para><literal>librdf_utf8_to_unicode_char</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Convert an UTF-8 encoded buffer to a Unicode character.</para>
+<para><parameter>deprecated</parameter>
+: Use <link linkend="raptor-unicode-utf8-string-get-char"><function>raptor_unicode_utf8_string_get_char()</function></link> noting that
+the arg order has changed to input, length (a size_t), output.</para>
+<para>If <parameter>output</parameter>
+ is NULL, then will calculate the number of bytes that
+will be used from the input buffer and not perform the conversion.</para>
+<refsect3 id="librdf-utf8-to-unicode-char.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>output</para></entry>
+<entry role="parameter_description"><para>Pointer to the Unicode character or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>input</para></entry>
+<entry role="parameter_description"><para>UTF-8 string buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size (will be truncated to size_t)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-utf8-to-unicode-char.returns" role="returns">
+<title>Returns</title>
+<para> bytes used from input buffer or &lt;0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-utf8-to-latin1" role="function" condition="deprecated:">
+<title>librdf_utf8_to_latin1&#160;()</title>
+<indexterm zone="librdf-utf8-to-latin1" role="deprecated"><primary>librdf_utf8_to_latin1</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_utf8_to_latin1 (<parameter>const unsigned <link linkend="char"><type>char</type></link> *input</parameter>,
+                       <parameter><link linkend="int"><type>int</type></link> length</parameter>,
+                       <parameter><link linkend="int"><type>int</type></link> *output_length</parameter>);</programlisting>
+<warning><para><literal>librdf_utf8_to_latin1</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Convert a UTF-8 string to ISO Latin-1.</para>
+<para>Converts the given UTF-8 string to the ISO Latin-1 subset of
+Unicode (characters 0x00-0xff), discarding any out of range
+characters.</para>
+<para><parameter>deprecated</parameter>
+ for <link linkend="librdf-utf8-to-latin1-2"><function>librdf_utf8_to_latin1_2()</function></link> that takes and returns
+size_t sizes and allows replacing of out of range characters.</para>
+<para>If <parameter>output_length</parameter>
+ is not NULL, the returned string length
+will be stored there.</para>
+<refsect3 id="librdf-utf8-to-latin1.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>input</para></entry>
+<entry role="parameter_description"><para>UTF-8 string buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size (will be truncated to size_t)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>output_length</para></entry>
+<entry role="parameter_description"><para>Pointer to variable to store resulting string length or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-utf8-to-latin1.returns" role="returns">
+<title>Returns</title>
+<para> pointer to new ISO Latin-1 string or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-utf8-to-latin1-2" role="function">
+<title>librdf_utf8_to_latin1_2&#160;()</title>
+<indexterm zone="librdf-utf8-to-latin1-2"><primary>librdf_utf8_to_latin1_2</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_utf8_to_latin1_2 (<parameter>const unsigned <link linkend="char"><type>char</type></link> *input</parameter>,
+                         <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>,
+                         <parameter>unsigned <link linkend="char"><type>char</type></link> discard</parameter>,
+                         <parameter><link linkend="size-t"><type>size_t</type></link> *output_length</parameter>);</programlisting>
+<para>Convert a UTF-8 string to ISO Latin-1.</para>
+<para>Converts the given UTF-8 string to the ISO Latin-1 subset of
+Unicode (characters 0x00-0xff).  Out of range characters are
+replaced with <parameter>discard</parameter>
+ unless it is NUL (\0).</para>
+<para>If <parameter>output_length</parameter>
+ is not NULL, the returned string length will be
+stored there.</para>
+<refsect3 id="librdf-utf8-to-latin1-2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>input</para></entry>
+<entry role="parameter_description"><para>UTF-8 string buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>discard</para></entry>
+<entry role="parameter_description"><para>character to use to replace out of range characters or NUL (\0) to discard</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>output_length</para></entry>
+<entry role="parameter_description"><para>Pointer to variable to store resulting string length or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-utf8-to-latin1-2.returns" role="returns">
+<title>Returns</title>
+<para> pointer to new ISO Latin-1 string or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-latin1-to-utf8" role="function" condition="deprecated:">
+<title>librdf_latin1_to_utf8&#160;()</title>
+<indexterm zone="librdf-latin1-to-utf8" role="deprecated"><primary>librdf_latin1_to_utf8</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_latin1_to_utf8 (<parameter>const unsigned <link linkend="char"><type>char</type></link> *input</parameter>,
+                       <parameter><link linkend="int"><type>int</type></link> length</parameter>,
+                       <parameter><link linkend="int"><type>int</type></link> *output_length</parameter>);</programlisting>
+<warning><para><literal>librdf_latin1_to_utf8</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Convert an ISO Latin-1 encoded string to UTF-8.</para>
+<para>Converts the given ISO Latin-1 string to an UTF-8 encoded string
+representing the same content.  This is lossless.</para>
+<para><parameter>deprecated</parameter>
+ for <link linkend="librdf-latin1-to-utf8-2"><function>librdf_latin1_to_utf8_2()</function></link> that takes and returns
+size_t sizes.</para>
+<para>If <parameter>output_length</parameter>
+ is not NULL, the returned string length will be
+stored there.</para>
+<refsect3 id="librdf-latin1-to-utf8.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>input</para></entry>
+<entry role="parameter_description"><para>ISO Latin-1 string buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size (will be truncated to size_t)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>output_length</para></entry>
+<entry role="parameter_description"><para>Pointer to variable to store resulting string length or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-latin1-to-utf8.returns" role="returns">
+<title>Returns</title>
+<para> pointer to new UTF-8 string or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-latin1-to-utf8-2" role="function">
+<title>librdf_latin1_to_utf8_2&#160;()</title>
+<indexterm zone="librdf-latin1-to-utf8-2"><primary>librdf_latin1_to_utf8_2</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_latin1_to_utf8_2 (<parameter>const unsigned <link linkend="char"><type>char</type></link> *input</parameter>,
+                         <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>,
+                         <parameter><link linkend="size-t"><type>size_t</type></link> *output_length</parameter>);</programlisting>
+<para>Convert an ISO Latin-1 encoded string to UTF-8.</para>
+<para>Converts the given ISO Latin-1 string to an UTF-8 encoded string
+representing the same content.  This is lossless.</para>
+<para>If <parameter>output_length</parameter>
+ is not NULL, the returned string length will be
+stored there.</para>
+<refsect3 id="librdf-latin1-to-utf8-2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>input</para></entry>
+<entry role="parameter_description"><para>ISO Latin-1 string buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>output_length</para></entry>
+<entry role="parameter_description"><para>Pointer to variable to store resulting string length or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-latin1-to-utf8-2.returns" role="returns">
+<title>Returns</title>
+<para> pointer to new UTF-8 string or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-utf8-print" role="function">
+<title>librdf_utf8_print&#160;()</title>
+<indexterm zone="librdf-utf8-print"><primary>librdf_utf8_print</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_utf8_print (<parameter>const unsigned <link linkend="char"><type>char</type></link> *input</parameter>,
+                   <parameter><link linkend="int"><type>int</type></link> length</parameter>,
+                   <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *stream</parameter>);</programlisting>
+<para>Print a UTF-8 string to a stream.</para>
+<para>Pretty prints the UTF-8 string in a pseudo-C character
+format like \u<emphasis>hex digits</emphasis> when the characters fail
+the <link linkend="isprint"><function>isprint()</function></link> test.</para>
+<refsect3 id="librdf-utf8-print.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>input</para></entry>
+<entry role="parameter_description"><para>UTF-8 string buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size (will be truncated to size_t)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>FILE* stream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-unicode.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="librdf-unichar" role="typedef">
+<title>librdf_unichar</title>
+<indexterm zone="librdf-unichar"><primary>librdf_unichar</primary></indexterm>
+<programlisting language="C">typedef raptor_unichar librdf_unichar;
+</programlisting>
+<para>Unicode codepoint.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

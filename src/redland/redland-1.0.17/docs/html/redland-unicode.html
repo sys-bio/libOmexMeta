@@ -1,0 +1,458 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>unicode: Redland RDF Library Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="Redland RDF Library Manual">
+<link rel="up" href="reference-manual.html" title="Part II. Reference Manual">
+<link rel="prev" href="redland-stream.html" title="stream">
+<link rel="next" href="redland-uri.html" title="uri">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#redland-unicode.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference-manual.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="redland-stream.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="redland-uri.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="redland-unicode"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="redland-unicode.top_of_page"></a>unicode</span></h2>
+<p>unicode</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="redland-unicode.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-unicode.html#librdf-unicode-char-to-utf8" title="librdf_unicode_char_to_utf8 ()">librdf_unicode_char_to_utf8</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-unicode.html#librdf-utf8-to-unicode-char" title="librdf_utf8_to_unicode_char ()">librdf_utf8_to_unicode_char</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-unicode.html#librdf-utf8-to-latin1" title="librdf_utf8_to_latin1 ()">librdf_utf8_to_latin1</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-unicode.html#librdf-utf8-to-latin1-2" title="librdf_utf8_to_latin1_2 ()">librdf_utf8_to_latin1_2</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-unicode.html#librdf-latin1-to-utf8" title="librdf_latin1_to_utf8 ()">librdf_latin1_to_utf8</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-unicode.html#librdf-latin1-to-utf8-2" title="librdf_latin1_to_utf8_2 ()">librdf_latin1_to_utf8_2</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-unicode.html#librdf-utf8-print" title="librdf_utf8_print ()">librdf_utf8_print</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-unicode.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="typedef_keyword">typedef</td>
+<td class="function_name"><a class="link" href="redland-unicode.html#librdf-unichar" title="librdf_unichar">librdf_unichar</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-unicode.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="redland-unicode.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="librdf-unicode-char-to-utf8"></a><h3>librdf_unicode_char_to_utf8 ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_unicode_char_to_utf8 (<em class="parameter"><code><a class="link" href="redland-unicode.html#librdf-unichar" title="librdf_unichar"><span class="type">librdf_unichar</span></a> c</code></em>,
+                             <em class="parameter"><code>unsigned <span class="type">char</span> *output</code></em>,
+                             <em class="parameter"><code><span class="type">int</span> length</code></em>);</pre>
+<div class="warning"><p><code class="literal">librdf_unicode_char_to_utf8</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Convert a Unicode character to UTF-8 encoding.</p>
+<p><em class="parameter"><code>deprecated</code></em>
+: Use <code class="function">raptor_unicode_utf8_string_put_char()</code> noting that
+the length argument is a size_t.</p>
+<p>If buffer is NULL, then will calculate the length rather than
+perform it.  This can be used by the caller to allocate space
+and then re-call this function with the new buffer.</p>
+<div class="refsect3">
+<a name="librdf-unicode-char-to-utf8.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>c</p></td>
+<td class="parameter_description"><p>Unicode character</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>output</p></td>
+<td class="parameter_description"><p>UTF-8 string buffer or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>buffer size (will be truncated to size_t)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-unicode-char-to-utf8.returns"></a><h4>Returns</h4>
+<p> bytes written to output buffer or &lt;0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-utf8-to-unicode-char"></a><h3>librdf_utf8_to_unicode_char ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_utf8_to_unicode_char (<em class="parameter"><code><a class="link" href="redland-unicode.html#librdf-unichar" title="librdf_unichar"><span class="type">librdf_unichar</span></a> *output</code></em>,
+                             <em class="parameter"><code>const unsigned <span class="type">char</span> *input</code></em>,
+                             <em class="parameter"><code><span class="type">int</span> length</code></em>);</pre>
+<div class="warning"><p><code class="literal">librdf_utf8_to_unicode_char</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Convert an UTF-8 encoded buffer to a Unicode character.</p>
+<p><em class="parameter"><code>deprecated</code></em>
+: Use <code class="function">raptor_unicode_utf8_string_get_char()</code> noting that
+the arg order has changed to input, length (a size_t), output.</p>
+<p>If <em class="parameter"><code>output</code></em>
+ is NULL, then will calculate the number of bytes that
+will be used from the input buffer and not perform the conversion.</p>
+<div class="refsect3">
+<a name="librdf-utf8-to-unicode-char.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>output</p></td>
+<td class="parameter_description"><p>Pointer to the Unicode character or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>input</p></td>
+<td class="parameter_description"><p>UTF-8 string buffer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>buffer size (will be truncated to size_t)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-utf8-to-unicode-char.returns"></a><h4>Returns</h4>
+<p> bytes used from input buffer or &lt;0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-utf8-to-latin1"></a><h3>librdf_utf8_to_latin1 ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+librdf_utf8_to_latin1 (<em class="parameter"><code>const unsigned <span class="type">char</span> *input</code></em>,
+                       <em class="parameter"><code><span class="type">int</span> length</code></em>,
+                       <em class="parameter"><code><span class="type">int</span> *output_length</code></em>);</pre>
+<div class="warning"><p><code class="literal">librdf_utf8_to_latin1</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Convert a UTF-8 string to ISO Latin-1.</p>
+<p>Converts the given UTF-8 string to the ISO Latin-1 subset of
+Unicode (characters 0x00-0xff), discarding any out of range
+characters.</p>
+<p><em class="parameter"><code>deprecated</code></em>
+ for <a class="link" href="redland-unicode.html#librdf-utf8-to-latin1-2" title="librdf_utf8_to_latin1_2 ()"><code class="function">librdf_utf8_to_latin1_2()</code></a> that takes and returns
+size_t sizes and allows replacing of out of range characters.</p>
+<p>If <em class="parameter"><code>output_length</code></em>
+ is not NULL, the returned string length
+will be stored there.</p>
+<div class="refsect3">
+<a name="librdf-utf8-to-latin1.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>input</p></td>
+<td class="parameter_description"><p>UTF-8 string buffer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>buffer size (will be truncated to size_t)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>output_length</p></td>
+<td class="parameter_description"><p>Pointer to variable to store resulting string length or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-utf8-to-latin1.returns"></a><h4>Returns</h4>
+<p> pointer to new ISO Latin-1 string or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-utf8-to-latin1-2"></a><h3>librdf_utf8_to_latin1_2 ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+librdf_utf8_to_latin1_2 (<em class="parameter"><code>const unsigned <span class="type">char</span> *input</code></em>,
+                         <em class="parameter"><code><span class="type">size_t</span> length</code></em>,
+                         <em class="parameter"><code>unsigned <span class="type">char</span> discard</code></em>,
+                         <em class="parameter"><code><span class="type">size_t</span> *output_length</code></em>);</pre>
+<p>Convert a UTF-8 string to ISO Latin-1.</p>
+<p>Converts the given UTF-8 string to the ISO Latin-1 subset of
+Unicode (characters 0x00-0xff).  Out of range characters are
+replaced with <em class="parameter"><code>discard</code></em>
+ unless it is NUL (\0).</p>
+<p>If <em class="parameter"><code>output_length</code></em>
+ is not NULL, the returned string length will be
+stored there.</p>
+<div class="refsect3">
+<a name="librdf-utf8-to-latin1-2.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>input</p></td>
+<td class="parameter_description"><p>UTF-8 string buffer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>buffer size</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>discard</p></td>
+<td class="parameter_description"><p>character to use to replace out of range characters or NUL (\0) to discard</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>output_length</p></td>
+<td class="parameter_description"><p>Pointer to variable to store resulting string length or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-utf8-to-latin1-2.returns"></a><h4>Returns</h4>
+<p> pointer to new ISO Latin-1 string or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-latin1-to-utf8"></a><h3>librdf_latin1_to_utf8 ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+librdf_latin1_to_utf8 (<em class="parameter"><code>const unsigned <span class="type">char</span> *input</code></em>,
+                       <em class="parameter"><code><span class="type">int</span> length</code></em>,
+                       <em class="parameter"><code><span class="type">int</span> *output_length</code></em>);</pre>
+<div class="warning"><p><code class="literal">librdf_latin1_to_utf8</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Convert an ISO Latin-1 encoded string to UTF-8.</p>
+<p>Converts the given ISO Latin-1 string to an UTF-8 encoded string
+representing the same content.  This is lossless.</p>
+<p><em class="parameter"><code>deprecated</code></em>
+ for <a class="link" href="redland-unicode.html#librdf-latin1-to-utf8-2" title="librdf_latin1_to_utf8_2 ()"><code class="function">librdf_latin1_to_utf8_2()</code></a> that takes and returns
+size_t sizes.</p>
+<p>If <em class="parameter"><code>output_length</code></em>
+ is not NULL, the returned string length will be
+stored there.</p>
+<div class="refsect3">
+<a name="librdf-latin1-to-utf8.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>input</p></td>
+<td class="parameter_description"><p>ISO Latin-1 string buffer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>buffer size (will be truncated to size_t)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>output_length</p></td>
+<td class="parameter_description"><p>Pointer to variable to store resulting string length or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-latin1-to-utf8.returns"></a><h4>Returns</h4>
+<p> pointer to new UTF-8 string or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-latin1-to-utf8-2"></a><h3>librdf_latin1_to_utf8_2 ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+librdf_latin1_to_utf8_2 (<em class="parameter"><code>const unsigned <span class="type">char</span> *input</code></em>,
+                         <em class="parameter"><code><span class="type">size_t</span> length</code></em>,
+                         <em class="parameter"><code><span class="type">size_t</span> *output_length</code></em>);</pre>
+<p>Convert an ISO Latin-1 encoded string to UTF-8.</p>
+<p>Converts the given ISO Latin-1 string to an UTF-8 encoded string
+representing the same content.  This is lossless.</p>
+<p>If <em class="parameter"><code>output_length</code></em>
+ is not NULL, the returned string length will be
+stored there.</p>
+<div class="refsect3">
+<a name="librdf-latin1-to-utf8-2.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>input</p></td>
+<td class="parameter_description"><p>ISO Latin-1 string buffer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>buffer size</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>output_length</p></td>
+<td class="parameter_description"><p>Pointer to variable to store resulting string length or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-latin1-to-utf8-2.returns"></a><h4>Returns</h4>
+<p> pointer to new UTF-8 string or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-utf8-print"></a><h3>librdf_utf8_print ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_utf8_print (<em class="parameter"><code>const unsigned <span class="type">char</span> *input</code></em>,
+                   <em class="parameter"><code><span class="type">int</span> length</code></em>,
+                   <em class="parameter"><code><span class="type">FILE</span> *stream</code></em>);</pre>
+<p>Print a UTF-8 string to a stream.</p>
+<p>Pretty prints the UTF-8 string in a pseudo-C character
+format like \u<span class="emphasis"><em>hex digits</em></span> when the characters fail
+the <code class="function">isprint()</code> test.</p>
+<div class="refsect3">
+<a name="librdf-utf8-print.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>input</p></td>
+<td class="parameter_description"><p>UTF-8 string buffer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>buffer size (will be truncated to size_t)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>FILE* stream</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="redland-unicode.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="librdf-unichar"></a><h3>librdf_unichar</h3>
+<pre class="programlisting">typedef raptor_unichar librdf_unichar;
+</pre>
+<p>Unicode codepoint.</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.27</div>
+</body>
+</html>

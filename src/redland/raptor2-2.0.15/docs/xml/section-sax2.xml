@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-sax2">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-sax2.top_of_page">section-sax2</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-sax2</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-sax2.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="raptor-sax2"><returnvalue>raptor_sax2</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-sax2">raptor_new_sax2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-sax2">raptor_free_sax2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-sax2-start-element-handler">*raptor_sax2_start_element_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-sax2-end-element-handler">*raptor_sax2_end_element_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-sax2-characters-handler">*raptor_sax2_characters_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-sax2-cdata-handler">*raptor_sax2_cdata_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-sax2-comment-handler">*raptor_sax2_comment_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-sax2-unparsed-entity-decl-handler">*raptor_sax2_unparsed_entity_decl_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-sax2-external-entity-ref-handler">*raptor_sax2_external_entity_ref_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sax2-set-start-element-handler">raptor_sax2_set_start_element_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sax2-set-end-element-handler">raptor_sax2_set_end_element_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sax2-set-characters-handler">raptor_sax2_set_characters_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sax2-set-cdata-handler">raptor_sax2_set_cdata_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sax2-set-comment-handler">raptor_sax2_set_comment_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sax2-set-unparsed-entity-decl-handler">raptor_sax2_set_unparsed_entity_decl_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sax2-set-external-entity-ref-handler">raptor_sax2_set_external_entity_ref_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sax2-set-namespace-handler">raptor_sax2_set_namespace_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sax2-set-uri-filter">raptor_sax2_set_uri_filter</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sax2-parse-start">raptor_sax2_parse_start</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sax2-parse-chunk">raptor_sax2_parse_chunk</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-sax2-inscope-xml-language">raptor_sax2_inscope_xml_language</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-sax2-inscope-base-uri">raptor_sax2_inscope_base_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-sax2.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-sax2">raptor_sax2</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-sax2.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-sax2.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-new-sax2" role="function">
+<title>raptor_new_sax2&#160;()</title>
+<indexterm zone="raptor-new-sax2"><primary>raptor_new_sax2</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-sax2"><returnvalue>raptor_sax2</returnvalue></link>&#160;*
+raptor_new_sax2 (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                 <parameter><link linkend="raptor-locator"><type>raptor_locator</type></link> *locator</parameter>,
+                 <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>);</programlisting>
+<para>Constructor - Create a new SAX2 with error handlers</para>
+<refsect3 id="raptor-new-sax2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>locator</para></entry>
+<entry role="parameter_description"><para>raptor locator to use for errors</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>pointer context information to pass to SAX handlers</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-sax2.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="raptor-sax2"><type>raptor_sax2</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-sax2" role="function">
+<title>raptor_free_sax2&#160;()</title>
+<indexterm zone="raptor-free-sax2"><primary>raptor_free_sax2</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_sax2 (<parameter><link linkend="raptor-sax2"><type>raptor_sax2</type></link> *sax2</parameter>);</programlisting>
+<para>Destructor - destroy a SAX2 object</para>
+<refsect3 id="raptor-free-sax2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sax2</para></entry>
+<entry role="parameter_description"><para>SAX2 object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-start-element-handler" role="function">
+<title>raptor_sax2_start_element_handler&#160;()</title>
+<indexterm zone="raptor-sax2-start-element-handler"><primary>raptor_sax2_start_element_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_sax2_start_element_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                                      <parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *xml_element</parameter>);</programlisting>
+<para>SAX2 start element handler</para>
+<refsect3 id="raptor-sax2-start-element-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_element</para></entry>
+<entry role="parameter_description"><para>XML element</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-end-element-handler" role="function">
+<title>raptor_sax2_end_element_handler&#160;()</title>
+<indexterm zone="raptor-sax2-end-element-handler"><primary>raptor_sax2_end_element_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_sax2_end_element_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                                    <parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *xml_element</parameter>);</programlisting>
+<para>SAX2 end element handler</para>
+<refsect3 id="raptor-sax2-end-element-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_element</para></entry>
+<entry role="parameter_description"><para>XML element</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-characters-handler" role="function">
+<title>raptor_sax2_characters_handler&#160;()</title>
+<indexterm zone="raptor-sax2-characters-handler"><primary>raptor_sax2_characters_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_sax2_characters_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                                   <parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *xml_element</parameter>,
+                                   <parameter>const unsigned <link linkend="char"><type>char</type></link> *s</parameter>,
+                                   <parameter><link linkend="int"><type>int</type></link> len</parameter>);</programlisting>
+<para>SAX2 characters handler</para>
+<refsect3 id="raptor-sax2-characters-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_element</para></entry>
+<entry role="parameter_description"><para>XML element</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>s</para></entry>
+<entry role="parameter_description"><para>string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>string len</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-cdata-handler" role="function">
+<title>raptor_sax2_cdata_handler&#160;()</title>
+<indexterm zone="raptor-sax2-cdata-handler"><primary>raptor_sax2_cdata_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_sax2_cdata_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                              <parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *xml_element</parameter>,
+                              <parameter>const unsigned <link linkend="char"><type>char</type></link> *s</parameter>,
+                              <parameter><link linkend="int"><type>int</type></link> len</parameter>);</programlisting>
+<para>SAX2 CDATA section handler</para>
+<refsect3 id="raptor-sax2-cdata-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_element</para></entry>
+<entry role="parameter_description"><para>XML element</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>s</para></entry>
+<entry role="parameter_description"><para>string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>string len</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-comment-handler" role="function">
+<title>raptor_sax2_comment_handler&#160;()</title>
+<indexterm zone="raptor-sax2-comment-handler"><primary>raptor_sax2_comment_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_sax2_comment_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                                <parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *xml_element</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *s</parameter>);</programlisting>
+<para>SAX2 XML comment handler</para>
+<refsect3 id="raptor-sax2-comment-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_element</para></entry>
+<entry role="parameter_description"><para>XML element</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>s</para></entry>
+<entry role="parameter_description"><para>string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-unparsed-entity-decl-handler" role="function">
+<title>raptor_sax2_unparsed_entity_decl_handler&#160;()</title>
+<indexterm zone="raptor-sax2-unparsed-entity-decl-handler"><primary>raptor_sax2_unparsed_entity_decl_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_sax2_unparsed_entity_decl_handler<phrase role="c_punctuation">)</phrase>
+                               (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *entityName</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *base</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *systemId</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *publicId</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *notationName</parameter>);</programlisting>
+<para>SAX2 unparsed entity (NDATA) handler</para>
+<refsect3 id="raptor-sax2-unparsed-entity-decl-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>entityName</para></entry>
+<entry role="parameter_description"><para>entity name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base</para></entry>
+<entry role="parameter_description"><para>base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>systemId</para></entry>
+<entry role="parameter_description"><para>system ID</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>publicId</para></entry>
+<entry role="parameter_description"><para>public ID</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>notationName</para></entry>
+<entry role="parameter_description"><para>notation name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-external-entity-ref-handler" role="function">
+<title>raptor_sax2_external_entity_ref_handler&#160;()</title>
+<indexterm zone="raptor-sax2-external-entity-ref-handler"><primary>raptor_sax2_external_entity_ref_handler</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_sax2_external_entity_ref_handler<phrase role="c_punctuation">)</phrase>
+                               (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *context</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *base</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *systemId</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *publicId</parameter>);</programlisting>
+<para>SAX2 external entity reference handler</para>
+<refsect3 id="raptor-sax2-external-entity-ref-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para>context</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base</para></entry>
+<entry role="parameter_description"><para>base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>systemId</para></entry>
+<entry role="parameter_description"><para>system ID</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>publicId</para></entry>
+<entry role="parameter_description"><para>public ID</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sax2-external-entity-ref-handler.returns" role="returns">
+<title>Returns</title>
+<para> 0 if processing should not continue because of a
+fatal error in the handling of the external entity.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-set-start-element-handler" role="function">
+<title>raptor_sax2_set_start_element_handler&#160;()</title>
+<indexterm zone="raptor-sax2-set-start-element-handler"><primary>raptor_sax2_set_start_element_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_sax2_set_start_element_handler (<parameter><link linkend="raptor-sax2"><type>raptor_sax2</type></link> *sax2</parameter>,
+                                       <parameter><link linkend="raptor-sax2-start-element-handler"><type>raptor_sax2_start_element_handler</type></link> handler</parameter>);</programlisting>
+<para>Set SAX2 start element handler.</para>
+<refsect3 id="raptor-sax2-set-start-element-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sax2</para></entry>
+<entry role="parameter_description"><para>SAX2 object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>start element handler</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-set-end-element-handler" role="function">
+<title>raptor_sax2_set_end_element_handler&#160;()</title>
+<indexterm zone="raptor-sax2-set-end-element-handler"><primary>raptor_sax2_set_end_element_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_sax2_set_end_element_handler (<parameter><link linkend="raptor-sax2"><type>raptor_sax2</type></link> *sax2</parameter>,
+                                     <parameter><link linkend="raptor-sax2-end-element-handler"><type>raptor_sax2_end_element_handler</type></link> handler</parameter>);</programlisting>
+<para>Set SAX2 end element handler.</para>
+<refsect3 id="raptor-sax2-set-end-element-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sax2</para></entry>
+<entry role="parameter_description"><para>SAX2 object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>end element handler</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-set-characters-handler" role="function">
+<title>raptor_sax2_set_characters_handler&#160;()</title>
+<indexterm zone="raptor-sax2-set-characters-handler"><primary>raptor_sax2_set_characters_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_sax2_set_characters_handler (<parameter><link linkend="raptor-sax2"><type>raptor_sax2</type></link> *sax2</parameter>,
+                                    <parameter><link linkend="raptor-sax2-characters-handler"><type>raptor_sax2_characters_handler</type></link> handler</parameter>);</programlisting>
+<para>Set SAX2 characters handler.</para>
+<refsect3 id="raptor-sax2-set-characters-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sax2</para></entry>
+<entry role="parameter_description"><para>SAX2 object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>characters handler</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-set-cdata-handler" role="function">
+<title>raptor_sax2_set_cdata_handler&#160;()</title>
+<indexterm zone="raptor-sax2-set-cdata-handler"><primary>raptor_sax2_set_cdata_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_sax2_set_cdata_handler (<parameter><link linkend="raptor-sax2"><type>raptor_sax2</type></link> *sax2</parameter>,
+                               <parameter><link linkend="raptor-sax2-cdata-handler"><type>raptor_sax2_cdata_handler</type></link> handler</parameter>);</programlisting>
+<para>Set SAX2 CDATA handler.</para>
+<refsect3 id="raptor-sax2-set-cdata-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sax2</para></entry>
+<entry role="parameter_description"><para>SAX2 object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>CDATA handler</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-set-comment-handler" role="function">
+<title>raptor_sax2_set_comment_handler&#160;()</title>
+<indexterm zone="raptor-sax2-set-comment-handler"><primary>raptor_sax2_set_comment_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_sax2_set_comment_handler (<parameter><link linkend="raptor-sax2"><type>raptor_sax2</type></link> *sax2</parameter>,
+                                 <parameter><link linkend="raptor-sax2-comment-handler"><type>raptor_sax2_comment_handler</type></link> handler</parameter>);</programlisting>
+<para>Set SAX2 XML comment handler.</para>
+<refsect3 id="raptor-sax2-set-comment-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sax2</para></entry>
+<entry role="parameter_description"><para>SAX2 object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>comment handler</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-set-unparsed-entity-decl-handler" role="function">
+<title>raptor_sax2_set_unparsed_entity_decl_handler&#160;()</title>
+<indexterm zone="raptor-sax2-set-unparsed-entity-decl-handler"><primary>raptor_sax2_set_unparsed_entity_decl_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_sax2_set_unparsed_entity_decl_handler
+                               (<parameter><link linkend="raptor-sax2"><type>raptor_sax2</type></link> *sax2</parameter>,
+                                <parameter><link linkend="raptor-sax2-unparsed-entity-decl-handler"><type>raptor_sax2_unparsed_entity_decl_handler</type></link> handler</parameter>);</programlisting>
+<para>Set SAX2 XML unparsed entity declaration handler.</para>
+<refsect3 id="raptor-sax2-set-unparsed-entity-decl-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sax2</para></entry>
+<entry role="parameter_description"><para>SAX2 object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>unparsed entity declaration handler</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-set-external-entity-ref-handler" role="function">
+<title>raptor_sax2_set_external_entity_ref_handler&#160;()</title>
+<indexterm zone="raptor-sax2-set-external-entity-ref-handler"><primary>raptor_sax2_set_external_entity_ref_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_sax2_set_external_entity_ref_handler
+                               (<parameter><link linkend="raptor-sax2"><type>raptor_sax2</type></link> *sax2</parameter>,
+                                <parameter><link linkend="raptor-sax2-external-entity-ref-handler"><type>raptor_sax2_external_entity_ref_handler</type></link> handler</parameter>);</programlisting>
+<para>Set SAX2 XML entity reference handler.</para>
+<refsect3 id="raptor-sax2-set-external-entity-ref-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sax2</para></entry>
+<entry role="parameter_description"><para>SAX2 object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>entity reference handler</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-set-namespace-handler" role="function">
+<title>raptor_sax2_set_namespace_handler&#160;()</title>
+<indexterm zone="raptor-sax2-set-namespace-handler"><primary>raptor_sax2_set_namespace_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_sax2_set_namespace_handler (<parameter><link linkend="raptor-sax2"><type>raptor_sax2</type></link> *sax2</parameter>,
+                                   <parameter><link linkend="raptor-namespace-handler"><type>raptor_namespace_handler</type></link> handler</parameter>);</programlisting>
+<para>Set the XML namespace handler function.</para>
+<para>When a prefix/namespace is seen in an XML parser, call the given
+<parameter>handler</parameter>
+ with the prefix string and the <link linkend="raptor-uri"><type>raptor_uri</type></link> namespace URI.
+Either can be NULL for the default prefix or default namespace.</para>
+<para>The handler function does not deal with duplicates so any
+namespace may be declared multiple times when a namespace is seen
+in different parts of a document.</para>
+<refsect3 id="raptor-sax2-set-namespace-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sax2</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-sax2"><type>raptor_sax2</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>new namespace callback function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-set-uri-filter" role="function">
+<title>raptor_sax2_set_uri_filter&#160;()</title>
+<indexterm zone="raptor-sax2-set-uri-filter"><primary>raptor_sax2_set_uri_filter</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_sax2_set_uri_filter (<parameter><link linkend="raptor-sax2"><type>raptor_sax2</type></link> *sax2</parameter>,
+                            <parameter><link linkend="raptor-uri-filter-func"><type>raptor_uri_filter_func</type></link> filter</parameter>,
+                            <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>);</programlisting>
+<para>Set URI filter function for SAX2 internal retrievals.</para>
+<refsect3 id="raptor-sax2-set-uri-filter.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sax2</para></entry>
+<entry role="parameter_description"><para>SAX2 object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>filter</para></entry>
+<entry role="parameter_description"><para>URI filter function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>User data to pass to filter function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-parse-start" role="function">
+<title>raptor_sax2_parse_start&#160;()</title>
+<indexterm zone="raptor-sax2-parse-start"><primary>raptor_sax2_parse_start</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_sax2_parse_start (<parameter><link linkend="raptor-sax2"><type>raptor_sax2</type></link> *sax2</parameter>,
+                         <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Start an XML SAX2 parse.</para>
+<refsect3 id="raptor-sax2-parse-start.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sax2</para></entry>
+<entry role="parameter_description"><para>sax2 object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-parse-chunk" role="function">
+<title>raptor_sax2_parse_chunk&#160;()</title>
+<indexterm zone="raptor-sax2-parse-chunk"><primary>raptor_sax2_parse_chunk</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_sax2_parse_chunk (<parameter><link linkend="raptor-sax2"><type>raptor_sax2</type></link> *sax2</parameter>,
+                         <parameter>const unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                         <parameter><link linkend="size-t"><type>size_t</type></link> len</parameter>,
+                         <parameter><link linkend="int"><type>int</type></link> is_end</parameter>);</programlisting>
+<para>Parse a chunk of XML data generating SAX2 events</para>
+<refsect3 id="raptor-sax2-parse-chunk.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sax2</para></entry>
+<entry role="parameter_description"><para>sax2 object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>input buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>input buffer lenght</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>is_end</para></entry>
+<entry role="parameter_description"><para>non-0 if end of data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sax2-parse-chunk.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-inscope-xml-language" role="function">
+<title>raptor_sax2_inscope_xml_language&#160;()</title>
+<indexterm zone="raptor-sax2-inscope-xml-language"><primary>raptor_sax2_inscope_xml_language</primary></indexterm>
+<programlisting language="C">const unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_sax2_inscope_xml_language (<parameter><link linkend="raptor-sax2"><type>raptor_sax2</type></link> *sax2</parameter>);</programlisting>
+<para>Get the in-scope XML language</para>
+<para>The result is a language string which may be "" if xml:lang="" is
+given.  NULL is returned only if there is no xml:lang in any outer
+scope.</para>
+<refsect3 id="raptor-sax2-inscope-xml-language.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sax2</para></entry>
+<entry role="parameter_description"><para>SAX2 object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sax2-inscope-xml-language.returns" role="returns">
+<title>Returns</title>
+<para> shared pointer to the XML language or NULL if none is in scope.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sax2-inscope-base-uri" role="function">
+<title>raptor_sax2_inscope_base_uri&#160;()</title>
+<indexterm zone="raptor-sax2-inscope-base-uri"><primary>raptor_sax2_inscope_base_uri</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_sax2_inscope_base_uri (<parameter><link linkend="raptor-sax2"><type>raptor_sax2</type></link> *sax2</parameter>);</programlisting>
+<para>Get the in-scope base URI</para>
+<refsect3 id="raptor-sax2-inscope-base-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sax2</para></entry>
+<entry role="parameter_description"><para>SAX2 object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sax2-inscope-base-uri.returns" role="returns">
+<title>Returns</title>
+<para> the in-scope base URI shared object or NULL if none is in scope.</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-sax2.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-sax2" role="typedef">
+<title>raptor_sax2</title>
+<indexterm zone="raptor-sax2"><primary>raptor_sax2</primary></indexterm>
+<programlisting language="C">typedef struct raptor_sax2_s raptor_sax2;
+</programlisting>
+<para>Raptor SAX2 class</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

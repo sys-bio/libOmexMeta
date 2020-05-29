@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE indexdiv PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<indexdiv id="api-index-deprecated">
+<indexdiv><title>D</title>
+<indexentry><primaryie linkends="librdf-destroy-world"><link linkend="librdf-destroy-world">librdf_destroy_world</link>, function in <link linkend="redland-world">world</link></primaryie></indexentry>
+</indexdiv>
+<indexdiv><title>F</title>
+<indexentry><primaryie linkends="librdf-files-temporary-file-name"><link linkend="librdf-files-temporary-file-name">librdf_files_temporary_file_name</link>, function in <link linkend="redland-files">files</link></primaryie></indexentry>
+</indexdiv>
+<indexdiv><title>I</title>
+<indexentry><primaryie linkends="librdf-init-world"><link linkend="librdf-init-world">librdf_init_world</link>, function in <link linkend="redland-world">world</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-iterator-have-elements"><link linkend="librdf-iterator-have-elements">librdf_iterator_have_elements</link>, function in <link linkend="redland-iterator">iterator</link></primaryie></indexentry>
+</indexdiv>
+<indexdiv><title>L</title>
+<indexentry><primaryie linkends="librdf-latin1-to-utf8"><link linkend="librdf-latin1-to-utf8">librdf_latin1_to_utf8</link>, function in <link linkend="redland-unicode">unicode</link></primaryie></indexentry>
+</indexdiv>
+<indexdiv><title>M</title>
+<indexentry><primaryie linkends="librdf-model-context-serialize"><link linkend="librdf-model-context-serialize">librdf_model_context_serialize</link>, function in <link linkend="redland-model">model</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-model-print"><link linkend="librdf-model-print">librdf_model_print</link>, function in <link linkend="redland-model">model</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-model-serialise"><link linkend="librdf-model-serialise">librdf_model_serialise</link>, function in <link linkend="redland-model">model</link></primaryie></indexentry>
+</indexdiv>
+<indexdiv><title>N</title>
+<indexentry><primaryie linkends="librdf-new-query-results-formatter"><link linkend="librdf-new-query-results-formatter">librdf_new_query_results_formatter</link>, function in <link linkend="redland-query-results">query_results</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-new-query-results-formatter-by-mime-type"><link linkend="librdf-new-query-results-formatter-by-mime-type">librdf_new_query_results_formatter_by_mime_type</link>, function in <link linkend="redland-query-results">query_results</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-node-static-iterator-create"><link linkend="librdf-node-static-iterator-create">librdf_node_static_iterator_create</link>, function in <link linkend="redland-node">node</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-node-to-counted-string"><link linkend="librdf-node-to-counted-string">librdf_node_to_counted_string</link>, function in <link linkend="redland-node">node</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-node-to-string"><link linkend="librdf-node-to-string">librdf_node_to_string</link>, function in <link linkend="redland-node">node</link></primaryie></indexentry>
+</indexdiv>
+<indexdiv><title>P</title>
+<indexentry><primaryie linkends="librdf-parser-enumerate"><link linkend="librdf-parser-enumerate">librdf_parser_enumerate</link>, function in <link linkend="redland-parser">parser</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-parser-guess-name"><link linkend="librdf-parser-guess-name">librdf_parser_guess_name</link>, function in <link linkend="redland-parser">parser</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-parser-set-error"><link linkend="librdf-parser-set-error">librdf_parser_set_error</link>, function in <link linkend="redland-parser">parser</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-parser-set-warning"><link linkend="librdf-parser-set-warning">librdf_parser_set_warning</link>, function in <link linkend="redland-parser">parser</link></primaryie></indexentry>
+</indexdiv>
+<indexdiv><title>Q</title>
+<indexentry><primaryie linkends="librdf-query-languages-enumerate"><link linkend="librdf-query-languages-enumerate">librdf_query_languages_enumerate</link>, function in <link linkend="redland-query">query</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-query-results-formats-enumerate"><link linkend="librdf-query-results-formats-enumerate">librdf_query_results_formats_enumerate</link>, function in <link linkend="redland-query-results">query_results</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-query-results-to-counted-string"><link linkend="librdf-query-results-to-counted-string">librdf_query_results_to_counted_string</link>, function in <link linkend="redland-query-results">query_results</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-query-results-to-file"><link linkend="librdf-query-results-to-file">librdf_query_results_to_file</link>, function in <link linkend="redland-query-results">query_results</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-query-results-to-file-handle"><link linkend="librdf-query-results-to-file-handle">librdf_query_results_to_file_handle</link>, function in <link linkend="redland-query-results">query_results</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-query-results-to-string"><link linkend="librdf-query-results-to-string">librdf_query_results_to_string</link>, function in <link linkend="redland-query-results">query_results</link></primaryie></indexentry>
+</indexdiv>
+<indexdiv><title>S</title>
+<indexentry><primaryie linkends="librdf-serializer-enumerate"><link linkend="librdf-serializer-enumerate">librdf_serializer_enumerate</link>, function in <link linkend="redland-serializer">serializer</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-serializer-serialize-model"><link linkend="librdf-serializer-serialize-model">librdf_serializer_serialize_model</link>, function in <link linkend="redland-serializer">serializer</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-statement-decode"><link linkend="librdf-statement-decode">librdf_statement_decode</link>, function in <link linkend="redland-statement">statement</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-statement-decode-parts"><link linkend="librdf-statement-decode-parts">librdf_statement_decode_parts</link>, function in <link linkend="redland-statement">statement</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-statement-encode"><link linkend="librdf-statement-encode">librdf_statement_encode</link>, function in <link linkend="redland-statement">statement</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-statement-encode-parts"><link linkend="librdf-statement-encode-parts">librdf_statement_encode_parts</link>, function in <link linkend="redland-statement">statement</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-statement-to-string"><link linkend="librdf-statement-to-string">librdf_statement_to_string</link>, function in <link linkend="redland-statement">statement</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-storage-context-serialise"><link linkend="librdf-storage-context-serialise">librdf_storage_context_serialise</link>, function in <link linkend="redland-storage">storage</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-stream-get-context"><link linkend="librdf-stream-get-context">librdf_stream_get_context</link>, function in <link linkend="redland-stream">stream</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-stream-print"><link linkend="librdf-stream-print">librdf_stream_print</link>, function in <link linkend="redland-stream">stream</link></primaryie></indexentry>
+</indexdiv>
+<indexdiv><title>U</title>
+<indexentry><primaryie linkends="librdf-unicode-char-to-utf8"><link linkend="librdf-unicode-char-to-utf8">librdf_unicode_char_to_utf8</link>, function in <link linkend="redland-unicode">unicode</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-utf8-to-latin1"><link linkend="librdf-utf8-to-latin1">librdf_utf8_to_latin1</link>, function in <link linkend="redland-unicode">unicode</link></primaryie></indexentry>
+<indexentry><primaryie linkends="librdf-utf8-to-unicode-char"><link linkend="librdf-utf8-to-unicode-char">librdf_utf8_to_unicode_char</link>, function in <link linkend="redland-unicode">unicode</link></primaryie></indexentry>
+</indexdiv>
+</indexdiv>

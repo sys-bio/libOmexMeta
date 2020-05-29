@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-memory">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-memory.top_of_page">section-memory</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-memory</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-memory.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-memory">raptor_free_memory</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-alloc-memory">raptor_alloc_memory</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-calloc-memory">raptor_calloc_memory</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-memory.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-memory.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-free-memory" role="function">
+<title>raptor_free_memory&#160;()</title>
+<indexterm zone="raptor-free-memory"><primary>raptor_free_memory</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_memory (<parameter><link linkend="void"><type>void</type></link> *ptr</parameter>);</programlisting>
+<para>Free memory allocated inside raptor.</para>
+<para>Some systems require memory allocated in a library to
+be deallocated in that library.  This function allows
+memory allocated by raptor to be freed.</para>
+<para>Examples include the result of the '_to_' methods that returns
+allocated memory such as raptor_uri_filename_to_uri_string,
+raptor_uri_filename_to_uri_string
+and raptor_uri_uri_string_to_filename_fragment</para>
+<refsect3 id="raptor-free-memory.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>ptr</para></entry>
+<entry role="parameter_description"><para>memory pointer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-alloc-memory" role="function">
+<title>raptor_alloc_memory&#160;()</title>
+<indexterm zone="raptor-alloc-memory"><primary>raptor_alloc_memory</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+raptor_alloc_memory (<parameter><link linkend="size-t"><type>size_t</type></link> size</parameter>);</programlisting>
+<para>Allocate memory inside raptor.</para>
+<para>Some systems require memory allocated in a library to
+be deallocated in that library.  This function allows
+memory to be allocated inside the raptor shared library
+that can be freed inside raptor either internally or via
+raptor_free_memory.</para>
+<para>Examples include using this in the <link linkend="raptor-world-generate-bnodeid"><function>raptor_world_generate_bnodeid()</function></link> handler
+code to create new strings that will be used internally
+as short identifiers and freed later on by the parsers.</para>
+<refsect3 id="raptor-alloc-memory.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>size</para></entry>
+<entry role="parameter_description"><para>size of memory to allocate</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-alloc-memory.returns" role="returns">
+<title>Returns</title>
+<para> the address of the allocated memory or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-calloc-memory" role="function">
+<title>raptor_calloc_memory&#160;()</title>
+<indexterm zone="raptor-calloc-memory"><primary>raptor_calloc_memory</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+raptor_calloc_memory (<parameter><link linkend="size-t"><type>size_t</type></link> nmemb</parameter>,
+                      <parameter><link linkend="size-t"><type>size_t</type></link> size</parameter>);</programlisting>
+<para>Allocate zeroed array of items inside raptor.</para>
+<para>Some systems require memory allocated in a library to
+be deallocated in that library.  This function allows
+memory to be allocated inside the raptor shared library
+that can be freed inside raptor either internally or via
+raptor_free_memory.</para>
+<para>Examples include using this in the <link linkend="raptor-world-generate-bnodeid"><function>raptor_world_generate_bnodeid()</function></link> handler
+code to create new strings that will be used internally
+as short identifiers and freed later on by the parsers.</para>
+<refsect3 id="raptor-calloc-memory.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nmemb</para></entry>
+<entry role="parameter_description"><para>number of members</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>size</para></entry>
+<entry role="parameter_description"><para>size of item</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-calloc-memory.returns" role="returns">
+<title>Returns</title>
+<para> the address of the allocated memory or NULL on failure</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-memory.other_details" role="details">
+<title role="details.title">Types and Values</title>
+
+</refsect1>
+
+</refentry>

@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-stringbuffer">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-stringbuffer.top_of_page">section-stringbuffer</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-stringbuffer</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-stringbuffer.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="raptor-stringbuffer"><returnvalue>raptor_stringbuffer</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-stringbuffer">raptor_new_stringbuffer</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-stringbuffer">raptor_free_stringbuffer</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-stringbuffer-append-counted-string">raptor_stringbuffer_append_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-stringbuffer-append-decimal">raptor_stringbuffer_append_decimal</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-stringbuffer-append-hexadecimal">raptor_stringbuffer_append_hexadecimal</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-stringbuffer-append-string">raptor_stringbuffer_append_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-stringbuffer-append-stringbuffer">raptor_stringbuffer_append_stringbuffer</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-stringbuffer-append-uri-escaped-counted-string">raptor_stringbuffer_append_uri_escaped_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-stringbuffer-prepend-counted-string">raptor_stringbuffer_prepend_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-stringbuffer-prepend-string">raptor_stringbuffer_prepend_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-stringbuffer-as-string">raptor_stringbuffer_as_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-stringbuffer-length">raptor_stringbuffer_length</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-stringbuffer-copy-to-string">raptor_stringbuffer_copy_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-stringbuffer-write">raptor_stringbuffer_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-stringbuffer.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-stringbuffer">raptor_stringbuffer</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-stringbuffer.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-stringbuffer.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-new-stringbuffer" role="function">
+<title>raptor_new_stringbuffer&#160;()</title>
+<indexterm zone="raptor-new-stringbuffer"><primary>raptor_new_stringbuffer</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-stringbuffer"><returnvalue>raptor_stringbuffer</returnvalue></link>&#160;*
+raptor_new_stringbuffer (<parameter><type>void</type></parameter>);</programlisting>
+<para>Create a new stringbuffer.</para>
+<refsect3 id="raptor-new-stringbuffer.returns" role="returns">
+<title>Returns</title>
+<para> pointer to a raptor_stringbuffer object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-stringbuffer" role="function">
+<title>raptor_free_stringbuffer&#160;()</title>
+<indexterm zone="raptor-free-stringbuffer"><primary>raptor_free_stringbuffer</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_stringbuffer (<parameter><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> *stringbuffer</parameter>);</programlisting>
+<para>Destroy a stringbuffer.</para>
+<refsect3 id="raptor-free-stringbuffer.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stringbuffer</para></entry>
+<entry role="parameter_description"><para>stringbuffer object to destroy.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-stringbuffer-append-counted-string" role="function">
+<title>raptor_stringbuffer_append_counted_string&#160;()</title>
+<indexterm zone="raptor-stringbuffer-append-counted-string"><primary>raptor_stringbuffer_append_counted_string</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_stringbuffer_append_counted_string
+                               (<parameter><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> *stringbuffer</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>,
+                                <parameter><link linkend="int"><type>int</type></link> do_copy</parameter>);</programlisting>
+<para>Add a counted string to the stringbuffer.</para>
+<para>If <parameter>string</parameter>
+ is NULL or <parameter>length</parameter>
+ is 0, no work is performed.</para>
+<para>If <parameter>do_copy</parameter>
+ is non-0, the passed-in string is copied into new memory
+otherwise the stringbuffer becomes the owner of the string pointer
+and will free it when the stringbuffer is destroyed.</para>
+<refsect3 id="raptor-stringbuffer-append-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stringbuffer</para></entry>
+<entry role="parameter_description"><para>raptor stringbuffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>do_copy</para></entry>
+<entry role="parameter_description"><para>non-0 to copy the string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-stringbuffer-append-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-stringbuffer-append-decimal" role="function">
+<title>raptor_stringbuffer_append_decimal&#160;()</title>
+<indexterm zone="raptor-stringbuffer-append-decimal"><primary>raptor_stringbuffer_append_decimal</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_stringbuffer_append_decimal (<parameter><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> *stringbuffer</parameter>,
+                                    <parameter><link linkend="int"><type>int</type></link> integer</parameter>);</programlisting>
+<para>Add an integer in decimal to the stringbuffer.</para>
+<refsect3 id="raptor-stringbuffer-append-decimal.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stringbuffer</para></entry>
+<entry role="parameter_description"><para>raptor stringbuffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>integer</para></entry>
+<entry role="parameter_description"><para>integer to format as decimal and add</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-stringbuffer-append-decimal.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-stringbuffer-append-hexadecimal" role="function">
+<title>raptor_stringbuffer_append_hexadecimal&#160;()</title>
+<indexterm zone="raptor-stringbuffer-append-hexadecimal"><primary>raptor_stringbuffer_append_hexadecimal</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_stringbuffer_append_hexadecimal
+                               (<parameter><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> *stringbuffer</parameter>,
+                                <parameter><link linkend="int"><type>int</type></link> hex</parameter>);</programlisting>
+<para>Add an integer formatted in hexdecimal (base 16) to the stringbuffer.</para>
+<refsect3 id="raptor-stringbuffer-append-hexadecimal.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stringbuffer</para></entry>
+<entry role="parameter_description"><para>raptor stringbuffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>hex</para></entry>
+<entry role="parameter_description"><para>integer to format</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-stringbuffer-append-hexadecimal.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-stringbuffer-append-string" role="function">
+<title>raptor_stringbuffer_append_string&#160;()</title>
+<indexterm zone="raptor-stringbuffer-append-string"><primary>raptor_stringbuffer_append_string</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_stringbuffer_append_string (<parameter><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> *stringbuffer</parameter>,
+                                   <parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                                   <parameter><link linkend="int"><type>int</type></link> do_copy</parameter>);</programlisting>
+<para>Add a string to the stringbuffer.</para>
+<para>If <parameter>string</parameter>
+ is NULL, no work is performed.</para>
+<para>If <parameter>do_copy</parameter>
+ is non-0, the passed-in string is copied into new memory
+otherwise the stringbuffer becomes the owner of the string pointer
+and will free it when the stringbuffer is destroyed.</para>
+<refsect3 id="raptor-stringbuffer-append-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stringbuffer</para></entry>
+<entry role="parameter_description"><para>raptor stringbuffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>do_copy</para></entry>
+<entry role="parameter_description"><para>non-0 to copy the string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-stringbuffer-append-string.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-stringbuffer-append-stringbuffer" role="function">
+<title>raptor_stringbuffer_append_stringbuffer&#160;()</title>
+<indexterm zone="raptor-stringbuffer-append-stringbuffer"><primary>raptor_stringbuffer_append_stringbuffer</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_stringbuffer_append_stringbuffer
+                               (<parameter><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> *stringbuffer</parameter>,
+                                <parameter><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> *append</parameter>);</programlisting>
+<para>Add a stringbuffer to the stringbuffer.</para>
+<para>This function removes the content from the appending stringbuffer,
+making it empty and appends it to the supplied stringbuffer.</para>
+<refsect3 id="raptor-stringbuffer-append-stringbuffer.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stringbuffer</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>append</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> to append</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-stringbuffer-append-stringbuffer.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-stringbuffer-append-uri-escaped-counted-string" role="function">
+<title>raptor_stringbuffer_append_uri_escaped_counted_string&#160;()</title>
+<indexterm zone="raptor-stringbuffer-append-uri-escaped-counted-string"><primary>raptor_stringbuffer_append_uri_escaped_counted_string</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_stringbuffer_append_uri_escaped_counted_string
+                               (<parameter><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> *sb</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> *string</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>,
+                                <parameter><link linkend="int"><type>int</type></link> space_is_plus</parameter>);</programlisting>
+<para>Add a URI-escaped version of <parameter>string</parameter>
+ to the stringbuffer.</para>
+<para>If <parameter>string</parameter>
+ is NULL or <parameter>length</parameter>
+ is 0, no work is performed.</para>
+<refsect3 id="raptor-stringbuffer-append-uri-escaped-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sb</para></entry>
+<entry role="parameter_description"><para>raptor stringbuffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>space_is_plus</para></entry>
+<entry role="parameter_description"><para>if non-0, escape spaces as '+' otherwise percent-encode them</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-stringbuffer-append-uri-escaped-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-stringbuffer-prepend-counted-string" role="function">
+<title>raptor_stringbuffer_prepend_counted_string&#160;()</title>
+<indexterm zone="raptor-stringbuffer-prepend-counted-string"><primary>raptor_stringbuffer_prepend_counted_string</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_stringbuffer_prepend_counted_string
+                               (<parameter><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> *stringbuffer</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>,
+                                <parameter><link linkend="int"><type>int</type></link> do_copy</parameter>);</programlisting>
+<para>If do_copy is non-0, the passed-in string is copied into new memory
+otherwise the stringbuffer becomes the owner of the string pointer
+and will free it when the stringbuffer is destroyed.</para>
+<para>Add a string to the start of the stringbuffer.</para>
+<refsect3 id="raptor-stringbuffer-prepend-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stringbuffer</para></entry>
+<entry role="parameter_description"><para>raptor stringbuffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>do_copy</para></entry>
+<entry role="parameter_description"><para>non-0 to copy the string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-stringbuffer-prepend-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-stringbuffer-prepend-string" role="function">
+<title>raptor_stringbuffer_prepend_string&#160;()</title>
+<indexterm zone="raptor-stringbuffer-prepend-string"><primary>raptor_stringbuffer_prepend_string</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_stringbuffer_prepend_string (<parameter><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> *stringbuffer</parameter>,
+                                    <parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                                    <parameter><link linkend="int"><type>int</type></link> do_copy</parameter>);</programlisting>
+<para>Add a string to the start of the stringbuffer.</para>
+<para>If do_copy is non-0, the passed-in string is copied into new memory
+otherwise the stringbuffer becomes the owner of the string pointer
+and will free it when the stringbuffer is destroyed.</para>
+<refsect3 id="raptor-stringbuffer-prepend-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stringbuffer</para></entry>
+<entry role="parameter_description"><para>raptor stringbuffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>do_copy</para></entry>
+<entry role="parameter_description"><para>non-0 to copy the string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-stringbuffer-prepend-string.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-stringbuffer-as-string" role="function">
+<title>raptor_stringbuffer_as_string&#160;()</title>
+<indexterm zone="raptor-stringbuffer-as-string"><primary>raptor_stringbuffer_as_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_stringbuffer_as_string (<parameter><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> *stringbuffer</parameter>);</programlisting>
+<para>Return the stringbuffer as a C string.</para>
+<para>Note: the return value is a to a shared string that the stringbuffer
+allocates and manages.</para>
+<refsect3 id="raptor-stringbuffer-as-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stringbuffer</para></entry>
+<entry role="parameter_description"><para>raptor stringbuffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-stringbuffer-as-string.returns" role="returns">
+<title>Returns</title>
+<para> NULL on failure or stringbuffer is empty, otherwise
+a pointer to a shared copy of the string.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-stringbuffer-length" role="function">
+<title>raptor_stringbuffer_length&#160;()</title>
+<indexterm zone="raptor-stringbuffer-length"><primary>raptor_stringbuffer_length</primary></indexterm>
+<programlisting language="C"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+raptor_stringbuffer_length (<parameter><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> *stringbuffer</parameter>);</programlisting>
+<para>Return the stringbuffer length.</para>
+<refsect3 id="raptor-stringbuffer-length.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stringbuffer</para></entry>
+<entry role="parameter_description"><para>raptor stringbuffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-stringbuffer-length.returns" role="returns">
+<title>Returns</title>
+<para> size of stringbuffer</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-stringbuffer-copy-to-string" role="function">
+<title>raptor_stringbuffer_copy_to_string&#160;()</title>
+<indexterm zone="raptor-stringbuffer-copy-to-string"><primary>raptor_stringbuffer_copy_to_string</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_stringbuffer_copy_to_string (<parameter><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> *stringbuffer</parameter>,
+                                    <parameter>unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                                    <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Copy the stringbuffer into a string.</para>
+<para>Copies the underlying string to a pre-allocated buffer.  The
+output string is always '\0' terminated.</para>
+<refsect3 id="raptor-stringbuffer-copy-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stringbuffer</para></entry>
+<entry role="parameter_description"><para>raptor stringbuffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>output string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>size of output string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-stringbuffer-copy-to-string.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure such as stringbuffer is empty, buffer is too small</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-stringbuffer-write" role="function">
+<title>raptor_stringbuffer_write&#160;()</title>
+<indexterm zone="raptor-stringbuffer-write"><primary>raptor_stringbuffer_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_stringbuffer_write (<parameter><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> *sb</parameter>,
+                           <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a stringbuffer to an iostream.</para>
+<refsect3 id="raptor-stringbuffer-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>sb</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-stringbuffer"><type>raptor_stringbuffer</type></link> to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-stringbuffer-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-stringbuffer.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-stringbuffer" role="typedef">
+<title>raptor_stringbuffer</title>
+<indexterm zone="raptor-stringbuffer"><primary>raptor_stringbuffer</primary></indexterm>
+<programlisting language="C">raptor_stringbuffer* raptor_stringbuffer;
+</programlisting>
+<para>Raptor string buffer class</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

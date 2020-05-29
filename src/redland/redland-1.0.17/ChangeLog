@@ -1,0 +1,849 @@
+2013-12-28  Dave Beckett  <dave@dajobe.org>
+
+	* Snapshotted redland_1_0_17 for 1.0.17 release (GIT e5c2c5f99a4ae18dc9ca62b971797ca7f9c1ab9a)
+
+2013-12-12  Dave Beckett <dave@dajobe.org>
+
+	* scripts/process-changes.pl: Add version_for_sort to sort
+	versionwise
+
+2013-11-24  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_serializer.c: Handle raptor stricter checks in
+	serializing
+
+	* examples/example8.c: Initialise model vars to NULL for error
+	path
+	[llvm]
+
+2013-11-13  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_query_virtuoso.c, src/rdf_storage_virtuoso.c: Ignore
+	noisy llvm warning about deprecated ODBC sql.h functions
+
+2013-11-12  Dave Beckett <dave@dajobe.org>
+
+	* configure.ac: Restore CPPFLAGS around virtuoso test
+
+	* configure.ac: whitespace
+
+	* src/Makefile.am: librdf_storage_virtuoso_la uses rasqal symbols;
+	link with it
+
+2013-11-08  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_digest_md5.c: Use unions to align unsigned char and u32
+	[clang]
+
+2013-11-02  Dave Beckett <dave@dajobe.org>
+
+	* configure.ac: Check for clang to enable correct discovery of
+	supported warnings
+
+2013-10-27  Dave Beckett <dave@dajobe.org>
+
+	* Merge pull request #4 from jackolantern/fix-error-message Fix
+	error message.
+
+2013-08-27  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_concepts.h: remove ,
+
+2013-08-23  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_concepts.c: comma
+
+2013-08-22  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_concepts.c, src/rdf_concepts.h:
+	Add rdf:HTML and rdf:langString from RDF 1.1 concepts
+
+	RDF 1.1 Concepts and Abstract
+	Syntax W3C Last Call Working Draft 23 July 2013
+	http://www.w3.org/TR/2013/WD-rdf11-concepts-20130723/
+	http://www.w3.org/TR/2013/WD-rdf11-concepts-20130723/#section-html
+	http://www.w3.org/TR/2013/WD-rdf11-concepts-20130723/#section-Datatypes
+
+2013-06-17  Dave Beckett <dave@dajobe.org>
+
+	* autogen.sh: update autogen.sh
+
+2013-06-09  Dave Beckett <dave@dajobe.org>
+
+	* configure.ac: Fix some test operators
+
+2013-04-27  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_query_rasqal.c: Avoid an assert inside
+	rasqal_query_results_next_triple
+
+	(librdf_query_rasqal_query_results_next_statement): check that
+	"result" pointer is not NULL before calling
+	rasqal_query_results_next_triple()
+
+	Patch from Michael Stahl <mstahl@redhat.com>
+
+	Fixes Issue #0000543
+	http://bugs.librdf.org/mantis/view.php?id=543
+
+2013-04-08  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_digest_md5.c: Do not destroy MD5 digest
+
+2013-04-07  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_digest_md5.c: memset fixes [gcc 4.8]
+
+2013-04-05  Dave Beckett <dave@dajobe.org>
+
+	* src/win32_rdf_config.h.in: Make win32_rdf_config.h work on
+	MSVC2008
+
+	Patch from Michael Stahl
+
+	Fixes Issue #0000542
+	http://bugs.librdf.org/mantis/view.php?id=542
+
+	* configure.ac, src/Makefile.am, src/rdf_storage_sqlite.c,
+	src/win32_rdf_config.h.in: Remove SQLITE V2 support and switch to
+	PKG_CHECK_MODULES in configure
+
+	- Remove ancient sqlite V2 API support, removing lots of conditional
+	code.
+	- Alter configure to use PKG_CHECK_MODULES for sqlite3 and then
+	the SQLITE_CFLAGS and SQLITE_LIBS envars
+
+	* build/pkg.m4, configure.ac: Use PKG_CHECK_MODULES() for calling
+	and overriding pkg-config
+
+	- macro is in build/pkg.m4 from pkg-config 0.28
+	- Use <PREFIX>_CFLAGS and <PREFIX>_LIBS envars.
+	- Enables overriding of pkg-config if needed.
+
+	Patch from Michael Stahl
+
+	Fixes Issue #0000541
+	http://bugs.librdf.org/mantis/view.php?id=541
+
+	* configure.ac: remove obsolete
+	--with-xml-parser/--with-openssl-digests
+
+	Patch from Michael Stahl
+
+	Fixes Issue #0000540
+	http://bugs.librdf.org/mantis/view.php?id=540
+
+2013-03-12  Dave Beckett <dave@dajobe.org>
+
+	* autogen.sh:
+	Handle variations of header macro
+
+	* .gitignore, build/.gitignore: Ignore more
+
+2013-02-27  Dave Beckett <dave@dajobe.org>
+
+	* Merge pull request #3 from olberger/master Fixing the deprecated
+	TYPE= construct
+
+2013-01-02  Dave Beckett <dave@dajobe.org>
+
+	* FAQS.html, INSTALL.html, LICENSE.html, NEWS.html, README.html,
+	RELEASE.html, TODO.html, configure.ac:
+	Bumped version to 1.0.17
+
+2012-12-29  Dave Beckett <dave@dajobe.org>
+
+	* NEWS.html: 1.0.16
+
+	* Snapshotted redland_1_0_16 for 1.0.16 release (GIT
+	c8281fff2c618b63d338b296d4d8e352a5de1101)
+
+	* src/rdf_query_rasqal.c:
+	(rasqal_literal_to_redland_node): Add fix for integer subtype
+
+	Workaround for a rasqal literal type
+	RASQAL_LITERAL_INTEGER_SUBTYPE that avoids requiring rasqal 0.9.30
+	or newer
+
+	Fixes Issue #0000519
+	http://bugs.librdf.org/mantis/view.php?id=519
+
+2012-12-16  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_query_rasqal.c, src/rdf_storage_mysql.c,
+	src/rdf_storage_postgresql.c, src/rdf_storage_virtuoso.c: Remove
+	abort() from regular code
+
+	* src/rdf_storage.c: Attempt to load a storage module only once
+
+	This bug is probably caused by scanning a directory of storage
+	modules and finding a .la file (libtool) as well as the .so (module)
+	and trying to load the same module twice via
+	librdf_storage_register_factory that calls
+	librdf_storage_load_module.
+
+	Fixing by two changes:
+
+	(librdf_storage_load_module): If the dynamically loaded module has
+	a >1 ref count, it is already loaded so do not initialise it (that
+	eventually calls the initialisation function below).
+
+	(librdf_storage_register_factory): If it gets to this stage and
+	finds the same module name twice, ignore this error.
+
+	Fixes Issue #0000460
+	http://bugs.librdf.org/mantis/view.php?id=460
+
+	* src/rdf_parser_raptor.c: Reset bnode hash at end of parsing - do
+	not free it
+
+	Fixes Issue #0000518
+	http://bugs.librdf.org/mantis/view.php?id=518
+
+2012-08-31  Dave Beckett <dave@dajobe.org>
+
+	* autogen.sh, configure.ac: Update autogen.sh and configure.ac via
+	autoupdate
+
+	* autogen.sh: autogen.sh: Added -Wall to aclocal and autoconf
+	invocations
+
+2012-08-26  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_serializer_raptor.c: Set statement graph during
+	serializing with raptor.
+
+	Issue seen: serializing to N-Quads did not work in redstore.
+
+	(librdf_serializer_raptor_serialize_statement):
+	Lose useless graph parameter.
+
+	(librdf_serializer_raptor_serialize_stream_to_file_handle,
+	librdf_serializer_raptor_serialize_stream_to_counted_string,
+
+	(librdf_serializer_raptor_serialize_stream_to_iostream): Set and
+	restore the statement graph around call to
+	librdf_serializer_raptor_serialize_statement.
+
+2012-07-21  Dave Beckett <dave@dajobe.org>
+
+	* configure.ac, src/Makefile.am: Add Rasqal libs to
+	@LIBRDF_DIRECT_LIBS@ and use in all src test cases
+
+	* src/rdf_node.c:
+	(librdf_node_normalize): Do nothing for NULL node
+
+	* src/rdf_concepts.c, src/rdf_init_internal.h, src/rdf_node.c,
+	src/rdf_serializer_raptor.c: Normalize librdf_node boolean values
+	on construction
+
+	Add a quick fix to normalize the literal strings for xsd:boolean in
+	the same fashion as rasqal does when invoking raptor.
+
+	This code really should be calling a raptor or rasqal datatype-aware
+	normalizer but will work.
+
+	Fixes Issue #0000443
+	http://bugs.librdf.org/mantis/view.php?id=443
+
+	(librdf_xsd_boolean_value_from_string): Added from rasqal XSD
+	routine
+
+	(librdf_node_normalize): Added internal normalize node r outine,
+	just handing xsd:boolean.
+
+	(librdf_new_node_from_literal, librdf_new_node_from_typed_literal)
+	(librdf_new_node_from_typed_counted_literal): Update all node
+	constructors to call librdf_node_normalize().  Big downside: makes
+	all construction slightly slower but raptor_uri_equals should be a
+	pointer compare.
+
+2012-07-15  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_storage_postgresql.c: Tidy librdf_log call messages
+
+	* src/rdf_storage_postgresql.c: The name is PostgreSQL
+
+2012-07-01  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_storage_virtuoso.c, src/rdf_storage_virtuoso_internal.h:
+	More virtuoso column type changes - use wider int for u/short
+
+	* src/rdf_storage_virtuoso.c: Good casts for calloc / memcpy
+	calculations [gcc warnings]
+
+	(librdf_storage_virtuoso_get_handle): Good cast to size_t for
+	figuring out the byte sizes.
+
+	* src/rdf_storage_virtuoso.c, src/rdf_storage_virtuoso_internal.h:
+	Use SQLUSMALLINT for ODBC column integer [gcc warnings]
+
+	(vGetDataCHAR, vGetDataINT, rdf2node): Take SQLUSMALLINT col
+	instead of short col.
+
+	(librdf_storage_virtuoso_find_statements_in_context_next_statement)
+	(librdf_storage_virtuoso_get_contexts_next_context): Use
+	SQLUSMALLINT colNum
+
+	* src/rdf_storage_postgresql.c:
+	(librdf_storage_postgresql_get_handle): Cast for memcpy [gcc
+	warnings]
+
+	* src/rdf_storage_postgresql.c:
+	Good casts for PQnfields to size_t [gcc warnings]
+
+	(librdf_storage_postgresql_find_statements_with_options): Good
+	casts in calloc.
+
+	* src/rdf_storage_virtuoso.c, src/rdf_storage_virtuoso_internal.h:
+	Move 4K Virtuoso output DSN buffer from stack to storage context.
+
+	Added LIBRDF_VIRTUOSO_CONTEXT_DSN_SIZE macro
+
+	librdf_storage_virtuoso_instance gains field outdsn
+
+	(librdf_storage_virtuoso_get_handle): Use above when calling
+	SQLDriverConnect()
+
+	* src/rdf_hash_bdb.c: BDB DBT field size is a u_int32_t so cast
+	bad to that
+
+	* src/rdf_node.c:
+	(librdf_node_decode): Casts from binary to size_t are good [gcc
+	warnings]
+
+	* src/rdf_node.c:
+	(librdf_node_decode): Casts from binary to size_t are good [gcc
+	warnings]
+
+	* src/rdf_hash_bdb.c: Code style
+
+	* src/rdf_query_results.c: Range check of index for query results
+	value/name gets
+
+	(librdf_query_results_get_binding_value)
+	(librdf_query_results_get_binding_name): Fail with negative offset
+	always and note FIXME that this should be an unsigned int in
+	future.
+
+	* src/rdf_hash_bdb.c: Use u_int32_t to store BDB flags [gcc
+	warnings]
+
+	* utils/rdfproc.c: Use int v_idx for indexing into result values
+	and names
+
+2012-06-28  Dave Beckett <dave@dajobe.org>
+
+	* RELEASE.html: 1.0.16
+
+	* docs/tmpl/general.sgml, docs/tmpl/unicode.sgml,
+	docs/tmpl/unused.sgml, docs/tmpl/world.sgml: Update tmpls
+
+	* src/rdf_storage_mysql.c:
+	Code fixes [gcc warnings]
+
+	librdf_storage_mysql_instance: Use char* for all char* fields
+
+	(librdf_storage_mysql_get_handle): Cast size_t connections count
+	array computations [gcc warnings]
+
+	(librdf_storage_mysql_init): Get port as a long and use it if it
+	was set it fits into int
+
+	(librdf_storage_mysql_terminate): Remove un-necessary casts for
+	non-const char* configuration variables.
+
+	* src/rdf_node.c: Use size_t for language length in internal
+	calculations [gcc warnings]
+
+	(librdf_node_encode, librdf_node_decode): use size_t casts to help
+	code clarity and mix of size_t and char-promoted-to-int warnings.
+
+	* src/rdf_node.c:
+	(librdf_node_get_literal_value_as_latin1): Use size_t for len
+
+	* utils/rdfproc.c: Add a none command and use index 0 as not found
+	sentinel
+
+	* docs/redland-changes.tsv, src/rdf_utf8.c, src/rdf_utf8.h:
+	(librdf_utf8_to_latin1_2): unsigned char discard arg
+
+	* src/rdf_node.c:
+	(librdf_node_get_literal_value_as_latin1): Use
+	librdf_utf8_to_latin1_2()
+
+	* docs/redland-changes.tsv, docs/redland-sections.txt,
+	src/rdf_utf8.c, src/rdf_utf8.h: Deprecate latin1/utf8 routines
+	that use int sizes
+
+	(librdf_latin1_to_utf8_2): Added deprecating librdf_latin1_to_utf8
+
+	(librdf_utf8_to_latin1_2): Added deprecating librdf_utf8_to_latin1
+
+	* src/rdf_query_virtuoso.c: Code cleanups for strcpy and size_t
+	[gcc warnings]
+
+	(librdf_query_virtuoso_init): Replace strcpy for known length
+	strings with memcpy
+
+	(librdf_query_virtuoso_execute): Capture strlens and use memcpy
+	twice rather than strcpy and strcat.  Cast context->numCols to
+	size_t for array calloc [gcc warnings].
+	Use size_t for col names length.
+
+	(librdf_query_virtuoso_results_formatter_write): Use memcpy
+	Replace strcpy for known length string with memcpy
+
+	* src/rdf_hash_memory.c: Revert
+	d2d6a7a54342deff47ee686fda8d9b87e17ffefa - broke hash memory
+
+	* utils/rdfproc.c: unsigned int i for indexing [gcc warnings]
+
+	* src/rdf_storage_postgresql.c:
+	(librdf_storage_postgresql_get_handle): pool size casting [gcc
+	warnings]
+
+	* src/rdf_storage_mysql.c:
+	(librdf_storage_mysql_hash): Use size_t length arg [gcc warnings]
+
+	* src/rdf_log.c, src/rdf_log_internal.h: Mark librdf_fatal as
+	REDLAND_NORETURN [gcc warnings]
+
+	* src/librdf.h.in: Add REDLAND_NORETURN using gcc 3.2+ attribute
+	__noreturn__
+
+	* src/rdf_utf8.c: Simplify size_t UTF to/from latin1 work [gcc
+	warnings]
+
+	(librdf_utf8_to_latin1, librdf_latin1_to_utf8): Make a slength
+	first then do everything in size_t
+
+	* src/rdf_utf8.c: Do UTF to/from latin1 work in size_t and make
+	bad casts at end
+
+	(librdf_utf8_to_latin1, librdf_latin1_to_utf8): Truncate final
+	results after working in size_t
+
+	* src/rdf_hash_memory.c: unsigned int for keys, values, capacity
+	and bucket sizes [gcc warnings]
+
+	(librdf_hash_memory_find_node): u32 for hash_key computation but
+	then put in an unsigned int bucket
+
+	Rest of code: Code style fixes
+	- many whitespace added around operators.
+	- pulled assigments out of if - broke long lines
+
+	* src/rdf_storage_sqlite.c:
+	(sqlite_string_escape): Use size_t for lengths [gcc warnings]
+
+	* src/rdf_storage_trees.c: Good int cast comparing node types [gcc
+	warning]
+
+	(librdf_storage_trees_node_compare): Cast to ints is ok when
+	comparing node types.
+
+	* src/rdf_storage_hashes.c:
+	(librdf_storage_hashes_init_common): Good casts to size_t [gcc
+	warnings]
+
+	* src/rdf_log.c: Good casts to size_t from int for log lengths
+	[gcc warnings]
+
+	log messages are short
+
+	(librdf_log_simple, librdf_fatal): Add
+	size_t length variables for rewriting more clearly.
+
+	* src/rdf_serializer_raptor.c: unsigned int for indexing [gcc
+	warnings]
+
+	(librdf_serializer_raptor_constructor): unsigned int it
+
+	* src/rdf_utf8.c: Many bad size_t casts for utf8/latin1 work [gcc
+	warnings]
+
+	(librdf_unicode_char_to_utf8, librdf_utf8_to_unicode_char,
+	librdf_utf8_to_latin1, librdf_latin1_to_utf8): Added casts and
+	updated docs with warnings.  Turned some existing bad casts into
+	explicit ones.
+
+	* src/rdf_heuristics.c, src/rdf_parser_raptor.c,
+	src/rdf_storage.c, src/rdf_storage_sql.c: More fixes for #if
+	LIBRDF_DEBUG when it is not defined.
+
+	* src/rdf_heuristics.c:
+	(librdf_heuristic_gen_name): Good cast for length calc [gcc
+	warnings] Code style fixes
+
+	* src/rdf_storage_sql.c:
+	(librdf_new_sql_config): Good cast for predicates count [gcc
+	warnings]
+
+	* src/rdf_serializer.c:
+	(librdf_serializer_enumerate): Good cast for signed seq offset [gcc
+	warnings]
+
+	* src/rdf_parser.c:
+	(librdf_parser_enumerate): Good cast for signed seq offset [gcc
+	warnings]
+
+	* src/rdf_storage.c:
+	(librdf_storage_enumerate): Good cast for signed seq offset [gcc
+	warnings]
+
+	* src/rdf_model.c:
+	(librdf_model_enumerate): Good cast for signed seq offset [gcc
+	warnings]
+
+	* src/rdf_init.c:
+	(librdf_new_world): Good cast signed long time_t to unsigned long
+
+	* src/rdf_hash.c:
+	(librdf_hash_from_string): Do pointer arithmetic in size_t [gcc
+	warnings]
+
+	* src/rdf_hash.c: Good casts to size_t between pointers that
+	increase [gcc warnings]
+
+	(librdf_hash_from_string, librdf_hash_interpret_template): Add
+	good casts from pointer arithmetic (int) to size_t that will
+	always be positive.
+
+	* src/rdf_storage_sqlite.c: Protect #if use of undefined
+	LIBRDF_DEBUG
+
+	* src/rdf_query_rasqal.c: Protect #if use of undefined
+	LIBRDF_DEBUG
+
+	* src/rdf_list.c: Protect #if use of undefined LIBRDF_DEBUG
+
+	* src/rdf_init.c: long and size_t fixes
+
+	(librdf_world_set_feature): use long for time_t
+
+	(librdf_world_get_genid): Calculate length in size_t
+
+	* src/librdf.h.in:
+	Add prototypes for license and home url strings
+
+	* docs/redland-changes.tsv, docs/redland-sections.txt,
+	src/rdf_init.c, utils/rdfproc.c: Add license and home url constant
+	strings to API
+
+	Added librdf_license_string and librdf_home_url_string to public
+	API following Raptor and Rasqal naming convention.
+
+	(rdfproc main): Use in help.
+
+2012-06-27  Dave Beckett <dave@dajobe.org>
+
+	* configure.ac:
+	Require raptor 2.0.7+
+
+	* INSTALL.html, configure.ac, examples/Makefile.am,
+	src/Makefile.am, src/rdf_init.c, src/rdf_internal.h,
+	src/win32_rdf_config.h.in, utils/Makefile.am: Remove dmalloc and
+	memory signing
+
+	Removed --with-dmalloc and --with-memory-signing configure options.
+
+	* src/rdf_init.c: 2012
+
+	* NEWS.html, RELEASE.html: 1.0.16
+
+2012-06-26  Dave Beckett <dave@dajobe.org>
+
+	* Makefile.am: EXTRA_DIST: Remove ChangeLog NEWS since they are in
+	dist by default
+
+	* src/rdf_storage_virtuoso.c:
+	Error path cleanups [clang]
+
+	(vGetDataCHAR): On query failure, free pLongData.
+
+	(librdf_storage_virtuoso_get_handle): On connection falloc
+	failure, free connections before returning.  Protect looking up
+	connection to make clang happier.
+
+	(librdf_storage_virtuoso_context_remove_statement): Protect
+	multiple strlens from a statement to prevent NULL lookup.
+
+	(librdf_storage_virtuoso_get_contexts0: Protect looking up storage
+	to make clang happier.
+
+	* src/rdf_storage_sqlite.c:
+	(librdf_storage_sqlite_query_flush): Add NULL storage check [clang]
+
+	* src/rdf_storage_list.c:
+	Error path cleanups [clang]
+
+	(librdf_storage_list_get_contexts): On alloc failure for key, free
+	icontext
+
+	* src/rdf_storage_hashes.c:
+	Error path cleanups [clang]
+
+	(librdf_storage_hashes_register): Protect from NULL source_desc to
+	make clang happier
+
+	(librdf_storage_hashes_init_common): Protect from NULL hash
+	descriptions to make clang happier
+
+	(librdf_storage_hashes_get_contexts): On alloc failure for key,
+	free icontext
+
+	* src/rdf_storage_file.c:
+	Error path cleanups [clang]
+
+	(librdf_storage_file_sync): free backup_name on failure
+
+	* src/rdf_query_virtuoso.c:
+	Error path cleanups [clang]
+
+	(librdf_query_virtuoso_execute): free results on failure
+
+	(librdf_query_virtuoso_results_as_stream): Free scontext on
+	failure
+
+	* src/rdf_query_rasqal.c: Fix allocation of stream context [clang]
+
+	(librdf_query_rasqal_results_as_stream): Allocate correct stream
+	context size.
+
+	* src/rdf_heuristics.c:
+	(librdf_heuristic_object_is_literal): Protect a lookup to make clang
+	happier
+
+	* src/rdf_hash.c:
+	Error path cleanups [clang]
+
+	(librdf_hash_keys_iterator_finished): Protect a lookup to make
+	clang happier
+
+	(librdf_hash_print): Free key on alloc failure of value
+
+	* src/rdf_storage_sqlite.c: Type length casts for sqlite3
+
+	(sqlite_string_escape): Turn sqlite rowid into narrower int (BAD
+	CAST)
+
+	(librdf_storage_sqlite_serialise)
+	(librdf_storage_sqlite_find_statements)
+	(librdf_storage_sqlite_context_serialise)
+	(librdf_storage_sqlite_get_contexts): Narrow known query string
+	lengths to int from size_t - good since we construct the query
+	strings inside this module.
+
+	* src/rdf_query_virtuoso.c, src/rdf_storage_virtuoso.c: bad casts
+	for narrowing size_t to SQLUINTEGER
+
+	(librdf_query_virtuoso_init, BindCtxt, BindSP, BindObject):
+	Multiple bad casts for turning size_t from a strlen into
+	SQLUINTEGER (which seems to be smaller).
+
+	* src/rdf_storage_postgresql.c: size_t for length
+
+	(librdf_storage_postgresql_hash)
+	(librdf_storage_postgresql_node_hash): Now take size_t args Update
+	callers
+
+	(librdf_storage_postgresql_size): Bad cast for turning PGgetvalue
+	into long via atol and then returning an int.
+
+	* src/rdf_hash_bdb.c:
+	LIBRDF_BAD_CAST BDB key sizes to int
+
+	* configure.ac, src/rdf_storage_trees.c: Use ptrdiff_t for
+	comparing void pointers
+
+	* src/rdf_query_rasqal.c, src/rdf_storage_hashes.c: size_t for len
+	in multiple places
+
+	query rasqal module:
+	(librdf_query_rasqal_init): size_t for len
+
+	storage hashes module:
+	(librdf_storage_hashes_register, librdf_storage_hashes_init)
+	(librdf_storage_hashes_add_remove_statement)
+	(librdf_storage_hashes_contains_statement)
+	(librdf_storage_hashes_context_add_statement)
+	(librdf_storage_hashes_context_remove_statement): size_t for len
+
+	* src/rdf_digest_sha1.c:
+	(SHA1Update): Bad cast a size_t len to u32 :/
+
+	* src/rdf_internal.h:
+	Add LIBRDF_GOOD_CAST LIBRDF_BAD_CAST
+
+	* src/rdf_utf8.c:
+	(librdf_utf8_print): Cast to char when in range
+
+	* src/rdf_hash.c:
+	(librdf_hash_get_as_long): strtol returns long (!)
+
+	* src/rdf_digest.c, src/rdf_hash.c, src/rdf_hash_memory.c,
+	src/rdf_parser.c, src/rdf_parser_raptor.c: Use size_t for len in
+	multiple places digest module
+
+	(librdf_digest_to_string): use size_t for mdlen and index.  hash
+	module
+
+	(librdf_hash_from_string): size_t for len and index var.
+
+	(macro ONE_AT_A_TIME_HASH): use size_t for len parser module
+
+	(librdf_parser_guess_name2)
+
+	(librdf_parser_raptor_get_next_statement)
+
+	(librdf_parser_raptor_parse_uri_as_stream_write_bytes_handler):
+	size_t for len
+
+	* src/rdf_digest_internal.h: Use void* for digest context
+	librdf_digest_s field context is void*
+
+	* src/rdf_uri.c:
+	(librdf_new_uri_normalised_to_base): size_t for len
+
+	* src/rdf_init.c, src/rdf_init_internal.h: Genid are now unsigned
+	long
+
+	(librdf_world_get_genid): Format as %lu
+
+	* src/rdf_query_rasqal.c: #if LIBRDF_DEBUG
+
+	* configure.ac: Update warnings
+
+	* src/rdf_storage_postgresql.c: Supply default host 'localhost'
+	for postgresql storage.
+
+	(librdf_storage_postgresql_init): Check for missing host and set
+	it to localhost.  Report required storage config parameters in
+	error failure message.
+
+	* src/rdf_storage_mysql.c: Supply default host 'localhost' for
+	mysql storage.
+
+	(librdf_storage_mysql_init): Check for missing host and set it to
+	localhost.  Report required storage config parameters in error
+	failure message.
+
+	* src/rdf_storage_hashes.c: Make statement present (ASK) work for
+	hashes storage and contexts
+
+	(librdf_storage_hashes_contains_statement): Get index contexts
+	flag from context not storage.  Why?  Not immediately clear at a
+	glance
+
+	Fixes Issue #0000515
+	http://bugs.librdf.org/mantis/view.php?id=515
+
+	* autogen.sh: autogen.sh updates
+	- Abort run if a configuring program fails.
+	- Generate NEWS with old timestamp if missing so automake can run
+	- small doc and message updates
+
+2012-06-19  Dave Beckett <dave@dajobe.org>
+
+	* configure.ac: Search for BDB 5.3
+
+	* src/rdf_storage_postgresql.c: Make loading triples from a stream
+	to postgresql actually work
+
+	(librdf_storage_postgresql_context_add_statements): Skip to next
+	statement in non bulk mode.
+
+2012-06-17  Dave Beckett <dave@dajobe.org>
+
+	* autogen.sh: Support NOCONFIGURE variable, like Lib{XML2,XSLT}
+
+2012-05-20  Dave Beckett <dave@dajobe.org>
+
+	* ChangeLog, RELEASE.html: 1.0.16
+
+2012-05-17  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_query.c: sparql
+
+2012-05-17  Dave Beckett <dave@dajobe.org>
+
+	* utils/rdfproc.1: typo
+
+2012-03-07  Dave Beckett <dave@dajobe.org>
+
+	* Merge pull request #2 from zoggy/master Fixing bad test on query
+	allocation (postgresql storage) + WS changes
+
+2012-02-13  Lauri Aalto <laalto@iki.fi>
+
+	* autogen.sh:
+	require automake 1.11.2+ for -Wextra-portability
+
+2012-02-11  Dave Beckett <dave@dajobe.org>
+
+	* INSTALL.html:
+	Doc corrections
+
+	Remove docs of --with-raptor=internal and --with-rasqal=internal
+	These were removed from configure.ac on Mon Mar 30 02:07:57 2009
+	+0000 in commit 94687555d3b328fc920dd8180b1b2a563199fea0 Emphasise
+	--prefix=/usr more
+
+2012-02-10  Dave Beckett <dave@dajobe.org>
+
+	* build/.gitignore, configure.ac, docs/tmpl/world.sgml: Add
+	automake option -Wextra-portability and AM_PROG_AR to make it
+	happy
+
+	* docs/redland-sections.txt: Remove librdf_world_get_raptor
+	librdf_world_set_raptor from unused
+
+	* docs/redland-sections.txt: add librdf_world_get_raptor
+	librdf_world_set_raptor
+
+2012-02-01  Lauri Aalto <laalto@iki.fi>
+
+	* src/rdf_storage.c:
+	(librdf_storage_contains_statement): Return >0 only for invalid
+	statements according to API contract.  Treat NULL storage as empty
+	storage not containing statements.  Use
+	librdf_statement_is_complete() for testing statement validity.
+
+	* src/rdf_model.c:
+	(librdf_model_contains_statement): Treat NULL statement as invalid
+
+	* src/rdf_model.c:
+	(librdf_model_contains_statement): Return >0 only for invalid
+	statements according to API contract.
+
+	Fixes Issue #0000489
+	http://bugs.librdf.org/mantis/view.php?id=489
+
+2012-01-02  Dave Beckett <dave@dajobe.org>
+
+	* ChangeLog, ChangeLog.12, FAQS.html, INSTALL.html, LICENSE.html,
+	Makefile.am, NEWS.html, README.html, RELEASE.html, TODO.html: 2012
+
+	* docs/redland-changes.tsv, docs/redland-sections.txt,
+	src/rdf_init.h, src/rdf_init_internal.h, src/rdf_query_rasqal.c,
+	src/rdf_raptor.c: Add handlers to allow application code to
+	configure raptor and rasqal
+
+	(librdf_world_set_raptor_init_handler,
+	librdf_world_set_rasqal_init_handler): Added methods to set
+	handlers for configuring internal raptor and rasqal after they
+	have been constructed but before they are initialized; before
+	raptor_world_open() or rasqal_world_open() are run, respectively.
+
+	Added librdf_raptor_init_handler and librdf_rasqal_init_handler
+	typedefs for the handlers.
+
+2012-01-02  Dave Beckett <dave@dajobe.org>
+
+	* src/rdf_init.c:
+	(librdf_world_set_rasqal): reset rasqal_world_allocated_here
+
+2012-01-02  Dave Beckett <dave@dajobe.org>
+
+	* Remove doc references to Raptor V1

@@ -1,0 +1,1675 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>section-uri: Raptor RDF Syntax Library Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="Raptor RDF Syntax Library Manual">
+<link rel="up" href="reference-manual.html" title="Part II. Raptor Reference Manual">
+<link rel="prev" href="raptor2-section-unicode.html" title="section-unicode">
+<link rel="next" href="raptor2-section-www.html" title="section-www">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#raptor2-section-uri.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference-manual.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="raptor2-section-unicode.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="raptor2-section-www.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="raptor2-section-uri"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="raptor2-section-uri.top_of_page"></a>section-uri</span></h2>
+<p>section-uri</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="raptor2-section-uri.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-new-uri" title="raptor_new_uri ()">raptor_new_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-new-uri-from-counted-string" title="raptor_new_uri_from_counted_string ()">raptor_new_uri_from_counted_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-new-uri-from-uri-local-name" title="raptor_new_uri_from_uri_local_name ()">raptor_new_uri_from_uri_local_name</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-new-uri-from-uri-or-file-string" title="raptor_new_uri_from_uri_or_file_string ()">raptor_new_uri_from_uri_or_file_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-new-uri-relative-to-base" title="raptor_new_uri_relative_to_base ()">raptor_new_uri_relative_to_base</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-new-uri-relative-to-base-counted" title="raptor_new_uri_relative_to_base_counted ()">raptor_new_uri_relative_to_base_counted</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-new-uri-from-id" title="raptor_new_uri_from_id ()">raptor_new_uri_from_id</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-new-uri-for-rdf-concept" title="raptor_new_uri_for_rdf_concept ()">raptor_new_uri_for_rdf_concept</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-new-uri-for-xmlbase" title="raptor_new_uri_for_xmlbase ()">raptor_new_uri_for_xmlbase</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-new-uri-for-retrieval" title="raptor_new_uri_for_retrieval ()">raptor_new_uri_for_retrieval</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-free-uri" title="raptor_free_uri ()">raptor_free_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-compare" title="raptor_uri_compare ()">raptor_uri_compare</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-equals" title="raptor_uri_equals ()">raptor_uri_equals</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-copy" title="raptor_uri_copy ()">raptor_uri_copy</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-as-string" title="raptor_uri_as_string ()">raptor_uri_as_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-as-counted-string" title="raptor_uri_as_counted_string ()">raptor_uri_as_counted_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-to-relative-counted-uri-string" title="raptor_uri_to_relative_counted_uri_string ()">raptor_uri_to_relative_counted_uri_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-to-relative-uri-string" title="raptor_uri_to_relative_uri_string ()">raptor_uri_to_relative_uri_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-to-counted-string" title="raptor_uri_to_counted_string ()">raptor_uri_to_counted_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-to-string" title="raptor_uri_to_string ()">raptor_uri_to_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">size_t</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-resolve-uri-reference" title="raptor_uri_resolve_uri_reference ()">raptor_uri_resolve_uri_reference</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-counted-filename-to-uri-string" title="raptor_uri_counted_filename_to_uri_string ()">raptor_uri_counted_filename_to_uri_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-filename-to-uri-string" title="raptor_uri_filename_to_uri_string ()">raptor_uri_filename_to_uri_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-uri-string-is-absolute" title="raptor_uri_uri_string_is_absolute ()">raptor_uri_uri_string_is_absolute</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-uri-string-is-file-uri" title="raptor_uri_uri_string_is_file_uri ()">raptor_uri_uri_string_is_file_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-uri-string-to-filename" title="raptor_uri_uri_string_to_filename ()">raptor_uri_uri_string_to_filename</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-uri-string-to-filename-fragment" title="raptor_uri_uri_string_to_filename_fragment ()">raptor_uri_uri_string_to_filename_fragment</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-uri-string-to-counted-filename-fragment" title="raptor_uri_uri_string_to_counted_filename_fragment ()">raptor_uri_uri_string_to_counted_filename_fragment</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-print" title="raptor_uri_print ()">raptor_uri_print</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="returnvalue">raptor_world</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-get-world" title="raptor_uri_get_world ()">raptor_uri_get_world</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-write" title="raptor_uri_write ()">raptor_uri_write</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-file-exists" title="raptor_uri_file_exists ()">raptor_uri_file_exists</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-filename-exists" title="raptor_uri_filename_exists ()">raptor_uri_filename_exists</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-to-turtle-counted-string" title="raptor_uri_to_turtle_counted_string ()">raptor_uri_to_turtle_counted_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-to-turtle-string" title="raptor_uri_to_turtle_string ()">raptor_uri_to_turtle_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-uri.html#raptor-uri-turtle-write" title="raptor_uri_turtle_write ()">raptor_uri_turtle_write</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-uri.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="typedef_keyword">typedef</td>
+<td class="function_name"><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri">raptor_uri</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-uri.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-uri.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="raptor-new-uri"></a><h3>raptor_new_uri ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+raptor_new_uri (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                <em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>);</pre>
+<p>Constructor - create a raptor URI from a UTF-8 encoded Unicode string.</p>
+<div class="refsect3">
+<a name="raptor-new-uri.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor_world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>URI string.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-uri.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object or NULL on failure.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-uri-from-counted-string"></a><h3>raptor_new_uri_from_counted_string ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+raptor_new_uri_from_counted_string (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                                    <em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>,
+                                    <em class="parameter"><code><span class="type">size_t</span> length</code></em>);</pre>
+<p>Constructor - create a raptor URI from a UTF-8 encoded Unicode string.</p>
+<p>Note: The <em class="parameter"><code>uri_string</code></em>
+ need not be NULL terminated - a NULL will be
+added to the copied string used.</p>
+<div class="refsect3">
+<a name="raptor-new-uri-from-counted-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor_world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>URI string.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>length of URI string</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-uri-from-counted-string.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object or NULL on failure.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-uri-from-uri-local-name"></a><h3>raptor_new_uri_from_uri_local_name ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+raptor_new_uri_from_uri_local_name (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                                    <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>,
+                                    <em class="parameter"><code>const unsigned <span class="type">char</span> *local_name</code></em>);</pre>
+<p>Constructor - create a raptor URI from an existing URI and a local name.</p>
+<p>Creates a new URI from the concatenation of the <em class="parameter"><code>local_name</code></em>
+ to the
+<em class="parameter"><code>uri</code></em>
+.  This is NOT relative URI resolution, which is done by the
+<a class="link" href="raptor2-section-uri.html#raptor-new-uri-relative-to-base" title="raptor_new_uri_relative_to_base ()"><code class="function">raptor_new_uri_relative_to_base()</code></a> constructor.</p>
+<div class="refsect3">
+<a name="raptor-new-uri-from-uri-local-name.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor_world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>existing <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>local_name</p></td>
+<td class="parameter_description"><p>local name</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-uri-from-uri-local-name.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object or NULL on failure.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-uri-from-uri-or-file-string"></a><h3>raptor_new_uri_from_uri_or_file_string ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+raptor_new_uri_from_uri_or_file_string
+                               (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                                <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code>const unsigned <span class="type">char</span> *uri_or_file_string</code></em>);</pre>
+<p>Constructor - create a raptor URI from a string that is a relative or absolute URI or a filename</p>
+<p>If the <em class="parameter"><code>uri_or_file_string</code></em>
+ is a filename PATH that exists, the
+result will be a URI file://PATH</p>
+<div class="refsect3">
+<a name="raptor-new-uri-from-uri-or-file-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor_world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>existing base URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_or_file_string</p></td>
+<td class="parameter_description"><p>URI string or filename</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-uri-from-uri-or-file-string.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-uri-relative-to-base"></a><h3>raptor_new_uri_relative_to_base ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+raptor_new_uri_relative_to_base (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                                 <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *base_uri</code></em>,
+                                 <em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>);</pre>
+<p>Constructor - create a raptor URI from a base URI and a relative URI string.</p>
+<p>Use <a class="link" href="raptor2-section-uri.html#raptor-new-uri-relative-to-base-counted" title="raptor_new_uri_relative_to_base_counted ()"><code class="function">raptor_new_uri_relative_to_base_counted()</code></a> if the URI string length is known</p>
+<div class="refsect3">
+<a name="raptor-new-uri-relative-to-base.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor_world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>existing base URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>relative URI string</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-uri-relative-to-base.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object or NULL on failure.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-uri-relative-to-base-counted"></a><h3>raptor_new_uri_relative_to_base_counted ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+raptor_new_uri_relative_to_base_counted
+                               (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                                <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>,
+                                <em class="parameter"><code><span class="type">size_t</span> uri_len</code></em>);</pre>
+<p>Constructor - create a raptor URI from a base URI and a relative counted URI string.</p>
+<div class="refsect3">
+<a name="raptor-new-uri-relative-to-base-counted.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor_world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>existing base URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>relative URI string</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_len</p></td>
+<td class="parameter_description"><p>length of URI string (or 0)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-uri-relative-to-base-counted.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object or NULL on failure.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-uri-from-id"></a><h3>raptor_new_uri_from_id ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+raptor_new_uri_from_id (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                        <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *base_uri</code></em>,
+                        <em class="parameter"><code>const unsigned <span class="type">char</span> *id</code></em>);</pre>
+<p>Constructor - create a new URI from a base URI and RDF ID.</p>
+<p>This creates a URI equivalent to concatenating <em class="parameter"><code>base_uri</code></em>
+ with</p>
+<div class="refsect3">
+<a name="id-1.4.20.6.8.6"></a><h4>and <em class="parameter"><code>id</code></em>
+.</h4>
+</div>
+<div class="refsect3">
+<a name="raptor-new-uri-from-id.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor_world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>existing base URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>id</p></td>
+<td class="parameter_description"><p>RDF ID</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-uri-from-id.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object or NULL on failure.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-uri-for-rdf-concept"></a><h3>raptor_new_uri_for_rdf_concept ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+raptor_new_uri_for_rdf_concept (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                                <em class="parameter"><code>const unsigned <span class="type">char</span> *name</code></em>);</pre>
+<p>Constructor - create a raptor URI for the RDF namespace concept name.</p>
+<p>Example: u=raptor_new_uri_for_rdf_concept("value") creates a new
+URI for the rdf:value term.</p>
+<div class="refsect3">
+<a name="raptor-new-uri-for-rdf-concept.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor_world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>RDF namespace concept</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-uri-for-rdf-concept.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-uri-for-xmlbase"></a><h3>raptor_new_uri_for_xmlbase ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+raptor_new_uri_for_xmlbase (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *old_uri</code></em>);</pre>
+<p>Constructor - create a URI suitable for use as an XML Base.</p>
+<p>Takes an existing URI and ensures it has a path (default /) and has
+no fragment or query arguments - XML base does not use these.</p>
+<div class="refsect3">
+<a name="raptor-new-uri-for-xmlbase.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>old_uri</p></td>
+<td class="parameter_description"><p>URI to transform</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-uri-for-xmlbase.returns"></a><h4>Returns</h4>
+<p> new <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object or NULL on failure.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-uri-for-retrieval"></a><h3>raptor_new_uri_for_retrieval ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+raptor_new_uri_for_retrieval (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *old_uri</code></em>);</pre>
+<p>Constructor - create a URI suitable for retrieval.</p>
+<p>Takes an existing URI and ensures it has a path (default /) and has
+no fragment - URI retrieval does not use the fragment part.</p>
+<div class="refsect3">
+<a name="raptor-new-uri-for-retrieval.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>old_uri</p></td>
+<td class="parameter_description"><p>URI to transform</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-uri-for-retrieval.returns"></a><h4>Returns</h4>
+<p> new <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object or NULL on failure.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-free-uri"></a><h3>raptor_free_uri ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+raptor_free_uri (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>);</pre>
+<p>Destructor - destroy a <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object</p>
+<div class="refsect3">
+<a name="raptor-free-uri.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>URI to destroy</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-compare"></a><h3>raptor_uri_compare ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_uri_compare (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri1</code></em>,
+                    <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri2</code></em>);</pre>
+<p>Compare two URIs, ala strcmp.</p>
+<p>A NULL URI is always less than (never equal to) a non-NULL URI.</p>
+<div class="refsect3">
+<a name="raptor-uri-compare.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri1</p></td>
+<td class="parameter_description"><p>URI 1 (may be NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri2</p></td>
+<td class="parameter_description"><p>URI 2 (may be NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-compare.returns"></a><h4>Returns</h4>
+<p> -1 if uri1 &lt; uri2, 0 if equal, 1 if uri1 &gt; uri2</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-equals"></a><h3>raptor_uri_equals ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_uri_equals (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri1</code></em>,
+                   <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri2</code></em>);</pre>
+<p>Check if two URIs are equal.</p>
+<p>A NULL URI is not equal to a non-NULL URI.</p>
+<div class="refsect3">
+<a name="raptor-uri-equals.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri1</p></td>
+<td class="parameter_description"><p>URI 1 (may be NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri2</p></td>
+<td class="parameter_description"><p>URI 2 (may be NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-equals.returns"></a><h4>Returns</h4>
+<p> non-0 if the URIs are equal</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-copy"></a><h3>raptor_uri_copy ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+raptor_uri_copy (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>);</pre>
+<p>Constructor - get a copy of a URI.</p>
+<div class="refsect3">
+<a name="raptor-uri-copy.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>URI object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-copy.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-as-string"></a><h3>raptor_uri_as_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_uri_as_string (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>);</pre>
+<p>Get a string representation of a URI.</p>
+<p>Returns a shared pointer to a string representation of <em class="parameter"><code>uri</code></em>
+.  This
+string is shared and must not be freed, otherwise see use the
+<a class="link" href="raptor2-section-uri.html#raptor-uri-to-string" title="raptor_uri_to_string ()"><code class="function">raptor_uri_to_string()</code></a> or <a class="link" href="raptor2-section-uri.html#raptor-uri-to-counted-string" title="raptor_uri_to_counted_string ()"><code class="function">raptor_uri_to_counted_string()</code></a> methods.</p>
+<div class="refsect3">
+<a name="raptor-uri-as-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-as-string.returns"></a><h4>Returns</h4>
+<p> shared string representation of URI</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-as-counted-string"></a><h3>raptor_uri_as_counted_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_uri_as_counted_string (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>,
+                              <em class="parameter"><code><span class="type">size_t</span> *len_p</code></em>);</pre>
+<p>Get a string representation of a URI with count.</p>
+<p>Returns a shared pointer to a string representation of <em class="parameter"><code>uri</code></em>
+ along
+with the length of the string in <em class="parameter"><code>len_p</code></em>
+, if not NULL.  This
+string is shared and must not be freed, otherwise see use the
+<a class="link" href="raptor2-section-uri.html#raptor-uri-to-string" title="raptor_uri_to_string ()"><code class="function">raptor_uri_to_string()</code></a> or <a class="link" href="raptor2-section-uri.html#raptor-uri-to-counted-string" title="raptor_uri_to_counted_string ()"><code class="function">raptor_uri_to_counted_string()</code></a> methods.</p>
+<div class="refsect3">
+<a name="raptor-uri-as-counted-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>URI object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>len_p</p></td>
+<td class="parameter_description"><p>address of length variable or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-as-counted-string.returns"></a><h4>Returns</h4>
+<p> shared string representation of URI</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-to-relative-counted-uri-string"></a><h3>raptor_uri_to_relative_counted_uri_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_uri_to_relative_counted_uri_string
+                               (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *reference_uri</code></em>,
+                                <em class="parameter"><code><span class="type">size_t</span> *length_p</code></em>);</pre>
+<p>Get the counted relative URI string of a URI against a base URI.</p>
+<div class="refsect3">
+<a name="raptor-uri-to-relative-counted-uri-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>The base absolute URI to resolve against (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>reference_uri</p></td>
+<td class="parameter_description"><p>The reference absolute URI to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length_p</p></td>
+<td class="parameter_description"><p>Location to store the length of the relative URI string or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-to-relative-counted-uri-string.returns"></a><h4>Returns</h4>
+<p> A newly allocated relative URI string or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-to-relative-uri-string"></a><h3>raptor_uri_to_relative_uri_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_uri_to_relative_uri_string (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *base_uri</code></em>,
+                                   <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *reference_uri</code></em>);</pre>
+<p>Get the relative URI string of a URI against a base URI.</p>
+<div class="refsect3">
+<a name="raptor-uri-to-relative-uri-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>The base absolute URI to resolve against</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>reference_uri</p></td>
+<td class="parameter_description"><p>The reference absolute URI to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-to-relative-uri-string.returns"></a><h4>Returns</h4>
+<p> A newly allocated relative URI string or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-to-counted-string"></a><h3>raptor_uri_to_counted_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_uri_to_counted_string (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>,
+                              <em class="parameter"><code><span class="type">size_t</span> *len_p</code></em>);</pre>
+<p>Get a new counted string for a URI.</p>
+<p>If <em class="parameter"><code>len_p</code></em>
+ is not NULL, the length of the string is stored in it.</p>
+<p>The memory allocated must be freed by the caller and
+<a class="link" href="raptor2-section-memory.html#raptor-free-memory" title="raptor_free_memory ()"><code class="function">raptor_free_memory()</code></a> should be used for best portability.</p>
+<div class="refsect3">
+<a name="raptor-uri-to-counted-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>len_p</p></td>
+<td class="parameter_description"><p>Pointer to length (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-to-counted-string.returns"></a><h4>Returns</h4>
+<p> new string or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-to-string"></a><h3>raptor_uri_to_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_uri_to_string (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>);</pre>
+<p>Get a new string for a URI.</p>
+<p>The memory allocated must be freed by the caller and
+<a class="link" href="raptor2-section-memory.html#raptor-free-memory" title="raptor_free_memory ()"><code class="function">raptor_free_memory()</code></a> should be used for best portability.</p>
+<div class="refsect3">
+<a name="raptor-uri-to-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-to-string.returns"></a><h4>Returns</h4>
+<p> new string or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-resolve-uri-reference"></a><h3>raptor_uri_resolve_uri_reference ()</h3>
+<pre class="programlisting"><span class="returnvalue">size_t</span>
+raptor_uri_resolve_uri_reference (<em class="parameter"><code>const unsigned <span class="type">char</span> *base_uri</code></em>,
+                                  <em class="parameter"><code>const unsigned <span class="type">char</span> *reference_uri</code></em>,
+                                  <em class="parameter"><code>unsigned <span class="type">char</span> *buffer</code></em>,
+                                  <em class="parameter"><code><span class="type">size_t</span> length</code></em>);</pre>
+<p>Resolve a URI against a base URI to create a new absolute URI.</p>
+<div class="refsect3">
+<a name="raptor-uri-resolve-uri-reference.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>Base URI string</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>reference_uri</p></td>
+<td class="parameter_description"><p>Reference URI string</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>buffer</p></td>
+<td class="parameter_description"><p>Destination URI output buffer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>Length of destination output buffer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-resolve-uri-reference.returns"></a><h4>Returns</h4>
+<p> length of resolved string or 0 on failure (such as <em class="parameter"><code>buffer</code></em>
+too small)</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-counted-filename-to-uri-string"></a><h3>raptor_uri_counted_filename_to_uri_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_uri_counted_filename_to_uri_string
+                               (<em class="parameter"><code>const <span class="type">char</span> *filename</code></em>,
+                                <em class="parameter"><code><span class="type">size_t</span> filename_len</code></em>);</pre>
+<p>Converts a counted filename to a file: URI.</p>
+<p>Handles the OS-specific escaping on turning filenames into URIs
+and returns a new buffer that the caller must <code class="function">free()</code>.  Turns a
+space in the filename into %20 and '%' into %25.</p>
+<div class="refsect3">
+<a name="raptor-uri-counted-filename-to-uri-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>filename</p></td>
+<td class="parameter_description"><p>The filename to convert</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>filename_len</p></td>
+<td class="parameter_description"><p>length of <em class="parameter"><code>filename</code></em>
+or 0 to count it here</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-counted-filename-to-uri-string.returns"></a><h4>Returns</h4>
+<p> A newly allocated string with the URI or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-filename-to-uri-string"></a><h3>raptor_uri_filename_to_uri_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_uri_filename_to_uri_string (<em class="parameter"><code>const <span class="type">char</span> *filename</code></em>);</pre>
+<p>Converts a filename to a file: URI.</p>
+<p>Handles the OS-specific escaping on turning filenames into URIs
+and returns a new buffer that the caller must <code class="function">free()</code>.  Turns a
+space in the filename into %20 and '%' into %25.</p>
+<div class="refsect3">
+<a name="raptor-uri-filename-to-uri-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>filename</p></td>
+<td class="parameter_description"><p>The filename to convert</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-filename-to-uri-string.returns"></a><h4>Returns</h4>
+<p> A newly allocated string with the URI or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-uri-string-is-absolute"></a><h3>raptor_uri_uri_string_is_absolute ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_uri_uri_string_is_absolute (<em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>);</pre>
+<p>Check if a uri string is an absolute URI</p>
+<div class="refsect3">
+<a name="raptor-uri-uri-string-is-absolute.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>uri to check write</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-uri-string-is-absolute.returns"></a><h4>Returns</h4>
+<p> &gt;0 if absolute, 0 if not, &lt; 0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-uri-string-is-file-uri"></a><h3>raptor_uri_uri_string_is_file_uri ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_uri_uri_string_is_file_uri (<em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>);</pre>
+<p>Check if a URI string is a file: URI.</p>
+<div class="refsect3">
+<a name="raptor-uri-uri-string-is-file-uri.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>The URI string to check</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-uri-string-is-file-uri.returns"></a><h4>Returns</h4>
+<p> Non zero if URI string is a file: URI</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-uri-string-to-filename"></a><h3>raptor_uri_uri_string_to_filename ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *
+raptor_uri_uri_string_to_filename (<em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>);</pre>
+<p>Convert a file: URI to a filename.</p>
+<p>Handles the OS-specific file: URIs to filename mappings.  Returns
+a new buffer containing the filename that the caller must free.</p>
+<p>See also <a class="link" href="raptor2-section-uri.html#raptor-uri-uri-string-to-counted-filename-fragment" title="raptor_uri_uri_string_to_counted_filename_fragment ()"><code class="function">raptor_uri_uri_string_to_counted_filename_fragment()</code></a></p>
+<div class="refsect3">
+<a name="raptor-uri-uri-string-to-filename.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>The file: URI to convert</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-uri-string-to-filename.returns"></a><h4>Returns</h4>
+<p> A newly allocated string with the filename or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-uri-string-to-filename-fragment"></a><h3>raptor_uri_uri_string_to_filename_fragment ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *
+raptor_uri_uri_string_to_filename_fragment
+                               (<em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>,
+                                <em class="parameter"><code>unsigned <span class="type">char</span> **fragment_p</code></em>);</pre>
+<p>Convert a file: URI to a filename and fragment.</p>
+<p>Handles the OS-specific file: URIs to filename mappings.  Returns
+a new buffer containing the filename that the caller must free.</p>
+<p>If <em class="parameter"><code>fragment_p</code></em>
+ is given, a new string containing the URI fragment
+is returned, or NULL if none is present</p>
+<p>See also <a class="link" href="raptor2-section-uri.html#raptor-uri-uri-string-to-counted-filename-fragment" title="raptor_uri_uri_string_to_counted_filename_fragment ()"><code class="function">raptor_uri_uri_string_to_counted_filename_fragment()</code></a></p>
+<div class="refsect3">
+<a name="raptor-uri-uri-string-to-filename-fragment.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>The file: URI to convert</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>fragment_p</p></td>
+<td class="parameter_description"><p>Address of pointer to store any URI fragment or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-uri-string-to-filename-fragment.returns"></a><h4>Returns</h4>
+<p> A newly allocated string with the filename or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-uri-string-to-counted-filename-fragment"></a><h3>raptor_uri_uri_string_to_counted_filename_fragment ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *
+raptor_uri_uri_string_to_counted_filename_fragment
+                               (<em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>,
+                                <em class="parameter"><code><span class="type">size_t</span> *len_p</code></em>,
+                                <em class="parameter"><code>unsigned <span class="type">char</span> **fragment_p</code></em>,
+                                <em class="parameter"><code><span class="type">size_t</span> *fragment_len_p</code></em>);</pre>
+<p>Convert a file: URI to a counted filename and counted fragment.</p>
+<p>Handles the OS-specific file: URIs to filename mappings.  Returns
+a new buffer containing the filename that the caller must free.</p>
+<p>If <em class="parameter"><code>len_p</code></em>
+ is present the length of the filename is returned</p>
+<p>If <em class="parameter"><code>fragment_p</code></em>
+ is given, a new string containing the URI fragment
+is returned, or NULL if none is present.  If <em class="parameter"><code>fragment_len_p</code></em>
+ is present
+the length is returned in it.</p>
+<div class="refsect3">
+<a name="raptor-uri-uri-string-to-counted-filename-fragment.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>The file: URI to convert</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>len_p</p></td>
+<td class="parameter_description"><p>address of filename length variable or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>fragment_p</p></td>
+<td class="parameter_description"><p>Address of pointer to store any URI fragment or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>fragment_len_p</p></td>
+<td class="parameter_description"><p>address of length variable or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-uri-string-to-counted-filename-fragment.returns"></a><h4>Returns</h4>
+<p> A newly allocated string with the filename or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-print"></a><h3>raptor_uri_print ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_uri_print (<em class="parameter"><code>const <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>,
+                  <em class="parameter"><code><span class="type">FILE</span> *stream</code></em>);</pre>
+<p>Print a URI to a file handle.</p>
+<div class="refsect3">
+<a name="raptor-uri-print.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>URI to print</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>The file handle to print to</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-print.returns"></a><h4>Returns</h4>
+<p> non-0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-get-world"></a><h3>raptor_uri_get_world ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="returnvalue">raptor_world</span></a> *
+raptor_uri_get_world (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>);</pre>
+<p>Get the raptor_world object associated with a raptor_uri.</p>
+<div class="refsect3">
+<a name="raptor-uri-get-world.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-get-world.returns"></a><h4>Returns</h4>
+<p> raptor_world object</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-write"></a><h3>raptor_uri_write ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_uri_write (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>,
+                  <em class="parameter"><code><a class="link" href="raptor2-section-iostream.html#raptor-iostream" title="raptor_iostream"><span class="type">raptor_iostream</span></a> *iostr</code></em>);</pre>
+<p>Write a raptor URI to the iostream.</p>
+<div class="refsect3">
+<a name="raptor-uri-write.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>iostr</p></td>
+<td class="parameter_description"><p>raptor iostream</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-write.returns"></a><h4>Returns</h4>
+<p> non-0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-file-exists"></a><h3>raptor_uri_file_exists ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_uri_file_exists (<em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>);</pre>
+<p>Check if a file: URI is a file that exists</p>
+<div class="refsect3">
+<a name="raptor-uri-file-exists.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>URI string</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-file-exists.returns"></a><h4>Returns</h4>
+<p> &gt; 0 if file exists, 0 if does not exist, &lt; 0 if not a file URI or error</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-filename-exists"></a><h3>raptor_uri_filename_exists ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_uri_filename_exists (<em class="parameter"><code>const unsigned <span class="type">char</span> *path</code></em>);</pre>
+<p>Check if <em class="parameter"><code>path</code></em>
+ points to a file that exists</p>
+<div class="refsect3">
+<a name="raptor-uri-filename-exists.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>path</p></td>
+<td class="parameter_description"><p>file path</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-filename-exists.returns"></a><h4>Returns</h4>
+<p> &gt; 0 if file exists, 0 if does not exist, &lt; 0 on error</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-to-turtle-counted-string"></a><h3>raptor_uri_to_turtle_counted_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_uri_to_turtle_counted_string (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                                     <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>,
+                                     <em class="parameter"><code><a class="link" href="raptor2-section-xml-namespace.html#raptor-namespace-stack" title="raptor_namespace_stack"><span class="type">raptor_namespace_stack</span></a> *nstack</code></em>,
+                                     <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *base_uri</code></em>,
+                                     <em class="parameter"><code><span class="type">size_t</span> *len_p</code></em>);</pre>
+<p>Convert <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> to a string.
+Caller has responsibility to free the string.</p>
+<p>Note: This creates and destroys several internal objects for each
+call so for more efficient writing, create a turtle serializer.</p>
+<div class="refsect3">
+<a name="raptor-uri-to-turtle-counted-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>world</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>uri</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>nstack</p></td>
+<td class="parameter_description"><p>namespace stack</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>base URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>len_p</p></td>
+<td class="parameter_description"><p>Pointer to location to store length of new string (if not NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-to-turtle-counted-string.returns"></a><h4>Returns</h4>
+<p> the new string or NULL on failure.  The length of
+the new string is returned in *<em class="parameter"><code>len_p</code></em>
+if len_p is not NULL.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-to-turtle-string"></a><h3>raptor_uri_to_turtle_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_uri_to_turtle_string (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                             <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>,
+                             <em class="parameter"><code><a class="link" href="raptor2-section-xml-namespace.html#raptor-namespace-stack" title="raptor_namespace_stack"><span class="type">raptor_namespace_stack</span></a> *nstack</code></em>,
+                             <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *base_uri</code></em>);</pre>
+<p>Convert <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> to a string.
+Caller has responsibility to free the string.</p>
+<p>Note: This creates and destroys several internal objects for each
+call so for more efficient writing, create a turtle serializer.</p>
+<div class="refsect3">
+<a name="raptor-uri-to-turtle-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>world</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>uri</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>nstack</p></td>
+<td class="parameter_description"><p>namespace stack</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>base URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-to-turtle-string.returns"></a><h4>Returns</h4>
+<p> the new string or NULL on failure.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-uri-turtle-write"></a><h3>raptor_uri_turtle_write ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_uri_turtle_write (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                         <em class="parameter"><code><a class="link" href="raptor2-section-iostream.html#raptor-iostream" title="raptor_iostream"><span class="type">raptor_iostream</span></a> *iostr</code></em>,
+                         <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>,
+                         <em class="parameter"><code><a class="link" href="raptor2-section-xml-namespace.html#raptor-namespace-stack" title="raptor_namespace_stack"><span class="type">raptor_namespace_stack</span></a> *nstack</code></em>,
+                         <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *base_uri</code></em>);</pre>
+<p>Write <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> to a stream in turtle syntax (using QNames).</p>
+<p>Note: This creates and destroys several internal objects for each
+call so for more efficient writing, create a turtle serializer.</p>
+<div class="refsect3">
+<a name="raptor-uri-turtle-write.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>world</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>iostr</p></td>
+<td class="parameter_description"><p>iostream for writing</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>uri</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>nstack</p></td>
+<td class="parameter_description"><p>namespace stack</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>base URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-uri-turtle-write.returns"></a><h4>Returns</h4>
+<p> non-0 on failure</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-uri.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="raptor-uri"></a><h3>raptor_uri</h3>
+<pre class="programlisting">raptor_uri* raptor_uri;
+</pre>
+<p>Raptor URI Class.</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.27</div>
+</body>
+</html>

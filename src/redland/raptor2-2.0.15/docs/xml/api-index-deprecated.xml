@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE indexdiv PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<indexdiv id="api-index-deprecated">
+<indexdiv><title>S</title>
+<indexentry><primaryie linkends="raptor-string-python-write"><link linkend="raptor-string-python-write">raptor_string_python_write</link>, function in <link linkend="raptor2-section-iostream">section-iostream</link></primaryie></indexentry>
+</indexdiv>
+<indexdiv><title>T</title>
+<indexentry><primaryie linkends="raptor-term-ntriples-write"><link linkend="raptor-term-ntriples-write">raptor_term_ntriples_write</link>, function in <link linkend="raptor2-section-triples">section-triples</link></primaryie></indexentry>
+</indexdiv>
+<indexdiv><title>V</title>
+<indexentry><primaryie linkends="raptor-vsnprintf"><link linkend="raptor-vsnprintf">raptor_vsnprintf</link>, function in <link linkend="raptor2-section-general">section-general</link></primaryie></indexentry>
+</indexdiv>
+</indexdiv>

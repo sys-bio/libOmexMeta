@@ -1,0 +1,7 @@
+<!ENTITY package "redland">
+<!ENTITY package_bugreport "http://bugs.librdf.org/">
+<!ENTITY package_name "Redland librdf RDF API Library">
+<!ENTITY package_string "Redland librdf RDF API Library 1.0.17">
+<!ENTITY package_tarname "redland">
+<!ENTITY package_url "">
+<!ENTITY package_version "1.0.17">

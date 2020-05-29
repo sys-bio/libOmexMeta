@@ -1,0 +1,668 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>section-xml-qname: Raptor RDF Syntax Library Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="Raptor RDF Syntax Library Manual">
+<link rel="up" href="reference-manual.html" title="Part II. Raptor Reference Manual">
+<link rel="prev" href="raptor2-section-xml-namespace.html" title="section-xml-namespace">
+<link rel="next" href="raptor2-section-xml.html" title="section-xml">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#raptor2-section-xml-qname.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference-manual.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="raptor2-section-xml-namespace.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="raptor2-section-xml.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="raptor2-section-xml-qname"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="raptor2-section-xml-qname.top_of_page"></a>section-xml-qname</span></h2>
+<p>section-xml-qname</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="raptor2-section-xml-qname.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="returnvalue">raptor_qname</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-new-qname" title="raptor_new_qname ()">raptor_new_qname</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="returnvalue">raptor_qname</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-new-qname-from-namespace-local-name" title="raptor_new_qname_from_namespace_local_name ()">raptor_new_qname_from_namespace_local_name</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="returnvalue">raptor_qname</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-new-qname-from-namespace-uri" title="raptor_new_qname_from_namespace_uri ()">raptor_new_qname_from_namespace_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="returnvalue">raptor_qname</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-qname-copy" title="raptor_qname_copy ()">raptor_qname_copy</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-free-qname" title="raptor_free_qname ()">raptor_free_qname</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-qname-equal" title="raptor_qname_equal ()">raptor_qname_equal</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-qname-string-to-uri" title="raptor_qname_string_to_uri ()">raptor_qname_string_to_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-qname-write" title="raptor_qname_write ()">raptor_qname_write</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-qname-format-as-xml" title="raptor_qname_format_as_xml ()">raptor_qname_format_as_xml</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-qname-get-counted-value" title="raptor_qname_get_counted_value ()">raptor_qname_get_counted_value</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-qname-get-local-name" title="raptor_qname_get_local_name ()">raptor_qname_get_local_name</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <a class="link" href="raptor2-section-xml-namespace.html#raptor-namespace" title="raptor_namespace"><span class="returnvalue">raptor_namespace</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-qname-get-namespace" title="raptor_qname_get_namespace ()">raptor_qname_get_namespace</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-qname-get-value" title="raptor_qname_get_value ()">raptor_qname_get_value</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-xml-qname.html#raptor-qname-to-counted-name" title="raptor_qname_to_counted_name ()">raptor_qname_to_counted_name</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-xml-qname.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody><tr>
+<td class="typedef_keyword">typedef</td>
+<td class="function_name"><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname">raptor_qname</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-xml-qname.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-xml-qname.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="raptor-new-qname"></a><h3>raptor_new_qname ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="returnvalue">raptor_qname</span></a> *
+raptor_new_qname (<em class="parameter"><code><a class="link" href="raptor2-section-xml-namespace.html#raptor-namespace-stack" title="raptor_namespace_stack"><span class="type">raptor_namespace_stack</span></a> *nstack</code></em>,
+                  <em class="parameter"><code>const unsigned <span class="type">char</span> *name</code></em>,
+                  <em class="parameter"><code>const unsigned <span class="type">char</span> *value</code></em>);</pre>
+<p>Constructor - create a new XML qname.</p>
+<p>Create a new qname from the local element/attribute name,
+with optional (attribute) value.  The namespace stack is used
+to look up the name and find the namespace and generate the
+URI of the qname.</p>
+<div class="refsect3">
+<a name="raptor-new-qname.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>nstack</p></td>
+<td class="parameter_description"><p>namespace stack to look up for namespaces</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>element or attribute name</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>value</p></td>
+<td class="parameter_description"><p>attribute value (else is an element)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-qname.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-qname-from-namespace-local-name"></a><h3>raptor_new_qname_from_namespace_local_name ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="returnvalue">raptor_qname</span></a> *
+raptor_new_qname_from_namespace_local_name
+                               (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                                <em class="parameter"><code><a class="link" href="raptor2-section-xml-namespace.html#raptor-namespace" title="raptor_namespace"><span class="type">raptor_namespace</span></a> *ns</code></em>,
+                                <em class="parameter"><code>const unsigned <span class="type">char</span> *local_name</code></em>,
+                                <em class="parameter"><code>const unsigned <span class="type">char</span> *value</code></em>);</pre>
+<p>Constructor - create a new XML qname.</p>
+<p>Create a new qname from the namespace and local element/attribute name,
+with optional (attribute) value.</p>
+<div class="refsect3">
+<a name="raptor-new-qname-from-namespace-local-name.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor_world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>ns</p></td>
+<td class="parameter_description"><p>namespace of qname (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>local_name</p></td>
+<td class="parameter_description"><p>element or attribute name</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>value</p></td>
+<td class="parameter_description"><p>attribute value (else is an element)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-qname-from-namespace-local-name.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-qname-from-namespace-uri"></a><h3>raptor_new_qname_from_namespace_uri ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="returnvalue">raptor_qname</span></a> *
+raptor_new_qname_from_namespace_uri (<em class="parameter"><code><a class="link" href="raptor2-section-xml-namespace.html#raptor-namespace-stack" title="raptor_namespace_stack"><span class="type">raptor_namespace_stack</span></a> *nstack</code></em>,
+                                     <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>,
+                                     <em class="parameter"><code><span class="type">int</span> xml_version</code></em>);</pre>
+<p>Make an appropriate XML Qname from the namespaces on a namespace stack</p>
+<p>Makes a qname from the in-scope namespaces in a stack if the URI matches
+the prefix and the rest is a legal XML name.</p>
+<div class="refsect3">
+<a name="raptor-new-qname-from-namespace-uri.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>nstack</p></td>
+<td class="parameter_description"><p>namespace stack</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>URI to use to make qname</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>xml_version</p></td>
+<td class="parameter_description"><p>XML Version</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-qname-from-namespace-uri.returns"></a><h4>Returns</h4>
+<p> <a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> for the URI or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-qname-copy"></a><h3>raptor_qname_copy ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="returnvalue">raptor_qname</span></a> *
+raptor_qname_copy (<em class="parameter"><code><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> *qname</code></em>);</pre>
+<p>Copy constructor - copy an existing XML qname.</p>
+<div class="refsect3">
+<a name="raptor-qname-copy.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>qname</p></td>
+<td class="parameter_description"><p>existing qname</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-qname-copy.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-free-qname"></a><h3>raptor_free_qname ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+raptor_free_qname (<em class="parameter"><code><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> *name</code></em>);</pre>
+<p>Destructor - destroy a raptor_qname object.</p>
+<div class="refsect3">
+<a name="raptor-free-qname.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-qname-equal"></a><h3>raptor_qname_equal ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_qname_equal (<em class="parameter"><code><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> *name1</code></em>,
+                    <em class="parameter"><code><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> *name2</code></em>);</pre>
+<p>Compare two XML Qnames for equality.</p>
+<div class="refsect3">
+<a name="raptor-qname-equal.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>name1</p></td>
+<td class="parameter_description"><p>first <a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name2</p></td>
+<td class="parameter_description"><p>second <span class="type">raptor_name</span></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-qname-equal.returns"></a><h4>Returns</h4>
+<p> non-0 if the qnames are equal.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-qname-string-to-uri"></a><h3>raptor_qname_string_to_uri ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="returnvalue">raptor_uri</span></a> *
+raptor_qname_string_to_uri (<em class="parameter"><code><a class="link" href="raptor2-section-xml-namespace.html#raptor-namespace-stack" title="raptor_namespace_stack"><span class="type">raptor_namespace_stack</span></a> *nstack</code></em>,
+                            <em class="parameter"><code>const unsigned <span class="type">char</span> *name</code></em>,
+                            <em class="parameter"><code><span class="type">size_t</span> name_len</code></em>);</pre>
+<p>Get the URI for a qname.</p>
+<p>Utility function to turn a string representing a QName in the
+N3 style, into a new URI representing it.  A NULL name or name ":"
+returns the default namespace URI.  A name "p:" returns
+namespace name (URI) for the namespace with prefix "p".</p>
+<p>Partially equivalent to 
+  qname = raptor_new_qname(nstack, name, NULL);
+  uri = raptor_uri_copy(qname-&gt;uri);
+  raptor_free_qname(qname)
+but without making the qname, and it also handles the NULL and
+":" name cases as well as error checking.</p>
+<div class="refsect3">
+<a name="raptor-qname-string-to-uri.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>nstack</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-xml-namespace.html#raptor-namespace-stack" title="raptor_namespace_stack"><span class="type">raptor_namespace_stack</span></a> to decode the namespace</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>QName string or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name_len</p></td>
+<td class="parameter_description"><p>QName string length</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-qname-string-to-uri.returns"></a><h4>Returns</h4>
+<p> new <a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-qname-write"></a><h3>raptor_qname_write ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_qname_write (<em class="parameter"><code><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> *qname</code></em>,
+                    <em class="parameter"><code><a class="link" href="raptor2-section-iostream.html#raptor-iostream" title="raptor_iostream"><span class="type">raptor_iostream</span></a> *iostr</code></em>);</pre>
+<p>Write a formatted qname to an iostream</p>
+<div class="refsect3">
+<a name="raptor-qname-write.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>qname</p></td>
+<td class="parameter_description"><p>QName to write</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>iostr</p></td>
+<td class="parameter_description"><p>raptor iosteram</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-qname-write.returns"></a><h4>Returns</h4>
+<p> non-0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-qname-format-as-xml"></a><h3>raptor_qname_format_as_xml ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_qname_format_as_xml (<em class="parameter"><code>const <a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> *qname</code></em>,
+                            <em class="parameter"><code><span class="type">size_t</span> *length_p</code></em>);</pre>
+<p>Format a qname in an XML style into a newly allocated string.</p>
+<p>Generates a string of the form a:b="value" or a="value"
+depending on the qname's prefix.  Double quotes are always used.</p>
+<p>If <em class="parameter"><code>length_p</code></em>
+ is not NULL, the length of the string is
+stored in the address it points to.</p>
+<div class="refsect3">
+<a name="raptor-qname-format-as-xml.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>qname</p></td>
+<td class="parameter_description"><p>qname object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length_p</p></td>
+<td class="parameter_description"><p>pointer to length (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-qname-format-as-xml.returns"></a><h4>Returns</h4>
+<p> qname formatted as newly allocated string or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-qname-get-counted-value"></a><h3>raptor_qname_get_counted_value ()</h3>
+<pre class="programlisting">const unsigned <span class="returnvalue">char</span> *
+raptor_qname_get_counted_value (<em class="parameter"><code><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> *name</code></em>,
+                                <em class="parameter"><code><span class="type">size_t</span> *length_p</code></em>);</pre>
+<p>Get the <span class="type">raptor_value</span> of an XML QName.</p>
+<div class="refsect3">
+<a name="raptor-qname-get-counted-value.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length_p</p></td>
+<td class="parameter_description"><p>pointer to variable to store length of name (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-qname-get-counted-value.returns"></a><h4>Returns</h4>
+<p> the value</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-qname-get-local-name"></a><h3>raptor_qname_get_local_name ()</h3>
+<pre class="programlisting">const unsigned <span class="returnvalue">char</span> *
+raptor_qname_get_local_name (<em class="parameter"><code><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> *name</code></em>);</pre>
+<p>Get the <span class="type">raptor_local_name</span> of an XML QName.</p>
+<div class="refsect3">
+<a name="raptor-qname-get-local-name.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-qname-get-local-name.returns"></a><h4>Returns</h4>
+<p> the local_name</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-qname-get-namespace"></a><h3>raptor_qname_get_namespace ()</h3>
+<pre class="programlisting">const <a class="link" href="raptor2-section-xml-namespace.html#raptor-namespace" title="raptor_namespace"><span class="returnvalue">raptor_namespace</span></a> *
+raptor_qname_get_namespace (<em class="parameter"><code><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> *name</code></em>);</pre>
+<p>Get the <a class="link" href="raptor2-section-xml-namespace.html#raptor-namespace" title="raptor_namespace"><span class="type">raptor_namespace</span></a> of an XML QName.</p>
+<div class="refsect3">
+<a name="raptor-qname-get-namespace.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-qname-get-namespace.returns"></a><h4>Returns</h4>
+<p> the namespace</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-qname-get-value"></a><h3>raptor_qname_get_value ()</h3>
+<pre class="programlisting">const unsigned <span class="returnvalue">char</span> *
+raptor_qname_get_value (<em class="parameter"><code><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> *name</code></em>);</pre>
+<p>Get the <span class="type">raptor_value</span> of an XML QName.</p>
+<div class="refsect3">
+<a name="raptor-qname-get-value.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-qname-get-value.returns"></a><h4>Returns</h4>
+<p> the value</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-qname-to-counted-name"></a><h3>raptor_qname_to_counted_name ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_qname_to_counted_name (<em class="parameter"><code><a class="link" href="raptor2-section-xml-qname.html#raptor-qname" title="raptor_qname"><span class="type">raptor_qname</span></a> *qname</code></em>,
+                              <em class="parameter"><code><span class="type">size_t</span> *length_p</code></em>);</pre>
+<p>Get the string form of a QName name</p>
+<div class="refsect3">
+<a name="raptor-qname-to-counted-name.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>qname</p></td>
+<td class="parameter_description"><p>QName to write</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length_p</p></td>
+<td class="parameter_description"><p>pointer to variable to store length of name (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-qname-to-counted-name.returns"></a><h4>Returns</h4>
+<p> new string name or NULL on failure</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-xml-qname.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="raptor-qname"></a><h3>raptor_qname</h3>
+<pre class="programlisting">raptor_qname* raptor_qname;
+</pre>
+<p>Raptor XML qname class</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.27</div>
+</body>
+</html>

@@ -1,0 +1,1196 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-query-results">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-query-results.top_of_page">query_results</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>query_results</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-query-results.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-query-results-as-stream">librdf_query_results_as_stream</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-get-count">librdf_query_results_get_count</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-next">librdf_query_results_next</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-finished">librdf_query_results_finished</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-get-bindings">librdf_query_results_get_bindings</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-query-results-get-binding-value">librdf_query_results_get_binding_value</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-query-results-get-binding-name">librdf_query_results_get_binding_name</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-query-results-get-binding-value-by-name">librdf_query_results_get_binding_value_by_name</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-get-bindings-count">librdf_query_results_get_bindings_count</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-query-results-to-counted-string">librdf_query_results_to_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-query-results-to-counted-string2">librdf_query_results_to_counted_string2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-query-results-to-string">librdf_query_results_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-query-results-to-string2">librdf_query_results_to_string2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-to-file-handle">librdf_query_results_to_file_handle</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-to-file-handle2">librdf_query_results_to_file_handle2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-to-file">librdf_query_results_to_file</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-to-file2">librdf_query_results_to_file2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-free-query-results">librdf_free_query_results</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-is-bindings">librdf_query_results_is_bindings</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-is-boolean">librdf_query_results_is_boolean</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-is-graph">librdf_query_results_is_graph</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-is-syntax">librdf_query_results_is_syntax</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-get-boolean">librdf_query_results_get_boolean</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-query-results-formatter"><returnvalue>librdf_query_results_formatter</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-query-results-formatter">librdf_new_query_results_formatter</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-query-results-formatter"><returnvalue>librdf_query_results_formatter</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-query-results-formatter-by-mime-type">librdf_new_query_results_formatter_by_mime_type</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-query-results-formatter"><returnvalue>librdf_query_results_formatter</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-query-results-formatter2">librdf_new_query_results_formatter2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-free-query-results-formatter">librdf_free_query_results_formatter</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-formats-check">librdf_query_results_formats_check</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="raptor-syntax-description"><returnvalue>raptor_syntax_description</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-query-results-formats-get-description">librdf_query_results_formats_get_description</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-formats-enumerate">librdf_query_results_formats_enumerate</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-results-formatter-write">librdf_query_results_formatter_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-query-results.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-query-results">librdf_query_results</link></entry></row>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-query-results-formatter">librdf_query_results_formatter</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-query-results.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-query-results.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-query-results-as-stream" role="function">
+<title>librdf_query_results_as_stream&#160;()</title>
+<indexterm zone="librdf-query-results-as-stream"><primary>librdf_query_results_as_stream</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_query_results_as_stream (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>);</programlisting>
+<para>Get a query result as an RDF graph in <link linkend="librdf-stream"><type>librdf_stream</type></link> form</para>
+<para>The return value is only meaningful if this is an RDF graph
+query result - see <link linkend="librdf-query-results-is-graph"><type>librdf_query_results_is_graph</type></link></para>
+<refsect3 id="librdf-query-results-as-stream.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> query_results</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-as-stream.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-stream"><type>librdf_stream</type></link> result or NULL on error</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-get-count" role="function">
+<title>librdf_query_results_get_count&#160;()</title>
+<indexterm zone="librdf-query-results-get-count"><primary>librdf_query_results_get_count</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_get_count (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>);</programlisting>
+<para>Get number of bindings so far.</para>
+<refsect3 id="librdf-query-results-get-count.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> query results</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-get-count.returns" role="returns">
+<title>Returns</title>
+<para> number of bindings found so far</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-next" role="function">
+<title>librdf_query_results_next&#160;()</title>
+<indexterm zone="librdf-query-results-next"><primary>librdf_query_results_next</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_next (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>);</programlisting>
+<para>Move to the next result.</para>
+<refsect3 id="librdf-query-results-next.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> query results</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-next.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if failed or results exhausted</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-finished" role="function">
+<title>librdf_query_results_finished&#160;()</title>
+<indexterm zone="librdf-query-results-finished"><primary>librdf_query_results_finished</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_finished (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>);</programlisting>
+<para>Find out if binding results are exhausted.</para>
+<refsect3 id="librdf-query-results-finished.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> query results</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-finished.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if results are finished or query failed</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-get-bindings" role="function">
+<title>librdf_query_results_get_bindings&#160;()</title>
+<indexterm zone="librdf-query-results-get-bindings"><primary>librdf_query_results_get_bindings</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_get_bindings (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                                   <parameter>const <link linkend="char"><type>char</type></link> ***names</parameter>,
+                                   <parameter><link linkend="librdf-node"><type>librdf_node</type></link> **values</parameter>);</programlisting>
+<para>Get all binding names, values for current result.</para>
+<para>If names is not NULL, it is set to the address of a shared array
+of names of the bindings(an output parameter).  These names
+are shared and must not be freed by the caller</para>
+<para>If values is not NULL, it is used as an array to store pointers
+to the librdf_node* of the results.  These nodes must be freed
+by the caller.  The size of the array is determined by the
+number of names of bindings, returned by
+librdf_query_get_bindings_count dynamically or
+will be known in advanced if hard-coded into the query string.</para>
+<para>Example</para>
+<para>const char **names = NULL;
+librdf_node* values[10];</para>
+<para>if(librdf_query_results_get_bindings(results, &amp;names, values))
+  ...</para>
+<refsect3 id="librdf-query-results-get-bindings.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> query results</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>names</para></entry>
+<entry role="parameter_description"><para>pointer to an array of binding names(or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>values</para></entry>
+<entry role="parameter_description"><para>pointer to an array of binding value <link linkend="librdf-node"><type>librdf_node</type></link>(or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-get-bindings.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if the assignment failed</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-get-binding-value" role="function">
+<title>librdf_query_results_get_binding_value&#160;()</title>
+<indexterm zone="librdf-query-results-get-binding-value"><primary>librdf_query_results_get_binding_value</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_query_results_get_binding_value
+                               (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                                <parameter><link linkend="int"><type>int</type></link> offset</parameter>);</programlisting>
+<para>Get one binding value for the current result.</para>
+<refsect3 id="librdf-query-results-get-binding-value.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> query results</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>offset</para></entry>
+<entry role="parameter_description"><para>offset of binding name into array of known names</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-get-binding-value.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-node"><type>librdf_node</type></link> binding value or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-get-binding-name" role="function">
+<title>librdf_query_results_get_binding_name&#160;()</title>
+<indexterm zone="librdf-query-results-get-binding-name"><primary>librdf_query_results_get_binding_name</primary></indexterm>
+<programlisting language="C">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_query_results_get_binding_name (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                                       <parameter><link linkend="int"><type>int</type></link> offset</parameter>);</programlisting>
+<para>Get binding name for the current result.</para>
+<refsect3 id="librdf-query-results-get-binding-name.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> query results</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>offset</para></entry>
+<entry role="parameter_description"><para>offset of binding name into array of known names</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-get-binding-name.returns" role="returns">
+<title>Returns</title>
+<para> a pointer to a shared copy of the binding name or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-get-binding-value-by-name" role="function">
+<title>librdf_query_results_get_binding_value_by_name&#160;()</title>
+<indexterm zone="librdf-query-results-get-binding-value-by-name"><primary>librdf_query_results_get_binding_value_by_name</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_query_results_get_binding_value_by_name
+                               (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>);</programlisting>
+<para>Get one binding value for a given name in the current result.</para>
+<refsect3 id="librdf-query-results-get-binding-value-by-name.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> query results</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>variable name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-get-binding-value-by-name.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-node"><type>librdf_node</type></link> binding value or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-get-bindings-count" role="function">
+<title>librdf_query_results_get_bindings_count&#160;()</title>
+<indexterm zone="librdf-query-results-get-bindings-count"><primary>librdf_query_results_get_bindings_count</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_get_bindings_count
+                               (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>);</programlisting>
+<para>Get the number of bound variables in the result.</para>
+<refsect3 id="librdf-query-results-get-bindings-count.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> query results</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-get-bindings-count.returns" role="returns">
+<title>Returns</title>
+<para> &lt;0 if failed or results exhausted</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-to-counted-string" role="function" condition="deprecated:">
+<title>librdf_query_results_to_counted_string&#160;()</title>
+<indexterm zone="librdf-query-results-to-counted-string" role="deprecated"><primary>librdf_query_results_to_counted_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_query_results_to_counted_string
+                               (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *format_uri</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> *length_p</parameter>);</programlisting>
+<warning><para><literal>librdf_query_results_to_counted_string</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Turn a query results into a string.</para>
+<para>The default query results format will be used if <parameter>format_uri</parameter>
+ is
+NULL.</para>
+<para>librdf_query_results_formats_enumerate() returns information on
+the known query results names, labels and URIs.</para>
+<para>The <parameter>base_uri</parameter>
+ may be used for as the base URI the generated
+syntax, depending on the format.</para>
+<para>The returned string must be freed by the caller using
+<link linkend="librdf-free-memory"><function>librdf_free_memory()</function></link>.</para>
+<para><parameter>deprecated</parameter>
+: Use <link linkend="librdf-query-results-to-counted-string2"><function>librdf_query_results_to_counted_string2()</function></link> with extra
+name and mime-type args.</para>
+<refsect3 id="librdf-query-results-to-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>format_uri</para></entry>
+<entry role="parameter_description"><para>URI of syntax to format to (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>Base URI of output formatted syntax (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length_p</para></entry>
+<entry role="parameter_description"><para>Pointer to where to store length of string (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-to-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> new string value or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-to-counted-string2" role="function">
+<title>librdf_query_results_to_counted_string2&#160;()</title>
+<indexterm zone="librdf-query-results-to-counted-string2"><primary>librdf_query_results_to_counted_string2</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_query_results_to_counted_string2
+                               (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> *mime_type</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *format_uri</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> *length_p</parameter>);</programlisting>
+<para>Turn a query results into a string.</para>
+<para>A query results format can be named, have a mime type, or
+identified by a URI, all of which are optional.  The default
+query results format will be used if <parameter>name</parameter>
+, <parameter>mime_type</parameter>
+ and
+<parameter>format_uri</parameter>
+ are all NULL.</para>
+<para>librdf_query_results_formats_enumerate() returns information on
+the known query results names, labels and URIs.</para>
+<para>The <parameter>base_uri</parameter>
+ may be used for as the base URI the generated
+syntax, depending on the format.</para>
+<para>The returned string must be freed by the caller using
+<link linkend="librdf-free-memory"><function>librdf_free_memory()</function></link>.</para>
+<refsect3 id="librdf-query-results-to-counted-string2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>name of syntax to format to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>mime type of syntax to format to (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>format_uri</para></entry>
+<entry role="parameter_description"><para>URI of syntax to format to (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>Base URI of output formatted syntax (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length_p</para></entry>
+<entry role="parameter_description"><para>Pointer to where to store length of string (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-to-counted-string2.returns" role="returns">
+<title>Returns</title>
+<para> new string value or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-to-string" role="function" condition="deprecated:">
+<title>librdf_query_results_to_string&#160;()</title>
+<indexterm zone="librdf-query-results-to-string" role="deprecated"><primary>librdf_query_results_to_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_query_results_to_string (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *format_uri</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>);</programlisting>
+<warning><para><literal>librdf_query_results_to_string</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Turn a query results into a string.</para>
+<para>A query results format can be named, have a mime type, or
+identified by a URI, all of which are optional.  The default
+query results format will be used if <parameter>format_uri</parameter>
+ is NULL.</para>
+<para>librdf_query_results_formats_enumerate() returns information on
+the known query results names, labels and URIs.</para>
+<para>The <parameter>base_uri</parameter>
+ may be used for as the base URI the generated
+syntax, depending on the format.</para>
+<para>The returned string must be freed by the caller using
+<link linkend="librdf-free-memory"><function>librdf_free_memory()</function></link>.</para>
+<para><parameter>Deprecated</parameter>
+: use <link linkend="librdf-query-results-to-string2"><function>librdf_query_results_to_string2()</function></link> with extra name
+and mime_type args.</para>
+<refsect3 id="librdf-query-results-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>format_uri</para></entry>
+<entry role="parameter_description"><para>URI of syntax to format to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>Base URI of output formatted syntax (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-to-string.returns" role="returns">
+<title>Returns</title>
+<para> new string value or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-to-string2" role="function">
+<title>librdf_query_results_to_string2&#160;()</title>
+<indexterm zone="librdf-query-results-to-string2"><primary>librdf_query_results_to_string2</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_query_results_to_string2 (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *mime_type</parameter>,
+                                 <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *format_uri</parameter>,
+                                 <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Turn a query results into a string.</para>
+<para>A query results format can be named, have a mime type, or
+identified by a URI, all of which are optional.  The default
+query results format will be used if <parameter>name</parameter>
+, <parameter>mime_type</parameter>
+ and <parameter>format_uri</parameter>
+
+are all NULL.</para>
+<para>librdf_query_results_formats_enumerate() returns information on
+the known query results names, labels and URIs.</para>
+<para>The <parameter>base_uri</parameter>
+ may be used for as the base URI the generated
+syntax, depending on the format.</para>
+<para>The returned string must be freed by the caller using
+<link linkend="librdf-free-memory"><function>librdf_free_memory()</function></link>.</para>
+<refsect3 id="librdf-query-results-to-string2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>format name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>format mime type (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>format_uri</para></entry>
+<entry role="parameter_description"><para>URI of syntax to format to (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>Base URI of output formatted syntax (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-to-string2.returns" role="returns">
+<title>Returns</title>
+<para> new string value or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-to-file-handle" role="function" condition="deprecated:">
+<title>librdf_query_results_to_file_handle&#160;()</title>
+<indexterm zone="librdf-query-results-to-file-handle" role="deprecated"><primary>librdf_query_results_to_file_handle</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_to_file_handle (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                                     <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *handle</parameter>,
+                                     <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *format_uri</parameter>,
+                                     <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>);</programlisting>
+<warning><para><literal>librdf_query_results_to_file_handle</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Write a query results to a FILE*.</para>
+<para>A query results format can be named, have a mime type, or
+identified by a URI, all of which are optional.  The default
+query results format will be used if <parameter>format_uri</parameter>
+ is NULL.</para>
+<para>librdf_query_results_formats_enumerate() returns information on
+the known query results names, labels and URIs.</para>
+<para>The <parameter>base_uri</parameter>
+ may be used for as the base URI the generated
+syntax, depending on the format.</para>
+<para><parameter>Deprecated</parameter>
+: use <link linkend="librdf-query-results-to-file-handle"><function>librdf_query_results_to_file_handle()</function></link> with extra
+name and mime_type args.</para>
+<refsect3 id="librdf-query-results-to-file-handle.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handle</para></entry>
+<entry role="parameter_description"><para>file handle to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>format_uri</para></entry>
+<entry role="parameter_description"><para>URI of syntax to format to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>Base URI of output formatted syntax (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-to-file-handle.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-to-file-handle2" role="function">
+<title>librdf_query_results_to_file_handle2&#160;()</title>
+<indexterm zone="librdf-query-results-to-file-handle2"><primary>librdf_query_results_to_file_handle2</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_to_file_handle2 (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                                      <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *handle</parameter>,
+                                      <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                                      <parameter>const <link linkend="char"><type>char</type></link> *mime_type</parameter>,
+                                      <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *format_uri</parameter>,
+                                      <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Write a query results to a FILE*.</para>
+<para>A query results format can be named, have a mime type, or
+identified by a URI, all of which are optional.  The default
+query results format will be used if <parameter>name</parameter>
+, <parameter>mime_type</parameter>
+ and <parameter>format_uri</parameter>
+
+are all NULL.</para>
+<para>librdf_query_results_formats_enumerate() returns information on
+the known query results names, labels and URIs.</para>
+<para>The <parameter>base_uri</parameter>
+ may be used for as the base URI the generated syntax, depending
+on the format.</para>
+<refsect3 id="librdf-query-results-to-file-handle2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handle</para></entry>
+<entry role="parameter_description"><para>file handle to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>result format name (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>result mime type (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>format_uri</para></entry>
+<entry role="parameter_description"><para>URI of syntax to format to (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>Base URI of output formatted syntax </para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-to-file-handle2.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-to-file" role="function" condition="deprecated:">
+<title>librdf_query_results_to_file&#160;()</title>
+<indexterm zone="librdf-query-results-to-file" role="deprecated"><primary>librdf_query_results_to_file</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_to_file (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                              <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                              <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *format_uri</parameter>,
+                              <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>);</programlisting>
+<warning><para><literal>librdf_query_results_to_file</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Write a query results to a file.</para>
+<para>A query results format can be named, have a mime type, or
+identified by a URI, all of which are optional.  The default
+query results format will be used if <parameter>format_uri</parameter>
+ is NULL.</para>
+<para>librdf_query_results_formats_enumerate() returns information on
+the known query results names, labels and URIs.</para>
+<para>The <parameter>base_uri</parameter>
+ may be used for as the base URI the generated
+syntax, depending on the format.</para>
+<para><parameter>Deprecated</parameter>
+: use <link linkend="librdf-query-results-to-file2"><function>librdf_query_results_to_file2()</function></link> with extra mime_type
+arg.</para>
+<refsect3 id="librdf-query-results-to-file.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>filename to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>format_uri</para></entry>
+<entry role="parameter_description"><para>URI of syntax to format to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>Base URI of output formatted syntax (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-to-file.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-to-file2" role="function">
+<title>librdf_query_results_to_file2&#160;()</title>
+<indexterm zone="librdf-query-results-to-file2"><primary>librdf_query_results_to_file2</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_to_file2 (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                               <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                               <parameter>const <link linkend="char"><type>char</type></link> *mime_type</parameter>,
+                               <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *format_uri</parameter>,
+                               <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Write a query results to a file.</para>
+<para>A query results format can be named, have a mime type, or
+identified by a URI, all of which are optional.  The default
+query results format will be used if <parameter>name</parameter>
+, <parameter>mime_type</parameter>
+ and <parameter>format_uri</parameter>
+
+are all NULL.</para>
+<para>librdf_query_results_formats_enumerate() returns information on
+the known query results names, labels and URIs.</para>
+<para>The <parameter>base_uri</parameter>
+ may be used for as the base URI the generated
+syntax, depending on the format.</para>
+<refsect3 id="librdf-query-results-to-file2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>filename to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>mime type (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>format_uri</para></entry>
+<entry role="parameter_description"><para>URI of syntax to format to (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>Base URI of output formatted syntax (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-to-file2.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-free-query-results" role="function">
+<title>librdf_free_query_results&#160;()</title>
+<indexterm zone="librdf-free-query-results"><primary>librdf_free_query_results</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_free_query_results (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>);</programlisting>
+<para>Destructor - destroy a <link linkend="librdf-query-results"><type>librdf_query_results</type></link> object.</para>
+<refsect3 id="librdf-free-query-results.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-is-bindings" role="function">
+<title>librdf_query_results_is_bindings&#160;()</title>
+<indexterm zone="librdf-query-results-is-bindings"><primary>librdf_query_results_is_bindings</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_is_bindings (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>);</programlisting>
+<para>Test if librdf_query_results is variable bindings format.</para>
+<refsect3 id="librdf-query-results-is-bindings.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-is-bindings.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if true</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-is-boolean" role="function">
+<title>librdf_query_results_is_boolean&#160;()</title>
+<indexterm zone="librdf-query-results-is-boolean"><primary>librdf_query_results_is_boolean</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_is_boolean (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>);</programlisting>
+<para>Test if librdf_query_results is boolean format.</para>
+<para>If this function returns true, the result can be retrieved by
+<link linkend="librdf-query-results-get-boolean"><function>librdf_query_results_get_boolean()</function></link>.</para>
+<refsect3 id="librdf-query-results-is-boolean.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-is-boolean.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if true</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-is-graph" role="function">
+<title>librdf_query_results_is_graph&#160;()</title>
+<indexterm zone="librdf-query-results-is-graph"><primary>librdf_query_results_is_graph</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_is_graph (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>);</programlisting>
+<para>Test if librdf_query_results is RDF graph format.</para>
+<refsect3 id="librdf-query-results-is-graph.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-is-graph.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if true</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-is-syntax" role="function">
+<title>librdf_query_results_is_syntax&#160;()</title>
+<indexterm zone="librdf-query-results-is-syntax"><primary>librdf_query_results_is_syntax</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_is_syntax (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>);</programlisting>
+<para>Test if librdf_query_results is a syntax.</para>
+<para>If this function returns true, the ONLY result available
+from this query is a syntax that can be serialized using
+one of the <link linkend="query-result-formatter"><type>query_result_formatter</type></link> class methods or with
+<link linkend="librdf-query-results-to-counted-string"><function>librdf_query_results_to_counted_string()</function></link>, <link linkend="librdf-query-results-to-string"><function>librdf_query_results_to_string()</function></link>,
+<link linkend="librdf-query-results-to-file-handle"><function>librdf_query_results_to_file_handle()</function></link> or <link linkend="librdf-query-results-to-file"><function>librdf_query_results_to_file()</function></link></para>
+<refsect3 id="librdf-query-results-is-syntax.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-is-syntax.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if true</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-get-boolean" role="function">
+<title>librdf_query_results_get_boolean&#160;()</title>
+<indexterm zone="librdf-query-results-get-boolean"><primary>librdf_query_results_get_boolean</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_get_boolean (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>);</programlisting>
+<para>Get boolean query result.</para>
+<para>The return value is only meaningful if this is a boolean
+query result - see <link linkend="librdf-query-results-is-boolean"><type>librdf_query_results_is_boolean</type></link></para>
+<refsect3 id="librdf-query-results-get-boolean.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> query_results</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-get-boolean.returns" role="returns">
+<title>Returns</title>
+<para> boolean query result - &gt;0 is true, 0 is false, &lt;0 on error or finished</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-query-results-formatter" role="function" condition="deprecated:">
+<title>librdf_new_query_results_formatter&#160;()</title>
+<indexterm zone="librdf-new-query-results-formatter" role="deprecated"><primary>librdf_new_query_results_formatter</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-query-results-formatter"><returnvalue>librdf_query_results_formatter</returnvalue></link>&#160;*
+librdf_new_query_results_formatter (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                                    <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                                    <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>);</programlisting>
+<warning><para><literal>librdf_new_query_results_formatter</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Constructor - create a new librdf_query_results_formatter object by identified format.</para>
+<para>A query results format can be named or identified by a URI, both
+of which are optional.  The default query results format will be used
+if <parameter>name</parameter>
+ and <parameter>uri</parameter>
+ are both NULL.</para>
+<para>librdf_query_results_formats_enumerate() returns information on
+the known query results names, labels and URIs.</para>
+<para><parameter>Deprecated</parameter>
+: for <link linkend="librdf-new-query-results-formatter2"><function>librdf_new_query_results_formatter2()</function></link> with the
+name, mime_type and format_uri args.</para>
+<refsect3 id="librdf-new-query-results-formatter.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> query_results</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the query results format name (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> query results format uri (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-query-results-formatter.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-query-results-formatter"><type>librdf_query_results_formatter</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-query-results-formatter-by-mime-type" role="function" condition="deprecated:">
+<title>librdf_new_query_results_formatter_by_mime_type&#160;()</title>
+<indexterm zone="librdf-new-query-results-formatter-by-mime-type" role="deprecated"><primary>librdf_new_query_results_formatter_by_mime_type</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-query-results-formatter"><returnvalue>librdf_query_results_formatter</returnvalue></link>&#160;*
+librdf_new_query_results_formatter_by_mime_type
+                               (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> *mime_type</parameter>);</programlisting>
+<warning><para><literal>librdf_new_query_results_formatter_by_mime_type</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Constructor - create a new librdf_query_results_formatter object by mime type.</para>
+<para>A query results format generates a syntax with a mime type which
+may be requested with this constructor.</para>
+<para>Note that there may be several formatters that generate the same
+MIME Type (such as SPARQL XML results format drafts) and in thot
+case the <link linkend="librdf-new-query-results-formatter"><function>librdf_new_query_results_formatter()</function></link> constructor allows
+selecting of a specific one by name or URI.</para>
+<para><parameter>Deprecated</parameter>
+: for <link linkend="librdf-new-query-results-formatter2"><function>librdf_new_query_results_formatter2()</function></link> with the
+name, mime_type and format_uri args.</para>
+<refsect3 id="librdf-new-query-results-formatter-by-mime-type.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> query_results</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>mime type name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-query-results-formatter-by-mime-type.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-query-results-formatter"><type>librdf_query_results_formatter</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-query-results-formatter2" role="function">
+<title>librdf_new_query_results_formatter2&#160;()</title>
+<indexterm zone="librdf-new-query-results-formatter2"><primary>librdf_new_query_results_formatter2</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-query-results-formatter"><returnvalue>librdf_query_results_formatter</returnvalue></link>&#160;*
+librdf_new_query_results_formatter2 (<parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                                     <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                                     <parameter>const <link linkend="char"><type>char</type></link> *mime_type</parameter>,
+                                     <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>);</programlisting>
+<para>Constructor - create a new librdf_query_results_formatter object by identified format.</para>
+<para>A query results format can be named, have a mime type, or
+identified by a URI, all of which are optional.  The default query
+results format will be used if <parameter>name</parameter>
+, <parameter>mime_type</parameter>
+ and <parameter>uri</parameter>
+ are all
+NULL.</para>
+<para>librdf_query_results_formats_enumerate() returns information on
+the known query results names, labels and URIs.</para>
+<refsect3 id="librdf-new-query-results-formatter2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query_results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> query_results</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the query results format name (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>the query results format mime type (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> query results format uri (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-query-results-formatter2.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-query-results-formatter"><type>librdf_query_results_formatter</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-free-query-results-formatter" role="function">
+<title>librdf_free_query_results_formatter&#160;()</title>
+<indexterm zone="librdf-free-query-results-formatter"><primary>librdf_free_query_results_formatter</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_free_query_results_formatter (<parameter><link linkend="librdf-query-results-formatter"><type>librdf_query_results_formatter</type></link> *formatter</parameter>);</programlisting>
+<para>Destructor - destroy a <link linkend="librdf-query-results-formatter"><type>librdf_query_results_formatter</type></link> object.</para>
+<refsect3 id="librdf-free-query-results-formatter.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>formatter</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results-formatter"><type>librdf_query_results_formatter</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-formats-check" role="function">
+<title>librdf_query_results_formats_check&#160;()</title>
+<indexterm zone="librdf-query-results-formats-check"><primary>librdf_query_results_formats_check</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_formats_check (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                    <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                                    <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>,
+                                    <parameter>const <link linkend="char"><type>char</type></link> *mime_type</parameter>);</programlisting>
+<para>Check if a query results formatter exists for the requested format.</para>
+<refsect3 id="librdf-query-results-formats-check.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-world"><type>librdf_world</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the query results format name (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> query results format uri (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>mime type name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-formats-check.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if a formatter exists.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-formats-get-description" role="function">
+<title>librdf_query_results_formats_get_description&#160;()</title>
+<indexterm zone="librdf-query-results-formats-get-description"><primary>librdf_query_results_formats_get_description</primary></indexterm>
+<programlisting language="C">const <link linkend="raptor-syntax-description"><returnvalue>raptor_syntax_description</returnvalue></link>&#160;*
+librdf_query_results_formats_get_description
+                               (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                <parameter>unsigned <link linkend="int"><type>int</type></link> counter</parameter>);</programlisting>
+<para>Get query result formats descriptive syntax information</para>
+<refsect3 id="librdf-query-results-formats-get-description.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>counter</para></entry>
+<entry role="parameter_description"><para>index into the list of query results formats</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-formats-get-description.returns" role="returns">
+<title>Returns</title>
+<para> description or NULL if counter is out of range</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-formats-enumerate" role="function" condition="deprecated:">
+<title>librdf_query_results_formats_enumerate&#160;()</title>
+<indexterm zone="librdf-query-results-formats-enumerate" role="deprecated"><primary>librdf_query_results_formats_enumerate</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_formats_enumerate
+                               (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                <parameter>const unsigned <link linkend="int"><type>int</type></link> counter</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> **name</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> **label</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> **uri_string</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> **mime_type</parameter>);</programlisting>
+<warning><para><literal>librdf_query_results_formats_enumerate</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Get information on query result syntaxes.</para>
+<para>All returned strings are shared and must be copied if needed to be
+used dynamically.</para>
+<para><parameter>Deprecated</parameter>
+: use <link linkend="librdf-query-results-formats-get-description"><function>librdf_query_results_formats_get_description()</function></link> to
+return more information in a static structure.</para>
+<refsect3 id="librdf-query-results-formats-enumerate.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-world"><type>librdf_world</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>counter</para></entry>
+<entry role="parameter_description"><para>index into the list of query result syntaxes</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>pointer to store the name of the query result syntax (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>label</para></entry>
+<entry role="parameter_description"><para>pointer to store query result syntax readable label (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>pointer to store query result syntax URI string (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>pointer to store query result syntax mime type string (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-formats-enumerate.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure of if counter is out of range</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-results-formatter-write" role="function">
+<title>librdf_query_results_formatter_write&#160;()</title>
+<indexterm zone="librdf-query-results-formatter-write"><primary>librdf_query_results_formatter_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_results_formatter_write (<parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>,
+                                      <parameter><link linkend="librdf-query-results-formatter"><type>librdf_query_results_formatter</type></link> *formatter</parameter>,
+                                      <parameter><link linkend="librdf-query-results"><type>librdf_query_results</type></link> *query_results</parameter>,
+                                      <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Write the query results using the given formatter to an iostream</para>
+<para>See <link linkend="librdf-query-results-formats-enumerate"><function>librdf_query_results_formats_enumerate()</function></link> to get the
+list of syntax URIs and their description.</para>
+<refsect3 id="librdf-query-results-formatter-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-iostream"><type>raptor_iostream</type></link> to write the query to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>formatter</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results-formatter"><type>librdf_query_results_formatter</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>results</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query-results"><type>librdf_query_results</type></link> query results format</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> base URI of the output format</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-results-formatter-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-query-results.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="librdf-query-results" role="typedef">
+<title>librdf_query_results</title>
+<indexterm zone="librdf-query-results"><primary>librdf_query_results</primary></indexterm>
+<programlisting language="C">typedef struct librdf_query_results_s librdf_query_results;
+</programlisting>
+<para>Redland query results class.</para>
+</refsect2>
+<refsect2 id="librdf-query-results-formatter" role="typedef">
+<title>librdf_query_results_formatter</title>
+<indexterm zone="librdf-query-results-formatter"><primary>librdf_query_results_formatter</primary></indexterm>
+<programlisting language="C">typedef struct librdf_query_results_formatter_s librdf_query_results_formatter;
+</programlisting>
+<para>Redland query results formatter class.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

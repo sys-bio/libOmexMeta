@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-query">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-query.top_of_page">query</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>query</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-query.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-register-factory">librdf_query_register_factory</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="raptor-syntax-description"><returnvalue>raptor_syntax_description</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-query-language-get-description">librdf_query_language_get_description</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-languages-enumerate">librdf_query_languages_enumerate</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-query"><returnvalue>librdf_query</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-query">librdf_new_query</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-query"><returnvalue>librdf_query</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-query-from-query">librdf_new_query_from_query</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-query"><returnvalue>librdf_query</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-query-from-factory">librdf_new_query_from_factory</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-free-query">librdf_free_query</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-query-results"><returnvalue>librdf_query_results</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-query-execute">librdf_query_execute</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-get-limit">librdf_query_get_limit</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-set-limit">librdf_query_set_limit</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-get-offset">librdf_query_get_offset</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-query-set-offset">librdf_query_set_offset</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-query.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-query">librdf_query</link></entry></row>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-query-factory">librdf_query_factory</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-query.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-query.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-query-register-factory" role="function">
+<title>librdf_query_register_factory&#160;()</title>
+<indexterm zone="librdf-query-register-factory"><primary>librdf_query_register_factory</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_query_register_factory (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                               <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                               <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>,
+                               <parameter><link linkend="void"><type>void</type></link> (*factory) (librdf_query_factory*)</parameter>);</programlisting>
+<para>Register a query factory.</para>
+<refsect3 id="librdf-query-register-factory.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the query language name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>the query language URI string (or NULL if none)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>factory</para></entry>
+<entry role="parameter_description"><para>pointer to function to call to register the factory</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-language-get-description" role="function">
+<title>librdf_query_language_get_description&#160;()</title>
+<indexterm zone="librdf-query-language-get-description"><primary>librdf_query_language_get_description</primary></indexterm>
+<programlisting language="C">const <link linkend="raptor-syntax-description"><returnvalue>raptor_syntax_description</returnvalue></link>&#160;*
+librdf_query_language_get_description (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                       <parameter>unsigned <link linkend="int"><type>int</type></link> counter</parameter>);</programlisting>
+<para>Get a query language syntax description.</para>
+<refsect3 id="librdf-query-language-get-description.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-world"><type>librdf_world</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>counter</para></entry>
+<entry role="parameter_description"><para>index into the list of query language syntaxes</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-language-get-description.returns" role="returns">
+<title>Returns</title>
+<para> description or NULL if counter is out of range</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-languages-enumerate" role="function" condition="deprecated:">
+<title>librdf_query_languages_enumerate&#160;()</title>
+<indexterm zone="librdf-query-languages-enumerate" role="deprecated"><primary>librdf_query_languages_enumerate</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_languages_enumerate (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                  <parameter>const unsigned <link linkend="int"><type>int</type></link> counter</parameter>,
+                                  <parameter>const <link linkend="char"><type>char</type></link> **name</parameter>,
+                                  <parameter>const unsigned <link linkend="char"><type>char</type></link> **uri_string</parameter>);</programlisting>
+<warning><para><literal>librdf_query_languages_enumerate</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Get information on query language syntaxes.</para>
+<para>All returned strings are shared and must be copied if needed to be
+used dynamically.</para>
+<para><parameter>deprecated</parameter>
+: use <link linkend="librdf-query-language-get-description"><function>librdf_query_language_get_description()</function></link> to return
+more information in a static structure.</para>
+<refsect3 id="librdf-query-languages-enumerate.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-world"><type>librdf_world</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>counter</para></entry>
+<entry role="parameter_description"><para>index into the list of query language syntaxes</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>pointer to store the name of the query language syntax (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>pointer to store query language syntax URI string (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-languages-enumerate.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure of if counter is out of range</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-query" role="function">
+<title>librdf_new_query&#160;()</title>
+<indexterm zone="librdf-new-query"><primary>librdf_new_query</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-query"><returnvalue>librdf_query</returnvalue></link>&#160;*
+librdf_new_query (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                  <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                  <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>,
+                  <parameter>const unsigned <link linkend="char"><type>char</type></link> *query_string</parameter>,
+                  <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-query"><type>librdf_query</type></link> object.</para>
+<refsect3 id="librdf-new-query.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the name identifying the query language</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>the URI identifying the query language (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>query_string</para></entry>
+<entry role="parameter_description"><para>the query string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI of the query string (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-query.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-query"><type>librdf_query</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-query-from-query" role="function">
+<title>librdf_new_query_from_query&#160;()</title>
+<indexterm zone="librdf-new-query-from-query"><primary>librdf_new_query_from_query</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-query"><returnvalue>librdf_query</returnvalue></link>&#160;*
+librdf_new_query_from_query (<parameter><link linkend="librdf-query"><type>librdf_query</type></link> *old_query</parameter>);</programlisting>
+<para>Copy constructor - create a new librdf_query object from an existing one</para>
+<para>Should create a new query in the same context as the existing one
+as appropriate.</para>
+<refsect3 id="librdf-new-query-from-query.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>old_query</para></entry>
+<entry role="parameter_description"><para>the existing query <link linkend="librdf-query"><type>librdf_query</type></link> to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-query-from-query.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-query"><type>librdf_query</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-query-from-factory" role="function">
+<title>librdf_new_query_from_factory&#160;()</title>
+<indexterm zone="librdf-new-query-from-factory"><primary>librdf_new_query_from_factory</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-query"><returnvalue>librdf_query</returnvalue></link>&#160;*
+librdf_new_query_from_factory (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                               <parameter><link linkend="librdf-query-factory"><type>librdf_query_factory</type></link> *factory</parameter>,
+                               <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                               <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>,
+                               <parameter>const unsigned <link linkend="char"><type>char</type></link> *query_string</parameter>,
+                               <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-query"><type>librdf_query</type></link> object.</para>
+<refsect3 id="librdf-new-query-from-factory.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>factory</para></entry>
+<entry role="parameter_description"><para>the factory to use to construct the query</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>query language name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>query language URI (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>query_string</para></entry>
+<entry role="parameter_description"><para>the query string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>base URI of the query string (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-query-from-factory.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-query"><type>librdf_query</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-free-query" role="function">
+<title>librdf_free_query&#160;()</title>
+<indexterm zone="librdf-free-query"><primary>librdf_free_query</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_free_query (<parameter><link linkend="librdf-query"><type>librdf_query</type></link> *query</parameter>);</programlisting>
+<para>Destructor - destroy a <link linkend="librdf-query"><type>librdf_query</type></link> object.</para>
+<refsect3 id="librdf-free-query.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query"><type>librdf_query</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-execute" role="function">
+<title>librdf_query_execute&#160;()</title>
+<indexterm zone="librdf-query-execute"><primary>librdf_query_execute</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-query-results"><returnvalue>librdf_query_results</returnvalue></link>&#160;*
+librdf_query_execute (<parameter><link linkend="librdf-query"><type>librdf_query</type></link> *query</parameter>,
+                      <parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Run the query on a model.</para>
+<para>Runs the query against the (previously registered) model
+and returns a <link linkend="librdf-query-results"><type>librdf_query_results</type></link> for the result objects.</para>
+<refsect3 id="librdf-query-execute.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query"><type>librdf_query</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>model to operate query on</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-execute.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-query-results"><type>librdf_query_results</type></link> or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-get-limit" role="function">
+<title>librdf_query_get_limit&#160;()</title>
+<indexterm zone="librdf-query-get-limit"><primary>librdf_query_get_limit</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_get_limit (<parameter><link linkend="librdf-query"><type>librdf_query</type></link> *query</parameter>);</programlisting>
+<para>Get the query-specified limit on results.</para>
+<para>This is the limit given in the query on the number of results allowed.</para>
+<refsect3 id="librdf-query-get-limit.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query"><type>librdf_query</type></link> query object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-get-limit.returns" role="returns">
+<title>Returns</title>
+<para> integer &gt;=0 if a limit is given, otherwise &lt;0</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-set-limit" role="function">
+<title>librdf_query_set_limit&#160;()</title>
+<indexterm zone="librdf-query-set-limit"><primary>librdf_query_set_limit</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_set_limit (<parameter><link linkend="librdf-query"><type>librdf_query</type></link> *query</parameter>,
+                        <parameter><link linkend="int"><type>int</type></link> limit</parameter>);</programlisting>
+<para>Set the query-specified limit on results.</para>
+<para>This is the limit given in the query on the number of results allowed.</para>
+<refsect3 id="librdf-query-set-limit.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query"><type>librdf_query</type></link> query object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>limit</para></entry>
+<entry role="parameter_description"><para>the limit on results, &gt;=0 to set a limit, &lt;0 to have no limit</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-set-limit.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-get-offset" role="function">
+<title>librdf_query_get_offset&#160;()</title>
+<indexterm zone="librdf-query-get-offset"><primary>librdf_query_get_offset</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_get_offset (<parameter><link linkend="librdf-query"><type>librdf_query</type></link> *query</parameter>);</programlisting>
+<para>Get the query-specified offset on results.</para>
+<para>This is the offset given in the query on the number of results allowed.</para>
+<refsect3 id="librdf-query-get-offset.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query"><type>librdf_query</type></link> query object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-get-offset.returns" role="returns">
+<title>Returns</title>
+<para> integer &gt;=0 if a offset is given, otherwise &lt;0</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-query-set-offset" role="function">
+<title>librdf_query_set_offset&#160;()</title>
+<indexterm zone="librdf-query-set-offset"><primary>librdf_query_set_offset</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_query_set_offset (<parameter><link linkend="librdf-query"><type>librdf_query</type></link> *query</parameter>,
+                         <parameter><link linkend="int"><type>int</type></link> offset</parameter>);</programlisting>
+<para>Set the query-specified offset on results.</para>
+<para>This is the offset given in the query on the number of results allowed.</para>
+<refsect3 id="librdf-query-set-offset.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>query</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query"><type>librdf_query</type></link> query object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>offset</para></entry>
+<entry role="parameter_description"><para>offset for results, &gt;=0 to set an offset, &lt;0 to have no offset</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-query-set-offset.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-query.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="librdf-query" role="typedef">
+<title>librdf_query</title>
+<indexterm zone="librdf-query"><primary>librdf_query</primary></indexterm>
+<programlisting language="C">typedef struct librdf_query_s librdf_query;
+</programlisting>
+<para>Redland query class.</para>
+</refsect2>
+<refsect2 id="librdf-query-factory" role="typedef">
+<title>librdf_query_factory</title>
+<indexterm zone="librdf-query-factory"><primary>librdf_query_factory</primary></indexterm>
+<programlisting language="C">typedef struct librdf_query_factory_s librdf_query_factory;
+</programlisting>
+<para>Redland query factory class.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

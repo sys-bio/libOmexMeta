@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>Redland RDF Application Framework - Hacking Redland librdf</title>
+  <style type="text/css">
+<!--
+pre
+{
+	margin: 1em 4em 1em 4em;
+	background-color: #eee;
+	padding: 0.5em;
+	border-color: #006;
+	border-width: 1px;
+	border-style: dotted;
+}
+-->
+  </style>
+</head>
+<body>
+  <h1>Hacking Redland librdf</h1>
+  
+  <p>2011-08-23</p>
+  
+  <p><a href="http://www.dajobe.org/">Dave Beckett</a></p>
+  
+  <h2>Commits</h2>
+  
+  <p>Should be:</p>
+  
+  <ul>
+  <li>Licensed with the same license as Redland librdf.</li>
+  <li>Patches in GNU <code>diff -u</code> unifed context format preferred.</li>
+  <li>Include tests if they add new features.</li>
+  </ul>
+  
+  <h2>Code Style</h2>
+  
+  <p>Do not make large commits that only change code style unless you have
+  previously had this agreed or it is in code under major refactoring
+  where a diff is not a large concern.  There is always <code>diff -b</code> when
+  large code style (whitespace) changes are made.</p>
+  
+  <h3>Indenting</h3>
+  
+  <p>2 spaces.  No tabs.</p>
+  
+  <p>All code must be wrapped to 80 chars as far as is possible.  Function
+  definitions or calls should indent the parameters to the left <code>(</code>.</p>
+  
+  <p>Redland libraries use very long function names following the naming
+  convention which can make linebreaking very hard.  In this case,
+  indent function parameters on new lines 4 spaces after the function
+  name like this:</p>
+  
+  <pre><code>
+  var = function_name_with_very_long_name_that_is_hard_to_wrap_args(
+            argument1_with_very_long_name_or_expression,
+            argument2,
+            ..)
+  </code></pre>
+  
+  <p>Use no space between a keyword followed by braces argument.
+  For example, use <code>if(cond)</code> rather than <code>if (cond)</code> (ditto for
+  while, do etc.) and
+  <code>functionname(...)</code> rather than <code>functionname (...)</code> in
+  both definition and calls of functions.</p>
+  
+  <p>There is nothing wrong with introducing a variable to break up a very
+  long function call argument.</p>
+  
+  <h3>Expressions</h3>
+  
+  <p>Put spaces around operators in expressions, assignments, tests, conditions</p>
+  
+  <p>GOOD:</p>
+  
+  <ul>
+  <li><code>a += 2 * x</code></li>
+  <li><code>if(a &lt; 2)</code></li>
+  </ul>
+  
+  <p>BAD:</p>
+  
+  <ul>
+  <li><code>a+=2*x</code></li>
+  <li><code>if(a&lt;2)</code></li>
+  </ul>
+  
+  <p>When comparing to <code>0</code> or a <code>NULL</code> pointer, use the idiomatic form
+  that has no comparison.</p>
+  
+  <p>GOOD:</p>
+  
+  <ul>
+  <li><code>if(!ptr)</code></li>
+  <li><code>if(!index)</code></li>
+  </ul>
+  
+  <p>BAD:</p>
+  
+  <ul>
+  <li><code>if(ptr == NULL)</code></li>
+  <li><code>if(index == 0)</code></li>
+  <li><code>if(0 == index)</code></li>
+  </ul>
+  
+  <p>When comparing a variable to a constant, the code has currently used
+  <code>if(var == constant)</code> rather than the slightly safer, and easier to
+  compile check, <code>if(constant == var)</code>.</p>
+  
+  <h3>Blocks</h3>
+  
+  <p>In general add {}s around blocks in if else chains when one of the blocks
+  has more than 1 line of code.  Try not to mix, but the final case if it
+  is one line, can be braceless.</p>
+  
+  <pre><code>
+  if(var == 1) {
+    ... multiple lines of code ...
+  } else {
+    ... multiple lines of code ...
+  }
+  </code></pre>
+  
+  <p>or</p>
+  
+  <pre><code>
+  if(var == 1)
+    ... one line of code
+  else
+    ... one line of code
+  </code></pre>
+  
+  <p>or</p>
+  
+  <pre><code>
+  if(var == 1) {
+    ... multiple lines of code ...
+  } else if(var == 2) {
+    ... multiple lines of code and / or more if conditions ...
+  } else
+    ... one line of code ...
+  </code></pre>
+  
+  <h3>Switches</h3>
+  
+  <p>If using if else chains on an enumeration, don't do that, use a
+  <code>switch()</code> which GCC can use to find missing cases when they get added.</p>
+  
+  <pre><code>
+  switch(enum_var) {
+    case ENUM_1:
+      ... code ...
+      break;
+  
+    case ENUM_2:
+      ... code ...
+      break;
+  
+    case ENUM_DONT_CARE:
+    default:
+      ... code ...
+      break;
+  }
+  </code></pre>
+  
+  <p>There should ALWAYS be a <code>default:</code> case.</p>
+  
+  <h3>Functions</h3>
+  
+  <p>Declare functions in this format:</p>
+  
+  <pre><code>
+  returntype
+  functionname(type1 param1, type2 param2, ...)
+  {
+    type3 var1;
+    type4 var2;
+  
+    ... first line of code ...
+  
+    tidy:
+      ... cleanup code...
+  
+    return value;
+   }
+  </code></pre>
+  
+  <p>Notes:</p>
+  
+  <ul>
+  <li>Declare one variable per line</li>
+  <li>Declare all variables at the top of the function (K&amp;R C style)</li>
+  <li>You may declare variables in inner <code>{}</code> blocks.  The
+   form <code>if(1) { ... var decls ...; more code }</code> may be used but
+   a code rewrite is preferable.</li>
+  <li>If a label is used it <em>MUST</em> be used only for cleanup, and going
+   forward in the code to the end of the function.</li>
+  <li>Multiple <code>return</code> are allowed but for obvious error or result
+   returns.  Do not twist the code to enable a single return.</li>
+  <li><code>goto</code> may be used for resource cleanup and result return 
+   where control flow only goes forward.</li>
+  </ul>
+  
+  <h3>C Pre-Processor (CPP) Macros</h3>
+  
+  <p>Always define macros for internal constants and name the macros with
+  the library prefix followed by a descriptive name in ALL CAPS such as:</p>
+  
+  <pre><code>
+  #define LIBRDF_FOOBAR_BUFFER_SIZE 1234
+  </code></pre>
+  
+  <p>When evaluating macro symbols that may be undefined, always check the
+  symbol is defined first.  Like this:</p>
+  
+  <pre><code>
+  #if defined(LIBRDF_DEBUG) &amp;&amp; LIBRDF_DEBUG &gt; 42
+     ... do complex debugging stuff ...
+  #endif
+  </code></pre>
+  
+  <p>This is not needed for macros that are known to be defined, such as those
+  checked by <code>configure</code> e.g.</p>
+  
+  <pre><code>
+  #if RAPTOR_VERSION_DECIMAL &gt; 20100
+     ... do stuff that requires a raptor2 version 2.1.0 or newer ...
+  #endif
+  </code></pre>
+  
+  <p>since the above would be checked implicitly by <code>configure</code> using
+  <code>pkg-config(1)</code> to validate Raptor 2 is present before getting to the
+  code that tries to evaluate the value from <code>raptor2.h</code>.</p>
+  
+  <p>The debug macros that are used for printing out values when debugging
+  is enabled do not need protection by <code>#if</code> or <code>#ifdef</code> and should be
+  used like this:</p>
+  
+  <pre><code>
+  LIBRDF_DEBUG1("Something wonderful happened\n");
+  
+  LIBRDF_DEBUG2("Something %s happened\n", happening);
+  </code></pre>
+  
+  <h3>Memory allocation</h3>
+  
+  <p>Allocating a zeroed out block of memory or a set of objects (calloc)</p>
+  
+  <pre><code>
+  var = LIBRDF_CALLOC(type, count, size)
+  </code></pre>
+  
+  <p>Prefering when <code>count</code> = 1 this form:</p>
+  
+  <pre><code>
+  var = LIBRDF_CALLOC(type, 1, sizeof(*var))
+  </code></pre>
+  
+  <p>Allocating a block of memory:</p>
+  
+  <pre><code>
+  var = LIBRDF_MALLOC(type, size)
+  </code></pre>
+  
+  <p>Freeing memory:    </p>
+  
+  <pre><code>
+  LIBRDF_FREE(type, var)
+  </code></pre>
+  
+  <p>The reasoning here is to make allocs mostly fit into 1 line without
+  too much boilerplate and duplication of types.</p>
+  
+  <p>The macro names vary by library such as <code>RAPTOR_CALLOC</code> and
+  <code>RASQAL_CALLOC</code> for Raptor and Rasqal respectively.</p>
+  
+  <h3>Documentation</h3>
+  
+  <p>Public functions, types, enumerations and defines must have autodocs -
+  the structured comment block before the definition.  This is read by
+  <code>gtk-doc(1)</code> to generate reference API documentation.</p>
+  
+  <p>Format:</p>
+  
+  <pre><code>
+  /**
+   * functionname:
+   * @param1: Description of first parameter
+   * @param2: Description of second parameter (or NULL)
+   * ... more params ...
+   *
+   * Short Description
+   *
+   * Long Description.
+   *
+   * Return value: return value
+   */
+   returntype
+   functionname(...)
+   {
+     ... body ...
+   }
+  </code></pre>
+  
+  <p>The <em>Short Description</em> have several commmon forms:</p>
+  
+  <ul>
+  <li>Constructor - creates a FOO object</li>
+  <li>Destructor - destroys a FOO object</li>
+  <li>Short description of regular function or method.</li>
+  <li>INTERNAL - short description</li>
+  </ul>
+  
+  <p>The latter is used for autodocs for internal functions either as
+  internal documentation or for APIs that may one day be public.</p>
+  
+  <p>The <em>(or NULL)</em> phrase is used for pointer parameters that may be
+  omitted.  This is usually tested by the function as an assertion.
+  In some functions there are more complex conditions on which optional
+  parameters are allowed, these are described in the <em>Long Description</em>.</p>
+  
+  <p>The long description may also include a deprecation statement such as:</p>
+  
+  <pre><code>
+  * @Deprecated: Use new_function() with foo = BAR
+  </code></pre>
+  
+  <p>This must be indented to the left and will be used by the
+  <code>gtk-doc(1)</code> document generator to provide a link to the replacement
+  function and usage.</p>
+  
+  <h2>Commit Messages</h2>
+  
+  <p>The general standard for Redland libraries using GIT is a merge
+  of the GIT standards format and GNU ChangeLog</p>
+  
+  <pre><code>
+  First line summaries what commit does - this goes into the GIT short log
+  
+  (function1, function2): what changed
+  
+  (function3): Added, deprecating function4()
+  
+  (function4): Deleted, replaced by function3()
+  
+  struct foo gains field ...
+  
+  struct bar loses field ...
+  
+  enum blah gains new value BLAH_2 which ...
+  </code></pre>
+  
+  <p>Use <code>name()</code> in the description for references to functions.
+  Make sure to do (function1, function2) NOT (function1,function2) as
+  it makes things easier to format later.</p>
+  
+  <p>Sometimes it's short enough (good) that it all can be done in the first
+  line, pretty much only if it's a small change to a single function.</p>
+  
+  <p>If the change is trivial or a typo and (this is <em>IMPORTANT</em>) NOT a
+  commit to code files, then the commit can start with '#'.  This may
+  get filtered out of commit log message notifications and ChangeLog.</p>
+  
+  <p>e.g.  <code>#spelling</code>  or <code>#ws</code>
+  the latter is whitespace changes for some reason</p>
+  
+  <p>The changes will semi-automatically be added to the ChangeLog files
+  following the GNU style, indented and word wrapped, and adding the list
+  of files at the start.  So the commit message above ends up looking
+  something like:</p>
+  
+  <pre><code>
+  2010-08-23  User Name &lt;user@example.org&gt;
+  
+          * dir/file1.c, dir2/file2.c: First line summaries what commit
+            does - this goes into the GIT short log
+  
+            (function1, function2): what changed
+  
+            (function3): Added, deprecating function4()
+  
+            (function4): Deleted, replaced by function3()
+  
+            struct foo gains field ...
+  
+            struct bar loses field ...
+  
+            enum blah gains new value BLAH_2 which ...
+  </code></pre>
+  
+  <!--
+  Local variables:
+  mode: markdown
+  End:
+  -->
+<hr />
+
+<p>Copyright (C) 2013 <a href="http://www.dajobe.org/">Dave Beckett</a></p>
+
+</body>
+</html>

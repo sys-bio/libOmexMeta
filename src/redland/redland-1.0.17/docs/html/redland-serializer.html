@@ -1,0 +1,1244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>serializer: Redland RDF Library Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="Redland RDF Library Manual">
+<link rel="up" href="reference-manual.html" title="Part II. Reference Manual">
+<link rel="prev" href="redland-query-results.html" title="query_results">
+<link rel="next" href="redland-statement.html" title="statement">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#redland-serializer.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference-manual.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="redland-query-results.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="redland-statement.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="redland-serializer"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="redland-serializer.top_of_page"></a>serializer</span></h2>
+<p>serializer</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="redland-serializer.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">const <span class="returnvalue">raptor_syntax_description</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-get-description" title="librdf_serializer_get_description ()">librdf_serializer_get_description</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-enumerate" title="librdf_serializer_enumerate ()">librdf_serializer_enumerate</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-register-factory" title="librdf_serializer_register_factory ()">librdf_serializer_register_factory</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="returnvalue">librdf_serializer</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-new-serializer" title="librdf_new_serializer ()">librdf_new_serializer</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="returnvalue">librdf_serializer</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-new-serializer-from-factory" title="librdf_new_serializer_from_factory ()">librdf_new_serializer_from_factory</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-free-serializer" title="librdf_free_serializer ()">librdf_free_serializer</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-check-name" title="librdf_serializer_check_name ()">librdf_serializer_check_name</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-serialize-model" title="librdf_serializer_serialize_model ()">librdf_serializer_serialize_model</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-serialize-model-to-file-handle" title="librdf_serializer_serialize_model_to_file_handle ()">librdf_serializer_serialize_model_to_file_handle</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-serialize-model-to-file" title="librdf_serializer_serialize_model_to_file ()">librdf_serializer_serialize_model_to_file</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-serialize-model-to-string" title="librdf_serializer_serialize_model_to_string ()">librdf_serializer_serialize_model_to_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-serialize-model-to-counted-string" title="librdf_serializer_serialize_model_to_counted_string ()">librdf_serializer_serialize_model_to_counted_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-serialize-model-to-iostream" title="librdf_serializer_serialize_model_to_iostream ()">librdf_serializer_serialize_model_to_iostream</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-serialize-stream-to-counted-string" title="librdf_serializer_serialize_stream_to_counted_string ()">librdf_serializer_serialize_stream_to_counted_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-serialize-stream-to-file" title="librdf_serializer_serialize_stream_to_file ()">librdf_serializer_serialize_stream_to_file</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-serialize-stream-to-file-handle" title="librdf_serializer_serialize_stream_to_file_handle ()">librdf_serializer_serialize_stream_to_file_handle</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-serialize-stream-to-iostream" title="librdf_serializer_serialize_stream_to_iostream ()">librdf_serializer_serialize_stream_to_iostream</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-serialize-stream-to-string" title="librdf_serializer_serialize_stream_to_string ()">librdf_serializer_serialize_stream_to_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-set-error" title="librdf_serializer_set_error ()">librdf_serializer_set_error</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-set-warning" title="librdf_serializer_set_warning ()">librdf_serializer_set_warning</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-node.html#librdf-node" title="librdf_node"><span class="returnvalue">librdf_node</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-get-feature" title="librdf_serializer_get_feature ()">librdf_serializer_get_feature</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-set-feature" title="librdf_serializer_set_feature ()">librdf_serializer_set_feature</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-serializer.html#librdf-serializer-set-namespace" title="librdf_serializer_set_namespace ()">librdf_serializer_set_namespace</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-serializer.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="typedef_keyword">typedef</td>
+<td class="function_name"><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer">librdf_serializer</a></td>
+</tr>
+<tr>
+<td class="typedef_keyword">typedef</td>
+<td class="function_name"><a class="link" href="redland-serializer.html#librdf-serializer-factory" title="librdf_serializer_factory">librdf_serializer_factory</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-serializer.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="redland-serializer.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="librdf-serializer-get-description"></a><h3>librdf_serializer_get_description ()</h3>
+<pre class="programlisting">const <span class="returnvalue">raptor_syntax_description</span> *
+librdf_serializer_get_description (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                                   <em class="parameter"><code>unsigned <span class="type">int</span> counter</code></em>);</pre>
+<p>Get serializer descriptive syntax information</p>
+<div class="refsect3">
+<a name="librdf-serializer-get-description.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>counter</p></td>
+<td class="parameter_description"><p>index into the list of serializers</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-get-description.returns"></a><h4>Returns</h4>
+<p> description or NULL if counter is out of range</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-enumerate"></a><h3>librdf_serializer_enumerate ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_serializer_enumerate (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                             <em class="parameter"><code>const unsigned <span class="type">int</span> counter</code></em>,
+                             <em class="parameter"><code>const <span class="type">char</span> **name</code></em>,
+                             <em class="parameter"><code>const <span class="type">char</span> **label</code></em>);</pre>
+<div class="warning"><p><code class="literal">librdf_serializer_enumerate</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Get information on serializers.</p>
+<p><em class="parameter"><code>Deprecated</code></em>
+: use <a class="link" href="redland-serializer.html#librdf-serializer-get-description" title="librdf_serializer_get_description ()"><code class="function">librdf_serializer_get_description()</code></a> to return more information in a static structure.</p>
+<div class="refsect3">
+<a name="librdf-serializer-enumerate.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>counter</p></td>
+<td class="parameter_description"><p>index into the list of serializers</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>pointer to store the name of the serializer (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>label</p></td>
+<td class="parameter_description"><p>pointer to store syntax readable label (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-enumerate.returns"></a><h4>Returns</h4>
+<p> non 0 on failure of if counter is out of range</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-register-factory"></a><h3>librdf_serializer_register_factory ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_serializer_register_factory (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                                    <em class="parameter"><code>const <span class="type">char</span> *name</code></em>,
+                                    <em class="parameter"><code>const <span class="type">char</span> *label</code></em>,
+                                    <em class="parameter"><code>const <span class="type">char</span> *mime_type</code></em>,
+                                    <em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>,
+                                    <em class="parameter"><code><span class="type">void</span> (*factory) (librdf_serializer_factory*)</code></em>);</pre>
+<p>Register a serializer factory .</p>
+<div class="refsect3">
+<a name="librdf-serializer-register-factory.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>the name of the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>label</p></td>
+<td class="parameter_description"><p>the label of the serializer (optional)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>mime_type</p></td>
+<td class="parameter_description"><p>MIME type of the syntax (optional)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>URI of the syntax (optional)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>factory</p></td>
+<td class="parameter_description"><p>function to be called to register the factor parameters</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-serializer"></a><h3>librdf_new_serializer ()</h3>
+<pre class="programlisting"><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="returnvalue">librdf_serializer</span></a> *
+librdf_new_serializer (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                       <em class="parameter"><code>const <span class="type">char</span> *name</code></em>,
+                       <em class="parameter"><code>const <span class="type">char</span> *mime_type</code></em>,
+                       <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *type_uri</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> object.</p>
+<div class="refsect3">
+<a name="librdf-new-serializer.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>the serializer factory name (or NULL or empty string if don't care)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>mime_type</p></td>
+<td class="parameter_description"><p>the MIME type of the syntax (NULL if not used)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>type_uri</p></td>
+<td class="parameter_description"><p>URI of syntax (NULL if not used)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-serializer.returns"></a><h4>Returns</h4>
+<p> new <a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> object or NULL</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-serializer-from-factory"></a><h3>librdf_new_serializer_from_factory ()</h3>
+<pre class="programlisting"><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="returnvalue">librdf_serializer</span></a> *
+librdf_new_serializer_from_factory (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                                    <em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer-factory" title="librdf_serializer_factory"><span class="type">librdf_serializer_factory</span></a> *factory</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> object.</p>
+<div class="refsect3">
+<a name="librdf-new-serializer-from-factory.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>factory</p></td>
+<td class="parameter_description"><p>the serializer factory to use to create this serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-serializer-from-factory.returns"></a><h4>Returns</h4>
+<p> new <a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> object or NULL</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-free-serializer"></a><h3>librdf_free_serializer ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_free_serializer (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>);</pre>
+<p>Destructor - destroys a <a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> object.</p>
+<div class="refsect3">
+<a name="librdf-free-serializer.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-check-name"></a><h3>librdf_serializer_check_name ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_serializer_check_name (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                              <em class="parameter"><code>const <span class="type">char</span> *name</code></em>);</pre>
+<p>Check if a serializer name is known</p>
+<div class="refsect3">
+<a name="librdf-serializer-check-name.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>name of serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-check-name.returns"></a><h4>Returns</h4>
+<p> non 0 if name is a known serializer</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-serialize-model"></a><h3>librdf_serializer_serialize_model ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_serializer_serialize_model (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                                   <em class="parameter"><code><span class="type">FILE</span> *handle</code></em>,
+                                   <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                   <em class="parameter"><code><a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> *model</code></em>);</pre>
+<div class="warning"><p><code class="literal">librdf_serializer_serialize_model</code> is deprecated and should not be used in newly-written code.</p></div>
+<p><em class="parameter"><code>Deprecated</code></em>
+: Use <a class="link" href="redland-serializer.html#librdf-serializer-serialize-model-to-file-handle" title="librdf_serializer_serialize_model_to_file_handle ()"><code class="function">librdf_serializer_serialize_model_to_file_handle()</code></a></p>
+<p>Write a serialized <a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> to a FILE*.</p>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-model.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>handle</p></td>
+<td class="parameter_description"><p>file handle to serialize to</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>model</p></td>
+<td class="parameter_description"><p>the <a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> model to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-model.returns"></a><h4>Returns</h4>
+<p> non 0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-serialize-model-to-file-handle"></a><h3>librdf_serializer_serialize_model_to_file_handle ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_serializer_serialize_model_to_file_handle
+                               (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                                <em class="parameter"><code><span class="type">FILE</span> *handle</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> *model</code></em>);</pre>
+<p>Write a serialized <a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> to a FILE*.</p>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-model-to-file-handle.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>handle</p></td>
+<td class="parameter_description"><p>file handle to serialize to</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>model</p></td>
+<td class="parameter_description"><p>the <a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> model to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-model-to-file-handle.returns"></a><h4>Returns</h4>
+<p> non 0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-serialize-model-to-file"></a><h3>librdf_serializer_serialize_model_to_file ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_serializer_serialize_model_to_file
+                               (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                                <em class="parameter"><code>const <span class="type">char</span> *name</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> *model</code></em>);</pre>
+<p>Write a serialized <a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> to a file.</p>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-model-to-file.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>filename to serialize to</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>model</p></td>
+<td class="parameter_description"><p>the <a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> model to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-model-to-file.returns"></a><h4>Returns</h4>
+<p> non 0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-serialize-model-to-string"></a><h3>librdf_serializer_serialize_model_to_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+librdf_serializer_serialize_model_to_string
+                               (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> *model</code></em>);</pre>
+<p>Write a serialized <a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> to a string.
+The returned string must be freed by the caller using <a class="link" href="redland-general.html#librdf-free-memory" title="librdf_free_memory ()"><code class="function">librdf_free_memory()</code></a>.</p>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-model-to-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>model</p></td>
+<td class="parameter_description"><p>the <a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> model to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-model-to-string.returns"></a><h4>Returns</h4>
+<p> NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-serialize-model-to-counted-string"></a><h3>librdf_serializer_serialize_model_to_counted_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+librdf_serializer_serialize_model_to_counted_string
+                               (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> *model</code></em>,
+                                <em class="parameter"><code><span class="type">size_t</span> *length_p</code></em>);</pre>
+<p>Write a serialized <a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> to a counted string.
+The returned string must be freed by the caller using <a class="link" href="redland-general.html#librdf-free-memory" title="librdf_free_memory ()"><code class="function">librdf_free_memory()</code></a>.</p>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-model-to-counted-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>model</p></td>
+<td class="parameter_description"><p>the <a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> model to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length_p</p></td>
+<td class="parameter_description"><p>pointer to store length or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-model-to-counted-string.returns"></a><h4>Returns</h4>
+<p> non 0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-serialize-model-to-iostream"></a><h3>librdf_serializer_serialize_model_to_iostream ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_serializer_serialize_model_to_iostream
+                               (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> *model</code></em>,
+                                <em class="parameter"><code><span class="type">raptor_iostream</span> *iostr</code></em>);</pre>
+<p>Write a serialized <a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> to a <span class="type">raptor_iostream</span>.
+This function takes ownership of the iostream and frees it.</p>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-model-to-iostream.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>model</p></td>
+<td class="parameter_description"><p>the <a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> model to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>iostr</p></td>
+<td class="parameter_description"><p>the <span class="type">raptor_iostream</span> to write to</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-model-to-iostream.returns"></a><h4>Returns</h4>
+<p> non-0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-serialize-stream-to-counted-string"></a><h3>librdf_serializer_serialize_stream_to_counted_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+librdf_serializer_serialize_stream_to_counted_string
+                               (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>,
+                                <em class="parameter"><code><span class="type">size_t</span> *length_p</code></em>);</pre>
+<p>Write a <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> to a counted string.
+Caller should free the string with <a class="link" href="redland-general.html#librdf-free-memory" title="librdf_free_memory ()"><code class="function">librdf_free_memory()</code></a>.</p>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-stream-to-counted-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>the <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> stream to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length_p</p></td>
+<td class="parameter_description"><p>pointer to store length or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-stream-to-counted-string.returns"></a><h4>Returns</h4>
+<p> stream as string or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-serialize-stream-to-file"></a><h3>librdf_serializer_serialize_stream_to_file ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_serializer_serialize_stream_to_file
+                               (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                                <em class="parameter"><code>const <span class="type">char</span> *name</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>);</pre>
+<p>Write a <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> to a file.</p>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-stream-to-file.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>filename to serialize to</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>the <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> stream to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-stream-to-file.returns"></a><h4>Returns</h4>
+<p> non 0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-serialize-stream-to-file-handle"></a><h3>librdf_serializer_serialize_stream_to_file_handle ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_serializer_serialize_stream_to_file_handle
+                               (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                                <em class="parameter"><code><span class="type">FILE</span> *handle</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>);</pre>
+<p>Write a <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> to a FILE*.</p>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-stream-to-file-handle.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>handle</p></td>
+<td class="parameter_description"><p>file handle to serialize to</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>the <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> model to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-stream-to-file-handle.returns"></a><h4>Returns</h4>
+<p> non 0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-serialize-stream-to-iostream"></a><h3>librdf_serializer_serialize_stream_to_iostream ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_serializer_serialize_stream_to_iostream
+                               (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>,
+                                <em class="parameter"><code><span class="type">raptor_iostream</span> *iostr</code></em>);</pre>
+<p>Write a <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> to a <span class="type">raptor_iostream</span>.
+This function takes ownership of the iostream and frees it.</p>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-stream-to-iostream.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>the <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> stream to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>iostr</p></td>
+<td class="parameter_description"><p>the <span class="type">raptor_iostream</span> to write to</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-stream-to-iostream.returns"></a><h4>Returns</h4>
+<p> non-0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-serialize-stream-to-string"></a><h3>librdf_serializer_serialize_stream_to_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+librdf_serializer_serialize_stream_to_string
+                               (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>);</pre>
+<p>Write a <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> to a string.</p>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-stream-to-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>the <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> stream to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-serialize-stream-to-string.returns"></a><h4>Returns</h4>
+<p> NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-set-error"></a><h3>librdf_serializer_set_error ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_serializer_set_error (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                             <em class="parameter"><code><span class="type">void</span> *user_data</code></em>,
+                             <em class="parameter"><code><span class="type">void</span> (*error_fn) (void *user_data, const char *msg, ...)</code></em>);</pre>
+<p><em class="parameter"><code>Deprecated</code></em>
+: Does nothing</p>
+<p>Set the serializer error handling function.</p>
+<div class="refsect3">
+<a name="librdf-serializer-set-error.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data to pass to function</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error_fn</p></td>
+<td class="parameter_description"><p>pointer to the function</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-set-warning"></a><h3>librdf_serializer_set_warning ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_serializer_set_warning (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                               <em class="parameter"><code><span class="type">void</span> *user_data</code></em>,
+                               <em class="parameter"><code><span class="type">void</span> (*warning_fn) (void *user_data, const char *msg, ...)</code></em>);</pre>
+<p><em class="parameter"><code>Deprecated</code></em>
+: Does nothing</p>
+<p>Set the serializer warning handling function.</p>
+<div class="refsect3">
+<a name="librdf-serializer-set-warning.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>the serializer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data to pass to function</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>warning_fn</p></td>
+<td class="parameter_description"><p>pointer to the function</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-get-feature"></a><h3>librdf_serializer_get_feature ()</h3>
+<pre class="programlisting"><a class="link" href="redland-node.html#librdf-node" title="librdf_node"><span class="returnvalue">librdf_node</span></a> *
+librdf_serializer_get_feature (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                               <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *feature</code></em>);</pre>
+<p>Get the value of a serializer feature.</p>
+<div class="refsect3">
+<a name="librdf-serializer-get-feature.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>serializer object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>feature</p></td>
+<td class="parameter_description"><p>URI of feature</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-get-feature.returns"></a><h4>Returns</h4>
+<p> the value of the feature or NULL if no such feature
+exists or the value is empty.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-set-feature"></a><h3>librdf_serializer_set_feature ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_serializer_set_feature (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                               <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *feature</code></em>,
+                               <em class="parameter"><code><a class="link" href="redland-node.html#librdf-node" title="librdf_node"><span class="type">librdf_node</span></a> *value</code></em>);</pre>
+<p>Set the value of a serializer feature.</p>
+<div class="refsect3">
+<a name="librdf-serializer-set-feature.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>serializer object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>feature</p></td>
+<td class="parameter_description"><p>URI of feature</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>value</p></td>
+<td class="parameter_description"><p>value to set</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-set-feature.returns"></a><h4>Returns</h4>
+<p> non 0 on failure (negative if no such feature)</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-set-namespace"></a><h3>librdf_serializer_set_namespace ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_serializer_set_namespace (<em class="parameter"><code><a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> *serializer</code></em>,
+                                 <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri</code></em>,
+                                 <em class="parameter"><code>const <span class="type">char</span> *prefix</code></em>);</pre>
+<p>Set a namespace URI/prefix mapping.</p>
+<div class="refsect3">
+<a name="librdf-serializer-set-namespace.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>serializer</p></td>
+<td class="parameter_description"><p>serializer object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>URI of namespace or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>prefix</p></td>
+<td class="parameter_description"><p>prefix to use or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-serializer-set-namespace.returns"></a><h4>Returns</h4>
+<p> non 0 on failure</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="redland-serializer.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="librdf-serializer"></a><h3>librdf_serializer</h3>
+<pre class="programlisting">typedef struct librdf_serializer_s librdf_serializer;
+</pre>
+<p>Redland serializer class.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-serializer-factory"></a><h3>librdf_serializer_factory</h3>
+<pre class="programlisting">typedef struct librdf_serializer_factory_s librdf_serializer_factory;
+</pre>
+<p>Redland serializer factory class.</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.27</div>
+</body>
+</html>

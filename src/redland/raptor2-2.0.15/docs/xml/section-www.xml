@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-www">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-www.top_of_page">section-www</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-www</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-www.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="raptor-www"><returnvalue>raptor_www</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-www">raptor_new_www</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-www"><returnvalue>raptor_www</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-www-with-connection">raptor_new_www_with_connection</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-www">raptor_free_www</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-www-write-bytes-handler">*raptor_www_write_bytes_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-www-content-type-handler">*raptor_www_content_type_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-www-set-user-agent">raptor_www_set_user_agent</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-www-set-proxy">raptor_www_set_proxy</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-www-set-http-accept">raptor_www_set_http_accept</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-www-set-http-cache-control">raptor_www_set_http_cache_control</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-www-set-write-bytes-handler">raptor_www_set_write_bytes_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-www-set-connection-timeout">raptor_www_set_connection_timeout</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-www-set-content-type-handler">raptor_www_set_content_type_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-uri-filter-func">*raptor_uri_filter_func</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-www-set-uri-filter">raptor_www_set_uri_filter</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-www-final-uri-handler">*raptor_www_final_uri_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-www-get-final-uri">raptor_www_get_final_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-www-set-final-uri-handler">raptor_www_set_final_uri_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-www-fetch">raptor_www_fetch</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-www-fetch-to-string">raptor_www_fetch_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-www-get-connection">raptor_www_get_connection</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-www-set-ssl-cert-options">raptor_www_set_ssl_cert_options</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-www-set-ssl-verify-options">raptor_www_set_ssl_verify_options</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-www-abort">raptor_www_abort</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-www.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-www">raptor_www</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-www.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-www.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-new-www" role="function">
+<title>raptor_new_www&#160;()</title>
+<indexterm zone="raptor-new-www"><primary>raptor_new_www</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-www"><returnvalue>raptor_www</returnvalue></link>&#160;*
+raptor_new_www (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="raptor-www"><type>raptor_www</type></link> object.</para>
+<refsect3 id="raptor-new-www.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-www.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-www"><type>raptor_www</type></link> or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-www-with-connection" role="function">
+<title>raptor_new_www_with_connection&#160;()</title>
+<indexterm zone="raptor-new-www-with-connection"><primary>raptor_new_www_with_connection</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-www"><returnvalue>raptor_www</returnvalue></link>&#160;*
+raptor_new_www_with_connection (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                <parameter><link linkend="void"><type>void</type></link> *connection</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="raptor-www"><type>raptor_www</type></link> object over an existing WWW connection.</para>
+<para>At present this only works with a libcurl CURL handle object
+when raptor is compiled with libcurl suppport. Otherwise the
+<parameter>connection</parameter>
+ is ignored.  This allows such things as setting
+up special flags on the curl handle before passing into the constructor.</para>
+<refsect3 id="raptor-new-www-with-connection.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>connection</para></entry>
+<entry role="parameter_description"><para>external WWW connection object.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-www-with-connection.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-www"><type>raptor_www</type></link> object or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-www" role="function">
+<title>raptor_free_www&#160;()</title>
+<indexterm zone="raptor-free-www"><primary>raptor_free_www</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_www (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>);</programlisting>
+<para>Destructor - destroy a <link linkend="raptor-www"><type>raptor_www</type></link> object.</para>
+<refsect3 id="raptor-free-www.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-write-bytes-handler" role="function">
+<title>raptor_www_write_bytes_handler&#160;()</title>
+<indexterm zone="raptor-www-write-bytes-handler"><primary>raptor_www_write_bytes_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_www_write_bytes_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                                   <parameter><link linkend="void"><type>void</type></link> *userdata</parameter>,
+                                   <parameter>const <link linkend="void"><type>void</type></link> *ptr</parameter>,
+                                   <parameter><link linkend="size-t"><type>size_t</type></link> size</parameter>,
+                                   <parameter><link linkend="size-t"><type>size_t</type></link> nmemb</parameter>);</programlisting>
+<para>Receiving bytes of data from WWW retrieval handler.</para>
+<para>Set by <link linkend="raptor-www-set-write-bytes-handler"><function>raptor_www_set_write_bytes_handler()</function></link>.</para>
+<refsect3 id="raptor-www-write-bytes-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>userdata</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>ptr</para></entry>
+<entry role="parameter_description"><para>data pointer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>size</para></entry>
+<entry role="parameter_description"><para>size of individual item</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nmemb</para></entry>
+<entry role="parameter_description"><para>number of items</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-content-type-handler" role="function">
+<title>raptor_www_content_type_handler&#160;()</title>
+<indexterm zone="raptor-www-content-type-handler"><primary>raptor_www_content_type_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_www_content_type_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                                    <parameter><link linkend="void"><type>void</type></link> *userdata</parameter>,
+                                    <parameter>const <link linkend="char"><type>char</type></link> *content_type</parameter>);</programlisting>
+<para>Receiving Content-Type: header from WWW retrieval handler.</para>
+<para>Set by <link linkend="raptor-www-set-content-type-handler"><function>raptor_www_set_content_type_handler()</function></link>.</para>
+<refsect3 id="raptor-www-content-type-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>userdata</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>content_type</para></entry>
+<entry role="parameter_description"><para>content type seen</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-set-user-agent" role="function">
+<title>raptor_www_set_user_agent&#160;()</title>
+<indexterm zone="raptor-www-set-user-agent"><primary>raptor_www_set_user_agent</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_www_set_user_agent (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                           <parameter>const <link linkend="char"><type>char</type></link> *user_agent</parameter>);</programlisting>
+<para>Set the user agent value, for HTTP requests typically.</para>
+<refsect3 id="raptor-www-set-user-agent.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_agent</para></entry>
+<entry role="parameter_description"><para>User-Agent string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-set-proxy" role="function">
+<title>raptor_www_set_proxy&#160;()</title>
+<indexterm zone="raptor-www-set-proxy"><primary>raptor_www_set_proxy</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_www_set_proxy (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                      <parameter>const <link linkend="char"><type>char</type></link> *proxy</parameter>);</programlisting>
+<para>Set the proxy for the WWW object.</para>
+<para>The <parameter>proxy</parameter>
+ usually a string of the form http://server.domain:port.</para>
+<refsect3 id="raptor-www-set-proxy.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>proxy</para></entry>
+<entry role="parameter_description"><para>proxy string.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-set-http-accept" role="function">
+<title>raptor_www_set_http_accept&#160;()</title>
+<indexterm zone="raptor-www-set-http-accept"><primary>raptor_www_set_http_accept</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_www_set_http_accept (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                            <parameter>const <link linkend="char"><type>char</type></link> *value</parameter>);</programlisting>
+<para>Set HTTP Accept header.</para>
+<refsect3 id="raptor-www-set-http-accept.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-www"><type>raptor_www</type></link> class</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>value</para></entry>
+<entry role="parameter_description"><para>Accept: header value or NULL to have an empty one.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-set-http-cache-control" role="function">
+<title>raptor_www_set_http_cache_control&#160;()</title>
+<indexterm zone="raptor-www-set-http-cache-control"><primary>raptor_www_set_http_cache_control</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_www_set_http_cache_control (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                                   <parameter>const <link linkend="char"><type>char</type></link> *cache_control</parameter>);</programlisting>
+<para>Set HTTP Cache-Control:header (default none)</para>
+<para>The <parameter>cache_control</parameter>
+ value can be a string to set it, "" to send
+a blank header or NULL to not set the header at all.</para>
+<refsect3 id="raptor-www-set-http-cache-control.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>cache_control</para></entry>
+<entry role="parameter_description"><para>Cache-Control header value (or NULL to disable)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-www-set-http-cache-control.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-set-write-bytes-handler" role="function">
+<title>raptor_www_set_write_bytes_handler&#160;()</title>
+<indexterm zone="raptor-www-set-write-bytes-handler"><primary>raptor_www_set_write_bytes_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_www_set_write_bytes_handler (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                                    <parameter><link linkend="raptor-www-write-bytes-handler"><type>raptor_www_write_bytes_handler</type></link> handler</parameter>,
+                                    <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>);</programlisting>
+<para>Set the handler to receive bytes written by the <link linkend="raptor-www"><type>raptor_www</type></link> implementation.</para>
+<refsect3 id="raptor-www-set-write-bytes-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>bytes handler function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>bytes handler data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-set-connection-timeout" role="function">
+<title>raptor_www_set_connection_timeout&#160;()</title>
+<indexterm zone="raptor-www-set-connection-timeout"><primary>raptor_www_set_connection_timeout</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_www_set_connection_timeout (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                                   <parameter><link linkend="int"><type>int</type></link> timeout</parameter>);</programlisting>
+<para>Set WWW connection timeout</para>
+<refsect3 id="raptor-www-set-connection-timeout.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>timeout</para></entry>
+<entry role="parameter_description"><para>Timeout in seconds</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-set-content-type-handler" role="function">
+<title>raptor_www_set_content_type_handler&#160;()</title>
+<indexterm zone="raptor-www-set-content-type-handler"><primary>raptor_www_set_content_type_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_www_set_content_type_handler (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                                     <parameter><link linkend="raptor-www-content-type-handler"><type>raptor_www_content_type_handler</type></link> handler</parameter>,
+                                     <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>);</programlisting>
+<para>Set the handler to receive the HTTP Content-Type header value.</para>
+<para>This is called if or when the value is discovered during retrieval
+by the raptor_www implementation.  Not all implementations provide
+access to this.</para>
+<refsect3 id="raptor-www-set-content-type-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>content type handler function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>content type handler data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-filter-func" role="function">
+<title>raptor_uri_filter_func&#160;()</title>
+<indexterm zone="raptor-uri-filter-func"><primary>raptor_uri_filter_func</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_uri_filter_func<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                           <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>);</programlisting>
+<para>Callback function for <link linkend="raptor-www-set-uri-filter"><type>raptor_www_set_uri_filter</type></link></para>
+<refsect3 id="raptor-uri-filter-func.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-uri"><type>raptor_uri</type></link> URI to check</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-filter-func.returns" role="returns">
+<title>Returns</title>
+<para> non-0 to filter the URI</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-set-uri-filter" role="function">
+<title>raptor_www_set_uri_filter&#160;()</title>
+<indexterm zone="raptor-www-set-uri-filter"><primary>raptor_www_set_uri_filter</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_www_set_uri_filter (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                           <parameter><link linkend="raptor-uri-filter-func"><type>raptor_uri_filter_func</type></link> filter</parameter>,
+                           <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>);</programlisting>
+<para>Set URI filter function for WWW retrieval.</para>
+<refsect3 id="raptor-www-set-uri-filter.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>filter</para></entry>
+<entry role="parameter_description"><para>URI filter function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>User data to pass to filter function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-final-uri-handler" role="function">
+<title>raptor_www_final_uri_handler&#160;()</title>
+<indexterm zone="raptor-www-final-uri-handler"><primary>raptor_www_final_uri_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_www_final_uri_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                                 <parameter><link linkend="void"><type>void</type></link> *userdata</parameter>,
+                                 <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *final_uri</parameter>);</programlisting>
+<para>Receiving the final resolved URI from a WWW retrieval</para>
+<para>Set by <link linkend="raptor-www-set-final-uri-handler"><function>raptor_www_set_final_uri_handler()</function></link>.</para>
+<refsect3 id="raptor-www-final-uri-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>userdata</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>final_uri</para></entry>
+<entry role="parameter_description"><para>final URI seen</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-get-final-uri" role="function">
+<title>raptor_www_get_final_uri&#160;()</title>
+<indexterm zone="raptor-www-get-final-uri"><primary>raptor_www_get_final_uri</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_www_get_final_uri (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>);</programlisting>
+<para>Get the WWW final resolved URI.</para>
+<para>This returns the URI used after any protocol redirection.</para>
+<refsect3 id="raptor-www-get-final-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-www"><type>raptor_www</type></link> object </para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-www-get-final-uri.returns" role="returns">
+<title>Returns</title>
+<para> a new URI or NULL if not known.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-set-final-uri-handler" role="function">
+<title>raptor_www_set_final_uri_handler&#160;()</title>
+<indexterm zone="raptor-www-set-final-uri-handler"><primary>raptor_www_set_final_uri_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_www_set_final_uri_handler (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                                  <parameter><link linkend="raptor-www-final-uri-handler"><type>raptor_www_final_uri_handler</type></link> handler</parameter>,
+                                  <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>);</programlisting>
+<para>Set the handler to receive the HTTP Content-Type header value.</para>
+<para>This is called if or when the value is discovered during retrieval
+by the raptor_www implementation.  Not all implementations provide
+access to this.</para>
+<refsect3 id="raptor-www-set-final-uri-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>content type handler function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>content type handler data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-fetch" role="function">
+<title>raptor_www_fetch&#160;()</title>
+<indexterm zone="raptor-www-fetch"><primary>raptor_www_fetch</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_www_fetch (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                  <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>);</programlisting>
+<para>Start a WWW content retrieval for the given URI, returning data via the write_bytes handler.</para>
+<refsect3 id="raptor-www-fetch.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>URI to read from</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-www-fetch.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-fetch-to-string" role="function">
+<title>raptor_www_fetch_to_string&#160;()</title>
+<indexterm zone="raptor-www-fetch-to-string"><primary>raptor_www_fetch_to_string</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_www_fetch_to_string (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                            <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                            <parameter><link linkend="void"><type>void</type></link> **string_p</parameter>,
+                            <parameter><link linkend="size-t"><type>size_t</type></link> *length_p</parameter>,
+                            <parameter><link linkend="raptor-data-malloc-handler"><type>raptor_data_malloc_handler</type></link> const malloc_handler</parameter>);</programlisting>
+<para>Start a WWW content retrieval for the given URI, returning the data in a new string.</para>
+<para>If <parameter>malloc_handler</parameter>
+ is null, raptor will allocate it using it's
+own memory allocator.  *string_p is set to NULL on failure (and
+*length_p to 0 if length_p is not NULL).</para>
+<refsect3 id="raptor-www-fetch-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>raptor_www object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>raptor_uri to retrieve</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string_p</para></entry>
+<entry role="parameter_description"><para>pointer to location to hold string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length_p</para></entry>
+<entry role="parameter_description"><para>pointer to location to hold length of string (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>malloc_handler</para></entry>
+<entry role="parameter_description"><para>pointer to <link linkend="malloc"><function>malloc()</function></link> to use to make string (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-www-fetch-to-string.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-get-connection" role="function">
+<title>raptor_www_get_connection&#160;()</title>
+<indexterm zone="raptor-www-get-connection"><primary>raptor_www_get_connection</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+raptor_www_get_connection (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>);</programlisting>
+<para>Get WWW library connection object.</para>
+<para>Return the internal WWW connection handle.  For libcurl, this
+returns the CURL handle and for libxml the context.  Otherwise
+it returns NULL.</para>
+<refsect3 id="raptor-www-get-connection.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-www"><type>raptor_www</type></link> object </para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-www-get-connection.returns" role="returns">
+<title>Returns</title>
+<para> connection pointer</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-set-ssl-cert-options" role="function">
+<title>raptor_www_set_ssl_cert_options&#160;()</title>
+<indexterm zone="raptor-www-set-ssl-cert-options"><primary>raptor_www_set_ssl_cert_options</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_www_set_ssl_cert_options (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *cert_filename</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *cert_type</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *cert_passphrase</parameter>);</programlisting>
+<para>Set SSL client certificate options (where supported)</para>
+<refsect3 id="raptor-www-set-ssl-cert-options.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>cert_filename</para></entry>
+<entry role="parameter_description"><para>SSL client certificate file</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>cert_type</para></entry>
+<entry role="parameter_description"><para>SSL client certificate type (default is "PEM")</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>cert_passphrase</para></entry>
+<entry role="parameter_description"><para>SSL client certificate password</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-www-set-ssl-cert-options.returns" role="returns">
+<title>Returns</title>
+<para> non-0 when setting options is not supported</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-set-ssl-verify-options" role="function">
+<title>raptor_www_set_ssl_verify_options&#160;()</title>
+<indexterm zone="raptor-www-set-ssl-verify-options"><primary>raptor_www_set_ssl_verify_options</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_www_set_ssl_verify_options (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                                   <parameter><link linkend="int"><type>int</type></link> verify_peer</parameter>,
+                                   <parameter><link linkend="int"><type>int</type></link> verify_host</parameter>);</programlisting>
+<para>Set whether SSL verifies the authenticity of the peer's certificate</para>
+<para>These options correspond to setting the curl
+CURLOPT_SSL_VERIFYPEER and CURLOPT_SSL_VERIFYHOST options.</para>
+<refsect3 id="raptor-www-set-ssl-verify-options.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>verify_peer</para></entry>
+<entry role="parameter_description"><para>SSL verify peer - non-0 to verify peer SSL certificate (default)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>verify_host</para></entry>
+<entry role="parameter_description"><para>SSL verify host - 0 none, non-0 to require a CN match (default).</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-www-set-ssl-verify-options.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-www-abort" role="function">
+<title>raptor_www_abort&#160;()</title>
+<indexterm zone="raptor-www-abort"><primary>raptor_www_abort</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_www_abort (<parameter><link linkend="raptor-www"><type>raptor_www</type></link> *www</parameter>,
+                  <parameter>const <link linkend="char"><type>char</type></link> *reason</parameter>);</programlisting>
+<para>Abort an ongoing raptor WWW operation and pass back a reason.</para>
+<para>This is typically used within one of the raptor WWW handlers
+when retrieval need no longer continue due to another
+processing issue or error.</para>
+<refsect3 id="raptor-www-abort.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>www</para></entry>
+<entry role="parameter_description"><para>WWW object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>reason</para></entry>
+<entry role="parameter_description"><para>abort reason message</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-www.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-www" role="typedef">
+<title>raptor_www</title>
+<indexterm zone="raptor-www"><primary>raptor_www</primary></indexterm>
+<programlisting language="C">raptor_www* raptor_www;
+</programlisting>
+<para>Raptor WWW class</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

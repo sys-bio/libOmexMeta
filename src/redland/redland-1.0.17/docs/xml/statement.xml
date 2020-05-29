@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-statement">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-statement.top_of_page">statement</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>statement</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-statement.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="librdf-statement"><returnvalue>librdf_statement</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-statement">librdf_new_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-statement"><returnvalue>librdf_statement</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-statement-from-statement">librdf_new_statement_from_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-statement"><returnvalue>librdf_statement</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-statement-from-statement2">librdf_new_statement_from_statement2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-statement"><returnvalue>librdf_statement</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-statement-from-nodes">librdf_new_statement_from_nodes</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-init">librdf_statement_init</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-clear">librdf_statement_clear</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-free-statement">librdf_free_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-statement-get-subject">librdf_statement_get_subject</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-set-subject">librdf_statement_set_subject</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-statement-get-predicate">librdf_statement_get_predicate</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-set-predicate">librdf_statement_set_predicate</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-statement-get-object">librdf_statement_get_object</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-set-object">librdf_statement_set_object</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-is-complete">librdf_statement_is_complete</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-statement-to-string">librdf_statement_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-print">librdf_statement_print</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-equals">librdf_statement_equals</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-match">librdf_statement_match</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-encode">librdf_statement_encode</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-encode2">librdf_statement_encode2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-encode-parts">librdf_statement_encode_parts</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-encode-parts2">librdf_statement_encode_parts2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-decode">librdf_statement_decode</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-decode2">librdf_statement_decode2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-decode-parts">librdf_statement_decode_parts</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-statement-write">librdf_statement_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-statement.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-statement">librdf_statement</link></entry></row>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="librdf-statement-part">librdf_statement_part</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-statement.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-statement.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-new-statement" role="function">
+<title>librdf_new_statement&#160;()</title>
+<indexterm zone="librdf-new-statement"><primary>librdf_new_statement</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-statement"><returnvalue>librdf_statement</returnvalue></link>&#160;*
+librdf_new_statement (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>);</programlisting>
+<para>Constructor - create a new empty <link linkend="librdf-statement"><type>librdf_statement</type></link>.</para>
+<refsect3 id="librdf-new-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-statement.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-statement"><type>librdf_statement</type></link> or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-statement-from-statement" role="function">
+<title>librdf_new_statement_from_statement&#160;()</title>
+<indexterm zone="librdf-new-statement-from-statement"><primary>librdf_new_statement_from_statement</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-statement"><returnvalue>librdf_statement</returnvalue></link>&#160;*
+librdf_new_statement_from_statement (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Copy constructor - create a new librdf_statement from an existing librdf_statement.
+Creates a deep copy - changes to original statement nodes are not reflected in the copy.</para>
+<refsect3 id="librdf-new-statement-from-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> to copy</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-statement-from-statement.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-statement"><type>librdf_statement</type></link> with copy or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-statement-from-statement2" role="function">
+<title>librdf_new_statement_from_statement2&#160;()</title>
+<indexterm zone="librdf-new-statement-from-statement2"><primary>librdf_new_statement_from_statement2</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-statement"><returnvalue>librdf_statement</returnvalue></link>&#160;*
+librdf_new_statement_from_statement2 (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Copy constructor - create a new librdf_statement from an existing librdf_statement.
+Creates a shallow copy - changes to original statement nodes are reflected in the copy.</para>
+<refsect3 id="librdf-new-statement-from-statement2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> to copy</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-statement-from-statement2.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-statement"><type>librdf_statement</type></link> with copy or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-statement-from-nodes" role="function">
+<title>librdf_new_statement_from_nodes&#160;()</title>
+<indexterm zone="librdf-new-statement-from-nodes"><primary>librdf_new_statement_from_nodes</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-statement"><returnvalue>librdf_statement</returnvalue></link>&#160;*
+librdf_new_statement_from_nodes (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                 <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *subject</parameter>,
+                                 <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *predicate</parameter>,
+                                 <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *object</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-statement"><type>librdf_statement</type></link> from existing <link linkend="librdf-node"><type>librdf_node</type></link> objects.</para>
+<para>The node objects become owned by the new statement (or freed on error).</para>
+<refsect3 id="librdf-new-statement-from-nodes.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>subject</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>predicate</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>object</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-statement-from-nodes.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-statement"><type>librdf_statement</type></link> with copy or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-init" role="function">
+<title>librdf_statement_init&#160;()</title>
+<indexterm zone="librdf-statement-init"><primary>librdf_statement_init</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_statement_init (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                       <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Initialise a statically declared librdf_statement.</para>
+<para>This MUST be called on a statically declared librdf_statement
+to initialise it properly.  It is the responsibility of the
+user of the statically allocated librdf_statement to deal
+with deallocation of any statement parts (subject, predicate, object).</para>
+<refsect3 id="librdf-statement-init.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-clear" role="function">
+<title>librdf_statement_clear&#160;()</title>
+<indexterm zone="librdf-statement-clear"><primary>librdf_statement_clear</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_statement_clear (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Empty a librdf_statement of nodes.</para>
+<refsect3 id="librdf-statement-clear.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-free-statement" role="function">
+<title>librdf_free_statement&#160;()</title>
+<indexterm zone="librdf-free-statement"><primary>librdf_free_statement</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_free_statement (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Destructor - destroy a <link linkend="librdf-statement"><type>librdf_statement</type></link>.</para>
+<refsect3 id="librdf-free-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-get-subject" role="function">
+<title>librdf_statement_get_subject&#160;()</title>
+<indexterm zone="librdf-statement-get-subject"><primary>librdf_statement_get_subject</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_statement_get_subject (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Get the statement subject.</para>
+<para>This method returns a SHARED pointer to the subject which must
+be copied by the caller if needed.</para>
+<refsect3 id="librdf-statement-get-subject.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-get-subject.returns" role="returns">
+<title>Returns</title>
+<para> a pointer to the <link linkend="librdf-node"><type>librdf_node</type></link> of the statement subject - </para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-set-subject" role="function">
+<title>librdf_statement_set_subject&#160;()</title>
+<indexterm zone="librdf-statement-set-subject"><primary>librdf_statement_set_subject</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_statement_set_subject (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                              <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Set the statement subject.</para>
+<para>The subject passed in becomes owned by
+the statement object and must not be used by the caller after this call.</para>
+<refsect3 id="librdf-statement-set-subject.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> of subject</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-get-predicate" role="function">
+<title>librdf_statement_get_predicate&#160;()</title>
+<indexterm zone="librdf-statement-get-predicate"><primary>librdf_statement_get_predicate</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_statement_get_predicate (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Get the statement predicate.</para>
+<para>This method returns a SHARED pointer to the predicate which must
+be copied by the caller if needed.</para>
+<refsect3 id="librdf-statement-get-predicate.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-get-predicate.returns" role="returns">
+<title>Returns</title>
+<para> a pointer to the <link linkend="librdf-node"><type>librdf_node</type></link> of the statement predicate - </para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-set-predicate" role="function">
+<title>librdf_statement_set_predicate&#160;()</title>
+<indexterm zone="librdf-statement-set-predicate"><primary>librdf_statement_set_predicate</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_statement_set_predicate (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Set the statement predicate.</para>
+<para>The predicate passed in becomes owned by
+the statement object and must not be used by the caller after this call.</para>
+<refsect3 id="librdf-statement-set-predicate.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> of predicate</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-get-object" role="function">
+<title>librdf_statement_get_object&#160;()</title>
+<indexterm zone="librdf-statement-get-object"><primary>librdf_statement_get_object</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_statement_get_object (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Get the statement object.</para>
+<para>This method returns a SHARED pointer to the object which must
+be copied by the caller if needed.</para>
+<refsect3 id="librdf-statement-get-object.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-get-object.returns" role="returns">
+<title>Returns</title>
+<para> a pointer to the <link linkend="librdf-node"><type>librdf_node</type></link> of the statement object - </para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-set-object" role="function">
+<title>librdf_statement_set_object&#160;()</title>
+<indexterm zone="librdf-statement-set-object"><primary>librdf_statement_set_object</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_statement_set_object (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                             <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Set the statement object.</para>
+<para>The object passed in becomes owned by
+the statement object and must not be used by the caller after this call.</para>
+<refsect3 id="librdf-statement-set-object.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> of object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-is-complete" role="function">
+<title>librdf_statement_is_complete&#160;()</title>
+<indexterm zone="librdf-statement-is-complete"><primary>librdf_statement_is_complete</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_statement_is_complete (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Check if statement is a complete and legal RDF triple.</para>
+<para>Checks that all subject, predicate, object fields are present
+and they have the allowed node types.</para>
+<refsect3 id="librdf-statement-is-complete.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-is-complete.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if the statement is complete and legal</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-to-string" role="function" condition="deprecated:">
+<title>librdf_statement_to_string&#160;()</title>
+<indexterm zone="librdf-statement-to-string" role="deprecated"><primary>librdf_statement_to_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_statement_to_string (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<warning><para><literal>librdf_statement_to_string</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Format the librdf_statement as a string.</para>
+<para>Formats the statement as a newly allocate string that must be freed by
+the caller.</para>
+<para><parameter>Deprecated</parameter>
+: Use <link linkend="librdf-statement-write"><function>librdf_statement_write()</function></link> to write to
+<link linkend="raptor-iostream"><type>raptor_iostream</type></link> which can be made to write to a string.  Use a
+<link linkend="librdf-serializer"><type>librdf_serializer</type></link> to write proper syntax formats.</para>
+<refsect3 id="librdf-statement-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>the statement</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-to-string.returns" role="returns">
+<title>Returns</title>
+<para> the string or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-print" role="function">
+<title>librdf_statement_print&#160;()</title>
+<indexterm zone="librdf-statement-print"><primary>librdf_statement_print</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_statement_print (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                        <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *fh</parameter>);</programlisting>
+<para>Pretty print the statement to a file descriptor.</para>
+<para>This method is for debugging and the format of the output should
+not be relied on.</para>
+<refsect3 id="librdf-statement-print.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>the statement</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fh</para></entry>
+<entry role="parameter_description"><para>file handle</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-equals" role="function">
+<title>librdf_statement_equals&#160;()</title>
+<indexterm zone="librdf-statement-equals"><primary>librdf_statement_equals</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_statement_equals (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement1</parameter>,
+                         <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement2</parameter>);</programlisting>
+<para>Check if two statements are equal.</para>
+<refsect3 id="librdf-statement-equals.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement1</para></entry>
+<entry role="parameter_description"><para>first <link linkend="librdf-statement"><type>librdf_statement</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement2</para></entry>
+<entry role="parameter_description"><para>second <link linkend="librdf-statement"><type>librdf_statement</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-equals.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if statements are equal</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-match" role="function">
+<title>librdf_statement_match&#160;()</title>
+<indexterm zone="librdf-statement-match"><primary>librdf_statement_match</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_statement_match (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                        <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *partial_statement</parameter>);</programlisting>
+<para>Match a statement against a 'partial' statement.</para>
+<para>A partial statement is where some parts of the statement -
+subject, predicate or object can be empty (NULL).
+Empty parts match against any value, parts with values
+must match exactly.  Node matching is done via <link linkend="librdf-node-equals"><function>librdf_node_equals()</function></link></para>
+<refsect3 id="librdf-statement-match.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>statement</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>partial_statement</para></entry>
+<entry role="parameter_description"><para>statement with possible empty parts</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-match.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on match</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-encode" role="function" condition="deprecated:">
+<title>librdf_statement_encode&#160;()</title>
+<indexterm zone="librdf-statement-encode" role="deprecated"><primary>librdf_statement_encode</primary></indexterm>
+<programlisting language="C"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+librdf_statement_encode (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                         <parameter>unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                         <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<warning><para><literal>librdf_statement_encode</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Serialise a statement into a buffer.</para>
+<para>Encodes the given statement in the buffer, which must be of sufficient
+size.  If buffer is NULL, no work is done but the size of buffer
+required is returned.</para>
+<para><parameter>Deprecated</parameter>
+: Use <link linkend="librdf-statement-encode2"><function>librdf_statement_encode2()</function></link></para>
+<refsect3 id="librdf-statement-encode.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>the statement to serialise</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>the buffer to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-encode.returns" role="returns">
+<title>Returns</title>
+<para> the number of bytes written or 0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-encode2" role="function">
+<title>librdf_statement_encode2&#160;()</title>
+<indexterm zone="librdf-statement-encode2"><primary>librdf_statement_encode2</primary></indexterm>
+<programlisting language="C"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+librdf_statement_encode2 (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                          <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                          <parameter>unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                          <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Serialise a statement into a buffer.</para>
+<para>Encodes the given statement in the buffer, which must be of sufficient
+size.  If buffer is NULL, no work is done but the size of buffer
+required is returned.</para>
+<refsect3 id="librdf-statement-encode2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>the statement to serialise</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>the buffer to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-encode2.returns" role="returns">
+<title>Returns</title>
+<para> the number of bytes written or 0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-encode-parts" role="function" condition="deprecated:">
+<title>librdf_statement_encode_parts&#160;()</title>
+<indexterm zone="librdf-statement-encode-parts" role="deprecated"><primary>librdf_statement_encode_parts</primary></indexterm>
+<programlisting language="C"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+librdf_statement_encode_parts (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                               <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context_node</parameter>,
+                               <parameter>unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                               <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>,
+                               <parameter><link linkend="librdf-statement-part"><type>librdf_statement_part</type></link> fields</parameter>);</programlisting>
+<warning><para><literal>librdf_statement_encode_parts</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Serialise parts of a statement into a buffer.</para>
+<para>Encodes the given statement in the buffer, which must be of sufficient
+size.  If buffer is NULL, no work is done but the size of buffer
+required is returned.</para>
+<para>The fields values are or-ed combinations of:
+<link linkend="LIBRDF-STATEMENT-SUBJECT:CAPS"><type>LIBRDF_STATEMENT_SUBJECT</type></link> <link linkend="LIBRDF-STATEMENT-PREDICATE:CAPS"><type>LIBRDF_STATEMENT_PREDICATE</type></link>
+<link linkend="LIBRDF-STATEMENT-OBJECT:CAPS"><type>LIBRDF_STATEMENT_OBJECT</type></link>
+or <link linkend="LIBRDF-STATEMENT-ALL:CAPS"><type>LIBRDF_STATEMENT_ALL</type></link> for subject,prdicate,object fields</para>
+<para>If context_node is given, it is encoded also</para>
+<para><parameter>Deprecated</parameter>
+: This will no longer be a public API</para>
+<refsect3 id="librdf-statement-encode-parts.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>statement to serialise</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context_node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context node (can be NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>the buffer to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fields</para></entry>
+<entry role="parameter_description"><para>fields to encode</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-encode-parts.returns" role="returns">
+<title>Returns</title>
+<para> the number of bytes written or 0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-encode-parts2" role="function">
+<title>librdf_statement_encode_parts2&#160;()</title>
+<indexterm zone="librdf-statement-encode-parts2"><primary>librdf_statement_encode_parts2</primary></indexterm>
+<programlisting language="C"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+librdf_statement_encode_parts2 (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context_node</parameter>,
+                                <parameter>unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>,
+                                <parameter><link linkend="librdf-statement-part"><type>librdf_statement_part</type></link> fields</parameter>);</programlisting>
+<para>Serialise parts of a statement into a buffer.</para>
+<para>Encodes the given statement in the buffer, which must be of sufficient
+size.  If buffer is NULL, no work is done but the size of buffer
+required is returned.</para>
+<para>The fields values are or-ed combinations of:
+<link linkend="LIBRDF-STATEMENT-SUBJECT:CAPS"><type>LIBRDF_STATEMENT_SUBJECT</type></link> <link linkend="LIBRDF-STATEMENT-PREDICATE:CAPS"><type>LIBRDF_STATEMENT_PREDICATE</type></link>
+<link linkend="LIBRDF-STATEMENT-OBJECT:CAPS"><type>LIBRDF_STATEMENT_OBJECT</type></link>
+or <link linkend="LIBRDF-STATEMENT-ALL:CAPS"><type>LIBRDF_STATEMENT_ALL</type></link> for subject,prdicate,object fields</para>
+<para>If context_node is given, it is encoded also</para>
+<refsect3 id="librdf-statement-encode-parts2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>statement to serialise</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context_node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context node (can be NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>the buffer to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fields</para></entry>
+<entry role="parameter_description"><para>fields to encode</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-encode-parts2.returns" role="returns">
+<title>Returns</title>
+<para> the number of bytes written or 0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-decode" role="function" condition="deprecated:">
+<title>librdf_statement_decode&#160;()</title>
+<indexterm zone="librdf-statement-decode" role="deprecated"><primary>librdf_statement_decode</primary></indexterm>
+<programlisting language="C"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+librdf_statement_decode (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                         <parameter>unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                         <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<warning><para><literal>librdf_statement_decode</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Decodes a statement from a buffer. (ALWAYS FAILS)</para>
+<para>Used to decode the serialised statement as created by
+<link linkend="librdf-statement-encode"><function>librdf_statement_encode()</function></link> from the given buffer.</para>
+<para><parameter>Deprecated</parameter>
+: Replaced by <link linkend="librdf-statement-decode2"><function>librdf_statement_decode2()</function></link> which works.</para>
+<refsect3 id="librdf-statement-decode.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>the statement to deserialise into</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>the buffer to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-decode.returns" role="returns">
+<title>Returns</title>
+<para> 0 signifying failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-decode2" role="function">
+<title>librdf_statement_decode2&#160;()</title>
+<indexterm zone="librdf-statement-decode2"><primary>librdf_statement_decode2</primary></indexterm>
+<programlisting language="C"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+librdf_statement_decode2 (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                          <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                          <parameter><link linkend="librdf-node"><type>librdf_node</type></link> **context_node</parameter>,
+                          <parameter>unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                          <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Decodes a statement + context node from a buffer.</para>
+<para>Decodes the serialised statement (as created by <link linkend="librdf-statement-encode"><function>librdf_statement_encode()</function></link> )
+from the given buffer.  If a context node is found and context_node is
+not NULL, a pointer to the new <link linkend="librdf-node"><type>librdf_node</type></link> is stored in *context_node.</para>
+<refsect3 id="librdf-statement-decode2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>the statement to deserialise into</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context_node</para></entry>
+<entry role="parameter_description"><para>pointer to <link linkend="librdf-node"><type>librdf_node</type></link> context_node to deserialise into</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>the buffer to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-decode2.returns" role="returns">
+<title>Returns</title>
+<para> number of bytes used or 0 on failure (bad encoding, allocation failure)</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-decode-parts" role="function" condition="deprecated:">
+<title>librdf_statement_decode_parts&#160;()</title>
+<indexterm zone="librdf-statement-decode-parts" role="deprecated"><primary>librdf_statement_decode_parts</primary></indexterm>
+<programlisting language="C"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+librdf_statement_decode_parts (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                               <parameter><link linkend="librdf-node"><type>librdf_node</type></link> **context_node</parameter>,
+                               <parameter>unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                               <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<warning><para><literal>librdf_statement_decode_parts</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Decodes a statement + context node from a buffer. (ALWAYS FAILS)</para>
+<para>Used to decode the serialised statement as created by
+<link linkend="librdf-statement-encode"><function>librdf_statement_encode()</function></link> from the given buffer.</para>
+<para><parameter>Deprecated</parameter>
+: Replaced by <link linkend="librdf-statement-decode2"><function>librdf_statement_decode2()</function></link> which works.</para>
+<refsect3 id="librdf-statement-decode-parts.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>the statement to deserialise into</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context_node</para></entry>
+<entry role="parameter_description"><para>pointer to <link linkend="librdf-node"><type>librdf_node</type></link> context_node to deserialise into</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>the buffer to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-decode-parts.returns" role="returns">
+<title>Returns</title>
+<para> 0 signifying failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-statement-write" role="function">
+<title>librdf_statement_write&#160;()</title>
+<indexterm zone="librdf-statement-write"><primary>librdf_statement_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_statement_write (<parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                        <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write the statement to an iostream</para>
+<para>This method is for debugging and the format of the output should
+not be relied on.</para>
+<refsect3 id="librdf-statement-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>the statement</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-statement-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-statement.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="librdf-statement" role="typedef">
+<title>librdf_statement</title>
+<indexterm zone="librdf-statement"><primary>librdf_statement</primary></indexterm>
+<programlisting language="C">typedef raptor_statement librdf_statement;
+</programlisting>
+<para>Redland statement class.</para>
+</refsect2>
+<refsect2 id="librdf-statement-part" role="enum">
+<title>enum librdf_statement_part</title>
+<indexterm zone="librdf-statement-part"><primary>librdf_statement_part</primary></indexterm>
+<para>Flags that are or-ed to indicate statement parts.</para>
+<para>Used in fields arguments to methods such as the public
+<link linkend="librdf-statement-encode-parts"><function>librdf_statement_encode_parts()</function></link> <link linkend="librdf-statement-decode-parts"><function>librdf_statement_decode_parts()</function></link>
+<link linkend="librdf-new-stream-from-node-iterator"><function>librdf_new_stream_from_node_iterator()</function></link>.</para>
+<refsect3 id="librdf-statement-part.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-STATEMENT-SUBJECT:CAPS">LIBRDF_STATEMENT_SUBJECT</para></entry>
+<entry role="enum_member_description"><para>Subject of a statement.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-STATEMENT-PREDICATE:CAPS">LIBRDF_STATEMENT_PREDICATE</para></entry>
+<entry role="enum_member_description"><para>Predicate of a statement.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-STATEMENT-OBJECT:CAPS">LIBRDF_STATEMENT_OBJECT</para></entry>
+<entry role="enum_member_description"><para>Object of a statement.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-STATEMENT-ALL:CAPS">LIBRDF_STATEMENT_ALL</para></entry>
+<entry role="enum_member_description"><para>All parts of a statement.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+
+</refentry>

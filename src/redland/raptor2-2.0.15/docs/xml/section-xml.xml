@@ -1,0 +1,1091 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-xml">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-xml.top_of_page">section-xml</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-xml</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-xml.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="raptor-xml-element"><returnvalue>raptor_xml_element</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-xml-element">raptor_new_xml_element</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-xml-element"><returnvalue>raptor_xml_element</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-xml-element-from-namespace-local-name">raptor_new_xml_element_from_namespace_local_name</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-xml-element">raptor_free_xml_element</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-qname"><returnvalue>raptor_qname</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-xml-element-get-name">raptor_xml_element_get_name</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-qname"><returnvalue>raptor_qname</returnvalue></link>&#160;**
+</entry><entry role="function_name"><link linkend="raptor-xml-element-get-attributes">raptor_xml_element_get_attributes</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-element-get-attributes-count">raptor_xml_element_get_attributes_count</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-element-set-attributes">raptor_xml_element_set_attributes</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-element-declare-namespace">raptor_xml_element_declare_namespace</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-element-is-empty">raptor_xml_element_is_empty</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-xml-element-get-language">raptor_xml_element_get_language</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-element-write">raptor_xml_element_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-xml-writer"><returnvalue>raptor_xml_writer</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-xml-writer">raptor_new_xml_writer</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-xml-writer">raptor_free_xml_writer</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-writer-empty-element">raptor_xml_writer_empty_element</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-writer-start-element">raptor_xml_writer_start_element</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-writer-end-element">raptor_xml_writer_end_element</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-writer-cdata">raptor_xml_writer_cdata</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-writer-cdata-counted">raptor_xml_writer_cdata_counted</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-writer-raw">raptor_xml_writer_raw</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-writer-raw-counted">raptor_xml_writer_raw_counted</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-writer-comment">raptor_xml_writer_comment</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-writer-comment-counted">raptor_xml_writer_comment_counted</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-writer-flush">raptor_xml_writer_flush</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-writer-newline">raptor_xml_writer_newline</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-writer-get-depth">raptor_xml_writer_get_depth</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-writer-set-option">raptor_xml_writer_set_option</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-writer-get-option">raptor_xml_writer_get_option</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-escape-string-any">raptor_xml_escape_string_any</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-escape-string-any-write">raptor_xml_escape_string_any_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-escape-string">raptor_xml_escape_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-escape-string-write">raptor_xml_escape_string_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-name-check">raptor_xml_name_check</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-xml.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-xml-element">raptor_xml_element</link></entry></row>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-xml-writer">raptor_xml_writer</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-xml.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-xml.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-new-xml-element" role="function">
+<title>raptor_new_xml_element&#160;()</title>
+<indexterm zone="raptor-new-xml-element"><primary>raptor_new_xml_element</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-xml-element"><returnvalue>raptor_xml_element</returnvalue></link>&#160;*
+raptor_new_xml_element (<parameter><link linkend="raptor-qname"><type>raptor_qname</type></link> *name</parameter>,
+                        <parameter>const unsigned <link linkend="char"><type>char</type></link> *xml_language</parameter>,
+                        <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *xml_base</parameter>);</programlisting>
+<para>Constructor - create a new XML element from a QName</para>
+<refsect3 id="raptor-new-xml-element.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>The XML element name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_language</para></entry>
+<entry role="parameter_description"><para>the in-scope XML language (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_base</para></entry>
+<entry role="parameter_description"><para>the in-scope XML base URI (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-xml-element.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-xml-element-from-namespace-local-name" role="function">
+<title>raptor_new_xml_element_from_namespace_local_name&#160;()</title>
+<indexterm zone="raptor-new-xml-element-from-namespace-local-name"><primary>raptor_new_xml_element_from_namespace_local_name</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-xml-element"><returnvalue>raptor_xml_element</returnvalue></link>&#160;*
+raptor_new_xml_element_from_namespace_local_name
+                               (<parameter><link linkend="raptor-namespace"><type>raptor_namespace</type></link> *ns</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *name</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *xml_language</parameter>,
+                                <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *xml_base</parameter>);</programlisting>
+<para>Constructor - create a new XML element from an XML namespace and a local name</para>
+<para>Added in 1.4.16.</para>
+<refsect3 id="raptor-new-xml-element-from-namespace-local-name.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>ns</para></entry>
+<entry role="parameter_description"><para>namespace</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the XML element local name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_language</para></entry>
+<entry role="parameter_description"><para>the in-scope XML language (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_base</para></entry>
+<entry role="parameter_description"><para>base uri (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-xml-element-from-namespace-local-name.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-xml-element" role="function">
+<title>raptor_free_xml_element&#160;()</title>
+<indexterm zone="raptor-free-xml-element"><primary>raptor_free_xml_element</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_xml_element (<parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *element</parameter>);</programlisting>
+<para>Destructor - destroy a raptor_xml_element object.</para>
+<refsect3 id="raptor-free-xml-element.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>element</para></entry>
+<entry role="parameter_description"><para>XML Element</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-element-get-name" role="function">
+<title>raptor_xml_element_get_name&#160;()</title>
+<indexterm zone="raptor-xml-element-get-name"><primary>raptor_xml_element_get_name</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-qname"><returnvalue>raptor_qname</returnvalue></link>&#160;*
+raptor_xml_element_get_name (<parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *xml_element</parameter>);</programlisting>
+<para>Get the XML Name of an XML element</para>
+<refsect3 id="raptor-xml-element-get-name.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_element</para></entry>
+<entry role="parameter_description"><para>XML Element</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-element-get-name.returns" role="returns">
+<title>Returns</title>
+<para> The Name.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-element-get-attributes" role="function">
+<title>raptor_xml_element_get_attributes&#160;()</title>
+<indexterm zone="raptor-xml-element-get-attributes"><primary>raptor_xml_element_get_attributes</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-qname"><returnvalue>raptor_qname</returnvalue></link>&#160;**
+raptor_xml_element_get_attributes (<parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *xml_element</parameter>);</programlisting>
+<para>Get the array of attributes on the XML element.</para>
+<para>Use <link linkend="raptor-xml-element-get-attributes-count"><function>raptor_xml_element_get_attributes_count()</function></link> to get the count
+of the array size.</para>
+<refsect3 id="raptor-xml-element-get-attributes.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_element</para></entry>
+<entry role="parameter_description"><para>XML Element</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-element-get-attributes.returns" role="returns">
+<title>Returns</title>
+<para> the array of qnames or NULL if none are present.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-element-get-attributes-count" role="function">
+<title>raptor_xml_element_get_attributes_count&#160;()</title>
+<indexterm zone="raptor-xml-element-get-attributes-count"><primary>raptor_xml_element_get_attributes_count</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_xml_element_get_attributes_count
+                               (<parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *xml_element</parameter>);</programlisting>
+<para>Get the number of attributes on the XML element.</para>
+<refsect3 id="raptor-xml-element-get-attributes-count.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_element</para></entry>
+<entry role="parameter_description"><para>XML Element</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-element-get-attributes-count.returns" role="returns">
+<title>Returns</title>
+<para> Integer number of attributes - 0 or more.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-element-set-attributes" role="function">
+<title>raptor_xml_element_set_attributes&#160;()</title>
+<indexterm zone="raptor-xml-element-set-attributes"><primary>raptor_xml_element_set_attributes</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_xml_element_set_attributes (<parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *xml_element</parameter>,
+                                   <parameter><link linkend="raptor-qname"><type>raptor_qname</type></link> **attributes</parameter>,
+                                   <parameter><link linkend="int"><type>int</type></link> count</parameter>);</programlisting>
+<para>Set the attributes on an XML element.</para>
+<para>The <parameter>attributes</parameter>
+ array becomes owned by the element after this function.</para>
+<refsect3 id="raptor-xml-element-set-attributes.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_element</para></entry>
+<entry role="parameter_description"><para>XML Element</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>attributes</para></entry>
+<entry role="parameter_description"><para>Array of XML Qname attributes with values</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>count</para></entry>
+<entry role="parameter_description"><para>Length of array</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-element-declare-namespace" role="function">
+<title>raptor_xml_element_declare_namespace&#160;()</title>
+<indexterm zone="raptor-xml-element-declare-namespace"><primary>raptor_xml_element_declare_namespace</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_xml_element_declare_namespace (<parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *xml_element</parameter>,
+                                      <parameter><link linkend="raptor-namespace"><type>raptor_namespace</type></link> *nspace</parameter>);</programlisting>
+<para>Declare a namespace on the XML Element.</para>
+<refsect3 id="raptor-xml-element-declare-namespace.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_element</para></entry>
+<entry role="parameter_description"><para>XML Element</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nspace</para></entry>
+<entry role="parameter_description"><para>raptor_namespace to declare</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-element-declare-namespace.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if namespace cannot be declared </para>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-element-is-empty" role="function">
+<title>raptor_xml_element_is_empty&#160;()</title>
+<indexterm zone="raptor-xml-element-is-empty"><primary>raptor_xml_element_is_empty</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_xml_element_is_empty (<parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *xml_element</parameter>);</programlisting>
+<para>Check if an XML Element is empty.</para>
+<refsect3 id="raptor-xml-element-is-empty.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_element</para></entry>
+<entry role="parameter_description"><para>XML Element</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-element-is-empty.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if the element is empty.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-element-get-language" role="function">
+<title>raptor_xml_element_get_language&#160;()</title>
+<indexterm zone="raptor-xml-element-get-language"><primary>raptor_xml_element_get_language</primary></indexterm>
+<programlisting language="C">const unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_xml_element_get_language (<parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *xml_element</parameter>);</programlisting>
+<para>Get the XML language of the element.</para>
+<refsect3 id="raptor-xml-element-get-language.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_element</para></entry>
+<entry role="parameter_description"><para>XML Element</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-element-get-language.returns" role="returns">
+<title>Returns</title>
+<para> XML language or NULL if none in scope</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-element-write" role="function">
+<title>raptor_xml_element_write&#160;()</title>
+<indexterm zone="raptor-xml-element-write"><primary>raptor_xml_element_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_xml_element_write (<parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *element</parameter>,
+                          <parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                          <parameter><link linkend="int"><type>int</type></link> is_empty</parameter>,
+                          <parameter><link linkend="int"><type>int</type></link> is_end</parameter>,
+                          <parameter><link linkend="int"><type>int</type></link> depth</parameter>,
+                          <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a formatted XML element to a <link linkend="raptor-iostream"><type>raptor_iostream</type></link></para>
+<refsect3 id="raptor-xml-element-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>element</para></entry>
+<entry role="parameter_description"><para>XML element to format</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>Namespace stack context to use in formatting</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>is_empty</para></entry>
+<entry role="parameter_description"><para>non-0 if element is empty</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>is_end</para></entry>
+<entry role="parameter_description"><para>non-0 if this is an end element (else is a start element)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>depth</para></entry>
+<entry role="parameter_description"><para>XML element depth</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>iostream object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-element-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-xml-writer" role="function">
+<title>raptor_new_xml_writer&#160;()</title>
+<indexterm zone="raptor-new-xml-writer"><primary>raptor_new_xml_writer</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-xml-writer"><returnvalue>raptor_xml_writer</returnvalue></link>&#160;*
+raptor_new_xml_writer (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                       <parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                       <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Constructor - Create a new XML Writer writing XML to a raptor_iostream</para>
+<refsect3 id="raptor-new-xml-writer.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>Namespace stack for the writer to start with (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>I/O stream to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-xml-writer.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-xml-writer" role="function">
+<title>raptor_free_xml_writer&#160;()</title>
+<indexterm zone="raptor-free-xml-writer"><primary>raptor_free_xml_writer</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_xml_writer (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>);</programlisting>
+<para>Destructor - Free XML Writer</para>
+<refsect3 id="raptor-free-xml-writer.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para>XML writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-writer-empty-element" role="function">
+<title>raptor_xml_writer_empty_element&#160;()</title>
+<indexterm zone="raptor-xml-writer-empty-element"><primary>raptor_xml_writer_empty_element</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_xml_writer_empty_element (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>,
+                                 <parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *element</parameter>);</programlisting>
+<para>Write an empty XML element to the XML writer.</para>
+<para>Closes any previous empty element if XML writer option AUTO_EMPTY
+is enabled.</para>
+<refsect3 id="raptor-xml-writer-empty-element.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para>XML writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>element</para></entry>
+<entry role="parameter_description"><para>XML element object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-writer-start-element" role="function">
+<title>raptor_xml_writer_start_element&#160;()</title>
+<indexterm zone="raptor-xml-writer-start-element"><primary>raptor_xml_writer_start_element</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_xml_writer_start_element (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>,
+                                 <parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *element</parameter>);</programlisting>
+<para>Write a start XML element to the XML writer.</para>
+<para>Closes any previous empty element if XML writer option AUTO_EMPTY
+is enabled.</para>
+<para>Indents the start element if XML writer option AUTO_INDENT is enabled.</para>
+<refsect3 id="raptor-xml-writer-start-element.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para>XML writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>element</para></entry>
+<entry role="parameter_description"><para>XML element object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-writer-end-element" role="function">
+<title>raptor_xml_writer_end_element&#160;()</title>
+<indexterm zone="raptor-xml-writer-end-element"><primary>raptor_xml_writer_end_element</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_xml_writer_end_element (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>,
+                               <parameter><link linkend="raptor-xml-element"><type>raptor_xml_element</type></link> *element</parameter>);</programlisting>
+<para>Write an end XML element to the XML writer.</para>
+<para>Indents the end element if XML writer option AUTO_INDENT is enabled.</para>
+<refsect3 id="raptor-xml-writer-end-element.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para>XML writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>element</para></entry>
+<entry role="parameter_description"><para>XML element object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-writer-cdata" role="function">
+<title>raptor_xml_writer_cdata&#160;()</title>
+<indexterm zone="raptor-xml-writer-cdata"><primary>raptor_xml_writer_cdata</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_xml_writer_cdata (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>,
+                         <parameter>const unsigned <link linkend="char"><type>char</type></link> *s</parameter>);</programlisting>
+<para>Write CDATA XML-escaped to the XML writer.</para>
+<para>Closes any previous empty element if XML writer option AUTO_EMPTY
+is enabled.</para>
+<refsect3 id="raptor-xml-writer-cdata.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para>XML writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>s</para></entry>
+<entry role="parameter_description"><para>string to XML escape and write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-writer-cdata-counted" role="function">
+<title>raptor_xml_writer_cdata_counted&#160;()</title>
+<indexterm zone="raptor-xml-writer-cdata-counted"><primary>raptor_xml_writer_cdata_counted</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_xml_writer_cdata_counted (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>,
+                                 <parameter>const unsigned <link linkend="char"><type>char</type></link> *s</parameter>,
+                                 <parameter>unsigned <link linkend="int"><type>int</type></link> len</parameter>);</programlisting>
+<para>Write counted CDATA XML-escaped to the XML writer.</para>
+<para>Closes any previous empty element if XML writer option AUTO_EMPTY
+is enabled.</para>
+<refsect3 id="raptor-xml-writer-cdata-counted.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para>XML writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>s</para></entry>
+<entry role="parameter_description"><para>string to XML escape and write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-writer-raw" role="function">
+<title>raptor_xml_writer_raw&#160;()</title>
+<indexterm zone="raptor-xml-writer-raw"><primary>raptor_xml_writer_raw</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_xml_writer_raw (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>,
+                       <parameter>const unsigned <link linkend="char"><type>char</type></link> *s</parameter>);</programlisting>
+<para>Write a string raw to the XML writer.</para>
+<para>Closes any previous empty element if XML writer option AUTO_EMPTY
+is enabled.</para>
+<refsect3 id="raptor-xml-writer-raw.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para>XML writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>s</para></entry>
+<entry role="parameter_description"><para>string to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-writer-raw-counted" role="function">
+<title>raptor_xml_writer_raw_counted&#160;()</title>
+<indexterm zone="raptor-xml-writer-raw-counted"><primary>raptor_xml_writer_raw_counted</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_xml_writer_raw_counted (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>,
+                               <parameter>const unsigned <link linkend="char"><type>char</type></link> *s</parameter>,
+                               <parameter>unsigned <link linkend="int"><type>int</type></link> len</parameter>);</programlisting>
+<para>Write a counted string raw to the XML writer.</para>
+<para>Closes any previous empty element if XML writer option AUTO_EMPTY
+is enabled.</para>
+<refsect3 id="raptor-xml-writer-raw-counted.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para>XML writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>s</para></entry>
+<entry role="parameter_description"><para>string to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-writer-comment" role="function">
+<title>raptor_xml_writer_comment&#160;()</title>
+<indexterm zone="raptor-xml-writer-comment"><primary>raptor_xml_writer_comment</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_xml_writer_comment (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>,
+                           <parameter>const unsigned <link linkend="char"><type>char</type></link> *s</parameter>);</programlisting>
+<para>Write an XML comment to the XML writer.</para>
+<para>Closes any previous empty element if XML writer option AUTO_EMPTY
+is enabled.</para>
+<refsect3 id="raptor-xml-writer-comment.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para>XML writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>s</para></entry>
+<entry role="parameter_description"><para>comment string to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-writer-comment-counted" role="function">
+<title>raptor_xml_writer_comment_counted&#160;()</title>
+<indexterm zone="raptor-xml-writer-comment-counted"><primary>raptor_xml_writer_comment_counted</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_xml_writer_comment_counted (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>,
+                                   <parameter>const unsigned <link linkend="char"><type>char</type></link> *s</parameter>,
+                                   <parameter>unsigned <link linkend="int"><type>int</type></link> len</parameter>);</programlisting>
+<para>Write a counted XML comment to the XML writer.</para>
+<para>Closes any previous empty element if XML writer option AUTO_EMPTY
+is enabled.</para>
+<refsect3 id="raptor-xml-writer-comment-counted.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para>XML writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>s</para></entry>
+<entry role="parameter_description"><para>comment string to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-writer-flush" role="function">
+<title>raptor_xml_writer_flush&#160;()</title>
+<indexterm zone="raptor-xml-writer-flush"><primary>raptor_xml_writer_flush</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_xml_writer_flush (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>);</programlisting>
+<para>Finish the XML writer.</para>
+<refsect3 id="raptor-xml-writer-flush.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para>XML writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-writer-newline" role="function">
+<title>raptor_xml_writer_newline&#160;()</title>
+<indexterm zone="raptor-xml-writer-newline"><primary>raptor_xml_writer_newline</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_xml_writer_newline (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>);</programlisting>
+<para>Write a newline to the XML writer.</para>
+<para>Indents the next line if XML writer option AUTO_INDENT is enabled.</para>
+<refsect3 id="raptor-xml-writer-newline.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para>XML writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-writer-get-depth" role="function">
+<title>raptor_xml_writer_get_depth&#160;()</title>
+<indexterm zone="raptor-xml-writer-get-depth"><primary>raptor_xml_writer_get_depth</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_xml_writer_get_depth (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>);</programlisting>
+<para>Get the current XML Writer element depth</para>
+<refsect3 id="raptor-xml-writer-get-depth.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> xml writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-writer-get-depth.returns" role="returns">
+<title>Returns</title>
+<para> element stack depth</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-writer-set-option" role="function">
+<title>raptor_xml_writer_set_option&#160;()</title>
+<indexterm zone="raptor-xml-writer-set-option"><primary>raptor_xml_writer_set_option</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_xml_writer_set_option (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>,
+                              <parameter><link linkend="raptor-option"><type>raptor_option</type></link> option</parameter>,
+                              <parameter><link linkend="char"><type>char</type></link> *string</parameter>,
+                              <parameter><link linkend="int"><type>int</type></link> integer</parameter>);</programlisting>
+<para>Set xml_writer option.</para>
+<para>If <parameter>string</parameter>
+ is not NULL and the option type is numeric, the string
+value is converted to an integer and used in preference to <parameter>integer</parameter>
+.</para>
+<para>If <parameter>string</parameter>
+ is NULL and the option type is not numeric, an error is
+returned.</para>
+<para>The <parameter>string</parameter>
+ values used are copied.</para>
+<para>The allowed options are available via
+<link linkend="raptor-world-get-option-description"><function>raptor_world_get_option_description()</function></link>.</para>
+<refsect3 id="raptor-xml-writer-set-option.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> xml_writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>option</para></entry>
+<entry role="parameter_description"><para>option to set from enumerated <link linkend="raptor-option"><type>raptor_option</type></link> values</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string option value (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>integer</para></entry>
+<entry role="parameter_description"><para>integer option value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-writer-set-option.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure or if the option is unknown</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-writer-get-option" role="function">
+<title>raptor_xml_writer_get_option&#160;()</title>
+<indexterm zone="raptor-xml-writer-get-option"><primary>raptor_xml_writer_get_option</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_xml_writer_get_option (<parameter><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> *xml_writer</parameter>,
+                              <parameter><link linkend="raptor-option"><type>raptor_option</type></link> option</parameter>,
+                              <parameter><link linkend="char"><type>char</type></link> **string_p</parameter>,
+                              <parameter><link linkend="int"><type>int</type></link> *integer_p</parameter>);</programlisting>
+<para>Get xml_writer option.</para>
+<para>Any string value returned in *<parameter>string_p</parameter>
+ is shared and must
+be copied by the caller.</para>
+<para>The allowed options are available via
+<link linkend="raptor-world-get-option-description"><function>raptor_world_get_option_description()</function></link>.</para>
+<refsect3 id="raptor-xml-writer-get-option.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>xml_writer</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-xml-writer"><type>raptor_xml_writer</type></link> xml_writer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>option</para></entry>
+<entry role="parameter_description"><para>option to get value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string_p</para></entry>
+<entry role="parameter_description"><para>pointer to where to store string value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>integer_p</para></entry>
+<entry role="parameter_description"><para>pointer to where to store integer value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-writer-get-option.returns" role="returns">
+<title>Returns</title>
+<para> option value or &lt; 0 for an illegal option</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-escape-string-any" role="function">
+<title>raptor_xml_escape_string_any&#160;()</title>
+<indexterm zone="raptor-xml-escape-string-any"><primary>raptor_xml_escape_string_any</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_xml_escape_string_any (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                              <parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                              <parameter><link linkend="size-t"><type>size_t</type></link> len</parameter>,
+                              <parameter>unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                              <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>,
+                              <parameter><link linkend="char"><type>char</type></link> quote</parameter>,
+                              <parameter><link linkend="int"><type>int</type></link> xml_version</parameter>);</programlisting>
+<para>Return an XML-escaped version a string.</para>
+<para>Follows</para>
+<ulink url="http://www.w3.org/TR/xml-c14n#ProcessingModel">Canonical XML rules on Text Nodes and Attribute Nodes</ulink>
+<para>Both:
+  Replaces <literal>&amp;</literal> and <literal>&lt;</literal>
+  with <literal>&amp;amp;</literal> and <literal>&amp;lt;</literal>
+respectively, preserving other characters.</para>
+<para>Text Nodes:
+  <literal>&gt;</literal> is turned into <literal>&amp;gt;</literal>
+  #<link linkend="xD"><type>xD</type></link> is turned into <literal>&amp;#<link linkend="xD"><type>xD</type></link>;</literal></para>
+<para>Attribute Nodes:
+  <literal>&gt;</literal> is generated not <literal>&amp;gt</literal>.
+  #<link linkend="x9"><type>x9</type></link>, #<link linkend="xA"><type>xA</type></link> and #<link linkend="xD"><type>xD</type></link> are turned into
+  <literal>&amp;#<link linkend="x9"><type>x9</type></link>;</literal>,
+  <literal>&amp;#<link linkend="xA"><type>xA</type></link>;</literal> and
+  <literal>&amp;#<link linkend="xD"><type>xD</type></link>;</literal>
+  entities.</para>
+<para>If <parameter>quote</parameter>
+ is given it can be either of '\'' or '\"'
+which will be turned into <literal>&amp;apos;</literal> or
+<literal>&amp;quot;</literal> respectively.
+ASCII NUL ('\0') or any other character will not be escaped.</para>
+<para>If <parameter>buffer</parameter>
+ is NULL, no work is done but the size of buffer
+required is returned.  The output in buffer remains in UTF-8.</para>
+<para>If the input <parameter>string</parameter>
+ is empty, a single NUL will be written to the
+buffer.</para>
+<refsect3 id="raptor-xml-escape-string-any.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string to XML escape (UTF-8)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>the buffer to use for new string (UTF-8) or NULL to just calculate expected length</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>quote</para></entry>
+<entry role="parameter_description"><para>optional quote character to escape for attribute content, or 0</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_version</para></entry>
+<entry role="parameter_description"><para>XML 1.0 (10) or XML 1.1 (11)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-escape-string-any.returns" role="returns">
+<title>Returns</title>
+<para> the number of bytes required / used or &lt;0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-escape-string-any-write" role="function">
+<title>raptor_xml_escape_string_any_write&#160;()</title>
+<indexterm zone="raptor-xml-escape-string-any-write"><primary>raptor_xml_escape_string_any_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_xml_escape_string_any_write (<parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                                    <parameter><link linkend="size-t"><type>size_t</type></link> len</parameter>,
+                                    <parameter><link linkend="char"><type>char</type></link> quote</parameter>,
+                                    <parameter><link linkend="int"><type>int</type></link> xml_version</parameter>,
+                                    <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write an XML-escaped version of a string to an iostream.</para>
+<para>See <link linkend="raptor-xml-escape-string"><function>raptor_xml_escape_string()</function></link> for the escapes performed and
+the conditions on <parameter>quote</parameter>
+ and <parameter>string</parameter>
+.  XML 1.1 allows additional
+characters in XML such as U+0001 to U+001F inclusive.</para>
+<refsect3 id="raptor-xml-escape-string-any-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string to XML escape (UTF-8)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>quote</para></entry>
+<entry role="parameter_description"><para>optional quote character to escape for attribute content, or 0</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_version</para></entry>
+<entry role="parameter_description"><para>XML version - 10 (XML 1.0) or 11 (XML 1.1)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>the <link linkend="raptor-iostream"><type>raptor_iostream</type></link> to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-escape-string-any-write.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-escape-string" role="function">
+<title>raptor_xml_escape_string&#160;()</title>
+<indexterm zone="raptor-xml-escape-string"><primary>raptor_xml_escape_string</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_xml_escape_string (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                          <parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                          <parameter><link linkend="size-t"><type>size_t</type></link> len</parameter>,
+                          <parameter>unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                          <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>,
+                          <parameter><link linkend="char"><type>char</type></link> quote</parameter>);</programlisting>
+<para>Return an XML 1.0-escaped version a string.</para>
+<para>See <link linkend="raptor-xml-escape-string-any"><function>raptor_xml_escape_string_any()</function></link> for the conditions on parameters.</para>
+<refsect3 id="raptor-xml-escape-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string to XML 1.0 escape (UTF-8)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>the buffer to use for new string (UTF-8) or NULL to just calculate expected length.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>quote</para></entry>
+<entry role="parameter_description"><para>optional quote character to escape for attribute content, or 0</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-escape-string.returns" role="returns">
+<title>Returns</title>
+<para> the number of bytes required / used or &lt;0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-escape-string-write" role="function">
+<title>raptor_xml_escape_string_write&#160;()</title>
+<indexterm zone="raptor-xml-escape-string-write"><primary>raptor_xml_escape_string_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_xml_escape_string_write (<parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> len</parameter>,
+                                <parameter><link linkend="char"><type>char</type></link> quote</parameter>,
+                                <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write an XML 1.0-escaped version of a string to an iostream.</para>
+<para>See <link linkend="raptor-xml-escape-string-any-write"><function>raptor_xml_escape_string_any_write()</function></link> for the escapes
+performed and the conditions on <parameter>quote</parameter>
+ and <parameter>string</parameter>
+.</para>
+<refsect3 id="raptor-xml-escape-string-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string to XML 1.0 escape (UTF-8)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>quote</para></entry>
+<entry role="parameter_description"><para>optional quote character to escape for attribute content, or 0</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>the <link linkend="raptor-iostream"><type>raptor_iostream</type></link> to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-escape-string-write.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-name-check" role="function">
+<title>raptor_xml_name_check&#160;()</title>
+<indexterm zone="raptor-xml-name-check"><primary>raptor_xml_name_check</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_xml_name_check (<parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                       <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>,
+                       <parameter><link linkend="int"><type>int</type></link> xml_version</parameter>);</programlisting>
+<para>Check a string is a legal XML name (and legal UTF8).</para>
+<para>xml_version is either 10 (for XML 1.0) or 11 for (XML 1.1). Any
+other version fails.</para>
+<refsect3 id="raptor-xml-name-check.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>UTF-8 name string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_version</para></entry>
+<entry role="parameter_description"><para>XML version</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-name-check.returns" role="returns">
+<title>Returns</title>
+<para> Non 0 if the string is a legal XML name</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-xml.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-xml-element" role="typedef">
+<title>raptor_xml_element</title>
+<indexterm zone="raptor-xml-element"><primary>raptor_xml_element</primary></indexterm>
+<programlisting language="C">raptor_xml_element* raptor_xml_element;
+</programlisting>
+<para>Raptor XML Element class</para>
+</refsect2>
+<refsect2 id="raptor-xml-writer" role="typedef">
+<title>raptor_xml_writer</title>
+<indexterm zone="raptor-xml-writer"><primary>raptor_xml_writer</primary></indexterm>
+<programlisting language="C">raptor_xml_writer* raptor_xml_writer;
+</programlisting>
+<para>Raptor XML Writer class</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

@@ -1,0 +1,7 @@
+<!ENTITY package "raptor2">
+<!ENTITY package_bugreport "http://bugs.librdf.org/">
+<!ENTITY package_name "Raptor RDF Parser and Serializer library">
+<!ENTITY package_string "Raptor RDF Parser and Serializer library 2.0.15">
+<!ENTITY package_tarname "raptor2">
+<!ENTITY package_url "">
+<!ENTITY package_version "2.0.15">

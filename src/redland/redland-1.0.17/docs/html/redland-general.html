@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>general: Redland RDF Library Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="Redland RDF Library Manual">
+<link rel="up" href="reference-manual.html" title="Part II. Reference Manual">
+<link rel="prev" href="redland-world.html" title="world">
+<link rel="next" href="redland-concepts.html" title="concepts">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#redland-general.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference-manual.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="redland-world.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="redland-concepts.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="redland-general"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="redland-general.top_of_page"></a>general</span></h2>
+<p>general</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="redland-general.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-general.html#librdf-alloc-memory" title="librdf_alloc_memory ()">librdf_alloc_memory</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-general.html#librdf-calloc-memory" title="librdf_calloc_memory ()">librdf_calloc_memory</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-general.html#librdf-free-memory" title="librdf_free_memory ()">librdf_free_memory</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-general.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="redland-general.html#LIBRDF-VERSION:CAPS" title="LIBRDF_VERSION">LIBRDF_VERSION</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="redland-general.html#LIBRDF-VERSION-MAJOR:CAPS" title="LIBRDF_VERSION_MAJOR">LIBRDF_VERSION_MAJOR</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="redland-general.html#LIBRDF-VERSION-MINOR:CAPS" title="LIBRDF_VERSION_MINOR">LIBRDF_VERSION_MINOR</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="redland-general.html#LIBRDF-VERSION-RELEASE:CAPS" title="LIBRDF_VERSION_RELEASE">LIBRDF_VERSION_RELEASE</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="redland-general.html#LIBRDF-VERSION-STRING:CAPS" title="LIBRDF_VERSION_STRING">LIBRDF_VERSION_STRING</a></td>
+</tr>
+<tr>
+<td class="variable_type">extern const unsigned int </td>
+<td class="function_name"><a class="link" href="redland-general.html#librdf-version-decimal" title="librdf_version_decimal">librdf_version_decimal</a></td>
+</tr>
+<tr>
+<td class="variable_type">extern const unsigned int </td>
+<td class="function_name"><a class="link" href="redland-general.html#librdf-version-major" title="librdf_version_major">librdf_version_major</a></td>
+</tr>
+<tr>
+<td class="variable_type">extern const unsigned int </td>
+<td class="function_name"><a class="link" href="redland-general.html#librdf-version-release" title="librdf_version_release">librdf_version_release</a></td>
+</tr>
+<tr>
+<td class="variable_type">extern const unsigned int </td>
+<td class="function_name"><a class="link" href="redland-general.html#librdf-version-minor" title="librdf_version_minor">librdf_version_minor</a></td>
+</tr>
+<tr>
+<td class="variable_type">extern const char * const </td>
+<td class="function_name"><a class="link" href="redland-general.html#librdf-version-string" title="librdf_version_string">librdf_version_string</a></td>
+</tr>
+<tr>
+<td class="variable_type">extern const char * const </td>
+<td class="function_name"><a class="link" href="redland-general.html#librdf-copyright-string" title="librdf_copyright_string">librdf_copyright_string</a></td>
+</tr>
+<tr>
+<td class="variable_type">extern const char * const </td>
+<td class="function_name"><a class="link" href="redland-general.html#librdf-short-copyright-string" title="librdf_short_copyright_string">librdf_short_copyright_string</a></td>
+</tr>
+<tr>
+<td class="variable_type">extern const char * const </td>
+<td class="function_name"><a class="link" href="redland-general.html#librdf-license-string" title="librdf_license_string">librdf_license_string</a></td>
+</tr>
+<tr>
+<td class="variable_type">extern const char * const </td>
+<td class="function_name"><a class="link" href="redland-general.html#librdf-home-url-string" title="librdf_home_url_string">librdf_home_url_string</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="redland-general.html#REDLAND-DEPRECATED:CAPS" title="REDLAND_DEPRECATED">REDLAND_DEPRECATED</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-general.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="redland-general.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="librdf-alloc-memory"></a><h3>librdf_alloc_memory ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span> *
+librdf_alloc_memory (<em class="parameter"><code><span class="type">size_t</span> size</code></em>);</pre>
+<p>Allocate memory inside the library similar to <code class="function">malloc()</code>.</p>
+<p>Required for some runtimes where memory must be freed within the same
+shared object it was allocated in.</p>
+<div class="refsect3">
+<a name="librdf-alloc-memory.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>size</p></td>
+<td class="parameter_description"><p>alloc size</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-alloc-memory.returns"></a><h4>Returns</h4>
+<p> pointer to memory or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-calloc-memory"></a><h3>librdf_calloc_memory ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span> *
+librdf_calloc_memory (<em class="parameter"><code><span class="type">size_t</span> nmemb</code></em>,
+                      <em class="parameter"><code><span class="type">size_t</span> size</code></em>);</pre>
+<p>Allocate zeroed array of items inside the library similar to <code class="function">calloc()</code>.</p>
+<p>Required for some runtimes where memory must be freed within the same
+shared object it was allocated in.</p>
+<div class="refsect3">
+<a name="librdf-calloc-memory.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>nmemb</p></td>
+<td class="parameter_description"><p>number of members</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>size</p></td>
+<td class="parameter_description"><p>size of member</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-calloc-memory.returns"></a><h4>Returns</h4>
+<p> pointer to memory or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-free-memory"></a><h3>librdf_free_memory ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_free_memory (<em class="parameter"><code><span class="type">void</span> *ptr</code></em>);</pre>
+<p>Free memory allocated in the library.</p>
+<p>Required for some runtimes where memory must be freed within the same
+shared object it was allocated in.</p>
+<div class="refsect3">
+<a name="librdf-free-memory.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>ptr</p></td>
+<td class="parameter_description"><p>pointer to free</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="redland-general.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="LIBRDF-VERSION:CAPS"></a><h3>LIBRDF_VERSION</h3>
+<pre class="programlisting">#define LIBRDF_VERSION 10017
+</pre>
+<p>Redland librdf library version number</p>
+<p>Format: major * 10000 + minor * 100 + release</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="LIBRDF-VERSION-MAJOR:CAPS"></a><h3>LIBRDF_VERSION_MAJOR</h3>
+<pre class="programlisting">#define LIBRDF_VERSION_MAJOR 1
+</pre>
+<p>Redland librdf library major version</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="LIBRDF-VERSION-MINOR:CAPS"></a><h3>LIBRDF_VERSION_MINOR</h3>
+<pre class="programlisting">#define LIBRDF_VERSION_MINOR 0
+</pre>
+<p>Redland librdf library minor version</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="LIBRDF-VERSION-RELEASE:CAPS"></a><h3>LIBRDF_VERSION_RELEASE</h3>
+<pre class="programlisting">#define LIBRDF_VERSION_RELEASE 17
+</pre>
+<p>Redland librdf library release</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="LIBRDF-VERSION-STRING:CAPS"></a><h3>LIBRDF_VERSION_STRING</h3>
+<pre class="programlisting">#define LIBRDF_VERSION_STRING "1.0.17"
+</pre>
+<p>Redland librdf library version string</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-version-decimal"></a><h3>librdf_version_decimal</h3>
+<pre class="programlisting">extern const unsigned int librdf_version_decimal;
+</pre>
+<p>Library full version as a decimal integer.</p>
+<p>See also <a class="link" href="redland-general.html#librdf-version-string" title="librdf_version_string"><span class="type">librdf_version_string</span></a>.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-version-major"></a><h3>librdf_version_major</h3>
+<pre class="programlisting">extern const unsigned int librdf_version_major;
+</pre>
+<p>Library major version number as a decimal integer.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-version-release"></a><h3>librdf_version_release</h3>
+<pre class="programlisting">extern const unsigned int librdf_version_release;
+</pre>
+<p>Library release version number as a decimal integer.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-version-minor"></a><h3>librdf_version_minor</h3>
+<pre class="programlisting">extern const unsigned int librdf_version_minor;
+</pre>
+<p>Library minor version number as a decimal integer.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-version-string"></a><h3>librdf_version_string</h3>
+<pre class="programlisting">extern const char * const librdf_version_string;
+</pre>
+<p>Library full version as a string.</p>
+<p>See also <a class="link" href="redland-general.html#librdf-version-decimal" title="librdf_version_decimal"><span class="type">librdf_version_decimal</span></a>.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-copyright-string"></a><h3>librdf_copyright_string</h3>
+<pre class="programlisting">extern const char * const librdf_copyright_string;
+</pre>
+<p>Copyright string (multiple lines).</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-short-copyright-string"></a><h3>librdf_short_copyright_string</h3>
+<pre class="programlisting">extern const char * const librdf_short_copyright_string;
+</pre>
+<p>Short copyright string (one line).</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-license-string"></a><h3>librdf_license_string</h3>
+<pre class="programlisting">extern const char * const librdf_license_string;
+</pre>
+<p>Redland librdf license string.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-home-url-string"></a><h3>librdf_home_url_string</h3>
+<pre class="programlisting">extern const char * const librdf_home_url_string;
+</pre>
+<p>Redland librdf home page URL.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="REDLAND-DEPRECATED:CAPS"></a><h3>REDLAND_DEPRECATED</h3>
+<pre class="programlisting">#define REDLAND_DEPRECATED __attribute__((deprecated))
+</pre>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.27</div>
+</body>
+</html>
