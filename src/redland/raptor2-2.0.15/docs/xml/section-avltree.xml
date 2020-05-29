@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-avltree">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-avltree.top_of_page">section-avltree</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-avltree</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-avltree.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="raptor-avltree"><returnvalue>raptor_avltree</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-avltree">raptor_new_avltree</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-avltree">raptor_free_avltree</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-avltree-add">raptor_avltree_add</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-avltree-delete">raptor_avltree_delete</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-avltree-print">raptor_avltree_print</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-avltree-remove">raptor_avltree_remove</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-avltree-search">raptor_avltree_search</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-avltree-set-print-handler">raptor_avltree_set_print_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-avltree-size">raptor_avltree_size</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-avltree-visit">raptor_avltree_visit</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-avltree-iterator"><returnvalue>raptor_avltree_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-avltree-iterator">raptor_new_avltree_iterator</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-avltree-iterator">raptor_free_avltree_iterator</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-avltree-iterator-get">raptor_avltree_iterator_get</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-avltree-iterator-is-end">raptor_avltree_iterator_is_end</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-avltree-iterator-next">raptor_avltree_iterator_next</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-avltree-visit-handler">*raptor_avltree_visit_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-avltree.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-avltree">raptor_avltree</link></entry></row>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="raptor-avltree-bitflags">raptor_avltree_bitflags</link></entry></row>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-avltree-iterator">raptor_avltree_iterator</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-avltree.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-avltree.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-new-avltree" role="function">
+<title>raptor_new_avltree&#160;()</title>
+<indexterm zone="raptor-new-avltree"><primary>raptor_new_avltree</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-avltree"><returnvalue>raptor_avltree</returnvalue></link>&#160;*
+raptor_new_avltree (<parameter><link linkend="raptor-data-compare-handler"><type>raptor_data_compare_handler</type></link> compare_handler</parameter>,
+                    <parameter><link linkend="raptor-data-free-handler"><type>raptor_data_free_handler</type></link> free_handler</parameter>,
+                    <parameter>unsigned <link linkend="int"><type>int</type></link> flags</parameter>);</programlisting>
+<para>AVL Tree Constructor</para>
+<refsect3 id="raptor-new-avltree.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>compare_handler</para></entry>
+<entry role="parameter_description"><para>item comparison handler for ordering</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>free_handler</para></entry>
+<entry role="parameter_description"><para>item free handler (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>flags</para></entry>
+<entry role="parameter_description"><para>AVLTree flags - bitmask of <link linkend="raptor-avltree-bitflags"><type>raptor_avltree_bitflags</type></link> flags.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-avltree.returns" role="returns">
+<title>Returns</title>
+<para> new AVL Tree or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-avltree" role="function">
+<title>raptor_free_avltree&#160;()</title>
+<indexterm zone="raptor-free-avltree"><primary>raptor_free_avltree</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_avltree (<parameter><link linkend="raptor-avltree"><type>raptor_avltree</type></link> *tree</parameter>);</programlisting>
+<para>AVL Tree destructor</para>
+<refsect3 id="raptor-free-avltree.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>tree</para></entry>
+<entry role="parameter_description"><para>AVLTree object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-avltree-add" role="function">
+<title>raptor_avltree_add&#160;()</title>
+<indexterm zone="raptor-avltree-add"><primary>raptor_avltree_add</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_avltree_add (<parameter><link linkend="raptor-avltree"><type>raptor_avltree</type></link> *tree</parameter>,
+                    <parameter><link linkend="void"><type>void</type></link> *p_data</parameter>);</programlisting>
+<para>add an item to an AVL Tree</para>
+<para>The item added becomes owned by the AVL Tree, and will be freed by
+the free_handler argument given to <link linkend="raptor-new-avltree"><function>raptor_new_avltree()</function></link>.</para>
+<refsect3 id="raptor-avltree-add.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>tree</para></entry>
+<entry role="parameter_description"><para>AVL Tree object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>p_data</para></entry>
+<entry role="parameter_description"><para>pointer to data item</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-avltree-add.returns" role="returns">
+<title>Returns</title>
+<para> 0 on success, &gt;0 if equivalent item exists (and the old element remains in the tree), &lt;0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-avltree-delete" role="function">
+<title>raptor_avltree_delete&#160;()</title>
+<indexterm zone="raptor-avltree-delete"><primary>raptor_avltree_delete</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_avltree_delete (<parameter><link linkend="raptor-avltree"><type>raptor_avltree</type></link> *tree</parameter>,
+                       <parameter><link linkend="void"><type>void</type></link> *p_data</parameter>);</programlisting>
+<para>Remove an item from an AVL Tree and free it</para>
+<refsect3 id="raptor-avltree-delete.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>tree</para></entry>
+<entry role="parameter_description"><para>AVL Tree object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>p_data</para></entry>
+<entry role="parameter_description"><para>pointer to data item</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-avltree-delete.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-avltree-print" role="function">
+<title>raptor_avltree_print&#160;()</title>
+<indexterm zone="raptor-avltree-print"><primary>raptor_avltree_print</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_avltree_print (<parameter><link linkend="raptor-avltree"><type>raptor_avltree</type></link> *tree</parameter>,
+                      <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *stream</parameter>);</programlisting>
+<para>Print the items in the tree in order to a stream (for debugging)</para>
+<refsect3 id="raptor-avltree-print.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>tree</para></entry>
+<entry role="parameter_description"><para>AVL Tree</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>stream to print to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-avltree-print.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-avltree-remove" role="function">
+<title>raptor_avltree_remove&#160;()</title>
+<indexterm zone="raptor-avltree-remove"><primary>raptor_avltree_remove</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+raptor_avltree_remove (<parameter><link linkend="raptor-avltree"><type>raptor_avltree</type></link> *tree</parameter>,
+                       <parameter><link linkend="void"><type>void</type></link> *p_data</parameter>);</programlisting>
+<para>Remove an item from an AVL Tree and return it</para>
+<para>The item removed is  no longer owned by the AVL Tree and is
+owned by the caller.</para>
+<refsect3 id="raptor-avltree-remove.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>tree</para></entry>
+<entry role="parameter_description"><para>AVL Tree object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>p_data</para></entry>
+<entry role="parameter_description"><para>pointer to data item</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-avltree-remove.returns" role="returns">
+<title>Returns</title>
+<para> object or NULL on failure or if not found</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-avltree-search" role="function">
+<title>raptor_avltree_search&#160;()</title>
+<indexterm zone="raptor-avltree-search"><primary>raptor_avltree_search</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+raptor_avltree_search (<parameter><link linkend="raptor-avltree"><type>raptor_avltree</type></link> *tree</parameter>,
+                       <parameter>const <link linkend="void"><type>void</type></link> *p_data</parameter>);</programlisting>
+<para>Find an item in an AVL Tree</para>
+<refsect3 id="raptor-avltree-search.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>tree</para></entry>
+<entry role="parameter_description"><para>AVL Tree object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>p_data</para></entry>
+<entry role="parameter_description"><para>pointer to data item</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-avltree-search.returns" role="returns">
+<title>Returns</title>
+<para> shared pointer to item (still owned by AVL Tree) or NULL on failure or if not found</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-avltree-set-print-handler" role="function">
+<title>raptor_avltree_set_print_handler&#160;()</title>
+<indexterm zone="raptor-avltree-set-print-handler"><primary>raptor_avltree_set_print_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_avltree_set_print_handler (<parameter><link linkend="raptor-avltree"><type>raptor_avltree</type></link> *tree</parameter>,
+                                  <parameter><link linkend="raptor-data-print-handler"><type>raptor_data_print_handler</type></link> print_handler</parameter>);</programlisting>
+<para>Set the handler for printing an item in a tree</para>
+<refsect3 id="raptor-avltree-set-print-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>tree</para></entry>
+<entry role="parameter_description"><para>AVL Tree object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>print_handler</para></entry>
+<entry role="parameter_description"><para>print function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-avltree-size" role="function">
+<title>raptor_avltree_size&#160;()</title>
+<indexterm zone="raptor-avltree-size"><primary>raptor_avltree_size</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_avltree_size (<parameter><link linkend="raptor-avltree"><type>raptor_avltree</type></link> *tree</parameter>);</programlisting>
+<para>Get the number of items in the AVL Tree</para>
+<refsect3 id="raptor-avltree-size.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>tree</para></entry>
+<entry role="parameter_description"><para>AVL Tree object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-avltree-size.returns" role="returns">
+<title>Returns</title>
+<para> number of items in tree</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-avltree-visit" role="function">
+<title>raptor_avltree_visit&#160;()</title>
+<indexterm zone="raptor-avltree-visit"><primary>raptor_avltree_visit</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_avltree_visit (<parameter><link linkend="raptor-avltree"><type>raptor_avltree</type></link> *tree</parameter>,
+                      <parameter><link linkend="raptor-avltree-visit-handler"><type>raptor_avltree_visit_handler</type></link> visit_handler</parameter>,
+                      <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>);</programlisting>
+<para>Perform an in-order visit of the items in the AVL Tree</para>
+<refsect3 id="raptor-avltree-visit.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>tree</para></entry>
+<entry role="parameter_description"><para>AVL Tree object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>visit_handler</para></entry>
+<entry role="parameter_description"><para>visit function to call at each item</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data pointer fo visit function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-avltree-visit.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if traversal was terminated early by <parameter>visit_handler</parameter>
+</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-avltree-iterator" role="function">
+<title>raptor_new_avltree_iterator&#160;()</title>
+<indexterm zone="raptor-new-avltree-iterator"><primary>raptor_new_avltree_iterator</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-avltree-iterator"><returnvalue>raptor_avltree_iterator</returnvalue></link>&#160;*
+raptor_new_avltree_iterator (<parameter><link linkend="raptor-avltree"><type>raptor_avltree</type></link> *tree</parameter>,
+                             <parameter><link linkend="void"><type>void</type></link> *range</parameter>,
+                             <parameter><link linkend="raptor-data-free-handler"><type>raptor_data_free_handler</type></link> range_free_handler</parameter>,
+                             <parameter><link linkend="int"><type>int</type></link> direction</parameter>);</programlisting>
+<para>Get an in-order iterator for the start of a range, or the entire contents</para>
+<para>If range is NULL, the entire tree is walked in order.  If range
+specifies a range (i.e. the tree comparison function will 'match'
+(return 0 for) range and /several/ nodes), the iterator will be
+placed at the leftmost child matching range, and
+raptor_avltree_iterator_next will iterate over all nodes (and only
+nodes) that match range.</para>
+<refsect3 id="raptor-new-avltree-iterator.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>tree</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-avltree"><type>raptor_avltree</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>range</para></entry>
+<entry role="parameter_description"><para>range</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>range_free_handler</para></entry>
+<entry role="parameter_description"><para>function to free <parameter>range</parameter>
+object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>direction</para></entry>
+<entry role="parameter_description"><para>&lt;0 to go 'backwards' otherwise 'forwards'</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-avltree-iterator.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-avltree-iterator"><type>raptor_avltree_iterator</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-avltree-iterator" role="function">
+<title>raptor_free_avltree_iterator&#160;()</title>
+<indexterm zone="raptor-free-avltree-iterator"><primary>raptor_free_avltree_iterator</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_avltree_iterator (<parameter><link linkend="raptor-avltree-iterator"><type>raptor_avltree_iterator</type></link> *iterator</parameter>);</programlisting>
+<para>AVL Tree Iterator destructor</para>
+<refsect3 id="raptor-free-avltree-iterator.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>iterator</para></entry>
+<entry role="parameter_description"><para>AVL Tree iterator object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-avltree-iterator-get" role="function">
+<title>raptor_avltree_iterator_get&#160;()</title>
+<indexterm zone="raptor-avltree-iterator-get"><primary>raptor_avltree_iterator_get</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+raptor_avltree_iterator_get (<parameter><link linkend="raptor-avltree-iterator"><type>raptor_avltree_iterator</type></link> *iterator</parameter>);</programlisting>
+<para>Get current iteration object</para>
+<refsect3 id="raptor-avltree-iterator-get.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>iterator</para></entry>
+<entry role="parameter_description"><para>AVL Tree iterator object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-avltree-iterator-get.returns" role="returns">
+<title>Returns</title>
+<para> object or NULL if iteration is finished</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-avltree-iterator-is-end" role="function">
+<title>raptor_avltree_iterator_is_end&#160;()</title>
+<indexterm zone="raptor-avltree-iterator-is-end"><primary>raptor_avltree_iterator_is_end</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_avltree_iterator_is_end (<parameter><link linkend="raptor-avltree-iterator"><type>raptor_avltree_iterator</type></link> *iterator</parameter>);</programlisting>
+<para>Test if an iteration is finished</para>
+<refsect3 id="raptor-avltree-iterator-is-end.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>iterator</para></entry>
+<entry role="parameter_description"><para>AVL Tree iterator object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-avltree-iterator-is-end.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if iteration is finished</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-avltree-iterator-next" role="function">
+<title>raptor_avltree_iterator_next&#160;()</title>
+<indexterm zone="raptor-avltree-iterator-next"><primary>raptor_avltree_iterator_next</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_avltree_iterator_next (<parameter><link linkend="raptor-avltree-iterator"><type>raptor_avltree_iterator</type></link> *iterator</parameter>);</programlisting>
+<para>Move iteration to next/prev object</para>
+<refsect3 id="raptor-avltree-iterator-next.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>iterator</para></entry>
+<entry role="parameter_description"><para>AVL Tree iterator object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-avltree-iterator-next.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if iteration is finished</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-avltree-visit-handler" role="function">
+<title>raptor_avltree_visit_handler&#160;()</title>
+<indexterm zone="raptor-avltree-visit-handler"><primary>raptor_avltree_visit_handler</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_avltree_visit_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="int"><type>int</type></link> depth</parameter>,
+                                 <parameter><link linkend="void"><type>void</type></link> *data</parameter>,
+                                 <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>);</programlisting>
+<para>AVL Tree visitor function as given to <link linkend="raptor-avltree-visit"><function>raptor_avltree_visit()</function></link></para>
+<refsect3 id="raptor-avltree-visit-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>depth</para></entry>
+<entry role="parameter_description"><para>depth of object in tree</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>data</para></entry>
+<entry role="parameter_description"><para>data object being visited</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data arg to <link linkend="raptor-avltree-visit"><function>raptor_avltree_visit()</function></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-avltree-visit-handler.returns" role="returns">
+<title>Returns</title>
+<para> non-0 to terminate visit early.</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-avltree.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-avltree" role="typedef">
+<title>raptor_avltree</title>
+<indexterm zone="raptor-avltree"><primary>raptor_avltree</primary></indexterm>
+<programlisting language="C">typedef struct raptor_avltree_s raptor_avltree;
+</programlisting>
+<para>AVL Tree</para>
+</refsect2>
+<refsect2 id="raptor-avltree-bitflags" role="enum">
+<title>enum raptor_avltree_bitflags</title>
+<indexterm zone="raptor-avltree-bitflags"><primary>raptor_avltree_bitflags</primary></indexterm>
+<para>Bit flags for AVL Tree class constructor <link linkend="raptor-new-avltree"><function>raptor_new_avltree()</function></link></para>
+<refsect3 id="raptor-avltree-bitflags.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-AVLTREE-FLAG-REPLACE-DUPLICATES:CAPS">RAPTOR_AVLTREE_FLAG_REPLACE_DUPLICATES</para></entry>
+<entry role="enum_member_description"><para>If set <link linkend="raptor-avltree-add"><function>raptor_avltree_add()</function></link> will replace any duplicate items. If not set, <link linkend="raptor-avltree-add"><function>raptor_avltree_add()</function></link> will not replace them and will return status &gt;0 when adding a duplicate. (Default is not set)</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-avltree-iterator" role="typedef">
+<title>raptor_avltree_iterator</title>
+<indexterm zone="raptor-avltree-iterator"><primary>raptor_avltree_iterator</primary></indexterm>
+<programlisting language="C">typedef struct raptor_avltree_iterator_s raptor_avltree_iterator;
+</programlisting>
+<para>AVL Tree Iterator as created by <link linkend="raptor-new-avltree-iterator"><function>raptor_new_avltree_iterator()</function></link></para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

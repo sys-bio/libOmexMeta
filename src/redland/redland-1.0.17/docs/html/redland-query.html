@@ -1,0 +1,632 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>query: Redland RDF Library Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="Redland RDF Library Manual">
+<link rel="up" href="reference-manual.html" title="Part II. Reference Manual">
+<link rel="prev" href="redland-parser.html" title="parser">
+<link rel="next" href="redland-query-results.html" title="query_results">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#redland-query.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference-manual.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="redland-parser.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="redland-query-results.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="redland-query"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="redland-query.top_of_page"></a>query</span></h2>
+<p>query</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="redland-query.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-query.html#librdf-query-register-factory" title="librdf_query_register_factory ()">librdf_query_register_factory</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <span class="returnvalue">raptor_syntax_description</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-query.html#librdf-query-language-get-description" title="librdf_query_language_get_description ()">librdf_query_language_get_description</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-query.html#librdf-query-languages-enumerate" title="librdf_query_languages_enumerate ()">librdf_query_languages_enumerate</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="returnvalue">librdf_query</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-query.html#librdf-new-query" title="librdf_new_query ()">librdf_new_query</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="returnvalue">librdf_query</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-query.html#librdf-new-query-from-query" title="librdf_new_query_from_query ()">librdf_new_query_from_query</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="returnvalue">librdf_query</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-query.html#librdf-new-query-from-factory" title="librdf_new_query_from_factory ()">librdf_new_query_from_factory</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-query.html#librdf-free-query" title="librdf_free_query ()">librdf_free_query</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-query-results.html#librdf-query-results" title="librdf_query_results"><span class="returnvalue">librdf_query_results</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-query.html#librdf-query-execute" title="librdf_query_execute ()">librdf_query_execute</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-query.html#librdf-query-get-limit" title="librdf_query_get_limit ()">librdf_query_get_limit</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-query.html#librdf-query-set-limit" title="librdf_query_set_limit ()">librdf_query_set_limit</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-query.html#librdf-query-get-offset" title="librdf_query_get_offset ()">librdf_query_get_offset</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-query.html#librdf-query-set-offset" title="librdf_query_set_offset ()">librdf_query_set_offset</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-query.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="typedef_keyword">typedef</td>
+<td class="function_name"><a class="link" href="redland-query.html#librdf-query" title="librdf_query">librdf_query</a></td>
+</tr>
+<tr>
+<td class="typedef_keyword">typedef</td>
+<td class="function_name"><a class="link" href="redland-query.html#librdf-query-factory" title="librdf_query_factory">librdf_query_factory</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-query.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="redland-query.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="librdf-query-register-factory"></a><h3>librdf_query_register_factory ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_query_register_factory (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                               <em class="parameter"><code>const <span class="type">char</span> *name</code></em>,
+                               <em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>,
+                               <em class="parameter"><code><span class="type">void</span> (*factory) (librdf_query_factory*)</code></em>);</pre>
+<p>Register a query factory.</p>
+<div class="refsect3">
+<a name="librdf-query-register-factory.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>the query language name</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>the query language URI string (or NULL if none)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>factory</p></td>
+<td class="parameter_description"><p>pointer to function to call to register the factory</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-query-language-get-description"></a><h3>librdf_query_language_get_description ()</h3>
+<pre class="programlisting">const <span class="returnvalue">raptor_syntax_description</span> *
+librdf_query_language_get_description (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                                       <em class="parameter"><code>unsigned <span class="type">int</span> counter</code></em>);</pre>
+<p>Get a query language syntax description.</p>
+<div class="refsect3">
+<a name="librdf-query-language-get-description.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>counter</p></td>
+<td class="parameter_description"><p>index into the list of query language syntaxes</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-query-language-get-description.returns"></a><h4>Returns</h4>
+<p> description or NULL if counter is out of range</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-query-languages-enumerate"></a><h3>librdf_query_languages_enumerate ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_query_languages_enumerate (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                                  <em class="parameter"><code>const unsigned <span class="type">int</span> counter</code></em>,
+                                  <em class="parameter"><code>const <span class="type">char</span> **name</code></em>,
+                                  <em class="parameter"><code>const unsigned <span class="type">char</span> **uri_string</code></em>);</pre>
+<div class="warning"><p><code class="literal">librdf_query_languages_enumerate</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Get information on query language syntaxes.</p>
+<p>All returned strings are shared and must be copied if needed to be
+used dynamically.</p>
+<p><em class="parameter"><code>deprecated</code></em>
+: use <a class="link" href="redland-query.html#librdf-query-language-get-description" title="librdf_query_language_get_description ()"><code class="function">librdf_query_language_get_description()</code></a> to return
+more information in a static structure.</p>
+<div class="refsect3">
+<a name="librdf-query-languages-enumerate.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>counter</p></td>
+<td class="parameter_description"><p>index into the list of query language syntaxes</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>pointer to store the name of the query language syntax (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>pointer to store query language syntax URI string (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-query-languages-enumerate.returns"></a><h4>Returns</h4>
+<p> non 0 on failure of if counter is out of range</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-query"></a><h3>librdf_new_query ()</h3>
+<pre class="programlisting"><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="returnvalue">librdf_query</span></a> *
+librdf_new_query (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                  <em class="parameter"><code>const <span class="type">char</span> *name</code></em>,
+                  <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri</code></em>,
+                  <em class="parameter"><code>const unsigned <span class="type">char</span> *query_string</code></em>,
+                  <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> object.</p>
+<div class="refsect3">
+<a name="librdf-new-query.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>the name identifying the query language</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>the URI identifying the query language (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>query_string</p></td>
+<td class="parameter_description"><p>the query string</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI of the query string (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-query.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-query-from-query"></a><h3>librdf_new_query_from_query ()</h3>
+<pre class="programlisting"><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="returnvalue">librdf_query</span></a> *
+librdf_new_query_from_query (<em class="parameter"><code><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> *old_query</code></em>);</pre>
+<p>Copy constructor - create a new librdf_query object from an existing one</p>
+<p>Should create a new query in the same context as the existing one
+as appropriate.</p>
+<div class="refsect3">
+<a name="librdf-new-query-from-query.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>old_query</p></td>
+<td class="parameter_description"><p>the existing query <a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-query-from-query.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-query-from-factory"></a><h3>librdf_new_query_from_factory ()</h3>
+<pre class="programlisting"><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="returnvalue">librdf_query</span></a> *
+librdf_new_query_from_factory (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                               <em class="parameter"><code><a class="link" href="redland-query.html#librdf-query-factory" title="librdf_query_factory"><span class="type">librdf_query_factory</span></a> *factory</code></em>,
+                               <em class="parameter"><code>const <span class="type">char</span> *name</code></em>,
+                               <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri</code></em>,
+                               <em class="parameter"><code>const unsigned <span class="type">char</span> *query_string</code></em>,
+                               <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> object.</p>
+<div class="refsect3">
+<a name="librdf-new-query-from-factory.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>factory</p></td>
+<td class="parameter_description"><p>the factory to use to construct the query</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>query language name</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>query language URI (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>query_string</p></td>
+<td class="parameter_description"><p>the query string</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>base URI of the query string (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-query-from-factory.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-free-query"></a><h3>librdf_free_query ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_free_query (<em class="parameter"><code><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> *query</code></em>);</pre>
+<p>Destructor - destroy a <a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> object.</p>
+<div class="refsect3">
+<a name="librdf-free-query.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>query</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-query-execute"></a><h3>librdf_query_execute ()</h3>
+<pre class="programlisting"><a class="link" href="redland-query-results.html#librdf-query-results" title="librdf_query_results"><span class="returnvalue">librdf_query_results</span></a> *
+librdf_query_execute (<em class="parameter"><code><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> *query</code></em>,
+                      <em class="parameter"><code><a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> *model</code></em>);</pre>
+<p>Run the query on a model.</p>
+<p>Runs the query against the (previously registered) model
+and returns a <a class="link" href="redland-query-results.html#librdf-query-results" title="librdf_query_results"><span class="type">librdf_query_results</span></a> for the result objects.</p>
+<div class="refsect3">
+<a name="librdf-query-execute.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>query</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>model</p></td>
+<td class="parameter_description"><p>model to operate query on</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-query-execute.returns"></a><h4>Returns</h4>
+<p>  <a class="link" href="redland-query-results.html#librdf-query-results" title="librdf_query_results"><span class="type">librdf_query_results</span></a> or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-query-get-limit"></a><h3>librdf_query_get_limit ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_query_get_limit (<em class="parameter"><code><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> *query</code></em>);</pre>
+<p>Get the query-specified limit on results.</p>
+<p>This is the limit given in the query on the number of results allowed.</p>
+<div class="refsect3">
+<a name="librdf-query-get-limit.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>query</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> query object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-query-get-limit.returns"></a><h4>Returns</h4>
+<p> integer &gt;=0 if a limit is given, otherwise &lt;0</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-query-set-limit"></a><h3>librdf_query_set_limit ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_query_set_limit (<em class="parameter"><code><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> *query</code></em>,
+                        <em class="parameter"><code><span class="type">int</span> limit</code></em>);</pre>
+<p>Set the query-specified limit on results.</p>
+<p>This is the limit given in the query on the number of results allowed.</p>
+<div class="refsect3">
+<a name="librdf-query-set-limit.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>query</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> query object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>limit</p></td>
+<td class="parameter_description"><p>the limit on results, &gt;=0 to set a limit, &lt;0 to have no limit</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-query-set-limit.returns"></a><h4>Returns</h4>
+<p> non-0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-query-get-offset"></a><h3>librdf_query_get_offset ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_query_get_offset (<em class="parameter"><code><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> *query</code></em>);</pre>
+<p>Get the query-specified offset on results.</p>
+<p>This is the offset given in the query on the number of results allowed.</p>
+<div class="refsect3">
+<a name="librdf-query-get-offset.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>query</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> query object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-query-get-offset.returns"></a><h4>Returns</h4>
+<p> integer &gt;=0 if a offset is given, otherwise &lt;0</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-query-set-offset"></a><h3>librdf_query_set_offset ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_query_set_offset (<em class="parameter"><code><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> *query</code></em>,
+                         <em class="parameter"><code><span class="type">int</span> offset</code></em>);</pre>
+<p>Set the query-specified offset on results.</p>
+<p>This is the offset given in the query on the number of results allowed.</p>
+<div class="refsect3">
+<a name="librdf-query-set-offset.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>query</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-query.html#librdf-query" title="librdf_query"><span class="type">librdf_query</span></a> query object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>offset</p></td>
+<td class="parameter_description"><p>offset for results, &gt;=0 to set an offset, &lt;0 to have no offset</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-query-set-offset.returns"></a><h4>Returns</h4>
+<p> non-0 on failure</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="redland-query.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="librdf-query"></a><h3>librdf_query</h3>
+<pre class="programlisting">typedef struct librdf_query_s librdf_query;
+</pre>
+<p>Redland query class.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-query-factory"></a><h3>librdf_query_factory</h3>
+<pre class="programlisting">typedef struct librdf_query_factory_s librdf_query_factory;
+</pre>
+<p>Redland query factory class.</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.27</div>
+</body>
+</html>

@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-sequence">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-sequence.top_of_page">section-sequence</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-sequence</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-sequence.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="raptor-sequence"><returnvalue>raptor_sequence</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-sequence">raptor_new_sequence</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-sequence"><returnvalue>raptor_sequence</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-sequence-with-context">raptor_new_sequence_with_context</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-sequence">raptor_free_sequence</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-sequence-delete-at">raptor_sequence_delete_at</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-sequence-get-at">raptor_sequence_get_at</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sequence-join">raptor_sequence_join</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sequence-next-permutation">raptor_sequence_next_permutation</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-sequence-pop">raptor_sequence_pop</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sequence-print">raptor_sequence_print</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sequence-push">raptor_sequence_push</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sequence-reverse">raptor_sequence_reverse</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sequence-set-at">raptor_sequence_set_at</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sequence-shift">raptor_sequence_shift</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sequence-size">raptor_sequence_size</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sequence-sort">raptor_sequence_sort</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sequence-sort-r">raptor_sequence_sort_r</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sequence-swap">raptor_sequence_swap</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-sequence-unshift">raptor_sequence_unshift</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-sequence.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-sequence">raptor_sequence</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-sequence.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-sequence.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-new-sequence" role="function">
+<title>raptor_new_sequence&#160;()</title>
+<indexterm zone="raptor-new-sequence"><primary>raptor_new_sequence</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-sequence"><returnvalue>raptor_sequence</returnvalue></link>&#160;*
+raptor_new_sequence (<parameter><link linkend="raptor-data-free-handler"><type>raptor_data_free_handler</type></link> free_handler</parameter>,
+                     <parameter><link linkend="raptor-data-print-handler"><type>raptor_data_print_handler</type></link> print_handler</parameter>);</programlisting>
+<para>Constructor - create a new sequence with the given handlers.</para>
+<para>This creates a sequence over objects that need only the item data
+pointers in order to print or free the objects.</para>
+<para>For example sequences of strings could use handlers (free, NULL)
+and sequences of <link linkend="raptor-uri"><type>raptor_uri</type></link> could use (raptor_free_uri,
+raptor_print_uri)</para>
+<refsect3 id="raptor-new-sequence.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>free_handler</para></entry>
+<entry role="parameter_description"><para>handler to free a sequence item</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>print_handler</para></entry>
+<entry role="parameter_description"><para>handler to print a sequence item to a FILE*</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-sequence.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-sequence"><type>raptor_sequence</type></link> or NULL on failure </para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-sequence-with-context" role="function">
+<title>raptor_new_sequence_with_context&#160;()</title>
+<indexterm zone="raptor-new-sequence-with-context"><primary>raptor_new_sequence_with_context</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-sequence"><returnvalue>raptor_sequence</returnvalue></link>&#160;*
+raptor_new_sequence_with_context (<parameter><link linkend="raptor-data-context-free-handler"><type>raptor_data_context_free_handler</type></link> free_handler</parameter>,
+                                  <parameter><link linkend="raptor-data-context-print-handler"><type>raptor_data_context_print_handler</type></link> print_handler</parameter>,
+                                  <parameter><link linkend="void"><type>void</type></link> *handler_context</parameter>);</programlisting>
+<para>Constructor - create a new sequence with the given handlers and handler context.</para>
+<para>This creates a sequence over objects that need context + item data
+pointers in order to print or free the objects.</para>
+<refsect3 id="raptor-new-sequence-with-context.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>free_handler</para></entry>
+<entry role="parameter_description"><para>handler to free a sequence item</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>print_handler</para></entry>
+<entry role="parameter_description"><para>handler to print a sequence item to a FILE*</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler_context</para></entry>
+<entry role="parameter_description"><para>context information to pass to free/print handlers</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-sequence-with-context.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-sequence"><type>raptor_sequence</type></link> or NULL on failure </para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-sequence" role="function">
+<title>raptor_free_sequence&#160;()</title>
+<indexterm zone="raptor-free-sequence"><primary>raptor_free_sequence</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_sequence (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>);</programlisting>
+<para>Destructor - free a <link linkend="raptor-sequence"><type>raptor_sequence</type></link></para>
+<refsect3 id="raptor-free-sequence.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>sequence to destroy</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-delete-at" role="function">
+<title>raptor_sequence_delete_at&#160;()</title>
+<indexterm zone="raptor-sequence-delete-at"><primary>raptor_sequence_delete_at</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+raptor_sequence_delete_at (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>,
+                           <parameter><link linkend="int"><type>int</type></link> idx</parameter>);</programlisting>
+<para>Remove an item from a position a sequence, returning it</para>
+<para>The item at the offset <parameter>idx</parameter>
+ in the sequence is replaced with a
+NULL pointer and any existing item is returned.  The caller
+owns the resulting item.</para>
+<refsect3 id="raptor-sequence-delete-at.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>sequence object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>idx</para></entry>
+<entry role="parameter_description"><para>index into sequence to operate at</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sequence-delete-at.returns" role="returns">
+<title>Returns</title>
+<para> NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-get-at" role="function">
+<title>raptor_sequence_get_at&#160;()</title>
+<indexterm zone="raptor-sequence-get-at"><primary>raptor_sequence_get_at</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+raptor_sequence_get_at (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>,
+                        <parameter><link linkend="int"><type>int</type></link> idx</parameter>);</programlisting>
+<para>Retrieve an item at offset <parameter>index</parameter>
+ in the sequence.</para>
+<para>This is efficient to perform. <link linkend="raptor-sequence"><type>raptor_sequence</type></link> is optimised
+to append/remove from the end of the sequence.</para>
+<para>After this call the item is still owned by the sequence.</para>
+<refsect3 id="raptor-sequence-get-at.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>sequence to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>idx</para></entry>
+<entry role="parameter_description"><para>index of item to get</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sequence-get-at.returns" role="returns">
+<title>Returns</title>
+<para> the object or NULL if <parameter>index</parameter>
+is out of range (0... sequence size - 1)</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-join" role="function">
+<title>raptor_sequence_join&#160;()</title>
+<indexterm zone="raptor-sequence-join"><primary>raptor_sequence_join</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_sequence_join (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *dest</parameter>,
+                      <parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *src</parameter>);</programlisting>
+<para>Join two sequences moving all items from one sequence to the end of another.</para>
+<para>After this operation, sequence src will be empty (zero size) but
+will have the same item capacity as before.</para>
+<refsect3 id="raptor-sequence-join.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>dest</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-sequence"><type>raptor_sequence</type></link> destination sequence</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>src</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-sequence"><type>raptor_sequence</type></link> source sequence</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sequence-join.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-next-permutation" role="function">
+<title>raptor_sequence_next_permutation&#160;()</title>
+<indexterm zone="raptor-sequence-next-permutation"><primary>raptor_sequence_next_permutation</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_sequence_next_permutation (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>,
+                                  <parameter><link linkend="raptor-data-compare-handler"><type>raptor_data_compare_handler</type></link> compare</parameter>);</programlisting>
+<para>Get the next permutation of a sequence in lexicographic order</para>
+<para>Assumes the initial order of the items is lexicographically
+increasing.  This function alters the order of the items until the
+last permuatation is done at which point the contents is reset to
+the intial order.</para>
+<para>Algorithm used is described in http://en.wikipedia.org/wiki/Permutation</para>
+<para>The comparison function <parameter>compare</parameter>
+ is compatible with that used for
+<link linkend="qsort"><function>qsort()</function></link> and provides the addresses of pointers to the data that
+must be dereferenced to get to the stored sequence data.</para>
+<refsect3 id="raptor-sequence-next-permutation.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>int seq</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>compare</para></entry>
+<entry role="parameter_description"><para>comparison function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sequence-next-permutation.returns" role="returns">
+<title>Returns</title>
+<para> non-0 at the last permutation</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-pop" role="function">
+<title>raptor_sequence_pop&#160;()</title>
+<indexterm zone="raptor-sequence-pop"><primary>raptor_sequence_pop</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+raptor_sequence_pop (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>);</programlisting>
+<para>Retrieve the item at the end of the sequence.</para>
+<para>Ownership of the item is transferred to the caller,
+i.e. caller is responsible of freeing the item.</para>
+<refsect3 id="raptor-sequence-pop.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>sequence to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sequence-pop.returns" role="returns">
+<title>Returns</title>
+<para> the object or NULL if the sequence is empty</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-print" role="function">
+<title>raptor_sequence_print&#160;()</title>
+<indexterm zone="raptor-sequence-print"><primary>raptor_sequence_print</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_sequence_print (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>,
+                       <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *fh</parameter>);</programlisting>
+<para>Print the sequence contents using the print_handler to print the data items.</para>
+<refsect3 id="raptor-sequence-print.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>sequence to sort</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fh</para></entry>
+<entry role="parameter_description"><para>file handle</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sequence-print.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-push" role="function">
+<title>raptor_sequence_push&#160;()</title>
+<indexterm zone="raptor-sequence-push"><primary>raptor_sequence_push</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_sequence_push (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>,
+                      <parameter><link linkend="void"><type>void</type></link> *data</parameter>);</programlisting>
+<para>Add an item to the end of the sequence.</para>
+<para>The sequence takes ownership of the pushed item and frees it with the
+free_handler. On failure, the item is freed immediately.</para>
+<refsect3 id="raptor-sequence-push.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>sequence to add to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>data</para></entry>
+<entry role="parameter_description"><para>item to add</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sequence-push.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-reverse" role="function">
+<title>raptor_sequence_reverse&#160;()</title>
+<indexterm zone="raptor-sequence-reverse"><primary>raptor_sequence_reverse</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_sequence_reverse (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>,
+                         <parameter><link linkend="int"><type>int</type></link> start_index</parameter>,
+                         <parameter><link linkend="int"><type>int</type></link> length</parameter>);</programlisting>
+<para>Reverse a range of elements</para>
+<refsect3 id="raptor-sequence-reverse.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>sequence</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>start_index</para></entry>
+<entry role="parameter_description"><para>starting index</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>number of elements to reverse</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sequence-reverse.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if arguments are out of range</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-set-at" role="function">
+<title>raptor_sequence_set_at&#160;()</title>
+<indexterm zone="raptor-sequence-set-at"><primary>raptor_sequence_set_at</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_sequence_set_at (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>,
+                        <parameter><link linkend="int"><type>int</type></link> idx</parameter>,
+                        <parameter><link linkend="void"><type>void</type></link> *data</parameter>);</programlisting>
+<para>Replace/set an item in a sequence.</para>
+<para>The item at the offset <parameter>idx</parameter>
+ in the sequence is replaced with the
+new item <parameter>data</parameter>
+ (which may be NULL). Any existing item is freed
+with the sequence's free_handler.  If necessary the sequence
+is extended (with NULLs) to handle a larger offset.</para>
+<para>The sequence takes ownership of the new data item.  On failure, the
+item is freed immediately.</para>
+<refsect3 id="raptor-sequence-set-at.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>sequence object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>idx</para></entry>
+<entry role="parameter_description"><para>index into sequence to operate at</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>data</para></entry>
+<entry role="parameter_description"><para>new data item.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sequence-set-at.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-shift" role="function">
+<title>raptor_sequence_shift&#160;()</title>
+<indexterm zone="raptor-sequence-shift"><primary>raptor_sequence_shift</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_sequence_shift (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>,
+                       <parameter><link linkend="void"><type>void</type></link> *data</parameter>);</programlisting>
+<para>Add an item to the start of the sequence.</para>
+<para>The sequence takes ownership of the shifted item and frees it with the
+free_handler. On failure, the item is freed immediately.</para>
+<refsect3 id="raptor-sequence-shift.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>sequence to add to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>data</para></entry>
+<entry role="parameter_description"><para>item to add</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sequence-shift.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-size" role="function">
+<title>raptor_sequence_size&#160;()</title>
+<indexterm zone="raptor-sequence-size"><primary>raptor_sequence_size</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_sequence_size (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>);</programlisting>
+<para>Get the number of items in a sequence.</para>
+<refsect3 id="raptor-sequence-size.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>sequence object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sequence-size.returns" role="returns">
+<title>Returns</title>
+<para> the sequence size (&gt;=0)</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-sort" role="function">
+<title>raptor_sequence_sort&#160;()</title>
+<indexterm zone="raptor-sequence-sort"><primary>raptor_sequence_sort</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_sequence_sort (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>,
+                      <parameter><link linkend="raptor-data-compare-handler"><type>raptor_data_compare_handler</type></link> compare</parameter>);</programlisting>
+<para>Sort a sequence inline</para>
+<para>The comparison function <parameter>compare</parameter>
+ is compatible with that used for
+<link linkend="qsort"><function>qsort()</function></link> and provides the addresses of pointers to the data that
+must be dereferenced to get to the stored sequence data.</para>
+<refsect3 id="raptor-sequence-sort.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>sequence to sort</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>compare</para></entry>
+<entry role="parameter_description"><para>comparison function with args (a, b)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-sort-r" role="function">
+<title>raptor_sequence_sort_r&#160;()</title>
+<indexterm zone="raptor-sequence-sort-r"><primary>raptor_sequence_sort_r</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_sequence_sort_r (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>,
+                        <parameter><link linkend="raptor-data-compare-arg-handler"><type>raptor_data_compare_arg_handler</type></link> compare</parameter>,
+                        <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>);</programlisting>
+<para>Sort a sequence inline with user data</para>
+<para>The comparison function <parameter>compare_r</parameter>
+ is compatible with that used
+for <link linkend="raptor-sort-r"><function>raptor_sort_r()</function></link> and provides the addresses of pointers to the
+data that must be dereferenced to get to the stored sequence data.</para>
+<refsect3 id="raptor-sequence-sort-r.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>sequence to sort</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>compare</para></entry>
+<entry role="parameter_description"><para>comparison function with args (a, b, user data)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>User data argument for <parameter>compare</parameter>
+</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-swap" role="function">
+<title>raptor_sequence_swap&#160;()</title>
+<indexterm zone="raptor-sequence-swap"><primary>raptor_sequence_swap</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_sequence_swap (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>,
+                      <parameter><link linkend="int"><type>int</type></link> i</parameter>,
+                      <parameter><link linkend="int"><type>int</type></link> j</parameter>);</programlisting>
+<para>Swap a pair of elements in a sequence</para>
+<refsect3 id="raptor-sequence-swap.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>sequence</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>i</para></entry>
+<entry role="parameter_description"><para>first data index</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>j</para></entry>
+<entry role="parameter_description"><para>second data index</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sequence-swap.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if arguments are out of range</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sequence-unshift" role="function">
+<title>raptor_sequence_unshift&#160;()</title>
+<indexterm zone="raptor-sequence-unshift"><primary>raptor_sequence_unshift</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+raptor_sequence_unshift (<parameter><link linkend="raptor-sequence"><type>raptor_sequence</type></link> *seq</parameter>);</programlisting>
+<para>Retrieve the item at the start of the sequence.</para>
+<para>Ownership of the item is transferred to the caller,
+i.e. caller is responsible of freeing the item.</para>
+<refsect3 id="raptor-sequence-unshift.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>seq</para></entry>
+<entry role="parameter_description"><para>sequence to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-sequence-unshift.returns" role="returns">
+<title>Returns</title>
+<para> the object or NULL if the sequence is empty</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-sequence.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-sequence" role="typedef">
+<title>raptor_sequence</title>
+<indexterm zone="raptor-sequence"><primary>raptor_sequence</primary></indexterm>
+<programlisting language="C">raptor_sequence* raptor_sequence;
+</programlisting>
+<para>Raptor sequence class</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

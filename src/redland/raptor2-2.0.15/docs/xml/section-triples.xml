@@ -1,0 +1,1227 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-triples">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-triples.top_of_page">section-triples</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-triples</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-triples.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-term-from-blank">raptor_new_term_from_blank</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-term-from-counted-blank">raptor_new_term_from_counted_blank</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-term-from-literal">raptor_new_term_from_literal</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-term-from-counted-literal">raptor_new_term_from_counted_literal</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-term-from-counted-uri-string">raptor_new_term_from_counted_uri_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-term-from-uri">raptor_new_term_from_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-term-from-uri-string">raptor_new_term_from_uri_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-term-from-counted-string">raptor_new_term_from_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-term-copy">raptor_term_copy</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-term-compare">raptor_term_compare</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-term-equals">raptor_term_equals</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-term">raptor_free_term</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-term-to-counted-string">raptor_term_to_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-term-to-string">raptor_term_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-term-ntriples-write">raptor_term_ntriples_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-term-to-turtle-counted-string">raptor_term_to_turtle_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-term-to-turtle-string">raptor_term_to_turtle_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-term-turtle-write">raptor_term_turtle_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-statement"><returnvalue>raptor_statement</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-statement">raptor_new_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-statement"><returnvalue>raptor_statement</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-statement-from-nodes">raptor_new_statement_from_nodes</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-statement">raptor_free_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-statement"><returnvalue>raptor_statement</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-statement-copy">raptor_statement_copy</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-statement-compare">raptor_statement_compare</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-statement-equals">raptor_statement_equals</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-statement-init">raptor_statement_init</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-statement-clear">raptor_statement_clear</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-statement-print">raptor_statement_print</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-statement-print-as-ntriples">raptor_statement_print_as_ntriples</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-statement-ntriples-write">raptor_statement_ntriples_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-triples.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="raptor-term-type">raptor_term_type</link></entry></row>
+<row><entry role="datatype_keyword"></entry><entry role="function_name"><link linkend="raptor-term">raptor_term</link></entry></row>
+<row><entry role="datatype_keyword"></entry><entry role="function_name"><link linkend="raptor-term-value">raptor_term_value</link></entry></row>
+<row><entry role="datatype_keyword"></entry><entry role="function_name"><link linkend="raptor-term-blank-value">raptor_term_blank_value</link></entry></row>
+<row><entry role="datatype_keyword"></entry><entry role="function_name"><link linkend="raptor-term-literal-value">raptor_term_literal_value</link></entry></row>
+<row><entry role="datatype_keyword"></entry><entry role="function_name"><link linkend="raptor-statement">raptor_statement</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-triples.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-triples.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-new-term-from-blank" role="function">
+<title>raptor_new_term_from_blank&#160;()</title>
+<indexterm zone="raptor-new-term-from-blank"><primary>raptor_new_term_from_blank</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+raptor_new_term_from_blank (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                            <parameter>const unsigned <link linkend="char"><type>char</type></link> *blank</parameter>);</programlisting>
+<para>Constructor - create a new blank node statement term from a UTF-8 encoded blank node ID</para>
+<para>Takes a copy of the passed in <parameter>blank</parameter>
+</para>
+<para>If <parameter>blank</parameter>
+ is NULL or an empty string, creates a new internal
+identifier and uses it.  This will use the handler set with
+<link linkend="raptor-world-set-generate-bnodeid-parameters"><function>raptor_world_set_generate_bnodeid_parameters()</function></link></para>
+<refsect3 id="raptor-new-term-from-blank.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>blank</para></entry>
+<entry role="parameter_description"><para>UTF-8 encoded blank node identifier (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-term-from-blank.returns" role="returns">
+<title>Returns</title>
+<para> new term or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-term-from-counted-blank" role="function">
+<title>raptor_new_term_from_counted_blank&#160;()</title>
+<indexterm zone="raptor-new-term-from-counted-blank"><primary>raptor_new_term_from_counted_blank</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+raptor_new_term_from_counted_blank (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                    <parameter>const unsigned <link linkend="char"><type>char</type></link> *blank</parameter>,
+                                    <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Constructor - create a new blank node statement term from a counted UTF-8 encoded blank node ID</para>
+<para>Takes a copy of the passed in <parameter>blank</parameter>
+</para>
+<para>If <parameter>blank</parameter>
+ is NULL, creates a new internal identifier and uses it.
+This will use the handler set with
+<link linkend="raptor-world-set-generate-bnodeid-parameters"><function>raptor_world_set_generate_bnodeid_parameters()</function></link></para>
+<para>Note: The <parameter>blank</parameter>
+ need not be NULL terminated - a NULL will be
+added to the copied string used.</para>
+<refsect3 id="raptor-new-term-from-counted-blank.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>blank</para></entry>
+<entry role="parameter_description"><para>UTF-8 encoded blank node identifier (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>length of identifier (or 0)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-term-from-counted-blank.returns" role="returns">
+<title>Returns</title>
+<para> new term or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-term-from-literal" role="function">
+<title>raptor_new_term_from_literal&#160;()</title>
+<indexterm zone="raptor-new-term-from-literal"><primary>raptor_new_term_from_literal</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+raptor_new_term_from_literal (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                              <parameter>const unsigned <link linkend="char"><type>char</type></link> *literal</parameter>,
+                              <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *datatype</parameter>,
+                              <parameter>const unsigned <link linkend="char"><type>char</type></link> *language</parameter>);</programlisting>
+<para>Constructor - create a new literal statement term</para>
+<para>Takes copies of the passed in <parameter>literal</parameter>
+, <parameter>datatype</parameter>
+, <parameter>language</parameter>
+</para>
+<para>Only one of <parameter>language</parameter>
+ or <parameter>datatype</parameter>
+ may be given.  If both are
+given, NULL is returned.  If <parameter>language</parameter>
+ is the empty string, it is
+the equivalent to NULL.</para>
+<refsect3 id="raptor-new-term-from-literal.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>literal</para></entry>
+<entry role="parameter_description"><para>UTF-8 encoded literal string (or NULL for empty literal)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>datatype</para></entry>
+<entry role="parameter_description"><para>literal datatype URI (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>language</para></entry>
+<entry role="parameter_description"><para>literal language (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-term-from-literal.returns" role="returns">
+<title>Returns</title>
+<para> new term or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-term-from-counted-literal" role="function">
+<title>raptor_new_term_from_counted_literal&#160;()</title>
+<indexterm zone="raptor-new-term-from-counted-literal"><primary>raptor_new_term_from_counted_literal</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+raptor_new_term_from_counted_literal (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                      <parameter>const unsigned <link linkend="char"><type>char</type></link> *literal</parameter>,
+                                      <parameter><link linkend="size-t"><type>size_t</type></link> literal_len</parameter>,
+                                      <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *datatype</parameter>,
+                                      <parameter>const unsigned <link linkend="char"><type>char</type></link> *language</parameter>,
+                                      <parameter>unsigned <link linkend="char"><type>char</type></link> language_len</parameter>);</programlisting>
+<para>Constructor - create a new literal statement term from a counted UTF-8 encoded literal string</para>
+<para>Takes copies of the passed in <parameter>literal</parameter>
+, <parameter>datatype</parameter>
+, <parameter>language</parameter>
+</para>
+<para>Only one of <parameter>language</parameter>
+ or <parameter>datatype</parameter>
+ may be given.  If both are
+given, NULL is returned.  If <parameter>language</parameter>
+ is the empty string, it is
+the equivalent to NULL.</para>
+<para>Note: The <parameter>literal</parameter>
+ need not be NULL terminated - a NULL will be
+added to the copied string used.</para>
+<refsect3 id="raptor-new-term-from-counted-literal.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>literal</para></entry>
+<entry role="parameter_description"><para>UTF-8 encoded literal string (or NULL for empty literal)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>literal_len</para></entry>
+<entry role="parameter_description"><para>length of literal</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>datatype</para></entry>
+<entry role="parameter_description"><para>literal datatype URI (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>language</para></entry>
+<entry role="parameter_description"><para>literal language (or NULL for no language)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>language_len</para></entry>
+<entry role="parameter_description"><para>literal language length</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-term-from-counted-literal.returns" role="returns">
+<title>Returns</title>
+<para> new term or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-term-from-counted-uri-string" role="function">
+<title>raptor_new_term_from_counted_uri_string&#160;()</title>
+<indexterm zone="raptor-new-term-from-counted-uri-string"><primary>raptor_new_term_from_counted_uri_string</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+raptor_new_term_from_counted_uri_string
+                               (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Constructor - create a new URI statement term from a UTF-8 encoded Unicode string</para>
+<para>Note: The <parameter>uri_string</parameter>
+ need not be NULL terminated - a NULL will be
+added to the copied string used.</para>
+<refsect3 id="raptor-new-term-from-counted-uri-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>UTF-8 encoded URI string.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>length of URI string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-term-from-counted-uri-string.returns" role="returns">
+<title>Returns</title>
+<para> new term or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-term-from-uri" role="function">
+<title>raptor_new_term_from_uri&#160;()</title>
+<indexterm zone="raptor-new-term-from-uri"><primary>raptor_new_term_from_uri</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+raptor_new_term_from_uri (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                          <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>);</programlisting>
+<para>Constructor - create a new URI statement term</para>
+<para>Takes a copy (reference) of the passed in <parameter>uri</parameter>
+</para>
+<refsect3 id="raptor-new-term-from-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>uri</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-term-from-uri.returns" role="returns">
+<title>Returns</title>
+<para> new term or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-term-from-uri-string" role="function">
+<title>raptor_new_term_from_uri_string&#160;()</title>
+<indexterm zone="raptor-new-term-from-uri-string"><primary>raptor_new_term_from_uri_string</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+raptor_new_term_from_uri_string (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                 <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>);</programlisting>
+<para>Constructor - create a new URI statement term from a UTF-8 encoded Unicode string</para>
+<refsect3 id="raptor-new-term-from-uri-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>UTF-8 encoded URI string.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-term-from-uri-string.returns" role="returns">
+<title>Returns</title>
+<para> new term or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-term-from-counted-string" role="function">
+<title>raptor_new_term_from_counted_string&#160;()</title>
+<indexterm zone="raptor-new-term-from-counted-string"><primary>raptor_new_term_from_counted_string</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+raptor_new_term_from_counted_string (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                     <parameter>unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                                     <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Constructor - create a new term from a Turtle / N-Triples format string in UTF-8</para>
+<para>See also <link linkend="raptor-term-to-counted-string"><function>raptor_term_to_counted_string()</function></link> and <link linkend="raptor-term-to-string"><function>raptor_term_to_string()</function></link></para>
+<refsect3 id="raptor-new-term-from-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>N-Triples format string (UTF-8)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>length of <parameter>string</parameter>
+(or 0)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-term-from-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> new term or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-term-copy" role="function">
+<title>raptor_term_copy&#160;()</title>
+<indexterm zone="raptor-term-copy"><primary>raptor_term_copy</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-term"><returnvalue>raptor_term</returnvalue></link>&#160;*
+raptor_term_copy (<parameter><link linkend="raptor-term"><type>raptor_term</type></link> *term</parameter>);</programlisting>
+<para>Copy constructor - get a copy of a statement term</para>
+<refsect3 id="raptor-term-copy.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>term</para></entry>
+<entry role="parameter_description"><para>raptor term</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-term-copy.returns" role="returns">
+<title>Returns</title>
+<para> new term object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-term-compare" role="function">
+<title>raptor_term_compare&#160;()</title>
+<indexterm zone="raptor-term-compare"><primary>raptor_term_compare</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_term_compare (<parameter>const <link linkend="raptor-term"><type>raptor_term</type></link> *t1</parameter>,
+                     <parameter>const <link linkend="raptor-term"><type>raptor_term</type></link> *t2</parameter>);</programlisting>
+<para>Compare a pair of <link linkend="raptor-term"><type>raptor_term</type></link></para>
+<para>If types are different, the <link linkend="raptor-term-type"><type>raptor_term_type</type></link> order is used.</para>
+<para>Resource and datatype URIs are compared with <link linkend="raptor-uri-compare"><function>raptor_uri_compare()</function></link>,
+blank nodes and literals with <link linkend="strcmp"><function>strcmp()</function></link>.  If one literal has no
+language, it is earlier than one with a language.  If one literal
+has no datatype, it is earlier than one with a datatype.</para>
+<refsect3 id="raptor-term-compare.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>t1</para></entry>
+<entry role="parameter_description"><para>first term</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>t2</para></entry>
+<entry role="parameter_description"><para>second term</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-term-compare.returns" role="returns">
+<title>Returns</title>
+<para> &lt;0 if t1 is before t2, 0 if equal, &gt;0 if t1 is after t2</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-term-equals" role="function">
+<title>raptor_term_equals&#160;()</title>
+<indexterm zone="raptor-term-equals"><primary>raptor_term_equals</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_term_equals (<parameter><link linkend="raptor-term"><type>raptor_term</type></link> *t1</parameter>,
+                    <parameter><link linkend="raptor-term"><type>raptor_term</type></link> *t2</parameter>);</programlisting>
+<para>Compare a pair of <link linkend="raptor-term"><type>raptor_term</type></link> for equality</para>
+<refsect3 id="raptor-term-equals.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>t1</para></entry>
+<entry role="parameter_description"><para>first term</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>t2</para></entry>
+<entry role="parameter_description"><para>second term</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-term-equals.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if the terms are equal</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-term" role="function">
+<title>raptor_free_term&#160;()</title>
+<indexterm zone="raptor-free-term"><primary>raptor_free_term</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_term (<parameter><link linkend="raptor-term"><type>raptor_term</type></link> *term</parameter>);</programlisting>
+<para>Destructor - destroy a raptor_term object.</para>
+<refsect3 id="raptor-free-term.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>term</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-term"><type>raptor_term</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-term-to-counted-string" role="function">
+<title>raptor_term_to_counted_string&#160;()</title>
+<indexterm zone="raptor-term-to-counted-string"><primary>raptor_term_to_counted_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_term_to_counted_string (<parameter><link linkend="raptor-term"><type>raptor_term</type></link> *term</parameter>,
+                               <parameter><link linkend="size-t"><type>size_t</type></link> *len_p</parameter>);</programlisting>
+<para>Turns a raptor term into a N-Triples format counted string.</para>
+<para>Turns the given <parameter>term</parameter>
+ into an N-Triples escaped string using all the
+escapes as defined in http://www.w3.org/TR/rdf-testcases/<link linkend="ntriples"><type>ntriples</type></link></para>
+<para>This function uses <link linkend="raptor-term-ntriples-write"><function>raptor_term_ntriples_write()</function></link> to write to an
+<link linkend="raptor-iostream"><type>raptor_iostream</type></link> which is the prefered way to write formatted
+output.</para>
+<para>See also <link linkend="raptor-new-term-from-counted-string"><function>raptor_new_term_from_counted_string()</function></link> to reverse this.</para>
+<para>See also <link linkend="raptor-term-to-turtle-string"><function>raptor_term_to_turtle_string()</function></link> to write as Turtle which
+will include Turtle syntax such as 'true' for booleans and """quoting"""</para>
+<refsect3 id="raptor-term-to-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>term</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-term"><type>raptor_term</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len_p</para></entry>
+<entry role="parameter_description"><para>Pointer to location to store length of new string (if not NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-term-to-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> the new string or NULL on failure.  The length of
+the new string is returned in *<parameter>len_p</parameter>
+if len_p is not NULL.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-term-to-string" role="function">
+<title>raptor_term_to_string&#160;()</title>
+<indexterm zone="raptor-term-to-string"><primary>raptor_term_to_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_term_to_string (<parameter><link linkend="raptor-term"><type>raptor_term</type></link> *term</parameter>);</programlisting>
+<para>Turns a raptor term into a N-Triples format string.</para>
+<para>Turns the given <parameter>term</parameter>
+ into an N-Triples escaped string using all the
+escapes as defined in http://www.w3.org/TR/rdf-testcases/<link linkend="ntriples"><type>ntriples</type></link></para>
+<para>See also <link linkend="raptor-new-term-from-counted-string"><function>raptor_new_term_from_counted_string()</function></link> to reverse this.</para>
+<para>See also <link linkend="raptor-term-to-turtle-string"><function>raptor_term_to_turtle_string()</function></link> to write as Turtle which
+will include Turtle syntax such as 'true' for booleans and """quoting"""</para>
+<refsect3 id="raptor-term-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>term</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-term"><type>raptor_term</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-term-to-string.returns" role="returns">
+<title>Returns</title>
+<para> the new string or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-term-ntriples-write" role="function" condition="deprecated:">
+<title>raptor_term_ntriples_write&#160;()</title>
+<indexterm zone="raptor-term-ntriples-write" role="deprecated"><primary>raptor_term_ntriples_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_term_ntriples_write (<parameter>const <link linkend="raptor-term"><type>raptor_term</type></link> *term</parameter>,
+                            <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<warning><para><literal>raptor_term_ntriples_write</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Write a <link linkend="raptor-term"><type>raptor_term</type></link> formatted in N-Triples format to a <link linkend="raptor-iostream"><type>raptor_iostream</type></link></para>
+<para><parameter>Deprecated</parameter>
+: Use <link linkend="raptor-term-escaped-write"><function>raptor_term_escaped_write()</function></link> that allows
+configuring format detail flags.</para>
+<refsect3 id="raptor-term-ntriples-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>term</para></entry>
+<entry role="parameter_description"><para>term to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-term-ntriples-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-term-to-turtle-counted-string" role="function">
+<title>raptor_term_to_turtle_counted_string&#160;()</title>
+<indexterm zone="raptor-term-to-turtle-counted-string"><primary>raptor_term_to_turtle_counted_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_term_to_turtle_counted_string (<parameter><link linkend="raptor-term"><type>raptor_term</type></link> *term</parameter>,
+                                      <parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                                      <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>,
+                                      <parameter><link linkend="size-t"><type>size_t</type></link> *len_p</parameter>);</programlisting>
+<para>Convert <link linkend="raptor-term"><type>raptor_term</type></link> to a string.
+Caller has responsibility to free the string.</para>
+<para>Note: This creates and destroys several internal objects for each
+call so for more efficient writing, create a turtle serializer.</para>
+<para>See also <link linkend="raptor-term-to-counted-string"><function>raptor_term_to_counted_string()</function></link> which writes in simpler
+N-Triples with no Turtle abbreviated forms, and is quicker.</para>
+<refsect3 id="raptor-term-to-turtle-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>term</para></entry>
+<entry role="parameter_description"><para>term</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len_p</para></entry>
+<entry role="parameter_description"><para>Pointer to location to store length of new string (if not NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-term-to-turtle-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> the new string or NULL on failure.  The length of
+the new string is returned in *<parameter>len_p</parameter>
+if len_p is not NULL.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-term-to-turtle-string" role="function">
+<title>raptor_term_to_turtle_string&#160;()</title>
+<indexterm zone="raptor-term-to-turtle-string"><primary>raptor_term_to_turtle_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_term_to_turtle_string (<parameter><link linkend="raptor-term"><type>raptor_term</type></link> *term</parameter>,
+                              <parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                              <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Convert <link linkend="raptor-term"><type>raptor_term</type></link> to a string.
+Caller has responsibility to free the string.</para>
+<para>See also <link linkend="raptor-term-to-counted-string"><function>raptor_term_to_counted_string()</function></link> which writes in simpler
+N-Triples with no Turtle abbreviated forms, and is quicker.</para>
+<refsect3 id="raptor-term-to-turtle-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>term</para></entry>
+<entry role="parameter_description"><para>term</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-term-to-turtle-string.returns" role="returns">
+<title>Returns</title>
+<para> the new string or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-term-turtle-write" role="function">
+<title>raptor_term_turtle_write&#160;()</title>
+<indexterm zone="raptor-term-turtle-write"><primary>raptor_term_turtle_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_term_turtle_write (<parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>,
+                          <parameter><link linkend="raptor-term"><type>raptor_term</type></link> *term</parameter>,
+                          <parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                          <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Write <link linkend="raptor-term"><type>raptor_term</type></link> to a stream in turtle syntax (using QNames).</para>
+<para>Note: This creates and destroys several internal objects for each
+call so for more efficient writing, create a turtle serializer.</para>
+<refsect3 id="raptor-term-turtle-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>iostream for writing</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>term</para></entry>
+<entry role="parameter_description"><para>term</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-term-turtle-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-statement" role="function">
+<title>raptor_new_statement&#160;()</title>
+<indexterm zone="raptor-new-statement"><primary>raptor_new_statement</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-statement"><returnvalue>raptor_statement</returnvalue></link>&#160;*
+raptor_new_statement (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="raptor-statement"><type>raptor_statement</type></link>.</para>
+<refsect3 id="raptor-new-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-statement.returns" role="returns">
+<title>Returns</title>
+<para> new raptor statement or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-statement-from-nodes" role="function">
+<title>raptor_new_statement_from_nodes&#160;()</title>
+<indexterm zone="raptor-new-statement-from-nodes"><primary>raptor_new_statement_from_nodes</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-statement"><returnvalue>raptor_statement</returnvalue></link>&#160;*
+raptor_new_statement_from_nodes (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                 <parameter><link linkend="raptor-term"><type>raptor_term</type></link> *subject</parameter>,
+                                 <parameter><link linkend="raptor-term"><type>raptor_term</type></link> *predicate</parameter>,
+                                 <parameter><link linkend="raptor-term"><type>raptor_term</type></link> *object</parameter>,
+                                 <parameter><link linkend="raptor-term"><type>raptor_term</type></link> *graph</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="raptor-statement"><type>raptor_statement</type></link> from a set of terms</para>
+<para>The <parameter>subject</parameter>
+, <parameter>predicate</parameter>
+, <parameter>object</parameter>
+ and <parameter>graph</parameter>
+ become owned by the statement.</para>
+<refsect3 id="raptor-new-statement-from-nodes.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>subject</para></entry>
+<entry role="parameter_description"><para>subject term (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>predicate</para></entry>
+<entry role="parameter_description"><para>predicate term (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>object</para></entry>
+<entry role="parameter_description"><para>object term (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>graph</para></entry>
+<entry role="parameter_description"><para>graph name term (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-statement-from-nodes.returns" role="returns">
+<title>Returns</title>
+<para> new raptor statement or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-statement" role="function">
+<title>raptor_free_statement&#160;()</title>
+<indexterm zone="raptor-free-statement"><primary>raptor_free_statement</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_statement (<parameter><link linkend="raptor-statement"><type>raptor_statement</type></link> *statement</parameter>);</programlisting>
+<para>Destructor</para>
+<refsect3 id="raptor-free-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>statement</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-statement-copy" role="function">
+<title>raptor_statement_copy&#160;()</title>
+<indexterm zone="raptor-statement-copy"><primary>raptor_statement_copy</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-statement"><returnvalue>raptor_statement</returnvalue></link>&#160;*
+raptor_statement_copy (<parameter><link linkend="raptor-statement"><type>raptor_statement</type></link> *statement</parameter>);</programlisting>
+<para>Copy a <link linkend="raptor-statement"><type>raptor_statement</type></link>.</para>
+<refsect3 id="raptor-statement-copy.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>statement to copy</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-statement-copy.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-statement"><type>raptor_statement</type></link> or NULL on error</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-statement-compare" role="function">
+<title>raptor_statement_compare&#160;()</title>
+<indexterm zone="raptor-statement-compare"><primary>raptor_statement_compare</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_statement_compare (<parameter>const <link linkend="raptor-statement"><type>raptor_statement</type></link> *s1</parameter>,
+                          <parameter>const <link linkend="raptor-statement"><type>raptor_statement</type></link> *s2</parameter>);</programlisting>
+<para>Compare a pair of <link linkend="raptor-statement"><type>raptor_statement</type></link></para>
+<para>Uses <link linkend="raptor-term-compare"><function>raptor_term_compare()</function></link> to check ordering between subjects,
+predicates and objects of statements.</para>
+<refsect3 id="raptor-statement-compare.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>s1</para></entry>
+<entry role="parameter_description"><para>first statement</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>s2</para></entry>
+<entry role="parameter_description"><para>second statement</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-statement-compare.returns" role="returns">
+<title>Returns</title>
+<para> &lt;0 if s1 is before s2, 0 if equal, &gt;0 if s1 is after s2</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-statement-equals" role="function">
+<title>raptor_statement_equals&#160;()</title>
+<indexterm zone="raptor-statement-equals"><primary>raptor_statement_equals</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_statement_equals (<parameter>const <link linkend="raptor-statement"><type>raptor_statement</type></link> *s1</parameter>,
+                         <parameter>const <link linkend="raptor-statement"><type>raptor_statement</type></link> *s2</parameter>);</programlisting>
+<para>Compare a pair of <link linkend="raptor-statement"><type>raptor_statement</type></link> for equality</para>
+<refsect3 id="raptor-statement-equals.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>s1</para></entry>
+<entry role="parameter_description"><para>first statement</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>s2</para></entry>
+<entry role="parameter_description"><para>second statement</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-statement-equals.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if statements are equal</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-statement-init" role="function">
+<title>raptor_statement_init&#160;()</title>
+<indexterm zone="raptor-statement-init"><primary>raptor_statement_init</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_statement_init (<parameter><link linkend="raptor-statement"><type>raptor_statement</type></link> *statement</parameter>,
+                       <parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>);</programlisting>
+<para>Initialize a static <link linkend="raptor-statement"><type>raptor_statement</type></link>.</para>
+<refsect3 id="raptor-statement-init.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>statement to initialize</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-statement-clear" role="function">
+<title>raptor_statement_clear&#160;()</title>
+<indexterm zone="raptor-statement-clear"><primary>raptor_statement_clear</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_statement_clear (<parameter><link linkend="raptor-statement"><type>raptor_statement</type></link> *statement</parameter>);</programlisting>
+<para>Empty a raptor_statement of terms.</para>
+<refsect3 id="raptor-statement-clear.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-statement"><type>raptor_statement</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-statement-print" role="function">
+<title>raptor_statement_print&#160;()</title>
+<indexterm zone="raptor-statement-print"><primary>raptor_statement_print</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_statement_print (<parameter>const <link linkend="raptor-statement"><type>raptor_statement</type></link> *statement</parameter>,
+                        <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *stream</parameter>);</programlisting>
+<para>Print a raptor_statement to a stream.</para>
+<refsect3 id="raptor-statement-print.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-statement"><type>raptor_statement</type></link> object to print</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>FILE* stream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-statement-print.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-statement-print-as-ntriples" role="function">
+<title>raptor_statement_print_as_ntriples&#160;()</title>
+<indexterm zone="raptor-statement-print-as-ntriples"><primary>raptor_statement_print_as_ntriples</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_statement_print_as_ntriples (<parameter>const <link linkend="raptor-statement"><type>raptor_statement</type></link> *statement</parameter>,
+                                    <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *stream</parameter>);</programlisting>
+<para>Print a raptor_statement in N-Triples form.</para>
+<refsect3 id="raptor-statement-print-as-ntriples.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-statement"><type>raptor_statement</type></link> to print</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>FILE* stream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-statement-print-as-ntriples.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-statement-ntriples-write" role="function">
+<title>raptor_statement_ntriples_write&#160;()</title>
+<indexterm zone="raptor-statement-ntriples-write"><primary>raptor_statement_ntriples_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_statement_ntriples_write (<parameter>const <link linkend="raptor-statement"><type>raptor_statement</type></link> *statement</parameter>,
+                                 <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>,
+                                 <parameter><link linkend="int"><type>int</type></link> write_graph_term</parameter>);</programlisting>
+<para>Write a <link linkend="raptor-statement"><type>raptor_statement</type></link> formatted in N-Triples or N-Quads format
+to a <link linkend="raptor-iostream"><type>raptor_iostream</type></link></para>
+<refsect3 id="raptor-statement-ntriples-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>statement to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>write_graph_term</para></entry>
+<entry role="parameter_description"><para>flag to write graph term if present</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-statement-ntriples-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-triples.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-term-type" role="enum">
+<title>enum raptor_term_type</title>
+<indexterm zone="raptor-term-type"><primary>raptor_term_type</primary></indexterm>
+<para>Type of term in a <link linkend="raptor-statement"><type>raptor_statement</type></link></para>
+<para>Node type 3 is unused but exists to preserve numeric compatibility
+with librdf_node_type values.</para>
+<refsect3 id="raptor-term-type.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-TERM-TYPE-UNKNOWN:CAPS">RAPTOR_TERM_TYPE_UNKNOWN</para></entry>
+<entry role="enum_member_description"><para>Internal</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-TERM-TYPE-URI:CAPS">RAPTOR_TERM_TYPE_URI</para></entry>
+<entry role="enum_member_description"><para>RDF URI</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-TERM-TYPE-LITERAL:CAPS">RAPTOR_TERM_TYPE_LITERAL</para></entry>
+<entry role="enum_member_description"><para>RDF literal</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-TERM-TYPE-BLANK:CAPS">RAPTOR_TERM_TYPE_BLANK</para></entry>
+<entry role="enum_member_description"><para>RDF blank node</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-term" role="struct">
+<title>raptor_term</title>
+<indexterm zone="raptor-term"><primary>raptor_term</primary></indexterm>
+<programlisting language="C">typedef struct {
+  raptor_world* world;
+
+  int usage;
+
+  raptor_term_type type;
+
+  raptor_term_value value;
+} raptor_term;
+</programlisting>
+<para>An RDF statement term</para>
+<refsect3 id="raptor-term.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-world"><type>raptor_world</type></link>&#160;*<structfield id="raptor-term.world">world</structfield>;</para></entry>
+<entry role="struct_member_description"><para>world</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="int"><type>int</type></link>&#160;<structfield id="raptor-term.usage">usage</structfield>;</para></entry>
+<entry role="struct_member_description"><para>usage reference count (if &gt;0)</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-term-type"><type>raptor_term_type</type></link>&#160;<structfield id="raptor-term.type">type</structfield>;</para></entry>
+<entry role="struct_member_description"><para>term type</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-term-value"><type>raptor_term_value</type></link>&#160;<structfield id="raptor-term.value">value</structfield>;</para></entry>
+<entry role="struct_member_description"><para>term values per type</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+<refsect2 id="raptor-term-value" role="union">
+<title>raptor_term_value</title>
+<indexterm zone="raptor-term-value"><primary>raptor_term_value</primary></indexterm>
+<para>Term value - this typedef exists solely for use in <link linkend="raptor-term"><type>raptor_term</type></link></para>
+<refsect3 id="raptor-term-value.members" role="union_members">
+<title>Members</title>
+<informaltable role="union_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="union_members_name" colwidth="300px"/>
+<colspec colname="union_members_description"/>
+<colspec colname="union_members_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="union_member_name"><para><link linkend="raptor-uri"><type>raptor_uri</type></link>&#160;*<structfield id="raptor-term-value.uri">uri</structfield>;</para></entry>
+<entry role="union_member_description"><para>uri value when term type is <link linkend="RAPTOR-TERM-TYPE-URI:CAPS"><type>RAPTOR_TERM_TYPE_URI</type></link></para></entry>
+<entry role="union_member_annotations"></entry>
+</row>
+<row><entry role="union_member_name"><para><link linkend="raptor-term-literal-value"><type>raptor_term_literal_value</type></link>&#160;<structfield id="raptor-term-value.literal">literal</structfield>;</para></entry>
+<entry role="union_member_description"><para>literal value when term type is <link linkend="RAPTOR-TERM-TYPE-LITERAL:CAPS"><type>RAPTOR_TERM_TYPE_LITERAL</type></link></para></entry>
+<entry role="union_member_annotations"></entry>
+</row>
+<row><entry role="union_member_name"><para><link linkend="raptor-term-blank-value"><type>raptor_term_blank_value</type></link>&#160;<structfield id="raptor-term-value.blank">blank</structfield>;</para></entry>
+<entry role="union_member_description"><para>blank value when term type is <link linkend="RAPTOR-TERM-TYPE-BLANK:CAPS"><type>RAPTOR_TERM_TYPE_BLANK</type></link></para></entry>
+<entry role="union_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-term-blank-value" role="struct">
+<title>raptor_term_blank_value</title>
+<indexterm zone="raptor-term-blank-value"><primary>raptor_term_blank_value</primary></indexterm>
+<programlisting language="C">typedef struct {
+  unsigned char *string;
+  unsigned int string_len;
+} raptor_term_blank_value;
+</programlisting>
+<para>Blank term value - this typedef exists solely for use in <link linkend="raptor-term"><type>raptor_term</type></link></para>
+<refsect3 id="raptor-term-blank-value.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para>unsigned&#160;<link linkend="char"><type>char</type></link>&#160;*<structfield id="raptor-term-blank-value.string">string</structfield>;</para></entry>
+<entry role="struct_member_description"><para>literal string</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>unsigned&#160;<link linkend="int"><type>int</type></link>&#160;<structfield id="raptor-term-blank-value.string-len">string_len</structfield>;</para></entry>
+<entry role="struct_member_description"><para>length of string</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+<refsect2 id="raptor-term-literal-value" role="struct">
+<title>raptor_term_literal_value</title>
+<indexterm zone="raptor-term-literal-value"><primary>raptor_term_literal_value</primary></indexterm>
+<programlisting language="C">typedef struct {
+  unsigned char *string;
+  unsigned int string_len;
+
+  raptor_uri *datatype;
+
+  unsigned char *language;
+  unsigned char language_len;
+} raptor_term_literal_value;
+</programlisting>
+<para>Literal term value - this typedef exists solely for use in <link linkend="raptor-term"><type>raptor_term</type></link></para>
+<para>Either <parameter>datatype</parameter>
+ or <parameter>language</parameter>
+ may be non-NULL but not both.</para>
+<refsect3 id="raptor-term-literal-value.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para>unsigned&#160;<link linkend="char"><type>char</type></link>&#160;*<structfield id="raptor-term-literal-value.string">string</structfield>;</para></entry>
+<entry role="struct_member_description"><para>literal string</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>unsigned&#160;<link linkend="int"><type>int</type></link>&#160;<structfield id="raptor-term-literal-value.string-len">string_len</structfield>;</para></entry>
+<entry role="struct_member_description"><para>length of string</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-uri"><type>raptor_uri</type></link>&#160;*<structfield id="raptor-term-literal-value.datatype">datatype</structfield>;</para></entry>
+<entry role="struct_member_description"><para>datatype URI (or NULL)</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>unsigned&#160;<link linkend="char"><type>char</type></link>&#160;*<structfield id="raptor-term-literal-value.language">language</structfield>;</para></entry>
+<entry role="struct_member_description"><para>literal language (or NULL)</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>unsigned&#160;<link linkend="char"><type>char</type></link>&#160;<structfield id="raptor-term-literal-value.language-len">language_len</structfield>;</para></entry>
+<entry role="struct_member_description"><para>length of language</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+<refsect2 id="raptor-statement" role="struct">
+<title>raptor_statement</title>
+<indexterm zone="raptor-statement"><primary>raptor_statement</primary></indexterm>
+<programlisting language="C">typedef struct {
+  raptor_world* world;
+  int usage;
+  raptor_term* subject;
+  raptor_term* predicate;
+  raptor_term* object;
+  raptor_term* graph;
+} raptor_statement;
+</programlisting>
+<para>An RDF triple with optional graph name (quad)</para>
+<para>See <link linkend="raptor-term"><type>raptor_term</type></link> for a description of how the fields may be used.
+As returned by a parser statement_handler.</para>
+<refsect3 id="raptor-statement.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-world"><type>raptor_world</type></link>&#160;*<structfield id="raptor-statement.world">world</structfield>;</para></entry>
+<entry role="struct_member_description"><para>world pointer</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="int"><type>int</type></link>&#160;<structfield id="raptor-statement.usage">usage</structfield>;</para></entry>
+<entry role="struct_member_description"><para>usage count</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-term"><type>raptor_term</type></link>&#160;*<structfield id="raptor-statement.subject">subject</structfield>;</para></entry>
+<entry role="struct_member_description"><para>statement subject</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-term"><type>raptor_term</type></link>&#160;*<structfield id="raptor-statement.predicate">predicate</structfield>;</para></entry>
+<entry role="struct_member_description"><para>statement predicate</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-term"><type>raptor_term</type></link>&#160;*<structfield id="raptor-statement.object">object</structfield>;</para></entry>
+<entry role="struct_member_description"><para>statement object</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-term"><type>raptor_term</type></link>&#160;*<structfield id="raptor-statement.graph">graph</structfield>;</para></entry>
+<entry role="struct_member_description"><para>statement graph name (or NULL if not present)</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+
+</refsect1>
+
+</refentry>

@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-serializer">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-serializer.top_of_page">section-serializer</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-serializer</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-serializer.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="raptor-serializer"><returnvalue>raptor_serializer</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-serializer">raptor_new_serializer</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-serializer">raptor_free_serializer</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-serializer-start-to-iostream">raptor_serializer_start_to_iostream</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-serializer-start-to-filename">raptor_serializer_start_to_filename</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-serializer-start-to-string">raptor_serializer_start_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-serializer-start-to-file-handle">raptor_serializer_start_to_file_handle</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-serializer-set-namespace">raptor_serializer_set_namespace</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-serializer-set-namespace-from-namespace">raptor_serializer_set_namespace_from_namespace</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-serializer-serialize-statement">raptor_serializer_serialize_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-serializer-serialize-end">raptor_serializer_serialize_end</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-serializer-flush">raptor_serializer_flush</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="raptor-syntax-description"><returnvalue>raptor_syntax_description</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-serializer-get-description">raptor_serializer_get_description</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-serializer-get-iostream">raptor_serializer_get_iostream</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-locator"><returnvalue>raptor_locator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-serializer-get-locator">raptor_serializer_get_locator</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-serializer-set-option">raptor_serializer_set_option</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-serializer-get-option">raptor_serializer_get_option</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-world"><returnvalue>raptor_world</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-serializer-get-world">raptor_serializer_get_world</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-serializer.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-serializer">raptor_serializer</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-serializer.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-serializer.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-new-serializer" role="function">
+<title>raptor_new_serializer&#160;()</title>
+<indexterm zone="raptor-new-serializer"><primary>raptor_new_serializer</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-serializer"><returnvalue>raptor_serializer</returnvalue></link>&#160;*
+raptor_new_serializer (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                       <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>);</programlisting>
+<para>Constructor - create a new raptor_serializer object.</para>
+<refsect3 id="raptor-new-serializer.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the serializer name or NULL for default syntax</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-serializer.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-serializer"><type>raptor_serializer</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-serializer" role="function">
+<title>raptor_free_serializer&#160;()</title>
+<indexterm zone="raptor-free-serializer"><primary>raptor_free_serializer</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_serializer (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *rdf_serializer</parameter>);</programlisting>
+<para>Destructor - destroy a raptor_serializer object.</para>
+<refsect3 id="raptor-free-serializer.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_serializer</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-serializer"><type>raptor_serializer</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-start-to-iostream" role="function">
+<title>raptor_serializer_start_to_iostream&#160;()</title>
+<indexterm zone="raptor-serializer-start-to-iostream"><primary>raptor_serializer_start_to_iostream</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_serializer_start_to_iostream (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *rdf_serializer</parameter>,
+                                     <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                                     <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostream</parameter>);</programlisting>
+<para>Start serialization to an iostream with given base URI</para>
+<para>The passed in <parameter>iostream</parameter>
+ does not become owned by the serializer
+and can be used by the caller after serializing is done.  It
+must be destroyed by the caller.</para>
+<refsect3 id="raptor-serializer-start-to-iostream.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_serializer</para></entry>
+<entry role="parameter_description"><para>the <link linkend="raptor-serializer"><type>raptor_serializer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>base URI or NULL if no base URI is required</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostream</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-iostream"><type>raptor_iostream</type></link> to write serialization to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-start-to-iostream.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-start-to-filename" role="function">
+<title>raptor_serializer_start_to_filename&#160;()</title>
+<indexterm zone="raptor-serializer-start-to-filename"><primary>raptor_serializer_start_to_filename</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_serializer_start_to_filename (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *rdf_serializer</parameter>,
+                                     <parameter>const <link linkend="char"><type>char</type></link> *filename</parameter>);</programlisting>
+<para>Start serializing to a filename.</para>
+<refsect3 id="raptor-serializer-start-to-filename.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_serializer</para></entry>
+<entry role="parameter_description"><para>the <link linkend="raptor-serializer"><type>raptor_serializer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>filename</para></entry>
+<entry role="parameter_description"><para>filename to serialize to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-start-to-filename.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-start-to-string" role="function">
+<title>raptor_serializer_start_to_string&#160;()</title>
+<indexterm zone="raptor-serializer-start-to-string"><primary>raptor_serializer_start_to_string</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_serializer_start_to_string (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *rdf_serializer</parameter>,
+                                   <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                                   <parameter><link linkend="void"><type>void</type></link> **string_p</parameter>,
+                                   <parameter><link linkend="size-t"><type>size_t</type></link> *length_p</parameter>);</programlisting>
+<para>Start serializing to a string.</para>
+<refsect3 id="raptor-serializer-start-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_serializer</para></entry>
+<entry role="parameter_description"><para>the <link linkend="raptor-serializer"><type>raptor_serializer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>base URI or NULL if no base URI is required</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string_p</para></entry>
+<entry role="parameter_description"><para>pointer to location to hold string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length_p</para></entry>
+<entry role="parameter_description"><para>pointer to location to hold length of string (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-start-to-string.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-start-to-file-handle" role="function">
+<title>raptor_serializer_start_to_file_handle&#160;()</title>
+<indexterm zone="raptor-serializer-start-to-file-handle"><primary>raptor_serializer_start_to_file_handle</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_serializer_start_to_file_handle
+                               (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *rdf_serializer</parameter>,
+                                <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                                <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *fh</parameter>);</programlisting>
+<para>Start serializing to a FILE*.</para>
+<para>NOTE: This does not fclose the handle when it is finished.</para>
+<refsect3 id="raptor-serializer-start-to-file-handle.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_serializer</para></entry>
+<entry role="parameter_description"><para>the <link linkend="raptor-serializer"><type>raptor_serializer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>base URI or NULL if no base URI is required</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fh</para></entry>
+<entry role="parameter_description"><para>FILE* to serialize to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-start-to-file-handle.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-set-namespace" role="function">
+<title>raptor_serializer_set_namespace&#160;()</title>
+<indexterm zone="raptor-serializer-set-namespace"><primary>raptor_serializer_set_namespace</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_serializer_set_namespace (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *rdf_serializer</parameter>,
+                                 <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                                 <parameter>const unsigned <link linkend="char"><type>char</type></link> *prefix</parameter>);</programlisting>
+<para>set a namespace uri/prefix mapping for serializing.</para>
+<refsect3 id="raptor-serializer-set-namespace.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_serializer</para></entry>
+<entry role="parameter_description"><para>the <link linkend="raptor-serializer"><type>raptor_serializer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-uri"><type>raptor_uri</type></link> of namespace or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>prefix</para></entry>
+<entry role="parameter_description"><para>prefix to use or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-set-namespace.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-set-namespace-from-namespace" role="function">
+<title>raptor_serializer_set_namespace_from_namespace&#160;()</title>
+<indexterm zone="raptor-serializer-set-namespace-from-namespace"><primary>raptor_serializer_set_namespace_from_namespace</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_serializer_set_namespace_from_namespace
+                               (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *rdf_serializer</parameter>,
+                                <parameter><link linkend="raptor-namespace"><type>raptor_namespace</type></link> *nspace</parameter>);</programlisting>
+<para>Set a namespace uri/prefix mapping for serializing from an existing namespace.</para>
+<refsect3 id="raptor-serializer-set-namespace-from-namespace.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_serializer</para></entry>
+<entry role="parameter_description"><para>the <link linkend="raptor-serializer"><type>raptor_serializer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nspace</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-namespace"><type>raptor_namespace</type></link> to set</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-set-namespace-from-namespace.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-serialize-statement" role="function">
+<title>raptor_serializer_serialize_statement&#160;()</title>
+<indexterm zone="raptor-serializer-serialize-statement"><primary>raptor_serializer_serialize_statement</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_serializer_serialize_statement (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *rdf_serializer</parameter>,
+                                       <parameter><link linkend="raptor-statement"><type>raptor_statement</type></link> *statement</parameter>);</programlisting>
+<para>Serialize a statement.</para>
+<refsect3 id="raptor-serializer-serialize-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_serializer</para></entry>
+<entry role="parameter_description"><para>the <link linkend="raptor-serializer"><type>raptor_serializer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-statement"><type>raptor_statement</type></link> to serialize to a syntax</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-serialize-statement.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-serialize-end" role="function">
+<title>raptor_serializer_serialize_end&#160;()</title>
+<indexterm zone="raptor-serializer-serialize-end"><primary>raptor_serializer_serialize_end</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_serializer_serialize_end (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *rdf_serializer</parameter>);</programlisting>
+<para>End a serialization.</para>
+<refsect3 id="raptor-serializer-serialize-end.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_serializer</para></entry>
+<entry role="parameter_description"><para>the <link linkend="raptor-serializer"><type>raptor_serializer</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-serialize-end.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-flush" role="function">
+<title>raptor_serializer_flush&#160;()</title>
+<indexterm zone="raptor-serializer-flush"><primary>raptor_serializer_flush</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_serializer_flush (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *rdf_serializer</parameter>);</programlisting>
+<para>Flush the current serializer output and free any pending state</para>
+<para>In serializers that can generate blocks of content, this causes
+the writing of any current pending block.  For example in Turtle
+this may write all pending triples.</para>
+<refsect3 id="raptor-serializer-flush.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_serializer</para></entry>
+<entry role="parameter_description"><para>raptor serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-flush.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-get-description" role="function">
+<title>raptor_serializer_get_description&#160;()</title>
+<indexterm zone="raptor-serializer-get-description"><primary>raptor_serializer_get_description</primary></indexterm>
+<programlisting language="C">const <link linkend="raptor-syntax-description"><returnvalue>raptor_syntax_description</returnvalue></link>&#160;*
+raptor_serializer_get_description (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *rdf_serializer</parameter>);</programlisting>
+<para>Get description of the syntaxes of the serializer.</para>
+<para>The returned description is static and lives as long as the raptor
+library (raptor world).</para>
+<refsect3 id="raptor-serializer-get-description.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_serializer</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-serializer"><type>raptor_serializer</type></link> serializer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-get-description.returns" role="returns">
+<title>Returns</title>
+<para> description of syntax</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-get-iostream" role="function">
+<title>raptor_serializer_get_iostream&#160;()</title>
+<indexterm zone="raptor-serializer-get-iostream"><primary>raptor_serializer_get_iostream</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+raptor_serializer_get_iostream (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *serializer</parameter>);</programlisting>
+<para>Get the current serializer iostream.</para>
+<refsect3 id="raptor-serializer-get-iostream.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-serializer"><type>raptor_serializer</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-get-iostream.returns" role="returns">
+<title>Returns</title>
+<para> the serializer's current iostream or NULL if </para>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-get-locator" role="function">
+<title>raptor_serializer_get_locator&#160;()</title>
+<indexterm zone="raptor-serializer-get-locator"><primary>raptor_serializer_get_locator</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-locator"><returnvalue>raptor_locator</returnvalue></link>&#160;*
+raptor_serializer_get_locator (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *rdf_serializer</parameter>);</programlisting>
+<para>Get the serializer raptor locator object.</para>
+<refsect3 id="raptor-serializer-get-locator.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_serializer</para></entry>
+<entry role="parameter_description"><para>raptor serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-get-locator.returns" role="returns">
+<title>Returns</title>
+<para> raptor locator</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-set-option" role="function">
+<title>raptor_serializer_set_option&#160;()</title>
+<indexterm zone="raptor-serializer-set-option"><primary>raptor_serializer_set_option</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_serializer_set_option (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *serializer</parameter>,
+                              <parameter><link linkend="raptor-option"><type>raptor_option</type></link> option</parameter>,
+                              <parameter>const <link linkend="char"><type>char</type></link> *string</parameter>,
+                              <parameter><link linkend="int"><type>int</type></link> integer</parameter>);</programlisting>
+<para>Set serializer option.</para>
+<para>If <parameter>string</parameter>
+ is not NULL and the option type is numeric, the string
+value is converted to an integer and used in preference to <parameter>integer</parameter>
+.</para>
+<para>If <parameter>string</parameter>
+ is NULL and the option type is not numeric, an error is
+returned.</para>
+<para>The <parameter>string</parameter>
+ values used are copied.</para>
+<para>The allowed options are available via
+<link linkend="raptor-world-get-option-description"><function>raptor_world_get_option_description()</function></link>.</para>
+<refsect3 id="raptor-serializer-set-option.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-serializer"><type>raptor_serializer</type></link> serializer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>option</para></entry>
+<entry role="parameter_description"><para>option to set from enumerated <link linkend="raptor-option"><type>raptor_option</type></link> values</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string option value (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>integer</para></entry>
+<entry role="parameter_description"><para>integer option value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-set-option.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure or if the option is unknown</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-get-option" role="function">
+<title>raptor_serializer_get_option&#160;()</title>
+<indexterm zone="raptor-serializer-get-option"><primary>raptor_serializer_get_option</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_serializer_get_option (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *serializer</parameter>,
+                              <parameter><link linkend="raptor-option"><type>raptor_option</type></link> option</parameter>,
+                              <parameter><link linkend="char"><type>char</type></link> **string_p</parameter>,
+                              <parameter><link linkend="int"><type>int</type></link> *integer_p</parameter>);</programlisting>
+<para>Get serializer option.</para>
+<para>Any string value returned in *<parameter>string_p</parameter>
+ is shared and must
+be copied by the caller.</para>
+<para>The allowed options are available via
+<link linkend="raptor-world-get-option-description"><function>raptor_world_get_option_description()</function></link>.</para>
+<refsect3 id="raptor-serializer-get-option.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-serializer"><type>raptor_serializer</type></link> serializer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>option</para></entry>
+<entry role="parameter_description"><para>option to get value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string_p</para></entry>
+<entry role="parameter_description"><para>pointer to where to store string value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>integer_p</para></entry>
+<entry role="parameter_description"><para>pointer to where to store integer value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-get-option.returns" role="returns">
+<title>Returns</title>
+<para> option value or &lt; 0 for an illegal option</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-serializer-get-world" role="function">
+<title>raptor_serializer_get_world&#160;()</title>
+<indexterm zone="raptor-serializer-get-world"><primary>raptor_serializer_get_world</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-world"><returnvalue>raptor_world</returnvalue></link>&#160;*
+raptor_serializer_get_world (<parameter><link linkend="raptor-serializer"><type>raptor_serializer</type></link> *rdf_serializer</parameter>);</programlisting>
+<para>Get the <link linkend="raptor-world"><type>raptor_world</type></link> object associated with a serializer.</para>
+<refsect3 id="raptor-serializer-get-world.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>rdf_serializer</para></entry>
+<entry role="parameter_description"><para>raptor serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-serializer-get-world.returns" role="returns">
+<title>Returns</title>
+<para> raptor_world* pointer</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-serializer.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-serializer" role="typedef">
+<title>raptor_serializer</title>
+<indexterm zone="raptor-serializer"><primary>raptor_serializer</primary></indexterm>
+<programlisting language="C">raptor_serializer* raptor_serializer;
+</programlisting>
+<para>Raptor Serializer class</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

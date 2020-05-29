@@ -1,0 +1,118 @@
+   #[1]DOAP
+
+                         Redland librdf RDF API Library
+
+[2]Dave Beckett
+
+Overview
+
+   [3]Redland librdf is a library that provides a high-level interface for
+   the Resource Description Framework (RDF) allowing the RDF graph to be
+   parsed from XML, stored, queried and manipulated. Redland librdf
+   implements each of the RDF concepts in its own class via an object
+   based API, reflected into the language APIs, currently C#, Java, Perl,
+   PHP, Python, Ruby and Tcl. Several classes providing functionality such
+   as for parsers, storage are built as modules that can be loaded at
+   compile or run-time as required.
+
+   This is a mature and stable RDF library developed since 2000 used in
+   multiple projects. See the [4]FAQS for general information and the
+   [5]Redland issue tracker for known bugs and issues. A summary of the
+   changes can be found in the [6]NEWS file, detailed API changes in the
+   [7]release notes and file-by-file changes in the Subversion
+   [8]ChangeLog.
+
+   Redland librdf provides:
+     * A modular, [9]object based library written in C
+     * APIs for manipulating the RDF [10]graph and parts - [11]Statements,
+       [12]Resources and Literals
+     * Language Bindings in Perl, PHP, Python and Ruby via the [13]Redland
+       Bindings package.
+     * Reading and writing multiple RDF syntaxes with [14]Parsers and
+       [15]Serializers via the [16]Raptor RDF Parser Toolkit.
+     * [17]Storage for graphs in memory and persistently with
+       Sleepycat/Berkeley DB, MySQL 3-5, PostgreSQL, SQLite, Openlink
+       Virtuoso, in-memory Trees, files or URIs.
+     * [18]Query language support for SPARQL 1.0 (some 1.1) and RDQL using
+       [19]Rasqal.
+     * APIs for accessing the graph by Statement (triples) or by Nodes and
+       Arcs
+     * Contexts for managing aggregating named graphs and recording
+       provenance.
+     * [20]Statement Streams for efficient construction, parsing and
+       serialisation of graphs
+     * [21]rdfproc RDF processor utility program
+     * No memory leaks.
+
+Sources
+
+   The packaged sources are available from
+   [22]http://download.librdf.org/source/ (master site) and also from the
+   [23]SourceForge site. The development GIT sources can also be
+   [24]browsed on GitHub or checked out at
+   git://github.com/dajobe/librdf.git
+
+   librdf requires [25]Raptor 1.4.19 or newer (or Raptor V2 1.9.0 or
+   newer) and [26]Rasqal 0.9.19 or newer to build and run, which can be
+   downloaded from the same area as the librdf source and binaries.
+
+License
+
+   This library is free software / open source software released under the
+   LGPL 2.1 (GPL) or Apache 2.0 licenses. See [27]LICENSE.html for full
+   details.
+
+Installation and Documentation
+
+   See [28]INSTALL.html for general installation and configuration
+   information.
+
+   Further documentation is available in the [29]documents area including
+   the [30]API reference document and [31]detailed storage modules
+   information.
+
+Mailing Lists
+
+   The [32]Redland mailing lists discuss the development and use of the
+   Redland libraries as well as future plans and announcement of releases.
+     __________________________________________________________________
+
+   Copyright (C) 2000-2013 [33]Dave Beckett
+   Copyright (C) 2000-2005 [34]University of Bristol
+
+References
+
+   1. redland.rdf
+   2. http://www.dajobe.org/
+   3. http://librdf.org/
+   4. FAQS.html
+   5. http://bugs.librdf.org/
+   6. NEWS.html
+   7. RELEASE.html
+   8. ChangeLog
+   9. docs/api/objects.html
+  10. docs/api/model.html
+  11. docs/api/statement.html
+  12. docs/api/node.html
+  13. http://librdf.org/bindings/
+  14. docs/api/parser.html
+  15. docs/api/serializer.html
+  16. http://librdf.org/raptor/
+  17. docs/api/storage.html
+  18. docs/api/query.html
+  19. http://librdf.org/rasqal/
+  20. docs/api/stream.html
+  21. utils/rdfproc.html
+  22. http://download.librdf.org/source/
+  23. http://sourceforge.net/projects/librdf/
+  24. http://github.com/dajobe/librdf
+  25. http://librdf.org/raptor/
+  26. http://librdf.org/rasqal/
+  27. LICENSE.html
+  28. INSTALL.html
+  29. docs/README.html
+  30. docs/api/index.html
+  31. docs/storage.html
+  32. http://librdf.org/lists/
+  33. http://www.dajobe.org/
+  34. http://www.bristol.ac.uk/

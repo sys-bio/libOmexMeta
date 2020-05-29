@@ -1,0 +1,1180 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-uri">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-uri.top_of_page">section-uri</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-uri</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-uri.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-uri">raptor_new_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-uri-from-counted-string">raptor_new_uri_from_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-uri-from-uri-local-name">raptor_new_uri_from_uri_local_name</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-uri-from-uri-or-file-string">raptor_new_uri_from_uri_or_file_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-uri-relative-to-base">raptor_new_uri_relative_to_base</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-uri-relative-to-base-counted">raptor_new_uri_relative_to_base_counted</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-uri-from-id">raptor_new_uri_from_id</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-uri-for-rdf-concept">raptor_new_uri_for_rdf_concept</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-uri-for-xmlbase">raptor_new_uri_for_xmlbase</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-uri-for-retrieval">raptor_new_uri_for_retrieval</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-uri">raptor_free_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-uri-compare">raptor_uri_compare</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-uri-equals">raptor_uri_equals</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-copy">raptor_uri_copy</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-as-string">raptor_uri_as_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-as-counted-string">raptor_uri_as_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-to-relative-counted-uri-string">raptor_uri_to_relative_counted_uri_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-to-relative-uri-string">raptor_uri_to_relative_uri_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-to-counted-string">raptor_uri_to_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-to-string">raptor_uri_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-uri-resolve-uri-reference">raptor_uri_resolve_uri_reference</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-counted-filename-to-uri-string">raptor_uri_counted_filename_to_uri_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-filename-to-uri-string">raptor_uri_filename_to_uri_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-uri-uri-string-is-absolute">raptor_uri_uri_string_is_absolute</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-uri-uri-string-is-file-uri">raptor_uri_uri_string_is_file_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-uri-string-to-filename">raptor_uri_uri_string_to_filename</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-uri-string-to-filename-fragment">raptor_uri_uri_string_to_filename_fragment</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-uri-string-to-counted-filename-fragment">raptor_uri_uri_string_to_counted_filename_fragment</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-uri-print">raptor_uri_print</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-world"><returnvalue>raptor_world</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-get-world">raptor_uri_get_world</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-uri-write">raptor_uri_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-uri-file-exists">raptor_uri_file_exists</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-uri-filename-exists">raptor_uri_filename_exists</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-to-turtle-counted-string">raptor_uri_to_turtle_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-uri-to-turtle-string">raptor_uri_to_turtle_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-uri-turtle-write">raptor_uri_turtle_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-uri.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-uri">raptor_uri</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-uri.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-uri.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-new-uri" role="function">
+<title>raptor_new_uri&#160;()</title>
+<indexterm zone="raptor-new-uri"><primary>raptor_new_uri</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_new_uri (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>);</programlisting>
+<para>Constructor - create a raptor URI from a UTF-8 encoded Unicode string.</para>
+<refsect3 id="raptor-new-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>URI string.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-uri.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-uri"><type>raptor_uri</type></link> object or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-uri-from-counted-string" role="function">
+<title>raptor_new_uri_from_counted_string&#160;()</title>
+<indexterm zone="raptor-new-uri-from-counted-string"><primary>raptor_new_uri_from_counted_string</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_new_uri_from_counted_string (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                    <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>,
+                                    <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Constructor - create a raptor URI from a UTF-8 encoded Unicode string.</para>
+<para>Note: The <parameter>uri_string</parameter>
+ need not be NULL terminated - a NULL will be
+added to the copied string used.</para>
+<refsect3 id="raptor-new-uri-from-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>URI string.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>length of URI string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-uri-from-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-uri"><type>raptor_uri</type></link> object or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-uri-from-uri-local-name" role="function">
+<title>raptor_new_uri_from_uri_local_name&#160;()</title>
+<indexterm zone="raptor-new-uri-from-uri-local-name"><primary>raptor_new_uri_from_uri_local_name</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_new_uri_from_uri_local_name (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                    <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                                    <parameter>const unsigned <link linkend="char"><type>char</type></link> *local_name</parameter>);</programlisting>
+<para>Constructor - create a raptor URI from an existing URI and a local name.</para>
+<para>Creates a new URI from the concatenation of the <parameter>local_name</parameter>
+ to the
+<parameter>uri</parameter>
+.  This is NOT relative URI resolution, which is done by the
+<link linkend="raptor-new-uri-relative-to-base"><function>raptor_new_uri_relative_to_base()</function></link> constructor.</para>
+<refsect3 id="raptor-new-uri-from-uri-local-name.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>existing <link linkend="raptor-uri"><type>raptor_uri</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>local_name</para></entry>
+<entry role="parameter_description"><para>local name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-uri-from-uri-local-name.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-uri"><type>raptor_uri</type></link> object or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-uri-from-uri-or-file-string" role="function">
+<title>raptor_new_uri_from_uri_or_file_string&#160;()</title>
+<indexterm zone="raptor-new-uri-from-uri-or-file-string"><primary>raptor_new_uri_from_uri_or_file_string</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_new_uri_from_uri_or_file_string
+                               (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_or_file_string</parameter>);</programlisting>
+<para>Constructor - create a raptor URI from a string that is a relative or absolute URI or a filename</para>
+<para>If the <parameter>uri_or_file_string</parameter>
+ is a filename PATH that exists, the
+result will be a URI file://PATH</para>
+<refsect3 id="raptor-new-uri-from-uri-or-file-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>existing base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_or_file_string</para></entry>
+<entry role="parameter_description"><para>URI string or filename</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-uri-from-uri-or-file-string.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-uri"><type>raptor_uri</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-uri-relative-to-base" role="function">
+<title>raptor_new_uri_relative_to_base&#160;()</title>
+<indexterm zone="raptor-new-uri-relative-to-base"><primary>raptor_new_uri_relative_to_base</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_new_uri_relative_to_base (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                 <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>,
+                                 <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>);</programlisting>
+<para>Constructor - create a raptor URI from a base URI and a relative URI string.</para>
+<para>Use <link linkend="raptor-new-uri-relative-to-base-counted"><function>raptor_new_uri_relative_to_base_counted()</function></link> if the URI string length is known</para>
+<refsect3 id="raptor-new-uri-relative-to-base.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>existing base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>relative URI string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-uri-relative-to-base.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-uri"><type>raptor_uri</type></link> object or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-uri-relative-to-base-counted" role="function">
+<title>raptor_new_uri_relative_to_base_counted&#160;()</title>
+<indexterm zone="raptor-new-uri-relative-to-base-counted"><primary>raptor_new_uri_relative_to_base_counted</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_new_uri_relative_to_base_counted
+                               (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> uri_len</parameter>);</programlisting>
+<para>Constructor - create a raptor URI from a base URI and a relative counted URI string.</para>
+<refsect3 id="raptor-new-uri-relative-to-base-counted.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>existing base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>relative URI string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_len</para></entry>
+<entry role="parameter_description"><para>length of URI string (or 0)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-uri-relative-to-base-counted.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-uri"><type>raptor_uri</type></link> object or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-uri-from-id" role="function">
+<title>raptor_new_uri_from_id&#160;()</title>
+<indexterm zone="raptor-new-uri-from-id"><primary>raptor_new_uri_from_id</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_new_uri_from_id (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                        <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>,
+                        <parameter>const unsigned <link linkend="char"><type>char</type></link> *id</parameter>);</programlisting>
+<para>Constructor - create a new URI from a base URI and RDF ID.</para>
+<para>This creates a URI equivalent to concatenating <parameter>base_uri</parameter>
+ with</para>
+<refsect3><title>and <parameter>id</parameter>
+.</title></refsect3>
+<refsect3 id="raptor-new-uri-from-id.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>existing base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>id</para></entry>
+<entry role="parameter_description"><para>RDF ID</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-uri-from-id.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-uri"><type>raptor_uri</type></link> object or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-uri-for-rdf-concept" role="function">
+<title>raptor_new_uri_for_rdf_concept&#160;()</title>
+<indexterm zone="raptor-new-uri-for-rdf-concept"><primary>raptor_new_uri_for_rdf_concept</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_new_uri_for_rdf_concept (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *name</parameter>);</programlisting>
+<para>Constructor - create a raptor URI for the RDF namespace concept name.</para>
+<para>Example: u=raptor_new_uri_for_rdf_concept("value") creates a new
+URI for the rdf:value term.</para>
+<refsect3 id="raptor-new-uri-for-rdf-concept.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>RDF namespace concept</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-uri-for-rdf-concept.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-uri"><type>raptor_uri</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-uri-for-xmlbase" role="function">
+<title>raptor_new_uri_for_xmlbase&#160;()</title>
+<indexterm zone="raptor-new-uri-for-xmlbase"><primary>raptor_new_uri_for_xmlbase</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_new_uri_for_xmlbase (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *old_uri</parameter>);</programlisting>
+<para>Constructor - create a URI suitable for use as an XML Base.</para>
+<para>Takes an existing URI and ensures it has a path (default /) and has
+no fragment or query arguments - XML base does not use these.</para>
+<refsect3 id="raptor-new-uri-for-xmlbase.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>old_uri</para></entry>
+<entry role="parameter_description"><para>URI to transform</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-uri-for-xmlbase.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="raptor-uri"><type>raptor_uri</type></link> object or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-uri-for-retrieval" role="function">
+<title>raptor_new_uri_for_retrieval&#160;()</title>
+<indexterm zone="raptor-new-uri-for-retrieval"><primary>raptor_new_uri_for_retrieval</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_new_uri_for_retrieval (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *old_uri</parameter>);</programlisting>
+<para>Constructor - create a URI suitable for retrieval.</para>
+<para>Takes an existing URI and ensures it has a path (default /) and has
+no fragment - URI retrieval does not use the fragment part.</para>
+<refsect3 id="raptor-new-uri-for-retrieval.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>old_uri</para></entry>
+<entry role="parameter_description"><para>URI to transform</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-uri-for-retrieval.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="raptor-uri"><type>raptor_uri</type></link> object or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-uri" role="function">
+<title>raptor_free_uri&#160;()</title>
+<indexterm zone="raptor-free-uri"><primary>raptor_free_uri</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_uri (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>);</programlisting>
+<para>Destructor - destroy a <link linkend="raptor-uri"><type>raptor_uri</type></link> object</para>
+<refsect3 id="raptor-free-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>URI to destroy</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-compare" role="function">
+<title>raptor_uri_compare&#160;()</title>
+<indexterm zone="raptor-uri-compare"><primary>raptor_uri_compare</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_uri_compare (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri1</parameter>,
+                    <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri2</parameter>);</programlisting>
+<para>Compare two URIs, ala strcmp.</para>
+<para>A NULL URI is always less than (never equal to) a non-NULL URI.</para>
+<refsect3 id="raptor-uri-compare.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri1</para></entry>
+<entry role="parameter_description"><para>URI 1 (may be NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri2</para></entry>
+<entry role="parameter_description"><para>URI 2 (may be NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-compare.returns" role="returns">
+<title>Returns</title>
+<para> -1 if uri1 &lt; uri2, 0 if equal, 1 if uri1 &gt; uri2</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-equals" role="function">
+<title>raptor_uri_equals&#160;()</title>
+<indexterm zone="raptor-uri-equals"><primary>raptor_uri_equals</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_uri_equals (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri1</parameter>,
+                   <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri2</parameter>);</programlisting>
+<para>Check if two URIs are equal.</para>
+<para>A NULL URI is not equal to a non-NULL URI.</para>
+<refsect3 id="raptor-uri-equals.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri1</para></entry>
+<entry role="parameter_description"><para>URI 1 (may be NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri2</para></entry>
+<entry role="parameter_description"><para>URI 2 (may be NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-equals.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if the URIs are equal</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-copy" role="function">
+<title>raptor_uri_copy&#160;()</title>
+<indexterm zone="raptor-uri-copy"><primary>raptor_uri_copy</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_uri_copy (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>);</programlisting>
+<para>Constructor - get a copy of a URI.</para>
+<refsect3 id="raptor-uri-copy.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>URI object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-copy.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-uri"><type>raptor_uri</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-as-string" role="function">
+<title>raptor_uri_as_string&#160;()</title>
+<indexterm zone="raptor-uri-as-string"><primary>raptor_uri_as_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_uri_as_string (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>);</programlisting>
+<para>Get a string representation of a URI.</para>
+<para>Returns a shared pointer to a string representation of <parameter>uri</parameter>
+.  This
+string is shared and must not be freed, otherwise see use the
+<link linkend="raptor-uri-to-string"><function>raptor_uri_to_string()</function></link> or <link linkend="raptor-uri-to-counted-string"><function>raptor_uri_to_counted_string()</function></link> methods.</para>
+<refsect3 id="raptor-uri-as-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-uri"><type>raptor_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-as-string.returns" role="returns">
+<title>Returns</title>
+<para> shared string representation of URI</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-as-counted-string" role="function">
+<title>raptor_uri_as_counted_string&#160;()</title>
+<indexterm zone="raptor-uri-as-counted-string"><primary>raptor_uri_as_counted_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_uri_as_counted_string (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                              <parameter><link linkend="size-t"><type>size_t</type></link> *len_p</parameter>);</programlisting>
+<para>Get a string representation of a URI with count.</para>
+<para>Returns a shared pointer to a string representation of <parameter>uri</parameter>
+ along
+with the length of the string in <parameter>len_p</parameter>
+, if not NULL.  This
+string is shared and must not be freed, otherwise see use the
+<link linkend="raptor-uri-to-string"><function>raptor_uri_to_string()</function></link> or <link linkend="raptor-uri-to-counted-string"><function>raptor_uri_to_counted_string()</function></link> methods.</para>
+<refsect3 id="raptor-uri-as-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>URI object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len_p</para></entry>
+<entry role="parameter_description"><para>address of length variable or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-as-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> shared string representation of URI</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-to-relative-counted-uri-string" role="function">
+<title>raptor_uri_to_relative_counted_uri_string&#160;()</title>
+<indexterm zone="raptor-uri-to-relative-counted-uri-string"><primary>raptor_uri_to_relative_counted_uri_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_uri_to_relative_counted_uri_string
+                               (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>,
+                                <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *reference_uri</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> *length_p</parameter>);</programlisting>
+<para>Get the counted relative URI string of a URI against a base URI.</para>
+<refsect3 id="raptor-uri-to-relative-counted-uri-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>The base absolute URI to resolve against (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>reference_uri</para></entry>
+<entry role="parameter_description"><para>The reference absolute URI to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length_p</para></entry>
+<entry role="parameter_description"><para>Location to store the length of the relative URI string or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-to-relative-counted-uri-string.returns" role="returns">
+<title>Returns</title>
+<para> A newly allocated relative URI string or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-to-relative-uri-string" role="function">
+<title>raptor_uri_to_relative_uri_string&#160;()</title>
+<indexterm zone="raptor-uri-to-relative-uri-string"><primary>raptor_uri_to_relative_uri_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_uri_to_relative_uri_string (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>,
+                                   <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *reference_uri</parameter>);</programlisting>
+<para>Get the relative URI string of a URI against a base URI.</para>
+<refsect3 id="raptor-uri-to-relative-uri-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>The base absolute URI to resolve against</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>reference_uri</para></entry>
+<entry role="parameter_description"><para>The reference absolute URI to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-to-relative-uri-string.returns" role="returns">
+<title>Returns</title>
+<para> A newly allocated relative URI string or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-to-counted-string" role="function">
+<title>raptor_uri_to_counted_string&#160;()</title>
+<indexterm zone="raptor-uri-to-counted-string"><primary>raptor_uri_to_counted_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_uri_to_counted_string (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                              <parameter><link linkend="size-t"><type>size_t</type></link> *len_p</parameter>);</programlisting>
+<para>Get a new counted string for a URI.</para>
+<para>If <parameter>len_p</parameter>
+ is not NULL, the length of the string is stored in it.</para>
+<para>The memory allocated must be freed by the caller and
+<link linkend="raptor-free-memory"><function>raptor_free_memory()</function></link> should be used for best portability.</para>
+<refsect3 id="raptor-uri-to-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-uri"><type>raptor_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len_p</para></entry>
+<entry role="parameter_description"><para>Pointer to length (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-to-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> new string or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-to-string" role="function">
+<title>raptor_uri_to_string&#160;()</title>
+<indexterm zone="raptor-uri-to-string"><primary>raptor_uri_to_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_uri_to_string (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>);</programlisting>
+<para>Get a new string for a URI.</para>
+<para>The memory allocated must be freed by the caller and
+<link linkend="raptor-free-memory"><function>raptor_free_memory()</function></link> should be used for best portability.</para>
+<refsect3 id="raptor-uri-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-uri"><type>raptor_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-to-string.returns" role="returns">
+<title>Returns</title>
+<para> new string or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-resolve-uri-reference" role="function">
+<title>raptor_uri_resolve_uri_reference&#160;()</title>
+<indexterm zone="raptor-uri-resolve-uri-reference"><primary>raptor_uri_resolve_uri_reference</primary></indexterm>
+<programlisting language="C"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+raptor_uri_resolve_uri_reference (<parameter>const unsigned <link linkend="char"><type>char</type></link> *base_uri</parameter>,
+                                  <parameter>const unsigned <link linkend="char"><type>char</type></link> *reference_uri</parameter>,
+                                  <parameter>unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                                  <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Resolve a URI against a base URI to create a new absolute URI.</para>
+<refsect3 id="raptor-uri-resolve-uri-reference.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>Base URI string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>reference_uri</para></entry>
+<entry role="parameter_description"><para>Reference URI string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>Destination URI output buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>Length of destination output buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-resolve-uri-reference.returns" role="returns">
+<title>Returns</title>
+<para> length of resolved string or 0 on failure (such as <parameter>buffer</parameter>
+too small)</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-counted-filename-to-uri-string" role="function">
+<title>raptor_uri_counted_filename_to_uri_string&#160;()</title>
+<indexterm zone="raptor-uri-counted-filename-to-uri-string"><primary>raptor_uri_counted_filename_to_uri_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_uri_counted_filename_to_uri_string
+                               (<parameter>const <link linkend="char"><type>char</type></link> *filename</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> filename_len</parameter>);</programlisting>
+<para>Converts a counted filename to a file: URI.</para>
+<para>Handles the OS-specific escaping on turning filenames into URIs
+and returns a new buffer that the caller must <link linkend="free"><function>free()</function></link>.  Turns a
+space in the filename into %20 and '%' into %25.</para>
+<refsect3 id="raptor-uri-counted-filename-to-uri-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>filename</para></entry>
+<entry role="parameter_description"><para>The filename to convert</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>filename_len</para></entry>
+<entry role="parameter_description"><para>length of <parameter>filename</parameter>
+or 0 to count it here</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-counted-filename-to-uri-string.returns" role="returns">
+<title>Returns</title>
+<para> A newly allocated string with the URI or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-filename-to-uri-string" role="function">
+<title>raptor_uri_filename_to_uri_string&#160;()</title>
+<indexterm zone="raptor-uri-filename-to-uri-string"><primary>raptor_uri_filename_to_uri_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_uri_filename_to_uri_string (<parameter>const <link linkend="char"><type>char</type></link> *filename</parameter>);</programlisting>
+<para>Converts a filename to a file: URI.</para>
+<para>Handles the OS-specific escaping on turning filenames into URIs
+and returns a new buffer that the caller must <link linkend="free"><function>free()</function></link>.  Turns a
+space in the filename into %20 and '%' into %25.</para>
+<refsect3 id="raptor-uri-filename-to-uri-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>filename</para></entry>
+<entry role="parameter_description"><para>The filename to convert</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-filename-to-uri-string.returns" role="returns">
+<title>Returns</title>
+<para> A newly allocated string with the URI or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-uri-string-is-absolute" role="function">
+<title>raptor_uri_uri_string_is_absolute&#160;()</title>
+<indexterm zone="raptor-uri-uri-string-is-absolute"><primary>raptor_uri_uri_string_is_absolute</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_uri_uri_string_is_absolute (<parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>);</programlisting>
+<para>Check if a uri string is an absolute URI</para>
+<refsect3 id="raptor-uri-uri-string-is-absolute.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>uri to check write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-uri-string-is-absolute.returns" role="returns">
+<title>Returns</title>
+<para> &gt;0 if absolute, 0 if not, &lt; 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-uri-string-is-file-uri" role="function">
+<title>raptor_uri_uri_string_is_file_uri&#160;()</title>
+<indexterm zone="raptor-uri-uri-string-is-file-uri"><primary>raptor_uri_uri_string_is_file_uri</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_uri_uri_string_is_file_uri (<parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>);</programlisting>
+<para>Check if a URI string is a file: URI.</para>
+<refsect3 id="raptor-uri-uri-string-is-file-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>The URI string to check</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-uri-string-is-file-uri.returns" role="returns">
+<title>Returns</title>
+<para> Non zero if URI string is a file: URI</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-uri-string-to-filename" role="function">
+<title>raptor_uri_uri_string_to_filename&#160;()</title>
+<indexterm zone="raptor-uri-uri-string-to-filename"><primary>raptor_uri_uri_string_to_filename</primary></indexterm>
+<programlisting language="C"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_uri_uri_string_to_filename (<parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>);</programlisting>
+<para>Convert a file: URI to a filename.</para>
+<para>Handles the OS-specific file: URIs to filename mappings.  Returns
+a new buffer containing the filename that the caller must free.</para>
+<para>See also <link linkend="raptor-uri-uri-string-to-counted-filename-fragment"><function>raptor_uri_uri_string_to_counted_filename_fragment()</function></link></para>
+<refsect3 id="raptor-uri-uri-string-to-filename.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>The file: URI to convert</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-uri-string-to-filename.returns" role="returns">
+<title>Returns</title>
+<para> A newly allocated string with the filename or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-uri-string-to-filename-fragment" role="function">
+<title>raptor_uri_uri_string_to_filename_fragment&#160;()</title>
+<indexterm zone="raptor-uri-uri-string-to-filename-fragment"><primary>raptor_uri_uri_string_to_filename_fragment</primary></indexterm>
+<programlisting language="C"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_uri_uri_string_to_filename_fragment
+                               (<parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>,
+                                <parameter>unsigned <link linkend="char"><type>char</type></link> **fragment_p</parameter>);</programlisting>
+<para>Convert a file: URI to a filename and fragment.</para>
+<para>Handles the OS-specific file: URIs to filename mappings.  Returns
+a new buffer containing the filename that the caller must free.</para>
+<para>If <parameter>fragment_p</parameter>
+ is given, a new string containing the URI fragment
+is returned, or NULL if none is present</para>
+<para>See also <link linkend="raptor-uri-uri-string-to-counted-filename-fragment"><function>raptor_uri_uri_string_to_counted_filename_fragment()</function></link></para>
+<refsect3 id="raptor-uri-uri-string-to-filename-fragment.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>The file: URI to convert</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fragment_p</para></entry>
+<entry role="parameter_description"><para>Address of pointer to store any URI fragment or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-uri-string-to-filename-fragment.returns" role="returns">
+<title>Returns</title>
+<para> A newly allocated string with the filename or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-uri-string-to-counted-filename-fragment" role="function">
+<title>raptor_uri_uri_string_to_counted_filename_fragment&#160;()</title>
+<indexterm zone="raptor-uri-uri-string-to-counted-filename-fragment"><primary>raptor_uri_uri_string_to_counted_filename_fragment</primary></indexterm>
+<programlisting language="C"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_uri_uri_string_to_counted_filename_fragment
+                               (<parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> *len_p</parameter>,
+                                <parameter>unsigned <link linkend="char"><type>char</type></link> **fragment_p</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> *fragment_len_p</parameter>);</programlisting>
+<para>Convert a file: URI to a counted filename and counted fragment.</para>
+<para>Handles the OS-specific file: URIs to filename mappings.  Returns
+a new buffer containing the filename that the caller must free.</para>
+<para>If <parameter>len_p</parameter>
+ is present the length of the filename is returned</para>
+<para>If <parameter>fragment_p</parameter>
+ is given, a new string containing the URI fragment
+is returned, or NULL if none is present.  If <parameter>fragment_len_p</parameter>
+ is present
+the length is returned in it.</para>
+<refsect3 id="raptor-uri-uri-string-to-counted-filename-fragment.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>The file: URI to convert</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len_p</para></entry>
+<entry role="parameter_description"><para>address of filename length variable or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fragment_p</para></entry>
+<entry role="parameter_description"><para>Address of pointer to store any URI fragment or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fragment_len_p</para></entry>
+<entry role="parameter_description"><para>address of length variable or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-uri-string-to-counted-filename-fragment.returns" role="returns">
+<title>Returns</title>
+<para> A newly allocated string with the filename or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-print" role="function">
+<title>raptor_uri_print&#160;()</title>
+<indexterm zone="raptor-uri-print"><primary>raptor_uri_print</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_uri_print (<parameter>const <link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                  <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *stream</parameter>);</programlisting>
+<para>Print a URI to a file handle.</para>
+<refsect3 id="raptor-uri-print.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>URI to print</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>The file handle to print to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-print.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-get-world" role="function">
+<title>raptor_uri_get_world&#160;()</title>
+<indexterm zone="raptor-uri-get-world"><primary>raptor_uri_get_world</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-world"><returnvalue>raptor_world</returnvalue></link>&#160;*
+raptor_uri_get_world (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>);</programlisting>
+<para>Get the raptor_world object associated with a raptor_uri.</para>
+<refsect3 id="raptor-uri-get-world.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-uri"><type>raptor_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-get-world.returns" role="returns">
+<title>Returns</title>
+<para> raptor_world object</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-write" role="function">
+<title>raptor_uri_write&#160;()</title>
+<indexterm zone="raptor-uri-write"><primary>raptor_uri_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_uri_write (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                  <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a raptor URI to the iostream.</para>
+<refsect3 id="raptor-uri-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-file-exists" role="function">
+<title>raptor_uri_file_exists&#160;()</title>
+<indexterm zone="raptor-uri-file-exists"><primary>raptor_uri_file_exists</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_uri_file_exists (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>);</programlisting>
+<para>Check if a file: URI is a file that exists</para>
+<refsect3 id="raptor-uri-file-exists.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>URI string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-file-exists.returns" role="returns">
+<title>Returns</title>
+<para> &gt; 0 if file exists, 0 if does not exist, &lt; 0 if not a file URI or error</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-filename-exists" role="function">
+<title>raptor_uri_filename_exists&#160;()</title>
+<indexterm zone="raptor-uri-filename-exists"><primary>raptor_uri_filename_exists</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_uri_filename_exists (<parameter>const unsigned <link linkend="char"><type>char</type></link> *path</parameter>);</programlisting>
+<para>Check if <parameter>path</parameter>
+ points to a file that exists</para>
+<refsect3 id="raptor-uri-filename-exists.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>path</para></entry>
+<entry role="parameter_description"><para>file path</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-filename-exists.returns" role="returns">
+<title>Returns</title>
+<para> &gt; 0 if file exists, 0 if does not exist, &lt; 0 on error</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-to-turtle-counted-string" role="function">
+<title>raptor_uri_to_turtle_counted_string&#160;()</title>
+<indexterm zone="raptor-uri-to-turtle-counted-string"><primary>raptor_uri_to_turtle_counted_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_uri_to_turtle_counted_string (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                     <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                                     <parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                                     <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>,
+                                     <parameter><link linkend="size-t"><type>size_t</type></link> *len_p</parameter>);</programlisting>
+<para>Convert <link linkend="raptor-uri"><type>raptor_uri</type></link> to a string.
+Caller has responsibility to free the string.</para>
+<para>Note: This creates and destroys several internal objects for each
+call so for more efficient writing, create a turtle serializer.</para>
+<refsect3 id="raptor-uri-to-turtle-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>uri</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len_p</para></entry>
+<entry role="parameter_description"><para>Pointer to location to store length of new string (if not NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-to-turtle-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> the new string or NULL on failure.  The length of
+the new string is returned in *<parameter>len_p</parameter>
+if len_p is not NULL.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-to-turtle-string" role="function">
+<title>raptor_uri_to_turtle_string&#160;()</title>
+<indexterm zone="raptor-uri-to-turtle-string"><primary>raptor_uri_to_turtle_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_uri_to_turtle_string (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                             <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                             <parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                             <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Convert <link linkend="raptor-uri"><type>raptor_uri</type></link> to a string.
+Caller has responsibility to free the string.</para>
+<para>Note: This creates and destroys several internal objects for each
+call so for more efficient writing, create a turtle serializer.</para>
+<refsect3 id="raptor-uri-to-turtle-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>uri</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-to-turtle-string.returns" role="returns">
+<title>Returns</title>
+<para> the new string or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-turtle-write" role="function">
+<title>raptor_uri_turtle_write&#160;()</title>
+<indexterm zone="raptor-uri-turtle-write"><primary>raptor_uri_turtle_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_uri_turtle_write (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                         <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>,
+                         <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                         <parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                         <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Write <link linkend="raptor-uri"><type>raptor_uri</type></link> to a stream in turtle syntax (using QNames).</para>
+<para>Note: This creates and destroys several internal objects for each
+call so for more efficient writing, create a turtle serializer.</para>
+<refsect3 id="raptor-uri-turtle-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>iostream for writing</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>uri</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-turtle-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-uri.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-uri" role="typedef">
+<title>raptor_uri</title>
+<indexterm zone="raptor-uri"><primary>raptor_uri</primary></indexterm>
+<programlisting language="C">raptor_uri* raptor_uri;
+</programlisting>
+<para>Raptor URI Class.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

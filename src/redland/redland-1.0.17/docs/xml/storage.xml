@@ -1,0 +1,1533 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-storage">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-storage.top_of_page">storage</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>storage</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-storage.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-register-factory">librdf_storage_register_factory</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-enumerate">librdf_storage_enumerate</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-storage"><returnvalue>librdf_storage</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-storage">librdf_new_storage</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-storage"><returnvalue>librdf_storage</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-storage-with-options">librdf_new_storage_with_options</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-storage"><returnvalue>librdf_storage</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-storage-from-storage">librdf_new_storage_from_storage</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-storage"><returnvalue>librdf_storage</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-storage-from-factory">librdf_new_storage_from_factory</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-free-storage">librdf_free_storage</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-open">librdf_storage_open</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-close">librdf_storage_close</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-size">librdf_storage_size</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-add-statement">librdf_storage_add_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-add-statements">librdf_storage_add_statements</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-remove-statement">librdf_storage_remove_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-contains-statement">librdf_storage_contains_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-serialise">librdf_storage_serialise</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-find-statements">librdf_storage_find_statements</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-find-statements-with-options">librdf_storage_find_statements_with_options</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-get-sources">librdf_storage_get_sources</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-get-arcs">librdf_storage_get_arcs</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-get-targets">librdf_storage_get_targets</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-get-arcs-in">librdf_storage_get_arcs_in</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-get-arcs-out">librdf_storage_get_arcs_out</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-has-arc-in">librdf_storage_has_arc_in</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-has-arc-out">librdf_storage_has_arc_out</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-context-add-statement">librdf_storage_context_add_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-context-add-statements">librdf_storage_context_add_statements</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-context-remove-statement">librdf_storage_context_remove_statement</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-context-remove-statements">librdf_storage_context_remove_statements</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-context-as-stream">librdf_storage_context_as_stream</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-context-serialise">librdf_storage_context_serialise</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-supports-query">librdf_storage_supports_query</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-query-results"><returnvalue>librdf_query_results</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-query-execute">librdf_storage_query_execute</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-sync">librdf_storage_sync</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-find-statements-in-context">librdf_storage_find_statements_in_context</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-get-contexts">librdf_storage_get_contexts</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-get-feature">librdf_storage_get_feature</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-set-feature">librdf_storage_set_feature</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-transaction-commit">librdf_storage_transaction_commit</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-transaction-get-handle">librdf_storage_transaction_get_handle</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-transaction-rollback">librdf_storage_transaction_rollback</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-transaction-start">librdf_storage_transaction_start</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-transaction-start-with-handle">librdf_storage_transaction_start_with_handle</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-add-reference">librdf_storage_add_reference</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-remove-reference">librdf_storage_remove_reference</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-storage-instance"><returnvalue>librdf_storage_instance</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-get-instance">librdf_storage_get_instance</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-storage-set-instance">librdf_storage_set_instance</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-world"><returnvalue>librdf_world</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-storage-get-world">librdf_storage_get_world</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="librdf-storage-module-register-function">*librdf_storage_module_register_function</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-storage.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-STORAGE-INTERFACE-VERSION:CAPS">LIBRDF_STORAGE_INTERFACE_VERSION</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-STORAGE-MAX-INTERFACE-VERSION:CAPS">LIBRDF_STORAGE_MAX_INTERFACE_VERSION</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-STORAGE-MIN-INTERFACE-VERSION:CAPS">LIBRDF_STORAGE_MIN_INTERFACE_VERSION</link></entry></row>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-storage">librdf_storage</link></entry></row>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-storage-factory">librdf_storage_factory</link></entry></row>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-storage-instance">librdf_storage_instance</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-storage.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-storage.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-storage-register-factory" role="function">
+<title>librdf_storage_register_factory&#160;()</title>
+<indexterm zone="librdf-storage-register-factory"><primary>librdf_storage_register_factory</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_register_factory (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *label</parameter>,
+                                 <parameter><link linkend="void"><type>void</type></link> (*factory) (librdf_storage_factory*)</parameter>);</programlisting>
+<para>Register a storage factory.</para>
+<para>Registration will fail if any of the parameters or NULL, if the factory
+API version is out of the known range or if out of memory.</para>
+<refsect3 id="librdf-storage-register-factory.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the storage factory name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>label</para></entry>
+<entry role="parameter_description"><para>the storage factory label</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>factory</para></entry>
+<entry role="parameter_description"><para>pointer to function to call to register the factory</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-register-factory.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-enumerate" role="function">
+<title>librdf_storage_enumerate&#160;()</title>
+<indexterm zone="librdf-storage-enumerate"><primary>librdf_storage_enumerate</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_enumerate (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                          <parameter>const unsigned <link linkend="int"><type>int</type></link> counter</parameter>,
+                          <parameter>const <link linkend="char"><type>char</type></link> **name</parameter>,
+                          <parameter>const <link linkend="char"><type>char</type></link> **label</parameter>);</programlisting>
+<para>Get information on storages.</para>
+<refsect3 id="librdf-storage-enumerate.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>counter</para></entry>
+<entry role="parameter_description"><para>index into the list of storages</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>pointer to store the name of the storage (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>label</para></entry>
+<entry role="parameter_description"><para>pointer to store syntax readable label (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-enumerate.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure of if counter is out of range</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-storage" role="function">
+<title>librdf_new_storage&#160;()</title>
+<indexterm zone="librdf-new-storage"><primary>librdf_new_storage</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-storage"><returnvalue>librdf_storage</returnvalue></link>&#160;*
+librdf_new_storage (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                    <parameter>const <link linkend="char"><type>char</type></link> *storage_name</parameter>,
+                    <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                    <parameter>const <link linkend="char"><type>char</type></link> *options_string</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-storage"><type>librdf_storage</type></link> object.</para>
+<para>The options are encoded as described in <link linkend="librdf-hash-from-string"><function>librdf_hash_from_string()</function></link>
+and can be NULL if none are required.</para>
+<refsect3 id="librdf-new-storage.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>storage_name</para></entry>
+<entry role="parameter_description"><para>the storage factory name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>an identifier for the storage</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>options_string</para></entry>
+<entry role="parameter_description"><para>options to initialise storage</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-storage.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-storage"><type>librdf_storage</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-storage-with-options" role="function">
+<title>librdf_new_storage_with_options&#160;()</title>
+<indexterm zone="librdf-new-storage-with-options"><primary>librdf_new_storage_with_options</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-storage"><returnvalue>librdf_storage</returnvalue></link>&#160;*
+librdf_new_storage_with_options (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *storage_name</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                                 <parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *options</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-storage"><type>librdf_storage</type></link> object.</para>
+<para>The options can be NULL if none are required.</para>
+<refsect3 id="librdf-new-storage-with-options.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>storage_name</para></entry>
+<entry role="parameter_description"><para>the storage factory name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>an identifier for the storage</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>options</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-hash"><type>librdf_hash</type></link> of options to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-storage-with-options.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-storage"><type>librdf_storage</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-storage-from-storage" role="function">
+<title>librdf_new_storage_from_storage&#160;()</title>
+<indexterm zone="librdf-new-storage-from-storage"><primary>librdf_new_storage_from_storage</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-storage"><returnvalue>librdf_storage</returnvalue></link>&#160;*
+librdf_new_storage_from_storage (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *old_storage</parameter>);</programlisting>
+<para>Copy constructor - create a new librdf_storage object from an existing one</para>
+<para>Should create a new storage in the same context as the existing one
+as appropriate for the storage.  For example, in a RDBMS storage
+it would be a new database, or in on disk it would be a new
+set of files.  This will mean automatically generating
+a new identifier for the storage, maybe based on the existing
+storage identifier.</para>
+<refsect3 id="librdf-new-storage-from-storage.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>old_storage</para></entry>
+<entry role="parameter_description"><para>the existing storage <link linkend="librdf-storage"><type>librdf_storage</type></link> to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-storage-from-storage.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-storage"><type>librdf_storage</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-storage-from-factory" role="function">
+<title>librdf_new_storage_from_factory&#160;()</title>
+<indexterm zone="librdf-new-storage-from-factory"><primary>librdf_new_storage_from_factory</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-storage"><returnvalue>librdf_storage</returnvalue></link>&#160;*
+librdf_new_storage_from_factory (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                 <parameter><link linkend="librdf-storage-factory"><type>librdf_storage_factory</type></link> *factory</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                                 <parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *options</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-storage"><type>librdf_storage</type></link> object.</para>
+<para>If the options are present, they become owned by the storage
+and should no longer be used.</para>
+<refsect3 id="librdf-new-storage-from-factory.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>factory</para></entry>
+<entry role="parameter_description"><para>the factory to use to construct the storage</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>name to use for storage</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>options</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-hash"><type>librdf_hash</type></link> of options to initialise storage</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-storage-from-factory.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-storage"><type>librdf_storage</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-free-storage" role="function">
+<title>librdf_free_storage&#160;()</title>
+<indexterm zone="librdf-free-storage"><primary>librdf_free_storage</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_free_storage (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>);</programlisting>
+<para>Destructor - destroy a <link linkend="librdf-storage"><type>librdf_storage</type></link> object.</para>
+<refsect3 id="librdf-free-storage.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-open" role="function">
+<title>librdf_storage_open&#160;()</title>
+<indexterm zone="librdf-storage-open"><primary>librdf_storage_open</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_open (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                     <parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Start a model / storage association.</para>
+<para>This is ended with <link linkend="librdf-storage-close"><function>librdf_storage_close()</function></link></para>
+<refsect3 id="librdf-storage-open.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>model stored</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-open.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-close" role="function">
+<title>librdf_storage_close&#160;()</title>
+<indexterm zone="librdf-storage-close"><primary>librdf_storage_close</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_close (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>);</programlisting>
+<para>End a model / storage association.</para>
+<refsect3 id="librdf-storage-close.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-close.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-size" role="function">
+<title>librdf_storage_size&#160;()</title>
+<indexterm zone="librdf-storage-size"><primary>librdf_storage_size</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_size (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>);</programlisting>
+<para>Get the number of statements stored.</para>
+<refsect3 id="librdf-storage-size.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-size.returns" role="returns">
+<title>Returns</title>
+<para> The number of statements or &lt; 0 if cannot be determined</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-add-statement" role="function">
+<title>librdf_storage_add_statement&#160;()</title>
+<indexterm zone="librdf-storage-add-statement"><primary>librdf_storage_add_statement</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_add_statement (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                              <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Add a statement to a storage.</para>
+<para>The passed-in statement is copied when added to the store, not
+shared with the store.  </para>
+<para>If the statement already exists in the store, it is not added
+unless Redland contexts are being used.</para>
+<para>Enforces that the statement is legal for RDF - URI or blank subject,
+URI predicate and URI or blank or literal object (i.e. anything).</para>
+<refsect3 id="librdf-storage-add-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> statement to add</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-add-statement.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure, &lt;0 on error, &gt;0 if statement was illegal</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-add-statements" role="function">
+<title>librdf_storage_add_statements&#160;()</title>
+<indexterm zone="librdf-storage-add-statements"><primary>librdf_storage_add_statements</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_add_statements (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                               <parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *statement_stream</parameter>);</programlisting>
+<para>Add a stream of statements to the storage.</para>
+<para>If any of the statements already exists in the store, they are not
+added unless Redland contexts are being used.</para>
+<refsect3 id="librdf-storage-add-statements.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement_stream</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-stream"><type>librdf_stream</type></link> of statements</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-add-statements.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-remove-statement" role="function">
+<title>librdf_storage_remove_statement&#160;()</title>
+<indexterm zone="librdf-storage-remove-statement"><primary>librdf_storage_remove_statement</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_remove_statement (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                                 <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Remove a statement from the storage.</para>
+<refsect3 id="librdf-storage-remove-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> statement to remove</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-remove-statement.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-contains-statement" role="function">
+<title>librdf_storage_contains_statement&#160;()</title>
+<indexterm zone="librdf-storage-contains-statement"><primary>librdf_storage_contains_statement</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_contains_statement (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                                   <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Test if a given statement is present in the storage.</para>
+<refsect3 id="librdf-storage-contains-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> statement to check</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-contains-statement.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if the storage contains the statement (&gt;0 if illegal statement)</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-serialise" role="function">
+<title>librdf_storage_serialise&#160;()</title>
+<indexterm zone="librdf-storage-serialise"><primary>librdf_storage_serialise</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_storage_serialise (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>);</programlisting>
+<para>Serialise the storage as a librdf_stream of statemetns.</para>
+<refsect3 id="librdf-storage-serialise.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-serialise.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-stream"><type>librdf_stream</type></link> of statements or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-find-statements" role="function">
+<title>librdf_storage_find_statements&#160;()</title>
+<indexterm zone="librdf-storage-find-statements"><primary>librdf_storage_find_statements</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_storage_find_statements (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                                <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Search the storage for matching statements.</para>
+<para>Searches the storage for a (partial) statement as described in
+<link linkend="librdf-statement-match"><function>librdf_statement_match()</function></link> and returns a <link linkend="librdf-stream"><type>librdf_stream</type></link> of
+matching <link linkend="librdf-statement"><type>librdf_statement</type></link> objects.</para>
+<refsect3 id="librdf-storage-find-statements.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> partial statement to find</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-find-statements.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-stream"><type>librdf_stream</type></link> of matching statements (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-find-statements-with-options" role="function">
+<title>librdf_storage_find_statements_with_options&#160;()</title>
+<indexterm zone="librdf-storage-find-statements-with-options"><primary>librdf_storage_find_statements_with_options</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_storage_find_statements_with_options
+                               (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                                <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context_node</parameter>,
+                                <parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *options</parameter>);</programlisting>
+<para>Search the storage for matching statements with match options.</para>
+<para>Searches the storage for a (partial) statement as described in
+<link linkend="librdf-statement-match"><function>librdf_statement_match()</function></link> and returns a <link linkend="librdf-stream"><type>librdf_stream</type></link> of
+matching <link linkend="librdf-statement"><type>librdf_statement</type></link> objects.</para>
+<para>If options is given then the match is made according to
+the given options.  If options is NULL, this is equivalent
+to librdf_storage_find_statements_in_context.</para>
+<refsect3 id="librdf-storage-find-statements-with-options.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> partial statement to find</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context_node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context node or NULL.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>options</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-hash"><type>librdf_hash</type></link> of matching options or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-find-statements-with-options.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-stream"><type>librdf_stream</type></link> of matching statements (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-get-sources" role="function">
+<title>librdf_storage_get_sources&#160;()</title>
+<indexterm zone="librdf-storage-get-sources"><primary>librdf_storage_get_sources</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+librdf_storage_get_sources (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                            <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *arc</parameter>,
+                            <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *target</parameter>);</programlisting>
+<para>Return the sources (subjects) of arc in an RDF graph given arc (predicate) and target (object).</para>
+<para>Searches the storage for arcs matching the given arc and target
+and returns a list of the source <link linkend="librdf-node"><type>librdf_node</type></link> objects as an iterator</para>
+<refsect3 id="librdf-storage-get-sources.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>arc</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> arc</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>target</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> target</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-get-sources.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-iterator"><type>librdf_iterator</type></link> of <link linkend="librdf-node"><type>librdf_node</type></link> objects (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-get-arcs" role="function">
+<title>librdf_storage_get_arcs&#160;()</title>
+<indexterm zone="librdf-storage-get-arcs"><primary>librdf_storage_get_arcs</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+librdf_storage_get_arcs (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                         <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *source</parameter>,
+                         <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *target</parameter>);</programlisting>
+<para>Return the arcs (predicates) of an arc in an RDF graph given source (subject) and target (object).</para>
+<para>Searches the storage for arcs matching the given source and target
+and returns a list of the arc <link linkend="librdf-node"><type>librdf_node</type></link> objects as an iterator</para>
+<refsect3 id="librdf-storage-get-arcs.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>source</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> source</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>target</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> target</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-get-arcs.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-iterator"><type>librdf_iterator</type></link> of <link linkend="librdf-node"><type>librdf_node</type></link> objects (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-get-targets" role="function">
+<title>librdf_storage_get_targets&#160;()</title>
+<indexterm zone="librdf-storage-get-targets"><primary>librdf_storage_get_targets</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+librdf_storage_get_targets (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                            <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *source</parameter>,
+                            <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *arc</parameter>);</programlisting>
+<para>Return the targets (objects) of an arc in an RDF graph given source (subject) and arc (predicate).</para>
+<para>Searches the storage for targets matching the given source and arc
+and returns a list of the source <link linkend="librdf-node"><type>librdf_node</type></link> objects as an iterator</para>
+<refsect3 id="librdf-storage-get-targets.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>source</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> source</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>arc</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> arc</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-get-targets.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-iterator"><type>librdf_iterator</type></link> of <link linkend="librdf-node"><type>librdf_node</type></link> objects (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-get-arcs-in" role="function">
+<title>librdf_storage_get_arcs_in&#160;()</title>
+<indexterm zone="librdf-storage-get-arcs-in"><primary>librdf_storage_get_arcs_in</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+librdf_storage_get_arcs_in (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                            <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Return the properties pointing to the given resource.</para>
+<refsect3 id="librdf-storage-get-arcs-in.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> resource node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-get-arcs-in.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-iterator"><type>librdf_iterator</type></link> of <link linkend="librdf-node"><type>librdf_node</type></link> objects (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-get-arcs-out" role="function">
+<title>librdf_storage_get_arcs_out&#160;()</title>
+<indexterm zone="librdf-storage-get-arcs-out"><primary>librdf_storage_get_arcs_out</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+librdf_storage_get_arcs_out (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                             <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Return the properties pointing from the given resource.</para>
+<refsect3 id="librdf-storage-get-arcs-out.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> resource node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-get-arcs-out.returns" role="returns">
+<title>Returns</title>
+<para>  <link linkend="librdf-iterator"><type>librdf_iterator</type></link> of <link linkend="librdf-node"><type>librdf_node</type></link> objects (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-has-arc-in" role="function">
+<title>librdf_storage_has_arc_in&#160;()</title>
+<indexterm zone="librdf-storage-has-arc-in"><primary>librdf_storage_has_arc_in</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_has_arc_in (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                           <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>,
+                           <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *property</parameter>);</programlisting>
+<para>Check if a node has a given property pointing to it.</para>
+<refsect3 id="librdf-storage-has-arc-in.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> resource node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>property</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> property node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-has-arc-in.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if arc property does point to the resource node</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-has-arc-out" role="function">
+<title>librdf_storage_has_arc_out&#160;()</title>
+<indexterm zone="librdf-storage-has-arc-out"><primary>librdf_storage_has_arc_out</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_has_arc_out (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                            <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>,
+                            <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *property</parameter>);</programlisting>
+<para>Check if a node has a given property pointing from it.</para>
+<refsect3 id="librdf-storage-has-arc-out.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> resource node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>property</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> property node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-has-arc-out.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if arc property does point from the resource node</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-context-add-statement" role="function">
+<title>librdf_storage_context_add_statement&#160;()</title>
+<indexterm zone="librdf-storage-context-add-statement"><primary>librdf_storage_context_add_statement</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_context_add_statement (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                                      <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context</parameter>,
+                                      <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Add a statement to a storage in a context.</para>
+<para>If <parameter>context</parameter>
+ is NULL, this is equivalent to librdf_storage_add_statement</para>
+<refsect3 id="librdf-storage-context-add-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> statement to add</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-context-add-statement.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-context-add-statements" role="function">
+<title>librdf_storage_context_add_statements&#160;()</title>
+<indexterm zone="librdf-storage-context-add-statements"><primary>librdf_storage_context_add_statements</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_context_add_statements (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                                       <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context</parameter>,
+                                       <parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>);</programlisting>
+<para>Add statements to a storage with a context.</para>
+<para>If <parameter>context</parameter>
+ is NULL, this is equivalent to librdf_storage_add_statements</para>
+<refsect3 id="librdf-storage-context-add-statements.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-stream"><type>librdf_stream</type></link> stream object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-context-add-statements.returns" role="returns">
+<title>Returns</title>
+<para> Non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-context-remove-statement" role="function">
+<title>librdf_storage_context_remove_statement&#160;()</title>
+<indexterm zone="librdf-storage-context-remove-statement"><primary>librdf_storage_context_remove_statement</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_context_remove_statement
+                               (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context</parameter>,
+                                <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>);</programlisting>
+<para>Remove a statement from a storage in a context.</para>
+<para>If <parameter>context</parameter>
+ is NULL, this is equivalent to librdf_storage_remove_statement</para>
+<refsect3 id="librdf-storage-context-remove-statement.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> statement to remove</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-context-remove-statement.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-context-remove-statements" role="function">
+<title>librdf_storage_context_remove_statements&#160;()</title>
+<indexterm zone="librdf-storage-context-remove-statements"><primary>librdf_storage_context_remove_statements</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_context_remove_statements
+                               (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context</parameter>);</programlisting>
+<para>Remove statements from a storage with the given context.</para>
+<refsect3 id="librdf-storage-context-remove-statements.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> context</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-context-remove-statements.returns" role="returns">
+<title>Returns</title>
+<para> Non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-context-as-stream" role="function">
+<title>librdf_storage_context_as_stream&#160;()</title>
+<indexterm zone="librdf-storage-context-as-stream"><primary>librdf_storage_context_as_stream</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_storage_context_as_stream (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                                  <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context</parameter>);</programlisting>
+<para>List all statements in a storage context.</para>
+<refsect3 id="librdf-storage-context-as-stream.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-context-as-stream.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-stream"><type>librdf_stream</type></link> of statements or NULL on failure or context is empty</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-context-serialise" role="function" condition="deprecated:">
+<title>librdf_storage_context_serialise&#160;()</title>
+<indexterm zone="librdf-storage-context-serialise" role="deprecated"><primary>librdf_storage_context_serialise</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_storage_context_serialise (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                                  <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context</parameter>);</programlisting>
+<warning><para><literal>librdf_storage_context_serialise</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>List all statements in a storage context (DEPRECATED).</para>
+<para>DEPRECATED to reduce confusion with the librdf_serializer class.
+Please use librdf_storage_context_as_stream.</para>
+<refsect3 id="librdf-storage-context-serialise.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> context node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-context-serialise.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-stream"><type>librdf_stream</type></link> of statements or NULL on failure or context is empty</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-supports-query" role="function">
+<title>librdf_storage_supports_query&#160;()</title>
+<indexterm zone="librdf-storage-supports-query"><primary>librdf_storage_supports_query</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_supports_query (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                               <parameter><link linkend="librdf-query"><type>librdf_query</type></link> *query</parameter>);</programlisting>
+<para>Check if a storage system supports a query language.</para>
+<refsect3 id="librdf-storage-supports-query.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>query</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query"><type>librdf_query</type></link> query object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-supports-query.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if the query is supported.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-query-execute" role="function">
+<title>librdf_storage_query_execute&#160;()</title>
+<indexterm zone="librdf-storage-query-execute"><primary>librdf_storage_query_execute</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-query-results"><returnvalue>librdf_query_results</returnvalue></link>&#160;*
+librdf_storage_query_execute (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                              <parameter><link linkend="librdf-query"><type>librdf_query</type></link> *query</parameter>);</programlisting>
+<para>Run the given query against the storage.</para>
+<para>Not implemented.</para>
+<refsect3 id="librdf-storage-query-execute.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>query</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-query"><type>librdf_query</type></link> query object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-query-execute.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-query-results"><type>librdf_query_results</type></link> or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-sync" role="function">
+<title>librdf_storage_sync&#160;()</title>
+<indexterm zone="librdf-storage-sync"><primary>librdf_storage_sync</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_sync (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>);</programlisting>
+<para>Synchronise the storage to the storage implementation.</para>
+<refsect3 id="librdf-storage-sync.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-sync.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-find-statements-in-context" role="function">
+<title>librdf_storage_find_statements_in_context&#160;()</title>
+<indexterm zone="librdf-storage-find-statements-in-context"><primary>librdf_storage_find_statements_in_context</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_storage_find_statements_in_context
+                               (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                                <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                                <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *context_node</parameter>);</programlisting>
+<para>Search the storage for matching statements in a given context.</para>
+<para>Searches the storage for a (partial) statement as described in
+<link linkend="librdf-statement-match"><function>librdf_statement_match()</function></link> in the given context and returns a
+<link linkend="librdf-stream"><type>librdf_stream</type></link> of matching <link linkend="librdf-statement"><type>librdf_statement</type></link> objects.  If
+context is NULL, this is equivalent to librdf_storage_find_statements.</para>
+<refsect3 id="librdf-storage-find-statements-in-context.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> partial statement to find</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context_node</para></entry>
+<entry role="parameter_description"><para>context <link linkend="librdf-node"><type>librdf_node</type></link> (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-find-statements-in-context.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-stream"><type>librdf_stream</type></link> of matching statements (may be empty) or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-get-contexts" role="function">
+<title>librdf_storage_get_contexts&#160;()</title>
+<indexterm zone="librdf-storage-get-contexts"><primary>librdf_storage_get_contexts</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+librdf_storage_get_contexts (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>);</programlisting>
+<para>Return the list of contexts in the store.</para>
+<para>Returns an iterator of <link linkend="librdf-node"><type>librdf_node</type></link> context nodes for each
+context in the store.</para>
+<refsect3 id="librdf-storage-get-contexts.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-get-contexts.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-iterator"><type>librdf_iterator</type></link> of context nodes or NULL on failure or if contexts are not supported</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-get-feature" role="function">
+<title>librdf_storage_get_feature&#160;()</title>
+<indexterm zone="librdf-storage-get-feature"><primary>librdf_storage_get_feature</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_storage_get_feature (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                            <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *feature</parameter>);</programlisting>
+<para>Get the value of a storage feature.</para>
+<refsect3 id="librdf-storage-get-feature.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>feature</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> feature property</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-get-feature.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="librdf-node"><type>librdf_node</type></link> feature value or NULL if no such feature
+exists or the value is empty.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-set-feature" role="function">
+<title>librdf_storage_set_feature&#160;()</title>
+<indexterm zone="librdf-storage-set-feature"><primary>librdf_storage_set_feature</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_set_feature (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                            <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *feature</parameter>,
+                            <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *value</parameter>);</programlisting>
+<para>Set the value of a storage feature.</para>
+<refsect3 id="librdf-storage-set-feature.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>feature</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> feature property</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>value</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> feature property value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-set-feature.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure (negative if no such feature)</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-transaction-commit" role="function">
+<title>librdf_storage_transaction_commit&#160;()</title>
+<indexterm zone="librdf-storage-transaction-commit"><primary>librdf_storage_transaction_commit</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_transaction_commit (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>);</programlisting>
+<para>Commit a transaction.</para>
+<refsect3 id="librdf-storage-transaction-commit.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para>the storage object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-transaction-commit.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure </para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-transaction-get-handle" role="function">
+<title>librdf_storage_transaction_get_handle&#160;()</title>
+<indexterm zone="librdf-storage-transaction-get-handle"><primary>librdf_storage_transaction_get_handle</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+librdf_storage_transaction_get_handle (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>);</programlisting>
+<para>Get the current transaction handle.</para>
+<refsect3 id="librdf-storage-transaction-get-handle.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para>the storage object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-transaction-get-handle.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure </para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-transaction-rollback" role="function">
+<title>librdf_storage_transaction_rollback&#160;()</title>
+<indexterm zone="librdf-storage-transaction-rollback"><primary>librdf_storage_transaction_rollback</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_transaction_rollback (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>);</programlisting>
+<para>Rollback a transaction.</para>
+<refsect3 id="librdf-storage-transaction-rollback.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para>the storage object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-transaction-rollback.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure </para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-transaction-start" role="function">
+<title>librdf_storage_transaction_start&#160;()</title>
+<indexterm zone="librdf-storage-transaction-start"><primary>librdf_storage_transaction_start</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_transaction_start (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>);</programlisting>
+<para>Start a transaction</para>
+<refsect3 id="librdf-storage-transaction-start.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para>the storage object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-transaction-start.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-transaction-start-with-handle" role="function">
+<title>librdf_storage_transaction_start_with_handle&#160;()</title>
+<indexterm zone="librdf-storage-transaction-start-with-handle"><primary>librdf_storage_transaction_start_with_handle</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_storage_transaction_start_with_handle
+                               (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                                <parameter><link linkend="void"><type>void</type></link> *handle</parameter>);</programlisting>
+<para>Start a transaction using an existing external transaction object.</para>
+<refsect3 id="librdf-storage-transaction-start-with-handle.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para>the storage object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handle</para></entry>
+<entry role="parameter_description"><para>the transaction object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-transaction-start-with-handle.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-add-reference" role="function">
+<title>librdf_storage_add_reference&#160;()</title>
+<indexterm zone="librdf-storage-add-reference"><primary>librdf_storage_add_reference</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_storage_add_reference (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>);</programlisting>
+<para>Increment storage reference count by one.</para>
+<para>This function is intended to be internal to librdf storage modules.</para>
+<refsect3 id="librdf-storage-add-reference.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-remove-reference" role="function">
+<title>librdf_storage_remove_reference&#160;()</title>
+<indexterm zone="librdf-storage-remove-reference"><primary>librdf_storage_remove_reference</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_storage_remove_reference (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>);</programlisting>
+<para>Decrement storage reference count by one and free the storage if reference count becomes zero.</para>
+<para>This function is intended to be internal to librdf storage modules.</para>
+<refsect3 id="librdf-storage-remove-reference.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-get-instance" role="function">
+<title>librdf_storage_get_instance&#160;()</title>
+<indexterm zone="librdf-storage-get-instance"><primary>librdf_storage_get_instance</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-storage-instance"><returnvalue>librdf_storage_instance</returnvalue></link>
+librdf_storage_get_instance (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>);</programlisting>
+<para>Get instance data for this storage</para>
+<refsect3 id="librdf-storage-get-instance.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-get-instance.returns" role="returns">
+<title>Returns</title>
+<para> opaque instance data for this storage</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-set-instance" role="function">
+<title>librdf_storage_set_instance&#160;()</title>
+<indexterm zone="librdf-storage-set-instance"><primary>librdf_storage_set_instance</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_storage_set_instance (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>,
+                             <parameter><link linkend="librdf-storage-instance"><type>librdf_storage_instance</type></link> instance</parameter>);</programlisting>
+<para>Set the instance data for this storage.</para>
+<para>This function is intended for use by the 'init' method of storage
+implementations to set instance data which can be retrived with
+<link linkend="librdf-storage-get-instance"><function>librdf_storage_get_instance()</function></link> and used in other methods of that
+storage.</para>
+<para>The instance is completely opaque to librdf, including allocation
+and deallocation.</para>
+<refsect3 id="librdf-storage-set-instance.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>instance</para></entry>
+<entry role="parameter_description"><para>Opaque instance pointer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-get-world" role="function">
+<title>librdf_storage_get_world&#160;()</title>
+<indexterm zone="librdf-storage-get-world"><primary>librdf_storage_get_world</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-world"><returnvalue>librdf_world</returnvalue></link>&#160;*
+librdf_storage_get_world (<parameter><link linkend="librdf-storage"><type>librdf_storage</type></link> *storage</parameter>);</programlisting>
+<para>Get the <link linkend="librdf-world"><type>librdf_world</type></link> object associated with this storage.</para>
+<refsect3 id="librdf-storage-get-world.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>storage</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-storage"><type>librdf_storage</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-storage-get-world.returns" role="returns">
+<title>Returns</title>
+<para> world object for this storage</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-storage-module-register-function" role="function">
+<title>librdf_storage_module_register_function&#160;()</title>
+<indexterm zone="librdf-storage-module-register-function"><primary>librdf_storage_module_register_function</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*librdf_storage_module_register_function<phrase role="c_punctuation">)</phrase>
+                               (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>);</programlisting>
+<para>Registration function for storage</para>
+<para>A storage module must define and export a function named of this
+type with function name "librdf_storage_module_register_factory".</para>
+<para>This function will be called by Redland and must call
+<link linkend="librdf-storage-register-factory"><function>librdf_storage_register_factory()</function></link> to register whatever storage
+backends are implemented in the module.</para>
+<refsect3 id="librdf-storage-module-register-function.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-storage.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="LIBRDF-STORAGE-INTERFACE-VERSION:CAPS" role="macro">
+<title>LIBRDF_STORAGE_INTERFACE_VERSION</title>
+<indexterm zone="LIBRDF-STORAGE-INTERFACE-VERSION:CAPS"><primary>LIBRDF_STORAGE_INTERFACE_VERSION</primary></indexterm>
+<programlisting language="C">#define LIBRDF_STORAGE_INTERFACE_VERSION LIBRDF_STORAGE_MAX_INTERFACE_VERSION
+</programlisting>
+<para>Default librdf storage module interface version.</para>
+</refsect2>
+<refsect2 id="LIBRDF-STORAGE-MAX-INTERFACE-VERSION:CAPS" role="macro">
+<title>LIBRDF_STORAGE_MAX_INTERFACE_VERSION</title>
+<indexterm zone="LIBRDF-STORAGE-MAX-INTERFACE-VERSION:CAPS"><primary>LIBRDF_STORAGE_MAX_INTERFACE_VERSION</primary></indexterm>
+<programlisting language="C">#define LIBRDF_STORAGE_MAX_INTERFACE_VERSION 1
+</programlisting>
+<para>Newest supported librdf storage module interface version.</para>
+</refsect2>
+<refsect2 id="LIBRDF-STORAGE-MIN-INTERFACE-VERSION:CAPS" role="macro">
+<title>LIBRDF_STORAGE_MIN_INTERFACE_VERSION</title>
+<indexterm zone="LIBRDF-STORAGE-MIN-INTERFACE-VERSION:CAPS"><primary>LIBRDF_STORAGE_MIN_INTERFACE_VERSION</primary></indexterm>
+<programlisting language="C">#define LIBRDF_STORAGE_MIN_INTERFACE_VERSION 1
+</programlisting>
+<para>Oldest support librdf storage module interface version.</para>
+</refsect2>
+<refsect2 id="librdf-storage" role="typedef">
+<title>librdf_storage</title>
+<indexterm zone="librdf-storage"><primary>librdf_storage</primary></indexterm>
+<programlisting language="C">typedef struct librdf_storage_s librdf_storage;
+</programlisting>
+<para>Redland storage class.</para>
+</refsect2>
+<refsect2 id="librdf-storage-factory" role="typedef">
+<title>librdf_storage_factory</title>
+<indexterm zone="librdf-storage-factory"><primary>librdf_storage_factory</primary></indexterm>
+<programlisting language="C">typedef struct librdf_storage_factory_s librdf_storage_factory;
+</programlisting>
+<para>A Storage Factory</para>
+</refsect2>
+<refsect2 id="librdf-storage-instance" role="typedef">
+<title>librdf_storage_instance</title>
+<indexterm zone="librdf-storage-instance"><primary>librdf_storage_instance</primary></indexterm>
+<programlisting language="C">typedef void* librdf_storage_instance;
+</programlisting>
+<para>Opaque storage module instance handle.</para>
+<para>For use with a storage module and the <link linkend="librdf-storage-get-instance"><function>librdf_storage_get_instance()</function></link>
+and <link linkend="librdf-storage-set-instance"><function>librdf_storage_set_instance()</function></link> functions.  The instance handle
+should be set in the <link linkend="librdf-storage-factory"><type>librdf_storage_factory</type></link> init factory method.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

@@ -1,0 +1,735 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>stream: Redland RDF Library Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="Redland RDF Library Manual">
+<link rel="up" href="reference-manual.html" title="Part II. Reference Manual">
+<link rel="prev" href="redland-storage-module-virtuoso.html" title="Store 'virtuoso'">
+<link rel="next" href="redland-unicode.html" title="unicode">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#redland-stream.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference-manual.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="redland-storage-module-virtuoso.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="redland-unicode.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="redland-stream"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="redland-stream.top_of_page"></a>stream</span></h2>
+<p>stream</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="redland-stream.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-statement.html#librdf-statement" title="librdf_statement"><span class="returnvalue">librdf_statement</span></a> *
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="redland-stream.html#librdf-stream-map-handler" title="librdf_stream_map_handler ()">*librdf_stream_map_handler</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="redland-stream.html#librdf-stream-map-free-context-handler" title="librdf_stream_map_free_context_handler ()">*librdf_stream_map_free_context_handler</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-stream.html#librdf-new-stream" title="librdf_new_stream ()">librdf_new_stream</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-stream.html#librdf-new-stream-from-node-iterator" title="librdf_new_stream_from_node_iterator ()">librdf_new_stream_from_node_iterator</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-stream.html#librdf-new-empty-stream" title="librdf_new_empty_stream ()">librdf_new_empty_stream</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-stream.html#librdf-free-stream" title="librdf_free_stream ()">librdf_free_stream</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-stream.html#librdf-stream-end" title="librdf_stream_end ()">librdf_stream_end</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-stream.html#librdf-stream-next" title="librdf_stream_next ()">librdf_stream_next</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-statement.html#librdf-statement" title="librdf_statement"><span class="returnvalue">librdf_statement</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-stream.html#librdf-stream-get-object" title="librdf_stream_get_object ()">librdf_stream_get_object</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-stream.html#librdf-stream-get-context" title="librdf_stream_get_context ()">librdf_stream_get_context</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-node.html#librdf-node" title="librdf_node"><span class="returnvalue">librdf_node</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-stream.html#librdf-stream-get-context2" title="librdf_stream_get_context2 ()">librdf_stream_get_context2</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-stream.html#librdf-stream-add-map" title="librdf_stream_add_map ()">librdf_stream_add_map</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-stream.html#librdf-stream-print" title="librdf_stream_print ()">librdf_stream_print</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-stream.html#librdf-stream-write" title="librdf_stream_write ()">librdf_stream_write</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-stream.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="typedef_keyword">typedef</td>
+<td class="function_name"><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream">librdf_stream</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="redland-stream.html#librdf-stream-get-method-flags" title="enum librdf_stream_get_method_flags">librdf_stream_get_method_flags</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-stream.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="redland-stream.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="librdf-stream-map-handler"></a><h3>librdf_stream_map_handler ()</h3>
+<pre class="programlisting"><a class="link" href="redland-statement.html#librdf-statement" title="librdf_statement"><span class="returnvalue">librdf_statement</span></a> *
+<span class="c_punctuation">(</span>*librdf_stream_map_handler<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>,
+                              <em class="parameter"><code><span class="type">void</span> *map_context</code></em>,
+                              <em class="parameter"><code><a class="link" href="redland-statement.html#librdf-statement" title="librdf_statement"><span class="type">librdf_statement</span></a> *item</code></em>);</pre>
+<p>Map function for a <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> map operation.</p>
+<p>See <a class="link" href="redland-stream.html#librdf-stream-add-map" title="librdf_stream_add_map ()"><code class="function">librdf_stream_add_map()</code></a>.</p>
+<div class="refsect3">
+<a name="librdf-stream-map-handler.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>Stream that this map is operating over.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>map_context</p></td>
+<td class="parameter_description"><p>Map data context pointer.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>item</p></td>
+<td class="parameter_description"><p>Pointer to the current item in the iteration.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-stream-map-handler.returns"></a><h4>Returns</h4>
+<p> item in keep the iteration or NULL to remove it</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-stream-map-free-context-handler"></a><h3>librdf_stream_map_free_context_handler ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+<span class="c_punctuation">(</span>*librdf_stream_map_free_context_handler<span class="c_punctuation">)</span>
+                               (<em class="parameter"><code><span class="type">void</span> *map_context</code></em>);</pre>
+<p>Free handler function for a <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> map operation.</p>
+<p>See <a class="link" href="redland-stream.html#librdf-stream-add-map" title="librdf_stream_add_map ()"><code class="function">librdf_stream_add_map()</code></a>.</p>
+<div class="refsect3">
+<a name="librdf-stream-map-free-context-handler.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>map_context</p></td>
+<td class="parameter_description"><p>Map data context pointer.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-stream"></a><h3>librdf_new_stream ()</h3>
+<pre class="programlisting"><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+librdf_new_stream (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                   <em class="parameter"><code><span class="type">void</span> *context</code></em>,
+                   <em class="parameter"><code><span class="type">int</span> (*is_end_method) (void*)</code></em>,
+                   <em class="parameter"><code><span class="type">int</span> (*next_method) (void*)</code></em>,
+                   <em class="parameter"><code><span class="type">void</span>* (*get_method) (void*, int)</code></em>,
+                   <em class="parameter"><code><span class="type">void</span> (*finished_method) (void*)</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a>.</p>
+<p>Creates a new stream with an implementation based on the passed in
+functions.  The functions next_statement and end_of_stream will be called
+multiple times until either of them signify the end of stream by
+returning NULL or non 0 respectively.  The finished function is called
+once only when the stream object is destroyed with <a class="link" href="redland-stream.html#librdf-free-stream" title="librdf_free_stream ()"><code class="function">librdf_free_stream()</code></a></p>
+<p>A mapping function can be set for the stream using <a class="link" href="redland-stream.html#librdf-stream-add-map" title="librdf_stream_add_map ()"><code class="function">librdf_stream_add_map()</code></a>
+function which allows the statements generated by the stream to be
+filtered and/or altered as they are generated before passing back
+to the user.</p>
+<div class="refsect3">
+<a name="librdf-new-stream.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>context</p></td>
+<td class="parameter_description"><p>context to pass to the stream implementing objects</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>is_end_method</p></td>
+<td class="parameter_description"><p>pointer to function to test for end of stream</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>next_method</p></td>
+<td class="parameter_description"><p>pointer to function to move to the next statement in stream</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>get_method</p></td>
+<td class="parameter_description"><p>pointer to function to get the current statement</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>finished_method</p></td>
+<td class="parameter_description"><p>pointer to function to finish the stream.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-stream.returns"></a><h4>Returns</h4>
+<p>  a new <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-stream-from-node-iterator"></a><h3>librdf_new_stream_from_node_iterator ()</h3>
+<pre class="programlisting"><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+librdf_new_stream_from_node_iterator (<em class="parameter"><code><a class="link" href="redland-iterator.html#librdf-iterator" title="librdf_iterator"><span class="type">librdf_iterator</span></a> *iterator</code></em>,
+                                      <em class="parameter"><code><a class="link" href="redland-statement.html#librdf-statement" title="librdf_statement"><span class="type">librdf_statement</span></a> *statement</code></em>,
+                                      <em class="parameter"><code><a class="link" href="redland-statement.html#librdf-statement-part" title="enum librdf_statement_part"><span class="type">librdf_statement_part</span></a> field</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> from an iterator of nodes.</p>
+<p>Creates a new <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> using the passed in <a class="link" href="redland-iterator.html#librdf-iterator" title="librdf_iterator"><span class="type">librdf_iterator</span></a>
+which generates a series of <a class="link" href="redland-node.html#librdf-node" title="librdf_node"><span class="type">librdf_node</span></a> objects.  The resulting
+nodes are then inserted into the given statement and returned.
+The field attribute indicates which statement node is being generated.</p>
+<div class="refsect3">
+<a name="librdf-new-stream-from-node-iterator.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>iterator</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-iterator.html#librdf-iterator" title="librdf_iterator"><span class="type">librdf_iterator</span></a> of <a class="link" href="redland-node.html#librdf-node" title="librdf_node"><span class="type">librdf_node</span></a> objects</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>statement</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-statement.html#librdf-statement" title="librdf_statement"><span class="type">librdf_statement</span></a> prototype with one NULL node space</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>field</p></td>
+<td class="parameter_description"><p>node part of statement</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-stream-from-node-iterator.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-empty-stream"></a><h3>librdf_new_empty_stream ()</h3>
+<pre class="programlisting"><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+librdf_new_empty_stream (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> with no content.</p>
+<div class="refsect3">
+<a name="librdf-new-empty-stream.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-empty-stream.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-free-stream"></a><h3>librdf_free_stream ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_free_stream (<em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>);</pre>
+<p>Destructor - destroy an <span class="type">libdf_stream</span> object.</p>
+<div class="refsect3">
+<a name="librdf-free-stream.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-stream-end"></a><h3>librdf_stream_end ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_stream_end (<em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>);</pre>
+<p>Test if the stream has ended.</p>
+<div class="refsect3">
+<a name="librdf-stream-end.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-stream-end.returns"></a><h4>Returns</h4>
+<p> non 0 at end of stream.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-stream-next"></a><h3>librdf_stream_next ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_stream_next (<em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>);</pre>
+<p>Move to the next librdf_statement in the stream.</p>
+<div class="refsect3">
+<a name="librdf-stream-next.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-stream-next.returns"></a><h4>Returns</h4>
+<p> non 0 if the stream has finished</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-stream-get-object"></a><h3>librdf_stream_get_object ()</h3>
+<pre class="programlisting"><a class="link" href="redland-statement.html#librdf-statement" title="librdf_statement"><span class="returnvalue">librdf_statement</span></a> *
+librdf_stream_get_object (<em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>);</pre>
+<p>Get the current librdf_statement in the stream.</p>
+<p>This method returns a SHARED pointer to the current statement object
+which should be copied by the caller to preserve it if the stream
+is moved on <a class="link" href="redland-stream.html#librdf-stream-next" title="librdf_stream_next ()"><code class="function">librdf_stream_next()</code></a> or if it should last after the
+stream is closed. <a class="link" href="redland-statement.html#librdf-new-statement-from-statement" title="librdf_new_statement_from_statement ()"><code class="function">librdf_new_statement_from_statement()</code></a> can be used
+for copying the statement.</p>
+<div class="refsect3">
+<a name="librdf-stream-get-object.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-stream-get-object.returns"></a><h4>Returns</h4>
+<p> the current <a class="link" href="redland-statement.html#librdf-statement" title="librdf_statement"><span class="type">librdf_statement</span></a> object or NULL at end of stream.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-stream-get-context"></a><h3>librdf_stream_get_context ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span> *
+librdf_stream_get_context (<em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>);</pre>
+<div class="warning"><p><code class="literal">librdf_stream_get_context</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Get the context of the current object on the stream.</p>
+<p>This method returns a SHARED pointer to the current context node object
+which should be copied by the caller to preserve it if the stream
+is moved on librdf_stream_next or if it should last after the
+stream is closed.</p>
+<p><em class="parameter"><code>Deprecated</code></em>
+: Use <a class="link" href="redland-stream.html#librdf-stream-get-context2" title="librdf_stream_get_context2 ()"><code class="function">librdf_stream_get_context2()</code></a> which returns a <a class="link" href="redland-node.html#librdf-node" title="librdf_node"><span class="type">librdf_node</span></a></p>
+<div class="refsect3">
+<a name="librdf-stream-get-context.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>the <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-stream-get-context.returns"></a><h4>Returns</h4>
+<p> The context node (can be NULL) or NULL if the stream has finished.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-stream-get-context2"></a><h3>librdf_stream_get_context2 ()</h3>
+<pre class="programlisting"><a class="link" href="redland-node.html#librdf-node" title="librdf_node"><span class="returnvalue">librdf_node</span></a> *
+librdf_stream_get_context2 (<em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>);</pre>
+<p>Get the context of the current object on the stream.</p>
+<p>This method returns a SHARED pointer to the current context node object
+which should be copied by the caller to preserve it if the stream
+is moved on librdf_stream_next or if it should last after the
+stream is closed.</p>
+<div class="refsect3">
+<a name="librdf-stream-get-context2.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>the <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-stream-get-context2.returns"></a><h4>Returns</h4>
+<p> The context node (can be NULL) or NULL if the stream has finished.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-stream-add-map"></a><h3>librdf_stream_add_map ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_stream_add_map (<em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>,
+                       <em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream-map-handler" title="librdf_stream_map_handler ()"><span class="type">librdf_stream_map_handler</span></a> map_function</code></em>,
+                       <em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream-map-free-context-handler" title="librdf_stream_map_free_context_handler ()"><span class="type">librdf_stream_map_free_context_handler</span></a> free_context</code></em>,
+                       <em class="parameter"><code><span class="type">void</span> *map_context</code></em>);</pre>
+<p>Add a librdf_stream mapping function.</p>
+<p>Adds an stream mapping function which operates over the stream to
+select which elements are returned; it will be applied as soon as
+this method is called.</p>
+<p>Several mapping functions can be added and they are applied in
+the order given.</p>
+<p>The mapping function should return the statement to return, or NULL
+to remove it from the stream.</p>
+<div class="refsect3">
+<a name="librdf-stream-add-map.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>the stream</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>map_function</p></td>
+<td class="parameter_description"><p>the function to perform the mapping</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>free_context</p></td>
+<td class="parameter_description"><p>the function to use to free the context (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>map_context</p></td>
+<td class="parameter_description"><p>the context to pass to the map function</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-stream-add-map.returns"></a><h4>Returns</h4>
+<p> Non 0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-stream-print"></a><h3>librdf_stream_print ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_stream_print (<em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>,
+                     <em class="parameter"><code><span class="type">FILE</span> *fh</code></em>);</pre>
+<div class="warning"><p><code class="literal">librdf_stream_print</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Print the stream.</p>
+<p>This prints the remaining statements of the stream to the given
+file handle.  Note that after this method is called the stream
+will be empty so that <a class="link" href="redland-stream.html#librdf-stream-end" title="librdf_stream_end ()"><code class="function">librdf_stream_end()</code></a> will always be true
+and <a class="link" href="redland-stream.html#librdf-stream-next" title="librdf_stream_next ()"><code class="function">librdf_stream_next()</code></a> will always return NULL.  The only
+useful operation is to dispose of the stream with the
+<a class="link" href="redland-stream.html#librdf-free-stream" title="librdf_free_stream ()"><code class="function">librdf_free_stream()</code></a> destructor.</p>
+<p>This method is for debugging and the format of the output should
+not be relied on.</p>
+<p><em class="parameter"><code>Deprecated</code></em>
+: Use <a class="link" href="redland-stream.html#librdf-stream-write" title="librdf_stream_write ()"><code class="function">librdf_stream_write()</code></a> to write to
+<span class="type">raptor_iostream</span> which can be made to write to a string.  Use a
+<a class="link" href="redland-serializer.html#librdf-serializer" title="librdf_serializer"><span class="type">librdf_serializer</span></a> to write proper syntax formats.</p>
+<div class="refsect3">
+<a name="librdf-stream-print.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>the stream object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>fh</p></td>
+<td class="parameter_description"><p>the FILE stream to print to</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-stream-write"></a><h3>librdf_stream_write ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_stream_write (<em class="parameter"><code><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> *stream</code></em>,
+                     <em class="parameter"><code><span class="type">raptor_iostream</span> *iostr</code></em>);</pre>
+<p>Write a stream of triples to an iostream in a debug format.</p>
+<p>This prints the remaining statements of the stream to the given
+<span class="type">raptor_iostream</span> in a debug format.</p>
+<p>Note that after this method is called the stream will be empty so
+that <a class="link" href="redland-stream.html#librdf-stream-end" title="librdf_stream_end ()"><code class="function">librdf_stream_end()</code></a> will always be true and
+<a class="link" href="redland-stream.html#librdf-stream-next" title="librdf_stream_next ()"><code class="function">librdf_stream_next()</code></a> will always return NULL.  The only useful
+operation is to dispose of the stream with the
+<a class="link" href="redland-stream.html#librdf-free-stream" title="librdf_free_stream ()"><code class="function">librdf_free_stream()</code></a> destructor.</p>
+<p>This method is for debugging and the format of the output should
+not be relied on.  In particular, when contexts are used the
+result may be 4 nodes.</p>
+<div class="refsect3">
+<a name="librdf-stream-write.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>the stream object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>iostr</p></td>
+<td class="parameter_description"><p>the iostream to write to</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-stream-write.returns"></a><h4>Returns</h4>
+<p> non-0 on failure</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="redland-stream.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="librdf-stream"></a><h3>librdf_stream</h3>
+<pre class="programlisting">typedef struct librdf_stream_s librdf_stream;
+</pre>
+<p>Redland stream class.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-stream-get-method-flags"></a><h3>enum librdf_stream_get_method_flags</h3>
+<p>Flags for <a class="link" href="redland-stream.html#librdf-new-stream" title="librdf_new_stream ()"><code class="function">librdf_new_stream()</code></a> get_method function pointer.</p>
+<div class="refsect3">
+<a name="librdf-stream-get-method-flags.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-STREAM-GET-METHOD-GET-OBJECT:CAPS"></a>LIBRDF_STREAM_GET_METHOD_GET_OBJECT</p></td>
+<td class="enum_member_description">
+<p>get object from iterator - implementing <a class="link" href="redland-stream.html#librdf-stream-get-object" title="librdf_stream_get_object ()"><code class="function">librdf_stream_get_object()</code></a></p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-STREAM-GET-METHOD-GET-CONTEXT:CAPS"></a>LIBRDF_STREAM_GET_METHOD_GET_CONTEXT</p></td>
+<td class="enum_member_description">
+<p>get context from iterator - implementing <a class="link" href="redland-stream.html#librdf-stream-get-context" title="librdf_stream_get_context ()"><code class="function">librdf_stream_get_context()</code></a></p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.27</div>
+</body>
+</html>

@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-concepts">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-concepts.top_of_page">concepts</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>concepts</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-concepts.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-get-concept-resource-by-index">librdf_get_concept_resource_by_index</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-get-concept-uri-by-index">librdf_get_concept_uri_by_index</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-get-concept-ms-namespace">librdf_get_concept_ms_namespace</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-get-concept-schema-namespace">librdf_get_concept_schema_namespace</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-concepts.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-Alt">LIBRDF_MS_Alt</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-Alt-URI">LIBRDF_MS_Alt_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-Bag">LIBRDF_MS_Bag</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-Bag-URI">LIBRDF_MS_Bag_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-Description">LIBRDF_MS_Description</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-Description-URI">LIBRDF_MS_Description_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-Property">LIBRDF_MS_Property</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-Property-URI">LIBRDF_MS_Property_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-RDF:CAPS">LIBRDF_MS_RDF</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-RDF-URI:CAPS">LIBRDF_MS_RDF_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-Seq">LIBRDF_MS_Seq</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-Seq-URI">LIBRDF_MS_Seq_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-Statement">LIBRDF_MS_Statement</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-Statement-URI">LIBRDF_MS_Statement_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-aboutEach">LIBRDF_MS_aboutEach</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-aboutEachPrefix">LIBRDF_MS_aboutEachPrefix</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-aboutEachPrefix-URI">LIBRDF_MS_aboutEachPrefix_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-aboutEach-URI">LIBRDF_MS_aboutEach_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-li">LIBRDF_MS_li</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-li-URI">LIBRDF_MS_li_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-object">LIBRDF_MS_object</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-object-URI">LIBRDF_MS_object_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-predicate">LIBRDF_MS_predicate</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-predicate-URI">LIBRDF_MS_predicate_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-subject">LIBRDF_MS_subject</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-subject-URI">LIBRDF_MS_subject_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-type">LIBRDF_MS_type</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-type-URI">LIBRDF_MS_type_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-value">LIBRDF_MS_value</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-MS-value-URI">LIBRDF_MS_value_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-RS-List">LIBRDF_RS_List</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-RS-List-URI">LIBRDF_RS_List_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-RS-XMLLiteral">LIBRDF_RS_XMLLiteral</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-RS-XMLLiteral-URI">LIBRDF_RS_XMLLiteral_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-RS-first">LIBRDF_RS_first</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-RS-first-URI">LIBRDF_RS_first_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-RS-nil">LIBRDF_RS_nil</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-RS-nil-URI">LIBRDF_RS_nil_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-RS-nodeID">LIBRDF_RS_nodeID</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-RS-nodeID-URI">LIBRDF_RS_nodeID_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-RS-rest">LIBRDF_RS_rest</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-RS-rest-URI">LIBRDF_RS_rest_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-Class">LIBRDF_S_Class</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-Class-URI">LIBRDF_S_Class_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-ConstraintProperty">LIBRDF_S_ConstraintProperty</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-ConstraintProperty-URI">LIBRDF_S_ConstraintProperty_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-ConstraintResource">LIBRDF_S_ConstraintResource</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-ConstraintResource-URI">LIBRDF_S_ConstraintResource_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-Container">LIBRDF_S_Container</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-ContainerMembershipProperty">LIBRDF_S_ContainerMembershipProperty</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-ContainerMembershipProperty-URI">LIBRDF_S_ContainerMembershipProperty_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-Container-URI">LIBRDF_S_Container_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-Literal">LIBRDF_S_Literal</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-Literal-URI">LIBRDF_S_Literal_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-Resource">LIBRDF_S_Resource</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-Resource-URI">LIBRDF_S_Resource_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-comment">LIBRDF_S_comment</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-comment-URI">LIBRDF_S_comment_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-domain">LIBRDF_S_domain</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-domain-URI">LIBRDF_S_domain_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-isDefinedBy">LIBRDF_S_isDefinedBy</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-isDefinedBy-URI">LIBRDF_S_isDefinedBy_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-label">LIBRDF_S_label</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-label-URI">LIBRDF_S_label_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-range">LIBRDF_S_range</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-range-URI">LIBRDF_S_range_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-seeAlso">LIBRDF_S_seeAlso</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-seeAlso-URI">LIBRDF_S_seeAlso_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-subClassOf">LIBRDF_S_subClassOf</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-subClassOf-URI">LIBRDF_S_subClassOf_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-subPropertyOf">LIBRDF_S_subPropertyOf</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-S-subPropertyOf-URI">LIBRDF_S_subPropertyOf_URI</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-URI-RDF-MS:CAPS">LIBRDF_URI_RDF_MS</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-URI-RDF-SCHEMA:CAPS">LIBRDF_URI_RDF_SCHEMA</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-concepts.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-concepts.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-get-concept-resource-by-index" role="function">
+<title>librdf_get_concept_resource_by_index&#160;()</title>
+<indexterm zone="librdf-get-concept-resource-by-index"><primary>librdf_get_concept_resource_by_index</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_get_concept_resource_by_index (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                      <parameter><link linkend="librdf-concepts-index"><type>librdf_concepts_index</type></link> idx</parameter>);</programlisting>
+<para>Get Redland node object for RDF concepts.</para>
+<refsect3 id="librdf-get-concept-resource-by-index.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>idx</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-concepts-index"><type>librdf_concepts_index</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-get-concept-resource-by-index.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-node"><type>librdf_node</type></link> pointer or NULL on failure. </para>
+</refsect3></refsect2>
+<refsect2 id="librdf-get-concept-uri-by-index" role="function">
+<title>librdf_get_concept_uri_by_index&#160;()</title>
+<indexterm zone="librdf-get-concept-uri-by-index"><primary>librdf_get_concept_uri_by_index</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+librdf_get_concept_uri_by_index (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                 <parameter><link linkend="librdf-concepts-index"><type>librdf_concepts_index</type></link> idx</parameter>);</programlisting>
+<para>Get Redland uri object for RDF concepts.</para>
+<refsect3 id="librdf-get-concept-uri-by-index.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>idx</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-concepts-index"><type>librdf_concepts_index</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-get-concept-uri-by-index.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-uri"><type>librdf_uri</type></link> pointer or NULL on failure. </para>
+</refsect3></refsect2>
+<refsect2 id="librdf-get-concept-ms-namespace" role="function">
+<title>librdf_get_concept_ms_namespace&#160;()</title>
+<indexterm zone="librdf-get-concept-ms-namespace"><primary>librdf_get_concept_ms_namespace</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+librdf_get_concept_ms_namespace (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>);</programlisting>
+<para>Get a shared <link linkend="librdf-uri"><type>librdf_uri</type></link> for the RDF Syntax namespace.</para>
+<refsect3 id="librdf-get-concept-ms-namespace.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>librdf world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-get-concept-ms-namespace.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-uri"><type>librdf_uri</type></link> pointer or NULL on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-get-concept-schema-namespace" role="function">
+<title>librdf_get_concept_schema_namespace&#160;()</title>
+<indexterm zone="librdf-get-concept-schema-namespace"><primary>librdf_get_concept_schema_namespace</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+librdf_get_concept_schema_namespace (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>);</programlisting>
+<para>Get a shared <link linkend="librdf-uri"><type>librdf_uri</type></link> for the RDF Schema namespace.</para>
+<refsect3 id="librdf-get-concept-schema-namespace.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>librdf world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-get-concept-schema-namespace.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="librdf-uri"><type>librdf_uri</type></link> pointer or NULL on failure.</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-concepts.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="LIBRDF-MS-Alt" role="macro">
+<title>LIBRDF_MS_Alt</title>
+<indexterm zone="LIBRDF-MS-Alt"><primary>LIBRDF_MS_Alt</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_Alt
+</programlisting>
+<para>RDF namespace concept librdf_node Alt</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-Alt-URI" role="macro">
+<title>LIBRDF_MS_Alt_URI</title>
+<indexterm zone="LIBRDF-MS-Alt-URI"><primary>LIBRDF_MS_Alt_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_Alt_URI
+</programlisting>
+<para>RDF namespace concept URI Alt</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-Bag" role="macro">
+<title>LIBRDF_MS_Bag</title>
+<indexterm zone="LIBRDF-MS-Bag"><primary>LIBRDF_MS_Bag</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_Bag
+</programlisting>
+<para>RDF namespace concept librdf_node Bag</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-Bag-URI" role="macro">
+<title>LIBRDF_MS_Bag_URI</title>
+<indexterm zone="LIBRDF-MS-Bag-URI"><primary>LIBRDF_MS_Bag_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_Bag_URI
+</programlisting>
+<para>RDF namespace concept URI Bag</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-Description" role="macro">
+<title>LIBRDF_MS_Description</title>
+<indexterm zone="LIBRDF-MS-Description"><primary>LIBRDF_MS_Description</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_Description
+</programlisting>
+<para>RDF namespace concept librdf_node Description</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-Description-URI" role="macro">
+<title>LIBRDF_MS_Description_URI</title>
+<indexterm zone="LIBRDF-MS-Description-URI"><primary>LIBRDF_MS_Description_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_Description_URI
+</programlisting>
+<para>RDF namespace concept URI Description</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-Property" role="macro">
+<title>LIBRDF_MS_Property</title>
+<indexterm zone="LIBRDF-MS-Property"><primary>LIBRDF_MS_Property</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_Property
+</programlisting>
+<para>RDF namespace concept librdf_node Property</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-Property-URI" role="macro">
+<title>LIBRDF_MS_Property_URI</title>
+<indexterm zone="LIBRDF-MS-Property-URI"><primary>LIBRDF_MS_Property_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_Property_URI
+</programlisting>
+<para>RDF namespace concept URI Property</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-RDF:CAPS" role="macro">
+<title>LIBRDF_MS_RDF</title>
+<indexterm zone="LIBRDF-MS-RDF:CAPS"><primary>LIBRDF_MS_RDF</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_RDF
+</programlisting>
+<para>RDF namespace concept librdf_node RDF</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-RDF-URI:CAPS" role="macro">
+<title>LIBRDF_MS_RDF_URI</title>
+<indexterm zone="LIBRDF-MS-RDF-URI:CAPS"><primary>LIBRDF_MS_RDF_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_RDF_URI
+</programlisting>
+<para>RDF namespace concept URI RDF</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-Seq" role="macro">
+<title>LIBRDF_MS_Seq</title>
+<indexterm zone="LIBRDF-MS-Seq"><primary>LIBRDF_MS_Seq</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_Seq
+</programlisting>
+<para>RDF namespace concept librdf_node Seq</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-Seq-URI" role="macro">
+<title>LIBRDF_MS_Seq_URI</title>
+<indexterm zone="LIBRDF-MS-Seq-URI"><primary>LIBRDF_MS_Seq_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_Seq_URI
+</programlisting>
+<para>RDF namespace concept URI Seq</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-Statement" role="macro">
+<title>LIBRDF_MS_Statement</title>
+<indexterm zone="LIBRDF-MS-Statement"><primary>LIBRDF_MS_Statement</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_Statement
+</programlisting>
+<para>RDF namespace concept librdf_node Statement</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-Statement-URI" role="macro">
+<title>LIBRDF_MS_Statement_URI</title>
+<indexterm zone="LIBRDF-MS-Statement-URI"><primary>LIBRDF_MS_Statement_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_Statement_URI
+</programlisting>
+<para>RDF namespace concept URI Statement</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-aboutEach" role="macro">
+<title>LIBRDF_MS_aboutEach</title>
+<indexterm zone="LIBRDF-MS-aboutEach"><primary>LIBRDF_MS_aboutEach</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_aboutEach
+</programlisting>
+<para>RDF namespace concept librdf_node aboutEach</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-aboutEachPrefix" role="macro">
+<title>LIBRDF_MS_aboutEachPrefix</title>
+<indexterm zone="LIBRDF-MS-aboutEachPrefix"><primary>LIBRDF_MS_aboutEachPrefix</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_aboutEachPrefix
+</programlisting>
+<para>RDF namespace concept librdf_node aboutEachPrefix</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-aboutEachPrefix-URI" role="macro">
+<title>LIBRDF_MS_aboutEachPrefix_URI</title>
+<indexterm zone="LIBRDF-MS-aboutEachPrefix-URI"><primary>LIBRDF_MS_aboutEachPrefix_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_aboutEachPrefix_URI
+</programlisting>
+<para>RDF namespace concept URI aboutEachPrefix</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-aboutEach-URI" role="macro">
+<title>LIBRDF_MS_aboutEach_URI</title>
+<indexterm zone="LIBRDF-MS-aboutEach-URI"><primary>LIBRDF_MS_aboutEach_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_aboutEach_URI
+</programlisting>
+<para>RDF namespace concept URI aboutEach</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-li" role="macro">
+<title>LIBRDF_MS_li</title>
+<indexterm zone="LIBRDF-MS-li"><primary>LIBRDF_MS_li</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_li
+</programlisting>
+<para>RDF namespace concept librdf_node li</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-li-URI" role="macro">
+<title>LIBRDF_MS_li_URI</title>
+<indexterm zone="LIBRDF-MS-li-URI"><primary>LIBRDF_MS_li_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_li_URI
+</programlisting>
+<para>RDF namespace concept URI li</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-object" role="macro">
+<title>LIBRDF_MS_object</title>
+<indexterm zone="LIBRDF-MS-object"><primary>LIBRDF_MS_object</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_object
+</programlisting>
+<para>RDF namespace concept librdf_node object</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-object-URI" role="macro">
+<title>LIBRDF_MS_object_URI</title>
+<indexterm zone="LIBRDF-MS-object-URI"><primary>LIBRDF_MS_object_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_object_URI
+</programlisting>
+<para>RDF namespace concept URI object</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-predicate" role="macro">
+<title>LIBRDF_MS_predicate</title>
+<indexterm zone="LIBRDF-MS-predicate"><primary>LIBRDF_MS_predicate</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_predicate
+</programlisting>
+<para>RDF namespace concept librdf_node predicate</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-predicate-URI" role="macro">
+<title>LIBRDF_MS_predicate_URI</title>
+<indexterm zone="LIBRDF-MS-predicate-URI"><primary>LIBRDF_MS_predicate_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_predicate_URI
+</programlisting>
+<para>RDF namespace concept URI predicate</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-subject" role="macro">
+<title>LIBRDF_MS_subject</title>
+<indexterm zone="LIBRDF-MS-subject"><primary>LIBRDF_MS_subject</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_subject
+</programlisting>
+<para>RDF namespace concept librdf_node subject</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-subject-URI" role="macro">
+<title>LIBRDF_MS_subject_URI</title>
+<indexterm zone="LIBRDF-MS-subject-URI"><primary>LIBRDF_MS_subject_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_subject_URI
+</programlisting>
+<para>RDF namespace concept URI subject</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-type" role="macro">
+<title>LIBRDF_MS_type</title>
+<indexterm zone="LIBRDF-MS-type"><primary>LIBRDF_MS_type</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_type
+</programlisting>
+<para>RDF namespace concept librdf_node type</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-type-URI" role="macro">
+<title>LIBRDF_MS_type_URI</title>
+<indexterm zone="LIBRDF-MS-type-URI"><primary>LIBRDF_MS_type_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_type_URI
+</programlisting>
+<para>RDF namespace concept URI type</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-value" role="macro">
+<title>LIBRDF_MS_value</title>
+<indexterm zone="LIBRDF-MS-value"><primary>LIBRDF_MS_value</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_value
+</programlisting>
+<para>RDF namespace concept librdf_node value</para>
+</refsect2>
+<refsect2 id="LIBRDF-MS-value-URI" role="macro">
+<title>LIBRDF_MS_value_URI</title>
+<indexterm zone="LIBRDF-MS-value-URI"><primary>LIBRDF_MS_value_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_MS_value_URI
+</programlisting>
+<para>RDF namespace concept URI value</para>
+</refsect2>
+<refsect2 id="LIBRDF-RS-List" role="macro">
+<title>LIBRDF_RS_List</title>
+<indexterm zone="LIBRDF-RS-List"><primary>LIBRDF_RS_List</primary></indexterm>
+<programlisting language="C">#define LIBRDF_RS_List
+</programlisting>
+<para>RDF namespace concept librdf_node List</para>
+</refsect2>
+<refsect2 id="LIBRDF-RS-List-URI" role="macro">
+<title>LIBRDF_RS_List_URI</title>
+<indexterm zone="LIBRDF-RS-List-URI"><primary>LIBRDF_RS_List_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_RS_List_URI
+</programlisting>
+<para>RDF namespace concept URI List</para>
+</refsect2>
+<refsect2 id="LIBRDF-RS-XMLLiteral" role="macro">
+<title>LIBRDF_RS_XMLLiteral</title>
+<indexterm zone="LIBRDF-RS-XMLLiteral"><primary>LIBRDF_RS_XMLLiteral</primary></indexterm>
+<programlisting language="C">#define LIBRDF_RS_XMLLiteral
+</programlisting>
+<para>RDF namespace concept librdf_node XMLLiteral</para>
+</refsect2>
+<refsect2 id="LIBRDF-RS-XMLLiteral-URI" role="macro">
+<title>LIBRDF_RS_XMLLiteral_URI</title>
+<indexterm zone="LIBRDF-RS-XMLLiteral-URI"><primary>LIBRDF_RS_XMLLiteral_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_RS_XMLLiteral_URI
+</programlisting>
+<para>RDF namespace concept URI XMLLiteral</para>
+</refsect2>
+<refsect2 id="LIBRDF-RS-first" role="macro">
+<title>LIBRDF_RS_first</title>
+<indexterm zone="LIBRDF-RS-first"><primary>LIBRDF_RS_first</primary></indexterm>
+<programlisting language="C">#define LIBRDF_RS_first
+</programlisting>
+<para>RDF namespace concept librdf_node first</para>
+</refsect2>
+<refsect2 id="LIBRDF-RS-first-URI" role="macro">
+<title>LIBRDF_RS_first_URI</title>
+<indexterm zone="LIBRDF-RS-first-URI"><primary>LIBRDF_RS_first_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_RS_first_URI
+</programlisting>
+<para>RDF namespace concept URI first</para>
+</refsect2>
+<refsect2 id="LIBRDF-RS-nil" role="macro">
+<title>LIBRDF_RS_nil</title>
+<indexterm zone="LIBRDF-RS-nil"><primary>LIBRDF_RS_nil</primary></indexterm>
+<programlisting language="C">#define LIBRDF_RS_nil
+</programlisting>
+<para>RDF namespace concept librdf_node nil</para>
+</refsect2>
+<refsect2 id="LIBRDF-RS-nil-URI" role="macro">
+<title>LIBRDF_RS_nil_URI</title>
+<indexterm zone="LIBRDF-RS-nil-URI"><primary>LIBRDF_RS_nil_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_RS_nil_URI
+</programlisting>
+<para>RDF namespace concept URI nil</para>
+</refsect2>
+<refsect2 id="LIBRDF-RS-nodeID" role="macro">
+<title>LIBRDF_RS_nodeID</title>
+<indexterm zone="LIBRDF-RS-nodeID"><primary>LIBRDF_RS_nodeID</primary></indexterm>
+<programlisting language="C">#define LIBRDF_RS_nodeID
+</programlisting>
+<para>RDF namespace concept librdf_node nodeID</para>
+</refsect2>
+<refsect2 id="LIBRDF-RS-nodeID-URI" role="macro">
+<title>LIBRDF_RS_nodeID_URI</title>
+<indexterm zone="LIBRDF-RS-nodeID-URI"><primary>LIBRDF_RS_nodeID_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_RS_nodeID_URI
+</programlisting>
+<para>RDF namespace concept URI nodeID</para>
+</refsect2>
+<refsect2 id="LIBRDF-RS-rest" role="macro">
+<title>LIBRDF_RS_rest</title>
+<indexterm zone="LIBRDF-RS-rest"><primary>LIBRDF_RS_rest</primary></indexterm>
+<programlisting language="C">#define LIBRDF_RS_rest
+</programlisting>
+<para>RDF namespace concept librdf_node rest</para>
+</refsect2>
+<refsect2 id="LIBRDF-RS-rest-URI" role="macro">
+<title>LIBRDF_RS_rest_URI</title>
+<indexterm zone="LIBRDF-RS-rest-URI"><primary>LIBRDF_RS_rest_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_RS_rest_URI
+</programlisting>
+<para>RDF namespace concept URI rest</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-Class" role="macro">
+<title>LIBRDF_S_Class</title>
+<indexterm zone="LIBRDF-S-Class"><primary>LIBRDF_S_Class</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_Class
+</programlisting>
+<para>RDFS namespace concept Class</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-Class-URI" role="macro">
+<title>LIBRDF_S_Class_URI</title>
+<indexterm zone="LIBRDF-S-Class-URI"><primary>LIBRDF_S_Class_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_Class_URI
+</programlisting>
+<para>RDFS namespace concept URI Class</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-ConstraintProperty" role="macro">
+<title>LIBRDF_S_ConstraintProperty</title>
+<indexterm zone="LIBRDF-S-ConstraintProperty"><primary>LIBRDF_S_ConstraintProperty</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_ConstraintProperty
+</programlisting>
+<para>RDFS namespace concept ConstraintProperty</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-ConstraintProperty-URI" role="macro">
+<title>LIBRDF_S_ConstraintProperty_URI</title>
+<indexterm zone="LIBRDF-S-ConstraintProperty-URI"><primary>LIBRDF_S_ConstraintProperty_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_ConstraintProperty_URI
+</programlisting>
+<para>RDFS namespace concept URI ConstraintProperty</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-ConstraintResource" role="macro">
+<title>LIBRDF_S_ConstraintResource</title>
+<indexterm zone="LIBRDF-S-ConstraintResource"><primary>LIBRDF_S_ConstraintResource</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_ConstraintResource
+</programlisting>
+<para>RDFS namespace concept ConstraintResource</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-ConstraintResource-URI" role="macro">
+<title>LIBRDF_S_ConstraintResource_URI</title>
+<indexterm zone="LIBRDF-S-ConstraintResource-URI"><primary>LIBRDF_S_ConstraintResource_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_ConstraintResource_URI
+</programlisting>
+<para>RDFS namespace concept URI ConstraintResource</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-Container" role="macro">
+<title>LIBRDF_S_Container</title>
+<indexterm zone="LIBRDF-S-Container"><primary>LIBRDF_S_Container</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_Container
+</programlisting>
+<para>RDFS namespace concept Container</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-ContainerMembershipProperty" role="macro">
+<title>LIBRDF_S_ContainerMembershipProperty</title>
+<indexterm zone="LIBRDF-S-ContainerMembershipProperty"><primary>LIBRDF_S_ContainerMembershipProperty</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_ContainerMembershipProperty
+</programlisting>
+<para>RDFS namespace concept ContainerMembershipProperty</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-ContainerMembershipProperty-URI" role="macro">
+<title>LIBRDF_S_ContainerMembershipProperty_URI</title>
+<indexterm zone="LIBRDF-S-ContainerMembershipProperty-URI"><primary>LIBRDF_S_ContainerMembershipProperty_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_ContainerMembershipProperty_URI
+</programlisting>
+<para>RDFS namespace concept URI ContainerMembershipProperty</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-Container-URI" role="macro">
+<title>LIBRDF_S_Container_URI</title>
+<indexterm zone="LIBRDF-S-Container-URI"><primary>LIBRDF_S_Container_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_Container_URI
+</programlisting>
+<para>RDFS namespace concept URI Container</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-Literal" role="macro">
+<title>LIBRDF_S_Literal</title>
+<indexterm zone="LIBRDF-S-Literal"><primary>LIBRDF_S_Literal</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_Literal
+</programlisting>
+<para>RDFS namespace concept Literal</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-Literal-URI" role="macro">
+<title>LIBRDF_S_Literal_URI</title>
+<indexterm zone="LIBRDF-S-Literal-URI"><primary>LIBRDF_S_Literal_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_Literal_URI
+</programlisting>
+<para>RDFS namespace concept URI Literal</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-Resource" role="macro">
+<title>LIBRDF_S_Resource</title>
+<indexterm zone="LIBRDF-S-Resource"><primary>LIBRDF_S_Resource</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_Resource
+</programlisting>
+<para>RDFS namespace concept Resource</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-Resource-URI" role="macro">
+<title>LIBRDF_S_Resource_URI</title>
+<indexterm zone="LIBRDF-S-Resource-URI"><primary>LIBRDF_S_Resource_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_Resource_URI
+</programlisting>
+<para>RDFS namespace concept URI Resource</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-comment" role="macro">
+<title>LIBRDF_S_comment</title>
+<indexterm zone="LIBRDF-S-comment"><primary>LIBRDF_S_comment</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_comment
+</programlisting>
+<para>RDFS namespace concept comment</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-comment-URI" role="macro">
+<title>LIBRDF_S_comment_URI</title>
+<indexterm zone="LIBRDF-S-comment-URI"><primary>LIBRDF_S_comment_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_comment_URI
+</programlisting>
+<para>RDFS namespace concept URI comment</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-domain" role="macro">
+<title>LIBRDF_S_domain</title>
+<indexterm zone="LIBRDF-S-domain"><primary>LIBRDF_S_domain</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_domain
+</programlisting>
+<para>RDFS namespace concept domain</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-domain-URI" role="macro">
+<title>LIBRDF_S_domain_URI</title>
+<indexterm zone="LIBRDF-S-domain-URI"><primary>LIBRDF_S_domain_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_domain_URI
+</programlisting>
+<para>RDFS namespace concept URI domain</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-isDefinedBy" role="macro">
+<title>LIBRDF_S_isDefinedBy</title>
+<indexterm zone="LIBRDF-S-isDefinedBy"><primary>LIBRDF_S_isDefinedBy</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_isDefinedBy
+</programlisting>
+<para>RDFS namespace concept isDefinedBy</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-isDefinedBy-URI" role="macro">
+<title>LIBRDF_S_isDefinedBy_URI</title>
+<indexterm zone="LIBRDF-S-isDefinedBy-URI"><primary>LIBRDF_S_isDefinedBy_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_isDefinedBy_URI
+</programlisting>
+<para>RDFS namespace concept URI isDefinedBy</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-label" role="macro">
+<title>LIBRDF_S_label</title>
+<indexterm zone="LIBRDF-S-label"><primary>LIBRDF_S_label</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_label
+</programlisting>
+<para>RDFS namespace concept label</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-label-URI" role="macro">
+<title>LIBRDF_S_label_URI</title>
+<indexterm zone="LIBRDF-S-label-URI"><primary>LIBRDF_S_label_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_label_URI
+</programlisting>
+<para>RDFS namespace concept URI label</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-range" role="macro">
+<title>LIBRDF_S_range</title>
+<indexterm zone="LIBRDF-S-range"><primary>LIBRDF_S_range</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_range
+</programlisting>
+<para>RDFS namespace concept range</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-range-URI" role="macro">
+<title>LIBRDF_S_range_URI</title>
+<indexterm zone="LIBRDF-S-range-URI"><primary>LIBRDF_S_range_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_range_URI
+</programlisting>
+<para>RDFS namespace concept URI range</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-seeAlso" role="macro">
+<title>LIBRDF_S_seeAlso</title>
+<indexterm zone="LIBRDF-S-seeAlso"><primary>LIBRDF_S_seeAlso</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_seeAlso
+</programlisting>
+<para>RDFS namespace concept seeAlso</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-seeAlso-URI" role="macro">
+<title>LIBRDF_S_seeAlso_URI</title>
+<indexterm zone="LIBRDF-S-seeAlso-URI"><primary>LIBRDF_S_seeAlso_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_seeAlso_URI
+</programlisting>
+<para>RDFS namespace concept URI seeAlso</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-subClassOf" role="macro">
+<title>LIBRDF_S_subClassOf</title>
+<indexterm zone="LIBRDF-S-subClassOf"><primary>LIBRDF_S_subClassOf</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_subClassOf
+</programlisting>
+<para>RDFS namespace concept subClassOf</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-subClassOf-URI" role="macro">
+<title>LIBRDF_S_subClassOf_URI</title>
+<indexterm zone="LIBRDF-S-subClassOf-URI"><primary>LIBRDF_S_subClassOf_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_subClassOf_URI
+</programlisting>
+<para>RDFS namespace concept URI subClassOf</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-subPropertyOf" role="macro">
+<title>LIBRDF_S_subPropertyOf</title>
+<indexterm zone="LIBRDF-S-subPropertyOf"><primary>LIBRDF_S_subPropertyOf</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_subPropertyOf
+</programlisting>
+<para>RDFS namespace concept subPropertyOf</para>
+</refsect2>
+<refsect2 id="LIBRDF-S-subPropertyOf-URI" role="macro">
+<title>LIBRDF_S_subPropertyOf_URI</title>
+<indexterm zone="LIBRDF-S-subPropertyOf-URI"><primary>LIBRDF_S_subPropertyOf_URI</primary></indexterm>
+<programlisting language="C">#define LIBRDF_S_subPropertyOf_URI
+</programlisting>
+<para>RDFS namespace concept URI subPropertyOf</para>
+</refsect2>
+<refsect2 id="LIBRDF-URI-RDF-MS:CAPS" role="macro">
+<title>LIBRDF_URI_RDF_MS</title>
+<indexterm zone="LIBRDF-URI-RDF-MS:CAPS"><primary>LIBRDF_URI_RDF_MS</primary></indexterm>
+<programlisting language="C">#define LIBRDF_URI_RDF_MS
+</programlisting>
+<para><link linkend="librdf-uri"><type>librdf_uri</type></link> for <literal>rdf:</literal> namespace.  Copy with
+<link linkend="librdf-new-uri-from-uri"><function>librdf_new_uri_from_uri()</function></link> before using.</para>
+</refsect2>
+<refsect2 id="LIBRDF-URI-RDF-SCHEMA:CAPS" role="macro">
+<title>LIBRDF_URI_RDF_SCHEMA</title>
+<indexterm zone="LIBRDF-URI-RDF-SCHEMA:CAPS"><primary>LIBRDF_URI_RDF_SCHEMA</primary></indexterm>
+<programlisting language="C">#define LIBRDF_URI_RDF_SCHEMA
+</programlisting>
+<para><link linkend="librdf-uri"><type>librdf_uri</type></link> for <literal>rdfs:</literal> namespace.  Copy with
+<link linkend="librdf-new-uri-from-uri"><function>librdf_new_uri_from_uri()</function></link> before using.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

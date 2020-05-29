@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-unicode">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-unicode.top_of_page">section-unicode</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-unicode</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-unicode.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-unicode-utf8-string-put-char">raptor_unicode_utf8_string_put_char</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-unicode-utf8-string-get-char">raptor_unicode_utf8_string_get_char</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-unicode-is-xml11-namestartchar">raptor_unicode_is_xml11_namestartchar</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-unicode-is-xml10-namestartchar">raptor_unicode_is_xml10_namestartchar</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-unicode-is-xml11-namechar">raptor_unicode_is_xml11_namechar</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-unicode-is-xml10-namechar">raptor_unicode_is_xml10_namechar</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-unicode-check-utf8-string">raptor_unicode_check_utf8_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-unicode-utf8-strlen">raptor_unicode_utf8_strlen</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-unicode-utf8-substr">raptor_unicode_utf8_substr</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-unicode.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-unichar">raptor_unichar</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-unicode.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-unicode.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-unicode-utf8-string-put-char" role="function">
+<title>raptor_unicode_utf8_string_put_char&#160;()</title>
+<indexterm zone="raptor-unicode-utf8-string-put-char"><primary>raptor_unicode_utf8_string_put_char</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_unicode_utf8_string_put_char (<parameter><link linkend="raptor-unichar"><type>raptor_unichar</type></link> c</parameter>,
+                                     <parameter>unsigned <link linkend="char"><type>char</type></link> *output</parameter>,
+                                     <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Encode a Unicode character to a UTF-8 string</para>
+<para>If <parameter>output</parameter>
+ is NULL, then will calculate the length rather than
+perform the encoding.  This can be used by the called to allocate
+space and then re-call this function with the new buffer.</para>
+<refsect3 id="raptor-unicode-utf8-string-put-char.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>c</para></entry>
+<entry role="parameter_description"><para>Unicode character</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>output</para></entry>
+<entry role="parameter_description"><para>UTF-8 string buffer or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>length of output buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-unicode-utf8-string-put-char.returns" role="returns">
+<title>Returns</title>
+<para> number of bytes encoded to output buffer or &lt;0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-unicode-utf8-string-get-char" role="function">
+<title>raptor_unicode_utf8_string_get_char&#160;()</title>
+<indexterm zone="raptor-unicode-utf8-string-get-char"><primary>raptor_unicode_utf8_string_get_char</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_unicode_utf8_string_get_char (<parameter>const unsigned <link linkend="char"><type>char</type></link> *input</parameter>,
+                                     <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>,
+                                     <parameter><link linkend="raptor-unichar"><type>raptor_unichar</type></link> *output</parameter>);</programlisting>
+<para>Decode a UTF-8 encoded string to get a Unicode character.</para>
+<para>If output is NULL, then will calculate the number of bytes that
+will be used from the input buffer and not perform the conversion.</para>
+<refsect3 id="raptor-unicode-utf8-string-get-char.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>input</para></entry>
+<entry role="parameter_description"><para>UTF-8 string buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>output</para></entry>
+<entry role="parameter_description"><para>Pointer to the Unicode character or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-unicode-utf8-string-get-char.returns" role="returns">
+<title>Returns</title>
+<para> bytes used from input buffer or &lt;0 on failure: -1 input buffer too short or length error, -2 overlong UTF-8 sequence, -3 illegal code positions, -4 code out of range U+0000 to U+10FFFF.  In cases -2, -3 and -4 the coded character is stored in the output.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-unicode-is-xml11-namestartchar" role="function">
+<title>raptor_unicode_is_xml11_namestartchar&#160;()</title>
+<indexterm zone="raptor-unicode-is-xml11-namestartchar"><primary>raptor_unicode_is_xml11_namestartchar</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_unicode_is_xml11_namestartchar (<parameter><link linkend="raptor-unichar"><type>raptor_unichar</type></link> c</parameter>);</programlisting>
+<para>Check if Unicode character is legal to start an XML 1.1 Name</para>
+<para>See <ulink url="http://www.w3.org/TR/2004/REC-xml11-20040204/#NT-NameStartChar">Namespaces in XML 1.1 REC 2004-02-04 NameStartChar</ulink>
+updating</para>
+<ulink url="http://www.w3.org/TR/2004/REC-xml11-20040204/">Extensible Markup Language (XML) 1.1 REC 2004-02-04</ulink> sec 2.3, [4a]
+<para>excluding the ':'</para>
+<refsect3 id="raptor-unicode-is-xml11-namestartchar.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>c</para></entry>
+<entry role="parameter_description"><para>Unicode character to check</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-unicode-is-xml11-namestartchar.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if legal</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-unicode-is-xml10-namestartchar" role="function">
+<title>raptor_unicode_is_xml10_namestartchar&#160;()</title>
+<indexterm zone="raptor-unicode-is-xml10-namestartchar"><primary>raptor_unicode_is_xml10_namestartchar</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_unicode_is_xml10_namestartchar (<parameter><link linkend="raptor-unichar"><type>raptor_unichar</type></link> c</parameter>);</programlisting>
+<para>Check if Unicode character is legal to start an XML 1.0 Name</para>
+<para>See <ulink url="http://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCName">Namespaces in XML REC 1999-01-14</ulink>
+updating</para>
+<ulink url="http://www.w3.org/TR/2004/REC-xml-20040204/">Extensible Markup Language (XML) 1.0 (Third Edition) REC 2004-02-04</ulink>
+<para>excluding the ':'</para>
+<refsect3 id="raptor-unicode-is-xml10-namestartchar.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>c</para></entry>
+<entry role="parameter_description"><para>Unicode character to check</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-unicode-is-xml10-namestartchar.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if legal</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-unicode-is-xml11-namechar" role="function">
+<title>raptor_unicode_is_xml11_namechar&#160;()</title>
+<indexterm zone="raptor-unicode-is-xml11-namechar"><primary>raptor_unicode_is_xml11_namechar</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_unicode_is_xml11_namechar (<parameter><link linkend="raptor-unichar"><type>raptor_unichar</type></link> c</parameter>);</programlisting>
+<para>Check if a Unicode codepoint is a legal to continue an XML 1.1 Name</para>
+<para>See <ulink url="http://www.w3.org/TR/2004/REC-xml11-20040204/">Namespaces in XML 1.1 REC 2004-02-04</ulink>
+updating</para>
+<ulink url="http://www.w3.org/TR/2004/REC-xml-20040204/">Extensible Markup Language (XML) 1.0 (Third Edition) REC 2004-02-04</ulink> sec 2.3, [4a]
+<para>excluding the ':'</para>
+<refsect3 id="raptor-unicode-is-xml11-namechar.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>c</para></entry>
+<entry role="parameter_description"><para>Unicode character</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-unicode-is-xml11-namechar.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if legal</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-unicode-is-xml10-namechar" role="function">
+<title>raptor_unicode_is_xml10_namechar&#160;()</title>
+<indexterm zone="raptor-unicode-is-xml10-namechar"><primary>raptor_unicode_is_xml10_namechar</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_unicode_is_xml10_namechar (<parameter><link linkend="raptor-unichar"><type>raptor_unichar</type></link> c</parameter>);</programlisting>
+<para>Check if a Unicode codepoint is a legal to continue an XML 1.0 Name</para>
+<para>See <ulink url="http://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-NCNameChar">Namespaces in XML REC 1999-01-14 NCNameChar</ulink>
+updating</para>
+<ulink url="http://www.w3.org/TR/2004/REC-xml-20040204/">Extensible Markup Language (XML) 1.0 (Third Edition) REC 2004-02-04</ulink>
+<para>excluding the ':'</para>
+<refsect3 id="raptor-unicode-is-xml10-namechar.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>c</para></entry>
+<entry role="parameter_description"><para>Unicode character</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-unicode-is-xml10-namechar.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if legal</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-unicode-check-utf8-string" role="function">
+<title>raptor_unicode_check_utf8_string&#160;()</title>
+<indexterm zone="raptor-unicode-check-utf8-string"><primary>raptor_unicode_check_utf8_string</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_unicode_check_utf8_string (<parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                                  <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Check a string is valid Unicode UTF-8.</para>
+<refsect3 id="raptor-unicode-check-utf8-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>UTF-8 string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-unicode-check-utf8-string.returns" role="returns">
+<title>Returns</title>
+<para> Non 0 if the string is UTF-8</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-unicode-utf8-strlen" role="function">
+<title>raptor_unicode_utf8_strlen&#160;()</title>
+<indexterm zone="raptor-unicode-utf8-strlen"><primary>raptor_unicode_utf8_strlen</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_unicode_utf8_strlen (<parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                            <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Calculate the number of Unicode characters in the given UTF-8 encoded buffer</para>
+<refsect3 id="raptor-unicode-utf8-strlen.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer length</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-unicode-utf8-strlen.returns" role="returns">
+<title>Returns</title>
+<para> number of characters or &lt;0 if sequence is invalid</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-unicode-utf8-substr" role="function">
+<title>raptor_unicode_utf8_substr&#160;()</title>
+<indexterm zone="raptor-unicode-utf8-substr"><primary>raptor_unicode_utf8_substr</primary></indexterm>
+<programlisting language="C"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+raptor_unicode_utf8_substr (<parameter>unsigned <link linkend="char"><type>char</type></link> *dest</parameter>,
+                            <parameter><link linkend="size-t"><type>size_t</type></link> *dest_length_p</parameter>,
+                            <parameter>const unsigned <link linkend="char"><type>char</type></link> *src</parameter>,
+                            <parameter><link linkend="size-t"><type>size_t</type></link> src_length</parameter>,
+                            <parameter><link linkend="int"><type>int</type></link> startingLoc</parameter>,
+                            <parameter><link linkend="int"><type>int</type></link> length</parameter>);</programlisting>
+<para>Get a unicode (UTF-8) substring of an existing UTF-8 string</para>
+<para>If <parameter>dest</parameter>
+ is NULL, returns the number of bytes needed to write and
+does no work.</para>
+<refsect3 id="raptor-unicode-utf8-substr.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>dest</para></entry>
+<entry role="parameter_description"><para>destination string buffer to write to (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>dest_length_p</para></entry>
+<entry role="parameter_description"><para>location to store actual destination length (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>src</para></entry>
+<entry role="parameter_description"><para>source string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>src_length</para></entry>
+<entry role="parameter_description"><para>source length in bytes</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>startingLoc</para></entry>
+<entry role="parameter_description"><para>starting location offset 0 for first Unicode character</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>number of Unicode characters to copy at offset <parameter>startingLoc</parameter>
+(or &lt; 0)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-unicode-utf8-substr.returns" role="returns">
+<title>Returns</title>
+<para> number of bytes used in destination string or 0 on failure</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-unicode.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-unichar" role="typedef">
+<title>raptor_unichar</title>
+<indexterm zone="raptor-unichar"><primary>raptor_unichar</primary></indexterm>
+<programlisting language="C">typedef unsigned long raptor_unichar;
+</programlisting>
+<para>raptor Unicode codepoint</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

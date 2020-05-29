@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-serializer">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-serializer.top_of_page">serializer</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>serializer</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-serializer.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type">const <link linkend="raptor-syntax-description"><returnvalue>raptor_syntax_description</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-serializer-get-description">librdf_serializer_get_description</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-serializer-enumerate">librdf_serializer_enumerate</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-serializer-register-factory">librdf_serializer_register_factory</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-serializer"><returnvalue>librdf_serializer</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-serializer">librdf_new_serializer</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-serializer"><returnvalue>librdf_serializer</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-serializer-from-factory">librdf_new_serializer_from_factory</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-free-serializer">librdf_free_serializer</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-serializer-check-name">librdf_serializer_check_name</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-serializer-serialize-model">librdf_serializer_serialize_model</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-serializer-serialize-model-to-file-handle">librdf_serializer_serialize_model_to_file_handle</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-serializer-serialize-model-to-file">librdf_serializer_serialize_model_to_file</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-serializer-serialize-model-to-string">librdf_serializer_serialize_model_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-serializer-serialize-model-to-counted-string">librdf_serializer_serialize_model_to_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-serializer-serialize-model-to-iostream">librdf_serializer_serialize_model_to_iostream</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-serializer-serialize-stream-to-counted-string">librdf_serializer_serialize_stream_to_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-serializer-serialize-stream-to-file">librdf_serializer_serialize_stream_to_file</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-serializer-serialize-stream-to-file-handle">librdf_serializer_serialize_stream_to_file_handle</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-serializer-serialize-stream-to-iostream">librdf_serializer_serialize_stream_to_iostream</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-serializer-serialize-stream-to-string">librdf_serializer_serialize_stream_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-serializer-set-error">librdf_serializer_set_error</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-serializer-set-warning">librdf_serializer_set_warning</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-serializer-get-feature">librdf_serializer_get_feature</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-serializer-set-feature">librdf_serializer_set_feature</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-serializer-set-namespace">librdf_serializer_set_namespace</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-serializer.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-serializer">librdf_serializer</link></entry></row>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-serializer-factory">librdf_serializer_factory</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-serializer.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-serializer.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-serializer-get-description" role="function">
+<title>librdf_serializer_get_description&#160;()</title>
+<indexterm zone="librdf-serializer-get-description"><primary>librdf_serializer_get_description</primary></indexterm>
+<programlisting language="C">const <link linkend="raptor-syntax-description"><returnvalue>raptor_syntax_description</returnvalue></link>&#160;*
+librdf_serializer_get_description (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                   <parameter>unsigned <link linkend="int"><type>int</type></link> counter</parameter>);</programlisting>
+<para>Get serializer descriptive syntax information</para>
+<refsect3 id="librdf-serializer-get-description.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>counter</para></entry>
+<entry role="parameter_description"><para>index into the list of serializers</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-get-description.returns" role="returns">
+<title>Returns</title>
+<para> description or NULL if counter is out of range</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-enumerate" role="function" condition="deprecated:">
+<title>librdf_serializer_enumerate&#160;()</title>
+<indexterm zone="librdf-serializer-enumerate" role="deprecated"><primary>librdf_serializer_enumerate</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_serializer_enumerate (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                             <parameter>const unsigned <link linkend="int"><type>int</type></link> counter</parameter>,
+                             <parameter>const <link linkend="char"><type>char</type></link> **name</parameter>,
+                             <parameter>const <link linkend="char"><type>char</type></link> **label</parameter>);</programlisting>
+<warning><para><literal>librdf_serializer_enumerate</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Get information on serializers.</para>
+<para><parameter>Deprecated</parameter>
+: use <link linkend="librdf-serializer-get-description"><function>librdf_serializer_get_description()</function></link> to return more information in a static structure.</para>
+<refsect3 id="librdf-serializer-enumerate.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>counter</para></entry>
+<entry role="parameter_description"><para>index into the list of serializers</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>pointer to store the name of the serializer (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>label</para></entry>
+<entry role="parameter_description"><para>pointer to store syntax readable label (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-enumerate.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure of if counter is out of range</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-register-factory" role="function">
+<title>librdf_serializer_register_factory&#160;()</title>
+<indexterm zone="librdf-serializer-register-factory"><primary>librdf_serializer_register_factory</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_serializer_register_factory (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                    <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                                    <parameter>const <link linkend="char"><type>char</type></link> *label</parameter>,
+                                    <parameter>const <link linkend="char"><type>char</type></link> *mime_type</parameter>,
+                                    <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>,
+                                    <parameter><link linkend="void"><type>void</type></link> (*factory) (librdf_serializer_factory*)</parameter>);</programlisting>
+<para>Register a serializer factory .</para>
+<refsect3 id="librdf-serializer-register-factory.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the name of the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>label</para></entry>
+<entry role="parameter_description"><para>the label of the serializer (optional)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>MIME type of the syntax (optional)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>URI of the syntax (optional)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>factory</para></entry>
+<entry role="parameter_description"><para>function to be called to register the factor parameters</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-serializer" role="function">
+<title>librdf_new_serializer&#160;()</title>
+<indexterm zone="librdf-new-serializer"><primary>librdf_new_serializer</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-serializer"><returnvalue>librdf_serializer</returnvalue></link>&#160;*
+librdf_new_serializer (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                       <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                       <parameter>const <link linkend="char"><type>char</type></link> *mime_type</parameter>,
+                       <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *type_uri</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-serializer"><type>librdf_serializer</type></link> object.</para>
+<refsect3 id="librdf-new-serializer.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>the serializer factory name (or NULL or empty string if don't care)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mime_type</para></entry>
+<entry role="parameter_description"><para>the MIME type of the syntax (NULL if not used)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>type_uri</para></entry>
+<entry role="parameter_description"><para>URI of syntax (NULL if not used)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-serializer.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="librdf-serializer"><type>librdf_serializer</type></link> object or NULL</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-serializer-from-factory" role="function">
+<title>librdf_new_serializer_from_factory&#160;()</title>
+<indexterm zone="librdf-new-serializer-from-factory"><primary>librdf_new_serializer_from_factory</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-serializer"><returnvalue>librdf_serializer</returnvalue></link>&#160;*
+librdf_new_serializer_from_factory (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                    <parameter><link linkend="librdf-serializer-factory"><type>librdf_serializer_factory</type></link> *factory</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-serializer"><type>librdf_serializer</type></link> object.</para>
+<refsect3 id="librdf-new-serializer-from-factory.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>factory</para></entry>
+<entry role="parameter_description"><para>the serializer factory to use to create this serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-serializer-from-factory.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="librdf-serializer"><type>librdf_serializer</type></link> object or NULL</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-free-serializer" role="function">
+<title>librdf_free_serializer&#160;()</title>
+<indexterm zone="librdf-free-serializer"><primary>librdf_free_serializer</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_free_serializer (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>);</programlisting>
+<para>Destructor - destroys a <link linkend="librdf-serializer"><type>librdf_serializer</type></link> object.</para>
+<refsect3 id="librdf-free-serializer.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-check-name" role="function">
+<title>librdf_serializer_check_name&#160;()</title>
+<indexterm zone="librdf-serializer-check-name"><primary>librdf_serializer_check_name</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_serializer_check_name (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                              <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>);</programlisting>
+<para>Check if a serializer name is known</para>
+<refsect3 id="librdf-serializer-check-name.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>name of serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-check-name.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if name is a known serializer</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-serialize-model" role="function" condition="deprecated:">
+<title>librdf_serializer_serialize_model&#160;()</title>
+<indexterm zone="librdf-serializer-serialize-model" role="deprecated"><primary>librdf_serializer_serialize_model</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_serializer_serialize_model (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                                   <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *handle</parameter>,
+                                   <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>,
+                                   <parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<warning><para><literal>librdf_serializer_serialize_model</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para><parameter>Deprecated</parameter>
+: Use <link linkend="librdf-serializer-serialize-model-to-file-handle"><function>librdf_serializer_serialize_model_to_file_handle()</function></link></para>
+<para>Write a serialized <link linkend="librdf-model"><type>librdf_model</type></link> to a FILE*.</para>
+<refsect3 id="librdf-serializer-serialize-model.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handle</para></entry>
+<entry role="parameter_description"><para>file handle to serialize to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the <link linkend="librdf-model"><type>librdf_model</type></link> model to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-serialize-model.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-serialize-model-to-file-handle" role="function">
+<title>librdf_serializer_serialize_model_to_file_handle&#160;()</title>
+<indexterm zone="librdf-serializer-serialize-model-to-file-handle"><primary>librdf_serializer_serialize_model_to_file_handle</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_serializer_serialize_model_to_file_handle
+                               (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                                <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *handle</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>,
+                                <parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Write a serialized <link linkend="librdf-model"><type>librdf_model</type></link> to a FILE*.</para>
+<refsect3 id="librdf-serializer-serialize-model-to-file-handle.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handle</para></entry>
+<entry role="parameter_description"><para>file handle to serialize to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the <link linkend="librdf-model"><type>librdf_model</type></link> model to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-serialize-model-to-file-handle.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-serialize-model-to-file" role="function">
+<title>librdf_serializer_serialize_model_to_file&#160;()</title>
+<indexterm zone="librdf-serializer-serialize-model-to-file"><primary>librdf_serializer_serialize_model_to_file</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_serializer_serialize_model_to_file
+                               (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>,
+                                <parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Write a serialized <link linkend="librdf-model"><type>librdf_model</type></link> to a file.</para>
+<refsect3 id="librdf-serializer-serialize-model-to-file.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>filename to serialize to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the <link linkend="librdf-model"><type>librdf_model</type></link> model to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-serialize-model-to-file.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-serialize-model-to-string" role="function">
+<title>librdf_serializer_serialize_model_to_string&#160;()</title>
+<indexterm zone="librdf-serializer-serialize-model-to-string"><primary>librdf_serializer_serialize_model_to_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_serializer_serialize_model_to_string
+                               (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>,
+                                <parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>);</programlisting>
+<para>Write a serialized <link linkend="librdf-model"><type>librdf_model</type></link> to a string.
+The returned string must be freed by the caller using <link linkend="librdf-free-memory"><function>librdf_free_memory()</function></link>.</para>
+<refsect3 id="librdf-serializer-serialize-model-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the <link linkend="librdf-model"><type>librdf_model</type></link> model to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-serialize-model-to-string.returns" role="returns">
+<title>Returns</title>
+<para> NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-serialize-model-to-counted-string" role="function">
+<title>librdf_serializer_serialize_model_to_counted_string&#160;()</title>
+<indexterm zone="librdf-serializer-serialize-model-to-counted-string"><primary>librdf_serializer_serialize_model_to_counted_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_serializer_serialize_model_to_counted_string
+                               (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>,
+                                <parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> *length_p</parameter>);</programlisting>
+<para>Write a serialized <link linkend="librdf-model"><type>librdf_model</type></link> to a counted string.
+The returned string must be freed by the caller using <link linkend="librdf-free-memory"><function>librdf_free_memory()</function></link>.</para>
+<refsect3 id="librdf-serializer-serialize-model-to-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the <link linkend="librdf-model"><type>librdf_model</type></link> model to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length_p</para></entry>
+<entry role="parameter_description"><para>pointer to store length or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-serialize-model-to-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-serialize-model-to-iostream" role="function">
+<title>librdf_serializer_serialize_model_to_iostream&#160;()</title>
+<indexterm zone="librdf-serializer-serialize-model-to-iostream"><primary>librdf_serializer_serialize_model_to_iostream</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_serializer_serialize_model_to_iostream
+                               (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>,
+                                <parameter><link linkend="librdf-model"><type>librdf_model</type></link> *model</parameter>,
+                                <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a serialized <link linkend="librdf-model"><type>librdf_model</type></link> to a <link linkend="raptor-iostream"><type>raptor_iostream</type></link>.
+This function takes ownership of the iostream and frees it.</para>
+<refsect3 id="librdf-serializer-serialize-model-to-iostream.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>model</para></entry>
+<entry role="parameter_description"><para>the <link linkend="librdf-model"><type>librdf_model</type></link> model to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>the <link linkend="raptor-iostream"><type>raptor_iostream</type></link> to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-serialize-model-to-iostream.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-serialize-stream-to-counted-string" role="function">
+<title>librdf_serializer_serialize_stream_to_counted_string&#160;()</title>
+<indexterm zone="librdf-serializer-serialize-stream-to-counted-string"><primary>librdf_serializer_serialize_stream_to_counted_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_serializer_serialize_stream_to_counted_string
+                               (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>,
+                                <parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> *length_p</parameter>);</programlisting>
+<para>Write a <link linkend="librdf-stream"><type>librdf_stream</type></link> to a counted string.
+Caller should free the string with <link linkend="librdf-free-memory"><function>librdf_free_memory()</function></link>.</para>
+<refsect3 id="librdf-serializer-serialize-stream-to-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>the <link linkend="librdf-stream"><type>librdf_stream</type></link> stream to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length_p</para></entry>
+<entry role="parameter_description"><para>pointer to store length or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-serialize-stream-to-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> stream as string or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-serialize-stream-to-file" role="function">
+<title>librdf_serializer_serialize_stream_to_file&#160;()</title>
+<indexterm zone="librdf-serializer-serialize-stream-to-file"><primary>librdf_serializer_serialize_stream_to_file</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_serializer_serialize_stream_to_file
+                               (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>,
+                                <parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>);</programlisting>
+<para>Write a <link linkend="librdf-stream"><type>librdf_stream</type></link> to a file.</para>
+<refsect3 id="librdf-serializer-serialize-stream-to-file.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>filename to serialize to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>the <link linkend="librdf-stream"><type>librdf_stream</type></link> stream to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-serialize-stream-to-file.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-serialize-stream-to-file-handle" role="function">
+<title>librdf_serializer_serialize_stream_to_file_handle&#160;()</title>
+<indexterm zone="librdf-serializer-serialize-stream-to-file-handle"><primary>librdf_serializer_serialize_stream_to_file_handle</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_serializer_serialize_stream_to_file_handle
+                               (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                                <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *handle</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>,
+                                <parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>);</programlisting>
+<para>Write a <link linkend="librdf-stream"><type>librdf_stream</type></link> to a FILE*.</para>
+<refsect3 id="librdf-serializer-serialize-stream-to-file-handle.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handle</para></entry>
+<entry role="parameter_description"><para>file handle to serialize to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>the <link linkend="librdf-stream"><type>librdf_stream</type></link> model to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-serialize-stream-to-file-handle.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-serialize-stream-to-iostream" role="function">
+<title>librdf_serializer_serialize_stream_to_iostream&#160;()</title>
+<indexterm zone="librdf-serializer-serialize-stream-to-iostream"><primary>librdf_serializer_serialize_stream_to_iostream</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_serializer_serialize_stream_to_iostream
+                               (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>,
+                                <parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>,
+                                <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a <link linkend="librdf-stream"><type>librdf_stream</type></link> to a <link linkend="raptor-iostream"><type>raptor_iostream</type></link>.
+This function takes ownership of the iostream and frees it.</para>
+<refsect3 id="librdf-serializer-serialize-stream-to-iostream.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>the <link linkend="librdf-stream"><type>librdf_stream</type></link> stream to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>the <link linkend="raptor-iostream"><type>raptor_iostream</type></link> to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-serialize-stream-to-iostream.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-serialize-stream-to-string" role="function">
+<title>librdf_serializer_serialize_stream_to_string&#160;()</title>
+<indexterm zone="librdf-serializer-serialize-stream-to-string"><primary>librdf_serializer_serialize_stream_to_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_serializer_serialize_stream_to_string
+                               (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>,
+                                <parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>);</programlisting>
+<para>Write a <link linkend="librdf-stream"><type>librdf_stream</type></link> to a string.</para>
+<refsect3 id="librdf-serializer-serialize-stream-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>the base URI to use (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>the <link linkend="librdf-stream"><type>librdf_stream</type></link> stream to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-serialize-stream-to-string.returns" role="returns">
+<title>Returns</title>
+<para> NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-set-error" role="function">
+<title>librdf_serializer_set_error&#160;()</title>
+<indexterm zone="librdf-serializer-set-error"><primary>librdf_serializer_set_error</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_serializer_set_error (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                             <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                             <parameter><link linkend="void"><type>void</type></link> (*error_fn) (void *user_data, const char *msg, ...)</parameter>);</programlisting>
+<para><parameter>Deprecated</parameter>
+: Does nothing</para>
+<para>Set the serializer error handling function.</para>
+<refsect3 id="librdf-serializer-set-error.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data to pass to function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>error_fn</para></entry>
+<entry role="parameter_description"><para>pointer to the function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-set-warning" role="function">
+<title>librdf_serializer_set_warning&#160;()</title>
+<indexterm zone="librdf-serializer-set-warning"><primary>librdf_serializer_set_warning</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_serializer_set_warning (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                               <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                               <parameter><link linkend="void"><type>void</type></link> (*warning_fn) (void *user_data, const char *msg, ...)</parameter>);</programlisting>
+<para><parameter>Deprecated</parameter>
+: Does nothing</para>
+<para>Set the serializer warning handling function.</para>
+<refsect3 id="librdf-serializer-set-warning.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>the serializer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data to pass to function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>warning_fn</para></entry>
+<entry role="parameter_description"><para>pointer to the function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-get-feature" role="function">
+<title>librdf_serializer_get_feature&#160;()</title>
+<indexterm zone="librdf-serializer-get-feature"><primary>librdf_serializer_get_feature</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_serializer_get_feature (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                               <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *feature</parameter>);</programlisting>
+<para>Get the value of a serializer feature.</para>
+<refsect3 id="librdf-serializer-get-feature.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>serializer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>feature</para></entry>
+<entry role="parameter_description"><para>URI of feature</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-get-feature.returns" role="returns">
+<title>Returns</title>
+<para> the value of the feature or NULL if no such feature
+exists or the value is empty.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-set-feature" role="function">
+<title>librdf_serializer_set_feature&#160;()</title>
+<indexterm zone="librdf-serializer-set-feature"><primary>librdf_serializer_set_feature</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_serializer_set_feature (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                               <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *feature</parameter>,
+                               <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *value</parameter>);</programlisting>
+<para>Set the value of a serializer feature.</para>
+<refsect3 id="librdf-serializer-set-feature.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>serializer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>feature</para></entry>
+<entry role="parameter_description"><para>URI of feature</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>value</para></entry>
+<entry role="parameter_description"><para>value to set</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-set-feature.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure (negative if no such feature)</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-serializer-set-namespace" role="function">
+<title>librdf_serializer_set_namespace&#160;()</title>
+<indexterm zone="librdf-serializer-set-namespace"><primary>librdf_serializer_set_namespace</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_serializer_set_namespace (<parameter><link linkend="librdf-serializer"><type>librdf_serializer</type></link> *serializer</parameter>,
+                                 <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *prefix</parameter>);</programlisting>
+<para>Set a namespace URI/prefix mapping.</para>
+<refsect3 id="librdf-serializer-set-namespace.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>serializer</para></entry>
+<entry role="parameter_description"><para>serializer object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>URI of namespace or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>prefix</para></entry>
+<entry role="parameter_description"><para>prefix to use or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-serializer-set-namespace.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-serializer.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="librdf-serializer" role="typedef">
+<title>librdf_serializer</title>
+<indexterm zone="librdf-serializer"><primary>librdf_serializer</primary></indexterm>
+<programlisting language="C">typedef struct librdf_serializer_s librdf_serializer;
+</programlisting>
+<para>Redland serializer class.</para>
+</refsect2>
+<refsect2 id="librdf-serializer-factory" role="typedef">
+<title>librdf_serializer_factory</title>
+<indexterm zone="librdf-serializer-factory"><primary>librdf_serializer_factory</primary></indexterm>
+<programlisting language="C">typedef struct librdf_serializer_factory_s librdf_serializer_factory;
+</programlisting>
+<para>Redland serializer factory class.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

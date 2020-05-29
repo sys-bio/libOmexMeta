@@ -1,0 +1,1508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>parser: Redland RDF Library Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="Redland RDF Library Manual">
+<link rel="up" href="reference-manual.html" title="Part II. Reference Manual">
+<link rel="prev" href="redland-node.html" title="node">
+<link rel="next" href="redland-query.html" title="query">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#redland-parser.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference-manual.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="redland-node.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="redland-query.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="redland-parser"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="redland-parser.top_of_page"></a>parser</span></h2>
+<p>parser</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="redland-parser.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-check-name" title="librdf_parser_check_name ()">librdf_parser_check_name</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <span class="returnvalue">raptor_syntax_description</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-get-description" title="librdf_parser_get_description ()">librdf_parser_get_description</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-enumerate" title="librdf_parser_enumerate ()">librdf_parser_enumerate</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-guess-name" title="librdf_parser_guess_name ()">librdf_parser_guess_name</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-guess-name2" title="librdf_parser_guess_name2 ()">librdf_parser_guess_name2</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-register-factory" title="librdf_parser_register_factory ()">librdf_parser_register_factory</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="returnvalue">librdf_parser</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-new-parser" title="librdf_new_parser ()">librdf_new_parser</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="returnvalue">librdf_parser</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-new-parser-from-factory" title="librdf_new_parser_from_factory ()">librdf_new_parser_from_factory</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-free-parser" title="librdf_free_parser ()">librdf_free_parser</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-parse-as-stream" title="librdf_parser_parse_as_stream ()">librdf_parser_parse_as_stream</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-parse-into-model" title="librdf_parser_parse_into_model ()">librdf_parser_parse_into_model</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-parse-file-handle-as-stream" title="librdf_parser_parse_file_handle_as_stream ()">librdf_parser_parse_file_handle_as_stream</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-parse-file-handle-into-model" title="librdf_parser_parse_file_handle_into_model ()">librdf_parser_parse_file_handle_into_model</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-parse-string-as-stream" title="librdf_parser_parse_string_as_stream ()">librdf_parser_parse_string_as_stream</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-parse-string-into-model" title="librdf_parser_parse_string_into_model ()">librdf_parser_parse_string_into_model</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-set-error" title="librdf_parser_set_error ()">librdf_parser_set_error</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-set-warning" title="librdf_parser_set_warning ()">librdf_parser_set_warning</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-parse-counted-string-as-stream" title="librdf_parser_parse_counted_string_as_stream ()">librdf_parser_parse_counted_string_as_stream</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-parse-counted-string-into-model" title="librdf_parser_parse_counted_string_into_model ()">librdf_parser_parse_counted_string_into_model</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-parse-iostream-as-stream" title="librdf_parser_parse_iostream_as_stream ()">librdf_parser_parse_iostream_as_stream</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-parse-iostream-into-model" title="librdf_parser_parse_iostream_into_model ()">librdf_parser_parse_iostream_into_model</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-node.html#librdf-node" title="librdf_node"><span class="returnvalue">librdf_node</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-get-feature" title="librdf_parser_get_feature ()">librdf_parser_get_feature</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-set-feature" title="librdf_parser_set_feature ()">librdf_parser_set_feature</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-get-accept-header" title="librdf_parser_get_accept_header ()">librdf_parser_get_accept_header</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-get-namespaces-seen-count" title="librdf_parser_get_namespaces_seen_count ()">librdf_parser_get_namespaces_seen_count</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-get-namespaces-seen-prefix" title="librdf_parser_get_namespaces_seen_prefix ()">librdf_parser_get_namespaces_seen_prefix</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-get-namespaces-seen-uri" title="librdf_parser_get_namespaces_seen_uri ()">librdf_parser_get_namespaces_seen_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-uri.html#librdf-uri-filter-func" title="librdf_uri_filter_func ()"><span class="returnvalue">librdf_uri_filter_func</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-get-uri-filter" title="librdf_parser_get_uri_filter ()">librdf_parser_get_uri_filter</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-parser.html#librdf-parser-set-uri-filter" title="librdf_parser_set_uri_filter ()">librdf_parser_set_uri_filter</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-parser.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="typedef_keyword">typedef</td>
+<td class="function_name"><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser">librdf_parser</a></td>
+</tr>
+<tr>
+<td class="typedef_keyword">typedef</td>
+<td class="function_name"><a class="link" href="redland-parser.html#librdf-parser-factory" title="librdf_parser_factory">librdf_parser_factory</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="redland-parser.html#LIBRDF-PARSER-FEATURE-ERROR-COUNT:CAPS" title="LIBRDF_PARSER_FEATURE_ERROR_COUNT">LIBRDF_PARSER_FEATURE_ERROR_COUNT</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="redland-parser.html#LIBRDF-PARSER-FEATURE-WARNING-COUNT:CAPS" title="LIBRDF_PARSER_FEATURE_WARNING_COUNT">LIBRDF_PARSER_FEATURE_WARNING_COUNT</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-parser.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="redland-parser.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="librdf-parser-check-name"></a><h3>librdf_parser_check_name ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_parser_check_name (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                          <em class="parameter"><code>const <span class="type">char</span> *name</code></em>);</pre>
+<p>Check if a parser name is known</p>
+<div class="refsect3">
+<a name="librdf-parser-check-name.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>name of parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-check-name.returns"></a><h4>Returns</h4>
+<p> non 0 if name is a known parser</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-get-description"></a><h3>librdf_parser_get_description ()</h3>
+<pre class="programlisting">const <span class="returnvalue">raptor_syntax_description</span> *
+librdf_parser_get_description (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                               <em class="parameter"><code>unsigned <span class="type">int</span> counter</code></em>);</pre>
+<p>Get parser descriptive syntax information</p>
+<div class="refsect3">
+<a name="librdf-parser-get-description.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>counter</p></td>
+<td class="parameter_description"><p>index into the list of parsers</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-get-description.returns"></a><h4>Returns</h4>
+<p> description or NULL if counter is out of range</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-enumerate"></a><h3>librdf_parser_enumerate ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_parser_enumerate (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                         <em class="parameter"><code>const unsigned <span class="type">int</span> counter</code></em>,
+                         <em class="parameter"><code>const <span class="type">char</span> **name</code></em>,
+                         <em class="parameter"><code>const <span class="type">char</span> **label</code></em>);</pre>
+<div class="warning"><p><code class="literal">librdf_parser_enumerate</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Get information on parsers.</p>
+<p><em class="parameter"><code>Deprecated</code></em>
+: use <a class="link" href="redland-parser.html#librdf-parser-get-description" title="librdf_parser_get_description ()"><code class="function">librdf_parser_get_description()</code></a> to return more information in a static structure.</p>
+<div class="refsect3">
+<a name="librdf-parser-enumerate.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>counter</p></td>
+<td class="parameter_description"><p>index into the list of parsers</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>pointer to store the name of the parser (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>label</p></td>
+<td class="parameter_description"><p>pointer to store syntax readable label (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-enumerate.returns"></a><h4>Returns</h4>
+<p> non 0 on failure of if counter is out of range</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-guess-name"></a><h3>librdf_parser_guess_name ()</h3>
+<pre class="programlisting">const <span class="returnvalue">char</span> *
+librdf_parser_guess_name (<em class="parameter"><code>const <span class="type">char</span> *mime_type</code></em>,
+                          <em class="parameter"><code>const unsigned <span class="type">char</span> *buffer</code></em>,
+                          <em class="parameter"><code>const unsigned <span class="type">char</span> *identifier</code></em>);</pre>
+<div class="warning"><p><code class="literal">librdf_parser_guess_name</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Get a parser name for content with type or identifier</p>
+<div class="refsect3">
+<a name="librdf-parser-guess-name.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>mime_type</p></td>
+<td class="parameter_description"><p>MIME type of syntax or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>buffer</p></td>
+<td class="parameter_description"><p>content buffer or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>identifier</p></td>
+<td class="parameter_description"><p>content identifier or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-guess-name.returns"></a><h4>Returns</h4>
+<p> a parser name or NULL if nothing was guessable</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-guess-name2"></a><h3>librdf_parser_guess_name2 ()</h3>
+<pre class="programlisting">const <span class="returnvalue">char</span> *
+librdf_parser_guess_name2 (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                           <em class="parameter"><code>const <span class="type">char</span> *mime_type</code></em>,
+                           <em class="parameter"><code>const unsigned <span class="type">char</span> *buffer</code></em>,
+                           <em class="parameter"><code>const unsigned <span class="type">char</span> *identifier</code></em>);</pre>
+<p>Get a parser name for content with type or identifier</p>
+<div class="refsect3">
+<a name="librdf-parser-guess-name2.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>librdf_world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>mime_type</p></td>
+<td class="parameter_description"><p>MIME type of syntax or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>buffer</p></td>
+<td class="parameter_description"><p>content buffer or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>identifier</p></td>
+<td class="parameter_description"><p>content identifier or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-guess-name2.returns"></a><h4>Returns</h4>
+<p> a parser name or NULL if nothing was guessable</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-register-factory"></a><h3>librdf_parser_register_factory ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_parser_register_factory (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                                <em class="parameter"><code>const <span class="type">char</span> *name</code></em>,
+                                <em class="parameter"><code>const <span class="type">char</span> *label</code></em>,
+                                <em class="parameter"><code>const <span class="type">char</span> *mime_type</code></em>,
+                                <em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>,
+                                <em class="parameter"><code><span class="type">void</span> (*factory) (librdf_parser_factory*)</code></em>);</pre>
+<p>Register a parser factory .</p>
+<div class="refsect3">
+<a name="librdf-parser-register-factory.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>the name of the parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>label</p></td>
+<td class="parameter_description"><p>the label of the parser (optional)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>mime_type</p></td>
+<td class="parameter_description"><p>MIME type of the syntax (optional)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>URI of the syntax (optional)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>factory</p></td>
+<td class="parameter_description"><p>function to be called to register the factor parameters</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-parser"></a><h3>librdf_new_parser ()</h3>
+<pre class="programlisting"><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="returnvalue">librdf_parser</span></a> *
+librdf_new_parser (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                   <em class="parameter"><code>const <span class="type">char</span> *name</code></em>,
+                   <em class="parameter"><code>const <span class="type">char</span> *mime_type</code></em>,
+                   <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *type_uri</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> object.</p>
+<p>If all fields are NULL, this means any parser supporting
+MIME Type "application/rdf+xml"</p>
+<div class="refsect3">
+<a name="librdf-new-parser.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>the parser factory name (or NULL or empty string if don't care)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>mime_type</p></td>
+<td class="parameter_description"><p>the MIME type of the syntax (NULL if not used)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>type_uri</p></td>
+<td class="parameter_description"><p>URI of syntax (NULL if not used)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-parser.returns"></a><h4>Returns</h4>
+<p> new <a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> object or NULL</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-new-parser-from-factory"></a><h3>librdf_new_parser_from_factory ()</h3>
+<pre class="programlisting"><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="returnvalue">librdf_parser</span></a> *
+librdf_new_parser_from_factory (<em class="parameter"><code><a class="link" href="redland-world.html#librdf-world" title="librdf_world"><span class="type">librdf_world</span></a> *world</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser-factory" title="librdf_parser_factory"><span class="type">librdf_parser_factory</span></a> *factory</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> object.</p>
+<div class="refsect3">
+<a name="librdf-new-parser-from-factory.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>redland world object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>factory</p></td>
+<td class="parameter_description"><p>the parser factory to use to create this parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-new-parser-from-factory.returns"></a><h4>Returns</h4>
+<p> new <a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> object or NULL</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-free-parser"></a><h3>librdf_free_parser ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_free_parser (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>);</pre>
+<p>Destructor - destroys a <a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> object.</p>
+<div class="refsect3">
+<a name="librdf-free-parser.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p>the parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-parse-as-stream"></a><h3>librdf_parser_parse_as_stream ()</h3>
+<pre class="programlisting"><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+librdf_parser_parse_as_stream (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                               <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri</code></em>,
+                               <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>);</pre>
+<p>Parse a URI to a librdf_stream of statements.</p>
+<div class="refsect3">
+<a name="librdf-parser-parse-as-stream.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p>the parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>the URI to read</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-parse-as-stream.returns"></a><h4>Returns</h4>
+<p> <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> of statements or NULL</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-parse-into-model"></a><h3>librdf_parser_parse_into_model ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_parser_parse_into_model (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> *model</code></em>);</pre>
+<p>Parse a URI of content into an librdf_model.</p>
+<div class="refsect3">
+<a name="librdf-parser-parse-into-model.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p>the parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>the URI to read the content</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>model</p></td>
+<td class="parameter_description"><p>the model to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-parse-into-model.returns"></a><h4>Returns</h4>
+<p> non 0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-parse-file-handle-as-stream"></a><h3>librdf_parser_parse_file_handle_as_stream ()</h3>
+<pre class="programlisting"><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+librdf_parser_parse_file_handle_as_stream
+                               (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                                <em class="parameter"><code><span class="type">FILE</span> *fh</code></em>,
+                                <em class="parameter"><code><span class="type">int</span> close_fh</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>);</pre>
+<p>Parse a FILE* handle of content to a <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> of statements.</p>
+<div class="refsect3">
+<a name="librdf-parser-parse-file-handle-as-stream.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p>the parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>fh</p></td>
+<td class="parameter_description"><p>FILE* to read content source</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>close_fh</p></td>
+<td class="parameter_description"><p>non-0 to <code class="function">fclose()</code> the file handle on finishing</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-parse-file-handle-as-stream.returns"></a><h4>Returns</h4>
+<p> <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> of statements or NULL</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-parse-file-handle-into-model"></a><h3>librdf_parser_parse_file_handle_into_model ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_parser_parse_file_handle_into_model
+                               (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                                <em class="parameter"><code><span class="type">FILE</span> *fh</code></em>,
+                                <em class="parameter"><code><span class="type">int</span> close_fh</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> *model</code></em>);</pre>
+<p>Parse a FILE* handle of content into an <a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a>.</p>
+<div class="refsect3">
+<a name="librdf-parser-parse-file-handle-into-model.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p>the parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>fh</p></td>
+<td class="parameter_description"><p>FILE* to read content source</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>close_fh</p></td>
+<td class="parameter_description"><p>non-0 to <code class="function">fclose()</code> the file handle on finishing</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>model</p></td>
+<td class="parameter_description"><p>the model to write to</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-parse-file-handle-into-model.returns"></a><h4>Returns</h4>
+<p> non 0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-parse-string-as-stream"></a><h3>librdf_parser_parse_string_as_stream ()</h3>
+<pre class="programlisting"><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+librdf_parser_parse_string_as_stream (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                                      <em class="parameter"><code>const unsigned <span class="type">char</span> *string</code></em>,
+                                      <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>);</pre>
+<p>Parse a string of content to a librdf_stream of statements.</p>
+<div class="refsect3">
+<a name="librdf-parser-parse-string-as-stream.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p>the parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>string</p></td>
+<td class="parameter_description"><p>the string to parse</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-parse-string-as-stream.returns"></a><h4>Returns</h4>
+<p> <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> of statements or NULL</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-parse-string-into-model"></a><h3>librdf_parser_parse_string_into_model ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_parser_parse_string_into_model (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                                       <em class="parameter"><code>const unsigned <span class="type">char</span> *string</code></em>,
+                                       <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                       <em class="parameter"><code><a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> *model</code></em>);</pre>
+<p>Parse a string of content into an librdf_model.</p>
+<div class="refsect3">
+<a name="librdf-parser-parse-string-into-model.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p>the parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>string</p></td>
+<td class="parameter_description"><p>the content to parse</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>model</p></td>
+<td class="parameter_description"><p>the model to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-parse-string-into-model.returns"></a><h4>Returns</h4>
+<p> non 0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-set-error"></a><h3>librdf_parser_set_error ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_parser_set_error (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                         <em class="parameter"><code><span class="type">void</span> *user_data</code></em>,
+                         <em class="parameter"><code><span class="type">void</span> (*error_fn) (void *user_data, const char *msg, ...)</code></em>);</pre>
+<div class="warning"><p><code class="literal">librdf_parser_set_error</code> is deprecated and should not be used in newly-written code.</p></div>
+<p><em class="parameter"><code>Deprecated</code></em>
+: Does nothing</p>
+<p>Set the parser error handling function.</p>
+<div class="refsect3">
+<a name="librdf-parser-set-error.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p>the parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data to pass to function</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error_fn</p></td>
+<td class="parameter_description"><p>pointer to the function</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-set-warning"></a><h3>librdf_parser_set_warning ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_parser_set_warning (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                           <em class="parameter"><code><span class="type">void</span> *user_data</code></em>,
+                           <em class="parameter"><code><span class="type">void</span> (*warning_fn) (void *user_data, const char *msg, ...)</code></em>);</pre>
+<div class="warning"><p><code class="literal">librdf_parser_set_warning</code> is deprecated and should not be used in newly-written code.</p></div>
+<p><em class="parameter"><code>Deprecated</code></em>
+: Does nothing.</p>
+<p>Set the parser warning handling function.</p>
+<div class="refsect3">
+<a name="librdf-parser-set-warning.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p>the parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data to pass to function</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>warning_fn</p></td>
+<td class="parameter_description"><p>pointer to the function</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-parse-counted-string-as-stream"></a><h3>librdf_parser_parse_counted_string_as_stream ()</h3>
+<pre class="programlisting"><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+librdf_parser_parse_counted_string_as_stream
+                               (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                                <em class="parameter"><code>const unsigned <span class="type">char</span> *string</code></em>,
+                                <em class="parameter"><code><span class="type">size_t</span> length</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>);</pre>
+<p>Parse a counted string of content to a librdf_stream of statements.</p>
+<div class="refsect3">
+<a name="librdf-parser-parse-counted-string-as-stream.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p>the parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>string</p></td>
+<td class="parameter_description"><p>the string to parse</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>length of the string content (must be &gt;0)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-parse-counted-string-as-stream.returns"></a><h4>Returns</h4>
+<p> <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> of statements or NULL</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-parse-counted-string-into-model"></a><h3>librdf_parser_parse_counted_string_into_model ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_parser_parse_counted_string_into_model
+                               (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                                <em class="parameter"><code>const unsigned <span class="type">char</span> *string</code></em>,
+                                <em class="parameter"><code><span class="type">size_t</span> length</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> *model</code></em>);</pre>
+<p>Parse a counted string of content into an librdf_model.</p>
+<div class="refsect3">
+<a name="librdf-parser-parse-counted-string-into-model.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p>the parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>string</p></td>
+<td class="parameter_description"><p>the content to parse</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>length of content (must be &gt;0)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>model</p></td>
+<td class="parameter_description"><p>the model to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-parse-counted-string-into-model.returns"></a><h4>Returns</h4>
+<p> non 0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-parse-iostream-as-stream"></a><h3>librdf_parser_parse_iostream_as_stream ()</h3>
+<pre class="programlisting"><a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="returnvalue">librdf_stream</span></a> *
+librdf_parser_parse_iostream_as_stream
+                               (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                                <em class="parameter"><code><span class="type">raptor_iostream</span> *iostream</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>);</pre>
+<p>Parse an iostream of content to a librdf_stream of statements.</p>
+<div class="refsect3">
+<a name="librdf-parser-parse-iostream-as-stream.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p>the parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>iostream</p></td>
+<td class="parameter_description"><p>the iostream to parse</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-parse-iostream-as-stream.returns"></a><h4>Returns</h4>
+<p> <a class="link" href="redland-stream.html#librdf-stream" title="librdf_stream"><span class="type">librdf_stream</span></a> of statements or NULL</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-parse-iostream-into-model"></a><h3>librdf_parser_parse_iostream_into_model ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_parser_parse_iostream_into_model
+                               (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                                <em class="parameter"><code><span class="type">raptor_iostream</span> *iostream</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *base_uri</code></em>,
+                                <em class="parameter"><code><a class="link" href="redland-model.html#librdf-model" title="librdf_model"><span class="type">librdf_model</span></a> *model</code></em>);</pre>
+<p>Parse a iostream of content into an librdf_model.</p>
+<div class="refsect3">
+<a name="librdf-parser-parse-iostream-into-model.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p>the parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>iostream</p></td>
+<td class="parameter_description"><p>the content to parse</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>the base URI to use or NULL</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>model</p></td>
+<td class="parameter_description"><p>the model to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-parse-iostream-into-model.returns"></a><h4>Returns</h4>
+<p> non 0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-get-feature"></a><h3>librdf_parser_get_feature ()</h3>
+<pre class="programlisting"><a class="link" href="redland-node.html#librdf-node" title="librdf_node"><span class="returnvalue">librdf_node</span></a> *
+librdf_parser_get_feature (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                           <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *feature</code></em>);</pre>
+<p>Get the value of a parser feature.</p>
+<div class="refsect3">
+<a name="librdf-parser-get-feature.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>feature</p></td>
+<td class="parameter_description"><p><span class="type">librdf_Uuri</span> feature property</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-get-feature.returns"></a><h4>Returns</h4>
+<p> new <a class="link" href="redland-node.html#librdf-node" title="librdf_node"><span class="type">librdf_node</span></a> feature value or NULL if no such feature
+exists or the value is empty.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-set-feature"></a><h3>librdf_parser_set_feature ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_parser_set_feature (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                           <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> *feature</code></em>,
+                           <em class="parameter"><code><a class="link" href="redland-node.html#librdf-node" title="librdf_node"><span class="type">librdf_node</span></a> *value</code></em>);</pre>
+<p>Set the value of a parser feature.</p>
+<div class="refsect3">
+<a name="librdf-parser-set-feature.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>feature</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="type">librdf_uri</span></a> feature property</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>value</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-node.html#librdf-node" title="librdf_node"><span class="type">librdf_node</span></a> feature property value</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-set-feature.returns"></a><h4>Returns</h4>
+<p> non 0 on failure (negative if no such feature)</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-get-accept-header"></a><h3>librdf_parser_get_accept_header ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *
+librdf_parser_get_accept_header (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>);</pre>
+<p>Get an HTTP Accept value for the parser.</p>
+<p>The returned string must be freed by the caller using
+<a class="link" href="redland-general.html#librdf-free-memory" title="librdf_free_memory ()"><code class="function">librdf_free_memory()</code></a>.</p>
+<div class="refsect3">
+<a name="librdf-parser-get-accept-header.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p>parser</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-get-accept-header.returns"></a><h4>Returns</h4>
+<p> a new Accept: header string or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-get-namespaces-seen-count"></a><h3>librdf_parser_get_namespaces_seen_count ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_parser_get_namespaces_seen_count
+                               (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>);</pre>
+<p>Get the number of namespaces seen during parsing</p>
+<div class="refsect3">
+<a name="librdf-parser-get-namespaces-seen-count.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-get-namespaces-seen-count.returns"></a><h4>Returns</h4>
+<p> namespace count</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-get-namespaces-seen-prefix"></a><h3>librdf_parser_get_namespaces_seen_prefix ()</h3>
+<pre class="programlisting">const <span class="returnvalue">char</span> *
+librdf_parser_get_namespaces_seen_prefix
+                               (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                                <em class="parameter"><code><span class="type">int</span> offset</code></em>);</pre>
+<p>Get the prefix of namespaces seen during parsing</p>
+<div class="refsect3">
+<a name="librdf-parser-get-namespaces-seen-prefix.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>offset</p></td>
+<td class="parameter_description"><p>index into list of namespaces</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-get-namespaces-seen-prefix.returns"></a><h4>Returns</h4>
+<p> prefix or NULL if no such namespace prefix</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-get-namespaces-seen-uri"></a><h3>librdf_parser_get_namespaces_seen_uri ()</h3>
+<pre class="programlisting"><a class="link" href="redland-uri.html#librdf-uri" title="librdf_uri"><span class="returnvalue">librdf_uri</span></a> *
+librdf_parser_get_namespaces_seen_uri (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                                       <em class="parameter"><code><span class="type">int</span> offset</code></em>);</pre>
+<p>Get the uri of namespaces seen during parsing</p>
+<div class="refsect3">
+<a name="librdf-parser-get-namespaces-seen-uri.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>offset</p></td>
+<td class="parameter_description"><p>index into list of namespaces</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-get-namespaces-seen-uri.returns"></a><h4>Returns</h4>
+<p> uri or NULL if no such namespace uri</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-get-uri-filter"></a><h3>librdf_parser_get_uri_filter ()</h3>
+<pre class="programlisting"><a class="link" href="redland-uri.html#librdf-uri-filter-func" title="librdf_uri_filter_func ()"><span class="returnvalue">librdf_uri_filter_func</span></a>
+librdf_parser_get_uri_filter (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                              <em class="parameter"><code><span class="type">void</span> **user_data_p</code></em>);</pre>
+<p>Get the current URI filter function for retrieval during parsing.</p>
+<div class="refsect3">
+<a name="librdf-parser-get-uri-filter.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data_p</p></td>
+<td class="parameter_description"><p>Pointer to user data to return</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-parser-get-uri-filter.returns"></a><h4>Returns</h4>
+<p> current URI filter function</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-set-uri-filter"></a><h3>librdf_parser_set_uri_filter ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+librdf_parser_set_uri_filter (<em class="parameter"><code><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> *parser</code></em>,
+                              <em class="parameter"><code><a class="link" href="redland-uri.html#librdf-uri-filter-func" title="librdf_uri_filter_func ()"><span class="type">librdf_uri_filter_func</span></a> filter</code></em>,
+                              <em class="parameter"><code><span class="type">void</span> *user_data</code></em>);</pre>
+<p>Set URI filter function for retrieval during parsing.</p>
+<div class="refsect3">
+<a name="librdf-parser-set-uri-filter.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>parser</p></td>
+<td class="parameter_description"><p><a class="link" href="redland-parser.html#librdf-parser" title="librdf_parser"><span class="type">librdf_parser</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>filter</p></td>
+<td class="parameter_description"><p>URI filter function</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>User data to pass to filter function</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="redland-parser.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="librdf-parser"></a><h3>librdf_parser</h3>
+<pre class="programlisting">typedef struct librdf_parser_s librdf_parser;
+</pre>
+<p>Redland parser class.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-parser-factory"></a><h3>librdf_parser_factory</h3>
+<pre class="programlisting">typedef struct librdf_parser_factory_s librdf_parser_factory;
+</pre>
+<p>Redland parser factory class.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="LIBRDF-PARSER-FEATURE-ERROR-COUNT:CAPS"></a><h3>LIBRDF_PARSER_FEATURE_ERROR_COUNT</h3>
+<pre class="programlisting">#define LIBRDF_PARSER_FEATURE_ERROR_COUNT "http://feature.librdf.org/parser-error-count"
+</pre>
+<p>Parser feature URI string for getting the error count of the last parse.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="LIBRDF-PARSER-FEATURE-WARNING-COUNT:CAPS"></a><h3>LIBRDF_PARSER_FEATURE_WARNING_COUNT</h3>
+<pre class="programlisting">#define LIBRDF_PARSER_FEATURE_WARNING_COUNT "http://feature.librdf.org/parser-warning-count"
+</pre>
+<p>Parser feature URI string for getting the warning count of the last parse.</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.27</div>
+</body>
+</html>

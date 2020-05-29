@@ -1,0 +1,1059 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-general">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-general.top_of_page">section-general</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-general</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-general.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-statement-handler">*raptor_statement_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-snprintf">raptor_snprintf</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-vasprintf">raptor_vasprintf</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-vsnprintf">raptor_vsnprintf</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-vsnprintf2">raptor_vsnprintf2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-sort-r">raptor_sort_r</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-log-handler">*raptor_log_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-log-level-get-label">raptor_log_level_get_label</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-domain-get-label">raptor_domain_get_label</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-data-compare-handler">*raptor_data_compare_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-data-compare-arg-handler">*raptor_data_compare_arg_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-data-context-free-handler">*raptor_data_context_free_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-data-context-print-handler">*raptor_data_context_print_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-data-free-handler">*raptor_data_free_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-data-malloc-handler">*raptor_data_malloc_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-data-print-handler">*raptor_data_print_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-syntax-description-validate">raptor_syntax_description_validate</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-general.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="RAPTOR-VERSION:CAPS">RAPTOR_VERSION</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="RAPTOR-VERSION-MAJOR:CAPS">RAPTOR_VERSION_MAJOR</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="RAPTOR-VERSION-MINOR:CAPS">RAPTOR_VERSION_MINOR</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="RAPTOR-VERSION-RELEASE:CAPS">RAPTOR_VERSION_RELEASE</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="RAPTOR-VERSION-STRING:CAPS">RAPTOR_VERSION_STRING</link></entry></row>
+<row><entry role="variable_type">extern const unsigned int </entry><entry role="function_name"><link linkend="raptor-version-major">raptor_version_major</link></entry></row>
+<row><entry role="variable_type">extern const unsigned int </entry><entry role="function_name"><link linkend="raptor-version-minor">raptor_version_minor</link></entry></row>
+<row><entry role="variable_type">extern const unsigned int </entry><entry role="function_name"><link linkend="raptor-version-release">raptor_version_release</link></entry></row>
+<row><entry role="variable_type">extern const unsigned int </entry><entry role="function_name"><link linkend="raptor-version-decimal">raptor_version_decimal</link></entry></row>
+<row><entry role="variable_type">extern const char * const </entry><entry role="function_name"><link linkend="raptor-copyright-string">raptor_copyright_string</link></entry></row>
+<row><entry role="variable_type">extern const char * const </entry><entry role="function_name"><link linkend="raptor-home-url-string">raptor_home_url_string</link></entry></row>
+<row><entry role="variable_type">extern const char * const </entry><entry role="function_name"><link linkend="raptor-license-string">raptor_license_string</link></entry></row>
+<row><entry role="variable_type">extern const char * const </entry><entry role="function_name"><link linkend="raptor-short-copyright-string">raptor_short_copyright_string</link></entry></row>
+<row><entry role="variable_type">extern const char * const </entry><entry role="function_name"><link linkend="raptor-version-string">raptor_version_string</link></entry></row>
+<row><entry role="variable_type">extern const unsigned char * const </entry><entry role="function_name"><link linkend="raptor-owl-namespace-uri">raptor_owl_namespace_uri</link></entry></row>
+<row><entry role="variable_type">extern const unsigned char * const </entry><entry role="function_name"><link linkend="raptor-rdf-namespace-uri">raptor_rdf_namespace_uri</link></entry></row>
+<row><entry role="variable_type">extern const unsigned char * const </entry><entry role="function_name"><link linkend="raptor-rdf-schema-namespace-uri">raptor_rdf_schema_namespace_uri</link></entry></row>
+<row><entry role="variable_type">extern const unsigned char * const </entry><entry role="function_name"><link linkend="raptor-xml-literal-datatype-uri-string">raptor_xml_literal_datatype_uri_string</link></entry></row>
+<row><entry role="variable_type">extern const unsigned char * const </entry><entry role="function_name"><link linkend="raptor-xml-namespace-uri">raptor_xml_namespace_uri</link></entry></row>
+<row><entry role="variable_type">extern const unsigned char * const </entry><entry role="function_name"><link linkend="raptor-xmlschema-datatypes-namespace-uri">raptor_xmlschema_datatypes_namespace_uri</link></entry></row>
+<row><entry role="datatype_keyword"></entry><entry role="function_name"><link linkend="raptor-log-message">raptor_log_message</link></entry></row>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="raptor-log-level">raptor_log_level</link></entry></row>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="raptor-domain">raptor_domain</link></entry></row>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="raptor-syntax-bitflags">raptor_syntax_bitflags</link></entry></row>
+<row><entry role="datatype_keyword"></entry><entry role="function_name"><link linkend="raptor-syntax-description">raptor_syntax_description</link></entry></row>
+<row><entry role="datatype_keyword"></entry><entry role="function_name"><link linkend="raptor-type-q">raptor_type_q</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-general.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-general.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-statement-handler" role="function">
+<title>raptor_statement_handler&#160;()</title>
+<indexterm zone="raptor-statement-handler"><primary>raptor_statement_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_statement_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                             <parameter><link linkend="raptor-statement"><type>raptor_statement</type></link> *statement</parameter>);</programlisting>
+<para>Statement (triple) reporting handler function.</para>
+<para>This handler function set with
+<link linkend="raptor-parser-set-statement-handler"><function>raptor_parser_set_statement_handler()</function></link> on a parser receives
+statements as the parsing proceeds. The <parameter>statement</parameter>
+ argument to the
+handler is shared and must be copied by the caller with
+<link linkend="raptor-statement-copy"><function>raptor_statement_copy()</function></link>.</para>
+<refsect3 id="raptor-statement-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para>statement to report</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-snprintf" role="function">
+<title>raptor_snprintf&#160;()</title>
+<indexterm zone="raptor-snprintf"><primary>raptor_snprintf</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_snprintf (<parameter><link linkend="char"><type>char</type></link> *buffer</parameter>,
+                 <parameter><link linkend="size-t"><type>size_t</type></link> size</parameter>,
+                 <parameter>const <link linkend="char"><type>char</type></link> *format</parameter>,
+                 <parameter>...</parameter>);</programlisting>
+<para>Format output into an allocated sized buffer</para>
+<para>This provides a portable version <link linkend="snprintf"><function>snprintf()</function></link> over variants on
+different systems.</para>
+<para>If <parameter>buffer</parameter>
+ is NULL, calculates the number of bytes needed to
+allocate for buffer and do no formatting.</para>
+<refsect3 id="raptor-snprintf.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>buffer (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>size</para></entry>
+<entry role="parameter_description"><para>bufer size (or 0)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>format</para></entry>
+<entry role="parameter_description"><para>printf-style format string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>...</para></entry>
+<entry role="parameter_description"><para>format arguments</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-snprintf.returns" role="returns">
+<title>Returns</title>
+<para> number of bytes allocated (excluding NUL) or 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-vasprintf" role="function">
+<title>raptor_vasprintf&#160;()</title>
+<indexterm zone="raptor-vasprintf"><primary>raptor_vasprintf</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_vasprintf (<parameter><link linkend="char"><type>char</type></link> **ret</parameter>,
+                  <parameter>const <link linkend="char"><type>char</type></link> *format</parameter>,
+                  <parameter><link linkend="va-list"><type>va_list</type></link> arguments</parameter>);</programlisting>
+<para>Format output into a new buffer and return it</para>
+<para>This is a wrapper around the (GNU) vasprintf function that is not
+always avaiable.</para>
+<refsect3 id="raptor-vasprintf.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>ret</para></entry>
+<entry role="parameter_description"><para>pointer to store buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>format</para></entry>
+<entry role="parameter_description"><para>printf-style format string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>arguments</para></entry>
+<entry role="parameter_description"><para>format arguments list</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-vasprintf.returns" role="returns">
+<title>Returns</title>
+<para> number of bytes allocated (excluding NUL) or &lt; 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-vsnprintf" role="function" condition="deprecated:">
+<title>raptor_vsnprintf&#160;()</title>
+<indexterm zone="raptor-vsnprintf" role="deprecated"><primary>raptor_vsnprintf</primary></indexterm>
+<programlisting language="C"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_vsnprintf (<parameter>const <link linkend="char"><type>char</type></link> *format</parameter>,
+                  <parameter><link linkend="va-list"><type>va_list</type></link> arguments</parameter>);</programlisting>
+<warning><para><literal>raptor_vsnprintf</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Format output for a variable arguments list into a newly allocated buffer</para>
+<para><parameter>Deprecated</parameter>
+: This does not actually conform to vsnprintf's calling
+convention and does not return the allocated buffer length.  Use
+<link linkend="raptor-vsnprintf2"><function>raptor_vsnprintf2()</function></link> or <link linkend="raptor-vasprintf"><function>raptor_vasprintf()</function></link> instead.</para>
+<refsect3 id="raptor-vsnprintf.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>format</para></entry>
+<entry role="parameter_description"><para>printf-style format string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>arguments</para></entry>
+<entry role="parameter_description"><para>variable arguments list</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-vsnprintf.returns" role="returns">
+<title>Returns</title>
+<para> a newly allocated string as the formatted result or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-vsnprintf2" role="function">
+<title>raptor_vsnprintf2&#160;()</title>
+<indexterm zone="raptor-vsnprintf2"><primary>raptor_vsnprintf2</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_vsnprintf2 (<parameter><link linkend="char"><type>char</type></link> *buffer</parameter>,
+                   <parameter><link linkend="size-t"><type>size_t</type></link> size</parameter>,
+                   <parameter>const <link linkend="char"><type>char</type></link> *format</parameter>,
+                   <parameter><link linkend="va-list"><type>va_list</type></link> arguments</parameter>);</programlisting>
+<para>Format output for a variable arguments list into an allocated sized buffer.</para>
+<para>This is a wrapper around system versions of vsnprintf with
+different call and return conventions.</para>
+<para>If <parameter>buffer</parameter>
+ is NULL or size is 0 or the buffer size is too small,
+returns the number of bytes that would be needed for buffer</para>
+<refsect3 id="raptor-vsnprintf2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>buffer (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>size</para></entry>
+<entry role="parameter_description"><para>size of buffer (or 0)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>format</para></entry>
+<entry role="parameter_description"><para>printf-style format string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>arguments</para></entry>
+<entry role="parameter_description"><para>variable arguments list</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-vsnprintf2.returns" role="returns">
+<title>Returns</title>
+<para> number of bytes allocated (excluding NUL) or &lt;0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-sort-r" role="function">
+<title>raptor_sort_r&#160;()</title>
+<indexterm zone="raptor-sort-r"><primary>raptor_sort_r</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_sort_r (<parameter><link linkend="void"><type>void</type></link> *base</parameter>,
+               <parameter><link linkend="size-t"><type>size_t</type></link> nel</parameter>,
+               <parameter><link linkend="size-t"><type>size_t</type></link> width</parameter>,
+               <parameter><link linkend="raptor-data-compare-arg-handler"><type>raptor_data_compare_arg_handler</type></link> compar</parameter>,
+               <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>);</programlisting>
+<para>Sort an array with an extra user data arg for the comparison funciton.</para>
+<para>Sorts data at <parameter>base</parameter>
+ of <parameter>nel</parameter>
+ elememnts of width <parameter>width</parameter>
+ using
+comparison function <parameter>comp</parameter>
+ that takes args (void* data1, void*
+data2, <parameter>user_data</parameter>
+) and returns &lt;0, 0, or &gt;0 for object comparison.</para>
+<refsect3 id="raptor-sort-r.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>base</para></entry>
+<entry role="parameter_description"><para>the array to be sorted</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nel</para></entry>
+<entry role="parameter_description"><para>the number of elements in the array</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>width</para></entry>
+<entry role="parameter_description"><para>the size in bytes of each element of the array</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>compar</para></entry>
+<entry role="parameter_description"><para>comparison function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>a pointer to be passed to the comparison function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-log-handler" role="function">
+<title>raptor_log_handler&#160;()</title>
+<indexterm zone="raptor-log-handler"><primary>raptor_log_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_log_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                       <parameter><link linkend="raptor-log-message"><type>raptor_log_message</type></link> *message</parameter>);</programlisting>
+<para>Handler function for log messages with location</para>
+<para>Used during parsing and serializing for errors and warnings that
+may include location information. Handlers may be set
+by <link linkend="raptor-world-set-log-handler"><function>raptor_world_set_log_handler()</function></link>.</para>
+<refsect3 id="raptor-log-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>message</para></entry>
+<entry role="parameter_description"><para>log message</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-log-level-get-label" role="function">
+<title>raptor_log_level_get_label&#160;()</title>
+<indexterm zone="raptor-log-level-get-label"><primary>raptor_log_level_get_label</primary></indexterm>
+<programlisting language="C">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_log_level_get_label (<parameter><link linkend="raptor-log-level"><type>raptor_log_level</type></link> level</parameter>);</programlisting>
+<para>Get label for a log message level</para>
+<refsect3 id="raptor-log-level-get-label.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>level</para></entry>
+<entry role="parameter_description"><para>log message level</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-log-level-get-label.returns" role="returns">
+<title>Returns</title>
+<para> label string or NULL if level is not valid</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-domain-get-label" role="function">
+<title>raptor_domain_get_label&#160;()</title>
+<indexterm zone="raptor-domain-get-label"><primary>raptor_domain_get_label</primary></indexterm>
+<programlisting language="C">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_domain_get_label (<parameter><link linkend="raptor-domain"><type>raptor_domain</type></link> domain</parameter>);</programlisting>
+<para>Get label for a domain</para>
+<refsect3 id="raptor-domain-get-label.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>domain</para></entry>
+<entry role="parameter_description"><para>domain</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-domain-get-label.returns" role="returns">
+<title>Returns</title>
+<para> label string or NULL if domain is not valid</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-data-compare-handler" role="function">
+<title>raptor_data_compare_handler&#160;()</title>
+<indexterm zone="raptor-data-compare-handler"><primary>raptor_data_compare_handler</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_data_compare_handler<phrase role="c_punctuation">)</phrase> (<parameter>const <link linkend="void"><type>void</type></link> *data1</parameter>,
+                                <parameter>const <link linkend="void"><type>void</type></link> *data2</parameter>);</programlisting>
+<para>Function to compare two data objects - signature like <link linkend="strcmp"><function>strcmp()</function></link> and function pssed to <link linkend="qsort"><function>qsort()</function></link></para>
+<para>Designed to be passed into generic data structure constructors
+like <link linkend="raptor-new-avltree"><function>raptor_new_avltree()</function></link>.</para>
+<refsect3 id="raptor-data-compare-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>data1</para></entry>
+<entry role="parameter_description"><para>first data object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>data2</para></entry>
+<entry role="parameter_description"><para>second data object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-data-compare-handler.returns" role="returns">
+<title>Returns</title>
+<para> compare value &lt;0 if <parameter>data1</parameter>
+is before <parameter>data2</parameter>
+, =0 if equal, &gt;0 if <parameter>data1</parameter>
+is after <parameter>data2</parameter>
+</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-data-compare-arg-handler" role="function">
+<title>raptor_data_compare_arg_handler&#160;()</title>
+<indexterm zone="raptor-data-compare-arg-handler"><primary>raptor_data_compare_arg_handler</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_data_compare_arg_handler<phrase role="c_punctuation">)</phrase> (<parameter>const <link linkend="void"><type>void</type></link> *data1</parameter>,
+                                    <parameter>const <link linkend="void"><type>void</type></link> *data2</parameter>,
+                                    <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>);</programlisting>
+<para>Function to compare two data objects with a user data argument</para>
+<para>Designed to be used with <link linkend="raptor-sort-r"><function>raptor_sort_r()</function></link> and compatible functions
+such as <link linkend="raptor-sequence-sort-r"><function>raptor_sequence_sort_r()</function></link> which uses it.</para>
+<refsect3 id="raptor-data-compare-arg-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>data1</para></entry>
+<entry role="parameter_description"><para>first object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>data2</para></entry>
+<entry role="parameter_description"><para>second object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data argument</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-data-compare-arg-handler.returns" role="returns">
+<title>Returns</title>
+<para> compare value &lt;0 if <parameter>data1</parameter>
+is before <parameter>data2</parameter>
+, =0 if equal, &gt;0 if <parameter>data1</parameter>
+is after <parameter>data2</parameter>
+</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-data-context-free-handler" role="function">
+<title>raptor_data_context_free_handler&#160;()</title>
+<indexterm zone="raptor-data-context-free-handler"><primary>raptor_data_context_free_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_data_context_free_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *context</parameter>,
+                                     <parameter><link linkend="void"><type>void</type></link> *object</parameter>);</programlisting>
+<para>Handler function for freeing a sequence item with a contextual pointer.</para>
+<para>Set by <link linkend="raptor-new-sequence-with-context"><function>raptor_new_sequence_with_context()</function></link>.</para>
+<refsect3 id="raptor-data-context-free-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para>context data for the free function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>object</para></entry>
+<entry role="parameter_description"><para>object to free</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-data-context-print-handler" role="function">
+<title>raptor_data_context_print_handler&#160;()</title>
+<indexterm zone="raptor-data-context-print-handler"><primary>raptor_data_context_print_handler</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_data_context_print_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *context</parameter>,
+                                      <parameter><link linkend="void"><type>void</type></link> *object</parameter>,
+                                      <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *fh</parameter>);</programlisting>
+<para>Function function for printing an object with data context to a stream.</para>
+<para>Set by <link linkend="raptor-new-sequence-with-context"><function>raptor_new_sequence_with_context()</function></link></para>
+<refsect3 id="raptor-data-context-print-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para>context data for the print function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>object</para></entry>
+<entry role="parameter_description"><para>object to print</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fh</para></entry>
+<entry role="parameter_description"><para>FILE* to print to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-data-context-print-handler.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-data-free-handler" role="function">
+<title>raptor_data_free_handler&#160;()</title>
+<indexterm zone="raptor-data-free-handler"><primary>raptor_data_free_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_data_free_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *data</parameter>);</programlisting>
+<para>Typedef for function to free a data object - signature like <link linkend="free"><function>free()</function></link></para>
+<para>Designed to be passed into generic data structure constructors
+like <link linkend="raptor-new-avltree"><function>raptor_new_avltree()</function></link>.  If <parameter>data</parameter>
+ is NULL, nothing should be done.</para>
+<refsect3 id="raptor-data-free-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>data</para></entry>
+<entry role="parameter_description"><para>data object or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-data-malloc-handler" role="function">
+<title>raptor_data_malloc_handler&#160;()</title>
+<indexterm zone="raptor-data-malloc-handler"><primary>raptor_data_malloc_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+<phrase role="c_punctuation">(</phrase>*raptor_data_malloc_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="size-t"><type>size_t</type></link> size</parameter>);</programlisting>
+<para>Typedef for a function to allocate memory - signature like <link linkend="malloc"><function>malloc()</function></link></para>
+<para>Designed to be passed into constructors
+like raptor_www_fetch_to_string</para>
+<refsect3 id="raptor-data-malloc-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>size</para></entry>
+<entry role="parameter_description"><para>data size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-data-malloc-handler.returns" role="returns">
+<title>Returns</title>
+<para> pointer to newly allocated memory or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-data-print-handler" role="function">
+<title>raptor_data_print_handler&#160;()</title>
+<indexterm zone="raptor-data-print-handler"><primary>raptor_data_print_handler</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_data_print_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *object</parameter>,
+                              <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *fh</parameter>);</programlisting>
+<para>Handler function for printing an object to a stream.</para>
+<para>Set by <link linkend="raptor-new-sequence"><function>raptor_new_sequence()</function></link></para>
+<refsect3 id="raptor-data-print-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>object</para></entry>
+<entry role="parameter_description"><para>object to print</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fh</para></entry>
+<entry role="parameter_description"><para>FILE* to print to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-data-print-handler.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-syntax-description-validate" role="function">
+<title>raptor_syntax_description_validate&#160;()</title>
+<indexterm zone="raptor-syntax-description-validate"><primary>raptor_syntax_description_validate</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_syntax_description_validate (<parameter><link linkend="raptor-syntax-description"><type>raptor_syntax_description</type></link> *desc</parameter>);</programlisting>
+<para>Validate a syntax description has the required fields (name, labels) and update counts</para>
+<refsect3 id="raptor-syntax-description-validate.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>desc</para></entry>
+<entry role="parameter_description"><para>description</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-syntax-description-validate.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-general.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="RAPTOR-VERSION:CAPS" role="macro">
+<title>RAPTOR_VERSION</title>
+<indexterm zone="RAPTOR-VERSION:CAPS"><primary>RAPTOR_VERSION</primary></indexterm>
+<programlisting language="C">#define RAPTOR_VERSION 20015
+</programlisting>
+<para>Raptor library version number</para>
+<para>Format: major * 10000 + minor * 100 + release</para>
+</refsect2>
+<refsect2 id="RAPTOR-VERSION-MAJOR:CAPS" role="macro">
+<title>RAPTOR_VERSION_MAJOR</title>
+<indexterm zone="RAPTOR-VERSION-MAJOR:CAPS"><primary>RAPTOR_VERSION_MAJOR</primary></indexterm>
+<programlisting language="C">#define RAPTOR_VERSION_MAJOR 2
+</programlisting>
+<para>Raptor library major version</para>
+</refsect2>
+<refsect2 id="RAPTOR-VERSION-MINOR:CAPS" role="macro">
+<title>RAPTOR_VERSION_MINOR</title>
+<indexterm zone="RAPTOR-VERSION-MINOR:CAPS"><primary>RAPTOR_VERSION_MINOR</primary></indexterm>
+<programlisting language="C">#define RAPTOR_VERSION_MINOR 0
+</programlisting>
+<para>Raptor library minor version</para>
+</refsect2>
+<refsect2 id="RAPTOR-VERSION-RELEASE:CAPS" role="macro">
+<title>RAPTOR_VERSION_RELEASE</title>
+<indexterm zone="RAPTOR-VERSION-RELEASE:CAPS"><primary>RAPTOR_VERSION_RELEASE</primary></indexterm>
+<programlisting language="C">#define RAPTOR_VERSION_RELEASE 15
+</programlisting>
+<para>Raptor library release</para>
+</refsect2>
+<refsect2 id="RAPTOR-VERSION-STRING:CAPS" role="macro">
+<title>RAPTOR_VERSION_STRING</title>
+<indexterm zone="RAPTOR-VERSION-STRING:CAPS"><primary>RAPTOR_VERSION_STRING</primary></indexterm>
+<programlisting language="C">#define RAPTOR_VERSION_STRING "2.0.15"
+</programlisting>
+<para>Raptor library version string</para>
+</refsect2>
+<refsect2 id="raptor-version-major" role="variable">
+<title>raptor_version_major</title>
+<indexterm zone="raptor-version-major"><primary>raptor_version_major</primary></indexterm>
+<programlisting language="C">extern const unsigned int raptor_version_major;
+</programlisting>
+<para>Library major version number as a decimal integer.</para>
+</refsect2>
+<refsect2 id="raptor-version-minor" role="variable">
+<title>raptor_version_minor</title>
+<indexterm zone="raptor-version-minor"><primary>raptor_version_minor</primary></indexterm>
+<programlisting language="C">extern const unsigned int raptor_version_minor;
+</programlisting>
+<para>Library minor version number as a decimal integer.</para>
+</refsect2>
+<refsect2 id="raptor-version-release" role="variable">
+<title>raptor_version_release</title>
+<indexterm zone="raptor-version-release"><primary>raptor_version_release</primary></indexterm>
+<programlisting language="C">extern const unsigned int raptor_version_release;
+</programlisting>
+<para>Library release version number as a decimal integer.</para>
+</refsect2>
+<refsect2 id="raptor-version-decimal" role="variable">
+<title>raptor_version_decimal</title>
+<indexterm zone="raptor-version-decimal"><primary>raptor_version_decimal</primary></indexterm>
+<programlisting language="C">extern const unsigned int raptor_version_decimal;
+</programlisting>
+<para>Library full version as a decimal integer.</para>
+<para>See also <link linkend="raptor-version-string"><type>raptor_version_string</type></link>.</para>
+</refsect2>
+<refsect2 id="raptor-copyright-string" role="variable">
+<title>raptor_copyright_string</title>
+<indexterm zone="raptor-copyright-string"><primary>raptor_copyright_string</primary></indexterm>
+<programlisting language="C">extern const char * const raptor_copyright_string;
+</programlisting>
+<para>Copyright string (multiple lines).</para>
+</refsect2>
+<refsect2 id="raptor-home-url-string" role="variable">
+<title>raptor_home_url_string</title>
+<indexterm zone="raptor-home-url-string"><primary>raptor_home_url_string</primary></indexterm>
+<programlisting language="C">extern const char * const raptor_home_url_string;
+</programlisting>
+<para>Raptor home page URL.</para>
+</refsect2>
+<refsect2 id="raptor-license-string" role="variable">
+<title>raptor_license_string</title>
+<indexterm zone="raptor-license-string"><primary>raptor_license_string</primary></indexterm>
+<programlisting language="C">extern const char * const raptor_license_string;
+</programlisting>
+<para>Raptor license string.</para>
+</refsect2>
+<refsect2 id="raptor-short-copyright-string" role="variable">
+<title>raptor_short_copyright_string</title>
+<indexterm zone="raptor-short-copyright-string"><primary>raptor_short_copyright_string</primary></indexterm>
+<programlisting language="C">extern const char * const raptor_short_copyright_string;
+</programlisting>
+<para>Short copyright string (one line).</para>
+</refsect2>
+<refsect2 id="raptor-version-string" role="variable">
+<title>raptor_version_string</title>
+<indexterm zone="raptor-version-string"><primary>raptor_version_string</primary></indexterm>
+<programlisting language="C">extern const char * const raptor_version_string;
+</programlisting>
+<para>Library full version as a string.</para>
+<para>See also <link linkend="raptor-version-decimal"><type>raptor_version_decimal</type></link>.</para>
+</refsect2>
+<refsect2 id="raptor-owl-namespace-uri" role="variable">
+<title>raptor_owl_namespace_uri</title>
+<indexterm zone="raptor-owl-namespace-uri"><primary>raptor_owl_namespace_uri</primary></indexterm>
+<programlisting language="C">extern const unsigned char * const raptor_owl_namespace_uri;
+</programlisting>
+<para>OWL (owl:) Namespace URI string.</para>
+</refsect2>
+<refsect2 id="raptor-rdf-namespace-uri" role="variable">
+<title>raptor_rdf_namespace_uri</title>
+<indexterm zone="raptor-rdf-namespace-uri"><primary>raptor_rdf_namespace_uri</primary></indexterm>
+<programlisting language="C">extern const unsigned char * const raptor_rdf_namespace_uri;
+</programlisting>
+<para>RDF Namespace (rdf:) URI string.</para>
+</refsect2>
+<refsect2 id="raptor-rdf-schema-namespace-uri" role="variable">
+<title>raptor_rdf_schema_namespace_uri</title>
+<indexterm zone="raptor-rdf-schema-namespace-uri"><primary>raptor_rdf_schema_namespace_uri</primary></indexterm>
+<programlisting language="C">extern const unsigned char * const raptor_rdf_schema_namespace_uri;
+</programlisting>
+<para>RDF Schema (rdfs:) Namespace URI string.</para>
+</refsect2>
+<refsect2 id="raptor-xml-literal-datatype-uri-string" role="variable">
+<title>raptor_xml_literal_datatype_uri_string</title>
+<indexterm zone="raptor-xml-literal-datatype-uri-string"><primary>raptor_xml_literal_datatype_uri_string</primary></indexterm>
+<programlisting language="C">extern const unsigned char * const raptor_xml_literal_datatype_uri_string;
+</programlisting>
+<para>XML Literal datatype (rdf:XMLLiteral) URI string.</para>
+</refsect2>
+<refsect2 id="raptor-xml-namespace-uri" role="variable">
+<title>raptor_xml_namespace_uri</title>
+<indexterm zone="raptor-xml-namespace-uri"><primary>raptor_xml_namespace_uri</primary></indexterm>
+<programlisting language="C">extern const unsigned char * const raptor_xml_namespace_uri;
+</programlisting>
+<para>XML Namespace (xml:) URI string.</para>
+</refsect2>
+<refsect2 id="raptor-xmlschema-datatypes-namespace-uri" role="variable">
+<title>raptor_xmlschema_datatypes_namespace_uri</title>
+<indexterm zone="raptor-xmlschema-datatypes-namespace-uri"><primary>raptor_xmlschema_datatypes_namespace_uri</primary></indexterm>
+<programlisting language="C">extern const unsigned char * const raptor_xmlschema_datatypes_namespace_uri;
+</programlisting>
+<para>XML Schema datatypes (xsd:) namespace URI string.</para>
+</refsect2>
+<refsect2 id="raptor-log-message" role="struct">
+<title>raptor_log_message</title>
+<indexterm zone="raptor-log-message"><primary>raptor_log_message</primary></indexterm>
+<programlisting language="C">typedef struct {
+  int code;
+  raptor_domain domain;
+  raptor_log_level level;
+  raptor_locator *locator;
+  const char *text;
+} raptor_log_message;
+</programlisting>
+<para>Log message.</para>
+<refsect3 id="raptor-log-message.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para><link linkend="int"><type>int</type></link>&#160;<structfield id="raptor-log-message.code">code</structfield>;</para></entry>
+<entry role="struct_member_description"><para>error code or &lt; 0 if not used or known</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-domain"><type>raptor_domain</type></link>&#160;<structfield id="raptor-log-message.domain">domain</structfield>;</para></entry>
+<entry role="struct_member_description"><para>message domain or <link linkend="RAPTOR-DOMAIN-NONE:CAPS"><type>RAPTOR_DOMAIN_NONE</type></link> if not used or known</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-log-level"><type>raptor_log_level</type></link>&#160;<structfield id="raptor-log-message.level">level</structfield>;</para></entry>
+<entry role="struct_member_description"><para>log message level</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-locator"><type>raptor_locator</type></link>&#160;*<structfield id="raptor-log-message.locator">locator</structfield>;</para></entry>
+<entry role="struct_member_description"><para>location associated with message or NULL if not known</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>const&#160;<link linkend="char"><type>char</type></link>&#160;*<structfield id="raptor-log-message.text">text</structfield>;</para></entry>
+<entry role="struct_member_description"><para>message string</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+<refsect2 id="raptor-log-level" role="enum">
+<title>enum raptor_log_level</title>
+<indexterm zone="raptor-log-level"><primary>raptor_log_level</primary></indexterm>
+<para>Log levels</para>
+<refsect3 id="raptor-log-level.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-LOG-LEVEL-NONE:CAPS">RAPTOR_LOG_LEVEL_NONE</para></entry>
+<entry role="enum_member_description"><para>Internal</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-LOG-LEVEL-TRACE:CAPS">RAPTOR_LOG_LEVEL_TRACE</para></entry>
+<entry role="enum_member_description"><para>very fine-grained tracing messages information</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-LOG-LEVEL-DEBUG:CAPS">RAPTOR_LOG_LEVEL_DEBUG</para></entry>
+<entry role="enum_member_description"><para>fine-grained tracing messages suitable for debugging</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-LOG-LEVEL-INFO:CAPS">RAPTOR_LOG_LEVEL_INFO</para></entry>
+<entry role="enum_member_description"><para>coarse-grained information messages</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-LOG-LEVEL-WARN:CAPS">RAPTOR_LOG_LEVEL_WARN</para></entry>
+<entry role="enum_member_description"><para>warning messages of potentially harmful problems</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-LOG-LEVEL-ERROR:CAPS">RAPTOR_LOG_LEVEL_ERROR</para></entry>
+<entry role="enum_member_description"><para>error messages where the application can continue</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-LOG-LEVEL-FATAL:CAPS">RAPTOR_LOG_LEVEL_FATAL</para></entry>
+<entry role="enum_member_description"><para>fatal error message where the application will likely abort</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-LOG-LEVEL-LAST:CAPS">RAPTOR_LOG_LEVEL_LAST</para></entry>
+<entry role="enum_member_description"><para>Internal</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-domain" role="enum">
+<title>enum raptor_domain</title>
+<indexterm zone="raptor-domain"><primary>raptor_domain</primary></indexterm>
+<para>Log domain</para>
+<refsect3 id="raptor-domain.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-DOMAIN-NONE:CAPS">RAPTOR_DOMAIN_NONE</para></entry>
+<entry role="enum_member_description"><para>Internal</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-DOMAIN-IOSTREAM:CAPS">RAPTOR_DOMAIN_IOSTREAM</para></entry>
+<entry role="enum_member_description"><para>I/O stream</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-DOMAIN-NAMESPACE:CAPS">RAPTOR_DOMAIN_NAMESPACE</para></entry>
+<entry role="enum_member_description"><para>XML Namespace / namespace stack</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-DOMAIN-PARSER:CAPS">RAPTOR_DOMAIN_PARSER</para></entry>
+<entry role="enum_member_description"><para>RDF Parser</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-DOMAIN-QNAME:CAPS">RAPTOR_DOMAIN_QNAME</para></entry>
+<entry role="enum_member_description"><para>XML QName</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-DOMAIN-SAX2:CAPS">RAPTOR_DOMAIN_SAX2</para></entry>
+<entry role="enum_member_description"><para>XML SAX2</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-DOMAIN-SERIALIZER:CAPS">RAPTOR_DOMAIN_SERIALIZER</para></entry>
+<entry role="enum_member_description"><para>RDF Serializer</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-DOMAIN-TERM:CAPS">RAPTOR_DOMAIN_TERM</para></entry>
+<entry role="enum_member_description"><para>RDF Term</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-DOMAIN-TURTLE-WRITER:CAPS">RAPTOR_DOMAIN_TURTLE_WRITER</para></entry>
+<entry role="enum_member_description"><para>Turtle Writer</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-DOMAIN-URI:CAPS">RAPTOR_DOMAIN_URI</para></entry>
+<entry role="enum_member_description"><para>RDF Uri</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-DOMAIN-WORLD:CAPS">RAPTOR_DOMAIN_WORLD</para></entry>
+<entry role="enum_member_description"><para>RDF world</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-DOMAIN-WWW:CAPS">RAPTOR_DOMAIN_WWW</para></entry>
+<entry role="enum_member_description"><para>WWW</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-DOMAIN-XML-WRITER:CAPS">RAPTOR_DOMAIN_XML_WRITER</para></entry>
+<entry role="enum_member_description"><para>XML Writer</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-DOMAIN-LAST:CAPS">RAPTOR_DOMAIN_LAST</para></entry>
+<entry role="enum_member_description"><para>Internal</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-syntax-bitflags" role="enum">
+<title>enum raptor_syntax_bitflags</title>
+<indexterm zone="raptor-syntax-bitflags"><primary>raptor_syntax_bitflags</primary></indexterm>
+<para>Bit flags for <link linkend="raptor-syntax-description"><type>raptor_syntax_description</type></link> flags field</para>
+<refsect3 id="raptor-syntax-bitflags.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-SYNTAX-NEED-BASE-URI:CAPS">RAPTOR_SYNTAX_NEED_BASE_URI</para></entry>
+<entry role="enum_member_description"><para>the syntax requires a base URI</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-syntax-description" role="struct">
+<title>raptor_syntax_description</title>
+<indexterm zone="raptor-syntax-description"><primary>raptor_syntax_description</primary></indexterm>
+<programlisting language="C">typedef struct {
+  const char* names;
+  unsigned int names_count;
+
+  const char* label;
+
+  const raptor_type_q* mime_types;
+  unsigned int mime_types_count;
+
+  const char* uri_strings;
+  unsigned int uri_strings_count;
+
+  unsigned int flags;
+} raptor_syntax_description;
+</programlisting>
+<para>Description of a syntax or file format.</para>
+<refsect3 id="raptor-syntax-description.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para>const&#160;<link linkend="char"><type>char</type></link>&#160;*<structfield id="raptor-syntax-description.names">names</structfield>;</para></entry>
+<entry role="struct_member_description"><para>array of syntax names - the first one (required) is the public name, the rest are aliases.  The array is NULL terminated.</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>unsigned&#160;<link linkend="int"><type>int</type></link>&#160;<structfield id="raptor-syntax-description.names-count">names_count</structfield>;</para></entry>
+<entry role="struct_member_description"><para>size of <parameter>names</parameter>
+array</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>const&#160;<link linkend="char"><type>char</type></link>&#160;*<structfield id="raptor-syntax-description.label">label</structfield>;</para></entry>
+<entry role="struct_member_description"><para>long descriptive label for syntax</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>const&#160;<link linkend="raptor-type-q"><type>raptor_type_q</type></link>&#160;*<structfield id="raptor-syntax-description.mime-types">mime_types</structfield>;</para></entry>
+<entry role="struct_member_description"><para>Array of (MIME type, Q) values associated with the syntax (or NULL).  If present the array is NULL terminated.</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>unsigned&#160;<link linkend="int"><type>int</type></link>&#160;<structfield id="raptor-syntax-description.mime-types-count">mime_types_count</structfield>;</para></entry>
+<entry role="struct_member_description"><para>size of <parameter>mime_types</parameter>
+array</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>const&#160;<link linkend="char"><type>char</type></link>&#160;*<structfield id="raptor-syntax-description.uri-strings">uri_strings</structfield>;</para></entry>
+<entry role="struct_member_description"><para>array of URIs identifying the syntax (or NULL). The first one if present is the main URI, the rest are aliases.  The array is NULL terminated.</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>unsigned&#160;<link linkend="int"><type>int</type></link>&#160;<structfield id="raptor-syntax-description.uri-strings-count">uri_strings_count</structfield>;</para></entry>
+<entry role="struct_member_description"><para>size of <parameter>uri_strings</parameter>
+array</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>unsigned&#160;<link linkend="int"><type>int</type></link>&#160;<structfield id="raptor-syntax-description.flags">flags</structfield>;</para></entry>
+<entry role="struct_member_description"><para>See <link linkend="raptor-syntax-bitflags"><type>raptor_syntax_bitflags</type></link> for the bits</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+<refsect2 id="raptor-type-q" role="struct">
+<title>raptor_type_q</title>
+<indexterm zone="raptor-type-q"><primary>raptor_type_q</primary></indexterm>
+<programlisting language="C">typedef struct {
+  const char* mime_type;
+  size_t mime_type_len;
+  unsigned char q;
+} raptor_type_q;
+</programlisting>
+<para>(MIME Type, Q) pair</para>
+<refsect3 id="raptor-type-q.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para>const&#160;<link linkend="char"><type>char</type></link>&#160;*<structfield id="raptor-type-q.mime-type">mime_type</structfield>;</para></entry>
+<entry role="struct_member_description"><para>MIME type string</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="size-t"><type>size_t</type></link>&#160;<structfield id="raptor-type-q.mime-type-len">mime_type_len</structfield>;</para></entry>
+<entry role="struct_member_description"><para>length of <parameter>mime_type</parameter>
+</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>unsigned&#160;<link linkend="char"><type>char</type></link>&#160;<structfield id="raptor-type-q.q">q</structfield>;</para></entry>
+<entry role="struct_member_description"><para>Q value 0-10 standing for decimal 0.0-1.0</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+
+</refsect1>
+
+</refentry>

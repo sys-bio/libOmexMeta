@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-hash">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-hash.top_of_page">hash</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>hash</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-hash.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="librdf-hash"><returnvalue>librdf_hash</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-hash">librdf_new_hash</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-hash"><returnvalue>librdf_hash</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-hash-from-string">librdf_new_hash_from_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-hash"><returnvalue>librdf_hash</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-hash-from-array-of-strings">librdf_new_hash_from_array_of_strings</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-hash"><returnvalue>librdf_hash</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-hash-from-hash">librdf_new_hash_from_hash</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-free-hash">librdf_free_hash</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-hash-get">librdf_hash_get</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-hash-get-as-boolean">librdf_hash_get_as_boolean</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="long"><returnvalue>long</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-hash-get-as-long">librdf_hash_get_as_long</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-hash-get-del">librdf_hash_get_del</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-hash-put-strings">librdf_hash_put_strings</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-hash-print">librdf_hash_print</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-hash-print-keys">librdf_hash_print_keys</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-hash-print-values">librdf_hash_print_values</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-hash-interpret-template">librdf_hash_interpret_template</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-hash-from-string">librdf_hash_from_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-hash-to-string">librdf_hash_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-hash.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-hash">librdf_hash</link></entry></row>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-hash-cursor">librdf_hash_cursor</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-hash.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-hash.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-new-hash" role="function">
+<title>librdf_new_hash&#160;()</title>
+<indexterm zone="librdf-new-hash"><primary>librdf_new_hash</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-hash"><returnvalue>librdf_hash</returnvalue></link>&#160;*
+librdf_new_hash (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                 <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-hash"><type>librdf_hash</type></link> object.</para>
+<refsect3 id="librdf-new-hash.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>factory name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-hash.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-hash"><type>librdf_hash</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-hash-from-string" role="function">
+<title>librdf_new_hash_from_string&#160;()</title>
+<indexterm zone="librdf-new-hash-from-string"><primary>librdf_new_hash_from_string</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-hash"><returnvalue>librdf_hash</returnvalue></link>&#160;*
+librdf_new_hash_from_string (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                             <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                             <parameter>const <link linkend="char"><type>char</type></link> *string</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-hash"><type>librdf_hash</type></link> object from a string.</para>
+<para>See <link linkend="librdf-hash-from-string"><type>librdf_hash_from_string</type></link> for the string format.</para>
+<refsect3 id="librdf-new-hash-from-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>hash name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>hash encoded as a string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-hash-from-string.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-hash"><type>librdf_hash</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-hash-from-array-of-strings" role="function">
+<title>librdf_new_hash_from_array_of_strings&#160;()</title>
+<indexterm zone="librdf-new-hash-from-array-of-strings"><primary>librdf_new_hash_from_array_of_strings</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-hash"><returnvalue>librdf_hash</returnvalue></link>&#160;*
+librdf_new_hash_from_array_of_strings (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                       <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>,
+                                       <parameter>const <link linkend="char"><type>char</type></link> **array</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-hash"><type>librdf_hash</type></link> object from an array of strings.</para>
+<refsect3 id="librdf-new-hash-from-array-of-strings.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>hash name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>array</para></entry>
+<entry role="parameter_description"><para>address of the start of the array of char* pointers</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-hash-from-array-of-strings.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-hash"><type>librdf_hash</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-hash-from-hash" role="function">
+<title>librdf_new_hash_from_hash&#160;()</title>
+<indexterm zone="librdf-new-hash-from-hash"><primary>librdf_new_hash_from_hash</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-hash"><returnvalue>librdf_hash</returnvalue></link>&#160;*
+librdf_new_hash_from_hash (<parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *old_hash</parameter>);</programlisting>
+<para>Copy Constructor - create a new <link linkend="librdf-hash"><type>librdf_hash</type></link> object from an existing one.</para>
+<refsect3 id="librdf-new-hash-from-hash.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>old_hash</para></entry>
+<entry role="parameter_description"><para>the hash to use to construct the hash</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-hash-from-hash.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-hash"><type>librdf_hash</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-free-hash" role="function">
+<title>librdf_free_hash&#160;()</title>
+<indexterm zone="librdf-free-hash"><primary>librdf_free_hash</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_free_hash (<parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *hash</parameter>);</programlisting>
+<para>Destructor - destroy a <link linkend="librdf-hash"><type>librdf_hash</type></link> object.</para>
+<refsect3 id="librdf-free-hash.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>hash</para></entry>
+<entry role="parameter_description"><para>hash object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-hash-get" role="function">
+<title>librdf_hash_get&#160;()</title>
+<indexterm zone="librdf-hash-get"><primary>librdf_hash_get</primary></indexterm>
+<programlisting language="C"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_hash_get (<parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *hash</parameter>,
+                 <parameter>const <link linkend="char"><type>char</type></link> *key</parameter>);</programlisting>
+<para>Retrieve one value from hash for a given key as string.</para>
+<para>The value returned is from newly allocated memory which the
+caller must free.</para>
+<refsect3 id="librdf-hash-get.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>hash</para></entry>
+<entry role="parameter_description"><para>hash object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>key</para></entry>
+<entry role="parameter_description"><para>pointer to key</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-hash-get.returns" role="returns">
+<title>Returns</title>
+<para> the value or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-hash-get-as-boolean" role="function">
+<title>librdf_hash_get_as_boolean&#160;()</title>
+<indexterm zone="librdf-hash-get-as-boolean"><primary>librdf_hash_get_as_boolean</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_hash_get_as_boolean (<parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *hash</parameter>,
+                            <parameter>const <link linkend="char"><type>char</type></link> *key</parameter>);</programlisting>
+<para>Lookup a hash key and decode value as a boolean.</para>
+<para>False values: "no", "false"
+True values: "yes", "true"</para>
+<refsect3 id="librdf-hash-get-as-boolean.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>hash</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-hash"><type>librdf_hash</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>key</para></entry>
+<entry role="parameter_description"><para>key string to look up</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-hash-get-as-boolean.returns" role="returns">
+<title>Returns</title>
+<para> &gt;0 (for true), 0 (for false) or &lt;0 (for key not found or not known boolean value)</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-hash-get-as-long" role="function">
+<title>librdf_hash_get_as_long&#160;()</title>
+<indexterm zone="librdf-hash-get-as-long"><primary>librdf_hash_get_as_long</primary></indexterm>
+<programlisting language="C"><link linkend="long"><returnvalue>long</returnvalue></link>
+librdf_hash_get_as_long (<parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *hash</parameter>,
+                         <parameter>const <link linkend="char"><type>char</type></link> *key</parameter>);</programlisting>
+<para>Lookup a hash key and decode value as a long.</para>
+<refsect3 id="librdf-hash-get-as-long.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>hash</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-hash"><type>librdf_hash</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>key</para></entry>
+<entry role="parameter_description"><para>key string to look up</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-hash-get-as-long.returns" role="returns">
+<title>Returns</title>
+<para> &gt;0 (for success), &lt;0 (for key not found or not known boolean value)</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-hash-get-del" role="function">
+<title>librdf_hash_get_del&#160;()</title>
+<indexterm zone="librdf-hash-get-del"><primary>librdf_hash_get_del</primary></indexterm>
+<programlisting language="C"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_hash_get_del (<parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *hash</parameter>,
+                     <parameter>const <link linkend="char"><type>char</type></link> *key</parameter>);</programlisting>
+<para>Retrieve one value from hash for a given key as string and remove all values with that key.</para>
+<para>The value returned is from newly allocated memory which the
+caller must free.</para>
+<refsect3 id="librdf-hash-get-del.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>hash</para></entry>
+<entry role="parameter_description"><para>hash object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>key</para></entry>
+<entry role="parameter_description"><para>pointer to key</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-hash-get-del.returns" role="returns">
+<title>Returns</title>
+<para> the value or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-hash-put-strings" role="function">
+<title>librdf_hash_put_strings&#160;()</title>
+<indexterm zone="librdf-hash-put-strings"><primary>librdf_hash_put_strings</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_hash_put_strings (<parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *hash</parameter>,
+                         <parameter>const <link linkend="char"><type>char</type></link> *key</parameter>,
+                         <parameter>const <link linkend="char"><type>char</type></link> *value</parameter>);</programlisting>
+<para>Insert key/value pairs into the hash as strings.</para>
+<para>The key and values are copied into the hash, no sharing i s done.</para>
+<refsect3 id="librdf-hash-put-strings.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>hash</para></entry>
+<entry role="parameter_description"><para>hash object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>key</para></entry>
+<entry role="parameter_description"><para>key </para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>value</para></entry>
+<entry role="parameter_description"><para>value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-hash-put-strings.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-hash-print" role="function">
+<title>librdf_hash_print&#160;()</title>
+<indexterm zone="librdf-hash-print"><primary>librdf_hash_print</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_hash_print (<parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *hash</parameter>,
+                   <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *fh</parameter>);</programlisting>
+<para>Pretty print the hash to a file descriptor.</para>
+<refsect3 id="librdf-hash-print.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>hash</para></entry>
+<entry role="parameter_description"><para>the hash</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fh</para></entry>
+<entry role="parameter_description"><para>file handle</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-hash-print-keys" role="function">
+<title>librdf_hash_print_keys&#160;()</title>
+<indexterm zone="librdf-hash-print-keys"><primary>librdf_hash_print_keys</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_hash_print_keys (<parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *hash</parameter>,
+                        <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *fh</parameter>);</programlisting>
+<para>Pretty print the keys to a file descriptor.</para>
+<refsect3 id="librdf-hash-print-keys.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>hash</para></entry>
+<entry role="parameter_description"><para>the hash</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fh</para></entry>
+<entry role="parameter_description"><para>file handle</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-hash-print-values" role="function">
+<title>librdf_hash_print_values&#160;()</title>
+<indexterm zone="librdf-hash-print-values"><primary>librdf_hash_print_values</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_hash_print_values (<parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *hash</parameter>,
+                          <parameter>const <link linkend="char"><type>char</type></link> *key_string</parameter>,
+                          <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *fh</parameter>);</programlisting>
+<para>Pretty print the values of one key to a file descriptor.</para>
+<refsect3 id="librdf-hash-print-values.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>hash</para></entry>
+<entry role="parameter_description"><para>the hash</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>key_string</para></entry>
+<entry role="parameter_description"><para>the key as a string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fh</para></entry>
+<entry role="parameter_description"><para>file handle</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-hash-interpret-template" role="function">
+<title>librdf_hash_interpret_template&#160;()</title>
+<indexterm zone="librdf-hash-interpret-template"><primary>librdf_hash_interpret_template</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_hash_interpret_template (<parameter>const unsigned <link linkend="char"><type>char</type></link> *template_string</parameter>,
+                                <parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *dictionary</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *prefix</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *suffix</parameter>);</programlisting>
+<para>Interpret keys in a template string to their value in a dictionary.</para>
+<para>Can be used to do variable substitution for a string where
+the syntax that marks the variable is defined by the <parameter>prefix</parameter>
+
+and <parameter>suffix</parameter>
+ strings, and the variables are stored in the <parameter>dictionary</parameter>
+
+hash table.</para>
+<refsect3 id="librdf-hash-interpret-template.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>template_string</para></entry>
+<entry role="parameter_description"><para>template string to interprate</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>dictionary</para></entry>
+<entry role="parameter_description"><para>dictionary of key/values to substitute</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>prefix</para></entry>
+<entry role="parameter_description"><para>prefix to mark a key in the template</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>suffix</para></entry>
+<entry role="parameter_description"><para>suffix to mark a key in the template</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-hash-interpret-template.returns" role="returns">
+<title>Returns</title>
+<para> Newly allocated string, or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-hash-from-string" role="function">
+<title>librdf_hash_from_string&#160;()</title>
+<indexterm zone="librdf-hash-from-string"><primary>librdf_hash_from_string</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_hash_from_string (<parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *hash</parameter>,
+                         <parameter>const <link linkend="char"><type>char</type></link> *string</parameter>);</programlisting>
+<para>Initialise a hash from a string.</para>
+<para>The string format is something like:
+key1='value1',key2='value2', key3='\'quoted value\''</para>
+<para>The 's are required and whitespace can appear around the = and ,s</para>
+<refsect3 id="librdf-hash-from-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>hash</para></entry>
+<entry role="parameter_description"><para>hash object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>hash encoded as a string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-hash-from-string.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-hash-to-string" role="function">
+<title>librdf_hash_to_string&#160;()</title>
+<indexterm zone="librdf-hash-to-string"><primary>librdf_hash_to_string</primary></indexterm>
+<programlisting language="C"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_hash_to_string (<parameter><link linkend="librdf-hash"><type>librdf_hash</type></link> *hash</parameter>,
+                       <parameter>const <link linkend="char"><type>char</type></link> *filter[]</parameter>);</programlisting>
+<para>Format the hash as a string, suitable for parsing by librdf_hash_from_string.</para>
+<para>Note: this method allocates a new string since this is a _to_ method
+and the caller must call <link linkend="librdf-free-memory"><function>librdf_free_memory()</function></link> to free the resulting memory.</para>
+<refsect3 id="librdf-hash-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>hash</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-hash"><type>librdf_hash</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>filter</para></entry>
+<entry role="parameter_description"><para>NULL terminated list of keys to ignore</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-hash-to-string.returns" role="returns">
+<title>Returns</title>
+<para> string representation of the hash or NULL on failure</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-hash.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="librdf-hash" role="typedef">
+<title>librdf_hash</title>
+<indexterm zone="librdf-hash"><primary>librdf_hash</primary></indexterm>
+<programlisting language="C">typedef struct librdf_hash_s librdf_hash;
+</programlisting>
+<para>Redland hash class.</para>
+</refsect2>
+<refsect2 id="librdf-hash-cursor" role="typedef">
+<title>librdf_hash_cursor</title>
+<indexterm zone="librdf-hash-cursor"><primary>librdf_hash_cursor</primary></indexterm>
+<programlisting language="C">typedef struct librdf_hash_cursor_s librdf_hash_cursor;
+</programlisting>
+<para>Redland hash cursor class.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

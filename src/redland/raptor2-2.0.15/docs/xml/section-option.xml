@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-option">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-option.top_of_page">section-option</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-option</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-option.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type">unsigned <link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-option-get-count">raptor_option_get_count</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-option-get-value-type-label">raptor_option_get_value_type_label</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-option-description"><returnvalue>raptor_option_description</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-world-get-option-description">raptor_world_get_option_description</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-option-description">raptor_free_option_description</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-option"><returnvalue>raptor_option</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-world-get-option-from-uri">raptor_world_get_option_from_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-option.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="raptor-option">raptor_option</link></entry></row>
+<row><entry role="datatype_keyword"></entry><entry role="function_name"><link linkend="raptor-option-description">raptor_option_description</link></entry></row>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="raptor-option-value-type">raptor_option_value_type</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-option.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-option.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-option-get-count" role="function">
+<title>raptor_option_get_count&#160;()</title>
+<indexterm zone="raptor-option-get-count"><primary>raptor_option_get_count</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_option_get_count (<parameter><type>void</type></parameter>);</programlisting>
+<para>Get the count of options defined.</para>
+<para>This is prefered to the compile time-only symbol <link linkend="RAPTOR-OPTION-LAST:CAPS"><type>RAPTOR_OPTION_LAST</type></link>
+and returns a count of the number of options which is
+<link linkend="RAPTOR-OPTION-LAST:CAPS"><type>RAPTOR_OPTION_LAST</type></link> + 1.</para>
+<refsect3 id="raptor-option-get-count.returns" role="returns">
+<title>Returns</title>
+<para> count of options in the <link linkend="raptor-option"><type>raptor_option</type></link> enumeration</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-option-get-value-type-label" role="function">
+<title>raptor_option_get_value_type_label&#160;()</title>
+<indexterm zone="raptor-option-get-value-type-label"><primary>raptor_option_get_value_type_label</primary></indexterm>
+<programlisting language="C">const <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_option_get_value_type_label (<parameter>const <link linkend="raptor-option-value-type"><type>raptor_option_value_type</type></link> type</parameter>);</programlisting>
+<para>Get a label for a value type</para>
+<refsect3 id="raptor-option-get-value-type-label.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>type</para></entry>
+<entry role="parameter_description"><para>value type</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-option-get-value-type-label.returns" role="returns">
+<title>Returns</title>
+<para> label for type or NULL for invalid type</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-get-option-description" role="function">
+<title>raptor_world_get_option_description&#160;()</title>
+<indexterm zone="raptor-world-get-option-description"><primary>raptor_world_get_option_description</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-option-description"><returnvalue>raptor_option_description</returnvalue></link>&#160;*
+raptor_world_get_option_description (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                     <parameter>const <link linkend="raptor-domain"><type>raptor_domain</type></link> domain</parameter>,
+                                     <parameter>const <link linkend="raptor-option"><type>raptor_option</type></link> option</parameter>);</programlisting>
+<para>Get a description of an option for a domain.</para>
+<para>The returned description must be freed with
+<link linkend="raptor-free-option-description"><function>raptor_free_option_description()</function></link>.</para>
+<refsect3 id="raptor-world-get-option-description.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>domain</para></entry>
+<entry role="parameter_description"><para>domain</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>option</para></entry>
+<entry role="parameter_description"><para>option enumeration (0+)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-world-get-option-description.returns" role="returns">
+<title>Returns</title>
+<para> option description or NULL on failure or if option is unknown</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-option-description" role="function">
+<title>raptor_free_option_description&#160;()</title>
+<indexterm zone="raptor-free-option-description"><primary>raptor_free_option_description</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_option_description (<parameter><link linkend="raptor-option-description"><type>raptor_option_description</type></link> *option_description</parameter>);</programlisting>
+<para>Destructor - free an option description object.</para>
+<refsect3 id="raptor-free-option-description.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>option_description</para></entry>
+<entry role="parameter_description"><para>option description</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-world-get-option-from-uri" role="function">
+<title>raptor_world_get_option_from_uri&#160;()</title>
+<indexterm zone="raptor-world-get-option-from-uri"><primary>raptor_world_get_option_from_uri</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-option"><returnvalue>raptor_option</returnvalue></link>
+raptor_world_get_option_from_uri (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                  <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>);</programlisting>
+<para>Get an option ID from a URI</para>
+<para>Option URIs are the concatenation of the string
+"http://feature.librdf.org/raptor-" plus the short name.</para>
+<para>They are automatically returned for any option described with
+<link linkend="raptor-world-get-option-description"><function>raptor_world_get_option_description()</function></link>.</para>
+<refsect3 id="raptor-world-get-option-from-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world instance</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>option URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-world-get-option-from-uri.returns" role="returns">
+<title>Returns</title>
+<para> &lt; 0 if the option is unknown or on error</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-option.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-option" role="enum">
+<title>enum raptor_option</title>
+<indexterm zone="raptor-option"><primary>raptor_option</primary></indexterm>
+<para>Raptor parser, serializer or XML writer options.</para>
+<refsect3 id="raptor-option.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-SCANNING:CAPS">RAPTOR_OPTION_SCANNING</para></entry>
+<entry role="enum_member_description"><para>If true (default false), the RDF/XML
+  parser will look for embedded rdf:RDF elements inside the XML
+  content, and not require that the XML start with an rdf:RDF root
+  element.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-ALLOW-NON-NS-ATTRIBUTES:CAPS">RAPTOR_OPTION_ALLOW_NON_NS_ATTRIBUTES</para></entry>
+<entry role="enum_member_description"><para>If true (default true)
+  then the RDF/XML parser will allow non-XML namespaced attributes
+  to be accepted as well as rdf: namespaced ones.  For example,
+  'about' and 'ID' will be interpreted as if they were rdf:about
+  and rdf:ID respectively.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-ALLOW-OTHER-PARSETYPES:CAPS">RAPTOR_OPTION_ALLOW_OTHER_PARSETYPES</para></entry>
+<entry role="enum_member_description"><para>If true (default true)
+  then the RDF/XML parser will allow unknown parsetypes to be
+  present and will pass them on to the user.  Unimplemented at
+  present.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-ALLOW-BAGID:CAPS">RAPTOR_OPTION_ALLOW_BAGID</para></entry>
+<entry role="enum_member_description"><para>If true (default true) then the
+  RDF/XML parser will support the rdf:bagID attribute that was
+  removed from the RDF/XML language when it was revised.  This
+  support may be removed in future.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-ALLOW-RDF-TYPE-RDF-LIST:CAPS">RAPTOR_OPTION_ALLOW_RDF_TYPE_RDF_LIST</para></entry>
+<entry role="enum_member_description"><para>If true (default false)
+  then the RDF/XML parser will generate the idList rdf:type
+  rdf:List triple in the handling of rdf:parseType="Collection".
+  This triple was removed during the revising of RDF/XML after
+  collections were initially added.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-NORMALIZE-LANGUAGE:CAPS">RAPTOR_OPTION_NORMALIZE_LANGUAGE</para></entry>
+<entry role="enum_member_description"><para>If true (default true) then
+  XML language values such as from xml:lang will be normalized to
+  lowercase.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-NON-NFC-FATAL:CAPS">RAPTOR_OPTION_NON_NFC_FATAL</para></entry>
+<entry role="enum_member_description"><para>If true (default false) then
+ illegal Unicode Normal Form C in literals will give a fatal
+ error, otherwise just a warning.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WARN-OTHER-PARSETYPES:CAPS">RAPTOR_OPTION_WARN_OTHER_PARSETYPES</para></entry>
+<entry role="enum_member_description"><para>If true (default true) then 
+  the RDF/XML parser will warn about unknown rdf:parseType values.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-CHECK-RDF-ID:CAPS">RAPTOR_OPTION_CHECK_RDF_ID</para></entry>
+<entry role="enum_member_description"><para>If true (default true) then the
+  RDF/XML will check rdf:ID attribute values for duplicates and
+  cause an error if any are found.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-RELATIVE-URIS:CAPS">RAPTOR_OPTION_RELATIVE_URIS</para></entry>
+<entry role="enum_member_description"><para>If true (default true) then
+  relative URIs will be used wherever possible when serializing.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WRITER-AUTO-INDENT:CAPS">RAPTOR_OPTION_WRITER_AUTO_INDENT</para></entry>
+<entry role="enum_member_description"><para>Automatically indent elements when
+  seriailizing.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WRITER-AUTO-EMPTY:CAPS">RAPTOR_OPTION_WRITER_AUTO_EMPTY</para></entry>
+<entry role="enum_member_description"><para>Automatically detect and
+  abbreviate empty elements when serializing.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WRITER-INDENT-WIDTH:CAPS">RAPTOR_OPTION_WRITER_INDENT_WIDTH</para></entry>
+<entry role="enum_member_description"><para>Integer number of spaces to use
+  for each indent level when serializing with auto indent.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WRITER-XML-VERSION:CAPS">RAPTOR_OPTION_WRITER_XML_VERSION</para></entry>
+<entry role="enum_member_description"><para>Integer XML version XML 1.0 (10) or XML 1.1 (11)</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WRITER-XML-DECLARATION:CAPS">RAPTOR_OPTION_WRITER_XML_DECLARATION</para></entry>
+<entry role="enum_member_description"><para>Write XML 1.0 or 1.1 declaration.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-NO-NET:CAPS">RAPTOR_OPTION_NO_NET</para></entry>
+<entry role="enum_member_description"><para>Deny network requests inside other requests.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-RESOURCE-BORDER:CAPS">RAPTOR_OPTION_RESOURCE_BORDER</para></entry>
+<entry role="enum_member_description"><para>Border color of resource
+  nodes for GraphViz DOT serializer.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-LITERAL-BORDER:CAPS">RAPTOR_OPTION_LITERAL_BORDER</para></entry>
+<entry role="enum_member_description"><para>Border color of literal nodes
+  for GraphViz DOT serializer.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-BNODE-BORDER:CAPS">RAPTOR_OPTION_BNODE_BORDER</para></entry>
+<entry role="enum_member_description"><para>Border color of blank nodes for
+  GraphViz DOT serializer.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-RESOURCE-FILL:CAPS">RAPTOR_OPTION_RESOURCE_FILL</para></entry>
+<entry role="enum_member_description"><para>Fill color of resource nodes
+  for GraphViz DOT serializer.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-LITERAL-FILL:CAPS">RAPTOR_OPTION_LITERAL_FILL</para></entry>
+<entry role="enum_member_description"><para>Fill color of literal nodes for
+  GraphViz DOT serializer.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-BNODE-FILL:CAPS">RAPTOR_OPTION_BNODE_FILL</para></entry>
+<entry role="enum_member_description"><para>Fill color of blank nodes for
+  GraphViz DOT serializer.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-HTML-TAG-SOUP:CAPS">RAPTOR_OPTION_HTML_TAG_SOUP</para></entry>
+<entry role="enum_member_description"><para>Use a lax HTML parser if an XML parser
+  fails when read HTML for GRDDL parser.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-MICROFORMATS:CAPS">RAPTOR_OPTION_MICROFORMATS</para></entry>
+<entry role="enum_member_description"><para>Look for microformats for GRDDL parser.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-HTML-LINK:CAPS">RAPTOR_OPTION_HTML_LINK</para></entry>
+<entry role="enum_member_description"><para>Look for head &lt;link&gt; to type rdf/xml
+  for GRDDL parser.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WWW-TIMEOUT:CAPS">RAPTOR_OPTION_WWW_TIMEOUT</para></entry>
+<entry role="enum_member_description"><para>Set timeout for internal WWW URI requests
+  for GRDDL parser.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WRITE-BASE-URI:CAPS">RAPTOR_OPTION_WRITE_BASE_URI</para></entry>
+<entry role="enum_member_description"><para>Write <parameter>base</parameter>
+ directive for Turtle/N3.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WWW-HTTP-CACHE-CONTROL:CAPS">RAPTOR_OPTION_WWW_HTTP_CACHE_CONTROL</para></entry>
+<entry role="enum_member_description"><para>HTTP Cache-Control: header</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WWW-HTTP-USER-AGENT:CAPS">RAPTOR_OPTION_WWW_HTTP_USER_AGENT</para></entry>
+<entry role="enum_member_description"><para>HTTP User-Agent: header</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-JSON-CALLBACK:CAPS">RAPTOR_OPTION_JSON_CALLBACK</para></entry>
+<entry role="enum_member_description"><para>JSON serializer callback function.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-JSON-EXTRA-DATA:CAPS">RAPTOR_OPTION_JSON_EXTRA_DATA</para></entry>
+<entry role="enum_member_description"><para>JSON serializer extra top-level data</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-RSS-TRIPLES:CAPS">RAPTOR_OPTION_RSS_TRIPLES</para></entry>
+<entry role="enum_member_description"><para>Atom/RSS serializer writes extra RDF triples it finds (none, rdf-xml, atom-triples)</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-ATOM-ENTRY-URI:CAPS">RAPTOR_OPTION_ATOM_ENTRY_URI</para></entry>
+<entry role="enum_member_description"><para>Atom entry URI.  If given, generate an Atom Entry Document with the item having the given URI, otherwise generate an Atom Feed Document with any items found.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-PREFIX-ELEMENTS:CAPS">RAPTOR_OPTION_PREFIX_ELEMENTS</para></entry>
+<entry role="enum_member_description"><para>Integer. If set, generate Atom/RSS1.0 documents with prefixed elements, otherwise unprefixed.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-STRICT:CAPS">RAPTOR_OPTION_STRICT</para></entry>
+<entry role="enum_member_description"><para>Boolean. If set, operate in strict conformance mode.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WWW-CERT-FILENAME:CAPS">RAPTOR_OPTION_WWW_CERT_FILENAME</para></entry>
+<entry role="enum_member_description"><para>String. SSL client certificate filename</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WWW-CERT-TYPE:CAPS">RAPTOR_OPTION_WWW_CERT_TYPE</para></entry>
+<entry role="enum_member_description"><para>String. SSL client certificate type</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WWW-CERT-PASSPHRASE:CAPS">RAPTOR_OPTION_WWW_CERT_PASSPHRASE</para></entry>
+<entry role="enum_member_description"><para>String. SSL client certificate passphrase</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-NO-FILE:CAPS">RAPTOR_OPTION_NO_FILE</para></entry>
+<entry role="enum_member_description"><para>Deny file reading requests inside other requests.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WWW-SSL-VERIFY-PEER:CAPS">RAPTOR_OPTION_WWW_SSL_VERIFY_PEER</para></entry>
+<entry role="enum_member_description"><para>Integer. SSL verify peer - non-0 to verify peer SSL certificate (default)</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-WWW-SSL-VERIFY-HOST:CAPS">RAPTOR_OPTION_WWW_SSL_VERIFY_HOST</para></entry>
+<entry role="enum_member_description"><para>Integer. SSL verify host - 0 none, 1 CN match, 2 host match (default). Other values are ignored.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-LOAD-EXTERNAL-ENTITIES:CAPS">RAPTOR_OPTION_LOAD_EXTERNAL_ENTITIES</para></entry>
+<entry role="enum_member_description"><para>When reading XML, load external entities.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-LAST:CAPS">RAPTOR_OPTION_LAST</para></entry>
+<entry role="enum_member_description"><para>Internal</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-option-description" role="struct">
+<title>raptor_option_description</title>
+<indexterm zone="raptor-option-description"><primary>raptor_option_description</primary></indexterm>
+<programlisting language="C">typedef struct {
+  raptor_domain domain;
+  raptor_option option;
+  raptor_option_value_type value_type;
+  const char* name;
+  size_t name_len;
+  const char* label;
+  raptor_uri* uri;
+} raptor_option_description;
+</programlisting>
+<para>Description of an option for a domain.</para>
+<refsect3 id="raptor-option-description.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-domain"><type>raptor_domain</type></link>&#160;<structfield id="raptor-option-description.domain">domain</structfield>;</para></entry>
+<entry role="struct_member_description"><para>domain ID</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-option"><type>raptor_option</type></link>&#160;<structfield id="raptor-option-description.option">option</structfield>;</para></entry>
+<entry role="struct_member_description"><para>option ID</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-option-value-type"><type>raptor_option_value_type</type></link>&#160;<structfield id="raptor-option-description.value-type">value_type</structfield>;</para></entry>
+<entry role="struct_member_description"><para>data type of option value</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>const&#160;<link linkend="char"><type>char</type></link>&#160;*<structfield id="raptor-option-description.name">name</structfield>;</para></entry>
+<entry role="struct_member_description"><para>short name for option</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="size-t"><type>size_t</type></link>&#160;<structfield id="raptor-option-description.name-len">name_len</structfield>;</para></entry>
+<entry role="struct_member_description"><para>length of <parameter>name</parameter>
+</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para>const&#160;<link linkend="char"><type>char</type></link>&#160;*<structfield id="raptor-option-description.label">label</structfield>;</para></entry>
+<entry role="struct_member_description"><para>description of option</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-uri"><type>raptor_uri</type></link>&#160;*<structfield id="raptor-option-description.uri">uri</structfield>;</para></entry>
+<entry role="struct_member_description"><para>URI identifying option</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+<refsect2 id="raptor-option-value-type" role="enum">
+<title>enum raptor_option_value_type</title>
+<indexterm zone="raptor-option-value-type"><primary>raptor_option_value_type</primary></indexterm>
+<para>Option value types.</para>
+<refsect3 id="raptor-option-value-type.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-VALUE-TYPE-BOOL:CAPS">RAPTOR_OPTION_VALUE_TYPE_BOOL</para></entry>
+<entry role="enum_member_description"><para>Boolean integer value. Non-0 is true</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-VALUE-TYPE-INT:CAPS">RAPTOR_OPTION_VALUE_TYPE_INT</para></entry>
+<entry role="enum_member_description"><para>Decimal integer value</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-VALUE-TYPE-STRING:CAPS">RAPTOR_OPTION_VALUE_TYPE_STRING</para></entry>
+<entry role="enum_member_description"><para>String value</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-VALUE-TYPE-URI:CAPS">RAPTOR_OPTION_VALUE_TYPE_URI</para></entry>
+<entry role="enum_member_description"><para>URI String value.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-OPTION-VALUE-TYPE-LAST:CAPS">RAPTOR_OPTION_VALUE_TYPE_LAST</para></entry>
+<entry role="enum_member_description"><para>internal</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+
+</refentry>

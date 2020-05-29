@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-stream">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-stream.top_of_page">stream</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>stream</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-stream.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="librdf-statement"><returnvalue>librdf_statement</returnvalue></link>&#160;*
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="librdf-stream-map-handler">*librdf_stream_map_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="librdf-stream-map-free-context-handler">*librdf_stream_map_free_context_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-stream">librdf_new_stream</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-stream-from-node-iterator">librdf_new_stream_from_node_iterator</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-empty-stream">librdf_new_empty_stream</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-free-stream">librdf_free_stream</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-stream-end">librdf_stream_end</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-stream-next">librdf_stream_next</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-statement"><returnvalue>librdf_statement</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-stream-get-object">librdf_stream_get_object</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-stream-get-context">librdf_stream_get_context</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-stream-get-context2">librdf_stream_get_context2</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-stream-add-map">librdf_stream_add_map</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-stream-print">librdf_stream_print</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-stream-write">librdf_stream_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-stream.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-stream">librdf_stream</link></entry></row>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="librdf-stream-get-method-flags">librdf_stream_get_method_flags</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-stream.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-stream.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-stream-map-handler" role="function">
+<title>librdf_stream_map_handler&#160;()</title>
+<indexterm zone="librdf-stream-map-handler"><primary>librdf_stream_map_handler</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-statement"><returnvalue>librdf_statement</returnvalue></link>&#160;*
+<phrase role="c_punctuation">(</phrase>*librdf_stream_map_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>,
+                              <parameter><link linkend="void"><type>void</type></link> *map_context</parameter>,
+                              <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *item</parameter>);</programlisting>
+<para>Map function for a <link linkend="librdf-stream"><type>librdf_stream</type></link> map operation.</para>
+<para>See <link linkend="librdf-stream-add-map"><function>librdf_stream_add_map()</function></link>.</para>
+<refsect3 id="librdf-stream-map-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>Stream that this map is operating over.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>map_context</para></entry>
+<entry role="parameter_description"><para>Map data context pointer.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>item</para></entry>
+<entry role="parameter_description"><para>Pointer to the current item in the iteration.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-stream-map-handler.returns" role="returns">
+<title>Returns</title>
+<para> item in keep the iteration or NULL to remove it</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-stream-map-free-context-handler" role="function">
+<title>librdf_stream_map_free_context_handler&#160;()</title>
+<indexterm zone="librdf-stream-map-free-context-handler"><primary>librdf_stream_map_free_context_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*librdf_stream_map_free_context_handler<phrase role="c_punctuation">)</phrase>
+                               (<parameter><link linkend="void"><type>void</type></link> *map_context</parameter>);</programlisting>
+<para>Free handler function for a <link linkend="librdf-stream"><type>librdf_stream</type></link> map operation.</para>
+<para>See <link linkend="librdf-stream-add-map"><function>librdf_stream_add_map()</function></link>.</para>
+<refsect3 id="librdf-stream-map-free-context-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>map_context</para></entry>
+<entry role="parameter_description"><para>Map data context pointer.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-stream" role="function">
+<title>librdf_new_stream&#160;()</title>
+<indexterm zone="librdf-new-stream"><primary>librdf_new_stream</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_new_stream (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                   <parameter><link linkend="void"><type>void</type></link> *context</parameter>,
+                   <parameter><link linkend="int"><type>int</type></link> (*is_end_method) (void*)</parameter>,
+                   <parameter><link linkend="int"><type>int</type></link> (*next_method) (void*)</parameter>,
+                   <parameter><link linkend="void"><type>void</type></link>* (*get_method) (void*, int)</parameter>,
+                   <parameter><link linkend="void"><type>void</type></link> (*finished_method) (void*)</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-stream"><type>librdf_stream</type></link>.</para>
+<para>Creates a new stream with an implementation based on the passed in
+functions.  The functions next_statement and end_of_stream will be called
+multiple times until either of them signify the end of stream by
+returning NULL or non 0 respectively.  The finished function is called
+once only when the stream object is destroyed with <link linkend="librdf-free-stream"><function>librdf_free_stream()</function></link></para>
+<para>A mapping function can be set for the stream using <link linkend="librdf-stream-add-map"><function>librdf_stream_add_map()</function></link>
+function which allows the statements generated by the stream to be
+filtered and/or altered as they are generated before passing back
+to the user.</para>
+<refsect3 id="librdf-new-stream.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para>context to pass to the stream implementing objects</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>is_end_method</para></entry>
+<entry role="parameter_description"><para>pointer to function to test for end of stream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>next_method</para></entry>
+<entry role="parameter_description"><para>pointer to function to move to the next statement in stream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>get_method</para></entry>
+<entry role="parameter_description"><para>pointer to function to get the current statement</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>finished_method</para></entry>
+<entry role="parameter_description"><para>pointer to function to finish the stream.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-stream.returns" role="returns">
+<title>Returns</title>
+<para>  a new <link linkend="librdf-stream"><type>librdf_stream</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-stream-from-node-iterator" role="function">
+<title>librdf_new_stream_from_node_iterator&#160;()</title>
+<indexterm zone="librdf-new-stream-from-node-iterator"><primary>librdf_new_stream_from_node_iterator</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_new_stream_from_node_iterator (<parameter><link linkend="librdf-iterator"><type>librdf_iterator</type></link> *iterator</parameter>,
+                                      <parameter><link linkend="librdf-statement"><type>librdf_statement</type></link> *statement</parameter>,
+                                      <parameter><link linkend="librdf-statement-part"><type>librdf_statement_part</type></link> field</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-stream"><type>librdf_stream</type></link> from an iterator of nodes.</para>
+<para>Creates a new <link linkend="librdf-stream"><type>librdf_stream</type></link> using the passed in <link linkend="librdf-iterator"><type>librdf_iterator</type></link>
+which generates a series of <link linkend="librdf-node"><type>librdf_node</type></link> objects.  The resulting
+nodes are then inserted into the given statement and returned.
+The field attribute indicates which statement node is being generated.</para>
+<refsect3 id="librdf-new-stream-from-node-iterator.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>iterator</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-iterator"><type>librdf_iterator</type></link> of <link linkend="librdf-node"><type>librdf_node</type></link> objects</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>statement</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-statement"><type>librdf_statement</type></link> prototype with one NULL node space</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>field</para></entry>
+<entry role="parameter_description"><para>node part of statement</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-stream-from-node-iterator.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-stream"><type>librdf_stream</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-empty-stream" role="function">
+<title>librdf_new_empty_stream&#160;()</title>
+<indexterm zone="librdf-new-empty-stream"><primary>librdf_new_empty_stream</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-stream"><returnvalue>librdf_stream</returnvalue></link>&#160;*
+librdf_new_empty_stream (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-stream"><type>librdf_stream</type></link> with no content.</para>
+<refsect3 id="librdf-new-empty-stream.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-empty-stream.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-stream"><type>librdf_stream</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-free-stream" role="function">
+<title>librdf_free_stream&#160;()</title>
+<indexterm zone="librdf-free-stream"><primary>librdf_free_stream</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_free_stream (<parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>);</programlisting>
+<para>Destructor - destroy an <link linkend="libdf-stream"><type>libdf_stream</type></link> object.</para>
+<refsect3 id="librdf-free-stream.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-stream"><type>librdf_stream</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-stream-end" role="function">
+<title>librdf_stream_end&#160;()</title>
+<indexterm zone="librdf-stream-end"><primary>librdf_stream_end</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_stream_end (<parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>);</programlisting>
+<para>Test if the stream has ended.</para>
+<refsect3 id="librdf-stream-end.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-stream"><type>librdf_stream</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-stream-end.returns" role="returns">
+<title>Returns</title>
+<para> non 0 at end of stream.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-stream-next" role="function">
+<title>librdf_stream_next&#160;()</title>
+<indexterm zone="librdf-stream-next"><primary>librdf_stream_next</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_stream_next (<parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>);</programlisting>
+<para>Move to the next librdf_statement in the stream.</para>
+<refsect3 id="librdf-stream-next.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-stream"><type>librdf_stream</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-stream-next.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if the stream has finished</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-stream-get-object" role="function">
+<title>librdf_stream_get_object&#160;()</title>
+<indexterm zone="librdf-stream-get-object"><primary>librdf_stream_get_object</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-statement"><returnvalue>librdf_statement</returnvalue></link>&#160;*
+librdf_stream_get_object (<parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>);</programlisting>
+<para>Get the current librdf_statement in the stream.</para>
+<para>This method returns a SHARED pointer to the current statement object
+which should be copied by the caller to preserve it if the stream
+is moved on <link linkend="librdf-stream-next"><function>librdf_stream_next()</function></link> or if it should last after the
+stream is closed. <link linkend="librdf-new-statement-from-statement"><function>librdf_new_statement_from_statement()</function></link> can be used
+for copying the statement.</para>
+<refsect3 id="librdf-stream-get-object.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-stream"><type>librdf_stream</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-stream-get-object.returns" role="returns">
+<title>Returns</title>
+<para> the current <link linkend="librdf-statement"><type>librdf_statement</type></link> object or NULL at end of stream.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-stream-get-context" role="function" condition="deprecated:">
+<title>librdf_stream_get_context&#160;()</title>
+<indexterm zone="librdf-stream-get-context" role="deprecated"><primary>librdf_stream_get_context</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>&#160;*
+librdf_stream_get_context (<parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>);</programlisting>
+<warning><para><literal>librdf_stream_get_context</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Get the context of the current object on the stream.</para>
+<para>This method returns a SHARED pointer to the current context node object
+which should be copied by the caller to preserve it if the stream
+is moved on librdf_stream_next or if it should last after the
+stream is closed.</para>
+<para><parameter>Deprecated</parameter>
+: Use <link linkend="librdf-stream-get-context2"><function>librdf_stream_get_context2()</function></link> which returns a <link linkend="librdf-node"><type>librdf_node</type></link></para>
+<refsect3 id="librdf-stream-get-context.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>the <link linkend="librdf-stream"><type>librdf_stream</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-stream-get-context.returns" role="returns">
+<title>Returns</title>
+<para> The context node (can be NULL) or NULL if the stream has finished.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-stream-get-context2" role="function">
+<title>librdf_stream_get_context2&#160;()</title>
+<indexterm zone="librdf-stream-get-context2"><primary>librdf_stream_get_context2</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_stream_get_context2 (<parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>);</programlisting>
+<para>Get the context of the current object on the stream.</para>
+<para>This method returns a SHARED pointer to the current context node object
+which should be copied by the caller to preserve it if the stream
+is moved on librdf_stream_next or if it should last after the
+stream is closed.</para>
+<refsect3 id="librdf-stream-get-context2.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>the <link linkend="librdf-stream"><type>librdf_stream</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-stream-get-context2.returns" role="returns">
+<title>Returns</title>
+<para> The context node (can be NULL) or NULL if the stream has finished.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-stream-add-map" role="function">
+<title>librdf_stream_add_map&#160;()</title>
+<indexterm zone="librdf-stream-add-map"><primary>librdf_stream_add_map</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_stream_add_map (<parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>,
+                       <parameter><link linkend="librdf-stream-map-handler"><type>librdf_stream_map_handler</type></link> map_function</parameter>,
+                       <parameter><link linkend="librdf-stream-map-free-context-handler"><type>librdf_stream_map_free_context_handler</type></link> free_context</parameter>,
+                       <parameter><link linkend="void"><type>void</type></link> *map_context</parameter>);</programlisting>
+<para>Add a librdf_stream mapping function.</para>
+<para>Adds an stream mapping function which operates over the stream to
+select which elements are returned; it will be applied as soon as
+this method is called.</para>
+<para>Several mapping functions can be added and they are applied in
+the order given.</para>
+<para>The mapping function should return the statement to return, or NULL
+to remove it from the stream.</para>
+<refsect3 id="librdf-stream-add-map.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>the stream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>map_function</para></entry>
+<entry role="parameter_description"><para>the function to perform the mapping</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>free_context</para></entry>
+<entry role="parameter_description"><para>the function to use to free the context (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>map_context</para></entry>
+<entry role="parameter_description"><para>the context to pass to the map function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-stream-add-map.returns" role="returns">
+<title>Returns</title>
+<para> Non 0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-stream-print" role="function" condition="deprecated:">
+<title>librdf_stream_print&#160;()</title>
+<indexterm zone="librdf-stream-print" role="deprecated"><primary>librdf_stream_print</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_stream_print (<parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>,
+                     <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *fh</parameter>);</programlisting>
+<warning><para><literal>librdf_stream_print</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Print the stream.</para>
+<para>This prints the remaining statements of the stream to the given
+file handle.  Note that after this method is called the stream
+will be empty so that <link linkend="librdf-stream-end"><function>librdf_stream_end()</function></link> will always be true
+and <link linkend="librdf-stream-next"><function>librdf_stream_next()</function></link> will always return NULL.  The only
+useful operation is to dispose of the stream with the
+<link linkend="librdf-free-stream"><function>librdf_free_stream()</function></link> destructor.</para>
+<para>This method is for debugging and the format of the output should
+not be relied on.</para>
+<para><parameter>Deprecated</parameter>
+: Use <link linkend="librdf-stream-write"><function>librdf_stream_write()</function></link> to write to
+<link linkend="raptor-iostream"><type>raptor_iostream</type></link> which can be made to write to a string.  Use a
+<link linkend="librdf-serializer"><type>librdf_serializer</type></link> to write proper syntax formats.</para>
+<refsect3 id="librdf-stream-print.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>the stream object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fh</para></entry>
+<entry role="parameter_description"><para>the FILE stream to print to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-stream-write" role="function">
+<title>librdf_stream_write&#160;()</title>
+<indexterm zone="librdf-stream-write"><primary>librdf_stream_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_stream_write (<parameter><link linkend="librdf-stream"><type>librdf_stream</type></link> *stream</parameter>,
+                     <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a stream of triples to an iostream in a debug format.</para>
+<para>This prints the remaining statements of the stream to the given
+<link linkend="raptor-iostream"><type>raptor_iostream</type></link> in a debug format.</para>
+<para>Note that after this method is called the stream will be empty so
+that <link linkend="librdf-stream-end"><function>librdf_stream_end()</function></link> will always be true and
+<link linkend="librdf-stream-next"><function>librdf_stream_next()</function></link> will always return NULL.  The only useful
+operation is to dispose of the stream with the
+<link linkend="librdf-free-stream"><function>librdf_free_stream()</function></link> destructor.</para>
+<para>This method is for debugging and the format of the output should
+not be relied on.  In particular, when contexts are used the
+result may be 4 nodes.</para>
+<refsect3 id="librdf-stream-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>stream</para></entry>
+<entry role="parameter_description"><para>the stream object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>the iostream to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-stream-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-stream.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="librdf-stream" role="typedef">
+<title>librdf_stream</title>
+<indexterm zone="librdf-stream"><primary>librdf_stream</primary></indexterm>
+<programlisting language="C">typedef struct librdf_stream_s librdf_stream;
+</programlisting>
+<para>Redland stream class.</para>
+</refsect2>
+<refsect2 id="librdf-stream-get-method-flags" role="enum">
+<title>enum librdf_stream_get_method_flags</title>
+<indexterm zone="librdf-stream-get-method-flags"><primary>librdf_stream_get_method_flags</primary></indexterm>
+<para>Flags for <link linkend="librdf-new-stream"><function>librdf_new_stream()</function></link> get_method function pointer.</para>
+<refsect3 id="librdf-stream-get-method-flags.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-STREAM-GET-METHOD-GET-OBJECT:CAPS">LIBRDF_STREAM_GET_METHOD_GET_OBJECT</para></entry>
+<entry role="enum_member_description"><para>get object from iterator - implementing <link linkend="librdf-stream-get-object"><function>librdf_stream_get_object()</function></link></para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-STREAM-GET-METHOD-GET-CONTEXT:CAPS">LIBRDF_STREAM_GET_METHOD_GET_CONTEXT</para></entry>
+<entry role="enum_member_description"><para>get context from iterator - implementing <link linkend="librdf-stream-get-context"><function>librdf_stream_get_context()</function></link></para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+
+</refentry>

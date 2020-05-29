@@ -1,0 +1,6 @@
+NESTED_QSORT
+RAPTOR_NORETURN
+compar
+nested_cmp
+qsort_r
+ssort_r

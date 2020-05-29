@@ -1,0 +1,1219 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-iostream">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-iostream.top_of_page">section-iostream</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-iostream</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-iostream.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-iostream-init-func">*raptor_iostream_init_func</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-iostream-finish-func">*raptor_iostream_finish_func</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-iostream-write-byte-func">*raptor_iostream_write_byte_func</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-iostream-write-bytes-func">*raptor_iostream_write_bytes_func</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-iostream-write-end-func">*raptor_iostream_write_end_func</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-iostream-read-bytes-func">*raptor_iostream_read_bytes_func</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="raptor-iostream-read-eof-func">*raptor_iostream_read_eof_func</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-iostream-from-handler">raptor_new_iostream_from_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-iostream-from-sink">raptor_new_iostream_from_sink</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-iostream-from-filename">raptor_new_iostream_from_filename</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-iostream-from-file-handle">raptor_new_iostream_from_file_handle</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-iostream-from-string">raptor_new_iostream_from_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-iostream-to-sink">raptor_new_iostream_to_sink</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-iostream-to-filename">raptor_new_iostream_to_filename</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-iostream-to-file-handle">raptor_new_iostream_to_file_handle</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-iostream-to-string">raptor_new_iostream_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-iostream">raptor_free_iostream</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-iostream-hexadecimal-write">raptor_iostream_hexadecimal_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-iostream-read-bytes">raptor_iostream_read_bytes</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-iostream-read-eof">raptor_iostream_read_eof</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="long"><returnvalue>long</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-iostream-tell">raptor_iostream_tell</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-iostream-counted-string-write">raptor_iostream_counted_string_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-iostream-decimal-write">raptor_iostream_decimal_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-iostream-string-write">raptor_iostream_string_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-iostream-write-byte">raptor_iostream_write_byte</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-iostream-write-bytes">raptor_iostream_write_bytes</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-iostream-write-end">raptor_iostream_write_end</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-bnodeid-ntriples-write">raptor_bnodeid_ntriples_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-string-escaped-write">raptor_string_escaped_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-term-escaped-write">raptor_term_escaped_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-uri-escaped-write">raptor_uri_escaped_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-string-ntriples-write">raptor_string_ntriples_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-string-python-write">raptor_string_python_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-iostream.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-iostream">raptor_iostream</link></entry></row>
+<row><entry role="datatype_keyword"></entry><entry role="function_name"><link linkend="raptor-iostream-handler">raptor_iostream_handler</link></entry></row>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="raptor-escaped-write-bitflags">raptor_escaped_write_bitflags</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-iostream.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-iostream.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-iostream-init-func" role="function">
+<title>raptor_iostream_init_func&#160;()</title>
+<indexterm zone="raptor-iostream-init-func"><primary>raptor_iostream_init_func</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_iostream_init_func<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *context</parameter>);</programlisting>
+<para>Handler function for <link linkend="raptor-iostream"><type>raptor_iostream</type></link> initialising.</para>
+<refsect3 id="raptor-iostream-init-func.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para>stream context data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-init-func.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-finish-func" role="function">
+<title>raptor_iostream_finish_func&#160;()</title>
+<indexterm zone="raptor-iostream-finish-func"><primary>raptor_iostream_finish_func</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_iostream_finish_func<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *context</parameter>);</programlisting>
+<para>Handler function for <link linkend="raptor-iostream"><type>raptor_iostream</type></link> terminating.</para>
+<refsect3 id="raptor-iostream-finish-func.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para>stream context data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-write-byte-func" role="function">
+<title>raptor_iostream_write_byte_func&#160;()</title>
+<indexterm zone="raptor-iostream-write-byte-func"><primary>raptor_iostream_write_byte_func</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_iostream_write_byte_func<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *context</parameter>,
+                                    <parameter>const <link linkend="int"><type>int</type></link> byte</parameter>);</programlisting>
+<para>Handler function for implementing <link linkend="raptor-iostream-write-byte"><function>raptor_iostream_write_byte()</function></link>.</para>
+<refsect3 id="raptor-iostream-write-byte-func.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para>stream context data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>byte</para></entry>
+<entry role="parameter_description"><para>byte to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-write-byte-func.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-write-bytes-func" role="function">
+<title>raptor_iostream_write_bytes_func&#160;()</title>
+<indexterm zone="raptor-iostream-write-bytes-func"><primary>raptor_iostream_write_bytes_func</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_iostream_write_bytes_func<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *context</parameter>,
+                                     <parameter>const <link linkend="void"><type>void</type></link> *ptr</parameter>,
+                                     <parameter><link linkend="size-t"><type>size_t</type></link> size</parameter>,
+                                     <parameter><link linkend="size-t"><type>size_t</type></link> nmemb</parameter>);</programlisting>
+<para>Handler function for implementing <link linkend="raptor-iostream-write-bytes"><function>raptor_iostream_write_bytes()</function></link>.</para>
+<refsect3 id="raptor-iostream-write-bytes-func.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para>stream context data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>ptr</para></entry>
+<entry role="parameter_description"><para>pointer to bytes to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>size</para></entry>
+<entry role="parameter_description"><para>size of item</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nmemb</para></entry>
+<entry role="parameter_description"><para>number of items</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-write-bytes-func.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-write-end-func" role="function">
+<title>raptor_iostream_write_end_func&#160;()</title>
+<indexterm zone="raptor-iostream-write-end-func"><primary>raptor_iostream_write_end_func</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_iostream_write_end_func<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *context</parameter>);</programlisting>
+<para>Handler function for implementing <link linkend="raptor-iostream-write-end"><function>raptor_iostream_write_end()</function></link>.</para>
+<refsect3 id="raptor-iostream-write-end-func.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para>stream context data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-write-end-func.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-read-bytes-func" role="function">
+<title>raptor_iostream_read_bytes_func&#160;()</title>
+<indexterm zone="raptor-iostream-read-bytes-func"><primary>raptor_iostream_read_bytes_func</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_iostream_read_bytes_func<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *context</parameter>,
+                                    <parameter><link linkend="void"><type>void</type></link> *ptr</parameter>,
+                                    <parameter><link linkend="size-t"><type>size_t</type></link> size</parameter>,
+                                    <parameter><link linkend="size-t"><type>size_t</type></link> nmemb</parameter>);</programlisting>
+<para>Handler function for implementing <link linkend="raptor-iostream-read-bytes"><function>raptor_iostream_read_bytes()</function></link>.</para>
+<refsect3 id="raptor-iostream-read-bytes-func.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para>stream context data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>ptr</para></entry>
+<entry role="parameter_description"><para>pointer to buffer to read into</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>size</para></entry>
+<entry role="parameter_description"><para>size of buffer</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nmemb</para></entry>
+<entry role="parameter_description"><para>number of items</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-read-bytes-func.returns" role="returns">
+<title>Returns</title>
+<para> number of items read, 0 or &lt; <parameter>size</parameter>
+on EOF, &lt;0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-read-eof-func" role="function">
+<title>raptor_iostream_read_eof_func&#160;()</title>
+<indexterm zone="raptor-iostream-read-eof-func"><primary>raptor_iostream_read_eof_func</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*raptor_iostream_read_eof_func<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *context</parameter>);</programlisting>
+<para>Handler function for implementing <link linkend="raptor-iostream-read-eof"><function>raptor_iostream_read_eof()</function></link>.</para>
+<refsect3 id="raptor-iostream-read-eof-func.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>context</para></entry>
+<entry role="parameter_description"><para>stream context data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-read-eof-func.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if EOF</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-iostream-from-handler" role="function">
+<title>raptor_new_iostream_from_handler&#160;()</title>
+<indexterm zone="raptor-new-iostream-from-handler"><primary>raptor_new_iostream_from_handler</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+raptor_new_iostream_from_handler (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                  <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                                  <parameter>const <link linkend="raptor-iostream-handler"><type>raptor_iostream_handler</type></link> * const handler</parameter>);</programlisting>
+<para>Create a new iostream over a user-defined handler</para>
+<refsect3 id="raptor-new-iostream-from-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>pointer to context information to pass in to calls</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>pointer to handler methods</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-iostream-from-handler.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="raptor-iostream"><type>raptor_iostream</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-iostream-from-sink" role="function">
+<title>raptor_new_iostream_from_sink&#160;()</title>
+<indexterm zone="raptor-new-iostream-from-sink"><primary>raptor_new_iostream_from_sink</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+raptor_new_iostream_from_sink (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>);</programlisting>
+<para>Create a new read iostream from a sink, returning no data.</para>
+<para>Provides an I/O source that returns end of input immediately on
+reads, and throw away all writes. Same as
+<link linkend="raptor-new-iostream-to-sink"><function>raptor_new_iostream_to_sink()</function></link></para>
+<refsect3 id="raptor-new-iostream-from-sink.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-iostream-from-sink.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="raptor-iostream"><type>raptor_iostream</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-iostream-from-filename" role="function">
+<title>raptor_new_iostream_from_filename&#160;()</title>
+<indexterm zone="raptor-new-iostream-from-filename"><primary>raptor_new_iostream_from_filename</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+raptor_new_iostream_from_filename (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                   <parameter>const <link linkend="char"><type>char</type></link> *filename</parameter>);</programlisting>
+<para>Constructor - create a new iostream reading from a filename.</para>
+<refsect3 id="raptor-new-iostream-from-filename.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>filename</para></entry>
+<entry role="parameter_description"><para>Input filename to open and read from</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-iostream-from-filename.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="raptor-iostream"><type>raptor_iostream</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-iostream-from-file-handle" role="function">
+<title>raptor_new_iostream_from_file_handle&#160;()</title>
+<indexterm zone="raptor-new-iostream-from-file-handle"><primary>raptor_new_iostream_from_file_handle</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+raptor_new_iostream_from_file_handle (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                      <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *handle</parameter>);</programlisting>
+<para>Constructor - create a new iostream reading from a file_handle.</para>
+<para>The <parameter>handle</parameter>
+ must already be open for reading.
+NOTE: This does not fclose the <parameter>handle</parameter>
+ when it is finished.</para>
+<refsect3 id="raptor-new-iostream-from-file-handle.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handle</para></entry>
+<entry role="parameter_description"><para>Input file_handle to open and read from</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-iostream-from-file-handle.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="raptor-iostream"><type>raptor_iostream</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-iostream-from-string" role="function">
+<title>raptor_new_iostream_from_string&#160;()</title>
+<indexterm zone="raptor-new-iostream-from-string"><primary>raptor_new_iostream_from_string</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+raptor_new_iostream_from_string (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                 <parameter><link linkend="void"><type>void</type></link> *string</parameter>,
+                                 <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Constructor - create a new iostream reading from a string.</para>
+<refsect3 id="raptor-new-iostream-from-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>pointer to string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-iostream-from-string.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="raptor-iostream"><type>raptor_iostream</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-iostream-to-sink" role="function">
+<title>raptor_new_iostream_to_sink&#160;()</title>
+<indexterm zone="raptor-new-iostream-to-sink"><primary>raptor_new_iostream_to_sink</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+raptor_new_iostream_to_sink (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>);</programlisting>
+<para>Create a new write iostream to a sink, throwing away all data.</para>
+<para>Provides an that throw away all writes and returns end of input
+immediately on reads.  Same as <link linkend="raptor-new-iostream-from-sink"><function>raptor_new_iostream_from_sink()</function></link></para>
+<refsect3 id="raptor-new-iostream-to-sink.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-iostream-to-sink.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="raptor-iostream"><type>raptor_iostream</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-iostream-to-filename" role="function">
+<title>raptor_new_iostream_to_filename&#160;()</title>
+<indexterm zone="raptor-new-iostream-to-filename"><primary>raptor_new_iostream_to_filename</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+raptor_new_iostream_to_filename (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                 <parameter>const <link linkend="char"><type>char</type></link> *filename</parameter>);</programlisting>
+<para>Constructor - create a new iostream writing to a filename.</para>
+<refsect3 id="raptor-new-iostream-to-filename.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>filename</para></entry>
+<entry role="parameter_description"><para>Output filename to open and write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-iostream-to-filename.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="raptor-iostream"><type>raptor_iostream</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-iostream-to-file-handle" role="function">
+<title>raptor_new_iostream_to_file_handle&#160;()</title>
+<indexterm zone="raptor-new-iostream-to-file-handle"><primary>raptor_new_iostream_to_file_handle</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+raptor_new_iostream_to_file_handle (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                                    <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *handle</parameter>);</programlisting>
+<para>Constructor - create a new iostream writing to a FILE*.</para>
+<para>The <parameter>handle</parameter>
+ must already be open for writing.
+NOTE: This does not fclose the <parameter>handle</parameter>
+ when it is finished.</para>
+<refsect3 id="raptor-new-iostream-to-file-handle.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handle</para></entry>
+<entry role="parameter_description"><para>FILE* handle to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-iostream-to-file-handle.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="raptor-iostream"><type>raptor_iostream</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-iostream-to-string" role="function">
+<title>raptor_new_iostream_to_string&#160;()</title>
+<indexterm zone="raptor-new-iostream-to-string"><primary>raptor_new_iostream_to_string</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-iostream"><returnvalue>raptor_iostream</returnvalue></link>&#160;*
+raptor_new_iostream_to_string (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                               <parameter><link linkend="void"><type>void</type></link> **string_p</parameter>,
+                               <parameter><link linkend="size-t"><type>size_t</type></link> *length_p</parameter>,
+                               <parameter><link linkend="raptor-data-malloc-handler"><type>raptor_data_malloc_handler</type></link> const malloc_handler</parameter>);</programlisting>
+<para>Constructor - create a new iostream writing to a string.</para>
+<para>If <parameter>malloc_handler</parameter>
+ is null, raptor will allocate it using it's
+own memory allocator.  *<parameter>string_p</parameter>
+ is set to NULL on failure (and
+*<parameter>length_p</parameter>
+ to 0 if <parameter>length_p</parameter>
+ is not NULL).</para>
+<refsect3 id="raptor-new-iostream-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string_p</para></entry>
+<entry role="parameter_description"><para>pointer to location to hold string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length_p</para></entry>
+<entry role="parameter_description"><para>pointer to location to hold length of string (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>malloc_handler</para></entry>
+<entry role="parameter_description"><para>pointer to <link linkend="malloc"><function>malloc()</function></link> to use to make string (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-iostream-to-string.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="raptor-iostream"><type>raptor_iostream</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-iostream" role="function">
+<title>raptor_free_iostream&#160;()</title>
+<indexterm zone="raptor-free-iostream"><primary>raptor_free_iostream</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_iostream (<parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Destructor - destroy an iostream.</para>
+<refsect3 id="raptor-free-iostream.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>iostream object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-hexadecimal-write" role="function">
+<title>raptor_iostream_hexadecimal_write&#160;()</title>
+<indexterm zone="raptor-iostream-hexadecimal-write"><primary>raptor_iostream_hexadecimal_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_iostream_hexadecimal_write (<parameter>unsigned <link linkend="int"><type>int</type></link> integer</parameter>,
+                                   <parameter><link linkend="int"><type>int</type></link> width</parameter>,
+                                   <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write an integer in hexadecimal to the iostream.</para>
+<para>Always 0-fills the entire field and writes in uppercase A-F</para>
+<refsect3 id="raptor-iostream-hexadecimal-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>integer</para></entry>
+<entry role="parameter_description"><para>unsigned integer to format as hexadecimal</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>width</para></entry>
+<entry role="parameter_description"><para>field width</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-hexadecimal-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-read-bytes" role="function">
+<title>raptor_iostream_read_bytes&#160;()</title>
+<indexterm zone="raptor-iostream-read-bytes"><primary>raptor_iostream_read_bytes</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_iostream_read_bytes (<parameter><link linkend="void"><type>void</type></link> *ptr</parameter>,
+                            <parameter><link linkend="size-t"><type>size_t</type></link> size</parameter>,
+                            <parameter><link linkend="size-t"><type>size_t</type></link> nmemb</parameter>,
+                            <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Read bytes to the iostream.</para>
+<refsect3 id="raptor-iostream-read-bytes.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>ptr</para></entry>
+<entry role="parameter_description"><para>start of buffer to read objects into</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>size</para></entry>
+<entry role="parameter_description"><para>size of object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nmemb</para></entry>
+<entry role="parameter_description"><para>number of objects to read</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-read-bytes.returns" role="returns">
+<title>Returns</title>
+<para> number of objects read, 0 or less than nmemb on EOF, &lt;0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-read-eof" role="function">
+<title>raptor_iostream_read_eof&#160;()</title>
+<indexterm zone="raptor-iostream-read-eof"><primary>raptor_iostream_read_eof</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_iostream_read_eof (<parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Check if an read iostream has ended</para>
+<refsect3 id="raptor-iostream-read-eof.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor read iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-read-eof.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if EOF (or not a read iostream)</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-tell" role="function">
+<title>raptor_iostream_tell&#160;()</title>
+<indexterm zone="raptor-iostream-tell"><primary>raptor_iostream_tell</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="long"><returnvalue>long</returnvalue></link>
+raptor_iostream_tell (<parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Get the offset in the iostream.</para>
+<refsect3 id="raptor-iostream-tell.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-tell.returns" role="returns">
+<title>Returns</title>
+<para> offset in iostream</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-counted-string-write" role="function">
+<title>raptor_iostream_counted_string_write&#160;()</title>
+<indexterm zone="raptor-iostream-counted-string-write"><primary>raptor_iostream_counted_string_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_iostream_counted_string_write (<parameter>const <link linkend="void"><type>void</type></link> *string</parameter>,
+                                      <parameter><link linkend="size-t"><type>size_t</type></link> len</parameter>,
+                                      <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a counted string to the iostream.</para>
+<refsect3 id="raptor-iostream-counted-string-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>string length</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-counted-string-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-decimal-write" role="function">
+<title>raptor_iostream_decimal_write&#160;()</title>
+<indexterm zone="raptor-iostream-decimal-write"><primary>raptor_iostream_decimal_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_iostream_decimal_write (<parameter><link linkend="int"><type>int</type></link> integer</parameter>,
+                               <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write an integer in decimal to the iostream.</para>
+<refsect3 id="raptor-iostream-decimal-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>integer</para></entry>
+<entry role="parameter_description"><para>integer to format as decimal</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-decimal-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-string-write" role="function">
+<title>raptor_iostream_string_write&#160;()</title>
+<indexterm zone="raptor-iostream-string-write"><primary>raptor_iostream_string_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_iostream_string_write (<parameter>const <link linkend="void"><type>void</type></link> *string</parameter>,
+                              <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a NULL-terminated string to the iostream.</para>
+<refsect3 id="raptor-iostream-string-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-string-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-write-byte" role="function">
+<title>raptor_iostream_write_byte&#160;()</title>
+<indexterm zone="raptor-iostream-write-byte"><primary>raptor_iostream_write_byte</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_iostream_write_byte (<parameter>const <link linkend="int"><type>int</type></link> byte</parameter>,
+                            <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a byte to the iostream.</para>
+<refsect3 id="raptor-iostream-write-byte.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>byte</para></entry>
+<entry role="parameter_description"><para>byte to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-write-byte.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-write-bytes" role="function">
+<title>raptor_iostream_write_bytes&#160;()</title>
+<indexterm zone="raptor-iostream-write-bytes"><primary>raptor_iostream_write_bytes</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_iostream_write_bytes (<parameter>const <link linkend="void"><type>void</type></link> *ptr</parameter>,
+                             <parameter><link linkend="size-t"><type>size_t</type></link> size</parameter>,
+                             <parameter><link linkend="size-t"><type>size_t</type></link> nmemb</parameter>,
+                             <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write bytes to the iostream.</para>
+<refsect3 id="raptor-iostream-write-bytes.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>ptr</para></entry>
+<entry role="parameter_description"><para>start of objects to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>size</para></entry>
+<entry role="parameter_description"><para>size of object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nmemb</para></entry>
+<entry role="parameter_description"><para>number of objects</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-write-bytes.returns" role="returns">
+<title>Returns</title>
+<para> number of objects actually written, which may be less than nmemb. &lt;0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-iostream-write-end" role="function">
+<title>raptor_iostream_write_end&#160;()</title>
+<indexterm zone="raptor-iostream-write-end"><primary>raptor_iostream_write_end</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_iostream_write_end (<parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>End writing to the iostream.</para>
+<refsect3 id="raptor-iostream-write-end.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-iostream-write-end.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-bnodeid-ntriples-write" role="function">
+<title>raptor_bnodeid_ntriples_write&#160;()</title>
+<indexterm zone="raptor-bnodeid-ntriples-write"><primary>raptor_bnodeid_ntriples_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_bnodeid_ntriples_write (<parameter>const unsigned <link linkend="char"><type>char</type></link> *bnodeid</parameter>,
+                               <parameter><link linkend="size-t"><type>size_t</type></link> len</parameter>,
+                               <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a blank node ID in a form legal for N-Triples with _: prefix</para>
+<refsect3 id="raptor-bnodeid-ntriples-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>bnodeid</para></entry>
+<entry role="parameter_description"><para>bnode ID to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of bnode ID</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-iostream"><type>raptor_iostream</type></link> to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-bnodeid-ntriples-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-string-escaped-write" role="function">
+<title>raptor_string_escaped_write&#160;()</title>
+<indexterm zone="raptor-string-escaped-write"><primary>raptor_string_escaped_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_string_escaped_write (<parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                             <parameter><link linkend="size-t"><type>size_t</type></link> len</parameter>,
+                             <parameter>const <link linkend="char"><type>char</type></link> delim</parameter>,
+                             <parameter>unsigned <link linkend="int"><type>int</type></link> flags</parameter>,
+                             <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a UTF-8 string formatted using different escapes to a <link linkend="raptor-iostream"><type>raptor_iostream</type></link></para>
+<para>Supports writing escapes in the Python, N-Triples, Turtle, JSON,
+SPARQL styles to an iostream.</para>
+<refsect3 id="raptor-string-escaped-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>UTF-8 string to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of UTF-8 string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>delim</para></entry>
+<entry role="parameter_description"><para>Terminating delimiter character for string (such as " or &gt;) or \0 for no escaping.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>flags</para></entry>
+<entry role="parameter_description"><para>bit flags - see <link linkend="raptor-escaped-write-bitflags"><type>raptor_escaped_write_bitflags</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-iostream"><type>raptor_iostream</type></link> to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-string-escaped-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure such as bad UTF-8 encoding.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-term-escaped-write" role="function">
+<title>raptor_term_escaped_write&#160;()</title>
+<indexterm zone="raptor-term-escaped-write"><primary>raptor_term_escaped_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_term_escaped_write (<parameter>const <link linkend="raptor-term"><type>raptor_term</type></link> *term</parameter>,
+                           <parameter>unsigned <link linkend="int"><type>int</type></link> flags</parameter>,
+                           <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a <link linkend="raptor-term"><type>raptor_term</type></link> formatted with escapes to a <link linkend="raptor-iostream"><type>raptor_iostream</type></link></para>
+<refsect3 id="raptor-term-escaped-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>term</para></entry>
+<entry role="parameter_description"><para>term to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>flags</para></entry>
+<entry role="parameter_description"><para>bit flags - see <link linkend="raptor-escaped-write-bitflags"><type>raptor_escaped_write_bitflags</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-term-escaped-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-uri-escaped-write" role="function">
+<title>raptor_uri_escaped_write&#160;()</title>
+<indexterm zone="raptor-uri-escaped-write"><primary>raptor_uri_escaped_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_uri_escaped_write (<parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *uri</parameter>,
+                          <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *base_uri</parameter>,
+                          <parameter>unsigned <link linkend="int"><type>int</type></link> flags</parameter>,
+                          <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a <link linkend="raptor-uri"><type>raptor_uri</type></link> formatted with escapes to a <link linkend="raptor-iostream"><type>raptor_iostream</type></link></para>
+<refsect3 id="raptor-uri-escaped-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para>uri to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>base uri to write relative to (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>flags</para></entry>
+<entry role="parameter_description"><para>bit flags - see <link linkend="raptor-escaped-write-bitflags"><type>raptor_escaped_write_bitflags</type></link></para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iostream</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-uri-escaped-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-string-ntriples-write" role="function">
+<title>raptor_string_ntriples_write&#160;()</title>
+<indexterm zone="raptor-string-ntriples-write"><primary>raptor_string_ntriples_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_string_ntriples_write (<parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                              <parameter><link linkend="size-t"><type>size_t</type></link> len</parameter>,
+                              <parameter>const <link linkend="char"><type>char</type></link> delim</parameter>,
+                              <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write an UTF-8 string using N-Triples escapes to an iostream.</para>
+<refsect3 id="raptor-string-ntriples-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>UTF-8 string to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of UTF-8 string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>delim</para></entry>
+<entry role="parameter_description"><para>Terminating delimiter character for string (such as " or &gt;)
+or \0 for no escaping.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-iostream"><type>raptor_iostream</type></link> to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-string-ntriples-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure such as bad UTF-8 encoding.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-string-python-write" role="function" condition="deprecated:">
+<title>raptor_string_python_write&#160;()</title>
+<indexterm zone="raptor-string-python-write" role="deprecated"><primary>raptor_string_python_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_string_python_write (<parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                            <parameter><link linkend="size-t"><type>size_t</type></link> len</parameter>,
+                            <parameter>const <link linkend="char"><type>char</type></link> delim</parameter>,
+                            <parameter>unsigned <link linkend="int"><type>int</type></link> mode</parameter>,
+                            <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<warning><para><literal>raptor_string_python_write</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Write a UTF-8 string using Python-style escapes (N-Triples, Turtle, JSON) to a <link linkend="raptor-iostream"><type>raptor_iostream</type></link></para>
+<para><parameter>Deprecated</parameter>
+: use <link linkend="raptor-string-escaped-write"><function>raptor_string_escaped_write()</function></link> where the features
+requested are bits that can be individually chosen.</para>
+<refsect3 id="raptor-string-python-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>UTF-8 string to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of UTF-8 string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>delim</para></entry>
+<entry role="parameter_description"><para>Terminating delimiter character for string (such as " or &gt;)
+or \0 for no escaping.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>mode</para></entry>
+<entry role="parameter_description"><para>mode 0=N-Triples mode, 1=Turtle (allow raw UTF-8), 2=Turtle long string (allow raw UTF-8), 3=JSON</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-iostream"><type>raptor_iostream</type></link> to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-string-python-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure such as bad UTF-8 encoding.</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-iostream.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-iostream" role="typedef">
+<title>raptor_iostream</title>
+<indexterm zone="raptor-iostream"><primary>raptor_iostream</primary></indexterm>
+<programlisting language="C">raptor_iostream* raptor_iostream;
+</programlisting>
+<para>Raptor I/O Stream class</para>
+</refsect2>
+<refsect2 id="raptor-iostream-handler" role="struct">
+<title>raptor_iostream_handler</title>
+<indexterm zone="raptor-iostream-handler"><primary>raptor_iostream_handler</primary></indexterm>
+<programlisting language="C">typedef struct {
+  int version;
+
+  /* V1 functions */
+  raptor_iostream_init_func         init;
+  raptor_iostream_finish_func       finish;
+  raptor_iostream_write_byte_func   write_byte;
+  raptor_iostream_write_bytes_func  write_bytes;
+  raptor_iostream_write_end_func    write_end;
+
+  /* V2 functions */
+  raptor_iostream_read_bytes_func   read_bytes;
+  raptor_iostream_read_eof_func     read_eof;
+} raptor_iostream_handler;
+</programlisting>
+<para>I/O stream implementation handler structure.</para>
+<refsect3 id="raptor-iostream-handler.members" role="struct_members">
+<title>Members</title>
+<informaltable role="struct_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="struct_members_name" colwidth="300px"/>
+<colspec colname="struct_members_description"/>
+<colspec colname="struct_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="member"><entry role="struct_member_name"><para><link linkend="int"><type>int</type></link>&#160;<structfield id="raptor-iostream-handler.version">version</structfield>;</para></entry>
+<entry role="struct_member_description"><para>interface version.  Presently 1 or 2.</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-iostream-init-func"><type>raptor_iostream_init_func</type></link>&#160;<structfield id="raptor-iostream-handler.init">init</structfield>;</para></entry>
+<entry role="struct_member_description"><para>initialisation handler - optional, called at most once (V1)</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-iostream-finish-func"><type>raptor_iostream_finish_func</type></link>&#160;<structfield id="raptor-iostream-handler.finish">finish</structfield>;</para></entry>
+<entry role="struct_member_description"><para>finishing handler -  optional, called at most once (V1)</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-iostream-write-byte-func"><type>raptor_iostream_write_byte_func</type></link>&#160;<structfield id="raptor-iostream-handler.write-byte">write_byte</structfield>;</para></entry>
+<entry role="struct_member_description"><para>write byte handler - required (for writing) (V1)</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-iostream-write-bytes-func"><type>raptor_iostream_write_bytes_func</type></link>&#160;<structfield id="raptor-iostream-handler.write-bytes">write_bytes</structfield>;</para></entry>
+<entry role="struct_member_description"><para>write bytes handler - required (for writing) (V1)</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-iostream-write-end-func"><type>raptor_iostream_write_end_func</type></link>&#160;<structfield id="raptor-iostream-handler.write-end">write_end</structfield>;</para></entry>
+<entry role="struct_member_description"><para>write end handler - optional (for writing), called at most once (V1)</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-iostream-read-bytes-func"><type>raptor_iostream_read_bytes_func</type></link>&#160;<structfield id="raptor-iostream-handler.read-bytes">read_bytes</structfield>;</para></entry>
+<entry role="struct_member_description"><para>read bytes handler - required (for reading) (V2)</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+<row role="member"><entry role="struct_member_name"><para><link linkend="raptor-iostream-read-eof-func"><type>raptor_iostream_read_eof_func</type></link>&#160;<structfield id="raptor-iostream-handler.read-eof">read_eof</structfield>;</para></entry>
+<entry role="struct_member_description"><para>read EOF handler - required (for reading) (V2)</para></entry>
+<entry role="struct_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3>
+</refsect2>
+<refsect2 id="raptor-escaped-write-bitflags" role="enum">
+<title>enum raptor_escaped_write_bitflags</title>
+<indexterm zone="raptor-escaped-write-bitflags"><primary>raptor_escaped_write_bitflags</primary></indexterm>
+<para>Bit flags for <link linkend="raptor-string-escaped-write"><function>raptor_string_escaped_write()</function></link> and friends.</para>
+<refsect3 id="raptor-escaped-write-bitflags.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-ESCAPED-WRITE-BITFLAG-BS-ESCAPES-BF:CAPS">RAPTOR_ESCAPED_WRITE_BITFLAG_BS_ESCAPES_BF</para></entry>
+<entry role="enum_member_description"><para>Allow \b \f,</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-ESCAPED-WRITE-BITFLAG-BS-ESCAPES-TNRU:CAPS">RAPTOR_ESCAPED_WRITE_BITFLAG_BS_ESCAPES_TNRU</para></entry>
+<entry role="enum_member_description"><para>ALlow \t \n \r \u</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-ESCAPED-WRITE-BITFLAG-UTF8:CAPS">RAPTOR_ESCAPED_WRITE_BITFLAG_UTF8</para></entry>
+<entry role="enum_member_description"><para>Allow UTF-8 for printable U *</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-ESCAPED-WRITE-BITFLAG-SPARQL-URI-ESCAPES:CAPS">RAPTOR_ESCAPED_WRITE_BITFLAG_SPARQL_URI_ESCAPES</para></entry>
+<entry role="enum_member_description"><para>Must escape <link linkend="x00"><type>x00</type></link>-<link linkend="x20"><type>x20</type></link>&lt;&gt;\"{}|^` in URIs</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-ESCAPED-WRITE-NTRIPLES-LITERAL:CAPS">RAPTOR_ESCAPED_WRITE_NTRIPLES_LITERAL</para></entry>
+<entry role="enum_member_description"><para>N-Triples literal</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-ESCAPED-WRITE-NTRIPLES-URI:CAPS">RAPTOR_ESCAPED_WRITE_NTRIPLES_URI</para></entry>
+<entry role="enum_member_description"><para>N-Triples URI</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-ESCAPED-WRITE-SPARQL-LITERAL:CAPS">RAPTOR_ESCAPED_WRITE_SPARQL_LITERAL</para></entry>
+<entry role="enum_member_description"><para>SPARQL literal: allows raw UTF8 for printable literals</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-ESCAPED-WRITE-SPARQL-LONG-LITERAL:CAPS">RAPTOR_ESCAPED_WRITE_SPARQL_LONG_LITERAL</para></entry>
+<entry role="enum_member_description"><para>SPARQL long literal: no BS-escapes allowed</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-ESCAPED-WRITE-SPARQL-URI:CAPS">RAPTOR_ESCAPED_WRITE_SPARQL_URI</para></entry>
+<entry role="enum_member_description"><para>SPARQL uri: have to escape certain characters </para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-ESCAPED-WRITE-TURTLE-URI:CAPS">RAPTOR_ESCAPED_WRITE_TURTLE_URI</para></entry>
+<entry role="enum_member_description"><para>Turtle 2013 URIs (like SPARQL)</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-ESCAPED-WRITE-TURTLE-LITERAL:CAPS">RAPTOR_ESCAPED_WRITE_TURTLE_LITERAL</para></entry>
+<entry role="enum_member_description"><para>Turtle 2013 literals (like SPARQL)</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-ESCAPED-WRITE-TURTLE-LONG-LITERAL:CAPS">RAPTOR_ESCAPED_WRITE_TURTLE_LONG_LITERAL</para></entry>
+<entry role="enum_member_description"><para>Turtle 2013 long literals (like SPARQL)</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="RAPTOR-ESCAPED-WRITE-JSON-LITERAL:CAPS">RAPTOR_ESCAPED_WRITE_JSON_LITERAL</para></entry>
+<entry role="enum_member_description"><para>JSON literals: \b \f \t \r \n and \u \U</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+
+</refentry>

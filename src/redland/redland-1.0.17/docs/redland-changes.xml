@@ -1,0 +1,145 @@
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter id="redland-changes">
+<title>API Changes</title>
+
+<para>This chapter describes the API changes for Redland librdf.
+</para>
+<section id="redland-changes-intro">
+<title>Introduction</title>
+
+<para>
+The following sections describe the changes in the API between
+versions including additions, deletions, renames (retaining the same
+number of parameters, types and return value type) and more complex
+changes to functions, types and enums.
+</para>
+
+</section>
+<section id="redland-changes-1-0-12-to-1-0-13">
+<title>Changes between Redland librdf 1.0.12 and 1.0.13</title>
+
+<section id="redland-changes-new-1-0-12-to-1-0-13">
+<title>New functions, types and enums</title>
+
+  <itemizedlist>
+    <title>Functions</title>
+    <listitem><para>const raptor_syntax_description* <link linkend="librdf-parser-get-description"><function>librdf_parser_get_description</function></link>(librdf_world* world, unsigned int counter) - Deprecates <link linkend="librdf-parser-enumerate"><function>librdf_parser_enumerate</function></link>()</para></listitem>
+    <listitem><para>const raptor_syntax_description* <link linkend="librdf-query-results-formats-get-description"><function>librdf_query_results_formats_get_description</function></link>(librdf_world* world, unsigned int counter) - Deprecates <link linkend="librdf-query-results-formats-enumerate"><function>librdf_query_results_formats_enumerate</function></link>()</para></listitem>
+    <listitem><para>const raptor_syntax_description* <link linkend="librdf-serializer-get-description"><function>librdf_serializer_get_description</function></link>(librdf_world* world, unsigned int counter) - Deprecates <link linkend="librdf-serializer-enumerate"><function>librdf_serializer_enumerate</function></link>()</para></listitem>
+  </itemizedlist>
+  <itemizedlist>
+    <title>Types</title>
+    <listitem><para><link linkend="LIBRDF-VERSION:CAPS"><type>LIBRDF_VERSION</type></link> </para></listitem>
+    <listitem><para><link linkend="LIBRDF-VERSION-MAJOR:CAPS"><type>LIBRDF_VERSION_MAJOR</type></link> </para></listitem>
+    <listitem><para><link linkend="LIBRDF-VERSION-MINOR:CAPS"><type>LIBRDF_VERSION_MINOR</type></link> </para></listitem>
+    <listitem><para><link linkend="LIBRDF-VERSION-RELEASE:CAPS"><type>LIBRDF_VERSION_RELEASE</type></link> </para></listitem>
+    <listitem><para><link linkend="LIBRDF-VERSION-STRING:CAPS"><type>LIBRDF_VERSION_STRING</type></link> </para></listitem>
+  </itemizedlist>
+
+</section>
+<section id="redland-changes-changed-1-0-12-to-1-0-13">
+<title>Changed functions and types</title>
+
+<table border='1'>
+  <thead>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1.0.12 type</th>
+      <th>1.0.13 type</th>
+      <th>Notes</th>
+    </tr>
+    <tr valign='top'>
+      <td>librdf_node</td> <td><link linkend="librdf-node"><type>librdf_node</type></link></td> <td>Now a typedef for raptor_term</td>
+    </tr>
+    <tr valign='top'>
+      <td>librdf_statement</td> <td><link linkend="librdf-statement"><type>librdf_statement</type></link></td> <td>Now a typedef for raptor_statement</td>
+    </tr>
+    <tr valign='top'>
+      <td>librdf_uri</td> <td><link linkend="librdf-uri"><type>librdf_uri</type></link></td> <td>Now a typedef for raptor_uri</td>
+    </tr>
+  </tbody>
+</table>
+
+</section>
+
+</section>
+<section id="redland-changes-1-0-13-to-1-0-14">
+<title>Changes between Redland librdf 1.0.13 and 1.0.14</title>
+
+<section id="redland-changes-new-1-0-13-to-1-0-14">
+<title>New functions, types and enums</title>
+
+  <itemizedlist>
+    <title>Functions</title>
+    <listitem><para>unsigned char* <link linkend="librdf-latin1-to-utf8"><function>librdf_latin1_to_utf8</function></link>(const unsigned char *input, int length, int *output_length) </para></listitem>
+    <listitem><para>int <link linkend="librdf-parser-parse-iostream-as-stream"><function>librdf_parser_parse_iostream_as_stream</function></link>(librdf_parser* parser, raptor_iostream *iostream, librdf_uri* base_uri) </para></listitem>
+    <listitem><para>int <link linkend="librdf-parser-parse-iostream-into-model"><function>librdf_parser_parse_iostream_into_model</function></link>(librdf_parser* parser, raptor_iostream *iostream, librdf_uri* base_uri, librdf_model* model) </para></listitem>
+    <listitem><para>const raptor_syntax_description* <link linkend="librdf-query-language-get-description"><function>librdf_query_language_get_description</function></link>(librdf_world* world, unsigned int counter) </para></listitem>
+    <listitem><para>int <link linkend="librdf-unicode-char-to-utf8"><function>librdf_unicode_char_to_utf8</function></link>(librdf_unichar c, unsigned char *output, int length) - Documented but deprecated for <link linkend="raptor-unicode-utf8-string-put-char"><function>raptor_unicode_utf8_string_put_char</function></link>()</para></listitem>
+    <listitem><para>void <link linkend="librdf-utf8-print"><function>librdf_utf8_print</function></link>(const unsigned char *input, int length, FILE *stream) </para></listitem>
+    <listitem><para>unsigned char* <link linkend="librdf-utf8-to-latin1"><function>librdf_utf8_to_latin1</function></link>(const unsigned char *input, int length, int *output_length) </para></listitem>
+    <listitem><para>int <link linkend="librdf-utf8-to-unicode-char"><function>librdf_utf8_to_unicode_char</function></link>(librdf_unichar *output, const unsigned char *input, int length) - Documented but deprecated for <link linkend="raptor-unicode-utf8-string-get-char"><function>raptor_unicode_utf8_string_get_char</function></link>()</para></listitem>
+  </itemizedlist>
+
+</section>
+
+</section>
+<section id="redland-changes-1-0-14-to-1-0-15">
+<title>Changes between Redland librdf 1.0.14 and 1.0.15</title>
+
+<section id="redland-changes-new-1-0-14-to-1-0-15">
+<title>New functions, types and enums</title>
+
+  <itemizedlist>
+    <title>Functions</title>
+    <listitem><para>void* <link linkend="librdf-alloc-memory"><function>librdf_alloc_memory</function></link>(size_t size) </para></listitem>
+    <listitem><para>void* <link linkend="librdf-calloc-memory"><function>librdf_calloc_memory</function></link>(size_t nmemb, size_t size) </para></listitem>
+    <listitem><para>void <link linkend="librdf-free-memory"><function>librdf_free_memory</function></link>(void *ptr) </para></listitem>
+    <listitem><para>librdf_hash* <link linkend="librdf-new-hash"><function>librdf_new_hash</function></link>(librdf_world *world, const char *name) </para></listitem>
+    <listitem><para>librdf_statement* <link linkend="librdf-new-statement-from-statement2"><function>librdf_new_statement_from_statement2</function></link>(librdf_statement* statement) </para></listitem>
+  </itemizedlist>
+
+</section>
+
+</section>
+<section id="redland-changes-1-0-15-to-1-0-16">
+<title>Changes between Redland librdf 1.0.15 and 1.0.16</title>
+
+<section id="redland-changes-new-1-0-15-to-1-0-16">
+<title>New functions, types and enums</title>
+
+  <itemizedlist>
+    <title>Functions</title>
+    <listitem><para>unsigned char* <link linkend="librdf-latin1-to-utf8-2"><function>librdf_latin1_to_utf8_2</function></link>(const unsigned char *input, size_t length, size_t *output_length) - Replaces <link linkend="librdf-latin1-to-utf8"><function>librdf_latin1_to_utf8</function></link>()</para></listitem>
+    <listitem><para>unsigned char* <link linkend="librdf-utf8-to-latin1-2"><function>librdf_utf8_to_latin1_2</function></link>(const unsigned char *input, size_t length, unsigned char discard, size_t *output_length) - Replaces <link linkend="librdf-utf8-to-latin1"><function>librdf_utf8_to_latin1</function></link>()</para></listitem>
+    <listitem><para>void <link linkend="librdf-world-set-raptor-init-handler"><function>librdf_world_set_raptor_init_handler</function></link>(librdf_world* world, void* user_data, librdf_raptor_init_handler handler) </para></listitem>
+    <listitem><para>void <link linkend="librdf-world-set-rasqal-init-handler"><function>librdf_world_set_rasqal_init_handler</function></link>(librdf_world* world, void* user_data, librdf_rasqal_init_handler handler) </para></listitem>
+  </itemizedlist>
+  <itemizedlist>
+    <title>Types</title>
+    <listitem><para><link linkend="librdf-raptor-init-handler"><type>librdf_raptor_init_handler</type></link> </para></listitem>
+    <listitem><para><link linkend="librdf-rasqal-init-handler"><type>librdf_rasqal_init_handler</type></link> </para></listitem>
+  </itemizedlist>
+
+</section>
+
+</section>
+<section id="redland-changes-1-0-16-to-1-0-16">
+<title>Changes between Redland librdf 1.0.16 and 1.0.16</title>
+
+<section id="redland-changes-new-1-0-16-to-1-0-16">
+<title>New functions, types and enums</title>
+
+  <itemizedlist>
+    <title>Types</title>
+    <listitem><para><link linkend="librdf-home-url-string"><type>librdf_home_url_string</type></link> </para></listitem>
+    <listitem><para><link linkend="librdf-license-string"><type>librdf_license_string</type></link> </para></listitem>
+  </itemizedlist>
+
+</section>
+
+</section>
+
+</chapter>

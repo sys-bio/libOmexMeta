@@ -1,0 +1,1208 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-node">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-node.top_of_page">node</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>node</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-node.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-free-node">librdf_free_node</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-node">librdf_new_node</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-node-from-blank-identifier">librdf_new_node_from_blank_identifier</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-node-from-counted-blank-identifier">librdf_new_node_from_counted_blank_identifier</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-node-from-counted-uri-string">librdf_new_node_from_counted_uri_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-node-from-literal">librdf_new_node_from_literal</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-node-from-node">librdf_new_node_from_node</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-node-from-normalised-uri-string">librdf_new_node_from_normalised_uri_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-node-from-typed-counted-literal">librdf_new_node_from_typed_counted_literal</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-node-from-typed-literal">librdf_new_node_from_typed_literal</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-node-from-uri">librdf_new_node_from_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-node-from-uri-local-name">librdf_new_node_from_uri_local_name</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-node-from-uri-string">librdf_new_node_from_uri_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-node-decode">librdf_node_decode</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-node-encode">librdf_node_encode</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-node-equals">librdf_node_equals</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-node-get-blank-identifier">librdf_node_get_blank_identifier</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-node-get-counted-blank-identifier">librdf_node_get_counted_blank_identifier</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-node-get-li-ordinal">librdf_node_get_li_ordinal</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-node-get-literal-value">librdf_node_get_literal_value</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-node-get-literal-value-as-counted-string">librdf_node_get_literal_value_as_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-node-get-literal-value-as-latin1">librdf_node_get_literal_value_as_latin1</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-node-get-literal-value-datatype-uri">librdf_node_get_literal_value_datatype_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-node-get-literal-value-is-wf-xml">librdf_node_get_literal_value_is_wf_xml</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-node-get-literal-value-language">librdf_node_get_literal_value_language</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node-type"><returnvalue>librdf_node_type</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-node-get-type">librdf_node_get_type</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-node-get-uri">librdf_node_get_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-node-is-blank">librdf_node_is_blank</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-node-is-literal">librdf_node_is_literal</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-node-is-resource">librdf_node_is_resource</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-node-new-static-node-iterator">librdf_node_new_static_node_iterator</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-node-print">librdf_node_print</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-node-static-iterator-create">librdf_node_static_iterator_create</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-node-to-counted-string">librdf_node_to_counted_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-node-to-string">librdf_node_to_string</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-node-write">librdf_node_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-node.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-node">librdf_node</link></entry></row>
+<row><entry role="datatype_keyword">enum</entry><entry role="function_name"><link linkend="librdf-node-type">librdf_node_type</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-node.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-node.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-free-node" role="function">
+<title>librdf_free_node&#160;()</title>
+<indexterm zone="librdf-free-node"><primary>librdf_free_node</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_free_node (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Destructor - destroy an <link linkend="librdf-node"><type>librdf_node</type></link> object.</para>
+<refsect3 id="librdf-free-node.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-node" role="function">
+<title>librdf_new_node&#160;()</title>
+<indexterm zone="librdf-new-node"><primary>librdf_new_node</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_new_node (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-node"><type>librdf_node</type></link> object with a private identifier.</para>
+<para>Calls librdf_new_node_from_blank_identifier(world, NULL) to
+construct a new redland blank node identifier and make a
+new librdf_node object for it.</para>
+<refsect3 id="librdf-new-node.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-node.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-node-from-blank-identifier" role="function">
+<title>librdf_new_node_from_blank_identifier&#160;()</title>
+<indexterm zone="librdf-new-node-from-blank-identifier"><primary>librdf_new_node_from_blank_identifier</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_new_node_from_blank_identifier (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                       <parameter>const unsigned <link linkend="char"><type>char</type></link> *identifier</parameter>);</programlisting>
+<para>Constructor - create a new blank node <link linkend="librdf-node"><type>librdf_node</type></link> object from a blank node identifier.</para>
+<para>If no <parameter>identifier</parameter>
+ string is given (NULL) this creates a new
+internal identifier and uses it.</para>
+<refsect3 id="librdf-new-node-from-blank-identifier.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>identifier</para></entry>
+<entry role="parameter_description"><para>UTF-8 encoded blank node identifier or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-node-from-blank-identifier.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-node-from-counted-blank-identifier" role="function">
+<title>librdf_new_node_from_counted_blank_identifier&#160;()</title>
+<indexterm zone="librdf-new-node-from-counted-blank-identifier"><primary>librdf_new_node_from_counted_blank_identifier</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_new_node_from_counted_blank_identifier
+                               (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *identifier</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> identifier_len</parameter>);</programlisting>
+<para>Constructor - create a new blank node <link linkend="librdf-node"><type>librdf_node</type></link> object from a blank node counted length identifier.</para>
+<para>If no <parameter>identifier</parameter>
+ string is given (NULL) this creates a new
+internal identifier and uses it.</para>
+<refsect3 id="librdf-new-node-from-counted-blank-identifier.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>identifier</para></entry>
+<entry role="parameter_description"><para>UTF-8 encoded blank node identifier or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>identifier_len</para></entry>
+<entry role="parameter_description"><para>length of <parameter>identifier</parameter>
+</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-node-from-counted-blank-identifier.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-node-from-counted-uri-string" role="function">
+<title>librdf_new_node_from_counted_uri_string&#160;()</title>
+<indexterm zone="librdf-new-node-from-counted-uri-string"><primary>librdf_new_node_from_counted_uri_string</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_new_node_from_counted_uri_string
+                               (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> len</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-node"><type>librdf_node</type></link> object from a counted URI string.</para>
+<refsect3 id="librdf-new-node-from-counted-uri-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>string representing a URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len</para></entry>
+<entry role="parameter_description"><para>length of string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-node-from-counted-uri-string.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-node-from-literal" role="function">
+<title>librdf_new_node_from_literal&#160;()</title>
+<indexterm zone="librdf-new-node-from-literal"><primary>librdf_new_node_from_literal</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_new_node_from_literal (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                              <parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                              <parameter>const <link linkend="char"><type>char</type></link> *xml_language</parameter>,
+                              <parameter><link linkend="int"><type>int</type></link> is_wf_xml</parameter>);</programlisting>
+<para>Constructor - create a new literal <link linkend="librdf-node"><type>librdf_node</type></link> object.</para>
+<para>0.9.12: xml_space argument deleted</para>
+<para>An <parameter>xml_language</parameter>
+ cannot be used when <parameter>is_wf_xml</parameter>
+ is non-0. If both
+are given, NULL is returned.  If <parameter>xml_language</parameter>
+ is the empty string,
+it is the equivalent to NULL.</para>
+<refsect3 id="librdf-new-node-from-literal.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>literal UTF-8 encoded string value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_language</para></entry>
+<entry role="parameter_description"><para>literal XML language (or NULL, empty string)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>is_wf_xml</para></entry>
+<entry role="parameter_description"><para>non 0 if literal is XML</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-node-from-literal.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-node-from-node" role="function">
+<title>librdf_new_node_from_node&#160;()</title>
+<indexterm zone="librdf-new-node-from-node"><primary>librdf_new_node_from_node</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_new_node_from_node (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Copy constructor - create a new librdf_node object from an existing librdf_node object.</para>
+<refsect3 id="librdf-new-node-from-node.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> object to copy</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-node-from-node.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-node-from-normalised-uri-string" role="function">
+<title>librdf_new_node_from_normalised_uri_string&#160;()</title>
+<indexterm zone="librdf-new-node-from-normalised-uri-string"><primary>librdf_new_node_from_normalised_uri_string</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_new_node_from_normalised_uri_string
+                               (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *source_uri</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *base_uri</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-node"><type>librdf_node</type></link> object from a UTF-8 encoded URI string normalised to a new base URI.</para>
+<refsect3 id="librdf-new-node-from-normalised-uri-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>UTF-8 encoded string representing a URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>source_uri</para></entry>
+<entry role="parameter_description"><para>source URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>base_uri</para></entry>
+<entry role="parameter_description"><para>base URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-node-from-normalised-uri-string.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-node-from-typed-counted-literal" role="function">
+<title>librdf_new_node_from_typed_counted_literal&#160;()</title>
+<indexterm zone="librdf-new-node-from-typed-counted-literal"><primary>librdf_new_node_from_typed_counted_literal</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_new_node_from_typed_counted_literal
+                               (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *value</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> value_len</parameter>,
+                                <parameter>const <link linkend="char"><type>char</type></link> *xml_language</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> xml_language_len</parameter>,
+                                <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *datatype_uri</parameter>);</programlisting>
+<para>Constructor - create a new typed literal <link linkend="librdf-node"><type>librdf_node</type></link> object.</para>
+<para>Takes copies of the passed in <parameter>value</parameter>
+, <parameter>datatype_uri</parameter>
+ and <parameter>xml_language</parameter>
+.</para>
+<para>Only one of <parameter>xml_language</parameter>
+ or <parameter>datatype_uri</parameter>
+ may be given.  If both
+are given, NULL is returned.  If <parameter>xml_language</parameter>
+ is the empty string,
+it is the equivalent to NULL.</para>
+<refsect3 id="librdf-new-node-from-typed-counted-literal.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>value</para></entry>
+<entry role="parameter_description"><para>literal UTF-8 encoded string value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>value_len</para></entry>
+<entry role="parameter_description"><para>literal string value length</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_language</para></entry>
+<entry role="parameter_description"><para>literal XML language (or NULL, empty string)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_language_len</para></entry>
+<entry role="parameter_description"><para>literal XML language length (not used if <parameter>xml_language</parameter>
+is NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>datatype_uri</para></entry>
+<entry role="parameter_description"><para>URI of typed literal datatype or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-node-from-typed-counted-literal.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-node-from-typed-literal" role="function">
+<title>librdf_new_node_from_typed_literal&#160;()</title>
+<indexterm zone="librdf-new-node-from-typed-literal"><primary>librdf_new_node_from_typed_literal</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_new_node_from_typed_literal (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                    <parameter>const unsigned <link linkend="char"><type>char</type></link> *value</parameter>,
+                                    <parameter>const <link linkend="char"><type>char</type></link> *xml_language</parameter>,
+                                    <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *datatype_uri</parameter>);</programlisting>
+<para>Constructor - create a new typed literal <link linkend="librdf-node"><type>librdf_node</type></link> object.</para>
+<para>Only one of <parameter>xml_language</parameter>
+ or <parameter>datatype_uri</parameter>
+ may be given.  If both
+are given, NULL is returned.  If <parameter>xml_language</parameter>
+ is the empty string,
+it is the equivalent to NULL.</para>
+<refsect3 id="librdf-new-node-from-typed-literal.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>value</para></entry>
+<entry role="parameter_description"><para>literal UTF-8 encoded string value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>xml_language</para></entry>
+<entry role="parameter_description"><para>literal XML language (or NULL, empty string)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>datatype_uri</para></entry>
+<entry role="parameter_description"><para>URI of typed literal datatype or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-node-from-typed-literal.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-node-from-uri" role="function">
+<title>librdf_new_node_from_uri&#160;()</title>
+<indexterm zone="librdf-new-node-from-uri"><primary>librdf_new_node_from_uri</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_new_node_from_uri (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                          <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>);</programlisting>
+<para>Constructor - create a new resource <link linkend="librdf-node"><type>librdf_node</type></link> object with a given URI.</para>
+<refsect3 id="librdf-new-node-from-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-node-from-uri.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-node-from-uri-local-name" role="function">
+<title>librdf_new_node_from_uri_local_name&#160;()</title>
+<indexterm zone="librdf-new-node-from-uri-local-name"><primary>librdf_new_node_from_uri_local_name</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_new_node_from_uri_local_name (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                     <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *uri</parameter>,
+                                     <parameter>const unsigned <link linkend="char"><type>char</type></link> *local_name</parameter>);</programlisting>
+<para>Constructor - create a new resource <link linkend="librdf-node"><type>librdf_node</type></link> object with a given URI and local name.</para>
+<refsect3 id="librdf-new-node-from-uri-local-name.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>local_name</para></entry>
+<entry role="parameter_description"><para>local name to append to URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-node-from-uri-local-name.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-new-node-from-uri-string" role="function">
+<title>librdf_new_node_from_uri_string&#160;()</title>
+<indexterm zone="librdf-new-node-from-uri-string"><primary>librdf_new_node_from_uri_string</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_new_node_from_uri_string (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                 <parameter>const unsigned <link linkend="char"><type>char</type></link> *uri_string</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="librdf-node"><type>librdf_node</type></link> object from a URI string.</para>
+<refsect3 id="librdf-new-node-from-uri-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>string representing a URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-new-node-from-uri-string.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-node"><type>librdf_node</type></link> object or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-decode" role="function">
+<title>librdf_node_decode&#160;()</title>
+<indexterm zone="librdf-node-decode"><primary>librdf_node_decode</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_node_decode (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                    <parameter><link linkend="size-t"><type>size_t</type></link> *size_p</parameter>,
+                    <parameter>unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                    <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Deserialise a node from a buffer.</para>
+<para>Decodes the serialised node (as created by <link linkend="librdf-node-encode"><function>librdf_node_encode()</function></link> )
+from the given buffer.</para>
+<refsect3 id="librdf-node-decode.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>librdf_world</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>size_p</para></entry>
+<entry role="parameter_description"><para>pointer to bytes used or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>the buffer to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-decode.returns" role="returns">
+<title>Returns</title>
+<para> new node or NULL on failure (bad encoding, allocation failure)</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-encode" role="function">
+<title>librdf_node_encode&#160;()</title>
+<indexterm zone="librdf-node-encode"><primary>librdf_node_encode</primary></indexterm>
+<programlisting language="C"><link linkend="size-t"><returnvalue>size_t</returnvalue></link>
+librdf_node_encode (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>,
+                    <parameter>unsigned <link linkend="char"><type>char</type></link> *buffer</parameter>,
+                    <parameter><link linkend="size-t"><type>size_t</type></link> length</parameter>);</programlisting>
+<para>Serialise a node into a buffer.</para>
+<para>Encodes the given node in the buffer, which must be of sufficient
+size.  If buffer is NULL, no work is done but the size of buffer
+required is returned.</para>
+<para>If the node cannot be encoded due to restrictions of the encoding
+format, a redland error is generated</para>
+<refsect3 id="librdf-node-encode.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node to serialise</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>buffer</para></entry>
+<entry role="parameter_description"><para>the buffer to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length</para></entry>
+<entry role="parameter_description"><para>buffer size</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-encode.returns" role="returns">
+<title>Returns</title>
+<para> the number of bytes written or 0 on failure.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-equals" role="function">
+<title>librdf_node_equals&#160;()</title>
+<indexterm zone="librdf-node-equals"><primary>librdf_node_equals</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_node_equals (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *first_node</parameter>,
+                    <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *second_node</parameter>);</programlisting>
+<para>Compare two librdf_node objects for equality.</para>
+<para>Note - for literal nodes, XML language, XML space and well-formness are 
+presently ignored in the comparison.</para>
+<refsect3 id="librdf-node-equals.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>first_node</para></entry>
+<entry role="parameter_description"><para>first <link linkend="librdf-node"><type>librdf_node</type></link> node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>second_node</para></entry>
+<entry role="parameter_description"><para>second <link linkend="librdf-node"><type>librdf_node</type></link> node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-equals.returns" role="returns">
+<title>Returns</title>
+<para> non 0 if nodes are equal.  0 if not-equal or failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-get-blank-identifier" role="function">
+<title>librdf_node_get_blank_identifier&#160;()</title>
+<indexterm zone="librdf-node-get-blank-identifier"><primary>librdf_node_get_blank_identifier</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_node_get_blank_identifier (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Get the blank node identifier as a UTF-8 encoded string.</para>
+<refsect3 id="librdf-node-get-blank-identifier.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-get-blank-identifier.returns" role="returns">
+<title>Returns</title>
+<para> the UTF-8 encoded blank node identifier value or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-get-counted-blank-identifier" role="function">
+<title>librdf_node_get_counted_blank_identifier&#160;()</title>
+<indexterm zone="librdf-node-get-counted-blank-identifier"><primary>librdf_node_get_counted_blank_identifier</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_node_get_counted_blank_identifier
+                               (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> *len_p</parameter>);</programlisting>
+<para>Get the blank node identifier as a counted UTF-8 encoded string.</para>
+<refsect3 id="librdf-node-get-counted-blank-identifier.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len_p</para></entry>
+<entry role="parameter_description"><para>pointer to variable to store length (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-get-counted-blank-identifier.returns" role="returns">
+<title>Returns</title>
+<para> the UTF-8 encoded blank node identifier value or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-get-li-ordinal" role="function">
+<title>librdf_node_get_li_ordinal&#160;()</title>
+<indexterm zone="librdf-node-get-li-ordinal"><primary>librdf_node_get_li_ordinal</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_node_get_li_ordinal (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Get the node li object ordinal value.</para>
+<refsect3 id="librdf-node-get-li-ordinal.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-get-li-ordinal.returns" role="returns">
+<title>Returns</title>
+<para> the li ordinal value or &lt; 1 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-get-literal-value" role="function">
+<title>librdf_node_get_literal_value&#160;()</title>
+<indexterm zone="librdf-node-get-literal-value"><primary>librdf_node_get_literal_value</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_node_get_literal_value (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Get the literal value of the node as a UTF-8 encoded string.</para>
+<para>Returns a pointer to the UTF-8 encoded literal value held by the
+node, it must be copied if it is wanted to be used by the caller.</para>
+<refsect3 id="librdf-node-get-literal-value.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-get-literal-value.returns" role="returns">
+<title>Returns</title>
+<para> the UTF-8 encoded literal string or NULL if node is not a literal</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-get-literal-value-as-counted-string" role="function">
+<title>librdf_node_get_literal_value_as_counted_string&#160;()</title>
+<indexterm zone="librdf-node-get-literal-value-as-counted-string"><primary>librdf_node_get_literal_value_as_counted_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_node_get_literal_value_as_counted_string
+                               (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> *len_p</parameter>);</programlisting>
+<para>Get the literal value of the node as a counted UTF-8 encoded string.</para>
+<para>Returns a pointer to the UTF-8 encoded literal string value held
+by the node, it must be copied if it is wanted to be used by the
+caller.</para>
+<refsect3 id="librdf-node-get-literal-value-as-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len_p</para></entry>
+<entry role="parameter_description"><para>pointer to location to store the string length (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-get-literal-value-as-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> the UTF-8 encoded literal string or NULL if node is not a literal</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-get-literal-value-as-latin1" role="function">
+<title>librdf_node_get_literal_value_as_latin1&#160;()</title>
+<indexterm zone="librdf-node-get-literal-value-as-latin1"><primary>librdf_node_get_literal_value_as_latin1</primary></indexterm>
+<programlisting language="C"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_node_get_literal_value_as_latin1
+                               (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Get the string literal value of the node as ISO Latin-1.</para>
+<para>Returns a newly allocated string containing the conversion of the
+node literal value held by the node into ISO Latin-1.  Discards
+characters outside the U+0000 to U+00FF range (inclusive).</para>
+<refsect3 id="librdf-node-get-literal-value-as-latin1.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-get-literal-value-as-latin1.returns" role="returns">
+<title>Returns</title>
+<para> the Latin-1 literal string or NULL if node is not a literal</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-get-literal-value-datatype-uri" role="function">
+<title>librdf_node_get_literal_value_datatype_uri&#160;()</title>
+<indexterm zone="librdf-node-get-literal-value-datatype-uri"><primary>librdf_node_get_literal_value_datatype_uri</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+librdf_node_get_literal_value_datatype_uri
+                               (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Get the typed literal datatype URI of the literal node.</para>
+<refsect3 id="librdf-node-get-literal-value-datatype-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-get-literal-value-datatype-uri.returns" role="returns">
+<title>Returns</title>
+<para> shared URI of the datatyped literal or NULL if the node is not a literal, or has no datatype URI</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-get-literal-value-is-wf-xml" role="function">
+<title>librdf_node_get_literal_value_is_wf_xml&#160;()</title>
+<indexterm zone="librdf-node-get-literal-value-is-wf-xml"><primary>librdf_node_get_literal_value_is_wf_xml</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_node_get_literal_value_is_wf_xml
+                               (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Get the XML well-formness property of the node.</para>
+<refsect3 id="librdf-node-get-literal-value-is-wf-xml.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-get-literal-value-is-wf-xml.returns" role="returns">
+<title>Returns</title>
+<para> 0 if the XML literal is NOT well formed XML content, or the node is not a literal</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-get-literal-value-language" role="function">
+<title>librdf_node_get_literal_value_language&#160;()</title>
+<indexterm zone="librdf-node-get-literal-value-language"><primary>librdf_node_get_literal_value_language</primary></indexterm>
+<programlisting language="C"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_node_get_literal_value_language
+                               (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Get the XML language of the node.</para>
+<para>Returns a pointer to the literal language value held by the node,
+it must be copied if it is wanted to be used by the caller.
+Language strings are ASCII, not UTF-8 encoded Unicode.</para>
+<refsect3 id="librdf-node-get-literal-value-language.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-get-literal-value-language.returns" role="returns">
+<title>Returns</title>
+<para> the XML language string or NULL if node is not a literal
+or there is no XML language defined.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-get-type" role="function">
+<title>librdf_node_get_type&#160;()</title>
+<indexterm zone="librdf-node-get-type"><primary>librdf_node_get_type</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node-type"><returnvalue>librdf_node_type</returnvalue></link>
+librdf_node_get_type (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Get the type of the node.</para>
+<para>See also <link linkend="librdf-node-is-resource"><function>librdf_node_is_resource()</function></link>, <link linkend="librdf-node-is-literal"><function>librdf_node_is_literal()</function></link> and
+<link linkend="librdf-node-is-blank"><function>librdf_node_is_blank()</function></link> for testing individual types.</para>
+<refsect3 id="librdf-node-get-type.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-get-type.returns" role="returns">
+<title>Returns</title>
+<para> the node type</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-get-uri" role="function">
+<title>librdf_node_get_uri&#160;()</title>
+<indexterm zone="librdf-node-get-uri"><primary>librdf_node_get_uri</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-uri"><returnvalue>librdf_uri</returnvalue></link>&#160;*
+librdf_node_get_uri (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Get the URI for a node object.</para>
+<para>Returns a pointer to the URI object held by the node, it must be
+copied if it is wanted to be used by the caller.</para>
+<refsect3 id="librdf-node-get-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-get-uri.returns" role="returns">
+<title>Returns</title>
+<para> URI object or NULL if node has no URI.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-is-blank" role="function">
+<title>librdf_node_is_blank&#160;()</title>
+<indexterm zone="librdf-node-is-blank"><primary>librdf_node_is_blank</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_node_is_blank (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Check node is a blank nodeID.</para>
+<refsect3 id="librdf-node-is-blank.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-is-blank.returns" role="returns">
+<title>Returns</title>
+<para> non-zero if the node is a blank nodeID</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-is-literal" role="function">
+<title>librdf_node_is_literal&#160;()</title>
+<indexterm zone="librdf-node-is-literal"><primary>librdf_node_is_literal</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_node_is_literal (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Check node is a literal.</para>
+<refsect3 id="librdf-node-is-literal.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-is-literal.returns" role="returns">
+<title>Returns</title>
+<para> non-zero if the node is a literal</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-is-resource" role="function">
+<title>librdf_node_is_resource&#160;()</title>
+<indexterm zone="librdf-node-is-resource"><primary>librdf_node_is_resource</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_node_is_resource (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<para>Check node is a resource.</para>
+<refsect3 id="librdf-node-is-resource.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-is-resource.returns" role="returns">
+<title>Returns</title>
+<para> non-zero if the node is a resource (URI)</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-new-static-node-iterator" role="function">
+<title>librdf_node_new_static_node_iterator&#160;()</title>
+<indexterm zone="librdf-node-new-static-node-iterator"><primary>librdf_node_new_static_node_iterator</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+librdf_node_new_static_node_iterator (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                      <parameter><link linkend="librdf-node"><type>librdf_node</type></link> **nodes</parameter>,
+                                      <parameter><link linkend="int"><type>int</type></link> size</parameter>);</programlisting>
+<para>Create an iterator over an array of nodes.</para>
+<para>This creates an iterator for an existing static array of librdf_node
+objects.  It is mostly intended for testing iterator code.</para>
+<refsect3 id="librdf-node-new-static-node-iterator.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nodes</para></entry>
+<entry role="parameter_description"><para>static array of <link linkend="librdf-node"><type>librdf_node</type></link> objects</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>size</para></entry>
+<entry role="parameter_description"><para>size of array</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-new-static-node-iterator.returns" role="returns">
+<title>Returns</title>
+<para> a <link linkend="librdf-iterator"><type>librdf_iterator</type></link> serialization of the nodes or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-print" role="function">
+<title>librdf_node_print&#160;()</title>
+<indexterm zone="librdf-node-print"><primary>librdf_node_print</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_node_print (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>,
+                   <parameter><link linkend="FILE:CAPS"><type>FILE</type></link> *fh</parameter>);</programlisting>
+<para>Pretty print the node to a file descriptor.</para>
+<para>This method is for debugging and the format of the output should
+not be relied on.</para>
+<refsect3 id="librdf-node-print.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>fh</para></entry>
+<entry role="parameter_description"><para>file handle</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-static-iterator-create" role="function" condition="deprecated:">
+<title>librdf_node_static_iterator_create&#160;()</title>
+<indexterm zone="librdf-node-static-iterator-create" role="deprecated"><primary>librdf_node_static_iterator_create</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-iterator"><returnvalue>librdf_iterator</returnvalue></link>&#160;*
+librdf_node_static_iterator_create (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> **nodes</parameter>,
+                                    <parameter><link linkend="int"><type>int</type></link> size</parameter>);</programlisting>
+<warning><para><literal>librdf_node_static_iterator_create</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Create an iterator over an array of nodes (ALWAYS FAILS)</para>
+<para>This legacy method used to create an iterator for an existing
+static array of librdf_node objects.  It was intended for testing
+iterator code.</para>
+<para><parameter>deprecated</parameter>
+: always returns NULL. Use
+<link linkend="librdf-node-new-static-node-iterator"><function>librdf_node_new_static_node_iterator()</function></link></para>
+<refsect3 id="librdf-node-static-iterator-create.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nodes</para></entry>
+<entry role="parameter_description"><para>static array of <link linkend="librdf-node"><type>librdf_node</type></link> objects</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>size</para></entry>
+<entry role="parameter_description"><para>size of array</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-static-iterator-create.returns" role="returns">
+<title>Returns</title>
+<para> NULL</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-to-counted-string" role="function" condition="deprecated:">
+<title>librdf_node_to_counted_string&#160;()</title>
+<indexterm zone="librdf-node-to-counted-string" role="deprecated"><primary>librdf_node_to_counted_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_node_to_counted_string (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>,
+                               <parameter><link linkend="size-t"><type>size_t</type></link> *len_p</parameter>);</programlisting>
+<warning><para><literal>librdf_node_to_counted_string</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Format the node as a counted string in a debugging format.</para>
+<para>Note a new string is allocated which must be freed by the caller.</para>
+<para><parameter>Deprecated</parameter>
+: Use <link linkend="librdf-node-write"><function>librdf_node_write()</function></link> to write to <link linkend="raptor-iostream"><type>raptor_iostream</type></link>
+which can be made to write to a string.  Use a <link linkend="librdf-serializer"><type>librdf_serializer</type></link>
+to write proper syntax formats.</para>
+<refsect3 id="librdf-node-to-counted-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>len_p</para></entry>
+<entry role="parameter_description"><para>pointer to location to store length</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-to-counted-string.returns" role="returns">
+<title>Returns</title>
+<para> a string value representing the node or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-to-string" role="function" condition="deprecated:">
+<title>librdf_node_to_string&#160;()</title>
+<indexterm zone="librdf-node-to-string" role="deprecated"><primary>librdf_node_to_string</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_node_to_string (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>);</programlisting>
+<warning><para><literal>librdf_node_to_string</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Format the node as a string in a debugging format.</para>
+<para>Note a new string is allocated which must be freed by the caller.</para>
+<para><parameter>Deprecated</parameter>
+: Use <link linkend="librdf-node-write"><function>librdf_node_write()</function></link> to write to <link linkend="raptor-iostream"><type>raptor_iostream</type></link>
+which can be made to write to a string.  Use a <link linkend="librdf-serializer"><type>librdf_serializer</type></link>
+to write proper syntax formats.</para>
+<refsect3 id="librdf-node-to-string.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-to-string.returns" role="returns">
+<title>Returns</title>
+<para> a string value representing the node or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-node-write" role="function">
+<title>librdf_node_write&#160;()</title>
+<indexterm zone="librdf-node-write"><primary>librdf_node_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_node_write (<parameter><link linkend="librdf-node"><type>librdf_node</type></link> *node</parameter>,
+                   <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write the node to an iostream in N-Triples format.</para>
+<para>This method can be used to write a node in a relatively
+readable format.  To write more compact formats use a
+serializer to pick a syntax and serialize triples to it.</para>
+<refsect3 id="librdf-node-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>node</para></entry>
+<entry role="parameter_description"><para>the node</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>iostream to write to</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-node-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-node.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="librdf-node" role="typedef">
+<title>librdf_node</title>
+<indexterm zone="librdf-node"><primary>librdf_node</primary></indexterm>
+<programlisting language="C">typedef raptor_term librdf_node;
+</programlisting>
+<para>Redland node class.</para>
+</refsect2>
+<refsect2 id="librdf-node-type" role="enum">
+<title>enum librdf_node_type</title>
+<indexterm zone="librdf-node-type"><primary>librdf_node_type</primary></indexterm>
+<para>Type of a redland node.</para>
+<para>Better to check this with functions <link linkend="librdf-node-is-resource"><function>librdf_node_is_resource()</function></link>,
+<link linkend="librdf-node-is-literal"><function>librdf_node_is_literal()</function></link> or <link linkend="librdf-node-is-blank"><function>librdf_node_is_blank()</function></link>.</para>
+<refsect3 id="librdf-node-type.members" role="enum_members">
+<title>Members</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="enum_members_name" colwidth="300px"/>
+<colspec colname="enum_members_description"/>
+<colspec colname="enum_members_annotations" colwidth="200px"/>
+<tbody>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-NODE-TYPE-UNKNOWN:CAPS">LIBRDF_NODE_TYPE_UNKNOWN</para></entry>
+<entry role="enum_member_description"><para>Internal</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-NODE-TYPE-RESOURCE:CAPS">LIBRDF_NODE_TYPE_RESOURCE</para></entry>
+<entry role="enum_member_description"><para>rdf:Resource (&amp; rdf:Property) - has a URI</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-NODE-TYPE-LITERAL:CAPS">LIBRDF_NODE_TYPE_LITERAL</para></entry>
+<entry role="enum_member_description"><para>rdf:Literal - has an XML string, language,
+  XML space</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-NODE-TYPE-BLANK:CAPS">LIBRDF_NODE_TYPE_BLANK</para></entry>
+<entry role="enum_member_description"><para>blank node has an identifier string.</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+<row role="constant"><entry role="enum_member_name"><para id="LIBRDF-NODE-TYPE-LAST:CAPS">LIBRDF_NODE_TYPE_LAST</para></entry>
+<entry role="enum_member_description"><para>Internal</para>
+</entry>
+<entry role="enum_member_annotations"></entry>
+</row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+
+</refsect1>
+
+</refentry>

@@ -1,0 +1,123 @@
+<!-- Creator     : groff version 1.21 -->
+<!-- CreationDate: Wed Jun 27 12:58:59 2012 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style type="text/css">
+/*<![CDATA[*/
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+/*]]>*/
+</style>
+<title>Redland RDF Application Framework - Redland RDF processor utility</title>
+</head>
+<body bgcolor="#ffffff" text="#000085">
+<h1>Redland RDF Application Framework - Redland RDF processor utility</h1>
+<hr />
+<h2>NAME <a name="NAME" id="NAME"></a></h2>
+<p style="margin-left:11%; margin-top: 1em">rdfproc &minus; Redland RDF processor utility</p>
+<h2>SYNOPSIS <a name="SYNOPSIS" id="SYNOPSIS"></a></h2>
+<p style="margin-left:11%; margin-top: 1em"><b>rdfproc</b> [<b>options</b>] <i>store-name command arg...</i></p>
+<h2>EXAMPLE <a name="EXAMPLE" id="EXAMPLE"></a></h2>
+<p style="margin-left:11%; margin-top: 1em"><i><b>rdfproc test parse http://planetrdf.com/guide/rss.rdf<br />
+rdfproc test print<br />
+rdfproc test serialize ntriples</b></i></p>
+<h2>DESCRIPTION <a name="DESCRIPTION" id="DESCRIPTION"></a></h2>
+<p style="margin-left:11%; margin-top: 1em">The <b>rdfproc</b> utility allows parsing, querying, manipulating and serializing of RDF content using the <b>Redland</b> RDF library. The <i>store-name</i> is a Redland store name, typically a short identifier. The arguments to <i>command</i> vary and are explained in section COMMANDS below.</p>
+<h2>OPTIONS <a name="OPTIONS" id="OPTIONS"></a></h2>
+<p style="margin-left:11%; margin-top: 1em">rdfproc uses the usual GNU command line syntax, with long options starting with two dashes (&rsquo;-&rsquo;) if supported by the getopt_long function. Otherwise the short options are only available. <b><br />
+&minus;h, &minus;&minus;help</b></p>
+<p style="margin-left:22%;">Show a summary of the options.</p>
+<p style="margin-left:11%;"><b>&minus;c, &minus;&minus;contexts</b></p>
+<p style="margin-left:22%;">Use a store with Redland contexts.</p>
+<p style="margin-left:11%;"><b>&minus;n, &minus;&minus;new</b></p>
+<p style="margin-left:22%;">Make a new store, overwriting any existing one.</p>
+<p style="margin-left:11%;"><b>&minus;o, &minus;&minus;output</b> <i>FORMAT</i></p>
+<p style="margin-left:22%;">Set the output FORMAT for sequences of triples, such as from a search (find command) to a Redland serializer. Use &minus;h or &minus;o help to see the full list of supported formats.</p>
+<p style="margin-left:11%;"><b>&minus;p, &minus;&minus;password</b></p>
+<p style="margin-left:22%;">Read the storage option &rsquo;password&rsquo; from standard input. Terminated by end of line (&rsquo;\n&rsquo;) or end of file. This is equivalent to setting it using &minus;t or &minus;&minus;storage-options but does not require exposing the password in the argument list.</p>
+<p style="margin-left:11%;"><b>&minus;q, &minus;&minus;quiet</b></p>
+<p style="margin-left:22%;">Suppress informational messages (that go to stderr)</p>
+<p style="margin-left:11%;"><b>&minus;r, &minus;&minus;results</b> <i>FORMAT</i></p>
+<p style="margin-left:22%;">Set the query results syntax format. Use &minus;h or &minus;r help to see the full list of query result formats.</p>
+<p style="margin-left:22%; margin-top: 1em">The exact list of formats depends on what libraptor(3) was built with but is given correct in the usage message with &minus;h.</p>
+<p style="margin-left:11%;"><b>&minus;s, &minus;&minus;storage</b> <i>TYPE</i></p>
+<p style="margin-left:22%;">Set the Redland storage type (default &rsquo;hashes&rsquo;). If environment variable RDFPROC_STORAGE_TYPE is set, the storage type given here will override it. Use &minus;h or &minus;s help to see the full list of query result formats.</p>
+<p style="margin-left:11%;"><b>&minus;t, &minus;&minus;storage-options</b> <i>OPTIONS</i></p>
+<p style="margin-left:22%;">Set options for the the Redland storage, default is "hash-type=&rsquo;bdb&rsquo;,dir=&rsquo;.&rsquo;" to match the default storage "hashes". For storages types such as &rsquo;mysql&rsquo; that need extra options this would typically be something like "host=&rsquo;hostname&rsquo;,database=&rsquo;dbname&rsquo;,user=&rsquo;abc&rsquo;,password=&rsquo;pass&rsquo;". If environment variable RDFPROC_STORAGE_OPTIONS is set, the storage options given here will be applied afterwards.</p>
+<p style="margin-left:11%;"><b>&minus;v, &minus;&minus;version</b></p>
+<p style="margin-left:22%;">Print the Redland version and exit.</p>
+<p style="margin-left:11%;"><b>&minus;V, &minus;&minus;verbose</b></p>
+<p style="margin-left:22%;">Show informational messages on stderr.</p>
+<h2>COMMANDS <a name="COMMANDS" id="COMMANDS"></a></h2>
+<p style="margin-left:11%; margin-top: 1em">Where a node is allowed, such as <i>NODE</i>, <i>SUBJECT</i>, <i>PREDICATE</i> or <i>OBJECT</i> below, simple heuristics are used to guess which are blank node identifiers, URIs or literals (to add a statement with a literal, use add-typed). If the item starts with _: then it is assumed to be a blank node identifier, otherwise if it matches something:// it is assumed to be a URI, otherwise it is a literal. Literals are only allowed as objects of statements and blank nodes are not allowed as predicates. <b><br />
+add</b> <i>SUBJECT PREDICATE OBJECT [CONTEXT]</i></p>
+<p style="margin-left:22%;">Add the given triple to graph, in the optional Redland context if the <i>CONTEXT</i> node is given.</p>
+<p style="margin-left:11%;"><b>add-typed</b> <i>SUBJECT PREDICATE OBJECT OBJECT-LANG OBJECT-URI [CONTEXT]</i></p>
+<p style="margin-left:22%;">Add the triple with the datatyped literal object to the graph, in the optional Redland context if <i>CONTEXT</i> is given.</p>
+<p style="margin-left:11%;"><b>arc</b> <i>SUBJECT OBJECT</i> <b><br />
+arcs</b> <i>SUBJECT OBJECT</i></p>
+<p style="margin-left:22%;">Show one node/all nodes that match triples (<i>SUBJECT</i>, ?, <i>OBJECT</i>)</p>
+<p style="margin-left:11%;"><b>arcs-in</b> <i>NODE</i></p>
+<p style="margin-left:22%;">Show all properties of triples with <i>NODE</i> as a subject.</p>
+<p style="margin-left:11%;"><b>arcs-out</b> <i>NODE</i></p>
+<p style="margin-left:22%;">Show all properties of triples with <i>NODE</i> as an object.</p>
+<p style="margin-left:11%;"><b>contains</b> <i>SUBJECT PREDICATE OBJECT</i></p>
+<p style="margin-left:22%;">Check if the given triple is in the graph.</p>
+<p style="margin-left:11%;"><b>contexts</b></p>
+<p style="margin-left:22%;">List all the contexts in the graph (if contexts are enabled).</p>
+<p style="margin-left:11%;"><b>find</b> <i>SUBJECT</i><b>|-</b> <i>PREDICATE</i><b>|-</b> <i>OBJECT</i><b>|- [</b><i>CONTEXT</i><b>]</b></p>
+<p style="margin-left:22%;">Find matching triples to the given statement where - stands for a blank that matches any node. If <i>CONTEXT</i> is given, only search for triples in that context node.</p>
+<p style="margin-left:11%;"><b>has-arc-in</b> <i>NODE ARC</i></p>
+<p style="margin-left:22%;">Check that there is a triple with <i>NODE</i> as a subject and <i>ARC</i> as a predicate.</p>
+<p style="margin-left:11%;"><b>has-arc-out</b> NODE <i>ARC</i></p>
+<p style="margin-left:22%;">Check that there is a triple with <i>NODE</i> as a object and <i>ARC</i> as a predicate.</p>
+<p style="margin-left:11%;"><b>parse</b> <i>URI|FILENAME</i> <b>[</b><i>SYNTAX|</i> <b>[</b><i>BASE URI</i><b>]]</b></p>
+<p style="margin-left:22%;">Parse syntax at <i>URI</i> into the graph using <i>SYNTAX</i> which can be one of <i>rdfxml</i> (RDF/XML, default), <i>ntriples</i>, <i>turtle</i>, <i>rss-tag-soup</i> (for all RSS and Atoms), <i>grddl</i> and <i>guess</i> to use content hints and protocol information to work it out. (This list changes faster than this manual page) If <i>FILENAME</i> is a existing file, the appropriate URI will be generated for it. If parsing returns errors, the return code will be non-0.</p>
+<p style="margin-left:11%;"><b>parse-stream</b> <i>URI|FILENAME</i> <b>[</b><i>SYNTAX</i> <b>[</b><i>BASE URI</i> <b>[</b><i>CONTEXT</i><b>]]</b></p>
+<p style="margin-left:22%;">Streaming parse syntax at URI into the graph using <i>SYNTAX</i> which can be one of <i>rdfxml</i> (RDF/XML, default) or <i>ntriples</i>. If <i>FILENAME</i> is an existing file, the appropriate URI will be generated for it. If the optional <i>CONTEXT URI is given, the triples are added to that context. If parsing returns errors, the return code will be non-0.</i></p>
+<table width="100%" border="0" rules="none" frame="void" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="7%">
+<p><b>print</b></p>
+</td>
+<td width="4%"></td>
+<td width="78%">
+<p>Print the graph triples in a simple format showing context nodes if present.</p>
+</td>
+</tr>
+</table>
+<p style="margin-left:11%;"><b>query</b> <i>NAME</i><b>|-</b> <i>URI</i><b>|-</b> <i>QUERY-STRING</i></p>
+<p style="margin-left:22%;">Run <i>QUERY-STRING query in language NAME</i> returning variable bindings, a boolean or RDF graph depending on the query. Query language can be &rsquo;sparql&rsquo; or &rsquo;rdql&rsquo;.</p>
+<p style="margin-left:11%;"><b>remove</b> <i>SUBJECT PREDICATE OBJECT [CONTEXT]</i></p>
+<p style="margin-left:22%;">Remove the given triple graph, in the optional Redland context if <i>CONTEXT</i> is given.</p>
+<p style="margin-left:11%;"><b>remove-context</b> <i>CONTEXT</i></p>
+<p style="margin-left:22%;">Remove all triples in the graph with the Redland context <i>CONTEXT</i>.</p>
+<p style="margin-left:11%;"><b>serialize [</b><i>SYNTAX</i> <b>[</b><i>URI</i> <b>[</b><i>MIME-TYPE</i><b>]]]</b></p>
+<p style="margin-left:22%;">Serializes the graph to a syntax with a particular ISYNTAX <i>URI</i> or Internet Media Type/MIME Type. The default is RDF/XML (<i>NAME</i> "rdfxml", MIME Type "application/rdf/xml") if none of the above are given. Other alternatives are "ntriples" (no MIME Type).</p>
+<p style="margin-left:11%;"><b>source</b> <i>PREDICATE OBJECT</i> <b><br />
+sources</b> <i>PREDICATE OBJECT</i></p>
+<p style="margin-left:22%;">Show one node/all nodes that match triples (?, <i>PREDICATE</i>, <i>OBJECT</i>)</p>
+<p style="margin-left:11%;"><b>target</b> <i>SUBJECT PREDICATE</i> <b><br />
+targets</b> <i>SUBJECT PREDICATE</i></p>
+<p style="margin-left:22%;">Show one node/all nodes that match triples (<i>SUBJECT</i>, <i>PREDICATE</i>, ?)</p>
+<h2>ENVIRONMENT <a name="ENVIRONMENT" id="ENVIRONMENT"></a></h2>
+<p style="margin-left:11%; margin-top: 1em">RDFPROC_STORAGE_OPTIONS can be set to provide storage options instead of using the option &minus;t, &minus;&minus;storage-options <i>OPTIONS</i>. When both are given, command options are applied last.</p>
+<p style="margin-left:11%; margin-top: 1em">RDFPROC_STORAGE_TYPE can be set to provide a storage type instead of using the option &minus;s, &minus;&minus;storage <i>TYPE</i>. When both are given, the storage type from the command is used.</p>
+<h2>CONFORMING TO <a name="CONFORMING_TO"></a></h2>
+<p style="margin-left:11%; margin-top: 1em"><i>RDF/XML Syntax (Revised)</i>, W3C Recommendation, <a href="http://www.w3.org/TR/rdf-syntax-grammar/">http://www.w3.org/TR/rdf-syntax-grammar/</a></p>
+<p style="margin-left:11%; margin-top: 1em"><i>N-Triples</i>, in <i>RDF Test Cases</i>, Jan Grant and Dave Beckett (eds.) W3C Recommendation, <a href="http://www.w3.org/TR/rdf-testcases/#ntriples">http://www.w3.org/TR/rdf-testcases/#ntriples</a></p>
+<h2>SEE ALSO <a name="SEE_ALSO"></a></h2>
+<p style="margin-left:11%; margin-top: 1em">redland(3), libraptor(3), rapper(1)</p>
+<h2>AUTHOR <a name="AUTHOR" id="AUTHOR"></a></h2>
+<p style="margin-left:11%; margin-top: 1em">Dave Beckett - <a href="http://www.dajobe.org/">http://www.dajobe.org/</a></p>
+<hr />
+
+<p>Copyright 2002-2012 <a href="http://purl.org/net/dajobe/">Dave Beckett</a><br />2002-2012 <a href="http://www.bristol.ac.uk/">University of Bristol</a></p>
+
+</body>
+</html>

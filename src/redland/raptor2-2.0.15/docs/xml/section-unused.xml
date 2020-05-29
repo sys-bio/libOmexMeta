@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-unused">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-unused.top_of_page">section-unused</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-unused</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-unused.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="RAPTOR-PRINTF-FORMAT:CAPS">RAPTOR_PRINTF_FORMAT</link><phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-world"><returnvalue>raptor_world</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-world-internal">raptor_new_world_internal</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-unused.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="RAPTOR-API:CAPS">RAPTOR_API</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="RAPTOR-DEPRECATED:CAPS">RAPTOR_DEPRECATED</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="RAPTOR-V2-AVAILABLE:CAPS">RAPTOR_V2_AVAILABLE</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-unused.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-unused.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="RAPTOR-PRINTF-FORMAT:CAPS" role="macro">
+<title>RAPTOR_PRINTF_FORMAT()</title>
+<indexterm zone="RAPTOR-PRINTF-FORMAT:CAPS"><primary>RAPTOR_PRINTF_FORMAT</primary></indexterm>
+<programlisting language="C">#define             RAPTOR_PRINTF_FORMAT(string_index, first_to_check_index)</programlisting>
+<para>Internal macro</para>
+<refsect3 id="RAPTOR-PRINTF-FORMAT.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>string_index</para></entry>
+<entry role="parameter_description"><para>ignore me</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>first_to_check_index</para></entry>
+<entry role="parameter_description"><para>ignore me</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-world-internal" role="function">
+<title>raptor_new_world_internal&#160;()</title>
+<indexterm zone="raptor-new-world-internal"><primary>raptor_new_world_internal</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-world"><returnvalue>raptor_world</returnvalue></link>&#160;*
+raptor_new_world_internal (<parameter>unsigned <link linkend="int"><type>int</type></link> version_decimal</parameter>);</programlisting>
+</refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-unused.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="RAPTOR-API:CAPS" role="macro">
+<title>RAPTOR_API</title>
+<indexterm zone="RAPTOR-API:CAPS"><primary>RAPTOR_API</primary></indexterm>
+<programlisting language="C">#      define RAPTOR_API
+</programlisting>
+<para>Macro for wrapping API function call declarations.</para>
+</refsect2>
+<refsect2 id="RAPTOR-DEPRECATED:CAPS" role="macro">
+<title>RAPTOR_DEPRECATED</title>
+<indexterm zone="RAPTOR-DEPRECATED:CAPS"><primary>RAPTOR_DEPRECATED</primary></indexterm>
+<programlisting language="C">#define RAPTOR_DEPRECATED __attribute__((deprecated))
+</programlisting>
+</refsect2>
+<refsect2 id="RAPTOR-V2-AVAILABLE:CAPS" role="macro">
+<title>RAPTOR_V2_AVAILABLE</title>
+<indexterm zone="RAPTOR-V2-AVAILABLE:CAPS"><primary>RAPTOR_V2_AVAILABLE</primary></indexterm>
+<programlisting language="C">#define RAPTOR_V2_AVAILABLE 1
+</programlisting>
+<para>Flag for marking raptor2 API availability.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

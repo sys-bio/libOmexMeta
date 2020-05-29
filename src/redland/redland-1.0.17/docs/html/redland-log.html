@@ -1,0 +1,571 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>log: Redland RDF Library Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="Redland RDF Library Manual">
+<link rel="up" href="reference-manual.html" title="Part II. Reference Manual">
+<link rel="prev" href="redland-list.html" title="list">
+<link rel="next" href="redland-model.html" title="model">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#redland-log.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference-manual.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="redland-list.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="redland-model.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="redland-log"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="redland-log.top_of_page"></a>log</span></h2>
+<p>log</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="redland-log.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="redland-log.html#librdf-log-level-func" title="librdf_log_level_func ()">*librdf_log_level_func</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="redland-log.html#librdf-log-func" title="librdf_log_func ()">*librdf_log_func</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="redland-log.html#librdf-log-message-code" title="librdf_log_message_code ()">librdf_log_message_code</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-log.html#librdf-log-level" title="enum librdf_log_level"><span class="returnvalue">librdf_log_level</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="redland-log.html#librdf-log-message-level" title="librdf_log_message_level ()">librdf_log_message_level</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="redland-log.html#librdf-log-facility" title="enum librdf_log_facility"><span class="returnvalue">librdf_log_facility</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="redland-log.html#librdf-log-message-facility" title="librdf_log_message_facility ()">librdf_log_message_facility</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-log.html#librdf-log-message-message" title="librdf_log_message_message ()">librdf_log_message_message</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">raptor_locator</span> *
+</td>
+<td class="function_name">
+<a class="link" href="redland-log.html#librdf-log-message-locator" title="librdf_log_message_locator ()">librdf_log_message_locator</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-log.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="redland-log.html#librdf-log-level" title="enum librdf_log_level">librdf_log_level</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="redland-log.html#librdf-log-facility" title="enum librdf_log_facility">librdf_log_facility</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="redland-log.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="redland-log.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="librdf-log-level-func"></a><h3>librdf_log_level_func ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+<span class="c_punctuation">(</span>*librdf_log_level_func<span class="c_punctuation">)</span> (<em class="parameter"><code><span class="type">void</span> *user_data</code></em>,
+                          <em class="parameter"><code>const <span class="type">char</span> *message</code></em>,
+                          <em class="parameter"><code><span class="type">va_list</span> arguments</code></em>);</pre>
+<p>Handler for one log level, for the warning and error levels ONLY.
+Used by <a class="link" href="redland-world.html#librdf-world-set-warning" title="librdf_world_set_warning ()"><span class="type">librdf_world_set_warning</span></a> and <a class="link" href="redland-world.html#librdf-world-set-error" title="librdf_world_set_error ()"><span class="type">librdf_world_set_error</span></a>.</p>
+<div class="refsect3">
+<a name="librdf-log-level-func.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>User data pointer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>message</p></td>
+<td class="parameter_description"><p>Log message.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>arguments</p></td>
+<td class="parameter_description"><p>Message arguments.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-log-level-func.returns"></a><h4>Returns</h4>
+<p> non-zero to indicate log message has been handled </p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-log-func"></a><h3>librdf_log_func ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+<span class="c_punctuation">(</span>*librdf_log_func<span class="c_punctuation">)</span> (<em class="parameter"><code><span class="type">void</span> *user_data</code></em>,
+                    <em class="parameter"><code><span class="type">librdf_log_message</span> *message</code></em>);</pre>
+<p>Handler for all log levels.</p>
+<div class="refsect3">
+<a name="librdf-log-func.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>User data pointer</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>message</p></td>
+<td class="parameter_description"><p>Log message structure pointer.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-log-func.returns"></a><h4>Returns</h4>
+<p> non-zero to indicate log message has been handled </p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-log-message-code"></a><h3>librdf_log_message_code ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+librdf_log_message_code (<em class="parameter"><code><span class="type">librdf_log_message</span> *message</code></em>);</pre>
+<p>Retrieve error code from log message.</p>
+<div class="refsect3">
+<a name="librdf-log-message-code.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>message</p></td>
+<td class="parameter_description"><p>log message</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-log-message-code.returns"></a><h4>Returns</h4>
+<p> int error code</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-log-message-level"></a><h3>librdf_log_message_level ()</h3>
+<pre class="programlisting"><a class="link" href="redland-log.html#librdf-log-level" title="enum librdf_log_level"><span class="returnvalue">librdf_log_level</span></a>
+librdf_log_message_level (<em class="parameter"><code><span class="type">librdf_log_message</span> *message</code></em>);</pre>
+<p>Retrieve severity of log message.</p>
+<p>The log message severity level is defined in rdf_log.h as values
+of enum <a class="link" href="redland-log.html#librdf-log-level" title="enum librdf_log_level"><span class="type">librdf_log_level</span></a></p>
+<div class="refsect3">
+<a name="librdf-log-message-level.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>message</p></td>
+<td class="parameter_description"><p>log message</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-log-message-level.returns"></a><h4>Returns</h4>
+<p> severity level</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-log-message-facility"></a><h3>librdf_log_message_facility ()</h3>
+<pre class="programlisting"><a class="link" href="redland-log.html#librdf-log-facility" title="enum librdf_log_facility"><span class="returnvalue">librdf_log_facility</span></a>
+librdf_log_message_facility (<em class="parameter"><code><span class="type">librdf_log_message</span> *message</code></em>);</pre>
+<p>Retrieve facility that generated the message.</p>
+<p>The log message facility is defined in rdf_log.h as values
+of enum <a class="link" href="redland-log.html#librdf-log-facility" title="enum librdf_log_facility"><span class="type">librdf_log_facility</span></a></p>
+<div class="refsect3">
+<a name="librdf-log-message-facility.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>message</p></td>
+<td class="parameter_description"><p>log message</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-log-message-facility.returns"></a><h4>Returns</h4>
+<p> ID of Redland facility that generated the log message.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-log-message-message"></a><h3>librdf_log_message_message ()</h3>
+<pre class="programlisting">const <span class="returnvalue">char</span> *
+librdf_log_message_message (<em class="parameter"><code><span class="type">librdf_log_message</span> *message</code></em>);</pre>
+<p>Retrieve text message from log entry.</p>
+<p>The string returned is shared and must be copied by the caller
+if required to be retained.</p>
+<div class="refsect3">
+<a name="librdf-log-message-message.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>message</p></td>
+<td class="parameter_description"><p>log message</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-log-message-message.returns"></a><h4>Returns</h4>
+<p> shared pointer to the log message string</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-log-message-locator"></a><h3>librdf_log_message_locator ()</h3>
+<pre class="programlisting"><span class="returnvalue">raptor_locator</span> *
+librdf_log_message_locator (<em class="parameter"><code><span class="type">librdf_log_message</span> *message</code></em>);</pre>
+<p>Retrieve locator of log entry.</p>
+<div class="refsect3">
+<a name="librdf-log-message-locator.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>message</p></td>
+<td class="parameter_description"><p>log message</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="librdf-log-message-locator.returns"></a><h4>Returns</h4>
+<p> pointer to an appropriate raptor_locator* or NULL if not available</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="redland-log.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="librdf-log-level"></a><h3>enum librdf_log_level</h3>
+<p>Indicates the level of the log message.</p>
+<div class="refsect3">
+<a name="librdf-log-level.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-LOG-NONE:CAPS"></a>LIBRDF_LOG_NONE</p></td>
+<td class="enum_member_description">
+<p>No level</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-LOG-DEBUG:CAPS"></a>LIBRDF_LOG_DEBUG</p></td>
+<td class="enum_member_description">
+<p>Debug.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-LOG-INFO:CAPS"></a>LIBRDF_LOG_INFO</p></td>
+<td class="enum_member_description">
+<p>Information.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-LOG-WARN:CAPS"></a>LIBRDF_LOG_WARN</p></td>
+<td class="enum_member_description">
+<p>Warning.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-LOG-ERROR:CAPS"></a>LIBRDF_LOG_ERROR</p></td>
+<td class="enum_member_description">
+<p>Recoverable error.  Program can continue.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-LOG-FATAL:CAPS"></a>LIBRDF_LOG_FATAL</p></td>
+<td class="enum_member_description">
+<p>Fatal error.  Program will abort if this is not caught.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-LOG-LAST:CAPS"></a>LIBRDF_LOG_LAST</p></td>
+<td class="enum_member_description">
+<p>Internal, never returned.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="librdf-log-facility"></a><h3>enum librdf_log_facility</h3>
+<p>Indicates the part of the system that generated the log message.</p>
+<div class="refsect3">
+<a name="librdf-log-facility.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-NONE:CAPS"></a>LIBRDF_FROM_NONE</p></td>
+<td class="enum_member_description">
+<p>Associated with no part.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-CONCEPTS:CAPS"></a>LIBRDF_FROM_CONCEPTS</p></td>
+<td class="enum_member_description">
+<p>Concepts</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-DIGEST:CAPS"></a>LIBRDF_FROM_DIGEST</p></td>
+<td class="enum_member_description">
+<p>Digest</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-FILES:CAPS"></a>LIBRDF_FROM_FILES</p></td>
+<td class="enum_member_description">
+<p>Files</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-HASH:CAPS"></a>LIBRDF_FROM_HASH</p></td>
+<td class="enum_member_description">
+<p>Hash</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-INIT:CAPS"></a>LIBRDF_FROM_INIT</p></td>
+<td class="enum_member_description">
+<p>Init</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-ITERATOR:CAPS"></a>LIBRDF_FROM_ITERATOR</p></td>
+<td class="enum_member_description">
+<p>Iterator</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-LIST:CAPS"></a>LIBRDF_FROM_LIST</p></td>
+<td class="enum_member_description">
+<p>List</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-MODEL:CAPS"></a>LIBRDF_FROM_MODEL</p></td>
+<td class="enum_member_description">
+<p>Model</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-NODE:CAPS"></a>LIBRDF_FROM_NODE</p></td>
+<td class="enum_member_description">
+<p>Node</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-PARSER:CAPS"></a>LIBRDF_FROM_PARSER</p></td>
+<td class="enum_member_description">
+<p>Parser</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-QUERY:CAPS"></a>LIBRDF_FROM_QUERY</p></td>
+<td class="enum_member_description">
+<p>Query</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-SERIALIZER:CAPS"></a>LIBRDF_FROM_SERIALIZER</p></td>
+<td class="enum_member_description">
+<p>Serializer</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-STATEMENT:CAPS"></a>LIBRDF_FROM_STATEMENT</p></td>
+<td class="enum_member_description">
+<p>Statement</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-STORAGE:CAPS"></a>LIBRDF_FROM_STORAGE</p></td>
+<td class="enum_member_description">
+<p>Storage</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-STREAM:CAPS"></a>LIBRDF_FROM_STREAM</p></td>
+<td class="enum_member_description">
+<p>Stream</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-URI:CAPS"></a>LIBRDF_FROM_URI</p></td>
+<td class="enum_member_description">
+<p>URI</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-UTF8:CAPS"></a>LIBRDF_FROM_UTF8</p></td>
+<td class="enum_member_description">
+<p>UTF8</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-MEMORY:CAPS"></a>LIBRDF_FROM_MEMORY</p></td>
+<td class="enum_member_description">
+<p>Memory</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-RAPTOR:CAPS"></a>LIBRDF_FROM_RAPTOR</p></td>
+<td class="enum_member_description">
+<p>Raptor library (parser or serializer; Raptor 2.0.0+).</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="LIBRDF-FROM-LAST:CAPS"></a>LIBRDF_FROM_LAST</p></td>
+<td class="enum_member_description">
+<p>Internal, never returned.</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.27</div>
+</body>
+</html>

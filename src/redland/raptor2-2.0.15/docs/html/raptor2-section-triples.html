@@ -1,0 +1,1704 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>section-triples: Raptor RDF Syntax Library Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="Raptor RDF Syntax Library Manual">
+<link rel="up" href="reference-manual.html" title="Part II. Raptor Reference Manual">
+<link rel="prev" href="raptor2-section-stringbuffer.html" title="section-stringbuffer">
+<link rel="next" href="raptor2-section-unicode.html" title="section-unicode">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#raptor2-section-triples.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference-manual.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="raptor2-section-stringbuffer.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="raptor2-section-unicode.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="raptor2-section-triples"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="raptor2-section-triples.top_of_page"></a>section-triples</span></h2>
+<p>section-triples</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="raptor2-section-triples.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-new-term-from-blank" title="raptor_new_term_from_blank ()">raptor_new_term_from_blank</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-new-term-from-counted-blank" title="raptor_new_term_from_counted_blank ()">raptor_new_term_from_counted_blank</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-new-term-from-literal" title="raptor_new_term_from_literal ()">raptor_new_term_from_literal</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-new-term-from-counted-literal" title="raptor_new_term_from_counted_literal ()">raptor_new_term_from_counted_literal</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-new-term-from-counted-uri-string" title="raptor_new_term_from_counted_uri_string ()">raptor_new_term_from_counted_uri_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-new-term-from-uri" title="raptor_new_term_from_uri ()">raptor_new_term_from_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-new-term-from-uri-string" title="raptor_new_term_from_uri_string ()">raptor_new_term_from_uri_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-new-term-from-counted-string" title="raptor_new_term_from_counted_string ()">raptor_new_term_from_counted_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-term-copy" title="raptor_term_copy ()">raptor_term_copy</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-term-compare" title="raptor_term_compare ()">raptor_term_compare</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-term-equals" title="raptor_term_equals ()">raptor_term_equals</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-free-term" title="raptor_free_term ()">raptor_free_term</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-term-to-counted-string" title="raptor_term_to_counted_string ()">raptor_term_to_counted_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-term-to-string" title="raptor_term_to_string ()">raptor_term_to_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-term-ntriples-write" title="raptor_term_ntriples_write ()">raptor_term_ntriples_write</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-term-to-turtle-counted-string" title="raptor_term_to_turtle_counted_string ()">raptor_term_to_turtle_counted_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">unsigned <span class="returnvalue">char</span> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-term-to-turtle-string" title="raptor_term_to_turtle_string ()">raptor_term_to_turtle_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-term-turtle-write" title="raptor_term_turtle_write ()">raptor_term_turtle_write</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="returnvalue">raptor_statement</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-new-statement" title="raptor_new_statement ()">raptor_new_statement</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="returnvalue">raptor_statement</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-new-statement-from-nodes" title="raptor_new_statement_from_nodes ()">raptor_new_statement_from_nodes</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-free-statement" title="raptor_free_statement ()">raptor_free_statement</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="returnvalue">raptor_statement</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-statement-copy" title="raptor_statement_copy ()">raptor_statement_copy</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-statement-compare" title="raptor_statement_compare ()">raptor_statement_compare</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-statement-equals" title="raptor_statement_equals ()">raptor_statement_equals</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-statement-init" title="raptor_statement_init ()">raptor_statement_init</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-statement-clear" title="raptor_statement_clear ()">raptor_statement_clear</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-statement-print" title="raptor_statement_print ()">raptor_statement_print</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-statement-print-as-ntriples" title="raptor_statement_print_as_ntriples ()">raptor_statement_print_as_ntriples</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="raptor2-section-triples.html#raptor-statement-ntriples-write" title="raptor_statement_ntriples_write ()">raptor_statement_ntriples_write</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-triples.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="raptor2-section-triples.html#raptor-term-type" title="enum raptor_term_type">raptor_term_type</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term">raptor_term</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="raptor2-section-triples.html#raptor-term-value" title="raptor_term_value">raptor_term_value</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="raptor2-section-triples.html#raptor-term-blank-value" title="raptor_term_blank_value">raptor_term_blank_value</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="raptor2-section-triples.html#raptor-term-literal-value" title="raptor_term_literal_value">raptor_term_literal_value</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement">raptor_statement</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-triples.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-triples.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="raptor-new-term-from-blank"></a><h3>raptor_new_term_from_blank ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+raptor_new_term_from_blank (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                            <em class="parameter"><code>const unsigned <span class="type">char</span> *blank</code></em>);</pre>
+<p>Constructor - create a new blank node statement term from a UTF-8 encoded blank node ID</p>
+<p>Takes a copy of the passed in <em class="parameter"><code>blank</code></em>
+</p>
+<p>If <em class="parameter"><code>blank</code></em>
+ is NULL or an empty string, creates a new internal
+identifier and uses it.  This will use the handler set with
+<a class="link" href="raptor2-section-world.html#raptor-world-set-generate-bnodeid-parameters" title="raptor_world_set_generate_bnodeid_parameters ()"><code class="function">raptor_world_set_generate_bnodeid_parameters()</code></a></p>
+<div class="refsect3">
+<a name="raptor-new-term-from-blank.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor world</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>blank</p></td>
+<td class="parameter_description"><p>UTF-8 encoded blank node identifier (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-term-from-blank.returns"></a><h4>Returns</h4>
+<p> new term or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-term-from-counted-blank"></a><h3>raptor_new_term_from_counted_blank ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+raptor_new_term_from_counted_blank (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                                    <em class="parameter"><code>const unsigned <span class="type">char</span> *blank</code></em>,
+                                    <em class="parameter"><code><span class="type">size_t</span> length</code></em>);</pre>
+<p>Constructor - create a new blank node statement term from a counted UTF-8 encoded blank node ID</p>
+<p>Takes a copy of the passed in <em class="parameter"><code>blank</code></em>
+</p>
+<p>If <em class="parameter"><code>blank</code></em>
+ is NULL, creates a new internal identifier and uses it.
+This will use the handler set with
+<a class="link" href="raptor2-section-world.html#raptor-world-set-generate-bnodeid-parameters" title="raptor_world_set_generate_bnodeid_parameters ()"><code class="function">raptor_world_set_generate_bnodeid_parameters()</code></a></p>
+<p>Note: The <em class="parameter"><code>blank</code></em>
+ need not be NULL terminated - a NULL will be
+added to the copied string used.</p>
+<div class="refsect3">
+<a name="raptor-new-term-from-counted-blank.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor world</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>blank</p></td>
+<td class="parameter_description"><p>UTF-8 encoded blank node identifier (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>length of identifier (or 0)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-term-from-counted-blank.returns"></a><h4>Returns</h4>
+<p> new term or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-term-from-literal"></a><h3>raptor_new_term_from_literal ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+raptor_new_term_from_literal (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                              <em class="parameter"><code>const unsigned <span class="type">char</span> *literal</code></em>,
+                              <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *datatype</code></em>,
+                              <em class="parameter"><code>const unsigned <span class="type">char</span> *language</code></em>);</pre>
+<p>Constructor - create a new literal statement term</p>
+<p>Takes copies of the passed in <em class="parameter"><code>literal</code></em>
+, <em class="parameter"><code>datatype</code></em>
+, <em class="parameter"><code>language</code></em>
+</p>
+<p>Only one of <em class="parameter"><code>language</code></em>
+ or <em class="parameter"><code>datatype</code></em>
+ may be given.  If both are
+given, NULL is returned.  If <em class="parameter"><code>language</code></em>
+ is the empty string, it is
+the equivalent to NULL.</p>
+<div class="refsect3">
+<a name="raptor-new-term-from-literal.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor world</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>literal</p></td>
+<td class="parameter_description"><p>UTF-8 encoded literal string (or NULL for empty literal)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>datatype</p></td>
+<td class="parameter_description"><p>literal datatype URI (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>language</p></td>
+<td class="parameter_description"><p>literal language (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-term-from-literal.returns"></a><h4>Returns</h4>
+<p> new term or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-term-from-counted-literal"></a><h3>raptor_new_term_from_counted_literal ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+raptor_new_term_from_counted_literal (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                                      <em class="parameter"><code>const unsigned <span class="type">char</span> *literal</code></em>,
+                                      <em class="parameter"><code><span class="type">size_t</span> literal_len</code></em>,
+                                      <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *datatype</code></em>,
+                                      <em class="parameter"><code>const unsigned <span class="type">char</span> *language</code></em>,
+                                      <em class="parameter"><code>unsigned <span class="type">char</span> language_len</code></em>);</pre>
+<p>Constructor - create a new literal statement term from a counted UTF-8 encoded literal string</p>
+<p>Takes copies of the passed in <em class="parameter"><code>literal</code></em>
+, <em class="parameter"><code>datatype</code></em>
+, <em class="parameter"><code>language</code></em>
+</p>
+<p>Only one of <em class="parameter"><code>language</code></em>
+ or <em class="parameter"><code>datatype</code></em>
+ may be given.  If both are
+given, NULL is returned.  If <em class="parameter"><code>language</code></em>
+ is the empty string, it is
+the equivalent to NULL.</p>
+<p>Note: The <em class="parameter"><code>literal</code></em>
+ need not be NULL terminated - a NULL will be
+added to the copied string used.</p>
+<div class="refsect3">
+<a name="raptor-new-term-from-counted-literal.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor world</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>literal</p></td>
+<td class="parameter_description"><p>UTF-8 encoded literal string (or NULL for empty literal)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>literal_len</p></td>
+<td class="parameter_description"><p>length of literal</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>datatype</p></td>
+<td class="parameter_description"><p>literal datatype URI (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>language</p></td>
+<td class="parameter_description"><p>literal language (or NULL for no language)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>language_len</p></td>
+<td class="parameter_description"><p>literal language length</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-term-from-counted-literal.returns"></a><h4>Returns</h4>
+<p> new term or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-term-from-counted-uri-string"></a><h3>raptor_new_term_from_counted_uri_string ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+raptor_new_term_from_counted_uri_string
+                               (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                                <em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>,
+                                <em class="parameter"><code><span class="type">size_t</span> length</code></em>);</pre>
+<p>Constructor - create a new URI statement term from a UTF-8 encoded Unicode string</p>
+<p>Note: The <em class="parameter"><code>uri_string</code></em>
+ need not be NULL terminated - a NULL will be
+added to the copied string used.</p>
+<div class="refsect3">
+<a name="raptor-new-term-from-counted-uri-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor world</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>UTF-8 encoded URI string.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>length of URI string</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-term-from-counted-uri-string.returns"></a><h4>Returns</h4>
+<p> new term or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-term-from-uri"></a><h3>raptor_new_term_from_uri ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+raptor_new_term_from_uri (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                          <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *uri</code></em>);</pre>
+<p>Constructor - create a new URI statement term</p>
+<p>Takes a copy (reference) of the passed in <em class="parameter"><code>uri</code></em>
+</p>
+<div class="refsect3">
+<a name="raptor-new-term-from-uri.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor world</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>uri</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-term-from-uri.returns"></a><h4>Returns</h4>
+<p> new term or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-term-from-uri-string"></a><h3>raptor_new_term_from_uri_string ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+raptor_new_term_from_uri_string (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                                 <em class="parameter"><code>const unsigned <span class="type">char</span> *uri_string</code></em>);</pre>
+<p>Constructor - create a new URI statement term from a UTF-8 encoded Unicode string</p>
+<div class="refsect3">
+<a name="raptor-new-term-from-uri-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor world</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri_string</p></td>
+<td class="parameter_description"><p>UTF-8 encoded URI string.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-term-from-uri-string.returns"></a><h4>Returns</h4>
+<p> new term or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-term-from-counted-string"></a><h3>raptor_new_term_from_counted_string ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+raptor_new_term_from_counted_string (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                                     <em class="parameter"><code>unsigned <span class="type">char</span> *string</code></em>,
+                                     <em class="parameter"><code><span class="type">size_t</span> length</code></em>);</pre>
+<p>Constructor - create a new term from a Turtle / N-Triples format string in UTF-8</p>
+<p>See also <a class="link" href="raptor2-section-triples.html#raptor-term-to-counted-string" title="raptor_term_to_counted_string ()"><code class="function">raptor_term_to_counted_string()</code></a> and <a class="link" href="raptor2-section-triples.html#raptor-term-to-string" title="raptor_term_to_string ()"><code class="function">raptor_term_to_string()</code></a></p>
+<div class="refsect3">
+<a name="raptor-new-term-from-counted-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor world</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>string</p></td>
+<td class="parameter_description"><p>N-Triples format string (UTF-8)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>length of <em class="parameter"><code>string</code></em>
+(or 0)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-term-from-counted-string.returns"></a><h4>Returns</h4>
+<p> new term or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-term-copy"></a><h3>raptor_term_copy ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="returnvalue">raptor_term</span></a> *
+raptor_term_copy (<em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *term</code></em>);</pre>
+<p>Copy constructor - get a copy of a statement term</p>
+<div class="refsect3">
+<a name="raptor-term-copy.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>term</p></td>
+<td class="parameter_description"><p>raptor term</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-term-copy.returns"></a><h4>Returns</h4>
+<p> new term object or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-term-compare"></a><h3>raptor_term_compare ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_term_compare (<em class="parameter"><code>const <a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *t1</code></em>,
+                     <em class="parameter"><code>const <a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *t2</code></em>);</pre>
+<p>Compare a pair of <a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a></p>
+<p>If types are different, the <a class="link" href="raptor2-section-triples.html#raptor-term-type" title="enum raptor_term_type"><span class="type">raptor_term_type</span></a> order is used.</p>
+<p>Resource and datatype URIs are compared with <a class="link" href="raptor2-section-uri.html#raptor-uri-compare" title="raptor_uri_compare ()"><code class="function">raptor_uri_compare()</code></a>,
+blank nodes and literals with <code class="function">strcmp()</code>.  If one literal has no
+language, it is earlier than one with a language.  If one literal
+has no datatype, it is earlier than one with a datatype.</p>
+<div class="refsect3">
+<a name="raptor-term-compare.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>t1</p></td>
+<td class="parameter_description"><p>first term</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>t2</p></td>
+<td class="parameter_description"><p>second term</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-term-compare.returns"></a><h4>Returns</h4>
+<p> &lt;0 if t1 is before t2, 0 if equal, &gt;0 if t1 is after t2</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-term-equals"></a><h3>raptor_term_equals ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_term_equals (<em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *t1</code></em>,
+                    <em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *t2</code></em>);</pre>
+<p>Compare a pair of <a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> for equality</p>
+<div class="refsect3">
+<a name="raptor-term-equals.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>t1</p></td>
+<td class="parameter_description"><p>first term</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>t2</p></td>
+<td class="parameter_description"><p>second term</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-term-equals.returns"></a><h4>Returns</h4>
+<p> non-0 if the terms are equal</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-free-term"></a><h3>raptor_free_term ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+raptor_free_term (<em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *term</code></em>);</pre>
+<p>Destructor - destroy a raptor_term object.</p>
+<div class="refsect3">
+<a name="raptor-free-term.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>term</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-term-to-counted-string"></a><h3>raptor_term_to_counted_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_term_to_counted_string (<em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *term</code></em>,
+                               <em class="parameter"><code><span class="type">size_t</span> *len_p</code></em>);</pre>
+<p>Turns a raptor term into a N-Triples format counted string.</p>
+<p>Turns the given <em class="parameter"><code>term</code></em>
+ into an N-Triples escaped string using all the
+escapes as defined in http://www.w3.org/TR/rdf-testcases/<span class="type">ntriples</span></p>
+<p>This function uses <a class="link" href="raptor2-section-triples.html#raptor-term-ntriples-write" title="raptor_term_ntriples_write ()"><code class="function">raptor_term_ntriples_write()</code></a> to write to an
+<a class="link" href="raptor2-section-iostream.html#raptor-iostream" title="raptor_iostream"><span class="type">raptor_iostream</span></a> which is the prefered way to write formatted
+output.</p>
+<p>See also <a class="link" href="raptor2-section-triples.html#raptor-new-term-from-counted-string" title="raptor_new_term_from_counted_string ()"><code class="function">raptor_new_term_from_counted_string()</code></a> to reverse this.</p>
+<p>See also <a class="link" href="raptor2-section-triples.html#raptor-term-to-turtle-string" title="raptor_term_to_turtle_string ()"><code class="function">raptor_term_to_turtle_string()</code></a> to write as Turtle which
+will include Turtle syntax such as 'true' for booleans and """quoting"""</p>
+<div class="refsect3">
+<a name="raptor-term-to-counted-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>term</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>len_p</p></td>
+<td class="parameter_description"><p>Pointer to location to store length of new string (if not NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-term-to-counted-string.returns"></a><h4>Returns</h4>
+<p> the new string or NULL on failure.  The length of
+the new string is returned in *<em class="parameter"><code>len_p</code></em>
+if len_p is not NULL.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-term-to-string"></a><h3>raptor_term_to_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_term_to_string (<em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *term</code></em>);</pre>
+<p>Turns a raptor term into a N-Triples format string.</p>
+<p>Turns the given <em class="parameter"><code>term</code></em>
+ into an N-Triples escaped string using all the
+escapes as defined in http://www.w3.org/TR/rdf-testcases/<span class="type">ntriples</span></p>
+<p>See also <a class="link" href="raptor2-section-triples.html#raptor-new-term-from-counted-string" title="raptor_new_term_from_counted_string ()"><code class="function">raptor_new_term_from_counted_string()</code></a> to reverse this.</p>
+<p>See also <a class="link" href="raptor2-section-triples.html#raptor-term-to-turtle-string" title="raptor_term_to_turtle_string ()"><code class="function">raptor_term_to_turtle_string()</code></a> to write as Turtle which
+will include Turtle syntax such as 'true' for booleans and """quoting"""</p>
+<div class="refsect3">
+<a name="raptor-term-to-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>term</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-term-to-string.returns"></a><h4>Returns</h4>
+<p> the new string or NULL on failure.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-term-ntriples-write"></a><h3>raptor_term_ntriples_write ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_term_ntriples_write (<em class="parameter"><code>const <a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *term</code></em>,
+                            <em class="parameter"><code><a class="link" href="raptor2-section-iostream.html#raptor-iostream" title="raptor_iostream"><span class="type">raptor_iostream</span></a> *iostr</code></em>);</pre>
+<div class="warning"><p><code class="literal">raptor_term_ntriples_write</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Write a <a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> formatted in N-Triples format to a <a class="link" href="raptor2-section-iostream.html#raptor-iostream" title="raptor_iostream"><span class="type">raptor_iostream</span></a></p>
+<p><em class="parameter"><code>Deprecated</code></em>
+: Use <a class="link" href="raptor2-section-iostream.html#raptor-term-escaped-write" title="raptor_term_escaped_write ()"><code class="function">raptor_term_escaped_write()</code></a> that allows
+configuring format detail flags.</p>
+<div class="refsect3">
+<a name="raptor-term-ntriples-write.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>term</p></td>
+<td class="parameter_description"><p>term to write</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>iostr</p></td>
+<td class="parameter_description"><p>raptor iostream</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-term-ntriples-write.returns"></a><h4>Returns</h4>
+<p> non-0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-term-to-turtle-counted-string"></a><h3>raptor_term_to_turtle_counted_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_term_to_turtle_counted_string (<em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *term</code></em>,
+                                      <em class="parameter"><code><a class="link" href="raptor2-section-xml-namespace.html#raptor-namespace-stack" title="raptor_namespace_stack"><span class="type">raptor_namespace_stack</span></a> *nstack</code></em>,
+                                      <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *base_uri</code></em>,
+                                      <em class="parameter"><code><span class="type">size_t</span> *len_p</code></em>);</pre>
+<p>Convert <a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> to a string.
+Caller has responsibility to free the string.</p>
+<p>Note: This creates and destroys several internal objects for each
+call so for more efficient writing, create a turtle serializer.</p>
+<p>See also <a class="link" href="raptor2-section-triples.html#raptor-term-to-counted-string" title="raptor_term_to_counted_string ()"><code class="function">raptor_term_to_counted_string()</code></a> which writes in simpler
+N-Triples with no Turtle abbreviated forms, and is quicker.</p>
+<div class="refsect3">
+<a name="raptor-term-to-turtle-counted-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>term</p></td>
+<td class="parameter_description"><p>term</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>nstack</p></td>
+<td class="parameter_description"><p>namespace stack</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>base URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>len_p</p></td>
+<td class="parameter_description"><p>Pointer to location to store length of new string (if not NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-term-to-turtle-counted-string.returns"></a><h4>Returns</h4>
+<p> the new string or NULL on failure.  The length of
+the new string is returned in *<em class="parameter"><code>len_p</code></em>
+if len_p is not NULL.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-term-to-turtle-string"></a><h3>raptor_term_to_turtle_string ()</h3>
+<pre class="programlisting">unsigned <span class="returnvalue">char</span> *
+raptor_term_to_turtle_string (<em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *term</code></em>,
+                              <em class="parameter"><code><a class="link" href="raptor2-section-xml-namespace.html#raptor-namespace-stack" title="raptor_namespace_stack"><span class="type">raptor_namespace_stack</span></a> *nstack</code></em>,
+                              <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *base_uri</code></em>);</pre>
+<p>Convert <a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> to a string.
+Caller has responsibility to free the string.</p>
+<p>See also <a class="link" href="raptor2-section-triples.html#raptor-term-to-counted-string" title="raptor_term_to_counted_string ()"><code class="function">raptor_term_to_counted_string()</code></a> which writes in simpler
+N-Triples with no Turtle abbreviated forms, and is quicker.</p>
+<div class="refsect3">
+<a name="raptor-term-to-turtle-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>term</p></td>
+<td class="parameter_description"><p>term</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>nstack</p></td>
+<td class="parameter_description"><p>namespace stack</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>base URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-term-to-turtle-string.returns"></a><h4>Returns</h4>
+<p> the new string or NULL on failure.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-term-turtle-write"></a><h3>raptor_term_turtle_write ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_term_turtle_write (<em class="parameter"><code><a class="link" href="raptor2-section-iostream.html#raptor-iostream" title="raptor_iostream"><span class="type">raptor_iostream</span></a> *iostr</code></em>,
+                          <em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *term</code></em>,
+                          <em class="parameter"><code><a class="link" href="raptor2-section-xml-namespace.html#raptor-namespace-stack" title="raptor_namespace_stack"><span class="type">raptor_namespace_stack</span></a> *nstack</code></em>,
+                          <em class="parameter"><code><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *base_uri</code></em>);</pre>
+<p>Write <a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> to a stream in turtle syntax (using QNames).</p>
+<p>Note: This creates and destroys several internal objects for each
+call so for more efficient writing, create a turtle serializer.</p>
+<div class="refsect3">
+<a name="raptor-term-turtle-write.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>iostr</p></td>
+<td class="parameter_description"><p>iostream for writing</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>term</p></td>
+<td class="parameter_description"><p>term</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>nstack</p></td>
+<td class="parameter_description"><p>namespace stack</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>base_uri</p></td>
+<td class="parameter_description"><p>base URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-term-turtle-write.returns"></a><h4>Returns</h4>
+<p> non-0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-statement"></a><h3>raptor_new_statement ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="returnvalue">raptor_statement</span></a> *
+raptor_new_statement (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a>.</p>
+<div class="refsect3">
+<a name="raptor-new-statement.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor world</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-statement.returns"></a><h4>Returns</h4>
+<p> new raptor statement or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-new-statement-from-nodes"></a><h3>raptor_new_statement_from_nodes ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="returnvalue">raptor_statement</span></a> *
+raptor_new_statement_from_nodes (<em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>,
+                                 <em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *subject</code></em>,
+                                 <em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *predicate</code></em>,
+                                 <em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *object</code></em>,
+                                 <em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *graph</code></em>);</pre>
+<p>Constructor - create a new <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> from a set of terms</p>
+<p>The <em class="parameter"><code>subject</code></em>
+, <em class="parameter"><code>predicate</code></em>
+, <em class="parameter"><code>object</code></em>
+ and <em class="parameter"><code>graph</code></em>
+ become owned by the statement.</p>
+<div class="refsect3">
+<a name="raptor-new-statement-from-nodes.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor world</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>subject</p></td>
+<td class="parameter_description"><p>subject term (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>predicate</p></td>
+<td class="parameter_description"><p>predicate term (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>object term (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>graph</p></td>
+<td class="parameter_description"><p>graph name term (or NULL)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-new-statement-from-nodes.returns"></a><h4>Returns</h4>
+<p> new raptor statement or NULL on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-free-statement"></a><h3>raptor_free_statement ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+raptor_free_statement (<em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> *statement</code></em>);</pre>
+<p>Destructor</p>
+<div class="refsect3">
+<a name="raptor-free-statement.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>statement</p></td>
+<td class="parameter_description"><p>statement</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-statement-copy"></a><h3>raptor_statement_copy ()</h3>
+<pre class="programlisting"><a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="returnvalue">raptor_statement</span></a> *
+raptor_statement_copy (<em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> *statement</code></em>);</pre>
+<p>Copy a <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a>.</p>
+<div class="refsect3">
+<a name="raptor-statement-copy.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>statement</p></td>
+<td class="parameter_description"><p>statement to copy</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-statement-copy.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> or NULL on error</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-statement-compare"></a><h3>raptor_statement_compare ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_statement_compare (<em class="parameter"><code>const <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> *s1</code></em>,
+                          <em class="parameter"><code>const <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> *s2</code></em>);</pre>
+<p>Compare a pair of <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a></p>
+<p>Uses <a class="link" href="raptor2-section-triples.html#raptor-term-compare" title="raptor_term_compare ()"><code class="function">raptor_term_compare()</code></a> to check ordering between subjects,
+predicates and objects of statements.</p>
+<div class="refsect3">
+<a name="raptor-statement-compare.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>s1</p></td>
+<td class="parameter_description"><p>first statement</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>s2</p></td>
+<td class="parameter_description"><p>second statement</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-statement-compare.returns"></a><h4>Returns</h4>
+<p> &lt;0 if s1 is before s2, 0 if equal, &gt;0 if s1 is after s2</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-statement-equals"></a><h3>raptor_statement_equals ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_statement_equals (<em class="parameter"><code>const <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> *s1</code></em>,
+                         <em class="parameter"><code>const <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> *s2</code></em>);</pre>
+<p>Compare a pair of <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> for equality</p>
+<div class="refsect3">
+<a name="raptor-statement-equals.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>s1</p></td>
+<td class="parameter_description"><p>first statement</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>s2</p></td>
+<td class="parameter_description"><p>second statement</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-statement-equals.returns"></a><h4>Returns</h4>
+<p> non-0 if statements are equal</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-statement-init"></a><h3>raptor_statement_init ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+raptor_statement_init (<em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> *statement</code></em>,
+                       <em class="parameter"><code><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *world</code></em>);</pre>
+<p>Initialize a static <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a>.</p>
+<div class="refsect3">
+<a name="raptor-statement-init.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>statement</p></td>
+<td class="parameter_description"><p>statement to initialize</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>world</p></td>
+<td class="parameter_description"><p>raptor world</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-statement-clear"></a><h3>raptor_statement_clear ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+raptor_statement_clear (<em class="parameter"><code><a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> *statement</code></em>);</pre>
+<p>Empty a raptor_statement of terms.</p>
+<div class="refsect3">
+<a name="raptor-statement-clear.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>statement</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-statement-print"></a><h3>raptor_statement_print ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_statement_print (<em class="parameter"><code>const <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> *statement</code></em>,
+                        <em class="parameter"><code><span class="type">FILE</span> *stream</code></em>);</pre>
+<p>Print a raptor_statement to a stream.</p>
+<div class="refsect3">
+<a name="raptor-statement-print.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>statement</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> object to print</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>FILE* stream</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-statement-print.returns"></a><h4>Returns</h4>
+<p> non-0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-statement-print-as-ntriples"></a><h3>raptor_statement_print_as_ntriples ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_statement_print_as_ntriples (<em class="parameter"><code>const <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> *statement</code></em>,
+                                    <em class="parameter"><code><span class="type">FILE</span> *stream</code></em>);</pre>
+<p>Print a raptor_statement in N-Triples form.</p>
+<div class="refsect3">
+<a name="raptor-statement-print-as-ntriples.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>statement</p></td>
+<td class="parameter_description"><p><a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> to print</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>stream</p></td>
+<td class="parameter_description"><p>FILE* stream</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-statement-print-as-ntriples.returns"></a><h4>Returns</h4>
+<p> non-0 on failure</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-statement-ntriples-write"></a><h3>raptor_statement_ntriples_write ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+raptor_statement_ntriples_write (<em class="parameter"><code>const <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> *statement</code></em>,
+                                 <em class="parameter"><code><a class="link" href="raptor2-section-iostream.html#raptor-iostream" title="raptor_iostream"><span class="type">raptor_iostream</span></a> *iostr</code></em>,
+                                 <em class="parameter"><code><span class="type">int</span> write_graph_term</code></em>);</pre>
+<p>Write a <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a> formatted in N-Triples or N-Quads format
+to a <a class="link" href="raptor2-section-iostream.html#raptor-iostream" title="raptor_iostream"><span class="type">raptor_iostream</span></a></p>
+<div class="refsect3">
+<a name="raptor-statement-ntriples-write.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>statement</p></td>
+<td class="parameter_description"><p>statement to write</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>iostr</p></td>
+<td class="parameter_description"><p>raptor iostream</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>write_graph_term</p></td>
+<td class="parameter_description"><p>flag to write graph term if present</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="raptor-statement-ntriples-write.returns"></a><h4>Returns</h4>
+<p> non-0 on failure</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="raptor2-section-triples.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="raptor-term-type"></a><h3>enum raptor_term_type</h3>
+<p>Type of term in a <a class="link" href="raptor2-section-triples.html#raptor-statement" title="raptor_statement"><span class="type">raptor_statement</span></a></p>
+<p>Node type 3 is unused but exists to preserve numeric compatibility
+with librdf_node_type values.</p>
+<div class="refsect3">
+<a name="raptor-term-type.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="RAPTOR-TERM-TYPE-UNKNOWN:CAPS"></a>RAPTOR_TERM_TYPE_UNKNOWN</p></td>
+<td class="enum_member_description">
+<p>Internal</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="RAPTOR-TERM-TYPE-URI:CAPS"></a>RAPTOR_TERM_TYPE_URI</p></td>
+<td class="enum_member_description">
+<p>RDF URI</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="RAPTOR-TERM-TYPE-LITERAL:CAPS"></a>RAPTOR_TERM_TYPE_LITERAL</p></td>
+<td class="enum_member_description">
+<p>RDF literal</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="RAPTOR-TERM-TYPE-BLANK:CAPS"></a>RAPTOR_TERM_TYPE_BLANK</p></td>
+<td class="enum_member_description">
+<p>RDF blank node</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-term"></a><h3>raptor_term</h3>
+<pre class="programlisting">typedef struct {
+  raptor_world* world;
+
+  int usage;
+
+  raptor_term_type type;
+
+  raptor_term_value value;
+} raptor_term;
+</pre>
+<p>An RDF statement term</p>
+<div class="refsect3">
+<a name="raptor-term.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *<em class="structfield"><code><a name="raptor-term.world"></a>world</code></em>;</p></td>
+<td class="struct_member_description"><p>world</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><span class="type">int</span> <em class="structfield"><code><a name="raptor-term.usage"></a>usage</code></em>;</p></td>
+<td class="struct_member_description"><p>usage reference count (if &gt;0)</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="raptor2-section-triples.html#raptor-term-type" title="enum raptor_term_type"><span class="type">raptor_term_type</span></a> <em class="structfield"><code><a name="raptor-term.type"></a>type</code></em>;</p></td>
+<td class="struct_member_description"><p>term type</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="raptor2-section-triples.html#raptor-term-value" title="raptor_term_value"><span class="type">raptor_term_value</span></a> <em class="structfield"><code><a name="raptor-term.value"></a>value</code></em>;</p></td>
+<td class="struct_member_description"><p>term values per type</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-term-value"></a><h3>raptor_term_value</h3>
+<p>Term value - this typedef exists solely for use in <a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a></p>
+<div class="refsect3">
+<a name="raptor-term-value.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="union_members_name">
+<col class="union_members_description">
+<col width="200px" class="union_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="union_member_name"><p><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *<em class="structfield"><code><a name="raptor-term-value.uri"></a>uri</code></em>;</p></td>
+<td class="union_member_description"><p>uri value when term type is <a class="link" href="raptor2-section-triples.html#RAPTOR-TERM-TYPE-URI:CAPS"><span class="type">RAPTOR_TERM_TYPE_URI</span></a></p></td>
+<td class="union_member_annotations"> </td>
+</tr>
+<tr>
+<td class="union_member_name"><p><a class="link" href="raptor2-section-triples.html#raptor-term-literal-value" title="raptor_term_literal_value"><span class="type">raptor_term_literal_value</span></a> <em class="structfield"><code><a name="raptor-term-value.literal"></a>literal</code></em>;</p></td>
+<td class="union_member_description"><p>literal value when term type is <a class="link" href="raptor2-section-triples.html#RAPTOR-TERM-TYPE-LITERAL:CAPS"><span class="type">RAPTOR_TERM_TYPE_LITERAL</span></a></p></td>
+<td class="union_member_annotations"> </td>
+</tr>
+<tr>
+<td class="union_member_name"><p><a class="link" href="raptor2-section-triples.html#raptor-term-blank-value" title="raptor_term_blank_value"><span class="type">raptor_term_blank_value</span></a> <em class="structfield"><code><a name="raptor-term-value.blank"></a>blank</code></em>;</p></td>
+<td class="union_member_description"><p>blank value when term type is <a class="link" href="raptor2-section-triples.html#RAPTOR-TERM-TYPE-BLANK:CAPS"><span class="type">RAPTOR_TERM_TYPE_BLANK</span></a></p></td>
+<td class="union_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-term-blank-value"></a><h3>raptor_term_blank_value</h3>
+<pre class="programlisting">typedef struct {
+  unsigned char *string;
+  unsigned int string_len;
+} raptor_term_blank_value;
+</pre>
+<p>Blank term value - this typedef exists solely for use in <a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a></p>
+<div class="refsect3">
+<a name="raptor-term-blank-value.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p>unsigned <span class="type">char</span> *<em class="structfield"><code><a name="raptor-term-blank-value.string"></a>string</code></em>;</p></td>
+<td class="struct_member_description"><p>literal string</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p>unsigned <span class="type">int</span> <em class="structfield"><code><a name="raptor-term-blank-value.string-len"></a>string_len</code></em>;</p></td>
+<td class="struct_member_description"><p>length of string</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-term-literal-value"></a><h3>raptor_term_literal_value</h3>
+<pre class="programlisting">typedef struct {
+  unsigned char *string;
+  unsigned int string_len;
+
+  raptor_uri *datatype;
+
+  unsigned char *language;
+  unsigned char language_len;
+} raptor_term_literal_value;
+</pre>
+<p>Literal term value - this typedef exists solely for use in <a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a></p>
+<p>Either <em class="parameter"><code>datatype</code></em>
+ or <em class="parameter"><code>language</code></em>
+ may be non-NULL but not both.</p>
+<div class="refsect3">
+<a name="raptor-term-literal-value.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p>unsigned <span class="type">char</span> *<em class="structfield"><code><a name="raptor-term-literal-value.string"></a>string</code></em>;</p></td>
+<td class="struct_member_description"><p>literal string</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p>unsigned <span class="type">int</span> <em class="structfield"><code><a name="raptor-term-literal-value.string-len"></a>string_len</code></em>;</p></td>
+<td class="struct_member_description"><p>length of string</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="raptor2-section-uri.html#raptor-uri" title="raptor_uri"><span class="type">raptor_uri</span></a> *<em class="structfield"><code><a name="raptor-term-literal-value.datatype"></a>datatype</code></em>;</p></td>
+<td class="struct_member_description"><p>datatype URI (or NULL)</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p>unsigned <span class="type">char</span> *<em class="structfield"><code><a name="raptor-term-literal-value.language"></a>language</code></em>;</p></td>
+<td class="struct_member_description"><p>literal language (or NULL)</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p>unsigned <span class="type">char</span> <em class="structfield"><code><a name="raptor-term-literal-value.language-len"></a>language_len</code></em>;</p></td>
+<td class="struct_member_description"><p>length of language</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="raptor-statement"></a><h3>raptor_statement</h3>
+<pre class="programlisting">typedef struct {
+  raptor_world* world;
+  int usage;
+  raptor_term* subject;
+  raptor_term* predicate;
+  raptor_term* object;
+  raptor_term* graph;
+} raptor_statement;
+</pre>
+<p>An RDF triple with optional graph name (quad)</p>
+<p>See <a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> for a description of how the fields may be used.
+As returned by a parser statement_handler.</p>
+<div class="refsect3">
+<a name="raptor-statement.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="struct_members_name">
+<col class="struct_members_description">
+<col width="200px" class="struct_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="raptor2-section-world.html#raptor-world" title="raptor_world"><span class="type">raptor_world</span></a> *<em class="structfield"><code><a name="raptor-statement.world"></a>world</code></em>;</p></td>
+<td class="struct_member_description"><p>world pointer</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><span class="type">int</span> <em class="structfield"><code><a name="raptor-statement.usage"></a>usage</code></em>;</p></td>
+<td class="struct_member_description"><p>usage count</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *<em class="structfield"><code><a name="raptor-statement.subject"></a>subject</code></em>;</p></td>
+<td class="struct_member_description"><p>statement subject</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *<em class="structfield"><code><a name="raptor-statement.predicate"></a>predicate</code></em>;</p></td>
+<td class="struct_member_description"><p>statement predicate</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *<em class="structfield"><code><a name="raptor-statement.object"></a>object</code></em>;</p></td>
+<td class="struct_member_description"><p>statement object</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+<tr>
+<td class="struct_member_name"><p><a class="link" href="raptor2-section-triples.html#raptor-term" title="raptor_term"><span class="type">raptor_term</span></a> *<em class="structfield"><code><a name="raptor-statement.graph"></a>graph</code></em>;</p></td>
+<td class="struct_member_description"><p>statement graph name (or NULL if not present)</p></td>
+<td class="struct_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.27</div>
+</body>
+</html>

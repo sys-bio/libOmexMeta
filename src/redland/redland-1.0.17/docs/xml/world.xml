@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-world">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-world.top_of_page">world</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>world</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-world.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="librdf-world"><returnvalue>librdf_world</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-new-world">librdf_new_world</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-free-world">librdf_free_world</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-world-open">librdf_world_open</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-world-set-rasqal">librdf_world_set_rasqal</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="rasqal-world"><returnvalue>rasqal_world</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-world-get-rasqal">librdf_world_get_rasqal</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-world"><returnvalue>raptor_world</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-world-get-raptor">librdf_world_get_raptor</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-world-set-raptor">librdf_world_set_raptor</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-world-init-mutex">librdf_world_init_mutex</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-world-set-error">librdf_world_set_error</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-world-set-warning">librdf_world_set_warning</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-world-set-logger">librdf_world_set_logger</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-world-set-digest">librdf_world_set_digest</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="librdf-raptor-init-handler">*librdf_raptor_init_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-world-set-raptor-init-handler">librdf_world_set_raptor_init_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><phrase role="c_punctuation">(</phrase><link linkend="librdf-rasqal-init-handler">*librdf_rasqal_init_handler</link><phrase role="c_punctuation">)</phrase>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-world-set-rasqal-init-handler">librdf_world_set_rasqal_init_handler</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-world-get-feature">librdf_world_get_feature</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-world-set-feature">librdf_world_set_feature</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-init-world">librdf_init_world</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="librdf-destroy-world">librdf_destroy_world</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="redland-world.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="librdf-world">librdf_world</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-WORLD-FEATURE-GENID-BASE:CAPS">LIBRDF_WORLD_FEATURE_GENID_BASE</link></entry></row>
+<row><entry role="define_keyword">#define</entry><entry role="function_name"><link linkend="LIBRDF-WORLD-FEATURE-GENID-COUNTER:CAPS">LIBRDF_WORLD_FEATURE_GENID_COUNTER</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-world.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-world.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-new-world" role="function">
+<title>librdf_new_world&#160;()</title>
+<indexterm zone="librdf-new-world"><primary>librdf_new_world</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-world"><returnvalue>librdf_world</returnvalue></link>&#160;*
+librdf_new_world (<parameter><type>void</type></parameter>);</programlisting>
+<para>Create a new Redland execution environment.</para>
+<para>Once this constructor is called to build a <link linkend="librdf-world"><type>librdf_world</type></link> object
+several functions may be called to set some parameters such as
+<link linkend="librdf-world-set-error"><function>librdf_world_set_error()</function></link>, <link linkend="librdf-world-set-warning"><function>librdf_world_set_warning()</function></link>,
+<link linkend="librdf-world-set-logger"><function>librdf_world_set_logger()</function></link>, <link linkend="librdf-world-set-digest"><function>librdf_world_set_digest()</function></link>,
+<link linkend="librdf-world-set-feature"><function>librdf_world_set_feature()</function></link>.</para>
+<para>The world object needs initializing using <link linkend="librdf-world-open"><function>librdf_world_open()</function></link>
+whether or not the above functions are called.  It will be
+automatically called by all object constructors in Redland 1.0.6
+or later, but for earlier versions it MUST be called before using
+any other part of Redland.</para>
+<refsect3 id="librdf-new-world.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="librdf-world"><type>librdf_world</type></link> or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-free-world" role="function">
+<title>librdf_free_world&#160;()</title>
+<indexterm zone="librdf-free-world"><primary>librdf_free_world</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_free_world (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>);</programlisting>
+<para>Terminate the library and frees all allocated resources.</para>
+<refsect3 id="librdf-free-world.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-world-open" role="function">
+<title>librdf_world_open&#160;()</title>
+<indexterm zone="librdf-world-open"><primary>librdf_world_open</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_world_open (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>);</programlisting>
+<para>Open a created redland world environment.</para>
+<refsect3 id="librdf-world-open.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-world-set-rasqal" role="function">
+<title>librdf_world_set_rasqal&#160;()</title>
+<indexterm zone="librdf-world-set-rasqal"><primary>librdf_world_set_rasqal</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_world_set_rasqal (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                         <parameter><link linkend="rasqal-world"><type>rasqal_world</type></link> *rasqal_world_ptr</parameter>);</programlisting>
+<para>Set the <link linkend="rasqal-world"><type>rasqal_world</type></link> instance to be used with this <link linkend="librdf-world"><type>librdf_world</type></link>.</para>
+<para>If no rasqal_world instance is set with this function,
+<link linkend="librdf-world-open"><function>librdf_world_open()</function></link> creates a new instance.</para>
+<para>Ownership of the rasqal_world is not taken. If the rasqal library
+instance is set with this function, <link linkend="librdf-free-world"><function>librdf_free_world()</function></link> will not
+free it.</para>
+<refsect3 id="librdf-world-set-rasqal.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>librdf_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>rasqal_world_ptr</para></entry>
+<entry role="parameter_description"><para>rasqal_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-world-get-rasqal" role="function">
+<title>librdf_world_get_rasqal&#160;()</title>
+<indexterm zone="librdf-world-get-rasqal"><primary>librdf_world_get_rasqal</primary></indexterm>
+<programlisting language="C"><link linkend="rasqal-world"><returnvalue>rasqal_world</returnvalue></link>&#160;*
+librdf_world_get_rasqal (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>);</programlisting>
+<para>Get the <link linkend="rasqal-world"><type>rasqal_world</type></link> instance used by this <link linkend="librdf-world"><type>librdf_world</type></link>.</para>
+<refsect3 id="librdf-world-get-rasqal.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>librdf_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-world-get-rasqal.returns" role="returns">
+<title>Returns</title>
+<para> rasqal_world object or NULL on failure (e.g. not initialized)</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-world-get-raptor" role="function">
+<title>librdf_world_get_raptor&#160;()</title>
+<indexterm zone="librdf-world-get-raptor"><primary>librdf_world_get_raptor</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-world"><returnvalue>raptor_world</returnvalue></link>&#160;*
+librdf_world_get_raptor (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>);</programlisting>
+<para>Get the <link linkend="raptor-world"><type>raptor_world</type></link> instance used by this <link linkend="librdf-world"><type>librdf_world</type></link>.</para>
+<refsect3 id="librdf-world-get-raptor.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>librdf_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-world-get-raptor.returns" role="returns">
+<title>Returns</title>
+<para> raptor_world object or NULL on failure (e.g. not initialized)</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-world-set-raptor" role="function">
+<title>librdf_world_set_raptor&#160;()</title>
+<indexterm zone="librdf-world-set-raptor"><primary>librdf_world_set_raptor</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_world_set_raptor (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                         <parameter><link linkend="raptor-world"><type>raptor_world</type></link> *raptor_world_ptr</parameter>);</programlisting>
+<para>Set the <link linkend="raptor-world"><type>raptor_world</type></link> instance to be used with this <link linkend="librdf-world"><type>librdf_world</type></link>.</para>
+<para>If no raptor_world instance is set with this function,
+<link linkend="librdf-world-open"><function>librdf_world_open()</function></link> creates a new instance.</para>
+<para>Ownership of the raptor_world is not taken. If the raptor library
+instance is set with this function, <link linkend="librdf-free-world"><function>librdf_free_world()</function></link> will not
+free it.</para>
+<refsect3 id="librdf-world-set-raptor.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>librdf_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>raptor_world_ptr</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-world-init-mutex" role="function">
+<title>librdf_world_init_mutex&#160;()</title>
+<indexterm zone="librdf-world-init-mutex"><primary>librdf_world_init_mutex</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_world_init_mutex (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>);</programlisting>
+<para>INTERNAL - Create the world mutex.</para>
+<refsect3 id="librdf-world-init-mutex.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-world-set-error" role="function">
+<title>librdf_world_set_error&#160;()</title>
+<indexterm zone="librdf-world-set-error"><primary>librdf_world_set_error</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_world_set_error (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                        <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                        <parameter><link linkend="librdf-log-level-func"><type>librdf_log_level_func</type></link> error_handler</parameter>);</programlisting>
+<para>Set the world error handling function.</para>
+<para>The function will receive callbacks when the world fails.
+<link linkend="librdf-world-set-logger"><function>librdf_world_set_logger()</function></link> provides richer access to all log messages
+and should be used in preference.</para>
+<refsect3 id="librdf-world-set-error.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data to pass to function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>error_handler</para></entry>
+<entry role="parameter_description"><para>pointer to the function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-world-set-warning" role="function">
+<title>librdf_world_set_warning&#160;()</title>
+<indexterm zone="librdf-world-set-warning"><primary>librdf_world_set_warning</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_world_set_warning (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                          <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                          <parameter><link linkend="librdf-log-level-func"><type>librdf_log_level_func</type></link> warning_handler</parameter>);</programlisting>
+<para>Set the world warning handling function.</para>
+<para>The function will receive callbacks when the world gives a warning.
+<link linkend="librdf-world-set-logger"><function>librdf_world_set_logger()</function></link> provides richer access to all log messages
+and should be used in preference.</para>
+<refsect3 id="librdf-world-set-warning.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data to pass to function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>warning_handler</para></entry>
+<entry role="parameter_description"><para>pointer to the function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-world-set-logger" role="function">
+<title>librdf_world_set_logger&#160;()</title>
+<indexterm zone="librdf-world-set-logger"><primary>librdf_world_set_logger</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_world_set_logger (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                         <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                         <parameter><link linkend="librdf-log-func"><type>librdf_log_func</type></link> log_handler</parameter>);</programlisting>
+<para>Set the world log handling function.</para>
+<para>The function will receive callbacks when redland generates a log message</para>
+<refsect3 id="librdf-world-set-logger.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data to pass to function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>log_handler</para></entry>
+<entry role="parameter_description"><para>pointer to the function</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-world-set-digest" role="function">
+<title>librdf_world_set_digest&#160;()</title>
+<indexterm zone="librdf-world-set-digest"><primary>librdf_world_set_digest</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_world_set_digest (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                         <parameter>const <link linkend="char"><type>char</type></link> *name</parameter>);</programlisting>
+<para>Set the default content digest name.</para>
+<para>Sets the digest factory for various modules that need to make
+digests of their objects.</para>
+<refsect3 id="librdf-world-set-digest.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>redland world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>name</para></entry>
+<entry role="parameter_description"><para>Digest factory name</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-raptor-init-handler" role="function">
+<title>librdf_raptor_init_handler&#160;()</title>
+<indexterm zone="librdf-raptor-init-handler"><primary>librdf_raptor_init_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*librdf_raptor_init_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                               <parameter><link linkend="raptor-world"><type>raptor_world</type></link> *raptor_world_ptr</parameter>);</programlisting>
+</refsect2>
+<refsect2 id="librdf-world-set-raptor-init-handler" role="function">
+<title>librdf_world_set_raptor_init_handler&#160;()</title>
+<indexterm zone="librdf-world-set-raptor-init-handler"><primary>librdf_world_set_raptor_init_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_world_set_raptor_init_handler (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                      <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                                      <parameter><link linkend="librdf-raptor-init-handler"><type>librdf_raptor_init_handler</type></link> handler</parameter>);</programlisting>
+<para>Set the raptor initialization handler to be called if a new raptor_world is constructed.</para>
+<refsect3 id="librdf-world-set-raptor-init-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>librdf_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>handler to call</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-rasqal-init-handler" role="function">
+<title>librdf_rasqal_init_handler&#160;()</title>
+<indexterm zone="librdf-rasqal-init-handler"><primary>librdf_rasqal_init_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+<phrase role="c_punctuation">(</phrase>*librdf_rasqal_init_handler<phrase role="c_punctuation">)</phrase> (<parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                               <parameter><link linkend="rasqal-world"><type>rasqal_world</type></link> *rasqal_world_ptr</parameter>);</programlisting>
+</refsect2>
+<refsect2 id="librdf-world-set-rasqal-init-handler" role="function">
+<title>librdf_world_set_rasqal_init_handler&#160;()</title>
+<indexterm zone="librdf-world-set-rasqal-init-handler"><primary>librdf_world_set_rasqal_init_handler</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_world_set_rasqal_init_handler (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                                      <parameter><link linkend="void"><type>void</type></link> *user_data</parameter>,
+                                      <parameter><link linkend="librdf-rasqal-init-handler"><type>librdf_rasqal_init_handler</type></link> handler</parameter>);</programlisting>
+<para>Set the rasqal initialization handler to be called if a new rasqal_world is constructed.</para>
+<refsect3 id="librdf-world-set-rasqal-init-handler.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>librdf_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>user_data</para></entry>
+<entry role="parameter_description"><para>user data</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>handler</para></entry>
+<entry role="parameter_description"><para>handler to call</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-world-get-feature" role="function">
+<title>librdf_world_get_feature&#160;()</title>
+<indexterm zone="librdf-world-get-feature"><primary>librdf_world_get_feature</primary></indexterm>
+<programlisting language="C"><link linkend="librdf-node"><returnvalue>librdf_node</returnvalue></link>&#160;*
+librdf_world_get_feature (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                          <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *feature</parameter>);</programlisting>
+<para>Get the value of a world feature.</para>
+<refsect3 id="librdf-world-get-feature.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-world"><type>librdf_world</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>feature</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> feature property</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-world-get-feature.returns" role="returns">
+<title>Returns</title>
+<para> new <link linkend="librdf-node"><type>librdf_node</type></link> feature value or NULL if no such feature
+exists or the value is empty.</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-world-set-feature" role="function">
+<title>librdf_world_set_feature&#160;()</title>
+<indexterm zone="librdf-world-set-feature"><primary>librdf_world_set_feature</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+librdf_world_set_feature (<parameter><link linkend="librdf-world"><type>librdf_world</type></link> *world</parameter>,
+                          <parameter><link linkend="librdf-uri"><type>librdf_uri</type></link> *feature</parameter>,
+                          <parameter><link linkend="librdf-node"><type>librdf_node</type></link> *value</parameter>);</programlisting>
+<para>Set the value of a world feature.</para>
+<refsect3 id="librdf-world-set-feature.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-world"><type>librdf_world</type></link> object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>feature</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-uri"><type>librdf_uri</type></link> feature property</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>value</para></entry>
+<entry role="parameter_description"><para><link linkend="librdf-node"><type>librdf_node</type></link> feature property value</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="librdf-world-set-feature.returns" role="returns">
+<title>Returns</title>
+<para> non 0 on failure (negative if no such feature)</para>
+</refsect3></refsect2>
+<refsect2 id="librdf-init-world" role="function" condition="deprecated:">
+<title>librdf_init_world&#160;()</title>
+<indexterm zone="librdf-init-world" role="deprecated"><primary>librdf_init_world</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_init_world (<parameter><link linkend="char"><type>char</type></link> *digest_factory_name</parameter>,
+                   <parameter><link linkend="void"><type>void</type></link> *not_used2</parameter>);</programlisting>
+<warning><para><literal>librdf_init_world</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Initialise the library
+<parameter>deprecated</parameter>
+: Do not use.</para>
+<para>Use <link linkend="librdf-new-world"><function>librdf_new_world()</function></link> and <link linkend="librdf-world-open"><function>librdf_world_open()</function></link> on <link linkend="librdf-world"><type>librdf_world</type></link> object</para>
+<para>See <link linkend="librdf-world-set-digest"><function>librdf_world_set_digest()</function></link> for documentation on arguments.</para>
+<refsect3 id="librdf-init-world.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>digest_factory_name</para></entry>
+<entry role="parameter_description"><para>Name of digest factory to use</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>not_used2</para></entry>
+<entry role="parameter_description"><para>Not used</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="librdf-destroy-world" role="function" condition="deprecated:">
+<title>librdf_destroy_world&#160;()</title>
+<indexterm zone="librdf-destroy-world" role="deprecated"><primary>librdf_destroy_world</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+librdf_destroy_world (<parameter><type>void</type></parameter>);</programlisting>
+<warning><para><literal>librdf_destroy_world</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Terminate the library
+<parameter>deprecated</parameter>
+: Do not use.</para>
+<para>Use <link linkend="librdf-free-world"><function>librdf_free_world()</function></link> on <link linkend="librdf-world"><type>librdf_world</type></link> object</para>
+<para>Terminates and frees the resources.</para>
+</refsect2>
+
+</refsect1>
+<refsect1 id="redland-world.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="librdf-world" role="typedef">
+<title>librdf_world</title>
+<indexterm zone="librdf-world"><primary>librdf_world</primary></indexterm>
+<programlisting language="C">typedef struct librdf_world_s librdf_world;
+</programlisting>
+<para>Redland world class.</para>
+</refsect2>
+<refsect2 id="LIBRDF-WORLD-FEATURE-GENID-BASE:CAPS" role="macro">
+<title>LIBRDF_WORLD_FEATURE_GENID_BASE</title>
+<indexterm zone="LIBRDF-WORLD-FEATURE-GENID-BASE:CAPS"><primary>LIBRDF_WORLD_FEATURE_GENID_BASE</primary></indexterm>
+<programlisting language="C">#define LIBRDF_WORLD_FEATURE_GENID_BASE "http://feature.librdf.org/genid-base"
+</programlisting>
+<para>World feature to set the generated ID base.</para>
+<para>Must be set before the world is opened with <link linkend="librdf-world-open"><function>librdf_world_open()</function></link>.</para>
+</refsect2>
+<refsect2 id="LIBRDF-WORLD-FEATURE-GENID-COUNTER:CAPS" role="macro">
+<title>LIBRDF_WORLD_FEATURE_GENID_COUNTER</title>
+<indexterm zone="LIBRDF-WORLD-FEATURE-GENID-COUNTER:CAPS"><primary>LIBRDF_WORLD_FEATURE_GENID_COUNTER</primary></indexterm>
+<programlisting language="C">#define LIBRDF_WORLD_FEATURE_GENID_COUNTER "http://feature.librdf.org/genid-counter"
+</programlisting>
+<para>World feature to set the generated ID counter.</para>
+<para>Must be set before the world is opened with <link linkend="librdf-world-open"><function>librdf_world_open()</function></link>.</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

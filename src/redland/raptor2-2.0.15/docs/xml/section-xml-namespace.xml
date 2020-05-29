@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="raptor2-section-xml-namespace">
+<refmeta>
+<refentrytitle role="top_of_page" id="raptor2-section-xml-namespace.top_of_page">section-xml-namespace</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>RAPTOR2 Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section-xml-namespace</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="raptor2-section-xml-namespace.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="raptor-namespace"><returnvalue>raptor_namespace</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-namespace-from-uri">raptor_new_namespace_from_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-namespace-stack"><returnvalue>raptor_namespace_stack</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-namespaces">raptor_new_namespaces</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-namespaces-init">raptor_namespaces_init</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-namespaces-clear">raptor_namespaces_clear</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-namespaces">raptor_free_namespaces</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-namespaces-start-namespace">raptor_namespaces_start_namespace</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-namespaces-start-namespace-full">raptor_namespaces_start_namespace_full</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-namespaces-end-for-depth">raptor_namespaces_end_for_depth</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-namespace"><returnvalue>raptor_namespace</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-namespaces-get-default-namespace">raptor_namespaces_get_default_namespace</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-namespace"><returnvalue>raptor_namespace</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-namespaces-find-namespace">raptor_namespaces_find_namespace</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-namespace"><returnvalue>raptor_namespace</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-namespaces-find-namespace-by-uri">raptor_namespaces_find_namespace_by_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-namespaces-namespace-in-scope">raptor_namespaces_namespace_in_scope</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-namespace"><returnvalue>raptor_namespace</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-new-namespace">raptor_new_namespace</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="void"><returnvalue>void</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-free-namespace">raptor_free_namespace</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-namespace-get-uri">raptor_namespace_get_uri</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-namespace-get-prefix">raptor_namespace_get_prefix</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">const unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-namespace-get-counted-prefix">raptor_namespace_get_counted_prefix</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-namespace-write">raptor_namespace_write</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-namespace-stack-start-namespace">raptor_namespace_stack_start_namespace</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="raptor-namespace-format-as-xml">raptor_namespace_format_as_xml</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+<row><entry role="function_type"><link linkend="int"><returnvalue>int</returnvalue></link>
+</entry><entry role="function_name"><link linkend="raptor-xml-namespace-string-parse">raptor_xml_namespace_string_parse</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+<refsect1 id="raptor2-section-xml-namespace.other" role="other_proto">
+<title role="other_proto.title">Types and Values</title>
+<informaltable role="enum_members_table" pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="name" colwidth="150px"/>
+<colspec colname="description"/>
+<tbody>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-namespace">raptor_namespace</link></entry></row>
+<row><entry role="typedef_keyword">typedef</entry><entry role="function_name"><link linkend="raptor-namespace-stack">raptor_namespace_stack</link></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="raptor2-section-xml-namespace.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="raptor2-section-xml-namespace.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="raptor-new-namespace-from-uri" role="function">
+<title>raptor_new_namespace_from_uri&#160;()</title>
+<indexterm zone="raptor-new-namespace-from-uri"><primary>raptor_new_namespace_from_uri</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-namespace"><returnvalue>raptor_namespace</returnvalue></link>&#160;*
+raptor_new_namespace_from_uri (<parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                               <parameter>const unsigned <link linkend="char"><type>char</type></link> *prefix</parameter>,
+                               <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *ns_uri</parameter>,
+                               <parameter><link linkend="int"><type>int</type></link> depth</parameter>);</programlisting>
+<para>Constructor - create a new namespace from a prefix and URI object.</para>
+<para>This declares but does not enable the namespace declaration (or 'start' it)
+Use <link linkend="raptor-namespaces-start-namespace"><function>raptor_namespaces_start_namespace()</function></link> to make the namespace
+enabled and in scope for binding prefixes.</para>
+<para>Alternatively use <link linkend="raptor-namespaces-start-namespace-full"><function>raptor_namespaces_start_namespace_full()</function></link> can construct
+and enable a namespace in one call.</para>
+<refsect3 id="raptor-new-namespace-from-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>prefix</para></entry>
+<entry role="parameter_description"><para>namespace prefix string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>ns_uri</para></entry>
+<entry role="parameter_description"><para>namespace URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>depth</para></entry>
+<entry role="parameter_description"><para>depth of namespace in the stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-namespace-from-uri.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-namespace"><type>raptor_namespace</type></link> or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-namespaces" role="function">
+<title>raptor_new_namespaces&#160;()</title>
+<indexterm zone="raptor-new-namespaces"><primary>raptor_new_namespaces</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-namespace-stack"><returnvalue>raptor_namespace_stack</returnvalue></link>&#160;*
+raptor_new_namespaces (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                       <parameter><link linkend="int"><type>int</type></link> defaults</parameter>);</programlisting>
+<para>Constructor - create a new <link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link>.</para>
+<para>See <link linkend="raptor-namespaces-init"><function>raptor_namespaces_init()</function></link> for the values of <parameter>defaults</parameter>
+.</para>
+<refsect3 id="raptor-new-namespaces.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>defaults</para></entry>
+<entry role="parameter_description"><para>namespaces to initialise</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-namespaces.returns" role="returns">
+<title>Returns</title>
+<para> a new namespace stack or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespaces-init" role="function">
+<title>raptor_namespaces_init&#160;()</title>
+<indexterm zone="raptor-namespaces-init"><primary>raptor_namespaces_init</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_namespaces_init (<parameter><link linkend="raptor-world"><type>raptor_world</type></link> *world</parameter>,
+                        <parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                        <parameter><link linkend="int"><type>int</type></link> defaults</parameter>);</programlisting>
+<para>Initialise an existing namespaces stack object</para>
+<para>This sets up the stack optionally with some common RDF namespaces.</para>
+<para><parameter>defaults</parameter>
+ can be 0 for none, 1 for just XML, 2 for RDF, RDFS, OWL
+and XSD (RDQL uses this) or 3+ undefined.</para>
+<refsect3 id="raptor-namespaces-init.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>world</para></entry>
+<entry role="parameter_description"><para>raptor_world object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> to initialise</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>defaults</para></entry>
+<entry role="parameter_description"><para>namespaces to initialise.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-namespaces-init.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on error</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespaces-clear" role="function">
+<title>raptor_namespaces_clear&#160;()</title>
+<indexterm zone="raptor-namespaces-clear"><primary>raptor_namespaces_clear</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_namespaces_clear (<parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>);</programlisting>
+<para>Empty a namespace stack of namespaces and any other resources.</para>
+<refsect3 id="raptor-namespaces-clear.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-namespaces" role="function">
+<title>raptor_free_namespaces&#160;()</title>
+<indexterm zone="raptor-free-namespaces"><primary>raptor_free_namespaces</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_namespaces (<parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>);</programlisting>
+<para>Destructor - destroy a namespace stack</para>
+<refsect3 id="raptor-free-namespaces.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespaces-start-namespace" role="function">
+<title>raptor_namespaces_start_namespace&#160;()</title>
+<indexterm zone="raptor-namespaces-start-namespace"><primary>raptor_namespaces_start_namespace</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_namespaces_start_namespace (<parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                                   <parameter><link linkend="raptor-namespace"><type>raptor_namespace</type></link> *nspace</parameter>);</programlisting>
+<para>Start a namespace on a stack of namespaces.</para>
+<refsect3 id="raptor-namespaces-start-namespace.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nspace</para></entry>
+<entry role="parameter_description"><para>namespace to start</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespaces-start-namespace-full" role="function">
+<title>raptor_namespaces_start_namespace_full&#160;()</title>
+<indexterm zone="raptor-namespaces-start-namespace-full"><primary>raptor_namespaces_start_namespace_full</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_namespaces_start_namespace_full
+                               (<parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *prefix</parameter>,
+                                <parameter>const unsigned <link linkend="char"><type>char</type></link> *ns_uri_string</parameter>,
+                                <parameter><link linkend="int"><type>int</type></link> depth</parameter>);</programlisting>
+<para>Create a new namespace and start it on a stack of namespaces.</para>
+<para>See <link linkend="raptor-new-namespace"><function>raptor_new_namespace()</function></link> for the meanings of <parameter>prefix</parameter>
+,
+<parameter>ns_uri_string</parameter>
+ and <parameter>depth</parameter>
+ for namespaces.</para>
+<refsect3 id="raptor-namespaces-start-namespace-full.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>prefix</para></entry>
+<entry role="parameter_description"><para>new namespace prefix (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>ns_uri_string</para></entry>
+<entry role="parameter_description"><para>new namespace URI (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>depth</para></entry>
+<entry role="parameter_description"><para>new namespace depth</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-namespaces-start-namespace-full.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespaces-end-for-depth" role="function">
+<title>raptor_namespaces_end_for_depth&#160;()</title>
+<indexterm zone="raptor-namespaces-end-for-depth"><primary>raptor_namespaces_end_for_depth</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_namespaces_end_for_depth (<parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                                 <parameter><link linkend="int"><type>int</type></link> depth</parameter>);</programlisting>
+<para>End all namespaces at the given depth in the namespace stack.</para>
+<refsect3 id="raptor-namespaces-end-for-depth.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>depth</para></entry>
+<entry role="parameter_description"><para>depth</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespaces-get-default-namespace" role="function">
+<title>raptor_namespaces_get_default_namespace&#160;()</title>
+<indexterm zone="raptor-namespaces-get-default-namespace"><primary>raptor_namespaces_get_default_namespace</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-namespace"><returnvalue>raptor_namespace</returnvalue></link>&#160;*
+raptor_namespaces_get_default_namespace
+                               (<parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>);</programlisting>
+<para>Get the current default namespace in-scope in a stack.</para>
+<refsect3 id="raptor-namespaces-get-default-namespace.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-namespaces-get-default-namespace.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="raptor-namespace"><type>raptor_namespace</type></link> or NULL if no default namespace is in scope</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespaces-find-namespace" role="function">
+<title>raptor_namespaces_find_namespace&#160;()</title>
+<indexterm zone="raptor-namespaces-find-namespace"><primary>raptor_namespaces_find_namespace</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-namespace"><returnvalue>raptor_namespace</returnvalue></link>&#160;*
+raptor_namespaces_find_namespace (<parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                                  <parameter>const unsigned <link linkend="char"><type>char</type></link> *prefix</parameter>,
+                                  <parameter><link linkend="int"><type>int</type></link> prefix_length</parameter>);</programlisting>
+<para>Find a namespace in a namespace stack by prefix.</para>
+<para>Note that this uses the <parameter>length</parameter>
+ so that the prefix may be a prefix (sic)
+of a longer string.  If <parameter>prefix</parameter>
+ is NULL, the default namespace will
+be returned if present, <parameter>prefix_length</parameter>
+ length is ignored in this case.</para>
+<refsect3 id="raptor-namespaces-find-namespace.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>prefix</para></entry>
+<entry role="parameter_description"><para>namespace prefix to find</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>prefix_length</para></entry>
+<entry role="parameter_description"><para>length of prefix.</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-namespaces-find-namespace.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="raptor-namespace"><type>raptor_namespace</type></link> for the prefix or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespaces-find-namespace-by-uri" role="function">
+<title>raptor_namespaces_find_namespace_by_uri&#160;()</title>
+<indexterm zone="raptor-namespaces-find-namespace-by-uri"><primary>raptor_namespaces_find_namespace_by_uri</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-namespace"><returnvalue>raptor_namespace</returnvalue></link>&#160;*
+raptor_namespaces_find_namespace_by_uri
+                               (<parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                                <parameter><link linkend="raptor-uri"><type>raptor_uri</type></link> *ns_uri</parameter>);</programlisting>
+<para>Find a namespace in a namespace stack by namespace URI.</para>
+<refsect3 id="raptor-namespaces-find-namespace-by-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>ns_uri</para></entry>
+<entry role="parameter_description"><para>namespace URI to find</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-namespaces-find-namespace-by-uri.returns" role="returns">
+<title>Returns</title>
+<para> <link linkend="raptor-namespace"><type>raptor_namespace</type></link> for the URI or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespaces-namespace-in-scope" role="function">
+<title>raptor_namespaces_namespace_in_scope&#160;()</title>
+<indexterm zone="raptor-namespaces-namespace-in-scope"><primary>raptor_namespaces_namespace_in_scope</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_namespaces_namespace_in_scope (<parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                                      <parameter>const <link linkend="raptor-namespace"><type>raptor_namespace</type></link> *nspace</parameter>);</programlisting>
+<para>Test if a given namespace is in-scope in the namespace stack.</para>
+<refsect3 id="raptor-namespaces-namespace-in-scope.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>nspace</para></entry>
+<entry role="parameter_description"><para>namespace</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-namespaces-namespace-in-scope.returns" role="returns">
+<title>Returns</title>
+<para> non-0 if the namespace is in scope.</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-new-namespace" role="function">
+<title>raptor_new_namespace&#160;()</title>
+<indexterm zone="raptor-new-namespace"><primary>raptor_new_namespace</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-namespace"><returnvalue>raptor_namespace</returnvalue></link>&#160;*
+raptor_new_namespace (<parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                      <parameter>const unsigned <link linkend="char"><type>char</type></link> *prefix</parameter>,
+                      <parameter>const unsigned <link linkend="char"><type>char</type></link> *ns_uri_string</parameter>,
+                      <parameter><link linkend="int"><type>int</type></link> depth</parameter>);</programlisting>
+<para>Constructor - create a new namespace from a prefix and URI string with a depth scope.</para>
+<para>This declares but does not enable the namespace declaration (or 'start' it)
+Use <link linkend="raptor-namespaces-start-namespace"><function>raptor_namespaces_start_namespace()</function></link> to make the namespace
+enabled and in scope for binding prefixes.</para>
+<para>Alternatively use <link linkend="raptor-namespaces-start-namespace-full"><function>raptor_namespaces_start_namespace_full()</function></link> can construct
+and enable a namespace in one call.</para>
+<para>The <parameter>depth</parameter>
+ is a way to use the stack of namespaces for providing scoped
+namespaces where inner scope namespaces override outer scope namespaces.
+This is primarily for RDF/XML and XML syntaxes that have hierarchical
+elements.  The main use of this is <link linkend="raptor-namespaces-end-for-depth"><function>raptor_namespaces_end_for_depth()</function></link>
+to disable ('end') all namespaces at a given depth.   Otherwise set this
+to 0.</para>
+<refsect3 id="raptor-new-namespace.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>prefix</para></entry>
+<entry role="parameter_description"><para>namespace prefix string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>ns_uri_string</para></entry>
+<entry role="parameter_description"><para>namespace URI string</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>depth</para></entry>
+<entry role="parameter_description"><para>depth of namespace in the stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-new-namespace.returns" role="returns">
+<title>Returns</title>
+<para> a new <link linkend="raptor-namespace"><type>raptor_namespace</type></link> or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-free-namespace" role="function">
+<title>raptor_free_namespace&#160;()</title>
+<indexterm zone="raptor-free-namespace"><primary>raptor_free_namespace</primary></indexterm>
+<programlisting language="C"><link linkend="void"><returnvalue>void</returnvalue></link>
+raptor_free_namespace (<parameter><link linkend="raptor-namespace"><type>raptor_namespace</type></link> *ns</parameter>);</programlisting>
+<para>Destructor - destroy a namespace.</para>
+<refsect3 id="raptor-free-namespace.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>ns</para></entry>
+<entry role="parameter_description"><para>namespace object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespace-get-uri" role="function">
+<title>raptor_namespace_get_uri&#160;()</title>
+<indexterm zone="raptor-namespace-get-uri"><primary>raptor_namespace_get_uri</primary></indexterm>
+<programlisting language="C"><link linkend="raptor-uri"><returnvalue>raptor_uri</returnvalue></link>&#160;*
+raptor_namespace_get_uri (<parameter>const <link linkend="raptor-namespace"><type>raptor_namespace</type></link> *ns</parameter>);</programlisting>
+<para>Get the namespace URI.</para>
+<refsect3 id="raptor-namespace-get-uri.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>ns</para></entry>
+<entry role="parameter_description"><para>namespace object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-namespace-get-uri.returns" role="returns">
+<title>Returns</title>
+<para> namespace URI or NULL</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespace-get-prefix" role="function">
+<title>raptor_namespace_get_prefix&#160;()</title>
+<indexterm zone="raptor-namespace-get-prefix"><primary>raptor_namespace_get_prefix</primary></indexterm>
+<programlisting language="C">const unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_namespace_get_prefix (<parameter>const <link linkend="raptor-namespace"><type>raptor_namespace</type></link> *ns</parameter>);</programlisting>
+<para>Get the namespace prefix.</para>
+<refsect3 id="raptor-namespace-get-prefix.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>ns</para></entry>
+<entry role="parameter_description"><para>namespace object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-namespace-get-prefix.returns" role="returns">
+<title>Returns</title>
+<para> prefix string or NULL</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespace-get-counted-prefix" role="function">
+<title>raptor_namespace_get_counted_prefix&#160;()</title>
+<indexterm zone="raptor-namespace-get-counted-prefix"><primary>raptor_namespace_get_counted_prefix</primary></indexterm>
+<programlisting language="C">const unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_namespace_get_counted_prefix (<parameter>const <link linkend="raptor-namespace"><type>raptor_namespace</type></link> *ns</parameter>,
+                                     <parameter><link linkend="size-t"><type>size_t</type></link> *length_p</parameter>);</programlisting>
+<para>Get the namespace prefix and length.</para>
+<refsect3 id="raptor-namespace-get-counted-prefix.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>ns</para></entry>
+<entry role="parameter_description"><para>namespace object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length_p</para></entry>
+<entry role="parameter_description"><para>pointer to store length or NULL</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-namespace-get-counted-prefix.returns" role="returns">
+<title>Returns</title>
+<para> prefix string or NULL</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespace-write" role="function">
+<title>raptor_namespace_write&#160;()</title>
+<indexterm zone="raptor-namespace-write"><primary>raptor_namespace_write</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_namespace_write (<parameter><link linkend="raptor-namespace"><type>raptor_namespace</type></link> *ns</parameter>,
+                        <parameter><link linkend="raptor-iostream"><type>raptor_iostream</type></link> *iostr</parameter>);</programlisting>
+<para>Write a formatted namespace to an iostream</para>
+<refsect3 id="raptor-namespace-write.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>ns</para></entry>
+<entry role="parameter_description"><para>namespace to write</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>iostr</para></entry>
+<entry role="parameter_description"><para>raptor iosteram</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-namespace-write.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespace-stack-start-namespace" role="function">
+<title>raptor_namespace_stack_start_namespace&#160;()</title>
+<indexterm zone="raptor-namespace-stack-start-namespace"><primary>raptor_namespace_stack_start_namespace</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_namespace_stack_start_namespace
+                               (<parameter><link linkend="raptor-namespace-stack"><type>raptor_namespace_stack</type></link> *nstack</parameter>,
+                                <parameter><link linkend="raptor-namespace"><type>raptor_namespace</type></link> *ns</parameter>,
+                                <parameter><link linkend="int"><type>int</type></link> new_depth</parameter>);</programlisting>
+<para>Copy an existing namespace to a namespace stack with a new depth
+and start it.</para>
+<para>The <parameter>depth</parameter>
+ is a way to use the stack of namespaces for providing scoped
+namespaces where inner scope namespaces override outer scope namespaces.
+This is primarily for RDF/XML and XML syntaxes that have hierarchical
+elements.  The main use of this is <link linkend="raptor-namespaces-end-for-depth"><function>raptor_namespaces_end_for_depth()</function></link>
+to disable ('end') all namespaces at a given depth.   If depths are
+not being needed it is unlikely this call is ever needed to copy an
+existing namespace at a new depth.</para>
+<refsect3 id="raptor-namespace-stack-start-namespace.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>nstack</para></entry>
+<entry role="parameter_description"><para>namespace stack</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>ns</para></entry>
+<entry role="parameter_description"><para>namespace</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>new_depth</para></entry>
+<entry role="parameter_description"><para>new depth</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-namespace-stack-start-namespace.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-namespace-format-as-xml" role="function">
+<title>raptor_namespace_format_as_xml&#160;()</title>
+<indexterm zone="raptor-namespace-format-as-xml"><primary>raptor_namespace_format_as_xml</primary></indexterm>
+<programlisting language="C">unsigned <link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+raptor_namespace_format_as_xml (<parameter>const <link linkend="raptor-namespace"><type>raptor_namespace</type></link> *ns</parameter>,
+                                <parameter><link linkend="size-t"><type>size_t</type></link> *length_p</parameter>);</programlisting>
+<para>Format a namespace in an XML style into a newly allocated string.</para>
+<para>Generates a string of the form xmlns:prefix="uri",
+xmlns="uri", xmlns:prefix="" or xmlns="" depending on the
+namespace's prefix or URI.  Double quotes are always used.</para>
+<para>If <parameter>length_p</parameter>
+ is not NULL, the length of the string is
+stored in the address it points to.</para>
+<para>See also <link linkend="raptor-xml-namespace-string-parse"><function>raptor_xml_namespace_string_parse()</function></link></para>
+<refsect3 id="raptor-namespace-format-as-xml.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>ns</para></entry>
+<entry role="parameter_description"><para>namespace object</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>length_p</para></entry>
+<entry role="parameter_description"><para>pointer to length (or NULL)</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-namespace-format-as-xml.returns" role="returns">
+<title>Returns</title>
+<para> namespace formatted as newly allocated string or NULL on failure</para>
+</refsect3></refsect2>
+<refsect2 id="raptor-xml-namespace-string-parse" role="function">
+<title>raptor_xml_namespace_string_parse&#160;()</title>
+<indexterm zone="raptor-xml-namespace-string-parse"><primary>raptor_xml_namespace_string_parse</primary></indexterm>
+<programlisting language="C"><link linkend="int"><returnvalue>int</returnvalue></link>
+raptor_xml_namespace_string_parse (<parameter>const unsigned <link linkend="char"><type>char</type></link> *string</parameter>,
+                                   <parameter>unsigned <link linkend="char"><type>char</type></link> **prefix</parameter>,
+                                   <parameter>unsigned <link linkend="char"><type>char</type></link> **uri_string</parameter>);</programlisting>
+<para>Parse a string containing an XML style namespace declaration
+into a namespace prefix and URI pair.</para>
+<para>The string is of the form xmlns:prefix="uri",
+xmlns="uri", xmlns:prefix="" or xmlns="".
+The quotes can be single or double quotes.</para>
+<para>Two values are returned from this function into *<parameter>prefix</parameter>
+ and
+*<parameter>uri_string</parameter>
+.  Either but not both may be NULL.</para>
+<para>See also <link linkend="raptor-namespace-format-as-xml"><function>raptor_namespace_format_as_xml()</function></link></para>
+<refsect3 id="raptor-xml-namespace-string-parse.parameters" role="parameters">
+<title>Parameters</title>
+<informaltable role="parameters_table" pgwide="1" frame="none">
+<tgroup cols="3">
+<colspec colname="parameters_name" colwidth="150px"/>
+<colspec colname="parameters_description"/>
+<colspec colname="parameters_annotations" colwidth="200px"/>
+<tbody>
+<row><entry role="parameter_name"><para>string</para></entry>
+<entry role="parameter_description"><para>string to parse</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>prefix</para></entry>
+<entry role="parameter_description"><para>pointer to location to store namespace prefix</para></entry>
+<entry role="parameter_annotations"></entry></row>
+<row><entry role="parameter_name"><para>uri_string</para></entry>
+<entry role="parameter_description"><para>pointer to location to store namespace URI</para></entry>
+<entry role="parameter_annotations"></entry></row>
+</tbody></tgroup></informaltable>
+</refsect3><refsect3 id="raptor-xml-namespace-string-parse.returns" role="returns">
+<title>Returns</title>
+<para> non-0 on failure.</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="raptor2-section-xml-namespace.other_details" role="details">
+<title role="details.title">Types and Values</title>
+<refsect2 id="raptor-namespace" role="typedef">
+<title>raptor_namespace</title>
+<indexterm zone="raptor-namespace"><primary>raptor_namespace</primary></indexterm>
+<programlisting language="C">raptor_namespace* raptor_namespace;
+</programlisting>
+<para>Raptor XML Namespace class</para>
+</refsect2>
+<refsect2 id="raptor-namespace-stack" role="typedef">
+<title>raptor_namespace_stack</title>
+<indexterm zone="raptor-namespace-stack"><primary>raptor_namespace_stack</primary></indexterm>
+<programlisting language="C">raptor_namespace_stack* raptor_namespace_stack;
+</programlisting>
+<para>Raptor XML Namespace Stack class</para>
+</refsect2>
+
+</refsect1>
+
+</refentry>

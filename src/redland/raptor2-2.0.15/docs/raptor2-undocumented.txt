@@ -1,0 +1,51 @@
+0% symbol docs coverage.
+496 symbols documented.
+1 symbols incomplete.
+44 not documented.
+
+
+RAPTOR_DEPRECATED
+raptor_new_world_internal (<parameters>)
+
+section-avltree:Long_Description
+section-avltree:Short_Description
+section-constants:Long_Description
+section-constants:Short_Description
+section-general:Long_Description
+section-general:Short_Description
+section-iostream:Long_Description
+section-iostream:Short_Description
+section-locator:Long_Description
+section-locator:Short_Description
+section-memory:Long_Description
+section-memory:Short_Description
+section-option:Long_Description
+section-option:Short_Description
+section-parser:Long_Description
+section-parser:Short_Description
+section-sax2:Long_Description
+section-sax2:Short_Description
+section-sequence:Long_Description
+section-sequence:Short_Description
+section-serializer:Long_Description
+section-serializer:Short_Description
+section-stringbuffer:Long_Description
+section-stringbuffer:Short_Description
+section-triples:Long_Description
+section-triples:Short_Description
+section-unicode:Long_Description
+section-unicode:Short_Description
+section-unused:Long_Description
+section-unused:Short_Description
+section-uri:Long_Description
+section-uri:Short_Description
+section-world:Long_Description
+section-world:Short_Description
+section-www:Long_Description
+section-www:Short_Description
+section-xml-namespace:Long_Description
+section-xml-namespace:Short_Description
+section-xml-qname:Long_Description
+section-xml-qname:Short_Description
+section-xml:Long_Description
+section-xml:Short_Description

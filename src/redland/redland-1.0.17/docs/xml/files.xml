@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="redland-files">
+<refmeta>
+<refentrytitle role="top_of_page" id="redland-files.top_of_page">files</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>REDLAND Library</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>files</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsect1 id="redland-files.functions" role="functions_proto">
+<title role="functions_proto.title">Functions</title>
+<informaltable pgwide="1" frame="none">
+<tgroup cols="2">
+<colspec colname="functions_return" colwidth="150px"/>
+<colspec colname="functions_name"/>
+<tbody>
+<row><entry role="function_type"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+</entry><entry role="function_name"><link linkend="librdf-files-temporary-file-name">librdf_files_temporary_file_name</link>&#160;<phrase role="c_punctuation">()</phrase></entry></row>
+
+</tbody>
+</tgroup>
+</informaltable>
+</refsect1>
+
+
+<refsect1 id="redland-files.description" role="desc">
+<title role="desc.title">Description</title>
+
+</refsect1>
+<refsect1 id="redland-files.functions_details" role="details">
+<title role="details.title">Functions</title>
+<refsect2 id="librdf-files-temporary-file-name" role="function" condition="deprecated:">
+<title>librdf_files_temporary_file_name&#160;()</title>
+<indexterm zone="librdf-files-temporary-file-name" role="deprecated"><primary>librdf_files_temporary_file_name</primary></indexterm>
+<programlisting language="C"><link linkend="char"><returnvalue>char</returnvalue></link>&#160;*
+librdf_files_temporary_file_name (<parameter><type>void</type></parameter>);</programlisting>
+<warning><para><literal>librdf_files_temporary_file_name</literal> is deprecated and should not be used in newly-written code.</para></warning>
+<para>Create a temporary file name.</para>
+<para><parameter>deprecated</parameter>
+: Do not use this, it is unsafe.</para>
+<refsect3 id="librdf-files-temporary-file-name.returns" role="returns">
+<title>Returns</title>
+<para> a new filename or NULL on failure.</para>
+</refsect3></refsect2>
+
+</refsect1>
+<refsect1 id="redland-files.other_details" role="details">
+<title role="details.title">Types and Values</title>
+
+</refsect1>
+
+</refentry>
