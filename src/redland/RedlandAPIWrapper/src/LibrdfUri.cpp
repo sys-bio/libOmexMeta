@@ -8,13 +8,15 @@ namespace semsim {
 
     void LibrdfUri::deleter::operator()(librdf_uri *ptr) {
         if (ptr)
-            librdf_free_uri(ptr);
+            raptor_free_uri_wrapper(ptr);
     }
+
+    LibrdfUri::LibrdfUri(librdf_uri *uri)
+            : librdf_uri_(std::unique_ptr<librdf_uri, deleter>(uri)) {}
 
     LibrdfUri::LibrdfUri(const std::string &uri) {
         librdf_uri_ = std::unique_ptr<librdf_uri, deleter>(
-                librdf_new_uri(World::getWorld(), (const unsigned char *) uri.c_str())
-        );
+                librdf_new_uri(World::getWorld(), (const unsigned char *) uri.c_str()));
     }
 
     std::string LibrdfUri::str() const {
@@ -26,9 +28,6 @@ namespace semsim {
     librdf_uri *LibrdfUri::get() const {
         return librdf_uri_.get();
     }
-
-    LibrdfUri::LibrdfUri(librdf_uri *uri)
-            : librdf_uri_(std::unique_ptr<librdf_uri, deleter>(uri)) {}
 
 
 }

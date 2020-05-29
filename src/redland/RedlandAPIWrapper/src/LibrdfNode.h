@@ -10,7 +10,6 @@
 #include <raptor2.h>
 #include <memory>
 #include <sstream>
-//#include "semsim/HERE.h"
 #include "LibrdfUri.h"
 #include "World.h"
 #include "LibrdfException.h"
@@ -34,7 +33,7 @@ namespace semsim {
         };
 
     private:
-        std::unique_ptr<librdf_node, deleter> node_;
+        std::shared_ptr<librdf_node> node_;
 
     public:
         LibrdfNode() = default;
@@ -48,7 +47,7 @@ namespace semsim {
         static LibrdfNode fromBlank(const std::string &blank);
 
         static LibrdfNode fromLiteral(const std::string &literal, const std::string &xml_language = std::string(),
-                                      std::string literal_datatype_uri = "string");
+                                      const std::string &literal_datatype_uri = "string");
 
         raptor_term_type getRaptorTermType();
 

@@ -14,11 +14,12 @@ namespace semsim {
 
     void LibrdfNode::deleter::operator()(librdf_node *node) {
         if (node)
-            librdf_free_node(node);
+            raptor_free_term_wrapper(node);
     }
 
     LibrdfNode::LibrdfNode(librdf_node *node)
-            : node_(node) {}
+            : node_(std::unique_ptr<librdf_node, deleter>(node)) {
+    }
 
     LibrdfNode LibrdfNode::fromUriString(const std::string &uri_string) {
         std::string identifier_dot_org = "https://identifiers.org/";
@@ -35,9 +36,9 @@ namespace semsim {
         } else {
             uri_string_ = uri_string;
         }
-        return LibrdfNode(librdf_new_node_from_uri_string(
-                World::getWorld(), (const unsigned char *) uri_string_.c_str())
-        );
+        librdf_node *n = librdf_new_node_from_uri_string(
+                World::getWorld(), (const unsigned char *) uri_string_.c_str());
+        return LibrdfNode(n);
     }
 
     LibrdfNode LibrdfNode::fromBlank(const std::string &blank) {
@@ -50,7 +51,7 @@ namespace semsim {
 
     LibrdfNode
     LibrdfNode::fromLiteral(const std::string &literal, const std::string &xml_language,
-                            std::string literal_datatype_uri) {
+                            const std::string &literal_datatype_uri) {
         std::string literal_datatype_prefix = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
         std::string literal_datatype_;
         if (literal_datatype_uri.rfind(literal_datatype_prefix, 0) != 0) {

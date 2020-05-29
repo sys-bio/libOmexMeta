@@ -26,7 +26,8 @@ TEST_F(LibrdfNodeTests, TestCreate) {
 TEST_F(LibrdfNodeTests, TestUnderlyingNodeHasUri) {
     std::string expected = "https://notarealaddress.com";
     LibrdfNode node = LibrdfNode::fromUriString(expected);
-    LibrdfUri uri(librdf_node_get_uri(node.get()));
+    librdf_uri *u = librdf_node_get_uri(node.get());
+    LibrdfUri uri(u);
     std::string s = uri.str();
     ASSERT_STREQ("https://notarealaddress.com", s.c_str());
 }

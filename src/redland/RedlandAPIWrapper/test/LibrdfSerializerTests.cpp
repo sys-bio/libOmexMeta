@@ -94,7 +94,7 @@ TEST_F(LibrdfSerializerTests, TestToStringNTriples) {
     LibrdfSerializer serializer1 = LibrdfSerializer("ntriples");
     LibrdfUri uri("base_uri");
     std::string actual = serializer1.toString(uri, model);
-    std::string expected = "<https://subject.com> <https://predicate.com> <https://resource.com> .";
+    std::string expected = "<https://subject.com> <https://predicate.com> <https://resource.com> .\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }

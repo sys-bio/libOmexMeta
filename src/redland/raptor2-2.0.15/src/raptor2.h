@@ -1098,24 +1098,35 @@ raptor_term* raptor_new_term_from_blank(raptor_world* world, const unsigned char
 RAPTOR_API
 raptor_term* raptor_new_term_from_counted_blank(raptor_world* world, const unsigned char* blank, size_t length);
 RAPTOR_API
-raptor_term* raptor_new_term_from_counted_string(raptor_world* world, unsigned char* string, size_t length);
+raptor_term *raptor_new_term_from_counted_string(raptor_world *world, unsigned char *string, size_t length);
+
 RAPTOR_API
-raptor_term* raptor_term_copy(raptor_term* term);
+raptor_term *raptor_term_copy(raptor_term *term);
+
 RAPTOR_API
 int raptor_term_compare(const raptor_term *t1, const raptor_term *t2);
+
 RAPTOR_API
-int raptor_term_equals(raptor_term* t1, raptor_term* t2);
+int raptor_term_equals(raptor_term *t1, raptor_term *t2);
+
 RAPTOR_API
 void raptor_free_term(raptor_term *term);
 
 RAPTOR_API
-unsigned char* raptor_term_to_counted_string(raptor_term *term, size_t* len_p);
+void raptor_free_term_wrapper(raptor_term *term);
+
 RAPTOR_API
-unsigned char* raptor_term_to_string(raptor_term *term);
+unsigned char *raptor_term_to_counted_string(raptor_term *term, size_t *len_p);
+
 RAPTOR_API
-int raptor_term_escaped_write(const raptor_term *term, unsigned int flags, raptor_iostream* iostr);
+unsigned char *raptor_term_to_string(raptor_term *term);
+
+RAPTOR_API
+int raptor_term_escaped_write(const raptor_term *term, unsigned int flags, raptor_iostream *iostr);
+
 RAPTOR_API RAPTOR_DEPRECATED
-int raptor_term_ntriples_write(const raptor_term *term, raptor_iostream* iostr);
+int raptor_term_ntriples_write(const raptor_term *term, raptor_iostream *iostr);
+
 RAPTOR_API
 int raptor_uri_turtle_write(raptor_world *world, raptor_iostream* iostr, raptor_uri* uri, raptor_namespace_stack *nstack, raptor_uri *base_uri);
 RAPTOR_API
@@ -1133,25 +1144,38 @@ unsigned char* raptor_term_to_turtle_string(raptor_term* term, raptor_namespace_
 /* Statement Class */
 RAPTOR_API
 void raptor_statement_init(raptor_statement *statement, raptor_world *world);
+
 RAPTOR_API
 void raptor_statement_clear(raptor_statement *statement);
+
 RAPTOR_API
-raptor_statement* raptor_new_statement(raptor_world *world);
+raptor_statement *raptor_new_statement(raptor_world *world);
+
 RAPTOR_API
-raptor_statement* raptor_new_statement_from_nodes(raptor_world* world, raptor_term *subject, raptor_term *predicate, raptor_term *object, raptor_term *graph);
+raptor_statement *
+raptor_new_statement_from_nodes(raptor_world *world, raptor_term *subject, raptor_term *predicate, raptor_term *object,
+                                raptor_term *graph);
+
 RAPTOR_API
-raptor_statement* raptor_statement_copy(raptor_statement *statement);
+raptor_statement *raptor_statement_copy(raptor_statement *statement);
+
 RAPTOR_API
 void raptor_free_statement(raptor_statement *statement);
 
 RAPTOR_API
-int raptor_statement_print(const raptor_statement * statement, FILE *stream);
+void raptor_free_statement_wrapper(raptor_statement *statement);
+
 RAPTOR_API
-int raptor_statement_print_as_ntriples(const raptor_statement * statement, FILE *stream);
+int raptor_statement_print(const raptor_statement *statement, FILE *stream);
+
+RAPTOR_API
+int raptor_statement_print_as_ntriples(const raptor_statement *statement, FILE *stream);
+
 RAPTOR_API
 int raptor_statement_compare(const raptor_statement *s1, const raptor_statement *s2);
+
 RAPTOR_API
-int raptor_statement_equals(const raptor_statement* s1, const raptor_statement* s2);
+int raptor_statement_equals(const raptor_statement *s1, const raptor_statement *s2);
 
 
 /* Parser Class */
@@ -1297,26 +1321,38 @@ RAPTOR_API
 raptor_uri* raptor_new_uri_relative_to_base_counted(raptor_world* world, raptor_uri *base_uri, const unsigned char *uri_string, size_t uri_len);
 RAPTOR_API
 raptor_uri* raptor_new_uri_from_id(raptor_world* world, raptor_uri *base_uri, const unsigned char *id);
+
 RAPTOR_API
-raptor_uri* raptor_new_uri_from_uri_or_file_string(raptor_world* world, raptor_uri* base_uri, const unsigned char* uri_or_file_string);
+raptor_uri *raptor_new_uri_from_uri_or_file_string(raptor_world *world, raptor_uri *base_uri,
+                                                   const unsigned char *uri_or_file_string);
+
 RAPTOR_API
-raptor_uri* raptor_new_uri_for_rdf_concept(raptor_world* world, const unsigned char *name);
+raptor_uri *raptor_new_uri_for_rdf_concept(raptor_world *world, const unsigned char *name);
+
 RAPTOR_API
-raptor_uri* raptor_new_uri_for_xmlbase(raptor_uri* old_uri);
+raptor_uri *raptor_new_uri_for_xmlbase(raptor_uri *old_uri);
+
 RAPTOR_API
-raptor_uri* raptor_new_uri_for_retrieval(raptor_uri* old_uri);
+raptor_uri *raptor_new_uri_for_retrieval(raptor_uri *old_uri);
+
 RAPTOR_API
 void raptor_free_uri(raptor_uri *uri);
 
+RAPTOR_API
+void raptor_free_uri_wrapper(raptor_uri *uri);
+
 /* methods */
 RAPTOR_API
-int raptor_uri_equals(raptor_uri* uri1, raptor_uri* uri2);
+int raptor_uri_equals(raptor_uri *uri1, raptor_uri *uri2);
+
 RAPTOR_API
-int raptor_uri_compare(raptor_uri* uri1, raptor_uri* uri2);
+int raptor_uri_compare(raptor_uri *uri1, raptor_uri *uri2);
+
 RAPTOR_API
-raptor_uri* raptor_uri_copy(raptor_uri *uri);
+raptor_uri *raptor_uri_copy(raptor_uri *uri);
+
 RAPTOR_API
-unsigned char* raptor_uri_as_string(raptor_uri *uri);
+unsigned char *raptor_uri_as_string(raptor_uri *uri);
 RAPTOR_API
 unsigned char* raptor_uri_as_counted_string(raptor_uri *uri, size_t* len_p);
 RAPTOR_API

@@ -451,18 +451,16 @@ raptor_term_copy(raptor_term* term)
  * Destructor - destroy a raptor_term object.
  *
  **/
-void
-raptor_free_term(raptor_term *term)
-{
-  if(!term)
-    return;
-  
-  if(--term->usage)
-    return;
-  
-  switch(term->type) {
-    case RAPTOR_TERM_TYPE_URI:
-      if(term->value.uri) {
+void raptor_free_term(raptor_term *term) {
+    if (!term)
+        return;
+
+    if (--term->usage)
+        return;
+
+    switch (term->type) {
+        case RAPTOR_TERM_TYPE_URI:
+            if (term->value.uri) {
         raptor_free_uri(term->value.uri);
         term->value.uri = NULL;
       }
@@ -487,17 +485,64 @@ raptor_free_term(raptor_term *term)
       }
       
       if(term->value.literal.language) {
-        RAPTOR_FREE(char*, term->value.literal.language);
-        term->value.literal.language = NULL;
+          RAPTOR_FREE(char*, term->value.literal.language);
+          term->value.literal.language = NULL;
       }
-      break;
-      
-    case RAPTOR_TERM_TYPE_UNKNOWN:
-    default:
-      break;
-  }
+            break;
 
-  RAPTOR_FREE(term, term);
+        case RAPTOR_TERM_TYPE_UNKNOWN:
+        default:
+            break;
+    }
+
+    RAPTOR_FREE(term, term);
+}
+
+void raptor_free_term_wrapper(raptor_term *term) {
+    if (!term)
+        return;
+
+    if (--term->usage)
+        return;
+
+    switch (term->type) {
+        case RAPTOR_TERM_TYPE_URI:
+            if (term->value.uri) {
+//        raptor_free_uri(term->value.uri);
+                term->value.uri = NULL;
+            }
+            break;
+
+        case RAPTOR_TERM_TYPE_BLANK:
+            if (term->value.blank.string) {
+                RAPTOR_FREE(char*, term->value.blank.string);
+                term->value.blank.string = NULL;
+            }
+            break;
+
+        case RAPTOR_TERM_TYPE_LITERAL:
+            if (term->value.literal.string) {
+                RAPTOR_FREE(char*, term->value.literal.string);
+                term->value.literal.string = NULL;
+            }
+
+            if (term->value.literal.datatype) {
+                raptor_free_uri(term->value.literal.datatype);
+                term->value.literal.datatype = NULL;
+            }
+
+            if (term->value.literal.language) {
+                RAPTOR_FREE(char*, term->value.literal.language);
+                term->value.literal.language = NULL;
+            }
+            break;
+
+        case RAPTOR_TERM_TYPE_UNKNOWN:
+        default:
+            break;
+    }
+
+    RAPTOR_FREE(term, term);
 }
 
 

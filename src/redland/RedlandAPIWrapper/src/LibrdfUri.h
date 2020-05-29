@@ -27,7 +27,7 @@ namespace semsim {
             void operator()(librdf_uri *ptr);
         };
 
-        std::unique_ptr<librdf_uri, deleter> librdf_uri_;
+        std::shared_ptr<librdf_uri> librdf_uri_;
 
     public:
         LibrdfUri() = default;
