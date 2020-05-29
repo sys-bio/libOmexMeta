@@ -21,18 +21,14 @@
  */
 
 
-#ifdef SV_CONFIG
 #include <sv_config.h>
-#endif
 
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
 #include <ctype.h>
 
-#ifdef HAVE_STDLIB_H
 #include <stdlib.h>
-#endif
 
 #include <sv.h>
 

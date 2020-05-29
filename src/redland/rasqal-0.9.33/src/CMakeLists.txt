@@ -1,4 +1,9 @@
 
+
+
+#NOTE: This cmake lists is not used for libsemsim.
+
+
 #######################################################################
 # configure files
 #
@@ -117,7 +122,6 @@ target_link_libraries(rasqal PUBLIC
         )
 
 set_target_properties(rasqal PROPERTIES PUBLIC_HEADER "rasqal.h")
-
 
 
 INSTALL(

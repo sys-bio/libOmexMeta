@@ -238,7 +238,7 @@ set(LIBRDF_SOURCES
 
 
 set(WRAPPER_SOURCES
-        RedlandAPIWrapper/src/LibrdfModel.cpp
+        src/LibrdfModel.cpp
         RedlandAPIWrapper/src/LibrdfModel.h
         RedlandAPIWrapper/src/LibrdfNode.cpp
         RedlandAPIWrapper/src/LibrdfNode.h

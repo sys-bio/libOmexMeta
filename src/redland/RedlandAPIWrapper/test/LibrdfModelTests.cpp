@@ -3,7 +3,7 @@
 //
 
 #include "gtest/gtest.h"
-#include "redland/RedlandAPIWrapper/LibrdfModel.h"
+#include "LibrdfModel.h"
 
 using namespace semsim;
 
