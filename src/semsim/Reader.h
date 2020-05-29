@@ -16,10 +16,10 @@
 #include <sstream>
 #include <unordered_map>
 
-#include "semsim/RedlandAPIWrapper/World.h"
-#include "semsim/RedlandAPIWrapper/LibrdfModel.h"
-#include "semsim/RedlandAPIWrapper/LibrdfUri.h"
-#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "redland/RedlandAPIWrapper/World.h"
+#include "redland/RedlandAPIWrapper/LibrdfModel.h"
+#include "redland/RedlandAPIWrapper/LibrdfUri.h"
+#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
 
 namespace semsim {
     class Reader {

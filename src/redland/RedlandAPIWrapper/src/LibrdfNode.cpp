@@ -8,7 +8,7 @@
 /*
  * todo put name of exception in all error messages.
  */
-#include "semsim/RedlandAPIWrapper/World.h"
+#include "World.h"
 
 namespace semsim {
 

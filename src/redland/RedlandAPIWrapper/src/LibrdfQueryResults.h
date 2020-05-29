@@ -8,8 +8,8 @@
 
 #include <librdf.h>
 #include <memory>
-#include "semsim/Error.h"
-#include "semsim/RedlandAPIWrapper/World.h"
+
+#include "World.h"
 
 namespace semsim {
 

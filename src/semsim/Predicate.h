@@ -5,7 +5,7 @@
 #ifndef LIBSEMSIM_PREDICATE_H
 #define LIBSEMSIM_PREDICATE_H
 
-#include "semsim/RedlandAPIWrapper/World.h"
+#include "redland/RedlandAPIWrapper/World.h"
 #include "semsim/SemsimUtils.h"
 #include "semsim/Log.h"
 #include <librdf.h>

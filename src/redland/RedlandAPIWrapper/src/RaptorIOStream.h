@@ -8,9 +8,10 @@
 #include <memory>
 #include "librdf.h"
 #include "World.h"
-#include "semsim/Error.h"
+
 
 #include "utility"
+#include "LibrdfException.h"
 
 namespace semsim {
     class RaptorIOStream {

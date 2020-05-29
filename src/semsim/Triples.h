@@ -9,7 +9,7 @@
 #include "semsim/Predicate.h"
 #include "semsim/Subject.h"
 #include "semsim/Resource.h"
-#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
 #include "semsim/Error.h"
 //#include "semsim/TripleWriter.h"
 

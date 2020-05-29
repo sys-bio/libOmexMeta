@@ -5,8 +5,8 @@
 #ifndef LIBSEMSIM_SUBJECT_H
 #define LIBSEMSIM_SUBJECT_H
 
-#include "semsim/RedlandAPIWrapper/World.h"
-#include "semsim/RedlandAPIWrapper/LibrdfNode.h"
+#include "redland/RedlandAPIWrapper/World.h"
+#include "redland/RedlandAPIWrapper/LibrdfNode.h"
 #include "semsim/Error.h"
 
 #include "iostream"

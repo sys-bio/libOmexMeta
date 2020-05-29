@@ -46,32 +46,29 @@ if (REDLAND_WRAPPER_TESTS)
     set(TEST_SOURCES ${TEST_SOURCES} ${REDLAND_WRAPPER_TEST_SOURCES})
 endif ()
 
-add_executable(semsim-tests ${TEST_SOURCES})
+#add_executable(semsim-tests ${TEST_SOURCES})
+#
+#target_compile_options(semsim-tests PRIVATE -g)
 
-target_compile_options(semsim-tests PRIVATE -g)
-
-add_dependencies(semsim-tests semsim-static)
+#add_dependencies(semsim-tests semsim-static)
 
 message(STATUS "LINK_LIBRARIES ${LINK_LIBRARIES}")
 message(STATUS "REDLAND_LIBRARY ${REDLAND_LIBRARY}")
 
-target_link_libraries(semsim-tests PUBLIC
-        $<TARGET_FILE:semsim-static>
-        gtest gtest_main
-        ${LINK_LIBRARIES}
-        curl
-        xml2
-        dl
-        pthread
-        m
-        c
-        lzma
-        )
+#target_link_libraries(semsim-tests PUBLIC
+#        $<TARGET_FILE:semsim-static>
+#        gtest gtest_main
+#        ${LINK_LIBRARIES}
+#        curl
+#        xml2
+#        dl
+#        pthread
+#        m
+#        c
+#        lzma
+#        )
 
 set(CMAKE_VERBOSE_MAKEFILE 1)
-message(STATUS "HERE")
-message(STATUS "CMAKE_CXX_COMPILER ${CMAKE_CXX_COMPILER}")
-message(STATUS "CMAKE_CXX_COMPILER_ID ${CMAKE_CXX_COMPILER_ID}")
 if (CLANG)
     message(STATUS "CLANG cmopiler")
     SET(ADDRESS_SANITIZER_FLAGS "-fsatize=address")
@@ -81,24 +78,24 @@ ENDIF ()
 
 
 MESSAGE(STATUS "INCLUDE_DIRS ${INCLUDE_DIRS}")
-target_include_directories(semsim-tests PRIVATE
-        ${CMAKE_SOURCE_DIR}
-        ${CMAKE_SOURCE_DIR}/src
-        ${CMAKE_SOURCE_DIR}/src/semsim
-        ${CMAKE_CURRENT_SOURCE_DIR}/RedlandAPITests
-        ${GOOGLETEST_SOURCE}/googletest/include
-        ${INCLUDE_DIRS}
-        )
-
-add_dependencies(semsim-tests
-        semsim-static
-        )
-install(
-        TARGETS semsim-tests
-        EXPORT semsim-tests.a
-        RUNTIME
-        DESTINATION bin
-)
+#target_include_directories(semsim-tests PRIVATE
+#        ${CMAKE_SOURCE_DIR}
+#        ${CMAKE_SOURCE_DIR}/src
+#        ${CMAKE_SOURCE_DIR}/src/semsim
+#        ${CMAKE_CURRENT_SOURCE_DIR}/RedlandAPITests
+#        ${GOOGLETEST_SOURCE}/googletest/include
+#        ${INCLUDE_DIRS}
+#        )
+#
+#add_dependencies(semsim-tests
+#        semsim-static
+#        )
+#install(
+#        TARGETS semsim-tests
+#        EXPORT semsim-tests.a
+#        RUNTIME
+#        DESTINATION bin
+#)
 
 
 

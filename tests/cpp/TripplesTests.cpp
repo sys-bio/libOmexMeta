@@ -1,7 +1,7 @@
 //
 // Created by Ciaran on 4/29/2020.
 //
-#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
 #include "AnnotationSamples.h"
 #include <semsim/Triples.h>
 

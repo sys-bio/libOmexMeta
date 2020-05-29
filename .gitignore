@@ -14,3 +14,10 @@ __pycache__
 *.exe
 *.so
 *.dylib
+autom4te.cache
+*.Po
+*.Plo
+build-linux
+build-windows
+build-macos
+.deps

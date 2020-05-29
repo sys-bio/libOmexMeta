@@ -10,7 +10,7 @@
 #include "semsim/Error.h"
 #include "semsim/Triple.h"
 #include "semsim/Triples.h"
-#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
 #include "Triple.h"
 #include "Triples.h"
 #include <regex>

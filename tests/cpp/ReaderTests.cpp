@@ -4,7 +4,7 @@
 
 #include "semsim/Reader.h"
 #include "AnnotationSamples.h"
-#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
 
 #include <librdf.h>
 #include <unordered_map>

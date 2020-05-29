@@ -153,6 +153,7 @@ else ()
 
 
     PrintOutPaths()
+    add_subdirectory(src/redland)
     add_subdirectory(src)
 
     if (BUILD_TESTS)

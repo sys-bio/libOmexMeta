@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/17/2020.
 //
 #include "gtest/gtest.h"
-#include "semsim/RedlandAPIWrapper/World.h"
-#include "semsim/RedlandAPIWrapper/LibrdfQuery.h"
+#include "redland/RedlandAPIWrapper/World.h"
+#include "redland/RedlandAPIWrapper/LibrdfQuery.h"
 #include "iostream"
 
 using namespace semsim;

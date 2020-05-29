@@ -7,8 +7,8 @@
 #include <src/semsim/RedlandAPIWrapper/LibrdfStatement.h>
 #include <src/semsim/RedlandAPIWrapper/LibrdfQuery.h>
 #include "gtest/gtest.h"
-#include "semsim/RedlandAPIWrapper/World.h"
-#include "semsim/RedlandAPIWrapper/LibrdfQueryResults.h"
+#include "redland/RedlandAPIWrapper/World.h"
+#include "redland/RedlandAPIWrapper/LibrdfQueryResults.h"
 #include "iostream"
 
 using namespace semsim;

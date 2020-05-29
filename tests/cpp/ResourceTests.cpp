@@ -6,7 +6,7 @@
 #include "gtest/gtest.h"
 #include "librdf.h"
 
-#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
 
 using namespace semsim;
 
