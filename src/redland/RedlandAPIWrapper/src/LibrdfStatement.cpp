@@ -11,7 +11,7 @@ namespace semsim {
 
     void LibrdfStatement::deleter::operator()(librdf_statement *statement) {
         if (statement)
-            librdf_free_statement(statement);
+            raptor_free_statement_wrapper(statement);
     }
 
     LibrdfStatement::LibrdfStatement(librdf_statement *statement)

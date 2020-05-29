@@ -25,7 +25,7 @@ add_definitions(-DHAVE_CONFIG_H
         -DPKGDATADIR="${PKGDATADIR}"
         -DLIBRDFA_IN_RAPTOR
         -DRAPTOR_INTERNAL
-
+        -DRAPTOR_DEBUG=0
         )
 
 # files to configure - This overwrites the configuration generated from automate system

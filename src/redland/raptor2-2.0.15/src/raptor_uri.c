@@ -139,7 +139,7 @@ raptor_new_uri_from_counted_string(raptor_world* world,
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
   RAPTOR_DEBUG1("Creating new URI '");
   fwrite(uri_string, sizeof(char), length, RAPTOR_DEBUG_FH);
-  fputs(RAPTOR_DEBUG_FH, "' in hash\n")
+//  fputs(RAPTOR_DEBUG_FH, (FILE *) " in hash\n");
 #endif
 
   new_uri = RAPTOR_CALLOC(raptor_uri*, 1, sizeof(*new_uri));
@@ -479,24 +479,66 @@ raptor_free_uri(raptor_uri *uri)
   if(!uri)
     return;
 
-  uri->usage--;
-  
+    uri->usage--;
+
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
-  RAPTOR_DEBUG3("URI %s usage count now %d\n", uri->string, uri->usage);
+    RAPTOR_DEBUG3("URI %s usage count now %d\n", uri->string, uri->usage);
 #endif
 
-  /* decrement usage, don't free if not 0 yet*/
-  if(uri->usage > 0) {
-    return;
-  }
+    /* decrement usage, don't free if not 0 yet*/
+    if (uri->usage > 0) {
+        return;
+    }
 
-  /* this does not free the uri */
-  if(uri->world->uris_tree)
-    raptor_avltree_delete(uri->world->uris_tree, uri);
+    /* this does not free the uri */
+    if (uri->world->uris_tree)
+        raptor_avltree_delete(uri->world->uris_tree, uri);
 
-  if(uri->string)
-    RAPTOR_FREE(char*, uri->string);
-  RAPTOR_FREE(raptor_uri, uri);
+    if (uri->string)
+        RAPTOR_FREE(char*, uri->string);
+    RAPTOR_FREE(raptor_uri, uri);
+}
+
+/**
+ * raptor_free_uri_wrapper:
+ * @uri: URI to destroy
+ *
+ * Destructor - destroy a #raptor_uri object. Modified from
+ * the original raptor_free_uri so that when usage count is 0
+ * we return void
+ **/
+void
+raptor_free_uri_wrapper(raptor_uri *uri) {
+    if (!uri)
+        return;
+
+#if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
+    RAPTOR_DEBUG3("URI %s usage count now %d\n", uri->string, uri->usage);
+#endif
+
+    if (uri->usage == 0)
+
+#if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
+        RAPTOR_DEBUG3("URI %s usage count was %d so not doing the freeing \n", uri->string, uri->usage);
+#endif
+        return;
+
+    uri->usage--;
+
+
+
+    /* decrement usage, don't free if not 0 yet*/
+    if (uri->usage > 0) {
+        return;
+    }
+
+    /* this does not free the uri */
+    if (uri->world->uris_tree)
+        raptor_avltree_delete(uri->world->uris_tree, uri);
+
+    if (uri->string)
+        RAPTOR_FREE(char*, uri->string);
+    RAPTOR_FREE(raptor_uri, uri);
 }
 
 

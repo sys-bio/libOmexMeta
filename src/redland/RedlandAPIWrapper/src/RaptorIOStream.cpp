@@ -8,7 +8,7 @@
 namespace semsim {
 
     void RaptorIOStream::deleter::operator()(raptor_iostream *iostream) {
-        if (iosrteam)
+        if (iostream)
             raptor_free_iostream(iostream);
     }
 

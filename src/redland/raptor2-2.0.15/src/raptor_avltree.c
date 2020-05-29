@@ -297,7 +297,7 @@ raptor_avltree_remove(raptor_avltree* tree, void* p_data)
 
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
   RAPTOR_AVLTREE_DEBUG1("Checking tree after removing\n");
-  raptor_avltree_dump(tree,stderr);
+//  raptor_avltree_dump(tree,stderr);
   raptor_avltree_check(tree);
 #endif
   
@@ -479,8 +479,8 @@ raptor_avltree_sprout_left(raptor_avltree* tree, raptor_avltree_node** node_pp,
       /* left branch was already too long. rebalance */
       RAPTOR_AVLTREE_DEBUG1("LESS: case -1: rebalancing\n");
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
-      RAPTOR_AVLTREE_DEBUG1("Tree before rebalancing\n");
-      raptor_avltree_dump(tree, stderr);
+          RAPTOR_AVLTREE_DEBUG1("Tree before rebalancing\n");
+    //      raptor_avltree_dump(tree, stderr);
 #endif
       p1 = (*node_pp)->left;
 
@@ -528,8 +528,8 @@ raptor_avltree_sprout_left(raptor_avltree* tree, raptor_avltree_node** node_pp,
         (*node_pp)->parent = p_parent;
       } /* end else */
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
-      RAPTOR_AVLTREE_DEBUG1("Tree after rebalancing\n");
-      raptor_avltree_dump(tree, stderr);
+          RAPTOR_AVLTREE_DEBUG1("Tree after rebalancing\n");
+    //      raptor_avltree_dump(tree, stderr);
 #endif
 
       (*node_pp)->balance = 0;
@@ -586,8 +586,8 @@ raptor_avltree_sprout_right(raptor_avltree* tree,
       p1 = (*node_pp)->right;
       
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
-      RAPTOR_AVLTREE_DEBUG1("Tree before rebalancing\n");
-      raptor_avltree_dump(tree, stderr);
+          RAPTOR_AVLTREE_DEBUG1("Tree before rebalancing\n");
+    //      raptor_avltree_dump(tree, stderr);
 #endif
       if(p1->balance == 1) {
         /* RR */
@@ -635,8 +635,8 @@ raptor_avltree_sprout_right(raptor_avltree* tree,
       } /* end else */
       
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
-      RAPTOR_AVLTREE_DEBUG1("Tree after rebalancing\n");
-      raptor_avltree_dump(tree, stderr);
+          RAPTOR_AVLTREE_DEBUG1("Tree after rebalancing\n");
+    //      raptor_avltree_dump(tree, stderr);
 #endif
       (*node_pp)->balance = 0;
       *rebalancing_p = FALSE;
@@ -701,10 +701,10 @@ raptor_avltree_sprout(raptor_avltree* tree, raptor_avltree_node* parent,
     tree->size++;
 
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
-    raptor_avltree_check_node(tree, *node_pp, 0, 0);
+      raptor_avltree_check_node(tree, *node_pp, 0, 0);
 
-    RAPTOR_AVLTREE_DEBUG1("Tree now looks this way\n");
-    raptor_avltree_dump(tree,stderr);
+      RAPTOR_AVLTREE_DEBUG1("Tree now looks this way\n");
+  //    raptor_avltree_dump(tree,stderr);
 #endif
     
     return FALSE;
