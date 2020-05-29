@@ -6,7 +6,8 @@ namespace semsim {
             query_results_(query_results) {}
 
     void LibrdfQueryResults::deleter::operator()(librdf_query_results *query_results) {
-        librdf_free_query_results(query_results);
+        if (query_results)
+            librdf_free_query_results(query_results);
     }
 
     librdf_query_results *LibrdfQueryResults::get() const {

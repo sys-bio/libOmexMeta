@@ -2,6 +2,10 @@
 
 
 namespace semsim {
+    void LibrdfSerializer::deleter::operator()(librdf_serializer *serializer) {
+        if (serializer)
+            librdf_free_serializer(serializer);
+    }
 
     LibrdfSerializer::LibrdfSerializer(librdf_serializer *serializer) :
             serializer_(std::unique_ptr<librdf_serializer, deleter>(serializer)) {}
@@ -46,9 +50,6 @@ namespace semsim {
         return output;
     }
 
-    void LibrdfSerializer::deleter::operator()(librdf_serializer *serializer) {
-        librdf_free_serializer(serializer);
-    }
 
     int toIOStream(const LibrdfUri &uri, const LibrdfModel *model, const RaptorIOStream &stream);
 }

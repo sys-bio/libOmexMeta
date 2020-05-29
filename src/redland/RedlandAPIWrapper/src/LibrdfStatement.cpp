@@ -9,6 +9,11 @@
 namespace semsim {
 
 
+    void LibrdfStatement::deleter::operator()(librdf_statement *statement) {
+        if (statement)
+            librdf_free_statement(statement);
+    }
+
     LibrdfStatement::LibrdfStatement(librdf_statement *statement)
             : statement_(std::unique_ptr<librdf_statement, deleter>(statement)),
               subject_(LibrdfNode(librdf_statement_get_subject(statement))),
@@ -42,7 +47,4 @@ namespace semsim {
         return resource_;
     }
 
-    void LibrdfStatement::deleter::operator()(librdf_statement *statement) {
-        librdf_free_statement(statement);
-    }
 }

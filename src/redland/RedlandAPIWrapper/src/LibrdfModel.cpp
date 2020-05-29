@@ -9,7 +9,8 @@ namespace semsim {
 
 
     void LibrdfModel::deleter::operator()(librdf_model *model) {
-        librdf_free_model(model);
+        if (model)
+            librdf_free_model(model);
     }
 
     LibrdfModel::LibrdfModel(librdf_model *model)

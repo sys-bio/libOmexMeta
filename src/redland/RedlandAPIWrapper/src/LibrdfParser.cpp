@@ -3,6 +3,11 @@
 
 namespace semsim {
 
+    void LibrdfParser::deleter::operator()(librdf_parser *parser) {
+        if (parser)
+            librdf_free_parser(parser);
+    }
+
     LibrdfParser::LibrdfParser(librdf_parser *parser) :
             parser_(std::unique_ptr<librdf_parser, deleter>(parser)) {}
 
@@ -59,8 +64,5 @@ namespace semsim {
     }
 
 
-    void LibrdfParser::deleter::operator()(librdf_parser *parser) {
-        librdf_free_parser(parser);
-    }
 }
 

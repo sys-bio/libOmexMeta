@@ -3,6 +3,11 @@
 
 namespace semsim {
 
+    void LibrdfStorage::deleter::operator()(librdf_storage *storage) {
+        if (storage)
+            librdf_free_storage(storage);
+    }
+
     LibrdfStorage::LibrdfStorage(librdf_storage *storage)
             : storage_(storage) {}
 
@@ -28,7 +33,4 @@ namespace semsim {
     }
 
 
-    void LibrdfStorage::deleter::operator()(librdf_storage *storage) {
-        librdf_free_storage(storage);
-    }
 }

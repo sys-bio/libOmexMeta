@@ -2,6 +2,11 @@
 
 namespace semsim {
 
+    void LibrdfStream::deleter::operator()(librdf_stream *stream) {
+        if (stream)
+            librdf_free_stream(stream);
+    }
+
     LibrdfStream::LibrdfStream() :
             stream_(librdf_new_empty_stream(World::getWorld())) {}
 
@@ -12,8 +17,5 @@ namespace semsim {
         return stream_.get();
     }
 
-    void LibrdfStream::deleter::operator()(librdf_stream *stream) {
-        librdf_free_stream(stream);
-    }
 
 }
