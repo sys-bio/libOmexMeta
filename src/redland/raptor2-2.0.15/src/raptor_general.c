@@ -24,8 +24,8 @@
 
 
 #ifdef HAVE_CONFIG_H
-#include <raptor_config.h>
 #endif
+#include <raptor_config.h>
 
 #include <stdio.h>
 #include <string.h>
@@ -68,6 +68,7 @@ const char * const raptor_version_string = RAPTOR_VERSION_STRING
 " GIT " GIT_VERSION
 #endif
 ;
+
 
 /**
  * raptor_version_major:

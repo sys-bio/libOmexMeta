@@ -3,9 +3,9 @@
 //
 
 #include "gtest/gtest.h"
-#include "redland/RedlandAPIWrapper/World.h"
-#include "redland/RedlandAPIWrapper/LibrdfUri.h"
-#include "semsim/SemsimUtils.h"
+#include "World.h"
+#include "LibrdfUri.h"
+//#include "semsim/SemsimUtils.h"
 #include "raptor2.h"
 
 using namespace semsim;

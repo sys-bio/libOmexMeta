@@ -179,7 +179,7 @@
 /* #undef RANDOM_ALGO_GMP_RAND */
 
 /* Use internal Mersenne Twister */
-#define RANDOM_ALGO_MTWIST 1
+//#define RANDOM_ALGO_MTWIST 1
 
 /* Use POSIX srand() and rand() */
 /* #undef RANDOM_ALGO_RAND */

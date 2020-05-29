@@ -4,19 +4,33 @@ project(redland-combined)
 #       definitions, configuations
 #
 
+SET(RAPTOR_DIR ${CMAKE_CURRENT_SOURCE_DIR}/raptor2-2.0.15)
+SET(RASQAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/rasqal-0.9.33)
+SET(LIBRDF_DIR ${CMAKE_CURRENT_SOURCE_DIR}/redland-1.0.17)
+
+SET(RAPTOR_SOURCE_DIR ${RAPTOR_DIR}/src)
+SET(RASQAL_SOURCE_DIR ${RASQAL_DIR}/src)
+SET(LIBRDF_SOURCE_DIR ${LIBRDF_DIR}/src)
+
+SET(WRAPPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RedlandAPIWrapper)
+SET(WRAPPER_SOURCE_DIR ${WRAPPER_DIR}/src)
+SET(WRAPPER_TEST_DIR ${WRAPPER_DIR}/test)
+
+
 #definitions needed to compile librdf/rptor/rasqal
 add_definitions(-DHAVE_CONFIG_H -DRASQAL_INTERNAL
         -DLIBRDF_INTERNAL -DREDLAND_MODULE_PATH
         -DPKGDATADIR ${PKGDATADIR}
         -DLIBRDFA_IN_RAPTOR -DRAPTOR_INTERNAL
+
         )
 
-# files to configure - needed? possible source of non-portability
-# since other systems will not be set up like mine
-configure_file(raptor2-2.0.15/src/raptor_config_cmake.h.in raptor2-2.0.15/src/raptor_config.h @ONLY)
-configure_file(raptor2-2.0.15/src/raptor2.h.in raptor2-2.0.15/src/raptor2.h @ONLY)
-configure_file(rasqal-0.9.33/src/rasqal_config.h.in rasqal-0.9.33/src/rasqal_config.h)
-configure_file(rasqal-0.9.33/rasqal-src-config.in rasqal-0.9.33/rasqal-src-config)
+# files to configure - This overwrites the configuration generated from automate system
+#  with null values, since I haven't found the cmake equivalent
+#configure_file(${RAPTOR_DIR}/src/raptor_config_cmake.h.in raptor2-2.0.15/src/raptor_config.h @ONLY)
+#configure_file(${RAPTOR_DIR}/src/raptor2.h.in ${RAPTOR_DIR}/src/raptor2.h @ONLY)
+#configure_file(${RASQAL_DIR}/src/rasqal_config.h.in ${RASQAL_DIR}/src/rasqal_config.h)
+#configure_file(${RASQAL_DIR}/rasqal-src-config.in ${RASQAL_DIR}/rasqal-src-config)
 
 # set directory for librdf storage/cache. only used when not specified by user
 set(PKGDATADIR $ENV{HOME}/.librdf)
@@ -48,267 +62,316 @@ endif ()
 ##################################################################################
 #       Sources
 #
+set(RAPTOR_LIBRDFA_SOURCES
+        ${RAPTOR_DIR}/librdfa/config.h
+        ${RAPTOR_DIR}/librdfa/context.c
+        ${RAPTOR_DIR}/librdfa/curie.c
+        ${RAPTOR_DIR}/librdfa/iri.c
+        ${RAPTOR_DIR}/librdfa/language.c
+        ${RAPTOR_DIR}/librdfa/lists.c
+        ${RAPTOR_DIR}/librdfa/namespace.c
+        ${RAPTOR_DIR}/librdfa/rdfa.c
+        ${RAPTOR_DIR}/librdfa/rdfa.h
+        ${RAPTOR_DIR}/librdfa/rdfa_utils.c
+        ${RAPTOR_DIR}/librdfa/rdfa_utils.h
+        ${RAPTOR_DIR}/librdfa/strtok_r.c
+        ${RAPTOR_DIR}/librdfa/strtok_r.h
+        ${RAPTOR_DIR}/librdfa/subject.c
+        ${RAPTOR_DIR}/librdfa/triple.c
+        )
 
 set(RAPTOR_SOURCES
-        raptor2-2.0.15/src/raptor_parse.c
-        raptor2-2.0.15/src/raptor_serialize.c
-        raptor2-2.0.15/src/raptor_rfc2396.c
-        raptor2-2.0.15/src/raptor_uri.c
-        raptor2-2.0.15/src/raptor_log.c
-        raptor2-2.0.15/src/raptor_locator.c
-        raptor2-2.0.15/src/raptor_namespace.c
-        raptor2-2.0.15/src/raptor_qname.c
-        raptor2-2.0.15/src/raptor_option.c
-        raptor2-2.0.15/src/raptor_general.c
-        raptor2-2.0.15/src/raptor_unicode.c
-        raptor2-2.0.15/src/raptor_www.c
-        raptor2-2.0.15/src/raptor_statement.c
-        raptor2-2.0.15/src/raptor_term.c
-        raptor2-2.0.15/src/raptor_sequence.c
-        raptor2-2.0.15/src/raptor_stringbuffer.c
-        raptor2-2.0.15/src/raptor_iostream.c
-        raptor2-2.0.15/src/raptor_xml.c
-        raptor2-2.0.15/src/raptor_xml_writer.c
-        raptor2-2.0.15/src/raptor_set.c
-        raptor2-2.0.15/src/turtle_common.c
-        raptor2-2.0.15/src/raptor_turtle_writer.c
-        raptor2-2.0.15/src/raptor_avltree.c
-        raptor2-2.0.15/src/snprintf.c
-        raptor2-2.0.15/src/raptor_json_writer.c
-        raptor2-2.0.15/src/raptor_memstr.c
-        raptor2-2.0.15/src/raptor_concepts.c
-        raptor2-2.0.15/src/raptor_syntax_description.c
-        raptor2-2.0.15/src/raptor_sax2.c
-        raptor2-2.0.15/src/raptor_escaped.c
-        raptor2-2.0.15/src/raptor_ntriples.c
-        raptor2-2.0.15/src/sort_r.c
-        raptor2-2.0.15/src/sort_r.h
-        raptor2-2.0.15/src/ssort.h
-        raptor2-2.0.15/src/raptor_libxml.c
-        raptor2-2.0.15/src/raptor_rdfxml.c
-        raptor2-2.0.15/src/turtle_lexer.c
-        raptor2-2.0.15/src/turtle_lexer.h
-        raptor2-2.0.15/src/turtle_parser.c
-        raptor2-2.0.15/src/turtle_parser.h
-        raptor2-2.0.15/src/turtle_common.h
-        raptor2-2.0.15/src/ntriples_parse.c
-        raptor2-2.0.15/src/raptor_rss_common.c
-        raptor2-2.0.15/src/raptor_rss.h
-        raptor2-2.0.15/src/raptor_rss.c
-        raptor2-2.0.15/src/raptor_grddl.c
-        raptor2-2.0.15/src/raptor_guess.c
-        raptor2-2.0.15/src/raptor_librdfa.c
-        raptor2-2.0.15/src/raptor_json.c
-        raptor2-2.0.15/src/raptor_serialize_rdfxml.c
-        raptor2-2.0.15/src/raptor_serialize_ntriples.c
-        raptor2-2.0.15/src/raptor_abbrev.c
-        raptor2-2.0.15/src/raptor_serialize_rdfxmla.c
-        raptor2-2.0.15/src/raptor_serialize_turtle.c
-        raptor2-2.0.15/src/raptor_serialize_rss.c
-        raptor2-2.0.15/src/raptor_serialize_dot.c
-        raptor2-2.0.15/src/raptor_serialize_html.c
-        raptor2-2.0.15/src/raptor_serialize_json.c
-        raptor2-2.0.15/src/strcasecmp.c
-        raptor2-2.0.15/src/parsedate.c
+        ${RAPTOR_LIBRDFA_SOURCES}
+        ${RAPTOR_SOURCE_DIR}/git-version.h
+        ${RAPTOR_SOURCE_DIR}/ntriples_parse.c
+        ${RAPTOR_SOURCE_DIR}/parsedate.c
+        ${RAPTOR_SOURCE_DIR}/raptor.h
+        ${RAPTOR_SOURCE_DIR}/raptor2.h
+        ${RAPTOR_SOURCE_DIR}/raptor_abbrev.c
+        ${RAPTOR_SOURCE_DIR}/raptor_avltree.c
+        ${RAPTOR_SOURCE_DIR}/raptor_concepts.c
+        ${RAPTOR_SOURCE_DIR}/raptor_config.h
+        ${RAPTOR_SOURCE_DIR}/raptor_escaped.c
+        ${RAPTOR_SOURCE_DIR}/raptor_general.c
+        ${RAPTOR_SOURCE_DIR}/raptor_grddl.c
+        ${RAPTOR_SOURCE_DIR}/raptor_guess.c
+        ${RAPTOR_SOURCE_DIR}/raptor_internal.h
+        ${RAPTOR_SOURCE_DIR}/raptor_iostream.c
+        ${RAPTOR_SOURCE_DIR}/raptor_json.c
+        ${RAPTOR_SOURCE_DIR}/raptor_json_writer.c
+        ${RAPTOR_SOURCE_DIR}/raptor_librdfa.c
+        ${RAPTOR_SOURCE_DIR}/raptor_libxml.c
+        ${RAPTOR_SOURCE_DIR}/raptor_locator.c
+        ${RAPTOR_SOURCE_DIR}/raptor_log.c
+        ${RAPTOR_SOURCE_DIR}/raptor_memstr.c
+        ${RAPTOR_SOURCE_DIR}/raptor_namespace.c
+        ${RAPTOR_SOURCE_DIR}/raptor_nfc_icu.c
+        ${RAPTOR_SOURCE_DIR}/raptor_ntriples.c
+        ${RAPTOR_SOURCE_DIR}/raptor_option.c
+        ${RAPTOR_SOURCE_DIR}/raptor_parse.c
+        ${RAPTOR_SOURCE_DIR}/raptor_qname.c
+        ${RAPTOR_SOURCE_DIR}/raptor_rdfxml.c
+        ${RAPTOR_SOURCE_DIR}/raptor_rfc2396.c
+        ${RAPTOR_SOURCE_DIR}/raptor_rss.c
+        ${RAPTOR_SOURCE_DIR}/raptor_rss.h
+        ${RAPTOR_SOURCE_DIR}/raptor_rss_common.c
+        ${RAPTOR_SOURCE_DIR}/raptor_sax2.c
+        ${RAPTOR_SOURCE_DIR}/raptor_sequence.c
+        ${RAPTOR_SOURCE_DIR}/raptor_serialize.c
+        ${RAPTOR_SOURCE_DIR}/raptor_serialize_dot.c
+        ${RAPTOR_SOURCE_DIR}/raptor_serialize_html.c
+        ${RAPTOR_SOURCE_DIR}/raptor_serialize_json.c
+        ${RAPTOR_SOURCE_DIR}/raptor_serialize_ntriples.c
+        ${RAPTOR_SOURCE_DIR}/raptor_serialize_rdfxml.c
+        ${RAPTOR_SOURCE_DIR}/raptor_serialize_rdfxmla.c
+        ${RAPTOR_SOURCE_DIR}/raptor_serialize_rss.c
+        ${RAPTOR_SOURCE_DIR}/raptor_serialize_turtle.c
+        ${RAPTOR_SOURCE_DIR}/raptor_set.c
+        ${RAPTOR_SOURCE_DIR}/raptor_statement.c
+        ${RAPTOR_SOURCE_DIR}/raptor_stringbuffer.c
+        ${RAPTOR_SOURCE_DIR}/raptor_syntax_description.c
+        ${RAPTOR_SOURCE_DIR}/raptor_term.c
+        ${RAPTOR_SOURCE_DIR}/raptor_turtle_writer.c
+        ${RAPTOR_SOURCE_DIR}/raptor_unicode.c
+        ${RAPTOR_SOURCE_DIR}/raptor_uri.c
+        #        ${RAPTOR_SOURCE_DIR}/raptor_win32.c
+        ${RAPTOR_SOURCE_DIR}/raptor_www.c
+        ${RAPTOR_SOURCE_DIR}/raptor_www_curl.c
+        ${RAPTOR_SOURCE_DIR}/raptor_www_libfetch.c
+        ${RAPTOR_SOURCE_DIR}/raptor_www_libxml.c
+        ${RAPTOR_SOURCE_DIR}/raptor_xml.c
+        ${RAPTOR_SOURCE_DIR}/raptor_xml_writer.c
+        ${RAPTOR_SOURCE_DIR}/snprintf.c
+        ${RAPTOR_SOURCE_DIR}/sort_r.c
+        ${RAPTOR_SOURCE_DIR}/sort_r.h
+        ${RAPTOR_SOURCE_DIR}/ssort.h
+        ${RAPTOR_SOURCE_DIR}/strcasecmp.c
+        ${RAPTOR_SOURCE_DIR}/turtle_common.c
+        ${RAPTOR_SOURCE_DIR}/turtle_common.h
+        ${RAPTOR_SOURCE_DIR}/turtle_lexer.c
+        ${RAPTOR_SOURCE_DIR}/turtle_lexer.h
+        ${RAPTOR_SOURCE_DIR}/turtle_parser.c
+        ${RAPTOR_SOURCE_DIR}/turtle_parser.h
+        )
+
+#set(RASQAL_MTWIST_SOURCES
+#        ${RASQAL_DIR}/libmtwist/mt.c
+#        ${RASQAL_DIR}/libmtwist/mtwist.h
+#        ${RASQAL_DIR}/libmtwist/mtwist_internal.h
+#        ${RASQAL_DIR}/libmtwist/seed.c
+#        )
+
+set(RASQAL_LIBSV_SOURCES
+        ${RASQAL_DIR}/libsv/sv.c
+        ${RASQAL_DIR}/libsv/sv.h
+        #        ${RASQAL_DIR}/libsv/sv2c.c # has a main function, so probs not wanted here
         )
 
 set(RASQAL_SOURCES
-        rasqal-0.9.33/src/rasqal_algebra.c
-        rasqal-0.9.33/src/rasqal_expr.c
-        rasqal-0.9.33/src/rasqal_expr_evaluate.c
-        rasqal-0.9.33/src/rasqal_expr_datetimes.c
-        rasqal-0.9.33/src/rasqal_expr_numerics.c
-        rasqal-0.9.33/src/rasqal_expr_strings.c
-        rasqal-0.9.33/src/rasqal_general.c
-        rasqal-0.9.33/src/rasqal_query.c
-        rasqal-0.9.33/src/rasqal_query_results.c
-        rasqal-0.9.33/src/rasqal_engine.c
-        rasqal-0.9.33/src/rasqal_raptor.c
-        rasqal-0.9.33/src/rasqal_literal.c
-        rasqal-0.9.33/src/rasqal_formula.c
-        rasqal-0.9.33/src/rasqal_graph_pattern.c
-        rasqal-0.9.33/src/rasqal_map.c
-        rasqal-0.9.33/src/rasqal_feature.c
-        rasqal-0.9.33/src/rasqal_result_formats.c
-        rasqal-0.9.33/src/rasqal_xsd_datatypes.c
-        rasqal-0.9.33/src/rasqal_decimal.c
-        rasqal-0.9.33/src/rasqal_datetime.c
-        rasqal-0.9.33/src/rasqal_rowsource.c
-        rasqal-0.9.33/src/rasqal_format_sparql_xml.c
-        rasqal-0.9.33/src/rasqal_variable.c
-        rasqal-0.9.33/src/rasqal_rowsource_empty.c
-        rasqal-0.9.33/src/rasqal_rowsource_union.c
-        rasqal-0.9.33/src/rasqal_rowsource_rowsequence.c
-        rasqal-0.9.33/src/rasqal_query_transform.c
-        rasqal-0.9.33/src/rasqal_row.c
-        rasqal-0.9.33/src/rasqal_engine_algebra.c
-        rasqal-0.9.33/src/rasqal_triples_source.c
-        rasqal-0.9.33/src/rasqal_rowsource_triples.c
-        rasqal-0.9.33/src/rasqal_rowsource_filter.c
-        rasqal-0.9.33/src/rasqal_rowsource_sort.c
-        rasqal-0.9.33/src/rasqal_engine_sort.c
-        rasqal-0.9.33/src/rasqal_rowsource_project.c
-        rasqal-0.9.33/src/rasqal_rowsource_join.c
-        rasqal-0.9.33/src/rasqal_rowsource_graph.c
-        rasqal-0.9.33/src/rasqal_rowsource_distinct.c
-        rasqal-0.9.33/src/rasqal_rowsource_groupby.c
-        rasqal-0.9.33/src/rasqal_rowsource_aggregation.c
-        rasqal-0.9.33/src/rasqal_rowsource_having.c
-        rasqal-0.9.33/src/rasqal_rowsource_slice.c
-        rasqal-0.9.33/src/rasqal_rowsource_bindings.c
-        rasqal-0.9.33/src/rasqal_rowsource_service.c
-        rasqal-0.9.33/src/rasqal_row_compatible.c
-        rasqal-0.9.33/src/rasqal_format_table.c
-        rasqal-0.9.33/src/rasqal_query_write.c
-        rasqal-0.9.33/src/rasqal_format_json.c
-        rasqal-0.9.33/src/rasqal_format_sv.c
-        rasqal-0.9.33/src/rasqal_format_html.c
-        rasqal-0.9.33/src/rasqal_format_rdf.c
-        rasqal-0.9.33/src/rasqal_rowsource_assignment.c
-        rasqal-0.9.33/src/rasqal_update.c
-        rasqal-0.9.33/src/rasqal_triple.c
-        rasqal-0.9.33/src/rasqal_data_graph.c
-        rasqal-0.9.33/src/rasqal_prefix.c
-        rasqal-0.9.33/src/rasqal_solution_modifier.c
-        rasqal-0.9.33/src/rasqal_projection.c
-        rasqal-0.9.33/src/rasqal_bindings.c
-        rasqal-0.9.33/src/rasqal_service.c
-        rasqal-0.9.33/src/rasqal_dataset.c
-        rasqal-0.9.33/src/rasqal_random.c
-        rasqal-0.9.33/src/rasqal_digest.c
-        rasqal-0.9.33/src/rasqal_iostream.c
-        rasqal-0.9.33/src/rasqal_regex.c
-        rasqal-0.9.33/src/snprintf.c
-        rasqal-0.9.33/src/rasqal_double.c
-        rasqal-0.9.33/src/rasqal_ntriples.c
-        rasqal-0.9.33/src/rasqal_results_compare.c
-        rasqal-0.9.33/src/ssort.h
-        rasqal-0.9.33/src/sparql_lexer.c
-        rasqal-0.9.33/src/sparql_lexer.h
-        rasqal-0.9.33/src/sparql_parser.c
-        rasqal-0.9.33/src/sparql_parser.h
-        rasqal-0.9.33/src/sparql_common.h
-        rasqal-0.9.33/src/strcasecmp.c
-        rasqal-0.9.33/src/timegm.c
-        rasqal-0.9.33/src/gettimeofday.c
-        rasqal-0.9.33/src/rasqal_sort.c
-        rasqal-0.9.33/src/rasqal_digest_md5.c
-        rasqal-0.9.33/src/rasqal_digest_sha1.c
+        #        ${RASQAL_MTWIST_SOURCES}
+        ${RASQAL_LIBSV_SOURCES}
+        ${RASQAL_SOURCE_DIR}/rasqal_algebra.c
+        ${RASQAL_SOURCE_DIR}/rasqal_expr.c
+        ${RASQAL_SOURCE_DIR}/rasqal_expr_evaluate.c
+        ${RASQAL_SOURCE_DIR}/rasqal_expr_datetimes.c
+        ${RASQAL_SOURCE_DIR}/rasqal_expr_numerics.c
+        ${RASQAL_SOURCE_DIR}/rasqal_expr_strings.c
+        ${RASQAL_SOURCE_DIR}/rasqal_general.c
+        ${RASQAL_SOURCE_DIR}/rasqal_query.c
+        ${RASQAL_SOURCE_DIR}/rasqal_query_results.c
+        ${RASQAL_SOURCE_DIR}/rasqal_engine.c
+        ${RASQAL_SOURCE_DIR}/rasqal_raptor.c
+        ${RASQAL_SOURCE_DIR}/rasqal_literal.c
+        ${RASQAL_SOURCE_DIR}/rasqal_formula.c
+        ${RASQAL_SOURCE_DIR}/rasqal_graph_pattern.c
+        ${RASQAL_SOURCE_DIR}/rasqal_map.c
+        ${RASQAL_SOURCE_DIR}/rasqal_feature.c
+        ${RASQAL_SOURCE_DIR}/rasqal_result_formats.c
+        ${RASQAL_SOURCE_DIR}/rasqal_xsd_datatypes.c
+        ${RASQAL_SOURCE_DIR}/rasqal_decimal.c
+        ${RASQAL_SOURCE_DIR}/rasqal_datetime.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource.c
+        ${RASQAL_SOURCE_DIR}/rasqal_format_sparql_xml.c
+        ${RASQAL_SOURCE_DIR}/rasqal_variable.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_empty.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_union.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_rowsequence.c
+        ${RASQAL_SOURCE_DIR}/rasqal_query_transform.c
+        ${RASQAL_SOURCE_DIR}/rasqal_row.c
+        ${RASQAL_SOURCE_DIR}/rasqal_engine_algebra.c
+        ${RASQAL_SOURCE_DIR}/rasqal_triples_source.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_triples.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_filter.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_sort.c
+        ${RASQAL_SOURCE_DIR}/rasqal_engine_sort.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_project.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_join.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_graph.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_distinct.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_groupby.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_aggregation.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_having.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_slice.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_bindings.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_service.c
+        ${RASQAL_SOURCE_DIR}/rasqal_row_compatible.c
+        ${RASQAL_SOURCE_DIR}/rasqal_format_table.c
+        ${RASQAL_SOURCE_DIR}/rasqal_query_write.c
+        ${RASQAL_SOURCE_DIR}/rasqal_format_json.c
+        ${RASQAL_SOURCE_DIR}/rasqal_format_sv.c
+        ${RASQAL_SOURCE_DIR}/rasqal_format_html.c
+        ${RASQAL_SOURCE_DIR}/rasqal_format_rdf.c
+        ${RASQAL_SOURCE_DIR}/rasqal_rowsource_assignment.c
+        ${RASQAL_SOURCE_DIR}/rasqal_update.c
+        ${RASQAL_SOURCE_DIR}/rasqal_triple.c
+        ${RASQAL_SOURCE_DIR}/rasqal_data_graph.c
+        ${RASQAL_SOURCE_DIR}/rasqal_prefix.c
+        ${RASQAL_SOURCE_DIR}/rasqal_solution_modifier.c
+        ${RASQAL_SOURCE_DIR}/rasqal_projection.c
+        ${RASQAL_SOURCE_DIR}/rasqal_bindings.c
+        ${RASQAL_SOURCE_DIR}/rasqal_service.c
+        ${RASQAL_SOURCE_DIR}/rasqal_dataset.c
+        ${RASQAL_SOURCE_DIR}/rasqal_random.c
+        ${RASQAL_SOURCE_DIR}/rasqal_digest.c
+        ${RASQAL_SOURCE_DIR}/rasqal_iostream.c
+        ${RASQAL_SOURCE_DIR}/rasqal_regex.c
+        ${RASQAL_SOURCE_DIR}/snprintf.c
+        ${RASQAL_SOURCE_DIR}/rasqal_double.c
+        ${RASQAL_SOURCE_DIR}/rasqal_ntriples.c
+        ${RASQAL_SOURCE_DIR}/rasqal_results_compare.c
+        ${RASQAL_SOURCE_DIR}/ssort.h
+        ${RASQAL_SOURCE_DIR}/sparql_lexer.c
+        ${RASQAL_SOURCE_DIR}/sparql_lexer.h
+        ${RASQAL_SOURCE_DIR}/sparql_parser.c
+        ${RASQAL_SOURCE_DIR}/sparql_parser.h
+        ${RASQAL_SOURCE_DIR}/sparql_common.h
+        ${RASQAL_SOURCE_DIR}/strcasecmp.c
+        ${RASQAL_SOURCE_DIR}/timegm.c
+        ${RASQAL_SOURCE_DIR}/gettimeofday.c
+        ${RASQAL_SOURCE_DIR}/rasqal_sort.c
+        ${RASQAL_SOURCE_DIR}/rasqal_digest_md5.c
+        ${RASQAL_SOURCE_DIR}/rasqal_digest_sha1.c
         )
 
-
 set(LIBRDF_SOURCES
-        redland-1.0.17/src/rdf_init.c
-        redland-1.0.17/src/rdf_raptor.c
-        redland-1.0.17/src/rdf_uri.c
-        redland-1.0.17/src/rdf_digest.c
-        redland-1.0.17/src/rdf_hash.c
-        redland-1.0.17/src/rdf_hash_cursor.c
-        redland-1.0.17/src/rdf_hash_memory.c
-        redland-1.0.17/src/rdf_model.c
-        redland-1.0.17/src/rdf_model_storage.c
-        redland-1.0.17/src/rdf_iterator.c
-        redland-1.0.17/src/rdf_concepts.c
-        redland-1.0.17/src/rdf_list.c
-        redland-1.0.17/src/rdf_storage.c
-        redland-1.0.17/src/rdf_storage_sql.c
-        redland-1.0.17/src/rdf_stream.c
-        redland-1.0.17/src/rdf_parser.c
-        redland-1.0.17/src/rdf_parser_raptor.c
-        redland-1.0.17/src/rdf_heuristics.c
-        redland-1.0.17/src/rdf_files.c
-        redland-1.0.17/src/rdf_utf8.c
-        redland-1.0.17/src/rdf_query.c
-        redland-1.0.17/src/rdf_query_results.c
-        redland-1.0.17/src/rdf_query_rasqal.c
-        redland-1.0.17/src/rdf_serializer.c
-        redland-1.0.17/src/rdf_serializer_raptor.c
-        redland-1.0.17/src/rdf_log.c
-        redland-1.0.17/src/rdf_node_common.c
-        redland-1.0.17/src/rdf_statement_common.c
-        redland-1.0.17/src/rdf_node.c
-        redland-1.0.17/src/rdf_statement.c
-        redland-1.0.17/src/redland.h
-        redland-1.0.17/src/rdf_internal.h
-        redland-1.0.17/src/rdf_init.h
-        redland-1.0.17/src/rdf_uri.h
-        redland-1.0.17/src/rdf_node.h
-        redland-1.0.17/src/rdf_statement.h
-        redland-1.0.17/src/rdf_concepts.h
-        redland-1.0.17/src/rdf_digest.h
-        redland-1.0.17/src/rdf_hash.h
-        redland-1.0.17/src/rdf_types.h
-        redland-1.0.17/src/rdf_model.h
-        redland-1.0.17/src/rdf_iterator.h
-        redland-1.0.17/src/rdf_list.h
-        redland-1.0.17/src/rdf_storage.h
-        redland-1.0.17/src/rdf_stream.h
-        redland-1.0.17/src/rdf_parser.h
-        redland-1.0.17/src/rdf_heuristics.h
-        redland-1.0.17/src/rdf_files.h
-        redland-1.0.17/src/rdf_utf8.h
-        redland-1.0.17/src/rdf_query.h
-        redland-1.0.17/src/rdf_serializer.h
-        redland-1.0.17/src/rdf_log.h
-        redland-1.0.17/src/rdf_concepts_internal.h
-        redland-1.0.17/src/rdf_digest_internal.h
-        redland-1.0.17/src/rdf_hash_internal.h
-        redland-1.0.17/src/rdf_init_internal.h
-        redland-1.0.17/src/rdf_iterator_internal.h
-        redland-1.0.17/src/rdf_list_internal.h
-        redland-1.0.17/src/rdf_log_internal.h
-        redland-1.0.17/src/rdf_model_internal.h
-        redland-1.0.17/src/rdf_node_internal.h
-        redland-1.0.17/src/rdf_parser_internal.h
-        redland-1.0.17/src/rdf_query_internal.h
-        redland-1.0.17/src/rdf_raptor_internal.h
-        redland-1.0.17/src/rdf_serializer_internal.h
-        redland-1.0.17/src/rdf_statement_internal.h
-        redland-1.0.17/src/rdf_storage_internal.h
-        redland-1.0.17/src/rdf_stream_internal.h
-        redland-1.0.17/src/rdf_uri_internal.h
-        redland-1.0.17/src/memcmp.c
-        redland-1.0.17/src/rdf_storage_list.c
-        redland-1.0.17/src/rdf_storage_hashes.c
-        redland-1.0.17/src/rdf_storage_trees.c
-        redland-1.0.17/src/rdf_storage_file.c
-        # redland-1.0.17/src/rdf_storage_tstore.c // includes <rdfsql/rdfsql.h> which is un-locatable
-        # redland-1.0.17/src/rdf_storage_mysql.c // no mysql setup yet. todo
-        redland-1.0.17/src/rdf_storage_sqlite.c
-        redland-1.0.17/src/rdf_storage_postgresql.c
-        redland-1.0.17/src/rdf_storage_virtuoso.c
-        redland-1.0.17/src/rdf_query_virtuoso.c
-        redland-1.0.17/src/rdf_storage_virtuoso_internal.h
+        ${LIBRDF_SOURCE_DIR}/librdf.h
+        ${LIBRDF_SOURCE_DIR}/memcmp.c
+        ${LIBRDF_SOURCE_DIR}/rdf_concepts.c
+        ${LIBRDF_SOURCE_DIR}/rdf_concepts.h
+        ${LIBRDF_SOURCE_DIR}/rdf_concepts_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_config.h
+        ${LIBRDF_SOURCE_DIR}/rdf_digest.c
+        ${LIBRDF_SOURCE_DIR}/rdf_digest.h
+        ${LIBRDF_SOURCE_DIR}/rdf_digest_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_digest_md5.c
+        ${LIBRDF_SOURCE_DIR}/rdf_digest_sha1.c
+        ${LIBRDF_SOURCE_DIR}/rdf_files.c
+        ${LIBRDF_SOURCE_DIR}/rdf_files.h
+        ${LIBRDF_SOURCE_DIR}/rdf_hash.c
+        ${LIBRDF_SOURCE_DIR}/rdf_hash.h
+        ${LIBRDF_SOURCE_DIR}/rdf_hash_bdb.c
+        ${LIBRDF_SOURCE_DIR}/rdf_hash_cursor.c
+        ${LIBRDF_SOURCE_DIR}/rdf_hash_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_hash_memory.c
+        ${LIBRDF_SOURCE_DIR}/rdf_heuristics.c
+        ${LIBRDF_SOURCE_DIR}/rdf_heuristics.h
+        ${LIBRDF_SOURCE_DIR}/rdf_init.c
+        ${LIBRDF_SOURCE_DIR}/rdf_init.h
+        ${LIBRDF_SOURCE_DIR}/rdf_init_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_iterator.c
+        ${LIBRDF_SOURCE_DIR}/rdf_iterator.h
+        ${LIBRDF_SOURCE_DIR}/rdf_iterator_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_list.c
+        ${LIBRDF_SOURCE_DIR}/rdf_list.h
+        ${LIBRDF_SOURCE_DIR}/rdf_list_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_log.c
+        ${LIBRDF_SOURCE_DIR}/rdf_log.h
+        ${LIBRDF_SOURCE_DIR}/rdf_log_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_model.c
+        ${LIBRDF_SOURCE_DIR}/rdf_model.h
+        ${LIBRDF_SOURCE_DIR}/rdf_model_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_model_storage.c
+        ${LIBRDF_SOURCE_DIR}/rdf_node.c
+        ${LIBRDF_SOURCE_DIR}/rdf_node.h
+        ${LIBRDF_SOURCE_DIR}/rdf_node_common.c
+        ${LIBRDF_SOURCE_DIR}/rdf_node_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_parser.c
+        ${LIBRDF_SOURCE_DIR}/rdf_parser.h
+        ${LIBRDF_SOURCE_DIR}/rdf_parser_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_parser_raptor.c
+        ${LIBRDF_SOURCE_DIR}/rdf_query.c
+        ${LIBRDF_SOURCE_DIR}/rdf_query.h
+        ${LIBRDF_SOURCE_DIR}/rdf_query_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_query_rasqal.c
+        ${LIBRDF_SOURCE_DIR}/rdf_query_results.c
+        ${LIBRDF_SOURCE_DIR}/rdf_query_virtuoso.c
+        ${LIBRDF_SOURCE_DIR}/rdf_raptor.c
+        ${LIBRDF_SOURCE_DIR}/rdf_raptor.h
+        ${LIBRDF_SOURCE_DIR}/rdf_raptor_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_serializer.c
+        ${LIBRDF_SOURCE_DIR}/rdf_serializer.h
+        ${LIBRDF_SOURCE_DIR}/rdf_serializer_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_serializer_raptor.c
+        ${LIBRDF_SOURCE_DIR}/rdf_statement.c
+        ${LIBRDF_SOURCE_DIR}/rdf_statement.h
+        ${LIBRDF_SOURCE_DIR}/rdf_statement_common.c
+        ${LIBRDF_SOURCE_DIR}/rdf_statement_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_storage.c
+        ${LIBRDF_SOURCE_DIR}/rdf_storage.h
+        ${LIBRDF_SOURCE_DIR}/rdf_storage_file.c
+        ${LIBRDF_SOURCE_DIR}/rdf_storage_hashes.c
+        ${LIBRDF_SOURCE_DIR}/rdf_storage_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_storage_list.c
+        ${LIBRDF_SOURCE_DIR}/rdf_storage_module.h
+        ${LIBRDF_SOURCE_DIR}/rdf_storage_postgresql.c
+        ${LIBRDF_SOURCE_DIR}/rdf_storage_sql.c
+        ${LIBRDF_SOURCE_DIR}/rdf_storage_sqlite.c
+        ${LIBRDF_SOURCE_DIR}/rdf_storage_trees.c
+        ${LIBRDF_SOURCE_DIR}/rdf_storage_virtuoso.c
+        ${LIBRDF_SOURCE_DIR}/rdf_storage_virtuoso_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_stream.c
+        ${LIBRDF_SOURCE_DIR}/rdf_stream.h
+        ${LIBRDF_SOURCE_DIR}/rdf_stream_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_types.h
+        ${LIBRDF_SOURCE_DIR}/rdf_uri.c
+        ${LIBRDF_SOURCE_DIR}/rdf_uri.h
+        ${LIBRDF_SOURCE_DIR}/rdf_uri_internal.h
+        ${LIBRDF_SOURCE_DIR}/rdf_utf8.c
+        ${LIBRDF_SOURCE_DIR}/rdf_utf8.h
+        ${LIBRDF_SOURCE_DIR}/redland.h
+        # ${LIBRDF_DIR}/src/rdf_storage_tstore.c // includes <rdfsql/rdfsql.h> which is un-locatable
+        # ${LIBRDF_DIR}/src/rdf_storage_mysql.c // no mysql setup yet. todo
         )
 
 
 set(WRAPPER_SOURCES
-        RedlandAPIWrapper/src/LibrdfModel.cpp
-        RedlandAPIWrapper/src/LibrdfModel.h
-        RedlandAPIWrapper/src/LibrdfNode.cpp
-        RedlandAPIWrapper/src/LibrdfNode.h
-        RedlandAPIWrapper/src/LibrdfParser.cpp
-        RedlandAPIWrapper/src/LibrdfParser.h
-        RedlandAPIWrapper/src/LibrdfQuery.cpp
-        RedlandAPIWrapper/src/LibrdfQuery.h
-        RedlandAPIWrapper/src/LibrdfQueryResults.cpp
-        RedlandAPIWrapper/src/LibrdfQueryResults.h
-        RedlandAPIWrapper/src/LibrdfSerializer.cpp
-        RedlandAPIWrapper/src/LibrdfSerializer.h
-        RedlandAPIWrapper/src/LibrdfStatement.cpp
-        RedlandAPIWrapper/src/LibrdfStatement.h
-        RedlandAPIWrapper/src/LibrdfStorage.cpp
-        RedlandAPIWrapper/src/LibrdfStorage.h
-        RedlandAPIWrapper/src/LibrdfStream.cpp
-        RedlandAPIWrapper/src/LibrdfStream.h
-        RedlandAPIWrapper/src/LibrdfUri.cpp
-        RedlandAPIWrapper/src/LibrdfUri.h
-        RedlandAPIWrapper/src/RaptorIOStream.cpp
-        RedlandAPIWrapper/src/RaptorIOStream.h
-        RedlandAPIWrapper/src/RedlandAPIWrapper.h
-        RedlandAPIWrapper/src/World.cpp
-        RedlandAPIWrapper/src/World.h
-        RedlandAPIWrapper/src/LibrdfException.h
+        ${WRAPPER_SOURCE_DIR}/LibrdfModel.cpp
+        ${WRAPPER_SOURCE_DIR}/LibrdfModel.h
+        ${WRAPPER_SOURCE_DIR}/LibrdfNode.cpp
+        ${WRAPPER_SOURCE_DIR}/LibrdfNode.h
+        ${WRAPPER_SOURCE_DIR}/LibrdfParser.cpp
+        ${WRAPPER_SOURCE_DIR}/LibrdfParser.h
+        ${WRAPPER_SOURCE_DIR}/LibrdfQuery.cpp
+        ${WRAPPER_SOURCE_DIR}/LibrdfQuery.h
+        ${WRAPPER_SOURCE_DIR}/LibrdfQueryResults.cpp
+        ${WRAPPER_SOURCE_DIR}/LibrdfQueryResults.h
+        ${WRAPPER_SOURCE_DIR}/LibrdfSerializer.cpp
+        ${WRAPPER_SOURCE_DIR}/LibrdfSerializer.h
+        ${WRAPPER_SOURCE_DIR}/LibrdfStatement.cpp
+        ${WRAPPER_SOURCE_DIR}/LibrdfStatement.h
+        ${WRAPPER_SOURCE_DIR}/LibrdfStorage.cpp
+        ${WRAPPER_SOURCE_DIR}/LibrdfStorage.h
+        ${WRAPPER_SOURCE_DIR}/LibrdfStream.cpp
+        ${WRAPPER_SOURCE_DIR}/LibrdfStream.h
+        ${WRAPPER_SOURCE_DIR}/LibrdfUri.cpp
+        ${WRAPPER_SOURCE_DIR}/LibrdfUri.h
+        ${WRAPPER_SOURCE_DIR}/RaptorIOStream.cpp
+        ${WRAPPER_SOURCE_DIR}/RaptorIOStream.h
+        ${WRAPPER_SOURCE_DIR}/RedlandAPIWrapper.h
+        ${WRAPPER_SOURCE_DIR}/World.cpp
+        ${WRAPPER_SOURCE_DIR}/World.h
+        ${WRAPPER_SOURCE_DIR}/LibrdfException.h
         )
 
 
@@ -321,62 +384,22 @@ add_library(redland-combined STATIC
         ${LIBRDF_SOURCES}
         ${WRAPPER_SOURCES}
         )
-
+#D:\libsemsim\src\redland\redland-1.0.17\src\rdf_digest_sha1.c
+message(WARNING "INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES}")
+message(WARNING "LINK_LIBRARIES ${LINK_LIBRARIES}")
 target_include_directories(redland-combined PUBLIC
-        #raptor include dirs
-        BEFORE raptor2-2.0.15/librdfa
-        raptor2-2.0.15/src
-        rasqal-0.9.33/src
-        rasqal-0.9.33/libmtwist
-        rasqal-0.9.33/libsv
-        rasqal-0.9.33/getopt
-        redland-1.0.17/src
-        RedlandAPIWrapper
-
-        ${LIBXML2_INCLUDE_DIR}
-        ${LIBSBML_DEPS_INCLUDE_DIR}
-        ${LIBSBML_INCLUDE_DIR}
-        ${ZLIB_INCLUDE_DIR}
-        ${ZIPPER_INCLUDE_DIR}
-        ${LIBCOMBINE_INCLUDE_DIR}
-        ${REDLAND_INCLUDE_DIR}
-        ${RASQAL_INCLUDE_DIR}
-        ${RAPTOR2_INCLUDE_DIR}
-        ${RAPTOR2_INCLUDE_DIR}
-        ${RASQAL_INCLUDE_DIR}
-        ${LIBPQ_INCLUDE_DIR}
+        ${INCLUDE_DIRECTORIES}
         )
 
 target_link_libraries(redland-combined PUBLIC
-        iconv
-        xml2
-        xslt
-        z
-        lzma
-        c
-        pthread
-        gss
-        m
-        yajl
-        idn2
-        ${CMAKE_DL_LIBS} # defines libdl libraries
-        # additional rasqal libraries
-        pcre
-        mhash
-        gcrypt
-        uuid
-        #        c
-        ossp
-        #        xml2
-        mpfr
-        #        m
+        ${LINK_LIBRARIES}
         )
 
 
 set_target_properties(redland-combined PROPERTIES PUBLIC_HEADER
-        raptor2-2.0.15/src/raptor2.h
-        rasqal-0.9.33/src/rasqal.h
-        redland-1.0.17/src/librdf.h
+        ${RAPTOR_DIR}/src/raptor2.h
+        ${RASQAL_DIR}/src/rasqal.h
+        ${LIBRDF_DIR}/src/librdf.h
         )
 
 INSTALL(
@@ -386,4 +409,9 @@ INSTALL(
         RUNTIME DESTINATION bin
 )
 
+option(BUILD_WRAPPER_TESTS "Build the tests for the redland api wrapper" OFF)
 
+message(STATUS "BUILD_WRAPPER_TESTS ${BUILD_WRAPPER_TESTS}")
+if (${BUILD_WRAPPER_TESTS})
+    add_subdirectory(RedlandAPIWrapper/test)
+endif ()

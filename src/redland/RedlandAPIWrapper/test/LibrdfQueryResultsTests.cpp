@@ -1,15 +1,16 @@
 //
 // Created by Ciaran on 5/17/2020.
 //
-#include <src/semsim/RedlandAPIWrapper/LibrdfStorage.h>
-#include <src/semsim/RedlandAPIWrapper/LibrdfModel.h>
-#include <src/semsim/RedlandAPIWrapper/LibrdfNode.h>
-#include <src/semsim/RedlandAPIWrapper/LibrdfStatement.h>
-#include <src/semsim/RedlandAPIWrapper/LibrdfQuery.h>
+#include "LibrdfStorage.h"
+#include "LibrdfModel.h"
+#include "LibrdfNode.h"
+#include "LibrdfStatement.h"
+#include "LibrdfQuery.h"
 #include "gtest/gtest.h"
-#include "redland/RedlandAPIWrapper/World.h"
-#include "redland/RedlandAPIWrapper/LibrdfQueryResults.h"
+#include "World.h"
+#include "LibrdfQueryResults.h"
 #include "iostream"
+
 
 using namespace semsim;
 

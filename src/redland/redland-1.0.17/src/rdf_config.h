@@ -135,13 +135,13 @@
 /* #undef HAVE_LIBPQ_FE_H */
 
 /* Have local MD5 digest */
-#define HAVE_LOCAL_MD5_DIGEST 1
+//#define HAVE_LOCAL_MD5_DIGEST
 
 /* Have local RIPEMD160 digest */
 /* #undef HAVE_LOCAL_RIPEMD160_DIGEST */
 
 /* Have local SHA1 digest */
-#define HAVE_LOCAL_SHA1_DIGEST 1
+#define HAVE_LOCAL_SHA1_DIGEST
 
 /* Define this if a modern libltdl is already installed */
 #define HAVE_LTDL 1

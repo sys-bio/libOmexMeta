@@ -44,6 +44,26 @@ SET(N 8 CACHE STRING "number of cores to use for build. Passed onto -j for make"
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
+# todo move the following to SetPaths.cmake
+
+# path to redland libraries
+set(REDLAND_DIR ${CMAKE_SOURCE_DIR}/src/redland)
+
+# paths to invididual redland libraries
+SET(RAPTOR_DIR ${REDLAND_DIR}/raptor2-2.0.15)
+SET(RASQAL_DIR ${REDLAND_DIR}/rasqal-0.9.33)
+SET(LIBRDF_DIR ${REDLAND_DIR}/redland-1.0.17)
+SET(WRAPPER_DIR ${REDLAND_DIR}/RedlandAPIWrapper)
+
+# paths to invididual redland libraries source code
+SET(RAPTOR_SOURCE_DIR ${RAPTOR_DIR}/src)
+SET(RASQAL_SOURCE_DIR ${RASQAL_DIR}/src)
+SET(LIBRDF_SOURCE_DIR ${LIBRDF_DIR}/src)
+SET(WRAPPER_SOURCE_DIR ${WRAPPER_DIR}/src)
+
+# paths wrapper tests
+SET(WRAPPER_TEST_DIR ${WRAPPER_DIR}/test)
+
 # When we don't have dependencies we can't build the tests
 if (BUILD_TESTS AND NOT HAVE_DEPENDENCIES)
     set(BUILD_TESTS OFF)
@@ -54,7 +74,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/SetPaths.cmake)
 
 
 #################################################################
-# Superbuild magic
+# Superbuild
 #
 
 if (NOT HAVE_DEPENDENCIES)
@@ -132,6 +152,7 @@ else ()
     set(LINK_LIBRARIES
             # order matters: top of the dependency chain first
             # i.e. if A depends on B, A should come before B in this list
+
             -Wl,--whole-archive
             "${LIBCOMBINE_STATIC_LIBRARY}"
             "${LIBSBML_STATIC_LIBRARY}"
@@ -143,18 +164,39 @@ else ()
             "${LIBXML2_STATIC_LIBRARY}"
             -Wl,--no-whole-archive
             "iconv"
-            -L/usr/local/lib
-            "rdf"
-            "rasqal"
-            "raptor2"
+            ltdl ${CMAKE_DL_LIBS} lzma pcre curl m
+            c gmp pcre uuid
+            c xml2 m xslt yajl gss mpfr
+            xml2 idn2 pthread curl ssl
+            db curl
+            )
+
+    set(INCLUDE_DIRECTORIES
+            BEFORE ${RAPTOR_DIR}/librdfa
+            ${RAPTOR_DIR}/src
+            ${RASQAL_DIR}/src
+            ${RASQAL_DIR}/libmtwist
+            ${RASQAL_DIR}/libsv
+            ${RASQAL_DIR}/getopt
+            ${LIBRDF_DIR}/src
+            /mnt/d/libsemsim/src/redland/redland-1.0.17/src
+            ${WRAPPER_SOURCE_DIR} #RedlandAPIWrapper
+            ${LIBXML2_INCLUDE_DIR}
+            ${LIBSBML_DEPS_INCLUDE_DIR}
+            ${LIBSBML_INCLUDE_DIR}
+            ${ZLIB_INCLUDE_DIR}
+            ${ZIPPER_INCLUDE_DIR}
+            ${LIBCOMBINE_INCLUDE_DIR}
+            ${LIBPQ_INCLUDE_DIR}
             )
 
     message(STATUS "REDLAND_LIBRARY ${REDLAND_LIBRARY}")
 
 
     PrintOutPaths()
+    #    message(WARNING "HERE")
     add_subdirectory(src/redland)
-    add_subdirectory(src)
+    #    add_subdirectory(src)
 
     if (BUILD_TESTS)
         enable_testing()
@@ -191,4 +233,15 @@ message(STATUS "
         Python interpreter        ${Python_EXECUTABLE}
         Python include directory  ${PYTHON_INCLUDE_PATH}
         Generate documentation    ${BUILD_DOCS}
+
+    Paths:
+        RAPTOR_DIR                ${RAPTOR_DIR}
+        RASQAL_DIR                ${RASQAL_DIR}
+        LIBRDF_DIR                ${LIBRDF_DIR}
+        WRAPPER_DIR               ${WRAPPER_DIR}
+        RAPTOR_SOURCE_DIR         ${RAPTOR_SOURCE_DIR}
+        RASQAL_SOURCE_DIR         ${RASQAL_SOURCE_DIR}
+        LIBRDF_SOURCE_DIR         ${LIBRDF_SOURCE_DIR}
+        WRAPPER_SOURCE_DIR        ${WRAPPER_SOURCE_DIR}
+        WRAPPER_TEST_DIR          ${WRAPPER_TEST_DIR}
     ")

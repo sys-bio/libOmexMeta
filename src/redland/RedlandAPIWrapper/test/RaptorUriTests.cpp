@@ -4,8 +4,8 @@
 
 #include "gtest/gtest.h"
 
-#include "redland/RedlandAPIWrapper/RaptorWorld.h"
-#include "redland/RedlandAPIWrapper/World.h"
+#include "RaptorWorld.h"
+#include "World.h"
 
 class LibrdfUriTests : public ::testing::Test {
 

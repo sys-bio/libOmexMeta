@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "semsim/SemsimUtils.h"
-#include "redland/RedlandAPIWrapper/RaptorWorld.h"
-#include "redland/RedlandAPIWrapper/World.h"
+#include "RaptorWorld.h"
+#include "World.h"
 
 class RaptorWorldTests : public ::testing::Test {
 
