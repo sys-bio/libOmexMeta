@@ -3,8 +3,8 @@
 //
 
 #include "gtest/gtest.h"
-#include "semsim/RedlandAPIWrapper/World.h"
-#include "semsim/RedlandAPIWrapper/LibrdfUri.h"
+#include "redland/RedlandAPIWrapper/World.h"
+#include "redland/RedlandAPIWrapper/LibrdfUri.h"
 #include "semsim/SemsimUtils.h"
 #include "raptor2.h"
 

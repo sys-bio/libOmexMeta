@@ -6,7 +6,7 @@
 #define LIBSEMSIM_RESOURCE_H
 
 #include "librdf.h"
-#include "semsim/RedlandAPIWrapper/LibrdfNode.h"
+#include "redland/RedlandAPIWrapper/LibrdfNode.h"
 
 #include <iostream>
 #include "sstream"

@@ -5,7 +5,7 @@
 #include "gtest/gtest.h"
 #include "semsim/Predicate.h"
 
-#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
 
 using namespace semsim;
 

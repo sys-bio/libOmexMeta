@@ -65,9 +65,6 @@ message(STATUS "
 
     RAPTOR2_INCLUDE_DIR         ${RAPTOR2_INCLUDE_DIR}
     RAPTOR2_STATIC_LIB          ${RAPTOR2_STATIC_LIB}
-    uuid_FOUND                  ${uuid_FOUND}
-    ossp_FOUND                  ${ossp_FOUND}
-    libc_FOUND                  ${libc_FOUND}
 ")
 
 

@@ -8,14 +8,14 @@
 
 #include <librdf.h>
 #include <memory>
-#include "semsim/Error.h"
-#include "semsim/RedlandAPIWrapper/World.h"
+
+#include "World.h"
 #include "LibrdfUri.h"
 #include "LibrdfModel.h"
 #include "RaptorIOStream.h"
 #include "LibrdfNode.h"
 #include "LibrdfModel.h"
-#include "semsim/Error.h"
+
 
 namespace semsim {
 

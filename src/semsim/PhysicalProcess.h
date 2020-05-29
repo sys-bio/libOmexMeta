@@ -7,7 +7,7 @@
 
 #include "PhysicalPhenomenon.h"
 #include "Participant.h"
-#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
 #include <vector>
 #include "Participant.h"
 #include "PhysicalPropertyResource.h"

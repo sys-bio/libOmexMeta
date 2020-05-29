@@ -11,7 +11,7 @@
 #include "Subject.h"
 #include "Triple.h"
 #include "Triples.h"
-#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
 #include <utility>
 
 

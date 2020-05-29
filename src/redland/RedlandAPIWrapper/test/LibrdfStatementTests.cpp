@@ -3,8 +3,8 @@
 //
 
 #include "gtest/gtest.h"
-#include "semsim/RedlandAPIWrapper/World.h"
-#include "semsim/RedlandAPIWrapper/LibrdfStatement.h"
+#include "redland/RedlandAPIWrapper/World.h"
+#include "redland/RedlandAPIWrapper/LibrdfStatement.h"
 #include "semsim/SemsimUtils.h"
 
 using namespace semsim;

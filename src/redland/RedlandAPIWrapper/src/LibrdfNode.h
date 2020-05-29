@@ -5,14 +5,17 @@
 #ifndef LIBSEMSIM_LIBRDFNODE_H
 #define LIBSEMSIM_LIBRDFNODE_H
 
-#include "semsim/Error.h"
+//
 #include <librdf.h>
 #include <raptor2.h>
 #include <memory>
 #include <sstream>
-#include "semsim/HERE.h"
-#include "semsim/RedlandAPIWrapper/LibrdfUri.h"
-#include "semsim/RedlandAPIWrapper/World.h"
+//#include "semsim/HERE.h"
+#include "LibrdfUri.h"
+#include "World.h"
+#include "LibrdfException.h"
+
+
 /*
  * Do I need to mirror the underlying structure of
  * the librdf_node* object?

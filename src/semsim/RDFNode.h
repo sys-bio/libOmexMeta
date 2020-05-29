@@ -12,8 +12,8 @@
 #include <regex>
 #include <utility>
 
-#include "semsim/RedlandAPIWrapper/LibrdfNode.h"
-#include "semsim/RedlandAPIWrapper/World.h"
+#include "redland/RedlandAPIWrapper/LibrdfNode.h"
+#include "redland/RedlandAPIWrapper/World.h"
 
 namespace semsim {
 

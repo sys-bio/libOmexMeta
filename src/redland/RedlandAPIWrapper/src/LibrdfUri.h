@@ -8,7 +8,7 @@
 
 #include <memory>
 #include <librdf.h>
-#include "semsim/Error.h"
+#include "LibrdfException.h"
 
 
 namespace semsim {

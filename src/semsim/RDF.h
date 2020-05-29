@@ -5,7 +5,7 @@
 #ifndef LIBSEMSIM_RDF_H
 #define LIBSEMSIM_RDF_H
 
-#include "semsim/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
 #include "semsim/Reader.h"
 #include "semsim/Writer.h"
 #include "semsim/SemsimUtils.h"

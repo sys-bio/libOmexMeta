@@ -14,7 +14,7 @@
 #include "LibrdfQuery.h"
 #include "LibrdfStorage.h"
 #include "World.h"
-#include "semsim/RedlandAPIWrapper/LibrdfStream.h"
+#include "LibrdfStream.h"
 
 /*
  * Todo librdf_model and librdf_storage are
