@@ -6,7 +6,11 @@
 #include "World.h"
 
 namespace semsim {
-    typedef std::shared_ptr<librdf_world> world_ptr;
+
+    void World::deleter::operator()(librdf_world *world) {
+        if (world)
+            librdf_free_world(world);
+    }
 
     librdf_world *World::world_ = nullptr;
 

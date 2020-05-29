@@ -63,6 +63,10 @@ namespace semsim {
          */
         World();
 
+        struct deleter {
+            void operator()(librdf_world *world);
+        };
+
     public:
 
         static librdf_world *getWorld();

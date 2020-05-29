@@ -2,6 +2,11 @@
 
 namespace semsim {
 
+    void LibrdfQuery::deleter::operator()(librdf_query *query) {
+        if (query)
+            librdf_free_query(query);
+    }
+
     LibrdfQuery::LibrdfQuery(librdf_query *query) :
             query_(query) {}
 
@@ -24,7 +29,4 @@ namespace semsim {
         return query_.get();
     }
 
-    void LibrdfQuery::deleter::operator()(librdf_query *query) {
-        librdf_free_query(query);
-    }
 }

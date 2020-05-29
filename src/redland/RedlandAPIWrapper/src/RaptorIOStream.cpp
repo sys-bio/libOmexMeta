@@ -6,6 +6,12 @@
 
 
 namespace semsim {
+
+    void RaptorIOStream::deleter::operator()(raptor_iostream *iostream) {
+        if (iosrteam)
+            raptor_free_iostream(iostream);
+    }
+
     RaptorIOStream::RaptorIOStream(raptor_iostream *iostream)
             : iostream_(std::unique_ptr<raptor_iostream, deleter>(iostream)) {
 
@@ -26,9 +32,6 @@ namespace semsim {
         return pair;
     }
 
-    void RaptorIOStream::deleter::operator()(raptor_iostream *iostream) {
-        raptor_free_iostream(iostream);
-    }
 
 
 }
