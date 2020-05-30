@@ -15,13 +15,15 @@ namespace redland {
 
     class LibrdfStatement {
 
-        LibrdfNode subject_;
-        LibrdfNode predicate_;
-        LibrdfNode resource_;
 
         struct deleter {
             void operator()(librdf_statement *statement);
         };
+
+    protected:
+        LibrdfNode subject_;
+        LibrdfNode predicate_;
+        LibrdfNode resource_;
 
         std::shared_ptr<librdf_statement> statement_;
 
@@ -32,6 +34,8 @@ namespace redland {
 
         explicit LibrdfStatement(LibrdfNode subject, LibrdfNode predicate, LibrdfNode resource);
 
+//        explicit LibrdfStatement(const LibrdfNode& subject, const LibrdfNode& predicate, const  LibrdfNode& resource);
+
         librdf_statement *get() const;
 
         const LibrdfNode &getSubject() const;
@@ -41,6 +45,7 @@ namespace redland {
         const LibrdfNode &getResource() const;
 
 
+        void checkForNull();
     };
 
 

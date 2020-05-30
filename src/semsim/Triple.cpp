@@ -36,13 +36,12 @@ namespace semsim {
         librdf_node *s = subject_.getNode().get();
         if (!s)
             throw NullPointerException("NullPointerException: Triple::toStatement(): Subject node is null");
-        librdf_node *p = predicate_ptr_->getNode()->get();
+        librdf_node *p = predicate_ptr_->getNode().get();
         if (!p)
             throw NullPointerException("NullPointerException: Triple::toStatement(): Subject node is null");
         librdf_node *r = resource_.getNode().get();
         if (!r)
             throw NullPointerException("NullPointerException: Triple::toStatement(): Subject node is null");
-
 
         librdf_statement *stmt = librdf_new_statement_from_nodes(
                 World::getWorld(), s, p, r

@@ -26,20 +26,19 @@ TEST_F(LibrdfNodeTests, TestCreate) {
 TEST_F(LibrdfNodeTests, TestUnderlyingNodeHasUri) {
     std::string expected = "https://notarealaddress.com";
     LibrdfNode node = LibrdfNode::fromUriString(expected);
-    librdf_uri *u = librdf_node_get_uri(node.get());
-    LibrdfUri uri(u);
+    LibrdfUri uri = node.getUri();
     std::string s = uri.str();
     ASSERT_STREQ("https://notarealaddress.com", s.c_str());
 }
 
 
-//TEST_F(LibrdfNodeTests, TestCopyConstructor) {
-//    std::string expected1 = "https://notarealaddress1.com";
-//    LibrdfNode node1 = LibrdfNode::fromUriString(expected1);
-//    LibrdfNode node2 = node1;
-//    std::string actual = node2.str();
-//    ASSERT_STREQ(expected1.c_str(), actual.c_str());
-//}
+TEST_F(LibrdfNodeTests, TestCopyConstructor) {
+    std::string expected1 = "https://notarealaddress1.com";
+    LibrdfNode node1 = LibrdfNode::fromUriString(expected1);
+    LibrdfNode node2 = node1;
+    std::string actual = node2.str();
+    ASSERT_STREQ(expected1.c_str(), actual.c_str());
+}
 
 
 TEST_F(LibrdfNodeTests, TestMoveConstructor) {
@@ -50,15 +49,15 @@ TEST_F(LibrdfNodeTests, TestMoveConstructor) {
     ASSERT_STREQ(expected1.c_str(), actual.c_str());
 }
 
-//TEST_F(LibrdfNodeTests, TestAssignmentOperator) {
-//    std::string expected1 = "https://notarealaddress1.com";
-//    std::string expected2 = "https://notarealaddress2.com";
-//    LibrdfNode node1 = world_.newNodeUriString(expected1);
-//    LibrdfNode node2 = world_.newNodeUriString(expected2);
-//    node2 = node1;
-//    std::string actual = node2.str();
-//    ASSERT_STREQ(expected1.c_str(), actual.c_str());
-//}
+TEST_F(LibrdfNodeTests, TestAssignmentOperator) {
+    std::string expected1 = "https://notarealaddress1.com";
+    std::string expected2 = "https://notarealaddress2.com";
+    LibrdfNode node1 = LibrdfNode::fromUriString(expected1);
+    LibrdfNode node2 = LibrdfNode::fromUriString(expected2);
+    node2 = node1;
+    std::string actual = node2.str();
+    ASSERT_STREQ(expected1.c_str(), actual.c_str());
+}
 
 //
 TEST_F(LibrdfNodeTests, TestMoveAssignmentOperator) {
@@ -148,28 +147,86 @@ TEST_F(LibrdfNodeTests, TestUseNodsToMakeAStatement) {
     free(actual);
     free(stmt);
 }
-//
-//TEST_F(LibrdfNodeTests, TestClone1) {
-//    LibrdfNode subject = LibrdfNode::fromUriString("subject");
-//    LibrdfNode subject_clone = subject.clone();
-//    ASSERT_NE(&subject.get()->type, &subject_clone.get()->type);
-//}
-//
-//TEST_F(LibrdfNodeTests, TestClone2) {
-//    LibrdfNode subject = LibrdfNode::fromUriString("subject");
-//    LibrdfNode subject_clone = subject.clone();
-//    ASSERT_NE(subject.get()->value.uri, subject_clone.get()->value.uri);
-//}
 
-//TEST_F(LibrdfNodeTests, TestClone3) {
-//    LibrdfNode subject = LibrdfNode::fromLiteral("Literal");
-//    LibrdfNode subject_clone = subject.clone();
-//    ASSERT_STREQ((const char*)subject.get()->value.literal.string,
-//                 (const char*)subject_clone.get()->value.literal.string);
-//    ASSERT_NE(subject.get()->value.literal.string,
-//            subject_clone.get()->value.literal.string);
-//    ASSERT_NE(&subject.get()->value.literal.string,
-//            &subject_clone.get()->value.literal.string);
+
+TEST_F(LibrdfNodeTests, TestgetUri) {
+    LibrdfNode subject = LibrdfNode::fromUriString("subject");
+    LibrdfUri u = subject.getUri();
+    std::string actual = u.str();
+    std::string expected = "subject";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(LibrdfNodeTests, TestSetUri) {
+    LibrdfNode subject = LibrdfNode::fromUriString("subject");
+    subject.setUri("predicate");
+    std::string actual = subject.getUri().str();
+    std::string expected = "predicate";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(LibrdfNodeTests, TestgetLiteralDatatype) {
+    LibrdfNode subject = LibrdfNode::fromLiteral("subject");
+    LibrdfUri u = subject.getLiteralDatatype();
+    std::string actual = u.str();
+    std::string expected = "http://www.w3.org/1999/02/22-rdf-syntax-ns#string";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(LibrdfNodeTests, TestValidateLiteralDatatype) {
+    std::string actual = LibrdfNode::validateLiteralDatatype("int");
+    std::string expected = "http://www.w3.org/1999/02/22-rdf-syntax-ns#int";
+    ASSERT_STREQ(actual.c_str(), expected.c_str());
+}
+
+TEST_F(LibrdfNodeTests, TestValidateLiteralDatatype2) {
+    std::string actual = LibrdfNode::validateLiteralDatatype("http://www.w3.org/1999/02/22-rdf-syntax-ns#int");
+    std::string expected = "http://www.w3.org/1999/02/22-rdf-syntax-ns#int";
+    ASSERT_STREQ(actual.c_str(), expected.c_str());
+}
+
+TEST_F(LibrdfNodeTests, TestsetLiteralDatatype) {
+    LibrdfNode subject = LibrdfNode::fromLiteral("subject");
+    subject.setLiteralDatatype("int");
+    LibrdfUri u = subject.getLiteralDatatype();
+    std::string actual = u.str();
+    std::string expected = "http://www.w3.org/1999/02/22-rdf-syntax-ns#int";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(LibrdfNodeTests, TestsetLiteralDatatypeDoesntChangeValue) {
+    LibrdfNode subject = LibrdfNode::fromLiteral("subject");
+    subject.setLiteralDatatype("int");
+    std::string actual = subject.str();
+    std::string expected = "subject";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(LibrdfNodeTests, TestSetBlank) {
+    LibrdfNode subject = LibrdfNode::fromBlank("subject");
+    subject.setBlankIdentifier("blank subject");
+    std::string actual = subject.getBlankIdentifier();
+    std::string expected = "blank subject";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(LibrdfNodeTests, TestSetBlankValueNotChanged) {
+    LibrdfNode subject = LibrdfNode::fromBlank("subject");
+    subject.setBlankIdentifier("blank subject");
+    std::string actual = subject.str();
+    std::string expected = "subject";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
+
+//
+//TEST_F(LibrdfNodeTests, TestSetUri) {
+//    LibrdfNode subject = LibrdfNode::fromUriString("subject");
+//    subject.setUri("predicate");
+//    std::string actual = subject.getUri().str();
+//    std::string expected = "predicate";
+//    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //}
 
 
