@@ -43,6 +43,7 @@ namespace semsim {
         if (!r)
             throw NullPointerException("NullPointerException: Triple::toStatement(): Subject node is null");
 
+
         librdf_statement *stmt = librdf_new_statement_from_nodes(
                 World::getWorld(), s, p, r
         );

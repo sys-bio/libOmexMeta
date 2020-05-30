@@ -12,11 +12,12 @@ namespace redland {
     }
 
     LibrdfUri::LibrdfUri(librdf_uri *uri)
-            : librdf_uri_(std::unique_ptr<librdf_uri, deleter>(uri)) {}
+            : librdf_uri_(std::shared_ptr<librdf_uri>(uri, raptor_free_uri_wrapper)) {}
 
     LibrdfUri::LibrdfUri(const std::string &uri) {
-        librdf_uri_ = std::unique_ptr<librdf_uri, deleter>(
-                librdf_new_uri(World::getWorld(), (const unsigned char *) uri.c_str()));
+        librdf_uri_ = std::shared_ptr<librdf_uri>(
+                librdf_new_uri(World::getWorld(), (const unsigned char *) uri.c_str()),
+                raptor_free_uri_wrapper);
     }
 
     std::string LibrdfUri::str() const {

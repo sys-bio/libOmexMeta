@@ -25,7 +25,7 @@ namespace semsim {
 
         std::string namespace_, term_, prefix_;
         std::string uri_;
-        std::unique_ptr<LibrdfNode> uri_node_; //! predicates can only have type uri
+        std::shared_ptr<redland::LibrdfNode> uri_node_; //! predicates can only have type uri
         std::vector<std::string> valid_terms_{"All"};
 
     public:
@@ -44,7 +44,7 @@ namespace semsim {
 
         static bool namespaceKnown(const std::string &ns);
 
-        [[nodiscard]] const std::unique_ptr<LibrdfNode> &getNode() const;
+        [[nodiscard]] const std::shared_ptr<LibrdfNode> &getNode() const;
 
         [[nodiscard]] const std::vector<std::string> &getValidTerms() const;
 
@@ -128,7 +128,7 @@ namespace semsim {
         void verify();
     };
 
-    typedef std::unique_ptr<Predicate> PredicatePtr;
+    typedef std::shared_ptr<Predicate> PredicatePtr;
     typedef std::vector<Predicate> Predicates;
     typedef std::vector<PredicatePtr> PredicatePtrs;
 
