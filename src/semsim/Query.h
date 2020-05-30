@@ -5,7 +5,7 @@
 #ifndef LIBSEMSIM_QUERY_H
 #define LIBSEMSIM_QUERY_H
 
-#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "RedlandAPIWrapper.h"
 #include "semsim/Error.h"
 #include "semsim/SemsimUtils.h"
 //#include "semsim/Triple.h"
@@ -19,6 +19,8 @@
 #include <sstream>
 #include <iostream>
 #include <utility>
+
+using namespace redland;
 
 namespace semsim {
 

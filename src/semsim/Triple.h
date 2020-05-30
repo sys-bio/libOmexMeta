@@ -5,8 +5,8 @@
 #ifndef LIBSEMSIM_TRIPLE_H
 #define LIBSEMSIM_TRIPLE_H
 
-#include "redland/RedlandAPIWrapper/LibrdfNode.h"
-#include "redland/RedlandAPIWrapper/LibrdfStatement.h"
+#include "LibrdfNode.h"
+#include "LibrdfStatement.h"
 #include "semsim/Predicate.h"
 #include "semsim/Subject.h"
 #include "semsim/Resource.h"
@@ -19,6 +19,8 @@
 #include <utility>
 #include <algorithm>
 #include <cstring>
+
+using namespace redland;
 
 /*
  * should inherit from librdf_statement?

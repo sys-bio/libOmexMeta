@@ -1,6 +1,6 @@
 #include "LibrdfStream.h"
 
-namespace semsim {
+namespace redland {
 
     void LibrdfStream::deleter::operator()(librdf_stream *stream) {
         if (stream)

@@ -12,8 +12,14 @@
 #include <regex>
 #include <utility>
 
-#include "redland/RedlandAPIWrapper/LibrdfNode.h"
-#include "redland/RedlandAPIWrapper/World.h"
+#include "LibrdfNode.h"
+#include "World.h"
+
+/*
+ * This file is no longer in use as it has been replaced by
+ * LibrdfNode
+ */
+using namespace redland;
 
 namespace semsim {
 

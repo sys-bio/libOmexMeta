@@ -10,7 +10,7 @@
  */
 #include "World.h"
 
-namespace semsim {
+namespace redland {
 
     void LibrdfNode::deleter::operator()(librdf_node *node) {
         if (node)
@@ -80,7 +80,7 @@ namespace semsim {
      */
     std::string LibrdfNode::str() const {
         if (!node_) {
-            throw NullPointerException("LibrdfNode::str(): NullPointerException: node_");
+            throw RedlandNullPointerException("LibrdfNode::str(): NullPointerException: node_");
         }
         std::string value;
         std::ostringstream err;
@@ -102,11 +102,11 @@ namespace semsim {
                 break;
             }
             default:
-                throw LibRDFException("LibRDFException: Librdf::Str() : Unrecognized term type");
+                throw RedlandLibrdfException("RedlandLibrdfException: Librdf::Str() : Unrecognized term type");
         }
         err << "value is nullptr" << std::endl;
         if (value.empty()) {
-            throw NullPointerException(err.str());
+            throw RedlandNullPointerException(err.str());
         }
         std::string output = value;
         return output;

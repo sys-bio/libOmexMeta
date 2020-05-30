@@ -6,7 +6,7 @@
 #include "LibrdfSerializer.h"
 #include "iostream"
 
-using namespace semsim;
+using namespace redland;
 
 class LibrdfSerializerTests : public ::testing::Test {
 

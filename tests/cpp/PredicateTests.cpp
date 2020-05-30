@@ -5,7 +5,7 @@
 #include "gtest/gtest.h"
 #include "semsim/Predicate.h"
 
-#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "RedlandAPIWrapper.h"
 
 using namespace semsim;
 
@@ -118,34 +118,34 @@ TEST_F(PredicateTests, TestBqBiolGetPrefix) {
 
 
 TEST_F(PredicateTests, TestBqModelGetNamespace) {
-    BiomodelsModelQualifier term("is");
-    std::string expected = "http://biomodels.net/model-qualifiers/";
+    BiomodelsBiologyQualifier term("is");
+    std::string expected = "http://biomodels.net/biology-qualifiers/";
     std::string actual = term.getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 
 TEST_F(PredicateTests, TestBqModelGetPrefix) {
-    BiomodelsModelQualifier term("is");
-    std::string expected = "bqmodel";
+    BiomodelsBiologyQualifier term("is");
+    std::string expected = "bqbiol";
     std::string actual = term.getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 
 TEST_F(PredicateTests, TestBqModelGetPrefixFromPtr) {
-    BiomodelsModelQualifier term("is");
-    std::shared_ptr<BiomodelsModelQualifier> term_ptr = std::make_unique<BiomodelsModelQualifier>(std::move(term));
-    std::string expected = "bqmodel";
+    BiomodelsBiologyQualifier term("is");
+    std::shared_ptr<BiomodelsBiologyQualifier> term_ptr = std::make_unique<BiomodelsBiologyQualifier>(std::move(term));
+    std::string expected = "bqbiol";
     std::string actual = term_ptr->getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 
 TEST_F(PredicateTests, TestBqModelGetPrefixFromPtrToBaseClass) {
-    BiomodelsModelQualifier term("is");
-    std::shared_ptr<Predicate> term_ptr = std::make_unique<BiomodelsModelQualifier>(std::move(term));
-    std::string expected = "bqmodel";
+    BiomodelsBiologyQualifier term("is");
+    std::shared_ptr<Predicate> term_ptr = std::make_unique<BiomodelsBiologyQualifier>(std::move(term));
+    std::string expected = "bqbiol";
     std::string actual = term_ptr->getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }

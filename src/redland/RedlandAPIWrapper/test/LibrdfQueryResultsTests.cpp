@@ -12,7 +12,7 @@
 #include "iostream"
 
 
-using namespace semsim;
+using namespace redland;
 
 class LibrdfQueryResultsTests : public ::testing::Test {
 

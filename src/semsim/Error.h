@@ -59,6 +59,7 @@ namespace semsim {
     class LibRDFException : public Exception {
         using Exception::Exception;
     };
+
     class ValueException : public Exception {
         using Exception::Exception;
     };

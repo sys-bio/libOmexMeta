@@ -16,7 +16,7 @@
 #include "semsim/PhysicalEntity.h"
 #include "semsim/PhysicalProcess.h"
 #include "semsim/PhysicalForce.h"
-#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "RedlandAPIWrapper.h"
 #include "semsim/Error.h"
 #include "semsim/SemsimUtils.h"
 #include "semsim/RDF.h"
@@ -24,6 +24,9 @@
 #include "librdf.h"
 
 #include <utility>
+
+using namespace redland;
+
 // todo implement this logic from Maxes email
 /*
  * Here's the basic logic that we use in SemGen to determine which OPB physical property is represented by a <species> in an SBML model:

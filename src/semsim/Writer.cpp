@@ -3,7 +3,6 @@
 //
 
 #include "Writer.h"
-#include "semsim/SemsimUtils.h"
 
 
 semsim::Writer::Writer(

@@ -5,7 +5,7 @@
 #include "World.h"
 #include "LibrdfNode.h"
 
-using namespace semsim;
+using namespace redland;
 
 class LibrdfNodeTests : public ::testing::Test {
 

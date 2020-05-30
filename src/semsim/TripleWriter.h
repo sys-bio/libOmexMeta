@@ -6,10 +6,12 @@
 #define LIBSEMSIM_TRIPLEWRITER_H
 
 
-#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "RedlandAPIWrapper.h"
 #include "semsim/Writer.h"
 #include "semsim/Triple.h"
 #include "semsim/Triples.h"
+
+using namespace redland;
 
 namespace semsim {
     class Triple;

@@ -1,7 +1,7 @@
 #include "LibrdfParser.h"
 #include "LibrdfModel.h"
 
-namespace semsim {
+namespace redland {
 
     void LibrdfParser::deleter::operator()(librdf_parser *parser) {
         if (parser)

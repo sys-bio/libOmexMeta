@@ -19,10 +19,10 @@ namespace semsim {
     void free_c_char_star_star(char **c, int size) {
         if (!c)
             return;
-        std::cout << size<<std::endl;
+        std::cout << size << std::endl;
         for (int i = 0; i < size; i++) {
             std::cout << i << std::endl;
-            std::cout << __FILE__<<":"<<__LINE__<<": "<<c << std::endl;
+            std::cout << __FILE__ << ":" << __LINE__ << ": " << c << std::endl;
             free(c);
             c++;
         }
@@ -67,10 +67,10 @@ namespace semsim {
         *rdf_ptr = rdf;
     }
 
-    char * RDF_toString(semsim::RDF *rdf_ptr, const char *format, const char *base_uri) {
+    char *RDF_toString(semsim::RDF *rdf_ptr, const char *format, const char *base_uri) {
         // do not return a temporary object:
         static std::string s = rdf_ptr->toString(format, base_uri);
-        char* cstr = (char*)malloc(s.size()+sizeof(char*));
+        char *cstr = (char *) malloc(s.size() + sizeof(char *));
         strcpy(cstr, s.c_str());
         return cstr;
     }
@@ -287,7 +287,7 @@ namespace semsim {
         char **arr = (char **) malloc((locations.size() + 1) * sizeof(char **));
 
         for (int i = 0; i < locations.size(); i++) {
-            arr[i] = (char *) malloc(strlen(locations[i].str().c_str()) + sizeof(char*));
+            arr[i] = (char *) malloc(strlen(locations[i].str().c_str()) + sizeof(char *));
             strcpy(arr[i], locations[i].str().c_str());
         }
 

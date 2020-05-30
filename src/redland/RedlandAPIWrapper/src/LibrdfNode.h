@@ -20,7 +20,7 @@
  * the librdf_node* object?
  */
 
-namespace semsim {
+namespace redland {
 
     typedef std::unique_ptr<librdf_node> librdf_node_ptr;
 

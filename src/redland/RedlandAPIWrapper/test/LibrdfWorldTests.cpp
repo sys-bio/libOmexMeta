@@ -2,7 +2,7 @@
 #include "gtest/gtest.h"
 #include "World.h"
 
-using namespace semsim;
+using namespace redland;
 
 class LibrdfWorldTests : public ::testing::Test {
 

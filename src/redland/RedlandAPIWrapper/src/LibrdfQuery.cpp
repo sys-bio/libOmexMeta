@@ -1,6 +1,6 @@
 #include "LibrdfQuery.h"
 
-namespace semsim {
+namespace redland {
 
     void LibrdfQuery::deleter::operator()(librdf_query *query) {
         if (query)

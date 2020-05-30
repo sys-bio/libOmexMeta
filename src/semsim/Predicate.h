@@ -5,9 +5,8 @@
 #ifndef LIBSEMSIM_PREDICATE_H
 #define LIBSEMSIM_PREDICATE_H
 
-#include "redland/RedlandAPIWrapper/World.h"
+#include "World.h"
 #include "semsim/SemsimUtils.h"
-#include "semsim/Log.h"
 #include <librdf.h>
 
 #include <vector>
@@ -17,6 +16,7 @@
 #include <iostream>
 #include <utility>
 
+using namespace redland;
 
 namespace semsim {
 

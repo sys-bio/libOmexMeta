@@ -7,7 +7,7 @@
 #include "iostream"
 //#include "AnnotationSamples.h"
 
-using namespace semsim;
+using namespace redland;
 
 class LibrdfParserTests : public ::testing::Test {
 

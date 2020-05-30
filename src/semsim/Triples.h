@@ -9,11 +9,13 @@
 #include "semsim/Predicate.h"
 #include "semsim/Subject.h"
 #include "semsim/Resource.h"
-#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "RedlandAPIWrapper.h"
 #include "semsim/Error.h"
 //#include "semsim/TripleWriter.h"
 
 #include <vector>
+
+using namespace redland;
 
 namespace semsim {
 
@@ -65,6 +67,7 @@ namespace semsim {
         std::string str(std::string format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
 
     };
+
     typedef std::vector<Triples> NestedTriples;
 
     //todo implement equality operators

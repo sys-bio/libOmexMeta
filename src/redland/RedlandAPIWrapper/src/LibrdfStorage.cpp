@@ -1,7 +1,7 @@
 #include "LibrdfStorage.h"
 
 
-namespace semsim {
+namespace redland {
 
     void LibrdfStorage::deleter::operator()(librdf_storage *storage) {
         if (storage)

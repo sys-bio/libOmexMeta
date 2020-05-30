@@ -16,6 +16,7 @@
 #include <stdexcept>
 #include <sstream>
 
+using namespace redland;
 
 
 namespace semsim {

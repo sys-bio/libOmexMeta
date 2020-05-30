@@ -7,7 +7,7 @@
 
 #include "semsim/RDFNode.h"
 #include "semsim/SemsimUtils.h"
-#include "redland/RedlandAPIWrapper/World.h"
+#include "World.h"
 
 using namespace semsim;
 

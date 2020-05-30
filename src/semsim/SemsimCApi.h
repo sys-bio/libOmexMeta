@@ -24,9 +24,9 @@ namespace semsim {
 
     void free_c_char_star_star(char **c, int size);
 
-        char* _func_that_returns_dynamic_alloc_str();
+    char *_func_that_returns_dynamic_alloc_str();
 
-        char** _func_that_returns_dynamic_alloc_char_star_star();
+    char **_func_that_returns_dynamic_alloc_char_star_star();
 
 /***************************************************
  * RDF class methods
@@ -40,7 +40,7 @@ namespace semsim {
 
     void RDF_setBaseUri(semsim::RDF *rdf_ptr, const char *uri);
 
-    char * RDF_toString(semsim::RDF *rdf_ptr, const char *format, const char *base_uri);
+    char *RDF_toString(semsim::RDF *rdf_ptr, const char *format, const char *base_uri);
 
     void RDF_fromString(semsim::RDF *rdf_ptr, const char *str, const char *format);
 
@@ -85,7 +85,7 @@ namespace semsim {
  */
     SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr);
 
-    void SingularAnnotation_delete(SingularAnnotation* singularAnnotation);
+    void SingularAnnotation_delete(SingularAnnotation *singularAnnotation);
 
     SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
 
@@ -106,12 +106,12 @@ namespace semsim {
     SingularAnnotation *
     SingularAnnotation_setResourceBlank(SingularAnnotation *singular_annotation, const char *blank_id);
 
-    char * SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
+    char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
 
     char *
     SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format, const char *base_uri);
 
-    char * SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
+    char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
 
     char *SingularAnnotation_getResource(SingularAnnotation *singular_annotation);
 
@@ -151,7 +151,7 @@ namespace semsim {
  */
     PhysicalProcess *PhysicalProcess_new(Editor *editor_ptr);
 
-    void PhysicalProcess_delete(PhysicalProcess* physicalProcess);
+    void PhysicalProcess_delete(PhysicalProcess *physicalProcess);
 
     PhysicalProcess *PhysicalProcess_setAbout(
             PhysicalProcess *physical_process, const char *about);
@@ -182,7 +182,7 @@ namespace semsim {
  */
     PhysicalForce *PhysicalForce_new(Editor *editor_ptr);
 
-    void PhysicalForce_delete(PhysicalForce* physicalForce);
+    void PhysicalForce_delete(PhysicalForce *physicalForce);
 
     PhysicalForce *PhysicalForce_setAbout(
             PhysicalForce *physical_force_ptr, const char *about);
@@ -206,8 +206,7 @@ namespace semsim {
 
     char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
 
-    char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr) ;
-
+    char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr);
 
 
 #ifdef __cplusplus

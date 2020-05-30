@@ -13,7 +13,7 @@
 #include "utility"
 #include "LibrdfException.h"
 
-namespace semsim {
+namespace redland {
     class RaptorIOStream {
         struct deleter {
             void operator()(raptor_iostream *iostream);

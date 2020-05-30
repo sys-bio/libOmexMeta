@@ -17,7 +17,7 @@
 #include "LibrdfModel.h"
 
 
-namespace semsim {
+namespace redland {
 
     class LibrdfSerializer {
 

@@ -1,7 +1,7 @@
 #include "LibrdfSerializer.h"
 
 
-namespace semsim {
+namespace redland {
     void LibrdfSerializer::deleter::operator()(librdf_serializer *serializer) {
         if (serializer)
             librdf_free_serializer(serializer);
@@ -40,7 +40,7 @@ namespace semsim {
         raptor_iostream *ios = raptor_new_iostream_to_string(
                 World::getRaptor(), (void **) &buffer_to_hold_string, nullptr, malloc);
         if (!ios)
-            throw NullPointerException("Writer::toString(): raptor_iostream");
+            throw RedlandNullPointerException("Writer::toString(): raptor_iostream");
         librdf_serializer_serialize_model_to_iostream(
                 serializer_.get(), uri.get(), model.get(), ios
         );

@@ -96,45 +96,6 @@ else ()
     message(STATUS "CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}")
     #    include(${FIND_DEPENDENCIES_PATH})
 
-    #    # get dependencies from /usr/local/lib
-    #    find_library(RAPTOR2_STATIC_LIBRARY
-    #            NAMES libraptor2.a raptor2.a
-    #            PATHS ${RAPTOR2_INSTALL_PREFIX}/lib
-    #            /usr/local/lib
-    #            )
-    #
-    #    find_path(RAPTOR2_INCLUDE_DIR
-    #            NAMES raptor2.h
-    #            PATHS ${RAPTOR2_INSTALL_PREFIX}/include/raptor2
-    #            /usr/local/include/raptor2
-    #            )
-    #
-    #    # rasqal
-    #    find_library(RASQAL_STATIC_LIBRARY
-    #            NAMES librasqal.a rasqal.a
-    #            PATHS ${RASQAL_INSTALL_PREFIX}/lib
-    #            /usr/local/lib
-    #            )
-    #
-    #    find_path(RASQAL_INCLUDE_DIR
-    #            NAMES rasqal.h
-    #            PATHS ${RASQAL_INSTALL_PREFIX}/include/rasqal
-    #            /usr/local/include/rasqal
-    #            )
-    #
-    #    find_library(REDLAND_STATIC_LIBRARY
-    #            NAMES librdf.a rdf.a
-    #            PATHS ${REDLAND_INSTALL_PREFIX}/lib
-    #            /usr/local/lib
-    #            )
-    #
-    #    find_path(REDLAND_INCLUDE_DIR
-    #            NAMES librdf.h
-    #            PATHS ${REDLAND_INSTALL_PREFIX}/include
-    #            /usr/local/include
-    #            )
-    #
-
     set(INCLUDE_DIRS
             ${CMAKE_SOURCE_DIR}/src
             ${LIBXML2_INCLUDE_DIR}
@@ -148,6 +109,7 @@ else ()
             ${RAPTOR_SOURCE_DIR}
             ${RASQAL_SOURCE_DIR}
             ${LIBRDF_SOURCE_DIR}
+            ${WRAPPER_SOURCE_DIR}
             )
 
     set(LINK_LIBRARIES
@@ -197,7 +159,7 @@ else ()
     PrintOutPaths()
     #    message(WARNING "HERE")
     add_subdirectory(src/redland)
-    #    add_subdirectory(src)
+    add_subdirectory(src)
 
     if (BUILD_TESTS)
         enable_testing()
