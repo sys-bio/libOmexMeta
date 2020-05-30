@@ -34,6 +34,8 @@ namespace redland {
 
     private:
         std::shared_ptr<librdf_node> node_;
+        LibrdfUri uri_;
+
 
     public:
         LibrdfNode() = default;
@@ -60,6 +62,14 @@ namespace redland {
         std::string getBlankIdentifier();
 
         LibrdfUri getUri();
+
+        void setUri(const std::string &uri);
+
+        void setLiteralDatatype(const std::string& datatype);
+
+        static std::string validateLiteralDatatype(const std::string &literal_datatype_uri);
+
+        void setBlankIdentifier(const std::string &identifier);
     };
 }
 

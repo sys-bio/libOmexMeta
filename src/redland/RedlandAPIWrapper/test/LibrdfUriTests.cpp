@@ -40,17 +40,29 @@ TEST_F(LibrdfUriTests, TestStr) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(LibrdfUriTests, TestCopy) {
-    /*
-     * There is *no* copying of uri's because the constructor
-     * will store a uri on creation. If the same string
-     * used again for the uri, it is searched and returned.
-     */
-    librdf_uri *uri1 = librdf_new_uri(World::getWorld(), (const unsigned char *) "uri");
-    librdf_uri *uri2 = librdf_new_uri(World::getWorld(), (const unsigned char *) "uri");
-    librdf_uri *uri3 = librdf_new_uri_from_uri(uri1);
-
-//    LibrdfUri uri1("http://uri.com");
-//    ASSERT_STREQ(uri1.str().c_str(), uri2.str().c_str());
-
+TEST_F(LibrdfUriTests, TestIsNullFalse) {
+    LibrdfUri uri("http://uri.com");
+    ASSERT_FALSE(uri.isNull());
 }
+
+TEST_F(LibrdfUriTests, TestIsNull) {
+    LibrdfUri uri;
+    ASSERT_TRUE(uri.isNull());
+}
+
+TEST_F(LibrdfUriTests, TestIsEmpty1) {
+    LibrdfUri uri("");
+    ASSERT_TRUE(uri.isNull());
+}
+
+TEST_F(LibrdfUriTests, TestIsEmpty2) {
+    LibrdfUri uri((std::string()));
+    ASSERT_TRUE(uri.isNull());
+}
+
+TEST_F(LibrdfUriTests, TestIsEmpty3) {
+    LibrdfUri uri((std::string()));
+    std::cout << uri.str()<< std::endl;
+}
+
+

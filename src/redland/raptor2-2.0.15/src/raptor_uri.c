@@ -516,16 +516,7 @@ raptor_free_uri_wrapper(raptor_uri *uri) {
     RAPTOR_DEBUG3("URI %s usage count now %d\n", uri->string, uri->usage);
 #endif
 
-    if (uri->usage == 0)
-
-#if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
-        RAPTOR_DEBUG3("URI %s usage count was %d so not doing the freeing \n", uri->string, uri->usage);
-#endif
-        return;
-
     uri->usage--;
-
-
 
     /* decrement usage, don't free if not 0 yet*/
     if (uri->usage > 0) {

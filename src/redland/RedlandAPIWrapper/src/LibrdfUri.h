@@ -42,6 +42,9 @@ namespace redland {
 
         [[nodiscard]] librdf_uri *get() const;
 
+        bool isNull() const;
+
+        bool isEmpty() const;
     };
 }
 

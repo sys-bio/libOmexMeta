@@ -23,6 +23,7 @@ namespace redland {
         subject_ = LibrdfNode(librdf_statement_get_subject(statement_.get()));
         predicate_ = LibrdfNode(librdf_statement_get_subject(statement_.get()));
         resource_ = LibrdfNode(librdf_statement_get_subject(statement_.get()));
+        checkForNull();
     }
 
     LibrdfStatement::LibrdfStatement(LibrdfNode subject, LibrdfNode predicate, LibrdfNode resource)
@@ -34,6 +35,40 @@ namespace redland {
                         World::getWorld(), subject_.get(), predicate_.get(), resource_.get()
                 ), raptor_free_statement_wrapper
         );
+        checkForNull();
+    }
+
+//    LibrdfStatement::LibrdfStatement(const LibrdfNode &subject, const LibrdfNode &predicate,
+//                                     const LibrdfNode &resource)
+//            : subject_(std::move(subject)),
+//              predicate_(std::move(predicate)),
+//              resource_(std::move(resource)) {
+//        statement_ = std::shared_ptr<librdf_statement>(
+//                librdf_new_statement_from_nodes(
+//                        World::getWorld(), subject_.get(), predicate_.get(), resource_.get()
+//                ), raptor_free_statement_wrapper
+//        );
+//        checkForNull();
+//
+//    }
+
+
+    void LibrdfStatement::checkForNull() {
+        if (!subject_.get())
+            throw RedlandNullPointerException(
+                    "RedlandNullPointerException: LibrdfStatement::checkForNull(): subject_ node is null");
+
+        if (!predicate_.get()) //todo another check on underlying pointer if possible (so far checking for null causes seg fault)
+            throw RedlandNullPointerException(
+                    "RedlandNullPointerException: LibrdfStatement::checkForNull(): predicate_ node is null");
+
+        if (!resource_.get())
+            throw RedlandNullPointerException(
+                    "RedlandNullPointerException: LibrdfStatement::checkForNull(): resource_ node is null");
+
+        if (!statement_.get())
+            throw RedlandNullPointerException(
+                    "RedlandNullPointerException: LibrdfStatement::checkForNull(): statement_ is null");
     }
 
     librdf_statement *LibrdfStatement::get() const {

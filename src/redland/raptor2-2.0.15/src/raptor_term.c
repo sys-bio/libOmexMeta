@@ -502,7 +502,7 @@ void raptor_free_term_wrapper(raptor_term *term) {
     if (!term)
         return;
 
-    if (term->usage == 0)
+    if (term->usage == 0) // access violation when term is null?
         return;
 
     if (--term->usage)
