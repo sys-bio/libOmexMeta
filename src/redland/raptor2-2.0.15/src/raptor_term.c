@@ -502,7 +502,7 @@ void raptor_free_term_wrapper(raptor_term *term) {
     if (!term)
         return;
 
-    if (term->usage == 0)
+    if (term->usage == 0) // access violation when term is null?
         return;
 
     if (--term->usage)
@@ -530,8 +530,8 @@ void raptor_free_term_wrapper(raptor_term *term) {
             }
 
             if (term->value.literal.datatype) {
-                raptor_free_uri(term->value.literal.datatype);
-                term->value.literal.datatype = NULL;
+//                raptor_free_uri(term->value.literal.datatype);
+//                term->value.literal.datatype = NULL;
             }
 
             if (term->value.literal.language) {

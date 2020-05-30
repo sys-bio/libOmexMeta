@@ -44,7 +44,7 @@ namespace semsim {
 
         static bool namespaceKnown(const std::string &ns);
 
-        [[nodiscard]] const std::shared_ptr<LibrdfNode> &getNode() const;
+        [[nodiscard]] const LibrdfNode getNode() const;
 
         [[nodiscard]] const std::vector<std::string> &getValidTerms() const;
 

@@ -21,13 +21,26 @@ namespace redland {
     }
 
     std::string LibrdfUri::str() const {
-        auto cstr = (unsigned char *) librdf_uri_as_string(get());
+        if (isNull())
+            throw RedlandNullPointerException("RedlandNullPointerException: LibrdfUri::str(): uri is null");
+        librdf_uri* u = get();
+        unsigned char* cstr = librdf_uri_as_string(u);
         std::string s = (const char *) cstr;
         return s;
     }
 
     librdf_uri *LibrdfUri::get() const {
         return librdf_uri_.get();
+    }
+
+    bool LibrdfUri::isNull() const {
+        return get() == nullptr;
+    }
+
+    bool LibrdfUri::isEmpty() const {
+        if (isNull())
+            throw RedlandNullPointerException("RedlandNullPointerException: LibrdfUri::isEmpty(): uri is null on access");
+        return str().empty();
     }
 
 

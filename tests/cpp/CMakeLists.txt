@@ -7,6 +7,7 @@ set(TEST_SOURCES
         ResourceTests.cpp
         CurlGetTests.cpp
         TripleTests.cpp
+        TripleTests2.cpp
         TripplesTests.cpp
         SemsimUtilsTests.cpp
         ReaderTests.cpp
