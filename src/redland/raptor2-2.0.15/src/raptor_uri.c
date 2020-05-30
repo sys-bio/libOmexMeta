@@ -517,16 +517,15 @@ void
 raptor_free_uri_wrapper(raptor_uri *uri) {
     if (!uri)
         return;
-
     if (uri->usage == 0 && uri->length == 0) {
         RAPTOR_FREE(raptor_uri, uri);
         return;
     }
 
+
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
     RAPTOR_DEBUG3("URI %s usage count now %d\n", uri->string, uri->usage);
 #endif
-    printf("string: %d", uri->usage);
 
     uri->usage--;
 
