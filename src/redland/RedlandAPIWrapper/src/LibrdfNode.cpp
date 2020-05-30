@@ -18,7 +18,7 @@ namespace redland {
     }
 
     LibrdfNode::LibrdfNode(librdf_node *node)
-            : node_(std::unique_ptr<librdf_node, deleter>(node)) {
+            : node_(std::shared_ptr<librdf_node>(node, raptor_free_term_wrapper)) {
     }
 
     LibrdfNode LibrdfNode::fromUriString(const std::string &uri_string) {

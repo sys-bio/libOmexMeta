@@ -141,7 +141,8 @@ TEST_F(TripleTests, TestNullExceptionRes) {
 TEST_F(TripleTests, TestToStatementSubject) {
     Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
     LibrdfStatement statement = triple1.toStatement();
-    std::string actual = statement.getSubject().str();
+    LibrdfNode subject = statement.getSubject();
+    std::string actual = subject.str();
     std::string expected = "./MyModel#metaid_0";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }

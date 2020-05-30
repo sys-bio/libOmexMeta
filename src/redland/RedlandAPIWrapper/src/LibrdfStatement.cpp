@@ -14,20 +14,25 @@ namespace redland {
             raptor_free_statement_wrapper(statement);
     }
 
+
     LibrdfStatement::LibrdfStatement(librdf_statement *statement)
-            : statement_(std::unique_ptr<librdf_statement, deleter>(statement)),
-              subject_(LibrdfNode(librdf_statement_get_subject(statement))),
-              predicate_(LibrdfNode(librdf_statement_get_subject(statement))),
-              resource_(LibrdfNode(librdf_statement_get_subject(statement))) {}
+    /*
+     * todo keep an eye on this constructor - could it be the cause of some memory related issues.
+     */
+            : statement_(std::shared_ptr<librdf_statement>(statement, raptor_free_statement_wrapper)) {
+        subject_ = LibrdfNode(librdf_statement_get_subject(statement_.get()));
+        predicate_ = LibrdfNode(librdf_statement_get_subject(statement_.get()));
+        resource_ = LibrdfNode(librdf_statement_get_subject(statement_.get()));
+    }
 
     LibrdfStatement::LibrdfStatement(LibrdfNode subject, LibrdfNode predicate, LibrdfNode resource)
             : subject_(std::move(subject)),
               predicate_(std::move(predicate)),
               resource_(std::move(resource)) {
-        statement_ = std::unique_ptr<librdf_statement, deleter>(
+        statement_ = std::shared_ptr<librdf_statement>(
                 librdf_new_statement_from_nodes(
                         World::getWorld(), subject_.get(), predicate_.get(), resource_.get()
-                )
+                ), raptor_free_statement_wrapper
         );
     }
 

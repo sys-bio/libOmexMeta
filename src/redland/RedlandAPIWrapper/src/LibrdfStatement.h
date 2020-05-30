@@ -23,7 +23,7 @@ namespace redland {
             void operator()(librdf_statement *statement);
         };
 
-        std::unique_ptr<librdf_statement, deleter> statement_;
+        std::shared_ptr<librdf_statement> statement_;
 
     public:
         LibrdfStatement() = default;

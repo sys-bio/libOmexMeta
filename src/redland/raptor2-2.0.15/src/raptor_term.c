@@ -502,6 +502,9 @@ void raptor_free_term_wrapper(raptor_term *term) {
     if (!term)
         return;
 
+    if (term->usage == 0)
+        return;
+
     if (--term->usage)
         return;
 
@@ -509,7 +512,7 @@ void raptor_free_term_wrapper(raptor_term *term) {
         case RAPTOR_TERM_TYPE_URI:
             if (term->value.uri) {
 //        raptor_free_uri(term->value.uri);
-                term->value.uri = NULL;
+//                term->value.uri = NULL;
             }
             break;
 

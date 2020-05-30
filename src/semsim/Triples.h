@@ -21,7 +21,7 @@ namespace semsim {
 
 //    class Triple;
 
-    typedef std::vector<std::unique_ptr<Triple>> UniqueTripleVector;
+    typedef std::vector<std::shared_ptr<Triple>> UniqueTripleVector;
     typedef std::vector<Triple> TripleVector;
 
     class Triples {

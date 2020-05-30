@@ -17,11 +17,12 @@ namespace semsim {
         } else {
             this->uri_ = namespace_ + "/" + term_;
         }
-        this->uri_node_ = std::make_unique<LibrdfNode>(LibrdfNode::fromUriString(uri_));
+        LibrdfNode n = LibrdfNode::fromUriString(uri_);
+        this->uri_node_ = std::make_shared<LibrdfNode>(n);
     }
 
     Predicate::Predicate(LibrdfNode node)
-            : uri_node_(std::make_unique<LibrdfNode>(std::move(node))) {
+            : uri_node_(std::make_shared<LibrdfNode>(std::move(node))) {
         // some logic for processing the uri in a node to automatically produce the fields we want.
         std::string val = uri_node_->str();
 
@@ -120,7 +121,7 @@ namespace semsim {
         }
     }
 
-    const std::unique_ptr<LibrdfNode> &Predicate::getNode() const {
+    const std::shared_ptr<LibrdfNode> &Predicate::getNode() const {
         return uri_node_;
     }
 
