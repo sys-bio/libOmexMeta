@@ -121,8 +121,8 @@ namespace semsim {
         }
     }
 
-    const std::shared_ptr<LibrdfNode> &Predicate::getNode() const {
-        return uri_node_;
+    const LibrdfNode Predicate::getNode() const {
+        return *uri_node_;
     }
 
     BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(const std::string &term) :
