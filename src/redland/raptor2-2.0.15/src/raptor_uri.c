@@ -517,10 +517,6 @@ void
 raptor_free_uri_wrapper(raptor_uri *uri) {
     if (!uri)
         return;
-    if (uri->usage == 0 && uri->length == 0) {
-        RAPTOR_FREE(raptor_uri, uri);
-        return;
-    }
 
 
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
