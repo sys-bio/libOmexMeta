@@ -439,17 +439,37 @@ librdf_new_serializer_from_factory(librdf_world *world,
  * 
  **/
 void
-librdf_free_serializer(librdf_serializer *serializer) 
-{
-  if(!serializer)
-    return;
-  
-  if(serializer->context) {
-    if(serializer->factory->terminate)
-      serializer->factory->terminate(serializer->context);
-    LIBRDF_FREE(serializer_context, serializer->context);
-  }
-  LIBRDF_FREE(librdf_serializer, serializer);
+librdf_free_serializer(librdf_serializer *serializer) {
+    if (!serializer)
+        return;
+
+    if (serializer->context) {
+        if (serializer->factory->terminate)
+            serializer->factory->terminate(serializer->context);
+        LIBRDF_FREE(serializer_context, serializer->context);
+    }
+    LIBRDF_FREE(librdf_serializer, serializer);
+}
+
+/**
+ * librdf_free_serializer_wrapper:
+ * @serializer: the serializer
+ *
+ * Destructor - destroys a #librdf_serializer object. Small modifications
+ * made from the original to support the C++ wrapper
+ *
+ **/
+void
+librdf_free_serializer_wrapper(librdf_serializer *serializer) {
+    if (!serializer)
+        return;
+
+    if (serializer->context) {
+        if (serializer->factory->terminate)
+            serializer->factory->terminate(serializer->context);
+        LIBRDF_FREE(serializer_context, serializer->context);
+    }
+    LIBRDF_FREE(librdf_serializer, serializer);
 }
 
 

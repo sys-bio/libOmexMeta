@@ -11,7 +11,7 @@
 #include <iostream>
 #include "LibrdfNode.h"
 
-namespace semsim {
+namespace redland {
 
     class LibrdfStatement {
 

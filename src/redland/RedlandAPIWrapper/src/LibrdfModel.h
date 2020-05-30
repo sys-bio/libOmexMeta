@@ -23,7 +23,7 @@
  * a single storage
  */
 
-namespace semsim {
+namespace redland {
 
     class LibrdfModel {
         struct deleter {

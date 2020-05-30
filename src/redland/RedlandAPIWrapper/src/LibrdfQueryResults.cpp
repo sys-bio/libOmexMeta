@@ -1,6 +1,6 @@
 #include "LibrdfQueryResults.h"
 
-namespace semsim {
+namespace redland {
 
     LibrdfQueryResults::LibrdfQueryResults(librdf_query_results *query_results) :
             query_results_(query_results) {}

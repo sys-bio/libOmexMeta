@@ -5,7 +5,7 @@
 #include <semsim/Subject.h>
 #include "gtest/gtest.h"
 
-#include "redland/RedlandAPIWrapper/World.h"
+#include "World.h"
 
 using namespace semsim;
 

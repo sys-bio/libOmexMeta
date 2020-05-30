@@ -5,10 +5,10 @@
 #include "gtest/gtest.h"
 #include "World.h"
 #include "LibrdfUri.h"
-//#include "semsim/SemsimUtils.h"
+//#include "redland/SemsimUtils.h"
 #include "raptor2.h"
 
-using namespace semsim;
+using namespace redland;
 
 class LibrdfUriTests : public ::testing::Test {
 

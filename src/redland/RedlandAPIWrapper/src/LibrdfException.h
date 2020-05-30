@@ -35,7 +35,7 @@ public:
      *          is in posession of the Exception object. Callers must
      *          not attempt to free the memory.
      */
-    const char *what() const noexcept override {
+    [[nodiscard]] const char *what() const noexcept override {
         return msg_.c_str();
     }
 
@@ -45,19 +45,11 @@ protected:
     std::string msg_;
 };
 
-class NullPointerException : public Exception {
+class RedlandNullPointerException : public Exception {
     using Exception::Exception;
 };
 
-class InappropriateResourceException : public Exception {
-    using Exception::Exception;
-};
-
-class NotImplementedException : public Exception {
-    using Exception::Exception;
-};
-
-class LibRDFException : public Exception {
+class RedlandLibrdfException : public Exception {
     using Exception::Exception;
 };
 

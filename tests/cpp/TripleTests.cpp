@@ -123,19 +123,19 @@ TEST_F(TripleTests, TestTripleVecGetResource2) {
 TEST_F(TripleTests, TestNullExceptionPred) {
     PredicatePtr predicatePtr;
     ASSERT_THROW(Triple triple1(std::move(subject), std::move(predicatePtr), std::move(resource)),
-                 NullPointerException);
+                 semsim::NullPointerException);
 }
 
 TEST_F(TripleTests, TestNullExceptionSub) {
     Subject subject1;
     ASSERT_THROW(Triple triple1(std::move(subject1), std::move(predicate), std::move(resource)),
-                 NullPointerException);
+                 semsim::NullPointerException);
 }
 
 TEST_F(TripleTests, TestNullExceptionRes) {
     Resource resource1;
     ASSERT_THROW(Triple triple1(std::move(subject), std::move(predicate), std::move(resource1)),
-                 NullPointerException);
+                 semsim::NullPointerException);
 }
 
 TEST_F(TripleTests, TestToStatementSubject) {

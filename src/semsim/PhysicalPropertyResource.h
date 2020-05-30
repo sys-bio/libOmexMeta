@@ -10,10 +10,12 @@
 #include "semsim/Error.h"
 #include "semsim/Triple.h"
 #include "semsim/Triples.h"
-#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "RedlandAPIWrapper.h"
 #include "Triple.h"
 #include "Triples.h"
 #include <regex>
+
+using namespace redland;
 
 namespace semsim {
     class PhysicalPropertyResource : public Resource {
@@ -34,7 +36,7 @@ namespace semsim {
 
         Triples toTriples(std::string subject_metaid, std::string property_metaid) const;
 
-        bool isSet() const override ;
+        bool isSet() const override;
     };
 }
 

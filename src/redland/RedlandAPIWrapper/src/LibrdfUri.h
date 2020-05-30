@@ -11,7 +11,7 @@
 #include "LibrdfException.h"
 
 
-namespace semsim {
+namespace redland {
 
     class LibrdfUri {
 

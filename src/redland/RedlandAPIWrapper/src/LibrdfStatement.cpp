@@ -6,7 +6,7 @@
 #include "World.h"
 
 
-namespace semsim {
+namespace redland {
 
 
     void LibrdfStatement::deleter::operator()(librdf_statement *statement) {

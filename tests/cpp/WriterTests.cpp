@@ -1,7 +1,7 @@
 #include <semsim/Writer.h>
 
 #include "AnnotationSamples.h"
-#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "RedlandAPIWrapper.h"
 
 #include "gtest/gtest.h"
 

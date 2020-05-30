@@ -5,7 +5,7 @@
 #include "RaptorIOStream.h"
 
 
-namespace semsim {
+namespace redland {
 
     void RaptorIOStream::deleter::operator()(raptor_iostream *iostream) {
         if (iostream)
@@ -27,7 +27,7 @@ namespace semsim {
                 World::getRaptor(), (void **) &buffer_to_hold_string, nullptr, malloc)
         );
         if (!ios.get())
-            throw NullPointerException("Writer::toString(): raptor_iostream");
+            throw RedlandNullPointerException("Writer::toString(): raptor_iostream");
         std::pair<RaptorIOStream, void *> pair(std::move(ios), buffer_to_hold_string);
         return pair;
     }

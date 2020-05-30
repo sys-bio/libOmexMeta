@@ -92,9 +92,12 @@ namespace semsim {
                     (raptor_option) i
             );
             if (parser_opt) {
+                unsigned char *s = raptor_uri_to_string(parser_opt->uri);
                 os << parser_opt->option << "," << parser_opt->name << "," << parser_opt->label << ","
                    << parser_opt->domain
-                   << "," << parser_opt->value_type << "," << raptor_uri_to_string(parser_opt->uri) << std::endl;
+                   << "," << parser_opt->value_type << "," << s << std::endl;
+                free(s);
+                raptor_free_option_description(parser_opt);
             } else {
                 raptor_option_description *serializer_opt = raptor_world_get_option_description(
                         raptor_world_ptr,
@@ -103,12 +106,15 @@ namespace semsim {
                         (raptor_option) i
                 );
                 if (serializer_opt) {
+                    unsigned char *s = raptor_uri_to_string(serializer_opt->uri);
                     os << serializer_opt->option << "," << serializer_opt->name << "," << serializer_opt->label
                        << ","
                        << serializer_opt->domain
-                       << "," << serializer_opt->value_type << "," << raptor_uri_to_string(serializer_opt->uri)
+                       << "," << serializer_opt->value_type << "," << s
                        << std::endl;
+                    free(s);
                 }
+                raptor_free_option_description(serializer_opt);
             }
             i++;
         };
@@ -258,6 +264,7 @@ namespace semsim {
             triples.emplace_back(std::move(statement));
             librdf_stream_next(stream);
         }
+        librdf_free_stream(stream);
         return triples;
     }
 

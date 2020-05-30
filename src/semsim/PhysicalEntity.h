@@ -10,12 +10,14 @@
 #include "semsim/Subject.h"
 #include "semsim/PhysicalPhenomenon.h"
 #include "semsim/MetaID.h"
-#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "RedlandAPIWrapper.h"
 #include <utility>
 #include "semsim/Triple.h"
 #include "semsim/Query.h"
 #include "semsim/SemsimUtils.h"
 #include "memory"
+
+using namespace redland;
 
 namespace semsim {
     class PhysicalEntity : public PhysicalPhenomenon {

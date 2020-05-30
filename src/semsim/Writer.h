@@ -5,10 +5,12 @@
 #ifndef LIBSEMSIM_WRITER_H
 #define LIBSEMSIM_WRITER_H
 
-#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
-#include "Error.h"
-
 #include <librdf.h>
+#include "RedlandAPIWrapper.h"
+
+#include "Error.h"
+//#include "semsim/SemsimUtils.h"
+
 #include <string>
 #include <vector>
 #include "unordered_map"
@@ -16,6 +18,7 @@
 #include <utility>
 #include <regex>
 
+using namespace redland;
 
 namespace semsim {
 

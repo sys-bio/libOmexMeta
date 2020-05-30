@@ -5,12 +5,15 @@
 #ifndef LIBSEMSIM_SUBJECT_H
 #define LIBSEMSIM_SUBJECT_H
 
-#include "redland/RedlandAPIWrapper/World.h"
-#include "redland/RedlandAPIWrapper/LibrdfNode.h"
+#include "World.h"
+#include "LibrdfNode.h"
 #include "semsim/Error.h"
+
 
 #include "iostream"
 #include <vector>
+
+using namespace redland;
 
 
 namespace semsim {

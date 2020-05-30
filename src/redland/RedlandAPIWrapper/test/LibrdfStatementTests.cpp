@@ -5,9 +5,9 @@
 #include "gtest/gtest.h"
 #include "World.h"
 #include "LibrdfStatement.h"
-//#include "semsim/SemsimUtils.h"
+//#include "redland/SemsimUtils.h"
 
-using namespace semsim;
+using namespace redland;
 
 class LibrdfStatementTests : public ::testing::Test {
 
@@ -20,7 +20,7 @@ public:
 };
 
 TEST_F(LibrdfStatementTests, TestCreate) {
-    semsim::LibrdfStatement statement = LibrdfStatement(std::move(subject), std::move(predicate), std::move(resource));
+    redland::LibrdfStatement statement = LibrdfStatement(std::move(subject), std::move(predicate), std::move(resource));
     ASSERT_NE(statement.get(), nullptr);
 
 }
@@ -34,30 +34,32 @@ TEST_F(LibrdfStatementTests, TestCreate2) {
 }
 
 //TEST_F(LibrdfStatementTests, TestCopyConstructor) {
-//    semsim::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate), std::move(resource));
-//    semsim::LibrdfStatement statement2 = statement1;
+//    redland::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate), std::move(resource));
+//    redland::LibrdfStatement statement2 = statement1;
 //    ASSERT_EQ(statement1, statement2);
 //}
 
 TEST_F(LibrdfStatementTests, TestMoveConstructor) {
-    semsim::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate), std::move(resource));
-    semsim::LibrdfStatement statement2 = std::move(statement1);
+    redland::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate),
+                                                          std::move(resource));
+    redland::LibrdfStatement statement2 = std::move(statement1);
     std::string expected = "subject";
     std::string actual = statement2.getSubject().str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 //TEST_F(LibrdfStatementTests, TestCopyAssignment) {
-//    semsim::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate), std::move(resource));
-//    semsim::LibrdfStatement statement2 = statement1;
+//    redland::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate), std::move(resource));
+//    redland::LibrdfStatement statement2 = statement1;
 //    std::string actual = statement2.getSubject().str();
 //    std::string expected = "subject";
 //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //}
 
 TEST_F(LibrdfStatementTests, TestMoveAssignment) {
-    semsim::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate), std::move(resource));
-    semsim::LibrdfStatement statement2 = std::move(statement1);
+    redland::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate),
+                                                          std::move(resource));
+    redland::LibrdfStatement statement2 = std::move(statement1);
     std::string actual = statement2.getSubject().str();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -65,9 +67,39 @@ TEST_F(LibrdfStatementTests, TestMoveAssignment) {
 
 
 TEST_F(LibrdfStatementTests, TestGetPredicateStr) {
-    semsim::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate), std::move(resource));
+    redland::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate),
+                                                          std::move(resource));
     std::string expected = "predicate";
     std::string actual = statement1.getPredicate().str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
+
+
+TEST_F(LibrdfStatementTests, TestToStatementSubject) {
+    LibrdfStatement statement(std::move(subject), std::move(predicate), std::move(resource));
+    LibrdfNode subject = statement.getSubject();
+    std::string actual = subject.str();
+    std::string expected = "subject";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -5,13 +5,12 @@
 #include "semsim/CurlGet.h"
 
 
-
 size_t semsim::CurlGet::curlWriteCallback(void *data, size_t size, size_t nmemb, void *userp) {
     size_t bytes_written = fwrite(data, size, nmemb, (FILE *) userp);
     return bytes_written;
 }
 
-int semsim::CurlGet::download(const std::string& url, const std::string& output_filename) {
+int semsim::CurlGet::download(const std::string &url, const std::string &output_filename) {
     CURL *curl_handle;
 
     curl_global_init(CURL_GLOBAL_ALL);

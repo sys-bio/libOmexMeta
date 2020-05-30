@@ -11,9 +11,10 @@
 #include "Subject.h"
 #include "Triple.h"
 #include "Triples.h"
-#include "redland/RedlandAPIWrapper/RedlandAPIWrapper.h"
+#include "RedlandAPIWrapper.h"
 #include <utility>
 
+using namespace redland;
 
 namespace semsim {
 

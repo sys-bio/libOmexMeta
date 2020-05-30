@@ -21,9 +21,9 @@
 //#include "LibrdfQuery.h"
 
 
-//#include "semsim/SemsimUtils.h"
-//#include "semsim/Subject.h"
-//#include "semsim/Predicate.h"
+//#include "redland/SemsimUtils.h"
+//#include "redland/Subject.h"
+//#include "redland/Predicate.h"
 
 /*
  * A useful comment made by a stackoverflow wizard in a question
@@ -39,7 +39,7 @@
  * before, it starts out a bother, but gets easier as you go.
  */
 
-namespace semsim {
+namespace redland {
 
     typedef std::shared_ptr<librdf_world> librdf_world_ptr;
 

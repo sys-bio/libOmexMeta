@@ -6,12 +6,13 @@
 #define LIBSEMSIM_RESOURCE_H
 
 #include "librdf.h"
-#include "redland/RedlandAPIWrapper/LibrdfNode.h"
+#include "LibrdfNode.h"
 
 #include <iostream>
 #include "sstream"
 #include <vector>
 
+using namespace redland;
 
 namespace semsim {
     class Resource {

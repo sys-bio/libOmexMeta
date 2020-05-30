@@ -5,7 +5,7 @@
 #include "gtest/gtest.h"
 #include "LibrdfModel.h"
 
-using namespace semsim;
+using namespace redland;
 
 class LibrdfModelTests : public ::testing::Test {
 

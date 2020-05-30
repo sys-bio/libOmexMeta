@@ -10,7 +10,7 @@
 #include <memory>
 #include "World.h"
 
-namespace semsim {
+namespace redland {
 
     class LibrdfStorage {
 

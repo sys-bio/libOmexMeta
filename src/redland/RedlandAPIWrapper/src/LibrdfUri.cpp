@@ -4,7 +4,7 @@
 #include "LibrdfUri.h"
 #include "World.h"
 
-namespace semsim {
+namespace redland {
 
     void LibrdfUri::deleter::operator()(librdf_uri *ptr) {
         if (ptr)

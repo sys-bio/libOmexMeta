@@ -5,7 +5,7 @@
 #include "LibrdfModel.h"
 
 
-namespace semsim {
+namespace redland {
 
 
     void LibrdfModel::deleter::operator()(librdf_model *model) {
@@ -40,7 +40,7 @@ namespace semsim {
     LibrdfStream LibrdfModel::toStream() {
         LibrdfStream stream(librdf_model_as_stream(model_.get()));
         if (!stream.get()) {
-            throw NullPointerException("NullPointerException: LibrdfModel::toStream(): stream object null");
+            throw RedlandNullPointerException("NullPointerException: LibrdfModel::toStream(): stream object null");
         }
         return stream;
     }
