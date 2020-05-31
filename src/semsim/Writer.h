@@ -20,6 +20,12 @@
 
 using namespace redland;
 
+/*
+ * Perhaps Reader and Writer
+ * should inherit from LibrdfSerializer and
+ * LibrdfParser?
+ */
+
 namespace semsim {
 
     class Writer {

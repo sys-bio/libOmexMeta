@@ -27,7 +27,7 @@ TEST_F(RDFTests, TestDestructor) {
 
 TEST_F(RDFTests, TestBaseUriIsSet) {
     RDF rdf;
-    std::string expected = "Annotations.rdf";
+    std::string expected = "file://./Annotations.rdf";
     std::string actual = rdf.getBaseUri();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -120,23 +120,23 @@ TEST_F(RDFTests, TestCount) {
     ASSERT_EQ(expected, actual);
 }
 
-TEST_F(RDFTests, TestToTriples) {
-    RDF rdf = RDF::fromString(samples.rdf_xml_seq_example, "rdfxml");
-    Triples triples = rdf.toTriples();
-    std::ostringstream actual;
-    for (auto &it: triples) {
-        actual << it->getSubjectStr() <<
-               it->getPredicateStr() << it->getResourceStr()
-               << std::endl;
-    }
-    std::cout << actual.str() << std::endl;
-    std::string expected = "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/typehttp://www.w3.org/1999/02/22-rdf-syntax-ns#Seq\n"
-                           "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/_1http://example.org/banana\n"
-                           "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/_2http://example.org/apple\n"
-                           "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/_3http://example.org/pear\n"
-                           "";
-    ASSERT_STREQ(expected.c_str(), actual.str().c_str());
-}
+//TEST_F(RDFTests, TestToTriples) {
+//    RDF rdf = RDF::fromString(samples.rdf_xml_seq_example, "rdfxml");
+//    Triples triples = rdf.toTriples();
+//    std::ostringstream actual;
+//    for (auto &it: triples) {
+//        actual << it->getSubjectStr() <<
+//               it->getPredicateStr() << it->getResourceStr()
+//               << std::endl;
+//    }
+//    std::cout << actual.str() << std::endl;
+//    std::string expected = "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/typehttp://www.w3.org/1999/02/22-rdf-syntax-ns#Seq\n"
+//                           "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/_1http://example.org/banana\n"
+//                           "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/_2http://example.org/apple\n"
+//                           "http://example.org/favourite-fruithttp://www.w3.org/1999/02/22-rdf-syntax-ns#/_3http://example.org/pear\n"
+//                           "";
+//    ASSERT_STREQ(expected.c_str(), actual.str().c_str());
+//}
 
 //TEST_F(RDFTests, testQueryResultsAsStr) {
 //    std::string q = "PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"

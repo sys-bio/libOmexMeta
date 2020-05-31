@@ -28,22 +28,21 @@ using namespace redland;
 
 namespace semsim {
 
-    class Triple : public LibrdfStatement{
-    protected:
-//        Subject subject_;
-//        PredicatePtr predicate_ptr_;
-//        Resource resource_;
+    class Triple : public LibrdfStatement {
+
+        Triple(librdf_statement *statement);
+
     public:
 
         explicit Triple() = default;
 
-        Triple(const Subject& subject, const Predicate& predicate, const Resource& resource);
+        Triple(const Subject &subject, const Predicate &predicate, const Resource &resource);
 
         Triple(const Subject &subject, const PredicatePtr &predicate_ptr, const Resource &resource);
 
+        static Triple fromRawStatementPtr(librdf_statement *statement);
 
 //        std::string str(std::string format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
-
 
         Triple &setAbout(const std::string &about);
 

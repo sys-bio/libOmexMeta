@@ -208,7 +208,7 @@ raptor_new_namespaces(raptor_world* world, int defaults)
   nstack = RAPTOR_CALLOC(raptor_namespace_stack*, 1, sizeof(*nstack));
   if(!nstack)
     return NULL;
-                      
+
   if(raptor_namespaces_init(world, nstack, defaults)) {
     raptor_free_namespaces(nstack);
     nstack = NULL;
