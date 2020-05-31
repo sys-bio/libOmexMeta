@@ -155,13 +155,13 @@ TEST_F(Triple2Tests, TestStatementResource) {
 }
 
 
-TEST_F(Triple2Tests, TestAbout) {
-    Triple2 triple2;
-    triple2.setAbout("metaid2");
-    std::string expected = "metaid2";
-    std::string actual = triple2.getAbout();
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-}
+//TEST_F(Triple2Tests, TestAbout) {
+//    Triple2 triple2;
+//    triple2.setAbout("metaid2");
+//    std::string expected = "metaid2";
+//    std::string actual = triple2.getAbout();
+//    ASSERT_STREQ(expected.c_str(), actual.c_str());
+//}
 ////
 ////
 ////TEST_F(Triple2Tests, TestSetPredicate) {

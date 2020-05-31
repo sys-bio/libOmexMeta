@@ -27,18 +27,17 @@ namespace redland {
             void operator()(librdf_uri *ptr);
         };
 
-        std::shared_ptr<librdf_uri> librdf_uri_;
+        std::shared_ptr<librdf_uri> uri_;
 
+        explicit LibrdfUri(librdf_uri *uri);
     public:
         LibrdfUri() = default;
 
-//        LibrdfUri(const LibrdfUri& librdfUri);
+        static LibrdfUri fromRawPtr(librdf_uri *uri);
 
         [[nodiscard]] std::string str() const;
 
         explicit LibrdfUri(const std::string &uri);
-
-        explicit LibrdfUri(librdf_uri *uri);
 
         [[nodiscard]] librdf_uri *get() const;
 
