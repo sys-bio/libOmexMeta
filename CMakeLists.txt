@@ -73,6 +73,24 @@ endif ()
 include(${CMAKE_SOURCE_DIR}/cmake/SetPaths.cmake)
 
 
+find_library(LIBPQ_STATIC_LIBRARY
+        NAMES pq.a libpq.a pq libpq
+        )
+
+if (NOT LIBPQ_STATIC_LIBRARY)
+    message(WARNING "libpq not found so skipping these source files. Install with sudo apt install libpq-dev")
+endif ()
+
+
+find_path(LIBPQ_INCLUDE_DIR
+        NAMES libpq-fe.h
+        PATHS /usr/include/postgresql
+        )
+
+if (NOT LIBPQ_INCLUDE_DIR)
+    message(WARNING "libpq-fe.h not found. Install with sudo apt install libpq-dev")
+endif ()
+
 #################################################################
 # Superbuild
 #
@@ -110,6 +128,7 @@ else ()
             ${RASQAL_SOURCE_DIR}
             ${LIBRDF_SOURCE_DIR}
             ${WRAPPER_SOURCE_DIR}
+            ${LIBPQ_INCLUDE_DIR}
             )
 
     set(LINK_LIBRARIES
@@ -132,6 +151,7 @@ else ()
             c xml2 m xslt yajl gss mpfr
             xml2 idn2 pthread curl ssl
             db curl
+            ${LIBPQ_STATIC_LIBRARY}
             )
 
     set(INCLUDE_DIRECTORIES

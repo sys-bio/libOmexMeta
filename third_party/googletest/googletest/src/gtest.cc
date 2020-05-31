@@ -2787,7 +2787,7 @@ class TestNameIs {
   explicit TestNameIs(const char* name)
       : name_(name) {}
 
-  // Returns true if and only if the test name of test_info matches name_.
+  // Returns true if and only if the test name of test_info matches format_.
   bool operator()(const TestInfo * test_info) const {
     return test_info && test_info->name() == name_;
   }
@@ -5339,7 +5339,7 @@ class TestSuiteNameIs {
   // Constructor.
   explicit TestSuiteNameIs(const std::string& name) : name_(name) {}
 
-  // Returns true if and only if the name of test_suite matches name_.
+  // Returns true if and only if the name of test_suite matches format_.
   bool operator()(const TestSuite* test_suite) const {
     return test_suite != nullptr &&
            strcmp(test_suite->name(), name_.c_str()) == 0;

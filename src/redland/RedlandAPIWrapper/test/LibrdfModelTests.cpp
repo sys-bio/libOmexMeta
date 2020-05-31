@@ -42,5 +42,21 @@ TEST_F(LibrdfModelTests, TestMoveAssignment) {
 }
 
 
+TEST_F(LibrdfModelTests, TestAddStatement) {
+    LibrdfModel model1 = LibrdfModel(std::move(storage1));
+    LibrdfStatement statement(
+            LibrdfNode::fromUriString("subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource")
+    );
+    model1.addStatement(statement);
+    int expected = 1;
+    int actual = model1.size();
+    ASSERT_EQ(expected, actual);
+}
+
+
+
+
 
 

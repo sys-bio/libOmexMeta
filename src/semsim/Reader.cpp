@@ -76,8 +76,8 @@ namespace semsim {
     void Reader::setOption(const std::string &option, const std::string &value) {
         // prefix for option uri's. Append with desired option for full uri.
         std::string feature_uri_base = "http://feature.librdf.org/raptor-";
-        LibrdfNode node = LibrdfNode::fromLiteral(value);
-        parser_.setFeature(feature_uri_base + option, std::move(node));
+        librdf_node* node = LibrdfNode::fromLiteral(value);
+        parser_.setFeature(feature_uri_base + option, node);
     }
 
 

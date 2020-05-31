@@ -26,9 +26,9 @@ namespace redland {
          * Should I even have references to LibrdfNode in LibrdfStatement?
          * Maybe not :/
          */
-        const LibrdfNode& subject_;
-        const LibrdfNode& predicate_;
-        const LibrdfNode& resource_;
+        librdf_node* subject_; // LibrdfStatement does not own
+        librdf_node* predicate_; // LibrdfStatement does not own
+        librdf_node* resource_; // LibrdfStatement does not own
 
         std::shared_ptr<librdf_statement> statement_;
 
@@ -45,11 +45,11 @@ namespace redland {
 
         [[nodiscard]] librdf_statement *get() const;
 
-        [[nodiscard]] LibrdfNode getSubject() const;
+        [[nodiscard]] librdf_node* getSubject() const;
 
-        [[nodiscard]] LibrdfNode getPredicate() const;
+        [[nodiscard]] librdf_node* getPredicate() const;
 
-        [[nodiscard]] LibrdfNode getResource() const;
+        [[nodiscard]] librdf_node* getResource() const;
 
         [[nodiscard]] std::string getSubjectStr() const;
 

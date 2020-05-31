@@ -43,24 +43,6 @@ file(MAKE_DIRECTORY ${PKGDATADIR})
 #       find some dependencies
 #
 
-find_library(LIBPQ_STATIC_LIBRARY
-        NAMES pq.a libpq.a pq libpq
-        )
-
-if (NOT LIBPQ_STATIC_LIBRARY)
-    message(WARNING "libpq not found so skipping these source files. Install with sudo apt install libpq-dev")
-endif ()
-
-
-find_path(LIBPQ_INCLUDE_DIR
-        NAMES libpq-fe.h
-        PATHS /usr/include/postgresql
-        )
-
-if (NOT LIBPQ_INCLUDE_DIR)
-    message(WARNING "libpq-fe.h not found. Install with sudo apt install libpq-dev")
-endif ()
-
 
 ##################################################################################
 #       Sources

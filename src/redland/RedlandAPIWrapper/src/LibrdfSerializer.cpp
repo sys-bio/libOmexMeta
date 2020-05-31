@@ -32,7 +32,7 @@ namespace redland {
     }
 
     void LibrdfSerializer::setFeature(const std::string &ns, const std::string &prefix) const {
-        librdf_serializer_set_feature(serializer_.get(), LibrdfUri(ns).get(), LibrdfNode::fromLiteral(prefix).get());
+        librdf_serializer_set_feature(serializer_.get(), LibrdfUri(ns).get(), LibrdfNode::fromLiteral(prefix));
     }
 
     std::string LibrdfSerializer::toString(const LibrdfUri &uri, const LibrdfModel &model) {

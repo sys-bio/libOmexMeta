@@ -44,6 +44,35 @@ TEST_F(LibrdfParserTests, TestMoveAssignment) {
     ASSERT_EQ(parser2.get(), nullptr);
 }
 
+TEST_F(LibrdfParserTests, TestValidParserName) {
+    LibrdfParser parser1 = LibrdfParser("rdfxml");
+    std::string actual = parser1.getName();
+    std::string expected = "rdfxml";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(LibrdfParserTests, TestInvalidParserName) {
+    ASSERT_THROW(LibrdfParser("parser"), std::invalid_argument);
+}
+
+TEST_F(LibrdfParserTests, TestSetName) {
+    LibrdfParser parser("rdfxml");
+    parser.setName("turtle");
+    std::string actual = parser.getName();
+    std::string expected = "turtle";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(LibrdfParserTests, TestGetMimeType) {
+    LibrdfParser parser("rdfxml");
+    ASSERT_EQ(std::string(), parser.getMimeType());
+}
+
+TEST_F(LibrdfParserTests, TestGetMimeType2) {
+    LibrdfParser parser(std::string(), "application/rdf+xml");
+    ASSERT_EQ("application/rdf+xml", parser.getMimeType());
+}
+
 //TEST_F(LibrdfParserTests, TestParseSomethingAndGetNamespace) {
 //    LibrdfStorage storage;
 //    LibrdfModel model(storage);

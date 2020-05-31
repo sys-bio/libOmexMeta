@@ -92,10 +92,10 @@ namespace semsim {
 //    }
 
 
-    Writer::Writer(const LibrdfModel &model, std::string base_uri, std::string format, const char *mime_type,
-                   const char *type_uri) {
-
-    }
+//    Writer::Writer(const LibrdfModel &model, std::string base_uri, std::string format, const char *mime_type,
+//                   const char *type_uri) {
+//
+//    }
 }
 
 

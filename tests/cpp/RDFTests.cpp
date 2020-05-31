@@ -120,6 +120,10 @@ TEST_F(RDFTests, TestCount) {
     ASSERT_EQ(expected, actual);
 }
 
+
+
+
+
 //TEST_F(RDFTests, TestToTriples) {
 //    RDF rdf = RDF::fromString(samples.rdf_xml_seq_example, "rdfxml");
 //    Triples triples = rdf.toTriples();

@@ -44,10 +44,11 @@ TEST_F(LibrdfSerializerTests, TestMoveAssignment) {
 TEST_F(LibrdfSerializerTests, TestToString) {
     LibrdfStorage storage;
     LibrdfModel model(storage);
-    LibrdfNode subject = LibrdfNode::fromUriString("https://subject.com");
-    LibrdfNode pred = LibrdfNode::fromUriString("https://predicate.com");
-    LibrdfNode res = LibrdfNode::fromUriString("https://resouibrdfrce.com");
-    LibrdfStatement statement(std::move(subject), std::move(pred), std::move(res));
+    LibrdfStatement statement(
+            LibrdfNode::fromUriString("https://subject.com"),
+            LibrdfNode::fromUriString("https://predicate.com"),
+            LibrdfNode::fromUriString("https://resource.com")
+    );
     model.addStatement(statement);
     LibrdfSerializer serializer1 = LibrdfSerializer("rdfxml");
     LibrdfUri uri("base_uri");
@@ -65,10 +66,11 @@ TEST_F(LibrdfSerializerTests, TestToString) {
 TEST_F(LibrdfSerializerTests, TestToStringTurtle) {
     LibrdfStorage storage;
     LibrdfModel model(storage);
-    LibrdfNode subject = LibrdfNode::fromUriString("https://subject.com");
-    LibrdfNode pred = LibrdfNode::fromUriString("https://predicate.com");
-    LibrdfNode res = LibrdfNode::fromUriString("https://resource.com");
-    LibrdfStatement statement(std::move(subject), std::move(pred), std::move(res));
+    LibrdfStatement statement(
+            LibrdfNode::fromUriString("https://subject.com"),
+            LibrdfNode::fromUriString("https://predicate.com"),
+            LibrdfNode::fromUriString("https://resource.com")
+    );
     model.addStatement(statement);
     LibrdfSerializer serializer1 = LibrdfSerializer("turtle");
     LibrdfUri uri("base_uri");
@@ -86,10 +88,11 @@ TEST_F(LibrdfSerializerTests, TestToStringTurtle) {
 TEST_F(LibrdfSerializerTests, TestToStringNTriples) {
     LibrdfStorage storage;
     LibrdfModel model(storage);
-    LibrdfNode subject = LibrdfNode::fromUriString("https://subject.com");
-    LibrdfNode pred = LibrdfNode::fromUriString("https://predicate.com");
-    LibrdfNode res = LibrdfNode::fromUriString("https://resource.com");
-    LibrdfStatement statement(std::move(subject), std::move(pred), std::move(res));
+    LibrdfStatement statement(
+            LibrdfNode::fromUriString("https://subject.com"),
+            LibrdfNode::fromUriString("https://predicate.com"),
+            LibrdfNode::fromUriString("https://resource.com")
+    );
     model.addStatement(statement);
     LibrdfSerializer serializer1 = LibrdfSerializer("ntriples");
     LibrdfUri uri("base_uri");
