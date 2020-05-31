@@ -26,10 +26,13 @@ namespace redland {
         };
 
         std::unique_ptr<librdf_serializer, deleter> serializer_;
+
+        explicit LibrdfSerializer(librdf_serializer *serializer);
+
     public:
         LibrdfSerializer() = default;
 
-        explicit LibrdfSerializer(librdf_serializer *serializer);
+        static LibrdfSerializer fromRawPtr(librdf_serializer *serializer);
 
         explicit LibrdfSerializer(const char *name, const char *mime_type = nullptr,
                                   const char *type_uri = nullptr);

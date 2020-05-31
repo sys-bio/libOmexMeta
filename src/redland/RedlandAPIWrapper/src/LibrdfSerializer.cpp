@@ -50,6 +50,10 @@ namespace redland {
         return output;
     }
 
+    LibrdfSerializer LibrdfSerializer::fromRawPtr(librdf_serializer *serializer) {
+        return LibrdfSerializer(serializer);
+    }
+
 
     int toIOStream(const LibrdfUri &uri, const LibrdfModel *model, const RaptorIOStream &stream);
 }

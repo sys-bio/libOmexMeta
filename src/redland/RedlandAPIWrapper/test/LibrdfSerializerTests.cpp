@@ -46,7 +46,7 @@ TEST_F(LibrdfSerializerTests, TestToString) {
     LibrdfModel model(storage);
     LibrdfNode subject = LibrdfNode::fromUriString("https://subject.com");
     LibrdfNode pred = LibrdfNode::fromUriString("https://predicate.com");
-    LibrdfNode res = LibrdfNode::fromUriString("https://resource.com");
+    LibrdfNode res = LibrdfNode::fromUriString("https://resouibrdfrce.com");
     LibrdfStatement statement(std::move(subject), std::move(pred), std::move(res));
     model.addStatement(statement);
     LibrdfSerializer serializer1 = LibrdfSerializer("rdfxml");
