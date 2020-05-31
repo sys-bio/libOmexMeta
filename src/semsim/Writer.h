@@ -28,10 +28,9 @@ using namespace redland;
 
 namespace semsim {
 
-    class Writer {
+    class Writer : LibrdfSerializer{
         std::string format_;
         std::string base_uri_;
-        LibrdfSerializer serializer;
         const char *mime_type_;
         const char *type_uri_;
         const LibrdfModel &model_;

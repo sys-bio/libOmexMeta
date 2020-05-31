@@ -20,16 +20,16 @@ namespace redland {
      * todo keep an eye on this constructor - could it be the cause of some memory related issues.
      */
             : statement_(std::shared_ptr<librdf_statement>(statement, raptor_free_statement)) {
-        subject_ = LibrdfNode(librdf_statement_get_subject(statement_.get()));
-        predicate_ = LibrdfNode(librdf_statement_get_predicate(statement_.get()));
-        resource_ = LibrdfNode(librdf_statement_get_object(statement_.get()));
-        checkForNull();
+//        subject_ = LibrdfNode(librdf_statement_get_subject(statement_.get()));
+//        predicate_ = LibrdfNode(librdf_statement_get_predicate(statement_.get()));
+//        resource_ = LibrdfNode(librdf_statement_get_object(statement_.get()));
+//        checkForNull();
     }
 
-    LibrdfStatement::LibrdfStatement(LibrdfNode subject, LibrdfNode predicate, LibrdfNode resource)
-            : subject_(std::move(subject)),
-              predicate_(std::move(predicate)),
-              resource_(std::move(resource)) {
+    LibrdfStatement::LibrdfStatement(const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource)
+            : subject_(subject),
+              predicate_(predicate),
+              resource_(resource) {
         statement_ = std::shared_ptr<librdf_statement>(
                 librdf_new_statement_from_nodes(
                         World::getWorld(), subject_.get(), predicate_.get(), resource_.get()
@@ -37,6 +37,21 @@ namespace redland {
         );
         checkForNull();
     }
+
+//    LibrdfStatement::LibrdfStatement(
+//            librdf_node* subject,
+//            librdf_node* predicate,
+//            librdf_node* resource)
+//            : subject_(subject),
+//              predicate_(predicate),
+//              resource_(resource) {
+//        statement_ = std::shared_ptr<librdf_statement>(
+//                librdf_new_statement_from_nodes(
+//                        World::getWorld(), subject_.get(), predicate_.get(), resource_.get()
+//                ), raptor_free_statement
+//        );
+//        checkForNull();
+//    }
 
 
     void LibrdfStatement::checkForNull() {
