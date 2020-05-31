@@ -79,7 +79,7 @@ TEST_F(LibrdfNodeTests, TestLiteral1) {
 //    std::string actual = node.str();
 //    ASSERT_STREQ("Literal Node", actual.c_str());
 }
-
+;//
 TEST_F(LibrdfNodeTests, TestTypedLiteral1) {
     LibrdfNode node = LibrdfNode::fromLiteral("TypedLiteral");
     unsigned char *actual = librdf_node_get_literal_value(node.get());
@@ -88,8 +88,9 @@ TEST_F(LibrdfNodeTests, TestTypedLiteral1) {
 
 TEST_F(LibrdfNodeTests, TestTypedLiteral2) {
     LibrdfNode node = LibrdfNode::fromLiteral("TypedLiteral");
-    std::string actual = node.getLiteralDatatype().str();
-    ASSERT_STREQ("http://www.w3.org/1999/02/22-rdf-syntax-ns#string", actual.c_str());
+    librdf_uri* n = node.getLiteralDatatype();
+    unsigned char* actual = librdf_uri_as_string(n);
+    ASSERT_STREQ("http://www.w3.org/1999/02/22-rdf-syntax-ns#string", (const char*)actual);
 }
 
 TEST_F(LibrdfNodeTests, TestTypedLiteral3) {
@@ -163,8 +164,8 @@ TEST_F(LibrdfNodeTests, TestSetUri) {
 
 TEST_F(LibrdfNodeTests, TestgetLiteralDatatype) {
     LibrdfNode subject = LibrdfNode::fromLiteral("subject");
-    LibrdfUri u = subject.getLiteralDatatype();
-    std::string actual = u.str();
+    librdf_uri* u = subject.getLiteralDatatype();
+    std::string actual = (const char*)librdf_uri_as_string(u);
     std::string expected = "http://www.w3.org/1999/02/22-rdf-syntax-ns#string";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -184,8 +185,8 @@ TEST_F(LibrdfNodeTests, TestValidateLiteralDatatype2) {
 TEST_F(LibrdfNodeTests, TestsetLiteralDatatype) {
     LibrdfNode subject = LibrdfNode::fromLiteral("subject");
     subject.setLiteralDatatype("int");
-    LibrdfUri u = subject.getLiteralDatatype();
-    std::string actual = u.str();
+    librdf_uri* u = subject.getLiteralDatatype();
+    std::string actual = (const char*) librdf_uri_as_string(u);
     std::string expected = "http://www.w3.org/1999/02/22-rdf-syntax-ns#int";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -210,7 +211,7 @@ TEST_F(LibrdfNodeTests, TestSetBlankValueNotChanged) {
     LibrdfNode subject = LibrdfNode::fromBlank("subject");
     subject.setBlankIdentifier("blank subject");
     std::string actual = subject.str();
-    std::string expected = "subject";
+    std::string expected = "blank subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 

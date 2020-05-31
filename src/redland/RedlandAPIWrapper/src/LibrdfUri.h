@@ -27,8 +27,11 @@ namespace redland {
             void operator()(librdf_uri *ptr);
         };
 
-        std::shared_ptr<librdf_uri> uri_;
+        librdf_uri* uri_;
 
+        /*
+         * Hidden to make creating with raw ptr more explicit.
+         */
         explicit LibrdfUri(librdf_uri *uri);
     public:
         LibrdfUri() = default;
