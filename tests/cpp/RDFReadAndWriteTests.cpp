@@ -119,7 +119,25 @@ TEST_F(ReadAndWriteTests, singularannotation1dot) {
 }
 
 TEST_F(ReadAndWriteTests, singularannotation1jsontriples) {
-    std::string expected = "sdd";
+    std::string expected = "{\n"
+                           "  \"triples\" : [\n"
+                           "    {\n"
+                           "      \"subject\" : {\n"
+                           "        \"value\" : \"metaid_1\",\n"
+                           "        \"type\" : \"uri\"\n"
+                           "        },\n"
+                           "      \"predicate\" : {\n"
+                           "        \"value\" : \"http://biomodels.net/biology-qualifiers/is\",\n"
+                           "        \"type\" : \"uri\"\n"
+                           "        },\n"
+                           "      \"object\" : {\n"
+                           "        \"value\" : \"https://identifiers.org/uniprot/P0DP23\",\n"
+                           "        \"type\" : \"uri\"\n"
+                           "        }\n"
+                           "      }\n"
+                           "    ]\n"
+                           "  }\n"
+                           "";
     assertReadAndWrite(samples.singular_annotation1, "json-triples", expected);
 }
 

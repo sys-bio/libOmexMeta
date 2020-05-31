@@ -11,7 +11,7 @@ namespace redland {
 
     void LibrdfStatement::deleter::operator()(librdf_statement *statement) {
         if (statement)
-            raptor_free_statement_wrapper(statement);
+            raptor_free_statement(statement);
     }
 
 
@@ -19,7 +19,7 @@ namespace redland {
     /*
      * todo keep an eye on this constructor - could it be the cause of some memory related issues.
      */
-            : statement_(std::shared_ptr<librdf_statement>(statement, raptor_free_statement_wrapper)) {
+            : statement_(std::shared_ptr<librdf_statement>(statement, raptor_free_statement)) {
         subject_ = LibrdfNode(librdf_statement_get_subject(statement_.get()));
         predicate_ = LibrdfNode(librdf_statement_get_predicate(statement_.get()));
         resource_ = LibrdfNode(librdf_statement_get_object(statement_.get()));
@@ -33,7 +33,7 @@ namespace redland {
         statement_ = std::shared_ptr<librdf_statement>(
                 librdf_new_statement_from_nodes(
                         World::getWorld(), subject_.get(), predicate_.get(), resource_.get()
-                ), raptor_free_statement_wrapper
+                ), raptor_free_statement
         );
         checkForNull();
     }

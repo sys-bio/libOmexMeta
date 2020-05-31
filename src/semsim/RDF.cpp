@@ -258,10 +258,10 @@ namespace semsim {
         Triples triples;
         // todo turn this into method of LibrdfStream
         while (!librdf_stream_end(stream)) {
-            LibrdfStatement statement = LibrdfStatement::fromRawStatementPtr(librdf_stream_get_object(stream));
+            librdf_statement* statement = librdf_stream_get_object(stream);
 
-            std::cout << librdf_statement_get_subject(statement.get()) << std::endl;
-//            triples.push_back(Triple::fromRawStatementPtr(statement));
+            std::cout << librdf_statement_get_subject(statement) << std::endl;
+            triples.push_back(Triple::fromRawStatementPtr(statement));
             librdf_stream_next(stream);
         }
         librdf_free_stream(stream);

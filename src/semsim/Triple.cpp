@@ -19,6 +19,12 @@ namespace semsim {
 
     }
 
+    Triple Triple::fromRawStatementPtr(librdf_statement *statement) {
+        return Triple(statement);
+    }
+
+    Triple::Triple(librdf_statement *statement) : LibrdfStatement(statement) {}
+
 //    std::string Triple::str(std::string format, std::string base) {
 //        return Triple2Writer(*this, base, format).toString();
 //    }
