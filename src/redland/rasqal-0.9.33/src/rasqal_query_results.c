@@ -1370,7 +1370,7 @@ rasqal_query_results_get_triple(rasqal_query_results* query_results)
       rasqal_log_warning_simple(query_results->world,
                                 RASQAL_WARNING_LEVEL_BAD_TRIPLE,
                                 &query->locator,
-                                "Triple with non-RDF subject term skipped");
+                                "_Triple with non-RDF subject term skipped");
       skip = 1;
     } else {
       rs->predicate = rasqal_literal_to_result_term(query_results, t->predicate);
@@ -1378,7 +1378,7 @@ rasqal_query_results_get_triple(rasqal_query_results* query_results)
         rasqal_log_warning_simple(query_results->world,
                                   RASQAL_WARNING_LEVEL_BAD_TRIPLE,
                                   &query->locator,
-                                  "Triple with non-RDF predicate term skipped");
+                                  "_Triple with non-RDF predicate term skipped");
         skip = 1;
       } else {
         rs->object = rasqal_literal_to_result_term(query_results, t->object);
@@ -1386,7 +1386,7 @@ rasqal_query_results_get_triple(rasqal_query_results* query_results)
           rasqal_log_warning_simple(query_results->world,
                                     RASQAL_WARNING_LEVEL_BAD_TRIPLE,
                                     &query->locator,
-                                    "Triple with non-RDF object term skipped");
+                                    "_Triple with non-RDF object term skipped");
           skip = 1;
         } 
       }

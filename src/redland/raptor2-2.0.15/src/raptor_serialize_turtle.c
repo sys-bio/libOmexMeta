@@ -330,7 +330,7 @@ raptor_turtle_emit_subject_list_items(raptor_serializer* serializer,
       case RAPTOR_TERM_TYPE_UNKNOWN:
       default:
         raptor_log_error_formatted(serializer->world, RAPTOR_LOG_LEVEL_ERROR,
-                                   NULL, "Triple has unsupported term type %d", 
+                                   NULL, "_Triple has unsupported term type %d",
                                    object->term->type);
         break;
 
@@ -413,7 +413,7 @@ raptor_turtle_emit_subject_collection_items(raptor_serializer* serializer,
       case RAPTOR_TERM_TYPE_UNKNOWN:
       default:
         raptor_log_error_formatted(serializer->world, RAPTOR_LOG_LEVEL_ERROR,
-                                   NULL, "Triple has unsupported term type %d", 
+                                   NULL, "_Triple has unsupported term type %d",
                                    object->term->type);
         break;
     }
@@ -561,7 +561,7 @@ raptor_turtle_emit_subject_properties(raptor_serializer* serializer,
       case RAPTOR_TERM_TYPE_UNKNOWN:
       default:
         raptor_log_error_formatted(serializer->world, RAPTOR_LOG_LEVEL_ERROR,
-                                   NULL, "Triple has unsupported term type %d", 
+                                   NULL, "_Triple has unsupported term type %d",
                                    object->term->type);
         break;
     }    
@@ -1151,7 +1151,7 @@ raptor_turtle_serializer_register_factory(raptor_serializer_factory *factory)
   factory->desc.names = turtle_names;
   factory->desc.mime_types = turtle_types;
 
-  factory->desc.label = "Turtle Terse RDF Triple Language";
+  factory->desc.label = "Turtle Terse RDF _Triple Language";
   factory->desc.uri_strings = turtle_uri_strings;
   
   factory->context_length     = sizeof(raptor_turtle_context);

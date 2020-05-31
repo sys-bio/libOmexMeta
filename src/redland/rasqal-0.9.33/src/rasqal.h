@@ -887,10 +887,10 @@ typedef struct rasqal_expression_s rasqal_expression;
 
 /**
  * rasqal_triple:
- * @subject: Triple subject.
- * @predicate: Triple predicate.
- * @object: Triple object.
- * @origin: Triple origin.
+ * @subject: _Triple subject.
+ * @predicate: _Triple predicate.
+ * @object: _Triple object.
+ * @origin: _Triple origin.
  * @flags: Or of enum #rasqal_triple_flags bits.
  *
  * A triple pattern or RDF triple.
@@ -1716,7 +1716,7 @@ RASQAL_API
 int rasqal_row_set_value_at(rasqal_row* row, int offset, rasqal_literal* value);
 
 
-/* Triple class */
+/* _Triple class */
 RASQAL_API
 rasqal_triple* rasqal_new_triple(rasqal_literal* subject, rasqal_literal* predicate, rasqal_literal* object);
 RASQAL_API

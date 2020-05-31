@@ -43,9 +43,9 @@
 
 /**
  * rasqal_new_triple:
- * @subject: Triple subject.
- * @predicate: Triple predicate.
- * @object: Triple object.
+ * @subject: _Triple subject.
+ * @predicate: _Triple predicate.
+ * @object: _Triple object.
  * 
  * Constructor - create a new #rasqal_triple triple or triple pattern.
  * Takes ownership of the literals passed in.
@@ -80,7 +80,7 @@ rasqal_new_triple(rasqal_literal* subject, rasqal_literal* predicate,
 
 /**
  * rasqal_new_triple_from_triple:
- * @t: Triple to copy.
+ * @t: _Triple to copy.
  * 
  * Copy constructor - create a new #rasqal_triple from an existing one.
  * 

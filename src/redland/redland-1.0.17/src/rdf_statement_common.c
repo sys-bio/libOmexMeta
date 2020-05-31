@@ -1,6 +1,6 @@
 /* -*- Mode: c; c-basic-offset: 2 -*-
  *
- * rdf_statement_common.c - RDF Triple (Statement) interface
+ * rdf_statement_common.c - RDF _Triple (Statement) interface
  *
  * Copyright (C) 2000-2008, David Beckett http://www.dajobe.org/
  * Copyright (C) 2000-2005, University of Bristol, UK http://www.bristol.ac.uk/

@@ -60,9 +60,4 @@ TEST_F(LibrdfUriTests, TestIsEmpty2) {
     ASSERT_TRUE(uri.isNull());
 }
 
-//TEST_F(LibrdfUriTests, TestIsEmpty3) {
-//    LibrdfUri uri((std::string()));
-//    std::cout << uri.str()<< std::endl;
-//}
-
 

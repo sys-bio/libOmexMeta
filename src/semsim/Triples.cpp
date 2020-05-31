@@ -34,13 +34,13 @@ namespace semsim {
 
     void Triples::emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, Resource resource) {
         Triple triple(std::move(subject), std::make_unique<BiomodelsBiologyQualifier>(std::move(predicate)),
-                      std::move(resource));
+                       std::move(resource));
         triples_.push_back(std::make_unique<Triple>(std::move(triple)));
     }
 
     void Triples::emplace_back(Subject subject, BiomodelsModelQualifier predicate, Resource resource) {
         Triple triple(std::move(subject), std::make_unique<BiomodelsModelQualifier>(std::move(predicate)),
-                      std::move(resource));
+                       std::move(resource));
         triples_.push_back(std::make_unique<Triple>(std::move(triple)));
     }
 
@@ -54,10 +54,9 @@ namespace semsim {
         triples_.push_back(std::make_unique<Triple>(std::move(triple)));
     }
 
-    void Triples::emplace_back(LibrdfStatement statement) {
-        Triple triple = Triple::fromStatement(std::move(statement));
-        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
-    }
+//    void Triples::emplace_back(LibrdfStatement statement) {
+//        triples_.push_back(std::make_unique<Triple>(statement));
+//    }
 
 
     std::vector<std::string> Triples::getSubjectsStr() {

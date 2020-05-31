@@ -337,7 +337,7 @@ rasqal_triples_match_is_end(struct rasqal_triples_match_s* rtm)
 
 /**
  * rasqal_reset_triple_meta:
- * @m: Triple pattern metadata
+ * @m: _Triple pattern metadata
  * 
  * INTERNAL - reset the metadata associated with a triple pattern
  * 

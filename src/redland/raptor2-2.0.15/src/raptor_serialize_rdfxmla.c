@@ -451,7 +451,7 @@ raptor_rdfxmla_emit_subject_list_items(raptor_serializer* serializer,
       case RAPTOR_TERM_TYPE_UNKNOWN:
       default:
         raptor_log_error_formatted(serializer->world, RAPTOR_LOG_LEVEL_ERROR,
-                                   NULL, "Triple has unsupported term type %d", 
+                                   NULL, "_Triple has unsupported term type %d",
                                    object->term->type);
         break;
 
@@ -586,7 +586,7 @@ raptor_rdfxmla_emit_subject_properties(raptor_serializer* serializer,
       case RAPTOR_TERM_TYPE_UNKNOWN:
       default:
         raptor_log_error_formatted(serializer->world, RAPTOR_LOG_LEVEL_ERROR,
-                                   NULL, "Triple has unsupported term type %d", 
+                                   NULL, "_Triple has unsupported term type %d",
                                    object->term->type);
         break;
     }    

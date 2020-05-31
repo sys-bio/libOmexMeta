@@ -213,7 +213,7 @@ TEST_F(WriterTests, Testnquads) {
 //semsim::BiomodelsBiologyQualifier predicate = semsim::BiomodelsBiologyQualifier("is");
 //semsim::PredicatePtr predicatePtr = std::make_shared<semsim::Predicate>(predicate);
 //
-//semsim::Triple triple(subject, predicatePtr, resource);
+//semsim::_Triple triple(subject, predicatePtr, resource);
 //
 //semsim::TripleWriter tripleWriter(triple);
 //std::cout << tripleWriter.
@@ -251,8 +251,8 @@ TEST_F(WriterTests, Testnquads) {
 //semsim::PredicatePtr predicatePtr = std::make_shared<semsim::Predicate>(predicate);
 //semsim::PredicatePtr predicatePtr2 = std::make_shared<semsim::Predicate>(predicate2);
 //
-//semsim::Triple triple1(subject, predicatePtr, resource);
-//semsim::Triple triple2(subject, predicatePtr2, resource);
+//semsim::_Triple triple1(subject, predicatePtr, resource);
+//semsim::_Triple triple2(subject, predicatePtr2, resource);
 //semsim::Triples triples({triple1, triple2});
 //
 //semsim::TripleWriter tripleWriter(triples);
