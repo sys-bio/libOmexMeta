@@ -138,36 +138,42 @@ TEST_F(TripleTests, TestNullExceptionRes) {
                  semsim::NullPointerException);
 }
 
-TEST_F(TripleTests, TestToStatementSubject) {
-    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
-    LibrdfStatement statement = triple1.toStatement();
-    LibrdfNode subject = statement.getSubject();
-    std::string actual = subject.str();
-    std::string expected = "./MyModel#metaid_0";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-}
-
 TEST_F(TripleTests, TestToStatementPrediacte) {
     Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
-    LibrdfStatement statement = triple1.toStatement();
-    std::string actual = statement.getPredicate().str();
+    librdf_statement* statement = triple1.toStatement();
+    librdf_node* node = librdf_statement_get_predicate(statement);
+    librdf_uri* uri = librdf_node_get_uri(node);
+    unsigned char* actual = librdf_uri_as_string(uri);
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_STREQ(expected.c_str(), (const char*)actual);
+}
+
+TEST_F(TripleTests, TestToStatementSubject) {
+    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    librdf_statement* statement = triple1.toStatement();
+    librdf_node* node = librdf_statement_get_subject(statement);
+    librdf_uri* uri = librdf_node_get_uri(node);
+    unsigned char* actual = librdf_uri_as_string(uri);
+    std::string expected = "./MyModel#metaid_0";
+    ASSERT_STREQ(expected.c_str(), (const char*)actual);
 }
 
 
 TEST_F(TripleTests, TestToStatementResource) {
-    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
-    LibrdfStatement statement = triple1.toStatement();
-    std::string actual = statement.getResource().str();
-    const char *expected = "https://identifiers.org/uniprot/P0DP23";
-    ASSERT_STREQ(expected, actual.c_str());
+        Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    librdf_statement* statement = triple1.toStatement();
+    librdf_node* node = librdf_statement_get_object(statement);
+    librdf_uri* uri = librdf_node_get_uri(node);
+    unsigned char* actual = librdf_uri_as_string(uri);
+    std::string expected = "https://identifiers.org/uniprot/P0DP23";
+    ASSERT_STREQ(expected.c_str(), (const char*)actual);
+
 }
 
 TEST_F(TripleTests, TestFromStatementSubject) {
     Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
-    LibrdfStatement statement = triple1.toStatement();
-    Triple triple2 = Triple::fromStatement(std::move(statement));
+    librdf_statement* statement = triple1.toStatement();
+    Triple triple2 = Triple::fromStatement(LibrdfStatement(statement));
     std::string actual = triple2.getSubjectStr();
     std::string expected = "./MyModel#metaid_0";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -175,8 +181,8 @@ TEST_F(TripleTests, TestFromStatementSubject) {
 
 TEST_F(TripleTests, TestFromStatementResource) {
     Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
-    LibrdfStatement statement = triple1.toStatement();
-    Triple triple2 = Triple::fromStatement(std::move(statement));
+    librdf_statement* statement = triple1.toStatement();
+    Triple triple2 = Triple::fromStatement(LibrdfStatement(statement));
     std::string actual = triple2.getResourceStr();
     std::string expected = "https://identifiers.org/uniprot/P0DP23";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -184,8 +190,8 @@ TEST_F(TripleTests, TestFromStatementResource) {
 
 TEST_F(TripleTests, TestFromStatementPredicate) {
     Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
-    LibrdfStatement statement = triple1.toStatement();
-    Triple triple2 = Triple::fromStatement(std::move(statement));
+    librdf_statement* statement = triple1.toStatement();
+    Triple triple2 = Triple::fromStatement(LibrdfStatement(statement));
     std::string actual = triple2.getPredicateStr();
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     ASSERT_STREQ(expected.c_str(), actual.c_str()
