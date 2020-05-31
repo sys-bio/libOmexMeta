@@ -18,8 +18,8 @@ namespace redland {
     }
 
     LibrdfNode::LibrdfNode(librdf_node *node)
-            : node_(std::shared_ptr<librdf_node>(node, raptor_free_term_wrapper)) {
-        uri_ = LibrdfUri(node_->value.uri);
+            : node_(std::shared_ptr<librdf_node>(node, raptor_free_term)) {
+        uri_ = LibrdfUri::fromRawPtr(node_->value.uri);
     }
 
     LibrdfNode LibrdfNode::fromUriString(const std::string &uri_string) {
@@ -134,7 +134,7 @@ namespace redland {
      */
 
     LibrdfUri LibrdfNode::getLiteralDatatype() {
-        return LibrdfUri(librdf_node_get_literal_value_datatype_uri(node_.get()));
+        return LibrdfUri::fromRawPtr(librdf_node_get_literal_value_datatype_uri(node_.get()));
     }
 
     std::string LibrdfNode::getLiteralLanguage() {
@@ -165,9 +165,9 @@ namespace redland {
          */
         node_ = std::shared_ptr<librdf_node>(librdf_new_node_from_uri_string(
                 World::getWorld(), (const unsigned char *) uri.c_str()),
-                                             raptor_free_term_wrapper
+                                             raptor_free_term
         );
-        uri_ = LibrdfUri(librdf_node_get_uri(node_.get()));
+        uri_ = LibrdfUri::fromRawPtr(librdf_node_get_uri(node_.get()));
 
     }
 
@@ -184,7 +184,7 @@ namespace redland {
                         (const char *) node_->value.literal.language,
                         librdf_new_uri(World::getWorld(),
                                        (unsigned char *) literal_datatype_.c_str())
-                ), raptor_free_term_wrapper);
+                ), raptor_free_term);
     }
 
     void LibrdfNode::setBlankIdentifier(const std::string &identifier) {
@@ -195,7 +195,7 @@ namespace redland {
                 librdf_new_node_from_blank_identifier(
                         World::getWorld(),
                         (const unsigned char *) identifier.c_str()
-                ), raptor_free_term_wrapper);
+                ), raptor_free_term);
     }
 
 

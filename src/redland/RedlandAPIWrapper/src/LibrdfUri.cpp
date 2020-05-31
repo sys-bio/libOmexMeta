@@ -11,26 +11,32 @@ namespace redland {
             raptor_free_uri_wrapper(ptr);
     }
 
+
+    LibrdfUri LibrdfUri::fromRawPtr(librdf_uri *uri) {
+        return LibrdfUri(uri);
+    }
+
+
     LibrdfUri::LibrdfUri(librdf_uri *uri)
-            : librdf_uri_(std::shared_ptr<librdf_uri>(uri, raptor_free_uri_wrapper)) {}
+            : uri_(std::shared_ptr<librdf_uri>(uri, raptor_free_uri)) {}
 
     LibrdfUri::LibrdfUri(const std::string &uri) {
-        librdf_uri_ = std::shared_ptr<librdf_uri>(
+        uri_ = std::shared_ptr<librdf_uri>(
                 librdf_new_uri(World::getWorld(), (const unsigned char *) uri.c_str()),
-                raptor_free_uri_wrapper);
+                raptor_free_uri);
     }
 
     std::string LibrdfUri::str() const {
         if (isNull())
             throw RedlandNullPointerException("RedlandNullPointerException: LibrdfUri::str(): uri is null");
-        librdf_uri* u = get();
-        unsigned char* cstr = librdf_uri_as_string(u);
+        librdf_uri *u = get();
+        unsigned char *cstr = librdf_uri_as_string(u);
         std::string s = (const char *) cstr;
         return s;
     }
 
     librdf_uri *LibrdfUri::get() const {
-        return librdf_uri_.get();
+        return uri_.get();
     }
 
     bool LibrdfUri::isNull() const {
@@ -39,7 +45,8 @@ namespace redland {
 
     bool LibrdfUri::isEmpty() const {
         if (isNull())
-            throw RedlandNullPointerException("RedlandNullPointerException: LibrdfUri::isEmpty(): uri is null on access");
+            throw RedlandNullPointerException(
+                    "RedlandNullPointerException: LibrdfUri::isEmpty(): uri is null on access");
         return str().empty();
     }
 
