@@ -55,7 +55,7 @@ namespace redland {
 
         [[nodiscard]] std::string str() const;
 
-        LibrdfUri getLiteralDatatype();
+        librdf_uri* getLiteralDatatype();
 
         std::string getLiteralLanguage();
 

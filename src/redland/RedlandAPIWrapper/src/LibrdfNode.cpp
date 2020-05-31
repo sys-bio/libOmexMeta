@@ -14,7 +14,7 @@ namespace redland {
 
     void LibrdfNode::deleter::operator()(librdf_node *node) {
         if (node)
-            raptor_free_term_wrapper(node);
+            raptor_free_term(node);
     }
 
     LibrdfNode::LibrdfNode(librdf_node *node)
@@ -64,7 +64,7 @@ namespace redland {
     LibrdfNode
     LibrdfNode::fromLiteral(const std::string &literal, const std::string &xml_language,
                             const std::string &literal_datatype_uri) {
-        std::string literal_datatype_ = validateLiteralDatatype(literal_datatype_);
+        std::string literal_datatype_ = validateLiteralDatatype(literal_datatype_uri);
         const char *xml_language_;
         if (xml_language.empty()) {
             xml_language_ = nullptr;
@@ -133,8 +133,8 @@ namespace redland {
      * if they are empty
      */
 
-    LibrdfUri LibrdfNode::getLiteralDatatype() {
-        return LibrdfUri::fromRawPtr(librdf_node_get_literal_value_datatype_uri(node_.get()));
+    librdf_uri* LibrdfNode::getLiteralDatatype() {
+        return librdf_node_get_literal_value_datatype_uri(node_.get());
     }
 
     std::string LibrdfNode::getLiteralLanguage() {
