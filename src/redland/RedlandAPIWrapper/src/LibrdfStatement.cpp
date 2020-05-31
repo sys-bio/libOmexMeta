@@ -21,8 +21,8 @@ namespace redland {
      */
             : statement_(std::shared_ptr<librdf_statement>(statement, raptor_free_statement_wrapper)) {
         subject_ = LibrdfNode(librdf_statement_get_subject(statement_.get()));
-        predicate_ = LibrdfNode(librdf_statement_get_subject(statement_.get()));
-        resource_ = LibrdfNode(librdf_statement_get_subject(statement_.get()));
+        predicate_ = LibrdfNode(librdf_statement_get_predicate(statement_.get()));
+        resource_ = LibrdfNode(librdf_statement_get_object(statement_.get()));
         checkForNull();
     }
 
@@ -75,15 +75,15 @@ namespace redland {
         return statement_.get();
     }
 
-    const LibrdfNode &LibrdfStatement::getSubject() const {
+    LibrdfNode LibrdfStatement::getSubject() const {
         return subject_;
     }
 
-    const LibrdfNode &LibrdfStatement::getPredicate() const {
+    LibrdfNode LibrdfStatement::getPredicate() const {
         return predicate_;
     }
 
-    const LibrdfNode &LibrdfStatement::getResource() const {
+    LibrdfNode LibrdfStatement::getResource() const {
         return resource_;
     }
 

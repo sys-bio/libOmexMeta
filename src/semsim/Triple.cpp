@@ -32,7 +32,7 @@ namespace semsim {
             throw NullPointerException("NullPointerException: Triple::Triple(): Resource node is null");
     }
 
-    LibrdfStatement Triple::toStatement() {
+    librdf_statement * Triple::toStatement() {
         librdf_node *s = subject_.getNode().get();
         if (!s)
             throw NullPointerException("NullPointerException: Triple::toStatement(): Subject node is null");
@@ -46,7 +46,7 @@ namespace semsim {
         librdf_statement *stmt = librdf_new_statement_from_nodes(
                 World::getWorld(), s, p, r
         );
-        return LibrdfStatement(stmt);
+        return stmt;
     }
 
     Triple Triple::fromStatement(LibrdfStatement statement) {

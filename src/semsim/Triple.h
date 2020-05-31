@@ -53,7 +53,7 @@ namespace semsim {
 
         std::string getResourceStr() const;
 
-        LibrdfStatement toStatement();
+        librdf_statement * toStatement();
 
         static Triple fromStatement(LibrdfStatement statement);
 

@@ -91,33 +91,23 @@ namespace redland {
             throw RedlandNullPointerException("LibrdfNode::str(): NullPointerException: node_");
         }
         std::string value;
-        std::ostringstream err;
-        err << "NullPointerException: LibrdfNode::str():";
         switch (node_->type) {
             case RAPTOR_TERM_TYPE_URI: {
                 value = (const char *) librdf_uri_as_string(librdf_node_get_uri(node_.get()));
-                err << "RAPTOR_TERM_TYPE_URI: ";
                 break;
             }
             case RAPTOR_TERM_TYPE_LITERAL: {
-                err << "RAPTOR_TERM_TYPE_LITERAL: ";
                 value = (const char *) librdf_node_get_literal_value(node_.get());
                 break;
             }
             case RAPTOR_TERM_TYPE_BLANK: {
-                err << "RAPTOR_TERM_TYPE_BLANK: ";
                 value = (const char *) librdf_node_get_blank_identifier(node_.get());
                 break;
             }
             default:
                 throw RedlandLibrdfException("RedlandLibrdfException: Librdf::Str() : Unrecognized term type");
         }
-        err << "value is nullptr" << std::endl;
-        if (value.empty()) {
-            throw RedlandNullPointerException(err.str());
-        }
-        std::string output = value;
-        return output;
+        return value;
     }
 
     raptor_term_type LibrdfNode::getRaptorTermType() {

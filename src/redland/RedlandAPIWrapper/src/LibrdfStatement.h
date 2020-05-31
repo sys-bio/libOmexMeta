@@ -38,11 +38,11 @@ namespace redland {
 
         librdf_statement *get() const;
 
-        const LibrdfNode &getSubject() const;
+        LibrdfNode getSubject() const;
 
-        const LibrdfNode &getPredicate() const;
+        LibrdfNode getPredicate() const;
 
-        const LibrdfNode &getResource() const;
+        LibrdfNode getResource() const;
 
 
         void checkForNull();
