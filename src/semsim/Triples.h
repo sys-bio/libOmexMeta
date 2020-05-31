@@ -38,7 +38,7 @@ namespace semsim {
 
         void push_back(Triple triple);
 
-        void emplace_back(LibrdfStatement statement);
+//        void emplace_back(LibrdfStatement statement);
 
         void emplace_back(Subject subject, PredicatePtr predicatePtr, Resource resource);
 

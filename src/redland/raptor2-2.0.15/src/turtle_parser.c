@@ -3465,7 +3465,7 @@ raptor_turtle_parser_register_factory(raptor_parser_factory *factory)
 
   factory->desc.mime_types = turtle_types;
 
-  factory->desc.label = "Turtle Terse RDF Triple Language";
+  factory->desc.label = "Turtle Terse RDF _Triple Language";
   factory->desc.uri_strings = turtle_uri_strings;
 
   factory->desc.flags = RAPTOR_SYNTAX_NEED_BASE_URI;

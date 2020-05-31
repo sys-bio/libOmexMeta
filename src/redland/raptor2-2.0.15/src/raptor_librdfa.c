@@ -121,7 +121,7 @@ raptor_librdfa_generate_statement(rdftriple* triple, void* callback_data)
 
   if(!triple->subject || !triple->predicate || !triple->object) {
 #ifdef RAPTOR_DEBUG
-    RAPTOR_FATAL1("Triple has NULL parts\n");
+    RAPTOR_FATAL1("_Triple has NULL parts\n");
 #endif
     rdfa_free_triple(triple);
     return;
@@ -137,7 +137,7 @@ raptor_librdfa_generate_statement(rdftriple* triple, void* callback_data)
   
   if(triple->object_type == RDF_TYPE_NAMESPACE_PREFIX) {
 #ifdef RAPTOR_DEBUG
-    RAPTOR_FATAL1("Triple has namespace object type\n");
+    RAPTOR_FATAL1("_Triple has namespace object type\n");
 #endif
     rdfa_free_triple(triple);
     return;
@@ -219,7 +219,7 @@ raptor_librdfa_generate_statement(rdftriple* triple, void* callback_data)
     raptor_free_uri(datatype_uri);
   } else {
     raptor_log_error_formatted(parser->world, RAPTOR_LOG_LEVEL_ERROR, NULL,
-                               "Triple has unknown object term type %d", 
+                               "_Triple has unknown object term type %d",
                                s->object->type);
     goto cleanup;
   }

@@ -451,13 +451,13 @@ static int raptor_json_yajl_end_map(void * ctx)
     return 1;
   } else if(context->state == RAPTOR_JSON_STATE_TRIPLES_TRIPLE) {
     if(!context->statement.subject) {
-      raptor_parser_error(rdf_parser, "Triple is missing a subject term");
+      raptor_parser_error(rdf_parser, "_Triple is missing a subject term");
       return 0;
     } else if(!context->statement.predicate) {
-      raptor_parser_error(rdf_parser, "Triple is missing a predicate term");
+      raptor_parser_error(rdf_parser, "_Triple is missing a predicate term");
       return 0;
     } else if(!context->statement.object) {
-      raptor_parser_error(rdf_parser, "Triple is missing a object term");
+      raptor_parser_error(rdf_parser, "_Triple is missing a object term");
       return 0;
     } else {
       /* Generate the statement */

@@ -36,13 +36,13 @@ public:
 };
 
 TEST_F(TriplesTests, TestCreate) {
-    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    Triple triple1(subject, predicate, resource);
     Triples triples(std::move(triple1));
     ASSERT_EQ(1, triples.size());
 }
 
 TEST_F(TriplesTests, TestCreate2) {
-    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    Triple triple1(subject, predicate, resource);
     TripleVector vec;
     vec.push_back(std::move(triple1));
     Triples triples(std::move(vec));
@@ -50,7 +50,7 @@ TEST_F(TriplesTests, TestCreate2) {
 }
 
 TEST_F(TriplesTests, TestPushBack) {
-    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
+    Triple triple1(subject, predicate, resource);
     Triples triples;
     triples.push_back(std::move(triple1));
     ASSERT_EQ(1, triples.size());
@@ -97,11 +97,4 @@ TEST_F(TriplesTests, TestEmplaceBack6) {
 }
 
 
-TEST_F(TriplesTests, TestEmplaceBackStatement) {
-    Triple triple1(std::move(subject), std::move(predicate), std::move(resource));
-    librdf_statement* statement = triple1.toStatement();
-    Triples triples;
-//    triples.emplace_back(statement);
-//    ASSERT_EQ(1, triples.size());
-}
 

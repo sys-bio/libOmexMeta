@@ -3,7 +3,7 @@
 //
 
 
-#include <semsim/Triple.h>
+#include <semsim/_Triple.h>
 #include "gtest/gtest.h"
 #include "librdf.h"
 #include "semsim/PhysicalPropertyResource.h"

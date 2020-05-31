@@ -7,94 +7,32 @@
 
 namespace semsim {
 
-    Triple::Triple(Subject subject, PredicatePtr predicate_ptr, Resource resource)
-            : subject_(std::move(subject)),
-              predicate_ptr_(std::move(predicate_ptr)),
-              resource_(std::move(resource)) {
-        checkForNull();
+    Triple::Triple(const Subject& subject, const PredicatePtr& predicate_ptr, const Resource& resource)
+            : LibrdfStatement(subject.getNode(),
+                      predicate_ptr->getNode(),
+                      resource.getNode()){
     }
+    Triple::Triple(const Subject& subject, const Predicate& predicate, const Resource& resource)
+            : LibrdfStatement(subject.getNode(),
+                      predicate.getNode(),
+                      resource.getNode()){
 
-    Triple::Triple(Subject subject, Predicate predicate, Resource resource)
-            : subject_(std::move(subject)),
-              predicate_ptr_(std::make_unique<Predicate>(std::move(predicate))),
-              resource_(std::move(resource)) {
-        checkForNull();
-    }
-
-    void Triple::checkForNull() {
-        if (!subject_.getNode().get())
-            throw NullPointerException("NullPointerException: Triple::Triple(): Subject node is null");
-
-        if (!predicate_ptr_) //todo another check on underlying pointer if possible (so far checking for null causes seg fault)
-            throw NullPointerException("NullPointerException: Triple::Triple(): Predicate node is null");
-
-        if (!resource_.getNode().get())
-            throw NullPointerException("NullPointerException: Triple::Triple(): Resource node is null");
-    }
-
-    librdf_statement * Triple::toStatement() {
-        librdf_node *s = subject_.getNode().get();
-        if (!s)
-            throw NullPointerException("NullPointerException: Triple::toStatement(): Subject node is null");
-        librdf_node *p = predicate_ptr_->getNode().get();
-        if (!p)
-            throw NullPointerException("NullPointerException: Triple::toStatement(): Subject node is null");
-        librdf_node *r = resource_.getNode().get();
-        if (!r)
-            throw NullPointerException("NullPointerException: Triple::toStatement(): Subject node is null");
-
-        librdf_statement *stmt = librdf_new_statement_from_nodes(
-                World::getWorld(), s, p, r
-        );
-        return stmt;
-    }
-
-    Triple Triple::fromStatement(LibrdfStatement statement) {
-        Subject subject(LibrdfNode::fromUriString((const char *) statement.get()->subject));
-        PredicatePtr predicatePtr = std::make_unique<Predicate>(
-                Predicate(LibrdfNode::fromUriString((const char *) statement.get()->predicate))
-        );
-        Resource resource(LibrdfNode::fromUriString((const char *) statement.get()->object));
-        return Triple(std::move(subject), std::move(predicatePtr), std::move(resource));
-    }
-
-    std::string Triple::getSubjectStr() const {
-        return subject_.str();
-    }
-
-    std::string Triple::getPredicateStr() const {
-        return predicate_ptr_->str();
-    }
-
-    std::string Triple::getResourceStr() const {
-        return resource_.str();
     }
 
 //    std::string Triple::str(std::string format, std::string base) {
-//        return TripleWriter(*this, base, format).toString();
-//    }
-
-//    void Triple::setSubject(const Subject &subject) {
-//        subject_ = std::move(subject);
-//    }
-//
-//    void Triple::setPredicatePtr(const PredicatePtr &predicatePtr) {
-//        predicate_ptr_ = std::move(predicatePtr);
-//    }
-////
-//    void Triple::setResource(const Resource &resource) {
-//        resource_ = resource;
+//        return Triple2Writer(*this, base, format).toString();
 //    }
 
 //    semsim::Triple &semsim::Triple::setAbout(const std::string &about) {
-//        subject_ = std::move(Subject(LibrdfNode::fromUriString(about)));
+//        subject_ = subject_.
+//                std::move(Subject(LibrdfNode::fromUriString(about)));
 //        return (*this);
 //    }
 //
 //    std::string semsim::Triple::getAbout() const {
 //        return getSubject().str();
 //    }
-//
+
 //    semsim::Triple &
 //    semsim::Triple::setPredicate(const std::string &namespace_, const std::string &term) {
 //        predicate_ptr_ = semsim::PredicateFactory(world_, namespace_, term);
@@ -124,5 +62,5 @@ namespace semsim {
 //    }
 //
 //}
-
+//
 }

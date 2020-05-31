@@ -623,7 +623,7 @@ rasqal_dataset_print(rasqal_dataset* ds, FILE *fh)
     if(!triple)
       break;
 
-    fputs("Triple ", fh);
+    fputs("_Triple ", fh);
     rasqal_triple_print(triple, fh);
     fputc('\n', fh);
 

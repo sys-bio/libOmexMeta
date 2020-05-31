@@ -27,23 +27,28 @@ namespace redland {
 
         std::shared_ptr<librdf_statement> statement_;
 
+        explicit LibrdfStatement(librdf_statement *statement);
+
     public:
         LibrdfStatement() = default;
-
-        explicit LibrdfStatement(librdf_statement *statement);
+        
+        static LibrdfStatement fromRawStatementPtr(librdf_statement* statement);
 
         explicit LibrdfStatement(LibrdfNode subject, LibrdfNode predicate, LibrdfNode resource);
 
-//        explicit LibrdfStatement(const LibrdfNode& subject, const LibrdfNode& predicate, const  LibrdfNode& resource);
+        [[nodiscard]] librdf_statement *get() const;
 
-        librdf_statement *get() const;
+        [[nodiscard]] LibrdfNode getSubject() const;
 
-        LibrdfNode getSubject() const;
+        [[nodiscard]] LibrdfNode getPredicate() const;
 
-        LibrdfNode getPredicate() const;
+        [[nodiscard]] LibrdfNode getResource() const;
 
-        LibrdfNode getResource() const;
+        [[nodiscard]] std::string getSubjectStr() const;
 
+        [[nodiscard]] std::string getPredicateStr() const;
+
+        [[nodiscard]] std::string getResourceStr() const;
 
         void checkForNull();
     };
