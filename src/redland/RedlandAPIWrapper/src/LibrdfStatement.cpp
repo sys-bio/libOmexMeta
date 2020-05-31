@@ -15,24 +15,24 @@ namespace redland {
     }
 
 
-    LibrdfStatement::LibrdfStatement(librdf_statement *statement)
-    /*
-     * todo keep an eye on this constructor - could it be the cause of some memory related issues.
-     */
-            : statement_(std::shared_ptr<librdf_statement>(statement, raptor_free_statement)) {
+//    LibrdfStatement::LibrdfStatement(librdf_statement *statement)
+//    /*
+//     * todo keep an eye on this constructor - could it be the cause of some memory related issues.
+//     */
+//            : statement_(std::shared_ptr<librdf_statement>(statement, raptor_free_statement)) {
 //        subject_ = LibrdfNode(librdf_statement_get_subject(statement_.get()));
 //        predicate_ = LibrdfNode(librdf_statement_get_predicate(statement_.get()));
 //        resource_ = LibrdfNode(librdf_statement_get_object(statement_.get()));
 //        checkForNull();
-    }
+//    }
 
-    LibrdfStatement::LibrdfStatement(const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource)
+    LibrdfStatement::LibrdfStatement(librdf_node* subject, librdf_node* predicate, librdf_node* resource)
             : subject_(subject),
               predicate_(predicate),
               resource_(resource) {
         statement_ = std::shared_ptr<librdf_statement>(
                 librdf_new_statement_from_nodes(
-                        World::getWorld(), subject_.get(), predicate_.get(), resource_.get()
+                        World::getWorld(), subject_, predicate_, resource_
                 ), raptor_free_statement
         );
         checkForNull();
@@ -55,15 +55,15 @@ namespace redland {
 
 
     void LibrdfStatement::checkForNull() {
-        if (!subject_.get())
+        if (!subject_)
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStatement::checkForNull(): subject_ node is null");
 
-        if (!predicate_.get()) //todo another check on underlying pointer if possible (so far checking for null causes seg fault)
+        if (!predicate_) //todo another check on underlying pointer if possible (so far checking for null causes seg fault)
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStatement::checkForNull(): predicate_ node is null");
 
-        if (!resource_.get())
+        if (!resource_)
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStatement::checkForNull(): resource_ node is null");
 
@@ -76,32 +76,32 @@ namespace redland {
         return statement_.get();
     }
 
-    LibrdfNode LibrdfStatement::getSubject() const {
+    librdf_node* LibrdfStatement::getSubject() const {
         return subject_;
     }
 
-    LibrdfNode LibrdfStatement::getPredicate() const {
+    librdf_node* LibrdfStatement::getPredicate() const {
         return predicate_;
     }
 
-    LibrdfNode LibrdfStatement::getResource() const {
+    librdf_node* LibrdfStatement::getResource() const {
         return resource_;
     }
 
-    std::string LibrdfStatement::getResourceStr() const {
-        return getResource().str();
-    }
+//    std::string LibrdfStatement::getResourceStr() const {
+//        return librdf_node_get_getResource().str();
+//    }
+//
+//    std::string LibrdfStatement::getSubjectStr() const {
+//        return getSubject().str();
+//    }
+//
+//    std::string LibrdfStatement::getPredicateStr() const {
+//        return getPredicate().str();
+//    }
 
-    std::string LibrdfStatement::getSubjectStr() const {
-        return getSubject().str();
-    }
-
-    std::string LibrdfStatement::getPredicateStr() const {
-        return getPredicate().str();
-    }
-
-    LibrdfStatement LibrdfStatement::fromRawStatementPtr(librdf_statement* statement) {
-        return LibrdfStatement(statement);
-    }
+//    LibrdfStatement LibrdfStatement::fromRawStatementPtr(librdf_statement* statement) {
+//        return LibrdfStatement(statement);
+//    }
 
 }

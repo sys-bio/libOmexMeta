@@ -329,7 +329,7 @@ void UntypedFunctionMockerBase::RegisterOwner(const void* mock_obj)
 void UntypedFunctionMockerBase::SetOwnerAndName(const void* mock_obj,
                                                 const char* name)
     GTEST_LOCK_EXCLUDED_(g_gmock_mutex) {
-  // We protect name_ under g_gmock_mutex in case this mock function
+  // We protect format_ under g_gmock_mutex in case this mock function
   // is called from two threads concurrently.
   MutexLock l(&g_gmock_mutex);
   mock_obj_ = mock_obj;
@@ -359,7 +359,7 @@ const char* UntypedFunctionMockerBase::Name() const
     GTEST_LOCK_EXCLUDED_(g_gmock_mutex) {
   const char* name;
   {
-    // We protect name_ under g_gmock_mutex in case this mock
+    // We protect format_ under g_gmock_mutex in case this mock
     // function is called from two threads concurrently.
     MutexLock l(&g_gmock_mutex);
     Assert(name_ != nullptr, __FILE__, __LINE__,

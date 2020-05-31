@@ -2,17 +2,18 @@
 
 set(TEST_SOURCES
         SBMLFactory.h
-        SubjectTests.cpp
-        PredicateTests.cpp
-        ResourceTests.cpp
-        CurlGetTests.cpp
-        TripleTests.cpp
-        TripplesTests.cpp
         SemsimUtilsTests.cpp
-        ReaderTests.cpp
-        WriterTests.cpp
-        RDFTests.cpp
-        RDFReadAndWriteTests.cpp
+        RDF2Tests.cpp
+#        SubjectTests.cpp
+#        PredicateTests.cpp
+#        ResourceTests.cpp
+#        CurlGetTests.cpp
+#        TripleTests.cpp
+#        TripplesTests.cpp
+#        ReaderTests.cpp
+#        WriterTests.cpp
+#        RDFTests.cpp
+#        RDFReadAndWriteTests.cpp
         #        AnnotationSamples.h
         #        MetaIDTests.cpp
         #        XmlAssistantTests.cpp
@@ -29,7 +30,7 @@ set(TEST_SOURCES
         )
 
 if (REDLAND_WRAPPER_TESTS)
-    set(TEST_SOURCES ${TEST_SOURCES} ${REDLAND_WRAPPER_TEST_SOURCES})
+    set(TEST_SOURCES ${TEST_SOURCES} ${REDLAND_WRAPPER_TEST_SOURCES} RDF2Tests.cpp)
 endif ()
 
 add_executable(semsim-tests ${TEST_SOURCES})

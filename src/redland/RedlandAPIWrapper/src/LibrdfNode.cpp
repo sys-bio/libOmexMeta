@@ -22,7 +22,7 @@ namespace redland {
         uri_ = LibrdfUri::fromRawPtr(node_->value.uri);
     }
 
-    LibrdfNode LibrdfNode::fromUriString(const std::string &uri_string) {
+    librdf_node *LibrdfNode::fromUriString(const std::string &uri_string) {
         std::string identifier_dot_org = "https://identifiers.org/";
         std::regex identifiers_regex(identifier_dot_org);
         std::regex http_regex("^https://");
@@ -39,14 +39,12 @@ namespace redland {
         }
         librdf_node *n = librdf_new_node_from_uri_string(
                 World::getWorld(), (const unsigned char *) uri_string_.c_str());
-        return LibrdfNode(n);
+        return n;
     }
 
-    LibrdfNode LibrdfNode::fromBlank(const std::string &blank) {
-        return LibrdfNode(
-                librdf_new_node_from_blank_identifier(
-                        World::getWorld(), (const unsigned char *) blank.c_str()
-                )
+    librdf_node *LibrdfNode::fromBlank(const std::string &blank) {
+        return librdf_new_node_from_blank_identifier(
+                World::getWorld(), (const unsigned char *) blank.c_str()
         );
     }
 
@@ -61,7 +59,7 @@ namespace redland {
         return literal_datatype_;
     }
 
-    LibrdfNode
+    librdf_node *
     LibrdfNode::fromLiteral(const std::string &literal, const std::string &xml_language,
                             const std::string &literal_datatype_uri) {
         std::string literal_datatype_ = validateLiteralDatatype(literal_datatype_uri);
@@ -71,13 +69,11 @@ namespace redland {
         } else {
             xml_language_ = xml_language.c_str();
         }
-        return LibrdfNode(
-                librdf_new_node_from_typed_literal(
-                        World::getWorld(),
-                        (const unsigned char *) literal.c_str(),
-                        xml_language_,
-                        librdf_new_uri(World::getWorld(), (const unsigned char *) literal_datatype_.c_str())
-                )
+        return librdf_new_node_from_typed_literal(
+                World::getWorld(),
+                (const unsigned char *) literal.c_str(),
+                xml_language_,
+                librdf_new_uri(World::getWorld(), (const unsigned char *) literal_datatype_.c_str())
         );
     }
 
@@ -123,7 +119,7 @@ namespace redland {
      * if they are empty
      */
 
-    librdf_uri* LibrdfNode::getLiteralDatatype() {
+    librdf_uri *LibrdfNode::getLiteralDatatype() {
         return librdf_node_get_literal_value_datatype_uri(node_.get());
     }
 

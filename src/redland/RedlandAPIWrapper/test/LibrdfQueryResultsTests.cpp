@@ -22,9 +22,9 @@ public:
                                "WHERE {?x ?y ?z}";
     LibrdfStorage storage;
     LibrdfModel model = LibrdfModel(std::move(storage));
-    LibrdfNode subject = LibrdfNode::fromUriString("subject");
-    LibrdfNode predicate = LibrdfNode::fromUriString("predicate");
-    LibrdfNode resource = LibrdfNode::fromUriString("resource");
+    librdf_node* subject = LibrdfNode::fromUriString("subject");
+    librdf_node* predicate = LibrdfNode::fromUriString("predicate");
+    librdf_node* resource = LibrdfNode::fromUriString("resource");
     LibrdfQuery query1;
     LibrdfQuery query2;
     LibrdfStatement statement;

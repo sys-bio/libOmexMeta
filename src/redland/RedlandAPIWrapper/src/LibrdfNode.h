@@ -44,11 +44,11 @@ namespace redland {
 
         [[nodiscard]] librdf_node *get() const;
 
-        static LibrdfNode fromUriString(const std::string &uri_string);
+        static librdf_node* fromUriString(const std::string &uri_string);
 
-        static LibrdfNode fromBlank(const std::string &blank);
+        static librdf_node* fromBlank(const std::string &blank);
 
-        static LibrdfNode fromLiteral(const std::string &literal, const std::string &xml_language = std::string(),
+        static librdf_node* fromLiteral(const std::string &literal, const std::string &xml_language = std::string(),
                                       const std::string &literal_datatype_uri = "string");
 
         raptor_term_type getRaptorTermType();

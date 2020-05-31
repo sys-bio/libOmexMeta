@@ -9,60 +9,190 @@ namespace redland {
     }
 
     LibrdfParser::LibrdfParser(librdf_parser *parser) :
-            parser_(std::unique_ptr<librdf_parser, deleter>(parser)) {}
+            parser_(parser) {}
 
-    LibrdfParser::LibrdfParser(const char *name, const char *mime_type, const char *type_uri) {
-        librdf_uri *type_uri_ = nullptr;
-        if (type_uri)
-            type_uri_ = librdf_new_uri(World::getWorld(), (const unsigned char *) type_uri);
-        parser_ = std::unique_ptr<librdf_parser, deleter>(
-                librdf_new_parser(World::getWorld(),
-                                  name, mime_type, type_uri_
-                )
-        );
+    LibrdfParser::LibrdfParser(std::string format, std::string mime_type, std::string type_uri) :
+            format_(format), mime_type_(mime_type) {
+        setTypeUri(type_uri);
+        validateParserName();
+        parser_ = makeParser();
+    }
 
+    librdf_parser *LibrdfParser::makeParser() {
+        if (parser_ != nullptr) {
+            librdf_free_parser(parser_);
+            parser_ = nullptr;
+        }
+        const char *name_used = nullptr;
+        if (!format_.empty())
+            name_used = format_.c_str();
+
+        const char *mime_type_used = nullptr;
+        if (!mime_type_.empty())
+            mime_type_used = mime_type_.c_str();
+
+        if (!name_used && !mime_type_used && !type_uri_)
+            throw std::invalid_argument(
+                    "std::invalid_argument: LibrdfParser::makeParser(): Need at "
+                    "least one of format, mime_type or type_uri arguments"
+            );
+
+        librdf_parser* parser = librdf_new_parser(World::getWorld(), name_used, mime_type_used, type_uri_);
+        // must set options each time we create new parser
+        // i.e. when we change a parameter, like format
+        setOptions(parser);
+        return parser;
     }
 
     librdf_parser *LibrdfParser::get() const {
-        return parser_.get();
+        return parser_;
     }
 
-    void LibrdfParser::setFeature(std::string feature_uri, LibrdfNode node) const {
-        librdf_parser_set_feature(parser_.get(), LibrdfUri(feature_uri).get(), node.get());
+    std::string LibrdfParser::getName() const {
+        return format_;
     }
+
+    void LibrdfParser::setName(const char *name) {
+        format_ = name;
+        validateParserName();
+        parser_ = makeParser();
+    }
+
+    std::string LibrdfParser::getMimeType() const {
+        return mime_type_;
+    }
+
+    void LibrdfParser::setMimeType(const char *mimeType) {
+        mime_type_ = mimeType;
+        parser_ = makeParser();
+    }
+
+    librdf_uri *LibrdfParser::getTypeUri() const {
+        return type_uri_;
+    }
+
+    void LibrdfParser::setTypeUri(librdf_uri *typeUri) {
+        if (!typeUri)
+            throw RedlandNullPointerException("RedlandNullPointerException: LibrdfParser::setTypeUri: typeUri");
+        if (type_uri_) {
+            librdf_free_uri(type_uri_);
+            type_uri_ = nullptr;
+        }
+        type_uri_ = typeUri;
+    }
+
+
+    void LibrdfParser::setTypeUri(std::string type_uri) {
+        if (type_uri_) {
+            librdf_free_uri(type_uri_);
+            type_uri_ = nullptr;
+        }
+        type_uri_ = librdf_new_uri(World::getWorld(), (const unsigned char *) type_uri.c_str());
+    }
+
+
+    void LibrdfParser::setFeature(librdf_parser* parser, std::string feature_uri, librdf_node *node) {
+        librdf_parser_set_feature(parser, LibrdfUri(feature_uri).get(), node);
+    }
+
+    void LibrdfParser::setOption(librdf_parser* parser, const std::string &option, const std::string &value) {
+        // prefix for option uri's. Append with desired option for full uri.
+        std::string feature_uri_base = "http://feature.librdf.org/raptor-";
+        librdf_node *node = LibrdfNode::fromLiteral(value);
+        setFeature(parser, feature_uri_base + option, node);
+        librdf_free_node(node);
+    }
+
+    void LibrdfParser::setOptions(librdf_parser* parser) {
+        // set some parser options. These are things
+        // that we always want - like support for
+        // scanning xml documents for RDF
+        // or enabling the Bag ID.
+        // features docs: http://librdf.org/raptor/api-1.4/raptor-section-feature.html
+        setOption(parser, "scanForRDF", "1");
+        setOption(parser, "allowNonNsAttributes", "0");
+        setOption(parser, "allowOtherParsetypes", "1");
+        setOption(parser, "allowBagID", "1");
+        setOption(parser, "allowRDFtypeRDFlist", "1");
+        setOption(parser, "normalizeLanguage", "1");
+        setOption(parser, "nonNFCfatal", "0");
+        setOption(parser, "warnOtherParseTypes", "1");
+        setOption(parser, "checkRdfID", "1");    }
 
     int LibrdfParser::numNamespacesSeen() const {
-        return librdf_parser_get_namespaces_seen_count(parser_.get());
+        return librdf_parser_get_namespaces_seen_count(parser_);
     }
 
     std::string LibrdfParser::getNamespacesSeenUri(int index) const {
-        librdf_uri *uri = librdf_parser_get_namespaces_seen_uri(parser_.get(), index);
+        librdf_uri *uri = librdf_parser_get_namespaces_seen_uri(parser_, index);
         return (const char *) librdf_uri_as_string(uri);
     }
 
     std::string LibrdfParser::getNamespacesSeenPrefix(int index) const {
-        return std::string(librdf_parser_get_namespaces_seen_prefix(parser_.get(), index));
+        return std::string(librdf_parser_get_namespaces_seen_prefix(parser_, index));
     }
 
     void LibrdfParser::parseString(const std::string &rdf_string, const LibrdfModel &model,
                                    const LibrdfUri &base_uri) const {
         librdf_parser_parse_string_into_model(
-                parser_.get(), (const unsigned char *) rdf_string.c_str(),
+                parser_, (const unsigned char *) rdf_string.c_str(),
                 base_uri.get(), model.get());
     }
 
     void
     LibrdfParser::parseUriIntoModel(const LibrdfUri &uri, const LibrdfUri &base_uri, const LibrdfModel &model) const {
         librdf_parser_parse_into_model(
-                parser_.get(), uri.get(), base_uri.get(), model.get());
+                parser_, uri.get(), base_uri.get(), model.get());
     }
 
     void LibrdfParser::parseFilenameUriIntoModel(const LibrdfUri &filename_uri, const LibrdfUri &base_uri,
                                                  const LibrdfModel &model) const {
         librdf_parser_parse_into_model(
-                parser_.get(), filename_uri.get(), base_uri.get(), model.get());
+                parser_, filename_uri.get(), base_uri.get(), model.get());
     }
 
+    void LibrdfParser::validateParserName() {
+        std::vector<std::string> v = {"rdfxml",
+                                      "ntriples",
+                                      "turtle",
+                                      "trig",
+                                      "rss-tag-soup",
+                                      "grddl",
+                                      "guess",
+                                      "rdfa",
+                                      "nquads",
+                                      "", // empty string is allowed
+        };
+        if (std::find(v.begin(), v.end(), getName()) != v.end()) {
+            // string accepted return
+            return;
+        }
+        // error
+        std::ostringstream os;
+        os << "Invalid Argument Exception: RDF::fromString: Format \"" << getName()
+           << "\" is not a valid option. These are your options: ";
+        for (auto &it : v) {
+            os << it << ", ";
+        }
+        throw std::invalid_argument(os.str());
+    }
+
+    LibrdfParser::~LibrdfParser() {
+        if (parser_) {
+            librdf_free_parser(parser_);
+            parser_ = nullptr;
+        }
+    }
+
+    std::vector<std::string> LibrdfParser::getSeenNamespaces() {
+        int number_of_prefixes_seen = numNamespacesSeen();
+        std::vector<std::string> namespaces;
+        for (int i = 0; i < number_of_prefixes_seen; i++) {
+            std::string nsref = getNamespacesSeenUri(i);
+            namespaces.push_back(nsref);
+        }
+        return namespaces;
+    }
 
 }
 

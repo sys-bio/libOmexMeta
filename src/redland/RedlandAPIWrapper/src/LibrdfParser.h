@@ -22,14 +22,23 @@ namespace redland {
             void operator()(librdf_parser *parser);
         };
 
-        std::unique_ptr<librdf_parser, deleter> parser_;
+        librdf_parser* parser_ = nullptr;
+
+        void validateParserName();
+
+        std::string format_ = nullptr;
+        std::string mime_type_ = nullptr;
+        librdf_uri *type_uri_ = nullptr;
+
     public:
         LibrdfParser() = default;
 
+        ~LibrdfParser();
+
         explicit LibrdfParser(librdf_parser *parser);
 
-        explicit LibrdfParser(const char *name, const char *mime_type = nullptr,
-                              const char *type_uri = nullptr);
+        explicit LibrdfParser(std::string format, std::string mime_type = std::string(),
+                              std::string type_uri = std::string());
 
         librdf_parser *get() const;
 
@@ -39,8 +48,7 @@ namespace redland {
 
         [[nodiscard]] std::string getNamespacesSeenUri(int index) const;
 
-        void
-        parseString(const std::string &rdf_string, const LibrdfModel &model, const LibrdfUri &base_uri) const;
+        void parseString(const std::string &rdf_string, const LibrdfModel &model, const LibrdfUri &base_uri) const;
 
         std::string getNamespacesSeenPrefix(int index) const;
 
@@ -48,6 +56,31 @@ namespace redland {
 
         void parseFilenameUriIntoModel(const LibrdfUri &filename_uri, const LibrdfUri &base_uri,
                                        const LibrdfModel &model) const;
+
+
+        std::string getName() const;
+
+        void setName(const char *name);
+
+        std::string getMimeType() const;
+
+        void setMimeType(const char *mimeType);
+
+        librdf_uri *getTypeUri() const;
+
+        void setTypeUri(librdf_uri *typeUri);
+
+        void setTypeUri(std::string type_uri);
+
+        librdf_parser* makeParser();
+
+        static void setFeature(librdf_parser* parser, std::string feature_uri, librdf_node *node);
+
+        static void setOption(librdf_parser* parser, const std::string &option, const std::string &value);
+
+        static void setOptions(librdf_parser *parser);
+
+        std::vector<std::string> getSeenNamespaces();
     };
 }
 
