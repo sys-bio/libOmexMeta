@@ -30,6 +30,8 @@ namespace semsim {
 
         PhysicalEntity() = default;
 
+        ~PhysicalEntity();
+
         PhysicalEntity(const LibrdfModel &model, Subject metaid,
                        PhysicalPropertyResource physicalProperty, Resource is,
                        Resources is_part_of);

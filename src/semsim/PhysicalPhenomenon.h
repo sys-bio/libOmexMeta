@@ -30,6 +30,8 @@ namespace semsim {
     public:
         PhysicalPhenomenon() = delete;
 
+        ~PhysicalPhenomenon();
+
         PhysicalPhenomenon(const LibrdfModel& model, Subject metaid,
                            PhysicalPropertyResource propertyResource,
                            AnnotationType type);
