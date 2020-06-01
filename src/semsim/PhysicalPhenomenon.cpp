@@ -57,6 +57,13 @@ namespace semsim {
         return about;
     }
 
+    PhysicalPhenomenon::~PhysicalPhenomenon() {
+        if (physical_property_.getNode()) {
+            LibrdfNode::freeNode(physical_property_.getNode());
+        }
+
+    }
+
 }
 
 

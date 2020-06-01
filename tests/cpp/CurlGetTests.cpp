@@ -55,29 +55,25 @@ public:
     }
 };
 
-TEST_F(CurlGetTests, TestDownloadHtml
-) {
+TEST_F(CurlGetTests, TestDownloadHtml) {
 //38kb
     downloadAndCheckSizeRange(regular_webpage_url, regular_webpage_filename,
                               39053 - 100, 39053 + 100);
 }
 
-TEST_F(CurlGetTests, TestDownloadOmexFile
-) {
+TEST_F(CurlGetTests, TestDownloadOmexFile) {
     downloadAndCheckSizeRange(omex_file_url, omex_filename,
                               4650, 4750);
 }
 
 
-TEST_F(CurlGetTests, TestDownloadSBMLFile
-) {
+TEST_F(CurlGetTests, TestDownloadSBMLFile) {
     downloadAndCheckSizeRange(sbml_file_url, sbml_filename,
                               236281 - 100, 236281 + 100);
 }
 
 
-TEST_F(CurlGetTests, TestDownloadCellML
-) {
+TEST_F(CurlGetTests, TestDownloadCellML) {
     downloadAndCheckSizeRange(cellml_file_url, cellml_filename,
                               60656 - 100, 60656 + 100);
 }

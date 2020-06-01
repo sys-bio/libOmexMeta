@@ -122,6 +122,10 @@ namespace semsim {
         return getLocationResources().size();
     }
 
+    PhysicalEntity::~PhysicalEntity() {
+
+    }
+
 
 }
 

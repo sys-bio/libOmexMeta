@@ -40,6 +40,7 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
     std::string expected = "metaid004";
     std::string actual = phenomenon.getSubject().str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+
 }
 
 TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
