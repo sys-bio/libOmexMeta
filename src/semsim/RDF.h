@@ -44,7 +44,6 @@ namespace semsim {
                               const std::string &base_uri = std::string());
 
         std::unordered_map<std::string, std::string>
-
         propagateNamespacesFromParser(std::vector<std::string> seen_namespaces);
 
         std::string toString(const std::string &format = "rdfxml-abbrev", const std::string &base_uri = std::string(),

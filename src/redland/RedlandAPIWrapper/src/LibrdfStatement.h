@@ -22,11 +22,18 @@ namespace redland {
 
     protected:
 
-        librdf_node *subject_; // LibrdfStatement does not own
-        librdf_node *predicate_; // LibrdfStatement does not own
-        librdf_node *resource_; // LibrdfStatement does not own
+        librdf_node *subject_ = nullptr; // LibrdfStatement does not own
+        librdf_node *predicate_ = nullptr; // LibrdfStatement does not own
+        librdf_node *resource_ = nullptr; // LibrdfStatement does not own
 
-        std::shared_ptr<librdf_statement> statement_;
+        std::shared_ptr<librdf_statement> statement_ = nullptr;
+
+        /*
+         * @brief update the contained statement with current
+         * values of subject, predicate and resource.
+         *
+         */
+        void refreshStatement();
 
     protected:
         explicit LibrdfStatement(librdf_statement *statement);
@@ -56,6 +63,7 @@ namespace redland {
         [[nodiscard]] std::string getResourceStr() const;
 
         void checkForNull();
+
     };
 
 

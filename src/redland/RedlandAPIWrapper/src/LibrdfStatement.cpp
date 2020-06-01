@@ -23,7 +23,7 @@ namespace redland {
         checkForNull();
     }
 
-    LibrdfStatement::LibrdfStatement(librdf_node* subject, librdf_node* predicate, librdf_node* resource)
+    LibrdfStatement::LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource)
             : subject_(subject),
               predicate_(predicate),
               resource_(resource) {
@@ -69,43 +69,53 @@ namespace redland {
         return statement_.get();
     }
 
-    librdf_node* LibrdfStatement::getSubject() const {
+    librdf_node *LibrdfStatement::getSubject() const {
         return subject_;
     }
 
-    librdf_node* LibrdfStatement::getPredicate() const {
+    librdf_node *LibrdfStatement::getPredicate() const {
         return predicate_;
     }
 
-    librdf_node* LibrdfStatement::getResource() const {
+    librdf_node *LibrdfStatement::getResource() const {
         return resource_;
     }
 
     std::string LibrdfStatement::getResourceStr() const {
-        return (const char*)librdf_uri_as_string(
-                librdf_node_get_uri(getResource())
-        );
+        if (!getResource())
+            throw RedlandNullPointerException(
+                    "RedlandNullPointerException: LibrdfStatement::getResourceStr(): resource_ is nullptr");
+        return LibrdfNode::str(getResource());
     }
 
     std::string LibrdfStatement::getSubjectStr() const {
-        return (const char*)librdf_uri_as_string(
-                librdf_node_get_uri(getSubject())
-        );
+        if (!getSubject())
+            throw RedlandNullPointerException(
+                    "RedlandNullPointerException: LibrdfStatement::getSubjectStr(): subject_ is nullptr");
+        return LibrdfNode::str(getSubject());
     }
 
     std::string LibrdfStatement::getPredicateStr() const {
-        return (const char*)librdf_uri_as_string(
-                librdf_node_get_uri(getPredicate())
-        );
+        if (!getPredicate())
+            throw RedlandNullPointerException(
+                    "RedlandNullPointerException: LibrdfStatement::getPredicate(): predicate_ is nullptr");
+        return LibrdfNode::str(getPredicate());
     }
 
-    LibrdfStatement LibrdfStatement::fromRawStatementPtr(librdf_statement* statement) {
+    LibrdfStatement LibrdfStatement::fromRawStatementPtr(librdf_statement *statement) {
         return LibrdfStatement(statement);
     }
 
     LibrdfStatement
     LibrdfStatement::fromRawNodePtrs(librdf_node *subject, librdf_node *predicate, librdf_node *resource) {
         return LibrdfStatement(subject, predicate, resource);
+    }
+
+    void LibrdfStatement::refreshStatement() {
+        statement_ = std::shared_ptr<librdf_statement>(librdf_new_statement_from_nodes(
+                World::getWorld(), subject_, predicate_, resource_
+                                                       )
+        );
     }
 
 }
