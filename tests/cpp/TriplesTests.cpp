@@ -15,9 +15,6 @@ class TriplesTests : public ::testing::Test {
 public:
 
     AnnotationSamples samples;
-
-//    librdf_world *world;
-//    raptor_world *raptorWorld;
     LibrdfStorage storage;
     LibrdfModel model;
 

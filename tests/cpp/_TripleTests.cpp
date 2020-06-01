@@ -5,7 +5,7 @@
 #include <semsim/Predicate.h>
 #include <semsim/Resource.h>
 #include <semsim/Subject.h>
-#include <semsim/_Triple.h>
+#include <semsim/Triple.h>
 #include "gtest/gtest.h"
 #include "AnnotationSamples.h"
 

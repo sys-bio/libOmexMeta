@@ -1,7 +1,7 @@
 //
 // Created by Ciaran on 4/8/2020.
 //
-#include "semsim/_RDF.h"
+#include "semsim/RDF.h"
 
 namespace semsim {
 

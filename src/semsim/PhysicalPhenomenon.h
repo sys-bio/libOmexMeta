@@ -20,8 +20,7 @@ using namespace redland;
 namespace semsim {
     class PhysicalPhenomenon {
     protected:
-        LibrdfWorld world_;
-        LibrdfModel model_;
+        const LibrdfModel& model_;
         Subject about;
         PhysicalPropertyResource physical_property_;
         AnnotationType type_;
@@ -29,12 +28,13 @@ namespace semsim {
         std::string generateMetaId(std::string id_base) const;
 
     public:
-        PhysicalPhenomenon();
+        PhysicalPhenomenon() = delete;
 
-        PhysicalPhenomenon(LibrdfWorld world, LibrdfModel model, Subject metaid,
-                           PhysicalPropertyResource propertyResource, AnnotationType type);
+        PhysicalPhenomenon(const LibrdfModel& model, Subject metaid,
+                           PhysicalPropertyResource propertyResource,
+                           AnnotationType type);
 
-        PhysicalPhenomenon(LibrdfWorld world, LibrdfModel model);
+        PhysicalPhenomenon(const LibrdfModel& model);
 
         Subject getAbout() const;
 

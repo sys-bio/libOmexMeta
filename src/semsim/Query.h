@@ -27,11 +27,9 @@ namespace semsim {
     typedef std::unordered_map<std::string, std::vector<std::string>> ResultsMap;
 
     class Query {
-        World world_;
-        LibrdfModel model_;
+        const LibrdfModel& model_;
         std::string query_;
         LibrdfQueryResults query_results_;
-        LibrdfQueryResults query_results_copy_;
 
         std::vector<std::string> valid_output_formats_ = {
                 "xml",

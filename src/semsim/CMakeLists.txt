@@ -10,19 +10,17 @@ set(SEMSIM_HEADERS
         "Predicate.h"
         "Triple.h"
         "Triples.h"
-        #        "RDF.h"
-        #        "MetaID.h"
+        "PhysicalPropertyResource.h"
+        "PhysicalPhenomenon.h"
+        "PhysicalEntity.h"
+        "Participant.h"
+        "PhysicalProcess.h"
+        "PhysicalForce.h"
+        "AnnotationType.h"
+        "Query.h"
+        "MetaID.h"
         #        "Editor.h"
         #        "TripleWriter.h"
-        #        "SemSim.h"
-        #                "Participant.h"
-        #                "PhysicalEntity.h"
-        #                "PhysicalPhenomenon.h"
-        #                "PhysicalProcess.h"
-        #                "PhysicalPropertyResource.h"
-        #                "PhysicalForce.h"
-        #        "AnnotationType.h"
-        #        "Query.h"
         #        "SemsimCApi.h"
         #        "HERE.h"
         #        Log.h
@@ -30,6 +28,7 @@ set(SEMSIM_HEADERS
         #        RedlandAPIWrapper/RaptorIOStream.h
         #        "Reader.h"
         #        "Writer.h"
+        #                "SemSim.h"
         )
 
 set(SEMSIM_SOURCES
@@ -42,23 +41,17 @@ set(SEMSIM_SOURCES
         "Predicate.cpp"
         "Triple.cpp"
         "Triples.cpp"
-        #        "RDFNode.cpp"
-        #        "Reader.cpp"
-        #        "Writer.cpp"
-        #        "RDF.cpp"
-        #        "MetaID.cpp"
+        "PhysicalPropertyResource.cpp"
+        "PhysicalEntity.cpp"
+        "PhysicalPhenomenon.cpp"
+        "MetaID.cpp"
         #        "Editor.cpp"
-        #        "TripleWriter.cpp"
-        #        "Participant.cpp"
-        #        "PhysicalEntity.cpp"
-        #        "PhysicalPhenomenon.cpp"
-        #        "PhysicalProcess.cpp"
-        #        "PhysicalPropertyResource.cpp"
-        #        "PhysicalForce.cpp"
-        #        "Query.cpp"
+        "Participant.cpp"
+        "PhysicalProcess.cpp"
+        "PhysicalForce.cpp"
+        "Query.cpp"
         #        "SemsimCApi.cpp"
-        #        Log.h RedlandAPIWrapper/RaptorIOStream.cpp RedlandAPIWrapper/RaptorIOStream.h
-        RDF.cpp RDF.h)
+        )
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
