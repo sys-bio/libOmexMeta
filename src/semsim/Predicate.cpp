@@ -20,10 +20,11 @@ namespace semsim {
         this->node_ = LibrdfNode::fromUriString(uri_);
     }
 
-    Predicate::Predicate(librdf_node* node)
+    Predicate::Predicate(librdf_node *node)
             : node_(node) {
         if (!node)
-            throw RedlandNullPointerException("RedlandNullPointerException: Predicate::Predicate(librdf_node* node): node is null");
+            throw RedlandNullPointerException(
+                    "RedlandNullPointerException: Predicate::Predicate(librdf_node* node): node is null");
         // some logic for processing the uri in a node to automatically produce the fields we want.
         std::string val = LibrdfNode::str(node_);
 
@@ -122,7 +123,7 @@ namespace semsim {
         }
     }
 
-    librdf_node* Predicate::getNode() const {
+    librdf_node *Predicate::getNode() const {
         return node_;
     }
 
@@ -132,6 +133,41 @@ namespace semsim {
 
     void Predicate::freeNode() {
         LibrdfNode::freeNode(node_);
+    }
+
+    void Predicate::addSeenNamespaceToSerializer(librdf_world* world,
+            librdf_serializer *serializer, librdf_node *predicate) {
+        // null checks
+        if (!world)
+            throw RedlandNullPointerException("RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: world is null");
+        if (!serializer)
+            throw RedlandNullPointerException("RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: serializer is null");
+        if (!predicate)
+            throw RedlandNullPointerException("RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: predicate is null");
+
+        // grab the uri inside predicate node
+        librdf_uri *pred_uri = librdf_node_get_uri(predicate);
+        if (!pred_uri)
+            throw RedlandNullPointerException("RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: uri is null. Maybe your predicate node isn't really a predicate node");
+
+        // retrieve the namespace that we want to check
+        unsigned char *s = librdf_uri_as_string(pred_uri);
+        std::string pred_string((const char *) s);
+        std::string pred_namespace = SemsimUtils::getNamespaceFromUri(pred_string);
+
+        // get the namespacs to check against
+        NamespaceMap ns_map = Predicate::namespaceMap();
+
+        // if their namespace matches one we know, add it to the model
+        for (auto &i : ns_map) {
+            const std::string &ns = i.first;
+            const std::string &prefix = i.second;
+            if (pred_namespace == ns) {
+                librdf_uri *u = librdf_new_uri(world, (const unsigned char *) ns.c_str());
+                librdf_serializer_set_namespace(serializer, u, prefix.c_str());
+                librdf_free_uri(u);
+            }
+        }
     }
 
     BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(const std::string &term) :

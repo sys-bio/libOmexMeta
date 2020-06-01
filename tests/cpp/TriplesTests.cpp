@@ -104,4 +104,26 @@ TEST_F(TriplesTests, TestEmplaceBack6) {
 }
 
 
+TEST(TriplesTestsNoFixture, TestStr) {
+    Triples triples;
+    triples.emplace_back(
+            LibrdfNode::fromUriString("subject1"),
+            LibrdfNode::fromUriString("predicate1"),
+            LibrdfNode::fromUriString("resource1")
+    );
+    triples.emplace_back(
+            LibrdfNode::fromUriString("subject2"),
+            LibrdfNode::fromUriString("predicate2"),
+            LibrdfNode::fromUriString("resource2")
+    );
+
+    triples.emplace_back(std::move(subject),
+                         SemSim("hasSourceParticipant"),
+                         std::move(resource));
+
+    ASSERT_EQ(1, triples.size());
+    predicate.freeNode();
+}
+
+
 

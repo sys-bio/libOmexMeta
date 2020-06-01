@@ -48,20 +48,7 @@ namespace semsim {
         librdf_serializer *serializer = librdf_new_serializer(world, format.c_str(), nullptr, nullptr);
 
         // deal with namespaces
-        librdf_uri* pred_uri = librdf_node_get_uri(predicate_);
-        unsigned char* s = librdf_uri_as_string(pred_uri);
-        std::string pred_string((const char*)s);
-        std::string pred_namespace = SemsimUtils::getNamespaceFromUri(pred_string);
-        NamespaceMap ns_map = Predicate::namespaceMap();
-        for (auto &i : ns_map) {
-            const std::string &namespace_ = i.first;
-            const std::string &prefix = i.second;
-            if (pred_namespace == namespace_) {
-                librdf_uri *u = librdf_new_uri(world, (const unsigned char *) namespace_.c_str());
-                librdf_serializer_set_namespace(serializer, u, prefix.c_str());
-                librdf_free_uri(u);
-            }
-        }
+        Predicate::addSeenNamespaceToSerializer(world,serializer, predicate_);
 
         // do the serializing
         librdf_uri *base_uri = librdf_new_uri(world, (const unsigned char *) base.c_str());
@@ -128,6 +115,10 @@ namespace semsim {
 
     bool Triple::isEmpty() {
         return !subject_ && !predicate_ && !resource_;
+    }
+
+    std::shared_ptr<librdf_statement> Triple::getStatement() const {
+        return statement_;
     }
 
 }
