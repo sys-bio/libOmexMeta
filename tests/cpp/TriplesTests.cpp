@@ -107,22 +107,30 @@ TEST_F(TriplesTests, TestEmplaceBack6) {
 TEST(TriplesTestsNoFixture, TestStr) {
     Triples triples;
     triples.emplace_back(
-            LibrdfNode::fromUriString("subject1"),
-            LibrdfNode::fromUriString("predicate1"),
-            LibrdfNode::fromUriString("resource1")
+            LibrdfNode::fromUriString("http://subject1.com/subject1"),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1"),
+            LibrdfNode::fromUriString("http://resource1.com/resource1")
     );
     triples.emplace_back(
-            LibrdfNode::fromUriString("subject2"),
-            LibrdfNode::fromUriString("predicate2"),
-            LibrdfNode::fromUriString("resource2")
+            LibrdfNode::fromUriString("http://subject2.com/subject2"),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2"),
+            LibrdfNode::fromUriString("http://resource2.com/resource2")
     );
-
-    triples.emplace_back(std::move(subject),
-                         SemSim("hasSourceParticipant"),
-                         std::move(resource));
-
-    ASSERT_EQ(1, triples.size());
-    predicate.freeNode();
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"http://subject1.com/subject1\">\n"
+                           "    <ns1:predicate1 xmlns:ns1=\"http://predicate1.com/\"\n"
+                           "       rdf:resource=\"http://resource1.com/resource1\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"http://subject2.com/subject2\">\n"
+                           "    <ns2:predicate2 xmlns:ns2=\"http://predicate2.com/\"\n"
+                           "       rdf:resource=\"http://resource2.com/resource2\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    std::string actual = triples.str();
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 

@@ -52,6 +52,8 @@ namespace semsim {
 
         void emplace_back(Subject subject, SemSim predicate, Resource resource);
 
+        void emplace_back(librdf_node* subject, librdf_node* predicate, librdf_node* resource);
+
         std::vector<std::string> getSubjectsStr();
 
         std::vector<std::string> getPredicates();

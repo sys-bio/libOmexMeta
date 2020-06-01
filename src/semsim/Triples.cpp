@@ -140,4 +140,10 @@ namespace semsim {
 
     }
 
+    void Triples::emplace_back(librdf_node* subject, librdf_node* predicate, librdf_node*resource) {
+        Triple triple(subject, predicate, resource);
+        std::shared_ptr<Triple> ptr = std::make_shared<Triple>(triple);
+        triples_.push_back(ptr);
+    }
+
 }
