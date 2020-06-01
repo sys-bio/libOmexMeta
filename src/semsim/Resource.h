@@ -25,7 +25,7 @@ namespace semsim {
 
         static Resource fromRawPtr(librdf_node* node);
 
-        [[nodiscard]] const LibrdfNode &getNode() const;
+        [[nodiscard]] librdf_node* getNode() const;
 
         [[nodiscard]] std::string str() const;
 

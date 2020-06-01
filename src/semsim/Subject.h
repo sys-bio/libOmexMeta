@@ -20,16 +20,16 @@ namespace semsim {
 
     class Subject {
     private:
-        LibrdfNode node_;
+        librdf_node* node_;
 
         explicit Subject(librdf_node* node);
 
     public:
         Subject() = default;
 
-        [[nodiscard]] const LibrdfNode &getNode() const;
+        [[nodiscard]] librdf_node* getNode() const;
 
-        static Subject fromRawPointer(librdf_node* node);
+        static Subject fromRawPtr(librdf_node* node);
 
         static Subject fromUri(const std::string &uri);
 

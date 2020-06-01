@@ -18,8 +18,8 @@ namespace semsim {
         return node_.get() != nullptr;
     }
 
-    const LibrdfNode &Resource::getNode() const {
-        return node_;
+    librdf_node* Resource::getNode() const {
+        return node_.get();
     }
 
     Resource Resource::fromRawPtr(librdf_node *node) {

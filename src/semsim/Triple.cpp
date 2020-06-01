@@ -12,12 +12,9 @@ namespace semsim {
                       predicate_ptr->getNode(),
                       resource.getNode()){
     }
-    Triple::Triple(const Subject& subject, const Predicate& predicate, const Resource& resource)
-            : LibrdfStatement(subject.getNode(),
-                      predicate.getNode(),
-                      resource.getNode()){
 
-    }
+    Triple::Triple(librdf_node* subject, librdf_node* predicate, librdf_node* resource):
+        LibrdfStatement(subject, predicate, resource){}
 
     Triple Triple::fromRawStatementPtr(librdf_statement *statement) {
         return Triple(statement);

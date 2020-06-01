@@ -27,11 +27,11 @@ namespace semsim {
         return !node_.get();
     }
 
-    const LibrdfNode &Subject::getNode() const {
-        return node_;
+    librdf_node* Subject::getNode() const {
+        return node_.get();
     }
 
-    Subject Subject::fromRawPointer(librdf_node* node) {
+    Subject Subject::fromRawPtr(librdf_node* node) {
         return Subject(node);
     }
 

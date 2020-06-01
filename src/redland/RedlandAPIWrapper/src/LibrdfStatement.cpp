@@ -15,16 +15,13 @@ namespace redland {
     }
 
 
-//    LibrdfStatement::LibrdfStatement(librdf_statement *statement)
-//    /*
-//     * todo keep an eye on this constructor - could it be the cause of some memory related issues.
-//     */
-//            : statement_(std::shared_ptr<librdf_statement>(statement, raptor_free_statement)) {
-//        subject_ = LibrdfNode(librdf_statement_get_subject(statement_.get()));
-//        predicate_ = LibrdfNode(librdf_statement_get_predicate(statement_.get()));
-//        resource_ = LibrdfNode(librdf_statement_get_object(statement_.get()));
-//        checkForNull();
-//    }
+    LibrdfStatement::LibrdfStatement(librdf_statement *statement)
+            : statement_(std::shared_ptr<librdf_statement>(statement, raptor_free_statement)) {
+        subject_ = librdf_statement_get_subject(statement_.get());
+        predicate_ = librdf_statement_get_predicate(statement_.get());
+        resource_ = librdf_statement_get_object(statement_.get());
+        checkForNull();
+    }
 
     LibrdfStatement::LibrdfStatement(librdf_node* subject, librdf_node* predicate, librdf_node* resource)
             : subject_(subject),
@@ -39,16 +36,12 @@ namespace redland {
     }
 
 //    LibrdfStatement::LibrdfStatement(
-//            librdf_node* subject,
-//            librdf_node* predicate,
-//            librdf_node* resource)
-//            : subject_(subject),
-//              predicate_(predicate),
-//              resource_(resource) {
+//            librdf_node* subject, librdf_node* predicate, librdf_node* resource)
+//            : subject_(subject), predicate_(predicate), resource_(resource) {
 //        statement_ = std::shared_ptr<librdf_statement>(
 //                librdf_new_statement_from_nodes(
-//                        World::getWorld(), subject_.get(), predicate_.get(), resource_.get()
-//                ), raptor_free_statement
+//                        World::getWorld(), subject_, predicate_, resource_),
+//                        raptor_free_statement
 //        );
 //        checkForNull();
 //    }
@@ -88,20 +81,31 @@ namespace redland {
         return resource_;
     }
 
-//    std::string LibrdfStatement::getResourceStr() const {
-//        return librdf_node_get_getResource().str();
-//    }
-//
-//    std::string LibrdfStatement::getSubjectStr() const {
-//        return getSubject().str();
-//    }
-//
-//    std::string LibrdfStatement::getPredicateStr() const {
-//        return getPredicate().str();
-//    }
+    std::string LibrdfStatement::getResourceStr() const {
+        return (const char*)librdf_uri_as_string(
+                librdf_node_get_uri(getResource())
+        );
+    }
 
-//    LibrdfStatement LibrdfStatement::fromRawStatementPtr(librdf_statement* statement) {
-//        return LibrdfStatement(statement);
-//    }
+    std::string LibrdfStatement::getSubjectStr() const {
+        return (const char*)librdf_uri_as_string(
+                librdf_node_get_uri(getSubject())
+        );
+    }
+
+    std::string LibrdfStatement::getPredicateStr() const {
+        return (const char*)librdf_uri_as_string(
+                librdf_node_get_uri(getPredicate())
+        );
+    }
+
+    LibrdfStatement LibrdfStatement::fromRawStatementPtr(librdf_statement* statement) {
+        return LibrdfStatement(statement);
+    }
+
+    LibrdfStatement
+    LibrdfStatement::fromRawNodePtrs(librdf_node *subject, librdf_node *predicate, librdf_node *resource) {
+        return LibrdfStatement(subject, predicate, resource);
+    }
 
 }

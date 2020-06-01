@@ -36,9 +36,13 @@ namespace semsim {
 
         explicit Triple() = default;
 
-        Triple(const Subject &subject, const Predicate &predicate, const Resource &resource);
+//        Triple(Subject subject, Predicate predicate,  Resource resource);
+
+//        Triple(const Subject &subject, const Predicate &predicate, const Resource &resource);
 
         Triple(const Subject &subject, const PredicatePtr &predicate_ptr, const Resource &resource);
+
+        Triple(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
         static Triple fromRawStatementPtr(librdf_statement *statement);
 

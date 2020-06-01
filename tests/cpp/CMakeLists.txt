@@ -7,9 +7,9 @@ set(TEST_SOURCES
         SubjectTests.cpp
         ResourceTests.cpp
         PredicateTests.cpp
+        TripleTests.cpp
 
         #        CurlGetTests.cpp
-        #        TripleTests.cpp
         #        TripplesTests.cpp
         #        ReaderTests.cpp
         #        WriterTests.cpp
