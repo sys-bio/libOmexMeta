@@ -44,7 +44,7 @@ TEST_F(LibrdfModelTests, TestMoveAssignment) {
 
 TEST_F(LibrdfModelTests, TestAddStatement) {
     LibrdfModel model1 = LibrdfModel(std::move(storage1));
-    LibrdfStatement statement(
+    LibrdfStatement statement = LibrdfStatement::fromRawNodePtrs(
             LibrdfNode::fromUriString("subject"),
             LibrdfNode::fromUriString("predicate"),
             LibrdfNode::fromUriString("resource")

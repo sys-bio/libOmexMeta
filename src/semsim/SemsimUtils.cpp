@@ -85,4 +85,16 @@ namespace semsim {
 
     }
 
+    std::string SemsimUtils::getNamespaceFromUri(const std::string& uri) {
+        std::vector<std::string> vec = splitStringBy(uri, '/');
+        vec.pop_back(); // remove last element
+        std::ostringstream os;
+        // preserve the double slash with http
+        os << "http://";
+        for (int i=1; i<vec.size(); i++){
+            os << vec[i] << "/";
+        }
+        return os.str();
+    }
+
 }

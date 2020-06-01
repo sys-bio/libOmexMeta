@@ -20,7 +20,7 @@ public:
 };
 
 TEST_F(LibrdfStatementTests, TestCreate) {
-    redland::LibrdfStatement statement = LibrdfStatement(
+    redland::LibrdfStatement statement = LibrdfStatement::fromRawNodePtrs(
             subject,
             predicate,
             resource

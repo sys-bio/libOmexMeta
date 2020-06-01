@@ -42,6 +42,15 @@ namespace semsim {
 
         static std::string addFilePrefixToString(std::string str);
 
+        /*
+         * @brief takes a uri as std::string and returns the string
+         * with the last section removed;
+         *
+         * Example: www.uri.com/identifer/PD12345 will
+         * turn into www.uri.com/identifier/
+         */
+        static std::string getNamespaceFromUri(const std::string& uri);
+
     };
 }
 

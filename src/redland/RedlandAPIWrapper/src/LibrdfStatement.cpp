@@ -112,10 +112,12 @@ namespace redland {
     }
 
     void LibrdfStatement::refreshStatement() {
-        statement_ = std::shared_ptr<librdf_statement>(librdf_new_statement_from_nodes(
-                World::getWorld(), subject_, predicate_, resource_
-                                                       )
-        );
+        if (subject_ && predicate_ && resource_) {
+            statement_ = std::shared_ptr<librdf_statement>(
+                    librdf_new_statement_from_nodes(
+                            World::getWorld(), subject_, predicate_, resource_
+                    ), librdf_free_statement
+            );
+        }
     }
-
 }

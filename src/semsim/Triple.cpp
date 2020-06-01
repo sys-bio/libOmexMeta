@@ -22,28 +22,55 @@ namespace semsim {
 
     Triple::Triple(librdf_statement *statement) : LibrdfStatement(statement) {}
 
-    std::string Triple::str(const std::string& format, const std::string& base) {
-        // create temporary set of tools for serializing a simple
-        // triple. We cannot use the main set of tools since
-        // we do not want to add to our main model.
+    std::string Triple::str(const std::string &format, const std::string &base) {
+        // ensure we have three nodes and a statement
+        if (!subject_){
+            throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: subject is null");
+        }
+        if (!predicate_){
+            throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: predicate is null");
+        }
+        if (!resource_){
+            throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: resource is null");
+        }
+        if (!statement_){
+            throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: statement is null");
+        }
 
+
+        // Here we create temporary set of tools for serializing a simple
+        // triple.
         librdf_world *world = librdf_new_world();
         librdf_storage *storage = librdf_new_storage(world, "memory", "SemsimMemoryStore", nullptr);
         librdf_model *model = librdf_new_model(world, storage, nullptr);
 
-        /*
-         * namespaces are not accounted for in this code.
-         * Could pull the namespace code out of RDF into their own file
-         * to be imported by Triple, Triples and RDF, all of which
-         * need the namespaces???
-         */
-
         librdf_model_add_statement(model, statement_.get());
         librdf_serializer *serializer = librdf_new_serializer(world, format.c_str(), nullptr, nullptr);
 
-        librdf_uri *base_uri = librdf_new_uri(world, (const unsigned char *) base.c_str());
-        std::string str = (const char *) librdf_serializer_serialize_model_to_string(serializer, base_uri, model);
+        // deal with namespaces
+        librdf_uri* pred_uri = librdf_node_get_uri(predicate_);
+        unsigned char* s = librdf_uri_as_string(pred_uri);
+        std::string pred_string((const char*)s);
+        std::string pred_namespace = SemsimUtils::getNamespaceFromUri(pred_string);
+        NamespaceMap ns_map = Predicate::namespaceMap();
+        for (auto &i : ns_map) {
+            const std::string &namespace_ = i.first;
+            const std::string &prefix = i.second;
+            if (pred_namespace == namespace_) {
+                librdf_uri *u = librdf_new_uri(world, (const unsigned char *) namespace_.c_str());
+                librdf_serializer_set_namespace(serializer, u, prefix.c_str());
+                librdf_free_uri(u);
+            }
+        }
 
+        // do the serializing
+        librdf_uri *base_uri = librdf_new_uri(world, (const unsigned char *) base.c_str());
+        unsigned char* string = librdf_serializer_serialize_model_to_string(serializer, base_uri, model);
+        std::string str = (const char*)string;
+
+        // free up resources
+        free(string);
+        librdf_free_serializer(serializer);
         librdf_free_uri(base_uri);
         librdf_free_model(model);
         librdf_free_storage(storage);

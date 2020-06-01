@@ -22,6 +22,8 @@ namespace semsim {
 
     Predicate::Predicate(librdf_node* node)
             : node_(node) {
+        if (!node)
+            throw RedlandNullPointerException("RedlandNullPointerException: Predicate::Predicate(librdf_node* node): node is null");
         // some logic for processing the uri in a node to automatically produce the fields we want.
         std::string val = LibrdfNode::str(node_);
 
@@ -52,7 +54,7 @@ namespace semsim {
 
         namespace_ = os.str();
 
-        prefix_ = Predicate::prefix_map()[namespace_];
+        prefix_ = Predicate::namespaceMap()[namespace_];
         if (prefix_.empty()) {
             prefix_ = "NotSet";
         }
@@ -82,10 +84,10 @@ namespace semsim {
     }
 
     bool Predicate::namespaceKnown(const std::string &ns) {
-        return (Predicate::prefix_map().find(ns) != Predicate::prefix_map().end());
+        return (Predicate::namespaceMap().find(ns) != Predicate::namespaceMap().end());
     }
 
-    std::unordered_map<std::string, std::string> Predicate::prefix_map() {
+    std::unordered_map<std::string, std::string> Predicate::namespaceMap() {
         return std::unordered_map<std::string, std::string>{
                 {"http://purl.org/dc/terms/",                "dcterms"},
                 {"http://biomodels.net/biology-qualifiers/", "bqbiol"},
