@@ -6,7 +6,7 @@
 #include <utility>
 
 #include "gtest/gtest.h"
-#include "semsim/_RDF.h"
+#include "semsim/RDF.h"
 #include "AnnotationSamples.h"
 
 #include "curl/curl.h"

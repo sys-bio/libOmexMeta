@@ -8,7 +8,7 @@
 #include "gtest/gtest.h"
 #include "AnnotationSamples.h"
 #include "semsim/SemsimCApi.h"
-#include "semsim/_RDF.h"
+#include "semsim/RDF.h"
 #include "SBMLFactory.h"
 #include "semsim/SemsimXmlAssistant.h"
 

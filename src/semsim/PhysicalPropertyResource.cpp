@@ -7,14 +7,8 @@
 
 namespace semsim {
 
-    PhysicalPropertyResource::PhysicalPropertyResource(LibrdfWorld world, RDFURINode node)
-            : Resource(world, node) {
-        validate();
-    }
-
-
-    PhysicalPropertyResource::PhysicalPropertyResource(LibrdfWorld world, std::string node)
-            : Resource(world, RDFURINode(world.newNodeUriString(node))) {
+    PhysicalPropertyResource::PhysicalPropertyResource(std::string physical_property_string)
+            : Resource(Resource::fromRawPtr(LibrdfNode::fromUriString(physical_property_string))) {
         validate();
     }
 
@@ -33,19 +27,17 @@ namespace semsim {
 
     Triple PhysicalPropertyResource::isVersionOfTriple(std::string subject_metaid) const {
         return Triple(
-                world_,
-                Subject(world_, RDFURINode(world_.newNodeUriString(subject_metaid))),
-                BiomodelsBiologyQualifier(world_, "isVersionOf"),
-                Resource(world_, RDFURINode(world_.newNodeUriString(rdf_node_ptr_->str())))
+                Subject::fromRawPtr(LibrdfNode::fromUriString(subject_metaid)).getNode(),
+                BiomodelsBiologyQualifier("isVersionOf").getNode(),
+                Resource::fromRawPtr(node_).getNode()
         );
     }
 
     Triple PhysicalPropertyResource::isPropertyOfTriple(std::string subject_metaid, std::string property_metaid) const {
         return Triple(
-                world_,
-                Subject(world_, RDFURINode(world_.newNodeUriString(subject_metaid))),
-                BiomodelsBiologyQualifier(world_, "isPropertyOf"),
-                Resource(world_, RDFURINode(world_.newNodeUriString(property_metaid)))
+                Subject::fromRawPtr(LibrdfNode::fromUriString(subject_metaid)).getNode(),
+                BiomodelsBiologyQualifier("isPropertyOf").getNode(),
+                Resource::fromRawPtr(LibrdfNode::fromUriString(property_metaid)).getNode()
         );
     }
 
@@ -58,10 +50,7 @@ namespace semsim {
 
 
     bool PhysicalPropertyResource::isSet() const {
-        if (rdf_node_ptr_) {
-            return true;
-        }
-        return false;
+        return node_ != nullptr;
     }
 
 

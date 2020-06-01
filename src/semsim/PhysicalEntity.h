@@ -30,12 +30,12 @@ namespace semsim {
 
         PhysicalEntity() = default;
 
-        PhysicalEntity(LibrdfWorld world, LibrdfModel model, Subject metaid,
+        PhysicalEntity( LibrdfModel model, Subject metaid,
                        PhysicalPropertyResource physicalProperty, Resource is,
                        Resources is_part_of);
 
 
-        PhysicalEntity(LibrdfWorld world, LibrdfModel model);
+        PhysicalEntity( LibrdfModel model);
 
         Triples toTriples() const override;
 

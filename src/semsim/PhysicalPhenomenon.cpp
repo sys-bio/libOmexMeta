@@ -7,26 +7,14 @@
 
 namespace semsim {
 
-    PhysicalPhenomenon::PhysicalPhenomenon(LibrdfWorld world, LibrdfModel model, Subject metaid,
+    PhysicalPhenomenon::PhysicalPhenomenon( const LibrdfModel &model, Subject metaid,
                                            PhysicalPropertyResource propertyResource, AnnotationType type)
-            : world_(world), model_(model), about(metaid), physical_property_(propertyResource), type_(type) {
+            : model_(model), about(metaid), physical_property_(propertyResource), type_(type) {
     }
 
-    PhysicalPhenomenon::PhysicalPhenomenon(LibrdfWorld world, LibrdfModel model) {
-        if (!world) {
-            throw NullPointerException("PhysicalPhenomenon::PhysicalPhenomenon: world argument is nullptr");
-        }
-        this->world_ = world;
-
-        if (!model) {
-            throw NullPointerException("PhysicalPhenomenon::PhysicalPhenomenon: model argument is nullptr");
-        }
-        this->model_ = model;
-
-    }
-
-    PhysicalPhenomenon::PhysicalPhenomenon() = default;
-
+    PhysicalPhenomenon::PhysicalPhenomenon( const LibrdfModel &model) 
+        : model_(model){}
+        
     Subject PhysicalPhenomenon::getSubject() const {
         return about;
     }
@@ -38,7 +26,7 @@ namespace semsim {
     std::string PhysicalPhenomenon::generateMetaId(std::string id_base) const {
         std::string q = "SELECT ?subject ?predicate ?object\n"
                         "WHERE {?subject ?predicate ?object}";
-        Query query(world_, model_, q);
+        Query query(model_, q);
         ResultsMap results_map = query.resultsAsMap();
         std::vector<std::string> subjects = results_map["subject"];
         int count = 0;

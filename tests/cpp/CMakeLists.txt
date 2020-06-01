@@ -10,21 +10,21 @@ set(TEST_SOURCES
         TripleTests.cpp
         TriplesTests.cpp
 
+        AnnotationSamples.h
+        PhysicalEntityTests.cpp
+        PhysicalPropertyTests.cpp
+        PhysicalPhenomenonTests.cpp
+        #        PhysicalProcessTests.cpp
+        #        PhysicalForceTests.cpp
         #        CurlGetTests.cpp
         #        ReaderTests.cpp
         #        WriterTests.cpp
         #        RDFTests.cpp
         #        RDFReadAndWriteTests.cpp
-        #        AnnotationSamples.h
         #        MetaIDTests.cpp
         #        XmlAssistantTests.cpp
         #        EditorTests.cpp
         #        ParticipantTests.cpp
-        #        PhysicalPropertyTests.cpp
-        #        PhysicalEntityTests.cpp
-        #        PhysicalPhenomenonTests.cpp
-        #        PhysicalProcessTests.cpp
-        #        PhysicalForceTests.cpp
         #        SemsimCombineArchiveTests.cpp
         #        QueryTests.cpp
         #        CAPITests.cpp

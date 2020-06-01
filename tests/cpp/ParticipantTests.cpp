@@ -4,7 +4,7 @@
 
 #include "gtest/gtest.h"
 #include "librdf.h"
-#include "semsim/_RDF.h"
+#include "semsim/RDF.h"
 #include "semsim/Participant.h"
 #include "semsim/SemSim.h"
 

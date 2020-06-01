@@ -5,7 +5,7 @@
 
 #include <librdf.h>
 #include <gtest/gtest.h>
-#include <semsim/_RDF.h>
+#include <semsim/RDF.h>
 #include <semsim/Triples.h>
 #include "SBMLFactory.h"
 #include "AnnotationSamples.h"
