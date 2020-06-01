@@ -11,7 +11,6 @@
 #include "semsim/Resource.h"
 #include "semsim/Triple.h"
 #include "semsim/Participant.h"
-#include "semsim/RDF.h"
 #include "semsim/PhysicalPhenomenon.h"
 #include "semsim/PhysicalEntity.h"
 #include "semsim/PhysicalProcess.h"
@@ -19,7 +18,6 @@
 #include "RedlandAPIWrapper.h"
 #include "semsim/Error.h"
 #include "semsim/SemsimUtils.h"
-#include "semsim/RDF.h"
 
 #include "librdf.h"
 
@@ -62,16 +60,13 @@ namespace semsim {
         std::string xml_;
         std::vector<std::string> metaids_;
         NestedTriples triple_list_;
-        LibrdfWorld world_;
-        LibrdfModel model_;
+        const LibrdfModel& model_;
         std::unordered_map<std::string, std::string> &namespaces_;
 
         void extractNamespacesFromTriplesVector(Triples triples);
 
     public:
         const NamespaceMap &getNamespaces() const;
-
-        LibrdfWorld getWorld() const;
 
         LibrdfModel getModel() const;
 
@@ -80,9 +75,8 @@ namespace semsim {
         // probably need to send our librdf model etc to the editor
         const NestedTriples &getTripleList() const;
 
-        explicit Editor(const std::string &xml, XmlAssistantType type,
-                        LibrdfWorld world,
-                        LibrdfModel model, NamespaceMap &ns_map);
+        explicit Editor(const std::string &xml, SemsimXmlType type,
+                        const LibrdfModel& model, NamespaceMap &ns_map);
 
         const std::string &getXml() const;
 

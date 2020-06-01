@@ -21,7 +21,7 @@
 using namespace redland;
 
 /*
- * Perhaps Reader and Writer
+ * Perhaps _Reader and Writer
  * should inherit from LibrdfSerializer and
  * LibrdfParser?
  */

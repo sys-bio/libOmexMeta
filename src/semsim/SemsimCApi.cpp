@@ -95,7 +95,7 @@ namespace semsim {
         return rdf_ptr->size();
     }
 
-    Editor *RDF_toEditor(semsim::RDF *rdf_ptr, const char *xml, semsim::XmlAssistantType type) {
+    Editor *RDF_toEditor(semsim::RDF *rdf_ptr, const char *xml, semsim::SemsimXmlType type) {
         return rdf_ptr->toEditorPtr(xml, type);
     }
 

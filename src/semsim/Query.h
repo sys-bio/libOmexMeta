@@ -122,7 +122,7 @@ namespace semsim {
 
     public:
 
-        Query(World world, LibrdfModel model, std::string query);
+        Query(const LibrdfModel& model, std::string query);
 
         ~Query();
 

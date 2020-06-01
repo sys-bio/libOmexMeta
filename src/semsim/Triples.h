@@ -21,13 +21,13 @@ namespace semsim {
 
 //    class Triple;
 
-    typedef std::vector<std::shared_ptr<Triple>> UniqueTripleVector;
+    typedef std::vector<std::shared_ptr<Triple>> SharedTripleVector;
     typedef std::vector<Triple> TripleVector;
 
     class Triples {
     private:
 
-        UniqueTripleVector triples_;
+        SharedTripleVector triples_;
 
     public:
         Triples();
@@ -62,12 +62,13 @@ namespace semsim {
 
         int size();
 
-        UniqueTripleVector::iterator begin();
+        SharedTripleVector::iterator begin();
 
-        UniqueTripleVector::iterator end();
+        SharedTripleVector::iterator end();
 
         std::string str(std::string format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
 
+        void push_back(std::shared_ptr<Triple> triple);
     };
 
     typedef std::vector<Triples> NestedTriples;

@@ -42,7 +42,7 @@ namespace semsim {
 
         std::pair<std::string, std::vector<std::string>> addMetaIds();
 
-        virtual const std::vector<std::string> &getValidElements() const;
+        [[nodiscard]] virtual const std::vector<std::string> &getValidElements() const;
     };
 
 
@@ -60,7 +60,7 @@ namespace semsim {
     public:
         using SemsimXmlAssistant::SemsimXmlAssistant;
 
-        const std::vector<std::string> &getValidElements() const override;
+        [[nodiscard]] const std::vector<std::string> &getValidElements() const override;
 
 
     };
@@ -79,7 +79,7 @@ namespace semsim {
     public:
         using SemsimXmlAssistant::SemsimXmlAssistant;
 
-        const std::vector<std::string> &getValidElements() const override;
+        [[nodiscard]] const std::vector<std::string> &getValidElements() const override;
 
     };
 
@@ -89,8 +89,6 @@ namespace semsim {
     public:
 
         static XmlAssistantPtr generate(const std::string &xml, SemsimXmlType type);
-
-
     };
 }
 #endif //LIBSEMSIM_SEMSIMXMLASSISTANT_H

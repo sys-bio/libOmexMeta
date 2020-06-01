@@ -3,7 +3,7 @@
 //
 
 
-#include "semsim/RDFNode.h"
+#include "semsim/_RDFNode.h"
 
 
 namespace semsim {

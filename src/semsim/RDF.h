@@ -8,6 +8,7 @@
 #include <unordered_map>
 #include "RedlandAPIWrapper.h"
 #include "semsim/SemsimUtils.h"
+#include "Editor.h"
 
 using namespace redland;
 
@@ -49,7 +50,9 @@ namespace semsim {
         std::string toString(const std::string &format = "rdfxml-abbrev", const std::string &base_uri = std::string(),
                              const char *mime_type = nullptr, const char *type_uri = nullptr);
 
+        Editor toEditor(std::string xml, SemsimXmlType type);
 
+        const LibrdfModel &getModel() const;
     };
 }
 

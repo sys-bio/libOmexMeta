@@ -28,11 +28,11 @@ namespace semsim {
 
         PhysicalProcess() = default;
 
-        PhysicalProcess(LibrdfWorld world, LibrdfModel model, Subject metaid,
+        PhysicalProcess( const LibrdfModel &model, Subject metaid,
                         PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks,
                         Mediators mediators);
 
-        PhysicalProcess(LibrdfWorld world, LibrdfModel model);
+        PhysicalProcess( const LibrdfModel &model);
 
         const Sources &getSources() const;
 

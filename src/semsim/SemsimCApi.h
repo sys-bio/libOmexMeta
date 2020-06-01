@@ -48,7 +48,7 @@ namespace semsim {
 
     int RDF_size(semsim::RDF *rdf_ptr);
 
-    Editor *RDF_toEditor(semsim::RDF *rdf_ptr, const char *xml, semsim::XmlAssistantType type);
+    Editor *RDF_toEditor(semsim::RDF *rdf_ptr, const char *xml, semsim::SemsimXmlType type);
 
 //RDF_toFile(semsim::RDF* rdf_ptr, );
 //RDF_listOptions(semsim::RDF* rdf_ptr, );

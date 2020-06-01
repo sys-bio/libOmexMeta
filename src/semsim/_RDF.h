@@ -6,7 +6,7 @@
 #define LIBSEMSIM_RDF_H
 
 #include "RedlandAPIWrapper.h"
-#include "semsim/Reader.h"
+#include "semsim/_Reader.h"
 #include "semsim/Writer.h"
 #include "semsim/SemsimUtils.h"
 #include "semsim/Triple.h"
@@ -100,9 +100,9 @@ namespace semsim {
 //
 //        void toFile(std::string format);
 //
-////        Editor toEditor(std::string xml, XmlAssistantType type);
+////        Editor toEditor(std::string xml, SemsimXmlType type);
 ////
-////        Editor *toEditorPtr(std::string xml, XmlAssistantType type);
+////        Editor *toEditorPtr(std::string xml, SemsimXmlType type);
 //
 //        static std::ostringstream listOptions();
 //

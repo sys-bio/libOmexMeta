@@ -30,12 +30,12 @@ namespace semsim {
 
     public:
 
-        PhysicalForce() = default;
+        PhysicalForce() = delete;
 
-        PhysicalForce(LibrdfWorld world, LibrdfModel model, Subject metaid, PhysicalPropertyResource physicalProperty,
+        PhysicalForce(const LibrdfModel& model, Subject metaid, PhysicalPropertyResource physicalProperty,
                       Sources sources, Sinks sinks);
 
-        PhysicalForce(LibrdfWorld world, LibrdfModel model);
+        PhysicalForce(const LibrdfModel& model);
 
         std::string createMetaId() const;
 

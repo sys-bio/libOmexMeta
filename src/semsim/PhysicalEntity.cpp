@@ -5,8 +5,7 @@
 #include "semsim/PhysicalEntity.h"
 
 namespace semsim {
-    PhysicalEntity::PhysicalEntity(
-            const LibrdfModel& model,
+    PhysicalEntity::PhysicalEntity( const LibrdfModel& model,
             Subject metaid,
             PhysicalPropertyResource physicalProperty,
             Resource is,
@@ -22,7 +21,7 @@ namespace semsim {
 
 
     PhysicalEntity &PhysicalEntity::setAbout(std::string metaid) {
-        this->about = Subject(world_, RDFURINode(world_.newNodeUriString(std::move(metaid))));
+        this->about = Subject::fromRawPtr( LibrdfNode::fromUriString(std::move(metaid)));
         return *this;
 
     }
@@ -33,7 +32,7 @@ namespace semsim {
     }
 
     PhysicalEntity &PhysicalEntity::setPhysicalProperty(const std::string &physicalProperty) {
-        physical_property_ = PhysicalPropertyResource(world_, RDFURINode(world_.newNodeUriString(physicalProperty)));
+        physical_property_ = PhysicalPropertyResource( physicalProperty);
         return *this;
     }
 
@@ -41,13 +40,13 @@ namespace semsim {
     PhysicalEntity &PhysicalEntity::setIdentity(std::string resource) {
         // todo implement second argument which defaults to RDFUriNode
         //  and controls whether we use literal/blank/uri node
-        identity_resource_ = Resource(world_, RDFURINode(world_.newNodeUriString(std::move(resource))));
+        identity_resource_ = Resource::fromRawPtr( LibrdfNode::fromUriString(std::move(resource)));
         return *this;
     }
 
     PhysicalEntity &PhysicalEntity::addLocation(std::string where) {
         location_resources.push_back(
-                Resource(world_, RDFURINode(world_.newNodeUriString(where)))
+                Resource::fromRawPtr( LibrdfNode::fromUriString(where))
         );
         return *this;
     }
@@ -97,24 +96,22 @@ namespace semsim {
         }
         // no exclusions needed here - we only generate 1 process metaid before commiting the triples
         // to the model.
-        std::string property_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalEntity",
+        std::string property_metaid = SemsimUtils::generateUniqueMetaid( model_, "PhysicalEntity",
                                                                         std::vector<std::string>());
         Triples triples = physical_property_.toTriples(about.str(), property_metaid);
 
         // what part of physical entity triple
         triples.emplace_back(
-                world_,
-                Subject(world_, RDFURINode(world_.newNodeUriString(property_metaid))),
-                std::make_shared<Predicate>(BiomodelsBiologyQualifier(world_, "is")),
+                Subject::fromRawPtr( LibrdfNode::fromUriString(property_metaid)),
+                std::make_shared<Predicate>(BiomodelsBiologyQualifier( "is")),
                 getIdentityResource()
         );
 
         // the "where" part of the physical entity
         for (auto &locationResource : getLocationResources()) {
             triples.emplace_back(
-                    world_,
-                    Subject(world_, RDFURINode(world_.newNodeUriString(property_metaid))),
-                    std::make_shared<Predicate>(BiomodelsBiologyQualifier(world_, "isPartOf")),
+                    Subject::fromRawPtr( LibrdfNode::fromUriString(property_metaid)),
+                    std::make_shared<Predicate>(BiomodelsBiologyQualifier( "isPartOf")),
                     locationResource
             );
         }
