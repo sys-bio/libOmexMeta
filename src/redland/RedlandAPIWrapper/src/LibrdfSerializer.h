@@ -34,7 +34,7 @@ namespace redland {
 
         static LibrdfSerializer fromRawPtr(librdf_serializer *serializer);
 
-        explicit LibrdfSerializer(const char *name, const char *mime_type = nullptr,
+        explicit LibrdfSerializer(const char *format, const char *mime_type = nullptr,
                                   const char *type_uri = nullptr);
 
         [[nodiscard]] librdf_serializer *get() const;

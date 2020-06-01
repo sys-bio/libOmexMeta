@@ -40,11 +40,15 @@ namespace semsim {
         bool empty();
 
         static RDF2 fromString(const std::string &str,
-                const std::string &format = "guess",
-                const std::string &base_uri=std::string());
+                               const std::string &format = "guess",
+                               const std::string &base_uri = std::string());
 
         std::unordered_map<std::string, std::string>
+
         propagateNamespacesFromParser(std::vector<std::string> seen_namespaces);
+
+        std::string toString(const std::string &format = "rdfxml-abbrev", const std::string &base_uri = std::string(),
+                             const char *mime_type = nullptr, const char *type_uri = nullptr);
     };
 }
 

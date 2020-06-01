@@ -48,7 +48,6 @@ namespace semsim {
         return rdf;
     }
 
-
     std::unordered_map<std::string, std::string>
     RDF2::propagateNamespacesFromParser(std::vector<std::string> seen_namespaces) {
         std::unordered_map<std::string, std::string> keep_map;
@@ -60,5 +59,12 @@ namespace semsim {
         }
         return keep_map;
     }
+
+    std::string RDF2::toString(const std::string &format, const std::string &base_uri,
+            const char* mime_type, const char* type_uri){
+        LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
+        return serializer.toString(LibrdfUri(base_uri), model_);
+    }
+
 
 }
