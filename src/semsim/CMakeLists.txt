@@ -7,7 +7,7 @@ set(SEMSIM_HEADERS
 
         "Subject.h"
         "Resource.h"
-        #        "Predicate.h"
+        "Predicate.h"
         #        "Triple.h"
         #        "Triples.h"
         #        "RDF.h"
@@ -39,7 +39,7 @@ set(SEMSIM_SOURCES
         "SemsimXmlAssistant.cpp"
         "Subject.cpp"
         "Resource.cpp"
-        #                "Predicate.cpp"
+        "Predicate.cpp"
         #        "Triple.cpp"
         #        "RDFNode.cpp"
         #        "Triples.cpp"

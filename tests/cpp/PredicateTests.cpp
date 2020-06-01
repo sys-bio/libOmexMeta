@@ -15,11 +15,7 @@ public:
     std::string bqb_ns = "http://biomodels.net/biology-qualifiers/";
 
 
-    PredicateTests() {
-    }
-
-    ~PredicateTests() override {
-    }
+    PredicateTests() = default;
 
 };
 
@@ -179,7 +175,7 @@ TEST_F(PredicateTests, TestSemsimPredicateNamespace) {
 
 TEST_F(PredicateTests, TestFromUriNode) {
     std::string url_str = "https://www.notarealaddress.com";
-    Predicate predicate(LibrdfNode::fromUriString(url_str.c_str()));
+    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
     std::string node_string = predicate.str();
     ASSERT_STREQ(url_str.c_str(), node_string.c_str());
 }
@@ -187,7 +183,7 @@ TEST_F(PredicateTests, TestFromUriNode) {
 
 TEST_F(PredicateTests, TestFromUriNodeNamespace) {
     std::string url_str = "https://www.notarealaddress.com/nota/term";
-    Predicate predicate(LibrdfNode::fromUriString(url_str.c_str()));
+    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
     const std::string &actual = predicate.getNamespace();
     std::string expected = "https://www.notarealaddress.com/nota/";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -195,7 +191,7 @@ TEST_F(PredicateTests, TestFromUriNodeNamespace) {
 
 TEST_F(PredicateTests, TestFromUriNodeNamespaceWhenPrefixIsKnown) {
     std::string url_str = "https://biomodels.net/biology-qualifiers/is";
-    Predicate predicate(LibrdfNode::fromUriString(url_str.c_str()));
+    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
     const std::string &actual = predicate.getNamespace();
     std::string expected = "https://biomodels.net/biology-qualifiers/";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -203,7 +199,7 @@ TEST_F(PredicateTests, TestFromUriNodeNamespaceWhenPrefixIsKnown) {
 
 TEST_F(PredicateTests, TestNamespaceWhenItEndsWithHash) {
     std::string url_str = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
-    Predicate predicate(LibrdfNode::fromUriString(url_str.c_str()));
+    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
     const std::string &actual = predicate.getNamespace();
     std::string expected = "http://www.bhi.washington.edu/semsim#";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -211,7 +207,7 @@ TEST_F(PredicateTests, TestNamespaceWhenItEndsWithHash) {
 
 TEST_F(PredicateTests, TestPrefixWhenNamespaceEndsWithHash) {
     std::string url_str = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
-    Predicate predicate(LibrdfNode::fromUriString(url_str.c_str()));
+    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
     const std::string &actual = predicate.getPrefix();
     std::string expected = "semsim";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -219,7 +215,7 @@ TEST_F(PredicateTests, TestPrefixWhenNamespaceEndsWithHash) {
 
 TEST_F(PredicateTests, TestTermWhenNamespaceEndsWithHash) {
     std::string url_str = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
-    Predicate predicate(LibrdfNode::fromUriString(url_str.c_str()));
+    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
     const std::string &actual = predicate.getTerm();
     std::string expected = "hasSourceParticipant";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -227,7 +223,7 @@ TEST_F(PredicateTests, TestTermWhenNamespaceEndsWithHash) {
 
 TEST_F(PredicateTests, TestFromUriNodeTerm) {
     std::string url_str = "https://www.notarealaddress.com/nota/term";
-    Predicate predicate(LibrdfNode::fromUriString(url_str.c_str()));
+    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
     const std::string &actual = predicate.getTerm();
     std::string expected = "term";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -235,7 +231,7 @@ TEST_F(PredicateTests, TestFromUriNodeTerm) {
 
 TEST_F(PredicateTests, TestFromUriNodePrefix) {
     std::string url_str = "https://www.notarealaddress.com/nota/term";
-    Predicate predicate(LibrdfNode::fromUriString(url_str.c_str()));
+    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
     const std::string &actual = predicate.getPrefix();
     std::string expected = "NotSet";
     ASSERT_STREQ(expected.c_str(), actual.c_str());

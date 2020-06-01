@@ -28,6 +28,7 @@ namespace semsim {
         std::shared_ptr<redland::LibrdfNode> uri_node_; //! predicates can only have type uri
         std::vector<std::string> valid_terms_{"All"};
 
+        explicit Predicate(librdf_node* node);
     public:
         Predicate() = default;
 
@@ -36,7 +37,7 @@ namespace semsim {
         Predicate(const std::string &namespace_,
                   std::string term, std::string prefix);
 
-        explicit Predicate(LibrdfNode node);
+        static Predicate fromRawPtr(librdf_node* node);
 
         std::string str();
 

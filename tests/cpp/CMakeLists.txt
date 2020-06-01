@@ -6,15 +6,15 @@ set(TEST_SOURCES
         RDFTests.cpp
         SubjectTests.cpp
         ResourceTests.cpp
+        PredicateTests.cpp
 
-#        PredicateTests.cpp
-#        CurlGetTests.cpp
-#        TripleTests.cpp
-#        TripplesTests.cpp
-#        ReaderTests.cpp
-#        WriterTests.cpp
-#        RDFTests.cpp
-#        RDFReadAndWriteTests.cpp
+        #        CurlGetTests.cpp
+        #        TripleTests.cpp
+        #        TripplesTests.cpp
+        #        ReaderTests.cpp
+        #        WriterTests.cpp
+        #        RDFTests.cpp
+        #        RDFReadAndWriteTests.cpp
         #        AnnotationSamples.h
         #        MetaIDTests.cpp
         #        XmlAssistantTests.cpp
