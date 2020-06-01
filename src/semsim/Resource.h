@@ -17,14 +17,15 @@ using namespace redland;
 namespace semsim {
     class Resource {
 
+        explicit Resource(librdf_node* node);
     protected:
         LibrdfNode node_;
     public:
         Resource() = default;
 
-        [[nodiscard]] const LibrdfNode &getNode() const;
+        static Resource fromRawPtr(librdf_node* node);
 
-        explicit Resource(LibrdfNode node);
+        [[nodiscard]] const LibrdfNode &getNode() const;
 
         [[nodiscard]] std::string str() const;
 

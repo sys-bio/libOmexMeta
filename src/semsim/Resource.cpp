@@ -6,12 +6,12 @@
 
 namespace semsim {
 
-    std::string Resource::str() const {
-        return node_.str();
+    Resource::Resource(librdf_node* node)
+            : node_(LibrdfNode(node)) {
     }
 
-    Resource::Resource(LibrdfNode node)
-            : node_(std::move(node)) {
+    std::string Resource::str() const {
+        return node_.str();
     }
 
     bool Resource::isSet() const {
@@ -20,6 +20,10 @@ namespace semsim {
 
     const LibrdfNode &Resource::getNode() const {
         return node_;
+    }
+
+    Resource Resource::fromRawPtr(librdf_node *node) {
+        return Resource(node);
     }
 
 }
