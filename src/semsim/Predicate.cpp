@@ -121,8 +121,8 @@ namespace semsim {
         }
     }
 
-    const LibrdfNode Predicate::getNode() const {
-        return *uri_node_;
+    librdf_node* Predicate::getNode() const {
+        return uri_node_->get();
     }
 
     Predicate Predicate::fromRawPtr(librdf_node *node) {

@@ -51,7 +51,7 @@ TEST_F(ResourceTests, TestResourceUriIdentifiersOrgColonNotationFromStr) {
 TEST_F(ResourceTests, TestResourceUriIdentifiersOrgColonNotationFromNode) {
     Resource resource = Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:1234"));
     std::string expected = "https://identifiers.org/fma/FMA:1234";
-    std::string actual = (const char *) librdf_uri_as_string(librdf_node_get_uri(resource.getNode().get()));
+    std::string actual = (const char *) librdf_uri_as_string(librdf_node_get_uri(resource.getNode()));
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -72,7 +72,7 @@ TEST_F(ResourceTests, TestResourceUriFromFileOnDiskStr) {
 TEST_F(ResourceTests, TestResourceUriFromFileOnDiskNode) {
     Resource resource = Resource::fromRawPtr(LibrdfNode::fromUriString("/file/on/disk"));
     std::string expected = "/file/on/disk";
-    std::string actual = (const char *) librdf_uri_as_string(librdf_node_get_uri(resource.getNode().get()));
+    std::string actual = (const char *) librdf_uri_as_string(librdf_node_get_uri(resource.getNode()));
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -86,7 +86,7 @@ TEST_F(ResourceTests, TestResourceUriFromRelativeFileOnDiskStr) {
 TEST_F(ResourceTests, TestResourceUriFromRelativeFileOnDiskNode) {
     Resource resource = Resource::fromRawPtr(LibrdfNode::fromUriString("./relative/file/on/disk"));
     std::string expected = "./relative/file/on/disk";
-    std::string actual = (const char *) librdf_uri_as_string(librdf_node_get_uri(resource.getNode().get()));
+    std::string actual = (const char *) librdf_uri_as_string(librdf_node_get_uri(resource.getNode()));
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
