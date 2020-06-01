@@ -7,8 +7,8 @@
 
 namespace semsim {
 
-    Subject::Subject(LibrdfNode node)
-            : node_(std::move(node)) {
+    Subject::Subject(librdf_node* node)
+            : node_(LibrdfNode(node)) {
     }
 
     Subject Subject::fromUri(const std::string &uri) {
@@ -29,6 +29,10 @@ namespace semsim {
 
     const LibrdfNode &Subject::getNode() const {
         return node_;
+    }
+
+    Subject Subject::fromRawPointer(librdf_node* node) {
+        return Subject(node);
     }
 
 }

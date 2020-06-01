@@ -4,7 +4,7 @@
 
 #include "gtest/gtest.h"
 #include "SBMLFactory.h"
-#include "semsim/XmlAssistant.h"
+#include "semsim/SemsimXmlAssistant.h"
 #include <chrono>
 #include <thread>
 

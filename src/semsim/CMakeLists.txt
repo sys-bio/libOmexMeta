@@ -2,17 +2,16 @@
 set(SEMSIM_HEADERS
         "SemsimUtils.h"
         "CurlGet.h"
-        "RDF2.h"
-        #        "Subject.h"
+        "RDF.h"
+        "SemsimXmlAssistant.h"
+
+        "Subject.h"
+        #        "Triple.h"
         #        "Predicate.h"
         #        "Resource.h"
-        #        "Triple.h"
         #        "Triples.h"
-        #        "Reader.h"
-        #        "Writer.h"
         #        "RDF.h"
         #        "MetaID.h"
-        #        "XmlAssistant.h"
         #        "Editor.h"
         #        "TripleWriter.h"
         #        "SemSim.h"
@@ -26,24 +25,28 @@ set(SEMSIM_HEADERS
         #        "Query.h"
         #        "SemsimCApi.h"
         #        "HERE.h"
-        #        Log.h RedlandAPIWrapper/RaptorIOStream.cpp RedlandAPIWrapper/RaptorIOStream.h
-        RDF2.cpp RDF2.h)
+        #        Log.h
+        #        RedlandAPIWrapper/RaptorIOStream.cpp
+        #        RedlandAPIWrapper/RaptorIOStream.h
+        #        "Reader.h"
+        #        "Writer.h"
+        )
 
 set(SEMSIM_SOURCES
         "SemsimUtils.cpp"
-        "RDF2.cpp"
+        "RDF.cpp"
         "CurlGet.cpp"
-        #        "Subject.cpp"
+        "SemsimXmlAssistant.cpp"
+        "Subject.cpp"
+        #        "Triple.cpp"
         #        "Predicate.cpp"
         #        "Resource.cpp"
         #        "RDFNode.cpp"
         #        "Triples.cpp"
-        #        "Triple.cpp"
         #        "Reader.cpp"
         #        "Writer.cpp"
         #        "RDF.cpp"
         #        "MetaID.cpp"
-        #        "XmlAssistant.cpp"
         #        "Editor.cpp"
         #        "TripleWriter.cpp"
         #        "Participant.cpp"
@@ -55,7 +58,7 @@ set(SEMSIM_SOURCES
         #        "Query.cpp"
         #        "SemsimCApi.cpp"
         #        Log.h RedlandAPIWrapper/RaptorIOStream.cpp RedlandAPIWrapper/RaptorIOStream.h
-        RDF2.cpp RDF2.h)
+        RDF.cpp RDF.h)
 
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)

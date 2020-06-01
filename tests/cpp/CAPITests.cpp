@@ -8,9 +8,9 @@
 #include "gtest/gtest.h"
 #include "AnnotationSamples.h"
 #include "semsim/SemsimCApi.h"
-#include "semsim/RDF.h"
+#include "semsim/_RDF.h"
 #include "SBMLFactory.h"
-#include "semsim/XmlAssistant.h"
+#include "semsim/SemsimXmlAssistant.h"
 
 class CAPITests : public ::testing::Test {
 public:

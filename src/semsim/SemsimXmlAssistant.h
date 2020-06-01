@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/14/2020.
 //
 
-#ifndef LIBSEMSIM_XMLASSISTANT_H
-#define LIBSEMSIM_XMLASSISTANT_H
+#ifndef LIBSEMSIM_SEMSIMXMLASSISTANT_H
+#define LIBSEMSIM_SEMSIMXMLASSISTANT_H
 
 
 #include <vector>
@@ -18,13 +18,13 @@
 #include "SemsimUtils.h"
 
 namespace semsim {
-    enum XmlAssistantType {
-        ASSISTANT_TYPE_SBML,
-        ASSISTANT_TYPE_CELLML,
-        ASSISTANT_TYPE_OTHER,
+    enum SemsimXmlType {
+        SEMSIM_TYPE_SBML,
+        SEMSIM_TYPE_CELLML,
+        SEMSIM_TYPE_OTHER,
     };
 
-    class XmlAssistant {
+    class SemsimXmlAssistant {
         std::string xml_;
         std::string metaid_base;
         int metaid_num_digits_;
@@ -38,7 +38,7 @@ namespace semsim {
 
     public:
 
-        explicit XmlAssistant(std::string xml, std::string base = "MetaID", int metaid_num_digits = 4);
+        explicit SemsimXmlAssistant(std::string xml, std::string base = "MetaID", int metaid_num_digits = 4);
 
         std::pair<std::string, std::vector<std::string>> addMetaIds();
 
@@ -46,7 +46,7 @@ namespace semsim {
     };
 
 
-    class SBMLAssistant : public XmlAssistant {
+    class SBMLAssistant : public SemsimXmlAssistant {
     protected:
         std::vector<std::string> valid_elements_ = {
                 "model",
@@ -58,7 +58,7 @@ namespace semsim {
                 "localParameter",
         };
     public:
-        using XmlAssistant::XmlAssistant;
+        using SemsimXmlAssistant::SemsimXmlAssistant;
 
         const std::vector<std::string> &getValidElements() const override;
 
@@ -66,7 +66,7 @@ namespace semsim {
     };
 
 
-    class CellMLAssistant : public XmlAssistant {
+    class CellMLAssistant : public SemsimXmlAssistant {
         std::vector<std::string> valid_elements_ = {
                 "model",
                 "unit",
@@ -77,20 +77,20 @@ namespace semsim {
                 "localParameter",
         };
     public:
-        using XmlAssistant::XmlAssistant;
+        using SemsimXmlAssistant::SemsimXmlAssistant;
 
         const std::vector<std::string> &getValidElements() const override;
 
     };
 
-    typedef std::unique_ptr<XmlAssistant> XmlAssistantPtr;
+    typedef std::unique_ptr<SemsimXmlAssistant> XmlAssistantPtr;
 
     class XmlAssistantFactory {
     public:
 
-        static XmlAssistantPtr generate(const std::string &xml, XmlAssistantType type);
+        static XmlAssistantPtr generate(const std::string &xml, SemsimXmlType type);
 
 
     };
 }
-#endif //LIBSEMSIM_XMLASSISTANT_H
+#endif //LIBSEMSIM_SEMSIMXMLASSISTANT_H

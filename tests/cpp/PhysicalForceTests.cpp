@@ -3,7 +3,7 @@
 //
 
 
-#include <semsim/RDF.h>
+#include <semsim/_RDF.h>
 #include <vector>
 #include "gtest/gtest.h"
 #include "librdf.h"

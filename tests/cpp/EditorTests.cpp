@@ -4,7 +4,7 @@
 #include "gtest/gtest.h"
 #include "SBMLFactory.h"
 #include "semsim/Editor.h"
-#include "semsim/XmlAssistant.h"
+#include "semsim/SemsimXmlAssistant.h"
 #include "semsim/PhysicalEntity.h"
 #include "semsim/PhysicalProcess.h"
 #include "semsim/PhysicalForce.h"

@@ -6,12 +6,12 @@
 #define LIBSEMSIM_EDITOR_H
 
 
-#include "semsim/XmlAssistant.h"
+#include "semsim/SemsimXmlAssistant.h"
 #include "semsim/Predicate.h"
 #include "semsim/Resource.h"
 #include "semsim/Triple.h"
 #include "semsim/Participant.h"
-#include "semsim/RDF.h"
+#include "semsim/_RDF.h"
 #include "semsim/PhysicalPhenomenon.h"
 #include "semsim/PhysicalEntity.h"
 #include "semsim/PhysicalProcess.h"
@@ -19,7 +19,7 @@
 #include "RedlandAPIWrapper.h"
 #include "semsim/Error.h"
 #include "semsim/SemsimUtils.h"
-#include "semsim/RDF.h"
+#include "semsim/_RDF.h"
 
 #include "librdf.h"
 
