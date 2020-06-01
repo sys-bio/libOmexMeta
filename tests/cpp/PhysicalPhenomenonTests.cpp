@@ -6,7 +6,7 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#include <semsim/RDF.h>
+#include <semsim/_RDF.h>
 #include "gtest/gtest.h"
 #include "librdf.h"
 #include "AnnotationSamples.h"

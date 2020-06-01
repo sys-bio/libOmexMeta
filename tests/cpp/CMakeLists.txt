@@ -4,7 +4,8 @@ set(TEST_SOURCES
         SBMLFactory.h
         SemsimUtilsTests.cpp
         RDF2Tests.cpp
-#        SubjectTests.cpp
+
+        SubjectTests.cpp
 #        PredicateTests.cpp
 #        ResourceTests.cpp
 #        CurlGetTests.cpp

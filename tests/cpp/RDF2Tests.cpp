@@ -3,7 +3,7 @@
 //
 
 #include "gtest/gtest.h"
-#include "semsim/RDF2.h"
+#include "semsim/RDF.h"
 #include "AnnotationSamples.h"
 
 using namespace semsim;
@@ -22,27 +22,27 @@ public:
 };
 
 TEST_F(RDFTests, TestCreateEmptyRDF) {
-    RDF2 rdf;
+    RDF rdf;
     ASSERT_EQ(0, rdf.size());
     ASSERT_TRUE(rdf.empty());
 }
 
 TEST_F(RDFTests, TestFromStringSingularAnnotation) {
-    RDF2 rdf = RDF2::fromString(samples.singular_annotation1);
+    RDF rdf = RDF::fromString(samples.singular_annotation1);
     int expected = 1;
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
 }
 
 TEST_F(RDFTests, TestFromStringTurtleBag) {
-    RDF2 rdf = RDF2::fromString(samples.rdf_turtle_bag_example, "turtle");
+    RDF rdf = RDF::fromString(samples.rdf_turtle_bag_example, "turtle");
     int expected = 7;
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
 }
 
 TEST_F(RDFTests, TestToString) {
-    RDF2 rdf = RDF2::fromString(samples.rdf_xml_example7, "rdfxml");
+    RDF rdf = RDF::fromString(samples.rdf_xml_example7, "rdfxml");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://www.w3.org/TR/rdf-syntax-grammar\">\n"

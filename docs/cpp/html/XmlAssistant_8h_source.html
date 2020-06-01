@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9"/>
     <meta name="generator" content="Doxygen 1.8.18"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>libsemsim: src/semsim/XmlAssistant.h Source File</title>
+    <title>libsemsim: src/semsim/SemsimXmlAssistant.h Source File</title>
     <link href="tabs.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="dynsections.js"></script>
@@ -73,7 +73,7 @@
 </div><!-- top -->
 <div class="header">
     <div class="headertitle">
-        <div class="title">XmlAssistant.h</div>
+        <div class="title">SemsimXmlAssistant.h</div>
     </div>
 </div><!--header-->
 <div class="contents">
@@ -85,9 +85,9 @@
         <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span>
         </div>
         <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-        <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef LIBSEMSIM_XMLASSISTANT_H</span>
+        <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef LIBSEMSIM_SEMSIMXMLASSISTANT_H</span>
         </div>
-        <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define LIBSEMSIM_XMLASSISTANT_H</span>
+        <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define LIBSEMSIM_SEMSIMXMLASSISTANT_H</span>
         </div>
         <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
         <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
@@ -116,16 +116,16 @@
                 class="keyword">namespace </span>semsim {
         </div>
         <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; <span class="keyword">enum</span>
-            XmlAssistantType {
+            SemsimXmlType {
         </div>
-        <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; ASSISTANT_TYPE_SBML,</div>
-        <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; ASSISTANT_TYPE_CELLML,</div>
-        <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; ASSISTANT_TYPE_OTHER,</div>
+        <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; SEMSIM_TYPE_SBML,</div>
+        <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; SEMSIM_TYPE_CELLML,</div>
+        <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; SEMSIM_TYPE_OTHER,</div>
         <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; };</div>
         <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
         <div class="line"><a name="l00027"></a><span class="lineno"><a class="line"
                                                                        href="classsemsim_1_1XmlAssistant.html">   27</a></span>&#160;
-            <span class="keyword">class </span><a class="code" href="classsemsim_1_1XmlAssistant.html">XmlAssistant</a>
+            <span class="keyword">class </span><a class="code" href="classsemsim_1_1XmlAssistant.html">SemsimXmlAssistant</a>
             {
         </div>
         <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; std::string xml_;</div>
@@ -155,7 +155,7 @@
         </div>
         <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
         <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; <span
-                class="keyword">explicit</span> <a class="code" href="classsemsim_1_1XmlAssistant.html">XmlAssistant</a>(std::string
+                class="keyword">explicit</span> <a class="code" href="classsemsim_1_1XmlAssistant.html">SemsimXmlAssistant</a>(std::string
             xml, std::string base = <span class="stringliteral">&quot;MetaID&quot;</span>, <span
                     class="keywordtype">int</span> metaid_num_digits = 4);
         </div>
@@ -176,7 +176,7 @@
             <span class="keyword">class </span><a class="code"
                                                   href="classsemsim_1_1SBMLAssistant.html">SBMLAssistant</a> : <span
                     class="keyword">public</span> <a class="code"
-                                                     href="classsemsim_1_1XmlAssistant.html">XmlAssistant</a> {
+                                                     href="classsemsim_1_1XmlAssistant.html">SemsimXmlAssistant</a> {
         </div>
         <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; <span
                 class="keyword">protected</span>:
@@ -203,7 +203,7 @@
                 class="keyword">public</span>:
         </div>
         <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; <span
-                class="keyword">using</span> XmlAssistant::XmlAssistant;
+                class="keyword">using</span> SemsimXmlAssistant::SemsimXmlAssistant;
         </div>
         <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
         <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; <span
@@ -219,7 +219,7 @@
                                                                        href="classsemsim_1_1CellMLAssistant.html">   68</a></span>&#160;
             <span class="keyword">class </span><a class="code" href="classsemsim_1_1CellMLAssistant.html">CellMLAssistant</a>
             : <span class="keyword">public</span> <a class="code"
-                                                     href="classsemsim_1_1XmlAssistant.html">XmlAssistant</a> {
+                                                     href="classsemsim_1_1XmlAssistant.html">SemsimXmlAssistant</a> {
         </div>
         <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; std::vector&lt;std::string&gt;
             valid_elements_ = {
@@ -243,7 +243,7 @@
                 class="keyword">public</span>:
         </div>
         <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; <span
-                class="keyword">using</span> XmlAssistant::XmlAssistant;
+                class="keyword">using</span> SemsimXmlAssistant::SemsimXmlAssistant;
         </div>
         <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
         <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; <span
@@ -254,7 +254,7 @@
         <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; };</div>
         <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
         <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; <span
-                class="keyword">typedef</span> std::unique_ptr&lt;XmlAssistant&gt; XmlAssistantPtr;
+                class="keyword">typedef</span> std::unique_ptr&lt;SemsimXmlAssistant&gt; XmlAssistantPtr;
         </div>
         <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
         <div class="line"><a name="l00087"></a><span class="lineno"><a class="line"
@@ -268,35 +268,35 @@
         <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
         <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; <span
                 class="keyword">static</span> XmlAssistantPtr generate(<span class="keyword">const</span> std::string&amp;
-            xml, XmlAssistantType type);
+            xml, SemsimXmlType type);
         </div>
         <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
         <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
         <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
         <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; };</div>
         <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
-        <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif //LIBSEMSIM_XMLASSISTANT_H</span>
+        <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif //LIBSEMSIM_SEMSIMXMLASSISTANT_H</span>
         </div>
     </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclasssemsim_1_1SBMLAssistant_html">
     <div class="ttname"><a href="classsemsim_1_1SBMLAssistant.html">semsim::SBMLAssistant</a></div>
-    <div class="ttdef"><b>Definition:</b> XmlAssistant.h:48</div>
+    <div class="ttdef"><b>Definition:</b> SemsimXmlAssistant.h:48</div>
 </div>
 <div class="ttc" id="aclasssemsim_1_1CellMLAssistant_html">
     <div class="ttname"><a href="classsemsim_1_1CellMLAssistant.html">semsim::CellMLAssistant</a></div>
-    <div class="ttdef"><b>Definition:</b> XmlAssistant.h:68</div>
+    <div class="ttdef"><b>Definition:</b> SemsimXmlAssistant.h:68</div>
 </div>
 <div class="ttc" id="aclasssemsim_1_1XmlAssistantFactory_html">
     <div class="ttname"><a href="classsemsim_1_1XmlAssistantFactory.html">semsim::XmlAssistantFactory</a></div>
-    <div class="ttdef"><b>Definition:</b> XmlAssistant.h:87</div>
+    <div class="ttdef"><b>Definition:</b> SemsimXmlAssistant.h:87</div>
 </div>
 <div class="ttc" id="aclasssemsim_1_1MetaID_html">
     <div class="ttname"><a href="classsemsim_1_1MetaID.html">semsim::MetaID</a></div>
     <div class="ttdef"><b>Definition:</b> MetaID.h:15</div>
 </div>
 <div class="ttc" id="aclasssemsim_1_1XmlAssistant_html">
-    <div class="ttname"><a href="classsemsim_1_1XmlAssistant.html">semsim::XmlAssistant</a></div>
-    <div class="ttdef"><b>Definition:</b> XmlAssistant.h:27</div>
+    <div class="ttname"><a href="classsemsim_1_1XmlAssistant.html">semsim::SemsimXmlAssistant</a></div>
+    <div class="ttdef"><b>Definition:</b> SemsimXmlAssistant.h:27</div>
 </div>
 <!-- start footer part -->
 <hr class="footer"/>

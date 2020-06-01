@@ -5,9 +5,9 @@
 #ifndef LIBSEMSIM_SEMSIMCAPI_H
 #define LIBSEMSIM_SEMSIMCAPI_H
 
-#include "semsim/RDF.h"
+#include "semsim/_RDF.h"
 #include "semsim/Editor.h"
-#include "semsim/XmlAssistant.h"
+#include "semsim/SemsimXmlAssistant.h"
 #include "semsim/PhysicalEntity.h"
 #include "semsim/PhysicalProcess.h"
 #include "semsim/PhysicalForce.h"
