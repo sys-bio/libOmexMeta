@@ -8,7 +8,7 @@
 namespace semsim {
 
     Subject::Subject(librdf_node* node)
-            : node_(LibrdfNode(node)) {
+            : node_(node) {
     }
 
     Subject Subject::fromUri(const std::string &uri) {
@@ -20,19 +20,23 @@ namespace semsim {
     }
 
     std::string Subject::str() const {
-        return node_.str();
+        return LibrdfNode::str(node_);
     }
 
     bool Subject::isSet() const {
-        return !node_.get();
+        return !node_;
     }
 
     librdf_node* Subject::getNode() const {
-        return node_.get();
+        return node_;
     }
 
     Subject Subject::fromRawPtr(librdf_node* node) {
         return Subject(node);
+    }
+
+    void Subject::freeNode() {
+        LibrdfNode::freeNode(node_);
     }
 
 }

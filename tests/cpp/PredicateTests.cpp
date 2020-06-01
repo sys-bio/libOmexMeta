@@ -20,118 +20,129 @@ public:
 };
 
 TEST_F(PredicateTests, TestCreateStaticFunctionFromBasePredicate) {
-    Predicate predicate2(bqb_ns, "is", "bqbiol");
+    Predicate predicate(bqb_ns, "is", "bqbiol");
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
-    std::string actual = predicate2.str();
+    std::string actual = predicate.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    predicate.freeNode();
 }
 
 TEST_F(PredicateTests, TestGetNode) {
-    Predicate predicate2(bqb_ns, "is", "bqbiol");
+    Predicate predicate(bqb_ns, "is", "bqbiol");
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
-    std::string actual = predicate2.str();
+    std::string actual = predicate.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    predicate.freeNode();
 }
 
 TEST_F(PredicateTests, TestGetNodeFromPtr) {
-    Predicate predicate2(bqb_ns, "is", "bqbiol");
-    PredicatePtr ptr = std::make_unique<Predicate>(std::move(predicate2));
+    Predicate predicate(bqb_ns, "is", "bqbiol");
+    PredicatePtr ptr = std::make_unique<Predicate>(std::move(predicate));
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     std::string actual = ptr->str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    predicate.freeNode();
 }
 
 TEST_F(PredicateTests, TestGetNodebqb) {
-    BiomodelsBiologyQualifier qualifiers("is");
+    BiomodelsBiologyQualifier predicate("is");
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
-    std::string actual = qualifiers.str();
+    std::string actual = predicate.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    predicate.freeNode();
 }
 
 TEST_F(PredicateTests, TestGetNodeFromPtrBqB) {
     // todo This test exposes a memory leak that I haven't been
     //  able to figure out yet. Save until later when you can confer
     //  with Herbert or Lucian.
-    BiomodelsBiologyQualifier qualifiers("is");
-    PredicatePtr ptr = std::make_unique<BiomodelsBiologyQualifier>(std::move(qualifiers));
+    BiomodelsBiologyQualifier predicate("is");
+    PredicatePtr ptr = std::make_unique<BiomodelsBiologyQualifier>(predicate);
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     std::string actual = ptr->str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    predicate.freeNode();
 }
 
 TEST_F(PredicateTests, TestGetNodebqbFails) {
-    ASSERT_THROW(BiomodelsBiologyQualifier qualifiers("isnot"), std::logic_error);
+    /*
+     * How to do this test and free the memory used by predicate.node_?
+     * Do I need to have a finally type block somewhere?
+     */
+    ASSERT_THROW(BiomodelsBiologyQualifier predicate("isnot"), std::logic_error);
+
 }
 
 TEST_F(PredicateTests, TestGetNodebqqPrefix) {
-    BiomodelsBiologyQualifier qualifiers("is");
+    BiomodelsBiologyQualifier predicate("is");
     std::string expected = "bqbiol";
-    ASSERT_STREQ(expected.c_str(), qualifiers.getPrefix().c_str());
+    ASSERT_STREQ(expected.c_str(), predicate.getPrefix().c_str());
+    predicate.freeNode();
 }
 
 TEST_F(PredicateTests, TestDCTermPrefix) {
-    DCTerm term("Description");
+    DCTerm predicate("Description");
     std::string expected = "dcterms";
-    ASSERT_STREQ(expected.c_str(), term.getPrefix().c_str());
+    ASSERT_STREQ(expected.c_str(), predicate.getPrefix().c_str());
 }
 
 TEST_F(PredicateTests, TestDCTermUri) {
-    DCTerm term("Description");
+    DCTerm predicate("Description");
     std::string expected = "http://purl.org/dc/terms/Description";
-    std::string actual = term.str();
+    std::string actual = predicate.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 
 TEST_F(PredicateTests, TestDCTermGetNamespace) {
-    DCTerm term("Description");
+    DCTerm predicate("Description");
     std::string expected = "http://purl.org/dc/terms/";
-    std::string actual = term.getNamespace();
+    std::string actual = predicate.getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(PredicateTests, TestDCTermGetPrefix) {
-    DCTerm term("Description");
+    DCTerm predicate("Description");
     std::string expected = "dcterms";
-    std::string actual = term.getPrefix();
+    std::string actual = predicate.getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(PredicateTests, TestBqBiolGetNamespace) {
-    BiomodelsBiologyQualifier term("is");
+    BiomodelsBiologyQualifier predicate("is");
     std::string expected = "http://biomodels.net/biology-qualifiers/";
-    std::string actual = term.getNamespace();
+    std::string actual = predicate.getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 
 TEST_F(PredicateTests, TestBqBiolGetPrefix) {
-    BiomodelsBiologyQualifier term("is");
+    BiomodelsBiologyQualifier predicate("is");
     std::string expected = "bqbiol";
-    std::string actual = term.getPrefix();
+    std::string actual = predicate.getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 
 TEST_F(PredicateTests, TestBqModelGetNamespace) {
-    BiomodelsBiologyQualifier term("is");
+    BiomodelsBiologyQualifier predicate("is");
     std::string expected = "http://biomodels.net/biology-qualifiers/";
-    std::string actual = term.getNamespace();
+    std::string actual = predicate.getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 
 TEST_F(PredicateTests, TestBqModelGetPrefix) {
-    BiomodelsBiologyQualifier term("is");
+    BiomodelsBiologyQualifier predicate("is");
     std::string expected = "bqbiol";
-    std::string actual = term.getPrefix();
+    std::string actual = predicate.getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 
 TEST_F(PredicateTests, TestBqModelGetPrefixFromPtr) {
-    BiomodelsBiologyQualifier term("is");
-    std::shared_ptr<BiomodelsBiologyQualifier> term_ptr = std::make_unique<BiomodelsBiologyQualifier>(std::move(term));
+    BiomodelsBiologyQualifier predicate("is");
+    std::shared_ptr<BiomodelsBiologyQualifier> term_ptr = std::make_unique<BiomodelsBiologyQualifier>(std::move(predicate));
     std::string expected = "bqbiol";
     std::string actual = term_ptr->getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -139,8 +150,8 @@ TEST_F(PredicateTests, TestBqModelGetPrefixFromPtr) {
 
 
 TEST_F(PredicateTests, TestBqModelGetPrefixFromPtrToBaseClass) {
-    BiomodelsBiologyQualifier term("is");
-    std::shared_ptr<Predicate> term_ptr = std::make_unique<BiomodelsBiologyQualifier>(std::move(term));
+    BiomodelsBiologyQualifier predicate("is");
+    std::shared_ptr<Predicate> term_ptr = std::make_unique<BiomodelsBiologyQualifier>(std::move(predicate));
     std::string expected = "bqbiol";
     std::string actual = term_ptr->getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());

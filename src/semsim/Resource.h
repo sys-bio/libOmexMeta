@@ -19,7 +19,7 @@ namespace semsim {
 
         explicit Resource(librdf_node* node);
     protected:
-        LibrdfNode node_;
+        librdf_node* node_ = nullptr;
     public:
         Resource() = default;
 
@@ -30,7 +30,11 @@ namespace semsim {
         [[nodiscard]] std::string str() const;
 
         [[nodiscard]] virtual bool isSet() const;
+
+        void freeNode();
     };
+
+
 
     typedef std::vector<Resource> Resources;
 

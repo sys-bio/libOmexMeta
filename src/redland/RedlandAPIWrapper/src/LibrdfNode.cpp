@@ -82,22 +82,22 @@ namespace redland {
      * Retrive a value from a librdf_node object,
      * regardless of its type.
      */
-    std::string LibrdfNode::str() const {
-        if (!node_) {
-            throw RedlandNullPointerException("LibrdfNode::str(): NullPointerException: node_");
+    std::string LibrdfNode::str(librdf_node* node) {
+        if (!node) {
+            throw RedlandNullPointerException("LibrdfNode::str(): NullPointerException: node");
         }
         std::string value;
-        switch (node_->type) {
+        switch (node->type) {
             case RAPTOR_TERM_TYPE_URI: {
-                value = (const char *) librdf_uri_as_string(librdf_node_get_uri(node_.get()));
+                value = (const char *) librdf_uri_as_string(librdf_node_get_uri(node));
                 break;
             }
             case RAPTOR_TERM_TYPE_LITERAL: {
-                value = (const char *) librdf_node_get_literal_value(node_.get());
+                value = (const char *) librdf_node_get_literal_value(node);
                 break;
             }
             case RAPTOR_TERM_TYPE_BLANK: {
-                value = (const char *) librdf_node_get_blank_identifier(node_.get());
+                value = (const char *) librdf_node_get_blank_identifier(node);
                 break;
             }
             default:
@@ -182,6 +182,13 @@ namespace redland {
                         World::getWorld(),
                         (const unsigned char *) identifier.c_str()
                 ), raptor_free_term);
+    }
+
+    void LibrdfNode::freeNode(librdf_node *node) {
+        if (!node){
+            throw RedlandNullPointerException("RedlandNullPointerException: LibrdfNode::freeNode: trying to free null node");
+        }
+        librdf_free_node(node);
     }
 
 

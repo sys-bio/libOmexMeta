@@ -7,23 +7,27 @@
 namespace semsim {
 
     Resource::Resource(librdf_node* node)
-            : node_(LibrdfNode(node)) {
+            : node_(node) {
     }
 
     std::string Resource::str() const {
-        return node_.str();
+        return LibrdfNode::str(node_);
     }
 
     bool Resource::isSet() const {
-        return node_.get() != nullptr;
+        return node_ != nullptr;
     }
 
     librdf_node* Resource::getNode() const {
-        return node_.get();
+        return node_;
     }
 
     Resource Resource::fromRawPtr(librdf_node *node) {
         return Resource(node);
+    }
+
+    void Resource::freeNode() {
+        LibrdfNode::freeNode(node_);
     }
 
 }

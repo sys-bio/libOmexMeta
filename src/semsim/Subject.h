@@ -20,7 +20,7 @@ namespace semsim {
 
     class Subject {
     private:
-        librdf_node* node_;
+        librdf_node* node_ = nullptr;
 
         explicit Subject(librdf_node* node);
 
@@ -41,9 +41,13 @@ namespace semsim {
 
         [[nodiscard]] bool isSet() const;
 
+        void freeNode();
+
     };
 
     typedef std::vector<Subject> Subjects;
+
+
 
 }
 

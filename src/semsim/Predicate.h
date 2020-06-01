@@ -25,7 +25,7 @@ namespace semsim {
 
         std::string namespace_, term_, prefix_;
         std::string uri_;
-        std::shared_ptr<redland::LibrdfNode> uri_node_; //! predicates can only have type uri
+        librdf_node* node_ = nullptr; //! predicates can only have type uri
         std::vector<std::string> valid_terms_{"All"};
 
         explicit Predicate(librdf_node* node);
@@ -56,6 +56,8 @@ namespace semsim {
         [[nodiscard]] const std::string &getPrefix() const;
 
         [[nodiscard]] const std::string &getUri() const;
+
+        void freeNode();
     };
 
     class BiomodelsBiologyQualifier : public Predicate {
