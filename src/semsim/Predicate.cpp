@@ -17,14 +17,13 @@ namespace semsim {
         } else {
             this->uri_ = namespace_ + "/" + term_;
         }
-        LibrdfNode n = LibrdfNode(LibrdfNode::fromUriString(uri_));
-        this->uri_node_ = std::make_shared<LibrdfNode>(n);
+        this->node_ = LibrdfNode::fromUriString(uri_);
     }
 
     Predicate::Predicate(librdf_node* node)
-            : uri_node_(std::make_shared<LibrdfNode>(node)) {
+            : node_(node) {
         // some logic for processing the uri in a node to automatically produce the fields we want.
-        std::string val = uri_node_->str();
+        std::string val = LibrdfNode::str(node_);
 
         // split the uri by '/'
         std::vector<std::string> v = SemsimUtils::splitStringBy(val, '/');
@@ -63,7 +62,7 @@ namespace semsim {
         } else {
             this->uri_ = namespace_ + "/" + term_;
         }
-        uri_node_ = std::make_unique<LibrdfNode>(LibrdfNode::fromUriString(uri_));
+        node_ = LibrdfNode::fromUriString(uri_);
     }
 
     const std::string &Predicate::getNamespace() const {
@@ -122,11 +121,15 @@ namespace semsim {
     }
 
     librdf_node* Predicate::getNode() const {
-        return uri_node_->get();
+        return node_;
     }
 
     Predicate Predicate::fromRawPtr(librdf_node *node) {
         return Predicate(node);
+    }
+
+    void Predicate::freeNode() {
+        LibrdfNode::freeNode(node_);
     }
 
     BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(const std::string &term) :

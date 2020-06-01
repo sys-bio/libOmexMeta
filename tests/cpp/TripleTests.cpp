@@ -38,136 +38,136 @@ TEST_F(TripleTests, TestInstantiation1) {
     Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
     ASSERT_TRUE(true); // if we get this far the test has passed
 }
-//
-//TEST_F(TripleTests, TestInstantiation2) {
-//    Triple triple(subject,
-//                  std::make_shared<Predicate>(predicate),
-//                  resource);
-//    ASSERT_TRUE(true); // if we get this far the test has passed
-//}
-//
-//TEST_F(TripleTests, TestSubjectString) {
-//    Triple triple(subject, predicate, resource);
-//    std::string &expected = subject_str;
-//    librdf_node *node = triple.getSubject();
-//    librdf_uri *uri = librdf_node_get_uri(node);
-//    const char *actual = (const char *) librdf_uri_as_string(uri);
-//    ASSERT_STREQ(expected.c_str(), actual);
-//}
-//
-//
-//TEST_F(TripleTests, TestSubjectStr2) {
-//    Triple triple2(subject, predicate, resource);
-//    std::string &expected = subject_str;
-//    ASSERT_STREQ(expected.c_str(), triple2.getSubjectStr().c_str());
-//}
-//
-//TEST_F(TripleTests, TestPredicate1) {
-//    Triple triple2(subject, predicate, resource);
-//    std::string expected = predicate_str;
-//    ASSERT_STREQ(expected.c_str(), triple2.getPredicateStr().c_str());
-//}
-//
-//
-//TEST_F(TripleTests, TestResource) {
-//    Triple triple2(subject, predicate, resource);
-//    std::string actual = triple2.getResourceStr();
-//    std::string expected = resource_id;
-//    ASSERT_STREQ(expected.c_str(), resource_id.c_str());
-//}
-//
-//TEST_F(TripleTests, TestTriple2VecGetResource) {
-//    Triple triple21(subject, predicate, resource);
-//    std::vector<Triple> vec;
-//    vec.push_back(triple21);
-//    std::string actual = vec[0].getResourceStr();
-//    std::string expected = "https://identifiers.org/uniprot/P0DP23";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//}
-//
-//TEST_F(TripleTests, TestStatementSubject) {
-//    Triple triple21(subject, predicate, resource);
-//    librdf_statement *statement = triple21.get();
-//    librdf_node *n = librdf_statement_get_subject(statement);
-//    librdf_uri *uri = librdf_node_get_uri(n);
-//    unsigned char *s = librdf_uri_as_string(uri);
-//    std::string expected = "./MyModel#metaid_0";
-//    ASSERT_STREQ(expected.c_str(), (const char *) s);
-//}
-//
-//TEST_F(TripleTests, TestStatementPred) {
-//    Triple triple21(subject, predicate, resource);
-//    librdf_statement *statement = triple21.get();
-//    librdf_node *n = librdf_statement_get_predicate(statement);
-//    librdf_uri *uri = librdf_node_get_uri(n);
-//    unsigned char *s = librdf_uri_as_string(uri);
-//    std::string expected = "http://biomodels.net/biology-qualifiers/is";
-//    ASSERT_STREQ(expected.c_str(), (const char *) s);
-//}
-//
-//TEST_F(TripleTests, TestStatementResource) {
-//    Triple triple21(subject, predicate, resource);
-//    librdf_statement *statement = triple21.get();
-//    librdf_node *n = librdf_statement_get_object(statement);
-//    librdf_uri *uri = librdf_node_get_uri(n);
-//    unsigned char *s = librdf_uri_as_string(uri);
-//    std::string expected = "https://identifiers.org/uniprot/P0DP23";
-//    ASSERT_STREQ(expected.c_str(), (const char *) s);
-//}
-//
+
+TEST_F(TripleTests, TestInstantiation2) {
+    Triple triple(subject,
+                  std::make_shared<Predicate>(predicate),
+                  resource);
+    ASSERT_TRUE(true); // if we get this far the test has passed
+}
+
+TEST_F(TripleTests, TestSubjectString) {
+    Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
+    std::string &expected = subject_str;
+    librdf_node *node = triple.getSubject();
+    librdf_uri *uri = librdf_node_get_uri(node);
+    const char *actual = (const char *) librdf_uri_as_string(uri);
+    ASSERT_STREQ(expected.c_str(), actual);
+}
+
+
+TEST_F(TripleTests, TestSubjectStr2) {
+    Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
+    std::string &expected = subject_str;
+    ASSERT_STREQ(expected.c_str(), triple.getSubjectStr().c_str());
+}
+
+TEST_F(TripleTests, TestPredicate1) {
+    Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
+    std::string expected = predicate_str;
+    ASSERT_STREQ(expected.c_str(), triple.getPredicateStr().c_str());
+}
+
+
+TEST_F(TripleTests, TestResource) {
+    Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
+    std::string actual = triple.getResourceStr();
+    std::string expected = resource_id;
+    ASSERT_STREQ(expected.c_str(), resource_id.c_str());
+}
+
+TEST_F(TripleTests, TestTriple2VecGetResource) {
+    Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
+    std::vector<Triple> vec;
+    vec.push_back(triple);
+    std::string actual = vec[0].getResourceStr();
+    std::string expected = "https://identifiers.org/uniprot/P0DP23";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(TripleTests, TestStatementSubject) {
+    Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
+    librdf_statement *statement = triple.get();
+    librdf_node *n = librdf_statement_get_subject(statement);
+    librdf_uri *uri = librdf_node_get_uri(n);
+    unsigned char *s = librdf_uri_as_string(uri);
+    std::string expected = "./MyModel#metaid_0";
+    ASSERT_STREQ(expected.c_str(), (const char *) s);
+}
+
+TEST_F(TripleTests, TestStatementPred) {
+    Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
+    librdf_statement *statement = triple.get();
+    librdf_node *n = librdf_statement_get_predicate(statement);
+    librdf_uri *uri = librdf_node_get_uri(n);
+    unsigned char *s = librdf_uri_as_string(uri);
+    std::string expected = "http://biomodels.net/biology-qualifiers/is";
+    ASSERT_STREQ(expected.c_str(), (const char *) s);
+}
+
+TEST_F(TripleTests, TestStatementResource) {
+    Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
+    librdf_statement *statement = triple.get();
+    librdf_node *n = librdf_statement_get_object(statement);
+    librdf_uri *uri = librdf_node_get_uri(n);
+    unsigned char *s = librdf_uri_as_string(uri);
+    std::string expected = "https://identifiers.org/uniprot/P0DP23";
+    ASSERT_STREQ(expected.c_str(), (const char *) s);
+}
+
 //
 ////TEST_F(TripleTests, TestAbout) {
-////    Triple triple2;
-////    triple2.setAbout("metaid2");
+////    Triple triple;
+////    triple.setAbout("metaid2");
 ////    std::string expected = "metaid2";
-////    std::string actual = triple2.getAbout();
+////    std::string actual = triple.getAbout();
 ////    ASSERT_STREQ(expected.c_str(), actual.c_str());
 ////}
 //////
 //////
 //////TEST_F(TripleTests, TestSetPredicate) {
-//////    Triple triple2(world_);
+//////    Triple triple(world_);
 //////    Triple.setPredicate("bqb", "is");
 //////    std::string expected = "http://biomodels.net/biology-qualifiers/is";
-//////    std::string actual = triple2.getpredicate()->str();
+//////    std::string actual = triple.getpredicate()->str();
 //////    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //////}
 //////
 //////TEST_F(TripleTests, TestSetPredicate2) {
-//////    Triple triple2(world_);
+//////    Triple triple(world_);
 //////    Triple.setPredicateNew("https://stackoverflow.com/questions/", "how-do-you", "so");
 //////    std::string expected = "https://stackoverflow.com/questions/how-do-you";
-//////    predicate predicate = triple2.getpredicate();
+//////    predicate predicate = triple.getpredicate();
 //////    std::string actual = predicate)->str(;
 //////    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //////}
 //////
 //////TEST_F(TripleTests, TestResourceLiteral) {
-//////    Triple triple2();
+//////    Triple triple();
 //////    Triple.setResourceLiteral("Annotating");
 //////    std::string expected = "Annotating";
-//////    std::string actual = triple2.getResource().str();
+//////    std::string actual = triple.getResource().str();
 //////    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //////}
 //////
 //////TEST_F(TripleTests, TestResourceUri) {
-//////    Triple triple2(world_);
+//////    Triple triple(world_);
 //////    Triple.setResourceUri("AnnotatingUri");
 //////    std::string expected = "AnnotatingUri";
-//////    std::string actual = triple2.getResource().str();
+//////    std::string actual = triple.getResource().str();
 //////    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //////}
 //////
 //////TEST_F(TripleTests, TestResourceBlank) {
-//////    Triple triple2(world_);
+//////    Triple triple(world_);
 //////    Triple.setResourceBlank("AnnotatingBlank");
 //////    std::string expected = "AnnotatingBlank";
-//////    std::string actual = triple2.getResource().str();
+//////    std::string actual = triple.getResource().str();
 //////    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //////}
 //////
 //////TEST_F(TripleTests, TestBuilderPattern) {
-//////    Triple triple2(world_);
+//////    Triple triple(world_);
 //////
 //////    Triple.setAbout("metaid1")
 //////            .setPredicate("bqb", "is")

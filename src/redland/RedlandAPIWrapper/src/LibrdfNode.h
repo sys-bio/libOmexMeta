@@ -40,6 +40,8 @@ namespace redland {
     public:
         LibrdfNode() = default;
 
+        static void freeNode(librdf_node* node);
+
         explicit LibrdfNode(librdf_node *node);
 
         [[nodiscard]] librdf_node *get() const;
@@ -53,7 +55,7 @@ namespace redland {
 
         raptor_term_type getRaptorTermType();
 
-        [[nodiscard]] std::string str() const;
+        static std::string str(librdf_node* node);
 
         librdf_uri* getLiteralDatatype();
 
