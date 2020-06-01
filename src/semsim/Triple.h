@@ -53,11 +53,14 @@ namespace semsim {
          * to the users annotations. This method is for visualizing
          * a triple only.
          */
-        std::string str(const std::string& format = "rdfxml-abbrev", const std::string& base = "file://./annotations.rdf");
+        std::string
+        str(const std::string &format = "rdfxml-abbrev", const std::string &base = "file://./annotations.rdf");
 
         Triple &setAbout(const std::string &about);
 
         std::string getAbout() const;
+
+        std::shared_ptr<librdf_statement> getStatement() const;
 
         Triple &setPredicate(const std::string &namespace_, const std::string &term);
 
@@ -66,8 +69,6 @@ namespace semsim {
         Triple &setResourceUri(const std::string &identifiers_uri);
 
         Triple &setResourceBlank(const std::string &blank_id);
-
-        void checkForNull();
 
         bool isEmpty();
 

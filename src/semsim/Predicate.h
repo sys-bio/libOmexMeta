@@ -61,6 +61,14 @@ namespace semsim {
         [[nodiscard]] const std::string &getUri() const;
 
         void freeNode();
+
+
+        /*
+         * @brief utility for checking whether the uri in @parameter predicate
+         * has a namespace that we already know. If found, the namespace is
+         * added to @parameter serializer
+         */
+        static void addSeenNamespaceToSerializer(librdf_world *world, librdf_serializer *serializer, librdf_node *predicate);
     };
 
     class BiomodelsBiologyQualifier : public Predicate {
