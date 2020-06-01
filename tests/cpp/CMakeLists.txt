@@ -8,9 +8,9 @@ set(TEST_SOURCES
         ResourceTests.cpp
         PredicateTests.cpp
         TripleTests.cpp
+        TriplesTests.cpp
 
         #        CurlGetTests.cpp
-        #        TripplesTests.cpp
         #        ReaderTests.cpp
         #        WriterTests.cpp
         #        RDFTests.cpp

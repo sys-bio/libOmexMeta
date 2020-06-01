@@ -28,7 +28,7 @@ namespace semsim {
     }
 
     void Triples::emplace_back(Subject subject, Predicate predicate, Resource resource) {
-        Triple triple(std::move(subject), std::move(predicate), std::move(resource));
+        Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
         triples_.push_back(std::make_unique<Triple>(std::move(triple)));
     }
 
