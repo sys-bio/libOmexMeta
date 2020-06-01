@@ -20,24 +20,27 @@ using namespace redland;
 
 namespace semsim {
 
+    typedef std::unordered_map<std::string, std::string> NamespaceMap;
+
     class Predicate {
     protected:
 
         std::string namespace_, term_, prefix_;
         std::string uri_;
-        librdf_node* node_ = nullptr; //! predicates can only have type uri
+        librdf_node *node_ = nullptr; //! predicates can only have type uri
         std::vector<std::string> valid_terms_{"All"};
 
-        explicit Predicate(librdf_node* node);
+        explicit Predicate(librdf_node *node);
+
     public:
         Predicate() = default;
 
-        static std::unordered_map<std::string, std::string> prefix_map();
+        static std::unordered_map<std::string, std::string> namespaceMap();
 
         Predicate(const std::string &namespace_,
                   std::string term, std::string prefix);
 
-        static Predicate fromRawPtr(librdf_node* node);
+        static Predicate fromRawPtr(librdf_node *node);
 
         std::string str();
 
@@ -45,7 +48,7 @@ namespace semsim {
 
         static bool namespaceKnown(const std::string &ns);
 
-        [[nodiscard]] librdf_node* getNode() const;
+        [[nodiscard]] librdf_node *getNode() const;
 
         [[nodiscard]] const std::vector<std::string> &getValidTerms() const;
 

@@ -39,14 +39,11 @@ TEST_F(TripleTests, TestInstantiation1) {
     ASSERT_TRUE(true); // if we get this far the test has passed
 }
 
-TEST_F(TripleTests, TestInstantiationEmptyForBuilder) {
+TEST(TripleTestsNoFixture, TestInstantiationEmptyForBuilder) {
     // when we use builder interface, Triple is created empty and we fill in the bits of information  from user input
     Triple triple;
     ASSERT_TRUE(triple.isEmpty());
     // remember to free the unused resources from test fixture
-    subject.freeNode();
-    predicate.freeNode();
-    resource.freeNode();
 }
 
 TEST_F(TripleTests, TestInstantiation2) {
@@ -126,7 +123,7 @@ TEST_F(TripleTests, TestStatementResource) {
 }
 
 
-TEST_F(TripleTests, TestAbout) {
+TEST(TripleTestsNoFixture, TestAbout) {
     Triple triple;
     triple.setAbout("metaid2");
     std::string expected = "metaid2";
@@ -135,7 +132,7 @@ TEST_F(TripleTests, TestAbout) {
 }
 
 
-TEST_F(TripleTests, TestSetPredicate) {
+TEST(TripleTestsNoFixture, TestSetPredicate) {
     Triple triple;
     triple.setPredicate("bqb", "is");
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
@@ -143,7 +140,7 @@ TEST_F(TripleTests, TestSetPredicate) {
 }
 
 
-TEST_F(TripleTests, TestResourceLiteral) {
+TEST(TripleTestsNoFixture, TestResourceLiteral) {
     Triple triple;
     triple.setResourceLiteral("Annotating");
     std::string expected = "Annotating";
@@ -151,24 +148,24 @@ TEST_F(TripleTests, TestResourceLiteral) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(TripleTests, TestResourceUri) {
+TEST(TripleTestsNoFixture, TestResourceUri) {
     Triple triple;
     triple.setResourceUri("AnnotatingUri");
     std::string expected = "AnnotatingUri";
-    ASSERT_STREQ(expected.c_str(),  triple.getResourceStr().c_str());
+    ASSERT_STREQ(expected.c_str(), triple.getResourceStr().c_str());
+
 }
 
-TEST_F(TripleTests, TestResourceBlank) {
+TEST(TripleTestsNoFixture, TestResourceBlank) {
     Triple triple;
     triple.setResourceBlank("AnnotatingBlank");
     std::string expected = "AnnotatingBlank";
-    ASSERT_STREQ(expected.c_str(),  triple.getResourceStr().c_str());
+    ASSERT_STREQ(expected.c_str(), triple.getResourceStr().c_str());
+
 }
 
 TEST_F(TripleTests, TestBuilderPattern) {
     Triple triple;
-
-
 
     triple.setAbout("metaid1")
             .setPredicate("bqb", "is")
@@ -185,6 +182,11 @@ TEST_F(TripleTests, TestBuilderPattern) {
                            "</rdf:RDF>\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+
+    // Aaand free the excess nodes
+    predicate.freeNode();
+    subject.freeNode();
+    resource.freeNode();
 }
 
 

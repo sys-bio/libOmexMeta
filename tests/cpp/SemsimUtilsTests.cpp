@@ -51,3 +51,10 @@ TEST_F(SemsimUtilsTests, TestPrefixFile) {
     std::string actual = fname;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
+
+TEST_F(SemsimUtilsTests, TestGEtNamespacesFromUri) {
+    std::string uri = "www.uri.com/identifiers/PD1234";
+    std::string expected = "ww.uri.com/identifiers/";
+    std::string actual = semsim::SemsimUtils::getNamespaceFromUri(uri);
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
