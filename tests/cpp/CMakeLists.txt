@@ -3,11 +3,11 @@
 set(TEST_SOURCES
         SBMLFactory.h
         SemsimUtilsTests.cpp
-        RDF2Tests.cpp
-
+        RDFTests.cpp
         SubjectTests.cpp
+        ResourceTests.cpp
+
 #        PredicateTests.cpp
-#        ResourceTests.cpp
 #        CurlGetTests.cpp
 #        TripleTests.cpp
 #        TripplesTests.cpp
@@ -31,7 +31,7 @@ set(TEST_SOURCES
         )
 
 if (REDLAND_WRAPPER_TESTS)
-    set(TEST_SOURCES ${TEST_SOURCES} ${REDLAND_WRAPPER_TEST_SOURCES} RDF2Tests.cpp)
+    set(TEST_SOURCES ${TEST_SOURCES} ${REDLAND_WRAPPER_TEST_SOURCES} RDFTests.cpp)
 endif ()
 
 add_executable(semsim-tests ${TEST_SOURCES})
