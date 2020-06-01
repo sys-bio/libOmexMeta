@@ -14,9 +14,7 @@
 using namespace redland;
 
 namespace semsim {
-    class Triple;
 
-    class Triples;
 
     class TripleWriter : public Writer {
         LibrdfStorage storage_;

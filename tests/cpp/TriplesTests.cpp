@@ -29,20 +29,20 @@ public:
     //todo subject could pass the world to the node
     TriplesTests() {
         model = LibrdfModel(std::move(storage));
-        this->subject = Subject(LibrdfNode::fromUriString("subby"));
-        this->resource = Resource(LibrdfNode::fromUriString(("space/id")));
+        this->subject = Subject::fromRawPtr(LibrdfNode::fromUriString("subby"));
+        this->resource = Resource::fromRawPtr(LibrdfNode::fromUriString(("space/id")));
         this->predicate = BiomodelsBiologyQualifier("is");
     }
 };
 
 TEST_F(TriplesTests, TestCreate) {
-    Triple triple1(subject, predicate, resource);
+    Triple triple1 = Triple(subject.getNode(), predicate.getNode(), resource.getNode());
     Triples triples(std::move(triple1));
     ASSERT_EQ(1, triples.size());
 }
 
 TEST_F(TriplesTests, TestCreate2) {
-    Triple triple1(subject, predicate, resource);
+    Triple triple1 = Triple(subject.getNode(), predicate.getNode(), resource.getNode());
     TripleVector vec;
     vec.push_back(std::move(triple1));
     Triples triples(std::move(vec));
@@ -50,7 +50,7 @@ TEST_F(TriplesTests, TestCreate2) {
 }
 
 TEST_F(TriplesTests, TestPushBack) {
-    Triple triple1(subject, predicate, resource);
+    Triple triple1 = Triple(subject.getNode(), predicate.getNode(), resource.getNode());
     Triples triples;
     triples.push_back(std::move(triple1));
     ASSERT_EQ(1, triples.size());
@@ -70,6 +70,10 @@ TEST_F(TriplesTests, TestEmplaceBack3) {
                          BiomodelsModelQualifier("isDerivedFrom"),
                          std::move(resource));
     ASSERT_EQ(1, triples.size());
+    // When you give a subject/predicate/resource to Triple/Triples they
+    // are given ownership of the node pointer inside the subject/predicate/resource/
+    // In this test we do not use predicate (from setting up test fixture) so we must free it.
+    predicate.freeNode();
 }
 
 TEST_F(TriplesTests, TestEmplaceBack4) {
@@ -78,6 +82,7 @@ TEST_F(TriplesTests, TestEmplaceBack4) {
                          BiomodelsBiologyQualifier("is"),
                          std::move(resource));
     ASSERT_EQ(1, triples.size());
+    predicate.freeNode();
 }
 
 TEST_F(TriplesTests, TestEmplaceBack5) {
@@ -86,6 +91,7 @@ TEST_F(TriplesTests, TestEmplaceBack5) {
                          DCTerm("Description"),
                          std::move(resource));
     ASSERT_EQ(1, triples.size());
+    predicate.freeNode();
 }
 
 TEST_F(TriplesTests, TestEmplaceBack6) {
@@ -94,6 +100,7 @@ TEST_F(TriplesTests, TestEmplaceBack6) {
                          SemSim("hasSourceParticipant"),
                          std::move(resource));
     ASSERT_EQ(1, triples.size());
+    predicate.freeNode();
 }
 
 
