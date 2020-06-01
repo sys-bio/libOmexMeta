@@ -9,22 +9,15 @@
 
 namespace semsim {
 
-    Query::Query(LibrdfWorld world, LibrdfModel model, std::string query)
-            : world_(world), model_(model), query_(query) {
-
-        if (!world_) {
-            throw LibRDFException("Query::Query(): World is null");
-        }
-        if (!model_) {
-            throw LibRDFException("Query::Query(): Model is null");
-        }
+    Query::Query( const LibrdfModel &model, std::string query)
+            : model_(model), query_(query) {
         runQuery();
 
     }
 
     void Query::runQuery() {
         librdf_query *q = librdf_new_query(
-                *world_.getWorld(), (const char *) "sparql",
+                World::getWorld(), (const char *) "sparql",
                 nullptr, (const unsigned char *) query_.c_str(), nullptr
         );
         if (!q) {
@@ -34,9 +27,9 @@ namespace semsim {
         }
 
         query_results_ = LibrdfQueryResults(
-                librdf_query_execute(q, *model_.getModel())
+                librdf_query_execute(q, model_.get())
         );
-        if (!query_results_.getQueryResults()) {
+        if (!query_results_.get()) {
             std::ostringstream qerr2;
             qerr2 << __FILE__ << ":" << __LINE__ << ": librdf_query_results object was not created";
             throw LibRDFException(qerr2.str());
@@ -45,19 +38,19 @@ namespace semsim {
     }
 
     bool Query::isBoolean() {
-        return librdf_query_results_is_boolean(*query_results_.getQueryResults());
+        return librdf_query_results_is_boolean(query_results_.get());
     }
 
     bool Query::isBindings() {
-        return librdf_query_results_is_bindings(*query_results_.getQueryResults());
+        return librdf_query_results_is_bindings(query_results_.get());
     }
 
     int Query::getBoolean() {
-        return librdf_query_results_get_boolean(*query_results_.getQueryResults());
+        return librdf_query_results_get_boolean(query_results_.get());
     }
 
     librdf_stream *Query::resultsAsLibRdfStream() {
-        return librdf_query_results_as_stream(*query_results_.getQueryResults());
+        return librdf_query_results_as_stream(query_results_.get());
     }
 
 //    RDF Query::resultsAsRDF() {
@@ -66,34 +59,17 @@ namespace semsim {
 //    }
 
     int Query::getCount() {
-        return librdf_query_results_get_count(*query_results_.getQueryResults());
+        return librdf_query_results_get_count(query_results_.get());
     }
 
     std::string Query::getBindingValueByName(const std::string &name) {
         LibrdfNode node(librdf_query_results_get_binding_value_by_name(
-                *query_results_.getQueryResults(), (const char *) name.c_str()));
-//        std::string value;
-//        switch ((*node.getNode())->type) {
-//            case RAPTOR_TERM_TYPE_URI: {
-//                value = (const char *) librdf_uri_as_string(librdf_node_get_uri(node));
-//                break;
-//            }
-//            case RAPTOR_TERM_TYPE_LITERAL: {
-//                value = (const char *) librdf_node_get_literal_value(node);
-//                break;
-//            }
-//            case RAPTOR_TERM_TYPE_BLANK: {
-//                value = (const char *) librdf_node_get_blank_identifier(node);
-//                break;
-//            }
-//            default:
-//                throw LibRDFException("Unrecognized term type");
-//        }
-        return node.str();
+                query_results_.get(), (const char *) name.c_str()));
+        return LibrdfNode::str(node.get());
     }
 
     int Query::getBindingsCount() {
-        return librdf_query_results_get_bindings_count(*query_results_.getQueryResults());
+        return librdf_query_results_get_bindings_count(query_results_.get());
     }
 
     std::string Query::resultsAsStr(const std::string &output_format) {
@@ -108,18 +84,18 @@ namespace semsim {
             err << std::endl;
             throw std::invalid_argument(err.str());
         }
-        return (const char *) librdf_query_results_to_string2(*query_results_.getQueryResults(), output_format.c_str(),
+        return (const char *) librdf_query_results_to_string2(query_results_.get(), output_format.c_str(),
                                                               nullptr, nullptr,
                                                               nullptr);
     }
 
     Query::~Query() {
-        librdf_free_query_results(*query_results_.getQueryResults());
+        librdf_free_query_results(query_results_.get());
 
     }
 
     int Query::next() {
-        return librdf_query_results_next(*query_results_.getQueryResults());
+        return librdf_query_results_next(query_results_.get());
     }
 
     ResultsMap Query::resultsAsMap() {
@@ -153,7 +129,7 @@ namespace semsim {
 
 
     std::string Query::getBindingsName(int index) {
-        return librdf_query_results_get_binding_name(*query_results_.getQueryResults(), index);
+        return librdf_query_results_get_binding_name(query_results_.get(), index);
     }
 
 }

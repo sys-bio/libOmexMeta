@@ -67,4 +67,13 @@ namespace semsim {
     }
 
 
+    Editor RDF::toEditor(std::string xml, SemsimXmlType type) {
+        return Editor(xml, type, model_, namespaces_);
+    }
+
+    const LibrdfModel &RDF::getModel() const {
+        return model_;
+    }
+
+
 }

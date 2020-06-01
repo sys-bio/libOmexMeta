@@ -19,14 +19,14 @@ set(SEMSIM_HEADERS
         "AnnotationType.h"
         "Query.h"
         "MetaID.h"
-        #        "Editor.h"
+        "Editor.h"
         #        "TripleWriter.h"
         #        "SemsimCApi.h"
         #        "HERE.h"
         #        Log.h
         #        RedlandAPIWrapper/RaptorIOStream.cpp
         #        RedlandAPIWrapper/RaptorIOStream.h
-        #        "Reader.h"
+        #        "_Reader.h"
         #        "Writer.h"
         #                "SemSim.h"
         )
@@ -45,7 +45,7 @@ set(SEMSIM_SOURCES
         "PhysicalEntity.cpp"
         "PhysicalPhenomenon.cpp"
         "MetaID.cpp"
-        #        "Editor.cpp"
+        "Editor.cpp"
         "Participant.cpp"
         "PhysicalProcess.cpp"
         "PhysicalForce.cpp"

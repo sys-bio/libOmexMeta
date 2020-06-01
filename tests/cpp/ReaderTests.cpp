@@ -2,7 +2,7 @@
 // Created by Ciaran on 4/9/2020.
 //
 
-#include "semsim/Reader.h"
+#include "semsim/_Reader.h"
 #include "AnnotationSamples.h"
 #include "RedlandAPIWrapper.h"
 

@@ -5,7 +5,7 @@
 #include "raptor2.h"
 #include "gtest/gtest.h"
 
-#include "semsim/RDFNode.h"
+#include "semsim/_RDFNode.h"
 #include "semsim/SemsimUtils.h"
 #include "World.h"
 

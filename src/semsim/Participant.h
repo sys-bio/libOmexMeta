@@ -23,15 +23,14 @@ namespace semsim {
      * to group participant types into vector.
      */
     class Participant {
-        LibrdfWorld world_;
-        LibrdfModel model_;
+        const LibrdfModel& model_;
         std::string subject_;
         PredicatePtr predicate_ptr_;
         double multiplier_;
         std::string physicalEntityReference_;
     public:
 
-        Participant(LibrdfWorld world, LibrdfModel model, std::string subject, PredicatePtr predicate,
+        Participant(const LibrdfModel& model, std::string subject, PredicatePtr predicate,
                     double multiplier, std::string physicalEntityReference);
 
         Triples toTriples(std::string process_metaid) const;
@@ -40,14 +39,11 @@ namespace semsim {
 
         void setPredicatePtr(PredicatePtr predicate_ptr);
 
-        LibrdfWorld getWorld() const;
-
         const std::string &getSubject() const;
 
         double getMultiplier() const;
 
         const std::string &getPhysicalEntityReference() const;
-
 
     };
 
@@ -58,7 +54,7 @@ namespace semsim {
     class SourceParticipant : public Participant {
 
     public:
-        SourceParticipant(LibrdfWorld world, LibrdfModel model, std::string subject, double multiplier,
+        SourceParticipant(const LibrdfModel &model, std::string subject, double multiplier,
                           std::string physicalEntityReference);
     };
 
@@ -70,7 +66,7 @@ namespace semsim {
         std::string physicalEntityReference_;
     public:
 
-        SinkParticipant(LibrdfWorld world, LibrdfModel model, std::string subject, double multiplier,
+        SinkParticipant(const LibrdfModel &model, std::string subject, double multiplier,
                         std::string physicalEntityReference);
 
     };
@@ -82,7 +78,7 @@ namespace semsim {
 
     public:
 
-        MediatorParticipant(LibrdfWorld world, LibrdfModel model, std::string subject,
+        MediatorParticipant(const LibrdfModel &model, std::string subject,
                             std::string physicalEntityReference);
 
     };

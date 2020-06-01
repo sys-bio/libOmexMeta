@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/9/2020.
 //
 
-#ifndef LIBSEMSIM_READER_H
-#define LIBSEMSIM_READER_H
+#ifndef LIBSEMSIM__READER_H
+#define LIBSEMSIM__READER_H
 
 #include <librdf.h>
 #include <string>
@@ -25,7 +25,7 @@ using namespace redland;
 
 
 namespace semsim {
-    class Reader {
+    class _Reader {
         std::string format_;
         const char *mime_type_;
         const char *type_uri_;
@@ -53,9 +53,9 @@ namespace semsim {
 
         void setBaseUri(const std::string &baseUri);
 
-        Reader(const LibrdfModel &model, std::string format = "guess",
-               const std::string &base_uri = "file://./annotations.rdf",
-               const char *mime_type = nullptr, const char *type_uri = nullptr);
+        _Reader(const LibrdfModel &model, std::string format = "guess",
+                const std::string &base_uri = "file://./annotations.rdf",
+                const char *mime_type = nullptr, const char *type_uri = nullptr);
 
         void setFormat(const std::string &f);
 
@@ -91,4 +91,4 @@ namespace semsim {
     };
 }
 
-#endif //LIBSEMSIM_READER_H
+#endif //LIBSEMSIM__READER_H

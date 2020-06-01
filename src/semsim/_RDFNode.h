@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/17/2020.
 //
 
-#ifndef LIBSEMSIM_RDFNODE_H
-#define LIBSEMSIM_RDFNODE_H
+#ifndef LIBSEMSIM__RDFNODE_H
+#define LIBSEMSIM__RDFNODE_H
 
 #include <string>
 #include <librdf.h>
@@ -23,23 +23,23 @@ using namespace redland;
 
 namespace semsim {
 
-    class RDFNode {
+    class _RDFNode {
     protected:
         LibrdfNode node_;
 
     public:
         [[nodiscard]] const LibrdfNode &getNode() const;
 
-        explicit RDFNode(LibrdfNode node);
+        explicit _RDFNode(LibrdfNode node);
 
         virtual std::string str();
 
-        ~RDFNode();
+        ~_RDFNode();
 
-        static std::unique_ptr<RDFNode> fromRDFNode(LibrdfNode node);
+        static std::unique_ptr<_RDFNode> fromRDFNode(LibrdfNode node);
     };
 
-    class RDFLiteralNode : public RDFNode {
+    class RDFLiteralNode : public _RDFNode {
 
     public:
 
@@ -48,7 +48,7 @@ namespace semsim {
         std::string str() override;
     };
 
-    class RDFTypedLiteralNode : public RDFNode {
+    class RDFTypedLiteralNode : public _RDFNode {
 
     public:
 
@@ -61,7 +61,7 @@ namespace semsim {
         std::string str() override;
     };
 
-    class RDFURINode : public RDFNode {
+    class RDFURINode : public _RDFNode {
     public:
 
         explicit RDFURINode(LibrdfNode node);
@@ -71,7 +71,7 @@ namespace semsim {
         [[nodiscard]] LibrdfUri getUri() const;
     };
 
-    class RDFBlankNode : public RDFNode {
+    class RDFBlankNode : public _RDFNode {
     public:
 
         explicit RDFBlankNode(LibrdfNode node);
@@ -83,4 +83,4 @@ namespace semsim {
 
 }
 
-#endif //LIBSEMSIM_RDFNODE_H
+#endif //LIBSEMSIM__RDFNODE_H

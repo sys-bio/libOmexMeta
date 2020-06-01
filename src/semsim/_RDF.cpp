@@ -202,11 +202,11 @@ namespace semsim {
 
 
 
-//    Editor RDF::toEditor(std::string xml, XmlAssistantType type) {
+//    Editor RDF::toEditor(std::string xml, SemsimXmlType type) {
 //        return Editor(xml, type, world_, model_, namespaces_);
 //    }
 //
-//    Editor *RDF::toEditorPtr(std::string xml, XmlAssistantType type) {
+//    Editor *RDF::toEditorPtr(std::string xml, SemsimXmlType type) {
 //        return new Editor(xml, type, world_, model_, namespaces_);
 //    }
 //

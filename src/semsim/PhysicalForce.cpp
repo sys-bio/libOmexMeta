@@ -7,10 +7,10 @@
 
 namespace semsim {
 
-    PhysicalForce::PhysicalForce(LibrdfWorld world, LibrdfModel model, Subject metaid,
+    PhysicalForce::PhysicalForce(const LibrdfModel &model, Subject metaid,
                                  PhysicalPropertyResource physicalProperty,
                                  Sources sources, Sinks sinks)
-            : PhysicalPhenomenon(world, model, metaid, physicalProperty, PHYSICAL_PROCESS),
+            : PhysicalPhenomenon( model, metaid, physicalProperty, PHYSICAL_PROCESS),
               sources_(sources), sinks_(sinks) {
 
     }
@@ -28,10 +28,10 @@ namespace semsim {
     }
 
     Triples PhysicalForce::toTriples() const {
-        std::string force_metaid = SemsimUtils::generateUniqueMetaid(world_, model_, "PhysicalForce",
+        std::string force_metaid = SemsimUtils::generateUniqueMetaid( model_, "PhysicalForce",
                                                                      std::vector<std::string>());
 
-        Subject force_metaid_subject(world_, RDFURINode(world_.newNodeUriString(force_metaid)));
+        Subject force_metaid_subject = Subject::fromRawPtr(LibrdfNode::fromUriString(force_metaid));
 
         Triples triples = physical_property_.toTriples(about.str(), force_metaid);
 
@@ -49,7 +49,7 @@ namespace semsim {
     }
 
     PhysicalForce &PhysicalForce::setAbout(std::string metaid) {
-        about = Subject(world_, RDFURINode(world_.newNodeUriString(metaid)));
+        about = Subject::fromRawPtr( LibrdfNode::fromUriString(metaid));
         return (*this);
     }
 
@@ -59,7 +59,7 @@ namespace semsim {
     }
 
     PhysicalForce &PhysicalForce::setPhysicalProperty(const std::string &physicalProperty) {
-        physical_property_ = PhysicalPropertyResource(world_, RDFURINode(world_.newNodeUriString(physicalProperty)));
+        physical_property_ = PhysicalPropertyResource(physicalProperty);
         return (*this);
     }
 
@@ -68,7 +68,6 @@ namespace semsim {
             std::string physical_entity_reference) {
         sources_.push_back(
                 SourceParticipant(
-                        world_,
                         model_,
                         std::move(source_metaid),
                         multiplier, std::move(physical_entity_reference)
@@ -81,7 +80,6 @@ namespace semsim {
                                           std::string physical_entity_reference) {
         sinks_.push_back(
                 SinkParticipant(
-                        world_,
                         model_,
                         std::move(sink_metaid),
                         multiplier, std::move(physical_entity_reference)
@@ -91,8 +89,8 @@ namespace semsim {
         return (*this);
     }
 
-    PhysicalForce::PhysicalForce(LibrdfWorld world, LibrdfModel model)
-            : PhysicalPhenomenon(world, model) {
+    PhysicalForce::PhysicalForce(const LibrdfModel &model)
+            : PhysicalPhenomenon( model) {
 
     }
 

@@ -36,7 +36,7 @@ namespace semsim {
         static std::vector<std::string> splitStringBy(const std::string &str, char delimiter);
 
         static std::string generateUniqueMetaid(
-                World world, LibrdfModel model, std::string metaid_base,
+                const LibrdfModel& model, std::string metaid_base,
                 std::vector<std::string> exclusions = std::vector<std::string>()
         );
 

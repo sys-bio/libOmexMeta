@@ -2,7 +2,7 @@
 // Created by Ciaran on 5/20/2020.
 //
 
-#include "TripleWriter.h"
+#include "_TripleWriter.h"
 
 semsim::TripleWriter::TripleWriter(semsim::Triple triple, const std::string &base_uri, std::string format) {
     // when creating a writer from a Triple, we just create a locally scoped rdf model and storage

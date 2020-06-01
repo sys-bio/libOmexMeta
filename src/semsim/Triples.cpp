@@ -9,53 +9,57 @@ namespace semsim {
     Triples::Triples() = default;
 
     Triples::Triples(Triple triple) {
-        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
     }
 
     Triples::Triples(std::vector<Triple> triples) {
         for (auto &triple: triples) {
-            triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+            triples_.push_back(std::make_shared<Triple>(std::move(triple)));
         }
     }
 
     void Triples::push_back(Triple triple) {
-        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
+    }
+
+    void Triples::push_back(std::shared_ptr<Triple> triple) {
+        triples_.push_back(triple);
     }
 
     void Triples::emplace_back(Subject subject, PredicatePtr predicatePtr, Resource resource) {
         Triple triple(std::move(subject), std::move(predicatePtr), std::move(resource));
-        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
     }
 
     void Triples::emplace_back(Subject subject, Predicate predicate, Resource resource) {
         Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
-        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
     }
 
     void Triples::emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, Resource resource) {
-        Triple triple(std::move(subject), std::make_unique<BiomodelsBiologyQualifier>(std::move(predicate)),
+        Triple triple(std::move(subject), std::make_shared<BiomodelsBiologyQualifier>(std::move(predicate)),
                       std::move(resource));
-        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
     }
 
     void Triples::emplace_back(Subject subject, BiomodelsModelQualifier predicate, Resource resource) {
-        Triple triple(std::move(subject), std::make_unique<BiomodelsModelQualifier>(std::move(predicate)),
+        Triple triple(std::move(subject), std::make_shared<BiomodelsModelQualifier>(std::move(predicate)),
                       std::move(resource));
-        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
     }
 
     void Triples::emplace_back(Subject subject, DCTerm predicate, Resource resource) {
-        Triple triple(std::move(subject), std::make_unique<DCTerm>(std::move(predicate)), std::move(resource));
-        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+        Triple triple(std::move(subject), std::make_shared<DCTerm>(std::move(predicate)), std::move(resource));
+        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
     }
 
     void Triples::emplace_back(Subject subject, SemSim predicate, Resource resource) {
-        Triple triple(std::move(subject), std::make_unique<SemSim>(std::move(predicate)), std::move(resource));
-        triples_.push_back(std::make_unique<Triple>(std::move(triple)));
+        Triple triple(std::move(subject), std::make_shared<SemSim>(std::move(predicate)), std::move(resource));
+        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
     }
 
 //    void Triples::emplace_back(LibrdfStatement statement) {
-//        triples_.push_back(std::make_unique<Triple>(statement));
+//        triples_.push_back(std::make_shared<Triple>(statement));
 //    }
 
 
@@ -87,11 +91,11 @@ namespace semsim {
         return triples_.size();
     }
 
-    UniqueTripleVector::iterator Triples::begin() {
+    SharedTripleVector::iterator Triples::begin() {
         return triples_.begin();
     }
 
-    UniqueTripleVector::iterator Triples::end() {
+    SharedTripleVector::iterator Triples::end() {
         return triples_.end();
     }
 

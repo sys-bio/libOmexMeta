@@ -13,20 +13,22 @@ set(TEST_SOURCES
         AnnotationSamples.h
         PhysicalEntityTests.cpp
         PhysicalPropertyTests.cpp
+
         PhysicalPhenomenonTests.cpp
-        #        PhysicalProcessTests.cpp
-        #        PhysicalForceTests.cpp
-        #        CurlGetTests.cpp
+#        PhysicalProcessTests.cpp
+#        PhysicalForceTests.cpp
+#        CurlGetTests.cpp
+#        MetaIDTests.cpp
+#        XmlAssistantTests.cpp
+#        ParticipantTests.cpp
+#        QueryTests.cpp
+#        EditorTests.cpp
+
         #        ReaderTests.cpp
         #        WriterTests.cpp
         #        RDFTests.cpp
         #        RDFReadAndWriteTests.cpp
-        #        MetaIDTests.cpp
-        #        XmlAssistantTests.cpp
-        #        EditorTests.cpp
-        #        ParticipantTests.cpp
         #        SemsimCombineArchiveTests.cpp
-        #        QueryTests.cpp
         #        CAPITests.cpp
         )
 

@@ -6,7 +6,7 @@
 #define LIBSEMSIM_PHYSICALPROPERTYRESOURCE_H
 
 #include "semsim/Resource.h"
-#include "semsim/RDFNode.h"
+#include "semsim/_RDFNode.h"
 #include "semsim/Error.h"
 #include "semsim/Triple.h"
 #include "semsim/Triples.h"
