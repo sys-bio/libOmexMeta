@@ -46,29 +46,31 @@ namespace semsim {
 
         static Triple fromRawStatementPtr(librdf_statement *statement);
 
-//        std::string str(std::string format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
+        /*
+         * @brief serialize the triple using a @format serializer.
+         *
+         * Creates an isolated serializer that does not get added
+         * to the users annotations. This method is for visualizing
+         * a triple only.
+         */
+        std::string str(const std::string& format = "rdfxml-abbrev", const std::string& base = "file://./annotations.rdf");
 
         Triple &setAbout(const std::string &about);
 
         std::string getAbout() const;
-//
-//        /*
-//         * Factory returning Prdicate of type namespace_ and
-//         * term of type term.
-//         */
-////        Triple &setPredicate(const std::string &namespace_, const std::string &term);
-////
-////        Triple &setPredicateNew(
-////                const std::string &namespace_, const std::string &term, const std::string &prefix);
-////
-////        Triple &setResourceLiteral(const std::string &literal);
-////
-////        Triple &setResourceUri(const std::string &identifiers_uri);
-////
-////        Triple &setResourceBlank(const std::string &blank_id);
-////
-//
-//        void checkForNull();
+
+        Triple &setPredicate(const std::string &namespace_, const std::string &term);
+
+        Triple &setResourceLiteral(const std::string &literal);
+
+        Triple &setResourceUri(const std::string &identifiers_uri);
+
+        Triple &setResourceBlank(const std::string &blank_id);
+
+        void checkForNull();
+
+        bool isEmpty();
+
     };
 
     typedef Triple SingularAnnotation;

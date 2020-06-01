@@ -39,6 +39,16 @@ TEST_F(TripleTests, TestInstantiation1) {
     ASSERT_TRUE(true); // if we get this far the test has passed
 }
 
+TEST_F(TripleTests, TestInstantiationEmptyForBuilder) {
+    // when we use builder interface, Triple is created empty and we fill in the bits of information  from user input
+    Triple triple;
+    ASSERT_TRUE(triple.isEmpty());
+    // remember to free the unused resources from test fixture
+    subject.freeNode();
+    predicate.freeNode();
+    resource.freeNode();
+}
+
 TEST_F(TripleTests, TestInstantiation2) {
     Triple triple(subject,
                   std::make_shared<Predicate>(predicate),
@@ -115,78 +125,70 @@ TEST_F(TripleTests, TestStatementResource) {
     ASSERT_STREQ(expected.c_str(), (const char *) s);
 }
 
-//
-////TEST_F(TripleTests, TestAbout) {
-////    Triple triple;
-////    triple.setAbout("metaid2");
-////    std::string expected = "metaid2";
-////    std::string actual = triple.getAbout();
-////    ASSERT_STREQ(expected.c_str(), actual.c_str());
-////}
-//////
-//////
-//////TEST_F(TripleTests, TestSetPredicate) {
-//////    Triple triple(world_);
-//////    Triple.setPredicate("bqb", "is");
-//////    std::string expected = "http://biomodels.net/biology-qualifiers/is";
-//////    std::string actual = triple.getpredicate()->str();
-//////    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//////}
-//////
-//////TEST_F(TripleTests, TestSetPredicate2) {
-//////    Triple triple(world_);
-//////    Triple.setPredicateNew("https://stackoverflow.com/questions/", "how-do-you", "so");
-//////    std::string expected = "https://stackoverflow.com/questions/how-do-you";
-//////    predicate predicate = triple.getpredicate();
-//////    std::string actual = predicate)->str(;
-//////    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//////}
-//////
-//////TEST_F(TripleTests, TestResourceLiteral) {
-//////    Triple triple();
-//////    Triple.setResourceLiteral("Annotating");
-//////    std::string expected = "Annotating";
-//////    std::string actual = triple.getResource().str();
-//////    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//////}
-//////
-//////TEST_F(TripleTests, TestResourceUri) {
-//////    Triple triple(world_);
-//////    Triple.setResourceUri("AnnotatingUri");
-//////    std::string expected = "AnnotatingUri";
-//////    std::string actual = triple.getResource().str();
-//////    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//////}
-//////
-//////TEST_F(TripleTests, TestResourceBlank) {
-//////    Triple triple(world_);
-//////    Triple.setResourceBlank("AnnotatingBlank");
-//////    std::string expected = "AnnotatingBlank";
-//////    std::string actual = triple.getResource().str();
-//////    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//////}
-//////
-//////TEST_F(TripleTests, TestBuilderPattern) {
-//////    Triple triple(world_);
-//////
-//////    Triple.setAbout("metaid1")
-//////            .setPredicate("bqb", "is")
-//////            .setResourceUri("uniprot/PD4034");
-//////
-//////    std::string actual = Triple.str();
-//////    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-//////                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-//////                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-//////                           "   xml:base=\"file://./annotations.rdf\">\n"
-//////                           "  <rdf:Description rdf:about=\"metaid1\">\n"
-//////                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/PD4034\"/>\n"
-//////                           "  </rdf:Description>\n"
-//////                           "</rdf:RDF>\n";
-//////    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//////}
-////
-////
-////
+
+TEST_F(TripleTests, TestAbout) {
+    Triple triple;
+    triple.setAbout("metaid2");
+    std::string expected = "metaid2";
+    std::string actual = triple.getAbout();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
+TEST_F(TripleTests, TestSetPredicate) {
+    Triple triple;
+    triple.setPredicate("bqb", "is");
+    std::string expected = "http://biomodels.net/biology-qualifiers/is";
+    ASSERT_STREQ(expected.c_str(), triple.getPredicateStr().c_str());
+}
+
+
+TEST_F(TripleTests, TestResourceLiteral) {
+    Triple triple;
+    triple.setResourceLiteral("Annotating");
+    std::string expected = "Annotating";
+    std::string actual = triple.getResourceStr();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(TripleTests, TestResourceUri) {
+    Triple triple;
+    triple.setResourceUri("AnnotatingUri");
+    std::string expected = "AnnotatingUri";
+    ASSERT_STREQ(expected.c_str(),  triple.getResourceStr().c_str());
+}
+
+TEST_F(TripleTests, TestResourceBlank) {
+    Triple triple;
+    triple.setResourceBlank("AnnotatingBlank");
+    std::string expected = "AnnotatingBlank";
+    ASSERT_STREQ(expected.c_str(),  triple.getResourceStr().c_str());
+}
+
+TEST_F(TripleTests, TestBuilderPattern) {
+    Triple triple;
+
+
+
+    triple.setAbout("metaid1")
+            .setPredicate("bqb", "is")
+            .setResourceUri("uniprot/PD4034");
+
+    std::string actual = triple.str();
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"metaid1\">\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/PD4034\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+
+
 
 
 
