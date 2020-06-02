@@ -30,7 +30,7 @@ namespace semsim {
      */
     class Participant {
 
-        const LibrdfModel& model_;
+        librdf_model* model_ = nullptr;
         std::string subject_;
         SemSim semsim_predicate_term_;
         double multiplier_;
@@ -57,10 +57,10 @@ namespace semsim {
 
         void free();
 
-        Participant(const LibrdfModel &model, std::string subject, SemSim *predicate, double multiplier,
+        Participant(librdf_model* model, std::string subject, SemSim *predicate, double multiplier,
                     std::string physicalEntityReference);
 
-        Participant(const LibrdfModel &model, std::string subject, std::string semsim_predicate_term, double multiplier,
+        Participant(librdf_model* model, std::string subject, std::string semsim_predicate_term, double multiplier,
                     std::string physicalEntityReference);
     };
 
@@ -71,7 +71,7 @@ namespace semsim {
     class SourceParticipant : public Participant {
 
     public:
-        SourceParticipant(const LibrdfModel &model, std::string subject, double multiplier,
+        SourceParticipant(librdf_model* model, std::string subject, double multiplier,
                           std::string physicalEntityReference);
     };
 
@@ -83,7 +83,7 @@ namespace semsim {
         std::string physicalEntityReference_;
     public:
 
-        SinkParticipant(const LibrdfModel &model, std::string subject, double multiplier,
+        SinkParticipant(librdf_model* model, std::string subject, double multiplier,
                         std::string physicalEntityReference);
 
     };
@@ -95,7 +95,7 @@ namespace semsim {
 
     public:
 
-        MediatorParticipant(const LibrdfModel &model, std::string subject,
+        MediatorParticipant(librdf_model* model, std::string subject,
                             std::string physicalEntityReference);
 
     };

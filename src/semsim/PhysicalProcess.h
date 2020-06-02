@@ -26,13 +26,17 @@ namespace semsim {
 
     public:
 
-        PhysicalProcess() = default;
+        PhysicalProcess() = delete;
 
-        PhysicalProcess( const LibrdfModel &model, Subject metaid,
+        ~PhysicalProcess() = default;
+
+        void free();
+
+        PhysicalProcess(librdf_model* model, Subject metaid,
                         PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks,
                         Mediators mediators);
 
-        PhysicalProcess( const LibrdfModel &model);
+        PhysicalProcess(librdf_model* model);
 
         const Sources &getSources() const;
 

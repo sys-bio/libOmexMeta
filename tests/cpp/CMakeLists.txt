@@ -16,13 +16,14 @@ set(TEST_SOURCES
         MetaIDTests.cpp
         XmlAssistantTests.cpp
         ParticipantTests.cpp
-#        PhysicalEntityTests.cpp
-#        PhysicalPropertyTests.cpp
-#        PhysicalPhenomenonTests.cpp
-#        PhysicalForceTests.cpp
-#        PhysicalProcessTests.cpp
-#        QueryTests.cpp
-#        EditorTests.cpp
+
+        PhysicalEntityTests.cpp
+        PhysicalPropertyTests.cpp
+        PhysicalPhenomenonTests.cpp
+        PhysicalForceTests.cpp
+        PhysicalProcessTests.cpp
+        QueryTests.cpp
+        EditorTests.cpp
 
         #        ReaderTests.cpp
         #        WriterTests.cpp

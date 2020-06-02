@@ -15,12 +15,12 @@ set(SEMSIM_HEADERS
         "PhysicalPropertyResource.h"
         "Participant.h"
 
-#        "PhysicalPhenomenon.h"
-#        "PhysicalEntity.h"
-#        "PhysicalProcess.h"
-#        "PhysicalForce.h"
-#        "AnnotationType.h"
-#        "Editor.h"
+        "PhysicalPhenomenon.h"
+        "PhysicalEntity.h"
+        "PhysicalProcess.h"
+        "PhysicalForce.h"
+        "AnnotationType.h"
+        "Editor.h"
         #        "TripleWriter.h"
         #        "SemsimCApi.h"
         #        "HERE.h"
@@ -47,12 +47,12 @@ set(SEMSIM_SOURCES
         "MetaID.cpp"
         "Participant.cpp"
 
-#        "PhysicalEntity.cpp"
-#        "PhysicalPhenomenon.cpp"
-#        "Editor.cpp"
-#        "PhysicalProcess.cpp"
-#        "PhysicalForce.cpp"
-        #        "SemsimCApi.cpp"
+        "PhysicalEntity.cpp"
+        "PhysicalPhenomenon.cpp"
+        "Editor.cpp"
+        "PhysicalProcess.cpp"
+        "PhysicalForce.cpp"
+#                "SemsimCApi.cpp"
         )
 
 

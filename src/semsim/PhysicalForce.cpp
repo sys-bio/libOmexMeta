@@ -11,7 +11,7 @@
 
 namespace semsim {
 
-    PhysicalForce::PhysicalForce(const LibrdfModel &model, Subject metaid,
+    PhysicalForce::PhysicalForce(librdf_model* model, Subject metaid,
                                  PhysicalPropertyResource physicalProperty,
                                  Sources sources, Sinks sinks)
             : PhysicalPhenomenon(model, metaid, std::move(physicalProperty), PHYSICAL_PROCESS),
@@ -42,12 +42,12 @@ namespace semsim {
 
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(force_metaid)) {
-                triples.push_back(std::move(triple));
+                triples.push_back(triple);
             }
         }
         for (auto &sink : sinks_) {
             for (auto &triple : sink.toTriples(force_metaid)) {
-                triples.push_back(std::move(triple));
+                triples.push_back(triple);
             }
         }
         return triples;
@@ -94,7 +94,7 @@ namespace semsim {
         return (*this);
     }
 
-    PhysicalForce::PhysicalForce(const LibrdfModel &model)
+    PhysicalForce::PhysicalForce(librdf_model* model)
             : PhysicalPhenomenon(model) {
 
     }
@@ -106,5 +106,15 @@ namespace semsim {
     int PhysicalForce::getNumSinks() {
         return sinks_.size();
     }
+
+    void PhysicalForce::free() {
+        for (auto &i : sources_) {
+            i.free();
+        }
+        for (auto &i : sinks_) {
+            i.free();
+        }
+    }
+
 
 }

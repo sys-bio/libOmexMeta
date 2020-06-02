@@ -20,9 +20,9 @@ using namespace redland;
 namespace semsim {
     class PhysicalPhenomenon {
     protected:
-        PhysicalPhenomenon(const LibrdfModel &model, AnnotationType type);
+        PhysicalPhenomenon(librdf_model *model, AnnotationType type);
 
-        const LibrdfModel& model_;
+        librdf_model *model_ = nullptr; // should be cleaned up by the LibrdfModel inside RDF.
         Subject about;
         PhysicalPropertyResource physical_property_;
         AnnotationType type_;
@@ -34,11 +34,19 @@ namespace semsim {
 
         ~PhysicalPhenomenon();
 
-        PhysicalPhenomenon(const LibrdfModel& model, Subject metaid,
+        PhysicalPhenomenon(const PhysicalPhenomenon &phenomenon);
+
+        PhysicalPhenomenon(PhysicalPhenomenon &&phenomenon) noexcept;
+
+        PhysicalPhenomenon &operator=(const PhysicalPhenomenon &phenomenon);
+
+        PhysicalPhenomenon &operator=(PhysicalPhenomenon &&phenomenon) noexcept;
+
+        PhysicalPhenomenon(librdf_model* model);
+
+        PhysicalPhenomenon(librdf_model* model, Subject metaid,
                            PhysicalPropertyResource propertyResource,
                            AnnotationType type);
-
-        PhysicalPhenomenon(const LibrdfModel& model);
 
         Subject getAbout() const;
 

@@ -8,7 +8,7 @@
 
 namespace semsim {
 
-    PhysicalEntity::PhysicalEntity(const LibrdfModel &model,
+    PhysicalEntity::PhysicalEntity(librdf_model* model,
                                    Subject metaid,
                                    PhysicalPropertyResource physicalProperty,
                                    Resource is,
@@ -17,7 +17,7 @@ namespace semsim {
               identity_resource_(std::move(is)), location_resources(std::move(is_part_of)) {}
 
 
-    PhysicalEntity::~PhysicalEntity() {
+    void PhysicalEntity::free() {
         if (identity_resource_.getNode())
             LibrdfNode::freeNode(identity_resource_.getNode());
         for (auto &i : location_resources) {
@@ -26,7 +26,7 @@ namespace semsim {
         }
     }
 
-    PhysicalEntity::PhysicalEntity(const LibrdfModel& model) : PhysicalPhenomenon(model) {
+    PhysicalEntity::PhysicalEntity(librdf_model* model) : PhysicalPhenomenon(model) {
     }
 
 
@@ -128,7 +128,7 @@ namespace semsim {
         return triples;
     }
 
-    int PhysicalEntity::getNumLocations() {
+    [[maybe_unused]] int PhysicalEntity::getNumLocations() const {
         return getLocationResources().size();
     }
 

@@ -235,25 +235,25 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
             std::make_shared<PhysicalProcess>(
                     PhysicalProcess(
 
-                            model,
+                            model.get(),
                             Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004")),
                             PhysicalPropertyResource("OPB:OPB1234"),
                             std::vector<SourceParticipant>(
-                                    {SourceParticipant(model,
+                                    {SourceParticipant(model.get(),
                                                        "SourceId1",
                                                        1.0,
                                                        "PhysicalEntityReference1"
                                     )}
                             ),
                             std::vector<SinkParticipant>(
-                                    {SinkParticipant(model,
+                                    {SinkParticipant(model.get(),
                                                      "SinkId1",
                                                      1.0,
                                                      "PhysicalEntityReference2"
                                     )}
                             ),
                             std::vector<MediatorParticipant>(
-                                    {MediatorParticipant(model,
+                                    {MediatorParticipant(model.get(),
                                                          "MediatorID1",
                                                          "PhysicalEntityReference3"
                                     )}
@@ -309,18 +309,18 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
             std::make_shared<PhysicalForce>(
                     PhysicalForce(
 
-                            model,
+                            model.get(),
                             Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004")),
                             PhysicalPropertyResource("OPB:OPB1234"),
                             std::vector<SourceParticipant>(
-                                    {SourceParticipant(model,
+                                    {SourceParticipant(model.get(),
                                                        "SourceId1",
                                                        1.0,
                                                        "PhysicalEntityReference1"
                                     )}
                             ),
                             std::vector<SinkParticipant>(
-                                    {SinkParticipant(model,
+                                    {SinkParticipant(model.get(),
                                                      "SinkId1",
                                                      1.0,
                                                      "PhysicalEntityReference2"

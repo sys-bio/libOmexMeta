@@ -61,18 +61,18 @@ namespace semsim {
     }
 
     std::string RDF::toString(const std::string &format, const std::string &base_uri,
-                              const char* mime_type, const char* type_uri){
+                              const char *mime_type, const char *type_uri) {
         LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
         return serializer.toString(LibrdfUri(base_uri), model_);
     }
 
 
-//    Editor RDF::toEditor(std::string xml, SemsimXmlType type) {
-//        return Editor(xml, type, model_, namespaces_);
-//    }
+    Editor RDF::toEditor(std::string xml, SemsimXmlType type) {
+        return Editor(xml, type, model_, namespaces_);
+    }
 
-    const LibrdfModel &RDF::getModel() const {
-        return model_;
+    librdf_model *RDF::getModel() const {
+        return model_.get();
     }
 
 
