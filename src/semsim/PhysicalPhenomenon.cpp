@@ -4,15 +4,23 @@
 
 #include "PhysicalPhenomenon.h"
 
+#include <utility>
+
 
 namespace semsim {
 
     PhysicalPhenomenon::PhysicalPhenomenon( const LibrdfModel &model, Subject metaid,
                                            PhysicalPropertyResource propertyResource, AnnotationType type)
-            : model_(model), about(metaid), physical_property_(propertyResource), type_(type) {
+            : model_(model), about(metaid), physical_property_(std::move(propertyResource)), type_(type) {}
+
+    PhysicalPhenomenon::~PhysicalPhenomenon(){
+        if (about.getNode())
+            about.freeNode();
+        if (physical_property_.getNode())
+            physical_property_.freeNode();
     }
 
-    PhysicalPhenomenon::PhysicalPhenomenon( const LibrdfModel &model) 
+    PhysicalPhenomenon::PhysicalPhenomenon( const LibrdfModel &model)
         : model_(model){}
         
     Subject PhysicalPhenomenon::getSubject() const {
@@ -57,12 +65,6 @@ namespace semsim {
         return about;
     }
 
-    PhysicalPhenomenon::~PhysicalPhenomenon() {
-        if (physical_property_.getNode()) {
-            LibrdfNode::freeNode(physical_property_.getNode());
-        }
-
-    }
 
 }
 

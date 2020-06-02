@@ -8,6 +8,7 @@
 #include "semsim/PhysicalEntity.h"
 #include "semsim/PhysicalProcess.h"
 #include "semsim/PhysicalForce.h"
+#include "semsim/RDF.h"
 
 using namespace semsim;
 
@@ -46,9 +47,9 @@ TEST_F(EditorTests, TestAddAnnotation) {
     PredicatePtr predicatePtr = std::make_shared<Predicate>(
             BiomodelsBiologyQualifier("is"));
     editor.addSingleAnnotation(
-            Subject(LibrdfNode::fromUriString("SemsimMetaid0004")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("SemsimMetaid0004")),
             predicatePtr,
-            Resource(LibrdfNode::fromUriString("uniprot:P0DP23"))
+            Resource::fromRawPtr(LibrdfNode::fromUriString("uniprot:P0DP23"))
     );
     NestedTriples tripleList = editor.getTripleList();
     ASSERT_EQ(1, tripleList.size());
@@ -87,8 +88,7 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation2) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
-    editor.
-            addSingleAnnotation(
+    editor.addSingleAnnotation(
             Subject::fromRawPtr(LibrdfNode::fromUriString("SemsimMetaid0008")),
             std::make_shared<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
             Resource::fromRawPtr(LibrdfNode::fromUriString("pubmed:12991237"))
@@ -114,9 +114,9 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation3) {
             SEMSIM_TYPE_SBML);
     editor.
             addSingleAnnotation(
-            Subject(LibrdfNode::fromUriString("SemsimMetaid0008")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("SemsimMetaid0008")),
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
-            Resource(LibrdfNode::fromUriString("pubmed:12991237"))
+            Resource::fromRawPtr(LibrdfNode::fromUriString("pubmed:12991237"))
     );
     editor.toRDF();
     std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
@@ -139,9 +139,9 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
             SEMSIM_TYPE_SBML);
     editor.
             addSingleAnnotation(
-            Subject(LibrdfNode::fromUriString("SemsimMetaid0008")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("SemsimMetaid0008")),
             std::make_unique<Predicate>(DCTerm("Description")),
-            Resource(RDFLiteralNode("Cardiomyocyte cytosolic ATP concentration"))
+            Resource::fromRawPtr(LibrdfNode::fromLiteral("Cardiomyocyte cytosolic ATP concentration"))
     );
     editor.toRDF();
     std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
@@ -192,18 +192,16 @@ TEST_F(EditorTests, TestCompositeAnnotationPhysicalEntity) {
     );
 
     editor.addCompositeAnnotation(
-            std::make_shared<PhysicalEntity>(
-                    PhysicalEntity(
-                            model,
-                            Subject::fromRawPtr(LibrdfNode::fromUriString("VLV")),
-                            PhysicalPropertyResource("OPB:OPB_00154")),
+            std::make_shared<PhysicalEntity>(PhysicalEntity(
+                    rdf.getModel(),
+                    Subject::fromRawPtr(LibrdfNode::fromUriString("VLV")),
+                    PhysicalPropertyResource("OPB:OPB_00154"),
                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:9670")), // is smad3
-                    std::vector<Resource>({
-                                                  Resource::fromRawPtr(LibrdfNode::fromUriString("fma/FMA:9697"))
-                                          })
+                    std::vector<Resource>({Resource::fromRawPtr(LibrdfNode::fromUriString("fma/FMA:9697"))})
+                                             )
             )
-    )
     );
+
     editor.toRDF();
     std::string actual = rdf.toString("rdfxml-abbrev", "file://./annotations.rdf");
     std::cout << actual <<

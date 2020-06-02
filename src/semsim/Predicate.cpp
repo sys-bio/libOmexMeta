@@ -6,12 +6,14 @@
 
 #include "semsim/Predicate.h"
 
+#include <utility>
+
 namespace semsim {
 
     Predicate::Predicate(const std::string &namespace_,
                          std::string term, std::string prefix)
-            : namespace_(namespace_), term_(term),
-              prefix_(prefix) {
+            : namespace_(namespace_), term_(std::move(term)),
+              prefix_(std::move(prefix)) {
         if (namespace_.back() == '/' || namespace_.back() == '#') {
             this->uri_ = namespace_ + term_;
         } else {

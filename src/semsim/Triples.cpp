@@ -22,46 +22,45 @@ namespace semsim {
         triples_.push_back(std::make_shared<Triple>(std::move(triple)));
     }
 
-    void Triples::push_back(std::shared_ptr<Triple> triple) {
+    void Triples::push_back(const std::shared_ptr<Triple>& triple) {
         triples_.push_back(triple);
     }
 
-    void Triples::emplace_back(Subject subject, PredicatePtr predicatePtr, Resource resource) {
-        Triple triple(std::move(subject), std::move(predicatePtr), std::move(resource));
+    void Triples::emplace_back(Subject subject, const PredicatePtr& predicatePtr, const Resource& resource) {
+        Triple triple(subject, predicatePtr, resource);
         triples_.push_back(std::make_shared<Triple>(std::move(triple)));
     }
 
-    void Triples::emplace_back(Subject subject, Predicate predicate, Resource resource) {
+    void Triples::emplace_back(Subject subject, const Predicate& predicate, const Resource& resource) {
         Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
         triples_.push_back(std::make_shared<Triple>(std::move(triple)));
     }
 
-    void Triples::emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, Resource resource) {
-        Triple triple(std::move(subject), std::make_shared<BiomodelsBiologyQualifier>(std::move(predicate)),
-                      std::move(resource));
+    void Triples::emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, const Resource& resource) {
+        Triple triple(subject, std::make_shared<BiomodelsBiologyQualifier>(std::move(predicate)),
+                      resource);
         triples_.push_back(std::make_shared<Triple>(std::move(triple)));
     }
 
-    void Triples::emplace_back(Subject subject, BiomodelsModelQualifier predicate, Resource resource) {
-        Triple triple(std::move(subject), std::make_shared<BiomodelsModelQualifier>(std::move(predicate)),
-                      std::move(resource));
+    void Triples::emplace_back(Subject subject, BiomodelsModelQualifier predicate, const Resource& resource) {
+        Triple triple(subject, std::make_shared<BiomodelsModelQualifier>(std::move(predicate)),
+                      resource);
         triples_.push_back(std::make_shared<Triple>(std::move(triple)));
     }
 
-    void Triples::emplace_back(Subject subject, DCTerm predicate, Resource resource) {
-        Triple triple(std::move(subject), std::make_shared<DCTerm>(std::move(predicate)), std::move(resource));
+    void Triples::emplace_back(Subject subject, DCTerm predicate, const Resource& resource) {
+        Triple triple(subject, std::make_shared<DCTerm>(std::move(predicate)), resource);
         triples_.push_back(std::make_shared<Triple>(std::move(triple)));
     }
 
-    void Triples::emplace_back(Subject subject, SemSim predicate, Resource resource) {
-        Triple triple(std::move(subject), std::make_shared<SemSim>(std::move(predicate)), std::move(resource));
+    void Triples::emplace_back(Subject subject, SemSim predicate, const Resource& resource) {
+        Triple triple(subject, std::make_shared<SemSim>(std::move(predicate)), resource);
         triples_.push_back(std::make_shared<Triple>(std::move(triple)));
     }
 
 //    void Triples::emplace_back(LibrdfStatement statement) {
 //        triples_.push_back(std::make_shared<Triple>(statement));
 //    }
-
 
     std::vector<std::string> Triples::getSubjectsStr() {
         std::vector<std::string> vec;
@@ -99,7 +98,7 @@ namespace semsim {
         return triples_.end();
     }
 
-    std::string Triples::str(std::string format, std::string base) {
+    std::string Triples::str(const std::string& format, const std::string& base) {
 
         // Here we create temporary set of tools for serializing a simple
         // triple.

@@ -40,17 +40,17 @@ namespace semsim {
 
 //        void emplace_back(LibrdfStatement statement);
 
-        void emplace_back(Subject subject, PredicatePtr predicatePtr, Resource resource);
+        void emplace_back(Subject subject, const PredicatePtr& predicatePtr, const Resource& resource);
 
-        void emplace_back(Subject subject, Predicate predicate, Resource resource);
+        void emplace_back(Subject subject, const Predicate& predicate, const Resource& resource);
 
-        void emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, Resource resource);
+        void emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, const Resource& resource);
 
-        void emplace_back(Subject subject, BiomodelsModelQualifier predicate, Resource resource);
+        void emplace_back(Subject subject, BiomodelsModelQualifier predicate, const Resource& resource);
 
-        void emplace_back(Subject subject, DCTerm predicate, Resource resource);
+        void emplace_back(Subject subject, DCTerm predicate, const Resource& resource);
 
-        void emplace_back(Subject subject, SemSim predicate, Resource resource);
+        void emplace_back(Subject subject, SemSim predicate, const Resource& resource);
 
         void emplace_back(librdf_node* subject, librdf_node* predicate, librdf_node* resource);
 
@@ -66,9 +66,9 @@ namespace semsim {
 
         SharedTripleVector::iterator end();
 
-        std::string str(std::string format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
+        std::string str(const std::string& format = "rdfxml-abbrev", const std::string& base = "file://./annotations.rdf");
 
-        void push_back(std::shared_ptr<Triple> triple);
+        void push_back(const std::shared_ptr<Triple>& triple);
     };
 
     typedef std::vector<Triples> NestedTriples;

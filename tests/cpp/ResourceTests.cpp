@@ -137,6 +137,17 @@ TEST_F(ResourceTests, TestIsSetWhenFalse) {
 }
 
 
+TEST_F(ResourceTests, TestIsLiterralWithDatatype) {
+    Resource resource = Resource::fromRawPtr(
+            LibrdfNode::fromLiteral(
+                    "1.0",
+                    "http://www.w3.org/2001/XMLSchema#double"
+            )
+    );
+    ASSERT_TRUE(resource.isSet());
+}
+
+
 
 
 

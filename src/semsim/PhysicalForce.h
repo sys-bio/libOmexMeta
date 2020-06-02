@@ -35,15 +35,15 @@ namespace semsim {
         PhysicalForce(const LibrdfModel& model, Subject metaid, PhysicalPropertyResource physicalProperty,
                       Sources sources, Sinks sinks);
 
-        PhysicalForce(const LibrdfModel& model);
+        explicit PhysicalForce(const LibrdfModel& model);
 
-        std::string createMetaId() const;
+        [[nodiscard]] std::string createMetaId() const;
 
-        const Sources &getSources() const;
+        [[nodiscard]] const Sources &getSources() const;
 
-        const Sinks &getSinks() const;
+        [[nodiscard]] const Sinks &getSinks() const;
 
-        Triples toTriples() const override;
+        [[nodiscard]] Triples toTriples() const override;
 
         PhysicalForce &setAbout(std::string metaid);
 

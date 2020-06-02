@@ -4,24 +4,34 @@
 
 #include "semsim/PhysicalEntity.h"
 
-namespace semsim {
-    PhysicalEntity::PhysicalEntity( const LibrdfModel& model,
-            Subject metaid,
-            PhysicalPropertyResource physicalProperty,
-            Resource is,
-            Resources is_part_of)
-            : PhysicalPhenomenon(model, std::move(metaid), std::move(physicalProperty), PHYSICAL_ENTITY),
-              identity_resource_(std::move(is)), location_resources(std::move(is_part_of)) {
+#include <utility>
 
+namespace semsim {
+
+    PhysicalEntity::PhysicalEntity(const LibrdfModel &model,
+                                   Subject metaid,
+                                   PhysicalPropertyResource physicalProperty,
+                                   Resource is,
+                                   Resources is_part_of)
+            : PhysicalPhenomenon(model, metaid, std::move(physicalProperty), PHYSICAL_ENTITY),
+              identity_resource_(std::move(is)), location_resources(std::move(is_part_of)) {}
+
+
+    PhysicalEntity::~PhysicalEntity() {
+        if (identity_resource_.getNode())
+            LibrdfNode::freeNode(identity_resource_.getNode());
+        for (auto &i : location_resources) {
+            if (i.getNode())
+                LibrdfNode::freeNode(i.getNode());
+        }
     }
 
-
-    PhysicalEntity::PhysicalEntity( LibrdfModel model) : PhysicalPhenomenon(model) {
+    PhysicalEntity::PhysicalEntity(const LibrdfModel& model) : PhysicalPhenomenon(model) {
     }
 
 
     PhysicalEntity &PhysicalEntity::setAbout(std::string metaid) {
-        this->about = Subject::fromRawPtr( LibrdfNode::fromUriString(std::move(metaid)));
+        this->about = Subject::fromRawPtr(LibrdfNode::fromUriString(std::move(metaid)));
         return *this;
 
     }
@@ -32,7 +42,7 @@ namespace semsim {
     }
 
     PhysicalEntity &PhysicalEntity::setPhysicalProperty(const std::string &physicalProperty) {
-        physical_property_ = PhysicalPropertyResource( physicalProperty);
+        physical_property_ = PhysicalPropertyResource(physicalProperty);
         return *this;
     }
 
@@ -40,13 +50,13 @@ namespace semsim {
     PhysicalEntity &PhysicalEntity::setIdentity(std::string resource) {
         // todo implement second argument which defaults to RDFUriNode
         //  and controls whether we use literal/blank/uri node
-        identity_resource_ = Resource::fromRawPtr( LibrdfNode::fromUriString(std::move(resource)));
+        identity_resource_ = Resource::fromRawPtr(LibrdfNode::fromUriString(std::move(resource)));
         return *this;
     }
 
     PhysicalEntity &PhysicalEntity::addLocation(std::string where) {
         location_resources.push_back(
-                Resource::fromRawPtr( LibrdfNode::fromUriString(where))
+                Resource::fromRawPtr(LibrdfNode::fromUriString(where))
         );
         return *this;
     }
@@ -96,22 +106,22 @@ namespace semsim {
         }
         // no exclusions needed here - we only generate 1 process metaid before commiting the triples
         // to the model.
-        std::string property_metaid = SemsimUtils::generateUniqueMetaid( model_, "PhysicalEntity",
+        std::string property_metaid = SemsimUtils::generateUniqueMetaid(model_, "PhysicalEntity",
                                                                         std::vector<std::string>());
         Triples triples = physical_property_.toTriples(about.str(), property_metaid);
 
         // what part of physical entity triple
         triples.emplace_back(
-                Subject::fromRawPtr( LibrdfNode::fromUriString(property_metaid)),
-                std::make_shared<Predicate>(BiomodelsBiologyQualifier( "is")),
+                Subject::fromRawPtr(LibrdfNode::fromUriString(property_metaid)),
+                std::make_shared<Predicate>(BiomodelsBiologyQualifier("is")),
                 getIdentityResource()
         );
 
         // the "where" part of the physical entity
         for (auto &locationResource : getLocationResources()) {
             triples.emplace_back(
-                    Subject::fromRawPtr( LibrdfNode::fromUriString(property_metaid)),
-                    std::make_shared<Predicate>(BiomodelsBiologyQualifier( "isPartOf")),
+                    Subject::fromRawPtr(LibrdfNode::fromUriString(property_metaid)),
+                    std::make_shared<Predicate>(BiomodelsBiologyQualifier("isPartOf")),
                     locationResource
             );
         }
@@ -120,10 +130,6 @@ namespace semsim {
 
     int PhysicalEntity::getNumLocations() {
         return getLocationResources().size();
-    }
-
-    PhysicalEntity::~PhysicalEntity() {
-
     }
 
 

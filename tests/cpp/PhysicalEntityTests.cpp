@@ -12,7 +12,6 @@ using namespace semsim;
 
 class PhysicalEntityTests : public ::testing::Test {
 
-    
 public:
 
     LibrdfStorage storage;

@@ -49,22 +49,23 @@ namespace semsim {
         return triple_list_;
     }
 
-//    void Editor::extractNamespacesFromTriplesVector(Triples triples) {
-//        for (auto &triple: triples) {
-//            namespaces_[triple->getPredicate()->getNamespace()] = triple.getPredicatePtr()->getPrefix();
-//        }
-//    }
-//
-//
-//    void Editor::toRDF() {
-//        for (auto &annot : triple_list_) {
-//            for (auto &triple : annot) {
-//                LibrdfStatement stmt = triple.toStatement();
-//                //todo add get namespace to triple
-//                librdf_model_add_statement(*model_.getModel(), *stmt.getStatement());
-//            }
-//        }
-//    }
+    void Editor::extractNamespacesFromTriplesVector(Triples triples) {
+        for (auto &triple: triples) {
+            const Predicate& p = Predicate::fromRawPtr(triple->getPredicate());
+            namespaces_[p.getNamespace()] = p.getPrefix();
+        }
+    }
+
+
+    void Editor::toRDF() {
+        for (auto &annot : triple_list_) {
+            for (auto &triple : annot) {
+                LibrdfStatement stmt = LibrdfStatement::fromRawStatementPtr(triple->getStatement().get());
+                //todo add get namespace to triple
+                model_.addStatement(stmt);
+            }
+        }
+    }
 
 
     void Editor::addNamespace(std::string ns, std::string prefix) {
@@ -72,76 +73,81 @@ namespace semsim {
     }
 
 
-//    void Editor::addSingleAnnotation(
-//            Subject subject, PredicatePtr predicate_ptr,
-//            Resource resource) {
-//        if (!predicate_ptr) {
-//            std::ostringstream err;
-//            err << __FILE__ << ":" << __LINE__ << ":PredicatePtr argument is null" << std::endl;
-//            throw NullPointerException(err.str());
-//        }
-//        checkValidMetaid(subject.str());
-//        Triple triple(std::move(subject), predicate_ptr, std::move(resource));
-//        Triples vec = {std::move(triple)};
-//        triple_list_.push_back(vec);
-//        for (auto &it : namespaces_) {
-//            std::cout << "ns: " << it.first << ": " << it.second << std::endl;
-//        }
-//        namespaces_[predicate_ptr->getNamespace()] = predicate_ptr->getPrefix();
-//    }
+    void Editor::addSingleAnnotation(
+            Subject subject, PredicatePtr predicate_ptr,
+            Resource resource) {
+        if (!predicate_ptr) {
+            std::ostringstream err;
+            err << __FILE__ << ":" << __LINE__ << ":PredicatePtr argument is null" << std::endl;
+            throw NullPointerException(err.str());
+        }
+        checkValidMetaid(subject.str());
+        Triple triple(std::move(subject), predicate_ptr, std::move(resource));
+        Triples vec;
+        vec.push_back(std::move(triple));
+        triple_list_.push_back(vec);
+        for (auto &it : namespaces_) {
+            std::cout << "ns: " << it.first << ": " << it.second << std::endl;
+        }
+        namespaces_[predicate_ptr->getNamespace()] = predicate_ptr->getPrefix();
+    }
 
-//    void Editor::addSingleAnnotation(SingularAnnotation singularAnnotation) {
-//        Triples vec = {std::move(singularAnnotation)};
-//        triple_list_.push_back(vec);
-////        namespaces_[singularAnnotation.getPredicate()->getNamespace()] = singularAnnotation.getPredicate()->getPrefix();
-//
-//    }
+    void Editor::addSingleAnnotation(SingularAnnotation singularAnnotation) {
+        Triples vec;
+        vec.push_back(std::move(singularAnnotation));
+        triple_list_.push_back(vec);
+        const Predicate& p = Predicate::fromRawPtr(
+                singularAnnotation.getPredicate()
+        );
+        namespaces_[p.getNamespace()] = Predicate(p).getPrefix();
 
-//    void Editor::addAnnotationFromNestedTriples(NestedTriples tripleList) {
-//        for (auto &inner_triple_vec: tripleList) {
-//            extractNamespacesFromTriplesVector(inner_triple_vec);
-//            triple_list_.push_back(inner_triple_vec);
-//        }
-//    }
-//
-//    void Editor::addAnnotationFromTriples(Triples triples) {
-//        extractNamespacesFromTriplesVector(triples);
-//        triple_list_.push_back(triples);
-//
-//    }
+    }
+
+    void Editor::addAnnotationFromNestedTriples(NestedTriples tripleList) {
+        for (auto &inner_triple_vec: tripleList) {
+            extractNamespacesFromTriplesVector(inner_triple_vec);
+            triple_list_.push_back(inner_triple_vec);
+        }
+    }
+
+    void Editor::addAnnotationFromTriples(Triples triples) {
+        extractNamespacesFromTriplesVector(triples);
+        triple_list_.push_back(triples);
+
+    }
 
 
-//    void Editor::addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr) {
-//        Triples triples = phenomenonPtr->toTriples();
-//        extractNamespacesFromTriplesVector(triples);
-//        for (auto &triple : triples) {
-//            model_.addStatement(triple);
-//        }
-//    }
+    void Editor::addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr) {
+        Triples triples = phenomenonPtr->toTriples();
+        extractNamespacesFromTriplesVector(triples);
+        for (auto &triple : triples) {
+            model_.addStatement(LibrdfStatement::fromRawStatementPtr(triple->getStatement().get()));
+        }
+    }
 
-//    void Editor::addPhysicalEntity(PhysicalEntity physicalEntity) {
-//        addCompositeAnnotation(
-//                std::make_shared<PhysicalEntity>(physicalEntity)
-//        );
-//    }
-//
-//    void Editor::addPhysicalProcess(PhysicalProcess physicalProcess) {
-//        addCompositeAnnotation(
-//                std::make_shared<PhysicalProcess>(physicalProcess)
-//        );
-//
-//    }
-//
-//    void Editor::addPhysicalForce(PhysicalForce physicalForce) {
-//        addCompositeAnnotation(
-//                std::make_shared<PhysicalForce>(physicalForce)
-//        );
-//
-//    }
-//
-//    void Editor::removeAnnotation(std::string metaid) {
-//
-//    }
+    void Editor::addPhysicalEntity(PhysicalEntity physicalEntity) {
+        addCompositeAnnotation(
+                std::make_shared<PhysicalEntity>(physicalEntity)
+        );
+    }
+
+    void Editor::addPhysicalProcess(PhysicalProcess physicalProcess) {
+        addCompositeAnnotation(
+                std::make_shared<PhysicalProcess>(physicalProcess)
+        );
+
+    }
+
+    void Editor::addPhysicalForce(PhysicalForce physicalForce) {
+        addCompositeAnnotation(
+                std::make_shared<PhysicalForce>(physicalForce)
+        );
+
+    }
+
+    void Editor::removeAnnotation(std::string metaid) {
+
+    }
 
 
 }

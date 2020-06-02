@@ -50,8 +50,8 @@ namespace redland {
 
         static librdf_node* fromBlank(const std::string &blank);
 
-        static librdf_node* fromLiteral(const std::string &literal, const std::string &xml_language = std::string(),
-                                      const std::string &literal_datatype_uri = "string");
+        static librdf_node *fromLiteral(const std::string &literal, const std::string &literal_datatype_uri = "string",
+                                        const std::string &xml_language = std::string());
 
         raptor_term_type getRaptorTermType();
 
