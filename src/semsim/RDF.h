@@ -54,7 +54,7 @@ namespace semsim {
 
         Editor toEditor(std::string xml, SemsimXmlType type);
 
-        const LibrdfModel &getModel() const;
+        librdf_model* getModel() const;
     };
 }
 

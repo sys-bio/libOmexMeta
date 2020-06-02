@@ -27,7 +27,8 @@ namespace semsim {
     typedef std::unordered_map<std::string, std::vector<std::string>> ResultsMap;
 
     class Query {
-        const LibrdfModel& model_;
+
+        librdf_model* model_ = nullptr; // will be cleaned up by RDF class
         std::string query_;
         LibrdfQueryResults query_results_;
 
@@ -135,6 +136,7 @@ namespace semsim {
         std::string resultsAsStr(const std::string &output_format);
 
 //        Triples resultsAsTriples();
+        Query(librdf_model *model, std::string query);
     };
 }
 

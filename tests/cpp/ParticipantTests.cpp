@@ -26,7 +26,7 @@ public:
  */
 TEST_F(ParticipantTests, TestCreateParticipant) {
     Participant participant(
-            model, "MetaId0014", "hasSourceParticipant",
+            model.get(), "MetaId0014", "hasSourceParticipant",
             1.0, "MetaId0015"
     );
     std::string actual = participant.getPredicate().str();
@@ -37,7 +37,7 @@ TEST_F(ParticipantTests, TestCreateParticipant) {
 }
 
 TEST_F(ParticipantTests, TestSinkParticipant1) {
-    SinkParticipant sink(model, "MetaId0014",
+    SinkParticipant sink(model.get(), "MetaId0014",
                          1.0, "MetaId0015"
     );
     std::string actual = sink.getPredicate().str();
@@ -48,7 +48,7 @@ TEST_F(ParticipantTests, TestSinkParticipant1) {
 }
 
 TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
-    SinkParticipant sink(model, "MetaId0014",
+    SinkParticipant sink(model.get(), "MetaId0014",
                          1.0, "MetaId0015"
     );
     Triple triple(
@@ -57,7 +57,8 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
             Resource::fromRawPtr(LibrdfNode::fromUriString(sink.getSubject())).getNode()
     );
     // triple assumes responsibility for freeing subject, resource and preicate
-    std::string expected = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"MetaId0014\">\n"
@@ -71,7 +72,7 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
 
 
 TEST_F(ParticipantTests, TestCreateTripleVector) {
-    SinkParticipant sink(model, "MetaId0014",
+    SinkParticipant sink(model.get(), "MetaId0014",
                          1.0, "MetaId0015"
     );
     Triple triple(
@@ -82,40 +83,56 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
     std::vector<Triple> vec;
     vec.push_back(triple);
     // triple assumes responsibility for freeing subject, resource and preicate
-    std::string expected = "MetaId0014";
-    std::string actual = vec[0].getSubjectStr();
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"MetaId0014\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"MetaId0014\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    std::string actual = vec[0].str();
+    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(ParticipantTests, TestToTriples1) {
-    SinkParticipant sink(model, "MetaId0014",
+    SinkParticipant sink(model.get(), "MetaId0014",
                          1.0, "MetaId0015"
     );
     std::ostringstream os;
     Triples triples = sink.toTriples("metaid");
-    for (auto &it: triples) {
-        os << it->getAbout();
-    }
-    std::string actual = os.str();
+    std::string actual = triples.str();
     std::cout << actual << std::endl;
-    std::string expected = "metaidMetaId0014MetaId0014";
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"MetaId0014\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"metaid\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"MetaId0014\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 
 TEST_F(ParticipantTests, TestParticipantVecToTriples) {
     MediatorParticipant mediator(
-            model, "MetaId0014",
+            model.get(), "MetaId0014",
             "MetaId0015"
     );
 
     SourceParticipant source(
-            model, "MetaId0014",
+            model.get(), "MetaId0014",
             1.0, "MetaId0015"
     );
 
     SinkParticipant sink(
-            model,
+            model.get(),
             "MetaId0014",
             1.0, "MetaId0015"
     );

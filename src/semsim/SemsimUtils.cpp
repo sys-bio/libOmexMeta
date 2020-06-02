@@ -50,7 +50,7 @@ namespace semsim {
     }
 
     std::string SemsimUtils::generateUniqueMetaid(
-            const LibrdfModel &model, std::string metaid_base,
+            librdf_model* model, std::string metaid_base,
             std::vector<std::string> exclusions) {
 
         std::string q = "SELECT ?subject ?predicate ?object\n"

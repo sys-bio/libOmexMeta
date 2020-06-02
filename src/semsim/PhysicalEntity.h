@@ -30,14 +30,16 @@ namespace semsim {
 
         PhysicalEntity() = delete;
 
-        ~PhysicalEntity();
+        ~PhysicalEntity() = default;
 
-        PhysicalEntity(const LibrdfModel &model, Subject metaid,
+        void free();
+
+        PhysicalEntity(librdf_model* model, Subject metaid,
                        PhysicalPropertyResource physicalProperty, Resource is,
                        Resources is_part_of);
 
 
-        explicit PhysicalEntity(const LibrdfModel& model);
+        explicit PhysicalEntity(librdf_model* model);
 
         [[nodiscard]] Triples toTriples() const override;
 
@@ -55,7 +57,7 @@ namespace semsim {
 
         PhysicalEntity &setPhysicalProperty(const std::string &physicalProperty);
 
-        int getNumLocations();
+        [[maybe_unused]] int getNumLocations() const;
     };
 }
 

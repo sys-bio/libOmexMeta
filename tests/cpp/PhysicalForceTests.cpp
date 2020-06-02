@@ -31,12 +31,12 @@ public:
 
 TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
     PhysicalForce force(
-            model,
+            model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004")),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
-                            model,
+                            model.get(),
                             "SourceId1",
                             1.0,
                             "PhysicalEntityReference1"
@@ -44,7 +44,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(
-                            model,
+                            model.get(),
                             "SinkId1",
                             1.0,
                             "PhysicalEntityReference2"
@@ -60,12 +60,12 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
 
 TEST_F(PhysicalForceTests, TestPhysicalForceSource) {
     PhysicalForce force(
-            model,
+            model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004")),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
-                            model,
+                            model.get(),
                             "SourceId1",
                             1.0,
                             "PhysicalEntityReference1"
@@ -73,7 +73,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSource) {
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(
-                            model,
+                            model.get(),
                             "SinkId1",
                             1.0,
                             "PhysicalEntityReference2"
@@ -110,12 +110,12 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSource) {
 
 TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
     PhysicalForce force(
-            model,
+            model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004")),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
-                            model,
+                            model.get(),
                             "SourceId1",
                             1.0,
                             "PhysicalEntityReference1"
@@ -123,7 +123,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(
-                            model,
+                            model.get(),
                             "SinkId1",
                             1.0,
                             "PhysicalEntityReference2"
@@ -141,12 +141,12 @@ TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
 
 TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
     PhysicalForce force(
-            model,
+            model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004")),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
-                            model,
+                            model.get(),
                             "SourceId1",
                             1.0,
                             "PhysicalEntityReference1"
@@ -154,7 +154,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(
-                            model,
+                            model.get(),
                             "SinkId1",
                             1.0,
                             "PhysicalEntityReference2"
@@ -172,12 +172,12 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
 
 TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
     PhysicalForce force(
-            model,
+            model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("ForceId0000")),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
-                            model,
+                            model.get(),
                             "SourceId1",
                             1.0,
                             "PhysicalEntityReference1"
@@ -185,7 +185,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(
-                            model,
+                            model.get(),
                             "SinkId1",
                             1.0,
                             "PhysicalEntityReference2"
@@ -225,10 +225,9 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
 
 
 TEST_F(PhysicalForceTests, TestPhysicalForceBuilder) {
-    PhysicalForce force(model);
+    PhysicalForce force(model.get());
     force.setAbout("Force5")
-            .
-                    setPhysicalProperty(physical_property)
+            .setPhysicalProperty(physical_property)
             .addSource("Source1", 1, "PhysicalEntityReference1")
             .addSink("Sink1", 2, "PhysicalEntityReference2")
             .addSink("Sink2", 1, "PhysicalEntityReference3");
@@ -264,8 +263,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceBuilder) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
-    std::cout << actual <<
-              std::endl;
+    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 

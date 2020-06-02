@@ -9,7 +9,13 @@
 
 namespace semsim {
 
-    Query::Query( const LibrdfModel &model, std::string query)
+    Query::Query(const LibrdfModel &model, std::string query)
+            : model_(model.get()), query_(query) {
+        runQuery();
+
+    }
+
+    Query::Query(librdf_model *model, std::string query)
             : model_(model), query_(query) {
         runQuery();
 
@@ -27,7 +33,7 @@ namespace semsim {
         }
 
         query_results_ = LibrdfQueryResults(
-                librdf_query_execute(q, model_.get())
+                librdf_query_execute(q, model_)
         );
         if (!query_results_.get()) {
             std::ostringstream qerr2;

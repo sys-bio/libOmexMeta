@@ -10,7 +10,7 @@
 namespace semsim {
 
 
-    Participant::Participant(const LibrdfModel &model, std::string subject, std::string semsim_predicate_term,
+    Participant::Participant(librdf_model* model, std::string subject, std::string semsim_predicate_term,
                              double multiplier,
                              std::string physicalEntityReference)
             : model_(model), subject_(std::move(subject)),
@@ -84,13 +84,13 @@ namespace semsim {
 //        }
 //    }
 
-    SourceParticipant::SourceParticipant(const LibrdfModel &model, std::string subject,
+    SourceParticipant::SourceParticipant(librdf_model* model, std::string subject,
                                          double multiplier, std::string physicalEntityReference)
             : Participant(model, std::move(subject), "hasSourceParticipant",
 
                           multiplier, std::move(physicalEntityReference)) {}
 
-    SinkParticipant::SinkParticipant(const LibrdfModel &model, std::string subject, double multiplier,
+    SinkParticipant::SinkParticipant(librdf_model* model, std::string subject, double multiplier,
                                      std::string physicalEntityReference)
             : Participant(model, std::move(subject),
                           "hasSinkParticipant",
@@ -98,7 +98,7 @@ namespace semsim {
                           std::move(physicalEntityReference)) {}
 
     MediatorParticipant::MediatorParticipant(
-            const LibrdfModel &model, std::string subject,
+            librdf_model* model, std::string subject,
             std::string physicalEntityReference)
             : Participant(model, std::move(subject),
                           "hasMediatorParticipant",

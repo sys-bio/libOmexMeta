@@ -9,20 +9,20 @@
 
 namespace semsim {
 
-    PhysicalPhenomenon::PhysicalPhenomenon( const LibrdfModel &model, Subject metaid,
+    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, Subject metaid,
                                            PhysicalPropertyResource propertyResource, AnnotationType type)
             : model_(model), about(metaid), physical_property_(std::move(propertyResource)), type_(type) {}
 
-    PhysicalPhenomenon::~PhysicalPhenomenon(){
+    PhysicalPhenomenon::~PhysicalPhenomenon() {
         if (about.getNode())
             about.freeNode();
         if (physical_property_.getNode())
             physical_property_.freeNode();
     }
 
-    PhysicalPhenomenon::PhysicalPhenomenon( const LibrdfModel &model)
-        : model_(model){}
-        
+    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model* model)
+            : model_(model) {}
+
     Subject PhysicalPhenomenon::getSubject() const {
         return about;
     }
@@ -65,6 +65,40 @@ namespace semsim {
         return about;
     }
 
+    PhysicalPhenomenon::PhysicalPhenomenon(const PhysicalPhenomenon &phenomenon) {
+        model_ = phenomenon.model_;
+        about = phenomenon.about;
+        physical_property_ = phenomenon.physical_property_;
+        type_ = phenomenon.type_;
+    }
+
+    PhysicalPhenomenon::PhysicalPhenomenon(PhysicalPhenomenon &&phenomenon) noexcept {
+        model_ = phenomenon.model_;
+        phenomenon.model_ = nullptr; // not sure if this is right.
+        about = std::move(phenomenon.about);
+        physical_property_ = std::move(phenomenon.physical_property_);
+        type_ = std::move(phenomenon.type_);
+    }
+
+    PhysicalPhenomenon &PhysicalPhenomenon::operator=(const PhysicalPhenomenon &phenomenon) {
+        if (this != &phenomenon) {
+            model_ = phenomenon.model_;
+            about = std::move(phenomenon.about);
+            physical_property_ = std::move(phenomenon.physical_property_);
+            type_ = std::move(phenomenon.type_);
+        }
+        return *this;
+    }
+    
+    PhysicalPhenomenon &PhysicalPhenomenon::operator=(PhysicalPhenomenon &&phenomenon) noexcept {
+        if (this != &phenomenon) {
+            model_ = phenomenon.model_;
+            phenomenon.model_ = nullptr; // not sure if this is right.
+            about = std::move(phenomenon.about);
+            physical_property_ = std::move(phenomenon.physical_property_);
+            type_ = std::move(phenomenon.type_);
+        }
+    }
 
 }
 
