@@ -7,7 +7,7 @@
 
 
 #include "RedlandAPIWrapper.h"
-#include "semsim/Writer.h"
+#include "semsim/_Writer.h"
 #include "semsim/Triple.h"
 #include "semsim/Triples.h"
 

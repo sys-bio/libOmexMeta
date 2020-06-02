@@ -57,8 +57,15 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
             Resource::fromRawPtr(LibrdfNode::fromUriString(sink.getSubject())).getNode()
     );
     // triple assumes responsibility for freeing subject, resource and preicate
-    std::string expected = "MetaId0014";
-    std::string actual = triple.getSubjectStr();
+    std::string expected = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"MetaId0014\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"MetaId0014\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    std::string actual = triple.str();
+    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
