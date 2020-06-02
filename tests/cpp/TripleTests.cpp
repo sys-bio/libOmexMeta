@@ -189,6 +189,31 @@ TEST_F(TripleTests, TestBuilderPattern) {
     resource.freeNode();
 }
 
+TEST_F(TripleTests, TestBuilderPatternWithSemSimPredicate) {
+    Triple triple;
+
+    triple.setAbout("metaid1")
+            .setPredicate("SemSim", "hasSourceParticipant")
+            .setResourceUri("uniprot/PD4034");
+
+    std::string actual = triple.str();
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"metaid1\">\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/PD4034\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+
+    // Aaand free the excess nodes
+    predicate.freeNode();
+    subject.freeNode();
+    resource.freeNode();
+}
+
 
 
 

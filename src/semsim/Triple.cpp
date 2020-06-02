@@ -37,7 +37,6 @@ namespace semsim {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: statement is null");
         }
 
-
         // Here we create temporary set of tools for serializing a simple
         // triple.
         librdf_world *world = librdf_new_world();

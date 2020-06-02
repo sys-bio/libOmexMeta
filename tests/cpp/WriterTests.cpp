@@ -1,4 +1,4 @@
-#include <semsim/Writer.h>
+#include <semsim/_Writer.h>
 
 #include "AnnotationSamples.h"
 #include "RedlandAPIWrapper.h"

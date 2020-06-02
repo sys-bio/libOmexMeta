@@ -53,8 +53,15 @@ TEST_F(SemsimUtilsTests, TestPrefixFile) {
 }
 
 TEST_F(SemsimUtilsTests, TestGEtNamespacesFromUri) {
-    std::string uri = "www.uri.com/identifiers/PD1234";
-    std::string expected = "ww.uri.com/identifiers/";
+    std::string uri = "http://uri.com/identifiers/PD1234";
+    std::string expected = "http://uri.com/identifiers/";
+    std::string actual = semsim::SemsimUtils::getNamespaceFromUri(uri);
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(SemsimUtilsTests, TestGEtNamespacesFromUriSemsim) {
+    std::string uri = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
+    std::string expected = "http://www.bhi.washington.edu/semsim#";
     std::string actual = semsim::SemsimUtils::getNamespaceFromUri(uri);
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
