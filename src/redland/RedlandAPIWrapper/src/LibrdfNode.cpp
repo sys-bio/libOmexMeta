@@ -60,8 +60,8 @@ namespace redland {
     }
 
     librdf_node *
-    LibrdfNode::fromLiteral(const std::string &literal, const std::string &xml_language,
-                            const std::string &literal_datatype_uri) {
+    LibrdfNode::fromLiteral(const std::string &literal, const std::string &literal_datatype_uri,
+                            const std::string &xml_language) {
         std::string literal_datatype_ = validateLiteralDatatype(literal_datatype_uri);
         const char *xml_language_;
         if (xml_language.empty()) {

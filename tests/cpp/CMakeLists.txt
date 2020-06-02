@@ -20,9 +20,9 @@ set(TEST_SOURCES
         PhysicalPhenomenonTests.cpp
         PhysicalForceTests.cpp
         PhysicalProcessTests.cpp
-#        ParticipantTests.cpp
-#        QueryTests.cpp
-#        EditorTests.cpp
+        ParticipantTests.cpp
+        QueryTests.cpp
+        EditorTests.cpp
 
         #        ReaderTests.cpp
         #        WriterTests.cpp

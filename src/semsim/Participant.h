@@ -25,7 +25,7 @@ namespace semsim {
     class Participant {
         const LibrdfModel& model_;
         std::string subject_;
-        PredicatePtr predicate_ptr_;
+        PredicatePtr predicate_ptr_ = nullptr;
         double multiplier_;
         std::string physicalEntityReference_;
     public:
@@ -33,7 +33,9 @@ namespace semsim {
         Participant(const LibrdfModel& model, std::string subject, PredicatePtr predicate,
                     double multiplier, std::string physicalEntityReference);
 
-        Triples toTriples(std::string process_metaid) const;
+        ~Participant() = default;
+
+        [[nodiscard]] Triples toTriples(const std::string& process_metaid) const;
 
         PredicatePtr getPredicatePtr();
 
@@ -62,7 +64,7 @@ namespace semsim {
     class SinkParticipant : public Participant {
     private:
 
-        double multiplier_;
+        double multiplier_{};
         std::string physicalEntityReference_;
     public:
 

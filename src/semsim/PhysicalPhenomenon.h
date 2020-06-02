@@ -20,6 +20,8 @@ using namespace redland;
 namespace semsim {
     class PhysicalPhenomenon {
     protected:
+        PhysicalPhenomenon(const LibrdfModel &model, AnnotationType type);
+
         const LibrdfModel& model_;
         Subject about;
         PhysicalPropertyResource physical_property_;
