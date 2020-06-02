@@ -129,6 +129,10 @@ namespace semsim {
         return node_;
     }
 
+    void Predicate::setNode(librdf_node* node) {
+        node_ = node;
+    }
+
     Predicate Predicate::fromRawPtr(librdf_node *node) {
         return Predicate(node);
     }
@@ -137,20 +141,24 @@ namespace semsim {
         LibrdfNode::freeNode(node_);
     }
 
-    void Predicate::addSeenNamespaceToSerializer(librdf_world* world,
-            librdf_serializer *serializer, librdf_node *predicate) {
+    void Predicate::addSeenNamespaceToSerializer(librdf_world *world,
+                                                 librdf_serializer *serializer, librdf_node *predicate) {
         // null checks
         if (!world)
-            throw RedlandNullPointerException("RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: world is null");
+            throw RedlandNullPointerException(
+                    "RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: world is null");
         if (!serializer)
-            throw RedlandNullPointerException("RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: serializer is null");
+            throw RedlandNullPointerException(
+                    "RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: serializer is null");
         if (!predicate)
-            throw RedlandNullPointerException("RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: predicate is null");
+            throw RedlandNullPointerException(
+                    "RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: predicate is null");
 
         // grab the uri inside predicate node
         librdf_uri *pred_uri = librdf_node_get_uri(predicate);
         if (!pred_uri)
-            throw RedlandNullPointerException("RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: uri is null. Maybe your predicate node isn't really a predicate node");
+            throw RedlandNullPointerException(
+                    "RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: uri is null. Maybe your predicate node isn't really a predicate node");
 
         // retrieve the namespace that we want to check
         unsigned char *s = librdf_uri_as_string(pred_uri);
@@ -170,6 +178,31 @@ namespace semsim {
                 librdf_free_uri(u);
             }
         }
+    }
+
+    std::unique_ptr<Predicate, Predicate::deleter> Predicate::makeUniquePredicate(Predicate predicate) {
+        deleter d{};
+        std::unique_ptr<Predicate, Predicate::deleter> ptr = {new Predicate(
+                predicate.namespace_, predicate.term_, predicate.prefix_
+        ), d};
+//        d(&predicate);
+        return ptr;
+    }
+
+
+    Predicate* Predicate::makeRawPtr(Predicate predicate) {
+        return &predicate;
+    }
+
+    void Predicate::deleter::operator()(Predicate *predicate) {
+        std::cout << "trying to delete predicate" << std::endl;
+        if (predicate->getNode()) {
+            std::cout << "deleting  predicate " << predicate->str()<< std::endl;
+            LibrdfNode::freeNode(predicate->getNode());
+            predicate->node_ = nullptr;
+        }
+        std::cout << "node after deltet: " << predicate->getNode() << std::endl;
+        delete predicate;
     }
 
     BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(const std::string &term) :
@@ -269,5 +302,8 @@ namespace semsim {
         }
         return predicatePtr;
     }
+
+
 }
+
 

@@ -13,6 +13,8 @@
 using namespace redland;
 
 namespace semsim {
+
+
     class RDF {
         LibrdfStorage storage_;
         LibrdfModel model_;

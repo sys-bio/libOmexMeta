@@ -4,14 +4,18 @@
 
 #include "PhysicalProcess.h"
 
+#include <utility>
+
+#include <utility>
+
 
 namespace semsim {
 
     PhysicalProcess::PhysicalProcess(const LibrdfModel &model, Subject metaid,
                                      PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks,
                                      Mediators mediators)
-            : PhysicalPhenomenon(model, metaid, physicalProperty, PHYSICAL_PROCESS),
-              sources_(sources), sinks_(sinks), mediators_(mediators) {
+            : PhysicalPhenomenon(model, metaid, std::move(physicalProperty), PHYSICAL_PROCESS),
+              sources_(std::move(sources)), sinks_(std::move(sinks)), mediators_(std::move(std::move(mediators))) {
 
     }
 
@@ -93,10 +97,11 @@ namespace semsim {
     PhysicalProcess &PhysicalProcess::addSource(std::string source_metaid, double multiplier,
                                                 std::string physical_entity_reference) {
         sources_.push_back(
-                SourceParticipant(model_,
-                        std::move(source_metaid),
-                        multiplier,
-                        std::move(physical_entity_reference)
+                std::move(SourceParticipant(model_,
+                                            std::move(source_metaid),
+                                            multiplier,
+                                            std::move(physical_entity_reference)
+                          )
                 )
         );
         return (*this);
@@ -105,11 +110,11 @@ namespace semsim {
     PhysicalProcess &PhysicalProcess::addSink(std::string sink_metaid, double multiplier,
                                               std::string physical_entity_reference) {
         sinks_.push_back(
-                SinkParticipant(
+                std::move(SinkParticipant(
                         model_,
                         std::move(sink_metaid),
                         multiplier, std::move(physical_entity_reference)
-                )
+                ))
         );
 
         return (*this);
@@ -118,11 +123,11 @@ namespace semsim {
     PhysicalProcess &PhysicalProcess::addMediator(std::string mediator_metaid, double multiplier,
                                                   std::string physical_entity_reference) {
         mediators_.push_back(
-                MediatorParticipant(
+                std::move(MediatorParticipant(
                         model_,
                         std::move(mediator_metaid),
                         std::move(physical_entity_reference)
-                )
+                ))
         );
 
         return (*this);

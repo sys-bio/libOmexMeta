@@ -69,6 +69,32 @@ namespace semsim {
          * added to @parameter serializer
          */
         static void addSeenNamespaceToSerializer(librdf_world *world, librdf_serializer *serializer, librdf_node *predicate);
+
+        struct deleter {
+            /*
+             * @brief static destructor for predicate
+             *
+             * We do not want to let Predicate manage the lifetime of its node_
+             * because Predicate is a part of Triple and Triple manages its lifetime.
+             * However, sometimes its useful to have a std::unique_ptr to a predicate
+             * (see Participant) and in this case we need to pass in this function
+             * as a deleter.
+             */
+            void operator()(Predicate *predicate);
+        };
+
+        static std::unique_ptr<Predicate, deleter> makeUniquePredicate(Predicate predicate);
+
+        /*
+         * @brief get raw pointer from predicate.
+         * @param Predicate predicate: The predicate to take raw pointer of
+         *
+         * For developers. Used in initializer list of other classes (like Participants)
+         * since we cannot take a address of a temporary object
+         */
+        static Predicate *makeRawPtr(Predicate predicate);
+
+        void setNode(librdf_node *node);
     };
 
     class BiomodelsBiologyQualifier : public Predicate {

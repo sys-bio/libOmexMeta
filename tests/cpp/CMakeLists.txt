@@ -11,18 +11,18 @@ set(TEST_SOURCES
         TriplesTests.cpp
 
         AnnotationSamples.h
-        PhysicalEntityTests.cpp
-        PhysicalPropertyTests.cpp
 
         CurlGetTests.cpp
         MetaIDTests.cpp
         XmlAssistantTests.cpp
-        PhysicalPhenomenonTests.cpp
-        PhysicalForceTests.cpp
-        PhysicalProcessTests.cpp
         ParticipantTests.cpp
-        QueryTests.cpp
-        EditorTests.cpp
+#        PhysicalEntityTests.cpp
+#        PhysicalPropertyTests.cpp
+#        PhysicalPhenomenonTests.cpp
+#        PhysicalForceTests.cpp
+#        PhysicalProcessTests.cpp
+#        QueryTests.cpp
+#        EditorTests.cpp
 
         #        ReaderTests.cpp
         #        WriterTests.cpp
