@@ -4,14 +4,18 @@
 
 #include "semsim/PhysicalForce.h"
 
+#include <utility>
+
+#include <utility>
+
 
 namespace semsim {
 
     PhysicalForce::PhysicalForce(const LibrdfModel &model, Subject metaid,
                                  PhysicalPropertyResource physicalProperty,
                                  Sources sources, Sinks sinks)
-            : PhysicalPhenomenon( model, metaid, physicalProperty, PHYSICAL_PROCESS),
-              sources_(sources), sinks_(sinks) {
+            : PhysicalPhenomenon(model, metaid, std::move(physicalProperty), PHYSICAL_PROCESS),
+              sources_(std::move(sources)), sinks_(std::move(sinks)) {
 
     }
 
@@ -28,8 +32,9 @@ namespace semsim {
     }
 
     Triples PhysicalForce::toTriples() const {
-        std::string force_metaid = SemsimUtils::generateUniqueMetaid( model_, "PhysicalForce",
-                                                                     std::vector<std::string>());
+        std::string force_metaid = SemsimUtils::generateUniqueMetaid(
+                model_, "PhysicalForce",
+                std::vector<std::string>());
 
         Subject force_metaid_subject = Subject::fromRawPtr(LibrdfNode::fromUriString(force_metaid));
 
@@ -37,19 +42,19 @@ namespace semsim {
 
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(force_metaid)) {
-                triples.push_back(triple);
+                triples.push_back(std::move(triple));
             }
         }
         for (auto &sink : sinks_) {
             for (auto &triple : sink.toTriples(force_metaid)) {
-                triples.push_back(triple);
+                triples.push_back(std::move(triple));
             }
         }
         return triples;
     }
 
     PhysicalForce &PhysicalForce::setAbout(std::string metaid) {
-        about = Subject::fromRawPtr( LibrdfNode::fromUriString(metaid));
+        about = Subject::fromRawPtr(LibrdfNode::fromUriString(metaid));
         return (*this);
     }
 
@@ -67,11 +72,11 @@ namespace semsim {
             std::string source_metaid, double multiplier,
             std::string physical_entity_reference) {
         sources_.push_back(
-                SourceParticipant(
+                std::move(SourceParticipant(
                         model_,
                         std::move(source_metaid),
                         multiplier, std::move(physical_entity_reference)
-                )
+                ))
         );
         return (*this);
     }
@@ -90,7 +95,7 @@ namespace semsim {
     }
 
     PhysicalForce::PhysicalForce(const LibrdfModel &model)
-            : PhysicalPhenomenon( model) {
+            : PhysicalPhenomenon(model) {
 
     }
 

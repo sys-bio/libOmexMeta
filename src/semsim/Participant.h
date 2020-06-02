@@ -17,29 +17,37 @@
 using namespace redland;
 
 namespace semsim {
+    
+    typedef std::unique_ptr<Predicate, Predicate::deleter> UniquePredicatePtrWithDeleter;
 
     /*
-     * Superclass of participant types allow us
+     * @brief Superclass of participant types allow us
      * to group participant types into vector.
+     *
+     * Predicate argument must either be `std::move`d into the Participant
+     * or the caller must free the predicate manually, via predicate.free();
+     * Prefer move. For developers, users do not need to know this.
      */
     class Participant {
+
         const LibrdfModel& model_;
         std::string subject_;
-        PredicatePtr predicate_ptr_ = nullptr;
+        SemSim semsim_predicate_term_;
         double multiplier_;
         std::string physicalEntityReference_;
+
     public:
 
-        Participant(const LibrdfModel& model, std::string subject, PredicatePtr predicate,
-                    double multiplier, std::string physicalEntityReference);
-
+//        Participant(const LibrdfModel& model, std::string subject, Predicate* predicate,
+//                    double multiplier, std::string physicalEntityReference);
+//
         ~Participant() = default;
 
         [[nodiscard]] Triples toTriples(const std::string& process_metaid) const;
 
-        PredicatePtr getPredicatePtr();
+        SemSim getPredicate();
 
-        void setPredicatePtr(PredicatePtr predicate_ptr);
+        void setPredicate(std::string semsim_predicate_string);
 
         const std::string &getSubject() const;
 
@@ -47,6 +55,13 @@ namespace semsim {
 
         const std::string &getPhysicalEntityReference() const;
 
+        void free();
+
+        Participant(const LibrdfModel &model, std::string subject, SemSim *predicate, double multiplier,
+                    std::string physicalEntityReference);
+
+        Participant(const LibrdfModel &model, std::string subject, std::string semsim_predicate_term, double multiplier,
+                    std::string physicalEntityReference);
     };
 
 

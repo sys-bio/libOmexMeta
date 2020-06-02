@@ -10,11 +10,14 @@
 namespace semsim {
 
 
-    Participant::Participant(const LibrdfModel &model, std::string subject, PredicatePtr predicate, double multiplier,
+    Participant::Participant(const LibrdfModel &model, std::string subject, std::string semsim_predicate_term,
+                             double multiplier,
                              std::string physicalEntityReference)
             : model_(model), subject_(std::move(subject)),
-              predicate_ptr_(std::move(predicate)), multiplier_(multiplier),
+              semsim_predicate_term_(SemSim(semsim_predicate_term)),
+              multiplier_(multiplier),
               physicalEntityReference_(std::move(physicalEntityReference)) {}
+
 
     Triples Participant::toTriples(const std::string &process_metaid) const {
         Triples triples;
@@ -22,22 +25,21 @@ namespace semsim {
         // have source participant triple
         triples.emplace_back(
                 Subject::fromRawPtr(LibrdfNode::fromUriString(process_metaid)).getNode(),
-                predicate_ptr_->getNode(), //term is hasSourceParticipant etc.
+                semsim_predicate_term_.getNode(), //term is hasSourceParticipant etc.
                 Resource::fromRawPtr(LibrdfNode::fromUriString(subject_)).getNode()
         );
-        Subject participant_subject = Subject::fromRawPtr(LibrdfNode::fromUriString(subject_));
 
         triples.emplace_back(
-                participant_subject.getNode(),
-                std::make_shared<SemSim>(SemSim("hasPhysicalEntityReference"))->getNode(),
+                Subject::fromRawPtr(LibrdfNode::fromUriString(subject_)).getNode(),
+                SemSim("hasPhysicalEntityReference").getNode(),
                 Resource::fromRawPtr(LibrdfNode::fromUriString(physicalEntityReference_)).getNode()
         );
         if (multiplier_ > 0.0) {
             std::ostringstream multiplier_os;
             multiplier_os << multiplier_;
             triples.emplace_back(
-                    participant_subject.getNode(),
-                    std::make_shared<SemSim>(SemSim("hasMultiplier"))->getNode(),
+                    Subject::fromRawPtr(LibrdfNode::fromUriString(subject_)).getNode(),
+                    SemSim("hasMultiplier").getNode(),
                     Resource::fromRawPtr(LibrdfNode::fromLiteral(
                             multiplier_os.str(),
                             "http://www.w3.org/2001/XMLSchema#double")).getNode()
@@ -46,12 +48,12 @@ namespace semsim {
         return triples;
     }
 
-    PredicatePtr Participant::getPredicatePtr() {
-        return predicate_ptr_;
+    SemSim Participant::getPredicate() {
+        return semsim_predicate_term_;
     }
 
-    void Participant::setPredicatePtr(PredicatePtr predicate_ptr) {
-        predicate_ptr_ = std::move(predicate_ptr);
+    void Participant::setPredicate(std::string semsim_predicate_term) {
+        semsim_predicate_term_ = SemSim(semsim_predicate_term);
     }
 
     const std::string &Participant::getSubject() const {
@@ -66,6 +68,15 @@ namespace semsim {
         return physicalEntityReference_;
     }
 
+    void Participant::free() {
+        if (semsim_predicate_term_.getNode()) {
+            semsim_predicate_term_.freeNode();
+            semsim_predicate_term_.setNode(nullptr);
+        }
+
+    }
+
+
 //    Participant::~Participant() {
 //        if (predicate_ptr_->getNode()) {
 //            LibrdfNode::freeNode(predicate_ptr_->getNode());
@@ -75,21 +86,22 @@ namespace semsim {
 
     SourceParticipant::SourceParticipant(const LibrdfModel &model, std::string subject,
                                          double multiplier, std::string physicalEntityReference)
-            : Participant(model, std::move(subject),
-                          std::make_shared<SemSim>(SemSim("hasSourceParticipant")), multiplier,
-                          std::move(physicalEntityReference)) {}
+            : Participant(model, std::move(subject), "hasSourceParticipant",
+
+                          multiplier, std::move(physicalEntityReference)) {}
 
     SinkParticipant::SinkParticipant(const LibrdfModel &model, std::string subject, double multiplier,
                                      std::string physicalEntityReference)
             : Participant(model, std::move(subject),
-                          std::make_shared<SemSim>(SemSim("hasSinkParticipant")), multiplier,
+                          "hasSinkParticipant",
+                          multiplier,
                           std::move(physicalEntityReference)) {}
 
     MediatorParticipant::MediatorParticipant(
             const LibrdfModel &model, std::string subject,
             std::string physicalEntityReference)
             : Participant(model, std::move(subject),
-                          std::make_shared<SemSim>(SemSim("hasMediatorParticipant")),
+                          "hasMediatorParticipant",
                           0.0, std::move(physicalEntityReference)) {
     }
 
