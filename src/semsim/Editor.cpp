@@ -6,7 +6,7 @@
 
 namespace semsim {
     Editor::Editor(const std::string &xml, SemsimXmlType type,
-                           const LibrdfModel& model, NamespaceMap &nsmap)
+                   const LibrdfModel &model, NamespaceMap &nsmap)
             : model_(model), namespaces_(nsmap) {
         XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type);
         std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
@@ -51,8 +51,7 @@ namespace semsim {
 
     void Editor::extractNamespacesFromTriplesVector(Triples triples) {
         for (auto &triple: triples) {
-            const Predicate& p = Predicate::fromRawPtr(triple->getPredicate());
-            namespaces_[p.getNamespace()] = p.getPrefix();
+            addNamespaceFromAnnotation(triple->getPredicateStr());
         }
     }
 
@@ -60,9 +59,8 @@ namespace semsim {
     void Editor::toRDF() {
         for (auto &annot : triple_list_) {
             for (auto &triple : annot) {
-                LibrdfStatement stmt = LibrdfStatement::fromRawStatementPtr(triple->getStatement().get());
                 //todo add get namespace to triple
-                model_.addStatement(stmt);
+                model_.addStatement(triple->getStatement().get());
             }
         }
     }
@@ -92,15 +90,20 @@ namespace semsim {
         namespaces_[predicate_ptr->getNamespace()] = predicate_ptr->getPrefix();
     }
 
-    void Editor::addSingleAnnotation(SingularAnnotation singularAnnotation) {
+    void Editor::addSingleAnnotation(const SingularAnnotation &singularAnnotation) {
         Triples vec;
         vec.push_back(std::move(singularAnnotation));
         triple_list_.push_back(vec);
-        const Predicate& p = Predicate::fromRawPtr(
-                singularAnnotation.getPredicate()
-        );
-        namespaces_[p.getNamespace()] = Predicate(p).getPrefix();
+        addNamespaceFromAnnotation(singularAnnotation.getPredicateStr());
 
+    }
+
+    void Editor::addNamespaceFromAnnotation(std::string predicate_string) {
+        // store namespaces for later
+        std::string ns = SemsimUtils::getNamespaceFromUri(predicate_string);
+        if (Predicate::namespaceKnown(ns)) {
+            namespaces_[ns] = Predicate::namespaceMap()[ns];
+        };
     }
 
     void Editor::addAnnotationFromNestedTriples(NestedTriples tripleList) {
@@ -113,7 +116,6 @@ namespace semsim {
     void Editor::addAnnotationFromTriples(Triples triples) {
         extractNamespacesFromTriplesVector(triples);
         triple_list_.push_back(triples);
-
     }
 
 
@@ -121,7 +123,7 @@ namespace semsim {
         Triples triples = phenomenonPtr->toTriples();
         extractNamespacesFromTriplesVector(triples);
         for (auto &triple : triples) {
-            model_.addStatement(LibrdfStatement::fromRawStatementPtr(triple->getStatement().get()));
+            model_.addStatement(triple->getStatement().get());
         }
     }
 

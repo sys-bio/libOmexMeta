@@ -48,6 +48,8 @@ namespace redland {
         int size() const;
 
         void addStatement(const LibrdfStatement &statement) const;
+
+        void addStatement(librdf_statement *statement) const;
     };
 }
 
