@@ -57,8 +57,7 @@ TEST_F(ReadAndWriteTests, singularannotation1turtle) {
 }
 
 TEST_F(ReadAndWriteTests, singularannotation1rdfxmlxmp) {
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
+    std::string expected = "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -68,8 +67,7 @@ TEST_F(ReadAndWriteTests, singularannotation1rdfxmlxmp) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "</x:xmpmeta>\n"
-                           "<?xpacket end='r'?>\n"
-                           "";
+                           "<?xpacket end='r'?>\n";
     assertReadAndWrite(samples.singular_annotation1, "rdfxml-xmp", expected);
 }
 
@@ -215,8 +213,7 @@ TEST_F(ReadAndWriteTests, singularannotation2turtle) {
 }
 
 TEST_F(ReadAndWriteTests, singularannotation2rdfxmlxmp) {
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
+    std::string expected = "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
@@ -371,8 +368,7 @@ TEST_F(ReadAndWriteTests, singularannotation3turtle) {
 }
 
 TEST_F(ReadAndWriteTests, singularannotation3rdfxmlxmp) {
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
+    std::string expected = "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -528,8 +524,7 @@ TEST_F(ReadAndWriteTests, singularannotation4turtle) {
 }
 
 TEST_F(ReadAndWriteTests, singularannotation4rdfxmlxmp) {
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
+    std::string expected = "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
@@ -698,8 +693,7 @@ TEST_F(ReadAndWriteTests, compositeannotationpeturtle) {
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationperdfxmlxmp) {
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
+    std::string expected = "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -971,8 +965,7 @@ TEST_F(ReadAndWriteTests, compositeannotationppturtle) {
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationpprdfxmlxmp) {
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
+    std::string expected = "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -1000,8 +993,7 @@ TEST_F(ReadAndWriteTests, compositeannotationpprdfxmlxmp) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "</x:xmpmeta>\n"
-                           "<?xpacket end='r'?>\n"
-                           "";
+                           "<?xpacket end='r'?>\n";
     assertReadAndWrite(samples.composite_annotation_pp, "rdfxml-xmp", expected);
 }
 
@@ -1478,8 +1470,7 @@ TEST_F(ReadAndWriteTests, compositeannotationpfturtle) {
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationpfrdfxmlxmp) {
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
+    std::string expected = "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
@@ -1836,8 +1827,7 @@ TEST_F(ReadAndWriteTests, tabulardataturtle) {
 }
 
 TEST_F(ReadAndWriteTests, tabulardatardfxmlxmp) {
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
+    std::string expected = "<?xpacket begin='\uFEFF' id='W5M0MpCehiHzreSzNTczkc9d'?>\n"
                            "<x:xmpmeta xmlns:x='adobe:ns:meta/'>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"

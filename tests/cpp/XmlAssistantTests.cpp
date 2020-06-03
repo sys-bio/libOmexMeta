@@ -169,6 +169,13 @@ TEST(SemsimXmlAssistantTests, TestMetaIdsSBML) {
 }
 
 
+TEST(SemsimXmlAssistantTests, TestXmlAssistantFactory) {
+    std::string sbml = SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED);
+    auto x = SemsimXmlAssistantFactory::generate(sbml, SEMSIM_TYPE_SBML);
+
+}
+
+
 
 
 

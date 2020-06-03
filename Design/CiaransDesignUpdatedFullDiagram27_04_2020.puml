@@ -557,7 +557,7 @@ namespace semsim {
 
 
 
-	class XmlAssistantFactory {
+	class SemsimXmlAssistantFactory {
 		+{static} generate(const std::string& xml, SemsimXmlType type) : XmlAssistantPtr
 	}
 
@@ -1099,7 +1099,7 @@ namespace semsim {
 
 
 
-	SemsimXmlAssistant <.. XmlAssistantFactory
+	SemsimXmlAssistant <.. SemsimXmlAssistantFactory
 
 
 }

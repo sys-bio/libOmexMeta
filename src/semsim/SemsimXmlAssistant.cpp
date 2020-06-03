@@ -9,13 +9,13 @@ namespace semsim {
             xml_(std::move(xml)), metaid_base(std::move(base)), metaid_num_digits_(metaid_num_digits) {
     }
 
-    const std::vector<std::string> &SemsimXmlAssistant::getValidElements() const {
-        return valid_elements_;
+    std::vector<std::string> SemsimXmlAssistant::getValidElements() {
+        return std::vector<std::string>({"Any"});
     }
 
     void SemsimXmlAssistant::generateMetaId(std::vector<std::string> &seen_metaids, long count,
-                                                    const MetaID &metaid_gen,
-                                                    std::string &id) {
+                                            const MetaID &metaid_gen,
+                                            std::string &id) {
         id = metaid_gen.generate(count);
 
         if (std::find(seen_metaids.begin(), seen_metaids.end(), id) != seen_metaids.end()) {
@@ -89,15 +89,34 @@ namespace semsim {
         return sbml_with_metaid;
     }
 
-    const std::vector<std::string> &SBMLAssistant::getValidElements() const {
+
+    std::vector<std::string> SBMLAssistant::getValidElements() {
+        std::vector<std::string> valid_elements_ = {
+                "model",
+                "unit",
+                "compartment",
+                "species",
+                "reaction",
+                "kineticLaw",
+                "localParameter",
+        };
         return valid_elements_;
     }
 
-    const std::vector<std::string> &CellMLAssistant::getValidElements() const {
+    std::vector<std::string> CellMLAssistant::getValidElements() {
+        std::vector<std::string> valid_elements_ = {
+                "model",
+                "unit",
+                "compartment",
+                "species",
+                "reaction",
+                "kineticLaw",
+                "localParameter",
+        };
         return valid_elements_;
     }
 
-    XmlAssistantPtr XmlAssistantFactory::generate(const std::string &xml, SemsimXmlType type) {
+    XmlAssistantPtr SemsimXmlAssistantFactory::generate(const std::string &xml, SemsimXmlType type) {
         switch (type) {
             case SEMSIM_TYPE_SBML: {
                 SBMLAssistant sbmlAssistant(xml);

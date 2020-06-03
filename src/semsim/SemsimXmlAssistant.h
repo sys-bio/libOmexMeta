@@ -31,10 +31,9 @@ namespace semsim {
 
         void addMetaIdsRecursion(xmlNode *a_node, std::vector<std::string> &seen_metaids);
 
-        void
-        generateMetaId(std::vector<std::string> &seen_metaids, long count, const MetaID &metaid_gen, std::string &id);
-
-        std::vector<std::string> valid_elements_{"Any"};
+        void generateMetaId(
+                std::vector<std::string> &seen_metaids, long count,
+                const MetaID &metaid_gen, std::string &id);
 
     public:
 
@@ -42,50 +41,32 @@ namespace semsim {
 
         std::pair<std::string, std::vector<std::string>> addMetaIds();
 
-        [[nodiscard]] virtual const std::vector<std::string> &getValidElements() const;
+        [[nodiscard]] static std::vector<std::string> getValidElements();
     };
 
 
     class SBMLAssistant : public SemsimXmlAssistant {
-    protected:
-        std::vector<std::string> valid_elements_ = {
-                "model",
-                "unit",
-                "compartment",
-                "species",
-                "reaction",
-                "kineticLaw",
-                "localParameter",
-        };
-    public:
-        using SemsimXmlAssistant::SemsimXmlAssistant;
 
-        [[nodiscard]] const std::vector<std::string> &getValidElements() const override;
+    public:
+        static std::vector<std::string> getValidElements();
+
+        using SemsimXmlAssistant::SemsimXmlAssistant;
 
 
     };
 
 
     class CellMLAssistant : public SemsimXmlAssistant {
-        std::vector<std::string> valid_elements_ = {
-                "model",
-                "unit",
-                "compartment",
-                "species",
-                "reaction",
-                "kineticLaw",
-                "localParameter",
-        };
     public:
         using SemsimXmlAssistant::SemsimXmlAssistant;
 
-        [[nodiscard]] const std::vector<std::string> &getValidElements() const override;
+        [[nodiscard]] static std::vector<std::string> getValidElements();
 
     };
 
     typedef std::unique_ptr<SemsimXmlAssistant> XmlAssistantPtr;
 
-    class XmlAssistantFactory {
+    class SemsimXmlAssistantFactory {
     public:
 
         static XmlAssistantPtr generate(const std::string &xml, SemsimXmlType type);
