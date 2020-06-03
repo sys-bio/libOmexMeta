@@ -33039,7 +33039,7 @@ found, this method returns the result of getElementNamespace().
 @return a string, the URI of the XML namespace to which this object belongs.
 @see getPackageName()
 @see getElementNamespace()
-@see getSBMLDocument()
+@see getSBMLString()
 
 
 =item SBasePlugin::getParentSBMLObject

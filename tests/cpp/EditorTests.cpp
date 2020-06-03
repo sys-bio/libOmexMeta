@@ -29,7 +29,7 @@ public:
 TEST_F(EditorTests, TestMetaIds) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
     const auto &metaids = editor.getMetaids();
     std::vector<std::string> expected = {"SemsimMetaid0000", "SemsimMetaid0001", "SemsimMetaid0002", "cytosol",
@@ -42,7 +42,7 @@ TEST_F(EditorTests, TestMetaIds) {
 TEST_F(EditorTests, TestAddAnnotation) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
     PredicatePtr predicatePtr = std::make_shared<Predicate>(
             BiomodelsBiologyQualifier("is"));
@@ -59,7 +59,7 @@ TEST_F(EditorTests, TestAddAnnotation) {
 TEST_F(EditorTests, TestToRDFSingleAnnotation1) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
     Triple triple(
             Subject::fromRawPtr(LibrdfNode::fromUriString("SemsimMetaid0014")),
@@ -86,7 +86,7 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation1) {
 TEST_F(EditorTests, TestToRDFSingleAnnotation2) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
     editor.addSingleAnnotation(
             Subject::fromRawPtr(LibrdfNode::fromUriString("SemsimMetaid0008")),
@@ -110,7 +110,7 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation2) {
 TEST_F(EditorTests, TestToRDFSingleAnnotation3) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
     editor.
             addSingleAnnotation(
@@ -135,7 +135,7 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation3) {
 TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
     editor.
             addSingleAnnotation(
@@ -161,7 +161,7 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
 TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
     SingularAnnotation singularAnnotation;
@@ -186,7 +186,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
 TEST_F(EditorTests, TestCompositeAnnotationPhysicalEntity) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML
     );
 
@@ -226,7 +226,7 @@ TEST_F(EditorTests, TestCompositeAnnotationPhysicalEntity) {
 TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
     editor.
@@ -299,7 +299,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
 TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
     RDF rdf;
     Editor editor = rdf.toEditor(
-            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
     editor.

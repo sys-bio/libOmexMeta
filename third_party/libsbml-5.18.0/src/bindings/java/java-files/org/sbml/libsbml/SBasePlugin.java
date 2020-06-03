@@ -254,7 +254,7 @@ public class SBasePlugin {
    <p>
    * @see #getPackageName()
    * @see #getElementNamespace()
-   * @see #getSBMLDocument()
+   * @see #getSBMLString()
    */ public
  String getURI() {
     return libsbmlJNI.SBasePlugin_getURI(swigCPtr, this);

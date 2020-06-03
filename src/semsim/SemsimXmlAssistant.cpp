@@ -50,6 +50,7 @@ namespace semsim {
                         // if so, we take note by adding it to seen_metaids.
                         xmlChar *id = xmlGetProp(cur_node, (const xmlChar *) "metaid");
                         seen_metaids.emplace_back((const char *) id);
+                        xmlFree(id);
                     }
 
                 }

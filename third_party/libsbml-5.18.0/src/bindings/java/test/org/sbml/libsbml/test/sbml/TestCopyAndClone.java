@@ -812,7 +812,7 @@ public class TestCopyAndClone {
     assertTrue( o2.getModel().getId().equals( "foo") );
     assertTrue( o2.getModel().getLevel() == 1 );
     assertTrue( o2.getModel().getVersion() == 1 );
-    assertTrue( o2.getModel().getSBMLDocument().equals(o2) );
+    assertTrue( o2.getModel().getSBMLString().equals(o2) );
     o2 = null;
     o1 = null;
   }
