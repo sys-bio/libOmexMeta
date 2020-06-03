@@ -9,9 +9,9 @@
 
 namespace semsim {
 
-    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, Subject metaid,
+    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, Subject about,
                                            PhysicalPropertyResource propertyResource, AnnotationType type)
-            : model_(model), about(metaid), physical_property_(std::move(propertyResource)), type_(type) {}
+            : model_(model), about(about), physical_property_(std::move(propertyResource)), type_(type) {}
 
     PhysicalPhenomenon::~PhysicalPhenomenon() = default;
 

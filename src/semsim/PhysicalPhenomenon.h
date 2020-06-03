@@ -44,7 +44,7 @@ namespace semsim {
 
         explicit PhysicalPhenomenon(librdf_model* model);
 
-        PhysicalPhenomenon(librdf_model* model, Subject metaid,
+        PhysicalPhenomenon(librdf_model* model, Subject about,
                            PhysicalPropertyResource propertyResource,
                            AnnotationType type);
 
