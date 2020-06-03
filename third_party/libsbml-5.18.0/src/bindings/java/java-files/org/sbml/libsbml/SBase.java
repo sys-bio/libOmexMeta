@@ -4081,7 +4081,7 @@ newModel.addSpecies(s1);
    <p>
    * @return the URI of this element, as a text string.
    <p>
-   * @see #getSBMLDocument()
+   * @see #getSBMLString()
    * @see #getPackageName()
    */ public
  String getURI() {

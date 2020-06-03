@@ -1612,7 +1612,7 @@ Version 3.0.0 beta_2
     virtual copy constructors via .clone() methods.
   
   - The Level 2 and Level 1 object models are now unified.  All objects
-    have .getSBMLDocument(), .getModel(), .getLevel(), and
+    have .getSBMLString(), .getModel(), .getLevel(), and
     .getVersion(), among other things.  Also, the interface to SBML
     rules abstracts away some of the individual rule type (assignment,
     rate, algebraic) differences.

@@ -597,7 +597,7 @@ namespace LibSBMLCSTest.sbml {
       SpeciesReference sr1 = c1.getReactant(0);
       assertTrue( sr1.getAncestorOfType(libsbml.SBML_MODEL) == null );
       assertTrue( sr1.getAncestorOfType(libsbml.SBML_REACTION) == c1 );
-      assertEquals(sr1.getSBMLDocument(),null);
+      assertEquals(sr1.getSBMLString(),null);
       assertTrue( c1.getKineticLaw().getAncestorOfType(libsbml.SBML_MODEL) == null );
       assertTrue( c1.getKineticLaw().getAncestorOfType(libsbml.SBML_REACTION) == c1 );
       assertEquals(c1.getKineticLaw().getSBMLDocument(),null);

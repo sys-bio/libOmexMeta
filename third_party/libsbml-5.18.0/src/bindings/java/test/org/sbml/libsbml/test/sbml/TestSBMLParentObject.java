@@ -394,7 +394,7 @@ public class TestSBMLParentObject {
     d = null;
     assertTrue( c1.getAncestorOfType(libsbml.SBML_MODEL) == null );
     assertTrue( c1.getParentSBMLObject() == null );
-    assertEquals(c1.getSBMLDocument(),null);
+    assertEquals(c1.getSBMLString(),null);
     c1 = null;
   }
 

@@ -12,15 +12,16 @@ using namespace semsim;
 
 TEST(SemsimXmlAssistantTests, TestValidElements) {
     MetaID metaId("SemsimMetaid", 0, 4);
-    SemsimXmlAssistant SemsimXmlAssistant(SBMLFactory::getModelStr(SBML_NOT_ANNOTATED), "ID", 4);
+    std::string model_string = SBMLFactory::getSBMLString(SBML_ANNOTATED);
+    std::cout << model_string << std::endl;
+    SemsimXmlAssistant SemsimXmlAssistant(model_string, "ID", 4);
     const std::vector<std::string> &actual = SemsimXmlAssistant.getValidElements();
     std::vector<std::string> expected = {"Any"};
-    ASSERT_EQ(expected, actual
-    );
+    ASSERT_EQ(expected, actual);
 }
 
 TEST(SemsimXmlAssistantTests, TestMetaIdsAll) {
-    std::string sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
+    std::string sbml = SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED);
     SemsimXmlAssistant SemsimXmlAssistant(sbml, "SemsimMetaid", 4);
     auto sbml_and_meta_ids = SemsimXmlAssistant.addMetaIds();
     sbml = sbml_and_meta_ids.first;
@@ -86,7 +87,7 @@ TEST(SemsimXmlAssistantTests, TestMetaIdsAll) {
 
 TEST(SemsimXmlAssistantTests, TestValidElementsSBML) {
     MetaID metaId("SemsimMetaid", 0, 4);
-    std::string sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
+    std::string sbml = SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED);
     SBMLAssistant assistant(sbml, "ID", 4);
     const std::vector<std::string> &actual = assistant.getValidElements();
     std::vector<std::string> expected = {
@@ -102,7 +103,7 @@ TEST(SemsimXmlAssistantTests, TestValidElementsSBML) {
 }
 
 TEST(SemsimXmlAssistantTests, TestMetaIdsSBML) {
-    std::string sbml = SBMLFactory::getModelStr(SBML_NOT_ANNOTATED);
+    std::string sbml = SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED);
     std::cout << sbml <<
               std::endl;
     MetaID metaId("SemsimMetaid", 0, 4);

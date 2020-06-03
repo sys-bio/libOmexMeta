@@ -186,7 +186,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetAbout
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 
@@ -209,7 +209,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicate
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 
@@ -233,7 +233,7 @@ TEST_F(CAPITests, TestEditorPtrMem
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 
@@ -257,7 +257,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicateNew
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 
@@ -280,7 +280,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceLiteral
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 
@@ -303,7 +303,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceUri
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 
@@ -326,7 +326,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceBlank
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 
@@ -350,7 +350,7 @@ TEST_F(CAPITests, TestPhysicalEntity
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 
@@ -389,7 +389,7 @@ TEST_F(CAPITests, TestPhysicalEntityAbout
 ) {
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 semsim::PhysicalEntity *physical_entity_ptr = semsim::PhysicalEntity_new(editor_ptr);
@@ -411,7 +411,7 @@ TEST_F(CAPITests, TestPhysicalEntityPhysicalProperty
 ) {
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 semsim::PhysicalEntity *physical_entity_ptr = semsim::PhysicalEntity_new(editor_ptr);
@@ -432,7 +432,7 @@ TEST_F(CAPITests, TestPhysicalEntityGetIdentity
 ) {
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 semsim::PhysicalEntity *physical_entity_ptr = semsim::PhysicalEntity_new(editor_ptr);
@@ -453,7 +453,7 @@ semsim::free_c_char_star(actual);
 //TEST_F(CAPITests, TestPhysicalEntityLocations) {
 //    semsim::RDF *rdf_ptr = semsim::RDF_new();
 //    semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-//            SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
 //            semsim::ASSISTANT_TYPE_SBML
 //    );
 //    semsim::PhysicalEntity *physical_entity_ptr = semsim::PhysicalEntity_new(editor_ptr);
@@ -482,7 +482,7 @@ TEST_F(CAPITests, TestPhysicalEntityNumLocations
 ) {
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 semsim::PhysicalEntity *physical_entity_ptr = semsim::PhysicalEntity_new(editor_ptr);
@@ -503,7 +503,7 @@ TEST_F(CAPITests, TestPhysicalEntityStr
 ) {
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 semsim::PhysicalEntity *physical_entity_ptr = semsim::PhysicalEntity_new(editor_ptr);
@@ -548,7 +548,7 @@ TEST_F(CAPITests, TestPhysicalProcess
 ) {
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 semsim::PhysicalProcess *physical_process_ptr = semsim::PhysicalProcess_new(editor_ptr);
@@ -607,7 +607,7 @@ TEST_F(CAPITests, TestPhysicalForce
 ) {
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 semsim::PhysicalForce *physical_force_ptr = semsim::PhysicalForce_new(editor_ptr);
@@ -661,7 +661,7 @@ TEST_F(CAPITests, TestEditorToRDF
 ) {
 semsim::RDF *rdf_ptr = semsim::RDF_new();
 semsim::Editor *editor_ptr = rdf_ptr->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 semsim::PhysicalProcess *physical_process_ptr = semsim::PhysicalProcess_new(editor_ptr);
@@ -763,7 +763,7 @@ TEST_F(CAPITests, TestSingularAnnotationDeleteAndTryAgain
 ) {
 semsim::RDF *rdf_ptr1 = semsim::RDF_new();
 semsim::Editor *editor_ptr1 = rdf_ptr1->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 semsim::PhysicalProcess *physical_process_ptr1 = semsim::PhysicalProcess_new(editor_ptr1);
@@ -792,7 +792,7 @@ semsim::free_c_char_star(actual);
 
 semsim::RDF *rdf_ptr2 = semsim::RDF_new();
 semsim::Editor *editor_ptr2 = rdf_ptr2->toEditorPtr(
-        SBMLFactory::getModelStr(SBML_NOT_ANNOTATED),
+        SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
         semsim::ASSISTANT_TYPE_SBML
 );
 

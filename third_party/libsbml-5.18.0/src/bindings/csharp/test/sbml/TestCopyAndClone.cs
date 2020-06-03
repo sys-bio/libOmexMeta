@@ -822,7 +822,7 @@ namespace LibSBMLCSTest.sbml {
       assertTrue( o2.getModel().getId() ==  "foo" );
       assertTrue( o2.getModel().getLevel() == 1 );
       assertTrue( o2.getModel().getVersion() == 1 );
-      assertTrue( o2.getModel().getSBMLDocument() == o2 );
+      assertTrue( o2.getModel().getSBMLString() == o2 );
       o2 = null;
       o1 = null;
     }

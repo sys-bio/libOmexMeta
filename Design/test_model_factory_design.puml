@@ -8,7 +8,7 @@ enum ModelType {
 
 class SBMLFactory {
     + getModel(ModelType type) : SemSimSBMLModel*
-    + getModelStr(ModelType type) : std::string
+    + getSBMLString(ModelType type) : std::string
 }
 
 class SemSimSBMLModel{

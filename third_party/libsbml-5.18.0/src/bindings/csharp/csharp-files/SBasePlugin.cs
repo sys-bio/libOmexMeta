@@ -436,7 +436,7 @@ public class SBasePlugin : global::System.IDisposable {
    *
    * @see getPackageName()
    * @see getElementNamespace()
-   * @see getSBMLDocument()
+   * @see getSBMLString()
    */ public
  string getURI() {
     string ret = libsbmlPINVOKE.SBasePlugin_getURI(swigCPtr);
