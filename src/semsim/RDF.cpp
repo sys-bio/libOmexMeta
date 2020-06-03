@@ -60,8 +60,9 @@ namespace semsim {
         return keep_map;
     }
 
-    std::string RDF::toString(const std::string &format, const std::string &base_uri,
+    std::string RDF::toString(const std::string &format, std::string base_uri,
                               const char *mime_type, const char *type_uri) {
+        base_uri = SemsimUtils::addFilePrefixToString(base_uri);
         LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
         // remember to add namespaces taken from parser
         for (auto &it: namespaces_){

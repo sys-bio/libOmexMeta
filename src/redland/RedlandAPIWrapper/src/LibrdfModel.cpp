@@ -24,6 +24,10 @@ namespace redland {
         librdf_model_add_statement(get(), statement.get());
     }
 
+    void LibrdfModel::addStatement(librdf_statement* statement) const {
+        librdf_model_add_statement(get(), statement);
+    }
+
     librdf_model *LibrdfModel::get() const {
         return model_.get();
     }

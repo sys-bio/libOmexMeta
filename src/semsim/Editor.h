@@ -86,7 +86,7 @@ namespace semsim {
 
         void addNamespace(std::string ns, std::string prefix);
 
-        void addSingleAnnotation(SingularAnnotation singularAnnotation);
+        void addSingleAnnotation(const SingularAnnotation &singularAnnotation);
 
         void addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr);
 
@@ -107,6 +107,11 @@ namespace semsim {
 
         void addAnnotationFromTriples(Triples triples);
 
+        /*
+         * @brief extract namespace part of uri from @parameter predicate_string
+         * and add it to namespace_ if we know it.
+         */
+        void addNamespaceFromAnnotation(std::string predicate_string);
     };
 
 }

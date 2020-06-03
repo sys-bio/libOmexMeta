@@ -32,11 +32,20 @@ TEST_F(EditorTests, TestMetaIds) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
     const auto &metaids = editor.getMetaids();
-    std::vector<std::string> expected = {"SemsimMetaid0000", "SemsimMetaid0001", "SemsimMetaid0002", "cytosol",
-                                         "Meta00001", "SemsimMetaid0003", "SemsimMetaid0004", "SemsimMetaid0005",
-                                         "SemsimMetaid0006", "SemsimMetaid0007", "SemsimMetaid0008", "SemsimMetaid0009",
-                                         "SemsimMetaid0010"};
-    ASSERT_EQ(expected, metaids);
+    std::vector<std::string> expected = {
+            "SemsimMetaid0000", "SemsimMetaid0001", "SemsimMetaid0002",
+            "SemsimMetaid0003", "SemsimMetaid0004", "SemsimMetaid0005",
+            "SemsimMetaid0006", "SemsimMetaid0007", "cytosol", "SemsimMetaid0008",
+            "Meta00001", "SemsimMetaid0009", "SemsimMetaid0010", "SemsimMetaid0011",
+            "SemsimMetaid0012", "SemsimMetaid0013", "SemsimMetaid0014",
+            "SemsimMetaid0015", "SemsimMetaid0016", "SemsimMetaid0017",
+            "SemsimMetaid0018", "SemsimMetaid0019", "SemsimMetaid0020",
+            "SemsimMetaid0021", "SemsimMetaid0022", "SemsimMetaid0023",
+            "SemsimMetaid0024", "SemsimMetaid0025", "SemsimMetaid0026",
+            "SemsimMetaid0027", "SemsimMetaid0028", "SemsimMetaid0029",
+            "SemsimMetaid0030", "SemsimMetaid0031", "SemsimMetaid0032"
+    };
+        ASSERT_EQ(expected, metaids);
 }
 
 TEST_F(EditorTests, TestAddAnnotation) {
@@ -61,10 +70,11 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation1) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
+    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("SemsimMetaid0014"));
+    BiomodelsBiologyQualifier predicate("is");
+    Resource resource = Resource::fromRawPtr(LibrdfNode::fromUriString("uniprot:P0DP23"));
     Triple triple(
-            Subject::fromRawPtr(LibrdfNode::fromUriString("SemsimMetaid0014")),
-            std::make_shared<Predicate>(BiomodelsBiologyQualifier("is")),
-            Resource::fromRawPtr(LibrdfNode::fromUriString("uniprot:P0DP23"))
+            subject.getNode(), predicate.getNode(), resource.getNode()
     );
     editor.addSingleAnnotation(triple);
     editor.toRDF();
@@ -148,10 +158,9 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"SemsimMetaid0008\">\n"
-                           "    <dcterms:Description rdf:datatype=\"http://www.w3.org/2001/XMLSchema#string\">Cardiomyocyte cytosolic ATP concentration</dcterms:Description>\n"
+                           "    <dcterms:Description rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">Cardiomyocyte cytosolic ATP concentration</dcterms:Description>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
-                           "";
+                           "</rdf:RDF>\n";
     std::cout << actual <<
               std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -203,8 +212,7 @@ TEST_F(EditorTests, TestCompositeAnnotationPhysicalEntity) {
 
     editor.toRDF();
     std::string actual = rdf.toString("rdfxml-abbrev", "file://./annotations.rdf");
-    std::cout << actual <<
-              std::endl;
+    std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -262,8 +270,6 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
 
     editor.toRDF();
     std::string actual = rdf.toString("rdfxml-abbrev", "file://./annotations.rdf");
-    std::cout << actual <<
-              std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -282,11 +288,11 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
                            "    <semsim:hasSourceParticipant rdf:resource=\"SourceId1\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"SinkId1\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"SourceId1\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
@@ -346,11 +352,11 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
                            "    <semsim:hasSourceParticipant rdf:resource=\"SourceId1\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"SinkId1\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"SourceId1\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
