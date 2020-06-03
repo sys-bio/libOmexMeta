@@ -55,8 +55,9 @@ namespace semsim {
         std::string process_metaid = SemsimUtils::generateUniqueMetaid(model_, "PhysicalProcess",
                                                                        std::vector<std::string>());
 
-        // todo see note on physical entity ::  toTriples
         Triples triples = physical_property_.toTriples(about.str(), process_metaid);
+        // todo see note on physical entity::toTriples
+        about.free();
 
         for (auto &source: sources_) {
             for (auto &triple: source.toTriples(process_metaid)) {
