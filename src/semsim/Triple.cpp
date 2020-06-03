@@ -24,13 +24,13 @@ namespace semsim {
 
     std::string Triple::str(const std::string &format, const std::string &base) {
         // ensure we have three nodes and a statement
-        if (!subject_) {
+        if (!getSubject()) {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: subject is null");
         }
-        if (!predicate_) {
+        if (!getPredicate()) {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: predicate is null");
         }
-        if (!resource_) {
+        if (!getResource()) {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: resource is null");
         }
         if (!statement_) {
@@ -47,7 +47,7 @@ namespace semsim {
         librdf_serializer *serializer = librdf_new_serializer(world, format.c_str(), nullptr, nullptr);
 
         // deal with namespaces
-        Predicate::addSeenNamespaceToSerializer(world, serializer, predicate_);
+        Predicate::addSeenNamespaceToSerializer(world, serializer, getPredicate());
 
         // do the serializing
         librdf_uri *base_uri = librdf_new_uri(world, (const unsigned char *) base.c_str());
@@ -66,18 +66,16 @@ namespace semsim {
     }
 
     semsim::Triple &semsim::Triple::setAbout(const std::string &about) {
-        if (subject_ != nullptr)
-            LibrdfNode::freeNode(subject_);
-        subject_ = LibrdfNode::fromUriString(about);
-        setSubject(subject_);
-        return (*this);
+        if (getSubject() != nullptr)
+            LibrdfNode::freeNode(getSubject());
+        setSubject(LibrdfNode::fromUriString(about));
+        return *this;
     }
-
 
     semsim::Triple &
     semsim::Triple::setPredicate(const std::string &namespace_, const std::string &term) {
-        if (predicate_ != nullptr)
-            LibrdfNode::freeNode(predicate_);
+        if (getPredicate() != nullptr)
+            LibrdfNode::freeNode(getPredicate());
         // ive implemented the logic here rather then using LibrdfStatement::setPredicate
         //  because I want them both to be called setPredicate.
         librdf_node* node = PredicateFactory(namespace_, term)->getNode();
@@ -87,33 +85,33 @@ namespace semsim {
 
 
     semsim::Triple &semsim::Triple::setResourceLiteral(const std::string &literal) {
-        // if resource_ node alredy exists, free before resetting
-        if (resource_ != nullptr)
-            LibrdfNode::freeNode(resource_);
-        setResource(resource_);
+        // if getResource() node alredy exists, free before resetting
+        if (getResource() != nullptr)
+            LibrdfNode::freeNode(getResource());
+        setResource(LibrdfNode::fromLiteral(literal));
         return *this;
     }
 
     semsim::Triple &semsim::Triple::setResourceUri(const std::string &identifiers_uri) {
-        if (resource_ != nullptr)
-            LibrdfNode::freeNode(resource_);
-        setResource(resource_);
+        if (getResource() != nullptr)
+            LibrdfNode::freeNode(getResource());
+        setResource(LibrdfNode::fromUriString(identifiers_uri));
         return *this;
     }
 
     semsim::Triple &semsim::Triple::setResourceBlank(const std::string &blank_id) {
-        if (resource_ != nullptr)
-            LibrdfNode::freeNode(resource_);
-        setResource(resource_);
+        if (getResource() != nullptr)
+            LibrdfNode::freeNode(getResource());
+        setResource(LibrdfNode::fromBlank(blank_id));
         return *this;
     }
 
     std::string semsim::Triple::getAbout() const {
-        return LibrdfNode::str(subject_);
+        return LibrdfNode::str(getSubject());
     }
 
     bool Triple::isEmpty() {
-        return !subject_ && !predicate_ && !resource_;
+        return !getSubject() && !getPredicate() && !getResource();
     }
 
     std::shared_ptr<librdf_statement> Triple::getStatement() const {
