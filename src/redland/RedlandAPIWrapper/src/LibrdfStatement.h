@@ -21,7 +21,11 @@ namespace redland {
         librdf_node *predicate_ = nullptr; // LibrdfStatement does not own
         librdf_node *resource_ = nullptr; // LibrdfStatement does not own
 
-        std::shared_ptr<librdf_statement> statement_ = nullptr;
+        // starts as empty statement
+        std::shared_ptr<librdf_statement> statement_ = std::shared_ptr<librdf_statement>(
+                librdf_new_statement(World::getWorld()),
+                librdf_free_statement
+        );
 
         /*
          * @brief update the contained statement with current
@@ -59,6 +63,11 @@ namespace redland {
 
         void checkForNull();
 
+        void setSubject(librdf_node *node);
+
+        void setResource(librdf_node *node);
+
+        void setPredicate(librdf_node *node);
     };
 
 

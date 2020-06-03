@@ -102,4 +102,17 @@ namespace redland {
             );
         }
     }
+
+    void LibrdfStatement::setSubject(librdf_node *node) {
+        librdf_statement_set_subject(statement_.get(), node);
+    }
+
+    void LibrdfStatement::setResource(librdf_node *node) {
+        librdf_statement_set_object(statement_.get(), node);
+    }
+
+    void LibrdfStatement::setPredicate(librdf_node *node) {
+        librdf_statement_set_predicate(statement_.get(), node);
+    }
+
 }
