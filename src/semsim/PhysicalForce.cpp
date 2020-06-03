@@ -35,10 +35,12 @@ namespace semsim {
         std::string force_metaid = SemsimUtils::generateUniqueMetaid(
                 model_, "PhysicalForce",
                 std::vector<std::string>());
+        // why is this not being used?
+//        Subject force_metaid_subject = Subject::fromRawPtr(LibrdfNode::fromUriString(force_metaid));
 
-        Subject force_metaid_subject = Subject::fromRawPtr(LibrdfNode::fromUriString(force_metaid));
-
+        //todo see note on PhysicalEntity::toTriples. Same applies here.
         Triples triples = physical_property_.toTriples(about.str(), force_metaid);
+        about.free();
 
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(force_metaid)) {
