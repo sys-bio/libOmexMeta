@@ -24,16 +24,16 @@ namespace semsim {
 
     std::string Triple::str(const std::string &format, const std::string &base) {
         // ensure we have three nodes and a statement
-        if (!subject_){
+        if (!subject_) {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: subject is null");
         }
-        if (!predicate_){
+        if (!predicate_) {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: predicate is null");
         }
-        if (!resource_){
+        if (!resource_) {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: resource is null");
         }
-        if (!statement_){
+        if (!statement_) {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: statement is null");
         }
 
@@ -47,12 +47,12 @@ namespace semsim {
         librdf_serializer *serializer = librdf_new_serializer(world, format.c_str(), nullptr, nullptr);
 
         // deal with namespaces
-        Predicate::addSeenNamespaceToSerializer(world,serializer, predicate_);
+        Predicate::addSeenNamespaceToSerializer(world, serializer, predicate_);
 
         // do the serializing
         librdf_uri *base_uri = librdf_new_uri(world, (const unsigned char *) base.c_str());
-        unsigned char* string = librdf_serializer_serialize_model_to_string(serializer, base_uri, model);
-        std::string str = (const char*)string;
+        unsigned char *string = librdf_serializer_serialize_model_to_string(serializer, base_uri, model);
+        std::string str = (const char *) string;
 
         // free up resources
         free(string);
@@ -66,50 +66,50 @@ namespace semsim {
     }
 
     semsim::Triple &semsim::Triple::setAbout(const std::string &about) {
-        if (subject_)
+        if (subject_ != nullptr)
             LibrdfNode::freeNode(subject_);
         subject_ = LibrdfNode::fromUriString(about);
-        refreshStatement();
+        setSubject(subject_);
         return (*this);
     }
 
-    std::string semsim::Triple::getAbout() const {
-        return LibrdfNode::str(subject_);
-    }
 
     semsim::Triple &
     semsim::Triple::setPredicate(const std::string &namespace_, const std::string &term) {
-        if (predicate_)
+        if (predicate_ != nullptr)
             LibrdfNode::freeNode(predicate_);
-        predicate_ = semsim::PredicateFactory(namespace_, term)->getNode();
-        refreshStatement();
+        // ive implemented the logic here rather then using LibrdfStatement::setPredicate
+        //  because I want them both to be called setPredicate.
+        librdf_node* node = PredicateFactory(namespace_, term)->getNode();
+        librdf_statement_set_predicate(statement_.get(), node);
         return *this;
     }
 
 
     semsim::Triple &semsim::Triple::setResourceLiteral(const std::string &literal) {
         // if resource_ node alredy exists, free before resetting
-        if (resource_)
+        if (resource_ != nullptr)
             LibrdfNode::freeNode(resource_);
-        resource_ = LibrdfNode::fromLiteral(literal);
-        refreshStatement();
+        setResource(resource_);
         return *this;
     }
 
     semsim::Triple &semsim::Triple::setResourceUri(const std::string &identifiers_uri) {
-        if (resource_)
+        if (resource_ != nullptr)
             LibrdfNode::freeNode(resource_);
-        resource_ = LibrdfNode::fromUriString(identifiers_uri);
-        refreshStatement();
+        setResource(resource_);
         return *this;
     }
 
     semsim::Triple &semsim::Triple::setResourceBlank(const std::string &blank_id) {
-        if (resource_)
+        if (resource_ != nullptr)
             LibrdfNode::freeNode(resource_);
-        resource_ = LibrdfNode::fromBlank(blank_id);
-        refreshStatement();
+        setResource(resource_);
         return *this;
+    }
+
+    std::string semsim::Triple::getAbout() const {
+        return LibrdfNode::str(subject_);
     }
 
     bool Triple::isEmpty() {
