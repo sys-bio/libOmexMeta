@@ -246,27 +246,18 @@ TEST_F(PhysicalEntityTests, TestToTripleSize) {
              Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
             });
 
-    /*
-     * if passing in a Subject to property resource
-     * does not work, lets just make subject take a string and we
-     * build internally
-     */
     PhysicalEntity physicalEntity(
             model.get(),
             subject,
             physical_property,
             is, ispartof
     );
-//    physicalEntity.free();
 
     // So how does triples free subject / predicate?
     Triples triples = physicalEntity.toTriples();
-//    int expected = 5;
-//    int actual = triples.size();
-//    ASSERT_EQ(expected, actual);
-    subject.free();
-
-    // so the subject is not being directly used in a triple.Why not?
+    int expected = 5;
+    int actual = triples.size();
+    ASSERT_EQ(expected, actual);
 }
 
 
@@ -281,7 +272,7 @@ TEST_F(PhysicalEntityTests, TestTriples) {
                      Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
                     })
     );
-    std::cout << physicalEntity.toTriples().str() << std::endl;
+    Triples triples = physicalEntity.toTriples();
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -297,13 +288,16 @@ TEST_F(PhysicalEntityTests, TestTriples) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
-    HERE();
-    Triples triples = physicalEntity.toTriples();
-    HERE();
     std::string s = triples.str();
-    HERE();
+    std::cout << s << std::endl;
     ASSERT_STREQ(s.c_str(), expected.c_str());
 }
+//TEST_F(PhysicalEntityTests, TestCallingToTriplesTwice) {
+//    /*
+//     * Calling toTriples twice doesn;t seem to work because we free the subject.
+//     */
+//
+//}
 
 TEST_F(PhysicalEntityTests, TestPhysicalPropertyIsSet) {
     PhysicalEntity physicalEntity(
@@ -344,6 +338,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderInterface) {
                            "</rdf:RDF>\n"
                            "";
     ASSERT_STREQ(physicalEntity.toTriples().str().c_str(), expected.c_str());
+    physical_property.free();
 
 }
 

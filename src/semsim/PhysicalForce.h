@@ -47,7 +47,7 @@ namespace semsim {
 
         [[nodiscard]] const Sinks &getSinks() const;
 
-        [[nodiscard]] Triples toTriples() const override;
+        [[nodiscard]] Triples toTriples() override;
 
         PhysicalForce &setAbout(std::string metaid);
 

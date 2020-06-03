@@ -18,22 +18,22 @@ namespace semsim {
 
 
     void PhysicalEntity::free() {
-        if (about.getNode()) {
+        if (about.getNode() != nullptr) {
             about.free();
             about.setNode(nullptr);
         }
 
-        if (physical_property_.getNode()) {
+        if (physical_property_.getNode() != nullptr) {
             physical_property_.free();
             physical_property_.setNode(nullptr);
         }
-        if (identity_resource_.getNode()) {
+        if (identity_resource_.getNode() != nullptr) {
             identity_resource_.free();
             identity_resource_.setNode(nullptr);
         }
 
         for (auto &i : location_resources) {
-            if (i.getNode()) {
+            if (i.getNode() != nullptr) {
                 i.free();
                 i.setNode(nullptr);
             }
@@ -83,15 +83,16 @@ namespace semsim {
         return location_resources;
     }
 
-    Triples PhysicalEntity::toTriples() const {
-        if (!getAbout().isSet()) {
+    Triples PhysicalEntity::toTriples() {
+
+        if (getAbout().getNode() == nullptr) {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): Cannot create"
                     " triples because the \"about\" information is not set. "
                     "Use the setAbout() method."
             );
         }
-        if (!getPhysicalProperty().isSet()) {
+        if (getPhysicalProperty().getNode() == nullptr) {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): Cannot create"
                     " triples because the \"physical_property\" information is not set. "
@@ -107,7 +108,7 @@ namespace semsim {
         }
         int count = 0;
         for (auto &i : getLocationResources()) {
-            if (!i.isSet()) {
+            if (i.getNode() == nullptr) {
                 std::ostringstream err;
                 err << "PhysicalEntity::toTriples(): Cannot create"
                        " triples because item ";
@@ -127,6 +128,17 @@ namespace semsim {
 
 
         Triples triples = physical_property_.toTriples(about.str(), property_metaid);
+        /*
+         * todo note: We are passing a Subject as argument to PhysicalPhenomena types
+         *  but when we get to generation of the triples themselves, we are only pulling out
+         *  the string. The easiest thing to do is to change the code to only accept string arguments.
+         *  I have resisted this so far because this would make the assumption that Subjects are URI nodes,
+         *  where they can actually be blank nodes as well. If we want to implement a string parameter
+         *  for the subject argument we may need an additional parameter to maintain the ability to
+         *  also create a Blank subject node. This is a note for potential future improvement. Right now,
+         *  I handle the memory leak by freeing the subject node (about) here;
+         */
+        about.free();
 
         // the "what" part of physical entity triple
         triples.emplace_back(
@@ -142,6 +154,7 @@ namespace semsim {
                     locationResource.getNode()
             );
         }
+
         return triples;
     }
 

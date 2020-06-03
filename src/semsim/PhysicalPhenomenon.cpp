@@ -57,7 +57,7 @@ namespace semsim {
         return physical_property_;
     }
 
-    Triples PhysicalPhenomenon::toTriples() const {
+    Triples PhysicalPhenomenon::toTriples() {
         throw NotImplementedException("Base class PhysicalPhenomenon "
                                       "does cannot produce triples.");
     }
