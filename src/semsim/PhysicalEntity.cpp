@@ -8,7 +8,7 @@
 
 namespace semsim {
 
-    PhysicalEntity::PhysicalEntity(librdf_model* model,
+    PhysicalEntity::PhysicalEntity(librdf_model *model,
                                    Subject metaid,
                                    PhysicalPropertyResource physicalProperty,
                                    Resource is,
@@ -26,7 +26,7 @@ namespace semsim {
         }
     }
 
-    PhysicalEntity::PhysicalEntity(librdf_model* model) : PhysicalPhenomenon(model) {
+    PhysicalEntity::PhysicalEntity(librdf_model *model) : PhysicalPhenomenon(model) {
     }
 
 
@@ -70,20 +70,23 @@ namespace semsim {
     }
 
     Triples PhysicalEntity::toTriples() const {
-//    if (!getAbout().isSet()) {
-//        throw AnnotationBuilderException(
-//                "PhysicalEntity::toTriples(): Cannot create"
-//                " triples because the \"about\" information is not set. "
-//                "Use the setAbout() method."
-//        );
-//    }
-//    if (!getPhysicalProperty().isSet()) {
-//        throw AnnotationBuilderException(
-//                "PhysicalEntity::toTriples(): Cannot create"
-//                " triples because the \"physical_property\" information is not set. "
-//                "Use the setPhysicalProperty() method."
-//        );
-//    }
+        HERE();
+        if (!getAbout().isSet()) {
+            throw AnnotationBuilderException(
+                    "PhysicalEntity::toTriples(): Cannot create"
+                    " triples because the \"about\" information is not set. "
+                    "Use the setAbout() method."
+            );
+        }
+        HERE();
+        if (!getPhysicalProperty().isSet()) {
+            throw AnnotationBuilderException(
+                    "PhysicalEntity::toTriples(): Cannot create"
+                    " triples because the \"physical_property\" information is not set. "
+                    "Use the setPhysicalProperty() method."
+            );
+        }
+        HERE();
         if (getLocationResources().empty()) {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): cannot create "
@@ -91,9 +94,13 @@ namespace semsim {
                     "is empty. Use the addLocation() method."
             );
         }
+        HERE();
         int count = 0;
+        HERE();
         for (auto &i : getLocationResources()) {
+            HERE();
             if (!i.isSet()) {
+                HERE();
                 std::ostringstream err;
                 err << "PhysicalEntity::toTriples(): Cannot create"
                        " triples because item ";
@@ -104,18 +111,23 @@ namespace semsim {
                 );
             }
         }
+        HERE();
         // no exclusions needed here - we only generate 1 process metaid before commiting the triples
         // to the model.
-        std::string property_metaid = SemsimUtils::generateUniqueMetaid(model_, "PhysicalEntity",
-                                                                        std::vector<std::string>());
+        std::string property_metaid = SemsimUtils::generateUniqueMetaid(
+                model_, "PhysicalEntity",
+                std::vector<std::string>());
+        HERE();
         Triples triples = physical_property_.toTriples(about.str(), property_metaid);
 
+        HERE();
         // what part of physical entity triple
         triples.emplace_back(
                 Subject::fromRawPtr(LibrdfNode::fromUriString(property_metaid)),
                 std::make_shared<Predicate>(BiomodelsBiologyQualifier("is")),
                 getIdentityResource()
         );
+        HERE();
 
         // the "where" part of the physical entity
         for (auto &locationResource : getLocationResources()) {
@@ -125,6 +137,7 @@ namespace semsim {
                     locationResource
             );
         }
+        HERE();
         return triples;
     }
 

@@ -28,7 +28,6 @@ public:
 
 
 TEST_F(PhysicalEntityTests, TestGetSubjectMetaidStr) {
-    RDF rdf;
     PhysicalEntity physicalEntity(
             model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
@@ -47,7 +46,6 @@ TEST_F(PhysicalEntityTests, TestGetSubjectMetaidStr) {
 }
 
 TEST_F(PhysicalEntityTests, TestGetSubjectMetaidFromNode) {
-    RDF rdf;
     PhysicalEntity physicalEntity(
             model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
@@ -67,7 +65,6 @@ TEST_F(PhysicalEntityTests, TestGetSubjectMetaidFromNode) {
 }
 
 TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyNode) {
-    RDF rdf;
     PhysicalEntity physicalEntity(
             model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
@@ -87,7 +84,6 @@ TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyNode) {
 }
 
 TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyStr) {
-    RDF rdf;
     PhysicalEntity physicalEntity(
             model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
@@ -107,7 +103,6 @@ TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyStr) {
 
 
 TEST_F(PhysicalEntityTests, TestIdentityResourceStr) {
-    RDF rdf;
     PhysicalEntity physicalEntity(
             model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
@@ -127,7 +122,6 @@ TEST_F(PhysicalEntityTests, TestIdentityResourceStr) {
 
 
 TEST_F(PhysicalEntityTests, TestIdentityResourceNode) {
-    RDF rdf;
     PhysicalEntity physicalEntity(
             model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
@@ -147,7 +141,6 @@ TEST_F(PhysicalEntityTests, TestIdentityResourceNode) {
 }
 
 TEST_F(PhysicalEntityTests, TestLocationResourceStr) {
-    RDF rdf;
     PhysicalEntity physicalEntity(
             model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
@@ -170,7 +163,6 @@ TEST_F(PhysicalEntityTests, TestLocationResourceStr) {
 }
 
 TEST_F(PhysicalEntityTests, TestLocationResourceNode) {
-    RDF rdf;
     PhysicalEntity physicalEntity(
             model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
@@ -192,8 +184,7 @@ TEST_F(PhysicalEntityTests, TestLocationResourceNode) {
     physicalEntity.free();
 }
 
-TEST_F(PhysicalEntityTests, TestToTripleSize) {
-    RDF rdf;
+TEST_F(PhysicalEntityTests, TestSubject) {
     PhysicalEntity physicalEntity(
             model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
@@ -204,17 +195,73 @@ TEST_F(PhysicalEntityTests, TestToTripleSize) {
                      Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
                     })
     );
+    std::string actual = physicalEntity.getSubject().str();
+    std::string expected = "Metaid0034";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    //clear up as we didn't use Triple (which owns everything)
+    physicalEntity.free();
+}
+
+TEST_F(PhysicalEntityTests, TestSubjectFromAbout) {
+    PhysicalEntity physicalEntity(
+            model.get(),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            physical_property,
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            std::vector<Resource>(
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
+                    })
+    );
+    std::string actual = physicalEntity.getAbout().str();
+    std::string expected = "Metaid0034";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    //clear up as we didn't use Triple (which owns everything)
+    physicalEntity.free();
+}
+
+TEST_F(PhysicalEntityTests, TestAboutIsSet) {
+    PhysicalEntity physicalEntity(
+            model.get(),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            physical_property,
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            std::vector<Resource>(
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
+                    })
+    );
+    std::cout << physicalEntity.getAbout().str() << std::endl;
+    ASSERT_TRUE(physicalEntity.getAbout().isSet());
+    //clear up as we didn't use Triple (which owns everything)
+    physicalEntity.free();
+}
+
+TEST_F(PhysicalEntityTests, TestToTripleSize) {
+    std::cout << __FILE__ << __LINE__ << std::endl;
+    PhysicalEntity physicalEntity(
+            model.get(),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            physical_property,
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            std::vector<Resource>(
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
+                    })
+    );
+    std::cout << __FILE__ << __LINE__ << std::endl;
 
     Triples triples = physicalEntity.toTriples();
+    std::cout << __FILE__ << __LINE__ << std::endl;
     int expected = 5;
+    std::cout << __FILE__ << __LINE__ << std::endl;
     int actual = triples.size();
-    ASSERT_EQ(expected, actual
-    );
+    std::cout << __FILE__ << __LINE__ << std::endl;
+    ASSERT_EQ(expected, actual);
 }
 
 
 TEST_F(PhysicalEntityTests, TestTriples) {
-    RDF rdf;
     PhysicalEntity physicalEntity(
             model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
@@ -241,12 +288,15 @@ TEST_F(PhysicalEntityTests, TestTriples) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
-    ASSERT_STREQ(physicalEntity.toTriples().str().c_str(),
-                 expected.c_str());
+    std::cout << __FILE__ << __LINE__ << std::endl;
+    Triples triples = physicalEntity.toTriples();
+    std::cout << __FILE__ << __LINE__ << std::endl;
+    std::string s = triples.str();
+    std::cout << __FILE__ << __LINE__ << std::endl;
+    ASSERT_STREQ(s.c_str(), expected.c_str());
 }
 
 TEST_F(PhysicalEntityTests, TestPhysicalPropertyIsSet) {
-    RDF rdf;
     PhysicalEntity physicalEntity(
             model.get(),
             Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
@@ -258,13 +308,13 @@ TEST_F(PhysicalEntityTests, TestPhysicalPropertyIsSet) {
                     })
     );
     ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
+    //clear up as we didn't use Triple (which owns everything)
+    physicalEntity.free();
 }
 
 
 TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderInterface) {
-    RDF rdf;
-    PhysicalEntity physicalEntity(rdf.getModel());
-
+    PhysicalEntity physicalEntity(model.get());
     physicalEntity.setAbout("VLV")
             .setPhysicalProperty("OPB:OPB_00154")
             .setIdentity("fma/FMA:9690")
@@ -285,75 +335,76 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderInterface) {
                            "</rdf:RDF>\n"
                            "";
     ASSERT_STREQ(physicalEntity.toTriples().str().c_str(), expected.c_str());
+
 }
 
 
 TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderIsPhysicalPropertySet) {
-    RDF rdf;
-    PhysicalEntity physicalEntity(rdf.getModel());
+    PhysicalEntity physicalEntity(model.get());
     physicalEntity = physicalEntity.setPhysicalProperty(physical_property);
     ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
+    //clear up as we didn't use Triple (which owns everything)
+    physicalEntity.free();
 }
 
-//TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderAddTwoItems) {
-//    RDF rdf;
-//    PhysicalEntity physicalEntity(rdf.getModel());
-//    physicalEntity = physicalEntity
-//            .setPhysicalProperty(physical_property)
-//            .setAbout("cheese");
-//    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
-//    ASSERT_TRUE(physicalEntity.getAbout().isSet());
-//}
-//
-//TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderAddTwoItemsWhenYouAddPhysicalPropertySecond) {
-//    RDF rdf;
-//    PhysicalEntity physicalEntity(rdf.getModel());
-//    physicalEntity.setAbout("cheese").setPhysicalProperty(physical_property);
-//    ASSERT_TRUE(physicalEntity.getAbout().isSet());
-//    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
-//}
-//
-//TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilder) {
-//    RDF rdf;
-//    PhysicalEntity physicalEntity( rdf.getModel());
-//    physicalEntity.setAbout("Metaid0034")
-//            .setPhysicalProperty(physical_property)
-//            .setIdentity("obo/PR_000000365")
-//            .addLocation("https://identifiers.org/fma/FMA:72564")
-//            .addLocation("fma:FMA:63877");
-//    ASSERT_TRUE(physicalEntity.getAbout().isSet());
-//    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
-//}
-//
-//
-//TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriples) {
-//    RDF rdf;
-//    PhysicalEntity physicalEntity( rdf.getModel());
-//    physicalEntity.setAbout("Metaid0034")
-//            .setPhysicalProperty(physical_property)
-//            .setIdentity("obo/PR_000000365")
-//            .addLocation("https://identifiers.org/fma/FMA:72564")
-//            .addLocation("fma:FMA:63877");
-//
-//    std::string actual = physicalEntity.toTriples().str();
-//    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-//                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-//                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-//                           "   xml:base=\"file://./annotations.rdf\">\n"
-//                           "  <rdf:Description rdf:about=\"Metaid0034\">\n"
-//                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
-//                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
-//                           "  </rdf:Description>\n"
-//                           "  <rdf:Description rdf:about=\"PhysicalEntity0000\">\n"
-//                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/obo/PR_000000365\"/>\n"
-//                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:63877\"/>\n"
-//                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:72564\"/>\n"
-//                           "  </rdf:Description>\n"
-//                           "</rdf:RDF>\n"
-//                           "";
-//    std::cout << actual << std::endl;
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//}
+TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderAddTwoItems) {
+    PhysicalEntity physicalEntity(model.get());
+    physicalEntity = physicalEntity
+            .setPhysicalProperty(physical_property)
+            .setAbout("cheese");
+    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
+    ASSERT_TRUE(physicalEntity.getAbout().isSet());
+    physicalEntity.free();
+}
+
+TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderAddTwoItemsWhenYouAddPhysicalPropertySecond) {
+    PhysicalEntity physicalEntity(model.get());
+    physicalEntity.setAbout("cheese").setPhysicalProperty(physical_property);
+    ASSERT_TRUE(physicalEntity.getAbout().isSet());
+    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
+    physicalEntity.free();
+}
+
+TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilder) {
+    PhysicalEntity physicalEntity(model.get());
+    physicalEntity.setAbout("Metaid0034")
+            .setPhysicalProperty(physical_property)
+            .setIdentity("obo/PR_000000365")
+            .addLocation("https://identifiers.org/fma/FMA:72564")
+            .addLocation("fma:FMA:63877");
+    ASSERT_TRUE(physicalEntity.getAbout().isSet());
+    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
+    physicalEntity.free();
+}
+
+
+TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriples) {
+    PhysicalEntity physicalEntity(model.get());
+    physicalEntity.setAbout("Metaid0034")
+            .setPhysicalProperty(physical_property)
+            .setIdentity("obo/PR_000000365")
+            .addLocation("https://identifiers.org/fma/FMA:72564")
+            .addLocation("fma:FMA:63877");
+
+    std::string actual = physicalEntity.toTriples().str();
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"Metaid0034\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"PhysicalEntity0000\">\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/obo/PR_000000365\"/>\n"
+                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:63877\"/>\n"
+                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:72564\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n"
+                           "";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
 
 
 

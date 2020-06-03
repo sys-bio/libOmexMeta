@@ -14,7 +14,7 @@
 #include "semsim/Error.h"
 #include "semsim/Query.h"
 #include "RedlandAPIWrapper.h"
-
+#include "HERE.h"
 using namespace redland;
 
 namespace semsim {

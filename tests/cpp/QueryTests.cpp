@@ -16,7 +16,6 @@ class QueryTests : public ::testing::Test {
 public:
 
     AnnotationSamples samples;
-
     LibrdfStorage storage;
     LibrdfModel model;
     semsim::RDF rdf;
@@ -45,20 +44,29 @@ TEST_F(QueryTests, TestStr) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
+TEST_F(QueryTests, TestRunQueryTwice) {
+    semsim::Query query(rdf.getModel(), q);
+    query.runQuery();
+    std::string actual = query.resultsAsStr("csv");
+    std::string expected = "x,y,z\r\n"
+                           "file://./MyModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\r\n";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
 TEST_F(QueryTests, TestgetResultsAsMap) {
     semsim::Query query(rdf.getModel(), q);
     semsim::ResultsMap resultsMap = query.resultsAsMap();
-    std::string expected = "http://biomodels.net/biology-qualifiers/is";
-    std::string actual = resultsMap["y"][2];
+    std::string expected = "http://biomodels.net/model-qualifiers/isDescribedBy";
+    std::string actual = resultsMap["y"][0];
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(QueryTests, TestgetResultsAsMapTwice) {
     semsim::Query query(rdf.getModel(), q);
     semsim::ResultsMap resultsMap = query.resultsAsMap();
-    semsim::ResultsMap resultsMap2 = query.resultsAsMap();
-    std::string expected = "http://biomodels.net/biology-qualifiers/isPartOf";
-    std::string actual = resultsMap["y"][3];
+//    semsim::ResultsMap resultsMap2 = query.resultsAsMap();
+    std::string expected = "http://biomodels.net/model-qualifiers/isDescribedBy";
+    std::string actual = resultsMap["y"][0];
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -66,6 +74,7 @@ TEST_F(QueryTests, TestResultsAsStream) {
     semsim::Query query(rdf.getModel(), q);
     librdf_stream *stream = query.resultsAsLibRdfStream();
     ASSERT_TRUE(stream); // aka not null
+    librdf_free_stream(stream);
 }
 
 

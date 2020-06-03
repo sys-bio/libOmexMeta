@@ -325,12 +325,6 @@ TEST_F(PredicateTests, TestPredicateWithoutSubclass3) {
     ASSERT_STREQ(actual.c_str(), expected.c_str());
 }
 
-TEST_F(PredicateTests, TestMakeARawPointer) {
-    Predicate predicate = Predicate("https://stackoverflow.com/questions/", "how-do-you", "so");
-    Predicate *ptr = Predicate::makeRawPtr(predicate);
-    ASSERT_TRUE(ptr);
-    predicate.freeNode();
-}
 
 
 
