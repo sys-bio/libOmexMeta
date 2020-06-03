@@ -24,11 +24,11 @@ set(TEST_SOURCES
         PhysicalProcessTests.cpp
         QueryTests.cpp
         EditorTests.cpp
+        RDFReadAndWriteTests.cpp
 
         #        ReaderTests.cpp
         #        WriterTests.cpp
         #        RDFTests.cpp
-        #        RDFReadAndWriteTests.cpp
         #        SemsimCombineArchiveTests.cpp
         #        CAPITests.cpp
         )

@@ -8,7 +8,7 @@ namespace semsim {
     Editor::Editor(const std::string &xml, SemsimXmlType type,
                            const LibrdfModel& model, NamespaceMap &nsmap)
             : model_(model), namespaces_(nsmap) {
-        XmlAssistantPtr xmlAssistantPtr = XmlAssistantFactory::generate(xml, type);
+        XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type);
         std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
         xml_ = xml_and_metaids.first;
         //todo create a structure mapping metaids to more useful information for the user.
