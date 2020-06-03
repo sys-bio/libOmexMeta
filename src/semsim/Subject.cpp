@@ -24,7 +24,7 @@ namespace semsim {
     }
 
     bool Subject::isSet() const {
-        return !node_;
+        return node_ != nullptr;
     }
 
     librdf_node* Subject::getNode() const {

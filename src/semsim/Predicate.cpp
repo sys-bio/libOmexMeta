@@ -189,11 +189,6 @@ namespace semsim {
         return ptr;
     }
 
-
-    Predicate* Predicate::makeRawPtr(Predicate predicate) {
-        return &predicate;
-    }
-
     void Predicate::deleter::operator()(Predicate *predicate) {
         std::cout << "trying to delete predicate" << std::endl;
         if (predicate->getNode()) {

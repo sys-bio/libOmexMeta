@@ -172,8 +172,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
     editor.addSingleAnnotation(singularAnnotation);
     editor.toRDF();
     std::string actual = rdf.toString("rdfxml", "MyModel.rdf");
-    std::cout << actual <<
-              std::endl;
+    std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://MyModel.rdf\">\n"
                            "  <rdf:Description rdf:about=\"Metaid4\">\n"
@@ -234,7 +233,6 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
             addCompositeAnnotation(
             std::make_shared<PhysicalProcess>(
                     PhysicalProcess(
-
                             model.get(),
                             Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004")),
                             PhysicalPropertyResource("OPB:OPB1234"),

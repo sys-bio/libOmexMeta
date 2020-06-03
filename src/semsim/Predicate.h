@@ -85,15 +85,6 @@ namespace semsim {
 
         static std::unique_ptr<Predicate, deleter> makeUniquePredicate(Predicate predicate);
 
-        /*
-         * @brief get raw pointer from predicate.
-         * @param Predicate predicate: The predicate to take raw pointer of
-         *
-         * For developers. Used in initializer list of other classes (like Participants)
-         * since we cannot take a address of a temporary object
-         */
-        static Predicate *makeRawPtr(Predicate predicate);
-
         void setNode(librdf_node *node);
     };
 
