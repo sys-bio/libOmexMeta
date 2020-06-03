@@ -246,6 +246,11 @@ TEST_F(PhysicalEntityTests, TestToTripleSize) {
              Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
             });
 
+    /*
+     * if passing in a Subject to property resource
+     * does not work, lets just make subject take a string and we
+     * build internally
+     */
     PhysicalEntity physicalEntity(
             model.get(),
             subject,
@@ -260,6 +265,8 @@ TEST_F(PhysicalEntityTests, TestToTripleSize) {
 //    int actual = triples.size();
 //    ASSERT_EQ(expected, actual);
     subject.free();
+
+    // so the subject is not being directly used in a triple.Why not?
 }
 
 
@@ -290,11 +297,11 @@ TEST_F(PhysicalEntityTests, TestTriples) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
-    std::cout << __FILE__ << __LINE__ << std::endl;
+    HERE();
     Triples triples = physicalEntity.toTriples();
-    std::cout << __FILE__ << __LINE__ << std::endl;
+    HERE();
     std::string s = triples.str();
-    std::cout << __FILE__ << __LINE__ << std::endl;
+    HERE();
     ASSERT_STREQ(s.c_str(), expected.c_str());
 }
 
