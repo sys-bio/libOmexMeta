@@ -76,7 +76,6 @@ namespace semsim {
 
     }
 
-
 //    Participant::~Participant() {
 //        if (predicate_ptr_->getNode()) {
 //            LibrdfNode::free(predicate_ptr_->getNode());
@@ -87,7 +86,6 @@ namespace semsim {
     SourceParticipant::SourceParticipant(librdf_model* model, std::string subject,
                                          double multiplier, std::string physicalEntityReference)
             : Participant(model, std::move(subject), "hasSourceParticipant",
-
                           multiplier, std::move(physicalEntityReference)) {}
 
     SinkParticipant::SinkParticipant(librdf_model* model, std::string subject, double multiplier,
