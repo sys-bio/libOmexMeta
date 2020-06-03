@@ -15,6 +15,7 @@
 #include "semsim/Query.h"
 #include "RedlandAPIWrapper.h"
 #include "HERE.h"
+
 using namespace redland;
 
 namespace semsim {
@@ -56,7 +57,7 @@ namespace semsim {
 
         [[nodiscard]] PhysicalPropertyResource getPhysicalProperty() const;
 
-        [[nodiscard]] virtual Triples toTriples() const;
+        [[nodiscard]] virtual Triples toTriples();
 
         virtual void free();
     };

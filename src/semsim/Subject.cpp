@@ -40,7 +40,7 @@ namespace semsim {
             LibrdfNode::freeNode(node_);
             setNode(nullptr);
         }
-        this->~Subject();
+        this->~Subject(); // todo needed?
     }
 
     void Subject::setNode(librdf_node *node) {

@@ -35,7 +35,7 @@ namespace semsim {
         return mediators_;
     }
 
-    Triples PhysicalProcess::toTriples() const {
+    Triples PhysicalProcess::toTriples() {
         if (!getAbout().isSet()) {
             throw AnnotationBuilderException(
                     "PhysicalProcess::toTriples(): Cannot create"
@@ -55,7 +55,8 @@ namespace semsim {
         std::string process_metaid = SemsimUtils::generateUniqueMetaid(model_, "PhysicalProcess",
                                                                        std::vector<std::string>());
 
-        Triples triples = physical_property_.toTriples(about, process_metaid);
+        // todo see note on physical entity ::  toTriples
+        Triples triples = physical_property_.toTriples(about.str(), process_metaid);
 
         for (auto &source: sources_) {
             for (auto &triple: source.toTriples(process_metaid)) {

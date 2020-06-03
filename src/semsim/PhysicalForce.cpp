@@ -31,7 +31,7 @@ namespace semsim {
         return generateMetaId("PhysicalForce");
     }
 
-    Triples PhysicalForce::toTriples() const {
+    Triples PhysicalForce::toTriples() {
         std::string force_metaid = SemsimUtils::generateUniqueMetaid(
                 model_, "PhysicalForce",
                 std::vector<std::string>());

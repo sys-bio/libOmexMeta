@@ -41,7 +41,7 @@ namespace semsim {
 
         explicit PhysicalEntity(librdf_model* model);
 
-        [[nodiscard]] Triples toTriples() const override;
+        [[nodiscard]] Triples toTriples() override;
 
         [[nodiscard]] const Resource &getIdentityResource() const;
 

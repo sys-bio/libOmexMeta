@@ -44,7 +44,7 @@ namespace semsim {
 
         const Mediators &getMediators() const;
 
-        Triples toTriples() const override;
+        Triples toTriples();
 
         PhysicalProcess &setAbout(std::string metaid);
 
