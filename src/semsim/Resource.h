@@ -23,6 +23,8 @@ namespace semsim {
     public:
         Resource() = default;
 
+        void setNode(librdf_node *node);
+
         static Resource fromRawPtr(librdf_node* node);
 
         [[nodiscard]] librdf_node* getNode() const;
@@ -31,7 +33,7 @@ namespace semsim {
 
         [[nodiscard]] virtual bool isSet() const;
 
-        void freeNode();
+        void free();
     };
 
 

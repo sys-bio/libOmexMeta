@@ -6,7 +6,7 @@
 
 namespace semsim {
 
-    Resource::Resource(librdf_node* node)
+    Resource::Resource(librdf_node *node)
             : node_(node) {
     }
 
@@ -18,7 +18,7 @@ namespace semsim {
         return node_ != nullptr;
     }
 
-    librdf_node* Resource::getNode() const {
+    librdf_node *Resource::getNode() const {
         return node_;
     }
 
@@ -26,8 +26,15 @@ namespace semsim {
         return Resource(node);
     }
 
-    void Resource::freeNode() {
-        LibrdfNode::freeNode(node_);
+    void Resource::free() {
+        if (node_) {
+            LibrdfNode::freeNode(node_);
+            setNode(nullptr);
+        }
+    }
+
+    void Resource::setNode(librdf_node *node) {
+        node_ = node;
     }
 
 }

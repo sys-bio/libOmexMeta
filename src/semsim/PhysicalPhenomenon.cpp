@@ -13,11 +13,13 @@ namespace semsim {
                                            PhysicalPropertyResource propertyResource, AnnotationType type)
             : model_(model), about(metaid), physical_property_(std::move(propertyResource)), type_(type) {}
 
-    PhysicalPhenomenon::~PhysicalPhenomenon() {
+    PhysicalPhenomenon::~PhysicalPhenomenon() = default;
+
+    void PhysicalPhenomenon::free() {
         if (about.getNode())
-            about.freeNode();
+            about.free();
         if (physical_property_.getNode())
-            physical_property_.freeNode();
+            physical_property_.free();
     }
 
     PhysicalPhenomenon::PhysicalPhenomenon(librdf_model* model)

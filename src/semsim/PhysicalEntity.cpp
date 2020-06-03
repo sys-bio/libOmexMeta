@@ -9,20 +9,34 @@
 namespace semsim {
 
     PhysicalEntity::PhysicalEntity(librdf_model *model,
-                                   Subject metaid,
+                                   Subject about,
                                    PhysicalPropertyResource physicalProperty,
                                    Resource is,
                                    Resources is_part_of)
-            : PhysicalPhenomenon(model, metaid, std::move(physicalProperty), PHYSICAL_ENTITY),
+            : PhysicalPhenomenon(model, about, std::move(physicalProperty), PHYSICAL_ENTITY),
               identity_resource_(std::move(is)), location_resources(std::move(is_part_of)) {}
 
 
     void PhysicalEntity::free() {
-        if (identity_resource_.getNode())
-            LibrdfNode::freeNode(identity_resource_.getNode());
+        if (about.getNode()) {
+            about.free();
+            about.setNode(nullptr);
+        }
+
+        if (physical_property_.getNode()) {
+            physical_property_.free();
+            physical_property_.setNode(nullptr);
+        }
+        if (identity_resource_.getNode()) {
+            identity_resource_.free();
+            identity_resource_.setNode(nullptr);
+        }
+
         for (auto &i : location_resources) {
-            if (i.getNode())
-                LibrdfNode::freeNode(i.getNode());
+            if (i.getNode()) {
+                i.free();
+                i.setNode(nullptr);
+            }
         }
     }
 
@@ -70,7 +84,6 @@ namespace semsim {
     }
 
     Triples PhysicalEntity::toTriples() const {
-        HERE();
         if (!getAbout().isSet()) {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): Cannot create"
@@ -78,7 +91,6 @@ namespace semsim {
                     "Use the setAbout() method."
             );
         }
-        HERE();
         if (!getPhysicalProperty().isSet()) {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): Cannot create"
@@ -86,7 +98,6 @@ namespace semsim {
                     "Use the setPhysicalProperty() method."
             );
         }
-        HERE();
         if (getLocationResources().empty()) {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): cannot create "
@@ -94,13 +105,9 @@ namespace semsim {
                     "is empty. Use the addLocation() method."
             );
         }
-        HERE();
         int count = 0;
-        HERE();
         for (auto &i : getLocationResources()) {
-            HERE();
             if (!i.isSet()) {
-                HERE();
                 std::ostringstream err;
                 err << "PhysicalEntity::toTriples(): Cannot create"
                        " triples because item ";
@@ -111,33 +118,30 @@ namespace semsim {
                 );
             }
         }
-        HERE();
-        // no exclusions needed here - we only generate 1 process metaid before commiting the triples
+        // no exclusions needed here - we only generate 1 process metaid before comiting the triples
         // to the model.
         std::string property_metaid = SemsimUtils::generateUniqueMetaid(
                 model_, "PhysicalEntity",
                 std::vector<std::string>());
-        HERE();
+//        Triples triples;
+
+
         Triples triples = physical_property_.toTriples(about.str(), property_metaid);
 
-        HERE();
-        // what part of physical entity triple
+        // the "what" part of physical entity triple
         triples.emplace_back(
-                Subject::fromRawPtr(LibrdfNode::fromUriString(property_metaid)),
-                std::make_shared<Predicate>(BiomodelsBiologyQualifier("is")),
-                getIdentityResource()
+                Subject::fromRawPtr(LibrdfNode::fromUriString(property_metaid)).getNode(),
+                BiomodelsBiologyQualifier("is").getNode(),
+                getIdentityResource().getNode()
         );
-        HERE();
-
         // the "where" part of the physical entity
         for (auto &locationResource : getLocationResources()) {
             triples.emplace_back(
-                    Subject::fromRawPtr(LibrdfNode::fromUriString(property_metaid)),
-                    std::make_shared<Predicate>(BiomodelsBiologyQualifier("isPartOf")),
-                    locationResource
+                    Subject::fromRawPtr(LibrdfNode::fromUriString(property_metaid)).getNode(),
+                    BiomodelsBiologyQualifier("isPartOf").getNode(),
+                    locationResource.getNode()
             );
         }
-        HERE();
         return triples;
     }
 

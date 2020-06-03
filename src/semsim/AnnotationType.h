@@ -17,6 +17,7 @@ namespace semsim {
         PHYSICAL_PROCESS,
         PHYSICAL_FORCE,
         SINGULAR,
+        UNKNOWN
     };
 }
 

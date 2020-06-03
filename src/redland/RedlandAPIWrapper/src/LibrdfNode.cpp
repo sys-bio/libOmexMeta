@@ -186,7 +186,7 @@ namespace redland {
 
     void LibrdfNode::freeNode(librdf_node *node) {
         if (!node){
-            throw RedlandNullPointerException("RedlandNullPointerException: LibrdfNode::freeNode: trying to free null node");
+            throw RedlandNullPointerException("RedlandNullPointerException: LibrdfNode::free: trying to free null node");
         }
         librdf_free_node(node);
     }

@@ -20,7 +20,7 @@ TEST_F(SubjectTests, TestSubjectFromUri) {
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("meta754"));
     std::string expected = subject.str();
     ASSERT_STREQ(expected.c_str(), "meta754");
-    subject.freeNode();
+    subject.free();
 }
 
 TEST_F(SubjectTests, TestStringUri) {
@@ -28,28 +28,28 @@ TEST_F(SubjectTests, TestStringUri) {
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString(url_str));
     const std::string &expected = subject.str();
     ASSERT_STREQ(url_str.c_str(), expected.c_str());
-    subject.freeNode();
+    subject.free();
 }
 
 TEST_F(SubjectTests, TestGetNodeUri) {
     std::string url_str = "https://www.notarealaddress.com";
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString(url_str));
     ASSERT_STREQ(url_str.c_str(), subject.str().c_str());
-    subject.freeNode();
+    subject.free();
 }
 
 TEST_F(SubjectTests, TestGetNodeBlank) {
     std::string string = "blank";
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString(string));
     ASSERT_STREQ(string.c_str(), subject.str().c_str());
-    subject.freeNode();
+    subject.free();
 }
 
 TEST_F(SubjectTests, TestGetNodeAsConstRef) {
     std::string string = "blank";
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("blank"));
     ASSERT_STREQ(string.c_str(), subject.str().c_str());
-    subject.freeNode();
+    subject.free();
 }
 
 
