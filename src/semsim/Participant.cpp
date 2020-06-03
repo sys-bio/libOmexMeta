@@ -79,7 +79,7 @@ namespace semsim {
 
 //    Participant::~Participant() {
 //        if (predicate_ptr_->getNode()) {
-//            LibrdfNode::freeNode(predicate_ptr_->getNode());
+//            LibrdfNode::free(predicate_ptr_->getNode());
 //            predicate_ptr_ = nullptr;
 //        }
 //    }

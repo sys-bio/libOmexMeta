@@ -28,13 +28,13 @@ namespace semsim {
 
     public:
 
-        PhysicalEntity() = delete;
+        PhysicalEntity() = default;
 
         ~PhysicalEntity() = default;
 
-        void free();
+        void free() override ;
 
-        PhysicalEntity(librdf_model* model, Subject metaid,
+        PhysicalEntity(librdf_model* model, Subject about,
                        PhysicalPropertyResource physicalProperty, Resource is,
                        Resources is_part_of);
 

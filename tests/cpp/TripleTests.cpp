@@ -185,8 +185,8 @@ TEST_F(TripleTests, TestBuilderPattern) {
 
     // Aaand free the excess nodes
     predicate.freeNode();
-    subject.freeNode();
-    resource.freeNode();
+    subject.free();
+    resource.free();
 }
 
 TEST_F(TripleTests, TestBuilderPatternWithSemSimPredicate) {
@@ -210,8 +210,8 @@ TEST_F(TripleTests, TestBuilderPatternWithSemSimPredicate) {
 
     // Aaand free the excess nodes
     predicate.freeNode();
-    subject.freeNode();
-    resource.freeNode();
+    subject.free();
+    resource.free();
 }
 
 

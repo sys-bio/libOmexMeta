@@ -26,20 +26,23 @@ TEST_F(PhysicalPropertyTests, TestPhysicalPropertyResource) {
     PhysicalPropertyResource property = PhysicalPropertyResource("OPB:OPB_00154");
     std::string expected = "https://identifiers.org/OPB/OPB_00154";
     std::string actual = property.str();
-    std::cout << actual <<
-              std::endl;
+    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    property.free();
 }
 
 
 TEST_F(PhysicalPropertyTests, TestFailureOnNonOPBResource) {
-    ASSERT_THROW(PhysicalPropertyResource("other/identifier72652"), InappropriateResourceException);
+    ASSERT_THROW({
+            PhysicalPropertyResource p("other/identifier72652");
+            p.free();}
+            , InappropriateResourceException);
+
 }
 
 
 TEST_F(PhysicalPropertyTests, TestToTriple1) {
     Triple triple = PhysicalPropertyResource("OPB/OPB_1234").isVersionOfTriple("Entity0");
-
     std::string actual = triple.getSubjectStr();
     std::string expected = "Entity0";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -48,7 +51,6 @@ TEST_F(PhysicalPropertyTests, TestToTriple1) {
 
 TEST_F(PhysicalPropertyTests, TestToTriple2) {
     Triple triple = PhysicalPropertyResource("OPB/OPB_1234").isVersionOfTriple("Entity0");
-
     std::string actual = triple.getResourceStr();
     std::string expected = "https://identifiers.org/OPB/OPB_1234";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -56,7 +58,6 @@ TEST_F(PhysicalPropertyTests, TestToTriple2) {
 
 TEST_F(PhysicalPropertyTests, TestToTriple3) {
     Triple triple = PhysicalPropertyResource(
-
             "OPB/OPB_1234"
     ).isVersionOfTriple("Entity0");
 
@@ -78,6 +79,22 @@ TEST_F(PhysicalPropertyTests, TestToTriple3) {
 TEST_F(PhysicalPropertyTests, TestIsSet) {
     PhysicalPropertyResource resource = PhysicalPropertyResource("OPB/OPB_1234");
     ASSERT_TRUE(resource.isSet());
+    resource.free();
+}
+
+TEST_F(PhysicalPropertyTests, TestFree) {
+    PhysicalPropertyResource resource = PhysicalPropertyResource("OPB/OPB_1234");
+    resource.free();
+    // run with valgrind: pass
+}
+
+TEST_F(PhysicalPropertyTests, TestToTriples) {
+    PhysicalPropertyResource resource = PhysicalPropertyResource("OPB/OPB_1234");
+    Triples triples = resource.toTriples("sub", "prop");
+    auto r = triples.getResources();
+    std::string expeted = "https://identifiers.org/OPB/OPB_1234";
+    std::string actual = r[0];
+    ASSERT_STREQ(expeted.c_str(), actual.c_str());
 }
 
 

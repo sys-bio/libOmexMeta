@@ -35,8 +35,16 @@ namespace semsim {
         return Subject(node);
     }
 
-    void Subject::freeNode() {
-        LibrdfNode::freeNode(node_);
+    void Subject::free() {
+        if (node_){
+            LibrdfNode::freeNode(node_);
+            setNode(nullptr);
+        }
+        this->~Subject();
+    }
+
+    void Subject::setNode(librdf_node *node) {
+        node_ = node;
     }
 
 }

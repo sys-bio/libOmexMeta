@@ -15,11 +15,6 @@ namespace redland {
 
     class LibrdfStatement {
 
-
-        struct deleter {
-            void operator()(librdf_statement *statement);
-        };
-
     protected:
 
         librdf_node *subject_ = nullptr; // LibrdfStatement does not own

@@ -25,12 +25,12 @@ namespace semsim {
         librdf_model *model_ = nullptr; // should be cleaned up by the LibrdfModel inside RDF.
         Subject about;
         PhysicalPropertyResource physical_property_;
-        AnnotationType type_;
+        AnnotationType type_ = AnnotationType::UNKNOWN;
 
-        std::string generateMetaId(std::string id_base) const;
+        [[nodiscard]] std::string generateMetaId(std::string id_base) const;
 
     public:
-        PhysicalPhenomenon() = delete;
+        PhysicalPhenomenon() = default;
 
         ~PhysicalPhenomenon();
 
@@ -42,23 +42,23 @@ namespace semsim {
 
         PhysicalPhenomenon &operator=(PhysicalPhenomenon &&phenomenon) noexcept;
 
-        PhysicalPhenomenon(librdf_model* model);
+        explicit PhysicalPhenomenon(librdf_model* model);
 
         PhysicalPhenomenon(librdf_model* model, Subject metaid,
                            PhysicalPropertyResource propertyResource,
                            AnnotationType type);
 
-        Subject getAbout() const;
+        [[nodiscard]] Subject getAbout() const;
 
-        Subject getSubject() const;
+        [[nodiscard]] Subject getSubject() const;
 
-        AnnotationType getType() const;
+        [[nodiscard]] AnnotationType getType() const;
 
-        PhysicalPropertyResource getPhysicalProperty() const;
+        [[nodiscard]] PhysicalPropertyResource getPhysicalProperty() const;
 
-        virtual Triples toTriples() const;
+        [[nodiscard]] virtual Triples toTriples() const;
 
-
+        virtual void free();
     };
 
     typedef std::shared_ptr<PhysicalPhenomenon> PhysicalPhenomenonPtr;

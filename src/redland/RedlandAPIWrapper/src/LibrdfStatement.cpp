@@ -8,13 +8,6 @@
 
 namespace redland {
 
-
-    void LibrdfStatement::deleter::operator()(librdf_statement *statement) {
-        if (statement)
-            raptor_free_statement(statement);
-    }
-
-
     LibrdfStatement::LibrdfStatement(librdf_statement *statement)
             : statement_(std::shared_ptr<librdf_statement>(statement, raptor_free_statement)) {
         subject_ = librdf_statement_get_subject(statement_.get());
@@ -34,17 +27,6 @@ namespace redland {
         );
         checkForNull();
     }
-
-//    LibrdfStatement::LibrdfStatement(
-//            librdf_node* subject, librdf_node* predicate, librdf_node* resource)
-//            : subject_(subject), predicate_(predicate), resource_(resource) {
-//        statement_ = std::shared_ptr<librdf_statement>(
-//                librdf_new_statement_from_nodes(
-//                        World::getWorld(), subject_, predicate_, resource_),
-//                        raptor_free_statement
-//        );
-//        checkForNull();
-//    }
 
 
     void LibrdfStatement::checkForNull() {

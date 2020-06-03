@@ -29,6 +29,8 @@ namespace semsim {
 
         [[nodiscard]] librdf_node* getNode() const;
 
+        void setNode(librdf_node *node);
+
         static Subject fromRawPtr(librdf_node* node);
 
         static Subject fromUri(const std::string &uri);
@@ -41,7 +43,7 @@ namespace semsim {
 
         [[nodiscard]] bool isSet() const;
 
-        void freeNode();
+        void free();
 
     };
 
