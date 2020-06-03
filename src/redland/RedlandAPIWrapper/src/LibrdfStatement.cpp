@@ -10,35 +10,28 @@ namespace redland {
 
     LibrdfStatement::LibrdfStatement(librdf_statement *statement)
             : statement_(std::shared_ptr<librdf_statement>(statement, raptor_free_statement)) {
-        subject_ = librdf_statement_get_subject(statement_.get());
-        predicate_ = librdf_statement_get_predicate(statement_.get());
-        resource_ = librdf_statement_get_object(statement_.get());
         checkForNull();
     }
 
     LibrdfStatement::LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource)
-            : subject_(subject),
-              predicate_(predicate),
-              resource_(resource) {
-        statement_ = std::shared_ptr<librdf_statement>(
-                librdf_new_statement_from_nodes(
-                        World::getWorld(), subject_, predicate_, resource_
-                ), raptor_free_statement
-        );
+            : statement_(std::shared_ptr<librdf_statement>(
+            librdf_new_statement_from_nodes(
+                    World::getWorld(), subject, predicate, resource
+            ), raptor_free_statement)) {
         checkForNull();
     }
 
 
     void LibrdfStatement::checkForNull() {
-        if (!subject_)
+        if (!getSubject())
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStatement::checkForNull(): subject_ node is null");
 
-        if (!predicate_) //todo another check on underlying pointer if possible (so far checking for null causes seg fault)
+        if (!getPredicate()) //todo another check on underlying pointer if possible (so far checking for null causes seg fault)
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStatement::checkForNull(): predicate_ node is null");
 
-        if (!resource_)
+        if (!getResource())
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStatement::checkForNull(): resource_ node is null");
 
@@ -52,15 +45,27 @@ namespace redland {
     }
 
     librdf_node *LibrdfStatement::getSubject() const {
-        return subject_;
+        return librdf_statement_get_subject(statement_.get());
     }
 
     librdf_node *LibrdfStatement::getPredicate() const {
-        return predicate_;
+        return librdf_statement_get_predicate(statement_.get());
+    }
+
+    void LibrdfStatement::setSubject(librdf_node *node) {
+        librdf_statement_set_subject(statement_.get(), node);
+    }
+
+    void LibrdfStatement::setResource(librdf_node *node) {
+        librdf_statement_set_object(statement_.get(), node);
+    }
+
+    void LibrdfStatement::setPredicate(librdf_node *node) {
+        librdf_statement_set_predicate(statement_.get(), node);
     }
 
     librdf_node *LibrdfStatement::getResource() const {
-        return resource_;
+        return librdf_statement_get_object(statement_.get());
     }
 
     std::string LibrdfStatement::getResourceStr() const {
@@ -71,7 +76,7 @@ namespace redland {
     }
 
     std::string LibrdfStatement::getSubjectStr() const {
-        if (!getSubject())
+        if (getSubject() == nullptr)
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStatement::getSubjectStr(): subject_ is nullptr");
         return LibrdfNode::str(getSubject());
@@ -94,25 +99,15 @@ namespace redland {
     }
 
     void LibrdfStatement::refreshStatement() {
-        if (subject_ && predicate_ && resource_) {
+        if (getSubject() != nullptr &&
+            getPredicate() != nullptr &&
+            getResource() != nullptr) {
             statement_ = std::shared_ptr<librdf_statement>(
                     librdf_new_statement_from_nodes(
-                            World::getWorld(), subject_, predicate_, resource_
+                            World::getWorld(), getSubject(), getPredicate(), getResource()
                     ), librdf_free_statement
             );
         }
-    }
-
-    void LibrdfStatement::setSubject(librdf_node *node) {
-        librdf_statement_set_subject(statement_.get(), node);
-    }
-
-    void LibrdfStatement::setResource(librdf_node *node) {
-        librdf_statement_set_object(statement_.get(), node);
-    }
-
-    void LibrdfStatement::setPredicate(librdf_node *node) {
-        librdf_statement_set_predicate(statement_.get(), node);
     }
 
 }
