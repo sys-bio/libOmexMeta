@@ -133,10 +133,6 @@ namespace semsim {
         node_ = node;
     }
 
-    Predicate Predicate::fromRawPtr(librdf_node *node) {
-        return Predicate(node);
-    }
-
     void Predicate::freeNode() {
         LibrdfNode::freeNode(node_);
     }

@@ -1,1 +1,2 @@
 add_subdirectory(semsim)
+ADD_SUBDIRECTORY(DotNamespaceLeak)

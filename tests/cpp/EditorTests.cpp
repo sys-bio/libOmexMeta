@@ -32,19 +32,10 @@ TEST_F(EditorTests, TestMetaIds) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
     const auto &metaids = editor.getMetaids();
-    std::vector<std::string> expected = {
-            "SemsimMetaid0000", "SemsimMetaid0001", "SemsimMetaid0002",
-            "SemsimMetaid0003", "SemsimMetaid0004", "SemsimMetaid0005",
-            "SemsimMetaid0006", "SemsimMetaid0007", "cytosol", "SemsimMetaid0008",
-            "Meta00001", "SemsimMetaid0009", "SemsimMetaid0010", "SemsimMetaid0011",
-            "SemsimMetaid0012", "SemsimMetaid0013", "SemsimMetaid0014",
-            "SemsimMetaid0015", "SemsimMetaid0016", "SemsimMetaid0017",
-            "SemsimMetaid0018", "SemsimMetaid0019", "SemsimMetaid0020",
-            "SemsimMetaid0021", "SemsimMetaid0022", "SemsimMetaid0023",
-            "SemsimMetaid0024", "SemsimMetaid0025", "SemsimMetaid0026",
-            "SemsimMetaid0027", "SemsimMetaid0028", "SemsimMetaid0029",
-            "SemsimMetaid0030", "SemsimMetaid0031", "SemsimMetaid0032"
-    };
+    std::vector<std::string> expected = { "SemsimMetaid0000", "SemsimMetaid0001", "SemsimMetaid0002",
+                                          "cytosol", "Meta00001", "SemsimMetaid0003", "SemsimMetaid0004",
+                                          "SemsimMetaid0005", "SemsimMetaid0006", "SemsimMetaid0007",
+                                          "SemsimMetaid0008", "SemsimMetaid0009", "SemsimMetaid0010" };
         ASSERT_EQ(expected, metaids);
 }
 
