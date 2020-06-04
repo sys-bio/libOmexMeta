@@ -360,32 +360,31 @@ TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
  * todo uncomment out and work out how to properly manage the
  * memory with arrays
  */
-//TEST_F(CAPITests, TestPhysicalEntityLocations) {
-//    RDF *rdf_ptr = RDF_new();
-//    Editor *editor_ptr = rdf_ptr->toEditorPtr(
-//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-//            SEMSIM_TYPE_SBML
-//    );
-//    PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
-//    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8376");
-//    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8377");
-//    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8378");
-//    char **actual = PhysicalEntity_getLocations(physical_entity_ptr);
-//    int num_locations = PhysicalEntity_getNumLocations(physical_entity_ptr);
-//    const char *expected = "https://identifiers.org/FMA/fma:8376\n"
-//                           "https://identifiers.org/FMA/fma:8377\n"
-//                           "https://identifiers.org/FMA/fma:8378\n";
-//    std::ostringstream os;
-//    for (int i = 0; i < PhysicalEntity_getNumLocations(physical_entity_ptr); i++) {
-//        os << *actual << '\n';
-//        actual++;
-//    }
-//    ASSERT_STREQ(expected, os.str().c_str());
-//    RDF_delete(rdf_ptr);
-//    Editor_delete(editor_ptr);
-//    PhysicalEntity_delete(physical_entity_ptr);
-//    free_c_char_star_star(actual, num_locations);
-//}
+TEST_F(CAPITests, TestPhysicalEntityLocations) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
+    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8376");
+    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8377");
+    physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8378");
+    int num_locations = PhysicalEntity_getNumLocations(physical_entity_ptr);
+    const char *expected = "https://identifiers.org/FMA/fma:8376\n"
+                           "https://identifiers.org/FMA/fma:8377\n"
+                           "https://identifiers.org/FMA/fma:8378\n";
+    std::ostringstream os;
+    for (int i = 0; i < num_locations; i++) {
+        char* string = PhysicalEntity_getLocation(physical_entity_ptr, i);
+        os << string << '\n';
+        free_c_char_star(string);
+    }
+    ASSERT_STREQ(expected, os.str().c_str());
+    PhysicalEntity_free_all(physical_entity_ptr);
+    Editor_delete(editor_ptr);
+    RDF_delete(rdf_ptr);
+}
 
 
 TEST_F(CAPITests, TestPhysicalEntityNumLocations) {

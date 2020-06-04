@@ -72,7 +72,7 @@ namespace semsim {
 
 
     void RDF_fromString(RDF *rdf_ptr, const char *str, const char *format, const char *baseuri) {
-        return RDF::fromString(rdf_ptr, str, format, baseuri);
+        RDF::fromString(rdf_ptr, str, format, baseuri);
     }
 
 
@@ -302,16 +302,11 @@ namespace semsim {
         return physicalEntity->getNumLocations();
     }
 
-    char **PhysicalEntity_getLocations(PhysicalEntity *physical_entity_ptr) {
-        Resources locations = physical_entity_ptr->getLocationResources();
-        char **arr = (char **) malloc((locations.size() + 1) * sizeof(char **));
-
-        for (int i = 0; i < locations.size(); i++) {
-            arr[i] = (char *) malloc((strlen(locations[i].str().c_str()) + 1) * sizeof(char *));
-            strcpy(arr[i], locations[i].str().c_str());
-        }
-
-        return arr;
+    char * PhysicalEntity_getLocation(PhysicalEntity *physical_entity_ptr, int index) {
+        std::string location = physical_entity_ptr->getLocationResources()[index].str();
+        char *cstr = (char *) malloc((location.size() + 1) * sizeof(char *));
+        strcpy(cstr, location.c_str());
+        return cstr;
     }
 
     char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri) {
@@ -330,7 +325,7 @@ namespace semsim {
     }
 
     void PhysicalProcess_delete(PhysicalProcess *physicalProcess) {
-            delete physicalProcess;
+        delete physicalProcess;
     }
 
     void PhysicalProcess_free_all(PhysicalProcess *physicalProcess) {

@@ -22,7 +22,7 @@ set(SEMSIM_HEADERS
         "AnnotationType.h"
         "Editor.h"
         #        "TripleWriter.h"
-                "SemsimCApi.h"
+        "SemsimCApi.h"
         #        "HERE.h"
         #        Log.h
         #        RedlandAPIWrapper/RaptorIOStream.cpp
@@ -52,7 +52,7 @@ set(SEMSIM_SOURCES
         "Editor.cpp"
         "PhysicalProcess.cpp"
         "PhysicalForce.cpp"
-                "SemsimCApi.cpp"
+        "SemsimCApi.cpp"
         )
 
 
@@ -76,17 +76,16 @@ target_include_directories(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so incl
 
 
 target_link_libraries(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so libraries propagate into test binaries
-        ${LINK_LIBRARIES}
         $<TARGET_FILE:redland-combined>
+        ${LINK_LIBRARIES}
         )
 
 
-message(STATUS "Installing to ${CMAKE_INSTALL_PREFIX}")
 install(TARGETS semsim-static
         EXPORT semsim-static.a
         LIBRARY
         DESTINATION lib
-        PUBLIC_HEADER DESTINATION include
+        PUBLIC_HEADER DESTINATION include/semsim
         )
 
 
@@ -99,54 +98,31 @@ if (BUILD_SHARED)
     #    target_link_options(semsim PUBLIC -Wl,--whole-archive)
     #
     add_dependencies(semsim redland-combined)
-    message(STATUS "LIBBZ_INCLUDE_DIR ${LIBBZ_INCLUDE_DIR}")
-    target_include_directories(semsim PUBLIC # make public so include dirs propagate into test binaries
+    target_include_directories(semsim PUBLIC
             ${INCLUDE_DIRS}
             )
 
-    target_link_libraries(semsim PUBLIC # make public so libraries propagate into test binaries
+    target_link_libraries(semsim PUBLIC
+            -Wl,--whole-archive
+            $<TARGET_FILE:redland-combined>
             ${LINK_LIBRARIES}
-
+            -Wl,--no-whole-archive
             )
-    set(x)
-    get_target_property(x semsim LINK_LIBRARIES)
+
 
     install(TARGETS semsim
             LIBRARY
             DESTINATION lib
-            PUBLIC_HEADER DESTINATION include
+            PUBLIC_HEADER DESTINATION include/semsim
             )
+
+    # for automatically installing to folder containing python api
     install(TARGETS semsim
             LIBRARY
             DESTINATION ${CMAKE_SOURCE_DIR}/src/pysemsim
             )
 
 
-endif ()
-
-
-if (BUILD_DOCS)
-    # https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/
-    find_package(Doxygen REQUIRED)
-
-    set(DOXYGEN_INPUT_DIR "${CMAKE_SOURCE_DIR}/src/semsim")
-    set(DOXYGEN_OUTPUT_DIR "${CMAKE_SOURCE_DIR}/docs/cpp")
-    set(DOXYGEN_INDEX_FILE ${DOXYGEN_OUTPUT_DIR}/html/index.html)
-    set(DOXYFILE_IN ${CMAKE_SOURCE_DIR}/Doxyfile.in)
-    set(DOXYFILE_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
-
-
-    configure_file(${DOXYFILE_IN} ${DOXYFILE_OUT} @ONLY)
-    file(MAKE_DIRECTORY ${DOXYGEN_OUTPUT_DIR})
-
-    add_custom_command(OUTPUT ${DOXYGEN_INDEX_FILE}
-            DEPENDS ${SEMSIM_HEADERS}
-            COMMAND ${DOXYGEN_EXECUTABLE} Doxyfile
-            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-            MAIN_DEPENDENCY Doxyfile
-            COMMENT "Generating docs")
-
-    add_custom_target(Doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
 endif ()
 
 

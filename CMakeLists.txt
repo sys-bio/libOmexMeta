@@ -30,7 +30,7 @@ set(CMAKE_MACOSX_RPATH ON)
 set(HAVE_DEPENDENCIES FALSE CACHE BOOL
         "When true, the dependencies will be
          automatically built before building libsemsim. When False
-         The dependencies are assumed to already exist")
+         the dependencies are assumed to already exist")
 
 option(BUILD_DOCS "Build libsemsim documentation" ON)
 
@@ -73,32 +73,31 @@ endif ()
 include(${CMAKE_SOURCE_DIR}/cmake/SetPaths.cmake)
 
 
-find_library(LIBPQ_STATIC_LIBRARY
-        NAMES pq.a libpq.a pq libpq
-        )
-
-if (NOT LIBPQ_STATIC_LIBRARY)
-    message(WARNING "libpq not found so skipping these source files. Install with sudo apt install libpq-dev")
-endif ()
-
-
-find_path(LIBPQ_INCLUDE_DIR
-        NAMES libpq-fe.h
-        PATHS /usr/include/postgresql
-        )
-
-if (NOT LIBPQ_INCLUDE_DIR)
-    message(WARNING "libpq-fe.h not found. Install with sudo apt install libpq-dev")
-endif ()
-
 #################################################################
 # Superbuild
 #
-
 if (NOT HAVE_DEPENDENCIES)
     message(STATUS "CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}")
     project(libsemsim-superbuild)
     #    set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/INSTALL/${CMAKE_BUILD_TYPE}")
+
+    find_library(LIBPQ_STATIC_LIBRARY
+            NAMES pq.a libpq.a pq libpq
+            )
+
+    if (NOT LIBPQ_STATIC_LIBRARY)
+        message(WARNING "libpq not found so skipping these source files. Install with sudo apt install libpq-dev")
+    endif ()
+
+
+    find_path(LIBPQ_INCLUDE_DIR
+            NAMES libpq-fe.h
+            PATHS /usr/include/postgresql
+            )
+
+    if (NOT LIBPQ_INCLUDE_DIR)
+        message(WARNING "libpq-fe.h not found. Install with sudo apt install libpq-dev")
+    endif ()
 
     PrintOutPaths()
     add_custom_target(raptor)
@@ -113,6 +112,26 @@ else ()
     set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/INSTALL/${CMAKE_BUILD_TYPE}")
     message(STATUS "CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}")
     #    include(${FIND_DEPENDENCIES_PATH})
+
+
+    find_library(LIBPQ_STATIC_LIBRARY
+            NAMES pq.a libpq.a pq libpq
+            )
+
+    if (NOT LIBPQ_STATIC_LIBRARY)
+        message(WARNING "libpq not found so skipping these source files. Install with sudo apt install libpq-dev")
+    endif ()
+
+
+    find_path(LIBPQ_INCLUDE_DIR
+            NAMES libpq-fe.h
+            PATHS /usr/include/postgresql
+            )
+
+    if (NOT LIBPQ_INCLUDE_DIR)
+        message(WARNING "libpq-fe.h not found. Install with sudo apt install libpq-dev")
+    endif ()
+
 
     set(INCLUDE_DIRS
             ${CMAKE_SOURCE_DIR}/src
@@ -146,12 +165,36 @@ else ()
             "${LIBXML2_STATIC_LIBRARY}"
             -Wl,--no-whole-archive
             "iconv"
-            ltdl ${CMAKE_DL_LIBS} lzma pcre curl m
-            c gmp pcre uuid
-            c xml2 m xslt yajl gss mpfr
-            xml2 idn2 pthread curl ssl
-            db curl
-            ${LIBPQ_STATIC_LIBRARY}
+            ltdl ${CMAKE_DL_LIBS}
+            # might need --whole archive again here
+            lzma
+#            pcre
+#            curl
+            m
+            c
+            gmp
+            pcre
+            uuid
+#            c
+            xml2
+#            m
+            xslt
+            yajl
+            gss
+            mpfr
+#            xml2
+            idn2
+            pthread
+            curl
+            ssl
+            db
+#            curl
+
+            #todo keep libpq in back pocket as alternative backend
+            #  other options are sqlite3 or virtuoso
+#            -Wl,--whole-archive
+#            ${LIBPQ_STATIC_LIBRARY}
+#            -Wl,--no-whole-archive
             )
 
     set(INCLUDE_DIRECTORIES
@@ -173,19 +216,42 @@ else ()
             ${LIBPQ_INCLUDE_DIR}
             )
 
-    message(STATUS "REDLAND_LIBRARY ${REDLAND_LIBRARY}")
-
-
     PrintOutPaths()
-    #    message(WARNING "HERE")
     add_subdirectory(src/redland)
     add_subdirectory(src)
 
     if (BUILD_TESTS)
         enable_testing()
-        add_subdirectory(tests/cpp)
         add_subdirectory(${GOOGLETEST_SOURCE})
+        add_subdirectory(tests/cpp)
     endif (BUILD_TESTS)
+
+
+    if (BUILD_DOCS)
+        # https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/
+        find_package(Doxygen REQUIRED)
+
+        set(DOXYGEN_INPUT_DIR "${CMAKE_SOURCE_DIR}/src/semsim")
+        set(DOXYGEN_OUTPUT_DIR "${CMAKE_SOURCE_DIR}/docs/cpp")
+        set(DOXYGEN_INDEX_FILE ${DOXYGEN_OUTPUT_DIR}/html/index.html)
+        set(DOXYFILE_IN ${CMAKE_SOURCE_DIR}/Doxyfile.in)
+        set(DOXYFILE_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+
+
+        configure_file(${DOXYFILE_IN} ${DOXYFILE_OUT} @ONLY)
+        file(MAKE_DIRECTORY ${DOXYGEN_OUTPUT_DIR})
+
+        add_custom_command(OUTPUT ${DOXYGEN_INDEX_FILE}
+                DEPENDS ${SEMSIM_HEADERS}
+                COMMAND ${DOXYGEN_EXECUTABLE} Doxyfile
+                WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+                MAIN_DEPENDENCY Doxyfile
+                COMMENT "Generating docs")
+
+        add_custom_target(Doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
+    endif ()
+
+
 endif ()
 
 
