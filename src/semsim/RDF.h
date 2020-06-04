@@ -46,6 +46,15 @@ namespace semsim {
                               const std::string &format = "guess",
                               const std::string &base_uri = std::string());
 
+        /*
+         * @brief non static version of RDF::fromString that takes
+         * a * RDF pointer object and modifies in place.
+         *
+         * Primarily used for C API
+         *
+         */
+        static void fromString(RDF *rdf, const std::string &str, const std::string &format, const std::string &base_uri);
+
         std::unordered_map<std::string, std::string>
         propagateNamespacesFromParser(std::vector<std::string> seen_namespaces);
 
@@ -54,7 +63,10 @@ namespace semsim {
 
         Editor toEditor(std::string xml, SemsimXmlType type);
 
-        librdf_model* getModel() const;
+        Editor *toEditorPtr(std::string xml, SemsimXmlType type);
+
+        librdf_model *getModel() const;
+
     };
 }
 

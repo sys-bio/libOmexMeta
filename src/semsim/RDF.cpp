@@ -48,6 +48,26 @@ namespace semsim {
         return rdf;
     }
 
+    void RDF::fromString(RDF* rdf, const std::string &str, const std::string &format, const std::string &base_uri) {
+        std::string base_uri_used;
+        if (base_uri.empty())
+            base_uri_used = SemsimUtils::addFilePrefixToString("Annotations.rdf");
+        else
+            base_uri_used = base_uri;
+
+        LibrdfParser parser(format);
+        parser.parseString(str, rdf->model_, LibrdfUri(base_uri_used));
+
+        // update the list of "seen" namespaces
+        rdf->seen_namespaces_ = parser.getSeenNamespaces();
+
+        // Compare against predefined set of namespaces: bqbiol etc.
+        // This allows us to only use the ones that are needed
+        rdf->namespaces_ = rdf->propagateNamespacesFromParser(rdf->seen_namespaces_);
+
+    }
+
+
     std::unordered_map<std::string, std::string>
     RDF::propagateNamespacesFromParser(std::vector<std::string> seen_namespaces) {
         std::unordered_map<std::string, std::string> keep_map;
@@ -72,12 +92,17 @@ namespace semsim {
     }
 
 
+    librdf_model *RDF::getModel() const {
+        return model_.get();
+    }
+
     Editor RDF::toEditor(std::string xml, SemsimXmlType type) {
         return Editor(xml, type, model_, namespaces_);
     }
 
-    librdf_model *RDF::getModel() const {
-        return model_.get();
+    Editor* RDF::toEditorPtr(std::string xml, SemsimXmlType type) {
+        auto *editor = new Editor(xml, type, model_, namespaces_);
+        return editor;
     }
 
 

@@ -22,7 +22,7 @@ set(SEMSIM_HEADERS
         "AnnotationType.h"
         "Editor.h"
         #        "TripleWriter.h"
-        #        "SemsimCApi.h"
+                "SemsimCApi.h"
         #        "HERE.h"
         #        Log.h
         #        RedlandAPIWrapper/RaptorIOStream.cpp
@@ -52,7 +52,7 @@ set(SEMSIM_SOURCES
         "Editor.cpp"
         "PhysicalProcess.cpp"
         "PhysicalForce.cpp"
-#                "SemsimCApi.cpp"
+                "SemsimCApi.cpp"
         )
 
 

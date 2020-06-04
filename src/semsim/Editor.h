@@ -68,7 +68,7 @@ namespace semsim {
     public:
         const NamespaceMap &getNamespaces() const;
 
-        LibrdfModel getModel() const;
+        librdf_model* getModel() const;
 
         void setNamespaces(const NamespaceMap &namespaces);
 

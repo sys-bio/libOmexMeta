@@ -25,12 +25,12 @@ set(TEST_SOURCES
         QueryTests.cpp
         EditorTests.cpp
         RDFReadAndWriteTests.cpp
+                CAPITests.cpp
 
         #        ReaderTests.cpp
         #        WriterTests.cpp
         #        RDFTests.cpp
         #        SemsimCombineArchiveTests.cpp
-        #        CAPITests.cpp
         )
 
 if (REDLAND_WRAPPER_TESTS)

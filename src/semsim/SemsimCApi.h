@@ -42,7 +42,22 @@ namespace semsim {
 
     char *RDF_toString(semsim::RDF *rdf_ptr, const char *format, const char *base_uri);
 
-    void RDF_fromString(semsim::RDF *rdf_ptr, const char *str, const char *format);
+    /*
+     * @brief read RDF formatted annotations a string.
+     * @param pdf_ptr a pointer to an RDF object.
+     * @param str the string to read annotations from
+     * @param format the format that the string annotations are in (get it
+     * wrong to be provided a list of supported syntaxes)
+     * @param baseuri the uri used for the base. All relative uri's
+     * in the RDF graph are relative to the base uri
+     *
+     * Example
+     * -------
+     * RDF* rdf_ptr = new RDF();
+     * RDF_fromString(rdf_ptr, string_annotations, "rdfxml", "string_annotations_base_uri");
+     */
+    void RDF_fromString(RDF *rdf_ptr, const char *str, const char *format = "guess",
+                        const char *baseuri = "./Annotations.rdf");
 
     const char *RDF_queryResultsAsStr(semsim::RDF *rdf_ptr, const char *query_str, const char *results_format);
 
@@ -122,6 +137,9 @@ namespace semsim {
 
     void PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr);
 
+    void PhysicalEntity_free_all(PhysicalEntity *physical_entity_ptr);
+
+
     PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about);
 
     PhysicalEntity *PhysicalEntity_setPhysicalProperty(
@@ -153,6 +171,8 @@ namespace semsim {
 
     void PhysicalProcess_delete(PhysicalProcess *physicalProcess);
 
+    void PhysicalProcess_free_all(PhysicalProcess *physicalProcess);
+
     PhysicalProcess *PhysicalProcess_setAbout(
             PhysicalProcess *physical_process, const char *about);
 
@@ -182,7 +202,18 @@ namespace semsim {
  */
     PhysicalForce *PhysicalForce_new(Editor *editor_ptr);
 
+
+    /*
+     * @brief deletes physical force excluding all
+     * nodes associated with it.
+     */
     void PhysicalForce_delete(PhysicalForce *physicalForce);
+
+    /*
+     * @brief deletes physical force including all
+     * nodes associated with it.
+     */
+    void PhysicalForce_free_all(PhysicalForce *physical_force_ptr);
 
     PhysicalForce *PhysicalForce_setAbout(
             PhysicalForce *physical_force_ptr, const char *about);

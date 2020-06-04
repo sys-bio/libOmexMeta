@@ -49,7 +49,7 @@ namespace semsim {
 
         [[nodiscard]] Triples toTriples() override;
 
-        PhysicalForce &setAbout(std::string metaid);
+        PhysicalForce &setAbout(const std::string& metaid);
 
         PhysicalForce &setPhysicalProperty(PhysicalPropertyResource physicalProperty);
 

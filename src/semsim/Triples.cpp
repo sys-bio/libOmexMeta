@@ -98,8 +98,8 @@ namespace semsim {
         return triples_.end();
     }
 
-    std::string Triples::str(const std::string& format, const std::string& base) {
-
+    std::string Triples::str(const std::string& format, std::string base) {
+        base = SemsimUtils::addFilePrefixToString(base);
         // Here we create temporary set of tools for serializing a simple
         // triple.
         librdf_world *world = librdf_new_world();
