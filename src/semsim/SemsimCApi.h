@@ -160,7 +160,7 @@ namespace semsim {
 
     int PhysicalEntity_getNumLocations(PhysicalEntity *physicalEntity);
 
-    char **PhysicalEntity_getLocations(PhysicalEntity *physical_entity_ptr);
+    char * PhysicalEntity_getLocation(PhysicalEntity *physical_entity_ptr, int index);
 
     char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
 

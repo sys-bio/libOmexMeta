@@ -76,7 +76,7 @@ class RDF:
         self._rdf_from_string_cfunc = Util.load_func(libsemsim, "RDF_fromString",
                                                      [ct.c_int64, ct.c_char_p, ct.c_char_p], None)
         self._rdf_to_string_cfunc = Util.load_func(libsemsim, "RDF_toString", [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                                   ct.c_void_p)
+                                                   ct.c_char_p)
         self._rdf_delete_cfunc = Util.load_func(libsemsim, "RDF_delete", [ct.c_int64], None)
         self._rdf_getBaseUri_cfunc = Util.load_func(libsemsim, "RDF_getBaseUri", [ct.c_int64], ct.c_void_p)
         self._rdf_setBaseUri_cfunc = Util.load_func(libsemsim, "RDF_setBaseUri", [ct.c_int64, ct.c_char_p], None)
