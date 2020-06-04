@@ -55,7 +55,7 @@ namespace semsim {
         return triples;
     }
 
-    PhysicalForce &PhysicalForce::setAbout(std::string metaid) {
+    PhysicalForce &PhysicalForce::setAbout(const std::string& metaid) {
         about = Subject::fromRawPtr(LibrdfNode::fromUriString(metaid));
         return (*this);
     }
@@ -97,9 +97,7 @@ namespace semsim {
     }
 
     PhysicalForce::PhysicalForce(librdf_model* model)
-            : PhysicalPhenomenon(model) {
-
-    }
+            : PhysicalPhenomenon(model) {}
 
     int PhysicalForce::getNumSources() {
         return sources_.size();

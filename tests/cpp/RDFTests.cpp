@@ -34,6 +34,15 @@ TEST_F(RDFTests, TestFromStringSingularAnnotation) {
     ASSERT_EQ(expected, actual);
 }
 
+TEST_F(RDFTests, TestFromStringSingularAnnotation2) {
+    RDF *rdf = new RDF();
+    RDF::fromString(rdf, samples.singular_annotation1, "rdfxml", "singular_annotation1_base");
+    int expected = 1;
+    int actual = rdf->size();
+    ASSERT_EQ(expected, actual);
+    delete rdf;
+}
+
 TEST_F(RDFTests, TestFromStringTurtleBag) {
     RDF rdf = RDF::fromString(samples.rdf_turtle_bag_example, "turtle");
     int expected = 7;
@@ -60,6 +69,10 @@ TEST_F(RDFTests, TestToString) {
     std::string actual = rdf.toString();
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(RDFTests, TestToEditorPtr) {
+    RDF rdf = RDF::fromString(samples.rdf_xml_example7, "rdfxml");
 }
 
 

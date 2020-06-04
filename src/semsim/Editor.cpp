@@ -31,6 +31,10 @@ namespace semsim {
         namespaces_ = namespaces;
     }
 
+    librdf_model* Editor::getModel() const {
+        return model_.get();
+    }
+
 
     void Editor::checkValidMetaid(const std::string &metaid) {
         if (std::find(metaids_.begin(), metaids_.end(), metaid) == metaids_.end()) {

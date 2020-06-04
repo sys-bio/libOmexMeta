@@ -66,7 +66,7 @@ namespace semsim {
 
         SharedTripleVector::iterator end();
 
-        std::string str(const std::string& format = "rdfxml-abbrev", const std::string& base = "file://./annotations.rdf");
+        std::string str(const std::string& format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
 
         void push_back(const std::shared_ptr<Triple>& triple);
     };
