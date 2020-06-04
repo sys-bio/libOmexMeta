@@ -113,17 +113,11 @@ TEST_F(SemsimXmlAssistantTests, TestValidElementsSBML) {
 }
 
 TEST_F(SemsimXmlAssistantTests, TestMetaIdsSBML) {
-    HERE();
     std::string sbml = SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED);
-    HERE();
     MetaID metaId("SemsimMetaid", 0, 4);
-    HERE();
     SBMLAssistant assistant(sbml, "SemsimMetaid", 4);
-    HERE();
     auto sbml_with_metaids = assistant.addMetaIds();
-    HERE();
     sbml = sbml_with_metaids.first;
-    HERE();
     std::cout << sbml <<  std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                            "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\" metaid=\"SemsimMetaid0000\">\n"

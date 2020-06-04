@@ -41,14 +41,14 @@ namespace semsim {
 
         std::pair<std::string, std::vector<std::string>> addMetaIds();
 
-        [[nodiscard]] static std::vector<std::string> getValidElements();
+        [[nodiscard]] virtual std::vector<std::string> getValidElements() const;
     };
 
 
     class SBMLAssistant : public SemsimXmlAssistant {
 
     public:
-        static std::vector<std::string> getValidElements();
+        std::vector<std::string> getValidElements() const override ;
 
         using SemsimXmlAssistant::SemsimXmlAssistant;
 
@@ -60,7 +60,7 @@ namespace semsim {
     public:
         using SemsimXmlAssistant::SemsimXmlAssistant;
 
-        [[nodiscard]] static std::vector<std::string> getValidElements();
+        std::vector<std::string> getValidElements() const override ;
 
     };
 
