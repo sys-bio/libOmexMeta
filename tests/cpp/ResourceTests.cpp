@@ -134,6 +134,7 @@ TEST_F(ResourceTests, TestIsSetWhenTrue) {
 TEST_F(ResourceTests, TestIsSetWhenFalse) {
     Resource resource;
     ASSERT_FALSE(resource.isSet());
+    resource.free();
 }
 
 
@@ -145,6 +146,7 @@ TEST_F(ResourceTests, TestIsLiterralWithDatatype) {
             )
     );
     ASSERT_TRUE(resource.isSet());
+    resource.free();
 }
 
 

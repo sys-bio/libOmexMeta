@@ -27,18 +27,17 @@ namespace semsim {
     void SemsimXmlAssistant::addMetaIdsRecursion(xmlNode *a_node, std::vector<std::string> &seen_metaids) {
         //todo make private if not already
         MetaID metaId("SemsimMetaid", 0, 4);
-        xmlNode *cur_node = nullptr;
+        xmlNode *cur_node;
         cur_node = a_node;
         long count = 0;
         for (cur_node = a_node; cur_node; cur_node = cur_node->next) {
-//        while (cur_node->next) {
             // isolate element nodes
             if (cur_node->type == XML_ELEMENT_NODE) {
+                const std::vector<std::string> &valid_elements = getValidElements();
                 // if the node name is in our list of valid elements or if valid_elements_ = ["All"]
-                if (std::find(getValidElements().begin(), getValidElements().end(),
-                              std::string((const char *) cur_node->name)) != getValidElements().end()
-                    || (getValidElements().size() == 1 &&
-                     strcmp(getValidElements()[0].c_str(), (const char *) "All") != 0)) {
+                if (std::find(valid_elements.begin(), valid_elements.end(),
+                              std::string((const char *) cur_node->name)) != valid_elements.end()
+                    || (valid_elements.size() == 1 && valid_elements[0] == "Any")){
                     // test to see whether the element has the metaid attribute
                     bool has_meta_id = xmlHasProp(cur_node, (const xmlChar *) "metaid");
                     if (!has_meta_id) {

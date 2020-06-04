@@ -31,23 +31,28 @@ public:
 
 
 TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
+    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004"));
+    PhysicalPropertyResource resource = PhysicalPropertyResource("OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004")),
-            PhysicalPropertyResource("OPB:OPB_12345"),
+            subject,
+            resource,
             PHYSICAL_ENTITY
     );
     std::string expected = "metaid004";
     std::string actual = phenomenon.getSubject().str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-
+    subject.free();
+    resource.free();
 }
 
 TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
+    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004"));
+    PhysicalPropertyResource resource = PhysicalPropertyResource("OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004")),
-            PhysicalPropertyResource("OPB:OPB_12345"),
+            subject,
+            resource,
             PHYSICAL_ENTITY
     );
     std::string expected = "metaid004";
@@ -57,19 +62,23 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
             )
     );
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-}
+    subject.free();
+    resource.free();}
 
 TEST_F(PhysicalPhenomenonTests, TestPhysicalProperty) {
+    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004"));
+    PhysicalPropertyResource resource = PhysicalPropertyResource("OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004")),
-            PhysicalPropertyResource("OPB:OPB_12345"),
+            subject,
+            resource,
             PHYSICAL_ENTITY
     );
     std::string expected = "https://identifiers.org/OPB/OPB_12345";
     std::string actual = phenomenon.getPhysicalProperty().str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-}
+    subject.free();
+    resource.free();}
 
 
 

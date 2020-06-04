@@ -216,7 +216,7 @@ raptor_new_namespaces(raptor_world* world, int defaults)
 
   return nstack;
 }
- 
+
 
 /**
  * raptor_namespaces_start_namespace:

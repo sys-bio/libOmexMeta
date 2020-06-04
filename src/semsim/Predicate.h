@@ -40,8 +40,6 @@ namespace semsim {
         Predicate(const std::string &namespace_,
                   std::string term, std::string prefix);
 
-        static Predicate fromRawPtr(librdf_node *node);
-
         std::string str();
 
         static void verify(std::vector<std::string> valid_terms, const std::string &term);
