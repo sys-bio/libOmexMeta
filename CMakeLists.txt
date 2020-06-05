@@ -1,6 +1,7 @@
 # todo explore: https://stackoverflow.com/questions/16799164/compiling-a-library-redland-in-cygwin-using-gcc-and-using-the-output-in-visual/48428588#48428588
 cmake_minimum_required(VERSION 3.15)
 
+
 # load the ExternalProject functions for superbuild
 include(ExternalProject)
 
@@ -114,23 +115,26 @@ else ()
     #    include(${FIND_DEPENDENCIES_PATH})
 
 
-    find_library(LIBPQ_STATIC_LIBRARY
-            NAMES pq.a libpq.a pq libpq
-            )
-
-    if (NOT LIBPQ_STATIC_LIBRARY)
-        message(WARNING "libpq not found so skipping these source files. Install with sudo apt install libpq-dev")
-    endif ()
-
-
-    find_path(LIBPQ_INCLUDE_DIR
-            NAMES libpq-fe.h
-            PATHS /usr/include/postgresql
-            )
-
-    if (NOT LIBPQ_INCLUDE_DIR)
-        message(WARNING "libpq-fe.h not found. Install with sudo apt install libpq-dev")
-    endif ()
+    #    find_library(LIBPQ_STATIC_LIBRARY
+    #            NAMES pq.a libpq.a pq libpq
+    #            )
+    #
+    #    if (NOT LIBPQ_STATIC_LIBRARY)
+    #        message(WARNING "libpq not found so skipping these source files. Install with sudo apt install libpq-dev")
+    #    endif ()
+    #
+    #
+    #    find_path(LIBPQ_INCLUDE_DIR
+    #            NAMES libpq-fe.h
+    #            PATHS /usr/include/postgresql
+    #            )
+    #
+    #    if (NOT LIBPQ_INCLUDE_DIR)
+    #        message(WARNING "libpq-fe.h not found. Install with sudo apt install libpq-dev")
+    #    endif ()
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")# -OX")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")# -OX")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address")# -OX")
 
 
     set(INCLUDE_DIRS
@@ -168,33 +172,33 @@ else ()
             ltdl ${CMAKE_DL_LIBS}
             # might need --whole archive again here
             lzma
-#            pcre
-#            curl
+            #            pcre
+            #            curl
             m
             c
             gmp
             pcre
             uuid
-#            c
+            #            c
             xml2
-#            m
+            #            m
             xslt
             yajl
             gss
             mpfr
-#            xml2
+            #            xml2
             idn2
             pthread
             curl
             ssl
             db
-#            curl
+            #            curl
 
             #todo keep libpq in back pocket as alternative backend
             #  other options are sqlite3 or virtuoso
-#            -Wl,--whole-archive
-#            ${LIBPQ_STATIC_LIBRARY}
-#            -Wl,--no-whole-archive
+            #            -Wl,--whole-archive
+            #            ${LIBPQ_STATIC_LIBRARY}
+            #            -Wl,--no-whole-archive
             )
 
     set(INCLUDE_DIRECTORIES

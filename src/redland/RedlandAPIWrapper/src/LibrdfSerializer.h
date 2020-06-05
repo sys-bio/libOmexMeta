@@ -43,7 +43,7 @@ namespace redland {
 
         void setFeature(const std::string &ns, const std::string &prefix) const;
 
-        std::string toString(const LibrdfUri &uri, const LibrdfModel &model);
+        std::string toString(std::string uri, const LibrdfModel &model);
     };
 }
 

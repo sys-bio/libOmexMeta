@@ -4,8 +4,12 @@
 
 #include "RDF.h"
 
+#include <utility>
+
 
 namespace semsim {
+
+
 
     RDF::RDF(const std::string &base_uri, const std::string &storage_type, const std::string &storage_name,
              const char *storage_options,
@@ -15,15 +19,35 @@ namespace semsim {
         setBaseUri(base_uri);
     }
 
+//    RDF::~RDF() {
+//        World::free(World::getWorld());
+//    }
+//
+//    RDF::RDF(const RDF &rdf) {
+//        model_ = rdf.model_;
+//    }
+
+//    RDF::RDF(RDF &&rdf) noexcept {
+//
+//    }
+//
+//    RDF &RDF::operator=(const RDF &rdf) noexcept {
+//        return ;
+//    }
+//
+//    RDF &RDF::operator=(RDF &&rdf) {
+//        return ;
+//    }
+
     int RDF::size() const {
         return model_.size();
     }
 
     void RDF::setBaseUri(std::string baseUri) {
-        base_uri_ = SemsimUtils::addFilePrefixToString(baseUri);
+        base_uri_ = SemsimUtils::addFilePrefixToString(std::move(baseUri));
     }
 
-    bool RDF::empty() {
+    bool RDF::empty() const {
         return size() == 0;
     }
 
@@ -69,7 +93,7 @@ namespace semsim {
 
 
     std::unordered_map<std::string, std::string>
-    RDF::propagateNamespacesFromParser(std::vector<std::string> seen_namespaces) {
+    RDF::propagateNamespacesFromParser(const std::vector<std::string>& seen_namespaces) {
         std::unordered_map<std::string, std::string> keep_map;
         for (auto &seen_namespace : seen_namespaces) {
             auto iter = default_namespaces_.find(seen_namespace);
@@ -88,7 +112,7 @@ namespace semsim {
         for (auto &it: namespaces_){
             serializer.setNamespace(it.first, it.second);
         }
-        return serializer.toString(LibrdfUri(base_uri), model_);
+        return serializer.toString(base_uri, model_);
     }
 
 
@@ -96,11 +120,11 @@ namespace semsim {
         return model_.get();
     }
 
-    Editor RDF::toEditor(std::string xml, SemsimXmlType type) {
+    Editor RDF::toEditor(const std::string& xml, SemsimXmlType type) {
         return Editor(xml, type, model_, namespaces_);
     }
 
-    Editor* RDF::toEditorPtr(std::string xml, SemsimXmlType type) {
+    Editor* RDF::toEditorPtr(const std::string& xml, SemsimXmlType type) {
         auto *editor = new Editor(xml, type, model_, namespaces_);
         return editor;
     }

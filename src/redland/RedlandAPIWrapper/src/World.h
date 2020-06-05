@@ -73,58 +73,11 @@ namespace redland {
 
         static raptor_world *getRaptor();
 
-//        RaptorWorld getRaptor();
+        static void free(librdf_world *world);
 
-//        LibrdfStorage newStorage(const std::string &storage_name = "memory", const std::string &name = "SemsimStorage",
-//                                 const char *options_string = nullptr);
-//
-//        LibrdfModel newModel(LibrdfStorage storage, const char *options_string = nullptr);
-//
-//        LibrdfNode newNodeUriString(const std::string &string);
-//
-//        LibrdfNode newNodeUri(LibrdfUri raptorUri) const;
-//
-//        LibrdfNode newNodeBlank(const std::string &identifier) const;
-//
-//        LibrdfNode
-//        newNodeLiteral(const std::string &literal, const char *xml_language = nullptr, bool is_wf_xml = false) const;
-//
-//        LibrdfNode newNodeTypedLiteral(
-//                const std::string &literal,
-//                const std::string &datatypeUri = "http://www.w3.org/2001/XMLSchema#string",
-//                const char *xml_language = nullptr) const;
-//
-//        LibrdfUri newUri(std::string uri_string) const;
-//
-//        LibrdfStatement newStatementFromNodes(LibrdfNode subject, LibrdfNode predicate, LibrdfNode object) const;
-//
-//        LibrdfStatement newStatement() const;
-//
-//        librdf_world *get();
-//
-//        LibrdfParser newParser(const char *name, std::string mime_type = std::string(),
-//                               std::string uri_type = std::string());
-//
-//
-//        LibrdfSerializer newSerializer(const char *name,
-//                                       std::string mime_type = std::string(),
-//                                       std::string uri_type = std::string());
-//
-//        LibrdfQuery newQuery(std::string query,
-//                             std::string query_language_name = "sparql",
-//                             std::string uri = std::string(),
-//                             std::string base_uri = std::string());
-//
     };
 
 
-//        LibrdfSerializer newSerializer(std::string name);
-
-//        Subject newSubjectUri(const std::string &subject_value);
-//
-//        Subject newSubjectBlank(const std::string &subject_value);
-//
-//        PredicatePtr newPredicate(std::string namespace_, const std::string &term);
 }
 
 #endif //LIBSEMSIM_WORLD_H

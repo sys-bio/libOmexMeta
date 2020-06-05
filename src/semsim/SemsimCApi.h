@@ -29,6 +29,16 @@ namespace semsim {
     char **_func_that_returns_dynamic_alloc_char_star_star();
 
 /***************************************************
+ * librdf_world methods
+ *
+ * note: Really I do not want users to have to deal with this
+ * todo take steps to ensure users do not need to interact with the librdf_world*
+ *
+ */
+
+    void free_world(librdf_world* world);
+
+/***************************************************
  * RDF class methods
  */
 
@@ -137,8 +147,7 @@ namespace semsim {
 
     void PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr);
 
-    void PhysicalEntity_free_all(PhysicalEntity *physical_entity_ptr);
-
+    void PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);
 
     PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about);
 
@@ -171,7 +180,7 @@ namespace semsim {
 
     void PhysicalProcess_delete(PhysicalProcess *physicalProcess);
 
-    void PhysicalProcess_free_all(PhysicalProcess *physicalProcess);
+    void PhysicalProcess_freeAll(PhysicalProcess *physicalProcess);
 
     PhysicalProcess *PhysicalProcess_setAbout(
             PhysicalProcess *physical_process, const char *about);
@@ -213,7 +222,7 @@ namespace semsim {
      * @brief deletes physical force including all
      * nodes associated with it.
      */
-    void PhysicalForce_free_all(PhysicalForce *physical_force_ptr);
+    void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
 
     PhysicalForce *PhysicalForce_setAbout(
             PhysicalForce *physical_force_ptr, const char *about);

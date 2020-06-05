@@ -26,6 +26,14 @@ namespace redland {
         return librdf_world_get_raptor(World::getWorld());
     }
 
+    void World::free(librdf_world* world) {
+        if (world){
+            librdf_free_world(world);
+            world_ = nullptr;
+        }
+
+    }
+
     World::World() = default;
 
 

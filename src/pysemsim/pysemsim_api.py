@@ -33,6 +33,16 @@ class Util:
     def crlf_to_lr(string: str) -> str:
         return string.replace('\r\n', '\n')
 
+
+
+
+libsemsim = Util.load_lib()
+
+
+class PysemsimAPI:
+
+
+    # RDF methods
     @staticmethod
     def get_and_free_c_str(c_string_ptr: ct.c_int64) -> str:
         """Uses ctypes to transfer a C string to a python string and free the C string"""
@@ -43,25 +53,21 @@ class Util:
         del c_string_ptr  # free the ptr
         return decoded_str
 
-
-libsemsim = Util.load_lib()
-
-
-class PysemsimAPI:
-    # RDF methods
+    free_char_star = Util.load_func("free_c_char_star", [ct.c_char_p], None)
     rdf_new = Util.load_func("RDF_new", [], ct.c_void_p)
     rdf_size = Util.load_func("RDF_size", [ct.c_int64], ct.c_int64)
 
     rdf_from_string = Util.load_func("RDF_fromString",
                                      [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_void_p)
     rdf_to_string = Util.load_func("RDF_toString", [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                   ct.c_char_p)
+                                   ct.c_int64)
     rdf_delete = Util.load_func("RDF_delete", [ct.c_int64], None)
-    rdf_get_base_uri = Util.load_func("RDF_getBaseUri", [ct.c_int64], ct.c_char_p)
+    rdf_get_base_uri = Util.load_func("RDF_getBaseUri", [ct.c_int64], ct.c_int64)
     rdf_set_base_uri = Util.load_func("RDF_setBaseUri", [ct.c_int64, ct.c_char_p], None)
     # rdf_query_results_as_str = Util.load_func("RDF_queryResultsAsStr",
     #                                               [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_char_p)
     rdf_to_editor = Util.load_func("RDF_toEditor", [ct.c_int64, ct.c_char_p, ct.c_int], ct.c_int64)
+
 
     # Editor methods
     editor_add_namespace = Util.load_func("Editor_addNamespace", [ct.c_int64, ct.c_char_p],
@@ -85,6 +91,7 @@ class PysemsimAPI:
     editor_new_physical_force = Util.load_func("PhysicalForce_new", [ct.c_int64], ct.c_int64)
     editor_delete = Util.load_func("Editor_delete", [ct.c_int64], None)
 
+
     # singular annotation methods
     singular_annotation_set_about = Util.load_func("SingularAnnotation_setAbout", [ct.c_int64, ct.c_char_p], None)
     singular_annotation_set_predicate = Util.load_func("SingularAnnotation_setPredicate",
@@ -100,14 +107,15 @@ class PysemsimAPI:
     singular_annotation_set_resource_blank = Util.load_func("SingularAnnotation_setResourceBlank",
                                                             [ct.c_int64, ct.c_char_p], None)
     singular_annotation_get_about = Util.load_func("SingularAnnotation_getAbout", [ct.c_int64],
-                                                   ct.c_char_p)
+                                                   ct.c_int64)
     singular_annotation_str = Util.load_func("SingularAnnotation_str",
-                                             [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_char_p)
+                                             [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
     singular_annotation_get_predicate = Util.load_func("SingularAnnotation_getPredicate", [ct.c_int64],
-                                                       ct.c_char_p)
+                                                       ct.c_int64)
     singular_annotation_get_resource = Util.load_func("SingularAnnotation_getResource", [ct.c_int64],
-                                                      ct.c_char_p)
+                                                      ct.c_int64)
     singular_annotation_delete = Util.load_func("SingularAnnotation_delete", [ct.c_int64], None)
+
 
     # PhysicalEntity methods
     physical_entity_set_about = Util.load_func("PhysicalEntity_setAbout", [ct.c_int64, ct.c_char_p],
@@ -118,18 +126,22 @@ class PysemsimAPI:
                                                   None)
     physical_entity_add_location = Util.load_func("PhysicalEntity_addLocation", [ct.c_int64, ct.c_char_p],
                                                   ct.c_void_p)
-    physical_entity_get_about = Util.load_func("PhysicalEntity_getAbout", [ct.c_int64], ct.c_char_p)
+    physical_entity_get_about = Util.load_func("PhysicalEntity_getAbout", [ct.c_int64], ct.c_int64)
     physical_entity_get_physical_property = Util.load_func("PhysicalEntity_getPhysicalProperty",
                                                            [ct.c_int64],
-                                                           ct.c_char_p)
-    physical_entity_get_identity = Util.load_func("PhysicalEntity_getIdentity", [ct.c_int64], ct.c_char_p)
+                                                           ct.c_int64)
+    physical_entity_get_identity = Util.load_func("PhysicalEntity_getIdentity", [ct.c_int64], ct.c_int64)
     physical_entity_get_num_locations = Util.load_func("PhysicalEntity_getNumLocations", [ct.c_int64],
                                                        ct.c_int)
-    # physical_entity_get_locations = Util.load_func("PhysicalEntity_getLocations", [ct.c_int64], ct.c_void_p)
+    physical_entity_get_location = Util.load_func("PhysicalEntity_getLocation", [ct.c_int64,ct.c_int64], ct.c_int64)
     physical_entity_str = Util.load_func("PhysicalEntity_str", [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                         ct.c_char_p)
+                                         ct.c_int64)
     physical_entity_delete = Util.load_func("PhysicalEntity_delete", [ct.c_int64], None)
 
+    physical_entity_free_all = Util.load_func("PhysicalEntity_freeAll", [ct.c_int64], None)
+
+
+    # PhysicalProcess methods
     physical_process_set_about = Util.load_func("PhysicalProcess_setAbout", [ct.c_int64, ct.c_char_p],
                                                 None)
     physical_process_set_physical_property = Util.load_func("PhysicalProcess_setPhysicalProperty",
@@ -141,28 +153,35 @@ class PysemsimAPI:
     physical_process_add_mediator = Util.load_func("PhysicalProcess_addMediator",
                                                    [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], None)
     physical_process_str = Util.load_func("PhysicalProcess_str",
-                                          [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_char_p)
-    physical_process_get_about = Util.load_func("PhysicalProcess_getAbout", [ct.c_int64], ct.c_char_p)
+                                          [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    physical_process_get_about = Util.load_func("PhysicalProcess_getAbout", [ct.c_int64], ct.c_int64)
     physical_process_get_physical_property = Util.load_func("PhysicalProcess_getPhysicalProperty",
                                                             [ct.c_int64],
-                                                            ct.c_char_p)
+                                                            ct.c_int64)
     physical_process_delete = Util.load_func("PhysicalProcess_delete", [ct.c_int64], None)
 
-    physical_property_set_about = Util.load_func("PhysicalForce_setAbout", [ct.c_int64, ct.c_char_p],
+    physical_process_free_all = Util.load_func("PhysicalProcess_freeAll", [ct.c_int64], None)
+
+
+
+    # PhysicalForce Methods
+    physical_force_set_about = Util.load_func("PhysicalForce_setAbout", [ct.c_int64, ct.c_char_p],
                                                  None)
-    physical_property_set_physical_property = Util.load_func("PhysicalForce_setPhysicalProperty",
+    physical_force_set_physical_property = Util.load_func("PhysicalForce_setPhysicalProperty",
                                                              [ct.c_int64, ct.c_char_p], None)
-    physical_property_add_source = Util.load_func("PhysicalForce_addSource",
+    physical_force_add_source = Util.load_func("PhysicalForce_addSource",
                                                   [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], None)
-    physical_property_add_sink = Util.load_func("PhysicalForce_addSink",
+    physical_force_add_sink = Util.load_func("PhysicalForce_addSink",
                                                 [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], None)
-    physical_property_str = Util.load_func("PhysicalForce_str",
-                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_char_p)
-    physical_property_get_about = Util.load_func("PhysicalForce_getAbout", [ct.c_int64], ct.c_char_p)
-    physical_property_get_physical_property = Util.load_func("PhysicalForce_getPhysicalProperty",
+    physical_force_str = Util.load_func("PhysicalForce_str",
+                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    physical_force_get_about = Util.load_func("PhysicalForce_getAbout", [ct.c_int64], ct.c_int64)
+    physical_force_get_physical_property = Util.load_func("PhysicalForce_getPhysicalProperty",
                                                              [ct.c_int64],
-                                                             ct.c_char_p)
-    physical_property_delete = Util.load_func("PhysicalForce_delete", [ct.c_int64], None)
+                                                             ct.c_int64)
+    physical_force_delete = Util.load_func("PhysicalForce_delete", [ct.c_int64], None)
+
+    physical_force_free_all = Util.load_func("PhysicalForce_freeAll", [ct.c_int64], None)
 
 
 class _XmlAssistantType:
