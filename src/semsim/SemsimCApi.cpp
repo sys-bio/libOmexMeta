@@ -5,10 +5,6 @@
 #include "semsim/SemsimCApi.h"
 
 
-/*
- * Todo: Put checks in for nullptr in all functions
- */
-
 namespace semsim {
     void free_c_char_star(char *c) {
         if (!c)
@@ -53,6 +49,25 @@ namespace semsim {
         return arr;
     }
 
+/*************************************************************
+ *  librdf_world methods
+ */
+
+    /*
+     * world is statically allocated. When we
+     * free a world instance, its best to replace it
+     * immediately
+     */
+    void free_world(librdf_world *world) {
+        if (world != nullptr) {
+            World::free(world);
+            world = World::getWorld();
+        }
+    }
+
+/*************************************************************
+ *  RDF methods
+ */
 
     RDF *RDF_new() {
         RDF *rdf_ptr = new RDF();
@@ -156,9 +171,19 @@ namespace semsim {
     }
 
     void SingularAnnotation_delete(SingularAnnotation *singularAnnotation) {
-        // note: we do not need a free_all type function
+        // note: we do not need a freeAll type function
         //  for singular annotation as it is a typedef Triple,
         //  which owns the nodes.
+        if (!singularAnnotation)
+            return;
+        delete singularAnnotation;
+    }
+
+    void SingularAnnotation_freeAll(SingularAnnotation *singularAnnotation) {
+        // note: we do not need a freeAll type function
+        //  for singular annotation as it is a typedef Triple,
+        //  which owns the nodes.
+
         if (!singularAnnotation)
             return;
         delete singularAnnotation;
@@ -250,7 +275,7 @@ namespace semsim {
         }
     }
 
-    void PhysicalEntity_free_all(PhysicalEntity *physical_entity_ptr) {
+    void PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr) {
         physical_entity_ptr->free();
         delete physical_entity_ptr;
     }
@@ -302,7 +327,7 @@ namespace semsim {
         return physicalEntity->getNumLocations();
     }
 
-    char * PhysicalEntity_getLocation(PhysicalEntity *physical_entity_ptr, int index) {
+    char *PhysicalEntity_getLocation(PhysicalEntity *physical_entity_ptr, int index) {
         std::string location = physical_entity_ptr->getLocationResources()[index].str();
         char *cstr = (char *) malloc((location.size() + 1) * sizeof(char *));
         strcpy(cstr, location.c_str());
@@ -328,7 +353,7 @@ namespace semsim {
         delete physicalProcess;
     }
 
-    void PhysicalProcess_free_all(PhysicalProcess *physicalProcess) {
+    void PhysicalProcess_freeAll(PhysicalProcess *physicalProcess) {
         physicalProcess->free();
         delete physicalProcess;
     }
@@ -415,7 +440,7 @@ namespace semsim {
 
     }
 
-    void PhysicalForce_free_all(PhysicalForce *physical_force_ptr) {
+    void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr) {
         physical_force_ptr->free();
         delete physical_force_ptr;
     }

@@ -28,22 +28,28 @@ namespace redland {
 
 
     void LibrdfSerializer::setNamespace(const std::string &ns, const std::string &prefix) const {
-        librdf_serializer_set_namespace(serializer_.get(), LibrdfUri(ns).get(), prefix.c_str());
+        LibrdfUri u(ns);
+        librdf_serializer_set_namespace(serializer_.get(), u.get(), prefix.c_str());
+        u.free();
     }
 
     void LibrdfSerializer::setFeature(const std::string &ns, const std::string &prefix) const {
-        librdf_serializer_set_feature(serializer_.get(), LibrdfUri(ns).get(), LibrdfNode::fromLiteral(prefix));
+        LibrdfUri u(ns);
+        librdf_serializer_set_feature(serializer_.get(), u.get(), LibrdfNode::fromLiteral(prefix));
+        u.free();
     }
 
-    std::string LibrdfSerializer::toString(const LibrdfUri &uri, const LibrdfModel &model) {
+    std::string LibrdfSerializer::toString(std::string uri, const LibrdfModel &model) {
         void *buffer_to_hold_string = nullptr;
         raptor_iostream *ios = raptor_new_iostream_to_string(
                 World::getRaptor(), (void **) &buffer_to_hold_string, nullptr, malloc);
         if (!ios)
             throw RedlandNullPointerException("Writer::toString(): raptor_iostream");
+        librdf_uri* u = librdf_new_uri(World::getWorld(), (const unsigned char*) uri.c_str());
         librdf_serializer_serialize_model_to_iostream(
-                serializer_.get(), uri.get(), model.get(), ios
+                serializer_.get(), u, model.get(), ios
         );
+        librdf_free_uri(u);
         const char *s = (const char *) buffer_to_hold_string;
         std::string output(s);
         free(buffer_to_hold_string);

@@ -310,7 +310,7 @@ TEST_F(CAPITests, TestPhysicalEntityAbout) {
     free_c_char_star(actual);
     // we need to free the node inside get about manually here because
     // we are not using the str() method
-    PhysicalEntity_free_all(physical_entity_ptr);
+    PhysicalEntity_freeAll(physical_entity_ptr);
 }
 
 
@@ -331,7 +331,7 @@ TEST_F(CAPITests, TestPhysicalEntityPhysicalProperty) {
     Editor_delete(editor_ptr);
     // we must free this node manually here. Cannot be incorporated into
     // delete function because it'll clash with the main use case (i.e. str method)
-    PhysicalEntity_free_all(physical_entity_ptr);
+    PhysicalEntity_freeAll(physical_entity_ptr);
     free_c_char_star(actual);
 }
 
@@ -352,7 +352,7 @@ TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
     RDF_delete(rdf_ptr);
     Editor_delete(editor_ptr);
     // as opposed to PhysicalEntity_delete which would leave behind un-freed nodes.
-    PhysicalEntity_free_all(physical_entity_ptr);
+    PhysicalEntity_freeAll(physical_entity_ptr);
     free_c_char_star(actual);
 }
 
@@ -381,7 +381,7 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
         free_c_char_star(string);
     }
     ASSERT_STREQ(expected, os.str().c_str());
-    PhysicalEntity_free_all(physical_entity_ptr);
+    PhysicalEntity_freeAll(physical_entity_ptr);
     Editor_delete(editor_ptr);
     RDF_delete(rdf_ptr);
 }
@@ -402,7 +402,7 @@ TEST_F(CAPITests, TestPhysicalEntityNumLocations) {
     ASSERT_EQ(expected, actual);
     RDF_delete(rdf_ptr);
     Editor_delete(editor_ptr);
-    PhysicalEntity_free_all(physical_entity_ptr);
+    PhysicalEntity_freeAll(physical_entity_ptr);
 }
 
 
@@ -648,60 +648,57 @@ TEST_F(CAPITests, TestEditorToRDF) {
 }
 
 
-//TEST_F(CAPITests, TestSingularAnnotationDeleteAndTryAgain) {
-//    RDF *rdf_ptr1 = RDF_new();
-//    Editor *editor_ptr1 = rdf_ptr1->toEditorPtr(
-//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-//            SEMSIM_TYPE_SBML
-//    );
-//    PhysicalProcess *physical_process_ptr1 = PhysicalProcess_new(editor_ptr1);
-//
-//    physical_process_ptr1 = PhysicalProcess_setAbout(physical_process_ptr1, "id1");
-//    physical_process_ptr1 = PhysicalProcess_setPhysicalProperty(physical_process_ptr1, "opb/id2");
-//    physical_process_ptr1 = PhysicalProcess_addSink(
-//            physical_process_ptr1, "id3", 1.0, "id5");
-//    physical_process_ptr1 = PhysicalProcess_addSource(
-//            physical_process_ptr1, "id4", 1.0, "id6");
-//    physical_process_ptr1 = PhysicalProcess_addMediator(
-//            physical_process_ptr1, "id8", 1.0, "id7");
-//
-//    Editor_addPhysicalProcess(editor_ptr1, physical_process_ptr1
-//    );
-//    Editor_toRDF(editor_ptr1);
-//
-//    char *actual = RDF_toString(rdf_ptr1, "rdfxml-abbrev", "./Annot.rdf");
-//
-//    RDF_delete(rdf_ptr1);
-//    Editor_delete(editor_ptr1);
-//    PhysicalProcess_delete(physical_process_ptr1);
-//    free_c_char_star(actual);
-//
-////    rdf_ptr2 = nullptr;
+TEST_F(CAPITests, TestRDFTwice) {
+    RDF *rdf_ptr1 = RDF_new();
+    Editor *editor_ptr1 = rdf_ptr1->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    SingularAnnotation* annotation1 = SingularAnnotation_new(editor_ptr1);
+    annotation1 = SingularAnnotation_setAbout(annotation1, "first about");
+    annotation1 = SingularAnnotation_setPredicate(annotation1, "bqb", "is");
+    annotation1 = SingularAnnotation_setResourceLiteral(annotation1, "First Literal Resource");
+    Editor_addSingleAnnotation(editor_ptr1, annotation1);
+    Editor_toRDF(editor_ptr1);
+    char *string1 = RDF_toString(rdf_ptr1, "rdfxml-abbrev", "./Annot.rdf");
+    std::string observed_string1 = (const char*) string1;
+
+
+    RDF_delete(rdf_ptr1);
+    Editor_delete(editor_ptr1);
+    free_c_char_star(string1);
+    SingularAnnotation_delete(annotation1);
+
+//    free_world(World::getWorld());
+
 //
 //    RDF *rdf_ptr2 = RDF_new();
 //    Editor *editor_ptr2 = rdf_ptr2->toEditorPtr(
 //            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
 //            SEMSIM_TYPE_SBML
 //    );
-//
-//    PhysicalProcess *physical_process_ptr2 = PhysicalProcess_new(editor_ptr1);
-//
-//    physical_process_ptr2 = PhysicalProcess_setAbout(physical_process_ptr2, "newid1");
-//    physical_process_ptr2 = PhysicalProcess_setPhysicalProperty(physical_process_ptr2, "opb/newid2");
-//    physical_process_ptr2 = PhysicalProcess_addSink(
-//            physical_process_ptr2, "newid3", 1.0, "newid5");
-//    physical_process_ptr2 = PhysicalProcess_addSource(
-//            physical_process_ptr2, "newid4", 1.0, "newid6");
-//    physical_process_ptr2 = PhysicalProcess_addMediator(
-//            physical_process_ptr2, "newid8", 1.0, "newid7");
-//
-//    Editor_addPhysicalProcess(editor_ptr2, physical_process_ptr2
-//    );
+//    SingularAnnotation* annotation2 = SingularAnnotation_new(editor_ptr2);
+//    annotation2 = SingularAnnotation_setAbout(annotation2, "Second about");
+//    annotation2 = SingularAnnotation_setPredicate(annotation2, "bqb", "is");
+//    annotation2 = SingularAnnotation_setResourceLiteral(annotation2, "second Literal Resource");
+//    Editor_addSingleAnnotation(editor_ptr2, annotation2);
 //    Editor_toRDF(editor_ptr2);
+//    char *string2 = RDF_toString(rdf_ptr2, "rdfxml-abbrev", "./Annot.rdf");
+//    std::string observed_string2 = (const char*) string2;
 //
-//    std::cout << RDF_toString(rdf_ptr2, "rdfxml-abbrev", "./Annot.rdf");
+//    RDF_delete(rdf_ptr2);
+//    Editor_delete(editor_ptr2);
+//    free_c_char_star(string2);
+//    SingularAnnotation_delete(annotation2);
 //
-//}
+//    std::cout << observed_string1 << "\n\n" << observed_string2 << std::endl;
+//
+//    ASSERT_STRNE(observed_string1.c_str(), observed_string2.c_str());
+
+
+
+
+}
 
 
 

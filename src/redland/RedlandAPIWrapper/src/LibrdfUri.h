@@ -27,7 +27,7 @@ namespace redland {
             void operator()(librdf_uri *ptr);
         };
 
-        librdf_uri* uri_;
+        librdf_uri* uri_ = nullptr;
 
         /*
          * Hidden to make creating with raw ptr more explicit.
@@ -47,6 +47,8 @@ namespace redland {
         bool isNull() const;
 
         bool isEmpty() const;
+
+        void free();
     };
 }
 

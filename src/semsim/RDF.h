@@ -36,11 +36,22 @@ namespace semsim {
                      const std::string &storage_name = "SemsimStore",
                      const char *storage_options = nullptr, const char *model_options = nullptr);
 
+//        ~RDF();
+//
+//        RDF(const RDF &rdf);
+//
+//        RDF(RDF &&rdf) noexcept;
+//
+//        RDF &operator=(const RDF &rdf) noexcept;
+//
+//        RDF &operator=(RDF &&rdf);
+
+
         int size() const;
 
         void setBaseUri(std::string baseUri);
 
-        bool empty();
+        bool empty() const;
 
         static RDF fromString(const std::string &str,
                               const std::string &format = "guess",
@@ -53,17 +64,18 @@ namespace semsim {
          * Primarily used for C API
          *
          */
-        static void fromString(RDF *rdf, const std::string &str, const std::string &format, const std::string &base_uri);
+        static void
+        fromString(RDF *rdf, const std::string &str, const std::string &format, const std::string &base_uri);
 
         std::unordered_map<std::string, std::string>
-        propagateNamespacesFromParser(std::vector<std::string> seen_namespaces);
+        propagateNamespacesFromParser(const std::vector<std::string> &seen_namespaces);
 
         std::string toString(const std::string &format = "rdfxml-abbrev", std::string base_uri = std::string(),
                              const char *mime_type = nullptr, const char *type_uri = nullptr);
 
-        Editor toEditor(std::string xml, SemsimXmlType type);
+        Editor toEditor(const std::string &xml, SemsimXmlType type);
 
-        Editor *toEditorPtr(std::string xml, SemsimXmlType type);
+        Editor *toEditorPtr(const std::string &xml, SemsimXmlType type);
 
         librdf_model *getModel() const;
 
