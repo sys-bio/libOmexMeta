@@ -9,12 +9,19 @@ namespace redland {
 
 
     void LibrdfModel::deleter::operator()(librdf_model *model) {
-        if (model)
+        if (model != nullptr) {
             librdf_free_model(model);
+        }
     }
 
     LibrdfModel::LibrdfModel(librdf_model *model)
             : model_(model) {
+    }
+
+    void LibrdfModel::free() {
+        if (model_ != nullptr) {
+            librdf_free_model(model_.get());
+        }
     }
 
     LibrdfModel::LibrdfModel(const LibrdfStorage &storage, const char *options)
@@ -24,7 +31,7 @@ namespace redland {
         librdf_model_add_statement(get(), statement.get());
     }
 
-    void LibrdfModel::addStatement(librdf_statement* statement) const {
+    void LibrdfModel::addStatement(librdf_statement *statement) const {
         librdf_model_add_statement(get(), statement);
     }
 

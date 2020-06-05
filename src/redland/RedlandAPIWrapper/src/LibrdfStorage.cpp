@@ -4,7 +4,7 @@
 namespace redland {
 
     void LibrdfStorage::deleter::operator()(librdf_storage *storage) {
-        if (storage)
+        if (storage != nullptr)
             librdf_free_storage(storage);
     }
 
