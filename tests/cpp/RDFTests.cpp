@@ -73,6 +73,14 @@ TEST_F(RDFTests, TestToString) {
 
 TEST_F(RDFTests, TestToEditorPtr) {
     RDF rdf = RDF::fromString(samples.rdf_xml_example7, "rdfxml");
+
+}
+
+TEST_F(RDFTests, TestFreeWorldAndNewRDF) {
+    RDF rdf1;
+    World::free(World::getWorld());
+//    RDF rdf2;
+
 }
 
 

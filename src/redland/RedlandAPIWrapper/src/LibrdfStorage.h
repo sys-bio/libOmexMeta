@@ -30,7 +30,7 @@ namespace redland {
             void operator()(librdf_storage *storage);
         };
 
-        std::unique_ptr<librdf_storage, deleter> storage_;
+        std::unique_ptr<librdf_storage, deleter> storage_ = nullptr;
 
     public:
         explicit LibrdfStorage(librdf_storage *storage);
