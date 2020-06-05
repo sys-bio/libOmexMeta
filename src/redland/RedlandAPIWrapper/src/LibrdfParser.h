@@ -22,18 +22,26 @@ namespace redland {
             void operator()(librdf_parser *parser);
         };
 
-        librdf_parser* parser_ = nullptr;
+        librdf_parser *parser_ = nullptr;
 
         void validateParserName();
 
-        std::string format_ = nullptr;
-        std::string mime_type_ = nullptr;
+        std::string format_ = std::string();
+        std::string mime_type_ = std::string();
         librdf_uri *type_uri_ = nullptr;
 
     public:
         LibrdfParser() = default;
 
         ~LibrdfParser();
+
+        LibrdfParser(const LibrdfParser &parser) = delete;
+
+        LibrdfParser(LibrdfParser &&parser) noexcept;
+
+        LibrdfParser &operator=(const LibrdfParser &parser) = delete;
+
+        LibrdfParser &operator=(LibrdfParser &&parser) noexcept;
 
         explicit LibrdfParser(librdf_parser *parser);
 
@@ -72,11 +80,11 @@ namespace redland {
 
         void setTypeUri(std::string type_uri);
 
-        librdf_parser* makeParser();
+        librdf_parser *makeParser();
 
-        static void setFeature(librdf_parser* parser, std::string feature_uri, librdf_node *node);
+        static void setFeature(librdf_parser *parser, std::string feature_uri, librdf_node *node);
 
-        static void setOption(librdf_parser* parser, const std::string &option, const std::string &value);
+        static void setOption(librdf_parser *parser, const std::string &option, const std::string &value);
 
         static void setOptions(librdf_parser *parser);
 

@@ -51,8 +51,8 @@ TEST_F(LibrdfSerializerTests, TestToString) {
     );
     model.addStatement(statement);
     LibrdfSerializer serializer1 = LibrdfSerializer("rdfxml");
-    LibrdfUri uri("base_uri");
-    std::string actual = serializer1.toString(uri, model);
+//    LibrdfUri uri("base_uri");
+    std::string actual = serializer1.toString("base_uri", model);
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"base_uri\">\n"
                            "  <rdf:Description rdf:about=\"https://subject.com\">\n"
@@ -60,6 +60,8 @@ TEST_F(LibrdfSerializerTests, TestToString) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    model.freeModel();
+    storage.freeStorage();
 }
 
 
@@ -73,8 +75,7 @@ TEST_F(LibrdfSerializerTests, TestToStringTurtle) {
     );
     model.addStatement(statement);
     LibrdfSerializer serializer1 = LibrdfSerializer("turtle");
-    LibrdfUri uri("base_uri");
-    std::string actual = serializer1.toString(uri, model);
+    std::string actual = serializer1.toString("base_uri", model);
     std::string expected = "@base <base_uri> .\n"
                            "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "\n"
@@ -82,6 +83,8 @@ TEST_F(LibrdfSerializerTests, TestToStringTurtle) {
                            "    <https://predicate.com> <https://resource.com> .\n\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    model.freeModel();
+    storage.freeStorage();
 }
 
 
@@ -95,11 +98,12 @@ TEST_F(LibrdfSerializerTests, TestToStringNTriples) {
     );
     model.addStatement(statement);
     LibrdfSerializer serializer1 = LibrdfSerializer("ntriples");
-    LibrdfUri uri("base_uri");
-    std::string actual = serializer1.toString(uri, model);
+    std::string actual = serializer1.toString("base_uri", model);
     std::string expected = "<https://subject.com> <https://predicate.com> <https://resource.com> .\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    model.freeModel();
+    storage.freeStorage();
 }
 
 

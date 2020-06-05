@@ -30,9 +30,11 @@ namespace redland {
             void operator()(librdf_model *model);
         };
 
-        std::unique_ptr<librdf_model, deleter> model_ = nullptr;
+        librdf_model* model_ = nullptr;
 
     public:
+//        ~LibrdfModel();
+
         LibrdfModel() = default;
 
         explicit LibrdfModel(librdf_model *model);
@@ -51,7 +53,7 @@ namespace redland {
 
         void addStatement(librdf_statement *statement) const;
 
-        void free();
+        void freeModel();
     };
 }
 

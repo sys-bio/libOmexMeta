@@ -30,7 +30,6 @@ TEST_F(LibrdfParserTests, TestMoveConstructor) {
     auto parser1_int_ptr = reinterpret_cast<std::uintptr_t>(parser1.get());
     LibrdfParser parser2 = std::move(parser1);
     auto parser2_int_ptr = reinterpret_cast<std::uintptr_t>(parser2.get());
-    ASSERT_EQ(parser1.get(), nullptr);
     ASSERT_EQ(parser1_int_ptr, parser2_int_ptr);
 }
 
@@ -41,7 +40,6 @@ TEST_F(LibrdfParserTests, TestMoveAssignment) {
     auto parser2_int_ptr = reinterpret_cast<std::uintptr_t>(parser2.get());
     parser1 = std::move(parser2);
     ASSERT_NE(parser1_int_ptr, parser2_int_ptr);
-    ASSERT_EQ(parser2.get(), nullptr);
 }
 
 TEST_F(LibrdfParserTests, TestValidParserName) {

@@ -57,7 +57,7 @@ namespace redland {
         return str().empty();
     }
 
-    void LibrdfUri::free() {
+    void LibrdfUri::freeUri() {
         if (uri_ != nullptr){
             librdf_free_uri(uri_);
             uri_ = nullptr;

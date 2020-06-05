@@ -132,9 +132,11 @@ else ()
     #    if (NOT LIBPQ_INCLUDE_DIR)
     #        message(WARNING "libpq-fe.h not found. Install with sudo apt install libpq-dev")
     #    endif ()
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")# -OX")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")# -OX")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address")# -OX")
+    if (WITH_ADDRESS_SANITIZER)
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")# -OX")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")# -OX")
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address")# -OX")
+    ENDIF ()
 
 
     set(INCLUDE_DIRS

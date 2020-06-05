@@ -37,7 +37,7 @@ namespace redland {
                     "least one of format, mime_type or type_uri arguments"
             );
 
-        librdf_parser* parser = librdf_new_parser(World::getWorld(), name_used, mime_type_used, type_uri_);
+        librdf_parser *parser = librdf_new_parser(World::getWorld(), name_used, mime_type_used, type_uri_);
         // must set options each time we create new parser
         // i.e. when we change a parameter, like format
         setOptions(parser);
@@ -91,11 +91,11 @@ namespace redland {
     }
 
 
-    void LibrdfParser::setFeature(librdf_parser* parser, std::string feature_uri, librdf_node *node) {
+    void LibrdfParser::setFeature(librdf_parser *parser, std::string feature_uri, librdf_node *node) {
         librdf_parser_set_feature(parser, LibrdfUri(feature_uri).get(), node);
     }
 
-    void LibrdfParser::setOption(librdf_parser* parser, const std::string &option, const std::string &value) {
+    void LibrdfParser::setOption(librdf_parser *parser, const std::string &option, const std::string &value) {
         // prefix for option uri's. Append with desired option for full uri.
         std::string feature_uri_base = "http://feature.librdf.org/raptor-";
         librdf_node *node = LibrdfNode::fromLiteral(value);
@@ -103,7 +103,7 @@ namespace redland {
         librdf_free_node(node);
     }
 
-    void LibrdfParser::setOptions(librdf_parser* parser) {
+    void LibrdfParser::setOptions(librdf_parser *parser) {
         // set some parser options. These are things
         // that we always want - like support for
         // scanning xml documents for RDF
@@ -117,7 +117,8 @@ namespace redland {
         setOption(parser, "normalizeLanguage", "1");
         setOption(parser, "nonNFCfatal", "0");
         setOption(parser, "warnOtherParseTypes", "1");
-        setOption(parser, "checkRdfID", "1");    }
+        setOption(parser, "checkRdfID", "1");
+    }
 
     int LibrdfParser::numNamespacesSeen() const {
         return librdf_parser_get_namespaces_seen_count(parser_);
@@ -178,7 +179,7 @@ namespace redland {
     }
 
     LibrdfParser::~LibrdfParser() {
-        if (parser_) {
+        if (parser_ != nullptr) {
             librdf_free_parser(parser_);
             parser_ = nullptr;
         }
@@ -194,5 +195,49 @@ namespace redland {
         return namespaces;
     }
 
-}
+    LibrdfParser::LibrdfParser(LibrdfParser &&parser) noexcept {
+        format_ = std::move(parser.format_);
+        mime_type_ = std::move(parser.mime_type_);
+        if (parser.type_uri_ != nullptr) {
+            if (type_uri_ != nullptr) {
+                librdf_free_uri(type_uri_);
+            }
+            type_uri_ = std::move(parser.type_uri_);
+            parser.type_uri_ = nullptr;
+        }
+        if (parser.parser_ != nullptr) {
+            if (parser_ != nullptr) {
+                // ensure we don't create leak from
+                // forgetting to free the original parser
+                librdf_free_parser(parser_);
+            }
+            parser_ = std::move(parser.parser_);
+            parser.parser_ = nullptr;
+        }
 
+    }
+
+    LibrdfParser &LibrdfParser::operator=(LibrdfParser &&parser) noexcept {
+        if (this != &parser) {
+            format_ = std::move(parser.format_);
+            mime_type_ = std::move(parser.mime_type_);
+            if (parser.type_uri_ != nullptr) {
+                if (type_uri_ != nullptr) {
+                    librdf_free_uri(type_uri_);
+                }
+                type_uri_ = std::move(parser.type_uri_);
+                parser.type_uri_ = nullptr;
+            }
+            if (parser.parser_ != nullptr) {
+                // ensure we don't create leak from
+                // forgetting to free the original parser
+                if (parser_ != nullptr) {
+                    librdf_free_parser(parser_);
+                }
+                parser_ = std::move(parser.parser_);
+                parser.parser_ = nullptr;
+            }
+        }
+        return *this;
+    }
+}

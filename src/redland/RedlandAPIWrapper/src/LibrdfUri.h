@@ -44,11 +44,11 @@ namespace redland {
 
         [[nodiscard]] librdf_uri *get() const;
 
-        bool isNull() const;
+        [[nodiscard]] bool isNull() const;
 
-        bool isEmpty() const;
+        [[nodiscard]] bool isEmpty() const;
 
-        void free();
+        void freeUri();
     };
 }
 
