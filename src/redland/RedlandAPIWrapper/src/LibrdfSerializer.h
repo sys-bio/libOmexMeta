@@ -25,12 +25,23 @@ namespace redland {
             void operator()(librdf_serializer *serializer);
         };
 
-        std::unique_ptr<librdf_serializer, deleter> serializer_;
+        librdf_serializer *serializer_ = nullptr;
 
         explicit LibrdfSerializer(librdf_serializer *serializer);
 
     public:
         LibrdfSerializer() = default;
+
+        ~LibrdfSerializer();
+
+        LibrdfSerializer(const LibrdfSerializer &serializer) = delete;
+
+        LibrdfSerializer(LibrdfSerializer &&serializer) noexcept;
+
+        LibrdfSerializer &operator=(const LibrdfSerializer &serializer) = delete;
+
+        LibrdfSerializer &operator=(LibrdfSerializer &&serializer) noexcept;
+
 
         static LibrdfSerializer fromRawPtr(librdf_serializer *serializer);
 
@@ -44,6 +55,8 @@ namespace redland {
         void setFeature(const std::string &ns, const std::string &prefix) const;
 
         std::string toString(std::string uri, const LibrdfModel &model);
+
+        void freeSerializer();
     };
 }
 

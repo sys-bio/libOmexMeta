@@ -36,8 +36,8 @@ namespace semsim {
                      const std::string &storage_name = "SemsimStore",
                      const char *storage_options = nullptr, const char *model_options = nullptr);
 
-//        ~RDF();
-//
+        ~RDF();
+
 //        RDF(const RDF &rdf);
 //
 //        RDF(RDF &&rdf) noexcept;

@@ -18,9 +18,9 @@ namespace redland {
             : model_(model) {
     }
 
-    void LibrdfModel::free() {
+    void LibrdfModel::freeModel() {
         if (model_ != nullptr) {
-            librdf_free_model(model_.get());
+            librdf_free_model(model_);
         }
     }
 
@@ -36,20 +36,20 @@ namespace redland {
     }
 
     librdf_model *LibrdfModel::get() const {
-        return model_.get();
+        return model_;
     }
 
     LibrdfQueryResults LibrdfModel::query(LibrdfQuery query) {
-        librdf_query_results *results = librdf_query_execute(query.get(), model_.get());
+        librdf_query_results *results = librdf_query_execute(query.get(), model_);
         return LibrdfQueryResults(results);
     }
 
     int LibrdfModel::size() const {
-        return librdf_model_size(model_.get());
+        return librdf_model_size(model_);
     }
 
     LibrdfStream LibrdfModel::toStream() {
-        LibrdfStream stream(librdf_model_as_stream(model_.get()));
+        LibrdfStream stream(librdf_model_as_stream(model_));
         if (!stream.get()) {
             throw RedlandNullPointerException("NullPointerException: LibrdfModel::toStream(): stream object null");
         }

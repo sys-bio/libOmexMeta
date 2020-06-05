@@ -21,16 +21,29 @@ namespace redland {
             err << std::endl;
             throw std::invalid_argument(err.str());
         }
-        storage_ = std::unique_ptr<librdf_storage, deleter>(librdf_new_storage(
+        storage_ = librdf_new_storage(
                 World::getWorld(), storage_name.c_str(),
-                name.c_str(), options)
-        );
+                name.c_str(), options);
     }
 
 
     librdf_storage *LibrdfStorage::get() const {
-        return storage_.get();
+        return storage_;
     }
 
-
+    void LibrdfStorage::freeStorage() {
+        if (storage_!= nullptr){
+            librdf_free_storage(storage_);
+            storage_ = nullptr;
+        }
+    }
 }
+
+
+
+
+
+
+
+
+

@@ -19,9 +19,9 @@ namespace semsim {
         setBaseUri(base_uri);
     }
 
-//    RDF::~RDF() {
-//        World::free(World::getWorld());
-//    }
+    RDF::~RDF() {
+        World::free(World::getWorld());
+    }
 //
 //    RDF::RDF(const RDF &rdf) {
 //        model_ = rdf.model_;
