@@ -19,6 +19,7 @@ public:
 TEST_F(LibrdfStorageTests, TestInstantiateStorage) {
     redland::LibrdfStorage storage1 = LibrdfStorage("memory", "Storage1");
     ASSERT_NE(storage1.get(), nullptr);
+    storage1.freeStorage();
 }
 
 //TEST_F(LibrdfStorageTests, TestCopyConstructor) {
@@ -55,6 +56,7 @@ TEST_F(LibrdfStorageTests, TestMoveAssignment) {
     auto storage2_int_ptr = reinterpret_cast<std::uintptr_t>(storage2.get());
     storage1 = std::move(storage2);
     ASSERT_NE(storage1_int_ptr, storage2_int_ptr);
+    storage1.freeStorage();
 }
 
 

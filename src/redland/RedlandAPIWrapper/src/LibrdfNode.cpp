@@ -69,12 +69,15 @@ namespace redland {
         } else {
             xml_language_ = xml_language.c_str();
         }
-        return librdf_new_node_from_typed_literal(
+        librdf_uri* literal_datatype_uri_ = librdf_new_uri(World::getWorld(),
+                (const unsigned char *) literal_datatype_.c_str());
+        librdf_node* n = librdf_new_node_from_typed_literal(
                 World::getWorld(),
                 (const unsigned char *) literal.c_str(),
                 xml_language_,
-                librdf_new_uri(World::getWorld(), (const unsigned char *) literal_datatype_.c_str())
-        );
+                literal_datatype_uri_);
+        librdf_free_uri(literal_datatype_uri_);
+        return n;
     }
 
 

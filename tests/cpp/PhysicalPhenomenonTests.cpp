@@ -25,7 +25,11 @@ public:
     LibrdfModel model;
 
     PhysicalPhenomenonTests() {
-        model = LibrdfModel(storage);
+        model = LibrdfModel(storage.get());
+    };
+    ~PhysicalPhenomenonTests() override {
+        model.freeModel();
+        storage.freeStorage();
     };
 };
 

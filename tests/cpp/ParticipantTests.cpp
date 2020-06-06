@@ -17,7 +17,12 @@ public:
     LibrdfModel model;
 
     ParticipantTests() {
-        model = LibrdfModel(storage);
+        model = LibrdfModel(storage.get());
+    };
+
+    ~ParticipantTests(){
+        storage.freeStorage();
+        model.freeModel();
     };
 };
 

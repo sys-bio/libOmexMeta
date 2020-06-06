@@ -20,8 +20,13 @@ public:
     LibrdfModel model;
 
     EditorTests() {
-        model = LibrdfModel(storage);
+        model = LibrdfModel(storage.get());
     };
+
+    ~EditorTests(){
+        model.freeModel();
+        storage.freeStorage();
+    }
 
 };
 

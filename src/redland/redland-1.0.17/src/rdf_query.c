@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -35,8 +37,11 @@
 #include <string.h>
 #include <ctype.h>
 #include <sys/types.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <redland.h>
@@ -60,23 +65,22 @@ static void librdf_delete_query_factories(librdf_world *world);
  * factory functions such as librdf_get_query_factory()
  **/
 int
-librdf_init_query(librdf_world *world) 
-{
-  int rc;
-  
-  /* Always have rasqal implementation available */
-  rc = librdf_query_rasqal_constructor(world);
-  if(rc)
-    return rc;
+librdf_init_query(librdf_world *world) {
+    int rc;
+
+    /* Always have rasqal implementation available */
+    rc = librdf_query_rasqal_constructor(world);
+    if (rc)
+        return rc;
 
 #ifdef MODULAR_LIBRDF
 #else
 #ifdef STORAGE_VIRTUOSO
-  librdf_init_query_virtuoso(world);
+    librdf_init_query_virtuoso(world);
 #endif
 #endif
 
-  return 0;
+    return 0;
 }
 
 
@@ -88,10 +92,9 @@ librdf_init_query(librdf_world *world)
  *
  **/
 void
-librdf_finish_query(librdf_world *world) 
-{
-  librdf_query_rasqal_destructor(world);
-  librdf_delete_query_factories(world);
+librdf_finish_query(librdf_world *world) {
+    librdf_query_rasqal_destructor(world);
+    librdf_delete_query_factories(world);
 }
 
 
@@ -102,15 +105,14 @@ librdf_finish_query(librdf_world *world)
  * librdf_free_query_factory - delete a query factory
  */
 static void
-librdf_free_query_factory(librdf_query_factory *factory)
-{
-  if(factory) {
-    if(factory->name)
-      LIBRDF_FREE(librdf_query_factory, factory->name);
-    if(factory->uri)
-      librdf_free_uri(factory->uri);
-    LIBRDF_FREE(librdf_query_factory, factory);
-  }
+librdf_free_query_factory(librdf_query_factory *factory) {
+    if (factory) {
+        if (factory->name)
+            LIBRDF_FREE(librdf_query_factory, factory->name);
+        if (factory->uri)
+            librdf_free_uri(factory->uri);
+        LIBRDF_FREE(librdf_query_factory, factory);
+    }
 }
 
 
@@ -118,15 +120,14 @@ librdf_free_query_factory(librdf_query_factory *factory)
  * librdf_delete_query_factories - helper function to delete all the registered query factories
  */
 static void
-librdf_delete_query_factories(librdf_world *world)
-{
-  librdf_query_factory *factory, *next;
-  
-  for(factory=world->query_factories; factory; factory=next) {
-    next=factory->next;
-    librdf_free_query_factory(factory);
-  }
-  world->query_factories=NULL;
+librdf_delete_query_factories(librdf_world *world) {
+    librdf_query_factory *factory, *next;
+
+    for (factory = world->query_factories; factory; factory = next) {
+        next = factory->next;
+        librdf_free_query_factory(factory);
+    }
+    world->query_factories = NULL;
 }
 
 
@@ -146,56 +147,55 @@ REDLAND_EXTERN_C
 void
 librdf_query_register_factory(librdf_world *world, const char *name,
                               const unsigned char *uri_string,
-                              void (*factory) (librdf_query_factory*)) 
-{
-  librdf_query_factory *query;
+                              void (*factory)(librdf_query_factory *)) {
+    librdf_query_factory *query;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
 #if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 1
-  LIBRDF_DEBUG2("Received registration for query name %s\n", name);
+    LIBRDF_DEBUG2("Received registration for query name %s\n", name);
 #endif
 
-  for(query = world->query_factories; query; query = query->next ) {
-    if(!strcmp(query->name, name)) {
-      librdf_log(world,
-                 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_QUERY, NULL,
-                 "query language %s already registered", query->name);
-      return;
+    for (query = world->query_factories; query; query = query->next) {
+        if (!strcmp(query->name, name)) {
+            librdf_log(world,
+                       0, LIBRDF_LOG_ERROR, LIBRDF_FROM_QUERY, NULL,
+                       "query language %s already registered", query->name);
+            return;
+        }
     }
-  }
 
-  query = LIBRDF_CALLOC(librdf_query_factory*, 1, sizeof(*query));
-  if(!query)
-    goto oom;
+    query = LIBRDF_CALLOC(librdf_query_factory*, 1, sizeof(*query));
+    if (!query)
+        goto oom;
 
-  query->name = LIBRDF_MALLOC(char*, strlen(name) + 1);
-  if(!query->name)
-    goto oom_tidy;
-  strcpy(query->name, name);
+    query->name = LIBRDF_MALLOC(char*, strlen(name) + 1);
+    if (!query->name)
+        goto oom_tidy;
+    strcpy(query->name, name);
 
-  if(uri_string) {
-    query->uri=librdf_new_uri(world, uri_string);
-    if(!query->uri)
-      goto oom_tidy;
-  }
+    if (uri_string) {
+        query->uri = librdf_new_uri(world, uri_string);
+        if (!query->uri)
+            goto oom_tidy;
+    }
 
-  query->next = world->query_factories;
-  world->query_factories = query;
+    query->next = world->query_factories;
+    world->query_factories = query;
 
-  /* Call the query registration function on the new object */
-  (*factory)(query);
+    /* Call the query registration function on the new object */
+    (*factory)(query);
 
 #if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 1
-  LIBRDF_DEBUG3("%s has context size %d\n", name, query->context_length);
+    LIBRDF_DEBUG3("%s has context size %d\n", name, query->context_length);
 #endif
 
-  return;
+    return;
 
-  oom_tidy:
-  librdf_free_query_factory(query);
-  oom:
-  LIBRDF_FATAL1(world, LIBRDF_FROM_QUERY, "Out of memory");
+    oom_tidy:
+    librdf_free_query_factory(query);
+    oom:
+    LIBRDF_FATAL1(world, LIBRDF_FROM_QUERY, "Out of memory");
 }
 
 
@@ -209,39 +209,38 @@ librdf_query_register_factory(librdf_world *world, const char *name,
  * 
  * Return value: the factory object or NULL if there is no such factory
  **/
-librdf_query_factory*
-librdf_get_query_factory(librdf_world *world, 
-                         const char *name, librdf_uri *uri) 
-{
-  librdf_query_factory *factory;
+librdf_query_factory *
+librdf_get_query_factory(librdf_world *world,
+                         const char *name, librdf_uri *uri) {
+    librdf_query_factory *factory;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  /* return 1st query if no particular one wanted - why? */
-  if(!name && !uri) {
-    factory=world->query_factories;
-    if(!factory) {
-      LIBRDF_DEBUG1("No (default) query factories registered\n");
-      return NULL;
+    /* return 1st query if no particular one wanted - why? */
+    if (!name && !uri) {
+        factory = world->query_factories;
+        if (!factory) {
+            LIBRDF_DEBUG1("No (default) query factories registered\n");
+            return NULL;
+        }
+    } else {
+        for (factory = world->query_factories; factory; factory = factory->next) {
+            if (name && !strcmp(factory->name, name)) {
+                break;
+            }
+            if (uri && factory->uri && librdf_uri_equals(factory->uri, uri)) {
+                break;
+            }
+        }
+        /* else FACTORY name not found */
+        if (!factory) {
+            LIBRDF_DEBUG3("No query language with name '%s' uri %s found\n",
+                          name, (uri ? (char *) librdf_uri_as_string(uri) : "NULL"));
+            return NULL;
+        }
     }
-  } else {
-    for(factory=world->query_factories; factory; factory=factory->next) {
-      if(name && !strcmp(factory->name, name)) {
-        break;
-      }
-      if(uri && factory->uri && librdf_uri_equals(factory->uri, uri)) {
-        break;
-      }
-    }
-    /* else FACTORY name not found */
-    if(!factory) {
-      LIBRDF_DEBUG3("No query language with name '%s' uri %s found\n", 
-                    name, (uri ? (char*)librdf_uri_as_string(uri) : "NULL"));
-      return NULL;
-    }
-  }
-        
-  return factory;
+
+    return factory;
 }
 
 /**
@@ -262,39 +261,38 @@ librdf_get_query_factory(librdf_world *world,
  * Return value: non 0 on failure of if counter is out of range
  */
 int
-librdf_query_languages_enumerate(librdf_world* world,
+librdf_query_languages_enumerate(librdf_world *world,
                                  const unsigned int counter,
                                  const char **name,
-                                 const unsigned char **uri_string)
-{
-  unsigned int i;
-  librdf_query_factory *factory;
+                                 const unsigned char **uri_string) {
+    unsigned int i;
+    librdf_query_factory *factory;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, 1);
-  if(!name && !uri_string)
-    return 1;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, 1);
+    if (!name && !uri_string)
+        return 1;
 
-  librdf_world_open(world);
-  
-  factory = world->query_factories;
-  if(!factory)
-    return 1;
+    librdf_world_open(world);
 
-  for(i=0; factory && i<=counter ; i++, factory=factory->next) {
-    if(i == counter) {
-      if(name)
-        *name=factory->name;
-      if(uri_string) {
-        if (factory->uri)
-          *uri_string=librdf_uri_as_string(factory->uri);
-        else
-          *uri_string=NULL;
-      }
-      return 0;
+    factory = world->query_factories;
+    if (!factory)
+        return 1;
+
+    for (i = 0; factory && i <= counter; i++, factory = factory->next) {
+        if (i == counter) {
+            if (name)
+                *name = factory->name;
+            if (uri_string) {
+                if (factory->uri)
+                    *uri_string = librdf_uri_as_string(factory->uri);
+                else
+                    *uri_string = NULL;
+            }
+            return 0;
+        }
     }
-  }
-        
-  return 1;
+
+    return 1;
 }
 
 /**
@@ -306,14 +304,13 @@ librdf_query_languages_enumerate(librdf_world* world,
  *
  * Return value: description or NULL if counter is out of range
  */
-const raptor_syntax_description*
-librdf_query_language_get_description(librdf_world* world,
-                                      unsigned int counter)
-{
-  librdf_world_open(world);
+const raptor_syntax_description *
+librdf_query_language_get_description(librdf_world *world,
+                                      unsigned int counter) {
+    librdf_world_open(world);
 
-  return rasqal_world_get_query_language_description(world->rasqal_world_ptr,
-                                                     counter);
+    return rasqal_world_get_query_language_description(world->rasqal_world_ptr,
+                                                       counter);
 }
 
 /**
@@ -328,22 +325,21 @@ librdf_query_language_get_description(librdf_world* world,
  *
  * Return value: a new #librdf_query object or NULL on failure
  */
-librdf_query*
+librdf_query *
 librdf_new_query(librdf_world *world,
                  const char *name, librdf_uri *uri,
                  const unsigned char *query_string,
-                 librdf_uri* base_uri)
-{
-  librdf_query_factory* factory;
+                 librdf_uri *base_uri) {
+    librdf_query_factory *factory;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  factory=librdf_get_query_factory(world, name, uri);
-  if(!factory)
-    return NULL;
+    factory = librdf_get_query_factory(world, name, uri);
+    if (!factory)
+        return NULL;
 
-  return librdf_new_query_from_factory(world, factory, name, uri, 
-                                       query_string, base_uri);
+    return librdf_new_query_from_factory(world, factory, name, uri,
+                                         query_string, base_uri);
 }
 
 
@@ -358,48 +354,47 @@ librdf_new_query(librdf_world *world,
  *
  * Return value: a new #librdf_query object or NULL on failure
  */
-librdf_query*
-librdf_new_query_from_query(librdf_query* old_query) 
-{
-  librdf_query* new_query;
+librdf_query *
+librdf_new_query_from_query(librdf_query *old_query) {
+    librdf_query *new_query;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(old_query, librdf_query, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(old_query, librdf_query, NULL);
 
-  /* FIXME: fail if clone is not supported by this query (factory) */
-  if(!old_query->factory->clone) {
-    LIBRDF_FATAL1(old_query->world, LIBRDF_FROM_QUERY, "clone not implemented for query factory");
-    return NULL;
-  }
+    /* FIXME: fail if clone is not supported by this query (factory) */
+    if (!old_query->factory->clone) {
+        LIBRDF_FATAL1(old_query->world, LIBRDF_FROM_QUERY, "clone not implemented for query factory");
+        return NULL;
+    }
 
-  new_query = LIBRDF_CALLOC(librdf_query*, 1, sizeof(*new_query));
-  if(!new_query)
-    return NULL;
-  
-  new_query->usage=1;
+    new_query = LIBRDF_CALLOC(librdf_query*, 1, sizeof(*new_query));
+    if (!new_query)
+        return NULL;
 
-  new_query->context = LIBRDF_CALLOC(void*, 1,
-                                     old_query->factory->context_length);
-  if(!new_query->context) {
-    librdf_free_query(new_query);
-    return NULL;
-  }
+    new_query->usage = 1;
 
-  new_query->world=old_query->world;
+    new_query->context = LIBRDF_CALLOC(void*, 1,
+                                       old_query->factory->context_length);
+    if (!new_query->context) {
+        librdf_free_query(new_query);
+        return NULL;
+    }
 
-  /* do this now so librdf_free_query won't call new factory on
-   * partially copied query
-   */
-  new_query->factory=old_query->factory;
+    new_query->world = old_query->world;
 
-  /* clone is assumed to do leave the new query in the same state
-   * after an init() method on an existing query - i.e ready to use
-   */
-  if(old_query->factory->clone(new_query, old_query)) {
-    librdf_free_query(new_query);
-    return NULL;
-  }
+    /* do this now so librdf_free_query won't call new factory on
+     * partially copied query
+     */
+    new_query->factory = old_query->factory;
 
-  return new_query;
+    /* clone is assumed to do leave the new query in the same state
+     * after an init() method on an existing query - i.e ready to use
+     */
+    if (old_query->factory->clone(new_query, old_query)) {
+        librdf_free_query(new_query);
+        return NULL;
+    }
+
+    return new_query;
 }
 
 
@@ -416,46 +411,45 @@ librdf_new_query_from_query(librdf_query* old_query)
  *
  * Return value: a new #librdf_query object or NULL on failure
  */
-librdf_query*
+librdf_query *
 librdf_new_query_from_factory(librdf_world *world,
-                              librdf_query_factory* factory,
+                              librdf_query_factory *factory,
                               const char *name, librdf_uri *uri,
                               const unsigned char *query_string,
-                              librdf_uri *base_uri)
-{
-  librdf_query* query;
+                              librdf_uri *base_uri) {
+    librdf_query *query;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(factory, librdf_query_factory, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(factory, librdf_query_factory, NULL);
 
-  if(!factory) {
-    LIBRDF_DEBUG1("No query factory given\n");
-    return NULL;
-  }
-  
-  query = LIBRDF_CALLOC(librdf_query*, 1, sizeof(*query));
-  if(!query)
-    return NULL;
+    if (!factory) {
+        LIBRDF_DEBUG1("No query factory given\n");
+        return NULL;
+    }
 
-  query->world=world;
+    query = LIBRDF_CALLOC(librdf_query*, 1, sizeof(*query));
+    if (!query)
+        return NULL;
 
-  query->usage=1;
+    query->world = world;
 
-  query->context = LIBRDF_CALLOC(void*, 1, factory->context_length);
-  if(!query->context) {
-    librdf_free_query(query);
-    return NULL;
-  }
-  
-  query->factory=factory;
-  
-  if(factory->init(query, name, uri, query_string, base_uri)) {
-    librdf_free_query(query);
-    return NULL;
-  }
-  
-  return query;
+    query->usage = 1;
+
+    query->context = LIBRDF_CALLOC(void*, 1, factory->context_length);
+    if (!query->context) {
+        librdf_free_query(query);
+        return NULL;
+    }
+
+    query->factory = factory;
+
+    if (factory->init(query, name, uri, query_string, base_uri)) {
+        librdf_free_query(query);
+        return NULL;
+    }
+
+    return query;
 }
 
 
@@ -466,21 +460,26 @@ librdf_new_query_from_factory(librdf_world *world,
  * Destructor - destroy a #librdf_query object.
  **/
 void
-librdf_free_query(librdf_query* query) 
-{
-  if(!query)
-    return;
-  
-  if(--query->usage)
-    return;
-  
-  if(query->factory)
-    query->factory->terminate(query);
+librdf_free_query(librdf_query *query) {
+    printf("in librdf_free_query\n");
+    if (!query)
+        return;
 
-  if(query->context)
-    LIBRDF_FREE(librdf_query_context, query->context);
+    printf("if usage\n");
+    if (--query->usage)
+        return;
 
-  LIBRDF_FREE(librdf_query, query);
+    printf("if factory\n");
+    if (query->factory)
+        query->factory->terminate(query);
+
+
+    printf("if context\n");
+    if (query->context)
+        LIBRDF_FREE(librdf_query_context, query->context);
+
+    LIBRDF_FREE(librdf_query, query);
+    printf("done freeing\n");
 }
 
 
@@ -489,34 +488,32 @@ librdf_free_query(librdf_query* query)
 
 void
 librdf_query_add_query_result(librdf_query *query,
-                              librdf_query_results* query_results)
-{
-  query_results->next=query->results;
-  query->results=query_results;
-  /* add reference to ensure query lives as long as this runs */
-  query->usage++;
+                              librdf_query_results *query_results) {
+    query_results->next = query->results;
+    query->results = query_results;
+    /* add reference to ensure query lives as long as this runs */
+    query->usage++;
 }
 
 
 void
 librdf_query_remove_query_result(librdf_query *query,
-                                 librdf_query_results* query_results)
-{
-  librdf_query_results *cur, *prev=NULL;
-  for(cur = query->results; cur && cur != query_results; cur = cur->next)
-    prev = cur;
-  
-  if(cur != NULL) {
-    if(cur == query_results) {
-      if(prev)
-        prev->next = cur->next;
-    }
-    if(cur == query->results)
-      query->results = cur->next;
-  }
+                                 librdf_query_results *query_results) {
+    librdf_query_results *cur, *prev = NULL;
+    for (cur = query->results; cur && cur != query_results; cur = cur->next)
+        prev = cur;
 
-  /* remove reference and free if we are the last */
-  librdf_free_query(query);
+    if (cur != NULL) {
+        if (cur == query_results) {
+            if (prev)
+                prev->next = cur->next;
+        }
+        if (cur == query->results)
+            query->results = cur->next;
+    }
+
+    /* remove reference and free if we are the last */
+    librdf_free_query(query);
 }
 
 
@@ -532,20 +529,19 @@ librdf_query_remove_query_result(librdf_query *query,
  * 
  * Return value:  #librdf_query_results or NULL on failure
  **/
-librdf_query_results*
-librdf_query_execute(librdf_query* query, librdf_model* model)
-{
-  librdf_query_results* results=NULL;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, librdf_query, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+librdf_query_results *
+librdf_query_execute(librdf_query *query, librdf_model *model) {
+    librdf_query_results *results = NULL;
 
-  if(query->factory->execute) {
-    if((results=query->factory->execute(query, model)))
-      librdf_query_add_query_result(query, results);
-  }
-  
-  return results;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, librdf_query, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+
+    if (query->factory->execute) {
+        if ((results = query->factory->execute(query, model)))
+            librdf_query_add_query_result(query, results);
+    }
+
+    return results;
 }
 
 
@@ -560,12 +556,11 @@ librdf_query_execute(librdf_query* query, librdf_model* model)
  * Return value: integer >=0 if a limit is given, otherwise <0
  **/
 int
-librdf_query_get_limit(librdf_query *query)
-{
-  if(query->factory->get_limit)
-    return query->factory->get_limit(query);
-  
-  return -1;
+librdf_query_get_limit(librdf_query *query) {
+    if (query->factory->get_limit)
+        return query->factory->get_limit(query);
+
+    return -1;
 }
 
 
@@ -581,14 +576,13 @@ librdf_query_get_limit(librdf_query *query)
  * Return value: non-0 on failure
  **/
 int
-librdf_query_set_limit(librdf_query *query, int limit)
-{
-  if(query->factory->set_limit) {
-    query->factory->set_limit(query, limit);
-    return 0;
-  }
+librdf_query_set_limit(librdf_query *query, int limit) {
+    if (query->factory->set_limit) {
+        query->factory->set_limit(query, limit);
+        return 0;
+    }
 
-  return -1;
+    return -1;
 }
 
 
@@ -603,12 +597,11 @@ librdf_query_set_limit(librdf_query *query, int limit)
  * Return value: integer >=0 if a offset is given, otherwise <0
  **/
 int
-librdf_query_get_offset(librdf_query *query)
-{
-  if(query->factory->get_offset)
-    return query->factory->get_offset(query);
-  
-  return -1;
+librdf_query_get_offset(librdf_query *query) {
+    if (query->factory->get_offset)
+        return query->factory->get_offset(query);
+
+    return -1;
 }
 
 
@@ -624,14 +617,13 @@ librdf_query_get_offset(librdf_query *query)
  * Return value: non-0 on failure
  **/
 int
-librdf_query_set_offset(librdf_query *query, int offset)
-{
-  if(query->factory->set_offset) {
-    query->factory->set_offset(query, offset);
-    return 0;
-  }
+librdf_query_set_offset(librdf_query *query, int offset) {
+    if (query->factory->set_offset) {
+        query->factory->set_offset(query, offset);
+        return 0;
+    }
 
-  return -1;
+    return -1;
 }
 
 #endif

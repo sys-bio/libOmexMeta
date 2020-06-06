@@ -7,10 +7,9 @@
 
 namespace redland {
 
-
-    void LibrdfModel::deleter::operator()(librdf_model *model) {
-        if (model != nullptr) {
-            librdf_free_model(model);
+    void LibrdfModel::freeModel() {
+        if (model_ != nullptr) {
+            librdf_free_model(model_);
         }
     }
 
@@ -18,14 +17,34 @@ namespace redland {
             : model_(model) {
     }
 
-    void LibrdfModel::freeModel() {
-        if (model_ != nullptr) {
-            librdf_free_model(model_);
+//    LibrdfModel::~LibrdfModel() {
+//        freeModel();
+//    }
+
+    LibrdfModel::LibrdfModel(LibrdfModel &&model) noexcept {
+        if (model.model_ != nullptr) {
+            if (model_ != nullptr)
+                freeModel();
+            model_ = std::move(model.model_);
+            model.model_ = nullptr;
         }
     }
 
-    LibrdfModel::LibrdfModel(const LibrdfStorage &storage, const char *options)
-            : model_(librdf_new_model(World::getWorld(), std::move(storage).get(), options)) {}
+    LibrdfModel &LibrdfModel::operator=(LibrdfModel &&model) noexcept {
+        if (this != &model) {
+            if (model.model_ != nullptr) {
+                if (model_ != nullptr)
+                    freeModel();
+                model_ = std::move(model.model_);
+                model.model_ = nullptr;
+            }
+        }
+        return *this;
+    }
+
+
+    LibrdfModel::LibrdfModel(librdf_storage *storage, const char *options)
+            : model_(librdf_new_model(World::getWorld(), storage, options)) {}
 
     void LibrdfModel::addStatement(const LibrdfStatement &statement) const {
         librdf_model_add_statement(get(), statement.get());
@@ -55,9 +74,6 @@ namespace redland {
         }
         return stream;
     }
-
-
-    // todo add wrapper around librdf_model_add_statement
 
 }
 

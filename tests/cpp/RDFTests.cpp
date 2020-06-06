@@ -78,7 +78,7 @@ TEST_F(RDFTests, TestToEditorPtr) {
 
 TEST_F(RDFTests, TestFreeWorldAndNewRDF) {
     RDF rdf1;
-    World::free(World::getWorld());
+//    World::free(World::getWorld());
 //    RDF rdf2;
 
 }

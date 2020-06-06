@@ -21,7 +21,7 @@ public:
     std::string query_string = "SELECT ?x ?y ?z \n"
                                "WHERE {?x ?y ?z}";
     LibrdfStorage storage;
-    LibrdfModel model = LibrdfModel(std::move(storage));
+    LibrdfModel model = LibrdfModel(storage.get());
     librdf_node *subject = LibrdfNode::fromUriString("subject");
     librdf_node *predicate = LibrdfNode::fromUriString("predicate");
     librdf_node *resource = LibrdfNode::fromUriString("resource");

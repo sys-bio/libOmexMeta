@@ -25,10 +25,15 @@ public:
 
     //todo subject could pass the world to the node
     TriplesTests() {
-        model = LibrdfModel(std::move(storage));
+        model = LibrdfModel(storage.get());
         this->subject = Subject::fromRawPtr(LibrdfNode::fromUriString("subby"));
         this->resource = Resource::fromRawPtr(LibrdfNode::fromUriString(("space/id")));
         this->predicate = BiomodelsBiologyQualifier("is");
+    }
+
+    ~TriplesTests(){
+        storage.freeStorage();
+        model.freeModel();
     }
 };
 
