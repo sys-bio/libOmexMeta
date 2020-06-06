@@ -376,7 +376,7 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
                            "https://identifiers.org/FMA/fma:8378\n";
     std::ostringstream os;
     for (int i = 0; i < num_locations; i++) {
-        char* string = PhysicalEntity_getLocation(physical_entity_ptr, i);
+        char *string = PhysicalEntity_getLocation(physical_entity_ptr, i);
         os << string << '\n';
         free_c_char_star(string);
     }
@@ -647,56 +647,132 @@ TEST_F(CAPITests, TestEditorToRDF) {
 
 }
 
+/*
+ * todo support for equality operators
+ */
 
-TEST_F(CAPITests, TestRDFTwice) {
+TEST_F(CAPITests, TestRDFTwice1) {
+    RDF *rdf_ptr1 = RDF_new();
+    RDF *rdf_ptr2 = RDF_new();
+    ASSERT_NE(rdf_ptr1, rdf_ptr2);
+    RDF_delete(rdf_ptr1);
+    RDF_delete(rdf_ptr2);
+}
+
+TEST_F(CAPITests, TestRDFTwice2) {
+    RDF *rdf_ptr1 = RDF_new();
+    RDF *rdf_ptr2 = RDF_new();
+    ASSERT_NE(rdf_ptr1->getModel(), rdf_ptr2->getModel());
+    RDF_delete(rdf_ptr1);
+    RDF_delete(rdf_ptr2);
+}
+
+TEST_F(CAPITests, TestRDFTwice3) {
+    RDF *rdf_ptr1 = RDF_new();
+    RDF *rdf_ptr2 = RDF_new();
+    ASSERT_NE(rdf_ptr1->getStorage(), rdf_ptr2->getStorage());
+    RDF_delete(rdf_ptr1);
+    RDF_delete(rdf_ptr2);
+}
+
+TEST_F(CAPITests, TestAddTwoAnn) {
     RDF *rdf_ptr1 = RDF_new();
     Editor *editor_ptr1 = rdf_ptr1->toEditorPtr(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML
     );
-    SingularAnnotation* annotation1 = SingularAnnotation_new(editor_ptr1);
+    SingularAnnotation *annotation1 = SingularAnnotation_new(editor_ptr1);
+    annotation1 = SingularAnnotation_setAbout(annotation1, "first about");
+    annotation1 = SingularAnnotation_setPredicate(annotation1, "bqb", "is");
+    annotation1 = SingularAnnotation_setResourceLiteral(annotation1, "First Literal Resource");
+    Editor_addSingleAnnotation(editor_ptr1, annotation1);
+
+
+    SingularAnnotation *annotation2 = SingularAnnotation_new(editor_ptr1);
+    annotation2 = SingularAnnotation_setAbout(annotation2, "Second about");
+    annotation2 = SingularAnnotation_setPredicate(annotation2, "bqb", "is");
+    annotation2 = SingularAnnotation_setResourceLiteral(annotation2, "second Literal Resource");
+    Editor_addSingleAnnotation(editor_ptr1, annotation2);
+    Editor_toRDF(editor_ptr1);
+    char *string = RDF_toString(rdf_ptr1, "rdfxml-abbrev", "./Annot.rdf");
+    std::string observed_string = (const char *) string;
+
+    RDF_delete(rdf_ptr1);
+    Editor_delete(editor_ptr1);
+    free_c_char_star(string);
+    SingularAnnotation_delete(annotation2);
+
+    std::cout << observed_string << "\n\n" << observed_string << std::endl;
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xml:base=\"file://./Annot.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"Second about\">\n"
+                           "    <bqbiol:is rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">second Literal Resource</bqbiol:is>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"first about\">\n"
+                           "    <bqbiol:is rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">First Literal Resource</bqbiol:is>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    ASSERT_STREQ(expected.c_str(), observed_string.c_str());
+
+}
+
+TEST_F(CAPITests, TestRDFTwic) {
+    RDF *rdf_ptr1 = RDF_new();
+    Editor *editor_ptr1 = rdf_ptr1->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    SingularAnnotation *annotation1 = SingularAnnotation_new(editor_ptr1);
     annotation1 = SingularAnnotation_setAbout(annotation1, "first about");
     annotation1 = SingularAnnotation_setPredicate(annotation1, "bqb", "is");
     annotation1 = SingularAnnotation_setResourceLiteral(annotation1, "First Literal Resource");
     Editor_addSingleAnnotation(editor_ptr1, annotation1);
     Editor_toRDF(editor_ptr1);
     char *string1 = RDF_toString(rdf_ptr1, "rdfxml-abbrev", "./Annot.rdf");
-    std::string observed_string1 = (const char*) string1;
+    std::string observed_string1 = (const char *) string1;
 
-
-    RDF_delete(rdf_ptr1);
-    Editor_delete(editor_ptr1);
-    free_c_char_star(string1);
-    SingularAnnotation_delete(annotation1);
 
 //    free_world(World::getWorld());
 
-//
-//    RDF *rdf_ptr2 = RDF_new();
-//    Editor *editor_ptr2 = rdf_ptr2->toEditorPtr(
-//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-//            SEMSIM_TYPE_SBML
-//    );
-//    SingularAnnotation* annotation2 = SingularAnnotation_new(editor_ptr2);
-//    annotation2 = SingularAnnotation_setAbout(annotation2, "Second about");
-//    annotation2 = SingularAnnotation_setPredicate(annotation2, "bqb", "is");
-//    annotation2 = SingularAnnotation_setResourceLiteral(annotation2, "second Literal Resource");
-//    Editor_addSingleAnnotation(editor_ptr2, annotation2);
-//    Editor_toRDF(editor_ptr2);
-//    char *string2 = RDF_toString(rdf_ptr2, "rdfxml-abbrev", "./Annot.rdf");
-//    std::string observed_string2 = (const char*) string2;
-//
-//    RDF_delete(rdf_ptr2);
-//    Editor_delete(editor_ptr2);
-//    free_c_char_star(string2);
-//    SingularAnnotation_delete(annotation2);
-//
+
+    RDF *rdf_ptr2 = RDF_new();
+    Editor *editor_ptr2 = rdf_ptr2->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    SingularAnnotation *annotation2 = SingularAnnotation_new(editor_ptr2);
+    annotation2 = SingularAnnotation_setAbout(annotation2, "Second about");
+    annotation2 = SingularAnnotation_setPredicate(annotation2, "bqb", "is");
+    annotation2 = SingularAnnotation_setResourceLiteral(annotation2, "second Literal Resource");
+    Editor_addSingleAnnotation(editor_ptr2, annotation2);
+    Editor_toRDF(editor_ptr2);
+    char *string2 = RDF_toString(rdf_ptr2, "rdfxml-abbrev", "./Annot.rdf");
+    std::string observed_string2 = (const char *) string2;
+
+
 //    std::cout << observed_string1 << "\n\n" << observed_string2 << std::endl;
-//
+
 //    ASSERT_STRNE(observed_string1.c_str(), observed_string2.c_str());
+    std::cout << "rdf_ptr, " << rdf_ptr1 << ", " << rdf_ptr2 << std::endl;
+    std::cout << "rdf_ptr.getModel, " << rdf_ptr1->getModel() << ", " << rdf_ptr2->getModel() << std::endl;
+    std::cout << "editor_ptr, " << editor_ptr1 << ", " << editor_ptr2 << std::endl;
+    std::cout << "annotation, " << annotation1 << ", " << annotation2 << std::endl;
+    std::cout << "string, " << string1 << ", " << string2 << std::endl;
 
 
+    Editor_delete(editor_ptr1);
+    free_c_char_star(string1);
+    SingularAnnotation_delete(annotation1);
+    RDF_delete(rdf_ptr1);
+    SingularAnnotation_delete(annotation1);
 
+
+    RDF_delete(rdf_ptr2);
+    Editor_delete(editor_ptr2);
+    free_c_char_star(string2);
+    SingularAnnotation_delete(annotation2);
 
 }
 

@@ -19,19 +19,23 @@ namespace semsim {
         setBaseUri(base_uri);
     }
 
-    RDF::~RDF() {
-        std::cout << "freeing model and storage from rdf destructor " << std::endl;
+    void RDF::freeRDF() {
         model_.freeModel();
         storage_.freeStorage();
-        /*
-         * We cannot free world here since that precludes
-         * the possibility of manipulating the RDF class
-         * (such as in fromString() ). Users will have
-         * to remember to free the world after each
-         * program.
-         */
-//        World::free(World::getWorld());
     }
+
+//    RDF::~RDF() {
+////        freeRDF();
+//
+//        /*
+//         * We cannot free world here since that precludes
+//         * the possibility of manipulating the RDF class
+//         * (such as in fromString() ). Users will have
+//         * to remember to free the world after each
+//         * program.
+//         */
+////        World::free(World::getWorld());
+//    }
 
 
     RDF::RDF(RDF &&rdf) noexcept {
