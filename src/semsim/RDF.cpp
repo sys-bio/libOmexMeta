@@ -24,18 +24,9 @@ namespace semsim {
         storage_.freeStorage();
     }
 
-//    RDF::~RDF() {
-////        freeRDF();
-//
-//        /*
-//         * We cannot free world here since that precludes
-//         * the possibility of manipulating the RDF class
-//         * (such as in fromString() ). Users will have
-//         * to remember to free the world after each
-//         * program.
-//         */
-////        World::free(World::getWorld());
-//    }
+    RDF::~RDF() {
+        freeRDF();
+    }
 
 
     RDF::RDF(RDF &&rdf) noexcept {

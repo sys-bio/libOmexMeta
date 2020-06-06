@@ -33,7 +33,8 @@ TEST_F(CAPITests, RDFNew) {
     std::string uri = rdf_ptr->base_uri_;
     std::string expected = "file://./Annotations.rdf";
     ASSERT_STREQ(expected.c_str(), uri.c_str());
-    RDF_delete(rdf_ptr);
+    delete rdf_ptr;
+
 }
 
 TEST_F(CAPITests, RDFSize) {
@@ -42,7 +43,8 @@ TEST_F(CAPITests, RDFSize) {
     int actual = RDF_size(rdf_ptr);
     int expected = 1;
     ASSERT_EQ(expected, actual);
-    RDF_delete(rdf_ptr);
+    delete rdf_ptr;
+
 }
 
 TEST_F(CAPITests, FreeCharStar) {
@@ -66,7 +68,7 @@ TEST_F(CAPITests, RDFToString) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    RDF_delete(rdf_ptr);
+    delete rdf_ptr;
 }
 
 TEST_F(CAPITests, RDFgetBaseUri) {
@@ -76,8 +78,9 @@ TEST_F(CAPITests, RDFgetBaseUri) {
     std::cout << actual << std::endl;
     const char *expected = "file://./Annotations.rdf";
     ASSERT_STREQ(expected, actual);
-    RDF_delete(rdf_ptr);
+
     free(actual);
+    delete rdf_ptr;
 }
 
 TEST_F(CAPITests, RDFsetBaseUri) {
@@ -89,31 +92,27 @@ TEST_F(CAPITests, RDFsetBaseUri) {
     const char *expected = "file://ANewBaseUri.rdf";
     ASSERT_STREQ(expected, actual);
     free(actual); // necessary because we allocated on heap.
-    RDF_delete(rdf_ptr);
+    delete rdf_ptr;
 
 }
 
 
-//TEST_F(CAPITests, RDFqueryResultsAsStr) {
-//    RDF *rdf_ptr = RDF_new();
-//    RDF_fromString(rdf_ptr, samples.composite_annotation_pe.c_str(),"rdfxml");
-//
-//    const char *query = "SELECT ?x ?y ?z \n"
-//                        "WHERE { ?x ?y ?z }";
-//    const char *results = RDF_queryResultsAsStr(rdf_ptr, query, "csv");
-//    std::string expected = "x,y,z\r\n"
-//                           "file://./VLV,http://biomodels.net/biology-qualifiers/isVersionOf,http://identifiers.org/opb/OPB_00154\r\n"
-//                           "file://./VLV,http://biomodels.net/biology-qualifiers/isPropertyOf,file://./MyModel.rdf#entity_0\r\n"
-//                           "file://./MyModel.rdf#entity_0,http://biomodels.net/biology-qualifiers/is,http://identifiers.org/fma/FMA:9670\r\n"
-//                           "file://./MyModel.rdf#entity_0,http://biomodels.net/biology-qualifiers/isPartOf,http://identifiers.org/fma/FMA:18228\r\n";
-//    ASSERT_STREQ(expected
-//                         .
-//
-//                                 c_str(), results
-//
-//    );
-//    RDF_delete(rdf_ptr);
-//}
+TEST_F(CAPITests, RDFqueryResultsAsStr) {
+    RDF *rdf_ptr = RDF_new();
+    RDF_fromString(rdf_ptr, samples.composite_annotation_pe.c_str(), "rdfxml");
+
+    const char *query = "SELECT ?x ?y ?z \n"
+                        "WHERE { ?x ?y ?z }";
+    char *results = RDF_queryResultsAsStr(rdf_ptr, query, "csv");
+    std::string expected = "x,y,z\r\n"
+                           "file://./VLV,http://biomodels.net/biology-qualifiers/isVersionOf,http://identifiers.org/opb/OPB_00154\r\n"
+                           "file://./VLV,http://biomodels.net/biology-qualifiers/isPropertyOf,file://./MyModel.rdf#entity_0\r\n"
+                           "file://./MyModel.rdf#entity_0,http://biomodels.net/biology-qualifiers/is,http://identifiers.org/fma/FMA:9670\r\n"
+                           "file://./MyModel.rdf#entity_0,http://biomodels.net/biology-qualifiers/isPartOf,http://identifiers.org/fma/FMA:18228\r\n";
+    ASSERT_STREQ(expected.c_str(), results);
+    delete rdf_ptr;
+    free_c_char_star(results);
+}
 
 TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
     RDF *rdf_ptr = RDF_new();
@@ -130,10 +129,11 @@ TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
     const char *expected = "metaid6";
     ASSERT_STREQ(expected, actual);
 
-    RDF_delete(rdf_ptr);
+
     Editor_delete(editor_ptr);
     SingularAnnotation_delete(singularAnnotation);
     free_c_char_star(actual);
+    delete rdf_ptr;
 }
 
 TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
@@ -142,7 +142,6 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
     Editor *editor_ptr = rdf_ptr->toEditorPtr(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML
-
     );
 
     SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
@@ -152,10 +151,11 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
     const char *expected = "http://biomodels.net/biology-qualifiers/is";
     ASSERT_STREQ(expected, actual);
 
-    RDF_delete(rdf_ptr);
+
     Editor_delete(editor_ptr);
     SingularAnnotation_delete(singularAnnotation);
     free_c_char_star(actual);
+    delete rdf_ptr;
 }
 
 TEST_F(CAPITests, TestEditorPtrMem) {
@@ -186,7 +186,7 @@ TEST_F(CAPITests, TestEditorPtrMem) {
 //    const char *expected = "UnheardOfNamespace/NewTerm";
 //    ASSERT_STREQ(expected, actual);
 //
-//    RDF_delete(rdf_ptr);
+//    
 //    Editor_delete(editor_ptr);
 //    SingularAnnotation_delete(singularAnnotation);
 //    free_c_char_star(actual);
@@ -207,10 +207,11 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceLiteral) {
     const char *expected = "LiterallyAString";
     ASSERT_STREQ(expected, actual);
 
-    RDF_delete(rdf_ptr);
+
     Editor_delete(editor_ptr);
     SingularAnnotation_delete(singularAnnotation);
     free_c_char_star(actual);
+    delete rdf_ptr;
 }
 
 TEST_F(CAPITests, TestSingularAnnotationSetResourceUri) {
@@ -228,10 +229,10 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceUri) {
     const char *expected = "https://identifiers.org/uniprot/PD98723";
     ASSERT_STREQ(expected, actual);
 
-    RDF_delete(rdf_ptr);
     Editor_delete(editor_ptr);
     SingularAnnotation_delete(singularAnnotation);
     free_c_char_star(actual);
+    delete rdf_ptr;
 }
 
 TEST_F(CAPITests, TestSingularAnnotationSetResourceBlank) {
@@ -248,10 +249,11 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceBlank) {
     const char *expected = "Nothing";
     ASSERT_STREQ(expected, actual);
 
-    RDF_delete(rdf_ptr);
+
     Editor_delete(editor_ptr);
     SingularAnnotation_delete(singularAnnotation);
     free_c_char_star(actual);
+    delete rdf_ptr;
 }
 
 
@@ -287,10 +289,11 @@ TEST_F(CAPITests, TestPhysicalEntity) {
               std::endl;
     ASSERT_STREQ(expected, actual);
 
-    RDF_delete(rdf_ptr);
+
     Editor_delete(editor_ptr);
     PhysicalEntity_delete(physical_entity_ptr);
     free_c_char_star(actual);
+    delete rdf_ptr;
 }
 
 TEST_F(CAPITests, TestPhysicalEntityAbout) {
@@ -305,12 +308,13 @@ TEST_F(CAPITests, TestPhysicalEntityAbout) {
     const char *expected = "metaid87";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected, actual);
-    RDF_delete(rdf_ptr);
+
     Editor_delete(editor_ptr);
     free_c_char_star(actual);
     // we need to free the node inside get about manually here because
     // we are not using the str() method
     PhysicalEntity_freeAll(physical_entity_ptr);
+    delete rdf_ptr;
 }
 
 
@@ -327,12 +331,13 @@ TEST_F(CAPITests, TestPhysicalEntityPhysicalProperty) {
     std::cout << actual <<
               std::endl;
     ASSERT_STREQ(expected, actual);
-    RDF_delete(rdf_ptr);
+
     Editor_delete(editor_ptr);
     // we must free this node manually here. Cannot be incorporated into
     // delete function because it'll clash with the main use case (i.e. str method)
     PhysicalEntity_freeAll(physical_entity_ptr);
     free_c_char_star(actual);
+    delete rdf_ptr;
 }
 
 TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
@@ -349,17 +354,14 @@ TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
               std::endl;
     ASSERT_STREQ(expected, actual);
 
-    RDF_delete(rdf_ptr);
+
     Editor_delete(editor_ptr);
     // as opposed to PhysicalEntity_delete which would leave behind un-freed nodes.
     PhysicalEntity_freeAll(physical_entity_ptr);
     free_c_char_star(actual);
+    delete rdf_ptr;
 }
 
-/*
- * todo uncomment out and work out how to properly manage the
- * memory with arrays
- */
 TEST_F(CAPITests, TestPhysicalEntityLocations) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = rdf_ptr->toEditorPtr(
@@ -383,7 +385,8 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
     ASSERT_STREQ(expected, os.str().c_str());
     PhysicalEntity_freeAll(physical_entity_ptr);
     Editor_delete(editor_ptr);
-    RDF_delete(rdf_ptr);
+    delete rdf_ptr;
+
 }
 
 
@@ -400,9 +403,10 @@ TEST_F(CAPITests, TestPhysicalEntityNumLocations) {
     int expected = 3;
     int actual = PhysicalEntity_getNumLocations(physical_entity_ptr);
     ASSERT_EQ(expected, actual);
-    RDF_delete(rdf_ptr);
+
     Editor_delete(editor_ptr);
     PhysicalEntity_freeAll(physical_entity_ptr);
+    delete rdf_ptr;
 }
 
 
@@ -438,10 +442,11 @@ TEST_F(CAPITests, TestPhysicalEntityStr) {
     char *actual = PhysicalEntity_str(physical_entity_ptr, "rdfxml-abbrev", "./Annot.rdf");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual);
-    RDF_delete(rdf_ptr);
+
     Editor_delete(editor_ptr);
     PhysicalEntity_delete(physical_entity_ptr);
     free_c_char_star(actual);
+    delete rdf_ptr;
 }
 
 TEST_F(CAPITests, TestPhysicalProcess) {
@@ -490,13 +495,11 @@ TEST_F(CAPITests, TestPhysicalProcess) {
                            "</rdf:RDF>\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual);
-    RDF_delete(rdf_ptr);
+
     Editor_delete(editor_ptr);
-    /*
-     * When use the string method we do'nt need to free PhysialPrrocess???
-     */
     PhysicalProcess_delete(physical_process_ptr);
     free_c_char_star(actual);
+    delete rdf_ptr;
 }
 
 TEST_F(CAPITests, TestPhysicalForce) {
@@ -541,7 +544,8 @@ TEST_F(CAPITests, TestPhysicalForce) {
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual);
 
-    RDF_delete(rdf_ptr);
+
+    delete rdf_ptr;
     Editor_delete(editor_ptr);
     PhysicalForce_delete(physical_force_ptr);
     free_c_char_star(actual);
@@ -636,14 +640,15 @@ TEST_F(CAPITests, TestEditorToRDF) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     char *actual = RDF_toString(rdf_ptr, "rdfxml-abbrev", "./Annot.rdf");
-    std::cout << actual <<
-              std::endl;
-    RDF_delete(rdf_ptr);
+    std::cout << actual << std::endl;
+
+
     Editor_delete(editor_ptr);
     PhysicalEntity_delete(physical_entity_ptr);
     PhysicalProcess_delete(physical_process_ptr);
     PhysicalForce_delete(physical_force_ptr);
     free_c_char_star(actual);
+    delete rdf_ptr;
 
 }
 
@@ -655,126 +660,131 @@ TEST_F(CAPITests, TestRDFTwice1) {
     RDF *rdf_ptr1 = RDF_new();
     RDF *rdf_ptr2 = RDF_new();
     ASSERT_NE(rdf_ptr1, rdf_ptr2);
-    RDF_delete(rdf_ptr1);
-    RDF_delete(rdf_ptr2);
+    delete rdf_ptr1;
+    delete rdf_ptr2;
 }
 
 TEST_F(CAPITests, TestRDFTwice2) {
     RDF *rdf_ptr1 = RDF_new();
     RDF *rdf_ptr2 = RDF_new();
     ASSERT_NE(rdf_ptr1->getModel(), rdf_ptr2->getModel());
-    RDF_delete(rdf_ptr1);
-    RDF_delete(rdf_ptr2);
+    delete rdf_ptr1;
+    delete rdf_ptr2;
 }
 
 TEST_F(CAPITests, TestRDFTwice3) {
     RDF *rdf_ptr1 = RDF_new();
     RDF *rdf_ptr2 = RDF_new();
     ASSERT_NE(rdf_ptr1->getStorage(), rdf_ptr2->getStorage());
-    RDF_delete(rdf_ptr1);
-    RDF_delete(rdf_ptr2);
-}
+    delete rdf_ptr1;
+    delete rdf_ptr2;
 
-TEST_F(CAPITests, TestAddTwoAnn) {
-    RDF *rdf_ptr1 = RDF_new();
-    Editor *editor_ptr1 = rdf_ptr1->toEditorPtr(
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-            SEMSIM_TYPE_SBML
-    );
-    SingularAnnotation *annotation1 = SingularAnnotation_new(editor_ptr1);
-    annotation1 = SingularAnnotation_setAbout(annotation1, "first about");
-    annotation1 = SingularAnnotation_setPredicate(annotation1, "bqb", "is");
-    annotation1 = SingularAnnotation_setResourceLiteral(annotation1, "First Literal Resource");
-    Editor_addSingleAnnotation(editor_ptr1, annotation1);
-
-
-    SingularAnnotation *annotation2 = SingularAnnotation_new(editor_ptr1);
-    annotation2 = SingularAnnotation_setAbout(annotation2, "Second about");
-    annotation2 = SingularAnnotation_setPredicate(annotation2, "bqb", "is");
-    annotation2 = SingularAnnotation_setResourceLiteral(annotation2, "second Literal Resource");
-    Editor_addSingleAnnotation(editor_ptr1, annotation2);
-    Editor_toRDF(editor_ptr1);
-    char *string = RDF_toString(rdf_ptr1, "rdfxml-abbrev", "./Annot.rdf");
-    std::string observed_string = (const char *) string;
-
-    RDF_delete(rdf_ptr1);
-    Editor_delete(editor_ptr1);
-    free_c_char_star(string);
-    SingularAnnotation_delete(annotation2);
-
-    std::cout << observed_string << "\n\n" << observed_string << std::endl;
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xml:base=\"file://./Annot.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"Second about\">\n"
-                           "    <bqbiol:is rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">second Literal Resource</bqbiol:is>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"first about\">\n"
-                           "    <bqbiol:is rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">First Literal Resource</bqbiol:is>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
-    ASSERT_STREQ(expected.c_str(), observed_string.c_str());
 
 }
 
-TEST_F(CAPITests, TestRDFTwic) {
-    RDF *rdf_ptr1 = RDF_new();
-    Editor *editor_ptr1 = rdf_ptr1->toEditorPtr(
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-            SEMSIM_TYPE_SBML
-    );
-    SingularAnnotation *annotation1 = SingularAnnotation_new(editor_ptr1);
-    annotation1 = SingularAnnotation_setAbout(annotation1, "first about");
-    annotation1 = SingularAnnotation_setPredicate(annotation1, "bqb", "is");
-    annotation1 = SingularAnnotation_setResourceLiteral(annotation1, "First Literal Resource");
-    Editor_addSingleAnnotation(editor_ptr1, annotation1);
-    Editor_toRDF(editor_ptr1);
-    char *string1 = RDF_toString(rdf_ptr1, "rdfxml-abbrev", "./Annot.rdf");
-    std::string observed_string1 = (const char *) string1;
+//
+//TEST_F(CAPITests, TestAddTwoAnn) {
+//    RDF *rdf_ptr1 = RDF_new();
+//    Editor *editor_ptr1 = rdf_ptr1->toEditorPtr(
+//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+//            SEMSIM_TYPE_SBML
+//    );
+//    // first annotation
+//    SingularAnnotation *annotation1 = SingularAnnotation_new(editor_ptr1);
+//    annotation1 = SingularAnnotation_setAbout(annotation1, "first about");
+//    annotation1 = SingularAnnotation_setPredicate(annotation1, "bqb", "is");
+//    annotation1 = SingularAnnotation_setResourceLiteral(annotation1, "First Literal Resource");
+//    Editor_addSingleAnnotation(editor_ptr1, annotation1);
+//
+//    // second annotation
+//    SingularAnnotation *annotation2 = SingularAnnotation_new(editor_ptr1);
+//    annotation2 = SingularAnnotation_setAbout(annotation2, "Second about");
+//    annotation2 = SingularAnnotation_setPredicate(annotation2, "bqb", "is");
+//    annotation2 = SingularAnnotation_setResourceLiteral(annotation2, "second Literal Resource");
+//    Editor_addSingleAnnotation(editor_ptr1, annotation2);
+//    Editor_toRDF(editor_ptr1);
+//    char *string = RDF_toString(rdf_ptr1, "rdfxml-abbrev", "./Annot.rdf");
+//    std::string observed_string = (const char *) string;
+//
+//
+//    std::cout << observed_string << "\n\n" << observed_string << std::endl;
+//    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+//                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+//                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+//                           "   xml:base=\"file://./Annot.rdf\">\n"
+//                           "  <rdf:Description rdf:about=\"Second about\">\n"
+//                           "    <bqbiol:is rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">second Literal Resource</bqbiol:is>\n"
+//                           "  </rdf:Description>\n"
+//                           "  <rdf:Description rdf:about=\"first about\">\n"
+//                           "    <bqbiol:is rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">First Literal Resource</bqbiol:is>\n"
+//                           "  </rdf:Description>\n"
+//                           "</rdf:RDF>\n";
+//    ASSERT_STREQ(expected.c_str(), observed_string.c_str());
+//
+//
+//    Editor_delete(editor_ptr1);
+//    free(string);
+//    SingularAnnotation_delete(annotation1);
+//    SingularAnnotation_delete(annotation2);
+//}
 
-
-//    free_world(World::getWorld());
-
-
-    RDF *rdf_ptr2 = RDF_new();
-    Editor *editor_ptr2 = rdf_ptr2->toEditorPtr(
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-            SEMSIM_TYPE_SBML
-    );
-    SingularAnnotation *annotation2 = SingularAnnotation_new(editor_ptr2);
-    annotation2 = SingularAnnotation_setAbout(annotation2, "Second about");
-    annotation2 = SingularAnnotation_setPredicate(annotation2, "bqb", "is");
-    annotation2 = SingularAnnotation_setResourceLiteral(annotation2, "second Literal Resource");
-    Editor_addSingleAnnotation(editor_ptr2, annotation2);
-    Editor_toRDF(editor_ptr2);
-    char *string2 = RDF_toString(rdf_ptr2, "rdfxml-abbrev", "./Annot.rdf");
-    std::string observed_string2 = (const char *) string2;
-
-
-//    std::cout << observed_string1 << "\n\n" << observed_string2 << std::endl;
-
-//    ASSERT_STRNE(observed_string1.c_str(), observed_string2.c_str());
-    std::cout << "rdf_ptr, " << rdf_ptr1 << ", " << rdf_ptr2 << std::endl;
-    std::cout << "rdf_ptr.getModel, " << rdf_ptr1->getModel() << ", " << rdf_ptr2->getModel() << std::endl;
-    std::cout << "editor_ptr, " << editor_ptr1 << ", " << editor_ptr2 << std::endl;
-    std::cout << "annotation, " << annotation1 << ", " << annotation2 << std::endl;
-    std::cout << "string, " << string1 << ", " << string2 << std::endl;
-
-
-    Editor_delete(editor_ptr1);
-    free_c_char_star(string1);
-    SingularAnnotation_delete(annotation1);
-    RDF_delete(rdf_ptr1);
-    SingularAnnotation_delete(annotation1);
-
-
-    RDF_delete(rdf_ptr2);
-    Editor_delete(editor_ptr2);
-    free_c_char_star(string2);
-    SingularAnnotation_delete(annotation2);
-
-}
+//TEST_F(CAPITests, TestRDFTwic) {
+//    RDF *rdf_ptr1 = RDF_new();
+//    Editor *editor_ptr1 = rdf_ptr1->toEditorPtr(
+//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+//            SEMSIM_TYPE_SBML
+//    );
+//    SingularAnnotation *annotation1 = SingularAnnotation_new(editor_ptr1);
+//    annotation1 = SingularAnnotation_setAbout(annotation1, "first about");
+//    annotation1 = SingularAnnotation_setPredicate(annotation1, "bqb", "is");
+//    annotation1 = SingularAnnotation_setResourceLiteral(annotation1, "First Literal Resource");
+//    Editor_addSingleAnnotation(editor_ptr1, annotation1);
+//    Editor_toRDF(editor_ptr1);
+//    char *string1 = RDF_toString(rdf_ptr1, "rdfxml-abbrev", "./Annot.rdf");
+//    std::string observed_string1 = (const char *) string1;
+//
+//
+////    free_world(World::getWorld());
+//
+//
+//    RDF *rdf_ptr2 = RDF_new();
+//    Editor *editor_ptr2 = rdf_ptr2->toEditorPtr(
+//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+//            SEMSIM_TYPE_SBML
+//    );
+//    SingularAnnotation *annotation2 = SingularAnnotation_new(editor_ptr2);
+//    annotation2 = SingularAnnotation_setAbout(annotation2, "Second about");
+//    annotation2 = SingularAnnotation_setPredicate(annotation2, "bqb", "is");
+//    annotation2 = SingularAnnotation_setResourceLiteral(annotation2, "second Literal Resource");
+//    Editor_addSingleAnnotation(editor_ptr2, annotation2);
+//    Editor_toRDF(editor_ptr2);
+//    char *string2 = RDF_toString(rdf_ptr2, "rdfxml-abbrev", "./Annot.rdf");
+//    std::string observed_string2 = (const char *) string2;
+//
+//
+////    std::cout << observed_string1 << "\n\n" << observed_string2 << std::endl;
+//
+////    ASSERT_STRNE(observed_string1.c_str(), observed_string2.c_str());
+//    std::cout << "rdf_ptr, " << rdf_ptr1 << ", " << rdf_ptr2 << std::endl;
+//    std::cout << "rdf_ptr.getModel, " << rdf_ptr1->getModel() << ", " << rdf_ptr2->getModel() << std::endl;
+//    std::cout << "editor_ptr, " << editor_ptr1 << ", " << editor_ptr2 << std::endl;
+//    std::cout << "annotation, " << annotation1 << ", " << annotation2 << std::endl;
+//    std::cout << "string, " << string1 << ", " << string2 << std::endl;
+//
+//
+//    Editor_delete(editor_ptr1);
+//    free_c_char_star(string1);
+//    SingularAnnotation_delete(annotation1);
+//    
+//    SingularAnnotation_delete(annotation1);
+//
+//
+//    
+//    Editor_delete(editor_ptr2);
+//    free_c_char_star(string2);
+//    SingularAnnotation_delete(annotation2);
+//
+//}
 
 
 

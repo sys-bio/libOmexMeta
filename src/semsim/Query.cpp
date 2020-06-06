@@ -116,7 +116,9 @@ namespace semsim {
     std::string Query::getBindingValueByName(const std::string &name) {
         LibrdfNode node(librdf_query_results_get_binding_value_by_name(
                 query_results_, (const char *) name.c_str()));
-        return LibrdfNode::str(node.get());
+        std::string s = node.str();
+        node.freeNode();
+        return s;
     }
 
     int Query::getBindingsCount() {
