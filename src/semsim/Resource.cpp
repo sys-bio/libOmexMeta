@@ -10,6 +10,11 @@ namespace semsim {
             : node_(node) {
     }
 
+    Resource::Resource(LibrdfNode node)
+            : node_(node.get()) {
+
+    }
+
     std::string Resource::str() const {
         return LibrdfNode::str(node_);
     }
@@ -36,6 +41,7 @@ namespace semsim {
     void Resource::setNode(librdf_node *node) {
         node_ = node;
     }
+
 
 }
 

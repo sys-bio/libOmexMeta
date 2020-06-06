@@ -52,9 +52,9 @@ TEST_F(EditorTests, TestAddAnnotation) {
     PredicatePtr predicatePtr = std::make_shared<Predicate>(
             BiomodelsBiologyQualifier("is"));
     editor.addSingleAnnotation(
-            Subject::fromRawPtr(LibrdfNode::fromUriString("SemsimMetaid0004")),
+            Subject(LibrdfNode::fromUriString("SemsimMetaid0004")),
             predicatePtr,
-            Resource::fromRawPtr(LibrdfNode::fromUriString("uniprot:P0DP23"))
+            Resource(LibrdfNode::fromUriString("uniprot:P0DP23"))
     );
     NestedTriples tripleList = editor.getTripleList();
     ASSERT_EQ(1, tripleList.size());
@@ -66,9 +66,9 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation1) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
-    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("SemsimMetaid0014"));
+    Subject subject = Subject(LibrdfNode::fromUriString("SemsimMetaid0014"));
     BiomodelsBiologyQualifier predicate("is");
-    Resource resource = Resource::fromRawPtr(LibrdfNode::fromUriString("uniprot:P0DP23"));
+    Resource resource = Resource(LibrdfNode::fromUriString("uniprot:P0DP23"));
     Triple triple(
             subject.getNode(), predicate.getNode(), resource.getNode()
     );
@@ -95,9 +95,9 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation2) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
     editor.addSingleAnnotation(
-            Subject::fromRawPtr(LibrdfNode::fromUriString("SemsimMetaid0008")),
+            Subject(LibrdfNode::fromUriString("SemsimMetaid0008")),
             std::make_shared<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
-            Resource::fromRawPtr(LibrdfNode::fromUriString("pubmed:12991237"))
+            Resource(LibrdfNode::fromUriString("pubmed:12991237"))
     );
     editor.toRDF();
     std::string actual = rdf.toString("turtle", "file://./annotations.rdf");
@@ -120,9 +120,9 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation3) {
             SEMSIM_TYPE_SBML);
     editor.
             addSingleAnnotation(
-            Subject::fromRawPtr(LibrdfNode::fromUriString("SemsimMetaid0008")),
+            Subject(LibrdfNode::fromUriString("SemsimMetaid0008")),
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
-            Resource::fromRawPtr(LibrdfNode::fromUriString("pubmed:12991237"))
+            Resource(LibrdfNode::fromUriString("pubmed:12991237"))
     );
     editor.toRDF();
     std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
@@ -145,9 +145,9 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
             SEMSIM_TYPE_SBML);
     editor.
             addSingleAnnotation(
-            Subject::fromRawPtr(LibrdfNode::fromUriString("SemsimMetaid0008")),
+            Subject(LibrdfNode::fromUriString("SemsimMetaid0008")),
             std::make_unique<Predicate>(DCTerm("Description")),
-            Resource::fromRawPtr(LibrdfNode::fromLiteral("Cardiomyocyte cytosolic ATP concentration"))
+            Resource(LibrdfNode::fromLiteral("Cardiomyocyte cytosolic ATP concentration"))
     );
     editor.toRDF();
     std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
@@ -198,10 +198,10 @@ TEST_F(EditorTests, TestCompositeAnnotationPhysicalEntity) {
     editor.addCompositeAnnotation(
             std::make_shared<PhysicalEntity>(PhysicalEntity(
                     rdf.getModel(),
-                    Subject::fromRawPtr(LibrdfNode::fromUriString("VLV")),
+                    Subject(LibrdfNode::fromUriString("VLV")),
                     PhysicalPropertyResource("OPB:OPB_00154"),
-                    Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:9670")), // is smad3
-                    std::vector<Resource>({Resource::fromRawPtr(LibrdfNode::fromUriString("fma/FMA:9697"))})
+                    Resource(LibrdfNode::fromUriString("fma:FMA:9670")), // is smad3
+                    std::vector<Resource>({Resource(LibrdfNode::fromUriString("fma/FMA:9697"))})
                                              )
             )
     );
@@ -238,7 +238,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
             std::make_shared<PhysicalProcess>(
                     PhysicalProcess(
                             model.get(),
-                            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004")),
+                            Subject(LibrdfNode::fromUriString("MetaId004")),
                             PhysicalPropertyResource("OPB:OPB1234"),
                             std::vector<SourceParticipant>(
                                     {SourceParticipant(model.get(),
@@ -310,7 +310,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
                     PhysicalForce(
 
                             model.get(),
-                            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004")),
+                            Subject(LibrdfNode::fromUriString("MetaId004")),
                             PhysicalPropertyResource("OPB:OPB1234"),
                             std::vector<SourceParticipant>(
                                     {SourceParticipant(model.get(),

@@ -24,25 +24,26 @@ namespace semsim {
 
         // have source participant triple
         triples.emplace_back(
-                Subject::fromRawPtr(LibrdfNode::fromUriString(process_metaid)).getNode(),
+                LibrdfNode::fromUriString(process_metaid).get(),
                 semsim_predicate_term_.getNode(), //term is hasSourceParticipant etc.
-                Resource::fromRawPtr(LibrdfNode::fromUriString(subject_)).getNode()
+                LibrdfNode::fromUriString(subject_).get()
         );
 
         triples.emplace_back(
-                Subject::fromRawPtr(LibrdfNode::fromUriString(subject_)).getNode(),
+                LibrdfNode::fromUriString(subject_).get(),
                 SemSim("hasPhysicalEntityReference").getNode(),
-                Resource::fromRawPtr(LibrdfNode::fromUriString(physicalEntityReference_)).getNode()
+                LibrdfNode::fromUriString(physicalEntityReference_).get()
+//                Resource::fromRawPtr().getNode()
         );
         if (multiplier_ > 0.0) {
             std::ostringstream multiplier_os;
             multiplier_os << multiplier_;
             triples.emplace_back(
-                    Subject::fromRawPtr(LibrdfNode::fromUriString(subject_)).getNode(),
+                    LibrdfNode::fromUriString(subject_).get(),
                     SemSim("hasMultiplier").getNode(),
-                    Resource::fromRawPtr(LibrdfNode::fromLiteral(
+                    LibrdfNode::fromLiteral(
                             multiplier_os.str(),
-                            "http://www.w3.org/2001/XMLSchema#double")).getNode()
+                            "http://www.w3.org/2001/XMLSchema#double").get()
             );
         }
         return triples;

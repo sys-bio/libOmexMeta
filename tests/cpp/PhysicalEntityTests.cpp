@@ -36,12 +36,12 @@ public:
 TEST_F(PhysicalEntityTests, TestGetSubjectMetaidStr) {
     PhysicalEntity physicalEntity(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get()),
             physical_property,
-            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877"))
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877").get())
                     })
     );
     std::string actual = physicalEntity.getSubject().str();
@@ -54,12 +54,12 @@ TEST_F(PhysicalEntityTests, TestGetSubjectMetaidStr) {
 TEST_F(PhysicalEntityTests, TestGetSubjectMetaidFromNode) {
     PhysicalEntity physicalEntity(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get()),
             physical_property,
-            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877"))
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877").get())
                     })
     );
     std::string actual = (const char *) librdf_uri_as_string(
@@ -73,12 +73,12 @@ TEST_F(PhysicalEntityTests, TestGetSubjectMetaidFromNode) {
 TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyNode) {
     PhysicalEntity physicalEntity(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get()),
             physical_property,
-            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877"))
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877").get())
                     })
     );
     std::string actual = (const char *) librdf_uri_as_string(
@@ -92,12 +92,12 @@ TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyNode) {
 TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyStr) {
     PhysicalEntity physicalEntity(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get()),
             physical_property,
-            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877"))
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877").get())
                     })
     );
     std::string actual = physicalEntity.getPhysicalProperty().str();
@@ -111,12 +111,12 @@ TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyStr) {
 TEST_F(PhysicalEntityTests, TestIdentityResourceStr) {
     PhysicalEntity physicalEntity(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get()),
             physical_property,
-            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())
                     })
     );
     std::string actual = physicalEntity.getIdentityResource().str();
@@ -130,12 +130,12 @@ TEST_F(PhysicalEntityTests, TestIdentityResourceStr) {
 TEST_F(PhysicalEntityTests, TestIdentityResourceNode) {
     PhysicalEntity physicalEntity(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get()),
             physical_property,
-            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())
                     })
     );
     std::string actual = (const char *) librdf_uri_as_string(
@@ -149,12 +149,12 @@ TEST_F(PhysicalEntityTests, TestIdentityResourceNode) {
 TEST_F(PhysicalEntityTests, TestLocationResourceStr) {
     PhysicalEntity physicalEntity(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get()),
             physical_property,
-            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())
                     })
     );
     std::ostringstream actual;
@@ -171,12 +171,12 @@ TEST_F(PhysicalEntityTests, TestLocationResourceStr) {
 TEST_F(PhysicalEntityTests, TestLocationResourceNode) {
     PhysicalEntity physicalEntity(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get()),
             physical_property,
-            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())
                     })
     );
     std::ostringstream actual;
@@ -193,12 +193,12 @@ TEST_F(PhysicalEntityTests, TestLocationResourceNode) {
 TEST_F(PhysicalEntityTests, TestSubject) {
     PhysicalEntity physicalEntity(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get()),
             physical_property,
-            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())
                     })
     );
     std::string actual = physicalEntity.getSubject().str();
@@ -211,12 +211,12 @@ TEST_F(PhysicalEntityTests, TestSubject) {
 TEST_F(PhysicalEntityTests, TestSubjectFromAbout) {
     PhysicalEntity physicalEntity(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get()),
             physical_property,
-            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())
                     })
     );
     std::string actual = physicalEntity.getAbout().str();
@@ -229,12 +229,12 @@ TEST_F(PhysicalEntityTests, TestSubjectFromAbout) {
 TEST_F(PhysicalEntityTests, TestAboutIsSet) {
     PhysicalEntity physicalEntity(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get()),
             physical_property,
-            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())
                     })
     );
     std::cout << physicalEntity.getAbout().str() << std::endl;
@@ -244,11 +244,11 @@ TEST_F(PhysicalEntityTests, TestAboutIsSet) {
 }
 
 TEST_F(PhysicalEntityTests, TestToTripleSize) {
-    Resource is = Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")); // is smad3
-    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034"));
+    Resource is = Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()); // is smad3
+    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get());
     std::vector<Resource> ispartof(
-            {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
-             Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
+            {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
+             Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())
             });
 
     PhysicalEntity physicalEntity(
@@ -269,12 +269,12 @@ TEST_F(PhysicalEntityTests, TestToTripleSize) {
 TEST_F(PhysicalEntityTests, TestTriples) {
     PhysicalEntity physicalEntity(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get()),
             physical_property,
-            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())
                     })
     );
     Triples triples = physicalEntity.toTriples();
@@ -307,12 +307,12 @@ TEST_F(PhysicalEntityTests, TestTriples) {
 TEST_F(PhysicalEntityTests, TestPhysicalPropertyIsSet) {
     PhysicalEntity physicalEntity(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get()),
             physical_property,
-            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365")), // is smad3
+            Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()), // is smad3
             std::vector<Resource>(
-                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564")),
-                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877"))
+                    {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
+                     Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())
                     })
     );
     ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());

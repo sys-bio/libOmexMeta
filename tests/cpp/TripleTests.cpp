@@ -27,8 +27,8 @@ public:
 
     //todo subject could pass the world_ to the node
     TripleTests() {
-        subject = Subject::fromRawPtr(LibrdfNode::fromUriString(subject_str));
-        resource = Resource::fromRawPtr(LibrdfNode::fromUriString(resource_namespace + "/" + resource_id));
+        subject = Subject::fromRawPtr(LibrdfNode::fromUriString(subject_str).get());
+        resource = Resource::fromRawPtr(LibrdfNode::fromUriString(resource_namespace + "/" + resource_id).get());
         predicate = BiomodelsBiologyQualifier("is");
 
     }

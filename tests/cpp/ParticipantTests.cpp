@@ -57,9 +57,9 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
                          1.0, "MetaId0015"
     );
     Triple triple(
-            Subject::fromRawPtr(LibrdfNode::fromUriString(sink.getSubject())).getNode(),
+            LibrdfNode::fromUriString(sink.getSubject()).get(),
             sink.getPredicate().getNode(),
-            Resource::fromRawPtr(LibrdfNode::fromUriString(sink.getSubject())).getNode()
+            LibrdfNode::fromUriString(sink.getSubject()).get()
     );
     // triple assumes responsibility for freeing subject, resource and preicate
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -81,9 +81,9 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
                          1.0, "MetaId0015"
     );
     Triple triple(
-            Subject::fromRawPtr(LibrdfNode::fromUriString(sink.getSubject())).getNode(),
+            LibrdfNode::fromUriString(sink.getSubject()).get(),
             sink.getPredicate().getNode(),
-            Resource::fromRawPtr(LibrdfNode::fromUriString(sink.getSubject())).getNode()
+            LibrdfNode::fromUriString(sink.getSubject()).get()
     );
     std::vector<Triple> vec;
     vec.push_back(triple);

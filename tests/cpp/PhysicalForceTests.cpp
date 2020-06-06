@@ -34,7 +34,7 @@ public:
 
 
 TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
-    Subject subject_metaid = Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004"));
+    Subject subject_metaid = Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get());
     std::vector<SourceParticipant> source_participants(
             {SourceParticipant(
                     model.get(),
@@ -83,7 +83,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
 TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
     PhysicalForce force(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
@@ -114,7 +114,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
 TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
     PhysicalForce force(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
@@ -145,7 +145,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
 TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
     PhysicalForce force(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("ForceId0000")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("ForceId0000").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(

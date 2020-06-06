@@ -56,7 +56,7 @@ namespace semsim {
     }
 
     PhysicalForce &PhysicalForce::setAbout(const std::string& metaid) {
-        about = Subject::fromRawPtr(LibrdfNode::fromUriString(metaid));
+        about = Subject::fromRawPtr(LibrdfNode::fromUriString(metaid).get());
         return (*this);
     }
 

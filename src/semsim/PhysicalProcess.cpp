@@ -78,7 +78,7 @@ namespace semsim {
     }
 
     PhysicalProcess &PhysicalProcess::setAbout(std::string metaid) {
-        about = Subject::fromRawPtr(LibrdfNode::fromUriString(metaid));
+        about = Subject::fromRawPtr(LibrdfNode::fromUriString(metaid).get());
         return (*this);
     }
 

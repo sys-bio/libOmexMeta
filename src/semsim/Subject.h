@@ -25,6 +25,8 @@ namespace semsim {
         explicit Subject(librdf_node* node);
 
     public:
+        explicit Subject(LibrdfNode node);
+
         Subject() = default;
 
         [[nodiscard]] librdf_node* getNode() const;

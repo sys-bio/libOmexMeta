@@ -35,7 +35,7 @@ public:
 };
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
-    Subject subject_metaid = Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004"));
+    Subject subject_metaid = Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get());
     std::vector<SourceParticipant> source_participants(
             {SourceParticipant(
                     model.get(),
@@ -83,7 +83,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
 
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
-    Subject subject_metaid = Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004"));
+    Subject subject_metaid = Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get());
     std::vector<SourceParticipant> source_participants(
             {SourceParticipant(
                     model.get(),
@@ -134,7 +134,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
 TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
     PhysicalProcess process(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
@@ -174,7 +174,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
 TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
     PhysicalProcess process(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
@@ -212,7 +212,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
 TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
     PhysicalProcess process(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("VLV")),
+            Subject::fromRawPtr(LibrdfNode::fromUriString("VLV").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(

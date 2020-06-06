@@ -68,7 +68,7 @@ namespace semsim {
     semsim::Triple &semsim::Triple::setAbout(const std::string &about) {
         if (getSubject() != nullptr)
             LibrdfNode::freeNode(getSubject());
-        setSubject(LibrdfNode::fromUriString(about));
+        setSubject(LibrdfNode::fromUriString(about).get());
         return *this;
     }
 
@@ -88,21 +88,21 @@ namespace semsim {
         // if getResource() node alredy exists, free before resetting
         if (getResource() != nullptr)
             LibrdfNode::freeNode(getResource());
-        setResource(LibrdfNode::fromLiteral(literal));
+        setResource(LibrdfNode::fromLiteral(literal).get());
         return *this;
     }
 
     semsim::Triple &semsim::Triple::setResourceUri(const std::string &identifiers_uri) {
         if (getResource() != nullptr)
             LibrdfNode::freeNode(getResource());
-        setResource(LibrdfNode::fromUriString(identifiers_uri));
+        setResource(LibrdfNode::fromUriString(identifiers_uri).get());
         return *this;
     }
 
     semsim::Triple &semsim::Triple::setResourceBlank(const std::string &blank_id) {
         if (getResource() != nullptr)
             LibrdfNode::freeNode(getResource());
-        setResource(LibrdfNode::fromBlank(blank_id));
+        setResource(LibrdfNode::fromBlank(blank_id).get());
         return *this;
     }
 

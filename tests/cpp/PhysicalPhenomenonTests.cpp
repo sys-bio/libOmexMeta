@@ -35,7 +35,7 @@ public:
 
 
 TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
-    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004"));
+    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
     PhysicalPropertyResource resource = PhysicalPropertyResource("OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
@@ -51,7 +51,7 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
 }
 
 TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
-    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004"));
+    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
     PhysicalPropertyResource resource = PhysicalPropertyResource("OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
@@ -70,7 +70,7 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
     resource.free();}
 
 TEST_F(PhysicalPhenomenonTests, TestPhysicalProperty) {
-    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004"));
+    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
     PhysicalPropertyResource resource = PhysicalPropertyResource("OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
