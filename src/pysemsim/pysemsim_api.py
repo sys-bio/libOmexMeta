@@ -29,10 +29,6 @@ class Util:
         func.argtypes = argtypes
         return func
 
-    @staticmethod
-    def crlf_to_lr(string: str) -> str:
-        return string.replace('\r\n', '\n')
-
 
 libsemsim = Util.load_lib()
 
@@ -50,6 +46,11 @@ class PysemsimAPI:
         del c_string_ptr  # free the ptr
         return decoded_str
 
+    @staticmethod
+    def crlf_to_lr(string: str) -> str:
+        """Helper method for converting line endings. For developers"""
+        return string.replace('\r\n', '\n')
+
     free_char_star = Util.load_func("free_c_char_star", [ct.c_char_p], None)
     rdf_new = Util.load_func("RDF_new", [], ct.c_void_p)
     rdf_size = Util.load_func("RDF_size", [ct.c_int64], ct.c_int64)
@@ -61,8 +62,8 @@ class PysemsimAPI:
     rdf_delete = Util.load_func("RDF_delete", [ct.c_int64], None)
     rdf_get_base_uri = Util.load_func("RDF_getBaseUri", [ct.c_int64], ct.c_int64)
     rdf_set_base_uri = Util.load_func("RDF_setBaseUri", [ct.c_int64, ct.c_char_p], None)
-    # rdf_query_results_as_str = Util.load_func("RDF_queryResultsAsStr",
-    #                                               [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_char_p)
+    rdf_query_results_as_str = Util.load_func("RDF_queryResultsAsStr",
+                                                  [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
     rdf_to_editor = Util.load_func("RDF_toEditor", [ct.c_int64, ct.c_char_p, ct.c_int], ct.c_int64)
 
     # Editor methods
@@ -169,21 +170,3 @@ class PysemsimAPI:
 
     physical_force_free_all = Util.load_func("PhysicalForce_freeAll", [ct.c_int64], None)
 
-
-class _XmlAssistantType:
-    """
-    Class used internally for directing the underlying c++
-    code to work with cellml or sbml.
-    """
-
-    def __init__(self, xml_type):
-        type = None
-        if xml_type == "sbml":
-            type = 0
-        elif xml_type == "cellml":
-            type = 1
-        else:
-            raise ValueError("\"xml_type\" arg must be either \"sbml\" or \"cellml\"")
-
-    def getType(self):
-        return type
