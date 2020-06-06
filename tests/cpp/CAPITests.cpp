@@ -33,7 +33,7 @@ TEST_F(CAPITests, RDFNew) {
     std::string uri = rdf_ptr->base_uri_;
     std::string expected = "file://./Annotations.rdf";
     ASSERT_STREQ(expected.c_str(), uri.c_str());
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 
 }
 
@@ -43,7 +43,7 @@ TEST_F(CAPITests, RDFSize) {
     int actual = RDF_size(rdf_ptr);
     int expected = 1;
     ASSERT_EQ(expected, actual);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 
 }
 
@@ -68,7 +68,7 @@ TEST_F(CAPITests, RDFToString) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 }
 
 TEST_F(CAPITests, RDFgetBaseUri) {
@@ -80,7 +80,7 @@ TEST_F(CAPITests, RDFgetBaseUri) {
     ASSERT_STREQ(expected, actual);
 
     free(actual);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 }
 
 TEST_F(CAPITests, RDFsetBaseUri) {
@@ -92,7 +92,7 @@ TEST_F(CAPITests, RDFsetBaseUri) {
     const char *expected = "file://ANewBaseUri.rdf";
     ASSERT_STREQ(expected, actual);
     free(actual); // necessary because we allocated on heap.
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 
 }
 
@@ -110,7 +110,7 @@ TEST_F(CAPITests, RDFqueryResultsAsStr) {
                            "file://./MyModel.rdf#entity_0,http://biomodels.net/biology-qualifiers/is,http://identifiers.org/fma/FMA:9670\r\n"
                            "file://./MyModel.rdf#entity_0,http://biomodels.net/biology-qualifiers/isPartOf,http://identifiers.org/fma/FMA:18228\r\n";
     ASSERT_STREQ(expected.c_str(), results);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
     free_c_char_star(results);
 }
 
@@ -133,7 +133,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
     Editor_delete(editor_ptr);
     SingularAnnotation_delete(singularAnnotation);
     free_c_char_star(actual);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 }
 
 TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
@@ -155,7 +155,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
     Editor_delete(editor_ptr);
     SingularAnnotation_delete(singularAnnotation);
     free_c_char_star(actual);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 }
 
 TEST_F(CAPITests, TestEditorPtrMem) {
@@ -167,7 +167,7 @@ TEST_F(CAPITests, TestEditorPtrMem) {
             SEMSIM_TYPE_SBML
     );
 
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
     delete editor_ptr;
 }
 
@@ -211,7 +211,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceLiteral) {
     Editor_delete(editor_ptr);
     SingularAnnotation_delete(singularAnnotation);
     free_c_char_star(actual);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 }
 
 TEST_F(CAPITests, TestSingularAnnotationSetResourceUri) {
@@ -232,7 +232,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceUri) {
     Editor_delete(editor_ptr);
     SingularAnnotation_delete(singularAnnotation);
     free_c_char_star(actual);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 }
 
 TEST_F(CAPITests, TestSingularAnnotationSetResourceBlank) {
@@ -253,7 +253,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceBlank) {
     Editor_delete(editor_ptr);
     SingularAnnotation_delete(singularAnnotation);
     free_c_char_star(actual);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 }
 
 
@@ -293,7 +293,7 @@ TEST_F(CAPITests, TestPhysicalEntity) {
     Editor_delete(editor_ptr);
     PhysicalEntity_delete(physical_entity_ptr);
     free_c_char_star(actual);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 }
 
 TEST_F(CAPITests, TestPhysicalEntityAbout) {
@@ -314,7 +314,7 @@ TEST_F(CAPITests, TestPhysicalEntityAbout) {
     // we need to free the node inside get about manually here because
     // we are not using the str() method
     PhysicalEntity_freeAll(physical_entity_ptr);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 }
 
 
@@ -337,7 +337,7 @@ TEST_F(CAPITests, TestPhysicalEntityPhysicalProperty) {
     // delete function because it'll clash with the main use case (i.e. str method)
     PhysicalEntity_freeAll(physical_entity_ptr);
     free_c_char_star(actual);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 }
 
 TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
@@ -359,7 +359,7 @@ TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
     // as opposed to PhysicalEntity_delete which would leave behind un-freed nodes.
     PhysicalEntity_freeAll(physical_entity_ptr);
     free_c_char_star(actual);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 }
 
 TEST_F(CAPITests, TestPhysicalEntityLocations) {
@@ -385,7 +385,7 @@ TEST_F(CAPITests, TestPhysicalEntityLocations) {
     ASSERT_STREQ(expected, os.str().c_str());
     PhysicalEntity_freeAll(physical_entity_ptr);
     Editor_delete(editor_ptr);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 
 }
 
@@ -406,7 +406,7 @@ TEST_F(CAPITests, TestPhysicalEntityNumLocations) {
 
     Editor_delete(editor_ptr);
     PhysicalEntity_freeAll(physical_entity_ptr);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 }
 
 
@@ -446,7 +446,7 @@ TEST_F(CAPITests, TestPhysicalEntityStr) {
     Editor_delete(editor_ptr);
     PhysicalEntity_delete(physical_entity_ptr);
     free_c_char_star(actual);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 }
 
 TEST_F(CAPITests, TestPhysicalProcess) {
@@ -499,7 +499,7 @@ TEST_F(CAPITests, TestPhysicalProcess) {
     Editor_delete(editor_ptr);
     PhysicalProcess_delete(physical_process_ptr);
     free_c_char_star(actual);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 }
 
 TEST_F(CAPITests, TestPhysicalForce) {
@@ -545,7 +545,7 @@ TEST_F(CAPITests, TestPhysicalForce) {
     ASSERT_STREQ(expected.c_str(), actual);
 
 
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
     Editor_delete(editor_ptr);
     PhysicalForce_delete(physical_force_ptr);
     free_c_char_star(actual);
@@ -648,7 +648,7 @@ TEST_F(CAPITests, TestEditorToRDF) {
     PhysicalProcess_delete(physical_process_ptr);
     PhysicalForce_delete(physical_force_ptr);
     free_c_char_star(actual);
-    delete rdf_ptr;
+    RDF_delete(rdf_ptr);
 
 }
 
@@ -660,24 +660,24 @@ TEST_F(CAPITests, TestRDFTwice1) {
     RDF *rdf_ptr1 = RDF_new();
     RDF *rdf_ptr2 = RDF_new();
     ASSERT_NE(rdf_ptr1, rdf_ptr2);
-    delete rdf_ptr1;
-    delete rdf_ptr2;
+    RDF_delete(rdf_ptr1);
+    RDF_delete(rdf_ptr2);
 }
 
 TEST_F(CAPITests, TestRDFTwice2) {
     RDF *rdf_ptr1 = RDF_new();
     RDF *rdf_ptr2 = RDF_new();
     ASSERT_NE(rdf_ptr1->getModel(), rdf_ptr2->getModel());
-    delete rdf_ptr1;
-    delete rdf_ptr2;
+    RDF_delete(rdf_ptr1);
+    RDF_delete(rdf_ptr2);
 }
 
 TEST_F(CAPITests, TestRDFTwice3) {
     RDF *rdf_ptr1 = RDF_new();
     RDF *rdf_ptr2 = RDF_new();
     ASSERT_NE(rdf_ptr1->getStorage(), rdf_ptr2->getStorage());
-    delete rdf_ptr1;
-    delete rdf_ptr2;
+    RDF_delete(rdf_ptr1);
+    RDF_delete(rdf_ptr2);
 
 
 }
