@@ -19,7 +19,7 @@ namespace semsim {
         } else {
             this->uri_ = namespace_ + "/" + term_;
         }
-        this->node_ = LibrdfNode::fromUriString(uri_);
+        this->node_ = LibrdfNode::fromUriString(uri_).get();
     }
 
     Predicate::Predicate(librdf_node *node)
@@ -67,7 +67,7 @@ namespace semsim {
         } else {
             this->uri_ = namespace_ + "/" + term_;
         }
-        node_ = LibrdfNode::fromUriString(uri_);
+        node_ = LibrdfNode::fromUriString(uri_).get();
     }
 
     const std::string &Predicate::getNamespace() const {

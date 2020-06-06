@@ -26,8 +26,8 @@ public:
     //todo subject could pass the world to the node
     TriplesTests() {
         model = LibrdfModel(storage.get());
-        this->subject = Subject::fromRawPtr(LibrdfNode::fromUriString("subby"));
-        this->resource = Resource::fromRawPtr(LibrdfNode::fromUriString(("space/id")));
+        this->subject = Subject::fromRawPtr(LibrdfNode::fromUriString("subby").get());
+        this->resource = Resource::fromRawPtr(LibrdfNode::fromUriString(("space/id")).get());
         this->predicate = BiomodelsBiologyQualifier("is");
     }
 
@@ -109,14 +109,14 @@ TEST_F(TriplesTests, TestEmplaceBack6) {
 TEST(TriplesTestsNoFixture, TestStr) {
     Triples triples;
     triples.emplace_back(
-            LibrdfNode::fromUriString("http://subject1.com/subject1"),
-            LibrdfNode::fromUriString("http://predicate1.com/predicate1"),
-            LibrdfNode::fromUriString("http://resource1.com/resource1")
+            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
+            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
     );
     triples.emplace_back(
-            LibrdfNode::fromUriString("http://subject2.com/subject2"),
-            LibrdfNode::fromUriString("http://predicate2.com/predicate2"),
-            LibrdfNode::fromUriString("http://resource2.com/resource2")
+            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
+            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
     );
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"

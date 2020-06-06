@@ -8,7 +8,7 @@
 namespace semsim {
 
     PhysicalPropertyResource::PhysicalPropertyResource(std::string physical_property_string)
-            : Resource(Resource::fromRawPtr(LibrdfNode::fromUriString(physical_property_string))) {
+            : Resource(Resource::fromRawPtr(LibrdfNode::fromUriString(physical_property_string).get())) {
         validate();
     }
 
@@ -27,7 +27,7 @@ namespace semsim {
 
     Triple PhysicalPropertyResource::isVersionOfTriple(std::string subject_metaid) const {
         return Triple(
-                Subject::fromRawPtr(LibrdfNode::fromUriString(subject_metaid)).getNode(),
+                LibrdfNode::fromUriString(subject_metaid).get(),
                 BiomodelsBiologyQualifier("isVersionOf").getNode(),
                 Resource::fromRawPtr(node_).getNode()
         );
@@ -35,9 +35,9 @@ namespace semsim {
 
     Triple PhysicalPropertyResource::isPropertyOfTriple(std::string subject_metaid, std::string property_metaid) const {
         return Triple(
-                Subject::fromRawPtr(LibrdfNode::fromUriString(subject_metaid)).getNode(),
+                LibrdfNode::fromUriString(subject_metaid).get(),
                 BiomodelsBiologyQualifier("isPropertyOf").getNode(),
-                Resource::fromRawPtr(LibrdfNode::fromUriString(property_metaid)).getNode()
+                LibrdfNode::fromUriString(property_metaid).get()
         );
     }
 

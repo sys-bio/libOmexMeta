@@ -45,7 +45,7 @@ namespace semsim {
 
 
     PhysicalEntity &PhysicalEntity::setAbout(std::string metaid) {
-        this->about = Subject::fromRawPtr(LibrdfNode::fromUriString(std::move(metaid)));
+        this->about = Subject::fromRawPtr(LibrdfNode::fromUriString(metaid).get());
         return *this;
 
     }
@@ -64,13 +64,13 @@ namespace semsim {
     PhysicalEntity &PhysicalEntity::setIdentity(std::string resource) {
         // todo implement second argument which defaults to RDFUriNode
         //  and controls whether we use literal/blank/uri node
-        identity_resource_ = Resource::fromRawPtr(LibrdfNode::fromUriString(std::move(resource)));
+        identity_resource_ = Resource::fromRawPtr(LibrdfNode::fromUriString(std::move(resource)).get());
         return *this;
     }
 
     PhysicalEntity &PhysicalEntity::addLocation(std::string where) {
         location_resources.push_back(
-                Resource::fromRawPtr(LibrdfNode::fromUriString(where))
+                Resource::fromRawPtr(LibrdfNode::fromUriString(where).get())
         );
         return *this;
     }
@@ -142,14 +142,14 @@ namespace semsim {
 
         // the "what" part of physical entity triple
         triples.emplace_back(
-                Subject::fromRawPtr(LibrdfNode::fromUriString(property_metaid)).getNode(),
+                LibrdfNode::fromUriString(property_metaid).get(),
                 BiomodelsBiologyQualifier("is").getNode(),
                 getIdentityResource().getNode()
         );
         // the "where" part of the physical entity
         for (auto &locationResource : getLocationResources()) {
             triples.emplace_back(
-                    Subject::fromRawPtr(LibrdfNode::fromUriString(property_metaid)).getNode(),
+                    LibrdfNode::fromUriString(property_metaid).get(),
                     BiomodelsBiologyQualifier("isPartOf").getNode(),
                     locationResource.getNode()
             );

@@ -11,12 +11,15 @@ namespace semsim {
             : node_(node) {
     }
 
+    Subject::Subject(LibrdfNode node)
+        :node_(node.get()) {}
+
     Subject Subject::fromUri(const std::string &uri) {
-        return Subject(LibrdfNode::fromUriString(uri));
+        return Subject(LibrdfNode::fromUriString(uri).get());
     }
 
     Subject Subject::fromBlank(const std::string &blank) {
-        return Subject(LibrdfNode::fromBlank(blank));
+        return Subject(LibrdfNode::fromBlank(blank).get());
     }
 
     std::string Subject::str() const {
@@ -46,5 +49,6 @@ namespace semsim {
     void Subject::setNode(librdf_node *node) {
         node_ = node;
     }
+
 
 }
