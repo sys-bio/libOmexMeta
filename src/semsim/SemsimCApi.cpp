@@ -80,6 +80,7 @@ namespace semsim {
 
     void RDF_delete(RDF *rdf_ptr) {
         if (rdf_ptr != nullptr) {
+            rdf_ptr->freeRDF();
             delete rdf_ptr;
             rdf_ptr = nullptr;
         }
