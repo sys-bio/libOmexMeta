@@ -26,13 +26,34 @@ namespace redland {
                 name.c_str(), options);
     }
 
+    LibrdfStorage::LibrdfStorage(LibrdfStorage &&storage) noexcept {
+        if (storage.storage_ != nullptr) {
+            if (storage_ != nullptr)
+                freeStorage();
+            storage_ = storage.storage_;
+            storage.storage_ = nullptr;
+        }
+
+    }
+
+    LibrdfStorage &LibrdfStorage::operator=(LibrdfStorage &&storage) noexcept {
+        if (this != &storage) {
+            if (storage.storage_ != nullptr) {
+                if (storage_ != nullptr)
+                    freeStorage();
+                storage_ = storage.storage_;
+                storage.storage_ = nullptr;
+            }
+        }
+        return *this;
+    }
 
     librdf_storage *LibrdfStorage::get() const {
         return storage_;
     }
 
     void LibrdfStorage::freeStorage() {
-        if (storage_!= nullptr){
+        if (storage_ != nullptr) {
             librdf_free_storage(storage_);
             storage_ = nullptr;
         }

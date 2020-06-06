@@ -29,8 +29,9 @@ namespace semsim {
     class Query {
 
         librdf_model *model_ = nullptr; // will be cleaned up by RDF class
-        std::string query_;
         librdf_query_results *query_results_ = nullptr;
+        librdf_query *q_ = nullptr;
+        std::string query_;
 
         std::vector<std::string> valid_output_formats_ = {
                 "xml",
@@ -121,9 +122,19 @@ namespace semsim {
 
     public:
 
-        Query(const LibrdfModel &model, std::string query);
+        Query(librdf_model *model, std::string query);
 
-        ~Query();
+        Query(const Query &query) = delete ;
+
+        Query(Query &&query) noexcept;
+
+        Query &operator=(const Query &query) = delete ;
+
+        Query &operator=(Query &&query) noexcept;
+
+        void freeQuery();
+
+//        ~Query();
 
         librdf_stream *resultsAsLibRdfStream();
 
@@ -134,7 +145,6 @@ namespace semsim {
         std::string resultsAsStr(const std::string &output_format);
 
 //        Triples resultsAsTriples();
-        Query(librdf_model *model, std::string query);
 
         void runQuery();
     };

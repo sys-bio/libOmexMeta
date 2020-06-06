@@ -10,7 +10,7 @@ set(REDLAND_WRAPPER_TEST_SOURCES
         LibrdfQueryTests.cpp
         LibrdfQueryResultsTests.cpp
         LibrdfStreamTests.cpp
-        )
+        DotNamespaceLeak.cpp)
 
 add_executable(redland-wrapper-tests ${REDLAND_WRAPPER_TEST_SOURCES})
 

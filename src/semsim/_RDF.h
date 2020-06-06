@@ -39,8 +39,6 @@ namespace semsim {
 
         static std::vector<std::string> getValidParserNames();
 
-//        semsim::Writer makeWriter(const std::string &format);
-
     public:
         std::string base_uri_;
         NamespaceMap namespaces_;

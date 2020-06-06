@@ -23,9 +23,12 @@ public:
     PhysicalPropertyResource physical_property;
 
     PhysicalForceTests() {
-        model = LibrdfModel(storage);
-
+        model = LibrdfModel(storage.get());
         physical_property = PhysicalPropertyResource("OPB:OPB_00340");
+    };
+    ~PhysicalForceTests() override {
+        model.freeModel();
+        storage.freeStorage();
     };
 };
 

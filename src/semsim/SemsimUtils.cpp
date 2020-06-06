@@ -57,6 +57,7 @@ namespace semsim {
                         "WHERE {?subject ?predicate ?object}";
         Query query(model, q);
         ResultsMap results_map = query.resultsAsMap();
+        query.freeQuery();
         std::vector<std::string> subjects = results_map["subject"];
         // add other exclusions to the subjects like
         for (auto &i : exclusions) {

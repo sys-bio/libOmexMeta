@@ -16,10 +16,14 @@
 
 
 /*
- * Do I need to mirror the underlying structure of
- * the librdf_node* object?
+ * todo
+ *  This objcet is a bit of a mess at the moment.
+ *  Its currently not really being used as an
+ *  object, but as a static librdf_node* generator.
+ *  Probably the best thing to do is remove all
+ *  methods except the librdf_node* generators
+ *  which are actually used in the rest of the code.
  */
-
 namespace redland {
 
     typedef std::unique_ptr<librdf_node> librdf_node_ptr;

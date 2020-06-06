@@ -21,10 +21,15 @@ public:
     PhysicalPropertyResource physical_property;
 
     PhysicalEntityTests() {
-        model = LibrdfModel(storage);
+        model = LibrdfModel(storage.get());
 
         physical_property = PhysicalPropertyResource("OPB:OPB_00340");
     };
+
+    ~PhysicalEntityTests(){
+        model.freeModel();
+        storage.freeStorage();
+    }
 };
 
 

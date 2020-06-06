@@ -26,20 +26,25 @@
 namespace redland {
 
     class LibrdfModel {
-        struct deleter {
-            void operator()(librdf_model *model);
-        };
 
-        librdf_model* model_ = nullptr;
+        librdf_model *model_ = nullptr;
 
     public:
 //        ~LibrdfModel();
+
+        LibrdfModel(const LibrdfModel &model) = delete;
+
+        LibrdfModel(LibrdfModel &&model) noexcept;
+
+        LibrdfModel &operator=(const LibrdfModel &model) = delete;
+
+        LibrdfModel &operator=(LibrdfModel &&model) noexcept;
 
         LibrdfModel() = default;
 
         explicit LibrdfModel(librdf_model *model);
 
-        explicit LibrdfModel(const LibrdfStorage &storage, const char *options = nullptr);
+        explicit LibrdfModel(librdf_storage *storage, const char *options = nullptr);
 
         [[nodiscard]] librdf_model *get() const;
 

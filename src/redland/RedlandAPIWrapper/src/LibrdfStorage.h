@@ -30,7 +30,7 @@ namespace redland {
             void operator()(librdf_storage *storage);
         };
 
-        librdf_storage* storage_ = nullptr;
+        librdf_storage *storage_ = nullptr;
 
     public:
         explicit LibrdfStorage(librdf_storage *storage);
@@ -41,6 +41,12 @@ namespace redland {
         [[nodiscard]] librdf_storage *get() const;
 
         void freeStorage();
+
+        LibrdfStorage(const LibrdfStorage &storage) = delete;
+
+        LibrdfStorage(LibrdfStorage &&storage) noexcept;
+
+        LibrdfStorage &operator=(LibrdfStorage &&storage) noexcept;
 
     };
 }

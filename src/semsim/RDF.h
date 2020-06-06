@@ -25,6 +25,9 @@ namespace semsim {
         std::string base_uri_;
         NamespaceMap namespaces_;
         std::vector<std::string> seen_namespaces_;
+
+        // todo remove this field and replace with the one
+        //  in Predicate. Should be a simple swap.
         NamespaceMap default_namespaces_ = {
                 {"http://purl.org/dc/terms/",                "dcterms"},
                 {"http://biomodels.net/biology-qualifiers/", "bqbiol"},
@@ -38,14 +41,13 @@ namespace semsim {
 
         ~RDF();
 
-//        RDF(const RDF &rdf);
-//
-//        RDF(RDF &&rdf) noexcept;
-//
-//        RDF &operator=(const RDF &rdf) noexcept;
-//
-//        RDF &operator=(RDF &&rdf);
+        RDF(const RDF &rdf) = delete;
 
+        RDF(RDF &&rdf) noexcept;
+
+        RDF &operator=(const RDF &rdf) noexcept = delete;
+
+        RDF &operator=(RDF &&rdf);
 
         int size() const;
 
@@ -78,6 +80,8 @@ namespace semsim {
         Editor *toEditorPtr(const std::string &xml, SemsimXmlType type);
 
         librdf_model *getModel() const;
+
+        librdf_storage *getStorage() const;
 
     };
 }

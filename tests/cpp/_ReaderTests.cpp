@@ -22,7 +22,7 @@ public:
     LibrdfModel model;
 
     ReaderTests() {
-        model = LibrdfModel(std::move(storage));
+        model = LibrdfModel(storage.get());
     };
 
     static void

@@ -17,7 +17,7 @@ public:
 
     WriterTests() {
 
-        model = LibrdfModel(storage);
+        model = LibrdfModel(storage.get());
 
         statement = LibrdfStatement(
                 std::move(LibrdfNode::fromUriString("http://www.dajobe.org/")),

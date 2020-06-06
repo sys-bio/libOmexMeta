@@ -48,6 +48,7 @@ namespace redland {
                 serializer.serializer_ = nullptr;
             }
         }
+        return *this;
     }
 
     librdf_serializer *LibrdfSerializer::get() const {

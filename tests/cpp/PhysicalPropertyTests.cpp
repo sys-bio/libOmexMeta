@@ -17,7 +17,12 @@ public:
     LibrdfModel model;
 
     PhysicalPropertyTests() {
-        model = LibrdfModel(storage);
+        model = LibrdfModel(storage.get());
+    }
+
+    ~PhysicalPropertyTests() {
+        model.freeModel();
+        storage.freeStorage();
     }
 };
 

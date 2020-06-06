@@ -9,42 +9,83 @@
 
 namespace semsim {
 
-    Query::Query(const LibrdfModel &model, std::string query)
-            : model_(model.get()), query_(query) {
-        runQuery();
-
-    }
-
     Query::Query(librdf_model *model, std::string query)
             : model_(model), query_(std::move(query)) {
+        q_ = librdf_new_query(
+                World::getWorld(), (const char *) "sparql",
+                nullptr, (const unsigned char *) query_.c_str(),
+                nullptr);
+        if (!q_) {
+            std::ostringstream qerr;
+            throw NullPointerException("NullPointerException: Query::runQuery(): q_");
+        }
         runQuery();
+    }
 
+//    Query::~Query() {
+//        librdf_free_query_results(query_results_);
+//    }
+
+    Query::Query(Query &&query) noexcept {
+        if (query.query_results_ != nullptr) {
+            if (query_results_ == nullptr) {
+                librdf_free_query_results(query_results_);
+                query_results_ = nullptr;
+            }
+            query_results_ = query.query_results_;
+        }
+        if (query.q_ != nullptr) {
+            if (q_ == nullptr) {
+                librdf_free_query(q_);
+                q_ = nullptr;
+            }
+            q_ = query.q_;
+        }
+    }
+
+    Query &Query::operator=(Query &&query) noexcept {
+        if (this != &query) {
+            if (query.query_results_ != nullptr) {
+                if (query_results_ == nullptr) {
+                    librdf_free_query_results(query_results_);
+                    query_results_ = nullptr;
+                }
+                query_results_ = query.query_results_;
+            }
+            if (query.q_ != nullptr) {
+                if (q_ == nullptr) {
+                    librdf_free_query(q_);
+                    q_ = nullptr;
+                }
+                q_ = query.q_;
+            }
+        }
+        return *this;
+    }
+
+    void Query::freeQuery() {
+        if (query_results_ != nullptr) {
+            librdf_free_query_results(query_results_);
+            query_results_ = nullptr;
+        }
+        if (q_ != nullptr) {
+            librdf_free_query(q_);
+            q_ = nullptr;
+        }
     }
 
     void Query::runQuery() {
-        librdf_query *q = librdf_new_query(
-                World::getWorld(), (const char *) "sparql",
-                nullptr, (const unsigned char *) query_.c_str(),
-                nullptr
-        );
-        if (!q) {
-            std::ostringstream qerr;
-            throw NullPointerException("NullPointerException: Query::runQuery(): query");
-        }
-
         // When we runQuery twice, we have memory leak if we do
         //  not free previous query results.
-        if (query_results_ != nullptr){
+        if (query_results_ != nullptr) {
             librdf_free_query_results(query_results_);
             query_results_ = nullptr;
         }
 
-        query_results_ = librdf_query_execute(q, model_);
+        query_results_ = librdf_query_execute(q_, model_);
         if (!query_results_) {
             throw NullPointerException("NullPointerException: Query::runQuery(): query_results_");
         }
-        librdf_free_query(q);
-
     }
 
     bool Query::isBoolean() {
@@ -94,17 +135,15 @@ namespace semsim {
             err << std::endl;
             throw std::invalid_argument(err.str());
         }
-        unsigned char* s = librdf_query_results_to_string2(query_results_, output_format.c_str(),
-                                        nullptr, nullptr,
-                                        nullptr);
-        std::string res = (const char*) s; // makes a copy
+        unsigned char *s = librdf_query_results_to_string2(
+                query_results_, output_format.c_str(),
+                nullptr, nullptr,
+                nullptr);
+        std::string res = (const char *) s; // makes a copy
         free(s);
         return res;
     }
 
-    Query::~Query() {
-        librdf_free_query_results(query_results_);
-    }
 
     int Query::next() {
         return librdf_query_results_next(query_results_);
@@ -147,6 +186,7 @@ namespace semsim {
     std::string Query::getBindingsName(int index) {
         return librdf_query_results_get_binding_name(query_results_, index);
     }
+
 
 }
 
