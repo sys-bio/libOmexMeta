@@ -461,25 +461,20 @@ librdf_new_query_from_factory(librdf_world *world,
  **/
 void
 librdf_free_query(librdf_query *query) {
-    printf("in librdf_free_query\n");
     if (!query)
         return;
 
-    printf("if usage\n");
     if (--query->usage)
         return;
 
-    printf("if factory\n");
     if (query->factory)
         query->factory->terminate(query);
 
 
-    printf("if context\n");
     if (query->context)
         LIBRDF_FREE(librdf_query_context, query->context);
 
     LIBRDF_FREE(librdf_query, query);
-    printf("done freeing\n");
 }
 
 

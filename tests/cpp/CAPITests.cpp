@@ -114,6 +114,18 @@ TEST_F(CAPITests, RDFqueryResultsAsStr) {
     free_c_char_star(results);
 }
 
+TEST_F(CAPITests, TestCheckValidMetaid) {
+    RDF *rdf_ptr = RDF_new();
+
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    Editor_checkValidMetaid(editor_ptr, "SemsimMetaid0000");
+
+    Editor_delete(editor_ptr);
+    RDF_delete(rdf_ptr);
+}
 TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
     RDF *rdf_ptr = RDF_new();
 
@@ -158,6 +170,27 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
     RDF_delete(rdf_ptr);
 }
 
+TEST_F(CAPITests, TestSingularAnnotationSetPredicateUri) {
+    RDF *rdf_ptr = RDF_new();
+
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+
+    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
+    SingularAnnotation_setPredicateFromUri(singularAnnotation, "http://predicate.com/from/uri");
+    char *actual = SingularAnnotation_getPredicate(singularAnnotation);
+    const char *expected = "http://predicate.com/from/uri";
+    ASSERT_STREQ(expected, actual);
+
+
+    Editor_delete(editor_ptr);
+    SingularAnnotation_delete(singularAnnotation);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
 TEST_F(CAPITests, TestEditorPtrMem) {
 // verified with valgrind, not sure how to gtest
     RDF *rdf_ptr = RDF_new();
@@ -171,26 +204,6 @@ TEST_F(CAPITests, TestEditorPtrMem) {
     delete editor_ptr;
 }
 
-//TEST_F(CAPITests, TestSingularAnnotationSetPredicateNew) {
-//    RDF *rdf_ptr = RDF_new();
-//
-//    Editor *editor_ptr = rdf_ptr->toEditorPtr(
-//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-//            SEMSIM_TYPE_SBML
-//    );
-//
-//    SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
-//    SingularAnnotation_setPredicateNew(singularAnnotation,
-//                                       "UnheardOfNamespace", "NewTerm", "uhon");
-//    char *actual = SingularAnnotation_getPredicate(singularAnnotation);
-//    const char *expected = "UnheardOfNamespace/NewTerm";
-//    ASSERT_STREQ(expected, actual);
-//
-//    
-//    Editor_delete(editor_ptr);
-//    SingularAnnotation_delete(singularAnnotation);
-//    free_c_char_star(actual);
-//}
 
 TEST_F(CAPITests, TestSingularAnnotationSetResourceLiteral) {
     RDF *rdf_ptr = RDF_new();

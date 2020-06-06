@@ -35,11 +35,10 @@ namespace semsim {
         return model_.get();
     }
 
-
     void Editor::checkValidMetaid(const std::string &metaid) {
         if (std::find(metaids_.begin(), metaids_.end(), metaid) == metaids_.end()) {
             std::ostringstream err;
-            err << __FILE__ << ":" << __LINE__ << ": metaid \"" << metaid << "\" not found. ";
+            err << "std::invalid_argument(): metaid \"" << metaid << "\" not found. ";
             err << "These are your available metaids: ";
             for (auto &it: metaids_) {
                 err << it << ", ";

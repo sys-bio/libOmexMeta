@@ -183,7 +183,6 @@ rasqal_new_query(rasqal_world *world, const char *name,
  **/
 void
 rasqal_free_query(rasqal_query *query) {
-    printf("in rasqal_free_query\n");
     if (!query)
         return;
 
@@ -199,9 +198,7 @@ rasqal_free_query(rasqal_query *query) {
     if (query->context)
         RASQAL_FREE(rasqal_query_context, query->context);
 
-    printf("Should namespaces be freed?\n");
     if (query->namespaces) {
-        printf("Should namespaces be freed? yes\n");
         raptor_free_namespaces(query->namespaces);
     }
     if (query->base_uri)

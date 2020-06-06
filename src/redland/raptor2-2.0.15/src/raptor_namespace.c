@@ -138,7 +138,6 @@ int
 raptor_namespaces_init(raptor_world *world,
                        raptor_namespace_stack *nstack,
                        int defaults) {
-    printf("allocating raptor namespaces\n");
 
     int failures = 0;
 
@@ -295,8 +294,6 @@ raptor_namespaces_start_namespace_full(raptor_namespace_stack *nstack,
  **/
 void
 raptor_namespaces_clear(raptor_namespace_stack *nstack) {
-    printf("clearning raptor namespaces\n");
-
     if (nstack->table) {
         int bucket;
 
@@ -342,7 +339,6 @@ raptor_namespaces_clear(raptor_namespace_stack *nstack) {
  **/
 void
 raptor_free_namespaces(raptor_namespace_stack *nstack) {
-    printf("freeing raptor namespaces\n");
     if (!nstack)
         return;
 
