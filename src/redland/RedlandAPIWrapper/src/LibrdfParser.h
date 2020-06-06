@@ -82,7 +82,7 @@ namespace redland {
 
         librdf_parser *makeParser();
 
-        static void setFeature(librdf_parser *parser, std::string feature_uri, librdf_node *node);
+        static void setFeature(librdf_parser *parser, const std::string& feature_uri, librdf_node *node);
 
         static void setOption(librdf_parser *parser, const std::string &option, const std::string &value);
 

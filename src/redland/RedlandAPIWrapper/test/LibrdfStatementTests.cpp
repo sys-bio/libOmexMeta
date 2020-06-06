@@ -12,15 +12,15 @@ using namespace redland;
 class LibrdfStatementTests : public ::testing::Test {
 
 public:
-    librdf_node* subject = LibrdfNode::fromUriString("subject");
-    librdf_node* predicate = LibrdfNode::fromUriString("predicate");
-    librdf_node* resource = LibrdfNode::fromUriString("resource");
+    LibrdfNode subject = LibrdfNode::fromUriString("subject");
+    LibrdfNode predicate = LibrdfNode::fromUriString("predicate");
+    LibrdfNode resource = LibrdfNode::fromUriString("resource");
 
     LibrdfStatementTests() = default;
 };
 
 TEST_F(LibrdfStatementTests, TestCreate) {
-    redland::LibrdfStatement statement = LibrdfStatement::fromRawNodePtrs(
+    redland::LibrdfStatement statement = LibrdfStatement(
             subject,
             predicate,
             resource
@@ -64,8 +64,8 @@ TEST_F(LibrdfStatementTests, TestCreate) {
 
 
 TEST_F(LibrdfStatementTests, TestGetPredicateStr) {
-    redland::LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(std::move(subject), std::move(predicate),
-                                                          std::move(resource));
+    redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate,
+                                                          resource);
     std::string expected = "predicate";
     std::string actual = statement1.getPredicateStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -73,8 +73,8 @@ TEST_F(LibrdfStatementTests, TestGetPredicateStr) {
 
 
 TEST_F(LibrdfStatementTests, TestToStatementSubject) {
-    LibrdfStatement statement = LibrdfStatement::fromRawNodePtrs(
-            std::move(subject), std::move(predicate), std::move(resource));
+    LibrdfStatement statement = LibrdfStatement(
+            subject, predicate, resource);
     std::string actual = statement.getSubjectStr();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -83,13 +83,13 @@ TEST_F(LibrdfStatementTests, TestToStatementSubject) {
 
 TEST_F(LibrdfStatementTests, TestPartial1) {
     LibrdfStatement statement;
-    statement.setSubject(subject);
+    statement.setSubject(subject.get());
     std::string actual = statement.getSubjectStr();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    predicate.freeNode();
+    resource.freeNode();
 
-    librdf_free_node(predicate);
-    librdf_free_node(resource);
 }
 
 
