@@ -7,9 +7,8 @@
 
 namespace semsim {
     void free_c_char_star(char *c) {
-        if (!c)
-            return;
-        free(c);
+        if (c != nullptr)
+            free(c);
     }
 
     void free_c_char_star_star(char **c, int size) {
@@ -94,7 +93,7 @@ namespace semsim {
 
     char *RDF_toString(RDF *rdf_ptr, const char *format, const char *base_uri) {
         // do not return a temporary object:
-        static std::string s = rdf_ptr->toString(format, base_uri);
+        std::string s = rdf_ptr->toString(format, base_uri);
         char *cstr = (char *) malloc((s.size() + 1) * sizeof(char *));
         strcpy(cstr, s.c_str());
         return cstr;
@@ -111,11 +110,14 @@ namespace semsim {
         rdf_ptr->setBaseUri(uri);
     }
 
-//    const char *RDF_queryResultsAsStr(RDF *rdf_ptr, const char *query_str, const char *results_format) {
-//        static std::string query_results = rdf_ptr->queryResultsAsStr(query_str, results_format);
-////        static std::string query_results = rdf_ptr->queryResultsAsStr(query_str, results_format);
-//        return query_results.c_str();
-//    }
+    char *RDF_queryResultsAsStr(RDF *rdf_ptr, const char *query_str, const char *results_format) {
+        Query query(rdf_ptr->getModel(), query_str);
+        std::string results = query.resultsAsStr(results_format);
+        char* s = (char*)malloc((results.size() + 1) * sizeof(char*));
+        strcpy(s, results.c_str());
+        query.freeQuery();
+        return s;
+    }
 
     int RDF_size(RDF *rdf_ptr) {
         return rdf_ptr->size();

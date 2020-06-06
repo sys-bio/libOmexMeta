@@ -39,7 +39,9 @@ namespace semsim {
                      const std::string &storage_name = "SemsimStore",
                      const char *storage_options = nullptr, const char *model_options = nullptr);
 
-//        ~RDF();
+        void freeRDF();
+
+        ~RDF();
 
         RDF(const RDF &rdf) = delete;
 
@@ -83,7 +85,6 @@ namespace semsim {
 
         librdf_storage *getStorage() const;
 
-        void freeRDF();
     };
 }
 

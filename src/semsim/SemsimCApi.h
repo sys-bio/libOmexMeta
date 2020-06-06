@@ -69,7 +69,7 @@ namespace semsim {
     void RDF_fromString(RDF *rdf_ptr, const char *str, const char *format = "guess",
                         const char *baseuri = "./Annotations.rdf");
 
-    const char *RDF_queryResultsAsStr(semsim::RDF *rdf_ptr, const char *query_str, const char *results_format);
+    char * RDF_queryResultsAsStr(semsim::RDF *rdf_ptr, const char *query_str, const char *results_format);
 
     int RDF_size(semsim::RDF *rdf_ptr);
 

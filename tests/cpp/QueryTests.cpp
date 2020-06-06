@@ -64,7 +64,6 @@ TEST_F(QueryTests, TestgetResultsAsMap) {
     std::string actual = resultsMap["y"][0];
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     query.freeQuery();
-
 }
 
 TEST_F(QueryTests, TestgetResultsAsMapTwice) {

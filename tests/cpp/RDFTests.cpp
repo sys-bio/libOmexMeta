@@ -71,16 +71,16 @@ TEST_F(RDFTests, TestToString) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(RDFTests, TestToEditorPtr) {
-    RDF rdf = RDF::fromString(samples.rdf_xml_example7, "rdfxml");
+//TEST_F(RDFTests, TestToEditorPtr) {
+//    RDF rdf = RDF::fromString(samples.rdf_xml_example7, "rdfxml");
+//    Editor* editor = rdf.toEditorPtr(samples.singular_annotation4);
+//
+//}
 
-}
-
-TEST_F(RDFTests, TestFreeWorldAndNewRDF) {
-    RDF rdf1;
-    RDF rdf2;
-
-}
+//TEST_F(RDFTesats, TestFreeWorldAndNewRDF) {
+//    RDF rdf1;
+//    RDF rdf2;
+//}
 
 
 

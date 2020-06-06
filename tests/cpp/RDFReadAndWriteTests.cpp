@@ -29,7 +29,6 @@ public:
         std::string actual = rdf.toString(input_format, "file://./annotations.rdf");
         std::cout << actual << std::endl;
         ASSERT_STREQ(expected_output.c_str(), actual.c_str());
-
     }
 
 };
