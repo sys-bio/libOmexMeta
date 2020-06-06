@@ -39,7 +39,7 @@ TEST_F(LibrdfModelTests, TestMoveConstructor) {
 }
 
 TEST_F(LibrdfModelTests, TestMoveAssignment) {
-    LibrdfModel model1 = LibrdfModel(std::move(storage1.get()));
+    LibrdfModel model1 = LibrdfModel(storage1.get());
     // get ptr as int to store for comparison later:
     auto model1_int_ptr = reinterpret_cast<std::uintptr_t>(model1.get());
     LibrdfModel model2 = LibrdfModel(storage2.get());
@@ -53,9 +53,9 @@ TEST_F(LibrdfModelTests, TestMoveAssignment) {
 TEST_F(LibrdfModelTests, TestAddStatement) {
     LibrdfModel model1 = LibrdfModel(storage1.get());
     LibrdfStatement statement = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromUriString("subject"),
-            LibrdfNode::fromUriString("predicate"),
-            LibrdfNode::fromUriString("resource")
+            LibrdfNode::fromUriString("subject").get(),
+            LibrdfNode::fromUriString("predicate").get(),
+            LibrdfNode::fromUriString("resource").get()
     );
     model1.addStatement(statement);
     int expected = 1;

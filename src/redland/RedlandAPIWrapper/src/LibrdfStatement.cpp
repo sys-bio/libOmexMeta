@@ -21,6 +21,14 @@ namespace redland {
         checkForNull();
     }
 
+    LibrdfStatement::LibrdfStatement(const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource)
+            : statement_(std::shared_ptr<librdf_statement>(
+            librdf_new_statement_from_nodes(
+                    World::getWorld(), subject.get(), predicate.get(), resource.get()
+            ), raptor_free_statement)) {
+        checkForNull();
+    }
+
 
     void LibrdfStatement::checkForNull() {
         if (!getSubject())

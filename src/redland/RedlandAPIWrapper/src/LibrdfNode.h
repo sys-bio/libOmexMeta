@@ -26,19 +26,11 @@
  */
 namespace redland {
 
-    typedef std::unique_ptr<librdf_node> librdf_node_ptr;
-
     class LibrdfNode {
 
-//        raptor_term_value value;
-
-        struct deleter {
-            void operator()(librdf_node *node);
-        };
 
     private:
-        std::shared_ptr<librdf_node> node_;
-        LibrdfUri uri_;
+        librdf_node* node_ = nullptr;
 
 
     public:
@@ -46,22 +38,31 @@ namespace redland {
 
         static void freeNode(librdf_node* node);
 
+        void freeNode();
+
+        LibrdfNode(const LibrdfNode &node) = delete ;
+        LibrdfNode(LibrdfNode&&node) noexcept ;
+        LibrdfNode& operator=(const LibrdfNode& node) = delete ;
+        LibrdfNode& operator=(LibrdfNode&& node) noexcept ;
+
         explicit LibrdfNode(librdf_node *node);
 
         [[nodiscard]] librdf_node *get() const;
 
-        static librdf_node* fromUriString(const std::string &uri_string);
+        static LibrdfNode fromUriString(const std::string &uri_string);
 
-        static librdf_node* fromBlank(const std::string &blank);
+        static LibrdfNode fromBlank(const std::string &blank);
 
-        static librdf_node *fromLiteral(const std::string &literal, const std::string &literal_datatype_uri = "string",
+        static LibrdfNode fromLiteral(const std::string &literal, const std::string &literal_datatype_uri = "string",
                                         const std::string &xml_language = std::string());
 
         raptor_term_type getRaptorTermType();
 
         static std::string str(librdf_node* node);
 
-        librdf_uri* getLiteralDatatype();
+        std::string str();
+
+        LibrdfUri getLiteralDatatype();
 
         std::string getLiteralLanguage();
 

@@ -44,7 +44,7 @@ TEST_F(LibrdfSerializerTests, TestMoveAssignment) {
 TEST_F(LibrdfSerializerTests, TestToString) {
     LibrdfStorage storage;
     LibrdfModel model(storage.get());
-    LibrdfStatement statement = LibrdfStatement::fromRawNodePtrs(
+    LibrdfStatement statement = LibrdfStatement(
             LibrdfNode::fromUriString("https://subject.com"),
             LibrdfNode::fromUriString("https://predicate.com"),
             LibrdfNode::fromUriString("https://resource.com")
@@ -68,7 +68,7 @@ TEST_F(LibrdfSerializerTests, TestToString) {
 TEST_F(LibrdfSerializerTests, TestToStringTurtle) {
     LibrdfStorage storage;
     LibrdfModel model(storage.get());
-    LibrdfStatement statement = LibrdfStatement::fromRawNodePtrs(
+    LibrdfStatement statement = LibrdfStatement(
             LibrdfNode::fromUriString("https://subject.com"),
             LibrdfNode::fromUriString("https://predicate.com"),
             LibrdfNode::fromUriString("https://resource.com")
@@ -91,7 +91,7 @@ TEST_F(LibrdfSerializerTests, TestToStringTurtle) {
 TEST_F(LibrdfSerializerTests, TestToStringNTriples) {
     LibrdfStorage storage;
     LibrdfModel model(storage.get());
-    LibrdfStatement statement = LibrdfStatement::fromRawNodePtrs(
+    LibrdfStatement statement = LibrdfStatement(
             LibrdfNode::fromUriString("https://subject.com"),
             LibrdfNode::fromUriString("https://predicate.com"),
             LibrdfNode::fromUriString("https://resource.com")

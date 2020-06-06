@@ -64,11 +64,13 @@ namespace redland {
 
     void LibrdfSerializer::setFeature(const std::string &ns, const std::string &prefix) const {
         LibrdfUri u(ns);
-        librdf_serializer_set_feature(serializer_, u.get(), LibrdfNode::fromLiteral(prefix));
+        LibrdfNode node = LibrdfNode::fromLiteral(prefix);
+        librdf_serializer_set_feature(serializer_, u.get(), node.get());
         u.freeUri();
+        node.freeNode();
     }
 
-    std::string LibrdfSerializer::toString(std::string uri, const LibrdfModel &model) {
+    std::string LibrdfSerializer::toString(const std::string& uri, const LibrdfModel &model) {
         void *buffer_to_hold_string = nullptr;
         raptor_iostream *ios = raptor_new_iostream_to_string(
                 World::getRaptor(), (void **) &buffer_to_hold_string, nullptr, malloc);

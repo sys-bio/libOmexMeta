@@ -91,7 +91,7 @@ namespace redland {
     }
 
 
-    void LibrdfParser::setFeature(librdf_parser *parser, std::string feature_uri, librdf_node *node) {
+    void LibrdfParser::setFeature(librdf_parser *parser, const std::string& feature_uri, librdf_node *node) {
         LibrdfUri u(feature_uri);
         librdf_parser_set_feature(parser, u.get(), node);
         u.freeUri();
@@ -100,9 +100,9 @@ namespace redland {
     void LibrdfParser::setOption(librdf_parser *parser, const std::string &option, const std::string &value) {
         // prefix for option uri's. Append with desired option for full uri.
         std::string feature_uri_base = "http://feature.librdf.org/raptor-";
-        librdf_node *node = LibrdfNode::fromLiteral(value);
-        setFeature(parser, feature_uri_base + option, node);
-        librdf_free_node(node);
+        LibrdfNode node = LibrdfNode::fromLiteral(value);
+        setFeature(parser, feature_uri_base + option, node.get());
+        node.freeNode();
     }
 
     void LibrdfParser::setOptions(librdf_parser *parser) {
