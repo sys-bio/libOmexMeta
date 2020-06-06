@@ -83,6 +83,16 @@ namespace semsim {
         return *this;
     }
 
+    semsim::Triple &
+    semsim::Triple::setPredicate(const std::string &uri) {
+        if (getPredicate() != nullptr)
+            LibrdfNode::freeNode(getPredicate());
+        LibrdfNode node = LibrdfNode::fromUriString(uri);
+        // we pass ownership of node to the statement.
+        librdf_statement_set_predicate(statement_.get(), node.get());
+        return *this;
+    }
+
 
     semsim::Triple &semsim::Triple::setResourceLiteral(const std::string &literal) {
         // if getResource() node alredy exists, free before resetting

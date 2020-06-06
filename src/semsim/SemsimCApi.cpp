@@ -78,9 +78,7 @@ namespace semsim {
     }
 
     void RDF_delete(RDF *rdf_ptr) {
-        if (rdf_ptr != nullptr) {
             delete rdf_ptr;
-        }
     }
 
 
@@ -206,11 +204,9 @@ namespace semsim {
         return singular_annotation;
     }
 
-    SingularAnnotation *SingularAnnotation_setPredicateNew(
-            SingularAnnotation *singular_annotation, const char *namespace_,
-            const char *term, const char *prefix) {
-//        singular_annotation->setPredicate(namespace_, term, prefix);
-        singular_annotation->setPredicate(namespace_, term);
+    SingularAnnotation *SingularAnnotation_setPredicateFromUri(
+            SingularAnnotation *singular_annotation, const char *uri) {
+        singular_annotation->setPredicate(uri);
         return singular_annotation;
     }
 
