@@ -1,4 +1,3 @@
-import ctypes as ct
 import os
 import site
 import unittest
@@ -357,13 +356,11 @@ class EditorTests(unittest.TestCase):
 
     def test_context_manager(self):
         with self.rdf.to_editor(xml, "sbml") as editor:
-            print(type(editor))
-            singular_annotation = editor.new_singular_annotation()
-            singular_annotation \
-                .set_about("cytosol") \
-                .set_predicate("bqb", "is") \
-                .set_resource_uri("uniprot:PD88776")
-            editor.add_singular_annotation(singular_annotation)
+            with editor.new_singular_annotation() as singular_annotation:
+                singular_annotation \
+                    .set_about("cytosol") \
+                    .set_predicate("bqb", "is") \
+                    .set_resource_uri("uniprot:PD88776")
 
         print(self.rdf)
 

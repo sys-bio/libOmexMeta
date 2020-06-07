@@ -1,8 +1,8 @@
 from __future__ import annotations
-from contextlib import contextmanager
 
 import ctypes as ct
 import os
+from contextlib import contextmanager
 from typing import List
 
 from .pysemsim_api import PysemsimAPI
@@ -113,17 +113,37 @@ class Editor:
     def to_rdf(self) -> None:
         PysemsimAPI.editor_to_rdf(self._editor_ptr)
 
+    @contextmanager
     def new_singular_annotation(self) -> SingularAnnotation:
-        return SingularAnnotation(PysemsimAPI.editor_new_singular_annotation(self._editor_ptr))
+        singular_annotation = SingularAnnotation(PysemsimAPI.editor_new_singular_annotation(self._editor_ptr))
+        try:
+            yield singular_annotation
+        finally:
+            self.add_singular_annotation(singular_annotation)
 
+    @contextmanager
     def new_physical_entity(self) -> PhysicalEntity:
-        return PhysicalEntity(PysemsimAPI.editor_new_physical_entity(self._editor_ptr))
+        physical_entity = PhysicalEntity(PysemsimAPI.editor_new_physical_entity(self._editor_ptr))
+        try:
+            yield physical_entity
+        finally:
+            self.add_physical_entity(physical_entity)
 
+    @contextmanager
     def new_physical_process(self) -> PhysicalProcess:
-        return PhysicalProcess(PysemsimAPI.editor_new_physical_process(self._editor_ptr))
+        physical_process = PhysicalProcess(PysemsimAPI.editor_new_physical_process(self._editor_ptr))
+        try:
+            yield physical_process
+        finally:
+            self.add_physical_process(physical_process)
 
+    @contextmanager
     def new_physical_force(self) -> PhysicalForce:
-        return PhysicalForce(PysemsimAPI.editor_new_physical_force(self._editor_ptr))
+        physical_force = PhysicalForce(PysemsimAPI.editor_new_physical_force(self._editor_ptr))
+        try:
+            yield physical_force
+        finally:
+            self.add_physical_force(physical_force)
 
     def delete(self):
         PysemsimAPI.editor_delete(self._editor_ptr)

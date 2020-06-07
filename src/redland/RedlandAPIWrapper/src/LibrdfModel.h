@@ -16,12 +16,6 @@
 #include "World.h"
 #include "LibrdfStream.h"
 
-/*
- * Todo librdf_model and librdf_storage are
- * strictly 1:1. Put checks in place to verify that
- * user doesn't try to associate more than one model with
- * a single storage
- */
 
 namespace redland {
 
@@ -44,6 +38,11 @@ namespace redland {
 
         explicit LibrdfModel(librdf_model *model);
 
+        /*
+         *  librdf_model and librdf_storage have a
+         * strictly 1:1 relationship. i.e. a storage cannot
+         * be associated with more than one model.
+         */
         explicit LibrdfModel(librdf_storage *storage, const char *options = nullptr);
 
         [[nodiscard]] librdf_model *get() const;
