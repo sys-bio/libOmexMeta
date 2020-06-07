@@ -48,7 +48,7 @@ class PysemsimAPI:
 
     @staticmethod
     def crlf_to_lr(string: str) -> str:
-        """Helper method for converting line endings. For developers"""
+        """Helper method for converting line endings. Needed mostly for query. For developers"""
         return string.replace('\r\n', '\n')
 
     free_char_star = Util.load_func("free_c_char_star", [ct.c_char_p], None)

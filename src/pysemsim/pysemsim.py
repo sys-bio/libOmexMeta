@@ -1,4 +1,5 @@
 from __future__ import annotations
+from contextlib import contextmanager
 
 import ctypes as ct
 import os
@@ -7,23 +8,19 @@ from typing import List
 from .pysemsim_api import PysemsimAPI
 
 
-class _XmlAssistantType:
+def _xml_type_factory(xml_type: str):
     """
-    Class used internally for directing the underlying c++
+    Helper function used internally for directing the underlying c++
     code to work with cellml or sbml.
     """
-
-    def __init__(self, xml_type):
-        type = None
-        if xml_type == "sbml":
-            type = 0
-        elif xml_type == "cellml":
-            type = 1
-        else:
-            raise ValueError("\"xml_type\" arg must be either \"sbml\" or \"cellml\"")
-
-    def getType(self):
-        return type
+    type = None
+    if xml_type == "sbml":
+        type = 0
+    elif xml_type == "cellml":
+        type = 1
+    else:
+        raise ValueError("\"xml_type\" arg must be either \"sbml\" or \"cellml\"")
+    return type
 
 
 class RDF:
@@ -63,19 +60,37 @@ class RDF:
         PysemsimAPI.rdf_set_base_uri(self._obj, uri.encode())
 
     def query(self, query_str: str, results_format: str) -> str:
-        results_crlf = PysemsimAPI.rdf_query_results_as_str(
-            self._obj, query_str.encode(), results_format.encode()).decode("utf-8")
+        results_crlf = PysemsimAPI.get_and_free_c_str(
+            PysemsimAPI.rdf_query_results_as_str(
+                self._obj, query_str.encode(), results_format.encode())
+        )
         results_lf = PysemsimAPI.crlf_to_lr(results_crlf)
         return results_lf
 
     def to_editor(self, xml: str, xmltype: str) -> Editor:
-        return Editor(PysemsimAPI.rdf_to_editor(self._obj, xml.encode(), _XmlAssistantType(xml_type=xmltype).getType()))
+        return Editor(PysemsimAPI.rdf_to_editor(self._obj, xml.encode(),
+                                                _xml_type_factory(xml_type=xmltype)))
 
 
 class Editor:
 
     def __init__(self, editor_ptr):
         self._editor_ptr = editor_ptr
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.to_rdf()
+        self.delete()
+
+    # @contextmanager
+    # def c(self):
+    #     try:
+    #         yield self
+    #     finally:
+    #         self.to_rdf()
+    #         self.delete()
 
     def add_namespace(self, namespace: str, prefix: str) -> None:
         PysemsimAPI.editor_add_namespace(self._editor_ptr, namespace, prefix)
@@ -113,83 +128,94 @@ class Editor:
     def delete(self):
         PysemsimAPI.editor_delete(self._editor_ptr)
 
+"""
+guve sing ann ptr to editor so it doesnt need argument to commitbg ti edutir
+give singylar ann a to editor method
 
+"""
 class SingularAnnotation:
 
     def __init__(self, singular_annotation_ptr):
-        self._singular_annotation_ptr = singular_annotation_ptr
+        self._obj = singular_annotation_ptr
+
+    # def __enter__(self):
+    #     return self
+    #
+    # def __exit__(self, exc_type, exc_val, exc_tb):
+    #     self.to_rdf()
+    #     self.delete()
 
     def get_ptr(self):
-        return self._singular_annotation_ptr
+        return self._obj
 
     def set_about(self, about: str) -> SingularAnnotation:
-        PysemsimAPI.singular_annotation_set_about(self._singular_annotation_ptr, about.encode())
+        self._obj = PysemsimAPI.singular_annotation_set_about(self._obj, about.encode())
         return self
 
     def set_predicate(self, namespace: str, term: str) -> SingularAnnotation:
-        PysemsimAPI.singular_annotation_set_predicate(self._singular_annotation_ptr, namespace.encode(), term.encode())
+        self._obj = PysemsimAPI.singular_annotation_set_predicate(self._obj, namespace.encode(), term.encode())
         return self
 
     def set_predicate_uri(self, namespace: str, uri: str) -> SingularAnnotation:
-        PysemsimAPI.singular_annotation_set_predicate_uri(self._singular_annotation_ptr, uri.encode())
+        self._obj = PysemsimAPI.singular_annotation_set_predicate_uri(self._obj, uri.encode())
         return self
 
     def set_resource_literal(self, literal: str) -> SingularAnnotation:
-        PysemsimAPI.singular_annotation_set_resource_literal(self._singular_annotation_ptr, literal.encode())
+        self._obj = PysemsimAPI.singular_annotation_set_resource_literal(self._obj, literal.encode())
         return self
 
     def set_resource_uri(self, uri: str) -> SingularAnnotation:
-        PysemsimAPI.singular_annotation_set_resource_uri(self._singular_annotation_ptr, uri.encode())
+        self._obj = PysemsimAPI.singular_annotation_set_resource_uri(self._obj, uri.encode())
         return self
 
     def set_resource_blank(self, blank_id: str) -> SingularAnnotation:
-        PysemsimAPI.singular_annotation_set_resource_blank(self._singular_annotation_ptr, blank_id.encode())
+        self._obj = PysemsimAPI.singular_annotation_set_resource_blank(self._obj, blank_id.encode())
         return self
 
     def get_about(self) -> str:
-        return PysemsimAPI.get_and_free_c_str(PysemsimAPI.singular_annotation_get_about(self._singular_annotation_ptr))
+        return PysemsimAPI.get_and_free_c_str(PysemsimAPI.singular_annotation_get_about(self._obj))
 
     def __str__(self):
         return self.to_string("rdfxml-abbrev", "./Annotation.rdf")
 
     def to_string(self, format: str, base_uri: str) -> str:
         return PysemsimAPI.get_and_free_c_str(
-            PysemsimAPI.singular_annotation_str(self._singular_annotation_ptr, format.encode(), base_uri.encode()))
+            PysemsimAPI.singular_annotation_str(self._obj, format.encode(), base_uri.encode()))
 
     def get_predicate(self) -> str:
         return PysemsimAPI.get_and_free_c_str(
-            PysemsimAPI.singular_annotation_get_predicate(self._singular_annotation_ptr))
+            PysemsimAPI.singular_annotation_get_predicate(self._obj))
 
     def get_resource(self) -> str:
         return PysemsimAPI.get_and_free_c_str(
-            PysemsimAPI.singular_annotation_get_resource(self._singular_annotation_ptr))
+            PysemsimAPI.singular_annotation_get_resource(self._obj))
 
     def delete(self):
-        PysemsimAPI.singular_annotation_delete(self._singular_annotation_ptr)
+        PysemsimAPI.singular_annotation_delete(self._obj)
 
 
 class PhysicalEntity:
 
     def __init__(self, physical_entity_ptr):
-        self._physical_entity_ptr = physical_entity_ptr
+        self._obj = physical_entity_ptr
 
     def get_ptr(self) -> ct.c_int64:
-        return self._physical_entity_ptr
+        return self._obj
 
     def set_about(self, about: str) -> PhysicalEntity:
-        PysemsimAPI.physical_entity_set_about(self._physical_entity_ptr, about.encode())
+        self._obj = PysemsimAPI.physical_entity_set_about(self._obj, about.encode())
         return self
 
     def set_physical_property(self, property: str) -> PhysicalEntity:
-        PysemsimAPI.physical_entity_set_physical_property(self.get_ptr(), property.encode())
+        self._obj = PysemsimAPI.physical_entity_set_physical_property(self.get_ptr(), property.encode())
         return self
 
     def set_identity(self, identity: str) -> PhysicalEntity:
-        PysemsimAPI.physical_entity_set_identity(self.get_ptr(), identity.encode())
+        self._obj = PysemsimAPI.physical_entity_set_identity(self.get_ptr(), identity.encode())
         return self
 
     def add_location(self, location: str) -> PhysicalEntity:
-        PysemsimAPI.physical_entity_add_location(self.get_ptr(), location.encode())
+        self._obj = PysemsimAPI.physical_entity_add_location(self.get_ptr(), location.encode())
         return self
 
     def get_about(self) -> str:
@@ -218,94 +244,97 @@ class PhysicalEntity:
         return self.to_string("rdfxml-abbrev", "./Annotation.rdf")
 
     def delete(self):
-        PysemsimAPI.physical_entity_delete(self._physical_entity_ptr)
+        PysemsimAPI.physical_entity_delete(self._obj)
 
 
 class PhysicalProcess:
 
     def __init__(self, physical_process_ptr):
-        self._physical_process_ptr = physical_process_ptr
+        self._obj = physical_process_ptr
 
     def get_ptr(self):
-        return self._physical_process_ptr
+        return self._obj
 
     def set_about(self, about: str) -> PhysicalProcess:
-        PysemsimAPI.physical_process_set_about(self._physical_process_ptr, about.encode())
+        self._obj = PysemsimAPI.physical_process_set_about(self._obj, about.encode())
         return self
 
     def set_physical_property(self, property: str) -> PhysicalProcess:
-        PysemsimAPI.physical_process_set_physical_property(self._physical_process_ptr, property.encode())
+        self._obj = PysemsimAPI.physical_process_set_physical_property(self._obj, property.encode())
         return self
 
     def add_source(self, source_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        PysemsimAPI.physical_process_add_source(self._physical_process_ptr, source_id.encode(), multiplier,
-                              physical_entity_reference.encode())
+        self._obj = PysemsimAPI.physical_process_add_source(self._obj, source_id.encode(), multiplier,
+                                                            physical_entity_reference.encode())
         return self
 
     def add_sink(self, sink_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        PysemsimAPI.physical_process_add_sink(self._physical_process_ptr, sink_id.encode(), multiplier,
-                            physical_entity_reference.encode())
+        self._obj = PysemsimAPI.physical_process_add_sink(self._obj, sink_id.encode(), multiplier,
+                                                          physical_entity_reference.encode())
         return self
 
     def add_mediator(self, mediator_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        PysemsimAPI.physical_process_add_mediator(self._physical_process_ptr, mediator_id.encode(), multiplier,
-                                physical_entity_reference.encode())
+        self._obj = PysemsimAPI.physical_process_add_mediator(self._obj, mediator_id.encode(), multiplier,
+                                                              physical_entity_reference.encode())
         return self
 
     def to_string(self, format: str, base_uri: str):
         return PysemsimAPI.get_and_free_c_str(
-            PysemsimAPI.physical_process_str(self._physical_process_ptr, format.encode(), base_uri.encode()))
+            PysemsimAPI.physical_process_str(self._obj, format.encode(), base_uri.encode()))
 
     def __str__(self):
         return self.to_string("rdfxml-abbrev", "./Annotation.rdf")
 
     def get_about(self) -> str:
-        return PysemsimAPI.get_and_free_c_str(self.PysemsimAPI.physical_process_get_about(self._physical_process_ptr))
+        return PysemsimAPI.get_and_free_c_str(self.PysemsimAPI.physical_process_get_about(self._obj))
 
     def get_physical_property(self):
-        return PysemsimAPI.get_and_free_c_str(self.PysemsimAPI.physical_process_get_physical_property(self._physical_process_ptr))
+        return PysemsimAPI.get_and_free_c_str(
+            self.PysemsimAPI.physical_process_get_physical_property(self._obj))
 
     def delete(self):
-        PysemsimAPI.physical_process_delete(self._physical_process_ptr)
+        PysemsimAPI.physical_process_delete(self._obj)
 
 
 class PhysicalForce:
 
     def __init__(self, physical_force_ptr):
-        self._physical_force_ptr = physical_force_ptr
+        self._obj = physical_force_ptr
 
     def get_ptr(self):
-        return self._physical_force_ptr
+        return self._obj
 
     def set_about(self, about: str) -> PhysicalForce:
-        PysemsimAPI.physical_force_set_about(self._physical_force_ptr, about.encode())
+        self._obj = PysemsimAPI.physical_force_set_about(self._obj, about.encode())
         return self
 
     def set_physical_property(self, property: str) -> PhysicalForce:
-        PysemsimAPI.physical_force_set_physical_property(self._physical_force_ptr, property.encode())
+        self._obj = PysemsimAPI.physical_force_set_physical_property(self._obj, property.encode())
         return self
 
     def add_source(self, source_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
-        PysemsimAPI.physical_force_add_source(self._physical_force_ptr, source_id.encode(), multiplier,
-                              physical_entity_reference.encode())
+        self._obj = PysemsimAPI.physical_force_add_source(self._obj, source_id.encode(), multiplier,
+                                                          physical_entity_reference.encode())
         return self
 
     def add_sink(self, sink_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
-        PysemsimAPI.physical_force_add_sink(self._physical_force_ptr, sink_id.encode(), multiplier, physical_entity_reference.encode())
+        self._obj = PysemsimAPI.physical_force_add_sink(self._obj, sink_id.encode(), multiplier,
+                                                        physical_entity_reference.encode())
         return self
 
     def to_string(self, format: str, base_uri: str):
         return PysemsimAPI.get_and_free_c_str(
-            PysemsimAPI.physical_force_str(self._physical_force_ptr, format.encode(), base_uri.encode()))
+            PysemsimAPI.physical_force_str(self._obj, format.encode(), base_uri.encode()))
 
     def __str__(self):
         return self.to_string("rdfxml-abbrev", "./Annotation.rdf")
 
     def get_about(self) -> str:
-        return PysemsimAPI.get_and_free_c_str(PysemsimAPI.physical_force_get_about(self._physical_force_ptr))
+        return PysemsimAPI.get_and_free_c_str(PysemsimAPI.physical_force_get_about(self._obj))
 
     def get_physical_property(self):
-        return PysemsimAPI.get_and_free_c_str(PysemsimAPI.physical_force_get_physical_property(self._physical_force_ptr))
+        return PysemsimAPI.get_and_free_c_str(
+            PysemsimAPI.physical_force_get_physical_property(self._obj))
 
     def delete(self):
-        PysemsimAPI.physical_force_delete(self._physical_force_ptr)
+        PysemsimAPI.physical_force_delete(self._obj)
