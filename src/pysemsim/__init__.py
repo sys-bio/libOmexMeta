@@ -14,7 +14,7 @@ todo
     - delete comments
     - redland code
 - CPP documentation
-- Write context managers for python end
+- Experiment with using the destructor python
 - create python setup.py 
 - upload to test pypi
 - Create github release
@@ -26,6 +26,10 @@ todo
     - demo for each. 
 - refactor libsemsim to libOmexMeta. 
 - remove the forkd from whoever 
+- Use the storage features
+- List the parser, serializer and storage formats. 
+    and demo each. 
+- 
 
 
 
