@@ -4,6 +4,8 @@ import ctypes as ct
 import os
 from contextlib import contextmanager
 from typing import List
+from overload import overload
+
 
 from .pysemsim_api import PysemsimAPI
 
@@ -46,6 +48,9 @@ class RDF:
     def __str__(self):
         return self.to_string("rdfxml-abbrev", base_uri="./Annotation.rdf")
 
+    def __del__(self):
+        self.delete()
+
     def to_string(self, format: str, base_uri: str) -> str:
         str_ptr = PysemsimAPI.rdf_to_string(self._obj, format.encode(), base_uri.encode())
         thestring = PysemsimAPI.get_and_free_c_str(str_ptr)
@@ -83,14 +88,6 @@ class Editor:
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.to_rdf()
         self.delete()
-
-    # @contextmanager
-    # def c(self):
-    #     try:
-    #         yield self
-    #     finally:
-    #         self.to_rdf()
-    #         self.delete()
 
     def add_namespace(self, namespace: str, prefix: str) -> None:
         PysemsimAPI.editor_add_namespace(self._editor_ptr, namespace, prefix)
@@ -148,11 +145,7 @@ class Editor:
     def delete(self):
         PysemsimAPI.editor_delete(self._editor_ptr)
 
-"""
-guve sing ann ptr to editor so it doesnt need argument to commitbg ti edutir
-give singylar ann a to editor method
 
-"""
 class SingularAnnotation:
 
     def __init__(self, singular_annotation_ptr):
