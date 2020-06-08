@@ -1,9 +1,13 @@
 import os
 import site
+import typing
 import unittest
+
+import libcombine
+import requests
+
 # import matplotlib as mpl
 # mpl.use('TkAgg', warn=False)
-# import tellurium as te
 
 test_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 proj_dir = os.path.dirname(test_dir)
@@ -13,6 +17,7 @@ pysemsem_dir = os.path.join(src_dir, "pysemsim")
 site.addsitedir(src_dir)
 
 import pysemsim
+import tellurium as te
 
 xml = """<?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
@@ -97,18 +102,15 @@ class TestRDF(unittest.TestCase):
     def test_crete_new_rdf_obj(self):
         rdf = pysemsim.RDF()
         self.assertIsInstance(rdf._obj, int)
-        
 
     def test_from_string(self):
         rdf = pysemsim.RDF.from_string(self.rdf_str, "rdfxml")
         self.assertEqual(6, len(rdf))
-        
 
     def test_get_base_uri(self):
         rdf = pysemsim.RDF.from_string(self.rdf_str, "rdfxml")
         uri = rdf.get_base_uri()
         self.assertEqual("file://./Annotations.rdf", uri)
-        
 
     def test_set_base_uri(self):
         rdf = pysemsim.RDF.from_string(self.rdf_str, "rdfxml")
@@ -116,7 +118,6 @@ class TestRDF(unittest.TestCase):
         uri = rdf.get_base_uri()
         expected = "file:///mnt/d/libsemsim/tests/python/ABaseUri.rdf"
         self.assertEqual(expected, uri)
-        
 
     def test_query(self):
         rdf = pysemsim.RDF.from_string(self.rdf_str, "rdfxml")
@@ -143,216 +144,8 @@ class EditorTests(unittest.TestCase):
         self.rdf = pysemsim.RDF()
         self.editor = self.rdf.to_editor(xml, "sbml")
 
-    def tearDown(self) -> None:
-        self.editor.delete()
-
     def test_to_editor(self):
         self.assertIsInstance(self.editor, pysemsim.Editor)
-
-    def test_singular_ann_str(self):
-        singular_annotation = self.editor.new_singular_annotation()
-        singular_annotation \
-            .set_about("cytosol") \
-            .set_predicate("bqb", "is") \
-            .set_resource_uri("uniprot:PD88776")
-
-        expected = '''<?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xml:base="./Annotation.rdf">
-  <rdf:Description rdf:about="cytosol">
-    <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD88776"/>
-  </rdf:Description>
-</rdf:RDF>
-'''
-        actual = str(singular_annotation)
-        self.assertEqual(expected, actual)
-
-#     def test_singular_ann_add_to_model(self):
-#         singular_annotation = self.editor.new_singular_annotation()
-#         singular_annotation \
-#             .set_about("metaid4") \
-#             .set_predicate("bqb", "is") \
-#             .set_resource_uri("uniprot:PD88776")
-#         self.editor.add_singular_annotation(singular_annotation)
-#         self.editor.to_rdf()
-#         print(self.rdf)
-#
-#         expected = '''<?xml version="1.0" encoding="utf-8"?>
-# <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-#    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-#    xml:base="file://./Annotation.rdf">
-#   <rdf:Description rdf:about="metaid4">
-#     <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD88776"/>
-#   </rdf:Description>
-# </rdf:RDF>
-# '''
-#         actual = str(self.rdf)
-#         self.assertEqual(expected, actual)
-#
-#     def test_physical_entity(self):
-#         physical_entity = self.editor.new_physical_entity()
-#         physical_entity \
-#             .set_about("metaid87") \
-#             .set_physical_property("opb/opb_275") \
-#             .set_identity("uniprot/PD72514") \
-#             .add_location("fma:FMA:7654")
-#         self.editor.add_physical_entity(physical_entity)
-#         self.editor.to_rdf()
-#
-#         expected = '''<?xml version="1.0" encoding="utf-8"?>
-# <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-#    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-#    xml:base="file://./Annotation.rdf">
-#   <rdf:Description rdf:about="PhysicalEntity0000">
-#     <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD72514"/>
-#     <bqbiol:isPartOf rdf:resource="https://identifiers.org/fma/FMA:7654"/>
-#   </rdf:Description>
-#   <rdf:Description rdf:about="metaid87">
-#     <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0000"/>
-#     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
-#   </rdf:Description>
-# </rdf:RDF>
-# '''
-#         self.assertEqual(expected, str(self.rdf))
-#
-#     def test_physical_add_to_model(self):
-#         physical_entity = self.editor.new_physical_entity()
-#         physical_entity \
-#             .set_about("metaid87") \
-#             .set_physical_property("opb/opb_275") \
-#             .set_identity("uniprot/PD72514") \
-#             .add_location("fma:FMA:7654")
-#
-#         expected = '''<?xml version="1.0" encoding="utf-8"?>
-# <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-#    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-#    xml:base="file://./Annotation.rdf">
-#   <rdf:Description rdf:about="PhysicalEntity0000">
-#     <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD72514"/>
-#     <bqbiol:isPartOf rdf:resource="https://identifiers.org/fma/FMA:7654"/>
-#   </rdf:Description>
-#   <rdf:Description rdf:about="metaid87">
-#     <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0000"/>
-#     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
-#   </rdf:Description>
-# </rdf:RDF>
-# '''
-#         self.editor.add_physical_entity(physical_entity)
-#         self.editor.to_rdf()
-#         actual = str(self.rdf)
-#         self.assertEqual(expected, actual)
-#
-#     def test_physical_process(self):
-#         physical_process = self.editor.new_physical_process()
-#         physical_process \
-#             .set_about("metaid87") \
-#             .set_physical_property("opb/opb_275") \
-#             .add_source("metaid2", 1.0, "physicalEntity4") \
-#             .add_sink("metaid3", 1.0, "PhysicalEntity7") \
-#             .add_mediator("metaid002", 1.0, "PhysicalEntity9")
-#
-#         expected = '''<?xml version="1.0" encoding="utf-8"?>
-# <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-#    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-#    xmlns:semsim="http://www.bhi.washington.edu/semsim#"
-#    xml:base="file://./Annotation.rdf">
-#   <rdf:Description rdf:about="PhysicalProcess0000">
-#     <semsim:hasMediatorParticipant rdf:resource="metaid002"/>
-#     <semsim:hasSinkParticipant rdf:resource="metaid3"/>
-#     <semsim:hasSourceParticipant rdf:resource="metaid2"/>
-#   </rdf:Description>
-#   <rdf:Description rdf:about="metaid002">
-#     <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity9"/>
-#   </rdf:Description>
-#   <rdf:Description rdf:about="metaid2">
-#     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
-#     <semsim:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
-#   </rdf:Description>
-#   <rdf:Description rdf:about="metaid3">
-#     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
-#     <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
-#   </rdf:Description>
-#   <rdf:Description rdf:about="metaid87">
-#     <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
-#     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
-#   </rdf:Description>
-# </rdf:RDF>
-# '''
-#         actual = str(physical_process)
-#         self.assertEqual(expected, actual)
-#
-#     def test_physical_force(self):
-#         physical_force = self.editor.new_physical_force()
-#         physical_force \
-#             .set_about("metaid87") \
-#             .set_physical_property("opb/opb_275") \
-#             .add_source("metaid2", 1.0, "physicalEntity4") \
-#             .add_sink("metaid3", 1.0, "PhysicalEntity7")
-#
-#         expected = '''<?xml version="1.0" encoding="utf-8"?>
-# <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-#    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-#    xmlns:semsim="http://www.bhi.washington.edu/semsim#"
-#    xml:base="file://./Annotation.rdf">
-#   <rdf:Description rdf:about="PhysicalForce0000">
-#     <semsim:hasSinkParticipant rdf:resource="metaid3"/>
-#     <semsim:hasSourceParticipant rdf:resource="metaid2"/>
-#   </rdf:Description>
-#   <rdf:Description rdf:about="metaid2">
-#     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
-#     <semsim:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
-#   </rdf:Description>
-#   <rdf:Description rdf:about="metaid3">
-#     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
-#     <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
-#   </rdf:Description>
-#   <rdf:Description rdf:about="metaid87">
-#     <bqbiol:isPropertyOf rdf:resource="PhysicalForce0000"/>
-#     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
-#   </rdf:Description>
-# </rdf:RDF>
-# '''
-#         actual = str(physical_force)
-#         # self.assertEqual(expected, actual)
-#
-#     def test_physical_force_add_to_model(self):
-#         physical_force = self.editor.new_physical_force()
-#
-#         physical_force \
-#             .set_about("metaid87") \
-#             .set_physical_property("opb/opb_275") \
-#             .add_source("metaid2", 1.0, "physicalEntity4") \
-#             .add_sink("metaid3", 1.0, "PhysicalEntity7")
-#
-#         expected = """<?xml version="1.0" encoding="utf-8"?>
-# <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-#    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-#    xmlns:semsim="http://www.bhi.washington.edu/semsim#"
-#    xml:base="file://./Annotation.rdf">
-#   <rdf:Description rdf:about="PhysicalForce0000">
-#     <semsim:hasSinkParticipant rdf:resource="metaid3"/>
-#     <semsim:hasSourceParticipant rdf:resource="metaid2"/>
-#   </rdf:Description>
-#   <rdf:Description rdf:about="metaid2">
-#     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
-#     <semsim:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
-#   </rdf:Description>
-#   <rdf:Description rdf:about="metaid3">
-#     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
-#     <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
-#   </rdf:Description>
-#   <rdf:Description rdf:about="metaid87">
-#     <bqbiol:isPropertyOf rdf:resource="PhysicalForce0000"/>
-#     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
-#   </rdf:Description>
-# </rdf:RDF>
-# """
-#
-#         self.editor.add_physical_force(physical_force)
-#         self.editor.to_rdf()
-#         actual = self.rdf.to_string("rdfxml-abbrev", base_uri="./Annotation.rdf")
-#         self.assertEqual(expected, actual)
 
     def test_context_manager_single_annotation(self):
         with self.rdf.to_editor(xml, "sbml") as editor:
@@ -408,7 +201,6 @@ class EditorTests(unittest.TestCase):
 </rdf:RDF>
 """
         actual = str(self.rdf)
-        print(actual)
         self.assertEqual(expected, actual)
 
     def test_context_manager_physical_force(self):
@@ -447,26 +239,815 @@ class EditorTests(unittest.TestCase):
         self.assertEqual(expected, actual)
 
 
-# class AnnotateRealModelsTests(unittest.TestCase):
-#
-#     def setUp(self) -> None:
-#         m = te.loada("""
-#         model newModel
-#             k1 = 0.1;
-#             k2 = 1;
-#             Smad3Nuc = 10;
-#             Smad3Cyt = 10;
-#             r1: Smad3Nuc => Smad3Cyt; k1*Smad3Nuc;
-#             r2: Smad3Cyt => Smad3Nuc; k1*Smad3Cyt;
-#         end
-#         """)
-#         self.sbml = m.toSBML()
-#
-#     def tearDown(self) -> None:
-#         pass
-#
-#     def test(self):
-#         print(self.sbml)
+class AnnotateAModelTest(unittest.TestCase):
+
+    def setUp(self) -> None:
+        ant = """
+        model SmadNuclearTransport
+            compartment cytosol;
+            compartment nucleus;
+            Smad3Cyt in cytosol;
+            Smad3Nuc in nucleus;
+            k1 = 0.1;
+            k2 = 1;
+            Smad3Nuc = 10;
+            Smad3Cyt = 10;
+            r1: Smad3Nuc => Smad3Cyt; k1*Smad3Nuc;
+            r2: Smad3Cyt => Smad3Nuc; k2*Smad3Cyt;
+        end
+        """
+        self.sbml = te.antimonyToSBML(ant)
+
+    def test_get_metaids(self):
+        rdf = pysemsim.RDF()
+        with rdf.to_editor(self.sbml, "sbml") as editor:
+            metaids = editor.get_metaids()
+
+        expected = ['SmadNuclearTransport',
+                    'SemsimMetaid0000',
+                    'SemsimMetaid0001',
+                    'SemsimMetaid0002',
+                    'SemsimMetaid0003',
+                    'SemsimMetaid0004',
+                    'SemsimMetaid0005',
+                    'SemsimMetaid0006']
+        actual = metaids
+        self.assertEqual(expected, actual)
+
+    def test_get_xml(self):
+        rdf = pysemsim.RDF()
+        with rdf.to_editor(self.sbml, "sbml") as editor:
+            xml_with_metaids = editor.get_xml()
+
+        expected = """<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by libAntimony version v2.11.0 with libSBML version 5.18.0. -->
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model metaid="SmadNuclearTransport" id="SmadNuclearTransport">
+    <listOfCompartments>
+      <compartment id="cytosol" spatialDimensions="3" constant="true" metaid="SemsimMetaid0000"/>
+      <compartment id="nucleus" spatialDimensions="3" constant="true" metaid="SemsimMetaid0001"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="Smad3Cyt" compartment="cytosol" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="SemsimMetaid0002"/>
+      <species id="Smad3Nuc" compartment="nucleus" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="SemsimMetaid0003"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="k1" value="0.1" constant="true"/>
+      <parameter id="k2" value="1" constant="true"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="r1" reversible="false" fast="false" metaid="SemsimMetaid0004">
+        <listOfReactants>
+          <speciesReference species="Smad3Nuc" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Smad3Cyt" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw metaid="SemsimMetaid0005">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> Smad3Nuc </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="r2" reversible="false" fast="false" metaid="SemsimMetaid0006">
+        <listOfReactants>
+          <speciesReference species="Smad3Cyt" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Smad3Nuc" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw metaid="SemsimMetaid0007">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> Smad3Cyt </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
+"""
+        actual = xml_with_metaids
+        print(actual)
+        self.assertEqual(expected, actual)
+
+    def test_annotate_model(self):
+        """
+        Tests the annotation of a model created in setup.
+
+        Note: autogenerate the participant ID, currently users,
+            are asked to give the id, but this isn't really necessary.
+        Returns:
+
+        """
+        rdf = pysemsim.RDF()
+        with rdf.to_editor(self.sbml, "sbml") as editor:
+            print(editor.get_xml())
+
+            # model level annotations
+            with editor.new_singular_annotation() as author:
+                author.set_about("SmadNuclearTransport") \
+                    .set_predicate_uri("https://unknownpredicate.com/changeme#author") \
+                    .set_resource_literal("Ciaran Welsh")
+
+            # annotate Smad3nuc
+            with editor.new_physical_entity() as smad3nuc:
+                smad3nuc.set_about("SemsimMetaid0002") \
+                    .set_physical_property("OPB:OPB_00340") \
+                    .set_identity("uniprot:P84022") \
+                    .add_location("obo/FMA_7163") \
+                    .add_location("obo/FMA_264020") \
+ \
+                    # annotate Smad3nuc
+            with editor.new_physical_entity() as smad3nuc:
+                smad3nuc.set_about("SemsimMetaid0003") \
+                    .set_physical_property("OPB:OPB_00340") \
+                    .set_identity("uniprot:P84022") \
+                    .add_location("obo/FMA_7163") \
+                    .add_location("obo/FMA_63877") \
+                    .add_location("obo/FMA_63840")
+
+            # annotate r1 (Smad3Nuc -> Smad3Cyt)
+            with editor.new_physical_process() as export_reaction:
+                export_reaction.set_about("SemsimMetaid0004") \
+                    .set_physical_property("OPB:OPB_00237") \
+                    .add_source("source1", 1, "SemsimMetaid0003") \
+                    .add_sink("sink1", 1, "SemsimMetaid0002")
+
+            # annotate r2 (Smad3Cyt -> Smad3Nuc)
+            with editor.new_physical_process() as export_reaction:
+                export_reaction.set_about("SemsimMetaid0005") \
+                    .set_physical_property("OPB:OPB_00237") \
+                    .add_source("source2", 1, "SemsimMetaid0002") \
+                    .add_sink("sink2", 1, "SemsimMetaid0003")
+
+        expected = """<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:semsim="http://www.bhi.washington.edu/semsim#"
+   xml:base="file://./Annotation.rdf">
+  <rdf:Description rdf:about="PhysicalEntity0000">
+    <bqbiol:is rdf:resource="https://identifiers.org/uniprot/P84022"/>
+    <bqbiol:isPartOf rdf:resource="https://identifiers.org/obo/FMA_264020"/>
+    <bqbiol:isPartOf rdf:resource="https://identifiers.org/obo/FMA_7163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="PhysicalEntity0001">
+    <bqbiol:is rdf:resource="https://identifiers.org/uniprot/P84022"/>
+    <bqbiol:isPartOf rdf:resource="https://identifiers.org/obo/FMA_63840"/>
+    <bqbiol:isPartOf rdf:resource="https://identifiers.org/obo/FMA_63877"/>
+    <bqbiol:isPartOf rdf:resource="https://identifiers.org/obo/FMA_7163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="PhysicalProcess0000">
+    <semsim:hasSinkParticipant rdf:resource="sink1"/>
+    <semsim:hasSourceParticipant rdf:resource="source1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="PhysicalProcess0001">
+    <semsim:hasSinkParticipant rdf:resource="sink2"/>
+    <semsim:hasSourceParticipant rdf:resource="source2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SemsimMetaid0002">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0000"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00340"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SemsimMetaid0003">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0001"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00340"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SemsimMetaid0004">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00237"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SemsimMetaid0005">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0001"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00237"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SmadNuclearTransport">
+    <ns1:author xmlns:ns1="https://unknownpredicate.com/changeme#"
+       rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#string">Ciaran Welsh</ns1:author>
+  </rdf:Description>
+  <rdf:Description rdf:about="sink1">
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="SemsimMetaid0002"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="sink2">
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="SemsimMetaid0003"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="source1">
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="SemsimMetaid0003"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="source2">
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="SemsimMetaid0002"/>
+  </rdf:Description>
+</rdf:RDF>
+"""
+        actual = str(rdf)
+        self.assertEqual(expected, actual)
+
+
+class GoldStandardOmexArchiveTests(unittest.TestCase):
+    maxDiff = None
+
+    # urls and filepaths for the gold standard omex archives
+    gold_standard_url1 = "https://auckland.figshare.com/ndownloader/files/17432333"
+    gold_standard_url2 = "https://auckland.figshare.com/ndownloader/files/15425522"
+    gold_standard_url3 = "https://auckland.figshare.com/ndownloader/files/15425513"
+    gold_standard_url4 = "https://auckland.figshare.com/ndownloader/files/15425546"
+    gold_standard_url5 = "https://auckland.figshare.com/ndownloader/files/17432366"
+
+    gold_standard_filename1 = os.path.join(os.getcwd(), "./goldstandard1.omex")
+    gold_standard_filename2 = os.path.join(os.getcwd(), "./goldstandard2.omex")
+    gold_standard_filename3 = os.path.join(os.getcwd(), "./goldstandard3.omex")
+    gold_standard_filename4 = os.path.join(os.getcwd(), "./goldstandard4.omex")
+    gold_standard_filename5 = os.path.join(os.getcwd(), "./goldstandard5.omex")
+
+    def setUp(self) -> None:
+        pass
+
+    def download_file(self, url: str, local_fname: str):
+        # NOTE the stream=True parameter below
+        with requests.get(url, stream=True) as r:
+            r.raise_for_status()
+            with open(local_fname, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    # If you have chunk encoded response uncomment if
+                    # and set chunk_size parameter to None.
+                    # if chunk:
+                    f.write(chunk)
+        return local_fname
+
+    def tearDown(self) -> None:
+        teardown = False
+        if teardown:
+            for i in [
+                self.gold_standard_filename1,
+                self.gold_standard_filename2,
+                self.gold_standard_filename3,
+                self.gold_standard_filename4,
+                self.gold_standard_filename5]:
+                if os.path.isfile(i):
+                    os.remove(i)
+
+    def extract_rdf_from_combine_archive(self, archive_path: str) -> typing.List[str]:
+        if not os.path.isfile(archive_path):
+            raise FileNotFoundError(archive_path)
+
+        # read the archive using libcombine
+        archive = libcombine.CombineArchive()
+
+        # note the skipOmex flag. This is needed to expose any files with an "rdf" extension.
+        archive.initializeFromArchive(archive_path, skipOmex=True)
+
+        # filter through the entries in the omex archive for rdf extension files
+        annotation_entries = [i.c_str() for i in archive.getAllLocations() if i[-4:] == ".rdf"]
+
+        # read the rdf into a python string
+        return [archive.extractEntryToString(i) for i in annotation_entries]
+
+    def gold_standard_test(self, gold_standard_url: str, gold_standard_filename: str, expected_output: str,
+                           format: str):
+        # get the gold standard omex file from the tinterweb
+        self.download_file(gold_standard_url, gold_standard_filename)
+
+        # get rdf string from omex file usign libcombine
+        rdf_strings = self.extract_rdf_from_combine_archive(self.gold_standard_filename1)
+        assert (len(rdf_strings) == 1)
+
+        # now libsemsim can read the string into an rdf graph
+        rdf = pysemsim.RDF.from_string(rdf_strings[0])
+
+        # serialize to html, because why not?
+        actual = rdf.to_string(format, gold_standard_filename)
+        print(actual)
+
+        self.assertEqual(expected_output, actual)
+
+    def test_gold_standard1(self):
+        expected = """<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Raptor Graph Serialisation</title>
+</head>
+<body>
+  <table id="triples" border="1">
+    <tr>
+      <th>Subject</th>
+      <th>Predicate</th>
+      <th>Object</th>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid15">BIOMD0000000204_new.sbml#metaid15</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isVersionOf">http://biomodels.net/biology-qualifiers/isVersionOf</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/obo.go/GO:0030163">http://identifiers.org/obo.go/GO:0030163</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid14">BIOMD0000000204_new.sbml#metaid14</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isVersionOf">http://biomodels.net/biology-qualifiers/isVersionOf</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/obo.go/GO:0030163">http://identifiers.org/obo.go/GO:0030163</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid13">BIOMD0000000204_new.sbml#metaid13</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isVersionOf">http://biomodels.net/biology-qualifiers/isVersionOf</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/obo.go/GO:0010467">http://identifiers.org/obo.go/GO:0010467</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid12">BIOMD0000000204_new.sbml#metaid12</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/is">http://biomodels.net/biology-qualifiers/is</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/uniprot/Q01860">http://identifiers.org/uniprot/Q01860</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid22">BIOMD0000000204_new.sbml#metaid22</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isVersionOf">http://biomodels.net/biology-qualifiers/isVersionOf</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/obo.go/GO:0010467">http://identifiers.org/obo.go/GO:0010467</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid11">BIOMD0000000204_new.sbml#metaid11</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/is">http://biomodels.net/biology-qualifiers/is</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/uniprot/P04637">http://identifiers.org/uniprot/P04637</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid21">BIOMD0000000204_new.sbml#metaid21</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isVersionOf">http://biomodels.net/biology-qualifiers/isVersionOf</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/obo.go/GO:0030163">http://identifiers.org/obo.go/GO:0030163</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid20">BIOMD0000000204_new.sbml#metaid20</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isVersionOf">http://biomodels.net/biology-qualifiers/isVersionOf</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/obo.go/GO:0030163">http://identifiers.org/obo.go/GO:0030163</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid8">BIOMD0000000204_new.sbml#metaid8</a></span></td>
+      <td><span class="uri"><a href="http://www.obofoundry.org/ro/ro.owl#has_part">http://www.obofoundry.org/ro/ro.owl#has_part</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/uniprot/Q6ZRP7">http://identifiers.org/uniprot/Q6ZRP7</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid8">BIOMD0000000204_new.sbml#metaid8</a></span></td>
+      <td><span class="uri"><a href="http://www.obofoundry.org/ro/ro.owl#has_part">http://www.obofoundry.org/ro/ro.owl#has_part</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/uniprot/Q01860">http://identifiers.org/uniprot/Q01860</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid19">BIOMD0000000204_new.sbml#metaid19</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isVersionOf">http://biomodels.net/biology-qualifiers/isVersionOf</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/obo.go/GO:0010467">http://identifiers.org/obo.go/GO:0010467</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid18">BIOMD0000000204_new.sbml#metaid18</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isVersionOf">http://biomodels.net/biology-qualifiers/isVersionOf</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/obo.go/GO:0006461">http://identifiers.org/obo.go/GO:0006461</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid17">BIOMD0000000204_new.sbml#metaid17</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isVersionOf">http://biomodels.net/biology-qualifiers/isVersionOf</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/obo.go/GO:0030163">http://identifiers.org/obo.go/GO:0030163</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid_0000002">BIOMD0000000204_new.sbml#metaid_0000002</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/model-qualifiers/is">http://biomodels.net/model-qualifiers/is</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/biomodels.db/MODEL7957942740">http://identifiers.org/biomodels.db/MODEL7957942740</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid_0000002">BIOMD0000000204_new.sbml#metaid_0000002</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/hasTaxon">http://biomodels.net/biology-qualifiers/hasTaxon</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/taxonomy/10090">http://identifiers.org/taxonomy/10090</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid_0000002">BIOMD0000000204_new.sbml#metaid_0000002</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/hasTaxon">http://biomodels.net/biology-qualifiers/hasTaxon</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/taxonomy/9606">http://identifiers.org/taxonomy/9606</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid_0000002">BIOMD0000000204_new.sbml#metaid_0000002</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isVersionOf">http://biomodels.net/biology-qualifiers/isVersionOf</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/obo.go/GO:0048863">http://identifiers.org/obo.go/GO:0048863</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid_0000002">BIOMD0000000204_new.sbml#metaid_0000002</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/model-qualifiers/is">http://biomodels.net/model-qualifiers/is</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/biomodels.db/BIOMD0000000204">http://identifiers.org/biomodels.db/BIOMD0000000204</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid_0000002">BIOMD0000000204_new.sbml#metaid_0000002</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/model-qualifiers/isDescribedBy">http://biomodels.net/model-qualifiers/isDescribedBy</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/pubmed/16978048">http://identifiers.org/pubmed/16978048</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid_0000002">BIOMD0000000204_new.sbml#metaid_0000002</a></span></td>
+      <td><span class="uri"><a href="http://purl.org/dc/terms/description">http://purl.org/dc/terms/description</a></span></td>
+      <td><span class="literal"><span class="value">&lt;div class="dc:title"&gt;Chickarmane2006 - Stem cell switch irreversible&lt;/div&gt;
+            &lt;div class="dc:description"&gt;      &lt;p&gt;Kinetic modeling approach of the transcriptional dynamics of the embryonic stem cell switch.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:bibliographicCitation"&gt;      &lt;p&gt;This model is described in the article:&lt;/p&gt;
+                &lt;div class="bibo:title"&gt;        &lt;a href="http://identifiers.org/pubmed/16978048" title="Access to this publication"&gt;Transcriptional dynamics of the embryonic stem cell switch.&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;div class="bibo:authorList"&gt;Chickarmane V, Troein C, Nuber UA, Sauro HM, Peterson C&lt;/div&gt;
+                &lt;div class="bibo:Journal"&gt;PLoS Computational Biology. 2006; 2(9):e123&lt;/div&gt;
+                &lt;p&gt;Abstract:&lt;/p&gt;
+                &lt;div class="bibo:abstract"&gt;        &lt;p&gt;Recent ChIP experiments of human and mouse embryonic stem cells have elucidated the architecture of the transcriptional regulatory circuitry responsible for cell determination, which involves the transcription factors OCT4, SOX2, and NANOG. In addition to regulating each other through feedback loops, these genes also regulate downstream target genes involved in the maintenance and differentiation of embryonic stem cells. A search for the OCT4-SOX2-NANOG network motif in other species reveals that it is unique to mammals. With a kinetic modeling approach, we ascribe function to the observed OCT4-SOX2-NANOG network by making plausible assumptions about the interactions between the transcription factors at the gene promoter binding sites and RNA polymerase (RNAP), at each of the three genes as well as at the target genes. We identify a bistable switch in the network, which arises due to several positive feedback loops, and is switched on/off by input environmental signals. The switch stabilizes the expression levels of the three genes, and through their regulatory roles on the downstream target genes, leads to a binary decision: when OCT4, SOX2, and NANOG are expressed and the switch is on, the self-renewal genes are on and the differentiation genes are off. The opposite holds when the switch is off. The model is extremely robust to parameter changes. In addition to providing a self-consistent picture of the transcriptional circuit, the model generates several predictions. Increasing the binding strength of NANOG to OCT4 and SOX2, or increasing its basal transcriptional rate, leads to an irreversible bistable switch: the switch remains on even when the activating signal is removed. Hence, the stem cell can be manipulated to be self-renewing without the requirement of input signals. We also suggest tests that could discriminate between a variety of feedforward regulation architectures of the target genes by OCT4, SOX2, and NANOG.&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:publisher"&gt;      &lt;p&gt;This model is hosted on        &lt;a href="http://www.ebi.ac.uk/biomodels/"&gt;BioModels Database&lt;/a&gt;
+            and identified by:        &lt;a href="http://identifiers.org/biomodels.db/MODEL7957942740"&gt;MODEL7957942740&lt;/a&gt;
+            .        &lt;/p&gt;
+                &lt;p&gt;To cite BioModels Database, please use:        &lt;a href="http://identifiers.org/pubmed/20587024" title="Latest BioModels Database publication"&gt;BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models&lt;/a&gt;
+            .        &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:license"&gt;      &lt;p&gt;To the extent possible under law, all copyright and related or neighbouring rights to this encoded model have been dedicated to the public domain worldwide. Please refer to        &lt;a href="http://creativecommons.org/publicdomain/zero/1.0/" title="Access to: CC0 1.0 Universal (CC0 1.0), Public Domain Dedication"&gt;CC0 Public Domain Dedication&lt;/a&gt;
+            for more information.        &lt;/p&gt;
+                &lt;/div&gt;</span></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid5">BIOMD0000000204_new.sbml#metaid5</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/is">http://biomodels.net/biology-qualifiers/is</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/uniprot/Q8N7R0">http://identifiers.org/uniprot/Q8N7R0</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid16">BIOMD0000000204_new.sbml#metaid16</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isVersionOf">http://biomodels.net/biology-qualifiers/isVersionOf</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/obo.go/GO:0010467">http://identifiers.org/obo.go/GO:0010467</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid4">BIOMD0000000204_new.sbml#metaid4</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/is">http://biomodels.net/biology-qualifiers/is</a></span></td>
+      <td><span class="uri"><a href="http://identifiers.org/uniprot/Q6ZRP7">http://identifiers.org/uniprot/Q6ZRP7</a></span></td>
+    </tr>
+  </table>
+  <p>Total number of triples: <span class="count">23</span>.</p>
+</body>
+</html>
+"""
+        self.gold_standard_test(self.gold_standard_url1, self.gold_standard_filename1, expected, "html")
+
+    def test_gold_standard2(self):
+        expected = """<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xml:base="file:///mnt/d/libsemsim/tests/python/./goldstandard2.omex">
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid15">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid14">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid13">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid12">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q01860"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid22">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid11">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/P04637"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid21">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid20">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid8">
+    <ns0:has_part xmlns:ns0="http://www.obofoundry.org/ro/ro.owl#" rdf:resource="http://identifiers.org/uniprot/Q6ZRP7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid8">
+    <ns0:has_part xmlns:ns0="http://www.obofoundry.org/ro/ro.owl#" rdf:resource="http://identifiers.org/uniprot/Q01860"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid19">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid18">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006461"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid17">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid_0000002">
+    <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/MODEL7957942740"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid_0000002">
+    <bqbiol:hasTaxon rdf:resource="http://identifiers.org/taxonomy/10090"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid_0000002">
+    <bqbiol:hasTaxon rdf:resource="http://identifiers.org/taxonomy/9606"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid_0000002">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0048863"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid_0000002">
+    <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000204"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid_0000002">
+    <bqmodel:isDescribedBy rdf:resource="http://identifiers.org/pubmed/16978048"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid_0000002">
+    <dcterms:description>&lt;div class="dc:title"&gt;Chickarmane2006 - Stem cell switch irreversible&lt;/div&gt;
+            &lt;div class="dc:description"&gt;      &lt;p&gt;Kinetic modeling approach of the transcriptional dynamics of the embryonic stem cell switch.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:bibliographicCitation"&gt;      &lt;p&gt;This model is described in the article:&lt;/p&gt;
+                &lt;div class="bibo:title"&gt;        &lt;a href="http://identifiers.org/pubmed/16978048" title="Access to this publication"&gt;Transcriptional dynamics of the embryonic stem cell switch.&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;div class="bibo:authorList"&gt;Chickarmane V, Troein C, Nuber UA, Sauro HM, Peterson C&lt;/div&gt;
+                &lt;div class="bibo:Journal"&gt;PLoS Computational Biology. 2006; 2(9):e123&lt;/div&gt;
+                &lt;p&gt;Abstract:&lt;/p&gt;
+                &lt;div class="bibo:abstract"&gt;        &lt;p&gt;Recent ChIP experiments of human and mouse embryonic stem cells have elucidated the architecture of the transcriptional regulatory circuitry responsible for cell determination, which involves the transcription factors OCT4, SOX2, and NANOG. In addition to regulating each other through feedback loops, these genes also regulate downstream target genes involved in the maintenance and differentiation of embryonic stem cells. A search for the OCT4-SOX2-NANOG network motif in other species reveals that it is unique to mammals. With a kinetic modeling approach, we ascribe function to the observed OCT4-SOX2-NANOG network by making plausible assumptions about the interactions between the transcription factors at the gene promoter binding sites and RNA polymerase (RNAP), at each of the three genes as well as at the target genes. We identify a bistable switch in the network, which arises due to several positive feedback loops, and is switched on/off by input environmental signals. The switch stabilizes the expression levels of the three genes, and through their regulatory roles on the downstream target genes, leads to a binary decision: when OCT4, SOX2, and NANOG are expressed and the switch is on, the self-renewal genes are on and the differentiation genes are off. The opposite holds when the switch is off. The model is extremely robust to parameter changes. In addition to providing a self-consistent picture of the transcriptional circuit, the model generates several predictions. Increasing the binding strength of NANOG to OCT4 and SOX2, or increasing its basal transcriptional rate, leads to an irreversible bistable switch: the switch remains on even when the activating signal is removed. Hence, the stem cell can be manipulated to be self-renewing without the requirement of input signals. We also suggest tests that could discriminate between a variety of feedforward regulation architectures of the target genes by OCT4, SOX2, and NANOG.&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:publisher"&gt;      &lt;p&gt;This model is hosted on        &lt;a href="http://www.ebi.ac.uk/biomodels/"&gt;BioModels Database&lt;/a&gt;
+            and identified by:        &lt;a href="http://identifiers.org/biomodels.db/MODEL7957942740"&gt;MODEL7957942740&lt;/a&gt;
+            .        &lt;/p&gt;
+                &lt;p&gt;To cite BioModels Database, please use:        &lt;a href="http://identifiers.org/pubmed/20587024" title="Latest BioModels Database publication"&gt;BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models&lt;/a&gt;
+            .        &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:license"&gt;      &lt;p&gt;To the extent possible under law, all copyright and related or neighbouring rights to this encoded model have been dedicated to the public domain worldwide. Please refer to        &lt;a href="http://creativecommons.org/publicdomain/zero/1.0/" title="Access to: CC0 1.0 Universal (CC0 1.0), Public Domain Dedication"&gt;CC0 Public Domain Dedication&lt;/a&gt;
+            for more information.        &lt;/p&gt;
+                &lt;/div&gt;</dcterms:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid5">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q8N7R0"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid16">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid4">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q6ZRP7"/>
+  </rdf:Description>
+</rdf:RDF>
+"""
+        self.gold_standard_test(self.gold_standard_url2, self.gold_standard_filename2, expected, "rdfxml")
+
+    def test_gold_standard3(self):
+        expected = """<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+   xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xml:base="file:///mnt/d/libsemsim/tests/python/./goldstandard3.omex">
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid11">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/P04637"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid12">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q01860"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid13">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid14">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid15">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid16">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid17">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid18">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006461"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid19">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid20">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid21">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid22">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid4">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q6ZRP7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid5">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q8N7R0"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid8">
+    <ns1:has_part xmlns:ns1="http://www.obofoundry.org/ro/ro.owl#"
+       rdf:resource="http://identifiers.org/uniprot/Q01860"/>
+    <ns2:has_part xmlns:ns2="http://www.obofoundry.org/ro/ro.owl#"
+       rdf:resource="http://identifiers.org/uniprot/Q6ZRP7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid_0000002">
+    <bqbiol:hasTaxon rdf:resource="http://identifiers.org/taxonomy/10090"/>
+    <bqbiol:hasTaxon rdf:resource="http://identifiers.org/taxonomy/9606"/>
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0048863"/>
+    <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000204"/>
+    <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/MODEL7957942740"/>
+    <bqmodel:isDescribedBy rdf:resource="http://identifiers.org/pubmed/16978048"/>
+    <dcterms:description>&lt;div class="dc:title"&gt;Chickarmane2006 - Stem cell switch irreversible&lt;/div&gt;
+            &lt;div class="dc:description"&gt;      &lt;p&gt;Kinetic modeling approach of the transcriptional dynamics of the embryonic stem cell switch.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:bibliographicCitation"&gt;      &lt;p&gt;This model is described in the article:&lt;/p&gt;
+                &lt;div class="bibo:title"&gt;        &lt;a href="http://identifiers.org/pubmed/16978048" title="Access to this publication"&gt;Transcriptional dynamics of the embryonic stem cell switch.&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;div class="bibo:authorList"&gt;Chickarmane V, Troein C, Nuber UA, Sauro HM, Peterson C&lt;/div&gt;
+                &lt;div class="bibo:Journal"&gt;PLoS Computational Biology. 2006; 2(9):e123&lt;/div&gt;
+                &lt;p&gt;Abstract:&lt;/p&gt;
+                &lt;div class="bibo:abstract"&gt;        &lt;p&gt;Recent ChIP experiments of human and mouse embryonic stem cells have elucidated the architecture of the transcriptional regulatory circuitry responsible for cell determination, which involves the transcription factors OCT4, SOX2, and NANOG. In addition to regulating each other through feedback loops, these genes also regulate downstream target genes involved in the maintenance and differentiation of embryonic stem cells. A search for the OCT4-SOX2-NANOG network motif in other species reveals that it is unique to mammals. With a kinetic modeling approach, we ascribe function to the observed OCT4-SOX2-NANOG network by making plausible assumptions about the interactions between the transcription factors at the gene promoter binding sites and RNA polymerase (RNAP), at each of the three genes as well as at the target genes. We identify a bistable switch in the network, which arises due to several positive feedback loops, and is switched on/off by input environmental signals. The switch stabilizes the expression levels of the three genes, and through their regulatory roles on the downstream target genes, leads to a binary decision: when OCT4, SOX2, and NANOG are expressed and the switch is on, the self-renewal genes are on and the differentiation genes are off. The opposite holds when the switch is off. The model is extremely robust to parameter changes. In addition to providing a self-consistent picture of the transcriptional circuit, the model generates several predictions. Increasing the binding strength of NANOG to OCT4 and SOX2, or increasing its basal transcriptional rate, leads to an irreversible bistable switch: the switch remains on even when the activating signal is removed. Hence, the stem cell can be manipulated to be self-renewing without the requirement of input signals. We also suggest tests that could discriminate between a variety of feedforward regulation architectures of the target genes by OCT4, SOX2, and NANOG.&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:publisher"&gt;      &lt;p&gt;This model is hosted on        &lt;a href="http://www.ebi.ac.uk/biomodels/"&gt;BioModels Database&lt;/a&gt;
+            and identified by:        &lt;a href="http://identifiers.org/biomodels.db/MODEL7957942740"&gt;MODEL7957942740&lt;/a&gt;
+            .        &lt;/p&gt;
+                &lt;p&gt;To cite BioModels Database, please use:        &lt;a href="http://identifiers.org/pubmed/20587024" title="Latest BioModels Database publication"&gt;BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models&lt;/a&gt;
+            .        &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:license"&gt;      &lt;p&gt;To the extent possible under law, all copyright and related or neighbouring rights to this encoded model have been dedicated to the public domain worldwide. Please refer to        &lt;a href="http://creativecommons.org/publicdomain/zero/1.0/" title="Access to: CC0 1.0 Universal (CC0 1.0), Public Domain Dedication"&gt;CC0 Public Domain Dedication&lt;/a&gt;
+            for more information.        &lt;/p&gt;
+                &lt;/div&gt;</dcterms:description>
+  </rdf:Description>
+</rdf:RDF>
+"""
+        self.gold_standard_test(self.gold_standard_url3, self.gold_standard_filename3, expected, "rdfxml-abbrev")
+
+    def test_gold_standard4(self):
+        expected = """<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+   xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xml:base="file:///mnt/d/libsemsim/tests/python/./goldstandard4.omex">
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid11">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/P04637"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid12">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q01860"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid13">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid14">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid15">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid16">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid17">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid18">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006461"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid19">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid20">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid21">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid22">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid4">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q6ZRP7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid5">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q8N7R0"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid8">
+    <ns1:has_part xmlns:ns1="http://www.obofoundry.org/ro/ro.owl#"
+       rdf:resource="http://identifiers.org/uniprot/Q01860"/>
+    <ns2:has_part xmlns:ns2="http://www.obofoundry.org/ro/ro.owl#"
+       rdf:resource="http://identifiers.org/uniprot/Q6ZRP7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid_0000002">
+    <bqbiol:hasTaxon rdf:resource="http://identifiers.org/taxonomy/10090"/>
+    <bqbiol:hasTaxon rdf:resource="http://identifiers.org/taxonomy/9606"/>
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0048863"/>
+    <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000204"/>
+    <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/MODEL7957942740"/>
+    <bqmodel:isDescribedBy rdf:resource="http://identifiers.org/pubmed/16978048"/>
+    <dcterms:description>&lt;div class="dc:title"&gt;Chickarmane2006 - Stem cell switch irreversible&lt;/div&gt;
+            &lt;div class="dc:description"&gt;      &lt;p&gt;Kinetic modeling approach of the transcriptional dynamics of the embryonic stem cell switch.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:bibliographicCitation"&gt;      &lt;p&gt;This model is described in the article:&lt;/p&gt;
+                &lt;div class="bibo:title"&gt;        &lt;a href="http://identifiers.org/pubmed/16978048" title="Access to this publication"&gt;Transcriptional dynamics of the embryonic stem cell switch.&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;div class="bibo:authorList"&gt;Chickarmane V, Troein C, Nuber UA, Sauro HM, Peterson C&lt;/div&gt;
+                &lt;div class="bibo:Journal"&gt;PLoS Computational Biology. 2006; 2(9):e123&lt;/div&gt;
+                &lt;p&gt;Abstract:&lt;/p&gt;
+                &lt;div class="bibo:abstract"&gt;        &lt;p&gt;Recent ChIP experiments of human and mouse embryonic stem cells have elucidated the architecture of the transcriptional regulatory circuitry responsible for cell determination, which involves the transcription factors OCT4, SOX2, and NANOG. In addition to regulating each other through feedback loops, these genes also regulate downstream target genes involved in the maintenance and differentiation of embryonic stem cells. A search for the OCT4-SOX2-NANOG network motif in other species reveals that it is unique to mammals. With a kinetic modeling approach, we ascribe function to the observed OCT4-SOX2-NANOG network by making plausible assumptions about the interactions between the transcription factors at the gene promoter binding sites and RNA polymerase (RNAP), at each of the three genes as well as at the target genes. We identify a bistable switch in the network, which arises due to several positive feedback loops, and is switched on/off by input environmental signals. The switch stabilizes the expression levels of the three genes, and through their regulatory roles on the downstream target genes, leads to a binary decision: when OCT4, SOX2, and NANOG are expressed and the switch is on, the self-renewal genes are on and the differentiation genes are off. The opposite holds when the switch is off. The model is extremely robust to parameter changes. In addition to providing a self-consistent picture of the transcriptional circuit, the model generates several predictions. Increasing the binding strength of NANOG to OCT4 and SOX2, or increasing its basal transcriptional rate, leads to an irreversible bistable switch: the switch remains on even when the activating signal is removed. Hence, the stem cell can be manipulated to be self-renewing without the requirement of input signals. We also suggest tests that could discriminate between a variety of feedforward regulation architectures of the target genes by OCT4, SOX2, and NANOG.&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:publisher"&gt;      &lt;p&gt;This model is hosted on        &lt;a href="http://www.ebi.ac.uk/biomodels/"&gt;BioModels Database&lt;/a&gt;
+            and identified by:        &lt;a href="http://identifiers.org/biomodels.db/MODEL7957942740"&gt;MODEL7957942740&lt;/a&gt;
+            .        &lt;/p&gt;
+                &lt;p&gt;To cite BioModels Database, please use:        &lt;a href="http://identifiers.org/pubmed/20587024" title="Latest BioModels Database publication"&gt;BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models&lt;/a&gt;
+            .        &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:license"&gt;      &lt;p&gt;To the extent possible under law, all copyright and related or neighbouring rights to this encoded model have been dedicated to the public domain worldwide. Please refer to        &lt;a href="http://creativecommons.org/publicdomain/zero/1.0/" title="Access to: CC0 1.0 Universal (CC0 1.0), Public Domain Dedication"&gt;CC0 Public Domain Dedication&lt;/a&gt;
+            for more information.        &lt;/p&gt;
+                &lt;/div&gt;</dcterms:description>
+  </rdf:Description>
+</rdf:RDF>
+"""
+        self.gold_standard_test(self.gold_standard_url4, self.gold_standard_filename4, expected, "rdfxml-abbrev")
+
+    def test_gold_standard5(self):
+        expected = """<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+   xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xml:base="file:///mnt/d/libsemsim/tests/python/./goldstandard5.omex">
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid11">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/P04637"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid12">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q01860"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid13">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid14">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid15">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid16">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid17">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid18">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0006461"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid19">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid20">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid21">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0030163"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid22">
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0010467"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid4">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q6ZRP7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid5">
+    <bqbiol:is rdf:resource="http://identifiers.org/uniprot/Q8N7R0"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid8">
+    <ns1:has_part xmlns:ns1="http://www.obofoundry.org/ro/ro.owl#"
+       rdf:resource="http://identifiers.org/uniprot/Q01860"/>
+    <ns2:has_part xmlns:ns2="http://www.obofoundry.org/ro/ro.owl#"
+       rdf:resource="http://identifiers.org/uniprot/Q6ZRP7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="BIOMD0000000204_new.sbml#metaid_0000002">
+    <bqbiol:hasTaxon rdf:resource="http://identifiers.org/taxonomy/10090"/>
+    <bqbiol:hasTaxon rdf:resource="http://identifiers.org/taxonomy/9606"/>
+    <bqbiol:isVersionOf rdf:resource="http://identifiers.org/obo.go/GO:0048863"/>
+    <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/BIOMD0000000204"/>
+    <bqmodel:is rdf:resource="http://identifiers.org/biomodels.db/MODEL7957942740"/>
+    <bqmodel:isDescribedBy rdf:resource="http://identifiers.org/pubmed/16978048"/>
+    <dcterms:description>&lt;div class="dc:title"&gt;Chickarmane2006 - Stem cell switch irreversible&lt;/div&gt;
+            &lt;div class="dc:description"&gt;      &lt;p&gt;Kinetic modeling approach of the transcriptional dynamics of the embryonic stem cell switch.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:bibliographicCitation"&gt;      &lt;p&gt;This model is described in the article:&lt;/p&gt;
+                &lt;div class="bibo:title"&gt;        &lt;a href="http://identifiers.org/pubmed/16978048" title="Access to this publication"&gt;Transcriptional dynamics of the embryonic stem cell switch.&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;div class="bibo:authorList"&gt;Chickarmane V, Troein C, Nuber UA, Sauro HM, Peterson C&lt;/div&gt;
+                &lt;div class="bibo:Journal"&gt;PLoS Computational Biology. 2006; 2(9):e123&lt;/div&gt;
+                &lt;p&gt;Abstract:&lt;/p&gt;
+                &lt;div class="bibo:abstract"&gt;        &lt;p&gt;Recent ChIP experiments of human and mouse embryonic stem cells have elucidated the architecture of the transcriptional regulatory circuitry responsible for cell determination, which involves the transcription factors OCT4, SOX2, and NANOG. In addition to regulating each other through feedback loops, these genes also regulate downstream target genes involved in the maintenance and differentiation of embryonic stem cells. A search for the OCT4-SOX2-NANOG network motif in other species reveals that it is unique to mammals. With a kinetic modeling approach, we ascribe function to the observed OCT4-SOX2-NANOG network by making plausible assumptions about the interactions between the transcription factors at the gene promoter binding sites and RNA polymerase (RNAP), at each of the three genes as well as at the target genes. We identify a bistable switch in the network, which arises due to several positive feedback loops, and is switched on/off by input environmental signals. The switch stabilizes the expression levels of the three genes, and through their regulatory roles on the downstream target genes, leads to a binary decision: when OCT4, SOX2, and NANOG are expressed and the switch is on, the self-renewal genes are on and the differentiation genes are off. The opposite holds when the switch is off. The model is extremely robust to parameter changes. In addition to providing a self-consistent picture of the transcriptional circuit, the model generates several predictions. Increasing the binding strength of NANOG to OCT4 and SOX2, or increasing its basal transcriptional rate, leads to an irreversible bistable switch: the switch remains on even when the activating signal is removed. Hence, the stem cell can be manipulated to be self-renewing without the requirement of input signals. We also suggest tests that could discriminate between a variety of feedforward regulation architectures of the target genes by OCT4, SOX2, and NANOG.&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:publisher"&gt;      &lt;p&gt;This model is hosted on        &lt;a href="http://www.ebi.ac.uk/biomodels/"&gt;BioModels Database&lt;/a&gt;
+            and identified by:        &lt;a href="http://identifiers.org/biomodels.db/MODEL7957942740"&gt;MODEL7957942740&lt;/a&gt;
+            .        &lt;/p&gt;
+                &lt;p&gt;To cite BioModels Database, please use:        &lt;a href="http://identifiers.org/pubmed/20587024" title="Latest BioModels Database publication"&gt;BioModels Database: An enhanced, curated and annotated resource for published quantitative kinetic models&lt;/a&gt;
+            .        &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;div class="dc:license"&gt;      &lt;p&gt;To the extent possible under law, all copyright and related or neighbouring rights to this encoded model have been dedicated to the public domain worldwide. Please refer to        &lt;a href="http://creativecommons.org/publicdomain/zero/1.0/" title="Access to: CC0 1.0 Universal (CC0 1.0), Public Domain Dedication"&gt;CC0 Public Domain Dedication&lt;/a&gt;
+            for more information.        &lt;/p&gt;
+                &lt;/div&gt;</dcterms:description>
+  </rdf:Description>
+</rdf:RDF>
+"""
+        self.gold_standard_test(self.gold_standard_url5, self.gold_standard_filename5, expected, "rdfxml-abbrev")
+
 
 if __name__ == "__main__":
     unittest.main()

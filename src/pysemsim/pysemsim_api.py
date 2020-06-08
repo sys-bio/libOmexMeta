@@ -79,7 +79,14 @@ class PysemsimAPI:
                                                ct.c_void_p)
     editor_check_valid_metaid = Util.load_func("Editor_checkValidMetaid", [ct.c_int64, ct.c_char_p],
                                                ct.c_void_p)
+
+    editor_get_metaid = Util.load_func("Editor_getMetaId", [ct.c_int64, ct.c_int64], ct.c_int64)
+
+    editor_get_num_metaids = Util.load_func("Editor_getNumMetaIds", [ct.c_int64], ct.c_int64)
+
     editor_to_rdf = Util.load_func("Editor_toRDF", [ct.c_int64], ct.c_void_p)
+
+    editor_get_xml = Util.load_func("Editor_getXml", [ct.c_int64], ct.c_int64)
 
     editor_new_singular_annotation = Util.load_func("SingularAnnotation_new", [ct.c_int64],
                                                     ct.c_int64)

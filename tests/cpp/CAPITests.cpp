@@ -126,6 +126,110 @@ TEST_F(CAPITests, TestCheckValidMetaid) {
     Editor_delete(editor_ptr);
     RDF_delete(rdf_ptr);
 }
+
+TEST_F(CAPITests, TestGetMetaID) {
+    RDF *rdf_ptr = RDF_new();
+
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    char* actual = Editor_getMetaId(editor_ptr, 0);
+    std::cout << actual << std::endl;
+    const char* expected = "SemsimMetaid0000";
+    ASSERT_STREQ(expected, actual);
+
+    free(actual);
+    Editor_delete(editor_ptr);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, TestGetNumMetaIDs) {
+    RDF *rdf_ptr = RDF_new();
+
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    int actual = Editor_getNumMetaIds(editor_ptr);
+    std::cout << actual << std::endl;
+    int expected = 13;
+    ASSERT_EQ(expected, actual);
+    Editor_delete(editor_ptr);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, TestEditorGetXml) {
+    RDF *rdf_ptr = RDF_new();
+
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+
+    char* actual = Editor_getXml(editor_ptr);
+    const char* expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+                           "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\">\n"
+                           "  <model id=\"TestModelNotAnnotated\" metaid=\"SemsimMetaid0000\">\n"
+                           "    <listOfUnitDefinitions>\n"
+                           "      <unitDefinition id=\"molar\">\n"
+                           "        <listOfUnits>\n"
+                           "          <unit kind=\"mole\" exponent=\"1\" scale=\"1\" multiplier=\"1\" metaid=\"SemsimMetaid0001\"/>\n"
+                           "          <unit kind=\"litre\" exponent=\"-1\" scale=\"1\" multiplier=\"1\" metaid=\"SemsimMetaid0002\"/>\n"
+                           "        </listOfUnits>\n"
+                           "      </unitDefinition>\n"
+                           "    </listOfUnitDefinitions>\n"
+                           "    <listOfCompartments>\n"
+                           "      <compartment metaid=\"cytosol\" id=\"cytosol\" size=\"1\" constant=\"true\"/>\n"
+                           "    </listOfCompartments>\n"
+                           "    <listOfSpecies>\n"
+                           "      <species metaid=\"Meta00001\" id=\"X\" compartment=\"cytosol\" initialConcentration=\"10\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+                           "      <species id=\"Y\" compartment=\"cytosol\" initialConcentration=\"20\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"SemsimMetaid0003\"/>\n"
+                           "      <species id=\"Y\" compartment=\"cytosol\" initialConcentration=\"15\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"SemsimMetaid0004\"/>\n"
+                           "    </listOfSpecies>\n"
+                           "    <listOfReactions>\n"
+                           "      <reaction id=\"X2Y\" reversible=\"false\" metaid=\"SemsimMetaid0005\">\n"
+                           "        <listOfProducts>\n"
+                           "          <speciesReference species=\"Y\" constant=\"false\"/>\n"
+                           "        </listOfProducts>\n"
+                           "        <kineticLaw metaid=\"SemsimMetaid0006\">\n"
+                           "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+                           "            <apply>\n"
+                           "              <times/>\n"
+                           "              <ci> x </ci>\n"
+                           "              <ci> kx2y </ci>\n"
+                           "            </apply>\n"
+                           "          </math>\n"
+                           "          <listOfLocalParameters>\n"
+                           "            <localParameter id=\"kx2y\" value=\"1\" metaid=\"SemsimMetaid0007\"/>\n"
+                           "            <localParameter id=\"ky2z\" value=\"1\" metaid=\"SemsimMetaid0008\"/>\n"
+                           "          </listOfLocalParameters>\n"
+                           "        </kineticLaw>\n"
+                           "      </reaction>\n"
+                           "      <reaction id=\"y2z\" reversible=\"false\" metaid=\"SemsimMetaid0009\">\n"
+                           "        <listOfProducts>\n"
+                           "          <speciesReference species=\"Z\" constant=\"false\"/>\n"
+                           "        </listOfProducts>\n"
+                           "        <kineticLaw metaid=\"SemsimMetaid0010\">\n"
+                           "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+                           "            <apply>\n"
+                           "              <times/>\n"
+                           "              <ci> y </ci>\n"
+                           "              <ci> ky2z </ci>\n"
+                           "            </apply>\n"
+                           "          </math>\n"
+                           "        </kineticLaw>\n"
+                           "      </reaction>\n"
+                           "    </listOfReactions>\n"
+                           "  </model>\n"
+                           "</sbml>\n";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    free(actual);
+    Editor_delete(editor_ptr);
+    RDF_delete(rdf_ptr);
+}
+
 TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
     RDF *rdf_ptr = RDF_new();
 
@@ -572,7 +676,7 @@ TEST_F(CAPITests, TestEditorToRDF) {
     );
     PhysicalProcess *physical_process_ptr = PhysicalProcess_new(editor_ptr);
 
-    physical_process_ptr = PhysicalProcess_setAbout(physical_process_ptr, "Metaid0936");
+    physical_process_ptr = PhysicalProcess_setAbout(physical_process_ptr, "SemsimMetaid0006");
     physical_process_ptr = PhysicalProcess_setPhysicalProperty(physical_process_ptr, "opb/opb93864");
     physical_process_ptr = PhysicalProcess_addSink(
             physical_process_ptr, "Sink9", 1.0, "Entity8");
@@ -583,7 +687,7 @@ TEST_F(CAPITests, TestEditorToRDF) {
 
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
     physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "opb/opb_465");
-    physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "metaid87");
+    physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "SemsimMetaid0007");
     physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot/PD7363");
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8376");
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8377");
@@ -591,7 +695,7 @@ TEST_F(CAPITests, TestEditorToRDF) {
 
     PhysicalForce *physical_force_ptr = PhysicalForce_new(editor_ptr);
 
-    physical_force_ptr = PhysicalForce_setAbout(physical_force_ptr, "Metaid0937");
+    physical_force_ptr = PhysicalForce_setAbout(physical_force_ptr, "SemsimMetaid0008");
     physical_force_ptr = PhysicalForce_setPhysicalProperty(physical_force_ptr, "opb/opb93864");
     physical_force_ptr = PhysicalForce_addSink(
             physical_force_ptr, "Sink9", 1.0, "Entity8");
@@ -612,11 +716,11 @@ TEST_F(CAPITests, TestEditorToRDF) {
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./Annot.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"Metaid0936\">\n"
+                           "  <rdf:Description rdf:about=\"SemsimMetaid0006\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/opb93864\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"Metaid0937\">\n"
+                           "  <rdf:Description rdf:about=\"SemsimMetaid0007\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalForce0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/opb93864\"/>\n"
                            "  </rdf:Description>\n"
@@ -647,7 +751,7 @@ TEST_F(CAPITests, TestEditorToRDF) {
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"Entity8\"/>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"Entity9\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"metaid87\">\n"
+                           "  <rdf:Description rdf:about=\"SemsimMetaid0008\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/opb_465\"/>\n"
                            "  </rdf:Description>\n"

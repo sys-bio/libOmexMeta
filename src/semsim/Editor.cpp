@@ -31,7 +31,7 @@ namespace semsim {
         namespaces_ = namespaces;
     }
 
-    librdf_model* Editor::getModel() const {
+    librdf_model *Editor::getModel() const {
         return model_.get();
     }
 
@@ -94,14 +94,15 @@ namespace semsim {
     }
 
     void Editor::addSingleAnnotation(const SingularAnnotation &singularAnnotation) {
+        checkValidMetaid(singularAnnotation.getSubjectStr());
         Triples vec;
-        vec.push_back(std::move(singularAnnotation));
+        vec.push_back(singularAnnotation);
         triple_list_.push_back(vec);
         addNamespaceFromAnnotation(singularAnnotation.getPredicateStr());
 
     }
 
-    void Editor::addNamespaceFromAnnotation(std::string predicate_string) {
+    void Editor::addNamespaceFromAnnotation(const std::string &predicate_string) {
         // store namespaces for later
         std::string ns = SemsimUtils::getNamespaceFromUri(predicate_string);
         if (Predicate::namespaceKnown(ns)) {
@@ -109,14 +110,14 @@ namespace semsim {
         };
     }
 
-    void Editor::addAnnotationFromNestedTriples(const NestedTriples& tripleList) {
+    void Editor::addAnnotationFromNestedTriples(const NestedTriples &tripleList) {
         for (auto &inner_triple_vec: tripleList) {
             extractNamespacesFromTriplesVector(inner_triple_vec);
             triple_list_.push_back(inner_triple_vec);
         }
     }
 
-    void Editor::addAnnotationFromTriples(const Triples& triples) {
+    void Editor::addAnnotationFromTriples(const Triples &triples) {
         extractNamespacesFromTriplesVector(triples);
         triple_list_.push_back(triples);
     }
@@ -130,20 +131,23 @@ namespace semsim {
         }
     }
 
-    void Editor::addPhysicalEntity(PhysicalEntity physicalEntity) {
+    void Editor::addPhysicalEntity(const PhysicalEntity &physicalEntity) {
+        checkValidMetaid(physicalEntity.getAbout().str());
         addCompositeAnnotation(
                 std::make_shared<PhysicalEntity>(physicalEntity)
         );
     }
 
-    void Editor::addPhysicalProcess(PhysicalProcess physicalProcess) {
+    void Editor::addPhysicalProcess(const PhysicalProcess &physicalProcess) {
+        checkValidMetaid(physicalProcess.getAbout().str());
         addCompositeAnnotation(
                 std::make_shared<PhysicalProcess>(physicalProcess)
         );
 
     }
 
-    void Editor::addPhysicalForce(PhysicalForce physicalForce) {
+    void Editor::addPhysicalForce(const PhysicalForce &physicalForce) {
+        checkValidMetaid(physicalForce.getAbout().str());
         addCompositeAnnotation(
                 std::make_shared<PhysicalForce>(physicalForce)
         );

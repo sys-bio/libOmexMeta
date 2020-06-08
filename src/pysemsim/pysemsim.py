@@ -4,8 +4,6 @@ import ctypes as ct
 import os
 from contextlib import contextmanager
 from typing import List
-from overload import overload
-
 
 from .pysemsim_api import PysemsimAPI
 
@@ -30,17 +28,6 @@ class RDF:
     def __init__(self):
         self._obj = PysemsimAPI.rdf_new()
 
-    @staticmethod
-    def from_string(rdf_string: str, format: str = "guess") -> RDF:
-        """read rdf from a string"""
-        rdf = RDF()
-        PysemsimAPI.rdf_from_string(rdf._obj, rdf_string.encode(), format.encode())
-        return rdf
-
-    def delete(self):
-        """destructor. Delete the dynamically allocated rdf object"""
-        PysemsimAPI.rdf_delete(self._obj)
-
     def __len__(self):
         """Returns the number of individual Triples stored in the rdf model"""
         return PysemsimAPI.rdf_size(self._obj)
@@ -50,6 +37,24 @@ class RDF:
 
     def __del__(self):
         self.delete()
+
+    @staticmethod
+    def from_string(rdf_string: str, format: str = "guess") -> RDF:
+        """read rdf from a string"""
+        rdf = RDF()
+        PysemsimAPI.rdf_from_string(rdf._obj, rdf_string.encode(), format.encode())
+        return rdf
+
+    @staticmethod
+    def from_file(rdf_file: str, format:str = "guess"):
+        """read rdf from a file"""
+        with open(rdf_file, "r") as f:
+            rdf_string = f.read()
+        return RDF.from_string(rdf_string, format)
+
+    def delete(self):
+        """destructor. Delete the dynamically allocated rdf object"""
+        PysemsimAPI.rdf_delete(self._obj)
 
     def to_string(self, format: str, base_uri: str) -> str:
         str_ptr = PysemsimAPI.rdf_to_string(self._obj, format.encode(), base_uri.encode())
@@ -80,7 +85,7 @@ class RDF:
 class Editor:
 
     def __init__(self, editor_ptr):
-        self._editor_ptr = editor_ptr
+        self._obj = editor_ptr
 
     def __enter__(self):
         return self
@@ -90,29 +95,40 @@ class Editor:
         self.delete()
 
     def add_namespace(self, namespace: str, prefix: str) -> None:
-        PysemsimAPI.editor_add_namespace(self._editor_ptr, namespace, prefix)
+        PysemsimAPI.editor_add_namespace(self._obj, namespace, prefix)
 
     def add_singular_annotation(self, singular_annotation: SingularAnnotation) -> None:
-        PysemsimAPI.editor_add_single_annotation(self._editor_ptr, singular_annotation.get_ptr())
+        PysemsimAPI.editor_add_single_annotation(self._obj, singular_annotation.get_ptr())
 
     def add_physical_entity(self, physical_entity: PhysicalEntity) -> None:
-        PysemsimAPI.editor_add_physical_entity(self._editor_ptr, physical_entity.get_ptr())
+        PysemsimAPI.editor_add_physical_entity(self._obj, physical_entity.get_ptr())
 
     def add_physical_process(self, physical_process: PhysicalProcess) -> None:
-        PysemsimAPI.editor_add_physical_process(self._editor_ptr, physical_process.get_ptr())
+        PysemsimAPI.editor_add_physical_process(self._obj, physical_process.get_ptr())
 
     def add_physical_force(self, physical_force: PhysicalForce) -> None:
-        PysemsimAPI.editor_add_physical_force(self._editor_ptr, physical_force.get_ptr())
+        PysemsimAPI.editor_add_physical_force(self._obj, physical_force.get_ptr())
 
     def check_valid_metaid(self, id: str) -> None:
-        PysemsimAPI.editor_check_valid_metaid(self._editor_ptr, id)
+        PysemsimAPI.editor_check_valid_metaid(self._obj, id)
+
+    def get_metaids(self) -> List[str]:
+        num_ids = PysemsimAPI.editor_get_num_metaids(self._obj)
+        return [PysemsimAPI.get_and_free_c_str(
+            PysemsimAPI.editor_get_metaid(self._obj, id)
+        ) for id in range(num_ids)]
+
+    def get_xml(self) -> str:
+        return PysemsimAPI.get_and_free_c_str(
+            PysemsimAPI.editor_get_xml(self._obj)
+        )
 
     def to_rdf(self) -> None:
-        PysemsimAPI.editor_to_rdf(self._editor_ptr)
+        PysemsimAPI.editor_to_rdf(self._obj)
 
     @contextmanager
     def new_singular_annotation(self) -> SingularAnnotation:
-        singular_annotation = SingularAnnotation(PysemsimAPI.editor_new_singular_annotation(self._editor_ptr))
+        singular_annotation = SingularAnnotation(PysemsimAPI.editor_new_singular_annotation(self._obj))
         try:
             yield singular_annotation
         finally:
@@ -120,7 +136,7 @@ class Editor:
 
     @contextmanager
     def new_physical_entity(self) -> PhysicalEntity:
-        physical_entity = PhysicalEntity(PysemsimAPI.editor_new_physical_entity(self._editor_ptr))
+        physical_entity = PhysicalEntity(PysemsimAPI.editor_new_physical_entity(self._obj))
         try:
             yield physical_entity
         finally:
@@ -128,7 +144,7 @@ class Editor:
 
     @contextmanager
     def new_physical_process(self) -> PhysicalProcess:
-        physical_process = PhysicalProcess(PysemsimAPI.editor_new_physical_process(self._editor_ptr))
+        physical_process = PhysicalProcess(PysemsimAPI.editor_new_physical_process(self._obj))
         try:
             yield physical_process
         finally:
@@ -136,27 +152,20 @@ class Editor:
 
     @contextmanager
     def new_physical_force(self) -> PhysicalForce:
-        physical_force = PhysicalForce(PysemsimAPI.editor_new_physical_force(self._editor_ptr))
+        physical_force = PhysicalForce(PysemsimAPI.editor_new_physical_force(self._obj))
         try:
             yield physical_force
         finally:
             self.add_physical_force(physical_force)
 
     def delete(self):
-        PysemsimAPI.editor_delete(self._editor_ptr)
+        PysemsimAPI.editor_delete(self._obj)
 
 
 class SingularAnnotation:
 
     def __init__(self, singular_annotation_ptr):
         self._obj = singular_annotation_ptr
-
-    # def __enter__(self):
-    #     return self
-    #
-    # def __exit__(self, exc_type, exc_val, exc_tb):
-    #     self.to_rdf()
-    #     self.delete()
 
     def get_ptr(self):
         return self._obj
@@ -169,7 +178,7 @@ class SingularAnnotation:
         self._obj = PysemsimAPI.singular_annotation_set_predicate(self._obj, namespace.encode(), term.encode())
         return self
 
-    def set_predicate_uri(self, namespace: str, uri: str) -> SingularAnnotation:
+    def set_predicate_uri(self, uri: str) -> SingularAnnotation:
         self._obj = PysemsimAPI.singular_annotation_set_predicate_uri(self._obj, uri.encode())
         return self
 
@@ -299,11 +308,11 @@ class PhysicalProcess:
         return self.to_string("rdfxml-abbrev", "./Annotation.rdf")
 
     def get_about(self) -> str:
-        return PysemsimAPI.get_and_free_c_str(self.PysemsimAPI.physical_process_get_about(self._obj))
+        return PysemsimAPI.get_and_free_c_str(PysemsimAPI.physical_process_get_about(self._obj))
 
     def get_physical_property(self):
         return PysemsimAPI.get_and_free_c_str(
-            self.PysemsimAPI.physical_process_get_physical_property(self._obj))
+            PysemsimAPI.physical_process_get_physical_property(self._obj))
 
     def delete(self):
         PysemsimAPI.physical_process_delete(self._obj)

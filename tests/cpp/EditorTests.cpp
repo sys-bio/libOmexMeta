@@ -66,7 +66,7 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation1) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
-    Subject subject = Subject(LibrdfNode::fromUriString("SemsimMetaid0014"));
+    Subject subject = Subject(LibrdfNode::fromUriString("SemsimMetaid0009"));
     BiomodelsBiologyQualifier predicate("is");
     Resource resource = Resource(LibrdfNode::fromUriString("uniprot:P0DP23"));
     Triple triple(
@@ -80,7 +80,7 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation1) {
               std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://MyModel.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"SemsimMetaid0014\">\n"
+                           "  <rdf:Description rdf:about=\"SemsimMetaid0009\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
@@ -170,7 +170,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
             SEMSIM_TYPE_SBML);
 
     SingularAnnotation singularAnnotation;
-    singularAnnotation.setAbout("Metaid4")
+    singularAnnotation.setAbout("SemsimMetaid0001")
             .setPredicate("bqb", "isVersionOf")
             .setResourceUri("uniprot:PD02635");
 
@@ -180,7 +180,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://MyModel.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"Metaid4\">\n"
+                           "  <rdf:Description rdf:about=\"SemsimMetaid0001\">\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/uniprot/PD02635\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
