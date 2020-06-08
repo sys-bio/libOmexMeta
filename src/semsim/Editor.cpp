@@ -109,14 +109,14 @@ namespace semsim {
         };
     }
 
-    void Editor::addAnnotationFromNestedTriples(NestedTriples tripleList) {
+    void Editor::addAnnotationFromNestedTriples(const NestedTriples& tripleList) {
         for (auto &inner_triple_vec: tripleList) {
             extractNamespacesFromTriplesVector(inner_triple_vec);
             triple_list_.push_back(inner_triple_vec);
         }
     }
 
-    void Editor::addAnnotationFromTriples(Triples triples) {
+    void Editor::addAnnotationFromTriples(const Triples& triples) {
         extractNamespacesFromTriplesVector(triples);
         triple_list_.push_back(triples);
     }

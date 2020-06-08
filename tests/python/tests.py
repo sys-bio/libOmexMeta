@@ -1,6 +1,9 @@
 import os
 import site
 import unittest
+# import matplotlib as mpl
+# mpl.use('TkAgg', warn=False)
+# import tellurium as te
 
 test_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 proj_dir = os.path.dirname(test_dir)
@@ -132,7 +135,6 @@ file://./source_0,http://www.bhi.washington.edu/semsim#hasPhysicalEntityReferenc
         actual = rdf.query(q, "csv")
         print(actual)
         self.assertEqual(expected, actual)
-        
 
 
 class EditorTests(unittest.TestCase):
@@ -444,6 +446,27 @@ class EditorTests(unittest.TestCase):
         print(actual)
         self.assertEqual(expected, actual)
 
+
+# class AnnotateRealModelsTests(unittest.TestCase):
+#
+#     def setUp(self) -> None:
+#         m = te.loada("""
+#         model newModel
+#             k1 = 0.1;
+#             k2 = 1;
+#             Smad3Nuc = 10;
+#             Smad3Cyt = 10;
+#             r1: Smad3Nuc => Smad3Cyt; k1*Smad3Nuc;
+#             r2: Smad3Cyt => Smad3Nuc; k1*Smad3Cyt;
+#         end
+#         """)
+#         self.sbml = m.toSBML()
+#
+#     def tearDown(self) -> None:
+#         pass
+#
+#     def test(self):
+#         print(self.sbml)
 
 if __name__ == "__main__":
     unittest.main()
