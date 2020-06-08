@@ -101,8 +101,6 @@ class TestAPI(unittest.TestCase):
         actual = PysemsimAPI.rdf_size(self.rdf)
         self.assertEqual(expected, actual)
 
-        
-
     def test_rdf_to_string_cfunc(self):
         PysemsimAPI.rdf_from_string(self.rdf, TestStrings.singular_annotation2.encode(), "rdfxml".encode())
         string_ptr = PysemsimAPI.rdf_to_string(self.rdf, "rdfxml-abbrev".encode(), "basey.rdf".encode())
@@ -118,8 +116,6 @@ class TestAPI(unittest.TestCase):
 </rdf:RDF>
 """
         self.assertEqual(expected, actual2)
-
-        
 
     def test_rdf_get_base_uri(self):
         PysemsimAPI.rdf_from_string(self.rdf, TestStrings.singular_annotation2.encode(), "rdfxml".encode())
@@ -205,6 +201,83 @@ class TestAPI(unittest.TestCase):
         """
         editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         PysemsimAPI.editor_check_valid_metaid(editor_ptr, "SemsimMetaid0000".encode())
+        PysemsimAPI.editor_delete(editor_ptr)
+
+    def test_editor_get_metaid(self):
+        editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        ptr = PysemsimAPI.editor_get_metaid(editor_ptr, 0)
+        actual = PysemsimAPI.get_and_free_c_str(ptr)
+        expected = "SemsimMetaid0000"
+        PysemsimAPI.editor_delete(editor_ptr)
+
+    def test_editor_get_num_metaids(self):
+        editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        actual = PysemsimAPI.editor_get_num_metaids(editor_ptr)
+        expected = 13
+        PysemsimAPI.editor_delete(editor_ptr)
+
+    def test_editor_get_xml(self):
+        editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
+        actual = PysemsimAPI.get_and_free_c_str(
+            PysemsimAPI.editor_get_xml(editor_ptr)
+        )
+        expected = """<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+      <model id="TestModelNotAnnotated" metaid="SemsimMetaid0000">
+        <listOfUnitDefinitions>
+          <unitDefinition id="molar">
+            <listOfUnits>
+              <unit kind="mole" exponent="1" scale="1" multiplier="1" metaid="SemsimMetaid0001"/>
+              <unit kind="litre" exponent="-1" scale="1" multiplier="1" metaid="SemsimMetaid0002"/>
+            </listOfUnits>
+          </unitDefinition>
+        </listOfUnitDefinitions>
+        <listOfCompartments>
+          <compartment metaid="cytosol" id="cytosol" size="1" constant="true"/>
+        </listOfCompartments>
+        <listOfSpecies>
+          <species metaid="Meta00001" id="X" compartment="cytosol" initialConcentration="10" substanceUnits="molar" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+          <species id="Y" compartment="cytosol" initialConcentration="20" substanceUnits="molar" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="SemsimMetaid0003"/>
+          <species id="Y" compartment="cytosol" initialConcentration="15" substanceUnits="molar" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="SemsimMetaid0004"/>
+        </listOfSpecies>
+        <listOfReactions>
+          <reaction id="X2Y" reversible="false" metaid="SemsimMetaid0005">
+            <listOfProducts>
+              <speciesReference species="Y" constant="false"/>
+            </listOfProducts>
+            <kineticLaw metaid="SemsimMetaid0006">
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                  <times/>
+                  <ci> x </ci>
+                  <ci> kx2y </ci>
+                </apply>
+              </math>
+              <listOfLocalParameters>
+                <localParameter id="kx2y" value="1" metaid="SemsimMetaid0007"/>
+                <localParameter id="ky2z" value="1" metaid="SemsimMetaid0008"/>
+              </listOfLocalParameters>
+            </kineticLaw>
+          </reaction>
+          <reaction id="y2z" reversible="false" metaid="SemsimMetaid0009">
+            <listOfProducts>
+              <speciesReference species="Z" constant="false"/>
+            </listOfProducts>
+            <kineticLaw metaid="SemsimMetaid0010">
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                  <times/>
+                  <ci> y </ci>
+                  <ci> ky2z </ci>
+                </apply>
+              </math>
+            </kineticLaw>
+          </reaction>
+        </listOfReactions>
+      </model>
+    </sbml>
+"""
+        self.assertEqual(expected, actual)
         PysemsimAPI.editor_delete(editor_ptr)
 
     def test_singular_annotation_about(self):
@@ -660,7 +733,7 @@ class TestAPI(unittest.TestCase):
 
         PysemsimAPI.editor_add_physical_force(editor_ptr, physical_force)
         ptr = PysemsimAPI.rdf_to_string(self.rdf, "turtle".encode(),
-                                             "PhysicalForce.rdf".encode())
+                                        "PhysicalForce.rdf".encode())
         actual = PysemsimAPI.get_and_free_c_str(ptr)
         expected = """@base <file://PhysicalForce.rdf> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -722,6 +795,7 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(expected, actual)
         PysemsimAPI.editor_delete(editor_ptr)
         PysemsimAPI.physical_force_delete(physical_force)
+
 
 if __name__ == "__main__":
     unittest.TestCase()

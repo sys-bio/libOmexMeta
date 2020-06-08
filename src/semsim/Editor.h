@@ -155,19 +155,19 @@ namespace semsim {
          * @brief add a composite annotation of type PhysicalEntity to the rdf graph
          * @param physicalEntity An instance of a PhysicalEntity object to add to the rdf graph.
          */
-         void addPhysicalEntity(PhysicalEntity physicalEntity);
+         void addPhysicalEntity(const PhysicalEntity& physicalEntity);
 
         /*
          * @brief add a composite annotation of type PhysicalProcess to the rdf graph
          * @param physicalProcess An instance of a PhysicalProcess object to add to the rdf graph.
          */
-        void addPhysicalProcess(PhysicalProcess physicalProcess);
+        void addPhysicalProcess(const PhysicalProcess& physicalProcess);
 
         /*
          * @brief add a composite annotation of type PhysicalForce to the rdf graph
          * @param physicalForce An instance of a PhysicalForce objec to add to the rdf graph.
          */
-        void addPhysicalForce(PhysicalForce physicalForce);
+        void addPhysicalForce(const PhysicalForce& physicalForce);
 
         /*
          * @brief remove an annotation with the subject metaid
@@ -197,9 +197,9 @@ namespace semsim {
          * @brief extract namespace part of uri from @parameter predicate_string
          * and add it to namespace_ if we know it.
          */
-        void addNamespaceFromAnnotation(std::string predicate_string);
+        void addNamespaceFromAnnotation(const std::string& predicate_string);
 
-        const NestedTriples &getTripleList() const;
+        [[nodiscard]] const NestedTriples &getTripleList() const;
 
         void addAnnotationFromNestedTriples(const NestedTriples& tripleList);
     };

@@ -78,7 +78,7 @@ namespace semsim {
     }
 
     void RDF_delete(RDF *rdf_ptr) {
-            delete rdf_ptr;
+        delete rdf_ptr;
     }
 
 
@@ -109,7 +109,7 @@ namespace semsim {
     char *RDF_queryResultsAsStr(RDF *rdf_ptr, const char *query_str, const char *results_format) {
         Query query(rdf_ptr->getModel(), query_str);
         std::string results = query.resultsAsStr(results_format);
-        char* s = (char*)malloc((results.size() + 1) * sizeof(char*));
+        char *s = (char *) malloc((results.size() + 1) * sizeof(char *));
         strcpy(s, results.c_str());
         query.freeQuery();
         return s;
@@ -132,6 +132,7 @@ namespace semsim {
     }
 
     void Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation) {
+
         editor_ptr->addSingleAnnotation(*singularAnnotation);
     }
 
@@ -151,14 +152,37 @@ namespace semsim {
         editor_ptr->checkValidMetaid(id);
     }
 
-    void Editor_toRDF(Editor *editor_ptr) {
-        editor_ptr->toRDF();
+    char *Editor_getMetaId(Editor *editor_ptr, int index) {
+        std::string str = editor_ptr->getMetaids()[index];
+        auto cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
+        strcpy(cstr, str.c_str());
+        return cstr;
+    }
+
+    int Editor_getNumMetaIds(Editor *editor_ptr) {
+        return editor_ptr->getMetaids().size();
+    }
+
+    /*
+     * @brief get the xml from the editor
+     *
+     * The returned string is owned by the caller.
+     */
+    char *Editor_getXml(Editor *editor_ptr) {
+        const std::string& str = editor_ptr->getXml();
+        char* cstr = (char*) malloc((str.size()+1)*sizeof(char*));
+        strcpy(cstr, str.c_str());
+        return cstr;
     }
 
     void Editor_delete(Editor *editor_ptr) {
         if (!editor_ptr)
             return;
         delete editor_ptr;
+    }
+
+    void Editor_toRDF(Editor *editor_ptr) {
+        editor_ptr->toRDF();
     }
 
 

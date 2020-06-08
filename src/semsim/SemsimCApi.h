@@ -36,7 +36,7 @@ namespace semsim {
  *
  */
 
-    void free_world(librdf_world* world);
+    void free_world(librdf_world *world);
 
 /***************************************************
  * RDF class methods
@@ -69,7 +69,7 @@ namespace semsim {
     void RDF_fromString(RDF *rdf_ptr, const char *str, const char *format = "guess",
                         const char *baseuri = "./Annotations.rdf");
 
-    char * RDF_queryResultsAsStr(semsim::RDF *rdf_ptr, const char *query_str, const char *results_format);
+    char *RDF_queryResultsAsStr(semsim::RDF *rdf_ptr, const char *query_str, const char *results_format);
 
     int RDF_size(semsim::RDF *rdf_ptr);
 
@@ -100,6 +100,12 @@ namespace semsim {
 
     void Editor_checkValidMetaid(Editor *editor_ptr, const char *id);
 
+    char *Editor_getMetaId(Editor *editor_ptr, int index);
+
+    char *Editor_getXml(Editor *editor_ptr);
+
+    int Editor_getNumMetaIds(Editor *editor_ptr);
+
     void Editor_toRDF(Editor *editor_ptr);
 
     void Editor_delete(Editor *editor_ptr);
@@ -121,7 +127,7 @@ namespace semsim {
     SingularAnnotation *SingularAnnotation_setPredicateFromUri(
             SingularAnnotation *singular_annotation, const char *uri);
 
-    SingularAnnotation * SingularAnnotation_setResourceLiteral(
+    SingularAnnotation *SingularAnnotation_setResourceLiteral(
             SingularAnnotation *singular_annotation, const char *literal);
 
     SingularAnnotation *
@@ -168,7 +174,7 @@ namespace semsim {
 
     int PhysicalEntity_getNumLocations(PhysicalEntity *physicalEntity);
 
-    char * PhysicalEntity_getLocation(PhysicalEntity *physical_entity_ptr, int index);
+    char *PhysicalEntity_getLocation(PhysicalEntity *physical_entity_ptr, int index);
 
     char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
 
