@@ -196,8 +196,6 @@ class TestAPI(unittest.TestCase):
         This test can't officially be tested because when this test fails it crashes
         python. However, it is working = When id is wrong we get helpful
         error message.
-        editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-
         """
         editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         PysemsimAPI.editor_check_valid_metaid(editor_ptr, "SemsimMetaid0000".encode())
