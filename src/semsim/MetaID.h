@@ -12,6 +12,9 @@
 #include <iostream>
 
 namespace semsim {
+    /*
+     * @brief an ID generator
+     */
     class MetaID {
     private:
         std::string base_;
@@ -19,17 +22,28 @@ namespace semsim {
         int num_digits_;
 
     public:
+        /*
+         * @brief an ID generator used when creating IDs in the Editor.
+         * @param base_ the constant portion of the id. Like semsim in semsim00001
+         * @param number_ the number portion of the id, like 1 in semsim00001
+         * @param num_digits specifies the number of digits to use in the id. So semsim00001 has 5 digits.
+         *
+         * Example
+         * -------
+         * MetaID metaid("ANewMetaID", 15, 3);
+         * std::string id = metaid.generate();
+         */
         MetaID(std::string base, long number, int num_digits = 4);
 
         bool operator==(const MetaID &rhs) const;
 
         bool operator!=(const MetaID &rhs) const;
 
-        std::string generate() const;
+        [[nodiscard]] std::string generate() const;
 
-        std::string generate(long n) const;
+        [[nodiscard]] std::string generate(long n) const;
 
-        int maxNumber() const;
+        [[nodiscard]] int maxNumber() const;
 
         static int countDigits(long n);
     };

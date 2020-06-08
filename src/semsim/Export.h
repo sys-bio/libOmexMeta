@@ -5,6 +5,10 @@
 #ifndef LIBSEMSIM_EXPORT_H
 #define LIBSEMSIM_EXPORT_H
 
+/*
+ * Used for portability
+ */
+
 
 #pragma once
 // https://stackoverflow.com/questions/2164827/explicitly-exporting-shared-library-functions-in-linux

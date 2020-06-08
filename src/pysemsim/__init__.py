@@ -1,10 +1,8 @@
-from .pysemsim import PhysicalForce, PhysicalProcess, SingularAnnotation
+from .pysemsim import PhysicalForce
+from .pysemsim import PhysicalProcess
 from .pysemsim import RDF, Editor, PhysicalEntity
+from .pysemsim import SingularAnnotation
 from .pysemsim_api import PysemsimAPI
-
-
-
-
 
 """
 todo

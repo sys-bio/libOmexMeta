@@ -25,7 +25,6 @@
 
 using namespace redland;
 
-// todo implement this logic from Maxes email
 /*
  * Here's the basic logic that we use in SemGen to determine which OPB physical property is represented by a <species> in an SBML model:
  *
@@ -55,6 +54,10 @@ namespace semsim {
 
     typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
+    /*
+     * @brief Add or change annotations in xml.
+     *
+     */
     class Editor {
     private:
         std::string xml_;
@@ -66,52 +69,139 @@ namespace semsim {
         void extractNamespacesFromTriplesVector(Triples triples);
 
     public:
-        const NamespaceMap &getNamespaces() const;
 
-        librdf_model* getModel() const;
 
-        void setNamespaces(const NamespaceMap &namespaces);
-
-        // probably need to send our librdf model etc to the editor
-        const NestedTriples &getTripleList() const;
-
+        /*
+         * @brief constructor for Editor.
+         * @param xml The valid xml content for annotation
+         * @param SemsimXmlType indicated which type of xml is being annotated. SEMSIM_TYPE_SBML, SEMSIM_TYPE_CELLML or SEMSIM_TYPE_UNKNOWN.
+         * @param model a reference to the current model (owned by RDF).
+         * @param nm_map a set of namespaces for current xml
+         *
+         * The Editor is usually instantiated from the RDF::to_editor class which
+         * automatically takes care of the @param model and @param ns_map arguments. When
+         * instantiated, the editor class automatically reads the XML and adds metaids to
+         * some or all of the elements, depending on the XML type parameter. If the user
+         * specifies that they are annotating an SBML model, the elements returned by
+         * SBMLAssistant::getValidElements() are given metaids (if not exist), while if
+         * the user chooses cellml the elements returned by CellMLAssistant::getValidElements()
+         * are used. If the type is unknown, then all elements are given metaids.
+         */
         explicit Editor(const std::string &xml, SemsimXmlType type,
                         const LibrdfModel& model, NamespaceMap &ns_map);
 
-        const std::string &getXml() const;
+        /*
+         * @brief returns a hashmap of namespaces to prefixes.
+         */
+        [[nodiscard]] const NamespaceMap &getNamespaces() const;
 
-        const std::vector<std::string> &getMetaids() const;
+        /*
+         * @brief return the underlying librdf_model* pointer
+         */
+        [[nodiscard]] librdf_model* getModel() const;
 
-        void addSingleAnnotation(Subject subject, PredicatePtr predicate_ptr, Resource resource);
+        /*
+         * @brief set the namespace map.
+         */
+        void setNamespaces(const NamespaceMap &namespaces);
 
+        /*
+         * @brief return the xml
+         */
+        [[nodiscard]] const std::string &getXml() const;
+
+        /*
+         * @brief returns a list of metaids both that existed previously and that was added
+         * during instantiation.
+         */
+        [[nodiscard]] const std::vector<std::string> &getMetaids() const;
+
+        /*
+         * @brief add a namespace
+         * @param ns the namespace
+         * @param prefix the prefix used in serialized annotations to refer to the namespace
+         */
         void addNamespace(std::string ns, std::string prefix);
 
+        /*
+         * @brief Add a SingleAnnotation (aka a Triple) to the model
+         * @param subject the subject portion of the triple
+         * @param pointer to the predicate the predicate portion of the triple. Ths is a pointer to support polymorphic calls.
+         * @param resource the resource portion of the triple
+         */
+        void addSingleAnnotation(Subject subject, PredicatePtr predicate_ptr, Resource resource);
+
+        /*
+         * @brief Add a SingleAnnotation (aka Triple) to the rdf graph.
+         * @param singularAnnotation An instance of SingularAnnotation to add to the model
+         */
         void addSingleAnnotation(const SingularAnnotation &singularAnnotation);
 
-        void addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr);
+        /*
+         * @brief add a composite annotation to the rdf graph.
+         * @param phenomenonPtr A pointer to an object of type PhysicalPhenomenon, the superclass of
+         * the composite annotations.
+         *
+         * Composite annotations currently supported are PhysicalEntity,
+         * PhysicalProcess and PhysicalForce. The PhysicalDependency
+         * type will be supported in future releases.
+         *
+         * For developers. Consider removing this function in favour of using the
+         * add* functions.
+         */
+        [[maybe_unused]] void addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr);
 
-        void addPhysicalEntity(PhysicalEntity physicalEntity);
+        /*
+         * @brief add a composite annotation of type PhysicalEntity to the rdf graph
+         * @param physicalEntity An instance of a PhysicalEntity object to add to the rdf graph.
+         */
+         void addPhysicalEntity(PhysicalEntity physicalEntity);
 
+        /*
+         * @brief add a composite annotation of type PhysicalProcess to the rdf graph
+         * @param physicalProcess An instance of a PhysicalProcess object to add to the rdf graph.
+         */
         void addPhysicalProcess(PhysicalProcess physicalProcess);
 
+        /*
+         * @brief add a composite annotation of type PhysicalForce to the rdf graph
+         * @param physicalForce An instance of a PhysicalForce objec to add to the rdf graph.
+         */
         void addPhysicalForce(PhysicalForce physicalForce);
 
-        void addAnnotationFromNestedTriples(NestedTriples tripleList);
-        //overloaded
-
+        /*
+         * @brief remove an annotation with the subject metaid
+         * @param metaid the id for the annotation to remove.
+         */
         void removeAnnotation(std::string metaid);
 
+        /*
+         * @brief commit the annotations made in this Editor to the RDF graph.
+         * @note without using this command at the end of your Editing, your annotations
+         * will not be added to the current RDF graph.
+         */
         void toRDF();
 
+        /*
+         * @brief check that a metaid is valid by comparing
+         * with the output from Editor::getMetaIds()
+         */
         void checkValidMetaid(const std::string &metaid);
 
-        void addAnnotationFromTriples(Triples triples);
+        /*
+         * @brief add annotations from a Triples object
+         */
+        void addAnnotationFromTriples(const Triples& triples);
 
         /*
          * @brief extract namespace part of uri from @parameter predicate_string
          * and add it to namespace_ if we know it.
          */
         void addNamespaceFromAnnotation(std::string predicate_string);
+
+        const NestedTriples &getTripleList() const;
+
+        void addAnnotationFromNestedTriples(const NestedTriples& tripleList);
     };
 
 }

@@ -4,9 +4,10 @@
 
 #ifndef LIBSEMSIM_ANNOTATIONTYPE_H
 #define LIBSEMSIM_ANNOTATIONTYPE_H
+
 /*
- * AnnotationType enum is on its own to
- * protect against circular dependecies.
+ * AnnotationType enum for indicating the type of annotation.
+ * For developers: Possibly not needed.
  */
 namespace semsim {
     /*
