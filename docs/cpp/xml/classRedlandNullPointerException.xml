@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classRedlandNullPointerException" kind="class" language="C++" prot="public">
+    <compoundname>RedlandNullPointerException</compoundname>
+    <basecompoundref refid="classException" prot="public" virt="non-virtual">Exception</basecompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="167">
+        <label>RedlandNullPointerException</label>
+        <link refid="classRedlandNullPointerException"/>
+        <childnode refid="168" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="168">
+        <label>Exception</label>
+        <link refid="classException"/>
+        <childnode refid="169" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="169">
+        <label>std::exception</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="170">
+        <label>RedlandNullPointerException</label>
+        <link refid="classRedlandNullPointerException"/>
+        <childnode refid="171" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="171">
+        <label>Exception</label>
+        <link refid="classException"/>
+        <childnode refid="172" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="172">
+        <label>std::exception</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/redland/RedlandAPIWrapper/src/LibrdfException.h" line="48" column="1" bodyfile="src/redland/RedlandAPIWrapper/src/LibrdfException.h" bodystart="48" bodyend="50"/>
+    <listofallmembers>
+      <member refid="classException_1ac541ead5c20548813d7dea73c28c7fab" prot="public" virt="non-virtual"><scope>RedlandNullPointerException</scope><name>Exception</name></member>
+      <member refid="classException_1a0b1693d4d5007815322070c907ee5cc2" prot="public" virt="non-virtual"><scope>RedlandNullPointerException</scope><name>Exception</name></member>
+      <member refid="classException_1a5d59cc46086c61391ed26773ce861780" prot="protected" virt="non-virtual"><scope>RedlandNullPointerException</scope><name>msg_</name></member>
+      <member refid="classException_1ae7ba8334eb35e001b4b0c6df9339c0dc" prot="public" virt="non-virtual"><scope>RedlandNullPointerException</scope><name>what</name></member>
+      <member refid="classException_1ab834fdbc275748cf287b994503521ada" prot="public" virt="non-virtual"><scope>RedlandNullPointerException</scope><name>~Exception</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

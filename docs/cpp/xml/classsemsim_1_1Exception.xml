@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classsemsim_1_1Exception" kind="class" language="C++" prot="public">
+    <compoundname>semsim::Exception</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">exception</basecompoundref>
+    <derivedcompoundref refid="classsemsim_1_1AnnotationBuilderException" prot="public" virt="non-virtual">semsim::AnnotationBuilderException</derivedcompoundref>
+    <derivedcompoundref refid="classsemsim_1_1InappropriateResourceException" prot="public" virt="non-virtual">semsim::InappropriateResourceException</derivedcompoundref>
+    <derivedcompoundref refid="classsemsim_1_1LibRDFException" prot="public" virt="non-virtual">semsim::LibRDFException</derivedcompoundref>
+    <derivedcompoundref refid="classsemsim_1_1NotImplementedException" prot="public" virt="non-virtual">semsim::NotImplementedException</derivedcompoundref>
+    <derivedcompoundref refid="classsemsim_1_1NullPointerException" prot="public" virt="non-virtual">semsim::NullPointerException</derivedcompoundref>
+    <derivedcompoundref refid="classsemsim_1_1ValueException" prot="public" virt="non-virtual">semsim::ValueException</derivedcompoundref>
+    <includes refid="Error_8h" local="no">Error.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classsemsim_1_1Exception_1a536284719db9cd57b8762e6e5a5a8820" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string semsim::Exception::msg_</definition>
+        <argsstring></argsstring>
+        <name>msg_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Error message. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Error.h" line="44" column="1" bodyfile="src/semsim/Error.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsemsim_1_1Exception_1ae32b373f579fc88ca9a9b406327f6549" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>semsim::Exception::Exception</definition>
+        <argsstring>(const char *message)</argsstring>
+        <name>Exception</name>
+        <param>
+          <type>const char *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor (C strings). <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>C-style string error message. The string contents are copied upon construction. Hence, responsibility for deleting the char* lies with the caller. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Error.h" line="17" column="1" bodyfile="src/semsim/Error.h" bodystart="17" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Exception_1acd15baba130b34cb81da8ce237406e99" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>semsim::Exception::Exception</definition>
+        <argsstring>(std::string message)</argsstring>
+        <name>Exception</name>
+        <param>
+          <type>std::string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor (C++ STL strings). <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The error message. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Error.h" line="24" column="1" bodyfile="src/semsim/Error.h" bodystart="24" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Exception_1a3f2c9347cddce32086f53f360a7839ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::Exception::~Exception</definition>
+        <argsstring>() noexcept override=default</argsstring>
+        <name>~Exception</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destructor. Virtual to allow for subclassing. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Error.h" line="30" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Exception_1a301e9f6c7020ce7218811f4c0683ee77" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char* semsim::Exception::what</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>what</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a pointer to the (constant) error description. <simplesect kind="return"><para>A pointer to a const char*. The underlying memory is in posession of the <ref refid="classsemsim_1_1Exception" kindref="compound">Exception</ref> object. Callers must not attempt to free the memory. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Error.h" line="37" column="1" bodyfile="src/semsim/Error.h" bodystart="37" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ulink url="https://stackoverflow.com/questions/8152720/correct-way-to-inherit-from-stdexception">https://stackoverflow.com/questions/8152720/correct-way-to-inherit-from-stdexception</ulink> </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="55">
+        <label>semsim::NotImplementedException</label>
+        <link refid="classsemsim_1_1NotImplementedException"/>
+        <childnode refid="50" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>semsim::LibRDFException</label>
+        <link refid="classsemsim_1_1LibRDFException"/>
+        <childnode refid="50" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>exception</label>
+      </node>
+      <node id="52">
+        <label>semsim::AnnotationBuilderException</label>
+        <link refid="classsemsim_1_1AnnotationBuilderException"/>
+        <childnode refid="50" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>semsim::ValueException</label>
+        <link refid="classsemsim_1_1ValueException"/>
+        <childnode refid="50" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>semsim::InappropriateResourceException</label>
+        <link refid="classsemsim_1_1InappropriateResourceException"/>
+        <childnode refid="50" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>semsim::NullPointerException</label>
+        <link refid="classsemsim_1_1NullPointerException"/>
+        <childnode refid="50" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>semsim::Exception</label>
+        <link refid="classsemsim_1_1Exception"/>
+        <childnode refid="51" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="59">
+        <label>exception</label>
+      </node>
+      <node id="58">
+        <label>semsim::Exception</label>
+        <link refid="classsemsim_1_1Exception"/>
+        <childnode refid="59" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/semsim/Error.h" line="9" column="1" bodyfile="src/semsim/Error.h" bodystart="9" bodyend="45"/>
+    <listofallmembers>
+      <member refid="classsemsim_1_1Exception_1ae32b373f579fc88ca9a9b406327f6549" prot="public" virt="non-virtual"><scope>semsim::Exception</scope><name>Exception</name></member>
+      <member refid="classsemsim_1_1Exception_1acd15baba130b34cb81da8ce237406e99" prot="public" virt="non-virtual"><scope>semsim::Exception</scope><name>Exception</name></member>
+      <member refid="classsemsim_1_1Exception_1a536284719db9cd57b8762e6e5a5a8820" prot="protected" virt="non-virtual"><scope>semsim::Exception</scope><name>msg_</name></member>
+      <member refid="classsemsim_1_1Exception_1a301e9f6c7020ce7218811f4c0683ee77" prot="public" virt="non-virtual"><scope>semsim::Exception</scope><name>what</name></member>
+      <member refid="classsemsim_1_1Exception_1a3f2c9347cddce32086f53f360a7839ae" prot="public" virt="non-virtual"><scope>semsim::Exception</scope><name>~Exception</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

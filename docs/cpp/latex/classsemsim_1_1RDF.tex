@@ -1,0 +1,112 @@
+\hypertarget{classsemsim_1_1RDF}{}\section{semsim\+:\+:R\+DF Class Reference}
+\label{classsemsim_1_1RDF}\index{semsim\+::\+R\+DF@{semsim\+::\+R\+DF}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_adb3d644393c659dc3cd54b29d6bfaec0}\label{classsemsim_1_1RDF_adb3d644393c659dc3cd54b29d6bfaec0}} 
+{\bfseries R\+DF} (const std\+::string \&base\+\_\+uri=\char`\"{}./Annotations.\+rdf\char`\"{}, const std\+::string \&storage\+\_\+type=\char`\"{}memory\char`\"{}, const std\+::string \&storage\+\_\+name=\char`\"{}Semsim\+Store\char`\"{}, const char $\ast$storage\+\_\+options=nullptr, const char $\ast$model\+\_\+options=nullptr)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_aefd8c1ee16d47a49ce3e2828b7671866}\label{classsemsim_1_1RDF_aefd8c1ee16d47a49ce3e2828b7671866}} 
+void {\bfseries free\+R\+DF} ()
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a1d640ed0ead4d4699c59641a32f6a81a}\label{classsemsim_1_1RDF_a1d640ed0ead4d4699c59641a32f6a81a}} 
+{\bfseries R\+DF} (const \hyperlink{classsemsim_1_1RDF}{R\+DF} \&rdf)=delete
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_ad6e8d742af0aff97c89746a8eaf50777}\label{classsemsim_1_1RDF_ad6e8d742af0aff97c89746a8eaf50777}} 
+{\bfseries R\+DF} (\hyperlink{classsemsim_1_1RDF}{R\+DF} \&\&rdf) noexcept
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a6a8c2040f0fb2be58380d09ff396f11e}\label{classsemsim_1_1RDF_a6a8c2040f0fb2be58380d09ff396f11e}} 
+\hyperlink{classsemsim_1_1RDF}{R\+DF} \& {\bfseries operator=} (const \hyperlink{classsemsim_1_1RDF}{R\+DF} \&rdf)=delete
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a0195811b138d141d7944ed475b098189}\label{classsemsim_1_1RDF_a0195811b138d141d7944ed475b098189}} 
+\hyperlink{classsemsim_1_1RDF}{R\+DF} \& {\bfseries operator=} (\hyperlink{classsemsim_1_1RDF}{R\+DF} \&\&rdf) noexcept
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_aec42881cdaeeaffdc91238f03a1db2e6}\label{classsemsim_1_1RDF_aec42881cdaeeaffdc91238f03a1db2e6}} 
+int {\bfseries size} () const
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a6bbd8747ca3893339162bbb00e9f428f}\label{classsemsim_1_1RDF_a6bbd8747ca3893339162bbb00e9f428f}} 
+void {\bfseries set\+Base\+Uri} (std\+::string base\+Uri)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_ac90c8d0c73127e851825e1426ce9622e}\label{classsemsim_1_1RDF_ac90c8d0c73127e851825e1426ce9622e}} 
+bool {\bfseries empty} () const
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a3a920ea30103f06343d4714987a2b765}\label{classsemsim_1_1RDF_a3a920ea30103f06343d4714987a2b765}} 
+void {\bfseries add\+From\+String} (const std\+::string \&str, const std\+::string \&format=\char`\"{}guess\char`\"{}, const std\+::string \&base\+\_\+uri=std\+::string())
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a27497273858cca1463a612f92f332da1}\label{classsemsim_1_1RDF_a27497273858cca1463a612f92f332da1}} 
+void {\bfseries add\+From\+Uri} (const std\+::string \&uri\+\_\+string, const std\+::string \&format=\char`\"{}guess\char`\"{})
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a8cd65868da05f409c37b91acdbf33aa0}\label{classsemsim_1_1RDF_a8cd65868da05f409c37b91acdbf33aa0}} 
+void {\bfseries add\+From\+File} (const std\+::string \&filename, const std\+::string \&format)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a493ffd6ebc12adc6c668f04f21ce2380}\label{classsemsim_1_1RDF_a493ffd6ebc12adc6c668f04f21ce2380}} 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ {\bfseries propagate\+Namespaces\+From\+Parser} (const std\+::vector$<$ std\+::string $>$ \&seen\+\_\+namespaces)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a762cc1d30484cd95b130526e2fab9ef3}\label{classsemsim_1_1RDF_a762cc1d30484cd95b130526e2fab9ef3}} 
+std\+::string {\bfseries to\+String} (const std\+::string \&format=\char`\"{}rdfxml-\/abbrev\char`\"{}, std\+::string base\+\_\+uri=std\+::string(), const char $\ast$mime\+\_\+type=nullptr, const char $\ast$type\+\_\+uri=nullptr)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_acf46cf3b2dbfa5828dac1e823cf972c8}\label{classsemsim_1_1RDF_acf46cf3b2dbfa5828dac1e823cf972c8}} 
+\hyperlink{classsemsim_1_1Editor}{Editor} {\bfseries to\+Editor} (const std\+::string \&xml, Semsim\+Xml\+Type type)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a1f6a4f82d01c93be36eb5c986c1629bc}\label{classsemsim_1_1RDF_a1f6a4f82d01c93be36eb5c986c1629bc}} 
+\hyperlink{classsemsim_1_1Editor}{Editor} $\ast$ {\bfseries to\+Editor\+Ptr} (const std\+::string \&xml, Semsim\+Xml\+Type type)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_ac8286394b938d0511e7ccbf81583277c}\label{classsemsim_1_1RDF_ac8286394b938d0511e7ccbf81583277c}} 
+librdf\+\_\+model $\ast$ {\bfseries get\+Model} () const
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a92ace04b947ccd8c7c3c90a4d9d77edb}\label{classsemsim_1_1RDF_a92ace04b947ccd8c7c3c90a4d9d77edb}} 
+librdf\+\_\+storage $\ast$ {\bfseries get\+Storage} () const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a77782a3756ed6243ee9b842c6b0f06b8}\label{classsemsim_1_1RDF_a77782a3756ed6243ee9b842c6b0f06b8}} 
+static \hyperlink{classsemsim_1_1RDF}{R\+DF} {\bfseries from\+String} (const std\+::string \&str, const std\+::string \&format=\char`\"{}guess\char`\"{}, const std\+::string \&base\+\_\+uri=std\+::string())
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a3d14028f5953a4e007cfe8f9a34b3e0d}\label{classsemsim_1_1RDF_a3d14028f5953a4e007cfe8f9a34b3e0d}} 
+static \hyperlink{classsemsim_1_1RDF}{R\+DF} {\bfseries from\+Uri} (const std\+::string \&uri\+\_\+string, const std\+::string \&format=\char`\"{}guess\char`\"{})
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_ab5f969412a37a4ecad5f8485177ae561}\label{classsemsim_1_1RDF_ab5f969412a37a4ecad5f8485177ae561}} 
+static \hyperlink{classsemsim_1_1RDF}{R\+DF} {\bfseries from\+File} (const std\+::string \&filename, const std\+::string \&format)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_ab1c83f13027f0946d08dd21368706f3b}\label{classsemsim_1_1RDF_ab1c83f13027f0946d08dd21368706f3b}} 
+static void {\bfseries from\+String} (\hyperlink{classsemsim_1_1RDF}{R\+DF} $\ast$rdf, const std\+::string \&str, const std\+::string \&format, const std\+::string \&base\+\_\+uri)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a03a6df29bae51bba853a11d5eb433835}\label{classsemsim_1_1RDF_a03a6df29bae51bba853a11d5eb433835}} 
+std\+::string {\bfseries base\+\_\+uri\+\_\+}
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_a106ee70106beb1c1304c8968470f3033}\label{classsemsim_1_1RDF_a106ee70106beb1c1304c8968470f3033}} 
+Namespace\+Map {\bfseries namespaces\+\_\+}
+\item 
+\mbox{\Hypertarget{classsemsim_1_1RDF_af3bbb4dc4ce350bf60fc6a94bffd41b2}\label{classsemsim_1_1RDF_af3bbb4dc4ce350bf60fc6a94bffd41b2}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries seen\+\_\+namespaces\+\_\+}
+\item 
+Namespace\+Map {\bfseries default\+\_\+namespaces\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classsemsim_1_1RDF_a9a2f19c41f10c772cb4dece71c473bd2}\label{classsemsim_1_1RDF_a9a2f19c41f10c772cb4dece71c473bd2}} 
+\index{semsim\+::\+R\+DF@{semsim\+::\+R\+DF}!default\+\_\+namespaces\+\_\+@{default\+\_\+namespaces\+\_\+}}
+\index{default\+\_\+namespaces\+\_\+@{default\+\_\+namespaces\+\_\+}!semsim\+::\+R\+DF@{semsim\+::\+R\+DF}}
+\subsubsection{\texorpdfstring{default\+\_\+namespaces\+\_\+}{default\_namespaces\_}}
+{\footnotesize\ttfamily Namespace\+Map semsim\+::\+R\+D\+F\+::default\+\_\+namespaces\+\_\+}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+                \{\textcolor{stringliteral}{"http://purl.org/dc/terms/"},                \textcolor{stringliteral}{"dcterms"}\},
+                \{\textcolor{stringliteral}{"http://biomodels.net/biology-qualifiers/"}, \textcolor{stringliteral}{"bqbiol"}\},
+                \{\textcolor{stringliteral}{"http://biomodels.net/model-qualifiers/"},   \textcolor{stringliteral}{"bqmodel"}\},
+                \{\textcolor{stringliteral}{"http://www.bhi.washington.edu/semsim#"},    \textcolor{stringliteral}{"semsim"}\},
+        \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/semsim/R\+D\+F.\+h\item 
+src/semsim/R\+D\+F.\+cpp\end{DoxyCompactItemize}

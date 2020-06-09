@@ -1,0 +1,89 @@
+\hypertarget{classsemsim_1_1Predicate}{}\section{semsim\+:\+:Predicate Class Reference}
+\label{classsemsim_1_1Predicate}\index{semsim\+::\+Predicate@{semsim\+::\+Predicate}}
+Inheritance diagram for semsim\+:\+:Predicate\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.308411cm]{classsemsim_1_1Predicate}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_a111a30f2cf259153b4f186b308b6716f}\label{classsemsim_1_1Predicate_a111a30f2cf259153b4f186b308b6716f}} 
+{\bfseries Predicate} (const std\+::string \&namespace\+\_\+, std\+::string term, std\+::string prefix)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_a47fed0b10781d69cc6e359bcec16eb71}\label{classsemsim_1_1Predicate_a47fed0b10781d69cc6e359bcec16eb71}} 
+std\+::string {\bfseries str} ()
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_a6e4ea55d33e692cdb894940c3708cabb}\label{classsemsim_1_1Predicate_a6e4ea55d33e692cdb894940c3708cabb}} 
+librdf\+\_\+node $\ast$ {\bfseries get\+Node} () const
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_a4a1ffe837216303654416b725684b9db}\label{classsemsim_1_1Predicate_a4a1ffe837216303654416b725684b9db}} 
+const std\+::vector$<$ std\+::string $>$ \& {\bfseries get\+Valid\+Terms} () const
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_aefb90236a7934d93cce5798723f54661}\label{classsemsim_1_1Predicate_aefb90236a7934d93cce5798723f54661}} 
+const std\+::string \& {\bfseries get\+Namespace} () const
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_a1a62bbbe1ac5e3a28a15fda049d4ada4}\label{classsemsim_1_1Predicate_a1a62bbbe1ac5e3a28a15fda049d4ada4}} 
+const std\+::string \& {\bfseries get\+Term} () const
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_ad7115549cf9b25cbb665f5c2bcba67d4}\label{classsemsim_1_1Predicate_ad7115549cf9b25cbb665f5c2bcba67d4}} 
+const std\+::string \& {\bfseries get\+Prefix} () const
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_add37b6df8a8bf63600966a3ab24236d9}\label{classsemsim_1_1Predicate_add37b6df8a8bf63600966a3ab24236d9}} 
+const std\+::string \& {\bfseries get\+Uri} () const
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_aa8a95f5f9e0bffbb8d6df9c8767a6b01}\label{classsemsim_1_1Predicate_aa8a95f5f9e0bffbb8d6df9c8767a6b01}} 
+void {\bfseries free\+Node} ()
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_a56b15a4d95c7f6e4645e954e5d5d3d13}\label{classsemsim_1_1Predicate_a56b15a4d95c7f6e4645e954e5d5d3d13}} 
+void {\bfseries set\+Node} (librdf\+\_\+node $\ast$node)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_a332f745e39155ff5884e2c98c87b548b}\label{classsemsim_1_1Predicate_a332f745e39155ff5884e2c98c87b548b}} 
+static std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ {\bfseries namespace\+Map} ()
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_a3e4b6a9dd8180026ef09d8234076655f}\label{classsemsim_1_1Predicate_a3e4b6a9dd8180026ef09d8234076655f}} 
+static void {\bfseries verify} (std\+::vector$<$ std\+::string $>$ valid\+\_\+terms, const std\+::string \&term)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_a514f441587bc049f53666c55a5d645ce}\label{classsemsim_1_1Predicate_a514f441587bc049f53666c55a5d645ce}} 
+static bool {\bfseries namespace\+Known} (const std\+::string \&ns)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_a47b3b6a018b2d1085c0feaf504e12568}\label{classsemsim_1_1Predicate_a47b3b6a018b2d1085c0feaf504e12568}} 
+static void {\bfseries add\+Seen\+Namespace\+To\+Serializer} (librdf\+\_\+world $\ast$world, librdf\+\_\+serializer $\ast$serializer, librdf\+\_\+node $\ast$predicate)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_a90af4d016315412f8fd64d9ec280b177}\label{classsemsim_1_1Predicate_a90af4d016315412f8fd64d9ec280b177}} 
+{\bfseries Predicate} (librdf\+\_\+node $\ast$node)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_ad74a27f704532cdc6a80e094c2d5b3f4}\label{classsemsim_1_1Predicate_ad74a27f704532cdc6a80e094c2d5b3f4}} 
+std\+::string {\bfseries namespace\+\_\+}
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_acb9c36ea2356d2b8791a2e8ad9cf68eb}\label{classsemsim_1_1Predicate_acb9c36ea2356d2b8791a2e8ad9cf68eb}} 
+std\+::string {\bfseries term\+\_\+}
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_acb69247cf1ff304bfaec2df1755b4654}\label{classsemsim_1_1Predicate_acb69247cf1ff304bfaec2df1755b4654}} 
+std\+::string {\bfseries prefix\+\_\+}
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_a6ceaeb4b2a9a431cfdfe537be842edd2}\label{classsemsim_1_1Predicate_a6ceaeb4b2a9a431cfdfe537be842edd2}} 
+std\+::string {\bfseries uri\+\_\+}
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_a9a488e0bf03949975fa54d2de0b2fd58}\label{classsemsim_1_1Predicate_a9a488e0bf03949975fa54d2de0b2fd58}} 
+librdf\+\_\+node $\ast$ {\bfseries node\+\_\+} = nullptr
+\item 
+\mbox{\Hypertarget{classsemsim_1_1Predicate_aaffa9838c17b7bc7c33559ef1253a594}\label{classsemsim_1_1Predicate_aaffa9838c17b7bc7c33559ef1253a594}} 
+std\+::vector$<$ std\+::string $>$ \hyperlink{classsemsim_1_1Predicate_aaffa9838c17b7bc7c33559ef1253a594}{valid\+\_\+terms\+\_\+} \{\char`\"{}All\char`\"{}\}
+\begin{DoxyCompactList}\small\item\em predicates can only have type uri \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/semsim/Predicate.\+h\item 
+src/semsim/Predicate.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,2033 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="namespacesemsim" kind="namespace" language="C++">
+    <compoundname>semsim</compoundname>
+    <innerclass refid="classsemsim_1_1AnnotationBuilderException" prot="public">semsim::AnnotationBuilderException</innerclass>
+    <innerclass refid="classsemsim_1_1BiomodelsBiologyQualifier" prot="public">semsim::BiomodelsBiologyQualifier</innerclass>
+    <innerclass refid="classsemsim_1_1BiomodelsModelQualifier" prot="public">semsim::BiomodelsModelQualifier</innerclass>
+    <innerclass refid="classsemsim_1_1CellMLAssistant" prot="public">semsim::CellMLAssistant</innerclass>
+    <innerclass refid="classsemsim_1_1CurlGet" prot="public">semsim::CurlGet</innerclass>
+    <innerclass refid="classsemsim_1_1DCTerm" prot="public">semsim::DCTerm</innerclass>
+    <innerclass refid="classsemsim_1_1Editor" prot="public">semsim::Editor</innerclass>
+    <innerclass refid="classsemsim_1_1Exception" prot="public">semsim::Exception</innerclass>
+    <innerclass refid="classsemsim_1_1InappropriateResourceException" prot="public">semsim::InappropriateResourceException</innerclass>
+    <innerclass refid="classsemsim_1_1LibRDFException" prot="public">semsim::LibRDFException</innerclass>
+    <innerclass refid="classsemsim_1_1MediatorParticipant" prot="public">semsim::MediatorParticipant</innerclass>
+    <innerclass refid="classsemsim_1_1MetaID" prot="public">semsim::MetaID</innerclass>
+    <innerclass refid="classsemsim_1_1NotImplementedException" prot="public">semsim::NotImplementedException</innerclass>
+    <innerclass refid="classsemsim_1_1NullPointerException" prot="public">semsim::NullPointerException</innerclass>
+    <innerclass refid="classsemsim_1_1Participant" prot="public">semsim::Participant</innerclass>
+    <innerclass refid="classsemsim_1_1PhysicalEntity" prot="public">semsim::PhysicalEntity</innerclass>
+    <innerclass refid="classsemsim_1_1PhysicalForce" prot="public">semsim::PhysicalForce</innerclass>
+    <innerclass refid="classsemsim_1_1PhysicalPhenomenon" prot="public">semsim::PhysicalPhenomenon</innerclass>
+    <innerclass refid="classsemsim_1_1PhysicalProcess" prot="public">semsim::PhysicalProcess</innerclass>
+    <innerclass refid="classsemsim_1_1PhysicalPropertyResource" prot="public">semsim::PhysicalPropertyResource</innerclass>
+    <innerclass refid="classsemsim_1_1Predicate" prot="public">semsim::Predicate</innerclass>
+    <innerclass refid="classsemsim_1_1Query" prot="public">semsim::Query</innerclass>
+    <innerclass refid="classsemsim_1_1RDF" prot="public">semsim::RDF</innerclass>
+    <innerclass refid="classsemsim_1_1Resource" prot="public">semsim::Resource</innerclass>
+    <innerclass refid="classsemsim_1_1SBMLAssistant" prot="public">semsim::SBMLAssistant</innerclass>
+    <innerclass refid="classsemsim_1_1SemSim" prot="public">semsim::SemSim</innerclass>
+    <innerclass refid="classsemsim_1_1SemsimUtils" prot="public">semsim::SemsimUtils</innerclass>
+    <innerclass refid="classsemsim_1_1SemsimXmlAssistant" prot="public">semsim::SemsimXmlAssistant</innerclass>
+    <innerclass refid="classsemsim_1_1SemsimXmlAssistantFactory" prot="public">semsim::SemsimXmlAssistantFactory</innerclass>
+    <innerclass refid="classsemsim_1_1SinkParticipant" prot="public">semsim::SinkParticipant</innerclass>
+    <innerclass refid="classsemsim_1_1SourceParticipant" prot="public">semsim::SourceParticipant</innerclass>
+    <innerclass refid="classsemsim_1_1Subject" prot="public">semsim::Subject</innerclass>
+    <innerclass refid="classsemsim_1_1Triple" prot="public">semsim::Triple</innerclass>
+    <innerclass refid="classsemsim_1_1Triples" prot="public">semsim::Triples</innerclass>
+    <innerclass refid="classsemsim_1_1ValueException" prot="public">semsim::ValueException</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="AnnotationType_8h_1ac6b397ba0bfc4b4edac1c429a40a89e5" prot="public" static="no">
+        <name>AnnotationType</name>
+        <enumvalue id="AnnotationType_8h_1ac6b397ba0bfc4b4edac1c429a40a89e5a70fdb83281f41f1f550b0631568f9c8e" prot="public">
+          <name>PHYSICAL_ENTITY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="AnnotationType_8h_1ac6b397ba0bfc4b4edac1c429a40a89e5a9c399486077c11c8283563969931c178" prot="public">
+          <name>PHYSICAL_PROCESS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="AnnotationType_8h_1ac6b397ba0bfc4b4edac1c429a40a89e5aa115ed480ac39e693b3a989977ca5161" prot="public">
+          <name>PHYSICAL_FORCE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="AnnotationType_8h_1ac6b397ba0bfc4b4edac1c429a40a89e5a3367181fdc4037ba5368bb5061d33238" prot="public">
+          <name>SINGULAR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="AnnotationType_8h_1ac6b397ba0bfc4b4edac1c429a40a89e5a9d49cce493e176e54db91f420ccd9faf" prot="public">
+          <name>UNKNOWN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/AnnotationType.h" line="16" column="1" bodyfile="src/semsim/AnnotationType.h" bodystart="16" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="enum" id="SemsimXmlAssistant_8h_1a9f3b6413b6f3267fd83e39a53c2a5f80" prot="public" static="no">
+        <name>SemsimXmlType</name>
+        <enumvalue id="SemsimXmlAssistant_8h_1a9f3b6413b6f3267fd83e39a53c2a5f80a7333a550a2f2f626bcb92c9639b311b2" prot="public">
+          <name>SEMSIM_TYPE_SBML</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="SemsimXmlAssistant_8h_1a9f3b6413b6f3267fd83e39a53c2a5f80a9b0e7c939790b615f1b6f85f7be4e23d" prot="public">
+          <name>SEMSIM_TYPE_CELLML</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="SemsimXmlAssistant_8h_1a9f3b6413b6f3267fd83e39a53c2a5f80a69e793e0cabc85754d201a2cc0c53756" prot="public">
+          <name>SEMSIM_TYPE_OTHER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimXmlAssistant.h" line="21" column="1" bodyfile="src/semsim/SemsimXmlAssistant.h" bodystart="21" bodyend="25"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="Editor_8h_1a7f032f2a56867548a5fc6361c7f36376" prot="public" static="no">
+        <type>std::unordered_map&lt; std::string, std::string &gt;</type>
+        <definition>typedef std::unordered_map&lt; std::string, std::string &gt; semsim::NamespaceMap</definition>
+        <argsstring></argsstring>
+        <name>NamespaceMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Editor.h" line="55" column="1" bodyfile="src/semsim/Editor.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Participant_8h_1a706da00ef7c6131c603b1d6f78e60cf7" prot="public" static="no">
+        <type>std::shared_ptr&lt; <ref refid="classsemsim_1_1Participant" kindref="compound">Participant</ref> &gt;</type>
+        <definition>typedef std::shared_ptr&lt;Participant&gt; semsim::ParticipantPtr</definition>
+        <argsstring></argsstring>
+        <name>ParticipantPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Participant.h" line="98" column="1" bodyfile="src/semsim/Participant.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Participant_8h_1a8e000ef26f19442338dae6cddcac3269" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classsemsim_1_1SourceParticipant" kindref="compound">SourceParticipant</ref> &gt;</type>
+        <definition>typedef std::vector&lt;SourceParticipant&gt; semsim::Sources</definition>
+        <argsstring></argsstring>
+        <name>Sources</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Participant.h" line="148" column="1" bodyfile="src/semsim/Participant.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Participant_8h_1a4d2b69cae4b2ca03f386444af0f8fa1c" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classsemsim_1_1MediatorParticipant" kindref="compound">MediatorParticipant</ref> &gt;</type>
+        <definition>typedef std::vector&lt;MediatorParticipant&gt; semsim::Mediators</definition>
+        <argsstring></argsstring>
+        <name>Mediators</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Participant.h" line="149" column="1" bodyfile="src/semsim/Participant.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Participant_8h_1a2971d75a0a19dbf5c66878dd1b327695" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classsemsim_1_1SinkParticipant" kindref="compound">SinkParticipant</ref> &gt;</type>
+        <definition>typedef std::vector&lt;SinkParticipant&gt; semsim::Sinks</definition>
+        <argsstring></argsstring>
+        <name>Sinks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Participant.h" line="150" column="1" bodyfile="src/semsim/Participant.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="PhysicalPhenomenon_8h_1ad8a4a2d5704a28a5ab77cc89e824c8fb" prot="public" static="no">
+        <type>std::shared_ptr&lt; <ref refid="classsemsim_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> &gt;</type>
+        <definition>typedef std::shared_ptr&lt;PhysicalPhenomenon&gt; semsim::PhysicalPhenomenonPtr</definition>
+        <argsstring></argsstring>
+        <name>PhysicalPhenomenonPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="116" column="1" bodyfile="src/semsim/PhysicalPhenomenon.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Predicate_8h_1a72be21aacde74b115048134b6b46b06a" prot="public" static="no">
+        <type>std::shared_ptr&lt; <ref refid="classsemsim_1_1Predicate" kindref="compound">Predicate</ref> &gt;</type>
+        <definition>typedef std::shared_ptr&lt;Predicate&gt; semsim::PredicatePtr</definition>
+        <argsstring></argsstring>
+        <name>PredicatePtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="298" column="1" bodyfile="src/semsim/Predicate.h" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Predicate_8h_1af65e6e95f451c97e808cb0899dc834cc" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classsemsim_1_1Predicate" kindref="compound">Predicate</ref> &gt;</type>
+        <definition>typedef std::vector&lt;Predicate&gt; semsim::Predicates</definition>
+        <argsstring></argsstring>
+        <name>Predicates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="299" column="1" bodyfile="src/semsim/Predicate.h" bodystart="299" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Predicate_8h_1aa6beb88427b5c00dc575d8e69d142768" prot="public" static="no">
+        <type>std::vector&lt; PredicatePtr &gt;</type>
+        <definition>typedef std::vector&lt;PredicatePtr&gt; semsim::PredicatePtrs</definition>
+        <argsstring></argsstring>
+        <name>PredicatePtrs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="300" column="1" bodyfile="src/semsim/Predicate.h" bodystart="300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Query_8h_1ac86b61ddd1369f367ffae2b96f926787" prot="public" static="no">
+        <type>std::unordered_map&lt; std::string, std::vector&lt; std::string &gt; &gt;</type>
+        <definition>typedef std::unordered_map&lt;std::string, std::vector&lt;std::string&gt; &gt; semsim::ResultsMap</definition>
+        <argsstring></argsstring>
+        <name>ResultsMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Query.h" line="27" column="1" bodyfile="src/semsim/Query.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Resource_8h_1a54a963d2df9a02cf075667104fc3b25d" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classsemsim_1_1Resource" kindref="compound">Resource</ref> &gt;</type>
+        <definition>typedef std::vector&lt;Resource&gt; semsim::Resources</definition>
+        <argsstring></argsstring>
+        <name>Resources</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Resource.h" line="43" column="1" bodyfile="src/semsim/Resource.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="SemsimXmlAssistant_8h_1af40d4d9fdc40b38964067d8105882d9e" prot="public" static="no">
+        <type>std::unique_ptr&lt; <ref refid="classsemsim_1_1SemsimXmlAssistant" kindref="compound">SemsimXmlAssistant</ref> &gt;</type>
+        <definition>typedef std::unique_ptr&lt;SemsimXmlAssistant&gt; semsim::XmlAssistantPtr</definition>
+        <argsstring></argsstring>
+        <name>XmlAssistantPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimXmlAssistant.h" line="67" column="1" bodyfile="src/semsim/SemsimXmlAssistant.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Subject_8h_1a04bed766540480baac4aca6a7a7f82f4" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classsemsim_1_1Subject" kindref="compound">Subject</ref> &gt;</type>
+        <definition>typedef std::vector&lt;Subject&gt; semsim::Subjects</definition>
+        <argsstring></argsstring>
+        <name>Subjects</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Subject.h" line="52" column="1" bodyfile="src/semsim/Subject.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Triple_8h_1ab261f90c0c697a05c6ddf66ab0da225a" prot="public" static="no">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">Triple</ref></type>
+        <definition>typedef Triple semsim::SingularAnnotation</definition>
+        <argsstring></argsstring>
+        <name>SingularAnnotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="78" column="1" bodyfile="src/semsim/Triple.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Triples_8h_1afd362eb44ade75b41f05de0ebff33062" prot="public" static="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classsemsim_1_1Triple" kindref="compound">Triple</ref> &gt; &gt;</type>
+        <definition>typedef std::vector&lt;std::shared_ptr&lt;Triple&gt; &gt; semsim::SharedTripleVector</definition>
+        <argsstring></argsstring>
+        <name>SharedTripleVector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triples.h" line="24" column="1" bodyfile="src/semsim/Triples.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Triples_8h_1a933d977c7fddfc8c347b975a82c409cc" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classsemsim_1_1Triple" kindref="compound">Triple</ref> &gt;</type>
+        <definition>typedef std::vector&lt;Triple&gt; semsim::TripleVector</definition>
+        <argsstring></argsstring>
+        <name>TripleVector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triples.h" line="25" column="1" bodyfile="src/semsim/Triples.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Triples_8h_1a7f7e760a6b980d3935206ba1653eafef" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="classsemsim_1_1Triples" kindref="compound">Triples</ref> &gt;</type>
+        <definition>typedef std::vector&lt;Triples&gt; semsim::NestedTriples</definition>
+        <argsstring></argsstring>
+        <name>NestedTriples</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triples.h" line="74" column="1" bodyfile="src/semsim/Triples.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="Predicate_8cpp_1a5711da3a6c2e5e0f503f0ef0866d75a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PredicatePtr</type>
+        <definition>PredicatePtr semsim::PredicateFactory</definition>
+        <argsstring>(std::string namespace_, const std::string &amp;term)</argsstring>
+        <name>PredicateFactory</name>
+        <param>
+          <type>std::string</type>
+          <declname>namespace_</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>term</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.cpp" line="225" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="225" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1ac6495ef2b2c33c62fb7ee3b19070f667" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::free_c_char_star</definition>
+        <argsstring>(char *c)</argsstring>
+        <name>free_c_char_star</name>
+        <param>
+          <type>char *</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="9" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a034900320f55fd016488ccb7a89ba0e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::free_c_char_star_star</definition>
+        <argsstring>(char **c, int size)</argsstring>
+        <name>free_c_char_star_star</name>
+        <param>
+          <type>char **</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="14" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="14" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a33513562da945532fdf9ea28ab34aa93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::_func_that_returns_dynamic_alloc_str</definition>
+        <argsstring>()</argsstring>
+        <name>_func_that_returns_dynamic_alloc_str</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="30" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="30" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1adb88b161d1351d0b306204fbefd165da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char **</type>
+        <definition>char ** semsim::_func_that_returns_dynamic_alloc_char_star_star</definition>
+        <argsstring>()</argsstring>
+        <name>_func_that_returns_dynamic_alloc_char_star_star</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="40" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="40" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a5aed346d2e699f29a89701ff6044d35b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::free_world</definition>
+        <argsstring>(librdf_world *world)</argsstring>
+        <name>free_world</name>
+        <param>
+          <type>librdf_world *</type>
+          <declname>world</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="60" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="60" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a1b7849230e7f3e3c06c8bc5cc85c5e70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1RDF" kindref="compound">RDF</ref> *</type>
+        <definition>RDF * semsim::RDF_new</definition>
+        <argsstring>()</argsstring>
+        <name>RDF_new</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="71" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="71" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1ab20147d79ec6420b783bfa6a5c3262e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::RDF_delete</definition>
+        <argsstring>(RDF *rdf_ptr)</argsstring>
+        <name>RDF_delete</name>
+        <param>
+          <type><ref refid="classsemsim_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="80" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="80" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a1c6198eb2b1101dae01c2c000c1cb3ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1RDF" kindref="compound">RDF</ref> *</type>
+        <definition>RDF * semsim::RDF_fromString</definition>
+        <argsstring>(const char *str, const char *format, const char *baseuri)</argsstring>
+        <name>RDF_fromString</name>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>baseuri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="84" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="84" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a8a9e61ea46d453422019906eaaa61006" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::RDF_addFromString</definition>
+        <argsstring>(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri)</argsstring>
+        <name>RDF_addFromString</name>
+        <param>
+          <type><ref refid="classsemsim_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>base_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="91" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="91" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1af8c15e7764d1b23a61869e189928bf8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1RDF" kindref="compound">RDF</ref> *</type>
+        <definition>RDF * semsim::RDF_fromUri</definition>
+        <argsstring>(const char *uri_string, const char *format)</argsstring>
+        <name>RDF_fromUri</name>
+        <param>
+          <type>const char *</type>
+          <declname>uri_string</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="95" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="95" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1af3b48485a56f42410a757a2d75fca262" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::RDF_addFromUri</definition>
+        <argsstring>(RDF *rdf_ptr, const char *uri_string, const char *format)</argsstring>
+        <name>RDF_addFromUri</name>
+        <param>
+          <type><ref refid="classsemsim_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>uri_string</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="101" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="101" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a4b0c058e803e574ed3ddb1b2008bb2ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1RDF" kindref="compound">RDF</ref> *</type>
+        <definition>RDF * semsim::RDF_fromFile</definition>
+        <argsstring>(const char *filename, const char *format)</argsstring>
+        <name>RDF_fromFile</name>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="105" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="105" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a18de4292e8977ce9d4163e1b109c3157" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::RDF_addFromFile</definition>
+        <argsstring>(RDF *rdf_ptr, const char *uri_string, const char *format)</argsstring>
+        <name>RDF_addFromFile</name>
+        <param>
+          <type><ref refid="classsemsim_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>uri_string</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="111" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="111" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a3be90d11cdbaf4670ca11035e83e70a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::RDF_toString</definition>
+        <argsstring>(RDF *rdf_ptr, const char *format, const char *base_uri)</argsstring>
+        <name>RDF_toString</name>
+        <param>
+          <type><ref refid="classsemsim_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>base_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="115" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="115" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a5f32e3947f329c748d3b8843189b2595" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::RDF_getBaseUri</definition>
+        <argsstring>(RDF *rdf_ptr)</argsstring>
+        <name>RDF_getBaseUri</name>
+        <param>
+          <type><ref refid="classsemsim_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="123" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="123" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a2ff14d2d5b1f3c85ad31af1d847f6397" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::RDF_setBaseUri</definition>
+        <argsstring>(RDF *rdf_ptr, const char *uri)</argsstring>
+        <name>RDF_setBaseUri</name>
+        <param>
+          <type><ref refid="classsemsim_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="130" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="130" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a7741eda363de6236f0a0c0e1d81ff6b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::RDF_queryResultsAsStr</definition>
+        <argsstring>(RDF *rdf_ptr, const char *query_str, const char *results_format)</argsstring>
+        <name>RDF_queryResultsAsStr</name>
+        <param>
+          <type><ref refid="classsemsim_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>query_str</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>results_format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="134" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="134" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a0bb41b2db8746587308e710e64508bfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int semsim::RDF_size</definition>
+        <argsstring>(RDF *rdf_ptr)</argsstring>
+        <name>RDF_size</name>
+        <param>
+          <type><ref refid="classsemsim_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="143" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="143" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1acf5d55750c4ba198fa28b16e2ff48beb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+        <definition>Editor * semsim::RDF_toEditor</definition>
+        <argsstring>(RDF *rdf_ptr, const char *xml, SemsimXmlType type)</argsstring>
+        <name>RDF_toEditor</name>
+        <param>
+          <type><ref refid="classsemsim_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>xml</declname>
+        </param>
+        <param>
+          <type>SemsimXmlType</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="147" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="147" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1ac8e8aac25fc61406e6a624426c38a02c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::Editor_addNamespace</definition>
+        <argsstring>(Editor *editor_ptr, const char *namespace_, const char *prefix)</argsstring>
+        <name>Editor_addNamespace</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>namespace_</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>prefix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="155" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="155" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1aa2d289e9d49df8cf103bf398a968c5f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::Editor_addSingleAnnotation</definition>
+        <argsstring>(Editor *editor_ptr, SingularAnnotation *singularAnnotation)</argsstring>
+        <name>Editor_addSingleAnnotation</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singularAnnotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="159" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="159" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a845b99b39988475954ab4fd917c083d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::Editor_addPhysicalEntity</definition>
+        <argsstring>(Editor *editor_ptr, PhysicalEntity *physicalEntity)</argsstring>
+        <name>Editor_addPhysicalEntity</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physicalEntity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="164" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="164" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a1deca4698ced4e81d21a01d96e43201d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::Editor_addPhysicalProcess</definition>
+        <argsstring>(Editor *editor_ptr, PhysicalProcess *physicalProcess)</argsstring>
+        <name>Editor_addPhysicalProcess</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physicalProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="168" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="168" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a499ad8ae82a6b128755d53e2527833e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::Editor_addPhysicalForce</definition>
+        <argsstring>(Editor *editor_ptr, PhysicalForce *physicalForce)</argsstring>
+        <name>Editor_addPhysicalForce</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physicalForce</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="172" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="172" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a27885b1fc28a2ae3a7ec95c2320d1dfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::Editor_checkValidMetaid</definition>
+        <argsstring>(Editor *editor_ptr, const char *id)</argsstring>
+        <name>Editor_checkValidMetaid</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="176" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="176" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a76b7896f6a98128871b813a651889c80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::Editor_getMetaId</definition>
+        <argsstring>(Editor *editor_ptr, int index)</argsstring>
+        <name>Editor_getMetaId</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="180" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="180" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a03838bd8bb25d8e01965594d1ba5aa36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int semsim::Editor_getNumMetaIds</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>Editor_getNumMetaIds</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="187" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="187" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a26c90c9cddd42a1296660cb75d67aa2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::Editor_getXml</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>Editor_getXml</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="196" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="196" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a42b9da7358178f91f81b3b1697e501aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::Editor_delete</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>Editor_delete</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="203" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="203" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a997da34abc5a0f2caba36bab4151bd6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::Editor_toRDF</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>Editor_toRDF</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="209" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="209" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a7975bc32abdfde395f78e391691cc9b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+        <definition>SingularAnnotation * semsim::SingularAnnotation_new</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>SingularAnnotation_new</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="217" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="217" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1acbf35e1a206eed5dc913563d35676da5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::SingularAnnotation_delete</definition>
+        <argsstring>(SingularAnnotation *singularAnnotation)</argsstring>
+        <name>SingularAnnotation_delete</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singularAnnotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="221" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="221" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a3cf1ff15127624a4dd51b968729ec1c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::SingularAnnotation_freeAll</definition>
+        <argsstring>(SingularAnnotation *singularAnnotation)</argsstring>
+        <name>SingularAnnotation_freeAll</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singularAnnotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="230" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="230" bodyend="238"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a522cb84776e82a4d521539f82f50f0c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::free_singular_annotation</definition>
+        <argsstring>(SingularAnnotation *singularAnnotationPtr)</argsstring>
+        <name>free_singular_annotation</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singularAnnotationPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="240" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="240" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a335e071533d014bb007388318c996413" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+        <definition>SingularAnnotation * semsim::SingularAnnotation_setAbout</definition>
+        <argsstring>(SingularAnnotation *singular_annotation, const char *about)</argsstring>
+        <name>SingularAnnotation_setAbout</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>about</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="244" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="244" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a5a86b426224a9b918d4efe8c5ffd9407" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+        <definition>SingularAnnotation * semsim::SingularAnnotation_setPredicate</definition>
+        <argsstring>(SingularAnnotation *singular_annotation, const char *namespace_, const char *term)</argsstring>
+        <name>SingularAnnotation_setPredicate</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>namespace_</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>term</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="250" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="250" bodyend="254"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1aa07861d904f9a888631630c6485985cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+        <definition>SingularAnnotation * semsim::SingularAnnotation_setPredicateFromUri</definition>
+        <argsstring>(SingularAnnotation *singular_annotation, const char *uri)</argsstring>
+        <name>SingularAnnotation_setPredicateFromUri</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="256" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="256" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a0ad204d56d536b3b6dc98707f2afe0eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+        <definition>SingularAnnotation * semsim::SingularAnnotation_setResourceLiteral</definition>
+        <argsstring>(SingularAnnotation *singular_annotation, const char *literal)</argsstring>
+        <name>SingularAnnotation_setResourceLiteral</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>literal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="263" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="263" bodyend="266"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1ae3701375fe28b34dad6cff303a119272" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+        <definition>SingularAnnotation * semsim::SingularAnnotation_setResourceUri</definition>
+        <argsstring>(SingularAnnotation *singular_annotation, const char *identifiers_uri)</argsstring>
+        <name>SingularAnnotation_setResourceUri</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>identifiers_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="269" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="269" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a13eda4b6a0a6d99b05e982b1c3467a36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+        <definition>SingularAnnotation * semsim::SingularAnnotation_setResourceBlank</definition>
+        <argsstring>(SingularAnnotation *singular_annotation, const char *blank_id)</argsstring>
+        <name>SingularAnnotation_setResourceBlank</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>blank_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="275" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="275" bodyend="278"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a3e76d94d2766eca4b33e2d6544b3d223" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::SingularAnnotation_getAbout</definition>
+        <argsstring>(SingularAnnotation *singular_annotation)</argsstring>
+        <name>SingularAnnotation_getAbout</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="280" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="280" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1adc2c0d7e67e0626d11e06035369ae7bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::SingularAnnotation_getPredicate</definition>
+        <argsstring>(SingularAnnotation *singular_annotation)</argsstring>
+        <name>SingularAnnotation_getPredicate</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="287" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="287" bodyend="292"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a216e695540e814abe384b3f1bf9636c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::SingularAnnotation_getResource</definition>
+        <argsstring>(SingularAnnotation *singular_annotation)</argsstring>
+        <name>SingularAnnotation_getResource</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="294" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="294" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1ab6260395648fd5049dfb34c302a3e9cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::SingularAnnotation_str</definition>
+        <argsstring>(SingularAnnotation *singular_annotation, const char *format, const char *base_uri)</argsstring>
+        <name>SingularAnnotation_str</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Triple" kindref="compound">SingularAnnotation</ref> *</type>
+          <declname>singular_annotation</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>base_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="301" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="301" bodyend="308"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a25b3e80b088cbf7a471e920c1183adf0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+        <definition>PhysicalEntity * semsim::PhysicalEntity_new</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>PhysicalEntity_new</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="313" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="313" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1adb0b270d9d09ac3e32fa19091db3d571" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::PhysicalEntity_delete</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr)</argsstring>
+        <name>PhysicalEntity_delete</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="317" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="317" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a7463219be481364f7deef834a2fadaef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::PhysicalEntity_freeAll</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr)</argsstring>
+        <name>PhysicalEntity_freeAll</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="324" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="324" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a43d7074883610a8c16531c69c785d5d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+        <definition>PhysicalEntity * semsim::PhysicalEntity_setAbout</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr, const char *about)</argsstring>
+        <name>PhysicalEntity_setAbout</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>about</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="329" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="329" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1ad2dea4d0bb0f485a9b5380880dedc64d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+        <definition>PhysicalEntity * semsim::PhysicalEntity_setPhysicalProperty</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr, const char *physical_property)</argsstring>
+        <name>PhysicalEntity_setPhysicalProperty</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_property</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="334" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="334" bodyend="338"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a1899735e8c6f8abbf0ac148fd5e750d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+        <definition>PhysicalEntity * semsim::PhysicalEntity_setIdentity</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr, const char *identity_resource)</argsstring>
+        <name>PhysicalEntity_setIdentity</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>identity_resource</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="340" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="340" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a20dd0147611a4818a9964b2a07cbe262" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+        <definition>PhysicalEntity * semsim::PhysicalEntity_addLocation</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr, const char *location_resource)</argsstring>
+        <name>PhysicalEntity_addLocation</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>location_resource</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="345" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="345" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a74e97bd79c5345ae61358f49f61e22e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::PhysicalEntity_getAbout</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr)</argsstring>
+        <name>PhysicalEntity_getAbout</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="350" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="350" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1ac21f755f6443cd81c1bf504c64a6c3d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::PhysicalEntity_getPhysicalProperty</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr)</argsstring>
+        <name>PhysicalEntity_getPhysicalProperty</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="357" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="357" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a6452895fee2ec1ed0bfe8ccc22be3951" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::PhysicalEntity_getIdentity</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr)</argsstring>
+        <name>PhysicalEntity_getIdentity</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="364" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="364" bodyend="370"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a61ea3fdc1ce6d332af4d8466aed7db97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int semsim::PhysicalEntity_getNumLocations</definition>
+        <argsstring>(PhysicalEntity *physicalEntity)</argsstring>
+        <name>PhysicalEntity_getNumLocations</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physicalEntity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="372" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="372" bodyend="374"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1aedc2639ade9e89e9bf9542c6548d931f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::PhysicalEntity_getLocation</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr, int index)</argsstring>
+        <name>PhysicalEntity_getLocation</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="376" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="376" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1ac07581a513227e289d8ef54237f58782" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::PhysicalEntity_str</definition>
+        <argsstring>(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri)</argsstring>
+        <name>PhysicalEntity_str</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> *</type>
+          <declname>physical_entity_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>base_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="383" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="383" bodyend="388"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a8505e98ea93cb1a1e41be74be59155cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+        <definition>PhysicalProcess * semsim::PhysicalProcess_new</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>PhysicalProcess_new</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="394" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="394" bodyend="396"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a2c3c2b0cb853c33d0b19e24928ebe928" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::PhysicalProcess_delete</definition>
+        <argsstring>(PhysicalProcess *physicalProcess)</argsstring>
+        <name>PhysicalProcess_delete</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physicalProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="398" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="398" bodyend="400"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1acd680245a1d81f63646d1d5e846bcdee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::PhysicalProcess_freeAll</definition>
+        <argsstring>(PhysicalProcess *physicalProcess)</argsstring>
+        <name>PhysicalProcess_freeAll</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physicalProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="402" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="402" bodyend="405"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1af10a1184c4d978cbf9a8d7347e83484b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+        <definition>PhysicalProcess * semsim::PhysicalProcess_setAbout</definition>
+        <argsstring>(PhysicalProcess *physical_process, const char *about)</argsstring>
+        <name>PhysicalProcess_setAbout</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physical_process</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>about</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="407" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="407" bodyend="410"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a940bb99c2f7ba16ac1cd6447adc1b8a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+        <definition>PhysicalProcess * semsim::PhysicalProcess_setPhysicalProperty</definition>
+        <argsstring>(PhysicalProcess *physical_process, const char *physical_property)</argsstring>
+        <name>PhysicalProcess_setPhysicalProperty</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physical_process</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_property</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="413" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="413" bodyend="417"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a170b8265b273666e01066211f77b0ebc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+        <definition>PhysicalProcess * semsim::PhysicalProcess_addSource</definition>
+        <argsstring>(PhysicalProcess *physical_process, const char *source_metaid, double multiplier, const char *physical_entity_reference)</argsstring>
+        <name>PhysicalProcess_addSource</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physical_process</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>source_metaid</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_entity_reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="420" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="420" bodyend="425"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1abe80ff7c22f06f61ecc2916753991e62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+        <definition>PhysicalProcess * semsim::PhysicalProcess_addSink</definition>
+        <argsstring>(PhysicalProcess *physical_process, const char *sink_metaid, double multiplier, const char *physical_entity_reference)</argsstring>
+        <name>PhysicalProcess_addSink</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physical_process</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>sink_metaid</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_entity_reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="428" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="428" bodyend="433"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1afb19c1455bb7bfce49ae28dbcd3b3ddb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+        <definition>PhysicalProcess * semsim::PhysicalProcess_addMediator</definition>
+        <argsstring>(PhysicalProcess *physical_process, const char *mediator_metaid, double multiplier, const char *physical_entity_reference)</argsstring>
+        <name>PhysicalProcess_addMediator</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physical_process</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>mediator_metaid</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_entity_reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="436" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="436" bodyend="441"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a63e6900745de7b844cbc45dde76ad123" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::PhysicalProcess_str</definition>
+        <argsstring>(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri)</argsstring>
+        <name>PhysicalProcess_str</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physical_process_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>base_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="443" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="443" bodyend="448"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a3bc57aacdcec564dfde8b27aaf3ae332" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::PhysicalProcess_getAbout</definition>
+        <argsstring>(PhysicalProcess *physical_process_ptr)</argsstring>
+        <name>PhysicalProcess_getAbout</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physical_process_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="450" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="450" bodyend="455"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a82a4f5cf03f6ebaed6c0726be41618cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::PhysicalProcess_getPhysicalProperty</definition>
+        <argsstring>(PhysicalProcess *physical_process_ptr)</argsstring>
+        <name>PhysicalProcess_getPhysicalProperty</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physical_process_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="457" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="457" bodyend="462"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1ad486f31df7ab73254b5f10a81aeb4087" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int semsim::PhysicalProcess_getNumSources</definition>
+        <argsstring>(PhysicalProcess *physicalProcess)</argsstring>
+        <name>PhysicalProcess_getNumSources</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physicalProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="464" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="464" bodyend="466"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a430fdc9ca0378bbd6f69a97c1fb31ea9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int semsim::PhysicalProcess_getNumSinks</definition>
+        <argsstring>(PhysicalProcess *physicalProcess)</argsstring>
+        <name>PhysicalProcess_getNumSinks</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physicalProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="468" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="468" bodyend="470"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1ad0666dee08a017c853cc1e713bf2e423" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int semsim::PhysicalProcess_getNumMediators</definition>
+        <argsstring>(PhysicalProcess *physicalProcess)</argsstring>
+        <name>PhysicalProcess_getNumMediators</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> *</type>
+          <declname>physicalProcess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="472" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="472" bodyend="474"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a4d0abd63cc729da2bc947f4f0f949836" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+        <definition>PhysicalForce * semsim::PhysicalForce_new</definition>
+        <argsstring>(Editor *editor_ptr)</argsstring>
+        <name>PhysicalForce_new</name>
+        <param>
+          <type><ref refid="classsemsim_1_1Editor" kindref="compound">Editor</ref> *</type>
+          <declname>editor_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="480" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="480" bodyend="482"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1aac62b5bbf0f3b47f504b0bbd58570be5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::PhysicalForce_delete</definition>
+        <argsstring>(PhysicalForce *physicalForce)</argsstring>
+        <name>PhysicalForce_delete</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physicalForce</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="484" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="484" bodyend="487"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a3e0ac5bcb4eba5bed6b18b0ff134ba3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::PhysicalForce_freeAll</definition>
+        <argsstring>(PhysicalForce *physical_force_ptr)</argsstring>
+        <name>PhysicalForce_freeAll</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physical_force_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="489" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="489" bodyend="492"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1af4c0c48c6d9f274af26a351e1d664dc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+        <definition>PhysicalForce * semsim::PhysicalForce_setAbout</definition>
+        <argsstring>(PhysicalForce *physical_force_ptr, const char *about)</argsstring>
+        <name>PhysicalForce_setAbout</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physical_force_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>about</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="495" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="495" bodyend="498"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1ad4a561ff51aad69f8250984b0b16b90e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+        <definition>PhysicalForce * semsim::PhysicalForce_addSource</definition>
+        <argsstring>(PhysicalForce *physical_force_ptr, const char *source_metaid, double multiplier, const char *physical_entity_reference)</argsstring>
+        <name>PhysicalForce_addSource</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physical_force_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>source_metaid</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_entity_reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="500" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="500" bodyend="507"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1affaa0b9f8d8cf897ef3b3d925448abb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+        <definition>PhysicalForce * semsim::PhysicalForce_addSink</definition>
+        <argsstring>(PhysicalForce *physical_force_ptr, const char *sink_metaid, double multiplier, const char *physical_entity_reference)</argsstring>
+        <name>PhysicalForce_addSink</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physical_force_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>sink_metaid</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_entity_reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="509" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="509" bodyend="514"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1ad0a4a816581343efe50821468d021443" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+        <definition>PhysicalForce * semsim::PhysicalForce_setPhysicalProperty</definition>
+        <argsstring>(PhysicalForce *physical_force_ptr, const char *physical_property)</argsstring>
+        <name>PhysicalForce_setPhysicalProperty</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physical_force_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>physical_property</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="516" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="516" bodyend="519"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a77c44b60741789c41d502a814398baec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int semsim::PhysicalForce_getNumSources</definition>
+        <argsstring>(PhysicalForce *physicalForce)</argsstring>
+        <name>PhysicalForce_getNumSources</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physicalForce</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="521" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="521" bodyend="523"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a764d2b87c7ffb9e2a33a325794a5124f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int semsim::PhysicalForce_getNumSinks</definition>
+        <argsstring>(PhysicalForce *physicalForce)</argsstring>
+        <name>PhysicalForce_getNumSinks</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physicalForce</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="525" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="525" bodyend="527"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a8cb366e616b6ff4614842a9b777f7fa3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::PhysicalForce_str</definition>
+        <argsstring>(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri)</argsstring>
+        <name>PhysicalForce_str</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physical_force_ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>base_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="529" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="529" bodyend="534"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1a6024b7996a60da79f7e1eb2571f32c56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::PhysicalForce_getAbout</definition>
+        <argsstring>(PhysicalForce *physical_force_ptr)</argsstring>
+        <name>PhysicalForce_getAbout</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physical_force_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="537" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="537" bodyend="542"/>
+      </memberdef>
+      <memberdef kind="function" id="SemsimCApi_8cpp_1ab82d6233370dced6440bcad6f19ffad3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * semsim::PhysicalForce_getPhysicalProperty</definition>
+        <argsstring>(PhysicalForce *physical_force_ptr)</argsstring>
+        <name>PhysicalForce_getPhysicalProperty</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> *</type>
+          <declname>physical_force_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/SemsimCApi.cpp" line="545" column="1" bodyfile="src/semsim/SemsimCApi.cpp" bodystart="545" bodyend="550"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/semsim/AnnotationType.h" line="12" column="1"/>
+  </compounddef>
+</doxygen>

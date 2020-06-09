@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classredland_1_1LibrdfModel" kind="class" language="C++" prot="public">
+    <compoundname>redland::LibrdfModel</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classredland_1_1LibrdfModel_1a909fe2f497040585a33d6789aa6d3f20" prot="private" static="no" mutable="no">
+        <type>librdf_model *</type>
+        <definition>librdf_model* redland::LibrdfModel::model_</definition>
+        <argsstring></argsstring>
+        <name>model_</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="24" column="1" bodyfile="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1a5a35c032585e38b1d41bc18f057128c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>redland::LibrdfModel::LibrdfModel</definition>
+        <argsstring>(const LibrdfModel &amp;model)=delete</argsstring>
+        <name>LibrdfModel</name>
+        <param>
+          <type>const <ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
+          <declname>model</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="29" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1a583e0eaecfe167ccbbeac5d768bcd644" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>redland::LibrdfModel::LibrdfModel</definition>
+        <argsstring>(LibrdfModel &amp;&amp;model) noexcept</argsstring>
+        <name>LibrdfModel</name>
+        <param>
+          <type><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;&amp;</type>
+          <declname>model</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="31" column="1" bodyfile="src/redland/RedlandAPIWrapper/src/LibrdfModel.cpp" bodystart="24" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1a7bd07324b31fa8eb8f5f2e51b15044fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
+        <definition>LibrdfModel&amp; redland::LibrdfModel::operator=</definition>
+        <argsstring>(const LibrdfModel &amp;model)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
+          <declname>model</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="33" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1a9007acfb92943e018d20d6985c811033" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
+        <definition>LibrdfModel &amp; redland::LibrdfModel::operator=</definition>
+        <argsstring>(LibrdfModel &amp;&amp;model) noexcept</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;&amp;</type>
+          <declname>model</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="35" column="1" bodyfile="src/redland/RedlandAPIWrapper/src/LibrdfModel.cpp" bodystart="33" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1ab3b289866cce16919b65da7cae01c97d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>redland::LibrdfModel::LibrdfModel</definition>
+        <argsstring>()=default</argsstring>
+        <name>LibrdfModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="37" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1a8b7d3063e030ce8613dcd6def7463a5a" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>redland::LibrdfModel::LibrdfModel</definition>
+        <argsstring>(librdf_model *model)</argsstring>
+        <name>LibrdfModel</name>
+        <param>
+          <type>librdf_model *</type>
+          <declname>model</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="39" column="1" bodyfile="src/redland/RedlandAPIWrapper/src/LibrdfModel.cpp" bodystart="16" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1a355e16664fa50a8a3085f4070347106f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>redland::LibrdfModel::LibrdfModel</definition>
+        <argsstring>(librdf_storage *storage, const char *options=nullptr)</argsstring>
+        <name>LibrdfModel</name>
+        <param>
+          <type>librdf_storage *</type>
+          <declname>storage</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>options</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="46" column="1" bodyfile="src/redland/RedlandAPIWrapper/src/LibrdfModel.cpp" bodystart="51" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1ae1b996f1785adfe9b4a1824a73643248" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>librdf_model *</type>
+        <definition>librdf_model * redland::LibrdfModel::get</definition>
+        <argsstring>() const</argsstring>
+        <name>get</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="48" column="1" bodyfile="src/redland/RedlandAPIWrapper/src/LibrdfModel.cpp" bodystart="63" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1a29e79bafe40a64141ab7edf8ecbbbdd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classredland_1_1LibrdfQueryResults" kindref="compound">LibrdfQueryResults</ref></type>
+        <definition>LibrdfQueryResults redland::LibrdfModel::query</definition>
+        <argsstring>(LibrdfQuery query)</argsstring>
+        <name>query</name>
+        <param>
+          <type><ref refid="classredland_1_1LibrdfQuery" kindref="compound">LibrdfQuery</ref></type>
+          <declname>query</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="50" column="1" bodyfile="src/redland/RedlandAPIWrapper/src/LibrdfModel.cpp" bodystart="67" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1a646ed92896c4030de31c9e17b881bd2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classredland_1_1LibrdfStream" kindref="compound">LibrdfStream</ref></type>
+        <definition>LibrdfStream redland::LibrdfModel::toStream</definition>
+        <argsstring>()</argsstring>
+        <name>toStream</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="52" column="1" bodyfile="src/redland/RedlandAPIWrapper/src/LibrdfModel.cpp" bodystart="76" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1a3067eb5bae1353ab5c86f135c4b401ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int redland::LibrdfModel::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="54" column="1" bodyfile="src/redland/RedlandAPIWrapper/src/LibrdfModel.cpp" bodystart="72" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1a2b565a7d705e24d6163c068a40040087" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::LibrdfModel::addStatement</definition>
+        <argsstring>(const LibrdfStatement &amp;statement) const</argsstring>
+        <name>addStatement</name>
+        <param>
+          <type>const <ref refid="classredland_1_1LibrdfStatement" kindref="compound">LibrdfStatement</ref> &amp;</type>
+          <declname>statement</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="56" column="1" bodyfile="src/redland/RedlandAPIWrapper/src/LibrdfModel.cpp" bodystart="55" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1a643c3e3d3363f4f06330ede73dc19514" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::LibrdfModel::addStatement</definition>
+        <argsstring>(librdf_statement *statement) const</argsstring>
+        <name>addStatement</name>
+        <param>
+          <type>librdf_statement *</type>
+          <declname>statement</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="58" column="1" bodyfile="src/redland/RedlandAPIWrapper/src/LibrdfModel.cpp" bodystart="59" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1ad145b8f46be49434bb8bd0b90a904770" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::LibrdfModel::freeModel</definition>
+        <argsstring>()</argsstring>
+        <name>freeModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="60" column="1" bodyfile="src/redland/RedlandAPIWrapper/src/LibrdfModel.cpp" bodystart="10" bodyend="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" line="22" column="1" bodyfile="src/redland/RedlandAPIWrapper/src/LibrdfModel.h" bodystart="22" bodyend="61"/>
+    <listofallmembers>
+      <member refid="classredland_1_1LibrdfModel_1a2b565a7d705e24d6163c068a40040087" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>addStatement</name></member>
+      <member refid="classredland_1_1LibrdfModel_1a643c3e3d3363f4f06330ede73dc19514" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>addStatement</name></member>
+      <member refid="classredland_1_1LibrdfModel_1ad145b8f46be49434bb8bd0b90a904770" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>freeModel</name></member>
+      <member refid="classredland_1_1LibrdfModel_1ae1b996f1785adfe9b4a1824a73643248" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>get</name></member>
+      <member refid="classredland_1_1LibrdfModel_1a5a35c032585e38b1d41bc18f057128c1" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>LibrdfModel</name></member>
+      <member refid="classredland_1_1LibrdfModel_1a583e0eaecfe167ccbbeac5d768bcd644" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>LibrdfModel</name></member>
+      <member refid="classredland_1_1LibrdfModel_1ab3b289866cce16919b65da7cae01c97d" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>LibrdfModel</name></member>
+      <member refid="classredland_1_1LibrdfModel_1a8b7d3063e030ce8613dcd6def7463a5a" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>LibrdfModel</name></member>
+      <member refid="classredland_1_1LibrdfModel_1a355e16664fa50a8a3085f4070347106f" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>LibrdfModel</name></member>
+      <member refid="classredland_1_1LibrdfModel_1a909fe2f497040585a33d6789aa6d3f20" prot="private" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>model_</name></member>
+      <member refid="classredland_1_1LibrdfModel_1a7bd07324b31fa8eb8f5f2e51b15044fc" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>operator=</name></member>
+      <member refid="classredland_1_1LibrdfModel_1a9007acfb92943e018d20d6985c811033" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>operator=</name></member>
+      <member refid="classredland_1_1LibrdfModel_1a29e79bafe40a64141ab7edf8ecbbbdd3" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>query</name></member>
+      <member refid="classredland_1_1LibrdfModel_1a3067eb5bae1353ab5c86f135c4b401ad" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>size</name></member>
+      <member refid="classredland_1_1LibrdfModel_1a646ed92896c4030de31c9e17b881bd2a" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>toStream</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,363 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classsemsim_1_1PhysicalEntity" kind="class" language="C++" prot="public">
+    <compoundname>semsim::PhysicalEntity</compoundname>
+    <basecompoundref refid="classsemsim_1_1PhysicalPhenomenon" prot="public" virt="non-virtual">semsim::PhysicalPhenomenon</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classsemsim_1_1PhysicalEntity_1a50b7b738e6103ce26ec6324dadd306ba" prot="private" static="no" mutable="no">
+        <type><ref refid="classsemsim_1_1Resource" kindref="compound">Resource</ref></type>
+        <definition>Resource semsim::PhysicalEntity::identity_resource_</definition>
+        <argsstring></argsstring>
+        <name>identity_resource_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="28" column="1" bodyfile="src/semsim/PhysicalEntity.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsemsim_1_1PhysicalEntity_1a5dfa4b746aa4ed9d806fc26c6c295a10" prot="private" static="no" mutable="no">
+        <type>Resources</type>
+        <definition>Resources semsim::PhysicalEntity::location_resources</definition>
+        <argsstring></argsstring>
+        <name>location_resources</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="29" column="1" bodyfile="src/semsim/PhysicalEntity.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsemsim_1_1PhysicalEntity_1aaa300e62b341dbe6d8406a4d3c435261" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string semsim::PhysicalEntity::resource</definition>
+        <argsstring></argsstring>
+        <name>resource</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="30" column="1" bodyfile="src/semsim/PhysicalEntity.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsemsim_1_1PhysicalEntity_1abd5cb466c777f82252b1d6d045e9eb9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::PhysicalEntity::PhysicalEntity</definition>
+        <argsstring>()=default</argsstring>
+        <name>PhysicalEntity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="34" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalEntity_1a38bf3915fbd86b2adb9e9779301a94b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::PhysicalEntity::PhysicalEntity</definition>
+        <argsstring>(librdf_model *model, Subject about, PhysicalPropertyResource physicalProperty, Resource is, Resources is_part_of)</argsstring>
+        <name>PhysicalEntity</name>
+        <param>
+          <type>librdf_model *</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type><ref refid="classsemsim_1_1Subject" kindref="compound">Subject</ref></type>
+          <declname>about</declname>
+        </param>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalPropertyResource" kindref="compound">PhysicalPropertyResource</ref></type>
+          <declname>physicalProperty</declname>
+        </param>
+        <param>
+          <type><ref refid="classsemsim_1_1Resource" kindref="compound">Resource</ref></type>
+          <declname>is</declname>
+        </param>
+        <param>
+          <type>Resources</type>
+          <declname>is_part_of</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="49" column="1" bodyfile="src/semsim/PhysicalEntity.cpp" bodystart="11" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalEntity_1a0a5b5b4bf685ee7075aa2b9dd7696a68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::PhysicalEntity::~PhysicalEntity</definition>
+        <argsstring>()=default</argsstring>
+        <name>~PhysicalEntity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="53" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalEntity_1a3978fc7ce8633d583965a858ee99a418" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void semsim::PhysicalEntity::free</definition>
+        <argsstring>() override</argsstring>
+        <name>free</name>
+        <reimplements refid="classsemsim_1_1PhysicalPhenomenon_1aeaf66bcc989cb6b736a8611903ab7b74">free</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="62" column="1" bodyfile="src/semsim/PhysicalEntity.cpp" bodystart="20" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalEntity_1a1df028fe0ee3f7f58e2eb7ea28d118ec" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::PhysicalEntity::PhysicalEntity</definition>
+        <argsstring>(librdf_model *model)</argsstring>
+        <name>PhysicalEntity</name>
+        <param>
+          <type>librdf_model *</type>
+          <declname>model</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="74" column="1" bodyfile="src/semsim/PhysicalEntity.cpp" bodystart="43" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalEntity_1a32f4240e1ab47f422e704f97c669e824" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classsemsim_1_1Triples" kindref="compound">Triples</ref></type>
+        <definition>Triples semsim::PhysicalEntity::toTriples</definition>
+        <argsstring>() override</argsstring>
+        <name>toTriples</name>
+        <reimplements refid="classsemsim_1_1PhysicalPhenomenon_1ac6857e2bf2a550c3f52037d3e74191c9">toTriples</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="87" column="1" bodyfile="src/semsim/PhysicalEntity.cpp" bodystart="86" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalEntity_1a5940a4984dbd8fb6cef55de5cd36a9b4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classsemsim_1_1Resource" kindref="compound">Resource</ref> &amp;</type>
+        <definition>const Resource &amp; semsim::PhysicalEntity::getIdentityResource</definition>
+        <argsstring>() const</argsstring>
+        <name>getIdentityResource</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="94" column="1" bodyfile="src/semsim/PhysicalEntity.cpp" bodystart="78" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalEntity_1aa2aeec22fc0f703b2e83fcfd59b25f29" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Resources &amp;</type>
+        <definition>const Resources &amp; semsim::PhysicalEntity::getLocationResources</definition>
+        <argsstring>() const</argsstring>
+        <name>getLocationResources</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="101" column="1" bodyfile="src/semsim/PhysicalEntity.cpp" bodystart="82" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalEntity_1aa5b88988a264a59b174452ec49f824ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
+        <definition>PhysicalEntity &amp; semsim::PhysicalEntity::setAbout</definition>
+        <argsstring>(std::string metaid)</argsstring>
+        <name>setAbout</name>
+        <param>
+          <type>std::string</type>
+          <declname>metaid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="115" column="1" bodyfile="src/semsim/PhysicalEntity.cpp" bodystart="47" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalEntity_1ae2408ca531d0755ff28ad1e4f062023d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
+        <definition>PhysicalEntity &amp; semsim::PhysicalEntity::setPhysicalProperty</definition>
+        <argsstring>(const std::string &amp;physicalProperty)</argsstring>
+        <name>setPhysicalProperty</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>physicalProperty</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="125" column="1" bodyfile="src/semsim/PhysicalEntity.cpp" bodystart="58" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalEntity_1a4aa4c32d99568eb43ec97d8371ded354" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
+        <definition>PhysicalEntity &amp; semsim::PhysicalEntity::setPhysicalProperty</definition>
+        <argsstring>(PhysicalPropertyResource physicalProperty)</argsstring>
+        <name>setPhysicalProperty</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalPropertyResource" kindref="compound">PhysicalPropertyResource</ref></type>
+          <declname>physicalProperty</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="136" column="1" bodyfile="src/semsim/PhysicalEntity.cpp" bodystart="53" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalEntity_1ab3e7a2142a90e18150323268acc92217" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
+        <definition>PhysicalEntity &amp; semsim::PhysicalEntity::setIdentity</definition>
+        <argsstring>(std::string resource)</argsstring>
+        <name>setIdentity</name>
+        <param>
+          <type>std::string</type>
+          <declname>resource</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="147" column="1" bodyfile="src/semsim/PhysicalEntity.cpp" bodystart="64" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalEntity_1a1b35c526b4265b920d9d483842e0150d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
+        <definition>PhysicalEntity &amp; semsim::PhysicalEntity::addLocation</definition>
+        <argsstring>(std::string where)</argsstring>
+        <name>addLocation</name>
+        <param>
+          <type>std::string</type>
+          <declname>where</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="165" column="1" bodyfile="src/semsim/PhysicalEntity.cpp" bodystart="71" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalEntity_1a8db27f0206e3d827f5b8866459a771aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int semsim::PhysicalEntity::getNumLocations</definition>
+        <argsstring>() const</argsstring>
+        <name>getNumLocations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalEntity.h" line="171" column="1" bodyfile="src/semsim/PhysicalEntity.cpp" bodystart="161" bodyend="163"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="117">
+        <label>semsim::PhysicalPhenomenon</label>
+        <link refid="classsemsim_1_1PhysicalPhenomenon"/>
+      </node>
+      <node id="116">
+        <label>semsim::PhysicalEntity</label>
+        <link refid="classsemsim_1_1PhysicalEntity"/>
+        <childnode refid="117" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="120">
+        <label>semsim::Subject</label>
+        <link refid="classsemsim_1_1Subject"/>
+      </node>
+      <node id="119">
+        <label>semsim::PhysicalPhenomenon</label>
+        <link refid="classsemsim_1_1PhysicalPhenomenon"/>
+        <childnode refid="120" relation="usage">
+          <edgelabel>about</edgelabel>
+        </childnode>
+        <childnode refid="121" relation="usage">
+          <edgelabel>physical_property_</edgelabel>
+        </childnode>
+      </node>
+      <node id="118">
+        <label>semsim::PhysicalEntity</label>
+        <link refid="classsemsim_1_1PhysicalEntity"/>
+        <childnode refid="119" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="122">
+        <label>semsim::Resource</label>
+        <link refid="classsemsim_1_1Resource"/>
+      </node>
+      <node id="121">
+        <label>semsim::PhysicalPropertyResource</label>
+        <link refid="classsemsim_1_1PhysicalPropertyResource"/>
+        <childnode refid="122" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/semsim/PhysicalEntity.h" line="26" column="1" bodyfile="src/semsim/PhysicalEntity.h" bodystart="26" bodyend="172"/>
+    <listofallmembers>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1aa43a5f6719a6d44d4b96081b2f2622fe" prot="protected" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>about</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1a1b35c526b4265b920d9d483842e0150d" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>addLocation</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1a3978fc7ce8633d583965a858ee99a418" prot="public" virt="virtual"><scope>semsim::PhysicalEntity</scope><name>free</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a930e9d0f75ec3a7bdbcb2dbce1a47716" prot="protected" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>generateMetaId</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1af3a680b3bacba8733eab51207fa8e223" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>getAbout</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1a5940a4984dbd8fb6cef55de5cd36a9b4" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>getIdentityResource</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1aa2aeec22fc0f703b2e83fcfd59b25f29" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>getLocationResources</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1a8db27f0206e3d827f5b8866459a771aa" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>getNumLocations</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1ac0b9bb899a6bd02275b5b4d106f875ea" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>getPhysicalProperty</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1ae56630b175214b2196da1bf47a3c47c0" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>getSubject</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a3fc27dfe9bedd3055c575e134c537d6e" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>getType</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1a50b7b738e6103ce26ec6324dadd306ba" prot="private" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>identity_resource_</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1a5dfa4b746aa4ed9d806fc26c6c295a10" prot="private" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>location_resources</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a8a9e00b125ff439cd257f5c58dff68db" prot="protected" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>model_</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a9880b73feb880ebde54cb43dcd10645f" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>operator=</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a173a2f18b7808fbdcf21317bc80088b5" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>operator=</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a264d752c356d2c6011da6d3cd1494418" prot="protected" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>physical_property_</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1abd5cb466c777f82252b1d6d045e9eb9e" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>PhysicalEntity</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1a38bf3915fbd86b2adb9e9779301a94b3" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>PhysicalEntity</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1a1df028fe0ee3f7f58e2eb7ea28d118ec" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>PhysicalEntity</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1afaac9a2ba2c452e9ae4f8e6737132166" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1ae0eb39856d1d847118dc14d8f6cdbe88" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a5c96bf803ad7ed4b675f58ec3b28ae83" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a27f402b88ef569543730317fc9662c4c" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1aab6825374a350a0fa83c4a54704ebfbc" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1aaa300e62b341dbe6d8406a4d3c435261" prot="private" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>resource</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1aa5b88988a264a59b174452ec49f824ba" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>setAbout</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1ab3e7a2142a90e18150323268acc92217" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>setIdentity</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1ae2408ca531d0755ff28ad1e4f062023d" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>setPhysicalProperty</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1a4aa4c32d99568eb43ec97d8371ded354" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>setPhysicalProperty</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1a32f4240e1ab47f422e704f97c669e824" prot="public" virt="virtual"><scope>semsim::PhysicalEntity</scope><name>toTriples</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1ad18e38168bcec1925e6bd9ed08494614" prot="protected" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>type_</name></member>
+      <member refid="classsemsim_1_1PhysicalEntity_1a0a5b5b4bf685ee7075aa2b9dd7696a68" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>~PhysicalEntity</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a7df3a2d187ae80aead291641ef578dcc" prot="public" virt="non-virtual"><scope>semsim::PhysicalEntity</scope><name>~PhysicalPhenomenon</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
