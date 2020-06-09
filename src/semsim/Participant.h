@@ -18,7 +18,6 @@ using namespace redland;
 
 namespace semsim {
 
-    typedef std::unique_ptr<Predicate, Predicate::deleter> UniquePredicatePtrWithDeleter;
 
     class Participant {
 

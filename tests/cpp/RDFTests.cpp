@@ -71,17 +71,31 @@ TEST_F(RDFTests, TestToString) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-//TEST_F(RDFTests, TestToEditorPtr) {
-//    RDF rdf = RDF::fromString(samples.rdf_xml_example7, "rdfxml");
-//    Editor* editor = rdf.toEditorPtr(samples.singular_annotation4);
-//
-//}
+TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings){
+    std::string rdf_string1 = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                              "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                              "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                              "   xml:base=\"file://./Annotation.rdf\">\n"
+                              "  <rdf:Description rdf:about=\"SemsimMetaid0000\">\n"
+                              "    <bqbiol:is rdf:resource=\"https://identifiers.org/fma/FMA_66836\"/>\n"
+                              "  </rdf:Description>\n"
+                              "</rdf:RDF>\n";
+    std::string rdf_string2 = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                              "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                              "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                              "   xml:base=\"file://./Annotation.rdf\">\n"
+                              "  <rdf:Description rdf:about=\"SemsimMetaid0000\">\n"
+                              "    <bqbiol:is rdf:resource=\"https://identifiers.org/fma/FMA_66835\"/>\n"
+                              "  </rdf:Description>\n"
+                              "</rdf:RDF>\n";
 
-//TEST_F(RDFTesats, TestFreeWorldAndNewRDF) {
-//    RDF rdf1;
-//    RDF rdf2;
-//}
+    RDF rdf;// = RDF::fromString(rdf_string1);
+    rdf.fromString(rdf_string2);
+    std::cout << rdf.toString() << std::endl;
 
+
+
+}
 
 
 

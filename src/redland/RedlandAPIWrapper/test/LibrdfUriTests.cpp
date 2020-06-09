@@ -7,6 +7,7 @@
 #include "LibrdfUri.h"
 //#include "redland/SemsimUtils.h"
 #include "raptor2.h"
+#include <experimental/filesystem>
 
 using namespace redland;
 
@@ -59,5 +60,53 @@ TEST_F(LibrdfUriTests, TestIsEmpty2) {
     LibrdfUri uri((std::string()));
     ASSERT_TRUE(uri.isNull());
 }
+
+TEST_F(LibrdfUriTests, TestFromFilename) {
+    LibrdfUri uri = LibrdfUri::fromFilename("./local_filename");
+    bool contains_file_prefix = false;
+    bool contains_local_filename = false;
+    if (uri.str().find("file://") != std::string::npos) {
+        contains_file_prefix = true;
+    }
+    if (uri.str().find("local_filename") != std::string::npos) {
+        contains_local_filename = true;
+    }
+    ASSERT_TRUE((contains_local_filename && contains_file_prefix));
+    uri.freeUri();
+}
+
+TEST_F(LibrdfUriTests, TestConcatonate) {
+    LibrdfUri uri = LibrdfUri("./local_filename");
+    LibrdfUri uri2 = uri.concatonate("new_uri");
+    std::string expected = "./local_filenamenew_uri";
+    std::string actual = uri2.str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    uri.freeUri();
+    uri2.freeUri();
+}
+
+TEST_F(LibrdfUriTests, TestIsFileUri) {
+    LibrdfUri uri = LibrdfUri::fromFilename("./local_filename");
+    ASSERT_TRUE(uri.isFileUri());
+    uri.freeUri();
+}
+
+TEST_F(LibrdfUriTests, TestEqualityOperator) {
+    LibrdfUri uri1 = LibrdfUri::fromFilename("./local_filename");
+    LibrdfUri uri2 = LibrdfUri::fromFilename("./local_filename");
+    ASSERT_TRUE(uri1 == uri2);
+    uri1.freeUri();
+    uri2.freeUri();
+}
+
+TEST_F(LibrdfUriTests, TestToFilenameuri) {
+    LibrdfUri uri1 = LibrdfUri::fromFilename("./local_filename.rdf");
+    std::string actual = uri1.toFilenameString();
+    std::string expected = "/mnt/d/libsemsim/cmake-build-debug-wsl2/src/redland/RedlandAPIWrapper/test/local_filename.rdf";
+    ASSERT_STREQ(actual.c_str(), expected.c_str());
+    uri1.freeUri();
+}
+
+
 
 

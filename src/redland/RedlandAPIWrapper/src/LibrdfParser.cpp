@@ -1,4 +1,6 @@
 #include "LibrdfParser.h"
+
+#include <utility>
 #include "LibrdfModel.h"
 
 namespace redland {
@@ -12,7 +14,7 @@ namespace redland {
             parser_(parser) {}
 
     LibrdfParser::LibrdfParser(std::string format, std::string mime_type, std::string type_uri) :
-            format_(format), mime_type_(mime_type) {
+            format_(std::move(format)), mime_type_(std::move(mime_type)) {
         setTypeUri(type_uri);
         validateParserName();
         parser_ = makeParser();
@@ -82,7 +84,7 @@ namespace redland {
     }
 
 
-    void LibrdfParser::setTypeUri(std::string type_uri) {
+    void LibrdfParser::setTypeUri(const std::string& type_uri) {
         if (type_uri_) {
             librdf_free_uri(type_uri_);
             type_uri_ = nullptr;
@@ -154,7 +156,20 @@ namespace redland {
                 parser_, filename_uri.get(), base_uri.get(), model.get());
     }
 
-    void LibrdfParser::validateParserName() {
+        void LibrdfParser::parseFilenameUriIntoModel(const std::string& filename_uri, const LibrdfModel &model) const{
+//        librdf_new_uri_from_filename()
+        LibrdfUri filename_uri_ = LibrdfUri::fromFilename(filename_uri);
+        LibrdfUri base_uri = LibrdfUri::fromFilename(filename_uri);
+
+
+        int x = librdf_uri_is_file_uri(base_uri.get());
+//        std::cout << "librdf_uri_is_file_uri: x " << x << std::endl;
+//        std::cout << "librdf_uri_is_file_uri: y " << y << std::endl;
+//        librdf_parser_parse_into_model(
+//                parser_, filename_uri_.get(), base_uri.get(), model.get());
+    }
+
+    void LibrdfParser::validateParserName() const {
         std::vector<std::string> v = {"rdfxml",
                                       "ntriples",
                                       "turtle",
@@ -187,7 +202,7 @@ namespace redland {
         }
     }
 
-    std::vector<std::string> LibrdfParser::getSeenNamespaces() {
+    std::vector<std::string> LibrdfParser::getSeenNamespaces() const {
         int number_of_prefixes_seen = numNamespacesSeen();
         std::vector<std::string> namespaces;
         for (int i = 0; i < number_of_prefixes_seen; i++) {
@@ -204,7 +219,7 @@ namespace redland {
             if (type_uri_ != nullptr) {
                 librdf_free_uri(type_uri_);
             }
-            type_uri_ = std::move(parser.type_uri_);
+            type_uri_ = parser.type_uri_;
             parser.type_uri_ = nullptr;
         }
         if (parser.parser_ != nullptr) {
@@ -213,7 +228,7 @@ namespace redland {
                 // forgetting to free the original parser
                 librdf_free_parser(parser_);
             }
-            parser_ = std::move(parser.parser_);
+            parser_ = parser.parser_;
             parser.parser_ = nullptr;
         }
 
@@ -227,7 +242,7 @@ namespace redland {
                 if (type_uri_ != nullptr) {
                     librdf_free_uri(type_uri_);
                 }
-                type_uri_ = std::move(parser.type_uri_);
+                type_uri_ = parser.type_uri_;
                 parser.type_uri_ = nullptr;
             }
             if (parser.parser_ != nullptr) {
@@ -236,7 +251,7 @@ namespace redland {
                 if (parser_ != nullptr) {
                     librdf_free_parser(parser_);
                 }
-                parser_ = std::move(parser.parser_);
+                parser_ = parser.parser_;
                 parser.parser_ = nullptr;
             }
         }

@@ -1,10 +1,13 @@
 //
 // Created by Ciaran on 5/17/2020.
 //
+#include <fstream>
 #include "gtest/gtest.h"
 #include "World.h"
 #include "LibrdfParser.h"
 #include "iostream"
+#include <experimental/filesystem>
+
 //#include "AnnotationSamples.h"
 
 using namespace redland;
@@ -71,16 +74,48 @@ TEST_F(LibrdfParserTests, TestGetMimeType2) {
     ASSERT_EQ("application/rdf+xml", parser.getMimeType());
 }
 
-//TEST_F(LibrdfParserTests, TestParseSomethingAndGetNamespace) {
-//    LibrdfStorage storage;
-//    LibrdfModel model(storage);
-//    LibrdfParser parser1 = LibrdfParser("rdfxml");
-//    LibrdfUri base("./base");
-//    parser1.parseString(samples.singular_annotation1, model, base);
-//    std::string ns = parser1.getNamespacesSeenUri(0);
-//    std::string expected = "http://biomodels.net/biology-qualifiers/";
-//    ASSERT_STREQ(ns.c_str(), expected.c_str());
-//}
+
+TEST_F(LibrdfParserTests, TetsParseFromAFile) {
+    LibrdfStorage storage;
+    LibrdfModel model(storage.get());
+    std::string rdf_string = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                             "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                             "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                             "   xml:base=\"file://./Annotation.rdf\">\n"
+                             "  <rdf:Description rdf:about=\"SemsimMetaid0000\">\n"
+                             "    <bqbiol:is rdf:resource=\"https://identifiers.org/fma/FMA_66835\"/>\n"
+                             "  </rdf:Description>\n"
+                             "</rdf:RDF>\n";
+    std::string fname = std::experimental::filesystem::current_path().string() + "/example_rdf.rdf";
+    std::cout << fname << std::endl;
+
+    std::ofstream file(fname);
+    if (file.is_open()) {
+        file << rdf_string << std::endl;
+        file.flush();
+        file.close();
+    } else {
+        throw std::logic_error("File didn't open for writing");
+    }
+
+    LibrdfParser parser("rdfxml");
+    parser.parseFilenameUriIntoModel(fname, model);
+
+    int actual = model.size();
+    int expected = 1;
+    ASSERT_EQ(expected, actual);
+
+    // clean up file
+    int failed = std::remove(fname.c_str());
+    if (failed){
+        throw std::logic_error("didn't remove file");
+    }
+    storage.freeStorage();
+    model.freeModel();
+    /* parser has its own destructor */
+
+}
+
 
 
 

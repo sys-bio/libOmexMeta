@@ -47,9 +47,9 @@ namespace semsim {
 
         RDF(RDF &&rdf) noexcept;
 
-        RDF &operator=(const RDF &rdf) noexcept = delete;
+        RDF &operator=(const RDF &rdf) = delete;
 
-        RDF &operator=(RDF &&rdf);
+        RDF &operator=(RDF &&rdf) noexcept;
 
         int size() const;
 
@@ -60,6 +60,9 @@ namespace semsim {
         static RDF fromString(const std::string &str,
                               const std::string &format = "guess",
                               const std::string &base_uri = std::string());
+
+        RDF addFromString(const std::string &str,
+                       const std::string &format = "guess");
 
         /*
          * @brief non static version of RDF::fromString that takes
