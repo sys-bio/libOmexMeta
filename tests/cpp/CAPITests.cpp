@@ -11,6 +11,8 @@
 #include "semsim/RDF.h"
 #include "SBMLFactory.h"
 #include "semsim/SemsimXmlAssistant.h"
+#include <experimental/filesystem>
+#include <fstream>
 
 using namespace semsim;
 
@@ -134,9 +136,9 @@ TEST_F(CAPITests, TestGetMetaID) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML
     );
-    char* actual = Editor_getMetaId(editor_ptr, 0);
+    char *actual = Editor_getMetaId(editor_ptr, 0);
     std::cout << actual << std::endl;
-    const char* expected = "SemsimMetaid0000";
+    const char *expected = "SemsimMetaid0000";
     ASSERT_STREQ(expected, actual);
 
     free(actual);
@@ -167,8 +169,8 @@ TEST_F(CAPITests, TestEditorGetXml) {
             SEMSIM_TYPE_SBML
     );
 
-    char* actual = Editor_getXml(editor_ptr);
-    const char* expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+    char *actual = Editor_getXml(editor_ptr);
+    const char *expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                            "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\">\n"
                            "  <model id=\"TestModelNotAnnotated\" metaid=\"SemsimMetaid0000\">\n"
                            "    <listOfUnitDefinitions>\n"
@@ -795,122 +797,86 @@ TEST_F(CAPITests, TestRDFTwice3) {
     ASSERT_NE(rdf_ptr1->getStorage(), rdf_ptr2->getStorage());
     RDF_delete(rdf_ptr1);
     RDF_delete(rdf_ptr2);
+}
 
+
+TEST_F(CAPITests, RDF_fromString2) {
+    RDF *rdf_ptr = RDF_fromString2(samples.composite_annotation_pf.c_str(), "rdfxml", "RDF_fromStringTest.rdf");
+    int expected = 6;
+    int actual = RDF_size(rdf_ptr);
+    ASSERT_EQ(expected, actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDF_addFromString) {
+    RDF *rdf_ptr = RDF_new();
+    RDF_addFromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml", "RDF_addFromStringTest.rdf");
+    int expected = 1;
+    int actual = RDF_size(rdf_ptr);
+    ASSERT_EQ(expected, actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDF_fromUri) {
+    RDF *rdf_ptr = RDF_fromUri(samples.sbml_url1.c_str(), "rdfxml");
+    int expected = 277;
+    int actual = RDF_size(rdf_ptr);
+    ASSERT_EQ(expected, actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDF_addFromUri) {
+    RDF *rdf_ptr = RDF_new();
+    RDF_addFromUri(rdf_ptr, samples.sbml_url1.c_str(), "rdfxml");
+    int expected = 277;
+    int actual = RDF_size(rdf_ptr);
+    ASSERT_EQ(expected, actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDF_fromFile) {
+    // we can cheat and use C++ to write the file we need - who's counting
+    std::string fname = std::experimental::filesystem::current_path().string() + "/TestParseFromFile.rdf";
+    std::cout << fname << std::endl;
+    std::ofstream f(fname);
+    if (f.is_open()) {
+        f << samples.composite_annotation_pe << std::endl;
+        f.flush();
+        f.close();
+    } else {
+        throw std::logic_error("No file was opened for test");
+    }
+
+    RDF *rdf_ptr = RDF_fromFile(fname.c_str(), "rdfxml");
+    int expected = 4;
+    int actual = RDF_size(rdf_ptr);
+    ASSERT_EQ(expected, actual);
+    std::remove(fname.c_str());
+    RDF_delete(rdf_ptr);
 
 }
 
-//
-//TEST_F(CAPITests, TestAddTwoAnn) {
-//    RDF *rdf_ptr1 = RDF_new();
-//    Editor *editor_ptr1 = rdf_ptr1->toEditorPtr(
-//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-//            SEMSIM_TYPE_SBML
-//    );
-//    // first annotation
-//    SingularAnnotation *annotation1 = SingularAnnotation_new(editor_ptr1);
-//    annotation1 = SingularAnnotation_setAbout(annotation1, "first about");
-//    annotation1 = SingularAnnotation_setPredicate(annotation1, "bqb", "is");
-//    annotation1 = SingularAnnotation_setResourceLiteral(annotation1, "First Literal Resource");
-//    Editor_addSingleAnnotation(editor_ptr1, annotation1);
-//
-//    // second annotation
-//    SingularAnnotation *annotation2 = SingularAnnotation_new(editor_ptr1);
-//    annotation2 = SingularAnnotation_setAbout(annotation2, "Second about");
-//    annotation2 = SingularAnnotation_setPredicate(annotation2, "bqb", "is");
-//    annotation2 = SingularAnnotation_setResourceLiteral(annotation2, "second Literal Resource");
-//    Editor_addSingleAnnotation(editor_ptr1, annotation2);
-//    Editor_toRDF(editor_ptr1);
-//    char *string = RDF_toString(rdf_ptr1, "rdfxml-abbrev", "./Annot.rdf");
-//    std::string observed_string = (const char *) string;
-//
-//
-//    std::cout << observed_string << "\n\n" << observed_string << std::endl;
-//    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-//                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-//                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-//                           "   xml:base=\"file://./Annot.rdf\">\n"
-//                           "  <rdf:Description rdf:about=\"Second about\">\n"
-//                           "    <bqbiol:is rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">second Literal Resource</bqbiol:is>\n"
-//                           "  </rdf:Description>\n"
-//                           "  <rdf:Description rdf:about=\"first about\">\n"
-//                           "    <bqbiol:is rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">First Literal Resource</bqbiol:is>\n"
-//                           "  </rdf:Description>\n"
-//                           "</rdf:RDF>\n";
-//    ASSERT_STREQ(expected.c_str(), observed_string.c_str());
-//
-//
-//    Editor_delete(editor_ptr1);
-//    free(string);
-//    SingularAnnotation_delete(annotation1);
-//    SingularAnnotation_delete(annotation2);
-//}
+TEST_F(CAPITests, RDF_addFromFile) {
+    // we can cheat and use C++ to write the file we need - who's counting
+    std::string fname = std::experimental::filesystem::current_path().string() + "/TestParseFromFile.rdf";
+    std::cout << fname << std::endl;
+    std::ofstream f(fname);
+    if (f.is_open()) {
+        f << samples.composite_annotation_pe << std::endl;
+        f.flush();
+        f.close();
+    } else {
+        throw std::logic_error("No file was opened for test");
+    }
 
-//TEST_F(CAPITests, TestRDFTwic) {
-//    RDF *rdf_ptr1 = RDF_new();
-//    Editor *editor_ptr1 = rdf_ptr1->toEditorPtr(
-//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-//            SEMSIM_TYPE_SBML
-//    );
-//    SingularAnnotation *annotation1 = SingularAnnotation_new(editor_ptr1);
-//    annotation1 = SingularAnnotation_setAbout(annotation1, "first about");
-//    annotation1 = SingularAnnotation_setPredicate(annotation1, "bqb", "is");
-//    annotation1 = SingularAnnotation_setResourceLiteral(annotation1, "First Literal Resource");
-//    Editor_addSingleAnnotation(editor_ptr1, annotation1);
-//    Editor_toRDF(editor_ptr1);
-//    char *string1 = RDF_toString(rdf_ptr1, "rdfxml-abbrev", "./Annot.rdf");
-//    std::string observed_string1 = (const char *) string1;
-//
-//
-////    free_world(World::getWorld());
-//
-//
-//    RDF *rdf_ptr2 = RDF_new();
-//    Editor *editor_ptr2 = rdf_ptr2->toEditorPtr(
-//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-//            SEMSIM_TYPE_SBML
-//    );
-//    SingularAnnotation *annotation2 = SingularAnnotation_new(editor_ptr2);
-//    annotation2 = SingularAnnotation_setAbout(annotation2, "Second about");
-//    annotation2 = SingularAnnotation_setPredicate(annotation2, "bqb", "is");
-//    annotation2 = SingularAnnotation_setResourceLiteral(annotation2, "second Literal Resource");
-//    Editor_addSingleAnnotation(editor_ptr2, annotation2);
-//    Editor_toRDF(editor_ptr2);
-//    char *string2 = RDF_toString(rdf_ptr2, "rdfxml-abbrev", "./Annot.rdf");
-//    std::string observed_string2 = (const char *) string2;
-//
-//
-////    std::cout << observed_string1 << "\n\n" << observed_string2 << std::endl;
-//
-////    ASSERT_STRNE(observed_string1.c_str(), observed_string2.c_str());
-//    std::cout << "rdf_ptr, " << rdf_ptr1 << ", " << rdf_ptr2 << std::endl;
-//    std::cout << "rdf_ptr.getModel, " << rdf_ptr1->getModel() << ", " << rdf_ptr2->getModel() << std::endl;
-//    std::cout << "editor_ptr, " << editor_ptr1 << ", " << editor_ptr2 << std::endl;
-//    std::cout << "annotation, " << annotation1 << ", " << annotation2 << std::endl;
-//    std::cout << "string, " << string1 << ", " << string2 << std::endl;
-//
-//
-//    Editor_delete(editor_ptr1);
-//    free_c_char_star(string1);
-//    SingularAnnotation_delete(annotation1);
-//    
-//    SingularAnnotation_delete(annotation1);
-//
-//
-//    
-//    Editor_delete(editor_ptr2);
-//    free_c_char_star(string2);
-//    SingularAnnotation_delete(annotation2);
-//
-//}
-
-
-
-
-
-
-
-
-
+    RDF *rdf_ptr = RDF_new();
+    RDF_addFromFile(rdf_ptr, fname.c_str(), "rdfxml");
+    int expected = 4;
+    int actual = RDF_size(rdf_ptr);
+    ASSERT_EQ(expected, actual);
+    std::remove(fname.c_str());
+    RDF_delete(rdf_ptr);
+}
 
 
 

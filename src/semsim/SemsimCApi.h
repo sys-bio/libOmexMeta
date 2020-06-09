@@ -66,8 +66,25 @@ namespace semsim {
      * RDF* rdf_ptr = new RDF();
      * RDF_fromString(rdf_ptr, string_annotations, "rdfxml", "string_annotations_base_uri");
      */
+    [[deprecated]]
     void RDF_fromString(RDF *rdf_ptr, const char *str, const char *format = "guess",
                         const char *baseuri = "./Annotations.rdf");
+
+    /*
+     *
+     * @details this method will replace RDF_fromString() when safe to do so.
+     */
+    RDF *RDF_fromString2(const char *str, const char *format, const char *baseuri);
+
+    void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri);
+
+    RDF *RDF_fromUri(const char *uri_string, const char *format);
+
+    RDF *RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
+
+    RDF *RDF_fromFile(const char *filename, const char *format);
+
+    RDF *RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
 
     char *RDF_queryResultsAsStr(semsim::RDF *rdf_ptr, const char *query_str, const char *results_format);
 

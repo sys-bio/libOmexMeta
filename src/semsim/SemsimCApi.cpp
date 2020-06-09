@@ -81,11 +81,43 @@ namespace semsim {
         delete rdf_ptr;
     }
 
-
     void RDF_fromString(RDF *rdf_ptr, const char *str, const char *format, const char *baseuri) {
         RDF::fromString(rdf_ptr, str, format, baseuri);
     }
 
+
+    RDF* RDF_fromString2(const char *str, const char *format, const char *baseuri) {
+        RDF* rdf = RDF_new();
+        rdf->addFromString(str, format, baseuri);
+        return rdf;
+    }
+
+
+    void RDF_addFromString(RDF* rdf_ptr, const char* str, const char* format, const char* base_uri){
+        rdf_ptr->addFromString(str, format, base_uri);
+    }
+
+    RDF* RDF_fromUri(const char* uri_string, const char* format){
+        RDF* rdf = RDF_new();
+        rdf->addFromUri(uri_string, format);
+        return rdf;
+    }
+
+    RDF* RDF_addFromUri(RDF* rdf_ptr, const char* uri_string, const char* format){
+        rdf_ptr->addFromUri(uri_string, format);
+        return rdf_ptr;
+    }
+
+    RDF* RDF_fromFile(const char* filename, const char* format){
+        RDF* rdf = RDF_new();
+        rdf->addFromFile(filename, format);
+        return rdf;
+    }
+
+    RDF* RDF_addFromFile(RDF* rdf_ptr, const char* uri_string, const char* format){
+        rdf_ptr->addFromFile(uri_string, format);
+        return rdf_ptr;
+    }
 
     char *RDF_toString(RDF *rdf_ptr, const char *format, const char *base_uri) {
         // do not return a temporary object:
