@@ -1,0 +1,95 @@
+\hypertarget{classredland_1_1LibrdfStatement}{}\section{redland\+:\+:Librdf\+Statement Class Reference}
+\label{classredland_1_1LibrdfStatement}\index{redland\+::\+Librdf\+Statement@{redland\+::\+Librdf\+Statement}}
+Inheritance diagram for redland\+:\+:Librdf\+Statement\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classredland_1_1LibrdfStatement}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_ae7f7e27b7a502070195103268407243a}\label{classredland_1_1LibrdfStatement_ae7f7e27b7a502070195103268407243a}} 
+{\bfseries Librdf\+Statement} (const \hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node} \&subject, const \hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node} \&predicate, const \hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node} \&resource)
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a6b655a56f37dbe95fec840a0a1f0ed53}\label{classredland_1_1LibrdfStatement_a6b655a56f37dbe95fec840a0a1f0ed53}} 
+librdf\+\_\+statement $\ast$ {\bfseries get} () const
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_abcf022b8e24a74282e1d059fdf54d3fe}\label{classredland_1_1LibrdfStatement_abcf022b8e24a74282e1d059fdf54d3fe}} 
+librdf\+\_\+node $\ast$ {\bfseries get\+Subject} () const
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a5aae51ac0994552a13f2c9b90bec63d0}\label{classredland_1_1LibrdfStatement_a5aae51ac0994552a13f2c9b90bec63d0}} 
+librdf\+\_\+node $\ast$ {\bfseries get\+Predicate} () const
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_aa763688f20b712ddc655afe405d7691a}\label{classredland_1_1LibrdfStatement_aa763688f20b712ddc655afe405d7691a}} 
+librdf\+\_\+node $\ast$ {\bfseries get\+Resource} () const
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a6feed51cdebe7c4f2430fcba0ae17f37}\label{classredland_1_1LibrdfStatement_a6feed51cdebe7c4f2430fcba0ae17f37}} 
+std\+::string {\bfseries get\+Subject\+Str} () const
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a5dd0d6a2e9fe1bfcf5254aa7928cdfaf}\label{classredland_1_1LibrdfStatement_a5dd0d6a2e9fe1bfcf5254aa7928cdfaf}} 
+std\+::string {\bfseries get\+Predicate\+Str} () const
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_adc21321df7ccf186c262e83a4438e993}\label{classredland_1_1LibrdfStatement_adc21321df7ccf186c262e83a4438e993}} 
+std\+::string {\bfseries get\+Resource\+Str} () const
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a700219b2fed175a96fecfbd905d20ab1}\label{classredland_1_1LibrdfStatement_a700219b2fed175a96fecfbd905d20ab1}} 
+void {\bfseries check\+For\+Null} ()
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a5fa27f77859a4673e991b9e86f84d889}\label{classredland_1_1LibrdfStatement_a5fa27f77859a4673e991b9e86f84d889}} 
+void {\bfseries set\+Subject} (librdf\+\_\+node $\ast$node)
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a8b8fd2999e80bd2912af2430503a557a}\label{classredland_1_1LibrdfStatement_a8b8fd2999e80bd2912af2430503a557a}} 
+void {\bfseries set\+Resource} (librdf\+\_\+node $\ast$node)
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a3306876fb080f3d19fca806142f93f87}\label{classredland_1_1LibrdfStatement_a3306876fb080f3d19fca806142f93f87}} 
+void {\bfseries set\+Predicate} (librdf\+\_\+node $\ast$node)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a9fb66c801d731ffce13e4d1381c49c29}\label{classredland_1_1LibrdfStatement_a9fb66c801d731ffce13e4d1381c49c29}} 
+static \hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement} {\bfseries from\+Raw\+Statement\+Ptr} (librdf\+\_\+statement $\ast$statement)
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a4eceaebc10deea27f4c75f7c8b4cccaf}\label{classredland_1_1LibrdfStatement_a4eceaebc10deea27f4c75f7c8b4cccaf}} 
+static \hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement} {\bfseries from\+Raw\+Node\+Ptrs} (librdf\+\_\+node $\ast$subject, librdf\+\_\+node $\ast$predicate, librdf\+\_\+node $\ast$resource)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_afd63d6425b2130dbe4e76fdee4d7218b}\label{classredland_1_1LibrdfStatement_afd63d6425b2130dbe4e76fdee4d7218b}} 
+void {\bfseries refresh\+Statement} ()
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a4cbbbf99d094cea4569324a8c67789fb}\label{classredland_1_1LibrdfStatement_a4cbbbf99d094cea4569324a8c67789fb}} 
+{\bfseries Librdf\+Statement} (librdf\+\_\+statement $\ast$statement)
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_ac1b38e67ff0b90ac54b27c4f5f5d9e12}\label{classredland_1_1LibrdfStatement_ac1b38e67ff0b90ac54b27c4f5f5d9e12}} 
+{\bfseries Librdf\+Statement} (librdf\+\_\+node $\ast$subject, librdf\+\_\+node $\ast$predicate, librdf\+\_\+node $\ast$resource)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ librdf\+\_\+statement $>$ {\bfseries statement\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_ab76c572a450a69c9932a6f8534d978d5}\label{classredland_1_1LibrdfStatement_ab76c572a450a69c9932a6f8534d978d5}} 
+\index{redland\+::\+Librdf\+Statement@{redland\+::\+Librdf\+Statement}!statement\+\_\+@{statement\+\_\+}}
+\index{statement\+\_\+@{statement\+\_\+}!redland\+::\+Librdf\+Statement@{redland\+::\+Librdf\+Statement}}
+\subsubsection{\texorpdfstring{statement\+\_\+}{statement\_}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$librdf\+\_\+statement$>$ redland\+::\+Librdf\+Statement\+::statement\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= std::shared\_ptr<librdf\_statement>(
+                librdf\_new\_statement(World::getWorld()),
+                librdf\_free\_statement
+        )
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/redland/\+Redland\+A\+P\+I\+Wrapper/src/Librdf\+Statement.\+h\item 
+src/redland/\+Redland\+A\+P\+I\+Wrapper/src/Librdf\+Statement.\+cpp\end{DoxyCompactItemize}

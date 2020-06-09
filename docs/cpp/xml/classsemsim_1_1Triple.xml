@@ -1,0 +1,342 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classsemsim_1_1Triple" kind="class" language="C++" prot="public">
+    <compoundname>semsim::Triple</compoundname>
+    <basecompoundref refid="classredland_1_1LibrdfStatement" prot="public" virt="non-virtual">redland::LibrdfStatement</basecompoundref>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classsemsim_1_1Triple_1a11ae953b6c3381aae2cdb698f5aed155" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::Triple::Triple</definition>
+        <argsstring>(librdf_statement *statement)</argsstring>
+        <name>Triple</name>
+        <param>
+          <type>librdf_statement *</type>
+          <declname>statement</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="33" column="1" bodyfile="src/semsim/Triple.cpp" bodystart="23" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsemsim_1_1Triple_1a1afa72a617e6e0317bebda0cef1499e3" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::Triple::Triple</definition>
+        <argsstring>()=default</argsstring>
+        <name>Triple</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="37" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Triple_1a2d73ce89601f4ff3df0abe8c9646876c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::Triple::Triple</definition>
+        <argsstring>(const Subject &amp;subject, const PredicatePtr &amp;predicate_ptr, const Resource &amp;resource)</argsstring>
+        <name>Triple</name>
+        <param>
+          <type>const <ref refid="classsemsim_1_1Subject" kindref="compound">Subject</ref> &amp;</type>
+          <declname>subject</declname>
+        </param>
+        <param>
+          <type>const PredicatePtr &amp;</type>
+          <declname>predicate_ptr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classsemsim_1_1Resource" kindref="compound">Resource</ref> &amp;</type>
+          <declname>resource</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="43" column="1" bodyfile="src/semsim/Triple.cpp" bodystart="10" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Triple_1a633f2253a4ea8689721aeeb0929a4e26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::Triple::Triple</definition>
+        <argsstring>(librdf_node *subject, librdf_node *predicate, librdf_node *resource)</argsstring>
+        <name>Triple</name>
+        <param>
+          <type>librdf_node *</type>
+          <declname>subject</declname>
+        </param>
+        <param>
+          <type>librdf_node *</type>
+          <declname>predicate</declname>
+        </param>
+        <param>
+          <type>librdf_node *</type>
+          <declname>resource</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="45" column="1" bodyfile="src/semsim/Triple.cpp" bodystart="16" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Triple_1a20ba537cd620f4fec9bc56eb29662d23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string semsim::Triple::str</definition>
+        <argsstring>(const std::string &amp;format=&quot;rdfxml-abbrev&quot;, const std::string &amp;base=&quot;file://./annotations.rdf&quot;)</argsstring>
+        <name>str</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>format</declname>
+          <defval>&quot;rdfxml-abbrev&quot;</defval>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>base</declname>
+          <defval>&quot;file://./annotations.rdf&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="57" column="1" bodyfile="src/semsim/Triple.cpp" bodystart="25" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Triple_1ad2b2ab0b15a970f5dc95a25e1ec61f1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
+        <definition>semsim::Triple &amp; semsim::Triple::setAbout</definition>
+        <argsstring>(const std::string &amp;about)</argsstring>
+        <name>setAbout</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>about</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="59" column="1" bodyfile="src/semsim/Triple.cpp" bodystart="68" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Triple_1a972f806fbf6e71f60f6b6b7ba433c79c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string semsim::Triple::getAbout</definition>
+        <argsstring>() const</argsstring>
+        <name>getAbout</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="61" column="1" bodyfile="src/semsim/Triple.cpp" bodystart="119" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Triple_1a12bbba125df06854a1954ccff5be72e9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; librdf_statement &gt;</type>
+        <definition>std::shared_ptr&lt; librdf_statement &gt; semsim::Triple::getStatement</definition>
+        <argsstring>() const</argsstring>
+        <name>getStatement</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="63" column="1" bodyfile="src/semsim/Triple.cpp" bodystart="127" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Triple_1af39ecc1713db90ccfbad436eb52fe900" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
+        <definition>semsim::Triple &amp; semsim::Triple::setPredicate</definition>
+        <argsstring>(const std::string &amp;namespace_, const std::string &amp;term)</argsstring>
+        <name>setPredicate</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>namespace_</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>term</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="65" column="1" bodyfile="src/semsim/Triple.cpp" bodystart="76" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Triple_1ad85dc3e3538da54fb96387a3135b8f78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
+        <definition>semsim::Triple &amp; semsim::Triple::setResourceLiteral</definition>
+        <argsstring>(const std::string &amp;literal)</argsstring>
+        <name>setResourceLiteral</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>literal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="67" column="1" bodyfile="src/semsim/Triple.cpp" bodystart="97" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Triple_1a09a6b7c88633a87f489a8f125897935a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
+        <definition>semsim::Triple &amp; semsim::Triple::setResourceUri</definition>
+        <argsstring>(const std::string &amp;identifiers_uri)</argsstring>
+        <name>setResourceUri</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>identifiers_uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="69" column="1" bodyfile="src/semsim/Triple.cpp" bodystart="105" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Triple_1a5f62f4d7c1dc8877fa7861d0b399c696" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
+        <definition>semsim::Triple &amp; semsim::Triple::setResourceBlank</definition>
+        <argsstring>(const std::string &amp;blank_id)</argsstring>
+        <name>setResourceBlank</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>blank_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="71" column="1" bodyfile="src/semsim/Triple.cpp" bodystart="112" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Triple_1a0dd977326ab305c6327a62b8c009f60f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool semsim::Triple::isEmpty</definition>
+        <argsstring>()</argsstring>
+        <name>isEmpty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="73" column="1" bodyfile="src/semsim/Triple.cpp" bodystart="123" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Triple_1ac61be91d0c4e21a033a0052f0bab7487" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
+        <definition>semsim::Triple &amp; semsim::Triple::setPredicate</definition>
+        <argsstring>(const std::string &amp;uri)</argsstring>
+        <name>setPredicate</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>uri</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="75" column="1" bodyfile="src/semsim/Triple.cpp" bodystart="87" bodyend="94"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classsemsim_1_1Triple_1aec7e299bc50b39bd0421da8ab56d95f9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Triple" kindref="compound">Triple</ref></type>
+        <definition>Triple semsim::Triple::fromRawStatementPtr</definition>
+        <argsstring>(librdf_statement *statement)</argsstring>
+        <name>fromRawStatementPtr</name>
+        <param>
+          <type>librdf_statement *</type>
+          <declname>statement</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Triple.h" line="47" column="1" bodyfile="src/semsim/Triple.cpp" bodystart="19" bodyend="21"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="203">
+        <label>redland::LibrdfStatement</label>
+        <link refid="classredland_1_1LibrdfStatement"/>
+      </node>
+      <node id="202">
+        <label>semsim::Triple</label>
+        <link refid="classsemsim_1_1Triple"/>
+        <childnode refid="203" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="205">
+        <label>redland::LibrdfStatement</label>
+        <link refid="classredland_1_1LibrdfStatement"/>
+      </node>
+      <node id="204">
+        <label>semsim::Triple</label>
+        <link refid="classsemsim_1_1Triple"/>
+        <childnode refid="205" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/semsim/Triple.h" line="31" column="1" bodyfile="src/semsim/Triple.h" bodystart="31" bodyend="76"/>
+    <listofallmembers>
+      <member refid="classredland_1_1LibrdfStatement_1a700219b2fed175a96fecfbd905d20ab1" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>checkForNull</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a4eceaebc10deea27f4c75f7c8b4cccaf" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>fromRawNodePtrs</name></member>
+      <member refid="classsemsim_1_1Triple_1aec7e299bc50b39bd0421da8ab56d95f9" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>fromRawStatementPtr</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a6b655a56f37dbe95fec840a0a1f0ed53" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>get</name></member>
+      <member refid="classsemsim_1_1Triple_1a972f806fbf6e71f60f6b6b7ba433c79c" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>getAbout</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a5aae51ac0994552a13f2c9b90bec63d0" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>getPredicate</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a5dd0d6a2e9fe1bfcf5254aa7928cdfaf" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>getPredicateStr</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1aa763688f20b712ddc655afe405d7691a" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>getResource</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1adc21321df7ccf186c262e83a4438e993" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>getResourceStr</name></member>
+      <member refid="classsemsim_1_1Triple_1a12bbba125df06854a1954ccff5be72e9" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>getStatement</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1abcf022b8e24a74282e1d059fdf54d3fe" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>getSubject</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a6feed51cdebe7c4f2430fcba0ae17f37" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>getSubjectStr</name></member>
+      <member refid="classsemsim_1_1Triple_1a0dd977326ab305c6327a62b8c009f60f" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>isEmpty</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a4cbbbf99d094cea4569324a8c67789fb" prot="protected" virt="non-virtual"><scope>semsim::Triple</scope><name>LibrdfStatement</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1ac1b38e67ff0b90ac54b27c4f5f5d9e12" prot="protected" virt="non-virtual"><scope>semsim::Triple</scope><name>LibrdfStatement</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1afc571bdf0e13d00ff7aa684aecc2987a" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>LibrdfStatement</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1ae7f7e27b7a502070195103268407243a" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>LibrdfStatement</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1afd63d6425b2130dbe4e76fdee4d7218b" prot="protected" virt="non-virtual"><scope>semsim::Triple</scope><name>refreshStatement</name></member>
+      <member refid="classsemsim_1_1Triple_1ad2b2ab0b15a970f5dc95a25e1ec61f1f" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>setAbout</name></member>
+      <member refid="classsemsim_1_1Triple_1af39ecc1713db90ccfbad436eb52fe900" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>setPredicate</name></member>
+      <member refid="classsemsim_1_1Triple_1ac61be91d0c4e21a033a0052f0bab7487" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>setPredicate</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a3306876fb080f3d19fca806142f93f87" prot="public" virt="non-virtual" ambiguityscope="redland::LibrdfStatement::"><scope>semsim::Triple</scope><name>setPredicate</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a8b8fd2999e80bd2912af2430503a557a" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>setResource</name></member>
+      <member refid="classsemsim_1_1Triple_1a5f62f4d7c1dc8877fa7861d0b399c696" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>setResourceBlank</name></member>
+      <member refid="classsemsim_1_1Triple_1ad85dc3e3538da54fb96387a3135b8f78" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>setResourceLiteral</name></member>
+      <member refid="classsemsim_1_1Triple_1a09a6b7c88633a87f489a8f125897935a" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>setResourceUri</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1a5fa27f77859a4673e991b9e86f84d889" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>setSubject</name></member>
+      <member refid="classredland_1_1LibrdfStatement_1ab76c572a450a69c9932a6f8534d978d5" prot="protected" virt="non-virtual"><scope>semsim::Triple</scope><name>statement_</name></member>
+      <member refid="classsemsim_1_1Triple_1a20ba537cd620f4fec9bc56eb29662d23" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>str</name></member>
+      <member refid="classsemsim_1_1Triple_1a11ae953b6c3381aae2cdb698f5aed155" prot="private" virt="non-virtual"><scope>semsim::Triple</scope><name>Triple</name></member>
+      <member refid="classsemsim_1_1Triple_1a1afa72a617e6e0317bebda0cef1499e3" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>Triple</name></member>
+      <member refid="classsemsim_1_1Triple_1a2d73ce89601f4ff3df0abe8c9646876c" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>Triple</name></member>
+      <member refid="classsemsim_1_1Triple_1a633f2253a4ea8689721aeeb0929a4e26" prot="public" virt="non-virtual"><scope>semsim::Triple</scope><name>Triple</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

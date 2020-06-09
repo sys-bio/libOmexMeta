@@ -1,0 +1,386 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classsemsim_1_1PhysicalPhenomenon" kind="class" language="C++" prot="public">
+    <compoundname>semsim::PhysicalPhenomenon</compoundname>
+    <derivedcompoundref refid="classsemsim_1_1PhysicalEntity" prot="public" virt="non-virtual">semsim::PhysicalEntity</derivedcompoundref>
+    <derivedcompoundref refid="classsemsim_1_1PhysicalForce" prot="public" virt="non-virtual">semsim::PhysicalForce</derivedcompoundref>
+    <derivedcompoundref refid="classsemsim_1_1PhysicalProcess" prot="public" virt="non-virtual">semsim::PhysicalProcess</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classsemsim_1_1PhysicalPhenomenon_1a8a9e00b125ff439cd257f5c58dff68db" prot="protected" static="no" mutable="no">
+        <type>librdf_model *</type>
+        <definition>librdf_model* semsim::PhysicalPhenomenon::model_</definition>
+        <argsstring></argsstring>
+        <name>model_</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="25" column="1" bodyfile="src/semsim/PhysicalPhenomenon.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsemsim_1_1PhysicalPhenomenon_1aa43a5f6719a6d44d4b96081b2f2622fe" prot="protected" static="no" mutable="no">
+        <type><ref refid="classsemsim_1_1Subject" kindref="compound">Subject</ref></type>
+        <definition>Subject semsim::PhysicalPhenomenon::about</definition>
+        <argsstring></argsstring>
+        <name>about</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="26" column="1" bodyfile="src/semsim/PhysicalPhenomenon.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsemsim_1_1PhysicalPhenomenon_1a264d752c356d2c6011da6d3cd1494418" prot="protected" static="no" mutable="no">
+        <type><ref refid="classsemsim_1_1PhysicalPropertyResource" kindref="compound">PhysicalPropertyResource</ref></type>
+        <definition>PhysicalPropertyResource semsim::PhysicalPhenomenon::physical_property_</definition>
+        <argsstring></argsstring>
+        <name>physical_property_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="27" column="1" bodyfile="src/semsim/PhysicalPhenomenon.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsemsim_1_1PhysicalPhenomenon_1ad18e38168bcec1925e6bd9ed08494614" prot="protected" static="no" mutable="no">
+        <type>AnnotationType</type>
+        <definition>AnnotationType semsim::PhysicalPhenomenon::type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <initializer>= AnnotationType::UNKNOWN</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="28" column="1" bodyfile="src/semsim/PhysicalPhenomenon.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1a930e9d0f75ec3a7bdbcb2dbce1a47716" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string semsim::PhysicalPhenomenon::generateMetaId</definition>
+        <argsstring>(std::string id_base) const</argsstring>
+        <name>generateMetaId</name>
+        <param>
+          <type>std::string</type>
+          <declname>id_base</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="30" column="1" bodyfile="src/semsim/PhysicalPhenomenon.cpp" bodystart="36" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1afaac9a2ba2c452e9ae4f8e6737132166" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::PhysicalPhenomenon::PhysicalPhenomenon</definition>
+        <argsstring>()=default</argsstring>
+        <name>PhysicalPhenomenon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="33" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1a7df3a2d187ae80aead291641ef578dcc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::PhysicalPhenomenon::~PhysicalPhenomenon</definition>
+        <argsstring>()</argsstring>
+        <name>~PhysicalPhenomenon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="35" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1ae0eb39856d1d847118dc14d8f6cdbe88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::PhysicalPhenomenon::PhysicalPhenomenon</definition>
+        <argsstring>(const PhysicalPhenomenon &amp;phenomenon)</argsstring>
+        <name>PhysicalPhenomenon</name>
+        <param>
+          <type>const <ref refid="classsemsim_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> &amp;</type>
+          <declname>phenomenon</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="40" column="1" bodyfile="src/semsim/PhysicalPhenomenon.cpp" bodystart="70" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1a5c96bf803ad7ed4b675f58ec3b28ae83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::PhysicalPhenomenon::PhysicalPhenomenon</definition>
+        <argsstring>(PhysicalPhenomenon &amp;&amp;phenomenon) noexcept</argsstring>
+        <name>PhysicalPhenomenon</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> &amp;&amp;</type>
+          <declname>phenomenon</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="45" column="1" bodyfile="src/semsim/PhysicalPhenomenon.cpp" bodystart="77" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1a9880b73feb880ebde54cb43dcd10645f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> &amp;</type>
+        <definition>PhysicalPhenomenon &amp; semsim::PhysicalPhenomenon::operator=</definition>
+        <argsstring>(const PhysicalPhenomenon &amp;phenomenon)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classsemsim_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> &amp;</type>
+          <declname>phenomenon</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="50" column="1" bodyfile="src/semsim/PhysicalPhenomenon.cpp" bodystart="85" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1a173a2f18b7808fbdcf21317bc80088b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> &amp;</type>
+        <definition>PhysicalPhenomenon &amp; semsim::PhysicalPhenomenon::operator=</definition>
+        <argsstring>(PhysicalPhenomenon &amp;&amp;phenomenon) noexcept</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalPhenomenon" kindref="compound">PhysicalPhenomenon</ref> &amp;&amp;</type>
+          <declname>phenomenon</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="55" column="1" bodyfile="src/semsim/PhysicalPhenomenon.cpp" bodystart="95" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1a27f402b88ef569543730317fc9662c4c" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::PhysicalPhenomenon::PhysicalPhenomenon</definition>
+        <argsstring>(librdf_model *model)</argsstring>
+        <name>PhysicalPhenomenon</name>
+        <param>
+          <type>librdf_model *</type>
+          <declname>model</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="64" column="1" bodyfile="src/semsim/PhysicalPhenomenon.cpp" bodystart="25" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1aab6825374a350a0fa83c4a54704ebfbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::PhysicalPhenomenon::PhysicalPhenomenon</definition>
+        <argsstring>(librdf_model *model, Subject about, PhysicalPropertyResource propertyResource, AnnotationType type)</argsstring>
+        <name>PhysicalPhenomenon</name>
+        <param>
+          <type>librdf_model *</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type><ref refid="classsemsim_1_1Subject" kindref="compound">Subject</ref></type>
+          <declname>about</declname>
+        </param>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalPropertyResource" kindref="compound">PhysicalPropertyResource</ref></type>
+          <declname>propertyResource</declname>
+        </param>
+        <param>
+          <type>AnnotationType</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="73" column="1" bodyfile="src/semsim/PhysicalPhenomenon.cpp" bodystart="12" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1af3a680b3bacba8733eab51207fa8e223" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Subject" kindref="compound">Subject</ref></type>
+        <definition>Subject semsim::PhysicalPhenomenon::getAbout</definition>
+        <argsstring>() const</argsstring>
+        <name>getAbout</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="81" column="1" bodyfile="src/semsim/PhysicalPhenomenon.cpp" bodystart="66" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1ae56630b175214b2196da1bf47a3c47c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Subject" kindref="compound">Subject</ref></type>
+        <definition>Subject semsim::PhysicalPhenomenon::getSubject</definition>
+        <argsstring>() const</argsstring>
+        <name>getSubject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="89" column="1" bodyfile="src/semsim/PhysicalPhenomenon.cpp" bodystart="28" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1a3fc27dfe9bedd3055c575e134c537d6e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>AnnotationType</type>
+        <definition>AnnotationType semsim::PhysicalPhenomenon::getType</definition>
+        <argsstring>() const</argsstring>
+        <name>getType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="95" column="1" bodyfile="src/semsim/PhysicalPhenomenon.cpp" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1ac0b9bb899a6bd02275b5b4d106f875ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalPropertyResource" kindref="compound">PhysicalPropertyResource</ref></type>
+        <definition>PhysicalPropertyResource semsim::PhysicalPhenomenon::getPhysicalProperty</definition>
+        <argsstring>() const</argsstring>
+        <name>getPhysicalProperty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="101" column="1" bodyfile="src/semsim/PhysicalPhenomenon.cpp" bodystart="56" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1ac6857e2bf2a550c3f52037d3e74191c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classsemsim_1_1Triples" kindref="compound">Triples</ref></type>
+        <definition>Triples semsim::PhysicalPhenomenon::toTriples</definition>
+        <argsstring>()</argsstring>
+        <name>toTriples</name>
+        <reimplementedby refid="classsemsim_1_1PhysicalEntity_1a32f4240e1ab47f422e704f97c669e824">toTriples</reimplementedby>
+        <reimplementedby refid="classsemsim_1_1PhysicalProcess_1a90d27a6f08b58a7917da00dfbfb5ff72">toTriples</reimplementedby>
+        <reimplementedby refid="classsemsim_1_1PhysicalForce_1a9b8be504b403b781a34ca5df9c3bbc2d">toTriples</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="111" column="1" bodyfile="src/semsim/PhysicalPhenomenon.cpp" bodystart="60" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalPhenomenon_1aeaf66bcc989cb6b736a8611903ab7b74" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void semsim::PhysicalPhenomenon::free</definition>
+        <argsstring>()</argsstring>
+        <name>free</name>
+        <reimplementedby refid="classsemsim_1_1PhysicalForce_1a5d5a07e0f6d88cd5569c78a6039f3de1">free</reimplementedby>
+        <reimplementedby refid="classsemsim_1_1PhysicalProcess_1abe6be94626981d15e27615e040fdda2f">free</reimplementedby>
+        <reimplementedby refid="classsemsim_1_1PhysicalEntity_1a3978fc7ce8633d583965a858ee99a418">free</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalPhenomenon.h" line="113" column="1" bodyfile="src/semsim/PhysicalPhenomenon.cpp" bodystart="18" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="130">
+        <label>semsim::PhysicalPhenomenon</label>
+        <link refid="classsemsim_1_1PhysicalPhenomenon"/>
+      </node>
+      <node id="132">
+        <label>semsim::PhysicalForce</label>
+        <link refid="classsemsim_1_1PhysicalForce"/>
+        <childnode refid="130" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="131">
+        <label>semsim::PhysicalEntity</label>
+        <link refid="classsemsim_1_1PhysicalEntity"/>
+        <childnode refid="130" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="133">
+        <label>semsim::PhysicalProcess</label>
+        <link refid="classsemsim_1_1PhysicalProcess"/>
+        <childnode refid="130" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="135">
+        <label>semsim::Subject</label>
+        <link refid="classsemsim_1_1Subject"/>
+      </node>
+      <node id="134">
+        <label>semsim::PhysicalPhenomenon</label>
+        <link refid="classsemsim_1_1PhysicalPhenomenon"/>
+        <childnode refid="135" relation="usage">
+          <edgelabel>about</edgelabel>
+        </childnode>
+        <childnode refid="136" relation="usage">
+          <edgelabel>physical_property_</edgelabel>
+        </childnode>
+      </node>
+      <node id="137">
+        <label>semsim::Resource</label>
+        <link refid="classsemsim_1_1Resource"/>
+      </node>
+      <node id="136">
+        <label>semsim::PhysicalPropertyResource</label>
+        <link refid="classsemsim_1_1PhysicalPropertyResource"/>
+        <childnode refid="137" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/semsim/PhysicalPhenomenon.h" line="22" column="1" bodyfile="src/semsim/PhysicalPhenomenon.h" bodystart="22" bodyend="114"/>
+    <listofallmembers>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1aa43a5f6719a6d44d4b96081b2f2622fe" prot="protected" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>about</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1aeaf66bcc989cb6b736a8611903ab7b74" prot="public" virt="virtual"><scope>semsim::PhysicalPhenomenon</scope><name>free</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a930e9d0f75ec3a7bdbcb2dbce1a47716" prot="protected" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>generateMetaId</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1af3a680b3bacba8733eab51207fa8e223" prot="public" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>getAbout</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1ac0b9bb899a6bd02275b5b4d106f875ea" prot="public" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>getPhysicalProperty</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1ae56630b175214b2196da1bf47a3c47c0" prot="public" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>getSubject</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a3fc27dfe9bedd3055c575e134c537d6e" prot="public" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>getType</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a8a9e00b125ff439cd257f5c58dff68db" prot="protected" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>model_</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a9880b73feb880ebde54cb43dcd10645f" prot="public" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>operator=</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a173a2f18b7808fbdcf21317bc80088b5" prot="public" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>operator=</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a264d752c356d2c6011da6d3cd1494418" prot="protected" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>physical_property_</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1afaac9a2ba2c452e9ae4f8e6737132166" prot="public" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1ae0eb39856d1d847118dc14d8f6cdbe88" prot="public" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a5c96bf803ad7ed4b675f58ec3b28ae83" prot="public" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a27f402b88ef569543730317fc9662c4c" prot="public" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1aab6825374a350a0fa83c4a54704ebfbc" prot="public" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1ac6857e2bf2a550c3f52037d3e74191c9" prot="public" virt="virtual"><scope>semsim::PhysicalPhenomenon</scope><name>toTriples</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1ad18e38168bcec1925e6bd9ed08494614" prot="protected" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>type_</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a7df3a2d187ae80aead291641ef578dcc" prot="public" virt="non-virtual"><scope>semsim::PhysicalPhenomenon</scope><name>~PhysicalPhenomenon</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

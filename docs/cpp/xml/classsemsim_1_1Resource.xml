@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classsemsim_1_1Resource" kind="class" language="C++" prot="public">
+    <compoundname>semsim::Resource</compoundname>
+    <derivedcompoundref refid="classsemsim_1_1PhysicalPropertyResource" prot="public" virt="non-virtual">semsim::PhysicalPropertyResource</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classsemsim_1_1Resource_1a7327d3c42a342a43e1c0a676065a659f" prot="protected" static="no" mutable="no">
+        <type>librdf_node *</type>
+        <definition>librdf_node* semsim::Resource::node_</definition>
+        <argsstring></argsstring>
+        <name>node_</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Resource.h" line="23" column="1" bodyfile="src/semsim/Resource.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classsemsim_1_1Resource_1a82b0950637fd229c91b33c894faa4980" prot="private" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::Resource::Resource</definition>
+        <argsstring>(librdf_node *node)</argsstring>
+        <name>Resource</name>
+        <param>
+          <type>librdf_node *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Resource.h" line="20" column="1" bodyfile="src/semsim/Resource.cpp" bodystart="9" bodyend="11"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsemsim_1_1Resource_1ab612b7a2a84228777da4c101ad02b619" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::Resource::Resource</definition>
+        <argsstring>(LibrdfNode node)</argsstring>
+        <name>Resource</name>
+        <param>
+          <type><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Resource.h" line="25" column="1" bodyfile="src/semsim/Resource.cpp" bodystart="13" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Resource_1ad09daf7622a43acdf9ee24432bc0828d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::Resource::Resource</definition>
+        <argsstring>()=default</argsstring>
+        <name>Resource</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Resource.h" line="27" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Resource_1a759e8efd88775fe1a32d01671083fc0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::Resource::setNode</definition>
+        <argsstring>(librdf_node *node)</argsstring>
+        <name>setNode</name>
+        <param>
+          <type>librdf_node *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Resource.h" line="29" column="1" bodyfile="src/semsim/Resource.cpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Resource_1ab90831395bf440a6ab4c14cec8398e03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>librdf_node *</type>
+        <definition>librdf_node * semsim::Resource::getNode</definition>
+        <argsstring>() const</argsstring>
+        <name>getNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Resource.h" line="33" column="1" bodyfile="src/semsim/Resource.cpp" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Resource_1ac762aa68f78bb750d71f4b109395dcfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string semsim::Resource::str</definition>
+        <argsstring>() const</argsstring>
+        <name>str</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Resource.h" line="35" column="1" bodyfile="src/semsim/Resource.cpp" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Resource_1a46e7e3a2b53852994f689685bb3df555" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool semsim::Resource::isSet</definition>
+        <argsstring>() const</argsstring>
+        <name>isSet</name>
+        <reimplementedby refid="classsemsim_1_1PhysicalPropertyResource_1afea7c0c29e019e7f3756d8a646c9a8b6">isSet</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Resource.h" line="37" column="1" bodyfile="src/semsim/Resource.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Resource_1a500cd732b16e141d514456d36f3307e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::Resource::free</definition>
+        <argsstring>()</argsstring>
+        <name>free</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Resource.h" line="39" column="1" bodyfile="src/semsim/Resource.cpp" bodystart="34" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classsemsim_1_1Resource_1acd6aab8a740d559b10be2312c5f76bcc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1Resource" kindref="compound">Resource</ref></type>
+        <definition>Resource semsim::Resource::fromRawPtr</definition>
+        <argsstring>(librdf_node *node)</argsstring>
+        <name>fromRawPtr</name>
+        <param>
+          <type>librdf_node *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Resource.h" line="31" column="1" bodyfile="src/semsim/Resource.cpp" bodystart="30" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="173">
+        <label>semsim::Resource</label>
+        <link refid="classsemsim_1_1Resource"/>
+      </node>
+      <node id="174">
+        <label>semsim::PhysicalPropertyResource</label>
+        <link refid="classsemsim_1_1PhysicalPropertyResource"/>
+        <childnode refid="173" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/semsim/Resource.h" line="18" column="1" bodyfile="src/semsim/Resource.h" bodystart="18" bodyend="40"/>
+    <listofallmembers>
+      <member refid="classsemsim_1_1Resource_1a500cd732b16e141d514456d36f3307e5" prot="public" virt="non-virtual"><scope>semsim::Resource</scope><name>free</name></member>
+      <member refid="classsemsim_1_1Resource_1acd6aab8a740d559b10be2312c5f76bcc" prot="public" virt="non-virtual"><scope>semsim::Resource</scope><name>fromRawPtr</name></member>
+      <member refid="classsemsim_1_1Resource_1ab90831395bf440a6ab4c14cec8398e03" prot="public" virt="non-virtual"><scope>semsim::Resource</scope><name>getNode</name></member>
+      <member refid="classsemsim_1_1Resource_1a46e7e3a2b53852994f689685bb3df555" prot="public" virt="virtual"><scope>semsim::Resource</scope><name>isSet</name></member>
+      <member refid="classsemsim_1_1Resource_1a7327d3c42a342a43e1c0a676065a659f" prot="protected" virt="non-virtual"><scope>semsim::Resource</scope><name>node_</name></member>
+      <member refid="classsemsim_1_1Resource_1a82b0950637fd229c91b33c894faa4980" prot="private" virt="non-virtual"><scope>semsim::Resource</scope><name>Resource</name></member>
+      <member refid="classsemsim_1_1Resource_1ab612b7a2a84228777da4c101ad02b619" prot="public" virt="non-virtual"><scope>semsim::Resource</scope><name>Resource</name></member>
+      <member refid="classsemsim_1_1Resource_1ad09daf7622a43acdf9ee24432bc0828d" prot="public" virt="non-virtual"><scope>semsim::Resource</scope><name>Resource</name></member>
+      <member refid="classsemsim_1_1Resource_1a759e8efd88775fe1a32d01671083fc0c" prot="public" virt="non-virtual"><scope>semsim::Resource</scope><name>setNode</name></member>
+      <member refid="classsemsim_1_1Resource_1ac762aa68f78bb750d71f4b109395dcfd" prot="public" virt="non-virtual"><scope>semsim::Resource</scope><name>str</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

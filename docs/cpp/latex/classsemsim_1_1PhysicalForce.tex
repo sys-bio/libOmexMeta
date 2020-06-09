@@ -1,0 +1,60 @@
+\hypertarget{classsemsim_1_1PhysicalForce}{}\section{semsim\+:\+:Physical\+Force Class Reference}
+\label{classsemsim_1_1PhysicalForce}\index{semsim\+::\+Physical\+Force@{semsim\+::\+Physical\+Force}}
+Inheritance diagram for semsim\+:\+:Physical\+Force\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classsemsim_1_1PhysicalForce}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsemsim_1_1PhysicalForce_ab4a55fec692b38b868ddd357f82969bd}\label{classsemsim_1_1PhysicalForce_ab4a55fec692b38b868ddd357f82969bd}} 
+{\bfseries Physical\+Force} (librdf\+\_\+model $\ast$model, \hyperlink{classsemsim_1_1Subject}{Subject} metaid, \hyperlink{classsemsim_1_1PhysicalPropertyResource}{Physical\+Property\+Resource} physical\+Property, Sources sources, Sinks sinks)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1PhysicalForce_a5d5a07e0f6d88cd5569c78a6039f3de1}\label{classsemsim_1_1PhysicalForce_a5d5a07e0f6d88cd5569c78a6039f3de1}} 
+void {\bfseries free} () override
+\item 
+\mbox{\Hypertarget{classsemsim_1_1PhysicalForce_a08cf520fbe7955eca7766b9d2c5bc0c8}\label{classsemsim_1_1PhysicalForce_a08cf520fbe7955eca7766b9d2c5bc0c8}} 
+{\bfseries Physical\+Force} (librdf\+\_\+model $\ast$model)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1PhysicalForce_a740ffadd18b39ce922b41633db3e24af}\label{classsemsim_1_1PhysicalForce_a740ffadd18b39ce922b41633db3e24af}} 
+std\+::string {\bfseries create\+Meta\+Id} () const
+\item 
+\mbox{\Hypertarget{classsemsim_1_1PhysicalForce_a3641e487b723088a5ecf82488877cc34}\label{classsemsim_1_1PhysicalForce_a3641e487b723088a5ecf82488877cc34}} 
+const Sources \& {\bfseries get\+Sources} () const
+\item 
+\mbox{\Hypertarget{classsemsim_1_1PhysicalForce_a5ca80b2444abf551937c7864abea4980}\label{classsemsim_1_1PhysicalForce_a5ca80b2444abf551937c7864abea4980}} 
+const Sinks \& {\bfseries get\+Sinks} () const
+\item 
+\mbox{\Hypertarget{classsemsim_1_1PhysicalForce_a9b8be504b403b781a34ca5df9c3bbc2d}\label{classsemsim_1_1PhysicalForce_a9b8be504b403b781a34ca5df9c3bbc2d}} 
+\hyperlink{classsemsim_1_1Triples}{Triples} {\bfseries to\+Triples} () override
+\item 
+\mbox{\Hypertarget{classsemsim_1_1PhysicalForce_ad817f08d345b53a2e7fb80052457f8c8}\label{classsemsim_1_1PhysicalForce_ad817f08d345b53a2e7fb80052457f8c8}} 
+\hyperlink{classsemsim_1_1PhysicalForce}{Physical\+Force} \& {\bfseries set\+About} (const std\+::string \&metaid)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1PhysicalForce_a5a83ae2458a89151ed7990ba75251318}\label{classsemsim_1_1PhysicalForce_a5a83ae2458a89151ed7990ba75251318}} 
+\hyperlink{classsemsim_1_1PhysicalForce}{Physical\+Force} \& {\bfseries set\+Physical\+Property} (\hyperlink{classsemsim_1_1PhysicalPropertyResource}{Physical\+Property\+Resource} physical\+Property)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1PhysicalForce_a684767a1350eab54b403c5b1dd0cb20a}\label{classsemsim_1_1PhysicalForce_a684767a1350eab54b403c5b1dd0cb20a}} 
+\hyperlink{classsemsim_1_1PhysicalForce}{Physical\+Force} \& {\bfseries set\+Physical\+Property} (const std\+::string \&physical\+Property)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1PhysicalForce_afe234b09ac757b4cf3561f8d3cbf4c0b}\label{classsemsim_1_1PhysicalForce_afe234b09ac757b4cf3561f8d3cbf4c0b}} 
+\hyperlink{classsemsim_1_1PhysicalForce}{Physical\+Force} \& {\bfseries add\+Source} (std\+::string source\+\_\+metaid, double multiplier, std\+::string physical\+\_\+entity\+\_\+reference)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1PhysicalForce_a0886647a9a7efd80bb99f6ce74bcb76a}\label{classsemsim_1_1PhysicalForce_a0886647a9a7efd80bb99f6ce74bcb76a}} 
+\hyperlink{classsemsim_1_1PhysicalForce}{Physical\+Force} \& {\bfseries add\+Sink} (std\+::string sink\+\_\+metaid, double multiplier, std\+::string physical\+\_\+entity\+\_\+reference)
+\item 
+\mbox{\Hypertarget{classsemsim_1_1PhysicalForce_ad94974c799d17e5f6376391b1f3a7444}\label{classsemsim_1_1PhysicalForce_ad94974c799d17e5f6376391b1f3a7444}} 
+int {\bfseries get\+Num\+Sources} ()
+\item 
+\mbox{\Hypertarget{classsemsim_1_1PhysicalForce_ab947284af190941616ae8a6f1de2a85d}\label{classsemsim_1_1PhysicalForce_ab947284af190941616ae8a6f1de2a85d}} 
+int {\bfseries get\+Num\+Sinks} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/semsim/Physical\+Force.\+h\item 
+src/semsim/Physical\+Force.\+cpp\end{DoxyCompactItemize}

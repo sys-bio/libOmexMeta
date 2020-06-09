@@ -1,0 +1,393 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classsemsim_1_1PhysicalForce" kind="class" language="C++" prot="public">
+    <compoundname>semsim::PhysicalForce</compoundname>
+    <basecompoundref refid="classsemsim_1_1PhysicalPhenomenon" prot="public" virt="non-virtual">semsim::PhysicalPhenomenon</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classsemsim_1_1PhysicalForce_1a7e131a029fa424e461a04f4aac0c767b" prot="private" static="no" mutable="no">
+        <type>Sources</type>
+        <definition>Sources semsim::PhysicalForce::sources_</definition>
+        <argsstring></argsstring>
+        <name>sources_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="28" column="1" bodyfile="src/semsim/PhysicalForce.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsemsim_1_1PhysicalForce_1a1470dab3ac603ef5d9c6143fcbb8025f" prot="private" static="no" mutable="no">
+        <type>Sinks</type>
+        <definition>Sinks semsim::PhysicalForce::sinks_</definition>
+        <argsstring></argsstring>
+        <name>sinks_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="29" column="1" bodyfile="src/semsim/PhysicalForce.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1a4c2124d3d63a53cd51de774dc2aaad7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::PhysicalForce::PhysicalForce</definition>
+        <argsstring>()=delete</argsstring>
+        <name>PhysicalForce</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="33" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1a1fc4fea2ecd7cc9835dbdbc1a90397b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::PhysicalForce::~PhysicalForce</definition>
+        <argsstring>()=default</argsstring>
+        <name>~PhysicalForce</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="35" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1ab4a55fec692b38b868ddd357f82969bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::PhysicalForce::PhysicalForce</definition>
+        <argsstring>(librdf_model *model, Subject metaid, PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks)</argsstring>
+        <name>PhysicalForce</name>
+        <param>
+          <type>librdf_model *</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type><ref refid="classsemsim_1_1Subject" kindref="compound">Subject</ref></type>
+          <declname>metaid</declname>
+        </param>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalPropertyResource" kindref="compound">PhysicalPropertyResource</ref></type>
+          <declname>physicalProperty</declname>
+        </param>
+        <param>
+          <type>Sources</type>
+          <declname>sources</declname>
+        </param>
+        <param>
+          <type>Sinks</type>
+          <declname>sinks</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="38" column="1" bodyfile="src/semsim/PhysicalForce.cpp" bodystart="14" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1a5d5a07e0f6d88cd5569c78a6039f3de1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void semsim::PhysicalForce::free</definition>
+        <argsstring>() override</argsstring>
+        <name>free</name>
+        <reimplements refid="classsemsim_1_1PhysicalPhenomenon_1aeaf66bcc989cb6b736a8611903ab7b74">free</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="52" column="1" bodyfile="src/semsim/PhysicalForce.cpp" bodystart="110" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1a08cf520fbe7955eca7766b9d2c5bc0c8" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::PhysicalForce::PhysicalForce</definition>
+        <argsstring>(librdf_model *model)</argsstring>
+        <name>PhysicalForce</name>
+        <param>
+          <type>librdf_model *</type>
+          <declname>model</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="63" column="1" bodyfile="src/semsim/PhysicalForce.cpp" bodystart="99" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1a740ffadd18b39ce922b41633db3e24af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string semsim::PhysicalForce::createMetaId</definition>
+        <argsstring>() const</argsstring>
+        <name>createMetaId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="69" column="1" bodyfile="src/semsim/PhysicalForce.cpp" bodystart="30" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1a3641e487b723088a5ecf82488877cc34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Sources &amp;</type>
+        <definition>const std::vector&lt; SourceParticipant &gt; &amp; semsim::PhysicalForce::getSources</definition>
+        <argsstring>() const</argsstring>
+        <name>getSources</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="75" column="1" bodyfile="src/semsim/PhysicalForce.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1a5ca80b2444abf551937c7864abea4980" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Sinks &amp;</type>
+        <definition>const std::vector&lt; SinkParticipant &gt; &amp; semsim::PhysicalForce::getSinks</definition>
+        <argsstring>() const</argsstring>
+        <name>getSinks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="81" column="1" bodyfile="src/semsim/PhysicalForce.cpp" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1a9b8be504b403b781a34ca5df9c3bbc2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classsemsim_1_1Triples" kindref="compound">Triples</ref></type>
+        <definition>Triples semsim::PhysicalForce::toTriples</definition>
+        <argsstring>() override</argsstring>
+        <name>toTriples</name>
+        <reimplements refid="classsemsim_1_1PhysicalPhenomenon_1ac6857e2bf2a550c3f52037d3e74191c9">toTriples</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="90" column="1" bodyfile="src/semsim/PhysicalForce.cpp" bodystart="34" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1ad817f08d345b53a2e7fb80052457f8c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
+        <definition>PhysicalForce &amp; semsim::PhysicalForce::setAbout</definition>
+        <argsstring>(const std::string &amp;metaid)</argsstring>
+        <name>setAbout</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>metaid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="102" column="1" bodyfile="src/semsim/PhysicalForce.cpp" bodystart="58" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1a5a83ae2458a89151ed7990ba75251318" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
+        <definition>PhysicalForce &amp; semsim::PhysicalForce::setPhysicalProperty</definition>
+        <argsstring>(PhysicalPropertyResource physicalProperty)</argsstring>
+        <name>setPhysicalProperty</name>
+        <param>
+          <type><ref refid="classsemsim_1_1PhysicalPropertyResource" kindref="compound">PhysicalPropertyResource</ref></type>
+          <declname>physicalProperty</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="115" column="1" bodyfile="src/semsim/PhysicalForce.cpp" bodystart="63" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1a684767a1350eab54b403c5b1dd0cb20a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
+        <definition>PhysicalForce &amp; semsim::PhysicalForce::setPhysicalProperty</definition>
+        <argsstring>(const std::string &amp;physicalProperty)</argsstring>
+        <name>setPhysicalProperty</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>physicalProperty</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="123" column="1" bodyfile="src/semsim/PhysicalForce.cpp" bodystart="68" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1afe234b09ac757b4cf3561f8d3cbf4c0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
+        <definition>PhysicalForce &amp; semsim::PhysicalForce::addSource</definition>
+        <argsstring>(std::string source_metaid, double multiplier, std::string physical_entity_reference)</argsstring>
+        <name>addSource</name>
+        <param>
+          <type>std::string</type>
+          <declname>source_metaid</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>physical_entity_reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="135" column="1" bodyfile="src/semsim/PhysicalForce.cpp" bodystart="73" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1a0886647a9a7efd80bb99f6ce74bcb76a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classsemsim_1_1PhysicalForce" kindref="compound">PhysicalForce</ref> &amp;</type>
+        <definition>PhysicalForce &amp; semsim::PhysicalForce::addSink</definition>
+        <argsstring>(std::string sink_metaid, double multiplier, std::string physical_entity_reference)</argsstring>
+        <name>addSink</name>
+        <param>
+          <type>std::string</type>
+          <declname>sink_metaid</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>physical_entity_reference</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="148" column="1" bodyfile="src/semsim/PhysicalForce.cpp" bodystart="86" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1ad94974c799d17e5f6376391b1f3a7444" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int semsim::PhysicalForce::getNumSources</definition>
+        <argsstring>()</argsstring>
+        <name>getNumSources</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="156" column="1" bodyfile="src/semsim/PhysicalForce.cpp" bodystart="102" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1PhysicalForce_1ab947284af190941616ae8a6f1de2a85d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int semsim::PhysicalForce::getNumSinks</definition>
+        <argsstring>()</argsstring>
+        <name>getNumSinks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/PhysicalForce.h" line="163" column="1" bodyfile="src/semsim/PhysicalForce.cpp" bodystart="106" bodyend="108"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="124">
+        <label>semsim::PhysicalPhenomenon</label>
+        <link refid="classsemsim_1_1PhysicalPhenomenon"/>
+      </node>
+      <node id="123">
+        <label>semsim::PhysicalForce</label>
+        <link refid="classsemsim_1_1PhysicalForce"/>
+        <childnode refid="124" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="127">
+        <label>semsim::Subject</label>
+        <link refid="classsemsim_1_1Subject"/>
+      </node>
+      <node id="126">
+        <label>semsim::PhysicalPhenomenon</label>
+        <link refid="classsemsim_1_1PhysicalPhenomenon"/>
+        <childnode refid="127" relation="usage">
+          <edgelabel>about</edgelabel>
+        </childnode>
+        <childnode refid="128" relation="usage">
+          <edgelabel>physical_property_</edgelabel>
+        </childnode>
+      </node>
+      <node id="125">
+        <label>semsim::PhysicalForce</label>
+        <link refid="classsemsim_1_1PhysicalForce"/>
+        <childnode refid="126" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="129">
+        <label>semsim::Resource</label>
+        <link refid="classsemsim_1_1Resource"/>
+      </node>
+      <node id="128">
+        <label>semsim::PhysicalPropertyResource</label>
+        <link refid="classsemsim_1_1PhysicalPropertyResource"/>
+        <childnode refid="129" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/semsim/PhysicalForce.h" line="26" column="1" bodyfile="src/semsim/PhysicalForce.h" bodystart="26" bodyend="164"/>
+    <listofallmembers>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1aa43a5f6719a6d44d4b96081b2f2622fe" prot="protected" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>about</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1a0886647a9a7efd80bb99f6ce74bcb76a" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>addSink</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1afe234b09ac757b4cf3561f8d3cbf4c0b" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>addSource</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1a740ffadd18b39ce922b41633db3e24af" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>createMetaId</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1a5d5a07e0f6d88cd5569c78a6039f3de1" prot="public" virt="virtual"><scope>semsim::PhysicalForce</scope><name>free</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a930e9d0f75ec3a7bdbcb2dbce1a47716" prot="protected" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>generateMetaId</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1af3a680b3bacba8733eab51207fa8e223" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>getAbout</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1ab947284af190941616ae8a6f1de2a85d" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>getNumSinks</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1ad94974c799d17e5f6376391b1f3a7444" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>getNumSources</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1ac0b9bb899a6bd02275b5b4d106f875ea" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>getPhysicalProperty</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1a5ca80b2444abf551937c7864abea4980" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>getSinks</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1a3641e487b723088a5ecf82488877cc34" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>getSources</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1ae56630b175214b2196da1bf47a3c47c0" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>getSubject</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a3fc27dfe9bedd3055c575e134c537d6e" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>getType</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a8a9e00b125ff439cd257f5c58dff68db" prot="protected" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>model_</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a9880b73feb880ebde54cb43dcd10645f" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>operator=</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a173a2f18b7808fbdcf21317bc80088b5" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>operator=</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a264d752c356d2c6011da6d3cd1494418" prot="protected" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>physical_property_</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1a4c2124d3d63a53cd51de774dc2aaad7f" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>PhysicalForce</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1ab4a55fec692b38b868ddd357f82969bd" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>PhysicalForce</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1a08cf520fbe7955eca7766b9d2c5bc0c8" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>PhysicalForce</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1afaac9a2ba2c452e9ae4f8e6737132166" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1ae0eb39856d1d847118dc14d8f6cdbe88" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a5c96bf803ad7ed4b675f58ec3b28ae83" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a27f402b88ef569543730317fc9662c4c" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1aab6825374a350a0fa83c4a54704ebfbc" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>PhysicalPhenomenon</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1ad817f08d345b53a2e7fb80052457f8c8" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>setAbout</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1a5a83ae2458a89151ed7990ba75251318" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>setPhysicalProperty</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1a684767a1350eab54b403c5b1dd0cb20a" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>setPhysicalProperty</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1a1470dab3ac603ef5d9c6143fcbb8025f" prot="private" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>sinks_</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1a7e131a029fa424e461a04f4aac0c767b" prot="private" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>sources_</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1a9b8be504b403b781a34ca5df9c3bbc2d" prot="public" virt="virtual"><scope>semsim::PhysicalForce</scope><name>toTriples</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1ad18e38168bcec1925e6bd9ed08494614" prot="protected" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>type_</name></member>
+      <member refid="classsemsim_1_1PhysicalForce_1a1fc4fea2ecd7cc9835dbdbc1a90397b4" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>~PhysicalForce</name></member>
+      <member refid="classsemsim_1_1PhysicalPhenomenon_1a7df3a2d187ae80aead291641ef578dcc" prot="public" virt="non-virtual"><scope>semsim::PhysicalForce</scope><name>~PhysicalPhenomenon</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,409 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classsemsim_1_1Predicate" kind="class" language="C++" prot="public">
+    <compoundname>semsim::Predicate</compoundname>
+    <derivedcompoundref refid="classsemsim_1_1BiomodelsBiologyQualifier" prot="public" virt="non-virtual">semsim::BiomodelsBiologyQualifier</derivedcompoundref>
+    <derivedcompoundref refid="classsemsim_1_1BiomodelsModelQualifier" prot="public" virt="non-virtual">semsim::BiomodelsModelQualifier</derivedcompoundref>
+    <derivedcompoundref refid="classsemsim_1_1DCTerm" prot="public" virt="non-virtual">semsim::DCTerm</derivedcompoundref>
+    <derivedcompoundref refid="classsemsim_1_1SemSim" prot="public" virt="non-virtual">semsim::SemSim</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classsemsim_1_1Predicate_1ad74a27f704532cdc6a80e094c2d5b3f4" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string semsim::Predicate::namespace_</definition>
+        <argsstring></argsstring>
+        <name>namespace_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="31" column="1" bodyfile="src/semsim/Predicate.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsemsim_1_1Predicate_1acb9c36ea2356d2b8791a2e8ad9cf68eb" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string semsim::Predicate::term_</definition>
+        <argsstring></argsstring>
+        <name>term_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="31" column="1" bodyfile="src/semsim/Predicate.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsemsim_1_1Predicate_1acb69247cf1ff304bfaec2df1755b4654" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string semsim::Predicate::prefix_</definition>
+        <argsstring></argsstring>
+        <name>prefix_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="31" column="1" bodyfile="src/semsim/Predicate.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsemsim_1_1Predicate_1a6ceaeb4b2a9a431cfdfe537be842edd2" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string semsim::Predicate::uri_</definition>
+        <argsstring></argsstring>
+        <name>uri_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="32" column="1" bodyfile="src/semsim/Predicate.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsemsim_1_1Predicate_1a9a488e0bf03949975fa54d2de0b2fd58" prot="protected" static="no" mutable="no">
+        <type>librdf_node *</type>
+        <definition>librdf_node* semsim::Predicate::node_</definition>
+        <argsstring></argsstring>
+        <name>node_</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="33" column="1" bodyfile="src/semsim/Predicate.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsemsim_1_1Predicate_1aaffa9838c17b7bc7c33559ef1253a594" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; semsim::Predicate::valid_terms_</definition>
+        <argsstring></argsstring>
+        <name>valid_terms_</name>
+        <initializer>{&quot;All&quot;}</initializer>
+        <briefdescription>
+<para>predicates can only have type uri </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="34" column="1" bodyfile="src/semsim/Predicate.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1a90af4d016315412f8fd64d9ec280b177" prot="protected" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::Predicate::Predicate</definition>
+        <argsstring>(librdf_node *node)</argsstring>
+        <name>Predicate</name>
+        <param>
+          <type>librdf_node *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="36" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="25" bodyend="71"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1a7690c83ff62009fad9124ed614ee8b9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::Predicate::Predicate</definition>
+        <argsstring>()=default</argsstring>
+        <name>Predicate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="39" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1a111a30f2cf259153b4f186b308b6716f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>semsim::Predicate::Predicate</definition>
+        <argsstring>(const std::string &amp;namespace_, std::string term, std::string prefix)</argsstring>
+        <name>Predicate</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>namespace_</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>term</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>prefix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="66" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="13" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1a47fed0b10781d69cc6e359bcec16eb71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string semsim::Predicate::str</definition>
+        <argsstring>()</argsstring>
+        <name>str</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="73" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="103" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1a6e4ea55d33e692cdb894940c3708cabb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>librdf_node *</type>
+        <definition>librdf_node * semsim::Predicate::getNode</definition>
+        <argsstring>() const</argsstring>
+        <name>getNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="99" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="128" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1a4a1ffe837216303654416b725684b9db" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; std::string &gt; &amp;</type>
+        <definition>const std::vector&lt; std::string &gt; &amp; semsim::Predicate::getValidTerms</definition>
+        <argsstring>() const</argsstring>
+        <name>getValidTerms</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="107" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="107" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1aefb90236a7934d93cce5798723f54661" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; semsim::Predicate::getNamespace</definition>
+        <argsstring>() const</argsstring>
+        <name>getNamespace</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="114" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="73" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1a1a62bbbe1ac5e3a28a15fda049d4ada4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; semsim::Predicate::getTerm</definition>
+        <argsstring>() const</argsstring>
+        <name>getTerm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="120" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="77" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1ad7115549cf9b25cbb665f5c2bcba67d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; semsim::Predicate::getPrefix</definition>
+        <argsstring>() const</argsstring>
+        <name>getPrefix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="126" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="81" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1add37b6df8a8bf63600966a3ab24236d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; semsim::Predicate::getUri</definition>
+        <argsstring>() const</argsstring>
+        <name>getUri</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="133" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="85" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1aa8a95f5f9e0bffbb8d6df9c8767a6b01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::Predicate::freeNode</definition>
+        <argsstring>()</argsstring>
+        <name>freeNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="147" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="136" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1a56b15a4d95c7f6e4645e954e5d5d3d13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::Predicate::setNode</definition>
+        <argsstring>(librdf_node *node)</argsstring>
+        <name>setNode</name>
+        <param>
+          <type>librdf_node *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="163" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="132" bodyend="134"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1a332f745e39155ff5884e2c98c87b548b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unordered_map&lt; std::string, std::string &gt;</type>
+        <definition>std::unordered_map&lt; std::string, std::string &gt; semsim::Predicate::namespaceMap</definition>
+        <argsstring>()</argsstring>
+        <name>namespaceMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="45" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="93" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1a3e4b6a9dd8180026ef09d8234076655f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::Predicate::verify</definition>
+        <argsstring>(std::vector&lt; std::string &gt; valid_terms, const std::string &amp;term)</argsstring>
+        <name>verify</name>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>valid_terms</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>term</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="83" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="111" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1a514f441587bc049f53666c55a5d645ce" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool semsim::Predicate::namespaceKnown</definition>
+        <argsstring>(const std::string &amp;ns)</argsstring>
+        <name>namespaceKnown</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>ns</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="92" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="89" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classsemsim_1_1Predicate_1a47b3b6a018b2d1085c0feaf504e12568" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void semsim::Predicate::addSeenNamespaceToSerializer</definition>
+        <argsstring>(librdf_world *world, librdf_serializer *serializer, librdf_node *predicate)</argsstring>
+        <name>addSeenNamespaceToSerializer</name>
+        <param>
+          <type>librdf_world *</type>
+          <declname>world</declname>
+        </param>
+        <param>
+          <type>librdf_serializer *</type>
+          <declname>serializer</declname>
+        </param>
+        <param>
+          <type>librdf_node *</type>
+          <declname>predicate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/semsim/Predicate.h" line="156" column="1" bodyfile="src/semsim/Predicate.cpp" bodystart="140" bodyend="177"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="149">
+        <label>semsim::Predicate</label>
+        <link refid="classsemsim_1_1Predicate"/>
+      </node>
+      <node id="152">
+        <label>semsim::DCTerm</label>
+        <link refid="classsemsim_1_1DCTerm"/>
+        <childnode refid="149" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="153">
+        <label>semsim::SemSim</label>
+        <link refid="classsemsim_1_1SemSim"/>
+        <childnode refid="149" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="151">
+        <label>semsim::BiomodelsModelQualifier</label>
+        <link refid="classsemsim_1_1BiomodelsModelQualifier"/>
+        <childnode refid="149" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="150">
+        <label>semsim::BiomodelsBiologyQualifier</label>
+        <link refid="classsemsim_1_1BiomodelsBiologyQualifier"/>
+        <childnode refid="149" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/semsim/Predicate.h" line="28" column="1" bodyfile="src/semsim/Predicate.h" bodystart="28" bodyend="165"/>
+    <listofallmembers>
+      <member refid="classsemsim_1_1Predicate_1a47b3b6a018b2d1085c0feaf504e12568" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>addSeenNamespaceToSerializer</name></member>
+      <member refid="classsemsim_1_1Predicate_1aa8a95f5f9e0bffbb8d6df9c8767a6b01" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>freeNode</name></member>
+      <member refid="classsemsim_1_1Predicate_1aefb90236a7934d93cce5798723f54661" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>getNamespace</name></member>
+      <member refid="classsemsim_1_1Predicate_1a6e4ea55d33e692cdb894940c3708cabb" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>getNode</name></member>
+      <member refid="classsemsim_1_1Predicate_1ad7115549cf9b25cbb665f5c2bcba67d4" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>getPrefix</name></member>
+      <member refid="classsemsim_1_1Predicate_1a1a62bbbe1ac5e3a28a15fda049d4ada4" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>getTerm</name></member>
+      <member refid="classsemsim_1_1Predicate_1add37b6df8a8bf63600966a3ab24236d9" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>getUri</name></member>
+      <member refid="classsemsim_1_1Predicate_1a4a1ffe837216303654416b725684b9db" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>getValidTerms</name></member>
+      <member refid="classsemsim_1_1Predicate_1ad74a27f704532cdc6a80e094c2d5b3f4" prot="protected" virt="non-virtual"><scope>semsim::Predicate</scope><name>namespace_</name></member>
+      <member refid="classsemsim_1_1Predicate_1a514f441587bc049f53666c55a5d645ce" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>namespaceKnown</name></member>
+      <member refid="classsemsim_1_1Predicate_1a332f745e39155ff5884e2c98c87b548b" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>namespaceMap</name></member>
+      <member refid="classsemsim_1_1Predicate_1a9a488e0bf03949975fa54d2de0b2fd58" prot="protected" virt="non-virtual"><scope>semsim::Predicate</scope><name>node_</name></member>
+      <member refid="classsemsim_1_1Predicate_1a90af4d016315412f8fd64d9ec280b177" prot="protected" virt="non-virtual"><scope>semsim::Predicate</scope><name>Predicate</name></member>
+      <member refid="classsemsim_1_1Predicate_1a7690c83ff62009fad9124ed614ee8b9c" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>Predicate</name></member>
+      <member refid="classsemsim_1_1Predicate_1a111a30f2cf259153b4f186b308b6716f" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>Predicate</name></member>
+      <member refid="classsemsim_1_1Predicate_1acb69247cf1ff304bfaec2df1755b4654" prot="protected" virt="non-virtual"><scope>semsim::Predicate</scope><name>prefix_</name></member>
+      <member refid="classsemsim_1_1Predicate_1a56b15a4d95c7f6e4645e954e5d5d3d13" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>setNode</name></member>
+      <member refid="classsemsim_1_1Predicate_1a47fed0b10781d69cc6e359bcec16eb71" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>str</name></member>
+      <member refid="classsemsim_1_1Predicate_1acb9c36ea2356d2b8791a2e8ad9cf68eb" prot="protected" virt="non-virtual"><scope>semsim::Predicate</scope><name>term_</name></member>
+      <member refid="classsemsim_1_1Predicate_1a6ceaeb4b2a9a431cfdfe537be842edd2" prot="protected" virt="non-virtual"><scope>semsim::Predicate</scope><name>uri_</name></member>
+      <member refid="classsemsim_1_1Predicate_1aaffa9838c17b7bc7c33559ef1253a594" prot="protected" virt="non-virtual"><scope>semsim::Predicate</scope><name>valid_terms_</name></member>
+      <member refid="classsemsim_1_1Predicate_1a3e4b6a9dd8180026ef09d8234076655f" prot="public" virt="non-virtual"><scope>semsim::Predicate</scope><name>verify</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
