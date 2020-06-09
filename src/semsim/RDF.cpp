@@ -85,6 +85,24 @@ namespace semsim {
         return rdf;
     }
 
+    void RDF::fromString(RDF *rdf, const std::string &str, const std::string &format, const std::string &base_uri) {
+        std::string base_uri_used;
+        if (base_uri.empty())
+            base_uri_used = SemsimUtils::addFilePrefixToString("Annotations.rdf");
+        else
+            base_uri_used = base_uri;
+
+        LibrdfParser parser(format);
+        parser.parseString(str, rdf->model_, LibrdfUri(base_uri_used));
+
+        // update the list of "seen" namespaces
+        rdf->seen_namespaces_ = parser.getSeenNamespaces();
+
+        // Compare against predefined set of namespaces: bqbiol etc.
+        // This allows us to only use the ones that are needed
+        rdf->namespaces_ = rdf->propagateNamespacesFromParser(rdf->seen_namespaces_);
+    }
+
     void RDF::addFromString(const std::string &str,
                       const std::string &format, const std::string &base_uri) {
         std::string base_uri_used;
@@ -111,25 +129,15 @@ namespace semsim {
 
     }
 
-    void RDF::fromString(RDF *rdf, const std::string &str, const std::string &format, const std::string &base_uri) {
-        std::string base_uri_used;
-        if (base_uri.empty())
-            base_uri_used = SemsimUtils::addFilePrefixToString("Annotations.rdf");
-        else
-            base_uri_used = base_uri;
-
-        LibrdfParser parser(format);
-        parser.parseString(str, rdf->model_, LibrdfUri(base_uri_used));
-
-        // update the list of "seen" namespaces
-        rdf->seen_namespaces_ = parser.getSeenNamespaces();
-
-        // Compare against predefined set of namespaces: bqbiol etc.
-        // This allows us to only use the ones that are needed
-        rdf->namespaces_ = rdf->propagateNamespacesFromParser(rdf->seen_namespaces_);
-    }
-
-
+    /*
+     * @brief parse RDF directly from a uri
+     * @param uri_string the uri to download containing RDF
+     * @param format the format that the RDF is in
+     * @return RDF an instantiated RDF object.
+     *
+     * @details downloads uri from the internet and creates an RDF graph.
+     * See Librdf::parseUri() for more details.
+     */
     RDF RDF::fromUri(const std::string &uri_string, const std::string &format) {
         RDF rdf;
         LibrdfParser parser(format);
@@ -137,6 +145,12 @@ namespace semsim {
         return rdf;
     }
 
+    /*
+     * @brief non-static counterpart of RDF::fromUri. Downloads and
+     * parses rdf from a URI.
+     *
+     * @details See RDF::fromUri for details.
+     */
     void RDF::addFromUri(const std::string &uri_string, const std::string &format) {
         LibrdfParser parser(format);
         parser.parseUri(uri_string, model_);
@@ -154,6 +168,13 @@ namespace semsim {
         parser.parseFile(filename, model_);
     }
 
+    /*
+     * @brief compared namespaces seen with namespaces
+     * known and ensures models that use a known namespace
+     * use that namespace.
+     * @param seen_namespaces a vector of strings of namespaces the parser has seen before.
+     *
+     */
     std::unordered_map<std::string, std::string>
     RDF::propagateNamespacesFromParser(const std::vector<std::string> &seen_namespaces) {
         std::unordered_map<std::string, std::string> keep_map;

@@ -93,6 +93,83 @@ TEST_F(CAPITests, RDFsetBaseUri) {
 
 }
 
+TEST_F(CAPITests, RDF_fromString) {
+    RDF *rdf_ptr = RDF_fromString(samples.composite_annotation_pf.c_str(), "rdfxml", "RDF_fromStringTest.rdf");
+    int expected = 6;
+    int actual = RDF_size(rdf_ptr);
+    ASSERT_EQ(expected, actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDF_addFromString) {
+    RDF *rdf_ptr = RDF_new();
+    RDF_addFromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml", "RDF_addFromStringTest.rdf");
+    int expected = 1;
+    int actual = RDF_size(rdf_ptr);
+    ASSERT_EQ(expected, actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDF_fromUri) {
+    RDF *rdf_ptr = RDF_fromUri(samples.sbml_url1.c_str(), "rdfxml");
+    int expected = 277;
+    int actual = RDF_size(rdf_ptr);
+    ASSERT_EQ(expected, actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDF_addFromUri) {
+    RDF *rdf_ptr = RDF_new();
+    RDF_addFromUri(rdf_ptr, samples.sbml_url1.c_str(), "rdfxml");
+    int expected = 277;
+    int actual = RDF_size(rdf_ptr);
+    ASSERT_EQ(expected, actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDF_fromFile) {
+    // we can cheat and use C++ to write the file we need - who's counting
+    std::string fname = std::experimental::filesystem::current_path().string() + "/TestParseFromFile.rdf";
+    std::cout << fname << std::endl;
+    std::ofstream f(fname);
+    if (f.is_open()) {
+        f << samples.composite_annotation_pe << std::endl;
+        f.flush();
+        f.close();
+    } else {
+        throw std::logic_error("No file was opened for test");
+    }
+
+    RDF *rdf_ptr = RDF_fromFile(fname.c_str(), "rdfxml");
+    int expected = 4;
+    int actual = RDF_size(rdf_ptr);
+    ASSERT_EQ(expected, actual);
+    std::remove(fname.c_str());
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, RDF_addFromFile) {
+    // we can cheat and use C++ to write the file we need - who's counting
+    std::string fname = std::experimental::filesystem::current_path().string() + "/TestParseFromFile.rdf";
+    std::cout << fname << std::endl;
+    std::ofstream f(fname);
+    if (f.is_open()) {
+        f << samples.composite_annotation_pe << std::endl;
+        f.flush();
+        f.close();
+    } else {
+        throw std::logic_error("No file was opened for test");
+    }
+
+    RDF *rdf_ptr = RDF_new();
+    RDF_addFromFile(rdf_ptr, fname.c_str(), "rdfxml");
+    int expected = 4;
+    int actual = RDF_size(rdf_ptr);
+    ASSERT_EQ(expected, actual);
+    std::remove(fname.c_str());
+    RDF_delete(rdf_ptr);
+}
 
 TEST_F(CAPITests, RDFqueryResultsAsStr) {
     RDF *rdf_ptr = RDF_fromString(samples.composite_annotation_pe.c_str(), "rdfxml");
@@ -793,84 +870,6 @@ TEST_F(CAPITests, TestRDFTwice3) {
     RDF_delete(rdf_ptr2);
 }
 
-
-TEST_F(CAPITests, RDF_fromString2) {
-    RDF *rdf_ptr = RDF_fromString(samples.composite_annotation_pf.c_str(), "rdfxml", "RDF_fromStringTest.rdf");
-    int expected = 6;
-    int actual = RDF_size(rdf_ptr);
-    ASSERT_EQ(expected, actual);
-    RDF_delete(rdf_ptr);
-}
-
-TEST_F(CAPITests, RDF_addFromString) {
-    RDF *rdf_ptr = RDF_new();
-    RDF_addFromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml", "RDF_addFromStringTest.rdf");
-    int expected = 1;
-    int actual = RDF_size(rdf_ptr);
-    ASSERT_EQ(expected, actual);
-    RDF_delete(rdf_ptr);
-}
-
-TEST_F(CAPITests, RDF_fromUri) {
-    RDF *rdf_ptr = RDF_fromUri(samples.sbml_url1.c_str(), "rdfxml");
-    int expected = 277;
-    int actual = RDF_size(rdf_ptr);
-    ASSERT_EQ(expected, actual);
-    RDF_delete(rdf_ptr);
-}
-
-TEST_F(CAPITests, RDF_addFromUri) {
-    RDF *rdf_ptr = RDF_new();
-    RDF_addFromUri(rdf_ptr, samples.sbml_url1.c_str(), "rdfxml");
-    int expected = 277;
-    int actual = RDF_size(rdf_ptr);
-    ASSERT_EQ(expected, actual);
-    RDF_delete(rdf_ptr);
-}
-
-TEST_F(CAPITests, RDF_fromFile) {
-    // we can cheat and use C++ to write the file we need - who's counting
-    std::string fname = std::experimental::filesystem::current_path().string() + "/TestParseFromFile.rdf";
-    std::cout << fname << std::endl;
-    std::ofstream f(fname);
-    if (f.is_open()) {
-        f << samples.composite_annotation_pe << std::endl;
-        f.flush();
-        f.close();
-    } else {
-        throw std::logic_error("No file was opened for test");
-    }
-
-    RDF *rdf_ptr = RDF_fromFile(fname.c_str(), "rdfxml");
-    int expected = 4;
-    int actual = RDF_size(rdf_ptr);
-    ASSERT_EQ(expected, actual);
-    std::remove(fname.c_str());
-    RDF_delete(rdf_ptr);
-
-}
-
-TEST_F(CAPITests, RDF_addFromFile) {
-    // we can cheat and use C++ to write the file we need - who's counting
-    std::string fname = std::experimental::filesystem::current_path().string() + "/TestParseFromFile.rdf";
-    std::cout << fname << std::endl;
-    std::ofstream f(fname);
-    if (f.is_open()) {
-        f << samples.composite_annotation_pe << std::endl;
-        f.flush();
-        f.close();
-    } else {
-        throw std::logic_error("No file was opened for test");
-    }
-
-    RDF *rdf_ptr = RDF_new();
-    RDF_addFromFile(rdf_ptr, fname.c_str(), "rdfxml");
-    int expected = 4;
-    int actual = RDF_size(rdf_ptr);
-    ASSERT_EQ(expected, actual);
-    std::remove(fname.c_str());
-    RDF_delete(rdf_ptr);
-}
 
 
 

@@ -94,15 +94,65 @@ class TestAPI(unittest.TestCase):
     def test_rdf_obj(self):
         self.assertIsInstance(self.rdf, int)
 
-    def test_rdf_from_string_cfunc(self):
-        PysemsimAPI.rdf_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
-                                    'rdfxml'.encode())  # , "basey.rdf".encode())
+    def test_rdf_from_string(self):
+        rdf = PysemsimAPI.rdf_from_string(
+            TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(), "test_rdf_from_string.rdf".encode())
+        expected = 1
+        actual = PysemsimAPI.rdf_size(rdf)
+        self.assertEqual(expected, actual)
+
+    def test_rdf_add_from_string(self):
+        PysemsimAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(),
+                                        "test_rdf_from_string.rdf".encode())
         expected = 1
         actual = PysemsimAPI.rdf_size(self.rdf)
         self.assertEqual(expected, actual)
 
-    def test_rdf_to_string_cfunc(self):
-        PysemsimAPI.rdf_from_string(self.rdf, TestStrings.singular_annotation2.encode(), "rdfxml".encode())
+    def test_rdf_from_uri(self):
+        sbml_url = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml"
+
+        rdf = PysemsimAPI.rdf_from_uri(sbml_url.encode(), 'rdfxml'.encode(),
+                                       "test_rdf_from_string.rdf".encode())
+        expected = 277
+        actual = PysemsimAPI.rdf_size(rdf)
+        self.assertEqual(expected, actual)
+
+    def test_rdf_add_from_uri(self):
+        sbml_url = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml"
+
+        PysemsimAPI.rdf_add_from_uri(self.rdf, sbml_url.encode(), 'rdfxml'.encode(),
+                                     "test_rdf_from_string.rdf".encode())
+        expected = 277
+        actual = PysemsimAPI.rdf_size(self.rdf)
+        self.assertEqual(expected, actual)
+
+    def test_rdf_from_file(self):
+        fname = os.path.join(os.getcwd(), "test_rdf_from_file.rdf")
+        with open(fname, "w") as f:
+            f.write(TestStrings.singular_annotation2)
+
+        rdf = PysemsimAPI.rdf_from_file(fname.encode(), 'rdfxml'.encode(),
+                                        "test_rdf_from_string.rdf".encode())
+        expected = 1
+        actual = PysemsimAPI.rdf_size(rdf)
+        self.assertEqual(expected, actual)
+        os.remove(fname)
+
+    def test_rdf_add_from_file(self):
+        fname = os.path.join(os.getcwd(), "test_rdf_from_file.rdf")
+        with open(fname, "w") as f:
+            f.write(TestStrings.singular_annotation2)
+
+        PysemsimAPI.rdf_add_from_file(self.rdf, fname.encode(), 'rdfxml'.encode(),
+                                      "test_rdf_from_string.rdf".encode())
+        expected = 1
+        actual = PysemsimAPI.rdf_size(self.rdf)
+        self.assertEqual(expected, actual)
+        os.remove(fname)
+
+    def test_rdf_to_string(self):
+        PysemsimAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
+                                        "rdfxml".encode(), "test_rdf_to_string.rdf".encode())
         string_ptr = PysemsimAPI.rdf_to_string(self.rdf, "rdfxml-abbrev".encode(), "basey.rdf".encode())
         actual2 = PysemsimAPI.get_and_free_c_str(string_ptr)
         expected = """<?xml version="1.0" encoding="utf-8"?>
@@ -118,14 +168,15 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(expected, actual2)
 
     def test_rdf_get_base_uri(self):
-        PysemsimAPI.rdf_from_string(self.rdf, TestStrings.singular_annotation2.encode(), "rdfxml".encode())
+        PysemsimAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(), "rdfxml".encode(), "test_rdf_get_base_uri".encode())
         ptr = PysemsimAPI.rdf_get_base_uri(self.rdf)
         actual = PysemsimAPI.get_and_free_c_str(ptr)
         expected = "file://./Annotations.rdf"
         self.assertEqual(expected, actual)
 
     def test_rdf_set_base_uri(self):
-        PysemsimAPI.rdf_from_string(self.rdf, TestStrings.singular_annotation2.encode(), "rdfxml".encode())
+        PysemsimAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(), "rdfxml".encode(),
+                                        "test_rdf_set_base.rdf".encode())
         PysemsimAPI.rdf_set_base_uri(self.rdf, "new_base_uri.rdf".encode())
         ptr = PysemsimAPI.rdf_get_base_uri(self.rdf)
         actual = PysemsimAPI.get_and_free_c_str(ptr)
@@ -169,7 +220,7 @@ class TestAPI(unittest.TestCase):
         editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         PysemsimAPI.editor_add_namespace(editor_ptr, "https://namespace.com".encode(), "ns_".encode())
         singular_annotation = PysemsimAPI.editor_new_singular_annotation(editor_ptr)
-        singular_annotation = PysemsimAPI.singular_annotation_set_about(singular_annotation, "cytoplasm".encode())
+        singular_annotation = PysemsimAPI.singular_annotation_set_about(singular_annotation, "cytosol".encode())
         singular_annotation = PysemsimAPI.singular_annotation_set_predicate_uri(singular_annotation,
                                                                                 "https://predicate.com/from/uri".encode())
         singular_annotation = PysemsimAPI.singular_annotation_set_resource_literal(singular_annotation,
@@ -183,7 +234,7 @@ class TestAPI(unittest.TestCase):
 <rdf:RDF xmlns:ns_="https://namespace.com"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xml:base="file://namespace_test.rdf">
-  <rdf:Description rdf:about="cytoplasm">
+  <rdf:Description rdf:about="cytosol">
     <ns1:uri xmlns:ns1="https://predicate.com/from/"
        rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#string">namespace test</ns1:uri>
   </rdf:Description>
