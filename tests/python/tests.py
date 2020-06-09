@@ -16,7 +16,9 @@ pysemsem_dir = os.path.join(src_dir, "pysemsim")
 
 site.addsitedir(src_dir)
 
-import pysemsim
+# module not found by IDE, but it does exist and and tests do run
+from pysemsim import *
+
 import tellurium as te
 
 xml = """<?xml version="1.0" encoding="UTF-8"?>
@@ -100,27 +102,32 @@ class TestRDF(unittest.TestCase):
     </rdf:RDF>"""
 
     def test_crete_new_rdf_obj(self):
-        rdf = pysemsim.RDF()
+        rdf = RDF()
         self.assertIsInstance(rdf._obj, int)
 
     def test_from_string(self):
-        rdf = pysemsim.RDF.from_string(self.rdf_str, "rdfxml")
+        rdf = RDF.from_string(self.rdf_str, "rdfxml")
+        self.assertEqual(6, len(rdf))
+    
+    def test_add_from_string(self):
+        rdf = RDF()
+        RDF.add_from_string(self.rdf_str, "rdfxml", "test_add_from_string.rdf")
         self.assertEqual(6, len(rdf))
 
     def test_get_base_uri(self):
-        rdf = pysemsim.RDF.from_string(self.rdf_str, "rdfxml")
+        rdf = RDF.from_string(self.rdf_str, "rdfxml")
         uri = rdf.get_base_uri()
         self.assertEqual("file://./Annotations.rdf", uri)
 
     def test_set_base_uri(self):
-        rdf = pysemsim.RDF.from_string(self.rdf_str, "rdfxml")
+        rdf = RDF.from_string(self.rdf_str, "rdfxml")
         rdf.set_base_uri("ABaseUri.rdf")
         uri = rdf.get_base_uri()
         expected = "file:///mnt/d/libsemsim/tests/python/ABaseUri.rdf"
         self.assertEqual(expected, uri)
 
     def test_query(self):
-        rdf = pysemsim.RDF.from_string(self.rdf_str, "rdfxml")
+        rdf = RDF.from_string(self.rdf_str, "rdfxml")
         q = """SELECT ?x ?y ?z 
         WHERE {?x ?y ?z}
         """
@@ -141,11 +148,11 @@ file://./source_0,http://www.bhi.washington.edu/semsim#hasPhysicalEntityReferenc
 class EditorTests(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.rdf = pysemsim.RDF()
+        self.rdf = RDF()
         self.editor = self.rdf.to_editor(xml, "sbml")
 
     def test_to_editor(self):
-        self.assertIsInstance(self.editor, pysemsim.Editor)
+        self.assertIsInstance(self.editor, Editor)
 
     def test_context_manager_single_annotation(self):
         with self.rdf.to_editor(xml, "sbml") as editor:
@@ -260,7 +267,7 @@ class AnnotateAModelTest(unittest.TestCase):
         self.sbml = te.antimonyToSBML(ant)
 
     def test_get_metaids(self):
-        rdf = pysemsim.RDF()
+        rdf = RDF()
         with rdf.to_editor(self.sbml, "sbml") as editor:
             metaids = editor.get_metaids()
 
@@ -277,7 +284,7 @@ class AnnotateAModelTest(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_get_xml(self):
-        rdf = pysemsim.RDF()
+        rdf = RDF()
         with rdf.to_editor(self.sbml, "sbml") as editor:
             xml_with_metaids = editor.get_xml()
 
@@ -349,7 +356,7 @@ class AnnotateAModelTest(unittest.TestCase):
         Returns:
 
         """
-        rdf = pysemsim.RDF()
+        rdf = RDF()
         with rdf.to_editor(self.sbml, "sbml") as editor:
             print(editor.get_xml())
 
@@ -522,7 +529,7 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
         assert (len(rdf_strings) == 1), len(rdf_strings)
 
         # now libsemsim can read the string into an rdf graph
-        rdf = pysemsim.RDF.from_string(rdf_strings[0])
+        rdf = RDF.from_string(rdf_strings[0])
 
         # serialize to html, because why not?
         actual = rdf.to_string(format, gold_standard_filename)[:500]  # shorten
@@ -598,7 +605,7 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
     def test_query(self):
         self.download_file(self.gold_standard_url3, self.gold_standard_filename3)
         s = self.extract_rdf_from_combine_archive(self.gold_standard_filename3)[0]
-        rdf = pysemsim.RDF.from_string(s, "guess")
+        rdf = RDF.from_string(s, "guess")
         query_str = """
         PREFIX bqbiol: <http://biomodels.net/biology-qualifiers/>
         SELECT ?x ?z
@@ -617,7 +624,7 @@ aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
     def test_query2(self):
         self.download_file(self.gold_standard_url3, self.gold_standard_filename3)
         s = self.extract_rdf_from_combine_archive(self.gold_standard_filename3)[0]
-        rdf = pysemsim.RDF.from_string(s, "guess")
+        rdf = RDF.from_string(s, "guess")
         query_str = """
         PREFIX semsim: <http://www.bhi.washington.edu/SemSim#>
         SELECT ?x ?z
@@ -636,7 +643,7 @@ aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
     def test_to_triples(self):
         self.download_file(self.gold_standard_url3, self.gold_standard_filename3)
         s = self.extract_rdf_from_combine_archive(self.gold_standard_filename3)[0]
-        rdf = pysemsim.RDF.from_string(s, "guess")
+        rdf = RDF.from_string(s, "guess")
 
         print(rdf)
 
@@ -671,7 +678,7 @@ aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
         sbml1 = te.antimonyToSBML(ant1)
         sbml2 = te.antimonyToSBML(ant2)
 
-        rdf = pysemsim.RDF()
+        rdf = RDF()
         with rdf.to_editor(sbml1, "sbml") as editor:
             print(editor.get_xml())
             with editor.new_singular_annotation() as singular_annotation:

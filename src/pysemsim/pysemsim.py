@@ -25,34 +25,51 @@ def _xml_type_factory(xml_type: str):
 
 class RDF:
 
-    def __init__(self):
-        self._obj = PysemsimAPI.rdf_new()
+    def __init__(self, rdf_ptr:ct.c_int64 = None):
+        # when pointer argument not given by user, create new instance of RDF
+        # argument is only given manually when static methods are used and
+        # this is hidden from users.
+        if not rdf_ptr:
+            self._obj = PysemsimAPI.rdf_new()
+        else:
+            self._obj = rdf_ptr
 
     def __len__(self):
         """Returns the number of individual Triples stored in the rdf model"""
         return PysemsimAPI.rdf_size(self._obj)
 
     def __str__(self):
+        """Defaults to rdfxml-abbrev syntax"""
         return self.to_string("rdfxml-abbrev", base_uri="./Annotation.rdf")
 
     def __del__(self):
+        """deletes the RDF instance"""
         self.delete()
 
     @staticmethod
-    def from_string(rdf_string: str, format: str = "guess") -> RDF:
+    def from_string(rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf") -> RDF:
         """read rdf from a string"""
-        rdf = RDF()
-        PysemsimAPI.rdf_from_string(rdf._obj, rdf_string.encode(), format.encode())
-        return rdf
+        rdf = PysemsimAPI.rdf_from_string(rdf_string.encode(), format.encode(), base_uri.encode())
+        return RDF(rdf)
+
+    def add_from_string(self, rdf_string: str, format: str = "guess", base_uri:str = "./Annotations.rdf") -> None:
+        PysemsimAPI.rdf_add_from_string(self._obj, rdf_string.encode(), format.encode(), base_uri.encode())
 
     @staticmethod
-    def from_file(rdf_file: str, format:str = "guess"):
-        """read rdf from a file"""
-        with open(rdf_file, "r") as f:
-            rdf_string = f.read()
-        return RDF.from_string(rdf_string, format)
+    def from_uri(uri_string: str, format: str) -> RDF:
+        return RDF(PysemsimAPI.rdf_from_uri(uri_string.encode(), format.encode()))
 
-    def delete(self):
+    def add_from_uri(self, uri_string: str, format: str) -> None:
+        PysemsimAPI.rdf_add_from_uri(self._obj, uri_string.encode(), format.encode())
+
+    @staticmethod
+    def from_file(filename: str, format: str) -> RDF:
+        return RDF(PysemsimAPI.rdf_from_file(filename.encode(), format.encode()))
+
+    def add_from_file(self, filename: str, format: str) -> None:
+        PysemsimAPI.rdf_add_from_file(self._obj, filename.encode(), format.encode())
+
+    def delete(self) -> None:
         """destructor. Delete the dynamically allocated rdf object"""
         PysemsimAPI.rdf_delete(self._obj)
 
@@ -84,7 +101,7 @@ class RDF:
 
 class Editor:
 
-    def __init__(self, editor_ptr):
+    def __init__(self, editor_ptr: ct.c_int64):
         self._obj = editor_ptr
 
     def __enter__(self):
@@ -164,10 +181,10 @@ class Editor:
 
 class SingularAnnotation:
 
-    def __init__(self, singular_annotation_ptr):
+    def __init__(self, singular_annotation_ptr: ct.c_int64):
         self._obj = singular_annotation_ptr
 
-    def get_ptr(self):
+    def get_ptr(self) -> ct.c_int64:
         return self._obj
 
     def set_about(self, about: str) -> SingularAnnotation:
@@ -212,13 +229,13 @@ class SingularAnnotation:
         return PysemsimAPI.get_and_free_c_str(
             PysemsimAPI.singular_annotation_get_resource(self._obj))
 
-    def delete(self):
+    def delete(self) -> None:
         PysemsimAPI.singular_annotation_delete(self._obj)
 
 
 class PhysicalEntity:
 
-    def __init__(self, physical_entity_ptr):
+    def __init__(self, physical_entity_ptr: ct.c_int64):
         self._obj = physical_entity_ptr
 
     def get_ptr(self) -> ct.c_int64:
@@ -265,16 +282,16 @@ class PhysicalEntity:
     def __str__(self):
         return self.to_string("rdfxml-abbrev", "./Annotation.rdf")
 
-    def delete(self):
+    def delete(self) -> None:
         PysemsimAPI.physical_entity_delete(self._obj)
 
 
 class PhysicalProcess:
 
-    def __init__(self, physical_process_ptr):
+    def __init__(self, physical_process_ptr : ct.c_int64):
         self._obj = physical_process_ptr
 
-    def get_ptr(self):
+    def get_ptr(self) -> ct.c_int64:
         return self._obj
 
     def set_about(self, about: str) -> PhysicalProcess:
@@ -310,20 +327,20 @@ class PhysicalProcess:
     def get_about(self) -> str:
         return PysemsimAPI.get_and_free_c_str(PysemsimAPI.physical_process_get_about(self._obj))
 
-    def get_physical_property(self):
+    def get_physical_property(self) -> str:
         return PysemsimAPI.get_and_free_c_str(
             PysemsimAPI.physical_process_get_physical_property(self._obj))
 
-    def delete(self):
+    def delete(self) -> None:
         PysemsimAPI.physical_process_delete(self._obj)
 
 
 class PhysicalForce:
 
-    def __init__(self, physical_force_ptr):
+    def __init__(self, physical_force_ptr: ct.c_int64):
         self._obj = physical_force_ptr
 
-    def get_ptr(self):
+    def get_ptr(self) -> ct.c_int64:
         return self._obj
 
     def set_about(self, about: str) -> PhysicalForce:
@@ -354,9 +371,9 @@ class PhysicalForce:
     def get_about(self) -> str:
         return PysemsimAPI.get_and_free_c_str(PysemsimAPI.physical_force_get_about(self._obj))
 
-    def get_physical_property(self):
+    def get_physical_property(self) -> str:
         return PysemsimAPI.get_and_free_c_str(
             PysemsimAPI.physical_force_get_physical_property(self._obj))
 
-    def delete(self):
+    def delete(self) -> None:
         PysemsimAPI.physical_force_delete(self._obj)
