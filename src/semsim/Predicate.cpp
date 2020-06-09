@@ -251,6 +251,7 @@ namespace semsim {
                 "BiomodelsBiologyQualifier",
                 "BiomodelsModelQualifier",
                 "SemSim",
+                "DCTerm"
         };
 
         if (std::find(valid_namespace_strings.begin(), valid_namespace_strings.end(), namespace_) ==

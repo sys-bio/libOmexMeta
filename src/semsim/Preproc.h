@@ -11,25 +11,9 @@
 #include <ostream>
 
 /*
- * Macro handy for debugging seg faults.
+ * Macros defined in this header file will eventually
+ * be used to enable portability of libsemsim
  */
-#define HERE(x)                              \
-do {                                        \
-  std::cout << __FILE__ << ":" << __LINE__ <<std::endl; \
-} while (0)
-
-
-/*
- * Logger, extension of HERE. Used for error messages
- */
-#define LOG(x)                              \
-do {                                        \
-  std::cout << __FILE__ << ":" <<__FUNC__<<":"<< __LINE__ << ":" << x << std::endl; \
-} while (0)
-
-
-
-
 
 // https://stackoverflow.com/questions/2164827/explicitly-exporting-shared-library-functions-in-linux
 #if defined(_MSC_VER)

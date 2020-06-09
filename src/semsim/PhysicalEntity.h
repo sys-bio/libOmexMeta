@@ -41,6 +41,7 @@ namespace semsim {
          * @param is The "what" portion of a PhysicalEntity object.
          * @param is_part_of The "where" portion of the PhysicalEntity object.
          *
+         *
          * Users should not need to use this constructor directly as it is embedded in the
          * builder interface. The @param is_part_of parameter is actually a std::vector of
          * Resource objects. It can be as long as needed.
@@ -75,6 +76,7 @@ namespace semsim {
         /*
          * @brief convert PhysicalEntity to a Triples object, which can then be
          * passed to a model via the Editor::addPhysicalEntity method.
+         * @return a Triples objects containing the Triple objects associated with this PhysicalEntity
          *
          * When using "toTriples" you are giving ownership of the nodes used by
          * PhysicalEntity to the returned Triples object, which automatically cleans up
@@ -87,18 +89,21 @@ namespace semsim {
         /*
          * @brief return the IdentityResource in use. I.e. the "what"
          * portion of the PhysicalEntity
+         * @return the identity Resource
          */
         [[nodiscard]] const Resource &getIdentityResource() const;
 
         /*
          * @brief return a vector of resources representing the
          * "where" part of the PhysicalEntity
+         * @return vector of Resource objects representing anatomical location of physical entity
          */
         [[nodiscard]] const Resources &getLocationResources() const;
 
         /*
          * @brief sets the about portion of the PhysicalEntity.
          * @param metaid the metaid for the PhysicalEntity.
+         * @return a reference to this Physical entity. Allows chaining together builder commands.
          *
          * A Subject with a URI node is automatically created with the metaid,
          * which is the id of the model element representing the PhysicalEntity. The
@@ -112,6 +117,7 @@ namespace semsim {
         /*
          * @brief sets the physical property for a PhysicalEntity instance.
          * @param physicalProperty a string representing the OPB term used by the PhysicalEntity
+         * @return a reference to this Physical entity. Allows chaining together builder commands.
          *
          * The OBP argument requires a string of the form "obp:opbxxx" where "xxx" is the id for the OPB term.
          * An instance of PhysicalPropertyResource is instantiated with @param physicalProperty as its value.
@@ -120,6 +126,7 @@ namespace semsim {
 
         /*
          * @brief sets the physical property for a PhysicalEntity instance
+         * @return a reference to this Physical entity. Allows chaining together builder commands.
          *
          * Prefer the alternative setPhysicalProperty instance, since you do not need to instantiate
          * the PhysicalPropertyResource yourself.
@@ -131,6 +138,7 @@ namespace semsim {
         /*
          * @brief sets the identity portion of the PhysicalEntity (the "What").
          * @param resource The resource to be used for the identity.
+         * @return a reference to this Physical entity. Allows chaining together builder commands.
          *
          * The input string gets converted to a Resource automatically.
          *
@@ -141,6 +149,7 @@ namespace semsim {
         /*
          * @brief add a location to the PhysicalEntity.
          * @param where The resource representing a location.
+         * @return a reference to this Physical entity. Allows chaining together builder commands.
          *
          * The input string gets converted to a Resource automatically. An arbitrary
          * number of locations are allowed. The location is added to the back of a vector
@@ -157,6 +166,7 @@ namespace semsim {
 
         /*
          * @brief returns the number of locations used by PhysicalEntity
+         * @return the number of locations in a PhysicalEntity
          */
         [[nodiscard]] int getNumLocations() const;
     };

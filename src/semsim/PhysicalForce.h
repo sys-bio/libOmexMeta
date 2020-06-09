@@ -64,21 +64,25 @@ namespace semsim {
 
         /*
          * @brief create a metaid for the physical force annotation
+         * @brief a new metaid for PhysicalForce
          */
-        [[nodiscard]] std::string createMetaId() const;
+        [[maybe_unused]] [[nodiscard]] std::string createMetaId() const;
 
         /*
          * @brief return vector of Source objects assocated with PhysicalForce
+         * @return a vector of SourceParticipants
          */
         [[nodiscard]] const Sources &getSources() const;
 
         /*
          * @brief return vector of Sink objects assocated with PhysicalForce
+         * @return a vector of SinkParticipants
          */
         [[nodiscard]] const Sinks &getSinks() const;
 
         /*
          * @brief converts the PhyicalForce object into a Triples object.
+         * @return a Triples object containing the individual Triple objects of a PhysicalForce.
          *
          * When this method is called ownership of all RDF nodes gets transferred from
          * the caller to the returned Triples object.
@@ -88,6 +92,7 @@ namespace semsim {
         /*
          * @brief sets the about field of the PhysicalForce
          * @param metaid id for the physical force. Result is relative to base_uri.
+         * @return a reference to this PhysicalForce to enable the builder interface.
          *
          * A Resource object with a URI node is instantiated using the
          * the @param metaid.
@@ -100,6 +105,7 @@ namespace semsim {
          * @brief sets the physical property of the PhysicalForce
          * @parameter physicalProperty An instance of PhysicalPropertyResource representing the
          * physical property term for the PhysicalForce.
+         * @return a reference to this PhysicalForce to enable the builder interface.
          *
          * Prefer the other setPhysicalProperty method since it only requires a
          * string input and instantiates the PhysicalPropertyResource for you.
@@ -112,6 +118,7 @@ namespace semsim {
          * @brief sets the physical property of the PhysicalForce
          * @parameter physicalProperty. An instance of PhysicalPropertyResource
          * representing the physical property term for the PhysicalForce is automatically instantiated
+         * @return a reference to this PhysicalForce to enable the builder interface.
          */
         PhysicalForce &setPhysicalProperty(const std::string &physicalProperty);
 
@@ -121,6 +128,7 @@ namespace semsim {
          * @param multiplier The multiplier argument for SourceParticipant
          * @param physical_entity_reference The physicalEntityReference argument for
          * the SourceParticipant.
+         * @return a reference to this PhysicalForce to enable the builder interface.
          *
          * See SourceParticipant documentation for more details on arguments.
          */
@@ -132,6 +140,7 @@ namespace semsim {
          * @param multiplier The multiplier argument for SinkParticipant
          * @param physical_entity_reference The physicalEntityReference argument for
          * the SinkParticipant.
+         * @return a reference to this PhysicalForce to enable the builder interface.
          *
          * See SinkParticipant documentation for more details on arguments.
          */
@@ -142,12 +151,14 @@ namespace semsim {
         /*
          * @brief returns the number of sources associated with the
          * PhysicalForce
+         * @return the integer number of sources
          */
         int getNumSources();
 
         /*
          * @brief returns the number of sinks associated with the
          * PhysicalForce
+         * @return the integer number of sinks
          */
         int getNumSinks();
     };

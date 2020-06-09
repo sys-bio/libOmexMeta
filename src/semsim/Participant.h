@@ -53,6 +53,8 @@ namespace semsim {
 
         /*
          * @brief create a Triples object from the Participant.
+         * @param process_metaid the metaid for a process
+         * @return A Triples container for the Triples associated with this Participant
          *
          * The same toTriples method is used for all participants.
          */
@@ -60,32 +62,36 @@ namespace semsim {
 
         /*
          * @brief get the predicate currently in use by the participant
+         * @return a SemSim predicate
          */
         SemSim getPredicate();
 
         /*
          * @brief set the predicate used in the participant
          * @param semsim_predicate_string The predicate portion of the SemSim predicate you want to use.
+         *
          * i.e. "hasSourceParticipant" not "http://www.bhi.washington.edu/semsim#hasSourceParticipant"
          */
         void setPredicate(std::string semsim_predicate_string);
 
         /*
          * @brief get the subject portion of the Participant, which is the
+         * @return the string of the subject value
          * metaid of the Participant
          */
         [[nodiscard]] const std::string &getSubject() const;
 
         /*
          * @brief get the multiplier representing the stoiciometry of the process being described
+         * @return the multiplier
          */
         [[nodiscard]] double getMultiplier() const;
 
         /*
          * @brief get the physicalEntityReference
+         * @return the physicalEntityReference string
          */
         [[nodiscard]] const std::string &getPhysicalEntityReference() const;
-
 
     };
 

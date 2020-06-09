@@ -92,11 +92,13 @@ namespace semsim {
 
         /*
          * @brief returns a hashmap of namespaces to prefixes.
+         * @return Map where keys are namespaces and values are prefixes
          */
         [[nodiscard]] const NamespaceMap &getNamespaces() const;
 
         /*
          * @brief return the underlying librdf_model* pointer
+         * @return the librdf_model pointer
          */
         [[nodiscard]] librdf_model* getModel() const;
 
@@ -107,12 +109,14 @@ namespace semsim {
 
         /*
          * @brief return the xml
+         * @return the xml string after metaids are added
          */
         [[nodiscard]] const std::string &getXml() const;
 
         /*
          * @brief returns a list of metaids both that existed previously and that was added
          * during instantiation.
+         * @return vector of metaids used in the xml
          */
         [[nodiscard]] const std::vector<std::string> &getMetaids() const;
 
