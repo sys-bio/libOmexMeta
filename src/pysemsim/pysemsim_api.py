@@ -69,19 +69,19 @@ class PysemsimAPI:
                                      [ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri);
-    Util.load_func("RDF_addFromString", [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_void_p)
+    rdf_add_from_string = Util.load_func("RDF_addFromString", [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_void_p)
 
     # RDF *RDF_fromUri(const char *uri_string, const char *format);
-    Util.load_func("RDF_fromUri", [ct.c_char_p, ct.c_char_p], ct.c_int64)
+    rdf_from_uri = Util.load_func("RDF_fromUri", [ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # void RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
-    Util.load_func("RDF_addFromUri", [ct.c_int64, ct.c_char_p, ct.c_char_p], None)
+    rdf_add_from_uri = Util.load_func("RDF_addFromUri", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_void_p)
 
     # RDF *RDF_fromFile(const char *filename, const char *format);
-    Util.load_func("RDF_fromFile", [ct.c_char_p, ct.c_char_p], ct.c_int64)
+    rdf_from_file = Util.load_func("RDF_fromFile", [ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # void RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
-    Util.load_func("RDF_addFromFile", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    rdf_add_from_file = Util.load_func("RDF_addFromFile", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # char *RDF_toString(RDF *rdf_ptr, const char *format, const char *base_uri);
     rdf_to_string = Util.load_func("RDF_toString", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
