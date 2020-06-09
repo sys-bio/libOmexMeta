@@ -25,7 +25,6 @@ public:
 
     void TearDown() override {
     };
-
 };
 
 
@@ -40,8 +39,7 @@ TEST_F(CAPITests, RDFNew) {
 }
 
 TEST_F(CAPITests, RDFSize) {
-    RDF *rdf_ptr = RDF_new();
-    RDF_fromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml", "LannotationsBase.rdf");
+    RDF *rdf_ptr = RDF_fromString(samples.singular_annotation1.c_str(), "rdfxml", "LannotationsBase.rdf");
     int actual = RDF_size(rdf_ptr);
     int expected = 1;
     ASSERT_EQ(expected, actual);
@@ -56,8 +54,7 @@ TEST_F(CAPITests, FreeCharStar) {
 }
 
 TEST_F(CAPITests, RDFToString) {
-    RDF *rdf_ptr = RDF_new();
-    RDF_fromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml");
+    RDF *rdf_ptr = RDF_fromString(samples.singular_annotation1.c_str(), "rdfxml");
     std::string actual = rdf_ptr->toString("rdfxml-abbrev", "annotation.rdf");
 
     std::cout << actual << std::endl;
@@ -74,8 +71,7 @@ TEST_F(CAPITests, RDFToString) {
 }
 
 TEST_F(CAPITests, RDFgetBaseUri) {
-    RDF *rdf_ptr = RDF_new();
-    RDF_fromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml");
+    RDF *rdf_ptr = RDF_fromString(samples.singular_annotation1.c_str(), "rdfxml");
     char *actual = RDF_getBaseUri(rdf_ptr);
     std::cout << actual << std::endl;
     const char *expected = "file://./Annotations.rdf";
@@ -86,8 +82,7 @@ TEST_F(CAPITests, RDFgetBaseUri) {
 }
 
 TEST_F(CAPITests, RDFsetBaseUri) {
-    RDF *rdf_ptr = RDF_new();
-    RDF_fromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml");
+    RDF *rdf_ptr = RDF_fromString(samples.singular_annotation1.c_str(), "rdfxml");
     RDF_setBaseUri(rdf_ptr, "ANewBaseUri.rdf");
     char *actual = RDF_getBaseUri(rdf_ptr);
     std::cout << actual << std::endl;
@@ -100,8 +95,7 @@ TEST_F(CAPITests, RDFsetBaseUri) {
 
 
 TEST_F(CAPITests, RDFqueryResultsAsStr) {
-    RDF *rdf_ptr = RDF_new();
-    RDF_fromString(rdf_ptr, samples.composite_annotation_pe.c_str(), "rdfxml");
+    RDF *rdf_ptr = RDF_fromString(samples.composite_annotation_pe.c_str(), "rdfxml");
 
     const char *query = "SELECT ?x ?y ?z \n"
                         "WHERE { ?x ?y ?z }";
@@ -801,7 +795,7 @@ TEST_F(CAPITests, TestRDFTwice3) {
 
 
 TEST_F(CAPITests, RDF_fromString2) {
-    RDF *rdf_ptr = RDF_fromString2(samples.composite_annotation_pf.c_str(), "rdfxml", "RDF_fromStringTest.rdf");
+    RDF *rdf_ptr = RDF_fromString(samples.composite_annotation_pf.c_str(), "rdfxml", "RDF_fromStringTest.rdf");
     int expected = 6;
     int actual = RDF_size(rdf_ptr);
     ASSERT_EQ(expected, actual);

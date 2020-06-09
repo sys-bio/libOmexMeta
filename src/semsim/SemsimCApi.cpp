@@ -81,12 +81,7 @@ namespace semsim {
         delete rdf_ptr;
     }
 
-    void RDF_fromString(RDF *rdf_ptr, const char *str, const char *format, const char *baseuri) {
-        RDF::fromString(rdf_ptr, str, format, baseuri);
-    }
-
-
-    RDF* RDF_fromString2(const char *str, const char *format, const char *baseuri) {
+    RDF* RDF_fromString(const char *str, const char *format, const char *baseuri) {
         RDF* rdf = RDF_new();
         rdf->addFromString(str, format, baseuri);
         return rdf;
@@ -103,9 +98,8 @@ namespace semsim {
         return rdf;
     }
 
-    RDF* RDF_addFromUri(RDF* rdf_ptr, const char* uri_string, const char* format){
+    void RDF_addFromUri(RDF* rdf_ptr, const char* uri_string, const char* format){
         rdf_ptr->addFromUri(uri_string, format);
-        return rdf_ptr;
     }
 
     RDF* RDF_fromFile(const char* filename, const char* format){
@@ -114,9 +108,8 @@ namespace semsim {
         return rdf;
     }
 
-    RDF* RDF_addFromFile(RDF* rdf_ptr, const char* uri_string, const char* format){
+    void RDF_addFromFile(RDF* rdf_ptr, const char* uri_string, const char* format){
         rdf_ptr->addFromFile(uri_string, format);
-        return rdf_ptr;
     }
 
     char *RDF_toString(RDF *rdf_ptr, const char *format, const char *base_uri) {
