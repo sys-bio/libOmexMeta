@@ -144,15 +144,13 @@ namespace redland {
                 base_uri.get(), model.get());
     }
 
-    void
-    LibrdfParser::parseUriIntoModel(const LibrdfUri &uri, const LibrdfUri &base_uri, const LibrdfModel &model) const {
-        librdf_parser_parse_into_model(
-                parser_, uri.get(), base_uri.get(), model.get());
-    }
-
-    void LibrdfParser::parseUri(const LibrdfUri &uri, const LibrdfModel &model) const {
-        librdf_parser_parse_into_model(
-                parser_, uri.get(), uri.get(), model.get());
+    void LibrdfParser::parseString(const std::string &rdf_string, const LibrdfModel &model,
+                                   const std::string &base_uri) const {
+        LibrdfUri u(base_uri);
+        librdf_parser_parse_string_into_model(
+                parser_, (const unsigned char *) rdf_string.c_str(),
+                u.get(), model.get());
+        u.freeUri();
     }
 
     void LibrdfParser::parseUri(const std::string &uri_string, const LibrdfModel &model) const {

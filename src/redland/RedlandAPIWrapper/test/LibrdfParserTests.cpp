@@ -74,7 +74,6 @@ TEST_F(LibrdfParserTests, TestGetMimeType2) {
     ASSERT_EQ("application/rdf+xml", parser.getMimeType());
 }
 
-
 TEST_F(LibrdfParserTests, TestParseFromAFile) {
     LibrdfStorage storage;
     LibrdfModel model(storage.get());
