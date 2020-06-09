@@ -30,6 +30,7 @@ namespace semsim {
          * @brief download a file from the internet
          * @param url The url to download.
          * @param output_filename. Where to put the downloaded content.
+         * @return success code. Non-0 fails.
          */
         static int download(const std::string &url, const std::string &output_filename);
     };

@@ -39,12 +39,30 @@ namespace semsim {
 
         bool operator!=(const MetaID &rhs) const;
 
+        /*
+         * @brief generate the string for a metaid
+         * @return a metaid defined by the parameters in instantiation
+         */
         [[nodiscard]] std::string generate() const;
 
+        /*
+         * @brief generate the string for a metaid
+         * @param number of digits
+         * @return a metaid defined by the parameters in instantiation
+         */
         [[nodiscard]] std::string generate(long n) const;
 
+        /*
+         * @brief figure out the max number possible with user parameters
+         * @return the maximum possible number with user parameters
+         */
         [[nodiscard]] int maxNumber() const;
 
+        /*
+         * @brief count the digits in a number
+         * @param n the number to count digits in
+         * @return the number of digits in n
+         */
         static int countDigits(long n);
     };
 }

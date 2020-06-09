@@ -37,6 +37,7 @@ namespace semsim {
          * @param sources a vector of Source objects representing the energetic sources for the PhysicalProcess
          * @param sinks a vector of Sink objects representing the energetic sinks for the PhysicalProcess
          * @param mediator a vector of Sink objects representing the energetic modulators for the PhysicalProcess
+         *
          */
         PhysicalProcess(librdf_model* model, Subject metaid,
                         PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks,
@@ -51,50 +52,57 @@ namespace semsim {
          * toTriples method, then resources used by PhysicalProcess must be freed manually
          * with this method.
          */
-        void free();
+        void free() override;
 
         /*
          * @brief constructor for the builder interface of PhysicalProcess instantiation
          * @param model the currently active RDF model.
          */
-        PhysicalProcess(librdf_model* model);
+        explicit PhysicalProcess(librdf_model* model);
 
         /*
          * @brief getter for sources
+         * @return a vector of SourceParticipant objects
          */
-        const Sources &getSources() const;
+        [[nodiscard]] const Sources &getSources() const;
 
         /*
          * @brief getter for sinks
+         * @return a vector of SinkParticipant objects
          */
-        const Sinks &getSinks() const;
+        [[nodiscard]] const Sinks &getSinks() const;
 
         /*
          * @brief getter for mediators
+         * @return a vector of MediatorParticipant objects
          */
-        const Mediators &getMediators() const;
+        [[nodiscard]] const Mediators &getMediators() const;
 
         /*
          * @brief convert a PhysicalProcess into a set of Triples
+         * @return A Triples object containing the set of Triple objects that represent this PhysicalProcess
          *
          * When used, the ownership of nodes in PhysicalProcess are pass
          * to the Triples object, which automatically destroys them when appropriate.
          * Otherwise the caller is responsible for freeing resources.
          */
-        Triples toTriples();
+        Triples toTriples() override;
 
         /*
          * @brief setter for the about portion of the PhysicalProcess.
+         * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
         PhysicalProcess &setAbout(std::string metaid);
 
         /*
          * @brief setter for the physical property portion of the PhysicalProcess.
+         * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
         PhysicalProcess &setPhysicalProperty(const std::string &physicalProperty);
 
         /*
          * @brief setter for the physical property portion of the PhysicalProcess.
+         * @return a reference to this PhysicalProcess to enable chaining setter commands
          *
          * Developers. Consider removing this method in favour of the
          * setPhysicalProperty version that only takes a string as argument
@@ -103,32 +111,38 @@ namespace semsim {
 
         /*
          * @brief add a source to the list of Source object associated with a PhysicalProcess
+         * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
         PhysicalProcess &addSource(std::string source_metaid, double multiplier, std::string physical_entity_reference);
 
         /*
          * @brief add a sink to the list of Source object associated with a PhysicalProcess
+         * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
         PhysicalProcess &addSink(std::string sink_metaid, double multiplier, std::string physical_entity_reference);
 
         /*
          * @brief add a mediator to the list of Source object associated with a PhysicalProcess
+         * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
         PhysicalProcess &addMediator(
                 std::string mediator_metaid, double multiplier, std::string physical_entity_reference);
 
         /*
          * @brief returns the number of sources assocaited with the PhysicalProcess
+         * @return the number of Source objects associated with this PhysicalProcess
          */
         int getNumSources();
 
         /*
          * @brief returns the number of sinks assocaited with the PhysicalProcess
+         * @return the number of Sink objects associated with this PhysicalProcess
          */
         int getNumSinks();
 
         /*
          * @brief returns the number of mediators assocaited with the PhysicalProcess
+         * @return the number of Mediator objects associated with this PhysicalProcess
          */
         int getNumMediators();
     };

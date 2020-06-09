@@ -76,11 +76,13 @@ namespace semsim {
 
         /*
          * @brief get the subject portion of the PhysicalPhenomenon
+         * @return the string associated with the subject node
          */
         [[nodiscard]] Subject getAbout() const;
 
         /*
          * @brief get the subject portion of the PhysicalPhenomenon
+         * @return the string associated with the subject node
          *
          * This is the same as getAbout method.
          */
@@ -88,18 +90,23 @@ namespace semsim {
 
         /*
          * @brief getter for Type argument
+         * @return the AnnotationType currently used (PhysicalEntity, PhysicalForce or PhysicalProcess)
          */
         [[nodiscard]] AnnotationType getType() const;
 
         /*
          * @brief getter for PhysicalProperty argument
+         * @return the resource representing the physical property being annotated
          */
         [[nodiscard]] PhysicalPropertyResource getPhysicalProperty() const;
 
         /*
          * @brief create a Triples object using the information
          * contained in the PhysicalPhenomenon. Overridden by subclasses.
+         * @return Triples object containing the individual Triple objects representing the PhysicalPhenomenon
+         *
          * Refer to subclasses for more documentation.
+         *
          */
         [[nodiscard]] virtual Triples toTriples();
 

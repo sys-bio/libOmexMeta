@@ -525,7 +525,7 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
         rdf = pysemsim.RDF.from_string(rdf_strings[0])
 
         # serialize to html, because why not?
-        actual = rdf.to_string(format, gold_standard_filename)[:500] #shorten
+        actual = rdf.to_string(format, gold_standard_filename)[:500]  # shorten
         print(actual)
 
         self.assertEqual(expected_output, actual)
@@ -594,6 +594,51 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
 	"RBIOMD0000000498.sbml#process_1" -> "RBIOMD0000000498.sbml#source_1" [ label="http://www.bhi.washington.edu/SemSim#hasSourceParticipant" ];
 	"RBIOMD0000000498.sbml#proces"""
         self.gold_standard_test(self.gold_standard_url5, self.gold_standard_filename5, expected, "dot")
+
+    def test_query(self):
+        self.download_file(self.gold_standard_url3, self.gold_standard_filename3)
+        s = self.extract_rdf_from_combine_archive(self.gold_standard_filename3)[0]
+        rdf = pysemsim.RDF.from_string(s, "guess")
+        query_str = """
+        PREFIX bqbiol: <http://biomodels.net/biology-qualifiers/>
+        SELECT ?x ?z
+        WHERE {
+            ?x bqbiol:isPropertyOf ?z
+        }"""
+        actual = rdf.query(query_str, "csv")[:500]
+        expected = """x,z
+aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#sodium_current_i_Na,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_0
+aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#intracellular_ion_concentrations.i_up,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_13
+aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#T_type_Ca_channel_f_T_gate.V,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#entity_0
+aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
+        print(actual)
+        self.assertEqual(expected, actual)
+
+    def test_query2(self):
+        self.download_file(self.gold_standard_url3, self.gold_standard_filename3)
+        s = self.extract_rdf_from_combine_archive(self.gold_standard_filename3)[0]
+        rdf = pysemsim.RDF.from_string(s, "guess")
+        query_str = """
+        PREFIX semsim: <http://www.bhi.washington.edu/SemSim#>
+        SELECT ?x ?z
+        WHERE {
+            ?x semsim:hasPhysicalEntityReference ?z
+        }"""
+        actual = rdf.query(query_str, "csv")
+#         expected = """x,z
+# aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#sodium_current_i_Na,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_0
+# aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#intracellular_ion_concentrations.i_up,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_13
+# aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#T_type_Ca_channel_f_T_gate.V,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#entity_0
+# aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
+        print(actual)
+#         self.assertEqual(expected, actual)
+
+    def test_to_triples(self):
+        self.download_file(self.gold_standard_url3, self.gold_standard_filename3)
+        s = self.extract_rdf_from_combine_archive(self.gold_standard_filename3)[0]
+        rdf = pysemsim.RDF.from_string(s, "guess")
+
+        print(rdf)
 
 
 if __name__ == "__main__":

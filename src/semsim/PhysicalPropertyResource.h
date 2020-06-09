@@ -48,29 +48,32 @@ namespace semsim {
         /*
          * @brief make the triple that has the "isVersionOf" predicate
          * @param subject_metaid The metaid for the subject portion of the triple.
+         * @return a Triple with the isVersionOf predicate for this PhysicalPropertyResource
          *
          * The metaid will be coverted into a RDF URI node
          */
-        Triple isVersionOfTriple(std::string subject_metaid) const;
+        [[nodiscard]] Triple isVersionOfTriple(std::string subject_metaid) const;
 
         /*
          * @brief make the triple that has the "isPropertyOf" predicate
          * @param subject_metaid The metaid for the subject portion of the triple.
          * @param property_metaid The metaid for the property portion of the triple.
+         * @return a Triple with the isPropertyOf predicate for this PhysicalPropertyResource
          *
          */
-        Triple isPropertyOfTriple(std::string subject_metaid, std::string property_metaid) const;
+        [[nodiscard]] Triple isPropertyOfTriple(std::string subject_metaid, std::string property_metaid) const;
 
         /*
          * @brief creates a Triples object using the information in the PhysicalPropertyResource
+         * @return a Triples object containing the set of Triple object used to represent this PhysicalPropertyResource
          */
-        Triples toTriples(std::string subject_metaid, std::string property_metaid) const;
+        [[nodiscard]] Triples toTriples(std::string subject_metaid, std::string property_metaid) const;
 
         /*
          * @brief indicator for whether the PhysicalPropertyResource node is empty.
-         * returns false when node is empty
+         * @return false when node is empty
          */
-        bool isSet() const override;
+        [[nodiscard]] bool isSet() const override;
     };
 }
 
