@@ -84,7 +84,7 @@ namespace redland {
     }
 
 
-    void LibrdfParser::setTypeUri(const std::string& type_uri) {
+    void LibrdfParser::setTypeUri(const std::string &type_uri) {
         if (type_uri_) {
             librdf_free_uri(type_uri_);
             type_uri_ = nullptr;
@@ -93,7 +93,7 @@ namespace redland {
     }
 
 
-    void LibrdfParser::setFeature(librdf_parser *parser, const std::string& feature_uri, librdf_node *node) {
+    void LibrdfParser::setFeature(librdf_parser *parser, const std::string &feature_uri, librdf_node *node) {
         LibrdfUri u(feature_uri);
         librdf_parser_set_feature(parser, u.get(), node);
         u.freeUri();
@@ -150,23 +150,24 @@ namespace redland {
                 parser_, uri.get(), base_uri.get(), model.get());
     }
 
-    void LibrdfParser::parseFilenameUriIntoModel(const LibrdfUri &filename_uri, const LibrdfUri &base_uri,
-                                                 const LibrdfModel &model) const {
+    void LibrdfParser::parseUri(const LibrdfUri &uri, const LibrdfModel &model) const {
         librdf_parser_parse_into_model(
-                parser_, filename_uri.get(), base_uri.get(), model.get());
+                parser_, uri.get(), uri.get(), model.get());
     }
 
-        void LibrdfParser::parseFilenameUriIntoModel(const std::string& filename_uri, const LibrdfModel &model) const{
-//        librdf_new_uri_from_filename()
+    void LibrdfParser::parseUri(const std::string &uri_string, const LibrdfModel &model) const {
+        LibrdfUri uri(uri_string);
+        librdf_parser_parse_into_model(
+                parser_, uri.get(), uri.get(), model.get());
+        uri.freeUri();
+    }
+
+    void LibrdfParser::parseFile(const std::string &filename_uri, const LibrdfModel &model) const {
         LibrdfUri filename_uri_ = LibrdfUri::fromFilename(filename_uri);
         LibrdfUri base_uri = LibrdfUri::fromFilename(filename_uri);
-
-
-        int x = librdf_uri_is_file_uri(base_uri.get());
-//        std::cout << "librdf_uri_is_file_uri: x " << x << std::endl;
-//        std::cout << "librdf_uri_is_file_uri: y " << y << std::endl;
-//        librdf_parser_parse_into_model(
-//                parser_, filename_uri_.get(), base_uri.get(), model.get());
+        librdf_parser_parse_into_model(
+                parser_, filename_uri_.get(), base_uri.get(), model.get()
+        );
     }
 
     void LibrdfParser::validateParserName() const {

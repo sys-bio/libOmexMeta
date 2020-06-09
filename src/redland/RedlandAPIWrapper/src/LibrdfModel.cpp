@@ -43,8 +43,14 @@ namespace redland {
     }
 
 
+    /*
+     *
+     *
+     * For developers: passing a raw pointer to librdf_storage* helps prevent memory leaks.
+     */
     LibrdfModel::LibrdfModel(librdf_storage *storage, const char *options)
             : model_(librdf_new_model(World::getWorld(), storage, options)) {}
+
 
     void LibrdfModel::addStatement(const LibrdfStatement &statement) const {
         librdf_model_add_statement(get(), statement.get());

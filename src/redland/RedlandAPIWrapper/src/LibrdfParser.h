@@ -63,10 +63,8 @@ namespace redland {
 
         void parseUriIntoModel(const LibrdfUri &uri, const LibrdfUri &base_uri, const LibrdfModel &model) const;
 
-        void parseFilenameUriIntoModel(const LibrdfUri &filename_uri, const LibrdfUri &base_uri,
-                                       const LibrdfModel &model) const;
 
-        void parseFilenameUriIntoModel(const std::string& filename_uri, const LibrdfModel &model) const;
+        void parseFile(const std::string& filename_uri, const LibrdfModel &model) const;
 
 
         std::string getName() const;
@@ -92,6 +90,10 @@ namespace redland {
         static void setOptions(librdf_parser *parser);
 
         std::vector<std::string> getSeenNamespaces() const;
+
+        void parseUri(const LibrdfUri &uri, const LibrdfModel &model) const;
+
+        void parseUri(const std::string &uri_string, const LibrdfModel &model) const;
     };
 }
 

@@ -75,7 +75,7 @@ TEST_F(LibrdfParserTests, TestGetMimeType2) {
 }
 
 
-TEST_F(LibrdfParserTests, TetsParseFromAFile) {
+TEST_F(LibrdfParserTests, TestParseFromAFile) {
     LibrdfStorage storage;
     LibrdfModel model(storage.get());
     std::string rdf_string = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -99,7 +99,7 @@ TEST_F(LibrdfParserTests, TetsParseFromAFile) {
     }
 
     LibrdfParser parser("rdfxml");
-    parser.parseFilenameUriIntoModel(fname, model);
+    parser.parseFile(fname, model);
 
     int actual = model.size();
     int expected = 1;
@@ -107,7 +107,7 @@ TEST_F(LibrdfParserTests, TetsParseFromAFile) {
 
     // clean up file
     int failed = std::remove(fname.c_str());
-    if (failed){
+    if (failed) {
         throw std::logic_error("didn't remove file");
     }
     storage.freeStorage();
@@ -116,7 +116,24 @@ TEST_F(LibrdfParserTests, TetsParseFromAFile) {
 
 }
 
+TEST_F(LibrdfParserTests, TestParserFromUrl) {
+    LibrdfStorage storage;
+    LibrdfModel model(storage.get());
 
+    std::string sbml_url1 = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml";
+    LibrdfParser parser("rdfxml");
+    parser.parseUri(sbml_url1, model);
+
+    int expected = 277;
+    int actual = model.size();
+    ASSERT_EQ(expected, actual);
+
+    storage.freeStorage();
+    model.freeModel();
+
+    // parser releases itself
+
+}
 
 
 
