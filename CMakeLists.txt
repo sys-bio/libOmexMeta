@@ -8,8 +8,11 @@ include(ExternalProject)
 # load a custom function for finding all the dependencies if they exist.
 #set(FIND_DEPENDENCIES_PATH ${CMAKE_SOURCE_DIR}/cmake/LookForDependencies.cmake)
 
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+
 # load a custom function for printing out found paths to console
 include(${CMAKE_SOURCE_DIR}/cmake/PrintOutPaths.cmake)
+
 
 ######################################################
 #   Set some variables
@@ -19,6 +22,8 @@ include(${CMAKE_SOURCE_DIR}/cmake/PrintOutPaths.cmake)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "-std=c++17")
+
+set(LIBSEMSIM_VERSION 0.0.1)
 
 if ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fPIC")
@@ -139,7 +144,6 @@ else ()
     ENDIF ()
 
 
-
     set(INCLUDE_DIRS
             ${CMAKE_SOURCE_DIR}/src
             ${LIBXML2_INCLUDE_DIR}
@@ -236,27 +240,7 @@ else ()
 
 
     if (BUILD_DOCS)
-        # https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/
-        find_package(Doxygen REQUIRED)
-
-        set(DOXYGEN_INPUT_DIR "${CMAKE_SOURCE_DIR}/src/semsim")
-        set(DOXYGEN_OUTPUT_DIR "${CMAKE_SOURCE_DIR}/docs/cpp")
-        set(DOXYGEN_INDEX_FILE ${DOXYGEN_OUTPUT_DIR}/html/index.html)
-        set(DOXYFILE_IN ${CMAKE_SOURCE_DIR}/Doxyfile.in)
-        set(DOXYFILE_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
-
-
-        configure_file(${DOXYFILE_IN} ${DOXYFILE_OUT} @ONLY)
-        file(MAKE_DIRECTORY ${DOXYGEN_OUTPUT_DIR})
-
-        add_custom_command(OUTPUT ${DOXYGEN_INDEX_FILE}
-                DEPENDS ${SEMSIM_HEADERS}
-                COMMAND ${DOXYGEN_EXECUTABLE} Doxyfile
-                WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-                MAIN_DEPENDENCY Doxyfile
-                COMMENT "Generating docs")
-
-        add_custom_target(Doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
+        add_subdirectory(docs)
     endif ()
 
 
