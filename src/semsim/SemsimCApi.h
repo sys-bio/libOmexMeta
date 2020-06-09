@@ -42,15 +42,15 @@ namespace semsim {
  * RDF class methods
  */
 
-    semsim::RDF *RDF_new();
+    RDF *RDF_new();
 
-    void RDF_delete(semsim::RDF *rdf_ptr);
+    void RDF_delete(RDF *rdf_ptr);
 
-    char *RDF_getBaseUri(semsim::RDF *rdf_ptr);
+    char *RDF_getBaseUri(RDF *rdf_ptr);
 
-    void RDF_setBaseUri(semsim::RDF *rdf_ptr, const char *uri);
+    void RDF_setBaseUri(RDF *rdf_ptr, const char *uri);
 
-    char *RDF_toString(semsim::RDF *rdf_ptr, const char *format, const char *base_uri);
+    char *RDF_toString(RDF *rdf_ptr, const char *format, const char *base_uri);
 
     /*
      * @brief read RDF formatted annotations a string.
@@ -61,45 +61,28 @@ namespace semsim {
      * @param baseuri the uri used for the base. All relative uri's
      * in the RDF graph are relative to the base uri
      *
-     * Example
-     * -------
-     * RDF* rdf_ptr = new RDF();
-     * RDF_fromString(rdf_ptr, string_annotations, "rdfxml", "string_annotations_base_uri");
+     * @example
+     * RDF* rdf_ptr = RDF_fromString(string_annotations, "rdfxml", "string_annotations_base_uri");
      */
-    [[deprecated]]
-    void RDF_fromString(RDF *rdf_ptr, const char *str, const char *format = "guess",
-                        const char *baseuri = "./Annotations.rdf");
-
-    /*
-     *
-     * @details this method will replace RDF_fromString() when safe to do so.
-     */
-    RDF *RDF_fromString2(const char *str, const char *format, const char *baseuri);
+    RDF *RDF_fromString(const char *str, const char *format, const char *baseuri = "./Annotations.rdf");
 
     void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri);
 
     RDF *RDF_fromUri(const char *uri_string, const char *format);
 
-    RDF *RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
+    void RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
 
     RDF *RDF_fromFile(const char *filename, const char *format);
 
-    RDF *RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
+    void RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
 
-    char *RDF_queryResultsAsStr(semsim::RDF *rdf_ptr, const char *query_str, const char *results_format);
+    char *RDF_queryResultsAsStr(RDF *rdf_ptr, const char *query_str, const char *results_format);
 
-    int RDF_size(semsim::RDF *rdf_ptr);
+    int RDF_size(RDF *rdf_ptr);
 
-    Editor *RDF_toEditor(semsim::RDF *rdf_ptr, const char *xml, semsim::SemsimXmlType type);
+    Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, SemsimXmlType type);
 
-//RDF_toFile(semsim::RDF* rdf_ptr, );
-//RDF_listOptions(semsim::RDF* rdf_ptr, );
-//RDF_setNamespaces(semsim::RDF* rdf_ptr, );
-//RDF_getNamespaces(semsim::RDF* rdf_ptr, );
-//semsim::RDF* RDF_fromUrl(semsim::RDF* rdf_ptr, const char* url, const char* filename, const char* format);
-//semsim::RDF* RDF_fromXML(semsim::RDF* rdf_ptr, const char* filename, const char* format);
-//semsim::RDF* RDF_fromFile(semsim::RDF* rdf_ptr, const char* filename, const char* format);
-//semsim::RDF* RDF_fromOmex(semsim::RDF* rdf_ptr, const char* filename_or_uri, const char* format);
+//RDF* RDF_fromOmex(RDF* rdf_ptr, const char* filename_or_uri, const char* format);
 
 /*********************************************
  *  Editor class methods
@@ -137,9 +120,7 @@ namespace semsim {
 
     SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
 
-    SingularAnnotation *
-    SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_,
-                                    const char *term);
+    SingularAnnotation * SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_,const char *term);
 
     SingularAnnotation *SingularAnnotation_setPredicateFromUri(
             SingularAnnotation *singular_annotation, const char *uri);
@@ -155,8 +136,7 @@ namespace semsim {
 
     char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
 
-    char *
-    SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format, const char *base_uri);
+    char *SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format, const char *base_uri);
 
     char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
 
