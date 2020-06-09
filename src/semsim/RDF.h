@@ -57,23 +57,84 @@ namespace semsim {
 
         bool empty() const;
 
+        /*
+         * @brief instantiate an RDF instance and read
+         * annotations from a string. This is a static method.
+         * @param str a reference to the string containing annotations
+         * @param format which format str is in. Default="guess" : try to guess.
+         * @param base_uri the uri that all subject uri's are relative to. Defaults to ./Annotations.rdf.
+         *
+         * @details The base_uri argument is required when parsing from a string
+         * because there is nothing to find one automatically (like there is
+         * when parsing from filename or uri).
+         */
         static RDF fromString(const std::string &str,
                               const std::string &format = "guess",
                               const std::string &base_uri = std::string());
 
-        RDF addFromString(const std::string &str,
-                       const std::string &format = "guess");
+        /*
+         * @brief non-static variant of RDF::fromString(). Reads rdf into
+         * an RDF instance. See RDF::fromString() for argument requirements.
+         */
+        void addFromString(const std::string &str,
+                       const std::string &format = "guess",
+                       const std::string &base_uri = std::string());
+        /*
+         * @brief parse RDF directly from a uri
+         * @param uri_string the uri to download containing RDF
+         * @param format the format that the RDF is in
+         * @return RDF an instantiated RDF object.
+         *
+         * @details downloads uri from the internet and creates an RDF graph.
+         * See Librdf::parseUri() for more details.
+         */
+        static RDF fromUri(const std::string& uri_string, const std::string& format="guess");
+
+        /*
+         * @brief non-static counterpart of RDF::fromUri. Downloads and
+         * parses rdf from a URI.
+         *
+         * @details See RDF::fromUri for details.
+         */
+        void addFromUri(const std::string& uri_string, const std::string& format="guess");
+
+        /*
+         * @brief read rdf from annotations in a file
+         * @param filename the filename to read as string
+         * @param format the format of the RDF in filename
+         * @return an instantiated RDF object
+         * @details Uses LibrdfParser::fromFile under the hood
+         */
+        static RDF fromFile(const std::string &filename, const std::string &format);
+        /*
+         * @brief non-static counter part of RDF::fromFile. Reads rdf from annotations in a file
+         * @param filename the filename to read as string
+         * @param format the format of the RDF in filename
+         * @return an instantiated RDF object
+         * @details Uses LibrdfParser::fromFile under the hood
+         */
+        void addFromFile(const std::string &filename, const std::string &format);
 
         /*
          * @brief non static version of RDF::fromString that takes
          * a * RDF pointer object and modifies in place.
          *
-         * Primarily used for C API
+         * @details Primarily used for C API
+         * For developers: look into replacing this function
+         * fully with RDF::addFromString() method.
          *
          */
+        [[deprecated]]
         static void
         fromString(RDF *rdf, const std::string &str, const std::string &format, const std::string &base_uri);
 
+        /*
+         * @brief compared namespaces seen with namespaces
+         * known and ensures models that use a known namespace
+         * use that namespace.
+         * @param seen_namespaces a vector of strings of namespaces the parser has seen before.
+         *
+         */
         std::unordered_map<std::string, std::string>
         propagateNamespacesFromParser(const std::vector<std::string> &seen_namespaces);
 

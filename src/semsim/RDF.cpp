@@ -38,7 +38,7 @@ namespace semsim {
         model_ = std::move(rdf.model_);
     }
 
-    RDF &RDF::operator=(RDF &&rdf) {
+    RDF &RDF::operator=(RDF &&rdf) noexcept {
         if (this != &rdf) {
             base_uri_ = std::move(rdf.base_uri_);
             namespaces_ = std::move(rdf.namespaces_);
@@ -85,22 +85,30 @@ namespace semsim {
         return rdf;
     }
 
-    RDF RDF::addFromString(const std::string &str,
-                      const std::string &format) {
+    void RDF::addFromString(const std::string &str,
+                      const std::string &format, const std::string &base_uri) {
+        std::string base_uri_used;
+
+        // some logic for allowing users to not need to manually input a base_uri
+        // when parsing from a string
+        if (base_uri.empty())
+            base_uri_used = SemsimUtils::addFilePrefixToString("Annotations.rdf");
+        else
+            base_uri_used = base_uri;
+
         LibrdfParser parser(format);
 
-//        LibrdfUri u(base_uri_used);
-        parser.parseString(str, );
-//        u.freeUri();
+        LibrdfUri u(base_uri_used);
+        parser.parseString(str, model_, u);
+        u.freeUri();
 
         // update the list of "seen" namespaces
-        rdf.seen_namespaces_ = parser.getSeenNamespaces();
+        seen_namespaces_ = parser.getSeenNamespaces();
 
         // Compare against predefined set of namespaces: bqbiol etc.
         // This allows us to only use the ones that are needed
-        rdf.namespaces_ = rdf.propagateNamespacesFromParser(rdf.seen_namespaces_);
+        namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
 
-        return rdf;
     }
 
     void RDF::fromString(RDF *rdf, const std::string &str, const std::string &format, const std::string &base_uri) {
@@ -119,7 +127,31 @@ namespace semsim {
         // Compare against predefined set of namespaces: bqbiol etc.
         // This allows us to only use the ones that are needed
         rdf->namespaces_ = rdf->propagateNamespacesFromParser(rdf->seen_namespaces_);
+    }
 
+
+    RDF RDF::fromUri(const std::string &uri_string, const std::string &format) {
+        RDF rdf;
+        LibrdfParser parser(format);
+        parser.parseUri(uri_string, rdf.model_);
+        return rdf;
+    }
+
+    void RDF::addFromUri(const std::string &uri_string, const std::string &format) {
+        LibrdfParser parser(format);
+        parser.parseUri(uri_string, model_);
+    }
+
+    RDF RDF::fromFile(const std::string &filename, const std::string& format){
+        RDF rdf;
+        LibrdfParser parser(format);
+        parser.parseFile(filename, rdf.model_);
+        return rdf;
+    }
+
+    void RDF::addFromFile(const std::string &filename, const std::string& format){
+        LibrdfParser parser(format);
+        parser.parseFile(filename, model_);
     }
 
     std::unordered_map<std::string, std::string>
@@ -145,7 +177,6 @@ namespace semsim {
         return serializer.toString(base_uri, model_);
     }
 
-
     librdf_model *RDF::getModel() const {
         return model_.get();
     }
@@ -162,6 +193,7 @@ namespace semsim {
     librdf_storage *RDF::getStorage() const {
         return storage_.get();
     }
+
 
 
 }

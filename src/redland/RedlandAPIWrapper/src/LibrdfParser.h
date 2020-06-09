@@ -56,26 +56,31 @@ namespace redland {
 
         [[nodiscard]] std::string getNamespacesSeenUri(int index) const;
 
+        /*
+         *
+         * For developers. This method should be deprecated
+         * and replaced with the other signature for this function. It is
+         * better because the user does not need to remember to free the Uri used.
+         */
         void parseString(const std::string &rdf_string, const LibrdfModel &model, const LibrdfUri &base_uri) const;
 
-
-        [[nodiscard]] std::string getNamespacesSeenPrefix(int index) const;
-
-        void parseUriIntoModel(const LibrdfUri &uri, const LibrdfUri &base_uri, const LibrdfModel &model) const;
-
+        void parseString(const std::string &rdf_string, const LibrdfModel &model, const std::string &base_uri) const;
 
         void parseFile(const std::string& filename_uri, const LibrdfModel &model) const;
 
+        void parseUri(const std::string &uri_string, const LibrdfModel &model) const;
 
-        std::string getName() const;
+        [[nodiscard]] std::string getNamespacesSeenPrefix(int index) const;
+
+        [[nodiscard]] std::string getName() const;
 
         void setName(const char *name);
 
-        std::string getMimeType() const;
+        [[nodiscard]] std::string getMimeType() const;
 
         void setMimeType(const char *mimeType);
 
-        librdf_uri *getTypeUri() const;
+        [[nodiscard]] librdf_uri *getTypeUri() const;
 
         void setTypeUri(librdf_uri *typeUri);
 
@@ -89,11 +94,9 @@ namespace redland {
 
         static void setOptions(librdf_parser *parser);
 
-        std::vector<std::string> getSeenNamespaces() const;
+        [[nodiscard]] std::vector<std::string> getSeenNamespaces() const;
 
-        void parseUri(const LibrdfUri &uri, const LibrdfModel &model) const;
 
-        void parseUri(const std::string &uri_string, const LibrdfModel &model) const;
     };
 }
 

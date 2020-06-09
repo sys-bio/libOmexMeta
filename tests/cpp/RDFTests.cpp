@@ -5,6 +5,8 @@
 #include "gtest/gtest.h"
 #include "semsim/RDF.h"
 #include "AnnotationSamples.h"
+#include <experimental/filesystem>
+#include <fstream>
 
 using namespace semsim;
 
@@ -71,7 +73,7 @@ TEST_F(RDFTests, TestToString) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings){
+TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
     std::string rdf_string1 = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                               "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                               "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -94,6 +96,87 @@ TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings){
     std::cout << rdf.toString() << std::endl;
 
 
+}
+
+TEST_F(RDFTests, TestAddFromString) {
+    RDF rdf;
+    rdf.addFromString(samples.singular_annotation4);
+    int expected = 1;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
+
+TEST_F(RDFTests, TestAddFromStringMultipleTimes) {
+    RDF rdf;
+    rdf.addFromString(samples.singular_annotation1);
+    rdf.addFromString(samples.singular_annotation2);
+    rdf.addFromString(samples.singular_annotation3);
+    rdf.addFromString(samples.singular_annotation4);
+    int expected = 4;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
+
+TEST_F(RDFTests, TestParseFromUri) {
+    RDF rdf = RDF::fromUri(samples.sbml_url1, "rdfxml");
+    int expected = 277;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
+
+
+TEST_F(RDFTests, TestParseFromUriNonStatic) {
+    RDF rdf;
+    rdf.addFromUri(samples.sbml_url1, "rdfxml");
+    int expected = 277;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
+
+TEST_F(RDFTests, TestParseFromFile) {
+    // first create a file containing annotations
+    std::string fname = std::experimental::filesystem::current_path().string() + "/TestParseFromFile.rdf";
+    std::cout << fname << std::endl;
+    std::ofstream f(fname);
+    if (f.is_open()){
+        f << samples.composite_annotation_pe << std::endl;
+        f.flush();
+        f.close();
+    } else {
+        throw std::logic_error("No file was opened for test");
+    }
+
+    RDF rdf = RDF::fromFile(fname, "rdfxml");
+    int expected = 4;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+
+    // clear up file we wrote
+    std::remove(fname.c_str());
+
+}
+
+TEST_F(RDFTests, TestParseFromFileNonStatic) {
+    // first create a file containing annotations
+    std::string fname = std::experimental::filesystem::current_path().string() + "/TestParseFromFile.rdf";
+    std::cout << fname << std::endl;
+    std::ofstream f(fname);
+    if (f.is_open()){
+        f << samples.composite_annotation_pe << std::endl;
+        f.flush();
+        f.close();
+    } else {
+        throw std::logic_error("No file was opened for test");
+    }
+
+    RDF rdf;
+    rdf.addFromFile(fname, "rdfxml");
+    int expected = 4;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+
+    // clear up file we wrote
+    std::remove(fname.c_str());
 
 }
 
