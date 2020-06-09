@@ -85,6 +85,24 @@ namespace semsim {
         return rdf;
     }
 
+    RDF RDF::addFromString(const std::string &str,
+                      const std::string &format) {
+        LibrdfParser parser(format);
+
+//        LibrdfUri u(base_uri_used);
+        parser.parseString(str, );
+//        u.freeUri();
+
+        // update the list of "seen" namespaces
+        rdf.seen_namespaces_ = parser.getSeenNamespaces();
+
+        // Compare against predefined set of namespaces: bqbiol etc.
+        // This allows us to only use the ones that are needed
+        rdf.namespaces_ = rdf.propagateNamespacesFromParser(rdf.seen_namespaces_);
+
+        return rdf;
+    }
+
     void RDF::fromString(RDF *rdf, const std::string &str, const std::string &format, const std::string &base_uri) {
         std::string base_uri_used;
         if (base_uri.empty())

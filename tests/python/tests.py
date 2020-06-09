@@ -640,6 +640,49 @@ aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
 
         print(rdf)
 
+    def test(self):
+        ant1 = """
+        model SBML1
+            compartment cytosol = 1.0;
+            A in cytosol;
+            B in cytosol
+            A = 10; 
+            B = 0;
+            k1 = 0.1;
+            k2 = 0.1;
+            r1: A => B; k1*A
+            r1: B => A; k2*B
+        end
+        """
+
+        ant2 = """
+        model SBML1
+            compartment cytosol = 1.0;
+            C in cytosol;
+            D in cytosol
+            C = 10; 
+            D = 0;
+            k1 = 0.1;
+            k2 = 0.1;
+            r1: C => D; k1*C
+            r1: D => C; k2*D
+        end
+        """
+        sbml1 = te.antimonyToSBML(ant1)
+        sbml2 = te.antimonyToSBML(ant2)
+
+        rdf = pysemsim.RDF()
+        with rdf.to_editor(sbml1, "sbml") as editor:
+            print(editor.get_xml())
+            with editor.new_singular_annotation() as singular_annotation:
+                singular_annotation.set_about("SemsimMetaid0000")\
+                    .set_predicate("bqb", "is")\
+                    .set_resource_uri("fma/FMA_66835")
+
+        print(rdf)
+
+
+
 
 if __name__ == "__main__":
     unittest.main()

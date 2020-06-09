@@ -139,6 +139,7 @@ else ()
     ENDIF ()
 
 
+
     set(INCLUDE_DIRS
             ${CMAKE_SOURCE_DIR}/src
             ${LIBXML2_INCLUDE_DIR}
@@ -194,6 +195,7 @@ else ()
             curl
             ssl
             db
+            stdc++fs
             #            curl
 
             #todo keep libpq in back pocket as alternative backend

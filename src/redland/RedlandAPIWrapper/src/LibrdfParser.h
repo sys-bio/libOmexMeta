@@ -24,7 +24,7 @@ namespace redland {
 
         librdf_parser *parser_ = nullptr;
 
-        void validateParserName();
+        void validateParserName() const;
 
         std::string format_ = std::string();
         std::string mime_type_ = std::string();
@@ -58,12 +58,15 @@ namespace redland {
 
         void parseString(const std::string &rdf_string, const LibrdfModel &model, const LibrdfUri &base_uri) const;
 
-        std::string getNamespacesSeenPrefix(int index) const;
+
+        [[nodiscard]] std::string getNamespacesSeenPrefix(int index) const;
 
         void parseUriIntoModel(const LibrdfUri &uri, const LibrdfUri &base_uri, const LibrdfModel &model) const;
 
         void parseFilenameUriIntoModel(const LibrdfUri &filename_uri, const LibrdfUri &base_uri,
                                        const LibrdfModel &model) const;
+
+        void parseFilenameUriIntoModel(const std::string& filename_uri, const LibrdfModel &model) const;
 
 
         std::string getName() const;
@@ -78,17 +81,17 @@ namespace redland {
 
         void setTypeUri(librdf_uri *typeUri);
 
-        void setTypeUri(std::string type_uri);
+        void setTypeUri(const std::string& type_uri);
 
         librdf_parser *makeParser();
 
-        static void setFeature(librdf_parser *parser, const std::string& feature_uri, librdf_node *node);
+        static void setFeature(librdf_parser *parser, const std::string &feature_uri, librdf_node *node);
 
         static void setOption(librdf_parser *parser, const std::string &option, const std::string &value);
 
         static void setOptions(librdf_parser *parser);
 
-        std::vector<std::string> getSeenNamespaces();
+        std::vector<std::string> getSeenNamespaces() const;
     };
 }
 

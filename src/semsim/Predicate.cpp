@@ -176,25 +176,6 @@ namespace semsim {
         }
     }
 
-    std::unique_ptr<Predicate, Predicate::deleter> Predicate::makeUniquePredicate(Predicate predicate) {
-        deleter d{};
-        std::unique_ptr<Predicate, Predicate::deleter> ptr = {new Predicate(
-                predicate.namespace_, predicate.term_, predicate.prefix_
-        ), d};
-//        d(&predicate);
-        return ptr;
-    }
-
-    void Predicate::deleter::operator()(Predicate *predicate) {
-        std::cout << "trying to delete predicate" << std::endl;
-        if (predicate->getNode()) {
-            std::cout << "deleting  predicate " << predicate->str()<< std::endl;
-            LibrdfNode::freeNode(predicate->getNode());
-            predicate->node_ = nullptr;
-        }
-        std::cout << "node after deltet: " << predicate->getNode() << std::endl;
-        delete predicate;
-    }
 
     BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(const std::string &term) :
             Predicate("http://biomodels.net/biology-qualifiers/", term, "bqbiol") {

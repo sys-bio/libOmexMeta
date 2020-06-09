@@ -152,7 +152,8 @@ namespace semsim {
          * has a namespace that we already know. If found, the namespace is
          * added to @parameter serializer
          */
-        static void addSeenNamespaceToSerializer(librdf_world *world, librdf_serializer *serializer, librdf_node *predicate);
+        static void
+        addSeenNamespaceToSerializer(librdf_world *world, librdf_serializer *serializer, librdf_node *predicate);
 
         /*
          * @brief replace the current librdf_node assicated with
@@ -160,6 +161,7 @@ namespace semsim {
          * @param node the new librdf_node pointer to use in the Predicate
          */
         void setNode(librdf_node *node);
+
     };
 
     /*
