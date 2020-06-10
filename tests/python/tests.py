@@ -19,7 +19,10 @@ site.addsitedir(src_dir)
 # module not found by IDE, but it does exist and and tests do run
 from pysemsim import *
 
-import tellurium as te
+try:
+    import tellurium as te
+except ImportError:
+    raise ImportError("package \"tellurium\" not found. Please `pip install tellurium`")
 
 xml = """<?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
@@ -357,7 +360,6 @@ class AnnotateAModelTest(unittest.TestCase):
         """
         rdf = RDF()
         with rdf.to_editor(self.sbml, "sbml") as editor:
-
             # model level annotations
             with editor.new_singular_annotation() as author:
                 author.set_about("SmadNuclearTransport") \
@@ -371,8 +373,8 @@ class AnnotateAModelTest(unittest.TestCase):
                     .set_identity("uniprot:P84022") \
                     .add_location("obo/FMA_7163") \
                     .add_location("obo/FMA_264020") \
-
-                    # annotate Smad3nuc
+ \
+                # annotate Smad3nuc
             with editor.new_physical_entity() as smad3nuc:
                 smad3nuc.set_about("SemsimMetaid0003") \
                     .set_physical_property("OPB:OPB_00340") \
@@ -508,7 +510,7 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
         archive = libcombine.CombineArchive()
 
         # note the skipOmex flag. This is needed to expose any files with an "rdf" extension.
-        archive.initializeFromArchive(archive_path, skipOmex=True) # new in libcombine!
+        archive.initializeFromArchive(archive_path, skipOmex=True)  # new in libcombine!
 
         # filter through the entries in the omex archive for rdf extension files
         annotation_entries = [i.c_str() for i in archive.getAllLocations() if i[-4:] == ".rdf"]
@@ -684,6 +686,55 @@ aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
                     .set_resource_uri("fma/FMA_66835")
 
         print(rdf)
+
+
+
+class DrawTests(unittest.TestCase):
+    def setUp(self) -> None:
+        ant = """
+                model SBML1
+                    compartment cytosol = 1.0;
+                    A in cytosol;
+                    B in cytosol
+                    A = 10; 
+                    B = 0;
+                    k1 = 0.1;
+                    k2 = 0.1;
+                    r1: A => B; k1*A
+                    r1: B => A; k2*B
+                end
+                """
+        self.sbml = te.antimonyToSBML(ant)
+
+    def tearDown(self) -> None:
+        pass
+
+    def test(self):
+        rdf = RDF()
+        with rdf.to_editor(self.sbml, "sbml") as editor:
+
+            with editor.new_singular_annotation() as s:
+                s.set_about("SemsimMetaid0000") \
+                    .set_predicate("bqb", "is") \
+                    .set_resource_uri("fma/FMA_66835")
+        fname = os.path.join(os.path.realpath("."), "test_draw.png")
+        rdf.draw(fname)
+        self.assertTrue(os.path.isfile())
+        os.remove(fname)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
