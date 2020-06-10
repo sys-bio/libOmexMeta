@@ -1,8 +1,37 @@
-## Documetnation
+# libsemsim (aka libOmexMeta)
+This is a "pre-pre-release" version of libsemsim. Note, the package name is
+due to change to libOmexMeta. The package consists of a C++ backend, 
+a C API and a Python front end. 
+
+# Platform
+Due to the Redland library dependencies being linux only, libsemsim has been 
+developed on Ubuntu 18.04 and is presently linux only. Support for Windows 
+and macos is a work in progress. 
+
+# Installation
+## Python front end
+You can get up and running quickly using pip
+
+    $ pip install --index-url https://test.pypi.org/simple pysemsim
+
+Note that "pysemsim" is only available on pypi test. It has veen tested with Python
+version 3.8, but should work on other Python 3 versions. 
+
+## building from source
+libsemsim uses a "superbuild" system to fully automate the building of dependencies. 
+There is a CMake variable `HAVE_DEPENDENCIES` which turns on or off the superbuild. 
+The first time you run cmake, you will probably want to have the `HAVE_DEPENDENCIES=ON` 
+but if you rebuild you can set `HAVE_DEPENDENCIES=OFF`. 
+
+
+libsbml + libcombine options 
+
+# Documetnation
 
 https://sys-bio.github.io/libsemsim-docs/
 
-## Installation
+Note: documentation is currently out of date but being updated presently 
+
 
 ### Using CMake
 

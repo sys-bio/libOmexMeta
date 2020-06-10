@@ -47,7 +47,7 @@ class RDF:
         self.delete()
 
     @staticmethod
-    def from_string(rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf") -> RDF:
+    def from_string(rdf_ptr: ct.c_int64, rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf") -> RDF:
         """read rdf from a string"""
         rdf = PysemsimAPI.rdf_from_string(rdf_string.encode(), format.encode(), base_uri.encode())
         return RDF(rdf)

@@ -108,10 +108,10 @@ class TestRDF(unittest.TestCase):
     def test_from_string(self):
         rdf = RDF.from_string(self.rdf_str, "rdfxml")
         self.assertEqual(6, len(rdf))
-    
+
     def test_add_from_string(self):
         rdf = RDF()
-        RDF.add_from_string(self.rdf_str, "rdfxml", "test_add_from_string.rdf")
+        RDF.add_from_string(rdf, self.rdf_str, "rdfxml", "test_add_from_string.rdf")
         self.assertEqual(6, len(rdf))
 
     def test_get_base_uri(self):
@@ -141,7 +141,6 @@ file://./source_0,http://www.bhi.washington.edu/semsim#hasPhysicalEntityReferenc
 """
         self.maxDiff = None
         actual = rdf.query(q, "csv")
-        print(actual)
         self.assertEqual(expected, actual)
 
 
@@ -208,7 +207,7 @@ class EditorTests(unittest.TestCase):
 </rdf:RDF>
 """
         actual = str(self.rdf)
-        print(actual)
+
         self.assertEqual(expected, actual)
 
     def test_context_manager_physical_force(self):
@@ -243,7 +242,7 @@ class EditorTests(unittest.TestCase):
 </rdf:RDF>
 """
         actual = str(self.rdf)
-        print(actual)
+
         self.assertEqual(expected, actual)
 
 
@@ -344,7 +343,7 @@ class AnnotateAModelTest(unittest.TestCase):
 </sbml>
 """
         actual = xml_with_metaids
-        print(actual)
+
         self.assertEqual(expected, actual)
 
     def test_annotate_model(self):
@@ -358,7 +357,6 @@ class AnnotateAModelTest(unittest.TestCase):
         """
         rdf = RDF()
         with rdf.to_editor(self.sbml, "sbml") as editor:
-            print(editor.get_xml())
 
             # model level annotations
             with editor.new_singular_annotation() as author:
@@ -373,7 +371,7 @@ class AnnotateAModelTest(unittest.TestCase):
                     .set_identity("uniprot:P84022") \
                     .add_location("obo/FMA_7163") \
                     .add_location("obo/FMA_264020") \
- \
+
                     # annotate Smad3nuc
             with editor.new_physical_entity() as smad3nuc:
                 smad3nuc.set_about("SemsimMetaid0003") \
@@ -503,7 +501,6 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
                     os.remove(i)
 
     def extract_rdf_from_combine_archive(self, archive_path: str) -> typing.List[str]:
-        print(archive_path)
         if not os.path.isfile(archive_path):
             raise FileNotFoundError(archive_path)
 
@@ -511,7 +508,7 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
         archive = libcombine.CombineArchive()
 
         # note the skipOmex flag. This is needed to expose any files with an "rdf" extension.
-        archive.initializeFromArchive(archive_path, skipOmex=True)
+        archive.initializeFromArchive(archive_path, skipOmex=True) # new in libcombine!
 
         # filter through the entries in the omex archive for rdf extension files
         annotation_entries = [i.c_str() for i in archive.getAllLocations() if i[-4:] == ".rdf"]
@@ -533,7 +530,6 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
 
         # serialize to html, because why not?
         actual = rdf.to_string(format, gold_standard_filename)[:500]  # shorten
-        print(actual)
 
         self.assertEqual(expected_output, actual)
 
@@ -618,7 +614,7 @@ aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#sodium_current_i_Na,aslan
 aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#intracellular_ion_concentrations.i_up,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_13
 aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#T_type_Ca_channel_f_T_gate.V,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#entity_0
 aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
-        print(actual)
+
         self.assertEqual(expected, actual)
 
     def test_query2(self):
@@ -632,13 +628,14 @@ aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
             ?x semsim:hasPhysicalEntityReference ?z
         }"""
         actual = rdf.query(query_str, "csv")
-#         expected = """x,z
-# aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#sodium_current_i_Na,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_0
-# aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#intracellular_ion_concentrations.i_up,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_13
-# aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#T_type_Ca_channel_f_T_gate.V,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#entity_0
-# aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
-        print(actual)
-#         self.assertEqual(expected, actual)
+
+    #         expected = """x,z
+    # aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#sodium_current_i_Na,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_0
+    # aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#intracellular_ion_concentrations.i_up,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_13
+    # aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#T_type_Ca_channel_f_T_gate.V,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#entity_0
+    # aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
+
+    #         self.assertEqual(expected, actual)
 
     def test_to_triples(self):
         self.download_file(self.gold_standard_url3, self.gold_standard_filename3)
@@ -682,13 +679,11 @@ aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
         with rdf.to_editor(sbml1, "sbml") as editor:
             print(editor.get_xml())
             with editor.new_singular_annotation() as singular_annotation:
-                singular_annotation.set_about("SemsimMetaid0000")\
-                    .set_predicate("bqb", "is")\
+                singular_annotation.set_about("SemsimMetaid0000") \
+                    .set_predicate("bqb", "is") \
                     .set_resource_uri("fma/FMA_66835")
 
         print(rdf)
-
-
 
 
 if __name__ == "__main__":
