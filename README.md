@@ -25,6 +25,9 @@ You can get up and running quickly using pip
 Note that "pysemsim" is only available on pypi test. It has been tested with Python
 version 3.8, but should work on other Python 3 versions. 
 
+## Downloading Binaries
+You can download binaries from the [releases tab](https://github.com/sys-bio/libsemsim/releases/tag/v0.0.2)
+
 ## Building from source
 **tl;dr**
 
