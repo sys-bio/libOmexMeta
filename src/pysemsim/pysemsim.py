@@ -40,7 +40,7 @@ class RDF:
 
     def __str__(self):
         """Defaults to rdfxml-abbrev syntax"""
-        return self.to_string("rdfxml-abbrev", base_uri="./Annotation.rdf")
+        return self.to_string("rdfxml-abbrev")
 
     def __del__(self):
         """deletes the RDF instance"""
@@ -73,7 +73,7 @@ class RDF:
         """destructor. Delete the dynamically allocated rdf object"""
         PysemsimAPI.rdf_delete(self._obj)
 
-    def to_string(self, format: str, base_uri: str) -> str:
+    def to_string(self, format: str, base_uri : str = "./Annotations.rdf") -> str:
         str_ptr = PysemsimAPI.rdf_to_string(self._obj, format.encode(), base_uri.encode())
         thestring = PysemsimAPI.get_and_free_c_str(str_ptr)
         return thestring
@@ -97,6 +97,31 @@ class RDF:
     def to_editor(self, xml: str, xmltype: str) -> Editor:
         return Editor(PysemsimAPI.rdf_to_editor(self._obj, xml.encode(),
                                                 _xml_type_factory(xml_type=xmltype)))
+
+    def draw(self, filename: str):
+        """
+        render an graph of RDF and save to `filename`
+
+        Args:
+            filename: where to write. The extension determines the format. See
+            https://graphviz.readthedocs.io/en/stable/index.html for more
+            details about accepted formats.
+
+        Returns:
+
+        """
+        try:
+            import graphviz
+        except ImportError:
+            raise ImportError('"graphviz" not found. Install '
+                              'with "sudo apt install graphviz" and then '
+                              '"pip install graphviz"')
+        dot = self.to_string("dot", "annotation-drawing.rdf")
+        src = graphviz.Source(dot)
+        src.render(filename)
+        print('RDF graph saved to "{}"'.format(filename))
+        if not os.path.isfile(filename):
+            raise ValueError("Output was not written to file \"{}\"".format(filename))
 
 
 class Editor:
@@ -215,9 +240,9 @@ class SingularAnnotation:
         return PysemsimAPI.get_and_free_c_str(PysemsimAPI.singular_annotation_get_about(self._obj))
 
     def __str__(self):
-        return self.to_string("rdfxml-abbrev", "./Annotation.rdf")
+        return self.to_string("rdfxml-abbrev")
 
-    def to_string(self, format: str, base_uri: str) -> str:
+    def to_string(self, format: str, base_uri: str = "./Annotations.rdf") -> str:
         return PysemsimAPI.get_and_free_c_str(
             PysemsimAPI.singular_annotation_str(self._obj, format.encode(), base_uri.encode()))
 
@@ -274,13 +299,13 @@ class PhysicalEntity:
             PysemsimAPI.physical_entity_get_location(self.get_ptr(), i)
         ) for i in range(self.get_num_locations())]
 
-    def to_string(self, format: str, base_uri: str) -> str:
+    def to_string(self, format: str, base_uri: str = "./Annotations.rdf") -> str:
         return PysemsimAPI.get_and_free_c_str(
             PysemsimAPI.physical_entity_str(self.get_ptr(), format.encode(), base_uri.encode())
         )
 
     def __str__(self):
-        return self.to_string("rdfxml-abbrev", "./Annotation.rdf")
+        return self.to_string("rdfxml-abbrev")
 
     def delete(self) -> None:
         PysemsimAPI.physical_entity_delete(self._obj)
@@ -317,12 +342,12 @@ class PhysicalProcess:
                                                               physical_entity_reference.encode())
         return self
 
-    def to_string(self, format: str, base_uri: str):
+    def to_string(self, format: str, base_uri: str="./Annotations.rdf"):
         return PysemsimAPI.get_and_free_c_str(
             PysemsimAPI.physical_process_str(self._obj, format.encode(), base_uri.encode()))
 
     def __str__(self):
-        return self.to_string("rdfxml-abbrev", "./Annotation.rdf")
+        return self.to_string("rdfxml-abbrev")
 
     def get_about(self) -> str:
         return PysemsimAPI.get_and_free_c_str(PysemsimAPI.physical_process_get_about(self._obj))
@@ -361,12 +386,12 @@ class PhysicalForce:
                                                         physical_entity_reference.encode())
         return self
 
-    def to_string(self, format: str, base_uri: str):
+    def to_string(self, format: str, base_uri: str = "./Annotations.rdf"):
         return PysemsimAPI.get_and_free_c_str(
             PysemsimAPI.physical_force_str(self._obj, format.encode(), base_uri.encode()))
 
     def __str__(self):
-        return self.to_string("rdfxml-abbrev", "./Annotation.rdf")
+        return self.to_string("rdfxml-abbrev")
 
     def get_about(self) -> str:
         return PysemsimAPI.get_and_free_c_str(PysemsimAPI.physical_force_get_about(self._obj))
