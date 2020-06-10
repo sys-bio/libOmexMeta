@@ -3,7 +3,7 @@ Libsemsim is a C++ library for annotating systems biology models that
 use xml for serialization. Libsemsim uses RDF as a framework for
 representing these annotations. 
 
-In addition to the C++ backend there is a C API, which is enables exported libsemsim into other languages other languages, as well as a Python front end library. 
+In addition to the C++ backend there is a C API, which facilitates importing libsemsim into other languages and a Python front end for a nice user interface. 
 
 This is a pre-release version of libsemsim and should be considered as such. 
 Its primary purpose is to get feedback from collaborators on how to 
