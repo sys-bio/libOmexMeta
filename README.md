@@ -30,6 +30,7 @@ version 3.8, but should work on other Python 3 versions.
 
 ## Building from source
 **tl;dr**
+
 Optionally become `sudo`er.
 ```
 $ sudo -i
@@ -86,5 +87,14 @@ $ sudo apt install -y dialog apt-utils make build-essential checkinstall zlib1g-
 ```
 and then proceed with the build instructions. 
 
-
-
+# Still to do
+- Support for modifying existing annotations 
+    - deleting a triple works but memory related problems when
+      removing a set of triples like a physical entity
+- documentation
+- support for removing triples based on metaid (sparql?)
+- Bug in multiplier of participants, when 0, it should not default to x^-315. Use integers instead??
+- Participant IDs are currently given by user. This should probably be generated automatically instead.
+- Remove second namespace map in RDF class in favour of the one in Predicate class
+- Double check Predicate.cpp. Do we have everything that we want to include? (my guess is no)
+- others? 
