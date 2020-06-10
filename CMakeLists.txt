@@ -83,7 +83,6 @@ include(${CMAKE_SOURCE_DIR}/cmake/SetPaths.cmake)
 # Superbuild
 #
 if (NOT HAVE_DEPENDENCIES)
-    message(STATUS "CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}")
     project(libsemsim-superbuild)
 
     #update apt
@@ -109,7 +108,6 @@ if (NOT HAVE_DEPENDENCIES)
 else ()
     message(STATUS "BUILDING LIBSEMSIM")
     project(libsemsim LANGUAGES CXX VERSION 0.1.5)
-    set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/INSTALL/${CMAKE_BUILD_TYPE}")
 
     if (WITH_ADDRESS_SANITIZER)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")# -OX")

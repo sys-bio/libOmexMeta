@@ -17,14 +17,41 @@ You can get up and running quickly using pip
 Note that "pysemsim" is only available on pypi test. It has veen tested with Python
 version 3.8, but should work on other Python 3 versions. 
 
-## building from source
-libsemsim uses a "superbuild" system to fully automate the building of dependencies. 
-There is a CMake variable `HAVE_DEPENDENCIES` which turns on or off the superbuild. 
+## Building from source
+**tl;dr**
+```
+$ git clone https://github.com/sys-bio/libsemsim.git
+$ cd libsemsim
+$ mkdir build && cd build
+$ cmake -DHAVE_DEPENDENCIES=OFF -DBUILD_TESTS=ON -DBUILD_SHARED=ON -DBUILD_WRAPPER_TESTS=ON -DBUILD_DOCS=OFF -DWITH_ADDRESS_SANITIZER=OFF ..
+$ make -j 8 #or however may processes you want to yse
+# sudo make install
+```
+
+Remember you can set
+```
+-DCMAKE_INSTALL_PREFIX="/path/to/install/location"  
+```
+i.e. 
+```
+-DCMAKE_INSTALL_PREFIX=$(pwd)/install-ubuntu  
+```
+to install to somewhere non-standard. 
+
+Disclaimer: The build system for me but is untested on other computers. Expect some turbulence 
+to begin with. Feedback on build errors will help stablize the build system. 
+
+### The superbuild
+libsemsim uses a "superbuild" system to fully automate the building of dependencies. The main dependency of 
+libsemsim is the Redland set of libraries: raptor2, rasqal and librdf. For convenience, the sources of these packages 
+are distributed with libsemsim and are pulled into a single binary called `redland-combined.a` for linking. Furthermore, 
+included in the superbuild are both `libsbml` and `libcombine`, which is why the build takes a few minutes longer than 
+initially intended. These dependencies are deliberately not used and will soon become an option in the libsemsim
+build that is set to `OFF` by default.  
+
+To control the superbuild, there is a CMake variable called `HAVE_DEPENDENCIES`. 
 The first time you run cmake, you will probably want to have the `HAVE_DEPENDENCIES=ON` 
 but if you rebuild you can set `HAVE_DEPENDENCIES=OFF`. 
-
-
-libsbml + libcombine options 
 
 # Documetnation
 
