@@ -30,6 +30,14 @@ version 3.8, but should work on other Python 3 versions.
 
 ## Building from source
 **tl;dr**
+Optionally ecome `sudo`er.
+```
+$ sudo -i
+```
+You will be prompted for password. You may need to `cd` back into the directory
+where you downloded libsemsim. If you do not do this, then the cmake 
+script will ask for a password during install. 
+
 ```
 $ git clone https://github.com/sys-bio/libsemsim.git
 $ cd libsemsim
