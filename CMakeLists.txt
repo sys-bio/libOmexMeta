@@ -86,7 +86,7 @@ if (NOT HAVE_DEPENDENCIES)
     project(libsemsim-superbuild)
 
     #update apt
-#    execute_process(COMMAND sudo apt update)
+    #    execute_process(COMMAND sudo apt update)
 
     set(DEPENDENCY_LIBRARIES make build-essential checkinstall zlib1g-dev libltdl-dev lzma libpcre3 libpcre3-dev uuid-dev libxml2 libxml2-dev libxslt1-dev yajl-tools libgss-dev libmpfr-dev idn2 libpthread-stubs0-dev curl mysql-server)
 
