@@ -58,6 +58,10 @@ namespace redland {
         void addStatement(librdf_statement *statement) const;
 
         void freeModel();
+
+        void removeStatement(librdf_statement *statement);
+
+        void removeStatement(LibrdfStatement statement);
     };
 }
 

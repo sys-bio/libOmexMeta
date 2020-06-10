@@ -81,5 +81,13 @@ namespace redland {
         return stream;
     }
 
+    void LibrdfModel::removeStatement(LibrdfStatement statement) {
+        librdf_model_remove_statement(model_, statement.get());
+    }
+
+    void LibrdfModel::removeStatement(librdf_statement* statement) {
+        librdf_model_remove_statement(model_, statement);
+    }
+
 }
 
