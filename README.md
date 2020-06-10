@@ -30,11 +30,11 @@ version 3.8, but should work on other Python 3 versions.
 
 ## Building from source
 **tl;dr**
-Optionally ecome `sudo`er.
+Optionally become `sudo`er.
 ```
 $ sudo -i
 ```
-You will be prompted for password. You may need to `cd` back into the directory
+You will be prompted for password and will then need to `cd` back into the directory
 where you downloded libsemsim. If you do not do this, then the cmake 
 script will ask for a password during install. 
 
@@ -61,12 +61,11 @@ Disclaimer: The build system for me but is untested on other computers. Expect s
 to begin with. Feedback on build errors will help stablize the build system. 
 
 ### The superbuild
-libsemsim uses a "superbuild" system to fully automate the building of dependencies. The main dependency of 
-libsemsim is the Redland set of libraries: raptor2, rasqal and librdf. For convenience, the sources of these packages 
+libsemsim uses a "superbuild" system to fully automate the acquisition of dependencies. The main dependencies of 
+libsemsim is are the Redland libraries: raptor2, rasqal and librdf. For convenience, the sources of these packages 
 are distributed with libsemsim and are pulled into a single binary called `redland-combined.a` for linking. Furthermore, 
-included in the superbuild are both `libsbml` and `libcombine`, which is why the build takes a few minutes longer than 
-initially intended. These dependencies are deliberately not used and will soon become an option in the libsemsim
-build that is set to `OFF` by default.  
+included in the superbuild are both `libsbml` and `libcombine`. These dependencies are deliberately not 
+used and will soon become optional in the libsemsim build that is set to `OFF` by default.  
 
 To control the superbuild, there is a CMake variable called `HAVE_DEPENDENCIES`. 
 The first time you run cmake, you will probably want to have the `HAVE_DEPENDENCIES=ON` 
@@ -85,5 +84,6 @@ feature is experimental, so if it doesn't work you will need to run it yourself:
 ```
 $ sudo apt install -y dialog apt-utils make build-essential checkinstall zlib1g-dev libltdl-dev lzma libpcre3 libpcre3-dev uuid-dev libxml2 libxml2-dev libxslt1-dev yajl-tools libgss-dev libmpfr-dev idn2 libpthread-stubs0-dev curl mysql-server
 ```
+and then proceed with the build instructions. 
 
 
