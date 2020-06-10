@@ -85,25 +85,19 @@ include(${CMAKE_SOURCE_DIR}/cmake/SetPaths.cmake)
 if (NOT HAVE_DEPENDENCIES)
     message(STATUS "CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}")
     project(libsemsim-superbuild)
-    #    set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/INSTALL/${CMAKE_BUILD_TYPE}")
 
-    find_library(LIBPQ_STATIC_LIBRARY
-            NAMES pq.a libpq.a pq libpq
-            )
+    #update apt
+#    execute_process(COMMAND sudo apt update)
 
-    if (NOT LIBPQ_STATIC_LIBRARY)
-        message(WARNING "libpq not found so skipping these source files. Install with sudo apt install libpq-dev")
-    endif ()
+    set(DEPENDENCY_LIBRARIES make build-essential checkinstall zlib1g-dev libltdl-dev lzma libpcre3 libpcre3-dev uuid-dev libxml2 libxml2-dev libxslt1-dev yajl-tools libgss-dev libmpfr-dev idn2 libpthread-stubs0-dev curl mysql-server)
 
-
-    find_path(LIBPQ_INCLUDE_DIR
-            NAMES libpq-fe.h
-            PATHS /usr/include/postgresql
-            )
-
-    if (NOT LIBPQ_INCLUDE_DIR)
-        message(WARNING "libpq-fe.h not found. Install with sudo apt install libpq-dev")
-    endif ()
+    # on linux we can use apt to download dependencies
+    add_custom_target(
+            apt-downloads ALL
+            COMMAND sudo apt install -y ${DEPENDENCY_LIBRARIES}
+            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+            COMMENT "download required dependencies straight from apt on ubuntu"
+    )
 
     PrintOutPaths()
     add_custom_target(raptor)
@@ -116,27 +110,7 @@ else ()
     message(STATUS "BUILDING LIBSEMSIM")
     project(libsemsim LANGUAGES CXX VERSION 0.1.5)
     set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/INSTALL/${CMAKE_BUILD_TYPE}")
-    message(STATUS "CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}")
-    #    include(${FIND_DEPENDENCIES_PATH})
 
-
-    #    find_library(LIBPQ_STATIC_LIBRARY
-    #            NAMES pq.a libpq.a pq libpq
-    #            )
-    #
-    #    if (NOT LIBPQ_STATIC_LIBRARY)
-    #        message(WARNING "libpq not found so skipping these source files. Install with sudo apt install libpq-dev")
-    #    endif ()
-    #
-    #
-    #    find_path(LIBPQ_INCLUDE_DIR
-    #            NAMES libpq-fe.h
-    #            PATHS /usr/include/postgresql
-    #            )
-    #
-    #    if (NOT LIBPQ_INCLUDE_DIR)
-    #        message(WARNING "libpq-fe.h not found. Install with sudo apt install libpq-dev")
-    #    endif ()
     if (WITH_ADDRESS_SANITIZER)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")# -OX")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")# -OX")
@@ -217,7 +191,7 @@ else ()
             ${RASQAL_DIR}/libsv
             ${RASQAL_DIR}/getopt
             ${LIBRDF_DIR}/src
-            /mnt/d/libsemsim/src/redland/redland-1.0.17/src
+            #            /mnt/d/libsemsim/src/redland/redland-1.0.17/src
             ${WRAPPER_SOURCE_DIR} #RedlandAPIWrapper
             ${LIBXML2_INCLUDE_DIR}
             ${LIBSBML_DEPS_INCLUDE_DIR}

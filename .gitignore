@@ -6,6 +6,7 @@ cmake-build-*
 INSTALL
 cmake-build*
 build
+docs/build
 *.tar.gz
 *.zip
 # some files in libxml2/test were breaking git. They are not essential and are ignored
@@ -21,3 +22,5 @@ build-linux
 build-windows
 build-macos
 .deps
+dist
+pysemsim.egg-info
