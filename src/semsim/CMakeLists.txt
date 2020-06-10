@@ -68,7 +68,7 @@ add_library(semsim-static STATIC ${SEMSIM_HEADERS} ${SEMSIM_SOURCES})
 # add target headers so they install correctly
 set_target_properties(semsim-static PROPERTIES PUBLIC_HEADER "${SEMSIM_HEADERS}")
 
-add_dependencies(semsim-static redland-combined apt-downloads)
+add_dependencies(semsim-static redland-combined)
 target_include_directories(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so include dirs propagate into test binaries
         ${INCLUDE_DIRS}
         ${WRAPPER_SOURCE_DIR}
@@ -97,7 +97,8 @@ if (BUILD_SHARED)
 
     #    target_link_options(semsim PUBLIC -Wl,--whole-archive)
     #
-    add_dependencies(semsim redland-combined apt-downloads)
+
+    add_dependencies(semsim redland-combined)
     target_include_directories(semsim PUBLIC
             ${INCLUDE_DIRS}
             )
