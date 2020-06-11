@@ -61,17 +61,17 @@ namespace semsim {
 
         for (auto &source: sources_) {
             for (auto &triple: source.toTriples(process_metaid)) {
-                triples.push_back(triple);
+                triples.move_back(triple);
             }
         }
         for (auto &sink: sinks_) {
             for (auto &triple: sink.toTriples(process_metaid)) {
-                triples.push_back(triple);
+                triples.move_back(triple);
             }
         }
         for (auto &mediator: mediators_) {
             for (auto &triple: mediator.toTriples(process_metaid)) {
-                triples.push_back(triple);
+                triples.move_back(triple);
             }
         }
         return triples;

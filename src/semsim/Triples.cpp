@@ -8,57 +8,65 @@ namespace semsim {
 
     Triples::Triples() = default;
 
-    Triples::Triples(Triple triple) {
-        triples_.push_back(triple);
+    Triples::Triples(Triple &triple) {
+        move_back(triple);
     }
 
     Triples::Triples(std::vector<Triple> triples) {
         for (auto &triple: triples) {
-            triples_.push_back(triple);
+            move_back(triple);
         }
     }
 
-    void Triples::push_back( Triple& triple) {
+    /*
+     * @brief moves a Triple object to the back of Triples
+     * @param triple The Triple object to move.
+     * @details The vector storing the Triples is increased
+     * in size by 1 and the @param triple is moved into that
+     * slot. Therefore, ownership of the triple passes to
+     * the Triples object who is reposible for freeing the Triple.
+     */
+    void Triples::move_back(Triple& triple) {
         triples_.push_back(std::move(triple));
     }
 
     void Triples::emplace_back(Subject subject, const PredicatePtr& predicatePtr, const Resource& resource) {
         Triple triple(subject, predicatePtr, resource);
-        triples_.push_back(triple);
+        move_back(triple);
     }
 
     void Triples::emplace_back(Subject subject, const Predicate& predicate, const Resource& resource) {
         Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
-        triples_.push_back(triple);
+        move_back(triple);
     }
 
     void Triples::emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, const Resource& resource) {
         Triple triple(subject, std::make_shared<BiomodelsBiologyQualifier>(std::move(predicate)),
                       resource);
-        triples_.push_back(triple);
+        move_back(triple);
     }
 
     void Triples::emplace_back(Subject subject, BiomodelsModelQualifier predicate, const Resource& resource) {
         Triple triple(subject, std::make_shared<BiomodelsModelQualifier>(std::move(predicate)),
                       resource);
-        triples_.push_back(triple);
+        move_back(triple);
     }
 
     void Triples::emplace_back(Subject subject, DCTerm predicate, const Resource& resource) {
         Triple triple(subject, std::make_shared<DCTerm>(std::move(predicate)), resource);
-        triples_.push_back(triple);
+        move_back(triple);
     }
 
     void Triples::emplace_back(Subject subject, SemSim predicate, const Resource& resource) {
         Triple triple(subject, std::make_shared<SemSim>(std::move(predicate)), resource);
-        triples_.push_back(triple);
+        move_back(triple);
     }
     void Triples::emplace_back(librdf_node* subject, librdf_node* predicate, librdf_node*resource) {
         Triple triple(subject, predicate, resource);
-        triples_.push_back(triple);
+        move_back(triple);
     }
 //    void Triples::emplace_back(LibrdfStatement statement) {
-//        triples_.push_back(std::make_shared<Triple>(statement));
+//        triples_.move_back(std::make_shared<Triple>(statement));
 //    }
 
     std::vector<std::string> Triples::getSubjectsStr() {

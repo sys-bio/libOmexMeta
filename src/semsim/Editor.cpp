@@ -87,7 +87,7 @@ namespace semsim {
         checkValidMetaid(subject.str());
         Triple triple(subject, predicate_ptr, resource);
         Triples vec;
-        vec.push_back(triple);
+        vec.move_back(triple);
         triple_list_.push_back(vec);
         for (auto &it : namespaces_) {
             std::cout << "ns: " << it.first << ": " << it.second << std::endl;
@@ -97,10 +97,10 @@ namespace semsim {
 
     void Editor::addSingleAnnotation(SingularAnnotation &singularAnnotation) {
         checkValidMetaid(singularAnnotation.getSubjectStr());
-        Triples vec;
-        vec.push_back(singularAnnotation);
-        triple_list_.push_back(vec);
         addNamespaceFromAnnotation(singularAnnotation.getPredicateStr());
+        Triples vec;
+        vec.move_back(singularAnnotation);
+        triple_list_.push_back(vec);
 
     }
 

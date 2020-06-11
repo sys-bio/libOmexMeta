@@ -506,7 +506,7 @@ developers.
       : mAttributes(orig.mAttributes)
     {}
 
-    void add(const std::string& attribute) { mAttributes.push_back(attribute); }
+    void add(const std::string& attribute) { mAttributes.move_back(attribute); }
 
     std::string get(unsigned int i) const
     {
