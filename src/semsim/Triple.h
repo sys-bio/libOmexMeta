@@ -32,7 +32,11 @@ namespace semsim {
 
         Triple(librdf_statement *statement);
 
+
     public:
+
+        using LibrdfStatement::LibrdfStatement;
+        using LibrdfStatement::operator=;
 
         explicit Triple() = default;
 

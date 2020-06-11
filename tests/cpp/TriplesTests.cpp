@@ -31,16 +31,23 @@ public:
         this->predicate = BiomodelsBiologyQualifier("is");
     }
 
-    ~TriplesTests(){
+    ~TriplesTests() {
         storage.freeStorage();
         model.freeModel();
     }
 };
 
+/*
+ * When I move a triple, do I need to reduce reference count
+ */
 TEST_F(TriplesTests, TestCreate) {
     Triple triple1 = Triple(subject.getNode(), predicate.getNode(), resource.getNode());
-    Triples triples(std::move(triple1));
-    ASSERT_EQ(1, triples.size());
+    Triples triples;
+    triples.push_back(triple1);
+//    ASSERT_EQ(1, triples.size());
+//    triples.freeTriples();
+//    triple1.freeStatement();
+    triple1.freeStatement();
 }
 
 TEST_F(TriplesTests, TestCreate2) {
@@ -54,7 +61,7 @@ TEST_F(TriplesTests, TestCreate2) {
 TEST_F(TriplesTests, TestPushBack) {
     Triple triple1 = Triple(subject.getNode(), predicate.getNode(), resource.getNode());
     Triples triples;
-    triples.push_back(std::move(triple1));
+    triples.push_back(triple1);
     ASSERT_EQ(1, triples.size());
 }
 
@@ -136,7 +143,6 @@ TEST(TriplesTestsNoFixture, TestStr) {
 }
 
 
-
 TEST(TriplesTestsNoFixture, TestIteration) {
     Triples triples;
     triples.emplace_back(
@@ -150,8 +156,8 @@ TEST(TriplesTestsNoFixture, TestIteration) {
             LibrdfNode::fromUriString("http://resource2.com/resource2").get()
     );
     std::ostringstream os;
-    for (auto it: triples){
-        os << it->getSubjectStr() << std::endl;
+    for (auto it: triples) {
+        os << it.getSubjectStr() << std::endl;
     }
     std::string expected = "http://subject1.com/subject1\n"
                            "http://subject2.com/subject2\n";

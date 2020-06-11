@@ -92,7 +92,7 @@ namespace redland {
 
     /*
      * @breif remove statement from the model
-     * @param statement a librdf_statement* to remove from the movel
+     * @param statement a librdf_statement* to remove from the model
      * @return void
      */
     void LibrdfModel::removeStatement(librdf_statement* statement) const {

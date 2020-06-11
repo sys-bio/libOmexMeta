@@ -56,7 +56,7 @@ namespace semsim {
 
     void Editor::extractNamespacesFromTriplesVector(Triples triples) {
         for (auto &triple: triples) {
-            addNamespaceFromAnnotation(triple->getPredicateStr());
+            addNamespaceFromAnnotation(triple.getPredicateStr());
         }
     }
 
@@ -65,7 +65,7 @@ namespace semsim {
         for (auto &annot : triple_list_) {
             for (auto &triple : annot) {
                 //todo add get namespace to triple
-                model_.addStatement(triple->getStatement());
+                model_.addStatement(triple.getStatement());
             }
         }
     }
@@ -87,7 +87,7 @@ namespace semsim {
         checkValidMetaid(subject.str());
         Triple triple(subject, predicate_ptr, resource);
         Triples vec;
-        vec.push_back(std::move(triple));
+        vec.push_back(triple);
         triple_list_.push_back(vec);
         for (auto &it : namespaces_) {
             std::cout << "ns: " << it.first << ": " << it.second << std::endl;
@@ -95,7 +95,7 @@ namespace semsim {
         namespaces_[predicate_ptr->getNamespace()] = predicate_ptr->getPrefix();
     }
 
-    void Editor::addSingleAnnotation(const SingularAnnotation &singularAnnotation) {
+    void Editor::addSingleAnnotation(SingularAnnotation &singularAnnotation) {
         checkValidMetaid(singularAnnotation.getSubjectStr());
         Triples vec;
         vec.push_back(singularAnnotation);
@@ -125,27 +125,27 @@ namespace semsim {
     }
 
 
-    void Editor::addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr) {
+    void Editor::addCompositeAnnotation(const PhysicalPhenomenonPtr& phenomenonPtr) {
         Triples triples = phenomenonPtr->toTriples();
         extractNamespacesFromTriplesVector(triples);
         for (auto &triple : triples) {
-            model_.addStatement(triple->getStatement());
+            model_.addStatement(triple.getStatement());
         }
+        /*
+         * Should I remove the triples here?
+         */
+        triples.freeTriples();
     }
 
     void Editor::addPhysicalEntity(const PhysicalEntity &physicalEntity) {
-        HERE();
         if (!physicalEntity.getAbout().getNode()) {
             throw NullPointerException(
                     "NullPointerException: Editor::addPhysicalEntity() physicalEntity::subject_ (i.e. about) node is empty");
         }
-        HERE();
         checkValidMetaid(physicalEntity.getAbout().str());
-        HERE();
         addCompositeAnnotation(
                 std::make_shared<PhysicalEntity>(physicalEntity)
         );
-        HERE();
     }
 
     void Editor::addPhysicalProcess(const PhysicalProcess &physicalProcess) {
@@ -177,31 +177,38 @@ namespace semsim {
         model_.removeStatement(singularAnnotation.getStatement());
     }
 
-    void Editor::removePhysicalEntity(PhysicalEntity physicalEntity) {
-        HERE();
-        int cout = 0;
-        HERE();
-        Triples triples = physicalEntity.toTriples();
-        HERE();
+    void Editor::removePhysicalEntity(PhysicalEntity physicalEntity) const {
+        /*
+         * This strategy causes a seg sault because toTriples
+         * passes ownership of the nodes inside statement to the Triples
+         * object which has its own destructor while removeStatement also
+         * calls the destructor for librdf_stement.
+         *
+         * 1) make LibrdfStatement free up resources itself,
+         * rather than having a destructor.
+         *
+         * 2) do not use the toTriples here. Instead try to reconstruct
+         * the physical entity.
+         *
+         * option 1 is probably better
+         */
 
-        for (auto &it: triples) {
-            HERE();
-            std::cout << cout << std::endl;
-            model_.removeStatement(it->getStatement());
-            cout++;
+        const Triples& triples = physicalEntity.toTriples();
+        for (int i=0; i< triples.size(); i++) {
+//            std::cout << triples[i].str("ntriples") << std::endl;
+            model_.removeStatement(triples[i].getStatement());
         }
-        HERE();
     }
 
     void Editor::removePhysicalProcess(PhysicalProcess physicalProcess) {
         for (auto &it: physicalProcess.toTriples()) {
-            model_.removeStatement(it->getStatement());
+            model_.removeStatement(it.getStatement());
         }
     }
 
     void Editor::removePhysicalForce(PhysicalForce physicalForce) {
         for (auto &it: physicalForce.toTriples()) {
-            model_.removeStatement(it->getStatement());
+            model_.removeStatement(it.getStatement());
         }
     }
 

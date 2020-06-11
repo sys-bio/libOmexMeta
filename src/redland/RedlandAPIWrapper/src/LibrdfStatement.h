@@ -50,7 +50,9 @@ namespace redland {
 
         LibrdfStatement &operator=(LibrdfStatement &&statement) noexcept;
 
-        ~LibrdfStatement();
+        ~LibrdfStatement()  = default;
+
+        void freeStatement();
 
         [[nodiscard]] librdf_statement *get() const;
 
@@ -73,6 +75,8 @@ namespace redland {
         void setResource(librdf_node *node);
 
         void setPredicate(librdf_node *node);
+
+        bool isComplete();
     };
 
 
