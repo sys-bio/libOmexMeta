@@ -32,13 +32,21 @@ namespace semsim {
     public:
         Triples();
 
-        explicit Triples(Triple triple);
+        /*
+         * @brief construct a Triples object from a single triple
+         * @param triple The triple to put into triples
+         * @details The triple is moved into element 0 of a new
+         * Triples object. The Triple must be passed by reference
+         * so that the triple is moved directly, instead of copied
+         * and then moved into the Triples object (which is a memory leak).
+         */
+        explicit Triples(Triple &triple);
 
         explicit Triples(std::vector<Triple> triples);
 
         const Triple& operator[](int index) const;
 
-        void push_back(Triple& triple);
+        void move_back(Triple& triple);
 
 //        void emplace_back(LibrdfStatement statement);
 

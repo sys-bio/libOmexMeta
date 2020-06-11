@@ -426,7 +426,7 @@ void GroupsExtension::init()
   // constructor.
 
   std::vector<string> pkgURIs;
-  pkgURIs.push_back(getXmlnsL3V1V1());
+  pkgURIs.move_back(getXmlnsL3V1V1());
 
   SBaseExtensionPoint docExtPoint('core', SBML_DOCUMENT);
   SBaseExtensionPoint modelExtPoint('core', SBML_MODEL);

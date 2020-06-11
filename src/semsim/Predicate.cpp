@@ -192,6 +192,10 @@ namespace semsim {
         Predicate::verify(valid_terms_, term_);
     }
 
+//    std::shared_ptr<BiomodelsBiologyQualifier> BiomodelsBiologyQualifier::makeShared()  {
+//        return std::shared_ptr<BiomodelsBiologyQualifier>(this);
+//    }
+
     BiomodelsModelQualifier::BiomodelsModelQualifier(const std::string &term) :
             Predicate("http://biomodels.net/model-qualifiers/", term, "bqmodel") {
         verify();
@@ -200,6 +204,10 @@ namespace semsim {
     void BiomodelsModelQualifier::verify() {
         Predicate::verify(valid_terms_, term_);
     }
+
+//    std::shared_ptr<BiomodelsModelQualifier> BiomodelsModelQualifier::makeShared() {
+//        return std::shared_ptr<BiomodelsModelQualifier>(this);
+//    }
 
     DCTerm::DCTerm(const std::string &term) :
             Predicate("http://purl.org/dc/terms/", term, "dcterms") {
@@ -210,6 +218,10 @@ namespace semsim {
         Predicate::verify(valid_terms_, term_);
     }
 
+//    std::shared_ptr<DCTerm> DCTerm::makeShared() {
+//        return std::shared_ptr<DCTerm>(this);
+//    }
+
     SemSim::SemSim(const std::string &term) :
             Predicate("http://www.bhi.washington.edu/semsim#", term, "semsim") {
         verify();
@@ -218,6 +230,10 @@ namespace semsim {
     void SemSim::verify() {
         Predicate::verify(valid_terms_, term_);
     }
+
+//    std::shared_ptr<SemSim> SemSim::makeShared() {
+//        return std::shared_ptr<SemSim>(this);
+//    }
 
     /*
      * A factory function for creating PredicatePtr objects.

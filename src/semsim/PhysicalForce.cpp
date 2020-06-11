@@ -44,12 +44,12 @@ namespace semsim {
 
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(force_metaid)) {
-                triples.push_back(triple);
+                triples.move_back(triple);
             }
         }
         for (auto &sink : sinks_) {
             for (auto &triple : sink.toTriples(force_metaid)) {
-                triples.push_back(triple);
+                triples.move_back(triple);
             }
         }
         return triples;

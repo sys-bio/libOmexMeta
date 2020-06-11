@@ -516,7 +516,7 @@ namespace semsim {
 		+operator[](unsigned long n) : semsim : : Triple&
 		-triple_list_ : std::vector<Triple>
 		+emplace_back(const Subject& subject, const Predicate& predicate, const Resource& resource) : void
-		+push_back(const Triple& triple) : void
+		+move_back(const Triple& triple) : void
 	}
 
 
