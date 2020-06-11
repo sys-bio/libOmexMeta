@@ -122,7 +122,7 @@ namespace semsim {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: statement is null");
             }
 
-            librdf_model_add_statement(model, it->getStatement().get());
+            librdf_model_add_statement(model, it->getStatement());
             Predicate::addSeenNamespaceToSerializer(world, serializer, it->getPredicate());
         }
 
@@ -145,7 +145,7 @@ namespace semsim {
 
     void Triples::emplace_back(librdf_node* subject, librdf_node* predicate, librdf_node*resource) {
         Triple triple(subject, predicate, resource);
-        std::shared_ptr<Triple> ptr = std::make_shared<Triple>(triple);
+        std::shared_ptr<Triple> ptr = std::make_shared<Triple>(std::move(triple));
         triples_.push_back(ptr);
     }
 

@@ -493,54 +493,54 @@ TEST_F(EditorTests, TestRemovePhysicalEntity) {
 //    ASSERT_EQ(expected, actual);
 }
 
-
-TEST_F(EditorTests, TestRemovePhysicalForce) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-            SEMSIM_TYPE_SBML);
-
-    PhysicalForce physicalForce = editor.createPhysicalForce();
-    physicalForce
-            .setAbout("SemsimMetaid0000")
-            .setPhysicalProperty("opb:opb1234")
-            .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
-            .addSink("sinkMetaid", 1.0, "PhysicalEntity2");
-
-    editor.addPhysicalForce(physicalForce);
-    editor.toRDF();
-
-    ASSERT_EQ(7, rdf.size());
-    editor.removePhysicalForce(physicalForce);
-    int expected = 0;
-    int actual = rdf.size();
-    ASSERT_EQ(expected, actual);
-}
-
-TEST_F(EditorTests, TestRemovePhysicalProcess) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-            SEMSIM_TYPE_SBML);
-
-    PhysicalProcess physicalProcess = editor.createPhysicalProcess();
-    physicalProcess
-            .setAbout("SemsimMetaid0000")
-            .setPhysicalProperty("opb:opb1234")
-            .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
-            .addSink("sinkMetaid", 1.0, "PhysicalEntity2")
-            .addSink("mediatorMetaid", 1.0, "PhysicalEntity3");
-
-    editor.addPhysicalProcess(physicalProcess);
-    editor.toRDF();
-
-    ASSERT_EQ(10, rdf.size());
-    editor.removePhysicalProcess(physicalProcess);
-    int expected = 0;
-    int actual = rdf.size();
-    ASSERT_EQ(expected, actual);
-}
-
+//
+//TEST_F(EditorTests, TestRemovePhysicalForce) {
+//    RDF rdf;
+//    Editor editor = rdf.toEditor(
+//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+//            SEMSIM_TYPE_SBML);
+//
+//    PhysicalForce physicalForce = editor.createPhysicalForce();
+//    physicalForce
+//            .setAbout("SemsimMetaid0000")
+//            .setPhysicalProperty("opb:opb1234")
+//            .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
+//            .addSink("sinkMetaid", 1.0, "PhysicalEntity2");
+//
+//    editor.addPhysicalForce(physicalForce);
+//    editor.toRDF();
+//
+//    ASSERT_EQ(7, rdf.size());
+//    editor.removePhysicalForce(physicalForce);
+//    int expected = 0;
+//    int actual = rdf.size();
+//    ASSERT_EQ(expected, actual);
+//}
+//
+//TEST_F(EditorTests, TestRemovePhysicalProcess) {
+//    RDF rdf;
+//    Editor editor = rdf.toEditor(
+//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+//            SEMSIM_TYPE_SBML);
+//
+//    PhysicalProcess physicalProcess = editor.createPhysicalProcess();
+//    physicalProcess
+//            .setAbout("SemsimMetaid0000")
+//            .setPhysicalProperty("opb:opb1234")
+//            .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
+//            .addSink("sinkMetaid", 1.0, "PhysicalEntity2")
+//            .addSink("mediatorMetaid", 1.0, "PhysicalEntity3");
+//
+//    editor.addPhysicalProcess(physicalProcess);
+//    editor.toRDF();
+//
+//    ASSERT_EQ(10, rdf.size());
+//    editor.removePhysicalProcess(physicalProcess);
+//    int expected = 0;
+//    int actual = rdf.size();
+//    ASSERT_EQ(expected, actual);
+//}
+//
 
 
 

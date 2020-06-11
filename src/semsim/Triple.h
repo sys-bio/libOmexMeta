@@ -56,7 +56,7 @@ namespace semsim {
 
         std::string getAbout() const;
 
-        std::shared_ptr<librdf_statement> getStatement() const;
+        librdf_statement *getStatement() const;
 
         Triple &setPredicate(const std::string &namespace_, const std::string &term);
 
