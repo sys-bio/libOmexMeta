@@ -75,6 +75,8 @@ namespace semsim {
          * @return false when node is empty
          */
         [[nodiscard]] bool isSet() const override;
+
+        Triples toTriples(Triple subject_metaid, Triple property_metaid) const;
     };
 }
 

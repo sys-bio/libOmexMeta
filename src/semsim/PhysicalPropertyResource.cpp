@@ -42,12 +42,12 @@ namespace semsim {
     }
 
     Triples PhysicalPropertyResource::toTriples(std::string subject_metaid, std::string property_metaid) const {
-        
         Triple v = isVersionOfTriple(subject_metaid);
-        
         Triple p = isPropertyOfTriple(subject_metaid, property_metaid);
-        
-        return Triples({v, p});
+        Triples triples;
+        triples.move_back(v);
+        triples.move_back(p);
+        return triples;
     }
 
 

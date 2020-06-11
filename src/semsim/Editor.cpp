@@ -17,6 +17,15 @@ namespace semsim {
         metaids_ = xml_and_metaids.second;
     }
 
+    Editor::~Editor() {
+        std::cout << "calling Editor destructor" << std::endl;
+        freeTriples();
+    }
+
+    int Editor::size() const {
+        return triples_.size();
+    }
+
     const std::string &Editor::getXml() const {
         return xml_;
     }
@@ -50,10 +59,6 @@ namespace semsim {
     }
 
 
-    const NestedTriples &Editor::getTripleList() const {
-        return triple_list_;
-    }
-
     void Editor::extractNamespacesFromTriplesVector(Triples triples) {
         for (auto &triple: triples) {
             addNamespaceFromAnnotation(triple.getPredicateStr());
@@ -62,16 +67,13 @@ namespace semsim {
 
 
     void Editor::toRDF() {
-        for (auto &annot : triple_list_) {
-            for (auto &triple : annot) {
-                //todo add get namespace to triple
-                model_.addStatement(triple.getStatement());
-            }
+        for (auto &triple : triples_) {
+            model_.addStatement(triple);
         }
     }
 
 
-    void Editor::addNamespace(const std::string& ns, std::string prefix) {
+    void Editor::addNamespace(const std::string &ns, std::string prefix) {
         namespaces_[ns] = std::move(prefix);
     }
 
@@ -87,21 +89,14 @@ namespace semsim {
         checkValidMetaid(subject.str());
         Triple triple(subject, predicate_ptr, resource);
         Triples vec;
-        vec.move_back(triple);
-        triple_list_.push_back(vec);
-        for (auto &it : namespaces_) {
-            std::cout << "ns: " << it.first << ": " << it.second << std::endl;
-        }
+        triples_.move_back(triple);
         namespaces_[predicate_ptr->getNamespace()] = predicate_ptr->getPrefix();
     }
 
     void Editor::addSingleAnnotation(SingularAnnotation &singularAnnotation) {
         checkValidMetaid(singularAnnotation.getSubjectStr());
         addNamespaceFromAnnotation(singularAnnotation.getPredicateStr());
-        Triples vec;
-        vec.move_back(singularAnnotation);
-        triple_list_.push_back(vec);
-
+        triples_.move_back(singularAnnotation);
     }
 
     void Editor::addNamespaceFromAnnotation(const std::string &predicate_string) {
@@ -112,29 +107,18 @@ namespace semsim {
         };
     }
 
-    void Editor::addAnnotationFromNestedTriples(const NestedTriples &tripleList) {
-        for (auto &inner_triple_vec: tripleList) {
-            extractNamespacesFromTriplesVector(inner_triple_vec);
-            triple_list_.push_back(inner_triple_vec);
-        }
-    }
-
-    void Editor::addAnnotationFromTriples(const Triples &triples) {
-        extractNamespacesFromTriplesVector(triples);
-        triple_list_.push_back(triples);
-    }
-
-
-    void Editor::addCompositeAnnotation(const PhysicalPhenomenonPtr& phenomenonPtr) {
+    void Editor::addCompositeAnnotation(const PhysicalPhenomenonPtr &phenomenonPtr) {
         Triples triples = phenomenonPtr->toTriples();
-        extractNamespacesFromTriplesVector(triples);
-        for (auto &triple : triples) {
-            model_.addStatement(triple.getStatement());
-        }
-        /*
-         * Should I remove the triples here?
-         */
-        triples.freeTriples();
+//        extractNamespacesFromTriplesVector(triples);
+//        for (auto &triple : triples) {
+//            model_.addStatement(triple.getStatement());
+//        }
+//        /*
+//         * Should I remove the triples here?
+//         */
+//        std::cout << "Experimental line of code" << std::endl;
+//        HERE();
+//        triples.freeTriples();
     }
 
     void Editor::addPhysicalEntity(const PhysicalEntity &physicalEntity) {
@@ -193,8 +177,8 @@ namespace semsim {
          * option 1 is probably better
          */
 
-        const Triples& triples = physicalEntity.toTriples();
-        for (int i=0; i< triples.size(); i++) {
+        const Triples &triples = physicalEntity.toTriples();
+        for (int i = 0; i < triples.size(); i++) {
 //            std::cout << triples[i].str("ntriples") << std::endl;
             model_.removeStatement(triples[i].getStatement());
         }
@@ -222,6 +206,10 @@ namespace semsim {
 
     PhysicalProcess Editor::createPhysicalProcess() {
         return PhysicalProcess(model_.get());
+    }
+
+    void Editor::freeTriples() {
+        triples_.freeTriples();
     }
 
 

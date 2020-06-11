@@ -119,6 +119,9 @@ namespace redland {
      *
      * If I support a copy constructor, it might work
      * if add to the underlying reference counter myself?
+     * Bad idea. but loads of allocation bugs when you delete
+     * these constructors. So instead, finish making everything move
+     * not copy then delete them!
      */
     LibrdfStatement::LibrdfStatement(const LibrdfStatement &statement) {
         std::cout << "calling LibrdfStatement copy constructor" << std::endl;

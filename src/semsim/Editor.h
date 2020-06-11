@@ -62,7 +62,7 @@ namespace semsim {
     private:
         std::string xml_;
         std::vector<std::string> metaids_;
-        NestedTriples triple_list_;
+        Triples triples_;
         const LibrdfModel &model_;
         std::unordered_map<std::string, std::string> &namespaces_;
 
@@ -89,6 +89,11 @@ namespace semsim {
          */
         explicit Editor(const std::string &xml, SemsimXmlType type,
                         const LibrdfModel &model, NamespaceMap &ns_map);
+
+        ~Editor();
+
+        int size() const ;
+
 
         /*
          * @brief returns a hashmap of namespaces to prefixes.
@@ -211,19 +216,10 @@ namespace semsim {
         void checkValidMetaid(const std::string &metaid);
 
         /*
-         * @brief add annotations from a Triples object
-         */
-        [[maybe_unused]] void addAnnotationFromTriples(const Triples &triples);
-
-        /*
          * @brief extract namespace part of uri from @parameter predicate_string
          * and add it to namespace_ if we know it.
          */
         void addNamespaceFromAnnotation(const std::string &predicate_string);
-
-        [[nodiscard]] const NestedTriples &getTripleList() const;
-
-        [[maybe_unused]] void addAnnotationFromNestedTriples(const NestedTriples &tripleList);
 
         PhysicalEntity createPhysicalEntity();
 
@@ -231,6 +227,7 @@ namespace semsim {
 
         PhysicalProcess createPhysicalProcess();
 
+        void freeTriples();
     };
 
 }

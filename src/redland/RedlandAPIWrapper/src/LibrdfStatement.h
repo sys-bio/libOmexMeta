@@ -42,7 +42,7 @@ namespace redland {
 
         static LibrdfStatement fromRawNodePtrs(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
-        LibrdfStatement(const LibrdfStatement &statement);
+        LibrdfStatement(const LibrdfStatement &statement) ;
 
         LibrdfStatement(LibrdfStatement &&statement) noexcept;
 

@@ -65,7 +65,7 @@ namespace semsim {
 	class Editor {
 		+Editor(const std::string& xml, SemsimXmlType type, librdf_world* world, librdf_model* model, semsim::NamespaceMap ns_map)
 		+getNamespaces() : NamespaceMap& {query}
-		-triple_list_ : NestedTriples
+		-triples_ : NestedTriples
 		+getTripleList() : NestedTriples& {query}
 		-model_ : librdf_model*
 		-world_ : librdf_world*
@@ -514,7 +514,7 @@ namespace semsim {
 		+operator!=(const TripleList& rhs) : bool {query}
 		+operator==(const TripleList& rhs) : bool {query}
 		+operator[](unsigned long n) : semsim : : Triple&
-		-triple_list_ : std::vector<Triple>
+		-triples_ : std::vector<Triple>
 		+emplace_back(const Subject& subject, const Predicate& predicate, const Resource& resource) : void
 		+move_back(const Triple& triple) : void
 	}
