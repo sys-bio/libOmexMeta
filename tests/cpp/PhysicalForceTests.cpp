@@ -108,6 +108,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
     int actual = triples.size();
     ASSERT_EQ(expected, actual
     );
+    triples.freeTriples();
 }
 
 
@@ -137,8 +138,8 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
     Triples triples = force.toTriples();
     int expected = 8;
     int actual = triples.size();
-    ASSERT_EQ(expected, actual
-    );
+    ASSERT_EQ(expected, actual);
+    triples.freeTriples();
 }
 
 
@@ -192,6 +193,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
                            "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 
@@ -237,5 +239,6 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
                            "</rdf:RDF>\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 

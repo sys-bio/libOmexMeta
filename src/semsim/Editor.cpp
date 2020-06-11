@@ -23,7 +23,7 @@ namespace semsim {
     }
 
     int Editor::size() const {
-        return triples_.size();
+        return model_.size();
     }
 
     const std::string &Editor::getXml() const {
@@ -59,9 +59,9 @@ namespace semsim {
     }
 
 
-    void Editor::extractNamespacesFromTriplesVector(Triples triples) {
-        for (auto &triple: triples) {
-            addNamespaceFromAnnotation(triple.getPredicateStr());
+    void Editor::extractNamespacesFromTriplesVector(const Triples &triples) {
+        for (int i=0; i<triples.size(); i++) {
+            addNamespaceFromAnnotation(triples[i].getPredicateStr());
         }
     }
 
@@ -96,7 +96,8 @@ namespace semsim {
     void Editor::addSingleAnnotation(SingularAnnotation &singularAnnotation) {
         checkValidMetaid(singularAnnotation.getSubjectStr());
         addNamespaceFromAnnotation(singularAnnotation.getPredicateStr());
-        triples_.move_back(singularAnnotation);
+        model_.addStatement(singularAnnotation);
+//        triples_.move_back(singularAnnotation);
     }
 
     void Editor::addNamespaceFromAnnotation(const std::string &predicate_string) {
@@ -109,16 +110,16 @@ namespace semsim {
 
     void Editor::addCompositeAnnotation(const PhysicalPhenomenonPtr &phenomenonPtr) {
         Triples triples = phenomenonPtr->toTriples();
-//        extractNamespacesFromTriplesVector(triples);
-//        for (auto &triple : triples) {
-//            model_.addStatement(triple.getStatement());
-//        }
-//        /*
-//         * Should I remove the triples here?
-//         */
-//        std::cout << "Experimental line of code" << std::endl;
-//        HERE();
-//        triples.freeTriples();
+        extractNamespacesFromTriplesVector(triples);
+        for (int i = 0; i < triples.size(); i++){
+            model_.addStatement(triples[i].getStatement());
+        }
+        /*
+         * Should I remove the triples here?
+         */
+        std::cout << "Experimental line of code" << std::endl;
+        HERE();
+        triples.freeTriples();
     }
 
     void Editor::addPhysicalEntity(const PhysicalEntity &physicalEntity) {

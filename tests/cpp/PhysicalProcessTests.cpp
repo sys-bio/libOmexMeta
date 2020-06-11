@@ -28,6 +28,7 @@ public:
 
         physical_property = PhysicalPropertyResource("OPB:OPB_00340");
     };
+
     ~PhysicalProcessTests() override {
         model.freeModel();
         storage.freeStorage();
@@ -130,7 +131,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
 }
 
 
-
 TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
     PhysicalProcess process(
             model.get(),
@@ -168,6 +168,8 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
     int expected = 10;
     int actual = triples.size();
     ASSERT_EQ(expected, actual);
+    triples.freeTriples();
+
 }
 
 
@@ -207,6 +209,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
     int expected = 10;
     int actual = triples.size();
     ASSERT_EQ(expected, actual);
+    triples.freeTriples();
 }
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
@@ -273,6 +276,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
@@ -324,4 +328,5 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
 
     // remember to free the unused physical property from test fixture
     physical_property.free();
+    triples.freeTriples();
 }

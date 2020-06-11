@@ -11,7 +11,7 @@
 
 namespace semsim {
 
-    PhysicalForce::PhysicalForce(librdf_model* model, Subject metaid,
+    PhysicalForce::PhysicalForce(librdf_model *model, Subject metaid,
                                  PhysicalPropertyResource physicalProperty,
                                  Sources sources, Sinks sinks)
             : PhysicalPhenomenon(model, metaid, std::move(physicalProperty), PHYSICAL_PROCESS),
@@ -35,12 +35,8 @@ namespace semsim {
         std::string force_metaid = SemsimUtils::generateUniqueMetaid(
                 model_, "PhysicalForce",
                 std::vector<std::string>());
-        // why is this not being used?
-//        Subject force_metaid_subject = Subject::fromRawPtr(LibrdfNode::fromUriString(force_metaid));
 
-        //todo see note on PhysicalEntity::toTriples. Same applies here.
-        Triples triples = physical_property_.toTriples(about.str(), force_metaid);
-        about.free();
+        Triples triples = physical_property_.toTriples(about, force_metaid);
 
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(force_metaid)) {
@@ -55,7 +51,7 @@ namespace semsim {
         return triples;
     }
 
-    PhysicalForce &PhysicalForce::setAbout(const std::string& metaid) {
+    PhysicalForce &PhysicalForce::setAbout(const std::string &metaid) {
         about = Subject::fromRawPtr(LibrdfNode::fromUriString(metaid).get());
         return (*this);
     }
@@ -96,7 +92,7 @@ namespace semsim {
         return (*this);
     }
 
-    PhysicalForce::PhysicalForce(librdf_model* model)
+    PhysicalForce::PhysicalForce(librdf_model *model)
             : PhysicalPhenomenon(model) {}
 
     int PhysicalForce::getNumSources() {

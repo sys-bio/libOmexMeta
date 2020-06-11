@@ -75,7 +75,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToEditor) {
     ASSERT_EQ(expected, actual);
 }
 
-TEST_F(EditorTests, TestToRDFSingleAnnotation1) {
+TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
@@ -101,7 +101,7 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation1) {
 
 }
 
-TEST_F(EditorTests, TestToRDFSingleAnnotation2) {
+TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
@@ -125,7 +125,7 @@ TEST_F(EditorTests, TestToRDFSingleAnnotation2) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(EditorTests, TestToRDFSingleAnnotation3) {
+TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
@@ -199,7 +199,38 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
 }
 
 
-TEST_F(EditorTests, TestCompositeAnnotationPhysicalEntity) {
+TEST_F(EditorTests, TestAddPhysicalEntityToEditor) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+
+    Subject subject(LibrdfNode::fromUriString("VLV"));
+    PhysicalPropertyResource ppr("OPB:OPB_00154");
+    Resource r(LibrdfNode::fromUriString("fma:FMA:9670")); // is smad3
+    std::vector<Resource> resources;
+    resources.emplace_back(std::move(LibrdfNode::fromUriString("fma/FMA:9697")));
+    PhysicalEntity physicalEntity = PhysicalEntity(
+            rdf.getModel(), subject, ppr, r, resources
+    );
+    std::shared_ptr<PhysicalEntity> ptr = std::make_shared<PhysicalEntity>(physicalEntity);
+    editor.addCompositeAnnotation(ptr);
+    int expected = 7;
+    int actual = editor.size();
+    ASSERT_EQ(expected, actual);
+
+//    subject.free();
+//    ppr.free();
+//    r.free();
+//    resources[0].free();
+
+//    physicalEntity.free();
+
+
+}
+
+TEST_F(EditorTests, TestAddPhysicalEntityToRDF) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
@@ -317,7 +348,6 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
     editor.addCompositeAnnotation(
             std::make_shared<PhysicalForce>(
                     PhysicalForce(
-
                             model.get(),
                             Subject(LibrdfNode::fromUriString("MetaId004")),
                             PhysicalPropertyResource("OPB:OPB1234"),
