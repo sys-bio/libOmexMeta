@@ -81,34 +81,34 @@ namespace semsim {
         delete rdf_ptr;
     }
 
-    RDF* RDF_fromString(const char *str, const char *format, const char *baseuri) {
-        RDF* rdf = RDF_new();
+    RDF *RDF_fromString(const char *str, const char *format, const char *baseuri) {
+        RDF *rdf = RDF_new();
         rdf->addFromString(str, format, baseuri);
         return rdf;
     }
 
 
-    void RDF_addFromString(RDF* rdf_ptr, const char* str, const char* format, const char* base_uri){
+    void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri) {
         rdf_ptr->addFromString(str, format, base_uri);
     }
 
-    RDF* RDF_fromUri(const char* uri_string, const char* format){
-        RDF* rdf = RDF_new();
+    RDF *RDF_fromUri(const char *uri_string, const char *format) {
+        RDF *rdf = RDF_new();
         rdf->addFromUri(uri_string, format);
         return rdf;
     }
 
-    void RDF_addFromUri(RDF* rdf_ptr, const char* uri_string, const char* format){
+    void RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format) {
         rdf_ptr->addFromUri(uri_string, format);
     }
 
-    RDF* RDF_fromFile(const char* filename, const char* format){
-        RDF* rdf = RDF_new();
+    RDF *RDF_fromFile(const char *filename, const char *format) {
+        RDF *rdf = RDF_new();
         rdf->addFromFile(filename, format);
         return rdf;
     }
 
-    void RDF_addFromFile(RDF* rdf_ptr, const char* uri_string, const char* format){
+    void RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format) {
         rdf_ptr->addFromFile(uri_string, format);
     }
 
@@ -194,8 +194,8 @@ namespace semsim {
      * The returned string is owned by the caller.
      */
     char *Editor_getXml(Editor *editor_ptr) {
-        const std::string& str = editor_ptr->getXml();
-        char* cstr = (char*) malloc((str.size()+1)*sizeof(char*));
+        const std::string &str = editor_ptr->getXml();
+        char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
         strcpy(cstr, str.c_str());
         return cstr;
     }
@@ -206,9 +206,9 @@ namespace semsim {
         delete editor_ptr;
     }
 
-    void Editor_toRDF(Editor *editor_ptr) {
-        editor_ptr->toRDF();
-    }
+//    void Editor_toRDF(Editor *editor_ptr) {
+//        editor_ptr->toRDF();
+//    }
 
 
 /*********************************************************************
@@ -219,12 +219,10 @@ namespace semsim {
     }
 
     void SingularAnnotation_delete(SingularAnnotation *singularAnnotation) {
-        // note: we do not need a freeAll type function
-        //  for singular annotation as it is a typedef Triple,
-        //  which owns the nodes.
-        if (!singularAnnotation)
-            return;
-        delete singularAnnotation;
+        if (singularAnnotation != nullptr) {
+            singularAnnotation->freeStatement();
+            delete singularAnnotation;
+        }
     }
 
     void SingularAnnotation_freeAll(SingularAnnotation *singularAnnotation) {
@@ -299,8 +297,8 @@ namespace semsim {
     }
 
     char *SingularAnnotation_str(
-            SingularAnnotation *singular_annotation, const char *format, const char *base_uri
-    ) {
+            SingularAnnotation *singular_annotation,
+            const char *format, const char *base_uri) {
         std::string str = singular_annotation->str(format, base_uri);
         char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
         strcpy(cstr, str.c_str());
@@ -381,7 +379,9 @@ namespace semsim {
     }
 
     char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri) {
-        std::string str = physical_entity_ptr->toTriples().str(format, base_uri);
+        Triples triples = physical_entity_ptr->toTriples();
+        std::string str = triples.str(format, base_uri);
+        triples.freeTriples();
         char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
         strcpy(cstr, str.c_str());
         return cstr;
@@ -441,7 +441,9 @@ namespace semsim {
     }
 
     char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri) {
-        std::string str = physical_process_ptr->toTriples().str(format, base_uri);
+        Triples triples = physical_process_ptr->toTriples();
+        std::string str = triples.str(format, base_uri);
+        triples.freeTriples();
         char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
         strcpy(cstr, str.c_str());
         return cstr;
@@ -527,7 +529,9 @@ namespace semsim {
     }
 
     char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri) {
-        std::string str = physical_force_ptr->toTriples().str(format, base_uri);
+        Triples triples = physical_force_ptr->toTriples();
+        std::string str = triples.str(format, base_uri);
+        triples.freeTriples();
         char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
         strcpy(cstr, str.c_str());
         return cstr;

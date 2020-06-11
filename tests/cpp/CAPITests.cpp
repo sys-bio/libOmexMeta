@@ -361,7 +361,6 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicateUri) {
     const char *expected = "http://predicate.com/from/uri";
     ASSERT_STREQ(expected, actual);
 
-
     Editor_delete(editor_ptr);
     SingularAnnotation_delete(singularAnnotation);
     free_c_char_star(actual);
@@ -782,7 +781,7 @@ TEST_F(CAPITests, TestEditorToRDF) {
     );
     Editor_addPhysicalForce(editor_ptr, physical_force_ptr
     );
-    Editor_toRDF(editor_ptr);
+//    Editor_toRDF(editor_ptr);
 
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
