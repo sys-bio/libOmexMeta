@@ -65,9 +65,6 @@ namespace semsim {
         Triple triple(subject, predicate, resource);
         move_back(triple);
     }
-//    void Triples::emplace_back(LibrdfStatement statement) {
-//        triples_.move_back(std::make_shared<Triple>(statement));
-//    }
 
     std::vector<std::string> Triples::getSubjectsStr() {
         std::vector<std::string> vec;

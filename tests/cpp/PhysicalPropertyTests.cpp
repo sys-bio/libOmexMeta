@@ -115,6 +115,17 @@ TEST_F(PhysicalPropertyTests, TestToTriples) {
     triples.freeTriples();
 }
 
+TEST_F(PhysicalPropertyTests, TestToTriples2) {
+    PhysicalPropertyResource resource = PhysicalPropertyResource("OPB/OPB_1234");
+    Subject s(LibrdfNode::fromUriString("https://subject.com"));
+    Triples triples = resource.toTriples(s, "prop");
+    auto r = triples.getResources();
+    std::string expeted = "https://identifiers.org/OPB/OPB_1234";
+    std::string actual = r[0];
+    ASSERT_STREQ(expeted.c_str(), actual.c_str());
+    triples.freeTriples();
+}
+
 
 
 

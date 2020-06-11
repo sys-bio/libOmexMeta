@@ -26,7 +26,7 @@ public:
         physical_property = PhysicalPropertyResource("OPB:OPB_00340");
     };
 
-    ~PhysicalEntityTests(){
+    ~PhysicalEntityTests() {
         model.freeModel();
         storage.freeStorage();
     }
@@ -244,16 +244,19 @@ TEST_F(PhysicalEntityTests, TestAboutIsSet) {
 }
 
 TEST_F(PhysicalEntityTests, TestToTripleSize) {
-    Resource is = Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()); // is smad3
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get());
-    std::vector<Resource> ispartof(
-            {Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()),
-             Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())
-            });
+    Resource is = Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()); // is smad3
+    std::vector<Resource> ispartof;
+    ispartof.push_back(std::move(
+            Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()
+                    )));
+    ispartof.push_back(std::move(
+                    Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())
+            ));
 
     PhysicalEntity physicalEntity(
             model.get(),
-            subject,
+            std::move(subject),
             physical_property,
             is, ispartof
     );
@@ -345,9 +348,10 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderInterface) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
-    ASSERT_STREQ(physicalEntity.toTriples().str().c_str(), expected.c_str());
+    Triples triples = physicalEntity.toTriples();
+    ASSERT_STREQ(triples.str().c_str(), expected.c_str());
+    triples.freeTriples();
     physical_property.free();
-
 }
 
 
@@ -398,7 +402,8 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriples) {
             .addLocation("https://identifiers.org/fma/FMA:72564")
             .addLocation("fma:FMA:63877");
 
-    std::string actual = physicalEntity.toTriples().str();
+    Triples triples = physicalEntity.toTriples();
+    std::string actual = triples.str();
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -416,6 +421,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriples) {
                            "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 

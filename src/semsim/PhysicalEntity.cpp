@@ -90,7 +90,7 @@ namespace semsim {
                     "Use the setAbout() method."
             );
         }
-        
+
         if (getPhysicalProperty().getNode() == nullptr) {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): Cannot create"
@@ -98,7 +98,7 @@ namespace semsim {
                     "Use the setPhysicalProperty() method."
             );
         }
-        
+
         if (getLocationResources().empty()) {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): cannot create "
@@ -106,13 +106,11 @@ namespace semsim {
                     "is empty. Use the addLocation() method."
             );
         }
-        
+
         int count = 0;
-        
         for (auto &i : getLocationResources()) {
-            
             if (i.getNode() == nullptr) {
-                
+
                 std::ostringstream err;
                 err << "PhysicalEntity::toTriples(): Cannot create"
                        " triples because item ";
@@ -129,22 +127,21 @@ namespace semsim {
                 model_, "PhysicalEntity",
                 std::vector<std::string>());
 
-        
+
         Triples triples = physical_property_.toTriples(about, property_metaid);
 
 
-        
         std::cout << "about to free about" << std::endl;
 //        about.free();
 
-        
+
         // the "what" part of physical entity triple
         triples.emplace_back(
                 LibrdfNode::fromUriString(property_metaid).get(),
                 BiomodelsBiologyQualifier("is").getNode(),
                 getIdentityResource().getNode()
         );
-        
+
         // the "where" part of the physical entity
         for (auto &locationResource : getLocationResources()) {
             triples.emplace_back(
@@ -153,7 +150,7 @@ namespace semsim {
                     locationResource.getNode()
             );
         }
-        
+
 
         return triples;
     }
@@ -208,7 +205,6 @@ namespace semsim {
 
 
         Triples triples = physical_property_.toTriples(about.str(), property_metaid);
-
 
 
         std::cout << "about to free about" << std::endl;
