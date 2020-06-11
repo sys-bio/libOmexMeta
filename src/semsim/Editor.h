@@ -139,7 +139,7 @@ namespace semsim {
          * @brief Add a SingleAnnotation (aka Triple) to the rdf graph.
          * @param singularAnnotation An instance of SingularAnnotation to add to the model
          */
-        void addSingleAnnotation(const SingularAnnotation &singularAnnotation);
+        void addSingleAnnotation(SingularAnnotation &singularAnnotation);
 
         /*
          * @brief remove a singular annotation (aka Triple) from the rdf graph
@@ -159,7 +159,7 @@ namespace semsim {
          * For developers. Consider removing this function in favour of using the
          * add* functions.
          */
-        [[maybe_unused]] void addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr);
+        [[maybe_unused]] void addCompositeAnnotation(const PhysicalPhenomenonPtr& phenomenonPtr);
 
         /*
          * @brief add a composite annotation of type PhysicalEntity to the rdf graph
@@ -171,7 +171,7 @@ namespace semsim {
          * @brief remove triples associated with a a PhysicalEntity object from the rdf graph
          * @param physicalEntity the PhysicalEntityto remove
          */
-        void removePhysicalEntity(PhysicalEntity physicalEntity);
+        void removePhysicalEntity(PhysicalEntity physicalEntity) const;
 
         /*
          * @brief add a composite annotation of type PhysicalProcess to the rdf graph

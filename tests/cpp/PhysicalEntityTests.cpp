@@ -263,6 +263,7 @@ TEST_F(PhysicalEntityTests, TestToTripleSize) {
     int expected = 5; // 5 because we have two location triples.
     int actual = triples.size();
     ASSERT_EQ(expected, actual);
+    triples.freeTriples();
 }
 
 
@@ -296,6 +297,8 @@ TEST_F(PhysicalEntityTests, TestTriples) {
     std::string s = triples.str();
     std::cout << s << std::endl;
     ASSERT_STREQ(s.c_str(), expected.c_str());
+    triples.freeTriples();
+
 }
 //TEST_F(PhysicalEntityTests, TestCallingToTriplesTwice) {
 //    /*

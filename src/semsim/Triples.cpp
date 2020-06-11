@@ -9,55 +9,54 @@ namespace semsim {
     Triples::Triples() = default;
 
     Triples::Triples(Triple triple) {
-        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
+        triples_.push_back(triple);
     }
 
     Triples::Triples(std::vector<Triple> triples) {
         for (auto &triple: triples) {
-            triples_.push_back(std::make_shared<Triple>(std::move(triple)));
+            triples_.push_back(triple);
         }
     }
 
-    void Triples::push_back(Triple triple) {
-        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
-    }
-
-    void Triples::push_back(const std::shared_ptr<Triple>& triple) {
-        triples_.push_back(triple);
+    void Triples::push_back( Triple& triple) {
+        triples_.push_back(std::move(triple));
     }
 
     void Triples::emplace_back(Subject subject, const PredicatePtr& predicatePtr, const Resource& resource) {
         Triple triple(subject, predicatePtr, resource);
-        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
+        triples_.push_back(triple);
     }
 
     void Triples::emplace_back(Subject subject, const Predicate& predicate, const Resource& resource) {
         Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
-        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
+        triples_.push_back(triple);
     }
 
     void Triples::emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, const Resource& resource) {
         Triple triple(subject, std::make_shared<BiomodelsBiologyQualifier>(std::move(predicate)),
                       resource);
-        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
+        triples_.push_back(triple);
     }
 
     void Triples::emplace_back(Subject subject, BiomodelsModelQualifier predicate, const Resource& resource) {
         Triple triple(subject, std::make_shared<BiomodelsModelQualifier>(std::move(predicate)),
                       resource);
-        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
+        triples_.push_back(triple);
     }
 
     void Triples::emplace_back(Subject subject, DCTerm predicate, const Resource& resource) {
         Triple triple(subject, std::make_shared<DCTerm>(std::move(predicate)), resource);
-        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
+        triples_.push_back(triple);
     }
 
     void Triples::emplace_back(Subject subject, SemSim predicate, const Resource& resource) {
         Triple triple(subject, std::make_shared<SemSim>(std::move(predicate)), resource);
-        triples_.push_back(std::make_shared<Triple>(std::move(triple)));
+        triples_.push_back(triple);
     }
-
+    void Triples::emplace_back(librdf_node* subject, librdf_node* predicate, librdf_node*resource) {
+        Triple triple(subject, predicate, resource);
+        triples_.push_back(triple);
+    }
 //    void Triples::emplace_back(LibrdfStatement statement) {
 //        triples_.push_back(std::make_shared<Triple>(statement));
 //    }
@@ -65,7 +64,7 @@ namespace semsim {
     std::vector<std::string> Triples::getSubjectsStr() {
         std::vector<std::string> vec;
         for (auto &triple : triples_) {
-            vec.push_back(triple->getSubjectStr());
+            vec.push_back(triple.getSubjectStr());
         }
         return vec;
     }
@@ -73,7 +72,7 @@ namespace semsim {
     std::vector<std::string> Triples::getPredicates() {
         std::vector<std::string> vec;
         for (auto &triple: triples_) {
-            vec.push_back(triple->getPredicateStr());
+            vec.push_back(triple.getPredicateStr());
         }
         return vec;
     }
@@ -81,20 +80,20 @@ namespace semsim {
     std::vector<std::string> Triples::getResources() {
         std::vector<std::string> vec;
         for (auto &triple: triples_) {
-            vec.push_back(triple->getResourceStr());
+            vec.push_back(triple.getResourceStr());
         }
         return vec;
     }
 
-    int Triples::size() {
+    int Triples::size() const {
         return triples_.size();
     }
 
-    SharedTripleVector::iterator Triples::begin() {
+    TripleVector::iterator Triples::begin() {
         return triples_.begin();
     }
 
-    SharedTripleVector::iterator Triples::end() {
+    TripleVector::iterator Triples::end() {
         return triples_.end();
     }
 
@@ -109,21 +108,21 @@ namespace semsim {
         librdf_serializer *serializer = librdf_new_serializer(world, format.c_str(), nullptr, nullptr);
         for (auto &it : triples_) {
             // ensure we have three nodes and a statement
-            if (!it->getSubject()) {
+            if (!it.getSubject()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: subject is null");
             }
-            if (!it->getPredicate()) {
+            if (!it.getPredicate()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: predicate is null");
             }
-            if (!it->getResource()) {
+            if (!it.getResource()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: resource is null");
             }
-            if (!it->getStatement()) {
+            if (!it.getStatement()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: statement is null");
             }
 
-            librdf_model_add_statement(model, it->getStatement());
-            Predicate::addSeenNamespaceToSerializer(world, serializer, it->getPredicate());
+            librdf_model_add_statement(model, it.getStatement());
+            Predicate::addSeenNamespaceToSerializer(world, serializer, it.getPredicate());
         }
 
         // do the serializing
@@ -143,10 +142,15 @@ namespace semsim {
 
     }
 
-    void Triples::emplace_back(librdf_node* subject, librdf_node* predicate, librdf_node*resource) {
-        Triple triple(subject, predicate, resource);
-        std::shared_ptr<Triple> ptr = std::make_shared<Triple>(std::move(triple));
-        triples_.push_back(ptr);
+    const Triple& Triples::operator[](int index) const {
+        const Triple& triple = triples_[index];
+        return triple;
+    }
+
+    void Triples::freeTriples() {
+        for (int i=0; i<triples_.size(); i++){
+            triples_[i].freeStatement();
+        }
     }
 
 }

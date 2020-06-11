@@ -151,7 +151,7 @@ TEST_F(ParticipantTests, TestParticipantVecToTriples) {
     std::vector<Triple> triples;
     for (auto &i: participants) {
         for (auto &j: i->toTriples("metaid")) {
-            triples.push_back(std::move(*j));
+            triples.push_back(j);
         }
     }
     ASSERT_EQ(8, triples.size());

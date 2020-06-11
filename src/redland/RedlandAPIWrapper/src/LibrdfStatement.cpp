@@ -121,6 +121,7 @@ namespace redland {
      * if add to the underlying reference counter myself?
      */
     LibrdfStatement::LibrdfStatement(const LibrdfStatement &statement) {
+        std::cout << "calling LibrdfStatement copy constructor" << std::endl;
         if (this != &statement) {
             if (statement.statement_ != nullptr) {
                 if (statement_ != nullptr) {
@@ -134,6 +135,7 @@ namespace redland {
     }
 
     LibrdfStatement &LibrdfStatement::operator=(const LibrdfStatement &statement) {
+        std::cout << "calling LibrdfStatement copy assignment operator" << std::endl;
         if (this != &statement) {
             if (statement.statement_ != nullptr) {
                 if (statement_ != nullptr) {
@@ -149,6 +151,7 @@ namespace redland {
 
 
     LibrdfStatement::LibrdfStatement(LibrdfStatement &&statement) noexcept {
+        std::cout << "calling LibrdfStatement move constructor" << std::endl;
         if (statement.statement_ != nullptr) {
             if (statement_ != nullptr) {
                 librdf_free_statement(statement_);
@@ -160,6 +163,7 @@ namespace redland {
     }
 
     LibrdfStatement &LibrdfStatement::operator=(LibrdfStatement &&statement) noexcept {
+        std::cout << "calling LibrdfStatement move assignment operator" << std::endl;
         if (this != &statement) {
             if (statement.statement_ != nullptr) {
                 if (statement_ != nullptr) {
@@ -173,12 +177,15 @@ namespace redland {
         return *this;
     }
 
-    LibrdfStatement::~LibrdfStatement() {
+    void LibrdfStatement::freeStatement() {
         if (statement_) {
             librdf_free_statement(statement_);
             statement_ = nullptr;
         }
+
     }
 
-
+    bool LibrdfStatement::isComplete() {
+        return librdf_statement_is_complete(statement_);
+    }
 }

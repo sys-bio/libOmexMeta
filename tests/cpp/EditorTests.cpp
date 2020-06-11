@@ -23,7 +23,7 @@ public:
         model = LibrdfModel(storage.get());
     };
 
-    ~EditorTests() {
+    ~EditorTests() override {
         model.freeModel();
         storage.freeStorage();
     }
@@ -482,12 +482,13 @@ TEST_F(EditorTests, TestRemovePhysicalEntity) {
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
 
-    editor.addPhysicalEntity(physicalEntity);
-    editor.toRDF();
-
-    ASSERT_EQ(4, rdf.size());
-
-    editor.removePhysicalEntity(physicalEntity);
+//    editor.addPhysicalEntity(physicalEntity);
+//    editor.toRDF();
+//
+//    ASSERT_EQ(4, rdf.size());
+//
+//    editor.removePhysicalEntity(physicalEntity);
+//
 //    int expected = 0;
 //    int actual = rdf.size();
 //    ASSERT_EQ(expected, actual);

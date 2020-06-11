@@ -160,10 +160,86 @@ namespace semsim {
         return triples;
     }
 
+    Triples PhysicalEntity::toTriplesConst() const {
+
+        if (getAbout().getNode() == nullptr) {
+            throw AnnotationBuilderException(
+                    "PhysicalEntity::toTriples(): Cannot create"
+                    " triples because the \"about\" information is not set. "
+                    "Use the setAbout() method."
+            );
+        }
+
+        if (getPhysicalProperty().getNode() == nullptr) {
+            throw AnnotationBuilderException(
+                    "PhysicalEntity::toTriples(): Cannot create"
+                    " triples because the \"physical_property\" information is not set. "
+                    "Use the setPhysicalProperty() method."
+            );
+        }
+
+        if (getLocationResources().empty()) {
+            throw AnnotationBuilderException(
+                    "PhysicalEntity::toTriples(): cannot create "
+                    "triples object because the\"location\" information "
+                    "is empty. Use the addLocation() method."
+            );
+        }
+
+        int count = 0;
+
+        for (auto &i : getLocationResources()) {
+
+            if (i.getNode() == nullptr) {
+
+                std::ostringstream err;
+                err << "PhysicalEntity::toTriples(): Cannot create"
+                       " triples because item ";
+                err << count << "of the \"location\" information is not set. ";
+                err << "Use the addLocation() method.";
+                throw AnnotationBuilderException(
+                        err.str()
+                );
+            }
+        }
+        // no exclusions needed here - we only generate 1 process metaid before comiting the triples
+        // to the model.
+        std::string property_metaid = SemsimUtils::generateUniqueMetaid(
+                model_, "PhysicalEntity",
+                std::vector<std::string>());
+
+
+        Triples triples = physical_property_.toTriples(about.str(), property_metaid);
+
+
+
+        std::cout << "about to free about" << std::endl;
+//        about.free();
+
+
+        // the "what" part of physical entity triple
+        triples.emplace_back(
+                LibrdfNode::fromUriString(property_metaid).get(),
+                BiomodelsBiologyQualifier("is").getNode(),
+                getIdentityResource().getNode()
+        );
+
+        // the "where" part of the physical entity
+        for (auto &locationResource : getLocationResources()) {
+            triples.emplace_back(
+                    LibrdfNode::fromUriString(property_metaid).get(),
+                    BiomodelsBiologyQualifier("isPartOf").getNode(),
+                    locationResource.getNode()
+            );
+        }
+
+
+        return triples;
+    }
+
     [[maybe_unused]] int PhysicalEntity::getNumLocations() const {
         return getLocationResources().size();
     }
-
 
 }
 

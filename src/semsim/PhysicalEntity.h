@@ -27,7 +27,6 @@ namespace semsim {
     private:
         Resource identity_resource_;
         Resources location_resources;
-        std::string resource;
 
     public:
 
@@ -177,6 +176,9 @@ namespace semsim {
          * @return the number of locations in a PhysicalEntity
          */
         [[nodiscard]] int getNumLocations() const;
+
+        Triples toTriplesConst() const;
+
     };
 }
 

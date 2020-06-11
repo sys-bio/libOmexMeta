@@ -27,7 +27,7 @@ namespace semsim {
     class Triples {
     private:
 
-        SharedTripleVector triples_;
+        TripleVector triples_;
 
     public:
         Triples();
@@ -36,7 +36,9 @@ namespace semsim {
 
         explicit Triples(std::vector<Triple> triples);
 
-        void push_back(Triple triple);
+        const Triple& operator[](int index) const;
+
+        void push_back(Triple& triple);
 
 //        void emplace_back(LibrdfStatement statement);
 
@@ -60,15 +62,16 @@ namespace semsim {
 
         std::vector<std::string> getResources();
 
-        int size();
+        int size() const ;
 
-        SharedTripleVector::iterator begin();
+        TripleVector::iterator begin();
 
-        SharedTripleVector::iterator end();
+        TripleVector::iterator end();
 
         std::string str(const std::string& format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
 
-        void push_back(const std::shared_ptr<Triple>& triple);
+        void freeTriples();
+
     };
 
     typedef std::vector<Triples> NestedTriples;
