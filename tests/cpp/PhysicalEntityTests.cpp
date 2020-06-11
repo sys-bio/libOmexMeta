@@ -258,9 +258,9 @@ TEST_F(PhysicalEntityTests, TestToTripleSize) {
             is, ispartof
     );
 
-    // So how does triples free subject / predicate?
     Triples triples = physicalEntity.toTriples();
-    int expected = 5;
+
+    int expected = 5; // 5 because we have two location triples.
     int actual = triples.size();
     ASSERT_EQ(expected, actual);
 }

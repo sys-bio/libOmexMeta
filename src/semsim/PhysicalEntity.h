@@ -31,7 +31,15 @@ namespace semsim {
 
     public:
 
-        PhysicalEntity() = default;
+        /*
+         * @breif default constructor for PhysicalEntity
+         * @details deliberately deleted. If you try using the
+         * builder interface (chaining setter methods) from a default
+         * instantiated PhysicalEntity you will get an error, because there
+         * will be no model assicated with PhysicalEntity. Instead, always
+         * instantiate a PhysicalEntity from the Editor::addPhysicalEntity() method.
+         */
+        PhysicalEntity() = delete;
 
         /*
          * @brief constructor for instantiating a PhysicalEntity object

@@ -3,6 +3,7 @@
 //
 
 #include "Resource.h"
+#include "Error.h"
 
 namespace semsim {
 
@@ -16,6 +17,9 @@ namespace semsim {
     }
 
     std::string Resource::str() const {
+        if (!node_) {
+            throw NullPointerException("NullPointerException: Resource::str(): node_ is null");
+        }
         return LibrdfNode::str(node_);
     }
 

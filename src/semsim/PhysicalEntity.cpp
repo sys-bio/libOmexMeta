@@ -84,7 +84,7 @@ namespace semsim {
     }
 
     Triples PhysicalEntity::toTriples() {
-
+        
         if (getAbout().getNode() == nullptr) {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): Cannot create"
@@ -92,6 +92,7 @@ namespace semsim {
                     "Use the setAbout() method."
             );
         }
+        
         if (getPhysicalProperty().getNode() == nullptr) {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): Cannot create"
@@ -99,6 +100,7 @@ namespace semsim {
                     "Use the setPhysicalProperty() method."
             );
         }
+        
         if (getLocationResources().empty()) {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): cannot create "
@@ -106,9 +108,13 @@ namespace semsim {
                     "is empty. Use the addLocation() method."
             );
         }
+        
         int count = 0;
+        
         for (auto &i : getLocationResources()) {
+            
             if (i.getNode() == nullptr) {
+                
                 std::ostringstream err;
                 err << "PhysicalEntity::toTriples(): Cannot create"
                        " triples because item ";
@@ -124,28 +130,23 @@ namespace semsim {
         std::string property_metaid = SemsimUtils::generateUniqueMetaid(
                 model_, "PhysicalEntity",
                 std::vector<std::string>());
-//        Triples triples;
 
-
+        
         Triples triples = physical_property_.toTriples(about.str(), property_metaid);
-        /*
-         * todo note: We are passing a Subject as argument to PhysicalPhenomena types
-         *  but when we get to generation of the triples themselves, we are only pulling out
-         *  the string. The easiest thing to do is to change the code to only accept string arguments.
-         *  I have resisted this so far because this would make the assumption that Subjects are URI nodes,
-         *  where they can actually be blank nodes as well. If we want to implement a string parameter
-         *  for the subject argument we may need an additional parameter to maintain the ability to
-         *  also create a Blank subject node. This is a note for potential future improvement. Right now,
-         *  I handle the memory leak by freeing the subject node (about) here;
-         */
+
+
+        
+        std::cout << "about to free about" << std::endl;
         about.free();
 
+        
         // the "what" part of physical entity triple
         triples.emplace_back(
                 LibrdfNode::fromUriString(property_metaid).get(),
                 BiomodelsBiologyQualifier("is").getNode(),
                 getIdentityResource().getNode()
         );
+        
         // the "where" part of the physical entity
         for (auto &locationResource : getLocationResources()) {
             triples.emplace_back(
@@ -154,6 +155,7 @@ namespace semsim {
                     locationResource.getNode()
             );
         }
+        
 
         return triples;
     }

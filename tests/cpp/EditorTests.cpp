@@ -23,7 +23,7 @@ public:
         model = LibrdfModel(storage.get());
     };
 
-    ~EditorTests(){
+    ~EditorTests() {
         model.freeModel();
         storage.freeStorage();
     }
@@ -37,11 +37,11 @@ TEST_F(EditorTests, TestMetaIds) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
     const auto &metaids = editor.getMetaids();
-    std::vector<std::string> expected = { "SemsimMetaid0000", "SemsimMetaid0001", "SemsimMetaid0002",
-                                          "cytosol", "Meta00001", "SemsimMetaid0003", "SemsimMetaid0004",
-                                          "SemsimMetaid0005", "SemsimMetaid0006", "SemsimMetaid0007",
-                                          "SemsimMetaid0008", "SemsimMetaid0009", "SemsimMetaid0010" };
-        ASSERT_EQ(expected, metaids);
+    std::vector<std::string> expected = {"SemsimMetaid0000", "SemsimMetaid0001", "SemsimMetaid0002",
+                                         "cytosol", "Meta00001", "SemsimMetaid0003", "SemsimMetaid0004",
+                                         "SemsimMetaid0005", "SemsimMetaid0006", "SemsimMetaid0007",
+                                         "SemsimMetaid0008", "SemsimMetaid0009", "SemsimMetaid0010"};
+    ASSERT_EQ(expected, metaids);
 }
 
 TEST_F(EditorTests, TestAddAnnotation) {
@@ -233,8 +233,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    editor.
-            addCompositeAnnotation(
+    editor.addCompositeAnnotation(
             std::make_shared<PhysicalProcess>(
                     PhysicalProcess(
                             model.get(),
@@ -293,8 +292,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
-    std::cout << actual <<
-              std::endl;
+    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -304,8 +302,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    editor.
-            addCompositeAnnotation(
+    editor.addCompositeAnnotation(
             std::make_shared<PhysicalForce>(
                     PhysicalForce(
 
@@ -357,13 +354,192 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
-    std::cout << actual <<
-              std::endl;
+    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 
+TEST_F(EditorTests, TestRemoveSingularAnnotation) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
 
+    SingularAnnotation singularAnnotation;
+    singularAnnotation
+            .setAbout("SemsimMetaid0000")
+            .setPredicate("bqb", "is")
+            .setResourceLiteral("resource");
+
+    editor.addSingleAnnotation(singularAnnotation);
+    editor.toRDF();
+
+    ASSERT_EQ(1, rdf.size());
+    editor.removeSingleAnnotation(singularAnnotation);
+    int expected = 0;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
+
+TEST_F(EditorTests, TestSingularAnnotationBuilder) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+
+    SingularAnnotation singularAnnotation;
+    singularAnnotation
+            .setAbout("SemsimMetaid0000")
+            .setPredicate("bqb", "is")
+            .setResourceLiteral("resource");
+
+    editor.addSingleAnnotation(singularAnnotation);
+    editor.toRDF();
+
+    int expected = 1;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
+
+
+TEST_F(EditorTests, TestPhysicalEntityBuilder) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    physicalEntity
+            .setAbout("SemsimMetaid0000")
+            .setPhysicalProperty("opb:opb_1234")
+            .setIdentity("uniprot:PD12345")
+            .addLocation("fma:fma:1234");
+
+    editor.addPhysicalEntity(physicalEntity);
+    editor.toRDF();
+
+    int expected = 4;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
+
+
+TEST_F(EditorTests, TestPhysicalForceBuilder) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    PhysicalForce physicalForce = editor.createPhysicalForce();
+    physicalForce
+            .setAbout("SemsimMetaid0000")
+            .setPhysicalProperty("opb:opb1234")
+            .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
+            .addSink("sinkMetaid", 1.0, "PhysicalEntity2");
+
+    editor.addPhysicalForce(physicalForce);
+    editor.toRDF();
+
+    int expected = 8;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
+
+TEST_F(EditorTests, TestPhysicalProcessBuilder) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    PhysicalProcess physicalProcess = editor.createPhysicalProcess();
+    physicalProcess
+            .setAbout("SemsimMetaid0000")
+            .setPhysicalProperty("opb:opb1234")
+            .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
+            .addSink("sinkMetaid", 1.0, "PhysicalEntity2")
+            .addMediator("mediatorMetaid", 1.0, "PhysicalEntity3");
+
+    editor.addPhysicalProcess(physicalProcess);
+    editor.toRDF();
+
+    int expected = 10;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
+
+
+TEST_F(EditorTests, TestRemovePhysicalEntity) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    physicalEntity
+            .setAbout("SemsimMetaid0000")
+            .setPhysicalProperty("opb:opb_1234")
+            .setIdentity("uniprot:PD12345")
+            .addLocation("fma:fma:1234");
+
+    editor.addPhysicalEntity(physicalEntity);
+    editor.toRDF();
+
+    ASSERT_EQ(4, rdf.size());
+
+    editor.removePhysicalEntity(physicalEntity);
+//    int expected = 0;
+//    int actual = rdf.size();
+//    ASSERT_EQ(expected, actual);
+}
+
+
+TEST_F(EditorTests, TestRemovePhysicalForce) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    PhysicalForce physicalForce = editor.createPhysicalForce();
+    physicalForce
+            .setAbout("SemsimMetaid0000")
+            .setPhysicalProperty("opb:opb1234")
+            .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
+            .addSink("sinkMetaid", 1.0, "PhysicalEntity2");
+
+    editor.addPhysicalForce(physicalForce);
+    editor.toRDF();
+
+    ASSERT_EQ(7, rdf.size());
+    editor.removePhysicalForce(physicalForce);
+    int expected = 0;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
+
+TEST_F(EditorTests, TestRemovePhysicalProcess) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    PhysicalProcess physicalProcess = editor.createPhysicalProcess();
+    physicalProcess
+            .setAbout("SemsimMetaid0000")
+            .setPhysicalProperty("opb:opb1234")
+            .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
+            .addSink("sinkMetaid", 1.0, "PhysicalEntity2")
+            .addSink("mediatorMetaid", 1.0, "PhysicalEntity3");
+
+    editor.addPhysicalProcess(physicalProcess);
+    editor.toRDF();
+
+    ASSERT_EQ(10, rdf.size());
+    editor.removePhysicalProcess(physicalProcess);
+    int expected = 0;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
 
 
 

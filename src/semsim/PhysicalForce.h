@@ -30,6 +30,14 @@ namespace semsim {
 
     public:
 
+        /*
+         * @brief default constructor for PhysicalForce
+         * @details deliberately deleted. If you try using the
+         * builder interface (chaining setter methods) from a default
+         * instantiated PhysicalForce you will get an error, because there
+         * will be no model assicated with PhysicalForce. Instead, always
+         * instantiate a PhysicalForce from the Editor::addPhysicalForce() method.
+         */
         PhysicalForce() = delete;
 
         ~PhysicalForce() = default;

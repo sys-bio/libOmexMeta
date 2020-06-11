@@ -137,3 +137,27 @@ TEST(TriplesTestsNoFixture, TestStr) {
 
 
 
+TEST(TriplesTestsNoFixture, TestIteration) {
+    Triples triples;
+    triples.emplace_back(
+            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
+            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+    );
+    triples.emplace_back(
+            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
+            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+    );
+    std::ostringstream os;
+    for (auto it: triples){
+        os << it->getSubjectStr() << std::endl;
+    }
+    std::string expected = "http://subject1.com/subject1\n"
+                           "http://subject2.com/subject2\n";
+    ASSERT_STREQ(expected.c_str(), os.str().c_str());
+
+}
+
+
+

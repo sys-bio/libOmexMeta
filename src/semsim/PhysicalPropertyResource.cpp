@@ -13,8 +13,8 @@ namespace semsim {
     }
 
     void PhysicalPropertyResource::validate() {
-        std::string expected_prefix1 = "https://identifiers.org/OPB"; //todo case speific?
-        std::string expected_prefix2 = "https://identifiers.org/opb"; //todo case speific?
+        std::string expected_prefix1 = "https://identifiers.org/OPB";
+        std::string expected_prefix2 = "https://identifiers.org/opb";
         std::string uri = str();
         if ((uri.rfind(expected_prefix1, 0) != 0) && (uri.rfind(expected_prefix2, 0) != 0)) {
             std::ostringstream err;
@@ -42,10 +42,12 @@ namespace semsim {
     }
 
     Triples PhysicalPropertyResource::toTriples(std::string subject_metaid, std::string property_metaid) const {
-        return Triples({
-                               isVersionOfTriple(subject_metaid),
-                               isPropertyOfTriple(subject_metaid, property_metaid),
-                       });
+        
+        Triple v = isVersionOfTriple(subject_metaid);
+        
+        Triple p = isPropertyOfTriple(subject_metaid, property_metaid);
+        
+        return Triples({v, p});
     }
 
 

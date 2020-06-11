@@ -13,6 +13,7 @@
 #include "Triple.h"
 #include "Triples.h"
 #include <regex>
+#include "semsim/HERE.h"
 
 using namespace redland;
 
