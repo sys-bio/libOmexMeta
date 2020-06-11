@@ -73,6 +73,7 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
     std::string actual = triple.str();
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triple.freeStatement();
 }
 
 
@@ -85,8 +86,8 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
             sink.getPredicate().getNode(),
             LibrdfNode::fromUriString(sink.getSubject()).get()
     );
-    std::vector<Triple> vec;
-    vec.push_back(triple);
+    Triples triples;
+    triples.move_back(triple);
     // triple assumes responsibility for freeing subject, resource and preicate
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -96,9 +97,10 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
                            "    <semsim:hasSinkParticipant rdf:resource=\"MetaId0014\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
-    std::string actual = vec[0].str();
+    std::string actual = triples[0].str();
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 TEST_F(ParticipantTests, TestToTriples1) {
@@ -122,6 +124,7 @@ TEST_F(ParticipantTests, TestToTriples1) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 
@@ -148,13 +151,16 @@ TEST_F(ParticipantTests, TestParticipantVecToTriples) {
             &sink
     };
 
-    std::vector<Triple> triples;
+    Triples triples;
     for (auto &i: participants) {
         for (auto &j: i->toTriples("metaid")) {
-            triples.push_back(j);
+            triples.move_back(j);
         }
     }
     ASSERT_EQ(8, triples.size());
+
+    triples.freeTriples();
+
 }
 
 

@@ -17,10 +17,10 @@ namespace semsim {
         metaids_ = xml_and_metaids.second;
     }
 
-    Editor::~Editor() {
-        std::cout << "calling Editor destructor" << std::endl;
-        freeTriples();
-    }
+//    Editor::~Editor() {
+//        std::cout << "calling Editor destructor" << std::endl;
+//        freeTriples();
+//    }
 
     int Editor::size() const {
         return model_.size();
@@ -66,11 +66,11 @@ namespace semsim {
     }
 
 
-    void Editor::toRDF() {
-        for (auto &triple : triples_) {
-            model_.addStatement(triple);
-        }
-    }
+//    void Editor::toRDF() {
+//        for (auto &triple : triples_) {
+//            model_.addStatement(triple);
+//        }
+//    }
 
 
     void Editor::addNamespace(const std::string &ns, std::string prefix) {
@@ -88,8 +88,8 @@ namespace semsim {
         }
         checkValidMetaid(subject.str());
         Triple triple(subject, predicate_ptr, resource);
-        Triples vec;
-        triples_.move_back(triple);
+        model_.addStatement(triple);
+        triple.freeStatement();
         namespaces_[predicate_ptr->getNamespace()] = predicate_ptr->getPrefix();
     }
 
@@ -97,7 +97,7 @@ namespace semsim {
         checkValidMetaid(singularAnnotation.getSubjectStr());
         addNamespaceFromAnnotation(singularAnnotation.getPredicateStr());
         model_.addStatement(singularAnnotation);
-//        triples_.move_back(singularAnnotation);
+        singularAnnotation.freeStatement();
     }
 
     void Editor::addNamespaceFromAnnotation(const std::string &predicate_string) {
@@ -207,10 +207,6 @@ namespace semsim {
 
     PhysicalProcess Editor::createPhysicalProcess() {
         return PhysicalProcess(model_.get());
-    }
-
-    void Editor::freeTriples() {
-        triples_.freeTriples();
     }
 
 

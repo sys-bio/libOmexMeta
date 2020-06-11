@@ -62,7 +62,6 @@ namespace semsim {
     private:
         std::string xml_;
         std::vector<std::string> metaids_;
-        Triples triples_;
         const LibrdfModel &model_;
         std::unordered_map<std::string, std::string> &namespaces_;
 
@@ -90,7 +89,7 @@ namespace semsim {
         explicit Editor(const std::string &xml, SemsimXmlType type,
                         const LibrdfModel &model, NamespaceMap &ns_map);
 
-        ~Editor();
+//        ~Editor();
 
         int size() const ;
 

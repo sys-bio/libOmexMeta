@@ -171,8 +171,8 @@ TEST(TriplesTestsNoFixture, TestIteration) {
             LibrdfNode::fromUriString("http://resource2.com/resource2").get()
     );
     std::ostringstream os;
-    for (auto it: triples) {
-        os << it.getSubjectStr() << std::endl;
+    for (int i=0; i<triples.size();i++) {
+        os << triples[i].getSubjectStr() << std::endl;
     }
     std::string expected = "http://subject1.com/subject1\n"
                            "http://subject2.com/subject2\n";

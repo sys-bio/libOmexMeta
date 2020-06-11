@@ -22,7 +22,7 @@ namespace semsim {
 
     Triple::Triple(librdf_statement *statement) : LibrdfStatement(statement) {}
 
-    std::string Triple::str(const std::string &format, const std::string &base) {
+    std::string Triple::str(const std::string &format, const std::string &base) const {
         // ensure we have three nodes and a statement
         if (!getSubject()) {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: subject is null");
