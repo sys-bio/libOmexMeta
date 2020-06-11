@@ -61,6 +61,7 @@ TEST_F(PhysicalPropertyTests, TestToTriple1) {
     std::string actual = triple.getSubjectStr();
     std::string expected = "Entity0";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triple.freeStatement();
 }
 
 
@@ -69,13 +70,13 @@ TEST_F(PhysicalPropertyTests, TestToTriple2) {
     std::string actual = triple.getResourceStr();
     std::string expected = "https://identifiers.org/OPB/OPB_1234";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triple.freeStatement();
 }
 
 TEST_F(PhysicalPropertyTests, TestToTriple3) {
     Triple triple = PhysicalPropertyResource(
             "OPB/OPB_1234"
     ).isVersionOfTriple("Entity0");
-
 
     std::string actual = triple.str();
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -88,6 +89,7 @@ TEST_F(PhysicalPropertyTests, TestToTriple3) {
                            "</rdf:RDF>\n"
                            "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triple.freeStatement();
 }
 
 
@@ -110,6 +112,7 @@ TEST_F(PhysicalPropertyTests, TestToTriples) {
     std::string expeted = "https://identifiers.org/OPB/OPB_1234";
     std::string actual = r[0];
     ASSERT_STREQ(expeted.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 

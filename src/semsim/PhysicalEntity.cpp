@@ -45,9 +45,8 @@ namespace semsim {
 
 
     PhysicalEntity &PhysicalEntity::setAbout(std::string metaid) {
-        this->about = Subject::fromRawPtr(LibrdfNode::fromUriString(metaid).get());
+        this->about = Subject(LibrdfNode::fromUriString(metaid));
         return *this;
-
     }
 
     PhysicalEntity &PhysicalEntity::setPhysicalProperty(PhysicalPropertyResource physicalProperty) {
@@ -84,7 +83,6 @@ namespace semsim {
     }
 
     Triples PhysicalEntity::toTriples() {
-        
         if (getAbout().getNode() == nullptr) {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): Cannot create"
@@ -132,7 +130,7 @@ namespace semsim {
                 std::vector<std::string>());
 
         
-        Triples triples = physical_property_.toTriples(about.str(), property_metaid);
+        Triples triples = physical_property_.toTriples(about, property_metaid);
 
 
         
