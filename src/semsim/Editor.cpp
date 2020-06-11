@@ -132,13 +132,25 @@ namespace semsim {
     }
 
     void Editor::addPhysicalEntity(const PhysicalEntity &physicalEntity) {
+        HERE();
+        if (!physicalEntity.getAbout().getNode()) {
+            throw NullPointerException(
+                    "NullPointerException: Editor::addPhysicalEntity() physicalEntity::subject_ (i.e. about) node is empty");
+        }
+        HERE();
         checkValidMetaid(physicalEntity.getAbout().str());
+        HERE();
         addCompositeAnnotation(
                 std::make_shared<PhysicalEntity>(physicalEntity)
         );
+        HERE();
     }
 
     void Editor::addPhysicalProcess(const PhysicalProcess &physicalProcess) {
+        if (!physicalProcess.getAbout().getNode()) {
+            throw NullPointerException(
+                    "NullPointerException: Editor::addPhysicalProcess() PhysicalProcess::subject_ (i.e. about) node is empty");
+        }
         checkValidMetaid(physicalProcess.getAbout().str());
         addCompositeAnnotation(
                 std::make_shared<PhysicalProcess>(physicalProcess)
@@ -147,6 +159,10 @@ namespace semsim {
     }
 
     void Editor::addPhysicalForce(const PhysicalForce &physicalForce) {
+        if (!physicalForce.getAbout().getNode()) {
+            throw NullPointerException(
+                    "NullPointerException: Editor::addPhysicalForce() PhysicalForce::subject_ (i.e. about) node is empty");
+        }
         checkValidMetaid(physicalForce.getAbout().str());
         addCompositeAnnotation(
                 std::make_shared<PhysicalForce>(physicalForce)
@@ -154,8 +170,49 @@ namespace semsim {
 
     }
 
-    void Editor::removeAnnotation(std::string metaid) {
 
+    void Editor::removeSingleAnnotation(const SingularAnnotation &singularAnnotation) const {
+        model_.removeStatement(singularAnnotation.getStatement().get());
+    }
+
+    void Editor::removePhysicalEntity(PhysicalEntity physicalEntity) {
+        HERE();
+        int cout = 0;
+        HERE();
+        Triples triples = physicalEntity.toTriples();
+        HERE();
+
+        for (auto &it: triples) {
+            HERE();
+            std::cout << cout << std::endl;
+            model_.removeStatement(it->getStatement().get());
+            cout++;
+        }
+        HERE();
+    }
+
+    void Editor::removePhysicalProcess(PhysicalProcess physicalProcess) {
+        for (auto &it: physicalProcess.toTriples()) {
+            model_.removeStatement(it->getStatement().get());
+        }
+    }
+
+    void Editor::removePhysicalForce(PhysicalForce physicalForce) {
+        for (auto &it: physicalForce.toTriples()) {
+            model_.removeStatement(it->getStatement().get());
+        }
+    }
+
+    PhysicalEntity Editor::createPhysicalEntity() {
+        return PhysicalEntity(model_.get());
+    }
+
+    PhysicalForce Editor::createPhysicalForce() {
+        return PhysicalForce(model_.get());
+    }
+
+    PhysicalProcess Editor::createPhysicalProcess() {
+        return PhysicalProcess(model_.get());
     }
 
 

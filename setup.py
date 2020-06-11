@@ -2,7 +2,7 @@ from setuptools import setup
 
 MAJOR = 0
 MINOR = 0
-MICRO = 1
+MICRO = 2
 
 version = f'{MAJOR}.{MINOR}.{MICRO}'
 
@@ -17,6 +17,7 @@ setup(
     version=version,
     license='MIT',
     long_description=open('README.md').read(),
+    long_description_content_type="text/markdown",
     author='Ciaran Welsh',
     author_email='cwelsh2@uw.edu',
     url='https://github.com/sys-bio/libsemsim',

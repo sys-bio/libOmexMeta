@@ -25,6 +25,14 @@ namespace semsim {
 
     public:
 
+        /*
+         * @breif default constructor for PhysicalProcess
+         * @details deliberately deleted. If you try using the
+         * builder interface (chaining setter methods) from a default
+         * instantiated PhysicalProcess you will get an error, because there
+         * will be no model assicated with PhysicalProcess. Instead, always
+         * instantiate a PhysicalProcess from the Editor::addPhysicalProcess() method.
+         */
         PhysicalProcess() = delete;
 
         ~PhysicalProcess() = default;

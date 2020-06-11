@@ -91,7 +91,8 @@ namespace semsim {
         std::ostringstream os;
         // Uri's we want all begin with http.
         if (vec[0].rfind("http", 0) != 0 )
-            throw std::invalid_argument("std::invalid_argument: SemsimUtils::getNamespaceFromUri: " + vec[0]);
+            throw std::invalid_argument("std::invalid_argument: SemsimUtils::getNamespaceFromUri: \"" + vec[0]
+                + "\". Predicate arguments are URI's, they should begin with \"http\"");
 
         os << vec[0] + "//"; // we keep the first part and add back the missing '/'
 

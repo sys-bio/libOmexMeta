@@ -12,6 +12,7 @@
 
 #include "iostream"
 #include <vector>
+#include "semsim/HERE.h"
 
 using namespace redland;
 

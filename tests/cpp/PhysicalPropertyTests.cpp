@@ -36,6 +36,15 @@ TEST_F(PhysicalPropertyTests, TestPhysicalPropertyResource) {
     property.free();
 }
 
+TEST_F(PhysicalPropertyTests, TestPhysicalPropertyResourceGetItWrong) {
+    PhysicalPropertyResource property = PhysicalPropertyResource("OPB:OPB00154");
+    std::string expected = "https://identifiers.org/OPB/OPB00154";
+    std::string actual = property.str();
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    property.free();
+}
+
 
 // how to test without memory leak?
 //TEST_F(PhysicalPropertyTests, TestFailureOnNonOPBResource) {

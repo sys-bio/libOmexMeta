@@ -63,7 +63,7 @@ namespace semsim {
         std::string xml_;
         std::vector<std::string> metaids_;
         NestedTriples triple_list_;
-        const LibrdfModel& model_;
+        const LibrdfModel &model_;
         std::unordered_map<std::string, std::string> &namespaces_;
 
         void extractNamespacesFromTriplesVector(Triples triples);
@@ -88,7 +88,7 @@ namespace semsim {
          * are used. If the type is unknown, then all elements are given metaids.
          */
         explicit Editor(const std::string &xml, SemsimXmlType type,
-                        const LibrdfModel& model, NamespaceMap &ns_map);
+                        const LibrdfModel &model, NamespaceMap &ns_map);
 
         /*
          * @brief returns a hashmap of namespaces to prefixes.
@@ -100,7 +100,7 @@ namespace semsim {
          * @brief return the underlying librdf_model* pointer
          * @return the librdf_model pointer
          */
-        [[nodiscard]] librdf_model* getModel() const;
+        [[nodiscard]] librdf_model *getModel() const;
 
         /*
          * @brief set the namespace map.
@@ -142,6 +142,12 @@ namespace semsim {
         void addSingleAnnotation(const SingularAnnotation &singularAnnotation);
 
         /*
+         * @brief remove a singular annotation (aka Triple) from the rdf graph
+         * @param singularAnnotation An instance of SingularAnnotation to remove from the model
+         */
+        void removeSingleAnnotation(const SingularAnnotation &singularAnnotation) const;
+
+        /*
          * @brief add a composite annotation to the rdf graph.
          * @param phenomenonPtr A pointer to an object of type PhysicalPhenomenon, the superclass of
          * the composite annotations.
@@ -159,25 +165,37 @@ namespace semsim {
          * @brief add a composite annotation of type PhysicalEntity to the rdf graph
          * @param physicalEntity An instance of a PhysicalEntity object to add to the rdf graph.
          */
-         void addPhysicalEntity(const PhysicalEntity& physicalEntity);
+        void addPhysicalEntity(const PhysicalEntity &physicalEntity);
+
+        /*
+         * @brief remove triples associated with a a PhysicalEntity object from the rdf graph
+         * @param physicalEntity the PhysicalEntityto remove
+         */
+        void removePhysicalEntity(PhysicalEntity physicalEntity);
 
         /*
          * @brief add a composite annotation of type PhysicalProcess to the rdf graph
          * @param physicalProcess An instance of a PhysicalProcess object to add to the rdf graph.
          */
-        void addPhysicalProcess(const PhysicalProcess& physicalProcess);
+        void addPhysicalProcess(const PhysicalProcess &physicalProcess);
+
+        /*
+         * @brief remove triples associated with a PhysicalProcess object from the rdf graph
+         * @param physicalProcess the PhysicalProcessto remove
+         */
+        void removePhysicalProcess(PhysicalProcess physicalProcess);
 
         /*
          * @brief add a composite annotation of type PhysicalForce to the rdf graph
          * @param physicalForce An instance of a PhysicalForce objec to add to the rdf graph.
          */
-        void addPhysicalForce(const PhysicalForce& physicalForce);
+        void addPhysicalForce(const PhysicalForce &physicalForce);
 
-        /*
-         * @brief remove an annotation with the subject metaid
-         * @param metaid the id for the annotation to remove.
+/*
+         * @brief remove triples associated with a a PhysicalForce object from the rdf graph
+         * @param physicalForce the PhysicalForce to remove
          */
-        void removeAnnotation(std::string metaid);
+        void removePhysicalForce(PhysicalForce physicalForce);
 
         /*
          * @brief commit the annotations made in this Editor to the RDF graph.
@@ -195,17 +213,24 @@ namespace semsim {
         /*
          * @brief add annotations from a Triples object
          */
-        void addAnnotationFromTriples(const Triples& triples);
+        [[maybe_unused]] void addAnnotationFromTriples(const Triples &triples);
 
         /*
          * @brief extract namespace part of uri from @parameter predicate_string
          * and add it to namespace_ if we know it.
          */
-        void addNamespaceFromAnnotation(const std::string& predicate_string);
+        void addNamespaceFromAnnotation(const std::string &predicate_string);
 
         [[nodiscard]] const NestedTriples &getTripleList() const;
 
-        void addAnnotationFromNestedTriples(const NestedTriples& tripleList);
+        [[maybe_unused]] void addAnnotationFromNestedTriples(const NestedTriples &tripleList);
+
+        PhysicalEntity createPhysicalEntity();
+
+        PhysicalForce createPhysicalForce();
+
+        PhysicalProcess createPhysicalProcess();
+
     };
 
 }

@@ -23,6 +23,9 @@ namespace semsim {
     }
 
     std::string Subject::str() const {
+        if (!node_){
+            throw NullPointerException("NullPointerException: Subject::str(): node_ is null");
+        }
         return LibrdfNode::str(node_);
     }
 
