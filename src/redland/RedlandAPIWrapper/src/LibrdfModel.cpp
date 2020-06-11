@@ -86,7 +86,7 @@ namespace redland {
      * @param statement a LibrdfStatement to remove from the movel
      * @return void
      */
-    void LibrdfModel::removeStatement(LibrdfStatement statement) const {
+    void LibrdfModel::removeStatement(const LibrdfStatement &statement) const {
         librdf_model_remove_statement(model_, statement.get());
     }
 

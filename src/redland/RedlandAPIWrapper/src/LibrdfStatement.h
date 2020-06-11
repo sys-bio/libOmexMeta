@@ -18,10 +18,7 @@ namespace redland {
     protected:
 
         // starts as empty statement
-        std::shared_ptr<librdf_statement> statement_ = std::shared_ptr<librdf_statement>(
-                librdf_new_statement(World::getWorld()),
-                librdf_free_statement
-        );
+        librdf_statement *statement_ = librdf_new_statement(World::getWorld());
 
         /*
          * @brief update the contained statement with current
@@ -39,11 +36,21 @@ namespace redland {
 
         LibrdfStatement() = default;
 
-        LibrdfStatement(const LibrdfNode& subject, const LibrdfNode& predicate, const LibrdfNode& resource);
+        LibrdfStatement(const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource);
 
         static LibrdfStatement fromRawStatementPtr(librdf_statement *statement);
 
         static LibrdfStatement fromRawNodePtrs(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+
+        LibrdfStatement(const LibrdfStatement &statement);
+
+        LibrdfStatement(LibrdfStatement &&statement) noexcept;
+
+        LibrdfStatement &operator=(const LibrdfStatement &statement) ;
+
+        LibrdfStatement &operator=(LibrdfStatement &&statement) noexcept;
+
+        ~LibrdfStatement();
 
         [[nodiscard]] librdf_statement *get() const;
 

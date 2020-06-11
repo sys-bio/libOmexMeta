@@ -61,7 +61,7 @@ namespace redland {
 
         void removeStatement(librdf_statement *statement) const;
 
-        void removeStatement(LibrdfStatement statement) const;
+        void removeStatement(const LibrdfStatement &statement) const;
     };
 }
 

@@ -4,6 +4,8 @@
 
 #include "semsim/Editor.h"
 
+#include <utility>
+
 namespace semsim {
     Editor::Editor(const std::string &xml, SemsimXmlType type,
                    const LibrdfModel &model, NamespaceMap &nsmap)
@@ -63,14 +65,14 @@ namespace semsim {
         for (auto &annot : triple_list_) {
             for (auto &triple : annot) {
                 //todo add get namespace to triple
-                model_.addStatement(triple->getStatement().get());
+                model_.addStatement(triple->getStatement());
             }
         }
     }
 
 
-    void Editor::addNamespace(std::string ns, std::string prefix) {
-        namespaces_[ns] = prefix;
+    void Editor::addNamespace(const std::string& ns, std::string prefix) {
+        namespaces_[ns] = std::move(prefix);
     }
 
 
@@ -83,7 +85,7 @@ namespace semsim {
             throw NullPointerException(err.str());
         }
         checkValidMetaid(subject.str());
-        Triple triple(std::move(subject), predicate_ptr, std::move(resource));
+        Triple triple(subject, predicate_ptr, resource);
         Triples vec;
         vec.push_back(std::move(triple));
         triple_list_.push_back(vec);
@@ -127,7 +129,7 @@ namespace semsim {
         Triples triples = phenomenonPtr->toTriples();
         extractNamespacesFromTriplesVector(triples);
         for (auto &triple : triples) {
-            model_.addStatement(triple->getStatement().get());
+            model_.addStatement(triple->getStatement());
         }
     }
 
@@ -172,7 +174,7 @@ namespace semsim {
 
 
     void Editor::removeSingleAnnotation(const SingularAnnotation &singularAnnotation) const {
-        model_.removeStatement(singularAnnotation.getStatement().get());
+        model_.removeStatement(singularAnnotation.getStatement());
     }
 
     void Editor::removePhysicalEntity(PhysicalEntity physicalEntity) {
@@ -185,7 +187,7 @@ namespace semsim {
         for (auto &it: triples) {
             HERE();
             std::cout << cout << std::endl;
-            model_.removeStatement(it->getStatement().get());
+            model_.removeStatement(it->getStatement());
             cout++;
         }
         HERE();
@@ -193,13 +195,13 @@ namespace semsim {
 
     void Editor::removePhysicalProcess(PhysicalProcess physicalProcess) {
         for (auto &it: physicalProcess.toTriples()) {
-            model_.removeStatement(it->getStatement().get());
+            model_.removeStatement(it->getStatement());
         }
     }
 
     void Editor::removePhysicalForce(PhysicalForce physicalForce) {
         for (auto &it: physicalForce.toTriples()) {
-            model_.removeStatement(it->getStatement().get());
+            model_.removeStatement(it->getStatement());
         }
     }
 

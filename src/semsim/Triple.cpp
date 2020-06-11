@@ -43,7 +43,7 @@ namespace semsim {
         librdf_storage *storage = librdf_new_storage(world, "memory", "SemsimMemoryStore", nullptr);
         librdf_model *model = librdf_new_model(world, storage, nullptr);
 
-        librdf_model_add_statement(model, statement_.get());
+        librdf_model_add_statement(model, statement_);
         librdf_serializer *serializer = librdf_new_serializer(world, format.c_str(), nullptr, nullptr);
 
         // deal with namespaces
@@ -79,7 +79,7 @@ namespace semsim {
         // ive implemented the logic here rather then using LibrdfStatement::setPredicate
         //  because I want them both to be called setPredicate.
         librdf_node* node = PredicateFactory(namespace_, term)->getNode();
-        librdf_statement_set_predicate(statement_.get(), node);
+        librdf_statement_set_predicate(statement_, node);
         return *this;
     }
 
@@ -89,7 +89,7 @@ namespace semsim {
             LibrdfNode::freeNode(getPredicate());
         LibrdfNode node = LibrdfNode::fromUriString(uri);
         // we pass ownership of node to the statement.
-        librdf_statement_set_predicate(statement_.get(), node.get());
+        librdf_statement_set_predicate(statement_, node.get());
         return *this;
     }
 
@@ -124,7 +124,7 @@ namespace semsim {
         return !getSubject() && !getPredicate() && !getResource();
     }
 
-    std::shared_ptr<librdf_statement> Triple::getStatement() const {
+    librdf_statement* Triple::getStatement() const {
         return statement_;
     }
 

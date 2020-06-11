@@ -137,7 +137,7 @@ namespace semsim {
 
         
         std::cout << "about to free about" << std::endl;
-        about.free();
+//        about.free();
 
         
         // the "what" part of physical entity triple

@@ -125,7 +125,7 @@ namespace semsim {
          * @param ns the namespace
          * @param prefix the prefix used in serialized annotations to refer to the namespace
          */
-        void addNamespace(std::string ns, std::string prefix);
+        void addNamespace(const std::string& ns, std::string prefix);
 
         /*
          * @brief Add a SingleAnnotation (aka a Triple) to the model
