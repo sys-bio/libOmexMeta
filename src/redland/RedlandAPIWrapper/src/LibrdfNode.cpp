@@ -52,9 +52,9 @@ namespace redland {
         return literal_datatype_;
     }
 
-    LibrdfNode
-    LibrdfNode::fromLiteral(const std::string &literal, const std::string &literal_datatype_uri,
-                            const std::string &xml_language) {
+    LibrdfNode LibrdfNode::fromLiteral(
+            const std::string &literal, const std::string &literal_datatype_uri,
+            const std::string &xml_language) {
         std::string literal_datatype_ = validateLiteralDatatype(literal_datatype_uri);
         const char *xml_language_;
         if (xml_language.empty()) {
@@ -73,6 +73,9 @@ namespace redland {
         return LibrdfNode(n);
     }
 
+    LibrdfNode LibrdfNode::newEmptyNode() {
+        return LibrdfNode(librdf_new_node(World::getWorld()));
+    }
 
     /*
      * Retrive a value from a librdf_node object,
@@ -206,7 +209,7 @@ namespace redland {
         LibrdfNode::freeNode(node_);
     }
 
-    std::string LibrdfNode::str() {
+    std::string LibrdfNode::str() const{
         return LibrdfNode::str(node_);
     }
 
