@@ -59,9 +59,14 @@ namespace semsim {
     }
 
 
-    void Editor::extractNamespacesFromTriplesVector(const Triples &triples) {
+    void Editor::extractNamespacesFromTriplesVector(Triples &triples) {
         for (int i = 0; i < triples.size(); i++) {
-            addNamespaceFromAnnotation(triples[i].getPredicateStr());
+            // create new reference to triple at i
+            Triple triple = triples[i];
+            addNamespaceFromAnnotation(triple.getPredicateStr());
+            // remember to free the new reference (should still exist but
+            // internal raptor reference count will decrease)
+            triple.freeStatement();
         }
     }
 
@@ -111,15 +116,20 @@ namespace semsim {
     void Editor::addCompositeAnnotation(const PhysicalPhenomenonPtr &phenomenonPtr) {
         Triples triples = phenomenonPtr->toTriples();
         extractNamespacesFromTriplesVector(triples);
-        for (int i = 0; i < triples.size(); i++) {
-            model_.addStatement(triples[i].getStatement());
+        while (!triples.isEmpty()) {
+            // remove a Triple off the end of triples
+            Triple triple = triples.pop();
+            // add to the model
+            model_.addStatement(triple.getStatement());
+            // remember to free it.
+            triple.freeStatement();
         }
         /*
          * Should I remove the triples here?
          */
         std::cout << "Experimental line of code" << std::endl;
         HERE();
-        triples.freeTriples();
+//        triples.freeTriples();
     }
 
     void Editor::addPhysicalEntity(const PhysicalEntity &physicalEntity) {
@@ -180,8 +190,9 @@ namespace semsim {
 
         Triples triples = physicalEntity.toTriples();
         for (int i = 0; i < triples.size(); i++) {
+            Triple triple = triples[i];
 //            std::cout << triples[i].str("ntriples") << std::endl;
-            model_.removeStatement(triples[i].getStatement());
+            model_.removeStatement(triple.getStatement());
         }
 //        triples.freeTriples(); // seg fault
     }

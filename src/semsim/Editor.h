@@ -65,7 +65,7 @@ namespace semsim {
         const LibrdfModel &model_;
         std::unordered_map<std::string, std::string> &namespaces_;
 
-        void extractNamespacesFromTriplesVector(const Triples &triples);
+        void extractNamespacesFromTriplesVector(Triples &triples);
 
     public:
 
