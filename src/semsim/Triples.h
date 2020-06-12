@@ -44,8 +44,6 @@ namespace semsim {
 
         explicit Triples(std::vector<Triple> triples);
 
-        const Triple &operator[](int index) const;
-
         void move_back(Triple &triple);
 
         void emplace_back(Subject subject, const PredicatePtr &predicatePtr, const Resource &resource);
@@ -78,6 +76,34 @@ namespace semsim {
 
         void freeTriples();
 
+        /*
+         * @brief moves one triple of the end of triples
+         * @returns the triple from the end of the triples vector
+         * @details No copies are made. This is deliberate as it reduces
+         * risk of memory issues. When you pop, you remove from the end of
+         * the Triples object and return it. This means that responsibility
+         * for freeing the returned Triple switches to the caller.
+         */
+        Triple pop();
+
+        /*
+         * @brief getter operator for Triples object
+         * @return a reference to the Triple at index `index`
+         * @details A copy is made of the Triple you want to return.
+         * To get a reference without copying see Triples::pop(). Remember
+         * that iterating over a Triples object and making copies
+         * will cause complications with freeing the objects.
+         */
+        const Triple &operator[](int index) const;
+
+        /*
+         * @brief indicates whether Triples object is empty.
+         * @return true if the Triples object doesn't contain any Triple objects
+         * @details Useful for iterating over Triples in a while loop
+         * without using the `[]` operator, which makes unwanted copies
+         * that causes memory issues.
+         */
+        bool isEmpty();
     };
 
     typedef std::vector<Triples> NestedTriples;

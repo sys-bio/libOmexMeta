@@ -144,19 +144,29 @@ namespace semsim {
         librdf_free_storage(storage);
         librdf_free_world(world);
         return str;
-
-
     }
 
-    const Triple &Triples::operator[](int index) const {
-        const Triple &triple = triples_[index];
-        return triple;
+    Triple Triples::pop() {
+        // get reference to back of triples_ vector
+        Triple &triple = triples_.back();
+        // then remove it from the triples_ vector
+        triples_.pop_back();
+        // return by move so no copies are made.
+        return std::move(triple);
     }
 
     void Triples::freeTriples() {
         for (int i = 0; i < triples_.size(); i++) {
             triples_[i].freeStatement();
         }
+    }
+
+    bool Triples::isEmpty() {
+        return triples_.empty();
+    }
+
+    const Triple &Triples::operator[](int index) const {
+        return triples_[index];
     }
 
 }
