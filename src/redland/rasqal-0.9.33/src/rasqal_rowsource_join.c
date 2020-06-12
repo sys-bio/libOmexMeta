@@ -22,7 +22,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -31,8 +33,11 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <raptor2.h>
@@ -46,313 +51,222 @@
 #ifndef STANDALONE
 
 typedef enum {
-  JS_START,
-  JS_INIT_RIGHT,
-  JS_READ_RIGHT,
-  JS_FINISHED
+    JS_START,
+    JS_INIT_RIGHT,
+    JS_READ_RIGHT,
+    JS_FINISHED
 } rasqal_join_state;
 
-typedef struct 
-{
-  rasqal_rowsource* left;
+typedef struct {
+    rasqal_rowsource *left;
 
-  rasqal_rowsource* right;
+    rasqal_rowsource *right;
 
-  /* current left row */
-  rasqal_row *left_row;
-  
-  /* array to map right variables into output rows */
-  int* right_map;
+    /* current left row */
+    rasqal_row *left_row;
 
-  /* 0 = reading from left rs, 1 = reading from right rs, 2 = finished */
-  rasqal_join_state state;
+    /* array to map right variables into output rows */
+    int *right_map;
 
-  int failed;
+    /* 0 = reading from left rs, 1 = reading from right rs, 2 = finished */
+    rasqal_join_state state;
 
-  /* row offset for read_row() */
-  int offset;
+    int failed;
 
-  /* row join type */
-  rasqal_join_type join_type;
-  
-  /* join expression */
-  rasqal_expression *expr;
+    /* row offset for read_row() */
+    int offset;
 
-  /* map for checking compatibility of rows */
-  rasqal_row_compatible* rc_map;
+    /* row join type */
+    rasqal_join_type join_type;
 
-  /* number of right rows joined per-left */
-  int right_rows_joined_count;
+    /* join expression */
+    rasqal_expression *expr;
 
-  /* join expression constant boolean value or < 0 if not valid */
-  int constant_join_condition;
+    /* map for checking compatibility of rows */
+    rasqal_row_compatible *rc_map;
+
+    /* number of right rows joined per-left */
+    int right_rows_joined_count;
+
+    /* join expression constant boolean value or < 0 if not valid */
+    int constant_join_condition;
 } rasqal_join_rowsource_context;
 
 
 static int
-rasqal_join_rowsource_init(rasqal_rowsource* rowsource, void *user_data) 
-{
-  rasqal_join_rowsource_context* con;
-  rasqal_variables_table* vars_table; 
+rasqal_join_rowsource_init(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_join_rowsource_context *con;
+    rasqal_variables_table *vars_table;
 
-  con = (rasqal_join_rowsource_context*)user_data;
+    con = (rasqal_join_rowsource_context *) user_data;
 
-  con->failed = 0;
-  con->state = JS_START;
-  con->constant_join_condition = -1;
+    con->failed = 0;
+    con->state = JS_START;
+    con->constant_join_condition = -1;
 
-  /* If join condition is a constant - optimize it away */
-  if(con->expr && rasqal_expression_is_constant(con->expr)) {
-    rasqal_query *query = rowsource->query;
-    rasqal_literal* result;
-    int bresult;
-    int error = 0;
-    
-    result = rasqal_expression_evaluate2(con->expr, query->eval_context,
-                                         &error);
+    /* If join condition is a constant - optimize it away */
+    if (con->expr && rasqal_expression_is_constant(con->expr)) {
+        rasqal_query *query = rowsource->query;
+        rasqal_literal *result;
+        int bresult;
+        int error = 0;
+
+        result = rasqal_expression_evaluate2(con->expr, query->eval_context,
+                                             &error);
 
 #ifdef RASQAL_DEBUG
-    RASQAL_DEBUG1("join expression condition is constant: ");
-    if(error)
-      fputs("type error", DEBUG_FH);
-    else
-      rasqal_literal_print(result, DEBUG_FH);
-    fputc('\n', DEBUG_FH);
+        RASQAL_DEBUG1("join expression condition is constant: ");
+        if(error)
+          fputs("type error", DEBUG_FH);
+        else
+          rasqal_literal_print(result, DEBUG_FH);
+        fputc('\n', DEBUG_FH);
 #endif
 
-    if(error) {
-      bresult = 0;
-    } else {
-      error = 0;
-      bresult = rasqal_literal_as_boolean(result, &error);
+        if (error) {
+            bresult = 0;
+        } else {
+            error = 0;
+            bresult = rasqal_literal_as_boolean(result, &error);
 #ifdef RASQAL_DEBUG
-      if(error)
-        RASQAL_DEBUG1("join boolean expression returned error\n");
-      else
-        RASQAL_DEBUG2("join boolean expression result: %d\n", bresult);
+            if(error)
+              RASQAL_DEBUG1("join boolean expression returned error\n");
+            else
+              RASQAL_DEBUG2("join boolean expression result: %d\n", bresult);
 #endif
-      rasqal_free_literal(result);
+            rasqal_free_literal(result);
+        }
+
+        /* free expression always */
+        rasqal_free_expression(con->expr);
+        con->expr = NULL;
+
+        if (con->join_type == RASQAL_JOIN_TYPE_NATURAL) {
+            if (!bresult) {
+                /* Constraint is always false so row source is finished */
+                con->state = JS_FINISHED;
+            }
+            /* otherwise always true so no need to evaluate on each row
+             * and deleting con->expr will handle that
+             */
+        }
+
+        con->constant_join_condition = bresult;
     }
 
-    /* free expression always */
-    rasqal_free_expression(con->expr); con->expr = NULL;
+    rasqal_rowsource_set_requirements(con->left, RASQAL_ROWSOURCE_REQUIRE_RESET);
+    rasqal_rowsource_set_requirements(con->right, RASQAL_ROWSOURCE_REQUIRE_RESET);
 
-    if(con->join_type == RASQAL_JOIN_TYPE_NATURAL) {
-      if(!bresult) {
-        /* Constraint is always false so row source is finished */
-        con->state = JS_FINISHED;
-      }
-      /* otherwise always true so no need to evaluate on each row
-       * and deleting con->expr will handle that
-       */
-    }
-
-    con->constant_join_condition = bresult;
-  }
-
-  rasqal_rowsource_set_requirements(con->left, RASQAL_ROWSOURCE_REQUIRE_RESET);
-  rasqal_rowsource_set_requirements(con->right, RASQAL_ROWSOURCE_REQUIRE_RESET);
-  
-  vars_table = con->left->vars_table;
-  con->rc_map = rasqal_new_row_compatible(vars_table, con->left, con->right);
-  if(!con->rc_map)
-    return -1;
+    vars_table = con->left->vars_table;
+    con->rc_map = rasqal_new_row_compatible(vars_table, con->left, con->right);
+    if (!con->rc_map)
+        return -1;
 
 #ifdef RASQAL_DEBUG
-  RASQAL_DEBUG2("rowsource %p ", rowsource);
-  rasqal_print_row_compatible(stderr, con->rc_map);
+    RASQAL_DEBUG2("rowsource %p ", rowsource);
+    rasqal_print_row_compatible(stderr, con->rc_map);
 #endif
 
-  return 0;
+    return 0;
 }
 
 
 static int
-rasqal_join_rowsource_finish(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_join_rowsource_context* con;
-  con = (rasqal_join_rowsource_context*)user_data;
+rasqal_join_rowsource_finish(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_join_rowsource_context *con;
+    con = (rasqal_join_rowsource_context *) user_data;
 
-  if(con->left_row)
-    rasqal_free_row(con->left_row);
-  
-  if(con->left)
-    rasqal_free_rowsource(con->left);
-  
-  if(con->right)
-    rasqal_free_rowsource(con->right);
-  
-  if(con->right_map)
-    RASQAL_FREE(int, con->right_map);
-  
-  if(con->expr)
-    rasqal_free_expression(con->expr);
-  
-  if(con->rc_map)
-    rasqal_free_row_compatible(con->rc_map);
-  
-  RASQAL_FREE(rasqal_join_rowsource_context, con);
-
-  return 0;
-}
-
-
-static int
-rasqal_join_rowsource_ensure_variables(rasqal_rowsource* rowsource,
-                                        void *user_data)
-{
-  rasqal_join_rowsource_context* con;
-  int map_size;
-  int i;
-  
-  con = (rasqal_join_rowsource_context*)user_data;
-
-  if(rasqal_rowsource_ensure_variables(con->left))
-    return 1;
-
-  if(rasqal_rowsource_ensure_variables(con->right))
-    return 1;
-
-  map_size = rasqal_rowsource_get_size(con->right);
-  con->right_map = RASQAL_MALLOC(int*, RASQAL_GOOD_CAST(size_t,
-                                                        sizeof(int) * RASQAL_GOOD_CAST(size_t, map_size)));
-  if(!con->right_map)
-    return 1;
-
-  rowsource->size = 0;
-
-  /* copy in variables from left rowsource */
-  if(rasqal_rowsource_copy_variables(rowsource, con->left))
-    return 1;
-  
-  /* add any new variables not already seen from right rowsource */
-  for(i = 0; i < map_size; i++) {
-    rasqal_variable* v;
-    int offset;
-    
-    v = rasqal_rowsource_get_variable_by_offset(con->right, i);
-    if(!v)
-      break;
-    offset = rasqal_rowsource_add_variable(rowsource, v);
-    if(offset < 0)
-      return 1;
-
-    con->right_map[i] = offset;
-  }
-
-  return 0;
-}
-
-
-static rasqal_row*
-rasqal_join_rowsource_build_merged_row(rasqal_rowsource* rowsource,
-                                       rasqal_join_rowsource_context* con,
-                                       rasqal_row *right_row)
-{
-  rasqal_row *row;
-  int i;
-
-  row = rasqal_new_row_for_size(rowsource->world, rowsource->size);
-  if(!row) {
-    if(right_row)
-      rasqal_free_row(right_row);
-    return NULL;
-  }
-
-  rasqal_row_set_rowsource(row, rowsource);
-  row->offset = con->offset;
-
-#ifdef RASQAL_DEBUG
-  RASQAL_DEBUG1("merge\n  left row   : ");
-  rasqal_row_print(con->left_row, stderr);
-  fputs("\n  right row  : ", stderr);
-  if(right_row)
-    rasqal_row_print(right_row, stderr);
-  else
-    fputs("NONE", stderr);
-  fputs("\n", stderr);
-#endif
-
-  for(i = 0; i < con->left_row->size; i++) {
-    rasqal_literal *l = con->left_row->values[i];
-    row->values[i] = rasqal_new_literal_from_literal(l);
-  }
-
-  if(right_row) {
-    for(i = 0; i < right_row->size; i++) {
-      rasqal_literal *l = right_row->values[i];
-      int dest_i = con->right_map[i];
-      if(!row->values[dest_i])
-        row->values[dest_i] = rasqal_new_literal_from_literal(l);
-    }
-
-    rasqal_free_row(right_row);
-  }
-  
-#ifdef RASQAL_DEBUG
-  fputs("  result row : ", stderr);
-  if(row)
-    rasqal_row_print(row, stderr);
-  else
-    fputs("NONE", stderr);
-  fputs("\n", stderr);
-#endif
-
-  return row;
-}
-
-
-static rasqal_row*
-rasqal_join_rowsource_read_row(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_join_rowsource_context* con;
-  rasqal_row* row = NULL;
-  rasqal_query *query = rowsource->query;
-
-  con = (rasqal_join_rowsource_context*)user_data;
-
-  if(con->failed || con->state == JS_FINISHED)
-    return NULL;
-
-  while(1) {
-    rasqal_row *right_row;
-    int bresult = 1;
-    int compatible = 1;
-
-    if(con->state == JS_START) {
-      /* start / re-start left */
-      if(con->left_row)
+    if (con->left_row)
         rasqal_free_row(con->left_row);
 
-      con->left_row  = rasqal_rowsource_read_row(con->left);
-#ifdef RASQAL_DEBUG
-      RASQAL_DEBUG2("rowsource %p read left row : ", rowsource);
-      if(con->left_row)
-        rasqal_row_print(con->left_row, stderr);
-      else
-        fputs("NONE", stderr);
-      fputs("\n", stderr);
-#endif
-      con->state = JS_INIT_RIGHT;
+    if (con->left)
+        rasqal_free_rowsource(con->left);
+
+    if (con->right)
+        rasqal_free_rowsource(con->right);
+
+    if (con->right_map)
+        RASQAL_FREE(int, con->right_map);
+
+    if (con->expr)
+        rasqal_free_expression(con->expr);
+
+    if (con->rc_map)
+        rasqal_free_row_compatible(con->rc_map);
+
+    RASQAL_FREE(rasqal_join_rowsource_context, con);
+
+    return 0;
+}
+
+
+static int
+rasqal_join_rowsource_ensure_variables(rasqal_rowsource *rowsource,
+                                       void *user_data) {
+    rasqal_join_rowsource_context *con;
+    int map_size;
+    int i;
+
+    con = (rasqal_join_rowsource_context *) user_data;
+
+    if (rasqal_rowsource_ensure_variables(con->left))
+        return 1;
+
+    if (rasqal_rowsource_ensure_variables(con->right))
+        return 1;
+
+    map_size = rasqal_rowsource_get_size(con->right);
+    con->right_map = RASQAL_MALLOC(int*, RASQAL_GOOD_CAST(size_t,
+                                                          sizeof(int) * RASQAL_GOOD_CAST(size_t, map_size)));
+    if (!con->right_map)
+        return 1;
+
+    rowsource->size = 0;
+
+    /* copy in variables from left rowsource */
+    if (rasqal_rowsource_copy_variables(rowsource, con->left))
+        return 1;
+
+    /* add any new variables not already seen from right rowsource */
+    for (i = 0; i < map_size; i++) {
+        rasqal_variable *v;
+        int offset;
+
+        v = rasqal_rowsource_get_variable_by_offset(con->right, i);
+        if (!v)
+            break;
+        offset = rasqal_rowsource_add_variable(rowsource, v);
+        if (offset < 0)
+            return 1;
+
+        con->right_map[i] = offset;
     }
 
-    if(con->state == JS_INIT_RIGHT) {
-      /* start right */
+    return 0;
+}
 
-      if(!con->left_row) {
-        con->state = JS_FINISHED;
+
+static rasqal_row *
+rasqal_join_rowsource_build_merged_row(rasqal_rowsource *rowsource,
+                                       rasqal_join_rowsource_context *con,
+                                       rasqal_row *right_row) {
+    rasqal_row *row;
+    int i;
+
+    row = rasqal_new_row_for_size(rowsource->world, rowsource->size);
+    if (!row) {
+        if (right_row)
+            rasqal_free_row(right_row);
         return NULL;
-      }
-
-      con->right_rows_joined_count = 0;
-
-      rasqal_rowsource_reset(con->right);
     }
 
+    rasqal_row_set_rowsource(row, rowsource);
+    row->offset = con->offset;
 
-    right_row = rasqal_rowsource_read_row(con->right);
 #ifdef RASQAL_DEBUG
-    RASQAL_DEBUG2("rowsource %p read right row : ", rowsource);
+    RASQAL_DEBUG1("merge\n  left row   : ");
+    rasqal_row_print(con->left_row, stderr);
+    fputs("\n  right row  : ", stderr);
     if(right_row)
       rasqal_row_print(right_row, stderr);
     else
@@ -360,197 +274,281 @@ rasqal_join_rowsource_read_row(rasqal_rowsource* rowsource, void *user_data)
     fputs("\n", stderr);
 #endif
 
-    if(!right_row && con->state == JS_READ_RIGHT) {
-      /* right has finished */
+    for (i = 0; i < con->left_row->size; i++) {
+        rasqal_literal *l = con->left_row->values[i];
+        row->values[i] = rasqal_new_literal_from_literal(l);
+    }
 
-      /* restart left */
-      con->state = JS_START;
-
-      /* if all right table returned no bindings, return left row */
-      if(!con->right_rows_joined_count) {
-        /* otherwise return LEFT or RIGHT row only */
-        if(con->join_type == RASQAL_JOIN_TYPE_LEFT) {
-          /* LEFT JOIN - add left row if expr fails or not compatible */
-          if(con->left_row) {
-            con->right_rows_joined_count++;
-        
-            row = rasqal_join_rowsource_build_merged_row(rowsource, con, NULL);
-            break;
-          }
+    if (right_row) {
+        for (i = 0; i < right_row->size; i++) {
+            rasqal_literal *l = right_row->values[i];
+            int dest_i = con->right_map[i];
+            if (!row->values[dest_i])
+                row->values[dest_i] = rasqal_new_literal_from_literal(l);
         }
-      }
 
-      /* restart left by continuing the loop */
-      continue;
+        rasqal_free_row(right_row);
     }
 
-
-    /* state is always JS_READ_RIGHT at this point */
-    con->state = JS_READ_RIGHT;
-
-    /* now may have both left and right rows so compute compatibility */
-    if(right_row) {
-      compatible = rasqal_row_compatible_check(con->rc_map,
-                                               con->left_row, right_row);
-      RASQAL_DEBUG2("join rows compatible: %s\n", compatible ? "YES" : "NO");
-    }
-
-
-    if(con->constant_join_condition >= 0) {
-      /* Get constant join expression value */
-      bresult = con->constant_join_condition;
-    } else if(con->expr) {
-      /* Check join expression if present */
-      rasqal_literal *result;
-      int error = 0;
-      
-      result = rasqal_expression_evaluate2(con->expr, query->eval_context,
-                                           &error);
 #ifdef RASQAL_DEBUG
-      RASQAL_DEBUG1("join expression result: ");
-      if(error)
-        fputs("type error", DEBUG_FH);
-      else
-        rasqal_literal_print(result, DEBUG_FH);
-      fputc('\n', DEBUG_FH);
+    fputs("  result row : ", stderr);
+    if(row)
+      rasqal_row_print(row, stderr);
+    else
+      fputs("NONE", stderr);
+    fputs("\n", stderr);
 #endif
 
-      if(error) {
-        bresult = 0;
-      } else {
-        error = 0;
-        bresult = rasqal_literal_as_boolean(result, &error);
+    return row;
+}
+
+
+static rasqal_row *
+rasqal_join_rowsource_read_row(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_join_rowsource_context *con;
+    rasqal_row *row = NULL;
+    rasqal_query *query = rowsource->query;
+
+    con = (rasqal_join_rowsource_context *) user_data;
+
+    if (con->failed || con->state == JS_FINISHED)
+        return NULL;
+
+    while (1) {
+        rasqal_row *right_row;
+        int bresult = 1;
+        int compatible = 1;
+
+        if (con->state == JS_START) {
+            /* start / re-start left */
+            if (con->left_row)
+                rasqal_free_row(con->left_row);
+
+            con->left_row = rasqal_rowsource_read_row(con->left);
 #ifdef RASQAL_DEBUG
-        if(error)
-          RASQAL_DEBUG1("filter boolean expression returned error\n");
+            RASQAL_DEBUG2("rowsource %p read left row : ", rowsource);
+            if(con->left_row)
+              rasqal_row_print(con->left_row, stderr);
+            else
+              fputs("NONE", stderr);
+            fputs("\n", stderr);
+#endif
+            con->state = JS_INIT_RIGHT;
+        }
+
+        if (con->state == JS_INIT_RIGHT) {
+            /* start right */
+
+            if (!con->left_row) {
+                con->state = JS_FINISHED;
+                return NULL;
+            }
+
+            con->right_rows_joined_count = 0;
+
+            rasqal_rowsource_reset(con->right);
+        }
+
+
+        right_row = rasqal_rowsource_read_row(con->right);
+#ifdef RASQAL_DEBUG
+        RASQAL_DEBUG2("rowsource %p read right row : ", rowsource);
+        if(right_row)
+          rasqal_row_print(right_row, stderr);
         else
-          RASQAL_DEBUG2("filter boolean expression result: %d\n", bresult);
+          fputs("NONE", stderr);
+        fputs("\n", stderr);
 #endif
-        rasqal_free_literal(result);
-      }
-    }
-    
-    if(con->join_type == RASQAL_JOIN_TYPE_NATURAL) {
-      /* found a row if compatible and constraint matches */
-      if(compatible && bresult && right_row) {
-        con->right_rows_joined_count++;
 
-        /* consumes right_row */
-        row = rasqal_join_rowsource_build_merged_row(rowsource, con, right_row);
-        break;
-      }
-      
-    } else if(con->join_type == RASQAL_JOIN_TYPE_LEFT) {
-      /*
-       * { merge(mu1, mu2) | mu1 in Omega1 and mu2 in Omega2, and mu1
-       *   and mu2 are compatible and expr(merge(mu1, mu2)) is true }
-       */
-      if(compatible && bresult) {
-        con->right_rows_joined_count++;
+        if (!right_row && con->state == JS_READ_RIGHT) {
+            /* right has finished */
 
-        /* No constraint OR constraint & compatible so return merged row */
+            /* restart left */
+            con->state = JS_START;
 
-        /* Compute row only now it is known to be needed (consumes right_row) */
-        row = rasqal_join_rowsource_build_merged_row(rowsource, con, right_row);
-        break;
-      }
+            /* if all right table returned no bindings, return left row */
+            if (!con->right_rows_joined_count) {
+                /* otherwise return LEFT or RIGHT row only */
+                if (con->join_type == RASQAL_JOIN_TYPE_LEFT) {
+                    /* LEFT JOIN - add left row if expr fails or not compatible */
+                    if (con->left_row) {
+                        con->right_rows_joined_count++;
 
-#if 0    
-      /*
-       * { mu1 | mu1 in Omega1 and mu2 in Omega2, and mu1 and mu2 are
-       * not compatible }
-       */
-      if(!compatible) {
-        /* otherwise return LEFT or RIGHT row only */
-        if(con->join_type == RASQAL_JOIN_TYPE_LEFT) {
-          /* LEFT JOIN - add left row if expr fails or not compatible */
-          if(con->left_row) {
-            con->right_rows_joined_count++;
+                        row = rasqal_join_rowsource_build_merged_row(rowsource, con, NULL);
+                        break;
+                    }
+                }
+            }
 
-            row = rasqal_join_rowsource_build_merged_row(rowsource, con, NULL);
-            if(right_row)
-              rasqal_free_row(right_row);
-            break;
-          }
+            /* restart left by continuing the loop */
+            continue;
         }
-      }
+
+
+        /* state is always JS_READ_RIGHT at this point */
+        con->state = JS_READ_RIGHT;
+
+        /* now may have both left and right rows so compute compatibility */
+        if (right_row) {
+            compatible = rasqal_row_compatible_check(con->rc_map,
+                                                     con->left_row, right_row);
+            RASQAL_DEBUG2("join rows compatible: %s\n", compatible ? "YES" : "NO");
+        }
+
+
+        if (con->constant_join_condition >= 0) {
+            /* Get constant join expression value */
+            bresult = con->constant_join_condition;
+        } else if (con->expr) {
+            /* Check join expression if present */
+            rasqal_literal *result;
+            int error = 0;
+
+            result = rasqal_expression_evaluate2(con->expr, query->eval_context,
+                                                 &error);
+#ifdef RASQAL_DEBUG
+            RASQAL_DEBUG1("join expression result: ");
+            if(error)
+              fputs("type error", DEBUG_FH);
+            else
+              rasqal_literal_print(result, DEBUG_FH);
+            fputc('\n', DEBUG_FH);
 #endif
 
-      /*
-       * { mu1 | mu1 in Omega1 and mu2 in Omega2, and mu1 and mu2 are
-       *   compatible and for all mu2, expr(merge(mu1, mu2)) is false }
-       */
-      
-      /* The above is handled using check for
-       * !con->right_rows_joined_count earlier, to generate a row
-       * once.
-       */
+            if (error) {
+                bresult = 0;
+            } else {
+                error = 0;
+                bresult = rasqal_literal_as_boolean(result, &error);
+#ifdef RASQAL_DEBUG
+                if(error)
+                  RASQAL_DEBUG1("filter boolean expression returned error\n");
+                else
+                  RASQAL_DEBUG2("filter boolean expression result: %d\n", bresult);
+#endif
+                rasqal_free_literal(result);
+            }
+        }
 
-    } /* end if LEFT JOIN */
+        if (con->join_type == RASQAL_JOIN_TYPE_NATURAL) {
+            /* found a row if compatible and constraint matches */
+            if (compatible && bresult && right_row) {
+                con->right_rows_joined_count++;
 
-    if(right_row)
-      rasqal_free_row(right_row);
-      
-  } /* end while */
+                /* consumes right_row */
+                row = rasqal_join_rowsource_build_merged_row(rowsource, con, right_row);
+                break;
+            }
 
-  if(row) {
-    rasqal_row_set_rowsource(row, rowsource);
-    row->offset = con->offset++;
+        } else if (con->join_type == RASQAL_JOIN_TYPE_LEFT) {
+            /*
+             * { merge(mu1, mu2) | mu1 in Omega1 and mu2 in Omega2, and mu1
+             *   and mu2 are compatible and expr(merge(mu1, mu2)) is true }
+             */
+            if (compatible && bresult) {
+                con->right_rows_joined_count++;
 
-    rasqal_row_bind_variables(row, rowsource->query->vars_table);
-  }
-  
-  return row;
+                /* No constraint OR constraint & compatible so return merged row */
+
+                /* Compute row only now it is known to be needed (consumes right_row) */
+                row = rasqal_join_rowsource_build_merged_row(rowsource, con, right_row);
+                break;
+            }
+
+#if 0
+            /*
+             * { mu1 | mu1 in Omega1 and mu2 in Omega2, and mu1 and mu2 are
+             * not compatible }
+             */
+            if(!compatible) {
+              /* otherwise return LEFT or RIGHT row only */
+              if(con->join_type == RASQAL_JOIN_TYPE_LEFT) {
+                /* LEFT JOIN - add left row if expr fails or not compatible */
+                if(con->left_row) {
+                  con->right_rows_joined_count++;
+
+                  row = rasqal_join_rowsource_build_merged_row(rowsource, con, NULL);
+                  if(right_row)
+                    rasqal_free_row(right_row);
+                  break;
+                }
+              }
+            }
+#endif
+
+            /*
+             * { mu1 | mu1 in Omega1 and mu2 in Omega2, and mu1 and mu2 are
+             *   compatible and for all mu2, expr(merge(mu1, mu2)) is false }
+             */
+
+            /* The above is handled using check for
+             * !con->right_rows_joined_count earlier, to generate a row
+             * once.
+             */
+
+        } /* end if LEFT JOIN */
+
+        if (right_row)
+            rasqal_free_row(right_row);
+
+    } /* end while */
+
+    if (row) {
+        rasqal_row_set_rowsource(row, rowsource);
+        row->offset = con->offset++;
+
+        rasqal_row_bind_variables(row, rowsource->query->vars_table);
+    }
+
+    return row;
 }
 
 
 static int
-rasqal_join_rowsource_reset(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_join_rowsource_context* con;
-  int rc;
-  
-  con = (rasqal_join_rowsource_context*)user_data;
+rasqal_join_rowsource_reset(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_join_rowsource_context *con;
+    int rc;
 
-  con->state = JS_START;
-  con->failed = 0;
-  
-  rc = rasqal_rowsource_reset(con->left);
-  if(rc)
-    return rc;
+    con = (rasqal_join_rowsource_context *) user_data;
 
-  return rasqal_rowsource_reset(con->right);
+    con->state = JS_START;
+    con->failed = 0;
+
+    rc = rasqal_rowsource_reset(con->left);
+    if (rc)
+        return rc;
+
+    return rasqal_rowsource_reset(con->right);
 }
 
 
-static rasqal_rowsource*
-rasqal_join_rowsource_get_inner_rowsource(rasqal_rowsource* rowsource,
-                                          void *user_data, int offset)
-{
-  rasqal_join_rowsource_context *con;
-  con = (rasqal_join_rowsource_context*)user_data;
+static rasqal_rowsource *
+rasqal_join_rowsource_get_inner_rowsource(rasqal_rowsource *rowsource,
+                                          void *user_data, int offset) {
+    rasqal_join_rowsource_context *con;
+    con = (rasqal_join_rowsource_context *) user_data;
 
-  if(offset == 0)
-    return con->left;
-  else if(offset == 1)
-    return con->right;
-  else
-    return NULL;
+    if (offset == 0)
+        return con->left;
+    else if (offset == 1)
+        return con->right;
+    else
+        return NULL;
 }
 
 
 static const rasqal_rowsource_handler rasqal_join_rowsource_handler = {
-  /* .version = */ 1,
-  "join",
-  /* .init = */ rasqal_join_rowsource_init,
-  /* .finish = */ rasqal_join_rowsource_finish,
-  /* .ensure_variables = */ rasqal_join_rowsource_ensure_variables,
-  /* .read_row = */ rasqal_join_rowsource_read_row,
-  /* .read_all_rows = */ NULL,
-  /* .reset = */ rasqal_join_rowsource_reset,
-  /* .set_requirements = */ NULL,
-  /* .get_inner_rowsource = */ rasqal_join_rowsource_get_inner_rowsource,
-  /* .set_origin = */ NULL,
+        /* .version = */ 1,
+                         "join",
+        /* .init = */ rasqal_join_rowsource_init,
+        /* .finish = */ rasqal_join_rowsource_finish,
+        /* .ensure_variables = */ rasqal_join_rowsource_ensure_variables,
+        /* .read_row = */ rasqal_join_rowsource_read_row,
+        /* .read_all_rows = */ NULL,
+        /* .reset = */ rasqal_join_rowsource_reset,
+        /* .set_requirements = */ NULL,
+        /* .get_inner_rowsource = */ rasqal_join_rowsource_get_inner_rowsource,
+        /* .set_origin = */ NULL,
 };
 
 
@@ -574,51 +572,49 @@ static const rasqal_rowsource_handler rasqal_join_rowsource_handler = {
  *
  * Return value: new rowsource or NULL on failure
  */
-rasqal_rowsource*
+rasqal_rowsource *
 rasqal_new_join_rowsource(rasqal_world *world,
-                          rasqal_query* query,
-                          rasqal_rowsource* left,
-                          rasqal_rowsource* right,
+                          rasqal_query *query,
+                          rasqal_rowsource *left,
+                          rasqal_rowsource *right,
                           rasqal_join_type join_type,
-                          rasqal_expression *expr)
-{
-  rasqal_join_rowsource_context* con;
-  int flags = 0;
+                          rasqal_expression *expr) {
+    rasqal_join_rowsource_context *con;
+    int flags = 0;
 
-  if(!world || !query || !left || !right)
-    goto fail;
+    if (!world || !query || !left || !right)
+        goto fail;
 
-  /* only left outer join and cross join supported */
-  if(join_type != RASQAL_JOIN_TYPE_LEFT &&
-     join_type != RASQAL_JOIN_TYPE_NATURAL)
-    goto fail;
-  
-  con = RASQAL_CALLOC(rasqal_join_rowsource_context*, 1, sizeof(*con));
-  if(!con)
-    goto fail;
+    /* only left outer join and cross join supported */
+    if (join_type != RASQAL_JOIN_TYPE_LEFT &&
+        join_type != RASQAL_JOIN_TYPE_NATURAL)
+        goto fail;
 
-  con->left = left;
-  con->right = right;
-  con->join_type = join_type;
-  con->expr = rasqal_new_expression_from_expression(expr);
-  
-  return rasqal_new_rowsource_from_handler(world, query,
-                                           con,
-                                           &rasqal_join_rowsource_handler,
-                                           query->vars_table,
-                                           flags);
+    con = RASQAL_CALLOC(rasqal_join_rowsource_context*, 1, sizeof(*con));
+    if (!con)
+        goto fail;
 
-  fail:
-  if(left)
-    rasqal_free_rowsource(left);
-  if(right)
-    rasqal_free_rowsource(right);
-  return NULL;
+    con->left = left;
+    con->right = right;
+    con->join_type = join_type;
+    con->expr = rasqal_new_expression_from_expression(expr);
+
+    return rasqal_new_rowsource_from_handler(world, query,
+                                             con,
+                                             &rasqal_join_rowsource_handler,
+                                             query->vars_table,
+                                             flags);
+
+    fail:
+    if (left)
+        rasqal_free_rowsource(left);
+    if (right)
+        rasqal_free_rowsource(right);
+    return NULL;
 }
 
 
 #endif /* not STANDALONE */
-
 
 
 #ifdef STANDALONE

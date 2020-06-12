@@ -27,7 +27,9 @@
 #define REDLAND_H
 
 #ifndef LIBRDF_OBJC_FRAMEWORK
+
 #include <librdf.h>
+
 #else
 #include <Redland/librdf.h>
 #endif

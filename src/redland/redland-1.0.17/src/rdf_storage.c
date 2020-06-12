@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -35,12 +37,17 @@
 #include <string.h>
 #include <ctype.h>
 #include <sys/types.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #ifdef MODULAR_LIBRDF
+
 #include <ltdl.h>
+
 #endif
 
 #include <redland.h>
@@ -52,23 +59,30 @@
 /* prototypes for functions implementing get_sources, arcs, targets
  * librdf_iterator via conversion from a librdf_stream of librdf_statement
  */
-static int librdf_storage_stream_to_node_iterator_is_end(void* iterator);
-static int librdf_storage_stream_to_node_iterator_next_method(void* iterator);
-static void* librdf_storage_stream_to_node_iterator_get_method(void* iterator, int flags);
-static void librdf_storage_stream_to_node_iterator_finished(void* iterator);
+static int librdf_storage_stream_to_node_iterator_is_end(void *iterator);
+
+static int librdf_storage_stream_to_node_iterator_next_method(void *iterator);
+
+static void *librdf_storage_stream_to_node_iterator_get_method(void *iterator, int flags);
+
+static void librdf_storage_stream_to_node_iterator_finished(void *iterator);
 
 /* helper function for creating iterators for get sources, targets, arcs */
-static librdf_iterator* librdf_storage_node_stream_to_node_create(librdf_storage* storage, librdf_node* node1, librdf_node *node2, librdf_statement_part want);
+static librdf_iterator *
+librdf_storage_node_stream_to_node_create(librdf_storage *storage, librdf_node *node1, librdf_node *node2,
+                                          librdf_statement_part want);
 
 /* helper functions for dynamically loading storage modules */
 #ifdef MODULAR_LIBRDF
+
 void
 librdf_storage_load_all_modules(librdf_world *world);
 
 static lt_dlhandle
 librdf_storage_load_module(librdf_world *world,
-                           const char* lib_name,
-                           const char* init_func_name);
+                           const char *lib_name,
+                           const char *init_func_name);
+
 #endif
 
 
@@ -83,48 +97,47 @@ librdf_storage_load_module(librdf_world *world,
  * factory functions such as librdf_get_storage_factory()
  **/
 void
-librdf_init_storage(librdf_world *world)
-{
-  /* built-in storages */
+librdf_init_storage(librdf_world *world) {
+    /* built-in storages */
 
-  #ifdef STORAGE_HASHES
+#ifdef STORAGE_HASHES
     librdf_init_storage_hashes(world);
-  #endif
-  #ifdef STORAGE_TREES
+#endif
+#ifdef STORAGE_TREES
     librdf_init_storage_trees(world);
-  #endif
-  #ifdef STORAGE_MEMORY
+#endif
+#ifdef STORAGE_MEMORY
     librdf_init_storage_list(world);
-  #endif
-  #ifdef STORAGE_FILE
+#endif
+#ifdef STORAGE_FILE
     librdf_init_storage_file(world);
-  #endif
+#endif
 
 #ifdef MODULAR_LIBRDF
 
-  if (!world->storage_modules)
-    world->storage_modules = raptor_new_sequence(
-        (raptor_data_free_handler)lt_dlclose, NULL);
+    if (!world->storage_modules)
+        world->storage_modules = raptor_new_sequence(
+                (raptor_data_free_handler) lt_dlclose, NULL);
 
-  librdf_storage_load_all_modules(world);
+    librdf_storage_load_all_modules(world);
 
 #else /* monolithic */
-  
-  #ifdef STORAGE_MYSQL
+
+#ifdef STORAGE_MYSQL
     librdf_init_storage_mysql(world);
-  #endif
-  #ifdef STORAGE_VIRTUOSO
+#endif
+#ifdef STORAGE_VIRTUOSO
     librdf_init_storage_virtuoso(world);
-  #endif
-  #ifdef STORAGE_POSTGRESQL
+#endif
+#ifdef STORAGE_POSTGRESQL
     librdf_init_storage_postgresql(world);
-  #endif
-  #ifdef STORAGE_TSTORE
+#endif
+#ifdef STORAGE_TSTORE
     librdf_init_storage_tstore(world);
-  #endif
-  #ifdef STORAGE_SQLITE
+#endif
+#ifdef STORAGE_SQLITE
     librdf_init_storage_sqlite(world);
-  #endif
+#endif
 
 #endif
 }
@@ -138,99 +151,95 @@ librdf_init_storage(librdf_world *world)
  *
  **/
 void
-librdf_finish_storage(librdf_world *world) 
-{
-  if(world->storages) {
-    raptor_free_sequence(world->storages);
-    world->storages=NULL;
-  }
+librdf_finish_storage(librdf_world *world) {
+    if (world->storages) {
+        raptor_free_sequence(world->storages);
+        world->storages = NULL;
+    }
 
 #ifdef MODULAR_LIBRDF
-  if(world->storage_modules) {
-    raptor_free_sequence(world->storage_modules);
-    world->storage_modules=NULL;
-  }
+    if (world->storage_modules) {
+        raptor_free_sequence(world->storage_modules);
+        world->storage_modules = NULL;
+    }
 #endif
-  
-}
 
+}
 
 
 /* helper functions */
 
 
 static void
-librdf_free_storage_factory(librdf_storage_factory* factory)
-{
-  if(factory->name)
-    LIBRDF_FREE(librdf_storage_factory, factory->name);
-  if(factory->label)
-    LIBRDF_FREE(librdf_storage_factory, factory->label);
-  LIBRDF_FREE(librdf_storage_factory, factory);
+librdf_free_storage_factory(librdf_storage_factory *factory) {
+    if (factory->name)
+        LIBRDF_FREE(librdf_storage_factory, factory->name);
+    if (factory->label)
+        LIBRDF_FREE(librdf_storage_factory, factory->label);
+    LIBRDF_FREE(librdf_storage_factory, factory);
 }
 
 
 #ifdef MODULAR_LIBRDF
 
 static int
-ltdl_module_callback(const char* filename, void* data)
-{
-  librdf_world* world = (librdf_world*)data;
-  const char* name = librdf_basename(filename);
-  size_t name_len = strlen(name);
-  lt_dlhandle module;
+ltdl_module_callback(const char *filename, void *data) {
+    librdf_world *world = (librdf_world *) data;
+    const char *name = librdf_basename(filename);
+    size_t name_len = strlen(name);
+    lt_dlhandle module;
 
-  /* Currently require that storage module files to be loaded start
-   * with the string "librdf_storage_".
-   */
+    /* Currently require that storage module files to be loaded start
+     * with the string "librdf_storage_".
+     */
 
-  if(name_len < 15 || strncmp(name, "librdf_storage_", 15)) {
+    if (name_len < 15 || strncmp(name, "librdf_storage_", 15)) {
 #if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 2
-    LIBRDF_DEBUG3("not storage module file %s (%s)\n", name, filename);
+        LIBRDF_DEBUG3("not storage module file %s (%s)\n", name, filename);
 #endif
-    return 0;
-  }
+        return 0;
+    }
 
-  /*
-   * When compiling and testing against uninstalled modules, not all
-   * files in .libs that contain librdf_storage are storage modules.
-   * (Relevant when running "make check" locally before installing
-   * the modules.)
-   *
-   * This check when debugging LIBRDF_DEBUG attempts to load .so
-   * files when running in the source tree.  This is likely very
-   * libtool and unix specific.
-   *
-   * Rules:
-   * - Must end in '.so' or have no suffix (no . in last 3 chars)
-   * - Must not include "-" (libtool intermediate file such as
-   *   librdf_storage_mysql_la-rdf_storage_mysql)
-   */
+    /*
+     * When compiling and testing against uninstalled modules, not all
+     * files in .libs that contain librdf_storage are storage modules.
+     * (Relevant when running "make check" locally before installing
+     * the modules.)
+     *
+     * This check when debugging LIBRDF_DEBUG attempts to load .so
+     * files when running in the source tree.  This is likely very
+     * libtool and unix specific.
+     *
+     * Rules:
+     * - Must end in '.so' or have no suffix (no . in last 3 chars)
+     * - Must not include "-" (libtool intermediate file such as
+     *   librdf_storage_mysql_la-rdf_storage_mysql)
+     */
 #ifdef LIBRDF_DEBUG
-  if(!(
-       strncmp(&name[name_len-3], ".so", 3) ||
-       (name[name_len-3]!='.' && name[name_len-2]!='.' && name[name_len-1]!='.')
-       )
-     || strchr(name, '-')
-     ) {
+    if(!(
+         strncmp(&name[name_len-3], ".so", 3) ||
+         (name[name_len-3]!='.' && name[name_len-2]!='.' && name[name_len-1]!='.')
+         )
+       || strchr(name, '-')
+       ) {
 #if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 2
-    LIBRDF_DEBUG3("not storage module file %s (%s)\n", name, filename);
+      LIBRDF_DEBUG3("not storage module file %s (%s)\n", name, filename);
 #endif
-    return 0;
-  }
+      return 0;
+    }
 
 #if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 1
-  LIBRDF_DEBUG3("LOADING storage module file %s (%s)\n", name, filename);
+    LIBRDF_DEBUG3("LOADING storage module file %s (%s)\n", name, filename);
 #endif
 
 #endif
 
-  module = librdf_storage_load_module(world, filename,
-                                      "librdf_storage_module_register_factory");
-  if(module)
-    raptor_sequence_push(world->storage_modules, module);
+    module = librdf_storage_load_module(world, filename,
+                                        "librdf_storage_module_register_factory");
+    if (module)
+        raptor_sequence_push(world->storage_modules, module);
 
-  return 0;
+    return 0;
 }
 
 
@@ -241,24 +250,23 @@ ltdl_module_callback(const char* filename, void* data)
  * INTERNAL - Load and initialize/register all installed storage modules
  **/
 void
-librdf_storage_load_all_modules(librdf_world *world)
-{
-  char const *path;
+librdf_storage_load_all_modules(librdf_world *world) {
+    char const *path;
 
-  /* Figure out a path to load modules from */
+    /* Figure out a path to load modules from */
 
-  /* Try environment variable first - required e.g. for local "make check" tests before install */
-  path = getenv("REDLAND_MODULE_PATH");
+    /* Try environment variable first - required e.g. for local "make check" tests before install */
+    path = getenv("REDLAND_MODULE_PATH");
 
-  /* If path defined in env but empty, use libtool default paths (e.g. DYLD_LIBRARY_PATH) */
-  if (path && !*path)
-    path = NULL;
+    /* If path defined in env but empty, use libtool default paths (e.g. DYLD_LIBRARY_PATH) */
+    if (path && !*path)
+        path = NULL;
 
-  /* If path not defined in env, use libtool user-specified paths (install dir) */
-  else if (!path)
-    path = lt_dlgetsearchpath();
+        /* If path not defined in env, use libtool user-specified paths (install dir) */
+    else if (!path)
+        path = lt_dlgetsearchpath();
 
-  lt_dlforeachfile(path, ltdl_module_callback, world);
+    lt_dlforeachfile(path, ltdl_module_callback, world);
 }
 
 
@@ -272,38 +280,38 @@ librdf_storage_load_all_modules(librdf_world *world)
  **/
 static lt_dlhandle
 librdf_storage_load_module(librdf_world *world,
-                           const char* lib_name,
-                           const char* init_func_name)
-{
-  typedef void init_func_t(librdf_world*);
-  init_func_t* init;
-  
-  lt_dlhandle module = lt_dlopenext(lib_name);
+                           const char *lib_name,
+                           const char *init_func_name) {
+    typedef void init_func_t(librdf_world *);
+    init_func_t *init;
 
-  if(module) {
-    const lt_dlinfo* info = lt_dlgetinfo(module);
-    
-    if(info->ref_count > 1) {
-      /* Already loaded so ignore */
-      lt_dlclose(module);
-      module = NULL;
-      return module;
-    }
+    lt_dlhandle module = lt_dlopenext(lib_name);
 
-    init = (init_func_t*)lt_dlsym(module, init_func_name);
-    if(init) {
-      init(world);
+    if (module) {
+        const lt_dlinfo *info = lt_dlgetinfo(module);
+
+        if (info->ref_count > 1) {
+            /* Already loaded so ignore */
+            lt_dlclose(module);
+            module = NULL;
+            return module;
+        }
+
+        init = (init_func_t *) lt_dlsym(module, init_func_name);
+        if (init) {
+            init(world);
+        } else {
+            LIBRDF_DEBUG2("Failed to initialize storage module %s\n", lib_name);
+            lt_dlclose(module);
+            module = NULL;
+        }
     } else {
-      LIBRDF_DEBUG2("Failed to initialize storage module %s\n", lib_name);
-      lt_dlclose(module);
-      module = NULL;
+        LIBRDF_DEBUG2("Failed to load storage module %s\n", lib_name);
     }
-  } else {
-    LIBRDF_DEBUG2("Failed to load storage module %s\n", lib_name);
-  }
 
-  return module;
+    return module;
 }
+
 #endif
 
 
@@ -325,96 +333,95 @@ librdf_storage_load_module(librdf_world *world,
  **/
 REDLAND_EXTERN_C
 int
-librdf_storage_register_factory(librdf_world* world,
+librdf_storage_register_factory(librdf_world *world,
                                 const char *name, const char *label,
-                                void (*factory) (librdf_storage_factory*)) 
-{
-  librdf_storage_factory *storage;
-  int i;
+                                void (*factory)(librdf_storage_factory *)) {
+    librdf_storage_factory *storage;
+    int i;
 
-  if(!world)
-    return 1;
-  
-  if(!name || !label || !factory){
-    librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
-               "failed to register storage with missing parameters to librdf_storage_register_factory()");
-    return 1;
-  }
-  
-  librdf_world_open(world);
+    if (!world)
+        return 1;
+
+    if (!name || !label || !factory) {
+        librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
+                   "failed to register storage with missing parameters to librdf_storage_register_factory()");
+        return 1;
+    }
+
+    librdf_world_open(world);
 
 #if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 1
-  LIBRDF_DEBUG2("Received registration for storage %s\n", name);
+    LIBRDF_DEBUG2("Received registration for storage %s\n", name);
 #endif
 
-  if(!world->storages) {
-    world->storages = raptor_new_sequence((raptor_data_free_handler)librdf_free_storage_factory, NULL);
+    if (!world->storages) {
+        world->storages = raptor_new_sequence((raptor_data_free_handler) librdf_free_storage_factory, NULL);
 
-    if(!world->storages)
-      goto failed;
-  }
-
-  for(i=0;
-      (storage=(librdf_storage_factory*)raptor_sequence_get_at(world->storages, i));
-      i++) {
-    if(!strcmp(storage->name, name)) {
-#if 1
-      /* Choosing to ignore this error since it probably is caused by
-       * scanning a directory of storage modules and finding a .la
-       * file (libtool) as well as the .so (module) and trying to
-       * load the same module twice.
-       *
-       * See bug http://bugs.librdf.org/mantis/view.php?id=460 for
-       * context
-       */
-      return 0;
-#else
-      librdf_log(world,
-                 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
-                 "storage %s already registered", storage->name);
-      return 1;
-#endif
+        if (!world->storages)
+            goto failed;
     }
-  }
 
-  storage = LIBRDF_CALLOC(librdf_storage_factory*, 1, sizeof(*storage));
-  if(!storage)
-    goto failed;
+    for (i = 0;
+         (storage = (librdf_storage_factory *) raptor_sequence_get_at(world->storages, i));
+         i++) {
+        if (!strcmp(storage->name, name)) {
+#if 1
+            /* Choosing to ignore this error since it probably is caused by
+             * scanning a directory of storage modules and finding a .la
+             * file (libtool) as well as the .so (module) and trying to
+             * load the same module twice.
+             *
+             * See bug http://bugs.librdf.org/mantis/view.php?id=460 for
+             * context
+             */
+            return 0;
+#else
+            librdf_log(world,
+                       0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
+                       "storage %s already registered", storage->name);
+            return 1;
+#endif
+        }
+    }
 
-  storage->name = LIBRDF_MALLOC(char*, strlen(name) + 1);
-  if(!storage->name)
-    goto tidy;
-  strcpy(storage->name, name);
+    storage = LIBRDF_CALLOC(librdf_storage_factory*, 1, sizeof(*storage));
+    if (!storage)
+        goto failed;
 
-  storage->label = LIBRDF_MALLOC(char*, strlen(label) + 1);
-  if(!storage->label)
-    goto tidy;
-  strcpy(storage->label, label);
+    storage->name = LIBRDF_MALLOC(char*, strlen(name) + 1);
+    if (!storage->name)
+        goto tidy;
+    strcpy(storage->name, name);
 
-  /* Call the storage registration function on the new object */
-  (*factory)(storage);
+    storage->label = LIBRDF_MALLOC(char*, strlen(label) + 1);
+    if (!storage->label)
+        goto tidy;
+    strcpy(storage->label, label);
 
-  if(storage->version < LIBRDF_STORAGE_MIN_INTERFACE_VERSION ||
-     storage->version > LIBRDF_STORAGE_MAX_INTERFACE_VERSION) {
-    librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
-               "storage %s interface version %d is not in supported range %d-%d",
-               name, storage->version,
-               LIBRDF_STORAGE_MIN_INTERFACE_VERSION,
-               LIBRDF_STORAGE_MAX_INTERFACE_VERSION);
-    goto tidy;
-  }
-  
-  if(raptor_sequence_push(world->storages, storage))
-    goto failed;
+    /* Call the storage registration function on the new object */
+    (*factory)(storage);
 
-  return 0;
+    if (storage->version < LIBRDF_STORAGE_MIN_INTERFACE_VERSION ||
+        storage->version > LIBRDF_STORAGE_MAX_INTERFACE_VERSION) {
+        librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
+                   "storage %s interface version %d is not in supported range %d-%d",
+                   name, storage->version,
+                   LIBRDF_STORAGE_MIN_INTERFACE_VERSION,
+                   LIBRDF_STORAGE_MAX_INTERFACE_VERSION);
+        goto tidy;
+    }
 
-  tidy:
-  librdf_free_storage_factory(storage);
+    if (raptor_sequence_push(world->storages, storage))
+        goto failed;
 
-  failed:
-  LIBRDF_FATAL1(world, LIBRDF_FROM_STORAGE, "Registering storage failed");
-  return 1;
+    return 0;
+
+    tidy:
+    librdf_free_storage_factory(storage);
+
+    failed:
+    LIBRDF_FATAL1(world, LIBRDF_FROM_STORAGE, "Registering storage failed");
+    return 1;
 }
 
 
@@ -427,33 +434,32 @@ librdf_storage_register_factory(librdf_world* world,
  * 
  * Return value: the factory object or NULL if there is no such factory
  **/
-librdf_storage_factory*
-librdf_get_storage_factory(librdf_world* world, const char *name) 
-{
-  int i;
+librdf_storage_factory *
+librdf_get_storage_factory(librdf_world *world, const char *name) {
+    int i;
 
-  librdf_storage_factory *factory;
+    librdf_storage_factory *factory;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  /* use "memory" if nothing is specified (FIXME: probably not the best choice) */
-  if (!name)
-    name = "memory";
+    /* use "memory" if nothing is specified (FIXME: probably not the best choice) */
+    if (!name)
+        name = "memory";
 
-  /* search for factory */
-  for(i=0;
-      (factory=(librdf_storage_factory*)raptor_sequence_get_at(world->storages, i));
-      i++) {
-    if(!strcmp(factory->name, name))
-      break;
-  }
+    /* search for factory */
+    for (i = 0;
+         (factory = (librdf_storage_factory *) raptor_sequence_get_at(world->storages, i));
+         i++) {
+        if (!strcmp(factory->name, name))
+            break;
+    }
 
-  if(!factory) {
-    LIBRDF_DEBUG2("No storage with name %s found\n", name);
-    return NULL;
-  }
+    if (!factory) {
+        LIBRDF_DEBUG2("No storage with name %s found\n", name);
+        return NULL;
+    }
 
-  return factory;
+    return factory;
 }
 
 
@@ -469,27 +475,26 @@ librdf_get_storage_factory(librdf_world* world, const char *name)
  * Return value: non 0 on failure of if counter is out of range
  **/
 int
-librdf_storage_enumerate(librdf_world* world,
+librdf_storage_enumerate(librdf_world *world,
                          const unsigned int counter,
-                         const char **name, const char **label)
-{
-  librdf_storage_factory *factory;
-  int ioffset = LIBRDF_GOOD_CAST(int, counter);
-  
-  librdf_world_open(world);
+                         const char **name, const char **label) {
+    librdf_storage_factory *factory;
+    int ioffset = LIBRDF_GOOD_CAST(int, counter);
 
-  factory = (librdf_storage_factory*)raptor_sequence_get_at(world->storages,
-                                                            ioffset);
-  if(!factory)
-    return 1;
-  
-  if(name)
-    *name = factory->name;
+    librdf_world_open(world);
 
-  if(label)
-    *label = factory->label;
+    factory = (librdf_storage_factory *) raptor_sequence_get_at(world->storages,
+                                                                ioffset);
+    if (!factory)
+        return 1;
 
-  return 0;
+    if (name)
+        *name = factory->name;
+
+    if (label)
+        *label = factory->label;
+
+    return 0;
 }
 
 
@@ -508,39 +513,38 @@ librdf_storage_enumerate(librdf_world* world,
  * Return value: a new #librdf_storage object or NULL on failure
  *
  */
-librdf_storage*
-librdf_new_storage(librdf_world *world, 
-                   const char *storage_name, const char *name, 
-                   const char *options_string)
-{
-  librdf_storage_factory* factory;
-  librdf_hash* options_hash;
-  
-  librdf_world_open(world);
+librdf_storage *
+librdf_new_storage(librdf_world *world,
+                   const char *storage_name, const char *name,
+                   const char *options_string) {
+    librdf_storage_factory *factory;
+    librdf_hash *options_hash;
 
-  factory = librdf_get_storage_factory(world, storage_name);
-  if(!factory) {
-    librdf_log(world, 
-               0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
-               "storage '%s' not found", storage_name);
-    return NULL;
-  }
+    librdf_world_open(world);
 
-  options_hash=librdf_new_hash(world, NULL);
-  if(!options_hash)
-    return NULL;
+    factory = librdf_get_storage_factory(world, storage_name);
+    if (!factory) {
+        librdf_log(world,
+                   0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
+                   "storage '%s' not found", storage_name);
+        return NULL;
+    }
 
-  if(librdf_hash_open(options_hash, NULL, 0, 1, 1, NULL)) {
-    librdf_free_hash(options_hash);
-    return NULL;
-  }
-  
-  if(librdf_hash_from_string(options_hash, options_string)) {
-    librdf_free_hash(options_hash);
-    return NULL;
-  }
+    options_hash = librdf_new_hash(world, NULL);
+    if (!options_hash)
+        return NULL;
 
-  return librdf_new_storage_from_factory(world, factory, name, options_hash);
+    if (librdf_hash_open(options_hash, NULL, 0, 1, 1, NULL)) {
+        librdf_free_hash(options_hash);
+        return NULL;
+    }
+
+    if (librdf_hash_from_string(options_hash, options_string)) {
+        librdf_free_hash(options_hash);
+        return NULL;
+    }
+
+    return librdf_new_storage_from_factory(world, factory, name, options_hash);
 }
 
 
@@ -558,34 +562,33 @@ librdf_new_storage(librdf_world *world,
  * Return value: a new #librdf_storage object or NULL on failure
  *
  */
-librdf_storage*
-librdf_new_storage_with_options(librdf_world *world, 
-                                const char *storage_name, const char *name, 
-                                librdf_hash *options)
-{
-  librdf_storage_factory* factory;
-  librdf_hash* options_hash;
-  
-  librdf_world_open(world);
+librdf_storage *
+librdf_new_storage_with_options(librdf_world *world,
+                                const char *storage_name, const char *name,
+                                librdf_hash *options) {
+    librdf_storage_factory *factory;
+    librdf_hash *options_hash;
 
-  factory = librdf_get_storage_factory(world, storage_name);
-  if(!factory) {
-    librdf_log(world, 
-               0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
-               "storage '%s' not found", name);
-    return NULL;
-  }
+    librdf_world_open(world);
 
-  options_hash=librdf_new_hash_from_hash(options);
-  if(!options_hash)
-    return NULL;
+    factory = librdf_get_storage_factory(world, storage_name);
+    if (!factory) {
+        librdf_log(world,
+                   0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
+                   "storage '%s' not found", name);
+        return NULL;
+    }
 
-  if(librdf_hash_open(options_hash, NULL, 0, 1, 1, NULL)) {
-    librdf_free_hash(options_hash);
-    return NULL;
-  }
-  
-  return librdf_new_storage_from_factory(world, factory, name, options_hash);
+    options_hash = librdf_new_hash_from_hash(options);
+    if (!options_hash)
+        return NULL;
+
+    if (librdf_hash_open(options_hash, NULL, 0, 1, 1, NULL)) {
+        librdf_free_hash(options_hash);
+        return NULL;
+    }
+
+    return librdf_new_storage_from_factory(world, factory, name, options_hash);
 }
 
 
@@ -605,47 +608,46 @@ librdf_new_storage_with_options(librdf_world *world,
  * Return value: a new #librdf_storage object or NULL on failure
  *
  */
-librdf_storage*
-librdf_new_storage_from_storage(librdf_storage* old_storage) 
-{
-  librdf_storage* new_storage;
+librdf_storage *
+librdf_new_storage_from_storage(librdf_storage *old_storage) {
+    librdf_storage *new_storage;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(old_storage, librdf_storage, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(old_storage, librdf_storage, NULL);
 
-  if(!old_storage->factory->clone) {
-    librdf_log(old_storage->world,
-               0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
-               "clone method not implemented for storage factory %s", 
-               old_storage->factory->name);
-    return NULL;
-  }
+    if (!old_storage->factory->clone) {
+        librdf_log(old_storage->world,
+                   0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
+                   "clone method not implemented for storage factory %s",
+                   old_storage->factory->name);
+        return NULL;
+    }
 
-  new_storage = LIBRDF_CALLOC(librdf_storage*, 1, sizeof(*new_storage));
-  if(!new_storage)
-    return NULL;
-  
-  /* set usage to 1 early to allow cleanup with librdf_free_storage() */
-  new_storage->usage=1;
+    new_storage = LIBRDF_CALLOC(librdf_storage*, 1, sizeof(*new_storage));
+    if (!new_storage)
+        return NULL;
 
-  new_storage->instance=NULL;
-  
-  new_storage->world=old_storage->world;
+    /* set usage to 1 early to allow cleanup with librdf_free_storage() */
+    new_storage->usage = 1;
 
-  /* do this now so librdf_free_storage won't call new factory on
-   * partially copied storage 
-   */
-  new_storage->factory=old_storage->factory;
+    new_storage->instance = NULL;
 
-  /* clone is assumed to do leave the new storage in the same state
-   * after an init() method on an existing storage - i.e ready to
-   * use but closed.
-   */
-  if(old_storage->factory->clone(new_storage, old_storage)) {
-    librdf_free_storage(new_storage);
-    return NULL;
-  }
- 
-  return new_storage;
+    new_storage->world = old_storage->world;
+
+    /* do this now so librdf_free_storage won't call new factory on
+     * partially copied storage
+     */
+    new_storage->factory = old_storage->factory;
+
+    /* clone is assumed to do leave the new storage in the same state
+     * after an init() method on an existing storage - i.e ready to
+     * use but closed.
+     */
+    if (old_storage->factory->clone(new_storage, old_storage)) {
+        librdf_free_storage(new_storage);
+        return NULL;
+    }
+
+    return new_storage;
 }
 
 
@@ -664,43 +666,42 @@ librdf_new_storage_from_storage(librdf_storage* old_storage)
  * Return value: a new #librdf_storage object or NULL on failure
  *
  */
-librdf_storage*
+librdf_storage *
 librdf_new_storage_from_factory(librdf_world *world,
-                                librdf_storage_factory* factory,
+                                librdf_storage_factory *factory,
                                 const char *name,
-                                librdf_hash* options)
-{
-  librdf_storage* storage;
+                                librdf_hash *options) {
+    librdf_storage *storage;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(factory, librdf_storage_factory, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(factory, librdf_storage_factory, NULL);
 
-  if(!factory) {
-    librdf_free_hash(options);
-    return NULL;
-  }
-  
-  storage = LIBRDF_CALLOC(librdf_storage*, 1, sizeof(*storage));
-  if(!storage) {
-    librdf_free_hash(options);
-    return NULL;
-  }
-  
-  storage->world=world;
+    if (!factory) {
+        librdf_free_hash(options);
+        return NULL;
+    }
 
-  /* set usage to 1 early to allow cleanup with librdf_free_storage() */
-  storage->usage=1; 
-  
-  storage->instance=NULL;
-  storage->factory=factory;
+    storage = LIBRDF_CALLOC(librdf_storage*, 1, sizeof(*storage));
+    if (!storage) {
+        librdf_free_hash(options);
+        return NULL;
+    }
 
-  if(factory->init(storage, name, options)) {
-    librdf_free_storage(storage);
-    return NULL;
-  }
-  
-  return storage;
+    storage->world = world;
+
+    /* set usage to 1 early to allow cleanup with librdf_free_storage() */
+    storage->usage = 1;
+
+    storage->instance = NULL;
+    storage->factory = factory;
+
+    if (factory->init(storage, name, options)) {
+        librdf_free_storage(storage);
+        return NULL;
+    }
+
+    return storage;
 }
 
 
@@ -711,18 +712,17 @@ librdf_new_storage_from_factory(librdf_world *world,
  * Destructor - destroy a #librdf_storage object.
  **/
 void
-librdf_free_storage(librdf_storage* storage) 
-{
-  if(!storage)
-    return;
-  
-  if(--storage->usage)
-    return;
+librdf_free_storage(librdf_storage *storage) {
+    if (!storage)
+        return;
 
-  if(storage->factory)
-    storage->factory->terminate(storage);
+    if (--storage->usage)
+        return;
 
-  LIBRDF_FREE(librdf_storage, storage);
+    if (storage->factory)
+        storage->factory->terminate(storage);
+
+    LIBRDF_FREE(librdf_storage, storage);
 }
 
 
@@ -735,9 +735,8 @@ librdf_free_storage(librdf_storage* storage)
  * This function is intended to be internal to librdf storage modules.
  **/
 void
-librdf_storage_add_reference(librdf_storage *storage)
-{
-  storage->usage++;
+librdf_storage_add_reference(librdf_storage *storage) {
+    storage->usage++;
 }
 
 
@@ -750,9 +749,8 @@ librdf_storage_add_reference(librdf_storage *storage)
  * This function is intended to be internal to librdf storage modules.
  **/
 void
-librdf_storage_remove_reference(librdf_storage *storage)
-{
-  librdf_free_storage(storage);
+librdf_storage_remove_reference(librdf_storage *storage) {
+    librdf_free_storage(storage);
 }
 
 
@@ -773,9 +771,8 @@ librdf_storage_remove_reference(librdf_storage *storage)
  **/
 void
 librdf_storage_set_instance(librdf_storage *storage,
-                            librdf_storage_instance instance)
-{
-  storage->instance = instance;
+                            librdf_storage_instance instance) {
+    storage->instance = instance;
 }
 
 
@@ -788,9 +785,8 @@ librdf_storage_set_instance(librdf_storage *storage,
  * Return value: opaque instance data for this storage
  **/
 librdf_storage_instance
-librdf_storage_get_instance(librdf_storage *storage)
-{
-  return storage->instance;
+librdf_storage_get_instance(librdf_storage *storage) {
+    return storage->instance;
 }
 
 
@@ -802,10 +798,9 @@ librdf_storage_get_instance(librdf_storage *storage)
  *
  * Return value: world object for this storage
  **/
-librdf_world*
-librdf_storage_get_world(librdf_storage *storage)
-{
-  return storage->world;
+librdf_world *
+librdf_storage_get_world(librdf_storage *storage) {
+    return storage->world;
 }
 
 
@@ -823,11 +818,10 @@ librdf_storage_get_world(librdf_storage *storage)
  * Return value: non 0 on failure
  **/
 int
-librdf_storage_open(librdf_storage* storage, librdf_model* model) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
+librdf_storage_open(librdf_storage *storage, librdf_model *model) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
 
-  return storage->factory->open(storage, model);
+    return storage->factory->open(storage, model);
 }
 
 
@@ -840,11 +834,10 @@ librdf_storage_open(librdf_storage* storage, librdf_model* model)
  * Return value: non 0 on failure
  **/
 int
-librdf_storage_close(librdf_storage* storage)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
+librdf_storage_close(librdf_storage *storage) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
 
-  return storage->factory->close(storage);
+    return storage->factory->close(storage);
 }
 
 
@@ -857,11 +850,10 @@ librdf_storage_close(librdf_storage* storage)
  * Return value: The number of statements or < 0 if cannot be determined
  **/
 int
-librdf_storage_size(librdf_storage* storage) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, -1);
+librdf_storage_size(librdf_storage *storage) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, -1);
 
-  return storage->factory->size(storage);
+    return storage->factory->size(storage);
 }
 
 
@@ -884,27 +876,26 @@ librdf_storage_size(librdf_storage* storage)
  * Return value: non 0 on failure, <0 on error, >0 if statement was illegal
  **/
 int
-librdf_storage_add_statement(librdf_storage* storage,
-                             librdf_statement* statement) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
+librdf_storage_add_statement(librdf_storage *storage,
+                             librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
 
-  /* subject can be a URI or blank node */
-  if(!librdf_node_is_resource(statement->subject) &&
-     !librdf_node_is_blank(statement->subject))
-    return 1;
-  
-  /* predicate can only be a URI */
-  if(!librdf_node_is_resource(statement->predicate))
-     return 1;
+    /* subject can be a URI or blank node */
+    if (!librdf_node_is_resource(statement->subject) &&
+        !librdf_node_is_blank(statement->subject))
+        return 1;
 
-  /* object can be any node - no check needed */
+    /* predicate can only be a URI */
+    if (!librdf_node_is_resource(statement->predicate))
+        return 1;
 
-  if(storage->factory->add_statement)
-    return storage->factory->add_statement(storage, statement);
+    /* object can be any node - no check needed */
 
-  return -1;
+    if (storage->factory->add_statement)
+        return storage->factory->add_statement(storage, statement);
+
+    return -1;
 }
 
 
@@ -921,36 +912,34 @@ librdf_storage_add_statement(librdf_storage* storage,
  * Return value: non 0 on failure
  **/
 int
-librdf_storage_add_statements(librdf_storage* storage,
-                              librdf_stream* statement_stream) 
-{
-  int status=0;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement_stream, librdf_stream, 1);
+librdf_storage_add_statements(librdf_storage *storage,
+                              librdf_stream *statement_stream) {
+    int status = 0;
 
-  if(storage->factory->add_statements)
-    return storage->factory->add_statements(storage, statement_stream);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement_stream, librdf_stream, 1);
 
-  while(!librdf_stream_end(statement_stream)) {
-    librdf_statement* statement=librdf_stream_get_object(statement_stream);
+    if (storage->factory->add_statements)
+        return storage->factory->add_statements(storage, statement_stream);
 
-    if(statement) {
-      status=librdf_storage_add_statement(storage, statement);
-      if(status > 0)
-        /* just skip illegal statements */
-        status=0;
+    while (!librdf_stream_end(statement_stream)) {
+        librdf_statement *statement = librdf_stream_get_object(statement_stream);
+
+        if (statement) {
+            status = librdf_storage_add_statement(storage, statement);
+            if (status > 0)
+                /* just skip illegal statements */
+                status = 0;
+        } else
+            status = 1;
+
+        if (status)
+            break;
+
+        librdf_stream_next(statement_stream);
     }
-    else
-      status=1;
 
-    if(status)
-      break;
-
-    librdf_stream_next(statement_stream);
-  }
-  
-  return status;
+    return status;
 }
 
 
@@ -964,15 +953,14 @@ librdf_storage_add_statements(librdf_storage* storage,
  * Return value: non 0 on failure
  **/
 int
-librdf_storage_remove_statement(librdf_storage* storage, 
-                                librdf_statement* statement) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
+librdf_storage_remove_statement(librdf_storage *storage,
+                                librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
 
-  if(storage->factory->remove_statement)
-    return storage->factory->remove_statement(storage, statement);
-  return 1;
+    if (storage->factory->remove_statement)
+        return storage->factory->remove_statement(storage, statement);
+    return 1;
 }
 
 
@@ -986,16 +974,15 @@ librdf_storage_remove_statement(librdf_storage* storage,
  * Return value: non 0 if the storage contains the statement (>0 if illegal statement)
  **/
 int
-librdf_storage_contains_statement(librdf_storage* storage,
-                                  librdf_statement* statement) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 0);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
+librdf_storage_contains_statement(librdf_storage *storage,
+                                  librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
 
-  if(!librdf_statement_is_complete(statement))
-    return 1;
+    if (!librdf_statement_is_complete(statement))
+        return 1;
 
-  return storage->factory->contains_statement(storage, statement) ? -1 : 0;
+    return storage->factory->contains_statement(storage, statement) ? -1 : 0;
 }
 
 
@@ -1007,10 +994,9 @@ librdf_storage_contains_statement(librdf_storage* storage,
  * 
  * Return value: #librdf_stream of statements or NULL on failure
  **/
-librdf_stream*
-librdf_storage_serialise(librdf_storage* storage) 
-{
-  return storage->factory->serialise(storage);
+librdf_stream *
+librdf_storage_serialise(librdf_storage *storage) {
+    return storage->factory->serialise(storage);
 }
 
 
@@ -1027,170 +1013,165 @@ librdf_storage_serialise(librdf_storage* storage)
  * 
  * Return value:  #librdf_stream of matching statements (may be empty) or NULL on failure
  **/
-librdf_stream*
-librdf_storage_find_statements(librdf_storage* storage,
-                               librdf_statement* statement) 
-{
-  librdf_node *subject, *predicate, *object;
-  librdf_iterator *iterator;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
+librdf_stream *
+librdf_storage_find_statements(librdf_storage *storage,
+                               librdf_statement *statement) {
+    librdf_node *subject, *predicate, *object;
+    librdf_iterator *iterator;
 
-  subject=librdf_statement_get_subject(statement);
-  predicate=librdf_statement_get_predicate(statement);
-  object=librdf_statement_get_object(statement);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
 
-  /* try to pick the most efficient storage back end */
+    subject = librdf_statement_get_subject(statement);
+    predicate = librdf_statement_get_predicate(statement);
+    object = librdf_statement_get_object(statement);
 
-  /* only subject/source field blank -> use find_sources */
-  if(storage->factory->find_sources && !subject && predicate && object) {
-    iterator=storage->factory->find_sources(storage, predicate, object);
-    if(iterator)
-      return librdf_new_stream_from_node_iterator(iterator, statement,
-                                                  LIBRDF_STATEMENT_SUBJECT);
-    return NULL;
-  }
-  
-  /* only predicate/arc field blank -> use find_arcs */
-  if(storage->factory->find_arcs && subject && !predicate && object) {
-    iterator=storage->factory->find_arcs(storage, subject, object);
-    if(iterator)
-      return librdf_new_stream_from_node_iterator(iterator, statement,
-                                                  LIBRDF_STATEMENT_PREDICATE);
-    return NULL;
-  }
-  
-  /* only object/target field blank -> use find_targets */
-  if(storage->factory->find_targets && subject && predicate && !object) {
-    iterator=storage->factory->find_targets(storage, subject, predicate);
-    if(iterator)
-      return librdf_new_stream_from_node_iterator(iterator, statement,
-                                                  LIBRDF_STATEMENT_OBJECT);
-    return NULL;
-  }
-  
-  return storage->factory->find_statements(storage, statement);
+    /* try to pick the most efficient storage back end */
+
+    /* only subject/source field blank -> use find_sources */
+    if (storage->factory->find_sources && !subject && predicate && object) {
+        iterator = storage->factory->find_sources(storage, predicate, object);
+        if (iterator)
+            return librdf_new_stream_from_node_iterator(iterator, statement,
+                                                        LIBRDF_STATEMENT_SUBJECT);
+        return NULL;
+    }
+
+    /* only predicate/arc field blank -> use find_arcs */
+    if (storage->factory->find_arcs && subject && !predicate && object) {
+        iterator = storage->factory->find_arcs(storage, subject, object);
+        if (iterator)
+            return librdf_new_stream_from_node_iterator(iterator, statement,
+                                                        LIBRDF_STATEMENT_PREDICATE);
+        return NULL;
+    }
+
+    /* only object/target field blank -> use find_targets */
+    if (storage->factory->find_targets && subject && predicate && !object) {
+        iterator = storage->factory->find_targets(storage, subject, predicate);
+        if (iterator)
+            return librdf_new_stream_from_node_iterator(iterator, statement,
+                                                        LIBRDF_STATEMENT_OBJECT);
+        return NULL;
+    }
+
+    return storage->factory->find_statements(storage, statement);
 }
 
 
 typedef struct {
-  librdf_storage *storage;
-  librdf_stream *stream;
-  librdf_statement *partial_statement;
-  librdf_statement_part want;
-  librdf_node *object_node;
-  librdf_node *context_node;
+    librdf_storage *storage;
+    librdf_stream *stream;
+    librdf_statement *partial_statement;
+    librdf_statement_part want;
+    librdf_node *object_node;
+    librdf_node *context_node;
 } librdf_storage_stream_to_node_iterator_context;
 
 
 static int
-librdf_storage_stream_to_node_iterator_is_end(void* iterator)
-{
-  librdf_storage_stream_to_node_iterator_context* context=(librdf_storage_stream_to_node_iterator_context*)iterator;
+librdf_storage_stream_to_node_iterator_is_end(void *iterator) {
+    librdf_storage_stream_to_node_iterator_context *context = (librdf_storage_stream_to_node_iterator_context *) iterator;
 
-  return librdf_stream_end(context->stream);
+    return librdf_stream_end(context->stream);
 }
 
 
 static int
-librdf_storage_stream_to_node_iterator_next_method(void* iterator) 
-{
-  librdf_storage_stream_to_node_iterator_context* context=(librdf_storage_stream_to_node_iterator_context*)iterator;
+librdf_storage_stream_to_node_iterator_next_method(void *iterator) {
+    librdf_storage_stream_to_node_iterator_context *context = (librdf_storage_stream_to_node_iterator_context *) iterator;
 
-  if(context->object_node) {
-    librdf_free_node(context->object_node);
-    context->object_node=NULL;
-  }
-  if(context->context_node) {
-    librdf_free_node(context->context_node);
-    context->context_node=NULL;
-  }
+    if (context->object_node) {
+        librdf_free_node(context->object_node);
+        context->object_node = NULL;
+    }
+    if (context->context_node) {
+        librdf_free_node(context->context_node);
+        context->context_node = NULL;
+    }
 
-  return librdf_stream_next(context->stream);
+    return librdf_stream_next(context->stream);
 }
 
 
-static void*
-librdf_storage_stream_to_node_iterator_get_method(void* iterator, int flags) 
-{
-  librdf_storage_stream_to_node_iterator_context* context=(librdf_storage_stream_to_node_iterator_context*)iterator;
-  librdf_node* node;
-  librdf_statement* statement=librdf_stream_get_object(context->stream);
+static void *
+librdf_storage_stream_to_node_iterator_get_method(void *iterator, int flags) {
+    librdf_storage_stream_to_node_iterator_context *context = (librdf_storage_stream_to_node_iterator_context *) iterator;
+    librdf_node *node;
+    librdf_statement *statement = librdf_stream_get_object(context->stream);
 
-  if(!statement)
-    return NULL;
+    if (!statement)
+        return NULL;
 
-  switch(flags) {
-    case LIBRDF_ITERATOR_GET_METHOD_GET_OBJECT:
+    switch (flags) {
+        case LIBRDF_ITERATOR_GET_METHOD_GET_OBJECT:
 
-      if(!context->object_node) {
-        switch(context->want) {
-          case LIBRDF_STATEMENT_SUBJECT: /* SOURCES (subjects) */
-            node=librdf_statement_get_subject(statement);
+            if (!context->object_node) {
+                switch (context->want) {
+                    case LIBRDF_STATEMENT_SUBJECT: /* SOURCES (subjects) */
+                        node = librdf_statement_get_subject(statement);
+                        break;
+
+                    case LIBRDF_STATEMENT_PREDICATE: /* ARCS (predicates) */
+                        node = librdf_statement_get_predicate(statement);
+                        break;
+
+                    case LIBRDF_STATEMENT_OBJECT: /* TARGETS (objects) */
+                        node = librdf_statement_get_object(statement);
+                        break;
+
+                    case LIBRDF_STATEMENT_ALL:
+                    default: /* error */
+                        librdf_log(context->storage->world,
+                                   0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
+                                   "Unknown statement part %d", context->want);
+                        node = NULL;
+                }
+                context->object_node = librdf_new_node_from_node(node);
+            }
+            node = context->object_node;
             break;
-            
-          case LIBRDF_STATEMENT_PREDICATE: /* ARCS (predicates) */
-            node=librdf_statement_get_predicate(statement);
-            break;
-            
-          case LIBRDF_STATEMENT_OBJECT: /* TARGETS (objects) */
-            node=librdf_statement_get_object(statement);
+
+        case LIBRDF_ITERATOR_GET_METHOD_GET_CONTEXT:
+            if (!context->context_node) {
+                node = librdf_stream_get_context2(context->stream);
+                context->context_node = node ? librdf_new_node_from_node(node) : NULL;
+            }
+            node = context->context_node;
             break;
 
-          case LIBRDF_STATEMENT_ALL:
-            default: /* error */
-              librdf_log(context->storage->world,
-                         0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
-                         "Unknown statement part %d", context->want);
-              node=NULL;
-        }
-        context->object_node=librdf_new_node_from_node(node);
-      }
-      node=context->object_node;
-      break;
-      
-    case LIBRDF_ITERATOR_GET_METHOD_GET_CONTEXT:
-      if(!context->context_node) {
-        node = librdf_stream_get_context2(context->stream);
-        context->context_node=node ? librdf_new_node_from_node(node) : NULL;
-      }
-      node=context->context_node;
-      break;
-      
-    default:
-      librdf_log(context->storage->world,
-                 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
-                 "Unknown iterator method flag %d", flags);
-      node=NULL;
-  }
-  
-  return (void*)node;
+        default:
+            librdf_log(context->storage->world,
+                       0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
+                       "Unknown iterator method flag %d", flags);
+            node = NULL;
+    }
+
+    return (void *) node;
 }
 
 
 static void
-librdf_storage_stream_to_node_iterator_finished(void* iterator) 
-{
-  librdf_storage_stream_to_node_iterator_context* context=(librdf_storage_stream_to_node_iterator_context*)iterator;
-  librdf_statement *partial_statement=context->partial_statement;
+librdf_storage_stream_to_node_iterator_finished(void *iterator) {
+    librdf_storage_stream_to_node_iterator_context *context = (librdf_storage_stream_to_node_iterator_context *) iterator;
+    librdf_statement *partial_statement = context->partial_statement;
 
-  if(partial_statement)
-    librdf_free_statement(partial_statement);
+    if (partial_statement)
+        librdf_free_statement(partial_statement);
 
-  if(context->stream)
-    librdf_free_stream(context->stream);
+    if (context->stream)
+        librdf_free_stream(context->stream);
 
-  if(context->storage)
-    librdf_storage_remove_reference(context->storage);
+    if (context->storage)
+        librdf_storage_remove_reference(context->storage);
 
-  if(context->object_node)
-    librdf_free_node(context->object_node);
+    if (context->object_node)
+        librdf_free_node(context->object_node);
 
-  if(context->context_node)
-    librdf_free_node(context->context_node);
-  
-  LIBRDF_FREE(librdf_storage_stream_to_node_iterator_context, context);
+    if (context->context_node)
+        librdf_free_node(context->context_node);
+
+    LIBRDF_FREE(librdf_storage_stream_to_node_iterator_context, context);
 }
 
 
@@ -1207,85 +1188,84 @@ librdf_storage_stream_to_node_iterator_finished(void* iterator)
  * 
  * Return value: a new #librdf_iterator or NULL on failure
  **/
-static librdf_iterator*
-librdf_storage_node_stream_to_node_create(librdf_storage* storage,
+static librdf_iterator *
+librdf_storage_node_stream_to_node_create(librdf_storage *storage,
                                           librdf_node *node1,
                                           librdf_node *node2,
-                                          librdf_statement_part want)
-{
-  librdf_statement *partial_statement;
-  librdf_stream *stream;
-  librdf_storage_stream_to_node_iterator_context* context;
-  librdf_iterator* iterator;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
-  LIBRDF_ASSERT_RETURN(node1 == NULL && node2 == NULL, "both node objects are NULL", NULL);
+                                          librdf_statement_part want) {
+    librdf_statement *partial_statement;
+    librdf_stream *stream;
+    librdf_storage_stream_to_node_iterator_context *context;
+    librdf_iterator *iterator;
 
-  partial_statement=librdf_new_statement(storage->world);
-  if(!partial_statement)
-    return NULL;
-  
-  context = LIBRDF_CALLOC(librdf_storage_stream_to_node_iterator_context*, 1,
-                          sizeof(*context));
-  if(!context) {
-    librdf_free_statement(partial_statement);
-    return NULL;
-  }
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
+    LIBRDF_ASSERT_RETURN(node1 == NULL && node2 == NULL, "both node objects are NULL", NULL);
+
+    partial_statement = librdf_new_statement(storage->world);
+    if (!partial_statement)
+        return NULL;
+
+    context = LIBRDF_CALLOC(librdf_storage_stream_to_node_iterator_context*, 1,
+                            sizeof(*context));
+    if (!context) {
+        librdf_free_statement(partial_statement);
+        return NULL;
+    }
 
 
-  if(node1)
-    node1=librdf_new_node_from_node(node1);
-  if(node2)
-    node2=librdf_new_node_from_node(node2);
-  
-  switch(want) {
-    case LIBRDF_STATEMENT_SUBJECT:
-      librdf_statement_set_predicate(partial_statement, node1);
-      librdf_statement_set_object(partial_statement, node2);
-      break;
-    case LIBRDF_STATEMENT_PREDICATE:
-      librdf_statement_set_subject(partial_statement, node1);
-      librdf_statement_set_object(partial_statement, node2);
-      break;
-    case LIBRDF_STATEMENT_OBJECT:
-      librdf_statement_set_subject(partial_statement, node1);
-      librdf_statement_set_predicate(partial_statement, node2);
-      break;
+    if (node1)
+        node1 = librdf_new_node_from_node(node1);
+    if (node2)
+        node2 = librdf_new_node_from_node(node2);
 
-    case LIBRDF_STATEMENT_ALL:
-    default:
-      librdf_free_node(node1);
-      librdf_free_node(node2);
-      librdf_free_statement(partial_statement);
-      librdf_log(storage->world,
-                 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
-                 "Illegal statement part %d seen", want);
-      return NULL;
-  }
-  
-  stream=storage->factory->find_statements(storage, partial_statement);
-  if(!stream) {
-    librdf_storage_stream_to_node_iterator_finished(context);
-    return librdf_new_empty_iterator(storage->world);
-  }
-  
-  /* initialise context */
-  context->partial_statement=partial_statement;
-  context->stream=stream;
-  context->want=want;
+    switch (want) {
+        case LIBRDF_STATEMENT_SUBJECT:
+            librdf_statement_set_predicate(partial_statement, node1);
+            librdf_statement_set_object(partial_statement, node2);
+            break;
+        case LIBRDF_STATEMENT_PREDICATE:
+            librdf_statement_set_subject(partial_statement, node1);
+            librdf_statement_set_object(partial_statement, node2);
+            break;
+        case LIBRDF_STATEMENT_OBJECT:
+            librdf_statement_set_subject(partial_statement, node1);
+            librdf_statement_set_predicate(partial_statement, node2);
+            break;
 
-  context->storage=storage;
-  librdf_storage_add_reference(context->storage);
+        case LIBRDF_STATEMENT_ALL:
+        default:
+            librdf_free_node(node1);
+            librdf_free_node(node2);
+            librdf_free_statement(partial_statement);
+            librdf_log(storage->world,
+                       0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
+                       "Illegal statement part %d seen", want);
+            return NULL;
+    }
 
-  iterator=librdf_new_iterator(storage->world,
-                               (void*)context,
-                               librdf_storage_stream_to_node_iterator_is_end,
-                               librdf_storage_stream_to_node_iterator_next_method,
-                               librdf_storage_stream_to_node_iterator_get_method,
-                               librdf_storage_stream_to_node_iterator_finished);
-  if(!iterator)
-    librdf_storage_stream_to_node_iterator_finished(context);
-  return iterator;
+    stream = storage->factory->find_statements(storage, partial_statement);
+    if (!stream) {
+        librdf_storage_stream_to_node_iterator_finished(context);
+        return librdf_new_empty_iterator(storage->world);
+    }
+
+    /* initialise context */
+    context->partial_statement = partial_statement;
+    context->stream = stream;
+    context->want = want;
+
+    context->storage = storage;
+    librdf_storage_add_reference(context->storage);
+
+    iterator = librdf_new_iterator(storage->world,
+                                   (void *) context,
+                                   librdf_storage_stream_to_node_iterator_is_end,
+                                   librdf_storage_stream_to_node_iterator_next_method,
+                                   librdf_storage_stream_to_node_iterator_get_method,
+                                   librdf_storage_stream_to_node_iterator_finished);
+    if (!iterator)
+        librdf_storage_stream_to_node_iterator_finished(context);
+    return iterator;
 }
 
 
@@ -1302,19 +1282,18 @@ librdf_storage_node_stream_to_node_create(librdf_storage* storage,
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-librdf_iterator*
+librdf_iterator *
 librdf_storage_get_sources(librdf_storage *storage,
-                           librdf_node *arc, librdf_node *target) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(arc, librdf_node, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(target, librdf_node, NULL);
+                           librdf_node *arc, librdf_node *target) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(arc, librdf_node, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(target, librdf_node, NULL);
 
-  if (storage->factory->find_sources)
-    return storage->factory->find_sources(storage, arc, target);
+    if (storage->factory->find_sources)
+        return storage->factory->find_sources(storage, arc, target);
 
-  return librdf_storage_node_stream_to_node_create(storage, arc, target,
-                                                   LIBRDF_STATEMENT_SUBJECT);
+    return librdf_storage_node_stream_to_node_create(storage, arc, target,
+                                                     LIBRDF_STATEMENT_SUBJECT);
 }
 
 
@@ -1331,19 +1310,18 @@ librdf_storage_get_sources(librdf_storage *storage,
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-librdf_iterator*
+librdf_iterator *
 librdf_storage_get_arcs(librdf_storage *storage,
-                        librdf_node *source, librdf_node *target) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(source, librdf_node, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(target, librdf_node, NULL);
+                        librdf_node *source, librdf_node *target) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(source, librdf_node, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(target, librdf_node, NULL);
 
-  if (storage->factory->find_arcs)
-    return storage->factory->find_arcs(storage, source, target);
+    if (storage->factory->find_arcs)
+        return storage->factory->find_arcs(storage, source, target);
 
-  return librdf_storage_node_stream_to_node_create(storage, source, target,
-                                                   LIBRDF_STATEMENT_PREDICATE);
+    return librdf_storage_node_stream_to_node_create(storage, source, target,
+                                                     LIBRDF_STATEMENT_PREDICATE);
 }
 
 
@@ -1360,19 +1338,18 @@ librdf_storage_get_arcs(librdf_storage *storage,
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-librdf_iterator*
+librdf_iterator *
 librdf_storage_get_targets(librdf_storage *storage,
-                           librdf_node *source, librdf_node *arc) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(source, librdf_node, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(arc, librdf_node, NULL);
+                           librdf_node *source, librdf_node *arc) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(source, librdf_node, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(arc, librdf_node, NULL);
 
-  if (storage->factory->find_targets)
-    return storage->factory->find_targets(storage, source, arc);
+    if (storage->factory->find_targets)
+        return storage->factory->find_targets(storage, source, arc);
 
-  return librdf_storage_node_stream_to_node_create(storage, source, arc,
-                                                   LIBRDF_STATEMENT_OBJECT);
+    return librdf_storage_node_stream_to_node_create(storage, source, arc,
+                                                     LIBRDF_STATEMENT_OBJECT);
 }
 
 
@@ -1385,17 +1362,16 @@ librdf_storage_get_targets(librdf_storage *storage,
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-librdf_iterator*
-librdf_storage_get_arcs_in(librdf_storage *storage, librdf_node *node) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
+librdf_iterator *
+librdf_storage_get_arcs_in(librdf_storage *storage, librdf_node *node) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
 
-  if (storage->factory->get_arcs_in)
-    return storage->factory->get_arcs_in(storage, node);
+    if (storage->factory->get_arcs_in)
+        return storage->factory->get_arcs_in(storage, node);
 
-  return librdf_storage_node_stream_to_node_create(storage, NULL, node,
-                                                   LIBRDF_STATEMENT_PREDICATE);
+    return librdf_storage_node_stream_to_node_create(storage, NULL, node,
+                                                     LIBRDF_STATEMENT_PREDICATE);
 }
 
 
@@ -1408,13 +1384,12 @@ librdf_storage_get_arcs_in(librdf_storage *storage, librdf_node *node)
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-librdf_iterator*
-librdf_storage_get_arcs_out(librdf_storage *storage, librdf_node *node) 
-{
-  if (storage->factory->get_arcs_out)
-    return storage->factory->get_arcs_out(storage, node);
-  return librdf_storage_node_stream_to_node_create(storage, node, NULL,
-                                                   LIBRDF_STATEMENT_PREDICATE);
+librdf_iterator *
+librdf_storage_get_arcs_out(librdf_storage *storage, librdf_node *node) {
+    if (storage->factory->get_arcs_out)
+        return storage->factory->get_arcs_out(storage, node);
+    return librdf_storage_node_stream_to_node_create(storage, node, NULL,
+                                                     LIBRDF_STATEMENT_PREDICATE);
 }
 
 
@@ -1430,27 +1405,26 @@ librdf_storage_get_arcs_out(librdf_storage *storage, librdf_node *node)
  **/
 int
 librdf_storage_has_arc_in(librdf_storage *storage, librdf_node *node,
-                          librdf_node *property) 
-{
-  librdf_iterator *iterator;
-  int status;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 0);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, 0);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(property, librdf_node, 0);
+                          librdf_node *property) {
+    librdf_iterator *iterator;
+    int status;
 
-  if (storage->factory->has_arc_in)
-    return storage->factory->has_arc_in(storage, node, property);
-  
-  iterator=librdf_storage_get_sources(storage, property, node);
-  if(!iterator)
-    return 0;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(property, librdf_node, 0);
 
-  /* a non-empty list of sources is success */
-  status=!librdf_iterator_end(iterator);
-  librdf_free_iterator(iterator);
+    if (storage->factory->has_arc_in)
+        return storage->factory->has_arc_in(storage, node, property);
 
-  return status;
+    iterator = librdf_storage_get_sources(storage, property, node);
+    if (!iterator)
+        return 0;
+
+    /* a non-empty list of sources is success */
+    status = !librdf_iterator_end(iterator);
+    librdf_free_iterator(iterator);
+
+    return status;
 }
 
 
@@ -1465,30 +1439,28 @@ librdf_storage_has_arc_in(librdf_storage *storage, librdf_node *node,
  * Return value: non 0 if arc property does point from the resource node
  **/
 int
-librdf_storage_has_arc_out(librdf_storage *storage, librdf_node *node, 
-                           librdf_node *property) 
-{
-  librdf_iterator *iterator;
-  int status;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 0);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, 0);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(property, librdf_node, 0);
+librdf_storage_has_arc_out(librdf_storage *storage, librdf_node *node,
+                           librdf_node *property) {
+    librdf_iterator *iterator;
+    int status;
 
-  if (storage->factory->has_arc_out)
-    return storage->factory->has_arc_out(storage, node, property);
-  
-  iterator=librdf_storage_get_targets(storage, node, property);
-  if(!iterator)
-    return 0;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(property, librdf_node, 0);
 
-  /* a non-empty list of targets is success */
-  status=!librdf_iterator_end(iterator);
-  librdf_free_iterator(iterator);
+    if (storage->factory->has_arc_out)
+        return storage->factory->has_arc_out(storage, node, property);
 
-  return status;
+    iterator = librdf_storage_get_targets(storage, node, property);
+    if (!iterator)
+        return 0;
+
+    /* a non-empty list of targets is success */
+    status = !librdf_iterator_end(iterator);
+    librdf_free_iterator(iterator);
+
+    return status;
 }
-
 
 
 /**
@@ -1504,19 +1476,18 @@ librdf_storage_has_arc_out(librdf_storage *storage, librdf_node *node,
  * Return value: non 0 on failure
  **/
 int
-librdf_storage_context_add_statement(librdf_storage* storage,
-                                     librdf_node* context,
-                                     librdf_statement* statement) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
+librdf_storage_context_add_statement(librdf_storage *storage,
+                                     librdf_node *context,
+                                     librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
 
-  if(!context)
-    return librdf_storage_add_statement(storage, statement);
+    if (!context)
+        return librdf_storage_add_statement(storage, statement);
 
-  if(storage->factory->context_add_statement)
-    return storage->factory->context_add_statement(storage, context, statement);
-  return 1;
+    if (storage->factory->context_add_statement)
+        return storage->factory->context_add_statement(storage, context, statement);
+    return 1;
 }
 
 
@@ -1533,40 +1504,38 @@ librdf_storage_context_add_statement(librdf_storage* storage,
  * Return value: Non 0 on failure
  **/
 int
-librdf_storage_context_add_statements(librdf_storage* storage, 
-                                      librdf_node* context,
-                                      librdf_stream* stream) 
-{
-  int status=0;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, 1);
+librdf_storage_context_add_statements(librdf_storage *storage,
+                                      librdf_node *context,
+                                      librdf_stream *stream) {
+    int status = 0;
 
-  if(!context)
-    return librdf_storage_add_statements(storage, stream);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, 1);
 
-  if(storage->factory->context_add_statements)
-    return storage->factory->context_add_statements(storage, context, stream);
+    if (!context)
+        return librdf_storage_add_statements(storage, stream);
 
-  if(!storage->factory->context_add_statement)
-    return 1;
-  
-  if(!stream)
-    return 1;
+    if (storage->factory->context_add_statements)
+        return storage->factory->context_add_statements(storage, context, stream);
 
-  while(!librdf_stream_end(stream)) {
-    librdf_statement* statement=librdf_stream_get_object(stream);
-    if(!statement)
-      break;
-    status=librdf_storage_context_add_statement(storage, context, statement);
-    if(status)
-      break;
-    librdf_stream_next(stream);
-  }
+    if (!storage->factory->context_add_statement)
+        return 1;
 
-  return status;
+    if (!stream)
+        return 1;
+
+    while (!librdf_stream_end(stream)) {
+        librdf_statement *statement = librdf_stream_get_object(stream);
+        if (!statement)
+            break;
+        status = librdf_storage_context_add_statement(storage, context, statement);
+        if (status)
+            break;
+        librdf_stream_next(stream);
+    }
+
+    return status;
 }
-
 
 
 /**
@@ -1582,17 +1551,16 @@ librdf_storage_context_add_statements(librdf_storage* storage,
  * Return value: non 0 on failure
  **/
 int
-librdf_storage_context_remove_statement(librdf_storage* storage, 
-                                        librdf_node* context,
-                                        librdf_statement* statement) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
+librdf_storage_context_remove_statement(librdf_storage *storage,
+                                        librdf_node *context,
+                                        librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
 
-  if(!storage->factory->context_remove_statement)
-    return 1;
-  
-  return storage->factory->context_remove_statement(storage, context, statement);
+    if (!storage->factory->context_remove_statement)
+        return 1;
+
+    return storage->factory->context_remove_statement(storage, context, statement);
 }
 
 
@@ -1606,32 +1574,31 @@ librdf_storage_context_remove_statement(librdf_storage* storage,
  * Return value: Non 0 on failure
  **/
 int
-librdf_storage_context_remove_statements(librdf_storage* storage,
-                                         librdf_node* context) 
-{
-  librdf_stream *stream;
+librdf_storage_context_remove_statements(librdf_storage *storage,
+                                         librdf_node *context) {
+    librdf_stream *stream;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
 
-  if(storage->factory->context_remove_statements)
-    return storage->factory->context_remove_statements(storage, context);
-  
-  if(!storage->factory->context_remove_statement)
-    return 1;
-  
-  stream=librdf_storage_context_as_stream(storage, context);
-  if(!stream)
-    return 1;
+    if (storage->factory->context_remove_statements)
+        return storage->factory->context_remove_statements(storage, context);
 
-  while(!librdf_stream_end(stream)) {
-    librdf_statement *statement=librdf_stream_get_object(stream);
-    if(!statement)
-      break;
-    librdf_storage_context_remove_statement(storage, context, statement);
-    librdf_stream_next(stream);
-  }
-  librdf_free_stream(stream);  
-  return 0;
+    if (!storage->factory->context_remove_statement)
+        return 1;
+
+    stream = librdf_storage_context_as_stream(storage, context);
+    if (!stream)
+        return 1;
+
+    while (!librdf_stream_end(stream)) {
+        librdf_statement *statement = librdf_stream_get_object(stream);
+        if (!statement)
+            break;
+        librdf_storage_context_remove_statement(storage, context, statement);
+        librdf_stream_next(stream);
+    }
+    librdf_free_stream(stream);
+    return 0;
 }
 
 
@@ -1644,16 +1611,16 @@ librdf_storage_context_remove_statements(librdf_storage* storage,
  * 
  * Return value: #librdf_stream of statements or NULL on failure or context is empty
  **/
-librdf_stream*
-librdf_storage_context_as_stream(librdf_storage* storage, librdf_node* context)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
+librdf_stream *
+librdf_storage_context_as_stream(librdf_storage *storage, librdf_node *context) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
 
-  return storage->factory->context_serialise(storage, context);
+    return storage->factory->context_serialise(storage, context);
 }
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_storage_context_serialise:
  * @storage: #librdf_storage object
@@ -1666,14 +1633,14 @@ librdf_storage_context_as_stream(librdf_storage* storage, librdf_node* context)
  *
  * Return value: #librdf_stream of statements or NULL on failure or context is empty
  **/
-librdf_stream*
-librdf_storage_context_serialise(librdf_storage* storage,
-                                 librdf_node* context)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
+librdf_stream *
+librdf_storage_context_serialise(librdf_storage *storage,
+                                 librdf_node *context) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
 
-  return librdf_storage_context_as_stream(storage, context);
+    return librdf_storage_context_as_stream(storage, context);
 }
+
 #endif
 
 
@@ -1687,15 +1654,14 @@ librdf_storage_context_serialise(librdf_storage* storage,
  * Return value: non-0 if the query is supported.
  **/
 int
-librdf_storage_supports_query(librdf_storage* storage, librdf_query *query)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 0);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, librdf_query, 0);
+librdf_storage_supports_query(librdf_storage *storage, librdf_query *query) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, librdf_query, 0);
 
-  if(storage->factory->supports_query)
-    return storage->factory->supports_query(storage, query);
-  else
-    return 0;
+    if (storage->factory->supports_query)
+        return storage->factory->supports_query(storage, query);
+    else
+        return 0;
 }
 
 
@@ -1708,16 +1674,15 @@ librdf_storage_supports_query(librdf_storage* storage, librdf_query *query)
  * 
  * Return value: #librdf_query_results or NULL on failure
  **/
-librdf_query_results*
-librdf_storage_query_execute(librdf_storage* storage, librdf_query *query) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, librdf_query, NULL);
+librdf_query_results *
+librdf_storage_query_execute(librdf_storage *storage, librdf_query *query) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, librdf_query, NULL);
 
-  if(storage->factory->supports_query)
-    return storage->factory->query_execute(storage, query);
-  else
-    return NULL;
+    if (storage->factory->supports_query)
+        return storage->factory->query_execute(storage, query);
+    else
+        return NULL;
 }
 
 
@@ -1730,13 +1695,12 @@ librdf_storage_query_execute(librdf_storage* storage, librdf_query *query)
  * Return value: non-0 on failure
  **/
 int
-librdf_storage_sync(librdf_storage* storage) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
+librdf_storage_sync(librdf_storage *storage) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, 1);
 
-  if(storage->factory->sync)
-    return storage->factory->sync(storage);
-  return 0;
+    if (storage->factory->sync)
+        return storage->factory->sync(storage);
+    return 0;
 }
 
 
@@ -1755,32 +1719,32 @@ librdf_storage_sync(librdf_storage* storage)
  * 
  * Return value: #librdf_stream of matching statements (may be empty) or NULL on failure
  **/
-librdf_stream*
-librdf_storage_find_statements_in_context(librdf_storage* storage, librdf_statement* statement, librdf_node* context_node) 
-{
-  librdf_stream *stream;
+librdf_stream *
+librdf_storage_find_statements_in_context(librdf_storage *storage, librdf_statement *statement,
+                                          librdf_node *context_node) {
+    librdf_stream *stream;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
 
-  if(storage->factory->find_statements_in_context)
-    return storage->factory->find_statements_in_context(storage, statement, context_node);
+    if (storage->factory->find_statements_in_context)
+        return storage->factory->find_statements_in_context(storage, statement, context_node);
 
-  statement=librdf_new_statement_from_statement(statement);
-  if(!statement)
-    return NULL;
+    statement = librdf_new_statement_from_statement(statement);
+    if (!statement)
+        return NULL;
 
-  stream=librdf_storage_context_as_stream(storage, context_node);
-  if(!stream) {
-    librdf_free_statement(statement);
-    return NULL;
-  }
+    stream = librdf_storage_context_as_stream(storage, context_node);
+    if (!stream) {
+        librdf_free_statement(statement);
+        return NULL;
+    }
 
-  librdf_stream_add_map(stream, 
-                        &librdf_stream_statement_find_map,
-                        (librdf_stream_map_free_context_handler)&librdf_free_statement, (void*)statement);
+    librdf_stream_add_map(stream,
+                          &librdf_stream_statement_find_map,
+                          (librdf_stream_map_free_context_handler) &librdf_free_statement, (void *) statement);
 
-  return stream;
+    return stream;
 }
 
 
@@ -1795,17 +1759,15 @@ librdf_storage_find_statements_in_context(librdf_storage* storage, librdf_statem
  *
  * Return value: #librdf_iterator of context nodes or NULL on failure or if contexts are not supported
  **/
-librdf_iterator*
-librdf_storage_get_contexts(librdf_storage* storage) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
+librdf_iterator *
+librdf_storage_get_contexts(librdf_storage *storage) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
 
-  if(storage->factory->get_contexts)
-    return storage->factory->get_contexts(storage);
-  else
-    return NULL;
+    if (storage->factory->get_contexts)
+        return storage->factory->get_contexts(storage);
+    else
+        return NULL;
 }
-
 
 
 /**
@@ -1818,15 +1780,14 @@ librdf_storage_get_contexts(librdf_storage* storage)
  * Return value: new #librdf_node feature value or NULL if no such feature
  * exists or the value is empty.
  **/
-librdf_node*
-librdf_storage_get_feature(librdf_storage* storage, librdf_uri* feature)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(feature, librdf_uri, NULL);
+librdf_node *
+librdf_storage_get_feature(librdf_storage *storage, librdf_uri *feature) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(feature, librdf_uri, NULL);
 
-  if(storage->factory->get_feature)
-    return storage->factory->get_feature(storage, feature);
-  return NULL;
+    if (storage->factory->get_feature)
+        return storage->factory->get_feature(storage, feature);
+    return NULL;
 }
 
 
@@ -1841,16 +1802,15 @@ librdf_storage_get_feature(librdf_storage* storage, librdf_uri* feature)
  * Return value: non 0 on failure (negative if no such feature)
  **/
 int
-librdf_storage_set_feature(librdf_storage* storage, librdf_uri* feature,
-                           librdf_node* value)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, -1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(feature, librdf_uri, -1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(value, librdf_node, -1);
+librdf_storage_set_feature(librdf_storage *storage, librdf_uri *feature,
+                           librdf_node *value) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, -1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(feature, librdf_uri, -1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(value, librdf_node, -1);
 
-  if(storage->factory->set_feature)
-    return storage->factory->set_feature(storage, feature, value);
-  return -1;
+    if (storage->factory->set_feature)
+        return storage->factory->set_feature(storage, feature, value);
+    return -1;
 }
 
 
@@ -1873,18 +1833,16 @@ librdf_storage_set_feature(librdf_storage* storage, librdf_uri* feature,
  * 
  * Return value:  #librdf_stream of matching statements (may be empty) or NULL on failure
  **/
-librdf_stream*
-librdf_storage_find_statements_with_options(librdf_storage* storage,
-                                            librdf_statement* statement,
-                                            librdf_node* context_node,
-                                            librdf_hash* options) 
-{
-  if(storage->factory->find_statements_with_options)
-    return storage->factory->find_statements_with_options(storage, statement, context_node, options);
-  else
-    return librdf_storage_find_statements_in_context(storage, statement, context_node);
+librdf_stream *
+librdf_storage_find_statements_with_options(librdf_storage *storage,
+                                            librdf_statement *statement,
+                                            librdf_node *context_node,
+                                            librdf_hash *options) {
+    if (storage->factory->find_statements_with_options)
+        return storage->factory->find_statements_with_options(storage, statement, context_node, options);
+    else
+        return librdf_storage_find_statements_in_context(storage, statement, context_node);
 }
-
 
 
 /**
@@ -1896,12 +1854,11 @@ librdf_storage_find_statements_with_options(librdf_storage* storage,
  * Return value: non-0 on failure
  **/
 int
-librdf_storage_transaction_start(librdf_storage* storage) 
-{
-  if(storage->factory->transaction_start)
-    return storage->factory->transaction_start(storage);
-  else
-    return 1;
+librdf_storage_transaction_start(librdf_storage *storage) {
+    if (storage->factory->transaction_start)
+        return storage->factory->transaction_start(storage);
+    else
+        return 1;
 }
 
 
@@ -1915,12 +1872,11 @@ librdf_storage_transaction_start(librdf_storage* storage)
  * Return value: non-0 on failure
  **/
 int
-librdf_storage_transaction_start_with_handle(librdf_storage* storage, void* handle)
-{
-  if(storage->factory->transaction_start_with_handle)
-    return storage->factory->transaction_start_with_handle(storage, handle);
-  else
-    return 1;
+librdf_storage_transaction_start_with_handle(librdf_storage *storage, void *handle) {
+    if (storage->factory->transaction_start_with_handle)
+        return storage->factory->transaction_start_with_handle(storage, handle);
+    else
+        return 1;
 }
 
 
@@ -1933,12 +1889,11 @@ librdf_storage_transaction_start_with_handle(librdf_storage* storage, void* hand
  * Return value: non-0 on failure 
  **/
 int
-librdf_storage_transaction_commit(librdf_storage* storage) 
-{
-  if(storage->factory->transaction_commit)
-    return storage->factory->transaction_commit(storage);
-  else
-    return 1;
+librdf_storage_transaction_commit(librdf_storage *storage) {
+    if (storage->factory->transaction_commit)
+        return storage->factory->transaction_commit(storage);
+    else
+        return 1;
 }
 
 
@@ -1951,12 +1906,11 @@ librdf_storage_transaction_commit(librdf_storage* storage)
  * Return value: non-0 on failure 
  **/
 int
-librdf_storage_transaction_rollback(librdf_storage* storage) 
-{
-  if(storage->factory->transaction_rollback)
-    return storage->factory->transaction_rollback(storage);
-  else
-    return 1;
+librdf_storage_transaction_rollback(librdf_storage *storage) {
+    if (storage->factory->transaction_rollback)
+        return storage->factory->transaction_rollback(storage);
+    else
+        return 1;
 }
 
 
@@ -1968,13 +1922,12 @@ librdf_storage_transaction_rollback(librdf_storage* storage)
  * 
  * Return value: non-0 on failure 
  **/
-void*
-librdf_storage_transaction_get_handle(librdf_storage* storage) 
-{
-  if(storage->factory->transaction_get_handle)
-    return storage->factory->transaction_get_handle(storage);
-  else
-    return NULL;
+void *
+librdf_storage_transaction_get_handle(librdf_storage *storage) {
+    if (storage->factory->transaction_get_handle)
+        return storage->factory->transaction_get_handle(storage);
+    else
+        return NULL;
 }
 
 
@@ -1999,32 +1952,32 @@ main(int argc, char *argv[])
   
   /* triples of arguments to librdf_new_storage */
   const char* const storages[] = {
-	"memory", NULL, "contexts='yes'",
+    "memory", NULL, "contexts='yes'",
 #ifdef HAVE_BDB_HASH
-	"hashes", "test", "hash-type='bdb',dir='.',write='yes',new='yes',contexts='yes'",
+    "hashes", "test", "hash-type='bdb',dir='.',write='yes',new='yes',contexts='yes'",
 #else
-	"hashes", "test", "hash-type='memory',write='yes',new='yes',contexts='yes'",
+    "hashes", "test", "hash-type='memory',write='yes',new='yes',contexts='yes'",
 #endif
-    #ifdef STORAGE_TREES
-	    "trees", "test", "contexts='yes'",
-    #endif
-    #ifdef STORAGE_FILE
+#ifdef STORAGE_TREES
+        "trees", "test", "contexts='yes'",
+#endif
+#ifdef STORAGE_FILE
       "file", "file://../redland.rdf", NULL,
-	    "uri", "http://librdf.org/redland.rdf", NULL,
-    #endif
-    #ifdef STORAGE_MYSQL
+        "uri", "http://librdf.org/redland.rdf", NULL,
+#endif
+#ifdef STORAGE_MYSQL
       "mysql", "test", "host='localhost',database='test'",
-    #endif
-    #ifdef STORAGE_POSTGRESQL
+#endif
+#ifdef STORAGE_POSTGRESQL
       "postgresql", "test", "host='localhost',database='test'",
-    #endif
-    #ifdef STORAGE_TSTORE
+#endif
+#ifdef STORAGE_TSTORE
       "tstore", "test", "host='localhost',database='test'",
-    #endif
-    #ifdef STORAGE_SQLITE
+#endif
+#ifdef STORAGE_SQLITE
       "sqlite", "test", "new='yes'",
-    #endif
-	NULL, NULL, NULL
+#endif
+    NULL, NULL, NULL
   };
 
   int test = 0;

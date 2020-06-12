@@ -43,8 +43,9 @@ namespace semsim {
         ~PhysicalForce() = default;
 
 
-        PhysicalForce(librdf_model* model, Subject metaid, PhysicalPropertyResource physicalProperty,
+        PhysicalForce(librdf_model *model, Subject metaid, PhysicalPropertyResource physicalProperty,
                       Sources sources, Sinks sinks);
+
         /*
          * @brief Free nodes associated with PhysicalForce.
          *
@@ -68,7 +69,7 @@ namespace semsim {
          * object which is filled by
          *
          */
-        explicit PhysicalForce(librdf_model* model);
+        explicit PhysicalForce(librdf_model *model);
 
         /*
          * @brief create a metaid for the physical force annotation
@@ -107,7 +108,7 @@ namespace semsim {
          *
          * See Resource for more information about input format for @param metaid
          */
-        PhysicalForce &setAbout(const std::string& metaid);
+        PhysicalForce &setAbout(const std::string &metaid);
 
         /*
          * @brief sets the physical property of the PhysicalForce
@@ -142,6 +143,7 @@ namespace semsim {
          */
         PhysicalForce &addSource(std::string source_metaid, double multiplier,
                                  std::string physical_entity_reference);
+
         /*
          * @brief add a SinkParticipant to the PhysicalForce.
          * @param sink_metaid the ID for the SinkParticipant.

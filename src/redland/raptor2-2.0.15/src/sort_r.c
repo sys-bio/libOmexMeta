@@ -21,13 +21,18 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 
 #include <stdio.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 /* Raptor includes */
@@ -40,6 +45,7 @@
 #if defined(HAVE_QSORT_R) || defined(HAVE_QSORT_S)
 /* Include inline code */
 #include "sort_r.h"
+
 #else
 #include "ssort.h"
 #endif
@@ -62,18 +68,16 @@
  */
 void
 raptor_sort_r(void *base, size_t nel, size_t width,
-              raptor_data_compare_arg_handler compar, void *user_data)
-{
+              raptor_data_compare_arg_handler compar, void *user_data) {
 #if defined(HAVE_QSORT_R) || defined(HAVE_QSORT_S)
-  sort_r(base, nel, width, compar, user_data);
+    sort_r(base, nel, width, compar, user_data);
 #else
-  ssort_r(base, nel, width, compar, user_data);
+    ssort_r(base, nel, width, compar, user_data);
 #endif
 }
 
 
 #endif
-
 
 
 #ifdef STANDALONE

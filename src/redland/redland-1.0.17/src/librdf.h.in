@@ -74,7 +74,7 @@ extern "C" {
 /* Use gcc 3.1+ feature to allow marking of deprecated API calls.
  * This gives a warning during compiling.
  */
-#if ( __GNUC__ == 3 && __GNUC_MINOR__ > 0 ) || __GNUC__ > 3
+#if (__GNUC__ == 3 && __GNUC_MINOR__ > 0) || __GNUC__ > 3
 #define REDLAND_DEPRECATED __attribute__((deprecated))
 #define REDLAND_NORETURN __attribute__((__noreturn__))
 #else
@@ -304,7 +304,7 @@ typedef struct librdf_serializer_factory_s librdf_serializer_factory;
  * Short copyright string (one line).
  */
 REDLAND_API
-extern const char * const librdf_short_copyright_string;
+extern const char *const librdf_short_copyright_string;
 
 /**
  * librdf_copyright_string:
@@ -312,7 +312,7 @@ extern const char * const librdf_short_copyright_string;
  * Copyright string (multiple lines).
  */
 REDLAND_API
-extern const char * const librdf_copyright_string;
+extern const char *const librdf_copyright_string;
 
 /**
  * librdf_version_string:
@@ -320,7 +320,7 @@ extern const char * const librdf_copyright_string;
  * Redland librdf version as a string.
  */
 REDLAND_API
-extern const char * const librdf_version_string;
+extern const char *const librdf_version_string;
 
 /**
  * librdf_version_major:
@@ -362,7 +362,7 @@ extern const unsigned int librdf_version_decimal;
  * Redland librdf license string.
  */
 REDLAND_API
-extern const char * const librdf_license_string;
+extern const char *const librdf_license_string;
 
 /**
  * librdf_home_url_string:
@@ -370,7 +370,7 @@ extern const char * const librdf_license_string;
  * Redland librdf home page URL.
  */
 REDLAND_API
-extern const char * const librdf_home_url_string;
+extern const char *const librdf_home_url_string;
 
 /* Required for va_list in error handler function registrations
  * which are in the public API
@@ -388,7 +388,7 @@ extern const char * const librdf_home_url_string;
 /* FIXME: Should be replaced with automatically pulled
  * definitions from the listed rdf_*.h header files.
  */
- 
+
 #ifndef LIBRDF_OBJC_FRAMEWORK
 #include <rdf_log.h>
 #include <rdf_digest.h>

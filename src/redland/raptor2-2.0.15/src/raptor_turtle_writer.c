@@ -25,22 +25,32 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdarg.h>
+
 #ifdef HAVE_ERRNO_H
+
 #include <errno.h>
+
 #endif
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 #ifdef HAVE_LIMITS_H
+
 #include <limits.h>
+
 #endif
+
 #include <math.h>
 
 /* Raptor includes */
@@ -51,81 +61,78 @@
 
 
 typedef enum {
-  TURTLE_WRITER_AUTO_INDENT = 1
+    TURTLE_WRITER_AUTO_INDENT = 1
 } raptor_turtle_writer_flags;
 
 
 #define TURTLE_WRITER_AUTO_INDENT(turtle_writer) ((turtle_writer->flags & TURTLE_WRITER_AUTO_INDENT) != 0)
 
 struct raptor_turtle_writer_s {
-  raptor_world* world;
+    raptor_world *world;
 
-  int depth;
- 
-  raptor_uri* base_uri;
+    int depth;
 
-  int my_nstack;
-  raptor_namespace_stack *nstack;
-  int nstack_depth;
+    raptor_uri *base_uri;
 
-  /* outputting to this iostream */
-  raptor_iostream *iostr;
+    int my_nstack;
+    raptor_namespace_stack *nstack;
+    int nstack_depth;
 
-  /* Turtle Writer flags - bits defined in enum raptor_turtle_writer_flags */
-  int flags;
+    /* outputting to this iostream */
+    raptor_iostream *iostr;
 
-  /* indentation per level if formatting */
-  int indent;
+    /* Turtle Writer flags - bits defined in enum raptor_turtle_writer_flags */
+    int flags;
+
+    /* indentation per level if formatting */
+    int indent;
 };
 
 
 /* 16 spaces */
 #define SPACES_BUFFER_SIZE sizeof(spaces_buffer)
 static const unsigned char spaces_buffer[] = {
-  ' ', ' ', ' ', ' ',
-  ' ', ' ', ' ', ' ',
-  ' ', ' ', ' ', ' ',
-  ' ', ' ', ' ', ' '
+        ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' '
 };
 
 
 void
-raptor_turtle_writer_increase_indent(raptor_turtle_writer *turtle_writer)
-{
-  turtle_writer->depth += turtle_writer->indent;
+raptor_turtle_writer_increase_indent(raptor_turtle_writer *turtle_writer) {
+    turtle_writer->depth += turtle_writer->indent;
 }
 
 
 void
-raptor_turtle_writer_decrease_indent(raptor_turtle_writer *turtle_writer)
-{
-  turtle_writer->depth -= turtle_writer->indent;
+raptor_turtle_writer_decrease_indent(raptor_turtle_writer *turtle_writer) {
+    turtle_writer->depth -= turtle_writer->indent;
 }
 
-  
+
 void
-raptor_turtle_writer_newline(raptor_turtle_writer *turtle_writer)
-{
-  int num_spaces;
-  
-  raptor_iostream_write_byte('\n', turtle_writer->iostr);
- 
-  if(!TURTLE_WRITER_AUTO_INDENT(turtle_writer))
+raptor_turtle_writer_newline(raptor_turtle_writer *turtle_writer) {
+    int num_spaces;
+
+    raptor_iostream_write_byte('\n', turtle_writer->iostr);
+
+    if (!TURTLE_WRITER_AUTO_INDENT(turtle_writer))
+        return;
+
+    num_spaces = turtle_writer->depth * turtle_writer->indent;
+
+    while (num_spaces > 0) {
+        int count;
+        count = (num_spaces > RAPTOR_GOOD_CAST(int, SPACES_BUFFER_SIZE)) ?
+                RAPTOR_GOOD_CAST(int, SPACES_BUFFER_SIZE) : num_spaces;
+
+        raptor_iostream_counted_string_write(spaces_buffer, count, turtle_writer->iostr);
+
+        num_spaces -= count;
+    }
+
     return;
-
-  num_spaces = turtle_writer->depth * turtle_writer->indent;
-
-  while(num_spaces > 0) {
-    int count;
-    count = (num_spaces > RAPTOR_GOOD_CAST(int, SPACES_BUFFER_SIZE)) ? 
-            RAPTOR_GOOD_CAST(int, SPACES_BUFFER_SIZE) : num_spaces;
-
-    raptor_iostream_counted_string_write(spaces_buffer, count, turtle_writer->iostr);
-
-    num_spaces -= count;
-  }
-
-  return;
 }
 
 
@@ -141,49 +148,48 @@ raptor_turtle_writer_newline(raptor_turtle_writer *turtle_writer)
  * 
  * Return value: a new #raptor_turtle_writer object or NULL on failure
  **/
-raptor_turtle_writer*
-raptor_new_turtle_writer(raptor_world* world,
-                         raptor_uri* base_uri, int write_base_uri,
+raptor_turtle_writer *
+raptor_new_turtle_writer(raptor_world *world,
+                         raptor_uri *base_uri, int write_base_uri,
                          raptor_namespace_stack *nstack,
-                         raptor_iostream* iostr)
-{
-  raptor_turtle_writer* turtle_writer;
+                         raptor_iostream *iostr) {
+    raptor_turtle_writer *turtle_writer;
 
-  RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
+    RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
 
-  if(!nstack || !iostr)
-    return NULL;
-  
-  raptor_world_open(world);
+    if (!nstack || !iostr)
+        return NULL;
 
-  turtle_writer = RAPTOR_CALLOC(raptor_turtle_writer*, 1,
-                                sizeof(*turtle_writer));
+    raptor_world_open(world);
 
-  if(!turtle_writer)
-    return NULL;
+    turtle_writer = RAPTOR_CALLOC(raptor_turtle_writer*, 1,
+                                  sizeof(*turtle_writer));
 
-  turtle_writer->world = world;
+    if (!turtle_writer)
+        return NULL;
 
-  turtle_writer->nstack_depth = 0;
+    turtle_writer->world = world;
 
-  turtle_writer->nstack = nstack;
-  if(!turtle_writer->nstack) {
-    turtle_writer->nstack = raptor_new_namespaces(world, 1);
-    turtle_writer->my_nstack = 1;
-  }
+    turtle_writer->nstack_depth = 0;
 
-  turtle_writer->iostr = iostr;
+    turtle_writer->nstack = nstack;
+    if (!turtle_writer->nstack) {
+        turtle_writer->nstack = raptor_new_namespaces(world, 1);
+        turtle_writer->my_nstack = 1;
+    }
 
-  turtle_writer->flags = 0;
-  turtle_writer->indent = 2;
+    turtle_writer->iostr = iostr;
 
-  turtle_writer->base_uri = NULL;
-  /* Ensure any initial base URI is not written relative */
-  if(base_uri && write_base_uri)
-    raptor_turtle_writer_base(turtle_writer, base_uri);
-  turtle_writer->base_uri = base_uri;
+    turtle_writer->flags = 0;
+    turtle_writer->indent = 2;
 
-  return turtle_writer;
+    turtle_writer->base_uri = NULL;
+    /* Ensure any initial base URI is not written relative */
+    if (base_uri && write_base_uri)
+        raptor_turtle_writer_base(turtle_writer, base_uri);
+    turtle_writer->base_uri = base_uri;
+
+    return turtle_writer;
 }
 
 
@@ -195,28 +201,26 @@ raptor_new_turtle_writer(raptor_world* world,
  * 
  **/
 void
-raptor_free_turtle_writer(raptor_turtle_writer* turtle_writer)
-{
-  if(!turtle_writer)
-    return;
+raptor_free_turtle_writer(raptor_turtle_writer *turtle_writer) {
+    if (!turtle_writer)
+        return;
 
-  if(turtle_writer->nstack && turtle_writer->my_nstack)
-    raptor_free_namespaces(turtle_writer->nstack);
+    if (turtle_writer->nstack && turtle_writer->my_nstack)
+        raptor_free_namespaces(turtle_writer->nstack);
 
-  RAPTOR_FREE(raptor_turtle_writer, turtle_writer);
+    RAPTOR_FREE(raptor_turtle_writer, turtle_writer);
 }
 
 
 static int
-raptor_turtle_writer_contains_newline(const unsigned char *s, size_t len)
-{
-  size_t i = 0;
+raptor_turtle_writer_contains_newline(const unsigned char *s, size_t len) {
+    size_t i = 0;
 
-  for( ; i < len; i++)
-    if(s[i] == '\n')
-      return 1;
+    for (; i < len; i++)
+        if (s[i] == '\n')
+            return 1;
 
-  return 0;
+    return 0;
 }
 
 
@@ -229,10 +233,9 @@ raptor_turtle_writer_contains_newline(const unsigned char *s, size_t len)
  *
  **/
 void
-raptor_turtle_writer_raw(raptor_turtle_writer* turtle_writer,
-                         const unsigned char *s)
-{
-  raptor_iostream_string_write(s, turtle_writer->iostr);
+raptor_turtle_writer_raw(raptor_turtle_writer *turtle_writer,
+                         const unsigned char *s) {
+    raptor_iostream_string_write(s, turtle_writer->iostr);
 }
 
 
@@ -246,10 +249,9 @@ raptor_turtle_writer_raw(raptor_turtle_writer* turtle_writer,
  *
  **/
 void
-raptor_turtle_writer_raw_counted(raptor_turtle_writer* turtle_writer,
-                                 const unsigned char *s, unsigned int len)
-{
-  raptor_iostream_counted_string_write(s, len, turtle_writer->iostr);
+raptor_turtle_writer_raw_counted(raptor_turtle_writer *turtle_writer,
+                                 const unsigned char *s, unsigned int len) {
+    raptor_iostream_counted_string_write(s, len, turtle_writer->iostr);
 }
 
 
@@ -263,16 +265,15 @@ raptor_turtle_writer_raw_counted(raptor_turtle_writer* turtle_writer,
  * Must only be used at the beginning of a document.
  */
 void
-raptor_turtle_writer_namespace_prefix(raptor_turtle_writer* turtle_writer,
-                                      raptor_namespace* ns)
-{
-  raptor_iostream_string_write("@prefix ", turtle_writer->iostr);
-  if(ns->prefix)
-    raptor_iostream_string_write(raptor_namespace_get_prefix(ns),
-                                 turtle_writer->iostr);
-  raptor_iostream_counted_string_write(": ", 2, turtle_writer->iostr);
-  raptor_turtle_writer_reference(turtle_writer, raptor_namespace_get_uri(ns));
-  raptor_iostream_counted_string_write(" .\n", 3, turtle_writer->iostr);
+raptor_turtle_writer_namespace_prefix(raptor_turtle_writer *turtle_writer,
+                                      raptor_namespace *ns) {
+    raptor_iostream_string_write("@prefix ", turtle_writer->iostr);
+    if (ns->prefix)
+        raptor_iostream_string_write(raptor_namespace_get_prefix(ns),
+                                     turtle_writer->iostr);
+    raptor_iostream_counted_string_write(": ", 2, turtle_writer->iostr);
+    raptor_turtle_writer_reference(turtle_writer, raptor_namespace_get_uri(ns));
+    raptor_iostream_counted_string_write(" .\n", 3, turtle_writer->iostr);
 }
 
 
@@ -284,14 +285,13 @@ raptor_turtle_writer_namespace_prefix(raptor_turtle_writer* turtle_writer,
  * Write a base URI directive (@base) to set the in-scope base URI
  */
 void
-raptor_turtle_writer_base(raptor_turtle_writer* turtle_writer,
-                          raptor_uri* base_uri)
-{
-  if(base_uri) {
-    raptor_iostream_counted_string_write("@base ", 6, turtle_writer->iostr);
-    raptor_turtle_writer_reference(turtle_writer, base_uri);
-    raptor_iostream_counted_string_write(" .\n", 3, turtle_writer->iostr);
-  }
+raptor_turtle_writer_base(raptor_turtle_writer *turtle_writer,
+                          raptor_uri *base_uri) {
+    if (base_uri) {
+        raptor_iostream_counted_string_write("@base ", 6, turtle_writer->iostr);
+        raptor_turtle_writer_reference(turtle_writer, base_uri);
+        raptor_iostream_counted_string_write(" .\n", 3, turtle_writer->iostr);
+    }
 }
 
 
@@ -305,12 +305,11 @@ raptor_turtle_writer_base(raptor_turtle_writer* turtle_writer,
  * Return value: non-0 on failure
  **/
 int
-raptor_turtle_writer_reference(raptor_turtle_writer* turtle_writer, 
-                               raptor_uri* uri)
-{
-  return raptor_uri_escaped_write(uri, turtle_writer->base_uri, 
-                                  RAPTOR_ESCAPED_WRITE_TURTLE_URI,
-                                  turtle_writer->iostr);
+raptor_turtle_writer_reference(raptor_turtle_writer *turtle_writer,
+                               raptor_uri *uri) {
+    return raptor_uri_escaped_write(uri, turtle_writer->base_uri,
+                                    RAPTOR_ESCAPED_WRITE_TURTLE_URI,
+                                    turtle_writer->iostr);
 }
 
 
@@ -323,21 +322,20 @@ raptor_turtle_writer_reference(raptor_turtle_writer* turtle_writer,
  *
  **/
 void
-raptor_turtle_writer_qname(raptor_turtle_writer* turtle_writer,
-                           raptor_qname* qname)
-{
-  raptor_iostream* iostr = turtle_writer->iostr;
-  
-  if(qname->nspace && qname->nspace->prefix_length > 0)
-    raptor_iostream_counted_string_write(qname->nspace->prefix,
-                                         qname->nspace->prefix_length,
+raptor_turtle_writer_qname(raptor_turtle_writer *turtle_writer,
+                           raptor_qname *qname) {
+    raptor_iostream *iostr = turtle_writer->iostr;
+
+    if (qname->nspace && qname->nspace->prefix_length > 0)
+        raptor_iostream_counted_string_write(qname->nspace->prefix,
+                                             qname->nspace->prefix_length,
+                                             iostr);
+    raptor_iostream_write_byte(':', iostr);
+
+    raptor_iostream_counted_string_write(qname->local_name,
+                                         qname->local_name_length,
                                          iostr);
-  raptor_iostream_write_byte(':', iostr);
-  
-  raptor_iostream_counted_string_write(qname->local_name,
-                                       qname->local_name_length,
-                                       iostr);
-  return;
+    return;
 }
 
 
@@ -352,32 +350,31 @@ raptor_turtle_writer_qname(raptor_turtle_writer* turtle_writer,
  * Return value: non-0 on failure
  **/
 int
-raptor_turtle_writer_quoted_counted_string(raptor_turtle_writer* turtle_writer,
-                                           const unsigned char *s, size_t len)
-{
-  const unsigned char *quotes = (const unsigned char *)"\"\"\"\"";
-  const unsigned char *q = quotes + 2;
-  size_t q_len = 1;
-  int flags = RAPTOR_ESCAPED_WRITE_TURTLE_LITERAL;
-  int rc = 0;
+raptor_turtle_writer_quoted_counted_string(raptor_turtle_writer *turtle_writer,
+                                           const unsigned char *s, size_t len) {
+    const unsigned char *quotes = (const unsigned char *) "\"\"\"\"";
+    const unsigned char *q = quotes + 2;
+    size_t q_len = 1;
+    int flags = RAPTOR_ESCAPED_WRITE_TURTLE_LITERAL;
+    int rc = 0;
 
-  if(!s)
-    return 1;
-  
-  /* Turtle """longstring""" (2) or "string" (1) */
-  if(raptor_turtle_writer_contains_newline(s, len)) {
-    /* long string */
-    flags = RAPTOR_ESCAPED_WRITE_TURTLE_LONG_LITERAL;
-    q = quotes;
-    q_len = 3;
-  }
+    if (!s)
+        return 1;
 
-  raptor_iostream_counted_string_write(q, q_len, turtle_writer->iostr);
-  rc = raptor_string_escaped_write(s, len, '"',
-                                   flags, turtle_writer->iostr);
-  raptor_iostream_counted_string_write(q, q_len, turtle_writer->iostr);
+    /* Turtle """longstring""" (2) or "string" (1) */
+    if (raptor_turtle_writer_contains_newline(s, len)) {
+        /* long string */
+        flags = RAPTOR_ESCAPED_WRITE_TURTLE_LONG_LITERAL;
+        q = quotes;
+        q_len = 3;
+    }
 
-  return rc;
+    raptor_iostream_counted_string_write(q, q_len, turtle_writer->iostr);
+    rc = raptor_string_escaped_write(s, len, '"',
+                                     flags, turtle_writer->iostr);
+    raptor_iostream_counted_string_write(q, q_len, turtle_writer->iostr);
+
+    return rc;
 }
 
 
@@ -394,89 +391,88 @@ raptor_turtle_writer_quoted_counted_string(raptor_turtle_writer* turtle_writer,
  * Return value: non-0 on failure
  **/
 int
-raptor_turtle_writer_literal(raptor_turtle_writer* turtle_writer,
+raptor_turtle_writer_literal(raptor_turtle_writer *turtle_writer,
                              raptor_namespace_stack *nstack,
-                             const unsigned char* s, const unsigned char* lang,
-                             raptor_uri* datatype)
-{
-  /* DBL_MAX = 309 decimal digits */
-  #define INT_MAX_LEN 309 
+                             const unsigned char *s, const unsigned char *lang,
+                             raptor_uri *datatype) {
+    /* DBL_MAX = 309 decimal digits */
+#define INT_MAX_LEN 309
 
-  /* DBL_EPSILON = 52 digits */
-  #define FRAC_MAX_LEN 52
+    /* DBL_EPSILON = 52 digits */
+#define FRAC_MAX_LEN 52
 
-  char* endptr = (char *)s;
-  int written = 0;
+    char *endptr = (char *) s;
+    int written = 0;
 
-  /* typed literal special cases */
-  if(datatype) {
-    /* integer */
-    if(raptor_uri_equals(datatype, turtle_writer->world->xsd_integer_uri)) {
-      /* FIXME. Work around that gcc < 4.5 cannot disable warn_unused_result */
-      long gcc_is_stupid = strtol((const char*)s, &endptr, 10);
-      if(endptr != (char*)s && !*endptr) {
-        raptor_iostream_string_write(s, turtle_writer->iostr);
-        /* More gcc madness to 'use' the variable I didn't want */
-        written = 1 + 0 * (int)gcc_is_stupid;
-      } else {
-        raptor_log_error(turtle_writer->world, RAPTOR_LOG_LEVEL_ERROR, NULL,
-                         "Illegal value for xsd:integer literal.");
-      }
+    /* typed literal special cases */
+    if (datatype) {
+        /* integer */
+        if (raptor_uri_equals(datatype, turtle_writer->world->xsd_integer_uri)) {
+            /* FIXME. Work around that gcc < 4.5 cannot disable warn_unused_result */
+            long gcc_is_stupid = strtol((const char *) s, &endptr, 10);
+            if (endptr != (char *) s && !*endptr) {
+                raptor_iostream_string_write(s, turtle_writer->iostr);
+                /* More gcc madness to 'use' the variable I didn't want */
+                written = 1 + 0 * (int) gcc_is_stupid;
+            } else {
+                raptor_log_error(turtle_writer->world, RAPTOR_LOG_LEVEL_ERROR, NULL,
+                                 "Illegal value for xsd:integer literal.");
+            }
 
-    /* double, decimal */
-    } else if(raptor_uri_equals(datatype, turtle_writer->world->xsd_double_uri) ||
-      raptor_uri_equals(datatype, turtle_writer->world->xsd_decimal_uri)) {
-      /* FIXME. Work around that gcc < 4.5 cannot disable warn_unused_result */
-      double gcc_is_doubly_stupid = strtod((const char*)s, &endptr);
-      if(endptr != (char*)s && !*endptr) {
-        raptor_iostream_string_write(s, turtle_writer->iostr);
-        /* More gcc madness to 'use' the variable I didn't want */
-        written = 1 +  0 * (int)gcc_is_doubly_stupid;
-      } else {
-        raptor_log_error(turtle_writer->world, RAPTOR_LOG_LEVEL_ERROR, NULL,
-                         "Illegal value for xsd:double or xsd:decimal literal.");
-      }
+            /* double, decimal */
+        } else if (raptor_uri_equals(datatype, turtle_writer->world->xsd_double_uri) ||
+                   raptor_uri_equals(datatype, turtle_writer->world->xsd_decimal_uri)) {
+            /* FIXME. Work around that gcc < 4.5 cannot disable warn_unused_result */
+            double gcc_is_doubly_stupid = strtod((const char *) s, &endptr);
+            if (endptr != (char *) s && !*endptr) {
+                raptor_iostream_string_write(s, turtle_writer->iostr);
+                /* More gcc madness to 'use' the variable I didn't want */
+                written = 1 + 0 * (int) gcc_is_doubly_stupid;
+            } else {
+                raptor_log_error(turtle_writer->world, RAPTOR_LOG_LEVEL_ERROR, NULL,
+                                 "Illegal value for xsd:double or xsd:decimal literal.");
+            }
 
-    /* boolean */
-    } else if(raptor_uri_equals(datatype, turtle_writer->world->xsd_boolean_uri)) {
-      if(!strcmp((const char*)s, "0") || !strcmp((const char*)s, "false")) {
-        raptor_iostream_string_write("false", turtle_writer->iostr);
-        written = 1;
-      } else if(!strcmp((const char*)s, "1") || !strcmp((const char*)s, "true")) {
-        raptor_iostream_string_write("true", turtle_writer->iostr);
-        written = 1;
-      } else {
-        raptor_log_error(turtle_writer->world, RAPTOR_LOG_LEVEL_ERROR, NULL,
-                         "Illegal value for xsd:boolean literal.");
-      }
+            /* boolean */
+        } else if (raptor_uri_equals(datatype, turtle_writer->world->xsd_boolean_uri)) {
+            if (!strcmp((const char *) s, "0") || !strcmp((const char *) s, "false")) {
+                raptor_iostream_string_write("false", turtle_writer->iostr);
+                written = 1;
+            } else if (!strcmp((const char *) s, "1") || !strcmp((const char *) s, "true")) {
+                raptor_iostream_string_write("true", turtle_writer->iostr);
+                written = 1;
+            } else {
+                raptor_log_error(turtle_writer->world, RAPTOR_LOG_LEVEL_ERROR, NULL,
+                                 "Illegal value for xsd:boolean literal.");
+            }
+        }
     }
-  }
 
-  if(written)
+    if (written)
+        return 0;
+
+    if (raptor_turtle_writer_quoted_counted_string(turtle_writer, s,
+                                                   strlen((const char *) s)))
+        return 1;
+
+    /* typed literal, not a special case */
+    if (datatype) {
+        raptor_qname *qname;
+
+        raptor_iostream_string_write("^^", turtle_writer->iostr);
+        qname = raptor_new_qname_from_namespace_uri(nstack, datatype, 10);
+        if (qname) {
+            raptor_turtle_writer_qname(turtle_writer, qname);
+            raptor_free_qname(qname);
+        } else
+            raptor_turtle_writer_reference(turtle_writer, datatype);
+    } else if (lang) {
+        /* literal with language tag */
+        raptor_iostream_write_byte('@', turtle_writer->iostr);
+        raptor_iostream_string_write(lang, turtle_writer->iostr);
+    }
+
     return 0;
-    
-  if(raptor_turtle_writer_quoted_counted_string(turtle_writer, s,
-                                                strlen((const char*)s)))
-    return 1;
-
-  /* typed literal, not a special case */
-  if(datatype) {
-    raptor_qname* qname;
-
-    raptor_iostream_string_write("^^", turtle_writer->iostr);
-    qname = raptor_new_qname_from_namespace_uri(nstack, datatype, 10);
-    if(qname) {
-      raptor_turtle_writer_qname(turtle_writer, qname);
-      raptor_free_qname(qname);
-    } else
-      raptor_turtle_writer_reference(turtle_writer, datatype);
-  } else if(lang) {
-    /* literal with language tag */
-    raptor_iostream_write_byte('@', turtle_writer->iostr);
-    raptor_iostream_string_write(lang, turtle_writer->iostr);
-  }
-
-  return 0;
 }
 
 
@@ -489,27 +485,26 @@ raptor_turtle_writer_literal(raptor_turtle_writer* turtle_writer,
  *
  **/
 void
-raptor_turtle_writer_comment(raptor_turtle_writer* turtle_writer,
-                             const unsigned char *string)
-{
-  unsigned char c;
-  size_t len = strlen((const char*)string);
+raptor_turtle_writer_comment(raptor_turtle_writer *turtle_writer,
+                             const unsigned char *string) {
+    unsigned char c;
+    size_t len = strlen((const char *) string);
 
-  raptor_iostream_counted_string_write((const unsigned char*)"# ", 2,
-                                       turtle_writer->iostr);
+    raptor_iostream_counted_string_write((const unsigned char *) "# ", 2,
+                                         turtle_writer->iostr);
 
-  for(; (c=*string); string++, len--) {
-    if(c == '\n') {
-      raptor_turtle_writer_newline(turtle_writer);
-      raptor_iostream_counted_string_write((const unsigned char*)"# ", 2,
-                                           turtle_writer->iostr);
-    } else if(c != '\r') { 
-      /* skip carriage returns (windows... *sigh*) */
-      raptor_iostream_write_byte(c, turtle_writer->iostr);
+    for (; (c = *string); string++, len--) {
+        if (c == '\n') {
+            raptor_turtle_writer_newline(turtle_writer);
+            raptor_iostream_counted_string_write((const unsigned char *) "# ", 2,
+                                                 turtle_writer->iostr);
+        } else if (c != '\r') {
+            /* skip carriage returns (windows... *sigh*) */
+            raptor_iostream_write_byte(c, turtle_writer->iostr);
+        }
     }
-  }
-  
-  raptor_turtle_writer_newline(turtle_writer);
+
+    raptor_turtle_writer_newline(turtle_writer);
 }
 
 
@@ -527,86 +522,85 @@ raptor_turtle_writer_comment(raptor_turtle_writer* turtle_writer,
  * Return value: non 0 on failure or if the option is unknown
  **/
 int
-raptor_turtle_writer_set_option(raptor_turtle_writer *turtle_writer, 
-                                 raptor_option option, int value)
-{
-  if(value < 0 ||
-     !raptor_option_is_valid_for_area(option, RAPTOR_OPTION_AREA_TURTLE_WRITER))
-    return 1;
-  
-  switch(option) {
-    case RAPTOR_OPTION_WRITER_AUTO_INDENT:
-      if(value)
-        turtle_writer->flags |= TURTLE_WRITER_AUTO_INDENT;
-      else
-        turtle_writer->flags &= ~TURTLE_WRITER_AUTO_INDENT;        
-      break;
+raptor_turtle_writer_set_option(raptor_turtle_writer *turtle_writer,
+                                raptor_option option, int value) {
+    if (value < 0 ||
+        !raptor_option_is_valid_for_area(option, RAPTOR_OPTION_AREA_TURTLE_WRITER))
+        return 1;
 
-    case RAPTOR_OPTION_WRITER_INDENT_WIDTH:
-      turtle_writer->indent = value;
-      break;
-    
-    case RAPTOR_OPTION_WRITER_AUTO_EMPTY:
-    case RAPTOR_OPTION_WRITER_XML_VERSION:
-    case RAPTOR_OPTION_WRITER_XML_DECLARATION:
-      break;
-        
-    /* parser options */
-    case RAPTOR_OPTION_SCANNING:
-    case RAPTOR_OPTION_ALLOW_NON_NS_ATTRIBUTES:
-    case RAPTOR_OPTION_ALLOW_OTHER_PARSETYPES:
-    case RAPTOR_OPTION_ALLOW_BAGID:
-    case RAPTOR_OPTION_ALLOW_RDF_TYPE_RDF_LIST:
-    case RAPTOR_OPTION_NORMALIZE_LANGUAGE:
-    case RAPTOR_OPTION_NON_NFC_FATAL:
-    case RAPTOR_OPTION_WARN_OTHER_PARSETYPES:
-    case RAPTOR_OPTION_CHECK_RDF_ID:
-    case RAPTOR_OPTION_HTML_TAG_SOUP:
-    case RAPTOR_OPTION_MICROFORMATS:
-    case RAPTOR_OPTION_HTML_LINK:
-    case RAPTOR_OPTION_WWW_TIMEOUT:
-    case RAPTOR_OPTION_STRICT:
-      
-    /* Shared */
-    case RAPTOR_OPTION_NO_NET:
-    case RAPTOR_OPTION_NO_FILE:
-    case RAPTOR_OPTION_LOAD_EXTERNAL_ENTITIES:
+    switch (option) {
+        case RAPTOR_OPTION_WRITER_AUTO_INDENT:
+            if (value)
+                turtle_writer->flags |= TURTLE_WRITER_AUTO_INDENT;
+            else
+                turtle_writer->flags &= ~TURTLE_WRITER_AUTO_INDENT;
+            break;
 
-    /* XML writer options */
-    case RAPTOR_OPTION_RELATIVE_URIS:
+        case RAPTOR_OPTION_WRITER_INDENT_WIDTH:
+            turtle_writer->indent = value;
+            break;
 
-    /* DOT serializer options */
-    case RAPTOR_OPTION_RESOURCE_BORDER:
-    case RAPTOR_OPTION_LITERAL_BORDER:
-    case RAPTOR_OPTION_BNODE_BORDER:
-    case RAPTOR_OPTION_RESOURCE_FILL:
-    case RAPTOR_OPTION_LITERAL_FILL:
-    case RAPTOR_OPTION_BNODE_FILL:
+        case RAPTOR_OPTION_WRITER_AUTO_EMPTY:
+        case RAPTOR_OPTION_WRITER_XML_VERSION:
+        case RAPTOR_OPTION_WRITER_XML_DECLARATION:
+            break;
 
-    /* JSON serializer options */
-    case RAPTOR_OPTION_JSON_CALLBACK:
-    case RAPTOR_OPTION_JSON_EXTRA_DATA:
-    case RAPTOR_OPTION_RSS_TRIPLES:
-    case RAPTOR_OPTION_ATOM_ENTRY_URI:
-    case RAPTOR_OPTION_PREFIX_ELEMENTS:
-    
-    /* Turtle serializer option */
-    case RAPTOR_OPTION_WRITE_BASE_URI:
+            /* parser options */
+        case RAPTOR_OPTION_SCANNING:
+        case RAPTOR_OPTION_ALLOW_NON_NS_ATTRIBUTES:
+        case RAPTOR_OPTION_ALLOW_OTHER_PARSETYPES:
+        case RAPTOR_OPTION_ALLOW_BAGID:
+        case RAPTOR_OPTION_ALLOW_RDF_TYPE_RDF_LIST:
+        case RAPTOR_OPTION_NORMALIZE_LANGUAGE:
+        case RAPTOR_OPTION_NON_NFC_FATAL:
+        case RAPTOR_OPTION_WARN_OTHER_PARSETYPES:
+        case RAPTOR_OPTION_CHECK_RDF_ID:
+        case RAPTOR_OPTION_HTML_TAG_SOUP:
+        case RAPTOR_OPTION_MICROFORMATS:
+        case RAPTOR_OPTION_HTML_LINK:
+        case RAPTOR_OPTION_WWW_TIMEOUT:
+        case RAPTOR_OPTION_STRICT:
 
-    /* WWW option */
-    case RAPTOR_OPTION_WWW_HTTP_CACHE_CONTROL:
-    case RAPTOR_OPTION_WWW_HTTP_USER_AGENT:
-    case RAPTOR_OPTION_WWW_CERT_FILENAME:
-    case RAPTOR_OPTION_WWW_CERT_TYPE:
-    case RAPTOR_OPTION_WWW_CERT_PASSPHRASE:
-    case RAPTOR_OPTION_WWW_SSL_VERIFY_PEER:
-    case RAPTOR_OPTION_WWW_SSL_VERIFY_HOST:
-      
-    default:
-      return -1;
-  }
+            /* Shared */
+        case RAPTOR_OPTION_NO_NET:
+        case RAPTOR_OPTION_NO_FILE:
+        case RAPTOR_OPTION_LOAD_EXTERNAL_ENTITIES:
 
-  return 0;
+            /* XML writer options */
+        case RAPTOR_OPTION_RELATIVE_URIS:
+
+            /* DOT serializer options */
+        case RAPTOR_OPTION_RESOURCE_BORDER:
+        case RAPTOR_OPTION_LITERAL_BORDER:
+        case RAPTOR_OPTION_BNODE_BORDER:
+        case RAPTOR_OPTION_RESOURCE_FILL:
+        case RAPTOR_OPTION_LITERAL_FILL:
+        case RAPTOR_OPTION_BNODE_FILL:
+
+            /* JSON serializer options */
+        case RAPTOR_OPTION_JSON_CALLBACK:
+        case RAPTOR_OPTION_JSON_EXTRA_DATA:
+        case RAPTOR_OPTION_RSS_TRIPLES:
+        case RAPTOR_OPTION_ATOM_ENTRY_URI:
+        case RAPTOR_OPTION_PREFIX_ELEMENTS:
+
+            /* Turtle serializer option */
+        case RAPTOR_OPTION_WRITE_BASE_URI:
+
+            /* WWW option */
+        case RAPTOR_OPTION_WWW_HTTP_CACHE_CONTROL:
+        case RAPTOR_OPTION_WWW_HTTP_USER_AGENT:
+        case RAPTOR_OPTION_WWW_CERT_FILENAME:
+        case RAPTOR_OPTION_WWW_CERT_TYPE:
+        case RAPTOR_OPTION_WWW_CERT_PASSPHRASE:
+        case RAPTOR_OPTION_WWW_SSL_VERIFY_PEER:
+        case RAPTOR_OPTION_WWW_SSL_VERIFY_HOST:
+
+        default:
+            return -1;
+    }
+
+    return 0;
 }
 
 
@@ -626,19 +620,18 @@ raptor_turtle_writer_set_option(raptor_turtle_writer *turtle_writer,
  * Return value: non 0 on failure or if the option is unknown
  **/
 int
-raptor_turtle_writer_set_option_string(raptor_turtle_writer *turtle_writer, 
-                                        raptor_option option, 
-                                        const unsigned char *value)
-{
-  if(!value ||
-     !raptor_option_is_valid_for_area(option, RAPTOR_OPTION_AREA_TURTLE_WRITER))
+raptor_turtle_writer_set_option_string(raptor_turtle_writer *turtle_writer,
+                                       raptor_option option,
+                                       const unsigned char *value) {
+    if (!value ||
+        !raptor_option_is_valid_for_area(option, RAPTOR_OPTION_AREA_TURTLE_WRITER))
+        return 1;
+
+    if (raptor_option_value_is_numeric(option))
+        return raptor_turtle_writer_set_option(turtle_writer, option,
+                                               atoi((const char *) value));
+
     return 1;
-
-  if(raptor_option_value_is_numeric(option))
-    return raptor_turtle_writer_set_option(turtle_writer, option, 
-                                            atoi((const char*)value));
-
-  return 1;
 }
 
 
@@ -656,81 +649,80 @@ raptor_turtle_writer_set_option_string(raptor_turtle_writer *turtle_writer,
  * Return value: option value or < 0 for an illegal option
  **/
 int
-raptor_turtle_writer_get_option(raptor_turtle_writer *turtle_writer, 
-                                 raptor_option option)
-{
-  int result = -1;
+raptor_turtle_writer_get_option(raptor_turtle_writer *turtle_writer,
+                                raptor_option option) {
+    int result = -1;
 
-  switch(option) {
-    case RAPTOR_OPTION_WRITER_AUTO_INDENT:
-      result = TURTLE_WRITER_AUTO_INDENT(turtle_writer);
-      break;
+    switch (option) {
+        case RAPTOR_OPTION_WRITER_AUTO_INDENT:
+            result = TURTLE_WRITER_AUTO_INDENT(turtle_writer);
+            break;
 
-    case RAPTOR_OPTION_WRITER_INDENT_WIDTH:
-      result = turtle_writer->indent;
-      break;
-    
-    /* writer options */
-    case RAPTOR_OPTION_WRITER_AUTO_EMPTY:
-    case RAPTOR_OPTION_WRITER_XML_VERSION:
-    case RAPTOR_OPTION_WRITER_XML_DECLARATION:
-      
-    /* parser options */
-    case RAPTOR_OPTION_SCANNING:
-    case RAPTOR_OPTION_ALLOW_NON_NS_ATTRIBUTES:
-    case RAPTOR_OPTION_ALLOW_OTHER_PARSETYPES:
-    case RAPTOR_OPTION_ALLOW_BAGID:
-    case RAPTOR_OPTION_ALLOW_RDF_TYPE_RDF_LIST:
-    case RAPTOR_OPTION_NORMALIZE_LANGUAGE:
-    case RAPTOR_OPTION_NON_NFC_FATAL:
-    case RAPTOR_OPTION_WARN_OTHER_PARSETYPES:
-    case RAPTOR_OPTION_CHECK_RDF_ID:
-    case RAPTOR_OPTION_HTML_TAG_SOUP:
-    case RAPTOR_OPTION_MICROFORMATS:
-    case RAPTOR_OPTION_HTML_LINK:
-    case RAPTOR_OPTION_WWW_TIMEOUT:
-    case RAPTOR_OPTION_STRICT:
+        case RAPTOR_OPTION_WRITER_INDENT_WIDTH:
+            result = turtle_writer->indent;
+            break;
 
-    /* Shared */
-    case RAPTOR_OPTION_NO_NET:
-    case RAPTOR_OPTION_NO_FILE:
-    case RAPTOR_OPTION_LOAD_EXTERNAL_ENTITIES:
+            /* writer options */
+        case RAPTOR_OPTION_WRITER_AUTO_EMPTY:
+        case RAPTOR_OPTION_WRITER_XML_VERSION:
+        case RAPTOR_OPTION_WRITER_XML_DECLARATION:
 
-    /* XML writer options */
-    case RAPTOR_OPTION_RELATIVE_URIS:
+            /* parser options */
+        case RAPTOR_OPTION_SCANNING:
+        case RAPTOR_OPTION_ALLOW_NON_NS_ATTRIBUTES:
+        case RAPTOR_OPTION_ALLOW_OTHER_PARSETYPES:
+        case RAPTOR_OPTION_ALLOW_BAGID:
+        case RAPTOR_OPTION_ALLOW_RDF_TYPE_RDF_LIST:
+        case RAPTOR_OPTION_NORMALIZE_LANGUAGE:
+        case RAPTOR_OPTION_NON_NFC_FATAL:
+        case RAPTOR_OPTION_WARN_OTHER_PARSETYPES:
+        case RAPTOR_OPTION_CHECK_RDF_ID:
+        case RAPTOR_OPTION_HTML_TAG_SOUP:
+        case RAPTOR_OPTION_MICROFORMATS:
+        case RAPTOR_OPTION_HTML_LINK:
+        case RAPTOR_OPTION_WWW_TIMEOUT:
+        case RAPTOR_OPTION_STRICT:
 
-    /* DOT serializer options */
-    case RAPTOR_OPTION_RESOURCE_BORDER:
-    case RAPTOR_OPTION_LITERAL_BORDER:
-    case RAPTOR_OPTION_BNODE_BORDER:
-    case RAPTOR_OPTION_RESOURCE_FILL:
-    case RAPTOR_OPTION_LITERAL_FILL:
-    case RAPTOR_OPTION_BNODE_FILL:
+            /* Shared */
+        case RAPTOR_OPTION_NO_NET:
+        case RAPTOR_OPTION_NO_FILE:
+        case RAPTOR_OPTION_LOAD_EXTERNAL_ENTITIES:
 
-    /* JSON serializer options */
-    case RAPTOR_OPTION_JSON_CALLBACK:
-    case RAPTOR_OPTION_JSON_EXTRA_DATA:
-    case RAPTOR_OPTION_RSS_TRIPLES:
-    case RAPTOR_OPTION_ATOM_ENTRY_URI:
-    case RAPTOR_OPTION_PREFIX_ELEMENTS:
-    
-    /* Turtle serializer option */
-    case RAPTOR_OPTION_WRITE_BASE_URI:
+            /* XML writer options */
+        case RAPTOR_OPTION_RELATIVE_URIS:
 
-    /* WWW option */
-    case RAPTOR_OPTION_WWW_HTTP_CACHE_CONTROL:
-    case RAPTOR_OPTION_WWW_HTTP_USER_AGENT:
-    case RAPTOR_OPTION_WWW_CERT_FILENAME:
-    case RAPTOR_OPTION_WWW_CERT_TYPE:
-    case RAPTOR_OPTION_WWW_CERT_PASSPHRASE:
-    case RAPTOR_OPTION_WWW_SSL_VERIFY_PEER:
-    case RAPTOR_OPTION_WWW_SSL_VERIFY_HOST:
-      
-    default:
-      break;
-  }
-  
-  return result;
+            /* DOT serializer options */
+        case RAPTOR_OPTION_RESOURCE_BORDER:
+        case RAPTOR_OPTION_LITERAL_BORDER:
+        case RAPTOR_OPTION_BNODE_BORDER:
+        case RAPTOR_OPTION_RESOURCE_FILL:
+        case RAPTOR_OPTION_LITERAL_FILL:
+        case RAPTOR_OPTION_BNODE_FILL:
+
+            /* JSON serializer options */
+        case RAPTOR_OPTION_JSON_CALLBACK:
+        case RAPTOR_OPTION_JSON_EXTRA_DATA:
+        case RAPTOR_OPTION_RSS_TRIPLES:
+        case RAPTOR_OPTION_ATOM_ENTRY_URI:
+        case RAPTOR_OPTION_PREFIX_ELEMENTS:
+
+            /* Turtle serializer option */
+        case RAPTOR_OPTION_WRITE_BASE_URI:
+
+            /* WWW option */
+        case RAPTOR_OPTION_WWW_HTTP_CACHE_CONTROL:
+        case RAPTOR_OPTION_WWW_HTTP_USER_AGENT:
+        case RAPTOR_OPTION_WWW_CERT_FILENAME:
+        case RAPTOR_OPTION_WWW_CERT_TYPE:
+        case RAPTOR_OPTION_WWW_CERT_PASSPHRASE:
+        case RAPTOR_OPTION_WWW_SSL_VERIFY_PEER:
+        case RAPTOR_OPTION_WWW_SSL_VERIFY_HOST:
+
+        default:
+            break;
+    }
+
+    return result;
 }
 
 
@@ -746,10 +738,9 @@ raptor_turtle_writer_get_option(raptor_turtle_writer *turtle_writer,
  * Return value: option value or NULL for an illegal option or no value
  **/
 const unsigned char *
-raptor_turtle_writer_get_option_string(raptor_turtle_writer *turtle_writer, 
-                                        raptor_option option)
-{
-  return NULL;
+raptor_turtle_writer_get_option_string(raptor_turtle_writer *turtle_writer,
+                                       raptor_option option) {
+    return NULL;
 }
 
 
@@ -763,11 +754,10 @@ raptor_turtle_writer_get_option_string(raptor_turtle_writer *turtle_writer,
  *
  **/
 void
-raptor_turtle_writer_bnodeid(raptor_turtle_writer* turtle_writer,
-                             const unsigned char *bnodeid, size_t len)
-{
-  raptor_bnodeid_ntriples_write(bnodeid, len,
-                                turtle_writer->iostr);
+raptor_turtle_writer_bnodeid(raptor_turtle_writer *turtle_writer,
+                             const unsigned char *bnodeid, size_t len) {
+    raptor_bnodeid_ntriples_write(bnodeid, len,
+                                  turtle_writer->iostr);
 }
 
 
@@ -781,31 +771,30 @@ raptor_turtle_writer_bnodeid(raptor_turtle_writer* turtle_writer,
  * Return value: non-0 on failure
  */
 int
-raptor_turtle_writer_uri(raptor_turtle_writer* turtle_writer,
-                         raptor_uri* uri)
-{
-  raptor_qname* qname;
-  int rc = 0;
+raptor_turtle_writer_uri(raptor_turtle_writer *turtle_writer,
+                         raptor_uri *uri) {
+    raptor_qname *qname;
+    int rc = 0;
 
-  if(!uri)
-    return 1;
+    if (!uri)
+        return 1;
 
-  qname = raptor_new_qname_from_namespace_uri(turtle_writer->nstack, uri, 10);
+    qname = raptor_new_qname_from_namespace_uri(turtle_writer->nstack, uri, 10);
 
-  /* XML Names allow leading '_' and '.' anywhere but Turtle does not */
-  if(qname && !raptor_turtle_is_legal_turtle_qname(qname)) {
-    raptor_free_qname(qname);
-    qname = NULL;
-  }
+    /* XML Names allow leading '_' and '.' anywhere but Turtle does not */
+    if (qname && !raptor_turtle_is_legal_turtle_qname(qname)) {
+        raptor_free_qname(qname);
+        qname = NULL;
+    }
 
-  if(qname) {
-    raptor_turtle_writer_qname(turtle_writer, qname);
-    raptor_free_qname(qname);
-  } else {
-    rc = raptor_turtle_writer_reference(turtle_writer, uri);
-  }
+    if (qname) {
+        raptor_turtle_writer_qname(turtle_writer, qname);
+        raptor_free_qname(qname);
+    } else {
+        rc = raptor_turtle_writer_reference(turtle_writer, uri);
+    }
 
-  return rc;
+    return rc;
 }
 
 
@@ -819,38 +808,34 @@ raptor_turtle_writer_uri(raptor_turtle_writer* turtle_writer,
  * Return value: non-0 on failure
  */
 int
-raptor_turtle_writer_term(raptor_turtle_writer* turtle_writer,
-                          raptor_term* term)
-{
-  int rc = 0;
+raptor_turtle_writer_term(raptor_turtle_writer *turtle_writer,
+                          raptor_term *term) {
+    int rc = 0;
 
-  if(!term)
-    return 1;
+    if (!term)
+        return 1;
 
-  if(term->type == RAPTOR_TERM_TYPE_URI) {
-    rc = raptor_turtle_writer_uri(turtle_writer, term->value.uri);
-  } else if(term->type == RAPTOR_TERM_TYPE_LITERAL) {
-    rc = raptor_turtle_writer_literal(turtle_writer,
-                                      turtle_writer->nstack,
-                                      term->value.literal.string,
-                                      term->value.literal.language, 
-                                      term->value.literal.datatype);
-  } else if(term->type == RAPTOR_TERM_TYPE_BLANK) {
-    rc = raptor_bnodeid_ntriples_write(term->value.blank.string,
-                                       term->value.blank.string_len,
-                                       turtle_writer->iostr);
-  } else {
-    rc = 2;
-  }
-  
-  return rc;
+    if (term->type == RAPTOR_TERM_TYPE_URI) {
+        rc = raptor_turtle_writer_uri(turtle_writer, term->value.uri);
+    } else if (term->type == RAPTOR_TERM_TYPE_LITERAL) {
+        rc = raptor_turtle_writer_literal(turtle_writer,
+                                          turtle_writer->nstack,
+                                          term->value.literal.string,
+                                          term->value.literal.language,
+                                          term->value.literal.datatype);
+    } else if (term->type == RAPTOR_TERM_TYPE_BLANK) {
+        rc = raptor_bnodeid_ntriples_write(term->value.blank.string,
+                                           term->value.blank.string_len,
+                                           turtle_writer->iostr);
+    } else {
+        rc = 2;
+    }
+
+    return rc;
 }
 
 
-
-
 #endif
-
 
 
 #ifdef STANDALONE

@@ -23,7 +23,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #include <string.h>
@@ -46,31 +48,30 @@
  *
  * Return value: pointer to match string or NULL on failure or failed to find
  */
-const char*
-raptor_memstr(const char *haystack, size_t haystack_len, const char *needle)
-{
-  size_t needle_len;
-  const char *p;
-  
-  if(!haystack || !needle)
+const char *
+raptor_memstr(const char *haystack, size_t haystack_len, const char *needle) {
+    size_t needle_len;
+    const char *p;
+
+    if (!haystack || !needle)
+        return NULL;
+
+    if (!*needle)
+        return haystack;
+
+    needle_len = strlen(needle);
+
+    /* loop invariant: haystack_len is always length of remaining buffer at *p */
+    for (p = haystack;
+         (haystack_len >= needle_len) && *p;
+         p++, haystack_len--) {
+
+        /* check match */
+        if (!memcmp(p, needle, needle_len))
+            return p;
+    }
+
     return NULL;
-  
-  if(!*needle)
-    return haystack;
-  
-  needle_len = strlen(needle);
-
-  /* loop invariant: haystack_len is always length of remaining buffer at *p */
-  for(p = haystack;
-      (haystack_len >= needle_len) && *p;
-      p++, haystack_len--) {
-
-    /* check match */
-    if(!memcmp(p, needle, needle_len))
-      return p;
-  }
-  
-  return NULL;
 }
 
     

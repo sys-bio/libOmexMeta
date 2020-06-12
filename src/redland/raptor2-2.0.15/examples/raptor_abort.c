@@ -30,6 +30,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
+
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
 #endif
@@ -44,85 +45,83 @@
 
 
 static void handle_statements(void *user_data, raptor_statement *statement);
+
 int main(int argc, char *argv[]);
 
 
-typedef struct 
-{
-  raptor_parser *parser;
-  FILE *stream;
-  int count;
-  int max;
-  int stopped;
+typedef struct {
+    raptor_parser *parser;
+    FILE *stream;
+    int count;
+    int max;
+    int stopped;
 } my_data;
 
 
 static void
-handle_statements(void *user_data, raptor_statement *statement) 
-{
-  my_data* me=(my_data*)user_data;
-  
-  me->count++;
-  if(me->count > me->max) {
-    fprintf(me->stream, "Reached %d statements, stopping\n", me->max);
-    raptor_parser_parse_abort(me->parser);
-    me->stopped=1;
-    return;
-  }
+handle_statements(void *user_data, raptor_statement *statement) {
+    my_data *me = (my_data *) user_data;
 
-  fprintf(me->stream, "Saw statement %d\n", me->count);
+    me->count++;
+    if (me->count > me->max) {
+        fprintf(me->stream, "Reached %d statements, stopping\n", me->max);
+        raptor_parser_parse_abort(me->parser);
+        me->stopped = 1;
+        return;
+    }
+
+    fprintf(me->stream, "Saw statement %d\n", me->count);
 }
 
 
 int
-main (int argc, char *argv[]) 
-{
-  raptor_world* world;
-  raptor_parser* rdf_parser;
-  raptor_uri* uri;
-  my_data* me;
-  const char *program;
-  int rc;
-  
-  program=argv[0];
+main(int argc, char *argv[]) {
+    raptor_world *world;
+    raptor_parser *rdf_parser;
+    raptor_uri *uri;
+    my_data *me;
+    const char *program;
+    int rc;
 
-  if(argc != 2) {
-    fprintf(stderr, "%s: USAGE [RDF-XML content URI]\n", program);
-    exit(1);
-  }
+    program = argv[0];
 
-  world = raptor_new_world();
+    if (argc != 2) {
+        fprintf(stderr, "%s: USAGE [RDF-XML content URI]\n", program);
+        exit(1);
+    }
 
-  me=(my_data*)malloc(sizeof(my_data));
-  if(!me) {
-    fprintf(stderr, "%s: Out of memory\n", program);
-    exit(1);
-  }
+    world = raptor_new_world();
 
-  me->stream=stderr;
-  me->count = 0;
-  me->max=5;
+    me = (my_data *) malloc(sizeof(my_data));
+    if (!me) {
+        fprintf(stderr, "%s: Out of memory\n", program);
+        exit(1);
+    }
 
-  uri = raptor_new_uri(world, (const unsigned char*)argv[1]);
-  rdf_parser = raptor_new_parser(world, "rdfxml");
+    me->stream = stderr;
+    me->count = 0;
+    me->max = 5;
 
-  me->parser = rdf_parser;
+    uri = raptor_new_uri(world, (const unsigned char *) argv[1]);
+    rdf_parser = raptor_new_parser(world, "rdfxml");
 
-  raptor_parser_set_statement_handler(rdf_parser, me, handle_statements);
+    me->parser = rdf_parser;
 
-  me->stopped = 0;
-  rc = raptor_parser_parse_uri(rdf_parser, uri, NULL);
+    raptor_parser_set_statement_handler(rdf_parser, me, handle_statements);
 
-  fprintf(stderr, "%s: Parser returned status %d, stopped? %s\n", program, rc,
-          (me->stopped ? "yes" : "no"));
+    me->stopped = 0;
+    rc = raptor_parser_parse_uri(rdf_parser, uri, NULL);
 
-  free(me);
-  
-  raptor_free_parser(rdf_parser);
+    fprintf(stderr, "%s: Parser returned status %d, stopped? %s\n", program, rc,
+            (me->stopped ? "yes" : "no"));
 
-  raptor_free_uri(uri);
+    free(me);
 
-  raptor_free_world(world);
+    raptor_free_parser(rdf_parser);
 
-  return 0;
+    raptor_free_uri(uri);
+
+    raptor_free_world(world);
+
+    return 0;
 }

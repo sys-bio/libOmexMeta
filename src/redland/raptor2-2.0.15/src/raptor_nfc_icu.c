@@ -23,17 +23,24 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <stdio.h>
 #include <stdarg.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 /* Raptor includes */
@@ -56,18 +63,17 @@
  * Return value: Non 0 if the string is NFC
  **/
 int
-raptor_nfc_icu_check(const unsigned char* string, size_t len, int *error)
-{
-   UNormalizationCheckResult res;
-   UErrorCode error_code = U_ZERO_ERROR;
-   
-   res = unorm_quickCheck((const UChar *)string, (int32_t)len,
-                          UNORM_NFC, &error_code);
-   if(!U_SUCCESS(error_code)) {
-     if(error)
-       *error = 1;
-     return 0;
-   }
-   
-   return (res == UNORM_YES);
+raptor_nfc_icu_check(const unsigned char *string, size_t len, int *error) {
+    UNormalizationCheckResult res;
+    UErrorCode error_code = U_ZERO_ERROR;
+
+    res = unorm_quickCheck((const UChar *) string, (int32_t) len,
+                           UNORM_NFC, &error_code);
+    if (!U_SUCCESS(error_code)) {
+        if (error)
+            *error = 1;
+        return 0;
+    }
+
+    return (res == UNORM_YES);
 }

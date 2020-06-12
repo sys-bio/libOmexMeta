@@ -35,9 +35,9 @@ extern "C" {
 #endif
 
 REDLAND_API
-void librdf_world_set_raptor(librdf_world* world, raptor_world* raptor_world_ptr);
+void librdf_world_set_raptor(librdf_world *world, raptor_world *raptor_world_ptr);
 REDLAND_API
-raptor_world* librdf_world_get_raptor(librdf_world* world);
+raptor_world *librdf_world_get_raptor(librdf_world *world);
 
 
 #ifdef __cplusplus

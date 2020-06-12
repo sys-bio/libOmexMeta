@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -33,16 +35,18 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h> /* for exit()  */
+
 #endif
 
 #include <redland.h>
 
 
-typedef struct 
-{
-  librdf_storage *storage;
+typedef struct {
+    librdf_storage *storage;
 } librdf_model_storage_context;
 
 
@@ -54,7 +58,7 @@ librdf_model_storage_init(void) {
 
 static void
 librdf_model_storage_terminate(void) {
-  
+
 }
 
 
@@ -71,22 +75,21 @@ librdf_model_storage_terminate(void) {
  * Return value: non 0 on failure
  **/
 static int
-librdf_model_storage_create(librdf_model *model, librdf_storage *storage, 
-                            librdf_hash* options)
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  
-  if(!storage)
-    return 1;
-  
-  if(librdf_storage_open(storage, model))
-    return 1;
-  
-  context->storage=storage;
+librdf_model_storage_create(librdf_model *model, librdf_storage *storage,
+                            librdf_hash *options) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
 
-  librdf_storage_add_reference(storage);
-  
-  return 0;
+    if (!storage)
+        return 1;
+
+    if (librdf_storage_open(storage, model))
+        return 1;
+
+    context->storage = storage;
+
+    librdf_storage_add_reference(storage);
+
+    return 0;
 }
 
 
@@ -101,22 +104,21 @@ librdf_model_storage_create(librdf_model *model, librdf_storage *storage,
  * 
  * Return value: a new #librdf_model or NULL on failure
  **/
-static librdf_model*
-librdf_model_storage_clone(librdf_model* old_model)
-{
-  librdf_model_storage_context *old_context=(librdf_model_storage_context *)old_model->context;
-  librdf_storage *new_storage;
-  librdf_model *new_model;
-  
-  new_storage=librdf_new_storage_from_storage(old_context->storage);
-  if(!new_storage)
-    return NULL;
+static librdf_model *
+librdf_model_storage_clone(librdf_model *old_model) {
+    librdf_model_storage_context *old_context = (librdf_model_storage_context *) old_model->context;
+    librdf_storage *new_storage;
+    librdf_model *new_model;
 
-  new_model=librdf_new_model_with_options(old_model->world, new_storage, NULL);
-  if(!new_model)
-    librdf_free_storage(new_storage);
+    new_storage = librdf_new_storage_from_storage(old_context->storage);
+    if (!new_storage)
+        return NULL;
 
-  return new_model;
+    new_model = librdf_new_model_with_options(old_model->world, new_storage, NULL);
+    if (!new_model)
+        librdf_free_storage(new_storage);
+
+    return new_model;
 }
 
 
@@ -128,17 +130,15 @@ librdf_model_storage_clone(librdf_model* old_model)
  * 
  **/
 static void
-librdf_model_storage_destroy(librdf_model *model)
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
+librdf_model_storage_destroy(librdf_model *model) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
 
-  if(context->storage) {
-    librdf_storage_close(context->storage);
-    librdf_storage_remove_reference(context->storage);
-  }
-  
+    if (context->storage) {
+        librdf_storage_close(context->storage);
+        librdf_storage_remove_reference(context->storage);
+    }
+
 }
-
 
 
 /**
@@ -150,10 +150,9 @@ librdf_model_storage_destroy(librdf_model *model)
  * Return value: the number of statements
  **/
 static int
-librdf_model_storage_size(librdf_model* model)
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_size(context->storage);
+librdf_model_storage_size(librdf_model *model) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_size(context->storage);
 }
 
 
@@ -170,11 +169,10 @@ librdf_model_storage_size(librdf_model* model)
  * Return value: non 0 on failure
  **/
 static int
-librdf_model_storage_add_statement(librdf_model* model, 
-                                   librdf_statement* statement)
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_add_statement(context->storage, statement);
+librdf_model_storage_add_statement(librdf_model *model,
+                                   librdf_statement *statement) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_add_statement(context->storage, statement);
 }
 
 
@@ -188,10 +186,9 @@ librdf_model_storage_add_statement(librdf_model* model,
  * Return value: non 0 on failure
  **/
 static int
-librdf_model_storage_add_statements(librdf_model* model, librdf_stream* statement_stream)
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_add_statements(context->storage, statement_stream);
+librdf_model_storage_add_statements(librdf_model *model, librdf_stream *statement_stream) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_add_statements(context->storage, statement_stream);
 }
 
 
@@ -205,11 +202,10 @@ librdf_model_storage_add_statements(librdf_model* model, librdf_stream* statemen
  * Return value: non 0 on failure
  **/
 static int
-librdf_model_storage_remove_statement(librdf_model* model, 
-                                      librdf_statement* statement)
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_remove_statement(context->storage, statement);
+librdf_model_storage_remove_statement(librdf_model *model,
+                                      librdf_statement *statement) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_remove_statement(context->storage, statement);
 }
 
 
@@ -223,10 +219,9 @@ librdf_model_storage_remove_statement(librdf_model* model,
  * Return value: non 0 if the model contains the statement
  **/
 static int
-librdf_model_storage_contains_statement(librdf_model* model, librdf_statement* statement)
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_contains_statement(context->storage, statement);
+librdf_model_storage_contains_statement(librdf_model *model, librdf_statement *statement) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_contains_statement(context->storage, statement);
 }
 
 
@@ -238,11 +233,10 @@ librdf_model_storage_contains_statement(librdf_model* model, librdf_statement* s
  * 
  * Return value: a #librdf_stream or NULL on failure
  **/
-static librdf_stream*
-librdf_model_storage_serialise(librdf_model* model)
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_serialise(context->storage);
+static librdf_stream *
+librdf_model_storage_serialise(librdf_model *model) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_serialise(context->storage);
 }
 
 
@@ -260,12 +254,11 @@ librdf_model_storage_serialise(librdf_model* model)
  * Return value: a #librdf_stream of statements (can be empty) or NULL
  * on failure.
  **/
-static librdf_stream*
-librdf_model_storage_find_statements(librdf_model* model, 
-                                     librdf_statement* statement)
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_find_statements(context->storage, statement);
+static librdf_stream *
+librdf_model_storage_find_statements(librdf_model *model,
+                                     librdf_statement *statement) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_find_statements(context->storage, statement);
 }
 
 
@@ -282,12 +275,11 @@ librdf_model_storage_find_statements(librdf_model* model,
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-static librdf_iterator*
+static librdf_iterator *
 librdf_model_storage_get_sources(librdf_model *model,
-                                 librdf_node *arc, librdf_node *target) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_get_sources(context->storage, arc, target);
+                                 librdf_node *arc, librdf_node *target) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_get_sources(context->storage, arc, target);
 }
 
 
@@ -304,12 +296,11 @@ librdf_model_storage_get_sources(librdf_model *model,
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-static librdf_iterator*
+static librdf_iterator *
 librdf_model_storage_get_arcs(librdf_model *model,
-                              librdf_node *source, librdf_node *target) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_get_arcs(context->storage, source, target);
+                              librdf_node *source, librdf_node *target) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_get_arcs(context->storage, source, target);
 }
 
 
@@ -326,14 +317,12 @@ librdf_model_storage_get_arcs(librdf_model *model,
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-static librdf_iterator*
+static librdf_iterator *
 librdf_model_storage_get_targets(librdf_model *model,
-                                 librdf_node *source, librdf_node *arc) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_get_targets(context->storage, source, arc);
+                                 librdf_node *source, librdf_node *arc) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_get_targets(context->storage, source, arc);
 }
-
 
 
 /**
@@ -345,11 +334,10 @@ librdf_model_storage_get_targets(librdf_model *model,
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-static librdf_iterator*
-librdf_model_storage_get_arcs_in(librdf_model *model, librdf_node *node) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_get_arcs_in(context->storage, node);
+static librdf_iterator *
+librdf_model_storage_get_arcs_in(librdf_model *model, librdf_node *node) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_get_arcs_in(context->storage, node);
 }
 
 
@@ -362,11 +350,10 @@ librdf_model_storage_get_arcs_in(librdf_model *model, librdf_node *node)
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-static librdf_iterator*
-librdf_model_storage_get_arcs_out(librdf_model *model, librdf_node *node) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_get_arcs_out(context->storage, node);
+static librdf_iterator *
+librdf_model_storage_get_arcs_out(librdf_model *model, librdf_node *node) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_get_arcs_out(context->storage, node);
 }
 
 
@@ -381,11 +368,10 @@ librdf_model_storage_get_arcs_out(librdf_model *model, librdf_node *node)
  * Return value: non 0 if arc property does point to the resource node
  **/
 static int
-librdf_model_storage_has_arc_in(librdf_model *model, librdf_node *node, 
-                                librdf_node *property) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_has_arc_in(context->storage, node, property);
+librdf_model_storage_has_arc_in(librdf_model *model, librdf_node *node,
+                                librdf_node *property) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_has_arc_in(context->storage, node, property);
 }
 
 
@@ -401,12 +387,10 @@ librdf_model_storage_has_arc_in(librdf_model *model, librdf_node *node,
  **/
 static int
 librdf_model_storage_has_arc_out(librdf_model *model, librdf_node *node,
-                                 librdf_node *property) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_has_arc_out(context->storage, node, property);
+                                 librdf_node *property) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_has_arc_out(context->storage, node, property);
 }
-
 
 
 /**
@@ -420,13 +404,12 @@ librdf_model_storage_has_arc_out(librdf_model *model, librdf_node *node,
  * Return value: Non 0 on failure
  **/
 static int
-librdf_model_storage_context_add_statement(librdf_model* model, 
-                                           librdf_node* context,
-                                           librdf_statement* statement) 
-{
-  librdf_model_storage_context *mcontext=(librdf_model_storage_context *)model->context;
-  return librdf_storage_context_add_statement(mcontext->storage,
-                                              context, statement);
+librdf_model_storage_context_add_statement(librdf_model *model,
+                                           librdf_node *context,
+                                           librdf_statement *statement) {
+    librdf_model_storage_context *mcontext = (librdf_model_storage_context *) model->context;
+    return librdf_storage_context_add_statement(mcontext->storage,
+                                                context, statement);
 }
 
 
@@ -441,13 +424,12 @@ librdf_model_storage_context_add_statement(librdf_model* model,
  * Return value: Non 0 on failure
  **/
 static int
-librdf_model_storage_context_add_statements(librdf_model* model, 
-                                            librdf_node* context,
-                                            librdf_stream* stream) 
-{
-  librdf_model_storage_context *mcontext=(librdf_model_storage_context *)model->context;
-  return librdf_storage_context_add_statements(mcontext->storage, 
-                                               context, stream);
+librdf_model_storage_context_add_statements(librdf_model *model,
+                                            librdf_node *context,
+                                            librdf_stream *stream) {
+    librdf_model_storage_context *mcontext = (librdf_model_storage_context *) model->context;
+    return librdf_storage_context_add_statements(mcontext->storage,
+                                                 context, stream);
 }
 
 
@@ -462,13 +444,12 @@ librdf_model_storage_context_add_statements(librdf_model* model,
  * Return value: Non 0 on failure
  **/
 static int
-librdf_model_storage_context_remove_statement(librdf_model* model,
-                                              librdf_node* context,
-                                              librdf_statement* statement) 
-{
-  librdf_model_storage_context *mcontext=(librdf_model_storage_context *)model->context;
-  return librdf_storage_context_remove_statement(mcontext->storage,
-                                                 context, statement);
+librdf_model_storage_context_remove_statement(librdf_model *model,
+                                              librdf_node *context,
+                                              librdf_statement *statement) {
+    librdf_model_storage_context *mcontext = (librdf_model_storage_context *) model->context;
+    return librdf_storage_context_remove_statement(mcontext->storage,
+                                                   context, statement);
 }
 
 
@@ -482,11 +463,10 @@ librdf_model_storage_context_remove_statement(librdf_model* model,
  * Return value: Non 0 on failure
  **/
 static int
-librdf_model_storage_context_remove_statements(librdf_model* model,
-                                               librdf_node* context) 
-{
-  librdf_model_storage_context *mcontext=(librdf_model_storage_context *)model->context;
-  return librdf_storage_context_remove_statements(mcontext->storage, context);
+librdf_model_storage_context_remove_statements(librdf_model *model,
+                                               librdf_node *context) {
+    librdf_model_storage_context *mcontext = (librdf_model_storage_context *) model->context;
+    return librdf_storage_context_remove_statements(mcontext->storage, context);
 }
 
 
@@ -499,12 +479,11 @@ librdf_model_storage_context_remove_statements(librdf_model* model,
  * 
  * Return value: #librdf_stream of statements or NULL on failure
  **/
-static librdf_stream*
-librdf_model_storage_context_serialize(librdf_model* model, 
-                                       librdf_node* context) 
-{
-  librdf_model_storage_context *mcontext=(librdf_model_storage_context *)model->context;
-  return librdf_storage_context_as_stream(mcontext->storage, context);
+static librdf_stream *
+librdf_model_storage_context_serialize(librdf_model *model,
+                                       librdf_node *context) {
+    librdf_model_storage_context *mcontext = (librdf_model_storage_context *) model->context;
+    return librdf_storage_context_as_stream(mcontext->storage, context);
 }
 
 
@@ -523,37 +502,36 @@ librdf_model_storage_context_serialize(librdf_model* model,
  * 
  * Return value: #librdf_stream of matching statements (may be empty) or NULL on failure
  **/
-static librdf_stream*
-librdf_model_storage_find_statements_in_context(librdf_model* model,
-                                                librdf_statement* statement,
-                                                librdf_node* context_node) 
-{
-  librdf_model_storage_context *mcontext=(librdf_model_storage_context *)model->context;
-  librdf_stream *stream;
+static librdf_stream *
+librdf_model_storage_find_statements_in_context(librdf_model *model,
+                                                librdf_statement *statement,
+                                                librdf_node *context_node) {
+    librdf_model_storage_context *mcontext = (librdf_model_storage_context *) model->context;
+    librdf_stream *stream;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
 
-  if(mcontext->storage->factory->find_statements_in_context)
-    return mcontext->storage->factory->find_statements_in_context(mcontext->storage,
-                                                                  statement,
-                                                                  context_node);
+    if (mcontext->storage->factory->find_statements_in_context)
+        return mcontext->storage->factory->find_statements_in_context(mcontext->storage,
+                                                                      statement,
+                                                                      context_node);
 
-  statement=librdf_new_statement_from_statement(statement);
-  if(!statement)
-    return NULL;
+    statement = librdf_new_statement_from_statement(statement);
+    if (!statement)
+        return NULL;
 
-  stream=librdf_model_context_as_stream(model, context_node);
-  if(!stream) {
-    librdf_free_statement(statement);
-    return librdf_new_empty_stream(model->world);
-  }
+    stream = librdf_model_context_as_stream(model, context_node);
+    if (!stream) {
+        librdf_free_statement(statement);
+        return librdf_new_empty_stream(model->world);
+    }
 
-  librdf_stream_add_map(stream,
-                        &librdf_stream_statement_find_map,
-                        (librdf_stream_map_free_context_handler)&librdf_free_statement, (void*)statement);
+    librdf_stream_add_map(stream,
+                          &librdf_stream_statement_find_map,
+                          (librdf_stream_map_free_context_handler) &librdf_free_statement, (void *) statement);
 
-  return stream;
+    return stream;
 }
 
 
@@ -568,17 +546,15 @@ librdf_model_storage_find_statements_in_context(librdf_model* model,
  * 
  * Return value: #librdf_query_results or NULL on failure
  **/
-static librdf_query_results*
-librdf_model_storage_query_execute(librdf_model* model,
-                                   librdf_query *query) 
-{
-  librdf_model_storage_context *mcontext=(librdf_model_storage_context *)model->context;
-  if(librdf_storage_supports_query(mcontext->storage, query))
-    return librdf_storage_query_execute(mcontext->storage, query);
-  else
-    return librdf_query_execute(query,model);
+static librdf_query_results *
+librdf_model_storage_query_execute(librdf_model *model,
+                                   librdf_query *query) {
+    librdf_model_storage_context *mcontext = (librdf_model_storage_context *) model->context;
+    if (librdf_storage_supports_query(mcontext->storage, query))
+        return librdf_storage_query_execute(mcontext->storage, query);
+    else
+        return librdf_query_execute(query, model);
 }
-
 
 
 /**
@@ -590,10 +566,9 @@ librdf_model_storage_query_execute(librdf_model* model,
  * Return-value: Non-0 on failure
  **/
 static int
-librdf_model_storage_sync(librdf_model* model) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_sync(context->storage);
+librdf_model_storage_sync(librdf_model *model) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_sync(context->storage);
 }
 
 
@@ -604,11 +579,10 @@ librdf_model_storage_sync(librdf_model* model)
  * Get the storage for the model.
  * 
  **/
-static librdf_storage*
-librdf_model_storage_get_storage(librdf_model* model) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return context->storage;
+static librdf_storage *
+librdf_model_storage_get_storage(librdf_model *model) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return context->storage;
 }
 
 
@@ -623,13 +597,11 @@ librdf_model_storage_get_storage(librdf_model* model)
  *
  * Return value: #librdf_iterator of context nodes or NULL on failure or if contexts are not supported
  **/
-static librdf_iterator*
-librdf_model_storage_get_contexts(librdf_model* model) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_get_contexts(context->storage);
+static librdf_iterator *
+librdf_model_storage_get_contexts(librdf_model *model) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_get_contexts(context->storage);
 }
-
 
 
 /**
@@ -642,11 +614,10 @@ librdf_model_storage_get_contexts(librdf_model* model)
  * Return value: new #librdf_node feature value or NULL if no such feature
  * exists or the value is empty.
  **/
-static librdf_node*
-librdf_model_storage_get_feature(librdf_model* model, librdf_uri* feature)
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_get_feature(context->storage, feature);
+static librdf_node *
+librdf_model_storage_get_feature(librdf_model *model, librdf_uri *feature) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_get_feature(context->storage, feature);
 }
 
 
@@ -662,22 +633,20 @@ librdf_model_storage_get_feature(librdf_model* model, librdf_uri* feature)
  * exists or the value is empty.
  **/
 static int
-librdf_model_storage_set_feature(librdf_model* model, librdf_uri* feature,
-                                 librdf_node* value)
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_set_feature(context->storage, feature, value);
+librdf_model_storage_set_feature(librdf_model *model, librdf_uri *feature,
+                                 librdf_node *value) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_set_feature(context->storage, feature, value);
 }
 
 
-static librdf_stream*
-librdf_model_storage_find_statements_with_options(librdf_model* model,
-                                                  librdf_statement* statement,
-                                                  librdf_node* context_node,
-                                                  librdf_hash* options) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_find_statements_with_options(context->storage, statement, context_node, options);
+static librdf_stream *
+librdf_model_storage_find_statements_with_options(librdf_model *model,
+                                                  librdf_statement *statement,
+                                                  librdf_node *context_node,
+                                                  librdf_hash *options) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_find_statements_with_options(context->storage, statement, context_node, options);
 }
 
 
@@ -690,10 +659,9 @@ librdf_model_storage_find_statements_with_options(librdf_model* model,
  * Return value: non-0 on failure
  **/
 static int
-librdf_model_storage_transaction_start(librdf_model* model) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_transaction_start(context->storage);
+librdf_model_storage_transaction_start(librdf_model *model) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_transaction_start(context->storage);
 }
 
 
@@ -707,11 +675,10 @@ librdf_model_storage_transaction_start(librdf_model* model)
  * Return value: non-0 on failure
  **/
 static int
-librdf_model_storage_transaction_start_with_handle(librdf_model* model,
-                                                   void* handle)
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_transaction_start_with_handle(context->storage, handle);
+librdf_model_storage_transaction_start_with_handle(librdf_model *model,
+                                                   void *handle) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_transaction_start_with_handle(context->storage, handle);
 }
 
 
@@ -724,10 +691,9 @@ librdf_model_storage_transaction_start_with_handle(librdf_model* model,
  * Return value: non-0 on failure 
  **/
 static int
-librdf_model_storage_transaction_commit(librdf_model* model) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_transaction_commit(context->storage);
+librdf_model_storage_transaction_commit(librdf_model *model) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_transaction_commit(context->storage);
 }
 
 
@@ -740,10 +706,9 @@ librdf_model_storage_transaction_commit(librdf_model* model)
  * Return value: non-0 on failure 
  **/
 static int
-librdf_model_storage_transaction_rollback(librdf_model* model) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_transaction_rollback(context->storage);
+librdf_model_storage_transaction_rollback(librdf_model *model) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_transaction_rollback(context->storage);
 }
 
 
@@ -755,65 +720,62 @@ librdf_model_storage_transaction_rollback(librdf_model* model)
  * 
  * Return value: non-0 on failure 
  **/
-static void*
-librdf_model_storage_transaction_get_handle(librdf_model* model) 
-{
-  librdf_model_storage_context *context=(librdf_model_storage_context *)model->context;
-  return librdf_storage_transaction_get_handle(context->storage);
+static void *
+librdf_model_storage_transaction_get_handle(librdf_model *model) {
+    librdf_model_storage_context *context = (librdf_model_storage_context *) model->context;
+    return librdf_storage_transaction_get_handle(context->storage);
 }
-
 
 
 /* local function to register model_storage functions */
 
 static void
-librdf_model_storage_register_factory(librdf_model_factory *factory) 
-{
-  factory->context_length     = sizeof(librdf_model_storage_context);
-  
-  factory->init               = librdf_model_storage_init;
-  factory->terminate          = librdf_model_storage_terminate;
-  factory->create             = librdf_model_storage_create;
-  factory->clone              = librdf_model_storage_clone;
-  factory->destroy            = librdf_model_storage_destroy;
-  factory->size               = librdf_model_storage_size;
-  factory->add_statement      = librdf_model_storage_add_statement;
-  factory->add_statements     = librdf_model_storage_add_statements;
-  factory->remove_statement   = librdf_model_storage_remove_statement;
-  factory->contains_statement = librdf_model_storage_contains_statement;
-  factory->serialise          = librdf_model_storage_serialise;
+librdf_model_storage_register_factory(librdf_model_factory *factory) {
+    factory->context_length = sizeof(librdf_model_storage_context);
 
-  factory->find_statements    = librdf_model_storage_find_statements;
-  factory->get_sources        = librdf_model_storage_get_sources;
-  factory->get_arcs           = librdf_model_storage_get_arcs;
-  factory->get_targets        = librdf_model_storage_get_targets;
+    factory->init = librdf_model_storage_init;
+    factory->terminate = librdf_model_storage_terminate;
+    factory->create = librdf_model_storage_create;
+    factory->clone = librdf_model_storage_clone;
+    factory->destroy = librdf_model_storage_destroy;
+    factory->size = librdf_model_storage_size;
+    factory->add_statement = librdf_model_storage_add_statement;
+    factory->add_statements = librdf_model_storage_add_statements;
+    factory->remove_statement = librdf_model_storage_remove_statement;
+    factory->contains_statement = librdf_model_storage_contains_statement;
+    factory->serialise = librdf_model_storage_serialise;
 
-  factory->get_arcs_in        = librdf_model_storage_get_arcs_in;
-  factory->get_arcs_out       = librdf_model_storage_get_arcs_out;
-  factory->has_arc_in         = librdf_model_storage_has_arc_in;
-  factory->has_arc_out        = librdf_model_storage_has_arc_out;
+    factory->find_statements = librdf_model_storage_find_statements;
+    factory->get_sources = librdf_model_storage_get_sources;
+    factory->get_arcs = librdf_model_storage_get_arcs;
+    factory->get_targets = librdf_model_storage_get_targets;
 
-  factory->context_add_statement    = librdf_model_storage_context_add_statement;
-  factory->context_add_statements    = librdf_model_storage_context_add_statements;
-  factory->context_remove_statement = librdf_model_storage_context_remove_statement;
-  factory->context_remove_statements    = librdf_model_storage_context_remove_statements;
-  factory->context_serialize        = librdf_model_storage_context_serialize;
-  factory->find_statements_in_context = librdf_model_storage_find_statements_in_context;
+    factory->get_arcs_in = librdf_model_storage_get_arcs_in;
+    factory->get_arcs_out = librdf_model_storage_get_arcs_out;
+    factory->has_arc_in = librdf_model_storage_has_arc_in;
+    factory->has_arc_out = librdf_model_storage_has_arc_out;
+
+    factory->context_add_statement = librdf_model_storage_context_add_statement;
+    factory->context_add_statements = librdf_model_storage_context_add_statements;
+    factory->context_remove_statement = librdf_model_storage_context_remove_statement;
+    factory->context_remove_statements = librdf_model_storage_context_remove_statements;
+    factory->context_serialize = librdf_model_storage_context_serialize;
+    factory->find_statements_in_context = librdf_model_storage_find_statements_in_context;
 
 
-  factory->query_execute      = librdf_model_storage_query_execute;
-  factory->sync               = librdf_model_storage_sync;
-  factory->get_storage        = librdf_model_storage_get_storage;
-  factory->get_contexts       = librdf_model_storage_get_contexts;
-  factory->get_feature        = librdf_model_storage_get_feature;
-  factory->set_feature        = librdf_model_storage_set_feature;
-  factory->find_statements_with_options = librdf_model_storage_find_statements_with_options;
+    factory->query_execute = librdf_model_storage_query_execute;
+    factory->sync = librdf_model_storage_sync;
+    factory->get_storage = librdf_model_storage_get_storage;
+    factory->get_contexts = librdf_model_storage_get_contexts;
+    factory->get_feature = librdf_model_storage_get_feature;
+    factory->set_feature = librdf_model_storage_set_feature;
+    factory->find_statements_with_options = librdf_model_storage_find_statements_with_options;
 
-  factory->transaction_start             = librdf_model_storage_transaction_start;
-  factory->transaction_start_with_handle = librdf_model_storage_transaction_start_with_handle;
-  factory->transaction_commit            = librdf_model_storage_transaction_commit;
-  factory->transaction_rollback          = librdf_model_storage_transaction_rollback;
-  factory->transaction_get_handle        = librdf_model_storage_transaction_get_handle;
+    factory->transaction_start = librdf_model_storage_transaction_start;
+    factory->transaction_start_with_handle = librdf_model_storage_transaction_start_with_handle;
+    factory->transaction_commit = librdf_model_storage_transaction_commit;
+    factory->transaction_rollback = librdf_model_storage_transaction_rollback;
+    factory->transaction_get_handle = librdf_model_storage_transaction_get_handle;
 
 }
 
@@ -825,9 +787,8 @@ librdf_model_storage_register_factory(librdf_model_factory *factory)
  * INTERNAL - Initialise the model_storage module
  **/
 void
-librdf_init_model_storage(librdf_world *world)
-{
-  librdf_model_register_factory(world, 
-                                "storage", "Model backed by a Redland storage",
-                                &librdf_model_storage_register_factory);
+librdf_init_model_storage(librdf_world *world) {
+    librdf_model_register_factory(world,
+                                  "storage", "Model backed by a Redland storage",
+                                  &librdf_model_storage_register_factory);
 }

@@ -60,7 +60,7 @@ namespace semsim {
 
 
     void Editor::extractNamespacesFromTriplesVector(const Triples &triples) {
-        for (int i=0; i<triples.size(); i++) {
+        for (int i = 0; i < triples.size(); i++) {
             addNamespaceFromAnnotation(triples[i].getPredicateStr());
         }
     }
@@ -97,7 +97,7 @@ namespace semsim {
         checkValidMetaid(singularAnnotation.getSubjectStr());
         addNamespaceFromAnnotation(singularAnnotation.getPredicateStr());
         model_.addStatement(singularAnnotation);
-        singularAnnotation.freeStatement();
+//        singularAnnotation.freeStatement();
     }
 
     void Editor::addNamespaceFromAnnotation(const std::string &predicate_string) {
@@ -111,7 +111,7 @@ namespace semsim {
     void Editor::addCompositeAnnotation(const PhysicalPhenomenonPtr &phenomenonPtr) {
         Triples triples = phenomenonPtr->toTriples();
         extractNamespacesFromTriplesVector(triples);
-        for (int i = 0; i < triples.size(); i++){
+        for (int i = 0; i < triples.size(); i++) {
             model_.addStatement(triples[i].getStatement());
         }
         /*
@@ -162,7 +162,7 @@ namespace semsim {
         model_.removeStatement(singularAnnotation.getStatement());
     }
 
-    void Editor::removePhysicalEntity(PhysicalEntity physicalEntity) const {
+    void Editor::removePhysicalEntity(PhysicalEntity &physicalEntity) {
         /*
          * This strategy causes a seg sault because toTriples
          * passes ownership of the nodes inside statement to the Triples
@@ -178,11 +178,12 @@ namespace semsim {
          * option 1 is probably better
          */
 
-        const Triples &triples = physicalEntity.toTriples();
+        Triples triples = physicalEntity.toTriples();
         for (int i = 0; i < triples.size(); i++) {
 //            std::cout << triples[i].str("ntriples") << std::endl;
             model_.removeStatement(triples[i].getStatement());
         }
+//        triples.freeTriples(); // seg fault
     }
 
     void Editor::removePhysicalProcess(PhysicalProcess physicalProcess) {

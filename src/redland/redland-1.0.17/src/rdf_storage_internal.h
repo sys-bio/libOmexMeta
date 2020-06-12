@@ -33,21 +33,20 @@ extern "C" {
 #endif
 
 /** A storage object */
-struct librdf_storage_s
-{
-  librdf_world *world;
+struct librdf_storage_s {
+    librdf_world *world;
 
-  /* usage count of this instance
-   * Used by other redland classes such as model, iterator, stream
-   * via  librdf_storage_add_reference librdf_storage_remove_reference
-   * The usage count of storage after construction is 1.
-   */
-  int usage;
-  
-  librdf_model *model;
-  void *instance;
-  int index_contexts;
-  struct librdf_storage_factory_s* factory;
+    /* usage count of this instance
+     * Used by other redland classes such as model, iterator, stream
+     * via  librdf_storage_add_reference librdf_storage_remove_reference
+     * The usage count of storage after construction is 1.
+     */
+    int usage;
+
+    librdf_model *model;
+    void *instance;
+    int index_contexts;
+    struct librdf_storage_factory_s *factory;
 };
 
 void librdf_init_storage_list(librdf_world *world);
@@ -86,36 +85,36 @@ void librdf_init_storage(librdf_world *world);
 void librdf_finish_storage(librdf_world *world);
 
 /* class methods */
-librdf_storage_factory* librdf_get_storage_factory(librdf_world* world, const char *name);
+librdf_storage_factory *librdf_get_storage_factory(librdf_world *world, const char *name);
 
 
 /* rdf_storage_sql.c */
-typedef struct  
-{
-  char* filename;
-  
-  const char** predicate_uri_strings;
-  int predicates_count;
+typedef struct {
+    char *filename;
 
-  /* array of char* with NULL at end - size predicates_count */
-  char** values;
+    const char **predicate_uri_strings;
+    int predicates_count;
+
+    /* array of char* with NULL at end - size predicates_count */
+    char **values;
 } librdf_sql_config;
 
-librdf_sql_config* librdf_new_sql_config(librdf_world* world, const char *storage_name, const char* layout, const char* config_dir, const char** predicate_uri_strings);
-librdf_sql_config* librdf_new_sql_config_for_storage(librdf_storage* storage, const char* layout, const char* dir);
-void librdf_free_sql_config(librdf_sql_config* config);
+librdf_sql_config *
+librdf_new_sql_config(librdf_world *world, const char *storage_name, const char *layout, const char *config_dir,
+                      const char **predicate_uri_strings);
+librdf_sql_config *librdf_new_sql_config_for_storage(librdf_storage *storage, const char *layout, const char *dir);
+void librdf_free_sql_config(librdf_sql_config *config);
 
 typedef enum {
-  DBCONFIG_CREATE_TABLE_STATEMENTS,
-  DBCONFIG_CREATE_TABLE_LITERALS,
-  DBCONFIG_CREATE_TABLE_RESOURCES,
-  DBCONFIG_CREATE_TABLE_BNODES,
-  DBCONFIG_CREATE_TABLE_MODELS,
-  DBCONFIG_CREATE_TABLE_LAST = DBCONFIG_CREATE_TABLE_MODELS
+    DBCONFIG_CREATE_TABLE_STATEMENTS,
+    DBCONFIG_CREATE_TABLE_LITERALS,
+    DBCONFIG_CREATE_TABLE_RESOURCES,
+    DBCONFIG_CREATE_TABLE_BNODES,
+    DBCONFIG_CREATE_TABLE_MODELS,
+    DBCONFIG_CREATE_TABLE_LAST = DBCONFIG_CREATE_TABLE_MODELS
 } librdf_dbconfig;
 
-extern const char* librdf_storage_sql_dbconfig_predicates[DBCONFIG_CREATE_TABLE_LAST+2];
-
+extern const char *librdf_storage_sql_dbconfig_predicates[DBCONFIG_CREATE_TABLE_LAST + 2];
 
 
 #ifdef __cplusplus

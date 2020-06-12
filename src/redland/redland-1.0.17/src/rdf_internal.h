@@ -123,7 +123,7 @@
 #else
 
 #define LIBRDF_ASSERT_CONDITION(condition)
-#define LIBRDF_ASSERT_RETURN(condition, msg, ret) 
+#define LIBRDF_ASSERT_RETURN(condition, msg, ret)
 #define LIBRDF_ASSERT_OBJECT_POINTER_RETURN(pointer, type)
 #define LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(pointer, type, ret)
 

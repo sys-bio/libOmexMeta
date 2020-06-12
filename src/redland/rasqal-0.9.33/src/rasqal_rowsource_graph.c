@@ -22,7 +22,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -31,8 +33,11 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <raptor2.h>
@@ -70,230 +75,222 @@ eval(D(G), Graph(IRI,P)) = the empty multiset
 
 
 
-typedef struct 
-{
-  /* inner rowsource */
-  rasqal_rowsource *rowsource;
-  
-  /* GRAPH literal constant URI or variable */
-  rasqal_variable* var;
+typedef struct {
+    /* inner rowsource */
+    rasqal_rowsource *rowsource;
 
-  /* dataset graph offset */
-  int dg_offset;
-  
-  /* number of graphs total */
-  int dg_size;
-  
-  /* row offset for read_row() */
-  int offset;
+    /* GRAPH literal constant URI or variable */
+    rasqal_variable *var;
 
-  int finished;
+    /* dataset graph offset */
+    int dg_offset;
+
+    /* number of graphs total */
+    int dg_size;
+
+    /* row offset for read_row() */
+    int offset;
+
+    int finished;
 
 } rasqal_graph_rowsource_context;
 
 
 static int
-rasqal_graph_next_dg(rasqal_graph_rowsource_context *con) 
-{
-  rasqal_query *query = con->rowsource->query;
-  rasqal_data_graph *dg;
+rasqal_graph_next_dg(rasqal_graph_rowsource_context *con) {
+    rasqal_query *query = con->rowsource->query;
+    rasqal_data_graph *dg;
 
-  con->finished = 0;
+    con->finished = 0;
 
-  while(1) {
-    rasqal_literal *o;
+    while (1) {
+        rasqal_literal *o;
 
-    con->dg_offset++;
-    dg = rasqal_query_get_data_graph(query, con->dg_offset);
-    if(!dg) {
-      con->finished = 1;
-      break;
+        con->dg_offset++;
+        dg = rasqal_query_get_data_graph(query, con->dg_offset);
+        if (!dg) {
+            con->finished = 1;
+            break;
+        }
+
+        if (!dg->name_uri)
+            continue;
+
+        o = rasqal_new_uri_literal(query->world, raptor_uri_copy(dg->name_uri));
+        if (!o) {
+            RASQAL_DEBUG1("Failed to create new URI literal\n");
+            con->finished = 1;
+            break;
+        }
+
+        RASQAL_DEBUG2("Using data graph URI literal <%s>\n",
+                      rasqal_literal_as_string(o));
+
+        rasqal_rowsource_set_origin(con->rowsource, o);
+
+        /* this passes ownership of o to con->var */
+        rasqal_variable_set_value(con->var, o);
+
+        break;
     }
-    
-    if(!dg->name_uri)
-      continue;
-    
-    o = rasqal_new_uri_literal(query->world, raptor_uri_copy(dg->name_uri));
-    if(!o) {
-      RASQAL_DEBUG1("Failed to create new URI literal\n");
-      con->finished = 1;
-      break;
+
+    return con->finished;
+}
+
+
+static int
+rasqal_graph_rowsource_init(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_graph_rowsource_context *con;
+    raptor_sequence *seq;
+
+    con = (rasqal_graph_rowsource_context *) user_data;
+
+    seq = rasqal_query_get_data_graph_sequence(rowsource->query);
+    if (!seq)
+        return 1;
+
+    con->dg_size = raptor_sequence_size(seq);
+
+    con->finished = 0;
+    con->dg_offset = -1;
+    con->offset = 0;
+
+    /* Do not care if finished at this stage (it is not an
+     * error). rasqal_graph_rowsource_read_row() will deal with
+     * returning NULL for an empty result.
+     */
+    rasqal_graph_next_dg(con);
+
+    return 0;
+}
+
+
+static int
+rasqal_graph_rowsource_finish(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_graph_rowsource_context *con;
+    con = (rasqal_graph_rowsource_context *) user_data;
+
+    if (con->rowsource)
+        rasqal_free_rowsource(con->rowsource);
+
+    rasqal_variable_set_value(con->var, NULL);
+
+    RASQAL_FREE(rasqal_graph_rowsource_context, con);
+
+    return 0;
+}
+
+
+static int
+rasqal_graph_rowsource_ensure_variables(rasqal_rowsource *rowsource,
+                                        void *user_data) {
+    rasqal_graph_rowsource_context *con;
+
+    con = (rasqal_graph_rowsource_context *) user_data;
+
+    rasqal_rowsource_ensure_variables(con->rowsource);
+
+    rowsource->size = 0;
+    /* Put GRAPH variable first in result row */
+    rasqal_rowsource_add_variable(rowsource, con->var);
+    rasqal_rowsource_copy_variables(rowsource, con->rowsource);
+
+    return 0;
+}
+
+
+static rasqal_row *
+rasqal_graph_rowsource_read_row(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_graph_rowsource_context *con;
+    rasqal_row *row = NULL;
+
+    con = (rasqal_graph_rowsource_context *) user_data;
+
+    if (con->finished)
+        return NULL;
+
+    while (1) {
+        row = rasqal_rowsource_read_row(con->rowsource);
+        if (row)
+            break;
+
+        if (rasqal_graph_next_dg(con)) {
+            con->finished = 1;
+            break;
+        }
+        if (rasqal_rowsource_reset(con->rowsource)) {
+            con->finished = 1;
+            break;
+        }
     }
 
-    RASQAL_DEBUG2("Using data graph URI literal <%s>\n",
-                  rasqal_literal_as_string(o));
-    
-    rasqal_rowsource_set_origin(con->rowsource, o);
+    /* If a row is returned, put the GRAPH variable value as first literal */
+    if (row) {
+        rasqal_row *nrow;
+        int i;
 
-    /* this passes ownership of o to con->var */
-    rasqal_variable_set_value(con->var, o);
-      
-    break;
-  }
+        nrow = rasqal_new_row_for_size(rowsource->world, 1 + row->size);
+        if (!nrow) {
+            rasqal_free_row(row);
+            row = NULL;
+        } else {
+            rasqal_row_set_rowsource(nrow, rowsource);
+            nrow->offset = row->offset;
 
-  return con->finished;
+            /* Put GRAPH variable value (or NULL) first in result row */
+            nrow->values[0] = rasqal_new_literal_from_literal(con->var->value);
+
+            /* Copy (size-1) remaining variables from input row */
+            for (i = 0; i < row->size; i++)
+                nrow->values[i + 1] = rasqal_new_literal_from_literal(row->values[i]);
+            rasqal_free_row(row);
+            row = nrow;
+        }
+    }
+
+    return row;
 }
 
 
 static int
-rasqal_graph_rowsource_init(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_graph_rowsource_context *con;
-  raptor_sequence* seq;
+rasqal_graph_rowsource_reset(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_graph_rowsource_context *con;
+    con = (rasqal_graph_rowsource_context *) user_data;
 
-  con = (rasqal_graph_rowsource_context*)user_data;
-  
-  seq = rasqal_query_get_data_graph_sequence(rowsource->query);
-  if(!seq)
-    return 1;
+    con->finished = 0;
+    con->dg_offset = -1;
+    con->offset = 0;
 
-  con->dg_size = raptor_sequence_size(seq);
-  
-  con->finished = 0;
-  con->dg_offset = -1;
-  con->offset = 0;
+    rasqal_graph_next_dg(con);
 
-  /* Do not care if finished at this stage (it is not an
-   * error). rasqal_graph_rowsource_read_row() will deal with
-   * returning NULL for an empty result.
-   */
-  rasqal_graph_next_dg(con);
-
-  return 0;
+    return rasqal_rowsource_reset(con->rowsource);
 }
 
 
-static int
-rasqal_graph_rowsource_finish(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_graph_rowsource_context *con;
-  con = (rasqal_graph_rowsource_context*)user_data;
+static rasqal_rowsource *
+rasqal_graph_rowsource_get_inner_rowsource(rasqal_rowsource *rowsource,
+                                           void *user_data, int offset) {
+    rasqal_graph_rowsource_context *con;
+    con = (rasqal_graph_rowsource_context *) user_data;
 
-  if(con->rowsource)
-    rasqal_free_rowsource(con->rowsource);
-  
-  rasqal_variable_set_value(con->var, NULL);
-
-  RASQAL_FREE(rasqal_graph_rowsource_context, con);
-
-  return 0;
-}
-
-
-static int
-rasqal_graph_rowsource_ensure_variables(rasqal_rowsource* rowsource,
-                                         void *user_data)
-{
-  rasqal_graph_rowsource_context* con;
-  
-  con = (rasqal_graph_rowsource_context*)user_data; 
-
-  rasqal_rowsource_ensure_variables(con->rowsource);
-
-  rowsource->size = 0;
-  /* Put GRAPH variable first in result row */
-  rasqal_rowsource_add_variable(rowsource, con->var);
-  rasqal_rowsource_copy_variables(rowsource, con->rowsource);
-
-  return 0;
-}
-
-
-static rasqal_row*
-rasqal_graph_rowsource_read_row(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_graph_rowsource_context *con;
-  rasqal_row* row = NULL;
-
-  con = (rasqal_graph_rowsource_context*)user_data;
-
-  if(con->finished)
+    if (offset == 0)
+        return con->rowsource;
     return NULL;
-  
-  while(1) {
-    row = rasqal_rowsource_read_row(con->rowsource);
-    if(row)
-      break;
-    
-    if(rasqal_graph_next_dg(con)) {
-      con->finished = 1;
-      break;
-    }
-    if(rasqal_rowsource_reset(con->rowsource)) {
-      con->finished = 1;
-      break;
-    }
-  }
-
-  /* If a row is returned, put the GRAPH variable value as first literal */
-  if(row) {
-    rasqal_row* nrow;
-    int i;
-    
-    nrow = rasqal_new_row_for_size(rowsource->world, 1 + row->size);
-    if(!nrow) {
-      rasqal_free_row(row);
-      row = NULL;
-    } else {
-      rasqal_row_set_rowsource(nrow, rowsource);
-      nrow->offset = row->offset;
-      
-      /* Put GRAPH variable value (or NULL) first in result row */
-      nrow->values[0] = rasqal_new_literal_from_literal(con->var->value);
-
-      /* Copy (size-1) remaining variables from input row */
-      for(i = 0; i < row->size; i++)
-        nrow->values[i + 1] = rasqal_new_literal_from_literal(row->values[i]);
-      rasqal_free_row(row);
-      row = nrow;
-    }
-  }
-  
-  return row;
-}
-
-
-static int
-rasqal_graph_rowsource_reset(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_graph_rowsource_context *con;
-  con = (rasqal_graph_rowsource_context*)user_data;
-
-  con->finished = 0;
-  con->dg_offset = -1;
-  con->offset = 0;
-
-  rasqal_graph_next_dg(con);
-  
-  return rasqal_rowsource_reset(con->rowsource);
-}
-
-
-static rasqal_rowsource*
-rasqal_graph_rowsource_get_inner_rowsource(rasqal_rowsource* rowsource,
-                                           void *user_data, int offset)
-{
-  rasqal_graph_rowsource_context *con;
-  con = (rasqal_graph_rowsource_context*)user_data;
-
-  if(offset == 0)
-    return con->rowsource;
-  return NULL;
 }
 
 
 static const rasqal_rowsource_handler rasqal_graph_rowsource_handler = {
-  /* .version =          */ 1,
-  "graph",
-  /* .init =             */ rasqal_graph_rowsource_init,
-  /* .finish =           */ rasqal_graph_rowsource_finish,
-  /* .ensure_variables = */ rasqal_graph_rowsource_ensure_variables,
-  /* .read_row =         */ rasqal_graph_rowsource_read_row,
-  /* .read_all_rows =    */ NULL,
-  /* .reset =            */ rasqal_graph_rowsource_reset,
-  /* .set_requirements = */ NULL,
-  /* .get_inner_rowsource = */ rasqal_graph_rowsource_get_inner_rowsource,
-  /* .set_origin =       */ NULL,
+        /* .version =          */ 1,
+                                  "graph",
+        /* .init =             */ rasqal_graph_rowsource_init,
+        /* .finish =           */ rasqal_graph_rowsource_finish,
+        /* .ensure_variables = */ rasqal_graph_rowsource_ensure_variables,
+        /* .read_row =         */ rasqal_graph_rowsource_read_row,
+        /* .read_all_rows =    */ NULL,
+        /* .reset =            */ rasqal_graph_rowsource_reset,
+        /* .set_requirements = */ NULL,
+        /* .get_inner_rowsource = */ rasqal_graph_rowsource_get_inner_rowsource,
+        /* .set_origin =       */ NULL,
 };
 
 
@@ -310,28 +307,27 @@ static const rasqal_rowsource_handler rasqal_graph_rowsource_handler = {
  *
  * Return value: new rowsource or NULL on failure
  */
-rasqal_rowsource*
+rasqal_rowsource *
 rasqal_new_graph_rowsource(rasqal_world *world,
                            rasqal_query *query,
-                           rasqal_rowsource* rowsource,
-                           rasqal_variable *var)
-{
-  rasqal_graph_rowsource_context *con;
-  int flags = 0;
-  
-  if(!world || !query || !rowsource || !var)
-    return NULL;
-  
-  con = RASQAL_CALLOC(rasqal_graph_rowsource_context*, 1, sizeof(*con));
-  if(!con)
-    return NULL;
+                           rasqal_rowsource *rowsource,
+                           rasqal_variable *var) {
+    rasqal_graph_rowsource_context *con;
+    int flags = 0;
 
-  con->rowsource = rowsource;
-  con->var = var;
+    if (!world || !query || !rowsource || !var)
+        return NULL;
 
-  return rasqal_new_rowsource_from_handler(world, query,
-                                           con,
-                                           &rasqal_graph_rowsource_handler,
-                                           query->vars_table,
-                                           flags);
+    con = RASQAL_CALLOC(rasqal_graph_rowsource_context*, 1, sizeof(*con));
+    if (!con)
+        return NULL;
+
+    con->rowsource = rowsource;
+    con->var = var;
+
+    return rasqal_new_rowsource_from_handler(world, query,
+                                             con,
+                                             &rasqal_graph_rowsource_handler,
+                                             query->vars_table,
+                                             flags);
 }

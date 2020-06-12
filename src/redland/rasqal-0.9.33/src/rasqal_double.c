@@ -22,7 +22,9 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -31,12 +33,16 @@
 
 /* for frexp(), fabs() and ldexp() - all C99 */
 #ifdef HAVE_MATH_H
+
 #include <math.h>
+
 #endif
 
 /* for double and float constants */
 #ifdef HAVE_FLOAT_H
+
 #include <float.h>
+
 #endif
 
 #include "rasqal.h"
@@ -56,32 +62,31 @@
  * Return values: <0 if a<b, 0 if 'equal' or >0 if a>b
  */
 int
-rasqal_double_approximately_compare(double a, double b)
-{
-  int exponent;
-  double delta;
-  double difference;
+rasqal_double_approximately_compare(double a, double b) {
+    int exponent;
+    double delta;
+    double difference;
 
-  /* Get larger exponent of a or b into exponent */
-  frexp(fabs(a) > fabs(b) ? a : b, &exponent);
+    /* Get larger exponent of a or b into exponent */
+    frexp(fabs(a) > fabs(b) ? a : b, &exponent);
 
-  /* Multiply epsilon by 2^exponent to get delta */
-  delta = ldexp(RASQAL_DOUBLE_EPSILON, exponent); 
-  
-  /*
-   * Take the difference and evaluate like this:
-   *
-   * < delta | -delta .... delta | > delta
-   * --------------------------------------
-   * LESS    | <--- 'EQUAL' ---> | GREATER
-   */
-  difference = (a - b);
-  if(difference > delta)
-    return 1;
-  else if(difference < -delta) 
-    return -1;
-  else 
-    return 0;
+    /* Multiply epsilon by 2^exponent to get delta */
+    delta = ldexp(RASQAL_DOUBLE_EPSILON, exponent);
+
+    /*
+     * Take the difference and evaluate like this:
+     *
+     * < delta | -delta .... delta | > delta
+     * --------------------------------------
+     * LESS    | <--- 'EQUAL' ---> | GREATER
+     */
+    difference = (a - b);
+    if (difference > delta)
+        return 1;
+    else if (difference < -delta)
+        return -1;
+    else
+        return 0;
 }
 
 
@@ -95,7 +100,6 @@ rasqal_double_approximately_compare(double a, double b)
  * Return values: non-0 if approximately equal
  */
 int
-rasqal_double_approximately_equal(double a, double b)
-{
-  return !rasqal_double_approximately_compare(a, b);
+rasqal_double_approximately_equal(double a, double b) {
+    return !rasqal_double_approximately_compare(a, b);
 }

@@ -43,8 +43,7 @@ extern int turtle_parser_debug;
 /* Token type.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
-  enum yytokentype
-  {
+enum yytokentype {
     A = 258,
     HAT = 259,
     DOT = 260,
@@ -73,20 +72,19 @@ extern int turtle_parser_debug;
     FLOATING_LITERAL = 283,
     DECIMAL_LITERAL = 284,
     ERROR_TOKEN = 285
-  };
+};
 #endif
 
 /* Value type.  */
-#if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
+#if !defined YYSTYPE && !defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE YYSTYPE;
-union YYSTYPE
-{
+union YYSTYPE {
 #line 136 "./turtle_parser.y" /* yacc.c:1909  */
 
-  unsigned char *string;
-  raptor_term *identifier;
-  raptor_sequence *sequence;
-  raptor_uri *uri;
+    unsigned char *string;
+    raptor_term *identifier;
+    raptor_sequence *sequence;
+    raptor_uri *uri;
 
 #line 92 "turtle_parser.tab.h" /* yacc.c:1909  */
 };
@@ -95,7 +93,6 @@ union YYSTYPE
 #endif
 
 
-
-int turtle_parser_parse (raptor_parser* rdf_parser, void* yyscanner);
+int turtle_parser_parse(raptor_parser *rdf_parser, void *yyscanner);
 
 #endif /* !YY_TURTLE_PARSER_TURTLE_PARSER_TAB_H_INCLUDED  */

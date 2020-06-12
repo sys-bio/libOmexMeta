@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -36,28 +38,30 @@
 #include <stdarg.h>
 
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <redland.h>
 
 #ifndef STANDALONE
+
 /* prototypes for helper functions */
-static void librdf_delete_digest_factories(librdf_world* world);
+static void librdf_delete_digest_factories(librdf_world *world);
 
 
 /* helper functions */
 static void
-librdf_delete_digest_factories(librdf_world *world)
-{
-  librdf_digest_factory *factory, *next;
-  
-  for(factory=world->digests; factory; factory=next) {
-    next=factory->next;
-    LIBRDF_FREE(librdf_digest_factory, factory->name);
-    LIBRDF_FREE(librdf_digest_factory, factory);
-  }
-  world->digests=NULL;
+librdf_delete_digest_factories(librdf_world *world) {
+    librdf_digest_factory *factory, *next;
+
+    for (factory = world->digests; factory; factory = next) {
+        next = factory->next;
+        LIBRDF_FREE(librdf_digest_factory, factory->name);
+        LIBRDF_FREE(librdf_digest_factory, factory);
+    }
+    world->digests = NULL;
 }
 
 
@@ -72,49 +76,48 @@ librdf_delete_digest_factories(librdf_world *world)
  **/
 void
 librdf_digest_register_factory(librdf_world *world, const char *name,
-                               void (*factory) (librdf_digest_factory*))
-{
-  librdf_digest_factory *digest;
+                               void (*factory)(librdf_digest_factory *)) {
+    librdf_digest_factory *digest;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
 #if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 1
-  LIBRDF_DEBUG2("Received registration for digest %s\n", name);
+    LIBRDF_DEBUG2("Received registration for digest %s\n", name);
 #endif
 
-  for(digest = world->digests; digest; digest = digest->next ) {
-    if(!strcmp(digest->name, name)) {
-      librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_DIGEST, NULL,
-                 "digest %s already registered", digest->name);
-      return;
+    for (digest = world->digests; digest; digest = digest->next) {
+        if (!strcmp(digest->name, name)) {
+            librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_DIGEST, NULL,
+                       "digest %s already registered", digest->name);
+            return;
+        }
     }
-  }
 
-  digest = LIBRDF_CALLOC(librdf_digest_factory*, 1, sizeof(*digest));
-  if(!digest)
-    goto oom;
+    digest = LIBRDF_CALLOC(librdf_digest_factory*, 1, sizeof(*digest));
+    if (!digest)
+        goto oom;
 
-  digest->name = LIBRDF_MALLOC(char*, strlen(name) + 1);
-  if(!digest->name)
-    goto oom_tidy;
-  strcpy(digest->name, name);
+    digest->name = LIBRDF_MALLOC(char*, strlen(name) + 1);
+    if (!digest->name)
+        goto oom_tidy;
+    strcpy(digest->name, name);
 
-  digest->next = world->digests;
-  world->digests = digest;        
+    digest->next = world->digests;
+    world->digests = digest;
 
-  /* Call the digest registration function on the new object */
-  (*factory)(digest);
+    /* Call the digest registration function on the new object */
+    (*factory)(digest);
 
 #if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 1
-  LIBRDF_DEBUG4("%s has context size %d and digest size %d\n", name, digest->context_length, digest->digest_length);
+    LIBRDF_DEBUG4("%s has context size %d and digest size %d\n", name, digest->context_length, digest->digest_length);
 #endif
 
-  return;
+    return;
 
-  oom_tidy:
-  LIBRDF_FREE(librdf_digest, digest);
-  oom:
-  LIBRDF_FATAL1(world, LIBRDF_FROM_DIGEST, "Out of memory");
+    oom_tidy:
+    LIBRDF_FREE(librdf_digest, digest);
+    oom:
+    LIBRDF_FATAL1(world, LIBRDF_FROM_DIGEST, "Out of memory");
 }
 
 
@@ -127,29 +130,28 @@ librdf_digest_register_factory(librdf_world *world, const char *name,
  * 
  * Return value: the factory or NULL if not found
  **/
-librdf_digest_factory*
-librdf_get_digest_factory(librdf_world *world, const char *name) 
-{
-  librdf_digest_factory *factory;
+librdf_digest_factory *
+librdf_get_digest_factory(librdf_world *world, const char *name) {
+    librdf_digest_factory *factory;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  /* return 1st digest if no particular one wanted - why? */
-  if(!name) {
-    factory=world->digests;
-    if(!factory) {
-      LIBRDF_DEBUG1("No digests available\n");
-      return NULL;
+    /* return 1st digest if no particular one wanted - why? */
+    if (!name) {
+        factory = world->digests;
+        if (!factory) {
+            LIBRDF_DEBUG1("No digests available\n");
+            return NULL;
+        }
+    } else {
+        for (factory = world->digests; factory; factory = factory->next) {
+            if (!strcmp(factory->name, name))
+                break;
+        }
+        /* else FACTORY with name digest_name not found -> return NULL */
     }
-  } else {
-    for(factory=world->digests; factory; factory=factory->next) {
-      if(!strcmp(factory->name, name))
-        break;
-    }
-    /* else FACTORY with name digest_name not found -> return NULL */
-  }
-  
-  return factory;
+
+    return factory;
 }
 
 
@@ -170,18 +172,17 @@ librdf_get_digest_factory(librdf_world *world, const char *name)
  *
  * Return value: new #librdf_digest object or NULL
  **/
-librdf_digest*
-librdf_new_digest(librdf_world *world, const char *name)
-{
-  librdf_digest_factory* factory;
-  
-  librdf_world_open(world);
+librdf_digest *
+librdf_new_digest(librdf_world *world, const char *name) {
+    librdf_digest_factory *factory;
 
-  factory=librdf_get_digest_factory(world, name);
-  if(!factory)
-    return NULL;
-  
-  return librdf_new_digest_from_factory(world, factory);
+    librdf_world_open(world);
+
+    factory = librdf_get_digest_factory(world, name);
+    if (!factory)
+        return NULL;
+
+    return librdf_new_digest_from_factory(world, factory);
 }
 
 
@@ -202,37 +203,36 @@ librdf_new_digest(librdf_world *world, const char *name)
  *
  * Return value: new #librdf_digest object or NULL
  **/
-librdf_digest*
+librdf_digest *
 librdf_new_digest_from_factory(librdf_world *world,
-                               librdf_digest_factory *factory)
-{
-  librdf_digest* d;
+                               librdf_digest_factory *factory) {
+    librdf_digest *d;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  d = LIBRDF_CALLOC(librdf_digest*, 1, sizeof(*d));
-  if(!d)
-    return NULL;
+    d = LIBRDF_CALLOC(librdf_digest*, 1, sizeof(*d));
+    if (!d)
+        return NULL;
 
-  d->world=world;
-        
-  d->context = LIBRDF_CALLOC(void*, 1, factory->context_length);
-  if(!d->context) {
-    librdf_free_digest(d);
-    return NULL;
-  }
-        
-  d->digest = LIBRDF_CALLOC(unsigned char*, 1, factory->digest_length);
-  if(!d->digest) {
-    librdf_free_digest(d);
-    return NULL;
-  }
+    d->world = world;
 
-  d->factory=factory;
-  
-  d->factory->init(d->context);
+    d->context = LIBRDF_CALLOC(void*, 1, factory->context_length);
+    if (!d->context) {
+        librdf_free_digest(d);
+        return NULL;
+    }
 
-  return d;
+    d->digest = LIBRDF_CALLOC(unsigned char*, 1, factory->digest_length);
+    if (!d->digest) {
+        librdf_free_digest(d);
+        return NULL;
+    }
+
+    d->factory = factory;
+
+    d->factory->init(d->context);
+
+    return d;
 }
 
 
@@ -244,16 +244,15 @@ librdf_new_digest_from_factory(librdf_world *world,
  * 
  **/
 void
-librdf_free_digest(librdf_digest *digest) 
-{
-  if(!digest)
-    return;
-  
-  if(digest->context)
-    LIBRDF_FREE(digest_context, digest->context);
-  if(digest->digest)
-    LIBRDF_FREE(digest_digest, digest->digest);
-  LIBRDF_FREE(librdf_digest, digest);
+librdf_free_digest(librdf_digest *digest) {
+    if (!digest)
+        return;
+
+    if (digest->context)
+        LIBRDF_FREE(digest_context, digest->context);
+    if (digest->digest)
+        LIBRDF_FREE(digest_digest, digest->digest);
+    LIBRDF_FREE(librdf_digest, digest);
 }
 
 
@@ -271,9 +270,8 @@ librdf_free_digest(librdf_digest *digest)
  * data.
  **/
 void
-librdf_digest_init(librdf_digest* digest) 
-{
-  digest->factory->init(digest->context);
+librdf_digest_init(librdf_digest *digest) {
+    digest->factory->init(digest->context);
 }
 
 
@@ -287,10 +285,9 @@ librdf_digest_init(librdf_digest* digest)
  * 
  **/
 void
-librdf_digest_update(librdf_digest* digest, 
-                     const unsigned char *buf, size_t length) 
-{
-  digest->factory->update(digest->context, buf, length);
+librdf_digest_update(librdf_digest *digest,
+                     const unsigned char *buf, size_t length) {
+    digest->factory->update(digest->context, buf, length);
 }
 
 
@@ -303,11 +300,10 @@ librdf_digest_update(librdf_digest* digest,
  * 
  **/
 void
-librdf_digest_update_string(librdf_digest* digest, 
-                            const unsigned char *string)
-{
-  digest->factory->update(digest->context, string,
-                          strlen((const char*)string));
+librdf_digest_update_string(librdf_digest *digest,
+                            const unsigned char *string) {
+    digest->factory->update(digest->context, string,
+                            strlen((const char *) string));
 }
 
 
@@ -320,14 +316,13 @@ librdf_digest_update_string(librdf_digest* digest,
  * The digest can now be returned via librdf_digest_get_digest().
  **/
 void
-librdf_digest_final(librdf_digest* digest) 
-{
-  void* digest_data;
-  
-  digest->factory->final(digest->context);
-  
-  digest_data=(*(digest->factory->get_digest))(digest->context);
-  memcpy(digest->digest, digest_data, digest->factory->digest_length);
+librdf_digest_final(librdf_digest *digest) {
+    void *digest_data;
+
+    digest->factory->final(digest->context);
+
+    digest_data = (*(digest->factory->get_digest))(digest->context);
+    memcpy(digest->digest, digest_data, digest->factory->digest_length);
 }
 
 
@@ -341,10 +336,9 @@ librdf_digest_final(librdf_digest* digest)
  * be #librdf_digest_get_digest_length bytes in length.
  *
  **/
-void*
-librdf_digest_get_digest(librdf_digest* digest)
-{
-  return digest->digest;
+void *
+librdf_digest_get_digest(librdf_digest *digest) {
+    return digest->digest;
 }
 
 
@@ -358,9 +352,8 @@ librdf_digest_get_digest(librdf_digest* digest)
  *
  **/
 size_t
-librdf_digest_get_digest_length(librdf_digest* digest)
-{
-  return digest->factory->digest_length;
+librdf_digest_get_digest_length(librdf_digest *digest) {
+    return digest->factory->digest_length;
 }
 
 
@@ -373,26 +366,25 @@ librdf_digest_get_digest_length(librdf_digest* digest)
  * Return value: a newly allocated string that represents the digest.
  * This must be released by the caller using librdf_free_memory().
  **/
-char*
-librdf_digest_to_string(librdf_digest* digest)
-{
-  unsigned char* data = digest->digest;
-  size_t mdlen = digest->factory->digest_length;
-  char* b;
-  size_t i;
+char *
+librdf_digest_to_string(librdf_digest *digest) {
+    unsigned char *data = digest->digest;
+    size_t mdlen = digest->factory->digest_length;
+    char *b;
+    size_t i;
 
-  b = (char *)librdf_alloc_memory(1 + (mdlen<<1));
-  if(!b) {
-    LIBRDF_FATAL1(digest->world, LIBRDF_FROM_DIGEST, "Out of memory");
-    return NULL;
-  }
-  
-  for(i = 0; i < mdlen; i++)
-    sprintf(b+(i<<1), "%02x", (unsigned int)data[i]);
+    b = (char *) librdf_alloc_memory(1 + (mdlen << 1));
+    if (!b) {
+        LIBRDF_FATAL1(digest->world, LIBRDF_FROM_DIGEST, "Out of memory");
+        return NULL;
+    }
 
-  b[i<<1] = '\0';
-  
-  return b;
+    for (i = 0; i < mdlen; i++)
+        sprintf(b + (i << 1), "%02x", (unsigned int) data[i]);
+
+    b[i << 1] = '\0';
+
+    return b;
 }
 
 
@@ -405,14 +397,13 @@ librdf_digest_to_string(librdf_digest* digest)
  *
  **/
 void
-librdf_digest_print(librdf_digest* digest, FILE* fh)
-{
-  char *s=librdf_digest_to_string(digest);
-  
-  if(!s)
-    return;
-  fputs(s, fh);
-  LIBRDF_FREE(char*, s);
+librdf_digest_print(librdf_digest *digest, FILE *fh) {
+    char *s = librdf_digest_to_string(digest);
+
+    if (!s)
+        return;
+    fputs(s, fh);
+    LIBRDF_FREE(char*, s);
 }
 
 
@@ -424,25 +415,24 @@ librdf_digest_print(librdf_digest* digest, FILE* fh)
  *
  **/
 void
-librdf_init_digest(librdf_world *world) 
-{
+librdf_init_digest(librdf_world *world) {
 #ifdef HAVE_OPENSSL_DIGESTS
-  librdf_digest_openssl_constructor(world);
+    librdf_digest_openssl_constructor(world);
 #endif
 #ifdef HAVE_LOCAL_MD5_DIGEST
-  librdf_digest_md5_constructor(world);
+    librdf_digest_md5_constructor(world);
 #endif
 #ifdef HAVE_LOCAL_RIPEMD160_DIGEST
-  librdf_digest_rmd160_constructor(world);
+    librdf_digest_rmd160_constructor(world);
 #endif
 #ifdef HAVE_LOCAL_SHA1_DIGEST
-  librdf_digest_sha1_constructor(world);
+    librdf_digest_sha1_constructor(world);
 #endif
 
-  /* set default */
-  world->digest_factory=librdf_get_digest_factory(world,
-                                                  world->digest_factory_name);
-  
+    /* set default */
+    world->digest_factory = librdf_get_digest_factory(world,
+                                                      world->digest_factory_name);
+
 }
 
 
@@ -454,10 +444,10 @@ librdf_init_digest(librdf_world *world)
  *
  **/
 void
-librdf_finish_digest(librdf_world *world) 
-{
-  librdf_delete_digest_factories(world);
+librdf_finish_digest(librdf_world *world) {
+    librdf_delete_digest_factories(world);
 }
+
 #endif
 
 

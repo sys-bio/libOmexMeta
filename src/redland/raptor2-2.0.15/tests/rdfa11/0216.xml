@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" prefix = "
+<html xmlns="http://www.w3.org/1999/xhtml" prefix="
 air: http://www.daml.org/2001/10/html/airport-ont#
 bio: http://vocab.org/bio/0.1/
 contact: http://www.w3.org/2000/10/swap/pim/contact#
@@ -20,12 +20,12 @@ rsa: http://www.w3.org/ns/auth/rsa#
 cert: http://www.w3.org/ns/auth/cert#
 wot: http://xmlns.com/wot/0.1/
 ">
-<head>
-   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-</head>
-<body>
-      <!-- Tests whether the Unicode (UTF-8 encoded) characters are properly handled even with a large set of properties
-	  in the html element, ie, when the content sniffing to find out the character encoding may not work -->
-	  <p about="http://www.ivan-herman.net/foaf#me" property="foaf:name">Iván</p>
-</body>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    </head>
+    <body>
+        <!-- Tests whether the Unicode (UTF-8 encoded) characters are properly handled even with a large set of properties
+        in the html element, ie, when the content sniffing to find out the character encoding may not work -->
+        <p about="http://www.ivan-herman.net/foaf#me" property="foaf:name">Iván</p>
+    </body>
 </html>

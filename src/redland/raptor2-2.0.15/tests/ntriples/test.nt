@@ -1,25 +1,33 @@
 #
+
 # N-Triples Test Cases
 # Dave Beckett - http://purl.org/net/dajobe/
 # 
+
 # $Id$
 #
+
 # comment lines
-  	  	   # comment line after whitespace
+# comment line after whitespace
 # empty blank line, then one with spaces and tabs
 
-         	
+
 <http://example.org/resource1> <http://example.org/property> <http://example.org/resource2> .
-_:anon <http://example.org/property> <http://example.org/resource2> .
+_:anon<http://example.org/property> <http://example.org/resource2> .
 <http://example.org/resource2> <http://example.org/property> _:anon .
 # spaces and tabs throughout:
- 	 <http://example.org/resource3> 	 <http://example.org/property>	 <http://example.org/resource2> 	.	 
+<http://example.org/resource3> 	 <http://example.org/property>	 <http://example.org/resource2> 	.
 
 # line ending with CR NL (ASCII 13, ASCII 10)
 <http://example.org/resource4> <http://example.org/property> <http://example.org/resource2> .
 
-# 2 statement lines separated by single CR (ASCII 10)
-<http://example.org/resource5> <http://example.org/property> <http://example.org/resource2> .<http://example.org/resource6> <http://example.org/property> <http://example.org/resource2> .
+# 2
+statement lines
+separated by
+single CR(ASCII
+10)
+<http://example.org/resource5> <http://example.org/property> <http://example.org/resource2> .
+<http://example.org/resource6> <http://example.org/property> <http://example.org/resource2> .
 
 
 # All literal escapes
@@ -36,13 +44,15 @@ _:anon <http://example.org/property> <http://example.org/resource2> .
 # space is required after bnode ID before final .
 <http://example.org/resource15> <http://example.org/property> _:anon .
 
-# \u and \U escapes
+# \u and \
+U escapes
 # latin small letter e with acute symbol \u00E9 - 3 UTF-8 bytes #xC3 #A9
-<http://example.org/resource16> <http://example.org/property> "\u00E9" .
+        <http
+://example.org/resource16> <http://example.org/property> "\u00E9" .
 # Euro symbol \u20ac  - 3 UTF-8 bytes #xE2 #x82 #xAC
 <http://example.org/resource17> <http://example.org/property> "\u20AC" .
 # ? symbol \U0010FFFF - 4 UTF-8 bytes #xF4 #x8F #xBF #xBF
-<http://example.org/resource18> <http://example.org/property> "\U0010FFFF" .
+        <http://example.org/resource18> <http://example.org/property> "\U0010FFFF" .
 
 # extended literal syntax - parseType="Literal" (XML)
 <http://example.org/resource21> <http://example.org/property> ""^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral> .

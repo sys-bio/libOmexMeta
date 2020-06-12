@@ -49,10 +49,9 @@ struct sort_r_data {
     int (*compar)(const void *_a, const void *_b, void *_arg);
 };
 
-static inline int sort_r_arg_swap(void *s, const void *a, const void *b)
-{
-  struct sort_r_data *ss = (struct sort_r_data*)s;
-  return (ss->compar)(a, b, ss->arg);
+static inline int sort_r_arg_swap(void *s, const void *a, const void *b) {
+    struct sort_r_data *ss = (struct sort_r_data *) s;
+    return (ss->compar)(a, b, ss->arg);
 }
 
 #if defined NESTED_QSORT
@@ -84,10 +83,11 @@ extern void qsort_r(void *base, size_t nel, size_t width, void *thunk,
 
 #elif defined _SORT_R_LINUX
 
-typedef int(* __compar_d_fn_t)(const void *, const void *, void *);
+typedef int(*__compar_d_fn_t)(const void *, const void *, void *);
+
 extern void qsort_r(void *base, size_t nel, size_t width,
                     __compar_d_fn_t __compar, void *arg)
-  __attribute__((nonnull (1, 4)));
+__attribute__((nonnull (1, 4)));
 
 #endif
 

@@ -120,7 +120,8 @@ namespace semsim {
 
     SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
 
-    SingularAnnotation * SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_,const char *term);
+    SingularAnnotation *
+    SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_, const char *term);
 
     SingularAnnotation *SingularAnnotation_setPredicateFromUri(
             SingularAnnotation *singular_annotation, const char *uri);

@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #include <stdio.h>

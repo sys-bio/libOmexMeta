@@ -23,7 +23,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -32,8 +34,11 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <redland.h>
@@ -42,8 +47,8 @@
 
 
 static size_t
-librdf_statement_encode_parts_internal(librdf_statement* statement, 
-                                       librdf_node* context_node,
+librdf_statement_encode_parts_internal(librdf_statement *statement,
+                                       librdf_node *context_node,
                                        unsigned char *buffer, size_t length,
                                        librdf_statement_part fields);
 
@@ -58,12 +63,11 @@ librdf_statement_encode_parts_internal(librdf_statement* statement,
  * 
  * Return value: a new #librdf_statement or NULL on failure
  **/
-librdf_statement*
-librdf_new_statement(librdf_world *world) 
-{
-  librdf_world_open(world);
+librdf_statement *
+librdf_new_statement(librdf_world *world) {
+    librdf_world_open(world);
 
-  return raptor_new_statement(world->raptor_world_ptr);
+    return raptor_new_statement(world->raptor_world_ptr);
 }
 
 
@@ -76,47 +80,46 @@ librdf_new_statement(librdf_world *world)
  * 
  * Return value: a new #librdf_statement with copy or NULL on failure
  **/
-librdf_statement*
-librdf_new_statement_from_statement(librdf_statement* statement)
-{
-  raptor_term *subject = NULL;
-  raptor_term *predicate = NULL;
-  raptor_term *object = NULL;
-  raptor_term *graph = NULL;
+librdf_statement *
+librdf_new_statement_from_statement(librdf_statement *statement) {
+    raptor_term *subject = NULL;
+    raptor_term *predicate = NULL;
+    raptor_term *object = NULL;
+    raptor_term *graph = NULL;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
 
-  if(!statement)
+    if (!statement)
+        return NULL;
+
+    subject = raptor_term_copy(statement->subject);
+    if (statement->subject && !subject)
+        goto err;
+
+    predicate = raptor_term_copy(statement->predicate);
+    if (statement->predicate && !predicate)
+        goto err;
+
+    object = raptor_term_copy(statement->object);
+    if (statement->object && !object)
+        goto err;
+
+    graph = raptor_term_copy(statement->graph);
+    if (statement->graph && !graph)
+        goto err;
+
+    return raptor_new_statement_from_nodes(statement->world, subject, predicate, object, graph);
+
+    err:
+    if (graph)
+        raptor_free_term(graph);
+    if (object)
+        raptor_free_term(object);
+    if (predicate)
+        raptor_free_term(predicate);
+    if (subject)
+        raptor_free_term(subject);
     return NULL;
-
-  subject = raptor_term_copy(statement->subject);
-  if(statement->subject && !subject)
-    goto err;
-
-  predicate = raptor_term_copy(statement->predicate);
-  if(statement->predicate && !predicate)
-    goto err;
-
-  object = raptor_term_copy(statement->object);
-  if(statement->object && !object)
-    goto err;
-
-  graph = raptor_term_copy(statement->graph);
-  if(statement->graph && !graph)
-    goto err;
-
-  return raptor_new_statement_from_nodes(statement->world, subject, predicate, object, graph);
-
- err:
-  if(graph)
-    raptor_free_term(graph);
-  if(object)
-    raptor_free_term(object);
-  if(predicate)
-    raptor_free_term(predicate);
-  if(subject)
-    raptor_free_term(subject);
-  return NULL;
 }
 
 
@@ -129,15 +132,14 @@ librdf_new_statement_from_statement(librdf_statement* statement)
  * 
  * Return value: a new #librdf_statement with copy or NULL on failure
  **/
-librdf_statement*
-librdf_new_statement_from_statement2(librdf_statement* statement)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
+librdf_statement *
+librdf_new_statement_from_statement2(librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
 
-  if(!statement)
-    return NULL;
-  
-  return raptor_statement_copy(statement);
+    if (!statement)
+        return NULL;
+
+    return raptor_statement_copy(statement);
 }
 
 
@@ -154,16 +156,15 @@ librdf_new_statement_from_statement2(librdf_statement* statement)
  *
  * Return value: a new #librdf_statement with copy or NULL on failure
  **/
-librdf_statement*
-librdf_new_statement_from_nodes(librdf_world *world, 
-                                librdf_node* subject,
-                                librdf_node* predicate,
-                                librdf_node* object)
-{
-  librdf_world_open(world);
+librdf_statement *
+librdf_new_statement_from_nodes(librdf_world *world,
+                                librdf_node *subject,
+                                librdf_node *predicate,
+                                librdf_node *object) {
+    librdf_world_open(world);
 
-  return raptor_new_statement_from_nodes(world->raptor_world_ptr,
-                                         subject, predicate, object, NULL);
+    return raptor_new_statement_from_nodes(world->raptor_world_ptr,
+                                           subject, predicate, object, NULL);
 }
 
 
@@ -180,13 +181,12 @@ librdf_new_statement_from_nodes(librdf_world *world,
  * with deallocation of any statement parts (subject, predicate, object).
  **/
 void
-librdf_statement_init(librdf_world *world, librdf_statement *statement)
-{
-  librdf_world_open(world);
+librdf_statement_init(librdf_world *world, librdf_statement *statement) {
+    librdf_world_open(world);
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN(statement, librdf_statement);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN(statement, librdf_statement);
 
-  raptor_statement_init(statement, world->raptor_world_ptr);
+    raptor_statement_init(statement, world->raptor_world_ptr);
 }
 
 
@@ -198,11 +198,10 @@ librdf_statement_init(librdf_world *world, librdf_statement *statement)
  * 
  **/
 void
-librdf_statement_clear(librdf_statement *statement)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN(statement, librdf_statement);
+librdf_statement_clear(librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN(statement, librdf_statement);
 
-  raptor_statement_clear(statement);
+    raptor_statement_clear(statement);
 }
 
 
@@ -214,12 +213,11 @@ librdf_statement_clear(librdf_statement *statement)
  * 
  **/
 void
-librdf_free_statement(librdf_statement* statement)
-{
-  if(!statement)
-    return;
-  
-  raptor_free_statement(statement);
+librdf_free_statement(librdf_statement *statement) {
+    if (!statement)
+        return;
+
+    raptor_free_statement(statement);
 }
 
 
@@ -237,12 +235,11 @@ librdf_free_statement(librdf_statement* statement)
  * 
  * Return value: a pointer to the #librdf_node of the statement subject - 
  **/
-librdf_node*
-librdf_statement_get_subject(librdf_statement *statement) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
+librdf_node *
+librdf_statement_get_subject(librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
 
-  return statement->subject;
+    return statement->subject;
 }
 
 
@@ -257,11 +254,10 @@ librdf_statement_get_subject(librdf_statement *statement)
  * the statement object and must not be used by the caller after this call.
  **/
 void
-librdf_statement_set_subject(librdf_statement *statement, librdf_node *node)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN(statement, librdf_statement);
+librdf_statement_set_subject(librdf_statement *statement, librdf_node *node) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN(statement, librdf_statement);
 
-  statement->subject = node;
+    statement->subject = node;
 }
 
 
@@ -276,12 +272,11 @@ librdf_statement_set_subject(librdf_statement *statement, librdf_node *node)
  * 
  * Return value: a pointer to the #librdf_node of the statement predicate - 
  **/
-librdf_node*
-librdf_statement_get_predicate(librdf_statement *statement) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
+librdf_node *
+librdf_statement_get_predicate(librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
 
-  return statement->predicate;
+    return statement->predicate;
 }
 
 
@@ -296,11 +291,10 @@ librdf_statement_get_predicate(librdf_statement *statement)
  * the statement object and must not be used by the caller after this call.
  **/
 void
-librdf_statement_set_predicate(librdf_statement *statement, librdf_node *node)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN(statement, librdf_statement);
+librdf_statement_set_predicate(librdf_statement *statement, librdf_node *node) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN(statement, librdf_statement);
 
-  statement->predicate = node;
+    statement->predicate = node;
 }
 
 
@@ -315,12 +309,11 @@ librdf_statement_set_predicate(librdf_statement *statement, librdf_node *node)
  * 
  * Return value: a pointer to the #librdf_node of the statement object - 
  **/
-librdf_node*
-librdf_statement_get_object(librdf_statement *statement) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
+librdf_node *
+librdf_statement_get_object(librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
 
-  return statement->object;
+    return statement->object;
 }
 
 
@@ -335,11 +328,10 @@ librdf_statement_get_object(librdf_statement *statement)
  * the statement object and must not be used by the caller after this call.
  **/
 void
-librdf_statement_set_object(librdf_statement *statement, librdf_node *node)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN(statement, librdf_statement);
+librdf_statement_set_object(librdf_statement *statement, librdf_node *node) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN(statement, librdf_statement);
 
-  statement->object = node;
+    statement->object = node;
 }
 
 
@@ -355,26 +347,26 @@ librdf_statement_set_object(librdf_statement *statement, librdf_node *node)
  * Return value: non 0 if the statement is complete and legal
  **/
 int
-librdf_statement_is_complete(librdf_statement *statement)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 0);
+librdf_statement_is_complete(librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 0);
 
-  if(!statement->subject ||
-     (!librdf_node_is_resource(statement->subject) && 
-      !librdf_node_is_blank(statement->subject)))
-    return 0;
+    if (!statement->subject ||
+        (!librdf_node_is_resource(statement->subject) &&
+         !librdf_node_is_blank(statement->subject)))
+        return 0;
 
-  if(!statement->predicate || !librdf_node_is_resource(statement->predicate))
-     return 0;
+    if (!statement->predicate || !librdf_node_is_resource(statement->predicate))
+        return 0;
 
-  if(!statement->object)
-    return 0;
+    if (!statement->object)
+        return 0;
 
-  return 1;
+    return 1;
 }
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_statement_to_string:
  * @statement: the statement
@@ -391,27 +383,27 @@ librdf_statement_is_complete(librdf_statement *statement)
  * Return value: the string or NULL on failure.
  **/
 unsigned char *
-librdf_statement_to_string(librdf_statement *statement)
-{
-  raptor_iostream* iostr;
-  unsigned char *s;
-  int rc;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
+librdf_statement_to_string(librdf_statement *statement) {
+    raptor_iostream *iostr;
+    unsigned char *s;
+    int rc;
 
-  iostr = raptor_new_iostream_to_string(statement->world, (void**)&s, NULL, malloc);
-  if(!iostr)
-    return NULL;
-  
-  rc = librdf_statement_write(statement, iostr);
-  raptor_free_iostream(iostr);
-  if(rc) {
-    raptor_free_memory(s);
-    s = NULL;
-  }
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
 
-  return s;
+    iostr = raptor_new_iostream_to_string(statement->world, (void **) &s, NULL, malloc);
+    if (!iostr)
+        return NULL;
+
+    rc = librdf_statement_write(statement, iostr);
+    raptor_free_iostream(iostr);
+    if (rc) {
+        raptor_free_memory(s);
+        s = NULL;
+    }
+
+    return s;
 }
+
 #endif
 
 
@@ -428,27 +420,25 @@ librdf_statement_to_string(librdf_statement *statement)
  * Return value: non-0 on failure
  **/
 int
-librdf_statement_write(librdf_statement *statement, raptor_iostream *iostr) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
+librdf_statement_write(librdf_statement *statement, raptor_iostream *iostr) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
 
-  if(!statement)
-    return 1;
-  
-  if(librdf_node_write(statement->subject, iostr))
-    return 1;
+    if (!statement)
+        return 1;
 
-  raptor_iostream_write_byte(' ', iostr);
-  if(librdf_node_write(statement->predicate, iostr))
-    return 1;
+    if (librdf_node_write(statement->subject, iostr))
+        return 1;
 
-  raptor_iostream_write_byte(' ', iostr);
-  if(librdf_node_write(statement->object, iostr))
-    return 1;
+    raptor_iostream_write_byte(' ', iostr);
+    if (librdf_node_write(statement->predicate, iostr))
+        return 1;
 
-  return 0;
+    raptor_iostream_write_byte(' ', iostr);
+    if (librdf_node_write(statement->object, iostr))
+        return 1;
+
+    return 0;
 }
-
 
 
 /**
@@ -463,24 +453,22 @@ librdf_statement_write(librdf_statement *statement, raptor_iostream *iostr)
  * 
  **/
 void
-librdf_statement_print(librdf_statement *statement, FILE *fh) 
-{
-  raptor_iostream *iostr;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN(statement, librdf_statement);
+librdf_statement_print(librdf_statement *statement, FILE *fh) {
+    raptor_iostream *iostr;
 
-  if(!statement)
-    return;
-  
-  iostr = raptor_new_iostream_to_file_handle(statement->world, fh);
-  if(!iostr)
-    return;
-  
-  librdf_statement_write(statement, iostr);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN(statement, librdf_statement);
 
-  raptor_free_iostream(iostr);
+    if (!statement)
+        return;
+
+    iostr = raptor_new_iostream_to_file_handle(statement->world, fh);
+    if (!iostr)
+        return;
+
+    librdf_statement_write(statement, iostr);
+
+    raptor_free_iostream(iostr);
 }
-
 
 
 /**
@@ -493,10 +481,9 @@ librdf_statement_print(librdf_statement *statement, FILE *fh)
  * Return value: non 0 if statements are equal
  **/
 int
-librdf_statement_equals(librdf_statement* statement1, 
-                        librdf_statement* statement2)
-{
-  return raptor_statement_equals(statement1, statement2);
+librdf_statement_equals(librdf_statement *statement1,
+                        librdf_statement *statement2) {
+    return raptor_statement_equals(statement1, statement2);
 }
 
 
@@ -515,25 +502,24 @@ librdf_statement_equals(librdf_statement* statement1,
  * Return value: non 0 on match
  **/
 int
-librdf_statement_match(librdf_statement* statement, 
-                       librdf_statement* partial_statement)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 0);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(partial_statement, librdf_statement, 0);
+librdf_statement_match(librdf_statement *statement,
+                       librdf_statement *partial_statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(partial_statement, librdf_statement, 0);
 
-  if(partial_statement->subject &&
-     !raptor_term_equals(statement->subject, partial_statement->subject))
-      return 0;
+    if (partial_statement->subject &&
+        !raptor_term_equals(statement->subject, partial_statement->subject))
+        return 0;
 
-  if(partial_statement->predicate &&
-     !raptor_term_equals(statement->predicate, partial_statement->predicate))
-      return 0;
+    if (partial_statement->predicate &&
+        !raptor_term_equals(statement->predicate, partial_statement->predicate))
+        return 0;
 
-  if(partial_statement->object &&
-     !raptor_term_equals(statement->object, partial_statement->object))
-      return 0;
+    if (partial_statement->object &&
+        !raptor_term_equals(statement->object, partial_statement->object))
+        return 0;
 
-  return 1;
+    return 1;
 }
 
 
@@ -554,15 +540,14 @@ librdf_statement_match(librdf_statement* statement,
  **/
 size_t
 librdf_statement_encode2(librdf_world *world,
-                         librdf_statement* statement, 
-                         unsigned char *buffer, 
-                         size_t length)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 0);
+                         librdf_statement *statement,
+                         unsigned char *buffer,
+                         size_t length) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 0);
 
-  return librdf_statement_encode_parts2(world, statement, NULL,
-                                        buffer, length,
-                                        LIBRDF_STATEMENT_ALL);
+    return librdf_statement_encode_parts2(world, statement, NULL,
+                                          buffer, length,
+                                          LIBRDF_STATEMENT_ALL);
 }
 
 /**
@@ -582,132 +567,130 @@ librdf_statement_encode2(librdf_world *world,
  * Return value: the number of bytes written or 0 on failure.
  **/
 size_t
-librdf_statement_encode(librdf_statement* statement, 
-                        unsigned char *buffer, 
-                        size_t length)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 0);
+librdf_statement_encode(librdf_statement *statement,
+                        unsigned char *buffer,
+                        size_t length) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 0);
 
-  return librdf_statement_encode_parts_internal(statement, NULL,
-                                                buffer, length,
-                                                LIBRDF_STATEMENT_ALL);
+    return librdf_statement_encode_parts_internal(statement, NULL,
+                                                  buffer, length,
+                                                  LIBRDF_STATEMENT_ALL);
 }
 
 
 static size_t
-librdf_statement_encode_parts_internal(librdf_statement* statement, 
-                                       librdf_node* context_node,
+librdf_statement_encode_parts_internal(librdf_statement *statement,
+                                       librdf_node *context_node,
                                        unsigned char *buffer, size_t length,
-                                       librdf_statement_part fields)
-{
-  size_t total_length = 0;
-  size_t node_len;
-  unsigned char *p;
+                                       librdf_statement_part fields) {
+    size_t total_length = 0;
+    size_t node_len;
+    unsigned char *p;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 0);
 
-  /* min size */
-  if(buffer && length < 1)
-    return 0;
-
-  p = buffer;
-  /* magic number 'x' */
-  if(p) {
-    *p++ = 'x';
-    length--;
-  }
-  total_length++;
-
-  if((fields & LIBRDF_STATEMENT_SUBJECT) && statement->subject) {
-    /* 's' + subject */
-    if(p) {
-      if(length < 1)
+    /* min size */
+    if (buffer && length < 1)
         return 0;
-      *p++ = 's';
-      length--;
+
+    p = buffer;
+    /* magic number 'x' */
+    if (p) {
+        *p++ = 'x';
+        length--;
     }
     total_length++;
 
-    node_len = librdf_node_encode(statement->subject, p, length);
-    if(!node_len)
-      return 0;
-    if(p) {
-      p += node_len;
-      length -= node_len;
-    }
-    
-    
-    total_length += node_len;
-  }
-  
-  
-  if((fields & LIBRDF_STATEMENT_PREDICATE) && statement->predicate) {
-    /* 'p' + predicate */
-    if(p) {
-      if(length < 1)
-        return 0;
-      
-      *p++ = 'p';
-      length--;
-    }
-    total_length++;
+    if ((fields & LIBRDF_STATEMENT_SUBJECT) && statement->subject) {
+        /* 's' + subject */
+        if (p) {
+            if (length < 1)
+                return 0;
+            *p++ = 's';
+            length--;
+        }
+        total_length++;
 
-    node_len = librdf_node_encode(statement->predicate, p, length);
-    if(!node_len)
-      return 0;
-    if(p) {
-      p += node_len;
-      length -= node_len;
-    }
-    
-    total_length += node_len;
-  }
-  
-  if((fields & LIBRDF_STATEMENT_OBJECT) && statement->object) {
-    /* 'o' object */
-    if(p) {
-      if(length < 1)
-        return 0;
-      
-      *p++ = 'o';
-      length--;
-    }
-    total_length++;
+        node_len = librdf_node_encode(statement->subject, p, length);
+        if (!node_len)
+            return 0;
+        if (p) {
+            p += node_len;
+            length -= node_len;
+        }
 
-    node_len = librdf_node_encode(statement->object, p, length);
-    if(!node_len)
-      return 0;
-    if(p) {
-      p += node_len;
-      length -= node_len;
+
+        total_length += node_len;
     }
 
-    total_length += node_len;
-  }
 
-  if(context_node) {
-    /* 'o' object */
-    if(p) {
-      *p++ = 'c';
-      length--;
+    if ((fields & LIBRDF_STATEMENT_PREDICATE) && statement->predicate) {
+        /* 'p' + predicate */
+        if (p) {
+            if (length < 1)
+                return 0;
+
+            *p++ = 'p';
+            length--;
+        }
+        total_length++;
+
+        node_len = librdf_node_encode(statement->predicate, p, length);
+        if (!node_len)
+            return 0;
+        if (p) {
+            p += node_len;
+            length -= node_len;
+        }
+
+        total_length += node_len;
     }
-    total_length++;
 
-    node_len = librdf_node_encode(context_node, p, length);
-    if(!node_len)
-      return 0;
-    /* p and length changes never needed to be calculated [clang] */
-    /*
-    if(p) {
-      p += node_len;
-      length -= node_len;
+    if ((fields & LIBRDF_STATEMENT_OBJECT) && statement->object) {
+        /* 'o' object */
+        if (p) {
+            if (length < 1)
+                return 0;
+
+            *p++ = 'o';
+            length--;
+        }
+        total_length++;
+
+        node_len = librdf_node_encode(statement->object, p, length);
+        if (!node_len)
+            return 0;
+        if (p) {
+            p += node_len;
+            length -= node_len;
+        }
+
+        total_length += node_len;
     }
-    */
 
-    total_length += node_len;
-  }
+    if (context_node) {
+        /* 'o' object */
+        if (p) {
+            *p++ = 'c';
+            length--;
+        }
+        total_length++;
 
-  return total_length;
+        node_len = librdf_node_encode(context_node, p, length);
+        if (!node_len)
+            return 0;
+        /* p and length changes never needed to be calculated [clang] */
+        /*
+        if(p) {
+          p += node_len;
+          length -= node_len;
+        }
+        */
+
+        total_length += node_len;
+    }
+
+    return total_length;
 }
 
 
@@ -737,13 +720,12 @@ librdf_statement_encode_parts_internal(librdf_statement* statement,
  * Return value: the number of bytes written or 0 on failure.
  **/
 size_t
-librdf_statement_encode_parts(librdf_statement* statement, 
-                              librdf_node* context_node,
+librdf_statement_encode_parts(librdf_statement *statement,
+                              librdf_node *context_node,
                               unsigned char *buffer, size_t length,
-                              librdf_statement_part fields)
-{
-  return librdf_statement_encode_parts_internal(statement, context_node,
-                                                buffer, length, fields);
+                              librdf_statement_part fields) {
+    return librdf_statement_encode_parts_internal(statement, context_node,
+                                                  buffer, length, fields);
 }
 
 
@@ -763,10 +745,9 @@ librdf_statement_encode_parts(librdf_statement* statement,
  * Return value: 0 signifying failure
  **/
 size_t
-librdf_statement_decode(librdf_statement* statement, 
-                        unsigned char *buffer, size_t length)
-{
-  return 0;
+librdf_statement_decode(librdf_statement *statement,
+                        unsigned char *buffer, size_t length) {
+    return 0;
 }
 
 
@@ -787,11 +768,10 @@ librdf_statement_decode(librdf_statement* statement,
  * Return value: 0 signifying failure
  **/
 size_t
-librdf_statement_decode_parts(librdf_statement* statement, 
-                              librdf_node** context_node,
-                              unsigned char *buffer, size_t length)
-{
-  return 0;
+librdf_statement_decode_parts(librdf_statement *statement,
+                              librdf_node **context_node,
+                              unsigned char *buffer, size_t length) {
+    return 0;
 }
 
 
@@ -812,82 +792,81 @@ librdf_statement_decode_parts(librdf_statement* statement,
  * Return value: number of bytes used or 0 on failure (bad encoding, allocation failure)
  **/
 size_t
-librdf_statement_decode2(librdf_world* world,
-                         librdf_statement* statement,
-                         librdf_node** context_node,
-                         unsigned char *buffer, size_t length)
-{
-  unsigned char *p;
-  librdf_node* node;
-  unsigned char type;
-  size_t total_length = 0;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 0);
+librdf_statement_decode2(librdf_world *world,
+                         librdf_statement *statement,
+                         librdf_node **context_node,
+                         unsigned char *buffer, size_t length) {
+    unsigned char *p;
+    librdf_node *node;
+    unsigned char type;
+    size_t total_length = 0;
+
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 0);
 
 #if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 1
     LIBRDF_DEBUG2("Decoding buffer of %d bytes\n", length);
 #endif
 
 
-  /* absolute minimum - first byte is type */
-  if(length < 1)
-    return 0;
+    /* absolute minimum - first byte is type */
+    if (length < 1)
+        return 0;
 
-  p = buffer;
-  if(*p++ != 'x')
-    return 0;
-  length--;
-  total_length++;
-  
-  
-  while(length > 0) {
-    size_t node_len;
-    
-    type = *p++;
+    p = buffer;
+    if (*p++ != 'x')
+        return 0;
     length--;
     total_length++;
 
-    if(!length)
-      return 0;
-    
-    if(!(node = librdf_node_decode(world, &node_len, p, length)))
-      return 0;
 
-    p += node_len;
-    length -= node_len;
-    total_length += node_len;
-    
+    while (length > 0) {
+        size_t node_len;
+
+        type = *p++;
+        length--;
+        total_length++;
+
+        if (!length)
+            return 0;
+
+        if (!(node = librdf_node_decode(world, &node_len, p, length)))
+            return 0;
+
+        p += node_len;
+        length -= node_len;
+        total_length += node_len;
+
 #if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 1
-    LIBRDF_DEBUG3("Found type %c (%d bytes)\n", type, node_len);
+        LIBRDF_DEBUG3("Found type %c (%d bytes)\n", type, node_len);
 #endif
-  
-    switch(type) {
-    case 's': /* subject */
-      statement->subject = node;
-      break;
-      
-    case 'p': /* predicate */
-      statement->predicate = node;
-      break;
-      
-    case 'o': /* object */
-      statement->object = node;
-      break;
 
-    case 'c': /* context */
-      if(context_node)
-        *context_node = node;
-      else
-        librdf_free_node(node);
-      break;
+        switch (type) {
+            case 's': /* subject */
+                statement->subject = node;
+                break;
 
-    default:
-      /* FIXME - report this or not? */
-      return 0;
+            case 'p': /* predicate */
+                statement->predicate = node;
+                break;
+
+            case 'o': /* object */
+                statement->object = node;
+                break;
+
+            case 'c': /* context */
+                if (context_node)
+                    *context_node = node;
+                else
+                    librdf_free_node(node);
+                break;
+
+            default:
+                /* FIXME - report this or not? */
+                return 0;
+        }
     }
-  }
 
-  return total_length;
+    return total_length;
 }
 
 #endif

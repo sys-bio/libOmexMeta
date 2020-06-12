@@ -23,7 +23,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #include <stdio.h>
@@ -54,103 +56,103 @@ raptor_string_escaped_write(const unsigned char *string,
                             size_t len,
                             const char delim,
                             unsigned int flags,
-                            raptor_iostream *iostr)
-{
-  unsigned char c;
-  int unichar_len;
-  raptor_unichar unichar;
+                            raptor_iostream *iostr) {
+    unsigned char c;
+    int unichar_len;
+    raptor_unichar unichar;
 
-  if(!string)
-    return 1;
-  
-  for(; (c=*string); string++, len--) {
-    if((delim && c == delim && (delim == '\'' || delim == '"')) ||
-       c == '\\') {
-      raptor_iostream_write_byte('\\', iostr);
-      raptor_iostream_write_byte(c, iostr);
-      continue;
+    if (!string)
+        return 1;
+
+    for (; (c = *string); string++, len--) {
+        if ((delim && c == delim && (delim == '\'' || delim == '"')) ||
+            c == '\\') {
+            raptor_iostream_write_byte('\\', iostr);
+            raptor_iostream_write_byte(c, iostr);
+            continue;
+        }
+
+        if (delim && c == delim) {
+            raptor_iostream_counted_string_write("\\u", 2, iostr);
+            raptor_iostream_hexadecimal_write(c, 4, iostr);
+            continue;
+        }
+
+        if (flags & RAPTOR_ESCAPED_WRITE_BITFLAG_SPARQL_URI_ESCAPES) {
+            /* Must escape #x00-#x20<>\"{}|^` */
+            if (c <= 0x20 ||
+                c == '<' || c == '>' || c == '\\' || c == '"' ||
+                c == '{' || c == '}' || c == '|' || c == '^' || c == '`') {
+                raptor_iostream_counted_string_write("\\u", 2, iostr);
+                raptor_iostream_hexadecimal_write(c, 4, iostr);
+                continue;
+            } else if (c < 0x7f) {
+                raptor_iostream_write_byte(c, iostr);
+                continue;
+            }
+        }
+
+        if (flags & RAPTOR_ESCAPED_WRITE_BITFLAG_BS_ESCAPES_TNRU) {
+            if (c == 0x09) {
+                raptor_iostream_counted_string_write("\\t", 2, iostr);
+                continue;
+            } else if (c == 0x0a) {
+                raptor_iostream_counted_string_write("\\n", 2, iostr);
+                continue;
+            } else if (c == 0x0d) {
+                raptor_iostream_counted_string_write("\\r", 2, iostr);
+                continue;
+            } else if (c < 0x20 || c == 0x7f) {
+                raptor_iostream_counted_string_write("\\u", 2, iostr);
+                raptor_iostream_hexadecimal_write(c, 4, iostr);
+                continue;
+            }
+        }
+
+        if (flags & RAPTOR_ESCAPED_WRITE_BITFLAG_BS_ESCAPES_BF) {
+            if (c == 0x08) {
+                /* JSON has \b for backspace */
+                raptor_iostream_counted_string_write("\\b", 2, iostr);
+                continue;
+            } else if (c == 0x0b) {
+                /* JSON has \f for formfeed */
+                raptor_iostream_counted_string_write("\\f", 2, iostr);
+                continue;
+            }
+        }
+
+        /* Just format remaining characters */
+        if (c < 0x7f) {
+            raptor_iostream_write_byte(c, iostr);
+            continue;
+        }
+
+        /* It is unicode */
+        unichar_len = raptor_unicode_utf8_string_get_char(string, len, &unichar);
+        if (unichar_len < 0 || RAPTOR_GOOD_CAST(size_t, unichar_len) > len)
+            /* UTF-8 encoding had an error or ended in the middle of a string */
+            return 1;
+
+        if (flags & RAPTOR_ESCAPED_WRITE_BITFLAG_UTF8) {
+            /* UTF-8 is allowed so no need to escape */
+            raptor_iostream_counted_string_write(string, unichar_len, iostr);
+        } else {
+            if (unichar < 0x10000) {
+                raptor_iostream_counted_string_write("\\u", 2, iostr);
+                raptor_iostream_hexadecimal_write(RAPTOR_GOOD_CAST(unsigned int, unichar), 4, iostr);
+            } else {
+                raptor_iostream_counted_string_write("\\U", 2, iostr);
+                raptor_iostream_hexadecimal_write(RAPTOR_GOOD_CAST(unsigned int, unichar), 8, iostr);
+            }
+        }
+
+        unichar_len--; /* since loop does len-- */
+        string += unichar_len;
+        len -= unichar_len;
+
     }
 
-    if(delim && c == delim) {
-      raptor_iostream_counted_string_write("\\u", 2, iostr);
-      raptor_iostream_hexadecimal_write(c, 4, iostr);
-      continue;
-    }
-    
-    if(flags & RAPTOR_ESCAPED_WRITE_BITFLAG_SPARQL_URI_ESCAPES) {
-      /* Must escape #x00-#x20<>\"{}|^` */
-      if(c <= 0x20 ||
-         c == '<' || c == '>' || c == '\\' || c == '"' || 
-         c == '{' || c == '}' || c == '|' || c == '^' || c == '`') {
-        raptor_iostream_counted_string_write("\\u", 2, iostr);
-        raptor_iostream_hexadecimal_write(c, 4, iostr);
-        continue;
-      } else if(c < 0x7f) {
-        raptor_iostream_write_byte(c, iostr);
-        continue;
-      }
-    }
-
-    if(flags & RAPTOR_ESCAPED_WRITE_BITFLAG_BS_ESCAPES_TNRU) {
-      if(c == 0x09) {
-        raptor_iostream_counted_string_write("\\t", 2, iostr);
-        continue;
-      } else if(c == 0x0a) {
-        raptor_iostream_counted_string_write("\\n", 2, iostr);
-        continue;
-      } else if(c == 0x0d) {
-        raptor_iostream_counted_string_write("\\r", 2, iostr);
-        continue;
-      } else if(c < 0x20 || c == 0x7f) {
-        raptor_iostream_counted_string_write("\\u", 2, iostr);
-        raptor_iostream_hexadecimal_write(c, 4, iostr);
-        continue;
-      }
-    }
-    
-    if(flags & RAPTOR_ESCAPED_WRITE_BITFLAG_BS_ESCAPES_BF) {
-      if(c == 0x08) {
-        /* JSON has \b for backspace */
-        raptor_iostream_counted_string_write("\\b", 2, iostr);
-        continue;
-      } else if(c == 0x0b) {
-        /* JSON has \f for formfeed */
-        raptor_iostream_counted_string_write("\\f", 2, iostr);
-        continue;
-      }
-    }
-
-    /* Just format remaining characters */
-    if(c < 0x7f) {
-      raptor_iostream_write_byte(c, iostr);
-      continue;
-    } 
-    
-    /* It is unicode */    
-    unichar_len = raptor_unicode_utf8_string_get_char(string, len, &unichar);
-    if(unichar_len < 0 || RAPTOR_GOOD_CAST(size_t, unichar_len) > len)
-      /* UTF-8 encoding had an error or ended in the middle of a string */
-      return 1;
-
-    if(flags & RAPTOR_ESCAPED_WRITE_BITFLAG_UTF8) {
-      /* UTF-8 is allowed so no need to escape */
-      raptor_iostream_counted_string_write(string, unichar_len, iostr);
-    } else {
-      if(unichar < 0x10000) {
-        raptor_iostream_counted_string_write("\\u", 2, iostr);
-        raptor_iostream_hexadecimal_write(RAPTOR_GOOD_CAST(unsigned int, unichar), 4, iostr);
-      } else {
-        raptor_iostream_counted_string_write("\\U", 2, iostr);
-        raptor_iostream_hexadecimal_write(RAPTOR_GOOD_CAST(unsigned int, unichar), 8, iostr);
-      }
-    }
-    
-    unichar_len--; /* since loop does len-- */
-    string += unichar_len; len -= unichar_len;
-
-  }
-
-  return 0;
+    return 0;
 }
 
 
@@ -175,34 +177,32 @@ raptor_string_python_write(const unsigned char *string,
                            size_t len,
                            const char delim,
                            unsigned int mode,
-                           raptor_iostream *iostr)
-{
-  unsigned int flags = 0;
+                           raptor_iostream *iostr) {
+    unsigned int flags = 0;
 
-  switch(mode) {
-    case 0:
-      flags = RAPTOR_ESCAPED_WRITE_NTRIPLES_LITERAL;
-      break;
+    switch (mode) {
+        case 0:
+            flags = RAPTOR_ESCAPED_WRITE_NTRIPLES_LITERAL;
+            break;
 
-    case 1:
-      flags = RAPTOR_ESCAPED_WRITE_TURTLE_LITERAL;
-      break;
+        case 1:
+            flags = RAPTOR_ESCAPED_WRITE_TURTLE_LITERAL;
+            break;
 
-    case 2:
-      flags = RAPTOR_ESCAPED_WRITE_TURTLE_LONG_LITERAL;
-      break;
+        case 2:
+            flags = RAPTOR_ESCAPED_WRITE_TURTLE_LONG_LITERAL;
+            break;
 
-    case 3:
-      flags = RAPTOR_ESCAPED_WRITE_JSON_LITERAL;
-      break;
+        case 3:
+            flags = RAPTOR_ESCAPED_WRITE_JSON_LITERAL;
+            break;
 
-    default:
-      return 1;
-  }
+        default:
+            return 1;
+    }
 
-  return raptor_string_escaped_write(string, len, delim, flags, iostr);
+    return raptor_string_escaped_write(string, len, delim, flags, iostr);
 }
-
 
 
 /**
@@ -218,72 +218,71 @@ raptor_string_python_write(const unsigned char *string,
 int
 raptor_term_escaped_write(const raptor_term *term,
                           unsigned int flags,
-                          raptor_iostream* iostr)
-{
-  const char* quotes="\"\"\"\"";
+                          raptor_iostream *iostr) {
+    const char *quotes = "\"\"\"\"";
 
-  if(!term)
-    return 1;
+    if (!term)
+        return 1;
 
-  switch(term->type) {
-    case RAPTOR_TERM_TYPE_LITERAL:
-      if(flags == RAPTOR_ESCAPED_WRITE_TURTLE_LONG_LITERAL) 
-        raptor_iostream_counted_string_write(quotes, 3, iostr);
-      else
-        raptor_iostream_write_byte('"', iostr);
-      raptor_string_escaped_write(term->value.literal.string,
-                                  term->value.literal.string_len,
-                                  '"',
-                                  flags,
-                                  iostr);
-      if(flags == RAPTOR_ESCAPED_WRITE_TURTLE_LONG_LITERAL) 
-        raptor_iostream_counted_string_write(quotes, 3, iostr);
-      else
-        raptor_iostream_write_byte('"', iostr);
+    switch (term->type) {
+        case RAPTOR_TERM_TYPE_LITERAL:
+            if (flags == RAPTOR_ESCAPED_WRITE_TURTLE_LONG_LITERAL)
+                raptor_iostream_counted_string_write(quotes, 3, iostr);
+            else
+                raptor_iostream_write_byte('"', iostr);
+            raptor_string_escaped_write(term->value.literal.string,
+                                        term->value.literal.string_len,
+                                        '"',
+                                        flags,
+                                        iostr);
+            if (flags == RAPTOR_ESCAPED_WRITE_TURTLE_LONG_LITERAL)
+                raptor_iostream_counted_string_write(quotes, 3, iostr);
+            else
+                raptor_iostream_write_byte('"', iostr);
 
-      if(term->value.literal.language) {
-        raptor_iostream_write_byte('@', iostr);
-        raptor_iostream_counted_string_write(term->value.literal.language,
-                                             term->value.literal.language_len,
-                                             iostr);
-      }
-      if(term->value.literal.datatype) {
-        if(flags == RAPTOR_ESCAPED_WRITE_NTRIPLES_LITERAL)
-          flags = RAPTOR_ESCAPED_WRITE_NTRIPLES_URI;
-        else if(flags == RAPTOR_ESCAPED_WRITE_TURTLE_LITERAL)
-          flags = RAPTOR_ESCAPED_WRITE_TURTLE_URI;
+            if (term->value.literal.language) {
+                raptor_iostream_write_byte('@', iostr);
+                raptor_iostream_counted_string_write(term->value.literal.language,
+                                                     term->value.literal.language_len,
+                                                     iostr);
+            }
+            if (term->value.literal.datatype) {
+                if (flags == RAPTOR_ESCAPED_WRITE_NTRIPLES_LITERAL)
+                    flags = RAPTOR_ESCAPED_WRITE_NTRIPLES_URI;
+                else if (flags == RAPTOR_ESCAPED_WRITE_TURTLE_LITERAL)
+                    flags = RAPTOR_ESCAPED_WRITE_TURTLE_URI;
 
-        raptor_iostream_counted_string_write("^^", 2, iostr);
-        raptor_uri_escaped_write(term->value.literal.datatype, NULL,
-                                 flags, iostr);
-      }
+                raptor_iostream_counted_string_write("^^", 2, iostr);
+                raptor_uri_escaped_write(term->value.literal.datatype, NULL,
+                                         flags, iostr);
+            }
 
-      break;
-      
-    case RAPTOR_TERM_TYPE_BLANK:
-      raptor_iostream_counted_string_write("_:", 2, iostr);
+            break;
 
-      raptor_iostream_counted_string_write(term->value.blank.string,
-                                           term->value.blank.string_len,
-                                           iostr);
-      break;
-      
-    case RAPTOR_TERM_TYPE_URI:
-      if(flags == RAPTOR_ESCAPED_WRITE_NTRIPLES_LITERAL)
-        flags = RAPTOR_ESCAPED_WRITE_NTRIPLES_URI;
-      else if(flags == RAPTOR_ESCAPED_WRITE_TURTLE_LITERAL)
-        flags = RAPTOR_ESCAPED_WRITE_TURTLE_URI;
+        case RAPTOR_TERM_TYPE_BLANK:
+            raptor_iostream_counted_string_write("_:", 2, iostr);
 
-      raptor_uri_escaped_write(term->value.uri, NULL, flags, iostr);
-      break;
-      
-    case RAPTOR_TERM_TYPE_UNKNOWN:
-    default:
-      raptor_log_error_formatted(term->world, RAPTOR_LOG_LEVEL_ERROR, NULL,
-                                 "_Triple has unsupported term type %d",
-                                 term->type);
-      return 1;
-  }
+            raptor_iostream_counted_string_write(term->value.blank.string,
+                                                 term->value.blank.string_len,
+                                                 iostr);
+            break;
 
-  return 0;
+        case RAPTOR_TERM_TYPE_URI:
+            if (flags == RAPTOR_ESCAPED_WRITE_NTRIPLES_LITERAL)
+                flags = RAPTOR_ESCAPED_WRITE_NTRIPLES_URI;
+            else if (flags == RAPTOR_ESCAPED_WRITE_TURTLE_LITERAL)
+                flags = RAPTOR_ESCAPED_WRITE_TURTLE_URI;
+
+            raptor_uri_escaped_write(term->value.uri, NULL, flags, iostr);
+            break;
+
+        case RAPTOR_TERM_TYPE_UNKNOWN:
+        default:
+            raptor_log_error_formatted(term->world, RAPTOR_LOG_LEVEL_ERROR, NULL,
+                                       "_Triple has unsupported term type %d",
+                                       term->type);
+            return 1;
+    }
+
+    return 0;
 }

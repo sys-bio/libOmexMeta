@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #ifdef RAPTOR_WWW_LIBFETCH

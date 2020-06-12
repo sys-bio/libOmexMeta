@@ -91,7 +91,7 @@ namespace semsim {
 
 //        ~Editor();
 
-        int size() const ;
+        int size() const;
 
 
         /*
@@ -129,7 +129,7 @@ namespace semsim {
          * @param ns the namespace
          * @param prefix the prefix used in serialized annotations to refer to the namespace
          */
-        void addNamespace(const std::string& ns, std::string prefix);
+        void addNamespace(const std::string &ns, std::string prefix);
 
         /*
          * @brief Add a SingleAnnotation (aka a Triple) to the model
@@ -163,7 +163,7 @@ namespace semsim {
          * For developers. Consider removing this function in favour of using the
          * add* functions.
          */
-        [[maybe_unused]] void addCompositeAnnotation(const PhysicalPhenomenonPtr& phenomenonPtr);
+        [[maybe_unused]] void addCompositeAnnotation(const PhysicalPhenomenonPtr &phenomenonPtr);
 
         /*
          * @brief add a composite annotation of type PhysicalEntity to the rdf graph
@@ -175,7 +175,7 @@ namespace semsim {
          * @brief remove triples associated with a a PhysicalEntity object from the rdf graph
          * @param physicalEntity the PhysicalEntityto remove
          */
-        void removePhysicalEntity(PhysicalEntity physicalEntity) const;
+        void removePhysicalEntity(PhysicalEntity &physicalEntity);
 
         /*
          * @brief add a composite annotation of type PhysicalProcess to the rdf graph

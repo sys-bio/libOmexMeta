@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -36,7 +38,9 @@
 #include <ctype.h> /* for isprint() */
 
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <redland.h>
@@ -63,12 +67,10 @@
  * Return value: bytes written to output buffer or <0 on failure
  **/
 int
-librdf_unicode_char_to_utf8(librdf_unichar c, unsigned char *output, int length)
-{
-  return raptor_unicode_utf8_string_put_char(c, output,
-                                             LIBRDF_BAD_CAST(size_t, length));
+librdf_unicode_char_to_utf8(librdf_unichar c, unsigned char *output, int length) {
+    return raptor_unicode_utf8_string_put_char(c, output,
+                                               LIBRDF_BAD_CAST(size_t, length));
 }
-
 
 
 /**
@@ -89,11 +91,10 @@ librdf_unicode_char_to_utf8(librdf_unichar c, unsigned char *output, int length)
  **/
 int
 librdf_utf8_to_unicode_char(librdf_unichar *output, const unsigned char *input,
-                            int length)
-{
-  return raptor_unicode_utf8_string_get_char(input,
-                                             LIBRDF_BAD_CAST(size_t, length),
-                                             output);
+                            int length) {
+    return raptor_unicode_utf8_string_get_char(input,
+                                               LIBRDF_BAD_CAST(size_t, length),
+                                               output);
 }
 
 
@@ -115,63 +116,63 @@ librdf_utf8_to_unicode_char(librdf_unichar *output, const unsigned char *input,
  *
  * Return value: pointer to new ISO Latin-1 string or NULL on failure
  **/
-unsigned char*
+unsigned char *
 librdf_utf8_to_latin1_2(const unsigned char *input, size_t length,
                         unsigned char discard,
-                        size_t *output_length)
-{
-  size_t utf8_char_length = 0;
-  size_t utf8_byte_length = 0;
-  size_t i;
-  size_t j;
-  unsigned char *output;
+                        size_t *output_length) {
+    size_t utf8_char_length = 0;
+    size_t utf8_byte_length = 0;
+    size_t i;
+    size_t j;
+    unsigned char *output;
 
-  i = 0;
-  while(input[i]) {
-    int size = raptor_unicode_utf8_string_get_char(&input[i], length - i, NULL);
-    if(size <= 0)
-      return NULL;
+    i = 0;
+    while (input[i]) {
+        int size = raptor_unicode_utf8_string_get_char(&input[i], length - i, NULL);
+        if (size <= 0)
+            return NULL;
 
-    utf8_char_length++;
+        utf8_char_length++;
 
-    i += LIBRDF_GOOD_CAST(size_t, size);
-  }
-
-  /* This is a maximal length; since chars may be discarded, the
-   * actual length of the resulting can be shorter
-   */
-  utf8_byte_length = i;
-
-
-  output = LIBRDF_MALLOC(unsigned char*, utf8_byte_length + 1);
-  if(!output)
-    return NULL;
-  
-
-  i = 0; j = 0;
-  while(i < utf8_byte_length) {
-    librdf_unichar c;
-
-    int size = raptor_unicode_utf8_string_get_char(&input[i], length - i, &c);
-    if(size <= 0) {
-      LIBRDF_FREE(byte_string, output);
-      return NULL;
+        i += LIBRDF_GOOD_CAST(size_t, size);
     }
 
-    if(c < 0x100)
-      output[j++] = c;
-    else {
-      if(discard)
-        output[j++] = discard;
-    }
-    i += LIBRDF_GOOD_CAST(size_t, size);
-  } 
-  output[j] = '\0';
+    /* This is a maximal length; since chars may be discarded, the
+     * actual length of the resulting can be shorter
+     */
+    utf8_byte_length = i;
 
-  if(output_length)
-    *output_length = j;
-  
-  return output;
+
+    output = LIBRDF_MALLOC(unsigned char*, utf8_byte_length + 1);
+    if (!output)
+        return NULL;
+
+
+    i = 0;
+    j = 0;
+    while (i < utf8_byte_length) {
+        librdf_unichar c;
+
+        int size = raptor_unicode_utf8_string_get_char(&input[i], length - i, &c);
+        if (size <= 0) {
+            LIBRDF_FREE(byte_string, output);
+            return NULL;
+        }
+
+        if (c < 0x100)
+            output[j++] = c;
+        else {
+            if (discard)
+                output[j++] = discard;
+        }
+        i += LIBRDF_GOOD_CAST(size_t, size);
+    }
+    output[j] = '\0';
+
+    if (output_length)
+        *output_length = j;
+
+    return output;
 }
 
 
@@ -195,21 +196,20 @@ librdf_utf8_to_latin1_2(const unsigned char *input, size_t length,
  *
  * Return value: pointer to new ISO Latin-1 string or NULL on failure
  **/
-unsigned char*
+unsigned char *
 librdf_utf8_to_latin1(const unsigned char *input, int length,
-                      int *output_length)
-{
-  unsigned char* output_buffer;
-  size_t soutput_length = 0;
+                      int *output_length) {
+    unsigned char *output_buffer;
+    size_t soutput_length = 0;
 
-  output_buffer = librdf_utf8_to_latin1_2(input,
-                                          LIBRDF_BAD_CAST(size_t, length),
-                                          '\0',
-                                          &soutput_length);
-  if(output_length)
-    *output_length = LIBRDF_BAD_CAST(int, soutput_length);
+    output_buffer = librdf_utf8_to_latin1_2(input,
+                                            LIBRDF_BAD_CAST(size_t, length),
+                                            '\0',
+                                            &soutput_length);
+    if (output_length)
+        *output_length = LIBRDF_BAD_CAST(int, soutput_length);
 
-  return output_buffer;
+    return output_buffer;
 }
 
 
@@ -229,45 +229,44 @@ librdf_utf8_to_latin1(const unsigned char *input, int length,
  *
  * Return value: pointer to new UTF-8 string or NULL on failure
  **/
-unsigned char*
+unsigned char *
 librdf_latin1_to_utf8_2(const unsigned char *input, size_t length,
-                        size_t *output_length)
-{
-  size_t utf8_length = 0;
-  size_t i;
-  size_t j;
-  unsigned char *output;
+                        size_t *output_length) {
+    size_t utf8_length = 0;
+    size_t i;
+    size_t j;
+    unsigned char *output;
 
-  for(i = 0; input[i]; i++) {
-    int size = raptor_unicode_utf8_string_put_char(input[i], NULL, length - i);
-    if(size <= 0)
-      return NULL;
+    for (i = 0; input[i]; i++) {
+        int size = raptor_unicode_utf8_string_put_char(input[i], NULL, length - i);
+        if (size <= 0)
+            return NULL;
 
-    utf8_length += LIBRDF_GOOD_CAST(size_t, size);
-  }
-
-  output = LIBRDF_MALLOC(unsigned char*, utf8_length + 1);
-  if(!output)
-    return NULL;
-  
-
-  j = 0;
-  for(i = 0; input[i]; i++) {
-    int size = raptor_unicode_utf8_string_put_char(input[i], &output[j],
-                                                   length - i);
-    if(size <= 0) {
-      LIBRDF_FREE(byte_string, output);
-      return NULL;
+        utf8_length += LIBRDF_GOOD_CAST(size_t, size);
     }
 
-    j += LIBRDF_GOOD_CAST(size_t, size);
-  } 
-  output[j] = '\0';
+    output = LIBRDF_MALLOC(unsigned char*, utf8_length + 1);
+    if (!output)
+        return NULL;
 
-  if(output_length)
-    *output_length = j;
-  
-  return output;
+
+    j = 0;
+    for (i = 0; input[i]; i++) {
+        int size = raptor_unicode_utf8_string_put_char(input[i], &output[j],
+                                                       length - i);
+        if (size <= 0) {
+            LIBRDF_FREE(byte_string, output);
+            return NULL;
+        }
+
+        j += LIBRDF_GOOD_CAST(size_t, size);
+    }
+    output[j] = '\0';
+
+    if (output_length)
+        *output_length = j;
+
+    return output;
 }
 
 
@@ -290,20 +289,19 @@ librdf_latin1_to_utf8_2(const unsigned char *input, size_t length,
  *
  * Return value: pointer to new UTF-8 string or NULL on failure
  **/
-unsigned char*
+unsigned char *
 librdf_latin1_to_utf8(const unsigned char *input, int length,
-                      int *output_length)
-{
-  unsigned char* output_buffer;
-  size_t soutput_length = 0;
+                      int *output_length) {
+    unsigned char *output_buffer;
+    size_t soutput_length = 0;
 
-  output_buffer = librdf_latin1_to_utf8_2(input,
-                                          LIBRDF_BAD_CAST(size_t, length),
-                                          &soutput_length);
-  if(output_length)
-    *output_length = LIBRDF_BAD_CAST(int, soutput_length);
+    output_buffer = librdf_latin1_to_utf8_2(input,
+                                            LIBRDF_BAD_CAST(size_t, length),
+                                            &soutput_length);
+    if (output_length)
+        *output_length = LIBRDF_BAD_CAST(int, soutput_length);
 
-  return output_buffer;
+    return output_buffer;
 }
 
 /**
@@ -319,31 +317,30 @@ librdf_latin1_to_utf8(const unsigned char *input, int length,
  * the isprint() test.
  **/
 void
-librdf_utf8_print(const unsigned char *input, int length, FILE *stream)
-{
-  int i = 0;
-  
-  while(i < length && *input) {
-    librdf_unichar c;
-    size_t slen = LIBRDF_BAD_CAST(size_t, length - i);
+librdf_utf8_print(const unsigned char *input, int length, FILE *stream) {
+    int i = 0;
 
-    int size = raptor_unicode_utf8_string_get_char(input, slen, &c);
-    if(size <= 0)
-      return;
+    while (i < length && *input) {
+        librdf_unichar c;
+        size_t slen = LIBRDF_BAD_CAST(size_t, length - i);
 
-    if(c < 0x100) {
-      int cchar = (int)c;
-      if(isprint(cchar))
-        fputc(cchar, stream);
-      else
-        fprintf(stream, "\\u%02X", cchar);
-    } else if (c < 0x10000)
-      fprintf(stream, "\\u%04X", (unsigned int)c);
-    else
-      fprintf(stream, "\\U%08X", (unsigned int)c);
-    input += size;
-    i += size;
-  }
+        int size = raptor_unicode_utf8_string_get_char(input, slen, &c);
+        if (size <= 0)
+            return;
+
+        if (c < 0x100) {
+            int cchar = (int) c;
+            if (isprint(cchar))
+                fputc(cchar, stream);
+            else
+                fprintf(stream, "\\u%02X", cchar);
+        } else if (c < 0x10000)
+            fprintf(stream, "\\u%04X", (unsigned int) c);
+        else
+            fprintf(stream, "\\U%08X", (unsigned int) c);
+        input += size;
+        i += size;
+    }
 }
 
 #endif

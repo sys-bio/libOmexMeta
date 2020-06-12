@@ -25,7 +25,7 @@ add_definitions(-DHAVE_CONFIG_H
         -DPKGDATADIR="${PKGDATADIR}"
         -DLIBRDFA_IN_RAPTOR
         -DRAPTOR_INTERNAL
-#        -DRAPTOR_DEBUG=0
+        #        -DRAPTOR_DEBUG=0
         )
 
 # files to configure - This overwrites the configuration generated from automate system
@@ -290,7 +290,7 @@ set(LIBRDF_SOURCES
         ${LIBRDF_SOURCE_DIR}/rdf_query_internal.h
         ${LIBRDF_SOURCE_DIR}/rdf_query_rasqal.c
         ${LIBRDF_SOURCE_DIR}/rdf_query_results.c
-#        ${LIBRDF_SOURCE_DIR}/rdf_query_virtuoso.c
+        #        ${LIBRDF_SOURCE_DIR}/rdf_query_virtuoso.c
         ${LIBRDF_SOURCE_DIR}/rdf_raptor.c
         ${LIBRDF_SOURCE_DIR}/rdf_raptor.h
         ${LIBRDF_SOURCE_DIR}/rdf_raptor_internal.h
@@ -309,12 +309,12 @@ set(LIBRDF_SOURCES
         ${LIBRDF_SOURCE_DIR}/rdf_storage_internal.h
         ${LIBRDF_SOURCE_DIR}/rdf_storage_list.c
         ${LIBRDF_SOURCE_DIR}/rdf_storage_module.h
-#        ${LIBRDF_SOURCE_DIR}/rdf_storage_postgresql.c
+        #        ${LIBRDF_SOURCE_DIR}/rdf_storage_postgresql.c
         ${LIBRDF_SOURCE_DIR}/rdf_storage_sql.c
         ${LIBRDF_SOURCE_DIR}/rdf_storage_sqlite.c
         ${LIBRDF_SOURCE_DIR}/rdf_storage_trees.c
-#        ${LIBRDF_SOURCE_DIR}/rdf_storage_virtuoso.c
-#        ${LIBRDF_SOURCE_DIR}/rdf_storage_virtuoso_internal.h
+        #        ${LIBRDF_SOURCE_DIR}/rdf_storage_virtuoso.c
+        #        ${LIBRDF_SOURCE_DIR}/rdf_storage_virtuoso_internal.h
         ${LIBRDF_SOURCE_DIR}/rdf_stream.c
         ${LIBRDF_SOURCE_DIR}/rdf_stream.h
         ${LIBRDF_SOURCE_DIR}/rdf_stream_internal.h

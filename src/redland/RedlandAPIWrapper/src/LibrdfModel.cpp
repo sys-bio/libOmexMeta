@@ -95,7 +95,7 @@ namespace redland {
      * @param statement a librdf_statement* to remove from the model
      * @return void
      */
-    void LibrdfModel::removeStatement(librdf_statement* statement) const {
+    void LibrdfModel::removeStatement(librdf_statement *statement) const {
         librdf_model_remove_statement(model_, statement);
     }
 

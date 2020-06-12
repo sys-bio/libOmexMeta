@@ -30,20 +30,23 @@ namespace redland {
 
 
     private:
-        librdf_node* node_ = nullptr;
+        librdf_node *node_ = nullptr;
 
 
     public:
         LibrdfNode() = default;
 
-        static void freeNode(librdf_node* node);
+        static void freeNode(librdf_node *node);
 
         void freeNode();
 
-        LibrdfNode(const LibrdfNode &node) = delete ;
-        LibrdfNode(LibrdfNode&&node) noexcept ;
-        LibrdfNode& operator=(const LibrdfNode& node) = delete ;
-        LibrdfNode& operator=(LibrdfNode&& node) noexcept ;
+        LibrdfNode(const LibrdfNode &node) = delete;
+
+        LibrdfNode(LibrdfNode &&node) noexcept;
+
+        LibrdfNode &operator=(const LibrdfNode &node) = delete;
+
+        LibrdfNode &operator=(LibrdfNode &&node) noexcept;
 
         explicit LibrdfNode(librdf_node *node);
 
@@ -54,11 +57,11 @@ namespace redland {
         static LibrdfNode fromBlank(const std::string &blank);
 
         static LibrdfNode fromLiteral(const std::string &literal, const std::string &literal_datatype_uri = "string",
-                                        const std::string &xml_language = std::string());
+                                      const std::string &xml_language = std::string());
 
         raptor_term_type getRaptorTermType();
 
-        static std::string str(librdf_node* node);
+        static std::string str(librdf_node *node);
 
         std::string str();
 
@@ -72,7 +75,7 @@ namespace redland {
 
         void setUri(const std::string &uri);
 
-        void setLiteralDatatype(const std::string& datatype);
+        void setLiteralDatatype(const std::string &datatype);
 
         static std::string validateLiteralDatatype(const std::string &literal_datatype_uri);
 

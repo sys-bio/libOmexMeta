@@ -104,7 +104,7 @@ namespace semsim {
     }
 
     void RDF::addFromString(const std::string &str,
-                      const std::string &format, const std::string &base_uri) {
+                            const std::string &format, const std::string &base_uri) {
         std::string base_uri_used;
 
         // some logic for allowing users to not need to manually input a base_uri
@@ -156,14 +156,14 @@ namespace semsim {
         parser.parseUri(uri_string, model_);
     }
 
-    RDF RDF::fromFile(const std::string &filename, const std::string& format){
+    RDF RDF::fromFile(const std::string &filename, const std::string &format) {
         RDF rdf;
         LibrdfParser parser(format);
         parser.parseFile(filename, rdf.model_);
         return rdf;
     }
 
-    void RDF::addFromFile(const std::string &filename, const std::string& format){
+    void RDF::addFromFile(const std::string &filename, const std::string &format) {
         LibrdfParser parser(format);
         parser.parseFile(filename, model_);
     }
@@ -214,7 +214,6 @@ namespace semsim {
     librdf_storage *RDF::getStorage() const {
         return storage_.get();
     }
-
 
 
 }

@@ -32,6 +32,7 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
 #endif
@@ -46,52 +47,51 @@ int main(int argc, char *argv[]);
 
 
 int
-main(int argc, char *argv[])
-{
-  librdf_world* world;
-  int failures=0;
-  int i;
-  const char *program=librdf_basename((const char*)argv[0]);
-  const char* storage="mysql";
-  const char* dir;
-  
-  if(argc>1)
-    dir=argv[1];
-  else
-    dir=".";
-  
-  world=librdf_new_world();
-  librdf_world_open(world);
+main(int argc, char *argv[]) {
+    librdf_world *world;
+    int failures = 0;
+    int i;
+    const char *program = librdf_basename((const char *) argv[0]);
+    const char *storage = "mysql";
+    const char *dir;
 
-  for(i=0; i<2; i++) {
-    const char* layout=(i == 0) ? "v1" : "v2";
-    librdf_sql_config* config;
+    if (argc > 1)
+        dir = argv[1];
+    else
+        dir = ".";
 
-    fprintf(stderr, "%s: Opening SQL config for storage %s layout %s\n",
-            program, storage, layout);
-    
-    config=librdf_new_sql_config(world, storage, layout, dir, 
-                                 librdf_storage_sql_dbconfig_predicates);
-    if(config) {
-      const char* value=config->values[DBCONFIG_CREATE_TABLE_BNODES];
-      if(value)
-        fprintf(stderr, "%s: Bnode table declaration found of %zu bytes size\n",
-                program, strlen(value));
-      else {
-        fprintf(stderr, "%s: FAILED Bnode table declaration not found\n",
-                program);
-        failures++;
-      }
-      
-      librdf_free_sql_config(config);
-    } else {
-      fprintf(stderr, "%s: FAILED to get complete SQL configuration\n",
-              program);
-      failures++;
+    world = librdf_new_world();
+    librdf_world_open(world);
+
+    for (i = 0; i < 2; i++) {
+        const char *layout = (i == 0) ? "v1" : "v2";
+        librdf_sql_config *config;
+
+        fprintf(stderr, "%s: Opening SQL config for storage %s layout %s\n",
+                program, storage, layout);
+
+        config = librdf_new_sql_config(world, storage, layout, dir,
+                                       librdf_storage_sql_dbconfig_predicates);
+        if (config) {
+            const char *value = config->values[DBCONFIG_CREATE_TABLE_BNODES];
+            if (value)
+                fprintf(stderr, "%s: Bnode table declaration found of %zu bytes size\n",
+                        program, strlen(value));
+            else {
+                fprintf(stderr, "%s: FAILED Bnode table declaration not found\n",
+                        program);
+                failures++;
+            }
+
+            librdf_free_sql_config(config);
+        } else {
+            fprintf(stderr, "%s: FAILED to get complete SQL configuration\n",
+                    program);
+            failures++;
+        }
     }
-  }
 
-  librdf_free_world(world);
+    librdf_free_world(world);
 
-  return failures;
+    return failures;
 }

@@ -78,7 +78,7 @@ namespace semsim {
             LibrdfNode::freeNode(getPredicate());
         // ive implemented the logic here rather then using LibrdfStatement::setPredicate
         //  because I want them both to be called setPredicate.
-        librdf_node* node = PredicateFactory(namespace_, term)->getNode();
+        librdf_node *node = PredicateFactory(namespace_, term)->getNode();
         librdf_statement_set_predicate(statement_, node);
         return *this;
     }
@@ -124,7 +124,7 @@ namespace semsim {
         return !getSubject() && !getPredicate() && !getResource();
     }
 
-    librdf_statement* Triple::getStatement() const {
+    librdf_statement *Triple::getStatement() const {
         return statement_;
     }
 

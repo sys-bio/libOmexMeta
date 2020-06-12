@@ -69,7 +69,8 @@ class PysemsimAPI:
                                      [ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri);
-    rdf_add_from_string = Util.load_func("RDF_addFromString", [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_void_p)
+    rdf_add_from_string = Util.load_func("RDF_addFromString", [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_char_p],
+                                         ct.c_void_p)
 
     # RDF *RDF_fromUri(const char *uri_string, const char *format);
     rdf_from_uri = Util.load_func("RDF_fromUri", [ct.c_char_p, ct.c_char_p], ct.c_int64)
@@ -179,7 +180,8 @@ class PysemsimAPI:
     singular_annotation_get_about = Util.load_func("SingularAnnotation_getAbout", [ct.c_int64], ct.c_int64)
 
     # char *SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format, const char *base_uri);
-    singular_annotation_str = Util.load_func("SingularAnnotation_str", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    singular_annotation_str = Util.load_func("SingularAnnotation_str", [ct.c_int64, ct.c_char_p, ct.c_char_p],
+                                             ct.c_int64)
 
     # char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
     singular_annotation_get_predicate = Util.load_func("SingularAnnotation_getPredicate", [ct.c_int64], ct.c_int64)
@@ -234,7 +236,6 @@ class PysemsimAPI:
 
     # void PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);
     physical_entity_free_all = Util.load_func("PhysicalEntity_freeAll", [ct.c_int64], None)
-
 
     #################################################################
     # PhysicalProcess methods
@@ -328,4 +329,3 @@ class PysemsimAPI:
 
     # void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
     physical_force_free_all = Util.load_func("PhysicalForce_freeAll", [ct.c_int64], None)
-

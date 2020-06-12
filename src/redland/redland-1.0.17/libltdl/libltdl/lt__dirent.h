@@ -35,7 +35,9 @@ or obtained by writing to the Free Software Foundation, Inc.,
 #if defined LT_CONFIG_H
 #  include LT_CONFIG_H
 #else
+
 #  include <config.h>
+
 #endif
 
 #include "lt_system.h"
@@ -82,7 +84,9 @@ LT_SCOPE void		closedir	(DIR *entry);
 LT_END_C_DECLS
 
 #else /* !defined __WINDOWS__*/
-ERROR - cannot find dirent
+ERROR -
+cannot find
+dirent
 #endif /*!defined __WINDOWS__*/
 
 #endif /*!defined LT__DIRENT_H*/

@@ -61,7 +61,7 @@ namespace semsim {
          *
          * Developers. Re-evaluate requirement for this constructor and remove if unnecessary
          */
-        [[maybe_unused]] explicit PhysicalPhenomenon(librdf_model* model);
+        [[maybe_unused]] explicit PhysicalPhenomenon(librdf_model *model);
 
         /*
          * @brief constructor for PhysicalPhenomenon object.
@@ -70,7 +70,7 @@ namespace semsim {
          * @param propertyResource The PhysicalPropertyResource assocaited with a composite annotation
          * @param type An AnnotationType to distinguish composite annotations.
          */
-        PhysicalPhenomenon(librdf_model* model, Subject about,
+        PhysicalPhenomenon(librdf_model *model, Subject about,
                            PhysicalPropertyResource propertyResource,
                            AnnotationType type);
 

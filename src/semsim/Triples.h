@@ -44,23 +44,23 @@ namespace semsim {
 
         explicit Triples(std::vector<Triple> triples);
 
-        const Triple& operator[](int index) const;
+        const Triple &operator[](int index) const;
 
-        void move_back(Triple& triple);
+        void move_back(Triple &triple);
 
-        void emplace_back(Subject subject, const PredicatePtr& predicatePtr, const Resource& resource);
+        void emplace_back(Subject subject, const PredicatePtr &predicatePtr, const Resource &resource);
 
-        void emplace_back(Subject subject, const Predicate& predicate, const Resource& resource);
+        void emplace_back(Subject subject, const Predicate &predicate, const Resource &resource);
 
-        void emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, const Resource& resource);
+        void emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, const Resource &resource);
 
-        void emplace_back(Subject subject, BiomodelsModelQualifier predicate, const Resource& resource);
+        void emplace_back(Subject subject, BiomodelsModelQualifier predicate, const Resource &resource);
 
-        void emplace_back(Subject subject, DCTerm predicate, const Resource& resource);
+        void emplace_back(Subject subject, DCTerm predicate, const Resource &resource);
 
-        void emplace_back(Subject subject, SemSim predicate, const Resource& resource);
+        void emplace_back(Subject subject, SemSim predicate, const Resource &resource);
 
-        void emplace_back(librdf_node* subject, librdf_node* predicate, librdf_node* resource);
+        void emplace_back(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
         std::vector<std::string> getSubjectsStr();
 
@@ -68,13 +68,13 @@ namespace semsim {
 
         std::vector<std::string> getResources();
 
-        int size() const ;
+        int size() const;
 
         TripleVector::iterator begin();
 
         TripleVector::iterator end();
 
-        std::string str(const std::string& format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
+        std::string str(const std::string &format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
 
         void freeTriples();
 

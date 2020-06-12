@@ -22,7 +22,9 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -31,9 +33,13 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
+
 #include <stdarg.h>
 
 #include "rasqal.h"
@@ -51,29 +57,27 @@
  * 
  * Return value: a new #rasqal_projection object or NULL on failure
  **/
-rasqal_projection*
-rasqal_new_projection(rasqal_query* query,
-                      raptor_sequence* variables,
-                      int wildcard, int distinct)
-{
-  rasqal_projection* projection;
+rasqal_projection *
+rasqal_new_projection(rasqal_query *query,
+                      raptor_sequence *variables,
+                      int wildcard, int distinct) {
+    rasqal_projection *projection;
 
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, rasqal_query, NULL);
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, rasqal_query, NULL);
 
-  projection = RASQAL_CALLOC(rasqal_projection*, 1, sizeof(*projection));
-  if(!projection)
-    return NULL;
+    projection = RASQAL_CALLOC(rasqal_projection*, 1, sizeof(*projection));
+    if (!projection)
+        return NULL;
 
-  projection->query = query;
-  projection->variables = variables;
-  projection->wildcard = wildcard ? 1 : 0;
-  projection->distinct = distinct;
+    projection->query = query;
+    projection->variables = variables;
+    projection->wildcard = wildcard ? 1 : 0;
+    projection->distinct = distinct;
 
-  return projection;
+    return projection;
 }
 
 
-  
 /*
  * rasqal_free_projection:
  * @projection: #rasqal_projection object
@@ -82,15 +86,14 @@ rasqal_new_projection(rasqal_query* query,
  * 
  **/
 void
-rasqal_free_projection(rasqal_projection* projection)
-{
-  if(!projection)
-    return;
-  
-  if(projection->variables)
-    raptor_free_sequence(projection->variables);
-  
-  RASQAL_FREE(rasqal_projection, projection);
+rasqal_free_projection(rasqal_projection *projection) {
+    if (!projection)
+        return;
+
+    if (projection->variables)
+        raptor_free_sequence(projection->variables);
+
+    RASQAL_FREE(rasqal_projection, projection);
 }
 
 
@@ -101,12 +104,11 @@ rasqal_free_projection(rasqal_projection* projection)
  * INTERNAL - Get variables inside a projection
  * 
  **/
-raptor_sequence*
-rasqal_projection_get_variables_sequence(rasqal_projection* projection)
-{
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(projection, rasqal_projection, NULL);
-  
-  return projection->variables;
+raptor_sequence *
+rasqal_projection_get_variables_sequence(rasqal_projection *projection) {
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(projection, rasqal_projection, NULL);
+
+    return projection->variables;
 }
 
 
@@ -120,20 +122,19 @@ rasqal_projection_get_variables_sequence(rasqal_projection* projection)
  * Return value: non-0 on failure
  **/
 int
-rasqal_projection_add_variable(rasqal_projection* projection,
-                               rasqal_variable* var)
-{
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(projection, rasqal_projection, 1);
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(var, rasqal_variable, 1);
+rasqal_projection_add_variable(rasqal_projection *projection,
+                               rasqal_variable *var) {
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(projection, rasqal_projection, 1);
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(var, rasqal_variable, 1);
 
-  if(!projection->variables) {
-    projection->variables = raptor_new_sequence((raptor_data_free_handler)rasqal_free_variable,
-                                                (raptor_data_print_handler)rasqal_variable_print);
-    if(!projection->variables)
-      return 1;
-  }
+    if (!projection->variables) {
+        projection->variables = raptor_new_sequence((raptor_data_free_handler) rasqal_free_variable,
+                                                    (raptor_data_print_handler) rasqal_variable_print);
+        if (!projection->variables)
+            return 1;
+    }
 
-  var = rasqal_new_variable_from_variable(var);
+    var = rasqal_new_variable_from_variable(var);
 
-  return raptor_sequence_push(projection->variables, (void*)var);
+    return raptor_sequence_push(projection->variables, (void *) var);
 }

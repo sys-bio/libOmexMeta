@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -36,11 +38,15 @@
 #include <stdarg.h>
 
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h> /* for mktemp(), mkstemp(), getenv() */
+
 #endif
 #ifdef HAVE_MKSTEMP
 #ifdef HAVE_UNISTD_H
+
 #include <unistd.h> /* for close(), unlink() */
+
 #endif
 #endif
 
@@ -54,6 +60,7 @@
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_files_temporary_file_name:
  * 
@@ -64,64 +71,64 @@
  * Return value: a new filename or NULL on failure.
  **/
 char *
-librdf_files_temporary_file_name(void) 
-{
+librdf_files_temporary_file_name(void) {
 #if defined(HAVE_MKSTEMP) || defined(HAVE_MKTEMP)
-  const char *tmp_dir;
-  size_t length;
-  char *name;
-  static const char * const file_template="librdf_tmp_XXXXXX"; /* FIXME */
+    const char *tmp_dir;
+    size_t length;
+    char *name;
+    static const char *const file_template = "librdf_tmp_XXXXXX"; /* FIXME */
 #ifdef HAVE_MKSTEMP
-  int fd;
+    int fd;
 #endif
 
-  /* FIXME: unix dependencies */
-  tmp_dir=getenv("TMPDIR");
-  if(!tmp_dir)
-    tmp_dir="/tmp";
+    /* FIXME: unix dependencies */
+    tmp_dir = getenv("TMPDIR");
+    if (!tmp_dir)
+        tmp_dir = "/tmp";
 
-  length=strlen(tmp_dir) + strlen(file_template) + 2; /* 2: / sep and \/0 */
-  
-  name = LIBRDF_MALLOC(char*, length);
-  if(!name)
-    return NULL;
+    length = strlen(tmp_dir) + strlen(file_template) + 2; /* 2: / sep and \/0 */
 
-  /* FIXME: unix dependency - file/dir separator */
-  sprintf(name, "%s/%s", tmp_dir, file_template);
-  
+    name = LIBRDF_MALLOC(char*, length);
+    if (!name)
+        return NULL;
+
+    /* FIXME: unix dependency - file/dir separator */
+    sprintf(name, "%s/%s", tmp_dir, file_template);
+
 #ifdef HAVE_MKSTEMP
-  /* Proritise mkstemp() since GNU libc says: Never use mktemp(). */
-  fd=mkstemp(name);
-  if(fd<0) {
-    LIBRDF_FREE(char*, name);
-    return NULL;
-  }
-  close(fd);
-  unlink(name);
+    /* Proritise mkstemp() since GNU libc says: Never use mktemp(). */
+    fd = mkstemp(name);
+    if (fd < 0) {
+        LIBRDF_FREE(char*, name);
+        return NULL;
+    }
+    close(fd);
+    unlink(name);
 
-  return name;  
+    return name;
 #else
-  return mktemp(name);
+    return mktemp(name);
 #endif
 
 #else
 #ifdef HAVE_TMPNAM
-  /* GNU libc says: Never use this function. Use mkstemp(3) instead. */
-  char *name;
-  char *new_name;
+    /* GNU libc says: Never use this function. Use mkstemp(3) instead. */
+    char *name;
+    char *new_name;
 
-  name=tmpnam(NULL); /* NULL ensures statically allocated */
-  new_name = LIBRDF_MALLOC(char*, strlen(name) + 1);
-  if(!new_name)
-    return NULL;
-  strcpy(new_name, name);
+    name=tmpnam(NULL); /* NULL ensures statically allocated */
+    new_name = LIBRDF_MALLOC(char*, strlen(name) + 1);
+    if(!new_name)
+      return NULL;
+    strcpy(new_name, name);
 
-  return name;
+    return name;
 #else /* not tmpnam(), mkstemp() or mktemp() */
-HELP
+  HELP
 #endif
 #endif
 }
+
 #endif
 
 #endif

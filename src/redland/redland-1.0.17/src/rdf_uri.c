@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -34,11 +36,14 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h> /* for isalnum */
+
 #ifdef WITH_THREADS
 #include <pthread.h>
 #endif
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <redland.h>
@@ -57,10 +62,8 @@
  *
  **/
 void
-librdf_init_uri(librdf_world *world)
-{
+librdf_init_uri(librdf_world *world) {
 }
-
 
 
 /**
@@ -71,10 +74,8 @@ librdf_init_uri(librdf_world *world)
  *
  **/
 void
-librdf_finish_uri(librdf_world *world)
-{
+librdf_finish_uri(librdf_world *world) {
 }
-
 
 
 /**
@@ -91,13 +92,12 @@ librdf_finish_uri(librdf_world *world)
  *
  * Return value: a new #librdf_uri object or NULL on failure
  **/
-librdf_uri*
-librdf_new_uri2(librdf_world *world, 
+librdf_uri *
+librdf_new_uri2(librdf_world *world,
                 const unsigned char *uri_string,
-                size_t length)
-{
-  return raptor_new_uri_from_counted_string(world->raptor_world_ptr,
-                                            uri_string, length);
+                size_t length) {
+    return raptor_new_uri_from_counted_string(world->raptor_world_ptr,
+                                              uri_string, length);
 }
 
 
@@ -113,16 +113,15 @@ librdf_new_uri2(librdf_world *world,
  *
  * Return value: a new #librdf_uri object or NULL on failure
  **/
-librdf_uri*
-librdf_new_uri(librdf_world *world, 
-               const unsigned char *uri_string)
-{
-  librdf_world_open(world);
+librdf_uri *
+librdf_new_uri(librdf_world *world,
+               const unsigned char *uri_string) {
+    librdf_world_open(world);
 
-  if(!uri_string || !*uri_string)
-    return NULL;
+    if (!uri_string || !*uri_string)
+        return NULL;
 
-  return librdf_new_uri2(world, uri_string, strlen((const char*)uri_string));
+    return librdf_new_uri2(world, uri_string, strlen((const char *) uri_string));
 }
 
 
@@ -134,13 +133,12 @@ librdf_new_uri(librdf_world *world,
  * 
  * Return value: a new #librdf_uri object or NULL on failure
  **/
-librdf_uri*
-librdf_new_uri_from_uri (librdf_uri* old_uri)
-{
+librdf_uri *
+librdf_new_uri_from_uri(librdf_uri *old_uri) {
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(old_uri, librdf_uri, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(old_uri, librdf_uri, NULL);
 
-  return raptor_uri_copy(old_uri);
+    return raptor_uri_copy(old_uri);
 }
 
 
@@ -153,12 +151,11 @@ librdf_new_uri_from_uri (librdf_uri* old_uri)
  * 
  * Return value: a new #librdf_uri object or NULL on failure
  **/
-librdf_uri*
-librdf_new_uri_from_uri_local_name (librdf_uri* old_uri, 
-                                    const unsigned char *local_name)
-{
-  return raptor_new_uri_from_uri_local_name(raptor_uri_get_world(old_uri),
-                                            old_uri, local_name);
+librdf_uri *
+librdf_new_uri_from_uri_local_name(librdf_uri *old_uri,
+                                   const unsigned char *local_name) {
+    return raptor_new_uri_from_uri_local_name(raptor_uri_get_world(old_uri),
+                                              old_uri, local_name);
 }
 
 
@@ -172,75 +169,73 @@ librdf_new_uri_from_uri_local_name (librdf_uri* old_uri,
  * 
  * Return value: a new #librdf_uri object or NULL on failure
  **/
-librdf_uri*
+librdf_uri *
 librdf_new_uri_normalised_to_base(const unsigned char *uri_string,
-                                  librdf_uri* source_uri,
-                                  librdf_uri* base_uri) 
-{
-  size_t uri_string_len;
-  size_t len;
-  unsigned char *new_uri_string;
-  librdf_uri *new_uri;
-  unsigned char* source_uri_string;
-  size_t source_uri_string_length;
-  unsigned char* base_uri_string;
-  size_t base_uri_string_length;
+                                  librdf_uri *source_uri,
+                                  librdf_uri *base_uri) {
+    size_t uri_string_len;
+    size_t len;
+    unsigned char *new_uri_string;
+    librdf_uri *new_uri;
+    unsigned char *source_uri_string;
+    size_t source_uri_string_length;
+    unsigned char *base_uri_string;
+    size_t base_uri_string_length;
 
-                                    
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(source_uri, librdf_uri, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(base_uri, librdf_uri, NULL);
-  
-  if(!uri_string)
-    return NULL;
 
-  /* empty URI - easy, just make from base_uri */
-  if(!*uri_string && base_uri) {
-    return raptor_uri_copy(base_uri);
-  }
-  
-  source_uri_string = librdf_uri_as_counted_string(source_uri,
-                                                   &source_uri_string_length);
-  base_uri_string = librdf_uri_as_counted_string(base_uri,
-                                                 &base_uri_string_length);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(source_uri, librdf_uri, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(base_uri, librdf_uri, NULL);
 
-  /* not a fragment, and no match - easy */
-  if(*uri_string != '#' &&
-     strncmp((const char*)uri_string, (const char*)source_uri_string,
-             source_uri_string_length)) {
-    raptor_world* rworld = raptor_uri_get_world(base_uri);
-    return raptor_new_uri(rworld, uri_string);
-  }
+    if (!uri_string)
+        return NULL;
 
-  /* darn - is a fragment or matches, is a prefix of the source URI */
+    /* empty URI - easy, just make from base_uri */
+    if (!*uri_string && base_uri) {
+        return raptor_uri_copy(base_uri);
+    }
 
-  /* move uri_string pointer to first non-matching char 
-   * unless a fragment, when all of the uri_string will 
-   * be appended
-   */
-  if(*uri_string != '#')
-    uri_string += source_uri_string_length;
+    source_uri_string = librdf_uri_as_counted_string(source_uri,
+                                                     &source_uri_string_length);
+    base_uri_string = librdf_uri_as_counted_string(base_uri,
+                                                   &base_uri_string_length);
 
-  /* size of remaining bytes to copy from uri_string */
-  uri_string_len = strlen((const char*)uri_string);
+    /* not a fragment, and no match - easy */
+    if (*uri_string != '#' &&
+        strncmp((const char *) uri_string, (const char *) source_uri_string,
+                source_uri_string_length)) {
+        raptor_world *rworld = raptor_uri_get_world(base_uri);
+        return raptor_new_uri(rworld, uri_string);
+    }
 
-  /* total bytes */
-  len = uri_string_len + 1 + base_uri_string_length;
+    /* darn - is a fragment or matches, is a prefix of the source URI */
 
-  new_uri_string = LIBRDF_MALLOC(unsigned char*, len);
-  if(!new_uri_string)
-    return NULL;
-  strncpy((char*)new_uri_string, (const char*)base_uri_string,
-          base_uri_string_length);
-  /* strcpy not strncpy since I want a \0 on the end */
-  strcpy((char*)new_uri_string + base_uri_string_length,
-         (const char*)uri_string);
-  
-  new_uri = raptor_new_uri(raptor_uri_get_world(source_uri), new_uri_string);
-  LIBRDF_FREE(char*, new_uri_string); /* always free this even on failure */
+    /* move uri_string pointer to first non-matching char
+     * unless a fragment, when all of the uri_string will
+     * be appended
+     */
+    if (*uri_string != '#')
+        uri_string += source_uri_string_length;
 
-  return new_uri; /* new URI or NULL from librdf_new_uri failure */
+    /* size of remaining bytes to copy from uri_string */
+    uri_string_len = strlen((const char *) uri_string);
+
+    /* total bytes */
+    len = uri_string_len + 1 + base_uri_string_length;
+
+    new_uri_string = LIBRDF_MALLOC(unsigned char*, len);
+    if (!new_uri_string)
+        return NULL;
+    strncpy((char *) new_uri_string, (const char *) base_uri_string,
+            base_uri_string_length);
+    /* strcpy not strncpy since I want a \0 on the end */
+    strcpy((char *) new_uri_string + base_uri_string_length,
+           (const char *) uri_string);
+
+    new_uri = raptor_new_uri(raptor_uri_get_world(source_uri), new_uri_string);
+    LIBRDF_FREE(char*, new_uri_string); /* always free this even on failure */
+
+    return new_uri; /* new URI or NULL from librdf_new_uri failure */
 }
-
 
 
 /**
@@ -255,13 +250,12 @@ librdf_new_uri_normalised_to_base(const unsigned char *uri_string,
  * 
  * Return value: a new #librdf_uri object or NULL on failure
  **/
-librdf_uri*
-librdf_new_uri_relative_to_base(librdf_uri* base_uri,
-                                const unsigned char *uri_string)
-{
-  return raptor_new_uri_relative_to_base(raptor_uri_get_world(base_uri),
-                                         base_uri,
-                                         uri_string);
+librdf_uri *
+librdf_new_uri_relative_to_base(librdf_uri *base_uri,
+                                const unsigned char *uri_string) {
+    return raptor_new_uri_relative_to_base(raptor_uri_get_world(base_uri),
+                                           base_uri,
+                                           uri_string);
 }
 
 
@@ -274,25 +268,24 @@ librdf_new_uri_relative_to_base(librdf_uri* base_uri,
  *
  * Return value: a new #librdf_uri object or NULL on failure
  **/
-librdf_uri*
-librdf_new_uri_from_filename(librdf_world* world, const char *filename) {
-  librdf_uri* new_uri;
-  unsigned char *uri_string;
+librdf_uri *
+librdf_new_uri_from_filename(librdf_world *world, const char *filename) {
+    librdf_uri *new_uri;
+    unsigned char *uri_string;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  if(!filename)
-    return NULL;
-  
-  uri_string=raptor_uri_filename_to_uri_string(filename);
-  if(!uri_string)
-    return NULL;
-  
-  new_uri=librdf_new_uri(world, uri_string);
-  raptor_free_memory(uri_string);
-  return new_uri;
+    if (!filename)
+        return NULL;
+
+    uri_string = raptor_uri_filename_to_uri_string(filename);
+    if (!uri_string)
+        return NULL;
+
+    new_uri = librdf_new_uri(world, uri_string);
+    raptor_free_memory(uri_string);
+    return new_uri;
 }
-
 
 
 /**
@@ -303,12 +296,11 @@ librdf_new_uri_from_filename(librdf_world* world, const char *filename) {
  * 
  **/
 void
-librdf_free_uri(librdf_uri* uri) 
-{
-  if(!uri)
-    return;
-  
-  raptor_free_uri(uri);
+librdf_free_uri(librdf_uri *uri) {
+    if (!uri)
+        return;
+
+    raptor_free_uri(uri);
 }
 
 
@@ -323,12 +315,11 @@ librdf_free_uri(librdf_uri* uri)
  * 
  * Return value: string representation of URI
  **/
-unsigned char*
-librdf_uri_as_string (librdf_uri *uri) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, librdf_uri, NULL);
+unsigned char *
+librdf_uri_as_string(librdf_uri *uri) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, librdf_uri, NULL);
 
-  return raptor_uri_as_string(uri);
+    return raptor_uri_as_string(uri);
 }
 
 
@@ -344,12 +335,11 @@ librdf_uri_as_string (librdf_uri *uri)
  * 
  * Return value: string representation of URI
  **/
-unsigned char*
-librdf_uri_as_counted_string(librdf_uri *uri, size_t* len_p) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, librdf_uri, NULL);
+unsigned char *
+librdf_uri_as_counted_string(librdf_uri *uri, size_t *len_p) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, librdf_uri, NULL);
 
-  return raptor_uri_as_counted_string(uri, len_p);
+    return raptor_uri_as_counted_string(uri, len_p);
 }
 
 
@@ -365,25 +355,24 @@ librdf_uri_as_counted_string(librdf_uri *uri, size_t* len_p)
  * 
  * Return value: new #librdf_digest object or NULL on failure.
  **/
-librdf_digest*
-librdf_uri_get_digest(librdf_world* world, librdf_uri* uri)
-{
-  librdf_digest* d;
-  unsigned char *str;
-  size_t len;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, librdf_uri, NULL);
+librdf_digest *
+librdf_uri_get_digest(librdf_world *world, librdf_uri *uri) {
+    librdf_digest *d;
+    unsigned char *str;
+    size_t len;
 
-  d = librdf_new_digest_from_factory(world, world->digest_factory);
-  if(!d)
-    return NULL;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, librdf_uri, NULL);
 
-  str = librdf_uri_as_counted_string(uri, &len);
-  
-  librdf_digest_update(d, str, len);
-  librdf_digest_final(d);
-  
-  return d;
+    d = librdf_new_digest_from_factory(world, world->digest_factory);
+    if (!d)
+        return NULL;
+
+    str = librdf_uri_as_counted_string(uri, &len);
+
+    librdf_digest_update(d, str, len);
+    librdf_digest_final(d);
+
+    return d;
 }
 
 
@@ -396,11 +385,10 @@ librdf_uri_get_digest(librdf_world* world, librdf_uri* uri)
  *
  **/
 void
-librdf_uri_print (librdf_uri* uri, FILE *fh) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN(uri, librdf_uri);
+librdf_uri_print(librdf_uri *uri, FILE *fh) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN(uri, librdf_uri);
 
-  fputs((const char*)librdf_uri_as_string(uri), fh);
+    fputs((const char *) librdf_uri_as_string(uri), fh);
 }
 
 
@@ -415,12 +403,11 @@ librdf_uri_print (librdf_uri* uri, FILE *fh)
  *
  * Return value: string representation of the URI or NULL on failure
  **/
-unsigned char*
-librdf_uri_to_string (librdf_uri* uri)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, librdf_uri, NULL);
+unsigned char *
+librdf_uri_to_string(librdf_uri *uri) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, librdf_uri, NULL);
 
-  return librdf_uri_to_counted_string(uri, NULL);
+    return librdf_uri_to_counted_string(uri, NULL);
 }
 
 
@@ -436,10 +423,9 @@ librdf_uri_to_string (librdf_uri* uri)
  *
  * Return value: string representation of the URI or NULL on failure
  **/
-unsigned char*
-librdf_uri_to_counted_string (librdf_uri* uri, size_t* len_p)
-{
-  return raptor_uri_to_counted_string(uri, len_p);
+unsigned char *
+librdf_uri_to_counted_string(librdf_uri *uri, size_t *len_p) {
+    return raptor_uri_to_counted_string(uri, len_p);
 }
 
 
@@ -453,12 +439,11 @@ librdf_uri_to_counted_string (librdf_uri* uri, size_t* len_p)
  * Return value: non 0 if the objects are equal
  **/
 int
-librdf_uri_equals(librdf_uri* first_uri, librdf_uri* second_uri) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(first_uri, librdf_uri, 0);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(second_uri, librdf_uri, 0);
+librdf_uri_equals(librdf_uri *first_uri, librdf_uri *second_uri) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(first_uri, librdf_uri, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(second_uri, librdf_uri, 0);
 
-  return raptor_uri_equals(first_uri, second_uri);
+    return raptor_uri_equals(first_uri, second_uri);
 }
 
 
@@ -471,11 +456,10 @@ librdf_uri_equals(librdf_uri* first_uri, librdf_uri* second_uri)
  * Return value: Non zero if the URI points to a file
  **/
 int
-librdf_uri_is_file_uri(librdf_uri* uri) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, librdf_uri, 1);
+librdf_uri_is_file_uri(librdf_uri *uri) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, librdf_uri, 1);
 
-  return raptor_uri_uri_string_is_file_uri(librdf_uri_as_string(uri));
+    return raptor_uri_uri_string_is_file_uri(librdf_uri_as_string(uri));
 }
 
 
@@ -491,13 +475,12 @@ librdf_uri_is_file_uri(librdf_uri* uri)
  *
  * Return value: pointer to filename or NULL on failure
  **/
-const char*
-librdf_uri_to_filename(librdf_uri* uri) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, librdf_uri, NULL);
+const char *
+librdf_uri_to_filename(librdf_uri *uri) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, librdf_uri, NULL);
 
-  return raptor_uri_uri_string_to_filename(librdf_uri_as_string(uri));
-  
+    return raptor_uri_uri_string_to_filename(librdf_uri_as_string(uri));
+
 }
 
 
@@ -513,9 +496,8 @@ librdf_uri_to_filename(librdf_uri* uri)
  * Return value: <0 if @uri1 is less than @uri2, 0 if equal, >0 if @uri1 is greater than @uri2
  **/
 int
-librdf_uri_compare(librdf_uri* uri1, librdf_uri* uri2)
-{
-  return raptor_uri_compare(uri1, uri2);
+librdf_uri_compare(librdf_uri *uri1, librdf_uri *uri2) {
+    return raptor_uri_compare(uri1, uri2);
 }
 
 
@@ -552,14 +534,14 @@ main(int argc, char *argv[])
   uri1=librdf_new_uri(world, hp_string);
   if(!uri1) {
     fprintf(stderr, "%s: Failed to create URI from string '%s'\n", program, 
-	    hp_string);
+        hp_string);
     return(1);
   }
-  
+
   fprintf(stderr, "%s: Home page URI is ", program);
   librdf_uri_print(uri1, stderr);
   fputs("\n", stderr);
-  
+
   fprintf(stderr, "%s: Creating URI from URI\n", program);
   uri2=librdf_new_uri_from_uri(uri1);
   if(!uri2) {
@@ -571,12 +553,12 @@ main(int argc, char *argv[])
   librdf_uri_print(uri2, stderr);
   fputs("\n", stderr);
 
-  
+
   fprintf(stderr, "%s: Getting digest for URI\n", program);
   d = librdf_uri_get_digest(world, uri2);
   if(!d) {
-    fprintf(stderr, "%s: Failed to get digest for URI %s\n", program, 
-	    librdf_uri_as_string(uri2));
+    fprintf(stderr, "%s: Failed to get digest for URI %s\n", program,
+        librdf_uri_as_string(uri2));
     return(1);
   }
   fprintf(stderr, "%s: Digest is: ", program);

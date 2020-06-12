@@ -34,42 +34,42 @@ extern "C" {
 #include <sys/types.h>
 
 #ifndef HAVE_U64
-  #if SIZEOF_UNSIGNED_INT == 8
-    typedef unsigned int u64;
-    #define UINT64_T_FMT "%u"
-  #elif SIZEOF_UNSIGNED_LONG == 8
-    typedef unsigned long u64;
-    #define UINT64_T_FMT "%lu"
-  #elif SIZEOF_UNSIGNED_LONG_LONG == 8
-    #ifdef WIN32
-      typedef __int64 u64;
-      #define UINT64_T_FMT "%I64u"
-    #else
-      typedef unsigned long long u64;
-      #define UINT64_T_FMT "%llu"
-    #endif
-  #else
-    #error u64 type not defined
-  #endif
+#if SIZEOF_UNSIGNED_INT == 8
+typedef unsigned int u64;
+#define UINT64_T_FMT "%u"
+#elif SIZEOF_UNSIGNED_LONG == 8
+typedef unsigned long u64;
+#define UINT64_T_FMT "%lu"
+#elif SIZEOF_UNSIGNED_LONG_LONG == 8
+#ifdef WIN32
+typedef __int64 u64;
+#define UINT64_T_FMT "%I64u"
+#else
+typedef unsigned long long u64;
+#define UINT64_T_FMT "%llu"
+#endif
+#else
+#error u64 type not defined
+#endif
 #endif
 
 #ifndef HAVE_U32
-  #if SIZEOF_UNSIGNED_INT == 4
-    typedef unsigned int u32;
-  #elif SIZEOF_UNSIGNED_LONG == 4
-    typedef unsigned long u32;
-  #else
-    #error u32 type not defined
-  #endif
+#if SIZEOF_UNSIGNED_INT == 4
+typedef unsigned int u32;
+#elif SIZEOF_UNSIGNED_LONG == 4
+typedef unsigned long u32;
+#else
+#error u32 type not defined
+#endif
 #endif
 
 
 #ifndef HAVE_BYTE
-  #if SIZEOF_UNSIGNED_CHAR == 1
-    typedef unsigned char byte;
-  #else
-    #error byte type not defined
-  #endif
+#if SIZEOF_UNSIGNED_CHAR == 1
+typedef unsigned char byte;
+#else
+#error byte type not defined
+#endif
 #endif
 
 

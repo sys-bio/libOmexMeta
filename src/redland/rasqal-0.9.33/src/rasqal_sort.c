@@ -23,7 +23,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -32,8 +34,11 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <raptor2.h>
@@ -56,30 +61,29 @@
  *
  * Return value: array or NULL on failure (or sequence is empty)
  */
-void**
-rasqal_sequence_as_sorted(raptor_sequence* seq,
+void **
+rasqal_sequence_as_sorted(raptor_sequence *seq,
                           raptor_data_compare_arg_handler compare,
-                          void* user_data)
-{
-  void** array;
-  size_t size;
+                          void *user_data) {
+    void **array;
+    size_t size;
 
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, NULL);
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, NULL);
 
-  size = RASQAL_BAD_CAST(size_t, raptor_sequence_size(seq));
+    size = RASQAL_BAD_CAST(size_t, raptor_sequence_size(seq));
 
-  array = RASQAL_CALLOC(void**, size + 1, sizeof(void*));
-  if(!array)
-    return NULL;
+    array = RASQAL_CALLOC(void**, size + 1, sizeof(void *));
+    if (!array)
+        return NULL;
 
-  if(size) {
-    size_t i;
+    if (size) {
+        size_t i;
 
-    for(i = 0; i < size; i++)
-      array[i] = raptor_sequence_get_at(seq, RASQAL_GOOD_CAST(int, i));
+        for (i = 0; i < size; i++)
+            array[i] = raptor_sequence_get_at(seq, RASQAL_GOOD_CAST(int, i));
 
-    rasqal_ssort_r(array, size, sizeof(void*), compare, user_data);
-  }
+        rasqal_ssort_r(array, size, sizeof(void *), compare, user_data);
+    }
 
-  return array;
+    return array;
 }

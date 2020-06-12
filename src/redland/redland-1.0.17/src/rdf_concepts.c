@@ -25,7 +25,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -37,7 +39,9 @@
 #include <stdarg.h>
 
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <redland.h>
@@ -54,26 +58,27 @@
 /* TAKE CARE: Tokens != Labels */
 
 /* Tokens used by the RDF world */
-static const char* const librdf_concept_tokens[LIBRDF_CONCEPT_LAST+1]={
-  /* RDF M&S */
-  "Alt", "Bag", "Property", "Seq", "Statement", "object", "predicate", "subject", "type", "value", "li",
-  "RDF", "Description",
-  "aboutEach", "aboutEachPrefix",
-  /* all new in RDF/XML revised */
-  "nodeID",
-  "List", "first", "rest", "nil", 
-  "XMLLiteral",
+static const char *const librdf_concept_tokens[LIBRDF_CONCEPT_LAST + 1] = {
+        /* RDF M&S */
+        "Alt", "Bag", "Property", "Seq", "Statement", "object", "predicate", "subject", "type", "value", "li",
+        "RDF", "Description",
+        "aboutEach", "aboutEachPrefix",
+        /* all new in RDF/XML revised */
+        "nodeID",
+        "List", "first", "rest", "nil",
+        "XMLLiteral",
 
-  /* RDF S */
-  "Class", "ConstraintProperty", "ConstraintResource", "Container", "ContainerMembershipProperty", "Literal", "Resource", "comment", "domain", "isDefinedBy", "label", "range", "seeAlso", "subClassOf", "subPropertyOf",
+        /* RDF S */
+        "Class", "ConstraintProperty", "ConstraintResource", "Container", "ContainerMembershipProperty", "Literal",
+        "Resource", "comment", "domain", "isDefinedBy", "label", "range", "seeAlso", "subClassOf", "subPropertyOf",
 
-  /* RDF 1.1 */
-  "HTML", "langString"
+        /* RDF 1.1 */
+        "HTML", "langString"
 };
 
 
-static const unsigned char * const librdf_concept_ms_namespace=(const unsigned char *)"http://www.w3.org/1999/02/22-rdf-syntax-ns#";
-static const unsigned char * const librdf_concept_schema_namespace=(const unsigned char *)"http://www.w3.org/2000/01/rdf-schema#";
+static const unsigned char *const librdf_concept_ms_namespace = (const unsigned char *) "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+static const unsigned char *const librdf_concept_schema_namespace = (const unsigned char *) "http://www.w3.org/2000/01/rdf-schema#";
 
 /**
  * librdf_init_concepts:
@@ -83,41 +88,40 @@ static const unsigned char * const librdf_concept_schema_namespace=(const unsign
  * 
  **/
 void
-librdf_init_concepts(librdf_world *world)
-{
-  int i;
+librdf_init_concepts(librdf_world *world) {
+    int i;
 
-  /* Create the Unique URI objects */
-  world->concept_ms_namespace_uri = librdf_new_uri(world, librdf_concept_ms_namespace);
-  world->concept_schema_namespace_uri = librdf_new_uri(world, librdf_concept_schema_namespace);
-  world->xsd_namespace_uri = librdf_new_uri(world, raptor_xmlschema_datatypes_namespace_uri);
-  if(!world->concept_ms_namespace_uri ||
-     !world->concept_schema_namespace_uri ||
-     !world->xsd_namespace_uri)
-    LIBRDF_FATAL1(world, LIBRDF_FROM_CONCEPTS, "Out of memory creating namespace URIs");
+    /* Create the Unique URI objects */
+    world->concept_ms_namespace_uri = librdf_new_uri(world, librdf_concept_ms_namespace);
+    world->concept_schema_namespace_uri = librdf_new_uri(world, librdf_concept_schema_namespace);
+    world->xsd_namespace_uri = librdf_new_uri(world, raptor_xmlschema_datatypes_namespace_uri);
+    if (!world->concept_ms_namespace_uri ||
+        !world->concept_schema_namespace_uri ||
+        !world->xsd_namespace_uri)
+        LIBRDF_FATAL1(world, LIBRDF_FROM_CONCEPTS, "Out of memory creating namespace URIs");
 
-  /* Create arrays for the M&S and Schema resource nodes and uris */
-  world->concept_uris = LIBRDF_CALLOC(librdf_uri**, LIBRDF_CONCEPT_LAST + 1,
-                                      sizeof(librdf_uri*));
-  world->concept_resources = LIBRDF_CALLOC(librdf_node**, LIBRDF_CONCEPT_LAST + 1,
-                                           sizeof(librdf_node*));
-  if(!world->concept_uris || !world->concept_resources)
-    LIBRDF_FATAL1(world, LIBRDF_FROM_CONCEPTS, "Out of memory creating node/uri arrays");
+    /* Create arrays for the M&S and Schema resource nodes and uris */
+    world->concept_uris = LIBRDF_CALLOC(librdf_uri**, LIBRDF_CONCEPT_LAST + 1,
+                                        sizeof(librdf_uri *));
+    world->concept_resources = LIBRDF_CALLOC(librdf_node**, LIBRDF_CONCEPT_LAST + 1,
+                                             sizeof(librdf_node *));
+    if (!world->concept_uris || !world->concept_resources)
+        LIBRDF_FATAL1(world, LIBRDF_FROM_CONCEPTS, "Out of memory creating node/uri arrays");
 
-  /* Create the M&S and Schema resource nodes */
-  for (i = 0; i <= LIBRDF_CONCEPT_LAST; i++) {
-    librdf_uri* ns_uri = (LIBRDF_CONCEPT_FIRST_S_ID <= i &&
-                          i <= LIBRDF_CONCEPT_LAST_S_ID) ?
-      world->concept_schema_namespace_uri : world->concept_ms_namespace_uri;
-    const unsigned char * token = (const unsigned char *)librdf_concept_tokens[i];
+    /* Create the M&S and Schema resource nodes */
+    for (i = 0; i <= LIBRDF_CONCEPT_LAST; i++) {
+        librdf_uri *ns_uri = (LIBRDF_CONCEPT_FIRST_S_ID <= i &&
+                              i <= LIBRDF_CONCEPT_LAST_S_ID) ?
+                             world->concept_schema_namespace_uri : world->concept_ms_namespace_uri;
+        const unsigned char *token = (const unsigned char *) librdf_concept_tokens[i];
 
-    world->concept_resources[i] = librdf_new_node_from_uri_local_name(world, ns_uri, token);
-    if(!world->concept_resources[i])
-      LIBRDF_FATAL1(world, LIBRDF_FROM_CONCEPTS, "Failed to create Node from URI\n");
+        world->concept_resources[i] = librdf_new_node_from_uri_local_name(world, ns_uri, token);
+        if (!world->concept_resources[i])
+            LIBRDF_FATAL1(world, LIBRDF_FROM_CONCEPTS, "Failed to create Node from URI\n");
 
-    /* keep shared copy of URI from node */
-    world->concept_uris[i] = librdf_node_get_uri(world->concept_resources[i]);
-  }
+        /* keep shared copy of URI from node */
+        world->concept_uris[i] = librdf_node_get_uri(world->concept_resources[i]);
+    }
 }
 
 
@@ -130,10 +134,9 @@ librdf_init_concepts(librdf_world *world)
  * Return value: #librdf_uri pointer or NULL on failure.
  */
 librdf_uri *
-librdf_get_concept_ms_namespace(librdf_world *world)
-{
-  librdf_world_open(world);
-  return world->concept_ms_namespace_uri;
+librdf_get_concept_ms_namespace(librdf_world *world) {
+    librdf_world_open(world);
+    return world->concept_ms_namespace_uri;
 }
 
 
@@ -146,10 +149,9 @@ librdf_get_concept_ms_namespace(librdf_world *world)
  * Return value: #librdf_uri pointer or NULL on failure.
  */
 librdf_uri *
-librdf_get_concept_schema_namespace(librdf_world *world)
-{
-  librdf_world_open(world);
-  return world->concept_schema_namespace_uri;
+librdf_get_concept_schema_namespace(librdf_world *world) {
+    librdf_world_open(world);
+    return world->concept_schema_namespace_uri;
 }
 
 
@@ -170,25 +172,24 @@ librdf_get_concept_schema_namespace(librdf_world *world)
 void
 librdf_get_concept_by_name(librdf_world *world, int is_ms,
                            const char *name,
-                           librdf_uri **uri_p, librdf_node **node_p)
-{
-  int i;
+                           librdf_uri **uri_p, librdf_node **node_p) {
+    int i;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  for (i=0; i < LIBRDF_CONCEPT_LAST; i++) {
-    int this_is_ms = !(LIBRDF_CONCEPT_FIRST_S_ID <= i && 
-                       i <= LIBRDF_CONCEPT_LAST_S_ID);
-    if(this_is_ms != is_ms)
-      continue;
+    for (i = 0; i < LIBRDF_CONCEPT_LAST; i++) {
+        int this_is_ms = !(LIBRDF_CONCEPT_FIRST_S_ID <= i &&
+                           i <= LIBRDF_CONCEPT_LAST_S_ID);
+        if (this_is_ms != is_ms)
+            continue;
 
-    if(!strcmp(librdf_concept_tokens[i], name)) {
-      if(uri_p)
-        *uri_p=world->concept_uris[i];
-      if(node_p)
-        *node_p=world->concept_resources[i];
+        if (!strcmp(librdf_concept_tokens[i], name)) {
+            if (uri_p)
+                *uri_p = world->concept_uris[i];
+            if (node_p)
+                *node_p = world->concept_resources[i];
+        }
     }
-  }
 }
 
 
@@ -201,16 +202,15 @@ librdf_get_concept_by_name(librdf_world *world, int is_ms,
  *
  * Return value: #librdf_node pointer or NULL on failure. 
  **/
-librdf_node*
+librdf_node *
 librdf_get_concept_resource_by_index(librdf_world *world,
-                                     librdf_concepts_index idx)
-{
-  librdf_world_open(world);
+                                     librdf_concepts_index idx) {
+    librdf_world_open(world);
 
-  if ((int)idx < 0 || idx > LIBRDF_CONCEPT_LAST)
-    return NULL;
+    if ((int) idx < 0 || idx > LIBRDF_CONCEPT_LAST)
+        return NULL;
 
-  return world->concept_resources[idx];
+    return world->concept_resources[idx];
 }
 
 
@@ -223,16 +223,15 @@ librdf_get_concept_resource_by_index(librdf_world *world,
  *
  * Return value: #librdf_uri pointer or NULL on failure. 
  **/
-librdf_uri*
+librdf_uri *
 librdf_get_concept_uri_by_index(librdf_world *world,
-                                librdf_concepts_index idx)
-{
-  librdf_world_open(world);
+                                librdf_concepts_index idx) {
+    librdf_world_open(world);
 
-  if ((int)idx < 0 || idx > LIBRDF_CONCEPT_LAST)
-    return NULL;
+    if ((int) idx < 0 || idx > LIBRDF_CONCEPT_LAST)
+        return NULL;
 
-  return world->concept_uris[idx];
+    return world->concept_uris[idx];
 }
 
 
@@ -244,43 +243,42 @@ librdf_get_concept_uri_by_index(librdf_world *world,
  *
  **/
 void
-librdf_finish_concepts(librdf_world *world)
-{
-  int i;
+librdf_finish_concepts(librdf_world *world) {
+    int i;
 
-  /* Free resources and set pointers to NULL so that they are cleared
-   * in case the concepts module is initialised again in the same process. */
+    /* Free resources and set pointers to NULL so that they are cleared
+     * in case the concepts module is initialised again in the same process. */
 
-  if(world->xsd_namespace_uri) {
-    librdf_free_uri(world->xsd_namespace_uri);
-    world->xsd_namespace_uri = NULL;
-  }
-
-  if(world->concept_ms_namespace_uri) {
-    librdf_free_uri(world->concept_ms_namespace_uri);
-    world->concept_ms_namespace_uri = NULL;
-  }
-
-  if(world->concept_schema_namespace_uri) {
-    librdf_free_uri(world->concept_schema_namespace_uri);
-    world->concept_schema_namespace_uri = NULL;
-  }
-
-  if(world->concept_resources) {
-    for (i=0; i<= LIBRDF_CONCEPT_LAST; i++) {
-      /* deletes associated URI too */
-      if(world->concept_resources[i])
-        librdf_free_node(world->concept_resources[i]);
+    if (world->xsd_namespace_uri) {
+        librdf_free_uri(world->xsd_namespace_uri);
+        world->xsd_namespace_uri = NULL;
     }
-    LIBRDF_FREE(librdf_node**, world->concept_resources);
-    world->concept_resources=NULL;
-  }
 
-  if(world->concept_uris) {
-    /* uris were freed above, now just free the array */
-    LIBRDF_FREE(librdf_uri**, world->concept_uris);
-    world->concept_uris=NULL;
-  }
+    if (world->concept_ms_namespace_uri) {
+        librdf_free_uri(world->concept_ms_namespace_uri);
+        world->concept_ms_namespace_uri = NULL;
+    }
+
+    if (world->concept_schema_namespace_uri) {
+        librdf_free_uri(world->concept_schema_namespace_uri);
+        world->concept_schema_namespace_uri = NULL;
+    }
+
+    if (world->concept_resources) {
+        for (i = 0; i <= LIBRDF_CONCEPT_LAST; i++) {
+            /* deletes associated URI too */
+            if (world->concept_resources[i])
+                librdf_free_node(world->concept_resources[i]);
+        }
+        LIBRDF_FREE(librdf_node**, world->concept_resources);
+        world->concept_resources = NULL;
+    }
+
+    if (world->concept_uris) {
+        /* uris were freed above, now just free the array */
+        LIBRDF_FREE(librdf_uri**, world->concept_uris);
+        world->concept_uris = NULL;
+    }
 }
 
 #endif
