@@ -246,6 +246,30 @@ TEST_F(LibrdfNodeTests, TestSetUri2) {
 }
 
 
+TEST_F(LibrdfNodeTests, TestEquality) {
+    LibrdfNode subject1 = LibrdfNode::fromUriString("subject");
+    LibrdfNode subject2 = LibrdfNode::fromUriString("subject");
+    ASSERT_EQ(subject1, subject2);
+
+    subject1.freeNode();
+    subject2.freeNode();
+}
+
+TEST_F(LibrdfNodeTests, TestInequality) {
+    LibrdfNode subject1 = LibrdfNode::fromUriString("subject1");
+    LibrdfNode subject2 = LibrdfNode::fromUriString("subject2");
+    ASSERT_NE(subject1, subject2);
+
+    /*
+     * Both nodes refer to the same block of memory. But
+     * librdf_node has a reference counter. Each time we free the node,
+     * the ref count reduces until it gets to 1. Then it is freed.
+     */
+    subject1.freeNode(); // ref count to 1
+    subject2.freeNode(); // ref count to 0
+}
+
+
 
 
 
