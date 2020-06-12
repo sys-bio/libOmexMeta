@@ -25,6 +25,9 @@ namespace redland {
 
     public:
 //        ~LibrdfModel();
+        bool operator==(const LibrdfModel &rhs) const;
+
+        bool operator!=(const LibrdfModel &rhs) const;
 
         LibrdfModel(const LibrdfModel &model) = delete;
 

@@ -124,12 +124,7 @@ namespace semsim {
             // remember to free it.
             triple.freeStatement();
         }
-        /*
-         * Should I remove the triples here?
-         */
-        std::cout << "Experimental line of code" << std::endl;
-        HERE();
-//        triples.freeTriples();
+
     }
 
     void Editor::addPhysicalEntity(const PhysicalEntity &physicalEntity) {
@@ -189,10 +184,13 @@ namespace semsim {
          */
 
         Triples triples = physicalEntity.toTriples();
-        for (int i = 0; i < triples.size(); i++) {
-            Triple triple = triples[i];
+
+        while (!triples.isEmpty()){
+            Triple triple = triples.pop();
 //            std::cout << triples[i].str("ntriples") << std::endl;
             model_.removeStatement(triple.getStatement());
+//            triple.freeStatement();
+
         }
 //        triples.freeTriples(); // seg fault
     }

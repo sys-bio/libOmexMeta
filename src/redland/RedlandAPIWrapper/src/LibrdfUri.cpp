@@ -14,12 +14,6 @@
 
 namespace redland {
 
-    void LibrdfUri::deleter::operator()(librdf_uri *ptr) {
-        if (ptr)
-            raptor_free_uri_wrapper(ptr);
-    }
-
-
     LibrdfUri LibrdfUri::fromRawPtr(librdf_uri *uri) {
         return LibrdfUri(uri);
     }

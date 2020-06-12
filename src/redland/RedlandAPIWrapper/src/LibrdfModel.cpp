@@ -99,5 +99,13 @@ namespace redland {
         librdf_model_remove_statement(model_, statement);
     }
 
+    bool LibrdfModel::operator==(const LibrdfModel &rhs) const {
+        return model_ == rhs.model_;
+    }
+
+    bool LibrdfModel::operator!=(const LibrdfModel &rhs) const {
+        return !(rhs == *this);
+    }
+
 }
 

@@ -70,7 +70,7 @@ namespace semsim {
          */
         [[nodiscard]] Triples toTriples(std::string subject_metaid, std::string property_metaid) const;
 
-        Triples toTriples(Subject subject_metaid, std::string property_metaid) const;
+        Triples toTriples(Subject subject_metaid, std::string property_metaid);
 
         /*
          * @brief indicator for whether the PhysicalPropertyResource node is empty.
@@ -78,7 +78,7 @@ namespace semsim {
          */
         [[nodiscard]] bool isSet() const override;
 
-        Triple isVersionOfTriple(const Subject &subject_metaid) const;
+        Triple isVersionOfTriple(const Subject &subject_metaid);
 
         Triple isPropertyOfTriple(const Subject &subject_metaid, std::string property_metaid) const;
     };

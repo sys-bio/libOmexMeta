@@ -191,4 +191,12 @@ namespace redland {
     bool LibrdfStatement::isComplete() {
         return librdf_statement_is_complete(statement_);
     }
+
+    bool LibrdfStatement::operator==(const LibrdfStatement &rhs) const {
+        return librdf_statement_equals(statement_, rhs.statement_);
+    }
+
+    bool LibrdfStatement::operator!=(const LibrdfStatement &rhs) const {
+        return !(rhs == *this);
+    }
 }

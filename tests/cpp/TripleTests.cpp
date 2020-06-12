@@ -305,6 +305,13 @@ TEST_F(TripleTestsVector, TestTripleVecMove) {
     vec[0].freeStatement();
 }
 
+//TEST_F(TripleTestsVector, TestMakeTripleTwice) {
+//    Triple triple1(subject.getNode(), predicate.getNode(), resource.getNode());
+//    triple1.freeStatement();
+//    Triple triple2(subject.getNode(), predicate.getNode(), resource.getNode());
+//    triple2.freeStatement();
+//}
+
 
 
 
