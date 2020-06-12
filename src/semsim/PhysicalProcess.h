@@ -47,7 +47,7 @@ namespace semsim {
          * @param mediator a vector of Sink objects representing the energetic modulators for the PhysicalProcess
          *
          */
-        PhysicalProcess(librdf_model *model, Subject metaid,
+        PhysicalProcess(librdf_model *model,
                         const PhysicalProperty& physicalProperty, Sources sources, Sinks sinks,
                         Mediators mediators);
 
@@ -60,7 +60,7 @@ namespace semsim {
          * toTriples method, then resources used by PhysicalProcess must be freed manually
          * with this method.
          */
-        void free() override;
+        void free();
 
         /*
          * @brief constructor for the builder interface of PhysicalProcess instantiation

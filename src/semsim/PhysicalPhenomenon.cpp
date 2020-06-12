@@ -9,22 +9,17 @@
 
 namespace semsim {
 
-    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, Subject about,
-                                           PhysicalProperty propertyResource, AnnotationType type)
-            : model_(model), about(std::move(about)), physical_property_(std::move(propertyResource)), type_(type) {}
+    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, PhysicalProperty propertyResource, AnnotationType type)
+            : model_(model), physical_property_(std::move(propertyResource)), type_(type) {}
 
     PhysicalPhenomenon::~PhysicalPhenomenon() = default;
 
-    void PhysicalPhenomenon::free() {
-        if (about.getNode())
-            about.free();
-    }
 
     PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model)
             : model_(model) {}
 
-    const Subject & PhysicalPhenomenon::getSubject() const {
-        return about;
+    const std::string & PhysicalPhenomenon::getSubjectStr() const {
+        return physical_property_.getSubjectStr();
     }
 
     AnnotationType PhysicalPhenomenon::getType() const {
@@ -61,8 +56,8 @@ namespace semsim {
     }
 
 
-    const Subject & PhysicalPhenomenon::getAbout() const {
-        return about;
+    const std::string & PhysicalPhenomenon::getAbout() const {
+        return physical_property_.getSubjectStr();
     }
 
 //    PhysicalPhenomenon::PhysicalPhenomenon(const PhysicalPhenomenon &phenomenon) {
@@ -75,7 +70,6 @@ namespace semsim {
     PhysicalPhenomenon::PhysicalPhenomenon(PhysicalPhenomenon &&phenomenon) noexcept {
         model_ = phenomenon.model_;
         phenomenon.model_ = nullptr; // not sure if this is right.
-        about = std::move(phenomenon.about);
         physical_property_ = std::move(phenomenon.physical_property_);
         type_ = std::move(phenomenon.type_);
     }
@@ -94,7 +88,6 @@ namespace semsim {
         if (this != &phenomenon) {
             model_ = phenomenon.model_;
             phenomenon.model_ = nullptr; // not sure if this is right.
-            about = std::move(phenomenon.about);
             physical_property_ = std::move(phenomenon.physical_property_);
             type_ = phenomenon.type_;
         }

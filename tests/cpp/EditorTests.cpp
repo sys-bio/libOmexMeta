@@ -212,7 +212,7 @@ TEST_F(EditorTests, TestAddPhysicalEntityToEditor) {
     std::vector<Resource> resources;
     resources.emplace_back(std::move(LibrdfNode::fromUriString("fma/FMA:9697")));
     PhysicalEntity physicalEntity = PhysicalEntity(
-            rdf.getModel(), subject, ppr, r, resources
+            rdf.getModel(), ppr, r, resources
     );
 //    std::shared_ptr<PhysicalEntity> ptr = std::make_shared<PhysicalEntity>(physicalEntity);
     editor.addCompositeAnnotation(&physicalEntity);
@@ -231,7 +231,6 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
 
     PhysicalProcess process = PhysicalProcess(
             model.get(),
-            Subject(LibrdfNode::fromUriString("MetaId004")),
             PhysicalProperty("MetaId004", "OPB:OPB1234"),
             std::vector<SourceParticipant>(
                     {SourceParticipant(model.get(),
@@ -297,7 +296,6 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
 
     PhysicalForce force = PhysicalForce(
                     model.get(),
-                    Subject(LibrdfNode::fromUriString("MetaId004")),
                     PhysicalProperty("metaid", "OPB:OPB1234"),
                     std::vector<SourceParticipant>(
                             {SourceParticipant(model.get(),
@@ -379,7 +377,6 @@ TEST_F(EditorTests, TestPhysicalEntityBuilder) {
 
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
-            .setAbout("SemsimMetaid0000")
             .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
@@ -401,7 +398,6 @@ TEST_F(EditorTests, TestPhysicalForceBuilder) {
 
     PhysicalForce physicalForce = editor.createPhysicalForce();
     physicalForce
-            .setAbout("SemsimMetaid0000")
             .setPhysicalProperty("metaid", "OPB:OPB1234")
             .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
             .addSink("sinkMetaid", 1.0, "PhysicalEntity2");
@@ -422,14 +418,12 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
 
     PhysicalProcess physicalProcess = editor.createPhysicalProcess();
     physicalProcess
-            .setAbout("SemsimMetaid0000")
             .setPhysicalProperty("metaid", "OPB:OPB1234")
             .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
             .addSink("sinkMetaid", 1.0, "PhysicalEntity2")
             .addMediator("mediatorMetaid", 1.0, "PhysicalEntity3");
 
     editor.addPhysicalProcess(physicalProcess);
-
 
     int expected = 10;
     int actual = rdf.size();

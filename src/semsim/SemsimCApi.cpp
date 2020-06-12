@@ -346,7 +346,7 @@ namespace semsim {
     }
 
     char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr) {
-        std::string about = physical_entity_ptr->getAbout().str();
+        std::string about = physical_entity_ptr->getAbout();
         char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
         strcpy(cstr, about.c_str());
         return cstr;
@@ -450,7 +450,7 @@ namespace semsim {
     }
 
     char *PhysicalProcess_getAbout(PhysicalProcess *physical_process_ptr) {
-        std::string about = physical_process_ptr->getAbout().str();
+        std::string about = physical_process_ptr->getAbout();
         char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
         strcpy(cstr, about.c_str());
         return cstr;
@@ -539,7 +539,7 @@ namespace semsim {
 
 
     char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr) {
-        std::string about = physical_force_ptr->getAbout().str();
+        std::string about = physical_force_ptr->getAbout();
         char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
         strcpy(cstr, about.c_str());
         return cstr;

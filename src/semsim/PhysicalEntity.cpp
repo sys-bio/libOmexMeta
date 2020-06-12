@@ -9,24 +9,14 @@
 namespace semsim {
 
     PhysicalEntity::PhysicalEntity(librdf_model *model,
-                                   Subject about,
                                    PhysicalProperty physicalProperty,
                                    Resource is,
                                    Resources is_part_of)
-            : PhysicalPhenomenon(model, std::move(about), std::move(physicalProperty), PHYSICAL_ENTITY),
+            : PhysicalPhenomenon(model, std::move(physicalProperty), PHYSICAL_ENTITY),
               identity_resource_(std::move(is)), location_resources(std::move(is_part_of)) {}
 
 
     void PhysicalEntity::free() {
-        if (about.getNode() != nullptr) {
-            about.free();
-            about.setNode(nullptr);
-        }
-
-//        if (physical_property_.getNode() != nullptr) {
-//            physical_property_.free();
-//            physical_property_.setNode(nullptr);
-//        }
         if (identity_resource_.getNode() != nullptr) {
             identity_resource_.free();
             identity_resource_.setNode(nullptr);
@@ -45,7 +35,7 @@ namespace semsim {
 
 
     PhysicalEntity &PhysicalEntity::setAbout(const std::string& metaid) {
-        this->about = Subject(LibrdfNode::fromUriString(metaid));
+        physical_property_.setSubject(metaid);
         return *this;
     }
 
@@ -83,7 +73,7 @@ namespace semsim {
     }
 
     Triples PhysicalEntity::toTriples() {
-        if (getAbout().getNode() == nullptr) {
+        if (getAbout().empty()) {
             throw AnnotationBuilderException(
                     "PhysicalEntity::toTriples(): Cannot create"
                     " triples because the \"about\" information is not set. "
@@ -91,13 +81,13 @@ namespace semsim {
             );
         }
 
-//        if (getPhysicalProperty().getNode() == nullptr) {
-//            throw AnnotationBuilderException(
-//                    "PhysicalEntity::toTriples(): Cannot create"
-//                    " triples because the \"physical_property\" information is not set. "
-//                    "Use the setPhysicalProperty() method."
-//            );
-//        }
+        if (getPhysicalProperty().getResourceStr().empty()) {
+            throw AnnotationBuilderException(
+                    "PhysicalEntity::toTriples(): Cannot create"
+                    " triples because the \"physical_property\" information is not set. "
+                    "Use the setPhysicalProperty() method."
+            );
+        }
 
         if (getLocationResources().empty()) {
             throw AnnotationBuilderException(

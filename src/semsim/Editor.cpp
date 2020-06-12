@@ -128,20 +128,20 @@ namespace semsim {
     }
 
     void Editor::addPhysicalEntity(PhysicalEntity &physicalEntity) {
-        if (!physicalEntity.getAbout().getNode()) {
+        if (physicalEntity.getAbout().empty()) {
             throw NullPointerException(
                     "NullPointerException: Editor::addPhysicalEntity() physicalEntity::subject_ (i.e. about) node is empty");
         }
-        checkValidMetaid(physicalEntity.getAbout().str());
+        checkValidMetaid(physicalEntity.getAbout());
         addCompositeAnnotation(&physicalEntity);
     }
 
     void Editor::addPhysicalProcess(const PhysicalProcess &physicalProcess) {
-        if (!physicalProcess.getAbout().getNode()) {
+        if (physicalProcess.getAbout().empty()) {
             throw NullPointerException(
                     "NullPointerException: Editor::addPhysicalProcess() PhysicalProcess::subject_ (i.e. about) node is empty");
         }
-        checkValidMetaid(physicalProcess.getAbout().str());
+        checkValidMetaid(physicalProcess.getAbout());
         /*
          * object slicing???
          */
@@ -150,11 +150,11 @@ namespace semsim {
     }
 
     void Editor::addPhysicalForce(const PhysicalForce &physicalForce) {
-        if (!physicalForce.getAbout().getNode()) {
+        if (physicalForce.getAbout().empty()) {
             throw NullPointerException(
                     "NullPointerException: Editor::addPhysicalForce() PhysicalForce::subject_ (i.e. about) node is empty");
         }
-        checkValidMetaid(physicalForce.getAbout().str());
+        checkValidMetaid(physicalForce.getAbout());
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalForce);
 
     }

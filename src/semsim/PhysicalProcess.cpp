@@ -11,10 +11,10 @@
 
 namespace semsim {
 
-    PhysicalProcess::PhysicalProcess(librdf_model *model, Subject metaid,
+    PhysicalProcess::PhysicalProcess(librdf_model *model,
                                      const PhysicalProperty& physicalProperty, Sources sources, Sinks sinks,
                                      Mediators mediators)
-            : PhysicalPhenomenon(model, std::move(metaid), physicalProperty, PHYSICAL_PROCESS),
+            : PhysicalPhenomenon(model, physicalProperty, PHYSICAL_PROCESS),
               sources_(std::move(sources)), sinks_(std::move(sinks)), mediators_(std::move(std::move(mediators))) {
 
     }
@@ -36,20 +36,20 @@ namespace semsim {
     }
 
     Triples PhysicalProcess::toTriples() {
-        if (!getAbout().isSet()) {
+        if (!getAbout().empty()) {
             throw AnnotationBuilderException(
                     "PhysicalProcess::toTriples(): Cannot create"
                     " triples because the \"about\" information is not set. "
                     "Use the setAbout() method."
             );
         }
-//        if (!getPhysicalProperty().isSet()) {
-//            throw AnnotationBuilderException(
-//                    "PhysicalProcess::toTriples(): Cannot create"
-//                    " triples because the \"physical_property\" information is not set. "
-//                    "Use the setPhysicalProperty() method."
-//            );
-//        }
+        if (!getPhysicalProperty().getResourceStr().empty()) {
+            throw AnnotationBuilderException(
+                    "PhysicalProcess::toTriples(): Cannot create"
+                    " triples because the \"physical_property\" information is not set. "
+                    "Use the setPhysicalProperty() method."
+            );
+        }
 
 
         std::string process_metaid = SemsimUtils::generateUniqueMetaid(model_, "PhysicalProcess",
@@ -76,7 +76,7 @@ namespace semsim {
     }
 
     PhysicalProcess &PhysicalProcess::setAbout(std::string metaid) {
-        about = Subject::fromRawPtr(LibrdfNode::fromUriString(metaid).get());
+        physical_property_.setSubject(metaid);
         return (*this);
     }
 

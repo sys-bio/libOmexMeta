@@ -61,12 +61,11 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
 
     PhysicalForce force(
             model.get(),
-            subject_metaid,
             physical_property,
             source_participants,
             sink_participants
     );
-    std::string actual = force.getSubject().str();
+    std::string actual = force.getSubjectStr();
     std::string expected = "MetaId004";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
@@ -83,7 +82,6 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
 TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
     PhysicalForce force(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
@@ -115,7 +113,6 @@ TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
 TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
     PhysicalForce force(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
@@ -146,7 +143,6 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
 TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
     PhysicalForce force(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("ForceId0000").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
@@ -201,7 +197,7 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
     RDF rdf;
     PhysicalForce force(rdf.getModel());
     //todo considering implementing the builder as a composite builder
-    force.setAbout("Force5")
+    force
             .setPhysicalProperty("Force5", "OPB:OPB_00340")
             .addSource("Source1", 1, "PhysicalEntityReference1")
             .addSink("Sink1", 2, "PhysicalEntityReference2")
