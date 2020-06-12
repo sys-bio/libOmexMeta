@@ -66,6 +66,10 @@ namespace semsim {
         Predicate(const std::string &namespace_,
                   std::string term, std::string prefix);
 
+        bool operator==(const Predicate &rhs) const;
+
+        bool operator!=(const Predicate &rhs) const;
+
         /*
          * @brief get the predicate as a full string
          * @return a string representing the predicate

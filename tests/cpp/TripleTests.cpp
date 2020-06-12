@@ -101,6 +101,38 @@ TEST_F(TripleTests, TestStatementPred) {
     triple.freeStatement();
 }
 
+TEST(TripleTestsNoFixture, TestEquality) {
+    Triple triple1(
+            LibrdfNode::fromUriString("subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource")
+    );
+    Triple triple2(
+            LibrdfNode::fromUriString("subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource")
+    );
+    ASSERT_EQ(triple1, triple2);
+    triple2.freeStatement();
+    triple1.freeStatement();
+}
+
+TEST(TripleTestsNoFixture, TestInequality) {
+    Triple triple1(
+            LibrdfNode::fromUriString("subject1"),
+            LibrdfNode::fromUriString("predicate1"),
+            LibrdfNode::fromUriString("resource1")
+    );
+    Triple triple2(
+            LibrdfNode::fromUriString("subject2"),
+            LibrdfNode::fromUriString("predicate2"),
+            LibrdfNode::fromUriString("resource2")
+    );
+    ASSERT_NE(triple1, triple2);
+    triple2.freeStatement();
+    triple1.freeStatement();
+}
+
 TEST_F(TripleTests, TestStatementResource) {
     Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
     librdf_statement *statement = triple.get();

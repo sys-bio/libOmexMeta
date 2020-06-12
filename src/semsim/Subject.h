@@ -40,6 +40,9 @@ namespace semsim {
 
         static Subject fromBlank(const std::string &blank);
 
+        bool operator==(const Subject &rhs) const;
+
+        bool operator!=(const Subject &rhs) const;
 //        ~Subject();
 
         [[nodiscard]] std::string str() const;

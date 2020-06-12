@@ -73,6 +73,34 @@ TEST_F(LibrdfStatementTests, TestGetPredicateStr) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
+TEST(LibrdfStatementTestsNoFixture, TestInequality) {
+    redland::LibrdfStatement statement1 = LibrdfStatement(
+            LibrdfNode::fromUriString("subject1"),
+            LibrdfNode::fromUriString("predicate1"),
+            LibrdfNode::fromUriString("resource1")
+    );
+    redland::LibrdfStatement statement2 = LibrdfStatement(
+            LibrdfNode::fromUriString("subject2"),
+            LibrdfNode::fromUriString("predicate2"),
+            LibrdfNode::fromUriString("resource2")
+    );
+    ASSERT_NE(statement1, statement2);
+}
+
+TEST(LibrdfStatementTestsNoFixture, TestEquality) {
+    redland::LibrdfStatement statement1 = LibrdfStatement(
+            LibrdfNode::fromUriString("subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource")
+    );
+    redland::LibrdfStatement statement2 = LibrdfStatement(
+            LibrdfNode::fromUriString("subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource")
+    );
+    ASSERT_EQ(statement1, statement2);
+}
+
 
 TEST_F(LibrdfStatementTests, TestToStatementSubject) {
     LibrdfStatement statement = LibrdfStatement(
