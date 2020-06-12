@@ -93,6 +93,15 @@ namespace semsim {
         resource_ = resource;
     }
 
+    bool PhysicalProperty::operator==(const PhysicalProperty &rhs) const {
+        return subject_ == rhs.subject_ &&
+               resource_ == rhs.resource_;
+    }
+
+    bool PhysicalProperty::operator!=(const PhysicalProperty &rhs) const {
+        return !(rhs == *this);
+    }
+
 //    Triples PhysicalProperty::toTriples(Subject subject_metaid) {
 //        Triple v = isVersionOfTriple(subject_metaid);
 //        Triple p = isPropertyOfTriple(subject_metaid);

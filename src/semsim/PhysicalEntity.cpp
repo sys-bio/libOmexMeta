@@ -156,6 +156,16 @@ namespace semsim {
         return getLocationResources().size();
     }
 
+    bool PhysicalEntity::operator==(const PhysicalEntity &rhs) const {
+        return physical_property_ == rhs.physical_property_ &&
+               identity_resource_ == rhs.identity_resource_ &&
+               location_resources == rhs.location_resources;
+    }
+
+    bool PhysicalEntity::operator!=(const PhysicalEntity &rhs) const {
+        return !(rhs == *this);
+    }
+
 }
 
 

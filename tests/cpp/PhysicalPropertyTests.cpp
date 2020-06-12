@@ -101,6 +101,18 @@ TEST_F(PhysicalPropertyTests, TestToTriples) {
     triples.freeTriples();
 }
 
+TEST_F(PhysicalPropertyTests, TestEquality) {
+    PhysicalProperty resource1 = PhysicalProperty("sub", "OPB/OPB_1234");
+    PhysicalProperty resource2 = PhysicalProperty("sub", "OPB/OPB_1234");
+    ASSERT_EQ(resource1, resource2);
+}
+
+TEST_F(PhysicalPropertyTests, TestInequality) {
+    PhysicalProperty resource1 = PhysicalProperty("sub1", "OPB/OPB_1234");
+    PhysicalProperty resource2 = PhysicalProperty("sub2", "OPB/OPB_1234");
+    ASSERT_NE(resource1, resource2);
+}
+
 //TEST_F(PhysicalPropertyTests, TestToTriples2) {
 //    Subject s(LibrdfNode::fromUriString("https://subject.com"));
 //    PhysicalProperty resource = PhysicalProperty("sub", "OPB/OPB_1234");

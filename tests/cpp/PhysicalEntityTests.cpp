@@ -383,6 +383,10 @@ TEST_F(PhysicalEntityTests, TestTriples) {
     triples.freeTriples();
 
 }
+
+
+
+
 //TEST_F(PhysicalEntityTests, TestCallingToTriplesTwice) {
 //    /*
 //     * Calling toTriples twice doesn;t seem to work because we free the subject.
@@ -528,7 +532,11 @@ TEST(PhysicalEntityTestsNoFixture, TestEquality) {
                      Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877").get())
                     })
     );
-//    ASSERT_EQ(physicalEntity1, physicalEntity2);
+    ASSERT_EQ(physicalEntity1, physicalEntity2);
+    model.freeModel();
+    storage.freeStorage();
+    physicalEntity1.free();
+    physicalEntity2.free();
 }
 
 
