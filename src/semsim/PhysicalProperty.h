@@ -36,6 +36,12 @@ namespace semsim {
 
         std::string subject_;
         std::string resource_;
+    public:
+        bool operator==(const PhysicalProperty &rhs) const;
+
+        bool operator!=(const PhysicalProperty &rhs) const;
+
+    private:
         void validate();
 
     public:

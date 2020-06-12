@@ -63,7 +63,7 @@ TEST_F(SubjectTests, TestEquality) {
 TEST_F(SubjectTests, TestInequality) {
     Subject subject1 = Subject(LibrdfNode::fromUriString("blank1"));
     Subject subject2 = Subject(LibrdfNode::fromUriString("blank2"));
-    ASSERT_EQ(subject1, subject2);
+    ASSERT_NE(subject1, subject2);
     subject2.free();
     subject1.free();
 }

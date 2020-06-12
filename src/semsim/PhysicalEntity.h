@@ -59,6 +59,10 @@ namespace semsim {
 
         ~PhysicalEntity() = default;
 
+        bool operator==(const PhysicalEntity &rhs) const;
+
+        bool operator!=(const PhysicalEntity &rhs) const;
+
         /*
          * @brief free resources uses by PhysicalEntity
          *
