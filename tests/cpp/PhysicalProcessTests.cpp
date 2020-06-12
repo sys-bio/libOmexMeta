@@ -21,12 +21,12 @@ public:
     LibrdfStorage storage;
     LibrdfModel model;
 
-    PhysicalPropertyResource physical_property;
+    PhysicalProperty physical_property;
 
     PhysicalProcessTests() {
         model = LibrdfModel(storage.get());
 
-        physical_property = PhysicalPropertyResource("OPB:OPB_00340");
+        physical_property = PhysicalProperty("metaid", "OPB:OPB_00340");
     };
 
     ~PhysicalProcessTests() override {
@@ -75,7 +75,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // Without Triple we need to free stuff manually
-    physical_property.free();
+    //physical_property.free();
     subject_metaid.free();
     source_participants[0].free();
     sink_participants[0].free();
@@ -123,7 +123,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // Without Triple we need to free stuff manually
-    physical_property.free();
+    //physical_property.free();
     subject_metaid.free();
     source_participants[0].free();
     sink_participants[0].free();
@@ -282,7 +282,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
 TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
     PhysicalProcess process(model.get());
     process.setAbout("property_metaid_0")
-            .setPhysicalProperty("opb/OPB_00592")
+            .setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource("source_0", 1.0, "species_metaid0")
             .addSource("source_1", 2.0, "species_metaid1")
             .addSink("sink_0", 1.0, "species_metaid2")
@@ -327,6 +327,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // remember to free the unused physical property from test fixture
-    physical_property.free();
+    //physical_property.free();
     triples.freeTriples();
 }

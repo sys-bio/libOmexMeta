@@ -12,9 +12,9 @@
 namespace semsim {
 
     PhysicalForce::PhysicalForce(librdf_model *model, Subject metaid,
-                                 PhysicalPropertyResource physicalProperty,
+                                 PhysicalProperty physicalProperty,
                                  Sources sources, Sinks sinks)
-            : PhysicalPhenomenon(model, metaid, std::move(physicalProperty), PHYSICAL_PROCESS),
+            : PhysicalPhenomenon(model, std::move(metaid), std::move(physicalProperty), PHYSICAL_PROCESS),
               sources_(std::move(sources)), sinks_(std::move(sinks)) {
 
     }
@@ -36,7 +36,7 @@ namespace semsim {
                 model_, "PhysicalForce",
                 std::vector<std::string>());
 
-        Triples triples = physical_property_.toTriples(about, force_metaid);
+        Triples triples = physical_property_.toTriples(force_metaid);
 
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(force_metaid)) {
@@ -56,13 +56,13 @@ namespace semsim {
         return (*this);
     }
 
-    PhysicalForce &PhysicalForce::setPhysicalProperty(PhysicalPropertyResource physicalProperty) {
+    PhysicalForce &PhysicalForce::setPhysicalProperty(PhysicalProperty physicalProperty) {
         physical_property_ = std::move(physicalProperty);
         return (*this);
     }
 
-    PhysicalForce &PhysicalForce::setPhysicalProperty(const std::string &physicalProperty) {
-        physical_property_ = PhysicalPropertyResource(physicalProperty);
+    PhysicalForce &PhysicalForce::setPhysicalProperty(const std::string &subject_metaid, const std::string &physical_property) {
+        physical_property_ = PhysicalProperty(subject_metaid, physical_property);
         return (*this);
     }
 

@@ -5,7 +5,7 @@
 #ifndef LIBSEMSIM_PHYSICALENTITY_H
 #define LIBSEMSIM_PHYSICALENTITY_H
 
-#include <semsim/PhysicalPropertyResource.h>
+#include <semsim/PhysicalProperty.h>
 #include "semsim/Resource.h"
 #include "semsim/Subject.h"
 #include "semsim/PhysicalPhenomenon.h"
@@ -44,7 +44,7 @@ namespace semsim {
          * @brief constructor for instantiating a PhysicalEntity object
          * @param model the model being used by the current rdf graph.
          * @param about The subject portion of the PhysicalEntity representing the metaid for the PhysicalEntity
-         * @param physicalProperty A term from the ontology of physical for biology of type PhysicalPropertyResource.
+         * @param physicalProperty A term from the ontology of physical for biology of type PhysicalProperty.
          * @param is The "what" portion of a PhysicalEntity object.
          * @param is_part_of The "where" portion of the PhysicalEntity object.
          *
@@ -54,7 +54,7 @@ namespace semsim {
          * Resource objects. It can be as long as needed.
          */
         PhysicalEntity(librdf_model *model, Subject about,
-                       PhysicalPropertyResource physicalProperty, Resource is,
+                       PhysicalProperty physicalProperty, Resource is,
                        Resources is_part_of);
 
         ~PhysicalEntity() = default;
@@ -119,7 +119,7 @@ namespace semsim {
          * This method is a part of the PhysicalEntity builder interface
          *
          */
-        PhysicalEntity &setAbout(std::string metaid);
+        PhysicalEntity &setAbout(const std::string& metaid);
 
         /*
          * @brief sets the physical property for a PhysicalEntity instance.
@@ -127,20 +127,20 @@ namespace semsim {
          * @return a reference to this Physical entity. Allows chaining together builder commands.
          *
          * The OBP argument requires a string of the form "obp:opbxxx" where "xxx" is the id for the OPB term.
-         * An instance of PhysicalPropertyResource is instantiated with @param physicalProperty as its value.
+         * An instance of PhysicalProperty is instantiated with @param physicalProperty as its value.
          */
-        PhysicalEntity &setPhysicalProperty(const std::string &physicalProperty);
+        PhysicalEntity &setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty);
 
         /*
          * @brief sets the physical property for a PhysicalEntity instance
          * @return a reference to this Physical entity. Allows chaining together builder commands.
          *
          * Prefer the alternative setPhysicalProperty instance, since you do not need to instantiate
-         * the PhysicalPropertyResource yourself.
+         * the PhysicalProperty yourself.
          *
          * For developers. Consider removing.
          */
-        [[maybe_unused]] PhysicalEntity &setPhysicalProperty(PhysicalPropertyResource physicalProperty);
+        [[maybe_unused]] PhysicalEntity &setPhysicalProperty(PhysicalProperty physicalProperty);
 
         /*
          * @brief sets the identity portion of the PhysicalEntity (the "What").
@@ -151,7 +151,7 @@ namespace semsim {
          *
          * See Resource documentation for more details of valid input strings.
          */
-        PhysicalEntity &setIdentity(std::string resource);
+        PhysicalEntity &setIdentity(const std::string& resource);
 
         /*
          * @brief add a location to the PhysicalEntity.
@@ -169,7 +169,7 @@ namespace semsim {
          *
          * See Resource documentation for more details of valid input strings.
          */
-        PhysicalEntity &addLocation(std::string where);
+        PhysicalEntity &addLocation(const std::string& where);
 
         /*
          * @brief returns the number of locations used by PhysicalEntity
@@ -177,7 +177,6 @@ namespace semsim {
          */
         [[nodiscard]] int getNumLocations() const;
 
-        Triples toTriplesConst() const;
 
     };
 }

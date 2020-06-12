@@ -10,22 +10,20 @@
 namespace semsim {
 
     PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, Subject about,
-                                           PhysicalPropertyResource propertyResource, AnnotationType type)
-            : model_(model), about(about), physical_property_(std::move(propertyResource)), type_(type) {}
+                                           PhysicalProperty propertyResource, AnnotationType type)
+            : model_(model), about(std::move(about)), physical_property_(std::move(propertyResource)), type_(type) {}
 
     PhysicalPhenomenon::~PhysicalPhenomenon() = default;
 
     void PhysicalPhenomenon::free() {
         if (about.getNode())
             about.free();
-        if (physical_property_.getNode())
-            physical_property_.free();
     }
 
     PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model)
             : model_(model) {}
 
-    Subject PhysicalPhenomenon::getSubject() const {
+    const Subject & PhysicalPhenomenon::getSubject() const {
         return about;
     }
 
@@ -33,7 +31,7 @@ namespace semsim {
         return type_;
     }
 
-    std::string PhysicalPhenomenon::generateMetaId(std::string id_base) const {
+    std::string PhysicalPhenomenon::generateMetaId(const std::string& id_base) const {
         std::string q = "SELECT ?subject ?predicate ?object\n"
                         "WHERE {?subject ?predicate ?object}";
         Query query(model_, q);
@@ -53,7 +51,7 @@ namespace semsim {
     }
 
 
-    PhysicalPropertyResource PhysicalPhenomenon::getPhysicalProperty() const {
+    PhysicalProperty PhysicalPhenomenon::getPhysicalProperty() const {
         return physical_property_;
     }
 
@@ -63,16 +61,16 @@ namespace semsim {
     }
 
 
-    Subject PhysicalPhenomenon::getAbout() const {
+    const Subject & PhysicalPhenomenon::getAbout() const {
         return about;
     }
 
-    PhysicalPhenomenon::PhysicalPhenomenon(const PhysicalPhenomenon &phenomenon) {
-        model_ = phenomenon.model_;
-        about = phenomenon.about;
-        physical_property_ = phenomenon.physical_property_;
-        type_ = phenomenon.type_;
-    }
+//    PhysicalPhenomenon::PhysicalPhenomenon(const PhysicalPhenomenon &phenomenon) {
+//        model_ = phenomenon.model_;
+//        about = std::move(phenomenon.about);
+//        physical_property_ = phenomenon.physical_property_;
+//        type_ = phenomenon.type_;
+//    }
 
     PhysicalPhenomenon::PhysicalPhenomenon(PhysicalPhenomenon &&phenomenon) noexcept {
         model_ = phenomenon.model_;
@@ -82,15 +80,15 @@ namespace semsim {
         type_ = std::move(phenomenon.type_);
     }
 
-    PhysicalPhenomenon &PhysicalPhenomenon::operator=(const PhysicalPhenomenon &phenomenon) {
-        if (this != &phenomenon) {
-            model_ = phenomenon.model_;
-            about = std::move(phenomenon.about);
-            physical_property_ = std::move(phenomenon.physical_property_);
-            type_ = std::move(phenomenon.type_);
-        }
-        return *this;
-    }
+//    PhysicalPhenomenon &PhysicalPhenomenon::operator=(const PhysicalPhenomenon &phenomenon) {
+//        if (this != &phenomenon) {
+//            model_ = phenomenon.model_;
+//            about = std::move(phenomenon.about);
+//            physical_property_ = std::move(phenomenon.physical_property_);
+//            type_ = std::move(phenomenon.type_);
+//        }
+//        return *this;
+//    }
 
     PhysicalPhenomenon &PhysicalPhenomenon::operator=(PhysicalPhenomenon &&phenomenon) noexcept {
         if (this != &phenomenon) {
@@ -98,7 +96,7 @@ namespace semsim {
             phenomenon.model_ = nullptr; // not sure if this is right.
             about = std::move(phenomenon.about);
             physical_property_ = std::move(phenomenon.physical_property_);
-            type_ = std::move(phenomenon.type_);
+            type_ = phenomenon.type_;
         }
     }
 

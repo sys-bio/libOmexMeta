@@ -330,8 +330,8 @@ namespace semsim {
     }
 
     PhysicalEntity *PhysicalEntity_setPhysicalProperty(
-            PhysicalEntity *physical_entity_ptr, const char *physical_property) {
-        physical_entity_ptr->setPhysicalProperty(physical_property);
+            PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property) {
+        physical_entity_ptr->setPhysicalProperty(subject_metaid, physical_property);
         return physical_entity_ptr;
     }
 
@@ -352,12 +352,12 @@ namespace semsim {
         return cstr;
     }
 
-    char *PhysicalEntity_getPhysicalProperty(PhysicalEntity *physical_entity_ptr) {
-        std::string physical_property = physical_entity_ptr->getPhysicalProperty().str();
-        char *cstr = (char *) malloc((physical_property.size() + 1) * sizeof(char));
-        strcpy(cstr, physical_property.c_str());
-        return cstr;
-    }
+//    char *PhysicalEntity_getPhysicalProperty(PhysicalEntity *physical_entity_ptr) {
+//        std::string physical_property = physical_entity_ptr->getPhysicalProperty().str();
+//        char *cstr = (char *) malloc((physical_property.size() + 1) * sizeof(char));
+//        strcpy(cstr, physical_property.c_str());
+//        return cstr;
+//    }
 
     char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr) {
         std::string identity = physical_entity_ptr->getIdentityResource().str();
@@ -410,8 +410,8 @@ namespace semsim {
     }
 
     PhysicalProcess *
-    PhysicalProcess_setPhysicalProperty(PhysicalProcess *physical_process, const char *physical_property) {
-        physical_process->setPhysicalProperty(physical_property);
+    PhysicalProcess_setPhysicalProperty(PhysicalProcess *physical_process, const char *subject_metaid, const char *physical_property) {
+        physical_process->setPhysicalProperty(subject_metaid, physical_property);
         return physical_process;
 
     }
@@ -456,12 +456,12 @@ namespace semsim {
         return cstr;
     }
 
-    char *PhysicalProcess_getPhysicalProperty(PhysicalProcess *physical_process_ptr) {
-        std::string pp = physical_process_ptr->getPhysicalProperty().str();
-        char *cstr = (char *) malloc((pp.size() + 1) * sizeof(char));
-        strcpy(cstr, pp.c_str());
-        return cstr;
-    }
+//    char *PhysicalProcess_getPhysicalProperty(PhysicalProcess *physical_process_ptr) {
+//        std::string pp = physical_process_ptr->getPhysicalProperty().str();
+//        char *cstr = (char *) malloc((pp.size() + 1) * sizeof(char));
+//        strcpy(cstr, pp.c_str());
+//        return cstr;
+//    }
 
     int PhysicalProcess_getNumSources(PhysicalProcess *physicalProcess) {
         return physicalProcess->getNumSources();
@@ -515,8 +515,8 @@ namespace semsim {
         return physical_force_ptr;
     }
 
-    PhysicalForce *PhysicalForce_setPhysicalProperty(PhysicalForce *physical_force_ptr, const char *physical_property) {
-        physical_force_ptr->setPhysicalProperty(physical_property);
+    PhysicalForce *PhysicalForce_setPhysicalProperty(PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property) {
+        physical_force_ptr->setPhysicalProperty(subject_metaid, physical_property);
         return physical_force_ptr;
     }
 
@@ -546,12 +546,12 @@ namespace semsim {
     }
 
 
-    char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr) {
-        std::string pp = physical_force_ptr->getPhysicalProperty().str();
-        char *cstr = (char *) malloc((pp.size() + 1) * sizeof(char));
-        strcpy(cstr, pp.c_str());
-        return cstr;
-    }
+//    char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr) {
+//        std::string pp = physical_force_ptr->getPhysicalProperty().str();
+//        char *cstr = (char *) malloc((pp.size() + 1) * sizeof(char));
+//        strcpy(cstr, pp.c_str());
+//        return cstr;
+//    }
 
 
 }

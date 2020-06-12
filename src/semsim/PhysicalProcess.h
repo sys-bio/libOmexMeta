@@ -10,7 +10,7 @@
 #include "RedlandAPIWrapper.h"
 #include <vector>
 #include "Participant.h"
-#include "PhysicalPropertyResource.h"
+#include "PhysicalProperty.h"
 #include "PhysicalPhenomenon.h"
 #include "SemsimUtils.h"
 
@@ -48,7 +48,7 @@ namespace semsim {
          *
          */
         PhysicalProcess(librdf_model *model, Subject metaid,
-                        PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks,
+                        const PhysicalProperty& physicalProperty, Sources sources, Sinks sinks,
                         Mediators mediators);
 
         /*
@@ -106,7 +106,7 @@ namespace semsim {
          * @brief setter for the physical property portion of the PhysicalProcess.
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &setPhysicalProperty(const std::string &physicalProperty);
+        PhysicalProcess &setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty);
 
         /*
          * @brief setter for the physical property portion of the PhysicalProcess.
@@ -115,7 +115,7 @@ namespace semsim {
          * Developers. Consider removing this method in favour of the
          * setPhysicalProperty version that only takes a string as argument
          */
-        PhysicalProcess &setPhysicalProperty(PhysicalPropertyResource physicalProperty);
+        PhysicalProcess &setPhysicalProperty(PhysicalProperty physicalProperty);
 
         /*
          * @brief add a source to the list of Source object associated with a PhysicalProcess

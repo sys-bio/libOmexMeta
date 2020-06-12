@@ -16,7 +16,7 @@
 #include "RedlandAPIWrapper.h"
 #include <vector>
 #include "Participant.h"
-#include "PhysicalPropertyResource.h"
+#include "PhysicalProperty.h"
 #include "PhysicalPhenomenon.h"
 #include "SemsimUtils.h"
 
@@ -43,7 +43,7 @@ namespace semsim {
         ~PhysicalForce() = default;
 
 
-        PhysicalForce(librdf_model *model, Subject metaid, PhysicalPropertyResource physicalProperty,
+        PhysicalForce(librdf_model *model, Subject metaid, PhysicalProperty physicalProperty,
                       Sources sources, Sinks sinks);
 
         /*
@@ -112,24 +112,24 @@ namespace semsim {
 
         /*
          * @brief sets the physical property of the PhysicalForce
-         * @parameter physicalProperty An instance of PhysicalPropertyResource representing the
+         * @parameter physicalProperty An instance of PhysicalProperty representing the
          * physical property term for the PhysicalForce.
          * @return a reference to this PhysicalForce to enable the builder interface.
          *
          * Prefer the other setPhysicalProperty method since it only requires a
-         * string input and instantiates the PhysicalPropertyResource for you.
+         * string input and instantiates the PhysicalProperty for you.
          *
          * For developers. Consider removing.
          */
-        [[maybe_unused]] PhysicalForce &setPhysicalProperty(PhysicalPropertyResource physicalProperty);
+        [[maybe_unused]] PhysicalForce &setPhysicalProperty(PhysicalProperty physicalProperty);
 
         /*
          * @brief sets the physical property of the PhysicalForce
-         * @parameter physicalProperty. An instance of PhysicalPropertyResource
-         * representing the physical property term for the PhysicalForce is automatically instantiated
+         * @param subject_metaid. The subject portion of the two triples produced by PhysicalProperty. Metaid of a model element.
+         * @param A string representing the OPB term to use as the physical property. Like "OPB:OPB_1234"
          * @return a reference to this PhysicalForce to enable the builder interface.
          */
-        PhysicalForce &setPhysicalProperty(const std::string &physicalProperty);
+        PhysicalForce &setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty);
 
         /*
          * @brief add a SourceParticipant to the PhysicalForce.

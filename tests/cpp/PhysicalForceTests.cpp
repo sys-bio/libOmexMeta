@@ -20,11 +20,11 @@ public:
     LibrdfStorage storage;
     LibrdfModel model;
 
-    PhysicalPropertyResource physical_property;
+    PhysicalProperty physical_property;
 
     PhysicalForceTests() {
         model = LibrdfModel(storage.get());
-        physical_property = PhysicalPropertyResource("OPB:OPB_00340");
+        physical_property = PhysicalProperty("metaid", "OPB:OPB_00340");
     };
     ~PhysicalForceTests() override {
         model.freeModel();
@@ -71,7 +71,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // Without Triple we need to free stuff manually
-    physical_property.free();
+//    physical_property.free();
     subject_metaid.free();
     source_participants[0].free();
     sink_participants[0].free();
@@ -202,7 +202,7 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
     PhysicalForce force(rdf.getModel());
     //todo considering implementing the builder as a composite builder
     force.setAbout("Force5")
-            .setPhysicalProperty("OPB:OPB_00340")
+            .setPhysicalProperty("Force5", "OPB:OPB_00340")
             .addSource("Source1", 1, "PhysicalEntityReference1")
             .addSink("Sink1", 2, "PhysicalEntityReference2")
             .addSink("Sink2", 1, "PhysicalEntityReference3");
