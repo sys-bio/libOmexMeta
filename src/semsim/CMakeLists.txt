@@ -12,7 +12,7 @@ set(SEMSIM_HEADERS
         "Triple.h"
         "Triples.h"
         "MetaID.h"
-        "PhysicalPropertyResource.h"
+        "PhysicalProperty.h"
         "Participant.h"
 
         "PhysicalPhenomenon.h"
@@ -43,7 +43,7 @@ set(SEMSIM_SOURCES
         "Predicate.cpp"
         "Triple.cpp"
         "Triples.cpp"
-        "PhysicalPropertyResource.cpp"
+        "PhysicalProperty.cpp"
         "MetaID.cpp"
         "Participant.cpp"
 

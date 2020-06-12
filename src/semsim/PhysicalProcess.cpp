@@ -12,9 +12,9 @@
 namespace semsim {
 
     PhysicalProcess::PhysicalProcess(librdf_model *model, Subject metaid,
-                                     PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks,
+                                     const PhysicalProperty& physicalProperty, Sources sources, Sinks sinks,
                                      Mediators mediators)
-            : PhysicalPhenomenon(model, metaid, std::move(physicalProperty), PHYSICAL_PROCESS),
+            : PhysicalPhenomenon(model, std::move(metaid), physicalProperty, PHYSICAL_PROCESS),
               sources_(std::move(sources)), sinks_(std::move(sinks)), mediators_(std::move(std::move(mediators))) {
 
     }
@@ -43,19 +43,19 @@ namespace semsim {
                     "Use the setAbout() method."
             );
         }
-        if (!getPhysicalProperty().isSet()) {
-            throw AnnotationBuilderException(
-                    "PhysicalProcess::toTriples(): Cannot create"
-                    " triples because the \"physical_property\" information is not set. "
-                    "Use the setPhysicalProperty() method."
-            );
-        }
+//        if (!getPhysicalProperty().isSet()) {
+//            throw AnnotationBuilderException(
+//                    "PhysicalProcess::toTriples(): Cannot create"
+//                    " triples because the \"physical_property\" information is not set. "
+//                    "Use the setPhysicalProperty() method."
+//            );
+//        }
 
 
         std::string process_metaid = SemsimUtils::generateUniqueMetaid(model_, "PhysicalProcess",
                                                                        std::vector<std::string>());
 
-        Triples triples = physical_property_.toTriples(about, process_metaid);
+        Triples triples = physical_property_.toTriples(process_metaid);
 
         for (auto &source: sources_) {
             for (auto &triple: source.toTriples(process_metaid)) {
@@ -80,15 +80,15 @@ namespace semsim {
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::setPhysicalProperty(PhysicalPropertyResource physicalProperty) {
+    PhysicalProcess &PhysicalProcess::setPhysicalProperty(PhysicalProperty physicalProperty) {
         physical_property_ = std::move(physicalProperty);
         return (*this);
     }
 
 //todo turn this into a factory whereby user enters string of PhysicalProperty
 //  and we automatically pick out the correct OPB identifier
-    PhysicalProcess &PhysicalProcess::setPhysicalProperty(const std::string &physicalProperty) {
-        physical_property_ = PhysicalPropertyResource(physicalProperty);
+    PhysicalProcess &PhysicalProcess::setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty) {
+        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty);
         return (*this);
     }
 

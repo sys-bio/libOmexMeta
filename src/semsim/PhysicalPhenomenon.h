@@ -6,7 +6,7 @@
 #define LIBSEMSIM_PhysicalPhenomenon_H
 
 #include "semsim/Subject.h"
-#include "semsim/PhysicalPropertyResource.h"
+#include "semsim/PhysicalProperty.h"
 #include "semsim/AnnotationType.h"
 #include "semsim/Triple.h"
 #include "semsim/Triples.h"
@@ -24,10 +24,10 @@ namespace semsim {
 
         librdf_model *model_ = nullptr; // should be cleaned up by the LibrdfModel inside RDF.
         Subject about;
-        PhysicalPropertyResource physical_property_;
+        PhysicalProperty physical_property_;
         AnnotationType type_ = AnnotationType::UNKNOWN;
 
-        [[nodiscard]] std::string generateMetaId(std::string id_base) const;
+        [[nodiscard]] std::string generateMetaId(const std::string& id_base) const;
 
     public:
         PhysicalPhenomenon() = default;
@@ -37,7 +37,7 @@ namespace semsim {
         /*
          * @brief Copy constructor for PhysicalPhenomenon
          */
-        PhysicalPhenomenon(const PhysicalPhenomenon &phenomenon);
+        PhysicalPhenomenon(const PhysicalPhenomenon &phenomenon) = delete;
 
         /*
          * @brief Move constructor for PhysicalPhenomenon
@@ -47,7 +47,7 @@ namespace semsim {
         /*
          * @brief assignment operator for PhysicalPhenomenon
          */
-        PhysicalPhenomenon &operator=(const PhysicalPhenomenon &phenomenon);
+        PhysicalPhenomenon &operator=(const PhysicalPhenomenon &phenomenon) = delete;
 
         /*
          * @brief move assignment operator for PhysicalPhenomenon
@@ -67,18 +67,18 @@ namespace semsim {
          * @brief constructor for PhysicalPhenomenon object.
          * @param model a librdf_model object assicated with RDF graph.
          * @param about The subject for the PhysicalPhenomenon. This is the metaid.
-         * @param propertyResource The PhysicalPropertyResource assocaited with a composite annotation
+         * @param propertyResource The PhysicalProperty assocaited with a composite annotation
          * @param type An AnnotationType to distinguish composite annotations.
          */
         PhysicalPhenomenon(librdf_model *model, Subject about,
-                           PhysicalPropertyResource propertyResource,
+                           PhysicalProperty propertyResource,
                            AnnotationType type);
 
         /*
          * @brief get the subject portion of the PhysicalPhenomenon
          * @return the string associated with the subject node
          */
-        [[nodiscard]] Subject getAbout() const;
+        [[nodiscard]] const Subject & getAbout() const;
 
         /*
          * @brief get the subject portion of the PhysicalPhenomenon
@@ -86,7 +86,7 @@ namespace semsim {
          *
          * This is the same as getAbout method.
          */
-        [[nodiscard]] Subject getSubject() const;
+        [[nodiscard]] const Subject & getSubject() const;
 
         /*
          * @brief getter for Type argument
@@ -98,7 +98,7 @@ namespace semsim {
          * @brief getter for PhysicalProperty argument
          * @return the resource representing the physical property being annotated
          */
-        [[nodiscard]] PhysicalPropertyResource getPhysicalProperty() const;
+        [[nodiscard]] PhysicalProperty getPhysicalProperty() const;
 
         /*
          * @brief create a Triples object using the information
