@@ -121,6 +121,7 @@ namespace semsim {
                 );
             }
         }
+
         // no exclusions needed here - we only generate 1 process metaid before comiting the triples
         // to the model.
         std::string property_metaid = SemsimUtils::generateUniqueMetaid(
@@ -130,12 +131,8 @@ namespace semsim {
 
         Triples triples = physical_property_.toTriples(about, property_metaid);
 
-
-        std::cout << "about to free about" << std::endl;
-//        about.free();
-
-
         // the "what" part of physical entity triple
+        Resource r = getIdentityResource();
         triples.emplace_back(
                 LibrdfNode::fromUriString(property_metaid).get(),
                 BiomodelsBiologyQualifier("is").getNode(),

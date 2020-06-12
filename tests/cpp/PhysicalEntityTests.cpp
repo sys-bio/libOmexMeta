@@ -243,6 +243,86 @@ TEST_F(PhysicalEntityTests, TestAboutIsSet) {
     physicalEntity.free();
 }
 
+TEST(PhysicalEntityTestsNoFixture, TestToTripleRefCounts) {
+    LibrdfStorage storage;
+    LibrdfModel model(storage.get());
+
+    // ensure physical property has 1 reference
+    PhysicalPropertyResource property("opb:opb_1234");
+    ASSERT_EQ(1, property.getNode()->usage);
+
+    // ensure subject has 1 reference
+    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get());
+    ASSERT_EQ(1, subject.getNode()->usage);
+
+    // ensure is resource has 1 reference
+    Resource is = Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()); // is smad3
+    ASSERT_EQ(1, is.getNode()->usage);
+
+    // ensure is ispartof has 1 reference per location
+    std::vector<Resource> ispartof;
+    ispartof.push_back(std::move(
+            Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:72564").get()
+                    )));
+    ispartof.push_back(std::move(
+                    Resource::fromRawPtr(LibrdfNode::fromUriString("fma:FMA:63877").get())
+            ));
+    ASSERT_EQ(1, ispartof[0].getNode()->usage);
+    ASSERT_EQ(1, ispartof[1].getNode()->usage);
+
+    PhysicalEntity physicalEntity(
+            model.get(),
+            subject,
+            property,
+            is, ispartof
+    );
+
+    Triples triples = physicalEntity.toTriples();
+//    // unpack triples by move for testing (pop removes from back)
+    Triple triple5 = triples.pop();
+    Triple triple4 = triples.pop();
+    Triple triple3 = triples.pop();
+    Triple triple2 = triples.pop();
+    Triple triple1 = triples.pop();
+
+    // make sure all triples have a usage count of 1
+    ASSERT_EQ(1, triple1.getStatement()->usage);
+    ASSERT_EQ(1, triple2.getStatement()->usage);
+    ASSERT_EQ(1, triple3.getStatement()->usage);
+    ASSERT_EQ(1, triple4.getStatement()->usage);
+    ASSERT_EQ(1, triple5.getStatement()->usage);
+
+    // subject node is used twice
+    ASSERT_EQ(2, triple1.getSubject()->usage);
+    ASSERT_EQ(1, triple2.getSubject()->usage);
+    ASSERT_EQ(1, triple3.getSubject()->usage);
+    ASSERT_EQ(1, triple4.getSubject()->usage);
+    ASSERT_EQ(1, triple5.getSubject()->usage);
+
+    // All predicate nodes are used once
+    ASSERT_EQ(1, triple1.getPredicate()->usage);
+    ASSERT_EQ(1, triple2.getPredicate()->usage);
+    ASSERT_EQ(1, triple3.getPredicate()->usage);
+    ASSERT_EQ(1, triple4.getPredicate()->usage);
+    ASSERT_EQ(1, triple5.getPredicate()->usage);
+
+    // All object nodes are used once
+    ASSERT_EQ(1, triple1.getResource()->usage);
+    ASSERT_EQ(1, triple2.getResource()->usage);
+    ASSERT_EQ(1, triple3.getResource()->usage);
+    ASSERT_EQ(1, triple4.getResource()->usage);
+    ASSERT_EQ(1, triple5.getResource()->usage);
+
+    // and free up resources
+    triple1.freeStatement();
+    triple2.freeStatement();
+    triple3.freeStatement();
+    triple4.freeStatement();
+    triple5.freeStatement();
+    model.freeModel();
+    storage.freeStorage();
+}
+
 TEST_F(PhysicalEntityTests, TestToTripleSize) {
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get());
     Resource is = Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()); // is smad3
@@ -422,6 +502,24 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriples) {
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
+}
+
+
+TEST_F(PhysicalEntityTests, TestToTriplesTwice) {
+    PhysicalEntity physicalEntity(model.get());
+    physicalEntity.setAbout("Metaid0034")
+            .setPhysicalProperty("opb:opb_1234")
+            .setIdentity("obo/PR_000000365")
+            .addLocation("https://identifiers.org/fma/FMA:72564")
+            .addLocation("fma:FMA:63877");
+
+    Triples triples1 = physicalEntity.toTriples();
+    triples1.freeTriples();
+
+    Triples triples2 = physicalEntity.toTriples();
+    triples2.freeTriples();
+
+
 }
 
 

@@ -15,18 +15,6 @@ namespace redland {
 
     class LibrdfUri {
 
-        /*
-         * If the deleter of std::unique_ptr is an empty
-         * class then it can do some optimizations and
-         * not actually store the deleter object.
-         * Otherwise it has to accommodate extra space for
-         * the deleter, which is unnecessary
-         *  https://stackoverflow.com/questions/61969200/what-is-the-purpose-of-wrapping-this-private-deleter-function-in-a-struct/61969274#61969274
-         */
-        struct deleter {
-            void operator()(librdf_uri *ptr);
-        };
-
         librdf_uri *uri_ = nullptr;
 
         /*

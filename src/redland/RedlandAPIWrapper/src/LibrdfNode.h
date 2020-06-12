@@ -36,6 +36,10 @@ namespace redland {
     public:
         LibrdfNode() = default;
 
+        bool operator==(const LibrdfNode &rhs) const;
+
+        bool operator!=(const LibrdfNode &rhs) const;
+
         static void freeNode(librdf_node *node);
 
         void freeNode();

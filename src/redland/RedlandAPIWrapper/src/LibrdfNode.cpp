@@ -235,4 +235,12 @@ namespace redland {
         return *this;
     }
 
+    bool LibrdfNode::operator==(const LibrdfNode &rhs) const {
+        librdf_node_equals(node_, rhs.node_);
+    }
+
+    bool LibrdfNode::operator!=(const LibrdfNode &rhs) const {
+        return !(rhs == *this);
+    }
+
 }

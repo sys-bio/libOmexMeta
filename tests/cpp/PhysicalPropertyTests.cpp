@@ -126,6 +126,57 @@ TEST_F(PhysicalPropertyTests, TestToTriples2) {
     triples.freeTriples();
 }
 
+/*********************************************************************
+ * Test reference counts in the underlying redland library.
+ * Helped me bore into a bug where resource node pointer created by PhysicalPropertyResource
+ * on instantiation was copied to Triple, not given, so that resources were not properly freed.
+ * (run with valgrind or address sanitizer)
+ */
+
+class PhysicalPropertyTestsResourceCounts : public ::testing::Test {
+public:
+    PhysicalPropertyResource resource = PhysicalPropertyResource("OPB/OPB_1234");
+    PhysicalPropertyTestsResourceCounts() {}
+};
+
+TEST_F(PhysicalPropertyTestsResourceCounts, TestResourceUsage) {
+    ASSERT_EQ(1, resource.getNode()->usage);
+    resource.free();
+}
+
+TEST_F(PhysicalPropertyTestsResourceCounts, TestSubjectUsage) {
+    Subject s(LibrdfNode::fromUriString("https://subject.com"));
+    ASSERT_EQ(1, s.getNode()->usage);
+    s.free();
+    resource.free();
+}
+
+TEST_F(PhysicalPropertyTestsResourceCounts, TestIsPropertyOfTriple) {
+    Subject s(LibrdfNode::fromUriString("https://subject.com"));
+    Triple triple1 = resource.isPropertyOfTriple(s, "property");
+    ASSERT_EQ(1, triple1.getStatement()->usage);
+    ASSERT_EQ(1, triple1.getSubject()->usage);
+    ASSERT_EQ(1, triple1.getPredicate()->usage);
+    ASSERT_EQ(1, triple1.getResource()->usage);
+    triple1.freeStatement();
+
+    // The isPropertyOf triple doesn't use the resource node given as argument
+    //  to the constructor. So for this test, we need to free it manually.
+    resource.free();
+}
+
+TEST_F(PhysicalPropertyTestsResourceCounts, TestIsVersionOfTriple) {
+    Triple triple1 = resource.isVersionOfTriple("property");
+    ASSERT_EQ(1, triple1.getStatement()->usage);
+    ASSERT_EQ(1, triple1.getSubject()->usage);
+    ASSERT_EQ(1, triple1.getPredicate()->usage);
+    ASSERT_EQ(1, triple1.getResource()->usage);
+    triple1.freeStatement();
+}
+
+
+
+
 
 
 

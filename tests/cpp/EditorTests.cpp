@@ -85,7 +85,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
     Resource resource = Resource(LibrdfNode::fromUriString("uniprot:P0DP23"));
     Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
     editor.addSingleAnnotation(triple);
-    
+
 
     std::string actual = rdf.toString("rdfxml", "MyModel.rdf");
     std::cout << actual <<
@@ -111,7 +111,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
             std::make_shared<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
             Resource(LibrdfNode::fromUriString("pubmed:12991237"))
     );
-    
+
     std::string actual = rdf.toString("turtle", "file://./annotations.rdf");
     std::string expected = "@base <file://./annotations.rdf> .\n"
                            "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -136,7 +136,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
             Resource(LibrdfNode::fromUriString("pubmed:12991237"))
     );
-    
+
     std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./annotations.rdf\">\n"
@@ -161,7 +161,7 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
             std::make_unique<Predicate>(DCTerm("Description")),
             Resource(LibrdfNode::fromLiteral("Cardiomyocyte cytosolic ATP concentration"))
     );
-    
+
     std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./annotations.rdf\">\n"
@@ -186,7 +186,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
             .setResourceUri("uniprot:PD02635");
 
     editor.addSingleAnnotation(singularAnnotation);
-    
+
     std::string actual = rdf.toString("rdfxml", "MyModel.rdf");
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -259,7 +259,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
             )
     );
 
-    
+
     std::string actual = rdf.toString("rdfxml-abbrev", "file://./annotations.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
@@ -322,7 +322,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
             )
     );
 
-    
+
     std::string actual = rdf.toString("rdfxml-abbrev", "file://./annotations.rdf");
     std::cout << actual <<
               std::endl;
@@ -368,7 +368,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
             .setResourceLiteral("resource");
 
     editor.addSingleAnnotation(singularAnnotation);
-    
+
 
     int expected = 1;
     int actual = rdf.size();
@@ -390,7 +390,7 @@ TEST_F(EditorTests, TestPhysicalEntityBuilder) {
             .addLocation("fma:fma:1234");
 
     editor.addPhysicalEntity(physicalEntity);
-    
+
 
     int expected = 4;
     int actual = rdf.size();
@@ -412,7 +412,7 @@ TEST_F(EditorTests, TestPhysicalForceBuilder) {
             .addSink("sinkMetaid", 1.0, "PhysicalEntity2");
 
     editor.addPhysicalForce(physicalForce);
-    
+
 
     int expected = 8;
     int actual = rdf.size();
@@ -434,7 +434,7 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
             .addMediator("mediatorMetaid", 1.0, "PhysicalEntity3");
 
     editor.addPhysicalProcess(physicalProcess);
-    
+
 
     int expected = 10;
     int actual = rdf.size();
@@ -464,29 +464,6 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
     ASSERT_EQ(expected, actual);
 }
 
-TEST_F(EditorTests, TestRemovePhysicalEntity) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-            SEMSIM_TYPE_SBML);
-
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
-    physicalEntity
-            .setAbout("SemsimMetaid0000")
-            .setPhysicalProperty("opb:opb_1234")
-            .setIdentity("uniprot:PD12345")
-            .addLocation("fma:fma:1234");
-
-    editor.addPhysicalEntity(physicalEntity);
-
-    ASSERT_EQ(4, rdf.size());
-
-    editor.removePhysicalEntity(physicalEntity);
-//
-//    int expected = 0;
-//    int actual = rdf.size();
-//    ASSERT_EQ(expected, actual);
-}
 
 //
 //TEST_F(EditorTests, TestRemovePhysicalForce) {
@@ -540,6 +517,128 @@ TEST_F(EditorTests, TestRemovePhysicalEntity) {
 
 
 
+/*****************************************************************
+ * Test PhysicalEntity memory accountability
+ */
+class EditorTestsPhysicalEntityMemory : public ::testing::Test {
+public:
+
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+
+    EditorTestsPhysicalEntityMemory() {
+        physicalEntity
+                .setAbout("SemsimMetaid0000")
+                .setPhysicalProperty("opb:opb_1234")
+                .setIdentity("uniprot:PD12345")
+                .addLocation("fma:fma:1234");
+
+    };
+};
+
+TEST_F(EditorTestsPhysicalEntityMemory, TestPhysicalEntityAdds4TriplesToModel) {
+
+    editor.addPhysicalEntity(physicalEntity);
+    ASSERT_EQ(4, rdf.size());
+}
+
+TEST_F(EditorTestsPhysicalEntityMemory, TestUnpackTriplesAndAccountForStatements) {
+    Triples triples = physicalEntity.toTriples();
+
+    // unpack triples
+    Triple triple4 = triples.pop();
+    Triple triple3 = triples.pop();
+    Triple triple2 = triples.pop();
+    Triple triple1 = triples.pop();
+
+    // make sure we've emptied the triples object
+    ASSERT_EQ(0, triples.size());
+
+    // check that all statements have 1 usage
+    ASSERT_EQ(1, triple1.getStatement()->usage);
+    ASSERT_EQ(1, triple2.getStatement()->usage);
+    ASSERT_EQ(1, triple3.getStatement()->usage);
+    ASSERT_EQ(1, triple4.getStatement()->usage);
+
+    triple4.freeStatement();
+    triple3.freeStatement();
+    triple2.freeStatement();
+    triple1.freeStatement();
+
+}
+
+TEST_F(EditorTestsPhysicalEntityMemory, TestUnpackTriplesAndAccountForTerms) {
+    Triples triples = physicalEntity.toTriples();
+
+    // unpack triples
+    Triple triple4 = triples.pop();
+    Triple triple3 = triples.pop();
+    Triple triple2 = triples.pop();
+    Triple triple1 = triples.pop();
+
+    // make sure we've emptied the triples object
+    ASSERT_EQ(0, triples.size());
+
+    ASSERT_EQ(2, triple1.getSubject()->usage);
+    ASSERT_EQ(2, triple2.getSubject()->usage);
+    ASSERT_EQ(1, triple3.getSubject()->usage);
+    ASSERT_EQ(1, triple4.getSubject()->usage);
+
+    ASSERT_EQ(1, triple1.getPredicate()->usage);
+    ASSERT_EQ(1, triple2.getPredicate()->usage);
+    ASSERT_EQ(1, triple3.getPredicate()->usage);
+    ASSERT_EQ(1, triple4.getPredicate()->usage);
+
+    ASSERT_EQ(1, triple1.getResource()->usage);
+    ASSERT_EQ(1, triple2.getResource()->usage);
+    ASSERT_EQ(1, triple3.getResource()->usage);
+    ASSERT_EQ(1, triple4.getResource()->usage);
+
+    triple4.freeStatement();
+    triple3.freeStatement();
+    triple2.freeStatement();
+    triple1.freeStatement();
+
+}
+
+/**********************************************
+ * Tests for deleting PhysicalEntity
+ */
+
+class EditorTestsDeletePhysicalEntity : public ::testing::Test {
+public:
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+
+    EditorTestsDeletePhysicalEntity() {
+        physicalEntity
+                .setAbout("SemsimMetaid0000")
+                .setPhysicalProperty("opb:opb_1234")
+                .setIdentity("uniprot:PD12345")
+                .addLocation("fma:fma:1234");
+        editor.addPhysicalEntity(physicalEntity);
+    }
+
+};
+
+TEST_F(EditorTestsDeletePhysicalEntity, TestCanIDeleteFirstTriple) {
+    ASSERT_EQ(4, rdf.size());
+    Triples triples = physicalEntity.toTriples();
+    Triple triple = triples.pop();
+
+    ASSERT_EQ(3, triples.size());
+
+    editor.removeSingleAnnotation(triple);
+    ASSERT_EQ(3, rdf.size());
+
+}
 
 
 
