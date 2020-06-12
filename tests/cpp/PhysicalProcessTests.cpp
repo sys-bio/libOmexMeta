@@ -63,14 +63,13 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
 
     PhysicalProcess process(
             model.get(),
-            subject_metaid,
             physical_property,
             source_participants,
             sink_participants,
             mediator_participants
     );
 
-    std::string actual = process.getSubject().str();
+    std::string actual = process.getSubjectStr();
     std::string expected = "MetaId004";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
@@ -84,7 +83,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
 
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
-    Subject subject_metaid = Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get());
     std::vector<SourceParticipant> source_participants(
             {SourceParticipant(
                     model.get(),
@@ -111,7 +109,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
 
     PhysicalProcess process(
             model.get(),
-            subject_metaid,
             physical_property,
             source_participants,
             sink_participants,
@@ -124,7 +121,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
 
     // Without Triple we need to free stuff manually
     //physical_property.free();
-    subject_metaid.free();
     source_participants[0].free();
     sink_participants[0].free();
     mediator_participants[0].free();
@@ -134,7 +130,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
 TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
     PhysicalProcess process(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
@@ -176,7 +171,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
 TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
     PhysicalProcess process(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
@@ -215,7 +209,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
 TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
     PhysicalProcess process(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("VLV").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(

@@ -11,10 +11,10 @@
 
 namespace semsim {
 
-    PhysicalForce::PhysicalForce(librdf_model *model, Subject metaid,
+    PhysicalForce::PhysicalForce(librdf_model *model,
                                  PhysicalProperty physicalProperty,
                                  Sources sources, Sinks sinks)
-            : PhysicalPhenomenon(model, std::move(metaid), std::move(physicalProperty), PHYSICAL_PROCESS),
+            : PhysicalPhenomenon(model, std::move(physicalProperty), PHYSICAL_PROCESS),
               sources_(std::move(sources)), sinks_(std::move(sinks)) {
 
     }
@@ -52,7 +52,7 @@ namespace semsim {
     }
 
     PhysicalForce &PhysicalForce::setAbout(const std::string &metaid) {
-        about = Subject::fromRawPtr(LibrdfNode::fromUriString(metaid).get());
+        physical_property_.setSubject(metaid);
         return (*this);
     }
 

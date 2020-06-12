@@ -42,12 +42,11 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
     PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
-            subject,
             resource,
             PHYSICAL_ENTITY
     );
     std::string expected = "metaid004";
-    std::string actual = phenomenon.getSubject().str();
+    std::string actual = phenomenon.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
 //    resource.free();
@@ -58,16 +57,11 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
     PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
-            subject,
             resource,
             PHYSICAL_ENTITY
     );
     std::string expected = "metaid004";
-    std::string actual = (const char *) librdf_uri_as_string(
-            librdf_node_get_uri(
-                    phenomenon.getSubject().getNode()
-            )
-    );
+    std::string actual = phenomenon.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
 //    resource.free();
@@ -78,7 +72,6 @@ TEST_F(PhysicalPhenomenonTests, TestPhysicalProperty) {
     PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
-            subject,
             resource,
             PHYSICAL_ENTITY
     );

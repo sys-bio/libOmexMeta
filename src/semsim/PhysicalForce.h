@@ -43,7 +43,7 @@ namespace semsim {
         ~PhysicalForce() = default;
 
 
-        PhysicalForce(librdf_model *model, Subject metaid, PhysicalProperty physicalProperty,
+        PhysicalForce(librdf_model *model, PhysicalProperty physicalProperty,
                       Sources sources, Sinks sinks);
 
         /*
@@ -58,7 +58,7 @@ namespace semsim {
          * as the toTriples method is always used.
          *
          */
-        void free() override;
+        void free();
 
         /*
          * @brief constructor for instantiating a PhysicalForce type composite annotation
