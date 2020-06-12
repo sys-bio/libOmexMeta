@@ -112,5 +112,15 @@ namespace semsim {
         }
     }
 
+    bool PhysicalForce::operator==(const PhysicalForce &rhs) const {
+        return sources_ == rhs.sources_ &&
+               sinks_ == rhs.sinks_ &&
+               physical_property_ == physical_property_;
+    }
+
+    bool PhysicalForce::operator!=(const PhysicalForce &rhs) const {
+        return !(rhs == *this);
+    }
+
 
 }

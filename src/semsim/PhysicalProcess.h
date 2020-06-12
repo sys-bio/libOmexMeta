@@ -22,6 +22,10 @@ namespace semsim {
         Sources sources_;
         Sinks sinks_;
         Mediators mediators_;
+    public:
+        bool operator==(const PhysicalProcess &rhs) const;
+
+        bool operator!=(const PhysicalProcess &rhs) const;
 
     public:
 
