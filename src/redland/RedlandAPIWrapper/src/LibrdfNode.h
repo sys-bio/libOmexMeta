@@ -63,11 +63,13 @@ namespace redland {
         static LibrdfNode fromLiteral(const std::string &literal, const std::string &literal_datatype_uri = "string",
                                       const std::string &xml_language = std::string());
 
+        static LibrdfNode newEmptyNode();
+
         raptor_term_type getRaptorTermType();
 
         static std::string str(librdf_node *node);
 
-        std::string str();
+        std::string str() const;
 
         LibrdfUri getLiteralDatatype();
 
@@ -84,6 +86,7 @@ namespace redland {
         static std::string validateLiteralDatatype(const std::string &literal_datatype_uri);
 
         void setBlankIdentifier(const std::string &identifier);
+
     };
 }
 
