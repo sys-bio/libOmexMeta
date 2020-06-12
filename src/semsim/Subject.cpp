@@ -53,5 +53,14 @@ namespace semsim {
         node_ = node;
     }
 
+    bool Subject::operator==(const Subject &rhs) const {
+        // for now, this will change after I turn node_ back to a LibrdfNode
+        return librdf_node_equals(node_, rhs.node_);
+    }
+
+    bool Subject::operator!=(const Subject &rhs) const {
+        return !(rhs == *this);
+    }
+
 
 }

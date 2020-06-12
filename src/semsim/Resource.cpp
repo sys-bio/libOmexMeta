@@ -46,6 +46,14 @@ namespace semsim {
         node_ = node;
     }
 
+    bool Resource::operator==(const Resource &rhs) const {
+        return librdf_node_equals(node_, rhs.node_);
+    }
+
+    bool Resource::operator!=(const Resource &rhs) const {
+        return !(rhs == *this);
+    }
+
 
 }
 

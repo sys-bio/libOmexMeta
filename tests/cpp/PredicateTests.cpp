@@ -353,6 +353,22 @@ TEST_F(PredicateTests, TestPredicateWithoutSubclass3) {
     predicate->freeNode();
 }
 
+TEST(PredicateTestsNoFixture, TestEquality) {
+    BiomodelsModelQualifier predicate1("isDerivedFrom");
+    BiomodelsModelQualifier predicate2("isDerivedFrom");
+    ASSERT_EQ(predicate1, predicate2);
+    predicate1.freeNode();
+    predicate2.freeNode();
+}
+
+TEST(PredicateTestsNoFixture, TestInequality) {
+    BiomodelsModelQualifier predicate1("isDerivedFrom");
+    BiomodelsModelQualifier predicate2("isDescribedBy");
+    ASSERT_NE(predicate1, predicate2);
+    predicate1.freeNode();
+    predicate2.freeNode();
+}
+
 
 
 

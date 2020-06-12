@@ -176,6 +176,14 @@ namespace semsim {
         }
     }
 
+    bool Predicate::operator==(const Predicate &rhs) const {
+        return librdf_node_equals(node_, rhs.node_);
+    }
+
+    bool Predicate::operator!=(const Predicate &rhs) const {
+        return !(rhs == *this);
+    }
+
 
     BiomodelsBiologyQualifier::BiomodelsBiologyQualifier(const std::string &term) :
             Predicate("http://biomodels.net/biology-qualifiers/", term, "bqbiol") {
