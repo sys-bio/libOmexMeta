@@ -85,7 +85,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
     Resource resource = Resource(LibrdfNode::fromUriString("uniprot:P0DP23"));
     Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
     editor.addSingleAnnotation(triple);
-    //editor.toRDF();
+    
 
     std::string actual = rdf.toString("rdfxml", "MyModel.rdf");
     std::cout << actual <<
@@ -111,7 +111,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
             std::make_shared<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
             Resource(LibrdfNode::fromUriString("pubmed:12991237"))
     );
-    //editor.toRDF();
+    
     std::string actual = rdf.toString("turtle", "file://./annotations.rdf");
     std::string expected = "@base <file://./annotations.rdf> .\n"
                            "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -136,7 +136,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
             Resource(LibrdfNode::fromUriString("pubmed:12991237"))
     );
-    //editor.toRDF();
+    
     std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./annotations.rdf\">\n"
@@ -161,7 +161,7 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
             std::make_unique<Predicate>(DCTerm("Description")),
             Resource(LibrdfNode::fromLiteral("Cardiomyocyte cytosolic ATP concentration"))
     );
-    //editor.toRDF();
+    
     std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./annotations.rdf\">\n"
@@ -186,7 +186,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
             .setResourceUri("uniprot:PD02635");
 
     editor.addSingleAnnotation(singularAnnotation);
-    //editor.toRDF();
+    
     std::string actual = rdf.toString("rdfxml", "MyModel.rdf");
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -221,45 +221,6 @@ TEST_F(EditorTests, TestAddPhysicalEntityToEditor) {
     ASSERT_EQ(expected, actual);
 
 }
-
-//TEST_F(EditorTests, TestAddPhysicalEntityToRDF) {
-//    RDF rdf;
-//    Editor editor = rdf.toEditor(
-//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-//            SEMSIM_TYPE_SBML
-//    );
-//
-//    std::vector<Resource> resources({Resource(LibrdfNode::fromUriString("fma/FMA:9697"))});
-//    PhysicalEntity physicalEntity = PhysicalEntity(
-//            rdf.getModel(),
-//            Subject(LibrdfNode::fromUriString("VLV")),
-//            PhysicalPropertyResource("OPB:OPB_00154"),
-//            Resource(LibrdfNode::fromUriString("fma:FMA:9670")), // is smad3
-//            resources
-//    );
-//    std::shared_ptr<PhysicalEntity> ptr = std::make_shared<PhysicalEntity>(physicalEntity);
-//    editor.addCompositeAnnotation(ptr);
-////
-////    //editor.toRDF();
-////    std::string actual = rdf.toString("rdfxml-abbrev", "file://./annotations.rdf");
-////    std::cout << actual << std::endl;
-////    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-////                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-////                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-////                           "   xml:base=\"file://./annotations.rdf\">\n"
-////                           "  <rdf:Description rdf:about=\"PhysicalEntity0000\">\n"
-////                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/fma/FMA:9670\"/>\n"
-////                           "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:9697\"/>\n"
-////                           "  </rdf:Description>\n"
-////                           "  <rdf:Description rdf:about=\"VLV\">\n"
-////                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
-////                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00154\"/>\n"
-////                           "  </rdf:Description>\n"
-////                           "</rdf:RDF>\n"
-////                           "";
-////    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//    physicalEntity.free();
-//}
 
 
 TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
@@ -298,7 +259,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
             )
     );
 
-    //editor.toRDF();
+    
     std::string actual = rdf.toString("rdfxml-abbrev", "file://./annotations.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
@@ -361,7 +322,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
             )
     );
 
-    //editor.toRDF();
+    
     std::string actual = rdf.toString("rdfxml-abbrev", "file://./annotations.rdf");
     std::cout << actual <<
               std::endl;
@@ -393,28 +354,6 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
 }
 
 
-//TEST_F(EditorTests, TestRemoveSingularAnnotation) {
-//    RDF rdf;
-//    Editor editor = rdf.toEditor(
-//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-//            SEMSIM_TYPE_SBML);
-//
-//    SingularAnnotation singularAnnotation;
-//    singularAnnotation
-//            .setAbout("SemsimMetaid0000")
-//            .setPredicate("bqb", "is")
-//            .setResourceLiteral("resource");
-//
-//    editor.addSingleAnnotation(singularAnnotation);
-//    //editor.toRDF();
-//
-//    ASSERT_EQ(1, rdf.size());
-//    editor.removeSingleAnnotation(singularAnnotation);
-//    int expected = 0;
-//    int actual = rdf.size();
-//    ASSERT_EQ(expected, actual);
-//}
-
 TEST_F(EditorTests, TestSingularAnnotationBuilder) {
     RDF rdf;
     Editor editor = rdf.toEditor(
@@ -429,7 +368,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
             .setResourceLiteral("resource");
 
     editor.addSingleAnnotation(singularAnnotation);
-    //editor.toRDF();
+    
 
     int expected = 1;
     int actual = rdf.size();
@@ -451,7 +390,7 @@ TEST_F(EditorTests, TestPhysicalEntityBuilder) {
             .addLocation("fma:fma:1234");
 
     editor.addPhysicalEntity(physicalEntity);
-    //editor.toRDF();
+    
 
     int expected = 4;
     int actual = rdf.size();
@@ -473,7 +412,7 @@ TEST_F(EditorTests, TestPhysicalForceBuilder) {
             .addSink("sinkMetaid", 1.0, "PhysicalEntity2");
 
     editor.addPhysicalForce(physicalForce);
-    //editor.toRDF();
+    
 
     int expected = 8;
     int actual = rdf.size();
@@ -495,7 +434,7 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
             .addMediator("mediatorMetaid", 1.0, "PhysicalEntity3");
 
     editor.addPhysicalProcess(physicalProcess);
-    //editor.toRDF();
+    
 
     int expected = 10;
     int actual = rdf.size();
@@ -503,30 +442,51 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
 }
 
 
-//TEST_F(EditorTests, TestRemovePhysicalEntity) {
-//    RDF rdf;
-//    Editor editor = rdf.toEditor(
-//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-//            SEMSIM_TYPE_SBML);
+TEST_F(EditorTests, TestRemoveSingularAnnotation) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    SingularAnnotation singularAnnotation;
+    singularAnnotation
+            .setAbout("SemsimMetaid0000")
+            .setPredicate("bqb", "is")
+            .setResourceLiteral("resource");
+
+    editor.addSingleAnnotation(singularAnnotation);
+
+
+    ASSERT_EQ(1, rdf.size());
+    editor.removeSingleAnnotation(singularAnnotation);
+    int expected = 0;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
+
+TEST_F(EditorTests, TestRemovePhysicalEntity) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    physicalEntity
+            .setAbout("SemsimMetaid0000")
+            .setPhysicalProperty("opb:opb_1234")
+            .setIdentity("uniprot:PD12345")
+            .addLocation("fma:fma:1234");
+
+    editor.addPhysicalEntity(physicalEntity);
+
+    ASSERT_EQ(4, rdf.size());
+
+    editor.removePhysicalEntity(physicalEntity);
 //
-//    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
-//    physicalEntity
-//            .setAbout("SemsimMetaid0000")
-//            .setPhysicalProperty("opb:opb_1234")
-//            .setIdentity("uniprot:PD12345")
-//            .addLocation("fma:fma:1234");
-//
-////    editor.addPhysicalEntity(physicalEntity);
-////    //editor.toRDF();
-////
-////    ASSERT_EQ(4, rdf.size());
-////
-////    editor.removePhysicalEntity(physicalEntity);
-////
-////    int expected = 0;
-////    int actual = rdf.size();
-////    ASSERT_EQ(expected, actual);
-//}
+//    int expected = 0;
+//    int actual = rdf.size();
+//    ASSERT_EQ(expected, actual);
+}
 
 //
 //TEST_F(EditorTests, TestRemovePhysicalForce) {
@@ -543,7 +503,7 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
 //            .addSink("sinkMetaid", 1.0, "PhysicalEntity2");
 //
 //    editor.addPhysicalForce(physicalForce);
-//    //editor.toRDF();
+//    
 //
 //    ASSERT_EQ(7, rdf.size());
 //    editor.removePhysicalForce(physicalForce);
@@ -567,7 +527,7 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
 //            .addSink("mediatorMetaid", 1.0, "PhysicalEntity3");
 //
 //    editor.addPhysicalProcess(physicalProcess);
-//    //editor.toRDF();
+//    
 //
 //    ASSERT_EQ(10, rdf.size());
 //    editor.removePhysicalProcess(physicalProcess);

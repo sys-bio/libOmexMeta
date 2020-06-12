@@ -22,7 +22,9 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -31,27 +33,30 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
+
 #include <stdarg.h>
 
 #include "rasqal.h"
 #include "rasqal_internal.h"
 
 
-static const char* const rasqal_update_type_labels[RASQAL_UPDATE_TYPE_LAST + 1] = {
-  "Unknown",
-  "CLEAR",
-  "CREATE",
-  "DROP",
-  "LOAD",
-  "UPDATE",
-  "ADD",
-  "MOVE",
-  "COPY"
+static const char *const rasqal_update_type_labels[RASQAL_UPDATE_TYPE_LAST + 1] = {
+        "Unknown",
+        "CLEAR",
+        "CREATE",
+        "DROP",
+        "LOAD",
+        "UPDATE",
+        "ADD",
+        "MOVE",
+        "COPY"
 };
-
 
 
 /*
@@ -62,16 +67,15 @@ static const char* const rasqal_update_type_labels[RASQAL_UPDATE_TYPE_LAST + 1] 
  * 
  * Return value: pointer to a shared string label
  **/
-const char*
-rasqal_update_type_label(rasqal_update_type type)
-{
-  if(type <= RASQAL_UPDATE_TYPE_UNKNOWN || 
-     type > RASQAL_UPDATE_TYPE_LAST)
-    type = RASQAL_UPDATE_TYPE_UNKNOWN;
+const char *
+rasqal_update_type_label(rasqal_update_type type) {
+    if (type <= RASQAL_UPDATE_TYPE_UNKNOWN ||
+        type > RASQAL_UPDATE_TYPE_LAST)
+        type = RASQAL_UPDATE_TYPE_UNKNOWN;
 
-  return rasqal_update_type_labels[RASQAL_GOOD_CAST(int, type)];
+    return rasqal_update_type_labels[RASQAL_GOOD_CAST(int, type)];
 }
-  
+
 
 /*
  * rasqal_new_update_operation:
@@ -94,41 +98,40 @@ rasqal_update_type_label(rasqal_update_type type)
  *
  * Return value: new update object or NULL on failure
  */
-rasqal_update_operation*
+rasqal_update_operation *
 rasqal_new_update_operation(rasqal_update_type type,
-                            raptor_uri* graph_uri,
-                            raptor_uri* document_uri,
-                            raptor_sequence* insert_templates,
-                            raptor_sequence* delete_templates,
-                            rasqal_graph_pattern* where,
+                            raptor_uri *graph_uri,
+                            raptor_uri *document_uri,
+                            raptor_sequence *insert_templates,
+                            raptor_sequence *delete_templates,
+                            rasqal_graph_pattern *where,
                             int flags,
-                            rasqal_update_graph_applies applies)
-{
-  rasqal_update_operation* update;
-  int is_always_2_args = (type >= RASQAL_UPDATE_TYPE_ADD &&
-                          type <= RASQAL_UPDATE_TYPE_COPY);
+                            rasqal_update_graph_applies applies) {
+    rasqal_update_operation *update;
+    int is_always_2_args = (type >= RASQAL_UPDATE_TYPE_ADD &&
+                            type <= RASQAL_UPDATE_TYPE_COPY);
 
-  if(!is_always_2_args && 
-     type != RASQAL_UPDATE_TYPE_CLEAR) {
-    if(!graph_uri && !document_uri && !insert_templates && !delete_templates &&
-       !where)
-      return NULL;
-  }
-  
-  update = RASQAL_MALLOC(rasqal_update_operation*, sizeof(*update));
-  if(!update)
-    return NULL;
-  
-  update->type = type;
-  update->graph_uri = graph_uri;
-  update->document_uri = document_uri;
-  update->insert_templates = insert_templates;
-  update->delete_templates = delete_templates;
-  update->where = where;
-  update->flags = flags;
-  update->applies = applies;
-  
-  return update;
+    if (!is_always_2_args &&
+        type != RASQAL_UPDATE_TYPE_CLEAR) {
+        if (!graph_uri && !document_uri && !insert_templates && !delete_templates &&
+            !where)
+            return NULL;
+    }
+
+    update = RASQAL_MALLOC(rasqal_update_operation*, sizeof(*update));
+    if (!update)
+        return NULL;
+
+    update->type = type;
+    update->graph_uri = graph_uri;
+    update->document_uri = document_uri;
+    update->insert_templates = insert_templates;
+    update->delete_templates = delete_templates;
+    update->where = where;
+    update->flags = flags;
+    update->applies = applies;
+
+    return update;
 }
 
 
@@ -140,82 +143,80 @@ rasqal_new_update_operation(rasqal_update_type type,
  *
  */
 void
-rasqal_free_update_operation(rasqal_update_operation *update)
-{
-  if(!update)
-    return;
-  
-  if(update->graph_uri)
-    raptor_free_uri(update->graph_uri);
-  if(update->document_uri)
-    raptor_free_uri(update->document_uri);
-  if(update->insert_templates)
-    raptor_free_sequence(update->insert_templates);
-  if(update->delete_templates)
-    raptor_free_sequence(update->delete_templates);
-  if(update->where)
-    rasqal_free_graph_pattern(update->where);
+rasqal_free_update_operation(rasqal_update_operation *update) {
+    if (!update)
+        return;
 
-  RASQAL_FREE(update_operation, update);
+    if (update->graph_uri)
+        raptor_free_uri(update->graph_uri);
+    if (update->document_uri)
+        raptor_free_uri(update->document_uri);
+    if (update->insert_templates)
+        raptor_free_sequence(update->insert_templates);
+    if (update->delete_templates)
+        raptor_free_sequence(update->delete_templates);
+    if (update->where)
+        rasqal_free_graph_pattern(update->where);
+
+    RASQAL_FREE(update_operation, update);
 }
 
 
 int
-rasqal_update_operation_print(rasqal_update_operation *update, FILE* stream)
-{
-  int is_always_2_args = (update->type >= RASQAL_UPDATE_TYPE_ADD &&
-                          update->type <= RASQAL_UPDATE_TYPE_COPY);
-  
-  fputs("update-operation(type=", stream);
-  fputs(rasqal_update_type_label(update->type), stream);
-  if(update->graph_uri || is_always_2_args) {
-    fputs(", graph-uri=", stream);
-    if(update->graph_uri)
-      raptor_uri_print(update->graph_uri, stream);
-    else
-      fputs("default", stream);
-  }
-  if(update->document_uri || is_always_2_args) {
-    fputs(", document-uri=", stream);
-    if(update->document_uri)
-      raptor_uri_print(update->document_uri, stream);
-    else
-      fputs("default", stream);
-  }
+rasqal_update_operation_print(rasqal_update_operation *update, FILE *stream) {
+    int is_always_2_args = (update->type >= RASQAL_UPDATE_TYPE_ADD &&
+                            update->type <= RASQAL_UPDATE_TYPE_COPY);
 
-  switch(update->applies) {
-    case RASQAL_UPDATE_GRAPH_ONE:
-      fputs(", applies: one graph", stream);
-      break;
-      
-    case RASQAL_UPDATE_GRAPH_DEFAULT:
-      fputs(", applies: default", stream);
-      break;
-      
-    case RASQAL_UPDATE_GRAPH_NAMED:
-      fputs(", applies: named", stream);
-      break;
-      
-    case RASQAL_UPDATE_GRAPH_ALL:
-      fputs(", applies: all", stream);
-      break;
-  }
-  
-  if(update->insert_templates) {
-    fputs(", insert-templates=", stream);
-    raptor_sequence_print(update->insert_templates, stream);
-  }
-  if(update->delete_templates) {
-    fputs(", delete-templates=", stream);
-    raptor_sequence_print(update->delete_templates, stream);
-  }
-  if(update->where) {
-    fputs(", where=", stream);
-    rasqal_graph_pattern_print(update->where, stream);
-  }
-  fputc(')', stream);
+    fputs("update-operation(type=", stream);
+    fputs(rasqal_update_type_label(update->type), stream);
+    if (update->graph_uri || is_always_2_args) {
+        fputs(", graph-uri=", stream);
+        if (update->graph_uri)
+            raptor_uri_print(update->graph_uri, stream);
+        else
+            fputs("default", stream);
+    }
+    if (update->document_uri || is_always_2_args) {
+        fputs(", document-uri=", stream);
+        if (update->document_uri)
+            raptor_uri_print(update->document_uri, stream);
+        else
+            fputs("default", stream);
+    }
 
-  return 0;
+    switch (update->applies) {
+        case RASQAL_UPDATE_GRAPH_ONE:
+            fputs(", applies: one graph", stream);
+            break;
+
+        case RASQAL_UPDATE_GRAPH_DEFAULT:
+            fputs(", applies: default", stream);
+            break;
+
+        case RASQAL_UPDATE_GRAPH_NAMED:
+            fputs(", applies: named", stream);
+            break;
+
+        case RASQAL_UPDATE_GRAPH_ALL:
+            fputs(", applies: all", stream);
+            break;
+    }
+
+    if (update->insert_templates) {
+        fputs(", insert-templates=", stream);
+        raptor_sequence_print(update->insert_templates, stream);
+    }
+    if (update->delete_templates) {
+        fputs(", delete-templates=", stream);
+        raptor_sequence_print(update->delete_templates, stream);
+    }
+    if (update->where) {
+        fputs(", where=", stream);
+        rasqal_graph_pattern_print(update->where, stream);
+    }
+    fputc(')', stream);
+
+    return 0;
 }
 
 

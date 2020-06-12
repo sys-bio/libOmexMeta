@@ -45,6 +45,7 @@
 #endif
 
 #include <inttypes.h>
+
 typedef int8_t flex_int8_t;
 typedef uint8_t flex_uint8_t;
 typedef int16_t flex_int16_t;
@@ -248,6 +249,7 @@ void turtle_lexer_free(void *, yyscan_t yyscanner);
  * The user has a chance to override it with an option.
  */
 #include <unistd.h>
+
 #endif
 #endif
 

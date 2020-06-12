@@ -37,7 +37,7 @@ extern "C" {
  * and librdf_storage_set_instance() functions.  The instance handle
  * should be set in the #librdf_storage_factory init factory method.
  */
-typedef void* librdf_storage_instance;
+typedef void *librdf_storage_instance;
 
 
 /**
@@ -116,130 +116,132 @@ typedef void* librdf_storage_instance;
  * A Storage Factory
  */
 struct librdf_storage_factory_s {
-  /* Interface version */
-  int version;
+    /* Interface version */
+    int version;
 
-  /* Name (ID) of this storage */
-  char* name;
+    /* Name (ID) of this storage */
+    char *name;
 
-  /* Label of this storage */
-  char* label;
+    /* Label of this storage */
+    char *label;
 
-  /* The rest of this structure is populated by the storage-specific
-   * register function 
-   */
+    /* The rest of this structure is populated by the storage-specific
+     * register function
+     */
 
-  /* Create a new storage. */
-  int (*init)(librdf_storage* storage, const char *name, librdf_hash* options);
-  
-  /* Copy a storage. */
-  int (*clone)(librdf_storage* new_storage, librdf_storage* old_storage);
+    /* Create a new storage. */
+    int (*init)(librdf_storage *storage, const char *name, librdf_hash *options);
 
-  /* Destroy a storage. */
-  void (*terminate)(librdf_storage* storage);
-  
-  /* Make storage be associated with model */
-  int (*open)(librdf_storage* storage, librdf_model* model);
-  
-  /* Close storage/model context */
-  int (*close)(librdf_storage* storage);
-  
-  /* Return the number of statements in the storage for model */
-  int (*size)(librdf_storage* storage);
-  
-  /* Add a statement to the storage from the given model */
-  int (*add_statement)(librdf_storage* storage, librdf_statement* statement);
-  
-  /* Add a statement to the storage from the given model */
-  int (*add_statements)(librdf_storage* storage, librdf_stream* statement_stream);
-  
-  /* Remove a statement from the storage */
-  int (*remove_statement)(librdf_storage* storage, librdf_statement* statement);
-  
-  /* Check if statement is in storage */
-  int (*contains_statement)(librdf_storage* storage, librdf_statement* statement);
-  
-  /* Check for [node, property, ?] */
-  int (*has_arc_in)(librdf_storage *storage, librdf_node *node, librdf_node *property);
-  
-  /* Check for [?, property, node] */
-  int (*has_arc_out)(librdf_storage *storage, librdf_node *node, librdf_node *property);
-  
-  /* Serialise the model in storage */
-  librdf_stream* (*serialise)(librdf_storage* storage);
-  
-  /* Return a stream of triples matching a triple pattern */
-  librdf_stream* (*find_statements)(librdf_storage* storage, librdf_statement* statement);
+    /* Copy a storage. */
+    int (*clone)(librdf_storage *new_storage, librdf_storage *old_storage);
 
-  /* Return a stream of triples matching a triple pattern with some options. */
-  librdf_stream* (*find_statements_with_options)(librdf_storage* storage, librdf_statement* statement, librdf_node* context_node, librdf_hash* options);
+    /* Destroy a storage. */
+    void (*terminate)(librdf_storage *storage);
 
-  /* Return a list of Nodes marching given arc, target */
-  librdf_iterator* (*find_sources)(librdf_storage* storage, librdf_node *arc, librdf_node *target);
+    /* Make storage be associated with model */
+    int (*open)(librdf_storage *storage, librdf_model *model);
 
-  /* Return a list of Nodes marching given source, target */
-  librdf_iterator* (*find_arcs)(librdf_storage* storage, librdf_node *src, librdf_node *target);
+    /* Close storage/model context */
+    int (*close)(librdf_storage *storage);
 
-  /* Return a list of Nodes marching given source, target */
-  librdf_iterator* (*find_targets)(librdf_storage* storage, librdf_node *src, librdf_node *target);
+    /* Return the number of statements in the storage for model */
+    int (*size)(librdf_storage *storage);
 
-  /** Return list of properties to a node (i.e. with node as the object) */
-  librdf_iterator* (*get_arcs_in)(librdf_storage *storage, librdf_node *node);
-  
-  /* Return list of properties from a node (i.e. with node as the subject) */
-  librdf_iterator* (*get_arcs_out)(librdf_storage *storage, librdf_node *node);
+    /* Add a statement to the storage from the given model */
+    int (*add_statement)(librdf_storage *storage, librdf_statement *statement);
 
-  /* Add a statement to the storage from the context */
-  int (*context_add_statement)(librdf_storage* storage, librdf_node* context, librdf_statement *statement);
-  
-  /* Remove a statement from a context */
-  int (*context_remove_statement)(librdf_storage* storage, librdf_node* context, librdf_statement *statement);
+    /* Add a statement to the storage from the given model */
+    int (*add_statements)(librdf_storage *storage, librdf_stream *statement_stream);
 
-  /* Serialise statements in a context */
-  librdf_stream* (*context_serialise)(librdf_storage* storage, librdf_node* context);
+    /* Remove a statement from the storage */
+    int (*remove_statement)(librdf_storage *storage, librdf_statement *statement);
 
-  /* Synchronise to underlying storage */
-  int (*sync)(librdf_storage* storage);
+    /* Check if statement is in storage */
+    int (*contains_statement)(librdf_storage *storage, librdf_statement *statement);
 
-  /* Add statements to a context */
-  int (*context_add_statements)(librdf_storage* storage, librdf_node* context, librdf_stream *stream);
+    /* Check for [node, property, ?] */
+    int (*has_arc_in)(librdf_storage *storage, librdf_node *node, librdf_node *property);
 
-  /* Remove statements from a context */
-  int (*context_remove_statements)(librdf_storage* storage, librdf_node* context);
+    /* Check for [?, property, node] */
+    int (*has_arc_out)(librdf_storage *storage, librdf_node *node, librdf_node *property);
 
-  /* Search for statement in a context */
-  librdf_stream* (*find_statements_in_context)(librdf_storage* storage,
-      librdf_statement* statement, librdf_node* context_node);
+    /* Serialise the model in storage */
+    librdf_stream *(*serialise)(librdf_storage *storage);
 
-  /* Return an iterator of context nodes */
-  librdf_iterator* (*get_contexts)(librdf_storage* storage);
+    /* Return a stream of triples matching a triple pattern */
+    librdf_stream *(*find_statements)(librdf_storage *storage, librdf_statement *statement);
 
-  /* Get a feature */
-  librdf_node* (*get_feature)(librdf_storage* storaage, librdf_uri* feature);
-  
-  /* Set a feature */
-  int (*set_feature)(librdf_storage* storage, librdf_uri* feature, librdf_node* value);
+    /* Return a stream of triples matching a triple pattern with some options. */
+    librdf_stream *
+    (*find_statements_with_options)(librdf_storage *storage, librdf_statement *statement, librdf_node *context_node,
+                                    librdf_hash *options);
 
-  /* Begin a transaction */
-  int (*transaction_start)(librdf_storage* storage);
-  
-  /* Begin a transaction with opaque data handle */
-  int (*transaction_start_with_handle)(librdf_storage* storage, void* handle);
-  
-  /* Commit a transaction */
-  int (*transaction_commit)(librdf_storage* storage);
-  
-  /* Rollback a transaction */
-  int (*transaction_rollback)(librdf_storage* storage);
+    /* Return a list of Nodes marching given arc, target */
+    librdf_iterator *(*find_sources)(librdf_storage *storage, librdf_node *arc, librdf_node *target);
 
-  /* Get opaque data handle passed to transaction_start_with_handle */
-  void* (*transaction_get_handle)(librdf_storage* storage);
+    /* Return a list of Nodes marching given source, target */
+    librdf_iterator *(*find_arcs)(librdf_storage *storage, librdf_node *src, librdf_node *target);
 
-  /** Storage engine supports querying - OPTIONAL */
-  int (*supports_query)(librdf_storage* storage, librdf_query *query);
+    /* Return a list of Nodes marching given source, target */
+    librdf_iterator *(*find_targets)(librdf_storage *storage, librdf_node *src, librdf_node *target);
 
-  /** Storage engine returns query results - OPTIONAL */
-  librdf_query_results* (*query_execute)(librdf_storage* storage, librdf_query *query);
+    /** Return list of properties to a node (i.e. with node as the object) */
+    librdf_iterator *(*get_arcs_in)(librdf_storage *storage, librdf_node *node);
+
+    /* Return list of properties from a node (i.e. with node as the subject) */
+    librdf_iterator *(*get_arcs_out)(librdf_storage *storage, librdf_node *node);
+
+    /* Add a statement to the storage from the context */
+    int (*context_add_statement)(librdf_storage *storage, librdf_node *context, librdf_statement *statement);
+
+    /* Remove a statement from a context */
+    int (*context_remove_statement)(librdf_storage *storage, librdf_node *context, librdf_statement *statement);
+
+    /* Serialise statements in a context */
+    librdf_stream *(*context_serialise)(librdf_storage *storage, librdf_node *context);
+
+    /* Synchronise to underlying storage */
+    int (*sync)(librdf_storage *storage);
+
+    /* Add statements to a context */
+    int (*context_add_statements)(librdf_storage *storage, librdf_node *context, librdf_stream *stream);
+
+    /* Remove statements from a context */
+    int (*context_remove_statements)(librdf_storage *storage, librdf_node *context);
+
+    /* Search for statement in a context */
+    librdf_stream *(*find_statements_in_context)(librdf_storage *storage,
+                                                 librdf_statement *statement, librdf_node *context_node);
+
+    /* Return an iterator of context nodes */
+    librdf_iterator *(*get_contexts)(librdf_storage *storage);
+
+    /* Get a feature */
+    librdf_node *(*get_feature)(librdf_storage *storaage, librdf_uri *feature);
+
+    /* Set a feature */
+    int (*set_feature)(librdf_storage *storage, librdf_uri *feature, librdf_node *value);
+
+    /* Begin a transaction */
+    int (*transaction_start)(librdf_storage *storage);
+
+    /* Begin a transaction with opaque data handle */
+    int (*transaction_start_with_handle)(librdf_storage *storage, void *handle);
+
+    /* Commit a transaction */
+    int (*transaction_commit)(librdf_storage *storage);
+
+    /* Rollback a transaction */
+    int (*transaction_rollback)(librdf_storage *storage);
+
+    /* Get opaque data handle passed to transaction_start_with_handle */
+    void *(*transaction_get_handle)(librdf_storage *storage);
+
+    /** Storage engine supports querying - OPTIONAL */
+    int (*supports_query)(librdf_storage *storage, librdf_query *query);
+
+    /** Storage engine returns query results - OPTIONAL */
+    librdf_query_results *(*query_execute)(librdf_storage *storage, librdf_query *query);
 };
 
 

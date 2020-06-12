@@ -689,7 +689,8 @@ int
 librdf_model_remove_statement(librdf_model *model, librdf_statement *statement) {
     LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
     LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
-    printf("statement with objcet: %s has statement usage: %d\n", librdf_uri_as_string(statement->object->value.uri), statement->usage);
+    printf("statement with objcet: %s has statement usage: %d\n", librdf_uri_as_string(statement->object->value.uri),
+           statement->usage);
     if (!librdf_statement_is_complete(statement))
         return 1;
 

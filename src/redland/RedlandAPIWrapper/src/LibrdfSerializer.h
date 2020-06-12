@@ -54,7 +54,7 @@ namespace redland {
 
         void setFeature(const std::string &ns, const std::string &prefix) const;
 
-        std::string toString(const std::string& uri, const LibrdfModel &model);
+        std::string toString(const std::string &uri, const LibrdfModel &model);
 
         void freeSerializer();
     };

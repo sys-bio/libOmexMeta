@@ -23,7 +23,9 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -32,9 +34,13 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
+
 #include <stdarg.h>
 
 #include "rasqal.h"
@@ -44,20 +50,18 @@
 #define DEBUG_FH stderr
 
 
-typedef struct 
-{ 
-  int is_distinct;
-  int compare_flags;
-  raptor_sequence* order_conditions_sequence;
+typedef struct {
+    int is_distinct;
+    int compare_flags;
+    raptor_sequence *order_conditions_sequence;
 } rowsort_compare_data;
 
 
 static void
-rasqal_engine_rowsort_free_compare_data(const void* user_data)
-{
-  rowsort_compare_data* rcd = (rowsort_compare_data*)user_data;
+rasqal_engine_rowsort_free_compare_data(const void *user_data) {
+    rowsort_compare_data *rcd = (rowsort_compare_data *) user_data;
 
-  RASQAL_FREE(rowsort_compare_data, rcd);
+    RASQAL_FREE(rowsort_compare_data, rcd);
 }
 
 
@@ -74,53 +78,51 @@ rasqal_engine_rowsort_free_compare_data(const void* user_data)
  * Return value: <0, 0 or >1 comparison
  */
 static int
-rasqal_engine_rowsort_row_compare(void* user_data, const void *a, const void *b)
-{
-  rasqal_row* row_a;
-  rasqal_row* row_b;
-  rowsort_compare_data* rcd;
-  int result = 0;
-  rcd = (rowsort_compare_data*)user_data;
-  row_a = (rasqal_row*)a;
-  row_b = (rasqal_row*)b;
+rasqal_engine_rowsort_row_compare(void *user_data, const void *a, const void *b) {
+    rasqal_row *row_a;
+    rasqal_row *row_b;
+    rowsort_compare_data *rcd;
+    int result = 0;
+    rcd = (rowsort_compare_data *) user_data;
+    row_a = (rasqal_row *) a;
+    row_b = (rasqal_row *) b;
 
-  if(rcd->is_distinct) {
-    result = !rasqal_literal_array_equals(row_a->values, row_b->values,
-                                          row_a->size);
-    
-    if(!result)
-      /* duplicate, so return that */
-      return 0;
-  }
-  
-  /* now order it */
-  if(rcd->order_conditions_sequence)
-    result = rasqal_literal_array_compare(row_a->order_values,
-                                          row_b->order_values,
-                                          rcd->order_conditions_sequence,
-                                          row_a->order_size,
-                                          rcd->compare_flags);
+    if (rcd->is_distinct) {
+        result = !rasqal_literal_array_equals(row_a->values, row_b->values,
+                                              row_a->size);
+
+        if (!result)
+            /* duplicate, so return that */
+            return 0;
+    }
+
+    /* now order it */
+    if (rcd->order_conditions_sequence)
+        result = rasqal_literal_array_compare(row_a->order_values,
+                                              row_b->order_values,
+                                              rcd->order_conditions_sequence,
+                                              row_a->order_size,
+                                              rcd->compare_flags);
 
 
-  /* still equal?  make sort stable by using the original order */
-  if(!result) {
-    result = row_a->offset - row_b->offset;
-    RASQAL_DEBUG2("Got equality result so using offsets, returning %d\n",
-                  result);
-  }
-  
-  return result;
+    /* still equal?  make sort stable by using the original order */
+    if (!result) {
+        result = row_a->offset - row_b->offset;
+        RASQAL_DEBUG2("Got equality result so using offsets, returning %d\n",
+                      result);
+    }
+
+    return result;
 }
 
 
 static int
-rasqal_engine_rowsort_map_print_row(void *object, FILE *fh)
-{
-  if(object)
-    rasqal_row_print((rasqal_row*)object, fh);
-  else
-    fputs("NULL", fh);
-  return 0;
+rasqal_engine_rowsort_map_print_row(void *object, FILE *fh) {
+    if (object)
+        rasqal_row_print((rasqal_row *) object, fh);
+    else
+        fputs("NULL", fh);
+    return 0;
 }
 
 
@@ -131,31 +133,30 @@ rasqal_engine_rowsort_map_print_row(void *object, FILE *fh)
  * INTERNAL - create a new map for sorting rows
  *
  */
-rasqal_map*
+rasqal_map *
 rasqal_engine_new_rowsort_map(int is_distinct, int compare_flags,
-                              raptor_sequence* order_conditions_sequence)
-{
-  rowsort_compare_data* rcd;
+                              raptor_sequence *order_conditions_sequence) {
+    rowsort_compare_data *rcd;
 
-  rcd = RASQAL_MALLOC(rowsort_compare_data*, sizeof(*rcd));
-  if(!rcd)
-    return NULL;
-  
-  rcd->is_distinct = is_distinct;
-  if(is_distinct) {
-    compare_flags &= ~RASQAL_COMPARE_XQUERY;
-    compare_flags |= RASQAL_COMPARE_RDF;
-  }
-  rcd->compare_flags = compare_flags;
-  rcd->order_conditions_sequence = order_conditions_sequence;
-  
-  return rasqal_new_map(rasqal_engine_rowsort_row_compare, rcd,
-                        (raptor_data_free_handler)rasqal_engine_rowsort_free_compare_data,
-                        (raptor_data_free_handler)rasqal_free_row,
-                        (raptor_data_free_handler)rasqal_free_row,
-                        rasqal_engine_rowsort_map_print_row,
-                        NULL,
-                        0);
+    rcd = RASQAL_MALLOC(rowsort_compare_data*, sizeof(*rcd));
+    if (!rcd)
+        return NULL;
+
+    rcd->is_distinct = is_distinct;
+    if (is_distinct) {
+        compare_flags &= ~RASQAL_COMPARE_XQUERY;
+        compare_flags |= RASQAL_COMPARE_RDF;
+    }
+    rcd->compare_flags = compare_flags;
+    rcd->order_conditions_sequence = order_conditions_sequence;
+
+    return rasqal_new_map(rasqal_engine_rowsort_row_compare, rcd,
+                          (raptor_data_free_handler) rasqal_engine_rowsort_free_compare_data,
+                          (raptor_data_free_handler) rasqal_free_row,
+                          (raptor_data_free_handler) rasqal_free_row,
+                          rasqal_engine_rowsort_map_print_row,
+                          NULL,
+                          0);
 }
 
 
@@ -170,42 +171,39 @@ rasqal_engine_new_rowsort_map(int is_distinct, int compare_flags,
  * return value: non-0 if the row was a duplicate (and not added)
  */
 int
-rasqal_engine_rowsort_map_add_row(rasqal_map* map, rasqal_row* row)
-{
-  /* map. after this, row is owned by map */
-  if(!rasqal_map_add_kv(map, row, NULL))
-    return 0;
+rasqal_engine_rowsort_map_add_row(rasqal_map *map, rasqal_row *row) {
+    /* map. after this, row is owned by map */
+    if (!rasqal_map_add_kv(map, row, NULL))
+        return 0;
 
-  /* duplicate, and not added so delete it */
+    /* duplicate, and not added so delete it */
 #ifdef RASQAL_DEBUG
-  RASQAL_DEBUG1("Got duplicate row ");
-  rasqal_row_print(row, DEBUG_FH);
-  fputc('\n', DEBUG_FH);
+    RASQAL_DEBUG1("Got duplicate row ");
+    rasqal_row_print(row, DEBUG_FH);
+    fputc('\n', DEBUG_FH);
 #endif
-  rasqal_free_row(row);
+    rasqal_free_row(row);
 
-  return 1;
+    return 1;
 }
 
 
 static void
 rasqal_engine_rowsort_map_add_to_sequence(void *key, void *value,
-                                          void *user_data)
-{
-  rasqal_row* row;
-  row = rasqal_new_row_from_row((rasqal_row*)key);
-  raptor_sequence_push((raptor_sequence*)user_data, row);
+                                          void *user_data) {
+    rasqal_row *row;
+    row = rasqal_new_row_from_row((rasqal_row *) key);
+    raptor_sequence_push((raptor_sequence *) user_data, row);
 }
 
 
-raptor_sequence*
-rasqal_engine_rowsort_map_to_sequence(rasqal_map* map, raptor_sequence* seq)
-{
+raptor_sequence *
+rasqal_engine_rowsort_map_to_sequence(rasqal_map *map, raptor_sequence *seq) {
 
-  /* do sort/distinct: walk map in order, adding rows to seq */
-  rasqal_map_visit(map, rasqal_engine_rowsort_map_add_to_sequence, (void*)seq);
+    /* do sort/distinct: walk map in order, adding rows to seq */
+    rasqal_map_visit(map, rasqal_engine_rowsort_map_add_to_sequence, (void *) seq);
 
-  return seq;
+    return seq;
 }
 
 
@@ -220,33 +218,32 @@ rasqal_engine_rowsort_map_to_sequence(rasqal_map* map, raptor_sequence* seq)
  * Return value: non-0 on failure 
  */
 int
-rasqal_engine_rowsort_calculate_order_values(rasqal_query* query,
-                                             raptor_sequence* order_seq,
-                                             rasqal_row* row)
-{
-  int i;
-  
-  if(!row->order_size)
-    return 1;
-  
-  for(i = 0; i < row->order_size; i++) {
-    rasqal_expression* e;
-    rasqal_literal *l;
-    int error = 0;
-    
-    e = (rasqal_expression*)raptor_sequence_get_at(order_seq, i);
-    l = rasqal_expression_evaluate2(e, query->eval_context, &error);
+rasqal_engine_rowsort_calculate_order_values(rasqal_query *query,
+                                             raptor_sequence *order_seq,
+                                             rasqal_row *row) {
+    int i;
 
-    if(row->order_values[i])
-      rasqal_free_literal(row->order_values[i]);
+    if (!row->order_size)
+        return 1;
 
-    if(error)
-      row->order_values[i] = NULL;
-    else {
-      row->order_values[i] = rasqal_new_literal_from_literal(rasqal_literal_value(l));
-      rasqal_free_literal(l);
+    for (i = 0; i < row->order_size; i++) {
+        rasqal_expression *e;
+        rasqal_literal *l;
+        int error = 0;
+
+        e = (rasqal_expression *) raptor_sequence_get_at(order_seq, i);
+        l = rasqal_expression_evaluate2(e, query->eval_context, &error);
+
+        if (row->order_values[i])
+            rasqal_free_literal(row->order_values[i]);
+
+        if (error)
+            row->order_values[i] = NULL;
+        else {
+            row->order_values[i] = rasqal_new_literal_from_literal(rasqal_literal_value(l));
+            rasqal_free_literal(l);
+        }
     }
-  }
-  
-  return 0;
+
+    return 0;
 }

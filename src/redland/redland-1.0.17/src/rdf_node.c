@@ -23,7 +23,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -32,14 +34,16 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <redland.h>
 /* needed for utf8 functions and definition of 'byte' */
 #include <rdf_utf8.h>
-
 
 
 #ifndef STANDALONE
@@ -52,8 +56,7 @@
  * 
  **/
 void
-librdf_init_node(librdf_world* world)
-{
+librdf_init_node(librdf_world *world) {
 }
 
 
@@ -65,8 +68,7 @@ librdf_init_node(librdf_world* world)
  *
  **/
 void
-librdf_finish_node(librdf_world* world)
-{
+librdf_finish_node(librdf_world *world) {
 }
 
 
@@ -84,14 +86,13 @@ librdf_finish_node(librdf_world* world)
  *
  * Return value: a new #librdf_node object or NULL on failure
  **/
-librdf_node*
-librdf_new_node(librdf_world *world)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
+librdf_node *
+librdf_new_node(librdf_world *world) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  return librdf_new_node_from_blank_identifier(world, (unsigned char*)NULL);
+    return librdf_new_node_from_blank_identifier(world, (unsigned char *) NULL);
 }
 
 
@@ -104,15 +105,14 @@ librdf_new_node(librdf_world *world)
  * 
  * Return value: a new #librdf_node object or NULL on failure
  **/
-librdf_node*
+librdf_node *
 librdf_new_node_from_uri_string(librdf_world *world,
-                                const unsigned char *uri_string)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
+                                const unsigned char *uri_string) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  return raptor_new_term_from_uri_string(world->raptor_world_ptr, uri_string);
+    return raptor_new_term_from_uri_string(world->raptor_world_ptr, uri_string);
 }
 
 
@@ -126,17 +126,16 @@ librdf_new_node_from_uri_string(librdf_world *world,
  * 
  * Return value: a new #librdf_node object or NULL on failure
  **/
-librdf_node*
-librdf_new_node_from_counted_uri_string(librdf_world *world, 
+librdf_node *
+librdf_new_node_from_counted_uri_string(librdf_world *world,
                                         const unsigned char *uri_string,
-                                        size_t len) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
+                                        size_t len) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  return raptor_new_term_from_counted_uri_string(world->raptor_world_ptr, 
-                                                 uri_string, len);
+    return raptor_new_term_from_counted_uri_string(world->raptor_world_ptr,
+                                                   uri_string, len);
 }
 
 
@@ -151,14 +150,13 @@ librdf_new_node_from_counted_uri_string(librdf_world *world,
  *
  * Return value: a new #librdf_node object or NULL on failure
  **/
-librdf_node*
-librdf_new_node_from_uri(librdf_world *world, librdf_uri *uri)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
+librdf_node *
+librdf_new_node_from_uri(librdf_world *world, librdf_uri *uri) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  return raptor_new_term_from_uri(world->raptor_world_ptr, uri);
+    return raptor_new_term_from_uri(world->raptor_world_ptr, uri);
 }
 
 
@@ -172,29 +170,28 @@ librdf_new_node_from_uri(librdf_world *world, librdf_uri *uri)
  *
  * Return value: a new #librdf_node object or NULL on failure
  **/
-librdf_node*
+librdf_node *
 librdf_new_node_from_uri_local_name(librdf_world *world,
                                     librdf_uri *uri,
-                                    const unsigned char *local_name)
-{
-  raptor_uri *new_uri;
-  librdf_node* node;
+                                    const unsigned char *local_name) {
+    raptor_uri *new_uri;
+    librdf_node *node;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, raptor_uri, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(local_name, string, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, raptor_uri, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(local_name, string, NULL);
 
-  new_uri = raptor_new_uri_from_uri_local_name(world->raptor_world_ptr,
-                                               uri, local_name);
-  if(!new_uri)
-    return NULL;
+    new_uri = raptor_new_uri_from_uri_local_name(world->raptor_world_ptr,
+                                                 uri, local_name);
+    if (!new_uri)
+        return NULL;
 
-  node = raptor_new_term_from_uri(world->raptor_world_ptr, new_uri);
-  raptor_free_uri(new_uri);
-  return node;
+    node = raptor_new_term_from_uri(world->raptor_world_ptr, new_uri);
+    raptor_free_uri(new_uri);
+    return node;
 }
 
 
@@ -209,27 +206,26 @@ librdf_new_node_from_uri_local_name(librdf_world *world,
  * 
  * Return value: a new #librdf_node object or NULL on failure
  **/
-librdf_node*
+librdf_node *
 librdf_new_node_from_normalised_uri_string(librdf_world *world,
                                            const unsigned char *uri_string,
                                            librdf_uri *source_uri,
-                                           librdf_uri *base_uri)
-{
-  librdf_uri* new_uri;
-  librdf_node* node;
+                                           librdf_uri *base_uri) {
+    librdf_uri *new_uri;
+    librdf_node *node;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
-  
-  librdf_world_open(world);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
 
-  new_uri = librdf_new_uri_normalised_to_base(uri_string,
-                                              source_uri, base_uri);
-  if(!new_uri)
-    return NULL;
+    librdf_world_open(world);
 
-  node = raptor_new_term_from_uri(world->raptor_world_ptr, new_uri);
-  raptor_free_uri(new_uri);
-  return node;
+    new_uri = librdf_new_uri_normalised_to_base(uri_string,
+                                                source_uri, base_uri);
+    if (!new_uri)
+        return NULL;
+
+    node = raptor_new_term_from_uri(world->raptor_world_ptr, new_uri);
+    raptor_free_uri(new_uri);
+    return node;
 }
 
 
@@ -239,27 +235,26 @@ librdf_new_node_from_normalised_uri_string(librdf_world *world,
 #define LIBRDF_XSD_BOOLEAN_FALSE_LEN 5
 
 static int
-librdf_xsd_boolean_value_from_string(const unsigned char* string,
-                                     unsigned int len)
-{
-  int integer = 0;
+librdf_xsd_boolean_value_from_string(const unsigned char *string,
+                                     unsigned int len) {
+    int integer = 0;
 
-  /* FIXME
-   * Strictly only {true, false, 1, 0} are allowed according to
-   * http://www.w3.org/TR/xmlschema-2/#boolean
-   */
-  if((len == LIBRDF_XSD_BOOLEAN_TRUE_LEN &&
-     (!strcmp(LIBRDF_GOOD_CAST(const char*, string), "true") ||
-      !strcmp(LIBRDF_GOOD_CAST(const char*, string), "TRUE"))
-      )
-     ||
-     (len == 1 &&
-      !strcmp(LIBRDF_GOOD_CAST(const char*, string), "1")
-      )
-     )
-     integer = 1;
+    /* FIXME
+     * Strictly only {true, false, 1, 0} are allowed according to
+     * http://www.w3.org/TR/xmlschema-2/#boolean
+     */
+    if ((len == LIBRDF_XSD_BOOLEAN_TRUE_LEN &&
+         (!strcmp(LIBRDF_GOOD_CAST(const char*, string), "true") ||
+          !strcmp(LIBRDF_GOOD_CAST(const char*, string), "TRUE"))
+        )
+        ||
+        (len == 1 &&
+         !strcmp(LIBRDF_GOOD_CAST(const char*, string), "1")
+        )
+            )
+        integer = 1;
 
-  return integer;
+    return integer;
 }
 
 
@@ -278,53 +273,52 @@ librdf_xsd_boolean_value_from_string(const unsigned char* string,
  *
  * Return value: new node (or same one if no action was taken)
  */
-static librdf_node*
-librdf_node_normalize(librdf_world* world, librdf_node* node)
-{
-  if(!node)
-    return NULL;
-  
-  if(node->value.literal.datatype) {
-    librdf_uri* dt_uri;
+static librdf_node *
+librdf_node_normalize(librdf_world *world, librdf_node *node) {
+    if (!node)
+        return NULL;
 
-    dt_uri = librdf_new_uri_from_uri_local_name(world->xsd_namespace_uri,
-                                                LIBRDF_GOOD_CAST(const unsigned char*, "boolean"));
-    if(raptor_uri_equals(node->value.literal.datatype, dt_uri)) {
-      const unsigned char* value;
-      size_t value_len;
-      int bvalue;
+    if (node->value.literal.datatype) {
+        librdf_uri *dt_uri;
 
-      bvalue = librdf_xsd_boolean_value_from_string(node->value.literal.string,
-                                                    node->value.literal.string_len);
+        dt_uri = librdf_new_uri_from_uri_local_name(world->xsd_namespace_uri,
+                                                    LIBRDF_GOOD_CAST(const unsigned char*, "boolean"));
+        if (raptor_uri_equals(node->value.literal.datatype, dt_uri)) {
+            const unsigned char *value;
+            size_t value_len;
+            int bvalue;
 
-      value = bvalue ? LIBRDF_XSD_BOOLEAN_TRUE :
-                       LIBRDF_XSD_BOOLEAN_FALSE;
-      value_len = bvalue ? LIBRDF_XSD_BOOLEAN_TRUE_LEN :
-                           LIBRDF_XSD_BOOLEAN_FALSE_LEN;
+            bvalue = librdf_xsd_boolean_value_from_string(node->value.literal.string,
+                                                          node->value.literal.string_len);
 
-      if(node->value.literal.string_len != value_len ||
-         strcmp(LIBRDF_GOOD_CAST(const char*, node->value.literal.string),
-                LIBRDF_GOOD_CAST(const char*, value))) {
-        /* If literal is not canonical, replace the node */
-        librdf_free_node(node);
-        node = NULL;
+            value = bvalue ? LIBRDF_XSD_BOOLEAN_TRUE :
+                    LIBRDF_XSD_BOOLEAN_FALSE;
+            value_len = bvalue ? LIBRDF_XSD_BOOLEAN_TRUE_LEN :
+                        LIBRDF_XSD_BOOLEAN_FALSE_LEN;
 
-        /* Have to use Raptor constructor here since
-         * librdf_new_node_from_typed_counted_literal() calls this
-         */
-        node = raptor_new_term_from_counted_literal(world->raptor_world_ptr,
-                                                    value, value_len,
-                                                    dt_uri,
-                                                    (const unsigned char*)NULL,
-                                                    (unsigned char)0);
-      }
+            if (node->value.literal.string_len != value_len ||
+                strcmp(LIBRDF_GOOD_CAST(const char*, node->value.literal.string),
+                       LIBRDF_GOOD_CAST(const char*, value))) {
+                /* If literal is not canonical, replace the node */
+                librdf_free_node(node);
+                node = NULL;
+
+                /* Have to use Raptor constructor here since
+                 * librdf_new_node_from_typed_counted_literal() calls this
+                 */
+                node = raptor_new_term_from_counted_literal(world->raptor_world_ptr,
+                                                            value, value_len,
+                                                            dt_uri,
+                                                            (const unsigned char *) NULL,
+                                                            (unsigned char) 0);
+            }
+        }
+
+        if (dt_uri)
+            librdf_free_uri(dt_uri);
     }
 
-    if(dt_uri)
-      librdf_free_uri(dt_uri);
-  }
-
-  return node;
+    return node;
 }
 
 
@@ -345,25 +339,24 @@ librdf_node_normalize(librdf_world* world, librdf_node* node)
  *
  * Return value: new #librdf_node object or NULL on failure
  **/
-librdf_node*
+librdf_node *
 librdf_new_node_from_literal(librdf_world *world,
                              const unsigned char *string,
                              const char *xml_language,
-                             int is_wf_xml)
-{
-  librdf_uri* datatype_uri;
-  librdf_node* n;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
-  
-  librdf_world_open(world);
+                             int is_wf_xml) {
+    librdf_uri *datatype_uri;
+    librdf_node *n;
 
-  datatype_uri = (is_wf_xml ?  LIBRDF_RS_XMLLiteral_URI(world) : NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
 
-  n = raptor_new_term_from_literal(world->raptor_world_ptr,
-                                   string, datatype_uri,
-                                   (const unsigned char*)xml_language);
-  return librdf_node_normalize(world, n);
+    librdf_world_open(world);
+
+    datatype_uri = (is_wf_xml ? LIBRDF_RS_XMLLiteral_URI(world) : NULL);
+
+    n = raptor_new_term_from_literal(world->raptor_world_ptr,
+                                     string, datatype_uri,
+                                     (const unsigned char *) xml_language);
+    return librdf_node_normalize(world, n);
 }
 
 
@@ -382,22 +375,21 @@ librdf_new_node_from_literal(librdf_world *world,
  *
  * Return value: new #librdf_node object or NULL on failure
  **/
-librdf_node*
+librdf_node *
 librdf_new_node_from_typed_literal(librdf_world *world,
                                    const unsigned char *value,
                                    const char *xml_language,
-                                   librdf_uri *datatype_uri)
-{
-  librdf_node* n;
+                                   librdf_uri *datatype_uri) {
+    librdf_node *n;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
-  
-  librdf_world_open(world);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
 
-  n = raptor_new_term_from_literal(world->raptor_world_ptr,
-                                   value, datatype_uri,
-                                   (const unsigned char*)xml_language);
-  return librdf_node_normalize(world, n);
+    librdf_world_open(world);
+
+    n = raptor_new_term_from_literal(world->raptor_world_ptr,
+                                     value, datatype_uri,
+                                     (const unsigned char *) xml_language);
+    return librdf_node_normalize(world, n);
 }
 
 
@@ -420,26 +412,25 @@ librdf_new_node_from_typed_literal(librdf_world *world,
  *
  * Return value: new #librdf_node object or NULL on failure
  **/
-librdf_node*
+librdf_node *
 librdf_new_node_from_typed_counted_literal(librdf_world *world,
                                            const unsigned char *value,
                                            size_t value_len,
                                            const char *xml_language,
                                            size_t xml_language_len,
-                                           librdf_uri *datatype_uri)
-{
-  librdf_node* n;
+                                           librdf_uri *datatype_uri) {
+    librdf_node *n;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
-  
-  librdf_world_open(world);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
 
-  n = raptor_new_term_from_counted_literal(world->raptor_world_ptr,
-                                           value, value_len,
-                                           datatype_uri,
-                                           (const unsigned char*)xml_language,
-                                           (unsigned char)xml_language_len);
-  return librdf_node_normalize(world, n);
+    librdf_world_open(world);
+
+    n = raptor_new_term_from_counted_literal(world->raptor_world_ptr,
+                                             value, value_len,
+                                             datatype_uri,
+                                             (const unsigned char *) xml_language,
+                                             (unsigned char) xml_language_len);
+    return librdf_node_normalize(world, n);
 }
 
 
@@ -456,17 +447,16 @@ librdf_new_node_from_typed_counted_literal(librdf_world *world,
  * 
  * Return value: new #librdf_node object or NULL on failure
  **/
-librdf_node*
+librdf_node *
 librdf_new_node_from_counted_blank_identifier(librdf_world *world,
                                               const unsigned char *identifier,
-                                              size_t identifier_len)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
-  
-  librdf_world_open(world);
+                                              size_t identifier_len) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
 
-  return raptor_new_term_from_counted_blank(world->raptor_world_ptr,
-                                            identifier, identifier_len);
+    librdf_world_open(world);
+
+    return raptor_new_term_from_counted_blank(world->raptor_world_ptr,
+                                              identifier, identifier_len);
 }
 
 
@@ -482,26 +472,25 @@ librdf_new_node_from_counted_blank_identifier(librdf_world *world,
  * 
  * Return value: new #librdf_node object or NULL on failure
  **/
-librdf_node*
+librdf_node *
 librdf_new_node_from_blank_identifier(librdf_world *world,
-                                      const unsigned char *identifier)
-{
-  const unsigned char *blank = identifier;
-  librdf_node* node = NULL;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
-  
-  librdf_world_open(world);
+                                      const unsigned char *identifier) {
+    const unsigned char *blank = identifier;
+    librdf_node *node = NULL;
 
-  if(!identifier)
-    blank = librdf_world_get_genid(world);
-  
-  node = raptor_new_term_from_blank(world->raptor_world_ptr, blank);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
 
-  if(!identifier)
-    LIBRDF_FREE(char*, (char*)blank);
+    librdf_world_open(world);
 
-  return node;
+    if (!identifier)
+        blank = librdf_world_get_genid(world);
+
+    node = raptor_new_term_from_blank(world->raptor_world_ptr, blank);
+
+    if (!identifier)
+        LIBRDF_FREE(char*, (char *) blank);
+
+    return node;
 }
 
 
@@ -513,12 +502,11 @@ librdf_new_node_from_blank_identifier(librdf_world *world,
  * 
  * Return value: a new #librdf_node object or NULL on failure
  **/
-librdf_node*
-librdf_new_node_from_node(librdf_node *node)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
+librdf_node *
+librdf_new_node_from_node(librdf_node *node) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
 
-  return raptor_term_copy(node);
+    return raptor_term_copy(node);
 }
 
 
@@ -530,12 +518,11 @@ librdf_new_node_from_node(librdf_node *node)
  * 
  **/
 void
-librdf_free_node(librdf_node *node)
-{
-  if(!node)
-    return;
+librdf_free_node(librdf_node *node) {
+    if (!node)
+        return;
 
-  raptor_free_term(node);
+    raptor_free_term(node);
 }
 
 
@@ -552,15 +539,14 @@ librdf_free_node(librdf_node *node)
  * 
  * Return value: URI object or NULL if node has no URI.
  **/
-librdf_uri*
-librdf_node_get_uri(librdf_node *node)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
+librdf_uri *
+librdf_node_get_uri(librdf_node *node) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
 
-  if(node->type != RAPTOR_TERM_TYPE_URI)
-    return NULL;
-  
-  return node->value.uri;
+    if (node->type != RAPTOR_TERM_TYPE_URI)
+        return NULL;
+
+    return node->value.uri;
 }
 
 
@@ -576,11 +562,10 @@ librdf_node_get_uri(librdf_node *node)
  * Return value: the node type
  **/
 librdf_node_type
-librdf_node_get_type(librdf_node *node)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, LIBRDF_NODE_TYPE_UNKNOWN);
+librdf_node_get_type(librdf_node *node) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, LIBRDF_NODE_TYPE_UNKNOWN);
 
-  return (librdf_node_type)node->type;
+    return (librdf_node_type) node->type;
 }
 
 
@@ -595,15 +580,14 @@ librdf_node_get_type(librdf_node *node)
  *
  * Return value: the UTF-8 encoded literal string or NULL if node is not a literal
  **/
-unsigned char*
-librdf_node_get_literal_value(librdf_node *node)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
+unsigned char *
+librdf_node_get_literal_value(librdf_node *node) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
 
-  if(node->type != RAPTOR_TERM_TYPE_LITERAL)
-    return NULL;
-  
-  return node->value.literal.string;
+    if (node->type != RAPTOR_TERM_TYPE_LITERAL)
+        return NULL;
+
+    return node->value.literal.string;
 }
 
 
@@ -620,19 +604,18 @@ librdf_node_get_literal_value(librdf_node *node)
  *
  * Return value: the UTF-8 encoded literal string or NULL if node is not a literal
  **/
-unsigned char*
+unsigned char *
 librdf_node_get_literal_value_as_counted_string(librdf_node *node,
-                                                size_t *len_p)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
+                                                size_t *len_p) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
 
-  if(node->type != RAPTOR_TERM_TYPE_LITERAL)
-    return NULL;
-  
-  if(len_p)
-    *len_p = node->value.literal.string_len;
+    if (node->type != RAPTOR_TERM_TYPE_LITERAL)
+        return NULL;
 
-  return node->value.literal.string;
+    if (len_p)
+        *len_p = node->value.literal.string_len;
+
+    return node->value.literal.string;
 }
 
 
@@ -648,21 +631,20 @@ librdf_node_get_literal_value_as_counted_string(librdf_node *node,
  *
  * Return value: the Latin-1 literal string or NULL if node is not a literal
  **/
-char*
-librdf_node_get_literal_value_as_latin1(librdf_node *node)
-{
-  size_t slen;
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
+char *
+librdf_node_get_literal_value_as_latin1(librdf_node *node) {
+    size_t slen;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
 
-  if(node->type != RAPTOR_TERM_TYPE_LITERAL)
-    return NULL;
-  
-  if(!node->value.literal.string)
-    return NULL;
-  
-  slen = LIBRDF_GOOD_CAST(size_t, node->value.literal.string_len);
-  return (char*)librdf_utf8_to_latin1_2((const unsigned char*)node->value.literal.string,
-                                        slen, '\0', NULL);
+    if (node->type != RAPTOR_TERM_TYPE_LITERAL)
+        return NULL;
+
+    if (!node->value.literal.string)
+        return NULL;
+
+    slen = LIBRDF_GOOD_CAST(size_t, node->value.literal.string_len);
+    return (char *) librdf_utf8_to_latin1_2((const unsigned char *) node->value.literal.string,
+                                            slen, '\0', NULL);
 }
 
 
@@ -679,15 +661,14 @@ librdf_node_get_literal_value_as_latin1(librdf_node *node)
  * Return value: the XML language string or NULL if node is not a literal
  * or there is no XML language defined.
  **/
-char*
-librdf_node_get_literal_value_language(librdf_node *node)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
+char *
+librdf_node_get_literal_value_language(librdf_node *node) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
 
-  if(node->type != RAPTOR_TERM_TYPE_LITERAL)
-    return NULL;
-  
-  return (char*)node->value.literal.language;
+    if (node->type != RAPTOR_TERM_TYPE_LITERAL)
+        return NULL;
+
+    return (char *) node->value.literal.language;
 }
 
 
@@ -700,26 +681,25 @@ librdf_node_get_literal_value_language(librdf_node *node)
  * Return value: 0 if the XML literal is NOT well formed XML content, or the node is not a literal
  **/
 int
-librdf_node_get_literal_value_is_wf_xml(librdf_node *node)
-{
-  raptor_uri* rdf_xml_literal_uri;
-  int rc;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, 0);
+librdf_node_get_literal_value_is_wf_xml(librdf_node *node) {
+    raptor_uri *rdf_xml_literal_uri;
+    int rc;
 
-  if(node->type != RAPTOR_TERM_TYPE_LITERAL)
-    return 0;
-  
-  if(!node->value.literal.datatype)
-    return 0;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, 0);
 
-  rdf_xml_literal_uri = raptor_new_uri_for_rdf_concept(node->world,
-                                                       (const unsigned char *)"XMLLiteral");
-  
-  rc = librdf_uri_equals(node->value.literal.datatype, rdf_xml_literal_uri);
-  raptor_free_uri(rdf_xml_literal_uri);
+    if (node->type != RAPTOR_TERM_TYPE_LITERAL)
+        return 0;
 
-  return rc;
+    if (!node->value.literal.datatype)
+        return 0;
+
+    rdf_xml_literal_uri = raptor_new_uri_for_rdf_concept(node->world,
+                                                         (const unsigned char *) "XMLLiteral");
+
+    rc = librdf_uri_equals(node->value.literal.datatype, rdf_xml_literal_uri);
+    raptor_free_uri(rdf_xml_literal_uri);
+
+    return rc;
 }
 
 
@@ -731,13 +711,12 @@ librdf_node_get_literal_value_is_wf_xml(librdf_node *node)
  * 
  * Return value: shared URI of the datatyped literal or NULL if the node is not a literal, or has no datatype URI
  **/
-librdf_uri*
-librdf_node_get_literal_value_datatype_uri(librdf_node *node)
-{
-  if(node->type != RAPTOR_TERM_TYPE_LITERAL)
-    return NULL;
-  
-  return node->value.literal.datatype;
+librdf_uri *
+librdf_node_get_literal_value_datatype_uri(librdf_node *node) {
+    if (node->type != RAPTOR_TERM_TYPE_LITERAL)
+        return NULL;
+
+    return node->value.literal.datatype;
 }
 
 
@@ -750,21 +729,20 @@ librdf_node_get_literal_value_datatype_uri(librdf_node *node)
  * Return value: the li ordinal value or < 1 on failure
  **/
 int
-librdf_node_get_li_ordinal(librdf_node *node)
-{
-  unsigned char *uri_string;
+librdf_node_get_li_ordinal(librdf_node *node) {
+    unsigned char *uri_string;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, 0);
 
-  if(node->type != RAPTOR_TERM_TYPE_URI)
-    return -1;
+    if (node->type != RAPTOR_TERM_TYPE_URI)
+        return -1;
 
-  uri_string = raptor_uri_as_string(node->value.uri); 
-  if(strncmp((const char*)uri_string,
-             (const char*)"http://www.w3.org/1999/02/22-rdf-syntax-ns#_", 44))
-    return -1;
-  
-  return atoi((const char*)uri_string+44);
+    uri_string = raptor_uri_as_string(node->value.uri);
+    if (strncmp((const char *) uri_string,
+                (const char *) "http://www.w3.org/1999/02/22-rdf-syntax-ns#_", 44))
+        return -1;
+
+    return atoi((const char *) uri_string + 44);
 }
 
 
@@ -776,10 +754,9 @@ librdf_node_get_li_ordinal(librdf_node *node)
  *
  * Return value: the UTF-8 encoded blank node identifier value or NULL on failure
  **/
-unsigned char*
-librdf_node_get_blank_identifier(librdf_node *node)
-{
-  return node->value.blank.string;
+unsigned char *
+librdf_node_get_blank_identifier(librdf_node *node) {
+    return node->value.blank.string;
 }
 
 
@@ -792,12 +769,11 @@ librdf_node_get_blank_identifier(librdf_node *node)
  *
  * Return value: the UTF-8 encoded blank node identifier value or NULL on failure
  **/
-unsigned char*
-librdf_node_get_counted_blank_identifier(librdf_node* node, size_t* len_p)
-{
-  if(len_p)
-    *len_p = node->value.blank.string_len;
-  return node->value.blank.string;
+unsigned char *
+librdf_node_get_counted_blank_identifier(librdf_node *node, size_t *len_p) {
+    if (len_p)
+        *len_p = node->value.blank.string_len;
+    return node->value.blank.string;
 }
 
 
@@ -810,9 +786,8 @@ librdf_node_get_counted_blank_identifier(librdf_node* node, size_t* len_p)
  * Return value: non-zero if the node is a resource (URI)
  **/
 int
-librdf_node_is_resource(librdf_node *node)
-{
-  return (node->type == RAPTOR_TERM_TYPE_URI);
+librdf_node_is_resource(librdf_node *node) {
+    return (node->type == RAPTOR_TERM_TYPE_URI);
 }
 
 
@@ -825,9 +800,8 @@ librdf_node_is_resource(librdf_node *node)
  * Return value: non-zero if the node is a literal
  **/
 int
-librdf_node_is_literal(librdf_node *node)
-{
-  return (node->type == RAPTOR_TERM_TYPE_LITERAL);
+librdf_node_is_literal(librdf_node *node) {
+    return (node->type == RAPTOR_TERM_TYPE_LITERAL);
 }
 
 
@@ -840,9 +814,8 @@ librdf_node_is_literal(librdf_node *node)
  * Return value: non-zero if the node is a blank nodeID
  **/
 int
-librdf_node_is_blank(librdf_node *node)
-{
-  return (node->type == RAPTOR_TERM_TYPE_BLANK);
+librdf_node_is_blank(librdf_node *node) {
+    return (node->type == RAPTOR_TERM_TYPE_BLANK);
 }
 
 
@@ -865,127 +838,126 @@ librdf_node_is_blank(librdf_node *node)
  **/
 size_t
 librdf_node_encode(librdf_node *node,
-                   unsigned char *buffer, size_t length)
-{
-  size_t total_length = 0;
-  unsigned char *string;
-  size_t string_length;
-  size_t language_length = 0;
-  unsigned char *datatype_uri_string = NULL;
-  size_t datatype_uri_length = 0;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, 0);
+                   unsigned char *buffer, size_t length) {
+    size_t total_length = 0;
+    unsigned char *string;
+    size_t string_length;
+    size_t language_length = 0;
+    unsigned char *datatype_uri_string = NULL;
+    size_t datatype_uri_length = 0;
 
-  switch(node->type) {
-    case RAPTOR_TERM_TYPE_URI:
-      string = (unsigned char*)librdf_uri_as_counted_string(node->value.uri,
-                                                            &string_length);
-      
-      total_length = 3 + string_length + 1; /* +1 for \0 at end */
-      
-      if(length && total_length > length)
-        return 0;    
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, 0);
 
-      if(string_length > 0xFFFF)
-        return 0;
+    switch (node->type) {
+        case RAPTOR_TERM_TYPE_URI:
+            string = (unsigned char *) librdf_uri_as_counted_string(node->value.uri,
+                                                                    &string_length);
 
-      if(buffer) {
-        buffer[0] = 'R';
-        buffer[1] = (string_length & 0xff00) >> 8;
-        buffer[2] = (string_length & 0x00ff);
-        memcpy((char*)buffer + 3, string, string_length + 1);
-      }
-      break;
-      
-    case RAPTOR_TERM_TYPE_LITERAL:
-      string = (unsigned char*)node->value.literal.string;
-      string_length = node->value.literal.string_len;
-      if(node->value.literal.language)
-        language_length = LIBRDF_GOOD_CAST(size_t, node->value.literal.language_len);
+            total_length = 3 + string_length + 1; /* +1 for \0 at end */
 
-      if(node->value.literal.datatype) {
-        datatype_uri_string = librdf_uri_as_counted_string(node->value.literal.datatype, &datatype_uri_length);
-      }
-      
-      total_length = 6 + string_length + 1; /* +1 for \0 at end */
-      if(string_length > 0xFFFF) /* for long literal - type 'N' */
-        total_length += 2;
+            if (length && total_length > length)
+                return 0;
 
-      if(language_length)
-        total_length += language_length + 1;
+            if (string_length > 0xFFFF)
+                return 0;
 
-      if(datatype_uri_length)
-        total_length += datatype_uri_length + 1;
-      
-      if(length && total_length > length)
-        return 0;    
+            if (buffer) {
+                buffer[0] = 'R';
+                buffer[1] = (string_length & 0xff00) >> 8;
+                buffer[2] = (string_length & 0x00ff);
+                memcpy((char *) buffer + 3, string, string_length + 1);
+            }
+            break;
 
-      if(datatype_uri_length > 0xFFFF)
-        return 0;
+        case RAPTOR_TERM_TYPE_LITERAL:
+            string = (unsigned char *) node->value.literal.string;
+            string_length = node->value.literal.string_len;
+            if (node->value.literal.language)
+                language_length = LIBRDF_GOOD_CAST(size_t, node->value.literal.language_len);
+
+            if (node->value.literal.datatype) {
+                datatype_uri_string = librdf_uri_as_counted_string(node->value.literal.datatype, &datatype_uri_length);
+            }
+
+            total_length = 6 + string_length + 1; /* +1 for \0 at end */
+            if (string_length > 0xFFFF) /* for long literal - type 'N' */
+                total_length += 2;
+
+            if (language_length)
+                total_length += language_length + 1;
+
+            if (datatype_uri_length)
+                total_length += datatype_uri_length + 1;
+
+            if (length && total_length > length)
+                return 0;
+
+            if (datatype_uri_length > 0xFFFF)
+                return 0;
 
 
-      if(buffer) {
-        if(string_length > 0xFFFF) {
-          /* long literal type N (string length > 0x10000) */
-          buffer[0] = 'N';
-          buffer[1] = (string_length & 0xff000000) >> 24;
-          buffer[2] = (string_length & 0x00ff0000) >> 16;
-          buffer[3] = (string_length & 0x0000ff00) >> 8;
-          buffer[4] = (string_length & 0x000000ff);
-          buffer[5] = (datatype_uri_length & 0xff00) >> 8;
-          buffer[6] = (datatype_uri_length & 0x00ff);
-          buffer[7] = (language_length & 0x00ff);
-          buffer += 8;
-        } else {
-          /* short literal type M (string length <= 0xFFFF) */
-          buffer[0] = 'M';
-          buffer[1] = (string_length & 0xff00) >> 8;
-          buffer[2] = (string_length & 0x00ff);
-          buffer[3] = (datatype_uri_length & 0xff00) >> 8;
-          buffer[4] = (datatype_uri_length & 0x00ff);
-          buffer[5] = (language_length & 0x00ff);
-          buffer += 6;
-        }
-        memcpy(buffer, string, string_length + 1);
-        buffer += string_length + 1;
+            if (buffer) {
+                if (string_length > 0xFFFF) {
+                    /* long literal type N (string length > 0x10000) */
+                    buffer[0] = 'N';
+                    buffer[1] = (string_length & 0xff000000) >> 24;
+                    buffer[2] = (string_length & 0x00ff0000) >> 16;
+                    buffer[3] = (string_length & 0x0000ff00) >> 8;
+                    buffer[4] = (string_length & 0x000000ff);
+                    buffer[5] = (datatype_uri_length & 0xff00) >> 8;
+                    buffer[6] = (datatype_uri_length & 0x00ff);
+                    buffer[7] = (language_length & 0x00ff);
+                    buffer += 8;
+                } else {
+                    /* short literal type M (string length <= 0xFFFF) */
+                    buffer[0] = 'M';
+                    buffer[1] = (string_length & 0xff00) >> 8;
+                    buffer[2] = (string_length & 0x00ff);
+                    buffer[3] = (datatype_uri_length & 0xff00) >> 8;
+                    buffer[4] = (datatype_uri_length & 0x00ff);
+                    buffer[5] = (language_length & 0x00ff);
+                    buffer += 6;
+                }
+                memcpy(buffer, string, string_length + 1);
+                buffer += string_length + 1;
 
-        if(datatype_uri_length) {
-          memcpy(buffer, datatype_uri_string, datatype_uri_length + 1);
-          buffer += datatype_uri_length + 1;
-        }
+                if (datatype_uri_length) {
+                    memcpy(buffer, datatype_uri_string, datatype_uri_length + 1);
+                    buffer += datatype_uri_length + 1;
+                }
 
-        if(language_length)
-          memcpy(buffer, node->value.literal.language, language_length + 1);
-      } /* end if buffer */
+                if (language_length)
+                    memcpy(buffer, node->value.literal.language, language_length + 1);
+            } /* end if buffer */
 
-      break;
-      
-    case RAPTOR_TERM_TYPE_BLANK:
-      string = (unsigned char*)node->value.blank.string;
-      string_length = node->value.blank.string_len;
-      
-      total_length = 3 + string_length + 1; /* +1 for \0 at end */
-      
-      if(length && total_length > length)
-        return 0;    
-      
-      if(string_length > 0xFFFF)
-        return 0;
+            break;
 
-      if(buffer) {
-        buffer[0] = 'B';
-        buffer[1] = (string_length & 0xff00) >> 8;
-        buffer[2] = (string_length & 0x00ff);
-        memcpy((char*)buffer + 3, string, string_length + 1);
-      }
-      break;
-      
-    case RAPTOR_TERM_TYPE_UNKNOWN:
-    default:
-      return 0;
-  }
-  
-  return total_length;
+        case RAPTOR_TERM_TYPE_BLANK:
+            string = (unsigned char *) node->value.blank.string;
+            string_length = node->value.blank.string_len;
+
+            total_length = 3 + string_length + 1; /* +1 for \0 at end */
+
+            if (length && total_length > length)
+                return 0;
+
+            if (string_length > 0xFFFF)
+                return 0;
+
+            if (buffer) {
+                buffer[0] = 'B';
+                buffer[1] = (string_length & 0xff00) >> 8;
+                buffer[2] = (string_length & 0x00ff);
+                memcpy((char *) buffer + 3, string, string_length + 1);
+            }
+            break;
+
+        case RAPTOR_TERM_TYPE_UNKNOWN:
+        default:
+            return 0;
+    }
+
+    return total_length;
 }
 
 
@@ -1003,163 +975,164 @@ librdf_node_encode(librdf_node *node,
  * 
  * Return value: new node or NULL on failure (bad encoding, allocation failure)
  **/
-librdf_node*
+librdf_node *
 librdf_node_decode(librdf_world *world, size_t *size_p,
-                   unsigned char *buffer, size_t length)
-{
-  int is_wf_xml;
-  size_t string_length;
-  size_t total_length;
-  size_t language_length;
-  unsigned char *datatype_uri_string = NULL;
-  size_t datatype_uri_length;
-  librdf_uri* datatype_uri = NULL;
-  unsigned char *language = NULL;
-  int status = 0;
-  librdf_node* node = NULL;
+                   unsigned char *buffer, size_t length) {
+    int is_wf_xml;
+    size_t string_length;
+    size_t total_length;
+    size_t language_length;
+    unsigned char *datatype_uri_string = NULL;
+    size_t datatype_uri_length;
+    librdf_uri *datatype_uri = NULL;
+    unsigned char *language = NULL;
+    int status = 0;
+    librdf_node *node = NULL;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, librdf_world, NULL);
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  /* absolute minimum - first byte is type */
-  if (length < 1)
-    return NULL;
-
-  switch(buffer[0]) {
-    case 'R': /* URI / Resource */
-      /* min */
-      if(length < 3)
+    /* absolute minimum - first byte is type */
+    if (length < 1)
         return NULL;
 
-      string_length = LIBRDF_GOOD_CAST(size_t, (buffer[1] << 8) | buffer[2]);
-      total_length = 3 + string_length + 1;
-      
-      node = librdf_new_node_from_uri_string(world, buffer + 3);
+    switch (buffer[0]) {
+        case 'R': /* URI / Resource */
+            /* min */
+            if (length < 3)
+                return NULL;
 
-      break;
+            string_length = LIBRDF_GOOD_CAST(size_t, (buffer[1] << 8) | buffer[2]);
+            total_length = 3 + string_length + 1;
 
-    case 'L': /* Old encoding form for Literal */
-      /* min */
-      if(length < 6)
-        return NULL;
-      
-      is_wf_xml = (buffer[1] & 0xf0)>>8;
-      string_length = LIBRDF_GOOD_CAST(size_t, (buffer[2] << 8) | buffer[3]);
-      language_length = LIBRDF_GOOD_CAST(size_t, buffer[5]);
+            node = librdf_new_node_from_uri_string(world, buffer + 3);
 
-      total_length = 6 + string_length + 1; /* +1 for \0 at end */
-      if(language_length) {
-        language = buffer + total_length;
-        total_length += language_length + 1;
-      }
-      
-      node = librdf_new_node_from_typed_counted_literal(world,
-                                                        buffer + 6,
-                                                        string_length,
-                                                        (const char*)language,
-                                                        LIBRDF_GOOD_CAST(unsigned char, language_length),
-                                                        is_wf_xml ? LIBRDF_RS_XMLLiteral_URI(world) : NULL);
-    
-    break;
+            break;
 
-    case 'M': /* Literal for Redland 0.9.12+ */
-      /* min */
-      if(length < 6)
-        return NULL;
-      
-      string_length = LIBRDF_GOOD_CAST(size_t, (buffer[1] << 8) | buffer[2]);
-      datatype_uri_length = LIBRDF_GOOD_CAST(size_t, (buffer[3] << 8) | buffer[4]);
-      language_length = buffer[5];
+        case 'L': /* Old encoding form for Literal */
+            /* min */
+            if (length < 6)
+                return NULL;
 
-      total_length = 6 + string_length + 1; /* +1 for \0 at end */
-      if(datatype_uri_length) {
-        datatype_uri_string = buffer + total_length;
-        total_length += datatype_uri_length + 1;
-      }
-      if(language_length) {
-        language = buffer + total_length;
-        total_length += language_length + 1;
-      }
+            is_wf_xml = (buffer[1] & 0xf0) >> 8;
+            string_length = LIBRDF_GOOD_CAST(size_t, (buffer[2] << 8) | buffer[3]);
+            language_length = LIBRDF_GOOD_CAST(size_t, buffer[5]);
 
-      if(datatype_uri_string)
-        datatype_uri = librdf_new_uri(world, datatype_uri_string);
-      
-      node = librdf_new_node_from_typed_counted_literal(world,
-                                                        buffer + 6,
-                                                        string_length,
-                                                        (const char*)language,
-                                                        LIBRDF_GOOD_CAST(unsigned char, language_length),
-                                                        datatype_uri);
-      if(datatype_uri)
-        librdf_free_uri(datatype_uri);
-      
-      if(status)
-        return NULL;
-      
-    break;
+            total_length = 6 + string_length + 1; /* +1 for \0 at end */
+            if (language_length) {
+                language = buffer + total_length;
+                total_length += language_length + 1;
+            }
 
-    case 'N': /* Literal for redland 1.0.5+ (long literal) */
-      /* min */
-      if(length < 8)
-        return NULL;
-      
-      string_length = LIBRDF_GOOD_CAST(size_t, (buffer[1] << 24) | (buffer[2] << 16) | (buffer[3] << 8) | buffer[4]);
-      datatype_uri_length = LIBRDF_GOOD_CAST(size_t, (buffer[5] << 8) | buffer[6]);
-      language_length = buffer[7];
+            node = librdf_new_node_from_typed_counted_literal(world,
+                                                              buffer + 6,
+                                                              string_length,
+                                                              (const char *) language,
+                                                              LIBRDF_GOOD_CAST(unsigned char, language_length),
+                                                              is_wf_xml ? LIBRDF_RS_XMLLiteral_URI(world) : NULL);
 
-      total_length = 8 + string_length + 1; /* +1 for \0 at end */
-      if(datatype_uri_length) {
-        datatype_uri_string = buffer + total_length;
-        total_length += datatype_uri_length + 1;
-      }
-      if(language_length) {
-        language = buffer + total_length;
-        total_length += language_length + 1;
-      }
+            break;
 
-      if(datatype_uri_string)
-        datatype_uri = librdf_new_uri(world, datatype_uri_string);
-      
-      node = librdf_new_node_from_typed_counted_literal(world,
-                                                        buffer + 8,
-                                                        string_length,
-                                                        (const char*)language,
-                                                        LIBRDF_GOOD_CAST(size_t, language_length),
-                                                        datatype_uri);
-      if(datatype_uri)
-        librdf_free_uri(datatype_uri);
-      
-      if(status)
-        return NULL;
-      
-    break;
+        case 'M': /* Literal for Redland 0.9.12+ */
+            /* min */
+            if (length < 6)
+                return NULL;
 
-    case 'B': /* RAPTOR_TERM_TYPE_BLANK */
-      /* min */
-      if(length < 3)
-        return NULL;
-      
-      string_length = LIBRDF_GOOD_CAST(size_t, (buffer[1] << 8) | buffer[2]);
+            string_length = LIBRDF_GOOD_CAST(size_t, (buffer[1] << 8) | buffer[2]);
+            datatype_uri_length = LIBRDF_GOOD_CAST(size_t, (buffer[3] << 8) | buffer[4]);
+            language_length = buffer[5];
 
-      total_length = 3 + string_length + 1; /* +1 for \0 at end */
-      
-      node = librdf_new_node_from_blank_identifier(world, buffer+3);
-    
-    break;
+            total_length = 6 + string_length + 1; /* +1 for \0 at end */
+            if (datatype_uri_length) {
+                datatype_uri_string = buffer + total_length;
+                total_length += datatype_uri_length + 1;
+            }
+            if (language_length) {
+                language = buffer + total_length;
+                total_length += language_length + 1;
+            }
 
-  default:
-    return NULL;
-  }
-  
-  if(size_p)
-    *size_p = total_length;
+            if (datatype_uri_string)
+                datatype_uri = librdf_new_uri(world, datatype_uri_string);
 
-  return node;
+            node = librdf_new_node_from_typed_counted_literal(world,
+                                                              buffer + 6,
+                                                              string_length,
+                                                              (const char *) language,
+                                                              LIBRDF_GOOD_CAST(unsigned char, language_length),
+                                                              datatype_uri);
+            if (datatype_uri)
+                librdf_free_uri(datatype_uri);
+
+            if (status)
+                return NULL;
+
+            break;
+
+        case 'N': /* Literal for redland 1.0.5+ (long literal) */
+            /* min */
+            if (length < 8)
+                return NULL;
+
+            string_length = LIBRDF_GOOD_CAST(size_t,
+                                             (buffer[1] << 24) | (buffer[2] << 16) | (buffer[3] << 8) | buffer[4]);
+            datatype_uri_length = LIBRDF_GOOD_CAST(size_t, (buffer[5] << 8) | buffer[6]);
+            language_length = buffer[7];
+
+            total_length = 8 + string_length + 1; /* +1 for \0 at end */
+            if (datatype_uri_length) {
+                datatype_uri_string = buffer + total_length;
+                total_length += datatype_uri_length + 1;
+            }
+            if (language_length) {
+                language = buffer + total_length;
+                total_length += language_length + 1;
+            }
+
+            if (datatype_uri_string)
+                datatype_uri = librdf_new_uri(world, datatype_uri_string);
+
+            node = librdf_new_node_from_typed_counted_literal(world,
+                                                              buffer + 8,
+                                                              string_length,
+                                                              (const char *) language,
+                                                              LIBRDF_GOOD_CAST(size_t, language_length),
+                                                              datatype_uri);
+            if (datatype_uri)
+                librdf_free_uri(datatype_uri);
+
+            if (status)
+                return NULL;
+
+            break;
+
+        case 'B': /* RAPTOR_TERM_TYPE_BLANK */
+            /* min */
+            if (length < 3)
+                return NULL;
+
+            string_length = LIBRDF_GOOD_CAST(size_t, (buffer[1] << 8) | buffer[2]);
+
+            total_length = 3 + string_length + 1; /* +1 for \0 at end */
+
+            node = librdf_new_node_from_blank_identifier(world, buffer + 3);
+
+            break;
+
+        default:
+            return NULL;
+    }
+
+    if (size_p)
+        *size_p = total_length;
+
+    return node;
 }
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_node_to_string:
  * @node: the node object
@@ -1174,33 +1147,34 @@ librdf_node_decode(librdf_world *world, size_t *size_p,
  *
  * Return value: a string value representing the node or NULL on failure
  **/
-unsigned char*
-librdf_node_to_string(librdf_node *node)
-{
-  raptor_iostream* iostr;
-  unsigned char *s;
-  int rc;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
+unsigned char *
+librdf_node_to_string(librdf_node *node) {
+    raptor_iostream *iostr;
+    unsigned char *s;
+    int rc;
 
-  iostr = raptor_new_iostream_to_string(node->world,
-                                        (void**)&s, NULL, malloc);
-  if(!iostr)
-    return NULL;
-  
-  rc = librdf_node_write(node, iostr);
-  raptor_free_iostream(iostr);
-  if(rc) {
-    raptor_free_memory(s);
-    s = NULL;
-  }
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
 
-  return s;
+    iostr = raptor_new_iostream_to_string(node->world,
+                                          (void **) &s, NULL, malloc);
+    if (!iostr)
+        return NULL;
+
+    rc = librdf_node_write(node, iostr);
+    raptor_free_iostream(iostr);
+    if (rc) {
+        raptor_free_memory(s);
+        s = NULL;
+    }
+
+    return s;
 }
+
 #endif
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_node_to_counted_string:
  * @node: the node object
@@ -1216,30 +1190,30 @@ librdf_node_to_string(librdf_node *node)
  *
  * Return value: a string value representing the node or NULL on failure
  **/
-unsigned char*
-librdf_node_to_counted_string(librdf_node *node, size_t *len_p)
-{
-  raptor_iostream* iostr;
-  unsigned char *s;
-  int rc;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
+unsigned char *
+librdf_node_to_counted_string(librdf_node *node, size_t *len_p) {
+    raptor_iostream *iostr;
+    unsigned char *s;
+    int rc;
 
-  iostr = raptor_new_iostream_to_string(node->world,
-                                        (void**)&s, len_p, malloc);
-  if(!iostr)
-    return NULL;
-  
-  rc = librdf_node_write(node, iostr);
-  raptor_free_iostream(iostr);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
 
-  if(rc) {
-    raptor_free_memory(s);
-    s = NULL;
-  }
+    iostr = raptor_new_iostream_to_string(node->world,
+                                          (void **) &s, len_p, malloc);
+    if (!iostr)
+        return NULL;
 
-  return s;
+    rc = librdf_node_write(node, iostr);
+    raptor_free_iostream(iostr);
+
+    if (rc) {
+        raptor_free_memory(s);
+        s = NULL;
+    }
+
+    return s;
 }
+
 #endif
 
 
@@ -1255,23 +1229,22 @@ librdf_node_to_counted_string(librdf_node *node, size_t *len_p)
  * 
  **/
 void
-librdf_node_print(librdf_node *node, FILE *fh)
-{
-  raptor_iostream *iostr;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN(node, librdf_node);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN(fh, FILE*);
+librdf_node_print(librdf_node *node, FILE *fh) {
+    raptor_iostream *iostr;
 
-  if(!node)
-    return;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN(node, librdf_node);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN(fh, FILE*);
 
-  iostr = raptor_new_iostream_to_file_handle(node->world, fh);
-  if(!iostr)
-    return;
-  
-  librdf_node_write(node, iostr);
+    if (!node)
+        return;
 
-  raptor_free_iostream(iostr);
+    iostr = raptor_new_iostream_to_file_handle(node->world, fh);
+    if (!iostr)
+        return;
+
+    librdf_node_write(node, iostr);
+
+    raptor_free_iostream(iostr);
 }
 
 
@@ -1288,9 +1261,8 @@ librdf_node_print(librdf_node *node, FILE *fh)
  * Return value: non 0 if nodes are equal.  0 if not-equal or failure
  **/
 int
-librdf_node_equals(librdf_node *first_node, librdf_node *second_node)
-{
-  return raptor_term_equals(first_node, second_node);
+librdf_node_equals(librdf_node *first_node, librdf_node *second_node) {
+    return raptor_term_equals(first_node, second_node);
 }
 
 
@@ -1310,10 +1282,9 @@ librdf_node_equals(librdf_node *first_node, librdf_node *second_node)
  *
  * Return value: NULL
  **/
-librdf_iterator*
-librdf_node_static_iterator_create(librdf_node **nodes, int size)
-{
-  return NULL;
+librdf_iterator *
+librdf_node_static_iterator_create(librdf_node **nodes, int size) {
+    return NULL;
 }
 
 
@@ -1331,64 +1302,63 @@ librdf_node_static_iterator_create(librdf_node **nodes, int size)
  * Return value: non-0 on failure
  **/
 int
-librdf_node_write(librdf_node* node, raptor_iostream *iostr)
-{
-  const unsigned char* term;
-  size_t len;
+librdf_node_write(librdf_node *node, raptor_iostream *iostr) {
+    const unsigned char *term;
+    size_t len;
 
 #define NULL_STRING_LENGTH 6
-  static const unsigned char * const null_string = (const unsigned char *)"(null)";
+    static const unsigned char *const null_string = (const unsigned char *) "(null)";
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(iostr, raptor_iostream, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(iostr, raptor_iostream, 1);
 
-  if(!node) {
-    raptor_iostream_counted_string_write(null_string, NULL_STRING_LENGTH, iostr);
+    if (!node) {
+        raptor_iostream_counted_string_write(null_string, NULL_STRING_LENGTH, iostr);
+        return 0;
+    }
+
+    switch (node->type) {
+        case RAPTOR_TERM_TYPE_LITERAL:
+            raptor_iostream_write_byte('"', iostr);
+            raptor_string_ntriples_write(node->value.literal.string,
+                                         node->value.literal.string_len,
+                                         '"',
+                                         iostr);
+            raptor_iostream_write_byte('"', iostr);
+            if (node->value.literal.language) {
+                raptor_iostream_write_byte('@', iostr);
+                raptor_iostream_string_write(node->value.literal.language, iostr);
+            }
+            if (node->value.literal.datatype) {
+                raptor_iostream_counted_string_write("^^<", 3, iostr);
+                term = librdf_uri_as_counted_string(node->value.literal.datatype,
+                                                    &len);
+                raptor_string_ntriples_write(term, len, '>', iostr);
+                raptor_iostream_write_byte('>', iostr);
+            }
+
+            break;
+
+        case RAPTOR_TERM_TYPE_BLANK:
+            raptor_iostream_counted_string_write("_:", 2, iostr);
+            term = (unsigned char *) node->value.blank.string;
+            len = node->value.blank.string_len;
+            raptor_iostream_counted_string_write(term, len, iostr);
+            break;
+
+        case RAPTOR_TERM_TYPE_URI:
+            raptor_iostream_write_byte('<', iostr);
+            term = librdf_uri_as_counted_string(node->value.uri, &len);
+            raptor_string_ntriples_write(term, len, '>', iostr);
+            raptor_iostream_write_byte('>', iostr);
+            break;
+
+        case RAPTOR_TERM_TYPE_UNKNOWN:
+        default:
+            /*LIBRDF_FATAL1(node->world, LIBRDF_FROM_NODE, "Unknown node type");*/
+            return 1;
+    }
+
     return 0;
-  }
-
-  switch(node->type) {
-    case RAPTOR_TERM_TYPE_LITERAL:
-      raptor_iostream_write_byte('"', iostr);
-      raptor_string_ntriples_write(node->value.literal.string,
-                                   node->value.literal.string_len,
-                                   '"',
-                                   iostr);
-      raptor_iostream_write_byte('"', iostr);
-      if(node->value.literal.language) {
-        raptor_iostream_write_byte('@', iostr);
-        raptor_iostream_string_write(node->value.literal.language, iostr);
-      }
-      if(node->value.literal.datatype) {
-        raptor_iostream_counted_string_write("^^<", 3, iostr);
-        term = librdf_uri_as_counted_string(node->value.literal.datatype,
-                                            &len);
-        raptor_string_ntriples_write(term, len, '>', iostr);
-        raptor_iostream_write_byte('>', iostr);
-      }
-
-      break;
-      
-    case RAPTOR_TERM_TYPE_BLANK:
-      raptor_iostream_counted_string_write("_:", 2, iostr);
-      term = (unsigned char*)node->value.blank.string;
-      len = node->value.blank.string_len;
-      raptor_iostream_counted_string_write(term, len, iostr);
-      break;
-      
-    case RAPTOR_TERM_TYPE_URI:
-      raptor_iostream_write_byte('<', iostr);
-      term = librdf_uri_as_counted_string(node->value.uri, &len);
-      raptor_string_ntriples_write(term, len, '>', iostr);
-      raptor_iostream_write_byte('>', iostr);
-      break;
-      
-    case RAPTOR_TERM_TYPE_UNKNOWN:
-    default:
-      /*LIBRDF_FATAL1(node->world, LIBRDF_FROM_NODE, "Unknown node type");*/
-      return 1;
-  }
-
-  return 0;
 }
 
 #endif /* STANDALONE */
@@ -1467,7 +1437,7 @@ main(int argc, char *argv[])
   unsigned int i;
   
   const char *program=librdf_basename((const char*)argv[0]);
-	
+
   world=librdf_new_world();
   librdf_world_open(world);
 

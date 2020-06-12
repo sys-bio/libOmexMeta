@@ -129,7 +129,7 @@ namespace semsim {
         return node_;
     }
 
-    void Predicate::setNode(librdf_node* node) {
+    void Predicate::setNode(librdf_node *node) {
         node_ = node;
     }
 

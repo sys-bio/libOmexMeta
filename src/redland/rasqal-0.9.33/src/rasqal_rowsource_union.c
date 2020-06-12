@@ -22,7 +22,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -31,8 +33,11 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <raptor2.h>
@@ -45,325 +50,316 @@
 
 #ifndef STANDALONE
 
-typedef struct 
-{
-  rasqal_rowsource* left;
+typedef struct {
+    rasqal_rowsource *left;
 
-  rasqal_rowsource* right;
+    rasqal_rowsource *right;
 
-  /* array of size (number of variables in @right) with this row offset value */
-  int* right_map;
+    /* array of size (number of variables in @right) with this row offset value */
+    int *right_map;
 
-  /* array of size (number of variables in @right) holding right row temporarily */
-  rasqal_literal** right_tmp_values;
+    /* array of size (number of variables in @right) holding right row temporarily */
+    rasqal_literal **right_tmp_values;
 
-  /* 0 = reading from left rs, 1 = reading from right rs, 2 = finished */
-  int state;
+    /* 0 = reading from left rs, 1 = reading from right rs, 2 = finished */
+    int state;
 
-  int failed;
+    int failed;
 
-  /* row offset for read_row() */
-  int offset;
+    /* row offset for read_row() */
+    int offset;
 } rasqal_union_rowsource_context;
 
 
 static int
-rasqal_union_rowsource_init(rasqal_rowsource* rowsource, void *user_data) 
-{
-  rasqal_union_rowsource_context* con;
+rasqal_union_rowsource_init(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_union_rowsource_context *con;
 
-  con = (rasqal_union_rowsource_context*)user_data;
-  con->state = 0;
+    con = (rasqal_union_rowsource_context *) user_data;
+    con->state = 0;
 
-  con->failed = 0;
+    con->failed = 0;
 
-  rasqal_rowsource_set_requirements(con->left, RASQAL_ROWSOURCE_REQUIRE_RESET);
-  rasqal_rowsource_set_requirements(con->right, RASQAL_ROWSOURCE_REQUIRE_RESET);
+    rasqal_rowsource_set_requirements(con->left, RASQAL_ROWSOURCE_REQUIRE_RESET);
+    rasqal_rowsource_set_requirements(con->right, RASQAL_ROWSOURCE_REQUIRE_RESET);
 
-  return 0;
+    return 0;
 }
 
 
 static int
-rasqal_union_rowsource_finish(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_union_rowsource_context* con;
-  con = (rasqal_union_rowsource_context*)user_data;
-  if(con->left)
-    rasqal_free_rowsource(con->left);
-  
-  if(con->right)
-    rasqal_free_rowsource(con->right);
-  
-  if(con->right_map)
-    RASQAL_FREE(int, con->right_map);
-  
-  if(con->right_tmp_values)
-    RASQAL_FREE(ptrarray, con->right_tmp_values);
-  
-  RASQAL_FREE(rasqal_union_rowsource_context, con);
+rasqal_union_rowsource_finish(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_union_rowsource_context *con;
+    con = (rasqal_union_rowsource_context *) user_data;
+    if (con->left)
+        rasqal_free_rowsource(con->left);
 
-  return 0;
+    if (con->right)
+        rasqal_free_rowsource(con->right);
+
+    if (con->right_map)
+        RASQAL_FREE(int, con->right_map);
+
+    if (con->right_tmp_values)
+        RASQAL_FREE(ptrarray, con->right_tmp_values);
+
+    RASQAL_FREE(rasqal_union_rowsource_context, con);
+
+    return 0;
 }
 
 
 static int
-rasqal_union_rowsource_ensure_variables(rasqal_rowsource* rowsource,
-                                        void *user_data)
-{
-  rasqal_union_rowsource_context* con;
-  int map_size;
-  int i;
-  
-  con = (rasqal_union_rowsource_context*)user_data;
+rasqal_union_rowsource_ensure_variables(rasqal_rowsource *rowsource,
+                                        void *user_data) {
+    rasqal_union_rowsource_context *con;
+    int map_size;
+    int i;
 
-  if(rasqal_rowsource_ensure_variables(con->left))
-    return 1;
+    con = (rasqal_union_rowsource_context *) user_data;
 
-  if(rasqal_rowsource_ensure_variables(con->right))
-    return 1;
+    if (rasqal_rowsource_ensure_variables(con->left))
+        return 1;
 
-  map_size = rasqal_rowsource_get_size(con->right);
-  con->right_map = RASQAL_MALLOC(int*, RASQAL_GOOD_CAST(size_t,
-                                                        sizeof(int) * RASQAL_GOOD_CAST(size_t, map_size)));
-  if(!con->right_map)
-    return 1;
+    if (rasqal_rowsource_ensure_variables(con->right))
+        return 1;
 
-  con->right_tmp_values = RASQAL_MALLOC(rasqal_literal**,
-                                        sizeof(rasqal_literal*) * RASQAL_GOOD_CAST(size_t, map_size));
-  if(!con->right_tmp_values)
-    return 1;
+    map_size = rasqal_rowsource_get_size(con->right);
+    con->right_map = RASQAL_MALLOC(int*, RASQAL_GOOD_CAST(size_t,
+                                                          sizeof(int) * RASQAL_GOOD_CAST(size_t, map_size)));
+    if (!con->right_map)
+        return 1;
 
-  rowsource->size = 0;
+    con->right_tmp_values = RASQAL_MALLOC(rasqal_literal**,
+                                          sizeof(rasqal_literal *) * RASQAL_GOOD_CAST(size_t, map_size));
+    if (!con->right_tmp_values)
+        return 1;
 
-  /* copy in variables from left rowsource */
-  if(rasqal_rowsource_copy_variables(rowsource, con->left))
-    return 1;
-  
-  /* add any new variables not already seen from right rowsource */
-  for(i = 0; i < map_size; i++) {
-    rasqal_variable* v;
-    int offset;
-    
-    v = rasqal_rowsource_get_variable_by_offset(con->right, i);
-    if(!v)
-      break;
-    offset = rasqal_rowsource_add_variable(rowsource, v);
-    if(offset < 0)
-      return 1;
+    rowsource->size = 0;
 
-    con->right_map[i] = offset;
-  }
+    /* copy in variables from left rowsource */
+    if (rasqal_rowsource_copy_variables(rowsource, con->left))
+        return 1;
 
-  return 0;
+    /* add any new variables not already seen from right rowsource */
+    for (i = 0; i < map_size; i++) {
+        rasqal_variable *v;
+        int offset;
+
+        v = rasqal_rowsource_get_variable_by_offset(con->right, i);
+        if (!v)
+            break;
+        offset = rasqal_rowsource_add_variable(rowsource, v);
+        if (offset < 0)
+            return 1;
+
+        con->right_map[i] = offset;
+    }
+
+    return 0;
 }
 
 
 static void
 rasqal_union_rowsource_adjust_right_row(rasqal_rowsource *rowsource,
-                                        rasqal_union_rowsource_context* con,
-                                        rasqal_row *row)
-{
-  rasqal_rowsource *right_rowsource = con->right;
-  int i;
+                                        rasqal_union_rowsource_context *con,
+                                        rasqal_row *row) {
+    rasqal_rowsource *right_rowsource = con->right;
+    int i;
 
-  /* save right row values */
-  for(i = 0; i < right_rowsource->size; i++)
-    con->right_tmp_values[i] = row->values[i];
+    /* save right row values */
+    for (i = 0; i < right_rowsource->size; i++)
+        con->right_tmp_values[i] = row->values[i];
 
-  /* NULL out other pointers */
-  for(i = 0; i < rowsource->size; i++)
-    row->values[i] = NULL;
+    /* NULL out other pointers */
+    for (i = 0; i < rowsource->size; i++)
+        row->values[i] = NULL;
 
-  /* map them into correct order in result row */
-  for(i = 0; i < right_rowsource->size; i++) {
-    int offset = con->right_map[i];
-    row->values[offset] = con->right_tmp_values[i];
-  }
+    /* map them into correct order in result row */
+    for (i = 0; i < right_rowsource->size; i++) {
+        int offset = con->right_map[i];
+        row->values[offset] = con->right_tmp_values[i];
+    }
 }
 
 
-static rasqal_row*
-rasqal_union_rowsource_read_row(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_union_rowsource_context* con;
-  rasqal_row* row = NULL;
+static rasqal_row *
+rasqal_union_rowsource_read_row(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_union_rowsource_context *con;
+    rasqal_row *row = NULL;
 
-  con = (rasqal_union_rowsource_context*)user_data;
-  
-  if(con->failed || con->state > 1)
-    return NULL;
+    con = (rasqal_union_rowsource_context *) user_data;
 
-  if(con->state == 0) {
-    row = rasqal_rowsource_read_row(con->left);
+    if (con->failed || con->state > 1)
+        return NULL;
+
+    if (con->state == 0) {
+        row = rasqal_rowsource_read_row(con->left);
 #ifdef RASQAL_DEBUG
-    RASQAL_DEBUG2("rowsource %p read left row : ", rowsource);
-    if(row)
-      rasqal_row_print(row, stderr);
-    else
-      fputs("NONE", stderr);
-    fputs("\n", stderr);
+        RASQAL_DEBUG2("rowsource %p read left row : ", rowsource);
+        if(row)
+          rasqal_row_print(row, stderr);
+        else
+          fputs("NONE", stderr);
+        fputs("\n", stderr);
 #endif
 
-    if(!row)
-      con->state = 1;
-    else {
-      /* otherwise: rows from left are correct order but wrong size */
-      if(rasqal_row_expand_size(row, rowsource->size)) {
-        rasqal_free_row(row);
-        return NULL;
-      }
+        if (!row)
+            con->state = 1;
+        else {
+            /* otherwise: rows from left are correct order but wrong size */
+            if (rasqal_row_expand_size(row, rowsource->size)) {
+                rasqal_free_row(row);
+                return NULL;
+            }
+        }
     }
-  }
-  if(!row && con->state == 1) {
-    row = rasqal_rowsource_read_row(con->right);
+    if (!row && con->state == 1) {
+        row = rasqal_rowsource_read_row(con->right);
 #ifdef RASQAL_DEBUG
-    RASQAL_DEBUG2("rowsource %p read right row : ", rowsource);
-    if(row)
-      rasqal_row_print(row, stderr);
-    else
-      fputs("NONE", stderr);
-    fputs("\n", stderr);
+        RASQAL_DEBUG2("rowsource %p read right row : ", rowsource);
+        if(row)
+          rasqal_row_print(row, stderr);
+        else
+          fputs("NONE", stderr);
+        fputs("\n", stderr);
 #endif
 
-    if(!row)
-      /* finished */
-      con->state = 2;
-    else {
-      if(rasqal_row_expand_size(row, rowsource->size)) {
-        rasqal_free_row(row);
-        return NULL;
-      }
-      /* transform row from right to match new projection */
-      rasqal_union_rowsource_adjust_right_row(rowsource, con, row);
+        if (!row)
+            /* finished */
+            con->state = 2;
+        else {
+            if (rasqal_row_expand_size(row, rowsource->size)) {
+                rasqal_free_row(row);
+                return NULL;
+            }
+            /* transform row from right to match new projection */
+            rasqal_union_rowsource_adjust_right_row(rowsource, con, row);
+        }
     }
-  }
 
-  if(row) {
-    rasqal_row_set_rowsource(row, rowsource);
-    row->offset = con->offset++;
-  }
-  
-  return row;
+    if (row) {
+        rasqal_row_set_rowsource(row, rowsource);
+        row->offset = con->offset++;
+    }
+
+    return row;
 }
 
 
-static raptor_sequence*
-rasqal_union_rowsource_read_all_rows(rasqal_rowsource* rowsource,
-                                     void *user_data)
-{
-  rasqal_union_rowsource_context* con;
-  raptor_sequence* seq1 = NULL;
-  raptor_sequence* seq2 = NULL;
-  int left_size;
-  int right_size;
-  int i;
-  
-  con = (rasqal_union_rowsource_context*)user_data;
+static raptor_sequence *
+rasqal_union_rowsource_read_all_rows(rasqal_rowsource *rowsource,
+                                     void *user_data) {
+    rasqal_union_rowsource_context *con;
+    raptor_sequence *seq1 = NULL;
+    raptor_sequence *seq2 = NULL;
+    int left_size;
+    int right_size;
+    int i;
 
-  if(con->failed)
-    return NULL;
-  
-  seq1 = rasqal_rowsource_read_all_rows(con->left);
-  if(!seq1) {
-    con->failed = 1;
-    return NULL;
-  }
+    con = (rasqal_union_rowsource_context *) user_data;
 
-  seq2 = rasqal_rowsource_read_all_rows(con->right);
-  if(!seq2) {
-    con->failed = 1;
-    raptor_free_sequence(seq1);
-    return NULL;
-  }
+    if (con->failed)
+        return NULL;
+
+    seq1 = rasqal_rowsource_read_all_rows(con->left);
+    if (!seq1) {
+        con->failed = 1;
+        return NULL;
+    }
+
+    seq2 = rasqal_rowsource_read_all_rows(con->right);
+    if (!seq2) {
+        con->failed = 1;
+        raptor_free_sequence(seq1);
+        return NULL;
+    }
 
 #ifdef RASQAL_DEBUG
-  fprintf(DEBUG_FH, "left rowsource (%d vars):\n",
-          rasqal_rowsource_get_size(con->left));
-  rasqal_rowsource_print_row_sequence(con->left, seq1, DEBUG_FH);
+    fprintf(DEBUG_FH, "left rowsource (%d vars):\n",
+            rasqal_rowsource_get_size(con->left));
+    rasqal_rowsource_print_row_sequence(con->left, seq1, DEBUG_FH);
 
-  fprintf(DEBUG_FH, "right rowsource (%d vars):\n",
-          rasqal_rowsource_get_size(con->right));
-  rasqal_rowsource_print_row_sequence(con->right, seq2, DEBUG_FH);
+    fprintf(DEBUG_FH, "right rowsource (%d vars):\n",
+            rasqal_rowsource_get_size(con->right));
+    rasqal_rowsource_print_row_sequence(con->right, seq2, DEBUG_FH);
 #endif
 
-  /* transform rows from left to match new projection */
-  left_size = raptor_sequence_size(seq1);
-  for(i = 0; i < left_size; i++) {
-    rasqal_row *row = (rasqal_row*)raptor_sequence_get_at(seq1, i);
-    /* rows from left are correct order but wrong size */
-    rasqal_row_expand_size(row, rowsource->size);
-    rasqal_row_set_rowsource(row, rowsource);
-  }
-  /* transform rows from right to match new projection */
-  right_size = raptor_sequence_size(seq2);
-  for(i = 0; i < right_size; i++) {
-    rasqal_row *row = (rasqal_row*)raptor_sequence_get_at(seq2, i);
-    /* rows from right need resizing and adjusting by offset */
-    rasqal_row_expand_size(row, rowsource->size);
-    rasqal_union_rowsource_adjust_right_row(rowsource, con, row);
-    row->offset += left_size;
-    rasqal_row_set_rowsource(row, rowsource);
-  }
+    /* transform rows from left to match new projection */
+    left_size = raptor_sequence_size(seq1);
+    for (i = 0; i < left_size; i++) {
+        rasqal_row *row = (rasqal_row *) raptor_sequence_get_at(seq1, i);
+        /* rows from left are correct order but wrong size */
+        rasqal_row_expand_size(row, rowsource->size);
+        rasqal_row_set_rowsource(row, rowsource);
+    }
+    /* transform rows from right to match new projection */
+    right_size = raptor_sequence_size(seq2);
+    for (i = 0; i < right_size; i++) {
+        rasqal_row *row = (rasqal_row *) raptor_sequence_get_at(seq2, i);
+        /* rows from right need resizing and adjusting by offset */
+        rasqal_row_expand_size(row, rowsource->size);
+        rasqal_union_rowsource_adjust_right_row(rowsource, con, row);
+        row->offset += left_size;
+        rasqal_row_set_rowsource(row, rowsource);
+    }
 
-  if(raptor_sequence_join(seq1, seq2)) {
-    raptor_free_sequence(seq1);
-    seq1 = NULL;
-  }
-  raptor_free_sequence(seq2);
-  
-  con->state = 2;
-  return seq1;
+    if (raptor_sequence_join(seq1, seq2)) {
+        raptor_free_sequence(seq1);
+        seq1 = NULL;
+    }
+    raptor_free_sequence(seq2);
+
+    con->state = 2;
+    return seq1;
 }
 
 
 static int
-rasqal_union_rowsource_reset(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_union_rowsource_context* con;
-  int rc;
-  
-  con = (rasqal_union_rowsource_context*)user_data;
+rasqal_union_rowsource_reset(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_union_rowsource_context *con;
+    int rc;
 
-  con->state = 0;
-  con->failed = 0;
+    con = (rasqal_union_rowsource_context *) user_data;
 
-  rc = rasqal_rowsource_reset(con->left);
-  if(rc)
-    return rc;
+    con->state = 0;
+    con->failed = 0;
 
-  return rasqal_rowsource_reset(con->right);
+    rc = rasqal_rowsource_reset(con->left);
+    if (rc)
+        return rc;
+
+    return rasqal_rowsource_reset(con->right);
 }
 
 
-static rasqal_rowsource*
-rasqal_union_rowsource_get_inner_rowsource(rasqal_rowsource* rowsource,
-                                           void *user_data, int offset)
-{
-  rasqal_union_rowsource_context *con;
-  con = (rasqal_union_rowsource_context*)user_data;
+static rasqal_rowsource *
+rasqal_union_rowsource_get_inner_rowsource(rasqal_rowsource *rowsource,
+                                           void *user_data, int offset) {
+    rasqal_union_rowsource_context *con;
+    con = (rasqal_union_rowsource_context *) user_data;
 
-  if(offset == 0)
-    return con->left;
-  else if(offset == 1)
-    return con->right;
-  else
-    return NULL;
+    if (offset == 0)
+        return con->left;
+    else if (offset == 1)
+        return con->right;
+    else
+        return NULL;
 }
 
 
 static const rasqal_rowsource_handler rasqal_union_rowsource_handler = {
-  /* .version = */ 1,
-  "union",
-  /* .init = */ rasqal_union_rowsource_init,
-  /* .finish = */ rasqal_union_rowsource_finish,
-  /* .ensure_variables = */ rasqal_union_rowsource_ensure_variables,
-  /* .read_row = */ rasqal_union_rowsource_read_row,
-  /* .read_all_rows = */ rasqal_union_rowsource_read_all_rows,
-  /* .reset = */ rasqal_union_rowsource_reset,
-  /* .set_requirements = */ NULL,
-  /* .get_inner_rowsource = */ rasqal_union_rowsource_get_inner_rowsource,
-  /* .set_origin = */ NULL,
+        /* .version = */ 1,
+                         "union",
+        /* .init = */ rasqal_union_rowsource_init,
+        /* .finish = */ rasqal_union_rowsource_finish,
+        /* .ensure_variables = */ rasqal_union_rowsource_ensure_variables,
+        /* .read_row = */ rasqal_union_rowsource_read_row,
+        /* .read_all_rows = */ rasqal_union_rowsource_read_all_rows,
+        /* .reset = */ rasqal_union_rowsource_reset,
+        /* .set_requirements = */ NULL,
+        /* .get_inner_rowsource = */ rasqal_union_rowsource_get_inner_rowsource,
+        /* .set_origin = */ NULL,
 };
 
 
@@ -385,42 +381,40 @@ static const rasqal_rowsource_handler rasqal_union_rowsource_handler = {
  *
  * Return value: new rowsource or NULL on failure
  */
-rasqal_rowsource*
+rasqal_rowsource *
 rasqal_new_union_rowsource(rasqal_world *world,
-                           rasqal_query* query,
-                           rasqal_rowsource* left,
-                           rasqal_rowsource* right)
-{
-  rasqal_union_rowsource_context* con;
-  int flags = 0;
+                           rasqal_query *query,
+                           rasqal_rowsource *left,
+                           rasqal_rowsource *right) {
+    rasqal_union_rowsource_context *con;
+    int flags = 0;
 
-  if(!world || !query || !left || !right)
-    goto fail;
-  
-  con = RASQAL_CALLOC(rasqal_union_rowsource_context*, 1, sizeof(*con));
-  if(!con)
-    goto fail;
+    if (!world || !query || !left || !right)
+        goto fail;
 
-  con->left = left;
-  con->right = right;
-  
-  return rasqal_new_rowsource_from_handler(world, query,
-                                           con,
-                                           &rasqal_union_rowsource_handler,
-                                           query->vars_table,
-                                           flags);
+    con = RASQAL_CALLOC(rasqal_union_rowsource_context*, 1, sizeof(*con));
+    if (!con)
+        goto fail;
 
-  fail:
-  if(left)
-    rasqal_free_rowsource(left);
-  if(right)
-    rasqal_free_rowsource(right);
-  return NULL;
+    con->left = left;
+    con->right = right;
+
+    return rasqal_new_rowsource_from_handler(world, query,
+                                             con,
+                                             &rasqal_union_rowsource_handler,
+                                             query->vars_table,
+                                             flags);
+
+    fail:
+    if (left)
+        rasqal_free_rowsource(left);
+    if (right)
+        rasqal_free_rowsource(right);
+    return NULL;
 }
 
 
 #endif /* not STANDALONE */
-
 
 
 #ifdef STANDALONE

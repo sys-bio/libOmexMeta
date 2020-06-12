@@ -49,7 +49,8 @@ namespace semsim {
         );
     }
 
-    Triple PhysicalPropertyResource::isPropertyOfTriple(const Subject &subject_metaid, std::string property_metaid) const {
+    Triple
+    PhysicalPropertyResource::isPropertyOfTriple(const Subject &subject_metaid, std::string property_metaid) const {
         return Triple(
                 subject_metaid.getNode(),
                 BiomodelsBiologyQualifier("isPropertyOf").getNode(),
@@ -65,6 +66,7 @@ namespace semsim {
         triples.move_back(p);
         return triples;
     }
+
     Triples PhysicalPropertyResource::toTriples(Subject subject_metaid, std::string property_metaid) const {
         Triple v = isVersionOfTriple(subject_metaid);
         Triple p = isPropertyOfTriple(subject_metaid, property_metaid);

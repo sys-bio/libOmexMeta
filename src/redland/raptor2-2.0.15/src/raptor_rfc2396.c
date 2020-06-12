@@ -24,15 +24,20 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdarg.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 /* Raptor includes */
@@ -49,195 +54,192 @@
  * Create a URI detailed structure from a URI string.
  * 
  **/
-raptor_uri_detail*
-raptor_new_uri_detail(const unsigned char *uri_string)
-{
-  const unsigned char *s = NULL;
-  unsigned char *b = NULL;
-  raptor_uri_detail *ud;
-  size_t uri_len;
+raptor_uri_detail *
+raptor_new_uri_detail(const unsigned char *uri_string) {
+    const unsigned char *s = NULL;
+    unsigned char *b = NULL;
+    raptor_uri_detail *ud;
+    size_t uri_len;
 
-  if(!uri_string)
-    return NULL;
+    if (!uri_string)
+        return NULL;
 
-  uri_len = strlen((const char*)uri_string);
+    uri_len = strlen((const char *) uri_string);
 
-  /* The extra +5 is for the 5 \0s that may be added for each component 
-   * even if the entire URI is empty 
-   */
-  ud = RAPTOR_CALLOC(raptor_uri_detail*, 1, sizeof(*ud) + uri_len + 5 + 1);
-  if(!ud)
-    return NULL;
-  ud->uri_len = uri_len;
-  ud->buffer = (unsigned char*)((unsigned char*)ud + sizeof(raptor_uri_detail));
-  
-  s = uri_string;
-  b = ud->buffer;
+    /* The extra +5 is for the 5 \0s that may be added for each component
+     * even if the entire URI is empty
+     */
+    ud = RAPTOR_CALLOC(raptor_uri_detail*, 1, sizeof(*ud) + uri_len + 5 + 1);
+    if (!ud)
+        return NULL;
+    ud->uri_len = uri_len;
+    ud->buffer = (unsigned char *) ((unsigned char *) ud + sizeof(raptor_uri_detail));
 
-
-  /* Split the URI into it's syntactic components */
-
-  /* 
-   * scheme is checked in more detail since it is important
-   * to recognise absolute URIs for resolving, and it is easy to do.
-   *
-   * scheme = alpha *( alpha | digit | "+" | "-" | "." )
-   *    RFC 2396 section 3.1 Scheme Component
-   */
-  if(*s && isalpha((int)*s)) {
-    s++;
-
-    while(*s && (isalnum((int)*s) ||
-                 (*s == '+') || (*s == '-') || (*s == '.')))
-      s++;
-  
-    if(*s == ':') {
-      /* it matches the URI scheme grammar, so store this as a scheme */
-      ud->scheme = b;
-      ud->scheme_len = s-uri_string;
-
-      while(*uri_string != ':')
-        *b++ = *uri_string++;
-      
-      *b++ = '\0';
-
-      /* and move past the : */
-      s++;
-    } else
-      s = uri_string;
-  }
+    s = uri_string;
+    b = ud->buffer;
 
 
-  /* authority */
-  if(*s && s[1] && *s == '/' && s[1] == '/') {
-    ud->authority = b;
+    /* Split the URI into it's syntactic components */
 
-    s += 2; /* skip "//" */
-    
-    while(*s && *s != '/' && *s != '?' && *s != '#')
-      *b++ = *s++;
-    
-    ud->authority_len = b-ud->authority;
-    
-    *b++ = '\0';
-  }
+    /*
+     * scheme is checked in more detail since it is important
+     * to recognise absolute URIs for resolving, and it is easy to do.
+     *
+     * scheme = alpha *( alpha | digit | "+" | "-" | "." )
+     *    RFC 2396 section 3.1 Scheme Component
+     */
+    if (*s && isalpha((int) *s)) {
+        s++;
+
+        while (*s && (isalnum((int) *s) ||
+                      (*s == '+') || (*s == '-') || (*s == '.')))
+            s++;
+
+        if (*s == ':') {
+            /* it matches the URI scheme grammar, so store this as a scheme */
+            ud->scheme = b;
+            ud->scheme_len = s - uri_string;
+
+            while (*uri_string != ':')
+                *b++ = *uri_string++;
+
+            *b++ = '\0';
+
+            /* and move past the : */
+            s++;
+        } else
+            s = uri_string;
+    }
 
 
-  /* path */
-  if(*s && *s != '?' && *s != '#') {
-    ud->path = b;
-    
-    while(*s && *s != '?' && *s != '#')
-      *b++ = *s++;
+    /* authority */
+    if (*s && s[1] && *s == '/' && s[1] == '/') {
+        ud->authority = b;
 
-    ud->path_len = b-ud->path;
-    
-    *b++ = '\0';
-  }
+        s += 2; /* skip "//" */
+
+        while (*s && *s != '/' && *s != '?' && *s != '#')
+            *b++ = *s++;
+
+        ud->authority_len = b - ud->authority;
+
+        *b++ = '\0';
+    }
 
 
-  /* query */
-  if(*s && *s == '?') {
-    ud->query = b;
-    
-    s++;
-    
-    while(*s && *s != '#')
-      *b++ = *s++;
-    
-    ud->query_len = b-ud->query;
-    
-    *b++ = '\0';
-  }
+    /* path */
+    if (*s && *s != '?' && *s != '#') {
+        ud->path = b;
 
-  
-  /* fragment identifier - RFC2396 Section 4.1 */
-  if(*s && *s == '#') {
-    ud->fragment = b;
-    
-    s++;
-    
-    while(*s)
-      *b++ = *s++;
-    
-    ud->fragment_len = b-ud->fragment;
-    
-    *b='\0';
-  }
+        while (*s && *s != '?' && *s != '#')
+            *b++ = *s++;
 
-  ud->is_hierarchical = (ud->path && *ud->path == '/');
+        ud->path_len = b - ud->path;
 
-  return ud;
+        *b++ = '\0';
+    }
+
+
+    /* query */
+    if (*s && *s == '?') {
+        ud->query = b;
+
+        s++;
+
+        while (*s && *s != '#')
+            *b++ = *s++;
+
+        ud->query_len = b - ud->query;
+
+        *b++ = '\0';
+    }
+
+
+    /* fragment identifier - RFC2396 Section 4.1 */
+    if (*s && *s == '#') {
+        ud->fragment = b;
+
+        s++;
+
+        while (*s)
+            *b++ = *s++;
+
+        ud->fragment_len = b - ud->fragment;
+
+        *b = '\0';
+    }
+
+    ud->is_hierarchical = (ud->path && *ud->path == '/');
+
+    return ud;
 }
 
 
 void
-raptor_free_uri_detail(raptor_uri_detail* uri_detail)
-{
-  /* Also frees the uri_detail->buffer allocated in raptor_uri_parse() */
-  RAPTOR_FREE(raptor_uri_detail, uri_detail);
+raptor_free_uri_detail(raptor_uri_detail *uri_detail) {
+    /* Also frees the uri_detail->buffer allocated in raptor_uri_parse() */
+    RAPTOR_FREE(raptor_uri_detail, uri_detail);
 }
 
 
-unsigned char*
-raptor_uri_detail_to_string(raptor_uri_detail *ud, size_t* len_p)
-{
-  size_t len = 0;
-  unsigned char *buffer, *p;
-  
-  if(ud->scheme)
-    len+= ud->scheme_len+1; /* : */
-  if(ud->authority)
-    len+= 2 + ud->authority_len; /* // */
-  if(ud->path)
-    len+= ud->path_len;
-  if(ud->fragment)
-    len+= 1 + ud->fragment_len; /* # */
-  if(ud->query)
-    len+= 1 + ud->query_len; /* ? */
+unsigned char *
+raptor_uri_detail_to_string(raptor_uri_detail *ud, size_t *len_p) {
+    size_t len = 0;
+    unsigned char *buffer, *p;
 
-  if(len_p)
-    *len_p=len;
-  
-  buffer = RAPTOR_MALLOC(unsigned char*, len + 1);
-  if(!buffer)
-    return NULL;
+    if (ud->scheme)
+        len += ud->scheme_len + 1; /* : */
+    if (ud->authority)
+        len += 2 + ud->authority_len; /* // */
+    if (ud->path)
+        len += ud->path_len;
+    if (ud->fragment)
+        len += 1 + ud->fragment_len; /* # */
+    if (ud->query)
+        len += 1 + ud->query_len; /* ? */
 
-  p = buffer;
-  
-  if(ud->scheme) {
-    unsigned char *src = ud->scheme;
-    while(*src)
-      *p++ = *src++;
-    *p++ = ':';
-  }
-  if(ud->authority) {
-    unsigned char *src = ud->authority;
-    *p++ = '/';
-    *p++ = '/';
-    while(*src)
-      *p++ = *src++;
-  }
-  if(ud->path) {
-    unsigned char *src = ud->path;
-    while(*src)
-      *p++ = *src++;
-  }
-  if(ud->fragment) {
-    unsigned char *src = ud->fragment;
-    *p++ = '#';
-    while(*src)
-      *p++ = *src++;
-  }
-  if(ud->query) {
-    unsigned char *src = ud->query;
-    *p++ = '?';
-    while(*src)
-      *p++ = *src++;
-  }
-  *p='\0';
-  
-  return buffer;
+    if (len_p)
+        *len_p = len;
+
+    buffer = RAPTOR_MALLOC(unsigned char*, len + 1);
+    if (!buffer)
+        return NULL;
+
+    p = buffer;
+
+    if (ud->scheme) {
+        unsigned char *src = ud->scheme;
+        while (*src)
+            *p++ = *src++;
+        *p++ = ':';
+    }
+    if (ud->authority) {
+        unsigned char *src = ud->authority;
+        *p++ = '/';
+        *p++ = '/';
+        while (*src)
+            *p++ = *src++;
+    }
+    if (ud->path) {
+        unsigned char *src = ud->path;
+        while (*src)
+            *p++ = *src++;
+    }
+    if (ud->fragment) {
+        unsigned char *src = ud->fragment;
+        *p++ = '#';
+        while (*src)
+            *p++ = *src++;
+    }
+    if (ud->query) {
+        unsigned char *src = ud->query;
+        *p++ = '?';
+        while (*src)
+            *p++ = *src++;
+    }
+    *p = '\0';
+
+    return buffer;
 }
 
 
@@ -251,174 +253,172 @@ raptor_uri_detail_to_string(raptor_uri_detail *ud, size_t* len_p)
  * Return value: new path length or 0 on failure
  */
 size_t
-raptor_uri_normalize_path(unsigned char* path_buffer, size_t path_len)
-{
-  unsigned char *p, *cur, *prev, *s;
-  unsigned char last_char;
+raptor_uri_normalize_path(unsigned char *path_buffer, size_t path_len) {
+    unsigned char *p, *cur, *prev, *s;
+    unsigned char last_char;
 
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 2
-  RAPTOR_DEBUG3("Input path \"%s\" (%zu)\n", (const char*)path_buffer, path_len);
+    RAPTOR_DEBUG3("Input path \"%s\" (%zu)\n", (const char*)path_buffer, path_len);
 #endif
 
-  /* remove all "./" path components */
-  for(p = (prev = path_buffer); *p; p++) {
-    if(*p != '/')
-      continue;
+    /* remove all "./" path components */
+    for (p = (prev = path_buffer); *p; p++) {
+        if (*p != '/')
+            continue;
 
-    if(p == (prev+1) && *prev == '.') {
-      unsigned char *dest = prev;
-      
-      p++;
-      while(*p)
-        *dest++ = *p++;
-      *dest= '\0';
-      
-      p = prev;
-      path_len -= 2;
-      if(!*p)
-        break;
-    } else {
-      prev = p+1;
+        if (p == (prev + 1) && *prev == '.') {
+            unsigned char *dest = prev;
+
+            p++;
+            while (*p)
+                *dest++ = *p++;
+            *dest = '\0';
+
+            p = prev;
+            path_len -= 2;
+            if (!*p)
+                break;
+        } else {
+            prev = p + 1;
+        }
     }
-  }
-  
-  if(p == (prev+1) && *prev == '.') {
-    /* Remove "." at the end of a path */
-    *prev = '\0';
-    path_len--;
-  }
 
-  
+    if (p == (prev + 1) && *prev == '.') {
+        /* Remove "." at the end of a path */
+        *prev = '\0';
+        path_len--;
+    }
+
+
 #if defined(RAPTOR_DEBUG)
-  if(path_len != strlen((const char*)path_buffer))
-    RAPTOR_FATAL4("Path '%s' length %ld does not match calculated %ld.", (const char*)path_buffer, (long)strlen((const char*)path_buffer), (long)path_len);
+    if(path_len != strlen((const char*)path_buffer))
+      RAPTOR_FATAL4("Path '%s' length %ld does not match calculated %ld.", (const char*)path_buffer, (long)strlen((const char*)path_buffer), (long)path_len);
 #endif
-    
-  /* Remove all "<component>/../" path components */
 
-  /*
-   * The pointers:
-   *            <component>/../<next>
-   *       prev-^       cur-^
-   * and p points to the previous prev (can be NULL)
-   */
-  prev = NULL;
-  cur = NULL;
-  p = NULL;
-  last_char='\0';
-  
-  for(s = path_buffer; *s; last_char=*s++) {
+    /* Remove all "<component>/../" path components */
 
-    /* find the path components */
-    if(*s != '/') {
-      /* If it is the start or following a /, record a new path component */
-      if(!last_char || last_char == '/') {
-        /* Store 2 path components */
-        if(!prev)
-          prev = s;
-        else if(!cur)
-          cur = s;
-      }
-      continue;
+    /*
+     * The pointers:
+     *            <component>/../<next>
+     *       prev-^       cur-^
+     * and p points to the previous prev (can be NULL)
+     */
+    prev = NULL;
+    cur = NULL;
+    p = NULL;
+    last_char = '\0';
+
+    for (s = path_buffer; *s; last_char = *s++) {
+
+        /* find the path components */
+        if (*s != '/') {
+            /* If it is the start or following a /, record a new path component */
+            if (!last_char || last_char == '/') {
+                /* Store 2 path components */
+                if (!prev)
+                    prev = s;
+                else if (!cur)
+                    cur = s;
+            }
+            continue;
+        }
+
+
+        /* Wait till there are two path components */
+        if (!prev || !cur)
+            continue;
+
+#if defined(RAPTOR_DEBUG)
+        if(path_len != strlen((const char*)path_buffer))
+          RAPTOR_FATAL3("Path length %ld does not match calculated %ld.", (long)strlen((const char*)path_buffer), (long)path_len);
+#endif
+
+        /* If the current one is '..' */
+        if (s == (cur + 2) && cur[0] == '.' && cur[1] == '.') {
+
+            /* and if the previous one isn't '..'
+             * (which means it is beyond the root such as a path "/foo/../..")
+             */
+            if (cur != (prev + 3) || prev[0] != '.' || prev[1] != '.') {
+                unsigned char *dest = prev;
+
+                /* remove the <component>/../<next>
+                 *       prev-^       cur-^ ^-s
+                 */
+                size_t len = s - prev + 1; /* length of path component we are removing */
+
+                s++;
+                while (*s)
+                    *dest++ = *s++;
+                *dest = '\0';
+                path_len -= len;
+
+                if (p && p < prev) {
+                    /* We know the previous prev path component and we didn't do
+                     * two adjustments in a row, so can adjust the
+                     * pointers to continue the newly shortened path:
+                     * s to the / before <next> (autoincremented by the loop)
+                     * prev to the previous prev path component
+                     * cur to NULL. Will be set by the next loop iteration since s
+                     *   points to a '/', last_char will be set to *s. */
+                    s = prev - 1;
+                    prev = p;
+                    cur = NULL;
+                    p = NULL;
+                } else {
+                    /* Otherwise must start from the beginning again */
+                    prev = NULL;
+                    cur = NULL;
+                    p = NULL;
+                    s = path_buffer;
+                }
+
+            }
+
+        } else {
+            /* otherwise this is not a special path component so
+             * shift the path components stack
+             */
+            p = prev;
+            prev = cur;
+            cur = NULL;
+        }
+
     }
 
 
-    /* Wait till there are two path components */
-    if(!prev || !cur)
-      continue;
+    if (prev && s == (cur + 2) && cur[0] == '.' && cur[1] == '.') {
+        /* Remove <component>/.. at the end of the path */
+        *prev = '\0';
+        path_len -= (s - prev);
+    }
+
 
 #if defined(RAPTOR_DEBUG)
     if(path_len != strlen((const char*)path_buffer))
       RAPTOR_FATAL3("Path length %ld does not match calculated %ld.", (long)strlen((const char*)path_buffer), (long)path_len);
 #endif
-    
-    /* If the current one is '..' */
-    if(s == (cur+2) && cur[0] == '.' && cur[1] == '.') {
-        
-      /* and if the previous one isn't '..'
-       * (which means it is beyond the root such as a path "/foo/../..")
-       */
-      if(cur != (prev+3) || prev[0] != '.' || prev[1] != '.') {
-        unsigned char *dest = prev;
-        
-        /* remove the <component>/../<next>
-         *       prev-^       cur-^ ^-s 
-         */
-        size_t len = s-prev+1; /* length of path component we are removing */
-        
-        s++;
-        while(*s)
-          *dest++ = *s++;
-        *dest = '\0';
-        path_len -= len;
 
-        if(p && p < prev) {
-          /* We know the previous prev path component and we didn't do
-           * two adjustments in a row, so can adjust the
-           * pointers to continue the newly shortened path:
-           * s to the / before <next> (autoincremented by the loop)
-           * prev to the previous prev path component
-           * cur to NULL. Will be set by the next loop iteration since s
-           *   points to a '/', last_char will be set to *s. */
-          s = prev-1;
-          prev = p;
-          cur = NULL;
-          p = NULL;
-        } else {
-          /* Otherwise must start from the beginning again */
-          prev = NULL;
-          cur = NULL;
-          p = NULL;
-          s = path_buffer;
-        }
-        
-      }
-      
-    } else {
-      /* otherwise this is not a special path component so 
-       * shift the path components stack 
-       */
-      p = prev;
-      prev = cur;
-      cur = NULL;
+    /* RFC3986 Appendix C.2 / 5.4.2 Abnormal Examples
+     * Remove leading /../ and /./
+     */
+    for (p = path_buffer; p;) {
+        if (!strncmp((const char *) p, "/../", 4)) {
+            path_len -= 3;
+            memmove(p, p + 3, path_len + 1);
+        } else if (!strncmp((const char *) p, "/./", 3)) {
+            path_len -= 2;
+            memmove(p, p + 2, path_len + 1);
+        } else
+            break;
     }
 
-  } 
-
-  
-  if(prev && s == (cur+2) && cur[0] == '.' && cur[1] == '.') {
-    /* Remove <component>/.. at the end of the path */
-    *prev = '\0';
-    path_len -= (s-prev);
-  }
-
-
-#if defined(RAPTOR_DEBUG)
-  if(path_len != strlen((const char*)path_buffer))
-    RAPTOR_FATAL3("Path length %ld does not match calculated %ld.", (long)strlen((const char*)path_buffer), (long)path_len);
-#endif
-
-  /* RFC3986 Appendix C.2 / 5.4.2 Abnormal Examples
-   * Remove leading /../ and /./ 
-   */
-  for(p = path_buffer; p; ) {
-    if(!strncmp((const char *)p, "/../", 4)) {
-      path_len -= 3;
-      memmove(p, p+3, path_len+1);
-    } else if(!strncmp((const char *)p, "/./", 3)) {
-      path_len -= 2;
-      memmove(p, p+2, path_len+1);
-    } else
-      break;
-  }
-
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 2
-  fprintf(stderr, "  Normalized path \"%s\" (%zu)\n", path_buffer, path_len);
+    fprintf(stderr, "  Normalized path \"%s\" (%zu)\n", path_buffer, path_len);
 #endif
 
-  return path_len;
-}  
-
+    return path_len;
+}
 
 
 /**
@@ -435,269 +435,266 @@ raptor_uri_normalize_path(unsigned char* path_buffer, size_t path_len)
 size_t
 raptor_uri_resolve_uri_reference(const unsigned char *base_uri,
                                  const unsigned char *reference_uri,
-                                 unsigned char *buffer, size_t length)
-{
-  raptor_uri_detail *ref = NULL;
-  raptor_uri_detail *base = NULL;
-  raptor_uri_detail result; /* static - pointers go to inside ref or base */
-  unsigned char *path_buffer = NULL;
-  unsigned char *p;
-  size_t result_len = 0;
-  size_t l;
-  
+                                 unsigned char *buffer, size_t length) {
+    raptor_uri_detail *ref = NULL;
+    raptor_uri_detail *base = NULL;
+    raptor_uri_detail result; /* static - pointers go to inside ref or base */
+    unsigned char *path_buffer = NULL;
+    unsigned char *p;
+    size_t result_len = 0;
+    size_t l;
+
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 2
-  RAPTOR_DEBUG4("base uri='%s', reference_uri='%s, buffer size %d\n",
-                (base_uri ? (const char*)base_uri : "NULL"),
-                (reference_uri ? (const char*)reference_uri : "NULL"),
-                (int)length);
+    RAPTOR_DEBUG4("base uri='%s', reference_uri='%s, buffer size %d\n",
+                  (base_uri ? (const char*)base_uri : "NULL"),
+                  (reference_uri ? (const char*)reference_uri : "NULL"),
+                  (int)length);
 #endif
 
-  *buffer = '\0';
-  memset(&result, 0, sizeof(result));
+    *buffer = '\0';
+    memset(&result, 0, sizeof(result));
 
-  ref = raptor_new_uri_detail(reference_uri);
-  if(!ref)
-    goto resolve_tidy;
-  
+    ref = raptor_new_uri_detail(reference_uri);
+    if (!ref)
+        goto resolve_tidy;
 
-  /* is reference URI "" or "#frag"? */
-  if(!ref->scheme && !ref->authority && !ref->path && !ref->query) {
-    unsigned char c;
 
-    /* Copy base URI to result up to '\0' or '#' */
-    for(p = buffer, l = length;
-        (c = *base_uri) && c != '#' && l;
-        p++, base_uri++, l--)
-      *p = c;
+    /* is reference URI "" or "#frag"? */
+    if (!ref->scheme && !ref->authority && !ref->path && !ref->query) {
+        unsigned char c;
 
-    if(!l) {
-      result_len = 0;
-      goto resolve_tidy;
+        /* Copy base URI to result up to '\0' or '#' */
+        for (p = buffer, l = length;
+             (c = *base_uri) && c != '#' && l;
+             p++, base_uri++, l--)
+            *p = c;
+
+        if (!l) {
+            result_len = 0;
+            goto resolve_tidy;
+        }
+        *p = '\0';
+
+        if (ref->fragment) {
+            unsigned char *src = ref->fragment;
+            /* Append any fragment */
+            *p++ = '#';
+            while (*src && l) {
+                *p++ = *src++;
+                l--;
+            }
+            if (!l) {
+                result_len = 0;
+                goto resolve_tidy;
+            }
+            *p = '\0';
+        }
+
+        result_len = p - buffer;
+        goto resolve_tidy;
     }
-    *p = '\0';
-    
-    if(ref->fragment) {
-      unsigned char *src = ref->fragment;
-      /* Append any fragment */
-      *p++ = '#';
-      while(*src && l) {
-        *p++ = *src++;
-        l--;
-      }
-      if(!l) {
+
+    /* reference has a scheme - is an absolute URI */
+    if (ref->scheme) {
+        /* Copy over schema and authority */
+        result.scheme = ref->scheme;
+        result.scheme_len = ref->scheme_len;
+        result.authority = ref->authority;
+        result.authority_len = ref->authority_len;
+
+        /* Allocate path so it can be normalized below */
+        result.path_len = ref->path_len;
+        path_buffer = RAPTOR_MALLOC(unsigned char*, result.path_len + 1);
+        if (!path_buffer) {
+            result_len = 0;
+            goto resolve_tidy;
+        }
+        if (ref->path_len)
+            memcpy(path_buffer, ref->path, ref->path_len);
+        path_buffer[result.path_len] = '\0';
+        result.path = path_buffer;
+
+        goto normalize;
+    }
+
+
+    /* now the reference URI must be schemeless, i.e. relative */
+    base = raptor_new_uri_detail(base_uri);
+    if (!base)
+        goto resolve_tidy;
+
+    /* result URI must be of the base URI scheme */
+    result.scheme = base->scheme;
+    result.scheme_len = base->scheme_len;
+
+    /* an authority is given ( [user:pass@]hostname[:port] for http)
+     * so the reference URI is like //authority
+     */
+    if (ref->authority) {
+        result.authority = ref->authority;
+        result.authority_len = ref->authority_len;
+        result.path = ref->path;
+        result.path_len = ref->path_len;
+        goto resolve_end;
+    }
+
+    /* no - so now we have path (maybe with query, fragment) relative to base */
+    result.authority = base->authority;
+    result.authority_len = base->authority_len;
+
+
+    if (ref->is_hierarchical || !base->is_hierarchical) {
+        /* if the reference path is absolute OR the base URI
+         * is a non-hierarchical URI then just copy the reference path
+         * to the result and normalize.
+         */
+        path_buffer = RAPTOR_MALLOC(unsigned char*, ref->path_len + 1);
+        if (!path_buffer) {
+            result_len = 0;
+            goto resolve_tidy;
+        }
+        result.path = path_buffer;
+        result.path_len = ref->path_len;
+        if (ref->path)
+            memcpy(path_buffer, ref->path, result.path_len);
+        path_buffer[result.path_len] = '\0';
+        goto normalize;
+    }
+
+
+    /* need to resolve relative path */
+
+    /* Build the result path in path_buffer */
+    result.path_len = 0;
+
+    if (base->path)
+        result.path_len += base->path_len;
+    else {
+        /* Add a missing path - makes the base URI 1 character longer */
+        base->path = (unsigned char *) "/"; /* static, but copied and not free()d  */
+        base->path_len = 1;
+        base->uri_len++;
+        result.path_len++;
+    }
+
+    if (ref->path)
+        result.path_len += ref->path_len;
+
+    /* the resulting path can be no longer than result.path_len */
+    path_buffer = RAPTOR_MALLOC(unsigned char*, result.path_len + 1);
+    if (!path_buffer) {
         result_len = 0;
         goto resolve_tidy;
-      }
-      *p = '\0';
     }
+    result.path = path_buffer;
+    *path_buffer = '\0';
+
+    if (!ref->path) {
+        /* If there is no reference path, copy the full base over */
+        result.path_len = base->path_len;
+        memcpy(path_buffer, base->path, result.path_len);
+    } else {
+        /** Otherwise copy base path up to previous / and append ref path */
+        for (p = base->path + base->path_len - 1; p > base->path && *p != '/'; p--);
+
+        if (p >= base->path) {
+            result.path_len = p - base->path + 1;
+
+            /* Found a /, copy everything before that to path_buffer */
+            memcpy(path_buffer, base->path, result.path_len);
+            path_buffer[result.path_len] = '\0';
+        }
+
+        memcpy(path_buffer + result.path_len, ref->path, ref->path_len + 1);
+        result.path_len += ref->path_len;
+    }
+    path_buffer[result.path_len] = '\0';
+
+    normalize:
+
+    result.path_len = raptor_uri_normalize_path(path_buffer, result.path_len);
+
+    resolve_end:
+
+    if (ref->query) {
+        result.query = ref->query;
+        result.query_len = ref->query_len;
+    }
+
+    if (ref->fragment) {
+        result.fragment = ref->fragment;
+        result.fragment_len = ref->fragment_len;
+    }
+
+    l = 0;
+    if (result.scheme)
+        l = result.scheme_len + 1;
+    if (result.authority)
+        l += 2 + result.authority_len;
+    if (result.path)
+        l += result.path_len;
+    if (result.query)
+        l += 1 + result.query_len;
+    if (result.fragment)
+        l += 1 + result.fragment_len;
+
+    if (l > length) {
+        /* Output buffer is too small */
+        result_len = 0;
+        goto resolve_tidy;
+    }
+
+    p = buffer;
+    if (result.scheme) {
+        memcpy(p, result.scheme, result.scheme_len);
+        p += result.scheme_len;
+        *p++ = ':';
+    }
+
+    if (result.authority) {
+        *p++ = '/';
+        *p++ = '/';
+        memcpy(p, result.authority, result.authority_len);
+        p += result.authority_len;
+    }
+
+    if (result.path) {
+        memcpy(p, result.path, result.path_len);
+        p += result.path_len;
+    }
+
+    if (result.query) {
+        *p++ = '?';
+        memcpy(p, result.query, result.query_len);
+        p += result.query_len;
+    }
+
+    if (result.fragment) {
+        *p++ = '#';
+        memcpy(p, result.fragment, result.fragment_len);
+        p += result.fragment_len;
+    }
+    *p = '\0';
 
     result_len = p - buffer;
-    goto resolve_tidy;
-  }
-  
-  /* reference has a scheme - is an absolute URI */
-  if(ref->scheme) {
-    /* Copy over schema and authority */
-    result.scheme = ref->scheme;
-    result.scheme_len = ref->scheme_len;
-    result.authority = ref->authority;
-    result.authority_len = ref->authority_len;
-    
-    /* Allocate path so it can be normalized below */
-    result.path_len = ref->path_len;
-    path_buffer = RAPTOR_MALLOC(unsigned char*, result.path_len + 1);
-    if(!path_buffer) {
-      result_len = 0;
-      goto resolve_tidy;
-    }
-    if(ref->path_len)
-      memcpy(path_buffer, ref->path, ref->path_len);
-    path_buffer[result.path_len] = '\0';
-    result.path = path_buffer;
 
-    goto normalize;
-  }
-  
-
-  /* now the reference URI must be schemeless, i.e. relative */
-  base = raptor_new_uri_detail(base_uri);
-  if(!base)
-    goto resolve_tidy;
-
-  /* result URI must be of the base URI scheme */
-  result.scheme = base->scheme;
-  result.scheme_len = base->scheme_len;
-  
-  /* an authority is given ( [user:pass@]hostname[:port] for http)
-   * so the reference URI is like //authority
-   */
-  if(ref->authority) {
-    result.authority = ref->authority;
-    result.authority_len = ref->authority_len;
-    result.path = ref->path;
-    result.path_len = ref->path_len;
-    goto resolve_end;
-  }
-
-  /* no - so now we have path (maybe with query, fragment) relative to base */
-  result.authority = base->authority;
-  result.authority_len = base->authority_len;
-    
-
-  if(ref->is_hierarchical || !base->is_hierarchical) {
-    /* if the reference path is absolute OR the base URI
-     * is a non-hierarchical URI then just copy the reference path
-     * to the result and normalize.
-     */
-    path_buffer = RAPTOR_MALLOC(unsigned char*, ref->path_len + 1);
-    if(!path_buffer) {
-      result_len = 0;
-      goto resolve_tidy;
-    }
-    result.path = path_buffer;
-    result.path_len = ref->path_len;
-    if(ref->path)
-      memcpy(path_buffer, ref->path, result.path_len);
-    path_buffer[result.path_len] = '\0';
-    goto normalize;
-  }
-
-
-  /* need to resolve relative path */
-
-  /* Build the result path in path_buffer */
-  result.path_len = 0;
-
-  if(base->path)
-    result.path_len += base->path_len;
-  else {
-    /* Add a missing path - makes the base URI 1 character longer */
-    base->path = (unsigned char*)"/"; /* static, but copied and not free()d  */
-    base->path_len = 1;
-    base->uri_len++;
-    result.path_len++;
-  }
-
-  if(ref->path)
-    result.path_len += ref->path_len;
-
-  /* the resulting path can be no longer than result.path_len */
-  path_buffer = RAPTOR_MALLOC(unsigned char*, result.path_len + 1);
-  if(!path_buffer) {
-    result_len = 0;
-    goto resolve_tidy;
-  }
-  result.path = path_buffer;
-  *path_buffer = '\0';
-
-  if(!ref->path) {
-    /* If there is no reference path, copy the full base over */
-    result.path_len = base->path_len;
-    memcpy(path_buffer, base->path, result.path_len);
-  } else {
-    /** Otherwise copy base path up to previous / and append ref path */
-    for(p = base->path + base->path_len - 1; p > base->path && *p != '/'; p--)
-      ;
-
-    if(p >= base->path) {
-      result.path_len = p-base->path + 1;
-
-      /* Found a /, copy everything before that to path_buffer */
-      memcpy(path_buffer, base->path, result.path_len);
-      path_buffer[result.path_len] = '\0';
-    }
-
-    memcpy(path_buffer + result.path_len, ref->path, ref->path_len + 1);
-    result.path_len += ref->path_len;
-  }
-  path_buffer[result.path_len] = '\0';
-
-  normalize:
-
-  result.path_len = raptor_uri_normalize_path(path_buffer, result.path_len);
-  
-  resolve_end:
-  
-  if(ref->query) {
-    result.query = ref->query;
-    result.query_len = ref->query_len;
-  }
-  
-  if(ref->fragment) {
-    result.fragment = ref->fragment;
-    result.fragment_len = ref->fragment_len;
-  }
-  
-  l = 0;
-  if(result.scheme)
-    l = result.scheme_len + 1;
-  if(result.authority)
-    l += 2 + result.authority_len;
-  if(result.path)
-    l += result.path_len;
-  if(result.query)
-    l += 1 + result.query_len;
-  if(result.fragment)
-    l += 1 + result.fragment_len;
-
-  if(l > length) {
-    /* Output buffer is too small */
-    result_len = 0;
-    goto resolve_tidy;
-  }
-
-  p = buffer;
-  if(result.scheme) {
-    memcpy(p, result.scheme, result.scheme_len);
-    p += result.scheme_len;
-    *p++ = ':';
-  }
-  
-  if(result.authority) {
-    *p++ = '/';
-    *p++ = '/';
-    memcpy(p, result.authority, result.authority_len);
-    p+= result.authority_len;
-  }
-  
-  if(result.path) {
-    memcpy(p, result.path, result.path_len);
-    p+= result.path_len;
-  }
-  
-  if(result.query) {
-    *p++ = '?';
-    memcpy(p, result.query, result.query_len);
-    p+= result.query_len;
-  }
-  
-  if(result.fragment) {
-    *p++ = '#';
-    memcpy(p, result.fragment, result.fragment_len);
-    p+= result.fragment_len;
-  }
-  *p = '\0';
-  
-  result_len = p - buffer;
-
-  resolve_tidy:
-  if(path_buffer)
-    RAPTOR_FREE(char*, path_buffer);
-  if(base)
-    raptor_free_uri_detail(base);
-  if(ref)
-    raptor_free_uri_detail(ref);
+    resolve_tidy:
+    if (path_buffer)
+        RAPTOR_FREE(char*, path_buffer);
+    if (base)
+        raptor_free_uri_detail(base);
+    if (ref)
+        raptor_free_uri_detail(ref);
 
 #ifdef RAPTOR_DEBUG
-  RAPTOR_ASSERT(result_len && strlen((const char*)buffer) != result_len,
-                "URI string is not declared length");
+    RAPTOR_ASSERT(result_len && strlen((const char*)buffer) != result_len,
+                  "URI string is not declared length");
 #endif
 
-  return result_len;
+    return result_len;
 }
 
 #endif
-
 
 
 #ifdef STANDALONE

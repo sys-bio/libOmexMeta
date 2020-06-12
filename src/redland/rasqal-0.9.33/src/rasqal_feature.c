@@ -23,7 +23,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -33,9 +35,13 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
+
 #include <ctype.h>
 #include <stdarg.h>
 
@@ -44,24 +50,23 @@
 #include "rasqal_internal.h"
 
 
-static const struct
-{
-  rasqal_feature feature;
-  /* flag bits
-   *  1=query feature
-   *  2=unused
-   *  4=string value (else int)
-   */
-  int flags;
-  const char *name;
-  const char *label;
-} rasqal_features_list [RASQAL_FEATURE_LAST + 1]= {
-  { RASQAL_FEATURE_NO_NET,    1,  "noNet",    "Deny network requests." } ,
-  { RASQAL_FEATURE_RAND_SEED, 1,  "randSeed", "Set rand() seed." }
+static const struct {
+    rasqal_feature feature;
+    /* flag bits
+     *  1=query feature
+     *  2=unused
+     *  4=string value (else int)
+     */
+    int flags;
+    const char *name;
+    const char *label;
+} rasqal_features_list[RASQAL_FEATURE_LAST + 1] = {
+        {RASQAL_FEATURE_NO_NET,    1, "noNet",    "Deny network requests."},
+        {RASQAL_FEATURE_RAND_SEED, 1, "randSeed", "Set rand() seed."}
 };
 
 
-static const char * const rasqal_feature_uri_prefix="http://feature.librdf.org/rasqal-";
+static const char *const rasqal_feature_uri_prefix = "http://feature.librdf.org/rasqal-";
 /* NOTE: this is strlen(rasqal_feature_uri_prefix) */
 #define RASQAL_FEATURE_URI_PREFIX_LEN 33
 
@@ -83,39 +88,39 @@ static const char * const rasqal_feature_uri_prefix="http://feature.librdf.org/r
  * Return value: 0 on success, <0 on failure, >0 if feature is unknown
  **/
 static int
-rasqal_features_enumerate_common(rasqal_world* world,
+rasqal_features_enumerate_common(rasqal_world *world,
                                  const rasqal_feature feature,
-                                 const char **name, 
+                                 const char **name,
                                  raptor_uri **uri, const char **label,
-                                 int flags)
-{
-  int i;
+                                 int flags) {
+    int i;
 
-  /* for compatibility with older binaries that do not call it */
-  rasqal_world_open(world);
-  
-  for(i=0; i <= RASQAL_FEATURE_LAST; i++)
-    if(rasqal_features_list[i].feature == feature &&
-       (rasqal_features_list[i].flags & flags)) {
-      if(name)
-        *name=rasqal_features_list[i].name;
-      
-      if(uri) {
-        raptor_uri *base_uri;
-        base_uri = raptor_new_uri(world->raptor_world_ptr, 
-                                  RASQAL_GOOD_CAST(const unsigned char*, rasqal_feature_uri_prefix));
-        if(!base_uri)
-          return -1;
-        *uri = raptor_new_uri_from_uri_local_name(world->raptor_world_ptr, base_uri,
-                                                  RASQAL_GOOD_CAST(const unsigned char*, rasqal_features_list[i].name));
-        raptor_free_uri(base_uri);
-      }
-      if(label)
-        *label=rasqal_features_list[i].label;
-      return 0;
-    }
+    /* for compatibility with older binaries that do not call it */
+    rasqal_world_open(world);
 
-  return 1;
+    for (i = 0; i <= RASQAL_FEATURE_LAST; i++)
+        if (rasqal_features_list[i].feature == feature &&
+            (rasqal_features_list[i].flags & flags)) {
+            if (name)
+                *name = rasqal_features_list[i].name;
+
+            if (uri) {
+                raptor_uri *base_uri;
+                base_uri = raptor_new_uri(world->raptor_world_ptr,
+                                          RASQAL_GOOD_CAST(const unsigned char*, rasqal_feature_uri_prefix));
+                if (!base_uri)
+                    return -1;
+                *uri = raptor_new_uri_from_uri_local_name(world->raptor_world_ptr, base_uri,
+                                                          RASQAL_GOOD_CAST(const unsigned char*,
+                                                                           rasqal_features_list[i].name));
+                raptor_free_uri(base_uri);
+            }
+            if (label)
+                *label = rasqal_features_list[i].label;
+            return 0;
+        }
+
+    return 1;
 }
 
 
@@ -135,14 +140,13 @@ rasqal_features_enumerate_common(rasqal_world* world,
  * Return value: 0 on success, <0 on failure, >0 if feature is unknown
  **/
 int
-rasqal_features_enumerate(rasqal_world* world,
+rasqal_features_enumerate(rasqal_world *world,
                           const rasqal_feature feature,
-                          const char **name, 
-                          raptor_uri **uri, const char **label)
-{
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, rasqal_world, -1);
+                          const char **name,
+                          raptor_uri **uri, const char **label) {
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, rasqal_world, -1);
 
-  return rasqal_features_enumerate_common(world, feature, name, uri, label, 1);
+    return rasqal_features_enumerate_common(world, feature, name, uri, label, 1);
 }
 
 
@@ -160,9 +164,9 @@ rasqal_features_enumerate(rasqal_world* world,
  */
 int
 rasqal_feature_value_type(const rasqal_feature feature) {
-  if(feature > RASQAL_FEATURE_LAST)
-    return -1;
-  return (rasqal_features_list[feature].flags & 4) ? 1 : 0;
+    if (feature > RASQAL_FEATURE_LAST)
+        return -1;
+    return (rasqal_features_list[feature].flags & 4) ? 1 : 0;
 }
 
 
@@ -178,34 +182,33 @@ rasqal_feature_value_type(const rasqal_feature feature) {
  * Return value: < 0 if the feature is unknown
  **/
 rasqal_feature
-rasqal_feature_from_uri(rasqal_world* world, raptor_uri *uri)
-{
-  unsigned char *uri_string;
-  int i;
-  rasqal_feature feature = (rasqal_feature)-1;
-  
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, rasqal_world, feature);
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, rasqal_world, feature);
+rasqal_feature_from_uri(rasqal_world *world, raptor_uri *uri) {
+    unsigned char *uri_string;
+    int i;
+    rasqal_feature feature = (rasqal_feature) -1;
 
-  /* for compatibility with older binaries that do not call it */
-  rasqal_world_open(world);
-  
-  uri_string = raptor_uri_as_string(uri);
-  if(strncmp(RASQAL_GOOD_CAST(const char*, uri_string),
-             rasqal_feature_uri_prefix,
-             RASQAL_FEATURE_URI_PREFIX_LEN))
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, rasqal_world, feature);
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, rasqal_world, feature);
+
+    /* for compatibility with older binaries that do not call it */
+    rasqal_world_open(world);
+
+    uri_string = raptor_uri_as_string(uri);
+    if (strncmp(RASQAL_GOOD_CAST(const char*, uri_string),
+                rasqal_feature_uri_prefix,
+                RASQAL_FEATURE_URI_PREFIX_LEN))
+        return feature;
+
+    uri_string += RASQAL_FEATURE_URI_PREFIX_LEN;
+
+    for (i = 0; i <= RASQAL_FEATURE_LAST; i++)
+        if (!strcmp(rasqal_features_list[i].name,
+                    RASQAL_GOOD_CAST(const char*, uri_string))) {
+            feature = (rasqal_feature) i;
+            break;
+        }
+
     return feature;
-
-  uri_string += RASQAL_FEATURE_URI_PREFIX_LEN;
-
-  for(i = 0; i <= RASQAL_FEATURE_LAST; i++)
-    if(!strcmp(rasqal_features_list[i].name,
-               RASQAL_GOOD_CAST(const char*, uri_string))) {
-      feature = (rasqal_feature)i;
-      break;
-    }
-
-  return feature;
 }
 
 
@@ -222,5 +225,5 @@ rasqal_feature_from_uri(rasqal_world* world, raptor_uri *uri)
  **/
 unsigned int
 rasqal_get_feature_count(void) {
-  return RASQAL_FEATURE_LAST+1;
+    return RASQAL_FEATURE_LAST + 1;
 }

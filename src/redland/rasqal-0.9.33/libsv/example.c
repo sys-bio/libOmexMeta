@@ -42,160 +42,154 @@
 
 
 /* structure used for user data callback */
-typedef struct 
-{
-  const char* filename;
-  int count;
-  char* line;
+typedef struct {
+    const char *filename;
+    int count;
+    char *line;
 } myc;
 
 
-const char* program;
+const char *program;
 
 
 static sv_status_t
-my_sv_line_callback(sv *t, void *user_data, const char* line, size_t length)
-{
-  myc *c = (myc*)user_data;
+my_sv_line_callback(sv *t, void *user_data, const char *line, size_t length) {
+    myc *c = (myc *) user_data;
 
-  if(c->line)
-    free(c->line);
-  c->line = (char*)malloc(length + 1);
-  if(c->line)
-    memcpy(c->line, line, length + 1);
+    if (c->line)
+        free(c->line);
+    c->line = (char *) malloc(length + 1);
+    if (c->line)
+        memcpy(c->line, line, length + 1);
 
-  fprintf(stdout, "%s:%d: Line >>>%s<<<\n", c->filename, sv_get_line(t), line);
+    fprintf(stdout, "%s:%d: Line >>>%s<<<\n", c->filename, sv_get_line(t), line);
 
-  /* This code always succeeds */
-  return SV_STATUS_OK;
+    /* This code always succeeds */
+    return SV_STATUS_OK;
 }
-
 
 
 static sv_status_t
 my_sv_header_callback(sv *t, void *user_data,
-                      char** fields, size_t *widths, size_t count)
-{
-  unsigned int i;
-  myc *c=(myc*)user_data;
-  
-  fprintf(stdout, "%s:%d: Header with %d fields\n",
-          c->filename, sv_get_line(t), (int)count);
-  for(i = 0; i < count; i++)
-    fprintf(stdout, "%3d: '%s' (width %d)\n", (int)i,
-            fields[i], (int)widths[i]);
+                      char **fields, size_t *widths, size_t count) {
+    unsigned int i;
+    myc *c = (myc *) user_data;
 
-  /* This code always succeeds */
-  return SV_STATUS_OK;
+    fprintf(stdout, "%s:%d: Header with %d fields\n",
+            c->filename, sv_get_line(t), (int) count);
+    for (i = 0; i < count; i++)
+        fprintf(stdout, "%3d: '%s' (width %d)\n", (int) i,
+                fields[i], (int) widths[i]);
+
+    /* This code always succeeds */
+    return SV_STATUS_OK;
 }
 
 
 static sv_status_t
 my_sv_fields_callback(sv *t, void *user_data,
-                       char** fields, size_t *widths, size_t count)
-{
-  unsigned int i;
-  myc *c=(myc*)user_data;
-  
-  c->count++;
-  
-  fprintf(stdout, "%s:%d: Record with %d fields\n",
-          c->filename, sv_get_line(t), (int)count);
-  for(i = 0; i < count; i++)
-    fprintf(stdout, 
-            "%3d %-10s: '%s' (width %d)\n", (int)i,
-            sv_get_header(t, i, NULL), fields[i], (int)widths[i]);
+                      char **fields, size_t *widths, size_t count) {
+    unsigned int i;
+    myc *c = (myc *) user_data;
 
-  /* This code always succeeds */
-  return SV_STATUS_OK;
+    c->count++;
+
+    fprintf(stdout, "%s:%d: Record with %d fields\n",
+            c->filename, sv_get_line(t), (int) count);
+    for (i = 0; i < count; i++)
+        fprintf(stdout,
+                "%3d %-10s: '%s' (width %d)\n", (int) i,
+                sv_get_header(t, i, NULL), fields[i], (int) widths[i]);
+
+    /* This code always succeeds */
+    return SV_STATUS_OK;
 }
 
 
 int
-main(int argc, char *argv[])
-{
-  int rc = 0;
-  const char* data_file = NULL;
-  FILE *fh = NULL;
-  sv *t = NULL;
-  myc c;
-  size_t data_file_len;
-  char sep = '\t'; /* default is TSV */
-  
-  program = "example";
-  
-  if(argc != 2) {
-    fprintf(stderr, "USAGE: %s [SV FILE]\n", program);
-    rc = 1;
-    goto tidy;
-  }
+main(int argc, char *argv[]) {
+    int rc = 0;
+    const char *data_file = NULL;
+    FILE *fh = NULL;
+    sv *t = NULL;
+    myc c;
+    size_t data_file_len;
+    char sep = '\t'; /* default is TSV */
 
-  data_file = (const char*)argv[1];
-  if(access(data_file, R_OK)) {
-    fprintf(stderr, "%s: Failed to find data file %s\n",
-            program, data_file);
-    rc = 1;
-    goto tidy;
-  }
+    program = "example";
 
-  fh = fopen(data_file, "r");
-  if(!fh) {
-    fprintf(stderr, "%s: Failed to read data file %s: %s\n",
-            program, data_file, strerror(errno));
-    rc = 1;
-    goto tidy;
-  }
+    if (argc != 2) {
+        fprintf(stderr, "USAGE: %s [SV FILE]\n", program);
+        rc = 1;
+        goto tidy;
+    }
 
-  memset(&c, '\0', sizeof(c));
-  c.filename = data_file;
-  c.count = 0;
-  c.line = NULL;
+    data_file = (const char *) argv[1];
+    if (access(data_file, R_OK)) {
+        fprintf(stderr, "%s: Failed to find data file %s\n",
+                program, data_file);
+        rc = 1;
+        goto tidy;
+    }
 
-  data_file_len = strlen(data_file);
+    fh = fopen(data_file, "r");
+    if (!fh) {
+        fprintf(stderr, "%s: Failed to read data file %s: %s\n",
+                program, data_file, strerror(errno));
+        rc = 1;
+        goto tidy;
+    }
 
-  if(data_file_len > 4) {
-    if(!strcmp(data_file + data_file_len - 3, "csv"))
-      sep = ',';
-    else if(!strcmp(data_file + data_file_len - 3, "tsv"))
-      sep = '\t';
-  }
-  
-  /* save first line as header not data */
-  t = sv_new(&c, my_sv_header_callback, my_sv_fields_callback, sep);
-  if(!t) {
-    fprintf(stderr, "%s: Failed to init SV library", program);
-    rc = 1;
-    goto tidy;
-  }
+    memset(&c, '\0', sizeof(c));
+    c.filename = data_file;
+    c.count = 0;
+    c.line = NULL;
 
-  sv_set_option(t, SV_OPTION_LINE_CALLBACK, my_sv_line_callback);
-  
-  while(!feof(fh)) {
-    char buffer[1024];
-    size_t len = fread(buffer, 1, sizeof(buffer), fh);
-    
-    if(sv_parse_chunk(t, buffer, len))
-      break;
-  }
-  fclose(fh);
-  fh = NULL;
+    data_file_len = strlen(data_file);
 
-  /* Record EOF */
-  sv_parse_chunk(t, NULL, 0);
-  
-  fprintf(stderr, "%s: Saw %d records\n", program, c.count);
-  
- tidy:
-  if(c.line)
-    free(c.line);
+    if (data_file_len > 4) {
+        if (!strcmp(data_file + data_file_len - 3, "csv"))
+            sep = ',';
+        else if (!strcmp(data_file + data_file_len - 3, "tsv"))
+            sep = '\t';
+    }
 
-  if(t)
-    sv_free(t);
+    /* save first line as header not data */
+    t = sv_new(&c, my_sv_header_callback, my_sv_fields_callback, sep);
+    if (!t) {
+        fprintf(stderr, "%s: Failed to init SV library", program);
+        rc = 1;
+        goto tidy;
+    }
 
-  if(fh) {
+    sv_set_option(t, SV_OPTION_LINE_CALLBACK, my_sv_line_callback);
+
+    while (!feof(fh)) {
+        char buffer[1024];
+        size_t len = fread(buffer, 1, sizeof(buffer), fh);
+
+        if (sv_parse_chunk(t, buffer, len))
+            break;
+    }
     fclose(fh);
     fh = NULL;
-  }
-  
-  return rc;
+
+    /* Record EOF */
+    sv_parse_chunk(t, NULL, 0);
+
+    fprintf(stderr, "%s: Saw %d records\n", program, c.count);
+
+    tidy:
+    if (c.line)
+        free(c.line);
+
+    if (t)
+        sv_free(t);
+
+    if (fh) {
+        fclose(fh);
+        fh = NULL;
+    }
+
+    return rc;
 }

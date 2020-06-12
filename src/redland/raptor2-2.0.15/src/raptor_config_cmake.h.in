@@ -1,7 +1,7 @@
 /* raptor_config.h */
 
-#define RAPTOR_VERSION_DECIMAL		@RAPTOR_VERSION_DECIMAL@
-#define RAPTOR_MIN_VERSION_DECIMAL	@RAPTOR_MIN_VERSION_DECIMAL@
+#define RAPTOR_VERSION_DECIMAL        @RAPTOR_VERSION_DECIMAL@
+#define RAPTOR_MIN_VERSION_DECIMAL    @RAPTOR_MIN_VERSION_DECIMAL@
 
 #cmakedefine HAVE_ERRNO_H
 #cmakedefine HAVE_FCNTL_H
@@ -38,11 +38,11 @@
 #cmakedefine HAVE_VSNPRINTF
 #cmakedefine HAVE__VSNPRINTF
 
-#define SIZEOF_UNSIGNED_CHAR		@SIZEOF_UNSIGNED_CHAR@
-#define SIZEOF_UNSIGNED_SHORT		@SIZEOF_UNSIGNED_SHORT@
-#define SIZEOF_UNSIGNED_INT		@SIZEOF_UNSIGNED_INT@
-#define SIZEOF_UNSIGNED_LONG		@SIZEOF_UNSIGNED_LONG@
-#define SIZEOF_UNSIGNED_LONG_LONG	@SIZEOF_UNSIGNED_LONG_LONG@
+#define SIZEOF_UNSIGNED_CHAR        @SIZEOF_UNSIGNED_CHAR@
+#define SIZEOF_UNSIGNED_SHORT        @SIZEOF_UNSIGNED_SHORT@
+#define SIZEOF_UNSIGNED_INT        @SIZEOF_UNSIGNED_INT@
+#define SIZEOF_UNSIGNED_LONG        @SIZEOF_UNSIGNED_LONG@
+#define SIZEOF_UNSIGNED_LONG_LONG    @SIZEOF_UNSIGNED_LONG_LONG@
 
 #cmakedefine HAVE_XMLCTXTUSEOPTIONS
 #cmakedefine HAVE_XMLSAX2INTERNALSUBSET
@@ -90,7 +90,7 @@
 #    if _MSC_VER >= 1300
 #      define __func__		__FUNCTION__
 #    else
-       /* better than nothing */
+/* better than nothing */
 #      define raptor_str(s)	#s
 #      define __func__		"func@" __FILE__ ":" raptor_str(__LINE__)
 #    endif
@@ -102,7 +102,7 @@
 #  define S_ISDIR(mode)		S_ISTYPE((mode), _S_IFDIR)
 #  define S_ISREG(mode)		S_ISTYPE((mode), _S_IFREG)
 
-   /* Mode bits for access() */
+/* Mode bits for access() */
 #  define R_OK 04
 #  define W_OK 02
 
@@ -123,7 +123,7 @@
 #    define vsnprintf		_vsnprintf
 #  endif
 
-   /* These prevent parsedate.c from declaring malloc() and free() */
+/* These prevent parsedate.c from declaring malloc() and free() */
 #  define YYMALLOC malloc
 #  define YYFREE   free
 #endif

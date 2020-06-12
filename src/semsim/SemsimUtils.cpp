@@ -50,7 +50,7 @@ namespace semsim {
     }
 
     std::string SemsimUtils::generateUniqueMetaid(
-            librdf_model* model, std::string metaid_base,
+            librdf_model *model, std::string metaid_base,
             std::vector<std::string> exclusions) {
 
         std::string q = "SELECT ?subject ?predicate ?object\n"
@@ -90,9 +90,9 @@ namespace semsim {
         std::vector<std::string> vec = splitStringBy(uri, '/');
         std::ostringstream os;
         // Uri's we want all begin with http.
-        if (vec[0].rfind("http", 0) != 0 )
+        if (vec[0].rfind("http", 0) != 0)
             throw std::invalid_argument("std::invalid_argument: SemsimUtils::getNamespaceFromUri: \"" + vec[0]
-                + "\". Predicate arguments are URI's, they should begin with \"http\"");
+                                        + "\". Predicate arguments are URI's, they should begin with \"http\"");
 
         os << vec[0] + "//"; // we keep the first part and add back the missing '/'
 
@@ -100,7 +100,7 @@ namespace semsim {
         for (int i = 1; i < vec.size() - 1; i++) {
             os << vec[i] << "/";
         }
-        int last_index = vec.size() -1;
+        int last_index = vec.size() - 1;
 
         // The last element of the list we check for a "#" in namespacebool frag_in_ns = false;
         bool frag_in_ns = false;
@@ -108,7 +108,7 @@ namespace semsim {
             // frag is present
             frag_in_ns = true;
         }
-        if (frag_in_ns){
+        if (frag_in_ns) {
             std::vector<std::string> split_on_hash = SemsimUtils::splitStringBy(vec[last_index], '#');
             os << split_on_hash[0] << "#"; // remember to put it back
         } else {

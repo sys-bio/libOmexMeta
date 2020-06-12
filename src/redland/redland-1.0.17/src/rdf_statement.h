@@ -49,14 +49,14 @@ extern "C" {
  * librdf_new_stream_from_node_iterator().
  */
 typedef enum {
-  LIBRDF_STATEMENT_SUBJECT   = 1 << 0,
-  LIBRDF_STATEMENT_PREDICATE = 1 << 1,
-  LIBRDF_STATEMENT_OBJECT    = 1 << 2,
+    LIBRDF_STATEMENT_SUBJECT = 1 << 0,
+    LIBRDF_STATEMENT_PREDICATE = 1 << 1,
+    LIBRDF_STATEMENT_OBJECT = 1 << 2,
 
-  /* must be a combination of all of the above */
-  LIBRDF_STATEMENT_ALL       = (LIBRDF_STATEMENT_SUBJECT|
-                                LIBRDF_STATEMENT_PREDICATE|
-                                LIBRDF_STATEMENT_OBJECT)
+    /* must be a combination of all of the above */
+    LIBRDF_STATEMENT_ALL = (LIBRDF_STATEMENT_SUBJECT |
+                            LIBRDF_STATEMENT_PREDICATE |
+                            LIBRDF_STATEMENT_OBJECT)
 } librdf_statement_part;
 
 
@@ -64,17 +64,18 @@ typedef enum {
 
 /* Create a new Statement. */
 REDLAND_API
-librdf_statement* librdf_new_statement(librdf_world* world);
+librdf_statement *librdf_new_statement(librdf_world *world);
 
 /* Create a new Statement from an existing Statement - DEEP CLONE */
 REDLAND_API
-librdf_statement* librdf_new_statement_from_statement(librdf_statement* statement);
+librdf_statement *librdf_new_statement_from_statement(librdf_statement *statement);
 /* Create a new Statement from an existing Statement - SHALLOW CLONE */
 REDLAND_API
-librdf_statement* librdf_new_statement_from_statement2(librdf_statement* statement);
+librdf_statement *librdf_new_statement_from_statement2(librdf_statement *statement);
 /* Create a new Statement from existing Nodes */
 REDLAND_API
-librdf_statement* librdf_new_statement_from_nodes(librdf_world *world, librdf_node* subject, librdf_node* predicate, librdf_node* object);
+librdf_statement *
+librdf_new_statement_from_nodes(librdf_world *world, librdf_node *subject, librdf_node *predicate, librdf_node *object);
 
 /* Init a statically allocated statement */
 REDLAND_API
@@ -86,23 +87,23 @@ void librdf_statement_clear(librdf_statement *statement);
 
 /* destructor */
 REDLAND_API
-void librdf_free_statement(librdf_statement* statement);
+void librdf_free_statement(librdf_statement *statement);
 
 
 /* functions / methods */
 
 REDLAND_API
-librdf_node* librdf_statement_get_subject(librdf_statement *statement);
+librdf_node *librdf_statement_get_subject(librdf_statement *statement);
 REDLAND_API
 void librdf_statement_set_subject(librdf_statement *statement, librdf_node *node);
 
 REDLAND_API
-librdf_node* librdf_statement_get_predicate(librdf_statement *statement);
+librdf_node *librdf_statement_get_predicate(librdf_statement *statement);
 REDLAND_API
 void librdf_statement_set_predicate(librdf_statement *statement, librdf_node *node);
 
 REDLAND_API
-librdf_node* librdf_statement_get_object(librdf_statement *statement);
+librdf_node *librdf_statement_get_object(librdf_statement *statement);
 REDLAND_API
 void librdf_statement_set_object(librdf_statement *statement, librdf_node *node);
 
@@ -121,26 +122,30 @@ void librdf_statement_print(librdf_statement *statement, FILE *fh);
 
 /* compare two statements */
 REDLAND_API
-int librdf_statement_equals(librdf_statement* statement1, librdf_statement* statement2);
+int librdf_statement_equals(librdf_statement *statement1, librdf_statement *statement2);
 /* match statement against one with partial content */
 REDLAND_API
-int librdf_statement_match(librdf_statement* statement, librdf_statement* partial_statement);
+int librdf_statement_match(librdf_statement *statement, librdf_statement *partial_statement);
 
 /* serialising/deserialising */
 REDLAND_API REDLAND_DEPRECATED
-size_t librdf_statement_encode(librdf_statement* statement, unsigned char *buffer, size_t length);
+size_t librdf_statement_encode(librdf_statement *statement, unsigned char *buffer, size_t length);
 REDLAND_API
-size_t librdf_statement_encode2(librdf_world* world, librdf_statement* statement, unsigned char *buffer, size_t length);
+size_t librdf_statement_encode2(librdf_world *world, librdf_statement *statement, unsigned char *buffer, size_t length);
 REDLAND_API REDLAND_DEPRECATED
-size_t librdf_statement_encode_parts(librdf_statement* statement, librdf_node* context_node, unsigned char *buffer, size_t length, librdf_statement_part fields);
+size_t librdf_statement_encode_parts(librdf_statement *statement, librdf_node *context_node, unsigned char *buffer,
+                                     size_t length, librdf_statement_part fields);
 REDLAND_API
-size_t librdf_statement_encode_parts2(librdf_world* world, librdf_statement* statement, librdf_node* context_node, unsigned char *buffer, size_t length, librdf_statement_part fields);
+size_t librdf_statement_encode_parts2(librdf_world *world, librdf_statement *statement, librdf_node *context_node,
+                                      unsigned char *buffer, size_t length, librdf_statement_part fields);
 REDLAND_API REDLAND_DEPRECATED
-size_t librdf_statement_decode(librdf_statement* statement, unsigned char *buffer, size_t length);
+size_t librdf_statement_decode(librdf_statement *statement, unsigned char *buffer, size_t length);
 REDLAND_API
-size_t librdf_statement_decode2(librdf_world* world, librdf_statement* statement, librdf_node** context_node, unsigned char *buffer, size_t length);
+size_t librdf_statement_decode2(librdf_world *world, librdf_statement *statement, librdf_node **context_node,
+                                unsigned char *buffer, size_t length);
 REDLAND_API REDLAND_DEPRECATED
-size_t librdf_statement_decode_parts(librdf_statement* statement, librdf_node** context_node, unsigned char *buffer, size_t length);
+size_t librdf_statement_decode_parts(librdf_statement *statement, librdf_node **context_node, unsigned char *buffer,
+                                     size_t length);
 
 
 #ifdef __cplusplus

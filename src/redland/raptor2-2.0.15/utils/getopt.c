@@ -40,10 +40,10 @@
 
 #include <raptor_getopt.h>
 
-int opterr;		/* error => print message */
-int optind;		/* next argv[] index */
-int optopt;		/* Set for unknown arguments */
-char *optarg;		/* option parameter if any */
+int opterr;        /* error => print message */
+int optind;        /* next argv[] index */
+int optopt;        /* Set for unknown arguments */
+char *optarg;        /* option parameter if any */
 
 /*
  * Err:
@@ -52,106 +52,93 @@ char *optarg;		/* option parameter if any */
  * defective option letter
  */
 static int
-Err (char *name, char *mess, int c)		/* returns '?' */
+Err(char *name, char *mess, int c)        /* returns '?' */
 {
-  optopt = c;
-  if(opterr)
-    {
-      (void) fprintf (stderr, "%s: %s -- %c\n", name, mess, c);
+    optopt = c;
+    if (opterr) {
+        (void) fprintf(stderr, "%s: %s -- %c\n", name, mess, c);
     }
 
-  return '?';			/* erroneous-option marker */
+    return '?';            /* erroneous-option marker */
 }
 
 
 int
-getopt (int argc, char * const argv[], const char *optstring)
-{
-  static int sp = 1;		/* position within argument */
-  int osp;		/* saved `sp' for param test */
+getopt(int argc, char *const argv[], const char *optstring) {
+    static int sp = 1;        /* position within argument */
+    int osp;        /* saved `sp' for param test */
 
 #ifndef STRICT
-  int oind;		/* saved `optind' for param test */
+    int oind;        /* saved `optind' for param test */
 #endif
-  int c;		/* option letter */
-  char *cp;		/* -> option in `optstring' */
+    int c;        /* option letter */
+    char *cp;        /* -> option in `optstring' */
 
-  optarg = NULL;
+    optarg = NULL;
 
-  /* initialise getopt vars */
-  if(optind == 0)
-    {
-      optind = 1;
-      opterr = 1;
-      optopt = 1;
-      optarg = NULL;
+    /* initialise getopt vars */
+    if (optind == 0) {
+        optind = 1;
+        opterr = 1;
+        optopt = 1;
+        optarg = NULL;
     }
 
-  if(sp == 1)
-    {				/* fresh argument */
-      if(optind >= argc	/* no more arguments */
-	  || argv[optind][0] != '-'	/* no more options */
-	  || argv[optind][1] == '\0'	/* not option; stdin */
-	)
-	return EOF;
-      else if(strcmp (argv[optind], "--") == 0)
-	{
-	  ++optind;		/* skip over "--" */
-	  return EOF;		/* "--" marks end of options */
-	}
+    if (sp == 1) {                /* fresh argument */
+        if (optind >= argc    /* no more arguments */
+            || argv[optind][0] != '-'    /* no more options */
+            || argv[optind][1] == '\0'    /* not option; stdin */
+                )
+            return EOF;
+        else if (strcmp(argv[optind], "--") == 0) {
+            ++optind;        /* skip over "--" */
+            return EOF;        /* "--" marks end of options */
+        }
     }
 
-  c = argv[optind][sp];		/* option letter */
-  osp = sp++;			/* get ready for next letter */
+    c = argv[optind][sp];        /* option letter */
+    osp = sp++;            /* get ready for next letter */
 
 #ifndef STRICT
-  oind = optind;		/* save optind for param test */
+    oind = optind;        /* save optind for param test */
 #endif
-  if(argv[optind][sp] == '\0')
-    {				/* end of argument */
-      ++optind;			/* get ready for next try */
-      sp = 1;			/* beginning of next argument */
+    if (argv[optind][sp] == '\0') {                /* end of argument */
+        ++optind;            /* get ready for next try */
+        sp = 1;            /* beginning of next argument */
     }
 
-  if(c == ':' 
-      || c == '?'	/* optstring syntax conflict */
-      || (cp = strchr (optstring, c)) == NULL) /* not found */
+    if (c == ':'
+        || c == '?'    /* optstring syntax conflict */
+        || (cp = strchr(optstring, c)) == NULL) /* not found */
     {
-      return Err (argv[0], "illegal option", c);
+        return Err(argv[0], "illegal option", c);
     }
 
-  if(cp[1] == ':')
-    {				/* option takes parameter */
+    if (cp[1] == ':') {                /* option takes parameter */
 #ifdef STRICT
-      if(osp != 1)
-	{
-	  return Err (argv[0], "option must not be clustered", c);
-	}
+        if(osp != 1)
+      {
+        return Err (argv[0], "option must not be clustered", c);
+      }
 
-      /* reset by end of argument */
-      if(sp != 1)
-	{
-	  return Err (argv[0], "option must be followed by white space", c);
-	}
+        /* reset by end of argument */
+        if(sp != 1)
+      {
+        return Err (argv[0], "option must be followed by white space", c);
+      }
 #else
-      if(oind == optind)
-	{			/* argument w/o whitespace */
-	  optarg = &argv[optind][sp];
-	  sp = 1;		/* beginning of next argument */
-	}
-
-      else
+        if (oind == optind) {            /* argument w/o whitespace */
+            optarg = &argv[optind][sp];
+            sp = 1;        /* beginning of next argument */
+        } else
 #endif
-      if(optind >= argc)
-	{
-	  return Err (argv[0], "option requires an argument", c);
-	}
+        if (optind >= argc) {
+            return Err(argv[0], "option requires an argument", c);
+        } else            /* argument w/ whitespace */
+            optarg = argv[optind];
 
-      else			/* argument w/ whitespace */
-	optarg = argv[optind];
-
-      ++optind;			/* skip over parameter */
+        ++optind;            /* skip over parameter */
     }
 
-  return c;
+    return c;
 }

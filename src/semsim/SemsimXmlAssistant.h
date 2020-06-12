@@ -48,7 +48,7 @@ namespace semsim {
     class SBMLAssistant : public SemsimXmlAssistant {
 
     public:
-        std::vector<std::string> getValidElements() const override ;
+        std::vector<std::string> getValidElements() const override;
 
         using SemsimXmlAssistant::SemsimXmlAssistant;
 
@@ -60,7 +60,7 @@ namespace semsim {
     public:
         using SemsimXmlAssistant::SemsimXmlAssistant;
 
-        std::vector<std::string> getValidElements() const override ;
+        std::vector<std::string> getValidElements() const override;
 
     };
 

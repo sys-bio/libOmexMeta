@@ -31,27 +31,29 @@
 #include <redland.h>
 
 int
-main(int argc, char *argv[]) 
-{
-  librdf_world* world;
-  librdf_storage* storage;
-  librdf_model* model;
-  librdf_statement *statement;
+main(int argc, char *argv[]) {
+    librdf_world *world;
+    librdf_storage *storage;
+    librdf_model *model;
+    librdf_statement *statement;
 
-  /* See example1.c for the error checking that should be here */
-  world=librdf_new_world();
-  librdf_world_open(world);
-  storage=librdf_new_storage(world, "file", "file.rdf", NULL);
-  model=librdf_new_model(world, storage, NULL);
-  statement=librdf_new_statement_from_nodes(world, librdf_new_node_from_uri_string(world, (const unsigned char*)"http://example.org/"),
-                                            librdf_new_node_from_uri_string(world, (const unsigned char*)"http://purl.org/dc/elements/1.1/title"),
-                                            librdf_new_node_from_literal(world, (const unsigned char*)"Blah", NULL, 0)
-                                            );
-  librdf_model_add_statement(model, statement);
-  librdf_free_statement(statement);
-  librdf_free_model(model);
-  librdf_free_storage(storage);
-  librdf_free_world(world);
+    /* See example1.c for the error checking that should be here */
+    world = librdf_new_world();
+    librdf_world_open(world);
+    storage = librdf_new_storage(world, "file", "file.rdf", NULL);
+    model = librdf_new_model(world, storage, NULL);
+    statement = librdf_new_statement_from_nodes(world, librdf_new_node_from_uri_string(world,
+                                                                                       (const unsigned char *) "http://example.org/"),
+                                                librdf_new_node_from_uri_string(world,
+                                                                                (const unsigned char *) "http://purl.org/dc/elements/1.1/title"),
+                                                librdf_new_node_from_literal(world, (const unsigned char *) "Blah",
+                                                                             NULL, 0)
+    );
+    librdf_model_add_statement(model, statement);
+    librdf_free_statement(statement);
+    librdf_free_model(model);
+    librdf_free_storage(storage);
+    librdf_free_world(world);
 
-  return(0);
+    return (0);
 }

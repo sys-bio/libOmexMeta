@@ -66,7 +66,7 @@ namespace redland {
 
         void parseString(const std::string &rdf_string, const LibrdfModel &model, const std::string &base_uri) const;
 
-        void parseFile(const std::string& filename_uri, const LibrdfModel &model) const;
+        void parseFile(const std::string &filename_uri, const LibrdfModel &model) const;
 
         void parseUri(const std::string &uri_string, const LibrdfModel &model) const;
 
@@ -84,7 +84,7 @@ namespace redland {
 
         void setTypeUri(librdf_uri *typeUri);
 
-        void setTypeUri(const std::string& type_uri);
+        void setTypeUri(const std::string &type_uri);
 
         librdf_parser *makeParser();
 

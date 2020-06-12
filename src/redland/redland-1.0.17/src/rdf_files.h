@@ -32,7 +32,7 @@ extern "C" {
 
 
 REDLAND_DEPRECATED
-char* librdf_files_temporary_file_name(void);
+char *librdf_files_temporary_file_name(void);
 
 
 #ifdef __cplusplus

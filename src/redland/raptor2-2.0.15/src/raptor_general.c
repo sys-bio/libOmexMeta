@@ -25,17 +25,23 @@
 
 #ifdef HAVE_CONFIG_H
 #endif
+
 #include <raptor_config.h>
 
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdarg.h>
+
 #ifdef HAVE_ERRNO_H
+
 #include <errno.h>
+
 #endif
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 /* Raptor includes */
@@ -43,18 +49,20 @@
 #include "raptor_internal.h"
 
 #ifdef MAINTAINER_MODE
+
 #include <git-version.h>
+
 #endif
 
 /* statics */
 
-const char * const raptor_short_copyright_string = "Copyright 2000-2014 David Beckett. Copyright 2000-2005 University of Bristol";
+const char *const raptor_short_copyright_string = "Copyright 2000-2014 David Beckett. Copyright 2000-2005 University of Bristol";
 
-const char * const raptor_copyright_string = "Copyright (C) 2000-2014 David Beckett - http://www.dajobe.org/\nCopyright (C) 2000-2005 University of Bristol - http://www.bristol.ac.uk/";
+const char *const raptor_copyright_string = "Copyright (C) 2000-2014 David Beckett - http://www.dajobe.org/\nCopyright (C) 2000-2005 University of Bristol - http://www.bristol.ac.uk/";
 
-const char * const raptor_license_string = "LGPL 2.1 or newer, GPL 2 or newer, Apache 2.0 or newer.\nSee http://librdf.org/raptor/LICENSE.html for full terms.";
+const char *const raptor_license_string = "LGPL 2.1 or newer, GPL 2 or newer, Apache 2.0 or newer.\nSee http://librdf.org/raptor/LICENSE.html for full terms.";
 
-const char * const raptor_home_url_string = "http://librdf.org/raptor/";
+const char *const raptor_home_url_string = "http://librdf.org/raptor/";
 
 /**
  * raptor_version_string:
@@ -63,9 +71,9 @@ const char * const raptor_home_url_string = "http://librdf.org/raptor/";
  *
  * See also #raptor_version_decimal.
  */
-const char * const raptor_version_string = RAPTOR_VERSION_STRING
-#ifdef GIT_VERSION
-" GIT " GIT_VERSION
+const char *const raptor_version_string = RAPTOR_VERSION_STRING
+                                          #ifdef GIT_VERSION
+                                          " GIT " GIT_VERSION
 #endif
 ;
 
@@ -121,35 +129,34 @@ const unsigned int raptor_version_decimal = RAPTOR_VERSION_DECIMAL;
  * Return value: uninitialized raptor_world object or NULL on failure
  */
 raptor_world *
-raptor_new_world_internal(unsigned int version_decimal)
-{
-  raptor_world *world;
-  
-  if(version_decimal < RAPTOR_MIN_VERSION_DECIMAL) {
-    fprintf(stderr,
-            "raptor_new_world() called via header from version %u but minimum supported version is %u\n",
-            version_decimal, RAPTOR_MIN_VERSION_DECIMAL);
-    return NULL;
-  }
-  
-  world = RAPTOR_CALLOC(raptor_world*, 1, sizeof(*world));
-  if(world) {
-    world->magic = RAPTOR2_WORLD_MAGIC;
-    
-    /* set default flags - can be updated by raptor_world_set_flag() */
+raptor_new_world_internal(unsigned int version_decimal) {
+    raptor_world *world;
 
-    /* set: RAPTOR_LIBXML_FLAGS_GENERIC_ERROR_SAVE
-     * set: RAPTOR_LIBXML_FLAGS_STRUCTURED_ERROR_SAVE
-     */
-    world->libxml_flags = RAPTOR_WORLD_FLAG_LIBXML_GENERIC_ERROR_SAVE |
-                          RAPTOR_WORLD_FLAG_LIBXML_STRUCTURED_ERROR_SAVE ;
-    /* set: URI Interning */
-    world->uri_interning = 1;
+    if (version_decimal < RAPTOR_MIN_VERSION_DECIMAL) {
+        fprintf(stderr,
+                "raptor_new_world() called via header from version %u but minimum supported version is %u\n",
+                version_decimal, RAPTOR_MIN_VERSION_DECIMAL);
+        return NULL;
+    }
 
-    world->internal_ignore_errors = 0;
-  }
-  
-  return world;
+    world = RAPTOR_CALLOC(raptor_world*, 1, sizeof(*world));
+    if (world) {
+        world->magic = RAPTOR2_WORLD_MAGIC;
+
+        /* set default flags - can be updated by raptor_world_set_flag() */
+
+        /* set: RAPTOR_LIBXML_FLAGS_GENERIC_ERROR_SAVE
+         * set: RAPTOR_LIBXML_FLAGS_STRUCTURED_ERROR_SAVE
+         */
+        world->libxml_flags = RAPTOR_WORLD_FLAG_LIBXML_GENERIC_ERROR_SAVE |
+                              RAPTOR_WORLD_FLAG_LIBXML_STRUCTURED_ERROR_SAVE;
+        /* set: URI Interning */
+        world->uri_interning = 1;
+
+        world->internal_ignore_errors = 0;
+    }
+
+    return world;
 }
 
 
@@ -168,49 +175,48 @@ raptor_new_world_internal(unsigned int version_decimal)
  * Return value: non-0 on failure
  */
 int
-raptor_world_open(raptor_world* world)
-{
-  int rc;
+raptor_world_open(raptor_world *world) {
+    int rc;
 
-  if(!world)
-    return -1;
+    if (!world)
+        return -1;
 
-  if(world->opened)
-    return 0; /* not an error */
+    if (world->opened)
+        return 0; /* not an error */
 
-  world->opened = 1;
+    world->opened = 1;
 
-  rc = raptor_uri_init(world);
-  if(rc)
-    return rc;
+    rc = raptor_uri_init(world);
+    if (rc)
+        return rc;
 
-  rc = raptor_concepts_init(world);
-  if(rc)
-    return rc;
+    rc = raptor_concepts_init(world);
+    if (rc)
+        return rc;
 
-  rc = raptor_parsers_init(world);
-  if(rc)
-    return rc;
+    rc = raptor_parsers_init(world);
+    if (rc)
+        return rc;
 
-  rc = raptor_serializers_init(world);
-  if(rc)
-    return rc;
+    rc = raptor_serializers_init(world);
+    if (rc)
+        return rc;
 
-  rc = raptor_sax2_init(world);
-  if(rc)
-    return rc;
+    rc = raptor_sax2_init(world);
+    if (rc)
+        return rc;
 
-  rc = raptor_www_init(world); 
-  if(rc)
-    return rc;
+    rc = raptor_www_init(world);
+    if (rc)
+        return rc;
 
 #ifdef RAPTOR_XML_LIBXML
-  rc = raptor_libxml_init(world);
-  if(rc)
-    return rc;
+    rc = raptor_libxml_init(world);
+    if (rc)
+        return rc;
 #endif
-  
-  return 0;
+
+    return 0;
 }
 
 
@@ -223,31 +229,30 @@ raptor_world_open(raptor_world* world)
  * Destroys the raptor_world object and all related information.
  */
 void
-raptor_free_world(raptor_world* world)
-{
-  if(!world)
-    return;
+raptor_free_world(raptor_world *world) {
+    if (!world)
+        return;
 
-  if(world->default_generate_bnodeid_handler_prefix)
-    RAPTOR_FREE(char*, world->default_generate_bnodeid_handler_prefix);
+    if (world->default_generate_bnodeid_handler_prefix)
+        RAPTOR_FREE(char*, world->default_generate_bnodeid_handler_prefix);
 
 #ifdef RAPTOR_XML_LIBXML
-  raptor_libxml_finish(world);
+    raptor_libxml_finish(world);
 #endif
 
-  raptor_www_finish(world);
+    raptor_www_finish(world);
 
-  raptor_sax2_finish(world);
+    raptor_sax2_finish(world);
 
-  raptor_serializers_finish(world);
+    raptor_serializers_finish(world);
 
-  raptor_parsers_finish(world);
+    raptor_parsers_finish(world);
 
-  raptor_concepts_finish(world);
+    raptor_concepts_finish(world);
 
-  raptor_uri_finish(world);
+    raptor_uri_finish(world);
 
-  RAPTOR_FREE(raptor_world, world);
+    RAPTOR_FREE(raptor_world, world);
 }
 
 
@@ -271,50 +276,48 @@ raptor_free_world(raptor_world* world)
  * 
  **/
 void
-raptor_world_set_generate_bnodeid_handler(raptor_world* world,
+raptor_world_set_generate_bnodeid_handler(raptor_world *world,
                                           void *user_data,
-                                          raptor_generate_bnodeid_handler handler)
-{
-  world->generate_bnodeid_handler_user_data = user_data;
-  world->generate_bnodeid_handler = handler;
+                                          raptor_generate_bnodeid_handler handler) {
+    world->generate_bnodeid_handler_user_data = user_data;
+    world->generate_bnodeid_handler = handler;
 }
 
 
-static unsigned char*
+static unsigned char *
 raptor_world_default_generate_bnodeid_handler(void *user_data,
-                                              unsigned char *user_bnodeid) 
-{
-  raptor_world *world = (raptor_world*)user_data;
-  int id;
-  unsigned char *buffer;
-  const char* prefix;
-  unsigned int prefix_length;
-  size_t id_length;
+                                              unsigned char *user_bnodeid) {
+    raptor_world *world = (raptor_world *) user_data;
+    int id;
+    unsigned char *buffer;
+    const char *prefix;
+    unsigned int prefix_length;
+    size_t id_length;
 
-  if(user_bnodeid)
-    return user_bnodeid;
+    if (user_bnodeid)
+        return user_bnodeid;
 
-  id = ++world->default_generate_bnodeid_handler_base;
+    id = ++world->default_generate_bnodeid_handler_base;
 
-  id_length = raptor_format_integer(NULL, 0, id, /* base */ 10, -1, '\0');
+    id_length = raptor_format_integer(NULL, 0, id, /* base */ 10, -1, '\0');
 
-  if(world->default_generate_bnodeid_handler_prefix) {
-    prefix = world->default_generate_bnodeid_handler_prefix;
-    prefix_length = world->default_generate_bnodeid_handler_prefix_length;
-  } else {
-    prefix = "genid";
-    prefix_length = 5; /* strlen("genid") */
-  }
+    if (world->default_generate_bnodeid_handler_prefix) {
+        prefix = world->default_generate_bnodeid_handler_prefix;
+        prefix_length = world->default_generate_bnodeid_handler_prefix_length;
+    } else {
+        prefix = "genid";
+        prefix_length = 5; /* strlen("genid") */
+    }
 
-  buffer = RAPTOR_MALLOC(unsigned char*, id_length + prefix_length + 1);
-  if(!buffer)
-    return NULL;
+    buffer = RAPTOR_MALLOC(unsigned char*, id_length + prefix_length + 1);
+    if (!buffer)
+        return NULL;
 
-  memcpy(buffer, prefix, prefix_length);
-  (void)raptor_format_integer(RAPTOR_GOOD_CAST(char*, &buffer[prefix_length]),
-                              id_length + 1, id, /* base */ 10,-1, '\0');
+    memcpy(buffer, prefix, prefix_length);
+    (void) raptor_format_integer(RAPTOR_GOOD_CAST(char*, &buffer[prefix_length]),
+                                 id_length + 1, id, /* base */ 10, -1, '\0');
 
-  return buffer;
+    return buffer;
 }
 
 
@@ -326,22 +329,20 @@ raptor_world_default_generate_bnodeid_handler(void *user_data,
  *
  * Return value: newly allocated generated ID or NULL on failure
  **/
-unsigned char*
-raptor_world_generate_bnodeid(raptor_world *world)
-{
-  return raptor_world_internal_generate_id(world, NULL);
+unsigned char *
+raptor_world_generate_bnodeid(raptor_world *world) {
+    return raptor_world_internal_generate_id(world, NULL);
 }
 
 
-unsigned char*
-raptor_world_internal_generate_id(raptor_world *world, 
-                                  unsigned char *user_bnodeid)
-{
-  if(world->generate_bnodeid_handler)
-    return world->generate_bnodeid_handler(world->generate_bnodeid_handler_user_data,
-                                           user_bnodeid);
-  else
-    return raptor_world_default_generate_bnodeid_handler(world, user_bnodeid);
+unsigned char *
+raptor_world_internal_generate_id(raptor_world *world,
+                                  unsigned char *user_bnodeid) {
+    if (world->generate_bnodeid_handler)
+        return world->generate_bnodeid_handler(world->generate_bnodeid_handler_user_data,
+                                               user_bnodeid);
+    else
+        return raptor_world_default_generate_bnodeid_handler(world, user_bnodeid);
 }
 
 
@@ -367,31 +368,30 @@ raptor_world_internal_generate_id(raptor_world *world,
  * 
  **/
 void
-raptor_world_set_generate_bnodeid_parameters(raptor_world* world, 
-                                             char *prefix, int base)
-{
-  char *prefix_copy = NULL;
-  unsigned int length = 0;
+raptor_world_set_generate_bnodeid_parameters(raptor_world *world,
+                                             char *prefix, int base) {
+    char *prefix_copy = NULL;
+    unsigned int length = 0;
 
-  if(--base < 0)
-    base = 0;
+    if (--base < 0)
+        base = 0;
 
-  if(prefix) {
-    length = RAPTOR_BAD_CAST(unsigned int, strlen(prefix));
-    
-    prefix_copy = RAPTOR_MALLOC(char*, length + 1);
-    if(!prefix_copy)
-      return;
+    if (prefix) {
+        length = RAPTOR_BAD_CAST(unsigned int, strlen(prefix));
 
-    memcpy(prefix_copy, prefix, length+1);
-  }
-  
-  if(world->default_generate_bnodeid_handler_prefix)
-    RAPTOR_FREE(char*, world->default_generate_bnodeid_handler_prefix);
+        prefix_copy = RAPTOR_MALLOC(char*, length + 1);
+        if (!prefix_copy)
+            return;
 
-  world->default_generate_bnodeid_handler_prefix = prefix_copy;
-  world->default_generate_bnodeid_handler_prefix_length = length;
-  world->default_generate_bnodeid_handler_base = base;
+        memcpy(prefix_copy, prefix, length + 1);
+    }
+
+    if (world->default_generate_bnodeid_handler_prefix)
+        RAPTOR_FREE(char*, world->default_generate_bnodeid_handler_prefix);
+
+    world->default_generate_bnodeid_handler_prefix = prefix_copy;
+    world->default_generate_bnodeid_handler_prefix_length = length;
+    world->default_generate_bnodeid_handler_base = base;
 }
 
 
@@ -416,18 +416,17 @@ raptor_world_set_generate_bnodeid_parameters(raptor_world* world,
  * Return value: 0 on success, non-0 on failure: <0 on errors and >0 if world is already opened
  */
 int
-raptor_world_set_libxslt_security_preferences(raptor_world *world, 
-                                              void *security_preferences)
-{
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, raptor_world, -1);
+raptor_world_set_libxslt_security_preferences(raptor_world *world,
+                                              void *security_preferences) {
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, raptor_world, -1);
 
-  if(world->opened)
-    return 1;
+    if (world->opened)
+        return 1;
 
-  world->xslt_security_preferences = security_preferences;
-  world->xslt_security_preferences_policy = 1;
+    world->xslt_security_preferences = security_preferences;
+    world->xslt_security_preferences_policy = 1;
 
-  return 0;
+    return 0;
 }
 
 
@@ -452,34 +451,33 @@ raptor_world_set_libxslt_security_preferences(raptor_world *world,
  * Return value: 0 on success, non-0 on failure: <0 on errors (-1 if flag is unknown, -2 if value is illegal) and >0 if world is already opened
  */
 int
-raptor_world_set_flag(raptor_world *world, raptor_world_flag flag, int value)
-{
-  int rc = 0;
-  
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, raptor_world, -1);
+raptor_world_set_flag(raptor_world *world, raptor_world_flag flag, int value) {
+    int rc = 0;
 
-  if(world->opened)
-    return 1;
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, raptor_world, -1);
 
-  switch(flag) {
-    case RAPTOR_WORLD_FLAG_LIBXML_GENERIC_ERROR_SAVE:
-    case RAPTOR_WORLD_FLAG_LIBXML_STRUCTURED_ERROR_SAVE:
-      if(value)
-        world->libxml_flags |= (int)flag;
-      else
-        world->libxml_flags &= ~(int)flag;
-      break;
+    if (world->opened)
+        return 1;
 
-    case RAPTOR_WORLD_FLAG_URI_INTERNING:
-      world->uri_interning = value;
-      break;
+    switch (flag) {
+        case RAPTOR_WORLD_FLAG_LIBXML_GENERIC_ERROR_SAVE:
+        case RAPTOR_WORLD_FLAG_LIBXML_STRUCTURED_ERROR_SAVE:
+            if (value)
+                world->libxml_flags |= (int) flag;
+            else
+                world->libxml_flags &= ~(int) flag;
+            break;
 
-    case RAPTOR_WORLD_FLAG_WWW_SKIP_INIT_FINISH:
-      world->www_skip_www_init_finish = value;
-      break;
-  }
+        case RAPTOR_WORLD_FLAG_URI_INTERNING:
+            world->uri_interning = value;
+            break;
 
-  return rc;
+        case RAPTOR_WORLD_FLAG_WWW_SKIP_INIT_FINISH:
+            world->www_skip_www_init_finish = value;
+            break;
+    }
+
+    return rc;
 }
 
 
@@ -497,14 +495,13 @@ raptor_world_set_flag(raptor_world *world, raptor_world_flag flag, int value)
  **/
 int
 raptor_world_set_log_handler(raptor_world *world, void *user_data,
-                             raptor_log_handler handler)
-{
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, raptor_world, -1);
+                             raptor_log_handler handler) {
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, raptor_world, -1);
 
-  world->message_handler_user_data = user_data;
-  world->message_handler = handler;
+    world->message_handler_user_data = user_data;
+    world->message_handler = handler;
 
-  return 0;
+    return 0;
 }
 
 
@@ -516,20 +513,19 @@ raptor_world_set_log_handler(raptor_world *world, void *user_data,
  * 
  * Return value: filename part of a pathname
  **/
-const char*
-raptor_basename(const char *name)
-{
-  const char *p;
-  if((p = strrchr(name, '/')))
-    name = p+1;
-  else if((p = strrchr(name, '\\')))
-    name = p+1;
+const char *
+raptor_basename(const char *name) {
+    const char *p;
+    if ((p = strrchr(name, '/')))
+        name = p + 1;
+    else if ((p = strrchr(name, '\\')))
+        name = p + 1;
 
-  return name;
+    return name;
 }
 
 
-const unsigned char * const raptor_xml_literal_datatype_uri_string = (const unsigned char *)"http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral";
+const unsigned char *const raptor_xml_literal_datatype_uri_string = (const unsigned char *) "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral";
 const unsigned int raptor_xml_literal_datatype_uri_string_len = 53;
 
 /**
@@ -541,37 +537,36 @@ const unsigned int raptor_xml_literal_datatype_uri_string_len = 53;
  * Return value: ordinal integer or <0 if string is not a valid ordinal
  */
 int
-raptor_check_ordinal(const unsigned char *name)
-{
-  int ordinal= -1;
-  unsigned char c;
+raptor_check_ordinal(const unsigned char *name) {
+    int ordinal = -1;
+    unsigned char c;
 
-  while((c=*name++)) {
-    if(c < '0' || c > '9')
-      return -1;
-    if(ordinal <0)
-      ordinal = 0;
-    ordinal *= 10;
-    ordinal += (c - '0');
-  }
-  return ordinal;
+    while ((c = *name++)) {
+        if (c < '0' || c > '9')
+            return -1;
+        if (ordinal < 0)
+            ordinal = 0;
+        ordinal *= 10;
+        ordinal += (c - '0');
+    }
+    return ordinal;
 }
 
 
-static const char* const raptor_domain_labels[RAPTOR_DOMAIN_LAST + 1] = {
-  "none",
-  "I/O Stream",
-  "XML Namespace",
-  "RDF Parser",
-  "XML QName",
-  "XML SAX2",
-  "RDF Serializer",
-  "RDF Term",
-  "Turtle Writer",
-  "URI",
-  "World",
-  "WWW",
-  "XML Writer"
+static const char *const raptor_domain_labels[RAPTOR_DOMAIN_LAST + 1] = {
+        "none",
+        "I/O Stream",
+        "XML Namespace",
+        "RDF Parser",
+        "XML QName",
+        "XML SAX2",
+        "RDF Serializer",
+        "RDF Term",
+        "Turtle Writer",
+        "URI",
+        "World",
+        "WWW",
+        "XML Writer"
 };
 
 
@@ -583,19 +578,16 @@ static const char* const raptor_domain_labels[RAPTOR_DOMAIN_LAST + 1] = {
  *
  * Return value: label string or NULL if domain is not valid
  */
-const char*
-raptor_domain_get_label(raptor_domain domain)
-{
-  return (domain <= RAPTOR_DOMAIN_LAST) ? raptor_domain_labels[domain] : NULL;
+const char *
+raptor_domain_get_label(raptor_domain domain) {
+    return (domain <= RAPTOR_DOMAIN_LAST) ? raptor_domain_labels[domain] : NULL;
 }
-
 
 
 /* internal */
 void
-raptor_world_internal_set_ignore_errors(raptor_world* world, int flag)
-{
-  world->internal_ignore_errors = flag;
+raptor_world_internal_set_ignore_errors(raptor_world *world, int flag) {
+    world->internal_ignore_errors = flag;
 }
 
 
@@ -616,12 +608,11 @@ raptor_world_internal_set_ignore_errors(raptor_world* world, int flag)
  *
  **/
 void
-raptor_free_memory(void *ptr)
-{
-  if(!ptr)
-    return;
+raptor_free_memory(void *ptr) {
+    if (!ptr)
+        return;
 
-  RAPTOR_FREE(void, ptr);
+    RAPTOR_FREE(void, ptr);
 }
 
 
@@ -644,10 +635,9 @@ raptor_free_memory(void *ptr)
  * Return value: the address of the allocated memory or NULL on failure
  *
  **/
-void*
-raptor_alloc_memory(size_t size)
-{
-  return RAPTOR_MALLOC(void*, size);
+void *
+raptor_alloc_memory(size_t size) {
+    return RAPTOR_MALLOC(void*, size);
 }
 
 
@@ -671,10 +661,9 @@ raptor_alloc_memory(size_t size)
  * Return value: the address of the allocated memory or NULL on failure
  *
  **/
-void*
-raptor_calloc_memory(size_t nmemb, size_t size)
-{
-  return RAPTOR_CALLOC(void*, nmemb, size);
+void *
+raptor_calloc_memory(size_t nmemb, size_t size) {
+    return RAPTOR_CALLOC(void*, nmemb, size);
 }
 
 
@@ -745,28 +734,27 @@ raptor_sign_free(void *ptr)
 
 
 int
-raptor_check_world_internal(raptor_world* world, const char* name)
-{
-  static int __warned = 0;
+raptor_check_world_internal(raptor_world *world, const char *name) {
+    static int __warned = 0;
 
-  if(!world) {
-    fprintf(stderr, "%s called with NULL world object\n", name);
-    RAPTOR_ASSERT_DIE
-  }
-  
-  /* In Raptor V1 ABI the first int of raptor_world is the 'opened' field */
-  if(world->magic == RAPTOR1_WORLD_MAGIC_1 ||
-     world->magic == RAPTOR1_WORLD_MAGIC_2) {
-    if(!__warned++)
-      fprintf(stderr, "%s called with Raptor V1 world object\n", name);
-    return 1;
-  }
+    if (!world) {
+        fprintf(stderr, "%s called with NULL world object\n", name);
+        RAPTOR_ASSERT_DIE
+    }
 
-  if(world->magic != RAPTOR2_WORLD_MAGIC) {
-    if(!__warned++)
-      fprintf(stderr, "%s called with invalid Raptor V2 world object\n", name);
-    return 1;
-  }
+    /* In Raptor V1 ABI the first int of raptor_world is the 'opened' field */
+    if (world->magic == RAPTOR1_WORLD_MAGIC_1 ||
+        world->magic == RAPTOR1_WORLD_MAGIC_2) {
+        if (!__warned++)
+            fprintf(stderr, "%s called with Raptor V1 world object\n", name);
+        return 1;
+    }
 
-  return 0;
+    if (world->magic != RAPTOR2_WORLD_MAGIC) {
+        if (!__warned++)
+            fprintf(stderr, "%s called with invalid Raptor V2 world object\n", name);
+        return 1;
+    }
+
+    return 0;
 }

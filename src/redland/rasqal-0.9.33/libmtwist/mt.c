@@ -80,20 +80,19 @@ typedef unsigned long uint32_t;
  *
  * Return value: new MT object or NULL on failure
  */
-mtwist*
-mtwist_new(void)
-{
-  mtwist* mt;
-  
-  mt = (mtwist*)calloc(1, sizeof(*mt));
-  if(!mt)
-    return NULL;
-  
-  mt->remaining = 0;
-  mt->next = NULL;
-  mt->seeded = 0;
+mtwist *
+mtwist_new(void) {
+    mtwist *mt;
 
-  return mt;
+    mt = (mtwist *) calloc(1, sizeof(*mt));
+    if (!mt)
+        return NULL;
+
+    mt->remaining = 0;
+    mt->next = NULL;
+    mt->seeded = 0;
+
+    return mt;
 }
 
 
@@ -104,10 +103,9 @@ mtwist_new(void)
  * Destroy a Mersenne Twister object
  */
 void
-mtwist_free(mtwist* mt) 
-{
-  if(mt)
-    free(mt);
+mtwist_free(mtwist *mt) {
+    if (mt)
+        free(mt);
 }
 
 
@@ -119,42 +117,40 @@ mtwist_free(mtwist* mt)
  * Initialise a Mersenne Twister with an unsigned 32 bit int seed
  */
 void
-mtwist_init(mtwist* mt, unsigned long seed)
-{
-  int i;
+mtwist_init(mtwist *mt, unsigned long seed) {
+    int i;
 
-  if(!mt)
-    return;
-  
-  mt->state[0] = (uint32_t)(seed & MTWIST_FULL_MASK);
-  for(i = 1; i < MTWIST_N; i++) {
-    mt->state[i] = (UINT32_C(1812433253) * (mt->state[i - 1] ^ (mt->state[i - 1] >> 30)) + i); 
-    mt->state[i] &= MTWIST_FULL_MASK;
-  }
+    if (!mt)
+        return;
 
-  mt->remaining = 0;
-  mt->next = NULL;
+    mt->state[0] = (uint32_t) (seed & MTWIST_FULL_MASK);
+    for (i = 1; i < MTWIST_N; i++) {
+        mt->state[i] = (UINT32_C(1812433253) * (mt->state[i - 1] ^ (mt->state[i - 1] >> 30)) + i);
+        mt->state[i] &= MTWIST_FULL_MASK;
+    }
 
-  mt->seeded = 1;
+    mt->remaining = 0;
+    mt->next = NULL;
+
+    mt->seeded = 1;
 }
 
 
 static void
-mtwist_update_state(mtwist* mt)
-{
-  int count;
-  uint32_t *p = mt->state;
+mtwist_update_state(mtwist *mt) {
+    int count;
+    uint32_t *p = mt->state;
 
-  for(count = (MTWIST_N - MTWIST_M + 1); --count; p++)
-    *p = p[MTWIST_M] ^ MTWIST_TWIST(p[0], p[1]);
+    for (count = (MTWIST_N - MTWIST_M + 1); --count; p++)
+        *p = p[MTWIST_M] ^ MTWIST_TWIST(p[0], p[1]);
 
-  for(count = MTWIST_M; --count; p++)
-    *p = p[MTWIST_M - MTWIST_N] ^ MTWIST_TWIST(p[0], p[1]);
+    for (count = MTWIST_M; --count; p++)
+        *p = p[MTWIST_M - MTWIST_N] ^ MTWIST_TWIST(p[0], p[1]);
 
-  *p = p[MTWIST_M - MTWIST_N] ^ MTWIST_TWIST(p[0], mt->state[0]);
+    *p = p[MTWIST_M - MTWIST_N] ^ MTWIST_TWIST(p[0], mt->state[0]);
 
-  mt->remaining = MTWIST_N;
-  mt->next = mt->state;
+    mt->remaining = MTWIST_N;
+    mt->next = mt->state;
 }
 
 
@@ -167,31 +163,30 @@ mtwist_update_state(mtwist* mt)
  * Return value: unsigned long with 32 valid bits
  */
 unsigned long
-mtwist_u32rand(mtwist* mt)
-{
-  uint32_t r;
+mtwist_u32rand(mtwist *mt) {
+    uint32_t r;
 
-  if(!mt)
-    return 0UL;
+    if (!mt)
+        return 0UL;
 
-  if(!mt->seeded)
-    mtwist_init(mt, mtwist_seed_from_system(mt));
+    if (!mt->seeded)
+        mtwist_init(mt, mtwist_seed_from_system(mt));
 
-  if(!mt->remaining)
-    mtwist_update_state(mt);
-  
-  r = *mt->next++;
-  mt->remaining--;
+    if (!mt->remaining)
+        mtwist_update_state(mt);
 
-  /* Tempering */
-  r ^= (r >> 11);
-  r ^= (r << 7) & UINT32_C(0x9D2C5680);
-  r ^= (r << 15) & UINT32_C(0xEFC60000);
-  r ^= (r >> 18);
+    r = *mt->next++;
+    mt->remaining--;
 
-  r &= MTWIST_FULL_MASK;
+    /* Tempering */
+    r ^= (r >> 11);
+    r ^= (r << 7) & UINT32_C(0x9D2C5680);
+    r ^= (r << 15) & UINT32_C(0xEFC60000);
+    r ^= (r >> 18);
 
-  return (unsigned long)r;
+    r &= MTWIST_FULL_MASK;
+
+    return (unsigned long) r;
 }
 
 
@@ -203,17 +198,16 @@ mtwist_u32rand(mtwist* mt)
  *
  * Return value: random double in the range 0.0 inclusive to 1.0 exclusive; [0.0, 1.0) */
 double
-mtwist_drand(mtwist* mt)
-{
-  unsigned long r;
-  double d;
+mtwist_drand(mtwist *mt) {
+    unsigned long r;
+    double d;
 
-  if(!mt)
-    return 0.0;
+    if (!mt)
+        return 0.0;
 
-  r = mtwist_u32rand(mt);
+    r = mtwist_u32rand(mt);
 
-  d = r / 4294967296.0; /* 2^32 */
+    d = r / 4294967296.0; /* 2^32 */
 
-  return d;
+    return d;
 }

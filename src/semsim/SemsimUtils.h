@@ -36,7 +36,7 @@ namespace semsim {
         static std::vector<std::string> splitStringBy(const std::string &str, char delimiter);
 
         static std::string generateUniqueMetaid(
-                librdf_model* model, std::string metaid_base,
+                librdf_model *model, std::string metaid_base,
                 std::vector<std::string> exclusions = std::vector<std::string>()
         );
 
@@ -49,7 +49,7 @@ namespace semsim {
          * Example: www.uri.com/identifer/PD12345 will
          * turn into www.uri.com/identifier/
          */
-        static std::string getNamespaceFromUri(const std::string& uri);
+        static std::string getNamespaceFromUri(const std::string &uri);
 
     };
 }

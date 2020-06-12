@@ -29,7 +29,7 @@ namespace redland {
             : uri_(uri) {}
 
     LibrdfUri::LibrdfUri(const std::string &uri)
-        : uri_(librdf_new_uri(World::getWorld(), (const unsigned char *) uri.c_str())){
+            : uri_(librdf_new_uri(World::getWorld(), (const unsigned char *) uri.c_str())) {
     }
 
     std::string LibrdfUri::str() const {
@@ -57,7 +57,7 @@ namespace redland {
     }
 
     void LibrdfUri::freeUri() {
-        if (uri_ != nullptr){
+        if (uri_ != nullptr) {
             librdf_free_uri(uri_);
             uri_ = nullptr;
         }
@@ -65,17 +65,17 @@ namespace redland {
     }
 
     LibrdfUri LibrdfUri::fromFilename(const std::string &filename) {
-        librdf_uri* uri = librdf_new_uri_from_filename(World::getWorld(), filename.c_str());
+        librdf_uri *uri = librdf_new_uri_from_filename(World::getWorld(), filename.c_str());
         return LibrdfUri(uri);
     }
 
-    LibrdfUri LibrdfUri::concatonate(librdf_uri* old_name, const std::string& local_name ) {
-        librdf_uri* uri = librdf_new_uri_from_uri_local_name(old_name, (const unsigned char*)local_name.c_str());
+    LibrdfUri LibrdfUri::concatonate(librdf_uri *old_name, const std::string &local_name) {
+        librdf_uri *uri = librdf_new_uri_from_uri_local_name(old_name, (const unsigned char *) local_name.c_str());
         return LibrdfUri(uri);
     }
 
-    LibrdfUri LibrdfUri::concatonate(const std::string& local_name ) const {
-        librdf_uri* uri = librdf_new_uri_from_uri_local_name(get(), (const unsigned char*)local_name.c_str());
+    LibrdfUri LibrdfUri::concatonate(const std::string &local_name) const {
+        librdf_uri *uri = librdf_new_uri_from_uri_local_name(get(), (const unsigned char *) local_name.c_str());
         return LibrdfUri(uri);
     }
 
@@ -86,11 +86,11 @@ namespace redland {
     }
 
     std::string LibrdfUri::toFilenameString() const {
-        if (!isFileUri()){
+        if (!isFileUri()) {
             throw std::logic_error("std::logic_error: LibrdfUri::toFilenameString(): Uri is not a Filename type uri. ");
         }
-        char* string = (char*)librdf_uri_to_filename(get());
-        std::string s = (const char*)string;
+        char *string = (char *) librdf_uri_to_filename(get());
+        std::string s = (const char *) string;
         free(string);
         return s;
     }

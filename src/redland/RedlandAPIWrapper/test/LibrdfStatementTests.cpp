@@ -47,7 +47,8 @@ TEST_F(LibrdfStatementTests, TestMoveConstructor) {
 }
 
 TEST_F(LibrdfStatementTests, TestCopyAssignment) {
-    redland::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate), std::move(resource));
+    redland::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate),
+                                                          std::move(resource));
     redland::LibrdfStatement statement2 = statement1;
     std::string actual1 = statement1.getSubjectStr();
     std::string actual2 = statement2.getSubjectStr();

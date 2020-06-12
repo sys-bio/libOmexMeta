@@ -22,7 +22,9 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -31,9 +33,13 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
+
 #include <stdarg.h>
 
 #include "rasqal.h"
@@ -52,30 +58,28 @@
  *
  * Return value: a new #rasqal_bindings object or NULL on failure
  **/
-rasqal_bindings*
-rasqal_new_bindings(rasqal_query* query,
-                    raptor_sequence* variables,
-                    raptor_sequence* rows)
-{
-  rasqal_bindings* bindings;
+rasqal_bindings *
+rasqal_new_bindings(rasqal_query *query,
+                    raptor_sequence *variables,
+                    raptor_sequence *rows) {
+    rasqal_bindings *bindings;
 
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, rasqal_query, NULL);
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(variables, raptor_sequence, NULL);
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, rasqal_query, NULL);
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(variables, raptor_sequence, NULL);
 
-  bindings = RASQAL_CALLOC(rasqal_bindings*, 1, sizeof(*bindings));
-  if(!bindings)
-    return NULL;
+    bindings = RASQAL_CALLOC(rasqal_bindings*, 1, sizeof(*bindings));
+    if (!bindings)
+        return NULL;
 
-  bindings->usage = 1;
-  bindings->query = query;
-  bindings->variables = variables;
-  bindings->rows = rows;
+    bindings->usage = 1;
+    bindings->query = query;
+    bindings->variables = variables;
+    bindings->rows = rows;
 
-  return bindings;
+    return bindings;
 }
 
 
-  
 /*
  * rasqal_new_bindings_from_bindings:
  * @bindings: #rasqal_bindings to copy
@@ -86,15 +90,14 @@ rasqal_new_bindings(rasqal_query* query,
  *
  * Return value: a new #rasqal_bindings or NULL on failure.
  **/
-rasqal_bindings*
-rasqal_new_bindings_from_bindings(rasqal_bindings* bindings)
-{
-  if(!bindings)
-    return NULL;
-  
-  bindings->usage++;
+rasqal_bindings *
+rasqal_new_bindings_from_bindings(rasqal_bindings *bindings) {
+    if (!bindings)
+        return NULL;
 
-  return bindings;
+    bindings->usage++;
+
+    return bindings;
 }
 
 
@@ -110,86 +113,86 @@ rasqal_new_bindings_from_bindings(rasqal_bindings* bindings)
  *
  * Return value: a new #rasqal_bindings object or NULL on failure
  **/
-rasqal_bindings*
-rasqal_new_bindings_from_var_values(rasqal_query* query,
-                                    rasqal_variable* var,
-                                    raptor_sequence* values)
-{
-  rasqal_bindings* bindings = NULL;
-  raptor_sequence* varlist = NULL;
-  rasqal_row* row = NULL;
-  raptor_sequence* rowlist = NULL;
-  int size = 0;
-  int i;
+rasqal_bindings *
+rasqal_new_bindings_from_var_values(rasqal_query *query,
+                                    rasqal_variable *var,
+                                    raptor_sequence *values) {
+    rasqal_bindings *bindings = NULL;
+    raptor_sequence *varlist = NULL;
+    rasqal_row *row = NULL;
+    raptor_sequence *rowlist = NULL;
+    int size = 0;
+    int i;
 
 
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, rasqal_query, NULL);
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(var, rasqal_variable, NULL);
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, rasqal_query, NULL);
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(var, rasqal_variable, NULL);
 
-#if defined(RASQAL_DEBUG) && RASQAL_DEBUG > 1  
-  RASQAL_DEBUG1("binding ");
-  rasqal_variable_print(var, stderr);
-  fputs(" and row values ", stderr);
-  raptor_sequence_print(values, stderr);
-  fputc('\n', stderr);
+#if defined(RASQAL_DEBUG) && RASQAL_DEBUG > 1
+    RASQAL_DEBUG1("binding ");
+    rasqal_variable_print(var, stderr);
+    fputs(" and row values ", stderr);
+    raptor_sequence_print(values, stderr);
+    fputc('\n', stderr);
 #endif
 
-  varlist = raptor_new_sequence((raptor_data_free_handler)rasqal_free_variable,
-                                (raptor_data_print_handler)rasqal_variable_print);
-  if(!varlist) {
-    RASQAL_DEBUG1("Cannot create varlist sequence");
-    goto tidy;
-  }
+    varlist = raptor_new_sequence((raptor_data_free_handler) rasqal_free_variable,
+                                  (raptor_data_print_handler) rasqal_variable_print);
+    if (!varlist) {
+        RASQAL_DEBUG1("Cannot create varlist sequence");
+        goto tidy;
+    }
 
-  if(raptor_sequence_push(varlist, var)) {
-    RASQAL_DEBUG1("varlist sequence push failed");
-    goto tidy;
-  }
-  var = NULL;
+    if (raptor_sequence_push(varlist, var)) {
+        RASQAL_DEBUG1("varlist sequence push failed");
+        goto tidy;
+    }
+    var = NULL;
 
-  if(values)
-    size = raptor_sequence_size(values);
+    if (values)
+        size = raptor_sequence_size(values);
 
-  row = rasqal_new_row_for_size(query->world, size);
-  if(!row) {
-    RASQAL_DEBUG1("cannot create row");
-    goto tidy;
-  }
+    row = rasqal_new_row_for_size(query->world, size);
+    if (!row) {
+        RASQAL_DEBUG1("cannot create row");
+        goto tidy;
+    }
 
-  for(i = 0; i < size; i++) {
-    rasqal_literal* value = (rasqal_literal*)raptor_sequence_get_at(values, i);
-    rasqal_row_set_value_at(row, i, value);
-  }
+    for (i = 0; i < size; i++) {
+        rasqal_literal *value = (rasqal_literal *) raptor_sequence_get_at(values, i);
+        rasqal_row_set_value_at(row, i, value);
+    }
 
-  rowlist = raptor_new_sequence((raptor_data_free_handler)rasqal_free_row,
-                                (raptor_data_print_handler)rasqal_row_print);
-  if(!rowlist) {
-    RASQAL_DEBUG1("cannot create rowlist sequence");
-    goto tidy;
-  }
+    rowlist = raptor_new_sequence((raptor_data_free_handler) rasqal_free_row,
+                                  (raptor_data_print_handler) rasqal_row_print);
+    if (!rowlist) {
+        RASQAL_DEBUG1("cannot create rowlist sequence");
+        goto tidy;
+    }
 
-  if(raptor_sequence_push(rowlist, row)) {
-    RASQAL_DEBUG1("rowlist sequence push failed");
-    goto tidy;
-  }
-  row = NULL;
+    if (raptor_sequence_push(rowlist, row)) {
+        RASQAL_DEBUG1("rowlist sequence push failed");
+        goto tidy;
+    }
+    row = NULL;
 
-  bindings = rasqal_new_bindings(query, varlist, rowlist);
-  varlist = NULL; rowlist = NULL;
+    bindings = rasqal_new_bindings(query, varlist, rowlist);
+    varlist = NULL;
+    rowlist = NULL;
 
-tidy:
-  if(row)
-    rasqal_free_row(row);
-  if(rowlist)
-    raptor_free_sequence(rowlist);
-  if(varlist)
-    raptor_free_sequence(varlist);
-  if(var)
-    rasqal_free_variable(var);
-  if(values)
-    raptor_free_sequence(values);
+    tidy:
+    if (row)
+        rasqal_free_row(row);
+    if (rowlist)
+        raptor_free_sequence(rowlist);
+    if (varlist)
+        raptor_free_sequence(varlist);
+    if (var)
+        rasqal_free_variable(var);
+    if (values)
+        raptor_free_sequence(values);
 
-  return bindings;
+    return bindings;
 }
 
 
@@ -201,19 +204,18 @@ tidy:
  * 
  **/
 void
-rasqal_free_bindings(rasqal_bindings* bindings)
-{
-  if(!bindings)
-    return;
-  
-  if(--bindings->usage)
-    return;
-  
-  raptor_free_sequence(bindings->variables);
-  if(bindings->rows)
-    raptor_free_sequence(bindings->rows);
-  
-  RASQAL_FREE(rasqal_bindings, bindings);
+rasqal_free_bindings(rasqal_bindings *bindings) {
+    if (!bindings)
+        return;
+
+    if (--bindings->usage)
+        return;
+
+    raptor_free_sequence(bindings->variables);
+    if (bindings->rows)
+        raptor_free_sequence(bindings->rows);
+
+    RASQAL_FREE(rasqal_bindings, bindings);
 }
 
 
@@ -229,29 +231,28 @@ rasqal_free_bindings(rasqal_bindings* bindings)
  * Return value: non-0 on failure
  **/
 int
-rasqal_bindings_print(rasqal_bindings* bindings, FILE* fh)
-{
-  int i;
+rasqal_bindings_print(rasqal_bindings *bindings, FILE *fh) {
+    int i;
 
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(bindings, rasqal_bindings, 1);
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(fh, FILE*, 1);
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(bindings, rasqal_bindings, 1);
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(fh, FILE*, 1);
 
-  fputs("\n  variables: ", fh);
-  raptor_sequence_print(bindings->variables, fh);
-  fputs("\n  rows: [\n    ", fh);
+    fputs("\n  variables: ", fh);
+    raptor_sequence_print(bindings->variables, fh);
+    fputs("\n  rows: [\n    ", fh);
 
-  if(bindings->rows) {
-    for(i = 0; i < raptor_sequence_size(bindings->rows); i++) {
-      rasqal_row* row;
-      row = (rasqal_row*)raptor_sequence_get_at(bindings->rows, i);
-      if(i > 0)
-        fputs("\n    ", fh);
-      rasqal_row_print(row, fh);
+    if (bindings->rows) {
+        for (i = 0; i < raptor_sequence_size(bindings->rows); i++) {
+            rasqal_row *row;
+            row = (rasqal_row *) raptor_sequence_get_at(bindings->rows, i);
+            if (i > 0)
+                fputs("\n    ", fh);
+            rasqal_row_print(row, fh);
+        }
     }
-  }
-  fputs("\n  ]\n", fh);
+    fputs("\n  ]\n", fh);
 
-  return 0;
+    return 0;
 }
 
 /*
@@ -263,16 +264,15 @@ rasqal_bindings_print(rasqal_bindings* bindings, FILE* fh)
  *
  * Return value: new row or NULL if out of range
  */
-rasqal_row*
-rasqal_bindings_get_row(rasqal_bindings* bindings, int offset)
-{
-  rasqal_row* row = NULL;
+rasqal_row *
+rasqal_bindings_get_row(rasqal_bindings *bindings, int offset) {
+    rasqal_row *row = NULL;
 
-  if(bindings->rows) {
-    row = (rasqal_row*)raptor_sequence_get_at(bindings->rows, offset);
-    if(row)
-      row = rasqal_new_row_from_row(row);
-  }
+    if (bindings->rows) {
+        row = (rasqal_row *) raptor_sequence_get_at(bindings->rows, offset);
+        if (row)
+            row = rasqal_new_row_from_row(row);
+    }
 
-  return row;
+    return row;
 }

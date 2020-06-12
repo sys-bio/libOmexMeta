@@ -44,10 +44,6 @@ if (NOT LIBPQ_INCLUDE_DIR)
 endif ()
 
 
-
-
-
-
 message(STATUS ${LIBPQ_STATIC_LIBRARY})
 
 add_definitions(-DHAVE_CONFIG_H -DLIBRDF_INTERNAL

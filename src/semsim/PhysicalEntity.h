@@ -53,7 +53,7 @@ namespace semsim {
          * builder interface. The @param is_part_of parameter is actually a std::vector of
          * Resource objects. It can be as long as needed.
          */
-        PhysicalEntity(librdf_model* model, Subject about,
+        PhysicalEntity(librdf_model *model, Subject about,
                        PhysicalPropertyResource physicalProperty, Resource is,
                        Resources is_part_of);
 
@@ -66,7 +66,7 @@ namespace semsim {
          * object, depending on whether you have "given" the PhysicalEntity to
          * a Triples object by calling "str" or "toTriples".
          */
-        void free() override ;
+        void free() override;
 
         /*
          * @brief constructor for PhysicalEntity object.
@@ -78,7 +78,7 @@ namespace semsim {
          * with only the model to allow for a better way of collecting necessary information
          * from the user.
          */
-        explicit PhysicalEntity(librdf_model* model);
+        explicit PhysicalEntity(librdf_model *model);
 
         /*
          * @brief convert PhysicalEntity to a Triples object, which can then be

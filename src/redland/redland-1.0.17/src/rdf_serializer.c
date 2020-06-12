@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -33,11 +35,16 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 #ifdef HAVE_ERRNO_H
+
 #include <errno.h>
+
 #endif
 
 #include <redland.h>
@@ -53,9 +60,8 @@
  *
  **/
 void
-librdf_init_serializer(librdf_world *world) 
-{
-  librdf_serializer_raptor_constructor(world);
+librdf_init_serializer(librdf_world *world) {
+    librdf_serializer_raptor_constructor(world);
 }
 
 
@@ -67,31 +73,29 @@ librdf_init_serializer(librdf_world *world)
  *
  **/
 void
-librdf_finish_serializer(librdf_world *world) 
-{
-  if(world->serializers) {
-    raptor_free_sequence(world->serializers);
-    world->serializers=NULL;
-  }
+librdf_finish_serializer(librdf_world *world) {
+    if (world->serializers) {
+        raptor_free_sequence(world->serializers);
+        world->serializers = NULL;
+    }
 #ifdef HAVE_RAPTOR_RDF_SERIALIZER
-  librdf_serializer_raptor_destructor();
+    librdf_serializer_raptor_destructor();
 #endif
 }
 
 
 /* helper functions */
 static void
-librdf_free_serializer_factory(librdf_serializer_factory *factory) 
-{
-  if(factory->name)
-    LIBRDF_FREE(char*, factory->name);
-  if(factory->label)
-    LIBRDF_FREE(char*, factory->label);
-  if(factory->mime_type)
-    LIBRDF_FREE(char*, factory->mime_type);
-  if(factory->type_uri)
-    librdf_free_uri(factory->type_uri);
-  LIBRDF_FREE(librdf_serializer_factory, factory);
+librdf_free_serializer_factory(librdf_serializer_factory *factory) {
+    if (factory->name)
+        LIBRDF_FREE(char*, factory->name);
+    if (factory->label)
+        LIBRDF_FREE(char*, factory->label);
+    if (factory->mime_type)
+        LIBRDF_FREE(char*, factory->mime_type);
+    if (factory->type_uri)
+        librdf_free_uri(factory->type_uri);
+    LIBRDF_FREE(librdf_serializer_factory, factory);
 }
 
 
@@ -113,70 +117,69 @@ librdf_serializer_register_factory(librdf_world *world,
                                    const char *name, const char *label,
                                    const char *mime_type,
                                    const unsigned char *uri_string,
-                                   void (*factory) (librdf_serializer_factory*))
-{
-  librdf_serializer_factory *serializer;
+                                   void (*factory)(librdf_serializer_factory *)) {
+    librdf_serializer_factory *serializer;
 
-  librdf_world_open(world);
-
-#if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 1
-  LIBRDF_DEBUG2("Received registration for serializer %s\n", name);
-#endif
-
-  if(!world->serializers) {
-    world->serializers = raptor_new_sequence((raptor_data_free_handler)librdf_free_serializer_factory, NULL);
-
-    if(!world->serializers)
-      goto oom;
-  }
-
-  serializer = LIBRDF_CALLOC(librdf_serializer_factory*, 1, sizeof(*serializer));
-  if(!serializer)
-    goto oom;
-
-  serializer->name = LIBRDF_MALLOC(char*, strlen(name) + 1);
-  if(!serializer->name)
-    goto oom_tidy;
-  strcpy(serializer->name, name);
-
-  if(label) {
-    serializer->label = LIBRDF_MALLOC(char*, strlen(label) + 1);
-    if(!serializer->label)
-      goto oom_tidy;
-    strcpy(serializer->label, label);
-  }
-
-  /* register mime type if any */
-  if(mime_type) {
-    serializer->mime_type = LIBRDF_MALLOC(char*, strlen(mime_type) + 1);
-    if(!serializer->mime_type)
-      goto oom_tidy;
-    strcpy(serializer->mime_type, mime_type);
-  }
-
-  /* register URI if any */
-  if(uri_string) {
-    serializer->type_uri=librdf_new_uri(world, uri_string);
-    if(!serializer->type_uri)
-      goto oom_tidy;
-  }
-
-  if(raptor_sequence_push(world->serializers, serializer)) 
-    goto oom;
-
-  /* Call the serializer registration function on the new object */
-  (*factory)(serializer);
+    librdf_world_open(world);
 
 #if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 1
-  LIBRDF_DEBUG3("%s has context size %d\n", name, serializer->context_length);
+    LIBRDF_DEBUG2("Received registration for serializer %s\n", name);
 #endif
 
-  return;
+    if (!world->serializers) {
+        world->serializers = raptor_new_sequence((raptor_data_free_handler) librdf_free_serializer_factory, NULL);
 
-  oom_tidy:
-  librdf_free_serializer_factory(serializer);
-  oom:
-  LIBRDF_FATAL1(world, LIBRDF_FROM_SERIALIZER, "Out of memory");
+        if (!world->serializers)
+            goto oom;
+    }
+
+    serializer = LIBRDF_CALLOC(librdf_serializer_factory*, 1, sizeof(*serializer));
+    if (!serializer)
+        goto oom;
+
+    serializer->name = LIBRDF_MALLOC(char*, strlen(name) + 1);
+    if (!serializer->name)
+        goto oom_tidy;
+    strcpy(serializer->name, name);
+
+    if (label) {
+        serializer->label = LIBRDF_MALLOC(char*, strlen(label) + 1);
+        if (!serializer->label)
+            goto oom_tidy;
+        strcpy(serializer->label, label);
+    }
+
+    /* register mime type if any */
+    if (mime_type) {
+        serializer->mime_type = LIBRDF_MALLOC(char*, strlen(mime_type) + 1);
+        if (!serializer->mime_type)
+            goto oom_tidy;
+        strcpy(serializer->mime_type, mime_type);
+    }
+
+    /* register URI if any */
+    if (uri_string) {
+        serializer->type_uri = librdf_new_uri(world, uri_string);
+        if (!serializer->type_uri)
+            goto oom_tidy;
+    }
+
+    if (raptor_sequence_push(world->serializers, serializer))
+        goto oom;
+
+    /* Call the serializer registration function on the new object */
+    (*factory)(serializer);
+
+#if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 1
+    LIBRDF_DEBUG3("%s has context size %d\n", name, serializer->context_length);
+#endif
+
+    return;
+
+    oom_tidy:
+    librdf_free_serializer_factory(serializer);
+    oom:
+    LIBRDF_FATAL1(world, LIBRDF_FROM_SERIALIZER, "Out of memory");
 }
 
 
@@ -194,67 +197,66 @@ librdf_serializer_register_factory(librdf_world *world,
  *
  * Return value: the factory or NULL if not found
  **/
-librdf_serializer_factory*
+librdf_serializer_factory *
 librdf_get_serializer_factory(librdf_world *world,
                               const char *name, const char *mime_type,
-                              librdf_uri *type_uri) 
-{
-  librdf_serializer_factory *factory;
-  
-  librdf_world_open(world);
+                              librdf_uri *type_uri) {
+    librdf_serializer_factory *factory;
 
-  if(name && !*name)
-    name=NULL;
-  if(!mime_type || (mime_type && !*mime_type)) {
-    if(!name && !type_uri)
-      name="rdfxml";
-    else
-      mime_type=NULL;
-  }
+    librdf_world_open(world);
 
-  /* return 1st serializer if no particular one wanted */
-  if(!name && !mime_type && !type_uri) {
-    factory=(librdf_serializer_factory*)raptor_sequence_get_at(world->serializers, 0);
-    if(!factory) {
-      LIBRDF_DEBUG1("No serializers available\n");
-      return NULL;
+    if (name && !*name)
+        name = NULL;
+    if (!mime_type || (mime_type && !*mime_type)) {
+        if (!name && !type_uri)
+            name = "rdfxml";
+        else
+            mime_type = NULL;
     }
-  } else {
-    int i;
-    
-    for(i=0;
-        (factory=(librdf_serializer_factory*)raptor_sequence_get_at(world->serializers, i));
-        i++) {
-      /* next if name does not match */
-      if(name && strcmp(factory->name, name))
-	continue;
 
-      /* MIME type may need to match */
-      if(mime_type) {
-        if(!factory->mime_type)
-          continue;
-        if(strcmp(factory->mime_type, mime_type))
-          continue;
-      }
-      
-      /* URI may need to match */
-      if(type_uri) {
-        if(!factory->type_uri)
-          continue;
-        
-        if(!librdf_uri_equals(factory->type_uri, type_uri))
-          continue;
-      }
+    /* return 1st serializer if no particular one wanted */
+    if (!name && !mime_type && !type_uri) {
+        factory = (librdf_serializer_factory *) raptor_sequence_get_at(world->serializers, 0);
+        if (!factory) {
+            LIBRDF_DEBUG1("No serializers available\n");
+            return NULL;
+        }
+    } else {
+        int i;
 
-      /* found it */
-      break;
+        for (i = 0;
+             (factory = (librdf_serializer_factory *) raptor_sequence_get_at(world->serializers, i));
+             i++) {
+            /* next if name does not match */
+            if (name && strcmp(factory->name, name))
+                continue;
+
+            /* MIME type may need to match */
+            if (mime_type) {
+                if (!factory->mime_type)
+                    continue;
+                if (strcmp(factory->mime_type, mime_type))
+                    continue;
+            }
+
+            /* URI may need to match */
+            if (type_uri) {
+                if (!factory->type_uri)
+                    continue;
+
+                if (!librdf_uri_equals(factory->type_uri, type_uri))
+                    continue;
+            }
+
+            /* found it */
+            break;
+        }
+        /* else FACTORY with given arguments not found */
+        if (!factory)
+            return NULL;
     }
-    /* else FACTORY with given arguments not found */
-    if(!factory)
-      return NULL;
-  }
-  
-  return factory;
+
+    return factory;
 }
 
 
@@ -272,27 +274,26 @@ librdf_get_serializer_factory(librdf_world *world,
  * Return value: non 0 on failure of if counter is out of range
  **/
 int
-librdf_serializer_enumerate(librdf_world* world,
-                        const unsigned int counter,
-                        const char **name, const char **label)
-{
-  librdf_serializer_factory *factory;
-  int ioffset = LIBRDF_GOOD_CAST(int, counter);
-  
-  librdf_world_open(world);
+librdf_serializer_enumerate(librdf_world *world,
+                            const unsigned int counter,
+                            const char **name, const char **label) {
+    librdf_serializer_factory *factory;
+    int ioffset = LIBRDF_GOOD_CAST(int, counter);
 
-  factory = (librdf_serializer_factory*)raptor_sequence_get_at(world->serializers,
-                                                               ioffset);
-  if(!factory)
-    return 1;
-  
-  if(name)
-    *name = factory->name;
+    librdf_world_open(world);
 
-  if(label)
-    *label = factory->label;
+    factory = (librdf_serializer_factory *) raptor_sequence_get_at(world->serializers,
+                                                                   ioffset);
+    if (!factory)
+        return 1;
 
-  return 0;
+    if (name)
+        *name = factory->name;
+
+    if (label)
+        *label = factory->label;
+
+    return 0;
 }
 
 
@@ -305,14 +306,13 @@ librdf_serializer_enumerate(librdf_world* world,
  * 
  * Return value: description or NULL if counter is out of range
  **/
-const raptor_syntax_description*
-librdf_serializer_get_description(librdf_world* world, 
-                                  unsigned int counter)
-{
-  librdf_world_open(world);
+const raptor_syntax_description *
+librdf_serializer_get_description(librdf_world *world,
+                                  unsigned int counter) {
+    librdf_world_open(world);
 
-  return raptor_world_get_serializer_description(world->raptor_world_ptr,
-                                                 counter);
+    return raptor_world_get_serializer_description(world->raptor_world_ptr,
+                                                   counter);
 }
 
 
@@ -326,23 +326,22 @@ librdf_serializer_get_description(librdf_world* world,
  * Return value: non 0 if name is a known serializer
  **/
 int
-librdf_serializer_check_name(librdf_world* world, const char *name)
-{
-  librdf_serializer_factory *factory;
-  int i;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(name, char*, 0);
+librdf_serializer_check_name(librdf_world *world, const char *name) {
+    librdf_serializer_factory *factory;
+    int i;
 
-  librdf_world_open(world);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(name, char*, 0);
 
-  for(i = 0;
-      (factory = (librdf_serializer_factory*)raptor_sequence_get_at(world->serializers, i));
-      i++) {
-    if(!strcmp(factory->name, name))
-      return 1;
-  }
-  
-  return 0;
+    librdf_world_open(world);
+
+    for (i = 0;
+         (factory = (librdf_serializer_factory *) raptor_sequence_get_at(world->serializers, i));
+         i++) {
+        if (!strcmp(factory->name, name))
+            return 1;
+    }
+
+    return 0;
 }
 
 
@@ -357,34 +356,33 @@ librdf_serializer_check_name(librdf_world* world, const char *name)
  * 
  * Return value: new #librdf_serializer object or NULL
  **/
-librdf_serializer*
-librdf_new_serializer(librdf_world *world, 
+librdf_serializer *
+librdf_new_serializer(librdf_world *world,
                       const char *name, const char *mime_type,
-                      librdf_uri *type_uri)
-{
-  librdf_serializer_factory* factory;
+                      librdf_uri *type_uri) {
+    librdf_serializer_factory *factory;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  factory = librdf_get_serializer_factory(world, name, mime_type, type_uri);
-  if(!factory) {
-    if(name)
-      librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_SERIALIZER, NULL,
-                 "serializer '%s' not found", name);
-    else if(mime_type)
-      librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_SERIALIZER, NULL,
-                 "serializer for mime_type '%s' not found", mime_type);
-    else if(type_uri)
-      librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_SERIALIZER, NULL,
-                 "serializer for type URI '%s' not found", 
-                 librdf_uri_as_string(type_uri));
-    else
-      librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_SERIALIZER, NULL,
-                 "default serializer not found");
-    return NULL;
-  }
+    factory = librdf_get_serializer_factory(world, name, mime_type, type_uri);
+    if (!factory) {
+        if (name)
+            librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_SERIALIZER, NULL,
+                       "serializer '%s' not found", name);
+        else if (mime_type)
+            librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_SERIALIZER, NULL,
+                       "serializer for mime_type '%s' not found", mime_type);
+        else if (type_uri)
+            librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_SERIALIZER, NULL,
+                       "serializer for type URI '%s' not found",
+                       librdf_uri_as_string(type_uri));
+        else
+            librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_SERIALIZER, NULL,
+                       "default serializer not found");
+        return NULL;
+    }
 
-  return librdf_new_serializer_from_factory(world, factory);
+    return librdf_new_serializer_from_factory(world, factory);
 }
 
 
@@ -397,37 +395,36 @@ librdf_new_serializer(librdf_world *world,
  * 
  * Return value: new #librdf_serializer object or NULL
  **/
-librdf_serializer*
-librdf_new_serializer_from_factory(librdf_world *world, 
-                                   librdf_serializer_factory *factory)
-{
-  librdf_serializer* d;
+librdf_serializer *
+librdf_new_serializer_from_factory(librdf_world *world,
+                                   librdf_serializer_factory *factory) {
+    librdf_serializer *d;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(factory, librdf_serializer_factory, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(factory, librdf_serializer_factory, NULL);
 
-  d = LIBRDF_CALLOC(librdf_serializer*, 1, sizeof(*d));
-  if(!d)
-    return NULL;
-        
-  d->context = LIBRDF_CALLOC(void*, 1, factory->context_length);
-  if(!d->context) {
-    librdf_free_serializer(d);
-    return NULL;
-  }
+    d = LIBRDF_CALLOC(librdf_serializer*, 1, sizeof(*d));
+    if (!d)
+        return NULL;
 
-  d->world=world;
-  
-  d->factory=factory;
-
-  if(factory->init)
-    if(factory->init(d, d->context)) {
-      librdf_free_serializer(d);
-      return NULL;
+    d->context = LIBRDF_CALLOC(void*, 1, factory->context_length);
+    if (!d->context) {
+        librdf_free_serializer(d);
+        return NULL;
     }
 
-  return d;
+    d->world = world;
+
+    d->factory = factory;
+
+    if (factory->init)
+        if (factory->init(d, d->context)) {
+            librdf_free_serializer(d);
+            return NULL;
+        }
+
+    return d;
 }
 
 
@@ -478,6 +475,7 @@ librdf_free_serializer_wrapper(librdf_serializer *serializer) {
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_serializer_serialize_model:
  * @serializer: the serializer
@@ -492,14 +490,14 @@ librdf_free_serializer_wrapper(librdf_serializer *serializer) {
  * Return value: non 0 on failure
  **/
 int
-librdf_serializer_serialize_model(librdf_serializer* serializer,
-                                  FILE *handle, librdf_uri* base_uri,
-                                  librdf_model* model) 
-{
-  return librdf_serializer_serialize_model_to_file_handle(serializer,
-                                                          handle, base_uri,
-                                                          model);
+librdf_serializer_serialize_model(librdf_serializer *serializer,
+                                  FILE *handle, librdf_uri *base_uri,
+                                  librdf_model *model) {
+    return librdf_serializer_serialize_model_to_file_handle(serializer,
+                                                            handle, base_uri,
+                                                            model);
 }
+
 #endif
 
 
@@ -515,17 +513,16 @@ librdf_serializer_serialize_model(librdf_serializer* serializer,
  * Return value: non 0 on failure
  **/
 int
-librdf_serializer_serialize_stream_to_file_handle(librdf_serializer* serializer,
-                                                  FILE *handle, 
-                                                  librdf_uri* base_uri,
-                                                  librdf_stream* stream) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(handle, FILE*, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, 1);
+librdf_serializer_serialize_stream_to_file_handle(librdf_serializer *serializer,
+                                                  FILE *handle,
+                                                  librdf_uri *base_uri,
+                                                  librdf_stream *stream) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(handle, FILE*, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, 1);
 
-  return serializer->factory->serialize_stream_to_file_handle(serializer->context,
-                                                              handle, base_uri, stream);
+    return serializer->factory->serialize_stream_to_file_handle(serializer->context,
+                                                                handle, base_uri, stream);
 }
 
 
@@ -541,17 +538,16 @@ librdf_serializer_serialize_stream_to_file_handle(librdf_serializer* serializer,
  * Return value: non 0 on failure
  **/
 int
-librdf_serializer_serialize_model_to_file_handle(librdf_serializer* serializer,
-                                                 FILE *handle, 
-                                                 librdf_uri* base_uri,
-                                                 librdf_model* model) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(handle, FILE*, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+librdf_serializer_serialize_model_to_file_handle(librdf_serializer *serializer,
+                                                 FILE *handle,
+                                                 librdf_uri *base_uri,
+                                                 librdf_model *model) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(handle, FILE*, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
 
-  return serializer->factory->serialize_model_to_file_handle(serializer->context,
-                                                             handle, base_uri, model);
+    return serializer->factory->serialize_model_to_file_handle(serializer->context,
+                                                               handle, base_uri, model);
 }
 
 
@@ -567,30 +563,29 @@ librdf_serializer_serialize_model_to_file_handle(librdf_serializer* serializer,
  * Return value: non 0 on failure
  **/
 int
-librdf_serializer_serialize_stream_to_file(librdf_serializer* serializer,
-                                           const char *name, 
-                                           librdf_uri* base_uri,
-                                           librdf_stream* stream) 
-{
-  FILE* fh;
-  int status;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(name, string, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, 1);
+librdf_serializer_serialize_stream_to_file(librdf_serializer *serializer,
+                                           const char *name,
+                                           librdf_uri *base_uri,
+                                           librdf_stream *stream) {
+    FILE *fh;
+    int status;
 
-  fh=fopen(name, "w+");
-  if(!fh) {
-    librdf_log(serializer->world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_SERIALIZER,
-               NULL, "failed to open file '%s' for writing - %s",
-               name, strerror(errno));
-    return 1;
-  }
-  
-  status=librdf_serializer_serialize_stream_to_file_handle(serializer, fh, 
-                                                           base_uri, stream);
-  fclose(fh);
-  return status;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(name, string, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, 1);
+
+    fh = fopen(name, "w+");
+    if (!fh) {
+        librdf_log(serializer->world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_SERIALIZER,
+                   NULL, "failed to open file '%s' for writing - %s",
+                   name, strerror(errno));
+        return 1;
+    }
+
+    status = librdf_serializer_serialize_stream_to_file_handle(serializer, fh,
+                                                               base_uri, stream);
+    fclose(fh);
+    return status;
 }
 
 
@@ -606,30 +601,29 @@ librdf_serializer_serialize_stream_to_file(librdf_serializer* serializer,
  * Return value: non 0 on failure
  **/
 int
-librdf_serializer_serialize_model_to_file(librdf_serializer* serializer,
-                                          const char *name, 
-                                          librdf_uri* base_uri,
-                                          librdf_model* model) 
-{
-  FILE* fh;
-  int status;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(name, string, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+librdf_serializer_serialize_model_to_file(librdf_serializer *serializer,
+                                          const char *name,
+                                          librdf_uri *base_uri,
+                                          librdf_model *model) {
+    FILE *fh;
+    int status;
 
-  fh=fopen(name, "w+");
-  if(!fh) {
-    librdf_log(serializer->world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_SERIALIZER,
-               NULL, "failed to open file '%s' for writing - %s",
-               name, strerror(errno));
-    return 1;
-  }
-  
-  status=librdf_serializer_serialize_model_to_file_handle(serializer, fh, 
-                                                          base_uri, model);
-  fclose(fh);
-  return status;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(name, string, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+
+    fh = fopen(name, "w+");
+    if (!fh) {
+        librdf_log(serializer->world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_SERIALIZER,
+                   NULL, "failed to open file '%s' for writing - %s",
+                   name, strerror(errno));
+        return 1;
+    }
+
+    status = librdf_serializer_serialize_model_to_file_handle(serializer, fh,
+                                                              base_uri, model);
+    fclose(fh);
+    return status;
 }
 
 
@@ -645,22 +639,21 @@ librdf_serializer_serialize_model_to_file(librdf_serializer* serializer,
  * 
  * Return value: stream as string or NULL on failure
  **/
-unsigned char*
-librdf_serializer_serialize_stream_to_counted_string(librdf_serializer* serializer,
-                                                     librdf_uri* base_uri,
-                                                     librdf_stream* stream,
-                                                     size_t* length_p) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, NULL);
+unsigned char *
+librdf_serializer_serialize_stream_to_counted_string(librdf_serializer *serializer,
+                                                     librdf_uri *base_uri,
+                                                     librdf_stream *stream,
+                                                     size_t *length_p) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, NULL);
 
-  if(length_p)
-    *length_p=0;
-  
-  return serializer->factory->serialize_stream_to_counted_string(serializer->context,
-                                                                 base_uri,
-                                                                 stream,
-                                                                 length_p);
+    if (length_p)
+        *length_p = 0;
+
+    return serializer->factory->serialize_stream_to_counted_string(serializer->context,
+                                                                   base_uri,
+                                                                   stream,
+                                                                   length_p);
 }
 
 
@@ -676,21 +669,20 @@ librdf_serializer_serialize_stream_to_counted_string(librdf_serializer* serializ
  * 
  * Return value: non 0 on failure
  **/
-unsigned char*
-librdf_serializer_serialize_model_to_counted_string(librdf_serializer* serializer,
-                                                    librdf_uri* base_uri,
-                                                    librdf_model* model,
-                                                    size_t* length_p) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+unsigned char *
+librdf_serializer_serialize_model_to_counted_string(librdf_serializer *serializer,
+                                                    librdf_uri *base_uri,
+                                                    librdf_model *model,
+                                                    size_t *length_p) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
 
-  if(length_p)
-    *length_p=0;
-  
-  return serializer->factory->serialize_model_to_counted_string(serializer->context,
-                                                                base_uri, model,
-                                                                length_p);
+    if (length_p)
+        *length_p = 0;
+
+    return serializer->factory->serialize_model_to_counted_string(serializer->context,
+                                                                  base_uri, model,
+                                                                  length_p);
 }
 
 
@@ -704,18 +696,17 @@ librdf_serializer_serialize_model_to_counted_string(librdf_serializer* serialize
  * 
  * Return value: NULL on failure
  **/
-unsigned char*
-librdf_serializer_serialize_stream_to_string(librdf_serializer* serializer,
-                                             librdf_uri* base_uri,
-                                             librdf_stream* stream) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, NULL);
+unsigned char *
+librdf_serializer_serialize_stream_to_string(librdf_serializer *serializer,
+                                             librdf_uri *base_uri,
+                                             librdf_stream *stream) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, NULL);
 
-  return serializer->factory->serialize_stream_to_counted_string(serializer->context,
-                                                                 base_uri,
-                                                                 stream,
-                                                                 NULL);
+    return serializer->factory->serialize_stream_to_counted_string(serializer->context,
+                                                                   base_uri,
+                                                                   stream,
+                                                                   NULL);
 }
 
 
@@ -730,17 +721,16 @@ librdf_serializer_serialize_stream_to_string(librdf_serializer* serializer,
  * 
  * Return value: NULL on failure
  **/
-unsigned char*
-librdf_serializer_serialize_model_to_string(librdf_serializer* serializer,
-                                            librdf_uri* base_uri,
-                                            librdf_model* model) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+unsigned char *
+librdf_serializer_serialize_model_to_string(librdf_serializer *serializer,
+                                            librdf_uri *base_uri,
+                                            librdf_model *model) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
 
-  return serializer->factory->serialize_model_to_counted_string(serializer->context,
-                                                                base_uri, model,
-                                                                NULL);
+    return serializer->factory->serialize_model_to_counted_string(serializer->context,
+                                                                  base_uri, model,
+                                                                  NULL);
 }
 
 
@@ -757,19 +747,17 @@ librdf_serializer_serialize_model_to_string(librdf_serializer* serializer,
  * Return value: non-0 on failure
  **/
 int
-librdf_serializer_serialize_stream_to_iostream(librdf_serializer* serializer,
-                                              librdf_uri* base_uri,
-                                              librdf_stream *stream,
-                                              raptor_iostream* iostr)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, 1);
+librdf_serializer_serialize_stream_to_iostream(librdf_serializer *serializer,
+                                               librdf_uri *base_uri,
+                                               librdf_stream *stream,
+                                               raptor_iostream *iostr) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, 1);
 
-  return serializer->factory->serialize_stream_to_iostream(serializer->context,
-                                                           base_uri, stream,
-                                                           iostr);
+    return serializer->factory->serialize_stream_to_iostream(serializer->context,
+                                                             base_uri, stream,
+                                                             iostr);
 }
-
 
 
 /**
@@ -785,17 +773,16 @@ librdf_serializer_serialize_stream_to_iostream(librdf_serializer* serializer,
  * Return value: non-0 on failure
  **/
 int
-librdf_serializer_serialize_model_to_iostream(librdf_serializer* serializer,
-                                              librdf_uri* base_uri,
+librdf_serializer_serialize_model_to_iostream(librdf_serializer *serializer,
+                                              librdf_uri *base_uri,
                                               librdf_model *model,
-                                              raptor_iostream* iostr)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+                                              raptor_iostream *iostr) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
 
-  return serializer->factory->serialize_model_to_iostream(serializer->context,
-                                                          base_uri, model,
-                                                          iostr);
+    return serializer->factory->serialize_model_to_iostream(serializer->context,
+                                                            base_uri, model,
+                                                            iostr);
 }
 
 
@@ -813,10 +800,10 @@ librdf_serializer_serialize_model_to_iostream(librdf_serializer* serializer,
  **/
 REDLAND_EXTERN_C
 void
-librdf_serializer_set_error(librdf_serializer* serializer, void *user_data,
-                            void (*error_fn)(void *user_data, const char *msg, ...))
-{
+librdf_serializer_set_error(librdf_serializer *serializer, void *user_data,
+                            void (*error_fn)(void *user_data, const char *msg, ...)) {
 }
+
 #endif
 
 
@@ -834,10 +821,10 @@ librdf_serializer_set_error(librdf_serializer* serializer, void *user_data,
  **/
 REDLAND_EXTERN_C
 void
-librdf_serializer_set_warning(librdf_serializer* serializer, void *user_data,
-                              void (*warning_fn)(void *user_data, const char *msg, ...))
-{
+librdf_serializer_set_warning(librdf_serializer *serializer, void *user_data,
+                              void (*warning_fn)(void *user_data, const char *msg, ...)) {
 }
+
 #endif
 
 
@@ -851,16 +838,15 @@ librdf_serializer_set_warning(librdf_serializer* serializer, void *user_data,
  * Return value: the value of the feature or NULL if no such feature
  * exists or the value is empty.
  **/
-librdf_node*
-librdf_serializer_get_feature(librdf_serializer* serializer, librdf_uri *feature) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(feature, librdf_uri, NULL);
+librdf_node *
+librdf_serializer_get_feature(librdf_serializer *serializer, librdf_uri *feature) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(feature, librdf_uri, NULL);
 
-  if(serializer->factory->get_feature)
-    return serializer->factory->get_feature(serializer->context, feature);
+    if (serializer->factory->get_feature)
+        return serializer->factory->get_feature(serializer->context, feature);
 
-  return NULL;
+    return NULL;
 }
 
 /**
@@ -873,19 +859,18 @@ librdf_serializer_get_feature(librdf_serializer* serializer, librdf_uri *feature
  * 
  * Return value: non 0 on failure (negative if no such feature)
  **/
-  
+
 int
-librdf_serializer_set_feature(librdf_serializer* serializer,
-                              librdf_uri *feature, librdf_node* value) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, -1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(feature, librdf_uri, -1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(value, librdf_node, -1);
+librdf_serializer_set_feature(librdf_serializer *serializer,
+                              librdf_uri *feature, librdf_node *value) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, -1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(feature, librdf_uri, -1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(value, librdf_node, -1);
 
-  if(serializer->factory->set_feature)
-    return serializer->factory->set_feature(serializer->context, feature, value);
+    if (serializer->factory->set_feature)
+        return serializer->factory->set_feature(serializer->context, feature, value);
 
-  return (-1);
+    return (-1);
 }
 
 /**
@@ -898,20 +883,19 @@ librdf_serializer_set_feature(librdf_serializer* serializer,
  * 
  * Return value: non 0 on failure
  **/
-  
-int
-librdf_serializer_set_namespace(librdf_serializer* serializer,
-                                librdf_uri *uri, const char *prefix) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, 1);
-  if(uri && !*librdf_uri_as_string(uri))
-    uri=NULL;
-  if(prefix && !*prefix)
-    prefix=NULL;
 
-  if(serializer->factory->set_namespace)
-    return serializer->factory->set_namespace(serializer->context, uri, prefix);
-  return 1;
+int
+librdf_serializer_set_namespace(librdf_serializer *serializer,
+                                librdf_uri *uri, const char *prefix) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(serializer, librdf_serializer, 1);
+    if (uri && !*librdf_uri_as_string(uri))
+        uri = NULL;
+    if (prefix && !*prefix)
+        prefix = NULL;
+
+    if (serializer->factory->set_namespace)
+        return serializer->factory->set_namespace(serializer->context, uri, prefix);
+    return 1;
 }
 
 #endif

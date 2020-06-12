@@ -47,7 +47,7 @@ namespace semsim {
          * @param mediator a vector of Sink objects representing the energetic modulators for the PhysicalProcess
          *
          */
-        PhysicalProcess(librdf_model* model, Subject metaid,
+        PhysicalProcess(librdf_model *model, Subject metaid,
                         PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks,
                         Mediators mediators);
 
@@ -66,7 +66,7 @@ namespace semsim {
          * @brief constructor for the builder interface of PhysicalProcess instantiation
          * @param model the currently active RDF model.
          */
-        explicit PhysicalProcess(librdf_model* model);
+        explicit PhysicalProcess(librdf_model *model);
 
         /*
          * @brief getter for sources

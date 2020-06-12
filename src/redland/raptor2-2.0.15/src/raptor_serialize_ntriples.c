@@ -22,18 +22,25 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdarg.h>
+
 #ifdef HAVE_ERRNO_H
+
 #include <errno.h>
+
 #endif
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 /* Raptor includes */
@@ -45,40 +52,36 @@
  * Raptor N-Triples serializer object
  */
 typedef struct {
-  int is_nquads;
+    int is_nquads;
 } raptor_ntriples_serializer_context;
-
 
 
 /* create a new serializer */
 static int
-raptor_ntriples_serialize_init(raptor_serializer* serializer, const char *name)
-{
-  raptor_ntriples_serializer_context* ntriples_serializer;
+raptor_ntriples_serialize_init(raptor_serializer *serializer, const char *name) {
+    raptor_ntriples_serializer_context *ntriples_serializer;
 
-  ntriples_serializer = (raptor_ntriples_serializer_context*)serializer->context;
-  ntriples_serializer->is_nquads = !strcmp(name, "nquads");
+    ntriples_serializer = (raptor_ntriples_serializer_context *) serializer->context;
+    ntriples_serializer->is_nquads = !strcmp(name, "nquads");
 
-  return 0;
+    return 0;
 }
-  
+
 
 /* destroy a serializer */
 static void
-raptor_ntriples_serialize_terminate(raptor_serializer* serializer)
-{
+raptor_ntriples_serialize_terminate(raptor_serializer *serializer) {
 
 }
-  
+
 
 /* add a namespace */
 static int
-raptor_ntriples_serialize_declare_namespace(raptor_serializer* serializer, 
+raptor_ntriples_serialize_declare_namespace(raptor_serializer *serializer,
                                             raptor_uri *uri,
-                                            const unsigned char *prefix)
-{
-  /* NOP */
-  return 0;
+                                            const unsigned char *prefix) {
+    /* NOP */
+    return 0;
 }
 
 
@@ -90,7 +93,6 @@ raptor_ntriples_serialize_start(raptor_serializer* serializer)
   return 0;
 }
 #endif
-
 
 
 /**
@@ -109,11 +111,10 @@ int
 raptor_string_ntriples_write(const unsigned char *string,
                              size_t len,
                              const char delim,
-                             raptor_iostream *iostr)
-{
-  return raptor_string_escaped_write(string, len, delim,
-                                     RAPTOR_ESCAPED_WRITE_NTRIPLES_LITERAL,
-                                     iostr);
+                             raptor_iostream *iostr) {
+    return raptor_string_escaped_write(string, len, delim,
+                                       RAPTOR_ESCAPED_WRITE_NTRIPLES_LITERAL,
+                                       iostr);
 }
 
 
@@ -130,22 +131,21 @@ raptor_string_ntriples_write(const unsigned char *string,
 int
 raptor_bnodeid_ntriples_write(const unsigned char *bnodeid,
                               size_t len,
-                              raptor_iostream *iostr)
-{
-  unsigned int i;
+                              raptor_iostream *iostr) {
+    unsigned int i;
 
-  raptor_iostream_counted_string_write("_:", 2, iostr);
+    raptor_iostream_counted_string_write("_:", 2, iostr);
 
-  for(i = 0; i < len; i++) {
-    unsigned char c = *bnodeid++;
-    if(!isalpha(c) && !isdigit(c)) {
-      /* Replace characters not in legal N-Triples bnode set */
-      c = 'z';
+    for (i = 0; i < len; i++) {
+        unsigned char c = *bnodeid++;
+        if (!isalpha(c) && !isdigit(c)) {
+            /* Replace characters not in legal N-Triples bnode set */
+            c = 'z';
+        }
+        raptor_iostream_write_byte(c, iostr);
     }
-    raptor_iostream_write_byte(c, iostr);
-  }
 
-  return 0;
+    return 0;
 }
 
 
@@ -162,11 +162,10 @@ raptor_bnodeid_ntriples_write(const unsigned char *bnodeid,
  * Return value: non-0 on failure
  **/
 int
-raptor_term_ntriples_write(const raptor_term *term, raptor_iostream* iostr)
-{
-  return raptor_term_escaped_write(term,
-                                   RAPTOR_ESCAPED_WRITE_NTRIPLES_LITERAL,
-                                   iostr);
+raptor_term_ntriples_write(const raptor_term *term, raptor_iostream *iostr) {
+    return raptor_term_escaped_write(term,
+                                     RAPTOR_ESCAPED_WRITE_NTRIPLES_LITERAL,
+                                     iostr);
 }
 
 
@@ -183,49 +182,47 @@ raptor_term_ntriples_write(const raptor_term *term, raptor_iostream* iostr)
  **/
 int
 raptor_statement_ntriples_write(const raptor_statement *statement,
-                                raptor_iostream* iostr,
-                                int write_graph_term)
-{
-  unsigned int flags = RAPTOR_ESCAPED_WRITE_NTRIPLES_LITERAL;
+                                raptor_iostream *iostr,
+                                int write_graph_term) {
+    unsigned int flags = RAPTOR_ESCAPED_WRITE_NTRIPLES_LITERAL;
 
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, raptor_statement, 1);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, raptor_statement, 1);
 
-  if(raptor_term_escaped_write(statement->subject, flags, iostr))
-    return 1;
-  
-  raptor_iostream_write_byte(' ', iostr);
-  if(raptor_term_escaped_write(statement->predicate, flags, iostr))
-    return 1;
-  
-  raptor_iostream_write_byte(' ', iostr);
-  if(raptor_term_escaped_write(statement->object, flags, iostr))
-    return 1;
+    if (raptor_term_escaped_write(statement->subject, flags, iostr))
+        return 1;
 
-  if(statement->graph && write_graph_term) {
     raptor_iostream_write_byte(' ', iostr);
-    if(raptor_term_escaped_write(statement->graph, flags, iostr))
-      return 1;
-  }
-  
-  raptor_iostream_counted_string_write(" .\n", 3, iostr);
+    if (raptor_term_escaped_write(statement->predicate, flags, iostr))
+        return 1;
 
-  return 0;
+    raptor_iostream_write_byte(' ', iostr);
+    if (raptor_term_escaped_write(statement->object, flags, iostr))
+        return 1;
+
+    if (statement->graph && write_graph_term) {
+        raptor_iostream_write_byte(' ', iostr);
+        if (raptor_term_escaped_write(statement->graph, flags, iostr))
+            return 1;
+    }
+
+    raptor_iostream_counted_string_write(" .\n", 3, iostr);
+
+    return 0;
 }
 
 
 /* serialize a statement */
 static int
-raptor_ntriples_serialize_statement(raptor_serializer* serializer, 
-                                    raptor_statement *statement)
-{
-  raptor_ntriples_serializer_context* ntriples_serializer;
+raptor_ntriples_serialize_statement(raptor_serializer *serializer,
+                                    raptor_statement *statement) {
+    raptor_ntriples_serializer_context *ntriples_serializer;
 
-  ntriples_serializer = (raptor_ntriples_serializer_context*)serializer->context;
+    ntriples_serializer = (raptor_ntriples_serializer_context *) serializer->context;
 
-  raptor_statement_ntriples_write(statement,
-                                  serializer->iostream,
-                                  ntriples_serializer->is_nquads);
-  return 0;
+    raptor_statement_ntriples_write(statement,
+                                    serializer->iostream,
+                                    ntriples_serializer->is_nquads);
+    return 0;
 }
 
 
@@ -237,106 +234,107 @@ raptor_ntriples_serialize_end(raptor_serializer* serializer)
   return 0;
 }
 #endif
-  
+
 /* finish the serializer factory */
 static void
-raptor_ntriples_serialize_finish_factory(raptor_serializer_factory* factory)
-{
+raptor_ntriples_serialize_finish_factory(raptor_serializer_factory *factory) {
 
 }
 
 
 #ifdef RAPTOR_SERIALIZER_NTRIPLES
-static const char* const ntriples_names[2] = { "ntriples", NULL};
+static const char *const ntriples_names[2] = {"ntriples", NULL};
 
-static const char* const ntriples_uri_strings[3] = {
-  "http://www.w3.org/ns/formats/N-Triples",
-  "http://www.w3.org/TR/rdf-testcases/#ntriples",
-  NULL
+static const char *const ntriples_uri_strings[3] = {
+        "http://www.w3.org/ns/formats/N-Triples",
+        "http://www.w3.org/TR/rdf-testcases/#ntriples",
+        NULL
 };
-  
+
 #define NTRIPLES_TYPES_COUNT 2
 static const raptor_type_q ntriples_types[NTRIPLES_TYPES_COUNT + 1] = {
-  { "application/n-triples", 21, 10}, 
-  { "text/plain", 10, 1}, 
-  { NULL, 0, 0}
+        {"application/n-triples", 21, 10},
+        {"text/plain",            10, 1},
+        {NULL,                    0,  0}
 };
 
 static int
-raptor_ntriples_serializer_register_factory(raptor_serializer_factory *factory)
-{
-  factory->desc.names = ntriples_names;
-  factory->desc.mime_types = ntriples_types;
+raptor_ntriples_serializer_register_factory(raptor_serializer_factory *factory) {
+    factory->desc.names = ntriples_names;
+    factory->desc.mime_types = ntriples_types;
 
-  factory->desc.label =  "N-Triples";
-  factory->desc.uri_strings = ntriples_uri_strings;
+    factory->desc.label = "N-Triples";
+    factory->desc.uri_strings = ntriples_uri_strings;
 
-  factory->context_length     = sizeof(raptor_ntriples_serializer_context);
-  
-  factory->init                = raptor_ntriples_serialize_init;
-  factory->terminate           = raptor_ntriples_serialize_terminate;
-  factory->declare_namespace   = raptor_ntriples_serialize_declare_namespace;
-  factory->serialize_start     = NULL;
-  factory->serialize_statement = raptor_ntriples_serialize_statement;
-  factory->serialize_end       = NULL;
-  factory->finish_factory      = raptor_ntriples_serialize_finish_factory;
+    factory->context_length = sizeof(raptor_ntriples_serializer_context);
 
-  return 0;
+    factory->init = raptor_ntriples_serialize_init;
+    factory->terminate = raptor_ntriples_serialize_terminate;
+    factory->declare_namespace = raptor_ntriples_serialize_declare_namespace;
+    factory->serialize_start = NULL;
+    factory->serialize_statement = raptor_ntriples_serialize_statement;
+    factory->serialize_end = NULL;
+    factory->finish_factory = raptor_ntriples_serialize_finish_factory;
+
+    return 0;
 }
+
 #endif
 
 
 #ifdef RAPTOR_SERIALIZER_NQUADS
-static const char* const nquads_names[2] = { "nquads", NULL};
+static const char *const nquads_names[2] = {"nquads", NULL};
 
-static const char* const nquads_uri_strings[2] = {
-  "http://sw.deri.org/2008/07/n-quads/#n-quads",
-  NULL
+static const char *const nquads_uri_strings[2] = {
+        "http://sw.deri.org/2008/07/n-quads/#n-quads",
+        NULL
 };
-  
+
 #define NQUADS_TYPES_COUNT 1
 static const raptor_type_q nquads_types[NQUADS_TYPES_COUNT + 1] = {
-  { "text/x-nquads", 13, 10},
-  { NULL, 0, 0}
+        {"text/x-nquads", 13, 10},
+        {NULL,            0,  0}
 };
 
 static int
-raptor_nquads_serializer_register_factory(raptor_serializer_factory *factory)
-{
-  factory->desc.names = nquads_names;
-  factory->desc.mime_types = nquads_types;
+raptor_nquads_serializer_register_factory(raptor_serializer_factory *factory) {
+    factory->desc.names = nquads_names;
+    factory->desc.mime_types = nquads_types;
 
-  factory->desc.label = "N-Quads";
-  factory->desc.uri_strings = nquads_uri_strings;
+    factory->desc.label = "N-Quads";
+    factory->desc.uri_strings = nquads_uri_strings;
 
-  factory->context_length     = sizeof(raptor_ntriples_serializer_context);
-  
-  factory->init                = raptor_ntriples_serialize_init;
-  factory->terminate           = raptor_ntriples_serialize_terminate;
-  factory->declare_namespace   = raptor_ntriples_serialize_declare_namespace;
-  factory->serialize_start     = NULL;
-  factory->serialize_statement = raptor_ntriples_serialize_statement;
-  factory->serialize_end       = NULL;
-  factory->finish_factory      = raptor_ntriples_serialize_finish_factory;
+    factory->context_length = sizeof(raptor_ntriples_serializer_context);
 
-  return 0;
+    factory->init = raptor_ntriples_serialize_init;
+    factory->terminate = raptor_ntriples_serialize_terminate;
+    factory->declare_namespace = raptor_ntriples_serialize_declare_namespace;
+    factory->serialize_start = NULL;
+    factory->serialize_statement = raptor_ntriples_serialize_statement;
+    factory->serialize_end = NULL;
+    factory->finish_factory = raptor_ntriples_serialize_finish_factory;
+
+    return 0;
 }
+
 #endif
 
 #ifdef RAPTOR_SERIALIZER_NTRIPLES
+
 int
-raptor_init_serializer_ntriples(raptor_world* world)
-{
-  return !raptor_serializer_register_factory(world,
-                                             &raptor_ntriples_serializer_register_factory);
+raptor_init_serializer_ntriples(raptor_world *world) {
+    return !raptor_serializer_register_factory(world,
+                                               &raptor_ntriples_serializer_register_factory);
 }
+
 #endif
 
 #ifdef RAPTOR_SERIALIZER_NQUADS
+
 int
-raptor_init_serializer_nquads(raptor_world* world)
-{
-  return !raptor_serializer_register_factory(world,
-                                             &raptor_nquads_serializer_register_factory);
+raptor_init_serializer_nquads(raptor_world *world) {
+    return !raptor_serializer_register_factory(world,
+                                               &raptor_nquads_serializer_register_factory);
 }
+
 #endif

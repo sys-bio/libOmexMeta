@@ -22,7 +22,7 @@ namespace semsim {
             physical_property_.free();
     }
 
-    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model* model)
+    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model)
             : model_(model) {}
 
     Subject PhysicalPhenomenon::getSubject() const {
@@ -91,7 +91,7 @@ namespace semsim {
         }
         return *this;
     }
-    
+
     PhysicalPhenomenon &PhysicalPhenomenon::operator=(PhysicalPhenomenon &&phenomenon) noexcept {
         if (this != &phenomenon) {
             model_ = phenomenon.model_;

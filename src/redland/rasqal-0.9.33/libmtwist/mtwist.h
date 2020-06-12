@@ -40,17 +40,17 @@ extern "C" {
 typedef struct mtwist_s mtwist;
 
 /* constructor */
-mtwist* mtwist_new(void);
+mtwist *mtwist_new(void);
 /* destructor */
-void mtwist_free(mtwist* mt);
+void mtwist_free(mtwist *mt);
 
 /* methods */
-void mtwist_init(mtwist* mt, unsigned long seed);
-unsigned long mtwist_u32rand(mtwist* mt);
-double mtwist_drand(mtwist* mt);
+void mtwist_init(mtwist *mt, unsigned long seed);
+unsigned long mtwist_u32rand(mtwist *mt);
+double mtwist_drand(mtwist *mt);
 
 /* utility functions */
-unsigned long mtwist_seed_from_system(mtwist* mt);
+unsigned long mtwist_seed_from_system(mtwist *mt);
 
 #ifdef __cplusplus
 }

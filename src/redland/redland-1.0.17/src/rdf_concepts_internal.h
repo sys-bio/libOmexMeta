@@ -34,7 +34,8 @@ extern "C" {
 void librdf_init_concepts(librdf_world *world);
 void librdf_finish_concepts(librdf_world *world);
 
-void librdf_get_concept_by_name(librdf_world *world, int is_ms, const char *name, librdf_uri **uri_p, librdf_node **node_p);
+void
+librdf_get_concept_by_name(librdf_world *world, int is_ms, const char *name, librdf_uri **uri_p, librdf_node **node_p);
 
 
 #ifdef __cplusplus

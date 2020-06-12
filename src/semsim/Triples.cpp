@@ -26,42 +26,43 @@ namespace semsim {
      * slot. Therefore, ownership of the triple passes to
      * the Triples object who is reposible for freeing the Triple.
      */
-    void Triples::move_back(Triple& triple) {
+    void Triples::move_back(Triple &triple) {
         triples_.push_back(std::move(triple));
     }
 
-    void Triples::emplace_back(Subject subject, const PredicatePtr& predicatePtr, const Resource& resource) {
+    void Triples::emplace_back(Subject subject, const PredicatePtr &predicatePtr, const Resource &resource) {
         Triple triple(subject, predicatePtr, resource);
         move_back(triple);
     }
 
-    void Triples::emplace_back(Subject subject, const Predicate& predicate, const Resource& resource) {
+    void Triples::emplace_back(Subject subject, const Predicate &predicate, const Resource &resource) {
         Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
         move_back(triple);
     }
 
-    void Triples::emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, const Resource& resource) {
+    void Triples::emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, const Resource &resource) {
         Triple triple(subject, std::make_shared<BiomodelsBiologyQualifier>(std::move(predicate)),
                       resource);
         move_back(triple);
     }
 
-    void Triples::emplace_back(Subject subject, BiomodelsModelQualifier predicate, const Resource& resource) {
+    void Triples::emplace_back(Subject subject, BiomodelsModelQualifier predicate, const Resource &resource) {
         Triple triple(subject, std::make_shared<BiomodelsModelQualifier>(std::move(predicate)),
                       resource);
         move_back(triple);
     }
 
-    void Triples::emplace_back(Subject subject, DCTerm predicate, const Resource& resource) {
+    void Triples::emplace_back(Subject subject, DCTerm predicate, const Resource &resource) {
         Triple triple(subject, std::make_shared<DCTerm>(std::move(predicate)), resource);
         move_back(triple);
     }
 
-    void Triples::emplace_back(Subject subject, SemSim predicate, const Resource& resource) {
+    void Triples::emplace_back(Subject subject, SemSim predicate, const Resource &resource) {
         Triple triple(subject, std::make_shared<SemSim>(std::move(predicate)), resource);
         move_back(triple);
     }
-    void Triples::emplace_back(librdf_node* subject, librdf_node* predicate, librdf_node*resource) {
+
+    void Triples::emplace_back(librdf_node *subject, librdf_node *predicate, librdf_node *resource) {
         Triple triple(subject, predicate, resource);
         move_back(triple);
     }
@@ -102,7 +103,7 @@ namespace semsim {
         return triples_.end();
     }
 
-    std::string Triples::str(const std::string& format, std::string base) {
+    std::string Triples::str(const std::string &format, std::string base) {
         base = SemsimUtils::addFilePrefixToString(base);
         // Here we create temporary set of tools for serializing a simple
         // triple.
@@ -147,13 +148,13 @@ namespace semsim {
 
     }
 
-    const Triple& Triples::operator[](int index) const {
-        const Triple& triple = triples_[index];
+    const Triple &Triples::operator[](int index) const {
+        const Triple &triple = triples_[index];
         return triple;
     }
 
     void Triples::freeTriples() {
-        for (int i=0; i<triples_.size(); i++){
+        for (int i = 0; i < triples_.size(); i++) {
             triples_[i].freeStatement();
         }
     }

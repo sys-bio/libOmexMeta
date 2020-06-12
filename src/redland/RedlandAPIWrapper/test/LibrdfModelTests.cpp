@@ -15,7 +15,7 @@ public:
 
     LibrdfModelTests() = default;
 
-    ~LibrdfModelTests(){
+    ~LibrdfModelTests() {
         storage1.freeStorage();
         storage2.freeStorage();
     }
