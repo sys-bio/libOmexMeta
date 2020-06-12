@@ -238,3 +238,42 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
     triples.freeTriples();
 }
 
+
+TEST_F(PhysicalForceTests, TestEquality) {
+    PhysicalForce force1(model.get());
+    force1.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2");
+
+    PhysicalForce force2(model.get());
+    force2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2");
+    ASSERT_EQ(force1, force2);
+    force1.free();
+    force2.free();
+}
+
+TEST_F(PhysicalForceTests, TestInequality) {
+    PhysicalForce force1(model.get());
+    force1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2");
+
+    PhysicalForce force2(model.get());
+    force2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2");
+    ASSERT_NE(force1, force2);
+
+    force1.free();
+    force2.free();
+}
+
+
+
+

@@ -77,6 +77,18 @@ namespace semsim {
 
     }
 
+    bool Participant::operator==(const Participant &rhs) const {
+        return model_ == rhs.model_ &&
+               subject_ == rhs.subject_ &&
+               semsim_predicate_term_ == rhs.semsim_predicate_term_ &&
+               multiplier_ == rhs.multiplier_ &&
+               physicalEntityReference_ == rhs.physicalEntityReference_;
+    }
+
+    bool Participant::operator!=(const Participant &rhs) const {
+        return !(rhs == *this);
+    }
+
 //    Participant::~Participant() {
 //        if (predicate_ptr_->getNode()) {
 //            LibrdfNode::free(predicate_ptr_->getNode());

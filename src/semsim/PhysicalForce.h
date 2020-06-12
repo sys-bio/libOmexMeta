@@ -158,6 +158,10 @@ namespace semsim {
         addSink(std::string sink_metaid, double multiplier,
                 std::string physical_entity_reference);
 
+        bool operator==(const PhysicalForce &rhs) const;
+
+        bool operator!=(const PhysicalForce &rhs) const;
+
         /*
          * @brief returns the number of sources associated with the
          * PhysicalForce

@@ -155,5 +155,16 @@ namespace semsim {
         }
     }
 
+    bool PhysicalProcess::operator==(const PhysicalProcess &rhs) const {
+        return sources_ == rhs.sources_ &&
+               sinks_ == rhs.sinks_ &&
+               mediators_ == rhs.mediators_ &&
+               physical_property_ == rhs.physical_property_;
+    }
+
+    bool PhysicalProcess::operator!=(const PhysicalProcess &rhs) const {
+        return !(rhs == *this);
+    }
+
 
 }

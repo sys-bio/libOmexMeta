@@ -274,8 +274,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
     PhysicalProcess process(model.get());
-    process.setAbout("property_metaid_0")
-            .setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
+    process.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource("source_0", 1.0, "species_metaid0")
             .addSource("source_1", 2.0, "species_metaid1")
             .addSink("sink_0", 1.0, "species_metaid2")
@@ -323,3 +322,62 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
     //physical_property.free();
     triples.freeTriples();
 }
+
+TEST_F(PhysicalProcessTests, TestEquality) {
+    PhysicalProcess process1(model.get());
+    process1.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2")
+            .addMediator("mediator_0", 1.0, "species_metaid2");
+
+    PhysicalProcess process2(model.get());
+    process2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2")
+            .addMediator("mediator_0", 1.0, "species_metaid2");
+    ASSERT_EQ(process1, process2);
+    process1.free();
+    process2.free();
+}
+
+TEST_F(PhysicalProcessTests, TestInequality) {
+    PhysicalProcess process1(model.get());
+    process1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2")
+            .addMediator("mediator_0", 1.0, "species_metaid2");
+
+    PhysicalProcess process2(model.get());
+    process2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2")
+            .addMediator("mediator_0", 1.0, "species_metaid2");
+    ASSERT_NE(process1, process2);
+
+    process1.free();
+    process2.free();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
