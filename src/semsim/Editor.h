@@ -163,13 +163,13 @@ namespace semsim {
          * For developers. Consider removing this function in favour of using the
          * add* functions.
          */
-        [[maybe_unused]] void addCompositeAnnotation(const PhysicalPhenomenonPtr &phenomenonPtr);
+        [[maybe_unused]] void addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr);
 
         /*
          * @brief add a composite annotation of type PhysicalEntity to the rdf graph
          * @param physicalEntity An instance of a PhysicalEntity object to add to the rdf graph.
          */
-        void addPhysicalEntity(const PhysicalEntity &physicalEntity);
+        void addPhysicalEntity(PhysicalEntity &physicalEntity);
 
         /*
          * @brief remove triples associated with a a PhysicalEntity object from the rdf graph
@@ -227,6 +227,8 @@ namespace semsim {
         PhysicalProcess createPhysicalProcess();
 
         void freeTriples();
+
+        void addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr);
     };
 
 }

@@ -207,15 +207,15 @@ TEST_F(EditorTests, TestAddPhysicalEntityToEditor) {
     );
 
     Subject subject(LibrdfNode::fromUriString("VLV"));
-    PhysicalPropertyResource ppr("OPB:OPB_00154");
+    PhysicalProperty ppr("metaid", "OPB:OPB_00154");
     Resource r(LibrdfNode::fromUriString("fma:FMA:9670")); // is smad3
     std::vector<Resource> resources;
     resources.emplace_back(std::move(LibrdfNode::fromUriString("fma/FMA:9697")));
     PhysicalEntity physicalEntity = PhysicalEntity(
             rdf.getModel(), subject, ppr, r, resources
     );
-    std::shared_ptr<PhysicalEntity> ptr = std::make_shared<PhysicalEntity>(physicalEntity);
-    editor.addCompositeAnnotation(ptr);
+//    std::shared_ptr<PhysicalEntity> ptr = std::make_shared<PhysicalEntity>(physicalEntity);
+    editor.addCompositeAnnotation(&physicalEntity);
     int expected = 4;
     int actual = editor.size();
     ASSERT_EQ(expected, actual);
@@ -229,36 +229,33 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    editor.addCompositeAnnotation(
-            std::make_shared<PhysicalProcess>(
-                    PhysicalProcess(
-                            model.get(),
-                            Subject(LibrdfNode::fromUriString("MetaId004")),
-                            PhysicalPropertyResource("OPB:OPB1234"),
-                            std::vector<SourceParticipant>(
-                                    {SourceParticipant(model.get(),
-                                                       "SourceId1",
-                                                       1.0,
-                                                       "PhysicalEntityReference1"
-                                    )}
-                            ),
-                            std::vector<SinkParticipant>(
-                                    {SinkParticipant(model.get(),
-                                                     "SinkId1",
-                                                     1.0,
-                                                     "PhysicalEntityReference2"
-                                    )}
-                            ),
-                            std::vector<MediatorParticipant>(
-                                    {MediatorParticipant(model.get(),
-                                                         "MediatorID1",
-                                                         "PhysicalEntityReference3"
-                                    )}
-                            )
-                    )
+    PhysicalProcess process = PhysicalProcess(
+            model.get(),
+            Subject(LibrdfNode::fromUriString("MetaId004")),
+            PhysicalProperty("MetaId004", "OPB:OPB1234"),
+            std::vector<SourceParticipant>(
+                    {SourceParticipant(model.get(),
+                                       "SourceId1",
+                                       1.0,
+                                       "PhysicalEntityReference1"
+                    )}
+            ),
+            std::vector<SinkParticipant>(
+                    {SinkParticipant(model.get(),
+                                     "SinkId1",
+                                     1.0,
+                                     "PhysicalEntityReference2"
+                    )}
+            ),
+            std::vector<MediatorParticipant>(
+                    {MediatorParticipant(model.get(),
+                                         "MediatorID1",
+                                         "PhysicalEntityReference3"
+                    )}
             )
     );
 
+    editor.addCompositeAnnotation(&process);
 
     std::string actual = rdf.toString("rdfxml-abbrev", "file://./annotations.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -298,29 +295,27 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    editor.addCompositeAnnotation(
-            std::make_shared<PhysicalForce>(
-                    PhysicalForce(
-                            model.get(),
-                            Subject(LibrdfNode::fromUriString("MetaId004")),
-                            PhysicalPropertyResource("OPB:OPB1234"),
-                            std::vector<SourceParticipant>(
-                                    {SourceParticipant(model.get(),
-                                                       "SourceId1",
-                                                       1.0,
-                                                       "PhysicalEntityReference1"
-                                    )}
-                            ),
-                            std::vector<SinkParticipant>(
-                                    {SinkParticipant(model.get(),
-                                                     "SinkId1",
-                                                     1.0,
-                                                     "PhysicalEntityReference2"
-                                    )}
-                            )
+    PhysicalForce force = PhysicalForce(
+                    model.get(),
+                    Subject(LibrdfNode::fromUriString("MetaId004")),
+                    PhysicalProperty("metaid", "OPB:OPB1234"),
+                    std::vector<SourceParticipant>(
+                            {SourceParticipant(model.get(),
+                                               "SourceId1",
+                                               1.0,
+                                               "PhysicalEntityReference1"
+                            )}
+                    ),
+                    std::vector<SinkParticipant>(
+                            {SinkParticipant(model.get(),
+                                             "SinkId1",
+                                             1.0,
+                                             "PhysicalEntityReference2"
+                            )}
                     )
-            )
     );
+
+    editor.addCompositeAnnotation(&force);
 
 
     std::string actual = rdf.toString("rdfxml-abbrev", "file://./annotations.rdf");
@@ -385,7 +380,7 @@ TEST_F(EditorTests, TestPhysicalEntityBuilder) {
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
             .setAbout("SemsimMetaid0000")
-            .setPhysicalProperty("opb:opb_1234")
+            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
 
@@ -407,7 +402,7 @@ TEST_F(EditorTests, TestPhysicalForceBuilder) {
     PhysicalForce physicalForce = editor.createPhysicalForce();
     physicalForce
             .setAbout("SemsimMetaid0000")
-            .setPhysicalProperty("opb:opb1234")
+            .setPhysicalProperty("metaid", "OPB:OPB1234")
             .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
             .addSink("sinkMetaid", 1.0, "PhysicalEntity2");
 
@@ -428,7 +423,7 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
     PhysicalProcess physicalProcess = editor.createPhysicalProcess();
     physicalProcess
             .setAbout("SemsimMetaid0000")
-            .setPhysicalProperty("opb:opb1234")
+            .setPhysicalProperty("metaid", "OPB:OPB1234")
             .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
             .addSink("sinkMetaid", 1.0, "PhysicalEntity2")
             .addMediator("mediatorMetaid", 1.0, "PhysicalEntity3");
@@ -442,27 +437,27 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
 }
 
 
-TEST_F(EditorTests, TestRemoveSingularAnnotation) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-            SEMSIM_TYPE_SBML);
-
-    SingularAnnotation singularAnnotation;
-    singularAnnotation
-            .setAbout("SemsimMetaid0000")
-            .setPredicate("bqb", "is")
-            .setResourceLiteral("resource");
-
-    editor.addSingleAnnotation(singularAnnotation);
-
-
-    ASSERT_EQ(1, rdf.size());
-    editor.removeSingleAnnotation(singularAnnotation);
-    int expected = 0;
-    int actual = rdf.size();
-    ASSERT_EQ(expected, actual);
-}
+//TEST_F(EditorTests, TestRemoveSingularAnnotation) {
+//    RDF rdf;
+//    Editor editor = rdf.toEditor(
+//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+//            SEMSIM_TYPE_SBML);
+//
+//    SingularAnnotation singularAnnotation;
+//    singularAnnotation
+//            .setAbout("SemsimMetaid0000")
+//            .setPredicate("bqb", "is")
+//            .setResourceLiteral("resource");
+//
+//    editor.addSingleAnnotation(singularAnnotation);
+//
+//
+//    ASSERT_EQ(1, rdf.size());
+//    editor.removeSingleAnnotation(singularAnnotation);
+//    int expected = 0;
+//    int actual = rdf.size();
+//    ASSERT_EQ(expected, actual);
+//}
 
 
 //
@@ -475,7 +470,7 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
 //    PhysicalForce physicalForce = editor.createPhysicalForce();
 //    physicalForce
 //            .setAbout("SemsimMetaid0000")
-//            .setPhysicalProperty("opb:opb1234")
+//            .setPhysicalProperty("metaid", "OPB:OPB1234")
 //            .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
 //            .addSink("sinkMetaid", 1.0, "PhysicalEntity2");
 //
@@ -498,7 +493,7 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
 //    PhysicalProcess physicalProcess = editor.createPhysicalProcess();
 //    physicalProcess
 //            .setAbout("SemsimMetaid0000")
-//            .setPhysicalProperty("opb:opb1234")
+//            .setPhysicalProperty("metaid", "OPB:OPB1234")
 //            .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
 //            .addSink("sinkMetaid", 1.0, "PhysicalEntity2")
 //            .addSink("mediatorMetaid", 1.0, "PhysicalEntity3");
@@ -532,7 +527,7 @@ public:
     EditorTestsPhysicalEntityMemory() {
         physicalEntity
                 .setAbout("SemsimMetaid0000")
-                .setPhysicalProperty("opb:opb_1234")
+                .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
                 .setIdentity("uniprot:PD12345")
                 .addLocation("fma:fma:1234");
 
@@ -620,7 +615,7 @@ public:
     EditorTestsDeletePhysicalEntity() {
         physicalEntity
                 .setAbout("SemsimMetaid0000")
-                .setPhysicalProperty("opb:opb_1234")
+                .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
                 .setIdentity("uniprot:PD12345")
                 .addLocation("fma:fma:1234");
         editor.addPhysicalEntity(physicalEntity);

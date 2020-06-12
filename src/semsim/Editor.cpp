@@ -113,7 +113,7 @@ namespace semsim {
         };
     }
 
-    void Editor::addCompositeAnnotation(const PhysicalPhenomenonPtr &phenomenonPtr) {
+    void Editor::addCompositeAnnotation(PhysicalPhenomenon* phenomenonPtr) {
         Triples triples = phenomenonPtr->toTriples();
         extractNamespacesFromTriplesVector(triples);
         while (!triples.isEmpty()) {
@@ -127,15 +127,13 @@ namespace semsim {
 
     }
 
-    void Editor::addPhysicalEntity(const PhysicalEntity &physicalEntity) {
+    void Editor::addPhysicalEntity(PhysicalEntity &physicalEntity) {
         if (!physicalEntity.getAbout().getNode()) {
             throw NullPointerException(
                     "NullPointerException: Editor::addPhysicalEntity() physicalEntity::subject_ (i.e. about) node is empty");
         }
         checkValidMetaid(physicalEntity.getAbout().str());
-        addCompositeAnnotation(
-                std::make_shared<PhysicalEntity>(physicalEntity)
-        );
+        addCompositeAnnotation(&physicalEntity);
     }
 
     void Editor::addPhysicalProcess(const PhysicalProcess &physicalProcess) {
@@ -144,9 +142,10 @@ namespace semsim {
                     "NullPointerException: Editor::addPhysicalProcess() PhysicalProcess::subject_ (i.e. about) node is empty");
         }
         checkValidMetaid(physicalProcess.getAbout().str());
-        addCompositeAnnotation(
-                std::make_shared<PhysicalProcess>(physicalProcess)
-        );
+        /*
+         * object slicing???
+         */
+        addCompositeAnnotation((PhysicalPhenomenon *) &physicalProcess);
 
     }
 
@@ -156,9 +155,7 @@ namespace semsim {
                     "NullPointerException: Editor::addPhysicalForce() PhysicalForce::subject_ (i.e. about) node is empty");
         }
         checkValidMetaid(physicalForce.getAbout().str());
-        addCompositeAnnotation(
-                std::make_shared<PhysicalForce>(physicalForce)
-        );
+        addCompositeAnnotation((PhysicalPhenomenon *) &physicalForce);
 
     }
 
@@ -194,18 +191,18 @@ namespace semsim {
         }
 //        triples.freeTriples(); // seg fault
     }
-
-    void Editor::removePhysicalProcess(PhysicalProcess physicalProcess) {
-        for (auto &it: physicalProcess.toTriples()) {
-            model_.removeStatement(it.getStatement());
-        }
-    }
-
-    void Editor::removePhysicalForce(PhysicalForce physicalForce) {
-        for (auto &it: physicalForce.toTriples()) {
-            model_.removeStatement(it.getStatement());
-        }
-    }
+//
+//    void Editor::removePhysicalProcess(PhysicalProcess physicalProcess) {
+//        for (auto &it: physicalProcess.toTriples()) {
+//            model_.removeStatement(it.getStatement());
+//        }
+//    }
+//
+//    void Editor::removePhysicalForce(PhysicalForce physicalForce) {
+//        for (auto &it: physicalForce.toTriples()) {
+//            model_.removeStatement(it.getStatement());
+//        }
+//    }
 
     PhysicalEntity Editor::createPhysicalEntity() {
         return PhysicalEntity(model_.get());
