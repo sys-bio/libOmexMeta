@@ -31,9 +31,11 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
 #endif
+
 #include <stdarg.h>
 
 #include "rasqal.h"
@@ -66,12 +68,14 @@ SELECT $letter \
 
 
 #ifdef NO_QUERY_LANGUAGE
+
 int
 main(int argc, char **argv) {
-  const char *program=rasqal_basename(argv[0]);
-  fprintf(stderr, "%s: SPARQL query language not available, skipping test\n", program);
-  return(0);
+    const char *program = rasqal_basename(argv[0]);
+    fprintf(stderr, "%s: SPARQL query language not available, skipping test\n", program);
+    return (0);
 }
+
 #else
 
 #define NQUERIES 3

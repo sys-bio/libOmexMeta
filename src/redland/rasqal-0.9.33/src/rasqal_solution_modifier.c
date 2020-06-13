@@ -22,7 +22,9 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -31,9 +33,13 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
+
 #include <stdarg.h>
 
 #include "rasqal.h"
@@ -53,34 +59,32 @@
  * 
  * Return value: a new #rasqal_solution_modifier object or NULL on failure
  **/
-rasqal_solution_modifier*
-rasqal_new_solution_modifier(rasqal_query* query,
-                             raptor_sequence* order_conditions,
-                             raptor_sequence* group_conditions,
-                             raptor_sequence* having_conditions,
+rasqal_solution_modifier *
+rasqal_new_solution_modifier(rasqal_query *query,
+                             raptor_sequence *order_conditions,
+                             raptor_sequence *group_conditions,
+                             raptor_sequence *having_conditions,
                              int limit,
-                             int offset)
-{
-  rasqal_solution_modifier* sm;
+                             int offset) {
+    rasqal_solution_modifier *sm;
 
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, rasqal_query, NULL);
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, rasqal_query, NULL);
 
-  sm = RASQAL_CALLOC(rasqal_solution_modifier*, 1, sizeof(*sm));
-  if(!sm)
-    return NULL;
+    sm = RASQAL_CALLOC(rasqal_solution_modifier*, 1, sizeof(*sm));
+    if (!sm)
+        return NULL;
 
-  sm->query = query;
-  sm->order_conditions = order_conditions;
-  sm->group_conditions = group_conditions;
-  sm->having_conditions = having_conditions;
-  sm->limit = limit;
-  sm->offset = offset;
+    sm->query = query;
+    sm->order_conditions = order_conditions;
+    sm->group_conditions = group_conditions;
+    sm->having_conditions = having_conditions;
+    sm->limit = limit;
+    sm->offset = offset;
 
-  return sm;
+    return sm;
 }
 
 
-  
 /*
  * rasqal_free_solution_modifier:
  * @sm: #rasqal_solution_modifier object
@@ -89,19 +93,18 @@ rasqal_new_solution_modifier(rasqal_query* query,
  * 
  **/
 void
-rasqal_free_solution_modifier(rasqal_solution_modifier* sm)
-{
-  if(!sm)
-    return;
-  
-  if(sm->order_conditions)
-    raptor_free_sequence(sm->order_conditions);
-  
-  if(sm->group_conditions)
-    raptor_free_sequence(sm->group_conditions);
+rasqal_free_solution_modifier(rasqal_solution_modifier *sm) {
+    if (!sm)
+        return;
 
-  if(sm->having_conditions)
-    raptor_free_sequence(sm->having_conditions);
-  
-  RASQAL_FREE(rasqal_solution_modifier, sm);
+    if (sm->order_conditions)
+        raptor_free_sequence(sm->order_conditions);
+
+    if (sm->group_conditions)
+        raptor_free_sequence(sm->group_conditions);
+
+    if (sm->having_conditions)
+        raptor_free_sequence(sm->having_conditions);
+
+    RASQAL_FREE(rasqal_solution_modifier, sm);
 }

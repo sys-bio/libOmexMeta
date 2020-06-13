@@ -35,57 +35,57 @@ extern "C" {
 #endif
 
 typedef enum {
-  LIBRDF_CONCEPT_MS_Alt,
-  LIBRDF_CONCEPT_MS_Bag,
-  LIBRDF_CONCEPT_MS_Property,
-  LIBRDF_CONCEPT_MS_Seq,
-  LIBRDF_CONCEPT_MS_Statement,
-  LIBRDF_CONCEPT_MS_object,
-  LIBRDF_CONCEPT_MS_predicate,
-  LIBRDF_CONCEPT_MS_subject,
-  LIBRDF_CONCEPT_MS_type,
-  LIBRDF_CONCEPT_MS_value,
-  LIBRDF_CONCEPT_MS_li,
-  LIBRDF_CONCEPT_MS_RDF,
-  LIBRDF_CONCEPT_MS_Description,
-  LIBRDF_CONCEPT_MS_aboutEach,
-  LIBRDF_CONCEPT_MS_aboutEachPrefix,
-  LIBRDF_CONCEPT_RS_nodeID,
-  LIBRDF_CONCEPT_RS_List,
-  LIBRDF_CONCEPT_RS_first,
-  LIBRDF_CONCEPT_RS_rest,
-  LIBRDF_CONCEPT_RS_nil,
-  LIBRDF_CONCEPT_RS_XMLLiteral,
+    LIBRDF_CONCEPT_MS_Alt,
+    LIBRDF_CONCEPT_MS_Bag,
+    LIBRDF_CONCEPT_MS_Property,
+    LIBRDF_CONCEPT_MS_Seq,
+    LIBRDF_CONCEPT_MS_Statement,
+    LIBRDF_CONCEPT_MS_object,
+    LIBRDF_CONCEPT_MS_predicate,
+    LIBRDF_CONCEPT_MS_subject,
+    LIBRDF_CONCEPT_MS_type,
+    LIBRDF_CONCEPT_MS_value,
+    LIBRDF_CONCEPT_MS_li,
+    LIBRDF_CONCEPT_MS_RDF,
+    LIBRDF_CONCEPT_MS_Description,
+    LIBRDF_CONCEPT_MS_aboutEach,
+    LIBRDF_CONCEPT_MS_aboutEachPrefix,
+    LIBRDF_CONCEPT_RS_nodeID,
+    LIBRDF_CONCEPT_RS_List,
+    LIBRDF_CONCEPT_RS_first,
+    LIBRDF_CONCEPT_RS_rest,
+    LIBRDF_CONCEPT_RS_nil,
+    LIBRDF_CONCEPT_RS_XMLLiteral,
 
-  /* RDF Schema concepts defined in prose at
-   *   http://www.w3.org/TR/2000/CR-rdf-schema-20000327/
-   * and in RDF Schema form at 
-   *   http://www.w3.org/2000/01/rdf-schema
-   */
-  LIBRDF_CONCEPT_S_Class,
-  LIBRDF_CONCEPT_S_ConstraintProperty,
-  LIBRDF_CONCEPT_S_ConstraintResource,
-  LIBRDF_CONCEPT_S_Container,
-  LIBRDF_CONCEPT_S_ContainerMembershipProperty,
-  LIBRDF_CONCEPT_S_Literal,
-  LIBRDF_CONCEPT_S_Resource,
-  LIBRDF_CONCEPT_S_comment,
-  LIBRDF_CONCEPT_S_domain,
-  LIBRDF_CONCEPT_S_isDefinedBy,
-  LIBRDF_CONCEPT_S_label,
-  LIBRDF_CONCEPT_S_range,
-  LIBRDF_CONCEPT_S_seeAlso,
-  LIBRDF_CONCEPT_S_subClassOf,
-  LIBRDF_CONCEPT_S_subPropertyOf,
+    /* RDF Schema concepts defined in prose at
+     *   http://www.w3.org/TR/2000/CR-rdf-schema-20000327/
+     * and in RDF Schema form at
+     *   http://www.w3.org/2000/01/rdf-schema
+     */
+    LIBRDF_CONCEPT_S_Class,
+    LIBRDF_CONCEPT_S_ConstraintProperty,
+    LIBRDF_CONCEPT_S_ConstraintResource,
+    LIBRDF_CONCEPT_S_Container,
+    LIBRDF_CONCEPT_S_ContainerMembershipProperty,
+    LIBRDF_CONCEPT_S_Literal,
+    LIBRDF_CONCEPT_S_Resource,
+    LIBRDF_CONCEPT_S_comment,
+    LIBRDF_CONCEPT_S_domain,
+    LIBRDF_CONCEPT_S_isDefinedBy,
+    LIBRDF_CONCEPT_S_label,
+    LIBRDF_CONCEPT_S_range,
+    LIBRDF_CONCEPT_S_seeAlso,
+    LIBRDF_CONCEPT_S_subClassOf,
+    LIBRDF_CONCEPT_S_subPropertyOf,
 
-  /* first entry from schema namespace */
-  LIBRDF_CONCEPT_FIRST_S_ID = LIBRDF_CONCEPT_S_Class,
-  LIBRDF_CONCEPT_LAST_S_ID = LIBRDF_CONCEPT_S_subPropertyOf,
+    /* first entry from schema namespace */
+    LIBRDF_CONCEPT_FIRST_S_ID = LIBRDF_CONCEPT_S_Class,
+    LIBRDF_CONCEPT_LAST_S_ID = LIBRDF_CONCEPT_S_subPropertyOf,
 
-  LIBRDF_CONCEPT_RDF11_HTML,
-  LIBRDF_CONCEPT_RDF11_langString,
+    LIBRDF_CONCEPT_RDF11_HTML,
+    LIBRDF_CONCEPT_RDF11_langString,
 
-  LIBRDF_CONCEPT_LAST = LIBRDF_CONCEPT_RDF11_langString
+    LIBRDF_CONCEPT_LAST = LIBRDF_CONCEPT_RDF11_langString
 } librdf_concepts_index;
 
 
@@ -96,15 +96,15 @@ typedef enum {
 
 /* Get Redland uri object for RDF Syntax/Schema namespaces */
 REDLAND_API
-librdf_uri* librdf_get_concept_ms_namespace(librdf_world *world);
+librdf_uri *librdf_get_concept_ms_namespace(librdf_world *world);
 REDLAND_API
-librdf_uri* librdf_get_concept_schema_namespace(librdf_world *world);
+librdf_uri *librdf_get_concept_schema_namespace(librdf_world *world);
 
 /* Get Redland node/uri object for RDF concepts */
 REDLAND_API
-librdf_node* librdf_get_concept_resource_by_index(librdf_world *world, librdf_concepts_index idx);
+librdf_node *librdf_get_concept_resource_by_index(librdf_world *world, librdf_concepts_index idx);
 REDLAND_API
-librdf_uri* librdf_get_concept_uri_by_index(librdf_world *world, librdf_concepts_index idx);
+librdf_uri *librdf_get_concept_uri_by_index(librdf_world *world, librdf_concepts_index idx);
 
 
 /* public macros for the resources (librdf_node*) representing the concepts

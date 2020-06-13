@@ -32,30 +32,32 @@ extern "C" {
 
 /* used in map_list below */
 typedef struct {
-  void *context; /* context to pass on to map */
-  librdf_stream_map_handler fn;
-  librdf_stream_map_free_context_handler free_context;
+    void *context; /* context to pass on to map */
+    librdf_stream_map_handler fn;
+    librdf_stream_map_free_context_handler free_context;
 } librdf_stream_map;
 
 
 struct librdf_stream_s {
-  librdf_world *world;
-  void *context;
-  int is_finished; /* 1 when have no more statements */
-  int is_updated; /* 1 when we know there is a current item */
-  int is_updating; /* 1 when are in the middle of update process */
-  
-  /* Used when mapping */
-  librdf_statement *current;
-  librdf_list *map_list; /* non-empty means there is a list of maps */
-  
-  int (*is_end_method)(void*);
-  int (*next_method)(void*);
-  void* (*get_method)(void*, int); /* flags: type of get */
-  void (*finished_method)(void*);
+    librdf_world *world;
+    void *context;
+    int is_finished; /* 1 when have no more statements */
+    int is_updated; /* 1 when we know there is a current item */
+    int is_updating; /* 1 when are in the middle of update process */
+
+    /* Used when mapping */
+    librdf_statement *current;
+    librdf_list *map_list; /* non-empty means there is a list of maps */
+
+    int (*is_end_method)(void *);
+
+    int (*next_method)(void *);
+
+    void *(*get_method)(void *, int); /* flags: type of get */
+    void (*finished_method)(void *);
 };
 
-librdf_statement* librdf_stream_statement_find_map(librdf_stream *stream, void* context, librdf_statement* statement);
+librdf_statement *librdf_stream_statement_find_map(librdf_stream *stream, void *context, librdf_statement *statement);
 
 #ifdef __cplusplus
 }

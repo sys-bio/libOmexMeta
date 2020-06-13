@@ -24,18 +24,25 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdarg.h>
+
 #ifdef HAVE_ERRNO_H
+
 #include <errno.h>
+
 #endif
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 /* Raptor includes */
@@ -91,126 +98,124 @@
  * 
  * Return value: a new #raptor_qname object or NULL on failure
  **/
-raptor_qname*
-raptor_new_qname(raptor_namespace_stack *nstack, 
+raptor_qname *
+raptor_new_qname(raptor_namespace_stack *nstack,
                  const unsigned char *name,
-                 const unsigned char *value)
-{
-  raptor_qname* qname;
-  const unsigned char *p;
-  raptor_namespace* ns;
-  unsigned char* new_name;
-  unsigned int prefix_length;
-  unsigned int local_name_length = 0;
+                 const unsigned char *value) {
+    raptor_qname *qname;
+    const unsigned char *p;
+    raptor_namespace *ns;
+    unsigned char *new_name;
+    unsigned int prefix_length;
+    unsigned int local_name_length = 0;
 
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
-  RAPTOR_DEBUG2("name %s\n", name);
-#endif  
-
-  qname = RAPTOR_CALLOC(raptor_qname*, 1, sizeof(*qname));
-  if(!qname)
-    return NULL;
-  qname->world = nstack->world;
-
-  if(value) {
-    size_t value_length = strlen((char*)value);
-    unsigned char* new_value;
-
-    new_value = RAPTOR_MALLOC(unsigned char*, value_length + 1);
-    if(!new_value) {
-      RAPTOR_FREE(raptor_qname, qname);
-      return NULL;
-    } 
-
-    memcpy(new_value, value, value_length + 1); /* copy NUL */
-    qname->value = new_value;
-    qname->value_length = value_length;
-  }
-
-
-  /* Find : */
-  for(p = name; *p && *p != ':'; p++)
-    ;
-
-
-  if(!*p) {
-    local_name_length = (unsigned int)(p - name);
-
-    /* No : in the name */
-    new_name = RAPTOR_MALLOC(unsigned char*, local_name_length + 1);
-    if(!new_name) {
-      raptor_free_qname(qname);
-      return NULL;
-    }
-    memcpy(new_name, name, local_name_length); /* no NUL to copy */
-    new_name[local_name_length] = '\0';
-    qname->local_name = new_name;
-    qname->local_name_length = local_name_length;
-
-    /* For elements only, pick up the default namespace if there is one */
-    if(!value) {
-      ns = raptor_namespaces_get_default_namespace(nstack);
-      
-      if(ns) {
-        qname->nspace = ns;
-#if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
-        RAPTOR_DEBUG2("Found default namespace %s\n", raptor_uri_as_string(ns->uri));
+    RAPTOR_DEBUG2("name %s\n", name);
 #endif
-      } else {
-#if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
-        RAPTOR_DEBUG1("No default namespace defined\n");
-#endif
-      }
-    } /* if is_element */
 
-  } else {
-    /* There is a namespace prefix */
+    qname = RAPTOR_CALLOC(raptor_qname*, 1, sizeof(*qname));
+    if (!qname)
+        return NULL;
+    qname->world = nstack->world;
 
-    prefix_length = (unsigned int)(p - name);
-    p++; 
+    if (value) {
+        size_t value_length = strlen((char *) value);
+        unsigned char *new_value;
 
-    /* p now is at start of local_name */
-    local_name_length = (unsigned int)strlen((char*)p);
-    new_name = RAPTOR_MALLOC(unsigned char*, local_name_length + 1);
-    if(!new_name) {
-      raptor_free_qname(qname);
-      return NULL;
+        new_value = RAPTOR_MALLOC(unsigned char*, value_length + 1);
+        if (!new_value) {
+            RAPTOR_FREE(raptor_qname, qname);
+            return NULL;
+        }
+
+        memcpy(new_value, value, value_length + 1); /* copy NUL */
+        qname->value = new_value;
+        qname->value_length = value_length;
     }
-    memcpy(new_name, p, local_name_length); /* No NUL to copy */
-    new_name[local_name_length] = '\0';
-    qname->local_name = new_name;
-    qname->local_name_length = local_name_length;
 
-    /* Find the namespace */
-    ns = raptor_namespaces_find_namespace(nstack, name, prefix_length);
 
-    if(!ns) {
-      /* failed to find namespace - now what? */
-      raptor_log_error_formatted(qname->world, RAPTOR_LOG_LEVEL_ERROR, NULL,
-                                 "The namespace prefix in \"%s\" was not declared.", name);
+    /* Find : */
+    for (p = name; *p && *p != ':'; p++);
+
+
+    if (!*p) {
+        local_name_length = (unsigned int) (p - name);
+
+        /* No : in the name */
+        new_name = RAPTOR_MALLOC(unsigned char*, local_name_length + 1);
+        if (!new_name) {
+            raptor_free_qname(qname);
+            return NULL;
+        }
+        memcpy(new_name, name, local_name_length); /* no NUL to copy */
+        new_name[local_name_length] = '\0';
+        qname->local_name = new_name;
+        qname->local_name_length = local_name_length;
+
+        /* For elements only, pick up the default namespace if there is one */
+        if (!value) {
+            ns = raptor_namespaces_get_default_namespace(nstack);
+
+            if (ns) {
+                qname->nspace = ns;
+#if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
+                RAPTOR_DEBUG2("Found default namespace %s\n", raptor_uri_as_string(ns->uri));
+#endif
+            } else {
+#if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
+                RAPTOR_DEBUG1("No default namespace defined\n");
+#endif
+            }
+        } /* if is_element */
+
     } else {
+        /* There is a namespace prefix */
+
+        prefix_length = (unsigned int) (p - name);
+        p++;
+
+        /* p now is at start of local_name */
+        local_name_length = (unsigned int) strlen((char *) p);
+        new_name = RAPTOR_MALLOC(unsigned char*, local_name_length + 1);
+        if (!new_name) {
+            raptor_free_qname(qname);
+            return NULL;
+        }
+        memcpy(new_name, p, local_name_length); /* No NUL to copy */
+        new_name[local_name_length] = '\0';
+        qname->local_name = new_name;
+        qname->local_name_length = local_name_length;
+
+        /* Find the namespace */
+        ns = raptor_namespaces_find_namespace(nstack, name, prefix_length);
+
+        if (!ns) {
+            /* failed to find namespace - now what? */
+            raptor_log_error_formatted(qname->world, RAPTOR_LOG_LEVEL_ERROR, NULL,
+                                       "The namespace prefix in \"%s\" was not declared.", name);
+        } else {
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
-      RAPTOR_DEBUG3("Found namespace prefix %s URI %s\n", ns->prefix, raptor_uri_as_string(ns->uri));
+            RAPTOR_DEBUG3("Found namespace prefix %s URI %s\n", ns->prefix, raptor_uri_as_string(ns->uri));
 #endif
-      qname->nspace = ns;
+            qname->nspace = ns;
+        }
     }
-  }
 
 
 
-  /* If namespace has a URI and a local_name is defined, create the URI
-   * for this element 
-   */
-  if(qname->nspace && local_name_length) {
-    raptor_uri *uri = raptor_namespace_get_uri(qname->nspace);
-    if(uri)
-      uri = raptor_new_uri_from_uri_local_name(qname->world, uri, new_name);
+    /* If namespace has a URI and a local_name is defined, create the URI
+     * for this element
+     */
+    if (qname->nspace && local_name_length) {
+        raptor_uri *uri = raptor_namespace_get_uri(qname->nspace);
+        if (uri)
+            uri = raptor_new_uri_from_uri_local_name(qname->world, uri, new_name);
 
-    qname->uri = uri;
-  }
+        qname->uri = uri;
+    }
 
 
-  return qname;
+    return qname;
 }
 
 
@@ -228,65 +233,64 @@ raptor_new_qname(raptor_namespace_stack *nstack,
  * 
  * Return value: a new #raptor_qname object or NULL on failure
  **/
-raptor_qname*
-raptor_new_qname_from_namespace_local_name(raptor_world* world,
-                                           raptor_namespace *ns, 
+raptor_qname *
+raptor_new_qname_from_namespace_local_name(raptor_world *world,
+                                           raptor_namespace *ns,
                                            const unsigned char *local_name,
-                                           const unsigned char *value)
-{
-  raptor_qname* qname;
-  unsigned char* new_name;
-  unsigned int local_name_length;
+                                           const unsigned char *value) {
+    raptor_qname *qname;
+    unsigned char *new_name;
+    unsigned int local_name_length;
 
-  RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
+    RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
 
-  if(!local_name)
-    return NULL;
+    if (!local_name)
+        return NULL;
 
-  local_name_length = (unsigned int)strlen((char*)local_name);
+    local_name_length = (unsigned int) strlen((char *) local_name);
 
-  raptor_world_open(world);
+    raptor_world_open(world);
 
-  qname = RAPTOR_CALLOC(raptor_qname*, 1, sizeof(*qname));
-  if(!qname)
-    return NULL;
-  qname->world = world;
+    qname = RAPTOR_CALLOC(raptor_qname*, 1, sizeof(*qname));
+    if (!qname)
+        return NULL;
+    qname->world = world;
 
-  if(value) {
-    unsigned int value_length = (unsigned int)strlen((char*)value);
-    unsigned char* new_value;
+    if (value) {
+        unsigned int value_length = (unsigned int) strlen((char *) value);
+        unsigned char *new_value;
 
-    new_value = RAPTOR_MALLOC(unsigned char*, value_length + 1);
-    if(!new_value) {
-      RAPTOR_FREE(raptor_qname, qname);
-      return NULL;
-    } 
+        new_value = RAPTOR_MALLOC(unsigned char*, value_length + 1);
+        if (!new_value) {
+            RAPTOR_FREE(raptor_qname, qname);
+            return NULL;
+        }
 
-    memcpy(new_value, value, value_length + 1); /* Copy NUL */
-    qname->value = new_value;
-    qname->value_length = value_length;
-  }
+        memcpy(new_value, value, value_length + 1); /* Copy NUL */
+        qname->value = new_value;
+        qname->value_length = value_length;
+    }
 
-  new_name = RAPTOR_MALLOC(unsigned char*, local_name_length + 1);
-  if(!new_name) {
-    raptor_free_qname(qname);
-    return NULL;
-  }
+    new_name = RAPTOR_MALLOC(unsigned char*, local_name_length + 1);
+    if (!new_name) {
+        raptor_free_qname(qname);
+        return NULL;
+    }
 
-  memcpy(new_name, local_name, local_name_length); /* No NUL to copy */
-  new_name[local_name_length] = '\0';
-  qname->local_name = new_name;
-  qname->local_name_length = local_name_length;
+    memcpy(new_name, local_name, local_name_length); /* No NUL to copy */
+    new_name[local_name_length] = '\0';
+    qname->local_name = new_name;
+    qname->local_name_length = local_name_length;
 
-  qname->nspace = ns;
+    qname->nspace = ns;
 
-  if(qname->nspace) {
-    qname->uri = raptor_namespace_get_uri(qname->nspace);
-    if(qname->uri)
-      qname->uri = raptor_new_uri_from_uri_local_name(qname->world, qname->uri, new_name);
-  }
-  
-  return qname;
+    if (qname->nspace) {
+        qname->uri = raptor_namespace_get_uri(qname->nspace);
+        if (qname->uri)
+            qname->uri = raptor_new_uri_from_uri_local_name(qname->world, qname->uri, new_name);
+    }
+
+    return qname;
 }
 
 
@@ -298,51 +302,50 @@ raptor_new_qname_from_namespace_local_name(raptor_world* world,
  *
  * Return value: a new #raptor_qname object or NULL on failure
  **/
-raptor_qname*
-raptor_qname_copy(raptor_qname *qname)
-{
-  raptor_qname* new_qname;
-  unsigned char* new_name;
+raptor_qname *
+raptor_qname_copy(raptor_qname *qname) {
+    raptor_qname *new_qname;
+    unsigned char *new_name;
 
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(qname, raptor_qname, NULL);
-  
-  new_qname = RAPTOR_CALLOC(raptor_qname*, 1, sizeof(*qname));
-  if(!new_qname)
-    return NULL;
-  new_qname->world = qname->world;
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(qname, raptor_qname, NULL);
 
-  if(qname->value) {
-    size_t value_length = qname->value_length;
-    unsigned char* new_value;
+    new_qname = RAPTOR_CALLOC(raptor_qname*, 1, sizeof(*qname));
+    if (!new_qname)
+        return NULL;
+    new_qname->world = qname->world;
 
-    new_value = RAPTOR_MALLOC(unsigned char*, value_length + 1);
-    if(!new_value) {
-      RAPTOR_FREE(raptor_qname, new_qname);
-      return NULL;
-    } 
+    if (qname->value) {
+        size_t value_length = qname->value_length;
+        unsigned char *new_value;
 
-    memcpy(new_value, qname->value, value_length + 1); /* Copy NUL */
-    new_qname->value = new_value;
-    new_qname->value_length = value_length;
-  }
+        new_value = RAPTOR_MALLOC(unsigned char*, value_length + 1);
+        if (!new_value) {
+            RAPTOR_FREE(raptor_qname, new_qname);
+            return NULL;
+        }
 
-  new_name = RAPTOR_MALLOC(unsigned char*, qname->local_name_length + 1);
-  if(!new_name) {
-    raptor_free_qname(new_qname);
-    return NULL;
-  }
+        memcpy(new_value, qname->value, value_length + 1); /* Copy NUL */
+        new_qname->value = new_value;
+        new_qname->value_length = value_length;
+    }
 
-  memcpy(new_name, qname->local_name, qname->local_name_length + 1); /* Copy NUL */
-  new_qname->local_name = new_name;
-  new_qname->local_name_length = qname->local_name_length;
+    new_name = RAPTOR_MALLOC(unsigned char*, qname->local_name_length + 1);
+    if (!new_name) {
+        raptor_free_qname(new_qname);
+        return NULL;
+    }
 
-  new_qname->nspace = qname->nspace;
+    memcpy(new_name, qname->local_name, qname->local_name_length + 1); /* Copy NUL */
+    new_qname->local_name = new_name;
+    new_qname->local_name_length = qname->local_name_length;
 
-  new_qname->uri = raptor_namespace_get_uri(new_qname->nspace);
-  if(new_qname->uri)
-    new_qname->uri = raptor_new_uri_from_uri_local_name(qname->world, new_qname->uri, new_name);
-  
-  return new_qname;
+    new_qname->nspace = qname->nspace;
+
+    new_qname->uri = raptor_namespace_get_uri(new_qname->nspace);
+    if (new_qname->uri)
+        new_qname->uri = raptor_new_uri_from_uri_local_name(qname->world, new_qname->uri, new_name);
+
+    return new_qname;
 }
 
 
@@ -369,20 +372,19 @@ raptor_qname_print(FILE *stream, raptor_qname* name)
  * Destructor - destroy a raptor_qname object.
  **/
 void
-raptor_free_qname(raptor_qname* name) 
-{
-  if(!name)
-    return;
+raptor_free_qname(raptor_qname *name) {
+    if (!name)
+        return;
 
-  if(name->local_name)
-    RAPTOR_FREE(char*, name->local_name);
+    if (name->local_name)
+        RAPTOR_FREE(char*, name->local_name);
 
-  if(name->uri && name->nspace)
-    raptor_free_uri(name->uri);
+    if (name->uri && name->nspace)
+        raptor_free_uri(name->uri);
 
-  if(name->value)
-    RAPTOR_FREE(char*, name->value);
-  RAPTOR_FREE(raptor_qname, name);
+    if (name->value)
+        RAPTOR_FREE(char*, name->value);
+    RAPTOR_FREE(raptor_qname, name);
 }
 
 
@@ -396,17 +398,15 @@ raptor_free_qname(raptor_qname* name)
  * Return value: non-0 if the qnames are equal.
  **/
 int
-raptor_qname_equal(raptor_qname *name1, raptor_qname *name2)
-{
-  if(name1->nspace != name2->nspace)
-    return 0;
-  if(name1->local_name_length != name2->local_name_length)
-    return 0;
-  if(strcmp((char*)name1->local_name, (char*)name2->local_name))
-    return 0;
-  return 1;
+raptor_qname_equal(raptor_qname *name1, raptor_qname *name2) {
+    if (name1->nspace != name2->nspace)
+        return 0;
+    if (name1->local_name_length != name2->local_name_length)
+        return 0;
+    if (strcmp((char *) name1->local_name, (char *) name2->local_name))
+        return 0;
+    return 1;
 }
-
 
 
 /**
@@ -431,75 +431,73 @@ raptor_qname_equal(raptor_qname *name1, raptor_qname *name2)
  *
  * Return value: new #raptor_uri object or NULL on failure
  **/
-raptor_uri*
-raptor_qname_string_to_uri(raptor_namespace_stack *nstack, 
-                           const unsigned char *name, size_t name_len)
-{
-  raptor_uri *uri = NULL;
-  const unsigned char *p;
-  const unsigned char *original_name = name;
-  const unsigned char *local_name = NULL;
-  unsigned int local_name_length = 0;
-  raptor_namespace* ns;
+raptor_uri *
+raptor_qname_string_to_uri(raptor_namespace_stack *nstack,
+                           const unsigned char *name, size_t name_len) {
+    raptor_uri *uri = NULL;
+    const unsigned char *p;
+    const unsigned char *original_name = name;
+    const unsigned char *local_name = NULL;
+    unsigned int local_name_length = 0;
+    raptor_namespace *ns;
 
-  /* Empty string is default namespace URI */
-  if(!name) {
-    ns = raptor_namespaces_get_default_namespace(nstack);
-  } else {
-    /* If starts with :, it is relative to default namespace, so skip it */
-    if(*name == ':') {
-      name++;
-      name_len--;
-      p = name + name_len;
-    } else {
-      for(p = name; *p && *p != ':'; p++)
-        ;
-    }
-    
-    /* If ends with :, it is the URI of a namespace */
-    if(RAPTOR_GOOD_CAST(size_t, p-name) == (name_len - 1)) {
-      ns = raptor_namespaces_find_namespace(nstack, name,
-                                            RAPTOR_BAD_CAST(int, (name_len - 1)));
-    } else {
-      if(!*p) {
-        local_name = name;
-        local_name_length = (unsigned int)(p - name);
-        
-        /* pick up the default namespace if there is one */
+    /* Empty string is default namespace URI */
+    if (!name) {
         ns = raptor_namespaces_get_default_namespace(nstack);
-      } else {
-        /* There is a namespace prefix */
-        unsigned int prefix_length = (unsigned int)(p - name);
-        p++;
+    } else {
+        /* If starts with :, it is relative to default namespace, so skip it */
+        if (*name == ':') {
+            name++;
+            name_len--;
+            p = name + name_len;
+        } else {
+            for (p = name; *p && *p != ':'; p++);
+        }
 
-        local_name = p;
-        local_name_length = (unsigned int)strlen((char*)p);
-        
-        /* Find the namespace */
-        ns = raptor_namespaces_find_namespace(nstack, name, prefix_length);
-      }
+        /* If ends with :, it is the URI of a namespace */
+        if (RAPTOR_GOOD_CAST(size_t, p - name) == (name_len - 1)) {
+            ns = raptor_namespaces_find_namespace(nstack, name,
+                                                  RAPTOR_BAD_CAST(int, (name_len - 1)));
+        } else {
+            if (!*p) {
+                local_name = name;
+                local_name_length = (unsigned int) (p - name);
+
+                /* pick up the default namespace if there is one */
+                ns = raptor_namespaces_get_default_namespace(nstack);
+            } else {
+                /* There is a namespace prefix */
+                unsigned int prefix_length = (unsigned int) (p - name);
+                p++;
+
+                local_name = p;
+                local_name_length = (unsigned int) strlen((char *) p);
+
+                /* Find the namespace */
+                ns = raptor_namespaces_find_namespace(nstack, name, prefix_length);
+            }
+        }
     }
-  }
-  
-  if(!ns) {
-    raptor_log_error_formatted(nstack->world, RAPTOR_LOG_LEVEL_ERROR, NULL,
-                               "The namespace prefix in \"%s\" was not declared.", 
-                               original_name);
-  }
+
+    if (!ns) {
+        raptor_log_error_formatted(nstack->world, RAPTOR_LOG_LEVEL_ERROR, NULL,
+                                   "The namespace prefix in \"%s\" was not declared.",
+                                   original_name);
+    }
 
 
 
-  /* If namespace has a URI and a local_name is defined, return the URI
-   * for this name
-   */
-  if(ns && (uri = raptor_namespace_get_uri(ns))) {
-    if(local_name_length)
-      uri = raptor_new_uri_from_uri_local_name(nstack->world, uri, local_name);
-    else
-      uri = raptor_uri_copy(uri);
-  }
+    /* If namespace has a URI and a local_name is defined, return the URI
+     * for this name
+     */
+    if (ns && (uri = raptor_namespace_get_uri(ns))) {
+        if (local_name_length)
+            uri = raptor_new_uri_from_uri_local_name(nstack->world, uri, local_name);
+        else
+            uri = raptor_uri_copy(uri);
+    }
 
-  return uri;
+    return uri;
 }
 
 
@@ -513,19 +511,18 @@ raptor_qname_string_to_uri(raptor_namespace_stack *nstack,
  * Return value: non-0 on failure
  **/
 int
-raptor_qname_write(raptor_qname *qname, raptor_iostream* iostr)
-{
-  if(qname->nspace && qname->nspace->prefix_length > 0) {
-    raptor_iostream_counted_string_write(qname->nspace->prefix,
-                                         qname->nspace->prefix_length,
+raptor_qname_write(raptor_qname *qname, raptor_iostream *iostr) {
+    if (qname->nspace && qname->nspace->prefix_length > 0) {
+        raptor_iostream_counted_string_write(qname->nspace->prefix,
+                                             qname->nspace->prefix_length,
+                                             iostr);
+        raptor_iostream_write_byte(':', iostr);
+    }
+
+    raptor_iostream_counted_string_write(qname->local_name,
+                                         qname->local_name_length,
                                          iostr);
-    raptor_iostream_write_byte(':', iostr);
-  }
-  
-  raptor_iostream_counted_string_write(qname->local_name,
-                                       qname->local_name_length,
-                                       iostr);
-  return 0;
+    return 0;
 }
 
 
@@ -538,33 +535,32 @@ raptor_qname_write(raptor_qname *qname, raptor_iostream* iostr)
  * 
  * Return value: new string name or NULL on failure
  **/
-unsigned char*
-raptor_qname_to_counted_name(raptor_qname *qname, size_t* length_p)
-{
-  size_t len = qname->local_name_length;
-  unsigned char* s;
-  unsigned char *p;
+unsigned char *
+raptor_qname_to_counted_name(raptor_qname *qname, size_t *length_p) {
+    size_t len = qname->local_name_length;
+    unsigned char *s;
+    unsigned char *p;
 
-  if(qname->nspace && qname->nspace->prefix_length > 0)
-    len+= 1 + qname->nspace->prefix_length;
+    if (qname->nspace && qname->nspace->prefix_length > 0)
+        len += 1 + qname->nspace->prefix_length;
 
-  if(length_p)
-    *length_p=len;
-  
-  s = RAPTOR_MALLOC(unsigned char*, len + 1);
-  if(!s)
-    return NULL;
+    if (length_p)
+        *length_p = len;
 
-  p = s;
-  if(qname->nspace && qname->nspace->prefix_length > 0) {
-    memcpy(p, qname->nspace->prefix, qname->nspace->prefix_length); /* Do not copy NUL */
-    p += qname->nspace->prefix_length;
-    *p++ = ':';
-  }
-  
-  memcpy(p, qname->local_name, qname->local_name_length + 1); /* Copy final NUL */
+    s = RAPTOR_MALLOC(unsigned char*, len + 1);
+    if (!s)
+        return NULL;
 
-  return s;
+    p = s;
+    if (qname->nspace && qname->nspace->prefix_length > 0) {
+        memcpy(p, qname->nspace->prefix, qname->nspace->prefix_length); /* Do not copy NUL */
+        p += qname->nspace->prefix_length;
+        *p++ = ':';
+    }
+
+    memcpy(p, qname->local_name, qname->local_name_length + 1); /* Copy final NUL */
+
+    return s;
 }
 
 
@@ -576,10 +572,9 @@ raptor_qname_to_counted_name(raptor_qname *qname, size_t* length_p)
  * 
  * Return value: the namespace
  **/
-const raptor_namespace*
-raptor_qname_get_namespace(raptor_qname* name)
-{
-  return name->nspace;
+const raptor_namespace *
+raptor_qname_get_namespace(raptor_qname *name) {
+    return name->nspace;
 }
 
 
@@ -591,10 +586,9 @@ raptor_qname_get_namespace(raptor_qname* name)
  * 
  * Return value: the local_name
  **/
-const unsigned char*
-raptor_qname_get_local_name(raptor_qname* name)
-{
-  return name->local_name;
+const unsigned char *
+raptor_qname_get_local_name(raptor_qname *name) {
+    return name->local_name;
 }
 
 
@@ -606,10 +600,9 @@ raptor_qname_get_local_name(raptor_qname* name)
  * 
  * Return value: the value
  **/
-const unsigned char*
-raptor_qname_get_value(raptor_qname* name)
-{
-  return name->value;
+const unsigned char *
+raptor_qname_get_value(raptor_qname *name) {
+    return name->value;
 }
 
 /**
@@ -621,12 +614,11 @@ raptor_qname_get_value(raptor_qname* name)
  * 
  * Return value: the value
  **/
-const unsigned char*
-raptor_qname_get_counted_value(raptor_qname* name, size_t* length_p)
-{
-  if(length_p)
-    *length_p=name->value_length;
-  return name->value;
+const unsigned char *
+raptor_qname_get_counted_value(raptor_qname *name, size_t *length_p) {
+    if (length_p)
+        *length_p = name->value_length;
+    return name->value;
 }
 
 
@@ -645,51 +637,50 @@ raptor_qname_get_counted_value(raptor_qname* name, size_t* length_p)
  *
  * Return value: qname formatted as newly allocated string or NULL on failure
  **/
-unsigned char*
-raptor_qname_format_as_xml(const raptor_qname *qname, size_t *length_p)
-{
-  size_t length;
-  unsigned char *buffer;
-  const char quote='"';
-  unsigned char *p;
+unsigned char *
+raptor_qname_format_as_xml(const raptor_qname *qname, size_t *length_p) {
+    size_t length;
+    unsigned char *buffer;
+    const char quote = '"';
+    unsigned char *p;
 
-  length = qname->local_name_length + 3 /* ="" */;
-  if(qname->value_length)
-    length += raptor_xml_escape_string(qname->world,
-                                       qname->value, qname->value_length,
-                                       NULL, 0, quote);
+    length = qname->local_name_length + 3 /* ="" */;
+    if (qname->value_length)
+        length += raptor_xml_escape_string(qname->world,
+                                           qname->value, qname->value_length,
+                                           NULL, 0, quote);
 
-  if(qname->nspace && qname->nspace->prefix_length > 0)
-    length += qname->nspace->prefix_length + 1; /* for : */
+    if (qname->nspace && qname->nspace->prefix_length > 0)
+        length += qname->nspace->prefix_length + 1; /* for : */
 
-  if(length_p)
-    *length_p = length;
+    if (length_p)
+        *length_p = length;
 
-  buffer = RAPTOR_MALLOC(unsigned char*, length + 1);
-  if(!buffer)
-    return NULL;
+    buffer = RAPTOR_MALLOC(unsigned char*, length + 1);
+    if (!buffer)
+        return NULL;
 
-  p = buffer;
+    p = buffer;
 
-  if(qname->nspace && qname->nspace->prefix_length > 0) {
-    memcpy(p, qname->nspace->prefix, qname->nspace->prefix_length);
-    p += qname->nspace->prefix_length;
-    *p++ = ':';
-  }
-  memcpy(p, qname->local_name, qname->local_name_length);
-  p += qname->local_name_length;
-  *p++ = '=';
-  *p++ = quote;
-  if(qname->value_length) {
-    p += raptor_xml_escape_string(qname->world,
-                                  qname->value, qname->value_length,
-                                  p, length, quote);
-  }
-  *p++ = quote;
-  /* *p used here since we never need to use value of p again [CLANG] */
-  *p = '\0';
+    if (qname->nspace && qname->nspace->prefix_length > 0) {
+        memcpy(p, qname->nspace->prefix, qname->nspace->prefix_length);
+        p += qname->nspace->prefix_length;
+        *p++ = ':';
+    }
+    memcpy(p, qname->local_name, qname->local_name_length);
+    p += qname->local_name_length;
+    *p++ = '=';
+    *p++ = quote;
+    if (qname->value_length) {
+        p += raptor_xml_escape_string(qname->world,
+                                      qname->value, qname->value_length,
+                                      p, length, quote);
+    }
+    *p++ = quote;
+    /* *p used here since we never need to use value of p again [CLANG] */
+    *p = '\0';
 
-  return buffer;
+    return buffer;
 }
 
 

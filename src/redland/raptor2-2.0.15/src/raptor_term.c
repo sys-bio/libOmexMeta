@@ -21,15 +21,20 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdarg.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 /* Raptor includes */
@@ -50,28 +55,27 @@
  *
  * Return value: new term or NULL on failure
 */
-raptor_term*
-raptor_new_term_from_uri(raptor_world* world, raptor_uri* uri)
-{
-  raptor_term *t;
+raptor_term *
+raptor_new_term_from_uri(raptor_world *world, raptor_uri *uri) {
+    raptor_term *t;
 
-  RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
+    RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
 
-  if(!uri)
-    return NULL;
-  
-  raptor_world_open(world);
+    if (!uri)
+        return NULL;
 
-  t = RAPTOR_CALLOC(raptor_term*, 1, sizeof(*t));
-  if(!t)
-    return NULL;
+    raptor_world_open(world);
 
-  t->usage = 1;
-  t->world = world;
-  t->type = RAPTOR_TERM_TYPE_URI;
-  t->value.uri = raptor_uri_copy(uri);
+    t = RAPTOR_CALLOC(raptor_term*, 1, sizeof(*t));
+    if (!t)
+        return NULL;
 
-  return t;
+    t->usage = 1;
+    t->world = world;
+    t->type = RAPTOR_TERM_TYPE_URI;
+    t->value.uri = raptor_uri_copy(uri);
+
+    return t;
 }
 
 
@@ -88,25 +92,24 @@ raptor_new_term_from_uri(raptor_world* world, raptor_uri* uri)
  *
  * Return value: new term or NULL on failure
 */
-raptor_term*
-raptor_new_term_from_counted_uri_string(raptor_world* world, 
+raptor_term *
+raptor_new_term_from_counted_uri_string(raptor_world *world,
                                         const unsigned char *uri_string,
-                                        size_t length)
-{
-  raptor_term *t;
-  raptor_uri* uri;
+                                        size_t length) {
+    raptor_term *t;
+    raptor_uri *uri;
 
-  RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
+    RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
 
-  uri = raptor_new_uri_from_counted_string(world, uri_string, length);
-  if(!uri)
-    return NULL;
+    uri = raptor_new_uri_from_counted_string(world, uri_string, length);
+    if (!uri)
+        return NULL;
 
-  t = raptor_new_term_from_uri(world, uri);
-  
-  raptor_free_uri(uri);
-  
-  return t;
+    t = raptor_new_term_from_uri(world, uri);
+
+    raptor_free_uri(uri);
+
+    return t;
 }
 
 
@@ -119,24 +122,23 @@ raptor_new_term_from_counted_uri_string(raptor_world* world,
  *
  * Return value: new term or NULL on failure
 */
-raptor_term*
-raptor_new_term_from_uri_string(raptor_world* world, 
-                                const unsigned char *uri_string)
-{
-  raptor_term *t;
-  raptor_uri* uri;
+raptor_term *
+raptor_new_term_from_uri_string(raptor_world *world,
+                                const unsigned char *uri_string) {
+    raptor_term *t;
+    raptor_uri *uri;
 
-  RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
+    RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
 
-  uri = raptor_new_uri(world, uri_string);
-  if(!uri)
-    return NULL;
+    uri = raptor_new_uri(world, uri_string);
+    if (!uri)
+        return NULL;
 
-  t = raptor_new_term_from_uri(world, uri);
-  
-  raptor_free_uri(uri);
-  
-  return t;
+    t = raptor_new_term_from_uri(world, uri);
+
+    raptor_free_uri(uri);
+
+    return t;
 }
 
 
@@ -162,86 +164,85 @@ raptor_new_term_from_uri_string(raptor_world* world,
  *
  * Return value: new term or NULL on failure
  */
-raptor_term*
-raptor_new_term_from_counted_literal(raptor_world* world,
-                                     const unsigned char* literal,
+raptor_term *
+raptor_new_term_from_counted_literal(raptor_world *world,
+                                     const unsigned char *literal,
                                      size_t literal_len,
-                                     raptor_uri* datatype,
-                                     const unsigned char* language,
-                                     unsigned char language_len)
-{
-  raptor_term *t;
-  unsigned char* new_literal = NULL;
-  unsigned char* new_language = NULL;
+                                     raptor_uri *datatype,
+                                     const unsigned char *language,
+                                     unsigned char language_len) {
+    raptor_term *t;
+    unsigned char *new_literal = NULL;
+    unsigned char *new_language = NULL;
 
-  RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
+    RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
 
-  raptor_world_open(world);
+    raptor_world_open(world);
 
-  if(language && !*language)
-    language = NULL;
+    if (language && !*language)
+        language = NULL;
 
-  if(language && datatype)
-    return NULL;
-  
+    if (language && datatype)
+        return NULL;
 
-  new_literal = RAPTOR_MALLOC(unsigned char*, literal_len + 1);
-  if(!new_literal)
-    return NULL;
 
-  if(!literal || !*literal)
-    literal_len = 0;
+    new_literal = RAPTOR_MALLOC(unsigned char*, literal_len + 1);
+    if (!new_literal)
+        return NULL;
 
-  if(literal_len) {
-    memcpy(new_literal, literal, literal_len);
-    new_literal[literal_len] = '\0';
-  } else
-    *new_literal = '\0';
+    if (!literal || !*literal)
+        literal_len = 0;
 
-  if(language) {
-    unsigned char c;
-    unsigned char* l;
-    
-    new_language = RAPTOR_MALLOC(unsigned char*, language_len + 1);
-    if(!new_language) {
-      RAPTOR_FREE(char*, new_literal);
-      return NULL;
+    if (literal_len) {
+        memcpy(new_literal, literal, literal_len);
+        new_literal[literal_len] = '\0';
+    } else
+        *new_literal = '\0';
+
+    if (language) {
+        unsigned char c;
+        unsigned char *l;
+
+        new_language = RAPTOR_MALLOC(unsigned char*, language_len + 1);
+        if (!new_language) {
+            RAPTOR_FREE(char*, new_literal);
+            return NULL;
+        }
+
+        l = new_language;
+        while ((c = *language++)) {
+            if (c == '_')
+                c = '-';
+            *l++ = c;
+        }
+        *l = '\0';
+    } else
+        language_len = 0;
+
+    if (datatype)
+        datatype = raptor_uri_copy(datatype);
+
+
+    t = RAPTOR_CALLOC(raptor_term*, 1, sizeof(*t));
+    if (!t) {
+        if (new_literal)
+            RAPTOR_FREE(char*, new_literal);
+        if (new_language)
+            RAPTOR_FREE(char*, new_language);
+        if (datatype)
+            raptor_free_uri(datatype);
+        return NULL;
     }
+    t->usage = 1;
+    t->world = world;
+    t->type = RAPTOR_TERM_TYPE_LITERAL;
+    t->value.literal.string = new_literal;
+    t->value.literal.string_len = RAPTOR_LANG_LEN_FROM_INT(literal_len);
+    t->value.literal.language = new_language;
+    t->value.literal.language_len = language_len;
+    t->value.literal.datatype = datatype;
 
-    l = new_language;
-    while((c = *language++)) {
-      if(c == '_')
-        c = '-';
-      *l++ = c;
-    }
-    *l = '\0';
-  } else
-    language_len = 0;
-
-  if(datatype)
-    datatype = raptor_uri_copy(datatype);
-  
-
-  t = RAPTOR_CALLOC(raptor_term*, 1, sizeof(*t));
-  if(!t) {
-    if(new_literal)
-      RAPTOR_FREE(char*, new_literal);
-    if(new_language)
-      RAPTOR_FREE(char*, new_language);
-    if(datatype)
-      raptor_free_uri(datatype);
-    return NULL;
-  }
-  t->usage = 1;
-  t->world = world;
-  t->type = RAPTOR_TERM_TYPE_LITERAL;
-  t->value.literal.string = new_literal;
-  t->value.literal.string_len = RAPTOR_LANG_LEN_FROM_INT(literal_len);
-  t->value.literal.language = new_language;
-  t->value.literal.language_len = language_len;
-  t->value.literal.datatype = datatype;
-
-  return t;
+    return t;
 }
 
 
@@ -262,28 +263,27 @@ raptor_new_term_from_counted_literal(raptor_world* world,
  *
  * Return value: new term or NULL on failure
 */
-raptor_term*
-raptor_new_term_from_literal(raptor_world* world,
-                             const unsigned char* literal,
-                             raptor_uri* datatype,
-                             const unsigned char* language)
-{
-  size_t literal_len = 0;
-  size_t language_len = 0;
-  
-  RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
+raptor_term *
+raptor_new_term_from_literal(raptor_world *world,
+                             const unsigned char *literal,
+                             raptor_uri *datatype,
+                             const unsigned char *language) {
+    size_t literal_len = 0;
+    size_t language_len = 0;
 
-  raptor_world_open(world);
+    RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
 
-  if(literal)
-    literal_len = strlen(RAPTOR_GOOD_CAST(const char*, literal));
+    raptor_world_open(world);
 
-  if(language)
-    language_len = strlen(RAPTOR_GOOD_CAST(const char*, language));
+    if (literal)
+        literal_len = strlen(RAPTOR_GOOD_CAST(const char*, literal));
 
-  return raptor_new_term_from_counted_literal(world, literal, literal_len,
-                                              datatype, language,
-                                              RAPTOR_BAD_CAST(unsigned char, language_len));
+    if (language)
+        language_len = strlen(RAPTOR_GOOD_CAST(const char*, language));
+
+    return raptor_new_term_from_counted_literal(world, literal, literal_len,
+                                                datatype, language,
+                                                RAPTOR_BAD_CAST(unsigned char, language_len));
 }
 
 
@@ -306,41 +306,40 @@ raptor_new_term_from_literal(raptor_world* world,
  *
  * Return value: new term or NULL on failure
 */
-raptor_term*
-raptor_new_term_from_counted_blank(raptor_world* world,
-                                   const unsigned char* blank, size_t length)
-{
-  raptor_term *t;
-  unsigned char* new_id;
+raptor_term *
+raptor_new_term_from_counted_blank(raptor_world *world,
+                                   const unsigned char *blank, size_t length) {
+    raptor_term *t;
+    unsigned char *new_id;
 
-  RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
+    RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
 
-  raptor_world_open(world);
+    raptor_world_open(world);
 
-  if (blank) {
-    new_id = RAPTOR_MALLOC(unsigned char*, length + 1);
-    if(!new_id)
-      return NULL;
-    memcpy(new_id, blank, length);
-    new_id[length] = '\0';
-  } else {
-    new_id = raptor_world_generate_bnodeid(world);
-    length = strlen((const char*)new_id);
-  }
+    if (blank) {
+        new_id = RAPTOR_MALLOC(unsigned char*, length + 1);
+        if (!new_id)
+            return NULL;
+        memcpy(new_id, blank, length);
+        new_id[length] = '\0';
+    } else {
+        new_id = raptor_world_generate_bnodeid(world);
+        length = strlen((const char *) new_id);
+    }
 
-  t = RAPTOR_CALLOC(raptor_term*, 1, sizeof(*t));
-  if(!t) {
-    RAPTOR_FREE(char*, new_id);
-    return NULL;
-  }
+    t = RAPTOR_CALLOC(raptor_term*, 1, sizeof(*t));
+    if (!t) {
+        RAPTOR_FREE(char*, new_id);
+        return NULL;
+    }
 
-  t->usage = 1;
-  t->world = world;
-  t->type = RAPTOR_TERM_TYPE_BLANK;
-  t->value.blank.string = new_id;
-  t->value.blank.string_len = RAPTOR_BAD_CAST(int, length);
+    t->usage = 1;
+    t->world = world;
+    t->type = RAPTOR_TERM_TYPE_BLANK;
+    t->value.blank.string = new_id;
+    t->value.blank.string_len = RAPTOR_BAD_CAST(int, length);
 
-  return t;
+    return t;
 }
 
 
@@ -359,23 +358,22 @@ raptor_new_term_from_counted_blank(raptor_world* world,
  *
  * Return value: new term or NULL on failure
 */
-raptor_term*
-raptor_new_term_from_blank(raptor_world* world, const unsigned char* blank)
-{
-  size_t length = 0;
-  
-  RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
+raptor_term *
+raptor_new_term_from_blank(raptor_world *world, const unsigned char *blank) {
+    size_t length = 0;
 
-  raptor_world_open(world);
+    RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
 
-  if(blank) {
-    if(*blank)
-      length = strlen((const char*)blank);
-    else
-      blank = NULL;
-  }
+    raptor_world_open(world);
 
-  return raptor_new_term_from_counted_blank(world, blank, length);
+    if (blank) {
+        if (*blank)
+            length = strlen((const char *) blank);
+        else
+            blank = NULL;
+    }
+
+    return raptor_new_term_from_counted_blank(world, blank, length);
 }
 
 
@@ -391,37 +389,36 @@ raptor_new_term_from_blank(raptor_world* world, const unsigned char* blank)
  *
  * Return value: new term or NULL on failure
 */
-raptor_term*
-raptor_new_term_from_counted_string(raptor_world* world,
-                                    unsigned char* string, size_t length)
-{
-  raptor_term* term = NULL;
-  size_t bytes_read;
-  raptor_locator locator;
+raptor_term *
+raptor_new_term_from_counted_string(raptor_world *world,
+                                    unsigned char *string, size_t length) {
+    raptor_term *term = NULL;
+    size_t bytes_read;
+    raptor_locator locator;
 
-  RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
+    RAPTOR_CHECK_CONSTRUCTOR_WORLD(world);
 
-  if(!string)
-    return NULL;
+    if (!string)
+        return NULL;
 
-  if(!length)
-    length = strlen(RAPTOR_GOOD_CAST(const char*, string));
+    if (!length)
+        length = strlen(RAPTOR_GOOD_CAST(const char*, string));
 
-  raptor_world_open(world);
+    raptor_world_open(world);
 
-  memset(&locator, '\0', sizeof(locator));
-  locator.line = -1;
+    memset(&locator, '\0', sizeof(locator));
+    locator.line = -1;
 
-  bytes_read = raptor_ntriples_parse_term(world, &locator,
-                                          string, &length, &term, 1);
+    bytes_read = raptor_ntriples_parse_term(world, &locator,
+                                            string, &length, &term, 1);
 
-  if(!bytes_read || length != 0) {
-    if(term)
-      raptor_free_term(term);
-    term = NULL;
-  }
+    if (!bytes_read || length != 0) {
+        if (term)
+            raptor_free_term(term);
+        term = NULL;
+    }
 
-  return term;
+    return term;
 }
 
 
@@ -433,14 +430,13 @@ raptor_new_term_from_counted_string(raptor_world* world,
  *
  * Return value: new term object or NULL on failure
  */
-raptor_term*
-raptor_term_copy(raptor_term* term)
-{
-  if(!term)
-    return NULL;
+raptor_term *
+raptor_term_copy(raptor_term *term) {
+    if (!term)
+        return NULL;
 
-  term->usage++;
-  return term;
+    term->usage++;
+    return term;
 }
 
 
@@ -461,33 +457,33 @@ void raptor_free_term(raptor_term *term) {
     switch (term->type) {
         case RAPTOR_TERM_TYPE_URI:
             if (term->value.uri) {
-        raptor_free_uri(term->value.uri);
-        term->value.uri = NULL;
-      }
-      break;
+                raptor_free_uri(term->value.uri);
+                term->value.uri = NULL;
+            }
+            break;
 
-    case RAPTOR_TERM_TYPE_BLANK:
-      if(term->value.blank.string) {
-        RAPTOR_FREE(char*, term->value.blank.string);
-        term->value.blank.string = NULL;
-      }
-      break;
-      
-    case RAPTOR_TERM_TYPE_LITERAL:
-      if(term->value.literal.string) {
-        RAPTOR_FREE(char*, term->value.literal.string);
-        term->value.literal.string = NULL;
-      }
+        case RAPTOR_TERM_TYPE_BLANK:
+            if (term->value.blank.string) {
+                RAPTOR_FREE(char*, term->value.blank.string);
+                term->value.blank.string = NULL;
+            }
+            break;
 
-      if(term->value.literal.datatype) {
-        raptor_free_uri(term->value.literal.datatype);
-        term->value.literal.datatype = NULL;
-      }
-      
-      if(term->value.literal.language) {
-          RAPTOR_FREE(char*, term->value.literal.language);
-          term->value.literal.language = NULL;
-      }
+        case RAPTOR_TERM_TYPE_LITERAL:
+            if (term->value.literal.string) {
+                RAPTOR_FREE(char*, term->value.literal.string);
+                term->value.literal.string = NULL;
+            }
+
+            if (term->value.literal.datatype) {
+                raptor_free_uri(term->value.literal.datatype);
+                term->value.literal.datatype = NULL;
+            }
+
+            if (term->value.literal.language) {
+                RAPTOR_FREE(char*, term->value.literal.language);
+                term->value.literal.language = NULL;
+            }
             break;
 
         case RAPTOR_TERM_TYPE_UNKNOWN:
@@ -571,31 +567,30 @@ void raptor_free_term_wrapper(raptor_term *term) {
  * Return value: the new string or NULL on failure.  The length of
  * the new string is returned in *@len_p if len_p is not NULL.
  **/
-unsigned char*
-raptor_term_to_counted_string(raptor_term *term, size_t* len_p)
-{
-  raptor_iostream *iostr;
-  void *string = NULL;
-  int rc;
+unsigned char *
+raptor_term_to_counted_string(raptor_term *term, size_t *len_p) {
+    raptor_iostream *iostr;
+    void *string = NULL;
+    int rc;
 
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(term, raptor_term, NULL);
-  
-  iostr = raptor_new_iostream_to_string(term->world, 
-                                        &string, len_p, NULL);
-  if(!iostr)
-    return NULL;
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(term, raptor_term, NULL);
 
-  rc = raptor_term_escaped_write(term, 0, iostr);
-  raptor_free_iostream(iostr);
-  
-  if(rc) {
-    if(string) {
-      RAPTOR_FREE(char*, string);
-      string = NULL;
+    iostr = raptor_new_iostream_to_string(term->world,
+                                          &string, len_p, NULL);
+    if (!iostr)
+        return NULL;
+
+    rc = raptor_term_escaped_write(term, 0, iostr);
+    raptor_free_iostream(iostr);
+
+    if (rc) {
+        if (string) {
+            RAPTOR_FREE(char*, string);
+            string = NULL;
+        }
     }
-  }
 
-  return (unsigned char *)string;
+    return (unsigned char *) string;
 }
 
 
@@ -615,12 +610,11 @@ raptor_term_to_counted_string(raptor_term *term, size_t* len_p)
  *
  * Return value: the new string or NULL on failure.
  **/
-unsigned char*
-raptor_term_to_string(raptor_term *term)
-{
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(term, raptor_term, NULL);
-  
-  return raptor_term_to_counted_string(term, NULL);
+unsigned char *
+raptor_term_to_string(raptor_term *term) {
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(term, raptor_term, NULL);
+
+    return raptor_term_to_counted_string(term, NULL);
 }
 
 
@@ -632,23 +626,22 @@ raptor_term_to_string(raptor_term *term)
  * INTERNAL - Print a term as N-Triples
  */
 int
-raptor_term_print_as_ntriples(const raptor_term *term, FILE* stream)
-{
-  int rc = 0;
-  raptor_iostream* iostr;
+raptor_term_print_as_ntriples(const raptor_term *term, FILE *stream) {
+    int rc = 0;
+    raptor_iostream *iostr;
 
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(term, raptor_term, 1);
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, FILE*, 1);
-  
-  iostr = raptor_new_iostream_to_file_handle(term->world, stream);
-  if(!iostr)
-    return 1;
-  
-  rc = raptor_term_escaped_write(term, 0, iostr);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(term, raptor_term, 1);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, FILE*, 1);
 
-  raptor_free_iostream(iostr);
-  
-  return rc;
+    iostr = raptor_new_iostream_to_file_handle(term->world, stream);
+    if (!iostr)
+        return 1;
+
+    rc = raptor_term_escaped_write(term, 0, iostr);
+
+    raptor_free_iostream(iostr);
+
+    return rc;
 }
 
 
@@ -662,71 +655,70 @@ raptor_term_print_as_ntriples(const raptor_term *term, FILE* stream)
  * Return value: non-0 if the terms are equal
  */
 int
-raptor_term_equals(raptor_term* t1, raptor_term* t2)
-{
-  int d = 0;
+raptor_term_equals(raptor_term *t1, raptor_term *t2) {
+    int d = 0;
 
-  if(!t1 || !t2)
-    return 0;
-  
-  if(t1->type != t2->type)
-    return 0;
-  
-  if(t1 == t2)
-    return 1;
-  
-  switch(t1->type) {
-    case RAPTOR_TERM_TYPE_URI:
-      d = raptor_uri_equals(t1->value.uri, t2->value.uri);
-      break;
+    if (!t1 || !t2)
+        return 0;
 
-    case RAPTOR_TERM_TYPE_BLANK:
-      if(t1->value.blank.string_len != t2->value.blank.string_len)
-        /* different lengths */
-        break;
+    if (t1->type != t2->type)
+        return 0;
 
-      d = !strcmp((const char*)t1->value.blank.string, 
-                  (const char*)t2->value.blank.string);
-      break;
+    if (t1 == t2)
+        return 1;
 
-    case RAPTOR_TERM_TYPE_LITERAL:
-      if(t1->value.literal.string_len != t2->value.literal.string_len)
-        /* different lengths */
-        break;
+    switch (t1->type) {
+        case RAPTOR_TERM_TYPE_URI:
+            d = raptor_uri_equals(t1->value.uri, t2->value.uri);
+            break;
 
-      d = !strcmp((const char*)t1->value.literal.string,
-                  (const char*)t2->value.literal.string);
-      if(!d)
-        break;
-      
-      if(t1->value.literal.language && t2->value.literal.language) {
-        /* both have a language */
-        d = !strcmp((const char*)t1->value.literal.language, 
-                    (const char*)t2->value.literal.language);
-        if(!d)
-          break;
-      } else if(t1->value.literal.language || t2->value.literal.language) {
-        /* only one has a language - different */
-        d = 0;
-        break;
-      }
+        case RAPTOR_TERM_TYPE_BLANK:
+            if (t1->value.blank.string_len != t2->value.blank.string_len)
+                /* different lengths */
+                break;
 
-      if(t1->value.literal.datatype && t2->value.literal.datatype) {
-        /* both have a datatype */
-        d = raptor_uri_equals(t1->value.literal.datatype,
-                              t2->value.literal.datatype);
-      } else if(t1->value.literal.datatype || t2->value.literal.datatype) {
-        /* only one has a datatype - different */
-        d = 0;
-      }
-      break;
-      
-    case RAPTOR_TERM_TYPE_UNKNOWN:
-    default:
-      break;
-  }
+            d = !strcmp((const char *) t1->value.blank.string,
+                        (const char *) t2->value.blank.string);
+            break;
 
-  return d;
+        case RAPTOR_TERM_TYPE_LITERAL:
+            if (t1->value.literal.string_len != t2->value.literal.string_len)
+                /* different lengths */
+                break;
+
+            d = !strcmp((const char *) t1->value.literal.string,
+                        (const char *) t2->value.literal.string);
+            if (!d)
+                break;
+
+            if (t1->value.literal.language && t2->value.literal.language) {
+                /* both have a language */
+                d = !strcmp((const char *) t1->value.literal.language,
+                            (const char *) t2->value.literal.language);
+                if (!d)
+                    break;
+            } else if (t1->value.literal.language || t2->value.literal.language) {
+                /* only one has a language - different */
+                d = 0;
+                break;
+            }
+
+            if (t1->value.literal.datatype && t2->value.literal.datatype) {
+                /* both have a datatype */
+                d = raptor_uri_equals(t1->value.literal.datatype,
+                                      t2->value.literal.datatype);
+            } else if (t1->value.literal.datatype || t2->value.literal.datatype) {
+                /* only one has a datatype - different */
+                d = 0;
+            }
+            break;
+
+        case RAPTOR_TERM_TYPE_UNKNOWN:
+        default:
+            break;
+    }
+
+    return d;
 }
 
 
@@ -747,66 +739,65 @@ raptor_term_equals(raptor_term* t1, raptor_term* t2)
  * Return value: <0 if t1 is before t2, 0 if equal, >0 if t1 is after t2
  */
 int
-raptor_term_compare(const raptor_term *t1,  const raptor_term *t2)
-{
-  int d = 0;
-  
-  /* check for NULL terms */
-  if(!t1 || !t2) {
-    if(!t1 && !t2)
-      return 0; /* both NULL */
+raptor_term_compare(const raptor_term *t1, const raptor_term *t2) {
+    int d = 0;
 
-    /* place NULLs before any other term */
-    return t1 ? 1 : -1;
-  }
+    /* check for NULL terms */
+    if (!t1 || !t2) {
+        if (!t1 && !t2)
+            return 0; /* both NULL */
 
-  if(t1->type != t2->type)
-    return (t1->type - t2->type);
-  
-  switch(t1->type) {
-    case RAPTOR_TERM_TYPE_URI:
-      d = raptor_uri_compare(t1->value.uri, t2->value.uri);
-      break;
+        /* place NULLs before any other term */
+        return t1 ? 1 : -1;
+    }
 
-    case RAPTOR_TERM_TYPE_BLANK:
-      d = strcmp((const char*)t1->value.blank.string,
-                 (const char*)t2->value.blank.string);
-      break;
-      
-    case RAPTOR_TERM_TYPE_LITERAL:
-      d = strcmp((const char*)t1->value.literal.string,
-                 (const char*)t2->value.literal.string);
-      if(d)
-        break;
-      
-      if(t1->value.literal.language && t2->value.literal.language) {
-        /* both have a language */
-        d = strcmp((const char*)t1->value.literal.language, 
-                   (const char*)t2->value.literal.language);
-      } else if(t1->value.literal.language || t2->value.literal.language)
-        /* only one has a language; the language-less one is earlier */
-        d = (!t1->value.literal.language ? -1 : 1);
-      if(d)
-        break;
-      
-      if(t1->value.literal.datatype && t2->value.literal.datatype) {
-        /* both have a datatype */
-        d = raptor_uri_compare(t1->value.literal.datatype,
-                               t2->value.literal.datatype);
-      } else if(t1->value.literal.datatype || t2->value.literal.datatype)
-        /* only one has a datatype; the datatype-less one is earlier */
-        d = (!t1->value.literal.datatype ? -1 : 1);
-      break;
-      
-    case RAPTOR_TERM_TYPE_UNKNOWN:
-    default:
-      break;
-  }
+    if (t1->type != t2->type)
+        return (t1->type - t2->type);
 
-  return d;
+    switch (t1->type) {
+        case RAPTOR_TERM_TYPE_URI:
+            d = raptor_uri_compare(t1->value.uri, t2->value.uri);
+            break;
+
+        case RAPTOR_TERM_TYPE_BLANK:
+            d = strcmp((const char *) t1->value.blank.string,
+                       (const char *) t2->value.blank.string);
+            break;
+
+        case RAPTOR_TERM_TYPE_LITERAL:
+            d = strcmp((const char *) t1->value.literal.string,
+                       (const char *) t2->value.literal.string);
+            if (d)
+                break;
+
+            if (t1->value.literal.language && t2->value.literal.language) {
+                /* both have a language */
+                d = strcmp((const char *) t1->value.literal.language,
+                           (const char *) t2->value.literal.language);
+            } else if (t1->value.literal.language || t2->value.literal.language)
+                /* only one has a language; the language-less one is earlier */
+                d = (!t1->value.literal.language ? -1 : 1);
+            if (d)
+                break;
+
+            if (t1->value.literal.datatype && t2->value.literal.datatype) {
+                /* both have a datatype */
+                d = raptor_uri_compare(t1->value.literal.datatype,
+                                       t2->value.literal.datatype);
+            } else if (t1->value.literal.datatype || t2->value.literal.datatype)
+                /* only one has a datatype; the datatype-less one is earlier */
+                d = (!t1->value.literal.datatype ? -1 : 1);
+            break;
+
+        case RAPTOR_TERM_TYPE_UNKNOWN:
+        default:
+            break;
+    }
+
+    return d;
 }
-#endif
 
+#endif
 
 
 #ifdef STANDALONE

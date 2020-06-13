@@ -1,5 +1,7 @@
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #line 6 "turtle_lexer.c"
@@ -38,13 +40,14 @@
 #if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
 
 /* C99 says to define __STDC_LIMIT_MACROS before including stdint.h,
- * if you want the limit (max/min) macros for int types. 
+ * if you want the limit (max/min) macros for int types.
  */
 #ifndef __STDC_LIMIT_MACROS
 #define __STDC_LIMIT_MACROS 1
 #endif
 
 #include <inttypes.h>
+
 typedef int8_t flex_int8_t;
 typedef uint8_t flex_uint8_t;
 typedef int16_t flex_int16_t;
@@ -52,10 +55,10 @@ typedef uint16_t flex_uint16_t;
 typedef int32_t flex_int32_t;
 typedef uint32_t flex_uint32_t;
 #else
-typedef signed char flex_int8_t;
+                                                                                                                        typedef signed char flex_int8_t;
 typedef short int flex_int16_t;
 typedef int flex_int32_t;
-typedef unsigned char flex_uint8_t; 
+typedef unsigned char flex_uint8_t;
 typedef unsigned short int flex_uint16_t;
 typedef unsigned int flex_uint32_t;
 
@@ -94,7 +97,7 @@ typedef unsigned int flex_uint32_t;
 
 #ifdef __cplusplus
 
-/* The "const" storage-class-modifier is valid. */
+                                                                                                                        /* The "const" storage-class-modifier is valid. */
 #define YY_USE_CONST
 
 #else	/* ! __cplusplus */
@@ -104,8 +107,8 @@ typedef unsigned int flex_uint32_t;
 
 #define YY_USE_CONST
 
-#endif	/* defined (__STDC__) */
-#endif	/* ! __cplusplus */
+#endif    /* defined (__STDC__) */
+#endif    /* ! __cplusplus */
 
 #ifdef YY_USE_CONST
 #define yyconst const
@@ -126,7 +129,7 @@ typedef unsigned int flex_uint32_t;
 /* An opaque pointer. */
 #ifndef YY_TYPEDEF_YY_SCANNER_T
 #define YY_TYPEDEF_YY_SCANNER_T
-typedef void* yyscan_t;
+typedef void *yyscan_t;
 #endif
 
 /* For convenience, these vars (plus the bison vars far below)
@@ -164,7 +167,7 @@ typedef void* yyscan_t;
 /* Size of default input buffer. */
 #ifndef YY_BUF_SIZE
 #ifdef __ia64__
-/* On IA-64, the buffer size is 16k, not 8k.
+                                                                                                                        /* On IA-64, the buffer size is 16k, not 8k.
  * Moreover, YY_BUF_SIZE is 2*YY_READ_BUF_SIZE in the general case.
  * Ditto for the __ia64__ case accordingly.
  */
@@ -187,21 +190,21 @@ typedef struct yy_buffer_state *YY_BUFFER_STATE;
 #define EOB_ACT_END_OF_FILE 1
 #define EOB_ACT_LAST_MATCH 2
 
-    #define YY_LESS_LINENO(n)
-    
+#define YY_LESS_LINENO(n)
+
 /* Return all but the first "n" matched characters back to the input stream. */
 #define yyless(n) \
-	do \
-		{ \
-		/* Undo effects of setting up yytext. */ \
+    do \
+        { \
+        /* Undo effects of setting up yytext. */ \
         int yyless_macro_arg = (n); \
         YY_LESS_LINENO(yyless_macro_arg);\
-		*yy_cp = yyg->yy_hold_char; \
-		YY_RESTORE_YY_MORE_OFFSET \
-		yyg->yy_c_buf_p = yy_cp = yy_bp + yyless_macro_arg - YY_MORE_ADJ; \
-		YY_DO_BEFORE_ACTION; /* set up yytext again */ \
-		} \
-	while ( 0 )
+        *yy_cp = yyg->yy_hold_char; \
+        YY_RESTORE_YY_MORE_OFFSET \
+        yyg->yy_c_buf_p = yy_cp = yy_bp + yyless_macro_arg - YY_MORE_ADJ; \
+        YY_DO_BEFORE_ACTION; /* set up yytext again */ \
+        } \
+    while ( 0 )
 
 #define unput(c) yyunput( c, yyg->yytext_ptr , yyscanner )
 
@@ -212,55 +215,54 @@ typedef size_t yy_size_t;
 
 #ifndef YY_STRUCT_YY_BUFFER_STATE
 #define YY_STRUCT_YY_BUFFER_STATE
-struct yy_buffer_state
-	{
-	FILE *yy_input_file;
+struct yy_buffer_state {
+    FILE *yy_input_file;
 
-	char *yy_ch_buf;		/* input buffer */
-	char *yy_buf_pos;		/* current position in input buffer */
+    char *yy_ch_buf;        /* input buffer */
+    char *yy_buf_pos;        /* current position in input buffer */
 
-	/* Size of input buffer in bytes, not including room for EOB
+    /* Size of input buffer in bytes, not including room for EOB
 	 * characters.
 	 */
-	yy_size_t yy_buf_size;
+    yy_size_t yy_buf_size;
 
-	/* Number of characters read into yy_ch_buf, not including EOB
+    /* Number of characters read into yy_ch_buf, not including EOB
 	 * characters.
 	 */
-	int yy_n_chars;
+    int yy_n_chars;
 
-	/* Whether we "own" the buffer - i.e., we know we created it,
+    /* Whether we "own" the buffer - i.e., we know we created it,
 	 * and can realloc() it to grow it, and should free() it to
 	 * delete it.
 	 */
-	int yy_is_our_buffer;
+    int yy_is_our_buffer;
 
-	/* Whether this is an "interactive" input source; if so, and
+    /* Whether this is an "interactive" input source; if so, and
 	 * if we're using stdio for input, then we want to use getc()
 	 * instead of fread(), to make sure we stop fetching input after
 	 * each newline.
 	 */
-	int yy_is_interactive;
+    int yy_is_interactive;
 
-	/* Whether we're considered to be at the beginning of a line.
+    /* Whether we're considered to be at the beginning of a line.
 	 * If so, '^' rules will be active on the next match, otherwise
 	 * not.
 	 */
-	int yy_at_bol;
+    int yy_at_bol;
 
     int yy_bs_lineno; /**< The line count. */
     int yy_bs_column; /**< The column count. */
-    
-	/* Whether to try to fill the input buffer when we reach the
+
+    /* Whether to try to fill the input buffer when we reach the
 	 * end of it.
 	 */
-	int yy_fill_buffer;
+    int yy_fill_buffer;
 
-	int yy_buffer_status;
+    int yy_buffer_status;
 
 #define YY_BUFFER_NEW 0
 #define YY_BUFFER_NORMAL 1
-	/* When an EOF's been seen but there's still some text to process
+    /* When an EOF's been seen but there's still some text to process
 	 * then we mark the buffer as YY_EOF_PENDING, to indicate that we
 	 * shouldn't try reading from the input source any more.  We might
 	 * still have a bunch of tokens to match, though, because of
@@ -272,7 +274,7 @@ struct yy_buffer_state
 	 */
 #define YY_BUFFER_EOF_PENDING 2
 
-	};
+};
 #endif /* !YY_STRUCT_YY_BUFFER_STATE */
 
 /* We provide macros for accessing buffer states in case in the
@@ -290,49 +292,61 @@ struct yy_buffer_state
  */
 #define YY_CURRENT_BUFFER_LVALUE yyg->yy_buffer_stack[yyg->yy_buffer_stack_top]
 
-void turtle_lexer_restart (FILE *input_file ,yyscan_t yyscanner );
-void turtle_lexer__switch_to_buffer (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
-YY_BUFFER_STATE turtle_lexer__create_buffer (FILE *file,int size ,yyscan_t yyscanner );
-void turtle_lexer__delete_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
-void turtle_lexer__flush_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
-void turtle_lexer_push_buffer_state (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
-void turtle_lexer_pop_buffer_state (yyscan_t yyscanner );
+void turtle_lexer_restart(FILE *input_file, yyscan_t yyscanner);
 
-static void turtle_lexer_ensure_buffer_stack (yyscan_t yyscanner );
-static void turtle_lexer__load_buffer_state (yyscan_t yyscanner );
-static void turtle_lexer__init_buffer (YY_BUFFER_STATE b,FILE *file ,yyscan_t yyscanner );
+void turtle_lexer__switch_to_buffer(YY_BUFFER_STATE new_buffer, yyscan_t yyscanner);
+
+YY_BUFFER_STATE turtle_lexer__create_buffer(FILE *file, int size, yyscan_t yyscanner);
+
+void turtle_lexer__delete_buffer(YY_BUFFER_STATE b, yyscan_t yyscanner);
+
+void turtle_lexer__flush_buffer(YY_BUFFER_STATE b, yyscan_t yyscanner);
+
+void turtle_lexer_push_buffer_state(YY_BUFFER_STATE new_buffer, yyscan_t yyscanner);
+
+void turtle_lexer_pop_buffer_state(yyscan_t yyscanner);
+
+static void turtle_lexer_ensure_buffer_stack(yyscan_t yyscanner);
+
+static void turtle_lexer__load_buffer_state(yyscan_t yyscanner);
+
+static void turtle_lexer__init_buffer(YY_BUFFER_STATE b, FILE *file, yyscan_t yyscanner);
 
 #define YY_FLUSH_BUFFER turtle_lexer__flush_buffer(YY_CURRENT_BUFFER ,yyscanner)
 
-YY_BUFFER_STATE turtle_lexer__scan_buffer (char *base,yy_size_t size ,yyscan_t yyscanner );
-YY_BUFFER_STATE turtle_lexer__scan_string (yyconst char *yy_str ,yyscan_t yyscanner );
-YY_BUFFER_STATE turtle_lexer__scan_bytes (yyconst char *bytes,int len ,yyscan_t yyscanner );
+YY_BUFFER_STATE turtle_lexer__scan_buffer(char *base, yy_size_t size, yyscan_t yyscanner);
 
-void *turtle_lexer_alloc (yy_size_t ,yyscan_t yyscanner );
-void *turtle_lexer_realloc (void *,yy_size_t ,yyscan_t yyscanner );
-void turtle_lexer_free (void * ,yyscan_t yyscanner );
+YY_BUFFER_STATE turtle_lexer__scan_string(yyconst char *yy_str, yyscan_t yyscanner);
+
+YY_BUFFER_STATE turtle_lexer__scan_bytes(yyconst char *bytes, int len, yyscan_t yyscanner);
+
+void *turtle_lexer_alloc(yy_size_t, yyscan_t yyscanner);
+
+void *turtle_lexer_realloc(void *, yy_size_t, yyscan_t yyscanner);
+
+void turtle_lexer_free(void *, yyscan_t yyscanner);
 
 #define yy_new_buffer turtle_lexer__create_buffer
 
 #define yy_set_interactive(is_interactive) \
-	{ \
-	if ( ! YY_CURRENT_BUFFER ){ \
+    { \
+    if ( ! YY_CURRENT_BUFFER ){ \
         turtle_lexer_ensure_buffer_stack (yyscanner); \
-		YY_CURRENT_BUFFER_LVALUE =    \
+        YY_CURRENT_BUFFER_LVALUE =    \
             turtle_lexer__create_buffer(yyin,YY_BUF_SIZE ,yyscanner); \
-	} \
-	YY_CURRENT_BUFFER_LVALUE->yy_is_interactive = is_interactive; \
-	}
+    } \
+    YY_CURRENT_BUFFER_LVALUE->yy_is_interactive = is_interactive; \
+    }
 
 #define yy_set_bol(at_bol) \
-	{ \
-	if ( ! YY_CURRENT_BUFFER ){\
+    { \
+    if ( ! YY_CURRENT_BUFFER ){\
         turtle_lexer_ensure_buffer_stack (yyscanner); \
-		YY_CURRENT_BUFFER_LVALUE =    \
+        YY_CURRENT_BUFFER_LVALUE =    \
             turtle_lexer__create_buffer(yyin,YY_BUF_SIZE ,yyscanner); \
-	} \
-	YY_CURRENT_BUFFER_LVALUE->yy_at_bol = at_bol; \
-	}
+    } \
+    YY_CURRENT_BUFFER_LVALUE->yy_at_bol = at_bol; \
+    }
 
 #define YY_AT_BOL() (YY_CURRENT_BUFFER_LVALUE->yy_at_bol)
 
@@ -344,300 +358,301 @@ typedef int yy_state_type;
 
 #define yytext_ptr yytext_r
 
-static yy_state_type yy_get_previous_state (yyscan_t yyscanner );
-static yy_state_type yy_try_NUL_trans (yy_state_type current_state  ,yyscan_t yyscanner);
-static int yy_get_next_buffer (yyscan_t yyscanner );
+static yy_state_type yy_get_previous_state(yyscan_t yyscanner);
+
+static yy_state_type yy_try_NUL_trans(yy_state_type current_state, yyscan_t yyscanner);
+
+static int yy_get_next_buffer(yyscan_t yyscanner);
 
 /* Done after the current pattern has been matched and before the
  * corresponding action - sets up yytext.
  */
 #define YY_DO_BEFORE_ACTION \
-	yyg->yytext_ptr = yy_bp; \
-	yyleng = (size_t) (yy_cp - yy_bp); \
-	yyg->yy_hold_char = *yy_cp; \
-	*yy_cp = '\0'; \
-	yyg->yy_c_buf_p = yy_cp;
+    yyg->yytext_ptr = yy_bp; \
+    yyleng = (size_t) (yy_cp - yy_bp); \
+    yyg->yy_hold_char = *yy_cp; \
+    *yy_cp = '\0'; \
+    yyg->yy_c_buf_p = yy_cp;
 
 #define YY_NUM_RULES 46
 #define YY_END_OF_BUFFER 47
 /* This struct is not used in this scanner,
    but its presence is necessary. */
-struct yy_trans_info
-	{
-	flex_int32_t yy_verify;
-	flex_int32_t yy_nxt;
-	};
+struct yy_trans_info {
+    flex_int32_t yy_verify;
+    flex_int32_t yy_nxt;
+};
 static yyconst flex_int16_t yy_accept[162] =
-    {   0,
-        0,    0,    0,    0,   24,   24,   28,   28,   47,   45,
-        2,    1,    1,   45,   44,   45,   14,   15,   45,    5,
-        4,   34,   31,    6,   45,   45,   45,   45,   45,    7,
-        8,   45,   45,    3,   45,   45,   16,   17,   38,   35,
-       37,   38,   24,   24,   24,   25,   28,   28,   28,   29,
-        2,    1,    0,   20,    0,   44,   43,   43,    0,   21,
-        0,    0,   34,   32,    0,    0,    0,    0,   31,    0,
-        0,   40,    0,   41,    0,   42,   42,   42,    0,    0,
-       31,    0,    0,   13,    0,    0,    0,   35,    0,    0,
-       36,   24,   24,    0,    0,   28,   28,    0,    0,   20,
+        {0,
+         0, 0, 0, 0, 24, 24, 28, 28, 47, 45,
+         2, 1, 1, 45, 44, 45, 14, 15, 45, 5,
+         4, 34, 31, 6, 45, 45, 45, 45, 45, 7,
+         8, 45, 45, 3, 45, 45, 16, 17, 38, 35,
+         37, 38, 24, 24, 24, 25, 28, 28, 28, 29,
+         2, 1, 0, 20, 0, 44, 43, 43, 0, 21,
+         0, 0, 34, 32, 0, 0, 0, 0, 31, 0,
+         0, 40, 0, 41, 0, 42, 42, 42, 0, 0,
+         31, 0, 0, 13, 0, 0, 0, 35, 0, 0,
+         36, 24, 24, 0, 0, 28, 28, 0, 0, 20,
 
-       22,   21,   26,    0,   32,    0,    0,   33,    0,    0,
-       31,    0,    0,    0,    0,    0,   39,    0,    0,   42,
-       42,   42,    0,    0,   30,    0,    0,   23,   27,    0,
-       33,    0,   33,    0,    0,    0,    0,   42,   42,   12,
-        0,   30,    0,    0,   18,    0,    0,   11,   42,    0,
-       19,    0,    0,   42,   10,    0,    9,    0,    0,    0,
-        0
-    } ;
+         22, 21, 26, 0, 32, 0, 0, 33, 0, 0,
+         31, 0, 0, 0, 0, 0, 39, 0, 0, 42,
+         42, 42, 0, 0, 30, 0, 0, 23, 27, 0,
+         33, 0, 33, 0, 0, 0, 0, 42, 42, 12,
+         0, 30, 0, 0, 18, 0, 0, 11, 42, 0,
+         19, 0, 0, 42, 10, 0, 9, 0, 0, 0,
+         0
+        };
 
 static yyconst flex_int32_t yy_ec[256] =
-    {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
-        2,    1,    4,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    2,    5,    6,    7,    5,    8,    5,    9,   10,
-       11,    5,   12,   13,   14,   15,    5,   16,   16,   16,
-       16,   16,   16,   16,   16,   16,   16,   17,   18,   19,
-       20,   21,    5,   22,   23,   24,   25,   25,   26,   27,
-       28,   28,   29,   28,   28,   28,   28,   28,   28,   30,
-       28,   31,   32,   28,   33,   28,   28,   34,   28,   28,
-       35,   36,   37,   38,   39,    1,   40,   41,   25,   25,
+        {0,
+         1, 1, 1, 1, 1, 1, 1, 1, 2, 3,
+         2, 1, 4, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 2, 5, 6, 7, 5, 8, 5, 9, 10,
+         11, 5, 12, 13, 14, 15, 5, 16, 16, 16,
+         16, 16, 16, 16, 16, 16, 16, 17, 18, 19,
+         20, 21, 5, 22, 23, 24, 25, 25, 26, 27,
+         28, 28, 29, 28, 28, 28, 28, 28, 28, 30,
+         28, 31, 32, 28, 33, 28, 28, 34, 28, 28,
+         35, 36, 37, 38, 39, 1, 40, 41, 25, 25,
 
-       42,   43,   28,   28,   44,   28,   28,   45,   28,   28,
-       28,   46,   28,   47,   48,   49,   50,   28,   28,   51,
-       28,   28,   52,    1,   53,    5,   54,   55,   55,   55,
-       55,   55,   55,   55,   55,   55,   55,   55,   55,   55,
-       55,   55,   55,   55,   55,   55,   55,   55,   55,   55,
-       55,   55,   55,   55,   55,   55,   55,   55,   55,   55,
-       55,   55,   55,   55,   55,   55,   55,   55,   55,   55,
-       55,   55,   55,   55,   55,   55,   55,   55,   55,   55,
-       55,   55,   55,   55,   55,   55,   55,   55,   55,   55,
-       55,   55,   55,   55,   55,   55,   55,   55,   55,   55,
+         42, 43, 28, 28, 44, 28, 28, 45, 28, 28,
+         28, 46, 28, 47, 48, 49, 50, 28, 28, 51,
+         28, 28, 52, 1, 53, 5, 54, 55, 55, 55,
+         55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
+         55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
+         55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
+         55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
+         55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
+         55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
+         55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
 
-       55,   55,   55,   55,   55,   55,   55,   55,   55,   55,
-       55,   55,   55,   55,   55,   55,   55,   55,   55,   55,
-       55,   55,   55,   55,   55,   55,   55,   55,   55,   55,
-       55,   55,   55,   55,   55,   55,   55,   55,   55,   55,
-       55,   55,   55,   55,   55,   55,   55,   55,   55,   55,
-       55,   55,   55,   55,   55
-    } ;
+         55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
+         55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
+         55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
+         55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
+         55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
+         55, 55, 55, 55, 55
+        };
 
 static yyconst flex_int32_t yy_meta[56] =
-    {   0,
-        1,    2,    3,    3,    4,    5,    4,    6,    7,    4,
-        4,    4,    4,    8,    9,   10,   11,    4,    1,    6,
-       12,    4,   13,   13,   13,   13,   13,   14,   14,   14,
-       14,   14,   14,   14,   12,   15,   12,    1,   16,   13,
-       13,   13,   13,   14,   14,   14,   14,   14,   14,   14,
-       14,    2,    1,   12,   17
-    } ;
+        {0,
+         1, 2, 3, 3, 4, 5, 4, 6, 7, 4,
+         4, 4, 4, 8, 9, 10, 11, 4, 1, 6,
+         12, 4, 13, 13, 13, 13, 13, 14, 14, 14,
+         14, 14, 14, 14, 12, 15, 12, 1, 16, 13,
+         13, 13, 13, 14, 14, 14, 14, 14, 14, 14,
+         14, 2, 1, 12, 17
+        };
 
 static yyconst flex_int16_t yy_base[195] =
-    {   0,
-        0,    0,   55,    0,  108,  109,  110,  113,  568,  620,
-      559,  620,  553,  111,  117,  114,  620,  620,  109,  620,
-      538,  111,  128,  620,   97,   88,  123,  137,  124,  620,
-      620,  515,  523,  141,  142,  146,  620,  620,  620,  519,
-      620,  150,  132,  139,  508,  163,  140,  148,  502,  169,
-      502,  620,  156,  495,    0,  170,  620,  481,  161,  443,
-        0,  402,  170,  163,  165,  186,  206,    0,  212,  215,
-        0,  620,  167,  219,  154,    0,  339,  314,  184,  196,
-      226,  218,  221,  620,    0,  225,  226,  353,  234,  237,
-      620,  221,  241,  250,  343,  252,  256,  222,  325,  620,
+        {0,
+         0, 0, 55, 0, 108, 109, 110, 113, 568, 620,
+         559, 620, 553, 111, 117, 114, 620, 620, 109, 620,
+         538, 111, 128, 620, 97, 88, 123, 137, 124, 620,
+         620, 515, 523, 141, 142, 146, 620, 620, 620, 519,
+         620, 150, 132, 139, 508, 163, 140, 148, 502, 169,
+         502, 620, 156, 495, 0, 170, 620, 481, 161, 443,
+         0, 402, 170, 163, 165, 186, 206, 0, 212, 215,
+         0, 620, 167, 219, 154, 0, 339, 314, 184, 196,
+         226, 218, 221, 620, 0, 225, 226, 353, 234, 237,
+         620, 221, 241, 250, 343, 252, 256, 222, 325, 620,
 
-      620,  620,  620,  267,  249,  268,  302,  297,    0,    0,
-      291,  270,    0,  283,  294,  298,  620,    0,    0,    0,
-      256,  261,  290,  293,  274,  300,  309,  620,  620,  253,
-      252,  245,  244,    0,  326,    0,    0,  203,  194,  304,
-      308,  191,  175,  316,  323,    0,    0,    0,  139,  330,
-      324,    0,    0,   77,  327,    0,    0,    0,    0,    0,
-      620,  381,  398,  415,  432,  449,  465,  479,  181,  489,
-      499,  516,  533,  299,  549,  563,  572,  579,  343,  344,
-      593,  349,  350,  602,  355,  356,  357,  361,  362,  363,
-      367,  459,  460,  464
+         620, 620, 620, 267, 249, 268, 302, 297, 0, 0,
+         291, 270, 0, 283, 294, 298, 620, 0, 0, 0,
+         256, 261, 290, 293, 274, 300, 309, 620, 620, 253,
+         252, 245, 244, 0, 326, 0, 0, 203, 194, 304,
+         308, 191, 175, 316, 323, 0, 0, 0, 139, 330,
+         324, 0, 0, 77, 327, 0, 0, 0, 0, 0,
+         620, 381, 398, 415, 432, 449, 465, 479, 181, 489,
+         499, 516, 533, 299, 549, 563, 572, 579, 343, 344,
+         593, 349, 350, 602, 355, 356, 357, 361, 362, 363,
+         367, 459, 460, 464
 
-    } ;
+        };
 
 static yyconst flex_int16_t yy_def[195] =
-    {   0,
-      161,    1,  161,    3,  162,  162,  163,  163,  161,  161,
-      161,  161,  161,  164,  165,  166,  161,  161,  161,  161,
-      161,  161,  167,  161,  168,  169,  170,  170,  170,  161,
-      161,  161,  161,  170,  170,  170,  161,  161,  161,  161,
-      161,  171,  172,  172,  161,  172,  173,  173,  161,  173,
-      161,  161,  164,  161,  164,  165,  161,  161,  166,  161,
-      166,  161,  161,  161,  161,  161,  161,  174,  175,  161,
-      176,  161,  168,  161,  161,  177,  177,  177,  170,  170,
-      167,  170,  170,  161,  178,  170,  170,  161,  171,  171,
-      161,  172,  172,  172,  161,  173,  173,  173,  161,  161,
+        {0,
+         161, 1, 161, 3, 162, 162, 163, 163, 161, 161,
+         161, 161, 161, 164, 165, 166, 161, 161, 161, 161,
+         161, 161, 167, 161, 168, 169, 170, 170, 170, 161,
+         161, 161, 161, 170, 170, 170, 161, 161, 161, 161,
+         161, 171, 172, 172, 161, 172, 173, 173, 161, 173,
+         161, 161, 164, 161, 164, 165, 161, 161, 166, 161,
+         166, 161, 161, 161, 161, 161, 161, 174, 175, 161,
+         176, 161, 168, 161, 161, 177, 177, 177, 170, 170,
+         167, 170, 170, 161, 178, 170, 170, 161, 171, 171,
+         161, 172, 172, 172, 161, 173, 173, 173, 161, 161,
 
-      161,  161,  161,  161,  161,  161,  161,  161,  179,  180,
-      175,  111,  181,  161,  161,  161,  161,  182,  183,  177,
-      177,  177,  170,  170,  184,  170,  170,  161,  161,  161,
-      161,  161,  161,  185,  161,  186,  187,  177,  177,  170,
-      170,  184,  184,  170,  170,  188,  189,  177,  177,  170,
-      170,  190,  191,  177,  170,  192,  177,  193,  194,  191,
-        0,  161,  161,  161,  161,  161,  161,  161,  161,  161,
-      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
-      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
-      161,  161,  161,  161
+         161, 161, 161, 161, 161, 161, 161, 161, 179, 180,
+         175, 111, 181, 161, 161, 161, 161, 182, 183, 177,
+         177, 177, 170, 170, 184, 170, 170, 161, 161, 161,
+         161, 161, 161, 185, 161, 186, 187, 177, 177, 170,
+         170, 184, 184, 170, 170, 188, 189, 177, 177, 170,
+         170, 190, 191, 177, 170, 192, 177, 193, 194, 191,
+         0, 161, 161, 161, 161, 161, 161, 161, 161, 161,
+         161, 161, 161, 161, 161, 161, 161, 161, 161, 161,
+         161, 161, 161, 161, 161, 161, 161, 161, 161, 161,
+         161, 161, 161, 161
 
-    } ;
+        };
 
 static yyconst flex_int16_t yy_nxt[676] =
-    {   0,
-       10,   11,   12,   13,   10,   14,   15,   10,   16,   17,
-       18,   19,   20,   19,   21,   22,   23,   24,   25,   10,
-       10,   26,   27,   28,   27,   27,   27,   27,   27,   29,
-       27,   27,   27,   27,   30,   10,   31,   32,   33,   34,
-       28,   27,   35,   27,   27,   29,   27,   27,   36,   27,
-       27,   37,   38,   10,   27,   39,   40,   39,   39,   39,
-       39,   39,   39,   39,   39,   39,   39,   39,   39,   39,
-       39,   41,   39,   39,   39,   39,   39,   42,   42,   42,
-       42,   42,   42,   42,   42,   42,   42,   42,   42,   39,
-       39,   39,   39,   39,   42,   42,   42,   42,   42,   42,
+        {0,
+         10, 11, 12, 13, 10, 14, 15, 10, 16, 17,
+         18, 19, 20, 19, 21, 22, 23, 24, 25, 10,
+         10, 26, 27, 28, 27, 27, 27, 27, 27, 29,
+         27, 27, 27, 27, 30, 10, 31, 32, 33, 34,
+         28, 27, 35, 27, 27, 29, 27, 27, 36, 27,
+         27, 37, 38, 10, 27, 39, 40, 39, 39, 39,
+         39, 39, 39, 39, 39, 39, 39, 39, 39, 39,
+         39, 41, 39, 39, 39, 39, 39, 42, 42, 42,
+         42, 42, 42, 42, 42, 42, 42, 42, 42, 39,
+         39, 39, 39, 39, 42, 42, 42, 42, 42, 42,
 
-       42,   42,   42,   42,   42,   42,   39,   39,   39,   42,
-       44,   44,   48,   45,   45,   48,   54,   74,   49,   57,
-       58,   49,   60,   62,   63,   65,   63,  157,   77,   67,
-       67,   67,   75,   78,   93,   68,   66,   80,   80,   81,
-       81,   93,   97,   46,   46,   50,   55,   70,   50,   61,
-       97,   80,   66,   81,   83,   80,   80,   81,   81,   82,
-       80,  100,   81,   71,   90,  161,   91,   94,   92,  102,
-       83,  161,   57,   58,   94,   98,   82,   96,   64,   72,
-      105,   86,  154,   98,   65,   63,  118,   74,  104,  143,
-      106,   55,   87,   76,   76,   66,   61,  107,   80,  107,
+         42, 42, 42, 42, 42, 42, 39, 39, 39, 42,
+         44, 44, 48, 45, 45, 48, 54, 74, 49, 57,
+         58, 49, 60, 62, 63, 65, 63, 157, 77, 67,
+         67, 67, 75, 78, 93, 68, 66, 80, 80, 81,
+         81, 93, 97, 46, 46, 50, 55, 70, 50, 61,
+         97, 80, 66, 81, 83, 80, 80, 81, 81, 82,
+         80, 100, 81, 71, 90, 161, 91, 94, 92, 102,
+         83, 161, 57, 58, 94, 98, 82, 96, 64, 72,
+         105, 86, 154, 98, 65, 63, 118, 74, 104, 143,
+         106, 55, 87, 76, 76, 66, 61, 107, 80, 107,
 
-       81,  108,   75,  119,  104,  143,  106,   67,   67,   67,
-       80,   66,  161,   67,   67,   67,  114,  114,  114,  110,
-      115,  115,  115,   93,  161,   70,  112,   67,   67,   67,
-       96,   70,   80,   68,   81,   80,  149,   81,  116,   80,
-       80,   81,   81,   93,  148,   70,  124,  113,   90,  123,
-       91,   90,  161,  161,   97,   92,   94,   72,   97,  133,
-      133,   71,  124,   72,  105,  123,   72,  131,  131,  126,
-      117,  161,  161,  161,  106,  127,   94,   72,  130,  132,
-      130,  132,  131,  133,  114,  114,  114,   98,  143,  161,
-      106,   98,   67,   67,   67,  115,  115,  115,  110,  135,
+         81, 108, 75, 119, 104, 143, 106, 67, 67, 67,
+         80, 66, 161, 67, 67, 67, 114, 114, 114, 110,
+         115, 115, 115, 93, 161, 70, 112, 67, 67, 67,
+         96, 70, 80, 68, 81, 80, 149, 81, 116, 80,
+         80, 81, 81, 93, 148, 70, 124, 113, 90, 123,
+         91, 90, 161, 161, 97, 92, 94, 72, 97, 133,
+         133, 71, 124, 72, 105, 123, 72, 131, 131, 126,
+         117, 161, 161, 161, 106, 127, 94, 72, 130, 132,
+         130, 132, 131, 133, 114, 114, 114, 98, 143, 161,
+         106, 98, 67, 67, 67, 115, 115, 115, 110, 135,
 
-      135,  135,  139,  138,   80,  112,   81,   80,  109,   81,
-       70,  109,  108,  116,   80,  140,   81,  108,   80,  141,
-       81,  161,   80,   80,   81,   81,  113,  135,  135,  135,
-       80,  140,   81,  129,   72,  141,  150,   80,   80,   81,
-       81,   80,   72,   81,   80,  117,   81,  144,  128,  117,
-      145,  150,   69,  134,   88,   69,  134,  151,  136,  137,
-      122,  136,  137,  155,  111,  146,  147,  111,  146,  147,
-      152,  153,  156,  152,  153,  156,   73,  117,  121,   73,
-      155,   43,   43,   43,   43,   43,   43,   43,   43,   43,
-       43,   43,   43,   43,   43,   43,   43,   43,   47,   47,
+         135, 135, 139, 138, 80, 112, 81, 80, 109, 81,
+         70, 109, 108, 116, 80, 140, 81, 108, 80, 141,
+         81, 161, 80, 80, 81, 81, 113, 135, 135, 135,
+         80, 140, 81, 129, 72, 141, 150, 80, 80, 81,
+         81, 80, 72, 81, 80, 117, 81, 144, 128, 117,
+         145, 150, 69, 134, 88, 69, 134, 151, 136, 137,
+         122, 136, 137, 155, 111, 146, 147, 111, 146, 147,
+         152, 153, 156, 152, 153, 156, 73, 117, 121, 73,
+         155, 43, 43, 43, 43, 43, 43, 43, 43, 43,
+         43, 43, 43, 43, 43, 43, 43, 43, 47, 47,
 
-       47,   47,   47,   47,   47,   47,   47,   47,   47,   47,
-       47,   47,   47,   47,   47,   53,   53,   64,   53,   53,
-       53,   53,   53,   53,   53,   53,   53,   53,   53,   53,
-       53,   53,   56,   56,   56,   56,   56,   56,   56,   56,
-       56,   56,   56,   56,   56,   56,   56,   56,   56,   59,
-       59,  103,   59,   59,   59,   59,   59,   59,   59,   59,
-       59,   59,   59,   59,   59,   59,   69,   69,  158,  159,
-       69,  158,  159,  160,   69,   69,  160,   69,   69,   69,
-       69,   69,   73,   57,   73,   73,   73,   73,   73,   73,
-       73,   73,   73,   73,   73,   73,   79,   79,   79,   79,
+         47, 47, 47, 47, 47, 47, 47, 47, 47, 47,
+         47, 47, 47, 47, 47, 53, 53, 64, 53, 53,
+         53, 53, 53, 53, 53, 53, 53, 53, 53, 53,
+         53, 53, 56, 56, 56, 56, 56, 56, 56, 56,
+         56, 56, 56, 56, 56, 56, 56, 56, 56, 59,
+         59, 103, 59, 59, 59, 59, 59, 59, 59, 59,
+         59, 59, 59, 59, 59, 59, 69, 69, 158, 159,
+         69, 158, 159, 160, 69, 69, 160, 69, 69, 69,
+         69, 69, 73, 57, 73, 73, 73, 73, 73, 73,
+         73, 73, 73, 73, 73, 73, 79, 79, 79, 79,
 
-      101,   79,   79,   51,   79,   79,   89,   89,   89,   89,
-       99,   89,   89,   95,   89,   89,   92,   92,   92,   92,
-       88,   92,   92,   92,   92,   92,   92,   92,   92,   92,
-       92,   92,   92,   96,   96,   96,   96,   96,   96,   85,
-       96,   96,   96,   96,   96,   96,   96,   96,   96,   96,
-      111,  111,   84,   64,  111,   52,  111,  111,  111,  111,
-       51,  111,  111,  111,  111,  111,   69,  161,   69,   69,
-       69,   69,  161,  161,  161,  161,  161,  161,   69,  120,
-      161,  120,  161,  161,  120,  120,  161,  120,  125,  161,
-      161,  125,  125,  161,  125,  125,  111,  161,  111,  111,
+         101, 79, 79, 51, 79, 79, 89, 89, 89, 89,
+         99, 89, 89, 95, 89, 89, 92, 92, 92, 92,
+         88, 92, 92, 92, 92, 92, 92, 92, 92, 92,
+         92, 92, 92, 96, 96, 96, 96, 96, 96, 85,
+         96, 96, 96, 96, 96, 96, 96, 96, 96, 96,
+         111, 111, 84, 64, 111, 52, 111, 111, 111, 111,
+         51, 111, 111, 111, 111, 111, 69, 161, 69, 69,
+         69, 69, 161, 161, 161, 161, 161, 161, 69, 120,
+         161, 120, 161, 161, 120, 120, 161, 120, 125, 161,
+         161, 125, 125, 161, 125, 125, 111, 161, 111, 111,
 
-      111,  111,  161,  161,  161,  161,  161,  161,  111,  142,
-      142,  142,  161,  161,  142,  142,  161,  142,  142,    9,
-      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
-      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
-      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
-      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
-      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
-      161,  161,  161,  161,  161
-    } ;
+         111, 111, 161, 161, 161, 161, 161, 161, 111, 142,
+         142, 142, 161, 161, 142, 142, 161, 142, 142, 9,
+         161, 161, 161, 161, 161, 161, 161, 161, 161, 161,
+         161, 161, 161, 161, 161, 161, 161, 161, 161, 161,
+         161, 161, 161, 161, 161, 161, 161, 161, 161, 161,
+         161, 161, 161, 161, 161, 161, 161, 161, 161, 161,
+         161, 161, 161, 161, 161, 161, 161, 161, 161, 161,
+         161, 161, 161, 161, 161
+        };
 
 static yyconst flex_int16_t yy_chk[676] =
-    {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    3,    3,    3,    3,    3,
-        3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-        3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-        3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-        3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
+        {0,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+         1, 1, 1, 1, 1, 3, 3, 3, 3, 3,
+         3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+         3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+         3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+         3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
 
-        3,    3,    3,    3,    3,    3,    3,    3,    3,    3,
-        5,    6,    7,    5,    6,    8,   14,   25,    7,   15,
-       15,    8,   16,   19,   19,   22,   22,  154,   26,   23,
-       23,   23,   25,   26,   43,   23,   22,   27,   29,   27,
-       29,   44,   47,    5,    6,    7,   14,   23,    8,   16,
-       48,   28,   22,   28,   29,   34,   35,   34,   35,   28,
-       36,   53,   36,   23,   42,   46,   42,   43,   46,   59,
-       29,   50,   56,   56,   44,   47,   28,   50,   64,   23,
-       65,   35,  149,   48,   63,   63,   75,   73,   64,  143,
-       65,   53,   36,  169,  169,   63,   59,   66,   79,   66,
+         3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+         5, 6, 7, 5, 6, 8, 14, 25, 7, 15,
+         15, 8, 16, 19, 19, 22, 22, 154, 26, 23,
+         23, 23, 25, 26, 43, 23, 22, 27, 29, 27,
+         29, 44, 47, 5, 6, 7, 14, 23, 8, 16,
+         48, 28, 22, 28, 29, 34, 35, 34, 35, 28,
+         36, 53, 36, 23, 42, 46, 42, 43, 46, 59,
+         29, 50, 56, 56, 44, 47, 28, 50, 64, 23,
+         65, 35, 149, 48, 63, 63, 75, 73, 64, 143,
+         65, 53, 36, 169, 169, 63, 59, 66, 79, 66,
 
-       79,   66,   73,   75,   64,  142,   65,   67,   67,   67,
-       80,   63,   80,   69,   69,   69,   70,   70,   70,   69,
-       74,   74,   74,   92,   98,   67,   69,   81,   81,   81,
-       98,   69,   82,   81,   82,   83,  139,   83,   74,   86,
-       87,   86,   87,   93,  138,   81,   83,   69,   89,   82,
-       89,   90,   94,   90,   96,   94,   92,   67,   97,  133,
-      132,   81,   83,   69,  105,   82,   70,  131,  130,   86,
-       74,  112,  112,  112,  105,   87,   93,   81,  104,  106,
-      104,  106,  104,  106,  114,  114,  114,   96,  125,  112,
-      105,   97,  111,  111,  111,  115,  115,  115,  111,  116,
+         79, 66, 73, 75, 64, 142, 65, 67, 67, 67,
+         80, 63, 80, 69, 69, 69, 70, 70, 70, 69,
+         74, 74, 74, 92, 98, 67, 69, 81, 81, 81,
+         98, 69, 82, 81, 82, 83, 139, 83, 74, 86,
+         87, 86, 87, 93, 138, 81, 83, 69, 89, 82,
+         89, 90, 94, 90, 96, 94, 92, 67, 97, 133,
+         132, 81, 83, 69, 105, 82, 70, 131, 130, 86,
+         74, 112, 112, 112, 105, 87, 93, 81, 104, 106,
+         104, 106, 104, 106, 114, 114, 114, 96, 125, 112,
+         105, 97, 111, 111, 111, 115, 115, 115, 111, 116,
 
-      116,  116,  122,  121,  123,  111,  123,  124,  174,  124,
-      111,  174,  108,  115,  126,  123,  126,  107,  140,  124,
-      140,  112,  141,  127,  141,  127,  111,  135,  135,  135,
-      144,  123,  144,   99,  114,  124,  141,  145,  151,  145,
-      151,  155,  111,  155,  150,  115,  150,  126,   95,  116,
-      127,  141,  179,  180,   88,  179,  180,  144,  182,  183,
-       78,  182,  183,  150,  185,  186,  187,  185,  186,  187,
-      188,  189,  190,  188,  189,  190,  191,  135,   77,  191,
-      150,  162,  162,  162,  162,  162,  162,  162,  162,  162,
-      162,  162,  162,  162,  162,  162,  162,  162,  163,  163,
+         116, 116, 122, 121, 123, 111, 123, 124, 174, 124,
+         111, 174, 108, 115, 126, 123, 126, 107, 140, 124,
+         140, 112, 141, 127, 141, 127, 111, 135, 135, 135,
+         144, 123, 144, 99, 114, 124, 141, 145, 151, 145,
+         151, 155, 111, 155, 150, 115, 150, 126, 95, 116,
+         127, 141, 179, 180, 88, 179, 180, 144, 182, 183,
+         78, 182, 183, 150, 185, 186, 187, 185, 186, 187,
+         188, 189, 190, 188, 189, 190, 191, 135, 77, 191,
+         150, 162, 162, 162, 162, 162, 162, 162, 162, 162,
+         162, 162, 162, 162, 162, 162, 162, 162, 163, 163,
 
-      163,  163,  163,  163,  163,  163,  163,  163,  163,  163,
-      163,  163,  163,  163,  163,  164,  164,   62,  164,  164,
-      164,  164,  164,  164,  164,  164,  164,  164,  164,  164,
-      164,  164,  165,  165,  165,  165,  165,  165,  165,  165,
-      165,  165,  165,  165,  165,  165,  165,  165,  165,  166,
-      166,   60,  166,  166,  166,  166,  166,  166,  166,  166,
-      166,  166,  166,  166,  166,  166,  167,  167,  192,  193,
-      167,  192,  193,  194,  167,  167,  194,  167,  167,  167,
-      167,  167,  168,   58,  168,  168,  168,  168,  168,  168,
-      168,  168,  168,  168,  168,  168,  170,  170,  170,  170,
+         163, 163, 163, 163, 163, 163, 163, 163, 163, 163,
+         163, 163, 163, 163, 163, 164, 164, 62, 164, 164,
+         164, 164, 164, 164, 164, 164, 164, 164, 164, 164,
+         164, 164, 165, 165, 165, 165, 165, 165, 165, 165,
+         165, 165, 165, 165, 165, 165, 165, 165, 165, 166,
+         166, 60, 166, 166, 166, 166, 166, 166, 166, 166,
+         166, 166, 166, 166, 166, 166, 167, 167, 192, 193,
+         167, 192, 193, 194, 167, 167, 194, 167, 167, 167,
+         167, 167, 168, 58, 168, 168, 168, 168, 168, 168,
+         168, 168, 168, 168, 168, 168, 170, 170, 170, 170,
 
-       54,  170,  170,   51,  170,  170,  171,  171,  171,  171,
-       49,  171,  171,   45,  171,  171,  172,  172,  172,  172,
-       40,  172,  172,  172,  172,  172,  172,  172,  172,  172,
-      172,  172,  172,  173,  173,  173,  173,  173,  173,   33,
-      173,  173,  173,  173,  173,  173,  173,  173,  173,  173,
-      175,  175,   32,   21,  175,   13,  175,  175,  175,  175,
-       11,  175,  175,  175,  175,  175,  176,    9,  176,  176,
-      176,  176,    0,    0,    0,    0,    0,    0,  176,  177,
-        0,  177,    0,    0,  177,  177,    0,  177,  178,    0,
-        0,  178,  178,    0,  178,  178,  181,    0,  181,  181,
+         54, 170, 170, 51, 170, 170, 171, 171, 171, 171,
+         49, 171, 171, 45, 171, 171, 172, 172, 172, 172,
+         40, 172, 172, 172, 172, 172, 172, 172, 172, 172,
+         172, 172, 172, 173, 173, 173, 173, 173, 173, 33,
+         173, 173, 173, 173, 173, 173, 173, 173, 173, 173,
+         175, 175, 32, 21, 175, 13, 175, 175, 175, 175,
+         11, 175, 175, 175, 175, 175, 176, 9, 176, 176,
+         176, 176, 0, 0, 0, 0, 0, 0, 176, 177,
+         0, 177, 0, 0, 177, 177, 0, 177, 178, 0,
+         0, 178, 178, 0, 178, 178, 181, 0, 181, 181,
 
-      181,  181,    0,    0,    0,    0,    0,    0,  181,  184,
-      184,  184,    0,    0,  184,  184,    0,  184,  184,  161,
-      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
-      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
-      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
-      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
-      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
-      161,  161,  161,  161,  161
-    } ;
+         181, 181, 0, 0, 0, 0, 0, 0, 181, 184,
+         184, 184, 0, 0, 184, 184, 0, 184, 184, 161,
+         161, 161, 161, 161, 161, 161, 161, 161, 161, 161,
+         161, 161, 161, 161, 161, 161, 161, 161, 161, 161,
+         161, 161, 161, 161, 161, 161, 161, 161, 161, 161,
+         161, 161, 161, 161, 161, 161, 161, 161, 161, 161,
+         161, 161, 161, 161, 161, 161, 161, 161, 161, 161,
+         161, 161, 161, 161, 161
+        };
 
 /* The intent behind this definition is that it'll catch
  * any uses of REJECT which flex missed.
@@ -653,22 +668,22 @@ static yyconst flex_int16_t yy_chk[676] =
  *
  * Copyright (C) 2003-2013, David Beckett http://www.dajobe.org/
  * Copyright (C) 2003-2005, University of Bristol, UK http://www.bristol.ac.uk/
- * 
+ *
  * This package is Free Software and part of Redland http://librdf.org/
- * 
+ *
  * It is licensed under the following three licenses as alternatives:
  *   1. GNU Lesser General Public License (LGPL) V2.1 or any newer version
  *   2. GNU General Public License (GPL) V2 or any newer version
  *   3. Apache License, V2.0 or any newer version
- * 
+ *
  * You may not use this file except in compliance with at least one of
  * the above three licenses.
- * 
+ *
  * See LICENSE.html or LICENSE.txt at the top of this package for the
  * complete terms and further detail along with the license texts for
  * the licenses in COPYING.LIB, COPYING and LICENSE-2.0.txt respectively.
- * 
- * 
+ *
+ *
  * Turtle is defined in http://www.dajobe.org/2004/01/turtle/
  *
  * To generate the C files from this source, rather than use the
@@ -716,14 +731,21 @@ static yyconst flex_int16_t yy_chk[676] =
 #include <string.h>
 #include <ctype.h>
 #include <stdarg.h>
+
 #ifdef HAVE_ERRNO_H
+
 #include <errno.h>
+
 #endif
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 #ifdef HAVE_SETJMP_H
+
 #include <setjmp.h>
+
 #endif
 
 #include "raptor2.h"
@@ -733,10 +755,12 @@ static yyconst flex_int16_t yy_chk[676] =
 #include <turtle_common.h>
 
 
-/* Prototypes */ 
+/* Prototypes */
 static unsigned char *turtle_copy_token(unsigned char *text, size_t len);
-static unsigned char *turtle_copy_string_token(raptor_parser* rdf_parser, unsigned char *text, size_t len, int delim);
-void turtle_lexer_syntax_error(void* ctx, const char *message, ...) RAPTOR_PRINTF_FORMAT(2, 3);
+
+static unsigned char *turtle_copy_string_token(raptor_parser *rdf_parser, unsigned char *text, size_t len, int delim);
+
+void turtle_lexer_syntax_error(void *ctx, const char *message, ...) RAPTOR_PRINTF_FORMAT(2, 3);
 
 #ifdef RAPTOR_DEBUG
 const char * turtle_token_print(raptor_world* world, int token, YYSTYPE *lval);
@@ -750,7 +774,7 @@ const char * turtle_token_print(raptor_world* world, int token, YYSTYPE *lval);
 
 
 #if FLEX_VERSION_DECIMAL < 20536
-/* debian flex 2.5.35-10.1 added these column header prototypes in
+                                                                                                                        /* debian flex 2.5.35-10.1 added these column header prototypes in
  * re-entrant mode.  standard flex omits them
  */
 void turtle_lexer_set_column(int column_no, yyscan_t yyscanner);
@@ -769,16 +793,17 @@ static jmp_buf turtle_lexer_fatal_error_longjmp_env;
     abort();                                                      \
 } while(0)
 #else
-#define YY_FATAL_ERROR(msg) do {                                   \
+                                                                                                                        #define YY_FATAL_ERROR(msg) do {                                   \
     turtle_lexer_error(yyscanner, RAPTOR_LOG_LEVEL_FATAL, msg);    \
     abort();                                                       \
 } while(0)
 #endif
- 
-/* Remove the re-fill function since it should never be called */
-#define YY_INPUT(buf,result,max_size) { return YY_NULL; }
 
-static void turtle_lexer_error(yyscan_t yyscanner, raptor_log_level level, yyconst char *message, ...) RAPTOR_PRINTF_FORMAT(3, 4);
+/* Remove the re-fill function since it should never be called */
+#define YY_INPUT(buf, result, max_size) { return YY_NULL; }
+
+static void
+turtle_lexer_error(yyscan_t yyscanner, raptor_log_level level, yyconst char *message, ...) RAPTOR_PRINTF_FORMAT(3, 4);
 
 /* Fatal error handler that returns EOF instead of abort()/longjmp()
  * so that parser can clean up properly */
@@ -789,7 +814,7 @@ static void turtle_lexer_error(yyscan_t yyscanner, raptor_log_level level, yycon
 
 /* Out-of-memory reporting macro */
 #define TURTLE_LEXER_OOM() YY_FATAL_ERROR_EOF(turtle_lexer_oom_text)
-static char turtle_lexer_oom_text[]="turtle_lexer: Out of memory";
+static char turtle_lexer_oom_text[] = "turtle_lexer: Out of memory";
 
 /* Do not need input() to to read from stdin */
 #define YY_NO_INPUT 1
@@ -805,7 +830,7 @@ static char turtle_lexer_oom_text[]="turtle_lexer: Out of memory";
 #define LONG_SLITERAL 3
 
 #ifndef YY_NO_UNISTD_H
-/* Special case for "unistd.h", since it is non-ANSI. We include it way
+                                                                                                                        /* Special case for "unistd.h", since it is non-ANSI. We include it way
  * down here because we want the user's section 1 to have been scanned first.
  * The user has a chance to override it with an option.
  */
@@ -817,8 +842,7 @@ static char turtle_lexer_oom_text[]="turtle_lexer: Out of memory";
 #define YY_EXTRA_TYPE raptor_parser*
 
 /* Holds the entire state of the reentrant scanner. */
-struct yyguts_t
-    {
+struct yyguts_t {
 
     /* User-defined. Not touched by flex. */
     YY_EXTRA_TYPE yyextra_r;
@@ -827,7 +851,7 @@ struct yyguts_t
     FILE *yyin_r, *yyout_r;
     size_t yy_buffer_stack_top; /**< index of top of stack. */
     size_t yy_buffer_stack_max; /**< capacity of stack. */
-    YY_BUFFER_STATE * yy_buffer_stack; /**< Stack as an array. */
+    YY_BUFFER_STATE *yy_buffer_stack; /**< Stack as an array. */
     char yy_hold_char;
     int yy_n_chars;
     int yyleng_r;
@@ -839,7 +863,7 @@ struct yyguts_t
     int yy_start_stack_depth;
     int *yy_start_stack;
     yy_state_type yy_last_accepting_state;
-    char* yy_last_accepting_cpos;
+    char *yy_last_accepting_cpos;
 
     int yylineno_r;
     int yy_flex_debug_r;
@@ -848,56 +872,56 @@ struct yyguts_t
     int yy_more_flag;
     int yy_more_len;
 
-    YYSTYPE * yylval_r;
+    YYSTYPE *yylval_r;
 
-    }; /* end struct yyguts_t */
+}; /* end struct yyguts_t */
 
-static int yy_init_globals (yyscan_t yyscanner );
+static int yy_init_globals(yyscan_t yyscanner);
 
-    /* This must go here because YYSTYPE and YYLTYPE are included
+/* This must go here because YYSTYPE and YYLTYPE are included
      * from bison output in section 1.*/
-    #    define yylval yyg->yylval_r
-    
-int turtle_lexer_lex_init (yyscan_t* scanner);
+#    define yylval yyg->yylval_r
 
-int turtle_lexer_lex_init_extra (YY_EXTRA_TYPE user_defined,yyscan_t* scanner);
+int turtle_lexer_lex_init(yyscan_t *scanner);
+
+int turtle_lexer_lex_init_extra(YY_EXTRA_TYPE user_defined, yyscan_t *scanner);
 
 /* Accessor methods to globals.
    These are made visible to non-reentrant scanners for convenience. */
 
-int turtle_lexer_lex_destroy (yyscan_t yyscanner );
+int turtle_lexer_lex_destroy(yyscan_t yyscanner);
 
-int turtle_lexer_get_debug (yyscan_t yyscanner );
+int turtle_lexer_get_debug(yyscan_t yyscanner);
 
-void turtle_lexer_set_debug (int debug_flag ,yyscan_t yyscanner );
+void turtle_lexer_set_debug(int debug_flag, yyscan_t yyscanner);
 
-YY_EXTRA_TYPE turtle_lexer_get_extra (yyscan_t yyscanner );
+YY_EXTRA_TYPE turtle_lexer_get_extra(yyscan_t yyscanner);
 
-void turtle_lexer_set_extra (YY_EXTRA_TYPE user_defined ,yyscan_t yyscanner );
+void turtle_lexer_set_extra(YY_EXTRA_TYPE user_defined, yyscan_t yyscanner);
 
-FILE *turtle_lexer_get_in (yyscan_t yyscanner );
+FILE *turtle_lexer_get_in(yyscan_t yyscanner);
 
-void turtle_lexer_set_in  (FILE * in_str ,yyscan_t yyscanner );
+void turtle_lexer_set_in(FILE *in_str, yyscan_t yyscanner);
 
-FILE *turtle_lexer_get_out (yyscan_t yyscanner );
+FILE *turtle_lexer_get_out(yyscan_t yyscanner);
 
-void turtle_lexer_set_out  (FILE * out_str ,yyscan_t yyscanner );
+void turtle_lexer_set_out(FILE *out_str, yyscan_t yyscanner);
 
-int turtle_lexer_get_leng (yyscan_t yyscanner );
+int turtle_lexer_get_leng(yyscan_t yyscanner);
 
-char *turtle_lexer_get_text (yyscan_t yyscanner );
+char *turtle_lexer_get_text(yyscan_t yyscanner);
 
-int turtle_lexer_get_lineno (yyscan_t yyscanner );
+int turtle_lexer_get_lineno(yyscan_t yyscanner);
 
-void turtle_lexer_set_lineno (int line_number ,yyscan_t yyscanner );
+void turtle_lexer_set_lineno(int line_number, yyscan_t yyscanner);
 
-int turtle_lexer_get_column  (yyscan_t yyscanner );
+int turtle_lexer_get_column(yyscan_t yyscanner);
 
-void turtle_lexer_set_column (int column_no ,yyscan_t yyscanner );
+void turtle_lexer_set_column(int column_no, yyscan_t yyscanner);
 
-YYSTYPE * turtle_lexer_get_lval (yyscan_t yyscanner );
+YYSTYPE *turtle_lexer_get_lval(yyscan_t yyscanner);
 
-void turtle_lexer_set_lval (YYSTYPE * yylval_param ,yyscan_t yyscanner );
+void turtle_lexer_set_lval(YYSTYPE *yylval_param, yyscan_t yyscanner);
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -907,7 +931,9 @@ void turtle_lexer_set_lval (YYSTYPE * yylval_param ,yyscan_t yyscanner );
 #ifdef __cplusplus
 extern "C" int turtle_lexer_wrap (yyscan_t yyscanner );
 #else
-extern int turtle_lexer_wrap (yyscan_t yyscanner );
+
+extern int turtle_lexer_wrap(yyscan_t yyscanner);
+
 #endif
 #endif
 
@@ -921,7 +947,7 @@ static int yy_flex_strlen (yyconst char * ,yyscan_t yyscanner);
 
 #ifndef YY_NO_INPUT
 
-#ifdef __cplusplus
+                                                                                                                        #ifdef __cplusplus
 static int yyinput (yyscan_t yyscanner );
 #else
 static int input (yyscan_t yyscanner );
@@ -932,7 +958,7 @@ static int input (yyscan_t yyscanner );
 /* Amount of stuff to slurp up with each read. */
 #ifndef YY_READ_BUF_SIZE
 #ifdef __ia64__
-/* On IA-64, the buffer size is 16k, not 8k */
+                                                                                                                        /* On IA-64, the buffer size is 16k, not 8k */
 #define YY_READ_BUF_SIZE 16384
 #else
 #define YY_READ_BUF_SIZE 8192
@@ -951,7 +977,7 @@ static int input (yyscan_t yyscanner );
  * is returned in "result".
  */
 #ifndef YY_INPUT
-#define YY_INPUT(buf,result,max_size) \
+                                                                                                                        #define YY_INPUT(buf,result,max_size) \
 	if ( YY_CURRENT_BUFFER_LVALUE->yy_is_interactive ) \
 		{ \
 		int c = '*'; \
@@ -1010,7 +1036,7 @@ static int input (yyscan_t yyscanner );
 #define YY_DECL_IS_OURS 1
 
 extern int turtle_lexer_lex \
-               (YYSTYPE * yylval_param ,yyscan_t yyscanner);
+(YYSTYPE *yylval_param, yyscan_t yyscanner);
 
 #define YY_DECL int turtle_lexer_lex \
                (YYSTYPE * yylval_param , yyscan_t yyscanner)
@@ -1029,603 +1055,669 @@ extern int turtle_lexer_lex \
 #endif
 
 #define YY_RULE_SETUP \
-	YY_USER_ACTION
+    YY_USER_ACTION
 
 /** The main scanner function which does all the work.
  */
-YY_DECL
-{
-	register yy_state_type yy_current_state;
-	register char *yy_cp, *yy_bp;
-	register int yy_act;
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+YY_DECL {
+    register yy_state_type yy_current_state;
+    register char *yy_cp, *yy_bp;
+    register int yy_act;
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
 
 #line 204 "./turtle_lexer.l"
 
-  /* rules */
+    /* rules */
 
 
-  raptor_parser *rdf_parser = yyextra;
-  raptor_turtle_parser* turtle_parser = (raptor_turtle_parser*)rdf_parser->context;
+    raptor_parser *rdf_parser = yyextra;
+    raptor_turtle_parser *turtle_parser = (raptor_turtle_parser *) rdf_parser->context;
 
 #ifdef HAVE_SETJMP
-  if(setjmp(turtle_lexer_fatal_error_longjmp_env))
-    return 1;
+    if (setjmp(turtle_lexer_fatal_error_longjmp_env))
+        return 1;
 #endif
 
-    
 
 #line 1059 "turtle_lexer.c"
 
     yylval = yylval_param;
 
-	if ( !yyg->yy_init )
-		{
-		yyg->yy_init = 1;
+    if (!yyg->yy_init) {
+        yyg->yy_init = 1;
 
 #ifdef YY_USER_INIT
-		YY_USER_INIT;
+        YY_USER_INIT;
 #endif
 
-		if ( ! yyg->yy_start )
-			yyg->yy_start = 1;	/* first start state */
+        if (!yyg->yy_start)
+            yyg->yy_start = 1;    /* first start state */
 
-		if ( ! yyin )
-			yyin = stdin;
+        if (!yyin)
+            yyin = stdin;
 
-		if ( ! yyout )
-			yyout = stdout;
+        if (!yyout)
+            yyout = stdout;
 
-		if ( ! YY_CURRENT_BUFFER ) {
-			turtle_lexer_ensure_buffer_stack (yyscanner);
-			YY_CURRENT_BUFFER_LVALUE =
-				turtle_lexer__create_buffer(yyin,YY_BUF_SIZE ,yyscanner);
-		}
+        if (!YY_CURRENT_BUFFER) {
+            turtle_lexer_ensure_buffer_stack(yyscanner);
+            YY_CURRENT_BUFFER_LVALUE =
+                    turtle_lexer__create_buffer(yyin, YY_BUF_SIZE, yyscanner);
+        }
 
-		turtle_lexer__load_buffer_state(yyscanner );
-		}
+        turtle_lexer__load_buffer_state(yyscanner);
+    }
 
-	while ( 1 )		/* loops until end-of-file is reached */
-		{
-		yy_cp = yyg->yy_c_buf_p;
+    while (1)        /* loops until end-of-file is reached */
+    {
+        yy_cp = yyg->yy_c_buf_p;
 
-		/* Support of yytext. */
-		*yy_cp = yyg->yy_hold_char;
+        /* Support of yytext. */
+        *yy_cp = yyg->yy_hold_char;
 
-		/* yy_bp points to the position in yy_ch_buf of the start of
+        /* yy_bp points to the position in yy_ch_buf of the start of
 		 * the current run.
 		 */
-		yy_bp = yy_cp;
+        yy_bp = yy_cp;
 
-		yy_current_state = yyg->yy_start;
-yy_match:
-		do
-			{
-			register YY_CHAR yy_c = yy_ec[YY_SC_TO_UI(*yy_cp)];
-			if ( yy_accept[yy_current_state] )
-				{
-				yyg->yy_last_accepting_state = yy_current_state;
-				yyg->yy_last_accepting_cpos = yy_cp;
-				}
-			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
-				{
-				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 162 )
-					yy_c = yy_meta[(unsigned int) yy_c];
-				}
-			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-			++yy_cp;
-			}
-		while ( yy_current_state != 161 );
-		yy_cp = yyg->yy_last_accepting_cpos;
-		yy_current_state = yyg->yy_last_accepting_state;
+        yy_current_state = yyg->yy_start;
+        yy_match:
+        do {
+            register YY_CHAR yy_c = yy_ec[YY_SC_TO_UI(*yy_cp)];
+            if (yy_accept[yy_current_state]) {
+                yyg->yy_last_accepting_state = yy_current_state;
+                yyg->yy_last_accepting_cpos = yy_cp;
+            }
+            while (yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state) {
+                yy_current_state = (int) yy_def[yy_current_state];
+                if (yy_current_state >= 162)
+                    yy_c = yy_meta[(unsigned int) yy_c];
+            }
+            yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
+            ++yy_cp;
+        } while (yy_current_state != 161);
+        yy_cp = yyg->yy_last_accepting_cpos;
+        yy_current_state = yyg->yy_last_accepting_state;
 
-yy_find_action:
-		yy_act = yy_accept[yy_current_state];
+        yy_find_action:
+        yy_act = yy_accept[yy_current_state];
 
-		YY_DO_BEFORE_ACTION;
+        YY_DO_BEFORE_ACTION;
 
-do_action:	/* This label is used only to access EOF actions. */
+        do_action:    /* This label is used only to access EOF actions. */
 
-		switch ( yy_act )
-	{ /* beginning of action switch */
-			case 0: /* must back up */
-			/* undo the effects of YY_DO_BEFORE_ACTION */
-			*yy_cp = yyg->yy_hold_char;
-			yy_cp = yyg->yy_last_accepting_cpos;
-			yy_current_state = yyg->yy_last_accepting_state;
-			goto yy_find_action;
+        switch (yy_act) { /* beginning of action switch */
+            case 0: /* must back up */
+                /* undo the effects of YY_DO_BEFORE_ACTION */
+                *yy_cp = yyg->yy_hold_char;
+                yy_cp = yyg->yy_last_accepting_cpos;
+                yy_current_state = yyg->yy_last_accepting_state;
+                goto yy_find_action;
 
-case 1:
+            case 1:
 /* rule 1 can match eol */
-YY_RULE_SETUP
+                YY_RULE_SETUP
 #line 218 "./turtle_lexer.l"
-{ turtle_parser->lineno++; }
-	YY_BREAK
-case 2:
-YY_RULE_SETUP
+            {
+                turtle_parser->lineno++;
+            }
+                YY_BREAK
+            case 2:
+                YY_RULE_SETUP
 #line 220 "./turtle_lexer.l"
-{ /* empty */ }
-	YY_BREAK
-case 3:
-YY_RULE_SETUP
+            { /* empty */ }
+                YY_BREAK
+            case 3:
+                YY_RULE_SETUP
 #line 223 "./turtle_lexer.l"
-{ return A; }
-	YY_BREAK
-case 4:
-YY_RULE_SETUP
+            {
+                return A;
+            }
+                YY_BREAK
+            case 4:
+                YY_RULE_SETUP
 #line 225 "./turtle_lexer.l"
-{ return DOT; } 
-	YY_BREAK
-case 5:
-YY_RULE_SETUP
+            {
+                return DOT;
+            }
+                YY_BREAK
+            case 5:
+                YY_RULE_SETUP
 #line 226 "./turtle_lexer.l"
-{ return COMMA; } 
-	YY_BREAK
-case 6:
-YY_RULE_SETUP
+            {
+                return COMMA;
+            }
+                YY_BREAK
+            case 6:
+                YY_RULE_SETUP
 #line 227 "./turtle_lexer.l"
-{ return SEMICOLON; }
-	YY_BREAK
-case 7:
-YY_RULE_SETUP
+            {
+                return SEMICOLON;
+            }
+                YY_BREAK
+            case 7:
+                YY_RULE_SETUP
 #line 228 "./turtle_lexer.l"
-{ return LEFT_SQUARE; }
-	YY_BREAK
-case 8:
-YY_RULE_SETUP
+            {
+                return LEFT_SQUARE;
+            }
+                YY_BREAK
+            case 8:
+                YY_RULE_SETUP
 #line 229 "./turtle_lexer.l"
-{ return RIGHT_SQUARE; }
-	YY_BREAK
-case 9:
-YY_RULE_SETUP
+            {
+                return RIGHT_SQUARE;
+            }
+                YY_BREAK
+            case 9:
+                YY_RULE_SETUP
 #line 230 "./turtle_lexer.l"
-{ BEGIN(PREF); return PREFIX; }
-	YY_BREAK
-case 10:
-YY_RULE_SETUP
+            {
+                BEGIN (PREF);
+                return PREFIX;
+            }
+                YY_BREAK
+            case 10:
+                YY_RULE_SETUP
 #line 231 "./turtle_lexer.l"
-{ BEGIN(PREF);
-		return SPARQL_PREFIX; }
-	YY_BREAK
-case 11:
-YY_RULE_SETUP
+            {
+                BEGIN (PREF);
+                return SPARQL_PREFIX;
+            }
+                YY_BREAK
+            case 11:
+                YY_RULE_SETUP
 #line 233 "./turtle_lexer.l"
-{ return BASE; }
-	YY_BREAK
-case 12:
-YY_RULE_SETUP
+            {
+                return BASE;
+            }
+                YY_BREAK
+            case 12:
+                YY_RULE_SETUP
 #line 234 "./turtle_lexer.l"
-{ return SPARQL_BASE; }
-	YY_BREAK
-case 13:
-YY_RULE_SETUP
+            {
+                return SPARQL_BASE;
+            }
+                YY_BREAK
+            case 13:
+                YY_RULE_SETUP
 #line 235 "./turtle_lexer.l"
-{ return HAT; }
-	YY_BREAK
-case 14:
-YY_RULE_SETUP
+            {
+                return HAT;
+            }
+                YY_BREAK
+            case 14:
+                YY_RULE_SETUP
 #line 236 "./turtle_lexer.l"
-{ return LEFT_ROUND; }
-	YY_BREAK
-case 15:
-YY_RULE_SETUP
+            {
+                return LEFT_ROUND;
+            }
+                YY_BREAK
+            case 15:
+                YY_RULE_SETUP
 #line 237 "./turtle_lexer.l"
-{ return RIGHT_ROUND; }
-	YY_BREAK
-case 16:
-YY_RULE_SETUP
+            {
+                return RIGHT_ROUND;
+            }
+                YY_BREAK
+            case 16:
+                YY_RULE_SETUP
 #line 238 "./turtle_lexer.l"
-{ return LEFT_CURLY; }
-	YY_BREAK
-case 17:
-YY_RULE_SETUP
+            {
+                return LEFT_CURLY;
+            }
+                YY_BREAK
+            case 17:
+                YY_RULE_SETUP
 #line 239 "./turtle_lexer.l"
-{ return RIGHT_CURLY; }
-	YY_BREAK
-case 18:
-YY_RULE_SETUP
+            {
+                return RIGHT_CURLY;
+            }
+                YY_BREAK
+            case 18:
+                YY_RULE_SETUP
 #line 240 "./turtle_lexer.l"
-{ return TRUE_TOKEN; }
-	YY_BREAK
-case 19:
-YY_RULE_SETUP
+            {
+                return TRUE_TOKEN;
+            }
+                YY_BREAK
+            case 19:
+                YY_RULE_SETUP
 #line 241 "./turtle_lexer.l"
-{ return FALSE_TOKEN; }
-	YY_BREAK
-case 20:
-YY_RULE_SETUP
+            {
+                return FALSE_TOKEN;
+            }
+                YY_BREAK
+            case 20:
+                YY_RULE_SETUP
 #line 244 "./turtle_lexer.l"
-{ yylval->string = turtle_copy_string_token(rdf_parser, (unsigned char*)yytext+1, yyleng-2, '"'); /* ' */
-                                if(!yylval->string)
-                                  yyterminate();
+            {
+                yylval->string = turtle_copy_string_token(rdf_parser, (unsigned char *) yytext + 1, yyleng - 2,
+                                                          '"'); /* ' */
+                if (!yylval->string)
+                    yyterminate();
 
-                                return STRING_LITERAL; }
-	YY_BREAK
-case 21:
-YY_RULE_SETUP
+                return STRING_LITERAL;
+            }
+                YY_BREAK
+            case 21:
+                YY_RULE_SETUP
 #line 250 "./turtle_lexer.l"
-{ yylval->string = turtle_copy_string_token(rdf_parser, (unsigned char*)yytext+1, yyleng-2, '"'); /* ' */
-                                if(!yylval->string)
-                                  yyterminate();
+            {
+                yylval->string = turtle_copy_string_token(rdf_parser, (unsigned char *) yytext + 1, yyleng - 2,
+                                                          '"'); /* ' */
+                if (!yylval->string)
+                    yyterminate();
 
-                                return STRING_LITERAL; }
-	YY_BREAK
-case 22:
-YY_RULE_SETUP
+                return STRING_LITERAL;
+            }
+                YY_BREAK
+            case 22:
+                YY_RULE_SETUP
 #line 256 "./turtle_lexer.l"
-{ BEGIN(LONG_DLITERAL); 
-                                  turtle_parser->sb = raptor_new_stringbuffer();
-                                  if(!turtle_parser->sb)
-                                    TURTLE_LEXER_OOM();
-                          }
-	YY_BREAK
-case 23:
-YY_RULE_SETUP
-#line 262 "./turtle_lexer.l"
-{
-		  size_t len;
-     
-		  BEGIN(INITIAL);
-                  len = raptor_stringbuffer_length(turtle_parser->sb);
-                  yylval->string = RAPTOR_MALLOC(unsigned char*, len + 1);
-                  if(!yylval->string)
+            {
+                BEGIN (LONG_DLITERAL);
+                turtle_parser->sb = raptor_new_stringbuffer();
+                if (!turtle_parser->sb)
                     TURTLE_LEXER_OOM();
-                  raptor_stringbuffer_copy_to_string(turtle_parser->sb, (unsigned char*)yylval->string, len);
-                  yylval->string[len]='\0';
+            }
+                YY_BREAK
+            case 23:
+                YY_RULE_SETUP
+#line 262 "./turtle_lexer.l"
+            {
+                size_t len;
 
-                  raptor_free_stringbuffer(turtle_parser->sb);
-                  turtle_parser->sb = NULL;
-                  return STRING_LITERAL; }
-	YY_BREAK
-case 24:
+                BEGIN (INITIAL);
+                len = raptor_stringbuffer_length(turtle_parser->sb);
+                yylval->string = RAPTOR_MALLOC(unsigned char*, len + 1);
+                if (!yylval->string)
+                    TURTLE_LEXER_OOM();
+                raptor_stringbuffer_copy_to_string(turtle_parser->sb, (unsigned char *) yylval->string, len);
+                yylval->string[len] = '\0';
+
+                raptor_free_stringbuffer(turtle_parser->sb);
+                turtle_parser->sb = NULL;
+                return STRING_LITERAL;
+            }
+                YY_BREAK
+            case 24:
 /* rule 24 can match eol */
-YY_RULE_SETUP
+                YY_RULE_SETUP
 #line 277 "./turtle_lexer.l"
-{
-		  char *p;
+            {
+                char *p;
 
-		  if(*yytext == EOF) {
-                    BEGIN(INITIAL);
+                if (*yytext == EOF) {
+                    BEGIN (INITIAL);
                     turtle_syntax_error(rdf_parser, "End of file in middle of literal");
                     raptor_free_stringbuffer(turtle_parser->sb);
                     turtle_parser->sb = NULL;
                     return EOF;
-                  }
+                }
 
-		  for(p = yytext; *p; p++) {
-                    if(*p == '\n')
-                      turtle_parser->lineno++;
-                  }
+                for (p = yytext; *p; p++) {
+                    if (*p == '\n')
+                        turtle_parser->lineno++;
+                }
 
-                  if(raptor_stringbuffer_append_turtle_string(turtle_parser->sb, (unsigned char*)yytext, yyleng, '"', (raptor_simple_message_handler)turtle_lexer_syntax_error, rdf_parser, 0)) { /* " */
-                    BEGIN(INITIAL);
+                if (raptor_stringbuffer_append_turtle_string(turtle_parser->sb, (unsigned char *) yytext, yyleng, '"',
+                                                             (raptor_simple_message_handler) turtle_lexer_syntax_error,
+                                                             rdf_parser, 0)) { /* " */
+                    BEGIN (INITIAL);
                     raptor_free_stringbuffer(turtle_parser->sb);
                     turtle_parser->sb = NULL;
                     YY_FATAL_ERROR_EOF("raptor_stringbuffer_append_turtle_string failed");
-                  }
-                  
-   }
-	YY_BREAK
-case 25:
-YY_RULE_SETUP
+                }
+
+            }
+                YY_BREAK
+            case 25:
+                YY_RULE_SETUP
 #line 302 "./turtle_lexer.l"
-{
-     		/* this should only happen if \ is at the end of the file so the Turtle doc is illegal anyway */
-                    BEGIN(INITIAL);
-                    raptor_free_stringbuffer(turtle_parser->sb);
-                    turtle_parser->sb = NULL;
-                    turtle_syntax_error(rdf_parser, "End of file in middle of \"\"\"literal\"\"\"");
-                    yyterminate();
-}
-	YY_BREAK
-case YY_STATE_EOF(LONG_DLITERAL):
+            {
+                /* this should only happen if \ is at the end of the file so the Turtle doc is illegal anyway */
+                BEGIN (INITIAL);
+                raptor_free_stringbuffer(turtle_parser->sb);
+                turtle_parser->sb = NULL;
+                turtle_syntax_error(rdf_parser, "End of file in middle of \"\"\"literal\"\"\"");
+                yyterminate();
+            }
+                YY_BREAK
+            case YY_STATE_EOF(LONG_DLITERAL):
 #line 311 "./turtle_lexer.l"
-{
-                    BEGIN(INITIAL);
-                    raptor_free_stringbuffer(turtle_parser->sb);
-                    turtle_parser->sb = NULL;
-                    turtle_syntax_error(rdf_parser, "End of file in middle of \"\"\"literal\"\"\"");
-                    yyterminate();
-}
-	YY_BREAK
-case 26:
-YY_RULE_SETUP
+            {
+                BEGIN (INITIAL);
+                raptor_free_stringbuffer(turtle_parser->sb);
+                turtle_parser->sb = NULL;
+                turtle_syntax_error(rdf_parser, "End of file in middle of \"\"\"literal\"\"\"");
+                yyterminate();
+            }
+                YY_BREAK
+            case 26:
+                YY_RULE_SETUP
 #line 319 "./turtle_lexer.l"
-{ BEGIN(LONG_SLITERAL); 
-                                  turtle_parser->sb = raptor_new_stringbuffer();
-                                  if(!turtle_parser->sb)
-                                    TURTLE_LEXER_OOM();
-                          }
-	YY_BREAK
-case 27:
-YY_RULE_SETUP
-#line 325 "./turtle_lexer.l"
-{
-		  size_t len;
-     
-		  BEGIN(INITIAL);
-                  len = raptor_stringbuffer_length(turtle_parser->sb);
-                  yylval->string = RAPTOR_MALLOC(unsigned char*, len + 1);
-                  if(!yylval->string)
+            {
+                BEGIN (LONG_SLITERAL);
+                turtle_parser->sb = raptor_new_stringbuffer();
+                if (!turtle_parser->sb)
                     TURTLE_LEXER_OOM();
-                  raptor_stringbuffer_copy_to_string(turtle_parser->sb, (unsigned char*)yylval->string, len);
-                  yylval->string[len]='\0';
+            }
+                YY_BREAK
+            case 27:
+                YY_RULE_SETUP
+#line 325 "./turtle_lexer.l"
+            {
+                size_t len;
 
-                  raptor_free_stringbuffer(turtle_parser->sb);
-                  turtle_parser->sb = NULL;
-                  return STRING_LITERAL; }
-	YY_BREAK
-case 28:
+                BEGIN (INITIAL);
+                len = raptor_stringbuffer_length(turtle_parser->sb);
+                yylval->string = RAPTOR_MALLOC(unsigned char*, len + 1);
+                if (!yylval->string)
+                    TURTLE_LEXER_OOM();
+                raptor_stringbuffer_copy_to_string(turtle_parser->sb, (unsigned char *) yylval->string, len);
+                yylval->string[len] = '\0';
+
+                raptor_free_stringbuffer(turtle_parser->sb);
+                turtle_parser->sb = NULL;
+                return STRING_LITERAL;
+            }
+                YY_BREAK
+            case 28:
 /* rule 28 can match eol */
-YY_RULE_SETUP
+                YY_RULE_SETUP
 #line 340 "./turtle_lexer.l"
-{
-		  char *p;
+            {
+                char *p;
 
-		  if(*yytext == EOF) {
-                    BEGIN(INITIAL);
+                if (*yytext == EOF) {
+                    BEGIN (INITIAL);
                     turtle_syntax_error(rdf_parser, "End of file in middle of \'\'\'literal\'\'\'");
                     raptor_free_stringbuffer(turtle_parser->sb);
                     turtle_parser->sb = NULL;
                     return EOF;
-                  }
+                }
 
-		  for(p = yytext; *p; p++) {
-                    if(*p == '\n')
-                      turtle_parser->lineno++;
-                  }
+                for (p = yytext; *p; p++) {
+                    if (*p == '\n')
+                        turtle_parser->lineno++;
+                }
 
-                  if(raptor_stringbuffer_append_turtle_string(turtle_parser->sb, (unsigned char*)yytext, yyleng, '"', (raptor_simple_message_handler)turtle_lexer_syntax_error, rdf_parser, 0)) { /* " */
-                    BEGIN(INITIAL);
+                if (raptor_stringbuffer_append_turtle_string(turtle_parser->sb, (unsigned char *) yytext, yyleng, '"',
+                                                             (raptor_simple_message_handler) turtle_lexer_syntax_error,
+                                                             rdf_parser, 0)) { /* " */
+                    BEGIN (INITIAL);
                     raptor_free_stringbuffer(turtle_parser->sb);
                     turtle_parser->sb = NULL;
                     YY_FATAL_ERROR_EOF("raptor_stringbuffer_append_turtle_string failed");
-                  }
-                  
-   }
-	YY_BREAK
-case 29:
-YY_RULE_SETUP
-#line 365 "./turtle_lexer.l"
-{
-     		/* this should only happen if \ is at the end of the file so the Turtle doc is illegal anyway */
-                    BEGIN(INITIAL);
-                    raptor_free_stringbuffer(turtle_parser->sb);
-                    turtle_parser->sb = NULL;
-                    turtle_syntax_error(rdf_parser, "End of file in middle of '''literal'''");
-                    yyterminate();
-}
-	YY_BREAK
-case YY_STATE_EOF(LONG_SLITERAL):
-#line 374 "./turtle_lexer.l"
-{
-                    BEGIN(INITIAL);
-                    raptor_free_stringbuffer(turtle_parser->sb);
-                    turtle_parser->sb = NULL;
-                    turtle_syntax_error(rdf_parser, "End of file in middle of '''literal'''");
-                    yyterminate();
-}
-	YY_BREAK
-case 30:
-YY_RULE_SETUP
-#line 382 "./turtle_lexer.l"
-{ yylval->string = turtle_copy_token((unsigned char*)yytext+2, yyleng-2);
-          if(!yylval->string)
-            YY_FATAL_ERROR_EOF("turtle_copy_token failed");
-                          return BLANK_LITERAL; }
-	YY_BREAK
-case 31:
-YY_RULE_SETUP
-#line 387 "./turtle_lexer.l"
-{ yylval->uri = turtle_qname_to_uri(rdf_parser, (unsigned char*)yytext, yyleng);
-          if(!yylval->uri) {
-            turtle_lexer_error(yyscanner, RAPTOR_LOG_LEVEL_ERROR, "Failed to convert qname %s to URI", yytext);
-            yyterminate();
-          }
+                }
 
-                          return QNAME_LITERAL; }
-	YY_BREAK
-case 32:
-YY_RULE_SETUP
+            }
+                YY_BREAK
+            case 29:
+                YY_RULE_SETUP
+#line 365 "./turtle_lexer.l"
+            {
+                /* this should only happen if \ is at the end of the file so the Turtle doc is illegal anyway */
+                BEGIN (INITIAL);
+                raptor_free_stringbuffer(turtle_parser->sb);
+                turtle_parser->sb = NULL;
+                turtle_syntax_error(rdf_parser, "End of file in middle of '''literal'''");
+                yyterminate();
+            }
+                YY_BREAK
+            case YY_STATE_EOF(LONG_SLITERAL):
+#line 374 "./turtle_lexer.l"
+            {
+                BEGIN (INITIAL);
+                raptor_free_stringbuffer(turtle_parser->sb);
+                turtle_parser->sb = NULL;
+                turtle_syntax_error(rdf_parser, "End of file in middle of '''literal'''");
+                yyterminate();
+            }
+                YY_BREAK
+            case 30:
+                YY_RULE_SETUP
+#line 382 "./turtle_lexer.l"
+            {
+                yylval->string = turtle_copy_token((unsigned char *) yytext + 2, yyleng - 2);
+                if (!yylval->string)
+                    YY_FATAL_ERROR_EOF("turtle_copy_token failed");
+                return BLANK_LITERAL;
+            }
+                YY_BREAK
+            case 31:
+                YY_RULE_SETUP
+#line 387 "./turtle_lexer.l"
+            {
+                yylval->uri = turtle_qname_to_uri(rdf_parser, (unsigned char *) yytext, yyleng);
+                if (!yylval->uri) {
+                    turtle_lexer_error(yyscanner, RAPTOR_LOG_LEVEL_ERROR, "Failed to convert qname %s to URI", yytext);
+                    yyterminate();
+                }
+
+                return QNAME_LITERAL;
+            }
+                YY_BREAK
+            case 32:
+                YY_RULE_SETUP
 #line 395 "./turtle_lexer.l"
-{ yylval->string = turtle_copy_token((unsigned char*)yytext, yyleng);
-                  if(!yylval->string)
+            {
+                yylval->string = turtle_copy_token((unsigned char *) yytext, yyleng);
+                if (!yylval->string)
                     YY_FATAL_ERROR_EOF("turtle_copy_token failed");
-                        return DECIMAL_LITERAL;
-}
-	YY_BREAK
-case 33:
-YY_RULE_SETUP
+                return DECIMAL_LITERAL;
+            }
+                YY_BREAK
+            case 33:
+                YY_RULE_SETUP
 #line 401 "./turtle_lexer.l"
-{ yylval->string = turtle_copy_token((unsigned char*)yytext, yyleng);
-                  if(!yylval->string)
+            {
+                yylval->string = turtle_copy_token((unsigned char *) yytext, yyleng);
+                if (!yylval->string)
                     YY_FATAL_ERROR_EOF("turtle_copy_token failed");
-                        return FLOATING_LITERAL;
-}
-	YY_BREAK
-case 34:
-YY_RULE_SETUP
+                return FLOATING_LITERAL;
+            }
+                YY_BREAK
+            case 34:
+                YY_RULE_SETUP
 #line 407 "./turtle_lexer.l"
-{ yylval->string = turtle_copy_token((unsigned char*)yytext, yyleng);
-                  if(!yylval->string)
+            {
+                yylval->string = turtle_copy_token((unsigned char *) yytext, yyleng);
+                if (!yylval->string)
                     YY_FATAL_ERROR_EOF("turtle_copy_token failed");
-                          return INTEGER_LITERAL; }
-	YY_BREAK
-case 35:
-YY_RULE_SETUP
+                return INTEGER_LITERAL;
+            }
+                YY_BREAK
+            case 35:
+                YY_RULE_SETUP
 #line 412 "./turtle_lexer.l"
-{ /* eat up leading whitespace */ }
-	YY_BREAK
-case 36:
-YY_RULE_SETUP
+            { /* eat up leading whitespace */ }
+                YY_BREAK
+            case 36:
+                YY_RULE_SETUP
 #line 413 "./turtle_lexer.l"
-{ yylval->string=turtle_copy_token((unsigned char*)yytext, yyleng);
-                            if(!yylval->string)
-                              YY_FATAL_ERROR_EOF("turtle_copy_token failed");
-                          BEGIN(INITIAL);
-                          return IDENTIFIER; }
-	YY_BREAK
-case 37:
-YY_RULE_SETUP
+            {
+                yylval->string = turtle_copy_token((unsigned char *) yytext, yyleng);
+                if (!yylval->string)
+                    YY_FATAL_ERROR_EOF("turtle_copy_token failed");
+                BEGIN (INITIAL);
+                return IDENTIFIER;
+            }
+                YY_BREAK
+            case 37:
+                YY_RULE_SETUP
 #line 418 "./turtle_lexer.l"
-{ BEGIN(INITIAL);
-		  yylval->string = turtle_copy_token((unsigned char*)yytext, 0);
-      if(!yylval->string)
-        YY_FATAL_ERROR_EOF("turtle_copy_token failed");
-                  return IDENTIFIER; }
-	YY_BREAK
-case 38:
+            {
+                BEGIN (INITIAL);
+                yylval->string = turtle_copy_token((unsigned char *) yytext, 0);
+                if (!yylval->string)
+                    YY_FATAL_ERROR_EOF("turtle_copy_token failed");
+                return IDENTIFIER;
+            }
+                YY_BREAK
+            case 38:
 /* rule 38 can match eol */
-YY_RULE_SETUP
+                YY_RULE_SETUP
 #line 424 "./turtle_lexer.l"
-{ BEGIN(INITIAL);
-		  if(*yytext == EOF)
+            {
+                BEGIN (INITIAL);
+                if (*yytext == EOF)
                     return EOF;
 
-                  turtle_syntax_error(rdf_parser, "syntax error at '%c'", *yytext);
-                  yyterminate();  }
-	YY_BREAK
-case 39:
+                turtle_syntax_error(rdf_parser, "syntax error at '%c'", *yytext);
+                yyterminate();
+            }
+                YY_BREAK
+            case 39:
 /* rule 39 can match eol */
-YY_RULE_SETUP
+                YY_RULE_SETUP
 #line 432 "./turtle_lexer.l"
-{
-                  raptor_stringbuffer* sb;
-                  unsigned char* uri_string;
+            {
+                raptor_stringbuffer *sb;
+                unsigned char *uri_string;
 
-                  /* make length just the IRI */
-                  while(yytext[yyleng - 1] != '>')
+                /* make length just the IRI */
+                while (yytext[yyleng - 1] != '>')
                     yyleng--;
 
-                  sb = raptor_new_stringbuffer();
-                  if(!sb)
+                sb = raptor_new_stringbuffer();
+                if (!sb)
                     TURTLE_LEXER_OOM();
 
-                  /* start at yytext + 1 to skip '<' and operate over
+                /* start at yytext + 1 to skip '<' and operate over
                    * length-2 bytes to skip '<' and '>'
                    */
-                  if(raptor_stringbuffer_append_turtle_string(sb, (unsigned char*)yytext+1, yyleng-2, '>', (raptor_simple_message_handler)turtle_lexer_syntax_error, rdf_parser, 1)) {
+                if (raptor_stringbuffer_append_turtle_string(sb, (unsigned char *) yytext + 1, yyleng - 2, '>',
+                                                             (raptor_simple_message_handler) turtle_lexer_syntax_error,
+                                                             rdf_parser, 1)) {
                     raptor_free_stringbuffer(sb);
                     YY_FATAL_ERROR_EOF("raptor_stringbuffer_append_turtle_string failed");
-                  }
-                  uri_string = raptor_stringbuffer_as_string(sb);
+                }
+                uri_string = raptor_stringbuffer_as_string(sb);
 
-                  if(!*uri_string)
+                if (!*uri_string)
                     yylval->uri = raptor_uri_copy(rdf_parser->base_uri);
-                  else
+                else
                     yylval->uri = raptor_new_uri_relative_to_base(rdf_parser->world, rdf_parser->base_uri, uri_string);
 
-                  raptor_free_stringbuffer(sb);
+                raptor_free_stringbuffer(sb);
 
-                  if(!yylval->uri)
+                if (!yylval->uri)
                     TURTLE_LEXER_OOM();
-                return GRAPH_NAME_LEFT_CURLY; }
-	YY_BREAK
-case 40:
+                return GRAPH_NAME_LEFT_CURLY;
+            }
+                YY_BREAK
+            case 40:
 /* rule 40 can match eol */
-YY_RULE_SETUP
+                YY_RULE_SETUP
 #line 464 "./turtle_lexer.l"
-{
-               while(1) {
-                  int c = yytext[yyleng - 1];
-                  if(c == '{' || c == ' ' || c=='\t' || c == '\v' || c == '\n' ||
-                     c == '=') {
-                    yyleng--;
-                  } else
-                    break;
+            {
+                while (1) {
+                    int c = yytext[yyleng - 1];
+                    if (c == '{' || c == ' ' || c == '\t' || c == '\v' || c == '\n' ||
+                        c == '=') {
+                        yyleng--;
+                    } else
+                        break;
                 }
                 yytext[yyleng] = '\0';
 
-                yylval->uri = turtle_qname_to_uri(rdf_parser, (unsigned char*)yytext, yyleng);
-                if(!yylval->uri) {
-                  turtle_lexer_error(yyscanner, RAPTOR_LOG_LEVEL_ERROR, "Failed to convert qname %s to URI", yytext);
-                  yyterminate();
+                yylval->uri = turtle_qname_to_uri(rdf_parser, (unsigned char *) yytext, yyleng);
+                if (!yylval->uri) {
+                    turtle_lexer_error(yyscanner, RAPTOR_LOG_LEVEL_ERROR, "Failed to convert qname %s to URI", yytext);
+                    yyterminate();
                 }
 
-                return GRAPH_NAME_LEFT_CURLY; }
-	YY_BREAK
-case 41:
-YY_RULE_SETUP
+                return GRAPH_NAME_LEFT_CURLY;
+            }
+                YY_BREAK
+            case 41:
+                YY_RULE_SETUP
 #line 483 "./turtle_lexer.l"
-{ if(yyleng == 2) 
-                  yylval->uri = raptor_uri_copy(rdf_parser->base_uri);
+            {
+                if (yyleng == 2)
+                    yylval->uri = raptor_uri_copy(rdf_parser->base_uri);
                 else {
-                  raptor_stringbuffer* sb;
-                  unsigned char* uri_string;
+                    raptor_stringbuffer *sb;
+                    unsigned char *uri_string;
 
-                  yytext[yyleng-1]='\0';
-                  sb = raptor_new_stringbuffer();
-                  if(!sb)
-                    TURTLE_LEXER_OOM();
-                  if(raptor_stringbuffer_append_turtle_string(sb, (unsigned char*)yytext+1, yyleng-1, '>', (raptor_simple_message_handler)turtle_lexer_syntax_error, rdf_parser, 1)) {
+                    yytext[yyleng - 1] = '\0';
+                    sb = raptor_new_stringbuffer();
+                    if (!sb)
+                        TURTLE_LEXER_OOM();
+                    if (raptor_stringbuffer_append_turtle_string(sb, (unsigned char *) yytext + 1, yyleng - 1, '>',
+                                                                 (raptor_simple_message_handler) turtle_lexer_syntax_error,
+                                                                 rdf_parser, 1)) {
+                        raptor_free_stringbuffer(sb);
+                        YY_FATAL_ERROR_EOF("raptor_stringbuffer_append_turtle_string failed");
+                    }
+                    uri_string = raptor_stringbuffer_as_string(sb);
+                    yylval->uri = raptor_new_uri_relative_to_base(rdf_parser->world, rdf_parser->base_uri, uri_string);
+                    if (!yylval->uri) {
+                        raptor_free_stringbuffer(sb);
+                        TURTLE_LEXER_OOM();
+                    }
                     raptor_free_stringbuffer(sb);
-                    YY_FATAL_ERROR_EOF("raptor_stringbuffer_append_turtle_string failed");
-                  }
-                  uri_string = raptor_stringbuffer_as_string(sb);
-                  yylval->uri = raptor_new_uri_relative_to_base(rdf_parser->world, rdf_parser->base_uri, uri_string);
-                  if(!yylval->uri) {
-                    raptor_free_stringbuffer(sb);
-                    TURTLE_LEXER_OOM();
-                  }
-                  raptor_free_stringbuffer(sb);
                 }
-                return URI_LITERAL; }
-	YY_BREAK
-case 42:
-YY_RULE_SETUP
+                return URI_LITERAL;
+            }
+                YY_BREAK
+            case 42:
+                YY_RULE_SETUP
 #line 507 "./turtle_lexer.l"
-{ yylval->string = turtle_copy_token((unsigned char*)yytext+1, yyleng-1);
-                  if(!yylval->string)
+            {
+                yylval->string = turtle_copy_token((unsigned char *) yytext + 1, yyleng - 1);
+                if (!yylval->string)
                     YY_FATAL_ERROR_EOF("turtle_copy_token failed");
-                          return LANGTAG; }
-	YY_BREAK
-case 43:
+                return LANGTAG;
+            }
+                YY_BREAK
+            case 43:
 /* rule 43 can match eol */
-YY_RULE_SETUP
+                YY_RULE_SETUP
 #line 512 "./turtle_lexer.l"
-{ /* # comment */
-		turtle_parser->lineno++;
-                }
-	YY_BREAK
-case 44:
-YY_RULE_SETUP
+            { /* # comment */
+                turtle_parser->lineno++;
+            }
+                YY_BREAK
+            case 44:
+                YY_RULE_SETUP
 #line 516 "./turtle_lexer.l"
-{ /* # comment on the last line with no terminating newline */
-                }
-	YY_BREAK
-case 45:
-YY_RULE_SETUP
+            { /* # comment on the last line with no terminating newline */
+            }
+                YY_BREAK
+            case 45:
+                YY_RULE_SETUP
 #line 519 "./turtle_lexer.l"
-{ if(*yytext == EOF)
+            {
+                if (*yytext == EOF)
                     return EOF;
 
-                  turtle_syntax_error(rdf_parser, "syntax error at '%c'", *yytext);
-                  yyterminate();
-		}
-	YY_BREAK
-case 46:
-YY_RULE_SETUP
+                turtle_syntax_error(rdf_parser, "syntax error at '%c'", *yytext);
+                yyterminate();
+            }
+                YY_BREAK
+            case 46:
+                YY_RULE_SETUP
 #line 526 "./turtle_lexer.l"
-YY_FATAL_ERROR( "flex scanner jammed" );
-	YY_BREAK
+                YY_FATAL_ERROR("flex scanner jammed");
+                YY_BREAK
 #line 1613 "turtle_lexer.c"
-case YY_STATE_EOF(INITIAL):
-case YY_STATE_EOF(PREF):
-	yyterminate();
+            case YY_STATE_EOF(INITIAL):
+            case YY_STATE_EOF(PREF):
+                yyterminate();
 
-	case YY_END_OF_BUFFER:
-		{
-		/* Amount of text matched not including the EOB char. */
-		int yy_amount_of_matched_text = (int) (yy_cp - yyg->yytext_ptr) - 1;
+            case YY_END_OF_BUFFER: {
+                /* Amount of text matched not including the EOB char. */
+                int yy_amount_of_matched_text = (int) (yy_cp - yyg->yytext_ptr) - 1;
 
-		/* Undo the effects of YY_DO_BEFORE_ACTION. */
-		*yy_cp = yyg->yy_hold_char;
-		YY_RESTORE_YY_MORE_OFFSET
+                /* Undo the effects of YY_DO_BEFORE_ACTION. */
+                *yy_cp = yyg->yy_hold_char;
+                YY_RESTORE_YY_MORE_OFFSET
 
-		if ( YY_CURRENT_BUFFER_LVALUE->yy_buffer_status == YY_BUFFER_NEW )
-			{
-			/* We're scanning a new file or input source.  It's
+                if (YY_CURRENT_BUFFER_LVALUE->yy_buffer_status == YY_BUFFER_NEW) {
+                    /* We're scanning a new file or input source.  It's
 			 * possible that this happened because the user
 			 * just pointed yyin at a new source and called
 			 * turtle_lexer_lex().  If so, then we have to assure
@@ -1634,27 +1726,27 @@ case YY_STATE_EOF(PREF):
 			 * this is the first action (other than possibly a
 			 * back-up) that will match for the new input source.
 			 */
-			yyg->yy_n_chars = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
-			YY_CURRENT_BUFFER_LVALUE->yy_input_file = yyin;
-			YY_CURRENT_BUFFER_LVALUE->yy_buffer_status = YY_BUFFER_NORMAL;
-			}
+                    yyg->yy_n_chars = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
+                    YY_CURRENT_BUFFER_LVALUE->yy_input_file = yyin;
+                    YY_CURRENT_BUFFER_LVALUE->yy_buffer_status = YY_BUFFER_NORMAL;
+                }
 
-		/* Note that here we test for yy_c_buf_p "<=" to the position
+                /* Note that here we test for yy_c_buf_p "<=" to the position
 		 * of the first EOB in the buffer, since yy_c_buf_p will
 		 * already have been incremented past the NUL character
 		 * (since all states make transitions on EOB to the
 		 * end-of-buffer state).  Contrast this with the test
 		 * in input().
 		 */
-		if ( yyg->yy_c_buf_p <= &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[yyg->yy_n_chars] )
-			{ /* This was really a NUL. */
-			yy_state_type yy_next_state;
+                if (yyg->yy_c_buf_p <=
+                    &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[yyg->yy_n_chars]) { /* This was really a NUL. */
+                    yy_state_type yy_next_state;
 
-			yyg->yy_c_buf_p = yyg->yytext_ptr + yy_amount_of_matched_text;
+                    yyg->yy_c_buf_p = yyg->yytext_ptr + yy_amount_of_matched_text;
 
-			yy_current_state = yy_get_previous_state( yyscanner );
+                    yy_current_state = yy_get_previous_state(yyscanner);
 
-			/* Okay, we're now positioned to make the NUL
+                    /* Okay, we're now positioned to make the NUL
 			 * transition.  We couldn't have
 			 * yy_get_previous_state() go ahead and do it
 			 * for us because it doesn't know how to deal
@@ -1663,35 +1755,27 @@ case YY_STATE_EOF(PREF):
 			 * will run more slowly).
 			 */
 
-			yy_next_state = yy_try_NUL_trans( yy_current_state , yyscanner);
+                    yy_next_state = yy_try_NUL_trans(yy_current_state, yyscanner);
 
-			yy_bp = yyg->yytext_ptr + YY_MORE_ADJ;
+                    yy_bp = yyg->yytext_ptr + YY_MORE_ADJ;
 
-			if ( yy_next_state )
-				{
-				/* Consume the NUL. */
-				yy_cp = ++yyg->yy_c_buf_p;
-				yy_current_state = yy_next_state;
-				goto yy_match;
-				}
+                    if (yy_next_state) {
+                        /* Consume the NUL. */
+                        yy_cp = ++yyg->yy_c_buf_p;
+                        yy_current_state = yy_next_state;
+                        goto yy_match;
+                    } else {
+                        yy_cp = yyg->yy_last_accepting_cpos;
+                        yy_current_state = yyg->yy_last_accepting_state;
+                        goto yy_find_action;
+                    }
+                } else
+                    switch (yy_get_next_buffer(yyscanner)) {
+                        case EOB_ACT_END_OF_FILE: {
+                            yyg->yy_did_buffer_switch_on_eof = 0;
 
-			else
-				{
-				yy_cp = yyg->yy_last_accepting_cpos;
-				yy_current_state = yyg->yy_last_accepting_state;
-				goto yy_find_action;
-				}
-			}
-
-		else switch ( yy_get_next_buffer( yyscanner ) )
-			{
-			case EOB_ACT_END_OF_FILE:
-				{
-				yyg->yy_did_buffer_switch_on_eof = 0;
-
-				if ( turtle_lexer_wrap(yyscanner ) )
-					{
-					/* Note: because we've taken care in
+                            if (turtle_lexer_wrap(yyscanner)) {
+                                /* Note: because we've taken care in
 					 * yy_get_next_buffer() to have set up
 					 * yytext, we can now set up
 					 * yy_c_buf_p so that if some total
@@ -1700,48 +1784,45 @@ case YY_STATE_EOF(PREF):
 					 * YY_NULL, it'll still work - another
 					 * YY_NULL will get returned.
 					 */
-					yyg->yy_c_buf_p = yyg->yytext_ptr + YY_MORE_ADJ;
+                                yyg->yy_c_buf_p = yyg->yytext_ptr + YY_MORE_ADJ;
 
-					yy_act = YY_STATE_EOF(YY_START);
-					goto do_action;
-					}
+                                yy_act = YY_STATE_EOF(YY_START);
+                                goto do_action;
+                            } else {
+                                if (!yyg->yy_did_buffer_switch_on_eof)
+                                    YY_NEW_FILE;
+                            }
+                            break;
+                        }
 
-				else
-					{
-					if ( ! yyg->yy_did_buffer_switch_on_eof )
-						YY_NEW_FILE;
-					}
-				break;
-				}
+                        case EOB_ACT_CONTINUE_SCAN:
+                            yyg->yy_c_buf_p =
+                                    yyg->yytext_ptr + yy_amount_of_matched_text;
 
-			case EOB_ACT_CONTINUE_SCAN:
-				yyg->yy_c_buf_p =
-					yyg->yytext_ptr + yy_amount_of_matched_text;
+                            yy_current_state = yy_get_previous_state(yyscanner);
 
-				yy_current_state = yy_get_previous_state( yyscanner );
+                            yy_cp = yyg->yy_c_buf_p;
+                            yy_bp = yyg->yytext_ptr + YY_MORE_ADJ;
+                            goto yy_match;
 
-				yy_cp = yyg->yy_c_buf_p;
-				yy_bp = yyg->yytext_ptr + YY_MORE_ADJ;
-				goto yy_match;
+                        case EOB_ACT_LAST_MATCH:
+                            yyg->yy_c_buf_p =
+                                    &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[yyg->yy_n_chars];
 
-			case EOB_ACT_LAST_MATCH:
-				yyg->yy_c_buf_p =
-				&YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[yyg->yy_n_chars];
+                            yy_current_state = yy_get_previous_state(yyscanner);
 
-				yy_current_state = yy_get_previous_state( yyscanner );
+                            yy_cp = yyg->yy_c_buf_p;
+                            yy_bp = yyg->yytext_ptr + YY_MORE_ADJ;
+                            goto yy_find_action;
+                    }
+                break;
+            }
 
-				yy_cp = yyg->yy_c_buf_p;
-				yy_bp = yyg->yytext_ptr + YY_MORE_ADJ;
-				goto yy_find_action;
-			}
-		break;
-		}
-
-	default:
-		YY_FATAL_ERROR(
-			"fatal flex scanner internal error--no action found" );
-	} /* end of action switch */
-		} /* end of scanning one token */
+            default:
+                YY_FATAL_ERROR(
+                        "fatal flex scanner internal error--no action found");
+        } /* end of action switch */
+    } /* end of scanning one token */
 } /* end of turtle_lexer_lex */
 
 /* yy_get_next_buffer - try to read in a new buffer
@@ -1751,167 +1832,147 @@ case YY_STATE_EOF(PREF):
  *	EOB_ACT_CONTINUE_SCAN - continue scanning from current position
  *	EOB_ACT_END_OF_FILE - end of file
  */
-static int yy_get_next_buffer (yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
-	register char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;
-	register char *source = yyg->yytext_ptr;
-	register int number_to_move, i;
-	int ret_val;
+static int yy_get_next_buffer(yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
+    register char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;
+    register char *source = yyg->yytext_ptr;
+    register int number_to_move, i;
+    int ret_val;
 
-	if ( yyg->yy_c_buf_p > &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[yyg->yy_n_chars + 1] )
-		YY_FATAL_ERROR(
-		"fatal flex scanner internal error--end of buffer missed" );
+    if (yyg->yy_c_buf_p > &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[yyg->yy_n_chars + 1])
+        YY_FATAL_ERROR(
+                "fatal flex scanner internal error--end of buffer missed");
 
-	if ( YY_CURRENT_BUFFER_LVALUE->yy_fill_buffer == 0 )
-		{ /* Don't try to fill the buffer, so this is an EOF. */
-		if ( yyg->yy_c_buf_p - yyg->yytext_ptr - YY_MORE_ADJ == 1 )
-			{
-			/* We matched a single character, the EOB, so
+    if (YY_CURRENT_BUFFER_LVALUE->yy_fill_buffer == 0) { /* Don't try to fill the buffer, so this is an EOF. */
+        if (yyg->yy_c_buf_p - yyg->yytext_ptr - YY_MORE_ADJ == 1) {
+            /* We matched a single character, the EOB, so
 			 * treat this as a final EOF.
 			 */
-			return EOB_ACT_END_OF_FILE;
-			}
-
-		else
-			{
-			/* We matched some text prior to the EOB, first
+            return EOB_ACT_END_OF_FILE;
+        } else {
+            /* We matched some text prior to the EOB, first
 			 * process it.
 			 */
-			return EOB_ACT_LAST_MATCH;
-			}
-		}
+            return EOB_ACT_LAST_MATCH;
+        }
+    }
 
-	/* Try to read more data. */
+    /* Try to read more data. */
 
-	/* First move last chars to start of buffer. */
-	number_to_move = (int) (yyg->yy_c_buf_p - yyg->yytext_ptr) - 1;
+    /* First move last chars to start of buffer. */
+    number_to_move = (int) (yyg->yy_c_buf_p - yyg->yytext_ptr) - 1;
 
-	for ( i = 0; i < number_to_move; ++i )
-		*(dest++) = *(source++);
+    for (i = 0; i < number_to_move; ++i)
+        *(dest++) = *(source++);
 
-	if ( YY_CURRENT_BUFFER_LVALUE->yy_buffer_status == YY_BUFFER_EOF_PENDING )
-		/* don't do the read, it's not guaranteed to return an EOF,
+    if (YY_CURRENT_BUFFER_LVALUE->yy_buffer_status == YY_BUFFER_EOF_PENDING)
+        /* don't do the read, it's not guaranteed to return an EOF,
 		 * just force an EOF
 		 */
-		YY_CURRENT_BUFFER_LVALUE->yy_n_chars = yyg->yy_n_chars = 0;
+        YY_CURRENT_BUFFER_LVALUE->yy_n_chars = yyg->yy_n_chars = 0;
 
-	else
-		{
-			int num_to_read =
-			YY_CURRENT_BUFFER_LVALUE->yy_buf_size - number_to_move - 1;
+    else {
+        int num_to_read =
+                YY_CURRENT_BUFFER_LVALUE->yy_buf_size - number_to_move - 1;
 
-		while ( num_to_read <= 0 )
-			{ /* Not enough room in the buffer - grow it. */
+        while (num_to_read <= 0) { /* Not enough room in the buffer - grow it. */
 
-			/* just a shorter name for the current buffer */
-			YY_BUFFER_STATE b = YY_CURRENT_BUFFER;
+            /* just a shorter name for the current buffer */
+            YY_BUFFER_STATE b = YY_CURRENT_BUFFER;
 
-			int yy_c_buf_p_offset =
-				(int) (yyg->yy_c_buf_p - b->yy_ch_buf);
+            int yy_c_buf_p_offset =
+                    (int) (yyg->yy_c_buf_p - b->yy_ch_buf);
 
-			if ( b->yy_is_our_buffer )
-				{
-				int new_size = b->yy_buf_size * 2;
+            if (b->yy_is_our_buffer) {
+                int new_size = b->yy_buf_size * 2;
 
-				if ( new_size <= 0 )
-					b->yy_buf_size += b->yy_buf_size / 8;
-				else
-					b->yy_buf_size *= 2;
+                if (new_size <= 0)
+                    b->yy_buf_size += b->yy_buf_size / 8;
+                else
+                    b->yy_buf_size *= 2;
 
-				b->yy_ch_buf = (char *)
-					/* Include room in for 2 EOB chars. */
-					turtle_lexer_realloc((void *) b->yy_ch_buf,b->yy_buf_size + 2 ,yyscanner );
-				}
-			else
-				/* Can't grow it, we don't own it. */
-				b->yy_ch_buf = 0;
+                b->yy_ch_buf = (char *)
+                        /* Include room in for 2 EOB chars. */
+                        turtle_lexer_realloc((void *) b->yy_ch_buf, b->yy_buf_size + 2, yyscanner);
+            } else
+                /* Can't grow it, we don't own it. */
+                b->yy_ch_buf = 0;
 
-			if ( ! b->yy_ch_buf )
-				YY_FATAL_ERROR(
-				"fatal error - scanner input buffer overflow" );
+            if (!b->yy_ch_buf)
+                YY_FATAL_ERROR(
+                        "fatal error - scanner input buffer overflow");
 
-			yyg->yy_c_buf_p = &b->yy_ch_buf[yy_c_buf_p_offset];
+            yyg->yy_c_buf_p = &b->yy_ch_buf[yy_c_buf_p_offset];
 
-			num_to_read = YY_CURRENT_BUFFER_LVALUE->yy_buf_size -
-						number_to_move - 1;
+            num_to_read = YY_CURRENT_BUFFER_LVALUE->yy_buf_size -
+                          number_to_move - 1;
 
-			}
+        }
 
-		if ( num_to_read > YY_READ_BUF_SIZE )
-			num_to_read = YY_READ_BUF_SIZE;
+        if (num_to_read > YY_READ_BUF_SIZE)
+            num_to_read = YY_READ_BUF_SIZE;
 
-		/* Read in more data. */
-		YY_INPUT( (&YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[number_to_move]),
-			yyg->yy_n_chars, num_to_read );
+        /* Read in more data. */
+        YY_INPUT((&YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[number_to_move]),
+                 yyg->yy_n_chars, num_to_read);
 
 
-		}
+    }
 
-	if ( yyg->yy_n_chars == 0 )
-		{
-		if ( number_to_move == YY_MORE_ADJ )
-			{
-			ret_val = EOB_ACT_END_OF_FILE;
-			turtle_lexer_restart(yyin  ,yyscanner);
-			}
+    if (yyg->yy_n_chars == 0) {
+        if (number_to_move == YY_MORE_ADJ) {
+            ret_val = EOB_ACT_END_OF_FILE;
+            turtle_lexer_restart(yyin, yyscanner);
+        } else {
+            ret_val = EOB_ACT_LAST_MATCH;
+            YY_CURRENT_BUFFER_LVALUE->yy_buffer_status =
+                    YY_BUFFER_EOF_PENDING;
+        }
+    } else
+        ret_val = EOB_ACT_CONTINUE_SCAN;
 
-		else
-			{
-			ret_val = EOB_ACT_LAST_MATCH;
-			YY_CURRENT_BUFFER_LVALUE->yy_buffer_status =
-				YY_BUFFER_EOF_PENDING;
-			}
-		}
+    if ((yy_size_t) (yyg->yy_n_chars + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
+        /* Extend the array by 50%, plus the number we really need. */
+        yy_size_t new_size = yyg->yy_n_chars + number_to_move + (yyg->yy_n_chars >> 1);
+        YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) turtle_lexer_realloc(
+                (void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf, new_size, yyscanner);
+        if (!YY_CURRENT_BUFFER_LVALUE->yy_ch_buf)
+            YY_FATAL_ERROR("out of dynamic memory in yy_get_next_buffer()");
+    }
 
-	else
-		ret_val = EOB_ACT_CONTINUE_SCAN;
+    yyg->yy_n_chars += number_to_move;
+    YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[yyg->yy_n_chars] = YY_END_OF_BUFFER_CHAR;
+    YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[yyg->yy_n_chars + 1] = YY_END_OF_BUFFER_CHAR;
 
-	if ((yy_size_t) (yyg->yy_n_chars + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
-		/* Extend the array by 50%, plus the number we really need. */
-		yy_size_t new_size = yyg->yy_n_chars + number_to_move + (yyg->yy_n_chars >> 1);
-		YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) turtle_lexer_realloc((void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf,new_size ,yyscanner );
-		if ( ! YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
-			YY_FATAL_ERROR( "out of dynamic memory in yy_get_next_buffer()" );
-	}
+    yyg->yytext_ptr = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[0];
 
-	yyg->yy_n_chars += number_to_move;
-	YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[yyg->yy_n_chars] = YY_END_OF_BUFFER_CHAR;
-	YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[yyg->yy_n_chars + 1] = YY_END_OF_BUFFER_CHAR;
-
-	yyg->yytext_ptr = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[0];
-
-	return ret_val;
+    return ret_val;
 }
 
 /* yy_get_previous_state - get the state just before the EOB char was reached */
 
-    static yy_state_type yy_get_previous_state (yyscan_t yyscanner)
-{
-	register yy_state_type yy_current_state;
-	register char *yy_cp;
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+static yy_state_type yy_get_previous_state(yyscan_t yyscanner) {
+    register yy_state_type yy_current_state;
+    register char *yy_cp;
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
 
-	yy_current_state = yyg->yy_start;
+    yy_current_state = yyg->yy_start;
 
-	for ( yy_cp = yyg->yytext_ptr + YY_MORE_ADJ; yy_cp < yyg->yy_c_buf_p; ++yy_cp )
-		{
-		register YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1);
-		if ( yy_accept[yy_current_state] )
-			{
-			yyg->yy_last_accepting_state = yy_current_state;
-			yyg->yy_last_accepting_cpos = yy_cp;
-			}
-		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
-			{
-			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 162 )
-				yy_c = yy_meta[(unsigned int) yy_c];
-			}
-		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-		}
+    for (yy_cp = yyg->yytext_ptr + YY_MORE_ADJ; yy_cp < yyg->yy_c_buf_p; ++yy_cp) {
+        register YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 1);
+        if (yy_accept[yy_current_state]) {
+            yyg->yy_last_accepting_state = yy_current_state;
+            yyg->yy_last_accepting_cpos = yy_cp;
+        }
+        while (yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state) {
+            yy_current_state = (int) yy_def[yy_current_state];
+            if (yy_current_state >= 162)
+                yy_c = yy_meta[(unsigned int) yy_c];
+        }
+        yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
+    }
 
-	return yy_current_state;
+    return yy_current_state;
 }
 
 /* yy_try_NUL_trans - try to make a transition on the NUL character
@@ -1919,32 +1980,29 @@ static int yy_get_next_buffer (yyscan_t yyscanner)
  * synopsis
  *	next_state = yy_try_NUL_trans( current_state );
  */
-    static yy_state_type yy_try_NUL_trans  (yy_state_type yy_current_state , yyscan_t yyscanner)
-{
-	register int yy_is_jam;
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner; /* This var may be unused depending upon options. */
-	register char *yy_cp = yyg->yy_c_buf_p;
+static yy_state_type yy_try_NUL_trans(yy_state_type yy_current_state, yyscan_t yyscanner) {
+    register int yy_is_jam;
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner; /* This var may be unused depending upon options. */
+    register char *yy_cp = yyg->yy_c_buf_p;
 
-	register YY_CHAR yy_c = 1;
-	if ( yy_accept[yy_current_state] )
-		{
-		yyg->yy_last_accepting_state = yy_current_state;
-		yyg->yy_last_accepting_cpos = yy_cp;
-		}
-	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
-		{
-		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 162 )
-			yy_c = yy_meta[(unsigned int) yy_c];
-		}
-	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 161);
+    register YY_CHAR yy_c = 1;
+    if (yy_accept[yy_current_state]) {
+        yyg->yy_last_accepting_state = yy_current_state;
+        yyg->yy_last_accepting_cpos = yy_cp;
+    }
+    while (yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state) {
+        yy_current_state = (int) yy_def[yy_current_state];
+        if (yy_current_state >= 162)
+            yy_c = yy_meta[(unsigned int) yy_c];
+    }
+    yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
+    yy_is_jam = (yy_current_state == 161);
 
-	return yy_is_jam ? 0 : yy_current_state;
+    return yy_is_jam ? 0 : yy_current_state;
 }
 
 #ifndef YY_NO_INPUT
-#ifdef __cplusplus
+                                                                                                                        #ifdef __cplusplus
     static int yyinput (yyscan_t yyscanner)
 #else
     static int input  (yyscan_t yyscanner)
@@ -2016,70 +2074,66 @@ static int yy_get_next_buffer (yyscan_t yyscanner)
 
 	return c;
 }
-#endif	/* ifndef YY_NO_INPUT */
+#endif    /* ifndef YY_NO_INPUT */
 
 /** Immediately switch to a different input stream.
  * @param input_file A readable stream.
  * @param yyscanner The scanner object.
  * @note This function does not reset the start condition to @c INITIAL .
  */
-    void turtle_lexer_restart  (FILE * input_file , yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+void turtle_lexer_restart(FILE *input_file, yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
 
-	if ( ! yyg->yy_buffer_stack ){
-        turtle_lexer_ensure_buffer_stack (yyscanner);
-		YY_CURRENT_BUFFER_LVALUE =
-            turtle_lexer__create_buffer(yyin,YY_BUF_SIZE ,yyscanner);
-	}
+    if (!yyg->yy_buffer_stack) {
+        turtle_lexer_ensure_buffer_stack(yyscanner);
+        YY_CURRENT_BUFFER_LVALUE =
+                turtle_lexer__create_buffer(yyin, YY_BUF_SIZE, yyscanner);
+    }
 
-	turtle_lexer__init_buffer(YY_CURRENT_BUFFER_LVALUE,input_file ,yyscanner);
-	turtle_lexer__load_buffer_state(yyscanner );
+    turtle_lexer__init_buffer(YY_CURRENT_BUFFER_LVALUE, input_file, yyscanner);
+    turtle_lexer__load_buffer_state(yyscanner);
 }
 
 /** Switch to a different input buffer.
  * @param new_buffer The new input buffer.
  * @param yyscanner The scanner object.
  */
-    void turtle_lexer__switch_to_buffer  (YY_BUFFER_STATE  new_buffer , yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+void turtle_lexer__switch_to_buffer(YY_BUFFER_STATE new_buffer, yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
 
-	/* TODO. We should be able to replace this entire function body
+    /* TODO. We should be able to replace this entire function body
 	 * with
 	 *		turtle_lexer_pop_buffer_state();
 	 *		turtle_lexer_push_buffer_state(new_buffer);
      */
-	turtle_lexer_ensure_buffer_stack (yyscanner);
-	if ( YY_CURRENT_BUFFER_LVALUE == new_buffer )
-		return;
+    turtle_lexer_ensure_buffer_stack(yyscanner);
+    if (YY_CURRENT_BUFFER_LVALUE == new_buffer)
+        return;
 
-	if ( YY_CURRENT_BUFFER_LVALUE )
-		{
-		/* Flush out information for old buffer. */
-		*yyg->yy_c_buf_p = yyg->yy_hold_char;
-		YY_CURRENT_BUFFER_LVALUE->yy_buf_pos = yyg->yy_c_buf_p;
-		YY_CURRENT_BUFFER_LVALUE->yy_n_chars = yyg->yy_n_chars;
-		}
+    if (YY_CURRENT_BUFFER_LVALUE) {
+        /* Flush out information for old buffer. */
+        *yyg->yy_c_buf_p = yyg->yy_hold_char;
+        YY_CURRENT_BUFFER_LVALUE->yy_buf_pos = yyg->yy_c_buf_p;
+        YY_CURRENT_BUFFER_LVALUE->yy_n_chars = yyg->yy_n_chars;
+    }
 
-	YY_CURRENT_BUFFER_LVALUE = new_buffer;
-	turtle_lexer__load_buffer_state(yyscanner );
+    YY_CURRENT_BUFFER_LVALUE = new_buffer;
+    turtle_lexer__load_buffer_state(yyscanner);
 
-	/* We don't actually know whether we did this switch during
+    /* We don't actually know whether we did this switch during
 	 * EOF (turtle_lexer_wrap()) processing, but the only time this flag
 	 * is looked at is after turtle_lexer_wrap() is called, so it's safe
 	 * to go ahead and always set it.
 	 */
-	yyg->yy_did_buffer_switch_on_eof = 1;
+    yyg->yy_did_buffer_switch_on_eof = 1;
 }
 
-static void turtle_lexer__load_buffer_state  (yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
-	yyg->yy_n_chars = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
-	yyg->yytext_ptr = yyg->yy_c_buf_p = YY_CURRENT_BUFFER_LVALUE->yy_buf_pos;
-	yyin = YY_CURRENT_BUFFER_LVALUE->yy_input_file;
-	yyg->yy_hold_char = *yyg->yy_c_buf_p;
+static void turtle_lexer__load_buffer_state(yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
+    yyg->yy_n_chars = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
+    yyg->yytext_ptr = yyg->yy_c_buf_p = YY_CURRENT_BUFFER_LVALUE->yy_buf_pos;
+    yyin = YY_CURRENT_BUFFER_LVALUE->yy_input_file;
+    yyg->yy_hold_char = *yyg->yy_c_buf_p;
 }
 
 /** Allocate and initialize an input buffer state.
@@ -2088,105 +2142,100 @@ static void turtle_lexer__load_buffer_state  (yyscan_t yyscanner)
  * @param yyscanner The scanner object.
  * @return the allocated buffer state.
  */
-    YY_BUFFER_STATE turtle_lexer__create_buffer  (FILE * file, int  size , yyscan_t yyscanner)
-{
-	YY_BUFFER_STATE b;
-    
-	b = (YY_BUFFER_STATE) turtle_lexer_alloc(sizeof( struct yy_buffer_state ) ,yyscanner );
-	if ( ! b )
-		YY_FATAL_ERROR( "out of dynamic memory in turtle_lexer__create_buffer()" );
+YY_BUFFER_STATE turtle_lexer__create_buffer(FILE *file, int size, yyscan_t yyscanner) {
+    YY_BUFFER_STATE b;
 
-	b->yy_buf_size = size;
+    b = (YY_BUFFER_STATE) turtle_lexer_alloc(sizeof(struct yy_buffer_state), yyscanner);
+    if (!b)
+        YY_FATAL_ERROR("out of dynamic memory in turtle_lexer__create_buffer()");
 
-	/* yy_ch_buf has to be 2 characters longer than the size given because
+    b->yy_buf_size = size;
+
+    /* yy_ch_buf has to be 2 characters longer than the size given because
 	 * we need to put in 2 end-of-buffer characters.
 	 */
-	b->yy_ch_buf = (char *) turtle_lexer_alloc(b->yy_buf_size + 2 ,yyscanner );
-	if ( ! b->yy_ch_buf )
-		YY_FATAL_ERROR( "out of dynamic memory in turtle_lexer__create_buffer()" );
+    b->yy_ch_buf = (char *) turtle_lexer_alloc(b->yy_buf_size + 2, yyscanner);
+    if (!b->yy_ch_buf)
+        YY_FATAL_ERROR("out of dynamic memory in turtle_lexer__create_buffer()");
 
-	b->yy_is_our_buffer = 1;
+    b->yy_is_our_buffer = 1;
 
-	turtle_lexer__init_buffer(b,file ,yyscanner);
+    turtle_lexer__init_buffer(b, file, yyscanner);
 
-	return b;
+    return b;
 }
 
 /** Destroy the buffer.
  * @param b a buffer created with turtle_lexer__create_buffer()
  * @param yyscanner The scanner object.
  */
-    void turtle_lexer__delete_buffer (YY_BUFFER_STATE  b , yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+void turtle_lexer__delete_buffer(YY_BUFFER_STATE b, yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
 
-	if ( ! b )
-		return;
+    if (!b)
+        return;
 
-	if ( b == YY_CURRENT_BUFFER ) /* Not sure if we should pop here. */
-		YY_CURRENT_BUFFER_LVALUE = (YY_BUFFER_STATE) 0;
+    if (b == YY_CURRENT_BUFFER) /* Not sure if we should pop here. */
+        YY_CURRENT_BUFFER_LVALUE = (YY_BUFFER_STATE) 0;
 
-	if ( b->yy_is_our_buffer )
-		turtle_lexer_free((void *) b->yy_ch_buf ,yyscanner );
+    if (b->yy_is_our_buffer)
+        turtle_lexer_free((void *) b->yy_ch_buf, yyscanner);
 
-	turtle_lexer_free((void *) b ,yyscanner );
+    turtle_lexer_free((void *) b, yyscanner);
 }
 
 /* Initializes or reinitializes a buffer.
  * This function is sometimes called more than once on the same buffer,
  * such as during a turtle_lexer_restart() or at EOF.
  */
-    static void turtle_lexer__init_buffer  (YY_BUFFER_STATE  b, FILE * file , yyscan_t yyscanner)
+static void turtle_lexer__init_buffer(YY_BUFFER_STATE b, FILE *file, yyscan_t yyscanner) {
+    int oerrno = errno;
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
 
-{
-	int oerrno = errno;
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+    turtle_lexer__flush_buffer(b, yyscanner);
 
-	turtle_lexer__flush_buffer(b ,yyscanner);
-
-	b->yy_input_file = file;
-	b->yy_fill_buffer = 1;
+    b->yy_input_file = file;
+    b->yy_fill_buffer = 1;
 
     /* If b is the current buffer, then turtle_lexer__init_buffer was _probably_
      * called from turtle_lexer_restart() or through yy_get_next_buffer.
      * In that case, we don't want to reset the lineno or column.
      */
-    if (b != YY_CURRENT_BUFFER){
+    if (b != YY_CURRENT_BUFFER) {
         b->yy_bs_lineno = 1;
         b->yy_bs_column = 0;
     }
 
-        b->yy_is_interactive = 0;
-    
-	errno = oerrno;
+    b->yy_is_interactive = 0;
+
+    errno = oerrno;
 }
 
 /** Discard all buffered characters. On the next scan, YY_INPUT will be called.
  * @param b the buffer state to be flushed, usually @c YY_CURRENT_BUFFER.
  * @param yyscanner The scanner object.
  */
-    void turtle_lexer__flush_buffer (YY_BUFFER_STATE  b , yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
-	if ( ! b )
-		return;
+void turtle_lexer__flush_buffer(YY_BUFFER_STATE b, yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
+    if (!b)
+        return;
 
-	b->yy_n_chars = 0;
+    b->yy_n_chars = 0;
 
-	/* We always need two end-of-buffer characters.  The first causes
+    /* We always need two end-of-buffer characters.  The first causes
 	 * a transition to the end-of-buffer state.  The second causes
 	 * a jam in that state.
 	 */
-	b->yy_ch_buf[0] = YY_END_OF_BUFFER_CHAR;
-	b->yy_ch_buf[1] = YY_END_OF_BUFFER_CHAR;
+    b->yy_ch_buf[0] = YY_END_OF_BUFFER_CHAR;
+    b->yy_ch_buf[1] = YY_END_OF_BUFFER_CHAR;
 
-	b->yy_buf_pos = &b->yy_ch_buf[0];
+    b->yy_buf_pos = &b->yy_ch_buf[0];
 
-	b->yy_at_bol = 1;
-	b->yy_buffer_status = YY_BUFFER_NEW;
+    b->yy_at_bol = 1;
+    b->yy_buffer_status = YY_BUFFER_NEW;
 
-	if ( b == YY_CURRENT_BUFFER )
-		turtle_lexer__load_buffer_state(yyscanner );
+    if (b == YY_CURRENT_BUFFER)
+        turtle_lexer__load_buffer_state(yyscanner);
 }
 
 /** Pushes the new state onto the stack. The new state becomes
@@ -2195,134 +2244,127 @@ static void turtle_lexer__load_buffer_state  (yyscan_t yyscanner)
  *  @param new_buffer The new state.
  *  @param yyscanner The scanner object.
  */
-void turtle_lexer_push_buffer_state (YY_BUFFER_STATE new_buffer , yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
-	if (new_buffer == NULL)
-		return;
+void turtle_lexer_push_buffer_state(YY_BUFFER_STATE new_buffer, yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
+    if (new_buffer == NULL)
+        return;
 
-	turtle_lexer_ensure_buffer_stack(yyscanner);
+    turtle_lexer_ensure_buffer_stack(yyscanner);
 
-	/* This block is copied from turtle_lexer__switch_to_buffer. */
-	if ( YY_CURRENT_BUFFER_LVALUE )
-		{
-		/* Flush out information for old buffer. */
-		*yyg->yy_c_buf_p = yyg->yy_hold_char;
-		YY_CURRENT_BUFFER_LVALUE->yy_buf_pos = yyg->yy_c_buf_p;
-		YY_CURRENT_BUFFER_LVALUE->yy_n_chars = yyg->yy_n_chars;
-		}
+    /* This block is copied from turtle_lexer__switch_to_buffer. */
+    if (YY_CURRENT_BUFFER_LVALUE) {
+        /* Flush out information for old buffer. */
+        *yyg->yy_c_buf_p = yyg->yy_hold_char;
+        YY_CURRENT_BUFFER_LVALUE->yy_buf_pos = yyg->yy_c_buf_p;
+        YY_CURRENT_BUFFER_LVALUE->yy_n_chars = yyg->yy_n_chars;
+    }
 
-	/* Only push if top exists. Otherwise, replace top. */
-	if (YY_CURRENT_BUFFER_LVALUE)
-		yyg->yy_buffer_stack_top++;
-	YY_CURRENT_BUFFER_LVALUE = new_buffer;
+    /* Only push if top exists. Otherwise, replace top. */
+    if (YY_CURRENT_BUFFER_LVALUE)
+        yyg->yy_buffer_stack_top++;
+    YY_CURRENT_BUFFER_LVALUE = new_buffer;
 
-	/* copied from turtle_lexer__switch_to_buffer. */
-	turtle_lexer__load_buffer_state(yyscanner );
-	yyg->yy_did_buffer_switch_on_eof = 1;
+    /* copied from turtle_lexer__switch_to_buffer. */
+    turtle_lexer__load_buffer_state(yyscanner);
+    yyg->yy_did_buffer_switch_on_eof = 1;
 }
 
 /** Removes and deletes the top of the stack, if present.
  *  The next element becomes the new top.
  *  @param yyscanner The scanner object.
  */
-void turtle_lexer_pop_buffer_state (yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
-	if (!YY_CURRENT_BUFFER)
-		return;
+void turtle_lexer_pop_buffer_state(yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
+    if (!YY_CURRENT_BUFFER)
+        return;
 
-	turtle_lexer__delete_buffer(YY_CURRENT_BUFFER ,yyscanner);
-	YY_CURRENT_BUFFER_LVALUE = NULL;
-	if (yyg->yy_buffer_stack_top > 0)
-		--yyg->yy_buffer_stack_top;
+    turtle_lexer__delete_buffer(YY_CURRENT_BUFFER, yyscanner);
+    YY_CURRENT_BUFFER_LVALUE = NULL;
+    if (yyg->yy_buffer_stack_top > 0)
+        --yyg->yy_buffer_stack_top;
 
-	if (YY_CURRENT_BUFFER_LVALUE) {
-		turtle_lexer__load_buffer_state(yyscanner );
-		yyg->yy_did_buffer_switch_on_eof = 1;
-	}
+    if (YY_CURRENT_BUFFER_LVALUE) {
+        turtle_lexer__load_buffer_state(yyscanner);
+        yyg->yy_did_buffer_switch_on_eof = 1;
+    }
 }
 
 /* Allocates the stack if it does not exist.
  *  Guarantees space for at least one push.
  */
-static void turtle_lexer_ensure_buffer_stack (yyscan_t yyscanner)
-{
-	int num_to_alloc;
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+static void turtle_lexer_ensure_buffer_stack(yyscan_t yyscanner) {
+    int num_to_alloc;
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
 
-	if (!yyg->yy_buffer_stack) {
+    if (!yyg->yy_buffer_stack) {
 
-		/* First allocation is just for 2 elements, since we don't know if this
+        /* First allocation is just for 2 elements, since we don't know if this
 		 * scanner will even need a stack. We use 2 instead of 1 to avoid an
 		 * immediate realloc on the next call.
          */
-		num_to_alloc = 1;
-		yyg->yy_buffer_stack = (struct yy_buffer_state**)turtle_lexer_alloc
-								(num_to_alloc * sizeof(struct yy_buffer_state*)
-								, yyscanner);
-		if ( ! yyg->yy_buffer_stack )
-			YY_FATAL_ERROR( "out of dynamic memory in turtle_lexer_ensure_buffer_stack()" );
-								  
-		memset(yyg->yy_buffer_stack, 0, num_to_alloc * sizeof(struct yy_buffer_state*));
-				
-		yyg->yy_buffer_stack_max = num_to_alloc;
-		yyg->yy_buffer_stack_top = 0;
-		return;
-	}
+        num_to_alloc = 1;
+        yyg->yy_buffer_stack = (struct yy_buffer_state **) turtle_lexer_alloc
+                (num_to_alloc * sizeof(struct yy_buffer_state *), yyscanner);
+        if (!yyg->yy_buffer_stack)
+            YY_FATAL_ERROR("out of dynamic memory in turtle_lexer_ensure_buffer_stack()");
 
-	if (yyg->yy_buffer_stack_top >= (yyg->yy_buffer_stack_max) - 1){
+        memset(yyg->yy_buffer_stack, 0, num_to_alloc * sizeof(struct yy_buffer_state *));
 
-		/* Increase the buffer to prepare for a possible push. */
-		int grow_size = 8 /* arbitrary grow size */;
+        yyg->yy_buffer_stack_max = num_to_alloc;
+        yyg->yy_buffer_stack_top = 0;
+        return;
+    }
 
-		num_to_alloc = yyg->yy_buffer_stack_max + grow_size;
-		yyg->yy_buffer_stack = (struct yy_buffer_state**)turtle_lexer_realloc
-								(yyg->yy_buffer_stack,
-								num_to_alloc * sizeof(struct yy_buffer_state*)
-								, yyscanner);
-		if ( ! yyg->yy_buffer_stack )
-			YY_FATAL_ERROR( "out of dynamic memory in turtle_lexer_ensure_buffer_stack()" );
+    if (yyg->yy_buffer_stack_top >= (yyg->yy_buffer_stack_max) - 1) {
 
-		/* zero only the new slots.*/
-		memset(yyg->yy_buffer_stack + yyg->yy_buffer_stack_max, 0, grow_size * sizeof(struct yy_buffer_state*));
-		yyg->yy_buffer_stack_max = num_to_alloc;
-	}
+        /* Increase the buffer to prepare for a possible push. */
+        int grow_size = 8 /* arbitrary grow size */;
+
+        num_to_alloc = yyg->yy_buffer_stack_max + grow_size;
+        yyg->yy_buffer_stack = (struct yy_buffer_state **) turtle_lexer_realloc
+                (yyg->yy_buffer_stack,
+                 num_to_alloc * sizeof(struct yy_buffer_state *), yyscanner);
+        if (!yyg->yy_buffer_stack)
+            YY_FATAL_ERROR("out of dynamic memory in turtle_lexer_ensure_buffer_stack()");
+
+        /* zero only the new slots.*/
+        memset(yyg->yy_buffer_stack + yyg->yy_buffer_stack_max, 0, grow_size * sizeof(struct yy_buffer_state *));
+        yyg->yy_buffer_stack_max = num_to_alloc;
+    }
 }
 
 /** Setup the input buffer state to scan directly from a user-specified character buffer.
  * @param base the character buffer
  * @param size the size in bytes of the character buffer
  * @param yyscanner The scanner object.
- * @return the newly allocated buffer state object. 
+ * @return the newly allocated buffer state object.
  */
-YY_BUFFER_STATE turtle_lexer__scan_buffer  (char * base, yy_size_t  size , yyscan_t yyscanner)
-{
-	YY_BUFFER_STATE b;
-    
-	if ( size < 2 ||
-	     base[size-2] != YY_END_OF_BUFFER_CHAR ||
-	     base[size-1] != YY_END_OF_BUFFER_CHAR )
-		/* They forgot to leave room for the EOB's. */
-		return 0;
+YY_BUFFER_STATE turtle_lexer__scan_buffer(char *base, yy_size_t size, yyscan_t yyscanner) {
+    YY_BUFFER_STATE b;
 
-	b = (YY_BUFFER_STATE) turtle_lexer_alloc(sizeof( struct yy_buffer_state ) ,yyscanner );
-	if ( ! b )
-		YY_FATAL_ERROR( "out of dynamic memory in turtle_lexer__scan_buffer()" );
+    if (size < 2 ||
+        base[size - 2] != YY_END_OF_BUFFER_CHAR ||
+        base[size - 1] != YY_END_OF_BUFFER_CHAR)
+        /* They forgot to leave room for the EOB's. */
+        return 0;
 
-	b->yy_buf_size = size - 2;	/* "- 2" to take care of EOB's */
-	b->yy_buf_pos = b->yy_ch_buf = base;
-	b->yy_is_our_buffer = 0;
-	b->yy_input_file = 0;
-	b->yy_n_chars = b->yy_buf_size;
-	b->yy_is_interactive = 0;
-	b->yy_at_bol = 1;
-	b->yy_fill_buffer = 0;
-	b->yy_buffer_status = YY_BUFFER_NEW;
+    b = (YY_BUFFER_STATE) turtle_lexer_alloc(sizeof(struct yy_buffer_state), yyscanner);
+    if (!b)
+        YY_FATAL_ERROR("out of dynamic memory in turtle_lexer__scan_buffer()");
 
-	turtle_lexer__switch_to_buffer(b ,yyscanner );
+    b->yy_buf_size = size - 2;    /* "- 2" to take care of EOB's */
+    b->yy_buf_pos = b->yy_ch_buf = base;
+    b->yy_is_our_buffer = 0;
+    b->yy_input_file = 0;
+    b->yy_n_chars = b->yy_buf_size;
+    b->yy_is_interactive = 0;
+    b->yy_at_bol = 1;
+    b->yy_fill_buffer = 0;
+    b->yy_buffer_status = YY_BUFFER_NEW;
 
-	return b;
+    turtle_lexer__switch_to_buffer(b, yyscanner);
+
+    return b;
 }
 
 /** Setup the input buffer state to scan a string. The next call to turtle_lexer_lex() will
@@ -2333,10 +2375,9 @@ YY_BUFFER_STATE turtle_lexer__scan_buffer  (char * base, yy_size_t  size , yysca
  * @note If you want to scan bytes that may contain NUL values, then use
  *       turtle_lexer__scan_bytes() instead.
  */
-YY_BUFFER_STATE turtle_lexer__scan_string (yyconst char * yystr , yyscan_t yyscanner)
-{
-    
-	return turtle_lexer__scan_bytes(yystr,strlen(yystr) ,yyscanner);
+YY_BUFFER_STATE turtle_lexer__scan_string(yyconst char *yystr, yyscan_t yyscanner) {
+
+    return turtle_lexer__scan_bytes(yystr, strlen(yystr), yyscanner);
 }
 
 /** Setup the input buffer state to scan the given bytes. The next call to turtle_lexer_lex() will
@@ -2346,34 +2387,33 @@ YY_BUFFER_STATE turtle_lexer__scan_string (yyconst char * yystr , yyscan_t yysca
  * @param yyscanner The scanner object.
  * @return the newly allocated buffer state object.
  */
-YY_BUFFER_STATE turtle_lexer__scan_bytes  (yyconst char * yybytes, int  _yybytes_len , yyscan_t yyscanner)
-{
-	YY_BUFFER_STATE b;
-	char *buf;
-	yy_size_t n;
-	yy_size_t i;
-    
-	/* Get memory for full buffer, including space for trailing EOB's. */
-	n = _yybytes_len + 2;
-	buf = (char *) turtle_lexer_alloc(n ,yyscanner );
-	if ( ! buf )
-		YY_FATAL_ERROR( "out of dynamic memory in turtle_lexer__scan_bytes()" );
+YY_BUFFER_STATE turtle_lexer__scan_bytes(yyconst char *yybytes, int _yybytes_len, yyscan_t yyscanner) {
+    YY_BUFFER_STATE b;
+    char *buf;
+    yy_size_t n;
+    yy_size_t i;
 
-	for ( i = 0; i < _yybytes_len; ++i )
-		buf[i] = yybytes[i];
+    /* Get memory for full buffer, including space for trailing EOB's. */
+    n = _yybytes_len + 2;
+    buf = (char *) turtle_lexer_alloc(n, yyscanner);
+    if (!buf)
+        YY_FATAL_ERROR("out of dynamic memory in turtle_lexer__scan_bytes()");
 
-	buf[_yybytes_len] = buf[_yybytes_len+1] = YY_END_OF_BUFFER_CHAR;
+    for (i = 0; i < _yybytes_len; ++i)
+        buf[i] = yybytes[i];
 
-	b = turtle_lexer__scan_buffer(buf,n ,yyscanner);
-	if ( ! b )
-		YY_FATAL_ERROR( "bad buffer in turtle_lexer__scan_bytes()" );
+    buf[_yybytes_len] = buf[_yybytes_len + 1] = YY_END_OF_BUFFER_CHAR;
 
-	/* It's okay to grow etc. this buffer, and we should throw it
+    b = turtle_lexer__scan_buffer(buf, n, yyscanner);
+    if (!b)
+        YY_FATAL_ERROR("bad buffer in turtle_lexer__scan_bytes()");
+
+    /* It's okay to grow etc. this buffer, and we should throw it
 	 * away when we're done.
 	 */
-	b->yy_is_our_buffer = 1;
+    b->yy_is_our_buffer = 1;
 
-	return b;
+    return b;
 }
 
 #ifndef YY_EXIT_FAILURE
@@ -2385,80 +2425,74 @@ YY_BUFFER_STATE turtle_lexer__scan_bytes  (yyconst char * yybytes, int  _yybytes
 
 #undef yyless
 #define yyless(n) \
-	do \
-		{ \
-		/* Undo effects of setting up yytext. */ \
+    do \
+        { \
+        /* Undo effects of setting up yytext. */ \
         int yyless_macro_arg = (n); \
         YY_LESS_LINENO(yyless_macro_arg);\
-		yytext[yyleng] = yyg->yy_hold_char; \
-		yyg->yy_c_buf_p = yytext + yyless_macro_arg; \
-		yyg->yy_hold_char = *yyg->yy_c_buf_p; \
-		*yyg->yy_c_buf_p = '\0'; \
-		yyleng = yyless_macro_arg; \
-		} \
-	while ( 0 )
+        yytext[yyleng] = yyg->yy_hold_char; \
+        yyg->yy_c_buf_p = yytext + yyless_macro_arg; \
+        yyg->yy_hold_char = *yyg->yy_c_buf_p; \
+        *yyg->yy_c_buf_p = '\0'; \
+        yyleng = yyless_macro_arg; \
+        } \
+    while ( 0 )
 
 /* Accessor  methods (get/set functions) to struct members. */
 
 /** Get the user-defined data for this scanner.
  * @param yyscanner The scanner object.
  */
-YY_EXTRA_TYPE turtle_lexer_get_extra  (yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+YY_EXTRA_TYPE turtle_lexer_get_extra(yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
     return yyextra;
 }
 
 /** Get the current line number.
  * @param yyscanner The scanner object.
  */
-int turtle_lexer_get_lineno  (yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
-    
-        if (! YY_CURRENT_BUFFER)
-            return 0;
-    
+int turtle_lexer_get_lineno(yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
+
+    if (!YY_CURRENT_BUFFER)
+        return 0;
+
     return yylineno;
 }
 
 /** Get the current column number.
  * @param yyscanner The scanner object.
  */
-int turtle_lexer_get_column  (yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
-    
-        if (! YY_CURRENT_BUFFER)
-            return 0;
-    
+int turtle_lexer_get_column(yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
+
+    if (!YY_CURRENT_BUFFER)
+        return 0;
+
     return yycolumn;
 }
 
 /** Get the input stream.
  * @param yyscanner The scanner object.
  */
-FILE *turtle_lexer_get_in  (yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+FILE *turtle_lexer_get_in(yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
     return yyin;
 }
 
 /** Get the output stream.
  * @param yyscanner The scanner object.
  */
-FILE *turtle_lexer_get_out  (yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+FILE *turtle_lexer_get_out(yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
     return yyout;
 }
 
 /** Get the length of the current token.
  * @param yyscanner The scanner object.
  */
-int turtle_lexer_get_leng  (yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+int turtle_lexer_get_leng(yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
     return yyleng;
 }
 
@@ -2466,9 +2500,8 @@ int turtle_lexer_get_leng  (yyscan_t yyscanner)
  * @param yyscanner The scanner object.
  */
 
-char *turtle_lexer_get_text  (yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+char *turtle_lexer_get_text(yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
     return yytext;
 }
 
@@ -2476,24 +2509,22 @@ char *turtle_lexer_get_text  (yyscan_t yyscanner)
  * @param user_defined The data to be associated with this scanner.
  * @param yyscanner The scanner object.
  */
-void turtle_lexer_set_extra (YY_EXTRA_TYPE  user_defined , yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
-    yyextra = user_defined ;
+void turtle_lexer_set_extra(YY_EXTRA_TYPE user_defined, yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
+    yyextra = user_defined;
 }
 
 /** Set the current line number.
  * @param line_number
  * @param yyscanner The scanner object.
  */
-void turtle_lexer_set_lineno (int  line_number , yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+void turtle_lexer_set_lineno(int line_number, yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
 
-        /* lineno is only valid if an input buffer exists. */
-        if (! YY_CURRENT_BUFFER )
-           YY_FATAL_ERROR("turtle_lexer_set_lineno called with no buffer"); 
-    
+    /* lineno is only valid if an input buffer exists. */
+    if (!YY_CURRENT_BUFFER)
+        YY_FATAL_ERROR("turtle_lexer_set_lineno called with no buffer");
+
     yylineno = line_number;
 }
 
@@ -2501,14 +2532,13 @@ void turtle_lexer_set_lineno (int  line_number , yyscan_t yyscanner)
  * @param line_number
  * @param yyscanner The scanner object.
  */
-void turtle_lexer_set_column (int  column_no , yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+void turtle_lexer_set_column(int column_no, yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
 
-        /* column is only valid if an input buffer exists. */
-        if (! YY_CURRENT_BUFFER )
-           YY_FATAL_ERROR("turtle_lexer_set_column called with no buffer"); 
-    
+    /* column is only valid if an input buffer exists. */
+    if (!YY_CURRENT_BUFFER)
+        YY_FATAL_ERROR("turtle_lexer_set_column called with no buffer");
+
     yycolumn = column_no;
 }
 
@@ -2518,41 +2548,35 @@ void turtle_lexer_set_column (int  column_no , yyscan_t yyscanner)
  * @param yyscanner The scanner object.
  * @see turtle_lexer__switch_to_buffer
  */
-void turtle_lexer_set_in (FILE *  in_str , yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
-    yyin = in_str ;
+void turtle_lexer_set_in(FILE *in_str, yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
+    yyin = in_str;
 }
 
-void turtle_lexer_set_out (FILE *  out_str , yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
-    yyout = out_str ;
+void turtle_lexer_set_out(FILE *out_str, yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
+    yyout = out_str;
 }
 
-int turtle_lexer_get_debug  (yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+int turtle_lexer_get_debug(yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
     return yy_flex_debug;
 }
 
-void turtle_lexer_set_debug (int  bdebug , yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
-    yy_flex_debug = bdebug ;
+void turtle_lexer_set_debug(int bdebug, yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
+    yy_flex_debug = bdebug;
 }
 
 /* Accessor methods for yylval and yylloc */
 
-YYSTYPE * turtle_lexer_get_lval  (yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+YYSTYPE *turtle_lexer_get_lval(yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
     return yylval;
 }
 
-void turtle_lexer_set_lval (YYSTYPE *  yylval_param , yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+void turtle_lexer_set_lval(YYSTYPE *yylval_param, yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
     yylval = yylval_param;
 }
 
@@ -2563,25 +2587,23 @@ void turtle_lexer_set_lval (YYSTYPE *  yylval_param , yyscan_t yyscanner)
  * That's why we explicitly handle the declaration, instead of using our macros.
  */
 
-int turtle_lexer_lex_init(yyscan_t* ptr_yy_globals)
-
-{
-    if (ptr_yy_globals == NULL){
+int turtle_lexer_lex_init(yyscan_t *ptr_yy_globals) {
+    if (ptr_yy_globals == NULL) {
         errno = EINVAL;
         return 1;
     }
 
-    *ptr_yy_globals = (yyscan_t) turtle_lexer_alloc ( sizeof( struct yyguts_t ), NULL );
+    *ptr_yy_globals = (yyscan_t) turtle_lexer_alloc(sizeof(struct yyguts_t), NULL);
 
-    if (*ptr_yy_globals == NULL){
+    if (*ptr_yy_globals == NULL) {
         errno = ENOMEM;
         return 1;
     }
 
     /* By setting to 0xAA, we expose bugs in yy_init_globals. Leave at 0x00 for releases. */
-    memset(*ptr_yy_globals,0x00,sizeof(struct yyguts_t));
+    memset(*ptr_yy_globals, 0x00, sizeof(struct yyguts_t));
 
-    return yy_init_globals ( *ptr_yy_globals );
+    return yy_init_globals(*ptr_yy_globals);
 }
 
 /* turtle_lexer_lex_init_extra has the same functionality as turtle_lexer_lex_init, but follows the
@@ -2592,37 +2614,34 @@ int turtle_lexer_lex_init(yyscan_t* ptr_yy_globals)
  * the yyextra field.
  */
 
-int turtle_lexer_lex_init_extra(YY_EXTRA_TYPE yy_user_defined,yyscan_t* ptr_yy_globals )
-
-{
+int turtle_lexer_lex_init_extra(YY_EXTRA_TYPE yy_user_defined, yyscan_t *ptr_yy_globals) {
     struct yyguts_t dummy_yyguts;
 
-    turtle_lexer_set_extra (yy_user_defined, &dummy_yyguts);
+    turtle_lexer_set_extra(yy_user_defined, &dummy_yyguts);
 
-    if (ptr_yy_globals == NULL){
+    if (ptr_yy_globals == NULL) {
         errno = EINVAL;
         return 1;
     }
-	
-    *ptr_yy_globals = (yyscan_t) turtle_lexer_alloc ( sizeof( struct yyguts_t ), &dummy_yyguts );
-	
-    if (*ptr_yy_globals == NULL){
+
+    *ptr_yy_globals = (yyscan_t) turtle_lexer_alloc(sizeof(struct yyguts_t), &dummy_yyguts);
+
+    if (*ptr_yy_globals == NULL) {
         errno = ENOMEM;
         return 1;
     }
-    
+
     /* By setting to 0xAA, we expose bugs in
     yy_init_globals. Leave at 0x00 for releases. */
-    memset(*ptr_yy_globals,0x00,sizeof(struct yyguts_t));
-    
-    turtle_lexer_set_extra (yy_user_defined, *ptr_yy_globals);
-    
-    return yy_init_globals ( *ptr_yy_globals );
+    memset(*ptr_yy_globals, 0x00, sizeof(struct yyguts_t));
+
+    turtle_lexer_set_extra(yy_user_defined, *ptr_yy_globals);
+
+    return yy_init_globals(*ptr_yy_globals);
 }
 
-static int yy_init_globals (yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+static int yy_init_globals(yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
     /* Initialization is the same as for the non-reentrant scanner.
      * This function is called from turtle_lexer_lex_destroy(), so don't allocate here.
      */
@@ -2636,11 +2655,11 @@ static int yy_init_globals (yyscan_t yyscanner)
 
     yyg->yy_start_stack_ptr = 0;
     yyg->yy_start_stack_depth = 0;
-    yyg->yy_start_stack =  NULL;
+    yyg->yy_start_stack = NULL;
 
 /* Defined in main.c */
 #ifdef YY_STDINIT
-    yyin = stdin;
+                                                                                                                            yyin = stdin;
     yyout = stdout;
 #else
     yyin = (FILE *) 0;
@@ -2654,33 +2673,32 @@ static int yy_init_globals (yyscan_t yyscanner)
 }
 
 /* turtle_lexer_lex_destroy is for both reentrant and non-reentrant scanners. */
-int turtle_lexer_lex_destroy  (yyscan_t yyscanner)
-{
-    struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
+int turtle_lexer_lex_destroy(yyscan_t yyscanner) {
+    struct yyguts_t *yyg = (struct yyguts_t *) yyscanner;
 
     /* Pop the buffer stack, destroying each element. */
-	while(YY_CURRENT_BUFFER){
-		turtle_lexer__delete_buffer(YY_CURRENT_BUFFER ,yyscanner );
-		YY_CURRENT_BUFFER_LVALUE = NULL;
-		turtle_lexer_pop_buffer_state(yyscanner);
-	}
+    while (YY_CURRENT_BUFFER) {
+        turtle_lexer__delete_buffer(YY_CURRENT_BUFFER, yyscanner);
+        YY_CURRENT_BUFFER_LVALUE = NULL;
+        turtle_lexer_pop_buffer_state(yyscanner);
+    }
 
-	/* Destroy the stack itself. */
-	turtle_lexer_free(yyg->yy_buffer_stack ,yyscanner);
-	yyg->yy_buffer_stack = NULL;
+    /* Destroy the stack itself. */
+    turtle_lexer_free(yyg->yy_buffer_stack, yyscanner);
+    yyg->yy_buffer_stack = NULL;
 
     /* Destroy the start condition stack. */
-        turtle_lexer_free(yyg->yy_start_stack ,yyscanner );
-        yyg->yy_start_stack = NULL;
+    turtle_lexer_free(yyg->yy_start_stack, yyscanner);
+    yyg->yy_start_stack = NULL;
 
     /* Reset the globals. This is important in a non-reentrant scanner so the next time
      * turtle_lexer_lex() is called, initialization will occur. */
-    yy_init_globals( yyscanner);
+    yy_init_globals(yyscanner);
 
     /* Destroy the main struct (reentrant only). */
     /* clean up leaks if any before freeing yyscanner */
     turtle_lexer_cleanup(yyscanner);
-    turtle_lexer_free ( yyscanner , yyscanner );
+    turtle_lexer_free(yyscanner, yyscanner);
     yyscanner = NULL;
     return 0;
 }
@@ -2690,7 +2708,7 @@ int turtle_lexer_lex_destroy  (yyscan_t yyscanner)
  */
 
 #ifndef yytext_ptr
-static void yy_flex_strncpy (char* s1, yyconst char * s2, int n , yyscan_t yyscanner)
+                                                                                                                        static void yy_flex_strncpy (char* s1, yyconst char * s2, int n , yyscan_t yyscanner)
 {
 	register int i;
 	for ( i = 0; i < n; ++i )
@@ -2699,7 +2717,7 @@ static void yy_flex_strncpy (char* s1, yyconst char * s2, int n , yyscan_t yysca
 #endif
 
 #ifdef YY_NEED_STRLEN
-static int yy_flex_strlen (yyconst char * s , yyscan_t yyscanner)
+                                                                                                                        static int yy_flex_strlen (yyconst char * s , yyscan_t yyscanner)
 {
 	register int n;
 	for ( n = 0; s[n]; ++n )
@@ -2714,83 +2732,80 @@ static int yy_flex_strlen (yyconst char * s , yyscan_t yyscanner)
 #line 526 "./turtle_lexer.l"
 
 
-  /* user code */
+/* user code */
 
 int
-turtle_lexer_wrap (yyscan_t yyscanner) {
-  return 1;
+turtle_lexer_wrap(yyscan_t yyscanner) {
+    return 1;
 }
 
 
 static unsigned char *
-turtle_copy_token(unsigned char *text, size_t len)
-{
-  unsigned char *s;
-  if(!len)
-    len = strlen((const char*)text);
-  s = RAPTOR_MALLOC(unsigned char*, len + 1);
-  if(s) {
-    memcpy(s, text, len);
-    s[len] = '\0';
-  }
-  return s;
+turtle_copy_token(unsigned char *text, size_t len) {
+    unsigned char *s;
+    if (!len)
+        len = strlen((const char *) text);
+    s = RAPTOR_MALLOC(unsigned char*, len + 1);
+    if (s) {
+        memcpy(s, text, len);
+        s[len] = '\0';
+    }
+    return s;
 }
 
 
 static unsigned char *
-turtle_copy_string_token(raptor_parser* rdf_parser, 
-                         unsigned char *string, size_t len, int delim)
-{
-  raptor_stringbuffer* sb = NULL;
-  int rc;
-  
-  if(len) {
-    sb = raptor_new_stringbuffer();
-    if(!sb)
-      return NULL;
-    
-    rc = raptor_stringbuffer_append_turtle_string(sb, string, len, delim,
-                                                  (raptor_simple_message_handler)turtle_lexer_syntax_error,
-                                                  rdf_parser, 0);
-    if(rc) {
-      raptor_free_stringbuffer(sb);
-      return NULL;
+turtle_copy_string_token(raptor_parser *rdf_parser,
+                         unsigned char *string, size_t len, int delim) {
+    raptor_stringbuffer *sb = NULL;
+    int rc;
+
+    if (len) {
+        sb = raptor_new_stringbuffer();
+        if (!sb)
+            return NULL;
+
+        rc = raptor_stringbuffer_append_turtle_string(sb, string, len, delim,
+                                                      (raptor_simple_message_handler) turtle_lexer_syntax_error,
+                                                      rdf_parser, 0);
+        if (rc) {
+            raptor_free_stringbuffer(sb);
+            return NULL;
+        }
+
+        len = raptor_stringbuffer_length(sb);
     }
 
-    len = raptor_stringbuffer_length(sb);
-  }
-  
-  string = RAPTOR_MALLOC(unsigned char*, len + 1);
-  if(string) {
-    if(sb) 
-      raptor_stringbuffer_copy_to_string(sb, string, len+1);
-    string[len]='\0';
-  }
+    string = RAPTOR_MALLOC(unsigned char*, len + 1);
+    if (string) {
+        if (sb)
+            raptor_stringbuffer_copy_to_string(sb, string, len + 1);
+        string[len] = '\0';
+    }
 
-  if(sb)
-    raptor_free_stringbuffer(sb);
-  
-  return string;
+    if (sb)
+        raptor_free_stringbuffer(sb);
+
+    return string;
 }
 
 
 void
-turtle_lexer_syntax_error(void* ctx, const char *message, ...)
-{
-  raptor_parser* rdf_parser = (raptor_parser *)ctx;
-  raptor_turtle_parser* turtle_parser = (raptor_turtle_parser*)rdf_parser->context;
-  va_list arguments;
-  
-  rdf_parser->locator.line = turtle_parser->lineno;
+turtle_lexer_syntax_error(void *ctx, const char *message, ...) {
+    raptor_parser *rdf_parser = (raptor_parser *) ctx;
+    raptor_turtle_parser *turtle_parser = (raptor_turtle_parser *) rdf_parser->context;
+    va_list arguments;
+
+    rdf_parser->locator.line = turtle_parser->lineno;
 #ifdef RAPTOR_TURTLE_USE_ERROR_COLUMNS
-  rdf_parser->locator.column = turtle_lexer_get_column(yyscanner);
+    rdf_parser->locator.column = turtle_lexer_get_column(yyscanner);
 #endif
 
-  va_start(arguments, message);
-  raptor_parser_log_error_varargs(((raptor_parser*)rdf_parser),
-                                  RAPTOR_LOG_LEVEL_ERROR, message, arguments);
+    va_start(arguments, message);
+    raptor_parser_log_error_varargs(((raptor_parser *) rdf_parser),
+                                    RAPTOR_LOG_LEVEL_ERROR, message, arguments);
 
-  va_end(arguments);
+    va_end(arguments);
 }
 
 
@@ -2804,20 +2819,19 @@ turtle_lexer_syntax_error(void* ctx, const char *message, ...)
  */
 static void turtle_lexer_error(yyscan_t yyscanner,
                                raptor_log_level level,
-                               yyconst char *message, ...)
-{
-  raptor_parser *rdf_parser = NULL;
-  va_list arguments;
+                               yyconst char *message, ...) {
+    raptor_parser *rdf_parser = NULL;
+    va_list arguments;
 
-  va_start(arguments, message);
+    va_start(arguments, message);
 
-  if(yyscanner)
-    rdf_parser = (raptor_parser*)turtle_lexer_get_extra(yyscanner);
+    if (yyscanner)
+        rdf_parser = (raptor_parser *) turtle_lexer_get_extra(yyscanner);
 
-  /* This handles NULL rdf_parser properly */
-  raptor_parser_log_error_varargs(rdf_parser, level, message, arguments);
+    /* This handles NULL rdf_parser properly */
+    raptor_parser_log_error_varargs(rdf_parser, level, message, arguments);
 
-  va_end(arguments);
+    va_end(arguments);
 }
 
 
@@ -2826,7 +2840,7 @@ static void turtle_lexer_error(yyscan_t yyscanner,
  */
 
 #ifdef LEXER_ALLOC_TRACKING
-typedef struct {
+                                                                                                                        typedef struct {
   /* Number of void* slots allocated */
   int lexer_allocs_size;
   /* Allocted void* slots follow in memory after this header */
@@ -2842,10 +2856,9 @@ static const int initial_lexer_allocs_size = 2;
  *
  * INTERNAL - Clean up unfreed lexer allocs if LEXER_ALLOC_TRACKING is enabled.
  */
-static void turtle_lexer_cleanup(yyscan_t yyscanner)
-{
+static void turtle_lexer_cleanup(yyscan_t yyscanner) {
 #ifdef LEXER_ALLOC_TRACKING
-  raptor_parser *rdf_parser;
+                                                                                                                            raptor_parser *rdf_parser;
   lexer_alloc_tracker_header *tracker;
   void **lexer_allocs;
   int i;
@@ -2881,10 +2894,9 @@ static void turtle_lexer_cleanup(yyscan_t yyscanner)
  * INTERNAL - alloc replacement.
  * Tracks allocated cells if LEXER_ALLOC_TRACKING is enabled.
  */
-void *turtle_lexer_alloc(yy_size_t size, yyscan_t yyscanner)
-{
+void *turtle_lexer_alloc(yy_size_t size, yyscan_t yyscanner) {
 #ifdef LEXER_ALLOC_TRACKING
-  raptor_parser *rdf_parser;
+                                                                                                                            raptor_parser *rdf_parser;
   lexer_alloc_tracker_header *tracker;
   void **lexer_allocs;
   int i;
@@ -2914,7 +2926,7 @@ void *turtle_lexer_alloc(yy_size_t size, yyscan_t yyscanner)
 
   /* allocate memory */
   ptr = malloc(size);
-  
+
   /* find a free slot for ptr */
   for(i = 0; i < tracker->lexer_allocs_size; ++i) {
     if(!lexer_allocs[i]) {
@@ -2934,13 +2946,13 @@ void *turtle_lexer_alloc(yy_size_t size, yyscan_t yyscanner)
       YY_FATAL_ERROR("lexer_alloc: cannot grow tracker");
     }
     tracker->lexer_allocs_size = i*2;
-    
+
     /* copy data from old tracker */
     dest = (void**)&tracker[1];
     for(j = 0; j < i; ++j) {
       dest[j] = lexer_allocs[j];
     }
-    
+
     /* set new item to first free slot */
     dest[j] = ptr;
 
@@ -2951,7 +2963,7 @@ void *turtle_lexer_alloc(yy_size_t size, yyscan_t yyscanner)
 
   return ptr;
 #else
-  return malloc(size);
+    return malloc(size);
 #endif
 }
 
@@ -2962,10 +2974,9 @@ void *turtle_lexer_alloc(yy_size_t size, yyscan_t yyscanner)
  * INTERNAL - realloc replacement
  * Tracks allocated cells if LEXER_ALLOC_TRACKING is enabled.
  */
-void *turtle_lexer_realloc(void *ptr, yy_size_t size, yyscan_t yyscanner)
-{
+void *turtle_lexer_realloc(void *ptr, yy_size_t size, yyscan_t yyscanner) {
 #ifdef LEXER_ALLOC_TRACKING
-  raptor_parser *rdf_parser;
+                                                                                                                            raptor_parser *rdf_parser;
   lexer_alloc_tracker_header *tracker;
   void **lexer_allocs;
   int i;
@@ -2989,7 +3000,7 @@ void *turtle_lexer_realloc(void *ptr, yy_size_t size, yyscan_t yyscanner)
       break;
   }
 
-  /* no old slot -> error */  
+  /* no old slot -> error */
   if(i>=tracker->lexer_allocs_size)
     YY_FATAL_ERROR("lexer_realloc: cell not in tracker");
 
@@ -3001,7 +3012,7 @@ void *turtle_lexer_realloc(void *ptr, yy_size_t size, yyscan_t yyscanner)
 
   return newptr;
 #else
-  return realloc((char*)ptr, size);
+    return realloc((char *) ptr, size);
 #endif
 }
 
@@ -3013,10 +3024,9 @@ void *turtle_lexer_realloc(void *ptr, yy_size_t size, yyscan_t yyscanner)
  * Checks for NULL pointer to be freed unlike the default lexer free function.
  * Tracks allocated cells if LEXER_ALLOC_TRACKING is enabled.
  */
-void turtle_lexer_free(void *ptr, yyscan_t yyscanner)
-{
+void turtle_lexer_free(void *ptr, yyscan_t yyscanner) {
 #ifdef LEXER_ALLOC_TRACKING
-  raptor_parser *rdf_parser;
+                                                                                                                            raptor_parser *rdf_parser;
   lexer_alloc_tracker_header *tracker;
   void **lexer_allocs;
   int i;
@@ -3048,29 +3058,29 @@ void turtle_lexer_free(void *ptr, yyscan_t yyscanner)
       break;
   }
 
-  /* no slot -> error */  
+  /* no slot -> error */
   if(i>=tracker->lexer_allocs_size)
     YY_FATAL_ERROR("lexer_free: cell not in tracker");
 
   /* remove entry from tracker */
   lexer_allocs[i] = NULL;
 #else
-  if(ptr)
-    free(ptr);
+    if (ptr)
+        free(ptr);
 #endif
 }
 
 
 #ifdef RAPTOR_DEBUG
 
-const char *
+                                                                                                                        const char *
 turtle_token_print(raptor_world* world, int token, YYSTYPE *lval)
 {
   static char buffer[2048];
 
   if(!token)
     return "<<EOF>>";
-  
+
   switch(token) {
     case PREFIX:
       return "PREFIX";
@@ -3104,7 +3114,7 @@ turtle_token_print(raptor_world* world, int token, YYSTYPE *lval)
       return buffer;
 
     case URI_LITERAL:
-      sprintf(buffer, "URI_LITERAL(%s)", 
+      sprintf(buffer, "URI_LITERAL(%s)",
               (lval->uri ? (char*)raptor_uri_as_string(lval->uri) : ""));
       return buffer;
 
@@ -3113,7 +3123,7 @@ turtle_token_print(raptor_world* world, int token, YYSTYPE *lval)
       return buffer;
 
     case QNAME_LITERAL:
-      sprintf(buffer, "QNAME_LITERAL(%s)", 
+      sprintf(buffer, "QNAME_LITERAL(%s)",
               (lval->uri ? (char*)raptor_uri_as_string(lval->uri) : ""));
       return buffer;
 
@@ -3126,12 +3136,12 @@ turtle_token_print(raptor_world* world, int token, YYSTYPE *lval)
       return buffer;
 
     case IDENTIFIER:
-      sprintf(buffer, "IDENTIFIER(%s)", 
+      sprintf(buffer, "IDENTIFIER(%s)",
               (lval->string ? (char*)lval->string : ""));
       return buffer;
 
     case LANGTAG:
-      sprintf(buffer, "LANGTAG(%s)", 
+      sprintf(buffer, "LANGTAG(%s)",
               (lval->string ? (char*)lval->string : ""));
       return buffer;
 
@@ -3144,7 +3154,7 @@ turtle_token_print(raptor_world* world, int token, YYSTYPE *lval)
 
     case LEFT_CURLY:
       return "{";
-    
+
     case RIGHT_CURLY:
       return "}";
 
@@ -3159,35 +3169,33 @@ turtle_token_print(raptor_world* world, int token, YYSTYPE *lval)
 #endif
 
 
-
 void
-turtle_token_free(raptor_world* world, int token, YYSTYPE *lval)
-{
-  if(!token)
-    return;
+turtle_token_free(raptor_world *world, int token, YYSTYPE *lval) {
+    if (!token)
+        return;
 
-  switch(token) {
-    case STRING_LITERAL:
-    case BLANK_LITERAL:
-    case IDENTIFIER:
-      if(lval->string)
-        RAPTOR_FREE(char*, lval->string);
-      break;
+    switch (token) {
+        case STRING_LITERAL:
+        case BLANK_LITERAL:
+        case IDENTIFIER:
+            if (lval->string)
+                RAPTOR_FREE(char*, lval->string);
+            break;
 
-    case URI_LITERAL:
-    case QNAME_LITERAL:
-      if(lval->uri)
-        raptor_free_uri(lval->uri);
-      break;
-    default:
-      break;
-  }
+        case URI_LITERAL:
+        case QNAME_LITERAL:
+            if (lval->uri)
+                raptor_free_uri(lval->uri);
+            break;
+        default:
+            break;
+    }
 }
 
 
 #ifdef STANDALONE
 
-#define FILE_READ_BUF_SIZE 4096
+                                                                                                                        #define FILE_READ_BUF_SIZE 4096
 
 int
 main(int argc, char *argv[]) 

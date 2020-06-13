@@ -81,5 +81,31 @@ namespace redland {
         return stream;
     }
 
+    /*
+     * @breif remove statement from the model
+     * @param statement a LibrdfStatement to remove from the movel
+     * @return void
+     */
+    void LibrdfModel::removeStatement(const LibrdfStatement &statement) const {
+        librdf_model_remove_statement(model_, statement.get());
+    }
+
+    /*
+     * @breif remove statement from the model
+     * @param statement a librdf_statement* to remove from the model
+     * @return void
+     */
+    void LibrdfModel::removeStatement(librdf_statement *statement) const {
+        librdf_model_remove_statement(model_, statement);
+    }
+
+    bool LibrdfModel::operator==(const LibrdfModel &rhs) const {
+        return model_ == rhs.model_;
+    }
+
+    bool LibrdfModel::operator!=(const LibrdfModel &rhs) const {
+        return !(rhs == *this);
+    }
+
 }
 

@@ -12,6 +12,7 @@
 
 #include "iostream"
 #include <vector>
+#include "semsim/HERE.h"
 
 using namespace redland;
 
@@ -20,25 +21,28 @@ namespace semsim {
 
     class Subject {
     private:
-        librdf_node* node_ = nullptr;
+        librdf_node *node_ = nullptr;
 
-        explicit Subject(librdf_node* node);
+        explicit Subject(librdf_node *node);
 
     public:
         explicit Subject(LibrdfNode node);
 
         Subject() = default;
 
-        [[nodiscard]] librdf_node* getNode() const;
+        [[nodiscard]] librdf_node *getNode() const;
 
         void setNode(librdf_node *node);
 
-        static Subject fromRawPtr(librdf_node* node);
+        static Subject fromRawPtr(librdf_node *node);
 
         static Subject fromUri(const std::string &uri);
 
         static Subject fromBlank(const std::string &blank);
 
+        bool operator==(const Subject &rhs) const;
+
+        bool operator!=(const Subject &rhs) const;
 //        ~Subject();
 
         [[nodiscard]] std::string str() const;
@@ -50,7 +54,6 @@ namespace semsim {
     };
 
     typedef std::vector<Subject> Subjects;
-
 
 
 }

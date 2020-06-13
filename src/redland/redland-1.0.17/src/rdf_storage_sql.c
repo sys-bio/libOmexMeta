@@ -23,7 +23,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -34,13 +36,19 @@
 #include <string.h>
 /* for access() and R_OK */
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 #ifdef HAVE_UNISTD_H
+
 #include <unistd.h>
+
 #endif
 #ifdef HAVE_ERRNO_H
+
 #include <errno.h>
+
 #endif
 
 
@@ -53,26 +61,25 @@ static void librdf_sql_config_store_triple(void *user_data,
 
 static void
 librdf_sql_config_store_triple(void *user_data,
-                               raptor_statement *triple)
-{
-  librdf_sql_config* config=(librdf_sql_config*)user_data;
-  int i;
-  
-  for(i=0; i < config->predicates_count; i++) {
-    if(triple->predicate->type != RAPTOR_TERM_TYPE_URI ||
-       triple->object->type != RAPTOR_TERM_TYPE_LITERAL)
-      continue;
-    
-    if(!strcmp((const char*)raptor_uri_as_string(triple->predicate->value.uri),
-               config->predicate_uri_strings[i])) {
-      config->values[i] = strdup((const char *)triple->object->value.literal.string);
+                               raptor_statement *triple) {
+    librdf_sql_config *config = (librdf_sql_config *) user_data;
+    int i;
+
+    for (i = 0; i < config->predicates_count; i++) {
+        if (triple->predicate->type != RAPTOR_TERM_TYPE_URI ||
+            triple->object->type != RAPTOR_TERM_TYPE_LITERAL)
+            continue;
+
+        if (!strcmp((const char *) raptor_uri_as_string(triple->predicate->value.uri),
+                    config->predicate_uri_strings[i])) {
+            config->values[i] = strdup((const char *) triple->object->value.literal.string);
 #if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 1
-      LIBRDF_DEBUG3("Set config value %d to '%s'\n", i, config->values[i]);
+            LIBRDF_DEBUG3("Set config value %d to '%s'\n", i, config->values[i]);
 #endif
+        }
     }
-  }
-  
-  return;
+
+    return;
 }
 
 
@@ -92,94 +99,92 @@ librdf_sql_config_store_triple(void *user_data,
  * 
  * Return value: configuration or NULL on failure
  **/
-librdf_sql_config*
-librdf_new_sql_config(librdf_world* world,
-                      const char* storage_name,
-                      const char* layout,
-                      const char* config_dir,
-                      const char** predicate_uri_strings)
-{
-  raptor_parser* rdf_parser=NULL;
-  unsigned char *uri_string=NULL;
-  raptor_uri *base_uri;
-  raptor_uri *uri;
-  librdf_sql_config* config;
-  size_t len;
-  int i;
-  
-  librdf_world_open(world);
+librdf_sql_config *
+librdf_new_sql_config(librdf_world *world,
+                      const char *storage_name,
+                      const char *layout,
+                      const char *config_dir,
+                      const char **predicate_uri_strings) {
+    raptor_parser *rdf_parser = NULL;
+    unsigned char *uri_string = NULL;
+    raptor_uri *base_uri;
+    raptor_uri *uri;
+    librdf_sql_config *config;
+    size_t len;
+    int i;
 
-  config = LIBRDF_MALLOC(librdf_sql_config*, sizeof(*config));
+    librdf_world_open(world);
 
-  len=strlen(config_dir) + 1 + strlen(storage_name) + 4 + 1;
-  if(layout)
-    len+= strlen(layout) + 1;
-  config->filename = LIBRDF_MALLOC(char*, len);
-  if(layout)
-    sprintf(config->filename, "%s/%s-%s.ttl", config_dir, storage_name, layout);
-  else
-    sprintf(config->filename, "%s/%s.ttl", config_dir, storage_name);
+    config = LIBRDF_MALLOC(librdf_sql_config*, sizeof(*config));
 
-  config->predicate_uri_strings=predicate_uri_strings;
-  for(i=0; config->predicate_uri_strings[i]; i++)
-    ;
-  config->predicates_count=i;
-  config->values = LIBRDF_CALLOC(char**, sizeof(char*), 
-                                 LIBRDF_GOOD_CAST(size_t, config->predicates_count));
+    len = strlen(config_dir) + 1 + strlen(storage_name) + 4 + 1;
+    if (layout)
+        len += strlen(layout) + 1;
+    config->filename = LIBRDF_MALLOC(char*, len);
+    if (layout)
+        sprintf(config->filename, "%s/%s-%s.ttl", config_dir, storage_name, layout);
+    else
+        sprintf(config->filename, "%s/%s.ttl", config_dir, storage_name);
 
-  librdf_log(world, 0, LIBRDF_LOG_DEBUG, LIBRDF_FROM_STORAGE, NULL,
-             "Opening storage '%s' layout '%s' configuration file '%s'", 
-             storage_name, (layout ? layout: "(default)"), config->filename);
-  
-  if(access((const char*)config->filename, R_OK)) {
-    librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
-               "Failed to open configuration file '%s' for storage '%s' layout '%s' - %s",
-               config->filename, storage_name, (layout ? layout: "(default)"),
-               strerror(errno));
-    librdf_free_sql_config(config);
-    return NULL;
-  }
-  
-  uri_string=raptor_uri_filename_to_uri_string(config->filename);
-  uri = raptor_new_uri(world->raptor_world_ptr, uri_string);
-  base_uri = raptor_uri_copy( uri);
+    config->predicate_uri_strings = predicate_uri_strings;
+    for (i = 0; config->predicate_uri_strings[i]; i++);
+    config->predicates_count = i;
+    config->values = LIBRDF_CALLOC(char**, sizeof(char *),
+                                   LIBRDF_GOOD_CAST(size_t, config->predicates_count));
 
-  rdf_parser = raptor_new_parser(world->raptor_world_ptr, "turtle");
+    librdf_log(world, 0, LIBRDF_LOG_DEBUG, LIBRDF_FROM_STORAGE, NULL,
+               "Opening storage '%s' layout '%s' configuration file '%s'",
+               storage_name, (layout ? layout : "(default)"), config->filename);
 
-  raptor_parser_set_statement_handler(rdf_parser, config,
-                                      librdf_sql_config_store_triple);
-
-  raptor_parser_parse_file(rdf_parser, uri, base_uri);
-
-  raptor_free_parser(rdf_parser);
-  
-  raptor_free_uri(base_uri);
-  raptor_free_uri(uri);
-
-  raptor_free_memory(uri_string);
-
-  /* Check all values are given */
-  for(i=0; i < config->predicates_count; i++) {
-    if(!config->values[i]) {
-      librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
-                 "Configuration %s missing for storage %s",
-                 config->predicate_uri_strings[i], storage_name);
-      librdf_free_sql_config(config);
-      return NULL;
+    if (access((const char *) config->filename, R_OK)) {
+        librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
+                   "Failed to open configuration file '%s' for storage '%s' layout '%s' - %s",
+                   config->filename, storage_name, (layout ? layout : "(default)"),
+                   strerror(errno));
+        librdf_free_sql_config(config);
+        return NULL;
     }
-  }
-  
-  return config;
+
+    uri_string = raptor_uri_filename_to_uri_string(config->filename);
+    uri = raptor_new_uri(world->raptor_world_ptr, uri_string);
+    base_uri = raptor_uri_copy(uri);
+
+    rdf_parser = raptor_new_parser(world->raptor_world_ptr, "turtle");
+
+    raptor_parser_set_statement_handler(rdf_parser, config,
+                                        librdf_sql_config_store_triple);
+
+    raptor_parser_parse_file(rdf_parser, uri, base_uri);
+
+    raptor_free_parser(rdf_parser);
+
+    raptor_free_uri(base_uri);
+    raptor_free_uri(uri);
+
+    raptor_free_memory(uri_string);
+
+    /* Check all values are given */
+    for (i = 0; i < config->predicates_count; i++) {
+        if (!config->values[i]) {
+            librdf_log(world, 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_STORAGE, NULL,
+                       "Configuration %s missing for storage %s",
+                       config->predicate_uri_strings[i], storage_name);
+            librdf_free_sql_config(config);
+            return NULL;
+        }
+    }
+
+    return config;
 }
 
 
-const char* librdf_storage_sql_dbconfig_predicates[DBCONFIG_CREATE_TABLE_LAST+2]={
-  "http://schemas.librdf.org/2006/dbconfig#createTableStatements",
-  "http://schemas.librdf.org/2006/dbconfig#createTableLiterals",
-  "http://schemas.librdf.org/2006/dbconfig#createTableResources",
-  "http://schemas.librdf.org/2006/dbconfig#createTableBnodes",
-  "http://schemas.librdf.org/2006/dbconfig#createTableModels",
-  NULL
+const char *librdf_storage_sql_dbconfig_predicates[DBCONFIG_CREATE_TABLE_LAST + 2] = {
+        "http://schemas.librdf.org/2006/dbconfig#createTableStatements",
+        "http://schemas.librdf.org/2006/dbconfig#createTableLiterals",
+        "http://schemas.librdf.org/2006/dbconfig#createTableResources",
+        "http://schemas.librdf.org/2006/dbconfig#createTableBnodes",
+        "http://schemas.librdf.org/2006/dbconfig#createTableModels",
+        NULL
 };
 
 
@@ -193,16 +198,15 @@ const char* librdf_storage_sql_dbconfig_predicates[DBCONFIG_CREATE_TABLE_LAST+2]
  * 
  * Return value: new configuration or NULL on failure
  **/
-librdf_sql_config*
-librdf_new_sql_config_for_storage(librdf_storage* storage, const char* layout,
-                                  const char *dir)
-{
-  if(!dir)
-    dir=PKGDATADIR;
-  
-  return librdf_new_sql_config(storage->world, storage->factory->name,
-                               layout, dir,
-                               librdf_storage_sql_dbconfig_predicates);
+librdf_sql_config *
+librdf_new_sql_config_for_storage(librdf_storage *storage, const char *layout,
+                                  const char *dir) {
+    if (!dir)
+        dir = PKGDATADIR;
+
+    return librdf_new_sql_config(storage->world, storage->factory->name,
+                                 layout, dir,
+                                 librdf_storage_sql_dbconfig_predicates);
 }
 
 
@@ -213,20 +217,19 @@ librdf_new_sql_config_for_storage(librdf_storage* storage, const char* layout,
  * Destructor - free a SQL configuration.
  **/
 void
-librdf_free_sql_config(librdf_sql_config* config)
-{
-  int i;
-  
-  if(config->values) {
-    for(i=0; i < config->predicates_count; i++) {
-      if(config->values[i])
-        LIBRDF_FREE(char*, config->values[i]);
+librdf_free_sql_config(librdf_sql_config *config) {
+    int i;
+
+    if (config->values) {
+        for (i = 0; i < config->predicates_count; i++) {
+            if (config->values[i])
+                LIBRDF_FREE(char*, config->values[i]);
+        }
+        LIBRDF_FREE(char*, config->values);
     }
-    LIBRDF_FREE(char*, config->values);
-  }
 
-  if(config->filename)
-    LIBRDF_FREE(char*, config->filename);
+    if (config->filename)
+        LIBRDF_FREE(char*, config->filename);
 
-  LIBRDF_FREE(char*, config);
+    LIBRDF_FREE(char*, config);
 }

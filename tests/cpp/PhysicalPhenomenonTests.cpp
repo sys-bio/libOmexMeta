@@ -32,56 +32,58 @@ public:
     };
 };
 
-
+/*
+ * todo note that Now the subjec tmetaid is embedded in
+ *  the resource, it is probably a good idea to modify the argumetns to physical phenomenon.
+ *  and subclasses
+ */
 TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
-    PhysicalPropertyResource resource = PhysicalPropertyResource("OPB:OPB_12345");
+    PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
-            subject,
             resource,
             PHYSICAL_ENTITY
     );
     std::string expected = "metaid004";
-    std::string actual = phenomenon.getSubject().str();
+    std::string actual = phenomenon.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
-    resource.free();
+//    resource.free();
 }
 
 TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
-    PhysicalPropertyResource resource = PhysicalPropertyResource("OPB:OPB_12345");
+    PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
-            subject,
             resource,
             PHYSICAL_ENTITY
     );
     std::string expected = "metaid004";
-    std::string actual = (const char *) librdf_uri_as_string(
-            librdf_node_get_uri(
-                    phenomenon.getSubject().getNode()
-            )
-    );
+    std::string actual = phenomenon.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
-    resource.free();}
+//    resource.free();
+}
 
 TEST_F(PhysicalPhenomenonTests, TestPhysicalProperty) {
+    /*
+     * todo Weak test - improve
+     */
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
-    PhysicalPropertyResource resource = PhysicalPropertyResource("OPB:OPB_12345");
+    PhysicalProperty resource = PhysicalProperty("metaid", "OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
-            subject,
             resource,
             PHYSICAL_ENTITY
     );
-    std::string expected = "https://identifiers.org/OPB/OPB_12345";
-    std::string actual = phenomenon.getPhysicalProperty().str();
+    std::string expected = "OPB:OPB_12345";
+    std::string actual = phenomenon.getPhysicalProperty().getResourceStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
-    resource.free();}
+//    resource.free();
+}
 
 
 

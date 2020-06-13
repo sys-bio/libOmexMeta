@@ -62,17 +62,17 @@ opendir (const char *path)
       entry->hSearch = FindFirstFile (file_spec, &entry->Win32FindData);
 
       if (entry->hSearch == INVALID_HANDLE_VALUE)
-	{
-	  if (lt_strlcat (file_spec, "\\*.*", sizeof file_spec) < sizeof file_spec)
-	    {
-	      entry->hSearch = FindFirstFile (file_spec, &entry->Win32FindData);
-	    }
+    {
+      if (lt_strlcat (file_spec, "\\*.*", sizeof file_spec) < sizeof file_spec)
+        {
+          entry->hSearch = FindFirstFile (file_spec, &entry->Win32FindData);
+        }
 
-	  if (entry->hSearch == INVALID_HANDLE_VALUE)
-	    {
-	      entry = (free (entry), (DIR *) 0);
-	    }
-	}
+      if (entry->hSearch == INVALID_HANDLE_VALUE)
+        {
+          entry = (free (entry), (DIR *) 0);
+        }
+    }
     }
 
   return entry;
@@ -96,7 +96,7 @@ readdir (DIR *entry)
 
   entry->firsttime = FALSE;
   if (lt_strlcpy (entry->file_info.d_name, entry->Win32FindData.cFileName,
-	sizeof entry->file_info.d_name) >= sizeof entry->file_info.d_name)
+    sizeof entry->file_info.d_name) >= sizeof entry->file_info.d_name)
     return (struct dirent *) 0;
   entry->file_info.d_namlen = strlen (entry->file_info.d_name);
 

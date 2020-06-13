@@ -42,7 +42,8 @@ extern "C" {
  *
  * Returns: item in keep the iteration or NULL to remove it
  */
-typedef librdf_statement* (*librdf_stream_map_handler)(librdf_stream *stream, void *map_context, librdf_statement *item);
+typedef librdf_statement *(*librdf_stream_map_handler)(librdf_stream *stream, void *map_context,
+                                                       librdf_statement *item);
 
 /**
  * librdf_stream_map_free_context_handler:
@@ -67,38 +68,42 @@ typedef void (*librdf_stream_map_free_context_handler)(void *map_context);
  * Flags for librdf_new_stream() get_method function pointer.
 */
 typedef enum {
-  LIBRDF_STREAM_GET_METHOD_GET_OBJECT = LIBRDF_ITERATOR_GET_METHOD_GET_OBJECT,
-  LIBRDF_STREAM_GET_METHOD_GET_CONTEXT = LIBRDF_ITERATOR_GET_METHOD_GET_CONTEXT
+    LIBRDF_STREAM_GET_METHOD_GET_OBJECT = LIBRDF_ITERATOR_GET_METHOD_GET_OBJECT,
+    LIBRDF_STREAM_GET_METHOD_GET_CONTEXT = LIBRDF_ITERATOR_GET_METHOD_GET_CONTEXT
 } librdf_stream_get_method_flags;
 
 
 /* constructor */
 
 REDLAND_API
-librdf_stream* librdf_new_stream(librdf_world *world, void* context, int (*is_end_method)(void*), int (*next_method)(void*), void* (*get_method)(void*, int), void (*finished_method)(void*));
+librdf_stream *
+librdf_new_stream(librdf_world *world, void *context, int (*is_end_method)(void *), int (*next_method)(void *),
+                  void *(*get_method)(void *, int), void (*finished_method)(void *));
 REDLAND_API
-librdf_stream* librdf_new_stream_from_node_iterator(librdf_iterator* iterator, librdf_statement* statement, librdf_statement_part field);
+librdf_stream *librdf_new_stream_from_node_iterator(librdf_iterator *iterator, librdf_statement *statement,
+                                                    librdf_statement_part field);
 
 /* destructor */
 
 REDLAND_API
-void librdf_free_stream(librdf_stream* stream);
+void librdf_free_stream(librdf_stream *stream);
 
 /* methods */
 REDLAND_API
-int librdf_stream_end(librdf_stream* stream);
+int librdf_stream_end(librdf_stream *stream);
 
 REDLAND_API
-int librdf_stream_next(librdf_stream* stream);
+int librdf_stream_next(librdf_stream *stream);
 REDLAND_API
-librdf_statement* librdf_stream_get_object(librdf_stream* stream);
+librdf_statement *librdf_stream_get_object(librdf_stream *stream);
 REDLAND_API
-librdf_node* librdf_stream_get_context2(librdf_stream* stream);
+librdf_node *librdf_stream_get_context2(librdf_stream *stream);
 REDLAND_API REDLAND_DEPRECATED
-void* librdf_stream_get_context(librdf_stream* stream);
+void *librdf_stream_get_context(librdf_stream *stream);
 
 REDLAND_API
-int librdf_stream_add_map(librdf_stream* stream, librdf_stream_map_handler map_function, librdf_stream_map_free_context_handler free_context, void *map_context);
+int librdf_stream_add_map(librdf_stream *stream, librdf_stream_map_handler map_function,
+                          librdf_stream_map_free_context_handler free_context, void *map_context);
 
 REDLAND_API REDLAND_DEPRECATED
 void librdf_stream_print(librdf_stream *stream, FILE *fh);
@@ -106,7 +111,7 @@ REDLAND_API
 int librdf_stream_write(librdf_stream *stream, raptor_iostream *iostr);
 
 REDLAND_API
-librdf_stream* librdf_new_empty_stream(librdf_world *world);
+librdf_stream *librdf_new_empty_stream(librdf_world *world);
 
 #ifdef __cplusplus
 }

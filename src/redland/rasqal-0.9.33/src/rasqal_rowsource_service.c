@@ -22,7 +22,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -31,8 +33,11 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <raptor2.h>
@@ -43,112 +48,106 @@
 
 #ifndef STANDALONE
 
-typedef struct 
-{
-  rasqal_service* svc;
-  rasqal_query* query;
-  rasqal_rowsource* rowsource;
-  int count;
-  /* bit flags; currently using RASQAL_ENGINE_BITFLAG_SILENT */
-  unsigned int flags;
+typedef struct {
+    rasqal_service *svc;
+    rasqal_query *query;
+    rasqal_rowsource *rowsource;
+    int count;
+    /* bit flags; currently using RASQAL_ENGINE_BITFLAG_SILENT */
+    unsigned int flags;
 } rasqal_service_rowsource_context;
 
 
 static int
-rasqal_service_rowsource_init(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_service_rowsource_context* con;
+rasqal_service_rowsource_init(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_service_rowsource_context *con;
 
-  con = (rasqal_service_rowsource_context*)user_data;
+    con = (rasqal_service_rowsource_context *) user_data;
 
-  con->rowsource = rasqal_service_execute_as_rowsource(con->svc,
-                                                       con->query->vars_table);
+    con->rowsource = rasqal_service_execute_as_rowsource(con->svc,
+                                                         con->query->vars_table);
 
-  if(!con->rowsource) {
-    /* Silent errors return an empty rowsource */
+    if (!con->rowsource) {
+        /* Silent errors return an empty rowsource */
 
-    if(con->flags & RASQAL_ENGINE_BITFLAG_SILENT) {
-      con->rowsource = rasqal_new_empty_rowsource(con->query->world,
-                                                  con->query);
-      return 0;
+        if (con->flags & RASQAL_ENGINE_BITFLAG_SILENT) {
+            con->rowsource = rasqal_new_empty_rowsource(con->query->world,
+                                                        con->query);
+            return 0;
+        }
+
+        return 1;
     }
 
-    return 1;
-  }
-  
-  return 0;
+    return 0;
 }
 
 
 static int
-rasqal_service_rowsource_finish(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_service_rowsource_context* con;
+rasqal_service_rowsource_finish(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_service_rowsource_context *con;
 
-  con = (rasqal_service_rowsource_context*)user_data;
+    con = (rasqal_service_rowsource_context *) user_data;
 
-  if(con->svc)
-    rasqal_free_service(con->svc);
+    if (con->svc)
+        rasqal_free_service(con->svc);
 
-  if(con->rowsource)
-    rasqal_free_rowsource(con->rowsource);
+    if (con->rowsource)
+        rasqal_free_rowsource(con->rowsource);
 
-  RASQAL_FREE(rasqal_service_rowsource_context, con);
+    RASQAL_FREE(rasqal_service_rowsource_context, con);
 
-  return 0;
+    return 0;
 }
 
 static int
-rasqal_service_rowsource_ensure_variables(rasqal_rowsource* rowsource,
-                                          void *user_data)
-{
-  rasqal_service_rowsource_context* con;
-  int rc;
-  
-  con = (rasqal_service_rowsource_context*)user_data;
+rasqal_service_rowsource_ensure_variables(rasqal_rowsource *rowsource,
+                                          void *user_data) {
+    rasqal_service_rowsource_context *con;
+    int rc;
 
-  rc = rasqal_rowsource_ensure_variables(con->rowsource);
-  if(rc)
+    con = (rasqal_service_rowsource_context *) user_data;
+
+    rc = rasqal_rowsource_ensure_variables(con->rowsource);
+    if (rc)
+        return rc;
+    /* copy in variables from format rowsource */
+    rc = rasqal_rowsource_copy_variables(rowsource, con->rowsource);
+
     return rc;
-  /* copy in variables from format rowsource */
-  rc = rasqal_rowsource_copy_variables(rowsource, con->rowsource);
-
-  return rc;
 }
 
-static rasqal_row*
-rasqal_service_rowsource_read_row(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_service_rowsource_context* con;
-  
-  con = (rasqal_service_rowsource_context*)user_data;
+static rasqal_row *
+rasqal_service_rowsource_read_row(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_service_rowsource_context *con;
 
-  return rasqal_rowsource_read_row(con->rowsource);
+    con = (rasqal_service_rowsource_context *) user_data;
+
+    return rasqal_rowsource_read_row(con->rowsource);
 }
 
-static raptor_sequence*
-rasqal_service_rowsource_read_all_rows(rasqal_rowsource* rowsource,
-                                       void *user_data)
-{
-  rasqal_service_rowsource_context* con;
+static raptor_sequence *
+rasqal_service_rowsource_read_all_rows(rasqal_rowsource *rowsource,
+                                       void *user_data) {
+    rasqal_service_rowsource_context *con;
 
-  con = (rasqal_service_rowsource_context*)user_data;
+    con = (rasqal_service_rowsource_context *) user_data;
 
-  return rasqal_rowsource_read_all_rows(con->rowsource);
+    return rasqal_rowsource_read_all_rows(con->rowsource);
 }
 
 static const rasqal_rowsource_handler rasqal_service_rowsource_handler = {
-  /* .version = */ 1,
-  "service",
-  /* .init = */ rasqal_service_rowsource_init,
-  /* .finish = */ rasqal_service_rowsource_finish,
-  /* .ensure_variables = */ rasqal_service_rowsource_ensure_variables,
-  /* .read_row = */ rasqal_service_rowsource_read_row,
-  /* .read_all_rows = */ rasqal_service_rowsource_read_all_rows,
-  /* .reset = */ NULL,
-  /* .set_preserve = */ NULL,
-  /* .get_inner_rowsource = */ NULL,
-  /* .set_origin = */ NULL,
+        /* .version = */ 1,
+                         "service",
+        /* .init = */ rasqal_service_rowsource_init,
+        /* .finish = */ rasqal_service_rowsource_finish,
+        /* .ensure_variables = */ rasqal_service_rowsource_ensure_variables,
+        /* .read_row = */ rasqal_service_rowsource_read_row,
+        /* .read_all_rows = */ rasqal_service_rowsource_read_all_rows,
+        /* .reset = */ NULL,
+        /* .set_preserve = */ NULL,
+        /* .get_inner_rowsource = */ NULL,
+        /* .set_origin = */ NULL,
 };
 
 
@@ -167,65 +166,63 @@ static const rasqal_rowsource_handler rasqal_service_rowsource_handler = {
  *
  * Return value: new rowsource or NULL on failure
  */
-rasqal_rowsource*
-rasqal_new_service_rowsource(rasqal_world *world, rasqal_query* query,
-                             raptor_uri* service_uri,
-                             const unsigned char* query_string,
-                             raptor_sequence* data_graphs,
-                             unsigned int rs_flags)
-{
-  rasqal_service_rowsource_context* con = NULL;
-  rasqal_service* svc = NULL;
-  int flags = 0;
-  int silent = (rs_flags & RASQAL_ENGINE_BITFLAG_SILENT);
+rasqal_rowsource *
+rasqal_new_service_rowsource(rasqal_world *world, rasqal_query *query,
+                             raptor_uri *service_uri,
+                             const unsigned char *query_string,
+                             raptor_sequence *data_graphs,
+                             unsigned int rs_flags) {
+    rasqal_service_rowsource_context *con = NULL;
+    rasqal_service *svc = NULL;
+    int flags = 0;
+    int silent = (rs_flags & RASQAL_ENGINE_BITFLAG_SILENT);
 
-  if(!world || !query_string)
-    goto fail;
-  
-  svc = rasqal_new_service(query->world, service_uri, query_string,
-                           data_graphs);
-  if(!svc) {
-    if(!silent)
-      goto fail;
+    if (!world || !query_string)
+        goto fail;
 
-    /* Silent errors so tidy up and return empty rowsource */
-    RASQAL_FREE(cstring, query_string);
-    if(data_graphs)
-      raptor_free_sequence(data_graphs);
+    svc = rasqal_new_service(query->world, service_uri, query_string,
+                             data_graphs);
+    if (!svc) {
+        if (!silent)
+            goto fail;
 
-    return rasqal_new_empty_rowsource(world, query);
-  }
+        /* Silent errors so tidy up and return empty rowsource */
+        RASQAL_FREE(cstring, query_string);
+        if (data_graphs)
+            raptor_free_sequence(data_graphs);
 
-  con = RASQAL_CALLOC(rasqal_service_rowsource_context*, 1, sizeof(*con));
-  if(!con)
-    goto fail;
+        return rasqal_new_empty_rowsource(world, query);
+    }
 
-  con->svc = svc;
-  con->query = query;
-  con->flags = rs_flags;
+    con = RASQAL_CALLOC(rasqal_service_rowsource_context*, 1, sizeof(*con));
+    if (!con)
+        goto fail;
 
-  return rasqal_new_rowsource_from_handler(world, query,
-                                           con,
-                                           &rasqal_service_rowsource_handler,
-                                           query->vars_table,
-                                           flags);
+    con->svc = svc;
+    con->query = query;
+    con->flags = rs_flags;
 
-  fail:
-  if(svc)
-    rasqal_free_service(svc);
-  if(con)
-    RASQAL_FREE(rasqal_service_rowsource_context, con);
-  if(query_string)
-    RASQAL_FREE(cstring, query_string);
-  if(data_graphs)
-    raptor_free_sequence(data_graphs);
+    return rasqal_new_rowsource_from_handler(world, query,
+                                             con,
+                                             &rasqal_service_rowsource_handler,
+                                             query->vars_table,
+                                             flags);
 
-  return NULL;
+    fail:
+    if (svc)
+        rasqal_free_service(svc);
+    if (con)
+        RASQAL_FREE(rasqal_service_rowsource_context, con);
+    if (query_string)
+        RASQAL_FREE(cstring, query_string);
+    if (data_graphs)
+        raptor_free_sequence(data_graphs);
+
+    return NULL;
 }
 
 
 #endif /* not STANDALONE */
-
 
 
 #ifdef STANDALONE

@@ -23,7 +23,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -32,9 +34,13 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
+
 #include <sys/types.h>
 
 #include "rasqal.h"
@@ -261,20 +267,21 @@ rasqal_digest_buffer(rasqal_digest_type type, unsigned char *output,
 
 /* Internal message digests - MD5 and SHA1 */
 #ifdef RASQAL_DIGEST_INTERNAL
+
 int
 rasqal_digest_buffer(rasqal_digest_type type, unsigned char *output,
-                     const unsigned char *input, size_t len)
-{
-  int output_len = -1;
-  
-  if(type != RASQAL_DIGEST_SHA1 && type != RASQAL_DIGEST_MD5)
-    return -1;
+                     const unsigned char *input, size_t len) {
+    int output_len = -1;
 
-  if(type == RASQAL_DIGEST_SHA1)
-    output_len = rasqal_digest_sha1_buffer(output, input, len);
-  else
-    output_len = rasqal_digest_md5_buffer(output, input, len);
-  
-  return output_len;
+    if (type != RASQAL_DIGEST_SHA1 && type != RASQAL_DIGEST_MD5)
+        return -1;
+
+    if (type == RASQAL_DIGEST_SHA1)
+        output_len = rasqal_digest_sha1_buffer(output, input, len);
+    else
+        output_len = rasqal_digest_md5_buffer(output, input, len);
+
+    return output_len;
 }
+
 #endif

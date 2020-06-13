@@ -77,8 +77,9 @@ namespace semsim {
          * an RDF instance. See RDF::fromString() for argument requirements.
          */
         void addFromString(const std::string &str,
-                       const std::string &format = "guess",
-                       const std::string &base_uri = std::string());
+                           const std::string &format = "guess",
+                           const std::string &base_uri = std::string());
+
         /*
          * @brief parse RDF directly from a uri
          * @param uri_string the uri to download containing RDF
@@ -88,7 +89,7 @@ namespace semsim {
          * @details downloads uri from the internet and creates an RDF graph.
          * See Librdf::parseUri() for more details.
          */
-        static RDF fromUri(const std::string& uri_string, const std::string& format="guess");
+        static RDF fromUri(const std::string &uri_string, const std::string &format = "guess");
 
         /*
          * @brief non-static counterpart of RDF::fromUri. Downloads and
@@ -96,7 +97,7 @@ namespace semsim {
          *
          * @details See RDF::fromUri for details.
          */
-        void addFromUri(const std::string& uri_string, const std::string& format="guess");
+        void addFromUri(const std::string &uri_string, const std::string &format = "guess");
 
         /*
          * @brief read rdf from annotations in a file
@@ -106,6 +107,7 @@ namespace semsim {
          * @details Uses LibrdfParser::fromFile under the hood
          */
         static RDF fromFile(const std::string &filename, const std::string &format);
+
         /*
          * @brief non-static counter part of RDF::fromFile. Reads rdf from annotations in a file
          * @param filename the filename to read as string

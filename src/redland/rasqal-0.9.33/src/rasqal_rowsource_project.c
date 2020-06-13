@@ -22,7 +22,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -31,8 +33,11 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <raptor2.h>
@@ -46,192 +51,185 @@
 
 #ifndef STANDALONE
 
-typedef struct 
-{
-  /* inner rowsource to project */
-  rasqal_rowsource *rowsource;
+typedef struct {
+    /* inner rowsource to project */
+    rasqal_rowsource *rowsource;
 
-  /* variable names to project input rows to */
-  raptor_sequence* projection_variables;
+    /* variable names to project input rows to */
+    raptor_sequence *projection_variables;
 
-  /* variables projection array: [output row var index]=input row var index */
-  int* projection;
+    /* variables projection array: [output row var index]=input row var index */
+    int *projection;
 
 } rasqal_project_rowsource_context;
 
 
 static int
-rasqal_project_rowsource_init(rasqal_rowsource* rowsource, void *user_data)
-{
-  return 0;
+rasqal_project_rowsource_init(rasqal_rowsource *rowsource, void *user_data) {
+    return 0;
 }
 
 
 static int
-rasqal_project_rowsource_ensure_variables(rasqal_rowsource* rowsource,
-                                         void *user_data)
-{
-  rasqal_project_rowsource_context* con;
-  int size;
-  int i;
-  
-  con = (rasqal_project_rowsource_context*)user_data; 
-
-  if(rasqal_rowsource_ensure_variables(con->rowsource))
-    return 1;
-
-  rowsource->size = 0;
-
-  size = raptor_sequence_size(con->projection_variables);
-
-  con->projection = RASQAL_MALLOC(int*, RASQAL_GOOD_CAST(size_t,
-                                                         sizeof(int) * RASQAL_GOOD_CAST(size_t, size)));
-  if(!con->projection)
-    return 1;
-  
-  for(i = 0; i < size; i++) {
-    rasqal_variable* v;
-    int offset;
-    
-    v = (rasqal_variable*)raptor_sequence_get_at(con->projection_variables, i);
-    if(!v)
-      break;
-    offset = rasqal_rowsource_get_variable_offset_by_name(con->rowsource, 
-                                                          v->name);
-#ifdef RASQAL_DEBUG
-    if(offset < 0)
-      RASQAL_DEBUG2("Variable %s is in projection but not in input rowsource\n",
-                    v->name);
-#endif
-
-    rasqal_rowsource_add_variable(rowsource, v);
-    con->projection[i] = offset;
-  }
-
-  return 0;
-}
-
-
-static int
-rasqal_project_rowsource_finish(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_project_rowsource_context *con;
-  con = (rasqal_project_rowsource_context*)user_data;
-
-  if(con->rowsource)
-    rasqal_free_rowsource(con->rowsource);
-  
-  if(con->projection_variables)
-    raptor_free_sequence(con->projection_variables);
-  
-  if(con->projection)
-    RASQAL_FREE(int*, con->projection);
-  
-  RASQAL_FREE(rasqal_project_rowsource_context, con);
-
-  return 0;
-}
-
-
-static rasqal_row*
-rasqal_project_rowsource_read_row(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_project_rowsource_context *con;
-  rasqal_row *row = NULL;
-  rasqal_row* nrow = NULL;
-  
-  con = (rasqal_project_rowsource_context*)user_data;
-
-  row = rasqal_rowsource_read_row(con->rowsource);
-  if(row) {
+rasqal_project_rowsource_ensure_variables(rasqal_rowsource *rowsource,
+                                          void *user_data) {
+    rasqal_project_rowsource_context *con;
+    int size;
     int i;
-    
-    nrow = rasqal_new_row_for_size(rowsource->world, rowsource->size);
-    if(!nrow)
-      goto failed;
 
-    rasqal_row_set_rowsource(nrow, rowsource);
-    nrow->offset = row->offset;
-      
-    for(i = 0; i < rowsource->size; i++) {
-      int offset = con->projection[i];
-      if(offset >= 0)
-        nrow->values[i] = rasqal_new_literal_from_literal(row->values[offset]);
-      else {
-        rasqal_variable* v;
-        rasqal_query *query = rowsource->query;
-        
-        v = (rasqal_variable*)raptor_sequence_get_at(con->projection_variables, i);
-        if(v && v->expression) {
-          int error = 0;
+    con = (rasqal_project_rowsource_context *) user_data;
 
-          if(v->value)
-            rasqal_free_literal(v->value);
-          
-          v->value = rasqal_expression_evaluate2(v->expression,
-                                                 query->eval_context,
-                                                 &error);
-          if(error) {
-            /* FIXME: Errors are ignored - check this */
-#if 0
-            goto failed;
+    if (rasqal_rowsource_ensure_variables(con->rowsource))
+        return 1;
+
+    rowsource->size = 0;
+
+    size = raptor_sequence_size(con->projection_variables);
+
+    con->projection = RASQAL_MALLOC(int*, RASQAL_GOOD_CAST(size_t,
+                                                           sizeof(int) * RASQAL_GOOD_CAST(size_t, size)));
+    if (!con->projection)
+        return 1;
+
+    for (i = 0; i < size; i++) {
+        rasqal_variable *v;
+        int offset;
+
+        v = (rasqal_variable *) raptor_sequence_get_at(con->projection_variables, i);
+        if (!v)
+            break;
+        offset = rasqal_rowsource_get_variable_offset_by_name(con->rowsource,
+                                                              v->name);
+#ifdef RASQAL_DEBUG
+        if(offset < 0)
+          RASQAL_DEBUG2("Variable %s is in projection but not in input rowsource\n",
+                        v->name);
 #endif
-          } else
-            nrow->values[i] = rasqal_new_literal_from_literal(v->value);
 
-        }
-      }
+        rasqal_rowsource_add_variable(rowsource, v);
+        con->projection[i] = offset;
     }
 
-    rasqal_free_row(row);
-    row = nrow;
-  }
-  
-  return row;
-
-  failed:
-  if(row)
-    rasqal_free_row(row);
-  
-  return NULL;
+    return 0;
 }
 
 
 static int
-rasqal_project_rowsource_reset(rasqal_rowsource* rowsource, void *user_data)
-{
-  rasqal_project_rowsource_context *con;
-  con = (rasqal_project_rowsource_context*)user_data;
+rasqal_project_rowsource_finish(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_project_rowsource_context *con;
+    con = (rasqal_project_rowsource_context *) user_data;
 
-  return rasqal_rowsource_reset(con->rowsource);
+    if (con->rowsource)
+        rasqal_free_rowsource(con->rowsource);
+
+    if (con->projection_variables)
+        raptor_free_sequence(con->projection_variables);
+
+    if (con->projection)
+        RASQAL_FREE(int*, con->projection);
+
+    RASQAL_FREE(rasqal_project_rowsource_context, con);
+
+    return 0;
 }
 
 
-static rasqal_rowsource*
-rasqal_project_rowsource_get_inner_rowsource(rasqal_rowsource* rowsource,
-                                             void *user_data, int offset)
-{
-  rasqal_project_rowsource_context *con;
-  con = (rasqal_project_rowsource_context*)user_data;
+static rasqal_row *
+rasqal_project_rowsource_read_row(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_project_rowsource_context *con;
+    rasqal_row *row = NULL;
+    rasqal_row *nrow = NULL;
 
-  if(offset == 0)
-    return con->rowsource;
-  return NULL;
+    con = (rasqal_project_rowsource_context *) user_data;
+
+    row = rasqal_rowsource_read_row(con->rowsource);
+    if (row) {
+        int i;
+
+        nrow = rasqal_new_row_for_size(rowsource->world, rowsource->size);
+        if (!nrow)
+            goto failed;
+
+        rasqal_row_set_rowsource(nrow, rowsource);
+        nrow->offset = row->offset;
+
+        for (i = 0; i < rowsource->size; i++) {
+            int offset = con->projection[i];
+            if (offset >= 0)
+                nrow->values[i] = rasqal_new_literal_from_literal(row->values[offset]);
+            else {
+                rasqal_variable *v;
+                rasqal_query *query = rowsource->query;
+
+                v = (rasqal_variable *) raptor_sequence_get_at(con->projection_variables, i);
+                if (v && v->expression) {
+                    int error = 0;
+
+                    if (v->value)
+                        rasqal_free_literal(v->value);
+
+                    v->value = rasqal_expression_evaluate2(v->expression,
+                                                           query->eval_context,
+                                                           &error);
+                    if (error) {
+                        /* FIXME: Errors are ignored - check this */
+#if 0
+                        goto failed;
+#endif
+                    } else
+                        nrow->values[i] = rasqal_new_literal_from_literal(v->value);
+
+                }
+            }
+        }
+
+        rasqal_free_row(row);
+        row = nrow;
+    }
+
+    return row;
+
+    failed:
+    if (row)
+        rasqal_free_row(row);
+
+    return NULL;
+}
+
+
+static int
+rasqal_project_rowsource_reset(rasqal_rowsource *rowsource, void *user_data) {
+    rasqal_project_rowsource_context *con;
+    con = (rasqal_project_rowsource_context *) user_data;
+
+    return rasqal_rowsource_reset(con->rowsource);
+}
+
+
+static rasqal_rowsource *
+rasqal_project_rowsource_get_inner_rowsource(rasqal_rowsource *rowsource,
+                                             void *user_data, int offset) {
+    rasqal_project_rowsource_context *con;
+    con = (rasqal_project_rowsource_context *) user_data;
+
+    if (offset == 0)
+        return con->rowsource;
+    return NULL;
 }
 
 
 static const rasqal_rowsource_handler rasqal_project_rowsource_handler = {
-  /* .version =          */ 1,
-  "project",
-  /* .init =             */ rasqal_project_rowsource_init,
-  /* .finish =           */ rasqal_project_rowsource_finish,
-  /* .ensure_variables = */ rasqal_project_rowsource_ensure_variables,
-  /* .read_row =         */ rasqal_project_rowsource_read_row,
-  /* .read_all_rows =    */ NULL,
-  /* .reset =            */ rasqal_project_rowsource_reset,
-  /* .set_requirements = */ NULL,
-  /* .get_inner_rowsource = */ rasqal_project_rowsource_get_inner_rowsource,
-  /* .set_origin =       */ NULL,
+        /* .version =          */ 1,
+                                  "project",
+        /* .init =             */ rasqal_project_rowsource_init,
+        /* .finish =           */ rasqal_project_rowsource_finish,
+        /* .ensure_variables = */ rasqal_project_rowsource_ensure_variables,
+        /* .read_row =         */ rasqal_project_rowsource_read_row,
+        /* .read_all_rows =    */ NULL,
+        /* .reset =            */ rasqal_project_rowsource_reset,
+        /* .set_requirements = */ NULL,
+        /* .get_inner_rowsource = */ rasqal_project_rowsource_get_inner_rowsource,
+        /* .set_origin =       */ NULL,
 };
 
 
@@ -248,42 +246,38 @@ static const rasqal_rowsource_handler rasqal_project_rowsource_handler = {
  *
  * Return value: new rowsource or NULL on failure
  */
-rasqal_rowsource*
+rasqal_rowsource *
 rasqal_new_project_rowsource(rasqal_world *world,
                              rasqal_query *query,
-                             rasqal_rowsource* rowsource,
-                             raptor_sequence* projection_variables)
-{
-  rasqal_project_rowsource_context *con;
-  int flags = 0;
-  
-  if(!world || !query || !rowsource || !projection_variables)
-    goto fail;
-  
-  con = RASQAL_CALLOC(rasqal_project_rowsource_context*, 1, sizeof(*con));
-  if(!con)
-    goto fail;
+                             rasqal_rowsource *rowsource,
+                             raptor_sequence *projection_variables) {
+    rasqal_project_rowsource_context *con;
+    int flags = 0;
 
-  con->rowsource = rowsource;
-  con->projection_variables = rasqal_variable_copy_variable_sequence(projection_variables);
+    if (!world || !query || !rowsource || !projection_variables)
+        goto fail;
 
-  return rasqal_new_rowsource_from_handler(world, query,
-                                           con,
-                                           &rasqal_project_rowsource_handler,
-                                           query->vars_table,
-                                           flags);
+    con = RASQAL_CALLOC(rasqal_project_rowsource_context*, 1, sizeof(*con));
+    if (!con)
+        goto fail;
 
-  fail:
-  if(rowsource)
-    rasqal_free_rowsource(rowsource);
-  return NULL;
+    con->rowsource = rowsource;
+    con->projection_variables = rasqal_variable_copy_variable_sequence(projection_variables);
+
+    return rasqal_new_rowsource_from_handler(world, query,
+                                             con,
+                                             &rasqal_project_rowsource_handler,
+                                             query->vars_table,
+                                             flags);
+
+    fail:
+    if (rowsource)
+        rasqal_free_rowsource(rowsource);
+    return NULL;
 }
 
 
-
-
 #endif /* not STANDALONE */
-
 
 
 #ifdef STANDALONE

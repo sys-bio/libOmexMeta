@@ -64,36 +64,45 @@ typedef unsigned long uint32_t;
  * Return value: seed with only lower 32 bits valid
  */
 unsigned long
-mtwist_seed_from_system(mtwist* mt)
-{
-  /* SOURCE 1: processor clock ticks since process started */
-  uint32_t a = (uint32_t)clock();
-  /* SOURCE 2: unix time in seconds since epoch */
-  uint32_t b = (uint32_t)time(NULL);
-  uint32_t c;
+mtwist_seed_from_system(mtwist *mt) {
+    /* SOURCE 1: processor clock ticks since process started */
+    uint32_t a = (uint32_t) clock();
+    /* SOURCE 2: unix time in seconds since epoch */
+    uint32_t b = (uint32_t) time(NULL);
+    uint32_t c;
 #ifdef HAVE_UNISTD_H
-  /* SOURCE 3: process ID (on unix) */
-  c = getpid();
+    /* SOURCE 3: process ID (on unix) */
+    c = getpid();
 #else
-  c = 0;
+    c = 0;
 #endif
-  
-  /* Mix seed sources using public domain code from
-   * http://www.burtleburtle.net/bob/c/lookup3.c
-   */
 
-#define rot(x,k) (((x)<<(k)) | ((x)>>(32-(k))))
-  
-  /* inlined mix(a, b, c) macro */
-  a -= c;  a ^= rot(c, 4);  c += b;
-  b -= a;  b ^= rot(a, 6);  a += c;
-  c -= b;  c ^= rot(b, 8);  b += a;
-  a -= c;  a ^= rot(c,16);  c += b;
-  b -= a;  b ^= rot(a,19);  /* a += c; */ /* CLANG: not needed because of below */
-  c -= b;  c ^= rot(b, 4);  /* b += a; */ /* CLANG: last calculation not needed */
+    /* Mix seed sources using public domain code from
+     * http://www.burtleburtle.net/bob/c/lookup3.c
+     */
 
-  if(mt->static_system_seed)
-    c = MT_STATIC_SEED;
+#define rot(x, k) (((x)<<(k)) | ((x)>>(32-(k))))
 
-  return (unsigned long)c;
+    /* inlined mix(a, b, c) macro */
+    a -= c;
+    a ^= rot(c, 4);
+    c += b;
+    b -= a;
+    b ^= rot(a, 6);
+    a += c;
+    c -= b;
+    c ^= rot(b, 8);
+    b += a;
+    a -= c;
+    a ^= rot(c, 16);
+    c += b;
+    b -= a;
+    b ^= rot(a, 19);  /* a += c; */ /* CLANG: not needed because of below */
+    c -= b;
+    c ^= rot(b, 4);  /* b += a; */ /* CLANG: last calculation not needed */
+
+    if (mt->static_system_seed)
+        c = MT_STATIC_SEED;
+
+    return (unsigned long) c;
 }

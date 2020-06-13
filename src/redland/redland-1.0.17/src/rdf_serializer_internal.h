@@ -34,76 +34,83 @@ extern "C" {
 
 #include <raptor2.h>
 
-struct librdf_serializer_factory_s 
-{
-  struct librdf_serializer_factory_s* next;
+struct librdf_serializer_factory_s {
+    struct librdf_serializer_factory_s *next;
 
-  /* factory name - required */
-  char *name;
+    /* factory name - required */
+    char *name;
 
-  /* factory label */
-  char *label;
+    /* factory label */
+    char *label;
 
-  /* serialize to this MIME type/ Internet Media Type - optional */
-  char *mime_type;
+    /* serialize to this MIME type/ Internet Media Type - optional */
+    char *mime_type;
 
-  /* writes the syntax defined by this URI - optional */
-  librdf_uri *type_uri;
+    /* writes the syntax defined by this URI - optional */
+    librdf_uri *type_uri;
 
-  /* the rest of this structure is populated by the
-     serializer-specific register function */
-  size_t  context_length;
+    /* the rest of this structure is populated by the
+       serializer-specific register function */
+    size_t context_length;
 
-  /* create a new serializer */
-  int (*init)(librdf_serializer* serializer, void *_context);
+    /* create a new serializer */
+    int (*init)(librdf_serializer *serializer, void *_context);
 
-  /* destroy a serializer */
-  void (*terminate)(void *_context);
+    /* destroy a serializer */
+    void (*terminate)(void *_context);
 
-  /* get/set features of serializer */
-  librdf_node* (*get_feature)(void *_context, librdf_uri* feature);
-  int (*set_feature)(void *_context, librdf_uri *feature, librdf_node* value);
+    /* get/set features of serializer */
+    librdf_node *(*get_feature)(void *_context, librdf_uri *feature);
 
-  int (*set_namespace)(void *_context, librdf_uri *uri, const char *prefix);
+    int (*set_feature)(void *_context, librdf_uri *feature, librdf_node *value);
 
-  int (*serialize_stream_to_file_handle)(void *_context, FILE *handle, librdf_uri* base_uri, librdf_stream *stream);
-  
-  int (*serialize_model_to_file_handle)(void *_context, FILE *handle, librdf_uri* base_uri, librdf_model *model);
+    int (*set_namespace)(void *_context, librdf_uri *uri, const char *prefix);
 
-  unsigned char* (*serialize_stream_to_counted_string)(void *_context, librdf_uri* base_uri, librdf_stream *stream, size_t *length_p);
+    int (*serialize_stream_to_file_handle)(void *_context, FILE *handle, librdf_uri *base_uri, librdf_stream *stream);
 
-  unsigned char* (*serialize_model_to_counted_string)(void *_context, librdf_uri* base_uri, librdf_model *model, size_t *length_p);
+    int (*serialize_model_to_file_handle)(void *_context, FILE *handle, librdf_uri *base_uri, librdf_model *model);
 
-  int (*serialize_stream_to_iostream)(void *context, librdf_uri* base_uri, librdf_stream *stream, raptor_iostream* iostr);
+    unsigned char *(*serialize_stream_to_counted_string)(void *_context, librdf_uri *base_uri, librdf_stream *stream,
+                                                         size_t *length_p);
 
-  int (*serialize_model_to_iostream)(void *context, librdf_uri* base_uri, librdf_model *model, raptor_iostream* iostr);
+    unsigned char *
+    (*serialize_model_to_counted_string)(void *_context, librdf_uri *base_uri, librdf_model *model, size_t *length_p);
+
+    int
+    (*serialize_stream_to_iostream)(void *context, librdf_uri *base_uri, librdf_stream *stream, raptor_iostream *iostr);
+
+    int
+    (*serialize_model_to_iostream)(void *context, librdf_uri *base_uri, librdf_model *model, raptor_iostream *iostr);
 };
 
 
 struct librdf_serializer_s {
-  librdf_world *world;
-  
-  void *context;
+    librdf_world *world;
 
-  void *error_user_data;
-  void *warning_user_data;
-  void (*error_fn)(void *user_data, const char *msg, ...);
-  void (*warning_fn)(void *user_data, const char *msg, ...);
+    void *context;
 
-  librdf_serializer_factory* factory;
+    void *error_user_data;
+    void *warning_user_data;
+
+    void (*error_fn)(void *user_data, const char *msg, ...);
+
+    void (*warning_fn)(void *user_data, const char *msg, ...);
+
+    librdf_serializer_factory *factory;
 };
 
 /* class methods */
-librdf_serializer_factory* librdf_get_serializer_factory(librdf_world *world, const char *name, const char *mime_type, librdf_uri *type_uri);
+librdf_serializer_factory *
+librdf_get_serializer_factory(librdf_world *world, const char *name, const char *mime_type, librdf_uri *type_uri);
 
 
 /* module init */
 void librdf_init_serializer(librdf_world *world);
 /* module finish */
 void librdf_finish_serializer(librdf_world *world);
-                    
-void librdf_serializer_raptor_constructor(librdf_world* world);
-void librdf_serializer_rdfxml_constructor(librdf_world* world);
+
+void librdf_serializer_raptor_constructor(librdf_world *world);
+void librdf_serializer_rdfxml_constructor(librdf_world *world);
 
 
 #ifdef __cplusplus

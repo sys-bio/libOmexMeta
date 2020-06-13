@@ -22,18 +22,25 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdarg.h>
+
 #ifdef HAVE_ERRNO_H
+
 #include <errno.h>
+
 #endif
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 
@@ -831,27 +838,26 @@ rasqal_new_term_from_counted_string(rasqal_world* world,
  *
  * Return value: new literal or NULL on failure
 */
-rasqal_literal*
-rasqal_new_literal_from_ntriples_counted_string(rasqal_world* world,
-                                                unsigned char* string,
-                                                size_t length)
-{
-  raptor_term* term;
-  rasqal_literal* l;
+rasqal_literal *
+rasqal_new_literal_from_ntriples_counted_string(rasqal_world *world,
+                                                unsigned char *string,
+                                                size_t length) {
+    raptor_term *term;
+    rasqal_literal *l;
 
 #if RAPTOR_VERSION >= 20012
-  term = raptor_new_term_from_counted_string(world->raptor_world_ptr,
-                                             string, length);
+    term = raptor_new_term_from_counted_string(world->raptor_world_ptr,
+                                               string, length);
 #else
-  term = rasqal_new_term_from_counted_string(world, string, length);
+    term = rasqal_new_term_from_counted_string(world, string, length);
 #endif
 
-  if(!term)
-    return NULL;
+    if (!term)
+        return NULL;
 
-  l = rasqal_new_literal_from_term(world, term);
+    l = rasqal_new_literal_from_term(world, term);
 
-  raptor_free_term(term);
+    raptor_free_term(term);
 
-  return l;
+    return l;
 }

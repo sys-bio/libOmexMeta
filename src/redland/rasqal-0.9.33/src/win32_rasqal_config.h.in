@@ -54,15 +54,14 @@ extern "C" {
 #ifndef _TIMEVAL_DEFINED
 #define _TIMEVAL_DEFINED
 typedef struct timeval {
-  long tv_sec;
-  long tv_usec;
+    long tv_sec;
+    long tv_usec;
 } timeval;
 #endif
 
-struct timezone
-{
-  int tz_minuteswest; /* minutes West of Greenwich */
-  int tz_dsttime;     /* type of dst correction */
+struct timezone {
+    int tz_minuteswest; /* minutes West of Greenwich */
+    int tz_dsttime;     /* type of dst correction */
 };
 
 int rasqal_gettimeofday(struct timeval *tv, struct timezone *tz);

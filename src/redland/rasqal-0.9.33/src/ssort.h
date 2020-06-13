@@ -23,51 +23,50 @@
  *
 */
 static int
-rasqal_ssort_r(void* base, size_t nel, size_t width,
+rasqal_ssort_r(void *base, size_t nel, size_t width,
                raptor_data_compare_arg_handler comp,
-               void* arg)
-{
-  size_t wnel, gap, k;
+               void *arg) {
+    size_t wnel, gap, k;
 
-  /* bad args */
-  if(!base || !width || !comp)
-    return -1;
+    /* bad args */
+    if (!base || !width || !comp)
+        return -1;
 
-  /* nothing to do */
-  if(nel < 2)
-    return 0;
+    /* nothing to do */
+    if (nel < 2)
+        return 0;
 
-  wnel = width * nel;
-  for(gap = 0; ++gap < nel;)
-    gap *= 3;
+    wnel = width * nel;
+    for (gap = 0; ++gap < nel;)
+        gap *= 3;
 
-  while((gap /= 3) != 0) {
-    size_t wgap = width * gap;
-    size_t i;
+    while ((gap /= 3) != 0) {
+        size_t wgap = width * gap;
+        size_t i;
 
-    for(i = wgap; i < wnel; i += width) {
-      size_t j = i;
-      do {
-        char* a;
-        char* b;
+        for (i = wgap; i < wnel; i += width) {
+            size_t j = i;
+            do {
+                char *a;
+                char *b;
 
-        j -= wgap;
-        a = j + (char *)base;
-        b = a + wgap;
+                j -= wgap;
+                a = j + (char *) base;
+                b = a + wgap;
 
-        if ((*comp)(a, b, arg) <= 0)
-          break;
+                if ((*comp)(a, b, arg) <= 0)
+                    break;
 
-        k = width;
-        do {
-          char tmp = *a;
-          *a++ = *b;
-          *b++ = tmp;
-        } while (--k);
+                k = width;
+                do {
+                    char tmp = *a;
+                    *a++ = *b;
+                    *b++ = tmp;
+                } while (--k);
 
-      } while(j >= wgap);
+            } while (j >= wgap);
+        }
     }
-  }
 
-  return 0;
+    return 0;
 }

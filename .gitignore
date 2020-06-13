@@ -25,3 +25,4 @@ build-macos
 dist
 pysemsim.egg-info
 docs/cpp
+install-ubuntu

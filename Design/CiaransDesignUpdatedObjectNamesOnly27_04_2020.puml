@@ -141,7 +141,7 @@ namespace Legend {
 	    toTriples : std::vector<Triple>
     }
 
-	class PhysicalPropertyResource
+	class PhysicalProperty
 
 
 	class RDF {
@@ -207,7 +207,7 @@ namespace Legend {
      Predicate <-- PredicatePtr
 
 
-    Resource <|-- PhysicalPropertyResource
+    Resource <|-- PhysicalProperty
 
 
     PhysicalPhenomenon <|-- PhysicalEntity
@@ -238,7 +238,7 @@ namespace Legend {
         Downloads from URL
     end note
 
-    PhysicalPhenomenon *-- PhysicalPropertyResource
+    PhysicalPhenomenon *-- PhysicalProperty
     PhysicalPhenomenonPtr -->  PhysicalPhenomenon
 
     PhysicalPhenomenonPtr --> Editor : takes as argument
@@ -256,7 +256,7 @@ namespace Legend {
     Exception <|-- InappropriateResourceException
     Exception <|-- LibRDFException
 
-'    PhysicalPropertyResource "1" *-- "many" Triple
+'    PhysicalProperty "1" *-- "many" Triple
 '    PhysicalEntity "1" *-- "many" Triple
 '    PhysicalProcess "1" *-- "many" Triple
 '    PhysicalForce "1" *-- "many" Triple

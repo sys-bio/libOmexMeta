@@ -45,6 +45,7 @@
 #endif
 
 #include <inttypes.h>
+
 typedef int8_t flex_int8_t;
 typedef uint8_t flex_uint8_t;
 typedef int16_t flex_int16_t;
@@ -104,8 +105,8 @@ typedef unsigned int flex_uint32_t;
 
 #define YY_USE_CONST
 
-#endif	/* defined (__STDC__) */
-#endif	/* ! __cplusplus */
+#endif    /* defined (__STDC__) */
+#endif    /* ! __cplusplus */
 
 #ifdef YY_USE_CONST
 #define yyconst const
@@ -116,7 +117,7 @@ typedef unsigned int flex_uint32_t;
 /* An opaque pointer. */
 #ifndef YY_TYPEDEF_YY_SCANNER_T
 #define YY_TYPEDEF_YY_SCANNER_T
-typedef void* yyscan_t;
+typedef void *yyscan_t;
 #endif
 
 /* For convenience, these vars (plus the bison vars far below)
@@ -155,70 +156,79 @@ typedef size_t yy_size_t;
 
 #ifndef YY_STRUCT_YY_BUFFER_STATE
 #define YY_STRUCT_YY_BUFFER_STATE
-struct yy_buffer_state
-	{
-	FILE *yy_input_file;
+struct yy_buffer_state {
+    FILE *yy_input_file;
 
-	char *yy_ch_buf;		/* input buffer */
-	char *yy_buf_pos;		/* current position in input buffer */
+    char *yy_ch_buf;        /* input buffer */
+    char *yy_buf_pos;        /* current position in input buffer */
 
-	/* Size of input buffer in bytes, not including room for EOB
-	 * characters.
-	 */
-	yy_size_t yy_buf_size;
+    /* Size of input buffer in bytes, not including room for EOB
+     * characters.
+     */
+    yy_size_t yy_buf_size;
 
-	/* Number of characters read into yy_ch_buf, not including EOB
-	 * characters.
-	 */
-	int yy_n_chars;
+    /* Number of characters read into yy_ch_buf, not including EOB
+     * characters.
+     */
+    int yy_n_chars;
 
-	/* Whether we "own" the buffer - i.e., we know we created it,
-	 * and can realloc() it to grow it, and should free() it to
-	 * delete it.
-	 */
-	int yy_is_our_buffer;
+    /* Whether we "own" the buffer - i.e., we know we created it,
+     * and can realloc() it to grow it, and should free() it to
+     * delete it.
+     */
+    int yy_is_our_buffer;
 
-	/* Whether this is an "interactive" input source; if so, and
-	 * if we're using stdio for input, then we want to use getc()
-	 * instead of fread(), to make sure we stop fetching input after
-	 * each newline.
-	 */
-	int yy_is_interactive;
+    /* Whether this is an "interactive" input source; if so, and
+     * if we're using stdio for input, then we want to use getc()
+     * instead of fread(), to make sure we stop fetching input after
+     * each newline.
+     */
+    int yy_is_interactive;
 
-	/* Whether we're considered to be at the beginning of a line.
-	 * If so, '^' rules will be active on the next match, otherwise
-	 * not.
-	 */
-	int yy_at_bol;
+    /* Whether we're considered to be at the beginning of a line.
+     * If so, '^' rules will be active on the next match, otherwise
+     * not.
+     */
+    int yy_at_bol;
 
     int yy_bs_lineno; /**< The line count. */
     int yy_bs_column; /**< The column count. */
-    
-	/* Whether to try to fill the input buffer when we reach the
-	 * end of it.
-	 */
-	int yy_fill_buffer;
 
-	int yy_buffer_status;
+    /* Whether to try to fill the input buffer when we reach the
+     * end of it.
+     */
+    int yy_fill_buffer;
 
-	};
+    int yy_buffer_status;
+
+};
 #endif /* !YY_STRUCT_YY_BUFFER_STATE */
 
-void sparql_lexer_restart (FILE *input_file ,yyscan_t yyscanner );
-void sparql_lexer__switch_to_buffer (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
-YY_BUFFER_STATE sparql_lexer__create_buffer (FILE *file,int size ,yyscan_t yyscanner );
-void sparql_lexer__delete_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
-void sparql_lexer__flush_buffer (YY_BUFFER_STATE b ,yyscan_t yyscanner );
-void sparql_lexer_push_buffer_state (YY_BUFFER_STATE new_buffer ,yyscan_t yyscanner );
-void sparql_lexer_pop_buffer_state (yyscan_t yyscanner );
+void sparql_lexer_restart(FILE *input_file, yyscan_t yyscanner);
 
-YY_BUFFER_STATE sparql_lexer__scan_buffer (char *base,yy_size_t size ,yyscan_t yyscanner );
-YY_BUFFER_STATE sparql_lexer__scan_string (yyconst char *yy_str ,yyscan_t yyscanner );
-YY_BUFFER_STATE sparql_lexer__scan_bytes (yyconst char *bytes,int len ,yyscan_t yyscanner );
+void sparql_lexer__switch_to_buffer(YY_BUFFER_STATE new_buffer, yyscan_t yyscanner);
 
-void *sparql_lexer_alloc (yy_size_t ,yyscan_t yyscanner );
-void *sparql_lexer_realloc (void *,yy_size_t ,yyscan_t yyscanner );
-void sparql_lexer_free (void * ,yyscan_t yyscanner );
+YY_BUFFER_STATE sparql_lexer__create_buffer(FILE *file, int size, yyscan_t yyscanner);
+
+void sparql_lexer__delete_buffer(YY_BUFFER_STATE b, yyscan_t yyscanner);
+
+void sparql_lexer__flush_buffer(YY_BUFFER_STATE b, yyscan_t yyscanner);
+
+void sparql_lexer_push_buffer_state(YY_BUFFER_STATE new_buffer, yyscan_t yyscanner);
+
+void sparql_lexer_pop_buffer_state(yyscan_t yyscanner);
+
+YY_BUFFER_STATE sparql_lexer__scan_buffer(char *base, yy_size_t size, yyscan_t yyscanner);
+
+YY_BUFFER_STATE sparql_lexer__scan_string(yyconst char *yy_str, yyscan_t yyscanner);
+
+YY_BUFFER_STATE sparql_lexer__scan_bytes(yyconst char *bytes, int len, yyscan_t yyscanner);
+
+void *sparql_lexer_alloc(yy_size_t, yyscan_t yyscanner);
+
+void *sparql_lexer_realloc(void *, yy_size_t, yyscan_t yyscanner);
+
+void sparql_lexer_free(void *, yyscan_t yyscanner);
 
 /* Begin user sect3 */
 
@@ -244,46 +254,46 @@ void sparql_lexer_free (void * ,yyscan_t yyscanner );
 
 #define YY_EXTRA_TYPE rasqal_query*
 
-int sparql_lexer_lex_init (yyscan_t* scanner);
+int sparql_lexer_lex_init(yyscan_t *scanner);
 
-int sparql_lexer_lex_init_extra (YY_EXTRA_TYPE user_defined,yyscan_t* scanner);
+int sparql_lexer_lex_init_extra(YY_EXTRA_TYPE user_defined, yyscan_t *scanner);
 
 /* Accessor methods to globals.
    These are made visible to non-reentrant scanners for convenience. */
 
-int sparql_lexer_lex_destroy (yyscan_t yyscanner );
+int sparql_lexer_lex_destroy(yyscan_t yyscanner);
 
-int sparql_lexer_get_debug (yyscan_t yyscanner );
+int sparql_lexer_get_debug(yyscan_t yyscanner);
 
-void sparql_lexer_set_debug (int debug_flag ,yyscan_t yyscanner );
+void sparql_lexer_set_debug(int debug_flag, yyscan_t yyscanner);
 
-YY_EXTRA_TYPE sparql_lexer_get_extra (yyscan_t yyscanner );
+YY_EXTRA_TYPE sparql_lexer_get_extra(yyscan_t yyscanner);
 
-void sparql_lexer_set_extra (YY_EXTRA_TYPE user_defined ,yyscan_t yyscanner );
+void sparql_lexer_set_extra(YY_EXTRA_TYPE user_defined, yyscan_t yyscanner);
 
-FILE *sparql_lexer_get_in (yyscan_t yyscanner );
+FILE *sparql_lexer_get_in(yyscan_t yyscanner);
 
-void sparql_lexer_set_in  (FILE * in_str ,yyscan_t yyscanner );
+void sparql_lexer_set_in(FILE *in_str, yyscan_t yyscanner);
 
-FILE *sparql_lexer_get_out (yyscan_t yyscanner );
+FILE *sparql_lexer_get_out(yyscan_t yyscanner);
 
-void sparql_lexer_set_out  (FILE * out_str ,yyscan_t yyscanner );
+void sparql_lexer_set_out(FILE *out_str, yyscan_t yyscanner);
 
-int sparql_lexer_get_leng (yyscan_t yyscanner );
+int sparql_lexer_get_leng(yyscan_t yyscanner);
 
-char *sparql_lexer_get_text (yyscan_t yyscanner );
+char *sparql_lexer_get_text(yyscan_t yyscanner);
 
-int sparql_lexer_get_lineno (yyscan_t yyscanner );
+int sparql_lexer_get_lineno(yyscan_t yyscanner);
 
-void sparql_lexer_set_lineno (int line_number ,yyscan_t yyscanner );
+void sparql_lexer_set_lineno(int line_number, yyscan_t yyscanner);
 
-int sparql_lexer_get_column  (yyscan_t yyscanner );
+int sparql_lexer_get_column(yyscan_t yyscanner);
 
-void sparql_lexer_set_column (int column_no ,yyscan_t yyscanner );
+void sparql_lexer_set_column(int column_no, yyscan_t yyscanner);
 
-YYSTYPE * sparql_lexer_get_lval (yyscan_t yyscanner );
+YYSTYPE *sparql_lexer_get_lval(yyscan_t yyscanner);
 
-void sparql_lexer_set_lval (YYSTYPE * yylval_param ,yyscan_t yyscanner );
+void sparql_lexer_set_lval(YYSTYPE *yylval_param, yyscan_t yyscanner);
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -293,7 +303,9 @@ void sparql_lexer_set_lval (YYSTYPE * yylval_param ,yyscan_t yyscanner );
 #ifdef __cplusplus
 extern "C" int sparql_lexer_wrap (yyscan_t yyscanner );
 #else
-extern int sparql_lexer_wrap (yyscan_t yyscanner );
+
+extern int sparql_lexer_wrap(yyscan_t yyscanner);
+
 #endif
 #endif
 
@@ -331,7 +343,7 @@ static int yy_flex_strlen (yyconst char * ,yyscan_t yyscanner);
 #define YY_DECL_IS_OURS 1
 
 extern int sparql_lexer_lex \
-               (YYSTYPE * yylval_param ,yyscan_t yyscanner);
+(YYSTYPE *yylval_param, yyscan_t yyscanner);
 
 #define YY_DECL int sparql_lexer_lex \
                (YYSTYPE * yylval_param , yyscan_t yyscanner)

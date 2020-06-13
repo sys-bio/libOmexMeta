@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -37,8 +39,9 @@
 
 
 #ifndef STANDALONE
+
 /* prototypes of local helper functions */
-static void* librdf_iterator_update_current_element(librdf_iterator* iterator);
+static void *librdf_iterator_update_current_element(librdf_iterator *iterator);
 
 
 /**
@@ -57,49 +60,46 @@ static void* librdf_iterator_update_current_element(librdf_iterator* iterator);
  * Return value: a new #librdf_iterator object or NULL on failure
 **/
 REDLAND_EXTERN_C
-librdf_iterator*
+librdf_iterator *
 librdf_new_iterator(librdf_world *world,
-                    void* context,
-                    int (*is_end_method)(void*),
-                    int (*next_method)(void*),
-                    void* (*get_method)(void*, int),
-                    void (*finished_method)(void*))
-{
-  librdf_iterator* new_iterator;
-  
-  librdf_world_open(world);
+                    void *context,
+                    int (*is_end_method)(void *),
+                    int (*next_method)(void *),
+                    void *(*get_method)(void *, int),
+                    void (*finished_method)(void *)) {
+    librdf_iterator *new_iterator;
 
-  new_iterator = LIBRDF_CALLOC(librdf_iterator*, 1,  sizeof(*new_iterator));
-  if(!new_iterator)
-    return NULL;
-  
-  new_iterator->world=world;
+    librdf_world_open(world);
 
-  new_iterator->context=context;
-  
-  new_iterator->is_end_method=is_end_method;
-  new_iterator->next_method=next_method;
-  new_iterator->get_method=get_method;
-  new_iterator->finished_method=finished_method;
+    new_iterator = LIBRDF_CALLOC(librdf_iterator*, 1, sizeof(*new_iterator));
+    if (!new_iterator)
+        return NULL;
 
-  new_iterator->is_finished=0;
-  new_iterator->current=NULL;
+    new_iterator->world = world;
 
-  return new_iterator;
+    new_iterator->context = context;
+
+    new_iterator->is_end_method = is_end_method;
+    new_iterator->next_method = next_method;
+    new_iterator->get_method = get_method;
+    new_iterator->finished_method = finished_method;
+
+    new_iterator->is_finished = 0;
+    new_iterator->current = NULL;
+
+    return new_iterator;
 }
 
 
 /* helper function for deleting list map */
 static void
-librdf_iterator_free_iterator_map(void *list_data, void *user_data) 
-{
-  librdf_iterator_map* map=(librdf_iterator_map*)list_data;
-  if(map->free_context)
-    map->free_context(map->context);
-  LIBRDF_FREE(librdf_iterator_map, map);
+librdf_iterator_free_iterator_map(void *list_data, void *user_data) {
+    librdf_iterator_map *map = (librdf_iterator_map *) list_data;
+    if (map->free_context)
+        map->free_context(map->context);
+    LIBRDF_FREE(librdf_iterator_map, map);
 }
 
-  
 
 /**
  * librdf_free_iterator:
@@ -109,23 +109,21 @@ librdf_iterator_free_iterator_map(void *list_data, void *user_data)
  * 
  **/
 void
-librdf_free_iterator(librdf_iterator* iterator) 
-{
-  if(!iterator)
-    return;
-  
-  if(iterator->finished_method)
-    iterator->finished_method(iterator->context);
+librdf_free_iterator(librdf_iterator *iterator) {
+    if (!iterator)
+        return;
 
-  if(iterator->map_list) {
-    librdf_list_foreach(iterator->map_list,
-                        librdf_iterator_free_iterator_map, NULL);
-    librdf_free_list(iterator->map_list);
-  }
-  
-  LIBRDF_FREE(librdf_iterator, iterator);
+    if (iterator->finished_method)
+        iterator->finished_method(iterator->context);
+
+    if (iterator->map_list) {
+        librdf_list_foreach(iterator->map_list,
+                            librdf_iterator_free_iterator_map, NULL);
+        librdf_free_list(iterator->map_list);
+    }
+
+    LIBRDF_FREE(librdf_iterator, iterator);
 }
-
 
 
 /*
@@ -138,65 +136,65 @@ librdf_free_iterator(librdf_iterator* iterator)
  * 
  * Return value: the next element or NULL if the iterator has ended
  */
-static void*
-librdf_iterator_update_current_element(librdf_iterator* iterator) 
-{
-  void *element=NULL;
+static void *
+librdf_iterator_update_current_element(librdf_iterator *iterator) {
+    void *element = NULL;
 
-  if(iterator->is_updated)
-    return iterator->current;
+    if (iterator->is_updated)
+        return iterator->current;
 
-  iterator->is_updating=1;
-  
-  /* find next element subject to map */
-  while(!iterator->is_end_method(iterator->context)) {
-    librdf_iterator* map_iterator; /* Iterator over iterator->map_list librdf_list */
-    element=iterator->get_method(iterator->context, 
-                                 LIBRDF_ITERATOR_GET_METHOD_GET_OBJECT);
-    if(!element)
-      break;
+    iterator->is_updating = 1;
 
-    if(!iterator->map_list || !librdf_list_size(iterator->map_list))
-      break;
-    
-    map_iterator=librdf_list_get_iterator(iterator->map_list);
-    if(!map_iterator)
-      break;
-    
-    while(!librdf_iterator_end(map_iterator)) {
-      librdf_iterator_map *map=(librdf_iterator_map*)librdf_iterator_get_object(map_iterator);
-      if(!map)
-        break;
-      
-      /* apply the map to the element  */
-      element=map->fn(iterator, map->context, element);
-      if(!element)
-        break;
+    /* find next element subject to map */
+    while (!iterator->is_end_method(iterator->context)) {
+        librdf_iterator *map_iterator; /* Iterator over iterator->map_list librdf_list */
+        element = iterator->get_method(iterator->context,
+                                       LIBRDF_ITERATOR_GET_METHOD_GET_OBJECT);
+        if (!element)
+            break;
 
-      librdf_iterator_next(map_iterator);
+        if (!iterator->map_list || !librdf_list_size(iterator->map_list))
+            break;
+
+        map_iterator = librdf_list_get_iterator(iterator->map_list);
+        if (!map_iterator)
+            break;
+
+        while (!librdf_iterator_end(map_iterator)) {
+            librdf_iterator_map *map = (librdf_iterator_map *) librdf_iterator_get_object(map_iterator);
+            if (!map)
+                break;
+
+            /* apply the map to the element  */
+            element = map->fn(iterator, map->context, element);
+            if (!element)
+                break;
+
+            librdf_iterator_next(map_iterator);
+        }
+        librdf_free_iterator(map_iterator);
+
+
+        /* found something, return it */
+        if (element)
+            break;
+
+        iterator->next_method(iterator->context);
     }
-    librdf_free_iterator(map_iterator);
-    
 
-    /* found something, return it */
-    if(element)
-      break;
+    iterator->current = element;
+    if (!iterator->current)
+        iterator->is_finished = 1;
 
-    iterator->next_method(iterator->context);
-  }
+    iterator->is_updated = 1;
+    iterator->is_updating = 0;
 
-  iterator->current=element;
-  if(!iterator->current)
-    iterator->is_finished=1;
-
-  iterator->is_updated=1;
-  iterator->is_updating=0;
-
-  return element;
+    return element;
 }
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_iterator_have_elements:
  * @iterator: the #librdf_iterator object
@@ -208,10 +206,10 @@ librdf_iterator_update_current_element(librdf_iterator* iterator)
  * Return value: 0 if the iterator has finished
  **/
 int
-librdf_iterator_have_elements(librdf_iterator* iterator) 
-{
-  return !librdf_iterator_end(iterator);
+librdf_iterator_have_elements(librdf_iterator *iterator) {
+    return !librdf_iterator_end(iterator);
 }
+
 #endif
 
 
@@ -224,14 +222,13 @@ librdf_iterator_have_elements(librdf_iterator* iterator)
  * Return value: non 0 if the iterator has finished
  **/
 int
-librdf_iterator_end(librdf_iterator* iterator) 
-{
-  if(!iterator || iterator->is_finished)
-    return 1;
+librdf_iterator_end(librdf_iterator *iterator) {
+    if (!iterator || iterator->is_finished)
+        return 1;
 
-  librdf_iterator_update_current_element(iterator);
+    librdf_iterator_update_current_element(iterator);
 
-  return iterator->is_finished;
+    return iterator->is_finished;
 }
 
 
@@ -244,20 +241,19 @@ librdf_iterator_end(librdf_iterator* iterator)
  * Return value: non 0 if the iterator has finished
  **/
 int
-librdf_iterator_next(librdf_iterator* iterator)
-{
-  if(!iterator || iterator->is_finished)
-    return 1;
+librdf_iterator_next(librdf_iterator *iterator) {
+    if (!iterator || iterator->is_finished)
+        return 1;
 
-  if(iterator->next_method(iterator->context)) {
-    iterator->is_finished=1;
-    return 1;
-  }
+    if (iterator->next_method(iterator->context)) {
+        iterator->is_finished = 1;
+        return 1;
+    }
 
-  iterator->is_updated=0;
-  librdf_iterator_update_current_element(iterator);
-  
-  return iterator->is_finished;
+    iterator->is_updated = 0;
+    librdf_iterator_update_current_element(iterator);
+
+    return iterator->is_finished;
 }
 
 
@@ -274,13 +270,12 @@ librdf_iterator_next(librdf_iterator* iterator)
  * 
  * Return value: The next element or NULL if the iterator has finished.
  **/
-void*
-librdf_iterator_get_object(librdf_iterator* iterator)
-{
-  if(iterator->is_finished)
-    return NULL;
+void *
+librdf_iterator_get_object(librdf_iterator *iterator) {
+    if (iterator->is_finished)
+        return NULL;
 
-  return librdf_iterator_update_current_element(iterator);
+    return librdf_iterator_update_current_element(iterator);
 }
 
 
@@ -297,22 +292,20 @@ librdf_iterator_get_object(librdf_iterator* iterator)
  * 
  * Return value: The context (can be NULL) or NULL if the iterator has finished.
  **/
-void*
-librdf_iterator_get_context(librdf_iterator* iterator) 
-{
-  if(iterator->is_finished)
-    return NULL;
+void *
+librdf_iterator_get_context(librdf_iterator *iterator) {
+    if (iterator->is_finished)
+        return NULL;
 
-  /* Update current element only if we are not already in the middle of the
-     element update process.
-     Allows inspection of context in iterator map callbacks. */
-  if(!iterator->is_updating && !librdf_iterator_update_current_element(iterator))
-    return NULL;
+    /* Update current element only if we are not already in the middle of the
+       element update process.
+       Allows inspection of context in iterator map callbacks. */
+    if (!iterator->is_updating && !librdf_iterator_update_current_element(iterator))
+        return NULL;
 
-  return iterator->get_method(iterator->context, 
-                              LIBRDF_ITERATOR_GET_METHOD_GET_CONTEXT);
+    return iterator->get_method(iterator->context,
+                                LIBRDF_ITERATOR_GET_METHOD_GET_CONTEXT);
 }
-
 
 
 /**
@@ -323,19 +316,17 @@ librdf_iterator_get_context(librdf_iterator* iterator)
  *
  * Return value: The context or NULL if the iterator has finished.
  **/
-void*
-librdf_iterator_get_key(librdf_iterator* iterator) 
-{
-  if(iterator->is_finished)
-    return NULL;
+void *
+librdf_iterator_get_key(librdf_iterator *iterator) {
+    if (iterator->is_finished)
+        return NULL;
 
-  if(!librdf_iterator_update_current_element(iterator))
-    return NULL;
+    if (!librdf_iterator_update_current_element(iterator))
+        return NULL;
 
-  return iterator->get_method(iterator->context, 
-                              LIBRDF_ITERATOR_GET_METHOD_GET_KEY);
+    return iterator->get_method(iterator->context,
+                                LIBRDF_ITERATOR_GET_METHOD_GET_KEY);
 }
-
 
 
 /**
@@ -346,19 +337,17 @@ librdf_iterator_get_key(librdf_iterator* iterator)
  *
  * Return value: The context or NULL if the iterator has finished.
  **/
-void*
-librdf_iterator_get_value(librdf_iterator* iterator) 
-{
-  if(iterator->is_finished)
-    return NULL;
+void *
+librdf_iterator_get_value(librdf_iterator *iterator) {
+    if (iterator->is_finished)
+        return NULL;
 
-  if(!librdf_iterator_update_current_element(iterator))
-    return NULL;
+    if (!librdf_iterator_update_current_element(iterator))
+        return NULL;
 
-  return iterator->get_method(iterator->context, 
-                              LIBRDF_ITERATOR_GET_METHOD_GET_VALUE);
+    return iterator->get_method(iterator->context,
+                                LIBRDF_ITERATOR_GET_METHOD_GET_VALUE);
 }
-
 
 
 /**
@@ -383,33 +372,32 @@ librdf_iterator_get_value(librdf_iterator* iterator)
  * Return value: Non 0 on failure
  **/
 int
-librdf_iterator_add_map(librdf_iterator* iterator, 
+librdf_iterator_add_map(librdf_iterator *iterator,
                         librdf_iterator_map_handler map_function,
                         librdf_iterator_map_free_context_handler free_context,
-                        void *map_context)
-{
-  librdf_iterator_map *map;
-  
-  if(!iterator->map_list) {
-    iterator->map_list=librdf_new_list(iterator->world);
-    if(!iterator->map_list)
-      return 1;
-  }
+                        void *map_context) {
+    librdf_iterator_map *map;
 
-  map = LIBRDF_CALLOC(librdf_iterator_map*, 1, sizeof(*map));
-  if(!map)
-    return 1;
+    if (!iterator->map_list) {
+        iterator->map_list = librdf_new_list(iterator->world);
+        if (!iterator->map_list)
+            return 1;
+    }
 
-  map->fn=map_function;
-  map->free_context=free_context;
-  map->context=map_context;
+    map = LIBRDF_CALLOC(librdf_iterator_map*, 1, sizeof(*map));
+    if (!map)
+        return 1;
 
-  if(librdf_list_add(iterator->map_list, map)) {
-    LIBRDF_FREE(librdf_iterator_map, map);
-    return 1;
-  }
-  
-  return 0;
+    map->fn = map_function;
+    map->free_context = free_context;
+    map->context = map_context;
+
+    if (librdf_list_add(iterator->map_list, map)) {
+        LIBRDF_FREE(librdf_iterator_map, map);
+        return 1;
+    }
+
+    return 0;
 }
 
 /**
@@ -420,27 +408,25 @@ librdf_iterator_add_map(librdf_iterator* iterator,
  * 
  * Return value: a new #librdf_iterator object or NULL on failure
 **/
-librdf_iterator*
-librdf_new_empty_iterator(librdf_world *world)
-{
-  librdf_iterator* new_iterator;
-  
-  librdf_world_open(world);
+librdf_iterator *
+librdf_new_empty_iterator(librdf_world *world) {
+    librdf_iterator *new_iterator;
 
-  new_iterator = LIBRDF_CALLOC(librdf_iterator*, 1,  sizeof(*new_iterator));
-  if(!new_iterator)
-    return NULL;
-  
-  new_iterator->world=world;
+    librdf_world_open(world);
 
-  /* This ensures end, next, get_object, get_context factory methods
-   * never get called and the methods always return finished.
-   */
-  new_iterator->is_finished=1;
+    new_iterator = LIBRDF_CALLOC(librdf_iterator*, 1, sizeof(*new_iterator));
+    if (!new_iterator)
+        return NULL;
 
-  return new_iterator;
+    new_iterator->world = world;
+
+    /* This ensures end, next, get_object, get_context factory methods
+     * never get called and the methods always return finished.
+     */
+    new_iterator->is_finished = 1;
+
+    return new_iterator;
 }
-
 
 
 #endif
@@ -468,7 +454,7 @@ main(int argc, char *argv[])
   librdf_iterator* iterator;
   int count;
   const char *program=librdf_basename((const char*)argv[0]);
-	
+
   world=librdf_new_world();
   librdf_world_open(world);
 

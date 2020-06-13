@@ -24,18 +24,25 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdarg.h>
+
 #ifdef HAVE_ERRNO_H
+
 #include <errno.h>
+
 #endif
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 
@@ -65,37 +72,37 @@
  *
  */
 struct raptor_sequence_s {
-  /* how many items are in the sequence 0..capacity */
-  int size;
+    /* how many items are in the sequence 0..capacity */
+    int size;
 
-  /* length of the 'sequence' array below */
-  int capacity;
+    /* length of the 'sequence' array below */
+    int capacity;
 
-  /* offset of the first data item in the sequence: 0..capacity-1 */
-  int start;
+    /* offset of the first data item in the sequence: 0..capacity-1 */
+    int start;
 
-  /* array of size 'capacity' pointing to the data */
-  void **sequence;
-
-
-  /* handler to call to free a data item (or NULL) */
-  raptor_data_free_handler free_handler;
-
-  /* handler to call to print a data item (or NULL) */
-  raptor_data_print_handler print_handler;
+    /* array of size 'capacity' pointing to the data */
+    void **sequence;
 
 
-  /* context pointer for @context_free_handler and @context_print_handler */
-  void *handler_context;
+    /* handler to call to free a data item (or NULL) */
+    raptor_data_free_handler free_handler;
 
-  /* handler to call to free a data item (or NULL) also passing in
-   * as first arg the @handler_context */
-  raptor_data_context_free_handler context_free_handler;
+    /* handler to call to print a data item (or NULL) */
+    raptor_data_print_handler print_handler;
 
-  /* handler to call to print a data item (or NULL) also passing in
-   * as first arg the @handler_context
-   */
-  raptor_data_context_print_handler context_print_handler;
+
+    /* context pointer for @context_free_handler and @context_print_handler */
+    void *handler_context;
+
+    /* handler to call to free a data item (or NULL) also passing in
+     * as first arg the @handler_context */
+    raptor_data_context_free_handler context_free_handler;
+
+    /* handler to call to print a data item (or NULL) also passing in
+     * as first arg the @handler_context
+     */
+    raptor_data_context_print_handler context_print_handler;
 };
 
 
@@ -118,18 +125,17 @@ static int raptor_sequence_ensure(raptor_sequence *seq, int capacity, int grow_a
  *
  * Return value: a new #raptor_sequence or NULL on failure 
  **/
-raptor_sequence*
+raptor_sequence *
 raptor_new_sequence(raptor_data_free_handler free_handler,
-                    raptor_data_print_handler print_handler)
-{
-  raptor_sequence* seq = RAPTOR_CALLOC(raptor_sequence*, 1, sizeof(*seq));
-  if(!seq)
-    return NULL;
+                    raptor_data_print_handler print_handler) {
+    raptor_sequence *seq = RAPTOR_CALLOC(raptor_sequence*, 1, sizeof(*seq));
+    if (!seq)
+        return NULL;
 
-  seq->free_handler = free_handler;
-  seq->print_handler = print_handler;
-  
-  return seq;
+    seq->free_handler = free_handler;
+    seq->print_handler = print_handler;
+
+    return seq;
 }
 
 
@@ -146,20 +152,19 @@ raptor_new_sequence(raptor_data_free_handler free_handler,
  *
  * Return value: a new #raptor_sequence or NULL on failure 
  **/
-raptor_sequence*
+raptor_sequence *
 raptor_new_sequence_with_context(raptor_data_context_free_handler free_handler,
                                  raptor_data_context_print_handler print_handler,
-                                 void *handler_context)
-{
-  raptor_sequence* seq = RAPTOR_CALLOC(raptor_sequence*, 1, sizeof(*seq));
-  if(!seq)
-    return NULL;
+                                 void *handler_context) {
+    raptor_sequence *seq = RAPTOR_CALLOC(raptor_sequence*, 1, sizeof(*seq));
+    if (!seq)
+        return NULL;
 
-  seq->context_free_handler = free_handler;
-  seq->context_print_handler = print_handler;
-  seq->handler_context = handler_context;
-  
-  return seq;
+    seq->context_free_handler = free_handler;
+    seq->context_print_handler = print_handler;
+    seq->handler_context = handler_context;
+
+    return seq;
 }
 
 
@@ -170,62 +175,60 @@ raptor_new_sequence_with_context(raptor_data_context_free_handler free_handler,
  * Destructor - free a #raptor_sequence
  **/
 void
-raptor_free_sequence(raptor_sequence* seq)
-{
-  int i;
-  int j;
+raptor_free_sequence(raptor_sequence *seq) {
+    int i;
+    int j;
 
-  if(!seq)
-    return;
+    if (!seq)
+        return;
 
-  if(seq->free_handler) {
-    for(i = seq->start, j = seq->start + seq->size; i < j; i++)
-      if(seq->sequence[i])
-        seq->free_handler(seq->sequence[i]);
-  } else if(seq->context_free_handler) {
-    for(i = seq->start, j = seq->start + seq->size; i < j; i++)
-      if(seq->sequence[i])
-        seq->context_free_handler(seq->handler_context, seq->sequence[i]);
-  }
+    if (seq->free_handler) {
+        for (i = seq->start, j = seq->start + seq->size; i < j; i++)
+            if (seq->sequence[i])
+                seq->free_handler(seq->sequence[i]);
+    } else if (seq->context_free_handler) {
+        for (i = seq->start, j = seq->start + seq->size; i < j; i++)
+            if (seq->sequence[i])
+                seq->context_free_handler(seq->handler_context, seq->sequence[i]);
+    }
 
-  if(seq->sequence)
-    RAPTOR_FREE(ptrarray, seq->sequence);
+    if (seq->sequence)
+        RAPTOR_FREE(ptrarray, seq->sequence);
 
-  RAPTOR_FREE(raptor_sequence, seq);
+    RAPTOR_FREE(raptor_sequence, seq);
 }
 
 
 static int
-raptor_sequence_ensure(raptor_sequence *seq, int capacity, int grow_at_front)
-{
-  void **new_sequence;
-  int offset;
+raptor_sequence_ensure(raptor_sequence *seq, int capacity, int grow_at_front) {
+    void **new_sequence;
+    int offset;
 
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, 1);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, 1);
 
-  if(capacity && seq->capacity >= capacity)
+    if (capacity && seq->capacity >= capacity)
+        return 0;
+
+    /* POLICY - minimum size */
+    if (capacity < RAPTOR_SEQUENCE_MIN_CAPACITY)
+        capacity = RAPTOR_SEQUENCE_MIN_CAPACITY;
+
+    new_sequence = RAPTOR_CALLOC(void**, capacity, sizeof(void *));
+    if (!new_sequence)
+        return 1;
+
+    offset = (grow_at_front ? (capacity - seq->capacity) : 0) + seq->start;
+    if (seq->size) {
+        memcpy(&new_sequence[offset], &seq->sequence[seq->start],
+               sizeof(void *) * seq->size);
+        RAPTOR_FREE(ptrarray, seq->sequence);
+    }
+    seq->start = offset;
+
+    seq->sequence = new_sequence;
+    seq->capacity = capacity;
+
     return 0;
-
-  /* POLICY - minimum size */
-  if(capacity < RAPTOR_SEQUENCE_MIN_CAPACITY)
-    capacity = RAPTOR_SEQUENCE_MIN_CAPACITY;
-
-  new_sequence = RAPTOR_CALLOC(void**, capacity, sizeof(void*));
-  if(!new_sequence)
-    return 1;
-
-  offset = (grow_at_front ? (capacity - seq->capacity) : 0) + seq->start;
-  if(seq->size) {
-    memcpy(&new_sequence[offset], &seq->sequence[seq->start], 
-           sizeof(void*) * seq->size);
-    RAPTOR_FREE(ptrarray, seq->sequence);
-  }
-  seq->start = offset;
-
-  seq->sequence = new_sequence;
-  seq->capacity = capacity;
-
-  return 0;
 }
 
 
@@ -238,11 +241,10 @@ raptor_sequence_ensure(raptor_sequence *seq, int capacity, int grow_at_front)
  * Return value: the sequence size (>=0)
  **/
 int
-raptor_sequence_size(raptor_sequence* seq)
-{
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, -1);
+raptor_sequence_size(raptor_sequence *seq) {
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, -1);
 
-  return seq->size;
+    return seq->size;
 }
 
 
@@ -267,60 +269,58 @@ raptor_sequence_size(raptor_sequence* seq)
  * Return value: non-0 on failure
  **/
 int
-raptor_sequence_set_at(raptor_sequence* seq, int idx, void *data)
-{
-  int need_capacity;
-  
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, 1);
+raptor_sequence_set_at(raptor_sequence *seq, int idx, void *data) {
+    int need_capacity;
 
-  /* Cannot provide a negative index */
-  if(idx < 0) {
-    if(data) {
-      if(seq->free_handler)
-        seq->free_handler(data);
-      else if(seq->context_free_handler)
-        seq->context_free_handler(seq->handler_context, data);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, 1);
+
+    /* Cannot provide a negative index */
+    if (idx < 0) {
+        if (data) {
+            if (seq->free_handler)
+                seq->free_handler(data);
+            else if (seq->context_free_handler)
+                seq->context_free_handler(seq->handler_context, data);
+        }
+        return 1;
     }
-    return 1;
-  }
-  
-  need_capacity = seq->start + idx + 1;
-  if(need_capacity > seq->capacity) {
-    if(seq->capacity * 2 > need_capacity)
-      need_capacity = seq->capacity * 2;
 
-    if(raptor_sequence_ensure(seq, need_capacity, 0)) {
-      if(data) {
-        if(seq->free_handler)
-          seq->free_handler(data);
-        else if(seq->context_free_handler)
-          seq->context_free_handler(seq->handler_context, data);
-      }
-      return 1;
+    need_capacity = seq->start + idx + 1;
+    if (need_capacity > seq->capacity) {
+        if (seq->capacity * 2 > need_capacity)
+            need_capacity = seq->capacity * 2;
+
+        if (raptor_sequence_ensure(seq, need_capacity, 0)) {
+            if (data) {
+                if (seq->free_handler)
+                    seq->free_handler(data);
+                else if (seq->context_free_handler)
+                    seq->context_free_handler(seq->handler_context, data);
+            }
+            return 1;
+        }
     }
-  }
 
-  if(idx < seq->size) {
-    /* if there is old data, delete it if there is a free handler */
-    if(seq->sequence[seq->start + idx]) {
-      if(seq->free_handler)
-        seq->free_handler(seq->sequence[seq->start + idx]);
-      else if(seq->context_free_handler)
-        seq->context_free_handler(seq->handler_context,
-                                  seq->sequence[seq->start + idx]);
-    }      
-    /*  size remains the same */
-  } else {
-    /* if there is no old data, size is increasing */
-    /* make sure there are seq->size items starting from seq->start */
-    seq->size = idx + 1;
-  }  
+    if (idx < seq->size) {
+        /* if there is old data, delete it if there is a free handler */
+        if (seq->sequence[seq->start + idx]) {
+            if (seq->free_handler)
+                seq->free_handler(seq->sequence[seq->start + idx]);
+            else if (seq->context_free_handler)
+                seq->context_free_handler(seq->handler_context,
+                                          seq->sequence[seq->start + idx]);
+        }
+        /*  size remains the same */
+    } else {
+        /* if there is no old data, size is increasing */
+        /* make sure there are seq->size items starting from seq->start */
+        seq->size = idx + 1;
+    }
 
-  seq->sequence[seq->start + idx] = data;
+    seq->sequence[seq->start + idx] = data;
 
-  return 0;
+    return 0;
 }
-
 
 
 /**
@@ -336,26 +336,25 @@ raptor_sequence_set_at(raptor_sequence* seq, int idx, void *data)
  * Return value: non-0 on failure
  **/
 int
-raptor_sequence_push(raptor_sequence* seq, void *data)
-{
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, 1);
+raptor_sequence_push(raptor_sequence *seq, void *data) {
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, 1);
 
-  if(seq->start + seq->size == seq->capacity) {
-    if(raptor_sequence_ensure(seq, seq->capacity * 2, 0)) {
-      if(data) {
-        if(seq->free_handler)
-          seq->free_handler(data);
-        else if(seq->context_free_handler)
-          seq->context_free_handler(seq->handler_context, data);
-      }
-      return 1;
+    if (seq->start + seq->size == seq->capacity) {
+        if (raptor_sequence_ensure(seq, seq->capacity * 2, 0)) {
+            if (data) {
+                if (seq->free_handler)
+                    seq->free_handler(data);
+                else if (seq->context_free_handler)
+                    seq->context_free_handler(seq->handler_context, data);
+            }
+            return 1;
+        }
     }
-  }
 
-  seq->sequence[seq->start + seq->size] = data;
-  seq->size++;
+    seq->sequence[seq->start + seq->size] = data;
+    seq->size++;
 
-  return 0;
+    return 0;
 }
 
 
@@ -372,26 +371,25 @@ raptor_sequence_push(raptor_sequence* seq, void *data)
  * Return value: non-0 on failure
  **/
 int
-raptor_sequence_shift(raptor_sequence* seq, void *data)
-{
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, 1);
+raptor_sequence_shift(raptor_sequence *seq, void *data) {
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, 1);
 
-  if(!seq->start) {
-    if(raptor_sequence_ensure(seq, seq->capacity * 2, 1)) {
-      if(data) {
-        if(seq->free_handler)
-          seq->free_handler(data);
-        else if(seq->context_free_handler)
-          seq->context_free_handler(seq->handler_context, data);
-      }
-      return 1;
+    if (!seq->start) {
+        if (raptor_sequence_ensure(seq, seq->capacity * 2, 1)) {
+            if (data) {
+                if (seq->free_handler)
+                    seq->free_handler(data);
+                else if (seq->context_free_handler)
+                    seq->context_free_handler(seq->handler_context, data);
+            }
+            return 1;
+        }
     }
-  }
-  
-  seq->sequence[--seq->start] = data;
-  seq->size++;
 
-  return 0;
+    seq->sequence[--seq->start] = data;
+    seq->size++;
+
+    return 0;
 }
 
 
@@ -409,15 +407,14 @@ raptor_sequence_shift(raptor_sequence* seq, void *data)
  *
  * Return value: the object or NULL if @index is out of range (0... sequence size - 1)
  **/
-void*
-raptor_sequence_get_at(raptor_sequence* seq, int idx)
-{
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, NULL);
+void *
+raptor_sequence_get_at(raptor_sequence *seq, int idx) {
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, NULL);
 
-  if(idx < 0 || idx > seq->size - 1)
-    return NULL;
+    if (idx < 0 || idx > seq->size - 1)
+        return NULL;
 
-  return seq->sequence[seq->start + idx];
+    return seq->sequence[seq->start + idx];
 }
 
 
@@ -434,22 +431,20 @@ raptor_sequence_get_at(raptor_sequence* seq, int idx)
  *
  * Return value: NULL on failure
  **/
-void*
-raptor_sequence_delete_at(raptor_sequence* seq, int idx)
-{
-  void* data;
-  
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, NULL);
+void *
+raptor_sequence_delete_at(raptor_sequence *seq, int idx) {
+    void *data;
 
-  if(idx < 0 || idx > seq->size - 1)
-    return NULL;
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, NULL);
 
-  data = seq->sequence[seq->start + idx];
-  seq->sequence[seq->start + idx] = NULL;
-  
-  return data;
+    if (idx < 0 || idx > seq->size - 1)
+        return NULL;
+
+    data = seq->sequence[seq->start + idx];
+    seq->sequence[seq->start + idx] = NULL;
+
+    return data;
 }
-
 
 
 /**
@@ -463,23 +458,22 @@ raptor_sequence_delete_at(raptor_sequence* seq, int idx)
  *
  * Return value: the object or NULL if the sequence is empty
  **/
-void*
-raptor_sequence_pop(raptor_sequence* seq)
-{
-  void *data;
-  int i;
+void *
+raptor_sequence_pop(raptor_sequence *seq) {
+    void *data;
+    int i;
 
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, NULL);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, NULL);
 
-  if(!seq->size)
-    return NULL;
+    if (!seq->size)
+        return NULL;
 
-  seq->size--;
-  i = seq->start + seq->size;
-  data = seq->sequence[i];
-  seq->sequence[i] = NULL;
+    seq->size--;
+    i = seq->start + seq->size;
+    data = seq->sequence[i];
+    seq->sequence[i] = NULL;
 
-  return data;
+    return data;
 }
 
 
@@ -494,23 +488,22 @@ raptor_sequence_pop(raptor_sequence* seq)
  *
  * Return value: the object or NULL if the sequence is empty
  **/
-void*
-raptor_sequence_unshift(raptor_sequence* seq)
-{
-  void *data;
-  int i;
+void *
+raptor_sequence_unshift(raptor_sequence *seq) {
+    void *data;
+    int i;
 
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, NULL);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, NULL);
 
-  if(!seq->size)
-    return NULL;
-  
-  i = seq->start++;
-  data = seq->sequence[i];
-  seq->size--;
-  seq->sequence[i] = NULL;
-  
-  return data;
+    if (!seq->size)
+        return NULL;
+
+    i = seq->start++;
+    data = seq->sequence[i];
+    seq->size--;
+    seq->sequence[i] = NULL;
+
+    return data;
 }
 
 
@@ -528,12 +521,11 @@ raptor_sequence_unshift(raptor_sequence* seq)
  **/
 RAPTOR_EXTERN_C
 void
-raptor_sequence_sort(raptor_sequence* seq, raptor_data_compare_handler compare)
-{
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN(seq, raptor_sequence);
+raptor_sequence_sort(raptor_sequence *seq, raptor_data_compare_handler compare) {
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN(seq, raptor_sequence);
 
-  if(seq->size > 1)
-    qsort(&seq->sequence[seq->start], seq->size, sizeof(void*), compare);
+    if (seq->size > 1)
+        qsort(&seq->sequence[seq->start], seq->size, sizeof(void *), compare);
 }
 
 
@@ -552,15 +544,14 @@ raptor_sequence_sort(raptor_sequence* seq, raptor_data_compare_handler compare)
  **/
 RAPTOR_EXTERN_C
 void
-raptor_sequence_sort_r(raptor_sequence* seq,
+raptor_sequence_sort_r(raptor_sequence *seq,
                        raptor_data_compare_arg_handler compare,
-                       void* user_data)
-{
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN(seq, raptor_sequence);
+                       void *user_data) {
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN(seq, raptor_sequence);
 
-  if(seq->size > 1)
-    raptor_sort_r(&seq->sequence[seq->start], seq->size, sizeof(void*),
-                  compare, user_data);
+    if (seq->size > 1)
+        raptor_sort_r(&seq->sequence[seq->start], seq->size, sizeof(void *),
+                      compare, user_data);
 }
 
 
@@ -574,29 +565,28 @@ raptor_sequence_sort_r(raptor_sequence* seq,
  * Return value: non-0 on failure
  */
 int
-raptor_sequence_print(raptor_sequence* seq, FILE* fh)
-{
-  int rc = 0;
-  int i;
+raptor_sequence_print(raptor_sequence *seq, FILE *fh) {
+    int rc = 0;
+    int i;
 
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, 1);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, 1);
 
-  fputc('[', fh);
-  for(i = 0; i < seq->size; i++) {
-    if(i)
-      fputs(", ", fh);
-    if(seq->sequence[seq->start + i]) {
-      if(seq->print_handler)
-        seq->print_handler(seq->sequence[seq->start + i], fh);
-      else if(seq->context_print_handler)
-        seq->context_print_handler(seq->handler_context,
-                                   seq->sequence[seq->start + i], fh);
-    } else
-      fputs("(empty)", fh);
-  }
-  fputc(']', fh);
+    fputc('[', fh);
+    for (i = 0; i < seq->size; i++) {
+        if (i)
+            fputs(", ", fh);
+        if (seq->sequence[seq->start + i]) {
+            if (seq->print_handler)
+                seq->print_handler(seq->sequence[seq->start + i], fh);
+            else if (seq->context_print_handler)
+                seq->context_print_handler(seq->handler_context,
+                                           seq->sequence[seq->start + i], fh);
+        } else
+            fputs("(empty)", fh);
+    }
+    fputc(']', fh);
 
-  return rc;
+    return rc;
 }
 
 
@@ -613,21 +603,20 @@ raptor_sequence_print(raptor_sequence* seq, FILE* fh)
  * Return value: non-0 on failure
  */
 int
-raptor_sequence_join(raptor_sequence* dest, raptor_sequence *src)
-{
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(dest, raptor_sequence, 1);
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(src, raptor_sequence, 1);
+raptor_sequence_join(raptor_sequence *dest, raptor_sequence *src) {
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(dest, raptor_sequence, 1);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(src, raptor_sequence, 1);
 
-  if(raptor_sequence_ensure(dest, dest->size + src->size, 0))
-    return 1;
+    if (raptor_sequence_ensure(dest, dest->size + src->size, 0))
+        return 1;
 
-  memcpy(&dest->sequence[dest->start + dest->size], &src->sequence[src->start], 
-         sizeof(void*) * src->size);
-  dest->size += src->size;
+    memcpy(&dest->sequence[dest->start + dest->size], &src->sequence[src->start],
+           sizeof(void *) * src->size);
+    dest->size += src->size;
 
-  src->size = 0;
+    src->size = 0;
 
-  return 0;
+    return 0;
 }
 
 
@@ -642,18 +631,17 @@ raptor_sequence_join(raptor_sequence* dest, raptor_sequence *src)
  * Return value: non-0 if arguments are out of range
  */
 int
-raptor_sequence_swap(raptor_sequence* seq, int i, int j)
-{
-  if(i < 0 || i >= seq->size || j < 0 || j >= seq->size)
-    return 1;
+raptor_sequence_swap(raptor_sequence *seq, int i, int j) {
+    if (i < 0 || i >= seq->size || j < 0 || j >= seq->size)
+        return 1;
 
-  if(i != j) {
-    void* tmp = seq->sequence[i];
-    seq->sequence[i] = seq->sequence[j];
-    seq->sequence[j] = tmp;
-  }
-  
-  return 0;
+    if (i != j) {
+        void *tmp = seq->sequence[i];
+        seq->sequence[i] = seq->sequence[j];
+        seq->sequence[j] = tmp;
+    }
+
+    return 0;
 }
 
 
@@ -668,21 +656,21 @@ raptor_sequence_swap(raptor_sequence* seq, int i, int j)
  * Return value: non-0 if arguments are out of range
  */
 int
-raptor_sequence_reverse(raptor_sequence* seq, int start_index, int length)
-{
-  int end_index = start_index + length - 1;
+raptor_sequence_reverse(raptor_sequence *seq, int start_index, int length) {
+    int end_index = start_index + length - 1;
 
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, 1);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(seq, raptor_sequence, 1);
 
-  if(end_index >= seq->size || start_index < 1 || length <= 1)
-    return 1;
+    if (end_index >= seq->size || start_index < 1 || length <= 1)
+        return 1;
 
-  while( (start_index != end_index) && (start_index != end_index + 1) ) {
-    raptor_sequence_swap(seq, start_index, end_index);
-    start_index++; end_index--;
-  }
+    while ((start_index != end_index) && (start_index != end_index + 1)) {
+        raptor_sequence_swap(seq, start_index, end_index);
+        start_index++;
+        end_index--;
+    }
 
-  return 0;
+    return 0;
 }
 
 
@@ -709,55 +697,53 @@ raptor_sequence_reverse(raptor_sequence* seq, int start_index, int length)
 RAPTOR_EXTERN_C
 int
 raptor_sequence_next_permutation(raptor_sequence *seq,
-                                 raptor_data_compare_handler compare)
-{
-  int k;
-  int l;
-  void* temp;
-  
-  if(seq->size < 2)
-    return 1;
-  
-  /* 1. Find the largest index k such that a[k] < a[k + 1]. If no such
-   * index exists, the permutation is the last permutation.
-   */
-  k = seq->size - 2;
-  while(k >= 0 && compare(seq->sequence[k], seq->sequence[k + 1]) >= 0)
-    k--;
-  
-  if(k == -1) {
-    /* done - reset to starting order */
-    raptor_sequence_reverse(seq, 0, seq->size);
-    return 1;
-  }
-  
-  /* 2. Find the largest index l such that a[k] < a[l]. Since k + 1
-   * is such an index, l is well defined and satisfies k < l.
-   */
-  l = seq->size - 1;
-  while( compare(seq->sequence[k], seq->sequence[l]) >= 0)
-    l--;
-  
-  /* 3. Swap a[k] with a[l]. */
+                                 raptor_data_compare_handler compare) {
+    int k;
+    int l;
+    void *temp;
+
+    if (seq->size < 2)
+        return 1;
+
+    /* 1. Find the largest index k such that a[k] < a[k + 1]. If no such
+     * index exists, the permutation is the last permutation.
+     */
+    k = seq->size - 2;
+    while (k >= 0 && compare(seq->sequence[k], seq->sequence[k + 1]) >= 0)
+        k--;
+
+    if (k == -1) {
+        /* done - reset to starting order */
+        raptor_sequence_reverse(seq, 0, seq->size);
+        return 1;
+    }
+
+    /* 2. Find the largest index l such that a[k] < a[l]. Since k + 1
+     * is such an index, l is well defined and satisfies k < l.
+     */
+    l = seq->size - 1;
+    while (compare(seq->sequence[k], seq->sequence[l]) >= 0)
+        l--;
+
+    /* 3. Swap a[k] with a[l]. */
 #if 1
-  temp = seq->sequence[k];
-  seq->sequence[k] = seq->sequence[l];
-  seq->sequence[l] = temp;
+    temp = seq->sequence[k];
+    seq->sequence[k] = seq->sequence[l];
+    seq->sequence[l] = temp;
 #else
-  raptor_sequence_swap(seq, k, l);
+    raptor_sequence_swap(seq, k, l);
 #endif
 
-  /* 4. Reverse the sequence from a[k + 1] up to and including the
-   * final element a[n].
-   */
-  raptor_sequence_reverse(seq, k + 1, seq->size - (k + 1));
+    /* 4. Reverse the sequence from a[k + 1] up to and including the
+     * final element a[n].
+     */
+    raptor_sequence_reverse(seq, k + 1, seq->size - (k + 1));
 
-  return 0;
+    return 0;
 }
 
 
 #endif
-
 
 
 #ifdef STANDALONE

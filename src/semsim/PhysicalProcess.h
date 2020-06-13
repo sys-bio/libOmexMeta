@@ -10,7 +10,7 @@
 #include "RedlandAPIWrapper.h"
 #include <vector>
 #include "Participant.h"
-#include "PhysicalPropertyResource.h"
+#include "PhysicalProperty.h"
 #include "PhysicalPhenomenon.h"
 #include "SemsimUtils.h"
 
@@ -22,9 +22,17 @@ namespace semsim {
         Sources sources_;
         Sinks sinks_;
         Mediators mediators_;
-
     public:
+            public:
 
+        /*
+         * @breif default constructor for PhysicalProcess
+         * @details deliberately deleted. If you try using the
+         * builder interface (chaining setter methods) from a default
+         * instantiated PhysicalProcess you will get an error, because there
+         * will be no model assicated with PhysicalProcess. Instead, always
+         * instantiate a PhysicalProcess from the Editor::addPhysicalProcess() method.
+         */
         PhysicalProcess() = delete;
 
         ~PhysicalProcess() = default;
@@ -39,8 +47,8 @@ namespace semsim {
          * @param mediator a vector of Sink objects representing the energetic modulators for the PhysicalProcess
          *
          */
-        PhysicalProcess(librdf_model* model, Subject metaid,
-                        PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks,
+        PhysicalProcess(librdf_model *model,
+                        const PhysicalProperty& physicalProperty, Sources sources, Sinks sinks,
                         Mediators mediators);
 
         /*
@@ -52,13 +60,13 @@ namespace semsim {
          * toTriples method, then resources used by PhysicalProcess must be freed manually
          * with this method.
          */
-        void free() override;
+        void free();
 
         /*
          * @brief constructor for the builder interface of PhysicalProcess instantiation
          * @param model the currently active RDF model.
          */
-        explicit PhysicalProcess(librdf_model* model);
+        explicit PhysicalProcess(librdf_model *model);
 
         /*
          * @brief getter for sources
@@ -92,13 +100,13 @@ namespace semsim {
          * @brief setter for the about portion of the PhysicalProcess.
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &setAbout(std::string metaid);
+        PhysicalProcess &setAbout(const std::string& metaid);
 
         /*
          * @brief setter for the physical property portion of the PhysicalProcess.
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &setPhysicalProperty(const std::string &physicalProperty);
+        PhysicalProcess &setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty);
 
         /*
          * @brief setter for the physical property portion of the PhysicalProcess.
@@ -107,7 +115,7 @@ namespace semsim {
          * Developers. Consider removing this method in favour of the
          * setPhysicalProperty version that only takes a string as argument
          */
-        PhysicalProcess &setPhysicalProperty(PhysicalPropertyResource physicalProperty);
+        PhysicalProcess &setPhysicalProperty(PhysicalProperty physicalProperty);
 
         /*
          * @brief add a source to the list of Source object associated with a PhysicalProcess
@@ -145,6 +153,10 @@ namespace semsim {
          * @return the number of Mediator objects associated with this PhysicalProcess
          */
         int getNumMediators();
+
+        bool operator==(const PhysicalProcess &rhs) const;
+
+        bool operator!=(const PhysicalProcess &rhs) const;
     };
 }
 

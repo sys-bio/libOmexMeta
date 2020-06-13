@@ -25,7 +25,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #include <stdio.h>
@@ -34,7 +36,9 @@
 #include <sys/types.h>
 
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h> /* for abort() as used in errors */
+
 #endif
 
 /* Raptor includes */
@@ -52,33 +56,31 @@
  *
  */
 
-struct raptor_base_id_set_s
-{
-  raptor_world* world;
+struct raptor_base_id_set_s {
+    raptor_world *world;
 
-  /* The base URI of this set of IDs */
-  raptor_uri *uri;
-  
-  /* neighbour ID sets */
-  struct raptor_base_id_set_s* prev;
-  struct raptor_base_id_set_s* next;
+    /* The base URI of this set of IDs */
+    raptor_uri *uri;
 
-  /* binary tree */
-  raptor_avltree* tree;
+    /* neighbour ID sets */
+    struct raptor_base_id_set_s *prev;
+    struct raptor_base_id_set_s *next;
+
+    /* binary tree */
+    raptor_avltree *tree;
 };
 typedef struct raptor_base_id_set_s raptor_base_id_set;
 
 
-struct raptor_id_set_s
-{
-  raptor_world* world;
+struct raptor_id_set_s {
+    raptor_world *world;
 
-  /* start of trees, 1 per base URI */
-  struct raptor_base_id_set_s* first;
+    /* start of trees, 1 per base URI */
+    struct raptor_base_id_set_s *first;
 
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
-  int hits;
-  int misses;
+    int hits;
+    int misses;
 #endif
 };
 
@@ -93,16 +95,15 @@ struct raptor_id_set_s
  * 
  * Return value: non 0 on failure
  **/
-raptor_id_set*
-raptor_new_id_set(raptor_world* world)
-{
-  raptor_id_set* set = RAPTOR_CALLOC(raptor_id_set*, 1, sizeof(*set));
-  if(!set)
-    return NULL;
+raptor_id_set *
+raptor_new_id_set(raptor_world *world) {
+    raptor_id_set *set = RAPTOR_CALLOC(raptor_id_set*, 1, sizeof(*set));
+    if (!set)
+        return NULL;
 
-  set->world = world;
+    set->world = world;
 
-  return set;
+    return set;
 }
 
 
@@ -114,13 +115,12 @@ raptor_new_id_set(raptor_world* world)
  *
  **/
 static void
-raptor_free_base_id_set(raptor_base_id_set *base) 
-{
-  if(base->tree)
-    raptor_free_avltree(base->tree);
-  if(base->uri)
-    raptor_free_uri(base->uri);
-  RAPTOR_FREE(raptor_base_id_set, base);
+raptor_free_base_id_set(raptor_base_id_set *base) {
+    if (base->tree)
+        raptor_free_avltree(base->tree);
+    if (base->uri)
+        raptor_free_uri(base->uri);
+    RAPTOR_FREE(raptor_base_id_set, base);
 }
 
 
@@ -132,21 +132,19 @@ raptor_free_base_id_set(raptor_base_id_set *base)
  *
  **/
 void
-raptor_free_id_set(raptor_id_set *set) 
-{
-  raptor_base_id_set *base;
+raptor_free_id_set(raptor_id_set *set) {
+    raptor_base_id_set *base;
 
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN(set, raptor_id_set);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN(set, raptor_id_set);
 
-  base = set->first;
-  while(base) {
-    raptor_base_id_set *next = base->next;
-    raptor_free_base_id_set(base);
-    base = next;
-  }
-  RAPTOR_FREE(raptor_id_set, set);
+    base = set->first;
+    while (base) {
+        raptor_base_id_set *next = base->next;
+        raptor_free_base_id_set(base);
+        base = next;
+    }
+    RAPTOR_FREE(raptor_id_set, set);
 }
-
 
 
 /**
@@ -161,77 +159,76 @@ raptor_free_id_set(raptor_id_set *set)
  * Return value: <0 on failure, 0 on success, 1 if already present
  **/
 int
-raptor_id_set_add(raptor_id_set* set, raptor_uri *base_uri,
-                  const unsigned char *id, size_t id_len)
-{
-  raptor_base_id_set *base;
-  char* item;
-  
-  if(!base_uri || !id || !id_len)
-    return -1;
+raptor_id_set_add(raptor_id_set *set, raptor_uri *base_uri,
+                  const unsigned char *id, size_t id_len) {
+    raptor_base_id_set *base;
+    char *item;
 
-  base = set->first;
-  while(base) {
-    if(raptor_uri_equals(base->uri, base_uri))
-      break;
-    base = base->next;
-  }
+    if (!base_uri || !id || !id_len)
+        return -1;
 
-  if(!base) {
-    /* a set for this base_uri not found */
-    base = RAPTOR_CALLOC(raptor_base_id_set*, 1, sizeof(*base));
-    if(!base)
-      return -1;
-
-    base->world = set->world;
-
-    base->uri = raptor_uri_copy(base_uri);
-
-    base->tree = raptor_new_avltree((raptor_data_compare_handler)strcmp,
-                                    free, 0);
-  
-    /* Add to the start of the list */
-    if(set->first)
-      set->first->prev = base;
-    /* base->prev = NULL; */
-    base->next = set->first;
-
-    set->first = base;
-  } else {
-    /* If not at the start of the list, move there */
-    if(base != set->first) {
-      /* remove from the list */
-      base->prev->next = base->next;
-      if(base->next)
-        base->next->prev = base->prev;
-      /* add at the start of the list */
-      set->first->prev = base;
-      base->prev = NULL;
-      base->next = set->first;
+    base = set->first;
+    while (base) {
+        if (raptor_uri_equals(base->uri, base_uri))
+            break;
+        base = base->next;
     }
-  }
-  
-  item = (char*)raptor_avltree_search(base->tree, id);
 
-  /* if already there, error */
-  if(item) {
+    if (!base) {
+        /* a set for this base_uri not found */
+        base = RAPTOR_CALLOC(raptor_base_id_set*, 1, sizeof(*base));
+        if (!base)
+            return -1;
+
+        base->world = set->world;
+
+        base->uri = raptor_uri_copy(base_uri);
+
+        base->tree = raptor_new_avltree((raptor_data_compare_handler) strcmp,
+                                        free, 0);
+
+        /* Add to the start of the list */
+        if (set->first)
+            set->first->prev = base;
+        /* base->prev = NULL; */
+        base->next = set->first;
+
+        set->first = base;
+    } else {
+        /* If not at the start of the list, move there */
+        if (base != set->first) {
+            /* remove from the list */
+            base->prev->next = base->next;
+            if (base->next)
+                base->next->prev = base->prev;
+            /* add at the start of the list */
+            set->first->prev = base;
+            base->prev = NULL;
+            base->next = set->first;
+        }
+    }
+
+    item = (char *) raptor_avltree_search(base->tree, id);
+
+    /* if already there, error */
+    if (item) {
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
-    set->misses++;
+        set->misses++;
 #endif
-    return 1;
-  }
-  
+        return 1;
+    }
+
 #if defined(RAPTOR_DEBUG) && RAPTOR_DEBUG > 1
-  set->hits++;
+    set->hits++;
 #endif
-  
-  item = RAPTOR_MALLOC(char*, id_len + 1);
-  if(!item)
-    return 1;
 
-  memcpy(item, id, id_len + 1);
+    item = RAPTOR_MALLOC(char*, id_len + 1);
+    if (!item)
+        return 1;
 
-  return raptor_avltree_add(base->tree, item);
+    memcpy(item, id, id_len + 1);
+
+    return raptor_avltree_add(base->tree, item);
 }
 
 

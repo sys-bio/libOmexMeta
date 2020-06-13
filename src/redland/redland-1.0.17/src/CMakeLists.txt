@@ -75,7 +75,7 @@ set(SOURCES
         rdf_storage_trees.c
         rdf_storage_file.c
         #    rdf_storage_tstore.c // includes <rdfsql/rdfsql.h> which is un-locatable
-#        rdf_storage_mysql.c // no mysql setup yet. todo
+        #        rdf_storage_mysql.c // no mysql setup yet. todo
         rdf_storage_sqlite.c
         rdf_storage_postgresql.c
         rdf_storage_virtuoso.c

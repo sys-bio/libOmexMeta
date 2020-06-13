@@ -19,8 +19,8 @@ namespace redland {
         );
     }
 
-    void LibrdfSerializer::freeSerializer(){
-        if (serializer_ != nullptr){
+    void LibrdfSerializer::freeSerializer() {
+        if (serializer_ != nullptr) {
             librdf_free_serializer(serializer_);
             serializer_ = nullptr;
         }
@@ -31,8 +31,8 @@ namespace redland {
     }
 
     LibrdfSerializer::LibrdfSerializer(LibrdfSerializer &&serializer) noexcept {
-        if (serializer.serializer_ != nullptr){
-            if (serializer_!= nullptr)
+        if (serializer.serializer_ != nullptr) {
+            if (serializer_ != nullptr)
                 freeSerializer();
             serializer_ = serializer.serializer_;
             serializer.serializer_ = nullptr;
@@ -70,7 +70,7 @@ namespace redland {
         node.freeNode();
     }
 
-    std::string LibrdfSerializer::toString(const std::string& uri, const LibrdfModel &model) {
+    std::string LibrdfSerializer::toString(const std::string &uri, const LibrdfModel &model) {
         void *buffer_to_hold_string = nullptr;
         raptor_iostream *ios = raptor_new_iostream_to_string(
                 World::getRaptor(), (void **) &buffer_to_hold_string, nullptr, malloc);

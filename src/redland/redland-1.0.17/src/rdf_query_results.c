@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -35,10 +37,15 @@
 #include <string.h>
 #include <ctype.h>
 #include <sys/types.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #ifdef HAVE_ERRNO_H
+
 #include <errno.h>
+
 #endif
 #endif
 
@@ -55,14 +62,13 @@
  * Return value: number of bindings found so far
  **/
 int
-librdf_query_results_get_count(librdf_query_results *query_results)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, 1);
+librdf_query_results_get_count(librdf_query_results *query_results) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, 1);
 
-  if(query_results->query->factory->results_get_count)
-    return query_results->query->factory->results_get_count(query_results);
-  else
-    return 1;
+    if (query_results->query->factory->results_get_count)
+        return query_results->query->factory->results_get_count(query_results);
+    else
+        return 1;
 }
 
 
@@ -75,14 +81,13 @@ librdf_query_results_get_count(librdf_query_results *query_results)
  * Return value: non-0 if failed or results exhausted
  **/
 int
-librdf_query_results_next(librdf_query_results *query_results)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, 1);
+librdf_query_results_next(librdf_query_results *query_results) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, 1);
 
-  if(query_results->query->factory->results_next)
-    return query_results->query->factory->results_next(query_results);
-  else
-    return 1;
+    if (query_results->query->factory->results_next)
+        return query_results->query->factory->results_next(query_results);
+    else
+        return 1;
 }
 
 
@@ -95,14 +100,13 @@ librdf_query_results_next(librdf_query_results *query_results)
  * Return value: non-0 if results are finished or query failed
  **/
 int
-librdf_query_results_finished(librdf_query_results *query_results)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, 1);
+librdf_query_results_finished(librdf_query_results *query_results) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, 1);
 
-  if(query_results->query->factory->results_finished)
-    return query_results->query->factory->results_finished(query_results);
-  else
-    return 1;
+    if (query_results->query->factory->results_finished)
+        return query_results->query->factory->results_finished(query_results);
+    else
+        return 1;
 }
 
 
@@ -136,15 +140,14 @@ librdf_query_results_finished(librdf_query_results *query_results)
  * Return value: non-0 if the assignment failed
  **/
 int
-librdf_query_results_get_bindings(librdf_query_results *query_results, 
-                                  const char ***names, librdf_node **values)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, 1);
+librdf_query_results_get_bindings(librdf_query_results *query_results,
+                                  const char ***names, librdf_node **values) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, 1);
 
-  if(query_results->query->factory->results_get_bindings)
-    return query_results->query->factory->results_get_bindings(query_results, names, values);
-  else
-    return 1;
+    if (query_results->query->factory->results_get_bindings)
+        return query_results->query->factory->results_get_bindings(query_results, names, values);
+    else
+        return 1;
 }
 
 
@@ -157,20 +160,19 @@ librdf_query_results_get_bindings(librdf_query_results *query_results,
  * 
  * Return value: a new #librdf_node binding value or NULL on failure
  **/
-librdf_node*
+librdf_node *
 librdf_query_results_get_binding_value(librdf_query_results *query_results,
-                                       int offset)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, NULL);
+                                       int offset) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, NULL);
 
-  /* FIXME - offset really should be an unsigned int */
-  if(offset < 0)
-    return NULL;
+    /* FIXME - offset really should be an unsigned int */
+    if (offset < 0)
+        return NULL;
 
-  if(query_results->query->factory->results_get_binding_value)
-    return query_results->query->factory->results_get_binding_value(query_results, offset);
-  else
-    return NULL;
+    if (query_results->query->factory->results_get_binding_value)
+        return query_results->query->factory->results_get_binding_value(query_results, offset);
+    else
+        return NULL;
 }
 
 
@@ -183,19 +185,18 @@ librdf_query_results_get_binding_value(librdf_query_results *query_results,
  * 
  * Return value: a pointer to a shared copy of the binding name or NULL on failure
  **/
-const char*
-librdf_query_results_get_binding_name(librdf_query_results *query_results, int offset)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, NULL);
+const char *
+librdf_query_results_get_binding_name(librdf_query_results *query_results, int offset) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, NULL);
 
-  /* FIXME - offset really should be an unsigned int */
-  if(offset < 0)
-    return NULL;
+    /* FIXME - offset really should be an unsigned int */
+    if (offset < 0)
+        return NULL;
 
-  if(query_results->query->factory->results_get_binding_name)
-    return query_results->query->factory->results_get_binding_name(query_results, offset);
-  else
-    return NULL;
+    if (query_results->query->factory->results_get_binding_name)
+        return query_results->query->factory->results_get_binding_name(query_results, offset);
+    else
+        return NULL;
 }
 
 
@@ -208,15 +209,14 @@ librdf_query_results_get_binding_name(librdf_query_results *query_results, int o
  * 
  * Return value: a new #librdf_node binding value or NULL on failure
  **/
-librdf_node*
-librdf_query_results_get_binding_value_by_name(librdf_query_results *query_results, const char *name)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, NULL);
+librdf_node *
+librdf_query_results_get_binding_value_by_name(librdf_query_results *query_results, const char *name) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, NULL);
 
-  if(query_results->query->factory->results_get_binding_value_by_name)
-    return query_results->query->factory->results_get_binding_value_by_name(query_results, name);
-  else
-    return NULL;
+    if (query_results->query->factory->results_get_binding_value_by_name)
+        return query_results->query->factory->results_get_binding_value_by_name(query_results, name);
+    else
+        return NULL;
 }
 
 
@@ -229,14 +229,13 @@ librdf_query_results_get_binding_value_by_name(librdf_query_results *query_resul
  * Return value: <0 if failed or results exhausted
  **/
 int
-librdf_query_results_get_bindings_count(librdf_query_results *query_results)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, 1);
+librdf_query_results_get_bindings_count(librdf_query_results *query_results) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, 1);
 
-  if(query_results->query->factory->results_get_bindings_count)
-    return query_results->query->factory->results_get_bindings_count(query_results);
-  else
-    return -1;
+    if (query_results->query->factory->results_get_bindings_count)
+        return query_results->query->factory->results_get_bindings_count(query_results);
+    else
+        return -1;
 }
 
 
@@ -248,17 +247,16 @@ librdf_query_results_get_bindings_count(librdf_query_results *query_results)
  * 
  **/
 void
-librdf_free_query_results(librdf_query_results* query_results)
-{
-  if(!query_results)
-    return;
-  
-  if(query_results->query->factory->free_results)
-    query_results->query->factory->free_results(query_results);
+librdf_free_query_results(librdf_query_results *query_results) {
+    if (!query_results)
+        return;
 
-  librdf_query_remove_query_result(query_results->query, query_results);
+    if (query_results->query->factory->free_results)
+        query_results->query->factory->free_results(query_results);
 
-  LIBRDF_FREE(librdf_query_results, query_results);
+    librdf_query_remove_query_result(query_results->query, query_results);
+
+    LIBRDF_FREE(librdf_query_results, query_results);
 }
 
 
@@ -289,60 +287,59 @@ librdf_free_query_results(librdf_query_results* query_results)
  *
  * Return value: new string value or NULL on failure
  **/
-unsigned char*
+unsigned char *
 librdf_query_results_to_counted_string2(librdf_query_results *query_results,
                                         const char *name,
                                         const char *mime_type,
                                         librdf_uri *format_uri,
                                         librdf_uri *base_uri,
-                                        size_t *length_p)
-{
-  librdf_query_results_formatter *formatter;
-  void *string=NULL;
-  size_t string_length=0;
-  raptor_iostream *iostr;
-  int error=0;
+                                        size_t *length_p) {
+    librdf_query_results_formatter *formatter;
+    void *string = NULL;
+    size_t string_length = 0;
+    raptor_iostream *iostr;
+    int error = 0;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, NULL);
 
-  iostr = raptor_new_iostream_to_string(query_results->query->world->raptor_world_ptr,
-                                        &string, &string_length, malloc);
-  if(!iostr)
-    return NULL;
-              
-  formatter = librdf_new_query_results_formatter2(query_results,
-                                                  name, mime_type,
-                                                  format_uri);
-  if(!formatter) {
-    error=1;
-    goto tidy;
-  }
+    iostr = raptor_new_iostream_to_string(query_results->query->world->raptor_world_ptr,
+                                          &string, &string_length, malloc);
+    if (!iostr)
+        return NULL;
 
-  if(librdf_query_results_formatter_write(iostr, formatter,
-                                          query_results, base_uri))
-    error=1;
-
-  librdf_free_query_results_formatter(formatter);
-
- tidy:
-  raptor_free_iostream(iostr);
-
-  /* string is available only after the iostream is finished
-   * - clean it up here on error */
-  if(error) {
-    if(string) {
-      raptor_free_memory(string);
-      string=NULL;
+    formatter = librdf_new_query_results_formatter2(query_results,
+                                                    name, mime_type,
+                                                    format_uri);
+    if (!formatter) {
+        error = 1;
+        goto tidy;
     }
-  }
-  else if(length_p)
-    *length_p = string_length;
-  
-  return (unsigned char *)string;
+
+    if (librdf_query_results_formatter_write(iostr, formatter,
+                                             query_results, base_uri))
+        error = 1;
+
+    librdf_free_query_results_formatter(formatter);
+
+    tidy:
+    raptor_free_iostream(iostr);
+
+    /* string is available only after the iostream is finished
+     * - clean it up here on error */
+    if (error) {
+        if (string) {
+            raptor_free_memory(string);
+            string = NULL;
+        }
+    } else if (length_p)
+        *length_p = string_length;
+
+    return (unsigned char *) string;
 }
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_query_results_to_counted_string:
  * @query_results: #librdf_query_results object
@@ -369,19 +366,19 @@ librdf_query_results_to_counted_string2(librdf_query_results *query_results,
  *
  * Return value: new string value or NULL on failure
  **/
-unsigned char*
+unsigned char *
 librdf_query_results_to_counted_string(librdf_query_results *query_results,
                                        librdf_uri *format_uri,
                                        librdf_uri *base_uri,
-                                       size_t *length_p)
-{
-  return librdf_query_results_to_counted_string2(query_results,
-                                                 NULL /* name */,
-                                                 NULL /* mime type */,
-                                                 format_uri,
-                                                 base_uri,
-                                                 length_p);
+                                       size_t *length_p) {
+    return librdf_query_results_to_counted_string2(query_results,
+                                                   NULL /* name */,
+                                                   NULL /* mime type */,
+                                                   format_uri,
+                                                   base_uri,
+                                                   length_p);
 }
+
 #endif
 
 
@@ -411,23 +408,23 @@ librdf_query_results_to_counted_string(librdf_query_results *query_results,
  *
  * Return value: new string value or NULL on failure
  **/
-unsigned char*
+unsigned char *
 librdf_query_results_to_string2(librdf_query_results *query_results,
-                                const char* name,
-                                const char* mime_type,
+                                const char *name,
+                                const char *mime_type,
                                 librdf_uri *format_uri,
-                                librdf_uri *base_uri)
-{
+                                librdf_uri *base_uri) {
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, NULL);
 
-  return librdf_query_results_to_counted_string2(query_results,
-                                                 name, mime_type, format_uri,
-                                                 base_uri, NULL);
+    return librdf_query_results_to_counted_string2(query_results,
+                                                   name, mime_type, format_uri,
+                                                   base_uri, NULL);
 }
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_query_results_to_string:
  * @query_results: #librdf_query_results object
@@ -454,18 +451,18 @@ librdf_query_results_to_string2(librdf_query_results *query_results,
  *
  * Return value: new string value or NULL on failure
  **/
-unsigned char*
+unsigned char *
 librdf_query_results_to_string(librdf_query_results *query_results,
                                librdf_uri *format_uri,
-                               librdf_uri *base_uri)
-{
+                               librdf_uri *base_uri) {
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, librdf_query_results, NULL);
 
-  return librdf_query_results_to_string2(query_results,
-                                         NULL, NULL, format_uri,
-                                         base_uri);
+    return librdf_query_results_to_string2(query_results,
+                                           NULL, NULL, format_uri,
+                                           base_uri);
 }
+
 #endif
 
 
@@ -494,46 +491,46 @@ librdf_query_results_to_string(librdf_query_results *query_results,
  * Return value: non 0 on failure
  **/
 int
-librdf_query_results_to_file_handle2(librdf_query_results *query_results, 
-                                     FILE *handle, 
+librdf_query_results_to_file_handle2(librdf_query_results *query_results,
+                                     FILE *handle,
                                      const char *name,
                                      const char *mime_type,
                                      librdf_uri *format_uri,
-                                     librdf_uri *base_uri)
-{
-  raptor_iostream *iostr;
-  librdf_query_results_formatter *formatter;
-  int status;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(handle, FILE*, 1);
+                                     librdf_uri *base_uri) {
+    raptor_iostream *iostr;
+    librdf_query_results_formatter *formatter;
+    int status;
+
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(handle, FILE*, 1);
 
 
-  iostr = raptor_new_iostream_to_file_handle(query_results->query->world->raptor_world_ptr,
-                                             handle);
-  if(!iostr)
-    return 1;
+    iostr = raptor_new_iostream_to_file_handle(query_results->query->world->raptor_world_ptr,
+                                               handle);
+    if (!iostr)
+        return 1;
 
-  formatter = librdf_new_query_results_formatter2(query_results,
-                                                  name, mime_type,
-                                                  format_uri);
-  if(!formatter) {
+    formatter = librdf_new_query_results_formatter2(query_results,
+                                                    name, mime_type,
+                                                    format_uri);
+    if (!formatter) {
+        raptor_free_iostream(iostr);
+        return 1;
+    }
+
+    status = librdf_query_results_formatter_write(iostr, formatter,
+                                                  query_results, base_uri);
+
+    librdf_free_query_results_formatter(formatter);
+
     raptor_free_iostream(iostr);
-    return 1;
-  }
 
-  status = librdf_query_results_formatter_write(iostr, formatter,
-                                                query_results, base_uri);
-
-  librdf_free_query_results_formatter(formatter);
-
-  raptor_free_iostream(iostr);
-
-  return status;
+    return status;
 }
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_query_results_to_file_handle:
  * @query_results: #librdf_query_results object
@@ -559,18 +556,18 @@ librdf_query_results_to_file_handle2(librdf_query_results *query_results,
  * Return value: non 0 on failure
  **/
 int
-librdf_query_results_to_file_handle(librdf_query_results *query_results, 
-                                    FILE *handle, 
+librdf_query_results_to_file_handle(librdf_query_results *query_results,
+                                    FILE *handle,
                                     librdf_uri *format_uri,
-                                    librdf_uri *base_uri)
-{
-  return librdf_query_results_to_file_handle2(query_results, 
-                                              handle,
-                                              NULL /* name */,
-                                              NULL /* mime type */,
-                                              format_uri,
-                                              base_uri);
+                                    librdf_uri *base_uri) {
+    return librdf_query_results_to_file_handle2(query_results,
+                                                handle,
+                                                NULL /* name */,
+                                                NULL /* mime type */,
+                                                format_uri,
+                                                base_uri);
 }
+
 #endif
 
 
@@ -598,36 +595,36 @@ librdf_query_results_to_file_handle(librdf_query_results *query_results,
  * Return value: non 0 on failure
  **/
 int
-librdf_query_results_to_file2(librdf_query_results *query_results, 
-                             const char *name,
-                             const char *mime_type,
-                             librdf_uri *format_uri,
-                             librdf_uri *base_uri)
-{
-  FILE* fh;
-  int status;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(name, string, 1);
+librdf_query_results_to_file2(librdf_query_results *query_results,
+                              const char *name,
+                              const char *mime_type,
+                              librdf_uri *format_uri,
+                              librdf_uri *base_uri) {
+    FILE *fh;
+    int status;
 
-  fh = fopen(name, "w+");
-  if(!fh) {
-    librdf_log(query_results->query->world, 0, LIBRDF_LOG_ERROR, 
-               LIBRDF_FROM_QUERY, NULL, 
-               "failed to open file '%s' for writing - %s",
-               name, strerror(errno));
-    return 1;
-  }
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(name, string, 1);
 
-  status = librdf_query_results_to_file_handle2(query_results, fh, 
-                                                name, mime_type,
-                                                format_uri, base_uri);
-  fclose(fh);
-  return status;
+    fh = fopen(name, "w+");
+    if (!fh) {
+        librdf_log(query_results->query->world, 0, LIBRDF_LOG_ERROR,
+                   LIBRDF_FROM_QUERY, NULL,
+                   "failed to open file '%s' for writing - %s",
+                   name, strerror(errno));
+        return 1;
+    }
+
+    status = librdf_query_results_to_file_handle2(query_results, fh,
+                                                  name, mime_type,
+                                                  format_uri, base_uri);
+    fclose(fh);
+    return status;
 }
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_query_results_to_file:
  * @query_results: #librdf_query_results object
@@ -653,17 +650,17 @@ librdf_query_results_to_file2(librdf_query_results *query_results,
  * Return value: non 0 on failure
  **/
 int
-librdf_query_results_to_file(librdf_query_results *query_results, 
+librdf_query_results_to_file(librdf_query_results *query_results,
                              const char *name,
                              librdf_uri *format_uri,
-                             librdf_uri *base_uri)
-{
-  return librdf_query_results_to_file2(query_results,
-                                       name,
-                                       NULL /* mime type */,
-                                       format_uri,
-                                       base_uri);
+                             librdf_uri *base_uri) {
+    return librdf_query_results_to_file2(query_results,
+                                         name,
+                                         NULL /* mime type */,
+                                         format_uri,
+                                         base_uri);
 }
+
 #endif
 
 
@@ -676,16 +673,15 @@ librdf_query_results_to_file(librdf_query_results *query_results,
  * Return value: non-0 if true
  **/
 int
-librdf_query_results_is_bindings(librdf_query_results* query_results)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, -1);
+librdf_query_results_is_bindings(librdf_query_results *query_results) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, -1);
 
-  if(query_results->query->factory->results_is_bindings)
-    return query_results->query->factory->results_is_bindings(query_results);
-  else
-    return -1;
+    if (query_results->query->factory->results_is_bindings)
+        return query_results->query->factory->results_is_bindings(query_results);
+    else
+        return -1;
 }
-  
+
 
 /**
  * librdf_query_results_is_boolean:
@@ -699,14 +695,13 @@ librdf_query_results_is_bindings(librdf_query_results* query_results)
  * Return value: non-0 if true
  **/
 int
-librdf_query_results_is_boolean(librdf_query_results* query_results)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, -1);
+librdf_query_results_is_boolean(librdf_query_results *query_results) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, -1);
 
-  if(query_results->query->factory->results_is_boolean)
-    return query_results->query->factory->results_is_boolean(query_results);
-  else
-    return -1;
+    if (query_results->query->factory->results_is_boolean)
+        return query_results->query->factory->results_is_boolean(query_results);
+    else
+        return -1;
 }
 
 
@@ -719,14 +714,13 @@ librdf_query_results_is_boolean(librdf_query_results* query_results)
  * Return value: non-0 if true
  **/
 int
-librdf_query_results_is_graph(librdf_query_results* query_results)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, -1);
+librdf_query_results_is_graph(librdf_query_results *query_results) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, -1);
 
-  if(query_results->query->factory->results_is_graph)
-    return query_results->query->factory->results_is_graph(query_results);
-  else
-    return -1;
+    if (query_results->query->factory->results_is_graph)
+        return query_results->query->factory->results_is_graph(query_results);
+    else
+        return -1;
 }
 
 
@@ -745,14 +739,13 @@ librdf_query_results_is_graph(librdf_query_results* query_results)
  * Return value: non-0 if true
  **/
 int
-librdf_query_results_is_syntax(librdf_query_results* query_results)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, -1);
+librdf_query_results_is_syntax(librdf_query_results *query_results) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, -1);
 
-  if(query_results->query->factory->results_is_syntax)
-    return query_results->query->factory->results_is_syntax(query_results);
-  else
-    return -1;
+    if (query_results->query->factory->results_is_syntax)
+        return query_results->query->factory->results_is_syntax(query_results);
+    else
+        return -1;
 }
 
 
@@ -768,14 +761,13 @@ librdf_query_results_is_syntax(librdf_query_results* query_results)
  * Return value: boolean query result - >0 is true, 0 is false, <0 on error or finished
  */
 int
-librdf_query_results_get_boolean(librdf_query_results* query_results)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, -1);
+librdf_query_results_get_boolean(librdf_query_results *query_results) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, -1);
 
-  if(query_results->query->factory->results_get_boolean)
-    return query_results->query->factory->results_get_boolean(query_results);
-  else
-    return -1;
+    if (query_results->query->factory->results_get_boolean)
+        return query_results->query->factory->results_get_boolean(query_results);
+    else
+        return -1;
 }
 
 
@@ -790,15 +782,14 @@ librdf_query_results_get_boolean(librdf_query_results* query_results)
  *
  * Return value: a new #librdf_stream result or NULL on error
  */
-librdf_stream*
-librdf_query_results_as_stream(librdf_query_results* query_results)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, NULL);
+librdf_stream *
+librdf_query_results_as_stream(librdf_query_results *query_results) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query_results, query_results, NULL);
 
-  if(query_results->query->factory->results_as_stream)
-    return query_results->query->factory->results_as_stream(query_results);
-  else
-    return NULL;
+    if (query_results->query->factory->results_as_stream)
+        return query_results->query->factory->results_as_stream(query_results);
+    else
+        return NULL;
 }
 
 
@@ -821,19 +812,19 @@ librdf_query_results_as_stream(librdf_query_results* query_results)
  *
  * Return value: a new #librdf_query_results_formatter object or NULL on failure
  */
-librdf_query_results_formatter*
-librdf_new_query_results_formatter2(librdf_query_results* query_results,
+librdf_query_results_formatter *
+librdf_new_query_results_formatter2(librdf_query_results *query_results,
                                     const char *name, const char *mime_type,
-                                    librdf_uri* uri)
-{
-  if(query_results->query->factory->new_results_formatter)
-    return query_results->query->factory->new_results_formatter(query_results, name, mime_type, uri);
-  else
-    return NULL;
+                                    librdf_uri *uri) {
+    if (query_results->query->factory->new_results_formatter)
+        return query_results->query->factory->new_results_formatter(query_results, name, mime_type, uri);
+    else
+        return NULL;
 }
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_new_query_results_formatter:
  * @query_results: #librdf_query_results query_results
@@ -854,19 +845,20 @@ librdf_new_query_results_formatter2(librdf_query_results* query_results,
  *
  * Return value: a new #librdf_query_results_formatter object or NULL on failure
  */
-librdf_query_results_formatter*
-librdf_new_query_results_formatter(librdf_query_results* query_results,
-                                   const char *name, librdf_uri* uri)
-{
-  if(query_results->query->factory->new_results_formatter)
-    return query_results->query->factory->new_results_formatter(query_results, name, NULL, uri);
-  else
-    return NULL;
+librdf_query_results_formatter *
+librdf_new_query_results_formatter(librdf_query_results *query_results,
+                                   const char *name, librdf_uri *uri) {
+    if (query_results->query->factory->new_results_formatter)
+        return query_results->query->factory->new_results_formatter(query_results, name, NULL, uri);
+    else
+        return NULL;
 }
+
 #endif
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_new_query_results_formatter_by_mime_type:
  * @query_results: #librdf_query_results query_results
@@ -887,15 +879,15 @@ librdf_new_query_results_formatter(librdf_query_results* query_results,
  *
  * Return value: a new #librdf_query_results_formatter object or NULL on failure
  */
-librdf_query_results_formatter*
-librdf_new_query_results_formatter_by_mime_type(librdf_query_results* query_results,
-                                                const char *mime_type)
-{
-  if(query_results->query->factory->new_results_formatter)
-    return query_results->query->factory->new_results_formatter(query_results, NULL, mime_type, NULL);
-  else
-    return NULL;
+librdf_query_results_formatter *
+librdf_new_query_results_formatter_by_mime_type(librdf_query_results *query_results,
+                                                const char *mime_type) {
+    if (query_results->query->factory->new_results_formatter)
+        return query_results->query->factory->new_results_formatter(query_results, NULL, mime_type, NULL);
+    else
+        return NULL;
 }
+
 #endif
 
 
@@ -906,13 +898,12 @@ librdf_new_query_results_formatter_by_mime_type(librdf_query_results* query_resu
  * Destructor - destroy a #librdf_query_results_formatter object.
  **/
 void
-librdf_free_query_results_formatter(librdf_query_results_formatter* formatter) 
-{
-  if(!formatter)
-    return;
-  
-  if(formatter->query_results->query->factory->free_results_formatter)
-    formatter->query_results->query->factory->free_results_formatter(formatter);
+librdf_free_query_results_formatter(librdf_query_results_formatter *formatter) {
+    if (!formatter)
+        return;
+
+    if (formatter->query_results->query->factory->free_results_formatter)
+        formatter->query_results->query->factory->free_results_formatter(formatter);
 }
 
 
@@ -935,17 +926,16 @@ librdf_free_query_results_formatter(librdf_query_results_formatter* formatter)
  **/
 int
 librdf_query_results_formatter_write(raptor_iostream *iostr,
-                                     librdf_query_results_formatter* formatter,
-                                     librdf_query_results* query_results,
-                                     librdf_uri *base_uri)
-{
-  if(query_results->query->factory->results_formatter_write)
-    return query_results->query->factory->results_formatter_write(iostr,
-                                                                  formatter,
-                                                                  query_results,
-                                                                  base_uri);
-  else
-    return 1;
+                                     librdf_query_results_formatter *formatter,
+                                     librdf_query_results *query_results,
+                                     librdf_uri *base_uri) {
+    if (query_results->query->factory->results_formatter_write)
+        return query_results->query->factory->results_formatter_write(iostr,
+                                                                      formatter,
+                                                                      query_results,
+                                                                      base_uri);
+    else
+        return 1;
 }
 
 
@@ -961,20 +951,19 @@ librdf_query_results_formatter_write(raptor_iostream *iostr,
  * Return value: non-0 if a formatter exists.
  **/
 int
-librdf_query_results_formats_check(librdf_world* world, 
-                                   const char *name, librdf_uri* uri,
-                                   const char *mime_type)
-{
-  int flags = RASQAL_QUERY_RESULTS_FORMAT_FLAG_READER;
-  
-  librdf_world_open(world);
+librdf_query_results_formats_check(librdf_world *world,
+                                   const char *name, librdf_uri *uri,
+                                   const char *mime_type) {
+    int flags = RASQAL_QUERY_RESULTS_FORMAT_FLAG_READER;
 
-  /* FIXME - this should use some kind of registration but for now
-   * it is safe to assume Rasqal does it all
-   */
-  return rasqal_query_results_formats_check(world->rasqal_world_ptr,
-                                            name, (raptor_uri*)uri, mime_type,
-                                            flags);
+    librdf_world_open(world);
+
+    /* FIXME - this should use some kind of registration but for now
+     * it is safe to assume Rasqal does it all
+     */
+    return rasqal_query_results_formats_check(world->rasqal_world_ptr,
+                                              name, (raptor_uri *) uri, mime_type,
+                                              flags);
 }
 
 
@@ -998,40 +987,39 @@ librdf_query_results_formats_check(librdf_world* world,
  * Return value: non 0 on failure of if counter is out of range
  */
 int
-librdf_query_results_formats_enumerate(librdf_world* world,
+librdf_query_results_formats_enumerate(librdf_world *world,
                                        const unsigned int counter,
                                        const char **name,
                                        const char **label,
                                        const unsigned char **uri_string,
-                                       const char **mime_type)
-{
-  const raptor_syntax_description *desc;
+                                       const char **mime_type) {
+    const raptor_syntax_description *desc;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  /* FIXME - this should use some kind of registration but for now
-   * it is safe to assume Rasqal does it all
-   */
-  desc = rasqal_world_get_query_results_format_description(world->rasqal_world_ptr, counter);
-  if(!desc)
-    return -1;
-  
-  /* First element of names, uri_strings, mime_types arrays is always
-   * the main one 
-   */
-  if(name && desc->names)
-    *name = desc->names[0];
+    /* FIXME - this should use some kind of registration but for now
+     * it is safe to assume Rasqal does it all
+     */
+    desc = rasqal_world_get_query_results_format_description(world->rasqal_world_ptr, counter);
+    if (!desc)
+        return -1;
 
-  if(label)
-    *label = desc->label;
+    /* First element of names, uri_strings, mime_types arrays is always
+     * the main one
+     */
+    if (name && desc->names)
+        *name = desc->names[0];
 
-  if(uri_string && desc->uri_strings)
-    *uri_string = (const unsigned char *)desc->uri_strings[0];
+    if (label)
+        *label = desc->label;
 
-  if(mime_type && desc->mime_types)
-    *mime_type = desc->mime_types[0].mime_type;
+    if (uri_string && desc->uri_strings)
+        *uri_string = (const unsigned char *) desc->uri_strings[0];
 
-  return 0;
+    if (mime_type && desc->mime_types)
+        *mime_type = desc->mime_types[0].mime_type;
+
+    return 0;
 }
 
 
@@ -1044,12 +1032,11 @@ librdf_query_results_formats_enumerate(librdf_world* world,
  * 
  * Return value: description or NULL if counter is out of range
  **/
-const raptor_syntax_description*
-librdf_query_results_formats_get_description(librdf_world* world, 
-                                             unsigned int counter)
-{
-  librdf_world_open(world);
+const raptor_syntax_description *
+librdf_query_results_formats_get_description(librdf_world *world,
+                                             unsigned int counter) {
+    librdf_world_open(world);
 
-  return rasqal_world_get_query_results_format_description(world->rasqal_world_ptr,
-                                                           counter);
+    return rasqal_world_get_query_results_format_description(world->rasqal_world_ptr,
+                                                             counter);
 }

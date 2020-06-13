@@ -152,12 +152,13 @@ namespace semsim {
          * the underlying librdf_query and librdf_query_results pointers
          * safer from a memory management perspective.
          */
-        Query(const Query &query) = delete ;
+        Query(const Query &query) = delete;
 
         /*
          * @brief move constructor for Query object
          */
         Query(Query &&query) noexcept;
+
 /*
          *
          * @brief copy assignment constructor for Query object
@@ -167,7 +168,8 @@ namespace semsim {
          * the underlying librdf_query and librdf_query_results pointers
          * safer from a memory management perspective.
          */
-        Query &operator=(const Query &query) = delete ;
+        Query &operator=(const Query &query) = delete;
+
 /*
          *
          * @brief move assignment constructor for Query object

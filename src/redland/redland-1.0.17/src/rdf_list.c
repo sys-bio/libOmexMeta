@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -42,32 +44,35 @@
 
 
 /* prototypes for local functions */
-static librdf_list_node* librdf_list_find_node(librdf_list* list, void *data);
+static librdf_list_node *librdf_list_find_node(librdf_list *list, void *data);
 
-static int librdf_list_iterator_is_end(void* iterator);
-static int librdf_list_iterator_next_method(void* iterator);
-static void* librdf_list_iterator_get_method(void* iterator, int flags);
-static void librdf_list_iterator_finished(void* iterator);
+static int librdf_list_iterator_is_end(void *iterator);
 
-static void librdf_list_iterators_replace_node(librdf_list* list, librdf_list_node* old_node, librdf_list_node* new_node);
+static int librdf_list_iterator_next_method(void *iterator);
+
+static void *librdf_list_iterator_get_method(void *iterator, int flags);
+
+static void librdf_list_iterator_finished(void *iterator);
+
+static void
+librdf_list_iterators_replace_node(librdf_list *list, librdf_list_node *old_node, librdf_list_node *new_node);
 
 
 /* helper functions */
-static librdf_list_node*
-librdf_list_find_node(librdf_list* list, void *data)
-{
-  librdf_list_node* node;
-  
-  for(node=list->first; node; node=node->next) {
-    if(list->equals) {
-      if(list->equals(node->data, data))
-        break;
-    } else {
-      if(node->data == data)
-        break;
+static librdf_list_node *
+librdf_list_find_node(librdf_list *list, void *data) {
+    librdf_list_node *node;
+
+    for (node = list->first; node; node = node->next) {
+        if (list->equals) {
+            if (list->equals(node->data, data))
+                break;
+        } else {
+            if (node->data == data)
+                break;
+        }
     }
-  }
-  return node;
+    return node;
 }
 
 
@@ -79,20 +84,19 @@ librdf_list_find_node(librdf_list* list, void *data)
  * 
  * Return value: a new #librdf_list or NULL on failure
  **/
-librdf_list*
-librdf_new_list(librdf_world *world)
-{
-  librdf_list* new_list;
-  
-  librdf_world_open(world);
+librdf_list *
+librdf_new_list(librdf_world *world) {
+    librdf_list *new_list;
 
-  new_list = LIBRDF_CALLOC(librdf_list*, 1, sizeof(*new_list));
-  if(!new_list)
-    return NULL;
-  
-  new_list->world=world;
-  
-  return new_list;
+    librdf_world_open(world);
+
+    new_list = LIBRDF_CALLOC(librdf_list*, 1, sizeof(*new_list));
+    if (!new_list)
+        return NULL;
+
+    new_list->world = world;
+
+    return new_list;
 }
 
 
@@ -104,16 +108,15 @@ librdf_new_list(librdf_world *world)
  * 
  **/
 void
-librdf_free_list(librdf_list* list) 
-{
-  if(!list)
-    return;
-  
-  LIBRDF_ASSERT_RETURN(list->iterator_count,
-                       "Iterators were active on freeing list", );
+librdf_free_list(librdf_list *list) {
+    if (!list)
+        return;
 
-  librdf_list_clear(list);
-  LIBRDF_FREE(librdf_list, list);
+    LIBRDF_ASSERT_RETURN(list->iterator_count,
+                         "Iterators were active on freeing list",);
+
+    librdf_list_clear(list);
+    LIBRDF_FREE(librdf_list, list);
 }
 
 
@@ -125,14 +128,13 @@ librdf_free_list(librdf_list* list)
  * 
  **/
 void
-librdf_list_clear(librdf_list* list) 
-{
-  librdf_list_node *node, *next;
-  
-  for(node=list->first; node; node=next) {
-    next=node->next;
-    LIBRDF_FREE(librdf_list_node, node);
-  }
+librdf_list_clear(librdf_list *list) {
+    librdf_list_node *node, *next;
+
+    for (node = list->first; node; node = next) {
+        next = node->next;
+        LIBRDF_FREE(librdf_list_node, node);
+    }
 }
 
 
@@ -149,34 +151,33 @@ librdf_list_clear(librdf_list* list)
  * Return value: non 0 on failure
  **/
 int
-librdf_list_add(librdf_list* list, void *data) 
-{
-  librdf_list_node* node;
-  
-  /* need new node */
-  node = LIBRDF_CALLOC(librdf_list_node*, 1, sizeof(*node));
-  if(!node)
-    return 1;
-  
-  node->data=data;
+librdf_list_add(librdf_list *list, void *data) {
+    librdf_list_node *node;
 
-  /* if there is a list, connect the new node to the last node  */
-  if(list->last) {
-    node->prev=list->last;
-    list->last->next=node;
-  }
+    /* need new node */
+    node = LIBRDF_CALLOC(librdf_list_node*, 1, sizeof(*node));
+    if (!node)
+        return 1;
 
-  /* make this node the last node always */
-  list->last=node;
-  
-  /* if there is no list at all, make this the first to */
-  if(!list->first)
-    list->first=node;
+    node->data = data;
 
-  /* node->next = NULL implicitly */
+    /* if there is a list, connect the new node to the last node  */
+    if (list->last) {
+        node->prev = list->last;
+        list->last->next = node;
+    }
 
-  list->length++;
-  return 0;
+    /* make this node the last node always */
+    list->last = node;
+
+    /* if there is no list at all, make this the first to */
+    if (!list->first)
+        list->first = node;
+
+    /* node->next = NULL implicitly */
+
+    list->length++;
+    return 0;
 }
 
 
@@ -193,34 +194,33 @@ librdf_list_add(librdf_list* list, void *data)
  * Return value: non 0 on failure
  **/
 int
-librdf_list_unshift(librdf_list* list, void *data) 
-{
-  librdf_list_node* node;
-  
-  /* need new node */
-  node = LIBRDF_CALLOC(librdf_list_node*, 1, sizeof(*node));
-  if(!node)
-    return 1;
-  
-  node->data=data;
+librdf_list_unshift(librdf_list *list, void *data) {
+    librdf_list_node *node;
 
-  /* if there is a list, connect the new node to the first node  */
-  if(list->first) {
-    node->next=list->first;
-    list->first->prev=node;
-  }
+    /* need new node */
+    node = LIBRDF_CALLOC(librdf_list_node*, 1, sizeof(*node));
+    if (!node)
+        return 1;
 
-  /* make this node the first node always */
-  list->first=node;
-  
-  /* if there is no list at all, make this the last too */
-  if(!list->last)
-    list->last=node;
+    node->data = data;
 
-  /* node->next = NULL implicitly */
+    /* if there is a list, connect the new node to the first node  */
+    if (list->first) {
+        node->next = list->first;
+        list->first->prev = node;
+    }
 
-  list->length++;
-  return 0;
+    /* make this node the first node always */
+    list->first = node;
+
+    /* if there is no list at all, make this the last too */
+    if (!list->last)
+        list->last = node;
+
+    /* node->next = NULL implicitly */
+
+    list->length++;
+    return 0;
 }
 
 
@@ -238,35 +238,34 @@ librdf_list_unshift(librdf_list* list, void *data)
  * Return value: the data stored or NULL on failure (not found or list empty)
  **/
 void *
-librdf_list_remove(librdf_list* list, void *data) 
-{
-  librdf_list_node *node;
-  
-  node=librdf_list_find_node(list, data);
-  if(!node)
-    /* not found */
-    return NULL;
+librdf_list_remove(librdf_list *list, void *data) {
+    librdf_list_node *node;
 
-  librdf_list_iterators_replace_node(list, node, node->next);
-  
-  if(node == list->first)
-    list->first=node->next;
-  if(node->prev)
-    node->prev->next=node->next;
+    node = librdf_list_find_node(list, data);
+    if (!node)
+        /* not found */
+        return NULL;
 
-  if(node == list->last)
-    list->last=node->prev;
-  if(node->next)
-    node->next->prev=node->prev;
+    librdf_list_iterators_replace_node(list, node, node->next);
 
-  /* retrieve actual stored data */
-  data=node->data;
-  
-  /* free node */
-  LIBRDF_FREE(librdf_list_node, node);
-  list->length--;
+    if (node == list->first)
+        list->first = node->next;
+    if (node->prev)
+        node->prev->next = node->next;
 
-  return data;
+    if (node == list->last)
+        list->last = node->prev;
+    if (node->next)
+        node->next->prev = node->prev;
+
+    /* retrieve actual stored data */
+    data = node->data;
+
+    /* free node */
+    LIBRDF_FREE(librdf_list_node, node);
+    list->length--;
+
+    return data;
 }
 
 
@@ -278,33 +277,32 @@ librdf_list_remove(librdf_list* list, void *data)
  * 
  * Return value: the data object or NULL if the list is empty
  **/
-void*
-librdf_list_shift(librdf_list* list)
-{
-  librdf_list_node *node;
-  void *data;
+void *
+librdf_list_shift(librdf_list *list) {
+    librdf_list_node *node;
+    void *data;
 
-  node=list->first;
-  if(!node)
-    return NULL;
-     
-  list->first=node->next;
+    node = list->first;
+    if (!node)
+        return NULL;
 
-  if(list->first)
-    /* if list not empty, fix pointers */
-    list->first->prev=NULL;
-  else
-    /* list is now empty, zap last pointer */
-    list->last=NULL;
-  
-  /* save data */
-  data=node->data;
+    list->first = node->next;
 
-  /* free node */
-  LIBRDF_FREE(librdf_list_node, node);
+    if (list->first)
+        /* if list not empty, fix pointers */
+        list->first->prev = NULL;
+    else
+        /* list is now empty, zap last pointer */
+        list->last = NULL;
 
-  list->length--;
-  return data;
+    /* save data */
+    data = node->data;
+
+    /* free node */
+    LIBRDF_FREE(librdf_list_node, node);
+
+    list->length--;
+    return data;
 }
 
 
@@ -316,33 +314,32 @@ librdf_list_shift(librdf_list* list)
  * 
  * Return value: the data object or NULL if the list is empty
  **/
-void*
-librdf_list_pop(librdf_list* list)
-{
-  librdf_list_node *node;
-  void *data;
+void *
+librdf_list_pop(librdf_list *list) {
+    librdf_list_node *node;
+    void *data;
 
-  node=list->last;
-  if(!node)
-    return NULL;
-     
-  list->last=node->prev;
+    node = list->last;
+    if (!node)
+        return NULL;
 
-  if(list->last)
-    /* if list not empty, fix pointers */
-    list->last->next=NULL;
-  else
-    /* list is now empty, zap last pointer */
-    list->first=NULL;
-  
-  /* save data */
-  data=node->data;
+    list->last = node->prev;
 
-  /* free node */
-  LIBRDF_FREE(librdf_list_node, node);
+    if (list->last)
+        /* if list not empty, fix pointers */
+        list->last->next = NULL;
+    else
+        /* list is now empty, zap last pointer */
+        list->first = NULL;
 
-  list->length--;
-  return data;
+    /* save data */
+    data = node->data;
+
+    /* free node */
+    LIBRDF_FREE(librdf_list_node, node);
+
+    list->length--;
+    return data;
 }
 
 
@@ -360,12 +357,11 @@ librdf_list_pop(librdf_list* list)
  * Return value: non 0 if item was found
  **/
 int
-librdf_list_contains(librdf_list* list, void *data) 
-{
-  librdf_list_node *node;
-  
-  node=librdf_list_find_node(list, data);
-  return (node != NULL);
+librdf_list_contains(librdf_list *list, void *data) {
+    librdf_list_node *node;
+
+    node = librdf_list_find_node(list, data);
+    return (node != NULL);
 }
 
 
@@ -378,9 +374,8 @@ librdf_list_contains(librdf_list* list, void *data)
  * Return value: length of the list
  **/
 int
-librdf_list_size(librdf_list* list) 
-{
-  return list->length;
+librdf_list_size(librdf_list *list) {
+    return list->length;
 }
 
 
@@ -398,79 +393,74 @@ librdf_list_size(librdf_list* list)
  **/
 REDLAND_EXTERN_C
 void
-librdf_list_set_equals(librdf_list* list, 
-                       int (*equals) (void* data1, void *data2)) 
-{
-  list->equals=equals;
+librdf_list_set_equals(librdf_list *list,
+                       int (*equals)(void *data1, void *data2)) {
+    list->equals = equals;
 }
 
 
 static void
-librdf_list_add_iterator_context(librdf_list* list, 
-                                 librdf_list_iterator_context* node)
-{
-  if(list->last_iterator) {
-    node->prev_ic=list->last_iterator;
-    list->last_iterator->next_ic=node;
-  }
-
-  list->last_iterator=node;
-  
-  if(!list->first_iterator)
-    list->first_iterator=node;
-
-  list->iterator_count++;
-#if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 2
-  LIBRDF_DEBUG4("Added iterator %p to list %p giving %d iterators\n",
-                node->iterator, list, list->iterator_count);
-#endif
-}
-
-
-static void
-librdf_list_remove_iterator_context(librdf_list* list,
-                                    librdf_list_iterator_context* node)
-{
-  if(node == list->first_iterator)
-    list->first_iterator=node->next_ic;
-  if(node->prev_ic)
-    node->prev_ic->next_ic=node->next_ic;
-
-  if(node == list->last_iterator)
-    list->last_iterator=node->prev_ic;
-  if(node->next_ic)
-    node->next_ic->prev_ic=node->prev_ic;
-
-  list->iterator_count--;
-#if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 2
-  LIBRDF_DEBUG4("Removed iterator %p from list %p leaving %d iterators\n",
-                node->iterator, list, list->iterator_count);
-#endif
-}
-
-
-static void
-librdf_list_iterators_replace_node(librdf_list* list, 
-                                   librdf_list_node* old_node,
-                                   librdf_list_node* new_node)
-{
-  librdf_list_iterator_context *node, *next;
-  
-  if(!list->iterator_count)
-    return;
-  
-  for(node=list->first_iterator; node; node=next) {
-    next=node->next_ic;
-    if(node->next == old_node) {
-#if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 2
-      LIBRDF_DEBUG4("Moved iterator %p pointing from next node %p to %p\n",
-                    node->iterator, old_node, new_node);
-#endif
-      node->next = new_node;
+librdf_list_add_iterator_context(librdf_list *list,
+                                 librdf_list_iterator_context *node) {
+    if (list->last_iterator) {
+        node->prev_ic = list->last_iterator;
+        list->last_iterator->next_ic = node;
     }
-  }
+
+    list->last_iterator = node;
+
+    if (!list->first_iterator)
+        list->first_iterator = node;
+
+    list->iterator_count++;
+#if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 2
+    LIBRDF_DEBUG4("Added iterator %p to list %p giving %d iterators\n",
+                  node->iterator, list, list->iterator_count);
+#endif
 }
 
+
+static void
+librdf_list_remove_iterator_context(librdf_list *list,
+                                    librdf_list_iterator_context *node) {
+    if (node == list->first_iterator)
+        list->first_iterator = node->next_ic;
+    if (node->prev_ic)
+        node->prev_ic->next_ic = node->next_ic;
+
+    if (node == list->last_iterator)
+        list->last_iterator = node->prev_ic;
+    if (node->next_ic)
+        node->next_ic->prev_ic = node->prev_ic;
+
+    list->iterator_count--;
+#if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 2
+    LIBRDF_DEBUG4("Removed iterator %p from list %p leaving %d iterators\n",
+                  node->iterator, list, list->iterator_count);
+#endif
+}
+
+
+static void
+librdf_list_iterators_replace_node(librdf_list *list,
+                                   librdf_list_node *old_node,
+                                   librdf_list_node *new_node) {
+    librdf_list_iterator_context *node, *next;
+
+    if (!list->iterator_count)
+        return;
+
+    for (node = list->first_iterator; node; node = next) {
+        next = node->next_ic;
+        if (node->next == old_node) {
+#if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 2
+            LIBRDF_DEBUG4("Moved iterator %p pointing from next node %p to %p\n",
+                          node->iterator, old_node, new_node);
+#endif
+            node->next = new_node;
+        }
+    }
+}
 
 
 /**
@@ -481,95 +471,90 @@ librdf_list_iterators_replace_node(librdf_list* list,
  * 
  * Return value: a new #librdf_iterator object or NULL on failure
  **/
-librdf_iterator*
-librdf_list_get_iterator(librdf_list* list)
-{
-  librdf_list_iterator_context* context;
-  librdf_iterator* iterator;
+librdf_iterator *
+librdf_list_get_iterator(librdf_list *list) {
+    librdf_list_iterator_context *context;
+    librdf_iterator *iterator;
 
-  context = LIBRDF_CALLOC(librdf_list_iterator_context*, 1, sizeof(*context));
-  if(!context)
-    return NULL;
+    context = LIBRDF_CALLOC(librdf_list_iterator_context*, 1, sizeof(*context));
+    if (!context)
+        return NULL;
 
-  context->list=list;
-  context->current=list->first;
-  context->next=context->current != NULL ? context->current->next : NULL;
+    context->list = list;
+    context->current = list->first;
+    context->next = context->current != NULL ? context->current->next : NULL;
 
-  /* librdf_list_iterator_finished() calls librdf_list_remove_iterator_context(),
-   * librdf_list_iterator_finished() is called if librdf_new_iterator() fails */
-  librdf_list_add_iterator_context(list, context);
+    /* librdf_list_iterator_finished() calls librdf_list_remove_iterator_context(),
+     * librdf_list_iterator_finished() is called if librdf_new_iterator() fails */
+    librdf_list_add_iterator_context(list, context);
 
-  iterator=librdf_new_iterator(list->world, 
-                               (void*)context,
-                               librdf_list_iterator_is_end,
-                               librdf_list_iterator_next_method,
-                               librdf_list_iterator_get_method,
-                               librdf_list_iterator_finished);
-  if(!iterator)
-    librdf_list_iterator_finished(context);
-  else
-    context->iterator=iterator;
+    iterator = librdf_new_iterator(list->world,
+                                   (void *) context,
+                                   librdf_list_iterator_is_end,
+                                   librdf_list_iterator_next_method,
+                                   librdf_list_iterator_get_method,
+                                   librdf_list_iterator_finished);
+    if (!iterator)
+        librdf_list_iterator_finished(context);
+    else
+        context->iterator = iterator;
 
-  return iterator;
+    return iterator;
 }
 
 
 static int
-librdf_list_iterator_is_end(void* iterator) 
-{
-  librdf_list_iterator_context* context=(librdf_list_iterator_context*)iterator;
-  librdf_list_node *node=context->current;
-  
-  return (node == NULL);
+librdf_list_iterator_is_end(void *iterator) {
+    librdf_list_iterator_context *context = (librdf_list_iterator_context *) iterator;
+    librdf_list_node *node = context->current;
+
+    return (node == NULL);
 }
 
 
 static int
-librdf_list_iterator_next_method(void* iterator) 
-{
-  librdf_list_iterator_context* context=(librdf_list_iterator_context*)iterator;
-  librdf_list_node *node=context->current;
-  
-  if(!node)
-    return 1;
-  
-  context->current = context->next;
-  context->next = context->current != NULL ? context->current->next : NULL;
-  
-  return (context->current == NULL);
+librdf_list_iterator_next_method(void *iterator) {
+    librdf_list_iterator_context *context = (librdf_list_iterator_context *) iterator;
+    librdf_list_node *node = context->current;
+
+    if (!node)
+        return 1;
+
+    context->current = context->next;
+    context->next = context->current != NULL ? context->current->next : NULL;
+
+    return (context->current == NULL);
 }
 
 
-static void*
-librdf_list_iterator_get_method(void* iterator, int flags) 
-{
-  librdf_list_iterator_context* context=(librdf_list_iterator_context*)iterator;
-  librdf_list_node *node=context->current;
-  
-  if(!node)
+static void *
+librdf_list_iterator_get_method(void *iterator, int flags) {
+    librdf_list_iterator_context *context = (librdf_list_iterator_context *) iterator;
+    librdf_list_node *node = context->current;
+
+    if (!node)
+        return NULL;
+
+    if (flags == LIBRDF_ITERATOR_GET_METHOD_GET_OBJECT)
+        return node->data;
+
+    librdf_log(context->list->world,
+               0, LIBRDF_LOG_ERROR, LIBRDF_FROM_LIST, NULL,
+               "Unsupported iterator method flag %d", flags);
     return NULL;
-
-  if(flags == LIBRDF_ITERATOR_GET_METHOD_GET_OBJECT)
-    return node->data;
-
-  librdf_log(context->list->world,
-             0, LIBRDF_LOG_ERROR, LIBRDF_FROM_LIST, NULL,
-             "Unsupported iterator method flag %d", flags);
-  return NULL;
 }
 
 
 static void
-librdf_list_iterator_finished(void* iterator)
-{
-  librdf_list_iterator_context* context=(librdf_list_iterator_context*)iterator;
+librdf_list_iterator_finished(void *iterator) {
+    librdf_list_iterator_context *context = (librdf_list_iterator_context *) iterator;
 
-  if(!context)
-    return;
-  
-  librdf_list_remove_iterator_context(context->list, context);
+    if (!context)
+        return;
 
-  LIBRDF_FREE(librdf_list_iterator_context, context);
+    librdf_list_remove_iterator_context(context->list, context);
+
+    LIBRDF_FREE(librdf_list_iterator_context, context);
 }
 
 
@@ -585,15 +570,14 @@ librdf_list_iterator_finished(void* iterator)
  **/
 REDLAND_EXTERN_C
 void
-librdf_list_foreach(librdf_list* list, void (*fn)(void *, void *),
-                    void *user_data) 
-{
-  librdf_list_node *node, *next;
-  
-  for(node=list->first; node; node=next) {
-    next=node->next;
-    (*fn)(node->data, user_data);
-  }
+librdf_list_foreach(librdf_list *list, void (*fn)(void *, void *),
+                    void *user_data) {
+    librdf_list_node *node, *next;
+
+    for (node = list->first; node; node = next) {
+        next = node->next;
+        (*fn)(node->data, user_data);
+    }
 }
 
 

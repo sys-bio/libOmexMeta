@@ -164,6 +164,38 @@ TEST_F(ResourceTests, TestThatIcanPutAResourceInAVector) {
     resource.free();
 }
 
+TEST(ResourceTestsNoFixture, TestEquality) {
+    Resource resource1 = Resource(
+            LibrdfNode::fromLiteral(
+                    "1.0",
+                    "http://www.w3.org/2001/XMLSchema#double"
+            )
+    );
+    Resource resource2 = Resource(
+            LibrdfNode::fromLiteral(
+                    "1.0",
+                    "http://www.w3.org/2001/XMLSchema#double"
+            )
+    );
+    ASSERT_EQ(resource1, resource2);
+}
+
+TEST(ResourceTestsNoFixture, TestInequality) {
+    Resource resource1 = Resource(
+            LibrdfNode::fromLiteral(
+                    "2.0",
+                    "http://www.w3.org/2001/XMLSchema#double"
+            )
+    );
+    Resource resource2 = Resource(
+            LibrdfNode::fromLiteral(
+                    "1.0",
+                    "http://www.w3.org/2001/XMLSchema#double"
+            )
+    );
+    ASSERT_NE(resource1, resource2);
+}
+
 
 
 

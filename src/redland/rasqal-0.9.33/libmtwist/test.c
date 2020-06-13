@@ -56,11 +56,11 @@ int main(int argc, char *argv[]);
 #define ULONG_C(v) (v ## UL)
 
 static unsigned long const test_seed_54321_results_1[TEST_SET_1_NRESULTS] = {
-  ULONG_C(3915467345), ULONG_C(2189234826), ULONG_C(2679307290), ULONG_C( 787501152),
-  ULONG_C(3400771556), ULONG_C(3473638550), ULONG_C(1845911630), ULONG_C(4027756818),
-  ULONG_C(2332222920), ULONG_C( 127158527), ULONG_C(1775789767), ULONG_C(3371479562),
-  ULONG_C( 367824108), ULONG_C( 703848432), ULONG_C(3339822589), ULONG_C(1863375487),
-  ULONG_C(2100022882), ULONG_C(2466459787), ULONG_C( 217027622), ULONG_C( 932105407)
+        ULONG_C(3915467345), ULONG_C(2189234826), ULONG_C(2679307290), ULONG_C(787501152),
+        ULONG_C(3400771556), ULONG_C(3473638550), ULONG_C(1845911630), ULONG_C(4027756818),
+        ULONG_C(2332222920), ULONG_C(127158527), ULONG_C(1775789767), ULONG_C(3371479562),
+        ULONG_C(367824108), ULONG_C(703848432), ULONG_C(3339822589), ULONG_C(1863375487),
+        ULONG_C(2100022882), ULONG_C(2466459787), ULONG_C(217027622), ULONG_C(932105407)
 };
 #define TEST_SET_1_RESULTS test_seed_54321_results_1
 
@@ -69,8 +69,8 @@ static unsigned long const test_seed_54321_results_1[TEST_SET_1_NRESULTS] = {
 #define TEST_SET_2_END 629
 #define TEST_SET_2_NRESULTS (TEST_SET_2_END - TEST_SET_2_START + 1)
 static unsigned long const test_seed_54321_results_2[TEST_SET_2_NRESULTS] = {
-  ULONG_C(2109020469), ULONG_C( 264978304), ULONG_C(3951898066), ULONG_C(3322908472),
-  ULONG_C(2243665931), ULONG_C(3379990241), ULONG_C(1427746768), ULONG_C(3217532946)
+        ULONG_C(2109020469), ULONG_C(264978304), ULONG_C(3951898066), ULONG_C(3322908472),
+        ULONG_C(2243665931), ULONG_C(3379990241), ULONG_C(1427746768), ULONG_C(3217532946)
 };
 #define TEST_SET_2_RESULTS test_seed_54321_results_2
 
@@ -79,74 +79,72 @@ static unsigned long const test_seed_54321_results_2[TEST_SET_2_NRESULTS] = {
 #define TEST_SET_3_END 999
 #define TEST_SET_3_NRESULTS (TEST_SET_3_END - TEST_SET_3_START + 1)
 static unsigned long const test_seed_54321_results_3[TEST_SET_3_NRESULTS] = {
-  ULONG_C(4262956485), ULONG_C(2083563531), ULONG_C(1724557607), ULONG_C(4100776152), ULONG_C(4050777500),
-  ULONG_C(3146323433), ULONG_C(2882918002), ULONG_C(3891093309), ULONG_C(1534503088), ULONG_C(1821071197)
+        ULONG_C(4262956485), ULONG_C(2083563531), ULONG_C(1724557607), ULONG_C(4100776152), ULONG_C(4050777500),
+        ULONG_C(3146323433), ULONG_C(2882918002), ULONG_C(3891093309), ULONG_C(1534503088), ULONG_C(1821071197)
 };
 #define TEST_SET_3_RESULTS test_seed_54321_results_3
 
 
-
 int
-main(int argc, char *argv[])
-{
-  const char *program = argv[0];
-  int failures = 0;
-  int test;
-  mtwist* mt = NULL;
+main(int argc, char *argv[]) {
+    const char *program = argv[0];
+    int failures = 0;
+    int test;
+    mtwist *mt = NULL;
 
-  if(argc != 1)
-    return 1;
+    if (argc != 1)
+        return 1;
 
-  mt = mtwist_new();
-  if(!mt) {
-    fprintf(stderr, "%s: mtwist_new() failed\n", program);
-    failures++;
-    goto tidy;
-  }
-  
-  mtwist_init(mt, TEST_SEED);
-
-  for(test = 0; test < N_TESTS; test++) {
-    int check = 0;
-    unsigned long expected_v;
-    unsigned long v;
-    
-    v = mtwist_u32rand(mt);
-
-    if(test >= TEST_SET_1_START && test <= TEST_SET_1_END) {
-      check = 1;
-      expected_v = TEST_SET_1_RESULTS[test - TEST_SET_1_START];
-    } else if(test >= TEST_SET_2_START && test <= TEST_SET_2_END) {
-      check = 1;
-      expected_v = TEST_SET_2_RESULTS[test - TEST_SET_2_START];
-    } else if(test >= TEST_SET_3_START && test <= TEST_SET_3_END) {
-      check = 1;
-      expected_v = TEST_SET_3_RESULTS[test - TEST_SET_3_START];
+    mt = mtwist_new();
+    if (!mt) {
+        fprintf(stderr, "%s: mtwist_new() failed\n", program);
+        failures++;
+        goto tidy;
     }
 
-    if(check && v != expected_v) {
-      fprintf(stderr,
-              "%s: Test %3d returned value: %lu expected %lu\n",
-              program, test, v, expected_v);
-      failures++;
-    } else {
+    mtwist_init(mt, TEST_SEED);
+
+    for (test = 0; test < N_TESTS; test++) {
+        int check = 0;
+        unsigned long expected_v;
+        unsigned long v;
+
+        v = mtwist_u32rand(mt);
+
+        if (test >= TEST_SET_1_START && test <= TEST_SET_1_END) {
+            check = 1;
+            expected_v = TEST_SET_1_RESULTS[test - TEST_SET_1_START];
+        } else if (test >= TEST_SET_2_START && test <= TEST_SET_2_END) {
+            check = 1;
+            expected_v = TEST_SET_2_RESULTS[test - TEST_SET_2_START];
+        } else if (test >= TEST_SET_3_START && test <= TEST_SET_3_END) {
+            check = 1;
+            expected_v = TEST_SET_3_RESULTS[test - TEST_SET_3_START];
+        }
+
+        if (check && v != expected_v) {
+            fprintf(stderr,
+                    "%s: Test %3d returned value: %lu expected %lu\n",
+                    program, test, v, expected_v);
+            failures++;
+        } else {
 #if defined(DEBUG) && DEBUG > 1
-      if(check)
-        fprintf(stderr,
-                "%s: Test %3d returned expected value: %lu OK\n",
-                program, test, v);
-      else
-        fprintf(stderr, "%s: Test %3d returned value: %lu OK\n",
-                program, test, v);
+            if(check)
+              fprintf(stderr,
+                      "%s: Test %3d returned expected value: %lu OK\n",
+                      program, test, v);
+            else
+              fprintf(stderr, "%s: Test %3d returned value: %lu OK\n",
+                      program, test, v);
 #endif
+        }
     }
-  }
 
-  fprintf(stdout, "%s: Returned %d failures\n", program, failures);
+    fprintf(stdout, "%s: Returned %d failures\n", program, failures);
 
-  tidy:
-  if(mt)
-    mtwist_free(mt);
+    tidy:
+    if (mt)
+        mtwist_free(mt);
 
-  return failures;
+    return failures;
 }

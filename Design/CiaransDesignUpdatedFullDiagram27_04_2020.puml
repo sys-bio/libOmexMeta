@@ -33,14 +33,14 @@ namespace semsim {
 
 
 	class CompositeAnnotation {
-		+CompositeAnnotation(PhysicalPropertyResource physicalProperty, PhysicalPhenomenon propertyBearer)
+		+CompositeAnnotation(PhysicalProperty physicalProperty, PhysicalPhenomenon propertyBearer)
 		-type : AnnotationType
 		-propertyBearer_ : PhysicalPhenomenon
 		+getPhysicalPhenomenon() : PhysicalPhenomenon& {query}
-		-physicalProperty_ : PhysicalPropertyResource
-		+getPhysicalProperty() : PhysicalPropertyResource& {query}
+		-physicalProperty_ : PhysicalProperty
+		+getPhysicalProperty() : PhysicalProperty& {query}
 		+setPhysicalPhenomenon(const PhysicalPhenomenon& propertyBearer) : void
-		+setPhysicalProperty(const PhysicalPropertyResource& physicalProperty) : void
+		+setPhysicalProperty(const PhysicalProperty& physicalProperty) : void
 	}
 
 
@@ -65,7 +65,7 @@ namespace semsim {
 	class Editor {
 		+Editor(const std::string& xml, SemsimXmlType type, librdf_world* world, librdf_model* model, semsim::NamespaceMap ns_map)
 		+getNamespaces() : NamespaceMap& {query}
-		-triple_list_ : NestedTriples
+		-triples_ : NestedTriples
 		+getTripleList() : NestedTriples& {query}
 		-model_ : librdf_model*
 		-world_ : librdf_world*
@@ -179,7 +179,7 @@ namespace semsim {
 
 	class PhysicalEntity {
 		+PhysicalEntity()
-		+PhysicalEntity(librdf_world* world, Subject metaid, PhysicalPropertyResource physicalProperty, Resource is, Resources is_part_of)
+		+PhysicalEntity(librdf_world* world, Subject metaid, PhysicalProperty physicalProperty, Resource is, Resources is_part_of)
 		-identity_resource_ : Resource
 		+getIdentityResource() : Resource& {query}
 		-location_resources : Resources
@@ -196,7 +196,7 @@ namespace semsim {
 
 	class PhysicalForce {
 		+PhysicalForce()
-		+PhysicalForce(librdf_world* world, Subject metaid, PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks)
+		+PhysicalForce(librdf_world* world, Subject metaid, PhysicalProperty physicalProperty, Sources sources, Sinks sinks)
 		-sinks_ : Sinks
 		+getSinks() : Sinks& {query}
 		-sources_ : Sources
@@ -209,12 +209,12 @@ namespace semsim {
 
 
 	class PhysicalPhenomenon {
-		+PhysicalPhenomenon(librdf_world* world, Subject metaid, PhysicalPropertyResource propertyResource, AnnotationType type)
+		+PhysicalPhenomenon(librdf_world* world, Subject metaid, PhysicalProperty propertyResource, AnnotationType type)
 		+PhysicalPhenomenon()
 		+getType() : AnnotationType {query}
 		#type_ : AnnotationType
-		+getPhysicalProperty() : PhysicalPropertyResource {query}
-		#physical_property_ : PhysicalPropertyResource
+		+getPhysicalProperty() : PhysicalProperty {query}
+		#physical_property_ : PhysicalProperty
 		+getSubject() : Subject {query}
 		#about : Subject
 		+toTriples() : Triples {query}
@@ -227,7 +227,7 @@ namespace semsim {
 
 	class PhysicalProcess {
 		+PhysicalProcess()
-		+PhysicalProcess(librdf_world* world, Subject metaid, PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks, Mediators mediators)
+		+PhysicalProcess(librdf_world* world, Subject metaid, PhysicalProperty physicalProperty, Sources sources, Sinks sinks, Mediators mediators)
 		-mediators_ : Mediators
 		+getMediators() : Mediators& {query}
 		-sinks_ : Sinks
@@ -241,10 +241,10 @@ namespace semsim {
 
 
 
-	class PhysicalPropertyResource {
-		+PhysicalPropertyResource()
-		+PhysicalPropertyResource(librdf_world* world, RDFURINode node)
-		+PhysicalPropertyResource(librdf_world* world, std::string node)
+	class PhysicalProperty {
+		+PhysicalProperty()
+		+PhysicalProperty(librdf_world* world, RDFURINode node)
+		+PhysicalProperty(librdf_world* world, std::string node)
 		+isVersionOfTriple(Subject subject_metaid) : Triple {query}
 		+isVersionOf(std::string subject_metaid) : Triple {query}
 		-validate() : void
@@ -514,9 +514,9 @@ namespace semsim {
 		+operator!=(const TripleList& rhs) : bool {query}
 		+operator==(const TripleList& rhs) : bool {query}
 		+operator[](unsigned long n) : semsim : : Triple&
-		-triple_list_ : std::vector<Triple>
+		-triples_ : std::vector<Triple>
 		+emplace_back(const Subject& subject, const Predicate& predicate, const Resource& resource) : void
-		+push_back(const Triple& triple) : void
+		+move_back(const Triple& triple) : void
 	}
 
 
@@ -673,7 +673,7 @@ namespace semsim {
 
 
 
-	Resource <|-- PhysicalPropertyResource
+	Resource <|-- PhysicalProperty
 
 
 
@@ -703,7 +703,7 @@ namespace semsim {
 
 
 
-	CompositeAnnotation *-- PhysicalPropertyResource
+	CompositeAnnotation *-- PhysicalProperty
 
 
 
@@ -743,7 +743,7 @@ namespace semsim {
 
 
 
-	PhysicalPhenomenon *-- PhysicalPropertyResource
+	PhysicalPhenomenon *-- PhysicalProperty
 
 
 
@@ -824,32 +824,32 @@ namespace semsim {
 
 
 
-	PhysicalPropertyResource <.. CompositeAnnotation
+	PhysicalProperty <.. CompositeAnnotation
 
 
 
 
-	PhysicalPropertyResource <.. CompositeAnnotation
+	PhysicalProperty <.. CompositeAnnotation
 
 
 
 
-	PhysicalPropertyResource <.. PhysicalEntity
+	PhysicalProperty <.. PhysicalEntity
 
 
 
 
-	PhysicalPropertyResource <.. PhysicalForce
+	PhysicalProperty <.. PhysicalForce
 
 
 
 
-	PhysicalPropertyResource <.. PhysicalPhenomenon
+	PhysicalProperty <.. PhysicalPhenomenon
 
 
 
 
-	PhysicalPropertyResource <.. PhysicalProcess
+	PhysicalProperty <.. PhysicalProcess
 
 
 
@@ -929,7 +929,7 @@ namespace semsim {
 
 
 
-	RDFURINode <.. PhysicalPropertyResource
+	RDFURINode <.. PhysicalProperty
 
 
 
@@ -1029,7 +1029,7 @@ namespace semsim {
 
 
 
-	Subject <.. PhysicalPropertyResource
+	Subject <.. PhysicalProperty
 
 
 

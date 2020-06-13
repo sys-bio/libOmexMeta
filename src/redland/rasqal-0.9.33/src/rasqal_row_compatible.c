@@ -22,7 +22,9 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -30,9 +32,13 @@
 #endif
 
 #include <stdio.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
+
 #include <string.h>
 
 #include "rasqal.h"
@@ -41,56 +47,54 @@
 
 #ifndef STANDALONE
 
-rasqal_row_compatible*
-rasqal_new_row_compatible(rasqal_variables_table* vt,
+rasqal_row_compatible *
+rasqal_new_row_compatible(rasqal_variables_table *vt,
                           rasqal_rowsource *first_rowsource,
-                          rasqal_rowsource *second_rowsource)
-{
-  rasqal_row_compatible* map = NULL;
-  int count = rasqal_variables_table_get_total_variables_count(vt);
-  int i;
-  
-  map = RASQAL_CALLOC(rasqal_row_compatible*, 1, sizeof(*map));
-  if(!map)
-    return NULL;
-  map->variables_table = vt;
-  map->first_rowsource = first_rowsource;
-  map->second_rowsource = second_rowsource;
-  map->variables_count = count;
-  map->defined_in_map = RASQAL_CALLOC(int*, RASQAL_GOOD_CAST(size_t, 2 * count), sizeof(int));
-  if(!map->defined_in_map) {
-    RASQAL_FREE(rasqal_row_compatible, map);
-    return NULL;
-  }
+                          rasqal_rowsource *second_rowsource) {
+    rasqal_row_compatible *map = NULL;
+    int count = rasqal_variables_table_get_total_variables_count(vt);
+    int i;
 
-  for(i = 0; i < count; i++) {
-    rasqal_variable *v;
-    int offset1;
-    int offset2;
+    map = RASQAL_CALLOC(rasqal_row_compatible*, 1, sizeof(*map));
+    if (!map)
+        return NULL;
+    map->variables_table = vt;
+    map->first_rowsource = first_rowsource;
+    map->second_rowsource = second_rowsource;
+    map->variables_count = count;
+    map->defined_in_map = RASQAL_CALLOC(int*, RASQAL_GOOD_CAST(size_t, 2 * count), sizeof(int));
+    if (!map->defined_in_map) {
+        RASQAL_FREE(rasqal_row_compatible, map);
+        return NULL;
+    }
 
-    v = rasqal_variables_table_get(vt, i);
-    offset1 = rasqal_rowsource_get_variable_offset_by_name(first_rowsource,
-                                                           v->name);
-    offset2 = rasqal_rowsource_get_variable_offset_by_name(second_rowsource,
-                                                           v->name);
-    map->defined_in_map[i<<1] = offset1;
-    map->defined_in_map[1 + (i<<1)] = offset2;
-    if(offset1 >= 0 && offset2 >= 0)
-      map->variables_in_both_rows_count++;
-  }
-  
-  return map;
+    for (i = 0; i < count; i++) {
+        rasqal_variable *v;
+        int offset1;
+        int offset2;
+
+        v = rasqal_variables_table_get(vt, i);
+        offset1 = rasqal_rowsource_get_variable_offset_by_name(first_rowsource,
+                                                               v->name);
+        offset2 = rasqal_rowsource_get_variable_offset_by_name(second_rowsource,
+                                                               v->name);
+        map->defined_in_map[i << 1] = offset1;
+        map->defined_in_map[1 + (i << 1)] = offset2;
+        if (offset1 >= 0 && offset2 >= 0)
+            map->variables_in_both_rows_count++;
+    }
+
+    return map;
 }
 
 
 void
-rasqal_free_row_compatible(rasqal_row_compatible* map)
-{
-  if(!map)
-    return;
-  
-  RASQAL_FREE(intarray, map->defined_in_map);
-  RASQAL_FREE(rasqal_row_compatible, map);
+rasqal_free_row_compatible(rasqal_row_compatible *map) {
+    if (!map)
+        return;
+
+    RASQAL_FREE(intarray, map->defined_in_map);
+    RASQAL_FREE(rasqal_row_compatible, map);
 }
 
 
@@ -113,103 +117,100 @@ rasqal_free_row_compatible(rasqal_row_compatible* map)
  *      b) both be undefined
  */
 int
-rasqal_row_compatible_check(rasqal_row_compatible* map,
-                            rasqal_row *first_row, rasqal_row *second_row)
-{
-  int i;
-  int count = map->variables_count;
-  int compatible = 1;
+rasqal_row_compatible_check(rasqal_row_compatible *map,
+                            rasqal_row *first_row, rasqal_row *second_row) {
+    int i;
+    int count = map->variables_count;
+    int compatible = 1;
 
-  /* If no variables in common, always compatible */
-  if(!map->variables_in_both_rows_count)
-    return 1;
-  
-  for(i = 0; i < count; i++) {
+    /* If no variables in common, always compatible */
+    if (!map->variables_in_both_rows_count)
+        return 1;
+
+    for (i = 0; i < count; i++) {
 #ifdef RASQAL_DEBUG
-    rasqal_variable *v = rasqal_variables_table_get(map->variables_table, i);
-    const unsigned char *name = v->name;
+        rasqal_variable *v = rasqal_variables_table_get(map->variables_table, i);
+        const unsigned char *name = v->name;
 #endif
-    rasqal_literal *first_value = NULL;
-    rasqal_literal *second_value = NULL;
+        rasqal_literal *first_value = NULL;
+        rasqal_literal *second_value = NULL;
 
-    int offset1 = map->defined_in_map[i<<1];
-    int offset2 = map->defined_in_map[1 + (i<<1)];
+        int offset1 = map->defined_in_map[i << 1];
+        int offset2 = map->defined_in_map[1 + (i << 1)];
 
-    if(offset1 >= 0)
-      first_value = first_row->values[offset1];
+        if (offset1 >= 0)
+            first_value = first_row->values[offset1];
 
-    if(offset2 >= 0)
-      second_value = second_row->values[offset2];
+        if (offset2 >= 0)
+            second_value = second_row->values[offset2];
 
 #if defined(RASQAL_DEBUG) && RASQAL_DEBUG > 1
-    RASQAL_DEBUG5("row variable #%d - %s has first row offset #%d  second row offset #%d\n", i, name, offset1, offset2);
+        RASQAL_DEBUG5("row variable #%d - %s has first row offset #%d  second row offset #%d\n", i, name, offset1, offset2);
 #endif
 
-    /* do not test if both are NULL */
-    if(!first_value && !second_value)
-      continue;
+        /* do not test if both are NULL */
+        if (!first_value && !second_value)
+            continue;
 
-    if(!first_value || !second_value) {
+        if (!first_value || !second_value) {
 #if defined(RASQAL_DEBUG) && RASQAL_DEBUG > 1
-      RASQAL_DEBUG3("row variable #%d - %s has (one NULL, one value)\n", i,
-                    name);
+            RASQAL_DEBUG3("row variable #%d - %s has (one NULL, one value)\n", i,
+                          name);
 #endif
-      /* compatible if one is NULL and the other is not */
-      continue;
+            /* compatible if one is NULL and the other is not */
+            continue;
+        }
+
+        if (!rasqal_literal_equals(first_value, second_value)) {
+            RASQAL_DEBUG3("row variable #%d - %s has different values\n", i, name);
+            /* incompatible if not equal values */
+            compatible = 0;
+            break;
+        } else {
+#if defined(RASQAL_DEBUG) && RASQAL_DEBUG > 1
+            RASQAL_DEBUG3("row variable #%d - %s has same values\n", i, name);
+#endif
+        }
     }
 
-    if(!rasqal_literal_equals(first_value, second_value)) {
-      RASQAL_DEBUG3("row variable #%d - %s has different values\n", i, name);
-      /* incompatible if not equal values */
-      compatible = 0;
-      break;
-    } else {
-#if defined(RASQAL_DEBUG) && RASQAL_DEBUG > 1
-      RASQAL_DEBUG3("row variable #%d - %s has same values\n", i, name);
-#endif
-    }
-  }
-
-  return compatible;
+    return compatible;
 }
 
 
 void
-rasqal_print_row_compatible(FILE *handle, rasqal_row_compatible* map)
-{
-  int count = map->variables_count;
-  rasqal_variables_table* vt = map->variables_table;
-  int i;
-  char left_rs[4];
-  char right_rs[4];
+rasqal_print_row_compatible(FILE *handle, rasqal_row_compatible *map) {
+    int count = map->variables_count;
+    rasqal_variables_table *vt = map->variables_table;
+    int i;
+    char left_rs[4];
+    char right_rs[4];
 
-  fprintf(handle,
-          "Row compatible map: total variables: %d  shared variables: %d\n",
-          count, map->variables_in_both_rows_count);
-  for(i = 0; i < count; i++) {
-    rasqal_variable *v = rasqal_variables_table_get(vt, i);
-    int offset1 = map->defined_in_map[i<<1];
-    int offset2 = map->defined_in_map[1 + (i<<1)];
-    
-    if(offset1 < 0)
-      *left_rs='\0';
-    else
-      sprintf(left_rs, "%2d", offset1);
-    
-    if(offset2 < 0)
-      *right_rs='\0';
-    else
-      sprintf(right_rs, "%2d", offset2);
-    
-    fprintf(handle, 
-            "  Variable %10s   offsets left RS: %-3s  right RS: %-3s  %s\n",
-            v->name, left_rs, right_rs,
-            ((offset1 >=0 && offset2 >= 0) ? "SHARED" : ""));
-  }
+    fprintf(handle,
+            "Row compatible map: total variables: %d  shared variables: %d\n",
+            count, map->variables_in_both_rows_count);
+    for (i = 0; i < count; i++) {
+        rasqal_variable *v = rasqal_variables_table_get(vt, i);
+        int offset1 = map->defined_in_map[i << 1];
+        int offset2 = map->defined_in_map[1 + (i << 1)];
+
+        if (offset1 < 0)
+            *left_rs = '\0';
+        else
+            sprintf(left_rs, "%2d", offset1);
+
+        if (offset2 < 0)
+            *right_rs = '\0';
+        else
+            sprintf(right_rs, "%2d", offset2);
+
+        fprintf(handle,
+                "  Variable %10s   offsets left RS: %-3s  right RS: %-3s  %s\n",
+                v->name, left_rs, right_rs,
+                ((offset1 >= 0 && offset2 >= 0) ? "SHARED" : ""));
+    }
 }
 
 #endif /* not STANDALONE */
-
 
 
 #ifdef STANDALONE

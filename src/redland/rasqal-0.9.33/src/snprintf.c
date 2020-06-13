@@ -22,7 +22,9 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -31,9 +33,13 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
+
 #include <stdarg.h>
 
 #include "rasqal.h"
@@ -59,50 +65,49 @@ static const char digits[] = "0123456789abcdefghijklmnopqrstuvwxyz";
  * Return value: number of bytes needed or written (excluding NUL) or 0 on failure
  */
 size_t
-rasqal_format_integer(char* buffer, size_t bufsize, int integer,
-                      int width, char padding)
-{
-  size_t len = 1;
-  char *p;
-  unsigned int value;
-  unsigned int base = 10;
+rasqal_format_integer(char *buffer, size_t bufsize, int integer,
+                      int width, char padding) {
+    size_t len = 1;
+    char *p;
+    unsigned int value;
+    unsigned int base = 10;
 
-  if(integer < 0) {
-    value = RASQAL_GOOD_CAST(unsigned int, -integer);
-    len++;
-    width++;
-  } else
-    value = RASQAL_GOOD_CAST(unsigned int, integer);
-  while(value /= base)
-    len++;
+    if (integer < 0) {
+        value = RASQAL_GOOD_CAST(unsigned int, -integer);
+        len++;
+        width++;
+    } else
+        value = RASQAL_GOOD_CAST(unsigned int, integer);
+    while (value /= base)
+        len++;
 
-  if(width > 0) {
-    size_t width_l = RASQAL_GOOD_CAST(size_t, width);
-    if(width_l > len)
-      len = width_l;
-  }
+    if (width > 0) {
+        size_t width_l = RASQAL_GOOD_CAST(size_t, width);
+        if (width_l > len)
+            len = width_l;
+    }
 
-  if(!buffer || bufsize < (len + 1)) /* +1 for NUL */
+    if (!buffer || bufsize < (len + 1)) /* +1 for NUL */
+        return len;
+
+    if (!padding)
+        padding = ' ';
+
+    if (integer < 0)
+        value = RASQAL_GOOD_CAST(unsigned int, -integer);
+    else
+        value = RASQAL_GOOD_CAST(unsigned int, integer);
+
+    p = &buffer[len];
+    *p-- = '\0';
+    while (value > 0 && p >= buffer) {
+        *p-- = digits[value % base];
+        value /= base;
+    }
+    while (p >= buffer)
+        *p-- = padding;
+    if (integer < 0)
+        *buffer = '-';
+
     return len;
-
-  if(!padding)
-    padding = ' ';
-
-  if(integer < 0)
-    value = RASQAL_GOOD_CAST(unsigned int, -integer);
-  else
-    value = RASQAL_GOOD_CAST(unsigned int, integer);
-
-  p = &buffer[len];
-  *p-- = '\0';
-  while(value  > 0 && p >= buffer) {
-    *p-- = digits[value % base];
-    value /= base;
-  }
-  while(p >= buffer)
-    *p-- = padding;
-  if(integer < 0)
-    *buffer = '-';
-
-  return len;
 }

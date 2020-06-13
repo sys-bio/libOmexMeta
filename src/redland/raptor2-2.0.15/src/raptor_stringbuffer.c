@@ -25,7 +25,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #include <stdio.h>
@@ -34,7 +36,9 @@
 #include <sys/types.h>
 
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h> /* for abort() as used in errors */
+
 #endif
 
 /* Raptor includes */
@@ -44,32 +48,32 @@
 
 #ifndef STANDALONE
 
-struct raptor_stringbuffer_node_s
-{
-  struct raptor_stringbuffer_node_s* next;
-  unsigned char *string;
-  size_t length;
+struct raptor_stringbuffer_node_s {
+    struct raptor_stringbuffer_node_s *next;
+    unsigned char *string;
+    size_t length;
 };
 typedef struct raptor_stringbuffer_node_s raptor_stringbuffer_node;
 
 
-struct raptor_stringbuffer_s
-{
-  /* Pointing to the first item in the list of nodes */
-  raptor_stringbuffer_node* head;
-  /* and the last */
-  raptor_stringbuffer_node* tail;
-  
-  /* total length of the string */
-  size_t length;
+struct raptor_stringbuffer_s {
+    /* Pointing to the first item in the list of nodes */
+    raptor_stringbuffer_node *head;
+    /* and the last */
+    raptor_stringbuffer_node *tail;
 
-  /* frozen string if already calculated, or NULL if not present */
-  unsigned char *string;
+    /* total length of the string */
+    size_t length;
+
+    /* frozen string if already calculated, or NULL if not present */
+    unsigned char *string;
 };
 
 
 /* prototypes for local functions */
-static int raptor_stringbuffer_append_string_common(raptor_stringbuffer* stringbuffer, const unsigned char *string, size_t length, int do_copy);
+static int
+raptor_stringbuffer_append_string_common(raptor_stringbuffer *stringbuffer, const unsigned char *string, size_t length,
+                                         int do_copy);
 
 
 /* functions implementing the stringbuffer api */
@@ -81,13 +85,12 @@ static int raptor_stringbuffer_append_string_common(raptor_stringbuffer* stringb
  * 
  * Return value: pointer to a raptor_stringbuffer object or NULL on failure
  **/
-raptor_stringbuffer*
-raptor_new_stringbuffer(void) 
-{
-  raptor_stringbuffer* sb;
-  
-  sb = RAPTOR_CALLOC(raptor_stringbuffer*, 1, sizeof(*sb));
-  return sb;
+raptor_stringbuffer *
+raptor_new_stringbuffer(void) {
+    raptor_stringbuffer *sb;
+
+    sb = RAPTOR_CALLOC(raptor_stringbuffer*, 1, sizeof(*sb));
+    return sb;
 }
 
 
@@ -99,30 +102,28 @@ raptor_new_stringbuffer(void)
  * 
  **/
 void
-raptor_free_stringbuffer(raptor_stringbuffer *stringbuffer) 
-{
-  if(!stringbuffer)
-    return;
+raptor_free_stringbuffer(raptor_stringbuffer *stringbuffer) {
+    if (!stringbuffer)
+        return;
 
-  if(stringbuffer->head) {
-    raptor_stringbuffer_node *node = stringbuffer->head;
-  
-    while(node) {
-      raptor_stringbuffer_node *next = node->next;
-      
-      if(node->string)
-        RAPTOR_FREE(char*, node->string);
-      RAPTOR_FREE(raptor_stringbuffer_node, node);
-      node = next;
+    if (stringbuffer->head) {
+        raptor_stringbuffer_node *node = stringbuffer->head;
+
+        while (node) {
+            raptor_stringbuffer_node *next = node->next;
+
+            if (node->string)
+                RAPTOR_FREE(char*, node->string);
+            RAPTOR_FREE(raptor_stringbuffer_node, node);
+            node = next;
+        }
     }
-  }
 
-  if(stringbuffer->string)
-    RAPTOR_FREE(char*, stringbuffer->string);
+    if (stringbuffer->string)
+        RAPTOR_FREE(char*, stringbuffer->string);
 
-  RAPTOR_FREE(raptor_stringbuffer, stringbuffer);
+    RAPTOR_FREE(raptor_stringbuffer, stringbuffer);
 }
-
 
 
 /**
@@ -145,53 +146,50 @@ raptor_free_stringbuffer(raptor_stringbuffer *stringbuffer)
  * Return value: non-0 on failure
  **/
 static int
-raptor_stringbuffer_append_string_common(raptor_stringbuffer* stringbuffer, 
+raptor_stringbuffer_append_string_common(raptor_stringbuffer *stringbuffer,
                                          const unsigned char *string,
                                          size_t length,
-                                         int do_copy)
-{
-  raptor_stringbuffer_node *node;
+                                         int do_copy) {
+    raptor_stringbuffer_node *node;
 
-  if(!string || !length)
-    return 0;
-  
-  node = RAPTOR_MALLOC(raptor_stringbuffer_node*, sizeof(*node));
-  if(!node) {
-    if(!do_copy)
-      RAPTOR_FREE(char*, string);
-    return 1;
-  }
+    if (!string || !length)
+        return 0;
 
-  if(do_copy) {
-    /* Note this copy does not include the \0 character - not needed  */
-    node->string = RAPTOR_MALLOC(unsigned char*, length);
-    if(!node->string) {
-      RAPTOR_FREE(raptor_stringbuffer_node, node);
-      return 1;
+    node = RAPTOR_MALLOC(raptor_stringbuffer_node*, sizeof(*node));
+    if (!node) {
+        if (!do_copy)
+            RAPTOR_FREE(char*, string);
+        return 1;
     }
-    memcpy(node->string, string, length);
-  } else
-    node->string = (unsigned char*)string;
-  node->length = length;
+
+    if (do_copy) {
+        /* Note this copy does not include the \0 character - not needed  */
+        node->string = RAPTOR_MALLOC(unsigned char*, length);
+        if (!node->string) {
+            RAPTOR_FREE(raptor_stringbuffer_node, node);
+            return 1;
+        }
+        memcpy(node->string, string, length);
+    } else
+        node->string = (unsigned char *) string;
+    node->length = length;
 
 
-  if(stringbuffer->tail) {
-    stringbuffer->tail->next = node;
-    stringbuffer->tail = node;
-  } else
-    stringbuffer->head = stringbuffer->tail = node;
-  node->next = NULL;
+    if (stringbuffer->tail) {
+        stringbuffer->tail->next = node;
+        stringbuffer->tail = node;
+    } else
+        stringbuffer->head = stringbuffer->tail = node;
+    node->next = NULL;
 
-  if(stringbuffer->string) {
-    RAPTOR_FREE(char*, stringbuffer->string);
-    stringbuffer->string = NULL;
-  }
-  stringbuffer->length += length;
+    if (stringbuffer->string) {
+        RAPTOR_FREE(char*, stringbuffer->string);
+        stringbuffer->string = NULL;
+    }
+    stringbuffer->length += length;
 
-  return 0;
+    return 0;
 }
-
-
 
 
 /**
@@ -212,16 +210,15 @@ raptor_stringbuffer_append_string_common(raptor_stringbuffer* stringbuffer,
  * Return value: non-0 on failure
  **/
 int
-raptor_stringbuffer_append_counted_string(raptor_stringbuffer* stringbuffer, 
+raptor_stringbuffer_append_counted_string(raptor_stringbuffer *stringbuffer,
                                           const unsigned char *string, size_t length,
-                                          int do_copy)
-{
-  if(!string || !length)
-    return 0;
-  
-  return raptor_stringbuffer_append_string_common(stringbuffer, string, length, do_copy);
+                                          int do_copy) {
+    if (!string || !length)
+        return 0;
+
+    return raptor_stringbuffer_append_string_common(stringbuffer, string, length, do_copy);
 }
-  
+
 
 /**
  * raptor_stringbuffer_append_string:
@@ -240,13 +237,12 @@ raptor_stringbuffer_append_counted_string(raptor_stringbuffer* stringbuffer,
  * Return value: non-0 on failure
  **/
 int
-raptor_stringbuffer_append_string(raptor_stringbuffer* stringbuffer, 
-                                  const unsigned char *string, int do_copy)
-{
-  if(!string)
-    return 0;
-  
-  return raptor_stringbuffer_append_string_common(stringbuffer, string, strlen((const char*)string), do_copy);
+raptor_stringbuffer_append_string(raptor_stringbuffer *stringbuffer,
+                                  const unsigned char *string, int do_copy) {
+    if (!string)
+        return 0;
+
+    return raptor_stringbuffer_append_string_common(stringbuffer, string, strlen((const char *) string), do_copy);
 }
 
 
@@ -260,35 +256,34 @@ raptor_stringbuffer_append_string(raptor_stringbuffer* stringbuffer,
  * Return value: non-0 on failure
  **/
 int
-raptor_stringbuffer_append_decimal(raptor_stringbuffer* stringbuffer, 
-                                   int integer)
-{
-  /* enough for 64 bit signed integer
-   * INT64_MAX is  9223372036854775807 (19 digits) + 1 for sign 
-   */
-  unsigned char buf[20];
-  unsigned char *p;
-  int i = integer;
-  size_t length = 1;
-  if(integer < 0) {
-    length++;
-    i= -integer;
-  }
-  while(i /= 10)
-    length++;
+raptor_stringbuffer_append_decimal(raptor_stringbuffer *stringbuffer,
+                                   int integer) {
+    /* enough for 64 bit signed integer
+     * INT64_MAX is  9223372036854775807 (19 digits) + 1 for sign
+     */
+    unsigned char buf[20];
+    unsigned char *p;
+    int i = integer;
+    size_t length = 1;
+    if (integer < 0) {
+        length++;
+        i = -integer;
+    }
+    while (i /= 10)
+        length++;
 
-  p = buf+length-1;
-  i = integer;
-  if(i < 0)
-    i= -i;
-  do {
-    *p-- ='0'+(i %10);
-    i /= 10;
-  } while(i);
-  if(integer < 0)
-    *p= '-';
-  
-  return raptor_stringbuffer_append_counted_string(stringbuffer, buf, length, 1);
+    p = buf + length - 1;
+    i = integer;
+    if (i < 0)
+        i = -i;
+    do {
+        *p-- = '0' + (i % 10);
+        i /= 10;
+    } while (i);
+    if (integer < 0)
+        *p = '-';
+
+    return raptor_stringbuffer_append_counted_string(stringbuffer, buf, length, 1);
 }
 
 
@@ -305,41 +300,38 @@ raptor_stringbuffer_append_decimal(raptor_stringbuffer* stringbuffer,
  * Return value: non-0 on failure
  **/
 int
-raptor_stringbuffer_append_stringbuffer(raptor_stringbuffer* stringbuffer, 
-                                        raptor_stringbuffer* append)
-{
-  raptor_stringbuffer_node *node = append->head;
+raptor_stringbuffer_append_stringbuffer(raptor_stringbuffer *stringbuffer,
+                                        raptor_stringbuffer *append) {
+    raptor_stringbuffer_node *node = append->head;
 
-  if(!node)
+    if (!node)
+        return 0;
+
+    /* move all append nodes to stringbuffer */
+    if (stringbuffer->tail) {
+        stringbuffer->tail->next = node;
+    } else
+        stringbuffer->head = node;
+
+    stringbuffer->tail = append->tail;
+
+    /* adjust our length */
+    stringbuffer->length += append->length;
+    if (stringbuffer->string) {
+        RAPTOR_FREE(char*, stringbuffer->string);
+        stringbuffer->string = NULL;
+    }
+
+    /* zap append content */
+    append->head = append->tail = NULL;
+    append->length = 0;
+    if (append->string) {
+        RAPTOR_FREE(char*, append->string);
+        append->string = NULL;
+    }
+
     return 0;
-
-  /* move all append nodes to stringbuffer */
-  if(stringbuffer->tail) {
-    stringbuffer->tail->next = node;
-  } else
-    stringbuffer->head = node;
-
-  stringbuffer->tail = append->tail;
-
-  /* adjust our length */
-  stringbuffer->length += append->length;
-  if(stringbuffer->string) {
-    RAPTOR_FREE(char*, stringbuffer->string);
-    stringbuffer->string = NULL;
-  }
-
-  /* zap append content */
-  append->head = append->tail = NULL;
-  append->length = 0;
-  if(append->string) {
-    RAPTOR_FREE(char*, append->string);
-    append->string = NULL;
-  }
-  
-  return 0;
 }
-
-
 
 
 /**
@@ -360,45 +352,42 @@ raptor_stringbuffer_append_stringbuffer(raptor_stringbuffer* stringbuffer,
  * Return value: non-0 on failure
  **/
 static int
-raptor_stringbuffer_prepend_string_common(raptor_stringbuffer* stringbuffer, 
+raptor_stringbuffer_prepend_string_common(raptor_stringbuffer *stringbuffer,
                                           const unsigned char *string, size_t length,
-                                          int do_copy)
-{
-  raptor_stringbuffer_node *node;
+                                          int do_copy) {
+    raptor_stringbuffer_node *node;
 
-  node = RAPTOR_MALLOC(raptor_stringbuffer_node*, sizeof(*node));
-  if(!node)
-    return 1;
+    node = RAPTOR_MALLOC(raptor_stringbuffer_node*, sizeof(*node));
+    if (!node)
+        return 1;
 
-  if(do_copy) {
-    /* Note this copy does not include the \0 character - not needed  */
-    node->string = RAPTOR_MALLOC(unsigned char*, length);
-    if(!node->string) {
-      RAPTOR_FREE(raptor_stringbuffer_node, node);
-      return 1;
+    if (do_copy) {
+        /* Note this copy does not include the \0 character - not needed  */
+        node->string = RAPTOR_MALLOC(unsigned char*, length);
+        if (!node->string) {
+            RAPTOR_FREE(raptor_stringbuffer_node, node);
+            return 1;
+        }
+        memcpy(node->string, string, length);
+    } else
+        node->string = (unsigned char *) string;
+    node->length = length;
+
+
+    node->next = stringbuffer->head;
+    if (stringbuffer->head)
+        stringbuffer->head = node;
+    else
+        stringbuffer->head = stringbuffer->tail = node;
+
+    if (stringbuffer->string) {
+        RAPTOR_FREE(char*, stringbuffer->string);
+        stringbuffer->string = NULL;
     }
-    memcpy(node->string, string, length);
-  } else
-    node->string = (unsigned char*)string;
-  node->length = length;
+    stringbuffer->length += length;
 
-
-  node->next = stringbuffer->head;
-  if(stringbuffer->head)
-    stringbuffer->head = node;
-  else
-    stringbuffer->head = stringbuffer->tail = node;
-
-  if(stringbuffer->string) {
-    RAPTOR_FREE(char*, stringbuffer->string);
-    stringbuffer->string = NULL;
-  }
-  stringbuffer->length += length;
-
-  return 0;
+    return 0;
 }
-
-
 
 
 /**
@@ -417,13 +406,12 @@ raptor_stringbuffer_prepend_string_common(raptor_stringbuffer* stringbuffer,
  * Return value: non-0 on failure
  **/
 int
-raptor_stringbuffer_prepend_counted_string(raptor_stringbuffer* stringbuffer, 
+raptor_stringbuffer_prepend_counted_string(raptor_stringbuffer *stringbuffer,
                                            const unsigned char *string, size_t length,
-                                           int do_copy)
-{
-  return raptor_stringbuffer_prepend_string_common(stringbuffer, string, length, do_copy);
+                                           int do_copy) {
+    return raptor_stringbuffer_prepend_string_common(stringbuffer, string, length, do_copy);
 }
-  
+
 
 /**
  * raptor_stringbuffer_prepend_string:
@@ -440,10 +428,9 @@ raptor_stringbuffer_prepend_counted_string(raptor_stringbuffer* stringbuffer,
  * Return value: non-0 on failure
  **/
 int
-raptor_stringbuffer_prepend_string(raptor_stringbuffer* stringbuffer, 
-                                   const unsigned char *string, int do_copy)
-{
-  return raptor_stringbuffer_prepend_string_common(stringbuffer, string, strlen((const char*)string), do_copy);
+raptor_stringbuffer_prepend_string(raptor_stringbuffer *stringbuffer,
+                                   const unsigned char *string, int do_copy) {
+    return raptor_stringbuffer_prepend_string_common(stringbuffer, string, strlen((const char *) string), do_copy);
 }
 
 
@@ -456,11 +443,9 @@ raptor_stringbuffer_prepend_string(raptor_stringbuffer* stringbuffer,
  * Return value: size of stringbuffer
  **/
 size_t
-raptor_stringbuffer_length(raptor_stringbuffer* stringbuffer)
-{
-  return stringbuffer->length;
+raptor_stringbuffer_length(raptor_stringbuffer *stringbuffer) {
+    return stringbuffer->length;
 }
-
 
 
 /**
@@ -476,29 +461,28 @@ raptor_stringbuffer_length(raptor_stringbuffer* stringbuffer)
  *   a pointer to a shared copy of the string.
  **/
 unsigned char *
-raptor_stringbuffer_as_string(raptor_stringbuffer* stringbuffer)
-{
-  raptor_stringbuffer_node *node;
-  unsigned char *p;
-  
-  if(!stringbuffer->length)
-    return NULL;
-  if(stringbuffer->string)
+raptor_stringbuffer_as_string(raptor_stringbuffer *stringbuffer) {
+    raptor_stringbuffer_node *node;
+    unsigned char *p;
+
+    if (!stringbuffer->length)
+        return NULL;
+    if (stringbuffer->string)
+        return stringbuffer->string;
+
+    stringbuffer->string = RAPTOR_MALLOC(unsigned char*, stringbuffer->length + 1);
+    if (!stringbuffer->string)
+        return NULL;
+
+    node = stringbuffer->head;
+    p = stringbuffer->string;
+    while (node) {
+        memcpy(p, node->string, node->length);
+        p += node->length;
+        node = node->next;
+    }
+    *p = '\0';
     return stringbuffer->string;
-
-  stringbuffer->string = RAPTOR_MALLOC(unsigned char*, stringbuffer->length + 1);
-  if(!stringbuffer->string)
-    return NULL;
-
-  node = stringbuffer->head;
-  p = stringbuffer->string;
-  while(node) {
-    memcpy(p, node->string, node->length);
-    p+= node->length;
-    node = node->next;
-  }
-  *p='\0';
-  return stringbuffer->string;
 }
 
 
@@ -516,32 +500,30 @@ raptor_stringbuffer_as_string(raptor_stringbuffer* stringbuffer)
  * Return value: non-0 on failure such as stringbuffer is empty, buffer is too small
  **/
 int
-raptor_stringbuffer_copy_to_string(raptor_stringbuffer* stringbuffer,
-                                   unsigned char *string, size_t length)
-{
-  raptor_stringbuffer_node *node;
-  unsigned char *p;
-  
-  if(!string || length < 1)
-    return 1;
+raptor_stringbuffer_copy_to_string(raptor_stringbuffer *stringbuffer,
+                                   unsigned char *string, size_t length) {
+    raptor_stringbuffer_node *node;
+    unsigned char *p;
 
-  if(!stringbuffer->length)
-    return 0;
+    if (!string || length < 1)
+        return 1;
 
-  p = string;
-  for(node = stringbuffer->head; node; node = node->next) {
-    if(node->length > length) {
-      p[-1]='\0';
-      return 1;
+    if (!stringbuffer->length)
+        return 0;
+
+    p = string;
+    for (node = stringbuffer->head; node; node = node->next) {
+        if (node->length > length) {
+            p[-1] = '\0';
+            return 1;
+        }
+        memcpy(p, node->string, node->length);
+        p += node->length;
+        length -= node->length;
     }
-    memcpy(p, node->string, node->length);
-    p+= node->length;
-    length-= node->length;
-  }
-  *p='\0';
-  return 0;
+    *p = '\0';
+    return 0;
 }
-
 
 
 /**
@@ -554,18 +536,17 @@ raptor_stringbuffer_copy_to_string(raptor_stringbuffer* stringbuffer,
  * Return value: non-0 on failure
  **/
 int
-raptor_stringbuffer_append_hexadecimal(raptor_stringbuffer* stringbuffer, 
-                                       int hex)
-{
-  unsigned char buf[2];
-  
-  if(hex < 0 || hex > 0xF)
-     return 1;
+raptor_stringbuffer_append_hexadecimal(raptor_stringbuffer *stringbuffer,
+                                       int hex) {
+    unsigned char buf[2];
 
-  *buf = (hex < 10) ? ('0' + hex) : ('A' + hex - 10);
-  buf[1] = '\0';
+    if (hex < 0 || hex > 0xF)
+        return 1;
 
-  return raptor_stringbuffer_append_counted_string(stringbuffer, buf, 1, 1);
+    *buf = (hex < 10) ? ('0' + hex) : ('A' + hex - 10);
+    buf[1] = '\0';
+
+    return raptor_stringbuffer_append_counted_string(stringbuffer, buf, 1, 1);
 }
 
 
@@ -575,7 +556,7 @@ raptor_stringbuffer_append_hexadecimal(raptor_stringbuffer* stringbuffer,
                                (c >= '0' && c <= '9') || \
                                (c == '-' || c == '.' || c == '_' || c == '~') )
 #define IS_URI_SAFE(c) (IS_URI_UNRESERVED(c))
-    
+
 
 /**
  * raptor_stringbuffer_append_uri_escaped_counted_string:
@@ -591,52 +572,50 @@ raptor_stringbuffer_append_hexadecimal(raptor_stringbuffer* stringbuffer,
  * Return value: non-0 on failure
  **/
 int
-raptor_stringbuffer_append_uri_escaped_counted_string(raptor_stringbuffer* sb,
-                                                      const char* string,
+raptor_stringbuffer_append_uri_escaped_counted_string(raptor_stringbuffer *sb,
+                                                      const char *string,
                                                       size_t length,
-                                                      int space_is_plus)
-{
-  unsigned int i;
-  unsigned char buf[2];
-  buf[1] = '\0';
+                                                      int space_is_plus) {
+    unsigned int i;
+    unsigned char buf[2];
+    buf[1] = '\0';
 
-  if(!string || !length)
-    return 0;
-  
-  for(i = 0; i < length; i++) {
-    int c = string[i];
-    if(!c)
-      break;
-    
-    if(IS_URI_SAFE(c)) {
-      *buf = c;
+    if (!string || !length)
+        return 0;
 
-      if(raptor_stringbuffer_append_counted_string(sb, buf, 1, 1))
-        return 1;
-    } else if (c == ' ' && space_is_plus) {
-      *buf = '+';
+    for (i = 0; i < length; i++) {
+        int c = string[i];
+        if (!c)
+            break;
 
-      if(raptor_stringbuffer_append_counted_string(sb, buf, 1, 1))
-        return 1;
-    } else {
-      *buf = '%';
-      if(raptor_stringbuffer_append_counted_string(sb, buf, 1, 1))
-        return 1;
+        if (IS_URI_SAFE(c)) {
+            *buf = c;
 
-      if(raptor_stringbuffer_append_hexadecimal(sb, (c & 0xf0) >> 4))
-        return 1;
+            if (raptor_stringbuffer_append_counted_string(sb, buf, 1, 1))
+                return 1;
+        } else if (c == ' ' && space_is_plus) {
+            *buf = '+';
 
-      if(raptor_stringbuffer_append_hexadecimal(sb, (c & 0x0f)))
-        return 1;
+            if (raptor_stringbuffer_append_counted_string(sb, buf, 1, 1))
+                return 1;
+        } else {
+            *buf = '%';
+            if (raptor_stringbuffer_append_counted_string(sb, buf, 1, 1))
+                return 1;
+
+            if (raptor_stringbuffer_append_hexadecimal(sb, (c & 0xf0) >> 4))
+                return 1;
+
+            if (raptor_stringbuffer_append_hexadecimal(sb, (c & 0x0f)))
+                return 1;
+        }
     }
-  }
 
-  return 0;
+    return 0;
 }
 
 
 #endif
-
 
 
 #ifdef STANDALONE

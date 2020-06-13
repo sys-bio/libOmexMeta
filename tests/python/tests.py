@@ -104,6 +104,20 @@ class TestRDF(unittest.TestCase):
       </rdf:Description>
     </rdf:RDF>"""
 
+    sbml_uri = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml";
+
+    sbml_file = os.path.join(os.getcwd(), "sbml_file_for_tests.sbml")
+
+    def setUp(self) -> None:
+        with open(self.sbml_file, "w") as f:
+            f.write(self.rdf_str)
+
+    def tearDown(self) -> None:
+        teardown = True
+        if teardown:
+            if os.path.isfile(self.sbml_file):
+                os.remove(self.sbml_file)
+
     def test_crete_new_rdf_obj(self):
         rdf = RDF()
         self.assertIsInstance(rdf._obj, int)
@@ -115,6 +129,24 @@ class TestRDF(unittest.TestCase):
     def test_add_from_string(self):
         rdf = RDF()
         RDF.add_from_string(rdf, self.rdf_str, "rdfxml", "test_add_from_string.rdf")
+        self.assertEqual(6, len(rdf))
+
+    def test_from_uri(self):
+        rdf = RDF.from_uri(self.sbml_uri, "rdfxml")
+        self.assertEqual(277, len(rdf))
+
+    def test_add_from_uri(self):
+        rdf = RDF()
+        RDF.add_from_uri(rdf, self.sbml_uri, "rdfxml", "test_add_from_string.rdf")
+        self.assertEqual(277, len(rdf))
+
+    def test_from_file(self):
+        rdf = RDF.from_file(self.sbml_file, "rdfxml")
+        self.assertEqual(6, len(rdf))
+
+    def test_add_from_file(self):
+        rdf = RDF()
+        RDF.add_from_file(rdf, self.sbml_file, "rdfxml")
         self.assertEqual(6, len(rdf))
 
     def test_get_base_uri(self):
@@ -374,7 +406,7 @@ class AnnotateAModelTest(unittest.TestCase):
                     .add_location("obo/FMA_7163") \
                     .add_location("obo/FMA_264020") \
  \
-                # annotate Smad3nuc
+                    # annotate Smad3nuc
             with editor.new_physical_entity() as smad3nuc:
                 smad3nuc.set_about("SemsimMetaid0003") \
                     .set_physical_property("OPB:OPB_00340") \
@@ -688,7 +720,6 @@ aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
         print(rdf)
 
 
-
 class DrawTests(unittest.TestCase):
     def setUp(self) -> None:
         ant = """
@@ -712,7 +743,6 @@ class DrawTests(unittest.TestCase):
     def test(self):
         rdf = RDF()
         with rdf.to_editor(self.sbml, "sbml") as editor:
-
             with editor.new_singular_annotation() as s:
                 s.set_about("SemsimMetaid0000") \
                     .set_predicate("bqb", "is") \
@@ -721,20 +751,6 @@ class DrawTests(unittest.TestCase):
         rdf.draw(fname)
         self.assertTrue(os.path.isfile())
         os.remove(fname)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":

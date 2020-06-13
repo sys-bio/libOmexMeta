@@ -40,108 +40,107 @@ int main(int argc, char *argv[]);
 
 
 int
-main(int argc, char *argv[]) 
-{
-  char *program = argv[0];
-  librdf_world* world;
-  librdf_storage *storage;
-  librdf_model* model = NULL;
-  const char *parser_name;
-  librdf_parser* parser;
-  librdf_query* query;
-  librdf_query_results* results;
-  librdf_uri *uri;
-  const unsigned char *query_string = NULL;
-  const char *format;
-  unsigned char* string = NULL;
-  size_t length;
-  
-  world = librdf_new_world();
-  librdf_world_open(world);
+main(int argc, char *argv[]) {
+    char *program = argv[0];
+    librdf_world *world;
+    librdf_storage *storage;
+    librdf_model *model = NULL;
+    const char *parser_name;
+    librdf_parser *parser;
+    librdf_query *query;
+    librdf_query_results *results;
+    librdf_uri *uri;
+    const unsigned char *query_string = NULL;
+    const char *format;
+    unsigned char *string = NULL;
+    size_t length;
 
-  if(argc != 4) {
-    fprintf(stderr, "USAGE: %s DATA-URI FORMAT|- QUERY-STRING\n", program);
-    return 1; 
-  }
-  
-  uri = librdf_new_uri(world, (const unsigned char*)argv[1]);
-  format = argv[2];
-  if(!strcmp(format, "-"))
-    format = NULL;
-  query_string = (const unsigned char*)argv[3];
-  
-  storage = librdf_new_storage(world, "memory", "test", NULL);
-  if(storage)
-    model = librdf_new_model(world, storage, NULL);
+    world = librdf_new_world();
+    librdf_world_open(world);
 
-  if(!model || !storage) {
-    fprintf(stderr, "%s: Failed to make model or storage\n", program);
-    return 1;
-  }
-
-  parser_name = librdf_parser_guess_name2(world, NULL, NULL, librdf_uri_as_string(uri));
-  parser = librdf_new_parser(world, parser_name, NULL, NULL);
-  librdf_parser_parse_into_model(parser, uri, NULL, model);
-  librdf_free_parser(parser);
-  librdf_free_uri(uri);
-
-  query = librdf_new_query(world, "sparql", NULL, query_string, NULL);
-  
-  results = librdf_model_query_execute(model, query);
-  if(!results) {
-    fprintf(stderr, "%s: Query of model with '%s' failed\n", 
-            program, query_string);
-    return 1;
-  }
-
-  if(librdf_query_results_is_bindings(results) ||
-     librdf_query_results_is_boolean(results)) {
-    string = librdf_query_results_to_counted_string2(results, format,
-               NULL, NULL, NULL, &length);
-    if(!string) {
-      fprintf(stderr, "%s: Failed to turn query results to format '%s'\n",
-              program, format);
-      return 1;
+    if (argc != 4) {
+        fprintf(stderr, "USAGE: %s DATA-URI FORMAT|- QUERY-STRING\n", program);
+        return 1;
     }
 
-  } else {
-    /* triples */
-    librdf_serializer* serializer;
-    librdf_stream* stream;
+    uri = librdf_new_uri(world, (const unsigned char *) argv[1]);
+    format = argv[2];
+    if (!strcmp(format, "-"))
+        format = NULL;
+    query_string = (const unsigned char *) argv[3];
 
-    serializer = librdf_new_serializer(world, format, NULL, NULL);
-    if(!serializer) {
-      fprintf(stderr,
-              "%s: Failed to create triples serializer for format '%s'\n",
-              program, format);
-      return 1;
+    storage = librdf_new_storage(world, "memory", "test", NULL);
+    if (storage)
+        model = librdf_new_model(world, storage, NULL);
+
+    if (!model || !storage) {
+        fprintf(stderr, "%s: Failed to make model or storage\n", program);
+        return 1;
     }
 
-    stream = librdf_query_results_as_stream(results);
-    string = librdf_serializer_serialize_stream_to_counted_string(serializer,
-               NULL, stream, &length);
-    librdf_free_stream(stream);
+    parser_name = librdf_parser_guess_name2(world, NULL, NULL, librdf_uri_as_string(uri));
+    parser = librdf_new_parser(world, parser_name, NULL, NULL);
+    librdf_parser_parse_into_model(parser, uri, NULL, model);
+    librdf_free_parser(parser);
+    librdf_free_uri(uri);
 
-    if(!string) {
-      fprintf(stderr, "%s: Failed to turn query results to format '%s'\n",
-              program, format);
-      return 1;
+    query = librdf_new_query(world, "sparql", NULL, query_string, NULL);
+
+    results = librdf_model_query_execute(model, query);
+    if (!results) {
+        fprintf(stderr, "%s: Query of model with '%s' failed\n",
+                program, query_string);
+        return 1;
     }
-  }
 
-  fprintf(stderr, "%s: query returned %ld bytes string\n", program, length);
-  fwrite(string, sizeof(char), length, stdout);
+    if (librdf_query_results_is_bindings(results) ||
+        librdf_query_results_is_boolean(results)) {
+        string = librdf_query_results_to_counted_string2(results, format,
+                                                         NULL, NULL, NULL, &length);
+        if (!string) {
+            fprintf(stderr, "%s: Failed to turn query results to format '%s'\n",
+                    program, format);
+            return 1;
+        }
 
-  free(string);
+    } else {
+        /* triples */
+        librdf_serializer *serializer;
+        librdf_stream *stream;
 
-  librdf_free_query_results(results);
-  librdf_free_query(query);
-  
-  librdf_free_model(model);
-  librdf_free_storage(storage);
+        serializer = librdf_new_serializer(world, format, NULL, NULL);
+        if (!serializer) {
+            fprintf(stderr,
+                    "%s: Failed to create triples serializer for format '%s'\n",
+                    program, format);
+            return 1;
+        }
 
-  librdf_free_world(world);
+        stream = librdf_query_results_as_stream(results);
+        string = librdf_serializer_serialize_stream_to_counted_string(serializer,
+                                                                      NULL, stream, &length);
+        librdf_free_stream(stream);
 
-  /* keep gcc -Wall happy */
-  return(0);
+        if (!string) {
+            fprintf(stderr, "%s: Failed to turn query results to format '%s'\n",
+                    program, format);
+            return 1;
+        }
+    }
+
+    fprintf(stderr, "%s: query returned %ld bytes string\n", program, length);
+    fwrite(string, sizeof(char), length, stdout);
+
+    free(string);
+
+    librdf_free_query_results(results);
+    librdf_free_query(query);
+
+    librdf_free_model(model);
+    librdf_free_storage(storage);
+
+    librdf_free_world(world);
+
+    /* keep gcc -Wall happy */
+    return (0);
 }

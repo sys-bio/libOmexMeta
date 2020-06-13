@@ -2037,9 +2037,9 @@ class MockRolodex : public Rolodex {
 ...
   MockRolodex rolodex;
   vector<string> names;
-  names.push_back("George");
-  names.push_back("John");
-  names.push_back("Thomas");
+  names.move_back("George");
+  names.move_back("John");
+  names.move_back("Thomas");
   EXPECT_CALL(rolodex, GetNames(_))
       .WillOnce(SetArrayArgument<0>(names.begin(), names.end()));
 ```

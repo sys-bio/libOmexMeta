@@ -31,9 +31,11 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
 #endif
+
 #include <stdarg.h>
 
 #include "rasqal.h"
@@ -89,12 +91,14 @@ SELECT ?p ?v ?w \
 
 
 #ifdef NO_QUERY_LANGUAGE
+
 int
 main(int argc, char **argv) {
-  const char *program = rasqal_basename(argv[0]);
-  fprintf(stderr, "%s: No supported query language available, skipping test\n", program);
-  return(0);
+    const char *program = rasqal_basename(argv[0]);
+    fprintf(stderr, "%s: No supported query language available, skipping test\n", program);
+    return (0);
 }
+
 #else
 
 int

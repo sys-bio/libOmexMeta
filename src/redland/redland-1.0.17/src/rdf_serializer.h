@@ -40,20 +40,22 @@ extern "C" {
 
 /* class methods */
 REDLAND_API
-void librdf_serializer_register_factory(librdf_world *world, const char *name, const char *label, const char *mime_type, const unsigned char *uri_string, void (*factory) (librdf_serializer_factory*));
+void librdf_serializer_register_factory(librdf_world *world, const char *name, const char *label, const char *mime_type,
+                                        const unsigned char *uri_string, void (*factory)(librdf_serializer_factory *));
 
 REDLAND_API REDLAND_DEPRECATED
-int librdf_serializer_enumerate(librdf_world* world, const unsigned int counter, const char **name, const char **label);
+int librdf_serializer_enumerate(librdf_world *world, const unsigned int counter, const char **name, const char **label);
 REDLAND_API
-const raptor_syntax_description* librdf_serializer_get_description(librdf_world* world, unsigned int counter);
+const raptor_syntax_description *librdf_serializer_get_description(librdf_world *world, unsigned int counter);
 REDLAND_API
-int librdf_serializer_check_name(librdf_world* world, const char *name);
+int librdf_serializer_check_name(librdf_world *world, const char *name);
 
 /* constructor */
 REDLAND_API
-librdf_serializer* librdf_new_serializer(librdf_world* world, const char *name, const char *mime_type, librdf_uri *type_uri);
+librdf_serializer *
+librdf_new_serializer(librdf_world *world, const char *name, const char *mime_type, librdf_uri *type_uri);
 REDLAND_API
-librdf_serializer* librdf_new_serializer_from_factory(librdf_world* world, librdf_serializer_factory *factory);
+librdf_serializer *librdf_new_serializer_from_factory(librdf_world *world, librdf_serializer_factory *factory);
 
 /* destructor */
 REDLAND_API
@@ -62,38 +64,52 @@ void librdf_free_serializer(librdf_serializer *serializer);
 
 /* methods */
 REDLAND_API REDLAND_DEPRECATED
-int librdf_serializer_serialize_model(librdf_serializer* serializer, FILE *handle, librdf_uri* base_uri, librdf_model* model);
+int librdf_serializer_serialize_model(librdf_serializer *serializer, FILE *handle, librdf_uri *base_uri,
+                                      librdf_model *model);
 REDLAND_API
-int librdf_serializer_serialize_stream_to_file_handle(librdf_serializer* serializer, FILE *handle, librdf_uri* base_uri, librdf_stream *stream);
+int librdf_serializer_serialize_stream_to_file_handle(librdf_serializer *serializer, FILE *handle, librdf_uri *base_uri,
+                                                      librdf_stream *stream);
 REDLAND_API
-int librdf_serializer_serialize_model_to_file_handle(librdf_serializer* serializer, FILE *handle, librdf_uri* base_uri, librdf_model* model);
+int librdf_serializer_serialize_model_to_file_handle(librdf_serializer *serializer, FILE *handle, librdf_uri *base_uri,
+                                                     librdf_model *model);
 REDLAND_API
-int librdf_serializer_serialize_stream_to_file(librdf_serializer* serializer, const char *name, librdf_uri* base_uri, librdf_stream* stream);
+int librdf_serializer_serialize_stream_to_file(librdf_serializer *serializer, const char *name, librdf_uri *base_uri,
+                                               librdf_stream *stream);
 REDLAND_API
-int librdf_serializer_serialize_model_to_file(librdf_serializer* serializer, const char *name, librdf_uri* base_uri, librdf_model* model);
+int librdf_serializer_serialize_model_to_file(librdf_serializer *serializer, const char *name, librdf_uri *base_uri,
+                                              librdf_model *model);
 REDLAND_API
-unsigned char* librdf_serializer_serialize_stream_to_string(librdf_serializer* serializer, librdf_uri* base_uri, librdf_stream* stream);
+unsigned char *librdf_serializer_serialize_stream_to_string(librdf_serializer *serializer, librdf_uri *base_uri,
+                                                            librdf_stream *stream);
 REDLAND_API
-unsigned char* librdf_serializer_serialize_model_to_string(librdf_serializer* serializer, librdf_uri* base_uri, librdf_model* model);
+unsigned char *
+librdf_serializer_serialize_model_to_string(librdf_serializer *serializer, librdf_uri *base_uri, librdf_model *model);
 REDLAND_API
-unsigned char* librdf_serializer_serialize_stream_to_counted_string(librdf_serializer* serializer, librdf_uri* base_uri, librdf_stream* stream, size_t *length_p);
+unsigned char *librdf_serializer_serialize_stream_to_counted_string(librdf_serializer *serializer, librdf_uri *base_uri,
+                                                                    librdf_stream *stream, size_t *length_p);
 REDLAND_API
-unsigned char* librdf_serializer_serialize_model_to_counted_string(librdf_serializer* serializer, librdf_uri* base_uri, librdf_model* model, size_t *length_p);
+unsigned char *librdf_serializer_serialize_model_to_counted_string(librdf_serializer *serializer, librdf_uri *base_uri,
+                                                                   librdf_model *model, size_t *length_p);
 REDLAND_API
-int librdf_serializer_serialize_stream_to_iostream(librdf_serializer* serializer, librdf_uri* base_uri, librdf_stream *stream, raptor_iostream* iostr);
+int librdf_serializer_serialize_stream_to_iostream(librdf_serializer *serializer, librdf_uri *base_uri,
+                                                   librdf_stream *stream, raptor_iostream *iostr);
 REDLAND_API
-int librdf_serializer_serialize_model_to_iostream(librdf_serializer* serializer, librdf_uri* base_uri, librdf_model *model, raptor_iostream* iostr);
+int
+librdf_serializer_serialize_model_to_iostream(librdf_serializer *serializer, librdf_uri *base_uri, librdf_model *model,
+                                              raptor_iostream *iostr);
 REDLAND_API
-void librdf_serializer_set_error(librdf_serializer* serializer, void *user_data, void (*error_fn)(void *user_data, const char *msg, ...));
+void librdf_serializer_set_error(librdf_serializer *serializer, void *user_data,
+                                 void (*error_fn)(void *user_data, const char *msg, ...));
 REDLAND_API
-void librdf_serializer_set_warning(librdf_serializer* serializer, void *user_data, void (*warning_fn)(void *user_data, const char *msg, ...));
+void librdf_serializer_set_warning(librdf_serializer *serializer, void *user_data,
+                                   void (*warning_fn)(void *user_data, const char *msg, ...));
 
 REDLAND_API
-librdf_node* librdf_serializer_get_feature(librdf_serializer* serializer, librdf_uri *feature);
+librdf_node *librdf_serializer_get_feature(librdf_serializer *serializer, librdf_uri *feature);
 REDLAND_API
-int librdf_serializer_set_feature(librdf_serializer* serializer, librdf_uri *feature, librdf_node* value);
+int librdf_serializer_set_feature(librdf_serializer *serializer, librdf_uri *feature, librdf_node *value);
 REDLAND_API
-int librdf_serializer_set_namespace(librdf_serializer* serializer, librdf_uri *uri, const char *prefix);
+int librdf_serializer_set_namespace(librdf_serializer *serializer, librdf_uri *uri, const char *prefix);
 
 
 #ifdef __cplusplus

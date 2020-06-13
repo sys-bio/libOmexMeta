@@ -31,57 +31,52 @@
 extern "C" {
 #endif
 
-struct librdf_node_s
-{
-  librdf_world *world;
-  librdf_node_type type;
-  int usage;
-  union 
-  {
-    struct
-    {
-      /* rdf:Resource and rdf:Property-s have URIs */
-      librdf_uri *uri;
-    } resource;
-    struct
-    {
-      /* literals are UTF-8 string values ... */
-      unsigned char *string;
-      /* up to 2^31-1 bytes long */
-      unsigned int string_len;
+struct librdf_node_s {
+    librdf_world *world;
+    librdf_node_type type;
+    int usage;
+    union {
+        struct {
+            /* rdf:Resource and rdf:Property-s have URIs */
+            librdf_uri *uri;
+        } resource;
+        struct {
+            /* literals are UTF-8 string values ... */
+            unsigned char *string;
+            /* up to 2^31-1 bytes long */
+            unsigned int string_len;
 
-      /* datatype URI or null */
-      librdf_uri* datatype_uri;
+            /* datatype URI or null */
+            librdf_uri *datatype_uri;
 
-      /* XML defines these additional attributes for literals */
+            /* XML defines these additional attributes for literals */
 
-      /* Language of literal (xml:lang) */
-      char *xml_language;
-      /* up to 255 bytes long */
-      unsigned char xml_language_len;
+            /* Language of literal (xml:lang) */
+            char *xml_language;
+            /* up to 255 bytes long */
+            unsigned char xml_language_len;
 
-      /* Hash key & size */
-      unsigned char *key;
-      size_t size;
-    } literal;
-    struct 
-    {
-      /* blank nodes have an identifier */
-      unsigned char *identifier;
-      int identifier_len;
-    } blank;
-  } value;
+            /* Hash key & size */
+            unsigned char *key;
+            size_t size;
+        } literal;
+        struct {
+            /* blank nodes have an identifier */
+            unsigned char *identifier;
+            int identifier_len;
+        } blank;
+    } value;
 };
 
 
 /* initialising functions / constructors */
 
 /* class methods */
-void librdf_init_node(librdf_world* world);
-void librdf_finish_node(librdf_world* world);
+void librdf_init_node(librdf_world *world);
+void librdf_finish_node(librdf_world *world);
 
 /* exported public in error but never usable */
-librdf_digest* librdf_node_get_digest(librdf_node* node);
+librdf_digest *librdf_node_get_digest(librdf_node *node);
 
 #ifdef __cplusplus
 }

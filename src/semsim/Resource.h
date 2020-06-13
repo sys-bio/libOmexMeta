@@ -19,6 +19,11 @@ namespace semsim {
 
         explicit Resource(librdf_node *node);
 
+    public:
+        bool operator==(const Resource &rhs) const;
+
+        bool operator!=(const Resource &rhs) const;
+
     protected:
         librdf_node *node_ = nullptr;
     public:

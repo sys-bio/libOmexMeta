@@ -8,21 +8,29 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 #ifdef HAVE_VASPRINTF
 #define _GNU_SOURCE /* to get vasprintf() available */
 #endif
+
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdarg.h>
+
 #ifdef HAVE_ERRNO_H
+
 #include <errno.h>
+
 #endif
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include "raptor2.h"
@@ -148,30 +156,29 @@ vsnprintf_is_c99(void)
  **/
 int
 raptor_vsnprintf2(char *buffer, size_t size,
-                  const char *format, va_list arguments)
-{
-  int len = -1;
+                  const char *format, va_list arguments) {
+    int len = -1;
 
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(format, char*, -1);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(format, char*, -1);
 
 #ifdef CHECK_VSNPRINTF_RUNTIME
 
-  if(vsnprintf_is_c99())
-    VSNPRINTF_C99_BLOCK(len, buffer, size, format, arguments) ;
-  else
-    VSNPRINTF_NOT_C99_BLOCK(len, buffer, size, format, arguments) ;
+    if(vsnprintf_is_c99())
+      VSNPRINTF_C99_BLOCK(len, buffer, size, format, arguments) ;
+    else
+      VSNPRINTF_NOT_C99_BLOCK(len, buffer, size, format, arguments) ;
 
 #else
 
 #ifdef HAVE_C99_VSNPRINTF
-  VSNPRINTF_C99_BLOCK(len, buffer, size, format, arguments) ;
+    VSNPRINTF_C99_BLOCK(len, buffer, size, format, arguments);
 #else
-  VSNPRINTF_NOT_C99_BLOCK(len, buffer, size, format, arguments) ;
+    VSNPRINTF_NOT_C99_BLOCK(len, buffer, size, format, arguments) ;
 #endif
 
 #endif
-  
-  return len;
+
+    return len;
 }
 
 
@@ -188,19 +195,18 @@ raptor_vsnprintf2(char *buffer, size_t size,
  *
  * Return value: a newly allocated string as the formatted result or NULL on failure
  **/
-char*
-raptor_vsnprintf(const char *format, va_list arguments) 
-{
-  int len;
-  char *buffer = NULL;
+char *
+raptor_vsnprintf(const char *format, va_list arguments) {
+    int len;
+    char *buffer = NULL;
 
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(format, char*, NULL);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(format, char*, NULL);
 
-  len = raptor_vasprintf(&buffer, format, arguments);
-  if(len < 0)
-    return NULL;
-  
-  return buffer;
+    len = raptor_vasprintf(&buffer, format, arguments);
+    if (len < 0)
+        return NULL;
+
+    return buffer;
 }
 
 
@@ -222,18 +228,17 @@ raptor_vsnprintf(const char *format, va_list arguments)
  * Return value: number of bytes allocated (excluding NUL) or 0 on failure
  **/
 int
-raptor_snprintf(char *buffer, size_t size, const char *format, ...)
-{
-  va_list arguments;
-  int length;
+raptor_snprintf(char *buffer, size_t size, const char *format, ...) {
+    va_list arguments;
+    int length;
 
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(format, char*, 0);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(format, char*, 0);
 
-  va_start(arguments, format);
-  length = raptor_vsnprintf2(buffer, size, format, arguments);
-  va_end(arguments);
+    va_start(arguments, format);
+    length = raptor_vsnprintf2(buffer, size, format, arguments);
+    va_end(arguments);
 
-  return length;
+    return length;
 }
 
 
@@ -251,36 +256,35 @@ raptor_snprintf(char *buffer, size_t size, const char *format, ...)
  * Return value: number of bytes allocated (excluding NUL) or < 0 on failure
  **/
 int
-raptor_vasprintf(char **ret, const char *format, va_list arguments)
-{
-  int length;
+raptor_vasprintf(char **ret, const char *format, va_list arguments) {
+    int length;
 #ifndef HAVE_VASPRINTF
-  va_list args_copy;
+    va_list args_copy;
 #endif
 
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(ret, char**, -1);
-  RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(format, char*, -1);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(ret, char**, -1);
+    RAPTOR_ASSERT_OBJECT_POINTER_RETURN_VALUE(format, char*, -1);
 
 #ifdef HAVE_VASPRINTF
-  length = vasprintf(ret, format, arguments);
+    length = vasprintf(ret, format, arguments);
 #else
-  va_copy(args_copy, arguments);
-  length = raptor_vsnprintf2(NULL, 0, format, args_copy);
-  va_end(args_copy);
-  if(length < 0) {
-    *ret = NULL;
-    return length;
-  }
-  *ret = RAPTOR_MALLOC(char*, length + 1);
-  if(!*ret)
-    return -1;
+    va_copy(args_copy, arguments);
+    length = raptor_vsnprintf2(NULL, 0, format, args_copy);
+    va_end(args_copy);
+    if(length < 0) {
+      *ret = NULL;
+      return length;
+    }
+    *ret = RAPTOR_MALLOC(char*, length + 1);
+    if(!*ret)
+      return -1;
 
-  va_copy(args_copy, arguments);
-  length = raptor_vsnprintf2(*ret, length + 1, format, args_copy);
-  va_end(args_copy);
+    va_copy(args_copy, arguments);
+    length = raptor_vsnprintf2(*ret, length + 1, format, args_copy);
+    va_end(args_copy);
 #endif
 
-  return length;
+    return length;
 }
 
 
@@ -308,48 +312,47 @@ static const char digits[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
  * Return value: number of bytes needed or written (excluding NUL) or 0 on failure
  */
 size_t
-raptor_format_integer(char* buffer, size_t bufsize, int integer,
-                      unsigned int base, int width, char padding)
-{
-  size_t len = 1;
-  char *p;
-  unsigned int value;
+raptor_format_integer(char *buffer, size_t bufsize, int integer,
+                      unsigned int base, int width, char padding) {
+    size_t len = 1;
+    char *p;
+    unsigned int value;
 
-  if(integer < 0) {
-    value = (unsigned int)-integer;
-    len++;
-    width++;
-  } else
-    value = (unsigned int)integer;
-  while(value /= base)
-    len++;
+    if (integer < 0) {
+        value = (unsigned int) -integer;
+        len++;
+        width++;
+    } else
+        value = (unsigned int) integer;
+    while (value /= base)
+        len++;
 
-  if(width > 0 && RAPTOR_GOOD_CAST(size_t, width) > len)
-    len = width;
+    if (width > 0 && RAPTOR_GOOD_CAST(size_t, width) > len)
+        len = width;
 
-  if(!buffer || bufsize < RAPTOR_GOOD_CAST(size_t, (len + 1))) /* +1 for NUL */
+    if (!buffer || bufsize < RAPTOR_GOOD_CAST(size_t, (len + 1))) /* +1 for NUL */
+        return len;
+
+    if (!padding)
+        padding = ' ';
+
+    if (integer < 0)
+        value = (unsigned int) -integer;
+    else
+        value = (unsigned int) integer;
+
+    p = &buffer[len];
+    *p-- = '\0';
+    while (value > 0 && p >= buffer) {
+        *p-- = digits[value % base];
+        value /= base;
+    }
+    while (p >= buffer)
+        *p-- = padding;
+    if (integer < 0)
+        *buffer = '-';
+
     return len;
-
-  if(!padding)
-    padding = ' ';
-
-  if(integer < 0)
-    value = (unsigned int)-integer;
-  else
-    value = (unsigned int)integer;
-
-  p = &buffer[len];
-  *p-- = '\0';
-  while(value  > 0 && p >= buffer) {
-    *p-- = digits[value % base];
-    value /= base;
-  }
-  while(p >= buffer)
-    *p-- = padding;
-  if(integer < 0)
-    *buffer = '-';
-
-  return len;
 }
 
 

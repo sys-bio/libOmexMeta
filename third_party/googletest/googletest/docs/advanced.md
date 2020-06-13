@@ -1568,7 +1568,7 @@ TYPED_TEST(FooTest, DoesBlah) {
   // prefix.  The 'typename' is required to satisfy the compiler.
   typename TestFixture::List values;
 
-  values.push_back(n);
+  values.move_back(n);
   ...
 }
 

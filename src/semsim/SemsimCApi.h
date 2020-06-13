@@ -106,8 +106,6 @@ namespace semsim {
 
     int Editor_getNumMetaIds(Editor *editor_ptr);
 
-    void Editor_toRDF(Editor *editor_ptr);
-
     void Editor_delete(Editor *editor_ptr);
 
 
@@ -120,7 +118,8 @@ namespace semsim {
 
     SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
 
-    SingularAnnotation * SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_,const char *term);
+    SingularAnnotation *
+    SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_, const char *term);
 
     SingularAnnotation *SingularAnnotation_setPredicateFromUri(
             SingularAnnotation *singular_annotation, const char *uri);
@@ -154,7 +153,7 @@ namespace semsim {
     PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about);
 
     PhysicalEntity *PhysicalEntity_setPhysicalProperty(
-            PhysicalEntity *physical_entity_ptr, const char *physical_property);
+            PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property);
 
     PhysicalEntity *PhysicalEntity_setIdentity(
             PhysicalEntity *physical_entity_ptr, const char *identity_resource);
@@ -165,7 +164,7 @@ namespace semsim {
 
     char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);
 
-    char *PhysicalEntity_getPhysicalProperty(PhysicalEntity *physical_entity_ptr);
+//    char *PhysicalEntity_getPhysicalProperty(PhysicalEntity *physical_entity_ptr);
 
     char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr);
 
@@ -188,7 +187,7 @@ namespace semsim {
             PhysicalProcess *physical_process, const char *about);
 
     PhysicalProcess *PhysicalProcess_setPhysicalProperty(
-            PhysicalProcess *physical_process, const char *physical_property);
+            PhysicalProcess *physical_process, const char *subject_metaid, const char *physical_property);
 
     PhysicalProcess *PhysicalProcess_addSource(
             PhysicalProcess *physical_process, const char *source_metai, double multiplier,
@@ -206,7 +205,7 @@ namespace semsim {
 
     char *PhysicalProcess_getAbout(PhysicalProcess *physical_process_ptr);
 
-    char *PhysicalProcess_getPhysicalProperty(PhysicalProcess *physical_process_ptr);
+//    char *PhysicalProcess_getPhysicalProperty(PhysicalProcess *physical_process_ptr);
 
 /*********************************************************************
  * PhysicalForce class methods
@@ -238,7 +237,7 @@ namespace semsim {
             const char *physical_entity_reference);
 
     PhysicalForce *PhysicalForce_setPhysicalProperty(
-            PhysicalForce *physical_force_ptr, const char *physical_property);
+            PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property);
 
     int PhysicalForce_getNumSources(PhysicalForce *physicalForce);
 
@@ -248,7 +247,7 @@ namespace semsim {
 
     char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
 
-    char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr);
+//    char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr);
 
 
 #ifdef __cplusplus

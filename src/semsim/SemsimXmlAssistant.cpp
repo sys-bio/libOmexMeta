@@ -10,7 +10,7 @@ namespace semsim {
             xml_(std::move(xml)), metaid_base(std::move(base)), metaid_num_digits_(metaid_num_digits) {
     }
 
-    std::vector<std::string> SemsimXmlAssistant::getValidElements() const{
+    std::vector<std::string> SemsimXmlAssistant::getValidElements() const {
         return std::vector<std::string>({"Any"});
     }
 
@@ -21,7 +21,7 @@ namespace semsim {
         if (std::find(seen_metaids.begin(), seen_metaids.end(), id) != seen_metaids.end()) {
             count += 1;
             generateMetaId(seen_metaids, count, metaid_gen, id); // recursion
-            }
+        }
     }
 
     void SemsimXmlAssistant::addMetaIdsRecursion(xmlNode *a_node, std::vector<std::string> &seen_metaids) {
@@ -37,7 +37,7 @@ namespace semsim {
                 // if the node name is in our list of valid elements or if valid_elements_ = ["All"]
                 if (std::find(valid_elements.begin(), valid_elements.end(),
                               std::string((const char *) cur_node->name)) != valid_elements.end()
-                    || (valid_elements.size() == 1 && valid_elements[0] == "Any")){
+                    || (valid_elements.size() == 1 && valid_elements[0] == "Any")) {
                     // test to see whether the element has the metaid attribute
                     bool has_meta_id = xmlHasProp(cur_node, (const xmlChar *) "metaid");
                     if (!has_meta_id) {
@@ -47,18 +47,18 @@ namespace semsim {
                         xmlNewProp(cur_node, (const xmlChar *) "metaid", (const xmlChar *) id.c_str());
                         seen_metaids.push_back(id);
                         count += 1;
-                        } else {
+                    } else {
                         // if so, we take note by adding it to seen_metaids.
                         xmlChar *id = xmlGetProp(cur_node, (const xmlChar *) "metaid");
                         seen_metaids.emplace_back((const char *) id);
                         xmlFree(id);
-                        }
+                    }
 
                 }
             }
             // recursion, we do this for every node
             addMetaIdsRecursion(cur_node->children, seen_metaids);
-            }
+        }
     }
 
 
@@ -85,7 +85,7 @@ namespace semsim {
         return sbml_with_metaid;
     }
 
-    std::vector<std::string> SBMLAssistant::getValidElements() const{
+    std::vector<std::string> SBMLAssistant::getValidElements() const {
         std::vector<std::string> valid_elements_ = {
                 "model",
                 "unit",
@@ -98,7 +98,7 @@ namespace semsim {
         return valid_elements_;
     }
 
-    std::vector<std::string> CellMLAssistant::getValidElements() const{
+    std::vector<std::string> CellMLAssistant::getValidElements() const {
         std::vector<std::string> valid_elements_ = {
                 "model",
                 "unit",

@@ -35,43 +35,47 @@ int main(int argc, char *argv[]);
 
 
 int
-main(int argc, char *argv[]) 
-{
-  librdf_world* world;
-  librdf_storage *storage;
-  librdf_model* model;
-  librdf_statement* statement;
-  raptor_world *raptor_world_ptr;
-  raptor_iostream* iostr;
-  
-  world=librdf_new_world();
-  librdf_world_open(world);
-  raptor_world_ptr = librdf_world_get_raptor(world);
+main(int argc, char *argv[]) {
+    librdf_world *world;
+    librdf_storage *storage;
+    librdf_model *model;
+    librdf_statement *statement;
+    raptor_world *raptor_world_ptr;
+    raptor_iostream *iostr;
 
-  model=librdf_new_model(world, storage=librdf_new_storage(world, "hashes", "test", "hash-type='bdb',dir='.'"), NULL);
+    world = librdf_new_world();
+    librdf_world_open(world);
+    raptor_world_ptr = librdf_world_get_raptor(world);
 
-  librdf_model_add_statement(model, 
-                             statement=librdf_new_statement_from_nodes(world, librdf_new_node_from_uri_string(world, (const unsigned char*)"http://www.dajobe.org/"),
-                                                             librdf_new_node_from_uri_string(world, (const unsigned char*)"http://purl.org/dc/elements/1.1/creator"),
-                                                             librdf_new_node_from_literal(world, (const unsigned char*)"Dave Beckett", NULL, 0)
-                                                             )
-                             );
+    model = librdf_new_model(world, storage = librdf_new_storage(world, "hashes", "test", "hash-type='bdb',dir='.'"),
+                             NULL);
 
-  librdf_free_statement(statement);
+    librdf_model_add_statement(model,
+                               statement = librdf_new_statement_from_nodes(world, librdf_new_node_from_uri_string(world,
+                                                                                                                  (const unsigned char *) "http://www.dajobe.org/"),
+                                                                           librdf_new_node_from_uri_string(world,
+                                                                                                           (const unsigned char *) "http://purl.org/dc/elements/1.1/creator"),
+                                                                           librdf_new_node_from_literal(world,
+                                                                                                        (const unsigned char *) "Dave Beckett",
+                                                                                                        NULL, 0)
+                               )
+    );
 
-  iostr = raptor_new_iostream_to_file_handle(raptor_world_ptr, stdout);
-  librdf_model_write(model, iostr);
-  raptor_free_iostream(iostr);
-  
-  librdf_free_model(model);
-  librdf_free_storage(storage);
+    librdf_free_statement(statement);
 
-  librdf_free_world(world);
+    iostr = raptor_new_iostream_to_file_handle(raptor_world_ptr, stdout);
+    librdf_model_write(model, iostr);
+    raptor_free_iostream(iostr);
+
+    librdf_free_model(model);
+    librdf_free_storage(storage);
+
+    librdf_free_world(world);
 
 #ifdef LIBRDF_MEMORY_DEBUG
-  librdf_memory_report(stderr);
+    librdf_memory_report(stderr);
 #endif
-	
-  /* keep gcc -Wall happy */
-  return(0);
+
+    /* keep gcc -Wall happy */
+    return (0);
 }

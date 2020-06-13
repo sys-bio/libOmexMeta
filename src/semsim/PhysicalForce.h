@@ -16,7 +16,7 @@
 #include "RedlandAPIWrapper.h"
 #include <vector>
 #include "Participant.h"
-#include "PhysicalPropertyResource.h"
+#include "PhysicalProperty.h"
 #include "PhysicalPhenomenon.h"
 #include "SemsimUtils.h"
 
@@ -30,13 +30,22 @@ namespace semsim {
 
     public:
 
+        /*
+         * @brief default constructor for PhysicalForce
+         * @details deliberately deleted. If you try using the
+         * builder interface (chaining setter methods) from a default
+         * instantiated PhysicalForce you will get an error, because there
+         * will be no model assicated with PhysicalForce. Instead, always
+         * instantiate a PhysicalForce from the Editor::addPhysicalForce() method.
+         */
         PhysicalForce() = delete;
 
         ~PhysicalForce() = default;
 
 
-        PhysicalForce(librdf_model* model, Subject metaid, PhysicalPropertyResource physicalProperty,
+        PhysicalForce(librdf_model *model, PhysicalProperty physicalProperty,
                       Sources sources, Sinks sinks);
+
         /*
          * @brief Free nodes associated with PhysicalForce.
          *
@@ -49,7 +58,7 @@ namespace semsim {
          * as the toTriples method is always used.
          *
          */
-        void free() override;
+        void free();
 
         /*
          * @brief constructor for instantiating a PhysicalForce type composite annotation
@@ -60,7 +69,7 @@ namespace semsim {
          * object which is filled by
          *
          */
-        explicit PhysicalForce(librdf_model* model);
+        explicit PhysicalForce(librdf_model *model);
 
         /*
          * @brief create a metaid for the physical force annotation
@@ -99,28 +108,28 @@ namespace semsim {
          *
          * See Resource for more information about input format for @param metaid
          */
-        PhysicalForce &setAbout(const std::string& metaid);
+        PhysicalForce &setAbout(const std::string &metaid);
 
         /*
          * @brief sets the physical property of the PhysicalForce
-         * @parameter physicalProperty An instance of PhysicalPropertyResource representing the
+         * @parameter physicalProperty An instance of PhysicalProperty representing the
          * physical property term for the PhysicalForce.
          * @return a reference to this PhysicalForce to enable the builder interface.
          *
          * Prefer the other setPhysicalProperty method since it only requires a
-         * string input and instantiates the PhysicalPropertyResource for you.
+         * string input and instantiates the PhysicalProperty for you.
          *
          * For developers. Consider removing.
          */
-        [[maybe_unused]] PhysicalForce &setPhysicalProperty(PhysicalPropertyResource physicalProperty);
+        [[maybe_unused]] PhysicalForce &setPhysicalProperty(PhysicalProperty physicalProperty);
 
         /*
          * @brief sets the physical property of the PhysicalForce
-         * @parameter physicalProperty. An instance of PhysicalPropertyResource
-         * representing the physical property term for the PhysicalForce is automatically instantiated
+         * @param subject_metaid. The subject portion of the two triples produced by PhysicalProperty. Metaid of a model element.
+         * @param A string representing the OPB term to use as the physical property. Like "OPB:OPB_1234"
          * @return a reference to this PhysicalForce to enable the builder interface.
          */
-        PhysicalForce &setPhysicalProperty(const std::string &physicalProperty);
+        PhysicalForce &setPhysicalProperty(std::string subject_metaid, std::string physical_property);
 
         /*
          * @brief add a SourceParticipant to the PhysicalForce.
@@ -134,6 +143,7 @@ namespace semsim {
          */
         PhysicalForce &addSource(std::string source_metaid, double multiplier,
                                  std::string physical_entity_reference);
+
         /*
          * @brief add a SinkParticipant to the PhysicalForce.
          * @param sink_metaid the ID for the SinkParticipant.
@@ -148,6 +158,10 @@ namespace semsim {
         addSink(std::string sink_metaid, double multiplier,
                 std::string physical_entity_reference);
 
+//        bool operator==(const PhysicalForce &rhs) const;
+//
+//        bool operator!=(const PhysicalForce &rhs) const;
+
         /*
          * @brief returns the number of sources associated with the
          * PhysicalForce
@@ -161,6 +175,10 @@ namespace semsim {
          * @return the integer number of sinks
          */
         int getNumSinks();
+
+        bool operator==(const PhysicalForce &rhs) const;
+
+        bool operator!=(const PhysicalForce &rhs) const;
     };
 }
 

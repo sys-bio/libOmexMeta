@@ -73,6 +73,7 @@
  */
 #ifndef _LIBRDFA_RDFA_H_
 #define _LIBRDFA_RDFA_H_
+
 #include <stdlib.h>
 #include <libxml/SAX2.h>
 
@@ -84,8 +85,10 @@
 #endif
 
 #ifdef LIBRDFA_IN_RAPTOR
+
 #include "raptor2.h"
 #include "raptor_internal.h"
+
 #endif /* LIBRDFA_IN_RAPTOR */
 
 #ifdef __cplusplus
@@ -129,14 +132,13 @@ extern "C"
  * An RDF resource type is used to denote the content of a triple's
  * object value.
  */
-typedef enum
-{
-   RDF_TYPE_NAMESPACE_PREFIX,
-   RDF_TYPE_IRI,
-   RDF_TYPE_PLAIN_LITERAL,
-   RDF_TYPE_XML_LITERAL,
-   RDF_TYPE_TYPED_LITERAL,
-   RDF_TYPE_UNKNOWN
+typedef enum {
+    RDF_TYPE_NAMESPACE_PREFIX,
+    RDF_TYPE_IRI,
+    RDF_TYPE_PLAIN_LITERAL,
+    RDF_TYPE_XML_LITERAL,
+    RDF_TYPE_TYPED_LITERAL,
+    RDF_TYPE_UNKNOWN
 } rdfresource_t;
 
 /**
@@ -144,14 +146,13 @@ typedef enum
  * the very least, a subject, a predicate and an object. It is the
  * smallest, complete statement one can make in RDF.
  */
-typedef struct rdftriple
-{
-   char* subject;
-   char* predicate;
-   char* object;
-   rdfresource_t object_type;
-   char* datatype;
-   char* language;
+typedef struct rdftriple {
+    char *subject;
+    char *predicate;
+    char *object;
+    rdfresource_t object_type;
+    char *datatype;
+    char *language;
 } rdftriple;
 
 /**
@@ -159,22 +160,21 @@ typedef struct rdftriple
  * triples. Produces a triple that must be freed once the application
  * is done with the object.
  */
-typedef void (*triple_handler_fp)(rdftriple*, void*);
+typedef void (*triple_handler_fp)(rdftriple *, void *);
 
 /**
  * The specification for a callback that is used to fill the input buffer
  * with data to parse.
  */
-typedef size_t (*buffer_filler_fp)(char*, size_t, void*);
+typedef size_t (*buffer_filler_fp)(char *, size_t, void *);
 
 /**
  * An RDFA list item is used to hold each datum in an rdfa list. It
  * contains a list of flags as well as the data for the list member.
  */
-typedef struct rdfalistitem
-{
-   unsigned char flags;
-   void* data;
+typedef struct rdfalistitem {
+    unsigned char flags;
+    void *data;
 } rdfalistitem;
 
 /**
@@ -183,12 +183,11 @@ typedef struct rdfalistitem
  * or lists of incomplete triples. The structure grows with use, but
  * cannot be shrunk.
  */
-typedef struct rdfalist
-{
-   rdfalistitem** items;
-   size_t num_items;
-   size_t max_items;
-   unsigned int user_data;
+typedef struct rdfalist {
+    rdfalistitem **items;
+    size_t num_items;
+    size_t max_items;
+    unsigned int user_data;
 } rdfalist;
 
 /**
@@ -196,77 +195,76 @@ typedef struct rdfalist
  * the current RDFa parser. Things such as the default namespace,
  * CURIE mappings, and other context-specific
  */
-typedef struct rdfacontext
-{
-   unsigned char rdfa_version;
-   char* base;
-   char* parent_subject;
-   char* parent_object;
-   char* default_vocabulary;
+typedef struct rdfacontext {
+    unsigned char rdfa_version;
+    char *base;
+    char *parent_subject;
+    char *parent_object;
+    char *default_vocabulary;
 #ifndef LIBRDFA_IN_RAPTOR
-   void** uri_mappings;
+    void** uri_mappings;
 #endif
-   void** term_mappings;
-   void** list_mappings;
-   void** local_list_mappings;
-   rdfalist* incomplete_triples;
-   rdfalist* local_incomplete_triples;
-   char* language;
-   unsigned char host_language;
+    void **term_mappings;
+    void **list_mappings;
+    void **local_list_mappings;
+    rdfalist *incomplete_triples;
+    rdfalist *local_incomplete_triples;
+    char *language;
+    unsigned char host_language;
 
-   triple_handler_fp default_graph_triple_callback;
-   buffer_filler_fp buffer_filler_callback;
-   triple_handler_fp processor_graph_triple_callback;
+    triple_handler_fp default_graph_triple_callback;
+    buffer_filler_fp buffer_filler_callback;
+    triple_handler_fp processor_graph_triple_callback;
 
-   unsigned char recurse;
-   unsigned char skip_element;
-   char* new_subject;
-   char* current_object_resource;
+    unsigned char recurse;
+    unsigned char skip_element;
+    char *new_subject;
+    char *current_object_resource;
 
-   char* about;
-   char* typed_resource;
-   char* resource;
-   char* href;
-   char* src;
-   char* content;
-   char* datatype;
-   rdfalist* property;
-   unsigned char inlist_present;
-   unsigned char rel_present;
-   unsigned char rev_present;
-   char* plain_literal;
-   size_t plain_literal_size;
-   char* xml_literal;
-   size_t xml_literal_size;
+    char *about;
+    char *typed_resource;
+    char *resource;
+    char *href;
+    char *src;
+    char *content;
+    char *datatype;
+    rdfalist *property;
+    unsigned char inlist_present;
+    unsigned char rel_present;
+    unsigned char rev_present;
+    char *plain_literal;
+    size_t plain_literal_size;
+    char *xml_literal;
+    size_t xml_literal_size;
 
-   void* callback_data;
+    void *callback_data;
 
-   /* parse state */
-   size_t bnode_count;
-   char* underscore_colon_bnode_name;
-   unsigned char xml_literal_namespaces_defined;
-   unsigned char xml_literal_xml_lang_defined;
-   size_t wb_allocated;
-   char* working_buffer;
-   size_t wb_position;
+    /* parse state */
+    size_t bnode_count;
+    char *underscore_colon_bnode_name;
+    unsigned char xml_literal_namespaces_defined;
+    unsigned char xml_literal_xml_lang_defined;
+    size_t wb_allocated;
+    char *working_buffer;
+    size_t wb_position;
 #ifdef LIBRDFA_IN_RAPTOR
-   raptor_world *world;
-   raptor_locator *locator;
-   /* a pointer (in every context) to the error_handlers structure
-    * held in the raptor_parser object */
-   raptor_uri* base_uri;
-   raptor_sax2* sax2;
-   raptor_namespace_handler namespace_handler;
-   void* namespace_handler_user_data;
-   int raptor_rdfa_version; /* 10 or 11 or otherwise default */
+    raptor_world *world;
+    raptor_locator *locator;
+    /* a pointer (in every context) to the error_handlers structure
+     * held in the raptor_parser object */
+    raptor_uri *base_uri;
+    raptor_sax2 *sax2;
+    raptor_namespace_handler namespace_handler;
+    void *namespace_handler_user_data;
+    int raptor_rdfa_version; /* 10 or 11 or otherwise default */
 #else
-   xmlParserCtxtPtr parser;
+    xmlParserCtxtPtr parser;
 #endif
-   int done;
-   rdfalist* context_stack;
-   size_t wb_preread;
-   int preread;
-   int depth;
+    int done;
+    rdfalist *context_stack;
+    size_t wb_preread;
+    int preread;
+    int depth;
 } rdfacontext;
 
 /**
@@ -277,7 +275,7 @@ typedef struct rdfacontext
  * @return a pointer to the base RDFa context, or NULL if memory
  *         allocation failed.
  */
-DLLEXPORT rdfacontext* rdfa_create_context(const char* base);
+DLLEXPORT rdfacontext *rdfa_create_context(const char *base);
 
 /**
  * Sets the default graph triple handler for the application.
@@ -286,7 +284,7 @@ DLLEXPORT rdfacontext* rdfa_create_context(const char* base);
  * @param th the triple handler function.
  */
 DLLEXPORT void rdfa_set_default_graph_triple_handler(
-   rdfacontext* context, triple_handler_fp th);
+        rdfacontext *context, triple_handler_fp th);
 
 /**
  * Sets the processor graph triple handler for the application.
@@ -295,7 +293,7 @@ DLLEXPORT void rdfa_set_default_graph_triple_handler(
  * @param th the triple handler function.
  */
 DLLEXPORT void rdfa_set_processor_graph_triple_handler(
-   rdfacontext* context, triple_handler_fp th);
+        rdfacontext *context, triple_handler_fp th);
 
 /**
  * Sets the buffer filler for the application.
@@ -304,7 +302,7 @@ DLLEXPORT void rdfa_set_processor_graph_triple_handler(
  * @param bf the buffer filler function.
  */
 DLLEXPORT void rdfa_set_buffer_filler(
-   rdfacontext* context, buffer_filler_fp bf);
+        rdfacontext *context, buffer_filler_fp bf);
 
 /**
  * Starts processing given the base rdfa context.
@@ -315,12 +313,12 @@ DLLEXPORT void rdfa_set_buffer_filler(
  *         if there was a fatal error and RDFA_PARSE_WARNING if there
  *         was a non-fatal error.
  */
-DLLEXPORT int rdfa_parse(rdfacontext* context);
+DLLEXPORT int rdfa_parse(rdfacontext *context);
 
-DLLEXPORT int rdfa_parse_start(rdfacontext* context);
+DLLEXPORT int rdfa_parse_start(rdfacontext *context);
 
 DLLEXPORT int rdfa_parse_chunk(
-   rdfacontext* context, char* data, size_t wblen, int done);
+        rdfacontext *context, char *data, size_t wblen, int done);
 
 /**
  * Gets the input buffer for the given context so it can be filled with data.
@@ -333,7 +331,7 @@ DLLEXPORT int rdfa_parse_chunk(
  *
  * @return a pointer to the context's input buffer.
  */
-DLLEXPORT char* rdfa_get_buffer(rdfacontext* context, size_t* blen);
+DLLEXPORT char *rdfa_get_buffer(rdfacontext *context, size_t *blen);
 
 /**
  * Informs the parser to attempt to parse more of the given context's input
@@ -354,13 +352,13 @@ DLLEXPORT char* rdfa_get_buffer(rdfacontext* context, size_t* blen);
  *         if there was a fatal error and RDFA_PARSE_WARNING if there
  *         was a non-fatal error.
  */
-DLLEXPORT int rdfa_parse_buffer(rdfacontext* context, size_t bytes);
+DLLEXPORT int rdfa_parse_buffer(rdfacontext *context, size_t bytes);
 
-DLLEXPORT void rdfa_parse_end(rdfacontext* context);
+DLLEXPORT void rdfa_parse_end(rdfacontext *context);
 
-DLLEXPORT void rdfa_init_context(rdfacontext* context);
+DLLEXPORT void rdfa_init_context(rdfacontext *context);
 
-DLLEXPORT char* rdfa_iri_get_base(const char* iri);
+DLLEXPORT char *rdfa_iri_get_base(const char *iri);
 
 /**
  * Destroys the given rdfa context by freeing all memory associated
@@ -368,7 +366,7 @@ DLLEXPORT char* rdfa_iri_get_base(const char* iri);
  *
  * @param context the rdfa context.
  */
-DLLEXPORT void rdfa_free_context(rdfacontext* context);
+DLLEXPORT void rdfa_free_context(rdfacontext *context);
 
 #ifdef __cplusplus
 }
