@@ -100,7 +100,7 @@ namespace semsim {
          * @brief setter for the about portion of the PhysicalProcess.
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &setAbout(std::string metaid);
+        PhysicalProcess &setAbout(const std::string& metaid);
 
         /*
          * @brief setter for the physical property portion of the PhysicalProcess.

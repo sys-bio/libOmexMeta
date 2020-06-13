@@ -70,7 +70,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
     );
 
     std::string actual = process.getSubjectStr();
-    std::string expected = "MetaId004";
+    std::string expected = "metaid";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // Without Triple we need to free stuff manually
@@ -263,7 +263,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"VLV\">\n"
+                           "  <rdf:Description rdf:about=\"metaid\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
                            "  </rdf:Description>\n"

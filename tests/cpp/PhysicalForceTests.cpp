@@ -67,7 +67,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
             sink_participants
     );
     std::string actual = force.getSubjectStr();
-    std::string expected = "MetaId004";
+    std::string expected = "metaid";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // Without Triple we need to free stuff manually
