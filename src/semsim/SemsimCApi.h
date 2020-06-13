@@ -106,8 +106,6 @@ namespace semsim {
 
     int Editor_getNumMetaIds(Editor *editor_ptr);
 
-    void Editor_toRDF(Editor *editor_ptr);
-
     void Editor_delete(Editor *editor_ptr);
 
 
