@@ -1,10 +1,16 @@
 from setuptools import setup
+import os
 
-MAJOR = 0
-MINOR = 0
-MICRO = 2
+version_file = os.path.join(os.path.dirname(__file__), "VERSION.txt")
+if not os.path.isfile(version_file):
+    raise FileNotFoundError(f"The version file \"{version_file}\" should exist in"
+                            f" the top level "
+                            "directory of the libsemsim pacakge but does not. "
+                            "Please ensure you have configured with cmake, "
+                            "which will convert \"VERSION.in\" into \"VERSION.txt\"")
 
-version = f'{MAJOR}.{MINOR}.{MICRO}'
+with open(version_file) as f:
+    version = f.read().strip()
 
 """
 Install with 
