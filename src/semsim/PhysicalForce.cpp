@@ -32,6 +32,21 @@ namespace semsim {
     }
 
     Triples PhysicalForce::toTriples() {
+        if (getAbout().empty()) {
+            throw AnnotationBuilderException(
+                    "PhysicalForce::toTriples(): Cannot create"
+                    " triples because the \"about\" information is not set. "
+                    "Use the setAbout() method."
+            );
+        }
+        if (getPhysicalProperty().getResourceStr().empty()) {
+            throw AnnotationBuilderException(
+                    "PhysicalForce::toTriples(): Cannot create"
+                    " triples because the \"physical_property resource\" information is not set. "
+                    "Use the setPhysicalProperty() method."
+            );
+        }
+
         std::string force_metaid = SemsimUtils::generateUniqueMetaid(
                 model_, "PhysicalForce",
                 std::vector<std::string>());

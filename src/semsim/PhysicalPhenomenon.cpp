@@ -60,18 +60,12 @@ namespace semsim {
         return physical_property_.getSubjectStr();
     }
 
-//    PhysicalPhenomenon::PhysicalPhenomenon(const PhysicalPhenomenon &phenomenon) {
-//        model_ = phenomenon.model_;
-//        about = std::move(phenomenon.about);
-//        physical_property_ = phenomenon.physical_property_;
-//        type_ = phenomenon.type_;
-//    }
 
     PhysicalPhenomenon::PhysicalPhenomenon(PhysicalPhenomenon &&phenomenon) noexcept {
         model_ = phenomenon.model_;
         phenomenon.model_ = nullptr; // not sure if this is right.
         physical_property_ = std::move(phenomenon.physical_property_);
-        type_ = std::move(phenomenon.type_);
+        type_ = phenomenon.type_;
     }
 
     PhysicalPhenomenon &PhysicalPhenomenon::operator=(PhysicalPhenomenon &&phenomenon) noexcept {
