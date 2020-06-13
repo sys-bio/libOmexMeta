@@ -23,7 +23,7 @@ namespace semsim {
 
         librdf_model *model_ = nullptr;
         std::string subject_;
-        SemSim semsim_predicate_term_;
+        std::string semsim_predicate_term_;
         double multiplier_;
         std::string physicalEntityReference_;
 
@@ -67,7 +67,7 @@ namespace semsim {
          * @brief get the predicate currently in use by the participant
          * @return a SemSim predicate
          */
-        SemSim getPredicate();
+        std::basic_string<char> getPredicate();
 
         /*
          * @brief set the predicate used in the participant

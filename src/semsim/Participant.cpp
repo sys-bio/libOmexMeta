@@ -14,7 +14,7 @@ namespace semsim {
                              double multiplier,
                              std::string physicalEntityReference)
             : model_(model), subject_(std::move(subject)),
-              semsim_predicate_term_(SemSim(semsim_predicate_term)),
+              semsim_predicate_term_(std::move(semsim_predicate_term)),
               multiplier_(multiplier),
               physicalEntityReference_(std::move(physicalEntityReference)) {}
 
@@ -28,7 +28,7 @@ namespace semsim {
             throw NullPointerException("NullPointerException: Participant::toTriples: sub1");
         }
 
-        librdf_node *pred1 = semsim_predicate_term_.getNode(); //term is hasSourceParticipant etc.
+        librdf_node *pred1 = SemSim(semsim_predicate_term_).getNode(); //term is hasSourceParticipant etc.
         if (pred1 == nullptr) {
             throw NullPointerException("NullPointerException: Participant::toTriples: pred1");
         }
@@ -82,12 +82,12 @@ namespace semsim {
         return triples;
     }
 
-    SemSim Participant::getPredicate() {
+    std::basic_string<char> Participant::getPredicate() {
         return semsim_predicate_term_;
     }
 
     void Participant::setPredicate(const std::string &semsim_predicate_term) {
-        semsim_predicate_term_ = SemSim(semsim_predicate_term);
+        semsim_predicate_term_ = semsim_predicate_term;
     }
 
     const std::string &Participant::getSubject() const {
@@ -103,16 +103,15 @@ namespace semsim {
     }
 
     void Participant::free() {
-        if (semsim_predicate_term_.getNode()) {
-            semsim_predicate_term_.freeNode();
-            semsim_predicate_term_.setNode(nullptr);
-        }
+//        if (semsim_predicate_term_.getNode()) {
+//            semsim_predicate_term_.freeNode();
+//            semsim_predicate_term_.setNode(nullptr);
+//        }
 
     }
 
     bool Participant::operator==(const Participant &rhs) const {
-        return model_ == rhs.model_ &&
-               subject_ == rhs.subject_ &&
+        return subject_ == rhs.subject_ &&
                semsim_predicate_term_ == rhs.semsim_predicate_term_ &&
                multiplier_ == rhs.multiplier_ &&
                physicalEntityReference_ == rhs.physicalEntityReference_;
