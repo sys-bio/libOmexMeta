@@ -417,25 +417,23 @@ namespace semsim {
     }
 
     PhysicalProcess *
-    PhysicalProcess_addSource(PhysicalProcess *physical_process, const char *source_metaid, double multiplier,
-                              const char *physical_entity_reference) {
-        physical_process->addSource(source_metaid, multiplier, physical_entity_reference);
+    PhysicalProcess_addSource(PhysicalProcess *physical_process, double multiplier, const char *physical_entity_reference) {
+        physical_process->addSource(multiplier, physical_entity_reference);
         return physical_process;
 
     }
 
     PhysicalProcess *
-    PhysicalProcess_addSink(PhysicalProcess *physical_process, const char *sink_metaid, double multiplier,
-                            const char *physical_entity_reference) {
-        physical_process->addSink(sink_metaid, multiplier, physical_entity_reference);
+    PhysicalProcess_addSink(PhysicalProcess *physical_process, double multiplier, const char *physical_entity_reference) {
+        physical_process->addSink(multiplier, physical_entity_reference);
         return physical_process;
 
     }
 
     PhysicalProcess *
-    PhysicalProcess_addMediator(PhysicalProcess *physical_process, const char *mediator_metaid, double multiplier,
+    PhysicalProcess_addMediator(PhysicalProcess *physical_process, double multiplier,
                                 const char *physical_entity_reference) {
-        physical_process->addMediator(mediator_metaid, multiplier, physical_entity_reference);
+        physical_process->addMediator(multiplier, physical_entity_reference);
         return physical_process;
 
     }
@@ -450,7 +448,7 @@ namespace semsim {
     }
 
     char *PhysicalProcess_getAbout(PhysicalProcess *physical_process_ptr) {
-        std::string about = physical_process_ptr->getAbout();
+        const std::string& about = physical_process_ptr->getAbout();
         char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
         strcpy(cstr, about.c_str());
         return cstr;
@@ -499,19 +497,16 @@ namespace semsim {
         return physical_force_ptr;
     }
 
-    PhysicalForce *PhysicalForce_addSource(
-            PhysicalForce *physical_force_ptr, const char *source_metaid,
-            double multiplier,
+    PhysicalForce *PhysicalForce_addSource(PhysicalForce *physical_force_ptr, double multiplier,
             const char *physical_entity_reference) {
-        physical_force_ptr->addSource(source_metaid, multiplier, physical_entity_reference);
+        physical_force_ptr->addSource(multiplier, physical_entity_reference);
         return physical_force_ptr;
 
     }
 
-    PhysicalForce *PhysicalForce_addSink(PhysicalForce *physical_force_ptr, const char *sink_metaid,
-                                         double multiplier,
+    PhysicalForce *PhysicalForce_addSink(PhysicalForce *physical_force_ptr, double multiplier,
                                          const char *physical_entity_reference) {
-        physical_force_ptr->addSink(sink_metaid, multiplier, physical_entity_reference);
+        physical_force_ptr->addSink(multiplier, physical_entity_reference);
         return physical_force_ptr;
     }
 

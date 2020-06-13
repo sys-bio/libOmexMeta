@@ -61,13 +61,15 @@ TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyNode) {
                      Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877").get())
                     })
     );
-    std::string actual = Resource(LibrdfNode::fromUriString(
+    Resource r(LibrdfNode::fromUriString(
             physicalEntity.getPhysicalProperty().getResourceStr())
-    ).str();
+    );
+    std::string actual = r.str();
     std::string expected = "https://identifiers.org/OPB/OPB_00340";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     //clear up as we didn't use Triple (which owns everything)
     physicalEntity.free();
+    r.free();
 }
 
 
@@ -207,10 +209,6 @@ TEST(PhysicalEntityTestsNoFixture, TestToTripleRefCounts) {
     PhysicalProperty property("metaid", "opb:opb_1234");
 //    ASSERT_EQ(1, property.getNode()->usage);
 
-    // ensure subject has 1 reference
-    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get());
-    ASSERT_EQ(1, subject.getNode()->usage);
-
     // ensure is resource has 1 reference
     Resource is = Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()); // is smad3
     ASSERT_EQ(1, is.getNode()->usage);
@@ -279,7 +277,6 @@ TEST(PhysicalEntityTestsNoFixture, TestToTripleRefCounts) {
 }
 
 TEST_F(PhysicalEntityTests, TestToTripleSize) {
-    Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("Metaid0034").get());
     Resource is = Resource::fromRawPtr(LibrdfNode::fromUriString("obo/PR_000000365").get()); // is smad3
     std::vector<Resource> ispartof;
     ispartof.push_back(std::move(

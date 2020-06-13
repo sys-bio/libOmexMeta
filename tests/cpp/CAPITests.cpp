@@ -456,7 +456,7 @@ TEST_F(CAPITests, TestPhysicalEntity) {
 
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
     physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "metaid87");
-    physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr,"metaid87", "opb/OPB007");
+    physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "metaid87", "opb/OPB007");
     physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot:PD58736");
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "fma:FMA_8764");
 
@@ -649,11 +649,11 @@ TEST_F(CAPITests, TestPhysicalProcess) {
     physical_process_ptr = PhysicalProcess_setAbout(physical_process_ptr, "Metaid0937");
     physical_process_ptr = PhysicalProcess_setPhysicalProperty(physical_process_ptr, "Metaid0937", "opb/opb93864");
     physical_process_ptr = PhysicalProcess_addSink(
-            physical_process_ptr, "Sink9", 1.0, "Entity8");
+            physical_process_ptr, 1.0, "Entity8");
     physical_process_ptr = PhysicalProcess_addSource(
-            physical_process_ptr, "Source1", 1.0, "Entity8");
+            physical_process_ptr, 1.0, "Entity8");
     physical_process_ptr = PhysicalProcess_addMediator(
-            physical_process_ptr, "Mod4", 1.0, "Entity8");
+            physical_process_ptr, 1.0, "Entity8");
 
     char *actual = PhysicalProcess_str(physical_process_ptr, "rdfxml-abbrev", "./annotations.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -661,27 +661,28 @@ TEST_F(CAPITests, TestPhysicalProcess) {
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"MediatorParticipant0000\">\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"Entity8\"/>\n"
+                           "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"Metaid0937\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/opb93864\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"Mod4\">\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"Entity8\"/>\n"
-                           "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"PhysicalProcess0000\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"Mod4\"/>\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"Sink9\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"Source1\"/>\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorParticipant0000\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"Sink9\">\n"
+                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"Entity8\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"Source1\">\n"
+                           "  <rdf:Description rdf:about=\"SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"Entity8\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual);
 
@@ -700,11 +701,11 @@ TEST_F(CAPITests, TestPhysicalForce) {
     PhysicalForce *physical_force_ptr = PhysicalForce_new(editor_ptr);
 
     physical_force_ptr = PhysicalForce_setAbout(physical_force_ptr, "Metaid0937");
-    physical_force_ptr = PhysicalForce_setPhysicalProperty(physical_force_ptr, "Metaid0937","opb/opb93864");
+    physical_force_ptr = PhysicalForce_setPhysicalProperty(physical_force_ptr, "Metaid0937", "opb/opb93864");
     physical_force_ptr = PhysicalForce_addSink(
-            physical_force_ptr, "Sink9", 1.0, "Entity8");
+            physical_force_ptr, 1.0, "Entity8");
     physical_force_ptr = PhysicalForce_addSource(
-            physical_force_ptr, "Source1", 1.0, "Entity9");
+            physical_force_ptr, 1.0, "Entity9");
 
     char *actual = PhysicalForce_str(physical_force_ptr, "rdfxml-abbrev", "./Annot.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
@@ -717,19 +718,18 @@ TEST_F(CAPITests, TestPhysicalForce) {
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/opb93864\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"PhysicalForce0000\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"Sink9\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"Source1\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"Sink9\">\n"
+                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"Entity8\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"Source1\">\n"
+                           "  <rdf:Description rdf:about=\"SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"Entity9\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
-                           "";
+                           "</rdf:RDF>\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual);
 
@@ -749,16 +749,17 @@ TEST_F(CAPITests, TestEditorToRDF) {
     PhysicalProcess *physical_process_ptr = PhysicalProcess_new(editor_ptr);
 
     physical_process_ptr = PhysicalProcess_setAbout(physical_process_ptr, "SemsimMetaid0006");
-    physical_process_ptr = PhysicalProcess_setPhysicalProperty(physical_process_ptr, "SemsimMetaid0006","opb/opb93864");
+    physical_process_ptr = PhysicalProcess_setPhysicalProperty(physical_process_ptr, "SemsimMetaid0006",
+                                                               "opb/opb93864");
     physical_process_ptr = PhysicalProcess_addSink(
-            physical_process_ptr, "Sink9", 1.0, "Entity8");
+            physical_process_ptr, 1.0, "Entity8");
     physical_process_ptr = PhysicalProcess_addSource(
-            physical_process_ptr, "Source1", 1.0, "Entity8");
+            physical_process_ptr, 1.0, "Entity8");
     physical_process_ptr = PhysicalProcess_addMediator(
-            physical_process_ptr, "Mod4", 1.0, "Entity8");
+            physical_process_ptr, 1.0, "Entity8");
 
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
-    physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "SemsimMetaid0007","opb/opb_465");
+    physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "SemsimMetaid0007", "opb/opb_465");
     physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "SemsimMetaid0007");
     physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot/PD7363");
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8376");
@@ -768,11 +769,11 @@ TEST_F(CAPITests, TestEditorToRDF) {
     PhysicalForce *physical_force_ptr = PhysicalForce_new(editor_ptr);
 
     physical_force_ptr = PhysicalForce_setAbout(physical_force_ptr, "SemsimMetaid0008");
-    physical_force_ptr = PhysicalForce_setPhysicalProperty(physical_force_ptr, "SemsimMetaid0008","opb/opb93864");
+    physical_force_ptr = PhysicalForce_setPhysicalProperty(physical_force_ptr, "SemsimMetaid0008", "opb/opb93864");
     physical_force_ptr = PhysicalForce_addSink(
-            physical_force_ptr, "Sink9", 1.0, "Entity8");
+            physical_force_ptr, 1.0, "Entity8");
     physical_force_ptr = PhysicalForce_addSource(
-            physical_force_ptr, "Source1", 1.0, "Entity9");
+            physical_force_ptr, 1.0, "Entity9");
 
 
     Editor_addPhysicalProcess(editor_ptr, physical_process_ptr

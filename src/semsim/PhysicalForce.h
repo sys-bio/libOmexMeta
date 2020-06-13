@@ -141,8 +141,7 @@ namespace semsim {
          *
          * See SourceParticipant documentation for more details on arguments.
          */
-        PhysicalForce &addSource(std::string source_metaid, double multiplier,
-                                 std::string physical_entity_reference);
+        PhysicalForce &addSource(double multiplier, const std::string& physical_entity_reference);
 
         /*
          * @brief add a SinkParticipant to the PhysicalForce.
@@ -154,9 +153,7 @@ namespace semsim {
          *
          * See SinkParticipant documentation for more details on arguments.
          */
-        PhysicalForce &
-        addSink(std::string sink_metaid, double multiplier,
-                std::string physical_entity_reference);
+        PhysicalForce & addSink(double multiplier, const std::string& physical_entity_reference);
 
 //        bool operator==(const PhysicalForce &rhs) const;
 //

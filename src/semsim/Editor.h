@@ -89,9 +89,15 @@ namespace semsim {
         explicit Editor(const std::string &xml, SemsimXmlType type,
                         const LibrdfModel &model, NamespaceMap &ns_map);
 
-//        ~Editor();
+        /*
+         * We no longer required to free the
+         * triples_ used by Editor since they are
+         * created and freed inplace - i.e.
+         * locally, not at the class scope.
+         */
+        ~Editor() = default;
 
-        int size() const;
+        [[nodiscard]] int size() const;
 
 
         /*

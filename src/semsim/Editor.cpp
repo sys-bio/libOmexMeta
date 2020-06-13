@@ -17,11 +17,6 @@ namespace semsim {
         metaids_ = xml_and_metaids.second;
     }
 
-//    Editor::~Editor() {
-//        std::cout << "calling Editor destructor" << std::endl;
-//        freeTriples();
-//    }
-
     int Editor::size() const {
         return model_.size();
     }

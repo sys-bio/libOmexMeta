@@ -178,6 +178,8 @@ TEST(ResourceTestsNoFixture, TestEquality) {
             )
     );
     ASSERT_EQ(resource1, resource2);
+    resource1.free();
+    resource2.free();
 }
 
 TEST(ResourceTestsNoFixture, TestInequality) {
@@ -194,6 +196,8 @@ TEST(ResourceTestsNoFixture, TestInequality) {
             )
     );
     ASSERT_NE(resource1, resource2);
+    resource2.free();
+    resource1.free();
 }
 
 

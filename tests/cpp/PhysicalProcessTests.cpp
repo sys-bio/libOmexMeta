@@ -40,7 +40,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
     std::vector<SourceParticipant> source_participants(
             {SourceParticipant(
                     model.get(),
-                    "SourceId1",
                     1.0,
                     "PhysicalEntityReference1"
             )}
@@ -48,7 +47,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
     std::vector<SinkParticipant> sink_participants(
             {SinkParticipant(
                     model.get(),
-                    "SinkId1",
                     1.0,
                     "PhysicalEntityReference2"
             )}
@@ -56,7 +54,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
     std::vector<MediatorParticipant> mediator_participants(
             {MediatorParticipant(
                     model.get(),
-                    "MediatorID1",
                     "PhysicalEntityReference3"
             )}
     );
@@ -86,7 +83,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
     std::vector<SourceParticipant> source_participants(
             {SourceParticipant(
                     model.get(),
-                    "SourceId1",
                     1.0,
                     "PhysicalEntityReference1"
             )}
@@ -94,7 +90,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
     std::vector<SinkParticipant> sink_participants(
             {SinkParticipant(
                     model.get(),
-                    "SinkId1",
                     1.0,
                     "PhysicalEntityReference2"
             )}
@@ -102,7 +97,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
     std::vector<MediatorParticipant> mediator_participants(
             {MediatorParticipant(
                     model.get(),
-                    "MediatorID1",
                     "PhysicalEntityReference3"
             )}
     );
@@ -116,7 +110,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
     );
 
     std::string actual = process.getSources()[0].getSubject();
-    std::string expected = "SourceId1";
+    std::string expected = "SourceParticipant";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // Without Triple we need to free stuff manually
@@ -134,7 +128,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
             std::vector<SourceParticipant>(
                     {SourceParticipant(
                             model.get(),
-                            "SourceId1",
                             1.0,
                             "PhysicalEntityReference1"
                     )}
@@ -143,8 +136,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
                     {SinkParticipant(
 
                             model.get(),
-                            "SinkId1",
-                            1.0,
+                                    1.0,
                             "PhysicalEntityReference2"
                     )}
             ),
@@ -152,8 +144,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
                     {MediatorParticipant(
 
                             model.get(),
-                            "MediatorID1",
-                            "PhysicalEntityReference3"
+                                    "PhysicalEntityReference3"
                     )}
             )
     );
@@ -175,7 +166,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
             std::vector<SourceParticipant>(
                     {SourceParticipant(
                             model.get(),
-                            "SourceId1",
                             1.0,
                             "PhysicalEntityReference1"
                     )}
@@ -184,8 +174,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
                     {SinkParticipant(
 
                             model.get(),
-                            "SinkId1",
-                            1.0,
+                                    1.0,
                             "PhysicalEntityReference2"
                     )}
             ),
@@ -193,8 +182,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
                     {MediatorParticipant(
 
                             model.get(),
-                            "MediatorID1",
-                            "PhysicalEntityReference3"
+                                    "PhysicalEntityReference3"
                     )}
             )
     );
@@ -214,7 +202,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
                     {SourceParticipant(
 
                             model.get(),
-                            "SourceId1",
                             1.0,
                             "PhysicalEntityReference1"
                     )}
@@ -223,8 +210,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
                     {SinkParticipant(
 
                             model.get(),
-                            "SinkId1",
-                            1.0,
+                                    1.0,
                             "PhysicalEntityReference2"
                     )}
             ),
@@ -232,34 +218,32 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
                     {MediatorParticipant(
 
                             model.get(),
-                            "MediatorID1",
-                            "PhysicalEntityReference3"
+                                    "PhysicalEntityReference3"
                     )}
             )
     );
     Triples triples = process.toTriples();
 
     std::string actual = triples.str();
-    std::cout << actual <<
-              std::endl;
+    std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"MediatorID1\">\n"
+                           "  <rdf:Description rdf:about=\"MediatorParticipant0000\">\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference3\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"PhysicalProcess0000\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorID1\"/>\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkId1\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceId1\"/>\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorParticipant0000\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SinkId1\">\n"
+                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SourceId1\">\n"
+                           "  <rdf:Description rdf:about=\"SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
@@ -267,7 +251,8 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
                            "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
 }
@@ -275,10 +260,10 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
 TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
     PhysicalProcess process(model.get());
     process.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
-            .addSource("source_0", 1.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2")
-            .addMediator("mediator_0", 1.0, "species_metaid2");
+            .addSource(1.0, "species_metaid0")
+            .addSource(2.0, "species_metaid1")
+            .addSink(1.0, "species_metaid2")
+            .addMediator(1.0, "species_metaid2");
 
     Triples triples = process.toTriples();
 
@@ -289,30 +274,27 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"PhysicalProcess0000\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"mediator_0\"/>\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"sink_0\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"source_0\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"source_1\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"mediator_0\">\n"
+                           "  <rdf:Description rdf:about=\"MediatorParticipant0000\">\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid2\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"PhysicalProcess0000\">\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorParticipant0000\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceParticipant0000\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid2\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"SourceParticipant0000\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">2</semsim:hasMultiplier>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid0\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid1\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"property_metaid_0\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB_00592\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"sink_0\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid2\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"source_0\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid0\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"source_1\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">2</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid1\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";
@@ -326,17 +308,17 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
 TEST_F(PhysicalProcessTests, TestEquality) {
     PhysicalProcess process1(model.get());
     process1.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
-            .addSource("source_0", 1.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2")
-            .addMediator("mediator_0", 1.0, "species_metaid2");
+            .addSource(1.0, "species_metaid0")
+            .addSource(2.0, "species_metaid1")
+            .addSink(1.0, "species_metaid2")
+            .addMediator(1.0, "species_metaid2");
 
     PhysicalProcess process2(model.get());
     process2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
-            .addSource("source_0", 1.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2")
-            .addMediator("mediator_0", 1.0, "species_metaid2");
+            .addSource(1.0, "species_metaid0")
+            .addSource(2.0, "species_metaid1")
+            .addSink(1.0, "species_metaid2")
+            .addMediator(1.0, "species_metaid2");
     ASSERT_EQ(process1, process2);
     process1.free();
     process2.free();
@@ -345,17 +327,17 @@ TEST_F(PhysicalProcessTests, TestEquality) {
 TEST_F(PhysicalProcessTests, TestInequality) {
     PhysicalProcess process1(model.get());
     process1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
-            .addSource("source_0", 1.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2")
-            .addMediator("mediator_0", 1.0, "species_metaid2");
+            .addSource(1.0, "species_metaid0")
+            .addSource(2.0, "species_metaid1")
+            .addSink(1.0, "species_metaid2")
+            .addMediator(1.0, "species_metaid2");
 
     PhysicalProcess process2(model.get());
     process2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
-            .addSource("source_0", 1.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2")
-            .addMediator("mediator_0", 1.0, "species_metaid2");
+            .addSource(1.0, "species_metaid0")
+            .addSource(2.0, "species_metaid1")
+            .addSink(1.0, "species_metaid2")
+            .addMediator(1.0, "species_metaid2");
     ASSERT_NE(process1, process2);
 
     process1.free();

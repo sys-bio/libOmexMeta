@@ -39,7 +39,6 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
     std::vector<SourceParticipant> source_participants(
             {SourceParticipant(
                     model.get(),
-                    "SourceId1",
                     1.0,
                     "PhysicalEntityReference1"
             )}
@@ -47,7 +46,6 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
     std::vector<SinkParticipant> sink_participants(
             {SinkParticipant(
                     model.get(),
-                    "SinkId1",
                     1.0,
                     "PhysicalEntityReference2"
             )}
@@ -55,7 +53,6 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
     std::vector<MediatorParticipant> mediator_participants(
             {MediatorParticipant(
                     model.get(),
-                    "MediatorID1",
                     "PhysicalEntityReference3"
             )}
     );
@@ -83,14 +80,12 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
 TEST_F(PhysicalForceTests, TestPhysicalProperty1) {
     std::vector<SourceParticipant> source_participants({SourceParticipant(
             model.get(),
-            "SourceId1",
             1.0,
             "PhysicalEntityReference1"
     )});
     std::vector<SinkParticipant>  sink_participants(
             {SinkParticipant(
                     model.get(),
-                    "SinkId1",
                     1.0,
                     "PhysicalEntityReference2"
             )}
@@ -115,14 +110,12 @@ TEST_F(PhysicalForceTests, TestPhysicalProperty1) {
 TEST_F(PhysicalForceTests, TestPhysicalProperty2) {
     std::vector<SourceParticipant> source_participants({SourceParticipant(
             model.get(),
-            "SourceId1",
             1.0,
             "PhysicalEntityReference1"
     )});
     std::vector<SinkParticipant>  sink_participants(
             {SinkParticipant(
                     model.get(),
-                    "SinkId1",
                     1.0,
                     "PhysicalEntityReference2"
             )}
@@ -151,7 +144,6 @@ TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
             std::vector<SourceParticipant>(
                     {SourceParticipant(
                             model.get(),
-                            "SourceId1",
                             1.0,
                             "PhysicalEntityReference1"
                     )}
@@ -159,7 +151,6 @@ TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
             std::vector<SinkParticipant>(
                     {SinkParticipant(
                             model.get(),
-                            "SinkId1",
                             1.0,
                             "PhysicalEntityReference2"
                     )}
@@ -182,7 +173,6 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
             std::vector<SourceParticipant>(
                     {SourceParticipant(
                             model.get(),
-                            "SourceId1",
                             1.0,
                             "PhysicalEntityReference1"
                     )}
@@ -190,7 +180,6 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
             std::vector<SinkParticipant>(
                     {SinkParticipant(
                             model.get(),
-                            "SinkId1",
                             1.0,
                             "PhysicalEntityReference2"
                     )}
@@ -212,7 +201,6 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
             std::vector<SourceParticipant>(
                     {SourceParticipant(
                             model.get(),
-                            "SourceId1",
                             1.0,
                             "PhysicalEntityReference1"
                     )}
@@ -220,7 +208,6 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
             std::vector<SinkParticipant>(
                     {SinkParticipant(
                             model.get(),
-                            "SinkId1",
                             1.0,
                             "PhysicalEntityReference2"
                     )}
@@ -235,14 +222,14 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"PhysicalForce0000\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkId1\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceId1\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SinkId1\">\n"
+                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SourceId1\">\n"
+                           "  <rdf:Description rdf:about=\"SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
@@ -250,7 +237,8 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
                            "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalForce0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
@@ -263,9 +251,9 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
     //todo considering implementing the builder as a composite builder
     force
             .setPhysicalProperty("Force5", "OPB:OPB_00340")
-            .addSource("Source1", 1, "PhysicalEntityReference1")
-            .addSink("Sink1", 2, "PhysicalEntityReference2")
-            .addSink("Sink2", 1, "PhysicalEntityReference3");
+            .addSource( 1, "PhysicalEntityReference1")
+            .addSink(2, "PhysicalEntityReference2")
+            .addSink(1, "PhysicalEntityReference3");
 
 
     Triples triples = force.toTriples();
@@ -280,23 +268,21 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"PhysicalForce0000\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"Sink1\"/>\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"Sink2\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"Source1\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"Sink1\">\n"
+                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">2</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"Sink2\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference3\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"Source1\">\n"
+                           "  <rdf:Description rdf:about=\"SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n";
+                           "</rdf:RDF>\n"
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
@@ -308,9 +294,9 @@ TEST(PhysicalForceTestsNoFixture, TestGenerateTheSamePhysicalForceTwice) {
     PhysicalForce force(rdf.getModel());
     //todo considering implementing the builder as a composite builder
     force.setPhysicalProperty("Force5", "OPB:OPB_00340")
-            .addSource("Source1", 1, "PhysicalEntityReference1")
-            .addSink("Sink1", 2, "PhysicalEntityReference2")
-            .addSink("Sink2", 1, "PhysicalEntityReference3");
+            .addSource( 1, "PhysicalEntityReference1")
+            .addSink(2, "PhysicalEntityReference2")
+            .addSink(1, "PhysicalEntityReference3");
 
     Triples triples1 = force.toTriples();
     std::string actual1 = triples1.str("ntriples", "base");
@@ -346,15 +332,15 @@ public:
 TEST_F(PhysicalForceEqualityTests, TestEquality) {
     PhysicalForce force1(model.get());
     force1.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
-            .addSource("source_0", 1.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2");
+            .addSource( 1.0, "species_metaid0")
+            .addSource( 2.0, "species_metaid1")
+            .addSink( 1.0, "species_metaid2");
 
     PhysicalForce force2(model.get());
     force2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
-            .addSource("source_0", 1.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2");
+            .addSource( 1.0, "species_metaid0")
+            .addSource( 2.0, "species_metaid1")
+            .addSink( 1.0, "species_metaid2");
     ASSERT_EQ(force1, force2);
     force1.free();
     force2.free();
@@ -363,15 +349,15 @@ TEST_F(PhysicalForceEqualityTests, TestEquality) {
 TEST_F(PhysicalForceEqualityTests, TestInequality1) {
     PhysicalForce force1(model.get());
     force1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
-            .addSource("source_0", 1.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2");
+            .addSource( 1.0, "species_metaid0")
+            .addSource( 2.0, "species_metaid1")
+            .addSink( 1.0, "species_metaid2");
 
     PhysicalForce force2(model.get());
     force2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
-            .addSource("source_0", 1.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2");
+            .addSource( 1.0, "species_metaid0")
+            .addSource( 2.0, "species_metaid1")
+            .addSink( 1.0, "species_metaid2");
     ASSERT_NE(force1, force2);
 
     force1.free();
@@ -381,15 +367,15 @@ TEST_F(PhysicalForceEqualityTests, TestInequality1) {
 TEST_F(PhysicalForceEqualityTests, TestInequality2) {
     PhysicalForce force1(model.get());
     force1.setPhysicalProperty("property_metaid_0", "opb/OPB_00593")
-            .addSource("source_0", 1.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2");
+            .addSource( 1.0, "species_metaid0")
+            .addSource( 2.0, "species_metaid1")
+            .addSink( 1.0, "species_metaid2");
 
     PhysicalForce force2(model.get());
     force2.setPhysicalProperty("property_metaid_0", "opb/OPB_00597")
-            .addSource("source_0", 1.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2");
+            .addSource( 1.0, "species_metaid0")
+            .addSource( 2.0, "species_metaid1")
+            .addSink( 1.0, "species_metaid2");
 
     ASSERT_NE(force1, force2);
 
@@ -400,15 +386,15 @@ TEST_F(PhysicalForceEqualityTests, TestInequality2) {
 TEST_F(PhysicalForceEqualityTests, TestInequality3) {
     PhysicalForce force1(model.get());
     force1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
-            .addSource("source_0", 1.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2");
+            .addSource( 1.0, "species_metaid0")
+            .addSource( 2.0, "species_metaid1")
+            .addSink( 1.0, "species_metaid2");
 
     PhysicalForce force2(model.get());
     force2.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
-            .addSource("source_1", 1.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2");
+            .addSource( 1.0, "species_metaid0")
+            .addSource( 2.0, "species_metaid2")
+            .addSink( 1.0, "species_metaid1");
     ASSERT_NE(force1, force2);
 
     force1.free();
@@ -418,15 +404,15 @@ TEST_F(PhysicalForceEqualityTests, TestInequality3) {
 TEST_F(PhysicalForceEqualityTests, TestInequality4) {
     PhysicalForce force1(model.get());
     force1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
-            .addSource("source_0", 1.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2");
+            .addSource( 1.0, "species_metaid0")
+            .addSource( 2.0, "species_metaid1")
+            .addSink( 1.0, "species_metaid2");
 
     PhysicalForce force2(model.get());
     force2.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
-            .addSource("source_0", 2.0, "species_metaid0")
-            .addSource("source_1", 2.0, "species_metaid1")
-            .addSink("sink_0", 1.0, "species_metaid2");
+            .addSource( 2.0, "species_metaid0")
+            .addSource( 2.0, "species_metaid1")
+            .addSink( 1.0, "species_metaid2");
     ASSERT_NE(force1, force2);
 
     force1.free();
