@@ -47,8 +47,7 @@ class RDF:
         self.delete()
 
     @staticmethod
-    def from_string(rdf_ptr: ct.c_int64, rdf_string: str, format: str = "guess",
-                    base_uri: str = "./Annotations.rdf") -> RDF:
+    def from_string(rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf") -> RDF:
         """read rdf from a string"""
         rdf = PysemsimAPI.rdf_from_string(rdf_string.encode(), format.encode(), base_uri.encode())
         return RDF(rdf)
@@ -134,7 +133,6 @@ class Editor:
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        self.to_rdf()
         self.delete()
 
     def add_namespace(self, namespace: str, prefix: str) -> None:
@@ -165,9 +163,6 @@ class Editor:
         return PysemsimAPI.get_and_free_c_str(
             PysemsimAPI.editor_get_xml(self._obj)
         )
-
-    def to_rdf(self) -> None:
-        PysemsimAPI.editor_to_rdf(self._obj)
 
     @contextmanager
     def new_singular_annotation(self) -> SingularAnnotation:

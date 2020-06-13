@@ -111,8 +111,7 @@ class TestAPI(unittest.TestCase):
     def test_rdf_from_uri(self):
         sbml_url = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml"
 
-        rdf = PysemsimAPI.rdf_from_uri(sbml_url.encode(), 'rdfxml'.encode(),
-                                       "test_rdf_from_string.rdf".encode())
+        rdf = PysemsimAPI.rdf_from_uri(sbml_url.encode(), 'rdfxml'.encode())
         expected = 277
         actual = PysemsimAPI.rdf_size(rdf)
         self.assertEqual(expected, actual)
@@ -120,8 +119,7 @@ class TestAPI(unittest.TestCase):
     def test_rdf_add_from_uri(self):
         sbml_url = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml"
 
-        PysemsimAPI.rdf_add_from_uri(self.rdf, sbml_url.encode(), 'rdfxml'.encode(),
-                                     "test_rdf_from_string.rdf".encode())
+        PysemsimAPI.rdf_add_from_uri(self.rdf, sbml_url.encode(), 'rdfxml'.encode())
         expected = 277
         actual = PysemsimAPI.rdf_size(self.rdf)
         self.assertEqual(expected, actual)
@@ -131,8 +129,7 @@ class TestAPI(unittest.TestCase):
         with open(fname, "w") as f:
             f.write(TestStrings.singular_annotation2)
 
-        rdf = PysemsimAPI.rdf_from_file(fname.encode(), 'rdfxml'.encode(),
-                                        "test_rdf_from_string.rdf".encode())
+        rdf = PysemsimAPI.rdf_from_file(fname.encode(), 'rdfxml'.encode())
         expected = 1
         actual = PysemsimAPI.rdf_size(rdf)
         self.assertEqual(expected, actual)
@@ -143,8 +140,7 @@ class TestAPI(unittest.TestCase):
         with open(fname, "w") as f:
             f.write(TestStrings.singular_annotation2)
 
-        PysemsimAPI.rdf_add_from_file(self.rdf, fname.encode(), 'rdfxml'.encode(),
-                                      "test_rdf_from_string.rdf".encode())
+        PysemsimAPI.rdf_add_from_file(self.rdf, fname.encode(), 'rdfxml'.encode())
         expected = 1
         actual = PysemsimAPI.rdf_size(self.rdf)
         self.assertEqual(expected, actual)
