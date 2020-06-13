@@ -25,7 +25,7 @@ def _xml_type_factory(xml_type: str):
 
 class RDF:
 
-    def __init__(self, rdf_ptr:ct.c_int64 = None):
+    def __init__(self, rdf_ptr: ct.c_int64 = None):
         # when pointer argument not given by user, create new instance of RDF
         # argument is only given manually when static methods are used and
         # this is hidden from users.
@@ -47,12 +47,12 @@ class RDF:
         self.delete()
 
     @staticmethod
-    def from_string(rdf_ptr: ct.c_int64, rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf") -> RDF:
+    def from_string(rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf") -> RDF:
         """read rdf from a string"""
         rdf = PysemsimAPI.rdf_from_string(rdf_string.encode(), format.encode(), base_uri.encode())
         return RDF(rdf)
 
-    def add_from_string(self, rdf_string: str, format: str = "guess", base_uri:str = "./Annotations.rdf") -> None:
+    def add_from_string(self, rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf") -> None:
         PysemsimAPI.rdf_add_from_string(self._obj, rdf_string.encode(), format.encode(), base_uri.encode())
 
     @staticmethod
@@ -73,7 +73,7 @@ class RDF:
         """destructor. Delete the dynamically allocated rdf object"""
         PysemsimAPI.rdf_delete(self._obj)
 
-    def to_string(self, format: str, base_uri : str = "./Annotations.rdf") -> str:
+    def to_string(self, format: str, base_uri: str = "./Annotations.rdf") -> str:
         str_ptr = PysemsimAPI.rdf_to_string(self._obj, format.encode(), base_uri.encode())
         thestring = PysemsimAPI.get_and_free_c_str(str_ptr)
         return thestring
@@ -133,7 +133,6 @@ class Editor:
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        self.to_rdf()
         self.delete()
 
     def add_namespace(self, namespace: str, prefix: str) -> None:
@@ -164,9 +163,6 @@ class Editor:
         return PysemsimAPI.get_and_free_c_str(
             PysemsimAPI.editor_get_xml(self._obj)
         )
-
-    def to_rdf(self) -> None:
-        PysemsimAPI.editor_to_rdf(self._obj)
 
     @contextmanager
     def new_singular_annotation(self) -> SingularAnnotation:
@@ -313,7 +309,7 @@ class PhysicalEntity:
 
 class PhysicalProcess:
 
-    def __init__(self, physical_process_ptr : ct.c_int64):
+    def __init__(self, physical_process_ptr: ct.c_int64):
         self._obj = physical_process_ptr
 
     def get_ptr(self) -> ct.c_int64:
@@ -342,7 +338,7 @@ class PhysicalProcess:
                                                               physical_entity_reference.encode())
         return self
 
-    def to_string(self, format: str, base_uri: str="./Annotations.rdf"):
+    def to_string(self, format: str, base_uri: str = "./Annotations.rdf"):
         return PysemsimAPI.get_and_free_c_str(
             PysemsimAPI.physical_process_str(self._obj, format.encode(), base_uri.encode()))
 

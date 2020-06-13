@@ -11,10 +11,10 @@
 
 namespace semsim {
 
-    PhysicalForce::PhysicalForce(librdf_model* model, Subject metaid,
-                                 PhysicalPropertyResource physicalProperty,
+    PhysicalForce::PhysicalForce(librdf_model *model,
+                                 PhysicalProperty physicalProperty,
                                  Sources sources, Sinks sinks)
-            : PhysicalPhenomenon(model, metaid, std::move(physicalProperty), PHYSICAL_PROCESS),
+            : PhysicalPhenomenon(model, std::move(physicalProperty), PHYSICAL_PROCESS),
               sources_(std::move(sources)), sinks_(std::move(sinks)) {
 
     }
@@ -32,42 +32,53 @@ namespace semsim {
     }
 
     Triples PhysicalForce::toTriples() {
+        if (getAbout().empty()) {
+            throw AnnotationBuilderException(
+                    "PhysicalForce::toTriples(): Cannot create"
+                    " triples because the \"about\" information is not set. "
+                    "Use the setAbout() method."
+            );
+        }
+        if (getPhysicalProperty().getResourceStr().empty()) {
+            throw AnnotationBuilderException(
+                    "PhysicalForce::toTriples(): Cannot create"
+                    " triples because the \"physical_property resource\" information is not set. "
+                    "Use the setPhysicalProperty() method."
+            );
+        }
+
         std::string force_metaid = SemsimUtils::generateUniqueMetaid(
                 model_, "PhysicalForce",
                 std::vector<std::string>());
-        // why is this not being used?
-//        Subject force_metaid_subject = Subject::fromRawPtr(LibrdfNode::fromUriString(force_metaid));
 
-        //todo see note on PhysicalEntity::toTriples. Same applies here.
-        Triples triples = physical_property_.toTriples(about.str(), force_metaid);
-        about.free();
+        Triples triples = physical_property_.toTriples(force_metaid);
 
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(force_metaid)) {
-                triples.push_back(triple);
+                triples.move_back(triple);
             }
         }
         for (auto &sink : sinks_) {
             for (auto &triple : sink.toTriples(force_metaid)) {
-                triples.push_back(triple);
+                triples.move_back(triple);
             }
         }
         return triples;
     }
 
-    PhysicalForce &PhysicalForce::setAbout(const std::string& metaid) {
-        about = Subject::fromRawPtr(LibrdfNode::fromUriString(metaid).get());
+    PhysicalForce &PhysicalForce::setAbout(const std::string &metaid) {
+        physical_property_.setSubject(metaid);
         return (*this);
     }
 
-    PhysicalForce &PhysicalForce::setPhysicalProperty(PhysicalPropertyResource physicalProperty) {
+    PhysicalForce &PhysicalForce::setPhysicalProperty(PhysicalProperty physicalProperty) {
         physical_property_ = std::move(physicalProperty);
         return (*this);
     }
 
-    PhysicalForce &PhysicalForce::setPhysicalProperty(const std::string &physicalProperty) {
-        physical_property_ = PhysicalPropertyResource(physicalProperty);
-        return (*this);
+    PhysicalForce &PhysicalForce::setPhysicalProperty(std::string subject_metaid, std::string physical_property) {
+        physical_property_ = PhysicalProperty(subject_metaid, physical_property);
+        return *this;
     }
 
     PhysicalForce &PhysicalForce::addSource(
@@ -96,7 +107,7 @@ namespace semsim {
         return (*this);
     }
 
-    PhysicalForce::PhysicalForce(librdf_model* model)
+    PhysicalForce::PhysicalForce(librdf_model *model)
             : PhysicalPhenomenon(model) {}
 
     int PhysicalForce::getNumSources() {
@@ -108,6 +119,7 @@ namespace semsim {
     }
 
     void PhysicalForce::free() {
+
         for (auto &i : sources_) {
             i.free();
         }
@@ -116,5 +128,32 @@ namespace semsim {
         }
     }
 
+//    bool PhysicalForce::operator==(const PhysicalForce &rhs) const {
+////        std::cout << "\nequality\n" << physical_property_.getSubjectStr() << ", " << rhs.physical_property_.getSubjectStr() << std::endl;
+////        std::cout << physical_property_.getResourceStr() << ", " << rhs.physical_property_.getResourceStr() << std::endl;
+////        std::cout << "(physical_property_ == rhs.physical_property_) "<< (physical_property_ == rhs.physical_property_) << std::endl;
+////        std::cout << "(physical_property_.getResourceStr() == rhs.physical_property_.getResourceStr()): " <<(physical_property_.getResourceStr() == rhs.physical_property_.getResourceStr()) << std::endl;
+////        std::cout << "(physical_property_.getSubjectStr() == rhs.physical_property_.getSubjectStr()): " <<(physical_property_.getSubjectStr() == rhs.physical_property_.getSubjectStr()) << std::endl;
+////        std::cout << "(sinks_ == rhs.sinks_): " << (sinks_ == rhs.sinks_) << std::endl;
+////        std::cout << "(sources_ == rhs.sources_): " << (sources_ == rhs.sources_) << std::endl;
+//
+//        return sources_ == rhs.sources_ &&
+//               sinks_ == rhs.sinks_ &&
+//               physical_property_ == physical_property_;
+//    }
+//
+//    bool PhysicalForce::operator!=(const PhysicalForce &rhs) const {
+//        return !(*this == rhs);
+//    }
+    bool PhysicalForce::operator==(const PhysicalForce &rhs) const {
+        return static_cast<const semsim::PhysicalPhenomenon &>(*this) ==
+               static_cast<const semsim::PhysicalPhenomenon &>(rhs) &&
+               sources_ == rhs.sources_ &&
+               sinks_ == rhs.sinks_;
+    }
+
+    bool PhysicalForce::operator!=(const PhysicalForce &rhs) const {
+        return !(rhs == *this);
+    }
 
 }

@@ -22,7 +22,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -36,7 +38,6 @@
 
 #include "rasqal.h"
 #include "rasqal_internal.h"
-
 
 
 #ifdef RASQAL_DEBUG

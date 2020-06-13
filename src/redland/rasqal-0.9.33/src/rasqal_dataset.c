@@ -25,7 +25,9 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -35,9 +37,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
+
 #include <stdarg.h>
 
 #include "rasqal.h"
@@ -48,47 +54,45 @@
 
 
 struct rasqal_dataset_triple_s {
-  struct rasqal_dataset_triple_s *next;
+    struct rasqal_dataset_triple_s *next;
 
-  rasqal_triple *triple;
+    rasqal_triple *triple;
 };
 
 typedef struct rasqal_dataset_triple_s rasqal_dataset_triple;
 
 
-struct rasqal_dataset_s
-{
-  rasqal_world* world;
-  
-  rasqal_literal* base_uri_literal;
+struct rasqal_dataset_s {
+    rasqal_world *world;
 
-  rasqal_dataset_triple *head;
-  rasqal_dataset_triple *tail;
+    rasqal_literal *base_uri_literal;
+
+    rasqal_dataset_triple *head;
+    rasqal_dataset_triple *tail;
 };
 
 
 struct rasqal_dataset_term_iterator_s {
-  rasqal_dataset* dataset;
+    rasqal_dataset *dataset;
 
-  /* triple to match */
-  rasqal_triple match;
+    /* triple to match */
+    rasqal_triple match;
 
-  /* single triple part wanted returned */
-  rasqal_triple_parts want;
+    /* single triple part wanted returned */
+    rasqal_triple_parts want;
 
-  /* parts to match on - XOR of @want */
-  unsigned int parts;
+    /* parts to match on - XOR of @want */
+    unsigned int parts;
 
-  /* current triple */
-  rasqal_dataset_triple *cursor;
+    /* current triple */
+    rasqal_dataset_triple *cursor;
 };
 
 
 struct rasqal_dataset_triples_iterator_s {
-  /* current triple */
-  rasqal_dataset_triple *cursor;
+    /* current triple */
+    rasqal_dataset_triple *cursor;
 };
-
 
 
 /*
@@ -99,21 +103,20 @@ struct rasqal_dataset_triples_iterator_s {
  *
  * Return value: new dataset or NULL on failure
  */
-rasqal_dataset*
-rasqal_new_dataset(rasqal_world* world)
-{
-  rasqal_dataset* ds;
-  
-  if(!world)
-    return NULL;
+rasqal_dataset *
+rasqal_new_dataset(rasqal_world *world) {
+    rasqal_dataset *ds;
 
-  ds = RASQAL_CALLOC(rasqal_dataset*, 1, sizeof(*ds));
-  if(!ds)
-    return NULL;
-  
-  ds->world = world;
+    if (!world)
+        return NULL;
 
-  return ds;
+    ds = RASQAL_CALLOC(rasqal_dataset*, 1, sizeof(*ds));
+    if (!ds)
+        return NULL;
+
+    ds->world = world;
+
+    return ds;
 }
 
 
@@ -124,58 +127,56 @@ rasqal_new_dataset(rasqal_world* world)
  * INTERNAL - Destructor - destroy a dataset
  */
 void
-rasqal_free_dataset(rasqal_dataset* ds) 
-{
-  rasqal_dataset_triple *cur;
+rasqal_free_dataset(rasqal_dataset *ds) {
+    rasqal_dataset_triple *cur;
 
-  if(!ds)
-    return;
+    if (!ds)
+        return;
 
-  cur = ds->head;
-  while(cur) {
-    rasqal_dataset_triple *next = cur->next;
+    cur = ds->head;
+    while (cur) {
+        rasqal_dataset_triple *next = cur->next;
 
-    /* free shared URI literal (if present) */
-    rasqal_triple_set_origin(cur->triple, NULL);
+        /* free shared URI literal (if present) */
+        rasqal_triple_set_origin(cur->triple, NULL);
 
-    rasqal_free_triple(cur->triple);
-    RASQAL_FREE(rasqal_dataset_triple, cur);
-    cur = next;
-  }
+        rasqal_free_triple(cur->triple);
+        RASQAL_FREE(rasqal_dataset_triple, cur);
+        cur = next;
+    }
 
-  if(ds->base_uri_literal)
-    rasqal_free_literal(ds->base_uri_literal);
+    if (ds->base_uri_literal)
+        rasqal_free_literal(ds->base_uri_literal);
 
-  RASQAL_FREE(rasqal_dataset, ds);
+    RASQAL_FREE(rasqal_dataset, ds);
 }
 
 
 static void
 rasqal_dataset_statement_handler(void *user_data,
-                                 raptor_statement *statement)
-{
-  rasqal_dataset* ds;
-  rasqal_dataset_triple *triple;
-  
-  ds = (rasqal_dataset*)user_data;
+                                 raptor_statement *statement) {
+    rasqal_dataset *ds;
+    rasqal_dataset_triple *triple;
 
-  triple = RASQAL_MALLOC(rasqal_dataset_triple*, sizeof(*triple));
-  triple->next = NULL;
-  triple->triple = raptor_statement_as_rasqal_triple(ds->world,
-                                                     statement);
+    ds = (rasqal_dataset *) user_data;
 
-  /* this origin URI literal is shared amongst the triples and
-   * freed only in rasqal_free_dataset()
-   */
-  if(ds->base_uri_literal)
-    rasqal_triple_set_origin(triple->triple, ds->base_uri_literal);
+    triple = RASQAL_MALLOC(rasqal_dataset_triple*, sizeof(*triple));
+    triple->next = NULL;
+    triple->triple = raptor_statement_as_rasqal_triple(ds->world,
+                                                       statement);
 
-  if(ds->tail)
-    ds->tail->next = triple;
-  else
-    ds->head = triple;
+    /* this origin URI literal is shared amongst the triples and
+     * freed only in rasqal_free_dataset()
+     */
+    if (ds->base_uri_literal)
+        rasqal_triple_set_origin(triple->triple, ds->base_uri_literal);
 
-  ds->tail = triple;
+    if (ds->tail)
+        ds->tail->next = triple;
+    else
+        ds->head = triple;
+
+    ds->tail = triple;
 }
 
 
@@ -191,48 +192,47 @@ rasqal_dataset_statement_handler(void *user_data,
  * Return value: non-0 on failure
  */
 int
-rasqal_dataset_load_graph_iostream(rasqal_dataset* ds,
-                                   const char* name,
-                                   raptor_iostream* iostr,
-                                   raptor_uri* base_uri)
-{
-  raptor_parser* parser;
+rasqal_dataset_load_graph_iostream(rasqal_dataset *ds,
+                                   const char *name,
+                                   raptor_iostream *iostr,
+                                   raptor_uri *base_uri) {
+    raptor_parser *parser;
 
-  if(!ds)
-    return 1;
+    if (!ds)
+        return 1;
 
-  if(base_uri) {
-    if(ds->base_uri_literal)
-      rasqal_free_literal(ds->base_uri_literal);
+    if (base_uri) {
+        if (ds->base_uri_literal)
+            rasqal_free_literal(ds->base_uri_literal);
 
-    ds->base_uri_literal = rasqal_new_uri_literal(ds->world,
-                                                  raptor_uri_copy(base_uri));
-  }
-
-  if(name) {
-    if(!raptor_world_is_parser_name(ds->world->raptor_world_ptr, name)) {
-      rasqal_log_error_simple(ds->world, RAPTOR_LOG_LEVEL_ERROR,
-                              /* locator */ NULL,
-                              "Invalid rdf syntax name %s ignored",
-                              name);
-      name = NULL;
+        ds->base_uri_literal = rasqal_new_uri_literal(ds->world,
+                                                      raptor_uri_copy(base_uri));
     }
-  }
 
-  if(!name)
-    name = "guess";
+    if (name) {
+        if (!raptor_world_is_parser_name(ds->world->raptor_world_ptr, name)) {
+            rasqal_log_error_simple(ds->world, RAPTOR_LOG_LEVEL_ERROR,
+                    /* locator */ NULL,
+                                    "Invalid rdf syntax name %s ignored",
+                                    name);
+            name = NULL;
+        }
+    }
 
-  /* parse iostr with parser and base_uri */
-  parser = raptor_new_parser(ds->world->raptor_world_ptr, name);
-  raptor_parser_set_statement_handler(parser, ds,
-                                      rasqal_dataset_statement_handler);
+    if (!name)
+        name = "guess";
 
-  /* parse and store triples */
-  raptor_parser_parse_iostream(parser, iostr, base_uri);
+    /* parse iostr with parser and base_uri */
+    parser = raptor_new_parser(ds->world->raptor_world_ptr, name);
+    raptor_parser_set_statement_handler(parser, ds,
+                                        rasqal_dataset_statement_handler);
 
-  raptor_free_parser(parser);
+    /* parse and store triples */
+    raptor_parser_parse_iostream(parser, iostr, base_uri);
 
-  return 0;
+    raptor_free_parser(parser);
+
+    return 0;
 }
 
 
@@ -248,95 +248,93 @@ rasqal_dataset_load_graph_iostream(rasqal_dataset* ds,
  * Return value: non-0 on failure
  */
 int
-rasqal_dataset_load_graph_uri(rasqal_dataset* ds,
-                              const char* name,
-                              raptor_uri* uri,
-                              raptor_uri* base_uri)
-{
-  raptor_parser* parser;
+rasqal_dataset_load_graph_uri(rasqal_dataset *ds,
+                              const char *name,
+                              raptor_uri *uri,
+                              raptor_uri *base_uri) {
+    raptor_parser *parser;
 
-  if(!ds)
-    return 1;
+    if (!ds)
+        return 1;
 
-  if(base_uri) {
-    if(ds->base_uri_literal)
-      rasqal_free_literal(ds->base_uri_literal);
+    if (base_uri) {
+        if (ds->base_uri_literal)
+            rasqal_free_literal(ds->base_uri_literal);
 
-    ds->base_uri_literal = rasqal_new_uri_literal(ds->world,
-                                                  raptor_uri_copy(base_uri));
-  }
-
-  if(name) {
-    if(!raptor_world_is_parser_name(ds->world->raptor_world_ptr, name)) {
-      rasqal_log_error_simple(ds->world, RAPTOR_LOG_LEVEL_ERROR,
-                              /* locator */ NULL,
-                              "Invalid rdf syntax name %s ignored",
-                              name);
-      name = NULL;
+        ds->base_uri_literal = rasqal_new_uri_literal(ds->world,
+                                                      raptor_uri_copy(base_uri));
     }
-  }
 
-  if(!name)
-    name = "guess";
+    if (name) {
+        if (!raptor_world_is_parser_name(ds->world->raptor_world_ptr, name)) {
+            rasqal_log_error_simple(ds->world, RAPTOR_LOG_LEVEL_ERROR,
+                    /* locator */ NULL,
+                                    "Invalid rdf syntax name %s ignored",
+                                    name);
+            name = NULL;
+        }
+    }
 
-  /* parse iostr with parser and base_uri */
-  parser = raptor_new_parser(ds->world->raptor_world_ptr, name);
-  raptor_parser_set_statement_handler(parser, ds,
-                                      rasqal_dataset_statement_handler);
+    if (!name)
+        name = "guess";
 
-  /* parse and store triples */
-  raptor_parser_parse_uri(parser, uri, base_uri);
+    /* parse iostr with parser and base_uri */
+    parser = raptor_new_parser(ds->world->raptor_world_ptr, name);
+    raptor_parser_set_statement_handler(parser, ds,
+                                        rasqal_dataset_statement_handler);
 
-  raptor_free_parser(parser);
+    /* parse and store triples */
+    raptor_parser_parse_uri(parser, uri, base_uri);
 
-  return 0;
+    raptor_free_parser(parser);
+
+    return 0;
 }
 
 
-static rasqal_dataset_term_iterator*
-rasqal_dataset_init_match_internal(rasqal_dataset* ds,
-                                   rasqal_literal* subject,
-                                   rasqal_literal* predicate,
-                                   rasqal_literal* object)
-{
-  rasqal_dataset_term_iterator* iter;
+static rasqal_dataset_term_iterator *
+rasqal_dataset_init_match_internal(rasqal_dataset *ds,
+                                   rasqal_literal *subject,
+                                   rasqal_literal *predicate,
+                                   rasqal_literal *object) {
+    rasqal_dataset_term_iterator *iter;
 
-  if(!ds)
-    return NULL;
-  
-  iter = RASQAL_CALLOC(rasqal_dataset_term_iterator*, 1, sizeof(*iter));
+    if (!ds)
+        return NULL;
 
-  if(!iter)
-    return NULL;
+    iter = RASQAL_CALLOC(rasqal_dataset_term_iterator*, 1, sizeof(*iter));
 
-  iter->dataset = ds;
-  
-  iter->match.subject = subject;
-  iter->match.predicate = predicate;
-  iter->match.object = object;
+    if (!iter)
+        return NULL;
 
-  iter->cursor = NULL;
+    iter->dataset = ds;
 
-  if(!subject)
-    iter->want = RASQAL_TRIPLE_SUBJECT;
-  else if(!object)
-    iter->want = RASQAL_TRIPLE_OBJECT;
-  else if (!predicate)
-    iter->want = RASQAL_TRIPLE_PREDICATE;
-  else
-    iter->want = RASQAL_GOOD_CAST(rasqal_triple_parts, 0);
+    iter->match.subject = subject;
+    iter->match.predicate = predicate;
+    iter->match.object = object;
 
-  iter->parts = RASQAL_GOOD_CAST(unsigned int, RASQAL_TRIPLE_SPO) ^ iter->want;
+    iter->cursor = NULL;
 
-  if(ds->base_uri_literal)
-    iter->parts |= RASQAL_TRIPLE_ORIGIN;
-  
-  if(rasqal_dataset_term_iterator_next(iter)) {
-    rasqal_free_dataset_term_iterator(iter);
-    return NULL;
-  }
-  
-  return iter;
+    if (!subject)
+        iter->want = RASQAL_TRIPLE_SUBJECT;
+    else if (!object)
+        iter->want = RASQAL_TRIPLE_OBJECT;
+    else if (!predicate)
+        iter->want = RASQAL_TRIPLE_PREDICATE;
+    else
+        iter->want = RASQAL_GOOD_CAST(rasqal_triple_parts, 0);
+
+    iter->parts = RASQAL_GOOD_CAST(unsigned int, RASQAL_TRIPLE_SPO) ^ iter->want;
+
+    if (ds->base_uri_literal)
+        iter->parts |= RASQAL_TRIPLE_ORIGIN;
+
+    if (rasqal_dataset_term_iterator_next(iter)) {
+        rasqal_free_dataset_term_iterator(iter);
+        return NULL;
+    }
+
+    return iter;
 }
 
 
@@ -347,12 +345,11 @@ rasqal_dataset_init_match_internal(rasqal_dataset* ds,
  * INTERNAL - Destructor - destroy a dataset term iterator
  */
 void
-rasqal_free_dataset_term_iterator(rasqal_dataset_term_iterator* iter)
-{
-  if(!iter)
-    return;
-  
-  RASQAL_FREE(rasqal_dataset_term_iterator, iter);
+rasqal_free_dataset_term_iterator(rasqal_dataset_term_iterator *iter) {
+    if (!iter)
+        return;
+
+    RASQAL_FREE(rasqal_dataset_term_iterator, iter);
 }
 
 
@@ -364,21 +361,20 @@ rasqal_free_dataset_term_iterator(rasqal_dataset_term_iterator* iter)
  *
  * Return value: literal or NULL on failure / iterator is exhausted
  */
-rasqal_literal*
-rasqal_dataset_term_iterator_get(rasqal_dataset_term_iterator* iter)
-{
-  if(!iter)
-    return NULL;
-  
-  if(!iter->cursor)
-    return NULL;
+rasqal_literal *
+rasqal_dataset_term_iterator_get(rasqal_dataset_term_iterator *iter) {
+    if (!iter)
+        return NULL;
 
-  if(iter->want == RASQAL_TRIPLE_SUBJECT)
-    return iter->cursor->triple->subject;
-  else if(iter->want == RASQAL_TRIPLE_PREDICATE)
-    return iter->cursor->triple->predicate;
-  else
-    return iter->cursor->triple->object;
+    if (!iter->cursor)
+        return NULL;
+
+    if (iter->want == RASQAL_TRIPLE_SUBJECT)
+        return iter->cursor->triple->subject;
+    else if (iter->want == RASQAL_TRIPLE_PREDICATE)
+        return iter->cursor->triple->predicate;
+    else
+        return iter->cursor->triple->object;
 }
 
 
@@ -391,36 +387,33 @@ rasqal_dataset_term_iterator_get(rasqal_dataset_term_iterator* iter)
  * Return value: non-0 on error or if the iterator is exhausted
  */
 int
-rasqal_dataset_term_iterator_next(rasqal_dataset_term_iterator* iter)
-{
-  if(!iter)
-    return 1;
-  
-  while(1) { 
-    if(iter->cursor)
-      iter->cursor = iter->cursor->next;
-    else
-      iter->cursor = iter->dataset->head;
-    
-    if(!iter->cursor)
-      break;
-    
+rasqal_dataset_term_iterator_next(rasqal_dataset_term_iterator *iter) {
+    if (!iter)
+        return 1;
+
+    while (1) {
+        if (iter->cursor)
+            iter->cursor = iter->cursor->next;
+        else
+            iter->cursor = iter->dataset->head;
+
+        if (!iter->cursor)
+            break;
+
 #if defined(RASQAL_DEBUG) && RASQAL_DEBUG > 2
-    RASQAL_DEBUG1("Matching against triple: ");
-    rasqal_triple_print(iter->cursor->triple, DEBUG_FH);
-    fputc('\n', DEBUG_FH);
+        RASQAL_DEBUG1("Matching against triple: ");
+        rasqal_triple_print(iter->cursor->triple, DEBUG_FH);
+        fputc('\n', DEBUG_FH);
 #endif
 
-    if(rasqal_raptor_triple_match(iter->dataset->world,
-                                  iter->cursor->triple, &iter->match,
-                                  iter->parts))
-      return 0;
-  }
-  
-  return 1;
+        if (rasqal_raptor_triple_match(iter->dataset->world,
+                                       iter->cursor->triple, &iter->match,
+                                       iter->parts))
+            return 0;
+    }
+
+    return 1;
 }
-
-
 
 
 /*
@@ -433,18 +426,17 @@ rasqal_dataset_term_iterator_next(rasqal_dataset_term_iterator* iter)
  *
  * Return value: iterator or NULL on error or failure
  */
-rasqal_dataset_triples_iterator*
-rasqal_dataset_get_triples_iterator(rasqal_dataset* ds)
-{
-  rasqal_dataset_triples_iterator* ti;
+rasqal_dataset_triples_iterator *
+rasqal_dataset_get_triples_iterator(rasqal_dataset *ds) {
+    rasqal_dataset_triples_iterator *ti;
 
-  ti = RASQAL_CALLOC(rasqal_dataset_triples_iterator*, 1, sizeof(*ti));
-  if(!ti)
-    return NULL;
+    ti = RASQAL_CALLOC(rasqal_dataset_triples_iterator*, 1, sizeof(*ti));
+    if (!ti)
+        return NULL;
 
-  ti->cursor = ds->head;
-  
-  return ti;
+    ti->cursor = ds->head;
+
+    return ti;
 }
 
 
@@ -455,12 +447,11 @@ rasqal_dataset_get_triples_iterator(rasqal_dataset* ds)
  * INTERNAL - Destructor - destroy a dataset triples iterator
  */
 void
-rasqal_free_dataset_triples_iterator(rasqal_dataset_triples_iterator* ti)
-{
-  if(!ti)
-    return;
-  
-  RASQAL_FREE(rasqal_dataset_triples_iterator, ti);
+rasqal_free_dataset_triples_iterator(rasqal_dataset_triples_iterator *ti) {
+    if (!ti)
+        return;
+
+    RASQAL_FREE(rasqal_dataset_triples_iterator, ti);
 }
 
 
@@ -472,10 +463,9 @@ rasqal_free_dataset_triples_iterator(rasqal_dataset_triples_iterator* ti)
  *
  * Return value: triple or NULL on end of list
  */
-rasqal_triple*
-rasqal_dataset_triples_iterator_get(rasqal_dataset_triples_iterator* ti)
-{
-  return ti->cursor ? ti->cursor->triple : NULL;
+rasqal_triple *
+rasqal_dataset_triples_iterator_get(rasqal_dataset_triples_iterator *ti) {
+    return ti->cursor ? ti->cursor->triple : NULL;
 }
 
 
@@ -488,10 +478,9 @@ rasqal_dataset_triples_iterator_get(rasqal_dataset_triples_iterator* ti)
  * Return value: non-0 if done
  */
 int
-rasqal_dataset_triples_iterator_next(rasqal_dataset_triples_iterator* ti)
-{
-  ti->cursor = ti->cursor->next;
-  return (ti->cursor == NULL);
+rasqal_dataset_triples_iterator_next(rasqal_dataset_triples_iterator *ti) {
+    ti->cursor = ti->cursor->next;
+    return (ti->cursor == NULL);
 }
 
 
@@ -505,15 +494,14 @@ rasqal_dataset_triples_iterator_next(rasqal_dataset_triples_iterator* ti)
  *
  * Return value: iterator or NULL on error or failure
  */
-rasqal_dataset_term_iterator*
-rasqal_dataset_get_sources_iterator(rasqal_dataset* ds,
-                                    rasqal_literal* predicate,
-                                    rasqal_literal* object)
-{
-  if(!predicate || !object)
-    return NULL;
-  
-  return rasqal_dataset_init_match_internal(ds, NULL, predicate, object);
+rasqal_dataset_term_iterator *
+rasqal_dataset_get_sources_iterator(rasqal_dataset *ds,
+                                    rasqal_literal *predicate,
+                                    rasqal_literal *object) {
+    if (!predicate || !object)
+        return NULL;
+
+    return rasqal_dataset_init_match_internal(ds, NULL, predicate, object);
 }
 
 
@@ -527,15 +515,14 @@ rasqal_dataset_get_sources_iterator(rasqal_dataset* ds,
  *
  * Return value: iterator or NULL on error or failure
  */
-rasqal_dataset_term_iterator*
-rasqal_dataset_get_targets_iterator(rasqal_dataset* ds,
-                                    rasqal_literal* subject,
-                                    rasqal_literal* predicate)
-{
-  if(!subject || !predicate)
-    return NULL;
-  
-  return rasqal_dataset_init_match_internal(ds, subject, predicate, NULL);
+rasqal_dataset_term_iterator *
+rasqal_dataset_get_targets_iterator(rasqal_dataset *ds,
+                                    rasqal_literal *subject,
+                                    rasqal_literal *predicate) {
+    if (!subject || !predicate)
+        return NULL;
+
+    return rasqal_dataset_init_match_internal(ds, subject, predicate, NULL);
 }
 
 
@@ -549,23 +536,22 @@ rasqal_dataset_get_targets_iterator(rasqal_dataset* ds,
  *
  * Return value: iterator or NULL on error or failure
  */
-rasqal_literal*
-rasqal_dataset_get_source(rasqal_dataset* ds,
-                          rasqal_literal* predicate,
-                          rasqal_literal* object)
-{
-  rasqal_literal *literal;
-  
-  rasqal_dataset_term_iterator* iter;
-  
-  iter = rasqal_dataset_get_sources_iterator(ds, predicate, object);
-  if(!iter)
-    return NULL;
+rasqal_literal *
+rasqal_dataset_get_source(rasqal_dataset *ds,
+                          rasqal_literal *predicate,
+                          rasqal_literal *object) {
+    rasqal_literal *literal;
 
-  literal = rasqal_dataset_term_iterator_get(iter);
+    rasqal_dataset_term_iterator *iter;
 
-  rasqal_free_dataset_term_iterator(iter);
-  return literal;
+    iter = rasqal_dataset_get_sources_iterator(ds, predicate, object);
+    if (!iter)
+        return NULL;
+
+    literal = rasqal_dataset_term_iterator_get(iter);
+
+    rasqal_free_dataset_term_iterator(iter);
+    return literal;
 }
 
 
@@ -579,23 +565,22 @@ rasqal_dataset_get_source(rasqal_dataset* ds,
  *
  * Return value: iterator or NULL on error or failure
  */
-rasqal_literal*
-rasqal_dataset_get_target(rasqal_dataset* ds,
-                          rasqal_literal* subject,
-                          rasqal_literal* predicate)
-{
-  rasqal_literal *literal;
-  
-  rasqal_dataset_term_iterator* iter;
-  
-  iter = rasqal_dataset_get_targets_iterator(ds, subject, predicate);
-  if(!iter)
-    return NULL;
+rasqal_literal *
+rasqal_dataset_get_target(rasqal_dataset *ds,
+                          rasqal_literal *subject,
+                          rasqal_literal *predicate) {
+    rasqal_literal *literal;
 
-  literal = rasqal_dataset_term_iterator_get(iter);
+    rasqal_dataset_term_iterator *iter;
 
-  rasqal_free_dataset_term_iterator(iter);
-  return literal;
+    iter = rasqal_dataset_get_targets_iterator(ds, subject, predicate);
+    if (!iter)
+        return NULL;
+
+    literal = rasqal_dataset_term_iterator_get(iter);
+
+    rasqal_free_dataset_term_iterator(iter);
+    return literal;
 }
 
 
@@ -611,26 +596,25 @@ rasqal_dataset_get_target(rasqal_dataset* ds,
  * Return value: non-0 on failure
  **/
 int
-rasqal_dataset_print(rasqal_dataset* ds, FILE *fh)
-{
-  rasqal_dataset_triples_iterator* ti;
+rasqal_dataset_print(rasqal_dataset *ds, FILE *fh) {
+    rasqal_dataset_triples_iterator *ti;
 
-  ti = rasqal_dataset_get_triples_iterator(ds);
-  while(1) {
-    rasqal_triple* triple;
+    ti = rasqal_dataset_get_triples_iterator(ds);
+    while (1) {
+        rasqal_triple *triple;
 
-    triple = rasqal_dataset_triples_iterator_get(ti);
-    if(!triple)
-      break;
+        triple = rasqal_dataset_triples_iterator_get(ti);
+        if (!triple)
+            break;
 
-    fputs("_Triple ", fh);
-    rasqal_triple_print(triple, fh);
-    fputc('\n', fh);
+        fputs("_Triple ", fh);
+        rasqal_triple_print(triple, fh);
+        fputc('\n', fh);
 
-    if(rasqal_dataset_triples_iterator_next(ti))
-      break;
-  }
-  rasqal_free_dataset_triples_iterator(ti);
+        if (rasqal_dataset_triples_iterator_next(ti))
+            break;
+    }
+    rasqal_free_dataset_triples_iterator(ti);
 
-  return 0;
+    return 0;
 }

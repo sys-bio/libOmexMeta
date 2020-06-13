@@ -47,38 +47,39 @@ or obtained by writing to the Free Software Foundation, Inc.,
      return -1;
 */
 #if !defined HAVE_STRLCAT
+
 size_t
-lt_strlcat(char *dst, const char *src, const size_t dstsize)
-{
-  size_t length;
-  char *p;
-  const char *q;
+lt_strlcat(char *dst, const char *src, const size_t dstsize) {
+    size_t length;
+    char *p;
+    const char *q;
 
-  assert(dst != NULL);
-  assert(src != (const char *) NULL);
-  assert(dstsize >= 1);
+    assert(dst != NULL);
+    assert(src != (const char *) NULL);
+    assert(dstsize >= 1);
 
-  length=strlen(dst);
+    length = strlen(dst);
 
-  /*
-    Copy remaining characters from src while constraining length to
-    size - 1.
-  */
-  for ( p = dst + length, q = src;
-        (*q != 0) && (length < dstsize - 1);
-        length++, p++, q++ )
-    *p = *q;
+    /*
+      Copy remaining characters from src while constraining length to
+      size - 1.
+    */
+    for (p = dst + length, q = src;
+         (*q != 0) && (length < dstsize - 1);
+         length++, p++, q++)
+        *p = *q;
 
-  dst[length]='\0';
+    dst[length] = '\0';
 
-  /*
-    Add remaining length of src to length.
-  */
-  while (*q++)
-    length++;
+    /*
+      Add remaining length of src to length.
+    */
+    while (*q++)
+        length++;
 
-  return length;
+    return length;
 }
+
 #endif /* !defined HAVE_STRLCAT */
 
 /*
@@ -95,33 +96,34 @@ lt_strlcat(char *dst, const char *src, const size_t dstsize)
       return -1;
 */
 #if !defined HAVE_STRLCPY
+
 size_t
-lt_strlcpy(char *dst, const char *src, const size_t dstsize)
-{
-  size_t length=0;
-  char *p;
-  const char *q;
+lt_strlcpy(char *dst, const char *src, const size_t dstsize) {
+    size_t length = 0;
+    char *p;
+    const char *q;
 
-  assert(dst != NULL);
-  assert(src != (const char *) NULL);
-  assert(dstsize >= 1);
+    assert(dst != NULL);
+    assert(src != (const char *) NULL);
+    assert(dstsize >= 1);
 
-  /*
-    Copy src to dst within bounds of size-1.
-  */
-  for ( p=dst, q=src, length=0;
-        (*q != 0) && (length < dstsize-1);
-        length++, p++, q++ )
-    *p = *q;
+    /*
+      Copy src to dst within bounds of size-1.
+    */
+    for (p = dst, q = src, length = 0;
+         (*q != 0) && (length < dstsize - 1);
+         length++, p++, q++)
+        *p = *q;
 
-  dst[length]='\0';
+    dst[length] = '\0';
 
-  /*
-    Add remaining length of src to length.
-  */
-  while (*q++)
-    length++;
+    /*
+      Add remaining length of src to length.
+    */
+    while (*q++)
+        length++;
 
-  return length;
+    return length;
 }
+
 #endif /* !defined HAVE_STRLCPY */

@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -33,8 +35,11 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
 
 #include <redland.h>
@@ -52,8 +57,7 @@
  *
  **/
 void
-librdf_init_statement(librdf_world *world) 
-{
+librdf_init_statement(librdf_world *world) {
 }
 
 
@@ -65,10 +69,8 @@ librdf_init_statement(librdf_world *world)
  *
  **/
 void
-librdf_finish_statement(librdf_world *world) 
-{
+librdf_finish_statement(librdf_world *world) {
 }
-
 
 
 /**
@@ -96,121 +98,120 @@ librdf_finish_statement(librdf_world *world)
  * Return value: the number of bytes written or 0 on failure.
  **/
 size_t
-librdf_statement_encode_parts2(librdf_world* world,
-                               librdf_statement* statement, 
-                               librdf_node* context_node,
+librdf_statement_encode_parts2(librdf_world *world,
+                               librdf_statement *statement,
+                               librdf_node *context_node,
                                unsigned char *buffer, size_t length,
-                               librdf_statement_part fields)
-{
-  size_t total_length=0;
-  size_t node_len;
-  unsigned char *p;
+                               librdf_statement_part fields) {
+    size_t total_length = 0;
+    size_t node_len;
+    unsigned char *p;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 0);
 
-  /* min size */
-  if(buffer && length < 1)
-    return 0;
-
-  p=buffer;
-  /* magic number 'x' */
-  if(p) {
-    *p++='x';
-    length--;
-  }
-  total_length++;
-
-  if((fields & LIBRDF_STATEMENT_SUBJECT) && statement->subject) {
-    /* 's' + subject */
-    if(p) {
-      if(length < 1)
+    /* min size */
+    if (buffer && length < 1)
         return 0;
-      *p++='s';
-      length--;
+
+    p = buffer;
+    /* magic number 'x' */
+    if (p) {
+        *p++ = 'x';
+        length--;
     }
     total_length++;
 
-    node_len=librdf_node_encode(statement->subject, p, length);
-    if(!node_len)
-      return 0;
-    if(p) {
-      p += node_len;
-      length -= node_len;
-    }
-    
-    
-    total_length += node_len;
-  }
-  
-  
-  if((fields & LIBRDF_STATEMENT_PREDICATE) && statement->predicate) {
-    /* 'p' + predicate */
-    if(p) {
-      if(length < 1)
-        return 0;
-      
-      *p++='p';
-      length--;
-    }
-    total_length++;
+    if ((fields & LIBRDF_STATEMENT_SUBJECT) && statement->subject) {
+        /* 's' + subject */
+        if (p) {
+            if (length < 1)
+                return 0;
+            *p++ = 's';
+            length--;
+        }
+        total_length++;
 
-    node_len=librdf_node_encode(statement->predicate, p, length);
-    if(!node_len)
-      return 0;
-    if(p) {
-      p += node_len;
-      length -= node_len;
-    }
-    
-    total_length += node_len;
-  }
-  
-  if((fields & LIBRDF_STATEMENT_OBJECT) && statement->object) {
-    /* 'o' object */
-    if(p) {
-      if(length < 1)
-        return 0;
-      
-      *p++='o';
-      length--;
-    }
-    total_length++;
+        node_len = librdf_node_encode(statement->subject, p, length);
+        if (!node_len)
+            return 0;
+        if (p) {
+            p += node_len;
+            length -= node_len;
+        }
 
-    node_len= librdf_node_encode(statement->object, p, length);
-    if(!node_len)
-      return 0;
-    if(p) {
-      p += node_len;
-      length -= node_len;
+
+        total_length += node_len;
     }
 
-    total_length += node_len;
-  }
 
-  if(context_node) {
-    /* 'o' object */
-    if(p) {
-      *p++='c';
-      length--;
+    if ((fields & LIBRDF_STATEMENT_PREDICATE) && statement->predicate) {
+        /* 'p' + predicate */
+        if (p) {
+            if (length < 1)
+                return 0;
+
+            *p++ = 'p';
+            length--;
+        }
+        total_length++;
+
+        node_len = librdf_node_encode(statement->predicate, p, length);
+        if (!node_len)
+            return 0;
+        if (p) {
+            p += node_len;
+            length -= node_len;
+        }
+
+        total_length += node_len;
     }
-    total_length++;
 
-    node_len= librdf_node_encode(context_node, p, length);
-    if(!node_len)
-      return 0;
+    if ((fields & LIBRDF_STATEMENT_OBJECT) && statement->object) {
+        /* 'o' object */
+        if (p) {
+            if (length < 1)
+                return 0;
 
-    /* p and length changes never needed to be calculated [clang] */
-    /*
-    if(p) {
-      p += node_len;
-      length -= node_len;
+            *p++ = 'o';
+            length--;
+        }
+        total_length++;
+
+        node_len = librdf_node_encode(statement->object, p, length);
+        if (!node_len)
+            return 0;
+        if (p) {
+            p += node_len;
+            length -= node_len;
+        }
+
+        total_length += node_len;
     }
-    */
 
-    total_length += node_len;
-  }
+    if (context_node) {
+        /* 'o' object */
+        if (p) {
+            *p++ = 'c';
+            length--;
+        }
+        total_length++;
 
-  return total_length;
+        node_len = librdf_node_encode(context_node, p, length);
+        if (!node_len)
+            return 0;
+
+        /* p and length changes never needed to be calculated [clang] */
+        /*
+        if(p) {
+          p += node_len;
+          length -= node_len;
+        }
+        */
+
+        total_length += node_len;
+    }
+
+    return total_length;
 }
 
 #endif

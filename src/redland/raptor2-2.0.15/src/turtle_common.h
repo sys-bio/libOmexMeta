@@ -31,50 +31,55 @@ extern "C" {
 
 
 /* turtle_parser.y */
-RAPTOR_INTERNAL_API int turtle_syntax_error(raptor_parser *rdf_parser, const char *message, ...) RAPTOR_PRINTF_FORMAT(2, 3);
-RAPTOR_INTERNAL_API raptor_uri* turtle_qname_to_uri(raptor_parser *rdf_parser, unsigned char *name, size_t name_len);
-RAPTOR_INTERNAL_API size_t raptor_turtle_expand_qname_escapes(unsigned char *name, size_t len, raptor_simple_message_handler error_handler, void *error_data);
+RAPTOR_INTERNAL_API int
+turtle_syntax_error(raptor_parser *rdf_parser, const char *message, ...) RAPTOR_PRINTF_FORMAT(2, 3);
+
+RAPTOR_INTERNAL_API raptor_uri *turtle_qname_to_uri(raptor_parser *rdf_parser, unsigned char *name, size_t name_len);
+
+RAPTOR_INTERNAL_API size_t
+raptor_turtle_expand_qname_escapes(unsigned char *name, size_t len, raptor_simple_message_handler error_handler,
+                                   void *error_data);
 
 /* turtle_lexer.l */
-extern void turtle_token_free(raptor_world* world, int token, YYSTYPE *lval);
+extern void turtle_token_free(raptor_world *world, int token, YYSTYPE *lval);
 
 
 /*
  * Turtle parser object
  */
 struct raptor_turtle_parser_s {
-  /* buffer */
-  char *buffer;
+    /* buffer */
+    char *buffer;
 
-  /* buffer length */
-  size_t buffer_length;
-  
-  /* static statement for use in passing to user code */
-  raptor_statement statement;
+    /* buffer length */
+    size_t buffer_length;
 
-  raptor_namespace_stack namespaces; /* static */
+    /* static statement for use in passing to user code */
+    raptor_statement statement;
 
-  /* for lexer to store result in */
-  YYSTYPE lval;
+    raptor_namespace_stack namespaces; /* static */
 
-  /* STATIC lexer */
-  yyscan_t scanner;
+    /* for lexer to store result in */
+    YYSTYPE lval;
 
-  int scanner_set;
+    /* STATIC lexer */
+    yyscan_t scanner;
 
-  int lineno;
+    int scanner_set;
 
-  /* for creating long literals */
-  raptor_stringbuffer* sb;
+    int lineno;
 
-  /* count of errors in current parse */
-  int error_count;
+    /* for creating long literals */
+    raptor_stringbuffer *sb;
 
-  /* TRIG graph name */
-  raptor_term* graph_name;
+    /* count of errors in current parse */
+    int error_count;
 
-  /* Allow TRIG extensions */
-  int trig;
+    /* TRIG graph name */
+    raptor_term *graph_name;
+
+    /* Allow TRIG extensions */
+    int trig;
 };
 
 

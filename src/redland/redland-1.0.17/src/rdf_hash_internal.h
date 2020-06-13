@@ -31,85 +31,87 @@ extern "C" {
 #endif
 
 /** data type used to describe hash key and data */
-struct librdf_hash_datum_s
-{
-  librdf_world *world;
-  void *data;
-  size_t size;
-  /* used internally to build lists of these  */
-  struct librdf_hash_datum_s *next;
+struct librdf_hash_datum_s {
+    librdf_world *world;
+    void *data;
+    size_t size;
+    /* used internally to build lists of these  */
+    struct librdf_hash_datum_s *next;
 };
 typedef struct librdf_hash_datum_s librdf_hash_datum;
 
 /* constructor / destructor for above */
-librdf_hash_datum* librdf_new_hash_datum(librdf_world *world, void *data, size_t size);
+librdf_hash_datum *librdf_new_hash_datum(librdf_world *world, void *data, size_t size);
 void librdf_free_hash_datum(librdf_hash_datum *ptr);
-  
 
 
 /** A hash object */
-struct librdf_hash_s
-{
-  librdf_world* world;
-  char* identifier; /* as passed in during open(), used by clone() */
-  void* context;
-  int   is_open;
-  struct librdf_hash_factory_s* factory;
+struct librdf_hash_s {
+    librdf_world *world;
+    char *identifier; /* as passed in during open(), used by clone() */
+    void *context;
+    int is_open;
+    struct librdf_hash_factory_s *factory;
 };
 
 
 /** A Hash Factory */
 struct librdf_hash_factory_s {
-  struct librdf_hash_factory_s* next;
-  char* name;
+    struct librdf_hash_factory_s *next;
+    char *name;
 
-  /* the rest of this structure is populated by the
-     hash-specific register function */
-  size_t context_length;
+    /* the rest of this structure is populated by the
+       hash-specific register function */
+    size_t context_length;
 
-  /* size of the cursor context */
-  size_t cursor_context_length;
+    /* size of the cursor context */
+    size_t cursor_context_length;
 
-  /* clone an existing storage */
-  int (*clone)(librdf_hash* new_hash, void* new_context, char* new_name, void* old_context);
+    /* clone an existing storage */
+    int (*clone)(librdf_hash *new_hash, void *new_context, char *new_name, void *old_context);
 
-  /* create / destroy a hash implementation */
-  int (*create)(librdf_hash* hash, void* context);
-  int (*destroy)(void* context);
+    /* create / destroy a hash implementation */
+    int (*create)(librdf_hash *hash, void *context);
 
-  /* open/create hash with identifier and options  */
-  int (*open)(void* context, const char *identifier, int mode, int is_writable, int is_new, librdf_hash* options);
-  /* end hash association */
-  int (*close)(void* context);
+    int (*destroy)(void *context);
 
-  /* hoe many values? */
-  int (*values_count)(void* context);
+    /* open/create hash with identifier and options  */
+    int (*open)(void *context, const char *identifier, int mode, int is_writable, int is_new, librdf_hash *options);
 
-  /* insert key/value pairs according to flags */
-  int (*put)(void* context, librdf_hash_datum *key, librdf_hash_datum *data);
+    /* end hash association */
+    int (*close)(void *context);
 
-  /* returns true if key exists in hash, without returning value */
-  int (*exists)(void* context, librdf_hash_datum *key, librdf_hash_datum *value);
+    /* hoe many values? */
+    int (*values_count)(void *context);
 
-  int (*delete_key)(void* context, librdf_hash_datum *key);
-  int (*delete_key_value)(void* context, librdf_hash_datum *key, librdf_hash_datum *value);
+    /* insert key/value pairs according to flags */
+    int (*put)(void *context, librdf_hash_datum *key, librdf_hash_datum *data);
 
-  /* flush any cached information to disk */
-  int (*sync)(void* context);
+    /* returns true if key exists in hash, without returning value */
+    int (*exists)(void *context, librdf_hash_datum *key, librdf_hash_datum *value);
 
-  /* get the file descriptor for the hash, if it is file based (for locking) */
-  int (*get_fd)(void* context);
+    int (*delete_key)(void *context, librdf_hash_datum *key);
 
-  /* create a cursor and operate on it */
-  int (*cursor_init)(void *cursor_context, void* hash_context);
-  int (*cursor_get)(void *cursor, librdf_hash_datum *key, librdf_hash_datum *value, unsigned int flags);
-  void (*cursor_finish)(void *context);
+    int (*delete_key_value)(void *context, librdf_hash_datum *key, librdf_hash_datum *value);
+
+    /* flush any cached information to disk */
+    int (*sync)(void *context);
+
+    /* get the file descriptor for the hash, if it is file based (for locking) */
+    int (*get_fd)(void *context);
+
+    /* create a cursor and operate on it */
+    int (*cursor_init)(void *cursor_context, void *hash_context);
+
+    int (*cursor_get)(void *cursor, librdf_hash_datum *key, librdf_hash_datum *value, unsigned int flags);
+
+    void (*cursor_finish)(void *context);
 };
 typedef struct librdf_hash_factory_s librdf_hash_factory;
 
 /* factory class methods */
-void librdf_hash_register_factory(librdf_world *world, const char *name, void (*factory) (librdf_hash_factory*));
-librdf_hash_factory* librdf_get_hash_factory(librdf_world *world, const char *name);
+void librdf_hash_register_factory(librdf_world *world, const char *name, void (*factory)(librdf_hash_factory *));
+librdf_hash_factory *librdf_get_hash_factory(librdf_world *world, const char *name);
 
 
 /* module init */
@@ -126,49 +128,50 @@ void librdf_finish_hash(librdf_world *world);
 
 
 /* constructors */
-librdf_hash* librdf_new_hash_from_factory(librdf_world *world, librdf_hash_factory* factory);
+librdf_hash *librdf_new_hash_from_factory(librdf_world *world, librdf_hash_factory *factory);
 
 /* methods */
 
 /* open/create hash with identifier and options  */
-int librdf_hash_open(librdf_hash* hash, const char *identifier, int mode, int is_writable, int is_new, librdf_hash* options);
+int librdf_hash_open(librdf_hash *hash, const char *identifier, int mode, int is_writable, int is_new,
+                     librdf_hash *options);
 /* end hash association */
-int librdf_hash_close(librdf_hash* hash);
+int librdf_hash_close(librdf_hash *hash);
 
 /* how many values */
-int librdf_hash_values_count(librdf_hash* hash);
+int librdf_hash_values_count(librdf_hash *hash);
 
 /* retrieve one value for a given hash key as a hash datum */
-librdf_hash_datum* librdf_hash_get_one(librdf_hash* hash, librdf_hash_datum *key);
+librdf_hash_datum *librdf_hash_get_one(librdf_hash *hash, librdf_hash_datum *key);
 
 /* retrieve all values for a given hash key according to flags */
-librdf_iterator* librdf_hash_get_all(librdf_hash* hash, librdf_hash_datum *key, librdf_hash_datum *value);
+librdf_iterator *librdf_hash_get_all(librdf_hash *hash, librdf_hash_datum *key, librdf_hash_datum *value);
 
 /* insert a key/value pair */
-int librdf_hash_put(librdf_hash* hash, librdf_hash_datum *key, librdf_hash_datum *value);
+int librdf_hash_put(librdf_hash *hash, librdf_hash_datum *key, librdf_hash_datum *value);
 
-  /* returns true if key exists in hash, without returning value */
-int librdf_hash_exists(librdf_hash* hash, librdf_hash_datum *key, librdf_hash_datum *value);
+/* returns true if key exists in hash, without returning value */
+int librdf_hash_exists(librdf_hash *hash, librdf_hash_datum *key, librdf_hash_datum *value);
 
-int librdf_hash_delete(librdf_hash* hash, librdf_hash_datum *key, librdf_hash_datum *value);
-int librdf_hash_delete_all(librdf_hash* hash, librdf_hash_datum *key);
-librdf_iterator* librdf_hash_keys(librdf_hash* hash, librdf_hash_datum *key);
+int librdf_hash_delete(librdf_hash *hash, librdf_hash_datum *key, librdf_hash_datum *value);
+int librdf_hash_delete_all(librdf_hash *hash, librdf_hash_datum *key);
+librdf_iterator *librdf_hash_keys(librdf_hash *hash, librdf_hash_datum *key);
 
 /* flush any cached information to disk */
-int librdf_hash_sync(librdf_hash* hash);
+int librdf_hash_sync(librdf_hash *hash);
 /* get the file descriptor for the hash, if it is file based (for locking) */
-int librdf_hash_get_fd(librdf_hash* hash);
+int librdf_hash_get_fd(librdf_hash *hash);
 
 /* init a hash from an array of strings */
-int librdf_hash_from_array_of_strings(librdf_hash* hash, const char *array[]);
+int librdf_hash_from_array_of_strings(librdf_hash *hash, const char *array[]);
 
 
 /* cursor methods from rdf_hash_cursor.c */
 
-librdf_hash_cursor* librdf_new_hash_cursor (librdf_hash* hash);
-void librdf_free_hash_cursor (librdf_hash_cursor* cursor);
-int librdf_hash_cursor_set(librdf_hash_cursor *cursor, librdf_hash_datum *key,librdf_hash_datum *value);
-int librdf_hash_cursor_get_next_value(librdf_hash_cursor *cursor, librdf_hash_datum *key,librdf_hash_datum *value);
+librdf_hash_cursor *librdf_new_hash_cursor(librdf_hash *hash);
+void librdf_free_hash_cursor(librdf_hash_cursor *cursor);
+int librdf_hash_cursor_set(librdf_hash_cursor *cursor, librdf_hash_datum *key, librdf_hash_datum *value);
+int librdf_hash_cursor_get_next_value(librdf_hash_cursor *cursor, librdf_hash_datum *key, librdf_hash_datum *value);
 int librdf_hash_cursor_get_first(librdf_hash_cursor *cursor, librdf_hash_datum *key, librdf_hash_datum *value);
 int librdf_hash_cursor_get_next(librdf_hash_cursor *cursor, librdf_hash_datum *key, librdf_hash_datum *value);
 

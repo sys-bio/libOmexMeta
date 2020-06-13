@@ -21,13 +21,14 @@ public:
     LibrdfStorage storage;
     LibrdfModel model;
 
-    PhysicalPropertyResource physical_property;
+    PhysicalProperty physical_property;
 
     PhysicalProcessTests() {
         model = LibrdfModel(storage.get());
 
-        physical_property = PhysicalPropertyResource("OPB:OPB_00340");
+        physical_property = PhysicalProperty("metaid", "OPB:OPB_00340");
     };
+
     ~PhysicalProcessTests() override {
         model.freeModel();
         storage.freeStorage();
@@ -62,19 +63,18 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
 
     PhysicalProcess process(
             model.get(),
-            subject_metaid,
             physical_property,
             source_participants,
             sink_participants,
             mediator_participants
     );
 
-    std::string actual = process.getSubject().str();
-    std::string expected = "MetaId004";
+    std::string actual = process.getSubjectStr();
+    std::string expected = "metaid";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // Without Triple we need to free stuff manually
-    physical_property.free();
+    //physical_property.free();
     subject_metaid.free();
     source_participants[0].free();
     sink_participants[0].free();
@@ -83,7 +83,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
 
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
-    Subject subject_metaid = Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get());
     std::vector<SourceParticipant> source_participants(
             {SourceParticipant(
                     model.get(),
@@ -110,7 +109,6 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
 
     PhysicalProcess process(
             model.get(),
-            subject_metaid,
             physical_property,
             source_participants,
             sink_participants,
@@ -122,19 +120,16 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // Without Triple we need to free stuff manually
-    physical_property.free();
-    subject_metaid.free();
+    //physical_property.free();
     source_participants[0].free();
     sink_participants[0].free();
     mediator_participants[0].free();
 }
 
 
-
 TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
     PhysicalProcess process(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
@@ -168,13 +163,14 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
     int expected = 10;
     int actual = triples.size();
     ASSERT_EQ(expected, actual);
+    triples.freeTriples();
+
 }
 
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
     PhysicalProcess process(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("MetaId004").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
@@ -207,12 +203,12 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
     int expected = 10;
     int actual = triples.size();
     ASSERT_EQ(expected, actual);
+    triples.freeTriples();
 }
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
     PhysicalProcess process(
             model.get(),
-            Subject::fromRawPtr(LibrdfNode::fromUriString("VLV").get()),
             physical_property,
             std::vector<SourceParticipant>(
                     {SourceParticipant(
@@ -267,18 +263,18 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"VLV\">\n"
+                           "  <rdf:Description rdf:about=\"metaid\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
 }
 
 TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
     PhysicalProcess process(model.get());
-    process.setAbout("property_metaid_0")
-            .setPhysicalProperty("opb/OPB_00592")
+    process.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource("source_0", 1.0, "species_metaid0")
             .addSource("source_1", 2.0, "species_metaid1")
             .addSink("sink_0", 1.0, "species_metaid2")
@@ -323,5 +319,65 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 
     // remember to free the unused physical property from test fixture
-    physical_property.free();
+    //physical_property.free();
+    triples.freeTriples();
 }
+
+TEST_F(PhysicalProcessTests, TestEquality) {
+    PhysicalProcess process1(model.get());
+    process1.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2")
+            .addMediator("mediator_0", 1.0, "species_metaid2");
+
+    PhysicalProcess process2(model.get());
+    process2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2")
+            .addMediator("mediator_0", 1.0, "species_metaid2");
+    ASSERT_EQ(process1, process2);
+    process1.free();
+    process2.free();
+}
+
+TEST_F(PhysicalProcessTests, TestInequality) {
+    PhysicalProcess process1(model.get());
+    process1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2")
+            .addMediator("mediator_0", 1.0, "species_metaid2");
+
+    PhysicalProcess process2(model.get());
+    process2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2")
+            .addMediator("mediator_0", 1.0, "species_metaid2");
+    ASSERT_NE(process1, process2);
+
+    process1.free();
+    process2.free();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

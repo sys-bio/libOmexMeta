@@ -66,6 +66,10 @@ namespace semsim {
         Predicate(const std::string &namespace_,
                   std::string term, std::string prefix);
 
+        bool operator==(const Predicate &rhs) const;
+
+        bool operator!=(const Predicate &rhs) const;
+
         /*
          * @brief get the predicate as a full string
          * @return a string representing the predicate
@@ -162,6 +166,12 @@ namespace semsim {
          */
         void setNode(librdf_node *node);
 
+        /*
+         * @brief make a shared pointer from this Predicate
+         *
+         */
+//        std::shared_ptr<Predicate> makeShared();
+
     };
 
     /*
@@ -202,6 +212,9 @@ namespace semsim {
         explicit BiomodelsBiologyQualifier(const std::string &term);
 
         void verify();
+
+//        std::shared_ptr<BiomodelsBiologyQualifier> makeShared();
+
     };
 
     /*
@@ -233,6 +246,9 @@ namespace semsim {
         explicit BiomodelsModelQualifier(const std::string &term);
 
         void verify();
+
+//        std::shared_ptr<BiomodelsModelQualifier> makeShared();
+
     };
 
     /*
@@ -261,6 +277,9 @@ namespace semsim {
         explicit DCTerm(const std::string &term);
 
         void verify();
+
+//        std::shared_ptr<DCTerm> makeShared() ;
+
     };
 
     /*
@@ -293,6 +312,9 @@ namespace semsim {
         explicit SemSim(const std::string &term);
 
         void verify();
+
+//        std::shared_ptr<SemSim> makeShared() ;
+
     };
 
     typedef std::shared_ptr<Predicate> PredicatePtr;

@@ -52,9 +52,9 @@ namespace redland {
         return literal_datatype_;
     }
 
-    LibrdfNode
-    LibrdfNode::fromLiteral(const std::string &literal, const std::string &literal_datatype_uri,
-                            const std::string &xml_language) {
+    LibrdfNode LibrdfNode::fromLiteral(
+            const std::string &literal, const std::string &literal_datatype_uri,
+            const std::string &xml_language) {
         std::string literal_datatype_ = validateLiteralDatatype(literal_datatype_uri);
         const char *xml_language_;
         if (xml_language.empty()) {
@@ -73,6 +73,9 @@ namespace redland {
         return LibrdfNode(n);
     }
 
+    LibrdfNode LibrdfNode::newEmptyNode() {
+        return LibrdfNode(librdf_new_node(World::getWorld()));
+    }
 
     /*
      * Retrive a value from a librdf_node object,
@@ -156,16 +159,16 @@ namespace redland {
 
         // collect data fields that we wont change before free existing node
         bool language_is_null = false;
-        if (node_->value.literal.language == nullptr){
+        if (node_->value.literal.language == nullptr) {
             language_is_null = true;
         }
-        unsigned char* language_used = nullptr;
-        if (!language_is_null){
+        unsigned char *language_used = nullptr;
+        if (!language_is_null) {
             // use std::string to make a copy
-            std::string language = (const char*)node_->value.literal.language;
-            language_used = (unsigned char*)language.c_str();
+            std::string language = (const char *) node_->value.literal.language;
+            language_used = (unsigned char *) language.c_str();
         }
-        std::string value = (const char*)node_->value.literal.string;
+        std::string value = (const char *) node_->value.literal.string;
 
         // free existing node
         if (node_ != nullptr) {
@@ -176,8 +179,8 @@ namespace redland {
         // reset node with node information
         node_ = librdf_new_node_from_typed_literal(
                 World::getWorld(),
-                (const unsigned char*)value.c_str(),
-                (const char*)language_used,
+                (const unsigned char *) value.c_str(),
+                (const char *) language_used,
                 librdf_new_uri(World::getWorld(), (unsigned char *) literal_datatype_.c_str()));
     }
 
@@ -206,7 +209,7 @@ namespace redland {
         LibrdfNode::freeNode(node_);
     }
 
-    std::string LibrdfNode::str() {
+    std::string LibrdfNode::str() const{
         return LibrdfNode::str(node_);
     }
 
@@ -233,6 +236,14 @@ namespace redland {
             }
         }
         return *this;
+    }
+
+    bool LibrdfNode::operator==(const LibrdfNode &rhs) const {
+        librdf_node_equals(node_, rhs.node_);
+    }
+
+    bool LibrdfNode::operator!=(const LibrdfNode &rhs) const {
+        return !(rhs == *this);
     }
 
 }

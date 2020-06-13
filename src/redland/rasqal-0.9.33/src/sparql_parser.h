@@ -43,8 +43,7 @@ extern int sparql_parser_debug;
 /* Token type.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
-  enum yytokentype
-  {
+enum yytokentype {
     SELECT = 258,
     FROM = 259,
     WHERE = 260,
@@ -187,37 +186,36 @@ extern int sparql_parser_debug;
     QNAME_LITERAL_BRACE = 397,
     BLANK_LITERAL = 398,
     IDENTIFIER = 399
-  };
+};
 #endif
 
 /* Value type.  */
-#if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
+#if !defined YYSTYPE && !defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE YYSTYPE;
-union YYSTYPE
-{
+union YYSTYPE {
 #line 196 "./sparql_parser.y" /* yacc.c:1909  */
 
-  raptor_sequence *seq;
-  rasqal_variable *variable;
-  rasqal_literal *literal;
-  rasqal_triple *triple;
-  rasqal_expression *expr;
-  rasqal_graph_pattern *graph_pattern;
-  double floating;
-  raptor_uri *uri;
-  unsigned char *name;
-  rasqal_formula *formula;
-  rasqal_update_operation *update;
-  unsigned int uinteger;
-  rasqal_data_graph* data_graph;
-  rasqal_row* row;
-  rasqal_solution_modifier* modifier;
-  int limit_offset[2];
-  int integer;
-  rasqal_projection* projection;
-  rasqal_bindings* bindings;
-  sparql_uri_applies* uri_applies;
-  sparql_op_expr* op_expr;
+    raptor_sequence *seq;
+    rasqal_variable *variable;
+    rasqal_literal *literal;
+    rasqal_triple *triple;
+    rasqal_expression *expr;
+    rasqal_graph_pattern *graph_pattern;
+    double floating;
+    raptor_uri *uri;
+    unsigned char *name;
+    rasqal_formula *formula;
+    rasqal_update_operation *update;
+    unsigned int uinteger;
+    rasqal_data_graph *data_graph;
+    rasqal_row *row;
+    rasqal_solution_modifier *modifier;
+    int limit_offset[2];
+    int integer;
+    rasqal_projection *projection;
+    rasqal_bindings *bindings;
+    sparql_uri_applies *uri_applies;
+    sparql_op_expr *op_expr;
 
 #line 223 "sparql_parser.tab.h" /* yacc.c:1909  */
 };
@@ -226,7 +224,6 @@ union YYSTYPE
 #endif
 
 
-
-int sparql_parser_parse (rasqal_query* rq, void* yyscanner);
+int sparql_parser_parse(rasqal_query *rq, void *yyscanner);
 
 #endif /* !YY_SPARQL_PARSER_SPARQL_PARSER_TAB_H_INCLUDED  */

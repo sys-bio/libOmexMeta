@@ -22,7 +22,9 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -32,9 +34,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
+
 #include <stdarg.h>
 
 #include "rasqal.h"
@@ -52,26 +58,25 @@
  * 
  * Return value: a new #rasqal_prefix or NULL on failure.
  **/
-rasqal_prefix*
-rasqal_new_prefix(rasqal_world* world, const unsigned char *prefix,
-                  raptor_uri* uri) 
-{
-  rasqal_prefix* p;
+rasqal_prefix *
+rasqal_new_prefix(rasqal_world *world, const unsigned char *prefix,
+                  raptor_uri *uri) {
+    rasqal_prefix *p;
 
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, rasqal_world, NULL);
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, raptor_uri, NULL);
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(world, rasqal_world, NULL);
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(uri, raptor_uri, NULL);
 
-  p = RASQAL_CALLOC(rasqal_prefix*, 1, sizeof(*p));
-  if(p) {  
-    p->world = world;
-    p->prefix = prefix;
-    p->uri = uri;
-  } else {
-    RASQAL_FREE(char*, prefix);
-    raptor_free_uri(uri);
-  }
+    p = RASQAL_CALLOC(rasqal_prefix*, 1, sizeof(*p));
+    if (p) {
+        p->world = world;
+        p->prefix = prefix;
+        p->uri = uri;
+    } else {
+        RASQAL_FREE(char*, prefix);
+        raptor_free_uri(uri);
+    }
 
-  return p;
+    return p;
 }
 
 
@@ -82,16 +87,15 @@ rasqal_new_prefix(rasqal_world* world, const unsigned char *prefix,
  * Destructor - destroy a #rasqal_prefix object.
  **/
 void
-rasqal_free_prefix(rasqal_prefix* p)
-{
-  if(!p)
-    return;
-  
-  if(p->prefix)
-    RASQAL_FREE(char*, p->prefix);
-  if(p->uri)
-    raptor_free_uri(p->uri);
-  RASQAL_FREE(rasqal_prefix, p);
+rasqal_free_prefix(rasqal_prefix *p) {
+    if (!p)
+        return;
+
+    if (p->prefix)
+        RASQAL_FREE(char*, p->prefix);
+    if (p->uri)
+        raptor_free_uri(p->uri);
+    RASQAL_FREE(rasqal_prefix, p);
 }
 
 
@@ -107,14 +111,13 @@ rasqal_free_prefix(rasqal_prefix* p)
  * Return value: non-0 on failure
  **/
 int
-rasqal_prefix_print(rasqal_prefix* p, FILE* fh)
-{
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(p, rasqal_prefix, 1);
-  RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(fh, FILE*, 1);
+rasqal_prefix_print(rasqal_prefix *p, FILE *fh) {
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(p, rasqal_prefix, 1);
+    RASQAL_ASSERT_OBJECT_POINTER_RETURN_VALUE(fh, FILE*, 1);
 
-  fprintf(fh, "prefix(%s as %s)",
-          (p->prefix ? RASQAL_GOOD_CAST(const char*, p->prefix) : "(default)"),
-          raptor_uri_as_string(p->uri));
+    fprintf(fh, "prefix(%s as %s)",
+            (p->prefix ? RASQAL_GOOD_CAST(const char*, p->prefix) : "(default)"),
+            raptor_uri_as_string(p->uri));
 
-  return 0;
+    return 0;
 }

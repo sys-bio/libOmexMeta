@@ -50,6 +50,10 @@ namespace semsim {
 
         ~Participant() = default;
 
+        bool operator==(const Participant &rhs) const;
+
+        bool operator!=(const Participant &rhs) const;
+
         /*
          * @brief create a Triples object from the Participant.
          * @param process_metaid the metaid for a process

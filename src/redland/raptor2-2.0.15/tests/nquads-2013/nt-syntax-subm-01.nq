@@ -1,36 +1,47 @@
 #
+
 # Copyright World Wide Web Consortium, (Massachusetts Institute of
 # Technology, Institut National de Recherche en Informatique et en
 # Automatique, Keio University).
 #
+
 # All Rights Reserved.
 #
+
 # Please see the full Copyright clause at
 # <http://www.w3.org/Consortium/Legal/copyright-software.html>
 #
+
 # Test file with a variety of legal N-Triples
 #
+
 # Dave Beckett - http://purl.org/net/dajobe/
 # 
-# $Id: test.nt,v 1.7 2003/10/06 15:52:19 dbeckett2 Exp $
+
+# $Id: test.nt, v 1.7 2003/10/06 15:52:19 dbeckett2 Exp $
 # 
+
 #####################################################################
 
 # comment lines
-  	  	   # comment line after whitespace
+# comment line after whitespace
 # empty blank line, then one with spaces and tabs
 
-         	
+
 <http://example.org/resource1> <http://example.org/property> <http://example.org/resource2> .
-_:anon <http://example.org/property> <http://example.org/resource2> .
+_:anon<http://example.org/property> <http://example.org/resource2> .
 <http://example.org/resource2> <http://example.org/property> _:anon .
 # spaces and tabs throughout:
- 	 <http://example.org/resource3> 	 <http://example.org/property>	 <http://example.org/resource2> 	.	 
+<http://example.org/resource3> 	 <http://example.org/property>	 <http://example.org/resource2> 	.
 
 # line ending with CR NL (ASCII 13, ASCII 10)
 <http://example.org/resource4> <http://example.org/property> <http://example.org/resource2> .
 
-# 2 statement lines separated by single CR (ASCII 10)
+# 2
+statement lines
+separated by
+single CR(ASCII
+10)
 <http://example.org/resource5> <http://example.org/property> <http://example.org/resource2> .
 <http://example.org/resource6> <http://example.org/property> <http://example.org/resource2> .
 
@@ -48,9 +59,11 @@ _:anon <http://example.org/property> <http://example.org/resource2> .
 <http://example.org/resource14> <http://example.org/property> "x".
 <http://example.org/resource15> <http://example.org/property> _:anon.
 
-# \u and \U escapes
+# \u and \
+U escapes
 # latin small letter e with acute symbol \u00E9 - 3 UTF-8 bytes #xC3 #A9
-<http://example.org/resource16> <http://example.org/property> "\u00E9" .
+        <http
+://example.org/resource16> <http://example.org/property> "\u00E9" .
 # Euro symbol \u20ac  - 3 UTF-8 bytes #xE2 #x82 #xAC
 <http://example.org/resource17> <http://example.org/property> "\u20AC" .
 # resource18 test removed

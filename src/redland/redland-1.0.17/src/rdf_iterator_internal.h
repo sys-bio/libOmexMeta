@@ -33,26 +33,28 @@ extern "C" {
 
 /* used in map_list below */
 typedef struct {
-  void *context; /* context to pass on to map */
-  librdf_iterator_map_handler fn;
-  librdf_iterator_map_free_context_handler free_context;
+    void *context; /* context to pass on to map */
+    librdf_iterator_map_handler fn;
+    librdf_iterator_map_free_context_handler free_context;
 } librdf_iterator_map;
 
 struct librdf_iterator_s {
-  librdf_world *world;
-  void *context;
-  int is_finished; /* 1 when have no more elements */
-  int is_updated; /* 1 when we know there is a current item */
-  int is_updating; /* 1 when are in the middle of update process */ 
+    librdf_world *world;
+    void *context;
+    int is_finished; /* 1 when have no more elements */
+    int is_updated; /* 1 when we know there is a current item */
+    int is_updating; /* 1 when are in the middle of update process */
 
-  /* Used when mapping */
-  void *current;            /* stores current element */
-  librdf_list *map_list; /* non-empty means there is a list of maps */
-  
-  int (*is_end_method)(void*);
-  int (*next_method)(void*);
-  void* (*get_method)(void*, int); /* flags: type of get */
-  void (*finished_method)(void*);
+    /* Used when mapping */
+    void *current;            /* stores current element */
+    librdf_list *map_list; /* non-empty means there is a list of maps */
+
+    int (*is_end_method)(void *);
+
+    int (*next_method)(void *);
+
+    void *(*get_method)(void *, int); /* flags: type of get */
+    void (*finished_method)(void *);
 };
 
 

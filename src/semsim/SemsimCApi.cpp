@@ -81,34 +81,34 @@ namespace semsim {
         delete rdf_ptr;
     }
 
-    RDF* RDF_fromString(const char *str, const char *format, const char *baseuri) {
-        RDF* rdf = RDF_new();
+    RDF *RDF_fromString(const char *str, const char *format, const char *baseuri) {
+        RDF *rdf = RDF_new();
         rdf->addFromString(str, format, baseuri);
         return rdf;
     }
 
 
-    void RDF_addFromString(RDF* rdf_ptr, const char* str, const char* format, const char* base_uri){
+    void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri) {
         rdf_ptr->addFromString(str, format, base_uri);
     }
 
-    RDF* RDF_fromUri(const char* uri_string, const char* format){
-        RDF* rdf = RDF_new();
+    RDF *RDF_fromUri(const char *uri_string, const char *format) {
+        RDF *rdf = RDF_new();
         rdf->addFromUri(uri_string, format);
         return rdf;
     }
 
-    void RDF_addFromUri(RDF* rdf_ptr, const char* uri_string, const char* format){
+    void RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format) {
         rdf_ptr->addFromUri(uri_string, format);
     }
 
-    RDF* RDF_fromFile(const char* filename, const char* format){
-        RDF* rdf = RDF_new();
+    RDF *RDF_fromFile(const char *filename, const char *format) {
+        RDF *rdf = RDF_new();
         rdf->addFromFile(filename, format);
         return rdf;
     }
 
-    void RDF_addFromFile(RDF* rdf_ptr, const char* uri_string, const char* format){
+    void RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format) {
         rdf_ptr->addFromFile(uri_string, format);
     }
 
@@ -194,8 +194,8 @@ namespace semsim {
      * The returned string is owned by the caller.
      */
     char *Editor_getXml(Editor *editor_ptr) {
-        const std::string& str = editor_ptr->getXml();
-        char* cstr = (char*) malloc((str.size()+1)*sizeof(char*));
+        const std::string &str = editor_ptr->getXml();
+        char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
         strcpy(cstr, str.c_str());
         return cstr;
     }
@@ -206,9 +206,9 @@ namespace semsim {
         delete editor_ptr;
     }
 
-    void Editor_toRDF(Editor *editor_ptr) {
-        editor_ptr->toRDF();
-    }
+//    void Editor_toRDF(Editor *editor_ptr) {
+//        editor_ptr->toRDF();
+//    }
 
 
 /*********************************************************************
@@ -219,12 +219,10 @@ namespace semsim {
     }
 
     void SingularAnnotation_delete(SingularAnnotation *singularAnnotation) {
-        // note: we do not need a freeAll type function
-        //  for singular annotation as it is a typedef Triple,
-        //  which owns the nodes.
-        if (!singularAnnotation)
-            return;
-        delete singularAnnotation;
+        if (singularAnnotation != nullptr) {
+            singularAnnotation->freeStatement();
+            delete singularAnnotation;
+        }
     }
 
     void SingularAnnotation_freeAll(SingularAnnotation *singularAnnotation) {
@@ -299,8 +297,8 @@ namespace semsim {
     }
 
     char *SingularAnnotation_str(
-            SingularAnnotation *singular_annotation, const char *format, const char *base_uri
-    ) {
+            SingularAnnotation *singular_annotation,
+            const char *format, const char *base_uri) {
         std::string str = singular_annotation->str(format, base_uri);
         char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
         strcpy(cstr, str.c_str());
@@ -332,8 +330,8 @@ namespace semsim {
     }
 
     PhysicalEntity *PhysicalEntity_setPhysicalProperty(
-            PhysicalEntity *physical_entity_ptr, const char *physical_property) {
-        physical_entity_ptr->setPhysicalProperty(physical_property);
+            PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property) {
+        physical_entity_ptr->setPhysicalProperty(subject_metaid, physical_property);
         return physical_entity_ptr;
     }
 
@@ -348,18 +346,18 @@ namespace semsim {
     }
 
     char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr) {
-        std::string about = physical_entity_ptr->getAbout().str();
+        std::string about = physical_entity_ptr->getAbout();
         char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
         strcpy(cstr, about.c_str());
         return cstr;
     }
 
-    char *PhysicalEntity_getPhysicalProperty(PhysicalEntity *physical_entity_ptr) {
-        std::string physical_property = physical_entity_ptr->getPhysicalProperty().str();
-        char *cstr = (char *) malloc((physical_property.size() + 1) * sizeof(char));
-        strcpy(cstr, physical_property.c_str());
-        return cstr;
-    }
+//    char *PhysicalEntity_getPhysicalProperty(PhysicalEntity *physical_entity_ptr) {
+//        std::string physical_property = physical_entity_ptr->getPhysicalProperty().str();
+//        char *cstr = (char *) malloc((physical_property.size() + 1) * sizeof(char));
+//        strcpy(cstr, physical_property.c_str());
+//        return cstr;
+//    }
 
     char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr) {
         std::string identity = physical_entity_ptr->getIdentityResource().str();
@@ -381,7 +379,9 @@ namespace semsim {
     }
 
     char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri) {
-        std::string str = physical_entity_ptr->toTriples().str(format, base_uri);
+        Triples triples = physical_entity_ptr->toTriples();
+        std::string str = triples.str(format, base_uri);
+        triples.freeTriples();
         char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
         strcpy(cstr, str.c_str());
         return cstr;
@@ -410,8 +410,8 @@ namespace semsim {
     }
 
     PhysicalProcess *
-    PhysicalProcess_setPhysicalProperty(PhysicalProcess *physical_process, const char *physical_property) {
-        physical_process->setPhysicalProperty(physical_property);
+    PhysicalProcess_setPhysicalProperty(PhysicalProcess *physical_process, const char *subject_metaid, const char *physical_property) {
+        physical_process->setPhysicalProperty(subject_metaid, physical_property);
         return physical_process;
 
     }
@@ -441,25 +441,27 @@ namespace semsim {
     }
 
     char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri) {
-        std::string str = physical_process_ptr->toTriples().str(format, base_uri);
+        Triples triples = physical_process_ptr->toTriples();
+        std::string str = triples.str(format, base_uri);
+        triples.freeTriples();
         char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
         strcpy(cstr, str.c_str());
         return cstr;
     }
 
     char *PhysicalProcess_getAbout(PhysicalProcess *physical_process_ptr) {
-        std::string about = physical_process_ptr->getAbout().str();
+        std::string about = physical_process_ptr->getAbout();
         char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
         strcpy(cstr, about.c_str());
         return cstr;
     }
 
-    char *PhysicalProcess_getPhysicalProperty(PhysicalProcess *physical_process_ptr) {
-        std::string pp = physical_process_ptr->getPhysicalProperty().str();
-        char *cstr = (char *) malloc((pp.size() + 1) * sizeof(char));
-        strcpy(cstr, pp.c_str());
-        return cstr;
-    }
+//    char *PhysicalProcess_getPhysicalProperty(PhysicalProcess *physical_process_ptr) {
+//        std::string pp = physical_process_ptr->getPhysicalProperty().str();
+//        char *cstr = (char *) malloc((pp.size() + 1) * sizeof(char));
+//        strcpy(cstr, pp.c_str());
+//        return cstr;
+//    }
 
     int PhysicalProcess_getNumSources(PhysicalProcess *physicalProcess) {
         return physicalProcess->getNumSources();
@@ -513,8 +515,8 @@ namespace semsim {
         return physical_force_ptr;
     }
 
-    PhysicalForce *PhysicalForce_setPhysicalProperty(PhysicalForce *physical_force_ptr, const char *physical_property) {
-        physical_force_ptr->setPhysicalProperty(physical_property);
+    PhysicalForce *PhysicalForce_setPhysicalProperty(PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property) {
+        physical_force_ptr->setPhysicalProperty(subject_metaid, physical_property);
         return physical_force_ptr;
     }
 
@@ -527,7 +529,9 @@ namespace semsim {
     }
 
     char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri) {
-        std::string str = physical_force_ptr->toTriples().str(format, base_uri);
+        Triples triples = physical_force_ptr->toTriples();
+        std::string str = triples.str(format, base_uri);
+        triples.freeTriples();
         char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
         strcpy(cstr, str.c_str());
         return cstr;
@@ -535,19 +539,19 @@ namespace semsim {
 
 
     char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr) {
-        std::string about = physical_force_ptr->getAbout().str();
+        std::string about = physical_force_ptr->getAbout();
         char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
         strcpy(cstr, about.c_str());
         return cstr;
     }
 
 
-    char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr) {
-        std::string pp = physical_force_ptr->getPhysicalProperty().str();
-        char *cstr = (char *) malloc((pp.size() + 1) * sizeof(char));
-        strcpy(cstr, pp.c_str());
-        return cstr;
-    }
+//    char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr) {
+//        std::string pp = physical_force_ptr->getPhysicalProperty().str();
+//        char *cstr = (char *) malloc((pp.size() + 1) * sizeof(char));
+//        strcpy(cstr, pp.c_str());
+//        return cstr;
+//    }
 
 
 }

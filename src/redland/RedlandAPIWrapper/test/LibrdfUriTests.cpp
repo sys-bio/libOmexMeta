@@ -107,6 +107,29 @@ TEST_F(LibrdfUriTests, TestToFilenameuri) {
     uri1.freeUri();
 }
 
+/*
+ * Both uri's refer to the same block of memory.
+ * librdf_uri has an internal ref counter that
+ * increases when you create another uri with the
+ * same string.
+ * The uri is deleted when the ref count gets to 1 and free is called.
+ */
+TEST_F(LibrdfUriTests, TestEquality) {
+    LibrdfUri uri1 = LibrdfUri::fromFilename("./local_filename.rdf");
+    LibrdfUri uri2 = LibrdfUri::fromFilename("./local_filename.rdf");
+    ASSERT_EQ(uri1, uri2);
+    uri1.freeUri();
+    uri2.freeUri();
+}
+
+TEST_F(LibrdfUriTests, TestInequality) {
+    LibrdfUri uri1 = LibrdfUri::fromFilename("./local_filename1.rdf");
+    LibrdfUri uri2 = LibrdfUri::fromFilename("./local_filename2.rdf");
+    ASSERT_NE(uri1, uri2);
+    uri1.freeUri();
+    uri2.freeUri();
+}
+
 
 
 

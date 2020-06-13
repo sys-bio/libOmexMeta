@@ -32,13 +32,13 @@ namespace semsim {
 
         Triple(librdf_statement *statement);
 
+
     public:
 
+        using LibrdfStatement::LibrdfStatement;
+        using LibrdfStatement::operator=;
+
         explicit Triple() = default;
-
-//        Triple(Subject subject, Predicate predicate,  Resource resource);
-
-//        Triple(const Subject &subject, const Predicate &predicate, const Resource &resource);
 
         Triple(const Subject &subject, const PredicatePtr &predicate_ptr, const Resource &resource);
 
@@ -54,13 +54,13 @@ namespace semsim {
          * a triple only.
          */
         std::string
-        str(const std::string &format = "rdfxml-abbrev", const std::string &base = "file://./annotations.rdf");
+        str(const std::string &format = "rdfxml-abbrev", const std::string &base = "file://./annotations.rdf") const;
 
         Triple &setAbout(const std::string &about);
 
         std::string getAbout() const;
 
-        std::shared_ptr<librdf_statement> getStatement() const;
+        librdf_statement *getStatement() const;
 
         Triple &setPredicate(const std::string &namespace_, const std::string &term);
 

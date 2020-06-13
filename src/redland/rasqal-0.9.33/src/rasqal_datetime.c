@@ -24,7 +24,9 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -34,9 +36,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+
 #ifdef TIME_WITH_SYS_TIME
+
 # include <sys/time.h>
 # include <time.h>
+
 #else
 # ifdef HAVE_SYS_TIME_H
 #  include <sys/time.h>
@@ -45,8 +50,11 @@
 # endif
 #endif
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h>
+
 #endif
+
 #include <stdarg.h>
 #include <limits.h>
 
@@ -54,8 +62,9 @@
 #include "rasqal_internal.h"
 
 /* Local definitions */
- 
+
 static int rasqal_xsd_datetime_parse(const char *datetime_string, rasqal_xsd_datetime *result, int is_dateTime);
+
 static unsigned int days_per_month(int month, int year);
 
 
@@ -77,81 +86,80 @@ static unsigned int days_per_month(int month, int year);
  * Return value: zero on success, non zero on failure.
  */
 static int
-rasqal_xsd_datetime_normalize(rasqal_xsd_datetime *datetime)
-{
-  int t;
+rasqal_xsd_datetime_normalize(rasqal_xsd_datetime *datetime) {
+    int t;
 
-  if(datetime->have_tz == 'Y') {
-    if(datetime->timezone_minutes) {
-      /* Normalize to Zulu if there was a timezone offset */
-      datetime->hour   = RASQAL_GOOD_CAST(signed char, datetime->hour - (datetime->timezone_minutes / 60));
-      datetime->minute = RASQAL_GOOD_CAST(signed char, datetime->minute - (datetime->timezone_minutes % 60));
+    if (datetime->have_tz == 'Y') {
+        if (datetime->timezone_minutes) {
+            /* Normalize to Zulu if there was a timezone offset */
+            datetime->hour = RASQAL_GOOD_CAST(signed char, datetime->hour - (datetime->timezone_minutes / 60));
+            datetime->minute = RASQAL_GOOD_CAST(signed char, datetime->minute - (datetime->timezone_minutes % 60));
 
-      datetime->timezone_minutes = 0;
+            datetime->timezone_minutes = 0;
+        }
+        datetime->have_tz = 'Z';
     }
-    datetime->have_tz = 'Z';
-  }
-  
-  /* second & second parts: no need to normalize as they are not
-   * touched after range check
-   */
-  
-  /* minute */
-  if(datetime->minute < 0) {
-    datetime->minute = RASQAL_GOOD_CAST(signed char, datetime->minute + 60);
-    datetime->hour--;
-  } else if(datetime->minute > 59) {
-    datetime->minute = RASQAL_GOOD_CAST(signed char, datetime->minute - 60);
-    datetime->hour++;
-  }
-  
-  /* hour */
-  if(datetime->hour < 0) {
-    datetime->hour = RASQAL_GOOD_CAST(signed char, datetime->hour + 24);
-    datetime->day--;
-  } else if(datetime->hour > 23) {
-    datetime->hour = RASQAL_GOOD_CAST(signed char, datetime->hour - 24);
-    datetime->day++;
-  }
-  
-  /* day */
-  if(datetime->day < 1) {
-    int y2;
-    t = --datetime->month;
-    /* going back beyond year boundary? */
-    if(!t) {
-      t = 12;
-      y2 = datetime->year-1;
-    } else
-      y2 = datetime->year;
-    datetime->day = RASQAL_GOOD_CAST(unsigned char, datetime->day + days_per_month(t, y2));
-  } else {
-    t = RASQAL_GOOD_CAST(int, days_per_month(datetime->month, datetime->year));
-    if(datetime->day > t) {
-      datetime->day = RASQAL_GOOD_CAST(unsigned char, datetime->day - t);
-      datetime->month++;
+
+    /* second & second parts: no need to normalize as they are not
+     * touched after range check
+     */
+
+    /* minute */
+    if (datetime->minute < 0) {
+        datetime->minute = RASQAL_GOOD_CAST(signed char, datetime->minute + 60);
+        datetime->hour--;
+    } else if (datetime->minute > 59) {
+        datetime->minute = RASQAL_GOOD_CAST(signed char, datetime->minute - 60);
+        datetime->hour++;
     }
-  }
 
-  /* month & year */
-  if(datetime->month < 1) {
-    datetime->month = RASQAL_GOOD_CAST(unsigned char, datetime->month + 12);
-    datetime->year--;
-    /* there is no year 0 - go backwards to year -1 */
-    if(!datetime->year)
-      datetime->year--;
-  } else if(datetime->month > 12) {
-    datetime->month = RASQAL_GOOD_CAST(unsigned char, datetime->month - 12);
-    datetime->year++;
-    /* there is no year 0 - go forwards to year 1 */
-    if(!datetime->year)
-      datetime->year++;
-  }
+    /* hour */
+    if (datetime->hour < 0) {
+        datetime->hour = RASQAL_GOOD_CAST(signed char, datetime->hour + 24);
+        datetime->day--;
+    } else if (datetime->hour > 23) {
+        datetime->hour = RASQAL_GOOD_CAST(signed char, datetime->hour - 24);
+        datetime->day++;
+    }
 
-  datetime->time_on_timeline = rasqal_xsd_datetime_get_as_unixtime(datetime);
+    /* day */
+    if (datetime->day < 1) {
+        int y2;
+        t = --datetime->month;
+        /* going back beyond year boundary? */
+        if (!t) {
+            t = 12;
+            y2 = datetime->year - 1;
+        } else
+            y2 = datetime->year;
+        datetime->day = RASQAL_GOOD_CAST(unsigned char, datetime->day + days_per_month(t, y2));
+    } else {
+        t = RASQAL_GOOD_CAST(int, days_per_month(datetime->month, datetime->year));
+        if (datetime->day > t) {
+            datetime->day = RASQAL_GOOD_CAST(unsigned char, datetime->day - t);
+            datetime->month++;
+        }
+    }
 
-  /* success */
-  return 0;
+    /* month & year */
+    if (datetime->month < 1) {
+        datetime->month = RASQAL_GOOD_CAST(unsigned char, datetime->month + 12);
+        datetime->year--;
+        /* there is no year 0 - go backwards to year -1 */
+        if (!datetime->year)
+            datetime->year--;
+    } else if (datetime->month > 12) {
+        datetime->month = RASQAL_GOOD_CAST(unsigned char, datetime->month - 12);
+        datetime->year++;
+        /* there is no year 0 - go forwards to year 1 */
+        if (!datetime->year)
+            datetime->year++;
+    }
+
+    datetime->time_on_timeline = rasqal_xsd_datetime_get_as_unixtime(datetime);
+
+    /* success */
+    return 0;
 }
 
 
@@ -202,313 +210,302 @@ rasqal_xsd_datetime_normalize(rasqal_xsd_datetime *datetime)
 static int
 rasqal_xsd_datetime_parse(const char *datetime_string,
                           rasqal_xsd_datetime *result,
-                          int is_dateTime)
-{
-  const char *p, *q; 
+                          int is_dateTime) {
+    const char *p, *q;
 #define B_SIZE 16
-  char b[B_SIZE];
-  unsigned int l, t, t2, is_neg;
-  unsigned long u;
+    char b[B_SIZE];
+    unsigned int l, t, t2, is_neg;
+    unsigned long u;
 #define MICROSECONDS_MAX_DIGITS 6
 
-  if(!datetime_string || !result)
-    return -1;
-  
-  p = (const char *)datetime_string;
-  is_neg = 0;
+    if (!datetime_string || !result)
+        return -1;
 
-  /* Parse year */
-  
-  /* negative years permitted */
-  if(*p == '-') {
-    is_neg = 1;
-    p++;
-  }
-  for(q = p; ISNUM(*p); p++)
-    ;
-  l = RASQAL_GOOD_CAST(unsigned int, p - q);
-  
-  /* error if
-     - less than 4 digits in year
-     - more than 4 digits && leading zeros
-     - '-' does not follow numbers
-   */
-  if(l < 4 || (l > 4 && *q=='0') || *p != '-')
-    return -1;
+    p = (const char *) datetime_string;
+    is_neg = 0;
 
-  if(l >= (B_SIZE - 1))
-    l = RASQAL_GOOD_CAST(unsigned int, B_SIZE - 1);
+    /* Parse year */
 
-  memcpy(b, q, l);
-  b[l] = 0; /* ensure nul termination */
-  u = strtoul(b, 0, 10);
-  
-  /* year "0000" not permitted
-   * restrict to signed int range
-   * >= instead of > to allow for +-1 year adjustment in normalization
-   * (however, these +-INT_MAX years cannot be parsed back in if
-   * converted to string)
-   */
-  if(!u || u >= INT_MAX)
-    return -1;
-    
-  result->year = is_neg ? -RASQAL_GOOD_CAST(int, u) : RASQAL_GOOD_CAST(int, u);
-
-  /* parse month */
-  
-  for(q = ++p; ISNUM(*p); p++)
-    ;
-  l = RASQAL_GOOD_CAST(unsigned int, p - q);
-  
-  /* error if month is not 2 digits or '-' is not the separator */
-  if(l != 2 || *p != '-')
-    return -2;
-  
-  t = RASQAL_GOOD_CAST(unsigned int, (*q++ - '0')*10);
-  t += RASQAL_GOOD_CAST(unsigned int, *q - '0');
-  
-  /* month must be 1..12 */
-  if(t < 1 || t > 12)
-    return -2;
-  
-  result->month = RASQAL_GOOD_CAST(unsigned char, t);
-  
-  /* parse day */
-  
-  for(q = ++p; ISNUM(*p); p++)
-    ;
-  l = RASQAL_GOOD_CAST(unsigned int, p - q);
-
-  if(is_dateTime) {
-    /* xsd:dateTime: error if day is not 2 digits or 'T' is not the separator */
-    if(l != 2 || *p != 'T')
-      return -3;
-  } else {
-    /* xsd:date: error if day is not 2 digits or separator is not
-     * 'Z' (utc)
-     * '+' or '-' (timezone offset)
-     * nul (end of string - timezone is optional)
-     */
-    if(l != 2 || (*p && *p != 'Z' && *p != '+' && *p != '-'))
-      return -3;
-  }
-  
-  t = RASQAL_GOOD_CAST(unsigned int, (*q++ - '0') * 10);
-  t += RASQAL_GOOD_CAST(unsigned int, *q - '0');
-
-  /* day must be 1..days_per_month */
-  if(t < 1 || t > days_per_month(result->month, result->year))
-    return -3;
-
-  result->day = RASQAL_GOOD_CAST(unsigned char, t);
-
-  if(is_dateTime) {
-    /* parse hour */
-
-    for(q = ++p; ISNUM(*p); p++)
-      ;
+    /* negative years permitted */
+    if (*p == '-') {
+        is_neg = 1;
+        p++;
+    }
+    for (q = p; ISNUM(*p); p++);
     l = RASQAL_GOOD_CAST(unsigned int, p - q);
 
-    /* error if hour is not 2 digits or ':' is not the separator */
-    if(l != 2 || *p != ':')
-      return -4;
-
-    t = RASQAL_GOOD_CAST(unsigned int, (*q++ - '0')*10);
-    t += RASQAL_GOOD_CAST(unsigned int, *q - '0');
-
-    /* hour must be 0..24 - will handle special case 24 later
-     * (no need to check for < 0)
+    /* error if
+       - less than 4 digits in year
+       - more than 4 digits && leading zeros
+       - '-' does not follow numbers
      */
-    if(t > 24)
-      return -4;
+    if (l < 4 || (l > 4 && *q == '0') || *p != '-')
+        return -1;
 
-    result->hour = RASQAL_GOOD_CAST(signed char, t);
+    if (l >= (B_SIZE - 1))
+        l = RASQAL_GOOD_CAST(unsigned int, B_SIZE - 1);
 
-    /* parse minute */
+    memcpy(b, q, l);
+    b[l] = 0; /* ensure nul termination */
+    u = strtoul(b, 0, 10);
 
-    for(q = ++p; ISNUM(*p); p++)
-      ;
+    /* year "0000" not permitted
+     * restrict to signed int range
+     * >= instead of > to allow for +-1 year adjustment in normalization
+     * (however, these +-INT_MAX years cannot be parsed back in if
+     * converted to string)
+     */
+    if (!u || u >= INT_MAX)
+        return -1;
+
+    result->year = is_neg ? -RASQAL_GOOD_CAST(int, u) : RASQAL_GOOD_CAST(int, u);
+
+    /* parse month */
+
+    for (q = ++p; ISNUM(*p); p++);
     l = RASQAL_GOOD_CAST(unsigned int, p - q);
 
-    /* error if minute is not 2 digits or ':' is not the separator */
-    if(l != 2 || *p != ':')
-      return -5;
+    /* error if month is not 2 digits or '-' is not the separator */
+    if (l != 2 || *p != '-')
+        return -2;
 
     t = RASQAL_GOOD_CAST(unsigned int, (*q++ - '0') * 10);
     t += RASQAL_GOOD_CAST(unsigned int, *q - '0');
 
-    /* minute must be 0..59
-     * (no need to check for < 0)
-     */
-    if(t > 59)
-      return -5;
+    /* month must be 1..12 */
+    if (t < 1 || t > 12)
+        return -2;
 
-    result->minute = RASQAL_GOOD_CAST(signed char, t);
+    result->month = RASQAL_GOOD_CAST(unsigned char, t);
 
-    /* parse second whole part */
+    /* parse day */
 
-    for(q = ++p; ISNUM(*p); p++)
-      ;
+    for (q = ++p; ISNUM(*p); p++);
     l = RASQAL_GOOD_CAST(unsigned int, p - q);
 
-    /* error if second is not 2 digits or separator is not 
-     * '.' (second fraction)
-     * 'Z' (utc)
-     * '+' or '-' (timezone offset)
-     * nul (end of string - second fraction and timezone are optional)
-     */
-    if(l != 2 || (*p && *p != '.' && *p != 'Z' && *p != '+' && *p != '-'))
-      return -6;
+    if (is_dateTime) {
+        /* xsd:dateTime: error if day is not 2 digits or 'T' is not the separator */
+        if (l != 2 || *p != 'T')
+            return -3;
+    } else {
+        /* xsd:date: error if day is not 2 digits or separator is not
+         * 'Z' (utc)
+         * '+' or '-' (timezone offset)
+         * nul (end of string - timezone is optional)
+         */
+        if (l != 2 || (*p && *p != 'Z' && *p != '+' && *p != '-'))
+            return -3;
+    }
 
-    t = RASQAL_GOOD_CAST(unsigned int, (*q++ - '0')*10);
+    t = RASQAL_GOOD_CAST(unsigned int, (*q++ - '0') * 10);
     t += RASQAL_GOOD_CAST(unsigned int, *q - '0');
 
-    /* second must be 0..59
-    * (no need to check for < 0)
-    */
-    if(t > 59)
-      return -6;
+    /* day must be 1..days_per_month */
+    if (t < 1 || t > days_per_month(result->month, result->year))
+        return -3;
 
-    result->second = RASQAL_GOOD_CAST(signed char, t);
+    result->day = RASQAL_GOOD_CAST(unsigned char, t);
 
-    /* now that we have hour, minute and second, we can check
-     * if hour == 24 -> only 24:00:00 permitted (normalized later)
-     */
-    if(result->hour == 24 && (result->minute || result->second))
-      return -7;
+    if (is_dateTime) {
+        /* parse hour */
 
-    /* parse fraction seconds if any */
-    result->microseconds = 0;
-    if(*p == '.') {
-      for(q = ++p; ISNUM(*p); p++)
-        ;
-
-      /* ignore trailing zeros */
-      while(*--p == '0')
-        ;
-      p++;
-
-      if(!(*q == '0' && q == p)) {
-        /* allow ".0" */
+        for (q = ++p; ISNUM(*p); p++);
         l = RASQAL_GOOD_CAST(unsigned int, p - q);
 
-        if(l < 1) /* need at least 1 num */
-          return -8;
+        /* error if hour is not 2 digits or ':' is not the separator */
+        if (l != 2 || *p != ':')
+            return -4;
 
-        /* support only to microseconds with truncation */
-        if(l > MICROSECONDS_MAX_DIGITS)
-          l = MICROSECONDS_MAX_DIGITS;
-        
+        t = RASQAL_GOOD_CAST(unsigned int, (*q++ - '0') * 10);
+        t += RASQAL_GOOD_CAST(unsigned int, *q - '0');
+
+        /* hour must be 0..24 - will handle special case 24 later
+         * (no need to check for < 0)
+         */
+        if (t > 24)
+            return -4;
+
+        result->hour = RASQAL_GOOD_CAST(signed char, t);
+
+        /* parse minute */
+
+        for (q = ++p; ISNUM(*p); p++);
+        l = RASQAL_GOOD_CAST(unsigned int, p - q);
+
+        /* error if minute is not 2 digits or ':' is not the separator */
+        if (l != 2 || *p != ':')
+            return -5;
+
+        t = RASQAL_GOOD_CAST(unsigned int, (*q++ - '0') * 10);
+        t += RASQAL_GOOD_CAST(unsigned int, *q - '0');
+
+        /* minute must be 0..59
+         * (no need to check for < 0)
+         */
+        if (t > 59)
+            return -5;
+
+        result->minute = RASQAL_GOOD_CAST(signed char, t);
+
+        /* parse second whole part */
+
+        for (q = ++p; ISNUM(*p); p++);
+        l = RASQAL_GOOD_CAST(unsigned int, p - q);
+
+        /* error if second is not 2 digits or separator is not
+         * '.' (second fraction)
+         * 'Z' (utc)
+         * '+' or '-' (timezone offset)
+         * nul (end of string - second fraction and timezone are optional)
+         */
+        if (l != 2 || (*p && *p != '.' && *p != 'Z' && *p != '+' && *p != '-'))
+            return -6;
+
+        t = RASQAL_GOOD_CAST(unsigned int, (*q++ - '0') * 10);
+        t += RASQAL_GOOD_CAST(unsigned int, *q - '0');
+
+        /* second must be 0..59
+        * (no need to check for < 0)
+        */
+        if (t > 59)
+            return -6;
+
+        result->second = RASQAL_GOOD_CAST(signed char, t);
+
+        /* now that we have hour, minute and second, we can check
+         * if hour == 24 -> only 24:00:00 permitted (normalized later)
+         */
+        if (result->hour == 24 && (result->minute || result->second))
+            return -7;
+
+        /* parse fraction seconds if any */
         result->microseconds = 0;
-        for(t2 = 0; t2 < MICROSECONDS_MAX_DIGITS; ++t2) {
-          if(t2 < l)
-            result->microseconds += (*q++ - '0');
-          if(t2 != MICROSECONDS_MAX_DIGITS - 1)
-            result->microseconds *= 10;
+        if (*p == '.') {
+            for (q = ++p; ISNUM(*p); p++);
+
+            /* ignore trailing zeros */
+            while (*--p == '0');
+            p++;
+
+            if (!(*q == '0' && q == p)) {
+                /* allow ".0" */
+                l = RASQAL_GOOD_CAST(unsigned int, p - q);
+
+                if (l < 1) /* need at least 1 num */
+                    return -8;
+
+                /* support only to microseconds with truncation */
+                if (l > MICROSECONDS_MAX_DIGITS)
+                    l = MICROSECONDS_MAX_DIGITS;
+
+                result->microseconds = 0;
+                for (t2 = 0; t2 < MICROSECONDS_MAX_DIGITS; ++t2) {
+                    if (t2 < l)
+                        result->microseconds += (*q++ - '0');
+                    if (t2 != MICROSECONDS_MAX_DIGITS - 1)
+                        result->microseconds *= 10;
+                }
+
+            }
+
+            /* skip ignored trailing zeros */
+            while (*p == '0')
+                p++;
         }
 
-      }
-
-      /* skip ignored trailing zeros */
-      while(*p == '0')
-        p++;
+    } else { /* end if is_dateTime */
+        /* set to center of day interval (noon) */
+        result->hour = 12;
+        result->minute = 0;
+        result->second = 0;
+        result->microseconds = 0;
     }
 
-  } else { /* end if is_dateTime */
-    /* set to center of day interval (noon) */
-    result->hour = 12;
-    result->minute = 0;
-    result->second = 0;
-    result->microseconds = 0;
-  }
 
-  
-  /* parse & adjust timezone offset */
-  /* result is normalized later */
-  result->timezone_minutes = RASQAL_XSD_DATETIME_NO_TZ;
-  result->have_tz = 'N';
-  if(*p) {
-    if(*p == 'Z') {
-      /* utc timezone - no need to adjust */
-      result->timezone_minutes = 0;
-      result->have_tz = 'Z';
-      p++;
-    } else if(*p == '+' || *p == '-') {
-      result->timezone_minutes = 0;
-      result->have_tz = 'Y';
+    /* parse & adjust timezone offset */
+    /* result is normalized later */
+    result->timezone_minutes = RASQAL_XSD_DATETIME_NO_TZ;
+    result->have_tz = 'N';
+    if (*p) {
+        if (*p == 'Z') {
+            /* utc timezone - no need to adjust */
+            result->timezone_minutes = 0;
+            result->have_tz = 'Z';
+            p++;
+        } else if (*p == '+' || *p == '-') {
+            result->timezone_minutes = 0;
+            result->have_tz = 'Y';
 
-      /* work out timezone offsets */
-      is_neg = *p == '-';
-     
-      /* timezone hours */
-      for(q = ++p; ISNUM(*p); p++)
-        ;
-      l = RASQAL_GOOD_CAST(unsigned int, p - q);
-      if(l != 2 || *p!=':')
-        return -9;
+            /* work out timezone offsets */
+            is_neg = *p == '-';
 
-      t2 = RASQAL_GOOD_CAST(unsigned int, (*q++ - '0') * 10);
-      t2 += RASQAL_GOOD_CAST(unsigned int, *q - '0');
-      if(t2 > 14)
-        /* tz offset hours are restricted to 0..14
-         * (no need to check for < 0)
-         */
-        return -9;
-    
-      result->timezone_minutes = RASQAL_GOOD_CAST(short int, (is_neg ? -t2 : t2) * 60);
+            /* timezone hours */
+            for (q = ++p; ISNUM(*p); p++);
+            l = RASQAL_GOOD_CAST(unsigned int, p - q);
+            if (l != 2 || *p != ':')
+                return -9;
 
-      /* timezone minutes */    
-      for(q = ++p; ISNUM(*p); p++)
-        ;
-      l = RASQAL_GOOD_CAST(unsigned int, p - q);
-      if(l != 2)
-        return -10;
+            t2 = RASQAL_GOOD_CAST(unsigned int, (*q++ - '0') * 10);
+            t2 += RASQAL_GOOD_CAST(unsigned int, *q - '0');
+            if (t2 > 14)
+                /* tz offset hours are restricted to 0..14
+                 * (no need to check for < 0)
+                 */
+                return -9;
 
-      t = RASQAL_GOOD_CAST(unsigned int, (*q++ - '0') * 10);
-      t += RASQAL_GOOD_CAST(unsigned int, *q - '0');
-      if(t > 59 || (t2 == 14 && t != 0)) {
-        /* tz offset minutes are restricted to 0..59
-         * (no need to check for < 0)
-         * or 0 if hour offset is exactly +-14 
-         */
-        return -10;
-      }
-    
-      result->timezone_minutes = RASQAL_GOOD_CAST(short int, result->timezone_minutes + RASQAL_GOOD_CAST(short int, (is_neg ? -t : t)));
+            result->timezone_minutes = RASQAL_GOOD_CAST(short int, (is_neg ? -t2 : t2) * 60);
+
+            /* timezone minutes */
+            for (q = ++p; ISNUM(*p); p++);
+            l = RASQAL_GOOD_CAST(unsigned int, p - q);
+            if (l != 2)
+                return -10;
+
+            t = RASQAL_GOOD_CAST(unsigned int, (*q++ - '0') * 10);
+            t += RASQAL_GOOD_CAST(unsigned int, *q - '0');
+            if (t > 59 || (t2 == 14 && t != 0)) {
+                /* tz offset minutes are restricted to 0..59
+                 * (no need to check for < 0)
+                 * or 0 if hour offset is exactly +-14
+                 */
+                return -10;
+            }
+
+            result->timezone_minutes = RASQAL_GOOD_CAST(short int, result->timezone_minutes +
+                                                                   RASQAL_GOOD_CAST(short int, (is_neg ? -t : t)));
+        }
+
+        /* failure if extra chars after the timezone part */
+        if (*p)
+            return -11;
+
     }
-    
-    /* failure if extra chars after the timezone part */
-    if(*p)
-      return -11;
 
-  }
+    /* Initialise field even though this is not valid before
+     * rasqal_xsd_datetime_normalize() is called on this object.
+     */
+    result->time_on_timeline = 0;
 
-  /* Initialise field even though this is not valid before
-   * rasqal_xsd_datetime_normalize() is called on this object.
-   */
-  result->time_on_timeline = 0;
-
-  return 0;
+    return 0;
 }
 
 
 static int
-rasqal_xsd_date_parse(const char *date_string, rasqal_xsd_date *result)
-{
-  rasqal_xsd_datetime dt_result; /* on stack */
-  int rc;
+rasqal_xsd_date_parse(const char *date_string, rasqal_xsd_date *result) {
+    rasqal_xsd_datetime dt_result; /* on stack */
+    int rc;
 
-  rc = rasqal_xsd_datetime_parse(date_string, &dt_result, 0);
-  if(!rc) {
-    result->year = dt_result.year;
-    result->month = dt_result.month;
-    result->day = dt_result.day;
-    result->time_on_timeline = dt_result.time_on_timeline;
-    result->timezone_minutes = dt_result.timezone_minutes;
-    result->have_tz = dt_result.have_tz; /* This will be N or Z */
-  }
+    rc = rasqal_xsd_datetime_parse(date_string, &dt_result, 0);
+    if (!rc) {
+        result->year = dt_result.year;
+        result->month = dt_result.month;
+        result->day = dt_result.day;
+        result->time_on_timeline = dt_result.time_on_timeline;
+        result->timezone_minutes = dt_result.timezone_minutes;
+        result->have_tz = dt_result.have_tz; /* This will be N or Z */
+    }
 
-  return rc;
+    return rc;
 }
 
 #ifdef STANDALONE
@@ -554,7 +551,6 @@ rasqal_xsd_date_normalize(rasqal_xsd_date *date)
 #endif /* STANDALONE */
 
 
-
 /**
  * rasqal_new_xsd_datetime:
  * @world: world object
@@ -564,31 +560,31 @@ rasqal_xsd_date_normalize(rasqal_xsd_date *date)
  *
  * Return value: new datetime or NULL on failure
  */
-rasqal_xsd_datetime*
-rasqal_new_xsd_datetime(rasqal_world* world, const char *datetime_string)
-{
-  rasqal_xsd_datetime* dt;
-  int rc = 0;
-  
-  dt = RASQAL_MALLOC(rasqal_xsd_datetime*, sizeof(*dt));
-  if(!dt)
-    return NULL;
-  
-  rc = rasqal_xsd_datetime_parse(datetime_string, dt, 1);
-  if(!rc) {
-    rasqal_xsd_datetime dt_temp; /* copy on stack to normalize */
-    memcpy(&dt_temp, dt, sizeof(dt_temp));
-    
-    rc = rasqal_xsd_datetime_normalize(&dt_temp);
-    if(!rc)
-      dt->time_on_timeline = dt_temp.time_on_timeline;
-  }
+rasqal_xsd_datetime *
+rasqal_new_xsd_datetime(rasqal_world *world, const char *datetime_string) {
+    rasqal_xsd_datetime *dt;
+    int rc = 0;
 
-  if(rc) {
-    rasqal_free_xsd_datetime(dt); dt = NULL;
-  }
+    dt = RASQAL_MALLOC(rasqal_xsd_datetime*, sizeof(*dt));
+    if (!dt)
+        return NULL;
 
-  return dt;
+    rc = rasqal_xsd_datetime_parse(datetime_string, dt, 1);
+    if (!rc) {
+        rasqal_xsd_datetime dt_temp; /* copy on stack to normalize */
+        memcpy(&dt_temp, dt, sizeof(dt_temp));
+
+        rc = rasqal_xsd_datetime_normalize(&dt_temp);
+        if (!rc)
+            dt->time_on_timeline = dt_temp.time_on_timeline;
+    }
+
+    if (rc) {
+        rasqal_free_xsd_datetime(dt);
+        dt = NULL;
+    }
+
+    return dt;
 }
 
 
@@ -601,23 +597,23 @@ rasqal_new_xsd_datetime(rasqal_world* world, const char *datetime_string)
  *
  * Return value: new datetime or NULL on failure
  */
-rasqal_xsd_datetime*
-rasqal_new_xsd_datetime_from_unixtime(rasqal_world* world, time_t secs)
-{
-  rasqal_xsd_datetime* dt;
-  int rc = 0;
-  
-  dt = RASQAL_MALLOC(rasqal_xsd_datetime*, sizeof(*dt));
-  if(!dt)
-    return NULL;
+rasqal_xsd_datetime *
+rasqal_new_xsd_datetime_from_unixtime(rasqal_world *world, time_t secs) {
+    rasqal_xsd_datetime *dt;
+    int rc = 0;
 
-  rc = rasqal_xsd_datetime_set_from_unixtime(dt, secs);
+    dt = RASQAL_MALLOC(rasqal_xsd_datetime*, sizeof(*dt));
+    if (!dt)
+        return NULL;
 
-  if(rc) {
-    rasqal_free_xsd_datetime(dt); dt = NULL;
-  }
+    rc = rasqal_xsd_datetime_set_from_unixtime(dt, secs);
 
-  return dt;
+    if (rc) {
+        rasqal_free_xsd_datetime(dt);
+        dt = NULL;
+    }
+
+    return dt;
 }
 
 
@@ -630,23 +626,23 @@ rasqal_new_xsd_datetime_from_unixtime(rasqal_world* world, time_t secs)
  *
  * Return value: new datetime or NULL on failure
  */
-rasqal_xsd_datetime*
-rasqal_new_xsd_datetime_from_timeval(rasqal_world* world, struct timeval *tv)
-{
-  rasqal_xsd_datetime* dt;
-  int rc = 0;
-  
-  dt = RASQAL_MALLOC(rasqal_xsd_datetime*, sizeof(*dt));
-  if(!dt)
-    return NULL;
+rasqal_xsd_datetime *
+rasqal_new_xsd_datetime_from_timeval(rasqal_world *world, struct timeval *tv) {
+    rasqal_xsd_datetime *dt;
+    int rc = 0;
 
-  rc = rasqal_xsd_datetime_set_from_timeval(dt, tv);
+    dt = RASQAL_MALLOC(rasqal_xsd_datetime*, sizeof(*dt));
+    if (!dt)
+        return NULL;
 
-  if(rc) {
-    rasqal_free_xsd_datetime(dt); dt = NULL;
-  }
+    rc = rasqal_xsd_datetime_set_from_timeval(dt, tv);
 
-  return dt;
+    if (rc) {
+        rasqal_free_xsd_datetime(dt);
+        dt = NULL;
+    }
+
+    return dt;
 }
 
 
@@ -659,24 +655,23 @@ rasqal_new_xsd_datetime_from_timeval(rasqal_world* world, struct timeval *tv)
  *
  * Return value: new datetime or NULL on failure
  */
-rasqal_xsd_datetime*
-rasqal_new_xsd_datetime_from_xsd_date(rasqal_world* world, rasqal_xsd_date *date)
-{
-  rasqal_xsd_datetime* dt;
-  
-  dt = RASQAL_CALLOC(rasqal_xsd_datetime*, 1, sizeof(*dt));
-  if(!dt)
-    return NULL;
+rasqal_xsd_datetime *
+rasqal_new_xsd_datetime_from_xsd_date(rasqal_world *world, rasqal_xsd_date *date) {
+    rasqal_xsd_datetime *dt;
 
-  dt->year = date->year;
-  dt->month = date->month;
-  dt->day = date->day;
-  /* hour, minute, seconds, microseconds are all zero from calloc */
-  dt->timezone_minutes = date->timezone_minutes;
-  dt->time_on_timeline = date->time_on_timeline;
-  dt->have_tz = date->have_tz;
-  
-  return dt;
+    dt = RASQAL_CALLOC(rasqal_xsd_datetime*, 1, sizeof(*dt));
+    if (!dt)
+        return NULL;
+
+    dt->year = date->year;
+    dt->month = date->month;
+    dt->day = date->day;
+    /* hour, minute, seconds, microseconds are all zero from calloc */
+    dt->timezone_minutes = date->timezone_minutes;
+    dt->time_on_timeline = date->time_on_timeline;
+    dt->have_tz = date->have_tz;
+
+    return dt;
 }
 
 
@@ -687,12 +682,11 @@ rasqal_new_xsd_datetime_from_xsd_date(rasqal_world* world, rasqal_xsd_date *date
  * Destroy XSD datetime object.
  **/
 void
-rasqal_free_xsd_datetime(rasqal_xsd_datetime* dt)
-{
-  if(!dt)
-    return;
-  
-  RASQAL_FREE(datetime, dt);
+rasqal_free_xsd_datetime(rasqal_xsd_datetime *dt) {
+    if (!dt)
+        return;
+
+    RASQAL_FREE(datetime, dt);
 }
 
 
@@ -712,88 +706,86 @@ rasqal_free_xsd_datetime(rasqal_xsd_datetime* dt)
 static int
 rasqal_xsd_timezone_format(signed short timezone_minutes,
                            char have_tz,
-                           char* buffer, size_t bufsize)
-{
-  size_t tz_len;
-  
-  if(!buffer || !bufsize)
-    return -1;
-  
-  if(have_tz == 'N') {
-    tz_len = 0;
+                           char *buffer, size_t bufsize) {
+    size_t tz_len;
 
-    buffer[0] = '\0';
-  } else if(have_tz == 'Z') {
-    tz_len = 1;
-    if(bufsize < (tz_len + 1))
-      return -1;
+    if (!buffer || !bufsize)
+        return -1;
 
-    buffer[0] = 'Z';
-    buffer[1] = '\0';
-  } else {
-    int mins;
-    int hours;
-    int digit;
+    if (have_tz == 'N') {
+        tz_len = 0;
 
-    tz_len = TIMEZONE_BUFFER_LEN;
+        buffer[0] = '\0';
+    } else if (have_tz == 'Z') {
+        tz_len = 1;
+        if (bufsize < (tz_len + 1))
+            return -1;
 
-    if(bufsize < (tz_len + 1))
-      return -1;
+        buffer[0] = 'Z';
+        buffer[1] = '\0';
+    } else {
+        int mins;
+        int hours;
+        int digit;
 
-    mins = abs(timezone_minutes);
-    buffer[0] = (!mins || mins != timezone_minutes ? '-' : '+');
+        tz_len = TIMEZONE_BUFFER_LEN;
 
-    hours = (mins / 60);
-    digit = (hours / 10);
-    buffer[1] = RASQAL_GOOD_CAST(char, digit + '0');
-    buffer[2] = RASQAL_GOOD_CAST(char, hours - (digit * 10) + '0');
-    buffer[3] = ':';
+        if (bufsize < (tz_len + 1))
+            return -1;
 
-    mins -= hours * 60;
-    buffer[4] = RASQAL_GOOD_CAST(char, (mins / 10) + '0');
-    mins -= mins * 10;
-    buffer[5] = RASQAL_GOOD_CAST(char, mins + '0');
+        mins = abs(timezone_minutes);
+        buffer[0] = (!mins || mins != timezone_minutes ? '-' : '+');
 
-    buffer[6] = '\0';
-  }
+        hours = (mins / 60);
+        digit = (hours / 10);
+        buffer[1] = RASQAL_GOOD_CAST(char, digit + '0');
+        buffer[2] = RASQAL_GOOD_CAST(char, hours - (digit * 10) + '0');
+        buffer[3] = ':';
 
-  return RASQAL_GOOD_CAST(int, tz_len);
+        mins -= hours * 60;
+        buffer[4] = RASQAL_GOOD_CAST(char, (mins / 10) + '0');
+        mins -= mins * 10;
+        buffer[5] = RASQAL_GOOD_CAST(char, mins + '0');
+
+        buffer[6] = '\0';
+    }
+
+    return RASQAL_GOOD_CAST(int, tz_len);
 }
 
 
 static int
-rasqal_xsd_format_microseconds(char* buffer, size_t bufsize, 
-                               unsigned int microseconds)
-{
-  int len = 0;
-  char *p;
-  unsigned int value;
-  unsigned int base = 10;
-  unsigned int multiplier;
+rasqal_xsd_format_microseconds(char *buffer, size_t bufsize,
+                               unsigned int microseconds) {
+    int len = 0;
+    char *p;
+    unsigned int value;
+    unsigned int base = 10;
+    unsigned int multiplier;
 
-  value = microseconds;
-  multiplier = 100000;
-  do {
-    value = value % multiplier;
-    multiplier /= base;
-    len++;
-  } while(value && multiplier);
+    value = microseconds;
+    multiplier = 100000;
+    do {
+        value = value % multiplier;
+        multiplier /= base;
+        len++;
+    } while (value && multiplier);
 
-  if(!buffer || RASQAL_GOOD_CAST(int, bufsize) < (len + 1)) /* +1 for NUL */
+    if (!buffer || RASQAL_GOOD_CAST(int, bufsize) < (len + 1)) /* +1 for NUL */
+        return len;
+
+    value = microseconds;
+    multiplier = 100000;
+    p = buffer;
+    do {
+        unsigned digit = value / multiplier;
+        *p++ = RASQAL_GOOD_CAST(char, '0' + digit);
+        value = value % multiplier;
+        multiplier /= base;
+    } while (value && multiplier);
+    *p = '\0';
+
     return len;
-
-  value = microseconds;
-  multiplier = 100000;
-  p = buffer;
-  do {
-    unsigned digit = value / multiplier;
-    *p++ = RASQAL_GOOD_CAST(char, '0' + digit);
-    value = value % multiplier;
-    multiplier /= base;
-  } while(value && multiplier);
-  *p = '\0';
-
-  return len;
 }
 
 
@@ -810,87 +802,86 @@ rasqal_xsd_format_microseconds(char* buffer, size_t bufsize,
  *
  * Return value: lexical form string or NULL on failure.
  */
-char*
+char *
 rasqal_xsd_datetime_to_counted_string(const rasqal_xsd_datetime *dt,
-                                      size_t *len_p)
-{
-  size_t len;
-  char *buffer = NULL;
-  char *p;
-  /* "[+-]HH:MM\0" */
-  char timezone_string[TIMEZONE_BUFFER_LEN + 1];
-  size_t year_len;
-  int tz_string_len;
-  size_t microseconds_len = 0;
+                                      size_t *len_p) {
+    size_t len;
+    char *buffer = NULL;
+    char *p;
+    /* "[+-]HH:MM\0" */
+    char timezone_string[TIMEZONE_BUFFER_LEN + 1];
+    size_t year_len;
+    int tz_string_len;
+    size_t microseconds_len = 0;
 
-  /*
-   * http://www.w3.org/TR/xmlschema-2/#dateTime-canonical-representation
-   *
-   * "Except for trailing fractional zero digits in the seconds representation,
-   * '24:00:00' time representations, and timezone (for timezoned values),
-   * the mapping from literals to values is one-to-one.
-   * Where there is more than one possible representation,
-   * the canonical representation is as follows:
-   *    * The 2-digit numeral representing the hour must not be '24';
-   *    * The fractional second string, if present, must not end in '0';
-   *    * for timezoned values, the timezone must be represented with 'Z'
-   *      (All timezoned dateTime values are UTC.)."
-   */ 
+    /*
+     * http://www.w3.org/TR/xmlschema-2/#dateTime-canonical-representation
+     *
+     * "Except for trailing fractional zero digits in the seconds representation,
+     * '24:00:00' time representations, and timezone (for timezoned values),
+     * the mapping from literals to values is one-to-one.
+     * Where there is more than one possible representation,
+     * the canonical representation is as follows:
+     *    * The 2-digit numeral representing the hour must not be '24';
+     *    * The fractional second string, if present, must not end in '0';
+     *    * for timezoned values, the timezone must be represented with 'Z'
+     *      (All timezoned dateTime values are UTC.)."
+     */
 
-  if(!dt)
-    return NULL;
-    
-  tz_string_len = rasqal_xsd_timezone_format(dt->timezone_minutes, dt->have_tz,
-                                             timezone_string,
-                                             TIMEZONE_BUFFER_LEN + 1);
-  if(tz_string_len < 0)
-    return NULL;
+    if (!dt)
+        return NULL;
 
-  year_len = rasqal_format_integer(NULL, 0, dt->year, 4, '0');
-  
-  len = year_len +
-        RASQAL_GOOD_CAST(size_t, 15) + /* "-MM-DDTHH:MM:SS" = 15 */
-        RASQAL_GOOD_CAST(size_t, tz_string_len);
-  if(dt->microseconds) {
-    microseconds_len = RASQAL_GOOD_CAST(size_t, rasqal_xsd_format_microseconds(NULL, 0,
-                                                                               RASQAL_GOOD_CAST(unsigned int, dt->microseconds)));
-    len += 1 /* . */ + microseconds_len;
-  }
-  
-  if(len_p)
-    *len_p = len;
-    
-  buffer = RASQAL_MALLOC(char*, len + 1);
-  if(!buffer)
-    return NULL;
+    tz_string_len = rasqal_xsd_timezone_format(dt->timezone_minutes, dt->have_tz,
+                                               timezone_string,
+                                               TIMEZONE_BUFFER_LEN + 1);
+    if (tz_string_len < 0)
+        return NULL;
 
-  p = buffer;
-  p += rasqal_format_integer(p, year_len + 1, dt->year, 4, '0');
-  *p++ = '-';
-  p += rasqal_format_integer(p, 2 + 1, dt->month, 2, '0');
-  *p++ = '-';
-  p += rasqal_format_integer(p, 2 + 1, dt->day, 2, '0');
-  *p++ = 'T';
+    year_len = rasqal_format_integer(NULL, 0, dt->year, 4, '0');
 
-  p += rasqal_format_integer(p, 2 + 1, dt->hour, 2, '0');
-  *p++ = ':';
-  p += rasqal_format_integer(p, 2 + 1, dt->minute, 2, '0');
-  *p++ = ':';
-  p += rasqal_format_integer(p, 2 + 1, dt->second, 2, '0');
+    len = year_len +
+          RASQAL_GOOD_CAST(size_t, 15) + /* "-MM-DDTHH:MM:SS" = 15 */
+          RASQAL_GOOD_CAST(size_t, tz_string_len);
+    if (dt->microseconds) {
+        microseconds_len = RASQAL_GOOD_CAST(size_t, rasqal_xsd_format_microseconds(NULL, 0,
+                                                                                   RASQAL_GOOD_CAST(unsigned int, dt->microseconds)));
+        len += 1 /* . */ + microseconds_len;
+    }
 
-  if(dt->microseconds) {
-    *p++ = '.';
-    p += rasqal_xsd_format_microseconds(p, microseconds_len + 1,
-                                        RASQAL_GOOD_CAST(unsigned int, dt->microseconds));
-  }
-  if(tz_string_len) {
-    memcpy(p, timezone_string, RASQAL_GOOD_CAST(size_t, tz_string_len));
-    p += tz_string_len;
-  }
+    if (len_p)
+        *len_p = len;
 
-  *p = '\0';
+    buffer = RASQAL_MALLOC(char*, len + 1);
+    if (!buffer)
+        return NULL;
 
-  return buffer;
+    p = buffer;
+    p += rasqal_format_integer(p, year_len + 1, dt->year, 4, '0');
+    *p++ = '-';
+    p += rasqal_format_integer(p, 2 + 1, dt->month, 2, '0');
+    *p++ = '-';
+    p += rasqal_format_integer(p, 2 + 1, dt->day, 2, '0');
+    *p++ = 'T';
+
+    p += rasqal_format_integer(p, 2 + 1, dt->hour, 2, '0');
+    *p++ = ':';
+    p += rasqal_format_integer(p, 2 + 1, dt->minute, 2, '0');
+    *p++ = ':';
+    p += rasqal_format_integer(p, 2 + 1, dt->second, 2, '0');
+
+    if (dt->microseconds) {
+        *p++ = '.';
+        p += rasqal_xsd_format_microseconds(p, microseconds_len + 1,
+                                            RASQAL_GOOD_CAST(unsigned int, dt->microseconds));
+    }
+    if (tz_string_len) {
+        memcpy(p, timezone_string, RASQAL_GOOD_CAST(size_t, tz_string_len));
+        p += tz_string_len;
+    }
+
+    *p = '\0';
+
+    return buffer;
 }
 
 
@@ -904,10 +895,9 @@ rasqal_xsd_datetime_to_counted_string(const rasqal_xsd_datetime *dt,
  *
  * Return value: lexical form string or NULL on failure.
  */
-char*
-rasqal_xsd_datetime_to_string(const rasqal_xsd_datetime *dt)
-{
-  return rasqal_xsd_datetime_to_counted_string(dt, NULL);
+char *
+rasqal_xsd_datetime_to_string(const rasqal_xsd_datetime *dt) {
+    return rasqal_xsd_datetime_to_counted_string(dt, NULL);
 }
 
 
@@ -924,14 +914,14 @@ rasqal_xsd_datetime_to_string(const rasqal_xsd_datetime *dt)
 int
 rasqal_xsd_datetime_equals2(const rasqal_xsd_datetime *dt1,
                             const rasqal_xsd_datetime *dt2,
-                            int *incomparible_p)
-{
-  int cmp = rasqal_xsd_datetime_compare2(dt1, dt2, incomparible_p);
-  return !cmp;
+                            int *incomparible_p) {
+    int cmp = rasqal_xsd_datetime_compare2(dt1, dt2, incomparible_p);
+    return !cmp;
 }
 
 
 #ifndef RASQAL_DISABLE_DEPRECATED
+
 /**
  * rasqal_xsd_datetime_equals:
  * @dt1: first XSD dateTime
@@ -945,10 +935,10 @@ rasqal_xsd_datetime_equals2(const rasqal_xsd_datetime *dt1,
  **/
 int
 rasqal_xsd_datetime_equals(const rasqal_xsd_datetime *dt1,
-                           const rasqal_xsd_datetime *dt2)
-{
-  return rasqal_xsd_datetime_equals2(dt1, dt2, NULL);
+                           const rasqal_xsd_datetime *dt2) {
+    return rasqal_xsd_datetime_equals2(dt1, dt2, NULL);
 }
+
 #endif
 
 /*
@@ -960,52 +950,51 @@ rasqal_xsd_timeline_compare(time_t dt_timeline1, signed int dt_msec1,
                             signed short tz_minutes1,
                             time_t dt_timeline2, signed int dt_msec2,
                             signed short tz_minutes2,
-                            int *incomparible_p)
-{
-  int dt1_has_tz = (tz_minutes1 != RASQAL_XSD_DATETIME_NO_TZ);
-  int dt2_has_tz = (tz_minutes2 != RASQAL_XSD_DATETIME_NO_TZ);
-  int rc;
+                            int *incomparible_p) {
+    int dt1_has_tz = (tz_minutes1 != RASQAL_XSD_DATETIME_NO_TZ);
+    int dt2_has_tz = (tz_minutes2 != RASQAL_XSD_DATETIME_NO_TZ);
+    int rc;
 
 #define SECS_FOR_14_HOURS (14 * 3600)
 
-  /* Normalize - if there is a timezone that is not Z, convert it to Z
-   *
-   * Already done in rasqal_xsd_datetime_normalize() on construction
-   */
+    /* Normalize - if there is a timezone that is not Z, convert it to Z
+     *
+     * Already done in rasqal_xsd_datetime_normalize() on construction
+     */
 
-  if(dt1_has_tz == dt2_has_tz) {
-    /* both are on same timeline */
-    if(dt_timeline1 < dt_timeline2)
-      rc = -1;
-    else if(dt_timeline1 > dt_timeline2)
-      rc = 1;
-    else
-      rc = dt_msec1 - dt_msec2;
-  } else if(dt1_has_tz) {
-    /* dt1 has a tz, dt2 has no tz */
-    if(dt_timeline1 < (dt_timeline2 - SECS_FOR_14_HOURS))
-      rc = -1;
-    else if(dt_timeline1 > (dt_timeline2 + SECS_FOR_14_HOURS))
-      rc = 1;
-    else {
-      if(incomparible_p)
-        *incomparible_p = 1;
-      rc = 2; /* incomparible really */
+    if (dt1_has_tz == dt2_has_tz) {
+        /* both are on same timeline */
+        if (dt_timeline1 < dt_timeline2)
+            rc = -1;
+        else if (dt_timeline1 > dt_timeline2)
+            rc = 1;
+        else
+            rc = dt_msec1 - dt_msec2;
+    } else if (dt1_has_tz) {
+        /* dt1 has a tz, dt2 has no tz */
+        if (dt_timeline1 < (dt_timeline2 - SECS_FOR_14_HOURS))
+            rc = -1;
+        else if (dt_timeline1 > (dt_timeline2 + SECS_FOR_14_HOURS))
+            rc = 1;
+        else {
+            if (incomparible_p)
+                *incomparible_p = 1;
+            rc = 2; /* incomparible really */
+        }
+    } else {
+        /* dt1 has no tz, dt2 has a tz */
+        if ((dt_timeline1 + SECS_FOR_14_HOURS) < dt_timeline2)
+            rc = -1;
+        else if ((dt_timeline1 - SECS_FOR_14_HOURS) > dt_timeline2)
+            rc = 1;
+        else {
+            if (incomparible_p)
+                *incomparible_p = 1;
+            rc = 2; /* incomparible really */
+        }
     }
-  } else {
-    /* dt1 has no tz, dt2 has a tz */
-    if((dt_timeline1 + SECS_FOR_14_HOURS) < dt_timeline2)
-      rc = -1;
-    else if((dt_timeline1 - SECS_FOR_14_HOURS) > dt_timeline2)
-      rc = 1;
-    else {
-      if(incomparible_p)
-        *incomparible_p = 1;
-      rc = 2; /* incomparible really */
-    }
-  }
 
-  return rc;
+    return rc;
 }
 
 
@@ -1026,28 +1015,28 @@ rasqal_xsd_timeline_compare(time_t dt_timeline1, signed int dt_msec1,
 int
 rasqal_xsd_datetime_compare2(const rasqal_xsd_datetime *dt1,
                              const rasqal_xsd_datetime *dt2,
-                             int *incomparible_p)
-{
-  if(incomparible_p)
-    *incomparible_p = 0;
+                             int *incomparible_p) {
+    if (incomparible_p)
+        *incomparible_p = 0;
 
-  /* Handle NULLs */
-  if(!dt1 || !dt2) {
-    /* NULLs sort earlier. equal only if both are NULL */
-    if(!dt1 && !dt2)
-      return 0;
+    /* Handle NULLs */
+    if (!dt1 || !dt2) {
+        /* NULLs sort earlier. equal only if both are NULL */
+        if (!dt1 && !dt2)
+            return 0;
 
-    return (!dt1) ? -1 : 1;
-  }
+        return (!dt1) ? -1 : 1;
+    }
 
-  return rasqal_xsd_timeline_compare(dt1->time_on_timeline, dt1->microseconds,
-                                     dt1->timezone_minutes,
-                                     dt2->time_on_timeline, dt2->microseconds,
-                                     dt2->timezone_minutes,
-                                     incomparible_p);
+    return rasqal_xsd_timeline_compare(dt1->time_on_timeline, dt1->microseconds,
+                                       dt1->timezone_minutes,
+                                       dt2->time_on_timeline, dt2->microseconds,
+                                       dt2->timezone_minutes,
+                                       incomparible_p);
 }
 
 #ifndef RASQAL_DISABLE_DEPRECATED
+
 /**
  * rasqal_xsd_datetime_compare:
  * @dt1: first XSD dateTime
@@ -1061,10 +1050,10 @@ rasqal_xsd_datetime_compare2(const rasqal_xsd_datetime *dt1,
  **/
 int
 rasqal_xsd_datetime_compare(const rasqal_xsd_datetime *dt1,
-                            const rasqal_xsd_datetime *dt2)
-{
-  return rasqal_xsd_datetime_compare2(dt1, dt2, NULL);
+                            const rasqal_xsd_datetime *dt2) {
+    return rasqal_xsd_datetime_compare2(dt1, dt2, NULL);
 }
+
 #endif
 
 /**
@@ -1076,28 +1065,27 @@ rasqal_xsd_datetime_compare(const rasqal_xsd_datetime *dt1,
  * 
  * Return value: decimal object or NULL on failure
  **/
-rasqal_xsd_decimal*
-rasqal_xsd_datetime_get_seconds_as_decimal(rasqal_world* world,
-                                           rasqal_xsd_datetime* dt)
-{
-  rasqal_xsd_decimal* dec;
+rasqal_xsd_decimal *
+rasqal_xsd_datetime_get_seconds_as_decimal(rasqal_world *world,
+                                           rasqal_xsd_datetime *dt) {
+    rasqal_xsd_decimal *dec;
 
-  dec = rasqal_new_xsd_decimal(world);
-  if(!dec)
-    return NULL;
-  
-  if(!dt->microseconds) {
-    rasqal_xsd_decimal_set_long(dec, (long)dt->second);
-  } else {
-    /* Max len 9 "SS.UUUUUU\0" */
-    char str[10];
+    dec = rasqal_new_xsd_decimal(world);
+    if (!dec)
+        return NULL;
 
-    sprintf(str, "%d.%06d", dt->second, dt->microseconds);
+    if (!dt->microseconds) {
+        rasqal_xsd_decimal_set_long(dec, (long) dt->second);
+    } else {
+        /* Max len 9 "SS.UUUUUU\0" */
+        char str[10];
 
-    rasqal_xsd_decimal_set_string(dec, str);
-  }
-  
-  return dec;
+        sprintf(str, "%d.%06d", dt->second, dt->microseconds);
+
+        rasqal_xsd_decimal_set_string(dec, str);
+    }
+
+    return dec;
 }
 
 
@@ -1117,83 +1105,82 @@ rasqal_xsd_datetime_get_seconds_as_decimal(rasqal_world* world,
  * 
  * Return value: lexical form string or NULL on failure.
  */
-char*
-rasqal_xsd_date_to_counted_string(const rasqal_xsd_date *date, size_t *len_p)
-{
-  char *buffer = NULL;
-  size_t len;
-  char *p;
-  int value;
-  unsigned int d;
-  size_t year_len;
-  /* "[+-]HH:MM\0" */
-  char timezone_string[TIMEZONE_BUFFER_LEN + 1];
-  int tz_string_len;
-  
-  /* http://www.w3.org/TR/xmlschema-2/#date-canonical-representation
-   *
-   * "the date portion of the canonical representation (the entire
-   * representation for nontimezoned values, and all but the timezone
-   * representation for timezoned values) is always the date portion of
-   * the dateTime canonical representation of the interval midpoint
-   * (the dateTime representation, truncated on the right to eliminate
-   * 'T' and all following characters). For timezoned values, append
-   * the canonical representation of the ·recoverable timezone·. "
-   *
-   */
+char *
+rasqal_xsd_date_to_counted_string(const rasqal_xsd_date *date, size_t *len_p) {
+    char *buffer = NULL;
+    size_t len;
+    char *p;
+    int value;
+    unsigned int d;
+    size_t year_len;
+    /* "[+-]HH:MM\0" */
+    char timezone_string[TIMEZONE_BUFFER_LEN + 1];
+    int tz_string_len;
 
-  if(!date)
-    return NULL;
-    
-  tz_string_len = rasqal_xsd_timezone_format(date->timezone_minutes,
-                                             date->have_tz,
-                                             timezone_string,
-                                             TIMEZONE_BUFFER_LEN + 1);
-  if(tz_string_len < 0)
-    return NULL;
+    /* http://www.w3.org/TR/xmlschema-2/#date-canonical-representation
+     *
+     * "the date portion of the canonical representation (the entire
+     * representation for nontimezoned values, and all but the timezone
+     * representation for timezoned values) is always the date portion of
+     * the dateTime canonical representation of the interval midpoint
+     * (the dateTime representation, truncated on the right to eliminate
+     * 'T' and all following characters). For timezoned values, append
+     * the canonical representation of the ·recoverable timezone·. "
+     *
+     */
 
-  year_len = rasqal_format_integer(NULL, 0, date->year, -1, '\0');
+    if (!date)
+        return NULL;
 
-  len = year_len + DATE_BUFFER_LEN_NO_YEAR + RASQAL_GOOD_CAST(size_t, tz_string_len);
-  
-  if(len_p)
-    *len_p = len;
-  
-  buffer = RASQAL_MALLOC(char*, len + 1);
-  if(!buffer)
-    return NULL;
+    tz_string_len = rasqal_xsd_timezone_format(date->timezone_minutes,
+                                               date->have_tz,
+                                               timezone_string,
+                                               TIMEZONE_BUFFER_LEN + 1);
+    if (tz_string_len < 0)
+        return NULL;
 
-  p = buffer;
+    year_len = rasqal_format_integer(NULL, 0, date->year, -1, '\0');
 
-  /* value is year; length can vary */
-  p += rasqal_format_integer(p, year_len + 1, date->year, -1, '\0');
+    len = year_len + DATE_BUFFER_LEN_NO_YEAR + RASQAL_GOOD_CAST(size_t, tz_string_len);
 
-  *p++ = '-';
+    if (len_p)
+        *len_p = len;
 
-  /* value is 2-digit month */
-  value = date->month;
-  d = RASQAL_GOOD_CAST(unsigned int, (value / 10));
-  *p++ = RASQAL_GOOD_CAST(char, d + '0');
-  value -= RASQAL_GOOD_CAST(int, d * 10);
-  *p++ = RASQAL_GOOD_CAST(char, value + '0');
+    buffer = RASQAL_MALLOC(char*, len + 1);
+    if (!buffer)
+        return NULL;
 
-  *p++ = '-';
+    p = buffer;
 
-  /* value is 2-digit day */
-  value = date->day;
-  d = RASQAL_GOOD_CAST(unsigned int, (value / 10));
-  *p++ = RASQAL_GOOD_CAST(char, d + '0');
-  value -= RASQAL_GOOD_CAST(int, d * 10);
-  *p++ = RASQAL_GOOD_CAST(char, value + '0');
+    /* value is year; length can vary */
+    p += rasqal_format_integer(p, year_len + 1, date->year, -1, '\0');
 
-  if(tz_string_len) {
-    memcpy(p, timezone_string, RASQAL_GOOD_CAST(size_t, tz_string_len));
-    p += tz_string_len;
-  }
+    *p++ = '-';
 
-  *p = '\0';
+    /* value is 2-digit month */
+    value = date->month;
+    d = RASQAL_GOOD_CAST(unsigned int, (value / 10));
+    *p++ = RASQAL_GOOD_CAST(char, d + '0');
+    value -= RASQAL_GOOD_CAST(int, d * 10);
+    *p++ = RASQAL_GOOD_CAST(char, value + '0');
 
-  return buffer;
+    *p++ = '-';
+
+    /* value is 2-digit day */
+    value = date->day;
+    d = RASQAL_GOOD_CAST(unsigned int, (value / 10));
+    *p++ = RASQAL_GOOD_CAST(char, d + '0');
+    value -= RASQAL_GOOD_CAST(int, d * 10);
+    *p++ = RASQAL_GOOD_CAST(char, value + '0');
+
+    if (tz_string_len) {
+        memcpy(p, timezone_string, RASQAL_GOOD_CAST(size_t, tz_string_len));
+        p += tz_string_len;
+    }
+
+    *p = '\0';
+
+    return buffer;
 }
 
 
@@ -1207,10 +1194,9 @@ rasqal_xsd_date_to_counted_string(const rasqal_xsd_date *date, size_t *len_p)
  *
  * Return value: lexical form string or NULL on failure.
  */
-char*
-rasqal_xsd_date_to_string(const rasqal_xsd_date *d)
-{
-  return rasqal_xsd_date_to_counted_string(d, NULL);
+char *
+rasqal_xsd_date_to_string(const rasqal_xsd_date *d) {
+    return rasqal_xsd_date_to_counted_string(d, NULL);
 }
 
 
@@ -1225,66 +1211,64 @@ rasqal_xsd_date_to_string(const rasqal_xsd_date *d)
  */
 static unsigned int
 days_per_month(int month, int year) {
-  switch(month) {
-    case 1:
-    case 3:
-    case 5:
-    case 7:
-    case 8:
-    case 10:
-    case 12:
-      return 31;
-  
-    case 4:
-    case 6:
-    case 9:
-    case 11:
-      return 30;
-  
-    case 2:
-      /* any of bottom 2 bits non-zero -> not 0 mod 4 -> not leap year */
-      if(year & 3)
-        return 28;
+    switch (month) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            return 31;
 
-      /* 0 mod 400 and 0 mod 4 -> leap year */
-      if(!(year % 400))
-        return 29;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            return 30;
 
-      /* 0 mod 100 and not 0 mod 400 and 0 mod 4 -> not leap year */
-      if(!(year % 100))
-        return 28;
+        case 2:
+            /* any of bottom 2 bits non-zero -> not 0 mod 4 -> not leap year */
+            if (year & 3)
+                return 28;
 
-      /* other 0 mod 4 years -> leap year */
-      return 29;
+            /* 0 mod 400 and 0 mod 4 -> leap year */
+            if (!(year % 400))
+                return 29;
 
-    default:
-       /* error */
-      return 0;
-  }
+            /* 0 mod 100 and not 0 mod 400 and 0 mod 4 -> not leap year */
+            if (!(year % 100))
+                return 28;
+
+            /* other 0 mod 4 years -> leap year */
+            return 29;
+
+        default:
+            /* error */
+            return 0;
+    }
 }
 
 
 int
-rasqal_xsd_datetime_check(const char* string)
-{
-  rasqal_xsd_datetime d;
-  
-  /* This should be correct according to 
-   * http://www.w3.org/TR/xmlschema-2/#dateTime
-   */
-  return !rasqal_xsd_datetime_parse(string, &d, 1);
+rasqal_xsd_datetime_check(const char *string) {
+    rasqal_xsd_datetime d;
+
+    /* This should be correct according to
+     * http://www.w3.org/TR/xmlschema-2/#dateTime
+     */
+    return !rasqal_xsd_datetime_parse(string, &d, 1);
 }
 
 
 int
-rasqal_xsd_date_check(const char* string)
-{
-  rasqal_xsd_date d;
-  
-  /* This should be correct according to 
-   * http://www.w3.org/TR/xmlschema-2/#date
-   */
-  return !rasqal_xsd_date_parse(string, &d);
+rasqal_xsd_date_check(const char *string) {
+    rasqal_xsd_date d;
+
+    /* This should be correct according to
+     * http://www.w3.org/TR/xmlschema-2/#date
+     */
+    return !rasqal_xsd_date_parse(string, &d);
 }
 
 
@@ -1302,38 +1286,37 @@ rasqal_xsd_date_check(const char* string)
  **/
 int
 rasqal_xsd_datetime_set_from_timeval(rasqal_xsd_datetime *dt,
-                                     struct timeval *tv)
-{
-  struct tm* my_time;
+                                     struct timeval *tv) {
+    struct tm *my_time;
 #ifdef HAVE_GMTIME_R
-  struct tm time_buf;
+    struct tm time_buf;
 #endif
-  time_t sec;
+    time_t sec;
 
-  if(!dt || !tv)
-    return 1;
+    if (!dt || !tv)
+        return 1;
 
-  sec = (time_t)tv->tv_sec;
+    sec = (time_t) tv->tv_sec;
 #ifdef HAVE_GMTIME_R
-  memset(&time_buf, '\0', sizeof(time_buf));
-  my_time = gmtime_r(&sec, &time_buf);
+    memset(&time_buf, '\0', sizeof(time_buf));
+    my_time = gmtime_r(&sec, &time_buf);
 #else
-  my_time = gmtime(&sec);
+    my_time = gmtime(&sec);
 #endif
-  if(!my_time)
-    return 1;
+    if (!my_time)
+        return 1;
 
-  dt->year = my_time->tm_year + TM_YEAR_ORIGIN;
-  dt->month = RASQAL_GOOD_CAST(unsigned char, my_time->tm_mon + TM_MONTH_ORIGIN);
-  dt->day = RASQAL_GOOD_CAST(unsigned char, my_time->tm_mday);
-  dt->hour = RASQAL_GOOD_CAST(signed char, my_time->tm_hour);
-  dt->minute = RASQAL_GOOD_CAST(signed char, my_time->tm_min);
-  dt->second = RASQAL_GOOD_CAST(signed char, my_time->tm_sec);
-  dt->microseconds = RASQAL_GOOD_CAST(int, tv->tv_usec);
-  dt->timezone_minutes = 0; /* always Zulu time */
-  dt->have_tz = 'Z';
-  
-  return 0;
+    dt->year = my_time->tm_year + TM_YEAR_ORIGIN;
+    dt->month = RASQAL_GOOD_CAST(unsigned char, my_time->tm_mon + TM_MONTH_ORIGIN);
+    dt->day = RASQAL_GOOD_CAST(unsigned char, my_time->tm_mday);
+    dt->hour = RASQAL_GOOD_CAST(signed char, my_time->tm_hour);
+    dt->minute = RASQAL_GOOD_CAST(signed char, my_time->tm_min);
+    dt->second = RASQAL_GOOD_CAST(signed char, my_time->tm_sec);
+    dt->microseconds = RASQAL_GOOD_CAST(int, tv->tv_usec);
+    dt->timezone_minutes = 0; /* always Zulu time */
+    dt->have_tz = 'Z';
+
+    return 0;
 }
 
 
@@ -1347,18 +1330,17 @@ rasqal_xsd_datetime_set_from_timeval(rasqal_xsd_datetime *dt,
  * Returns: non-0 on failure
  **/
 int
-rasqal_xsd_datetime_set_from_unixtime(rasqal_xsd_datetime* dt,
-                                      time_t secs)
-{
-  struct timeval tv;
+rasqal_xsd_datetime_set_from_unixtime(rasqal_xsd_datetime *dt,
+                                      time_t secs) {
+    struct timeval tv;
 
-  if(!dt)
-    return 1;
-  
-  tv.tv_sec = secs;
-  tv.tv_usec = 0;
+    if (!dt)
+        return 1;
 
-  return rasqal_xsd_datetime_set_from_timeval(dt, &tv);
+    tv.tv_sec = secs;
+    tv.tv_usec = 0;
+
+    return rasqal_xsd_datetime_set_from_timeval(dt, &tv);
 }
 
 
@@ -1371,33 +1353,32 @@ rasqal_xsd_datetime_set_from_unixtime(rasqal_xsd_datetime* dt,
  * Returns: unix seconds or 0 if @dt is NULL
  **/
 time_t
-rasqal_xsd_datetime_get_as_unixtime(rasqal_xsd_datetime* dt)
-{
-  struct tm time_buf;
+rasqal_xsd_datetime_get_as_unixtime(rasqal_xsd_datetime *dt) {
+    struct tm time_buf;
 
-  if(!dt)
-    return 0;
-  
-  memset(&time_buf, '\0', sizeof(time_buf));
+    if (!dt)
+        return 0;
 
-  time_buf.tm_year = dt->year - TM_YEAR_ORIGIN;
-  time_buf.tm_mon  = dt->month - TM_MONTH_ORIGIN;
-  time_buf.tm_mday = dt->day;
-  time_buf.tm_hour = dt->hour;
-  time_buf.tm_min  = dt->minute;
-  time_buf.tm_sec  = dt->second;
-  time_buf.tm_wday = 0;
-  time_buf.tm_yday = 0;
-  time_buf.tm_isdst = -1;
+    memset(&time_buf, '\0', sizeof(time_buf));
+
+    time_buf.tm_year = dt->year - TM_YEAR_ORIGIN;
+    time_buf.tm_mon = dt->month - TM_MONTH_ORIGIN;
+    time_buf.tm_mday = dt->day;
+    time_buf.tm_hour = dt->hour;
+    time_buf.tm_min = dt->minute;
+    time_buf.tm_sec = dt->second;
+    time_buf.tm_wday = 0;
+    time_buf.tm_yday = 0;
+    time_buf.tm_isdst = -1;
 
 #ifdef HAVE_TM_GMTOFF
-  if(dt->timezone_minutes == RASQAL_XSD_DATETIME_NO_TZ)
-    time_buf.tm_gmtoff = 0;
-  else
-    time_buf.tm_gmtoff = dt->timezone_minutes * 60;
+    if (dt->timezone_minutes == RASQAL_XSD_DATETIME_NO_TZ)
+        time_buf.tm_gmtoff = 0;
+    else
+        time_buf.tm_gmtoff = dt->timezone_minutes * 60;
 #endif
 
-  return rasqal_timegm(&time_buf);
+    return rasqal_timegm(&time_buf);
 }
 
 
@@ -1412,22 +1393,21 @@ rasqal_xsd_datetime_get_as_unixtime(rasqal_xsd_datetime* dt)
  *
  * Returns: pointer to a new timeval structure or NULL on failure
  **/
-struct timeval*
-rasqal_xsd_datetime_get_as_timeval(rasqal_xsd_datetime *dt)
-{
-  struct timeval *tv;
-  
-  if(!dt)
-    return NULL;
-  
-  tv = RASQAL_CALLOC(struct timeval*, 1, sizeof(*tv));
-  if(!tv)
-    return NULL;
-  
-  tv->tv_sec = rasqal_xsd_datetime_get_as_unixtime(dt);
-  tv->tv_usec = dt->microseconds;
-  
-  return tv;
+struct timeval *
+rasqal_xsd_datetime_get_as_timeval(rasqal_xsd_datetime *dt) {
+    struct timeval *tv;
+
+    if (!dt)
+        return NULL;
+
+    tv = RASQAL_CALLOC(struct timeval*, 1, sizeof(*tv));
+    if (!tv)
+        return NULL;
+
+    tv->tv_sec = rasqal_xsd_datetime_get_as_unixtime(dt);
+    tv->tv_usec = dt->microseconds;
+
+    return tv;
 }
 
 
@@ -1443,85 +1423,84 @@ rasqal_xsd_datetime_get_as_timeval(rasqal_xsd_datetime *dt)
  *
  * Returns: pointer to a new string or NULL on failure
  **/
-char*
+char *
 rasqal_xsd_datetime_get_timezone_as_counted_string(rasqal_xsd_datetime *dt,
-                                                   size_t *len_p)
-{
-  /* timezone duration as implemented here is a signed integer number
-   * of seconds like +- 14 hours:minutes (no days or larger units, no
-   * seconds or smaller).
-   *
-   * When written in the canonical format, a restricted
-   * xsd:dayTimeDuration format, it is constraint to a format like -?PThhmm
-   *
-   * For example: -PT14H59M PT14H59M and PT0S for a zero timezone offset
-   */
+                                                   size_t *len_p) {
+    /* timezone duration as implemented here is a signed integer number
+     * of seconds like +- 14 hours:minutes (no days or larger units, no
+     * seconds or smaller).
+     *
+     * When written in the canonical format, a restricted
+     * xsd:dayTimeDuration format, it is constraint to a format like -?PThhmm
+     *
+     * For example: -PT14H59M PT14H59M and PT0S for a zero timezone offset
+     */
 #define TZ_STR_SIZE 10
-  char* tz_str;
-  char* p;
-  int minutes;
-  unsigned int hours;
-  
-  if(!dt)
-    return NULL;
+    char *tz_str;
+    char *p;
+    int minutes;
+    unsigned int hours;
 
-  minutes = dt->timezone_minutes;
-  if(minutes == RASQAL_XSD_DATETIME_NO_TZ)
-    return NULL;
-  
-  tz_str = RASQAL_MALLOC(char*, TZ_STR_SIZE + 1);
-  if(!tz_str)
-    return NULL;
-  
-  p = tz_str;
+    if (!dt)
+        return NULL;
 
-  if(minutes < 0) {
-    *p++ = '-';
-    minutes = -minutes;
-  }
+    minutes = dt->timezone_minutes;
+    if (minutes == RASQAL_XSD_DATETIME_NO_TZ)
+        return NULL;
 
-  *p++ = 'P';
-  *p++ = 'T';
-    
-  hours = RASQAL_GOOD_CAST(unsigned int, (minutes / 60));
-  if(hours) {
-#if 1
-    if(hours > 9) {
-      *p++ = RASQAL_GOOD_CAST(char, '0' + (hours / 10));
-      hours %= 10;
+    tz_str = RASQAL_MALLOC(char*, TZ_STR_SIZE + 1);
+    if (!tz_str)
+        return NULL;
+
+    p = tz_str;
+
+    if (minutes < 0) {
+        *p++ = '-';
+        minutes = -minutes;
     }
-    *p++ = RASQAL_GOOD_CAST(char, '0' + hours);
-    *p++ = 'H';
-#else
-    p += sprintf(p, "%dH", hours);
-#endif
-    minutes -= RASQAL_GOOD_CAST(int, hours * 60);
-  }
-  
-  if(minutes) {
+
+    *p++ = 'P';
+    *p++ = 'T';
+
+    hours = RASQAL_GOOD_CAST(unsigned int, (minutes / 60));
+    if (hours) {
 #if 1
-    if(minutes > 9) {
-      *p++ = RASQAL_GOOD_CAST(char, '0' + (minutes / 10));
-      minutes %= 10;
-    }
-    *p++ = RASQAL_GOOD_CAST(char, '0' + minutes);
-    *p++ = 'M';
+        if (hours > 9) {
+            *p++ = RASQAL_GOOD_CAST(char, '0' + (hours / 10));
+            hours %= 10;
+        }
+        *p++ = RASQAL_GOOD_CAST(char, '0' + hours);
+        *p++ = 'H';
 #else
-    p += sprintf(p, "%dM", minutes);
+        p += sprintf(p, "%dH", hours);
 #endif
-  }
+        minutes -= RASQAL_GOOD_CAST(int, hours * 60);
+    }
 
-  if(!dt->timezone_minutes) {
-    *p++ = '0';
-    *p++ = 'S';
-  }
-  
-  *p = '\0';
+    if (minutes) {
+#if 1
+        if (minutes > 9) {
+            *p++ = RASQAL_GOOD_CAST(char, '0' + (minutes / 10));
+            minutes %= 10;
+        }
+        *p++ = RASQAL_GOOD_CAST(char, '0' + minutes);
+        *p++ = 'M';
+#else
+        p += sprintf(p, "%dM", minutes);
+#endif
+    }
 
-  if(len_p)
-    *len_p = RASQAL_GOOD_CAST(size_t, p - tz_str);
-  
-  return tz_str;
+    if (!dt->timezone_minutes) {
+        *p++ = '0';
+        *p++ = 'S';
+    }
+
+    *p = '\0';
+
+    if (len_p)
+        *len_p = RASQAL_GOOD_CAST(size_t, p - tz_str);
+
+    return tz_str;
 }
 
 
@@ -1537,28 +1516,27 @@ rasqal_xsd_datetime_get_timezone_as_counted_string(rasqal_xsd_datetime *dt,
  *
  * Returns: pointer to a new string or NULL on failure
  **/
-char*
-rasqal_xsd_datetime_get_tz_as_counted_string(rasqal_xsd_datetime* dt,
-                                             size_t *len_p)
-{
-  char* s;
-  
-  s = RASQAL_MALLOC(char*, TIMEZONE_BUFFER_LEN + 1);
-  if(!s)
+char *
+rasqal_xsd_datetime_get_tz_as_counted_string(rasqal_xsd_datetime *dt,
+                                             size_t *len_p) {
+    char *s;
+
+    s = RASQAL_MALLOC(char*, TIMEZONE_BUFFER_LEN + 1);
+    if (!s)
+        return NULL;
+
+    if (rasqal_xsd_timezone_format(dt->timezone_minutes, dt->have_tz,
+                                   s, TIMEZONE_BUFFER_LEN + 1) < 0)
+        goto failed;
+
+    if (len_p)
+        *len_p = TIMEZONE_BUFFER_LEN;
+
+    return s;
+
+    failed:
+    RASQAL_FREE(char*, s);
     return NULL;
-
-  if(rasqal_xsd_timezone_format(dt->timezone_minutes, dt->have_tz,
-                                s, TIMEZONE_BUFFER_LEN + 1) < 0)
-    goto failed;
-
-  if(len_p)
-    *len_p = TIMEZONE_BUFFER_LEN;
-  
-  return s;
-
-  failed:
-  RASQAL_FREE(char*, s);
-  return NULL;
 }
 
 
@@ -1571,43 +1549,43 @@ rasqal_xsd_datetime_get_tz_as_counted_string(rasqal_xsd_datetime* dt,
  *
  * Return value: new datetime or NULL on failure
  */
-rasqal_xsd_date*
-rasqal_new_xsd_date(rasqal_world* world, const char *date_string)
-{
-  rasqal_xsd_datetime dt_result; /* on stack */
-  rasqal_xsd_date* d;
-  int rc = 0;
-  
-  d = RASQAL_CALLOC(rasqal_xsd_date*, 1, sizeof(*d));
-  if(!d)
-    return NULL;
-  
-  rc = rasqal_xsd_datetime_parse(date_string, &dt_result, 0);
-  if(!rc) {
-    d->year = dt_result.year;
-    d->month = dt_result.month;
-    d->day = dt_result.day;
-    d->timezone_minutes = dt_result.timezone_minutes;
-    d->have_tz = dt_result.have_tz;
+rasqal_xsd_date *
+rasqal_new_xsd_date(rasqal_world *world, const char *date_string) {
+    rasqal_xsd_datetime dt_result; /* on stack */
+    rasqal_xsd_date *d;
+    int rc = 0;
 
-    dt_result.hour   = 12; /* Noon */
-    dt_result.minute =  0;
-    dt_result.second =  0;
-    dt_result.microseconds = 0;
+    d = RASQAL_CALLOC(rasqal_xsd_date*, 1, sizeof(*d));
+    if (!d)
+        return NULL;
 
-    rc = rasqal_xsd_datetime_normalize(&dt_result);
+    rc = rasqal_xsd_datetime_parse(date_string, &dt_result, 0);
+    if (!rc) {
+        d->year = dt_result.year;
+        d->month = dt_result.month;
+        d->day = dt_result.day;
+        d->timezone_minutes = dt_result.timezone_minutes;
+        d->have_tz = dt_result.have_tz;
 
-    /* Track the starting instant as determined by the timezone */
-    d->time_on_timeline = dt_result.time_on_timeline;
-    if(d->timezone_minutes != RASQAL_XSD_DATETIME_NO_TZ)
-      d->time_on_timeline += (60 * dt_result.timezone_minutes);
-  }
+        dt_result.hour = 12; /* Noon */
+        dt_result.minute = 0;
+        dt_result.second = 0;
+        dt_result.microseconds = 0;
 
-  if(rc) {
-    rasqal_free_xsd_date(d); d = NULL;
-  }
+        rc = rasqal_xsd_datetime_normalize(&dt_result);
 
-  return d;
+        /* Track the starting instant as determined by the timezone */
+        d->time_on_timeline = dt_result.time_on_timeline;
+        if (d->timezone_minutes != RASQAL_XSD_DATETIME_NO_TZ)
+            d->time_on_timeline += (60 * dt_result.timezone_minutes);
+    }
+
+    if (rc) {
+        rasqal_free_xsd_date(d);
+        d = NULL;
+    }
+
+    return d;
 }
 
 
@@ -1618,12 +1596,11 @@ rasqal_new_xsd_date(rasqal_world* world, const char *date_string)
  * Destroy XSD date object.
  **/
 void
-rasqal_free_xsd_date(rasqal_xsd_date* d)
-{
-  if(!d)
-    return;
-  
-  RASQAL_FREE(rasqal_xsd_date, d);
+rasqal_free_xsd_date(rasqal_xsd_date *d) {
+    if (!d)
+        return;
+
+    RASQAL_FREE(rasqal_xsd_date, d);
 }
 
 
@@ -1640,10 +1617,9 @@ rasqal_free_xsd_date(rasqal_xsd_date* d)
 int
 rasqal_xsd_date_equals(const rasqal_xsd_date *d1,
                        const rasqal_xsd_date *d2,
-                       int *incomparible_p)
-{
-  int cmp = rasqal_xsd_date_compare(d1, d2, incomparible_p);
-  return !cmp;
+                       int *incomparible_p) {
+    int cmp = rasqal_xsd_date_compare(d1, d2, incomparible_p);
+    return !cmp;
 }
 
 
@@ -1664,25 +1640,24 @@ rasqal_xsd_date_equals(const rasqal_xsd_date *d1,
 int
 rasqal_xsd_date_compare(const rasqal_xsd_date *d1,
                         const rasqal_xsd_date *d2,
-                        int *incomparible_p)
-{
-  if(incomparible_p)
-    *incomparible_p = 0;
+                        int *incomparible_p) {
+    if (incomparible_p)
+        *incomparible_p = 0;
 
-  /* Handle NULLs */
-  if(!d1 || !d2) {
-    /* NULLs sort earlier. equal only if both are NULL */
-    if(!d1 && !d2)
-      return 0;
+    /* Handle NULLs */
+    if (!d1 || !d2) {
+        /* NULLs sort earlier. equal only if both are NULL */
+        if (!d1 && !d2)
+            return 0;
 
-    return (!d1) ? -1 : 1;
-  }
+        return (!d1) ? -1 : 1;
+    }
 
-  return rasqal_xsd_timeline_compare(d1->time_on_timeline, 0 /* msec */,
-                                     d1->timezone_minutes,
-                                     d2->time_on_timeline, 0 /* msec */,
-                                     d2->timezone_minutes,
-                                     incomparible_p);
+    return rasqal_xsd_timeline_compare(d1->time_on_timeline, 0 /* msec */,
+                                       d1->timezone_minutes,
+                                       d2->time_on_timeline, 0 /* msec */,
+                                       d2->timezone_minutes,
+                                       incomparible_p);
 }
 
 
@@ -1960,9 +1935,9 @@ main(int argc, char *argv[])
      rasqal_xsd_datetime_to_string and
      rasqal_xsd_datetime_string_to_canonical */
   
-  #define PARSE_AND_NORMALIZE_DATETIME(_s,_d) \
+#define PARSE_AND_NORMALIZE_DATETIME(_s,_d) \
     test_datetime_parse_and_normalize(_s, _d)
-  
+
   /* generic */
 
   MYASSERT(!rasqal_xsd_datetime_to_string(0));
@@ -1971,9 +1946,9 @@ main(int argc, char *argv[])
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("uhgsufi",0));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME(0 ,&dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("fsdhufhdsuifhidu", &dt));
-  
+
   /* year */
-  
+
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("123-12-12T12:12:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("-123-12-12T12:12:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("0000-12-12T12:12:12Z", &dt));
@@ -1983,14 +1958,14 @@ main(int argc, char *argv[])
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("-1234b12-12T12:12:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("g162-12-12T12:12:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("5476574658746587465874-12-12T12:12:12Z", &dt));
-  
+
   MYASSERT(test_datetime_parser_tostring("1234-12-12T12:12:12Z", "1234-12-12T12:12:12Z") == 0);
   MYASSERT(test_datetime_parser_tostring("-1234-12-12T12:12:12Z", "-1234-12-12T12:12:12Z") == 0);
   MYASSERT(test_datetime_parser_tostring("1234567890-12-12T12:12:12Z", "1234567890-12-12T12:12:12Z") == 0);
   MYASSERT(test_datetime_parser_tostring("-1234567890-12-12T12:12:12Z", "-1234567890-12-12T12:12:12Z") == 0);
-  
+
   /* month */
-  
+
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-v-12T12:12:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-00-12T12:12:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("PARSE_AND_NORMALIZE-011-12T12:12:12Z", &dt));
@@ -2000,14 +1975,14 @@ main(int argc, char *argv[])
   MYASSERT(test_datetime_parser_tostring("2004-01-01T12:12:12Z", "2004-01-01T12:12:12Z") == 0);
 
   /* day */
-  
+
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-ffT12:12:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-00T12:12:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-007T12:12:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-32T12:12:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01t12:12:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01- 1T12:12:12Z", &dt));
-  
+
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2005-02-29T12:12:12Z", &dt));
   MYASSERT(!PARSE_AND_NORMALIZE_DATETIME("2005-02-28T12:12:12Z", &dt));
   MYASSERT(!PARSE_AND_NORMALIZE_DATETIME("2004-02-29T12:12:12Z", &dt));
@@ -2015,7 +1990,7 @@ main(int argc, char *argv[])
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("1900-02-29T12:12:12Z", &dt));
 
   MYASSERT(test_datetime_parser_tostring("2012-04-12T12:12:12Z", "2012-04-12T12:12:12Z") == 0);
-  
+
   /* hour */
 
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01Tew:12:12Z", &dt));
@@ -2023,22 +1998,22 @@ main(int argc, char *argv[])
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T001:12:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T25:12:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T01.12:12Z", &dt));
-  
+
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T24:12:00Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T24:00:34Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T24:12:34Z", &dt));
   MYASSERT(!PARSE_AND_NORMALIZE_DATETIME("2004-01-01T24:00:00Z", &dt));
-  
+
   MYASSERT(test_datetime_parser_tostring("2012-04-12T24:00:00", "2012-04-13T00:00:00") == 0);
-  
+
   /* minute */
-  
+
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T12:ij:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T12:-1:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T12:042:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T12:69:12Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T12:12.12Z", &dt));
-  
+
   /* second */
 
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T12:12:ijZ", &dt));
@@ -2046,11 +2021,11 @@ main(int argc, char *argv[])
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T12:12:054Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T12:12:69Z", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T12:12:12z", &dt));
-  
+
   MYASSERT(!PARSE_AND_NORMALIZE_DATETIME("2004-01-01T12:12:12", &dt));
-  
+
   /* fraction second */
-  
+
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T12:12:12.", &dt));
   MYASSERT(PARSE_AND_NORMALIZE_DATETIME("2004-01-01T12:12:12.i", &dt));
   MYASSERT(!PARSE_AND_NORMALIZE_DATETIME("2004-01-01T12:12:12.0", &dt));
@@ -2100,7 +2075,7 @@ main(int argc, char *argv[])
 
   /* DATE */
 
-  #define PARSE_AND_NORMALIZE_DATE(_s,_d) \
+#define PARSE_AND_NORMALIZE_DATE(_s,_d) \
     test_date_parse_and_normalize(_s, _d)
   
   /* generic */

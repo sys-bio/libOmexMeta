@@ -18,10 +18,7 @@ namespace redland {
     protected:
 
         // starts as empty statement
-        std::shared_ptr<librdf_statement> statement_ = std::shared_ptr<librdf_statement>(
-                librdf_new_statement(World::getWorld()),
-                librdf_free_statement
-        );
+        librdf_statement *statement_ = librdf_new_statement(World::getWorld());
 
         /*
          * @brief update the contained statement with current
@@ -33,17 +30,35 @@ namespace redland {
     protected:
         explicit LibrdfStatement(librdf_statement *statement);
 
+    public:
+        bool operator==(const LibrdfStatement &rhs) const;
+
+        bool operator!=(const LibrdfStatement &rhs) const;
+
+    protected:
         LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
     public:
 
         LibrdfStatement() = default;
 
-        LibrdfStatement(const LibrdfNode& subject, const LibrdfNode& predicate, const LibrdfNode& resource);
+        LibrdfStatement(const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource);
 
         static LibrdfStatement fromRawStatementPtr(librdf_statement *statement);
 
         static LibrdfStatement fromRawNodePtrs(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+
+        LibrdfStatement(const LibrdfStatement &statement);
+
+        LibrdfStatement(LibrdfStatement &&statement) noexcept;
+
+        LibrdfStatement &operator=(const LibrdfStatement &statement);
+
+        LibrdfStatement &operator=(LibrdfStatement &&statement) noexcept;
+
+        ~LibrdfStatement() = default;
+
+        void freeStatement();
 
         [[nodiscard]] librdf_statement *get() const;
 
@@ -66,6 +81,8 @@ namespace redland {
         void setResource(librdf_node *node);
 
         void setPredicate(librdf_node *node);
+
+        bool isComplete();
     };
 
 

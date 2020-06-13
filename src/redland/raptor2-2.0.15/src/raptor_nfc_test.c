@@ -41,6 +41,7 @@
 #include <string.h>
 #include <ctype.h> /* for isprint() */
 #include <stdarg.h>
+
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
 #endif
@@ -61,232 +62,225 @@
  */
 static size_t
 decode_to_utf8(unsigned char *utf8_string, size_t utf8_string_length,
-               const char *unicode_string, const char *end)
-{
-  unsigned char *u = utf8_string;
-  const char *p = unicode_string;
-  
-#ifdef RAPTOR_NFC_DECODE_DEBUG
-  fputs("decode_to_utf8: string '", stderr);
-  (void)fwrite(unicode_string, sizeof(char), (end-unicode_string) + 1, stderr);
-  fputs("' converts to:\n  ", stderr);
-#endif
-
-  while(p < end) {
-    unsigned long c = 0;
-    char *endptr;
-    int unicode_width;
-
-    if(*p == ' ') {
-      p++;
-      continue;
-    }
-    
-    c = (unsigned long)strtol(p, &endptr, 16);
+               const char *unicode_string, const char *end) {
+    unsigned char *u = utf8_string;
+    const char *p = unicode_string;
 
 #ifdef RAPTOR_NFC_DECODE_DEBUG
-    fprintf(stderr, "U+%04lX ", c);
+    fputs("decode_to_utf8: string '", stderr);
+    (void)fwrite(unicode_string, sizeof(char), (end-unicode_string) + 1, stderr);
+    fputs("' converts to:\n  ", stderr);
 #endif
 
-    p = (const char*)endptr;
-    
-    unichar_width = raptor_unicode_utf8_string_put_char(c, u, (end-p));
-    if(unichar_width < 0) {
-      fprintf(stderr,
-              "decode_to_utf8 Illegal Unicode character with code point #x%lX.", 
-              unichar);
-      break;
-    }
+    while (p < end) {
+        unsigned long c = 0;
+        char *endptr;
+        int unicode_width;
 
-    u += (size_t)unichar_width;
-    
-    if((u-utf8_string) > RAPTOR_GOOD_CAST(int, utf8_string_length)) {
-      fprintf(stderr,
-              "decode_to_utf8 overwrote utf8_string buffer at byte %ld\n",
-              (u-utf8_string));
-      abort();
-    }
-  }
+        if (*p == ' ') {
+            p++;
+            continue;
+        }
+
+        c = (unsigned long) strtol(p, &endptr, 16);
 
 #ifdef RAPTOR_NFC_DECODE_DEBUG
-  fputs("\n", stderr);
+        fprintf(stderr, "U+%04lX ", c);
 #endif
 
-  return u-utf8_string;
+        p = (const char *) endptr;
+
+        unichar_width = raptor_unicode_utf8_string_put_char(c, u, (end - p));
+        if (unichar_width < 0) {
+            fprintf(stderr,
+                    "decode_to_utf8 Illegal Unicode character with code point #x%lX.",
+                    unichar);
+            break;
+        }
+
+        u += (size_t) unichar_width;
+
+        if ((u - utf8_string) > RAPTOR_GOOD_CAST(int, utf8_string_length)) {
+            fprintf(stderr,
+                    "decode_to_utf8 overwrote utf8_string buffer at byte %ld\n",
+                    (u - utf8_string));
+            abort();
+        }
+    }
+
+#ifdef RAPTOR_NFC_DECODE_DEBUG
+    fputs("\n", stderr);
+#endif
+
+    return u - utf8_string;
 }
 
 
-
 static void
-utf8_print(const unsigned char *input, size_t length, FILE *stream)
-{
-  size_t i = 0;
-  
-  while(i < length && *input) {
-    unsigned long c;
-    int size = raptor_unicode_utf8_string_get_char(input, length - i, &c);
-    if(size <= 0)
-      return;
+utf8_print(const unsigned char *input, size_t length, FILE *stream) {
+    size_t i = 0;
 
-    if(i)
-      fputc(' ', stream);
-    fprintf(stream, "U+%04X", RAPTOR_GOOD_CAST(int, c));
-    input += size;
-    i += size;
-  }
+    while (i < length && *input) {
+        unsigned long c;
+        int size = raptor_unicode_utf8_string_get_char(input, length - i, &c);
+        if (size <= 0)
+            return;
+
+        if (i)
+            fputc(' ', stream);
+        fprintf(stream, "U+%04X", RAPTOR_GOOD_CAST(
+        int, c));
+        input += size;
+        i += size;
+    }
 }
 
 
 int
-main (int argc, char *argv[]) 
-{
-  const char *program = raptor_basename(argv[0]);
-  const char *filename;
-  FILE *fh;
-  int rc = 0;
-  unsigned int line = 1;
-  size_t max_c2_len = 0;
-  size_t max_c4_len = 0;
-  int passes = 0;
-  int fails = 0;
+main(int argc, char *argv[]) {
+    const char *program = raptor_basename(argv[0]);
+    const char *filename;
+    FILE *fh;
+    int rc = 0;
+    unsigned int line = 1;
+    size_t max_c2_len = 0;
+    size_t max_c4_len = 0;
+    int passes = 0;
+    int fails = 0;
 
-  if(argc != 2) {
-    fprintf(stderr,
-            "USAGE %s [path to NormalizationTest.txt]\n"
-            "Get it at http://unicode.org/Public/UNIDATA/NormalizationTest.txt\n",
-            program);
-    return 1;
-  }
-  
-  filename = argv[1];
-  fh = fopen(filename, "r");
-  if(!fh) {
-    fprintf(stderr, "%s: file '%s' open failed - %s\n",
-            program, filename, strerror(errno));
-    return 1;
-  }
+    if (argc != 2) {
+        fprintf(stderr,
+                "USAGE %s [path to NormalizationTest.txt]\n"
+                "Get it at http://unicode.org/Public/UNIDATA/NormalizationTest.txt\n",
+                program);
+        return 1;
+    }
+
+    filename = argv[1];
+    fh = fopen(filename, "r");
+    if (!fh) {
+        fprintf(stderr, "%s: file '%s' open failed - %s\n",
+                program, filename, strerror(errno));
+        return 1;
+    }
 
 #define LINE_BUFFER_SIZE 1024
 
 /* FIXME big enough for Unicode 4 (c2 max 16; c4 max 33) */
 #define UNISTR_SIZE 40
 
-  for(;!feof(fh); line++) {
-    char buffer[LINE_BUFFER_SIZE];
-    char *p, *start;
-    unsigned char column2[UNISTR_SIZE];
-    unsigned char column4[UNISTR_SIZE];
-    size_t column2_len, column4_len;
-    int nfc_rc;
-    int error;
-    
-    p = fgets(buffer, LINE_BUFFER_SIZE, fh);
-    if(!p) {
-      if(ferror(fh)) {
-        fprintf(stderr, "%s: file '%s' read failed - %s\n",
-                program, filename, strerror(errno));
-        rc = 1;
-        break;
-      }
-      /* assume feof */
-      break;
-    };
+    for (; !feof(fh); line++) {
+        char buffer[LINE_BUFFER_SIZE];
+        char *p, *start;
+        unsigned char column2[UNISTR_SIZE];
+        unsigned char column4[UNISTR_SIZE];
+        size_t column2_len, column4_len;
+        int nfc_rc;
+        int error;
+
+        p = fgets(buffer, LINE_BUFFER_SIZE, fh);
+        if (!p) {
+            if (ferror(fh)) {
+                fprintf(stderr, "%s: file '%s' read failed - %s\n",
+                        program, filename, strerror(errno));
+                rc = 1;
+                break;
+            }
+            /* assume feof */
+            break;
+        };
 
 #if 0
-    fprintf(stderr, "%s:%d: line '%s'\n", program, line, buffer);
+        fprintf(stderr, "%s:%d: line '%s'\n", program, line, buffer);
 #endif
 
-    /* skip lines */
-    if(*p == '@' || *p == '#')
-      continue;
+        /* skip lines */
+        if (*p == '@' || *p == '#')
+            continue;
 
 
-    /* skip column 1 */
-    while(*p++ != ';')
-      ;
+        /* skip column 1 */
+        while (*p++ != ';');
 
-    /* read column 2 into column2, column2_len */
-    start = p;
-    /* find end column 2 */
-    while(*p++ != ';')
-      ;
+        /* read column 2 into column2, column2_len */
+        start = p;
+        /* find end column 2 */
+        while (*p++ != ';');
 
-    column2_len = decode_to_utf8(column2, UNISTR_SIZE, start, p-2);
-    if(column2_len > max_c2_len)
-      max_c2_len = column2_len;
+        column2_len = decode_to_utf8(column2, UNISTR_SIZE, start, p - 2);
+        if (column2_len > max_c2_len)
+            max_c2_len = column2_len;
 
 #if 0
-    fprintf(stderr, "UTF8 column 2 (%ld bytes) is: '", column2_len);
-    utf8_print(column2, column2_len, stderr);
-    fputs("'\n", stderr);
+        fprintf(stderr, "UTF8 column 2 (%ld bytes) is: '", column2_len);
+        utf8_print(column2, column2_len, stderr);
+        fputs("'\n", stderr);
 #endif
 
-    /* skip column 3 */
-    while(*p++ != ';')
-      ;
+        /* skip column 3 */
+        while (*p++ != ';');
 
-    /* read column 4 into column4, column4_len */
-    start = p;
-    /* find end column 4 */
-    while(*p++ != ';')
-      ;
+        /* read column 4 into column4, column4_len */
+        start = p;
+        /* find end column 4 */
+        while (*p++ != ';');
 
-    column4_len = decode_to_utf8(column4, UNISTR_SIZE, start, p-2);
-    if(column4_len > max_c4_len)
-      max_c4_len = column4_len;
+        column4_len = decode_to_utf8(column4, UNISTR_SIZE, start, p - 2);
+        if (column4_len > max_c4_len)
+            max_c4_len = column4_len;
 
 #if 0
-    fprintf(stderr, "UTF8 column 4 (%ld bytes) is: '", column4_len);
-    utf8_print(column4, column4_len, stderr);
-    fputs("'\n", stderr);
+        fprintf(stderr, "UTF8 column 4 (%ld bytes) is: '", column4_len);
+        utf8_print(column4, column4_len, stderr);
+        fputs("'\n", stderr);
 #endif
 
-    if(!raptor_unicode_check_utf8_string(column2, column2_len)) {
-      fprintf(stderr, "%s:%d: UTF8 column 2 failed on: '", filename, line);
-      utf8_print(column2, column2_len, stderr);
-      fputs("'\n", stderr);
-      fails++;
-    } else
-      passes++;
+        if (!raptor_unicode_check_utf8_string(column2, column2_len)) {
+            fprintf(stderr, "%s:%d: UTF8 column 2 failed on: '", filename, line);
+            utf8_print(column2, column2_len, stderr);
+            fputs("'\n", stderr);
+            fails++;
+        } else
+            passes++;
 
-    /* Column 2 must be NFC */
-    nfc_rc = raptor_nfc_check(column2, column2_len, &error);
-    if(!nfc_rc) {
-      fprintf(stderr, "%s:%d: NFC column 2 failed on: '", filename, line);
-      utf8_print(column2, column2_len, stderr);
-      fprintf(stderr, "' at byte %d of %d\n", error, (int)column2_len);
-      fails++;
-    } else
-      passes++;
+        /* Column 2 must be NFC */
+        nfc_rc = raptor_nfc_check(column2, column2_len, &error);
+        if (!nfc_rc) {
+            fprintf(stderr, "%s:%d: NFC column 2 failed on: '", filename, line);
+            utf8_print(column2, column2_len, stderr);
+            fprintf(stderr, "' at byte %d of %d\n", error, (int) column2_len);
+            fails++;
+        } else
+            passes++;
 
-    if(column2_len == column4_len && !memcmp(column2, column4, column2_len))
-      continue;
+        if (column2_len == column4_len && !memcmp(column2, column4, column2_len))
+            continue;
 
-    if(!raptor_unicode_check_utf8_string(column4, column4_len)) {
-      fprintf(stderr, "%s:%d: UTF8 column 4 failed on: '", filename, line);
-      utf8_print(column4, column4_len, stderr);
-      fputs("'\n", stderr);
-      fails++;
-    } else
-      passes++;
+        if (!raptor_unicode_check_utf8_string(column4, column4_len)) {
+            fprintf(stderr, "%s:%d: UTF8 column 4 failed on: '", filename, line);
+            utf8_print(column4, column4_len, stderr);
+            fputs("'\n", stderr);
+            fails++;
+        } else
+            passes++;
 
-    /* Column 4 must be in NFC */
-    nfc_rc = raptor_nfc_check(column4, column4_len, &error);
-    if(!nfc_rc) {
-      fprintf(stderr, "%s:%d: NFC column 4 failed on: '", filename, line);
-      utf8_print(column4, column4_len, stderr);
-      fprintf(stderr, "' at byte %d of %d\n", error, (int)column4_len);
-      fails++;
-    } else
-      passes++;
-  }
+        /* Column 4 must be in NFC */
+        nfc_rc = raptor_nfc_check(column4, column4_len, &error);
+        if (!nfc_rc) {
+            fprintf(stderr, "%s:%d: NFC column 4 failed on: '", filename, line);
+            utf8_print(column4, column4_len, stderr);
+            fprintf(stderr, "' at byte %d of %d\n", error, (int) column4_len);
+            fails++;
+        } else
+            passes++;
+    }
 
-  fclose(fh);
+    fclose(fh);
 
-  fprintf(stderr, "%s: max column 2 len: %d,  max column 4 len: %d\n", program,
-          (int)max_c2_len, (int)max_c4_len);
-  fprintf(stderr, "%s: passes: %d fails: %d\n", program,
-          passes, fails);
+    fprintf(stderr, "%s: max column 2 len: %d,  max column 4 len: %d\n", program,
+            (int) max_c2_len, (int) max_c4_len);
+    fprintf(stderr, "%s: passes: %d fails: %d\n", program,
+            passes, fails);
 
-  return rc;
+    return rc;
 }

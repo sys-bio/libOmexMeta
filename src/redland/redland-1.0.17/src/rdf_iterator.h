@@ -43,7 +43,7 @@ extern "C" {
  *
  * Returns: item in keep the iteration or NULL to remove it
  */
-typedef void* (*librdf_iterator_map_handler)(librdf_iterator *iterator, void *map_context, void *item);
+typedef void *(*librdf_iterator_map_handler)(librdf_iterator *iterator, void *map_context, void *item);
 
 
 /**
@@ -72,40 +72,43 @@ typedef void (*librdf_iterator_map_free_context_handler)(void *map_context);
 */
 /* iterator get_method flags */
 typedef enum {
-  LIBRDF_ITERATOR_GET_METHOD_GET_OBJECT  = 0,
-  LIBRDF_ITERATOR_GET_METHOD_GET_CONTEXT = 1,
-  LIBRDF_ITERATOR_GET_METHOD_GET_KEY     = 2,
-  LIBRDF_ITERATOR_GET_METHOD_GET_VALUE   = 3
+    LIBRDF_ITERATOR_GET_METHOD_GET_OBJECT = 0,
+    LIBRDF_ITERATOR_GET_METHOD_GET_CONTEXT = 1,
+    LIBRDF_ITERATOR_GET_METHOD_GET_KEY = 2,
+    LIBRDF_ITERATOR_GET_METHOD_GET_VALUE = 3
 } librdf_iterator_get_method_flags;
 
 
 REDLAND_API
-librdf_iterator* librdf_new_iterator(librdf_world *world, void *context, int (*is_end_method)(void*), int (*next_method)(void*), void* (*get_method)(void*, int), void (*finished_method)(void*));
+librdf_iterator *
+librdf_new_iterator(librdf_world *world, void *context, int (*is_end_method)(void *), int (*next_method)(void *),
+                    void *(*get_method)(void *, int), void (*finished_method)(void *));
 
 REDLAND_API
-void librdf_free_iterator(librdf_iterator* iterator);
+void librdf_free_iterator(librdf_iterator *iterator);
 
 REDLAND_API
-int librdf_iterator_end(librdf_iterator* iterator);
+int librdf_iterator_end(librdf_iterator *iterator);
 REDLAND_API REDLAND_DEPRECATED
-int librdf_iterator_have_elements(librdf_iterator* iterator);
+int librdf_iterator_have_elements(librdf_iterator *iterator);
 
 REDLAND_API
-int librdf_iterator_next(librdf_iterator* iterator);
+int librdf_iterator_next(librdf_iterator *iterator);
 REDLAND_API
-void* librdf_iterator_get_object(librdf_iterator* iterator);
+void *librdf_iterator_get_object(librdf_iterator *iterator);
 REDLAND_API
-void* librdf_iterator_get_context(librdf_iterator* iterator);
+void *librdf_iterator_get_context(librdf_iterator *iterator);
 REDLAND_API
-void* librdf_iterator_get_key(librdf_iterator* iterator);
+void *librdf_iterator_get_key(librdf_iterator *iterator);
 REDLAND_API
-void* librdf_iterator_get_value(librdf_iterator* iterator);
+void *librdf_iterator_get_value(librdf_iterator *iterator);
 
 REDLAND_API
-int librdf_iterator_add_map(librdf_iterator* iterator, librdf_iterator_map_handler map_function, librdf_iterator_map_free_context_handler free_context, void *map_context);
+int librdf_iterator_add_map(librdf_iterator *iterator, librdf_iterator_map_handler map_function,
+                            librdf_iterator_map_free_context_handler free_context, void *map_context);
 
 REDLAND_API
-librdf_iterator* librdf_new_empty_iterator(librdf_world *world);
+librdf_iterator *librdf_new_empty_iterator(librdf_world *world);
 
 #ifdef __cplusplus
 }

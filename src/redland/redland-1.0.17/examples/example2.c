@@ -37,8 +37,8 @@
 int main(int argc, char *argv[]);
 
 
-static unsigned const char *rdfxml_content=(unsigned const char *)
-"<?xml version=\"1.0\"?>\
+static unsigned const char *rdfxml_content = (unsigned const char *)
+        "<?xml version=\"1.0\"?>\
 <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\
      xmlns:dc=\"http://purl.org/dc/elements/1.1/\">\
   <rdf:Description rdf:about=\"http://www.dajobe.org/\">\
@@ -50,119 +50,122 @@ static unsigned const char *rdfxml_content=(unsigned const char *)
 ";
 
 int
-main(int argc, char *argv[]) 
-{
-  librdf_world* world;
-  librdf_storage* storage;
-  librdf_model* model;
-  librdf_parser* parser;
-  librdf_statement* statement;
-  librdf_uri* uri;
-  char *program=argv[0];
-  int rc=0;
-  raptor_world *raptor_world_ptr;
-  raptor_iostream* iostr;
-  
-  world=librdf_new_world();
-  librdf_world_open(world);
-  raptor_world_ptr = librdf_world_get_raptor(world);
+main(int argc, char *argv[]) {
+    librdf_world *world;
+    librdf_storage *storage;
+    librdf_model *model;
+    librdf_parser *parser;
+    librdf_statement *statement;
+    librdf_uri *uri;
+    char *program = argv[0];
+    int rc = 0;
+    raptor_world *raptor_world_ptr;
+    raptor_iostream *iostr;
 
-  uri=librdf_new_uri(world, (const unsigned char*)"http://example.librdf.org/");
-  
-  if(!uri) {
-    fprintf(stderr, "%s: Failed to create URI\n", program);
-    return(1);
-  }
+    world = librdf_new_world();
+    librdf_world_open(world);
+    raptor_world_ptr = librdf_world_get_raptor(world);
 
-  storage=librdf_new_storage(world, "memory", "test", NULL);
-  if(!storage) {
-    fprintf(stderr, "%s: Failed to create new storage\n", program);
-    rc=1;
-    goto tidyworld;
-  }
+    uri = librdf_new_uri(world, (const unsigned char *) "http://example.librdf.org/");
 
-  model=librdf_new_model(world, storage, NULL);
-  if(!model) {
-    fprintf(stderr, "%s: Failed to create model\n", program);
-    rc=1;
-    goto tidystorage;
-  }
+    if (!uri) {
+        fprintf(stderr, "%s: Failed to create URI\n", program);
+        return (1);
+    }
 
-  parser=librdf_new_parser(world, "rdfxml", NULL, NULL);
-  if(!parser) {
-    fprintf(stderr, "%s: Failed to create new parser 'rdfxml'\n", program);
-    rc=1;
-    goto tidystorage;
-  }
+    storage = librdf_new_storage(world, "memory", "test", NULL);
+    if (!storage) {
+        fprintf(stderr, "%s: Failed to create new storage\n", program);
+        rc = 1;
+        goto tidyworld;
+    }
+
+    model = librdf_new_model(world, storage, NULL);
+    if (!model) {
+        fprintf(stderr, "%s: Failed to create model\n", program);
+        rc = 1;
+        goto tidystorage;
+    }
+
+    parser = librdf_new_parser(world, "rdfxml", NULL, NULL);
+    if (!parser) {
+        fprintf(stderr, "%s: Failed to create new parser 'rdfxml'\n", program);
+        rc = 1;
+        goto tidystorage;
+    }
 
 
-  if(librdf_parser_parse_string_into_model(parser, rdfxml_content, uri, model)) {
-    fprintf(stderr, "%s: Failed to parse RDF into model\n", program);
+    if (librdf_parser_parse_string_into_model(parser, rdfxml_content, uri, model)) {
+        fprintf(stderr, "%s: Failed to parse RDF into model\n", program);
+        librdf_free_uri(uri);
+        rc = 1;
+        goto tidymodel;
+    }
+
+    librdf_free_parser(parser);
+    parser = NULL;
+
     librdf_free_uri(uri);
-    rc=1;
-    goto tidymodel;
-  }
-
-  librdf_free_parser(parser); parser=NULL;
-  
-  librdf_free_uri(uri); uri=NULL;
+    uri = NULL;
 
 
-  statement=librdf_new_statement(world);
-  if(!statement) {
-    fprintf(stderr, "%s: Failed to parse RDF into model\n", program);
-    rc=1;
-    goto tidymodel;
-  }
-  
-  librdf_statement_set_subject(statement, 
-                               librdf_new_node_from_uri_string(world, (const unsigned char*)"http://example.org/subject"));
-  
-  librdf_statement_set_predicate(statement,
-                                   librdf_new_node_from_uri_string(world, (const unsigned char*)"http://example.org/pred1"));
-  
-  librdf_statement_set_object(statement,
-                              librdf_new_node_from_literal(world, (const unsigned char*)"object", NULL, 0));
-  
-  librdf_model_add_statement(model, statement);
+    statement = librdf_new_statement(world);
+    if (!statement) {
+        fprintf(stderr, "%s: Failed to parse RDF into model\n", program);
+        rc = 1;
+        goto tidymodel;
+    }
 
-  fprintf(stdout, "%s: Resulting model is:\n", program);
-  iostr = raptor_new_iostream_to_file_handle(raptor_world_ptr, stdout);
-  librdf_model_write(model, iostr);
-  raptor_free_iostream(iostr);
+    librdf_statement_set_subject(statement,
+                                 librdf_new_node_from_uri_string(world,
+                                                                 (const unsigned char *) "http://example.org/subject"));
 
-  if(!librdf_model_contains_statement(model, statement)) {
-    fprintf(stdout, "%s: Model does not contain statement\n", program);
-    rc=1;
-    goto tidystatement;
-  } else
-    fprintf(stdout, "%s: Model contains the statement\n", program);
+    librdf_statement_set_predicate(statement,
+                                   librdf_new_node_from_uri_string(world,
+                                                                   (const unsigned char *) "http://example.org/pred1"));
+
+    librdf_statement_set_object(statement,
+                                librdf_new_node_from_literal(world, (const unsigned char *) "object", NULL, 0));
+
+    librdf_model_add_statement(model, statement);
+
+    fprintf(stdout, "%s: Resulting model is:\n", program);
+    iostr = raptor_new_iostream_to_file_handle(raptor_world_ptr, stdout);
+    librdf_model_write(model, iostr);
+    raptor_free_iostream(iostr);
+
+    if (!librdf_model_contains_statement(model, statement)) {
+        fprintf(stdout, "%s: Model does not contain statement\n", program);
+        rc = 1;
+        goto tidystatement;
+    } else
+        fprintf(stdout, "%s: Model contains the statement\n", program);
 
 
-  fprintf(stdout, "%s: Removing the statement\n", program);
-  librdf_model_remove_statement(model, statement);
+    fprintf(stdout, "%s: Removing the statement\n", program);
+    librdf_model_remove_statement(model, statement);
 
-  fprintf(stdout, "%s: Resulting model is:\n", program);
-  iostr = raptor_new_iostream_to_file_handle(raptor_world_ptr, stdout);
-  librdf_model_write(model, iostr);
-  raptor_free_iostream(iostr);
+    fprintf(stdout, "%s: Resulting model is:\n", program);
+    iostr = raptor_new_iostream_to_file_handle(raptor_world_ptr, stdout);
+    librdf_model_write(model, iostr);
+    raptor_free_iostream(iostr);
 
- tidystatement:
-  librdf_free_statement(statement);
+    tidystatement:
+    librdf_free_statement(statement);
 
- tidymodel:
-  librdf_free_model(model);
+    tidymodel:
+    librdf_free_model(model);
 
- tidystorage:
-  librdf_free_storage(storage);
+    tidystorage:
+    librdf_free_storage(storage);
 
- tidyworld:
-  librdf_free_world(world);
+    tidyworld:
+    librdf_free_world(world);
 
 #ifdef LIBRDF_MEMORY_DEBUG
-  librdf_memory_report(stderr);
+    librdf_memory_report(stderr);
 #endif
-	
-  /* keep gcc -Wall happy */
-  return(rc);
+
+    /* keep gcc -Wall happy */
+    return (rc);
 }

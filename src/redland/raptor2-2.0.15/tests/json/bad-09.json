@@ -1,11 +1,20 @@
 /* bad-07.json - Document with a integer value */
 
 {
-  "triples" : [
+  "triples": [
     {
-      "subject"   : { "type" : "uri", "value" : "http://example.org/about" },
-      "predicate" : { "type" : "uri", "value" : "http://purl.org/dc/elements/1.1/creator" },
-      "object"    : { "type" : "literal", "value" : 44 }
+      "subject": {
+        "type": "uri",
+        "value": "http://example.org/about"
+      },
+      "predicate": {
+        "type": "uri",
+        "value": "http://purl.org/dc/elements/1.1/creator"
+      },
+      "object": {
+        "type": "literal",
+        "value": 44
+      }
     }
   ]
 }

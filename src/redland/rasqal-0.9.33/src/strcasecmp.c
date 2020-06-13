@@ -7,7 +7,9 @@
  */
 
 #ifdef HAVE_CONFIG_H
+
 #include <rasqal_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -25,37 +27,35 @@
 #ifndef STANDALONE
 
 int
-rasqal_strcasecmp(const char* s1, const char* s2)
-{
-  register int c1, c2;
-  
-  while(*s1 && *s2) {
-    c1 = tolower(RASQAL_GOOD_CAST(int, *s1));
-    c2 = tolower(RASQAL_GOOD_CAST(int, *s2));
-    if (c1 != c2)
-      return (c1 - c2);
-    s1++;
-    s2++;
-  }
-  return RASQAL_GOOD_CAST(int, (*s1 - *s2));
+rasqal_strcasecmp(const char *s1, const char *s2) {
+    register int c1, c2;
+
+    while (*s1 && *s2) {
+        c1 = tolower(RASQAL_GOOD_CAST(int, *s1));
+        c2 = tolower(RASQAL_GOOD_CAST(int, *s2));
+        if (c1 != c2)
+            return (c1 - c2);
+        s1++;
+        s2++;
+    }
+    return RASQAL_GOOD_CAST(int, (*s1 - *s2));
 }
 
 
 int
-rasqal_strncasecmp(const char* s1, const char* s2, size_t n)
-{
-  register int c1, c2;
-  
-  while(*s1 && *s2 && n) {
-    c1 = tolower(RASQAL_GOOD_CAST(int, *s1));
-    c2 = tolower(RASQAL_GOOD_CAST(int, *s2));
-    if (c1 != c2)
-      return (c1 - c2);
-    s1++;
-    s2++;
-    n--;
-  }
-  return 0;
+rasqal_strncasecmp(const char *s1, const char *s2, size_t n) {
+    register int c1, c2;
+
+    while (*s1 && *s2 && n) {
+        c1 = tolower(RASQAL_GOOD_CAST(int, *s1));
+        c2 = tolower(RASQAL_GOOD_CAST(int, *s2));
+        if (c1 != c2)
+            return (c1 - c2);
+        s1++;
+        s2++;
+        n--;
+    }
+    return 0;
 }
 
 #endif /* not STANDALONE */

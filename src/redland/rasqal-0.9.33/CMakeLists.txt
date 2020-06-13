@@ -27,7 +27,6 @@ set(LIBMTWIST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libmtwist)
 set(GETOPT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/getopt)
 
 
-
 ######################################################################################3
 #   validate some files in rasqal exist
 #

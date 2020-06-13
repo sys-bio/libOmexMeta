@@ -11,10 +11,10 @@
 
 namespace semsim {
 
-    PhysicalProcess::PhysicalProcess(librdf_model *model, Subject metaid,
-                                     PhysicalPropertyResource physicalProperty, Sources sources, Sinks sinks,
+    PhysicalProcess::PhysicalProcess(librdf_model *model,
+                                     const PhysicalProperty& physicalProperty, Sources sources, Sinks sinks,
                                      Mediators mediators)
-            : PhysicalPhenomenon(model, metaid, std::move(physicalProperty), PHYSICAL_PROCESS),
+            : PhysicalPhenomenon(model, physicalProperty, PHYSICAL_PROCESS),
               sources_(std::move(sources)), sinks_(std::move(sinks)), mediators_(std::move(std::move(mediators))) {
 
     }
@@ -35,62 +35,20 @@ namespace semsim {
         return mediators_;
     }
 
-    Triples PhysicalProcess::toTriples() {
-        if (!getAbout().isSet()) {
-            throw AnnotationBuilderException(
-                    "PhysicalProcess::toTriples(): Cannot create"
-                    " triples because the \"about\" information is not set. "
-                    "Use the setAbout() method."
-            );
-        }
-        if (!getPhysicalProperty().isSet()) {
-            throw AnnotationBuilderException(
-                    "PhysicalProcess::toTriples(): Cannot create"
-                    " triples because the \"physical_property\" information is not set. "
-                    "Use the setPhysicalProperty() method."
-            );
-        }
-
-
-        std::string process_metaid = SemsimUtils::generateUniqueMetaid(model_, "PhysicalProcess",
-                                                                       std::vector<std::string>());
-
-        Triples triples = physical_property_.toTriples(about.str(), process_metaid);
-        // todo see note on physical entity::toTriples
-        about.free();
-
-        for (auto &source: sources_) {
-            for (auto &triple: source.toTriples(process_metaid)) {
-                triples.push_back(triple);
-            }
-        }
-        for (auto &sink: sinks_) {
-            for (auto &triple: sink.toTriples(process_metaid)) {
-                triples.push_back(triple);
-            }
-        }
-        for (auto &mediator: mediators_) {
-            for (auto &triple: mediator.toTriples(process_metaid)) {
-                triples.push_back(triple);
-            }
-        }
-        return triples;
-    }
-
-    PhysicalProcess &PhysicalProcess::setAbout(std::string metaid) {
-        about = Subject::fromRawPtr(LibrdfNode::fromUriString(metaid).get());
+    PhysicalProcess &PhysicalProcess::setAbout(const std::string& metaid) {
+        physical_property_.setSubject(metaid);
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::setPhysicalProperty(PhysicalPropertyResource physicalProperty) {
+    PhysicalProcess &PhysicalProcess::setPhysicalProperty(PhysicalProperty physicalProperty) {
         physical_property_ = std::move(physicalProperty);
         return (*this);
     }
 
 //todo turn this into a factory whereby user enters string of PhysicalProperty
 //  and we automatically pick out the correct OPB identifier
-    PhysicalProcess &PhysicalProcess::setPhysicalProperty(const std::string &physicalProperty) {
-        physical_property_ = PhysicalPropertyResource(physicalProperty);
+    PhysicalProcess &PhysicalProcess::setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty) {
+        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty);
         return (*this);
     }
 
@@ -157,5 +115,57 @@ namespace semsim {
         }
     }
 
+    bool PhysicalProcess::operator==(const PhysicalProcess &rhs) const {
+        return static_cast<const semsim::PhysicalPhenomenon &>(*this) ==
+               static_cast<const semsim::PhysicalPhenomenon &>(rhs) &&
+               sources_ == rhs.sources_ &&
+               sinks_ == rhs.sinks_ &&
+               mediators_ == rhs.mediators_;
+    }
+
+    bool PhysicalProcess::operator!=(const PhysicalProcess &rhs) const {
+        return !(rhs == *this);
+    }
+
+
+    Triples PhysicalProcess::toTriples() {
+        if (getAbout().empty()) {
+            throw AnnotationBuilderException(
+                    "PhysicalProcess::toTriples(): Cannot create"
+                    " triples because the \"about\" information is not set. "
+                    "Use the setAbout() method."
+            );
+        }
+        if (getPhysicalProperty().getResourceStr().empty()) {
+            throw AnnotationBuilderException(
+                    "PhysicalProcess::toTriples(): Cannot create"
+                    " triples because the \"physical_property\" information is not set. "
+                    "Use the setPhysicalProperty() method."
+            );
+        }
+
+
+        std::string process_metaid = SemsimUtils::generateUniqueMetaid(model_, "PhysicalProcess",
+                                                                       std::vector<std::string>());
+
+        Triples triples = physical_property_.toTriples(process_metaid);
+
+        for (auto &source: sources_) {
+            for (auto &triple: source.toTriples(process_metaid)) {
+                triples.move_back(triple);
+            }
+        }
+        for (auto &sink: sinks_) {
+            for (auto &triple: sink.toTriples(process_metaid)) {
+                triples.move_back(triple);
+            }
+        }
+        for (auto &mediator: mediators_) {
+            for (auto &triple: mediator.toTriples(process_metaid)) {
+                triples.move_back(triple);
+            }
+        }
+        return triples;
+    }
 
 }

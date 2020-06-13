@@ -44,125 +44,124 @@ typedef struct rasqal_world_s rasqal_world;
 #endif
 #endif
 
-struct librdf_world_s
-{
-  void *error_user_data;
-  librdf_log_level_func error_handler;
+struct librdf_world_s {
+    void *error_user_data;
+    librdf_log_level_func error_handler;
 
-  void *warning_user_data;
-  librdf_log_level_func warning_handler;
+    void *warning_user_data;
+    librdf_log_level_func warning_handler;
 
-  void *log_user_data;
-  librdf_log_func log_handler;
+    void *log_user_data;
+    librdf_log_func log_handler;
 
-  /* static (last) log message */
-  librdf_log_message log;
+    /* static (last) log message */
+    librdf_log_message log;
 
-  char *digest_factory_name;
-  librdf_digest_factory* digest_factory;
+    char *digest_factory_name;
+    librdf_digest_factory *digest_factory;
 
-  /* URI interning */
-  librdf_hash* uris_hash;
-  int uris_hash_allocated_here;
+    /* URI interning */
+    librdf_hash *uris_hash;
+    int uris_hash_allocated_here;
 
-  /* Node interning */
-  librdf_hash* nodes_hash[3]; /* resource, literal, blank */
+    /* Node interning */
+    librdf_hash *nodes_hash[3]; /* resource, literal, blank */
 
-  /* Sequence of model factories */
-  raptor_sequence* models;
-  
-  /* Sequence of storage factories */
-  raptor_sequence* storages;
-  
-  /* Sequence of parser factories */
-  raptor_sequence* parsers;
+    /* Sequence of model factories */
+    raptor_sequence *models;
 
-  /* Sequence of serializer factories */
-  raptor_sequence* serializers;
+    /* Sequence of storage factories */
+    raptor_sequence *storages;
 
-  /* List of query factories */
-  librdf_query_factory* query_factories;
+    /* Sequence of parser factories */
+    raptor_sequence *parsers;
 
-  /* List of digest factories */
-  librdf_digest_factory *digests;
+    /* Sequence of serializer factories */
+    raptor_sequence *serializers;
 
-  /* list of hash factories */
-  librdf_hash_factory* hashes;
+    /* List of query factories */
+    librdf_query_factory *query_factories;
 
-  /* list of free librdf_hash_datums is kept */
-  librdf_hash_datum* hash_datums_list;
+    /* List of digest factories */
+    librdf_digest_factory *digests;
 
-   /* hash load_factor out of 1000 */
-  int hash_load_factor;
+    /* list of hash factories */
+    librdf_hash_factory *hashes;
 
-  /* ID base from startup time */
-  unsigned long genid_base;
+    /* list of free librdf_hash_datums is kept */
+    librdf_hash_datum *hash_datums_list;
 
-  /* Unique counter from there */
-  unsigned long genid_counter;
+    /* hash load_factor out of 1000 */
+    int hash_load_factor;
+
+    /* ID base from startup time */
+    unsigned long genid_base;
+
+    /* Unique counter from there */
+    unsigned long genid_counter;
 
 #ifdef WITH_THREADS
-  /* mutex so we can lock around this when we need to */
-  pthread_mutex_t* mutex;
+    /* mutex so we can lock around this when we need to */
+    pthread_mutex_t* mutex;
 
-  /* mutex to lock the nodes class */
-  pthread_mutex_t* nodes_mutex;
+    /* mutex to lock the nodes class */
+    pthread_mutex_t* nodes_mutex;
 
-  /* mutex to lock the statements class */
-  pthread_mutex_t* statements_mutex;
+    /* mutex to lock the statements class */
+    pthread_mutex_t* statements_mutex;
 
-  /* mutex to lock the hash_datums class */
-  pthread_mutex_t* hash_datums_mutex;
+    /* mutex to lock the hash_datums class */
+    pthread_mutex_t* hash_datums_mutex;
 #else
-  /* !WITH_THREADS - pad structure to same size */
-  void* mutex_fake;
-  void* nodes_mutex_fake;
-  void* statements_mutex_fake;
-  void* hash_datums_mutex_fake;
+    /* !WITH_THREADS - pad structure to same size */
+    void *mutex_fake;
+    void *nodes_mutex_fake;
+    void *statements_mutex_fake;
+    void *hash_datums_mutex_fake;
 #endif
 
-  /* non-0 if librdf_world_open() has been called */
-  int opened;
+    /* non-0 if librdf_world_open() has been called */
+    int opened;
 
-  /* Sequence of storage modules
-   * Used with --enable-modular / MODULAR_LIBRDF
-   */
-  raptor_sequence* storage_modules;
+    /* Sequence of storage modules
+     * Used with --enable-modular / MODULAR_LIBRDF
+     */
+    raptor_sequence *storage_modules;
 
-  /* If libtdl has been opened with lt_dlinit()
-   * Used with --enable-modular / MODULAR_LIBRDF
-   */
-  int ltdl_opened;
+    /* If libtdl has been opened with lt_dlinit()
+     * Used with --enable-modular / MODULAR_LIBRDF
+     */
+    int ltdl_opened;
 
-  /* librdf_concepts RDF syntax and Schema namespace uris */
-  librdf_uri* concept_ms_namespace_uri;
-  librdf_uri* concept_schema_namespace_uri;
+    /* librdf_concepts RDF syntax and Schema namespace uris */
+    librdf_uri *concept_ms_namespace_uri;
+    librdf_uri *concept_schema_namespace_uri;
 
-  /* librdf_concepts nodes and uris */
-  librdf_uri** concept_uris;
-  librdf_node** concept_resources;
+    /* librdf_concepts nodes and uris */
+    librdf_uri **concept_uris;
+    librdf_node **concept_resources;
 
-  /* rasqal world object */
-  rasqal_world* rasqal_world_ptr;
-  int rasqal_world_allocated_here;
-  
-  /* raptor world object */
-  raptor_world* raptor_world_ptr;
-  int raptor_world_allocated_here;
+    /* rasqal world object */
+    rasqal_world *rasqal_world_ptr;
+    int rasqal_world_allocated_here;
 
-  /* bnode id (raptor => internal) map during parsing */
-  librdf_hash *bnode_hash;
+    /* raptor world object */
+    raptor_world *raptor_world_ptr;
+    int raptor_world_allocated_here;
 
-  librdf_raptor_init_handler raptor_init_handler;
-  void* raptor_init_handler_user_data;
+    /* bnode id (raptor => internal) map during parsing */
+    librdf_hash *bnode_hash;
 
-  librdf_rasqal_init_handler rasqal_init_handler;
-  void* rasqal_init_handler_user_data;
+    librdf_raptor_init_handler raptor_init_handler;
+    void *raptor_init_handler_user_data;
 
-  librdf_uri* xsd_namespace_uri;
+    librdf_rasqal_init_handler rasqal_init_handler;
+    void *rasqal_init_handler_user_data;
+
+    librdf_uri *xsd_namespace_uri;
 };
 
-unsigned char* librdf_world_get_genid(librdf_world* world);
+unsigned char *librdf_world_get_genid(librdf_world *world);
 
 
 #ifdef __cplusplus

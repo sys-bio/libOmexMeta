@@ -23,7 +23,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <raptor_config.h>
+
 #endif
 
 /* Raptor includes */
@@ -69,131 +71,131 @@
 
 /* (number of terms in RDF NS) + 1: for final sentinel row */
 const raptor_rdf_ns_term_info raptor_rdf_ns_terms_info[RDF_NS_LAST + 2] = {
-  /* term allowed boolean flags:
-   *  node element; property element; property attr; unprefixed attr
-   */
-  /* syntax only */
-  { "RDF",             RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 0 }, /* just root */
-  { "Description",     RAPTOR_TERM_TYPE_UNKNOWN, 1, 0, 0, 0 },
-  { "li",              RAPTOR_TERM_TYPE_UNKNOWN, 0, 1, 0, 0 },
-  { "about",           RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 1 },
-  { "aboutEach",       RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 0 }, /* deprecated */
-  { "aboutEachPrefix", RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 0 }, /* deprecated */
-  { "ID",              RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 1 },
-  { "bagID",           RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 1 },
-  { "resource",        RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 1 },
-  { "parseType",       RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 1 },
-  { "nodeID",          RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 0 },
-  { "datatype",        RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 0 },
+        /* term allowed boolean flags:
+         *  node element; property element; property attr; unprefixed attr
+         */
+        /* syntax only */
+        {"RDF",             RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 0}, /* just root */
+        {"Description",     RAPTOR_TERM_TYPE_UNKNOWN, 1, 0, 0, 0},
+        {"li",              RAPTOR_TERM_TYPE_UNKNOWN, 0, 1, 0, 0},
+        {"about",           RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 1},
+        {"aboutEach",       RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 0}, /* deprecated */
+        {"aboutEachPrefix", RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 0}, /* deprecated */
+        {"ID",              RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 1},
+        {"bagID",           RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 1},
+        {"resource",        RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 1},
+        {"parseType",       RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 1},
+        {"nodeID",          RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 0},
+        {"datatype",        RAPTOR_TERM_TYPE_UNKNOWN, 0, 0, 0, 0},
 
-  /* rdf:Property-s */                                     
-  { "type",            RAPTOR_TERM_TYPE_URI    , 1, 1, 1, 1 },
-  { "value",           RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
-  { "subject",         RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
-  { "predicate",       RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
-  { "object",          RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
-  { "first",           RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
-  { "rest",            RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
+        /* rdf:Property-s */
+        {"type",            RAPTOR_TERM_TYPE_URI,     1, 1, 1, 1},
+        {"value",           RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
+        {"subject",         RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
+        {"predicate",       RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
+        {"object",          RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
+        {"first",           RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
+        {"rest",            RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
 
-  /* rdfs:Class-s */
-  { "Seq",             RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
-  { "Bag",             RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
-  { "Alt",             RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
-  { "Statement",       RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
-  { "Property",        RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
-  { "List",            RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
+        /* rdfs:Class-s */
+        {"Seq",             RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
+        {"Bag",             RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
+        {"Alt",             RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
+        {"Statement",       RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
+        {"Property",        RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
+        {"List",            RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
 
-  /* rdfs:Resource-s */                                    
-  { "nil",             RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
+        /* rdfs:Resource-s */
+        {"nil",             RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
 
-  /* datatypes */
-  { "XMLLiteral",      RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
-  { "PlainLiteral",    RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
-  /* RDF 1.1 */
-  /* http://www.w3.org/TR/2013/WD-rdf11-concepts-20130723/#section-html */
-  { "HTML",            RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
-  /* http://www.w3.org/TR/2013/WD-rdf11-concepts-20130723/#section-Datatypes */
-  { "langString",      RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0 },
+        /* datatypes */
+        {"XMLLiteral",      RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
+        {"PlainLiteral",    RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
+        /* RDF 1.1 */
+        /* http://www.w3.org/TR/2013/WD-rdf11-concepts-20130723/#section-html */
+        {"HTML",            RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
+        /* http://www.w3.org/TR/2013/WD-rdf11-concepts-20130723/#section-Datatypes */
+        {"langString",      RAPTOR_TERM_TYPE_LITERAL, 1, 1, 1, 0},
 
-  /* internal */
-  { NULL ,             RAPTOR_TERM_TYPE_UNKNOWN, 1, 1, 1, 0 }
+        /* internal */
+        {NULL,              RAPTOR_TERM_TYPE_UNKNOWN, 1, 1, 1, 0}
 };
 
 
-
 int
-raptor_concepts_init(raptor_world* world)
-{
-  int i;
-  
-  for(i = 0; i < RDF_NS_LAST + 1; i++) {
-    unsigned char* name = (unsigned char*)raptor_rdf_ns_terms_info[i].name;
-    world->concepts[i] = raptor_new_uri_for_rdf_concept(world, name);
-    if(!world->concepts[i])
-      return 1;
+raptor_concepts_init(raptor_world *world) {
+    int i;
 
-    /* only make a term for things that are not syntax-only */
-    /* OR use:
-       raptor_rdf_ns_terms_info[i].allowed_as_nodeElement ||
-       raptor_rdf_ns_terms_info[i].allowed_as_propertyElement ||
-       raptor_rdf_ns_terms_info[i].allowed_as_propertyAttribute)
-    */
-    if(i > RDF_NS_LAST_SYNTAX_TERM) {
-      world->terms[i] = raptor_new_term_from_uri(world, world->concepts[i]);
-      if(!world->terms[i])
-        return 1;
+    for (i = 0; i < RDF_NS_LAST + 1; i++) {
+        unsigned char *name = (unsigned char *) raptor_rdf_ns_terms_info[i].name;
+        world->concepts[i] = raptor_new_uri_for_rdf_concept(world, name);
+        if (!world->concepts[i])
+            return 1;
+
+        /* only make a term for things that are not syntax-only */
+        /* OR use:
+           raptor_rdf_ns_terms_info[i].allowed_as_nodeElement ||
+           raptor_rdf_ns_terms_info[i].allowed_as_propertyElement ||
+           raptor_rdf_ns_terms_info[i].allowed_as_propertyAttribute)
+        */
+        if (i > RDF_NS_LAST_SYNTAX_TERM) {
+            world->terms[i] = raptor_new_term_from_uri(world, world->concepts[i]);
+            if (!world->terms[i])
+                return 1;
+        }
     }
-  }
 
-  world->xsd_namespace_uri = raptor_new_uri(world, raptor_xmlschema_datatypes_namespace_uri);
-  if(!world->xsd_namespace_uri)
-    return 1;
+    world->xsd_namespace_uri = raptor_new_uri(world, raptor_xmlschema_datatypes_namespace_uri);
+    if (!world->xsd_namespace_uri)
+        return 1;
 
-  world->xsd_boolean_uri = raptor_new_uri_from_uri_local_name(world, world->xsd_namespace_uri, (const unsigned char*)"boolean");
-  if(!world->xsd_boolean_uri)
-    return 1;
+    world->xsd_boolean_uri = raptor_new_uri_from_uri_local_name(world, world->xsd_namespace_uri,
+                                                                (const unsigned char *) "boolean");
+    if (!world->xsd_boolean_uri)
+        return 1;
 
-  world->xsd_decimal_uri = raptor_new_uri_from_uri_local_name(world, world->xsd_namespace_uri, (const unsigned char*)"decimal");
-  if(!world->xsd_decimal_uri)
-    return 1;
+    world->xsd_decimal_uri = raptor_new_uri_from_uri_local_name(world, world->xsd_namespace_uri,
+                                                                (const unsigned char *) "decimal");
+    if (!world->xsd_decimal_uri)
+        return 1;
 
-  world->xsd_double_uri = raptor_new_uri_from_uri_local_name(world, world->xsd_namespace_uri, (const unsigned char*)"double");
-  if(!world->xsd_double_uri)
-    return 1;
+    world->xsd_double_uri = raptor_new_uri_from_uri_local_name(world, world->xsd_namespace_uri,
+                                                               (const unsigned char *) "double");
+    if (!world->xsd_double_uri)
+        return 1;
 
-  world->xsd_integer_uri = raptor_new_uri_from_uri_local_name(world, world->xsd_namespace_uri, (const unsigned char*)"integer");
-  if(!world->xsd_integer_uri)
-    return 1;
+    world->xsd_integer_uri = raptor_new_uri_from_uri_local_name(world, world->xsd_namespace_uri,
+                                                                (const unsigned char *) "integer");
+    if (!world->xsd_integer_uri)
+        return 1;
 
-  return 0;
+    return 0;
 }
 
 
-
 void
-raptor_concepts_finish(raptor_world* world)
-{
-  int i;
-  
-  for(i = 0; i < RDF_NS_LAST + 1; i++) {
-    raptor_uri* concept_uri = world->concepts[i];
-    if(concept_uri) {
-      raptor_free_uri(concept_uri);
-      world->concepts[i] = NULL;
+raptor_concepts_finish(raptor_world *world) {
+    int i;
+
+    for (i = 0; i < RDF_NS_LAST + 1; i++) {
+        raptor_uri *concept_uri = world->concepts[i];
+        if (concept_uri) {
+            raptor_free_uri(concept_uri);
+            world->concepts[i] = NULL;
+        }
+        if (world->terms[i])
+            raptor_free_term(world->terms[i]);
     }
-    if(world->terms[i])
-      raptor_free_term(world->terms[i]);
-  }
 
-  if(world->xsd_boolean_uri)
-    raptor_free_uri(world->xsd_boolean_uri);
-  if(world->xsd_decimal_uri)
-    raptor_free_uri(world->xsd_decimal_uri);
-  if(world->xsd_double_uri)
-    raptor_free_uri(world->xsd_double_uri);
-  if(world->xsd_integer_uri)
-    raptor_free_uri(world->xsd_integer_uri);
+    if (world->xsd_boolean_uri)
+        raptor_free_uri(world->xsd_boolean_uri);
+    if (world->xsd_decimal_uri)
+        raptor_free_uri(world->xsd_decimal_uri);
+    if (world->xsd_double_uri)
+        raptor_free_uri(world->xsd_double_uri);
+    if (world->xsd_integer_uri)
+        raptor_free_uri(world->xsd_integer_uri);
 
-  if(world->xsd_namespace_uri)
-    raptor_free_uri(world->xsd_namespace_uri);
+    if (world->xsd_namespace_uri)
+        raptor_free_uri(world->xsd_namespace_uri);
 }

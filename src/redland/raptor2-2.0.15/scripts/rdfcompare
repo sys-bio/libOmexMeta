@@ -5,19 +5,18 @@
 # Needs an external utility to do a true graph compare.
 #
 
-
-PROGRAM=`basename $0`
+PROGRAM=$(basename $0)
 
 CMP=cmp
 DIFF=diff
 
 tmpdiff=/tmp/rdfcompare$$
 
-if [ $# -lt 1 ] ; then
-    echo "$PROGRAM: compare two RDF graphs for isomorphism" 1>&2
-    echo "USAGE: $PROGRAM RDF-FILE-1 RDF-FILE-2" 1>&2
-    echo "where both files are RDF graphs serialized as N-Triples" 1>&2
-    exit 0
+if [ $# -lt 1 ]; then
+  echo "$PROGRAM: compare two RDF graphs for isomorphism" 1>&2
+  echo "USAGE: $PROGRAM RDF-FILE-1 RDF-FILE-2" 1>&2
+  echo "where both files are RDF graphs serialized as N-Triples" 1>&2
+  exit 0
 fi
 
 # Try a simple compare first
@@ -30,7 +29,7 @@ fi
 echo "$program: Doing an RDF graph compare" 1>&2
 
 if test "X$NTC" != X; then
-  $NTC $1 $2 > $tmpdiff 2>&1
+  $NTC $1 $2 >$tmpdiff 2>&1
   status=$?
   if test $status != 0; then
     $DIFF -u $1 $2
@@ -44,7 +43,7 @@ elif test "X$JENAROOT" != X; then
     $DIFF -u $1 $2
   fi
 else
-  $DIFF -u $1 $2 > $tmpdiff
+  $DIFF -u $1 $2 >$tmpdiff
   status=$?
   if test $status != 0; then
     cat $tmpdiff

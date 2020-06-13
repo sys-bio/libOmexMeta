@@ -24,7 +24,9 @@
 
 
 #ifdef HAVE_CONFIG_H
+
 #include <rdf_config.h>
+
 #endif
 
 #ifdef WIN32
@@ -33,8 +35,11 @@
 
 #include <stdio.h>
 #include <string.h>
+
 #ifdef HAVE_STDLIB_H
+
 #include <stdlib.h> /* for exit()  */
+
 #endif
 
 #include <redland.h>
@@ -49,10 +54,9 @@
  *
  **/
 void
-librdf_init_model(librdf_world *world)
-{
-  /* Always have model storage - must always be the default model */
-  librdf_init_model_storage(world);
+librdf_init_model(librdf_world *world) {
+    /* Always have model storage - must always be the default model */
+    librdf_init_model_storage(world);
 }
 
 
@@ -64,12 +68,11 @@ librdf_init_model(librdf_world *world)
  *
  **/
 void
-librdf_finish_model(librdf_world *world)
-{
-  if(world->models) {
-    raptor_free_sequence(world->models);
-    world->models=NULL;
-  }
+librdf_finish_model(librdf_world *world) {
+    if (world->models) {
+        raptor_free_sequence(world->models);
+        world->models = NULL;
+    }
 }
 
 
@@ -82,23 +85,20 @@ librdf_finish_model(librdf_world *world)
  * Return value: non-0 if contexts are supported
  **/
 int
-librdf_model_supports_contexts(librdf_model* model)
-{
-  return model->supports_contexts;
+librdf_model_supports_contexts(librdf_model *model) {
+    return model->supports_contexts;
 }
-
 
 
 /* class methods */
 
 static void
-librdf_free_model_factory(librdf_model_factory* factory)
-{
-  if(factory->name)
-    LIBRDF_FREE(librdf_model_factory, factory->name);
-  if(factory->label)
-    LIBRDF_FREE(librdf_model_factory, factory->label);
-  LIBRDF_FREE(librdf_model_factory, factory);
+librdf_free_model_factory(librdf_model_factory *factory) {
+    if (factory->name)
+        LIBRDF_FREE(librdf_model_factory, factory->name);
+    if (factory->label)
+        LIBRDF_FREE(librdf_model_factory, factory->label);
+    LIBRDF_FREE(librdf_model_factory, factory);
 }
 
 
@@ -114,67 +114,66 @@ librdf_free_model_factory(librdf_model_factory* factory)
  **/
 REDLAND_EXTERN_C
 void
-librdf_model_register_factory(librdf_world *world, 
+librdf_model_register_factory(librdf_world *world,
                               const char *name, const char *label,
-                              void (*factory) (librdf_model_factory*)) 
-{
-  librdf_model_factory *model;
-  int i;
+                              void (*factory)(librdf_model_factory *)) {
+    librdf_model_factory *model;
+    int i;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
 #if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 1
-  LIBRDF_DEBUG2("Received registration for model %s\n", name);
+    LIBRDF_DEBUG2("Received registration for model %s\n", name);
 #endif
 
-  if(!world->models) {
-    world->models = raptor_new_sequence((raptor_data_free_handler)librdf_free_model_factory, NULL);
+    if (!world->models) {
+        world->models = raptor_new_sequence((raptor_data_free_handler) librdf_free_model_factory, NULL);
 
-    if(!world->models)
-      goto oom;
-  }
-  
-  for(i=0;
-      (model=(librdf_model_factory*)raptor_sequence_get_at(world->models, i));
-      i++) {
-    if(!strcmp(model->name, name)) {
-      librdf_log(world,
-                 0, LIBRDF_LOG_ERROR, LIBRDF_FROM_MODEL, NULL,
-                 "model %s already registered", model->name);
-      return;
+        if (!world->models)
+            goto oom;
     }
-  }
 
-  model = LIBRDF_CALLOC(librdf_model_factory*, 1, sizeof(*model));
-  if(!model)
-    goto oom;
+    for (i = 0;
+         (model = (librdf_model_factory *) raptor_sequence_get_at(world->models, i));
+         i++) {
+        if (!strcmp(model->name, name)) {
+            librdf_log(world,
+                       0, LIBRDF_LOG_ERROR, LIBRDF_FROM_MODEL, NULL,
+                       "model %s already registered", model->name);
+            return;
+        }
+    }
 
-  model->name = LIBRDF_MALLOC(char*, strlen(name) + 1);
-  if(!model->name)
-    goto oom_tidy;
-  strcpy(model->name, name);
+    model = LIBRDF_CALLOC(librdf_model_factory*, 1, sizeof(*model));
+    if (!model)
+        goto oom;
 
-  model->label = LIBRDF_MALLOC(char*, strlen(label) + 1);
-  if(!model->label)
-    goto oom_tidy;
-  strcpy(model->label, label);
+    model->name = LIBRDF_MALLOC(char*, strlen(name) + 1);
+    if (!model->name)
+        goto oom_tidy;
+    strcpy(model->name, name);
 
-  if(raptor_sequence_push(world->models, model))
-    goto oom;
+    model->label = LIBRDF_MALLOC(char*, strlen(label) + 1);
+    if (!model->label)
+        goto oom_tidy;
+    strcpy(model->label, label);
 
-  /* Call the model registration function on the new object */
-  (*factory)(model);
-  
+    if (raptor_sequence_push(world->models, model))
+        goto oom;
+
+    /* Call the model registration function on the new object */
+    (*factory)(model);
+
 #if defined(LIBRDF_DEBUG) && LIBRDF_DEBUG > 1
-  LIBRDF_DEBUG3("%s has context size %d\n", name, model->context_length);
+    LIBRDF_DEBUG3("%s has context size %d\n", name, model->context_length);
 #endif
 
-  return;
+    return;
 
-  oom_tidy:
-  librdf_free_model_factory(model);
-  oom:
-  LIBRDF_FATAL1(world, LIBRDF_FROM_MODEL, "Out of memory");
+    oom_tidy:
+    librdf_free_model_factory(model);
+    oom:
+    LIBRDF_FATAL1(world, LIBRDF_FROM_MODEL, "Out of memory");
 }
 
 
@@ -187,37 +186,36 @@ librdf_model_register_factory(librdf_world *world,
  * 
  * Return value: the factory object or NULL if there is no such factory
  **/
-librdf_model_factory*
-librdf_get_model_factory(librdf_world* world, const char *name) 
-{
-  librdf_model_factory *factory;
+librdf_model_factory *
+librdf_get_model_factory(librdf_world *world, const char *name) {
+    librdf_model_factory *factory;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  /* return 1st model if no particular one wanted - why? */
-  if(!name) {
-    factory=(librdf_model_factory *)raptor_sequence_get_at(world->models, 0);
-    if(!factory) {
-      LIBRDF_DEBUG1("No (default) models registered\n");
-      return NULL;
+    /* return 1st model if no particular one wanted - why? */
+    if (!name) {
+        factory = (librdf_model_factory *) raptor_sequence_get_at(world->models, 0);
+        if (!factory) {
+            LIBRDF_DEBUG1("No (default) models registered\n");
+            return NULL;
+        }
+    } else {
+        int i;
+
+        for (i = 0;
+             (factory = (librdf_model_factory *) raptor_sequence_get_at(world->models, i));
+             i++) {
+            if (!strcmp(factory->name, name))
+                break;
+        }
+        /* else FACTORY name not found */
+        if (!factory) {
+            LIBRDF_DEBUG2("No model with name %s found\n", name);
+            return NULL;
+        }
     }
-  } else {
-    int i;
-    
-    for(i=0;
-        (factory=(librdf_model_factory*)raptor_sequence_get_at(world->models, i));
-        i++) {
-      if(!strcmp(factory->name, name))
-        break;
-    }
-    /* else FACTORY name not found */
-    if(!factory) {
-      LIBRDF_DEBUG2("No model with name %s found\n", name);
-      return NULL;
-    }
-  }
-        
-  return factory;
+
+    return factory;
 }
 
 
@@ -233,27 +231,26 @@ librdf_get_model_factory(librdf_world* world, const char *name)
  * Return value: non 0 on failure of if counter is out of range
  **/
 int
-librdf_model_enumerate(librdf_world* world,
+librdf_model_enumerate(librdf_world *world,
                        const unsigned int counter,
-                       const char **name, const char **label)
-{
-  librdf_model_factory *factory;
-  int ioffset = LIBRDF_GOOD_CAST(int, counter);
+                       const char **name, const char **label) {
+    librdf_model_factory *factory;
+    int ioffset = LIBRDF_GOOD_CAST(int, counter);
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  factory = (librdf_model_factory*)raptor_sequence_get_at(world->models,
-                                                          ioffset);
-  if(!factory)
-    return 1;
-  
-  if(name)
-    *name = factory->name;
+    factory = (librdf_model_factory *) raptor_sequence_get_at(world->models,
+                                                              ioffset);
+    if (!factory)
+        return 1;
 
-  if(label)
-    *label = factory->label;
+    if (name)
+        *name = factory->name;
 
-  return 0;
+    if (label)
+        *label = factory->label;
+
+    return 0;
 }
 
 
@@ -270,31 +267,31 @@ librdf_model_enumerate(librdf_world* world,
  *
  * Return value: a new #librdf_model object or NULL on failure
  */
-librdf_model*
-librdf_new_model (librdf_world *world,
-                  librdf_storage *storage, const char *options_string) {
-  librdf_hash* options_hash;
-  librdf_model *model;
+librdf_model *
+librdf_new_model(librdf_world *world,
+                 librdf_storage *storage, const char *options_string) {
+    librdf_hash *options_hash;
+    librdf_model *model;
 
-  librdf_world_open(world);
+    librdf_world_open(world);
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
 
-  if(!storage)
-    return NULL;
-  
-  options_hash=librdf_new_hash(world, NULL);
-  if(!options_hash)
-    return NULL;
-  
-  if(librdf_hash_from_string(options_hash, options_string)) {
+    if (!storage)
+        return NULL;
+
+    options_hash = librdf_new_hash(world, NULL);
+    if (!options_hash)
+        return NULL;
+
+    if (librdf_hash_from_string(options_hash, options_string)) {
+        librdf_free_hash(options_hash);
+        return NULL;
+    }
+
+    model = librdf_new_model_with_options(world, storage, options_hash);
     librdf_free_hash(options_hash);
-    return NULL;
-  }
-
-  model=librdf_new_model_with_options(world, storage, options_hash);
-  librdf_free_hash(options_hash);
-  return model;
+    return model;
 }
 
 
@@ -310,54 +307,53 @@ librdf_new_model (librdf_world *world,
  *
  * Return value: a new #librdf_model object or NULL on failure
  **/
-librdf_model*
+librdf_model *
 librdf_new_model_with_options(librdf_world *world,
-                              librdf_storage *storage, librdf_hash* options)
-{
-  librdf_model *model;
-  librdf_uri *uri;
-  
-  librdf_world_open(world);
+                              librdf_storage *storage, librdf_hash *options) {
+    librdf_model *model;
+    librdf_uri *uri;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
+    librdf_world_open(world);
 
-  if(!storage)
-    return NULL;
-  
-  model = LIBRDF_CALLOC(librdf_model*, 1, sizeof(*model));
-  if(!model)
-    return NULL;
-  
-  model->world=world;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(storage, librdf_storage, NULL);
 
-  model->factory=librdf_get_model_factory(world, "storage");
-  if(!model->factory) {
-    LIBRDF_FREE(librdf_model, model);
-    return NULL;
-  }
-    
-  model->context = LIBRDF_CALLOC(void*, 1, model->factory->context_length);
+    if (!storage)
+        return NULL;
 
-  if(!model->context || model->factory->create(model, storage, options)) {
-    if(model->context)
-      LIBRDF_FREE(data, model->context);
-    LIBRDF_FREE(librdf_model, model);
-    return NULL;
-  }
+    model = LIBRDF_CALLOC(librdf_model*, 1, sizeof(*model));
+    if (!model)
+        return NULL;
 
-  uri=librdf_new_uri(world, (const unsigned char*)LIBRDF_MODEL_FEATURE_CONTEXTS);
-  if(uri) {
-    librdf_node *node=librdf_model_get_feature(model, uri);
-    if(node) {
-      model->supports_contexts=atoi((const char*)librdf_node_get_literal_value(node));
-      librdf_free_node(node);
+    model->world = world;
+
+    model->factory = librdf_get_model_factory(world, "storage");
+    if (!model->factory) {
+        LIBRDF_FREE(librdf_model, model);
+        return NULL;
     }
-    librdf_free_uri(uri);
-  }
 
-  model->usage=1;
+    model->context = LIBRDF_CALLOC(void*, 1, model->factory->context_length);
 
-  return model;
+    if (!model->context || model->factory->create(model, storage, options)) {
+        if (model->context)
+            LIBRDF_FREE(data, model->context);
+        LIBRDF_FREE(librdf_model, model);
+        return NULL;
+    }
+
+    uri = librdf_new_uri(world, (const unsigned char *) LIBRDF_MODEL_FEATURE_CONTEXTS);
+    if (uri) {
+        librdf_node *node = librdf_model_get_feature(model, uri);
+        if (node) {
+            model->supports_contexts = atoi((const char *) librdf_node_get_literal_value(node));
+            librdf_free_node(node);
+        }
+        librdf_free_uri(uri);
+    }
+
+    model->usage = 1;
+
+    return model;
 }
 
 
@@ -372,19 +368,18 @@ librdf_new_model_with_options(librdf_world *world,
  * 
  * Return value: a new #librdf_model or NULL on failure
  **/
-librdf_model*
-librdf_new_model_from_model(librdf_model* model)
-{
-  librdf_model *new_model;
+librdf_model *
+librdf_new_model_from_model(librdf_model *model) {
+    librdf_model *new_model;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
 
-  new_model=model->factory->clone(model);
-  if(new_model) {
-    new_model->supports_contexts=model->supports_contexts;
-    new_model->usage=1;
-  }
-  return new_model;
+    new_model = model->factory->clone(model);
+    if (new_model) {
+        new_model->supports_contexts = model->supports_contexts;
+        new_model->usage = 1;
+    }
+    return new_model;
 }
 
 
@@ -396,50 +391,47 @@ librdf_new_model_from_model(librdf_model* model)
  * 
  **/
 void
-librdf_free_model(librdf_model *model)
-{
-  librdf_iterator* iterator;
-  librdf_model* m;
+librdf_free_model(librdf_model *model) {
+    librdf_iterator *iterator;
+    librdf_model *m;
 
-  if(!model)
-    return;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN(model, librdf_model);
+    if (!model)
+        return;
 
-  if(--model->usage)
-    return;
-  
-  if(model->sub_models) {
-    iterator=librdf_list_get_iterator(model->sub_models);
-    if(iterator) {
-      while(!librdf_iterator_end(iterator)) {
-        m=(librdf_model*)librdf_iterator_get_object(iterator);
-        if(m)
-          librdf_free_model(m);
-        librdf_iterator_next(iterator);
-      }
-      librdf_free_iterator(iterator);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN(model, librdf_model);
+
+    if (--model->usage)
+        return;
+
+    if (model->sub_models) {
+        iterator = librdf_list_get_iterator(model->sub_models);
+        if (iterator) {
+            while (!librdf_iterator_end(iterator)) {
+                m = (librdf_model *) librdf_iterator_get_object(iterator);
+                if (m)
+                    librdf_free_model(m);
+                librdf_iterator_next(iterator);
+            }
+            librdf_free_iterator(iterator);
+        }
+        librdf_free_list(model->sub_models);
+    } else {
+        model->factory->destroy(model);
     }
-    librdf_free_list(model->sub_models);
-  } else {
-    model->factory->destroy(model);
-  }
-  LIBRDF_FREE(data, model->context);
+    LIBRDF_FREE(data, model->context);
 
-  LIBRDF_FREE(librdf_model, model);
+    LIBRDF_FREE(librdf_model, model);
 }
 
 
 void
-librdf_model_add_reference(librdf_model *model)
-{
-  model->usage++;
+librdf_model_add_reference(librdf_model *model) {
+    model->usage++;
 }
 
 void
-librdf_model_remove_reference(librdf_model *model)
-{
-  model->usage--;
+librdf_model_remove_reference(librdf_model *model) {
+    model->usage--;
 }
 
 
@@ -457,11 +449,10 @@ librdf_model_remove_reference(librdf_model *model)
  * Return value: the number of statements or <0 if not possible
  **/
 int
-librdf_model_size(librdf_model* model)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, -1);
+librdf_model_size(librdf_model *model) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, -1);
 
-  return model->factory->size(model);
+    return model->factory->size(model);
 }
 
 
@@ -486,15 +477,14 @@ librdf_model_size(librdf_model* model)
  * Return value: non 0 on failure
  **/
 int
-librdf_model_add_statement(librdf_model* model, librdf_statement* statement)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
+librdf_model_add_statement(librdf_model *model, librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
 
-  if(!librdf_statement_is_complete(statement))
-    return 1;
+    if (!librdf_statement_is_complete(statement))
+        return 1;
 
-  return model->factory->add_statement(model, statement);
+    return model->factory->add_statement(model, statement);
 }
 
 
@@ -515,12 +505,11 @@ librdf_model_add_statement(librdf_model* model, librdf_statement* statement)
  * Return value: non 0 on failure
  **/
 int
-librdf_model_add_statements(librdf_model* model, librdf_stream* statement_stream)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement_stream, librdf_statement, 1);
+librdf_model_add_statements(librdf_model *model, librdf_stream *statement_stream) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement_stream, librdf_statement, 1);
 
-  return model->factory->add_statements(model, statement_stream);
+    return model->factory->add_statements(model, statement_stream);
 }
 
 
@@ -539,39 +528,38 @@ librdf_model_add_statements(librdf_model* model, librdf_stream* statement_stream
  * Return value: non 0 on failure
  **/
 int
-librdf_model_add(librdf_model* model, librdf_node* subject, 
-		 librdf_node* predicate, librdf_node* object)
-{
-  librdf_statement *statement;
-  int result;
+librdf_model_add(librdf_model *model, librdf_node *subject,
+                 librdf_node *predicate, librdf_node *object) {
+    librdf_statement *statement;
+    int result;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(subject, librdf_node, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(predicate, librdf_node, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(object, librdf_node, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(subject, librdf_node, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(predicate, librdf_node, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(object, librdf_node, 1);
 
-  if(!subject ||
-     (!librdf_node_is_resource(subject) && !librdf_node_is_blank(subject)))
-    return 1;
+    if (!subject ||
+        (!librdf_node_is_resource(subject) && !librdf_node_is_blank(subject)))
+        return 1;
 
-  if(!predicate || !librdf_node_is_resource(predicate))
-     return 1;
+    if (!predicate || !librdf_node_is_resource(predicate))
+        return 1;
 
-  if(!object)
-    return 1;
+    if (!object)
+        return 1;
 
-  statement=librdf_new_statement(model->world);
-  if(!statement)
-    return 1;
+    statement = librdf_new_statement(model->world);
+    if (!statement)
+        return 1;
 
-  librdf_statement_set_subject(statement, subject);
-  librdf_statement_set_predicate(statement, predicate);
-  librdf_statement_set_object(statement, object);
+    librdf_statement_set_subject(statement, subject);
+    librdf_statement_set_predicate(statement, predicate);
+    librdf_statement_set_object(statement, object);
 
-  result=librdf_model_add_statement(model, statement);
-  librdf_free_statement(statement);
-  
-  return result;
+    result = librdf_model_add_statement(model, statement);
+    librdf_free_statement(statement);
+
+    return result;
 }
 
 
@@ -595,37 +583,36 @@ librdf_model_add(librdf_model* model, librdf_node* subject,
  * Return value: non 0 on failure
  **/
 int
-librdf_model_add_typed_literal_statement(librdf_model* model, 
-                                         librdf_node* subject, 
-                                         librdf_node* predicate, 
-                                         const unsigned char* literal,
+librdf_model_add_typed_literal_statement(librdf_model *model,
+                                         librdf_node *subject,
+                                         librdf_node *predicate,
+                                         const unsigned char *literal,
                                          const char *xml_language,
-                                         librdf_uri *datatype_uri)
-{
-  librdf_node* object;
+                                         librdf_uri *datatype_uri) {
+    librdf_node *object;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(subject, librdf_node, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(predicate, librdf_node, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(literal, string, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(subject, librdf_node, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(predicate, librdf_node, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(literal, string, 1);
 
-  if(!subject ||
-     (!librdf_node_is_resource(subject) && !librdf_node_is_blank(subject)))
-    return 1;
+    if (!subject ||
+        (!librdf_node_is_resource(subject) && !librdf_node_is_blank(subject)))
+        return 1;
 
-  if(!predicate || !librdf_node_is_resource(predicate))
-     return 1;
+    if (!predicate || !librdf_node_is_resource(predicate))
+        return 1;
 
-  if(!literal)
-    return 1;
+    if (!literal)
+        return 1;
 
-  object=librdf_new_node_from_typed_literal(model->world,
-                                            literal, xml_language, 
-                                            datatype_uri);
-  if(!object)
-    return 1;
-  
-  return librdf_model_add(model, subject, predicate, object);
+    object = librdf_new_node_from_typed_literal(model->world,
+                                                literal, xml_language,
+                                                datatype_uri);
+    if (!object)
+        return 1;
+
+    return librdf_model_add(model, subject, predicate, object);
 }
 
 
@@ -648,42 +635,41 @@ librdf_model_add_typed_literal_statement(librdf_model* model,
  * Return value: non 0 on failure
  **/
 int
-librdf_model_add_string_literal_statement(librdf_model* model, 
-                                          librdf_node* subject, 
-                                          librdf_node* predicate, 
-                                          const unsigned char* literal,
+librdf_model_add_string_literal_statement(librdf_model *model,
+                                          librdf_node *subject,
+                                          librdf_node *predicate,
+                                          const unsigned char *literal,
                                           const char *xml_language,
-                                          int is_wf_xml)
-{
-  librdf_node* object;
-  int result;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(subject, librdf_node, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(predicate, librdf_node, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(literal, string, 1);
+                                          int is_wf_xml) {
+    librdf_node *object;
+    int result;
 
-  if(!subject ||
-     (!librdf_node_is_resource(subject) && !librdf_node_is_blank(subject)))
-    return 1;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(subject, librdf_node, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(predicate, librdf_node, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(literal, string, 1);
 
-  if(!predicate || !librdf_node_is_resource(predicate))
-     return 1;
+    if (!subject ||
+        (!librdf_node_is_resource(subject) && !librdf_node_is_blank(subject)))
+        return 1;
 
-  if(!literal)
-    return 1;
+    if (!predicate || !librdf_node_is_resource(predicate))
+        return 1;
 
-  object=librdf_new_node_from_literal(model->world,
-                                      literal, xml_language, 
-                                      is_wf_xml);
-  if(!object)
-    return 1;
-  
-  result=librdf_model_add(model, subject, predicate, object);
-  if(result)
-    librdf_free_node(object);
-  
-  return result;
+    if (!literal)
+        return 1;
+
+    object = librdf_new_node_from_literal(model->world,
+                                          literal, xml_language,
+                                          is_wf_xml);
+    if (!object)
+        return 1;
+
+    result = librdf_model_add(model, subject, predicate, object);
+    if (result)
+        librdf_free_node(object);
+
+    return result;
 }
 
 
@@ -700,15 +686,15 @@ librdf_model_add_string_literal_statement(librdf_model* model,
  * Return value: non 0 on failure
  **/
 int
-librdf_model_remove_statement(librdf_model* model, librdf_statement* statement)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
+librdf_model_remove_statement(librdf_model *model, librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
+    printf("statement with objcet: %s has statement usage: %d\n", librdf_uri_as_string(statement->object->value.uri),
+           statement->usage);
+    if (!librdf_statement_is_complete(statement))
+        return 1;
 
-  if(!librdf_statement_is_complete(statement))
-    return 1;
-
-  return model->factory->remove_statement(model, statement);
+    return model->factory->remove_statement(model, statement);
 }
 
 
@@ -732,15 +718,14 @@ librdf_model_remove_statement(librdf_model* model, librdf_statement* statement)
  * Return value: non 0 if the model contains the statement (>0 if the statement is illegal)
  **/
 int
-librdf_model_contains_statement(librdf_model* model, librdf_statement* statement)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 0);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
+librdf_model_contains_statement(librdf_model *model, librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
 
-  if(!librdf_statement_is_complete(statement))
-    return 1;
+    if (!librdf_statement_is_complete(statement))
+        return 1;
 
-  return model->factory->contains_statement(model, statement) ? -1 : 0;
+    return model->factory->contains_statement(model, statement) ? -1 : 0;
 }
 
 
@@ -752,16 +737,16 @@ librdf_model_contains_statement(librdf_model* model, librdf_statement* statement
  * 
  * Return value: a #librdf_stream or NULL on failure
  **/
-librdf_stream*
-librdf_model_as_stream(librdf_model* model)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+librdf_stream *
+librdf_model_as_stream(librdf_model *model) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
 
-  return model->factory->serialise(model);
+    return model->factory->serialise(model);
 }
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_model_serialise:
  * @model: the model object
@@ -773,13 +758,13 @@ librdf_model_as_stream(librdf_model* model)
  *
  * Return value: a #librdf_stream or NULL on failure
  **/
-librdf_stream*
-librdf_model_serialise(librdf_model* model)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+librdf_stream *
+librdf_model_serialise(librdf_model *model) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
 
-  return model->factory->serialise(model);
+    return model->factory->serialise(model);
 }
+
 #endif
 
 
@@ -797,14 +782,13 @@ librdf_model_serialise(librdf_model* model)
  * Return value: a #librdf_stream of statements (can be empty) or NULL
  * on failure.
  **/
-librdf_stream*
-librdf_model_find_statements(librdf_model* model, 
-                             librdf_statement* statement)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
+librdf_stream *
+librdf_model_find_statements(librdf_model *model,
+                             librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
 
-  return model->factory->find_statements(model, statement);
+    return model->factory->find_statements(model, statement);
 }
 
 
@@ -821,15 +805,14 @@ librdf_model_find_statements(librdf_model* model,
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-librdf_iterator*
+librdf_iterator *
 librdf_model_get_sources(librdf_model *model,
-                         librdf_node *arc, librdf_node *target) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(arc, librdf_node, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(target, librdf_node, NULL);
+                         librdf_node *arc, librdf_node *target) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(arc, librdf_node, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(target, librdf_node, NULL);
 
-  return model->factory->get_sources(model, arc, target);
+    return model->factory->get_sources(model, arc, target);
 }
 
 
@@ -846,15 +829,14 @@ librdf_model_get_sources(librdf_model *model,
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-librdf_iterator*
+librdf_iterator *
 librdf_model_get_arcs(librdf_model *model,
-                      librdf_node *source, librdf_node *target) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(source, librdf_node, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(target, librdf_node, NULL);
+                      librdf_node *source, librdf_node *target) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(source, librdf_node, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(target, librdf_node, NULL);
 
-  return model->factory->get_arcs(model, source, target);
+    return model->factory->get_arcs(model, source, target);
 }
 
 
@@ -871,15 +853,14 @@ librdf_model_get_arcs(librdf_model *model,
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-librdf_iterator*
+librdf_iterator *
 librdf_model_get_targets(librdf_model *model,
-                         librdf_node *source, librdf_node *arc) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(source, librdf_node, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(arc, librdf_node, NULL);
+                         librdf_node *source, librdf_node *arc) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(source, librdf_node, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(arc, librdf_node, NULL);
 
-  return model->factory->get_targets(model, source, arc);
+    return model->factory->get_targets(model, source, arc);
 }
 
 
@@ -896,26 +877,25 @@ librdf_model_get_targets(librdf_model *model,
  * 
  * Return value:  a new #librdf_node object or NULL on failure
  **/
-librdf_node*
+librdf_node *
 librdf_model_get_source(librdf_model *model,
-                        librdf_node *arc, librdf_node *target) 
-{
-  librdf_iterator *iterator;
-  librdf_node *node;
+                        librdf_node *arc, librdf_node *target) {
+    librdf_iterator *iterator;
+    librdf_node *node;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(arc, librdf_node, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(target, librdf_node, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(arc, librdf_node, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(target, librdf_node, NULL);
 
-  iterator=librdf_model_get_sources(model, arc, target);
-  if(!iterator)
-    return NULL;
-  
-  node=(librdf_node*)librdf_iterator_get_object(iterator);
-  if(node)
-    node=librdf_new_node_from_node(node);
-  librdf_free_iterator(iterator);
-  return node;
+    iterator = librdf_model_get_sources(model, arc, target);
+    if (!iterator)
+        return NULL;
+
+    node = (librdf_node *) librdf_iterator_get_object(iterator);
+    if (node)
+        node = librdf_new_node_from_node(node);
+    librdf_free_iterator(iterator);
+    return node;
 }
 
 
@@ -932,26 +912,25 @@ librdf_model_get_source(librdf_model *model,
  * 
  * Return value:  a new #librdf_node object or NULL on failure
  **/
-librdf_node*
+librdf_node *
 librdf_model_get_arc(librdf_model *model,
-                     librdf_node *source, librdf_node *target) 
-{
-  librdf_iterator *iterator;
-  librdf_node *node;
+                     librdf_node *source, librdf_node *target) {
+    librdf_iterator *iterator;
+    librdf_node *node;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(source, librdf_node, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(target, librdf_node, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(source, librdf_node, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(target, librdf_node, NULL);
 
-  iterator=librdf_model_get_arcs(model, source, target);
-  if(!iterator)
-    return NULL;
-  
-  node=(librdf_node*)librdf_iterator_get_object(iterator);
-  if(node)
-    node=librdf_new_node_from_node(node);
-  librdf_free_iterator(iterator);
-  return node;
+    iterator = librdf_model_get_arcs(model, source, target);
+    if (!iterator)
+        return NULL;
+
+    node = (librdf_node *) librdf_iterator_get_object(iterator);
+    if (node)
+        node = librdf_new_node_from_node(node);
+    librdf_free_iterator(iterator);
+    return node;
 }
 
 
@@ -968,26 +947,25 @@ librdf_model_get_arc(librdf_model *model,
  * 
  * Return value:  a new #librdf_node object or NULL on failure
  **/
-librdf_node*
+librdf_node *
 librdf_model_get_target(librdf_model *model,
-                        librdf_node *source, librdf_node *arc) 
-{
-  librdf_iterator *iterator;
-  librdf_node *node;
+                        librdf_node *source, librdf_node *arc) {
+    librdf_iterator *iterator;
+    librdf_node *node;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(source, librdf_node, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(arc, librdf_node, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(source, librdf_node, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(arc, librdf_node, NULL);
 
-  iterator=librdf_model_get_targets(model, source, arc);
-  if(!iterator)
-    return NULL;
-  
-  node=(librdf_node*)librdf_iterator_get_object(iterator);
-  if(node)
-    node=librdf_new_node_from_node(node);
-  librdf_free_iterator(iterator);
-  return node;
+    iterator = librdf_model_get_targets(model, source, arc);
+    if (!iterator)
+        return NULL;
+
+    node = (librdf_node *) librdf_iterator_get_object(iterator);
+    if (node)
+        node = librdf_new_node_from_node(node);
+    librdf_free_iterator(iterator);
+    return node;
 }
 
 
@@ -1003,26 +981,24 @@ librdf_model_get_target(librdf_model *model,
  * Return value: non 0 on failure
  **/
 int
-librdf_model_add_submodel(librdf_model* model, librdf_model* sub_model)
-{
-  librdf_list *l=model->sub_models;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(sub_model, librdf_model, 1);
+librdf_model_add_submodel(librdf_model *model, librdf_model *sub_model) {
+    librdf_list *l = model->sub_models;
 
-  if(!l) {
-    l=librdf_new_list(model->world);
-    if(!l)
-      return 1;
-    model->sub_models=l;
-  }
-  
-  if(librdf_list_add(l, sub_model))
-    return 1;
-  
-  return 0;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(sub_model, librdf_model, 1);
+
+    if (!l) {
+        l = librdf_new_list(model->world);
+        if (!l)
+            return 1;
+        model->sub_models = l;
+    }
+
+    if (librdf_list_add(l, sub_model))
+        return 1;
+
+    return 0;
 }
-
 
 
 /**
@@ -1037,21 +1013,19 @@ librdf_model_add_submodel(librdf_model* model, librdf_model* sub_model)
  * Return value: non 0 on failure
  **/
 int
-librdf_model_remove_submodel(librdf_model* model, librdf_model* sub_model)
-{
-  librdf_list *l=model->sub_models;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(sub_model, librdf_model, 1);
+librdf_model_remove_submodel(librdf_model *model, librdf_model *sub_model) {
+    librdf_list *l = model->sub_models;
 
-  if(!l)
-    return 1;
-  if(!librdf_list_remove(l, sub_model))
-    return 1;
-  
-  return 0;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(sub_model, librdf_model, 1);
+
+    if (!l)
+        return 1;
+    if (!librdf_list_remove(l, sub_model))
+        return 1;
+
+    return 0;
 }
-
 
 
 /**
@@ -1063,13 +1037,12 @@ librdf_model_remove_submodel(librdf_model* model, librdf_model* sub_model)
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-librdf_iterator*
-librdf_model_get_arcs_in(librdf_model *model, librdf_node *node) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
+librdf_iterator *
+librdf_model_get_arcs_in(librdf_model *model, librdf_node *node) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
 
-  return model->factory->get_arcs_in(model, node);
+    return model->factory->get_arcs_in(model, node);
 }
 
 
@@ -1082,13 +1055,12 @@ librdf_model_get_arcs_in(librdf_model *model, librdf_node *node)
  * 
  * Return value:  #librdf_iterator of #librdf_node objects (may be empty) or NULL on failure
  **/
-librdf_iterator*
-librdf_model_get_arcs_out(librdf_model *model, librdf_node *node) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
+librdf_iterator *
+librdf_model_get_arcs_out(librdf_model *model, librdf_node *node) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
 
-  return model->factory->get_arcs_out(model, node);
+    return model->factory->get_arcs_out(model, node);
 }
 
 
@@ -1103,14 +1075,13 @@ librdf_model_get_arcs_out(librdf_model *model, librdf_node *node)
  * Return value: non 0 if arc property does point to the resource node
  **/
 int
-librdf_model_has_arc_in(librdf_model *model, librdf_node *node, 
-                        librdf_node *property) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 0);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, 0);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(property, librdf_node, 0);
+librdf_model_has_arc_in(librdf_model *model, librdf_node *node,
+                        librdf_node *property) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(property, librdf_node, 0);
 
-  return model->factory->has_arc_in(model, node, property);
+    return model->factory->has_arc_in(model, node, property);
 }
 
 
@@ -1126,19 +1097,17 @@ librdf_model_has_arc_in(librdf_model *model, librdf_node *node,
  **/
 int
 librdf_model_has_arc_out(librdf_model *model, librdf_node *node,
-                         librdf_node *property) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 0);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, 0);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(property, librdf_node, 0);
+                         librdf_node *property) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, 0);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(property, librdf_node, 0);
 
-  return model->factory->has_arc_out(model, node, property);
+    return model->factory->has_arc_out(model, node, property);
 }
 
 
-
-
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_model_print:
  * @model: the model object
@@ -1155,21 +1124,21 @@ librdf_model_has_arc_out(librdf_model *model, librdf_node *node,
  *
  **/
 void
-librdf_model_print(librdf_model *model, FILE *fh)
-{
-  raptor_iostream *iostr;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN(model, librdf_model);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN(fh, FILE*);
+librdf_model_print(librdf_model *model, FILE *fh) {
+    raptor_iostream *iostr;
 
-  iostr = raptor_new_iostream_to_file_handle(model->world->raptor_world_ptr, fh);
-  if(!iostr)
-    return;
-  
-  librdf_model_write(model, iostr);
-  
-  raptor_free_iostream(iostr);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN(model, librdf_model);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN(fh, FILE*);
+
+    iostr = raptor_new_iostream_to_file_handle(model->world->raptor_world_ptr, fh);
+    if (!iostr)
+        return;
+
+    librdf_model_write(model, iostr);
+
+    raptor_free_iostream(iostr);
 }
+
 #endif
 
 
@@ -1187,33 +1156,32 @@ librdf_model_print(librdf_model *model, FILE *fh)
  * Return value: non-0 on failure
  **/
 int
-librdf_model_write(librdf_model *model, raptor_iostream* iostr)
-{
-  int rc = 1;
-  librdf_stream* stream;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(iostr, raptor_iostream, 1);
+librdf_model_write(librdf_model *model, raptor_iostream *iostr) {
+    int rc = 1;
+    librdf_stream *stream;
 
-  stream = librdf_model_as_stream(model);
-  if(!stream)
-    goto tidy;
-  
-  if(raptor_iostream_counted_string_write("[[\n", 3, iostr))
-    goto tidy;
-  if(librdf_stream_write(stream, iostr))
-    goto tidy;
-  if(raptor_iostream_counted_string_write("]]\n", 3, iostr))
-    goto tidy;
-  
-  /* success */
-  rc = 0;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(iostr, raptor_iostream, 1);
 
-  tidy:
-  if(stream)
-    librdf_free_stream(stream);
+    stream = librdf_model_as_stream(model);
+    if (!stream)
+        goto tidy;
 
-  return rc;
+    if (raptor_iostream_counted_string_write("[[\n", 3, iostr))
+        goto tidy;
+    if (librdf_stream_write(stream, iostr))
+        goto tidy;
+    if (raptor_iostream_counted_string_write("]]\n", 3, iostr))
+        goto tidy;
+
+    /* success */
+    rc = 0;
+
+    tidy:
+    if (stream)
+        librdf_free_stream(stream);
+
+    return rc;
 }
 
 
@@ -1233,25 +1201,23 @@ librdf_model_write(librdf_model *model, raptor_iostream* iostr)
  * Return value: Non 0 on failure
  **/
 int
-librdf_model_context_add_statement(librdf_model* model, 
-                                   librdf_node* context,
-                                   librdf_statement* statement) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
+librdf_model_context_add_statement(librdf_model *model,
+                                   librdf_node *context,
+                                   librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
 
-  if(!librdf_statement_is_complete(statement))
-    return 1;
+    if (!librdf_statement_is_complete(statement))
+        return 1;
 
-  if(!librdf_model_supports_contexts(model)) {
-    librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
-               "Model does not support contexts");
-    return 1;
-  }
+    if (!librdf_model_supports_contexts(model)) {
+        librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
+                   "Model does not support contexts");
+        return 1;
+    }
 
-  return model->factory->context_add_statement(model, context, statement);
+    return model->factory->context_add_statement(model, context, statement);
 }
-
 
 
 /**
@@ -1267,40 +1233,38 @@ librdf_model_context_add_statement(librdf_model* model,
  * Return value: Non 0 on failure
  **/
 int
-librdf_model_context_add_statements(librdf_model* model, 
-                                    librdf_node* context,
-                                    librdf_stream* stream) 
-{
-  int status=0;
-  
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, 1);
+librdf_model_context_add_statements(librdf_model *model,
+                                    librdf_node *context,
+                                    librdf_stream *stream) {
+    int status = 0;
 
-  if(!stream)
-    return 1;
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(stream, librdf_stream, 1);
 
-  if(!librdf_model_supports_contexts(model)) {
-    librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
-               "Model does not support contexts");
-    return 1;
-  }
+    if (!stream)
+        return 1;
 
-  if(model->factory->context_add_statements)
-    return model->factory->context_add_statements(model, context, stream);
+    if (!librdf_model_supports_contexts(model)) {
+        librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
+                   "Model does not support contexts");
+        return 1;
+    }
 
-  while(!librdf_stream_end(stream)) {
-    librdf_statement* statement=librdf_stream_get_object(stream);
-    if(!statement)
-      break;
-    status=librdf_model_context_add_statement(model, context, statement);
-    if(status)
-      break;
-    librdf_stream_next(stream);
-  }
+    if (model->factory->context_add_statements)
+        return model->factory->context_add_statements(model, context, stream);
 
-  return status;
+    while (!librdf_stream_end(stream)) {
+        librdf_statement *statement = librdf_stream_get_object(stream);
+        if (!statement)
+            break;
+        status = librdf_model_context_add_statement(model, context, statement);
+        if (status)
+            break;
+        librdf_stream_next(stream);
+    }
+
+    return status;
 }
-
 
 
 /**
@@ -1319,23 +1283,22 @@ librdf_model_context_add_statements(librdf_model* model,
  * Return value: Non 0 on failure
  **/
 int
-librdf_model_context_remove_statement(librdf_model* model,
-                                      librdf_node* context,
-                                      librdf_statement* statement) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
+librdf_model_context_remove_statement(librdf_model *model,
+                                      librdf_node *context,
+                                      librdf_statement *statement) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, 1);
 
-  if(!librdf_statement_is_complete(statement))
-    return 1;
+    if (!librdf_statement_is_complete(statement))
+        return 1;
 
-  if(!librdf_model_supports_contexts(model)) {
-    librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
-               "Model does not support contexts");
-    return 1;
-  }
+    if (!librdf_model_supports_contexts(model)) {
+        librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
+                   "Model does not support contexts");
+        return 1;
+    }
 
-  return model->factory->context_remove_statement(model, context, statement);
+    return model->factory->context_remove_statement(model, context, statement);
 }
 
 
@@ -1349,36 +1312,35 @@ librdf_model_context_remove_statement(librdf_model* model,
  * Return value: Non 0 on failure
  **/
 int
-librdf_model_context_remove_statements(librdf_model* model,
-                                       librdf_node* context) 
-{
-  librdf_stream *stream;
+librdf_model_context_remove_statements(librdf_model *model,
+                                       librdf_node *context) {
+    librdf_stream *stream;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(context, librdf_node, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(context, librdf_node, 1);
 
-  if(!librdf_model_supports_contexts(model)) {
-    librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
-               "Model does not support contexts");
-    return 1;
-  }
+    if (!librdf_model_supports_contexts(model)) {
+        librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
+                   "Model does not support contexts");
+        return 1;
+    }
 
-  if(model->factory->context_remove_statements)
-    return model->factory->context_remove_statements(model, context);
+    if (model->factory->context_remove_statements)
+        return model->factory->context_remove_statements(model, context);
 
-  stream=librdf_model_context_as_stream(model, context);
-  if(!stream)
-    return 1;
+    stream = librdf_model_context_as_stream(model, context);
+    if (!stream)
+        return 1;
 
-  while(!librdf_stream_end(stream)) {
-    librdf_statement *statement=librdf_stream_get_object(stream);
-    if(!statement)
-      break;
-    librdf_model_context_remove_statement(model, context, statement);
-    librdf_stream_next(stream);
-  }
-  librdf_free_stream(stream);
-  return 0;
+    while (!librdf_stream_end(stream)) {
+        librdf_statement *statement = librdf_stream_get_object(stream);
+        if (!statement)
+            break;
+        librdf_model_context_remove_statement(model, context, statement);
+        librdf_stream_next(stream);
+    }
+    librdf_free_stream(stream);
+    return 0;
 }
 
 
@@ -1391,23 +1353,23 @@ librdf_model_context_remove_statements(librdf_model* model,
  * 
  * Return value: #librdf_stream of statements or NULL on failure
  **/
-librdf_stream*
-librdf_model_context_as_stream(librdf_model* model, librdf_node* context) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(context, librdf_node, NULL);
+librdf_stream *
+librdf_model_context_as_stream(librdf_model *model, librdf_node *context) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(context, librdf_node, NULL);
 
-  if(!librdf_model_supports_contexts(model)) {
-    librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
-               "Model does not support contexts");
-    return NULL;
-  }
+    if (!librdf_model_supports_contexts(model)) {
+        librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
+                   "Model does not support contexts");
+        return NULL;
+    }
 
-  return model->factory->context_serialize(model, context);
+    return model->factory->context_serialize(model, context);
 }
 
 
 #ifndef REDLAND_DISABLE_DEPRECATED
+
 /**
  * librdf_model_context_serialize:
  * @model: #librdf_model object
@@ -1420,20 +1382,20 @@ librdf_model_context_as_stream(librdf_model* model, librdf_node* context)
  *
  * Return value: #librdf_stream of statements or NULL on failure
  **/
-librdf_stream*
-librdf_model_context_serialize(librdf_model* model, librdf_node* context) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(context, librdf_node, NULL);
+librdf_stream *
+librdf_model_context_serialize(librdf_model *model, librdf_node *context) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(context, librdf_node, NULL);
 
-  if(!librdf_model_supports_contexts(model)) {
-    librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
-               "Model does not support contexts");
-    return NULL;
-  }
+    if (!librdf_model_supports_contexts(model)) {
+        librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
+                   "Model does not support contexts");
+        return NULL;
+    }
 
-  return model->factory->context_serialize(model, context);
+    return model->factory->context_serialize(model, context);
 }
+
 #endif
 
 
@@ -1449,13 +1411,12 @@ librdf_model_context_serialize(librdf_model* model, librdf_node* context)
  * 
  * Return value: #librdf_query_results or NULL on failure
  **/
-librdf_query_results*
-librdf_model_query_execute(librdf_model* model, librdf_query* query) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, librdf_query, NULL);
+librdf_query_results *
+librdf_model_query_execute(librdf_model *model, librdf_query *query) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(query, librdf_query, NULL);
 
-  return model->factory->query_execute(model, query);
+    return model->factory->query_execute(model, query);
 }
 
 
@@ -1468,14 +1429,13 @@ librdf_model_query_execute(librdf_model* model, librdf_query* query)
  * Return value: non-0 on failure
  **/
 int
-librdf_model_sync(librdf_model* model) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
+librdf_model_sync(librdf_model *model) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, 1);
 
-  if(model->factory->sync)
-    return model->factory->sync(model);
+    if (model->factory->sync)
+        return model->factory->sync(model);
 
-  return 0;
+    return 0;
 }
 
 
@@ -1491,15 +1451,14 @@ librdf_model_sync(librdf_model* model)
  *
  * Return value:  #librdf_storage or NULL if this has no store
  **/
-librdf_storage*
-librdf_model_get_storage(librdf_model *model)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+librdf_storage *
+librdf_model_get_storage(librdf_model *model) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
 
-  if(model->factory->get_storage)
-    return model->factory->get_storage(model);
-  else
-    return NULL;
+    if (model->factory->get_storage)
+        return model->factory->get_storage(model);
+    else
+        return NULL;
 }
 
 
@@ -1518,38 +1477,37 @@ librdf_model_get_storage(librdf_model *model)
  * 
  * Return value: #librdf_stream of matching statements (may be empty) or NULL on failure
  **/
-librdf_stream*
-librdf_model_find_statements_in_context(librdf_model* model, librdf_statement* statement, librdf_node* context_node) 
-{
-  librdf_stream *stream;
+librdf_stream *
+librdf_model_find_statements_in_context(librdf_model *model, librdf_statement *statement, librdf_node *context_node) {
+    librdf_stream *stream;
 
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(statement, librdf_statement, NULL);
 
-  if(!librdf_model_supports_contexts(model)) {
-    librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
-               "Model does not support contexts");
-    return NULL;
-  }
+    if (!librdf_model_supports_contexts(model)) {
+        librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
+                   "Model does not support contexts");
+        return NULL;
+    }
 
-  if(model->factory->find_statements_in_context)
-    return model->factory->find_statements_in_context(model, statement, context_node);
+    if (model->factory->find_statements_in_context)
+        return model->factory->find_statements_in_context(model, statement, context_node);
 
-  statement=librdf_new_statement_from_statement(statement);
-  if(!statement)
-    return NULL;
+    statement = librdf_new_statement_from_statement(statement);
+    if (!statement)
+        return NULL;
 
-  stream=librdf_model_context_as_stream(model, context_node);
-  if(!stream) {
-    librdf_free_statement(statement);
-    return librdf_new_empty_stream(model->world);
-  }
+    stream = librdf_model_context_as_stream(model, context_node);
+    if (!stream) {
+        librdf_free_statement(statement);
+        return librdf_new_empty_stream(model->world);
+    }
 
-  librdf_stream_add_map(stream,
-                        &librdf_stream_statement_find_map,
-                        (librdf_stream_map_free_context_handler)&librdf_free_statement, (void*)statement);
+    librdf_stream_add_map(stream,
+                          &librdf_stream_statement_find_map,
+                          (librdf_stream_map_free_context_handler) &librdf_free_statement, (void *) statement);
 
-  return stream;
+    return stream;
 }
 
 
@@ -1564,21 +1522,20 @@ librdf_model_find_statements_in_context(librdf_model* model, librdf_statement* s
  *
  * Return value: #librdf_iterator of context nodes or NULL on failure or if contexts are not supported
  **/
-librdf_iterator*
-librdf_model_get_contexts(librdf_model* model) 
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+librdf_iterator *
+librdf_model_get_contexts(librdf_model *model) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
 
-  if(!librdf_model_supports_contexts(model)) {
-    librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
-               "Model does not support contexts");
-    return NULL;
-  }
+    if (!librdf_model_supports_contexts(model)) {
+        librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
+                   "Model does not support contexts");
+        return NULL;
+    }
 
-  if(model->factory->get_contexts)
-    return model->factory->get_contexts(model);
-  else
-    return NULL;
+    if (model->factory->get_contexts)
+        return model->factory->get_contexts(model);
+    else
+        return NULL;
 }
 
 
@@ -1592,15 +1549,14 @@ librdf_model_get_contexts(librdf_model* model)
  * Return value: new #librdf_node feature value or NULL if no such feature
  * exists or the value is empty.
  **/
-librdf_node*
-librdf_model_get_feature(librdf_model* model, librdf_uri* feature)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(feature, librdf_uri, NULL);
+librdf_node *
+librdf_model_get_feature(librdf_model *model, librdf_uri *feature) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, NULL);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(feature, librdf_uri, NULL);
 
-  if(model->factory->get_feature)
-    return model->factory->get_feature(model, feature);
-  return NULL;
+    if (model->factory->get_feature)
+        return model->factory->get_feature(model, feature);
+    return NULL;
 }
 
 
@@ -1615,16 +1571,15 @@ librdf_model_get_feature(librdf_model* model, librdf_uri* feature)
  * Return value: non 0 on failure (negative if no such feature)
  **/
 int
-librdf_model_set_feature(librdf_model* model, librdf_uri* feature,
-                         librdf_node* value)
-{
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, -1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(feature, librdf_uri, -1);
-  LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(value, librdf_node, -1);
+librdf_model_set_feature(librdf_model *model, librdf_uri *feature,
+                         librdf_node *value) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(model, librdf_model, -1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(feature, librdf_uri, -1);
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(value, librdf_node, -1);
 
-  if(model->factory->set_feature)
-    return model->factory->set_feature(model, feature, value);
-  return -1;
+    if (model->factory->set_feature)
+        return model->factory->set_feature(model, feature, value);
+    return -1;
 }
 
 
@@ -1647,22 +1602,21 @@ librdf_model_set_feature(librdf_model* model, librdf_uri* feature,
  * 
  * Return value:  #librdf_stream of matching statements (may be empty) or NULL on failure
  **/
-librdf_stream*
-librdf_model_find_statements_with_options(librdf_model* model,
-                                          librdf_statement* statement,
-                                          librdf_node* context_node,
-                                          librdf_hash* options) 
-{
-  if(context_node && !librdf_model_supports_contexts(model)) {
-    librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
-               "Model does not support contexts");
-    return NULL;
-  }
+librdf_stream *
+librdf_model_find_statements_with_options(librdf_model *model,
+                                          librdf_statement *statement,
+                                          librdf_node *context_node,
+                                          librdf_hash *options) {
+    if (context_node && !librdf_model_supports_contexts(model)) {
+        librdf_log(model->world, 0, LIBRDF_LOG_WARN, LIBRDF_FROM_MODEL, NULL,
+                   "Model does not support contexts");
+        return NULL;
+    }
 
-  if(model->factory->find_statements_with_options)
-    return model->factory->find_statements_with_options(model, statement, context_node, options);
-  else
-    return librdf_model_find_statements_in_context(model, statement, context_node);
+    if (model->factory->find_statements_with_options)
+        return model->factory->find_statements_with_options(model, statement, context_node, options);
+    else
+        return librdf_model_find_statements_in_context(model, statement, context_node);
 }
 
 
@@ -1683,30 +1637,29 @@ librdf_model_find_statements_with_options(librdf_model* model,
  * Return value: non 0 on failure
  **/
 int
-librdf_model_load(librdf_model* model, librdf_uri *uri,
-                  const char *name, const char *mime_type, 
-                  librdf_uri *type_uri)
-{
-  int rc=0;
-  librdf_parser* parser;
+librdf_model_load(librdf_model *model, librdf_uri *uri,
+                  const char *name, const char *mime_type,
+                  librdf_uri *type_uri) {
+    int rc = 0;
+    librdf_parser *parser;
 
-  if(name && !*name)
-    name=NULL;
-  if(mime_type && !*mime_type)
-    mime_type=NULL;
+    if (name && !*name)
+        name = NULL;
+    if (mime_type && !*mime_type)
+        mime_type = NULL;
 
-  if(!name)
-    name = raptor_world_guess_parser_name(model->world->raptor_world_ptr,
-                                          (raptor_uri*)type_uri, mime_type,
-                                          NULL, 0, librdf_uri_as_string(uri));
+    if (!name)
+        name = raptor_world_guess_parser_name(model->world->raptor_world_ptr,
+                                              (raptor_uri *) type_uri, mime_type,
+                                              NULL, 0, librdf_uri_as_string(uri));
 
-  parser=librdf_new_parser(model->world, name, NULL, NULL);
-  if(!parser)
-    return 1;
+    parser = librdf_new_parser(model->world, name, NULL, NULL);
+    if (!parser)
+        return 1;
 
-  rc=librdf_parser_parse_into_model(parser, uri, NULL, model);
-  librdf_free_parser(parser);
-  return rc;
+    rc = librdf_parser_parse_into_model(parser, uri, NULL, model);
+    librdf_free_parser(parser);
+    return rc;
 }
 
 
@@ -1727,28 +1680,27 @@ librdf_model_load(librdf_model* model, librdf_uri *uri,
  *
  * Return value: new string or NULL on failure
  **/
-unsigned char*
-librdf_model_to_counted_string(librdf_model* model, librdf_uri *uri,
-                               const char *name, const char *mime_type, 
-                               librdf_uri *type_uri, size_t* string_length_p)
-{
-  unsigned char *string=NULL;
-  librdf_serializer* serializer;
-  
-  if(name && !*name)
-    name=NULL;
-  if(mime_type && !*mime_type)
-    mime_type=NULL;
+unsigned char *
+librdf_model_to_counted_string(librdf_model *model, librdf_uri *uri,
+                               const char *name, const char *mime_type,
+                               librdf_uri *type_uri, size_t *string_length_p) {
+    unsigned char *string = NULL;
+    librdf_serializer *serializer;
 
-  serializer=librdf_new_serializer(model->world, name, mime_type, type_uri);
-  if(!serializer)
-    return NULL;
+    if (name && !*name)
+        name = NULL;
+    if (mime_type && !*mime_type)
+        mime_type = NULL;
 
-  string=librdf_serializer_serialize_model_to_counted_string(serializer,
-                                                             uri, model,
-                                                             string_length_p);
-  librdf_free_serializer(serializer);
-  return string;
+    serializer = librdf_new_serializer(model->world, name, mime_type, type_uri);
+    if (!serializer)
+        return NULL;
+
+    string = librdf_serializer_serialize_model_to_counted_string(serializer,
+                                                                 uri, model,
+                                                                 string_length_p);
+    librdf_free_serializer(serializer);
+    return string;
 }
 
 
@@ -1768,13 +1720,13 @@ librdf_model_to_counted_string(librdf_model* model, librdf_uri *uri,
  *
  * Return value: new string or NULL on failure
  **/
-unsigned char*
-librdf_model_to_string(librdf_model* model, librdf_uri *uri,
-                       const char *name, const char *mime_type, 
+unsigned char *
+librdf_model_to_string(librdf_model *model, librdf_uri *uri,
+                       const char *name, const char *mime_type,
                        librdf_uri *type_uri) {
-  return librdf_model_to_counted_string(model, uri, 
-                                        name, mime_type, type_uri,
-                                        NULL);
+    return librdf_model_to_counted_string(model, uri,
+                                          name, mime_type, type_uri,
+                                          NULL);
 }
 
 
@@ -1788,18 +1740,18 @@ librdf_model_to_string(librdf_model* model, librdf_uri *uri,
  * Return value: non 0 if the model contains the context node
  **/
 int
-librdf_model_contains_context(librdf_model* model, librdf_node* context) {
-  librdf_stream* stream;
-  int result;
+librdf_model_contains_context(librdf_model *model, librdf_node *context) {
+    librdf_stream *stream;
+    int result;
 
-  stream=librdf_model_context_as_stream(model, context);
-  if(!stream)
-    return 0;
-  
-  result=!librdf_stream_end(stream);
-  librdf_free_stream(stream);
+    stream = librdf_model_context_as_stream(model, context);
+    if (!stream)
+        return 0;
 
-  return result;
+    result = !librdf_stream_end(stream);
+    librdf_free_stream(stream);
+
+    return result;
 }
 
 
@@ -1812,12 +1764,11 @@ librdf_model_contains_context(librdf_model* model, librdf_node* context) {
  * Return value: non-0 on failure
  **/
 int
-librdf_model_transaction_start(librdf_model* model) 
-{
-  if(model->factory->transaction_start)
-    return model->factory->transaction_start(model);
-  else
-    return 1;
+librdf_model_transaction_start(librdf_model *model) {
+    if (model->factory->transaction_start)
+        return model->factory->transaction_start(model);
+    else
+        return 1;
 }
 
 
@@ -1831,12 +1782,11 @@ librdf_model_transaction_start(librdf_model* model)
  * Return value: non-0 on failure
  **/
 int
-librdf_model_transaction_start_with_handle(librdf_model* model, void* handle)
-{
-  if(model->factory->transaction_start_with_handle)
-    return model->factory->transaction_start_with_handle(model, handle);
-  else
-    return 1;
+librdf_model_transaction_start_with_handle(librdf_model *model, void *handle) {
+    if (model->factory->transaction_start_with_handle)
+        return model->factory->transaction_start_with_handle(model, handle);
+    else
+        return 1;
 }
 
 
@@ -1849,12 +1799,11 @@ librdf_model_transaction_start_with_handle(librdf_model* model, void* handle)
  * Return value: non-0 on failure 
  **/
 int
-librdf_model_transaction_commit(librdf_model* model) 
-{
-  if(model->factory->transaction_commit)
-    return model->factory->transaction_commit(model);
-  else
-    return 1;
+librdf_model_transaction_commit(librdf_model *model) {
+    if (model->factory->transaction_commit)
+        return model->factory->transaction_commit(model);
+    else
+        return 1;
 }
 
 
@@ -1867,12 +1816,11 @@ librdf_model_transaction_commit(librdf_model* model)
  * Return value: non-0 on failure 
  **/
 int
-librdf_model_transaction_rollback(librdf_model* model) 
-{
-  if(model->factory->transaction_rollback)
-    return model->factory->transaction_rollback(model);
-  else
-    return 1;
+librdf_model_transaction_rollback(librdf_model *model) {
+    if (model->factory->transaction_rollback)
+        return model->factory->transaction_rollback(model);
+    else
+        return 1;
 }
 
 
@@ -1884,13 +1832,12 @@ librdf_model_transaction_rollback(librdf_model* model)
  * 
  * Return value: non-0 on failure 
  **/
-void*
-librdf_model_transaction_get_handle(librdf_model* model) 
-{
-  if(model->factory->transaction_get_handle)
-    return model->factory->transaction_get_handle(model);
-  else
-    return NULL;
+void *
+librdf_model_transaction_get_handle(librdf_model *model) {
+    if (model->factory->transaction_get_handle)
+        return model->factory->transaction_get_handle(model);
+    else
+        return NULL;
 }
 
 #endif
@@ -2013,7 +1960,7 @@ test_model(librdf_world *world, const char *program,
   librdf_parser* parser;
   librdf_stream* stream;
   const char *parser_name="rdfxml";
-  #define URI_STRING_COUNT 2
+#define URI_STRING_COUNT 2
   const unsigned char *file_uri_strings[URI_STRING_COUNT]={(const unsigned char*)"http://example.org/test1.rdf", (const unsigned char*)"http://example.org/test2.rdf"};
   const unsigned char *file_content[URI_STRING_COUNT]={(const unsigned char*)EX1_CONTENT, (const unsigned char*)EX2_CONTENT};
   librdf_uri* uris[URI_STRING_COUNT];

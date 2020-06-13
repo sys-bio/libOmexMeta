@@ -111,8 +111,7 @@ class TestAPI(unittest.TestCase):
     def test_rdf_from_uri(self):
         sbml_url = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml"
 
-        rdf = PysemsimAPI.rdf_from_uri(sbml_url.encode(), 'rdfxml'.encode(),
-                                       "test_rdf_from_string.rdf".encode())
+        rdf = PysemsimAPI.rdf_from_uri(sbml_url.encode(), 'rdfxml'.encode())
         expected = 277
         actual = PysemsimAPI.rdf_size(rdf)
         self.assertEqual(expected, actual)
@@ -120,8 +119,7 @@ class TestAPI(unittest.TestCase):
     def test_rdf_add_from_uri(self):
         sbml_url = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml"
 
-        PysemsimAPI.rdf_add_from_uri(self.rdf, sbml_url.encode(), 'rdfxml'.encode(),
-                                     "test_rdf_from_string.rdf".encode())
+        PysemsimAPI.rdf_add_from_uri(self.rdf, sbml_url.encode(), 'rdfxml'.encode())
         expected = 277
         actual = PysemsimAPI.rdf_size(self.rdf)
         self.assertEqual(expected, actual)
@@ -131,8 +129,7 @@ class TestAPI(unittest.TestCase):
         with open(fname, "w") as f:
             f.write(TestStrings.singular_annotation2)
 
-        rdf = PysemsimAPI.rdf_from_file(fname.encode(), 'rdfxml'.encode(),
-                                        "test_rdf_from_string.rdf".encode())
+        rdf = PysemsimAPI.rdf_from_file(fname.encode(), 'rdfxml'.encode())
         expected = 1
         actual = PysemsimAPI.rdf_size(rdf)
         self.assertEqual(expected, actual)
@@ -143,8 +140,7 @@ class TestAPI(unittest.TestCase):
         with open(fname, "w") as f:
             f.write(TestStrings.singular_annotation2)
 
-        PysemsimAPI.rdf_add_from_file(self.rdf, fname.encode(), 'rdfxml'.encode(),
-                                      "test_rdf_from_string.rdf".encode())
+        PysemsimAPI.rdf_add_from_file(self.rdf, fname.encode(), 'rdfxml'.encode())
         expected = 1
         actual = PysemsimAPI.rdf_size(self.rdf)
         self.assertEqual(expected, actual)
@@ -226,7 +222,6 @@ class TestAPI(unittest.TestCase):
         singular_annotation = PysemsimAPI.singular_annotation_set_resource_literal(singular_annotation,
                                                                                    "namespace test".encode())
         PysemsimAPI.editor_add_single_annotation(editor_ptr, singular_annotation)
-        PysemsimAPI.editor_to_rdf(editor_ptr, self.rdf)
 
         actual = PysemsimAPI.rdf_to_string(self.rdf, "rdfxml-abbrev".encode(), "namespace_test.rdf".encode())
         actual = PysemsimAPI.get_and_free_c_str(actual)
@@ -427,7 +422,6 @@ class TestAPI(unittest.TestCase):
         PysemsimAPI.singular_annotation_set_predicate(singular_annotation, "bqb".encode(), "is".encode())
         PysemsimAPI.singular_annotation_set_resource_uri(singular_annotation, "uniprot:PD12345".encode())
         PysemsimAPI.editor_add_single_annotation(editor_ptr, singular_annotation)
-        PysemsimAPI.editor_to_rdf(editor_ptr, self.rdf)
         ptr = PysemsimAPI.rdf_to_string(self.rdf, "turtle".encode(), "turtled_singular_annotation.rdf".encode())
         actual = PysemsimAPI.get_and_free_c_str(ptr)
         expected = """@base <file://turtled_singular_annotation.rdf> .
@@ -449,17 +443,6 @@ class TestAPI(unittest.TestCase):
         ptr = PysemsimAPI.physical_entity_get_about(physical_entity)
         actual = PysemsimAPI.get_and_free_c_str(ptr)
         expected = "cytosol"
-        self.assertEqual(expected, actual)
-        PysemsimAPI.editor_delete(editor_ptr)
-        PysemsimAPI.physical_entity_delete(physical_entity)
-
-    def test_physical_entity_set_physical_property(self):
-        editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        physical_entity = PysemsimAPI.editor_new_physical_entity(editor_ptr)
-        PysemsimAPI.physical_entity_set_physical_property(physical_entity, "opb:opb12345".encode())
-        ptr = PysemsimAPI.physical_entity_get_physical_property(physical_entity)
-        actual = PysemsimAPI.get_and_free_c_str(ptr)
-        expected = "https://identifiers.org/opb/opb12345"
         self.assertEqual(expected, actual)
         PysemsimAPI.editor_delete(editor_ptr)
         PysemsimAPI.physical_entity_delete(physical_entity)
@@ -502,8 +485,7 @@ class TestAPI(unittest.TestCase):
     def test_physical_entity_str(self):
         editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         physical_entity = PysemsimAPI.editor_new_physical_entity(editor_ptr)
-        PysemsimAPI.physical_entity_set_about(physical_entity, "cytosol".encode())
-        PysemsimAPI.physical_entity_set_physical_property(physical_entity, "opb:opb12345".encode())
+        PysemsimAPI.physical_entity_set_physical_property(physical_entity, "cytosol".encode(), "opb:opb12345".encode())
         PysemsimAPI.physical_entity_set_identity(physical_entity, "uniprot:P456".encode())
         PysemsimAPI.physical_entity_add_location(physical_entity, "fma:fma:3456".encode())
         PysemsimAPI.physical_entity_add_location(physical_entity, "fma/fma:3457".encode())
@@ -555,8 +537,7 @@ class TestAPI(unittest.TestCase):
     def test_editor_add_physical_entity(self):
         editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         physical_entity = PysemsimAPI.editor_new_physical_entity(editor_ptr)
-        PysemsimAPI.physical_entity_set_about(physical_entity, "cytosol".encode())
-        PysemsimAPI.physical_entity_set_physical_property(physical_entity, "opb:opb12345".encode())
+        PysemsimAPI.physical_entity_set_physical_property(physical_entity, "cytosol".encode(), "opb:opb12345".encode())
         PysemsimAPI.physical_entity_set_identity(physical_entity, "uniprot:P456".encode())
         PysemsimAPI.physical_entity_add_location(physical_entity, "fma:fma:3456".encode())
         PysemsimAPI.physical_entity_add_location(physical_entity, "fma/fma:3457".encode())
@@ -594,22 +575,10 @@ class TestAPI(unittest.TestCase):
         PysemsimAPI.editor_delete(editor_ptr)
         PysemsimAPI.physical_process_delete(physical_process)
 
-    def test_physical_process_set_physical_property(self):
-        editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        physical_process = PysemsimAPI.editor_new_physical_process(editor_ptr)
-        PysemsimAPI.physical_process_set_physical_property(physical_process, "opb:opb12345".encode())
-        ptr = PysemsimAPI.physical_process_get_physical_property(physical_process)
-        actual = PysemsimAPI.get_and_free_c_str(ptr)
-        expected = "https://identifiers.org/opb/opb12345"
-        self.assertEqual(expected, actual)
-        PysemsimAPI.editor_delete(editor_ptr)
-        PysemsimAPI.physical_process_delete(physical_process)
-
     def test_physical_process_str(self):
         editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         physical_process = PysemsimAPI.editor_new_physical_process(editor_ptr)
-        PysemsimAPI.physical_process_set_about(physical_process, "cytosol".encode())
-        PysemsimAPI.physical_process_set_physical_property(physical_process, "opb:opb12345".encode())
+        PysemsimAPI.physical_process_set_physical_property(physical_process, "cytosol".encode(), "opb:opb12345".encode())
         PysemsimAPI.physical_process_add_source(
             physical_process, "cytoplasm".encode(),
             1.0, "Entity1".encode())
@@ -695,8 +664,7 @@ class TestAPI(unittest.TestCase):
     def test_editor_add_physical_process(self):
         editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         physical_process = PysemsimAPI.editor_new_physical_process(editor_ptr)
-        PysemsimAPI.physical_process_set_about(physical_process, "cytosol".encode())
-        PysemsimAPI.physical_process_set_physical_property(physical_process, "opb:opb12345".encode())
+        PysemsimAPI.physical_process_set_physical_property(physical_process, "cytosol".encode(), "opb:opb12345".encode())
         PysemsimAPI.physical_process_add_source(
             physical_process, "cytoplasm".encode(),
             1.0, "Entity1".encode())
@@ -709,37 +677,28 @@ class TestAPI(unittest.TestCase):
             physical_process, "cytoplasm".encode(),
             1.0, "Entity3".encode())
         PysemsimAPI.editor_add_physical_process(editor_ptr, physical_process)
-        ptr = PysemsimAPI.rdf_to_string(self.rdf, "rdfxml".encode(), "PhysicalProcess.rdf".encode())
+        ptr = PysemsimAPI.rdf_to_string(self.rdf, "rdfxml-abbrev".encode(), "PhysicalProcess.rdf".encode())
         actual = PysemsimAPI.get_and_free_c_str(ptr)
         print(actual)
         expected = """<?xml version="1.0" encoding="utf-8"?>
-<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:semsim="http://www.bhi.washington.edu/semsim#" xml:base="file://PhysicalProcess.rdf">
-  <rdf:Description rdf:about="cytosol">
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb12345"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="cytosol">
-    <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
-  </rdf:Description>
+<rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:semsim="http://www.bhi.washington.edu/semsim#"
+   xml:base="file://PhysicalProcess.rdf">
   <rdf:Description rdf:about="PhysicalProcess0000">
+    <semsim:hasMediatorParticipant rdf:resource="cytoplasm"/>
+    <semsim:hasSinkParticipant rdf:resource="cytoplasm"/>
     <semsim:hasSourceParticipant rdf:resource="cytoplasm"/>
   </rdf:Description>
   <rdf:Description rdf:about="cytoplasm">
-    <semsim:hasPhysicalEntityReference rdf:resource="Entity1"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="cytoplasm">
     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
-  </rdf:Description>
-  <rdf:Description rdf:about="PhysicalProcess0000">
-    <semsim:hasSinkParticipant rdf:resource="cytoplasm"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="cytoplasm">
+    <semsim:hasPhysicalEntityReference rdf:resource="Entity1"/>
     <semsim:hasPhysicalEntityReference rdf:resource="Entity2"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="PhysicalProcess0000">
-    <semsim:hasMediatorParticipant rdf:resource="cytoplasm"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="cytoplasm">
     <semsim:hasPhysicalEntityReference rdf:resource="Entity3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="cytosol">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb12345"/>
   </rdf:Description>
 </rdf:RDF>
 """
@@ -758,22 +717,10 @@ class TestAPI(unittest.TestCase):
         PysemsimAPI.editor_delete(editor_ptr)
         PysemsimAPI.physical_force_delete(physical_force)
 
-    def test_physical_force_set_physical_property(self):
-        editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        physical_force = PysemsimAPI.editor_new_physical_force(editor_ptr)
-        PysemsimAPI.physical_force_set_physical_property(physical_force, "opb:opb12345".encode())
-        ptr = PysemsimAPI.physical_force_get_physical_property(physical_force)
-        actual = PysemsimAPI.get_and_free_c_str(ptr)
-        expected = "https://identifiers.org/opb/opb12345"
-        self.assertEqual(expected, actual)
-        PysemsimAPI.editor_delete(editor_ptr)
-        PysemsimAPI.physical_force_delete(physical_force)
-
     def test_editor_add_physical_force(self):
         editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         physical_force = PysemsimAPI.editor_new_physical_force(editor_ptr)
-        PysemsimAPI.physical_force_set_about(physical_force, "cytosol".encode())
-        PysemsimAPI.physical_force_set_physical_property(physical_force, "opb:opb12345".encode())
+        PysemsimAPI.physical_force_set_physical_property(physical_force, "cytosol".encode(), "opb:opb12345".encode())
         PysemsimAPI.physical_force_add_source(
             physical_force, "cytoplasm".encode(),
             1.0, "Entity1".encode())
@@ -811,8 +758,7 @@ class TestAPI(unittest.TestCase):
     def test_physical_force_str(self):
         editor_ptr = PysemsimAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         physical_force = PysemsimAPI.editor_new_physical_force(editor_ptr)
-        PysemsimAPI.physical_force_set_about(physical_force, "cytosol".encode())
-        PysemsimAPI.physical_force_set_physical_property(physical_force, "opb:opb12345".encode())
+        PysemsimAPI.physical_force_set_physical_property(physical_force, "cytosol".encode(), "opb:opb12345".encode())
         PysemsimAPI.physical_force_add_source(
             physical_force, "cytoplasm".encode(),
             1.0, "Entity1".encode())

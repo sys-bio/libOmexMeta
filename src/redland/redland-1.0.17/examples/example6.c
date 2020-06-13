@@ -36,40 +36,39 @@ int main(int argc, char *argv[]);
 
 
 int
-main(int argc, char *argv[]) 
-{
-  librdf_world* world;
-  librdf_storage *storage;
-  librdf_model* model;
-  librdf_uri* uri;
-  unsigned char *string;
-  
-  librdf_world_open(world=librdf_new_world());
+main(int argc, char *argv[]) {
+    librdf_world *world;
+    librdf_storage *storage;
+    librdf_model *model;
+    librdf_uri *uri;
+    unsigned char *string;
 
-  model=librdf_new_model(world, storage=librdf_new_storage(world, "memory", NULL, NULL), NULL);
+    librdf_world_open(world = librdf_new_world());
 
-  uri=librdf_new_uri(world, (const unsigned char*)"http://planetrdf.com/index.rdf");
-  librdf_model_load(model, uri, NULL, NULL, NULL);
+    model = librdf_new_model(world, storage = librdf_new_storage(world, "memory", NULL, NULL), NULL);
 
-  string=librdf_model_to_string(model, uri, "ntriples", NULL, NULL);
-  if(!string)
-    printf("Failed to serialize model\n");
-  else {
-    printf("Made a %d byte string\n", (int)strlen((char*)string));
-    free(string);
-  }
+    uri = librdf_new_uri(world, (const unsigned char *) "http://planetrdf.com/index.rdf");
+    librdf_model_load(model, uri, NULL, NULL, NULL);
 
-  librdf_free_uri(uri);
-  
-  librdf_free_model(model);
-  librdf_free_storage(storage);
+    string = librdf_model_to_string(model, uri, "ntriples", NULL, NULL);
+    if (!string)
+        printf("Failed to serialize model\n");
+    else {
+        printf("Made a %d byte string\n", (int) strlen((char *) string));
+        free(string);
+    }
 
-  librdf_free_world(world);
+    librdf_free_uri(uri);
+
+    librdf_free_model(model);
+    librdf_free_storage(storage);
+
+    librdf_free_world(world);
 
 #ifdef LIBRDF_MEMORY_DEBUG
-  librdf_memory_report(stderr);
+    librdf_memory_report(stderr);
 #endif
-	
-  /* keep gcc -Wall happy */
-  return(0);
+
+    /* keep gcc -Wall happy */
+    return (0);
 }

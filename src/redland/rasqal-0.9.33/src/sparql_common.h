@@ -31,44 +31,45 @@ extern "C" {
 
 /* sparql_parser.y */
 int sparql_syntax_error(rasqal_query *rq, const char *message, ...) RASQAL_PRINTF_FORMAT(2, 3);
+
 int sparql_syntax_warning(rasqal_query *rq, const char *message, ...) RASQAL_PRINTF_FORMAT(2, 3);
 
 int sparql_query_lex(void);
 
 
 struct rasqal_sparql_query_language_s {
-  /* STATIC lexer */
-  yyscan_t scanner;
+    /* STATIC lexer */
+    yyscan_t scanner;
 
-  int scanner_set;
+    int scanner_set;
 
-  /* for error reporting */
-  unsigned int lineno;
+    /* for error reporting */
+    unsigned int lineno;
 
-  /* SPARQL query language language features supported */
+    /* SPARQL query language language features supported */
 
-  /* querying with SELECT, CONSTRUCT, DESCRIBE, ASK */
-  int sparql_scda : 1;
+    /* querying with SELECT, CONSTRUCT, DESCRIBE, ASK */
+    int sparql_scda: 1;
 
-  /* SPARQL 1.1 query language features (e.g. SELECT (expr AS var) ) */
-  int sparql11_query : 1;
+    /* SPARQL 1.1 query language features (e.g. SELECT (expr AS var) ) */
+    int sparql11_query: 1;
 
-  /* SPARQL 1.1 property path querying */
-  int sparql11_property_paths : 1;
+    /* SPARQL 1.1 property path querying */
+    int sparql11_property_paths: 1;
 
-  /* updating in general (LOAD, CLEAR, DROP, ADD, MOVE, COPY, CREATE,
-   * INSERT, DELETE, MODIFY ) 
-   */
-  int sparql11_update : 1;
+    /* updating in general (LOAD, CLEAR, DROP, ADD, MOVE, COPY, CREATE,
+     * INSERT, DELETE, MODIFY )
+     */
+    int sparql11_update: 1;
 
-  /* laqrs */
-  int experimental : 1;
+    /* laqrs */
+    int experimental: 1;
 
-  /* count of errors in current query parse */
-  int error_count;
+    /* count of errors in current query parse */
+    int error_count;
 
-  /* for creating long literals */
-  raptor_stringbuffer* sb;
+    /* for creating long literals */
+    raptor_stringbuffer *sb;
 };
 
 

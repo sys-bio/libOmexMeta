@@ -15,7 +15,7 @@ public:
 
     LibrdfModelTests() = default;
 
-    ~LibrdfModelTests(){
+    ~LibrdfModelTests() {
         storage1.freeStorage();
         storage2.freeStorage();
     }
@@ -58,6 +58,29 @@ TEST_F(LibrdfModelTests, TestAddStatement) {
             LibrdfNode::fromUriString("resource").get()
     );
     model1.addStatement(statement);
+    int expected = 1;
+    int actual = model1.size();
+    ASSERT_EQ(expected, actual);
+    model1.freeModel();
+}
+
+TEST_F(LibrdfModelTests, TestRemoveStatement) {
+    LibrdfModel model1 = LibrdfModel(storage1.get());
+    LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromUriString("subject1").get(),
+            LibrdfNode::fromUriString("predicate1").get(),
+            LibrdfNode::fromUriString("resource1").get()
+    );
+    model1.addStatement(statement1);
+
+    LibrdfStatement statement2 = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromUriString("subject2").get(),
+            LibrdfNode::fromUriString("predicate2").get(),
+            LibrdfNode::fromUriString("resource2").get()
+    );
+    model1.addStatement(statement2);
+//    librdf_model_remove_statement(model1.get(), statement2.get());
+    model1.removeStatement(statement2);
     int expected = 1;
     int actual = model1.size();
     ASSERT_EQ(expected, actual);

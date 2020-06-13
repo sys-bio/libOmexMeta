@@ -126,7 +126,7 @@ set_target_properties(rasqal PROPERTIES PUBLIC_HEADER "rasqal.h")
 
 INSTALL(
         TARGETS rasqal
-#        EXPORT Rasqal2Config
+        #        EXPORT Rasqal2Config
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib
         RUNTIME DESTINATION bin

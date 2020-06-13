@@ -267,8 +267,8 @@ internal::ParamGenerator<T> Range(T start, T end) {
 //
 // ::std::vector< ::std::string> GetParameterStrings() {
 //   ::std::vector< ::std::string> v;
-//   v.push_back("a");
-//   v.push_back("b");
+//   v.move_back("a");
+//   v.move_back("b");
 //   return v;
 // }
 //
@@ -282,8 +282,8 @@ internal::ParamGenerator<T> Range(T start, T end) {
 //
 // ::std::list<char> GetParameterChars() {
 //   ::std::list<char> list;
-//   list.push_back('a');
-//   list.push_back('b');
+//   list.move_back('a');
+//   list.move_back('b');
 //   return list;
 // }
 // ::std::list<char> l = GetParameterChars();
