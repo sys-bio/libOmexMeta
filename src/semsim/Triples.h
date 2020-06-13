@@ -44,6 +44,10 @@ namespace semsim {
 
         explicit Triples(std::vector<Triple> triples);
 
+        bool operator==(const Triples &rhs) const;
+
+        bool operator!=(const Triples &rhs) const;
+
         void move_back(Triple &triple);
 
         void emplace_back(Subject subject, const PredicatePtr &predicatePtr, const Resource &resource);

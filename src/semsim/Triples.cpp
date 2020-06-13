@@ -169,4 +169,12 @@ namespace semsim {
         return triples_[index];
     }
 
+    bool Triples::operator==(const Triples &rhs) const {
+        return triples_ == rhs.triples_;
+    }
+
+    bool Triples::operator!=(const Triples &rhs) const {
+        return !(rhs == *this);
+    }
+
 }

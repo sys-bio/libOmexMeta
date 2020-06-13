@@ -23,11 +23,7 @@ namespace semsim {
         Sinks sinks_;
         Mediators mediators_;
     public:
-        bool operator==(const PhysicalProcess &rhs) const;
-
-        bool operator!=(const PhysicalProcess &rhs) const;
-
-    public:
+            public:
 
         /*
          * @breif default constructor for PhysicalProcess
@@ -157,6 +153,10 @@ namespace semsim {
          * @return the number of Mediator objects associated with this PhysicalProcess
          */
         int getNumMediators();
+
+        bool operator==(const PhysicalProcess &rhs) const;
+
+        bool operator!=(const PhysicalProcess &rhs) const;
     };
 }
 

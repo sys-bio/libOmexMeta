@@ -113,6 +113,12 @@ TEST_F(PhysicalPropertyTests, TestInequality) {
     ASSERT_NE(resource1, resource2);
 }
 
+TEST_F(PhysicalPropertyTests, TestInequality2) {
+    PhysicalProperty resource1 = PhysicalProperty("property_metaid_0", "opb/OPB_00592");
+    PhysicalProperty resource2 = PhysicalProperty("property_metaid_1", "opb/OPB_00592");
+    ASSERT_NE(resource1, resource2);
+}
+
 //TEST_F(PhysicalPropertyTests, TestToTriples2) {
 //    Subject s(LibrdfNode::fromUriString("https://subject.com"));
 //    PhysicalProperty resource = PhysicalProperty("sub", "OPB/OPB_1234");

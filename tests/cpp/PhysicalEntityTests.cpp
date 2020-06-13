@@ -61,7 +61,9 @@ TEST_F(PhysicalEntityTests, TestGetPhysicalPropertyNode) {
                      Resource::fromRawPtr(LibrdfNode::fromUriString("https://identifiers.org/fma/FMA:63877").get())
                     })
     );
-    std::string actual = physicalEntity.getPhysicalProperty().getResourceStr();
+    std::string actual = Resource(LibrdfNode::fromUriString(
+            physicalEntity.getPhysicalProperty().getResourceStr())
+    ).str();
     std::string expected = "https://identifiers.org/OPB/OPB_00340";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     //clear up as we didn't use Triple (which owns everything)
@@ -245,8 +247,8 @@ TEST(PhysicalEntityTestsNoFixture, TestToTripleRefCounts) {
     ASSERT_EQ(1, triple4.getStatement()->usage);
     ASSERT_EQ(1, triple5.getStatement()->usage);
 
-    // subject node is used twice
-    ASSERT_EQ(2, triple1.getSubject()->usage);
+    // Recently changed PhysicalPProperty which changes triple1 from 2 to 1.
+    ASSERT_EQ(1, triple1.getSubject()->usage);
     ASSERT_EQ(1, triple2.getSubject()->usage);
     ASSERT_EQ(1, triple3.getSubject()->usage);
     ASSERT_EQ(1, triple4.getSubject()->usage);
@@ -317,17 +319,16 @@ TEST_F(PhysicalEntityTests, TestTriples) {
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"Metaid0034\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
-                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
-                           "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"PhysicalEntity0000\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/obo/PR_000000365\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:63877\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:72564\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
-                           "";
+                           "  <rdf:Description rdf:about=\"metaid\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
     std::string s = triples.str();
     std::cout << s << std::endl;
     ASSERT_STREQ(s.c_str(), expected.c_str());
@@ -442,14 +443,14 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriples) {
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"Metaid0034\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
-                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
-                           "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"PhysicalEntity0000\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/obo/PR_000000365\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:63877\"/>\n"
                            "    <bqbiol:isPartOf rdf:resource=\"https://identifiers.org/fma/FMA:72564\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"metaid\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
                            "";

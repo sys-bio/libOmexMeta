@@ -59,11 +59,7 @@ namespace semsim {
 
         ~PhysicalEntity() = default;
 
-        bool operator==(const PhysicalEntity &rhs) const;
-
-        bool operator!=(const PhysicalEntity &rhs) const;
-
-        /*
+                /*
          * @brief free resources uses by PhysicalEntity
          *
          * PhysicalEntity objects are owned either by the caller or by a Triples
@@ -180,6 +176,10 @@ namespace semsim {
          * @return the number of locations in a PhysicalEntity
          */
         [[nodiscard]] int getNumLocations() const;
+
+        bool operator==(const PhysicalEntity &rhs) const;
+
+        bool operator!=(const PhysicalEntity &rhs) const;
 
 
     };

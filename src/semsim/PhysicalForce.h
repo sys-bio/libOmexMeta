@@ -129,7 +129,7 @@ namespace semsim {
          * @param A string representing the OPB term to use as the physical property. Like "OPB:OPB_1234"
          * @return a reference to this PhysicalForce to enable the builder interface.
          */
-        PhysicalForce &setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty);
+        PhysicalForce &setPhysicalProperty(std::string subject_metaid, std::string physical_property);
 
         /*
          * @brief add a SourceParticipant to the PhysicalForce.
@@ -158,9 +158,9 @@ namespace semsim {
         addSink(std::string sink_metaid, double multiplier,
                 std::string physical_entity_reference);
 
-        bool operator==(const PhysicalForce &rhs) const;
-
-        bool operator!=(const PhysicalForce &rhs) const;
+//        bool operator==(const PhysicalForce &rhs) const;
+//
+//        bool operator!=(const PhysicalForce &rhs) const;
 
         /*
          * @brief returns the number of sources associated with the
@@ -175,6 +175,10 @@ namespace semsim {
          * @return the integer number of sinks
          */
         int getNumSinks();
+
+        bool operator==(const PhysicalForce &rhs) const;
+
+        bool operator!=(const PhysicalForce &rhs) const;
     };
 }
 

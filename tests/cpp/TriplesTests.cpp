@@ -263,4 +263,33 @@ TEST(TriplesTestsNoFixture, TestMakeSameTriplesTwice) {
 }
 
 
+TEST(TriplesTestsNoFixture, TestEquality) {
+    Triples triples1;
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
+            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+    );
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
+            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+    );
+    Triples triples2;
+    triples2.emplace_back(
+            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
+            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+    );
+    triples2.emplace_back(
+            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
+            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+    );
+    ASSERT_EQ(triples1, triples2);
+    triples1.freeTriples();
+    triples2.freeTriples();
+}
+
+
 

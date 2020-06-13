@@ -31,6 +31,10 @@ namespace semsim {
     public:
         PhysicalPhenomenon() = default;
 
+        bool operator==(const PhysicalPhenomenon &rhs) const;
+
+        bool operator!=(const PhysicalPhenomenon &rhs) const;
+
         ~PhysicalPhenomenon();
 
         /*

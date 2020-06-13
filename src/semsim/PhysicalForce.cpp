@@ -61,9 +61,9 @@ namespace semsim {
         return (*this);
     }
 
-    PhysicalForce &PhysicalForce::setPhysicalProperty(const std::string &subject_metaid, const std::string &physical_property) {
+    PhysicalForce &PhysicalForce::setPhysicalProperty(std::string subject_metaid, std::string physical_property) {
         physical_property_ = PhysicalProperty(subject_metaid, physical_property);
-        return (*this);
+        return *this;
     }
 
     PhysicalForce &PhysicalForce::addSource(
@@ -104,6 +104,7 @@ namespace semsim {
     }
 
     void PhysicalForce::free() {
+
         for (auto &i : sources_) {
             i.free();
         }
@@ -112,15 +113,32 @@ namespace semsim {
         }
     }
 
+//    bool PhysicalForce::operator==(const PhysicalForce &rhs) const {
+////        std::cout << "\nequality\n" << physical_property_.getSubjectStr() << ", " << rhs.physical_property_.getSubjectStr() << std::endl;
+////        std::cout << physical_property_.getResourceStr() << ", " << rhs.physical_property_.getResourceStr() << std::endl;
+////        std::cout << "(physical_property_ == rhs.physical_property_) "<< (physical_property_ == rhs.physical_property_) << std::endl;
+////        std::cout << "(physical_property_.getResourceStr() == rhs.physical_property_.getResourceStr()): " <<(physical_property_.getResourceStr() == rhs.physical_property_.getResourceStr()) << std::endl;
+////        std::cout << "(physical_property_.getSubjectStr() == rhs.physical_property_.getSubjectStr()): " <<(physical_property_.getSubjectStr() == rhs.physical_property_.getSubjectStr()) << std::endl;
+////        std::cout << "(sinks_ == rhs.sinks_): " << (sinks_ == rhs.sinks_) << std::endl;
+////        std::cout << "(sources_ == rhs.sources_): " << (sources_ == rhs.sources_) << std::endl;
+//
+//        return sources_ == rhs.sources_ &&
+//               sinks_ == rhs.sinks_ &&
+//               physical_property_ == physical_property_;
+//    }
+//
+//    bool PhysicalForce::operator!=(const PhysicalForce &rhs) const {
+//        return !(*this == rhs);
+//    }
     bool PhysicalForce::operator==(const PhysicalForce &rhs) const {
-        return sources_ == rhs.sources_ &&
-               sinks_ == rhs.sinks_ &&
-               physical_property_ == physical_property_;
+        return static_cast<const semsim::PhysicalPhenomenon &>(*this) ==
+               static_cast<const semsim::PhysicalPhenomenon &>(rhs) &&
+               sources_ == rhs.sources_ &&
+               sinks_ == rhs.sinks_;
     }
 
     bool PhysicalForce::operator!=(const PhysicalForce &rhs) const {
         return !(rhs == *this);
     }
-
 
 }

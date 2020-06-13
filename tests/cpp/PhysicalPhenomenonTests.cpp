@@ -68,14 +68,17 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
 }
 
 TEST_F(PhysicalPhenomenonTests, TestPhysicalProperty) {
+    /*
+     * todo Weak test - improve
+     */
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
-    PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345");
+    PhysicalProperty resource = PhysicalProperty("metaid", "OPB:OPB_12345");
     PhysicalPhenomenon phenomenon(
             model.get(),
             resource,
             PHYSICAL_ENTITY
     );
-    std::string expected = "OPB/OPB_12345";
+    std::string expected = "OPB:OPB_12345";
     std::string actual = phenomenon.getPhysicalProperty().getResourceStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
