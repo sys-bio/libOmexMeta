@@ -147,7 +147,8 @@ namespace semsim {
     }
 
     bool PhysicalEntity::operator==(const PhysicalEntity &rhs) const {
-        return physical_property_ == rhs.physical_property_ &&
+        return static_cast<const semsim::PhysicalPhenomenon &>(*this) ==
+               static_cast<const semsim::PhysicalPhenomenon &>(rhs) &&
                identity_resource_ == rhs.identity_resource_ &&
                location_resources == rhs.location_resources;
     }

@@ -26,6 +26,7 @@ public:
         model = LibrdfModel(storage.get());
         physical_property = PhysicalProperty("metaid", "OPB:OPB_00340");
     };
+
     ~PhysicalForceTests() override {
         model.freeModel();
         storage.freeStorage();
@@ -75,6 +76,70 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
     source_participants[0].free();
     sink_participants[0].free();
     mediator_participants[0].free();
+
+}
+
+
+TEST_F(PhysicalForceTests, TestPhysicalProperty1) {
+    std::vector<SourceParticipant> source_participants({SourceParticipant(
+            model.get(),
+            "SourceId1",
+            1.0,
+            "PhysicalEntityReference1"
+    )});
+    std::vector<SinkParticipant>  sink_participants(
+            {SinkParticipant(
+                    model.get(),
+                    "SinkId1",
+                    1.0,
+                    "PhysicalEntityReference2"
+            )}
+    );
+
+
+    PhysicalForce force(
+            model.get(),
+            physical_property,
+            source_participants,
+            sink_participants
+    );
+    std::string actual = force.getPhysicalProperty().getResourceStr();
+    std::string expected = "OPB:OPB_00340";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+
+    // Without Triple we need to free stuff manually
+    force.free();
+
+}
+
+TEST_F(PhysicalForceTests, TestPhysicalProperty2) {
+    std::vector<SourceParticipant> source_participants({SourceParticipant(
+            model.get(),
+            "SourceId1",
+            1.0,
+            "PhysicalEntityReference1"
+    )});
+    std::vector<SinkParticipant>  sink_participants(
+            {SinkParticipant(
+                    model.get(),
+                    "SinkId1",
+                    1.0,
+                    "PhysicalEntityReference2"
+            )}
+    );
+
+    PhysicalForce force(
+            model.get(),
+            physical_property,
+            source_participants,
+            sink_participants
+    );
+    std::string actual = force.getPhysicalProperty().getSubjectStr();
+    std::string expected = "metaid";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+
+    // Without Triple we need to free stuff manually
+    force.free();
 
 }
 
@@ -169,10 +234,6 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"ForceId0000\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalForce0000\"/>\n"
-                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
-                           "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"PhysicalForce0000\">\n"
                            "    <semsim:hasSinkParticipant rdf:resource=\"SinkId1\"/>\n"
                            "    <semsim:hasSourceParticipant rdf:resource=\"SourceId1\"/>\n"
@@ -185,8 +246,11 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
-                           "";
+                           "  <rdf:Description rdf:about=\"metaid\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalForce0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
@@ -238,8 +302,28 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
     triples.freeTriples();
 }
 
+/*******************************************************************
+ * Equality Tests
+ */
 
-TEST_F(PhysicalForceTests, TestEquality) {
+class PhysicalForceEqualityTests : public ::testing::Test {
+public:
+
+    LibrdfStorage storage;
+    LibrdfModel model;
+
+    PhysicalForceEqualityTests() {
+        model = LibrdfModel(storage.get());
+    }
+
+    ~PhysicalForceEqualityTests() override {
+        storage.freeStorage();
+        model.freeModel();
+    }
+
+};
+
+TEST_F(PhysicalForceEqualityTests, TestEquality) {
     PhysicalForce force1(model.get());
     force1.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource("source_0", 1.0, "species_metaid0")
@@ -256,7 +340,7 @@ TEST_F(PhysicalForceTests, TestEquality) {
     force2.free();
 }
 
-TEST_F(PhysicalForceTests, TestInequality) {
+TEST_F(PhysicalForceEqualityTests, TestInequality1) {
     PhysicalForce force1(model.get());
     force1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
             .addSource("source_0", 1.0, "species_metaid0")
@@ -266,6 +350,61 @@ TEST_F(PhysicalForceTests, TestInequality) {
     PhysicalForce force2(model.get());
     force2.setPhysicalProperty("property_metaid_0", "opb/OPB_00592")
             .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2");
+    ASSERT_NE(force1, force2);
+
+    force1.free();
+    force2.free();
+}
+
+TEST_F(PhysicalForceEqualityTests, TestInequality2) {
+    PhysicalForce force1(model.get());
+    force1.setPhysicalProperty("property_metaid_0", "opb/OPB_00593")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2");
+
+    PhysicalForce force2(model.get());
+    force2.setPhysicalProperty("property_metaid_0", "opb/OPB_00597")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2");
+
+    ASSERT_NE(force1, force2);
+
+    force1.free();
+    force2.free();
+}
+
+TEST_F(PhysicalForceEqualityTests, TestInequality3) {
+    PhysicalForce force1(model.get());
+    force1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2");
+
+    PhysicalForce force2(model.get());
+    force2.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
+            .addSource("source_1", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2");
+    ASSERT_NE(force1, force2);
+
+    force1.free();
+    force2.free();
+}
+
+TEST_F(PhysicalForceEqualityTests, TestInequality4) {
+    PhysicalForce force1(model.get());
+    force1.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
+            .addSource("source_0", 1.0, "species_metaid0")
+            .addSource("source_1", 2.0, "species_metaid1")
+            .addSink("sink_0", 1.0, "species_metaid2");
+
+    PhysicalForce force2(model.get());
+    force2.setPhysicalProperty("property_metaid_1", "opb/OPB_00592")
+            .addSource("source_0", 2.0, "species_metaid0")
             .addSource("source_1", 2.0, "species_metaid1")
             .addSink("sink_0", 1.0, "species_metaid2");
     ASSERT_NE(force1, force2);

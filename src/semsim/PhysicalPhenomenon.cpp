@@ -74,16 +74,6 @@ namespace semsim {
         type_ = std::move(phenomenon.type_);
     }
 
-//    PhysicalPhenomenon &PhysicalPhenomenon::operator=(const PhysicalPhenomenon &phenomenon) {
-//        if (this != &phenomenon) {
-//            model_ = phenomenon.model_;
-//            about = std::move(phenomenon.about);
-//            physical_property_ = std::move(phenomenon.physical_property_);
-//            type_ = std::move(phenomenon.type_);
-//        }
-//        return *this;
-//    }
-
     PhysicalPhenomenon &PhysicalPhenomenon::operator=(PhysicalPhenomenon &&phenomenon) noexcept {
         if (this != &phenomenon) {
             model_ = phenomenon.model_;
@@ -91,6 +81,14 @@ namespace semsim {
             physical_property_ = std::move(phenomenon.physical_property_);
             type_ = phenomenon.type_;
         }
+    }
+
+    bool PhysicalPhenomenon::operator==(const PhysicalPhenomenon &rhs) const {
+        return physical_property_ == rhs.physical_property_;
+    }
+
+    bool PhysicalPhenomenon::operator!=(const PhysicalPhenomenon &rhs) const {
+        return !(rhs == *this);
     }
 
 }

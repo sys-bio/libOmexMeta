@@ -146,7 +146,6 @@ else ()
             "${ZLIB_STATIC_LIBRARY}"
             "${BZ2_STATIC_LIBRARY}"
             "${LIBXML2_STATIC_LIBRARY}"
-            -Wl,--no-whole-archive
             "iconv"
             ltdl ${CMAKE_DL_LIBS}
             # might need --whole archive again here
@@ -172,6 +171,7 @@ else ()
             ssl
             db
             stdc++fs
+            -Wl,--no-whole-archive
             #            curl
 
             #todo keep libpq in back pocket as alternative backend
