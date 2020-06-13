@@ -133,9 +133,6 @@ class PysemsimAPI:
     # int Editor_getNumMetaIds(Editor *editor_ptr);
     editor_get_num_metaids = Util.load_func("Editor_getNumMetaIds", [ct.c_int64], ct.c_int64)
 
-    # void Editor_toRDF(Editor *editor_ptr);
-    editor_to_rdf = Util.load_func("Editor_toRDF", [ct.c_int64], ct.c_void_p)
-
     # char *Editor_getXml(Editor *editor_ptr);
     editor_get_xml = Util.load_func("Editor_getXml", [ct.c_int64], ct.c_int64)
 
@@ -200,9 +197,9 @@ class PysemsimAPI:
     physical_entity_set_about = Util.load_func("PhysicalEntity_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalEntity *PhysicalEntity_setPhysicalProperty(
-    #         PhysicalEntity *physical_entity_ptr, const char *physical_property);
+    #      PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property);
     physical_entity_set_physical_property = Util.load_func("PhysicalEntity_setPhysicalProperty",
-                                                           [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
     # PhysicalEntity *PhysicalEntity_setIdentity(
     #         PhysicalEntity *physical_entity_ptr, const char *identity_resource);
     physical_entity_set_identity = Util.load_func("PhysicalEntity_setIdentity", [ct.c_int64, ct.c_char_p], ct.c_int64)
@@ -213,10 +210,6 @@ class PysemsimAPI:
 
     # char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);
     physical_entity_get_about = Util.load_func("PhysicalEntity_getAbout", [ct.c_int64], ct.c_int64)
-
-    # char *PhysicalEntity_getPhysicalProperty(PhysicalEntity *physical_entity_ptr);
-    physical_entity_get_physical_property = Util.load_func("PhysicalEntity_getPhysicalProperty", [ct.c_int64],
-                                                           ct.c_int64)
 
     # char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr);
     physical_entity_get_identity = Util.load_func("PhysicalEntity_getIdentity", [ct.c_int64], ct.c_int64)
@@ -246,9 +239,9 @@ class PysemsimAPI:
     physical_process_set_about = Util.load_func("PhysicalProcess_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_setPhysicalProperty(
-    #         PhysicalProcess *physical_process, const char *physical_property);
+    #         PhysicalProcess *physical_process, const char *subject_metaid, const char *physical_property);
     physical_process_set_physical_property = Util.load_func("PhysicalProcess_setPhysicalProperty",
-                                                            [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                            [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_addSource(
     #         PhysicalProcess *physical_process, const char *source_metai, double multiplier,
@@ -275,11 +268,6 @@ class PysemsimAPI:
     # char *PhysicalProcess_getAbout(PhysicalProcess *physical_process_ptr);
     physical_process_get_about = Util.load_func("PhysicalProcess_getAbout", [ct.c_int64], ct.c_int64)
 
-    # char *PhysicalProcess_getPhysicalProperty(PhysicalProcess *physical_process_ptr);
-    physical_process_get_physical_property = Util.load_func("PhysicalProcess_getPhysicalProperty",
-                                                            [ct.c_int64],
-                                                            ct.c_int64)
-
     # void PhysicalProcess_delete(PhysicalProcess *physicalProcess);
     physical_process_delete = Util.load_func("PhysicalProcess_delete", [ct.c_int64], None)
 
@@ -296,9 +284,9 @@ class PysemsimAPI:
                                               ct.c_int64)
 
     # PhysicalForce *PhysicalForce_setPhysicalProperty(
-    #         PhysicalForce *physical_force_ptr, const char *physical_property);
+    #         PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property);
     physical_force_set_physical_property = Util.load_func("PhysicalForce_setPhysicalProperty",
-                                                          [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                          [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PhysicalForce *PhysicalForce_addSource(
     #         PhysicalForce *physical_force_ptr, const char *source_metaid, double multiplier,
@@ -319,13 +307,10 @@ class PysemsimAPI:
     # char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
     physical_force_get_about = Util.load_func("PhysicalForce_getAbout", [ct.c_int64], ct.c_int64)
 
-    # char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr);
-    physical_force_get_physical_property = Util.load_func("PhysicalForce_getPhysicalProperty",
-                                                          [ct.c_int64],
-                                                          ct.c_int64)
-
     # void PhysicalForce_delete(PhysicalForce *physicalForce);
     physical_force_delete = Util.load_func("PhysicalForce_delete", [ct.c_int64], None)
 
     # void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
     physical_force_free_all = Util.load_func("PhysicalForce_freeAll", [ct.c_int64], None)
+
+
