@@ -77,31 +77,23 @@ namespace semsim {
     }
 
     PhysicalForce &PhysicalForce::setPhysicalProperty(std::string subject_metaid, std::string physical_property) {
-        physical_property_ = PhysicalProperty(subject_metaid, physical_property);
+        physical_property_ = PhysicalProperty(std::move(subject_metaid), std::move(physical_property));
         return *this;
     }
 
-    PhysicalForce &PhysicalForce::addSource(
-            std::string source_metaid, double multiplier,
-            std::string physical_entity_reference) {
+    PhysicalForce &PhysicalForce::addSource(double multiplier,const std::string& physical_entity_reference) {
         sources_.push_back(
                 std::move(SourceParticipant(
                         model_,
-                        std::move(source_metaid),
-                        multiplier, std::move(physical_entity_reference)
+                        multiplier, physical_entity_reference
                 ))
         );
         return (*this);
     }
 
-    PhysicalForce &PhysicalForce::addSink(std::string sink_metaid, double multiplier,
-                                          std::string physical_entity_reference) {
+    PhysicalForce &PhysicalForce::addSink(double multiplier, const std::string& physical_entity_reference) {
         sinks_.push_back(
-                SinkParticipant(
-                        model_,
-                        std::move(sink_metaid),
-                        multiplier, std::move(physical_entity_reference)
-                )
+                SinkParticipant(model_, multiplier, physical_entity_reference)
         );
 
         return (*this);

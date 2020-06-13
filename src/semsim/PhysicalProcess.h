@@ -121,20 +121,19 @@ namespace semsim {
          * @brief add a source to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addSource(std::string source_metaid, double multiplier, std::string physical_entity_reference);
+        PhysicalProcess &addSource(double multiplier, std::string physical_entity_reference);
 
         /*
          * @brief add a sink to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addSink(std::string sink_metaid, double multiplier, std::string physical_entity_reference);
+        PhysicalProcess &addSink(double multiplier, std::string physical_entity_reference);
 
         /*
          * @brief add a mediator to the list of Source object associated with a PhysicalProcess
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &addMediator(
-                std::string mediator_metaid, double multiplier, std::string physical_entity_reference);
+        PhysicalProcess &addMediator(double multiplier, std::string physical_entity_reference);
 
         /*
          * @brief returns the number of sources assocaited with the PhysicalProcess

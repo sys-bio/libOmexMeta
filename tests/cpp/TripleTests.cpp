@@ -337,14 +337,43 @@ TEST_F(TripleTestsVector, TestTripleVecMove) {
     vec[0].freeStatement();
 }
 
-//TEST_F(TripleTestsVector, TestMakeTripleTwice) {
-//    Triple triple1(subject.getNode(), predicate.getNode(), resource.getNode());
-//    triple1.freeStatement();
-//    Triple triple2(subject.getNode(), predicate.getNode(), resource.getNode());
-//    triple2.freeStatement();
-//}
 
 
+
+TEST(TripleTestsNoFixture, TestMakeTripleTwiceWithRawNodes) {
+    Triple triple1(
+            LibrdfNode::fromUriString("subject").get(),
+            LibrdfNode::fromUriString("predicate").get(),
+            LibrdfNode::fromUriString("resource").get()
+    );
+    Triple triple2(
+            LibrdfNode::fromUriString("subject").get(),
+            LibrdfNode::fromUriString("predicate").get(),
+            LibrdfNode::fromUriString("resource").get()
+    );
+    triple1.freeStatement();
+    triple2.freeStatement();
+}
+
+
+TEST(TripleTestsNoFixture, TestMakeTripleTwiceWithSubPredRes) {
+    /*
+     * Subject, predicate types and resource cannot be used more than once
+     * because things get moved, not copied.
+     */
+    Triple triple1(
+            Subject(LibrdfNode::fromUriString("subject")).getNode(),
+            BiomodelsBiologyQualifier("is").getNode(),
+            Resource(LibrdfNode::fromUriString("resource")).getNode()
+            );
+    Triple triple2(
+            Subject(LibrdfNode::fromUriString("subject")).getNode(),
+            BiomodelsBiologyQualifier("is").getNode(),
+            Resource(LibrdfNode::fromUriString("resource")).getNode()
+            );
+    triple1.freeStatement();
+    triple2.freeStatement();
+}
 
 
 

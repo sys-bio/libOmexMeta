@@ -10,55 +10,91 @@
 namespace semsim {
 
 
-    Participant::Participant(librdf_model *model, std::string subject, std::string semsim_predicate_term,
+    Participant::Participant(librdf_model *model, std::string base_metaid, std::string semsim_predicate_term,
                              double multiplier,
                              std::string physicalEntityReference)
-            : model_(model), subject_(std::move(subject)),
-              semsim_predicate_term_(SemSim(semsim_predicate_term)),
+            : model_(model), base_metaid_(std::move(base_metaid)),
+              semsim_predicate_term_(std::move(semsim_predicate_term)),
               multiplier_(multiplier),
               physicalEntityReference_(std::move(physicalEntityReference)) {}
 
+    std::string Participant::createMetaid(const std::string& base) const{
+        return SemsimUtils::generateUniqueMetaid(model_, base);
+    }
 
     Triples Participant::toTriples(const std::string &process_metaid) const {
         Triples triples;
 
         // have source participant triple
-        triples.emplace_back(
-                LibrdfNode::fromUriString(process_metaid).get(),
-                semsim_predicate_term_.getNode(), //term is hasSourceParticipant etc.
-                LibrdfNode::fromUriString(subject_).get()
-        );
+        librdf_node *sub1 = LibrdfNode::fromUriString(process_metaid).get();
+        if (sub1 == nullptr) {
+            throw NullPointerException("NullPointerException: Participant::toTriples: sub1");
+        }
 
-        triples.emplace_back(
-                LibrdfNode::fromUriString(subject_).get(),
-                SemSim("hasPhysicalEntityReference").getNode(),
-                LibrdfNode::fromUriString(physicalEntityReference_).get()
-//                Resource::fromRawPtr().getNode()
-        );
+        librdf_node *pred1 = SemSim(semsim_predicate_term_).getNode(); //term is hasSourceParticipant etc.
+        if (pred1 == nullptr) {
+            throw NullPointerException("NullPointerException: Participant::toTriples: pred1");
+        }
+        std::string unique_participant_metaid = createMetaid(base_metaid_);
+        librdf_node *res1 = LibrdfNode::fromUriString(unique_participant_metaid).get();
+        if (res1 == nullptr) {
+            throw NullPointerException("NullPointerException: Participant::toTriples: res1");
+        }
+        triples.emplace_back(sub1, pred1, res1);
+
+        librdf_node *sub2 = LibrdfNode::fromUriString(unique_participant_metaid).get();
+
+        if (sub2 == nullptr) {
+            throw NullPointerException("NullPointerException: Participant::toTriples: sub2");
+        }
+
+        librdf_node *pred2 = SemSim("hasPhysicalEntityReference").getNode();
+        if (pred2 == nullptr) {
+            throw NullPointerException("NullPointerException: Participant::toTriples: pred2");
+        }
+
+        librdf_node *res2 = LibrdfNode::fromUriString(physicalEntityReference_).get();
+        if (res2 == nullptr) {
+            throw NullPointerException("NullPointerException: Participant::toTriples: res2");
+        }
+        triples.emplace_back(sub2, pred2, res2);
+
         if (multiplier_ > 0.0) {
             std::ostringstream multiplier_os;
             multiplier_os << multiplier_;
-            triples.emplace_back(
-                    LibrdfNode::fromUriString(subject_).get(),
-                    SemSim("hasMultiplier").getNode(),
-                    LibrdfNode::fromLiteral(
-                            multiplier_os.str(),
-                            "http://www.w3.org/2001/XMLSchema#double").get()
-            );
+
+            librdf_node *sub3 = LibrdfNode::fromUriString(unique_participant_metaid).get();
+            if (sub3 == nullptr) {
+                throw NullPointerException("NullPointerException: Participant::toTriples: sub3");
+            }
+
+            librdf_node *pred3 = SemSim("hasMultiplier").getNode();
+            if (pred3 == nullptr) {
+                throw NullPointerException("NullPointerException: Participant::toTriples: pred3");
+            }
+
+            librdf_node *res3 = LibrdfNode::fromLiteral(
+                    multiplier_os.str(),
+                    "http://www.w3.org/2001/XMLSchema#double").get();
+            if (res3 == nullptr) {
+                throw NullPointerException("NullPointerException: Participant::toTriples: res3");
+            }
+
+            triples.emplace_back(sub3, pred3, res3);
         }
         return triples;
     }
 
-    SemSim Participant::getPredicate() {
+    std::basic_string<char> Participant::getPredicate() {
         return semsim_predicate_term_;
     }
 
-    void Participant::setPredicate(std::string semsim_predicate_term) {
-        semsim_predicate_term_ = SemSim(semsim_predicate_term);
+    void Participant::setPredicate(const std::string &semsim_predicate_term) {
+        semsim_predicate_term_ = semsim_predicate_term;
     }
 
     const std::string &Participant::getSubject() const {
-        return subject_;
+        return base_metaid_;
     }
 
     double Participant::getMultiplier() const {
@@ -70,16 +106,15 @@ namespace semsim {
     }
 
     void Participant::free() {
-        if (semsim_predicate_term_.getNode()) {
-            semsim_predicate_term_.freeNode();
-            semsim_predicate_term_.setNode(nullptr);
-        }
+//        if (semsim_predicate_term_.getNode()) {
+//            semsim_predicate_term_.freeNode();
+//            semsim_predicate_term_.setNode(nullptr);
+//        }
 
     }
 
     bool Participant::operator==(const Participant &rhs) const {
-        return model_ == rhs.model_ &&
-               subject_ == rhs.subject_ &&
+        return base_metaid_ == rhs.base_metaid_ &&
                semsim_predicate_term_ == rhs.semsim_predicate_term_ &&
                multiplier_ == rhs.multiplier_ &&
                physicalEntityReference_ == rhs.physicalEntityReference_;
@@ -89,29 +124,21 @@ namespace semsim {
         return !(rhs == *this);
     }
 
-//    Participant::~Participant() {
-//        if (predicate_ptr_->getNode()) {
-//            LibrdfNode::free(predicate_ptr_->getNode());
-//            predicate_ptr_ = nullptr;
-//        }
-//    }
 
-    SourceParticipant::SourceParticipant(librdf_model *model, std::string subject,
-                                         double multiplier, std::string physicalEntityReference)
-            : Participant(model, std::move(subject), "hasSourceParticipant",
+    SourceParticipant::SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference)
+            : Participant(model, "SourceParticipant", "hasSourceParticipant",
                           multiplier, std::move(physicalEntityReference)) {}
 
-    SinkParticipant::SinkParticipant(librdf_model *model, std::string subject, double multiplier,
+    SinkParticipant::SinkParticipant(librdf_model *model, double multiplier,
                                      std::string physicalEntityReference)
-            : Participant(model, std::move(subject),
+            : Participant(model, "SinkParticipant",
                           "hasSinkParticipant",
                           multiplier,
                           std::move(physicalEntityReference)) {}
 
     MediatorParticipant::MediatorParticipant(
-            librdf_model *model, std::string subject,
-            std::string physicalEntityReference)
-            : Participant(model, std::move(subject),
+            librdf_model *model, std::string physicalEntityReference)
+            : Participant(model, "MediatorParticipant",
                           "hasMediatorParticipant",
                           0.0, std::move(physicalEntityReference)) {
     }

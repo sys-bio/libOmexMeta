@@ -179,6 +179,43 @@ TEST(TriplesTestsNoFixture, TestPop) {
     ASSERT_EQ(1, triples[0].getStatement()->usage);
     ASSERT_EQ(1, triple.getStatement()->usage);
 
+    // make sure we have the right triple left
+    ASSERT_STREQ("subject1", triples[0].getSubjectStr().c_str());
+    ASSERT_STREQ("subject2", triple.getSubjectStr().c_str());
+
+    // free the triple and reduce count to 1
+    triple.freeStatement();
+
+    // free the triples. All is accounted for.
+    triples.freeTriples();
+
+}
+TEST(TriplesTestsNoFixture, TestPopFront) {
+    Triples triples;
+    triples.emplace_back(LibrdfNode::fromUriString("subject1").get(),
+                         SemSim("hasSinkParticipant").getNode(),
+                         LibrdfNode::fromLiteral("literal node1").get());
+    triples.emplace_back(LibrdfNode::fromUriString("subject2").get(),
+                         SemSim("hasSourceParticipant").getNode(),
+                         LibrdfNode::fromLiteral("literal node2").get());
+    // make sure we have 2 triples
+    ASSERT_EQ(2, triples.size());
+
+    // get by move
+    Triple triple = triples.pop_front();
+
+    // make sure we still have 1 Triple objects in Triples
+    ASSERT_EQ(1, triples.size());
+
+    // do checks for raptors internal reference counter
+    ASSERT_EQ(1, triples[0].getStatement()->usage);
+    ASSERT_EQ(1, triple.getStatement()->usage);
+
+
+    // make sure we have the right triple left
+    ASSERT_STREQ("subject2", triples[0].getSubjectStr().c_str());
+    ASSERT_STREQ("subject1", triple.getSubjectStr().c_str());
+
     // free the triple and reduce count to 1
     triple.freeStatement();
 
@@ -215,6 +252,25 @@ TEST(TriplesTestsNoFixture, TestStr) {
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
+}
+
+TEST(TriplesTestsNoFixture, TestTwoIdenticalTripesObjectsCanBeFreed) {
+    Triples triples1;
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
+            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+    );
+    Triples triples2;
+    triples2.emplace_back(
+            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
+            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+    );
+    ASSERT_EQ(triples1, triples2);
+    triples1.freeTriples();
+    triples2.freeTriples();
+
 }
 
 

@@ -22,8 +22,8 @@ namespace semsim {
     class Participant {
 
         librdf_model *model_ = nullptr;
-        std::string subject_;
-        SemSim semsim_predicate_term_;
+        std::string base_metaid_;
+        std::string semsim_predicate_term_;
         double multiplier_;
         std::string physicalEntityReference_;
 
@@ -34,7 +34,7 @@ namespace semsim {
         /*
          * @brief Superclass of participant types
          * @param model pointer to the librdf_model* in use. Passed down from RDF.
-         * @param subject the content of the participant subject. A valid metaid.
+         * @param base_metaid the content of the participant base_metaid. A valid metaid.
          * @param semsim_predicate_term a string from the SemSim vocabulary.
          * @param multiplier Specifies the stoiciometry for the Participant in the process
          * @param physicalEntityReference the ID of the physicalEntity assicated with the Participant
@@ -45,7 +45,7 @@ namespace semsim {
          * code duplication in the subclasses.
          *
          */
-        Participant(librdf_model *model, std::string subject, std::string semsim_predicate_term, double multiplier,
+        Participant(librdf_model *model, std::string base_metaid, std::string semsim_predicate_term, double multiplier,
                     std::string physicalEntityReference);
 
         ~Participant() = default;
@@ -67,7 +67,7 @@ namespace semsim {
          * @brief get the predicate currently in use by the participant
          * @return a SemSim predicate
          */
-        SemSim getPredicate();
+        std::basic_string<char> getPredicate();
 
         /*
          * @brief set the predicate used in the participant
@@ -75,7 +75,7 @@ namespace semsim {
          *
          * i.e. "hasSourceParticipant" not "http://www.bhi.washington.edu/semsim#hasSourceParticipant"
          */
-        void setPredicate(std::string semsim_predicate_string);
+        void setPredicate(const std::string& semsim_predicate_string);
 
         /*
          * @brief get the subject portion of the Participant, which is the
@@ -96,6 +96,7 @@ namespace semsim {
          */
         [[nodiscard]] const std::string &getPhysicalEntityReference() const;
 
+        [[nodiscard]] std::string createMetaid(const std::string& base) const;
     };
 
 
@@ -110,8 +111,7 @@ namespace semsim {
         /*
          * @brief A class representing process/force energetic source.
          */
-        SourceParticipant(librdf_model *model, std::string subject, double multiplier,
-                          std::string physicalEntityReference);
+        SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference);
     };
 
     /*
@@ -127,8 +127,7 @@ namespace semsim {
         /*
          * @brief A class representing process/force energetic sinks.
          */
-        SinkParticipant(librdf_model *model, std::string subject, double multiplier,
-                        std::string physicalEntityReference);
+        SinkParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference);
 
     };
 
@@ -144,8 +143,7 @@ namespace semsim {
         /*
          * @brief A class representing process mediators (such as a catalyst).
          */
-        MediatorParticipant(librdf_model *model, std::string subject,
-                            std::string physicalEntityReference);
+        MediatorParticipant(librdf_model *model, std::string physicalEntityReference);
 
     };
 

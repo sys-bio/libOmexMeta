@@ -52,11 +52,9 @@ namespace semsim {
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::addSource(std::string source_metaid, double multiplier,
-                                                std::string physical_entity_reference) {
+    PhysicalProcess &PhysicalProcess::addSource(double multiplier, std::string physical_entity_reference) {
         sources_.push_back(
                 std::move(SourceParticipant(model_,
-                                            std::move(source_metaid),
                                             multiplier,
                                             std::move(physical_entity_reference)
                           )
@@ -65,12 +63,10 @@ namespace semsim {
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::addSink(std::string sink_metaid, double multiplier,
-                                              std::string physical_entity_reference) {
+    PhysicalProcess &PhysicalProcess::addSink(double multiplier, std::string physical_entity_reference) {
         sinks_.push_back(
                 std::move(SinkParticipant(
                         model_,
-                        std::move(sink_metaid),
                         multiplier, std::move(physical_entity_reference)
                 ))
         );
@@ -78,12 +74,10 @@ namespace semsim {
         return (*this);
     }
 
-    PhysicalProcess &PhysicalProcess::addMediator(std::string mediator_metaid, double multiplier,
-                                                  std::string physical_entity_reference) {
+    PhysicalProcess &PhysicalProcess::addMediator(double multiplier, std::string physical_entity_reference) {
         mediators_.push_back(
                 std::move(MediatorParticipant(
                         model_,
-                        std::move(mediator_metaid),
                         std::move(physical_entity_reference)
                 ))
         );

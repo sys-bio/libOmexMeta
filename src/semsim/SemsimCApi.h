@@ -190,15 +190,15 @@ namespace semsim {
             PhysicalProcess *physical_process, const char *subject_metaid, const char *physical_property);
 
     PhysicalProcess *PhysicalProcess_addSource(
-            PhysicalProcess *physical_process, const char *source_metai, double multiplier,
+            PhysicalProcess *physical_process, double multiplier,
             const char *physical_entity_reference);
 
     PhysicalProcess *PhysicalProcess_addSink(
-            PhysicalProcess *physical_process, const char *sink_metaid, double multiplier,
+            PhysicalProcess *physical_process, double multiplier,
             const char *physical_entity_reference);
 
     PhysicalProcess *PhysicalProcess_addMediator(
-            PhysicalProcess *physical_process, const char *mediator_metaid, double multiplier,
+            PhysicalProcess *physical_process, double multiplier,
             const char *physical_entity_reference);
 
     char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
@@ -229,11 +229,11 @@ namespace semsim {
             PhysicalForce *physical_force_ptr, const char *about);
 
     PhysicalForce *PhysicalForce_addSource(
-            PhysicalForce *physical_force_ptr, const char *source_metaid, double multiplier,
+            PhysicalForce *physical_force_ptr, double multiplier,
             const char *physical_entity_reference);
 
     PhysicalForce *PhysicalForce_addSink(
-            PhysicalForce *physical_force_ptr, const char *sink_metaid, double multiplier,
+            PhysicalForce *physical_force_ptr, double multiplier,
             const char *physical_entity_reference);
 
     PhysicalForce *PhysicalForce_setPhysicalProperty(

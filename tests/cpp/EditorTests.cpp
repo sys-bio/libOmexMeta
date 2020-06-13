@@ -65,14 +65,15 @@ TEST_F(EditorTests, TestAddSingleAnnotationToEditor) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
-    Subject subject = Subject(LibrdfNode::fromUriString("SemsimMetaid0009"));
-    BiomodelsBiologyQualifier predicate("is");
-    Resource resource = Resource(LibrdfNode::fromUriString("uniprot:P0DP23"));
-    Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
+    Triple triple(LibrdfNode::fromUriString("SemsimMetaid0009").get(),
+            BiomodelsBiologyQualifier("is").getNode(),
+            Resource(LibrdfNode::fromUriString("uniprot:P0DP23")).getNode());
     editor.addSingleAnnotation(triple);
     int expected = 1;
     int actual = editor.size();
     ASSERT_EQ(expected, actual);
+    triple.freeStatement();
+
 }
 
 TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
@@ -98,7 +99,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
                            "</rdf:RDF>\n"
                            "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-
+    triple.freeStatement();
 }
 
 TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
@@ -196,6 +197,8 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    singularAnnotation.freeStatement();
+
 }
 
 
@@ -206,7 +209,6 @@ TEST_F(EditorTests, TestAddPhysicalEntityToEditor) {
             SEMSIM_TYPE_SBML
     );
 
-    Subject subject(LibrdfNode::fromUriString("VLV"));
     PhysicalProperty ppr("metaid", "OPB:OPB_00154");
     Resource r(LibrdfNode::fromUriString("fma:FMA:9670")); // is smad3
     std::vector<Resource> resources;
@@ -234,21 +236,18 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
             PhysicalProperty("MetaId004", "OPB:OPB1234"),
             std::vector<SourceParticipant>(
                     {SourceParticipant(model.get(),
-                                       "SourceId1",
                                        1.0,
                                        "PhysicalEntityReference1"
                     )}
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(model.get(),
-                                     "SinkId1",
                                      1.0,
                                      "PhysicalEntityReference2"
                     )}
             ),
             std::vector<MediatorParticipant>(
                     {MediatorParticipant(model.get(),
-                                         "MediatorID1",
                                          "PhysicalEntityReference3"
                     )}
             )
@@ -262,7 +261,7 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"MediatorID1\">\n"
+                           "  <rdf:Description rdf:about=\"MediatorParticipant0000\">\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference3\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"MetaId004\">\n"
@@ -270,15 +269,15 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB1234\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"PhysicalProcess0000\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorID1\"/>\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkId1\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceId1\"/>\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorParticipant0000\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SinkId1\">\n"
+                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SourceId1\">\n"
+                           "  <rdf:Description rdf:about=\"SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
@@ -299,15 +298,13 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
                     PhysicalProperty("metaid", "OPB:OPB1234"),
                     std::vector<SourceParticipant>(
                             {SourceParticipant(model.get(),
-                                               "SourceId1",
-                                               1.0,
+                                                       1.0,
                                                "PhysicalEntityReference1"
                             )}
                     ),
                     std::vector<SinkParticipant>(
                             {SinkParticipant(model.get(),
-                                             "SinkId1",
-                                             1.0,
+                                                     1.0,
                                              "PhysicalEntityReference2"
                             )}
                     )
@@ -325,14 +322,14 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"PhysicalForce0000\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkId1\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceId1\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SinkId1\">\n"
+                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SourceId1\">\n"
+                           "  <rdf:Description rdf:about=\"SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
@@ -361,10 +358,10 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
 
     editor.addSingleAnnotation(singularAnnotation);
 
-
     int expected = 1;
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
+    singularAnnotation.freeStatement();
 }
 
 
@@ -398,8 +395,8 @@ TEST_F(EditorTests, TestPhysicalForceBuilder) {
     PhysicalForce physicalForce = editor.createPhysicalForce();
     physicalForce
             .setPhysicalProperty("SemsimMetaid0000", "OPB:OPB1234")
-            .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
-            .addSink("sinkMetaid", 1.0, "PhysicalEntity2");
+            .addSource( 1.0, "PhysicalEntity1")
+            .addSink( 1.0, "PhysicalEntity2");
 
     editor.addPhysicalForce(physicalForce);
 
@@ -418,9 +415,9 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
     PhysicalProcess physicalProcess = editor.createPhysicalProcess();
     physicalProcess
             .setPhysicalProperty("SemsimMetaid0000", "OPB:OPB1234")
-            .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
-            .addSink("sinkMetaid", 1.0, "PhysicalEntity2")
-            .addMediator("mediatorMetaid", 1.0, "PhysicalEntity3");
+            .addSource( 1.0, "PhysicalEntity1")
+            .addSink( 1.0, "PhysicalEntity2")
+            .addMediator( 1.0, "PhysicalEntity3");
 
     editor.addPhysicalProcess(physicalProcess);
 
@@ -430,53 +427,63 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
 }
 
 
-//TEST_F(EditorTests, TestRemoveSingularAnnotation) {
-//    RDF rdf;
-//    Editor editor = rdf.toEditor(
-//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-//            SEMSIM_TYPE_SBML);
-//
-//    SingularAnnotation singularAnnotation;
-//    singularAnnotation
-//            .setAbout("SemsimMetaid0000")
-//            .setPredicate("bqb", "is")
-//            .setResourceLiteral("resource");
-//
-//    editor.addSingleAnnotation(singularAnnotation);
-//
-//
-//    ASSERT_EQ(1, rdf.size());
-//    editor.removeSingleAnnotation(singularAnnotation);
-//    int expected = 0;
-//    int actual = rdf.size();
-//    ASSERT_EQ(expected, actual);
-//}
+TEST_F(EditorTests, TestRemoveSingularAnnotation) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    SingularAnnotation singularAnnotation;
+    singularAnnotation
+            .setAbout("SemsimMetaid0000")
+            .setPredicate("bqb", "is")
+            .setResourceLiteral("resource");
+
+    editor.addSingleAnnotation(singularAnnotation);
+
+    ASSERT_EQ(1, rdf.size());
+
+    editor.removeSingleAnnotation(singularAnnotation);
+    int expected = 0;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+    singularAnnotation.freeStatement();
+}
 
 
-//
-//TEST_F(EditorTests, TestRemovePhysicalForce) {
-//    RDF rdf;
-//    Editor editor = rdf.toEditor(
-//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-//            SEMSIM_TYPE_SBML);
-//
-//    PhysicalForce physicalForce = editor.createPhysicalForce();
-//    physicalForce
-//            .setAbout("SemsimMetaid0000")
-//            .setPhysicalProperty("metaid", "OPB:OPB1234")
-//            .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
-//            .addSink("sinkMetaid", 1.0, "PhysicalEntity2");
-//
-//    editor.addPhysicalForce(physicalForce);
-//    
-//
-//    ASSERT_EQ(7, rdf.size());
+/*
+ * Question: Is the autogenerated ID field causng this problem?
+ * When we automatically generate an ID, we take the next numerical
+ * id. When we generate a statement, we create a new id. If we then
+ * try to generate another statement from the same compositite annotation
+ * We autoamtically generate a new ID for it, even though we need the old one.
+ * BUUUUG.
+ *
+ */
+TEST_F(EditorTests, TestRemovePhysicalForce) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    PhysicalForce physicalForce = editor.createPhysicalForce();
+    physicalForce
+            .setPhysicalProperty("SemsimMetaid0002", "OPB:OPB1234")
+            .addSource( 1.0, "PhysicalEntity1")
+            .addSink( 1.0, "PhysicalEntity2");
+
+    editor.addPhysicalForce(physicalForce);
+
+    std::cout << rdf.toString("rdfxml-abbrev", "base") << std::endl;
+
+//    ASSERT_EQ(8, rdf.size());
 //    editor.removePhysicalForce(physicalForce);
+//    std::cout << rdf.toString("rdfxml-abbrev", "base") << std::endl;
 //    int expected = 0;
 //    int actual = rdf.size();
 //    ASSERT_EQ(expected, actual);
-//}
-//
+}
+
 //TEST_F(EditorTests, TestRemovePhysicalProcess) {
 //    RDF rdf;
 //    Editor editor = rdf.toEditor(
@@ -487,9 +494,9 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
 //    physicalProcess
 //            .setAbout("SemsimMetaid0000")
 //            .setPhysicalProperty("metaid", "OPB:OPB1234")
-//            .addSource("sourceMetaid", 1.0, "PhysicalEntity1")
-//            .addSink("sinkMetaid", 1.0, "PhysicalEntity2")
-//            .addSink("mediatorMetaid", 1.0, "PhysicalEntity3");
+//            .addSource( 1.0, "PhysicalEntity1")
+//            .addSink( 1.0, "PhysicalEntity2")
+//            .addSink( 1.0, "PhysicalEntity3");
 //
 //    editor.addPhysicalProcess(physicalProcess);
 //    

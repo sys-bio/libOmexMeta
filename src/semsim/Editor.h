@@ -89,9 +89,15 @@ namespace semsim {
         explicit Editor(const std::string &xml, SemsimXmlType type,
                         const LibrdfModel &model, NamespaceMap &ns_map);
 
-//        ~Editor();
+        /*
+         * We no longer required to free the
+         * triples_ used by Editor since they are
+         * created and freed inplace - i.e.
+         * locally, not at the class scope.
+         */
+        ~Editor() = default;
 
-        int size() const;
+        [[nodiscard]] int size() const;
 
 
         /*
@@ -199,14 +205,8 @@ namespace semsim {
          * @brief remove triples associated with a a PhysicalForce object from the rdf graph
          * @param physicalForce the PhysicalForce to remove
          */
-        void removePhysicalForce(PhysicalForce physicalForce);
+        void removePhysicalForce(PhysicalForce &physicalForce) const;
 
-        /*
-         * @brief commit the annotations made in this Editor to the RDF graph.
-         * @note without using this command at the end of your Editing, your annotations
-         * will not be added to the current RDF graph.
-         */
-        void toRDF();
 
         /*
          * @brief check that a metaid is valid by comparing
