@@ -302,6 +302,26 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
     triples.freeTriples();
 }
 
+
+TEST(PhysicalForceTestsNoFixture, TestGenerateTheSamePhysicalForceTwice) {
+    RDF rdf;
+    PhysicalForce force(rdf.getModel());
+    //todo considering implementing the builder as a composite builder
+    force.setPhysicalProperty("Force5", "OPB:OPB_00340")
+            .addSource("Source1", 1, "PhysicalEntityReference1")
+            .addSink("Sink1", 2, "PhysicalEntityReference2")
+            .addSink("Sink2", 1, "PhysicalEntityReference3");
+
+    Triples triples1 = force.toTriples();
+    std::string actual1 = triples1.str("ntriples", "base");
+    Triples triples2 = force.toTriples();
+    std::string actual2 = triples2.str("ntriples", "base");
+
+    ASSERT_STREQ(actual1.c_str(), actual2.c_str());
+    triples1.freeTriples();
+    triples2.freeTriples();
+}
+
 /*******************************************************************
  * Equality Tests
  */

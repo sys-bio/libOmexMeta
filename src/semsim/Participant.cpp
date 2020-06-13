@@ -23,28 +23,61 @@ namespace semsim {
         Triples triples;
 
         // have source participant triple
-        triples.emplace_back(
-                LibrdfNode::fromUriString(process_metaid).get(),
-                semsim_predicate_term_.getNode(), //term is hasSourceParticipant etc.
-                LibrdfNode::fromUriString(subject_).get()
-        );
+        librdf_node *sub1 = LibrdfNode::fromUriString(process_metaid).get();
+        if (sub1 == nullptr) {
+            throw NullPointerException("NullPointerException: Participant::toTriples: sub1");
+        }
 
-        triples.emplace_back(
-                LibrdfNode::fromUriString(subject_).get(),
-                SemSim("hasPhysicalEntityReference").getNode(),
-                LibrdfNode::fromUriString(physicalEntityReference_).get()
-//                Resource::fromRawPtr().getNode()
-        );
+        librdf_node *pred1 = semsim_predicate_term_.getNode(); //term is hasSourceParticipant etc.
+        if (pred1 == nullptr) {
+            throw NullPointerException("NullPointerException: Participant::toTriples: pred1");
+        }
+
+        librdf_node *res1 = LibrdfNode::fromUriString(subject_).get();
+        if (res1 == nullptr) {
+            throw NullPointerException("NullPointerException: Participant::toTriples: res1");
+        }
+        triples.emplace_back(sub1, pred1, res1);
+
+        librdf_node *sub2 = LibrdfNode::fromUriString(subject_).get();
+
+        if (sub2 == nullptr) {
+            throw NullPointerException("NullPointerException: Participant::toTriples: sub2");
+        }
+
+        librdf_node *pred2 = SemSim("hasPhysicalEntityReference").getNode();
+        if (pred2 == nullptr) {
+            throw NullPointerException("NullPointerException: Participant::toTriples: pred2");
+        }
+
+        librdf_node *res2 = LibrdfNode::fromUriString(physicalEntityReference_).get();
+        if (res2 == nullptr) {
+            throw NullPointerException("NullPointerException: Participant::toTriples: res2");
+        }
+        triples.emplace_back(sub2, pred2, res2);
+
         if (multiplier_ > 0.0) {
             std::ostringstream multiplier_os;
             multiplier_os << multiplier_;
-            triples.emplace_back(
-                    LibrdfNode::fromUriString(subject_).get(),
-                    SemSim("hasMultiplier").getNode(),
-                    LibrdfNode::fromLiteral(
-                            multiplier_os.str(),
-                            "http://www.w3.org/2001/XMLSchema#double").get()
-            );
+
+            librdf_node *sub3 = LibrdfNode::fromUriString(subject_).get();
+            if (sub3 == nullptr) {
+                throw NullPointerException("NullPointerException: Participant::toTriples: sub3");
+            }
+
+            librdf_node *pred3 = SemSim("hasMultiplier").getNode();
+            if (pred3 == nullptr) {
+                throw NullPointerException("NullPointerException: Participant::toTriples: pred3");
+            }
+
+            librdf_node *res3 = LibrdfNode::fromLiteral(
+                    multiplier_os.str(),
+                    "http://www.w3.org/2001/XMLSchema#double").get();
+            if (res3 == nullptr) {
+                throw NullPointerException("NullPointerException: Participant::toTriples: res3");
+            }
+
+            triples.emplace_back(sub3, pred3, res3);
         }
         return triples;
     }
@@ -53,7 +86,7 @@ namespace semsim {
         return semsim_predicate_term_;
     }
 
-    void Participant::setPredicate(std::string semsim_predicate_term) {
+    void Participant::setPredicate(const std::string &semsim_predicate_term) {
         semsim_predicate_term_ = SemSim(semsim_predicate_term);
     }
 

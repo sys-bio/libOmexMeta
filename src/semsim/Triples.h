@@ -108,6 +108,8 @@ namespace semsim {
          * that causes memory issues.
          */
         bool isEmpty();
+
+        Triple pop_front();
     };
 
     typedef std::vector<Triples> NestedTriples;

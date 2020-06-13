@@ -113,12 +113,12 @@ namespace semsim {
         };
     }
 
-    void Editor::addCompositeAnnotation(PhysicalPhenomenon* phenomenonPtr) {
+    void Editor::addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr) {
         Triples triples = phenomenonPtr->toTriples();
         extractNamespacesFromTriplesVector(triples);
         while (!triples.isEmpty()) {
-            // remove a Triple off the end of triples
-            Triple triple = triples.pop();
+            // remove a Triple off the front of triples
+            Triple triple = triples.pop_front();
             // add to the model
             model_.addStatement(triple.getStatement());
             // remember to free it.
@@ -161,7 +161,8 @@ namespace semsim {
 
 
     void Editor::removeSingleAnnotation(const SingularAnnotation &singularAnnotation) const {
-        model_.removeStatement(singularAnnotation.getStatement());
+        librdf_statement *stmt = singularAnnotation.getStatement();
+        model_.removeStatement(stmt);
     }
 
     void Editor::removePhysicalEntity(PhysicalEntity &physicalEntity) {
@@ -182,7 +183,7 @@ namespace semsim {
 
         Triples triples = physicalEntity.toTriples();
 
-        while (!triples.isEmpty()){
+        while (!triples.isEmpty()) {
             Triple triple = triples.pop();
 //            std::cout << triples[i].str("ntriples") << std::endl;
             model_.removeStatement(triple.getStatement());
@@ -191,6 +192,7 @@ namespace semsim {
         }
 //        triples.freeTriples(); // seg fault
     }
+
 //
 //    void Editor::removePhysicalProcess(PhysicalProcess physicalProcess) {
 //        for (auto &it: physicalProcess.toTriples()) {
@@ -198,11 +200,14 @@ namespace semsim {
 //        }
 //    }
 //
-//    void Editor::removePhysicalForce(PhysicalForce physicalForce) {
-//        for (auto &it: physicalForce.toTriples()) {
-//            model_.removeStatement(it.getStatement());
-//        }
-//    }
+    void Editor::removePhysicalForce(PhysicalForce &physicalForce) const {
+        int count = 0;
+        for (auto &it: physicalForce.toTriples()) {
+            std::cout << "count: " << count << ": " << it.str("ntriples", "base") << std::endl;
+            model_.removeStatement(it.getStatement());
+            count++;
+        }
+    }
 
     PhysicalEntity Editor::createPhysicalEntity() {
         return PhysicalEntity(model_.get());

@@ -27,6 +27,7 @@ namespace semsim {
      * the Triples object who is reposible for freeing the Triple.
      */
     void Triples::move_back(Triple &triple) {
+        // This move calls Triple destrubtor?
         triples_.push_back(std::move(triple));
     }
 
@@ -151,6 +152,15 @@ namespace semsim {
         Triple &triple = triples_.back();
         // then remove it from the triples_ vector
         triples_.pop_back();
+        // return by move so no copies are made.
+        return std::move(triple);
+    }
+
+    Triple Triples::pop_front() {
+        // get reference to front of triples_ vector
+        // move should remove it from the triples_ vector
+        Triple triple = std::move(triples_.front());
+        triples_.erase(triples_.begin());
         // return by move so no copies are made.
         return std::move(triple);
     }

@@ -75,7 +75,7 @@ namespace semsim {
          *
          * i.e. "hasSourceParticipant" not "http://www.bhi.washington.edu/semsim#hasSourceParticipant"
          */
-        void setPredicate(std::string semsim_predicate_string);
+        void setPredicate(const std::string& semsim_predicate_string);
 
         /*
          * @brief get the subject portion of the Participant, which is the

@@ -27,15 +27,14 @@ namespace redland {
          */
         void refreshStatement();
 
-    protected:
-        explicit LibrdfStatement(librdf_statement *statement);
-
     public:
         bool operator==(const LibrdfStatement &rhs) const;
 
         bool operator!=(const LibrdfStatement &rhs) const;
 
     protected:
+        explicit LibrdfStatement(librdf_statement *statement);
+
         LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
     public:

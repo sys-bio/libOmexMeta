@@ -177,7 +177,7 @@ namespace redland {
     }
 
     void LibrdfStatement::freeStatement() {
-        if (statement_) {
+        if (statement_ != nullptr) {
             librdf_free_statement(statement_);
             statement_ = nullptr;
         }
