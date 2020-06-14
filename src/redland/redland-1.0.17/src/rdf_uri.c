@@ -288,6 +288,11 @@ librdf_new_uri_from_filename(librdf_world *world, const char *filename) {
 }
 
 
+int librdf_uri_get_usage(librdf_uri *uri) {
+    return raptor_uri_get_usage_count(uri);
+}
+
+
 /**
  * librdf_free_uri:
  * @uri: #librdf_uri object

@@ -200,6 +200,19 @@ TEST(ResourceTestsNoFixture, TestInequality) {
     resource1.free();
 }
 
+TEST(ResourceTestsNoFixture, TestCreateTwoIdenticalResources) {
+    Resource resource1 = Resource(
+            LibrdfNode::fromUriString("obo/PR_000000365")
+    );
+    Resource resource2 = Resource(
+            LibrdfNode::fromUriString("obo/PR_000000365")
+    );
+    ASSERT_EQ(resource1, resource2);
+    ASSERT_EQ(2, librdf_uri_get_usage(resource1.getNode()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(resource2.getNode()->value.uri));
+    resource1.free();
+    resource2.free();
+}
 
 
 

@@ -130,6 +130,17 @@ TEST_F(LibrdfUriTests, TestInequality) {
     uri2.freeUri();
 }
 
+TEST_F(LibrdfUriTests, TestUriTwice) {
+    LibrdfUri uri1 = LibrdfUri("https://uri.com");
+    LibrdfUri uri2 = LibrdfUri("https://uri.com");
+
+    ASSERT_EQ(2, uri1.getUsage());
+    ASSERT_EQ(2, uri2.getUsage());
+
+    uri1.freeUri();
+    uri2.freeUri();
+}
+
 
 
 

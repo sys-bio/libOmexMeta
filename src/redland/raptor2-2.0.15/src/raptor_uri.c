@@ -1774,6 +1774,14 @@ raptor_uri_escaped_write(raptor_uri *uri,
     return 0;
 }
 
+/*
+ * get usage number of uri
+ */
+int raptor_uri_get_usage_count(raptor_uri *uri){
+    return uri->usage;
+}
+
+
 
 /**
  * raptor_uri_uri_string_is_absolute:

@@ -282,7 +282,7 @@ TEST_F(TripleTests, TestBuilderPatternWithSemSimPredicate) {
     resource.free();
 }
 
-class TripleTestsVector : public ::testing::Test{
+class TripleTestsVector : public ::testing::Test {
 
 public:
 
@@ -338,16 +338,14 @@ TEST_F(TripleTestsVector, TestTripleVecMove) {
 }
 
 
-
-
-class TestTripleTwice : public :: testing::Test {
+class TestTripleTwice : public ::testing::Test {
     /*
      * A collection of test to try and figure out
      * why I cannot create two Triples objects from a
      * PhysicalEntity and free them both. Here I try to
      * reproduce the problem by process of elimination.
      */
-    TestTripleTwice(){};
+    TestTripleTwice() {};
 };
 
 /*

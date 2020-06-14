@@ -13,7 +13,7 @@ namespace semsim {
                                    Resource is,
                                    Resources is_part_of)
             : PhysicalPhenomenon(model, std::move(physicalProperty), PHYSICAL_ENTITY),
-              identity_resource_(std::move(is)), location_resources(std::move(is_part_of)) {}
+              identity_resource_(std::move(is)), location_resources_(std::move(is_part_of)) {}
 
 
     void PhysicalEntity::free() {
@@ -22,7 +22,7 @@ namespace semsim {
             identity_resource_.setNode(nullptr);
         }
 
-        for (auto &i : location_resources) {
+        for (auto &i : location_resources_) {
             if (i.getNode() != nullptr) {
                 i.free();
                 i.setNode(nullptr);
@@ -53,13 +53,14 @@ namespace semsim {
     PhysicalEntity &PhysicalEntity::setIdentity(const std::string& resource) {
         // todo implement second argument which defaults to RDFUriNode
         //  and controls whether we use literal/blank/uri node
-        identity_resource_ = Resource::fromRawPtr(LibrdfNode::fromUriString(resource).get());
+        identity_resource_ = Resource(LibrdfNode::fromUriString(resource));
         return *this;
     }
 
     PhysicalEntity &PhysicalEntity::addLocation(const std::string& where) {
-        location_resources.push_back(
-                Resource::fromRawPtr(LibrdfNode::fromUriString(where).get())
+        location_resources_.push_back(std::move(
+                Resource(LibrdfNode::fromUriString(where))
+                )
         );
         return *this;
     }
@@ -69,7 +70,7 @@ namespace semsim {
     }
 
     const Resources &PhysicalEntity::getLocationResources() const {
-        return location_resources;
+        return location_resources_;
     }
 
     Triples PhysicalEntity::toTriples() {
@@ -118,20 +119,22 @@ namespace semsim {
                 model_, "PhysicalEntity",
                 std::vector<std::string>());
 
+        // preallocate for efficiency
+        Triples triples(getLocationResources().size() + 3);
 
-//        Triples triples = std::move(physical_property_.toTriples(property_metaid));
-        Triples triples = physical_property_.toTriples(property_metaid);
+        for (auto &it : physical_property_.toTriples(property_metaid)){
+            triples.move_back(it);
+        }
 
         // the "what" part of physical entity triple
-        Resource r = getIdentityResource();
         triples.emplace_back(
                 LibrdfNode::fromUriString(property_metaid).get(),
                 BiomodelsBiologyQualifier("is").getNode(),
-                r.getNode()
+                identity_resource_.getNode()
         );
 
         // the "where" part of the physical entity
-        for (auto &locationResource : getLocationResources()) {
+        for (auto &locationResource : location_resources_) {
             triples.emplace_back(
                     LibrdfNode::fromUriString(property_metaid).get(),
                     BiomodelsBiologyQualifier("isPartOf").getNode(),
@@ -151,7 +154,7 @@ namespace semsim {
         return static_cast<const semsim::PhysicalPhenomenon &>(*this) ==
                static_cast<const semsim::PhysicalPhenomenon &>(rhs) &&
                identity_resource_ == rhs.identity_resource_ &&
-               location_resources == rhs.location_resources;
+               location_resources_ == rhs.location_resources_;
     }
 
     bool PhysicalEntity::operator!=(const PhysicalEntity &rhs) const {

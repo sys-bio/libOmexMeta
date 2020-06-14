@@ -97,6 +97,10 @@ namespace redland {
         return !(rhs == *this);
     }
 
+    int LibrdfUri::getUsage() {
+        return librdf_uri_get_usage(get());
+    }
+
 
 }
 

@@ -119,7 +119,26 @@ TEST_F(LibrdfStatementTests, TestPartial1) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     predicate.freeNode();
     resource.freeNode();
+}
 
+TEST(LibrdfStatementTestsNoFixture, PayingAttentionToResourceURIUsageCounts) {
+
+    LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromUriString("subject").get(),
+            LibrdfNode::fromUriString("predicate").get(),
+            LibrdfNode::fromUriString("resource").get()
+    );
+    LibrdfStatement statement2 = LibrdfStatement::fromRawNodePtrs(
+            LibrdfNode::fromUriString("subject").get(),
+            LibrdfNode::fromUriString("predicate").get(),
+            LibrdfNode::fromUriString("resource").get()
+    );
+    int usage1 = librdf_uri_get_usage(statement1.getResource()->value.uri);
+    int usage2 = librdf_uri_get_usage(statement2.getResource()->value.uri);
+    ASSERT_EQ(2, usage1);
+    ASSERT_EQ(2, usage2);
+    statement1.freeStatement();
+    statement2.freeStatement();
 }
 
 

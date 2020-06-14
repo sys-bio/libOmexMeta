@@ -103,6 +103,8 @@ namespace redland {
          * @returns std::string containing the filename type uri.
          */
         [[nodiscard]] std::string toFilenameString() const;
+
+        int getUsage();
     };
 }
 

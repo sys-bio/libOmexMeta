@@ -26,7 +26,7 @@ namespace semsim {
     class PhysicalEntity : public PhysicalPhenomenon {
     private:
         Resource identity_resource_;
-        Resources location_resources;
+        Resources location_resources_;
 
     public:
 
