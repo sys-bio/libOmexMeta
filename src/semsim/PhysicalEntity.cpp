@@ -119,6 +119,7 @@ namespace semsim {
                 std::vector<std::string>());
 
 
+//        Triples triples = std::move(physical_property_.toTriples(property_metaid));
         Triples triples = physical_property_.toTriples(property_metaid);
 
         // the "what" part of physical entity triple
@@ -126,7 +127,7 @@ namespace semsim {
         triples.emplace_back(
                 LibrdfNode::fromUriString(property_metaid).get(),
                 BiomodelsBiologyQualifier("is").getNode(),
-                getIdentityResource().getNode()
+                r.getNode()
         );
 
         // the "where" part of the physical entity

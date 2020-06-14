@@ -124,6 +124,7 @@ namespace redland {
      * not copy then delete them!
      */
     LibrdfStatement::LibrdfStatement(const LibrdfStatement &statement) {
+        std::cout << "LibrdfStatement copy constructor called" <<std::endl;
         if (this != &statement) {
             if (statement.statement_ != nullptr) {
                 if (statement_ != nullptr) {
@@ -137,6 +138,7 @@ namespace redland {
     }
 
     LibrdfStatement &LibrdfStatement::operator=(const LibrdfStatement &statement) {
+        std::cout << "LibrdfStatement copy assignment operator called" <<std::endl;
         if (this != &statement) {
             if (statement.statement_ != nullptr) {
                 if (statement_ != nullptr) {
@@ -152,6 +154,7 @@ namespace redland {
 
 
     LibrdfStatement::LibrdfStatement(LibrdfStatement &&statement) noexcept {
+        std::cout << "LibrdfStatement move constructor called" <<std::endl;
         if (statement.statement_ != nullptr) {
             if (statement_ != nullptr) {
                 librdf_free_statement(statement_);
@@ -163,6 +166,7 @@ namespace redland {
     }
 
     LibrdfStatement &LibrdfStatement::operator=(LibrdfStatement &&statement) noexcept {
+        std::cout << "LibrdfStatement move assignment called" <<std::endl;
         if (this != &statement) {
             if (statement.statement_ != nullptr) {
                 if (statement_ != nullptr) {
@@ -181,7 +185,6 @@ namespace redland {
             librdf_free_statement(statement_);
             statement_ = nullptr;
         }
-
     }
 
     bool LibrdfStatement::isComplete() {

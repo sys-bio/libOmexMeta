@@ -623,15 +623,29 @@ public:
 
 };
 
-TEST_F(EditorTestsDeletePhysicalEntity, TestCanIDeleteFirstTriple) {
-//    ASSERT_EQ(4, rdf.size());
-//    Triples triples = physicalEntity.toTriples();
-//    Triple triple = triples.pop();
+TEST_F(EditorTestsDeletePhysicalEntity, TestRDFSizeBeforeRemovingAndNoMemoryLeaks) {
+    ASSERT_EQ(4, rdf.size());
+    Triples triples = physicalEntity.toTriples();
+    ASSERT_EQ(4, triples.size());
+}
+
+TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteFirstTriple) {
+    Triples triples = physicalEntity.toTriples();
+//    Triple triple = triples.pop_front();
+//    std::cout << triple.str("ntriples", "base") << std::endl;
+//    triple.freeTriple();
+//    triples.freeTriples();
 //
+//    triples.freeTriples();
+////
 //    ASSERT_EQ(3, triples.size());
 //
 //    editor.removeSingleAnnotation(triple);
 //    ASSERT_EQ(3, rdf.size());
+//    triples.freeTriples();
+//    triple.freeTriple();
+//physicalEntity.free();
+
 
 }
 

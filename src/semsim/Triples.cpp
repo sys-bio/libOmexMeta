@@ -31,6 +31,11 @@ namespace semsim {
         triples_.push_back(std::move(triple));
     }
 
+    void Triples::emplace_back(librdf_node *subject, librdf_node *predicate, librdf_node *resource) {
+        Triple triple(subject, predicate, resource);
+        move_back(triple);
+    }
+
     void Triples::emplace_back(Subject subject, const PredicatePtr &predicatePtr, const Resource &resource) {
         Triple triple(subject, predicatePtr, resource);
         move_back(triple);
@@ -60,11 +65,6 @@ namespace semsim {
 
     void Triples::emplace_back(Subject subject, SemSim predicate, const Resource &resource) {
         Triple triple(subject, std::make_shared<SemSim>(std::move(predicate)), resource);
-        move_back(triple);
-    }
-
-    void Triples::emplace_back(librdf_node *subject, librdf_node *predicate, librdf_node *resource) {
-        Triple triple(subject, predicate, resource);
         move_back(triple);
     }
 
@@ -166,8 +166,8 @@ namespace semsim {
     }
 
     void Triples::freeTriples() {
-        for (int i = 0; i < triples_.size(); i++) {
-            triples_[i].freeStatement();
+        while (!triples_.empty()){
+            pop().freeTriple();
         }
     }
 
@@ -185,6 +185,14 @@ namespace semsim {
 
     bool Triples::operator!=(const Triples &rhs) const {
         return !(rhs == *this);
+    }
+
+    Triples::Triples(int size) {
+        triples_.reserve(size);
+    }
+
+    int Triples::capacity() {
+        return triples_.capacity();
     }
 
 }

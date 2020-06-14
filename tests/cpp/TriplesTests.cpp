@@ -190,6 +190,25 @@ TEST(TriplesTestsNoFixture, TestPop) {
     triples.freeTriples();
 
 }
+
+TEST(TriplesTestsNoFixture, TestPreallocate) {
+    Triples triples(2);
+    ASSERT_EQ(2, triples.capacity());
+
+    triples.emplace_back(LibrdfNode::fromUriString("subject1").get(),
+                         SemSim("hasSinkParticipant").getNode(),
+                         LibrdfNode::fromLiteral("literal node1").get());
+    triples.emplace_back(LibrdfNode::fromUriString("subject2").get(),
+                         SemSim("hasSourceParticipant").getNode(),
+                         LibrdfNode::fromLiteral("literal node2").get());
+    // make sure we have 2 triples
+    ASSERT_EQ(2, triples.size());
+
+    // free the triples. All is accounted for.
+    triples.freeTriples();
+
+}
+
 TEST(TriplesTestsNoFixture, TestPopFront) {
     Triples triples;
     triples.emplace_back(LibrdfNode::fromUriString("subject1").get(),
@@ -287,35 +306,13 @@ TEST(TriplesTestsNoFixture, TestIteration) {
             LibrdfNode::fromUriString("http://resource2.com/resource2").get()
     );
     std::ostringstream os;
-    for (int i=0; i<triples.size();i++) {
+    for (int i = 0; i < triples.size(); i++) {
         os << triples[i].getSubjectStr() << std::endl;
     }
     std::string expected = "http://subject1.com/subject1\n"
                            "http://subject2.com/subject2\n";
     ASSERT_STREQ(expected.c_str(), os.str().c_str());
     triples.freeTriples();
-}
-
-TEST(TriplesTestsNoFixture, TestMakeSameTriplesTwice) {
-//    Triples triples;
-//    triples.emplace_back(
-//            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
-//            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
-//            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
-//    );
-//    triples.emplace_back(
-//            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
-//            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
-//            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
-//    );
-//    std::ostringstream os;
-//    for (int i=0; i<triples.size();i++) {
-//        os << triples[i].getSubjectStr() << std::endl;
-//    }
-//    std::string expected = "http://subject1.com/subject1\n"
-//                           "http://subject2.com/subject2\n";
-//    ASSERT_STREQ(expected.c_str(), os.str().c_str());
-//    triples.freeTriples();
 }
 
 
@@ -346,6 +343,59 @@ TEST(TriplesTestsNoFixture, TestEquality) {
     triples1.freeTriples();
     triples2.freeTriples();
 }
+
+/*
+ * Collection of tests to try and debug the
+ * reason why I can't free two triples objects
+ * that are the same and generated from
+ * a PhysicalEntity.
+ */
+class TestTriplesTwice : public :: testing::Test {
+    TestTriplesTwice()= default;;
+};
+
+TEST(TestTriplesTwice, TestMakeSameTriplesTwice) {
+    Triples triples1(3);
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
+            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+    );
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
+            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+    );
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
+            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+    );
+    std::cout << "creating triples 2 " << std::endl;
+    Triples triples2(3);
+    triples2.emplace_back(
+            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
+            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+    );
+    triples2.emplace_back(
+            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
+            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+    );
+    triples2.emplace_back(
+            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
+            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+    );
+
+    triples1.freeTriples();
+    triples2.freeTriples();
+
+}
+
+
+
 
 
 

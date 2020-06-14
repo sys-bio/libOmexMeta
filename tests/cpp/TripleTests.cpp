@@ -340,7 +340,21 @@ TEST_F(TripleTestsVector, TestTripleVecMove) {
 
 
 
-TEST(TripleTestsNoFixture, TestMakeTripleTwiceWithRawNodes) {
+class TestTripleTwice : public :: testing::Test {
+    /*
+     * A collection of test to try and figure out
+     * why I cannot create two Triples objects from a
+     * PhysicalEntity and free them both. Here I try to
+     * reproduce the problem by process of elimination.
+     */
+    TestTripleTwice(){};
+};
+
+/*
+ * Test two Triple with raw nodes
+ */
+
+TEST(TestTripleTwice, WithRawNodes) {
     Triple triple1(
             LibrdfNode::fromUriString("subject").get(),
             LibrdfNode::fromUriString("predicate").get(),
@@ -355,24 +369,57 @@ TEST(TripleTestsNoFixture, TestMakeTripleTwiceWithRawNodes) {
     triple2.freeStatement();
 }
 
+/*
+ * Now test two triples with Subject Predicate and Resource
+ */
+TEST(TestTripleTwice, WithSubjectPredAndRes) {
+    Triple triple1(
+            Subject(LibrdfNode::fromUriString("subject")).getNode(),
+            Predicate("uniprot", "PD1234", "uni").getNode(),
+            Resource(LibrdfNode::fromUriString("resource")).getNode()
+    );
+    Triple triple2(
+            Subject(LibrdfNode::fromUriString("subject")).getNode(),
+            Predicate("uniprot", "PD1234", "uni").getNode(),
+            Resource(LibrdfNode::fromUriString("resource")).getNode()
+    );
+    triple1.freeStatement();
+    triple2.freeStatement();
+}
 
-TEST(TripleTestsNoFixture, TestMakeTripleTwiceWithSubPredRes) {
-    /*
-     * Subject, predicate types and resource cannot be used more than once
-     * because things get moved, not copied.
-     */
+/*
+ * Try with different predicate
+ */
+TEST(TestTripleTwice, WithSubjectBiomodelModelQualifierAndRes) {
     Triple triple1(
             Subject(LibrdfNode::fromUriString("subject")).getNode(),
             BiomodelsBiologyQualifier("is").getNode(),
             Resource(LibrdfNode::fromUriString("resource")).getNode()
-            );
+    );
     Triple triple2(
             Subject(LibrdfNode::fromUriString("subject")).getNode(),
-            BiomodelsBiologyQualifier("is").getNode(),
+            Predicate("uniprot", "PD1234", "uni").getNode(),
             Resource(LibrdfNode::fromUriString("resource")).getNode()
-            );
+    );
     triple1.freeStatement();
     triple2.freeStatement();
+}
+
+
+TEST(TestTripleTwice, WithRawNodesWithMovingTheFirst) {
+    Triple triple1(
+            LibrdfNode::fromUriString("subject").get(),
+            LibrdfNode::fromUriString("predicate").get(),
+            LibrdfNode::fromUriString("resource").get()
+    );
+    Triple triple2 = std::move(triple1);
+    Triple triple3(
+            LibrdfNode::fromUriString("subject").get(),
+            LibrdfNode::fromUriString("predicate").get(),
+            LibrdfNode::fromUriString("resource").get()
+    );
+    triple2.freeStatement();
+    triple3.freeStatement();
 }
 
 
