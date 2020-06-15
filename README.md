@@ -54,7 +54,7 @@ Remember you can set
 ```
 i.e. 
 ```
--DCMAKE_INSTALL_PREFIX=$(pwd)/install-ubuntu  
+-DCMAKE_INSTALL_PREFIX=install-ubuntu  
 ```
 to install to somewhere non-standard. 
 
@@ -94,7 +94,6 @@ and then proceed with the build instructions.
 - documentation
 - support for removing triples based on metaid (sparql?)
 - Bug in multiplier of participants, when 0, it should not default to x^-315. Use integers instead??
-- Participant IDs are currently given by user. This should probably be generated automatically instead.
 - Remove second namespace map in RDF class in favour of the one in Predicate class
 - Double check Predicate.cpp. Do we have everything that we want to include? (my guess is no)
-- others? 
+- Statically link all dependency libraries. 
