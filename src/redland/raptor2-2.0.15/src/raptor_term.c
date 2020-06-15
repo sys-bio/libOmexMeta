@@ -436,6 +436,7 @@ raptor_term_copy(raptor_term *term) {
         return NULL;
 
     term->usage++;
+
     return term;
 }
 
