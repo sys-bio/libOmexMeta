@@ -1,0 +1,16 @@
+digraph {
+	rankdir = LR;
+	charset="utf-8";
+
+	"RSemsimMetaid0000" -> "Rhttps://identifiers.org/fma/FMA_66835" [ label="bqbiol:is" ];
+
+	// Resources
+	"RSemsimMetaid0000" [ label="SemsimMetaid0000", shape = ellipse, color = blue ];
+	"Rhttps://identifiers.org/fma/FMA_66835" [ label="https://identifiers.org/fma/FMA_66835", shape = ellipse, color = blue ];
+
+	// Anonymous nodes
+
+	// Literals
+
+	label="\n\nModel:\nfile://annotation-drawing.rdf\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\n";
+}

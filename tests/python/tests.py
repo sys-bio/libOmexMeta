@@ -137,7 +137,7 @@ class TestRDF(unittest.TestCase):
 
     def test_add_from_uri(self):
         rdf = RDF()
-        RDF.add_from_uri(rdf, self.sbml_uri, "rdfxml", "test_add_from_string.rdf")
+        RDF.add_from_uri(rdf, self.sbml_uri, "rdfxml")
         self.assertEqual(277, len(rdf))
 
     def test_from_file(self):
@@ -211,8 +211,7 @@ class EditorTests(unittest.TestCase):
         with self.rdf.to_editor(xml, "sbml") as editor:
             with editor.new_physical_process() as physical_process:
                 physical_process \
-                    .set_about("SemsimMetaid0001") \
-                    .set_physical_property("opb/opb_275") \
+                    .set_physical_property("SemsimMetaid0001", "opb/opb_275") \
                     .add_source("metaid2", 1.0, "physicalEntity4") \
                     .add_sink("metaid3", 1.0, "PhysicalEntity7") \
                     .add_mediator("metaid3", 1.0, "PhysicalEntity8")
@@ -249,34 +248,35 @@ class EditorTests(unittest.TestCase):
         with self.rdf.to_editor(xml, "sbml") as editor:
             with editor.new_physical_force() as physical_force:
                 physical_force \
-                    .set_about("SemsimMetaid0004") \
-                    .set_physical_property("opb/opb_275") \
+                    .set_physical_property("SemsimMetaid0004", "opb/opb_275") \
                     .add_source("metaid2", 1.0, "physicalEntity4") \
                     .add_sink("metaid3", 1.0, "PhysicalEntity7")
         expected = """<?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:semsim="http://www.bhi.washington.edu/semsim#"
-   xml:base="file://./Annotation.rdf">
+   xml:base="file://./Annotations.rdf">
   <rdf:Description rdf:about="PhysicalForce0000">
-    <semsim:hasSinkParticipant rdf:resource="metaid3"/>
-    <semsim:hasSourceParticipant rdf:resource="metaid2"/>
+    <semsim:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
+    <semsim:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
   </rdf:Description>
   <rdf:Description rdf:about="SemsimMetaid0004">
     <bqbiol:isPropertyOf rdf:resource="PhysicalForce0000"/>
     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
   </rdf:Description>
-  <rdf:Description rdf:about="metaid2">
+  <rdf:Description rdf:about="SinkParticipant0000">
     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
+    <semsim:hasPhysicalEntityReference rdf:resource="metaid3"/>
   </rdf:Description>
-  <rdf:Description rdf:about="metaid3">
+  <rdf:Description rdf:about="SourceParticipant0000">
     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
+    <semsim:hasPhysicalEntityReference rdf:resource="metaid2"/>
   </rdf:Description>
 </rdf:RDF>
 """
         actual = str(self.rdf)
+
+        print(actual)
 
         self.assertEqual(expected, actual)
 
@@ -400,16 +400,16 @@ class AnnotateAModelTest(unittest.TestCase):
 
             # annotate Smad3nuc
             with editor.new_physical_entity() as smad3nuc:
-                smad3nuc.set_about("SemsimMetaid0002") \
-                    .set_physical_property("OPB:OPB_00340") \
+                smad3nuc \
+                    .set_physical_property("SemsimMetaid0002", "OPB:OPB_00340") \
                     .set_identity("uniprot:P84022") \
                     .add_location("obo/FMA_7163") \
-                    .add_location("obo/FMA_264020") \
- \
-                    # annotate Smad3nuc
+                    .add_location("obo/FMA_264020")
+
+            # annotate Smad3nuc
             with editor.new_physical_entity() as smad3nuc:
-                smad3nuc.set_about("SemsimMetaid0003") \
-                    .set_physical_property("OPB:OPB_00340") \
+                smad3nuc \
+                    .set_physical_property("SemsimMetaid0003", "OPB:OPB_00340") \
                     .set_identity("uniprot:P84022") \
                     .add_location("obo/FMA_7163") \
                     .add_location("obo/FMA_63877") \
@@ -417,17 +417,17 @@ class AnnotateAModelTest(unittest.TestCase):
 
             # annotate r1 (Smad3Nuc -> Smad3Cyt)
             with editor.new_physical_process() as export_reaction:
-                export_reaction.set_about("SemsimMetaid0004") \
-                    .set_physical_property("OPB:OPB_00237") \
-                    .add_source("source1", 1, "SemsimMetaid0003") \
-                    .add_sink("sink1", 1, "SemsimMetaid0002")
+                export_reaction \
+                    .set_physical_property("SemsimMetaid0004", "OPB:OPB_00237") \
+                    .add_source(1, "SemsimMetaid0003") \
+                    .add_sink(1, "SemsimMetaid0002")
 
             # annotate r2 (Smad3Cyt -> Smad3Nuc)
             with editor.new_physical_process() as export_reaction:
-                export_reaction.set_about("SemsimMetaid0005") \
-                    .set_physical_property("OPB:OPB_00237") \
-                    .add_source("source2", 1, "SemsimMetaid0002") \
-                    .add_sink("sink2", 1, "SemsimMetaid0003")
+                export_reaction \
+                    .set_physical_property("SemsimMetaid0005", "OPB:OPB_00237") \
+                    .add_source(1, "SemsimMetaid0002") \
+                    .add_sink(1, "SemsimMetaid0003")
 
         expected = """<?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
