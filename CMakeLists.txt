@@ -136,6 +136,7 @@ else ()
             ${LIBRDF_SOURCE_DIR}
             ${WRAPPER_SOURCE_DIR}
             ${LIBPQ_INCLUDE_DIR}
+            ${ICONV_INCLUDE_DIR}
             )
 
     set(LINK_LIBRARIES
@@ -145,13 +146,14 @@ else ()
             -Wl,--whole-archive
             "${LIBCOMBINE_STATIC_LIBRARY}"
             "${LIBSBML_STATIC_LIBRARY}"
+            "${ICONV_STATIC_LIBRARY}"
             -Wl,--no-whole-archive
             "${ZIPPER_STATIC_LIBRARY}"
             -Wl,--whole-archive
             "${ZLIB_STATIC_LIBRARY}"
             "${BZ2_STATIC_LIBRARY}"
             "${LIBXML2_STATIC_LIBRARY}"
-            "iconv"
+#            "iconv"
             ltdl ${CMAKE_DL_LIBS}
             # might need --whole archive again here
             lzma
@@ -194,7 +196,6 @@ else ()
             ${RASQAL_DIR}/libsv
             ${RASQAL_DIR}/getopt
             ${LIBRDF_DIR}/src
-            #            /mnt/d/libsemsim/src/redland/redland-1.0.17/src
             ${WRAPPER_SOURCE_DIR} #RedlandAPIWrapper
             ${LIBXML2_INCLUDE_DIR}
             ${LIBSBML_DEPS_INCLUDE_DIR}
@@ -214,7 +215,6 @@ else ()
         add_subdirectory(${GOOGLETEST_SOURCE})
         add_subdirectory(tests/cpp)
     endif (BUILD_TESTS)
-
 
     if (BUILD_DOCS)
         add_subdirectory(docs)

@@ -580,16 +580,13 @@ class TestAPI(unittest.TestCase):
         physical_process = PysemsimAPI.editor_new_physical_process(editor_ptr)
         PysemsimAPI.physical_process_set_physical_property(physical_process, "cytosol".encode(), "opb:opb12345".encode())
         PysemsimAPI.physical_process_add_source(
-            physical_process, "cytoplasm".encode(),
-            1.0, "Entity1".encode())
+            physical_process, 1.0, "Entity1".encode())
 
         PysemsimAPI.physical_process_add_sink(
-            physical_process, "cytoplasm".encode(),
-            1.0, "Entity2".encode())
+            physical_process, 1.0, "Entity2".encode())
 
         PysemsimAPI.physical_process_add_mediator(
-            physical_process, "cytoplasm".encode(),
-            1.0, "Entity3".encode())
+            physical_process, 1.0, "Entity3".encode())
         ptr = PysemsimAPI.physical_process_str(physical_process, "html".encode(),
                                                "html_physical_process_ann.rdf".encode())
         actual = PysemsimAPI.get_and_free_c_str(ptr)
@@ -620,43 +617,49 @@ class TestAPI(unittest.TestCase):
     <tr class="triple">
       <td><span class="uri"><a href="PhysicalProcess0000">PhysicalProcess0000</a></span></td>
       <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasSourceParticipant">http://www.bhi.washington.edu/semsim#hasSourceParticipant</a></span></td>
-      <td><span class="uri"><a href="cytoplasm">cytoplasm</a></span></td>
+      <td><span class="uri"><a href="SourceParticipant0000">SourceParticipant0000</a></span></td>
     </tr>
     <tr class="triple">
-      <td><span class="uri"><a href="cytoplasm">cytoplasm</a></span></td>
+      <td><span class="uri"><a href="SourceParticipant0000">SourceParticipant0000</a></span></td>
       <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference">http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference</a></span></td>
       <td><span class="uri"><a href="Entity1">Entity1</a></span></td>
     </tr>
     <tr class="triple">
-      <td><span class="uri"><a href="cytoplasm">cytoplasm</a></span></td>
+      <td><span class="uri"><a href="SourceParticipant0000">SourceParticipant0000</a></span></td>
       <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasMultiplier">http://www.bhi.washington.edu/semsim#hasMultiplier</a></span></td>
       <td><span class="literal"><span class="value">5.26354e-315</span>^^&lt;<span class="datatype">http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double</span>&gt;</span></td>
     </tr>
     <tr class="triple">
       <td><span class="uri"><a href="PhysicalProcess0000">PhysicalProcess0000</a></span></td>
       <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasSinkParticipant">http://www.bhi.washington.edu/semsim#hasSinkParticipant</a></span></td>
-      <td><span class="uri"><a href="cytoplasm">cytoplasm</a></span></td>
+      <td><span class="uri"><a href="SinkParticipant0000">SinkParticipant0000</a></span></td>
     </tr>
     <tr class="triple">
-      <td><span class="uri"><a href="cytoplasm">cytoplasm</a></span></td>
+      <td><span class="uri"><a href="SinkParticipant0000">SinkParticipant0000</a></span></td>
       <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference">http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference</a></span></td>
       <td><span class="uri"><a href="Entity2">Entity2</a></span></td>
     </tr>
     <tr class="triple">
-      <td><span class="uri"><a href="PhysicalProcess0000">PhysicalProcess0000</a></span></td>
-      <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasMediatorParticipant">http://www.bhi.washington.edu/semsim#hasMediatorParticipant</a></span></td>
-      <td><span class="uri"><a href="cytoplasm">cytoplasm</a></span></td>
+      <td><span class="uri"><a href="SinkParticipant0000">SinkParticipant0000</a></span></td>
+      <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasMultiplier">http://www.bhi.washington.edu/semsim#hasMultiplier</a></span></td>
+      <td><span class="literal"><span class="value">5.26354e-315</span>^^&lt;<span class="datatype">http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double</span>&gt;</span></td>
     </tr>
     <tr class="triple">
-      <td><span class="uri"><a href="cytoplasm">cytoplasm</a></span></td>
+      <td><span class="uri"><a href="PhysicalProcess0000">PhysicalProcess0000</a></span></td>
+      <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasMediatorParticipant">http://www.bhi.washington.edu/semsim#hasMediatorParticipant</a></span></td>
+      <td><span class="uri"><a href="MediatorParticipant0000">MediatorParticipant0000</a></span></td>
+    </tr>
+    <tr class="triple">
+      <td><span class="uri"><a href="MediatorParticipant0000">MediatorParticipant0000</a></span></td>
       <td><span class="uri"><a href="http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference">http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference</a></span></td>
       <td><span class="uri"><a href="Entity3">Entity3</a></span></td>
     </tr>
   </table>
-  <p>Total number of triples: <span class="count">9</span>.</p>
+  <p>Total number of triples: <span class="count">10</span>.</p>
 </body>
 </html>
 """
+        print(actual)
         self.assertEqual(expected, actual)
         PysemsimAPI.editor_delete(editor_ptr)
         PysemsimAPI.physical_process_delete(physical_process)
@@ -666,16 +669,13 @@ class TestAPI(unittest.TestCase):
         physical_process = PysemsimAPI.editor_new_physical_process(editor_ptr)
         PysemsimAPI.physical_process_set_physical_property(physical_process, "cytosol".encode(), "opb:opb12345".encode())
         PysemsimAPI.physical_process_add_source(
-            physical_process, "cytoplasm".encode(),
-            1.0, "Entity1".encode())
+            physical_process, 1.0, "Entity1".encode())
 
         PysemsimAPI.physical_process_add_sink(
-            physical_process, "cytoplasm".encode(),
-            1.0, "Entity2".encode())
+            physical_process, 1.0, "Entity2".encode())
 
         PysemsimAPI.physical_process_add_mediator(
-            physical_process, "cytoplasm".encode(),
-            1.0, "Entity3".encode())
+            physical_process, 1.0, "Entity3".encode())
         PysemsimAPI.editor_add_physical_process(editor_ptr, physical_process)
         ptr = PysemsimAPI.rdf_to_string(self.rdf, "rdfxml-abbrev".encode(), "PhysicalProcess.rdf".encode())
         actual = PysemsimAPI.get_and_free_c_str(ptr)
@@ -685,16 +685,21 @@ class TestAPI(unittest.TestCase):
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:semsim="http://www.bhi.washington.edu/semsim#"
    xml:base="file://PhysicalProcess.rdf">
-  <rdf:Description rdf:about="PhysicalProcess0000">
-    <semsim:hasMediatorParticipant rdf:resource="cytoplasm"/>
-    <semsim:hasSinkParticipant rdf:resource="cytoplasm"/>
-    <semsim:hasSourceParticipant rdf:resource="cytoplasm"/>
+  <rdf:Description rdf:about="MediatorParticipant0000">
+    <semsim:hasPhysicalEntityReference rdf:resource="Entity3"/>
   </rdf:Description>
-  <rdf:Description rdf:about="cytoplasm">
+  <rdf:Description rdf:about="PhysicalProcess0000">
+    <semsim:hasMediatorParticipant rdf:resource="MediatorParticipant0000"/>
+    <semsim:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
+    <semsim:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SinkParticipant0000">
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
+    <semsim:hasPhysicalEntityReference rdf:resource="Entity2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="SourceParticipant0000">
     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">5.26354e-315</semsim:hasMultiplier>
     <semsim:hasPhysicalEntityReference rdf:resource="Entity1"/>
-    <semsim:hasPhysicalEntityReference rdf:resource="Entity2"/>
-    <semsim:hasPhysicalEntityReference rdf:resource="Entity3"/>
   </rdf:Description>
   <rdf:Description rdf:about="cytosol">
     <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
@@ -722,12 +727,10 @@ class TestAPI(unittest.TestCase):
         physical_force = PysemsimAPI.editor_new_physical_force(editor_ptr)
         PysemsimAPI.physical_force_set_physical_property(physical_force, "cytosol".encode(), "opb:opb12345".encode())
         PysemsimAPI.physical_force_add_source(
-            physical_force, "cytoplasm".encode(),
-            1.0, "Entity1".encode())
+            physical_force, 1.0, "Entity1".encode())
 
         PysemsimAPI.physical_force_add_sink(
-            physical_force, "cytoplasm".encode(),
-            1.0, "Entity2".encode())
+            physical_force, 1.0, "Entity2".encode())
 
         PysemsimAPI.editor_add_physical_force(editor_ptr, physical_force)
         ptr = PysemsimAPI.rdf_to_string(self.rdf, "turtle".encode(),
@@ -739,12 +742,16 @@ class TestAPI(unittest.TestCase):
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 
 <PhysicalForce0000>
-    semsim:hasSinkParticipant <cytoplasm> ;
-    semsim:hasSourceParticipant <cytoplasm> .
+    semsim:hasSinkParticipant <SinkParticipant0000> ;
+    semsim:hasSourceParticipant <SourceParticipant0000> .
 
-<cytoplasm>
+<SinkParticipant0000>
     semsim:hasMultiplier "5.26354e-315"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
-    semsim:hasPhysicalEntityReference <Entity1>, <Entity2> .
+    semsim:hasPhysicalEntityReference <Entity2> .
+
+<SourceParticipant0000>
+    semsim:hasMultiplier "5.26354e-315"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
+    semsim:hasPhysicalEntityReference <Entity1> .
 
 <cytosol>
     bqbiol:isPropertyOf <PhysicalForce0000> ;
@@ -760,29 +767,31 @@ class TestAPI(unittest.TestCase):
         physical_force = PysemsimAPI.editor_new_physical_force(editor_ptr)
         PysemsimAPI.physical_force_set_physical_property(physical_force, "cytosol".encode(), "opb:opb12345".encode())
         PysemsimAPI.physical_force_add_source(
-            physical_force, "cytoplasm".encode(),
-            1.0, "Entity1".encode())
+            physical_force, 1.0, "Entity1".encode())
 
         PysemsimAPI.physical_force_add_sink(
-            physical_force, "cytoplasm".encode(),
-            1.0, "Entity2".encode())
+            physical_force, 1.0, "Entity2".encode())
 
         ptr = PysemsimAPI.physical_force_str(physical_force, "turtle".encode(),
                                              "html_physical_process_ann.rdf".encode())
         actual = PysemsimAPI.get_and_free_c_str(ptr)
-        # print(actual)
+        print(actual)
         expected = """@base <file://html_physical_process_ann.rdf> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://www.bhi.washington.edu/semsim#> .
 
 <PhysicalForce0000>
-    semsim:hasSinkParticipant <cytoplasm> ;
-    semsim:hasSourceParticipant <cytoplasm> .
+    semsim:hasSinkParticipant <SinkParticipant0000> ;
+    semsim:hasSourceParticipant <SourceParticipant0000> .
 
-<cytoplasm>
+<SinkParticipant0000>
     semsim:hasMultiplier "5.26354e-315"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
-    semsim:hasPhysicalEntityReference <Entity1>, <Entity2> .
+    semsim:hasPhysicalEntityReference <Entity2> .
+
+<SourceParticipant0000>
+    semsim:hasMultiplier "5.26354e-315"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
+    semsim:hasPhysicalEntityReference <Entity1> .
 
 <cytosol>
     bqbiol:isPropertyOf <PhysicalForce0000> ;

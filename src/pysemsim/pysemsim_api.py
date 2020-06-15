@@ -244,22 +244,22 @@ class PysemsimAPI:
                                                             [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_addSource(
-    #         PhysicalProcess *physical_process, const char *source_metai, double multiplier,
+    #         PhysicalProcess *physical_process, double multiplier,
     #         const char *physical_entity_reference);
     physical_process_add_source = Util.load_func("PhysicalProcess_addSource",
-                                                 [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_int64)
+                                                 [ct.c_int64, ct.c_float, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_addSink(
-    #         PhysicalProcess *physical_process, const char *sink_metaid, double multiplier,
+    #         PhysicalProcess *physical_process, double multiplier,
     #         const char *physical_entity_reference);
     physical_process_add_sink = Util.load_func("PhysicalProcess_addSink",
-                                               [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_int64)
+                                               [ct.c_int64, ct.c_float, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_addMediator(
-    #         PhysicalProcess *physical_process, const char *mediator_metaid, double multiplier,
+    #         PhysicalProcess *physical_process, double multiplier,
     #         const char *physical_entity_reference);
     physical_process_add_mediator = Util.load_func("PhysicalProcess_addMediator",
-                                                   [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_int64)
+                                                   [ct.c_int64, ct.c_float, ct.c_char_p], ct.c_int64)
 
     # char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
     physical_process_str = Util.load_func("PhysicalProcess_str",
@@ -289,16 +289,16 @@ class PysemsimAPI:
                                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PhysicalForce *PhysicalForce_addSource(
-    #         PhysicalForce *physical_force_ptr, const char *source_metaid, double multiplier,
+    #         PhysicalForce *physical_force_ptr, double multiplier,
     #         const char *physical_entity_reference);
     physical_force_add_source = Util.load_func("PhysicalForce_addSource",
-                                               [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_int64)
+                                               [ct.c_int64, ct.c_float, ct.c_char_p], ct.c_int64)
 
     # PhysicalForce *PhysicalForce_addSink(
-    #         PhysicalForce *physical_force_ptr, const char *sink_metaid, double multiplier,
+    #         PhysicalForce *physical_force_ptr, double multiplier,
     #         const char *physical_entity_reference);
     physical_force_add_sink = Util.load_func("PhysicalForce_addSink",
-                                             [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_int64)
+                                             [ct.c_int64, ct.c_float, ct.c_char_p], ct.c_int64)
 
     # char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
     physical_force_str = Util.load_func("PhysicalForce_str",

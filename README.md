@@ -3,14 +3,11 @@ Libsemsim is a C++ library for annotating systems biology models that
 use xml for serialization. Libsemsim uses RDF as a framework for
 representing these annotations. 
 
-In addition to the C++ backend there is a C API which is exported into a shared
-library for importing libsemsim into other languages, as well as a Python front 
-end library. 
+In addition to the C++ backend there is a C API, which facilitates importing libsemsim into other languages and a Python front end for a nice user interface. 
 
 This is a pre-release version of libsemsim and should be considered as such. 
 Its primary purpose is to get feedback from collaborators on how to 
-improve the software. Suggested improvements should be turned into coherent 
-github issues. 
+improve the software. Please convert any suggestions/improvements into coherent github issues. 
 
 As a side note, the name `libsemsim` is due to change to `libOmexMeta` before release. 
 
@@ -27,6 +24,9 @@ You can get up and running quickly using pip
 
 Note that "pysemsim" is only available on pypi test. It has been tested with Python
 version 3.8, but should work on other Python 3 versions. 
+
+## Downloading Binaries
+You can download binaries from the [releases tab](https://github.com/sys-bio/libsemsim/releases/tag/v0.0.2)
 
 ## Building from source
 **tl;dr**

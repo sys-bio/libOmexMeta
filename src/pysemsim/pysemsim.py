@@ -266,8 +266,8 @@ class PhysicalEntity:
         self._obj = PysemsimAPI.physical_entity_set_about(self._obj, about.encode())
         return self
 
-    def set_physical_property(self, property: str) -> PhysicalEntity:
-        self._obj = PysemsimAPI.physical_entity_set_physical_property(self.get_ptr(), property.encode())
+    def set_physical_property(self, about:str, property: str) -> PhysicalEntity:
+        self._obj = PysemsimAPI.physical_entity_set_physical_property(self.get_ptr(), about.encode(), property.encode())
         return self
 
     def set_identity(self, identity: str) -> PhysicalEntity:
@@ -319,23 +319,21 @@ class PhysicalProcess:
         self._obj = PysemsimAPI.physical_process_set_about(self._obj, about.encode())
         return self
 
-    def set_physical_property(self, property: str) -> PhysicalProcess:
-        self._obj = PysemsimAPI.physical_process_set_physical_property(self._obj, property.encode())
+    def set_physical_property(self, about:str, property: str) -> PhysicalProcess:
+        self._obj = PysemsimAPI.physical_process_set_physical_property(self._obj, about.encode(), property.encode())
         return self
 
-    def add_source(self, source_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._obj = PysemsimAPI.physical_process_add_source(self._obj, source_id.encode(), multiplier,
+    def add_source(self, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
+        self._obj = PysemsimAPI.physical_process_add_source(self._obj, multiplier,
                                                             physical_entity_reference.encode())
         return self
 
-    def add_sink(self, sink_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._obj = PysemsimAPI.physical_process_add_sink(self._obj, sink_id.encode(), multiplier,
-                                                          physical_entity_reference.encode())
+    def add_sink(self,  multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
+        self._obj = PysemsimAPI.physical_process_add_sink(self._obj,  multiplier, physical_entity_reference.encode())
         return self
 
-    def add_mediator(self, mediator_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._obj = PysemsimAPI.physical_process_add_mediator(self._obj, mediator_id.encode(), multiplier,
-                                                              physical_entity_reference.encode())
+    def add_mediator(self,  multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
+        self._obj = PysemsimAPI.physical_process_add_mediator(self._obj, multiplier, physical_entity_reference.encode())
         return self
 
     def to_string(self, format: str, base_uri: str = "./Annotations.rdf"):
@@ -347,10 +345,6 @@ class PhysicalProcess:
 
     def get_about(self) -> str:
         return PysemsimAPI.get_and_free_c_str(PysemsimAPI.physical_process_get_about(self._obj))
-
-    def get_physical_property(self) -> str:
-        return PysemsimAPI.get_and_free_c_str(
-            PysemsimAPI.physical_process_get_physical_property(self._obj))
 
     def delete(self) -> None:
         PysemsimAPI.physical_process_delete(self._obj)
@@ -368,17 +362,16 @@ class PhysicalForce:
         self._obj = PysemsimAPI.physical_force_set_about(self._obj, about.encode())
         return self
 
-    def set_physical_property(self, property: str) -> PhysicalForce:
-        self._obj = PysemsimAPI.physical_force_set_physical_property(self._obj, property.encode())
+    def set_physical_property(self, about: str, property: str) -> PhysicalForce:
+        self._obj = PysemsimAPI.physical_force_set_physical_property(self._obj, about.encode(), property.encode())
         return self
 
-    def add_source(self, source_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
-        self._obj = PysemsimAPI.physical_force_add_source(self._obj, source_id.encode(), multiplier,
-                                                          physical_entity_reference.encode())
+    def add_source(self,  multiplier: float, physical_entity_reference: str) -> PhysicalForce:
+        self._obj = PysemsimAPI.physical_force_add_source(self._obj,  multiplier, physical_entity_reference.encode())
         return self
 
-    def add_sink(self, sink_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
-        self._obj = PysemsimAPI.physical_force_add_sink(self._obj, sink_id.encode(), multiplier,
+    def add_sink(self,  multiplier: float, physical_entity_reference: str) -> PhysicalForce:
+        self._obj = PysemsimAPI.physical_force_add_sink(self._obj,  multiplier,
                                                         physical_entity_reference.encode())
         return self
 
