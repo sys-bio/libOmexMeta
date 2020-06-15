@@ -1,5 +1,7 @@
 project(redland-combined)
 
+message(STATUS "Building redland-combind")
+
 ##################################################################################
 #       definitions, configuations
 #
@@ -363,6 +365,7 @@ set(WRAPPER_SOURCES
 #######################################################
 #   Build the library static
 #
+message(STATUS "before adding the library")
 add_library(redland-combined STATIC
         ${RAPTOR_SOURCES}
         ${RASQAL_SOURCES}

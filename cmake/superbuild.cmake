@@ -4,6 +4,17 @@ include(ExternalProject)
 #   Build third party libs
 #
 
+## build iconv
+#ExternalProject_Add(iconv
+#        SOURCE_DIR ${ZLIB_SOURCE_DIR}
+#        BINARY_DIR ${ZLIB_BUILD_DIR}
+#        BUILD_COMMAND make -j${N}
+#        CMAKE_ARGS
+#        -DCMAKE_INSTALL_PREFIX=${ZLIB_INSTALL_PREFIX}
+#        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+#        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+#        )
+
 # build zlib
 ExternalProject_Add(zlib
         SOURCE_DIR ${ZLIB_SOURCE_DIR}
@@ -24,6 +35,7 @@ ExternalProject_Add(libsbml-dependencies
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DCMAKE_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        -DFORCE_BUILD_ICONV=ON
         )
 
 # build zipper
