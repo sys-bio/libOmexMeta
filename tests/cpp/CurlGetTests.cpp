@@ -56,9 +56,8 @@ public:
 };
 
 TEST_F(CurlGetTests, TestDownloadHtml) {
-//38kb
     downloadAndCheckSizeRange(regular_webpage_url, regular_webpage_filename,
-                              39053 - 100, 39053 + 100);
+                              39053 - 200, 39053 + 100);
 }
 
 TEST_F(CurlGetTests, TestDownloadOmexFile) {

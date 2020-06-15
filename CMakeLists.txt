@@ -181,39 +181,58 @@ else ()
             "${BZ2_STATIC_LIBRARY}"
             lzma
             ltdl ${CMAKE_DL_LIBS}
-            m
-            c
             xslt
             xml2
             pcre
-            uuid
             yajl
-            idn2
-            pthread
-            curl        # needed
+#            pthread
+            curl
             db
             stdc++fs
             -Wl,--no-whole-archive
             )
     # notes on libraries
-    # ---------------------
-    # - back end database
+    # ==================
+    # back end database
+    # -------------------
     #   - keep libpq in back pocket as alternative backend
     #       other options are sqlite3 or virtuoso ${LIBPQ_STATIC_LIBRARY}
     #     - prefer sqlite3
-    # - WWW stuff - i.e. downloading from web
+    # WWW stuff - i.e. downloading from web
+    # -----------------------------------------
     #   - I have tried to cut out libcurl in favour of using libxml for www functions
     #     instead. Didn't work - though might still be possible with a bit of tuning.
-    # - Floating Precision libraries
+    # Floating Precision libraries
+    # ------------------------------
     #   - two options on linux:  mpfr or gmp. Its one or the other as they
     #     both do the same thing. If you incorporate them, ensure you modify
     #     rasqal_config.h to reflect which library you choose. Currently,
     #     I am choosing RASQAL_DECIMAL_NONE, aka none of these libraries,
     #     which just uses double and int. It'll have less accuracy but
     #     its more portable.
-    # - gss
+    #  gss
+    # -----
     #   - I had this in the libraries. Not sure what it did, but it no longer
     #     breaks the build so removing it for good. Listed here as a note.
+    # regexes
+    # -------
+    # - Two choices pcre or poxis. Both however could and should
+    #   be replaced with the c++ standard library implementation of regexes.
+    #   However, given that this is a lot of effort, I keep PCRE, since there is
+    #   a windows build that might work: https://github.com/kiyolee/pcre-win-build
+    #
+    # uuid, libc and libuuid
+    # ----------------------
+    # - used for metaids. However, there is an internal options
+    #   which is better for a portability perspective. I'll use that.
+    #
+    #  others
+    # -------
+    # a set of linux libraries that fixed earlier builds but now seem to now be needed.
+    # Keep the list
+    # - pthread
+    # - libm
+    # - libc
 
     set(INCLUDE_DIRECTORIES
             BEFORE ${RAPTOR_DIR}/librdfa
