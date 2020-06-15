@@ -179,43 +179,33 @@ else ()
             -Wl,--whole-archive
             "${ZLIB_STATIC_LIBRARY}"
             "${BZ2_STATIC_LIBRARY}"
-#            "${LIBXML2_STATIC_LIBRARY}"
-            #            "iconv"
             lzma
             ltdl ${CMAKE_DL_LIBS}
-            #            pcre
-            #            curl
             m
             c
             xslt
             xml2
-            gmp
+#            gmp    # used for a ceil function, will be good to replace.
             pcre
             uuid
-            #            c
             yajl
-#            xml2
-            #            m
-            gss
+#            gss        # commenting out doesn't break build
             mpfr
-            #            xml2
             idn2
             pthread
-            curl
-#            ssl
-#            ${SSL_STATIC_LIBRARY}
-#            ${LIBCRYPTO_STATIC_LIBRARY}
+            curl        # needed
             db
             stdc++fs
             -Wl,--no-whole-archive
-            #            curl
-
-            #todo keep libpq in back pocket as alternative backend
-            #  other options are sqlite3 or virtuoso
-            #            -Wl,--whole-archive
-            #            ${LIBPQ_STATIC_LIBRARY}
-            #            -Wl,--no-whole-archive
             )
+    # notes
+    # -----
+    # - keep libpq in back pocket as alternative backend
+    #    other options are sqlite3 or virtuoso ${LIBPQ_STATIC_LIBRARY}
+    # - prefer sqlite
+    #
+    # - tried to cut out libcurl in favour of using libxml for this
+    #   job instead. Didn't work - though might still be possible.
 
     set(INCLUDE_DIRECTORIES
             BEFORE ${RAPTOR_DIR}/librdfa

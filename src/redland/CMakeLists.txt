@@ -126,8 +126,10 @@ set(RAPTOR_SOURCES
         #        ${RAPTOR_SOURCE_DIR}/raptor_win32.c
         ${RAPTOR_SOURCE_DIR}/raptor_www.c
         ${RAPTOR_SOURCE_DIR}/raptor_www_curl.c
-        ${RAPTOR_SOURCE_DIR}/raptor_www_libfetch.c
-        ${RAPTOR_SOURCE_DIR}/raptor_www_libxml.c
+        # since we use curl for www funcitonality, we do not need these
+        #  sources.
+#        ${RAPTOR_SOURCE_DIR}/raptor_www_libfetch.c
+#        ${RAPTOR_SOURCE_DIR}/raptor_www_libxml.c
         ${RAPTOR_SOURCE_DIR}/raptor_xml.c
         ${RAPTOR_SOURCE_DIR}/raptor_xml_writer.c
         ${RAPTOR_SOURCE_DIR}/snprintf.c
