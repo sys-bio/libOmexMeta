@@ -13,6 +13,20 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 # load a custom function for printing out found paths to console
 include(${CMAKE_SOURCE_DIR}/cmake/PrintOutPaths.cmake)
 
+set(PLATFORM)
+IF (UNIX)
+    set(PLATFORM linux)
+elseif (WIN32)
+    set(PLATFORM windows)
+elseif (APPLE)
+    set(PLATFORM macos)
+elseif (MINGW)
+    set(PLATFORM windows-mingw)
+elseif (MSYS)
+    set(PLATFORM windows-msys)
+elseif (CYGWIN)
+    set(PLATFORM windows-cygwin)
+endif ()
 
 ######################################################
 #   Set some variables
@@ -25,7 +39,7 @@ set(CMAKE_CXX_FLAGS "-std=c++17")
 
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 0)
-set(VERSION_MICRO 4)
+set(VERSION_MICRO 5)
 
 set(LIBSEMSIM_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 configure_file("${CMAKE_SOURCE_DIR}/VERSION.in" "${CMAKE_SOURCE_DIR}/VERSION.txt")
@@ -96,12 +110,12 @@ if (NOT HAVE_DEPENDENCIES)
     set(DEPENDENCY_LIBRARIES make build-essential checkinstall zlib1g-dev libltdl-dev lzma libpcre3 libpcre3-dev uuid-dev libxml2 libxml2-dev libxslt1-dev yajl-tools libgss-dev libmpfr-dev idn2 libpthread-stubs0-dev curl mysql-server)
 
     # on linux we can use apt to download dependencies
-    add_custom_target(
-            apt-downloads ALL
-            COMMAND sudo apt install -y ${DEPENDENCY_LIBRARIES}
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-            COMMENT "download required dependencies straight from apt on ubuntu"
-    )
+#    add_custom_target(
+#            apt-downloads ALL
+#            COMMAND sudo apt install -y ${DEPENDENCY_LIBRARIES}
+#            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+#            COMMENT "download required dependencies straight from apt on ubuntu"
+#    )
 
     PrintOutPaths()
     add_custom_target(raptor)
@@ -113,6 +127,18 @@ if (NOT HAVE_DEPENDENCIES)
 else ()
     message(STATUS "BUILDING LIBSEMSIM")
     project(libsemsim LANGUAGES CXX VERSION 0.1.5)
+
+    # we have either just compiled the dependencies
+    #  or indicated that we already have them by
+    #  using HAVE_DEPENDENCIES=TRUE
+    #  we now do a check to find the libraries we need to link
+
+#    foreach (library ${STATIC_LIBRARIES})
+#        if (NOT EXISTS {$library})
+#            message(FATAL_ERROR "Missing dependency. The library \"${library}\" should exist but doesn't")
+#        endif ()
+#    endforeach ()
+
 
     if (WITH_ADDRESS_SANITIZER)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")# -OX")
@@ -143,6 +169,7 @@ else ()
             # order matters: top of the dependency chain first
             # i.e. if A depends on B, A should come before B in this list
 
+#            -static
             -Wl,--whole-archive
             "${LIBCOMBINE_STATIC_LIBRARY}"
             "${LIBSBML_STATIC_LIBRARY}"
@@ -152,30 +179,32 @@ else ()
             -Wl,--whole-archive
             "${ZLIB_STATIC_LIBRARY}"
             "${BZ2_STATIC_LIBRARY}"
-            "${LIBXML2_STATIC_LIBRARY}"
-#            "iconv"
-            ltdl ${CMAKE_DL_LIBS}
-            # might need --whole archive again here
+#            "${LIBXML2_STATIC_LIBRARY}"
+            #            "iconv"
             lzma
+            ltdl ${CMAKE_DL_LIBS}
             #            pcre
             #            curl
             m
             c
+            xslt
+            xml2
             gmp
             pcre
             uuid
             #            c
-            xml2
-            #            m
-            xslt
             yajl
+#            xml2
+            #            m
             gss
             mpfr
             #            xml2
             idn2
             pthread
             curl
-            ssl
+#            ssl
+#            ${SSL_STATIC_LIBRARY}
+#            ${LIBCRYPTO_STATIC_LIBRARY}
             db
             stdc++fs
             -Wl,--no-whole-archive
@@ -204,6 +233,7 @@ else ()
             ${ZIPPER_INCLUDE_DIR}
             ${LIBCOMBINE_INCLUDE_DIR}
             ${LIBPQ_INCLUDE_DIR}
+            ${OPENSSL_INCLUDE_DIR}
             )
 
     PrintOutPaths()

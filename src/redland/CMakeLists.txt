@@ -32,12 +32,14 @@ add_definitions(-DHAVE_CONFIG_H
 
 # files to configure - This overwrites the configuration generated from automate system
 #  with null values, since I haven't found the cmake equivalent
+    #note: the copasi-dependencies configures a cmake script to do this. Kind of.
 #configure_file(${RAPTOR_DIR}/src/raptor_config_cmake.h.in raptor2-2.0.15/src/raptor_config.h @ONLY)
 #configure_file(${RAPTOR_DIR}/src/raptor2.h.in ${RAPTOR_DIR}/src/raptor2.h @ONLY)
 #configure_file(${RASQAL_DIR}/src/rasqal_config.h.in ${RASQAL_DIR}/src/rasqal_config.h)
 #configure_file(${RASQAL_DIR}/rasqal-src-config.in ${RASQAL_DIR}/rasqal-src-config)
 
 # set directory for librdf storage/cache. only used when not specified by user
+#  which it is in the context of libsemsim
 set(PKGDATADIR $ENV{HOME}/.librdf)
 file(MAKE_DIRECTORY ${PKGDATADIR})
 

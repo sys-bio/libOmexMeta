@@ -4,13 +4,13 @@ include(ExternalProject)
 #   Build third party libs
 #
 
-## build iconv
-#ExternalProject_Add(iconv
-#        SOURCE_DIR ${ZLIB_SOURCE_DIR}
-#        BINARY_DIR ${ZLIB_BUILD_DIR}
+# build openssl
+#ExternalProject_Add(openssl
+#        SOURCE_DIR ${OPENSSL_SOURCE_DIR}
+#        BINARY_DIR ${OPENSSL_BINARY_DIR}
 #        BUILD_COMMAND make -j${N}
 #        CMAKE_ARGS
-#        -DCMAKE_INSTALL_PREFIX=${ZLIB_INSTALL_PREFIX}
+#        -DCMAKE_INSTALL_PREFIX=${OPENSSL_INSTALL_PREFIX}
 #        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 #        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
 #        )
