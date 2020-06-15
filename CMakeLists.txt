@@ -185,12 +185,9 @@ else ()
             c
             xslt
             xml2
-#            gmp    # used for a ceil function, will be good to replace.
             pcre
             uuid
             yajl
-#            gss        # commenting out doesn't break build
-            mpfr
             idn2
             pthread
             curl        # needed
@@ -198,14 +195,25 @@ else ()
             stdc++fs
             -Wl,--no-whole-archive
             )
-    # notes
-    # -----
-    # - keep libpq in back pocket as alternative backend
-    #    other options are sqlite3 or virtuoso ${LIBPQ_STATIC_LIBRARY}
-    # - prefer sqlite
-    #
-    # - tried to cut out libcurl in favour of using libxml for this
-    #   job instead. Didn't work - though might still be possible.
+    # notes on libraries
+    # ---------------------
+    # - back end database
+    #   - keep libpq in back pocket as alternative backend
+    #       other options are sqlite3 or virtuoso ${LIBPQ_STATIC_LIBRARY}
+    #     - prefer sqlite3
+    # - WWW stuff - i.e. downloading from web
+    #   - I have tried to cut out libcurl in favour of using libxml for www functions
+    #     instead. Didn't work - though might still be possible with a bit of tuning.
+    # - Floating Precision libraries
+    #   - two options on linux:  mpfr or gmp. Its one or the other as they
+    #     both do the same thing. If you incorporate them, ensure you modify
+    #     rasqal_config.h to reflect which library you choose. Currently,
+    #     I am choosing RASQAL_DECIMAL_NONE, aka none of these libraries,
+    #     which just uses double and int. It'll have less accuracy but
+    #     its more portable.
+    # - gss
+    #   - I had this in the libraries. Not sure what it did, but it no longer
+    #     breaks the build so removing it for good. Listed here as a note.
 
     set(INCLUDE_DIRECTORIES
             BEFORE ${RAPTOR_DIR}/librdfa
