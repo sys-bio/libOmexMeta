@@ -17,6 +17,7 @@ include(ExternalProject)
 
 # build zlib
 ExternalProject_Add(zlib
+        DOWNLOAD_COMMAND
         SOURCE_DIR ${ZLIB_SOURCE_DIR}
         BINARY_DIR ${ZLIB_BUILD_DIR}
         BUILD_COMMAND make -j${N}
@@ -28,6 +29,7 @@ ExternalProject_Add(zlib
 
 # build libsbml-dependencies, which itself has no dependencies
 ExternalProject_Add(libsbml-dependencies
+        DOWNLOAD_COMMAND
         SOURCE_DIR ${LIBSBML_DEPS_SOURCE_DIR}
         BINARY_DIR ${LIBSBML_DEPS_BINARY_DIR}
         BUILD_COMMAND make -j${N}
@@ -40,6 +42,7 @@ ExternalProject_Add(libsbml-dependencies
 
 # build zipper
 ExternalProject_Add(zipper
+        DOWNLOAD_COMMAND
         SOURCE_DIR ${ZIPPER_SOURCE_DIR}
         BINARY_DIR ${ZIPPER_BINARY_DIR}
         BUILD_COMMAND make -j${N}
@@ -55,6 +58,7 @@ ExternalProject_Add(zipper
 
 # build zipper
 ExternalProject_Add(libxml2
+        DOWNLOAD_COMMAND
         SOURCE_DIR ${LIBXML2_SOURCE_DIR}
         BINARY_DIR ${LIBXML2_BINARY_DIR}
         BUILD_COMMAND make -j${N}
@@ -65,7 +69,6 @@ ExternalProject_Add(libxml2
         -DBUILD_SHARED_LIBS=OFF
         -DLIBXML2_WITH_PYTHON=OFF
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-
         )
 
 ## get libxml2 libraries
@@ -80,6 +83,7 @@ ExternalProject_Add(libxml2
 
 # build libsbml
 ExternalProject_Add(libsbml
+        DOWNLOAD_COMMAND
         SOURCE_DIR ${LIBSBML_SOURCE_DIR}
         BINARY_DIR ${LIBSBML_BINARY_DIR}
         DEPENDS libsbml-dependencies
@@ -98,6 +102,7 @@ ExternalProject_Add(libsbml
 
 # build libcombine
 ExternalProject_Add(libCombine
+        DOWNLOAD_COMMAND
         SOURCE_DIR ${LIBCOMBINE_SOURCE_DIR}
         BINARY_DIR ${LIBCOMBINE_BINARY_DIR}
         BUILD_COMMAND make -j${N}
@@ -117,6 +122,7 @@ ExternalProject_Add(libCombine
 
 # we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
 ExternalProject_Add(libsemsim
+        DOWNLOAD_COMMAND
         DEPENDS zlib libsbml-dependencies zipper
         libsbml libCombine raptor rasqal librdf
         libxml2
@@ -130,40 +136,40 @@ ExternalProject_Add(libsemsim
         )
 
 
-find_library(RAPTOR2_STATIC_LIBRARY
-        NAMES libraptor2.a raptor2.a
-        PATHS ${RAPTOR2_INSTALL_PREFIX}/lib
-        /usr/local/lib
-        )
-
-find_path(RAPTOR2_INCLUDE_DIR
-        NAMES raptor2.h
-        PATHS ${RAPTOR2_INSTALL_PREFIX}/include/raptor2
-        /usr/local/include/raptor2
-        )
-
-# rasqal
-find_library(RASQAL_STATIC_LIBRARY
-        NAMES librasqal.a rasqal.a
-        PATHS ${RASQAL_INSTALL_PREFIX}/lib
-        /usr/local/lib
-        )
-
-find_path(RASQAL_INCLUDE_DIR
-        NAMES rasqal.h
-        PATHS ${RASQAL_INSTALL_PREFIX}/include/rasqal
-        /usr/local/include/rasqal
-        )
-
-find_library(REDLAND_STATIC_LIBRARY
-        NAMES librdf.a rdf.a
-        PATHS ${REDLAND_INSTALL_PREFIX}/lib
-        /usr/local/lib
-
-        )
-
-find_path(REDLAND_INCLUDE_DIR
-        NAMES librdf.h
-        PATHS ${REDLAND_INSTALL_PREFIX}/include
-        /usr/local/include
-        )
+#find_library(RAPTOR2_STATIC_LIBRARY
+#        NAMES libraptor2.a raptor2.a
+#        PATHS ${RAPTOR2_INSTALL_PREFIX}/lib
+#        /usr/local/lib
+#        )
+#
+#find_path(RAPTOR2_INCLUDE_DIR
+#        NAMES raptor2.h
+#        PATHS ${RAPTOR2_INSTALL_PREFIX}/include/raptor2
+#        /usr/local/include/raptor2
+#        )
+#
+## rasqal
+#find_library(RASQAL_STATIC_LIBRARY
+#        NAMES librasqal.a rasqal.a
+#        PATHS ${RASQAL_INSTALL_PREFIX}/lib
+#        /usr/local/lib
+#        )
+#
+#find_path(RASQAL_INCLUDE_DIR
+#        NAMES rasqal.h
+#        PATHS ${RASQAL_INSTALL_PREFIX}/include/rasqal
+#        /usr/local/include/rasqal
+#        )
+#
+#find_library(REDLAND_STATIC_LIBRARY
+#        NAMES librdf.a rdf.a
+#        PATHS ${REDLAND_INSTALL_PREFIX}/lib
+#        /usr/local/lib
+#
+#        )
+#
+#find_path(REDLAND_INCLUDE_DIR
+#        NAMES librdf.h
+#        PATHS ${REDLAND_INSTALL_PREFIX}/include
+#        /usr/local/include
+#        )
