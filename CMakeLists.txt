@@ -289,39 +289,3 @@ endif ()
 #############################################
 # add semsim and tests
 
-
-message(STATUS "
-#-------------------------------------------------------------------------------
-#Configuration Summary
-#-------------------------------------------------------------------------------
-    Configured on host $ENV{COMPUTERNAME} ${HOSTNAME}
-        host OS                   ${CMAKE_SYSTEM_NAME}
-        host architecture         ${CMAKE_SYSTEM_PROCESSOR}
-    General flags:
-        CC                        ${CMAKE_C_COMPILER}
-        CXX                       ${CMAKE_CXX_COMPILER}
-        CPPFLAGS                  ${BUILD_DEFINITIONS}
-        CFLAGS                    ${CMAKE_C_FLAGS}
-        CXXFLAGS                  ${CMAKE_CXX_FLAGS}
-        LDFLAGS                   ${CMAKE_EXE_LINKER_FLAGS}
-    Installation prefix:          ${CMAKE_INSTALL_PREFIX}
-    Options:
-        SBML support              ${ENABLE_SBML_SUPPORT}
-        CellML suppert            ${ENABLE_CELLML_SUPPORT}
-        Tests (requires Catch)    ${ENABLE_TESTS}
-        Python bindings           ${BUILD_PYTHON}
-        Python interpreter        ${Python_EXECUTABLE}
-        Python include directory  ${PYTHON_INCLUDE_PATH}
-        Generate documentation    ${BUILD_DOCS}
-
-    Paths:
-        RAPTOR_DIR                ${RAPTOR_DIR}
-        RASQAL_DIR                ${RASQAL_DIR}
-        LIBRDF_DIR                ${LIBRDF_DIR}
-        WRAPPER_DIR               ${WRAPPER_DIR}
-        RAPTOR_SOURCE_DIR         ${RAPTOR_SOURCE_DIR}
-        RASQAL_SOURCE_DIR         ${RASQAL_SOURCE_DIR}
-        LIBRDF_SOURCE_DIR         ${LIBRDF_SOURCE_DIR}
-        WRAPPER_SOURCE_DIR        ${WRAPPER_SOURCE_DIR}
-        WRAPPER_TEST_DIR          ${WRAPPER_TEST_DIR}
-    ")
