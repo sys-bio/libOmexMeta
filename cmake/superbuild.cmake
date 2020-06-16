@@ -36,9 +36,6 @@ ExternalProject_Add(libsbml-dependencies
         -DCMAKE_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DFORCE_BUILD_ICONV=ON
-        -DFORCE_BUILD_LIBXML=ON
-        -DWITH_ICONV=ON
-        -DWITH_LIBXML=ON
         )
 
 # build zipper

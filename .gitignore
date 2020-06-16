@@ -6,6 +6,7 @@ cmake-build-*
 INSTALL
 cmake-build*
 build
+build2
 docs/build
 *.tar.gz
 *.zip
