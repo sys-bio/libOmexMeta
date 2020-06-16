@@ -5,6 +5,7 @@ cmake_minimum_required(VERSION 3.15)
 # load the ExternalProject functions for superbuild
 include(ExternalProject)
 
+
 # load a custom function for finding all the dependencies if they exist.
 #set(FIND_DEPENDENCIES_PATH ${CMAKE_SOURCE_DIR}/cmake/LookForDependencies.cmake)
 
@@ -13,6 +14,20 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 # load a custom function for printing out found paths to console
 include(${CMAKE_SOURCE_DIR}/cmake/PrintOutPaths.cmake)
 
+set(PLATFORM)
+IF (UNIX)
+    set(PLATFORM linux)
+elseif (WIN32)
+    set(PLATFORM windows)
+elseif (APPLE)
+    set(PLATFORM macos)
+elseif (MINGW)
+    set(PLATFORM windows-mingw)
+elseif (MSYS)
+    set(PLATFORM windows-msys)
+elseif (CYGWIN)
+    set(PLATFORM windows-cygwin)
+endif ()
 
 ######################################################
 #   Set some variables
@@ -25,7 +40,7 @@ set(CMAKE_CXX_FLAGS "-std=c++17")
 
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 0)
-set(VERSION_MICRO 4)
+set(VERSION_MICRO 5)
 
 set(LIBSEMSIM_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 configure_file("${CMAKE_SOURCE_DIR}/VERSION.in" "${CMAKE_SOURCE_DIR}/VERSION.txt")
@@ -96,12 +111,12 @@ if (NOT HAVE_DEPENDENCIES)
     set(DEPENDENCY_LIBRARIES make build-essential checkinstall zlib1g-dev libltdl-dev lzma libpcre3 libpcre3-dev uuid-dev libxml2 libxml2-dev libxslt1-dev yajl-tools libgss-dev libmpfr-dev idn2 libpthread-stubs0-dev curl mysql-server)
 
     # on linux we can use apt to download dependencies
-    add_custom_target(
-            apt-downloads ALL
-            COMMAND sudo apt install -y ${DEPENDENCY_LIBRARIES}
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-            COMMENT "download required dependencies straight from apt on ubuntu"
-    )
+    #    add_custom_target(
+    #            apt-downloads ALL
+    #            COMMAND sudo apt install -y ${DEPENDENCY_LIBRARIES}
+    #            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    #            COMMENT "download required dependencies straight from apt on ubuntu"
+    #    )
 
     PrintOutPaths()
     add_custom_target(raptor)
@@ -113,6 +128,25 @@ if (NOT HAVE_DEPENDENCIES)
 else ()
     message(STATUS "BUILDING LIBSEMSIM")
     project(libsemsim LANGUAGES CXX VERSION 0.1.5)
+
+    # we have either just compiled the dependencies
+    #  or indicated that we already have them by
+    #  using HAVE_DEPENDENCIES=TRUE
+    #  we now do a check to find the libraries we need to link
+
+    #    foreach (library ${STATIC_LIBRARIES})
+    #        if (NOT EXISTS {$library})
+    #            message(FATAL_ERROR "Missing dependency. The library \"${library}\" should exist but doesn't")
+    #        endif ()
+    #    endforeach ()
+
+    find_package(ICU 60 COMPONENTS uc i18n)
+    if (NOT ICU_FOUND)
+        message(WARNING "ICU not found. On linux, `sudo apt install icu-devtools` and try again.")
+    endif ()
+
+    message(STATUS "ICU_LIBRARIES ${ICU_c_LIBRARIES}")
+
 
     if (WITH_ADDRESS_SANITIZER)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")# -OX")
@@ -139,54 +173,80 @@ else ()
             ${ICONV_INCLUDE_DIR}
             )
 
+    #https://cmake.cmake.narkive.com/lzDZk3kO/autoheader-like-functionality
+
     set(LINK_LIBRARIES
             # order matters: top of the dependency chain first
             # i.e. if A depends on B, A should come before B in this list
 
             -Wl,--whole-archive
-            "${LIBCOMBINE_STATIC_LIBRARY}"
-            "${LIBSBML_STATIC_LIBRARY}"
-            "${ICONV_STATIC_LIBRARY}"
+            ${LIBCOMBINE_STATIC_LIBRARY}
+            ${LIBSBML_STATIC_LIBRARY}
+            ${ICONV_STATIC_LIBRARY}
             -Wl,--no-whole-archive
-            "${ZIPPER_STATIC_LIBRARY}"
+            ${ZIPPER_STATIC_LIBRARY}
             -Wl,--whole-archive
-            "${ZLIB_STATIC_LIBRARY}"
-            "${BZ2_STATIC_LIBRARY}"
-            "${LIBXML2_STATIC_LIBRARY}"
-#            "iconv"
-            ltdl ${CMAKE_DL_LIBS}
-            # might need --whole archive again here
-            lzma
-            #            pcre
-            #            curl
-            m
-            c
-            gmp
-            pcre
-            uuid
-            #            c
-            xml2
-            #            m
+            ${ZLIB_STATIC_LIBRARY}
+            ${BZ2_STATIC_LIBRARY}
             xslt
+            #            ${LIBXML2_STATIC_LIBRARY}
+            xml2
+            ltdl ${CMAKE_DL_LIBS}
+            pcre
             yajl
-            gss
-            mpfr
-            #            xml2
-            idn2
-            pthread
             curl
-            ssl
-            db
             stdc++fs
             -Wl,--no-whole-archive
-            #            curl
-
-            #todo keep libpq in back pocket as alternative backend
-            #  other options are sqlite3 or virtuoso
-            #            -Wl,--whole-archive
-            #            ${LIBPQ_STATIC_LIBRARY}
-            #            -Wl,--no-whole-archive
             )
+
+    # notes on libraries
+    # ==================
+    # back end database
+    # -------------------
+    #   - still need to implement support for database storage.
+    #   - db - easily installed. Not yet tried.
+    #   - sqlite3 - couldn't get to work
+    #   - keep libpq in back pocket as alternative backend
+    #       other options are sqlite3 or virtuoso ${LIBPQ_STATIC_LIBRARY}
+    #     - prefer sqlite3 if you can get it working
+    #
+    # WWW stuff - i.e. downloading from web
+    # -----------------------------------------
+    #   - I have tried to cut out libcurl in favour of using libxml for www functions
+    #     instead. Didn't work - though might still be possible with a bit of tuning.
+    # Floating Precision libraries
+    # ------------------------------
+    #   - two options on linux:  mpfr or gmp. Its one or the other as they
+    #     both do the same thing. If you incorporate them, ensure you modify
+    #     rasqal_config.h to reflect which library you choose. Currently,
+    #     I am choosing RASQAL_DECIMAL_NONE, aka none of these libraries,
+    #     which just uses double and int. It'll have less accuracy but
+    #     its more portable.
+    #  gss
+    # -----
+    #   - I had this in the libraries. Not sure what it did, but it no longer
+    #     breaks the build so removing it for good. Listed here as a note.
+    # regexes
+    # -------
+    # - Two choices pcre or poxis. Both however could and should
+    #   be replaced with the c++ standard library implementation of regexes.
+    #   However, given that this is a lot of effort, I keep PCRE, since there is
+    #   a windows build that might work: https://github.com/kiyolee/pcre-win-build
+    #
+    # uuid, libc and libuuid
+    # ----------------------
+    # - used for metaids. However, there is an internal options
+    #   which is better for a portability perspective. I'll use that.
+    #
+    #  others
+    # -------
+    # a set of linux libraries that fixed earlier builds but now seem to now be needed.
+    # Keep the list
+    # - pthread
+    # - libm
+    # - libc
+    # - lzma
+
 
     set(INCLUDE_DIRECTORIES
             BEFORE ${RAPTOR_DIR}/librdfa
@@ -204,6 +264,7 @@ else ()
             ${ZIPPER_INCLUDE_DIR}
             ${LIBCOMBINE_INCLUDE_DIR}
             ${LIBPQ_INCLUDE_DIR}
+            ${OPENSSL_INCLUDE_DIR}
             )
 
     PrintOutPaths()

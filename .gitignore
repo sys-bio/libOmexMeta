@@ -18,6 +18,7 @@ __pycache__
 autom4te.cache
 *.Po
 *.Plo
+install-linux
 build-linux
 build-windows
 build-macos

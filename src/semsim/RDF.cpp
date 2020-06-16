@@ -216,4 +216,26 @@ namespace semsim {
     }
 
 
+    int RDF::commitTransaction() const {
+        return librdf_model_transaction_commit(getModel());
+    }
+
+    int RDF::startTransaction() const {
+        return librdf_model_transaction_start(getModel());
+    }
+
+    void* RDF::getTransactionHandle() const {
+        return librdf_model_transaction_get_handle(getModel());
+    }
+
+    int RDF::startTransactionWithHandle(void* handle) const {
+        return librdf_model_transaction_start_with_handle(getModel(), handle);
+    }
+
+    int RDF::getTransactionRollback() const {
+        return librdf_model_transaction_rollback(getModel());
+    }
+
+
+
 }

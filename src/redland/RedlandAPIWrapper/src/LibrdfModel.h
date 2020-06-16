@@ -65,6 +65,18 @@ namespace redland {
         void removeStatement(librdf_statement *statement) const;
 
         void removeStatement(const LibrdfStatement &statement) const;
+
+        librdf_storage* getStorage() const;
+
+        int commitTransaction() const;
+
+        int startTransaction() const;
+
+        void *getTransactionHandle() const;
+
+        int startTransactionWithHandle(void *handle) const;
+
+        int getTransactionRollback() const;
     };
 }
 

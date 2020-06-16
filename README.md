@@ -83,7 +83,7 @@ The superbuild tries to run the following command for you automatically. This
 feature is experimental, so if it doesn't work you will need to run it yourself: 
 
 ```
-$ sudo apt install -y dialog apt-utils make build-essential checkinstall zlib1g-dev libltdl-dev lzma libpcre3 libpcre3-dev uuid-dev libxml2 libxml2-dev libxslt1-dev yajl-tools libgss-dev libmpfr-dev idn2 libpthread-stubs0-dev curl mysql-server
+$ sudo apt install -y icu-devtools dialog apt-utils make build-essential checkinstall zlib1g-dev libltdl-dev lzma libpcre3 libpcre3-dev uuid-dev libxml2 libxml2-dev libxslt1-dev yajl-tools libgss-dev libmpfr-dev idn2 libpthread-stubs0-dev curl mysql-server
 ```
 and then proceed with the build instructions. 
 
