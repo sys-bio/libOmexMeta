@@ -23,7 +23,7 @@ set(DEPENDENCY_BUILD_FOLDER_NAME "build2")
 
 # dependency package for libsbml. Even though libsbml is no longer a
 # required dependency of libsemsim, some of these are used elsewhere
-set(LIBSBML_DEPS_SOURCE_DIR ${THIRD_PARTY_DIRS}/libsbml-dependencies)
+set(LIBSBML_DEPS_SOURCE_DIR ${THIRD_PARTY_DIRS}/libSBML-dependencies)
 set(LIBSBML_DEPS_BINARY_DIR ${LIBSBML_DEPS_SOURCE_DIR}/${DEPENDENCY_BUILD_FOLDER_NAME}-${PLATFORM})
 set(LIBSBML_DEPS_INSTALL_PREFIX ${LIBSBML_DEPS_SOURCE_DIR}/${DEPENDENCY_INSTALL_FOLDER_NAME}-${PLATFORM})
 set(LIBSBML_DEPS_INCLUDE_DIR ${LIBSBML_DEPS_INSTALL_PREFIX}/include)
