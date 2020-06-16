@@ -8,8 +8,8 @@ set(THIRD_PARTY_DIRS ${CMAKE_SOURCE_DIR}/third_party)
 # google test source dir
 set(GOOGLETEST_SOURCE ${THIRD_PARTY_DIRS}/googletest)
 
-set(DEPENDENCY_INSTALL_FOLDER_NAME "install2")
-set(DEPENDENCY_BUILD_FOLDER_NAME "build2")
+set(DEPENDENCY_INSTALL_FOLDER_NAME "install")
+set(DEPENDENCY_BUILD_FOLDER_NAME "build")
 
 # openssl - used for secure download of files from tinterweb
 #set(OPENSSL_SOURCE_DIR ${THIRD_PARTY_DIRS}/openssl-cmake-1.0.1e-src)

@@ -171,6 +171,8 @@ else ()
             ${WRAPPER_SOURCE_DIR}
             ${LIBPQ_INCLUDE_DIR}
             ${ICONV_INCLUDE_DIR}
+            -I/usr/include
+            -I/usr/include/libxml2
             )
 
     #https://cmake.cmake.narkive.com/lzDZk3kO/autoheader-like-functionality
@@ -178,7 +180,6 @@ else ()
     set(LINK_LIBRARIES
             # order matters: top of the dependency chain first
             # i.e. if A depends on B, A should come before B in this list
-
             -Wl,--whole-archive
             ${LIBCOMBINE_STATIC_LIBRARY}
             ${LIBSBML_STATIC_LIBRARY}
