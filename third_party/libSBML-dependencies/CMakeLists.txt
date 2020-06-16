@@ -118,12 +118,6 @@ if (FORCE_BUILD_ICONV)
     add_subdirectory(libiconv)
 endif ()
 
-OPTION(FORCE_BUILD_LIBXML "Force the building of libiconv on all systems" OFF)
-    set(WITH_LIBXML ON)
-    add_subdirectory(libxml2)
-if (FORCE_BUILD_LIBXML)
-endif ()
-
 
 MESSAGE(STATUS "WITH_LIBXML ${WITH_LIBXML}")
 if (WIN32)

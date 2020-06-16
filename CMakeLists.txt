@@ -40,7 +40,7 @@ set(CMAKE_CXX_FLAGS "-std=c++17")
 
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 0)
-set(VERSION_MICRO 5)
+set(VERSION_MICRO 6)
 
 set(LIBSEMSIM_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 configure_file("${CMAKE_SOURCE_DIR}/VERSION.in" "${CMAKE_SOURCE_DIR}/VERSION.txt")
@@ -195,6 +195,7 @@ else ()
             pcre
             yajl
             curl
+#            curl.a
             stdc++fs
             -Wl,--no-whole-archive
             )
