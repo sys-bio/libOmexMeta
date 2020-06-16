@@ -36,6 +36,17 @@ TEST_F(RDFTests, TestFromStringSingularAnnotation) {
     ASSERT_EQ(expected, actual);
 }
 
+//TEST_F(RDFTests, TestFromStringSingularAnnotationSqlite) {
+////    "hashes", "test", "hash-type='bdb',dir='.'")
+////    librdf_new_storage()
+//    RDF rdf("annotations.rdf", "sqlite", "storage_testy.rdf", "new='yes'");//"hash-type=sqlite,dir=mnt/d/libsemsim/tests/cpp");
+//    rdf.addFromString(samples.singular_annotation1, "rdfxml");
+//    rdf.commitTransaction();
+//    int expected = 1;
+//    int actual = rdf.size();
+//    ASSERT_EQ(expected, actual);
+//}
+
 TEST_F(RDFTests, TestFromStringSingularAnnotation2) {
     RDF *rdf = new RDF();
     RDF::fromString(rdf, samples.singular_annotation1, "rdfxml", "singular_annotation1_base");

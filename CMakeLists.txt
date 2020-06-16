@@ -5,6 +5,7 @@ cmake_minimum_required(VERSION 3.15)
 # load the ExternalProject functions for superbuild
 include(ExternalProject)
 
+
 # load a custom function for finding all the dependencies if they exist.
 #set(FIND_DEPENDENCIES_PATH ${CMAKE_SOURCE_DIR}/cmake/LookForDependencies.cmake)
 
@@ -110,12 +111,12 @@ if (NOT HAVE_DEPENDENCIES)
     set(DEPENDENCY_LIBRARIES make build-essential checkinstall zlib1g-dev libltdl-dev lzma libpcre3 libpcre3-dev uuid-dev libxml2 libxml2-dev libxslt1-dev yajl-tools libgss-dev libmpfr-dev idn2 libpthread-stubs0-dev curl mysql-server)
 
     # on linux we can use apt to download dependencies
-#    add_custom_target(
-#            apt-downloads ALL
-#            COMMAND sudo apt install -y ${DEPENDENCY_LIBRARIES}
-#            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-#            COMMENT "download required dependencies straight from apt on ubuntu"
-#    )
+    #    add_custom_target(
+    #            apt-downloads ALL
+    #            COMMAND sudo apt install -y ${DEPENDENCY_LIBRARIES}
+    #            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    #            COMMENT "download required dependencies straight from apt on ubuntu"
+    #    )
 
     PrintOutPaths()
     add_custom_target(raptor)
@@ -133,11 +134,18 @@ else ()
     #  using HAVE_DEPENDENCIES=TRUE
     #  we now do a check to find the libraries we need to link
 
-#    foreach (library ${STATIC_LIBRARIES})
-#        if (NOT EXISTS {$library})
-#            message(FATAL_ERROR "Missing dependency. The library \"${library}\" should exist but doesn't")
-#        endif ()
-#    endforeach ()
+    #    foreach (library ${STATIC_LIBRARIES})
+    #        if (NOT EXISTS {$library})
+    #            message(FATAL_ERROR "Missing dependency. The library \"${library}\" should exist but doesn't")
+    #        endif ()
+    #    endforeach ()
+
+    find_package(ICU 60 COMPONENTS uc i18n)
+    if (NOT ICU_FOUND)
+        message(WARNING "ICU not found. On linux, `sudo apt install icu-devtools` and try again.")
+    endif ()
+
+    message(STATUS "ICU_LIBRARIES ${ICU_c_LIBRARIES}")
 
 
     if (WITH_ADDRESS_SANITIZER)
@@ -165,39 +173,43 @@ else ()
             ${ICONV_INCLUDE_DIR}
             )
 
+    #https://cmake.cmake.narkive.com/lzDZk3kO/autoheader-like-functionality
+
     set(LINK_LIBRARIES
             # order matters: top of the dependency chain first
             # i.e. if A depends on B, A should come before B in this list
 
-#            -static
             -Wl,--whole-archive
-            "${LIBCOMBINE_STATIC_LIBRARY}"
-            "${LIBSBML_STATIC_LIBRARY}"
-            "${ICONV_STATIC_LIBRARY}"
+            ${LIBCOMBINE_STATIC_LIBRARY}
+            ${LIBSBML_STATIC_LIBRARY}
+            ${ICONV_STATIC_LIBRARY}
             -Wl,--no-whole-archive
-            "${ZIPPER_STATIC_LIBRARY}"
+            ${ZIPPER_STATIC_LIBRARY}
             -Wl,--whole-archive
-            "${ZLIB_STATIC_LIBRARY}"
-            "${BZ2_STATIC_LIBRARY}"
-            lzma
-            ltdl ${CMAKE_DL_LIBS}
+            ${ZLIB_STATIC_LIBRARY}
+            ${BZ2_STATIC_LIBRARY}
             xslt
+            #            ${LIBXML2_STATIC_LIBRARY}
             xml2
+            ltdl ${CMAKE_DL_LIBS}
             pcre
             yajl
-#            pthread
             curl
-            db
             stdc++fs
             -Wl,--no-whole-archive
             )
+
     # notes on libraries
     # ==================
     # back end database
     # -------------------
+    #   - still need to implement support for database storage.
+    #   - db - easily installed. Not yet tried.
+    #   - sqlite3 - couldn't get to work
     #   - keep libpq in back pocket as alternative backend
     #       other options are sqlite3 or virtuoso ${LIBPQ_STATIC_LIBRARY}
-    #     - prefer sqlite3
+    #     - prefer sqlite3 if you can get it working
+    #
     # WWW stuff - i.e. downloading from web
     # -----------------------------------------
     #   - I have tried to cut out libcurl in favour of using libxml for www functions
@@ -233,6 +245,8 @@ else ()
     # - pthread
     # - libm
     # - libc
+    # - lzma
+
 
     set(INCLUDE_DIRECTORIES
             BEFORE ${RAPTOR_DIR}/librdfa

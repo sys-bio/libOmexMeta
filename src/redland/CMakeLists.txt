@@ -94,7 +94,8 @@ set(RAPTOR_SOURCES
         ${RAPTOR_SOURCE_DIR}/raptor_log.c
         ${RAPTOR_SOURCE_DIR}/raptor_memstr.c
         ${RAPTOR_SOURCE_DIR}/raptor_namespace.c
-        ${RAPTOR_SOURCE_DIR}/raptor_nfc_icu.c
+        # commented out because it is never used and incurs icu as a dependency
+        # ${RAPTOR_SOURCE_DIR}/raptor_nfc_icu.c
         ${RAPTOR_SOURCE_DIR}/raptor_ntriples.c
         ${RAPTOR_SOURCE_DIR}/raptor_option.c
         ${RAPTOR_SOURCE_DIR}/raptor_parse.c
@@ -127,9 +128,9 @@ set(RAPTOR_SOURCES
         ${RAPTOR_SOURCE_DIR}/raptor_www.c
         ${RAPTOR_SOURCE_DIR}/raptor_www_curl.c
         # since we use curl for www funcitonality, we do not need these
-        #  sources.
-#        ${RAPTOR_SOURCE_DIR}/raptor_www_libfetch.c
-#        ${RAPTOR_SOURCE_DIR}/raptor_www_libxml.c
+        #  sources. Note I've tried the libxml version and couldn't get it working.
+        # ${RAPTOR_SOURCE_DIR}/raptor_www_libfetch.c
+        # ${RAPTOR_SOURCE_DIR}/raptor_www_libxml.c
         ${RAPTOR_SOURCE_DIR}/raptor_xml.c
         ${RAPTOR_SOURCE_DIR}/raptor_xml_writer.c
         ${RAPTOR_SOURCE_DIR}/snprintf.c
@@ -260,7 +261,7 @@ set(LIBRDF_SOURCES
         ${LIBRDF_SOURCE_DIR}/rdf_files.h
         ${LIBRDF_SOURCE_DIR}/rdf_hash.c
         ${LIBRDF_SOURCE_DIR}/rdf_hash.h
-        ${LIBRDF_SOURCE_DIR}/rdf_hash_bdb.c
+#        ${LIBRDF_SOURCE_DIR}/rdf_hash_bdb.c
         ${LIBRDF_SOURCE_DIR}/rdf_hash_cursor.c
         ${LIBRDF_SOURCE_DIR}/rdf_hash_internal.h
         ${LIBRDF_SOURCE_DIR}/rdf_hash_memory.c
@@ -331,7 +332,7 @@ set(LIBRDF_SOURCES
         ${LIBRDF_SOURCE_DIR}/rdf_utf8.c
         ${LIBRDF_SOURCE_DIR}/rdf_utf8.h
         ${LIBRDF_SOURCE_DIR}/redland.h
-        # ${LIBRDF_DIR}/src/rdf_storage_tstore.c // includes <rdfsql/rdfsql.h> which is un-locatable
+#         ${LIBRDF_DIR}/src/rdf_storage_tstore.c // includes <rdfsql/rdfsql.h> which is un-locatable
         # ${LIBRDF_DIR}/src/rdf_storage_mysql.c // no mysql setup yet. todo
         )
 

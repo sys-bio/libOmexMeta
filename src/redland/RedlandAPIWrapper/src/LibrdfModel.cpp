@@ -107,5 +107,29 @@ namespace redland {
         return !(rhs == *this);
     }
 
+    librdf_storage *LibrdfModel::getStorage() const {
+        return librdf_model_get_storage(get());
+    }
+
+    int LibrdfModel::commitTransaction() const {
+        return librdf_model_transaction_commit(get());
+    }
+
+    int LibrdfModel::startTransaction() const {
+        return librdf_model_transaction_start(get());
+    }
+
+    void* LibrdfModel::getTransactionHandle() const {
+        return librdf_model_transaction_get_handle(get());
+    }
+
+    int LibrdfModel::startTransactionWithHandle(void* handle) const {
+        return librdf_model_transaction_start_with_handle(get(), handle);
+    }
+
+    int LibrdfModel::getTransactionRollback() const {
+        return librdf_model_transaction_rollback(get());
+    }
+
 }
 

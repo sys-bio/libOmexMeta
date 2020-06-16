@@ -51,5 +51,43 @@ namespace redland {
     };
 }
 
-
+/*
+ *
+//  /* Get storage configuration */
+//  storage_type=getenv("REDLAND_TEST_STORAGE_TYPE");
+//  storage_name=getenv("REDLAND_TEST_STORAGE_NAME");
+//  storage_options=getenv("REDLAND_TEST_STORAGE_OPTIONS");
+//  if(!(storage_type && storage_name && storage_options)) {
+//    /* test all storages */
+//    const char* const storages[] = {
+//      "memory", NULL, "write='yes',new='yes',contexts='yes'",
+//#ifdef STORAGE_HASHES
+//#ifdef HAVE_BDB_HASH
+//      "hashes", "test", "hash-type='bdb',dir='.',write='yes',new='yes',contexts='yes'",
+//#else
+//      "hashes", "test", "hash-type='memory',write='yes',new='yes',contexts='yes'",
+//#endif
+//#endif
+//#ifdef STORAGE_TREES
+//      "trees", "test", "contexts='yes'",
+//#endif
+//#ifdef STORAGE_FILE
+//      "file", "test.rdf", NULL,
+//#endif
+//#ifdef STORAGE_MYSQL
+//      "mysql", "test", "host='localhost',database='test'",
+//#endif
+//#ifdef STORAGE_POSTGRESQL
+//      "postgresql", "test", "host='localhost',database='test'",
+//#endif
+//#ifdef STORAGE_TSTORE
+//      "tstore", "test", "host='localhost',database='test'",
+//#endif
+//#ifdef STORAGE_SQLITE
+//      "sqlite", "test", "new='yes'",
+//#endif
+//       NULL, NULL, NULL
+//    };
+//
+// */
 #endif //LIBSEMSIM_LIBRDFSTORAGE_H
