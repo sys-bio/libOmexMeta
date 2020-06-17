@@ -35,7 +35,7 @@ namespace semsim {
                 {"http://www.bhi.washington.edu/semsim#",    "semsim"},
         };
 
-        explicit RDF(const std::string &base_uri = "./Annotations.rdf", const std::string &storage_type = "memory",
+        explicit RDF(const std::string &storage_type = "memory",
                      const std::string &storage_name = "SemsimStore",
                      const char *storage_options = nullptr, const char *model_options = nullptr);
 

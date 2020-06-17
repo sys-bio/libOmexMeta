@@ -171,8 +171,6 @@ else ()
             ${WRAPPER_SOURCE_DIR}
             ${LIBPQ_INCLUDE_DIR}
             ${ICONV_INCLUDE_DIR}
-            -I/usr/include
-            -I/usr/include/libxml2
             )
 
     #https://cmake.cmake.narkive.com/lzDZk3kO/autoheader-like-functionality
@@ -190,13 +188,15 @@ else ()
             ${ZLIB_STATIC_LIBRARY}
             ${BZ2_STATIC_LIBRARY}
             xslt
-            #            ${LIBXML2_STATIC_LIBRARY}
-            xml2
+            -Wl,--no-whole-archive
+            ${LIBXML2_LIBRARY}
+            -Wl,--whole-archive
+#            ${LIBXML2_STATIC_LIBRARY}
             ltdl ${CMAKE_DL_LIBS}
             pcre
             yajl
             curl
-#            curl.a
+            #            curl.a
             stdc++fs
             -Wl,--no-whole-archive
             )

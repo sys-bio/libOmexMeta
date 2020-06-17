@@ -17,7 +17,7 @@ include(ExternalProject)
 
 # build zlib
 ExternalProject_Add(zlib
-        DOWNLOAD_COMMAND
+
         SOURCE_DIR ${ZLIB_SOURCE_DIR}
         BINARY_DIR ${ZLIB_BUILD_DIR}
         BUILD_COMMAND make -j${N}
@@ -29,7 +29,7 @@ ExternalProject_Add(zlib
 
 # build libsbml-dependencies, which itself has no dependencies
 ExternalProject_Add(libsbml-dependencies
-        DOWNLOAD_COMMAND
+
         SOURCE_DIR ${LIBSBML_DEPS_SOURCE_DIR}
         BINARY_DIR ${LIBSBML_DEPS_BINARY_DIR}
         BUILD_COMMAND make -j${N}
@@ -42,7 +42,7 @@ ExternalProject_Add(libsbml-dependencies
 
 # build zipper
 ExternalProject_Add(zipper
-        DOWNLOAD_COMMAND
+
         SOURCE_DIR ${ZIPPER_SOURCE_DIR}
         BINARY_DIR ${ZIPPER_BINARY_DIR}
         BUILD_COMMAND make -j${N}
@@ -58,7 +58,6 @@ ExternalProject_Add(zipper
 
 # build zipper
 ExternalProject_Add(libxml2
-        DOWNLOAD_COMMAND
         SOURCE_DIR ${LIBXML2_SOURCE_DIR}
         BINARY_DIR ${LIBXML2_BINARY_DIR}
         BUILD_COMMAND make -j${N}
@@ -66,9 +65,10 @@ ExternalProject_Add(libxml2
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_INSTALL_PREFIX=${LIBXML2_INSTALL_PREFIX}
-        -DBUILD_SHARED_LIBS=OFF
+        -DBUILD_SHARED_LIBS=ON
         -DLIBXML2_WITH_PYTHON=OFF
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+#        -DCMAKE_EXE_LINKER_FLAGS= -lpthread  -Wl,--whole-archive -llzma  -licu -liconv -lzlib -Wl,--no-whole-archive
         )
 
 ## get libxml2 libraries
@@ -83,7 +83,7 @@ ExternalProject_Add(libxml2
 
 # build libsbml
 ExternalProject_Add(libsbml
-        DOWNLOAD_COMMAND
+
         SOURCE_DIR ${LIBSBML_SOURCE_DIR}
         BINARY_DIR ${LIBSBML_BINARY_DIR}
         DEPENDS libsbml-dependencies
@@ -102,7 +102,7 @@ ExternalProject_Add(libsbml
 
 # build libcombine
 ExternalProject_Add(libCombine
-        DOWNLOAD_COMMAND
+
         SOURCE_DIR ${LIBCOMBINE_SOURCE_DIR}
         BINARY_DIR ${LIBCOMBINE_BINARY_DIR}
         BUILD_COMMAND make -j${N}
@@ -122,7 +122,7 @@ ExternalProject_Add(libCombine
 
 # we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
 ExternalProject_Add(libsemsim
-        DOWNLOAD_COMMAND
+
         DEPENDS zlib libsbml-dependencies zipper
         libsbml libCombine raptor rasqal librdf
         libxml2

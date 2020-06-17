@@ -33,7 +33,8 @@ setup(
     package_dir={'pysemsim': 'src/pysemsim'},
     package_data={'pysemsim': [
         'LICENCE.txt',
-        'libsemsim.so']
+        'libsemsim.so', "libxml2.so.2.9.10"
+    ]
     },
     include_package_data=True,
 )

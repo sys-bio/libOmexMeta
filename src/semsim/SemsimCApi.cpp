@@ -68,7 +68,8 @@ namespace semsim {
  *  RDF methods
  */
 
-    RDF *RDF_new() {
+    RDF *RDF_new(const char *storage_type, const char *storage_name,
+                 const char *storage_options, const char *model_options) {
         RDF *rdf_ptr = new RDF();
         if (!rdf_ptr) {
             throw NullPointerException("NullPointerException: RDF_fromString(): \"rdf_ptr\" is nullptr");
@@ -81,7 +82,9 @@ namespace semsim {
         delete rdf_ptr;
     }
 
-    RDF *RDF_fromString(const char *str, const char *format, const char *baseuri) {
+    RDF *RDF_fromString(const char *str, const char *format, const char *baseuri, const char *storage_type,
+                        const char *storage_name,
+                        const char *storage_options, const char *model_options) {
         RDF *rdf = RDF_new();
         rdf->addFromString(str, format, baseuri);
         return rdf;
@@ -92,7 +95,8 @@ namespace semsim {
         rdf_ptr->addFromString(str, format, base_uri);
     }
 
-    RDF *RDF_fromUri(const char *uri_string, const char *format) {
+    RDF *RDF_fromUri(const char *uri_string, const char *format, const char *storage_type, const char *storage_name,
+                     const char *storage_options, const char *model_options) {
         RDF *rdf = RDF_new();
         rdf->addFromUri(uri_string, format);
         return rdf;
@@ -102,7 +106,8 @@ namespace semsim {
         rdf_ptr->addFromUri(uri_string, format);
     }
 
-    RDF *RDF_fromFile(const char *filename, const char *format) {
+    RDF *RDF_fromFile(const char *filename, const char *format, const char *storage_type, const char *storage_name,
+                      const char *storage_options, const char *model_options) {
         RDF *rdf = RDF_new();
         rdf->addFromFile(filename, format);
         return rdf;
@@ -410,21 +415,24 @@ namespace semsim {
     }
 
     PhysicalProcess *
-    PhysicalProcess_setPhysicalProperty(PhysicalProcess *physical_process, const char *subject_metaid, const char *physical_property) {
+    PhysicalProcess_setPhysicalProperty(PhysicalProcess *physical_process, const char *subject_metaid,
+                                        const char *physical_property) {
         physical_process->setPhysicalProperty(subject_metaid, physical_property);
         return physical_process;
 
     }
 
     PhysicalProcess *
-    PhysicalProcess_addSource(PhysicalProcess *physical_process, double multiplier, const char *physical_entity_reference) {
+    PhysicalProcess_addSource(PhysicalProcess *physical_process, double multiplier,
+                              const char *physical_entity_reference) {
         physical_process->addSource(multiplier, physical_entity_reference);
         return physical_process;
 
     }
 
     PhysicalProcess *
-    PhysicalProcess_addSink(PhysicalProcess *physical_process, double multiplier, const char *physical_entity_reference) {
+    PhysicalProcess_addSink(PhysicalProcess *physical_process, double multiplier,
+                            const char *physical_entity_reference) {
         physical_process->addSink(multiplier, physical_entity_reference);
         return physical_process;
 
@@ -448,7 +456,7 @@ namespace semsim {
     }
 
     char *PhysicalProcess_getAbout(PhysicalProcess *physical_process_ptr) {
-        const std::string& about = physical_process_ptr->getAbout();
+        const std::string &about = physical_process_ptr->getAbout();
         char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
         strcpy(cstr, about.c_str());
         return cstr;
@@ -498,7 +506,7 @@ namespace semsim {
     }
 
     PhysicalForce *PhysicalForce_addSource(PhysicalForce *physical_force_ptr, double multiplier,
-            const char *physical_entity_reference) {
+                                           const char *physical_entity_reference) {
         physical_force_ptr->addSource(multiplier, physical_entity_reference);
         return physical_force_ptr;
 
@@ -510,7 +518,8 @@ namespace semsim {
         return physical_force_ptr;
     }
 
-    PhysicalForce *PhysicalForce_setPhysicalProperty(PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property) {
+    PhysicalForce *PhysicalForce_setPhysicalProperty(PhysicalForce *physical_force_ptr, const char *subject_metaid,
+                                                     const char *physical_property) {
         physical_force_ptr->setPhysicalProperty(subject_metaid, physical_property);
         return physical_force_ptr;
     }

@@ -10,13 +10,11 @@
 namespace semsim {
 
 
-    RDF::RDF(const std::string &base_uri, const std::string &storage_type, const std::string &storage_name,
-             const char *storage_options,
-             const char *model_options) {
+    RDF::RDF(const std::string &storage_type, const std::string &storage_name,
+             const char *storage_options, const char *model_options) {
         storage_ = LibrdfStorage(storage_type, storage_name, storage_options);
         // model_ now owns storage_
         model_ = LibrdfModel(storage_.get(), model_options);
-        setBaseUri(base_uri);
     }
 
     void RDF::freeRDF() {

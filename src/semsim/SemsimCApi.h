@@ -42,7 +42,8 @@ namespace semsim {
  * RDF class methods
  */
 
-    RDF *RDF_new();
+    RDF *RDF_new(const char *storage_type = "memory", const char *storage_name = "semsim_store",
+                 const char *storage_options = nullptr, const char *model_options = nullptr);
 
     void RDF_delete(RDF *rdf_ptr);
 
@@ -64,15 +65,21 @@ namespace semsim {
      * @example
      * RDF* rdf_ptr = RDF_fromString(string_annotations, "rdfxml", "string_annotations_base_uri");
      */
-    RDF *RDF_fromString(const char *str, const char *format, const char *baseuri = "./Annotations.rdf");
+    RDF *RDF_fromString(const char *str, const char *format, const char *baseuri = "./Annotations.rdf",
+                        const char *storage_type = "memory", const char *storage_name = "semsim_store",
+                        const char *storage_options = nullptr, const char *model_options = nullptr);
 
     void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri);
 
-    RDF *RDF_fromUri(const char *uri_string, const char *format);
+    RDF *RDF_fromUri(const char *uri_string, const char *format,
+                     const char *storage_type = "memory", const char *storage_name = "semsim_store",
+                     const char *storage_options = nullptr, const char *model_options = nullptr);
 
     void RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
 
-    RDF *RDF_fromFile(const char *filename, const char *format);
+    RDF *RDF_fromFile(const char *filename, const char *format, const char *storage_type = "memory",
+                      const char *storage_name = "semsim_store",
+                      const char *storage_options = nullptr, const char *model_options = nullptr);
 
     void RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
 

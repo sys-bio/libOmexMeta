@@ -90,6 +90,15 @@ install(TARGETS semsim-static
 
 
 if (BUILD_SHARED)
+
+    set(CMAKE_INSTALL_RPATH
+            "${CMAKE_INSTALL_PREFIX}/lib"   # probs not needed, but for good measure
+            "${PYSEMSIM_DIR}"               # python test package
+            "."                             # current directory (for when in site-packages)
+            )
+
+    set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
     set(BUILD_SHARED_LIBS ON)
     set(CMAKE_VERBOSE_MAKEFILE ON)
     # shared library
@@ -109,7 +118,7 @@ if (BUILD_SHARED)
             ${LINK_LIBRARIES}
             -Wl,--no-whole-archive
             )
-
+    set_target_properties(${semsim} PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
 
     install(TARGETS semsim
             LIBRARY
@@ -120,8 +129,16 @@ if (BUILD_SHARED)
     # for automatically installing to folder containing python api
     install(TARGETS semsim
             LIBRARY
-            DESTINATION ${CMAKE_SOURCE_DIR}/src/pysemsim
+            DESTINATION ${PYSEMSIM_DIR}
             )
+
+    if (NOT EXISTS ${LIBXML2_LIBRARY})
+        message(FATAL_ERROR "libxml not found. Build it with the dependnecy package")
+    endif ()
+    install(FILES ${LIBXML2_LIBRARY}
+            DESTINATION ${PYSEMSIM_DIR})
+    # An alternative command that copies on configuration, not install
+    #    file(COPY ${LIBXML2_LIBRARY} DESTINATION ${PYSEMSIM_DIR})
 
 
 endif ()

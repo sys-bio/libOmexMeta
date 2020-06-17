@@ -8,8 +8,13 @@ set(THIRD_PARTY_DIRS ${CMAKE_SOURCE_DIR}/third_party)
 # google test source dir
 set(GOOGLETEST_SOURCE ${THIRD_PARTY_DIRS}/googletest)
 
+# directory containing development pysemsim __init__.py
+set(PYSEMSIM_DIR ${CMAKE_SOURCE_DIR}/src/pysemsim)
+
 set(DEPENDENCY_INSTALL_FOLDER_NAME "install")
 set(DEPENDENCY_BUILD_FOLDER_NAME "build")
+
+
 
 # openssl - used for secure download of files from tinterweb
 #set(OPENSSL_SOURCE_DIR ${THIRD_PARTY_DIRS}/openssl-cmake-1.0.1e-src)
@@ -74,6 +79,7 @@ set(LIBXML2_INSTALL_PREFIX ${LIBXML2_SOURCE_DIR}/${DEPENDENCY_INSTALL_FOLDER_NAM
 set(LIBXML2_LIB_DIR "${LIBXML2_INSTALL_PREFIX}/lib")
 set(LIBXML2_INCLUDE_DIR "${LIBXML2_INSTALL_PREFIX}/include/libxml2")
 set(LIBXML2_STATIC_LIBRARY "${LIBXML2_LIB_DIR}/libxml2.a")
+set(LIBXML2_LIBRARY "${LIBXML2_LIB_DIR}/libxml2.so.2.9.10")
 
 
 SET(STATIC_LIBRARIES

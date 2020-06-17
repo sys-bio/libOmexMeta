@@ -85,7 +85,10 @@ class TestAPI(unittest.TestCase):
 
     def setUp(self) -> None:
         # loads the function that makes a new RDF
-        self.rdf = PysemsimAPI.rdf_new()
+        self.rdf = PysemsimAPI.rdf_new(
+            "memory".encode(), "semsim_store".encode(),
+            None, None
+        )
 
     def tearDown(self) -> None:
         """calls the RDF delete function after each test"""

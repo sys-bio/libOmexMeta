@@ -28,15 +28,6 @@ public:
 };
 
 
-TEST_F(CAPITests, RDFNew) {
-    RDF *rdf_ptr = RDF_new();
-    // we access the default base uri to check we have a RDF object
-    std::string uri = rdf_ptr->base_uri_;
-    std::string expected = "file://./Annotations.rdf";
-    ASSERT_STREQ(expected.c_str(), uri.c_str());
-    RDF_delete(rdf_ptr);
-
-}
 
 TEST_F(CAPITests, RDFSize) {
     RDF *rdf_ptr = RDF_fromString(samples.singular_annotation1.c_str(), "rdfxml", "LannotationsBase.rdf");
@@ -70,16 +61,6 @@ TEST_F(CAPITests, RDFToString) {
     RDF_delete(rdf_ptr);
 }
 
-TEST_F(CAPITests, RDFgetBaseUri) {
-    RDF *rdf_ptr = RDF_fromString(samples.singular_annotation1.c_str(), "rdfxml");
-    char *actual = RDF_getBaseUri(rdf_ptr);
-    std::cout << actual << std::endl;
-    const char *expected = "file://./Annotations.rdf";
-    ASSERT_STREQ(expected, actual);
-
-    free(actual);
-    RDF_delete(rdf_ptr);
-}
 
 TEST_F(CAPITests, RDFsetBaseUri) {
     RDF *rdf_ptr = RDF_fromString(samples.singular_annotation1.c_str(), "rdfxml");
