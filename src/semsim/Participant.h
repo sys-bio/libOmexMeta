@@ -24,7 +24,7 @@ namespace semsim {
         librdf_model *model_ = nullptr;
         std::string base_metaid_;
         std::string semsim_predicate_term_;
-        double multiplier_;
+        double multiplier_ = 0.0;
         std::string physicalEntityReference_;
 
     public:
@@ -106,7 +106,7 @@ namespace semsim {
      * Subclass of Participant. See Participants for arguments.
      */
     class SourceParticipant : public Participant {
-
+        
     public:
         /*
          * @brief A class representing process/force energetic source.
@@ -120,8 +120,6 @@ namespace semsim {
     class SinkParticipant : public Participant {
     private:
 
-        double multiplier_{};
-        std::string physicalEntityReference_;
     public:
 
         /*
@@ -137,7 +135,6 @@ namespace semsim {
     class MediatorParticipant : public Participant {
     private:
         double multiplier_ = 0.0;
-
     public:
 
         /*

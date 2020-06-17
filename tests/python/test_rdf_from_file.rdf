@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+            xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+            xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+            xml:base="file://./MyModel.rdf">
+   <rdf:Description rdf:about="./MyModel.xml#modelmeta1">
+       <bqmodel:isDescribedBy rdf:resource="https://identifiers.org/pubmed/12991237" />
+   </rdf:Description>
+</rdf:RDF>

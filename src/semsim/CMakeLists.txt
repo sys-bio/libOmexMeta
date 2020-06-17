@@ -101,11 +101,10 @@ if (BUILD_SHARED)
 
     set(BUILD_SHARED_LIBS ON)
     set(CMAKE_VERBOSE_MAKEFILE ON)
+
     # shared library
     add_library(semsim SHARED "${SEMSIM_HEADERS}" "${SEMSIM_SOURCES}" Preproc.h)
 
-    #    target_link_options(semsim PUBLIC -Wl,--whole-archive)
-    #
 
     add_dependencies(semsim redland-combined)
     target_include_directories(semsim PUBLIC
