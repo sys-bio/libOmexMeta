@@ -28,7 +28,6 @@ public:
 };
 
 
-
 TEST_F(CAPITests, RDFSize) {
     RDF *rdf_ptr = RDF_fromString(samples.singular_annotation1.c_str(), "rdfxml", "LannotationsBase.rdf");
     int actual = RDF_size(rdf_ptr);
@@ -88,6 +87,22 @@ TEST_F(CAPITests, RDF_addFromString) {
     int expected = 1;
     int actual = RDF_size(rdf_ptr);
     ASSERT_EQ(expected, actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDF_addFromStringOutput) {
+    RDF *rdf_ptr = RDF_new();
+    RDF_addFromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml", "RDF_addFromStringTest.rdf");
+    std::string actual = RDF_toString(rdf_ptr, "turtle", "Basey.rdf");
+    std::string expected = "@base <file://Basey.rdf> .\n"
+                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "\n"
+                           "<file://./metaid_1>\n"
+                           "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n"
+                           "\n";
+    std::cout << actual.c_str() << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
     RDF_delete(rdf_ptr);
 }
 
