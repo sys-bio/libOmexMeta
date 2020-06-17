@@ -1,0 +1,500 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0082)https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Redland RDF Storage</title>
+  <link rel="StyleSheet" type="text/css" href="./Redland RDF Storage_files/swad-europe.css">
+  <style type="text/css">
+dt { font-weight: bold }
+  </style>
+<script async="" src="./Redland RDF Storage_files/adblocker-chromeglobalinjectjs.js.download"></script><style></style></head>
+<body>
+
+<h1>Redland RDF Storage and Retrieval</h1>
+
+<h2><a href="http://purl.org/net/dajobe/">Dave Beckett</a><br>
+<a href="http://www.ilrt.bristol.ac.uk/">The Institute for Learning and Research Technology (ILRT)</a><br>
+University of Bristol, UK.</h2>
+
+<h2><a name="sec-abstract">Abstract</a></h2>
+
+<p>An overview of the Redland storage and retrieval architecture and
+implementation along with the current problems and issues.
+</p>
+
+
+<h2><a name="sec-intro">1. Redland Introduction</a></h2>
+
+<p>Redland was designed and implemented from early 2000 with a
+modular approach to the internal parts - each has an interface and a
+set of implementations of that interface (details of how to do this
+in C and cross-languages are described in <a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref1">[1]</a>).
+The storage architecture similarly abstracted the triple storing
+(<a href="http://www.redland.opensource.ac.uk/docs/api/storage.html"><tt>librdf_storage</tt></a> class in Redland) away
+from the user access the RDF graph (<a href="http://www.redland.opensource.ac.uk/docs/api/model.html"><tt>librdf_model</tt></a>).
+</p>
+
+
+<h2><a name="sec-identity">2. Identity in Redland</a></h2>
+
+<p>In Redland an RDF triple (<a href="http://www.redland.opensource.ac.uk/docs/api/statement.html"><tt>librdf_statement</tt></a>) and the
+three triple terms, subject, predicate and object are nodes
+(<a href="http://www.redland.opensource.ac.uk/docs/api/node.html"><tt>librdf_node</tt></a>) of three types: RDF URI references also known
+as resources, blank nodes or literals (including datatyped,
+with/without languages).  The nodes are independent of any graph and
+carry no other state than their respective identity or (for literals)
+strings.</p>
+
+<p>Redland takes advantage of this and <em>interns</em> both nodes
+and (RDF) URIs so that triples in the system are three unique
+pointers to the node objects.  All nodes and triples are identified
+by their content and not attached to any particular graph.  This
+allows triples and nodes to be copied by simple reference
+counting.  When stored, no other information need be recorded for a
+triple.</p>
+
+<p>RDF graphs do not provide any other structure inside the graph
+between the triple level and the entire graph; such as sub-graphs
+or "quoted" triples.  As will be discussed later
+in <a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#sec-contexts">section 5</a>, Redland introduces
+a facility called <em>Redland Contexts</em><a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref4">[4]</a>
+to aid with the common task of graph merging and tracking the
+original triple/graph sources.</p>
+
+
+<h2><a name="sec-retrieve">3. Triple retrieval API in Redland</a></h2>
+
+<p>The user API presented in Redland is a triple-based API one where
+the triples can be added removed, and searches done by passing in
+triples with any of the fields allowed to be omitted.  This is
+typically called a <em>"triples matching" query</em> and is a common
+metaphor for retrieval seen in many RDF APIs and applications.
+Redland does not provide any way to store standalone nodes and arcs,
+but navigating the graph that is formed from triples can be done in a
+node-centric form by using model methods that return the object of a
+triple with a given (subject, predicate), that is, the node at the
+end of an arc. such as the pseudo code:</p>
+<pre>node=model.get_target(subject, predicate)
+</pre>
+
+<p>Retrieval of information from an RDF graph can be in the form of
+asking for triples that match a certain value - asking for some parts
+of the triples given other parts that are known.  These return RDF
+concepts such as triples or nodes.</p>
+
+<p>In relation databases, the SQL language provides retrieval by a
+textual query language rather than concepts in software, and the
+result are a set of variable bindings.  This more classic query
+language style support is not currently directly available in Redland
+but underway and in the original design in <a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref1">[1]</a> as
+another software module.  There are many experimental RDF query
+languages as discussed in <a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref10">[10]</a>
+but only a few with multiple interoperable implementations
+such as Squish<a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref9">[9]</a> and RDQL<a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref11">[11]</a>
+(not a complete list, see <a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref10">[10]</a> for more).
+</p>
+
+
+<h2><a name="sec-store">4. Triple storing in Redland (<tt>librdf_storage</tt> class)</a></h2>
+class 
+<p>The two store classes that were implemented (and always-present)
+were an in-memory store (storage name <tt>"memory"</tt>) and a store
+using hashes of key:value (<tt>"hashes"</tt>), another class provided
+by Redland internally (<a href="http://www.redland.opensource.ac.uk/docs/api/hash.html"><tt>librdf_hash</tt></a>).  The Redland <tt>librdf_hash</tt>
+class provides key:value maps with duplicate values allowed for a key
+(aside: GDBM does not support this, which is why it was dropped, see
+<a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#sec-store-persist">section 4.2</a>).
+The duplicate values allows duplicate
+triples to be stored, but this is not the primary reason for allowing
+them.  They are needed to provide redland contexts, described later
+in <a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#sec-contexts">section 5</a>.
+</p>
+
+<p>The current hash implementations are in-memory one based on
+a custom hash implementation and a persistent one using
+Sleepycat/Berkeley&nbsp;DB<a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref">[2]</a> (BDB) or any
+other.  This means that an in-memory store, an in-memory indexed
+store or a persistent indexed store are all possible.</p>
+
+<p>The in-memory store was designed to be simple to understand so
+that its operation was trivially verifiable and formed the basis for
+the storage unit tests.  The indexed store was then developed,
+providing a more sophisticated storage solution.</p>
+
+<p><a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#table1">Table 1</a>
+shows the current use of hashes, evolved from the indexes
+suggested after personal communications with Dan Brickley,
+informed by earlier work such as rdfDB<a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/ref5">[5]</a>
+and earlier projects at the ILRT.  The key piece
+of information used was that the disk access is so much slower
+than the transfer time or processor time, that it is
+more expensive and complex to have multiple hashes, identify
+the key and values uniquely and assign short IDs, than to
+just store all of the triples in each hash, the approach
+taken here.  It is not clear if this balance still applies
+several years after the original work.</p>
+
+<p>When a query is done using the triples matching style,
+Redland picks the most appropriate hash if it is available.
+When it is not, Redland lists all the (key,value) pairs of
+one of the hashes that stores all S,P,O and uses the
+resulting set of triples to match against.  In this way,
+Redland can perform queries when the hash is not available
+with no user interaction.  This store model can thus work
+with 1 hash only, since the S,P,O are stored in all of
+the hashes (1-4).
+</p>
+
+
+<div style="align:center">
+<table border="1">
+<tbody><tr>
+<th align="left">Hash</th><th align="left">Key</th><th align="left">Value</th><th align="left">Use</th>
+</tr>
+<tr>
+<td>1 - SP2O</td>
+<td>Subject and Predicate</td>
+<td>Object</td>
+<td>Optimises node-centric query: get targets of (source, arc)</td>
+</tr>
+<tr>
+<td>2 - PO2S</td>
+<td>Predicate and Object</td>
+<td>Subject</td>
+<td>Optimises node-centric query: get sources of (arc, target)</td>
+</tr>
+<tr>
+<td>3 - SO2P</td>
+<td>Subject and Object</td>
+<td>Predicate</td>
+<td>Optimises node-centric query: get arcs of (source, target)</td>
+</tr>
+<tr>
+<td>4 - P2SO<br>
+(optional)</td>
+<td>Predicate</td>
+<td>Subject and Object</td>
+<td>Finding nodes using a predicate - useful for
+structural predicates such as <tt>rdf:type</tt> or
+important ones for some application such as <tt>foaf:knows</tt> in FOAF.</td>
+</tr>
+<tr>
+<td>5 - contexts<br>
+(optional)</td>
+<td>-</td>
+<td>-</td>
+<td>Used for contexts, see section <a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#sec5">5</a>.</td>
+</tr>
+</tbody></table>
+<span class="caption"><a name="table1">Table 1: Current Hash Storage Indexes</a></span>
+</div>
+
+<p>The hashes are used both for the statement queries and the node
+centric ones.  The former are provided by serialising the hash and
+filtering via the querying statement.  This can be very slow for
+large models so the node-centric indexes are used when only one of
+the elements of the statement is blank.  Node-centric queries mean
+querying using the <em>Model</em> relative to a particular resource
+node or arc.  The SP2O hash finds outgoing nodes from a resource with
+a given arc, the PO2S hash finds incoming nodes with a given arc and
+destination and the SO2P hash finds the arcs between two given nodes.
+These combinations of indexes have been found to be quite useful in
+experiments and testbeds implemented previously at ILRT, without the
+need to have full combination of indexes.</p>
+
+
+<p><a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#table2">Table 2</a> shows an alternate set of hashes,
+which more reflect the use of the triple APIs.  It is more often the
+case that nodes and properties are followed "forward", i.e. from
+subject and predicate to object, rather than backwards.  The SP2O
+hash would indeed be the best candidate for a 1-hash store solution.
+As with any choice, this is very application specific, and the P2SO
+hash might be critical in performance to some work.
+</p>
+
+
+<div style="align:center">
+<table border="1">
+<tbody><tr>
+<th align="left">Hash</th><th align="left">Key</th><th align="left">Value</th><th align="left">Use</th>
+</tr>
+<tr>
+<td>1 - SP2O</td>
+<td>Subject and Predicate</td>
+<td>Object</td>
+<td>Most common use of triples, asking for the object from a given subject
+and predicate</td>
+</tr>
+<tr>
+<td>2 - S2P</td>
+<td>Subject</td>
+<td>Predicate</td>
+<td>Next most common use; from a given subject, find its predicates</td>
+</tr>
+<tr>
+<td>3 - contexts<br>
+(optional)</td>
+<td>-</td>
+<td>-</td>
+<td>Still optionally needed for contexts, see section <a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#sec5">5</a>.</td>
+</tr>
+</tbody></table>
+<span class="caption"><a name="table1">Table 2: Alternate Hash Storage Indexes</a></span>
+</div>
+
+
+<p>Redland uses a dynamic hash configuration so that different stores
+could set up the hashes they want in any combination.  This has not
+been exposed to the user api at this point due to the complexity.  It
+might be better instead to offer a set of hash indexing choices from
+small to large or optimised for certain uses.</p>
+
+
+
+
+<h3>4.1 In-memory stores</h3>
+
+<p>Reviewing what has already been mentioned and outlining the issues
+with the current in-memory stores, some further extrapalations can be
+made on the possible aproaches for improving the store.</p>
+
+<dl>
+<dt>1. Store <tt>"memory"</tt></dt>
+
+<dd><p>This is implemented as a doubly linked list which is very
+simple to develop, understand and trivial to verify correctness.
+This approach allowed test cases to be built.</p>
+<p>Very fast with small models due to simplicity but
+O(n) in all searches due to no indexing and inappropriate for
+graphs with moderate number sof triples.</p>
+</dd>
+
+<dt>2. Store <tt>"hashes"</tt> with hash type <tt>"memory"</tt></dt>
+<dd><p>Using in-memory hash types, this provides an indexed and fast
+in-memory store.</p>
+</dd>
+
+<dt>3. Store <tt>"hashes"</tt> with hash type <tt>"bdb"</tt> and no filename</dt>
+<dd><p>BDB has a feature that if no filename is provided for the
+persistent store, it will create an in-memory one instead.  This
+is possible but has not been tested.
+</p></dd>
+
+<dt>Future</dt>
+<dd>Use the advantages of the interned triples to provide an
+in-memory store that can have a regular memory structure.  It could
+even be made memory-mapped to files or possible to fast load.
+An in-memory store when in use that was also persistent would
+have advantages in certain cases, for <em>hot triples</em>
+such as schema information.</dd>
+
+</dl>
+
+
+
+<h3><a name="sec-store-persist">4.2 Persistent Stores</a></h3>
+
+<p>The goal of portability for Redland led to the on-disk store being
+developed that used either entirely standalone resources or widely
+available and stable databases.  The first store based on hashes
+for the storing and indexing let the system depend on earlier
+work on persistent btree-based storage such as BDB.</p>
+
+<p>BDB is widely available on many systems (Unix, Linux, POSIX,
+others) and has a long history, being developed in the early 1990s.
+There are four major versions of BDB seen in deployed systems each
+with different and slightly incompatible APIs; some of the minor
+versions also have APi changes.  This meant a lot of torturous
+configuration and options to support but Redland currently can use
+BDB from version 2.4 to 4.1 (or later).
+</p>
+
+<p>The persistent store using on-disk BDB hashes originally also had
+a GNU DBM (GDBM) implementation, but that persistent store proved
+inadequate - it both did not support duplicates and was not being
+regularly maintained.</p>
+
+
+
+<dl>
+
+<dt>1. Store <tt>"hashes"</tt> with BDB: Redland Hashed Indexes</dt>
+<dd>As described in
+<a name="sec-store">section 4</a> using BDB hashes on-disk.  Generates
+very large files since the full triples including full
+URIs and literals are in each triple. Limited by disk size
+and speed, but simple to index.  Has proved fast enough up
+to low millions of triples.</dd>
+
+<dt>2. Store <tt>"3store"</tt>: 3store</dt>
+<dd>When 3store<a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref3">[3]</a>,<a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref6">[6]</a>
+triplestore from the AKTs project is available, Redland can use it
+via its triple API.  This API is not where most of the 3store
+development is currently focused, and it is not from after personal
+communications with the developers, if this API will continue to
+be maintained.  In particular, the RDF schema development is
+less complete for the triple API, compared to the RDQL one.</dd>
+
+<dt>3. Store <tt>"mysql"</tt>: MySQL</dt>
+<dd>A new MySQL store has been developed and operated by
+Morten Frederiksen and recently added to the main Redland sources,
+in CVS, after the 0.9.14 Redland release
+</dd>
+
+<dt>Future</dt>
+<dd><p>Nothing is currently planned to extend this at present.  The
+MySQL schema might be optimised to take advantage of other schema
+ideas from the workshop.  It might be worth creating a BDB store that
+matched the binary format used by others such as rdflib.</p>
+
+<p>For <a href="http://www.w3.org/2001/sw/Europe/">SWAD Europe</a>
+we have already written in <a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref7">[7]</a> and <a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref8">[8]</a>
+in detail about other storage systems, APIs and looked at alternate ways
+to represent the triples.
+</p>
+</dd>
+
+</dl>
+
+
+<h2><a name="sec-contexts">5. Contexts</a></h2>
+
+<p>A facility called <em>Redland Contexts</em><a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref4">[4]</a>
+were added to Redland in version
+<a href="http://www.redland.opensource.ac.uk/RELEASE.html#rel0_9_12">0.9.12</a>
+for supporting managing using multiple RDF graphs and merging graphs.
+The use case was to allow triples to be asserted from multiple sources
+(documents) and then during use of the union graph, for the information
+returned by the Redland model calls to return some link to the original
+source.</p>
+
+<p>This feature was implemented by allowing,when triples are being
+added to the graph, for an additional <tt>librdf_node</tt> to be
+passed in as another parameter.  This is the <em>context node</em>
+and can be retrieved as the result of any redland triple query, by
+using a method from the
+<a href="http://www.redland.opensource.ac.uk/docs/api/iterator.html"><tt>librdf_iterator</tt></a>
+or <a href="http://www.redland.opensource.ac.uk/docs/api/stream.html"><tt>librdf_stream</tt></a> objects.</p>
+
+<p>This was as a major update to the Redland internals for the 
+<tt>librdf_iterator</tt> and <tt>librdf_stream</tt>
+classes and requried changes to all the implemented store SPIs
+and implementations.</p>
+
+<p>This feature can be used for a variety of things depending on how
+the context nodes are used with the triples.  The following is not an
+exhaustive list:</p>
+
+<dl><dt>Enable true graph merging / updating / demerging<br></dt>
+<dd>Identify the
+subgraphs (sets of triples from particular sources) with context nodes.</dd>
+
+<dt>Statement Identity<br></dt>
+<dd>Add each triple with a different context node.
+RDF's model does not assign identity to triples.  There is reification
+also which might be used with this approach.</dd>
+
+<dt>Statement Provenance<br></dt>
+<dd>Use the context node as the subject of
+other statements about the statement that is returned.</dd>
+
+<dt>Subgraphs<br></dt>
+
+<dd>Similar to the merging approach but consider
+the RDF graph to be a set of graphs and manipulate them as such.
+(Aside: Redland is gaining model aggregation to do this explicitly).</dd>
+
+</dl>
+
+<p>Contexts used this way do have a downside in that they cannot
+be transfered using the RDF/XML syntax outside Redland to other
+systems without extending the syntax.  They are also probably
+not the same as N3 Formulae which amongst other things, quotes
+the triples in the contexts as not asserted in the containing
+graph.  Redland context node information should also be
+available by any network API.</p>
+
+
+
+<h2><a name="sec-bench">6. Benchmarking</a></h2>
+
+<p>The current applications of Redland have been up to 3.5M triples
+using the BerkeleyDB stores on typical desktop PC hardware<a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref1">[1]</a>,
+with acceptable interactive response, but this is not considered a
+large triplestore.  There are no standard data sets that are
+typically used across RDF triple stores (possibly the NCI cancer
+ontology<a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/bristol-1.html#ref12">[12]</a>, but that is rather specialised)
+to compare load and query times.</p>
+
+
+<h2><a name="sec-issues">7. Issues</a></h2>
+
+<ul>
+<li>Retrieval can be by API, querying, web/network interfaces</li>
+<li>Need to consider inferencing or ontology support - should it be added at this level?</li>
+<li>Issue with scalability beyond 10Ms of triples</li>
+<li>Making the best use of relational databases</li>
+<li>Handling free text literal searches (in API and query languages)</li>
+<li>What systems support is needed for providing query language support</li>
+<li>Web and network query and API access - the Web in <em>Semantic Web</em></li>
+<li>Providing context information in syntaxes and APIs (network, software)</li>
+</ul>
+
+
+<h2>References</h2>
+
+<dl>
+<dt><a name="ref1">[1]</a></dt>
+<dd><span class="title"><a href="https://www.w3.org/2001/sw/Europe/events/20031113-storage/positions/www10.org/cdrom/papers/490/">The Design and Implementation of the Redland RDF Application Framework</a></span>, <span class="authors">Dave Beckett</span>, <span class="details"><a href="http://www.ilrt.bristol.ac.uk/">The Institute for Learning and Research Technology (ILRT)</a>, <a href="http://www.bristol.ac.uk/">University of Bristol</a>.  In proceedings of WWW10, Hong Kong, May 2001.</span>
+</dd>
+
+<dt><a name="ref2">[2]</a></dt>
+<dd><span class="title"><a href="http://www.sleepycat.com/products/data.shtml">Berkeley DB Datastore</a></span>, <a href="http://www.sleepycat.com/">Sleepycat Software</a> Inc.
+</dd>
+
+<dt><a name="ref3">[3]</a></dt>
+<dd><span class="title"><a href="http://km.aifb.uni-karlsruhe.de/ws/psss03/proceedings/harris-et-al.pdf">3store: Efficient Bulk RDF Storage</a></span>, <span class="authors">Stephen Harris and Nicholas Gibbins</span>, University of Southampton, UK.  In <a href="http://km.aifb.uni-karlsruhe.de/ws/psss03/proceedings/">Proceedings 1st International Workshop on Practical and Scalable Semantic Systems (PSSS'03)</a>, pages 1-15, Sanibel Island, Florida.
+</dd>
+
+<dt><a name="ref4">[4]</a></dt>
+<dd><span class="title"><a href="http://www.redland.opensource.ac.uk/notes/contexts.html">Redland Contexts</a></span>, <span class="authors">Dave Beckett</span>, <span class="details"><a href="http://www.ilrt.bristol.ac.uk/">The Institute for Learning and Research Technology (ILRT)</a>, <a href="http://www.bristol.ac.uk/">University of Bristol</a>, Redland technical Note, last updated 28 October 2003.</span>
+</dd>
+
+<dt><a name="ref5">[5]</a></dt>
+<dd><span class="title"><a href="http://www.guha.com/rdfdb/">rdfDB: An RDF Database</a></span>, <span class="authors">R.V. Guha</span>, <span class="details">2001-2002.</span>
+</dd>
+
+<dt><a name="ref6">[6]</a></dt>
+<dd><span class="title"><a href="http://www.aktors.org/technologies/3store/">3store</a></span>, <span class="authors">Stephen Harris and Nicholas Gibbins</span>, <a href="http://www.aktors.org/">AKTors project</a>, University of Southampton, UK</dd>
+
+<dt><a name="ref7">[7]</a></dt>
+<dd><span class="title"><a href="http://www.w3.org/2001/sw/Europe/reports/scalable_rdbms_mapping_report/">Mapping Semantic Web Data with RDBMSes</a></span>, <span class="authors">Dave Beckett and Jan Grant</span>, <span class="details"><a href="http://www.ilrt.bristol.ac.uk/">The Institute for Learning and Research Technology (ILRT)</a>, <a href="http://www.bristol.ac.uk/">University of Bristol</a>, report for <a href="http://www.w3.org/2001/sw/Europe/">SWAD Europe</a>, last updated 18 February 2003.</span></dd>
+
+<dt><a name="ref8">[8]</a></dt>
+<dd><span class="title"><a href="http://www.w3.org/2001/sw/Europe/reports/rdf_scalable_storage_report/">Scalability and Storage: Survey of Free Software / Open Source RDF storage systems</a></span>, <span class="authors">Dave Beckett and Jan Grant</span>, <span class="details"><a href="http://www.ilrt.bristol.ac.uk/">The Institute for Learning and Research Technology (ILRT)</a>, <a href="http://www.bristol.ac.uk/">University of Bristol</a> report for <a href="http://www.w3.org/2001/sw/Europe/">SWAD Europe</a>, last updated 17 February 2003</span></dd>
+
+<dt><a name="ref9">[9]</a></dt>
+<dd><span class="title"><a href="http://swordfish.rdfweb.org/rdfquery/">SquishQL</a></span>, <span class="authors">Libby Miller</span>, <span class="details"><a href="http://www.ilrt.bristol.ac.uk/">The Institute for Learning and Research Technology (ILRT)</a>, <a href="http://www.bristol.ac.uk/">University of Bristol</a></span></dd>
+
+<dt><a name="ref10">[10]</a></dt>
+<dd><span class="title"><a href="http://www.w3.org/2001/sw/Europe/reports/rdf_ql_comparison_report/">Databases, Query, API, Interfaces report on Query languages</a></span>, <span class="authors">Libby Miller</span>, <span class="details"><a href="http://www.ilrt.bristol.ac.uk/">The Institute for Learning and Research Technology (ILRT)</a>, <a href="http://www.bristol.ac.uk/">University of Bristol</a> report for <a href="http://www.w3.org/2001/sw/Europe/">SWAD Europe</a>, last updated 1 April 2003</span></dd>
+
+<dt><a name="ref11">[11]</a></dt>
+<dd><span class="title"><a href="http://www.hpl.hp.com/semweb/rdql.htm">RDQL - RDF Data Query Language</a></span>,  <span class="details">Andy Seaborne, HP Laboratories, Bristol, UK</span></dd>
+
+<dt><a name="ref12">[12]</a></dt>
+<dd><span class="title"><a href="http://www.mindswap.org/2003/CancerOntology/">National Cancer Institute Thesaurus</a></span>, <span class="details">hosted by the MINDlab, University of Maryland, College Park College Park, Maryland, USA</span>
+</dd>
+
+
+</dl>
+
+
+
+<hr>
+
+<p><a href="http://purl.org/net/dajobe/">Dave Beckett</a></p>
+
+
+
+
+</body></html>
