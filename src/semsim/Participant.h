@@ -106,7 +106,7 @@ namespace semsim {
      * Subclass of Participant. See Participants for arguments.
      */
     class SourceParticipant : public Participant {
-        
+
     public:
         /*
          * @brief A class representing process/force energetic source.
