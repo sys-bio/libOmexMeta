@@ -116,7 +116,7 @@ class TestAPI(unittest.TestCase):
 
         rdf = PysemsimAPI.rdf_from_uri(
             sbml_url.encode(), 'rdfxml'.encode(),
-            "hashes", "semsim_hash", None, None
+            "hashes".encode(), "semsim_hash".encode(), None, None
         )
         expected = 277
         actual = PysemsimAPI.rdf_size(rdf)
@@ -137,7 +137,7 @@ class TestAPI(unittest.TestCase):
 
         rdf = PysemsimAPI.rdf_from_file(
             fname.encode(), 'rdfxml'.encode(),
-            "hashes", "semsim_hash", None, None)
+            "hashes".encode(), "semsim_hash".encode(), None, None)
         expected = 1
         actual = PysemsimAPI.rdf_size(rdf)
         self.assertEqual(expected, actual)
@@ -172,10 +172,20 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(expected, actual2)
 
     def test_rdf_get_base_uri(self):
-        PysemsimAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(), "rdfxml".encode())
-        ptr = PysemsimAPI.rdf_to_string(self.rdf, "turtle".encode(), "test_rdf_get_base_uri")
+        PysemsimAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
+                                        "rdfxml".encode(), "base_uri.rdf".encode())
+        ptr = PysemsimAPI.rdf_to_string(self.rdf, "turtle".encode(), "test_rdf_get_base_uri".encode())
         actual = PysemsimAPI.get_and_free_c_str(ptr)
-        expected  = ""
+        print(actual)
+        expected  = """@base <file://test_rdf_get_base_uri> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
+
+<file://./MyModel.xml#modelmeta1>
+    bqmodel:isDescribedBy <https://identifiers.org/pubmed/12991237> .
+
+"""
         self.assertEqual(expected, actual)
 
     def test_rdf_set_base_uri(self):
