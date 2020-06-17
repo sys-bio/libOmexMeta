@@ -18,15 +18,19 @@ SET(WRAPPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RedlandAPIWrapper)
 SET(WRAPPER_SOURCE_DIR ${WRAPPER_DIR}/src)
 SET(WRAPPER_TEST_DIR ${WRAPPER_DIR}/test)
 
+# set directory for librdf storage/cache. only used when not specified by user
+#  which it is in the context of libsemsim
+set(PKGDATADIR $ENV{HOME}/.librdf)
+file(MAKE_DIRECTORY ${PKGDATADIR})
 
 #definitions needed to compile librdf/rptor/rasqal
 add_definitions(-DHAVE_CONFIG_H
-        -DRASQAL_INTERNAL
-        -DLIBRDF_INTERNAL
+        -DRASQAL_INTERNAL=1
+        -DLIBRDF_INTERNAL=1
         -DREDLAND_MODULE_PATH="${CMAKE_CURRENT_BINARY_DIR}"
         -DPKGDATADIR="${PKGDATADIR}"
-        -DLIBRDFA_IN_RAPTOR
-        -DRAPTOR_INTERNAL
+        -DLIBRDFA_IN_RAPTOR=1
+        -DRAPTOR_INTERNAL=1
         #        -DRAPTOR_DEBUG=0
         )
 
@@ -38,10 +42,7 @@ add_definitions(-DHAVE_CONFIG_H
 #configure_file(${RASQAL_DIR}/src/rasqal_config.h.in ${RASQAL_DIR}/src/rasqal_config.h)
 #configure_file(${RASQAL_DIR}/rasqal-src-config.in ${RASQAL_DIR}/rasqal-src-config)
 
-# set directory for librdf storage/cache. only used when not specified by user
-#  which it is in the context of libsemsim
-set(PKGDATADIR $ENV{HOME}/.librdf)
-file(MAKE_DIRECTORY ${PKGDATADIR})
+
 
 ##################################################################################
 #       find some dependencies

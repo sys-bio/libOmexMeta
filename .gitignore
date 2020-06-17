@@ -4,6 +4,7 @@
 /texput.log
 cmake-build-*
 INSTALL
+install
 cmake-build*
 build
 build2
@@ -30,6 +31,7 @@ pysemsim.egg-info
 docs/cpp
 install-ubuntu
 brenda_parameters_1.xml
+third_party/curl-7.69.1/docs
 
 
 

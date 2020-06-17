@@ -38,6 +38,7 @@ ExternalProject_Add(libsbml-dependencies
         -DCMAKE_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DFORCE_BUILD_ICONV=ON
+        -DBUILD_SHARED_LIBS=ON
         )
 
 # build zipper
@@ -68,7 +69,7 @@ ExternalProject_Add(libxml2
         -DBUILD_SHARED_LIBS=ON
         -DLIBXML2_WITH_PYTHON=OFF
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-#        -DCMAKE_EXE_LINKER_FLAGS= -lpthread  -Wl,--whole-archive -llzma  -licu -liconv -lzlib -Wl,--no-whole-archive
+        -DCMAKE_EXE_LINKER_FLAGS= -lpthread  -Wl,--whole-archive -llzma  -licu -liconv -lzlib -Wl,--no-whole-archive
         )
 
 ## get libxml2 libraries

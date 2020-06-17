@@ -183,7 +183,7 @@
 #define HAVE_SQLITE3_H 1
 
 /* Define to 1 if you have the <sqlite.h> header file. */
-#define HAVE_SQLITE_H  1
+/* #undef HAVE_SQLITE_H  1
 
 /* Define to 1 if you have the <stddef.h> header file. */
 #define HAVE_STDDEF_H 1
@@ -346,7 +346,7 @@
 /* #undef STORAGE_POSTGRESQL */
 
 /* Building SQLite storage */
-#define STORAGE_SQLITE
+#define STORAGE_SQLITE 1
 
 /* Building trees storage */
 #define STORAGE_TREES 1

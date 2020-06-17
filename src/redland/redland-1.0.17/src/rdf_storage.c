@@ -442,13 +442,14 @@ librdf_get_storage_factory(librdf_world *world, const char *name) {
 
     librdf_world_open(world);
 
+
     /* use "memory" if nothing is specified (FIXME: probably not the best choice) */
     if (!name)
         name = "memory";
 
     /* search for factory */
     for (i = 0; (factory = (librdf_storage_factory *) raptor_sequence_get_at(world->storages, i)); i++) {
-        printf("factory: %s", factory->name);
+        printf("factory: %s\n", factory->name);
         if (!strcmp(factory->name, name))
             break;
     }

@@ -55,7 +55,11 @@ TEST_F(RDFTests, TestFromStringSingularAnnotation2) {
      * file
      * uri
      */
-    librdf_storage* storage = librdf_new_storage(World::getWorld(), "sqlite3", "db", "new='yes'");
+//    librdf_new_storage_from_factory()
+//    librdf_storage_factory* factory =
+//    librdf_storage* storage = librdf_new_storage_from_factory(World::getWorld(),
+//            "sqlite", "SQLite", nullptr);
+    librdf_storage* storage = librdf_new_storage(World::getWorld(), "sqlite", "db", "new='yes'");
 //    RDF *rdf = new RDF();
 //    RDF::fromString(rdf, samples.singular_annotation1, "rdfxml", "singular_annotation1_base");
 //    int expected = 1;

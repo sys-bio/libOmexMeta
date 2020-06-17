@@ -26,6 +26,7 @@
 #ifndef LIBRDF_STORAGE_INTERNAL_H
 #define LIBRDF_STORAGE_INTERNAL_H
 
+#include "rdf_config.h"
 #include "rdf_storage_module.h"
 
 #ifdef __cplusplus

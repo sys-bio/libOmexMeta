@@ -181,7 +181,6 @@ else ()
             -Wl,--whole-archive
             ${LIBCOMBINE_STATIC_LIBRARY}
             ${LIBSBML_STATIC_LIBRARY}
-            ${ICONV_STATIC_LIBRARY}
             -Wl,--no-whole-archive
             ${ZIPPER_STATIC_LIBRARY}
             -Wl,--whole-archive
@@ -191,14 +190,14 @@ else ()
             -Wl,--no-whole-archive
             ${LIBXML2_LIBRARY}
             -Wl,--whole-archive
-#            ${LIBXML2_STATIC_LIBRARY}
+            ${ICONV_STATIC_LIBRARY}
+            -Wl,--no-whole-archive
+            sqlite3
             ltdl ${CMAKE_DL_LIBS}
             pcre
             yajl
             curl
-            #            curl.a
             stdc++fs
-            -Wl,--no-whole-archive
             )
 
     # notes on libraries

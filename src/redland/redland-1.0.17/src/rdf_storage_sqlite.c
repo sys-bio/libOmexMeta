@@ -2801,7 +2801,7 @@ librdf_storage_sqlite_register_factory(librdf_storage_factory *factory) {
     factory->transaction_rollback = librdf_storage_sqlite_transaction_rollback;
 }
 
-#ifdef MODULAR_LIBRDF
+//#ifdef MODULAR_LIBRDF
 
 /** Entry point for dynamically loaded storage module */
 void
@@ -2810,7 +2810,7 @@ librdf_storage_module_register_factory(librdf_world *world) {
                                     &librdf_storage_sqlite_register_factory);
 }
 
-#else
+//#else
 
 /*
  * librdf_init_storage_sqlite:
@@ -2825,5 +2825,5 @@ librdf_init_storage_sqlite(librdf_world *world)
                                   &librdf_storage_sqlite_register_factory);
 }
 
-#endif
+//#endif
 

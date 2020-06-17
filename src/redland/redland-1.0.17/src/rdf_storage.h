@@ -26,11 +26,20 @@
 #ifndef LIBRDF_STORAGE_H
 #define LIBRDF_STORAGE_H
 
+#include "rdf_config.h"
 #include <rdf_storage_module.h>
 
+/*
+ * Commented out by ciaran welsh on 17/06/2020
+ */
 #ifdef LIBRDF_INTERNAL
 #include <rdf_storage_internal.h>
 #endif
+/*
+ * if favour of this instead, in order to try and get the database
+ * storages working.
+ */
+//#include <rdf_storage_internal.h>
 
 #ifdef __cplusplus
 extern "C" {

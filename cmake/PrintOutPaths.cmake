@@ -41,6 +41,11 @@ function(PrintOutPaths)
         ZLIB_INSTALL_PREFIX                ${ZLIB_INSTALL_PREFIX}
         ZLIB_INCLUDE_DIR                   ${ZLIB_INCLUDE_DIR}
         ZLIB_STATIC_LIBRARY                ${ZLIB_STATIC_LIBRARY}
+    iconv
+        ICONV_LIB_DIR                      ${ICONV_LIB_DIR}
+        ICONV_INCLUDE_DIR                  ${ICONV_INCLUDE_DIR}
+        ICONV_STATIC_LIBRARY               ${ICONV_STATIC_LIBRARY}
+        ICONV_LIBRARY                      ${ICONV_LIBRARY}
     zipper
         ZIPPER_INCLUDE_DIR                 ${ZIPPER_INCLUDE_DIR}
         ZIPPER_STATIC_LIBRARY              ${ZIPPER_STATIC_LIBRARY}
