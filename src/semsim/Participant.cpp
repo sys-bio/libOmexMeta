@@ -59,7 +59,7 @@ namespace semsim {
         }
         triples.emplace_back(sub2, pred2, res2);
 
-        if (multiplier_ > 0.0) {
+        if (multiplier_ != 0.0) {
             std::ostringstream multiplier_os;
             multiplier_os << multiplier_;
 
