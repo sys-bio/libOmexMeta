@@ -16,8 +16,17 @@ include(ExternalProject)
 #        )
 
 # build zlib
-ExternalProject_Add(zlib
+ExternalProject_Add(libcurl
+        SOURCE_DIR ${LIBCURL_SOURCE_DIR}
+        BINARY_DIR ${LIBCURL_BUILD_DIR}
+        BUILD_COMMAND make -j${N}
+        CMAKE_ARGS
+        -DCMAKE_INSTALL_PREFIX=${LIBCURL_INSTALL_PREFIX}
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+        )
 
+ExternalProject_Add(zlib
         SOURCE_DIR ${ZLIB_SOURCE_DIR}
         BINARY_DIR ${ZLIB_BUILD_DIR}
         BUILD_COMMAND make -j${N}
