@@ -51,18 +51,34 @@ class RDF:
         """deletes the RDF instance"""
         self.delete()
 
+    def _set_rdf_ptr(self, ptr: ct.c_int64):
+        """
+        Change the RDF pointer to ptr
+        Args:
+            ptr: a pointer to the C generated RDF object.
+
+        Returns:
+
+        """
+        # first remove the existing pointer
+        self.delete()
+        # then do the switch
+        self._obj = ptr
+
     @staticmethod
     def from_string(rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf",
                     storage_type: str = "hashes", storage_name: str = "semsim_storage", storage_options: str = None,
                     model_options: str = None) -> RDF:
         """read rdf from a string"""
-        rdf = PysemsimAPI.rdf_from_string(
+        rdf_ptr = PysemsimAPI.rdf_from_string(
             rdf_string.encode(), format.encode(), base_uri.encode(),
             storage_type.encode(), storage_name.encode(),
             None if not storage_options else storage_options.encode(),
             None if not storage_options else model_options.encode()
         )
-        return RDF(rdf)
+        rdf = RDF()
+        rdf._set_rdf_ptr(rdf_ptr)
+        return rdf
 
     def add_from_string(self, rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf") -> None:
         PysemsimAPI.rdf_add_from_string(self._obj, rdf_string.encode(), format.encode(), base_uri.encode())
@@ -71,12 +87,15 @@ class RDF:
     def from_uri(uri_string: str, format: str, storage_type: str = "hashes", storage_name: str = "semsim_storage",
                  storage_options: str = None,
                  model_options: str = None) -> RDF:
-        return RDF(PysemsimAPI.rdf_from_uri(
+        rdf_ptr = PysemsimAPI.rdf_from_uri(
             uri_string.encode(), format.encode(),
             storage_type.encode(), storage_name.encode(),
             None if not storage_options else storage_options.encode(),
             None if not storage_options else model_options.encode()
-        ))
+        )
+        rdf = RDF()
+        rdf._set_rdf_ptr(rdf_ptr)
+        return rdf
 
     def add_from_uri(self, uri_string: str, format: str) -> None:
         PysemsimAPI.rdf_add_from_uri(self._obj, uri_string.encode(), format.encode())
@@ -84,12 +103,15 @@ class RDF:
     @staticmethod
     def from_file(filename: str, format: str, storage_type: str = "hashes", storage_name: str = "semsim_storage",
                   storage_options: str = None, model_options: str = None) -> RDF:
-        return RDF(PysemsimAPI.rdf_from_file(
+        rdf_ptr = PysemsimAPI.rdf_from_file(
             filename.encode(), format.encode(),
             storage_type.encode(), storage_name.encode(),
             None if not storage_options else storage_options.encode(),
             None if not storage_options else model_options.encode()
-        ))
+        )
+        rdf = RDF()
+        rdf._set_rdf_ptr(rdf_ptr)
+        return rdf
 
     def add_from_file(self, filename: str, format: str) -> None:
         PysemsimAPI.rdf_add_from_file(self._obj, filename.encode(), format.encode())
