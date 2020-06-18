@@ -8,28 +8,28 @@ include(ExternalProject)
 #ExternalProject_Add(openssl
 #        SOURCE_DIR ${OPENSSL_SOURCE_DIR}
 #        BINARY_DIR ${OPENSSL_BINARY_DIR}
-#        BUILD_COMMAND make -j${N}
+#        BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} -j${N}
 #        CMAKE_ARGS
 #        -DCMAKE_INSTALL_PREFIX=${OPENSSL_INSTALL_PREFIX}
 #        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 #        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
 #        )
 
+
 # build zlib
 ExternalProject_Add(libcurl
         SOURCE_DIR ${LIBCURL_SOURCE_DIR}
         BINARY_DIR ${LIBCURL_BUILD_DIR}
-        BUILD_COMMAND make -j${N}
+        BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} -j${N}
         CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=${LIBCURL_INSTALL_PREFIX}
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         )
-
 ExternalProject_Add(zlib
         SOURCE_DIR ${ZLIB_SOURCE_DIR}
         BINARY_DIR ${ZLIB_BUILD_DIR}
-        BUILD_COMMAND make -j${N}
+        BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} -j${N}
         CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=${ZLIB_INSTALL_PREFIX}
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
@@ -41,7 +41,7 @@ ExternalProject_Add(libsbml-dependencies
 
         SOURCE_DIR ${LIBSBML_DEPS_SOURCE_DIR}
         BINARY_DIR ${LIBSBML_DEPS_BINARY_DIR}
-        BUILD_COMMAND make -j${N}
+        BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} -j${N}
         CMAKE_ARGS
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DCMAKE_INSTALL_PREFIX=${LIBSBML_DEPS_INSTALL_PREFIX}
@@ -55,7 +55,7 @@ ExternalProject_Add(zipper
 
         SOURCE_DIR ${ZIPPER_SOURCE_DIR}
         BINARY_DIR ${ZIPPER_BINARY_DIR}
-        BUILD_COMMAND make -j${N}
+        BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} -j${N}
         DEPENDS zlib
         CMAKE_ARGS
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
@@ -66,11 +66,11 @@ ExternalProject_Add(zipper
         -DZLIB_INCLUDE_DIR=${ZLIB_INCLUDE_DIR}
         )
 
-# build zipper
+
 ExternalProject_Add(libxml2
         SOURCE_DIR ${LIBXML2_SOURCE_DIR}
         BINARY_DIR ${LIBXML2_BINARY_DIR}
-        BUILD_COMMAND make -j${N}
+        BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} -j${N}
         CMAKE_ARGS
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
@@ -78,7 +78,7 @@ ExternalProject_Add(libxml2
         -DBUILD_SHARED_LIBS=ON
         -DLIBXML2_WITH_PYTHON=OFF
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-        -DCMAKE_EXE_LINKER_FLAGS= -lpthread  -Wl,--whole-archive -llzma  -licu -liconv -lzlib -Wl,--no-whole-archive
+        -DCMAKE_EXE_LINKER_FLAGS= -lpthread -Wl,--whole-archive -llzma -licu -liconv -lzlib -Wl,--no-whole-archive
         )
 
 ## get libxml2 libraries
@@ -91,53 +91,52 @@ ExternalProject_Add(libxml2
 #        PATHS /usr/local/include/libxml2
 #        )
 
-# build libsbml
-ExternalProject_Add(libsbml
+if (BUILD_LIBSBML)
+    # build libsbml
+    ExternalProject_Add(libsbml
+            SOURCE_DIR ${LIBSBML_SOURCE_DIR}
+            BINARY_DIR ${LIBSBML_BINARY_DIR}
+            DEPENDS libsbml-dependencies
+            BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} -j${N}
+            CMAKE_ARGS
+            -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+            -DCMAKE_INSTALL_PREFIX=${LIBSBML_INSTALL_PREFIX}
+            -WITH_LIBXML=ON
+            -DENABLE_LAYOUT=ON
+            -DWITH_CPP_NAMESPACE=ON
+            -DLIBSBML_DEPENDENCY_DIR=${LIBSBML_DEPS_INSTALL_PREFIX}
+            -DLIBSBML_SKIP_SHARED_LIBRARY=ON
+            )
+endif ()
 
-        SOURCE_DIR ${LIBSBML_SOURCE_DIR}
-        BINARY_DIR ${LIBSBML_BINARY_DIR}
-        DEPENDS libsbml-dependencies
-        BUILD_COMMAND make -j${N}
-        CMAKE_ARGS
-        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-        -DCMAKE_INSTALL_PREFIX=${LIBSBML_INSTALL_PREFIX}
-        -WITH_LIBXML=ON
-        -DENABLE_LAYOUT=ON
-        -DWITH_CPP_NAMESPACE=ON
-        -DLIBSBML_DEPENDENCY_DIR=${LIBSBML_DEPS_INSTALL_PREFIX}
-        -DLIBSBML_SKIP_SHARED_LIBRARY=ON
-        )
-
-
-# build libcombine
-ExternalProject_Add(libCombine
-
-        SOURCE_DIR ${LIBCOMBINE_SOURCE_DIR}
-        BINARY_DIR ${LIBCOMBINE_BINARY_DIR}
-        BUILD_COMMAND make -j${N}
-        DEPENDS zipper libsbml libxml2
-        LIST_SEPARATOR | # for EXTRA_LIBS argument
-        CMAKE_ARGS
-        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-        -DCMAKE_INSTALL_PREFIX=${LIBCOMBINE_INSTALL_PREFIX}
-        -DLIBSBML_LIBRARY=${LIBSBML_STATIC_LIBRARY}
-        -DLIBSBML_INCLUDE_DIR=${LIBSBML_INCLUDE_DIR}
-        -DZIPPER_INCLUDE_DIR=${ZIPPER_INCLUDE_DIR}
-        -DZIPPER_LIBRARY=${ZIPPER_STATIC_LIBRARY}
-        -DEXTRA_LIBS=${LIBXML2_STATIC_LIBRARY}|${BZ2_STATIC_LIBRARY}|${ZLIB_STATIC_LIBRARY}|iconv|lzma #linux only, will need to change for windows
-        )
+if (BUILD_LIBCOMBINE)
+    # build libcombine
+    ExternalProject_Add(libCombine
+            SOURCE_DIR ${LIBCOMBINE_SOURCE_DIR}
+            BINARY_DIR ${LIBCOMBINE_BINARY_DIR}
+            BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} -j${N}
+            DEPENDS zipper libsbml libxml2
+            LIST_SEPARATOR | # for EXTRA_LIBS argument
+            CMAKE_ARGS
+            -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+            -DCMAKE_INSTALL_PREFIX=${LIBCOMBINE_INSTALL_PREFIX}
+            -DLIBSBML_LIBRARY=${LIBSBML_STATIC_LIBRARY}
+            -DLIBSBML_INCLUDE_DIR=${LIBSBML_INCLUDE_DIR}
+            -DZIPPER_INCLUDE_DIR=${ZIPPER_INCLUDE_DIR}
+            -DZIPPER_LIBRARY=${ZIPPER_STATIC_LIBRARY}
+            -DEXTRA_LIBS=${LIBXML2_STATIC_LIBRARY}|${BZ2_STATIC_LIBRARY}|${ZLIB_STATIC_LIBRARY}|iconv|lzma #linux only, will need to change for windows
+            )
+endif ()
 
 
 # we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
 ExternalProject_Add(libsemsim
-
         DEPENDS zlib libsbml-dependencies zipper
-        libsbml libCombine raptor rasqal librdf
         libxml2
         SOURCE_DIR ${CMAKE_SOURCE_DIR}
-        BUILD_COMMAND make -j${N}
+        BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} -j${N}
         BINARY_DIR ${CMAKE_BINARY_DIR}
         INSTALL_DIR ""
         CMAKE_ARGS

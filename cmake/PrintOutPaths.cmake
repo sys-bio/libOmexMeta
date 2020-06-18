@@ -8,6 +8,8 @@ function(PrintOutPaths)
     Configured on host $ENV{COMPUTERNAME} ${HOSTNAME}
         host OS                   ${CMAKE_SYSTEM_NAME}
         host architecture         ${CMAKE_SYSTEM_PROCESSOR}
+        Platform                  ${PLATFORM}
+        CMAKE_MAKE_PROGRAM        ${CMAKE_MAKE_PROGRAM}
     General flags:
         CC                        ${CMAKE_C_COMPILER}
         CXX                       ${CMAKE_CXX_COMPILER}

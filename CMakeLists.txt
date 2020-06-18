@@ -14,21 +14,6 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 # load a custom function for printing out found paths to console
 include(${CMAKE_SOURCE_DIR}/cmake/PrintOutPaths.cmake)
 
-set(PLATFORM)
-IF (UNIX)
-    set(PLATFORM linux)
-elseif (WIN32)
-    set(PLATFORM windows)
-elseif (APPLE)
-    set(PLATFORM macos)
-elseif (MINGW)
-    set(PLATFORM windows-mingw)
-elseif (MSYS)
-    set(PLATFORM windows-msys)
-elseif (CYGWIN)
-    set(PLATFORM windows-cygwin)
-endif ()
-
 ######################################################
 #   Set some variables
 #
@@ -43,7 +28,7 @@ set(VERSION_MINOR 0)
 set(VERSION_MICRO 8)
 
 set(LIBSEMSIM_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
-configure_file("${CMAKE_SOURCE_DIR}/VERSION.in" "${CMAKE_SOURCE_DIR}/VERSION.txt")
+configure_file(${CMAKE_SOURCE_DIR}/VERSION.in ${CMAKE_SOURCE_DIR}/VERSION.txt)
 
 if ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fPIC")
@@ -59,6 +44,8 @@ set(HAVE_DEPENDENCIES FALSE CACHE BOOL
          the dependencies are assumed to already exist")
 
 option(BUILD_DOCS "Build libsemsim documentation" ON)
+option(BUILD_LIBSBML "Build libsbml" OFF)
+option(BUILD_LIBCOMBINE "Build libcombine" OFF)
 
 
 MESSAGE(STATUS "HAVE_DEPENDENCIES ${HAVE_DEPENDENCIES}")
@@ -69,6 +56,8 @@ SET(BUILD_TESTS OFF CACHE BOOL "build the tests")
 SET(N 8 CACHE STRING "number of cores to use for build. Passed onto -j for make")
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
+
+
 
 # todo move the following to SetPaths.cmake
 
@@ -104,7 +93,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/SetPaths.cmake)
 #
 if (NOT HAVE_DEPENDENCIES)
     project(libsemsim-superbuild)
-
+    include(cmake/DeterminePlatform.cmake)
     #update apt
     #    execute_process(COMMAND sudo apt update)
 
@@ -128,6 +117,7 @@ if (NOT HAVE_DEPENDENCIES)
 else ()
     message(STATUS "BUILDING LIBSEMSIM")
     project(libsemsim LANGUAGES CXX VERSION 0.1.5)
+    include(cmake/DeterminePlatform.cmake)
 
     # we have either just compiled the dependencies
     #  or indicated that we already have them by
