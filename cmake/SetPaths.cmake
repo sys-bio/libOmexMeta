@@ -5,9 +5,6 @@
 
 macro(SetPaths PLATFORM)
 
-    message(STATUS "VALUE2222 ${VALUE}")
-    message(STATUS "PLATFORM2222 ${PLATFORM}")
-
     set(THIRD_PARTY_DIRS ${CMAKE_SOURCE_DIR}/third_party)
 
     # google test source dir

@@ -36,12 +36,11 @@ add_definitions(-DHAVE_CONFIG_H
 
 # files to configure - This overwrites the configuration generated from automate system
 #  with null values, since I haven't found the cmake equivalent
-    #note: the copasi-dependencies configures a cmake script to do this. Kind of.
+#note: the copasi-dependencies configures a cmake script to do this. Kind of.
 #configure_file(${RAPTOR_DIR}/src/raptor_config_cmake.h.in raptor2-2.0.15/src/raptor_config.h @ONLY)
 #configure_file(${RAPTOR_DIR}/src/raptor2.h.in ${RAPTOR_DIR}/src/raptor2.h @ONLY)
 #configure_file(${RASQAL_DIR}/src/rasqal_config.h.in ${RASQAL_DIR}/src/rasqal_config.h)
 #configure_file(${RASQAL_DIR}/rasqal-src-config.in ${RASQAL_DIR}/rasqal-src-config)
-
 
 
 ##################################################################################
@@ -262,7 +261,7 @@ set(LIBRDF_SOURCES
         ${LIBRDF_SOURCE_DIR}/rdf_files.h
         ${LIBRDF_SOURCE_DIR}/rdf_hash.c
         ${LIBRDF_SOURCE_DIR}/rdf_hash.h
-#        ${LIBRDF_SOURCE_DIR}/rdf_hash_bdb.c
+        #        ${LIBRDF_SOURCE_DIR}/rdf_hash_bdb.c
         ${LIBRDF_SOURCE_DIR}/rdf_hash_cursor.c
         ${LIBRDF_SOURCE_DIR}/rdf_hash_internal.h
         ${LIBRDF_SOURCE_DIR}/rdf_hash_memory.c
@@ -333,7 +332,7 @@ set(LIBRDF_SOURCES
         ${LIBRDF_SOURCE_DIR}/rdf_utf8.c
         ${LIBRDF_SOURCE_DIR}/rdf_utf8.h
         ${LIBRDF_SOURCE_DIR}/redland.h
-#         ${LIBRDF_DIR}/src/rdf_storage_tstore.c // includes <rdfsql/rdfsql.h> which is un-locatable
+        #         ${LIBRDF_DIR}/src/rdf_storage_tstore.c // includes <rdfsql/rdfsql.h> which is un-locatable
         # ${LIBRDF_DIR}/src/rdf_storage_mysql.c // no mysql setup yet. todo
         )
 
@@ -382,10 +381,12 @@ set_target_properties(redland-combined PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 target_include_directories(redland-combined PUBLIC
         ${INCLUDE_DIRECTORIES}
+        D:/vcpkg/installed/x64-windows/include
         )
 
 target_link_libraries(redland-combined PUBLIC
         ${LINK_LIBRARIES}
+
         )
 
 

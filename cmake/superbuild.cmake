@@ -123,39 +123,91 @@ if (${PLATFORM} STREQUAL "linux")
                 -DEXTRA_LIBS=${LIBXML2_STATIC_LIBRARY}|${BZ2_STATIC_LIBRARY}|${ZLIB_STATIC_LIBRARY}|iconv|lzma #linux only, will need to change for windows
                 )
     endif ()
+
+    # we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
+    ExternalProject_Add(libsemsim
+            DEPENDS zlib libsbml-dependencies zipper
+            libxml2
+            SOURCE_DIR ${CMAKE_SOURCE_DIR}
+            BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} -j${N}
+            BINARY_DIR ${CMAKE_BINARY_DIR}
+            INSTALL_DIR ""
+            CMAKE_ARGS
+            -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+            -DHAVE_DEPENDENCIES=TRUE
+            )
+
 elseif (${PLATFORM} STREQUAL "windows-msvc")
-    find_package(LibXml2 REQUIRED)
-    #    target_include_directories(main PRIVATE ${LIBXML2_INCLUDE_DIR})
-    #    target_link_libraries(main PRIVATE ${LIBXML2_LIBRARIES})
-    if (NOT ${LIBXML2_FOUND})
-        message(STATUS "Libxml not found")
+
+    set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its D:\\vcpkg")
+    set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "The vcpkg triplet to use")
+    set(CMAKE_GENERATOR_PLATFORM "x64-windows")
+    set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Path to vcpkg toolchain file")
+    set(VCPKG_X64_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/x64-windows")
+    set(VCPKG_X64_LIB_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/lib")
+    set(VCPKG_X64_INCLUDE_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/include")
+
+    if (NOT EXISTS ${CMAKE_TOOLCHAIN_FILE})
+        message(FATAL_ERROR "No vcpkg toolchain installed. Have you configured vcpkg yet? If so,
+pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
     endif ()
 
-    find_package(LibXml2 REQUIRED)
+    find_library(LIBXML_LIBRARY
+            NAMES libxml2
+            PATHS ${VCPKG_X64_LIB_DIR}
+            REQUIRED
+            )
+
+    find_path(LIBXML_INCLUDE_DIR
+            NAMES libxml/parser.h
+            PATHS ${VCPKG_X64_LIB_DIR}
+            REQUIRED
+            )
+
+    if (NOT EXISTS ${LIBXML_LIBRARY})
+        message(FATAL_ERROR "Libxml not found")
+    endif ()
+
+    find_library(CURL_LIBRARY
+            NAMES libcurl
+            PATHS ${VCPKG_X64_LIB_DIR}
+            REQUIRED
+            )
+
+    find_path(CURL_INCLUDE_DIR
+            NAMES curl/curl.h
+            PATHS ${VCPKG_X64_LIB_DIR}
+            REQUIRED
+            )
+
+    if (NOT EXISTS ${CURL_LIBRARY})
+        message(FATAL_ERROR "curl not found")
+    endif ()
+
     #    target_include_directories(main PRIVATE ${LIBXML2_INCLUDE_DIR})
     #    target_link_libraries(main PRIVATE ${LIBXML2_LIBRARIES})
 
-    find_package(CURL CONFIG REQUIRED)
-    #    target_link_libraries(main PRIVATE CURL::libcurl)
+    #    find_package(CURL CONFIG REQUIRED)# PATHS D:/vcpkg/installed/x64-windows/share/curl)
+    #    #    target_link_libraries(main PRIVATE CURL::libcurl)
+    #
+    #    find_package(ZLIB REQUIRED)
+    #    #    target_link_libraries(main PRIVATE ZLIB::ZLIB)
 
-    find_package(ZLIB REQUIRED)
-    #    target_link_libraries(main PRIVATE ZLIB::ZLIB)
+    # we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
+    ExternalProject_Add(libsemsim
+            SOURCE_DIR ${CMAKE_SOURCE_DIR}
+            BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} -j${N}
+            BINARY_DIR ${CMAKE_BINARY_DIR}
+            INSTALL_DIR ""
+            CMAKE_ARGS
+            -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+            -DHAVE_DEPENDENCIES=TRUE
+            )
+
 
 elseif (${PLATFORM} STREQUAL "macos")
     message(FATAL_ERROR "macos not yet supported")
 endif ()
 
 
-# we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
-ExternalProject_Add(libsemsim
-        DEPENDS zlib libsbml-dependencies zipper
-        libxml2
-        SOURCE_DIR ${CMAKE_SOURCE_DIR}
-        BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} -j${N}
-        BINARY_DIR ${CMAKE_BINARY_DIR}
-        INSTALL_DIR ""
-        CMAKE_ARGS
-        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-        -DHAVE_DEPENDENCIES=TRUE
-        )
 

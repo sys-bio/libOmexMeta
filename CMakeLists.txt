@@ -34,7 +34,7 @@ set(VERSION_MINOR 0)
 set(VERSION_MICRO 8)
 
 set(LIBSEMSIM_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
-configure_file(${CMAKE_SOURCE_DIR}/VERSION.in ${CMAKE_SOURCE_DIR}/VERSION.txt)
+#configure_file("${CMAKE_SOURCE_DIR}/VERSION.in" "${CMAKE_SOURCE_DIR}/VERSION.txt")
 
 if ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fPIC")
@@ -111,6 +111,66 @@ else ()
     # Set the paths we need for building libsemsim + dependencies
     SetPaths(${PLATFORM})
 
+
+    if (PLATFORM STREQUAL "windows-msvc")
+
+        set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its D:\\vcpkg")
+        set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "The vcpkg triplet to use")
+#        set(CMAKE_GENERATOR_PLATFORM "x64-windows")
+        set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Path to vcpkg toolchain file")
+        set(VCPKG_X64_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/x64-windows")
+        set(VCPKG_X64_LIB_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/lib")
+        set(VCPKG_X64_INCLUDE_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/include")
+
+        if (NOT EXISTS ${CMAKE_TOOLCHAIN_FILE})
+            message(FATAL_ERROR "No vcpkg toolchain installed. Have you configured vcpkg yet? If so,
+pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
+        endif ()
+
+        find_library(LIBXML2_LIBRARY
+                NAMES libxml
+                PATHS ${VCPKG_X64_LIB_DIR}
+                REQUIRED
+                )
+
+        message(STATUS "VCPKG_X64_INCLUDE_DIR ${VCPKG_X64_INCLUDE_DIR}")
+        message(STATUS "before LIBXML2_LIBRARY ${LIBXML2_LIBRARY}")
+
+#        find_path(LIBXML2_INCLUDE_DIR
+#                NAMES libxml/parser.h
+#                PATHS ${VCPKG_X64_INCLUDE_DIR}
+#                REQUIRED
+#                )
+
+        message(STATUS " after LIBXML2_LIBRARY ${LIBXML2_LIBRARY}")
+#        message(STATUS "EXISTS ${LIBXML2_LIBRARY}")
+#        if (NOT EXISTS "${LIBXML2_LIBRARY}")
+#            message(FATAL_ERROR "Libxml not found")
+#        endif ()
+
+        find_library(CURL_LIBRARY
+                NAMES libcurl
+                PATHS ${VCPKG_X64_LIB_DIR}
+                REQUIRED
+                )
+
+        find_path(CURL_INCLUDE_DIR
+                NAMES curl/curl.h
+                PATHS ${VCPKG_X64_INCLUDE_DIR}
+                REQUIRED
+                )
+
+        message(STATUS "LIBXML2_LIBRARY ${LIBXML2_LIBRARY}")
+        message(STATUS "LIBXML2_INCLUDE_DIR ${LIBXML2_INCLUDE_DIR}")
+        message(STATUS "CURL_LIBRARY ${CURL_LIBRARY}")
+        message(STATUS "CURL_INCLUDE_DIR ${CURL_INCLUDE_DIR}")
+
+#        if (NOT EXISTS "${CURL_LIBRARY}")
+#            message(FATAL_ERROR "curl not found")
+#        endif ()
+    endif (PLATFORM STREQUAL "windows-msvc")
+
+
     # we have either just compiled the dependencies
     #  or indicated that we already have them by
     #  using HAVE_DEPENDENCIES=TRUE
@@ -122,10 +182,10 @@ else ()
     #        endif ()
     #    endforeach ()
 
-    find_package(ICU 60 COMPONENTS uc i18n)
-    if (NOT ICU_FOUND)
-        message(WARNING "ICU not found. On linux, `sudo apt install icu-devtools` and try again.")
-    endif ()
+#    find_package(ICU 60 COMPONENTS uc i18n)
+#    if (NOT ICU_FOUND)
+#        message(WARNING "ICU not found. On linux, `sudo apt install icu-devtools` and try again.")
+#    endif ()
 
     message(STATUS "ICU_LIBRARIES ${ICU_c_LIBRARIES}")
 
@@ -139,7 +199,9 @@ else ()
 
     set(INCLUDE_DIRS
             ${CMAKE_SOURCE_DIR}/src
+            ${CURL_INCLUDE_DIR}
             ${LIBXML2_INCLUDE_DIR}
+
             ${LIBSBML_DEPS_INCLUDE_DIR}
             ${LIBSBML_INCLUDE_DIR}
             ${ZLIB_INCLUDE_DIR}
