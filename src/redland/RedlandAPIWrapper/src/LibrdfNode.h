@@ -87,6 +87,10 @@ namespace redland {
 
         void setBlankIdentifier(const std::string &identifier);
 
+        /*
+         * @brief shallow copy a node. Internal ref count incremented by 1
+         */
+        static LibrdfNode copyNode(const LibrdfNode &node);
     };
 }
 

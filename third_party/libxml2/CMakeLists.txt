@@ -21,7 +21,8 @@ set(LIBXML_VERSION_STRING "${LIBXML_VERSION}")
 set(LIBXML_VERSION_EXTRA "")
 set(LIBXML_VERSION_NUMBER ${LIBXML_VERSION})
 
-find_package(Iconv)
+find_package(Iconv PATHS ${LIBSBML_DEPS_LIB_DIR})
+MESSAGE(STATIS "Iconv FOUNFD ${Iconv_FOUND}")
 find_package(ICU)
 find_package(LibLZMA)
 find_package(Python COMPONENTS Interpreter Development)
@@ -442,9 +443,11 @@ if(WIN32)
 	target_link_libraries(LibXml2 PRIVATE ws2_32)
 endif()
 
+# modified by ciaran welsh 17/06/2020
 if(LIBXML2_WITH_ICONV)
 	target_link_libraries(LibXml2 PUBLIC Iconv::Iconv)
 endif()
+#target_link_libraries(LibXml2 PUBLIC ${ICONV_LIBRARY})
 
 if(LIBXML2_WITH_ICU)
 	target_link_libraries(LibXml2 PRIVATE ICU::i18n)

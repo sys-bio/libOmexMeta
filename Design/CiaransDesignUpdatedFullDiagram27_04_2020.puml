@@ -182,7 +182,7 @@ namespace semsim {
 		+PhysicalEntity(librdf_world* world, Subject metaid, PhysicalProperty physicalProperty, Resource is, Resources is_part_of)
 		-identity_resource_ : Resource
 		+getIdentityResource() : Resource& {query}
-		-location_resources : Resources
+		-location_resources_ : Resources
 		+getLocationResources() : Resources& {query}
 		+what() : Triple {query}
 		+toTriples() : Triples {query}

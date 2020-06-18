@@ -112,6 +112,13 @@ if (WITH_EXPAT)
     add_subdirectory(expat)
 endif ()
 
+OPTION(FORCE_BUILD_ICONV "Force the building of libiconv on all systems" OFF)
+if (FORCE_BUILD_ICONV)
+    set(WITH_ICONV ON)
+    add_subdirectory(libiconv)
+endif ()
+
+
 MESSAGE(STATUS "WITH_LIBXML ${WITH_LIBXML}")
 if (WIN32)
     option(WITH_XERCES "Compile xerces XML parser" ON)
@@ -126,7 +133,6 @@ if (WIN32)
         add_subdirectory(libxml2)
     endif ()
 
-
     if (WITH_XERCES)
         add_subdirectory(xerces-c)
     endif ()
@@ -135,8 +141,6 @@ endif ()
 if (WITH_ZLIB)
     add_subdirectory(zlib)
 endif ()
-
-
 
 
 ###############################################################################

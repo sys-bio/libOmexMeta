@@ -29,31 +29,31 @@
 #define HAVE_ARGZ_STRINGIFY 1
 
 /* BDB has close method with 2 args */
-#define HAVE_BDB_CLOSE_2_ARGS 1
+/* #undef HAVE_BDB_CLOSE_2_ARGS 1
 
 /* BDB defines DBC */
-#define HAVE_BDB_CURSOR 1
+/* #undef HAVE_BDB_CURSOR 1*/
 
 /* BDB cursor method has 4 arguments */
-#define HAVE_BDB_CURSOR_4_ARGS 1
+/* #undef HAVE_BDB_CURSOR_4_ARGS */
 
 /* BDB defines DB_TXN */
-#define HAVE_BDB_DB_TXN 1
+/* #undef HAVE_BDB_DB_TXN */
 
 /* BDB has fd method with 2 args */
-#define HAVE_BDB_FD_2_ARGS 1
+/* #undef HAVE_BDB_FD_2_ARGS */
 
 /* Have BDB hash support */
-#define HAVE_BDB_HASH 1
+/* #undef HAVE_BDB_HASH */
 
 /* BDB has open method with 6 args */
 /* #undef HAVE_BDB_OPEN_6_ARGS */
 
 /* BDB has open method with 7 args */
-#define HAVE_BDB_OPEN_7_ARGS 1
+/* #undef HAVE_BDB_OPEN_7_ARGS */
 
 /* BDB has set_flags method */
-#define HAVE_BDB_SET_FLAGS 1
+/* #undef HAVE_BDB_SET_FLAGS */
 
 /* Define to 1 if the system has the type `byte'. */
 /* #undef HAVE_BYTE */
@@ -65,10 +65,10 @@
 /* #undef HAVE_DBOPEN */
 
 /* BDB has db_create method */
-#define HAVE_DB_CREATE 1
+/* #define HAVE_DB_CREATE /*
 
 /* Define to 1 if you have the <db.h> header file. */
-#define HAVE_DB_H 1
+/* #define HAVE_DB_H /*
 
 /* BDB has db_open method */
 /* #undef HAVE_DB_OPEN */
@@ -180,10 +180,10 @@
 /* #undef HAVE_SHL_LOAD */
 
 /* Define to 1 if you have the <sqlite3.h> header file. */
-/* #undef HAVE_SQLITE3_H */
+#define HAVE_SQLITE3_H 1
 
 /* Define to 1 if you have the <sqlite.h> header file. */
-/* #undef HAVE_SQLITE_H */
+/* #undef HAVE_SQLITE_H  1
 
 /* Define to 1 if you have the <stddef.h> header file. */
 #define HAVE_STDDEF_H 1
@@ -283,7 +283,7 @@
 /* #undef LT_SHARED_LIB_MEMBER */
 
 /* Build storage backends as modules */
-#define MODULAR_LIBRDF 1 // commented out by cw on 29/05/2020
+#define MODULAR_LIBRDF 1
 
 /* Define if dlsym() requires a leading underscore in symbol names. */
 /* #undef NEED_USCORE */
@@ -346,16 +346,16 @@
 /* #undef STORAGE_POSTGRESQL */
 
 /* Building SQLite storage */
-/* #undef STORAGE_SQLITE */
+#define STORAGE_SQLITE 1
 
 /* Building trees storage */
 #define STORAGE_TREES 1
 
 /* Building 3store storage */
-/* #undef STORAGE_TSTORE */
+//#define STORAGE_TSTORE 1
 
 /* Building Virtuoso storage */
-#define STORAGE_VIRTUOSO 1
+/* #undef STORAGE_VIRTUOSO 1 */
 
 /* Define to 1 if you can safely include both <sys/time.h> and <time.h>. */
 #define TIME_WITH_SYS_TIME 1

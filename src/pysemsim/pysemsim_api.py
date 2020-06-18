@@ -58,13 +58,16 @@ class PysemsimAPI:
     # RDF methods
     #
 
-    # RDF *RDF_new();
-    rdf_new = Util.load_func("RDF_new", [], ct.c_void_p)
+    # RDF *RDF_new(const char *storage_type = "memory", const char *storage_name = "semsim_store",
+    #              const char *storage_options = nullptr, const char *model_options = nullptr);
+    rdf_new = Util.load_func("RDF_new", [ct.c_char_p, ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_void_p)
 
     # int RDF_size(RDF *rdf_ptr);
     rdf_size = Util.load_func("RDF_size", [ct.c_int64], ct.c_int64)
 
-    # RDF *RDF_fromString(const char *str, const char *format, const char *baseuri = "./Annotations.rdf");
+    # RDF *RDF_fromString(const char *str, const char *format, const char *baseuri = "./Annotations.rdf",
+    #                         const char *storage_type = "memory", const char *storage_name = "semsim_store",
+    #                         const char *storage_options = nullptr, const char *model_options = nullptr);
     rdf_from_string = Util.load_func("RDF_fromString",
                                      [ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
@@ -72,14 +75,22 @@ class PysemsimAPI:
     rdf_add_from_string = Util.load_func("RDF_addFromString", [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_char_p],
                                          ct.c_void_p)
 
-    # RDF *RDF_fromUri(const char *uri_string, const char *format);
-    rdf_from_uri = Util.load_func("RDF_fromUri", [ct.c_char_p, ct.c_char_p], ct.c_int64)
+    # RDF *RDF_fromUri(const char *uri_string, const char *format,
+    #                  const char *storage_type = "memory", const char *storage_name = "semsim_store",
+    #                  const char *storage_options = nullptr, const char *model_options = nullptr);
+    rdf_from_uri = Util.load_func("RDF_fromUri",
+                                  [ct.c_char_p, ct.c_char_p,
+                                   ct.c_char_p, ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # void RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
     rdf_add_from_uri = Util.load_func("RDF_addFromUri", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_void_p)
 
-    # RDF *RDF_fromFile(const char *filename, const char *format);
-    rdf_from_file = Util.load_func("RDF_fromFile", [ct.c_char_p, ct.c_char_p], ct.c_int64)
+    # RDF *RDF_fromFile(const char *filename, const char *format, const char *storage_type = "memory",
+    #                   const char *storage_name = "semsim_store",
+    #                   const char *storage_options = nullptr, const char *model_options = nullptr);
+    rdf_from_file = Util.load_func("RDF_fromFile", [ct.c_char_p, ct.c_char_p,
+                                                    ct.c_char_p, ct.c_char_p,
+                                                    ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # void RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
     rdf_add_from_file = Util.load_func("RDF_addFromFile", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
@@ -244,22 +255,22 @@ class PysemsimAPI:
                                                             [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_addSource(
-    #         PhysicalProcess *physical_process, const char *source_metai, double multiplier,
+    #         PhysicalProcess *physical_process, double multiplier,
     #         const char *physical_entity_reference);
     physical_process_add_source = Util.load_func("PhysicalProcess_addSource",
-                                                 [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_int64)
+                                                 [ct.c_int64, ct.c_double, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_addSink(
-    #         PhysicalProcess *physical_process, const char *sink_metaid, double multiplier,
+    #         PhysicalProcess *physical_process, double multiplier,
     #         const char *physical_entity_reference);
     physical_process_add_sink = Util.load_func("PhysicalProcess_addSink",
-                                               [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_int64)
+                                               [ct.c_int64, ct.c_double, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_addMediator(
-    #         PhysicalProcess *physical_process, const char *mediator_metaid, double multiplier,
+    #         PhysicalProcess *physical_process, double multiplier,
     #         const char *physical_entity_reference);
     physical_process_add_mediator = Util.load_func("PhysicalProcess_addMediator",
-                                                   [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_int64)
+                                                   [ct.c_int64, ct.c_double, ct.c_char_p], ct.c_int64)
 
     # char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
     physical_process_str = Util.load_func("PhysicalProcess_str",
@@ -289,16 +300,16 @@ class PysemsimAPI:
                                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PhysicalForce *PhysicalForce_addSource(
-    #         PhysicalForce *physical_force_ptr, const char *source_metaid, double multiplier,
+    #         PhysicalForce *physical_force_ptr, double multiplier,
     #         const char *physical_entity_reference);
     physical_force_add_source = Util.load_func("PhysicalForce_addSource",
-                                               [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_int64)
+                                               [ct.c_int64, ct.c_double, ct.c_char_p], ct.c_int64)
 
     # PhysicalForce *PhysicalForce_addSink(
-    #         PhysicalForce *physical_force_ptr, const char *sink_metaid, double multiplier,
+    #         PhysicalForce *physical_force_ptr, double multiplier,
     #         const char *physical_entity_reference);
     physical_force_add_sink = Util.load_func("PhysicalForce_addSink",
-                                             [ct.c_int64, ct.c_char_p, ct.c_float, ct.c_char_p], ct.c_int64)
+                                             [ct.c_int64, ct.c_double, ct.c_char_p], ct.c_int64)
 
     # char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
     physical_force_str = Util.load_func("PhysicalForce_str",
@@ -312,5 +323,3 @@ class PysemsimAPI:
 
     # void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
     physical_force_free_all = Util.load_func("PhysicalForce_freeAll", [ct.c_int64], None)
-
-

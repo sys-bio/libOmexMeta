@@ -44,7 +44,6 @@ target_compile_options(semsim-tests PRIVATE -g)
 add_dependencies(semsim-tests semsim-static)
 
 message(STATUS "LINK_LIBRARIES ${LINK_LIBRARIES}")
-message(STATUS "REDLAND_LIBRARY ${REDLAND_LIBRARY}")
 
 target_link_libraries(semsim-tests PUBLIC
         # Order matters!
@@ -56,7 +55,6 @@ target_link_libraries(semsim-tests PUBLIC
 
 set(CMAKE_VERBOSE_MAKEFILE 1)
 if (CLANG)
-    message(STATUS "CLANG cmopiler")
     SET(ADDRESS_SANITIZER_FLAGS "-fsatize=address")
     SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${ADDRESS_SANITIZER_LINK_FLAGS}")
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ADDRESS_SANITIZER_FLAGS}")

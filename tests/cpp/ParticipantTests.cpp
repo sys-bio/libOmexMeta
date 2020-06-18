@@ -134,6 +134,48 @@ TEST_F(ParticipantTests, TestToTriples1) {
     triples.freeTriples();
 }
 
+TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
+    SinkParticipant sink(model.get(), 0.0, "MetaId0015");
+    std::ostringstream os;
+    Triples triples = sink.toTriples("metaid");
+    std::string actual = triples.str();
+    std::cout << actual << std::endl;
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"metaid\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
+}
+
+TEST_F(ParticipantTests, TestToTriplesMediator) {
+    MediatorParticipant mediator(model.get(), "MetaId0015");
+    std::ostringstream os;
+    Triples triples = mediator.toTriples("metaid");
+    std::string actual = triples.str();
+    std::cout << actual << std::endl;
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"MediatorParticipant0000\">\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
+                           "  </rdf:Description>\n"
+                           "  <rdf:Description rdf:about=\"metaid\">\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorParticipant0000\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    triples.freeTriples();
+}
+
 class ParticipantTestsToTriplesTwice : public ::testing::Test {
 public:
 

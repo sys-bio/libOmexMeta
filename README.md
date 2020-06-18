@@ -1,5 +1,5 @@
 # libsemsim (aka libOmexMeta)
-Libsemsim is a C++ library for annotating systems biology models that 
+Libsemsim is a C++ library for annotating models in systems biology that 
 use xml for serialization. Libsemsim uses RDF as a framework for
 representing these annotations. 
 
@@ -20,7 +20,10 @@ and macos is a work in progress.
 ## Python front end
 You can get up and running quickly using pip
 
+    $ sudo apt install libxslt1-dev libltdl-dev  yajl-tools
     $ pip install --index-url https://test.pypi.org/simple pysemsim
+    # verify its worked
+    $ ipython -c "import pysemsim"
 
 Note that "pysemsim" is only available on pypi test. It has been tested with Python
 version 3.8, but should work on other Python 3 versions. 
@@ -83,7 +86,7 @@ The superbuild tries to run the following command for you automatically. This
 feature is experimental, so if it doesn't work you will need to run it yourself: 
 
 ```
-$ sudo apt install -y dialog apt-utils make build-essential checkinstall zlib1g-dev libltdl-dev lzma libpcre3 libpcre3-dev uuid-dev libxml2 libxml2-dev libxslt1-dev yajl-tools libgss-dev libmpfr-dev idn2 libpthread-stubs0-dev curl mysql-server
+$ sudo apt install -y icu-devtools dialog apt-utils make build-essential checkinstall zlib1g-dev libltdl-dev lzma libpcre3 libpcre3-dev uuid-dev libxml2 libxml2-dev libxslt1-dev yajl-tools libgss-dev libmpfr-dev idn2 libpthread-stubs0-dev curl mysql-server
 ```
 and then proceed with the build instructions. 
 

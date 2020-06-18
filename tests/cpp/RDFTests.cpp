@@ -36,13 +36,36 @@ TEST_F(RDFTests, TestFromStringSingularAnnotation) {
     ASSERT_EQ(expected, actual);
 }
 
-TEST_F(RDFTests, TestFromStringSingularAnnotation2) {
-    RDF *rdf = new RDF();
-    RDF::fromString(rdf, samples.singular_annotation1, "rdfxml", "singular_annotation1_base");
+TEST_F(RDFTests, TestFromStringSingularAnnotationSqlite) {
+//    "hashes", "test", "hash-type='bdb',dir='.'")
+//    librdf_new_storage()
+    RDF rdf("sqlite", "semsim_store", "new='yes'");//"hash-type=sqlite,dir=mnt/d/libsemsim/tests/cpp");
+    rdf.addFromString(samples.singular_annotation1, "rdfxml");
+    rdf.commitTransaction();
     int expected = 1;
-    int actual = rdf->size();
+    int actual = rdf.size();
     ASSERT_EQ(expected, actual);
-    delete rdf;
+}
+
+TEST_F(RDFTests, TestFromStringSingularAnnotation2) {
+    /*
+     * hashes
+     * trees
+     * memory
+     * file
+     * uri
+     */
+//    librdf_new_storage_from_factory()
+//    librdf_storage_factory* factory =
+//    librdf_storage* storage = librdf_new_storage_from_factory(World::getWorld(),
+//            "sqlite", "SQLite", nullptr);
+    librdf_storage* storage = librdf_new_storage(World::getWorld(), "sqlite", "db", "new='yes'");
+//    RDF *rdf = new RDF();
+//    RDF::fromString(rdf, samples.singular_annotation1, "rdfxml", "singular_annotation1_base");
+//    int expected = 1;
+//    int actual = rdf->size();
+//    ASSERT_EQ(expected, actual);
+//    delete rdf;
 }
 
 TEST_F(RDFTests, TestFromStringTurtleBag) {

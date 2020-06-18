@@ -246,4 +246,8 @@ namespace redland {
         return !(rhs == *this);
     }
 
+    LibrdfNode LibrdfNode::copyNode(const LibrdfNode& node) {
+        return LibrdfNode(librdf_new_node_from_node(node.node_));
+    }
+
 }

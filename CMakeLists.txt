@@ -5,6 +5,7 @@ cmake_minimum_required(VERSION 3.15)
 # load the ExternalProject functions for superbuild
 include(ExternalProject)
 
+
 # load a custom function for finding all the dependencies if they exist.
 #set(FIND_DEPENDENCIES_PATH ${CMAKE_SOURCE_DIR}/cmake/LookForDependencies.cmake)
 
@@ -12,7 +13,6 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 # load a custom function for printing out found paths to console
 include(${CMAKE_SOURCE_DIR}/cmake/PrintOutPaths.cmake)
-
 
 ######################################################
 #   Set some variables
@@ -25,10 +25,10 @@ set(CMAKE_CXX_FLAGS "-std=c++17")
 
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 0)
-set(VERSION_MICRO 4)
+set(VERSION_MICRO 8)
 
 set(LIBSEMSIM_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
-configure_file("${CMAKE_SOURCE_DIR}/VERSION.in" "${CMAKE_SOURCE_DIR}/VERSION.txt")
+configure_file(${CMAKE_SOURCE_DIR}/VERSION.in ${CMAKE_SOURCE_DIR}/VERSION.txt)
 
 if ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fPIC")
@@ -44,6 +44,8 @@ set(HAVE_DEPENDENCIES FALSE CACHE BOOL
          the dependencies are assumed to already exist")
 
 option(BUILD_DOCS "Build libsemsim documentation" ON)
+option(BUILD_LIBSBML "Build libsbml" OFF)
+option(BUILD_LIBCOMBINE "Build libcombine" OFF)
 
 
 MESSAGE(STATUS "HAVE_DEPENDENCIES ${HAVE_DEPENDENCIES}")
@@ -54,6 +56,8 @@ SET(BUILD_TESTS OFF CACHE BOOL "build the tests")
 SET(N 8 CACHE STRING "number of cores to use for build. Passed onto -j for make")
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
+
+
 
 # todo move the following to SetPaths.cmake
 
@@ -89,19 +93,19 @@ include(${CMAKE_SOURCE_DIR}/cmake/SetPaths.cmake)
 #
 if (NOT HAVE_DEPENDENCIES)
     project(libsemsim-superbuild)
-
+    include(cmake/DeterminePlatform.cmake)
     #update apt
     #    execute_process(COMMAND sudo apt update)
 
     set(DEPENDENCY_LIBRARIES make build-essential checkinstall zlib1g-dev libltdl-dev lzma libpcre3 libpcre3-dev uuid-dev libxml2 libxml2-dev libxslt1-dev yajl-tools libgss-dev libmpfr-dev idn2 libpthread-stubs0-dev curl mysql-server)
 
     # on linux we can use apt to download dependencies
-    add_custom_target(
-            apt-downloads ALL
-            COMMAND sudo apt install -y ${DEPENDENCY_LIBRARIES}
-            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-            COMMENT "download required dependencies straight from apt on ubuntu"
-    )
+    #    add_custom_target(
+    #            apt-downloads ALL
+    #            COMMAND sudo apt install -y ${DEPENDENCY_LIBRARIES}
+    #            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    #            COMMENT "download required dependencies straight from apt on ubuntu"
+    #    )
 
     PrintOutPaths()
     add_custom_target(raptor)
@@ -113,6 +117,26 @@ if (NOT HAVE_DEPENDENCIES)
 else ()
     message(STATUS "BUILDING LIBSEMSIM")
     project(libsemsim LANGUAGES CXX VERSION 0.1.5)
+    include(cmake/DeterminePlatform.cmake)
+
+    # we have either just compiled the dependencies
+    #  or indicated that we already have them by
+    #  using HAVE_DEPENDENCIES=TRUE
+    #  we now do a check to find the libraries we need to link
+
+    #    foreach (library ${STATIC_LIBRARIES})
+    #        if (NOT EXISTS {$library})
+    #            message(FATAL_ERROR "Missing dependency. The library \"${library}\" should exist but doesn't")
+    #        endif ()
+    #    endforeach ()
+
+    find_package(ICU 60 COMPONENTS uc i18n)
+    if (NOT ICU_FOUND)
+        message(WARNING "ICU not found. On linux, `sudo apt install icu-devtools` and try again.")
+    endif ()
+
+    message(STATUS "ICU_LIBRARIES ${ICU_c_LIBRARIES}")
+
 
     if (WITH_ADDRESS_SANITIZER)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")# -OX")
@@ -136,55 +160,84 @@ else ()
             ${LIBRDF_SOURCE_DIR}
             ${WRAPPER_SOURCE_DIR}
             ${LIBPQ_INCLUDE_DIR}
+            ${ICONV_INCLUDE_DIR}
             )
+
+    #https://cmake.cmake.narkive.com/lzDZk3kO/autoheader-like-functionality
 
     set(LINK_LIBRARIES
             # order matters: top of the dependency chain first
             # i.e. if A depends on B, A should come before B in this list
-
             -Wl,--whole-archive
-            "${LIBCOMBINE_STATIC_LIBRARY}"
-            "${LIBSBML_STATIC_LIBRARY}"
+            ${LIBCOMBINE_STATIC_LIBRARY}
+            ${LIBSBML_STATIC_LIBRARY}
             -Wl,--no-whole-archive
-            "${ZIPPER_STATIC_LIBRARY}"
+            ${ZIPPER_STATIC_LIBRARY}
             -Wl,--whole-archive
-            "${ZLIB_STATIC_LIBRARY}"
-            "${BZ2_STATIC_LIBRARY}"
-            "${LIBXML2_STATIC_LIBRARY}"
-            "iconv"
-            ltdl ${CMAKE_DL_LIBS}
-            # might need --whole archive again here
-            lzma
-            #            pcre
-            #            curl
-            m
-            c
-            gmp
-            pcre
-            uuid
-            #            c
-            xml2
-            #            m
+            ${ZLIB_STATIC_LIBRARY}
+            ${BZ2_STATIC_LIBRARY}
             xslt
-            yajl
-            gss
-            mpfr
-            #            xml2
-            idn2
-            pthread
-            curl
-            ssl
-            db
-            stdc++fs
             -Wl,--no-whole-archive
-            #            curl
-
-            #todo keep libpq in back pocket as alternative backend
-            #  other options are sqlite3 or virtuoso
-            #            -Wl,--whole-archive
-            #            ${LIBPQ_STATIC_LIBRARY}
-            #            -Wl,--no-whole-archive
+            ${LIBXML2_LIBRARY}
+            -Wl,--whole-archive
+            ${ICONV_STATIC_LIBRARY}
+            -Wl,--no-whole-archive
+            sqlite3
+            ltdl ${CMAKE_DL_LIBS}
+            pcre
+            yajl
+            ${LIBCURL_LIBRARY}
+            stdc++fs
             )
+
+    # notes on libraries
+    # ==================
+    # back end database
+    # -------------------
+    #   - still need to implement support for database storage.
+    #   - db - easily installed. Not yet tried.
+    #   - sqlite3 - couldn't get to work
+    #   - keep libpq in back pocket as alternative backend
+    #       other options are sqlite3 or virtuoso ${LIBPQ_STATIC_LIBRARY}
+    #     - prefer sqlite3 if you can get it working
+    #
+    # WWW stuff - i.e. downloading from web
+    # -----------------------------------------
+    #   - I have tried to cut out libcurl in favour of using libxml for www functions
+    #     instead. Didn't work - though might still be possible with a bit of tuning.
+    # Floating Precision libraries
+    # ------------------------------
+    #   - two options on linux:  mpfr or gmp. Its one or the other as they
+    #     both do the same thing. If you incorporate them, ensure you modify
+    #     rasqal_config.h to reflect which library you choose. Currently,
+    #     I am choosing RASQAL_DECIMAL_NONE, aka none of these libraries,
+    #     which just uses double and int. It'll have less accuracy but
+    #     its more portable.
+    #  gss
+    # -----
+    #   - I had this in the libraries. Not sure what it did, but it no longer
+    #     breaks the build so removing it for good. Listed here as a note.
+    # regexes
+    # -------
+    # - Two choices pcre or poxis. Both however could and should
+    #   be replaced with the c++ standard library implementation of regexes.
+    #   However, given that this is a lot of effort, I keep PCRE, since there is
+    #   a windows build that might work: https://github.com/kiyolee/pcre-win-build
+    #
+    # uuid, libc and libuuid
+    # ----------------------
+    # - used for metaids. However, there is an internal options
+    #   which is better for a portability perspective. I'll use that.
+    #
+    #  others
+    # -------
+    # a set of linux libraries that fixed earlier builds but now seem to now be needed.
+    # Keep the list
+    # - pthread
+    # - libm
+    # - libc
+    # - lzma
+
 
     set(INCLUDE_DIRECTORIES
             BEFORE ${RAPTOR_DIR}/librdfa
@@ -194,7 +247,6 @@ else ()
             ${RASQAL_DIR}/libsv
             ${RASQAL_DIR}/getopt
             ${LIBRDF_DIR}/src
-            #            /mnt/d/libsemsim/src/redland/redland-1.0.17/src
             ${WRAPPER_SOURCE_DIR} #RedlandAPIWrapper
             ${LIBXML2_INCLUDE_DIR}
             ${LIBSBML_DEPS_INCLUDE_DIR}
@@ -203,6 +255,7 @@ else ()
             ${ZIPPER_INCLUDE_DIR}
             ${LIBCOMBINE_INCLUDE_DIR}
             ${LIBPQ_INCLUDE_DIR}
+            ${OPENSSL_INCLUDE_DIR}
             )
 
     PrintOutPaths()
@@ -215,7 +268,6 @@ else ()
         add_subdirectory(tests/cpp)
     endif (BUILD_TESTS)
 
-
     if (BUILD_DOCS)
         add_subdirectory(docs)
     endif ()
@@ -227,39 +279,3 @@ endif ()
 #############################################
 # add semsim and tests
 
-
-message(STATUS "
-#-------------------------------------------------------------------------------
-#Configuration Summary
-#-------------------------------------------------------------------------------
-    Configured on host $ENV{COMPUTERNAME} ${HOSTNAME}
-        host OS                   ${CMAKE_SYSTEM_NAME}
-        host architecture         ${CMAKE_SYSTEM_PROCESSOR}
-    General flags:
-        CC                        ${CMAKE_C_COMPILER}
-        CXX                       ${CMAKE_CXX_COMPILER}
-        CPPFLAGS                  ${BUILD_DEFINITIONS}
-        CFLAGS                    ${CMAKE_C_FLAGS}
-        CXXFLAGS                  ${CMAKE_CXX_FLAGS}
-        LDFLAGS                   ${CMAKE_EXE_LINKER_FLAGS}
-    Installation prefix:          ${CMAKE_INSTALL_PREFIX}
-    Options:
-        SBML support              ${ENABLE_SBML_SUPPORT}
-        CellML suppert            ${ENABLE_CELLML_SUPPORT}
-        Tests (requires Catch)    ${ENABLE_TESTS}
-        Python bindings           ${BUILD_PYTHON}
-        Python interpreter        ${Python_EXECUTABLE}
-        Python include directory  ${PYTHON_INCLUDE_PATH}
-        Generate documentation    ${BUILD_DOCS}
-
-    Paths:
-        RAPTOR_DIR                ${RAPTOR_DIR}
-        RASQAL_DIR                ${RASQAL_DIR}
-        LIBRDF_DIR                ${LIBRDF_DIR}
-        WRAPPER_DIR               ${WRAPPER_DIR}
-        RAPTOR_SOURCE_DIR         ${RAPTOR_SOURCE_DIR}
-        RASQAL_SOURCE_DIR         ${RASQAL_SOURCE_DIR}
-        LIBRDF_SOURCE_DIR         ${LIBRDF_SOURCE_DIR}
-        WRAPPER_SOURCE_DIR        ${WRAPPER_SOURCE_DIR}
-        WRAPPER_TEST_DIR          ${WRAPPER_TEST_DIR}
-    ")

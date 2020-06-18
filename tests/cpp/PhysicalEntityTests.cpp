@@ -361,7 +361,7 @@ TEST_F(PhysicalEntityTests, TestTriples) {
 
 TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderInterface) {
     PhysicalEntity physicalEntity(model.get());
-    physicalEntity.setAbout("VLV")
+    physicalEntity
             .setPhysicalProperty("VLV", "OPB:OPB_00154")
             .setIdentity("fma/FMA:9690")
             .addLocation("fma:FMA:18228");
@@ -398,8 +398,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderInterface) {
 TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderAddTwoItems) {
     PhysicalEntity physicalEntity(model.get());
     physicalEntity
-            .setPhysicalProperty(physical_property)
-            .setAbout("cheese");
+            .setPhysicalProperty(physical_property);
 //    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
     ASSERT_FALSE(physicalEntity.getAbout().empty());
     physicalEntity.free();
@@ -407,7 +406,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderAddTwoItems) {
 
 TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderAddTwoItemsWhenYouAddPhysicalPropertySecond) {
     PhysicalEntity physicalEntity(model.get());
-    physicalEntity.setAbout("cheese").setPhysicalProperty(physical_property);
+    physicalEntity.setPhysicalProperty(physical_property);
     ASSERT_FALSE(physicalEntity.getAbout().empty());
 //    ASSERT_TRUE(physicalEntity.getPhysicalProperty().isSet());
     physicalEntity.free();
@@ -415,7 +414,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderAddTwoItemsWhenYouAddPhysic
 
 TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilder) {
     PhysicalEntity physicalEntity(model.get());
-    physicalEntity.setAbout("Metaid0034")
+    physicalEntity
             .setPhysicalProperty(physical_property)
             .setIdentity("obo/PR_000000365")
             .addLocation("https://identifiers.org/fma/FMA:72564")
@@ -428,7 +427,7 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilder) {
 
 TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriples) {
     PhysicalEntity physicalEntity(model.get());
-    physicalEntity.setAbout("Metaid0034")
+    physicalEntity
             .setPhysicalProperty(physical_property)
             .setIdentity("obo/PR_000000365")
             .addLocation("https://identifiers.org/fma/FMA:72564")
@@ -454,6 +453,103 @@ TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriples) {
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
+}
+
+
+TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesFromStringPhysicalProperty) {
+    PhysicalEntity physicalEntity(model.get());
+    physicalEntity
+            .setPhysicalProperty("metaid", "OPB:OPB_00340")
+            .setIdentity("obo/PR_000000365")
+            .addLocation("https://identifiers.org/fma/FMA:72564")
+            .addLocation("fma:FMA:63877");
+    Triples triples = physicalEntity.toTriples();
+    ASSERT_EQ(5, triples.size());
+    std::string actual = triples.str("ntriples", "TestPhysicalEntityBuilder2");
+    printf("%s", actual.c_str());
+    std::string expected = "<metaid> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_00340> .\n"
+                           "<metaid> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0000> .\n"
+                           "<PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/obo/PR_000000365> .\n"
+                           "<PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:72564> .\n"
+                           "<PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:63877> .\n";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PhysicalEntityTests, TestPhysicalEntityBuilderToTriplesTwice) {
+    PhysicalEntity physicalEntity(model.get());
+    physicalEntity
+            .setPhysicalProperty("metaid", "OPB:OPB_00340")
+            .setIdentity("obo/PR_000000365")
+            .addLocation("https://identifiers.org/fma/FMA:72564");
+    Triples triples1 = physicalEntity.toTriples();
+    ASSERT_EQ(4, triples1.size());
+    std::string actual1 = triples1.str("ntriples", "TestPhysicalEntityBuilder2");
+    printf("%s", actual1.c_str());
+
+    Triples triples2 = physicalEntity.toTriples();
+    std::string actual2 = triples1.str("ntriples", "TestPhysicalEntityBuilder2");
+    ASSERT_STREQ(actual1.c_str(), actual2.c_str());
+
+    // <metaid> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_00340> .
+    Triple triple1_1 = triples1.pop_front();
+    Triple triple2_1 = triples2.pop_front();
+    std::cout << triple1_1.str("ntriples", "base") << std::endl;
+    std::cout << triple2_1.str("ntriples", "base") << std::endl;
+    ASSERT_EQ(4, librdf_uri_get_usage(triple1_1.getSubject()->value.uri));
+    ASSERT_EQ(4, librdf_uri_get_usage(triple2_1.getSubject()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(triple1_1.getPredicate()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(triple2_1.getPredicate()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(triple1_1.getResource()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(triple2_1.getResource()->value.uri));
+
+    // <metaid> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0000> .
+    Triple triple1_2 = triples1.pop_front();
+    Triple triple2_2 = triples2.pop_front();
+
+    std::cout << triple1_2.str("ntriples", "base") << std::endl;
+    std::cout << triple2_2.str("ntriples", "base") << std::endl;
+
+    ASSERT_EQ(4, librdf_uri_get_usage(triple1_2.getSubject()->value.uri));
+    ASSERT_EQ(4, librdf_uri_get_usage(triple2_2.getSubject()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(triple1_2.getPredicate()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(triple2_2.getPredicate()->value.uri));
+    ASSERT_EQ(6, librdf_uri_get_usage(triple1_2.getResource()->value.uri));
+    ASSERT_EQ(6, librdf_uri_get_usage(triple2_2.getResource()->value.uri));
+
+    // <PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/obo/PR_000000365> .
+    Triple triple1_3 = triples1.pop_front();
+    Triple triple2_3 = triples2.pop_front();
+
+    std::cout << triple1_3.str("ntriples", "base") << std::endl;
+    std::cout << triple2_3.str("ntriples", "base") << std::endl;
+
+    ASSERT_EQ(6, librdf_uri_get_usage(triple1_3.getSubject()->value.uri));
+    ASSERT_EQ(6, librdf_uri_get_usage(triple2_3.getSubject()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(triple1_3.getPredicate()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(triple2_3.getPredicate()->value.uri));
+
+    // these fail
+    // ----------
+    ASSERT_EQ(2, librdf_uri_get_usage(triple2_3.getResource()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(triple1_3.getResource()->value.uri));
+
+    // <PhysicalEntity0000> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/FMA:72564> .
+    Triple triple1_4 = triples1.pop_front();
+    Triple triple2_4 = triples2.pop_front();
+    std::cout << triple1_4.str("ntriples", "base") << std::endl;
+    std::cout << triple2_4.str("ntriples", "base") << std::endl;
+
+    ASSERT_EQ(6, librdf_uri_get_usage(triple1_4.getSubject()->value.uri));
+    ASSERT_EQ(6, librdf_uri_get_usage(triple2_4.getSubject()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(triple1_4.getPredicate()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(triple2_4.getPredicate()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(triple1_4.getResource()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(triple2_4.getResource()->value.uri));
+
+
+    triples1.freeTriples();
+    triples2.freeTriples();
+
 }
 
 TEST(PhysicalEntityTestsNoFixture, TestEquality) {
@@ -485,22 +581,6 @@ TEST(PhysicalEntityTestsNoFixture, TestEquality) {
     physicalEntity2.free();
 }
 
-
-TEST_F(PhysicalEntityTests, TestToTriplesTwice) {
-    PhysicalEntity physicalEntity(model.get());
-    physicalEntity.setAbout("Metaid0034")
-            .setPhysicalProperty("Metaid0034", "opb:opb_1234")
-            .setIdentity("obo/PR_000000365")
-            .addLocation("https://identifiers.org/fma/FMA:72564")
-            .addLocation("fma:FMA:63877");
-
-    Triples triples1 = physicalEntity.toTriples();
-    triples1.freeTriples();
-
-//    Triples triples2 = physicalEntity.toTriples();
-//    triples2.freeTriples();
-
-}
 
 
 

@@ -1,0 +1,182 @@
+/* swad-e style sheet  
+
+this should replace the doc being used in the workplan dir.
+   
+also need to make consistent with the XSLT docs, which 
+might better live here too.
+
+	
+*/
+
+
+/* using the w3c activity stylesheet for now, just so there's something
+   there. eventually we want swad constructs to be styled... 
+   danbri@w3.org
+*/
+
+/* this style sheet defines the style for W3C Activity statements */
+
+@import url(/StyleSheets/public.css);
+
+/* Style for Activity statements, by Jenny */
+
+/* Mods by Bert Bos. v1.21 2000/11/17 12:49:54 bbos */
+
+/* $Id: swad-europe.css,v 1.2 2003/04/07 14:45:19 lmiller Exp $ */
+
+body {
+  margin-left: 10%; 
+  margin-right: 10%;
+  background: white;
+  color: black;
+}
+
+p, h1, h2, h3, h4, em, strong, b, td, th, caption, blockquote, ul, li, dl, dt, ol, div, span, table  {font-family: sans-serif}
+
+
+
+/* 	SWAD styles, used for data extraction. 
+	Pretty crude initially... 
+
+	danbri@w3.org */
+
+.delname { color: red; }
+.deldesc { color: green; }
+.delid { color: yellow; }
+
+/* end SWAD styles */
+ 
+
+h1 { margin-left: -8% }
+
+h2 {margin: 1.6em 0 0.8em -4%}
+
+h2, h4  { color: #069 }
+
+h3 { color: black; font-size:95% }
+
+/* simplified text colors -lesch
+
+em {color:blue; background: yellow}
+
+strong { color:blue; background:#fcc }
+
+b { color: #069 }
+
+*/
+
+em, i { font-style: italic }
+
+strong, b { font-weight: bold }
+
+td { background: #cff; color: black }
+
+th { background: #a0a0a4; color: black }
+
+caption { text-decoration: underline; margin-top: 1em }
+
+p.splash { color: #069 }
+
+p.banner { margin-left: -4% }
+
+blockquote { color: #036; font-style: italic }
+
+.question { font-style: italic; }
+
+.centered { text-align: center; }
+
+a img { border-style: none; color: white }
+
+.formerActivity { background: #e6eff4; color: #000; border: 1px solid #069; padding: 2em }
+
+div.disclaimer { margin-left: -8% }
+
+div.group { margin-left: 4% }
+
+div.color {
+background: #ffc;
+color: black;
+padding: 1.5em;
+border: none;
+margin-left:0.5%;
+}
+
+div.color h3 {
+background: #ffc;
+color: black;
+font-size:95%
+}
+
+div.color h2, div.color h4 {
+ color: #069;
+ background: #ffc;
+}
+
+div.color b {
+ color: #006699;
+ background: #ffc;
+}
+
+div.small {font-size: small; margin-left: 10%}
+
+p.policyfooter { font-size: small }
+
+/* Figures: <div class=figure><img...><p class=caption>...</div> */
+div.figure {
+ margin: 1em 0 1em 1em
+}
+p.caption {
+ font-size: small;
+ font-style: italic;
+ color: #666;
+}
+/*
+ based on http://lists.w3.org/Archives/Public/spec-prod/2001JanMar/0019.html
+ */
+
+
+pre.example {
+        background-color: #d5d5d5;
+        margin: 1em 1cm;
+        padding: 0 0.3cm;
+        white-space: pre;  /* for NS4 */
+        border: none;      /* for NS4 */
+        font-size: 92%;
+}
+
+
+pre.code {
+    margin-top: 8pt;
+    margin-bottom: 8pt;
+    background-color: #FFFFEE;
+    white-space:pre;
+    border-style:solid;
+    border-width:1pt;
+    border-color:#999999;
+    color:#111111; 
+    padding:5px;
+    width:100%;
+    font-size: 80%;
+}
+
+
+@media print {
+
+   /* In print, use run-ins for H3 and text-indent rather than white lines */
+   p {margin: 0; text-align: justify}
+   p + p {text-indent: 1.5em}
+   h3 {display: run-in; font: bold 100% serif}
+   h3:after {content: " - "}
+   h3 + p, h3 + * {margin-top: 0.9em}
+   h1, h2, h3 {page-break-after: avoid}
+   div.figure {page-break-inside: avoid}
+   body {margin-left: 15%; margin-right: 5%}
+   h1, h2 {margin-left: 0}
+   p, h3, h4, em, strong, b, td, th, caption, blockquote, ul, li,
+   dl, dt, ol, div, span, table, address  {font-family: serif}
+   h1, h2 {font-family: sans-serif}
+   h2 {border-left: 5em solid #069; padding-left: 0.3em; margin-left: -5.3em}
+   a:link, a:visited {color: inherit}
+   a[href]:before {content: "\261E"}
+
+}

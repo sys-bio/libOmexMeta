@@ -48,9 +48,7 @@ namespace redland {
         explicit LibrdfParser(std::string format, std::string mime_type = std::string(),
                               std::string type_uri = std::string());
 
-        librdf_parser *get() const;
-
-        void setFeature(std::string feature_uri, LibrdfNode node) const;
+        [[nodiscard]] librdf_parser *get() const;
 
         [[nodiscard]] int numNamespacesSeen() const;
 

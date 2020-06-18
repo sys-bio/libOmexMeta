@@ -10,13 +10,11 @@
 namespace semsim {
 
 
-    RDF::RDF(const std::string &base_uri, const std::string &storage_type, const std::string &storage_name,
-             const char *storage_options,
-             const char *model_options) {
+    RDF::RDF(const std::string &storage_type, const std::string &storage_name,
+             const char *storage_options, const char *model_options) {
         storage_ = LibrdfStorage(storage_type, storage_name, storage_options);
         // model_ now owns storage_
         model_ = LibrdfModel(storage_.get(), model_options);
-        setBaseUri(base_uri);
     }
 
     void RDF::freeRDF() {
@@ -214,6 +212,28 @@ namespace semsim {
     librdf_storage *RDF::getStorage() const {
         return storage_.get();
     }
+
+
+    int RDF::commitTransaction() const {
+        return librdf_model_transaction_commit(getModel());
+    }
+
+    int RDF::startTransaction() const {
+        return librdf_model_transaction_start(getModel());
+    }
+
+    void* RDF::getTransactionHandle() const {
+        return librdf_model_transaction_get_handle(getModel());
+    }
+
+    int RDF::startTransactionWithHandle(void* handle) const {
+        return librdf_model_transaction_start_with_handle(getModel(), handle);
+    }
+
+    int RDF::getTransactionRollback() const {
+        return librdf_model_transaction_rollback(getModel());
+    }
+
 
 
 }

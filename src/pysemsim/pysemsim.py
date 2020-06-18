@@ -25,12 +25,17 @@ def _xml_type_factory(xml_type: str):
 
 class RDF:
 
-    def __init__(self, rdf_ptr: ct.c_int64 = None):
+    def __init__(self, storage_type: str = "hashes", storage_name: str = "semsim_storage", storage_options: str = None,
+                 model_options: str = None, rdf_ptr: ct.c_int64 = None):
         # when pointer argument not given by user, create new instance of RDF
         # argument is only given manually when static methods are used and
         # this is hidden from users.
         if not rdf_ptr:
-            self._obj = PysemsimAPI.rdf_new()
+            self._obj = PysemsimAPI.rdf_new(
+                storage_type.encode(), storage_name.encode(),
+                None if storage_options is None else storage_options.encode(),
+                None if model_options is None else model_options.encode(),
+            )
         else:
             self._obj = rdf_ptr
 
@@ -46,25 +51,67 @@ class RDF:
         """deletes the RDF instance"""
         self.delete()
 
+    def _set_rdf_ptr(self, ptr: ct.c_int64):
+        """
+        Change the RDF pointer to ptr
+        Args:
+            ptr: a pointer to the C generated RDF object.
+
+        Returns:
+
+        """
+        # first remove the existing pointer
+        self.delete()
+        # then do the switch
+        self._obj = ptr
+
     @staticmethod
-    def from_string(rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf") -> RDF:
+    def from_string(rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf",
+                    storage_type: str = "hashes", storage_name: str = "semsim_storage", storage_options: str = None,
+                    model_options: str = None) -> RDF:
         """read rdf from a string"""
-        rdf = PysemsimAPI.rdf_from_string(rdf_string.encode(), format.encode(), base_uri.encode())
-        return RDF(rdf)
+        rdf_ptr = PysemsimAPI.rdf_from_string(
+            rdf_string.encode(), format.encode(), base_uri.encode(),
+            storage_type.encode(), storage_name.encode(),
+            None if not storage_options else storage_options.encode(),
+            None if not storage_options else model_options.encode()
+        )
+        rdf = RDF()
+        rdf._set_rdf_ptr(rdf_ptr)
+        return rdf
 
     def add_from_string(self, rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf") -> None:
         PysemsimAPI.rdf_add_from_string(self._obj, rdf_string.encode(), format.encode(), base_uri.encode())
 
     @staticmethod
-    def from_uri(uri_string: str, format: str) -> RDF:
-        return RDF(PysemsimAPI.rdf_from_uri(uri_string.encode(), format.encode()))
+    def from_uri(uri_string: str, format: str, storage_type: str = "hashes", storage_name: str = "semsim_storage",
+                 storage_options: str = None,
+                 model_options: str = None) -> RDF:
+        rdf_ptr = PysemsimAPI.rdf_from_uri(
+            uri_string.encode(), format.encode(),
+            storage_type.encode(), storage_name.encode(),
+            None if not storage_options else storage_options.encode(),
+            None if not storage_options else model_options.encode()
+        )
+        rdf = RDF()
+        rdf._set_rdf_ptr(rdf_ptr)
+        return rdf
 
     def add_from_uri(self, uri_string: str, format: str) -> None:
         PysemsimAPI.rdf_add_from_uri(self._obj, uri_string.encode(), format.encode())
 
     @staticmethod
-    def from_file(filename: str, format: str) -> RDF:
-        return RDF(PysemsimAPI.rdf_from_file(filename.encode(), format.encode()))
+    def from_file(filename: str, format: str, storage_type: str = "hashes", storage_name: str = "semsim_storage",
+                  storage_options: str = None, model_options: str = None) -> RDF:
+        rdf_ptr = PysemsimAPI.rdf_from_file(
+            filename.encode(), format.encode(),
+            storage_type.encode(), storage_name.encode(),
+            None if not storage_options else storage_options.encode(),
+            None if not storage_options else model_options.encode()
+        )
+        rdf = RDF()
+        rdf._set_rdf_ptr(rdf_ptr)
+        return rdf
 
     def add_from_file(self, filename: str, format: str) -> None:
         PysemsimAPI.rdf_add_from_file(self._obj, filename.encode(), format.encode())
@@ -266,8 +313,8 @@ class PhysicalEntity:
         self._obj = PysemsimAPI.physical_entity_set_about(self._obj, about.encode())
         return self
 
-    def set_physical_property(self, property: str) -> PhysicalEntity:
-        self._obj = PysemsimAPI.physical_entity_set_physical_property(self.get_ptr(), property.encode())
+    def set_physical_property(self, about: str, property: str) -> PhysicalEntity:
+        self._obj = PysemsimAPI.physical_entity_set_physical_property(self.get_ptr(), about.encode(), property.encode())
         return self
 
     def set_identity(self, identity: str) -> PhysicalEntity:
@@ -319,23 +366,21 @@ class PhysicalProcess:
         self._obj = PysemsimAPI.physical_process_set_about(self._obj, about.encode())
         return self
 
-    def set_physical_property(self, property: str) -> PhysicalProcess:
-        self._obj = PysemsimAPI.physical_process_set_physical_property(self._obj, property.encode())
+    def set_physical_property(self, about: str, property: str) -> PhysicalProcess:
+        self._obj = PysemsimAPI.physical_process_set_physical_property(self._obj, about.encode(), property.encode())
         return self
 
-    def add_source(self, source_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._obj = PysemsimAPI.physical_process_add_source(self._obj, source_id.encode(), multiplier,
+    def add_source(self, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
+        self._obj = PysemsimAPI.physical_process_add_source(self._obj, multiplier,
                                                             physical_entity_reference.encode())
         return self
 
-    def add_sink(self, sink_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._obj = PysemsimAPI.physical_process_add_sink(self._obj, sink_id.encode(), multiplier,
-                                                          physical_entity_reference.encode())
+    def add_sink(self, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
+        self._obj = PysemsimAPI.physical_process_add_sink(self._obj, multiplier, physical_entity_reference.encode())
         return self
 
-    def add_mediator(self, mediator_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._obj = PysemsimAPI.physical_process_add_mediator(self._obj, mediator_id.encode(), multiplier,
-                                                              physical_entity_reference.encode())
+    def add_mediator(self, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
+        self._obj = PysemsimAPI.physical_process_add_mediator(self._obj, multiplier, physical_entity_reference.encode())
         return self
 
     def to_string(self, format: str, base_uri: str = "./Annotations.rdf"):
@@ -347,10 +392,6 @@ class PhysicalProcess:
 
     def get_about(self) -> str:
         return PysemsimAPI.get_and_free_c_str(PysemsimAPI.physical_process_get_about(self._obj))
-
-    def get_physical_property(self) -> str:
-        return PysemsimAPI.get_and_free_c_str(
-            PysemsimAPI.physical_process_get_physical_property(self._obj))
 
     def delete(self) -> None:
         PysemsimAPI.physical_process_delete(self._obj)
@@ -368,17 +409,16 @@ class PhysicalForce:
         self._obj = PysemsimAPI.physical_force_set_about(self._obj, about.encode())
         return self
 
-    def set_physical_property(self, property: str) -> PhysicalForce:
-        self._obj = PysemsimAPI.physical_force_set_physical_property(self._obj, property.encode())
+    def set_physical_property(self, about: str, property: str) -> PhysicalForce:
+        self._obj = PysemsimAPI.physical_force_set_physical_property(self._obj, about.encode(), property.encode())
         return self
 
-    def add_source(self, source_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
-        self._obj = PysemsimAPI.physical_force_add_source(self._obj, source_id.encode(), multiplier,
-                                                          physical_entity_reference.encode())
+    def add_source(self, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
+        self._obj = PysemsimAPI.physical_force_add_source(self._obj, multiplier, physical_entity_reference.encode())
         return self
 
-    def add_sink(self, sink_id: str, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
-        self._obj = PysemsimAPI.physical_force_add_sink(self._obj, sink_id.encode(), multiplier,
+    def add_sink(self, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
+        self._obj = PysemsimAPI.physical_force_add_sink(self._obj, multiplier,
                                                         physical_entity_reference.encode())
         return self
 

@@ -1,5 +1,7 @@
 project(redland-combined)
 
+message(STATUS "Building redland-combind")
+
 ##################################################################################
 #       definitions, configuations
 #
@@ -16,28 +18,31 @@ SET(WRAPPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RedlandAPIWrapper)
 SET(WRAPPER_SOURCE_DIR ${WRAPPER_DIR}/src)
 SET(WRAPPER_TEST_DIR ${WRAPPER_DIR}/test)
 
+# set directory for librdf storage/cache. only used when not specified by user
+#  which it is in the context of libsemsim
+set(PKGDATADIR $ENV{HOME}/.librdf)
+file(MAKE_DIRECTORY ${PKGDATADIR})
 
 #definitions needed to compile librdf/rptor/rasqal
 add_definitions(-DHAVE_CONFIG_H
-        -DRASQAL_INTERNAL
-        -DLIBRDF_INTERNAL
+        -DRASQAL_INTERNAL=1
+        -DLIBRDF_INTERNAL=1
         -DREDLAND_MODULE_PATH="${CMAKE_CURRENT_BINARY_DIR}"
         -DPKGDATADIR="${PKGDATADIR}"
-        -DLIBRDFA_IN_RAPTOR
-        -DRAPTOR_INTERNAL
+        -DLIBRDFA_IN_RAPTOR=1
+        -DRAPTOR_INTERNAL=1
         #        -DRAPTOR_DEBUG=0
         )
 
 # files to configure - This overwrites the configuration generated from automate system
 #  with null values, since I haven't found the cmake equivalent
+    #note: the copasi-dependencies configures a cmake script to do this. Kind of.
 #configure_file(${RAPTOR_DIR}/src/raptor_config_cmake.h.in raptor2-2.0.15/src/raptor_config.h @ONLY)
 #configure_file(${RAPTOR_DIR}/src/raptor2.h.in ${RAPTOR_DIR}/src/raptor2.h @ONLY)
 #configure_file(${RASQAL_DIR}/src/rasqal_config.h.in ${RASQAL_DIR}/src/rasqal_config.h)
 #configure_file(${RASQAL_DIR}/rasqal-src-config.in ${RASQAL_DIR}/rasqal-src-config)
 
-# set directory for librdf storage/cache. only used when not specified by user
-set(PKGDATADIR $ENV{HOME}/.librdf)
-file(MAKE_DIRECTORY ${PKGDATADIR})
+
 
 ##################################################################################
 #       find some dependencies
@@ -90,7 +95,8 @@ set(RAPTOR_SOURCES
         ${RAPTOR_SOURCE_DIR}/raptor_log.c
         ${RAPTOR_SOURCE_DIR}/raptor_memstr.c
         ${RAPTOR_SOURCE_DIR}/raptor_namespace.c
-        ${RAPTOR_SOURCE_DIR}/raptor_nfc_icu.c
+        # commented out because it is never used and incurs icu as a dependency
+        # ${RAPTOR_SOURCE_DIR}/raptor_nfc_icu.c
         ${RAPTOR_SOURCE_DIR}/raptor_ntriples.c
         ${RAPTOR_SOURCE_DIR}/raptor_option.c
         ${RAPTOR_SOURCE_DIR}/raptor_parse.c
@@ -122,8 +128,10 @@ set(RAPTOR_SOURCES
         #        ${RAPTOR_SOURCE_DIR}/raptor_win32.c
         ${RAPTOR_SOURCE_DIR}/raptor_www.c
         ${RAPTOR_SOURCE_DIR}/raptor_www_curl.c
-        ${RAPTOR_SOURCE_DIR}/raptor_www_libfetch.c
-        ${RAPTOR_SOURCE_DIR}/raptor_www_libxml.c
+        # since we use curl for www funcitonality, we do not need these
+        #  sources. Note I've tried the libxml version and couldn't get it working.
+        # ${RAPTOR_SOURCE_DIR}/raptor_www_libfetch.c
+        # ${RAPTOR_SOURCE_DIR}/raptor_www_libxml.c
         ${RAPTOR_SOURCE_DIR}/raptor_xml.c
         ${RAPTOR_SOURCE_DIR}/raptor_xml_writer.c
         ${RAPTOR_SOURCE_DIR}/snprintf.c
@@ -254,7 +262,7 @@ set(LIBRDF_SOURCES
         ${LIBRDF_SOURCE_DIR}/rdf_files.h
         ${LIBRDF_SOURCE_DIR}/rdf_hash.c
         ${LIBRDF_SOURCE_DIR}/rdf_hash.h
-        ${LIBRDF_SOURCE_DIR}/rdf_hash_bdb.c
+#        ${LIBRDF_SOURCE_DIR}/rdf_hash_bdb.c
         ${LIBRDF_SOURCE_DIR}/rdf_hash_cursor.c
         ${LIBRDF_SOURCE_DIR}/rdf_hash_internal.h
         ${LIBRDF_SOURCE_DIR}/rdf_hash_memory.c
@@ -325,7 +333,7 @@ set(LIBRDF_SOURCES
         ${LIBRDF_SOURCE_DIR}/rdf_utf8.c
         ${LIBRDF_SOURCE_DIR}/rdf_utf8.h
         ${LIBRDF_SOURCE_DIR}/redland.h
-        # ${LIBRDF_DIR}/src/rdf_storage_tstore.c // includes <rdfsql/rdfsql.h> which is un-locatable
+#         ${LIBRDF_DIR}/src/rdf_storage_tstore.c // includes <rdfsql/rdfsql.h> which is un-locatable
         # ${LIBRDF_DIR}/src/rdf_storage_mysql.c // no mysql setup yet. todo
         )
 
@@ -363,6 +371,7 @@ set(WRAPPER_SOURCES
 #######################################################
 #   Build the library static
 #
+message(STATUS "before adding the library")
 add_library(redland-combined STATIC
         ${RAPTOR_SOURCES}
         ${RASQAL_SOURCES}

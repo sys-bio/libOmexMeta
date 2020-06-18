@@ -89,6 +89,8 @@ REDLAND_API
 librdf_uri *librdf_new_uri_relative_to_base(librdf_uri *base_uri, const unsigned char *uri_string);
 REDLAND_API
 librdf_uri *librdf_new_uri_from_filename(librdf_world *world, const char *filename);
+REDLAND_API
+int librdf_uri_get_usage(librdf_uri *uri);
 
 #ifdef __cplusplus
 }

@@ -90,13 +90,21 @@ install(TARGETS semsim-static
 
 
 if (BUILD_SHARED)
+
+    set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)
+    set(CMAKE_INSTALL_RPATH
+            "${CMAKE_INSTALL_PREFIX}/lib"   # probs not needed, but for good measure
+            "${PYSEMSIM_DIR}"               # python test package
+            "$ORIGIN"                             # current directory (for when in site-packages)
+            )
+
+
     set(BUILD_SHARED_LIBS ON)
     set(CMAKE_VERBOSE_MAKEFILE ON)
+
     # shared library
     add_library(semsim SHARED "${SEMSIM_HEADERS}" "${SEMSIM_SOURCES}" Preproc.h)
 
-    #    target_link_options(semsim PUBLIC -Wl,--whole-archive)
-    #
 
     add_dependencies(semsim redland-combined)
     target_include_directories(semsim PUBLIC
@@ -109,7 +117,7 @@ if (BUILD_SHARED)
             ${LINK_LIBRARIES}
             -Wl,--no-whole-archive
             )
-
+    set_target_properties(${semsim} PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
 
     install(TARGETS semsim
             LIBRARY
@@ -120,8 +128,22 @@ if (BUILD_SHARED)
     # for automatically installing to folder containing python api
     install(TARGETS semsim
             LIBRARY
-            DESTINATION ${CMAKE_SOURCE_DIR}/src/pysemsim
+            DESTINATION ${PYSEMSIM_DIR}
             )
+
+    if (NOT EXISTS ${LIBXML2_LIBRARY})
+        message(FATAL_ERROR "libxml not found.  Build dependencies first ")
+    endif ()
+
+    if (NOT EXISTS ${LIBCURL_LIBRARY})
+        message(FATAL_ERROR "libcurl not found. Build dependencies first")
+    endif ()
+    install(FILES ${LIBXML2_LIBRARY} ${LIBCURL_LIBRARY}
+            DESTINATION ${PYSEMSIM_DIR})
+
+
+    # An alternative command that copies on configuration, not install
+    #    file(COPY ${LIBXML2_LIBRARY} DESTINATION ${PYSEMSIM_DIR})
 
 
 endif ()

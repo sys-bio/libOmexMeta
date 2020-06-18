@@ -128,5 +128,9 @@ namespace semsim {
         return statement_;
     }
 
+    void Triple::freeTriple() {
+        freeStatement();
+    }
+
 }
 

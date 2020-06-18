@@ -32,48 +32,21 @@ namespace semsim {
         }
     }
 
-    Triple PhysicalProperty::isVersionOfTriple() const {
-        return Triple(
-                LibrdfNode::fromUriString(subject_).get(),
-                BiomodelsBiologyQualifier("isVersionOf").getNode(),
-                Resource(LibrdfNode::fromUriString(resource_)).getNode()
-        );
-    }
-
-    Triple PhysicalProperty::isVersionOfTriple(const Subject &subject_metaid) {
-        Triple triple(
-                subject_metaid.getNode(),
-                BiomodelsBiologyQualifier("isVersionOf").getNode(),
-                Resource(LibrdfNode::fromUriString(resource_)).getNode()
-        );
-        // The node_ object is used up - ownership responsibility
-        // is passed on to the Triple.
-//        node_ = nullptr;
-        return triple;
-    }
-
-    Triple PhysicalProperty::isPropertyOfTriple(const std::string &property_metaid) const {
-        return Triple(
-                LibrdfNode::fromUriString(subject_).get(),
-                BiomodelsBiologyQualifier("isPropertyOf").getNode(),
-                LibrdfNode::fromUriString(property_metaid).get()
-        );
-    }
-
-    Triple PhysicalProperty::isPropertyOfTriple(const Subject &subject_metaid, const std::string &property_metaid) {
-        return Triple(
-                subject_metaid.getNode(),
-                BiomodelsBiologyQualifier("isPropertyOf").getNode(),
-                LibrdfNode::fromUriString(property_metaid).get()
-        );
-    }
 
     Triples PhysicalProperty::toTriples(const std::string &property_metaid) const {
-        Triple v = isVersionOfTriple();
-        Triple p = isPropertyOfTriple(property_metaid);
+        Triple is_version_of_triple(
+                LibrdfNode::fromUriString(subject_).get(),
+                BiomodelsBiologyQualifier("isVersionOf").getNode(),
+                Resource(LibrdfNode::fromUriString(resource_)).getNode()
+        );
+        Triple is_property_of_triple(
+                LibrdfNode::fromUriString(subject_).get(),
+                BiomodelsBiologyQualifier("isPropertyOf").getNode(),
+                LibrdfNode::fromUriString(property_metaid).get()
+        );
         Triples triples;
-        triples.move_back(v);
-        triples.move_back(p);
+        triples.move_back(is_version_of_triple);
+        triples.move_back(is_property_of_triple);
         return triples;
     }
 

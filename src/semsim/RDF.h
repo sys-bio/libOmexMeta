@@ -35,7 +35,7 @@ namespace semsim {
                 {"http://www.bhi.washington.edu/semsim#",    "semsim"},
         };
 
-        explicit RDF(const std::string &base_uri = "./Annotations.rdf", const std::string &storage_type = "memory",
+        explicit RDF(const std::string &storage_type = "memory",
                      const std::string &storage_name = "SemsimStore",
                      const char *storage_options = nullptr, const char *model_options = nullptr);
 
@@ -126,7 +126,6 @@ namespace semsim {
          * fully with RDF::addFromString() method.
          *
          */
-        [[deprecated]]
         static void
         fromString(RDF *rdf, const std::string &str, const std::string &format, const std::string &base_uri);
 
@@ -151,6 +150,15 @@ namespace semsim {
 
         librdf_storage *getStorage() const;
 
+        int commitTransaction() const;
+
+        int startTransaction() const;
+
+        void *getTransactionHandle() const;
+
+        int startTransactionWithHandle(void *handle) const;
+
+        int getTransactionRollback() const;
     };
 }
 

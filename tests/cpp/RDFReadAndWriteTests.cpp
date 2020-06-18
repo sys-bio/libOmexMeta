@@ -95,26 +95,26 @@ TEST_F(ReadAndWriteTests, singularannotation1rdfxml) {
     assertReadAndWrite(samples.singular_annotation1, "rdfxml", expected);
 }
 
-//TEST_F(ReadAndWriteTests, singularannotation1dot) {
-//    std::string expected = "digraph {\n"
-//                           "\trankdir = LR;\n"
-//                           "\tcharset=\"utf-8\";\n"
-//                           "\n"
-//                           "\t\"Rfile://./metaid_1\" -> \"Rhttps://identifiers.org/uniprot/P0DP23\" [ label=\"bqbiol:is\" ];\n"
-//                           "\n"
-//                           "\t// Resources\n"
-//                           "\t\"Rfile://./metaid_1\" [ label=\"file://./metaid_1\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rhttps://identifiers.org/uniprot/P0DP23\" [ label=\"https://identifiers.org/uniprot/P0DP23\", shape = ellipse, color = blue ];\n"
-//                           "\n"
-//                           "\t// Anonymous nodes\n"
-//                           "\n"
-//                           "\t// Literals\n"
-//                           "\n"
-//                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
-//                           "}\n"
-//                           "";
-//    assertReadAndWrite(samples.singular_annotation1, "dot", expected);
-//}
+TEST_F(ReadAndWriteTests, singularannotation1dot) {
+    std::string expected = "digraph {\n"
+                           "\trankdir = LR;\n"
+                           "\tcharset=\"utf-8\";\n"
+                           "\n"
+                           "\t\"Rfile://./metaid_1\" -> \"Rhttps://identifiers.org/uniprot/P0DP23\" [ label=\"bqbiol:is\" ];\n"
+                           "\n"
+                           "\t// Resources\n"
+                           "\t\"Rfile://./metaid_1\" [ label=\"file://./metaid_1\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttps://identifiers.org/uniprot/P0DP23\" [ label=\"https://identifiers.org/uniprot/P0DP23\", shape = ellipse, color = blue ];\n"
+                           "\n"
+                           "\t// Anonymous nodes\n"
+                           "\n"
+                           "\t// Literals\n"
+                           "\n"
+                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
+                           "}\n"
+                           "";
+    assertReadAndWrite(samples.singular_annotation1, "dot", expected);
+}
 
 TEST_F(ReadAndWriteTests, singularannotation1jsontriples) {
     std::string expected = "{\n"
@@ -254,26 +254,26 @@ TEST_F(ReadAndWriteTests, singularannotation2rdfxml) {
     assertReadAndWrite(samples.singular_annotation2, "rdfxml", expected);
 }
 
-//TEST_F(ReadAndWriteTests, singularannotation2dot) {
-//    std::string expected = "digraph {\n"
-//                           "\trankdir = LR;\n"
-//                           "\tcharset=\"utf-8\";\n"
-//                           "\n"
-//                           "\t\"Rfile://./MyModel.xml#modelmeta1\" -> \"Rhttps://identifiers.org/pubmed/12991237\" [ label=\"bqmodel:isDescribedBy\" ];\n"
-//                           "\n"
-//                           "\t// Resources\n"
-//                           "\t\"Rfile://./MyModel.xml#modelmeta1\" [ label=\"file://./MyModel.xml#modelmeta1\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rhttps://identifiers.org/pubmed/12991237\" [ label=\"https://identifiers.org/pubmed/12991237\", shape = ellipse, color = blue ];\n"
-//                           "\n"
-//                           "\t// Anonymous nodes\n"
-//                           "\n"
-//                           "\t// Literals\n"
-//                           "\n"
-//                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nbqmodel: http://biomodels.net/model-qualifiers/\\n\";\n"
-//                           "}\n"
-//                           "";
-//    assertReadAndWrite(samples.singular_annotation2, "dot", expected);
-//}
+TEST_F(ReadAndWriteTests, singularannotation2dot) {
+    std::string expected = "digraph {\n"
+                           "\trankdir = LR;\n"
+                           "\tcharset=\"utf-8\";\n"
+                           "\n"
+                           "\t\"Rfile://./MyModel.xml#modelmeta1\" -> \"Rhttps://identifiers.org/pubmed/12991237\" [ label=\"bqmodel:isDescribedBy\" ];\n"
+                           "\n"
+                           "\t// Resources\n"
+                           "\t\"Rfile://./MyModel.xml#modelmeta1\" [ label=\"file://./MyModel.xml#modelmeta1\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttps://identifiers.org/pubmed/12991237\" [ label=\"https://identifiers.org/pubmed/12991237\", shape = ellipse, color = blue ];\n"
+                           "\n"
+                           "\t// Anonymous nodes\n"
+                           "\n"
+                           "\t// Literals\n"
+                           "\n"
+                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nbqmodel: http://biomodels.net/model-qualifiers/\\n\";\n"
+                           "}\n"
+                           "";
+    assertReadAndWrite(samples.singular_annotation2, "dot", expected);
+}
 
 TEST_F(ReadAndWriteTests, singularannotation2jsontriples) {
     std::string expected = "{\n"
@@ -408,26 +408,26 @@ TEST_F(ReadAndWriteTests, singularannotation3rdfxml) {
     assertReadAndWrite(samples.singular_annotation3, "rdfxml", expected);
 }
 
-//TEST_F(ReadAndWriteTests, singularannotation3dot) {
-//    std::string expected = "digraph {\n"
-//                           "\trankdir = LR;\n"
-//                           "\tcharset=\"utf-8\";\n"
-//                           "\n"
-//                           "\t\"Rfile://./MyModel.xml#meta1\" -> \"Rhttps://identifiers.org/chebi/CHEBI:15422\" [ label=\"bqbiol:is\" ];\n"
-//                           "\n"
-//                           "\t// Resources\n"
-//                           "\t\"Rfile://./MyModel.xml#meta1\" [ label=\"file://./MyModel.xml#meta1\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rhttps://identifiers.org/chebi/CHEBI:15422\" [ label=\"https://identifiers.org/chebi/CHEBI:15422\", shape = ellipse, color = blue ];\n"
-//                           "\n"
-//                           "\t// Anonymous nodes\n"
-//                           "\n"
-//                           "\t// Literals\n"
-//                           "\n"
-//                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
-//                           "}\n"
-//                           "";
-//    assertReadAndWrite(samples.singular_annotation3, "dot", expected);
-//}
+TEST_F(ReadAndWriteTests, singularannotation3dot) {
+    std::string expected = "digraph {\n"
+                           "\trankdir = LR;\n"
+                           "\tcharset=\"utf-8\";\n"
+                           "\n"
+                           "\t\"Rfile://./MyModel.xml#meta1\" -> \"Rhttps://identifiers.org/chebi/CHEBI:15422\" [ label=\"bqbiol:is\" ];\n"
+                           "\n"
+                           "\t// Resources\n"
+                           "\t\"Rfile://./MyModel.xml#meta1\" [ label=\"file://./MyModel.xml#meta1\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttps://identifiers.org/chebi/CHEBI:15422\" [ label=\"https://identifiers.org/chebi/CHEBI:15422\", shape = ellipse, color = blue ];\n"
+                           "\n"
+                           "\t// Anonymous nodes\n"
+                           "\n"
+                           "\t// Literals\n"
+                           "\n"
+                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
+                           "}\n"
+                           "";
+    assertReadAndWrite(samples.singular_annotation3, "dot", expected);
+}
 
 TEST_F(ReadAndWriteTests, singularannotation3jsontriples) {
     std::string expected = "{\n"
@@ -565,26 +565,26 @@ TEST_F(ReadAndWriteTests, singularannotation4rdfxml) {
     assertReadAndWrite(samples.singular_annotation4, "rdfxml", expected);
 }
 
-//TEST_F(ReadAndWriteTests, singularannotation4dot) {
-//    std::string expected = "digraph {\n"
-//                           "\trankdir = LR;\n"
-//                           "\tcharset=\"utf-8\";\n"
-//                           "\n"
-//                           "\t\"Rfile://./MyModel.xml#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dcterms:description\" ];\n"
-//                           "\n"
-//                           "\t// Resources\n"
-//                           "\t\"Rfile://./MyModel.xml#meta2\" [ label=\"file://./MyModel.xml#meta2\", shape = ellipse, color = blue ];\n"
-//                           "\n"
-//                           "\t// Anonymous nodes\n"
-//                           "\n"
-//                           "\t// Literals\n"
-//                           "\t\"LCardiomyocyte cytosolic ATP concentration\" [ label=\"Cardiomyocyte cytosolic ATP concentration\", shape = record ];\n"
-//                           "\n"
-//                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndcterms: http://purl.org/dc/terms/\\n\";\n"
-//                           "}\n"
-//                           "";
-//    assertReadAndWrite(samples.singular_annotation4, "dot", expected);
-//}
+TEST_F(ReadAndWriteTests, singularannotation4dot) {
+    std::string expected = "digraph {\n"
+                           "\trankdir = LR;\n"
+                           "\tcharset=\"utf-8\";\n"
+                           "\n"
+                           "\t\"Rfile://./MyModel.xml#meta2\" -> \"LCardiomyocyte cytosolic ATP concentration\" [ label=\"dcterms:description\" ];\n"
+                           "\n"
+                           "\t// Resources\n"
+                           "\t\"Rfile://./MyModel.xml#meta2\" [ label=\"file://./MyModel.xml#meta2\", shape = ellipse, color = blue ];\n"
+                           "\n"
+                           "\t// Anonymous nodes\n"
+                           "\n"
+                           "\t// Literals\n"
+                           "\t\"LCardiomyocyte cytosolic ATP concentration\" [ label=\"Cardiomyocyte cytosolic ATP concentration\", shape = record ];\n"
+                           "\n"
+                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\ndcterms: http://purl.org/dc/terms/\\n\";\n"
+                           "}\n"
+                           "";
+    assertReadAndWrite(samples.singular_annotation4, "dot", expected);
+}
 
 TEST_F(ReadAndWriteTests, singularannotation4jsontriples) {
     std::string expected = "{\n"
@@ -732,32 +732,32 @@ TEST_F(ReadAndWriteTests, compositeannotationperdfxmlabbrev) {
 }
 
 
-//TEST_F(ReadAndWriteTests, compositeannotationpedot) {
-//    std::string expected = "digraph {\n"
-//                           "\trankdir = LR;\n"
-//                           "\tcharset=\"utf-8\";\n"
-//                           "\n"
-//                           "\t\"Rfile://./VLV\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n"
-//                           "\t\"Rfile://./VLV\" -> \"Rfile://./MyModel.rdf#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
-//                           "\t\"Rfile://./MyModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n"
-//                           "\t\"Rfile://./MyModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n"
-//                           "\n"
-//                           "\t// Resources\n"
-//                           "\t\"Rfile://./VLV\" [ label=\"file://./VLV\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rfile://./MyModel.rdf#entity_0\" [ label=\"file://./MyModel.rdf#entity_0\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n"
-//                           "\n"
-//                           "\t// Anonymous nodes\n"
-//                           "\n"
-//                           "\t// Literals\n"
-//                           "\n"
-//                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
-//                           "}\n"
-//                           "";
-//    assertReadAndWrite(samples.composite_annotation_pe, "dot", expected);
-//}
+TEST_F(ReadAndWriteTests, compositeannotationpedot) {
+    std::string expected = "digraph {\n"
+                           "\trankdir = LR;\n"
+                           "\tcharset=\"utf-8\";\n"
+                           "\n"
+                           "\t\"Rfile://./VLV\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n"
+                           "\t\"Rfile://./VLV\" -> \"Rfile://./MyModel.rdf#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
+                           "\t\"Rfile://./MyModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n"
+                           "\t\"Rfile://./MyModel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n"
+                           "\n"
+                           "\t// Resources\n"
+                           "\t\"Rfile://./VLV\" [ label=\"file://./VLV\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rfile://./MyModel.rdf#entity_0\" [ label=\"file://./MyModel.rdf#entity_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n"
+                           "\n"
+                           "\t// Anonymous nodes\n"
+                           "\n"
+                           "\t// Literals\n"
+                           "\n"
+                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
+                           "}\n"
+                           "";
+    assertReadAndWrite(samples.composite_annotation_pe, "dot", expected);
+}
 
 TEST_F(ReadAndWriteTests, compositeannotationpejsontriples) {
     std::string expected = "{\n"
@@ -1066,44 +1066,44 @@ TEST_F(ReadAndWriteTests, compositeannotationpprdfxml) {
     assertReadAndWrite(samples.composite_annotation_pp, "rdfxml", expected);
 }
 
-//TEST_F(ReadAndWriteTests, compositeannotationppdot) {
-//    std::string expected = "digraph {\n"
-//                           "\trankdir = LR;\n"
-//                           "\tcharset=\"utf-8\";\n"
-//                           "\n"
-//                           "\t\"Rfile://./property_metaid_0\" -> \"Rfile://./process_metaid_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
-//                           "\t\"Rfile://./property_metaid_0\" -> \"Rhttps://identifiers.org/opb/OPB_00592\" [ label=\"bqbiol:isVersionOf\" ];\n"
-//                           "\t\"Rfile://./process_metaid_0\" -> \"Rfile://./source_0\" [ label=\"semsim:hasSourceParticipant\" ];\n"
-//                           "\t\"Rfile://./process_metaid_0\" -> \"Rfile://./sink_0\" [ label=\"semsim:hasSinkParticipant\" ];\n"
-//                           "\t\"Rfile://./process_metaid_0\" -> \"Rfile://./mediator_0\" [ label=\"semsim:hasMediatorParticipant\" ];\n"
-//                           "\t\"Rfile://./source_0\" -> \"L1.0\" [ label=\"semsim:hasMultiplier\" ];\n"
-//                           "\t\"Rfile://./source_0\" -> \"Rfile://./species_metaid_0\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
-//                           "\t\"Rfile://./sink_0\" -> \"L2.0\" [ label=\"semsim:hasMultiplier\" ];\n"
-//                           "\t\"Rfile://./sink_0\" -> \"Rfile://./species_metaid_1\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
-//                           "\t\"Rfile://./mediator_0\" -> \"Rfile://./species_metaid_2\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
-//                           "\n"
-//                           "\t// Resources\n"
-//                           "\t\"Rfile://./property_metaid_0\" [ label=\"file://./property_metaid_0\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rfile://./process_metaid_0\" [ label=\"file://./process_metaid_0\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rhttps://identifiers.org/opb/OPB_00592\" [ label=\"https://identifiers.org/opb/OPB_00592\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rfile://./source_0\" [ label=\"file://./source_0\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rfile://./sink_0\" [ label=\"file://./sink_0\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rfile://./mediator_0\" [ label=\"file://./mediator_0\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rfile://./species_metaid_0\" [ label=\"file://./species_metaid_0\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rfile://./species_metaid_1\" [ label=\"file://./species_metaid_1\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rfile://./species_metaid_2\" [ label=\"file://./species_metaid_2\", shape = ellipse, color = blue ];\n"
-//                           "\n"
-//                           "\t// Anonymous nodes\n"
-//                           "\n"
-//                           "\t// Literals\n"
-//                           "\t\"L1.0\" [ label=\"1.0\", shape = record ];\n"
-//                           "\t\"L2.0\" [ label=\"2.0\", shape = record ];\n"
-//                           "\n"
-//                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
-//                           "}\n"
-//                           "";
-//    assertReadAndWrite(samples.composite_annotation_pp, "dot", expected);
-//}
+TEST_F(ReadAndWriteTests, compositeannotationppdot) {
+    std::string expected = "digraph {\n"
+                           "\trankdir = LR;\n"
+                           "\tcharset=\"utf-8\";\n"
+                           "\n"
+                           "\t\"Rfile://./property_metaid_0\" -> \"Rfile://./process_metaid_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
+                           "\t\"Rfile://./property_metaid_0\" -> \"Rhttps://identifiers.org/opb/OPB_00592\" [ label=\"bqbiol:isVersionOf\" ];\n"
+                           "\t\"Rfile://./process_metaid_0\" -> \"Rfile://./source_0\" [ label=\"semsim:hasSourceParticipant\" ];\n"
+                           "\t\"Rfile://./process_metaid_0\" -> \"Rfile://./sink_0\" [ label=\"semsim:hasSinkParticipant\" ];\n"
+                           "\t\"Rfile://./process_metaid_0\" -> \"Rfile://./mediator_0\" [ label=\"semsim:hasMediatorParticipant\" ];\n"
+                           "\t\"Rfile://./source_0\" -> \"L1.0\" [ label=\"semsim:hasMultiplier\" ];\n"
+                           "\t\"Rfile://./source_0\" -> \"Rfile://./species_metaid_0\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
+                           "\t\"Rfile://./sink_0\" -> \"L2.0\" [ label=\"semsim:hasMultiplier\" ];\n"
+                           "\t\"Rfile://./sink_0\" -> \"Rfile://./species_metaid_1\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
+                           "\t\"Rfile://./mediator_0\" -> \"Rfile://./species_metaid_2\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
+                           "\n"
+                           "\t// Resources\n"
+                           "\t\"Rfile://./property_metaid_0\" [ label=\"file://./property_metaid_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rfile://./process_metaid_0\" [ label=\"file://./process_metaid_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttps://identifiers.org/opb/OPB_00592\" [ label=\"https://identifiers.org/opb/OPB_00592\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rfile://./source_0\" [ label=\"file://./source_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rfile://./sink_0\" [ label=\"file://./sink_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rfile://./mediator_0\" [ label=\"file://./mediator_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rfile://./species_metaid_0\" [ label=\"file://./species_metaid_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rfile://./species_metaid_1\" [ label=\"file://./species_metaid_1\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rfile://./species_metaid_2\" [ label=\"file://./species_metaid_2\", shape = ellipse, color = blue ];\n"
+                           "\n"
+                           "\t// Anonymous nodes\n"
+                           "\n"
+                           "\t// Literals\n"
+                           "\t\"L1.0\" [ label=\"1.0\", shape = record ];\n"
+                           "\t\"L2.0\" [ label=\"2.0\", shape = record ];\n"
+                           "\n"
+                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
+                           "}\n"
+                           "";
+    assertReadAndWrite(samples.composite_annotation_pp, "dot", expected);
+}
 
 TEST_F(ReadAndWriteTests, compositeannotationppjsontriples) {
     std::string expected = "{\n"
@@ -1550,36 +1550,36 @@ TEST_F(ReadAndWriteTests, compositeannotationpfrdfxml) {
     assertReadAndWrite(samples.composite_annotation_pf, "rdfxml", expected);
 }
 
-//TEST_F(ReadAndWriteTests, compositeannotationpfdot) {
-//    std::string expected = "digraph {\n"
-//                           "\trankdir = LR;\n"
-//                           "\tcharset=\"utf-8\";\n"
-//                           "\n"
-//                           "\t\"Rfile://./parameter_metaid_0\" -> \"Rfile://./force_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
-//                           "\t\"Rfile://./parameter_metaid_0\" -> \"Rhttps://identifiers.org/opb/OPB_01058\" [ label=\"bqbiol:isVersionOf\" ];\n"
-//                           "\t\"Rfile://./force_0\" -> \"Rfile://./source_0\" [ label=\"semsim:hasSourceParticipant\" ];\n"
-//                           "\t\"Rfile://./force_0\" -> \"Rfile://./sink_0\" [ label=\"semsim:hasSinkParticipant\" ];\n"
-//                           "\t\"Rfile://./source_0\" -> \"Rfile://./species_metaid_0\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
-//                           "\t\"Rfile://./sink_0\" -> \"Rfile://./species_metaid_1\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
-//                           "\n"
-//                           "\t// Resources\n"
-//                           "\t\"Rfile://./parameter_metaid_0\" [ label=\"file://./parameter_metaid_0\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rfile://./force_0\" [ label=\"file://./force_0\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rhttps://identifiers.org/opb/OPB_01058\" [ label=\"https://identifiers.org/opb/OPB_01058\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rfile://./source_0\" [ label=\"file://./source_0\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rfile://./sink_0\" [ label=\"file://./sink_0\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rfile://./species_metaid_0\" [ label=\"file://./species_metaid_0\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rfile://./species_metaid_1\" [ label=\"file://./species_metaid_1\", shape = ellipse, color = blue ];\n"
-//                           "\n"
-//                           "\t// Anonymous nodes\n"
-//                           "\n"
-//                           "\t// Literals\n"
-//                           "\n"
-//                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nbqmodel: http://biomodels.net/model-qualifiers/\\n\";\n"
-//                           "}\n"
-//                           "";
-//    assertReadAndWrite(samples.composite_annotation_pf, "dot", expected);
-//}
+TEST_F(ReadAndWriteTests, compositeannotationpfdot) {
+    std::string expected = "digraph {\n"
+                           "\trankdir = LR;\n"
+                           "\tcharset=\"utf-8\";\n"
+                           "\n"
+                           "\t\"Rfile://./parameter_metaid_0\" -> \"Rfile://./force_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
+                           "\t\"Rfile://./parameter_metaid_0\" -> \"Rhttps://identifiers.org/opb/OPB_01058\" [ label=\"bqbiol:isVersionOf\" ];\n"
+                           "\t\"Rfile://./force_0\" -> \"Rfile://./source_0\" [ label=\"semsim:hasSourceParticipant\" ];\n"
+                           "\t\"Rfile://./force_0\" -> \"Rfile://./sink_0\" [ label=\"semsim:hasSinkParticipant\" ];\n"
+                           "\t\"Rfile://./source_0\" -> \"Rfile://./species_metaid_0\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
+                           "\t\"Rfile://./sink_0\" -> \"Rfile://./species_metaid_1\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
+                           "\n"
+                           "\t// Resources\n"
+                           "\t\"Rfile://./parameter_metaid_0\" [ label=\"file://./parameter_metaid_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rfile://./force_0\" [ label=\"file://./force_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttps://identifiers.org/opb/OPB_01058\" [ label=\"https://identifiers.org/opb/OPB_01058\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rfile://./source_0\" [ label=\"file://./source_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rfile://./sink_0\" [ label=\"file://./sink_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rfile://./species_metaid_0\" [ label=\"file://./species_metaid_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rfile://./species_metaid_1\" [ label=\"file://./species_metaid_1\", shape = ellipse, color = blue ];\n"
+                           "\n"
+                           "\t// Anonymous nodes\n"
+                           "\n"
+                           "\t// Literals\n"
+                           "\n"
+                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nbqmodel: http://biomodels.net/model-qualifiers/\\n\";\n"
+                           "}\n"
+                           "";
+    assertReadAndWrite(samples.composite_annotation_pf, "dot", expected);
+}
 
 TEST_F(ReadAndWriteTests, compositeannotationpfjsontriples) {
     std::string expected = "{\n"
@@ -1889,32 +1889,32 @@ TEST_F(ReadAndWriteTests, tabulardatardfxml) {
     assertReadAndWrite(samples.tabular_data1, "rdfxml", expected);
 }
 
-//TEST_F(ReadAndWriteTests, tabulardatadot) {
-//    std::string expected = "digraph {\n"
-//                           "\trankdir = LR;\n"
-//                           "\tcharset=\"utf-8\";\n"
-//                           "\n"
-//                           "\t\"Rfile://./VleftCorArt\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n"
-//                           "\t\"Rfile://./VleftCorArt\" -> \"Rfile://./entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
-//                           "\t\"Rfile://./entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n"
-//                           "\t\"Rfile://./entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n"
-//                           "\n"
-//                           "\t// Resources\n"
-//                           "\t\"Rfile://./VleftCorArt\" [ label=\"file://./VleftCorArt\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rfile://./entity_0\" [ label=\"file://./entity_0\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n"
-//                           "\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n"
-//                           "\n"
-//                           "\t// Anonymous nodes\n"
-//                           "\n"
-//                           "\t// Literals\n"
-//                           "\n"
-//                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqmodel: http://biomodels.net/model-qualifiers/\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
-//                           "}\n"
-//                           "";
-//    assertReadAndWrite(samples.tabular_data1, "dot", expected);
-//}
+TEST_F(ReadAndWriteTests, tabulardatadot) {
+    std::string expected = "digraph {\n"
+                           "\trankdir = LR;\n"
+                           "\tcharset=\"utf-8\";\n"
+                           "\n"
+                           "\t\"Rfile://./VleftCorArt\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n"
+                           "\t\"Rfile://./VleftCorArt\" -> \"Rfile://./entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
+                           "\t\"Rfile://./entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n"
+                           "\t\"Rfile://./entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n"
+                           "\n"
+                           "\t// Resources\n"
+                           "\t\"Rfile://./VleftCorArt\" [ label=\"file://./VleftCorArt\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rfile://./entity_0\" [ label=\"file://./entity_0\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n"
+                           "\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n"
+                           "\n"
+                           "\t// Anonymous nodes\n"
+                           "\n"
+                           "\t// Literals\n"
+                           "\n"
+                           "\tlabel=\"\\n\\nModel:\\nfile://./annotations.rdf\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqmodel: http://biomodels.net/model-qualifiers/\\nbqbiol: http://biomodels.net/biology-qualifiers/\\n\";\n"
+                           "}\n"
+                           "";
+    assertReadAndWrite(samples.tabular_data1, "dot", expected);
+}
 
 TEST_F(ReadAndWriteTests, tabulardatajsontriples) {
     std::string expected = "{\n"

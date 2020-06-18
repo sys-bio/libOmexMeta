@@ -194,13 +194,13 @@
 /* #undef RANDOM_ALGO_RAND_R */
 
 /* Decimal from GNU MP library */
-#define RASQAL_DECIMAL_GMP 1
+/* #undef RASQAL_DECIMAL_GMP */
 
 /* Decimal from MPFR library */
 /* #undef RASQAL_DECIMAL_MPFR */
 
 /* Decimal without a library */
-/* #undef RASQAL_DECIMAL_NONE */
+#define RASQAL_DECIMAL_NONE 1
 
 /* Use gcrypt library for message digests */
 /* #undef RASQAL_DIGEST_GCRYPT */

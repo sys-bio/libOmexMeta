@@ -269,6 +269,30 @@ TEST_F(LibrdfNodeTests, TestInequality) {
     subject2.freeNode(); // ref count to 0
 }
 
+TEST_F(LibrdfNodeTests, TestCopyNodeUri) {
+    LibrdfNode subject1 = LibrdfNode::fromUriString("subject1");
+    LibrdfNode subject2 = LibrdfNode::copyNode(subject1);
+    ASSERT_EQ(subject1, subject2);
+    ASSERT_EQ(subject1.getUri(), subject2.getUri());
+    ASSERT_EQ(2, subject1.getUri().getUsage());
+    ASSERT_EQ(2, subject2.getUri().getUsage());
+
+    subject1.freeNode(); // ref count to 1
+    subject2.freeNode(); // ref count to 0
+}
+
+TEST_F(LibrdfNodeTests, TestCopyNodeLiteral) {
+    LibrdfNode subject1 = LibrdfNode::fromLiteral("subject1");
+    LibrdfNode subject2 = LibrdfNode::copyNode(subject1);
+    ASSERT_EQ(subject1, subject2);
+    ASSERT_EQ(subject1.getLiteralDatatype(), subject2.getLiteralDatatype());
+    ASSERT_EQ(2, subject1.getLiteralDatatype().getUsage());
+    ASSERT_EQ(2, subject2.getLiteralDatatype().getUsage());
+
+    subject1.freeNode(); // ref count to 1
+    subject2.freeNode(); // ref count to 0
+}
+
 
 
 

@@ -33,6 +33,12 @@ namespace semsim {
         Triples();
 
         /*
+         * @brief create an empty Triples object big enough
+         * for @param size Triple objects
+         */
+        explicit Triples(int size);
+
+        /*
          * @brief construct a Triples object from a single triple
          * @param triple The triple to put into triples
          * @details The triple is moved into element 0 of a new
@@ -110,11 +116,10 @@ namespace semsim {
         bool isEmpty();
 
         Triple pop_front();
+
+        int capacity();
     };
 
-    typedef std::vector<Triples> NestedTriples;
-
-    //todo implement equality operators
 }
 
 #endif //LIBSEMSIM_TRIPLES_H

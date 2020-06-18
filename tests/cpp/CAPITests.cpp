@@ -28,16 +28,6 @@ public:
 };
 
 
-TEST_F(CAPITests, RDFNew) {
-    RDF *rdf_ptr = RDF_new();
-    // we access the default base uri to check we have a RDF object
-    std::string uri = rdf_ptr->base_uri_;
-    std::string expected = "file://./Annotations.rdf";
-    ASSERT_STREQ(expected.c_str(), uri.c_str());
-    RDF_delete(rdf_ptr);
-
-}
-
 TEST_F(CAPITests, RDFSize) {
     RDF *rdf_ptr = RDF_fromString(samples.singular_annotation1.c_str(), "rdfxml", "LannotationsBase.rdf");
     int actual = RDF_size(rdf_ptr);
@@ -70,16 +60,6 @@ TEST_F(CAPITests, RDFToString) {
     RDF_delete(rdf_ptr);
 }
 
-TEST_F(CAPITests, RDFgetBaseUri) {
-    RDF *rdf_ptr = RDF_fromString(samples.singular_annotation1.c_str(), "rdfxml");
-    char *actual = RDF_getBaseUri(rdf_ptr);
-    std::cout << actual << std::endl;
-    const char *expected = "file://./Annotations.rdf";
-    ASSERT_STREQ(expected, actual);
-
-    free(actual);
-    RDF_delete(rdf_ptr);
-}
 
 TEST_F(CAPITests, RDFsetBaseUri) {
     RDF *rdf_ptr = RDF_fromString(samples.singular_annotation1.c_str(), "rdfxml");
@@ -107,6 +87,22 @@ TEST_F(CAPITests, RDF_addFromString) {
     int expected = 1;
     int actual = RDF_size(rdf_ptr);
     ASSERT_EQ(expected, actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, RDF_addFromStringOutput) {
+    RDF *rdf_ptr = RDF_new();
+    RDF_addFromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml", "RDF_addFromStringTest.rdf");
+    std::string actual = RDF_toString(rdf_ptr, "turtle", "Basey.rdf");
+    std::string expected = "@base <file://Basey.rdf> .\n"
+                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "\n"
+                           "<file://./metaid_1>\n"
+                           "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n"
+                           "\n";
+    std::cout << actual.c_str() << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
     RDF_delete(rdf_ptr);
 }
 
