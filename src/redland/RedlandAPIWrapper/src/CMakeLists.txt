@@ -320,11 +320,8 @@ target_link_libraries(redland-combined PUBLIC
         mhash
         gcrypt
         uuid
-        #        c
         ossp
-        #        xml2
         mpfr
-        #        m
         )
 
 
