@@ -68,7 +68,7 @@ int rasqal_gettimeofday(struct timeval *tv, struct timezone *tz);
 #undef HAVE_GETTIMEOFDAY
 
 #include <float.h>
-#define isnan(n) _isnan(n)
+//#define isnan(n) _isnan(n)
 /* no round function available */
 #define round(x) floor(x+0.5)
 

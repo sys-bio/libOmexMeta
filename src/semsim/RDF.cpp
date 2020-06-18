@@ -45,6 +45,7 @@ namespace semsim {
             storage_ = std::move(rdf.storage_);
             model_ = std::move(rdf.model_);
         }
+        return *this;
     }
 
     int RDF::size() const {

@@ -9,6 +9,7 @@
 #include <string>
 #include <memory>
 #include "World.h"
+#include "sstream"
 
 namespace redland {
 

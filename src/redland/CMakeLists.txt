@@ -401,6 +401,7 @@ INSTALL(
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib
         RUNTIME DESTINATION bin
+        PUBLIC_HEADER DESTINATION include
 )
 
 option(BUILD_WRAPPER_TESTS "Build the tests for the redland api wrapper" OFF)

@@ -49,7 +49,7 @@ extern "C" {
 #define access _access
 #define stricmp _stricmp
 #define strnicmp _strnicmp
-#define close _close
+//#define close _close  # conflicts with msvc
 #define unlink _unlink
 #define mktemp _mktemp
 
@@ -291,9 +291,9 @@ extern "C" {
 
 /* get _isnan() since it is not in math.h */
 #include <float.h>
-#ifndef isnan
-#define isnan(d) (_isnan(d))
-#endif
+//#ifndef isnan
+//#define isnan(d) (_isnan(d))
+//#endif
 
 #ifdef __cplusplus
 }

@@ -75,6 +75,7 @@ namespace semsim {
             physical_property_ = std::move(phenomenon.physical_property_);
             type_ = phenomenon.type_;
         }
+        return *this;
     }
 
     bool PhysicalPhenomenon::operator==(const PhysicalPhenomenon &rhs) const {

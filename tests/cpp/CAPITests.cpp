@@ -11,7 +11,7 @@
 #include "semsim/RDF.h"
 #include "SBMLFactory.h"
 #include "semsim/SemsimXmlAssistant.h"
-#include <experimental/filesystem>
+#include <filesystem>
 #include <fstream>
 
 using namespace semsim;
@@ -125,7 +125,7 @@ TEST_F(CAPITests, RDF_addFromUri) {
 
 TEST_F(CAPITests, RDF_fromFile) {
     // we can cheat and use C++ to write the file we need - who's counting
-    std::string fname = std::experimental::filesystem::current_path().string() + "/TestParseFromFile.rdf";
+    std::string fname = std::filesystem::current_path().string() + "/TestParseFromFile.rdf";
     std::cout << fname << std::endl;
     std::ofstream f(fname);
     if (f.is_open()) {
@@ -147,7 +147,7 @@ TEST_F(CAPITests, RDF_fromFile) {
 
 TEST_F(CAPITests, RDF_addFromFile) {
     // we can cheat and use C++ to write the file we need - who's counting
-    std::string fname = std::experimental::filesystem::current_path().string() + "/TestParseFromFile.rdf";
+    std::string fname = std::filesystem::current_path().string() + "/TestParseFromFile.rdf";
     std::cout << fname << std::endl;
     std::ofstream f(fname);
     if (f.is_open()) {

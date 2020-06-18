@@ -27,7 +27,8 @@ include(${CMAKE_SOURCE_DIR}/cmake/SetPaths.cmake)
 # global settings
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "-std=c++17")
+# redundant an not cross platform
+#set(CMAKE_CXX_FLAGS "-std=c++17")
 
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 0)

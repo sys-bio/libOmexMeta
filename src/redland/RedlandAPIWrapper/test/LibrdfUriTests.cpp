@@ -7,7 +7,7 @@
 #include "LibrdfUri.h"
 //#include "redland/SemsimUtils.h"
 #include "raptor2.h"
-#include <experimental/filesystem>
+#include <filesystem>
 
 using namespace redland;
 
@@ -99,13 +99,13 @@ TEST_F(LibrdfUriTests, TestEqualityOperator) {
     uri2.freeUri();
 }
 
-TEST_F(LibrdfUriTests, TestToFilenameuri) {
-    LibrdfUri uri1 = LibrdfUri::fromFilename("./local_filename.rdf");
-    std::string actual = uri1.toFilenameString();
-    std::string expected = "/mnt/d/libsemsim/cmake-build-debug-wsl2/src/redland/RedlandAPIWrapper/test/local_filename.rdf";
-    ASSERT_STREQ(actual.c_str(), expected.c_str());
-    uri1.freeUri();
-}
+//TEST_F(LibrdfUriTests, TestToFilenameuri) {
+//    LibrdfUri uri1 = LibrdfUri::fromFilename("./local_filename.rdf");
+//    std::string actual = uri1.toFilenameString();
+//    std::string expected = "/mnt/d/libsemsim/cmake-build-debug-wsl2/src/redland/RedlandAPIWrapper/test/local_filename.rdf";
+//    ASSERT_STREQ(actual.c_str(), expected.c_str());
+//    uri1.freeUri();
+//}
 
 /*
  * Both uri's refer to the same block of memory.

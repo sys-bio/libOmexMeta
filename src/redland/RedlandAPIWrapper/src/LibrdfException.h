@@ -6,6 +6,7 @@
 #define LIBSEMSIM_SUPERBUILD_LIBRDFEXCEPTION_H
 
 #include <exception>
+#include <iostream>
 
 class Exception : public std::exception {
 public:
