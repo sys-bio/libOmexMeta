@@ -5,8 +5,10 @@
 cmake-build-*
 INSTALL
 install
+install*
 cmake-build*
-build
+build-*
+build*
 build2
 build2-*
 docs/build
