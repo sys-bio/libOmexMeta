@@ -45,7 +45,7 @@ extern "C" {
 /* MS names for these functions */
 // next line breaks build on wntmsci12
 //#define vsnprintf _vsnprintf
-#define snprintf _snprintf
+//#define snprintf _snprintf
 #define access _access
 #define stricmp _stricmp
 #define strnicmp _strnicmp

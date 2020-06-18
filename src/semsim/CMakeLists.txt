@@ -131,13 +131,14 @@ if (BUILD_SHARED)
             DESTINATION ${PYSEMSIM_DIR}
             )
 
-    if (NOT EXISTS ${LIBXML2_LIBRARY})
-        message(FATAL_ERROR "libxml not found.  Build dependencies first ")
-    endif ()
-
-    if (NOT EXISTS ${LIBCURL_LIBRARY})
-        message(FATAL_ERROR "libcurl not found. Build dependencies first")
-    endif ()
+    message(STATUS "LIBXML_LIBRARY ${LIBXML_LIBRARY}")
+#    if (NOT EXISTS ${LIBXML2_LIBRARY})
+#        message(FATAL_ERROR "libxml not found.  Build dependencies first ")
+#    endif ()
+#
+#    if (NOT EXISTS ${LIBCURL_LIBRARY})
+#        message(FATAL_ERROR "libcurl not found. Build dependencies first")
+#    endif ()
     install(FILES ${LIBXML2_LIBRARY} ${LIBCURL_LIBRARY}
             DESTINATION ${PYSEMSIM_DIR})
 

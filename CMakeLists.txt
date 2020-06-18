@@ -9,10 +9,16 @@ include(ExternalProject)
 # load a custom function for finding all the dependencies if they exist.
 #set(FIND_DEPENDENCIES_PATH ${CMAKE_SOURCE_DIR}/cmake/LookForDependencies.cmake)
 
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 # load a custom function for printing out found paths to console
 include(${CMAKE_SOURCE_DIR}/cmake/PrintOutPaths.cmake)
+
+# load a custom function for determining the current platform
+include(${CMAKE_SOURCE_DIR}/cmake/DeterminePlatform.cmake)
+
+# Load a custom function that configures the various paths we need
+include(${CMAKE_SOURCE_DIR}/cmake/SetPaths.cmake)
 
 ######################################################
 #   Set some variables
@@ -28,7 +34,7 @@ set(VERSION_MINOR 0)
 set(VERSION_MICRO 8)
 
 set(LIBSEMSIM_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
-configure_file(${CMAKE_SOURCE_DIR}/VERSION.in ${CMAKE_SOURCE_DIR}/VERSION.txt)
+#configure_file("${CMAKE_SOURCE_DIR}/VERSION.in" "${CMAKE_SOURCE_DIR}/VERSION.txt")
 
 if ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fPIC")
@@ -58,34 +64,13 @@ SET(N 8 CACHE STRING "number of cores to use for build. Passed onto -j for make"
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 
-
 # todo move the following to SetPaths.cmake
 
-# path to redland libraries
-set(REDLAND_DIR ${CMAKE_SOURCE_DIR}/src/redland)
-
-# paths to invididual redland libraries
-SET(RAPTOR_DIR ${REDLAND_DIR}/raptor2-2.0.15)
-SET(RASQAL_DIR ${REDLAND_DIR}/rasqal-0.9.33)
-SET(LIBRDF_DIR ${REDLAND_DIR}/redland-1.0.17)
-SET(WRAPPER_DIR ${REDLAND_DIR}/RedlandAPIWrapper)
-
-# paths to invididual redland libraries source code
-SET(RAPTOR_SOURCE_DIR ${RAPTOR_DIR}/src)
-SET(RASQAL_SOURCE_DIR ${RASQAL_DIR}/src)
-SET(LIBRDF_SOURCE_DIR ${LIBRDF_DIR}/src)
-SET(WRAPPER_SOURCE_DIR ${WRAPPER_DIR}/src)
-
-# paths wrapper tests
-SET(WRAPPER_TEST_DIR ${WRAPPER_DIR}/test)
 
 # When we don't have dependencies we can't build the tests
 if (BUILD_TESTS AND NOT HAVE_DEPENDENCIES)
     set(BUILD_TESTS OFF)
 endif ()
-
-# Set the paths we need for building libsemsim + dependencies
-include(${CMAKE_SOURCE_DIR}/cmake/SetPaths.cmake)
 
 
 #################################################################
@@ -93,7 +78,11 @@ include(${CMAKE_SOURCE_DIR}/cmake/SetPaths.cmake)
 #
 if (NOT HAVE_DEPENDENCIES)
     project(libsemsim-superbuild)
-    include(cmake/DeterminePlatform.cmake)
+    DeterminePlatform() #defined ${PLATFORM}
+
+    # Set the paths we need for building libsemsim + dependencies
+    SetPaths("${PLATFORM}")
+
     #update apt
     #    execute_process(COMMAND sudo apt update)
 
@@ -117,7 +106,70 @@ if (NOT HAVE_DEPENDENCIES)
 else ()
     message(STATUS "BUILDING LIBSEMSIM")
     project(libsemsim LANGUAGES CXX VERSION 0.1.5)
-    include(cmake/DeterminePlatform.cmake)
+    DeterminePlatform()
+    message(STATUS "PLATFORM ${PLATFORM}")
+    # Set the paths we need for building libsemsim + dependencies
+    SetPaths(${PLATFORM})
+
+
+    if (PLATFORM STREQUAL "windows-msvc")
+
+        set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its D:\\vcpkg")
+        set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "The vcpkg triplet to use")
+#        set(CMAKE_GENERATOR_PLATFORM "x64-windows")
+        set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Path to vcpkg toolchain file")
+        set(VCPKG_X64_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/x64-windows")
+        set(VCPKG_X64_LIB_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/lib")
+        set(VCPKG_X64_INCLUDE_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/include")
+
+        if (NOT EXISTS ${CMAKE_TOOLCHAIN_FILE})
+            message(FATAL_ERROR "No vcpkg toolchain installed. Have you configured vcpkg yet? If so,
+pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
+        endif ()
+
+        find_library(LIBXML2_LIBRARY
+                NAMES libxml
+                PATHS ${VCPKG_X64_LIB_DIR}
+                REQUIRED
+                )
+
+        message(STATUS "VCPKG_X64_INCLUDE_DIR ${VCPKG_X64_INCLUDE_DIR}")
+        message(STATUS "before LIBXML2_LIBRARY ${LIBXML2_LIBRARY}")
+
+#        find_path(LIBXML2_INCLUDE_DIR
+#                NAMES libxml/parser.h
+#                PATHS ${VCPKG_X64_INCLUDE_DIR}
+#                REQUIRED
+#                )
+
+        message(STATUS " after LIBXML2_LIBRARY ${LIBXML2_LIBRARY}")
+#        message(STATUS "EXISTS ${LIBXML2_LIBRARY}")
+#        if (NOT EXISTS "${LIBXML2_LIBRARY}")
+#            message(FATAL_ERROR "Libxml not found")
+#        endif ()
+
+        find_library(CURL_LIBRARY
+                NAMES libcurl
+                PATHS ${VCPKG_X64_LIB_DIR}
+                REQUIRED
+                )
+
+        find_path(CURL_INCLUDE_DIR
+                NAMES curl/curl.h
+                PATHS ${VCPKG_X64_INCLUDE_DIR}
+                REQUIRED
+                )
+
+        message(STATUS "LIBXML2_LIBRARY ${LIBXML2_LIBRARY}")
+        message(STATUS "LIBXML2_INCLUDE_DIR ${LIBXML2_INCLUDE_DIR}")
+        message(STATUS "CURL_LIBRARY ${CURL_LIBRARY}")
+        message(STATUS "CURL_INCLUDE_DIR ${CURL_INCLUDE_DIR}")
+
+#        if (NOT EXISTS "${CURL_LIBRARY}")
+#            message(FATAL_ERROR "curl not found")
+#        endif ()
+    endif (PLATFORM STREQUAL "windows-msvc")
+
 
     # we have either just compiled the dependencies
     #  or indicated that we already have them by
@@ -130,10 +182,10 @@ else ()
     #        endif ()
     #    endforeach ()
 
-    find_package(ICU 60 COMPONENTS uc i18n)
-    if (NOT ICU_FOUND)
-        message(WARNING "ICU not found. On linux, `sudo apt install icu-devtools` and try again.")
-    endif ()
+#    find_package(ICU 60 COMPONENTS uc i18n)
+#    if (NOT ICU_FOUND)
+#        message(WARNING "ICU not found. On linux, `sudo apt install icu-devtools` and try again.")
+#    endif ()
 
     message(STATUS "ICU_LIBRARIES ${ICU_c_LIBRARIES}")
 
@@ -147,7 +199,9 @@ else ()
 
     set(INCLUDE_DIRS
             ${CMAKE_SOURCE_DIR}/src
+            ${CURL_INCLUDE_DIR}
             ${LIBXML2_INCLUDE_DIR}
+
             ${LIBSBML_DEPS_INCLUDE_DIR}
             ${LIBSBML_INCLUDE_DIR}
             ${ZLIB_INCLUDE_DIR}
@@ -271,7 +325,6 @@ else ()
     if (BUILD_DOCS)
         add_subdirectory(docs)
     endif ()
-
 
 endif ()
 
