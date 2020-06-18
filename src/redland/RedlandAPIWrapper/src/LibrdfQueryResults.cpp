@@ -15,7 +15,7 @@ namespace redland {
     }
 
     std::string LibrdfQueryResults::str(std::string format) {
-        return std::__cxx11::string();
+        return std::string();
     }
 
 
