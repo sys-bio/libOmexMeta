@@ -31,10 +31,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 #ifdef HAVE_STRINGS_H
-
-#  include <strings.h>
-
+#include <strings.h>
+#else
+#include <string.h>
 #endif
 
 #include <stdio.h>
