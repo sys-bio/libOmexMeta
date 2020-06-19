@@ -20,6 +20,8 @@
  * 
  * 
  */
+#ifndef RASQAL_DECIMAL_C
+#define RASQAL_DECIMAL_C
 
 #ifdef HAVE_CONFIG_H
 
@@ -1047,3 +1049,4 @@ main(int argc, char *argv[]) {
 }
 
 #endif /* STANDALONE */
+#endif // RASQAL_DECIMAL_C

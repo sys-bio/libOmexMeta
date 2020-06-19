@@ -171,6 +171,7 @@ add_definitions(-DHAVE_CONFIG_H)
 configure_file(raptor2.h.in raptor2.h @ONLY)
 
 add_library(raptor2
+        raptor_config.h
         raptor_avltree.c
         raptor_concepts.c
         raptor_general.c

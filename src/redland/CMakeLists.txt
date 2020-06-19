@@ -80,6 +80,9 @@ set(RAPTOR_SOURCES
         ${RAPTOR_SOURCE_DIR}/raptor_avltree.c
         ${RAPTOR_SOURCE_DIR}/raptor_concepts.c
         ${RAPTOR_SOURCE_DIR}/raptor_config.h
+        ${RAPTOR_SOURCE_DIR}/raptor_config_linux.h
+        ${RAPTOR_SOURCE_DIR}/raptor_config_windows.h
+#        ${RAPTOR_SOURCE_DIR}/raptor_win32.c // removed in favour of above
         ${RAPTOR_SOURCE_DIR}/raptor_escaped.c
         ${RAPTOR_SOURCE_DIR}/raptor_general.c
         ${RAPTOR_SOURCE_DIR}/raptor_grddl.c

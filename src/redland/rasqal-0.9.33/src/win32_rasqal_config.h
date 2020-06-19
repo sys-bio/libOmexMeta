@@ -22,8 +22,8 @@
  */
 
 
-#ifndef WIN32_CONFIG_H
-#define WIN32_CONFIG_H
+#ifndef WIN32_RASQAL_CONFIG_H
+#define WIN32_RASQAL_CONFIG_H
 
 
 #ifdef __cplusplus

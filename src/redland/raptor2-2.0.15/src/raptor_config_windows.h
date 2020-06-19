@@ -1,6 +1,16 @@
 /* src/raptor_config.h.  Generated from raptor_config.h.in by configure.  */
 /* src/raptor_config.h.in.  Generated from configure.ac by autoheader.  */
 
+#ifndef RAPTOR_CONFIG_WINDOWS_H
+#define RAPTOR_CONFIG_WINDOWS_H
+
+#ifdef WIN32
+
+#include <windows.h>
+//#include <minwindef.h>
+
+
+
 /* Define if building universal (internal helper macro) */
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
 
@@ -134,7 +144,7 @@
 #define HAVE_UNISTD_H 1
 
 /* Define to 1 if you have the `vasprintf' function. */
-#define HAVE_VASPRINTF 1
+//#define HAVE_VASPRINTF 1 // unavailable in msvc
 
 /* Define to 1 if you have the `vsnprintf' function. */
 #define HAVE_VSNPRINTF 1
@@ -345,3 +355,16 @@
 #ifndef __cplusplus
 /* #undef inline */
 #endif
+
+
+
+/* DLL entry point */
+BOOL APIENTRY
+DllMain(HANDLE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
+{
+  return TRUE;
+}
+
+
+#endif //WIN32
+#endif // RAPTOR_CONFIG_WINDOWS_H

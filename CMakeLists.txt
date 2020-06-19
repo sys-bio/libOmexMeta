@@ -130,6 +130,10 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
         endif ()
 
 
+        message(WARNING "You have used a different variable on windows
+        to store libxml2 include and libraries. You'll want to change
+        this when you have MSVC working. ")
+
         find_library(LIBXML2_STATIC_LIBRARY2
                 NAMES libxml2.lib libxml2 xml2 xml2.lib
                 PATHS
@@ -232,12 +236,14 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address")# -OX")
     ENDIF ()
 
+    #    INCLUDE(CheckIncludeFile)
+    #    CHECK_INCLUDE_FILE(<libxml/parser.h> HAVE_LIBXML2)
+
 
     set(INCLUDE_DIRS
             ${CMAKE_SOURCE_DIR}/src
             ${CURL_INCLUDE_DIR}
             ${LIBXML2_INCLUDE_DIR2}
-
             ${LIBSBML_DEPS_INCLUDE_DIR}
             ${LIBSBML_INCLUDE_DIR}
             ${ZLIB_INCLUDE_DIR}
@@ -254,8 +260,6 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
             )
 
     #https://cmake.cmake.narkive.com/lzDZk3kO/autoheader-like-functionality
-
-    MESSAGE(status "LIBXML2_LIBRARIES ${LIBXML2_LIBRARIES}")
 
     set(LINK_LIBRARIES
             # order matters: top of the dependency chain first

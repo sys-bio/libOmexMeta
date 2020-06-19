@@ -22,6 +22,9 @@
  * 
  */
 
+#ifndef RASQAL_LITERAL_C
+#define RASQAL_LITERAL_C
+
 #ifdef HAVE_CONFIG_H
 
 #include <rasqal_config.h>
@@ -4997,3 +5000,5 @@ main(int argc, char *argv[])
   return failures;
 }
 #endif /* STANDALONE */
+
+#endif // RASQAL_LITERAL_C

@@ -21,6 +21,9 @@
  * 
  */
 
+#ifndef RASQAL_DOUBLE_C
+#define RASQAL_DOUBLE_C
+
 #ifdef HAVE_CONFIG_H
 
 #include <rasqal_config.h>
@@ -98,3 +101,5 @@ int
 rasqal_double_approximately_equal(double a, double b) {
     return !rasqal_double_approximately_compare(a, b);
 }
+
+#endif // RASQAL_DOUBLE_C

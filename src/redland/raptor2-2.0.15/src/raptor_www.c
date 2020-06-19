@@ -21,10 +21,12 @@
  * 
  * 
  */
-
+#ifndef RAPTOR_WWW_C
+#define RAPTOR_WWW_C
 
 #ifdef HAVE_CONFIG_H
 
+#include <stdio.h>
 #include <raptor_config.h>
 
 #endif
@@ -805,3 +807,5 @@ raptor_www_set_final_uri_handler(raptor_www *www,
     www->final_uri_handler = handler;
     www->final_uri_userdata = user_data;
 }
+
+#endif //#ifndef RAPTOR_WWW_C

@@ -6,9 +6,12 @@
  * Tue Aug 08 22:49:12 2006 +0000
  * 
  */
+#ifndef SNPRINTF_C
+#define SNPRINTF_C
 
 #ifdef HAVE_CONFIG_H
 
+#include <stdio.h>
 #include <raptor_config.h>
 
 #endif
@@ -267,6 +270,7 @@ raptor_vasprintf(char **ret, const char *format, va_list arguments) {
 
 #ifdef HAVE_VASPRINTF
     length = vasprintf(ret, format, arguments);
+//    length = vsprintf_s(ret, format, arguments);
 #else
     va_copy(args_copy, arguments);
     length = raptor_vsnprintf2(NULL, 0, format, args_copy);
@@ -446,3 +450,4 @@ main(int argc, char *argv[])
 
 
 #endif /* STANDALONE */
+#endif // SNPRINTF_C

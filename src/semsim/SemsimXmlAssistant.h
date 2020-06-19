@@ -13,8 +13,6 @@
 #include <memory>
 #include "MetaID.h"
 #include <utility>
-#include <libxml/parser.h>
-#include <libxml/tree.h>
 #include "SemsimUtils.h"
 
 namespace semsim {
