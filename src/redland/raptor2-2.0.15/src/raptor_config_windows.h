@@ -358,12 +358,15 @@
 #endif
 
 
+// some windows replacements
+#define strcasecmp _stricmp
+#define strncasecmp _strnicmp
+
 
 /* DLL entry point */
 BOOL APIENTRY
-DllMain(HANDLE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
-{
-  return TRUE;
+DllMain(HANDLE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
+    return TRUE;
 }
 
 

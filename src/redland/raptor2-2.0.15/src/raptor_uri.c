@@ -68,6 +68,9 @@
 
 #endif
 
+#ifdef WIN32
+#include  <io.h> // for check file exist on windows
+#endif
 
 
 /* Raptor includes */
@@ -1690,6 +1693,11 @@ raptor_uri_get_world(raptor_uri *uri) {
 int
 raptor_uri_filename_exists(const unsigned char *path) {
     int exists = -1;
+#ifdef WIN32
+    if(_access((const char*)path, 0) == 0){
+        exists = 1;
+    }
+#else
 #ifdef HAVE_STAT
     struct stat stat_buffer;
 #endif
@@ -1703,8 +1711,9 @@ raptor_uri_filename_exists(const unsigned char *path) {
 #else
     exists = (access(path, R_OK) < 0) ? -1 : 1;
 #endif
-
+#endif
     return exists;
+
 }
 
 
