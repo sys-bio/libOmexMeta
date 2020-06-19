@@ -91,7 +91,7 @@ extern "C" {
 #define HAVE_BDB_FD_2_ARGS 1
 
 /* Have BDB hash support */
-#define HAVE_BDB_HASH 1
+//#define HAVE_BDB_HASH 1
 
 /* BDB has open method with 6 args */
 /* #undef HAVE_BDB_OPEN_6_ARGS */
@@ -263,7 +263,7 @@ extern "C" {
 /*#undef STORAGE_POSTGRESQL*/
 
 /* Building SQLite storage */
-#define STORAGE_SQLITE 1
+//#define STORAGE_SQLITE 1
 
 /* Building 3store storage */
 /*#undef STORAGE_TSTORE*/

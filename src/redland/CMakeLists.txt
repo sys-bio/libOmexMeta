@@ -381,6 +381,7 @@ add_library(redland-combined STATIC
         ${WRAPPER_SOURCES}
         )
 set_target_properties(redland-combined PROPERTIES POSITION_INDEPENDENT_CODE ON)
+set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
 target_include_directories(redland-combined PUBLIC
         ${INCLUDE_DIRECTORIES}

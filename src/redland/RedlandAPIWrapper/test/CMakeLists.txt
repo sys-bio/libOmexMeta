@@ -14,6 +14,9 @@ set(REDLAND_WRAPPER_TEST_SOURCES
 
 add_executable(redland-wrapper-tests ${REDLAND_WRAPPER_TEST_SOURCES})
 
+#ignored on other platforms
+set_target_properties(redland-wrapper-tests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+
 add_dependencies(redland-wrapper-tests redland-combined)
 
 target_include_directories(redland-wrapper-tests PRIVATE

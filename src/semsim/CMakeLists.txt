@@ -65,6 +65,10 @@ set(SEMSIM_LIBRARY semsim)
 # static library
 add_library(semsim-static STATIC ${SEMSIM_HEADERS} ${SEMSIM_SOURCES})
 
+# set runtime static for windows (ignored on other systems)
+set_property(TARGET semsim-static PROPERTY
+        MSVC_RUNTIME_LIBRARY "MultiThreaded")
+
 # add target headers so they install correctly
 set_target_properties(semsim-static PROPERTIES PUBLIC_HEADER "${SEMSIM_HEADERS}")
 
@@ -104,6 +108,10 @@ if (BUILD_SHARED)
 
     # shared library
     add_library(semsim SHARED "${SEMSIM_HEADERS}" "${SEMSIM_SOURCES}" Preproc.h)
+
+    # set runtime static for windows (ignored on other systems)
+    set_property(TARGET semsim PROPERTY
+            MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
 
     add_dependencies(semsim redland-combined)
     target_include_directories(semsim PUBLIC

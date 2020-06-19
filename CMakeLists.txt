@@ -115,6 +115,9 @@ else ()
 
     if (PLATFORM STREQUAL "windows-msvc")
 
+        # static runtime?
+        # define REDLAND_STATIC for static runtime.
+
         set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its D:\\vcpkg")
         set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "The vcpkg triplet to use")
         #        set(CMAKE_GENERATOR_PLATFORM "x64-windows")
@@ -261,26 +264,55 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
 
     #https://cmake.cmake.narkive.com/lzDZk3kO/autoheader-like-functionality
 
-    set(LINK_LIBRARIES
-            # order matters: top of the dependency chain first
-            # i.e. if A depends on B, A should come before B in this list
-            -Wl,--whole-archive
-            #            ${LIBXSLT_LIBRARY}
-            ${LIBXSLT_STATIC_LIBRARY}
-            ${LIBXML2_STATIC_LIBRARY2}
-            ${CURL_STATIC_LIBRARY}
-            -Wl,--no-whole-archive
-            #            ${LIBXML2_LIBRARIES}
-            #            -Wl,--whole-archive
-            #            ${ICONV_STATIC_LIBRARY}
-            #            -Wl,--no-whole-archive
-            #            sqlite3
-            #            ltdl ${CMAKE_DL_LIBS}
-            #            pcre
-            #            yajl
-            #            ${LIBCURL_LIBRARY}
-            #            stdc++fs
-            )
+    if (${PLATFORM} STREQUAL "windows-msvc")
+        set(LINK_LIBRARIES
+                # order matters: top of the dependency chain first
+                # i.e. if A depends on B, A should come before B in this list
+                -Wl,--whole-archive
+                #            ${LIBXSLT_LIBRARY}
+                ${LIBXSLT_STATIC_LIBRARY}
+                ${LIBXML2_STATIC_LIBRARY2}
+                ${CURL_STATIC_LIBRARY}
+                -Wl,--no-whole-archive
+                #            ${LIBXML2_LIBRARIES}
+                #            -Wl,--whole-archive
+                #            ${ICONV_STATIC_LIBRARY}
+                #            -Wl,--no-whole-archive
+                #            sqlite3
+                #            ltdl ${CMAKE_DL_LIBS}
+                #            pcre
+                #            yajl
+                #            ${LIBCURL_LIBRARY}
+                #            stdc++fs
+                )
+
+    else (${PLATFORM} STREQUAL "windows-msvc")
+
+        set(LINK_LIBRARIES
+                # order matters: top of the dependency chain first
+                # i.e. if A depends on B, A should come before B in this list
+                #            -Wl,--whole-archive
+                #            ${LIBCOMBINE_STATIC_LIBRARY}
+                #            ${LIBSBML_STATIC_LIBRARY}
+                #            -Wl,--no-whole-archive
+                #            ${ZIPPER_STATIC_LIBRARY}
+                #                            -Wl,--whole-archive
+                #            ${ZLIB_STATIC_LIBRARY}
+                #            ${BZ2_STATIC_LIBRARY}
+                xslt
+                -Wl,--no-whole-archive
+                ${LIBXML2_LIBRARY}
+                -Wl,--whole-archive
+                ${ICONV_STATIC_LIBRARY}
+                -Wl,--no-whole-archive
+                sqlite3
+                ltdl ${CMAKE_DL_LIBS}
+                pcre
+                yajl
+                ${LIBCURL_LIBRARY}
+                stdc++fs
+                )
+    endif (${PLATFORM} STREQUAL "windows-msvc")
     # This is what i was using for a while. it worked on linux
     #    set(LINK_LIBRARIES
     #            # order matters: top of the dependency chain first

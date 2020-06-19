@@ -85,13 +85,7 @@ TEST_F(LibrdfParserTests, TestParseFromAFile) {
                              "    <bqbiol:is rdf:resource=\"https://identifiers.org/fma/FMA_66835\"/>\n"
                              "  </rdf:Description>\n"
                              "</rdf:RDF>\n";
-#ifdef WIN32
-
-#include "filesystem"
     std::string fname = std::filesystem::current_path().string() + "/example_rdf.rdf";
-#elif defined(__linux__)
-    std::string fname = std::experimental::filesystem::current_path().string() + "/example_rdf.rdf";
-#endif
 
     std::cout << fname << std::endl;
 

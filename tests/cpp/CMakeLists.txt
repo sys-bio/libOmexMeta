@@ -25,7 +25,7 @@ set(TEST_SOURCES
         QueryTests.cpp
         EditorTests.cpp
         RDFReadAndWriteTests.cpp
-                CAPITests.cpp
+        CAPITests.cpp
 
         #        ReaderTests.cpp
         #        WriterTests.cpp
@@ -39,8 +39,12 @@ endif ()
 
 add_executable(semsim-tests ${TEST_SOURCES})
 
-target_compile_options(semsim-tests PRIVATE -g)
+#ignored on other platforms
+set_target_properties(semsim-tests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
+if (NOT ${PLATFORM} STREQUAL "window-msvc")
+    target_compile_options(semsim-tests PRIVATE -g)
+endif ()
 add_dependencies(semsim-tests semsim-static)
 
 message(STATUS "LINK_LIBRARIES ${LINK_LIBRARIES}")
