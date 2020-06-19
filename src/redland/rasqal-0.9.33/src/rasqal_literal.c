@@ -28,11 +28,7 @@
 
 #endif
 
-#ifdef WIN32
 
-#include <win32_rasqal_config.h>
-
-#endif
 
 /* for strtof() and round() prototypes */
 #define _ISOC99_SOURCE 1
@@ -41,7 +37,6 @@
 #include <string.h>
 
 #ifdef HAVE_STRINGS_H
-
 #include <strings.h>
 
 #endif
@@ -53,17 +48,20 @@
 #include <stdlib.h>
 
 #endif
+
 /* for ptrdiff_t */
-#ifdef HAVE_STDDEF_H
-
 #include <stddef.h>
-
-#endif
+//#ifdef HAVE_STDDEF_H
+//
+//#endif
 
 #include <stdarg.h>
 /* for isnan() */
 
-#include <math.h>
+// math.h must be include beore float.h
+//#include <math.h>
+//#include <float.h>
+
 
 /* for INT_MIN and INT_MAX */
 #ifdef HAVE_LIMITS_H
@@ -74,11 +72,6 @@
 #ifdef HAVE_ERRNO_H
 
 #include <errno.h>
-
-#endif
-#ifdef HAVE_FLOAT_H
-
-#include <float.h>
 
 #endif
 
@@ -4916,19 +4909,19 @@ static const struct {
 
 
 int
-main(int argc, char *argv[]) 
+main(int argc, char *argv[])
 {
   const char *program = rasqal_basename(argv[0]);
   int failures = 0;
   rasqal_world *world;
   int test_id;
-  
+
   world = rasqal_new_world();
   if(!world || rasqal_world_open(world)) {
     fprintf(stderr, "%s: rasqal_world init failed\n", program);
     return(1);
   }
-    
+
   /* test */
   fprintf(stderr, "%s: Testing literals\n", program);
 
@@ -4941,7 +4934,7 @@ main(int argc, char *argv[])
     int i;
     raptor_sequence* seq2;
     rasqal_map* map;
-    
+
     seq = rasqal_new_literal_sequence_of_sequence_from_data(world,
                                                             test_data[test_id].data,
                                                             width);
@@ -4955,7 +4948,7 @@ main(int argc, char *argv[])
             test_id);
     raptor_sequence_print(seq, DEBUG_FH);
     fputc('\n', DEBUG_FH);
-    
+
     map = rasqal_new_literal_sequence_sort_map(1 /* is_distinct */,
                                                0 /* compare_flags */);
     if(!map) {
@@ -4965,17 +4958,17 @@ main(int argc, char *argv[])
       raptor_free_sequence(seq);
       continue;
     }
-    
+
     duplicates = 0;
     count = 0;
     for(i = 0;
-        (seq2 = (raptor_sequence*)raptor_sequence_delete_at(seq, i)); 
+        (seq2 = (raptor_sequence*)raptor_sequence_delete_at(seq, i));
         i++) {
       int rc;
-      
+
       rc = rasqal_literal_sequence_sort_map_add_literal_sequence(map, seq2);
       if(rc) {
-        fprintf(DEBUG_FH, "%s: Test %d literal seq %d is a duplicate\n", 
+        fprintf(DEBUG_FH, "%s: Test %d literal seq %d is a duplicate\n",
                 program, test_id, i);
         duplicates++;
       } else
@@ -4984,7 +4977,7 @@ main(int argc, char *argv[])
     rasqal_free_map(map);
 
 #if defined(RASQAL_DEBUG) && RASQAL_DEBUG > 1
-    fprintf(DEBUG_FH, "%s: Test %d had %d duplicates\n", program, test_id, 
+    fprintf(DEBUG_FH, "%s: Test %d had %d duplicates\n", program, test_id,
             duplicates);
 #endif
 
@@ -4996,7 +4989,7 @@ main(int argc, char *argv[])
       failures++;
     }
   }
-  
+
 
   tidy:
   rasqal_free_world(world);

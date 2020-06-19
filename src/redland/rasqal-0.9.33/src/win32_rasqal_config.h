@@ -30,8 +30,11 @@
 extern "C" {
 #endif
 
+
+
 #define WIN32_LEAN_AND_MEAN 1
 #include <windows.h>
+
 
 /* getopt is not in standard win32 C library - define if we have it */
 /* #define HAVE_GETOPT_H 1 */
@@ -65,12 +68,12 @@ struct timezone {
 };
 
 int rasqal_gettimeofday(struct timeval *tv, struct timezone *tz);
-#undef HAVE_GETTIMEOFDAY
 
+#undef HAVE_GETTIMEOFDAY
+#include <math.h>
 #include <float.h>
-//#define isnan(n) _isnan(n)
-/* no round function available */
-#define round(x) floor(x+0.5)
+
+
 
 /* These are SPARQL token definitions */
 #ifdef OPTIONAL
@@ -89,6 +92,33 @@ int rasqal_gettimeofday(struct timeval *tv, struct timezone *tz);
 #undef GROUP
 #endif
 
+// File on Linux, HFile on windows
+//#ifdef __linux
+//#define FILE FILE
+//#elif defined(WIN32)
+//#define HFILE FILE
+//#endif
+
+// We can use mpfr on windows as well
+//#define RASQAL_DECIMAL_MPFR 1
+//#define HAVE_MPFR_H 1
+
+
+/*
+ * Added by ciaran welsh
+ */
+#define HAVE_FLOAT_H 1 // we have on windows and linux.
+#define HAVE_LIMITS_H 1 // we have on windows and linux.
+#define HAVE_CONFIG_H 1
+
+//#ifdef __cplusplus
+//
+//#else
+//
+//#endif
+
+
+#define RASQAL_DECIMAL_NONE 1
 
 #define HAVE_C99_VSNPRINTF 1
 
@@ -106,6 +136,7 @@ int rasqal_gettimeofday(struct timeval *tv, struct timezone *tz);
 
 #include <io.h>
 #include <memory.h>
+
 
 /* Release version as a decimal */
 #define RASQAL_VERSION 933
@@ -153,11 +184,12 @@ int rasqal_gettimeofday(struct timeval *tv, struct timezone *tz);
 /* Use PCRE regex library */
 //#define RASQAL_REGEX_PCRE 1
 
+
+
 #define HAVE_LIBXML_SCHEMASINTERNALS_H 1
 #define HAVE_LIBXML_XMLSCHEMASTYPES_H 1
 #define HAVE_LIBXML_XMLSCHEMAS_H 1
 
-#define RASQAL_DECIMAL_NONE 1
 #define RASQAL_UUID_INTERNAL 1
 #define RASQAL_DIGEST_INTERNAL 1
 
@@ -168,5 +200,7 @@ int rasqal_gettimeofday(struct timeval *tv, struct timezone *tz);
 #ifdef __cplusplus
 }
 #endif
+
+
 
 #endif

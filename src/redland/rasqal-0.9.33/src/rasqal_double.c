@@ -31,19 +31,13 @@
 #include <win32_rasqal_config.h>
 #endif
 
+// math.h must be included before float.h
 /* for frexp(), fabs() and ldexp() - all C99 */
-#ifdef HAVE_MATH_H
-
-#include <math.h>
-
-#endif
-
+//#include <math.h>
 /* for double and float constants */
-#ifdef HAVE_FLOAT_H
+//#include <float.h>
 
-#include <float.h>
 
-#endif
 
 #include "rasqal.h"
 #include "rasqal_internal.h"
@@ -68,6 +62,7 @@ rasqal_double_approximately_compare(double a, double b) {
     double difference;
 
     /* Get larger exponent of a or b into exponent */
+//    frexp(fabs(a) > fabs(b) ? a : b, &exponent);
     frexp(fabs(a) > fabs(b) ? a : b, &exponent);
 
     /* Multiply epsilon by 2^exponent to get delta */

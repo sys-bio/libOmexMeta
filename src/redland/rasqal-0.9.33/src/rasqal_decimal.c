@@ -27,20 +27,14 @@
 
 #endif
 
-/*
- * Commented out by ciaran welsh on 19/06/2020
- *
- */
-#ifdef __linux__
-#include <math.h>
-#else
-#include <cmath>
-#endif
+//#include <math.h>
+//#include <float.h>
 
 
-#ifdef WIN32
-#include <win32_rasqal_config.h>
-#endif
+// Already covered in rasqal_config.h
+//#ifdef WIN32
+//#include <win32_rasqal_config.h>
+//#endif
 
 /* for round() prototype */
 #define _ISOC99_SOURCE 1
@@ -56,14 +50,9 @@
 
 #include <stdarg.h>
 
-#ifdef HAVE_FLOAT_H
-
-#include <float.h>
-
-#endif
-
 #include "rasqal.h"
 #include "rasqal_internal.h"
+
 
 #ifndef STANDALONE
 
@@ -112,6 +101,7 @@ static void rasqal_xsd_decimal_clear(rasqal_xsd_decimal *dec);
 /* No implementation - use double. */
 #define RASQAL_DECIMAL_RAW double
 #define RASQAL_DECIMAL_ROUNDING int
+
 #include <float.h>
 
 #endif
@@ -223,7 +213,7 @@ rasqal_xsd_decimal_clear(rasqal_xsd_decimal *dec) {
     mpf_clear(dec->raw);
 #endif
 #ifdef RASQAL_DECIMAL_NONE
-    dec->raw= 0e0;
+    dec->raw = 0e0;
 #endif
 }
 
@@ -289,7 +279,7 @@ rasqal_xsd_decimal_set_long(rasqal_xsd_decimal *dec, long l) {
     rasqal_xsd_decimal_clear_string(dec);
 
 #if defined(RASQAL_DECIMAL_C99) || defined(RASQAL_DECIMAL_NONE)
-    dec->raw=l;
+    dec->raw = l;
 #endif
 #ifdef RASQAL_DECIMAL_MPFR
     rc = mpfr_set_si(dec->raw, l, dec->rounding);
@@ -317,7 +307,7 @@ rasqal_xsd_decimal_set_double(rasqal_xsd_decimal *dec, double d) {
     rasqal_xsd_decimal_clear_string(dec);
 
 #if defined(RASQAL_DECIMAL_C99) || defined(RASQAL_DECIMAL_NONE)
-    dec->raw=d;
+    dec->raw = d;
 #endif
 #ifdef RASQAL_DECIMAL_MPFR
     mpfr_set_d(dec->raw, d, dec->rounding);
@@ -342,7 +332,7 @@ rasqal_xsd_decimal_get_double(rasqal_xsd_decimal *dec) {
     double result = 0e0;
 
 #if defined(RASQAL_DECIMAL_C99) || defined(RASQAL_DECIMAL_NONE)
-    result=(double)dec->raw;
+    result = (double) dec->raw;
 #endif
 #ifdef RASQAL_DECIMAL_MPFR
     result = mpfr_get_d(dec->raw, dec->rounding);
@@ -368,7 +358,7 @@ rasqal_xsd_decimal_get_long(rasqal_xsd_decimal *dec, int *error_p) {
     long result = 0;
 
 #if defined(RASQAL_DECIMAL_C99) || defined(RASQAL_DECIMAL_NONE)
-    result=(long)dec->raw;
+    result = (long) dec->raw;
 #endif
 #ifdef RASQAL_DECIMAL_MPFR
     if(!mpfr_fits_slong_p(dec->raw, dec->rounding)) {
@@ -671,10 +661,10 @@ rasqal_xsd_decimal_divide(rasqal_xsd_decimal *result,
         return 1;
 
 #if defined(RASQAL_DECIMAL_C99) || defined(RASQAL_DECIMAL_NONE)
-        result->raw = a->raw / b->raw;
+    result->raw = a->raw / b->raw;
 #endif
 #ifdef RASQAL_DECIMAL_MPFR
-        mpfr_div(result->raw, a->raw, b->raw, result->rounding);
+    mpfr_div(result->raw, a->raw, b->raw, result->rounding);
 #endif
 #ifdef RASQAL_DECIMAL_GMP
     mpf_div(result->raw, a->raw, b->raw);

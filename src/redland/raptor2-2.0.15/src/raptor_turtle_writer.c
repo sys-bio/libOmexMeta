@@ -51,7 +51,7 @@
 
 #endif
 
-#include <math.h>
+//#include <math.h>
 
 /* Raptor includes */
 #include "raptor2.h"

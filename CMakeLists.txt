@@ -175,6 +175,18 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
                 REQUIRED
                 )
 
+        find_library(MPFR_STATIC_LIBRARY
+                NAMES mpfr.lib mpfr
+                PATHS ${VCPKG_X64_LIB_DIR}
+                REQUIRED
+                )
+
+        find_path(MPFR_INCLUDE_DIR
+                NAMES mpfr.h
+                PATHS ${VCPKG_X64_INCLUDE_DIR}
+                REQUIRED
+                )
+
         message(STATUS "LIBXML2_STATIC_LIBRARY2 ${LIBXML2_STATIC_LIBRARY2}")
         message(STATUS "LIBXML2_INCLUDE_DIR2 ${LIBXML2_INCLUDE_DIR2}")
         message(STATUS "LIBXSLT_STATIC_LIBRARY ${LIBXSLT_STATIC_LIBRARY}")
