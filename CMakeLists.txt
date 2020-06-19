@@ -117,10 +117,11 @@ else ()
 
         set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its D:\\vcpkg")
         set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "The vcpkg triplet to use")
-#        set(CMAKE_GENERATOR_PLATFORM "x64-windows")
+        #        set(CMAKE_GENERATOR_PLATFORM "x64-windows")
         set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Path to vcpkg toolchain file")
         set(VCPKG_X64_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/x64-windows")
         set(VCPKG_X64_LIB_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/lib")
+        set(VCPKG_X64_BIN_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/bin")
         set(VCPKG_X64_INCLUDE_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/include")
 
         if (NOT EXISTS ${CMAKE_TOOLCHAIN_FILE})
@@ -128,29 +129,42 @@ else ()
 pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
         endif ()
 
-        find_library(LIBXML2_LIBRARY
-                NAMES libxml
+
+        find_library(LIBXML2_STATIC_LIBRARY2
+                NAMES libxml2.lib libxml2 xml2 xml2.lib
+                PATHS
+                ${VCPKG_X64_LIB_DIR}
+                #                D:/vcpkg/installed/x64-windows/lib
+                )
+
+
+        find_path(LIBXML2_INCLUDE_DIR2
+                NAMES libxml/parser.h
+                PATHS ${VCPKG_X64_INCLUDE_DIR}
+                REQUIRED
+                )
+
+        find_library(LIBXSLT_STATIC_LIBRARY
+                NAMES libxslt
                 PATHS ${VCPKG_X64_LIB_DIR}
                 REQUIRED
                 )
 
-        message(STATUS "VCPKG_X64_INCLUDE_DIR ${VCPKG_X64_INCLUDE_DIR}")
-        message(STATUS "before LIBXML2_LIBRARY ${LIBXML2_LIBRARY}")
+        find_path(LIBXSLT_INCLUDE_DIR
+                NAMES libxslt/libxslt.h
+                PATHS ${VCPKG_X64_INCLUDE_DIR}
+                REQUIRED
+                )
 
-#        find_path(LIBXML2_INCLUDE_DIR
-#                NAMES libxml/parser.h
-#                PATHS ${VCPKG_X64_INCLUDE_DIR}
-#                REQUIRED
-#                )
 
-        message(STATUS " after LIBXML2_LIBRARY ${LIBXML2_LIBRARY}")
-#        message(STATUS "EXISTS ${LIBXML2_LIBRARY}")
-#        if (NOT EXISTS "${LIBXML2_LIBRARY}")
-#            message(FATAL_ERROR "Libxml not found")
-#        endif ()
+        #        message(STATUS " after LIBXML2_LIBRARY ${LIBXML2_LIBRARY}")
+        #        message(STATUS "EXISTS ${LIBXML2_LIBRARY}")
+        #        if (NOT EXISTS "${LIBXML2_LIBRARY}")
+        #            message(FATAL_ERROR "Libxml not found")
+        #        endif ()
 
-        find_library(CURL_LIBRARY
-                NAMES libcurl
+        find_library(CURL_STATIC_LIBRARY
+                NAMES libcurl curl
                 PATHS ${VCPKG_X64_LIB_DIR}
                 REQUIRED
                 )
@@ -161,14 +175,23 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
                 REQUIRED
                 )
 
-        message(STATUS "LIBXML2_LIBRARY ${LIBXML2_LIBRARY}")
-        message(STATUS "LIBXML2_INCLUDE_DIR ${LIBXML2_INCLUDE_DIR}")
-        message(STATUS "CURL_LIBRARY ${CURL_LIBRARY}")
+        message(STATUS "LIBXML2_STATIC_LIBRARY2 ${LIBXML2_STATIC_LIBRARY2}")
+        message(STATUS "LIBXML2_INCLUDE_DIR2 ${LIBXML2_INCLUDE_DIR2}")
+        message(STATUS "LIBXSLT_STATIC_LIBRARY ${LIBXSLT_STATIC_LIBRARY}")
+        message(STATUS "LIBXSLT_INCLUDE_DIR ${LIBXSLT_INCLUDE_DIR}")
+        message(STATUS "CURL_STATIC_LIBRARY ${CURL_STATIC_LIBRARY}")
         message(STATUS "CURL_INCLUDE_DIR ${CURL_INCLUDE_DIR}")
 
-#        if (NOT EXISTS "${CURL_LIBRARY}")
-#            message(FATAL_ERROR "curl not found")
-#        endif ()
+        SET(LIBRARIES
+                ${LIBXML2_STATIC_LIBRARY2}
+                ${LIBXSLT_STATIC_LIBRARY}
+                ${CURL_STATIC_LIBRARY}
+                )
+        foreach (lib ${LIBRARIES})
+            if (NOT EXISTS "${lib}")
+                message(FATAL_ERROR "${lib} not found")
+            endif ()
+        endforeach ()
     endif (PLATFORM STREQUAL "windows-msvc")
 
 
@@ -183,10 +206,10 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
     #        endif ()
     #    endforeach ()
 
-#    find_package(ICU 60 COMPONENTS uc i18n)
-#    if (NOT ICU_FOUND)
-#        message(WARNING "ICU not found. On linux, `sudo apt install icu-devtools` and try again.")
-#    endif ()
+    #    find_package(ICU 60 COMPONENTS uc i18n)
+    #    if (NOT ICU_FOUND)
+    #        message(WARNING "ICU not found. On linux, `sudo apt install icu-devtools` and try again.")
+    #    endif ()
 
     message(STATUS "ICU_LIBRARIES ${ICU_c_LIBRARIES}")
 
@@ -201,7 +224,7 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
     set(INCLUDE_DIRS
             ${CMAKE_SOURCE_DIR}/src
             ${CURL_INCLUDE_DIR}
-            ${LIBXML2_INCLUDE_DIR}
+            ${LIBXML2_INCLUDE_DIR2}
 
             ${LIBSBML_DEPS_INCLUDE_DIR}
             ${LIBSBML_INCLUDE_DIR}
@@ -220,30 +243,53 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
 
     #https://cmake.cmake.narkive.com/lzDZk3kO/autoheader-like-functionality
 
+    MESSAGE(status "LIBXML2_LIBRARIES ${LIBXML2_LIBRARIES}")
+
     set(LINK_LIBRARIES
             # order matters: top of the dependency chain first
             # i.e. if A depends on B, A should come before B in this list
             -Wl,--whole-archive
-            ${LIBCOMBINE_STATIC_LIBRARY}
-            ${LIBSBML_STATIC_LIBRARY}
+            #            ${LIBXSLT_LIBRARY}
+            ${LIBXSLT_STATIC_LIBRARY}
+            ${LIBXML2_STATIC_LIBRARY2}
+            ${CURL_STATIC_LIBRARY}
             -Wl,--no-whole-archive
-            ${ZIPPER_STATIC_LIBRARY}
-            -Wl,--whole-archive
-            ${ZLIB_STATIC_LIBRARY}
-            ${BZ2_STATIC_LIBRARY}
-            xslt
-            -Wl,--no-whole-archive
-            ${LIBXML2_LIBRARY}
-            -Wl,--whole-archive
-            ${ICONV_STATIC_LIBRARY}
-            -Wl,--no-whole-archive
-            sqlite3
-            ltdl ${CMAKE_DL_LIBS}
-            pcre
-            yajl
-            ${LIBCURL_LIBRARY}
-            stdc++fs
+            #            ${LIBXML2_LIBRARIES}
+            #            -Wl,--whole-archive
+            #            ${ICONV_STATIC_LIBRARY}
+            #            -Wl,--no-whole-archive
+            #            sqlite3
+            #            ltdl ${CMAKE_DL_LIBS}
+            #            pcre
+            #            yajl
+            #            ${LIBCURL_LIBRARY}
+            #            stdc++fs
             )
+    # This is what i was using for a while. it worked on linux
+    #    set(LINK_LIBRARIES
+    #            # order matters: top of the dependency chain first
+    #            # i.e. if A depends on B, A should come before B in this list
+    ##            -Wl,--whole-archive
+    ##            ${LIBCOMBINE_STATIC_LIBRARY}
+    ##            ${LIBSBML_STATIC_LIBRARY}
+    ##            -Wl,--no-whole-archive
+    ##            ${ZIPPER_STATIC_LIBRARY}
+    #            -Wl,--whole-archive
+    ##            ${ZLIB_STATIC_LIBRARY}
+    ##            ${BZ2_STATIC_LIBRARY}
+    #            xslt
+    #            -Wl,--no-whole-archive
+    #            ${LIBXML2_LIBRARY}
+    #            -Wl,--whole-archive
+    #            ${ICONV_STATIC_LIBRARY}
+    #            -Wl,--no-whole-archive
+    #            sqlite3
+    #            ltdl ${CMAKE_DL_LIBS}
+    #            pcre
+    #            yajl
+    #            ${LIBCURL_LIBRARY}
+    #            stdc++fs
+    #            )
 
     # notes on libraries
     # ==================

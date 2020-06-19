@@ -158,7 +158,7 @@ TEST_F(RDFTests, TestParseFromUriNonStatic) {
 
 TEST_F(RDFTests, TestParseFromFile) {
     // first create a file containing annotations
-    std::string fname = std::experimental::filesystem::current_path().string() + "/TestParseFromFile.rdf";
+    std::string fname = std::filesystem::current_path().string() + "/TestParseFromFile.rdf";
     std::cout << fname << std::endl;
     std::ofstream f(fname);
     if (f.is_open()){
@@ -181,7 +181,7 @@ TEST_F(RDFTests, TestParseFromFile) {
 
 TEST_F(RDFTests, TestParseFromFileNonStatic) {
     // first create a file containing annotations
-    std::string fname = std::experimental::filesystem::current_path().string() + "/TestParseFromFile.rdf";
+    std::string fname = std::filesystem::current_path().string() + "/TestParseFromFile.rdf";
     std::cout << fname << std::endl;
     std::ofstream f(fname);
     if (f.is_open()){

@@ -83,10 +83,10 @@ void rasqal_sign_free(void *ptr);
 
 #endif
 
-#ifdef HAVE___FUNCTION__
-#else
-#define __FUNCTION__ "???"
-#endif
+//#ifdef HAVE___FUNCTION__
+//#else
+//#define __FUNCTION__ "???"
+//#endif
 
 #ifdef RASQAL_DEBUG
 /* Debugging messages */

@@ -27,6 +27,17 @@
 
 #endif
 
+/*
+ * Commented out by ciaran welsh on 19/06/2020
+ *
+ */
+#ifdef __linux__
+#include <math.h>
+#else
+#include <cmath>
+#endif
+
+
 #ifdef WIN32
 #include <win32_rasqal_config.h>
 #endif
@@ -40,11 +51,6 @@
 #ifdef HAVE_STDLIB_H
 
 #include <stdlib.h>
-
-#endif
-#ifdef HAVE_MATH_H
-
-#include <math.h>
 
 #endif
 

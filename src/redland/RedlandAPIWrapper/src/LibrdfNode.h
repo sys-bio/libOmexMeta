@@ -24,6 +24,26 @@
  *  methods except the librdf_node* generators
  *  which are actually used in the rest of the code.
  */
+/*
+ *valid literals
+ * "UNKNOWN",
+        "blank",
+        "uri",
+        "string",
+        "xsdstring",
+        "boolean",
+        "integer",
+        "float",
+        "double",
+        "decimal",
+        "datetime",
+        "udt",
+        "pattern",
+        "qname",
+        "variable",
+        "<integer subtype>",
+        "date"
+ */
 namespace redland {
 
     class LibrdfNode {

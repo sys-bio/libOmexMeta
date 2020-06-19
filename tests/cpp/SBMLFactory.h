@@ -7,9 +7,6 @@
 
 #include <utility>
 
-#include "sbml/SBMLTypes.h"
-
-using namespace libsbml;
 
 
 enum ModelType {

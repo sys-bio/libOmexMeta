@@ -1492,7 +1492,7 @@ typedef enum {
 RASQAL_API
 int rasqal_query_results_formats_check2(rasqal_world *world, const char *name, raptor_uri *uri, const char *mime_type,
                                         int flags);
-RASQAL_API RASQAL_API RASQAL_DEPRECATED
+RASQAL_API RASQAL_DEPRECATED
 int rasqal_query_results_formats_check(rasqal_world *world, const char *name, raptor_uri *uri, const char *mime_type,
                                        int flags);
 RASQAL_API

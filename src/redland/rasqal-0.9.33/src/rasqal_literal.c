@@ -29,7 +29,9 @@
 #endif
 
 #ifdef WIN32
+
 #include <win32_rasqal_config.h>
+
 #endif
 
 /* for strtof() and round() prototypes */
@@ -60,11 +62,9 @@
 
 #include <stdarg.h>
 /* for isnan() */
-#ifdef HAVE_MATH_H
 
 #include <math.h>
 
-#endif
 /* for INT_MIN and INT_MAX */
 #ifdef HAVE_LIMITS_H
 
@@ -3217,7 +3217,7 @@ rasqal_literal *
 rasqal_literal_cast(rasqal_literal *l, raptor_uri *to_datatype, int flags,
                     int *error_p) {
 #ifdef RASQAL_DEBUG
-    raptor_uri* from_datatype = NULL;
+    raptor_uri *from_datatype = NULL;
 #endif
     const unsigned char *string = NULL;
     unsigned char *new_string;
@@ -4640,11 +4640,11 @@ rasqal_literal_sequence_sort_map_add_literal_sequence(rasqal_map *map,
     if (!rasqal_map_add_kv(map, literals_seq, NULL))
         return 0;
 
-    /* duplicate, and not added so delete it */
+        /* duplicate, and not added so delete it */
 #ifdef RASQAL_DEBUG
-                                                                                                                            RASQAL_DEBUG1("Got duplicate array of literals ");
-  raptor_sequence_print(literals_seq, DEBUG_FH);
-  fputc('\n', DEBUG_FH);
+    RASQAL_DEBUG1("Got duplicate array of literals ");
+    raptor_sequence_print(literals_seq, DEBUG_FH);
+    fputc('\n', DEBUG_FH);
 #endif
     raptor_free_sequence(literals_seq);
 
