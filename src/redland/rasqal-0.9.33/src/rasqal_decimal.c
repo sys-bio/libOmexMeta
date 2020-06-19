@@ -27,8 +27,8 @@
 
 #endif
 
-//#include <math.h>
-//#include <float.h>
+#include <math.h>
+#include <float.h>
 
 
 // Already covered in rasqal_config.h
@@ -52,6 +52,8 @@
 
 #include "rasqal.h"
 #include "rasqal_internal.h"
+
+#include "math.h"
 
 
 #ifndef STANDALONE

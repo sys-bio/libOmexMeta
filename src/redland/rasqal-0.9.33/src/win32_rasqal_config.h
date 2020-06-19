@@ -70,8 +70,6 @@ struct timezone {
 int rasqal_gettimeofday(struct timeval *tv, struct timezone *tz);
 
 #undef HAVE_GETTIMEOFDAY
-#include <math.h>
-#include <float.h>
 
 
 

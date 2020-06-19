@@ -59,8 +59,8 @@
 /* for isnan() */
 
 // math.h must be include beore float.h
-//#include <math.h>
-//#include <float.h>
+#include <math.h>
+#include <float.h>
 
 
 /* for INT_MIN and INT_MAX */

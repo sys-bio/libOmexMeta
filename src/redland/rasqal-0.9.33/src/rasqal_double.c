@@ -33,9 +33,9 @@
 
 // math.h must be included before float.h
 /* for frexp(), fabs() and ldexp() - all C99 */
-//#include <math.h>
+#include <math.h>
 /* for double and float constants */
-//#include <float.h>
+#include <float.h>
 
 
 
