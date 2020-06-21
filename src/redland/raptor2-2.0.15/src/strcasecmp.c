@@ -5,16 +5,10 @@
  * This file is in the public domain.
  * 
  */
-
-#ifdef HAVE_CONFIG_H
-
-#include <raptor_config.h>
-
-#endif
-
-#include <stdio.h>
-#include <string.h>
+#ifndef STRCASECMP
+#define STRCASECMP
 #include <ctype.h>
+#include <lzma.h>
 
 int raptor_strcasecmp(const char *s1, const char *s2);
 
@@ -105,4 +99,5 @@ main(int argc, char *argv[])
   return failures;
 }
 
+#endif
 #endif

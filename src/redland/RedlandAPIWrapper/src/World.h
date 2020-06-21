@@ -25,23 +25,8 @@
 //#include "redland/Subject.h"
 //#include "redland/Predicate.h"
 
-/*
- * A useful comment made by a stackoverflow wizard in a question
- * I asked:
- *  https://stackoverflow.com/questions/61972493/how-to-generalize-this-c-wrapper-around-a-c-class?noredirect=1#comment109609206_61972493
- *
- * A thunk is a small function used to basically call another
- * function and pass along the parameters as arguments to the
- * actual implementation function. It's a glue function.
- * The approach you're taking will help with object ownership
- * and life-cycle management and allow for RAII (so the destructor
- * can do the clean up), which I like. I've wrapped C libraries
- * before, it starts out a bother, but gets easier as you go.
- */
-
 namespace redland {
 
-    typedef std::shared_ptr<librdf_world> librdf_world_ptr;
 
     /*
      * @brief C++ wrapper around librdf_world.

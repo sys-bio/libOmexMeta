@@ -117,6 +117,14 @@ else ()
 
         # static runtime?
         # define REDLAND_STATIC for static runtime.
+        # ignored on other platforms
+        # define static here and then redefine dynamic for the shared library
+
+        if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+            set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
+        elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+            set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
+        endif ()
 
         set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its D:\\vcpkg")
         set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "The vcpkg triplet to use")
@@ -260,20 +268,37 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
             ${WRAPPER_SOURCE_DIR}
             ${LIBPQ_INCLUDE_DIR}
             ${ICONV_INCLUDE_DIR}
+
+#            "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.25.28610/include"
+
             )
 
     #https://cmake.cmake.narkive.com/lzDZk3kO/autoheader-like-functionality
 
+
     if (${PLATFORM} STREQUAL "windows-msvc")
+
+        #        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+
+        if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+            set(MSVC_EXTRA_LIBS "libucrtd")
+        elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+            set(MSVC_EXTRA_LIBS "libucrt")
+        endif ()
+
         set(LINK_LIBRARIES
                 # order matters: top of the dependency chain first
                 # i.e. if A depends on B, A should come before B in this list
-                -Wl,--whole-archive
                 #            ${LIBXSLT_LIBRARY}
                 ${LIBXSLT_STATIC_LIBRARY}
                 ${LIBXML2_STATIC_LIBRARY2}
                 ${CURL_STATIC_LIBRARY}
-                -Wl,--no-whole-archive
+                # needed on windows
+                ${MSVC_EXTRA_LIBS}
+
+                #                msvcrt
+                #                libcpmt
+
                 #            ${LIBXML2_LIBRARIES}
                 #            -Wl,--whole-archive
                 #            ${ICONV_STATIC_LIBRARY}

@@ -78,17 +78,20 @@
 #include <libxml/SAX2.h>
 
 /* Activate the stupid Windows DLL exporting mechanism if we're building for Windows */
-#ifdef WIN32
-#define DLLEXPORT __declspec(dllexport)
-#else
-#define DLLEXPORT
-#endif
+/*
+ * Commented out by ciaran welsh 19/06/2020
+ * since we have included these elsewhere in the combined build
+ */
+//#ifdef WIN32
+//#define RAPTOR_API __declspec(RAPTOR_API)
+//#else
+//#define RAPTOR_API
+//#endif
 
 #ifdef LIBRDFA_IN_RAPTOR
 
 #include "raptor2.h"
 #include "raptor_internal.h"
-
 #endif /* LIBRDFA_IN_RAPTOR */
 
 #ifdef __cplusplus
@@ -275,7 +278,7 @@ typedef struct rdfacontext {
  * @return a pointer to the base RDFa context, or NULL if memory
  *         allocation failed.
  */
-DLLEXPORT rdfacontext *rdfa_create_context(const char *base);
+RAPTOR_API rdfacontext *rdfa_create_context(const char *base);
 
 /**
  * Sets the default graph triple handler for the application.
@@ -283,7 +286,7 @@ DLLEXPORT rdfacontext *rdfa_create_context(const char *base);
  * @param context the base rdfa context for the application.
  * @param th the triple handler function.
  */
-DLLEXPORT void rdfa_set_default_graph_triple_handler(
+RAPTOR_API void rdfa_set_default_graph_triple_handler(
         rdfacontext *context, triple_handler_fp th);
 
 /**
@@ -292,7 +295,7 @@ DLLEXPORT void rdfa_set_default_graph_triple_handler(
  * @param context the base rdfa context for the application.
  * @param th the triple handler function.
  */
-DLLEXPORT void rdfa_set_processor_graph_triple_handler(
+RAPTOR_API void rdfa_set_processor_graph_triple_handler(
         rdfacontext *context, triple_handler_fp th);
 
 /**
@@ -301,7 +304,7 @@ DLLEXPORT void rdfa_set_processor_graph_triple_handler(
  * @param context the base rdfa context for the application.
  * @param bf the buffer filler function.
  */
-DLLEXPORT void rdfa_set_buffer_filler(
+RAPTOR_API void rdfa_set_buffer_filler(
         rdfacontext *context, buffer_filler_fp bf);
 
 /**
@@ -313,11 +316,11 @@ DLLEXPORT void rdfa_set_buffer_filler(
  *         if there was a fatal error and RDFA_PARSE_WARNING if there
  *         was a non-fatal error.
  */
-DLLEXPORT int rdfa_parse(rdfacontext *context);
+RAPTOR_API int rdfa_parse(rdfacontext *context);
 
-DLLEXPORT int rdfa_parse_start(rdfacontext *context);
+RAPTOR_API int rdfa_parse_start(rdfacontext *context);
 
-DLLEXPORT int rdfa_parse_chunk(
+RAPTOR_API int rdfa_parse_chunk(
         rdfacontext *context, char *data, size_t wblen, int done);
 
 /**
@@ -331,7 +334,7 @@ DLLEXPORT int rdfa_parse_chunk(
  *
  * @return a pointer to the context's input buffer.
  */
-DLLEXPORT char *rdfa_get_buffer(rdfacontext *context, size_t *blen);
+RAPTOR_API char *rdfa_get_buffer(rdfacontext *context, size_t *blen);
 
 /**
  * Informs the parser to attempt to parse more of the given context's input
@@ -352,13 +355,13 @@ DLLEXPORT char *rdfa_get_buffer(rdfacontext *context, size_t *blen);
  *         if there was a fatal error and RDFA_PARSE_WARNING if there
  *         was a non-fatal error.
  */
-DLLEXPORT int rdfa_parse_buffer(rdfacontext *context, size_t bytes);
+RAPTOR_API int rdfa_parse_buffer(rdfacontext *context, size_t bytes);
 
-DLLEXPORT void rdfa_parse_end(rdfacontext *context);
+RAPTOR_API void rdfa_parse_end(rdfacontext *context);
 
-DLLEXPORT void rdfa_init_context(rdfacontext *context);
+RAPTOR_API void rdfa_init_context(rdfacontext *context);
 
-DLLEXPORT char *rdfa_iri_get_base(const char *iri);
+RAPTOR_API char *rdfa_iri_get_base(const char *iri);
 
 /**
  * Destroys the given rdfa context by freeing all memory associated
@@ -366,7 +369,7 @@ DLLEXPORT char *rdfa_iri_get_base(const char *iri);
  *
  * @param context the rdfa context.
  */
-DLLEXPORT void rdfa_free_context(rdfacontext *context);
+RAPTOR_API void rdfa_free_context(rdfacontext *context);
 
 #ifdef __cplusplus
 }

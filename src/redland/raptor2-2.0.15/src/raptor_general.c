@@ -21,11 +21,16 @@
  * 
  * 
  */
-
+#ifndef RAPTOR_GENERAL_C
+#define RAPTOR_GENERAL_C
 
 #ifdef HAVE_CONFIG_H
 #endif
 
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdarg.h>
 #include <raptor_config.h>
 
 #include <stdio.h>
@@ -758,3 +763,6 @@ raptor_check_world_internal(raptor_world *world, const char *name) {
 
     return 0;
 }
+
+
+#endif //RAPTOR_GENERAL_C

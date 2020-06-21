@@ -51,7 +51,7 @@ extern "C" {
 //#define snprintf _snprintf
 #define access _access
 #define stricmp _stricmp
-#define strnicmp _strnicmp
+//#define strnicmp _strnicmp
 
 /* definition from winsock2.h */
 #ifndef _TIMEVAL_DEFINED

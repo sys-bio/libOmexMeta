@@ -6,7 +6,8 @@
 #define LIBSEMGEN_SBMLFACTORY_H
 
 #include <utility>
-
+#include <string>
+#include <stdexcept>
 
 
 enum ModelType {

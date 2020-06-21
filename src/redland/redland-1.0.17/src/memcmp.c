@@ -1,5 +1,6 @@
 /* from public domain code in libiberty (GNU binutils) - ANSIfied */
 
+#ifdef __linux__
 #include <stddef.h>
 
 int
@@ -13,3 +14,4 @@ memcmp(const void *str1, const void *str2, size_t count) {
     }
     return 0;
 }
+#endif

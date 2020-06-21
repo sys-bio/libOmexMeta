@@ -48,7 +48,7 @@ extern "C" {
 //#define snprintf _snprintf
 #define access _access
 #define stricmp _stricmp
-#define strnicmp _strnicmp
+//#define strnicmp _strnicmp
 //#define close _close  # conflicts with msvc
 #define unlink _unlink
 #define mktemp _mktemp

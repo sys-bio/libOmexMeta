@@ -32,7 +32,6 @@
 #include <string.h>
 #include <stdio.h>
 #include "rdfa_utils.h"
-#include "rdfa.h"
 
 void rdfa_establish_new_inlist_triples(rdfacontext *context,
                                        rdfalist *predicates, const char *object, rdfresource_t object_type) {

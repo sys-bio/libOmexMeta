@@ -2,35 +2,30 @@
 
 set(TEST_SOURCES
         SBMLFactory.h
-        SemsimUtilsTests.cpp
-        RDFTests.cpp
-        SubjectTests.cpp
-        ResourceTests.cpp
-        PredicateTests.cpp
-        TripleTests.cpp
-        TriplesTests.cpp
-
-        AnnotationSamples.h
-
-        CurlGetTests.cpp
-        MetaIDTests.cpp
-        XmlAssistantTests.cpp
-        ParticipantTests.cpp
-
-        PhysicalEntityTests.cpp
-        PhysicalPropertyTests.cpp
-        PhysicalPhenomenonTests.cpp
-        PhysicalForceTests.cpp
-        PhysicalProcessTests.cpp
-        QueryTests.cpp
-        EditorTests.cpp
-        RDFReadAndWriteTests.cpp
-        CAPITests.cpp
-
-        #        ReaderTests.cpp
-        #        WriterTests.cpp
-        #        RDFTests.cpp
-        #        SemsimCombineArchiveTests.cpp
+#        SemsimUtilsTests.cpp
+#        RDFTests.cpp
+#        SubjectTests.cpp
+#        ResourceTests.cpp
+#        PredicateTests.cpp
+#        TripleTests.cpp
+#        TriplesTests.cpp
+#
+#        AnnotationSamples.h
+#
+#        CurlGetTests.cpp
+#        MetaIDTests.cpp
+#        XmlAssistantTests.cpp
+#        ParticipantTests.cpp
+#
+#        PhysicalEntityTests.cpp
+#        PhysicalPropertyTests.cpp
+#        PhysicalPhenomenonTests.cpp
+#        PhysicalForceTests.cpp
+#        PhysicalProcessTests.cpp
+#        QueryTests.cpp
+#        EditorTests.cpp
+#        RDFReadAndWriteTests.cpp
+#        CAPITests.cpp
         )
 
 if (REDLAND_WRAPPER_TESTS)
@@ -38,9 +33,6 @@ if (REDLAND_WRAPPER_TESTS)
 endif ()
 
 add_executable(semsim-tests ${TEST_SOURCES})
-
-#ignored on other platforms
-set_target_properties(semsim-tests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
 if (NOT ${PLATFORM} STREQUAL "window-msvc")
     target_compile_options(semsim-tests PRIVATE -g)

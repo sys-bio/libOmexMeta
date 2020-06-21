@@ -781,16 +781,21 @@ int raptor_check_ordinal(const unsigned char *name);
 
 /* raptor_locator.c */
 
-
-#ifdef HAVE_STRCASECMP
-#define raptor_strcasecmp strcasecmp
-#define raptor_strncasecmp strncasecmp
-#else
-#ifdef HAVE_STRICMP
-#define raptor_strcasecmp stricmp
-#define raptor_strncasecmp strnicmp
-#endif
-#endif
+//#ifdef __linux__
+//#ifdef HAVE_STRCASECMP
+//#define raptor_strcasecmp strcasecmp
+//#define raptor_strncasecmp strncasecmp
+//#else
+//#ifdef HAVE_STRICMP
+//#define raptor_strcasecmp stricmp
+//#define raptor_strncasecmp strnicmp
+//#endif
+//#endif
+//#elif defined(WIN32)
+//#define raptor_strncasecmp _strnicmp
+//#define raptor_strcasecmp _stricmp
+//
+//#endif
 
 
 /* raptor_nfc_icu.c */

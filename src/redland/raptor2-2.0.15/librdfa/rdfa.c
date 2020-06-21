@@ -61,6 +61,44 @@
 #define READ_BUFFER_SIZE 4096
 #define RDFA_DOCTYPE_STRING_LENGTH 103
 
+int strcasecmp_(const char *s1, const char *s2);
+
+int strncasecmp_(const char *s1, const char *s2, size_t n);
+
+
+int
+strcasecmp_(const char *s1, const char *s2) {
+    register int c1, c2;
+
+    while (*s1 && *s2) {
+        c1 = tolower((int) *s1);
+        c2 = tolower((int) *s2);
+        if (c1 != c2)
+            return (c1 - c2);
+        s1++;
+        s2++;
+    }
+    return (int) (*s1 - *s2);
+}
+
+
+int
+strncasecmp_(const char *s1, const char *s2, size_t n) {
+    register int c1, c2;
+
+    while (*s1 && *s2 && n) {
+        c1 = tolower((int) *s1);
+        c2 = tolower((int) *s2);
+        if (c1 != c2)
+            return (c1 - c2);
+        s1++;
+        s2++;
+        n--;
+    }
+    return 0;
+}
+
+
 /**
  * Read the head of the XHTML document and determines the base IRI for
  * the document.
@@ -662,7 +700,7 @@ static void start_element(void *parser_context, const char *name,
         (context->parent_subject == NULL || type_of != NULL) &&
         ((context->host_language == HOST_LANGUAGE_XHTML1 ||
           context->host_language == HOST_LANGUAGE_HTML) &&
-         (strcasecmp(name, "head") == 0 || strcasecmp(name, "body") == 0))) {
+         (strcasecmp_(name, "head") == 0 || strcasecmp_(name, "body") == 0))) {
         about_curie = "";
         about = rdfa_resolve_curie(
                 context, about_curie, CURIE_PARSE_ABOUT_RESOURCE);

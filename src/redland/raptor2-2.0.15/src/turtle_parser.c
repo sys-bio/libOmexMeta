@@ -39,7 +39,8 @@
    There are some unavoidable exceptions within include files to
    define necessary library symbols; they are noted "INFRINGES ON
    USER NAME SPACE" below.  */
-
+#ifndef TURTLE_PARSER_C
+#define TURTLE_PARSER_C
 /* Identify Bison output.  */
 #define YYBISON 1
 
@@ -3618,3 +3619,4 @@ main(int argc, char *argv[])
   return (0);
 }
 #endif
+#endif //TURTLE_PARSER_C

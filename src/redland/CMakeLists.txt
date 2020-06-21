@@ -82,7 +82,7 @@ set(RAPTOR_SOURCES
         ${RAPTOR_SOURCE_DIR}/raptor_config.h
         ${RAPTOR_SOURCE_DIR}/raptor_config_linux.h
         ${RAPTOR_SOURCE_DIR}/raptor_config_windows.h
-#        ${RAPTOR_SOURCE_DIR}/raptor_win32.c // removed in favour of above
+        #        ${RAPTOR_SOURCE_DIR}/raptor_win32.c // removed in favour of above
         ${RAPTOR_SOURCE_DIR}/raptor_escaped.c
         ${RAPTOR_SOURCE_DIR}/raptor_general.c
         ${RAPTOR_SOURCE_DIR}/raptor_grddl.c
@@ -321,7 +321,7 @@ set(LIBRDF_SOURCES
         ${LIBRDF_SOURCE_DIR}/rdf_storage_module.h
         #        ${LIBRDF_SOURCE_DIR}/rdf_storage_postgresql.c
         ${LIBRDF_SOURCE_DIR}/rdf_storage_sql.c
-#        ${LIBRDF_SOURCE_DIR}/rdf_storage_sqlite.c
+        #        ${LIBRDF_SOURCE_DIR}/rdf_storage_sqlite.c
         ${LIBRDF_SOURCE_DIR}/rdf_storage_trees.c
         #        ${LIBRDF_SOURCE_DIR}/rdf_storage_virtuoso.c
         #        ${LIBRDF_SOURCE_DIR}/rdf_storage_virtuoso_internal.h
@@ -381,7 +381,7 @@ add_library(redland-combined STATIC
         ${WRAPPER_SOURCES}
         )
 set_target_properties(redland-combined PROPERTIES POSITION_INDEPENDENT_CODE ON)
-set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+#set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
 target_include_directories(redland-combined PUBLIC
         ${INCLUDE_DIRECTORIES}

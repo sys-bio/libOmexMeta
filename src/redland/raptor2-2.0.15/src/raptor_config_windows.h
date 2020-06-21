@@ -353,21 +353,34 @@
 
 /* Define to `__inline__' or `__inline' if that's what the C compiler
    calls it, or to nothing if 'inline' is not supported under any name.  */
-#ifndef __cplusplus
-/* #undef inline */
-#endif
+//#ifndef __cplusplus
+///* #undef inline */
+//#endif
 
 
 // some windows replacements
-#define strcasecmp _stricmp
-#define strncasecmp _strnicmp
+//#define strcasecmp _stricmp
+//#define strncasecmp _strnicmp
 
+#ifndef WIN_API_ENTRY_
+#define WIN_API_ENTRY_
 
+/*
+ * Only add DllMain When building a dynamic library
+ */
+
+/*
+ * BUILD_SHARED_LIBS defaults to off in libsemsim.
+ * We build a static library and pull it into the main binary.
+ */
+#ifdef BUILD_SHARED_LIBS
 /* DLL entry point */
 BOOL APIENTRY
 DllMain(HANDLE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
     return TRUE;
 }
+#endif
+#endif //WIN_API_ENTRY_
 
 
 #endif //WIN32
