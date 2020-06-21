@@ -38,6 +38,7 @@ extern "C" {
 #include <stdarg.h>
 
 
+
 /**
  * RAPTOR_V2_AVAILABLE
  *
@@ -132,6 +133,11 @@ extern "C" {
   __attribute__((__format__(__printf__, string_index, first_to_check_index)))
 #else
 #define RAPTOR_PRINTF_FORMAT(string_index, first_to_check_index)
+#endif
+
+#if (WIN32)
+#include "malloc.h"
+#include "stdlib.h"
 #endif
 
 /**

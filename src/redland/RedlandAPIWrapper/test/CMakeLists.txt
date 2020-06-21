@@ -1,23 +1,22 @@
 set(REDLAND_WRAPPER_TEST_SOURCES
-#                LibrdfWorldTests.cpp
-        #        LibrdfUriTests.cpp
-        #        LibrdfNodeTests.cpp
-        #        LibrdfStatementTests.cpp
-        #        LibrdfStorageTests.cpp
-        #        LibrdfModelTests.cpp
-        #        LibrdfParserTests.cpp
-        #        LibrdfSerializerTests.cpp
-        #        LibrdfQueryTests.cpp
-        #        LibrdfQueryResultsTests.cpp
-        #        LibrdfStreamTests.cpp
-#        x.h
-        TestMSVC.cpp)
+                LibrdfWorldTests.cpp
+                LibrdfUriTests.cpp
+                LibrdfNodeTests.cpp
+                LibrdfStatementTests.cpp
+                LibrdfStorageTests.cpp
+                LibrdfModelTests.cpp
+                LibrdfParserTests.cpp
+                LibrdfSerializerTests.cpp
+                LibrdfQueryTests.cpp
+                LibrdfQueryResultsTests.cpp
+                LibrdfStreamTests.cpp
+        )
 
 
 add_executable(redland-wrapper-tests ${REDLAND_WRAPPER_TEST_SOURCES})
 
 #ignored on other platforms
-#set_target_properties(redland-wrapper-tests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
+set_target_properties(redland-wrapper-tests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
 #get_target_property(runtime redland-wrapper-tests  MSVC_RUNTIME_LIBRARY)
 #message(STATUS "runtime ${runtime}")
 add_dependencies(redland-wrapper-tests redland-combined)

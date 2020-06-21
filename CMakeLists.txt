@@ -251,8 +251,16 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
     #    CHECK_INCLUDE_FILE(<libxml/parser.h> HAVE_LIBXML2)
 
 
-    set(INCLUDE_DIRS
-            ${CMAKE_SOURCE_DIR}/src
+    set(INCLUDE_DIRECTORIES
+            ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/src
+            ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/utils
+            ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/librdfa
+            ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libmtwist
+            ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libsv
+            ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/utils
+            ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/utils
+            ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/libltdl
+
             ${CURL_INCLUDE_DIR}
             ${LIBXML2_INCLUDE_DIR2}
             ${LIBSBML_DEPS_INCLUDE_DIR}
@@ -269,8 +277,27 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
             ${LIBPQ_INCLUDE_DIR}
             ${ICONV_INCLUDE_DIR}
 
-#            "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.25.28610/include"
 
+            BEFORE ${RAPTOR_DIR}/librdfa
+            ${RAPTOR_DIR}/src
+            ${RASQAL_DIR}/src
+            ${RASQAL_DIR}/libmtwist
+            ${RASQAL_DIR}/libsv
+            ${RASQAL_DIR}/getopt
+            ${LIBRDF_DIR}/src
+            ${WRAPPER_SOURCE_DIR} #RedlandAPIWrapper
+            ${LIBXML2_INCLUDE_DIR}
+            ${LIBSBML_DEPS_INCLUDE_DIR}
+            ${LIBSBML_INCLUDE_DIR}
+            ${ZLIB_INCLUDE_DIR}
+            ${ZIPPER_INCLUDE_DIR}
+            ${LIBCOMBINE_INCLUDE_DIR}
+            ${LIBPQ_INCLUDE_DIR}
+            ${OPENSSL_INCLUDE_DIR}
+            ${CMAKE_SOURCE_DIR}/src
+            ${CMAKE_SOURCE_DIR}/src/semsim
+#            D:/libsemsim/src
+#            D:/libsemsim/src/semsim
             )
 
     #https://cmake.cmake.narkive.com/lzDZk3kO/autoheader-like-functionality
@@ -290,12 +317,36 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
                 # order matters: top of the dependency chain first
                 # i.e. if A depends on B, A should come before B in this list
                 #            ${LIBXSLT_LIBRARY}
-                ${LIBXSLT_STATIC_LIBRARY}
-                ${LIBXML2_STATIC_LIBRARY2}
-                ${CURL_STATIC_LIBRARY}
+                #                "${LIBXSLT_STATIC_LIBRARY}"
+                #                "${LIBXML2_STATIC_LIBRARY2}"
+                #                "${CURL_STATIC_LIBRARY}"
                 # needed on windows
-                ${MSVC_EXTRA_LIBS}
-
+                "${VCPKG_X64_LIB_DIR}/libiconv.lib"
+                "${VCPKG_X64_LIB_DIR}/libssl.lib"
+                "${VCPKG_X64_LIB_DIR}/lzma.lib"
+                "${VCPKG_X64_LIB_DIR}/pcre.lib"
+                "${VCPKG_X64_LIB_DIR}/yajl.lib"
+                "${VCPKG_X64_LIB_DIR}/zlib.lib"
+                "${VCPKG_X64_LIB_DIR}/libxslt.lib"
+                "${VCPKG_X64_LIB_DIR}/libxml2.lib"
+                "${VCPKG_X64_LIB_DIR}/libcurl.lib"
+                #                ${MSVC_EXTRA_LIBS}
+                libucrt.lib
+                libvcruntime.lib
+                libcmt.lib
+                kernel32.lib
+                libcpmt.lib
+                #                user32.lib
+                #                gdi32.lib
+                #                winspool.lib
+                #                comdlg32.lib
+                #                advapi32.lib
+                #                shell32.lib
+                #                ole32.lib
+                #                oleaut32.lib
+                #                uuid.lib
+                #                odbc32.lib
+                #                odbccp32.lib
                 #                msvcrt
                 #                libcpmt
 
@@ -311,7 +362,7 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
                 #            stdc++fs
                 )
 
-    else (${PLATFORM} STREQUAL "windows-msvc")
+    else ()
 
         set(LINK_LIBRARIES
                 # order matters: top of the dependency chain first
@@ -412,25 +463,6 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
     # - libc
     # - lzma
 
-
-    set(INCLUDE_DIRECTORIES
-            BEFORE ${RAPTOR_DIR}/librdfa
-            ${RAPTOR_DIR}/src
-            ${RASQAL_DIR}/src
-            ${RASQAL_DIR}/libmtwist
-            ${RASQAL_DIR}/libsv
-            ${RASQAL_DIR}/getopt
-            ${LIBRDF_DIR}/src
-            ${WRAPPER_SOURCE_DIR} #RedlandAPIWrapper
-            ${LIBXML2_INCLUDE_DIR}
-            ${LIBSBML_DEPS_INCLUDE_DIR}
-            ${LIBSBML_INCLUDE_DIR}
-            ${ZLIB_INCLUDE_DIR}
-            ${ZIPPER_INCLUDE_DIR}
-            ${LIBCOMBINE_INCLUDE_DIR}
-            ${LIBPQ_INCLUDE_DIR}
-            ${OPENSSL_INCLUDE_DIR}
-            )
 
     PrintOutPaths()
     add_subdirectory(src/redland)

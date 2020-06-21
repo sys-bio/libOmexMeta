@@ -100,3 +100,11 @@ and then proceed with the build instructions.
 - Remove second namespace map in RDF class in favour of the one in Predicate class
 - Double check Predicate.cpp. Do we have everything that we want to include? (my guess is no)
 - Statically link all dependency libraries. 
+
+
+Things that could (and maybe should) change in future versions
+--------------------------------------------------------------
+- Redland package could be reintegrated with the rest of libsemsim code. 
+  The original plan was to write a full C++ wrapper around the three redland libraries. 
+  Due to difficulties, this didn't really materialize so it might make more sense to 
+  pull that code back into the semsim folder. 

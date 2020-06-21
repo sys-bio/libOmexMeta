@@ -71,11 +71,11 @@ set(RAPTOR_LIBRDFA_SOURCES
 
 set(RAPTOR_SOURCES
         ${RAPTOR_LIBRDFA_SOURCES}
+        ${RAPTOR_SOURCE_DIR}/raptor.h
+        ${RAPTOR_SOURCE_DIR}/raptor2.h
         ${RAPTOR_SOURCE_DIR}/git-version.h
         ${RAPTOR_SOURCE_DIR}/ntriples_parse.c
         ${RAPTOR_SOURCE_DIR}/parsedate.c
-        ${RAPTOR_SOURCE_DIR}/raptor.h
-        ${RAPTOR_SOURCE_DIR}/raptor2.h
         ${RAPTOR_SOURCE_DIR}/raptor_abbrev.c
         ${RAPTOR_SOURCE_DIR}/raptor_avltree.c
         ${RAPTOR_SOURCE_DIR}/raptor_concepts.c
@@ -373,6 +373,8 @@ set(WRAPPER_SOURCES
 #######################################################
 #   Build the library static
 #
+
+
 message(STATUS "before adding the library")
 add_library(redland-combined STATIC
         ${RAPTOR_SOURCES}
@@ -380,24 +382,33 @@ add_library(redland-combined STATIC
         ${LIBRDF_SOURCES}
         ${WRAPPER_SOURCES}
         )
+
 set_target_properties(redland-combined PROPERTIES POSITION_INDEPENDENT_CODE ON)
 #set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+
+SET_TARGET_PROPERTIES(redland-combined PROPERTIES LINK_FLAGS_DEBUG "/WHOLEARCHIVE:redland-combined.lib")
+SET_TARGET_PROPERTIES(redland-combined PROPERTIES LINK_FLAGS_RELEASE "/WHOLEARCHIVE")
+#SET_TARGET_PROPERTIES(${targetname} PROPERTIES LINK_FLAGS_RELEASE "/WHOLEARCHIVE:release_lib_name")
+
 
 target_include_directories(redland-combined PUBLIC
         ${INCLUDE_DIRECTORIES}
         D:/vcpkg/installed/x64-windows/include
         )
-
+message(STATUS "LINK_LIBRARIES ${LINK_LIBRARIES}")
 target_link_libraries(redland-combined PUBLIC
         ${LINK_LIBRARIES}
+
+        #        "D:/libsemsi/src/redland/raptor2-2.0.15/librdfa"
+
 
         )
 
 
 set_target_properties(redland-combined PROPERTIES PUBLIC_HEADER
         ${RAPTOR_DIR}/src/raptor2.h
-        ${RASQAL_DIR}/src/rasqal.h
-        ${LIBRDF_DIR}/src/librdf.h
+        #        ${RASQAL_DIR}/src/rasqal.h
+        #        ${LIBRDF_DIR}/src/librdf.h
         )
 
 INSTALL(
@@ -410,7 +421,54 @@ INSTALL(
 
 option(BUILD_WRAPPER_TESTS "Build the tests for the redland api wrapper" OFF)
 
-message(STATUS "BUILD_WRAPPER_TESTS ${BUILD_WRAPPER_TESTS}")
 if (${BUILD_WRAPPER_TESTS})
     add_subdirectory(RedlandAPIWrapper/test)
 endif ()
+
+set(BUILD_SHARED_LIBS OFF)
+if (${BUILD_SHARED_LIBS})
+
+
+    message(STATUS "before adding the library")
+    add_library(redland-combined-shared SHARED
+            ${RAPTOR_SOURCES}
+            #        ${RASQAL_SOURCES}
+            #        ${LIBRDF_SOURCES}
+            #        ${WRAPPER_SOURCES}
+            )
+    set_target_properties(redland-combined-shared PROPERTIES POSITION_INDEPENDENT_CODE ON)
+    #set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+
+    SET_TARGET_PROPERTIES(redland-combined PROPERTIES LINK_FLAGS_DEBUG "/WHOLEARCHIVE")
+    SET_TARGET_PROPERTIES(redland-combined PROPERTIES LINK_FLAGS_RELEASE "/WHOLEARCHIVE")
+    #    SET_TARGET_PROPERTIES(redland-combined PROPERTIES LINK_FLAGS_DEBUG "/WHOLEARCHIVE:redland-combined-shared.lib")
+    #    SET_TARGET_PROPERTIES(redland-combined PROPERTIES LINK_FLAGS_RELEASE "/WHOLEARCHIVE:redland-combined-shared.lib")
+    #SET_TARGET_PROPERTIES(${targetname} PROPERTIES LINK_FLAGS_RELEASE "/WHOLEARCHIVE:release_lib_name")
+
+
+    target_include_directories(redland-combined-shared PUBLIC
+            ${INCLUDE_DIRECTORIES}
+            D:/vcpkg/installed/x64-windows/include
+            )
+    message(STATUS "LINK_LIBRARIES ${LINK_LIBRARIES}")
+
+    LINK_DIRECTORIES(${VCPKG_X64_BIN_DIR})
+    target_link_libraries(redland-combined-shared PUBLIC
+            ${LINK_LIBRARIES}
+            )
+
+
+    set_target_properties(redland-combined-shared PROPERTIES PUBLIC_HEADER
+            ${RAPTOR_DIR}/src/raptor2.h
+            #        ${RASQAL_DIR}/src/rasqal.h
+            #        ${LIBRDF_DIR}/src/librdf.h
+            )
+
+    INSTALL(
+            TARGETS redland-combined-shared
+            ARCHIVE DESTINATION lib
+            LIBRARY DESTINATION lib
+            RUNTIME DESTINATION bin
+            PUBLIC_HEADER DESTINATION include
+    )
+ENDIF ()

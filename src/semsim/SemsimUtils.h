@@ -9,6 +9,10 @@
 #include "semsim/CurlGet.h"
 #include "semsim/MetaID.h"
 
+
+
+#include "LibrdfQuery.h"
+
 #include <librdf.h>
 #include <string>
 #include <vector>

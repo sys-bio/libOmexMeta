@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "raptor2.h"
-#include "rasqal.h"
-#include "librdf.h"
+//#include "rasqal.h"
+//#include "librdf.h"
 
 class Testy : public ::testing::Test {
 
@@ -14,6 +14,7 @@ public:
 
 
 TEST(T, TEst){
+    std::cout << "hello" << std::endl;
     raptor_world* world = raptor_new_world();
 //    rasqal_world* rworld = rasqal_new_world();
 //    librdf_world* lworld = librdf_new_world();

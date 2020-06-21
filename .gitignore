@@ -34,7 +34,8 @@ docs/cpp
 install-ubuntu
 brenda_parameters_1.xml
 third_party/curl-7.69.1/docs
-
+*.lib
+*.dll
 
 
 

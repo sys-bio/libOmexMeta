@@ -74,7 +74,7 @@ set_target_properties(semsim-static PROPERTIES PUBLIC_HEADER "${SEMSIM_HEADERS}"
 
 add_dependencies(semsim-static redland-combined)
 target_include_directories(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so include dirs propagate into test binaries
-        ${INCLUDE_DIRS}
+        ${INCLUDE_DIRECTORIES}
         ${WRAPPER_SOURCE_DIR}
         )
 
@@ -115,7 +115,7 @@ if (BUILD_SHARED)
 
     add_dependencies(semsim redland-combined)
     target_include_directories(semsim PUBLIC
-            ${INCLUDE_DIRS}
+            ${INCLUDE_DIRECTORIES}
             )
 
     target_link_libraries(semsim PUBLIC

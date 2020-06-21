@@ -2,35 +2,35 @@
 
 set(TEST_SOURCES
         SBMLFactory.h
-#        SemsimUtilsTests.cpp
-#        RDFTests.cpp
-#        SubjectTests.cpp
-#        ResourceTests.cpp
-#        PredicateTests.cpp
-#        TripleTests.cpp
-#        TriplesTests.cpp
-#
-#        AnnotationSamples.h
-#
-#        CurlGetTests.cpp
-#        MetaIDTests.cpp
-#        XmlAssistantTests.cpp
-#        ParticipantTests.cpp
-#
-#        PhysicalEntityTests.cpp
-#        PhysicalPropertyTests.cpp
-#        PhysicalPhenomenonTests.cpp
-#        PhysicalForceTests.cpp
-#        PhysicalProcessTests.cpp
-#        QueryTests.cpp
-#        EditorTests.cpp
-#        RDFReadAndWriteTests.cpp
-#        CAPITests.cpp
+        SemsimUtilsTests.cpp
+        SubjectTests.cpp
+        ResourceTests.cpp
+        PredicateTests.cpp
+        TripleTests.cpp
+        TriplesTests.cpp
+        RDFTests.cpp
+
+        AnnotationSamples.h
+
+        CurlGetTests.cpp
+        MetaIDTests.cpp
+        XmlAssistantTests.cpp
+        ParticipantTests.cpp
+
+        PhysicalEntityTests.cpp
+        PhysicalPropertyTests.cpp
+        PhysicalPhenomenonTests.cpp
+        PhysicalForceTests.cpp
+        PhysicalProcessTests.cpp
+        QueryTests.cpp
+        EditorTests.cpp
+        RDFReadAndWriteTests.cpp
+        CAPITests.cpp
         )
 
-if (REDLAND_WRAPPER_TESTS)
-    set(TEST_SOURCES ${TEST_SOURCES} ${REDLAND_WRAPPER_TEST_SOURCES} RDFTests.cpp)
-endif ()
+#if (REDLAND_WRAPPER_TESTS)
+#    set(TEST_SOURCES ${TEST_SOURCES} )
+#endif ()
 
 add_executable(semsim-tests ${TEST_SOURCES})
 
@@ -57,16 +57,14 @@ if (CLANG)
 ENDIF ()
 
 
-MESSAGE(STATUS "INCLUDE_DIRS ${INCLUDE_DIRS}")
 target_include_directories(semsim-tests PRIVATE
         ${GOOGLETEST_SOURCE}/googletest/include
-        ${INCLUDE_DIRS}
+        ${INCLUDE_DIRECTORIES}
         ${WRAPPER_SOURCE_DIR}
         )
 
-add_dependencies(semsim-tests
-        semsim-static
-        )
+add_dependencies(semsim-tests semsim-static)
+
 install(
         TARGETS semsim-tests
         EXPORT semsim-tests.a
