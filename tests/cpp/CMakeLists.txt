@@ -46,6 +46,7 @@ target_link_libraries(semsim-tests PUBLIC
         $<TARGET_FILE:semsim-static>
         $<TARGET_FILE:redland-combined>
         ${LINK_LIBRARIES}
+        libucrt
         gtest gtest_main
         )
 
@@ -55,6 +56,13 @@ if (CLANG)
     SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${ADDRESS_SANITIZER_LINK_FLAGS}")
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ADDRESS_SANITIZER_FLAGS}")
 ENDIF ()
+
+foreach (lib ${LIBRARIES_DLL})
+    add_custom_command(TARGET semsim-tests POST_BUILD        # Adds a post-build event to MyTest
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
+            "${lib}"      # <--this is in-file
+            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+endforeach ()
 
 
 target_include_directories(semsim-tests PRIVATE
@@ -67,7 +75,7 @@ add_dependencies(semsim-tests semsim-static)
 
 install(
         TARGETS semsim-tests
-        EXPORT semsim-tests.a
+        EXPORT semsim-tests
         RUNTIME
         DESTINATION bin
 )

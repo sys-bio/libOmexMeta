@@ -32,17 +32,24 @@ target_link_libraries(redland-wrapper-tests PRIVATE
         gtest gtest_main
         $<TARGET_FILE:redland-combined>
         ${LINK_LIBRARIES}
-
         )
-set_target_properties(redland-wrapper-tests PROPERTIES LINKER_LANGUAGE CXX)
+
+foreach (lib ${LIBRARIES_DLL})
+    message(STATUS "copying ${lib} to ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+    add_custom_command(TARGET redland-wrapper-tests POST_BUILD        # Adds a post-build event to MyTest
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
+            "${lib}"      # <--this is in-file
+            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+endforeach ()
 
 
 add_dependencies(redland-wrapper-tests
         redland-combined
         )
+
 install(
         TARGETS redland-wrapper-tests
-        EXPORT redland-wrapper-tests.a
+        EXPORT redland-wrapper-tests
         RUNTIME
         DESTINATION bin
 )

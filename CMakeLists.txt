@@ -42,6 +42,10 @@ endif ()
 # https://gitlab.kitware.com/cmake/cmake/issues/16589
 set(CMAKE_MACOSX_RPATH ON)
 
+####################################################################3
+# User options
+#
+
 # superbuild variable
 set(HAVE_DEPENDENCIES FALSE CACHE BOOL
         "When true, the dependencies will be
@@ -53,18 +57,12 @@ option(BUILD_LIBSBML "Build libsbml" OFF)
 option(BUILD_LIBCOMBINE "Build libcombine" OFF)
 
 
-MESSAGE(STATUS "HAVE_DEPENDENCIES ${HAVE_DEPENDENCIES}")
-
 # tests
 SET(BUILD_TESTS OFF CACHE BOOL "build the tests")
 
 SET(N 8 CACHE STRING "number of cores to use for build. Passed onto -j for make")
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
-
-
-# todo move the following to SetPaths.cmake
-
 
 # When we don't have dependencies we can't build the tests
 if (BUILD_TESTS AND NOT HAVE_DEPENDENCIES)
@@ -87,14 +85,6 @@ if (NOT HAVE_DEPENDENCIES)
 
     set(DEPENDENCY_LIBRARIES make build-essential checkinstall zlib1g-dev libltdl-dev lzma libpcre3 libpcre3-dev uuid-dev libxml2 libxml2-dev libxslt1-dev yajl-tools libgss-dev libmpfr-dev idn2 libpthread-stubs0-dev curl mysql-server)
 
-    # on linux we can use apt to download dependencies
-    #    add_custom_target(
-    #            apt-downloads ALL
-    #            COMMAND sudo apt install -y ${DEPENDENCY_LIBRARIES}
-    #            WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    #            COMMENT "download required dependencies straight from apt on ubuntu"
-    #    )
-
     PrintOutPaths()
     add_custom_target(raptor)
     add_custom_target(rasqal)
@@ -106,140 +96,8 @@ else ()
     message(STATUS "BUILDING LIBSEMSIM")
     project(libsemsim LANGUAGES CXX VERSION 0.1.5)
     DeterminePlatform()
-    message(STATUS "PLATFORM ${PLATFORM}")
     # Set the paths we need for building libsemsim + dependencies
     SetPaths(${PLATFORM})
-
-
-    if (PLATFORM STREQUAL "windows-msvc")
-
-        # static runtime?
-        # define REDLAND_STATIC for static runtime.
-        # ignored on other platforms
-        # define static here and then redefine dynamic for the shared library
-
-        if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-            set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
-        elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-            set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
-        endif ()
-
-        set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its D:\\vcpkg")
-        set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "The vcpkg triplet to use")
-        #        set(CMAKE_GENERATOR_PLATFORM "x64-windows")
-        set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Path to vcpkg toolchain file")
-        set(VCPKG_X64_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/x64-windows")
-        set(VCPKG_X64_STATIC_LIB_DIR "${VCPKG_ROOT}/installed/x64-windows-static/lib")
-
-        set(VCPKG_X64_LIB_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/lib")
-        set(VCPKG_X64_BIN_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/bin")
-        set(VCPKG_X64_INCLUDE_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/include")
-
-        if (NOT EXISTS ${CMAKE_TOOLCHAIN_FILE})
-            message(FATAL_ERROR "No vcpkg toolchain installed. Have you configured vcpkg yet? If so,
-pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
-        endif ()
-
-
-        message(WARNING "You have used a different variable on windows
-        to store libxml2 include and libraries. You'll want to change
-        this when you have MSVC working. ")
-
-        find_library(LIBXML2_STATIC_LIBRARY2
-                NAMES libxml2.lib libxml2 xml2 xml2.lib
-                PATHS
-                ${VCPKG_X64_LIB_DIR}
-                #                D:/vcpkg/installed/x64-windows/lib
-                )
-
-
-        find_path(LIBXML2_INCLUDE_DIR2
-                NAMES libxml/parser.h
-                PATHS ${VCPKG_X64_INCLUDE_DIR}
-                REQUIRED
-                )
-
-        find_library(LIBXSLT_STATIC_LIBRARY
-                NAMES libxslt
-                PATHS ${VCPKG_X64_LIB_DIR}
-                REQUIRED
-                )
-
-        find_path(LIBXSLT_INCLUDE_DIR
-                NAMES libxslt/libxslt.h
-                PATHS ${VCPKG_X64_INCLUDE_DIR}
-                REQUIRED
-                )
-
-
-        #        message(STATUS " after LIBXML2_LIBRARY ${LIBXML2_LIBRARY}")
-        #        message(STATUS "EXISTS ${LIBXML2_LIBRARY}")
-        #        if (NOT EXISTS "${LIBXML2_LIBRARY}")
-        #            message(FATAL_ERROR "Libxml not found")
-        #        endif ()
-
-        find_library(CURL_STATIC_LIBRARY
-                NAMES libcurl curl
-                PATHS ${VCPKG_X64_LIB_DIR}
-                REQUIRED
-                )
-
-        find_path(CURL_INCLUDE_DIR
-                NAMES curl/curl.h
-                PATHS ${VCPKG_X64_INCLUDE_DIR}
-                REQUIRED
-                )
-
-        find_library(MPFR_STATIC_LIBRARY
-                NAMES mpfr.lib mpfr
-                PATHS ${VCPKG_X64_LIB_DIR}
-                REQUIRED
-                )
-
-        find_path(MPFR_INCLUDE_DIR
-                NAMES mpfr.h
-                PATHS ${VCPKG_X64_INCLUDE_DIR}
-                REQUIRED
-                )
-
-        message(STATUS "LIBXML2_STATIC_LIBRARY2 ${LIBXML2_STATIC_LIBRARY2}")
-        message(STATUS "LIBXML2_INCLUDE_DIR2 ${LIBXML2_INCLUDE_DIR2}")
-        message(STATUS "LIBXSLT_STATIC_LIBRARY ${LIBXSLT_STATIC_LIBRARY}")
-        message(STATUS "LIBXSLT_INCLUDE_DIR ${LIBXSLT_INCLUDE_DIR}")
-        message(STATUS "CURL_STATIC_LIBRARY ${CURL_STATIC_LIBRARY}")
-        message(STATUS "CURL_INCLUDE_DIR ${CURL_INCLUDE_DIR}")
-
-        SET(LIBRARIES
-                ${LIBXML2_STATIC_LIBRARY2}
-                ${LIBXSLT_STATIC_LIBRARY}
-                ${CURL_STATIC_LIBRARY}
-                )
-        foreach (lib ${LIBRARIES})
-            if (NOT EXISTS "${lib}")
-                message(FATAL_ERROR "${lib} not found")
-            endif ()
-        endforeach ()
-    endif (PLATFORM STREQUAL "windows-msvc")
-
-
-    # we have either just compiled the dependencies
-    #  or indicated that we already have them by
-    #  using HAVE_DEPENDENCIES=TRUE
-    #  we now do a check to find the libraries we need to link
-
-    #    foreach (library ${STATIC_LIBRARIES})
-    #        if (NOT EXISTS {$library})
-    #            message(FATAL_ERROR "Missing dependency. The library \"${library}\" should exist but doesn't")
-    #        endif ()
-    #    endforeach ()
-
-    #    find_package(ICU 60 COMPONENTS uc i18n)
-    #    if (NOT ICU_FOUND)
-    #        message(WARNING "ICU not found. On linux, `sudo apt install icu-devtools` and try again.")
-    #    endif ()
-
-    message(STATUS "ICU_LIBRARIES ${ICU_c_LIBRARIES}")
-
 
     if (WITH_ADDRESS_SANITIZER)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")# -OX")
@@ -247,64 +105,331 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address")# -OX")
     ENDIF ()
 
-    #    INCLUDE(CheckIncludeFile)
-    #    CHECK_INCLUDE_FILE(<libxml/parser.h> HAVE_LIBXML2)
+    if (PLATFORM STREQUAL "windows-msvc")
+
+        # determine runtime (dynamic library is modified later)
+        if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+            set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
+        elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+            set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
+        endif ()
+
+        set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its D:\\vcpkg")
+        set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "The vcpkg triplet to use. Default is x64-windows.")
+        set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Path to vcpkg toolchain file")
+        # Here are where packages installed with vcpkg should live. These will be .lib files
+        #  but we still need to provide the dll at runtime.
+        set(VCPKG_X64_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/${VCPKG_TARGET_TRIPLET}")
+        # for the static triplet. Unfortunately I couldn't get this to work.
+        set(VCPKG_X64_STATIC_LIB_DIR "${VCPKG_ROOT}/installed/x64-windows-static/lib")
+        #contains .lib files
+        set(VCPKG_X64_LIB_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/lib")
+        #contains .dll files
+        set(VCPKG_X64_BIN_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/bin")
+        #include directories
+        set(VCPKG_X64_INCLUDE_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/include")
+
+        # ensure the toolchain file exists and user has provided it.
+        if (NOT EXISTS ${CMAKE_TOOLCHAIN_FILE})
+            message(FATAL_ERROR "No vcpkg toolchain installed. Have you configured vcpkg yet? If so,
+pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
+        endif ()
+
+        ##################################################################3
+        #   Find windows dependencies.
+        #
+
+        message(WARNING "You have used a different variable on windows
+to store libxml2 include and libraries. You'll want to change
+this when you have MSVC working. Same true for zlib. ")
+
+        # Note: No_DEFAULT prevents other versions
+        # of the same library being located and used
+        # which tends to break things
+
+        # libxml2
+        find_library(LIBXML2_STATIC_LIBRARY2
+                NAMES libxml2.lib
+                PATHS ${VCPKG_X64_LIB_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        find_file(LIBXML2_LIBRARY2
+                NAMES libxml2.dll xml xml.dll libxml
+                PATHS ${VCPKG_X64_BIN_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        find_path(LIBXML2_INCLUDE_DIR2
+                NAMES libxml/parser.h
+                PATHS ${VCPKG_X64_INCLUDE_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        # libxslt
+        find_library(LIBXSLT_STATIC_LIBRARY
+                NAMES libxslt.lib
+                PATHS ${VCPKG_X64_LIB_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        find_file(LIBXSLT_LIBRARY
+                NAMES libxslt.dll
+                PATHS ${VCPKG_X64_BIN_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        find_path(LIBXSLT_INCLUDE_DIR
+                NAMES libxslt/libxslt.h
+                PATHS ${VCPKG_X64_INCLUDE_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        # curl
+        find_library(CURL_STATIC_LIBRARY
+                NAMES libcurl.lib
+                PATHS ${VCPKG_X64_LIB_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        find_file(CURL_LIBRARY
+                NAMES libcurl.dll curl curl.dll
+                PATHS ${VCPKG_X64_BIN_DIR}
+                NO_DEFAULT_PATH
+                REQUIRED
+                )
+
+        find_path(CURL_INCLUDE_DIR
+                NAMES curl/curl.h
+                PATHS ${VCPKG_X64_INCLUDE_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        # libcharset
+        find_library(LIBCHARSET_STATIC_LIBRARY
+                NAMES libcharset.lib
+                PATHS ${VCPKG_X64_LIB_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        find_file(LIBCHARSET_LIBRARY
+                NAMES libcharset.dll
+                PATHS ${VCPKG_X64_BIN_DIR}
+                NO_DEFAULT_PATH
+                REQUIRED
+                )
+        #       POSSIBLY NOT NEEDED
+        #        find_path(LIBCHARSETL_INCLUDE_DIR
+        #                NAMES curl/curl.h
+        #                PATHS ${VCPKG_X64_INCLUDE_DIR}
+        #                )
 
 
-    set(INCLUDE_DIRECTORIES
-            ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/src
-            ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/utils
-            ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/librdfa
-            ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libmtwist
-            ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libsv
-            ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/utils
-            ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/utils
-            ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/libltdl
+        # openssl
+        find_library(SSL_STATIC_LIBRARY
+                NAMES libssl.lib
+                PATHS ${VCPKG_X64_LIB_DIR}
+                NO_DEFAULT_PATH
+                )
 
-            ${CURL_INCLUDE_DIR}
-            ${LIBXML2_INCLUDE_DIR2}
-            ${LIBSBML_DEPS_INCLUDE_DIR}
-            ${LIBSBML_INCLUDE_DIR}
-            ${ZLIB_INCLUDE_DIR}
-            ${ZIPPER_INCLUDE_DIR}
-            ${LIBCOMBINE_INCLUDE_DIR}
-            ${RASQAL_INCLUDE_DIR}
-            ${RAPTOR2_INCLUDE_DIR}
-            ${RAPTOR_SOURCE_DIR}
-            ${RASQAL_SOURCE_DIR}
-            ${LIBRDF_SOURCE_DIR}
-            ${WRAPPER_SOURCE_DIR}
-            ${LIBPQ_INCLUDE_DIR}
-            ${ICONV_INCLUDE_DIR}
+        find_file(SSL_LIBRARY
+                NAMES libssl.dll libssl-1_1-x64.dll
+                PATHS ${VCPKG_X64_BIN_DIR}
+                NO_DEFAULT_PATH
+                REQUIRED
+                )
+        find_path(SSL_INCLUDE_DIR
+                NAMES openssl/ssl2.h openssl/ssl3.h
+                PATHS ${VCPKG_X64_INCLUDE_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        # libcrypto
+        find_library(CRYPTO_STATIC_LIBRARY
+                NAMES libcrypto.lib
+                PATHS ${VCPKG_X64_LIB_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        find_file(CRYPTO_LIBRARY
+                NAMES libcrypto.dll libcrypto-1_1-x64.dll
+                PATHS ${VCPKG_X64_BIN_DIR}
+                NO_DEFAULT_PATH
+                REQUIRED
+                )
+        find_path(SSL_INCLUDE_DIR
+                NAMES openssl/crypto.h
+                PATHS ${VCPKG_X64_INCLUDE_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        # yajl
+        find_library(YAJL_STATIC_LIBRARY
+                NAMES yajl.lib
+                PATHS ${VCPKG_X64_LIB_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        find_file(YAJL_LIBRARY
+                NAMES yajl.dll
+                PATHS ${VCPKG_X64_BIN_DIR}
+                NO_DEFAULT_PATH
+                REQUIRED
+                )
+
+        find_path(YAJL_INCLUDE_DIR
+                NAMES yajl/yajl_parse.h
+                PATHS ${VCPKG_X64_INCLUDE_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        # lzma
+        find_library(LZMA_STATIC_LIBRARY
+                NAMES lzma.lib
+                PATHS ${VCPKG_X64_LIB_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        find_file(LZMA_LIBRARY
+                NAMES lzma.dll
+                PATHS ${VCPKG_X64_BIN_DIR}
+                NO_DEFAULT_PATH
+                REQUIRED
+                )
+
+        find_path(LZMA_INCLUDE_DIR
+                NAMES lzma/lzma12.h
+                PATHS ${VCPKG_X64_INCLUDE_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        # zlib
+        find_library(ZLIB2_STATIC_LIBRARY
+                NAMES zlib.lib
+                PATHS ${VCPKG_X64_LIB_DIR}
+                NO_DEFAULT_PATH
+                REQUIRED
+                )
+
+        find_file(ZLIB2_LIBRARY
+                NAMES zlib1.dll
+                PATHS ${VCPKG_X64_BIN_DIR}
+                NO_DEFAULT_PATH
+                REQUIRED
+                NO_DEFAULT_PATH
+                )
+
+        find_path(ZLIB2_INCLUDE_DIR
+                NAMES zlib.h
+                PATHS ${VCPKG_X64_INCLUDE_DIR}
+                NO_DEFAULT_PATH
+                NO_DEFAULT_PATH
+                )
 
 
-            BEFORE ${RAPTOR_DIR}/librdfa
-            ${RAPTOR_DIR}/src
-            ${RASQAL_DIR}/src
-            ${RASQAL_DIR}/libmtwist
-            ${RASQAL_DIR}/libsv
-            ${RASQAL_DIR}/getopt
-            ${LIBRDF_DIR}/src
-            ${WRAPPER_SOURCE_DIR} #RedlandAPIWrapper
-            ${LIBXML2_INCLUDE_DIR}
-            ${LIBSBML_DEPS_INCLUDE_DIR}
-            ${LIBSBML_INCLUDE_DIR}
-            ${ZLIB_INCLUDE_DIR}
-            ${ZIPPER_INCLUDE_DIR}
-            ${LIBCOMBINE_INCLUDE_DIR}
-            ${LIBPQ_INCLUDE_DIR}
-            ${OPENSSL_INCLUDE_DIR}
-            ${CMAKE_SOURCE_DIR}/src
-            ${CMAKE_SOURCE_DIR}/src/semsim
-#            D:/libsemsim/src
-#            D:/libsemsim/src/semsim
-            )
+        # ICONV
+        find_library(ICONV2_STATIC_LIBRARY
+                NAMES libiconv.lib
+                PATHS ${VCPKG_X64_LIB_DIR}
+                NO_DEFAULT_PATH
+                )
 
-    #https://cmake.cmake.narkive.com/lzDZk3kO/autoheader-like-functionality
+        find_file(ICONV2_LIBRARY
+                NAMES libiconv.dll
+                PATHS ${VCPKG_X64_BIN_DIR}
+                NO_DEFAULT_PATH
+                REQUIRED
+                )
+
+        find_path(ICONV2_INCLUDE_DIR
+                NAMES iconv.h
+                PATHS ${VCPKG_X64_INCLUDE_DIR}
+                NO_DEFAULT_PATH
+                )
+
+        SET(LIBRARIES_LIB
+                "${LIBXML2_STATIC_LIBRARY2}"
+                "${LIBXSLT_STATIC_LIBRARY}"
+                "${CURL_STATIC_LIBRARY}"
+                "${LIBCHARSET_STATIC_LIBRARY}"
+                "${SSL_STATIC_LIBRARY}"
+                "${CRYPTO_STATIC_LIBRARY}"
+                "${YAJL_STATIC_LIBRARY}"
+                "${LZMA_STATIC_LIBRARY}"
+                "${ZLIB2_STATIC_LIBRARY}"
+                "${ICONV2_STATIC_LIBRARY}"
+                )
+
+        SET(LIBRARIES_DLL
+                "${ZLIB2_LIBRARY}"
+                "${LIBXML2_LIBRARY2}"
+                "${LIBXSLT_LIBRARY}"
+                "${CURL_LIBRARY}"
+                "${LIBCHARSET_LIBRARY}"
+                "${SSL_LIBRARY}"
+                "${CRYPTO_LIBRARY}"
+                "${YAJL_LIBRARY}"
+                "${LZMA_LIBRARY}"
+                "${ICONV2_LIBRARY}"
+                )
+
+        set(LIBRARIES ${LIBRARIES_LIB} ${LIBRARIES_DLL})
+
+        foreach (lib ${LIBRARIES})
+            message(STATUS "lib ${lib}")
+            if (NOT EXISTS "${lib}")
+                message(FATAL_ERROR "${lib} not found")
+            endif ()
+        endforeach ()
+
+        set(INCLUDE_DIRECTORIES
+                ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/src
+                ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/utils
+                ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/librdfa
+                ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libmtwist
+                ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libsv
+                ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/utils
+                ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/utils
+                ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/libltdl
+
+                ${CURL_INCLUDE_DIR}
+                ${LIBXML2_INCLUDE_DIR2}
+                ${LIBSBML_DEPS_INCLUDE_DIR}
+                ${LIBSBML_INCLUDE_DIR}
+                ${ZLIB_INCLUDE_DIR}
+                ${ZIPPER_INCLUDE_DIR}
+                ${LIBCOMBINE_INCLUDE_DIR}
+                ${RASQAL_INCLUDE_DIR}
+                ${RAPTOR2_INCLUDE_DIR}
+                ${RAPTOR_SOURCE_DIR}
+                ${RASQAL_SOURCE_DIR}
+                ${LIBRDF_SOURCE_DIR}
+                ${WRAPPER_SOURCE_DIR}
+                ${LIBPQ_INCLUDE_DIR}
+                ${ICONV_INCLUDE_DIR}
+
+                BEFORE ${RAPTOR_DIR}/librdfa
+                ${RAPTOR_DIR}/src
+                ${RASQAL_DIR}/src
+                ${RASQAL_DIR}/libmtwist
+                ${RASQAL_DIR}/libsv
+                ${RASQAL_DIR}/getopt
+                ${LIBRDF_DIR}/src
+                ${WRAPPER_SOURCE_DIR} #RedlandAPIWrapper
+                ${LIBXML2_INCLUDE_DIR}
+                ${LIBSBML_DEPS_INCLUDE_DIR}
+                ${LIBSBML_INCLUDE_DIR}
+                ${ZLIB_INCLUDE_DIR}
+                ${ZIPPER_INCLUDE_DIR}
+                ${LIBCOMBINE_INCLUDE_DIR}
+                ${LIBPQ_INCLUDE_DIR}
+                ${OPENSSL_INCLUDE_DIR}
+                ${CMAKE_SOURCE_DIR}/src
+                ${CMAKE_SOURCE_DIR}/src/semsim
+                )
 
 
-    if (${PLATFORM} STREQUAL "windows-msvc")
-
+        #https://cmake.cmake.narkive.com/lzDZk3kO/autoheader-like-functionality
         #        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
 
         if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
@@ -313,35 +438,38 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
             set(MSVC_EXTRA_LIBS "libucrt")
         endif ()
 
+        # put all runtime targets (exe and dll) into bin
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
+
+        # put libraries into lib
+        set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
+
+        # archives
+        set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
+
+
         set(LINK_LIBRARIES
                 # order matters: top of the dependency chain first
                 # i.e. if A depends on B, A should come before B in this list
                 # needed on windows
-                "${VCPKG_X64_LIB_DIR}/libcurl.lib"
-                "${VCPKG_X64_LIB_DIR}/libxslt.lib"
-                "${VCPKG_X64_LIB_DIR}/libxml2.lib"
-                "${VCPKG_X64_LIB_DIR}/libcharset.lib"
-                "${VCPKG_X64_LIB_DIR}/libssl.lib"
-                "${VCPKG_X64_LIB_DIR}/libcrypto.lib"
-                "${VCPKG_X64_LIB_DIR}/yajl.lib"
-                "${VCPKG_X64_LIB_DIR}/lzma.lib"
-                "${VCPKG_X64_LIB_DIR}/zlib.lib"
-                "${VCPKG_X64_LIB_DIR}/libexslt.lib"
-                "${VCPKG_X64_LIB_DIR}/libiconv.lib"
+                ${LIBRARIES_LIB}
+                #                "${VCPKG_X64_LIB_DIR}/libcurl.lib"
+                #                "${VCPKG_X64_LIB_DIR}/libxslt.lib"
+                #                "${VCPKG_X64_LIB_DIR}/libxml2.lib"
+                #                "${VCPKG_X64_LIB_DIR}/libcharset.lib"
+                #                "${VCPKG_X64_LIB_DIR}/libssl.lib"
+                #                "${VCPKG_X64_LIB_DIR}/libcrypto.lib"
+                #                "${VCPKG_X64_LIB_DIR}/yajl.lib"
+                #                "${VCPKG_X64_LIB_DIR}/lzma.lib"
+                #                "${VCPKG_X64_LIB_DIR}/zlib.lib"
+                #                "${VCPKG_X64_LIB_DIR}/libexslt.lib"
+                #                "${VCPKG_X64_LIB_DIR}/libiconv.lib"
                 )
     else ()
 
         set(LINK_LIBRARIES
                 # order matters: top of the dependency chain first
                 # i.e. if A depends on B, A should come before B in this list
-                #            -Wl,--whole-archive
-                #            ${LIBCOMBINE_STATIC_LIBRARY}
-                #            ${LIBSBML_STATIC_LIBRARY}
-                #            -Wl,--no-whole-archive
-                #            ${ZIPPER_STATIC_LIBRARY}
-                #                            -Wl,--whole-archive
-                #            ${ZLIB_STATIC_LIBRARY}
-                #            ${BZ2_STATIC_LIBRARY}
                 xslt
                 -Wl,--no-whole-archive
                 ${LIBXML2_LIBRARY}
@@ -355,8 +483,9 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
                 ${LIBCURL_LIBRARY}
                 stdc++fs
                 )
-    endif (${PLATFORM} STREQUAL "windows-msvc")
-    # This is what i was using for a while. it worked on linux
+    endif ()
+    #
+    # This is what i was using for a while. it worked on linux. Keep until definately not needed.
     #    set(LINK_LIBRARIES
     #            # order matters: top of the dependency chain first
     #            # i.e. if A depends on B, A should come before B in this list
