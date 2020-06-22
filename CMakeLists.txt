@@ -27,8 +27,6 @@ include(${CMAKE_SOURCE_DIR}/cmake/SetPaths.cmake)
 # global settings
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# redundant an not cross platform
-#set(CMAKE_CXX_FLAGS "-std=c++17")
 
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 0)
@@ -131,6 +129,8 @@ else ()
         #        set(CMAKE_GENERATOR_PLATFORM "x64-windows")
         set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Path to vcpkg toolchain file")
         set(VCPKG_X64_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/x64-windows")
+        set(VCPKG_X64_STATIC_LIB_DIR "${VCPKG_ROOT}/installed/x64-windows-static/lib")
+
         set(VCPKG_X64_LIB_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/lib")
         set(VCPKG_X64_BIN_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/bin")
         set(VCPKG_X64_INCLUDE_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/include")
@@ -316,52 +316,19 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
         set(LINK_LIBRARIES
                 # order matters: top of the dependency chain first
                 # i.e. if A depends on B, A should come before B in this list
-                #            ${LIBXSLT_LIBRARY}
-                #                "${LIBXSLT_STATIC_LIBRARY}"
-                #                "${LIBXML2_STATIC_LIBRARY2}"
-                #                "${CURL_STATIC_LIBRARY}"
                 # needed on windows
-                "${VCPKG_X64_LIB_DIR}/libiconv.lib"
-                "${VCPKG_X64_LIB_DIR}/libssl.lib"
-                "${VCPKG_X64_LIB_DIR}/lzma.lib"
-                "${VCPKG_X64_LIB_DIR}/pcre.lib"
-                "${VCPKG_X64_LIB_DIR}/yajl.lib"
-                "${VCPKG_X64_LIB_DIR}/zlib.lib"
+                "${VCPKG_X64_LIB_DIR}/libcurl.lib"
                 "${VCPKG_X64_LIB_DIR}/libxslt.lib"
                 "${VCPKG_X64_LIB_DIR}/libxml2.lib"
-                "${VCPKG_X64_LIB_DIR}/libcurl.lib"
-                #                ${MSVC_EXTRA_LIBS}
-                libucrt.lib
-                libvcruntime.lib
-                libcmt.lib
-                kernel32.lib
-                libcpmt.lib
-                #                user32.lib
-                #                gdi32.lib
-                #                winspool.lib
-                #                comdlg32.lib
-                #                advapi32.lib
-                #                shell32.lib
-                #                ole32.lib
-                #                oleaut32.lib
-                #                uuid.lib
-                #                odbc32.lib
-                #                odbccp32.lib
-                #                msvcrt
-                #                libcpmt
-
-                #            ${LIBXML2_LIBRARIES}
-                #            -Wl,--whole-archive
-                #            ${ICONV_STATIC_LIBRARY}
-                #            -Wl,--no-whole-archive
-                #            sqlite3
-                #            ltdl ${CMAKE_DL_LIBS}
-                #            pcre
-                #            yajl
-                #            ${LIBCURL_LIBRARY}
-                #            stdc++fs
+                "${VCPKG_X64_LIB_DIR}/libcharset.lib"
+                "${VCPKG_X64_LIB_DIR}/libssl.lib"
+                "${VCPKG_X64_LIB_DIR}/libcrypto.lib"
+                "${VCPKG_X64_LIB_DIR}/yajl.lib"
+                "${VCPKG_X64_LIB_DIR}/lzma.lib"
+                "${VCPKG_X64_LIB_DIR}/zlib.lib"
+                "${VCPKG_X64_LIB_DIR}/libexslt.lib"
+                "${VCPKG_X64_LIB_DIR}/libiconv.lib"
                 )
-
     else ()
 
         set(LINK_LIBRARIES

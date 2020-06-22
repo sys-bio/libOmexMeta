@@ -384,10 +384,10 @@ add_library(redland-combined STATIC
         )
 
 set_target_properties(redland-combined PROPERTIES POSITION_INDEPENDENT_CODE ON)
-#set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
-SET_TARGET_PROPERTIES(redland-combined PROPERTIES LINK_FLAGS_DEBUG "/WHOLEARCHIVE:redland-combined.lib")
-SET_TARGET_PROPERTIES(redland-combined PROPERTIES LINK_FLAGS_RELEASE "/WHOLEARCHIVE")
+#SET_TARGET_PROPERTIES(redland-combined PROPERTIES LINK_FLAGS_DEBUG "/WHOLEARCHIVE:redland-combined.lib")
+SET_TARGET_PROPERTIES(redland-combined PROPERTIES LINK_FLAGS_RELEASE "/WHOLEARCHIVE:redland-combined.lib")
 #SET_TARGET_PROPERTIES(${targetname} PROPERTIES LINK_FLAGS_RELEASE "/WHOLEARCHIVE:release_lib_name")
 
 
@@ -398,10 +398,6 @@ target_include_directories(redland-combined PUBLIC
 message(STATUS "LINK_LIBRARIES ${LINK_LIBRARIES}")
 target_link_libraries(redland-combined PUBLIC
         ${LINK_LIBRARIES}
-
-        #        "D:/libsemsi/src/redland/raptor2-2.0.15/librdfa"
-
-
         )
 
 

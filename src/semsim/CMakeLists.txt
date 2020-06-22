@@ -65,28 +65,28 @@ set(SEMSIM_LIBRARY semsim)
 # static library
 add_library(semsim-static STATIC ${SEMSIM_HEADERS} ${SEMSIM_SOURCES})
 
-# set runtime static for windows (ignored on other systems)
-#set_property(TARGET semsim-static PROPERTY
-#        MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
 # add target headers so they install correctly
 set_target_properties(semsim-static PROPERTIES PUBLIC_HEADER "${SEMSIM_HEADERS}")
 
+# set runtime static for windows (ignored on other systems)
+set_target_properties(semsim-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+
 add_dependencies(semsim-static redland-combined)
-target_include_directories(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so include dirs propagate into test binaries
+target_include_directories(semsim-static PUBLIC # make public so include dirs propagate into test binaries
         ${INCLUDE_DIRECTORIES}
         ${WRAPPER_SOURCE_DIR}
         )
 
 
-target_link_libraries(${SEMSIM_STATIC_LIBRARY} PUBLIC # make public so libraries propagate into test binaries
+target_link_libraries(semsim-static PUBLIC # make public so libraries propagate into test binaries
         $<TARGET_FILE:redland-combined>
         ${LINK_LIBRARIES}
         )
 
 
 install(TARGETS semsim-static
-        EXPORT semsim-static.a
+        EXPORT semsim-static
         LIBRARY
         DESTINATION lib
         PUBLIC_HEADER DESTINATION include/semsim
