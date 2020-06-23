@@ -117,15 +117,16 @@ if (${BUILD_SHARED_LIBS})
                 MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDLL")
     endif ()
 
-    add_dependencies(OmexMeta redland-combined-static)
     target_include_directories(OmexMeta PUBLIC
             ${INCLUDE_DIRECTORIES}
             )
 
     target_link_libraries(OmexMeta PUBLIC
-            ${CMAKE_BINARY_DIR}/lib/redland-combined.lib
+#            ${CMAKE_BINARY_DIR}/lib/redland-combined
+            ${CMAKE_BINARY_DIR}/lib/redland-combined-static.a
             ${LINK_LIBRARIES}
             )
+    add_dependencies(OmexMeta redland-combined-static)
 
     install(TARGETS OmexMeta
             LIBRARY

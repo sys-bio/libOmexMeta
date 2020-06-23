@@ -10,8 +10,8 @@ macro(SetPaths PLATFORM)
     # google test source dir
     set(GOOGLETEST_SOURCE ${THIRD_PARTY_DIRS}/googletest)
 
-    # directory containing development pysemsim __init__.py
-    set(PYSEMSIM_DIR ${CMAKE_SOURCE_DIR}/src/pysemsim)
+    # directory containing development pyomexmeta __init__.py
+    set(PYSEMSIM_DIR ${CMAKE_SOURCE_DIR}/src/pyomexmeta)
 
     set(DEPENDENCY_INSTALL_FOLDER_NAME "install")
     set(DEPENDENCY_BUILD_FOLDER_NAME "build")
@@ -30,11 +30,29 @@ macro(SetPaths PLATFORM)
     set(LIBSBML_DEPS_LIB_DIR ${LIBSBML_DEPS_INSTALL_PREFIX}/lib)
 
 
+    find_library(ICONV_LIBRARY
+            NAMES iconv libiconv libiconv.so.2
+            PATHS
+            /usr/local/lib
+            # for wsl
+            /mnt/d/usr/local/lib
+            /mnt/c/usr/local/lib
+            )
+
+    find_path(ICONV_INCLUDE_DIR
+            NAMES iconv.h
+            PATHS
+            /usr/include
+            /mnt/d/usr/include
+            /mnt/c/usr/include
+            )
+
     # libiconv - character encodings
-    set(ICONV_LIB_DIR "${LIBSBML_DEPS_INSTALL_PREFIX}/lib")
-    set(ICONV_INCLUDE_DIR "${LIBSBML_DEPS_INSTALL_PREFIX}/include")
-    set(ICONV_STATIC_LIBRARY ${ICONV_LIB_DIR}/libiconv.a)
-    set(ICONV_LIBRARY ${ICONV_LIB_DIR}/libiconv.so)
+    #    set(ICONV_LIB_DIR "${LIBSBML_DEPS_INSTALL_PREFIX}/lib")
+    #    set(ICONV_INCLUDE_DIR "${LIBSBML_DEPS_INSTALL_PREFIX}/include")
+    #    set(ICONV_STATIC_LIBRARY ${ICONV_LIB_DIR}/libiconv.a)
+    #    set(ICONV_LIBRARY ${ICONV_LIB_DIR}/libiconv.so)
+
 
     # libcurl paths
     set(LIBCURL_SOURCE_DIR ${THIRD_PARTY_DIRS}/curl-7.69.1)
@@ -42,7 +60,11 @@ macro(SetPaths PLATFORM)
     set(LIBCURL_INSTALL_PREFIX ${LIBCURL_SOURCE_DIR}/${DEPENDENCY_INSTALL_FOLDER_NAME}-${PLATFORM})
     set(LIBCURL_INCLUDE_DIR ${LIBCURL_INSTALL_PREFIX}/include)
     set(LIBCURL_LIB_DIR ${LIBCURL_INSTALL_PREFIX}/lib)
-    set(LIBCURL_LIBRARY ${LIBCURL_LIB_DIR}/libcurl-d.so)
+    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+        set(LIBCURL_LIBRARY ${LIBCURL_LIB_DIR}/libcurl-d.so)
+    else (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+        set(LIBCURL_LIBRARY ${LIBCURL_LIB_DIR}/libcurl.so)
+    endif ()
 
     set(LIBSBML_SOURCE_DIR ${THIRD_PARTY_DIRS}/libsbml-5.18.0)
     set(LIBSBML_BINARY_DIR ${LIBSBML_SOURCE_DIR}/${DEPENDENCY_BUILD_FOLDER_NAME}-${PLATFORM})

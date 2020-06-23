@@ -5,10 +5,6 @@ import os
 import sys
 from typing import List
 
-if sys.platform != 'linux':
-    raise NotImplementedError("Currently pysemsim is only supported "
-                              "for linux systems. ")
-
 _WORKING_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
 
@@ -16,7 +12,13 @@ class Util:
 
     @staticmethod
     def load_lib() -> ct.CDLL:
-        lib_path = os.path.join(_WORKING_DIRECTORY, "libomexmeta.so")
+        if sys.platform == "linux":
+            lib_path = os.path.join(_WORKING_DIRECTORY, "libOmexMeta.so")
+        elif sys.platform == "win32":
+            lib_path = os.path.join(_WORKING_DIRECTORY, "OmexMeta.dll")
+        else:
+            raise ValueError("Currently only implemented for windows or linux systems. Platofrm is " + sys.platform)
+
         lib = ct.CDLL(lib_path)
         if not lib:
             raise ValueError("libomexmeta.so not found")
@@ -33,7 +35,7 @@ class Util:
 libomexmeta = Util.load_lib()
 
 
-class PysemsimAPI:
+class PyOmexMetaAPI:
 
     # RDF methods
     @staticmethod

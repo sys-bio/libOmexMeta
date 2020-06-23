@@ -1,8 +1,8 @@
-from .pysemsim import PhysicalForce
-from .pysemsim import PhysicalProcess
-from .pysemsim import RDF, Editor, PhysicalEntity
-from .pysemsim import SingularAnnotation
-from .pysemsim_api import PysemsimAPI
+from .pyomexmeta import PhysicalForce
+from .pyomexmeta import PhysicalProcess
+from .pyomexmeta import RDF, Editor, PhysicalEntity
+from .pyomexmeta import SingularAnnotation
+from .pyomexmeta_api import PyOmexMetaAPI
 
 """
 todo

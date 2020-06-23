@@ -35,7 +35,7 @@ add_definitions(-DHAVE_CONFIG_H
         )
 
 # files to configure - This overwrites the configuration generated from automate system
-#  with null values, since I haven't found the cmake equivalent
+#  which I have modified manually. Do not uncomment but keep as a record of what was done.
 #note: the copasi-dependencies configures a cmake script to do this. Kind of.
 #configure_file(${RAPTOR_DIR}/src/raptor_config_cmake.h.in raptor2-2.0.15/src/raptor_config.h @ONLY)
 #configure_file(${RAPTOR_DIR}/src/raptor2.h.in ${RAPTOR_DIR}/src/raptor2.h @ONLY)
@@ -44,13 +44,14 @@ add_definitions(-DHAVE_CONFIG_H
 
 
 ##################################################################################
-#       find some dependencies
-#
-
-
-##################################################################################
 #       Sources
 #
+
+# There is some redundancy regarding which files implement certain features
+#  Sometimes I've commented out a feature in favour of one that does the same job.
+#  Best to leave these commented out.
+
+
 set(RAPTOR_LIBRDFA_SOURCES
         ${RAPTOR_DIR}/librdfa/config.h
         ${RAPTOR_DIR}/librdfa/context.c
@@ -432,44 +433,44 @@ if (${BUILD_WRAPPER_TESTS})
 endif ()
 
 
-if (BUILD_SHARED_LIBS)
-
-    add_library(redland-combined SHARED
-            ${RAPTOR_SOURCES}
-            ${RASQAL_SOURCES}
-            ${LIBRDF_SOURCES}
-            ${WRAPPER_SOURCES}
-            )
-
-    set_target_properties(redland-combined PROPERTIES POSITION_INDEPENDENT_CODE ON)
-    if (PLATFORM STREQUAL "Debug")
-        set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDll")
-    elseif (PLATFORM STREQUAL "Release")
-        set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDll")
-    endif ()
-
-    target_include_directories(redland-combined PUBLIC
-            ${INCLUDE_DIRECTORIES}
-            D:/vcpkg/installed/x64-windows/include
-            )
-
-    if (PLATFORM STREQUAL "windows-msvc")
-        if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-            set(RUNTIME "ucrtd")
-        elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-            set(RUNTIME "ucrt")
-        endif ()
-    endif ()
-
-    target_link_libraries(redland-combined PUBLIC
-            ${LINK_LIBRARIES}
-            #            ${RUNTIME}
-            )
-
-    #    set_target_properties(redland-combined PROPERTIES PUBLIC_HEADER
-    #            )
-
-
-    install(TARGETS redland-combined)
-
-endif ()
+#if (BUILD_SHARED_LIBS)
+#
+#    add_library(redland-combined SHARED
+#            ${RAPTOR_SOURCES}
+#            ${RASQAL_SOURCES}
+#            ${LIBRDF_SOURCES}
+#            ${WRAPPER_SOURCES}
+#            )
+#
+#    set_target_properties(redland-combined PROPERTIES POSITION_INDEPENDENT_CODE ON)
+#    if (PLATFORM STREQUAL "Debug")
+#        set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDll")
+#    elseif (PLATFORM STREQUAL "Release")
+#        set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDll")
+#    endif ()
+#
+#    target_include_directories(redland-combined PUBLIC
+#            ${INCLUDE_DIRECTORIES}
+#            D:/vcpkg/installed/x64-windows/include
+#            )
+#
+#    if (PLATFORM STREQUAL "windows-msvc")
+#        if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+#            set(RUNTIME "ucrtd")
+#        elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+#            set(RUNTIME "ucrt")
+#        endif ()
+#    endif ()
+#
+#    target_link_libraries(redland-combined PUBLIC
+#            ${LINK_LIBRARIES}
+#            #            ${RUNTIME}
+#            )
+#
+#    #    set_target_properties(redland-combined PROPERTIES PUBLIC_HEADER
+#    #            )
+#
+#
+#    install(TARGETS redland-combined)
+#
+#endif ()

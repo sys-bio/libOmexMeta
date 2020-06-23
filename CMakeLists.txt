@@ -99,6 +99,7 @@ else ()
     project(libomexmeta LANGUAGES CXX VERSION 0.1.5)
     DeterminePlatform()
     # Set the paths we need for building libomexmeta + dependencies
+    message(STATUS "PLATFORM ${PLATFORM}")
     SetPaths(${PLATFORM})
 
     if (WITH_ADDRESS_SANITIZER)
@@ -106,7 +107,6 @@ else ()
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")# -OX")
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address")# -OX")
     ENDIF ()
-
 
     # put all runtime targets (exe and dll) into bin
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
@@ -121,7 +121,6 @@ else ()
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
     if (PLATFORM STREQUAL "windows-msvc")
-
         # determine runtime (dynamic library is modified later)
         if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
             set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
@@ -412,6 +411,7 @@ this when you have MSVC working. Same true for zlib. ")
 
     elseif (PLATFORM STREQUAL "linux")
         message(STATUS "doing a linux")
+        message(STATUS "LIBCURL_LIBRARY ${LIBCURL_LIBRARY}")
 
         set(LINK_LIBRARIES
                 # order matters: top of the dependency chain first
@@ -518,6 +518,7 @@ this when you have MSVC working. Same true for zlib. ")
             ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/libltdl
 
             ${CURL_INCLUDE_DIR}
+            ${LIBXML2_INCLUDE_DIR} # fixme
             ${LIBXML2_INCLUDE_DIR2}
             ${LIBSBML_DEPS_INCLUDE_DIR}
             ${LIBSBML_INCLUDE_DIR}

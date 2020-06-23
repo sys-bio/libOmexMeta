@@ -29,7 +29,7 @@ build-windows
 build-macos
 .deps
 dist
-pysemsim.egg-info
+pyomexmeta.egg-info
 docs/cpp
 install-ubuntu
 brenda_parameters_1.xml

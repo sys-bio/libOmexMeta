@@ -1,7 +1,7 @@
 FROM conda/miniconda3
 RUN apt update && apt install -y wget libxslt1-dev libltdl-dev yajl-tools
 RUN pip install ipython
-RUN pip install --index-url https://test.pypi.org/simple pysemsim
+RUN pip install --index-url https://test.pypi.org/simple pyomexmeta
 
 
 
@@ -34,10 +34,10 @@ RUN pip install --index-url https://test.pypi.org/simple pysemsim
 #    && conda create -y --name py38 python=3.8
 
 
-# create an environment and install pysemsim version 0.0.5
+# create an environment and install pyomexmeta version 0.0.5
 #RUN conda init bash
 #RUN conda create --name py38 -y python=3.8 \
 #    && conda activate py38 \
 #    && pip install ipython \
-#    && pip install --index-url https://test.pypi.org/simple pysemsim
+#    && pip install --index-url https://test.pypi.org/simple pyomexmeta
 

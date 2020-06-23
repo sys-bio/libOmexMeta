@@ -12,12 +12,12 @@ import requests
 test_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 proj_dir = os.path.dirname(test_dir)
 src_dir = os.path.join(proj_dir, "src")
-pysemsem_dir = os.path.join(src_dir, "pysemsim")
+pysemsem_dir = os.path.join(src_dir, "pyomexmeta")
 
 site.addsitedir(src_dir)
 
 # module not found by IDE, but it does exist and and tests do run
-from pysemsim import *
+from pyomexmeta import *
 
 try:
     import tellurium as te

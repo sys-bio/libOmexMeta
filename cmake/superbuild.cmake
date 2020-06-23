@@ -19,6 +19,7 @@ if (${PLATFORM} STREQUAL "linux")
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
             -DCMAKE_POSITION_INDEPENDENT_CODE=ON
             )
+
     ExternalProject_Add(zlib
             SOURCE_DIR ${ZLIB_SOURCE_DIR}
             BINARY_DIR ${ZLIB_BUILD_DIR}

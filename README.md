@@ -21,11 +21,11 @@ and macos is a work in progress.
 You can get up and running quickly using pip
 
     $ sudo apt install libxslt1-dev libltdl-dev  yajl-tools
-    $ pip install --index-url https://test.pypi.org/simple pysemsim
+    $ pip install --index-url https://test.pypi.org/simple pyomexmeta
     # verify its worked
-    $ ipython -c "import pysemsim"
+    $ ipython -c "import pyomexmeta"
 
-Note that "pysemsim" is only available on pypi test. It has been tested with Python
+Note that "pyomexmeta" is only available on pypi test. It has been tested with Python
 version 3.8, but should work on other Python 3 versions. 
 
 ## Downloading Binaries

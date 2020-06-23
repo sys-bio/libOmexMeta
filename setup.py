@@ -14,12 +14,12 @@ with open(version_file) as f:
 
 """
 Install with 
-    pip install --index-url https://test.pypi.org/simple pysemsim
+    pip install --index-url https://test.pypi.org/simple pyomexmeta
 for now. 
 """
 
 setup(
-    name='pysemsim',
+    name='pyomexmeta',
     version=version,
     license='MIT',
     long_description=open('README.md').read(),
@@ -29,9 +29,9 @@ setup(
     url='https://github.com/sys-bio/libomexmeta',
     keywords=['annotation', 'rdf'],
     install_requires=[],
-    packages=['pysemsim'],
-    package_dir={'pysemsim': 'src/pysemsim'},
-    package_data={'pysemsim': [
+    packages=['pyomexmeta'],
+    package_dir={'pyomexmeta': 'src/pyomexmeta'},
+    package_data={'pyomexmeta': [
         'LICENCE.txt',
         'libomexmeta.so', "libxml2.so.2.9.10", "libcurl-d.so"
     ]
