@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/14/2020.
 //
 
-#ifndef LIBSEMSIM_SEMSIMXMLASSISTANT_H
-#define LIBSEMSIM_SEMSIMXMLASSISTANT_H
+#ifndef LIBOMEXMETA_SEMSIMXMLASSISTANT_H
+#define LIBOMEXMETA_SEMSIMXMLASSISTANT_H
 
 
 #include <vector>
@@ -70,4 +70,4 @@ namespace semsim {
         static XmlAssistantPtr generate(const std::string &xml, SemsimXmlType type);
     };
 }
-#endif //LIBSEMSIM_SEMSIMXMLASSISTANT_H
+#endif //LIBOMEXMETA_SEMSIMXMLASSISTANT_H

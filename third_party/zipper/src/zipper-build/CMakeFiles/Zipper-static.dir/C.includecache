@@ -6,47 +6,47 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aes.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aes.h
 stdlib.h
 -
 brg_types.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/brg_types.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/brg_types.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aes_via_ace.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aes_via_ace.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aescrypt.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aescrypt.c
 aesopt.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aesopt.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aesopt.h
 aestab.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aestab.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aestab.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aeskey.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aeskey.c
 aesopt.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aesopt.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aesopt.h
 aestab.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aestab.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aestab.h
 aes_via_ace.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aes_via_ace.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aes_via_ace.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aesopt.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aesopt.h
 aescpp.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aescpp.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aescpp.h
 aes.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aes.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aes.h
 brg_endian.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/brg_endian.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/brg_endian.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aestab.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aestab.c
 aes.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aes.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aes.h
 aesopt.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aesopt.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aesopt.h
 aestab.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aestab.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aestab.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aestab.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aestab.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/brg_endian.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/brg_endian.h
 sys/isa_defs.h
 -
 sys/endian.h
@@ -58,7 +58,7 @@ endian.h
 byteswap.h
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/brg_types.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/brg_types.h
 limits.h
 -
 stddef.h
@@ -66,7 +66,7 @@ stddef.h
 stdint.h
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/entropy.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/entropy.c
 windows.h
 -
 sys/stat.h
@@ -74,91 +74,91 @@ sys/stat.h
 fcntl.h
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/entropy.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/entropy.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/fileenc.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/fileenc.c
 memory.h
 -
 fileenc.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/fileenc.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/fileenc.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/fileenc.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/fileenc.h
 aes.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aes.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aes.h
 hmac.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/hmac.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/hmac.h
 pwd2key.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/pwd2key.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/pwd2key.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/hmac.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/hmac.c
 hmac.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/hmac.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/hmac.h
 brg_types.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/brg_types.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/brg_types.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/hmac.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/hmac.h
 memory.h
 -
 sha1.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/sha1.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/sha1.h
 sha2.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/sha2.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/sha2.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/prng.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/prng.c
 memory.h
 -
 prng.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/prng.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/prng.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/prng.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/prng.h
 sha1.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/sha1.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/sha1.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/pwd2key.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/pwd2key.c
 memory.h
 -
 hmac.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/hmac.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/hmac.h
 stdio.h
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/pwd2key.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/pwd2key.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/sha1.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/sha1.c
 string.h
 -
 sha1.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/sha1.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/sha1.h
 brg_endian.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/brg_endian.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/brg_endian.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/sha1.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/sha1.h
 stdlib.h
 -
 brg_types.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/brg_types.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/brg_types.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/crypt.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/crypt.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi.c
 stdlib.h
 -
 string.h
 -
 ioapi.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi.h
 stdio.h
 -
 stdlib.h
 -
 zlib.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/zlib.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/zlib.h
 stdint.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/stdint.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/stdint.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi_buf.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi_buf.c
 stdio.h
 -
 stdlib.h
@@ -168,15 +168,15 @@ string.h
 stdarg.h
 -
 zlib.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/zlib.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/zlib.h
 ioapi.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi.h
 ioapi_buf.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi_buf.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi_buf.h
 conio.h
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi_buf.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi_buf.h
 stdio.h
 -
 stdlib.h
@@ -184,11 +184,11 @@ stdlib.h
 string.h
 -
 zlib.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/zlib.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/zlib.h
 ioapi.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi_mem.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi_mem.c
 stdio.h
 -
 stdlib.h
@@ -196,13 +196,13 @@ stdlib.h
 string.h
 -
 zlib.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/zlib.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/zlib.h
 ioapi.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi.h
 ioapi_mem.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi_mem.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi_mem.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi_mem.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi_mem.h
 stdio.h
 -
 stdlib.h
@@ -210,27 +210,27 @@ stdlib.h
 string.h
 -
 zlib.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/zlib.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/zlib.h
 ioapi.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/iowin32.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/iowin32.c
 stdlib.h
 -
 tchar.h
 -
 zlib.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/zlib.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/zlib.h
 ioapi.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi.h
 iowin32.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/iowin32.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/iowin32.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/iowin32.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/iowin32.h
 windows.h
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/unzip.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/unzip.c
 stdio.h
 -
 stdlib.h
@@ -238,9 +238,9 @@ stdlib.h
 string.h
 -
 zlib.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/zlib.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/zlib.h
 unzip.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/unzip.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/unzip.h
 stddef.h
 -
 string.h
@@ -250,21 +250,21 @@ stdlib.h
 errno.h
 -
 aes/aes.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aes.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aes.h
 aes/fileenc.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/fileenc.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/fileenc.h
 crypt.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/crypt.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/crypt.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/unzip.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/unzip.h
 zlib.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/zlib.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/zlib.h
 ioapi.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi.h
 bzlib.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/bzlib.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/bzlib.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/zip.c
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/zip.c
 stdio.h
 -
 stdlib.h
@@ -274,9 +274,9 @@ string.h
 time.h
 -
 zlib.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/zlib.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/zlib.h
 zip.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/zip.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/zip.h
 stddef.h
 -
 string.h
@@ -286,21 +286,21 @@ stdlib.h
 errno.h
 -
 aes/aes.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/aes.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/aes.h
 aes/fileenc.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/fileenc.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/fileenc.h
 aes/prng.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/prng.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/prng.h
 aes/entropy.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/aes/entropy.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/aes/entropy.h
 crypt.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/crypt.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/crypt.h
 
-/cygdrive/d/libsemsim/third_party/zipper/minizip/zip.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/zip.h
 zlib.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/zlib.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/zlib.h
 ioapi.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi.h
 bzlib.h
-/cygdrive/d/libsemsim/third_party/zipper/minizip/bzlib.h
+/cygdrive/d/libomexmeta/third_party/zipper/minizip/bzlib.h
 

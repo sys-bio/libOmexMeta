@@ -42,7 +42,7 @@ omex --> decompress
 
 (RDF File) as rdf_file
 
-rectangle libsemsim{
+rectangle libomexmeta{
     (RDF Graph) as rdf_graph
     (create) as create
     (Edit) as edit

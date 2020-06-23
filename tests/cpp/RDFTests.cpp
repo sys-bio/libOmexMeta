@@ -39,7 +39,7 @@ TEST_F(RDFTests, TestFromStringSingularAnnotation) {
 TEST_F(RDFTests, TestFromStringSingularAnnotationSqlite) {
 //    "hashes", "test", "hash-type='bdb',dir='.'")
 //    librdf_new_storage()
-    RDF rdf("sqlite", "semsim_store", "new='yes'");//"hash-type=sqlite,dir=mnt/d/libsemsim/tests/cpp");
+    RDF rdf("sqlite", "semsim_store", "new='yes'");//"hash-type=sqlite,dir=mnt/d/libomexmeta/tests/cpp");
     rdf.addFromString(samples.singular_annotation1, "rdfxml");
     rdf.commitTransaction();
     int expected = 1;

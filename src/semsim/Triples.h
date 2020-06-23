@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/29/2020.
 //
 
-#ifndef LIBSEMSIM_TRIPLES_H
-#define LIBSEMSIM_TRIPLES_H
+#ifndef LIBOMEXMETA_TRIPLES_H
+#define LIBOMEXMETA_TRIPLES_H
 
 #include "semsim/Triple.h"
 #include "semsim/Predicate.h"
@@ -122,4 +122,4 @@ namespace semsim {
 
 }
 
-#endif //LIBSEMSIM_TRIPLES_H
+#endif //LIBOMEXMETA_TRIPLES_H

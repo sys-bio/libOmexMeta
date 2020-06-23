@@ -32,7 +32,7 @@ set(VERSION_MAJOR 0)
 set(VERSION_MINOR 0)
 set(VERSION_MICRO 8)
 
-set(LIBSEMSIM_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
+set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 #configure_file("${CMAKE_SOURCE_DIR}/VERSION.in" "${CMAKE_SOURCE_DIR}/VERSION.txt")
 
 if ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
@@ -51,10 +51,10 @@ endif ()
 # superbuild variable
 set(HAVE_DEPENDENCIES FALSE CACHE BOOL
         "When true, the dependencies will be
-         automatically built before building libsemsim. When False
+         automatically built before building libomexmeta. When False
          the dependencies are assumed to already exist")
 
-option(BUILD_DOCS "Build libsemsim documentation" ON)
+option(BUILD_DOCS "Build libomexmeta documentation" ON)
 option(BUILD_LIBSBML "Build libsbml" OFF)
 option(BUILD_LIBCOMBINE "Build libcombine" OFF)
 
@@ -76,10 +76,10 @@ endif ()
 # Superbuild
 #
 if (NOT HAVE_DEPENDENCIES)
-    project(libsemsim-superbuild)
+    project(libomexmeta-superbuild)
     DeterminePlatform() #defined ${PLATFORM}
 
-    # Set the paths we need for building libsemsim + dependencies
+    # Set the paths we need for building libomexmeta + dependencies
     SetPaths("${PLATFORM}")
 
     #update apt
@@ -95,10 +95,10 @@ if (NOT HAVE_DEPENDENCIES)
     return() # stop after processing superbuild.cmake
 
 else ()
-    message(STATUS "BUILDING LIBSEMSIM")
-    project(libsemsim LANGUAGES CXX VERSION 0.1.5)
+    message(STATUS "BUILDING LIBOMEXMETA")
+    project(libomexmeta LANGUAGES CXX VERSION 0.1.5)
     DeterminePlatform()
-    # Set the paths we need for building libsemsim + dependencies
+    # Set the paths we need for building libomexmeta + dependencies
     SetPaths(${PLATFORM})
 
     if (WITH_ADDRESS_SANITIZER)
@@ -552,6 +552,8 @@ this when you have MSVC working. Same true for zlib. ")
             ${CMAKE_SOURCE_DIR}/src
             ${CMAKE_SOURCE_DIR}/src/semsim
             )
+    #############################################
+    # add semsim and tests
 
     PrintOutPaths()
     add_subdirectory(src/redland)
@@ -570,6 +572,4 @@ this when you have MSVC working. Same true for zlib. ")
 endif ()
 
 
-#############################################
-# add semsim and tests
 

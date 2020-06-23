@@ -1,7 +1,7 @@
 
 
 
-#NOTE: This cmake lists is not used for libsemsim.
+#NOTE: This cmake lists is not used for libomexmeta.
 
 
 #######################################################################

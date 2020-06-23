@@ -5,7 +5,7 @@ version_file = os.path.join(os.path.dirname(__file__), "VERSION.txt")
 if not os.path.isfile(version_file):
     raise FileNotFoundError(f"The version file \"{version_file}\" should exist in"
                             f" the top level "
-                            "directory of the libsemsim pacakge but does not. "
+                            "directory of the libomexmeta pacakge but does not. "
                             "Please ensure you have configured with cmake, "
                             "which will convert \"VERSION.in\" into \"VERSION.txt\"")
 
@@ -26,14 +26,14 @@ setup(
     long_description_content_type="text/markdown",
     author='Ciaran Welsh',
     author_email='cwelsh2@uw.edu',
-    url='https://github.com/sys-bio/libsemsim',
+    url='https://github.com/sys-bio/libomexmeta',
     keywords=['annotation', 'rdf'],
     install_requires=[],
     packages=['pysemsim'],
     package_dir={'pysemsim': 'src/pysemsim'},
     package_data={'pysemsim': [
         'LICENCE.txt',
-        'libsemsim.so', "libxml2.so.2.9.10", "libcurl-d.so"
+        'libomexmeta.so', "libxml2.so.2.9.10", "libcurl-d.so"
     ]
     },
     include_package_data=True,

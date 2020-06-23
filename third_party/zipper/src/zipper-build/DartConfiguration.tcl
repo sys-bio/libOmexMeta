@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /cygdrive/d/libsemsim/third_party/zipper
-BuildDirectory: /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build
+SourceDirectory: /cygdrive/d/libomexmeta/third_party/zipper
+BuildDirectory: /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -26,7 +26,7 @@ SubmitURL: http://
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/cygdrive/c/Users/Ciaran/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe" "/cygdrive/d/libsemsim/third_party/zipper"
+ConfigureCommand: "/cygdrive/c/Users/Ciaran/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe" "/cygdrive/d/libomexmeta/third_party/zipper"
 MakeCommand: /cygdrive/c/Users/Ciaran/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 

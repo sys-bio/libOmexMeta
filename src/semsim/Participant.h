@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/20/2020.
 //
 
-#ifndef LIBSEMSIM_PARTICIPANT_H
-#define LIBSEMSIM_PARTICIPANT_H
+#ifndef LIBOMEXMETA_PARTICIPANT_H
+#define LIBOMEXMETA_PARTICIPANT_H
 
 #include "librdf.h"
 #include <string>
@@ -151,4 +151,4 @@ namespace semsim {
 }
 
 
-#endif //LIBSEMSIM_PARTICIPANT_H
+#endif //LIBOMEXMETA_PARTICIPANT_H

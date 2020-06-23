@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#ifndef LIBSEMSIM_PhysicalPhenomenon_H
-#define LIBSEMSIM_PhysicalPhenomenon_H
+#ifndef LIBOMEXMETA_PhysicalPhenomenon_H
+#define LIBOMEXMETA_PhysicalPhenomenon_H
 
 #include "semsim/Subject.h"
 #include "semsim/PhysicalProperty.h"
@@ -123,4 +123,4 @@ namespace semsim {
 
 }
 
-#endif //LIBSEMSIM_PhysicalPhenomenon_H
+#endif //LIBOMEXMETA_PhysicalPhenomenon_H

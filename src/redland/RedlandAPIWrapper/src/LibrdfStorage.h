@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/17/2020.
 //
 
-#ifndef LIBSEMSIM_LIBRDFSTORAGE_H
-#define LIBSEMSIM_LIBRDFSTORAGE_H
+#ifndef LIBOMEXMETA_LIBRDFSTORAGE_H
+#define LIBOMEXMETA_LIBRDFSTORAGE_H
 
 #include <librdf.h>
 #include <string>
@@ -91,4 +91,4 @@ namespace redland {
 //    };
 //
 // */
-#endif //LIBSEMSIM_LIBRDFSTORAGE_H
+#endif //LIBOMEXMETA_LIBRDFSTORAGE_H

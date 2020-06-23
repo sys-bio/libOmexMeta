@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/15/2020.
 //
 
-#ifndef LIBSEMSIM_EDITOR_H
-#define LIBSEMSIM_EDITOR_H
+#ifndef LIBOMEXMETA_EDITOR_H
+#define LIBOMEXMETA_EDITOR_H
 
 
 #include "semsim/SemsimXmlAssistant.h"
@@ -233,4 +233,4 @@ namespace semsim {
 
 }
 
-#endif //LIBSEMSIM_EDITOR_H
+#endif //LIBOMEXMETA_EDITOR_H

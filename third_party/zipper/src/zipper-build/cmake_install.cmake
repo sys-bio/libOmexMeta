@@ -1,4 +1,4 @@
-# Install script for directory: /cygdrive/d/libsemsim/third_party/zipper
+# Install script for directory: /cygdrive/d/libomexmeta/third_party/zipper
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -33,23 +33,23 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/cygdrive/d/libsemsim/third_party/zipper/src/zipper-build/libZipper-static.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build/libZipper-static.a")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/zipper" TYPE FILE FILES
-    "/cygdrive/d/libsemsim/third_party/zipper/minizip/crypt.h"
-    "/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi.h"
-    "/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi_buf.h"
-    "/cygdrive/d/libsemsim/third_party/zipper/minizip/ioapi_mem.h"
-    "/cygdrive/d/libsemsim/third_party/zipper/minizip/iowin32.h"
-    "/cygdrive/d/libsemsim/third_party/zipper/minizip/unzip.h"
-    "/cygdrive/d/libsemsim/third_party/zipper/minizip/zip.h"
-    "/cygdrive/d/libsemsim/third_party/zipper/zipper/CDirEntry.h"
-    "/cygdrive/d/libsemsim/third_party/zipper/zipper/defs.h"
-    "/cygdrive/d/libsemsim/third_party/zipper/zipper/tools.h"
-    "/cygdrive/d/libsemsim/third_party/zipper/zipper/unzipper.h"
-    "/cygdrive/d/libsemsim/third_party/zipper/zipper/zipper.h"
+    "/cygdrive/d/libomexmeta/third_party/zipper/minizip/crypt.h"
+    "/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi.h"
+    "/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi_buf.h"
+    "/cygdrive/d/libomexmeta/third_party/zipper/minizip/ioapi_mem.h"
+    "/cygdrive/d/libomexmeta/third_party/zipper/minizip/iowin32.h"
+    "/cygdrive/d/libomexmeta/third_party/zipper/minizip/unzip.h"
+    "/cygdrive/d/libomexmeta/third_party/zipper/minizip/zip.h"
+    "/cygdrive/d/libomexmeta/third_party/zipper/zipper/CDirEntry.h"
+    "/cygdrive/d/libomexmeta/third_party/zipper/zipper/defs.h"
+    "/cygdrive/d/libomexmeta/third_party/zipper/zipper/tools.h"
+    "/cygdrive/d/libomexmeta/third_party/zipper/zipper/unzipper.h"
+    "/cygdrive/d/libomexmeta/third_party/zipper/zipper/zipper.h"
     )
 endif()
 
@@ -61,5 +61,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/cygdrive/d/libsemsim/third_party/zipper/src/zipper-build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

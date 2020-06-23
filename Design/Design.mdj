@@ -28238,7 +28238,7 @@
 											"top": 145,
 											"width": 143,
 											"height": 39,
-											"text": "Extract existing annotations into a libsemsim model",
+											"text": "Extract existing annotations into a libomexmeta model",
 											"wordWrap": true
 										},
 										{
@@ -30910,7 +30910,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFw6B9pX+2vRNo="
 					},
-					"name": "Extract existing annotations into a libsemsim model"
+					"name": "Extract existing annotations into a libomexmeta model"
 				},
 				{
 					"_type": "UMLUseCase",

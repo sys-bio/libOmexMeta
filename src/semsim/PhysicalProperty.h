@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#ifndef LIBSEMSIM_PHYSICALPROPERTY_H
-#define LIBSEMSIM_PHYSICALPROPERTY_H
+#ifndef LIBOMEXMETA_PHYSICALPROPERTY_H
+#define LIBOMEXMETA_PHYSICALPROPERTY_H
 
 #include "semsim/Resource.h"
 #include "semsim/Error.h"
@@ -91,4 +91,4 @@ namespace semsim {
     };
 }
 
-#endif //LIBSEMSIM_PHYSICALPROPERTY_H
+#endif //LIBOMEXMETA_PHYSICALPROPERTY_H

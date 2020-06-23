@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/8/2020.
 //
 
-#ifndef LIBSEMSIM_SEMSIMCAPI_H
-#define LIBSEMSIM_SEMSIMCAPI_H
+#ifndef LIBOMEXMETA_SEMSIMCAPI_H
+#define LIBOMEXMETA_SEMSIMCAPI_H
 
 #include "semsim/RDF.h"
 #include "semsim/Editor.h"
@@ -263,7 +263,7 @@ namespace semsim {
 #endif
 }
 
-#endif //LIBSEMSIM_SEMSIMCAPI_H
+#endif //LIBOMEXMETA_SEMSIMCAPI_H
 
 
 

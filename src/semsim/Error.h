@@ -1,5 +1,5 @@
-#ifndef LIBSEMSIM_ERROR_H
-#define LIBSEMSIM_ERROR_H
+#ifndef LIBOMEXMETA_ERROR_H
+#define LIBOMEXMETA_ERROR_H
 
 #include "exception"
 #include "iostream"
@@ -70,4 +70,4 @@ namespace semsim {
 
 };
 
-#endif //LIBSEMSIM_ERROR_H
+#endif //LIBOMEXMETA_ERROR_H

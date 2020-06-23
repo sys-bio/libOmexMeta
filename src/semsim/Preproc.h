@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/25/2020.
 //
 
-#ifndef LIBSEMSIM_SUPERBUILD_PREPROC_H
-#define LIBSEMSIM_SUPERBUILD_PREPROC_H
+#ifndef LIBOMEXMETA_SUPERBUILD_PREPROC_H
+#define LIBOMEXMETA_SUPERBUILD_PREPROC_H
 
 #pragma once
 
@@ -12,7 +12,7 @@
 
 /*
  * Macros defined in this header file will eventually
- * be used to enable portability of libsemsim
+ * be used to enable portability of libomexmeta
  */
 
 
@@ -46,4 +46,4 @@
 #endif
 
 
-#endif //LIBSEMSIM_SUPERBUILD_PREPROC_H
+#endif //LIBOMEXMETA_SUPERBUILD_PREPROC_H

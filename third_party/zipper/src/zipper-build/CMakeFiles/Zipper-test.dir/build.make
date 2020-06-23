@@ -43,10 +43,10 @@ RM = /cygdrive/c/Users/Ciaran/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/d/libsemsim/third_party/zipper
+CMAKE_SOURCE_DIR = /cygdrive/d/libomexmeta/third_party/zipper
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build
+CMAKE_BINARY_DIR = /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Zipper-test.dir/depend.make
@@ -59,42 +59,42 @@ include CMakeFiles/Zipper-test.dir/flags.make
 
 CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.o: CMakeFiles/Zipper-test.dir/flags.make
 CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.o: ../../test/file_zip_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/d/libsemsim/third_party/zipper/src/zipper-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.o -c /cygdrive/d/libsemsim/third_party/zipper/test/file_zip_test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.o -c /cygdrive/d/libomexmeta/third_party/zipper/test/file_zip_test.cpp
 
 CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/d/libsemsim/third_party/zipper/test/file_zip_test.cpp > CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.i
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/d/libomexmeta/third_party/zipper/test/file_zip_test.cpp > CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.i
 
 CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/d/libsemsim/third_party/zipper/test/file_zip_test.cpp -o CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.s
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/d/libomexmeta/third_party/zipper/test/file_zip_test.cpp -o CMakeFiles/Zipper-test.dir/test/file_zip_test.cpp.s
 
 CMakeFiles/Zipper-test.dir/test/main.cpp.o: CMakeFiles/Zipper-test.dir/flags.make
 CMakeFiles/Zipper-test.dir/test/main.cpp.o: ../../test/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/d/libsemsim/third_party/zipper/src/zipper-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Zipper-test.dir/test/main.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Zipper-test.dir/test/main.cpp.o -c /cygdrive/d/libsemsim/third_party/zipper/test/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Zipper-test.dir/test/main.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Zipper-test.dir/test/main.cpp.o -c /cygdrive/d/libomexmeta/third_party/zipper/test/main.cpp
 
 CMakeFiles/Zipper-test.dir/test/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Zipper-test.dir/test/main.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/d/libsemsim/third_party/zipper/test/main.cpp > CMakeFiles/Zipper-test.dir/test/main.cpp.i
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/d/libomexmeta/third_party/zipper/test/main.cpp > CMakeFiles/Zipper-test.dir/test/main.cpp.i
 
 CMakeFiles/Zipper-test.dir/test/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Zipper-test.dir/test/main.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/d/libsemsim/third_party/zipper/test/main.cpp -o CMakeFiles/Zipper-test.dir/test/main.cpp.s
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/d/libomexmeta/third_party/zipper/test/main.cpp -o CMakeFiles/Zipper-test.dir/test/main.cpp.s
 
 CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.o: CMakeFiles/Zipper-test.dir/flags.make
 CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.o: ../../test/memory_zip_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/d/libsemsim/third_party/zipper/src/zipper-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.o -c /cygdrive/d/libsemsim/third_party/zipper/test/memory_zip_test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.o -c /cygdrive/d/libomexmeta/third_party/zipper/test/memory_zip_test.cpp
 
 CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/d/libsemsim/third_party/zipper/test/memory_zip_test.cpp > CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.i
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/d/libomexmeta/third_party/zipper/test/memory_zip_test.cpp > CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.i
 
 CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/d/libsemsim/third_party/zipper/test/memory_zip_test.cpp -o CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.s
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/d/libomexmeta/third_party/zipper/test/memory_zip_test.cpp -o CMakeFiles/Zipper-test.dir/test/memory_zip_test.cpp.s
 
 # Object files for target Zipper-test
 Zipper__test_OBJECTS = \
@@ -112,7 +112,7 @@ Zipper-test.exe: CMakeFiles/Zipper-test.dir/build.make
 Zipper-test.exe: libZipper-static.a
 Zipper-test.exe: /usr/lib/libz.dll.a
 Zipper-test.exe: CMakeFiles/Zipper-test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/d/libsemsim/third_party/zipper/src/zipper-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Zipper-test.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Zipper-test.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Zipper-test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -125,6 +125,6 @@ CMakeFiles/Zipper-test.dir/clean:
 .PHONY : CMakeFiles/Zipper-test.dir/clean
 
 CMakeFiles/Zipper-test.dir/depend:
-	cd /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cygdrive/d/libsemsim/third_party/zipper /cygdrive/d/libsemsim/third_party/zipper /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build/CMakeFiles/Zipper-test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cygdrive/d/libomexmeta/third_party/zipper /cygdrive/d/libomexmeta/third_party/zipper /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build/CMakeFiles/Zipper-test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Zipper-test.dir/depend
 

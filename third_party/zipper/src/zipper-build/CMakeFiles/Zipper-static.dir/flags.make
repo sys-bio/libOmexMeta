@@ -7,11 +7,11 @@ C_FLAGS = -O3 -DNDEBUG
 
 C_DEFINES = -DLINUX -DUSE_ZLIB -D__APPLE__
 
-C_INCLUDES = -I/cygdrive/d/libsemsim/third_party/zipper/minizip -I/cygdrive/d/libsemsim/third_party/zipper/zipper -I/cygdrive/d/libsemsim/third_party/zipper -I/cygdrive/d/libsemsim/third_party/zipper/src/zipper-build 
+C_INCLUDES = -I/cygdrive/d/libomexmeta/third_party/zipper/minizip -I/cygdrive/d/libomexmeta/third_party/zipper/zipper -I/cygdrive/d/libomexmeta/third_party/zipper -I/cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build
 
 CXX_FLAGS = -O3 -DNDEBUG  
 
 CXX_DEFINES = -DLINUX -DUSE_ZLIB -D__APPLE__
 
-CXX_INCLUDES = -I/cygdrive/d/libsemsim/third_party/zipper/minizip -I/cygdrive/d/libsemsim/third_party/zipper/zipper -I/cygdrive/d/libsemsim/third_party/zipper -I/cygdrive/d/libsemsim/third_party/zipper/src/zipper-build 
+CXX_INCLUDES = -I/cygdrive/d/libomexmeta/third_party/zipper/minizip -I/cygdrive/d/libomexmeta/third_party/zipper/zipper -I/cygdrive/d/libomexmeta/third_party/zipper -I/cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build
 

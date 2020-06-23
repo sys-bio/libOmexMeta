@@ -125,7 +125,7 @@ if (${PLATFORM} STREQUAL "linux")
     endif ()
 
     # we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
-    ExternalProject_Add(libsemsim
+    ExternalProject_Add(libomexmeta
             DEPENDS zlib libsbml-dependencies zipper
             libxml2
             SOURCE_DIR ${CMAKE_SOURCE_DIR}
@@ -194,7 +194,7 @@ pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
     #    #    target_link_libraries(main PRIVATE ZLIB::ZLIB)
 
     # we now call and build the parent project with HAVE_DEPENDENCIES=TRUE
-    ExternalProject_Add(libsemsim
+    ExternalProject_Add(libomexmeta
             SOURCE_DIR ${CMAKE_SOURCE_DIR}
             BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} -j${N}
             BINARY_DIR ${CMAKE_BINARY_DIR}

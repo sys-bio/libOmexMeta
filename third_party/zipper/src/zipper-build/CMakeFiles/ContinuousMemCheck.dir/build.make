@@ -43,10 +43,10 @@ RM = /cygdrive/c/Users/Ciaran/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/d/libsemsim/third_party/zipper
+CMAKE_SOURCE_DIR = /cygdrive/d/libomexmeta/third_party/zipper
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build
+CMAKE_BINARY_DIR = /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build
 
 # Utility rule file for ContinuousMemCheck.
 
@@ -71,6 +71,6 @@ CMakeFiles/ContinuousMemCheck.dir/clean:
 .PHONY : CMakeFiles/ContinuousMemCheck.dir/clean
 
 CMakeFiles/ContinuousMemCheck.dir/depend:
-	cd /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cygdrive/d/libsemsim/third_party/zipper /cygdrive/d/libsemsim/third_party/zipper /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build/CMakeFiles/ContinuousMemCheck.dir/DependInfo.cmake --color=$(COLOR)
+	cd /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cygdrive/d/libomexmeta/third_party/zipper /cygdrive/d/libomexmeta/third_party/zipper /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build/CMakeFiles/ContinuousMemCheck.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ContinuousMemCheck.dir/depend
 

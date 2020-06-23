@@ -1,18 +1,18 @@
-# libsemsim (aka libOmexMeta)
+# libomexmeta (aka libOmexMeta)
 Libsemsim is a C++ library for annotating models in systems biology that 
 use xml for serialization. Libsemsim uses RDF as a framework for
 representing these annotations. 
 
-In addition to the C++ backend there is a C API, which facilitates importing libsemsim into other languages and a Python front end for a nice user interface. 
+In addition to the C++ backend there is a C API, which facilitates importing libomexmeta into other languages and a Python front end for a nice user interface. 
 
-This is a pre-release version of libsemsim and should be considered as such. 
+This is a pre-release version of libomexmeta and should be considered as such. 
 Its primary purpose is to get feedback from collaborators on how to 
 improve the software. Please convert any suggestions/improvements into coherent github issues. 
 
-As a side note, the name `libsemsim` is due to change to `libOmexMeta` before release. 
+As a side note, the name `libomexmeta` is due to change to `libOmexMeta` before release. 
 
 # Platform
-Due to the Redland library dependencies being linux only, libsemsim has been 
+Due to the Redland library dependencies being linux only, libomexmeta has been 
 developed on Ubuntu 18.04 and is presently still linux only. Support for Windows 
 and macos is a work in progress. 
 
@@ -29,7 +29,7 @@ Note that "pysemsim" is only available on pypi test. It has been tested with Pyt
 version 3.8, but should work on other Python 3 versions. 
 
 ## Downloading Binaries
-You can download binaries from the [releases tab](https://github.com/sys-bio/libsemsim/releases/tag/v0.0.2)
+You can download binaries from the [releases tab](https://github.com/sys-bio/libomexmeta/releases/tag/v0.0.2)
 
 ## Building from source
 **tl;dr**
@@ -39,12 +39,12 @@ Optionally become `sudo`er.
 $ sudo -i
 ```
 You will be prompted for password and will then need to `cd` back into the directory
-where you downloded libsemsim. If you do not do this, then the cmake 
+where you downloded libomexmeta. If you do not do this, then the cmake 
 script will ask for a password during install. 
 
 ```
-$ git clone https://github.com/sys-bio/libsemsim.git
-$ cd libsemsim
+$ git clone https://github.com/sys-bio/libomexmeta.git
+$ cd libomexmeta
 $ mkdir build && cd build
 $ cmake -DHAVE_DEPENDENCIES=OFF -DBUILD_TESTS=ON -DBUILD_SHARED=ON -DBUILD_WRAPPER_TESTS=ON -DBUILD_DOCS=OFF -DWITH_ADDRESS_SANITIZER=OFF ..
 $ make -j 8 #or however may processes you want to yse
@@ -65,11 +65,11 @@ Disclaimer: The build system for me but is untested on other computers. Expect s
 to begin with. Feedback on build errors will help stablize the build system. 
 
 ### The superbuild
-libsemsim uses a "superbuild" system to fully automate the acquisition of dependencies. The main dependencies of 
-libsemsim is are the Redland libraries: raptor2, rasqal and librdf. For convenience, the sources of these packages 
-are distributed with libsemsim and are pulled into a single binary called `redland-combined-static.a` for linking. Furthermore, 
+libomexmeta uses a "superbuild" system to fully automate the acquisition of dependencies. The main dependencies of 
+libomexmeta is are the Redland libraries: raptor2, rasqal and librdf. For convenience, the sources of these packages 
+are distributed with libomexmeta and are pulled into a single binary called `redland-combined-static.a` for linking. Furthermore, 
 included in the superbuild are both `libsbml` and `libcombine`. These dependencies are deliberately not 
-used and will soon become optional in the libsemsim build that is set to `OFF` by default.  
+used and will soon become optional in the libomexmeta build that is set to `OFF` by default.  
 
 To control the superbuild, there is a CMake variable called `HAVE_DEPENDENCIES`. 
 The first time you run cmake, you will probably want to have the `HAVE_DEPENDENCIES=ON` 
@@ -77,7 +77,7 @@ but if you rebuild you can set `HAVE_DEPENDENCIES=OFF`.
 
 # Documentation
 
-https://sys-bio.github.io/libsemsim-docs/
+https://sys-bio.github.io/libomexmeta-docs/
 
 Note: documentation is currently out of date but being updated presently 
 
@@ -104,7 +104,7 @@ and then proceed with the build instructions.
 
 Things that could (and maybe should) change in future versions
 --------------------------------------------------------------
-- Redland package could be reintegrated with the rest of libsemsim code. 
+- Redland package could be reintegrated with the rest of libomexmeta code. 
   The original plan was to write a full C++ wrapper around the three redland libraries. 
   Due to difficulties, this didn't really materialize so it might make more sense to 
   pull that code back into the semsim folder. 

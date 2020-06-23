@@ -29,7 +29,7 @@ add_custom_command(
         VERBATIM
 )
 
-add_custom_target(libsemsim-docs-doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
+add_custom_target(libomexmeta-docs-doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
 
 ############################################################
 #   Sphinx
@@ -55,7 +55,7 @@ add_custom_command(
         OUTPUT ${SPHINX_INDEX_FILE}
         COMMAND
         # Tell Breathe where to find the Doxygen output
-        ${SPHINX_EXECUTABLE} -b html -Dbreathe_projects.libsemsim=${DOXYGEN_OUTPUT_DIR}/xml
+        ${SPHINX_EXECUTABLE} -b html -Dbreathe_projects.libomexmeta=${DOXYGEN_OUTPUT_DIR}/xml
         ${SPHINX_SOURCE} ${SPHINX_BUILD}
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
         DEPENDS
@@ -67,7 +67,7 @@ add_custom_command(
 
 
 
-add_custom_target(libsemsim-docs-sphinx ALL DEPENDS ${SPHINX_INDEX_FILE})
+add_custom_target(libomexmeta-docs-sphinx ALL DEPENDS ${SPHINX_INDEX_FILE})
 
 
 # Add an install target to install the docs

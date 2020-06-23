@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/20/2020.
 //
 
-#ifndef LIBSEMSIM_LIBRDFPARSER_H
-#define LIBSEMSIM_LIBRDFPARSER_H
+#ifndef LIBOMEXMETA_LIBRDFPARSER_H
+#define LIBOMEXMETA_LIBRDFPARSER_H
 
 
 #include <librdf.h>
@@ -99,4 +99,4 @@ namespace redland {
 }
 
 
-#endif //LIBSEMSIM_LIBRDFPARSER_H
+#endif //LIBOMEXMETA_LIBRDFPARSER_H

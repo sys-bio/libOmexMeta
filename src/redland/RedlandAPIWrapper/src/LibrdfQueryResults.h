@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/20/2020.
 //
 
-#ifndef LIBSEMSIM_LIBRDFQuery_results_H
-#define LIBSEMSIM_LIBRDFQuery_results_H
+#ifndef LIBOMEXMETA_LIBRDFQuery_results_H
+#define LIBOMEXMETA_LIBRDFQuery_results_H
 
 
 #include <librdf.h>
@@ -33,4 +33,4 @@ namespace redland {
     };
 }
 
-#endif //LIBSEMSIM_LIBRDFQuery_results_H
+#endif //LIBOMEXMETA_LIBRDFQuery_results_H

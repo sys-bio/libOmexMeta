@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/31/2020.
 //
 
-#ifndef LIBSEMSIM_RDF_H
-#define LIBSEMSIM_RDF_H
+#ifndef LIBOMEXMETA_RDF_H
+#define LIBOMEXMETA_RDF_H
 
 #include <unordered_map>
 #include "RedlandAPIWrapper.h"
@@ -162,4 +162,4 @@ namespace semsim {
     };
 }
 
-#endif //LIBSEMSIM_RDF_H
+#endif //LIBOMEXMETA_RDF_H

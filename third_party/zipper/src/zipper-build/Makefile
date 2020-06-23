@@ -48,10 +48,10 @@ RM = /cygdrive/c/Users/Ciaran/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/d/libsemsim/third_party/zipper
+CMAKE_SOURCE_DIR = /cygdrive/d/libomexmeta/third_party/zipper
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build
+CMAKE_BINARY_DIR = /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -138,7 +138,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	/cygdrive/c/Users/Ciaran/.CLion2019.3/system/cygwin_cmake/bin/cpack.exe --config ./CPackSourceConfig.cmake /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build/CPackSourceConfig.cmake
+	/cygdrive/c/Users/Ciaran/.CLion2019.3/system/cygwin_cmake/bin/cpack.exe --config ./CPackSourceConfig.cmake /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -159,9 +159,9 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build/CMakeFiles /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build/CMakeFiles /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/d/libsemsim/third_party/zipper/src/zipper-build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/d/libomexmeta/third_party/zipper/src/zipper-build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

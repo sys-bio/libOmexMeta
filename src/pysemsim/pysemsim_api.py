@@ -16,10 +16,10 @@ class Util:
 
     @staticmethod
     def load_lib() -> ct.CDLL:
-        lib_path = os.path.join(_WORKING_DIRECTORY, "libsemsim.so")
+        lib_path = os.path.join(_WORKING_DIRECTORY, "libomexmeta.so")
         lib = ct.CDLL(lib_path)
         if not lib:
-            raise ValueError("libsemsim.so not found")
+            raise ValueError("libomexmeta.so not found")
         return lib
 
     @staticmethod
@@ -30,7 +30,7 @@ class Util:
         return func
 
 
-libsemsim = Util.load_lib()
+libomexmeta = Util.load_lib()
 
 
 class PysemsimAPI:

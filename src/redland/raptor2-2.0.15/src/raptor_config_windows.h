@@ -372,7 +372,7 @@
  */
 
 /*
- * BUILD_SHARED_LIBS defaults to off in libsemsim.
+ * BUILD_SHARED_LIBS defaults to off in libomexmeta.
  * We build a static library and pull it into the main binary.
  */
 #ifdef BUILD_SHARED_LIBS

@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/4/2020.
 //
 
-#ifndef LIBSEMSIM_RESOURCE_H
-#define LIBSEMSIM_RESOURCE_H
+#ifndef LIBOMEXMETA_RESOURCE_H
+#define LIBOMEXMETA_RESOURCE_H
 
 #include "librdf.h"
 #include "LibrdfNode.h"
@@ -49,5 +49,5 @@ namespace semsim {
 
 }
 
-#endif //LIBSEMSIM_RESOURCE_H
+#endif //LIBOMEXMETA_RESOURCE_H
 

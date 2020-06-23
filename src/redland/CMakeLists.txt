@@ -19,7 +19,7 @@ SET(WRAPPER_SOURCE_DIR ${WRAPPER_DIR}/src)
 SET(WRAPPER_TEST_DIR ${WRAPPER_DIR}/test)
 
 # set directory for librdf storage/cache. only used when not specified by user
-#  which it is in the context of libsemsim
+#  which it is in the context of libomexmeta
 set(PKGDATADIR $ENV{HOME}/.librdf)
 file(MAKE_DIRECTORY ${PKGDATADIR})
 

@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/17/2020.
 //
 
-#ifndef LIBSEMSIM_WORLD_H
-#define LIBSEMSIM_WORLD_H
+#ifndef LIBOMEXMETA_WORLD_H
+#define LIBOMEXMETA_WORLD_H
 
 #include "librdf.h"
 
@@ -65,7 +65,7 @@ namespace redland {
 
 }
 
-#endif //LIBSEMSIM_WORLD_H
+#endif //LIBOMEXMETA_WORLD_H
 
 
 

@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/4/2020.
 //
 
-#ifndef LIBSEMSIM_SUBJECT_H
-#define LIBSEMSIM_SUBJECT_H
+#ifndef LIBOMEXMETA_SUBJECT_H
+#define LIBOMEXMETA_SUBJECT_H
 
 #include "World.h"
 #include "LibrdfNode.h"
@@ -58,4 +58,4 @@ namespace semsim {
 
 }
 
-#endif //LIBSEMSIM_SUBJECT_H
+#endif //LIBOMEXMETA_SUBJECT_H

@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/24/2020.
 //
 
-#ifndef LIBSEMSIM_QUERY_H
-#define LIBSEMSIM_QUERY_H
+#ifndef LIBOMEXMETA_QUERY_H
+#define LIBOMEXMETA_QUERY_H
 
 #include "RedlandAPIWrapper.h"
 #include "semsim/Error.h"
@@ -243,4 +243,4 @@ namespace semsim {
     };
 }
 
-#endif //LIBSEMSIM_QUERY_H
+#endif //LIBOMEXMETA_QUERY_H

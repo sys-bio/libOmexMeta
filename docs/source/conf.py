@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'libsemsim'
+project = 'libomexmeta'
 copyright = '2020, Ciaran Welsh'
 author = 'Ciaran Welsh'
 
@@ -35,7 +35,7 @@ extensions = [
 ]
 
 # Breathe Configuration
-breathe_default_project = "libsemsim"
+breathe_default_project = "libomexmeta"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

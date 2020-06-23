@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/17/2020.
 //
 
-#ifndef LIBSEMSIM_LIBRDFURI_H
-#define LIBSEMSIM_LIBRDFURI_H
+#ifndef LIBOMEXMETA_LIBRDFURI_H
+#define LIBOMEXMETA_LIBRDFURI_H
 
 
 #include <memory>
@@ -108,4 +108,4 @@ namespace redland {
     };
 }
 
-#endif //LIBSEMSIM_LIBRDFURI_H
+#endif //LIBOMEXMETA_LIBRDFURI_H

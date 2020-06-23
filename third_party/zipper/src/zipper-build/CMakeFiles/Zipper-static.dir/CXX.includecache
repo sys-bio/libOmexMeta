@@ -54,7 +54,7 @@ string
 vector
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/zipper/CDirEntry.cpp
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/CDirEntry.cpp
 algorithm
 -
 sys/types.h
@@ -70,19 +70,19 @@ dirent.h
 unistd.h
 -
 CDirEntry.h
-/cygdrive/d/libsemsim/third_party/zipper/zipper/CDirEntry.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/CDirEntry.h
 stdlib.h
 -
 fstream
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/zipper/CDirEntry.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/CDirEntry.h
 string
 -
 vector
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/zipper/defs.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/defs.h
 stdio.h
 -
 stdlib.h
@@ -112,15 +112,15 @@ unzip.h
 ioapi_mem.h
 -
 iowin32.h
-/cygdrive/d/libsemsim/third_party/zipper/zipper/iowin32.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/iowin32.h
 filesystem
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/zipper/tools.cpp
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/tools.cpp
 tools.h
-/cygdrive/d/libsemsim/third_party/zipper/zipper/tools.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/tools.h
 defs.h
-/cygdrive/d/libsemsim/third_party/zipper/zipper/defs.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/defs.h
 algorithm
 -
 iterator
@@ -130,9 +130,9 @@ CDirEntry.h
 cstdio
 -
 tps/dirent.h
-/cygdrive/d/libsemsim/third_party/zipper/zipper/tps/dirent.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/tps/dirent.h
 tps/dirent.c
-/cygdrive/d/libsemsim/third_party/zipper/zipper/tps/dirent.c
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/tps/dirent.c
 sys/types.h
 -
 dirent.h
@@ -140,7 +140,7 @@ dirent.h
 unistd.h
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/zipper/tools.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/tools.h
 string
 -
 vector
@@ -148,7 +148,7 @@ vector
 istream
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/zipper/tps/dirent.c
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/tps/dirent.c
 windows.h
 -
 errno.h
@@ -156,17 +156,17 @@ errno.h
 stdlib.h
 -
 dirent.h
-/cygdrive/d/libsemsim/third_party/zipper/zipper/tps/dirent.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/tps/dirent.h
 
-/cygdrive/d/libsemsim/third_party/zipper/zipper/tps/dirent.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/tps/dirent.h
 
-/cygdrive/d/libsemsim/third_party/zipper/zipper/unzipper.cpp
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/unzipper.cpp
 unzipper.h
-/cygdrive/d/libsemsim/third_party/zipper/zipper/unzipper.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/unzipper.h
 defs.h
-/cygdrive/d/libsemsim/third_party/zipper/zipper/defs.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/defs.h
 tools.h
-/cygdrive/d/libsemsim/third_party/zipper/zipper/tools.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/tools.h
 functional
 -
 exception
@@ -176,7 +176,7 @@ fstream
 stdexcept
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/zipper/unzipper.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/unzipper.h
 vector
 -
 istream
@@ -192,15 +192,15 @@ memory
 map
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/zipper/zipper.cpp
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/zipper.cpp
 zipper.h
-/cygdrive/d/libsemsim/third_party/zipper/zipper/zipper.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/zipper.h
 defs.h
-/cygdrive/d/libsemsim/third_party/zipper/zipper/defs.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/defs.h
 tools.h
-/cygdrive/d/libsemsim/third_party/zipper/zipper/tools.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/tools.h
 CDirEntry.h
-/cygdrive/d/libsemsim/third_party/zipper/zipper/CDirEntry.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/CDirEntry.h
 ctime
 -
 fstream
@@ -208,7 +208,7 @@ fstream
 stdexcept
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/zipper/zipper.h
+/cygdrive/d/libomexmeta/third_party/zipper/zipper/zipper.h
 iostream
 -
 string

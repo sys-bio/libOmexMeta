@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/13/2020.
 //
 
-#ifndef LIBSEMSIM_SEMSIMUTILS_H
-#define LIBSEMSIM_SEMSIMUTILS_H
+#ifndef LIBOMEXMETA_SEMSIMUTILS_H
+#define LIBOMEXMETA_SEMSIMUTILS_H
 
 #include "semsim/Query.h"
 #include "semsim/CurlGet.h"
@@ -58,4 +58,4 @@ namespace semsim {
     };
 }
 
-#endif //LIBSEMSIM_SEMSIMUTILS_H
+#endif //LIBOMEXMETA_SEMSIMUTILS_H

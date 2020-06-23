@@ -35,7 +35,7 @@ cleanUp();
 
 TEST_F(SemsimCombineArchiveTests, Testy
 ) {
-std::string filename = "/mnt/d/libsemsim/tests/Smith_2004.omex";
+std::string filename = "/mnt/d/libomexmeta/tests/Smith_2004.omex";
 
 CombineArchive combineArchive;
 combineArchive.

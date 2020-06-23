@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/20/2020.
 //
 
-#ifndef LIBSEMSIM_LIBRDFSTREAM_H
-#define LIBSEMSIM_LIBRDFSTREAM_H
+#ifndef LIBOMEXMETA_LIBRDFSTREAM_H
+#define LIBOMEXMETA_LIBRDFSTREAM_H
 
 
 #include <librdf.h>
@@ -30,4 +30,4 @@ namespace redland {
 }
 
 
-#endif //LIBSEMSIM_LIBRDFSTREAM_H
+#endif //LIBOMEXMETA_LIBRDFSTREAM_H

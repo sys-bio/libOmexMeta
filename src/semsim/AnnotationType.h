@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#ifndef LIBSEMSIM_ANNOTATIONTYPE_H
-#define LIBSEMSIM_ANNOTATIONTYPE_H
+#ifndef LIBOMEXMETA_ANNOTATIONTYPE_H
+#define LIBOMEXMETA_ANNOTATIONTYPE_H
 
 /*
  * AnnotationType enum for indicating the type of annotation.
@@ -23,4 +23,4 @@ namespace semsim {
 }
 
 
-#endif //LIBSEMSIM_ANNOTATIONTYPE_H
+#endif //LIBOMEXMETA_ANNOTATIONTYPE_H

@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/17/2020.
 //
 
-#ifndef LIBSEMSIM_LIBRDFMODEL_H
-#define LIBSEMSIM_LIBRDFMODEL_H
+#ifndef LIBOMEXMETA_LIBRDFMODEL_H
+#define LIBOMEXMETA_LIBRDFMODEL_H
 
 #include <librdf.h>
 #include <memory>
@@ -80,4 +80,4 @@ namespace redland {
     };
 }
 
-#endif //LIBSEMSIM_LIBRDFMODEL_H
+#endif //LIBOMEXMETA_LIBRDFMODEL_H

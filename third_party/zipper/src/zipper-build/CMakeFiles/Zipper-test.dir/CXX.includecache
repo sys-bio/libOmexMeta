@@ -42,7 +42,7 @@ vector
 memory
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/test/catch.hpp
+/cygdrive/d/libomexmeta/third_party/zipper/test/catch.hpp
 sstream
 -
 stdexcept
@@ -218,7 +218,7 @@ random
 map
 -
 Foundation/Foundation.h
-/cygdrive/d/libsemsim/third_party/zipper/test/Foundation/Foundation.h
+/cygdrive/d/libomexmeta/third_party/zipper/test/Foundation/Foundation.h
 ostream
 -
 stdexcept
@@ -274,9 +274,9 @@ iomanip
 assert.h
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/test/file_zip_test.cpp
+/cygdrive/d/libomexmeta/third_party/zipper/test/file_zip_test.cpp
 catch.hpp
-/cygdrive/d/libsemsim/third_party/zipper/test/catch.hpp
+/cygdrive/d/libomexmeta/third_party/zipper/test/catch.hpp
 zipper/zipper.h
 -
 zipper/unzipper.h
@@ -294,13 +294,13 @@ string
 map
 -
 
-/cygdrive/d/libsemsim/third_party/zipper/test/main.cpp
+/cygdrive/d/libomexmeta/third_party/zipper/test/main.cpp
 catch.hpp
-/cygdrive/d/libsemsim/third_party/zipper/test/catch.hpp
+/cygdrive/d/libomexmeta/third_party/zipper/test/catch.hpp
 
-/cygdrive/d/libsemsim/third_party/zipper/test/memory_zip_test.cpp
+/cygdrive/d/libomexmeta/third_party/zipper/test/memory_zip_test.cpp
 catch.hpp
-/cygdrive/d/libsemsim/third_party/zipper/test/catch.hpp
+/cygdrive/d/libomexmeta/third_party/zipper/test/catch.hpp
 zipper/zipper.h
 -
 zipper/unzipper.h

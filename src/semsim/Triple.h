@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/4/2020.
 //
 
-#ifndef LIBSEMSIM_Triple22_H
-#define LIBSEMSIM_Triple22_H
+#ifndef LIBOMEXMETA_Triple22_H
+#define LIBOMEXMETA_Triple22_H
 
 #include "LibrdfNode.h"
 #include "LibrdfStatement.h"
@@ -80,4 +80,4 @@ namespace semsim {
     typedef Triple SingularAnnotation;
 }
 
-#endif //LIBSEMSIM_Triple22_H
+#endif //LIBOMEXMETA_Triple22_H

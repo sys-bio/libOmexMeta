@@ -15,7 +15,7 @@ SemsimModel
 SBMLImporter
 
 
-Things done wrong in libsemsim
+Things done wrong in libomexmeta
 -------------------------------
 - Reliance on implicit conversion for instantiating objects with multiple types. Very annoying. 
 - No conformance to the rule of three/five

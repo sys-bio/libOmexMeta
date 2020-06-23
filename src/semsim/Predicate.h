@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/17/2020.
 //
 
-#ifndef LIBSEMSIM_PREDICATE_H
-#define LIBSEMSIM_PREDICATE_H
+#ifndef LIBOMEXMETA_PREDICATE_H
+#define LIBOMEXMETA_PREDICATE_H
 
 #include "World.h"
 #include "semsim/SemsimUtils.h"
@@ -340,4 +340,4 @@ namespace semsim {
 }
 
 
-#endif //LIBSEMSIM_PREDICATE_H
+#endif //LIBOMEXMETA_PREDICATE_H

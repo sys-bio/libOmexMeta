@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/6/2020.
 //
 
-#ifndef LIBSEMSIM_EXPORT_H
-#define LIBSEMSIM_EXPORT_H
+#ifndef LIBOMEXMETA_EXPORT_H
+#define LIBOMEXMETA_EXPORT_H
 
 /*
  * Used for portability
@@ -28,4 +28,4 @@
 #endif
 
 
-#endif //LIBSEMSIM_SUPERBUILD_EXPORT_H
+#endif //LIBOMEXMETA_SUPERBUILD_EXPORT_H

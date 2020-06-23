@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/11/2020.
 //
 
-#ifndef LIBSEMSIM_CURLGET_H
-#define LIBSEMSIM_CURLGET_H
+#ifndef LIBOMEXMETA_CURLGET_H
+#define LIBOMEXMETA_CURLGET_H
 
 
 #include <string>
@@ -37,4 +37,4 @@ namespace semsim {
 }
 
 
-#endif //LIBSEMSIM_CURLGET_H
+#endif //LIBOMEXMETA_CURLGET_H
