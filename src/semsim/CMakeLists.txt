@@ -72,7 +72,7 @@ set_target_properties(semsim-static PROPERTIES PUBLIC_HEADER "${SEMSIM_HEADERS}"
 # set runtime static for windows (ignored on other systems)
 set_target_properties(semsim-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
-add_dependencies(semsim-static redland-combined)
+add_dependencies(semsim-static redland-combined-static)
 target_include_directories(semsim-static PUBLIC # make public so include dirs propagate into test binaries
         ${INCLUDE_DIRECTORIES}
         ${WRAPPER_SOURCE_DIR}
@@ -80,7 +80,7 @@ target_include_directories(semsim-static PUBLIC # make public so include dirs pr
 
 
 target_link_libraries(semsim-static PUBLIC # make public so libraries propagate into test binaries
-        $<TARGET_FILE:redland-combined>
+        $<TARGET_FILE:redland-combined-static>
         ${LINK_LIBRARIES}
         )
 
@@ -117,40 +117,37 @@ if (${BUILD_SHARED_LIBS})
                 MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDLL")
     endif ()
 
-    add_dependencies(semsim redland-combined)
+    add_dependencies(semsim redland-combined-static)
     target_include_directories(semsim PUBLIC
             ${INCLUDE_DIRECTORIES}
             )
 
     target_link_libraries(semsim PUBLIC
-            $<TARGET_FILE:redland-combined>
-            "${LIBXML2_STATIC_LIBRARY2}"
-            "${LIBXSLT_STATIC_LIBRARY}"
-            "${CURL_STATIC_LIBRARY}"
-            "${LIBCHARSET_STATIC_LIBRARY}"
-            "${SSL_STATIC_LIBRARY}"
-            "${CRYPTO_STATIC_LIBRARY}"
-            "${YAJL_STATIC_LIBRARY}"
-            "${LZMA_STATIC_LIBRARY}"
-            "${ZLIB2_STATIC_LIBRARY}"
-            "${ICONV2_STATIC_LIBRARY}"
+            ${CMAKE_BINARY_DIR}/lib/redland-combined.lib
+            ${LINK_LIBRARIES}
             )
-    #    target_link_libraries(semsim PUBLIC
-    #            $<TARGET_FILE:redland-combined>
-    #            ${LINK_LIBRARIES}
-    #            )
 
     install(TARGETS semsim
             LIBRARY
-            DESTINATION lib
+            ARCHIVE
+            RUNTIME
             PUBLIC_HEADER DESTINATION include/semsim
             )
 
+    install(FILES ${LIBRARIES_DLL}
+            DESTINATION bin
+            )
+
+
     # for automatically installing to folder containing python api
     install(TARGETS semsim
-            LIBRARY
+            RUNTIME DESTINATION ${PYSEMSIM_DIR}
+            )
+    # and remember we need the dll's in the python src dir as well
+    install(FILES ${LIBRARIES_DLL}
             DESTINATION ${PYSEMSIM_DIR}
             )
+
 
     if (PLATFORM STREQUAL "linux")
         install(FILES ${LIBXML2_LIBRARY} ${LIBCURL_LIBRARY}

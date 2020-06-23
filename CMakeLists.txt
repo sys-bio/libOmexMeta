@@ -45,7 +45,9 @@ set(CMAKE_MACOSX_RPATH ON)
 ####################################################################3
 # User options
 #
-
+if (BUILD_SHARED_LIBS)
+    add_definitions("-DBUILD_SHARED_LIBS=ON")
+endif ()
 # superbuild variable
 set(HAVE_DEPENDENCIES FALSE CACHE BOOL
         "When true, the dependencies will be
@@ -104,6 +106,19 @@ else ()
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")# -OX")
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address")# -OX")
     ENDIF ()
+
+
+    # put all runtime targets (exe and dll) into bin
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
+
+    # put libraries into lib
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
+
+    # archives
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
+
+    # export all on windows. Ignored on other.
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
     if (PLATFORM STREQUAL "windows-msvc")
 
@@ -352,8 +367,8 @@ this when you have MSVC working. Same true for zlib. ")
                 "${LIBXSLT_STATIC_LIBRARY}"
                 "${CURL_STATIC_LIBRARY}"
                 "${LIBCHARSET_STATIC_LIBRARY}"
-                "${SSL_STATIC_LIBRARY}"
-                "${CRYPTO_STATIC_LIBRARY}"
+#                "${SSL_STATIC_LIBRARY}"
+#                "${CRYPTO_STATIC_LIBRARY}"
                 "${YAJL_STATIC_LIBRARY}"
                 "${LZMA_STATIC_LIBRARY}"
                 "${ZLIB2_STATIC_LIBRARY}"
@@ -366,8 +381,8 @@ this when you have MSVC working. Same true for zlib. ")
                 "${LIBXSLT_LIBRARY}"
                 "${CURL_LIBRARY}"
                 "${LIBCHARSET_LIBRARY}"
-                "${SSL_LIBRARY}"
-                "${CRYPTO_LIBRARY}"
+#                "${SSL_LIBRARY}"
+#                "${CRYPTO_LIBRARY}"
                 "${YAJL_LIBRARY}"
                 "${LZMA_LIBRARY}"
                 "${ICONV2_LIBRARY}"
@@ -392,17 +407,8 @@ this when you have MSVC working. Same true for zlib. ")
             set(MSVC_EXTRA_LIBS "libucrt")
         endif ()
 
-        # put all runtime targets (exe and dll) into bin
-        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
-
-        # put libraries into lib
-        set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
-
-        # archives
-        set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
-
         # Link libraries for windows
-        set(LINK_LIBRARIES ${LIBRARIES_LIB} ${MSVC_EXTRA_LIBS})
+        set(LINK_LIBRARIES ${LIBRARIES_LIB})
 
     elseif (PLATFORM STREQUAL "linux")
         message(STATUS "doing a linux")

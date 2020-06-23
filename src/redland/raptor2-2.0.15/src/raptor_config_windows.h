@@ -377,10 +377,10 @@
  */
 #ifdef BUILD_SHARED_LIBS
 /* DLL entry point */
-BOOL APIENTRY
-DllMain(HANDLE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
-    return TRUE;
-}
+//BOOL APIENTRY
+//DllMain(HANDLE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
+//    return TRUE;
+//}
 #endif
 #endif //WIN_API_ENTRY_
 

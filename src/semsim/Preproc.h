@@ -15,20 +15,34 @@
  * be used to enable portability of libsemsim
  */
 
+
 // https://stackoverflow.com/questions/2164827/explicitly-exporting-shared-library-functions-in-linux
-#if defined(_WIN32)
-//  Microsoft
-#define EXPORT __declspec(dllexport)
-#define IMPORT __declspec(dllimport)
-#elif defined(__GNUC__)
-//  GCC
-#define EXPORT __attribute__((visibility("default")))
-#define IMPORT
+//#if defined(_WIN32)
+////  Microsoft
+//#define EXPORT __declspec(dllexport)
+//#define IMPORT __declspec(dllimport)
+//#elif defined(__GNUC__)
+////  GCC
+//#define EXPORT __attribute__((visibility("default")))
+//#define IMPORT
+//#else
+////  do nothing and hope for the best?
+//#define EXPORT
+//#define IMPORT
+//#pragma warning Unknown dynamic link import/export semantics.
+//#endif
+
+#ifdef _WIN32
+#   ifdef  BUILD_SHARED_LIBS
+/*Enabled as "export" while compiling the dll project*/
+#define SEMSIM_API __declspec(dllexport)
+#   else
+/*Enabled as "import" in the Client side for using already created dll file*/
+#   define SEMSIM_API __declspec(dllimport)
+#   endif
 #else
-//  do nothing and hope for the best?
-#define EXPORT
-#define IMPORT
-#pragma warning Unknown dynamic link import/export semantics.
+// empty on other platforms. 
+#   define SEMSIM_API
 #endif
 
 

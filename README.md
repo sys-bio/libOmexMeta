@@ -67,7 +67,7 @@ to begin with. Feedback on build errors will help stablize the build system.
 ### The superbuild
 libsemsim uses a "superbuild" system to fully automate the acquisition of dependencies. The main dependencies of 
 libsemsim is are the Redland libraries: raptor2, rasqal and librdf. For convenience, the sources of these packages 
-are distributed with libsemsim and are pulled into a single binary called `redland-combined.a` for linking. Furthermore, 
+are distributed with libsemsim and are pulled into a single binary called `redland-combined-static.a` for linking. Furthermore, 
 included in the superbuild are both `libsbml` and `libcombine`. These dependencies are deliberately not 
 used and will soon become optional in the libsemsim build that is set to `OFF` by default.  
 

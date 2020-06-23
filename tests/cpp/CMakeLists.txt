@@ -44,7 +44,7 @@ message(STATUS "LINK_LIBRARIES ${LINK_LIBRARIES}")
 target_link_libraries(semsim-tests PUBLIC
         # Order matters!
         $<TARGET_FILE:semsim-static>
-        $<TARGET_FILE:redland-combined>
+        $<TARGET_FILE:redland-combined-static>
         ${LINK_LIBRARIES}
         gtest gtest_main
         )

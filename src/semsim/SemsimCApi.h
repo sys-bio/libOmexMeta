@@ -13,6 +13,7 @@
 #include "semsim/PhysicalForce.h"
 #include <cstring>
 #include "semsim/SemsimUtils.h"
+#include "semsim/Preproc.h"
 
 namespace semsim {
 
@@ -20,13 +21,13 @@ namespace semsim {
     extern "C" {
 #endif
 
-    void free_c_char_star(char *c);
+    SEMSIM_API void free_c_char_star(char *c);
 
-    void free_c_char_star_star(char **c, int size);
+    SEMSIM_API void free_c_char_star_star(char **c, int size);
 
-    char *_func_that_returns_dynamic_alloc_str();
+    SEMSIM_API char *_func_that_returns_dynamic_alloc_str();
 
-    char **_func_that_returns_dynamic_alloc_char_star_star();
+    SEMSIM_API char **_func_that_returns_dynamic_alloc_char_star_star();
 
 /***************************************************
  * librdf_world methods
@@ -36,22 +37,22 @@ namespace semsim {
  *
  */
 
-    void free_world(librdf_world *world);
+    SEMSIM_API void free_world(librdf_world *world);
 
 /***************************************************
  * RDF class methods
  */
 
-    RDF *RDF_new(const char *storage_type = "memory", const char *storage_name = "semsim_store",
+    SEMSIM_API RDF *RDF_new(const char *storage_type = "memory", const char *storage_name = "semsim_store",
                  const char *storage_options = nullptr, const char *model_options = nullptr);
 
-    void RDF_delete(RDF *rdf_ptr);
+    SEMSIM_API void RDF_delete(RDF *rdf_ptr);
 
-    char *RDF_getBaseUri(RDF *rdf_ptr);
+    SEMSIM_API char *RDF_getBaseUri(RDF *rdf_ptr);
 
-    void RDF_setBaseUri(RDF *rdf_ptr, const char *uri);
+    SEMSIM_API void RDF_setBaseUri(RDF *rdf_ptr, const char *uri);
 
-    char *RDF_toString(RDF *rdf_ptr, const char *format, const char *base_uri);
+    SEMSIM_API char *RDF_toString(RDF *rdf_ptr, const char *format, const char *base_uri);
 
     /*
      * @brief read RDF formatted annotations a string.
@@ -65,29 +66,29 @@ namespace semsim {
      * @example
      * RDF* rdf_ptr = RDF_fromString(string_annotations, "rdfxml", "string_annotations_base_uri");
      */
-    RDF *RDF_fromString(const char *str, const char *format, const char *baseuri = "./Annotations.rdf",
+    SEMSIM_API RDF *RDF_fromString(const char *str, const char *format, const char *baseuri = "./Annotations.rdf",
                         const char *storage_type = "memory", const char *storage_name = "semsim_store",
                         const char *storage_options = nullptr, const char *model_options = nullptr);
 
-    void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri);
+    SEMSIM_API void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri);
 
-    RDF *RDF_fromUri(const char *uri_string, const char *format,
+    SEMSIM_API RDF *RDF_fromUri(const char *uri_string, const char *format,
                      const char *storage_type = "memory", const char *storage_name = "semsim_store",
                      const char *storage_options = nullptr, const char *model_options = nullptr);
 
-    void RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
+    SEMSIM_API void RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
 
-    RDF *RDF_fromFile(const char *filename, const char *format, const char *storage_type = "memory",
+    SEMSIM_API RDF *RDF_fromFile(const char *filename, const char *format, const char *storage_type = "memory",
                       const char *storage_name = "semsim_store",
                       const char *storage_options = nullptr, const char *model_options = nullptr);
 
-    void RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
+    SEMSIM_API void RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
 
-    char *RDF_queryResultsAsStr(RDF *rdf_ptr, const char *query_str, const char *results_format);
+    SEMSIM_API char *RDF_queryResultsAsStr(RDF *rdf_ptr, const char *query_str, const char *results_format);
 
-    int RDF_size(RDF *rdf_ptr);
+    SEMSIM_API int RDF_size(RDF *rdf_ptr);
 
-    Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, SemsimXmlType type);
+    SEMSIM_API Editor *RDF_toEditor(RDF *rdf_ptr, const char *xml, SemsimXmlType type);
 
 //RDF* RDF_fromOmex(RDF* rdf_ptr, const char* filename_or_uri, const char* format);
 
@@ -95,164 +96,164 @@ namespace semsim {
  *  Editor class methods
  */
 
-    void Editor_addNamespace(Editor *editor_ptr, const char *namespace_, const char *prefix);
+    SEMSIM_API void Editor_addNamespace(Editor *editor_ptr, const char *namespace_, const char *prefix);
 
-    void Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
+    SEMSIM_API void Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation);
 
-    void Editor_addPhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
+    SEMSIM_API void Editor_addPhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity);
 
-    void Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
+    SEMSIM_API void Editor_addPhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess);
 
-    void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
+    SEMSIM_API void Editor_addPhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce);
 
-    void Editor_checkValidMetaid(Editor *editor_ptr, const char *id);
+    SEMSIM_API void Editor_checkValidMetaid(Editor *editor_ptr, const char *id);
 
-    char *Editor_getMetaId(Editor *editor_ptr, int index);
+    SEMSIM_API char *Editor_getMetaId(Editor *editor_ptr, int index);
 
-    char *Editor_getXml(Editor *editor_ptr);
+    SEMSIM_API char *Editor_getXml(Editor *editor_ptr);
 
-    int Editor_getNumMetaIds(Editor *editor_ptr);
+    SEMSIM_API int Editor_getNumMetaIds(Editor *editor_ptr);
 
-    void Editor_delete(Editor *editor_ptr);
+    SEMSIM_API void Editor_delete(Editor *editor_ptr);
 
 
 /*********************************************************************
  * SingularAnnotation class methods
  */
-    SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr);
+    SEMSIM_API SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr);
 
-    void SingularAnnotation_delete(SingularAnnotation *singularAnnotation);
+    SEMSIM_API void SingularAnnotation_delete(SingularAnnotation *singularAnnotation);
 
-    SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
+    SEMSIM_API SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
 
-    SingularAnnotation *
+    SEMSIM_API SingularAnnotation *
     SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_, const char *term);
 
-    SingularAnnotation *SingularAnnotation_setPredicateFromUri(
+    SEMSIM_API SingularAnnotation *SingularAnnotation_setPredicateFromUri(
             SingularAnnotation *singular_annotation, const char *uri);
 
-    SingularAnnotation *SingularAnnotation_setResourceLiteral(
+    SEMSIM_API SingularAnnotation *SingularAnnotation_setResourceLiteral(
             SingularAnnotation *singular_annotation, const char *literal);
 
-    SingularAnnotation *
+    SEMSIM_API SingularAnnotation *
     SingularAnnotation_setResourceUri(SingularAnnotation *singular_annotation, const char *identifiers_uri);
 
-    SingularAnnotation *
+    SEMSIM_API SingularAnnotation *
     SingularAnnotation_setResourceBlank(SingularAnnotation *singular_annotation, const char *blank_id);
 
-    char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
+    SEMSIM_API char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
 
-    char *SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format, const char *base_uri);
+    SEMSIM_API char *SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format, const char *base_uri);
 
-    char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
+    SEMSIM_API char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
 
-    char *SingularAnnotation_getResource(SingularAnnotation *singular_annotation);
+    SEMSIM_API char *SingularAnnotation_getResource(SingularAnnotation *singular_annotation);
 
 /*********************************************************************
  * PhysicalEntity class methods
  */
-    PhysicalEntity *PhysicalEntity_new(Editor *editor_ptr);
+    SEMSIM_API PhysicalEntity *PhysicalEntity_new(Editor *editor_ptr);
 
-    void PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr);
+    SEMSIM_API void PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr);
 
-    void PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);
+    SEMSIM_API void PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);
 
-    PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about);
+    SEMSIM_API PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about);
 
-    PhysicalEntity *PhysicalEntity_setPhysicalProperty(
+    SEMSIM_API PhysicalEntity *PhysicalEntity_setPhysicalProperty(
             PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property);
 
-    PhysicalEntity *PhysicalEntity_setIdentity(
+    SEMSIM_API PhysicalEntity *PhysicalEntity_setIdentity(
             PhysicalEntity *physical_entity_ptr, const char *identity_resource);
 
-    PhysicalEntity *PhysicalEntity_addLocation(
+    SEMSIM_API PhysicalEntity *PhysicalEntity_addLocation(
             PhysicalEntity *physical_entity_ptr, const char *location_resource);
 
 
-    char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);
+    SEMSIM_API char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);
 
 //    char *PhysicalEntity_getPhysicalProperty(PhysicalEntity *physical_entity_ptr);
 
-    char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr);
+    SEMSIM_API char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr);
 
-    int PhysicalEntity_getNumLocations(PhysicalEntity *physicalEntity);
+    SEMSIM_API int PhysicalEntity_getNumLocations(PhysicalEntity *physicalEntity);
 
-    char *PhysicalEntity_getLocation(PhysicalEntity *physical_entity_ptr, int index);
+    SEMSIM_API char *PhysicalEntity_getLocation(PhysicalEntity *physical_entity_ptr, int index);
 
-    char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
+    SEMSIM_API char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
 
 /*********************************************************************
  * PhysicalProcess class methods
  */
-    PhysicalProcess *PhysicalProcess_new(Editor *editor_ptr);
+    SEMSIM_API PhysicalProcess *PhysicalProcess_new(Editor *editor_ptr);
 
-    void PhysicalProcess_delete(PhysicalProcess *physicalProcess);
+    SEMSIM_API void PhysicalProcess_delete(PhysicalProcess *physicalProcess);
 
-    void PhysicalProcess_freeAll(PhysicalProcess *physicalProcess);
+    SEMSIM_API void PhysicalProcess_freeAll(PhysicalProcess *physicalProcess);
 
-    PhysicalProcess *PhysicalProcess_setAbout(
+    SEMSIM_API PhysicalProcess *PhysicalProcess_setAbout(
             PhysicalProcess *physical_process, const char *about);
 
-    PhysicalProcess *PhysicalProcess_setPhysicalProperty(
+    SEMSIM_API PhysicalProcess *PhysicalProcess_setPhysicalProperty(
             PhysicalProcess *physical_process, const char *subject_metaid, const char *physical_property);
 
-    PhysicalProcess *PhysicalProcess_addSource(
+    SEMSIM_API PhysicalProcess *PhysicalProcess_addSource(
             PhysicalProcess *physical_process, double multiplier,
             const char *physical_entity_reference);
 
-    PhysicalProcess *PhysicalProcess_addSink(
+    SEMSIM_API PhysicalProcess *PhysicalProcess_addSink(
             PhysicalProcess *physical_process, double multiplier,
             const char *physical_entity_reference);
 
-    PhysicalProcess *PhysicalProcess_addMediator(
+    SEMSIM_API PhysicalProcess *PhysicalProcess_addMediator(
             PhysicalProcess *physical_process, double multiplier,
             const char *physical_entity_reference);
 
-    char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
+    SEMSIM_API char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
 
-    char *PhysicalProcess_getAbout(PhysicalProcess *physical_process_ptr);
+    SEMSIM_API char *PhysicalProcess_getAbout(PhysicalProcess *physical_process_ptr);
 
 //    char *PhysicalProcess_getPhysicalProperty(PhysicalProcess *physical_process_ptr);
 
 /*********************************************************************
  * PhysicalForce class methods
  */
-    PhysicalForce *PhysicalForce_new(Editor *editor_ptr);
+    SEMSIM_API PhysicalForce *PhysicalForce_new(Editor *editor_ptr);
 
 
     /*
      * @brief deletes physical force excluding all
      * nodes associated with it.
      */
-    void PhysicalForce_delete(PhysicalForce *physicalForce);
+    SEMSIM_API void PhysicalForce_delete(PhysicalForce *physicalForce);
 
     /*
      * @brief deletes physical force including all
      * nodes associated with it.
      */
-    void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
+    SEMSIM_API void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
 
-    PhysicalForce *PhysicalForce_setAbout(
+    SEMSIM_API PhysicalForce *PhysicalForce_setAbout(
             PhysicalForce *physical_force_ptr, const char *about);
 
-    PhysicalForce *PhysicalForce_addSource(
+    SEMSIM_API PhysicalForce *PhysicalForce_addSource(
             PhysicalForce *physical_force_ptr, double multiplier,
             const char *physical_entity_reference);
 
-    PhysicalForce *PhysicalForce_addSink(
+    SEMSIM_API PhysicalForce *PhysicalForce_addSink(
             PhysicalForce *physical_force_ptr, double multiplier,
             const char *physical_entity_reference);
 
-    PhysicalForce *PhysicalForce_setPhysicalProperty(
+    SEMSIM_API PhysicalForce *PhysicalForce_setPhysicalProperty(
             PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property);
 
-    int PhysicalForce_getNumSources(PhysicalForce *physicalForce);
+    SEMSIM_API int PhysicalForce_getNumSources(PhysicalForce *physicalForce);
 
-    int PhysicalForce_getNumSinks(PhysicalForce *physicalForce);
+    SEMSIM_API int PhysicalForce_getNumSinks(PhysicalForce *physicalForce);
 
-    char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
+    SEMSIM_API char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
 
-    char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
+    SEMSIM_API char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
 
 //    char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr);
 

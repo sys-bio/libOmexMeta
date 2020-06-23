@@ -1,4 +1,4 @@
-project(redland-combined)
+project(redland-libraries-combined)
 
 message(STATUS "Building redland-combind")
 
@@ -373,51 +373,103 @@ set(WRAPPER_SOURCES
 #######################################################
 #   Build the library static
 #
-
-
-message(STATUS "before adding the library")
-add_library(redland-combined STATIC
+add_library(redland-combined-static STATIC
         ${RAPTOR_SOURCES}
         ${RASQAL_SOURCES}
         ${LIBRDF_SOURCES}
         ${WRAPPER_SOURCES}
         )
 
-set_target_properties(redland-combined PROPERTIES POSITION_INDEPENDENT_CODE ON)
-set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+set_target_properties(redland-combined-static PROPERTIES POSITION_INDEPENDENT_CODE ON)
+set_target_properties(redland-combined-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
-target_include_directories(redland-combined PUBLIC
+target_include_directories(redland-combined-static PUBLIC
         ${INCLUDE_DIRECTORIES}
         D:/vcpkg/installed/x64-windows/include
         )
-message(STATUS "LINK_LIBRARIES ${LINK_LIBRARIES}")
-target_link_libraries(redland-combined PUBLIC
+
+if (PLATFORM STREQUAL "windows-msvc")
+    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+        set(RUNTIME "libucrtd")
+    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+        set(RUNTIME "libucrt")
+    endif ()
+endif ()
+
+target_link_libraries(redland-combined-static PUBLIC
         ${LINK_LIBRARIES}
+        ${RUNTIME}# best here so no clash with dynamic
         )
-get_target_property(X redland-combined LIBRARY_OUTPUT_DIRECTORY)
 
-MESSAGE(STATUS "X ${X}")
 
-set_target_properties(redland-combined PROPERTIES PUBLIC_HEADER
-        ${RAPTOR_DIR}/src/raptor2.h
-        ${RASQAL_DIR}/src/rasqal.h
-        ${LIBRDF_DIR}/src/librdf.h
-        )
+#set_target_properties(redland-combined-static PROPERTIES PUBLIC_HEADER
+#        "${RAPTOR_DIR}/src/raptor2.h"
+#        "${RASQAL_DIR}/src/rasqal.h"
+#        "${LIBRDF_DIR}/src/librdf.h"
+#        )
 
 # copy to build/bin after build
-#add_custom_command(TARGET redland-combined)
+#add_custom_command(TARGET redland-combined-static)
 
+# install redland headers
+install(FILES
+        "${RAPTOR_DIR}/src/raptor2.h"
+        "${RASQAL_DIR}/src/rasqal.h"
+        "${LIBRDF_DIR}/src/librdf.h"
+        DESTINATION include/redland)
 
 INSTALL(
-        TARGETS redland-combined
+        TARGETS redland-combined-static
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib
         RUNTIME DESTINATION bin
-        PUBLIC_HEADER DESTINATION include
 )
 
 option(BUILD_WRAPPER_TESTS "Build the tests for the redland api wrapper" OFF)
 
 if (${BUILD_WRAPPER_TESTS})
     add_subdirectory(RedlandAPIWrapper/test)
+endif ()
+
+
+if (BUILD_SHARED_LIBS)
+
+    add_library(redland-combined SHARED
+            ${RAPTOR_SOURCES}
+            ${RASQAL_SOURCES}
+            ${LIBRDF_SOURCES}
+            ${WRAPPER_SOURCES}
+            )
+
+    set_target_properties(redland-combined PROPERTIES POSITION_INDEPENDENT_CODE ON)
+    if (PLATFORM STREQUAL "Debug")
+        set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDll")
+    elseif (PLATFORM STREQUAL "Release")
+        set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDll")
+    endif ()
+
+    target_include_directories(redland-combined PUBLIC
+            ${INCLUDE_DIRECTORIES}
+            D:/vcpkg/installed/x64-windows/include
+            )
+
+    if (PLATFORM STREQUAL "windows-msvc")
+        if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+            set(RUNTIME "ucrtd")
+        elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+            set(RUNTIME "ucrt")
+        endif ()
+    endif ()
+
+    target_link_libraries(redland-combined PUBLIC
+            ${LINK_LIBRARIES}
+            #            ${RUNTIME}
+            )
+
+    #    set_target_properties(redland-combined PROPERTIES PUBLIC_HEADER
+    #            )
+
+
+    install(TARGETS redland-combined)
+
 endif ()

@@ -19,7 +19,7 @@ add_executable(redland-wrapper-tests ${REDLAND_WRAPPER_TEST_SOURCES})
 set_target_properties(redland-wrapper-tests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
 #get_target_property(runtime redland-wrapper-tests  MSVC_RUNTIME_LIBRARY)
 #message(STATUS "runtime ${runtime}")
-add_dependencies(redland-wrapper-tests redland-combined)
+add_dependencies(redland-wrapper-tests redland-combined-static)
 
 target_include_directories(redland-wrapper-tests PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
@@ -30,7 +30,7 @@ target_include_directories(redland-wrapper-tests PRIVATE
 
 target_link_libraries(redland-wrapper-tests PRIVATE
         gtest gtest_main
-        $<TARGET_FILE:redland-combined>
+        $<TARGET_FILE:redland-combined-static>
         ${LINK_LIBRARIES}
         )
 
@@ -44,7 +44,7 @@ endforeach ()
 
 
 add_dependencies(redland-wrapper-tests
-        redland-combined
+        redland-combined-static
         )
 
 install(
