@@ -138,7 +138,6 @@ if (${BUILD_SHARED_LIBS})
             DESTINATION bin
             )
 
-
     # for automatically installing to folder containing python api
     install(TARGETS semsim
             RUNTIME DESTINATION ${PYSEMSIM_DIR}
