@@ -367,6 +367,8 @@
 
 /*
  * Only add DllMain When building a dynamic library
+ * todo test whether this is necessary. Could be that
+ *  we can just remove these ifdefs
  */
 
 /*

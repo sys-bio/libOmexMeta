@@ -16,7 +16,7 @@
  */
 
 // https://stackoverflow.com/questions/2164827/explicitly-exporting-shared-library-functions-in-linux
-#if defined(_MSC_VER)
+#if defined(_WIN32)
 //  Microsoft
 #define EXPORT __declspec(dllexport)
 #define IMPORT __declspec(dllimport)

@@ -93,7 +93,7 @@ install(TARGETS semsim-static
         )
 
 
-if (BUILD_SHARED)
+if (${BUILD_SHARED_LIBS})
 
     set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)
     set(CMAKE_INSTALL_RPATH
@@ -101,17 +101,21 @@ if (BUILD_SHARED)
             "${PYSEMSIM_DIR}"               # python test package
             "$ORIGIN"                       # current directory (for when in site-packages)
             )
+    set_target_properties(${semsim} PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
 
-
-    set(BUILD_SHARED_LIBS ON)
     set(CMAKE_VERBOSE_MAKEFILE ON)
 
     # shared library
     add_library(semsim SHARED "${SEMSIM_HEADERS}" "${SEMSIM_SOURCES}" Preproc.h)
 
-    # set runtime static for windows (ignored on other systems)
-    set_property(TARGET semsim PROPERTY
-            MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
+    # set runtime shared for windows (ignored on other systems)
+    if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+        set_property(TARGET semsim PROPERTY
+                MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
+    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+        set_property(TARGET semsim PROPERTY
+                MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDLL")
+    endif ()
 
     add_dependencies(semsim redland-combined)
     target_include_directories(semsim PUBLIC
@@ -119,12 +123,22 @@ if (BUILD_SHARED)
             )
 
     target_link_libraries(semsim PUBLIC
-            -Wl,--whole-archive
             $<TARGET_FILE:redland-combined>
-            ${LINK_LIBRARIES}
-            -Wl,--no-whole-archive
+            "${LIBXML2_STATIC_LIBRARY2}"
+            "${LIBXSLT_STATIC_LIBRARY}"
+            "${CURL_STATIC_LIBRARY}"
+            "${LIBCHARSET_STATIC_LIBRARY}"
+            "${SSL_STATIC_LIBRARY}"
+            "${CRYPTO_STATIC_LIBRARY}"
+            "${YAJL_STATIC_LIBRARY}"
+            "${LZMA_STATIC_LIBRARY}"
+            "${ZLIB2_STATIC_LIBRARY}"
+            "${ICONV2_STATIC_LIBRARY}"
             )
-    set_target_properties(${semsim} PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
+    #    target_link_libraries(semsim PUBLIC
+    #            $<TARGET_FILE:redland-combined>
+    #            ${LINK_LIBRARIES}
+    #            )
 
     install(TARGETS semsim
             LIBRARY
@@ -138,21 +152,14 @@ if (BUILD_SHARED)
             DESTINATION ${PYSEMSIM_DIR}
             )
 
-    message(STATUS "LIBXML_LIBRARY ${LIBXML_LIBRARY}")
-    #    if (NOT EXISTS ${LIBXML2_LIBRARY})
-    #        message(FATAL_ERROR "libxml not found.  Build dependencies first ")
-    #    endif ()
-    #
-    #    if (NOT EXISTS ${LIBCURL_LIBRARY})
-    #        message(FATAL_ERROR "libcurl not found. Build dependencies first")
-    #    endif ()
-    install(FILES ${LIBXML2_LIBRARY} ${LIBCURL_LIBRARY}
-            DESTINATION ${PYSEMSIM_DIR})
-
+    if (PLATFORM STREQUAL "linux")
+        install(FILES ${LIBXML2_LIBRARY} ${LIBCURL_LIBRARY}
+                DESTINATION ${PYSEMSIM_DIR})
+    elseif (PLATFORM STREQUAL "windows-msvc")
+    endif ()
 
     # An alternative command that copies on configuration, not install
     #    file(COPY ${LIBXML2_LIBRARY} DESTINATION ${PYSEMSIM_DIR})
-
 
 endif ()
 
