@@ -87,7 +87,14 @@ namespace semsim {
     }
 
     bool Predicate::namespaceKnown(const std::string &ns) {
-        return (Predicate::namespaceMap().find(ns) != Predicate::namespaceMap().end());
+        bool known = false;
+        for (const auto &it : Predicate::namespaceMap()){
+            if (ns == it.first){
+                known = true;
+                break;
+            }
+        }
+        return known;
     }
 
     std::unordered_map<std::string, std::string> Predicate::namespaceMap() {

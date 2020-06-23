@@ -63,7 +63,7 @@ namespace semsim {
          * @param n the number to count digits in
          * @return the number of digits in n
          */
-        static int countDigits(long n);
+        static int countDigits(long long int n);
     };
 }
 

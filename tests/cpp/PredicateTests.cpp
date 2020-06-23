@@ -277,8 +277,7 @@ TEST_F(PredicateTests, TestNamespaceKnownWhenNamespaceIsKnown) {
 
 TEST_F(PredicateTests, TestNamespaceKnownWhenNamespaceIsNotKnown) {
     std::string ns = "http://www.notarealaddress.com/nota/";
-    ASSERT_FALSE(Predicate::namespaceKnown(ns)
-    );
+    ASSERT_FALSE(Predicate::namespaceKnown(ns));
 }
 
 TEST_F(PredicateTests, TestPredicateFactory) {

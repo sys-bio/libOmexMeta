@@ -35,7 +35,7 @@ int semsim::MetaID::maxNumber() const {
     return std::stoi(os.str());
 }
 
-int semsim::MetaID::countDigits(long n) {
+int semsim::MetaID::countDigits(long long int n) {
     if (n == 0) {
         return 1;
     }
