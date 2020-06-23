@@ -46,7 +46,6 @@ target_link_libraries(semsim-tests PUBLIC
         $<TARGET_FILE:semsim-static>
         $<TARGET_FILE:redland-combined>
         ${LINK_LIBRARIES}
-        libucrt
         gtest gtest_main
         )
 

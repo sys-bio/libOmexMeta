@@ -35,7 +35,7 @@
 #include "rdfa.h"
 
 rdfacontext *rdfa_create_context(const char *base) {
-    rdfacontext *rval = NULL;
+    rdfacontext * rval = NULL;
     size_t base_length = strlen(base);
 
     /* if the base isn't specified, don't create a context */
@@ -354,9 +354,9 @@ void rdfa_setup_initial_context(rdfacontext *context) {
  *                      processing run.
  */
 rdfacontext *rdfa_create_new_element_context(rdfalist *context_stack) {
-    rdfacontext *parent_context = (rdfacontext *)
+    rdfacontext * parent_context = (rdfacontext *)
             context_stack->items[context_stack->num_items - 1]->data;
-    rdfacontext *rval = rdfa_create_context(parent_context->base);
+    rdfacontext * rval = rdfa_create_context(parent_context->base);
 
     if (!rval)
         return NULL;

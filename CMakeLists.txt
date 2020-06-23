@@ -382,52 +382,6 @@ this when you have MSVC working. Same true for zlib. ")
             endif ()
         endforeach ()
 
-        set(INCLUDE_DIRECTORIES
-                ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/src
-                ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/utils
-                ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/librdfa
-                ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libmtwist
-                ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libsv
-                ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/utils
-                ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/utils
-                ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/libltdl
-
-                ${CURL_INCLUDE_DIR}
-                ${LIBXML2_INCLUDE_DIR2}
-                ${LIBSBML_DEPS_INCLUDE_DIR}
-                ${LIBSBML_INCLUDE_DIR}
-                ${ZLIB_INCLUDE_DIR}
-                ${ZIPPER_INCLUDE_DIR}
-                ${LIBCOMBINE_INCLUDE_DIR}
-                ${RASQAL_INCLUDE_DIR}
-                ${RAPTOR2_INCLUDE_DIR}
-                ${RAPTOR_SOURCE_DIR}
-                ${RASQAL_SOURCE_DIR}
-                ${LIBRDF_SOURCE_DIR}
-                ${WRAPPER_SOURCE_DIR}
-                ${LIBPQ_INCLUDE_DIR}
-                ${ICONV_INCLUDE_DIR}
-
-                BEFORE ${RAPTOR_DIR}/librdfa
-                ${RAPTOR_DIR}/src
-                ${RASQAL_DIR}/src
-                ${RASQAL_DIR}/libmtwist
-                ${RASQAL_DIR}/libsv
-                ${RASQAL_DIR}/getopt
-                ${LIBRDF_DIR}/src
-                ${WRAPPER_SOURCE_DIR} #RedlandAPIWrapper
-                ${LIBXML2_INCLUDE_DIR}
-                ${LIBSBML_DEPS_INCLUDE_DIR}
-                ${LIBSBML_INCLUDE_DIR}
-                ${ZLIB_INCLUDE_DIR}
-                ${ZIPPER_INCLUDE_DIR}
-                ${LIBCOMBINE_INCLUDE_DIR}
-                ${LIBPQ_INCLUDE_DIR}
-                ${OPENSSL_INCLUDE_DIR}
-                ${CMAKE_SOURCE_DIR}/src
-                ${CMAKE_SOURCE_DIR}/src/semsim
-                )
-
 
         #https://cmake.cmake.narkive.com/lzDZk3kO/autoheader-like-functionality
         #        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
@@ -447,25 +401,11 @@ this when you have MSVC working. Same true for zlib. ")
         # archives
         set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
+        # Link libraries for windows
+        set(LINK_LIBRARIES ${LIBRARIES_LIB} ${MSVC_EXTRA_LIBS})
 
-        set(LINK_LIBRARIES
-                # order matters: top of the dependency chain first
-                # i.e. if A depends on B, A should come before B in this list
-                # needed on windows
-                ${LIBRARIES_LIB}
-                #                "${VCPKG_X64_LIB_DIR}/libcurl.lib"
-                #                "${VCPKG_X64_LIB_DIR}/libxslt.lib"
-                #                "${VCPKG_X64_LIB_DIR}/libxml2.lib"
-                #                "${VCPKG_X64_LIB_DIR}/libcharset.lib"
-                #                "${VCPKG_X64_LIB_DIR}/libssl.lib"
-                #                "${VCPKG_X64_LIB_DIR}/libcrypto.lib"
-                #                "${VCPKG_X64_LIB_DIR}/yajl.lib"
-                #                "${VCPKG_X64_LIB_DIR}/lzma.lib"
-                #                "${VCPKG_X64_LIB_DIR}/zlib.lib"
-                #                "${VCPKG_X64_LIB_DIR}/libexslt.lib"
-                #                "${VCPKG_X64_LIB_DIR}/libiconv.lib"
-                )
-    else ()
+    elseif (PLATFORM STREQUAL "linux")
+        message(STATUS "doing a linux")
 
         set(LINK_LIBRARIES
                 # order matters: top of the dependency chain first
@@ -559,6 +499,53 @@ this when you have MSVC working. Same true for zlib. ")
     # - libc
     # - lzma
 
+
+    set(INCLUDE_DIRECTORIES
+            # fixme lots of redundancy here at the moment.
+            ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/src
+            ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/utils
+            ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/librdfa
+            ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libmtwist
+            ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/libsv
+            ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33/utils
+            ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/utils
+            ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17/libltdl
+
+            ${CURL_INCLUDE_DIR}
+            ${LIBXML2_INCLUDE_DIR2}
+            ${LIBSBML_DEPS_INCLUDE_DIR}
+            ${LIBSBML_INCLUDE_DIR}
+            ${ZLIB_INCLUDE_DIR}
+            ${ZIPPER_INCLUDE_DIR}
+            ${LIBCOMBINE_INCLUDE_DIR}
+            ${RASQAL_INCLUDE_DIR}
+            ${RAPTOR2_INCLUDE_DIR}
+            ${RAPTOR_SOURCE_DIR}
+            ${RASQAL_SOURCE_DIR}
+            ${LIBRDF_SOURCE_DIR}
+            ${WRAPPER_SOURCE_DIR}
+            ${LIBPQ_INCLUDE_DIR}
+            ${ICONV_INCLUDE_DIR}
+
+            BEFORE ${RAPTOR_DIR}/librdfa
+            ${RAPTOR_DIR}/src
+            ${RASQAL_DIR}/src
+            ${RASQAL_DIR}/libmtwist
+            ${RASQAL_DIR}/libsv
+            ${RASQAL_DIR}/getopt
+            ${LIBRDF_DIR}/src
+            ${WRAPPER_SOURCE_DIR} #RedlandAPIWrapper
+            ${LIBXML2_INCLUDE_DIR}
+            ${LIBSBML_DEPS_INCLUDE_DIR}
+            ${LIBSBML_INCLUDE_DIR}
+            ${ZLIB_INCLUDE_DIR}
+            ${ZIPPER_INCLUDE_DIR}
+            ${LIBCOMBINE_INCLUDE_DIR}
+            ${LIBPQ_INCLUDE_DIR}
+            ${OPENSSL_INCLUDE_DIR}
+            ${CMAKE_SOURCE_DIR}/src
+            ${CMAKE_SOURCE_DIR}/src/semsim
+            )
 
     PrintOutPaths()
     add_subdirectory(src/redland)
