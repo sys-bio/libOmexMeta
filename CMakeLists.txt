@@ -413,21 +413,40 @@ this when you have MSVC working. Same true for zlib. ")
         message(STATUS "doing a linux")
         message(STATUS "LIBCURL_LIBRARY ${LIBCURL_LIBRARY}")
 
+        set(DIR "/home/ciaran/vcpkg/installed/x64-linux/lib")
         set(LINK_LIBRARIES
+                /usr/lib/x86_64-linux-gnu/libxslt.so
+                /usr/lib/x86_64-linux-gnu/libxml2.so
+                -Wl,--whole-archive
+                ${DIR}/libz.a
+                ${DIR}/liblzma.a
+                /usr/local/lib/libiconv.so.2
+                ltdl
+                ${DIR}/libcurl.a
+                ${DIR}/libssl.a
+                ${DIR}/libcrypto.a
+                ${DIR}/libyajl_s.a
+                ${DIR}/libpcre.a
+                m
+                dl
+                -Wl,--no-whole-archive
                 # order matters: top of the dependency chain first
                 # i.e. if A depends on B, A should come before B in this list
-                xslt
-                -Wl,--no-whole-archive
-                ${LIBXML2_LIBRARY}
-                -Wl,--whole-archive
-                ${ICONV_STATIC_LIBRARY}
-                -Wl,--no-whole-archive
-                sqlite3
-                ltdl ${CMAKE_DL_LIBS}
-                pcre
-                yajl
-                ${LIBCURL_LIBRARY}
-                stdc++fs
+#                xslt
+#                -Wl,--no-whole-archive
+#                ${LIBXML2_LIBRARY}
+#                -Wl,--whole-archive
+#                ${ICONV_STATIC_LIBRARY}
+#                -Wl,--no-whole-archive
+#                sqlite3
+#                ltdl ${CMAKE_DL_LIBS}
+#                pcre
+#                yajl
+#                ${LIBCURL_LIBRARY}
+#                stdc++fs
+
+
+
                 )
     endif ()
     #

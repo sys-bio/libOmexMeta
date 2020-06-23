@@ -102,7 +102,7 @@ namespace semsim {
                 {"http://purl.org/dc/terms/",                "dcterms"},
                 {"http://biomodels.net/biology-qualifiers/", "bqbiol"},
                 {"http://biomodels.net/model-qualifiers/",   "bqmodel"},
-                {"http://www.bhi.washington.edu/omexmeta#",    "omexmeta"},
+                {"http://www.bhi.washington.edu/semsim#",    "omexmeta"},
         };
     }
 
