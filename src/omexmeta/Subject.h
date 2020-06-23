@@ -7,12 +7,12 @@
 
 #include "World.h"
 #include "LibrdfNode.h"
-#include "semsim/Error.h"
+#include "omexmeta/Error.h"
 
 
 #include "iostream"
 #include <vector>
-#include "semsim/HERE.h"
+#include "omexmeta/HERE.h"
 
 using namespace redland;
 

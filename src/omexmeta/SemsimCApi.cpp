@@ -2,7 +2,7 @@
 // Created by Ciaran on 5/8/2020.
 //
 
-#include "semsim/SemsimCApi.h"
+#include "omexmeta/SemsimCApi.h"
 
 
 namespace semsim {

@@ -58,35 +58,35 @@ set(SEMSIM_SOURCES
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-set(SEMSIM_STATIC_LIBRARY semsim-static)
+set(SEMSIM_STATIC_LIBRARY OmexMeta-static)
 set(SEMSIM_LIBRARY semsim)
 
 
 # static library
-add_library(semsim-static STATIC ${SEMSIM_HEADERS} ${SEMSIM_SOURCES})
+add_library(OmexMeta-static STATIC ${SEMSIM_HEADERS} ${SEMSIM_SOURCES})
 
 
 # add target headers so they install correctly
-set_target_properties(semsim-static PROPERTIES PUBLIC_HEADER "${SEMSIM_HEADERS}")
+set_target_properties(OmexMeta-static PROPERTIES PUBLIC_HEADER "${SEMSIM_HEADERS}")
 
 # set runtime static for windows (ignored on other systems)
-set_target_properties(semsim-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+set_target_properties(OmexMeta-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
-add_dependencies(semsim-static redland-combined-static)
-target_include_directories(semsim-static PUBLIC # make public so include dirs propagate into test binaries
+add_dependencies(OmexMeta-static redland-combined-static)
+target_include_directories(OmexMeta-static PUBLIC # make public so include dirs propagate into test binaries
         ${INCLUDE_DIRECTORIES}
         ${WRAPPER_SOURCE_DIR}
         )
 
 
-target_link_libraries(semsim-static PUBLIC # make public so libraries propagate into test binaries
+target_link_libraries(OmexMeta-static PUBLIC # make public so libraries propagate into test binaries
         $<TARGET_FILE:redland-combined-static>
         ${LINK_LIBRARIES}
         )
 
 
-install(TARGETS semsim-static
-        EXPORT semsim-static
+install(TARGETS OmexMeta-static
+        EXPORT OmexMeta-static
         LIBRARY
         DESTINATION lib
         PUBLIC_HEADER DESTINATION include/semsim
@@ -101,37 +101,37 @@ if (${BUILD_SHARED_LIBS})
             "${PYSEMSIM_DIR}"               # python test package
             "$ORIGIN"                       # current directory (for when in site-packages)
             )
-    set_target_properties(${semsim} PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
 
     set(CMAKE_VERBOSE_MAKEFILE ON)
 
     # shared library
-    add_library(semsim SHARED "${SEMSIM_HEADERS}" "${SEMSIM_SOURCES}" Preproc.h)
+    add_library(OmexMeta SHARED "${SEMSIM_HEADERS}" "${SEMSIM_SOURCES}" Preproc.h)
+    set_target_properties(OmexMeta PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
 
     # set runtime shared for windows (ignored on other systems)
     if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-        set_property(TARGET semsim PROPERTY
+        set_property(TARGET OmexMeta PROPERTY
                 MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
     elseif (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-        set_property(TARGET semsim PROPERTY
+        set_property(TARGET OmexMeta PROPERTY
                 MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDLL")
     endif ()
 
-    add_dependencies(semsim redland-combined-static)
-    target_include_directories(semsim PUBLIC
+    add_dependencies(OmexMeta redland-combined-static)
+    target_include_directories(OmexMeta PUBLIC
             ${INCLUDE_DIRECTORIES}
             )
 
-    target_link_libraries(semsim PUBLIC
+    target_link_libraries(OmexMeta PUBLIC
             ${CMAKE_BINARY_DIR}/lib/redland-combined.lib
             ${LINK_LIBRARIES}
             )
 
-    install(TARGETS semsim
+    install(TARGETS OmexMeta
             LIBRARY
             ARCHIVE
             RUNTIME
-            PUBLIC_HEADER DESTINATION include/semsim
+            PUBLIC_HEADER DESTINATION include/OmexMeta
             )
 
     install(FILES ${LIBRARIES_DLL}
@@ -139,7 +139,7 @@ if (${BUILD_SHARED_LIBS})
             )
 
     # for automatically installing to folder containing python api
-    install(TARGETS semsim
+    install(TARGETS OmexMeta
             RUNTIME DESTINATION ${PYSEMSIM_DIR}
             )
     # and remember we need the dll's in the python src dir as well

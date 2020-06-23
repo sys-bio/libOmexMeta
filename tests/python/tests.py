@@ -86,21 +86,21 @@ class TestRDF(unittest.TestCase):
     <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-       xmlns:semsim="http://www.bhi.washington.edu/semsim#"
+       xmlns:omexmeta="http://www.bhi.washington.edu/semsim#"
        xml:base="file://./annotations.rdf">
       <rdf:Description rdf:about="force_0">
-        <semsim:hasSinkParticipant rdf:resource="sink_0"/>
-        <semsim:hasSourceParticipant rdf:resource="source_0"/>
+        <omexmeta:hasSinkParticipant rdf:resource="sink_0"/>
+        <omexmeta:hasSourceParticipant rdf:resource="source_0"/>
       </rdf:Description>
       <rdf:Description rdf:about="parameter_metaid_0">
         <bqbiol:isPropertyOf rdf:resource="force_0"/>
         <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/OPB_01058"/>
       </rdf:Description>
       <rdf:Description rdf:about="sink_0">
-        <semsim:hasPhysicalEntityReference rdf:resource="species_metaid_1"/>
+        <omexmeta:hasPhysicalEntityReference rdf:resource="species_metaid_1"/>
       </rdf:Description>
       <rdf:Description rdf:about="source_0">
-        <semsim:hasPhysicalEntityReference rdf:resource="species_metaid_0"/>
+        <omexmeta:hasPhysicalEntityReference rdf:resource="species_metaid_0"/>
       </rdf:Description>
     </rdf:RDF>"""
 
@@ -215,27 +215,27 @@ class EditorTests(unittest.TestCase):
         expected = """<?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:semsim="http://www.bhi.washington.edu/semsim#"
+   xmlns:omexmeta="http://www.bhi.washington.edu/semsim#"
    xml:base="file://./Annotations.rdf">
   <rdf:Description rdf:about="MediatorParticipant0000">
-    <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity8"/>
+    <omexmeta:hasPhysicalEntityReference rdf:resource="PhysicalEntity8"/>
   </rdf:Description>
   <rdf:Description rdf:about="PhysicalProcess0000">
-    <semsim:hasMediatorParticipant rdf:resource="MediatorParticipant0000"/>
-    <semsim:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
-    <semsim:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
+    <omexmeta:hasMediatorParticipant rdf:resource="MediatorParticipant0000"/>
+    <omexmeta:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
+    <omexmeta:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
   </rdf:Description>
   <rdf:Description rdf:about="SemsimMetaid0001">
     <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0000">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
+    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <omexmeta:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
   </rdf:Description>
   <rdf:Description rdf:about="SourceParticipant0000">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
+    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <omexmeta:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
   </rdf:Description>
 </rdf:RDF>
 """
@@ -254,23 +254,23 @@ class EditorTests(unittest.TestCase):
         expected = """<?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:semsim="http://www.bhi.washington.edu/semsim#"
+   xmlns:omexmeta="http://www.bhi.washington.edu/semsim#"
    xml:base="file://./Annotations.rdf">
   <rdf:Description rdf:about="PhysicalForce0000">
-    <semsim:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
-    <semsim:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
+    <omexmeta:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
+    <omexmeta:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
   </rdf:Description>
   <rdf:Description rdf:about="SemsimMetaid0004">
     <bqbiol:isPropertyOf rdf:resource="PhysicalForce0000"/>
     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0000">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
+    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <omexmeta:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
   </rdf:Description>
   <rdf:Description rdf:about="SourceParticipant0000">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
+    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <omexmeta:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
   </rdf:Description>
 </rdf:RDF>
 """
@@ -434,7 +434,7 @@ class AnnotateAModelTest(unittest.TestCase):
         expected = """<?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:semsim="http://www.bhi.washington.edu/semsim#"
+   xmlns:omexmeta="http://www.bhi.washington.edu/semsim#"
    xml:base="file://./Annotations.rdf">
   <rdf:Description rdf:about="PhysicalEntity0000">
     <bqbiol:is rdf:resource="https://identifiers.org/uniprot/P84022"/>
@@ -448,12 +448,12 @@ class AnnotateAModelTest(unittest.TestCase):
     <bqbiol:isPartOf rdf:resource="https://identifiers.org/obo/FMA_7163"/>
   </rdf:Description>
   <rdf:Description rdf:about="PhysicalProcess0000">
-    <semsim:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
-    <semsim:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
+    <omexmeta:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
+    <omexmeta:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
   </rdf:Description>
   <rdf:Description rdf:about="PhysicalProcess0001">
-    <semsim:hasSinkParticipant rdf:resource="SinkParticipant0001"/>
-    <semsim:hasSourceParticipant rdf:resource="SourceParticipant0001"/>
+    <omexmeta:hasSinkParticipant rdf:resource="SinkParticipant0001"/>
+    <omexmeta:hasSourceParticipant rdf:resource="SourceParticipant0001"/>
   </rdf:Description>
   <rdf:Description rdf:about="SemsimMetaid0002">
     <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0000"/>
@@ -472,24 +472,24 @@ class AnnotateAModelTest(unittest.TestCase):
     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00237"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0000">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="SemsimMetaid0002"/>
+    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <omexmeta:hasPhysicalEntityReference rdf:resource="SemsimMetaid0002"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0001">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="SemsimMetaid0003"/>
+    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <omexmeta:hasPhysicalEntityReference rdf:resource="SemsimMetaid0003"/>
   </rdf:Description>
   <rdf:Description rdf:about="SmadNuclearTransport">
     <ns1:author xmlns:ns1="https://unknownpredicate.com/changeme#"
        rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#string">Ciaran Welsh</ns1:author>
   </rdf:Description>
   <rdf:Description rdf:about="SourceParticipant0000">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="SemsimMetaid0003"/>
+    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <omexmeta:hasPhysicalEntityReference rdf:resource="SemsimMetaid0003"/>
   </rdf:Description>
   <rdf:Description rdf:about="SourceParticipant0001">
-    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="SemsimMetaid0002"/>
+    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <omexmeta:hasPhysicalEntityReference rdf:resource="SemsimMetaid0002"/>
   </rdf:Description>
 </rdf:RDF>
 """
@@ -659,10 +659,10 @@ aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
         s = self.extract_rdf_from_combine_archive(self.gold_standard_filename3)[0]
         rdf = RDF.from_string(s, "guess")
         query_str = """
-        PREFIX semsim: <http://www.bhi.washington.edu/SemSim#>
+        PREFIX omexmeta: <http://www.bhi.washington.edu/SemSim#>
         SELECT ?x ?z
         WHERE {
-            ?x semsim:hasPhysicalEntityReference ?z
+            ?x omexmeta:hasPhysicalEntityReference ?z
         }"""
         actual = rdf.query(query_str, "csv")
 

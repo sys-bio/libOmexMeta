@@ -553,7 +553,7 @@ this when you have MSVC working. Same true for zlib. ")
             ${CMAKE_SOURCE_DIR}/src/semsim
             )
     #############################################
-    # add semsim and tests
+    # add omexmeta and tests
 
     PrintOutPaths()
     add_subdirectory(src/redland)

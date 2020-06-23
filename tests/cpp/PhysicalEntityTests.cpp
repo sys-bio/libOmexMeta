@@ -2,11 +2,11 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#include <semsim/RDF.h>
+#include "omexmeta/RDF.h"
 #include <vector>
 #include "gtest/gtest.h"
 #include "librdf.h"
-#include "semsim/PhysicalEntity.h"
+#include "omexmeta/PhysicalEntity.h"
 #include "vector"
 
 using namespace semsim;

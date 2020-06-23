@@ -5,14 +5,14 @@
 #ifndef LIBOMEXMETA_PhysicalPhenomenon_H
 #define LIBOMEXMETA_PhysicalPhenomenon_H
 
-#include "semsim/Subject.h"
-#include "semsim/PhysicalProperty.h"
-#include "semsim/AnnotationType.h"
-#include "semsim/Triple.h"
-#include "semsim/Triples.h"
-#include "semsim/MetaID.h"
-#include "semsim/Error.h"
-#include "semsim/Query.h"
+#include "omexmeta/Subject.h"
+#include "omexmeta/PhysicalProperty.h"
+#include "omexmeta/AnnotationType.h"
+#include "omexmeta/Triple.h"
+#include "omexmeta/Triples.h"
+#include "omexmeta/MetaID.h"
+#include "omexmeta/Error.h"
+#include "omexmeta/Query.h"
 #include "RedlandAPIWrapper.h"
 #include "HERE.h"
 

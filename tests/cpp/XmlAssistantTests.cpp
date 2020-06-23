@@ -4,9 +4,9 @@
 
 #include "gtest/gtest.h"
 #include "SBMLFactory.h"
-#include "semsim/SemsimXmlAssistant.h"
+#include "omexmeta/SemsimXmlAssistant.h"
 #include <thread>
-#include "semsim/HERE.h"
+#include "omexmeta/HERE.h"
 
 using namespace semsim;
 

@@ -5,15 +5,15 @@
 #ifndef LIBOMEXMETA_SEMSIMCAPI_H
 #define LIBOMEXMETA_SEMSIMCAPI_H
 
-#include "semsim/RDF.h"
-#include "semsim/Editor.h"
-#include "semsim/SemsimXmlAssistant.h"
-#include "semsim/PhysicalEntity.h"
-#include "semsim/PhysicalProcess.h"
-#include "semsim/PhysicalForce.h"
+#include "omexmeta/RDF.h"
+#include "omexmeta/Editor.h"
+#include "omexmeta/SemsimXmlAssistant.h"
+#include "omexmeta/PhysicalEntity.h"
+#include "omexmeta/PhysicalProcess.h"
+#include "omexmeta/PhysicalForce.h"
 #include <cstring>
-#include "semsim/SemsimUtils.h"
-#include "semsim/Preproc.h"
+#include "omexmeta/SemsimUtils.h"
+#include "omexmeta/Preproc.h"
 
 namespace semsim {
 

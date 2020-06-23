@@ -5,15 +5,15 @@
 #ifndef LIBOMEXMETA_PHYSICALPROPERTY_H
 #define LIBOMEXMETA_PHYSICALPROPERTY_H
 
-#include "semsim/Resource.h"
-#include "semsim/Error.h"
-#include "semsim/Triple.h"
-#include "semsim/Triples.h"
+#include "omexmeta/Resource.h"
+#include "omexmeta/Error.h"
+#include "omexmeta/Triple.h"
+#include "omexmeta/Triples.h"
 #include "RedlandAPIWrapper.h"
 #include "Triple.h"
 #include "Triples.h"
 #include <regex>
-#include "semsim/HERE.h"
+#include "omexmeta/HERE.h"
 
 using namespace redland;
 

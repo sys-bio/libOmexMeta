@@ -7,7 +7,7 @@
 
 #include <unordered_map>
 #include "RedlandAPIWrapper.h"
-#include "semsim/SemsimUtils.h"
+#include "omexmeta/SemsimUtils.h"
 #include "Editor.h"
 
 using namespace redland;
@@ -32,7 +32,7 @@ namespace semsim {
                 {"http://purl.org/dc/terms/",                "dcterms"},
                 {"http://biomodels.net/biology-qualifiers/", "bqbiol"},
                 {"http://biomodels.net/model-qualifiers/",   "bqmodel"},
-                {"http://www.bhi.washington.edu/semsim#",    "semsim"},
+                {"http://www.bhi.washington.edu/omexmeta#",    "omexmeta"},
         };
 
         explicit RDF(const std::string &storage_type = "memory",

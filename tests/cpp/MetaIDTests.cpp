@@ -3,7 +3,7 @@
 //
 
 #include "gtest/gtest.h"
-#include "semsim/MetaID.h"
+#include "omexmeta/MetaID.h"
 
 class MetaIDTests : public ::testing::Test {
 public:

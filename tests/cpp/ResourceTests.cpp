@@ -2,7 +2,7 @@
 // Created by Ciaran on 4/4/2020.
 //
 
-#include <semsim/Resource.h>
+#include "omexmeta/Resource.h"
 #include "gtest/gtest.h"
 #include "librdf.h"
 

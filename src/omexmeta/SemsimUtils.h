@@ -5,9 +5,9 @@
 #ifndef LIBOMEXMETA_SEMSIMUTILS_H
 #define LIBOMEXMETA_SEMSIMUTILS_H
 
-#include "semsim/Query.h"
-#include "semsim/CurlGet.h"
-#include "semsim/MetaID.h"
+#include "omexmeta/Query.h"
+#include "omexmeta/CurlGet.h"
+#include "omexmeta/MetaID.h"
 
 
 

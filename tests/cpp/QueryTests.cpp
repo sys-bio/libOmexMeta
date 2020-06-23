@@ -5,11 +5,11 @@
 
 #include <librdf.h>
 #include <gtest/gtest.h>
-#include <semsim/RDF.h>
-#include <semsim/Triples.h>
+#include "omexmeta/RDF.h"
+#include "omexmeta/Triples.h"
 #include "SBMLFactory.h"
 #include "AnnotationSamples.h"
-#include "semsim/Query.h"
+#include "omexmeta/Query.h"
 
 class QueryTests : public ::testing::Test {
 

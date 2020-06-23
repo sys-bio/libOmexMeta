@@ -1,6 +1,6 @@
 
 ##########################################################################
-# variables for building semsim dependencies
+# variables for building omexmeta dependencies
 #
 
 macro(SetPaths PLATFORM)

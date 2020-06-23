@@ -3,7 +3,7 @@
 //
 #include "RedlandAPIWrapper.h"
 #include "AnnotationSamples.h"
-#include <semsim/Triples.h>
+#include "omexmeta/Triples.h"
 
 #include <librdf.h>
 #include <gtest/gtest.h>

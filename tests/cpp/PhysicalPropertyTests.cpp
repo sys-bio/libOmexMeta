@@ -4,8 +4,8 @@
 
 
 #include "gtest/gtest.h"
-#include <semsim/Triple.h>
-#include "semsim/PhysicalProperty.h"
+#include "omexmeta/Triple.h"
+#include "omexmeta/PhysicalProperty.h"
 
 using namespace semsim;
 

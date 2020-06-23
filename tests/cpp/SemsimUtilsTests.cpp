@@ -60,8 +60,8 @@ TEST_F(SemsimUtilsTests, TestGEtNamespacesFromUri) {
 }
 
 TEST_F(SemsimUtilsTests, TestGEtNamespacesFromUriSemsim) {
-    std::string uri = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
-    std::string expected = "http://www.bhi.washington.edu/semsim#";
+    std::string uri = "http://www.bhi.washington.edu/omexmeta#hasSourceParticipant";
+    std::string expected = "http://www.bhi.washington.edu/omexmeta#";
     std::string actual = semsim::SemsimUtils::getNamespaceFromUri(uri);
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }

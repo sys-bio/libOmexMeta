@@ -6,10 +6,10 @@
 #define LIBOMEXMETA_QUERY_H
 
 #include "RedlandAPIWrapper.h"
-#include "semsim/Error.h"
-#include "semsim/SemsimUtils.h"
-//#include "semsim/Triple.h"
-//#include "semsim/Triples.h"
+#include "omexmeta/Error.h"
+#include "omexmeta/SemsimUtils.h"
+//#include "omexmeta/Triple.h"
+//#include "omexmeta/Triples.h"
 
 #include "librdf.h"
 

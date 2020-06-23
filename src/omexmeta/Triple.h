@@ -7,11 +7,11 @@
 
 #include "LibrdfNode.h"
 #include "LibrdfStatement.h"
-#include "semsim/Predicate.h"
-#include "semsim/Subject.h"
-#include "semsim/Resource.h"
-#include "semsim/Triple.h"
-//#include "semsim/Triple2Writer.h"
+#include "omexmeta/Predicate.h"
+#include "omexmeta/Subject.h"
+#include "omexmeta/Resource.h"
+#include "omexmeta/Triple.h"
+//#include "omexmeta/Triple2Writer.h"
 #include "librdf.h"
 #include "raptor2.h"
 

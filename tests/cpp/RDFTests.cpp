@@ -3,7 +3,7 @@
 //
 
 #include "gtest/gtest.h"
-#include "semsim/RDF.h"
+#include "omexmeta/RDF.h"
 #include "AnnotationSamples.h"
 #include <filesystem>
 #include <fstream>

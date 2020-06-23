@@ -5,13 +5,13 @@
 #ifndef LIBOMEXMETA_TRIPLES_H
 #define LIBOMEXMETA_TRIPLES_H
 
-#include "semsim/Triple.h"
-#include "semsim/Predicate.h"
-#include "semsim/Subject.h"
-#include "semsim/Resource.h"
+#include "omexmeta/Triple.h"
+#include "omexmeta/Predicate.h"
+#include "omexmeta/Subject.h"
+#include "omexmeta/Resource.h"
 #include "RedlandAPIWrapper.h"
-#include "semsim/Error.h"
-//#include "semsim/TripleWriter.h"
+#include "omexmeta/Error.h"
+//#include "omexmeta/TripleWriter.h"
 
 #include <vector>
 

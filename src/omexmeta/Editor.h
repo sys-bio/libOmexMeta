@@ -6,18 +6,18 @@
 #define LIBOMEXMETA_EDITOR_H
 
 
-#include "semsim/SemsimXmlAssistant.h"
-#include "semsim/Predicate.h"
-#include "semsim/Resource.h"
-#include "semsim/Triple.h"
-#include "semsim/Participant.h"
-#include "semsim/PhysicalPhenomenon.h"
-#include "semsim/PhysicalEntity.h"
-#include "semsim/PhysicalProcess.h"
-#include "semsim/PhysicalForce.h"
+#include "omexmeta/SemsimXmlAssistant.h"
+#include "omexmeta/Predicate.h"
+#include "omexmeta/Resource.h"
+#include "omexmeta/Triple.h"
+#include "omexmeta/Participant.h"
+#include "omexmeta/PhysicalPhenomenon.h"
+#include "omexmeta/PhysicalEntity.h"
+#include "omexmeta/PhysicalProcess.h"
+#include "omexmeta/PhysicalForce.h"
 #include "RedlandAPIWrapper.h"
-#include "semsim/Error.h"
-#include "semsim/SemsimUtils.h"
+#include "omexmeta/Error.h"
+#include "omexmeta/SemsimUtils.h"
 
 #include "librdf.h"
 

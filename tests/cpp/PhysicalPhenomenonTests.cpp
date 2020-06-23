@@ -9,8 +9,8 @@
 #include "gtest/gtest.h"
 #include "librdf.h"
 #include "AnnotationSamples.h"
-#include "semsim/PhysicalEntity.h"
-#include "semsim/AnnotationType.h"
+#include "omexmeta/PhysicalEntity.h"
+#include "omexmeta/AnnotationType.h"
 
 using namespace semsim;
 

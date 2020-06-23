@@ -3,7 +3,7 @@
 //
 #include "librdf.h"
 #include "gtest/gtest.h"
-#include "semsim/Predicate.h"
+#include "omexmeta/Predicate.h"
 
 #include "RedlandAPIWrapper.h"
 
@@ -179,7 +179,7 @@ TEST_F(PredicateTests, TestBqModelGetPrefixFromPtrToBaseClassvsdf) {
 TEST_F(PredicateTests, TestSemsimPredicatePrefix) {
     std::shared_ptr<Predicate> term_ptr =
             std::make_unique<Predicate>(SemSim("hasSourceParticipant"));
-    std::string expected = "semsim";
+    std::string expected = "omexmeta";
     std::string actual = term_ptr->getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     term_ptr->freeNode();
@@ -189,7 +189,7 @@ TEST_F(PredicateTests, TestSemsimPredicatePrefix) {
 TEST_F(PredicateTests, TestSemsimPredicateNamespace) {
     std::shared_ptr<Predicate> term_ptr =
             std::make_unique<Predicate>(SemSim("hasSourceParticipant"));
-    std::string expected = "http://www.bhi.washington.edu/semsim#";
+    std::string expected = "http://www.bhi.washington.edu/omexmeta#";
     std::string actual = term_ptr->getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     term_ptr->freeNode();
@@ -236,7 +236,7 @@ TEST_F(PredicateTests, TestSemsimPredicateNamespace) {
 //    std::string url_str = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
 //    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
 //    const std::string &actual = predicate.getPrefix();
-//    std::string expected = "semsim";
+//    std::string expected = "omexmeta";
 //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 //    predicate.freeNode();
 //}

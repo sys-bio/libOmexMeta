@@ -5,16 +5,16 @@
 #ifndef LIBOMEXMETA_PHYSICALENTITY_H
 #define LIBOMEXMETA_PHYSICALENTITY_H
 
-#include <semsim/PhysicalProperty.h>
-#include "semsim/Resource.h"
-#include "semsim/Subject.h"
-#include "semsim/PhysicalPhenomenon.h"
-#include "semsim/MetaID.h"
+#include "omexmeta/PhysicalProperty.h"
+#include "omexmeta/Resource.h"
+#include "omexmeta/Subject.h"
+#include "omexmeta/PhysicalPhenomenon.h"
+#include "omexmeta/MetaID.h"
 #include "RedlandAPIWrapper.h"
 #include <utility>
-#include "semsim/Triple.h"
-#include "semsim/Query.h"
-#include "semsim/SemsimUtils.h"
+#include "omexmeta/Triple.h"
+#include "omexmeta/Query.h"
+#include "omexmeta/SemsimUtils.h"
 #include "memory"
 
 using namespace redland;

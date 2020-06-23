@@ -3,7 +3,7 @@
 #include <ctime>
 #include <cassert>
 #include <sstream>
-#include "semsim/uri.h"
+#include "omexmeta/uri.h"
 #include "gtest/gtest.h"
 
 using namespace std;

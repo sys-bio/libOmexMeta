@@ -4,9 +4,9 @@
 
 #include <string>
 #include "gtest/gtest.h"
-#include "semsim/SemsimCombineArchive.h"
+#include "omexmeta/SemsimCombineArchive.h"
 #include "AnnotationSamples.h"
-#include "semsim/SemSim.h"
+#include "omexmeta/SemSim.h"
 
 #include "combine/combinearchive.h"
 #include "omex/CaContent.h"

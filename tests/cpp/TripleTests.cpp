@@ -2,10 +2,10 @@
 // Created by Ciaran on 4/4/2020.
 //
 
-#include <semsim/Predicate.h>
-#include <semsim/Resource.h>
-#include <semsim/Subject.h>
-#include <semsim/Triple.h>
+#include "omexmeta/Predicate.h"
+#include "omexmeta/Resource.h"
+#include "omexmeta/Subject.h"
+#include "omexmeta/Triple.h"
 #include "gtest/gtest.h"
 #include "AnnotationSamples.h"
 
@@ -266,10 +266,10 @@ TEST_F(TripleTests, TestBuilderPatternWithSemSimPredicate) {
     std::string actual = triple.str();
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/omexmeta#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"metaid1\">\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"https://identifiers.org/uniprot/PD4034\"/>\n"
+                           "    <omexmeta:hasSourceParticipant rdf:resource=\"https://identifiers.org/uniprot/PD4034\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     std::cout << actual << std::endl;

@@ -2,7 +2,7 @@
 // Created by Ciaran on 4/22/2020.
 //
 
-#include "semsim/PhysicalForce.h"
+#include "omexmeta/PhysicalForce.h"
 
 #include <utility>
 

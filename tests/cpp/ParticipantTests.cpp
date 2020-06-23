@@ -4,8 +4,8 @@
 
 #include "gtest/gtest.h"
 #include "librdf.h"
-#include "semsim/RDF.h"
-#include "semsim/Participant.h"
+#include "omexmeta/RDF.h"
+#include "omexmeta/Participant.h"
 
 using namespace semsim;
 
@@ -37,7 +37,7 @@ TEST_F(ParticipantTests, TestCreateParticipant) {
     SemSim ss(participant.getPredicate());
     std::string actual = ss.str();
     std::cout << actual << std::endl;
-    std::string expected = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
+    std::string expected = "http://www.bhi.washington.edu/omexmeta#hasSourceParticipant";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     participant.free();
     ss.freeNode();
@@ -49,7 +49,7 @@ TEST_F(ParticipantTests, TestSinkParticipant1) {
     SemSim ss(sink.getPredicate());
     std::string actual = ss.str();
     std::cout << actual << std::endl;
-    std::string expected = "http://www.bhi.washington.edu/semsim#hasSinkParticipant";
+    std::string expected = "http://www.bhi.washington.edu/omexmeta#hasSinkParticipant";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     sink.free();
     ss.freeNode();
@@ -75,10 +75,10 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
     // triple assumes responsibility for freeing subject, resource and preicate
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/omexmeta#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"SinkParticipant\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"MetaId0015\"/>\n"
+                           "    <omexmeta:hasSinkParticipant rdf:resource=\"MetaId0015\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     std::string actual = triple.str();
@@ -100,10 +100,10 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
     // triple assumes responsibility for freeing subject, resource and preicate
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/omexmeta#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"SinkParticipant\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"MetaId0015\"/>\n"
+                           "    <omexmeta:hasSinkParticipant rdf:resource=\"MetaId0015\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     std::string actual = triples[0].str();
@@ -120,14 +120,14 @@ TEST_F(ParticipantTests, TestToTriples1) {
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/omexmeta#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
-                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
+                           "    <omexmeta:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</omexmeta:hasMultiplier>\n"
+                           "    <omexmeta:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"metaid\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
+                           "    <omexmeta:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -142,13 +142,13 @@ TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/omexmeta#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
+                           "    <omexmeta:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"metaid\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
+                           "    <omexmeta:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -163,13 +163,13 @@ TEST_F(ParticipantTests, TestToTriplesMediator) {
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/omexmeta#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"MediatorParticipant0000\">\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
+                           "    <omexmeta:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"metaid\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorParticipant0000\"/>\n"
+                           "    <omexmeta:hasMediatorParticipant rdf:resource=\"MediatorParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());

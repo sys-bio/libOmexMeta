@@ -4,7 +4,7 @@
 
 
 
-#include "semsim/Predicate.h"
+#include "omexmeta/Predicate.h"
 
 #include <utility>
 
@@ -42,13 +42,13 @@ namespace semsim {
         }
         // When predicate ends in '#' we need different logic to when the predicate ends in '/'
         if (v[v.size() - 1].find('#') != std::string::npos) {
-            // split last portion by '#' such as .../semsim#hasSourceParticipant
+            // split last portion by '#' such as .../omexmeta#hasSourceParticipant
             std::vector<std::string> last_bit = SemsimUtils::splitStringBy(v[v.size() - 1], '#');
             if (last_bit.size() != 2) {
                 throw std::logic_error("Predicate::Predicate(): For developers. Should never have more than two "
                                        "strings in this vector of strings");
             }
-            // into semsim# and hasSourceParticipant
+            // into omexmeta# and hasSourceParticipant
             os << last_bit[0] << "#";
             term_ = last_bit[1];
         } else {
@@ -102,7 +102,7 @@ namespace semsim {
                 {"http://purl.org/dc/terms/",                "dcterms"},
                 {"http://biomodels.net/biology-qualifiers/", "bqbiol"},
                 {"http://biomodels.net/model-qualifiers/",   "bqmodel"},
-                {"http://www.bhi.washington.edu/semsim#",    "semsim"},
+                {"http://www.bhi.washington.edu/omexmeta#",    "omexmeta"},
         };
     }
 
@@ -238,7 +238,7 @@ namespace semsim {
 //    }
 
     SemSim::SemSim(const std::string &term) :
-            Predicate("http://www.bhi.washington.edu/semsim#", term, "semsim") {
+            Predicate("http://www.bhi.washington.edu/omexmeta#", term, "omexmeta") {
         verify();
     }
 
@@ -297,7 +297,7 @@ namespace semsim {
             predicatePtr = std::make_unique<DCTerm>(
                     DCTerm(term)
             );
-        } else if (namespace_ == "ss" || namespace_ == "semsim") {
+        } else if (namespace_ == "ss" || namespace_ == "omexmeta") {
             predicatePtr = std::make_unique<SemSim>(
                     SemSim(term)
             );

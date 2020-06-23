@@ -2,7 +2,7 @@
 // Created by Ciaran on 4/4/2020.
 //
 
-#include <semsim/Subject.h>
+#include "omexmeta/Subject.h"
 #include "gtest/gtest.h"
 
 #include "World.h"

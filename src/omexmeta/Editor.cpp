@@ -2,7 +2,7 @@
 // Created by Ciaran on 4/15/2020.
 //
 
-#include "semsim/Editor.h"
+#include "omexmeta/Editor.h"
 
 #include <utility>
 

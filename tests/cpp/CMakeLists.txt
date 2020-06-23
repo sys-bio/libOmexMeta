@@ -32,18 +32,18 @@ set(TEST_SOURCES
 #    set(TEST_SOURCES ${TEST_SOURCES} )
 #endif ()
 
-add_executable(semsim-tests ${TEST_SOURCES})
+add_executable(OmexMeta-tests ${TEST_SOURCES})
 
 if (NOT ${PLATFORM} STREQUAL "window-msvc")
-    target_compile_options(semsim-tests PRIVATE -g)
+    target_compile_options(OmexMeta-tests PRIVATE -g)
 endif ()
-add_dependencies(semsim-tests semsim-static)
+add_dependencies(OmexMeta-tests OmexMeta-static)
 
 message(STATUS "LINK_LIBRARIES ${LINK_LIBRARIES}")
 
-target_link_libraries(semsim-tests PUBLIC
+target_link_libraries(OmexMeta-tests PUBLIC
         # Order matters!
-        $<TARGET_FILE:semsim-static>
+        $<TARGET_FILE:OmexMeta-static>
         $<TARGET_FILE:redland-combined-static>
         ${LINK_LIBRARIES}
         gtest gtest_main
@@ -57,24 +57,24 @@ if (CLANG)
 ENDIF ()
 
 foreach (lib ${LIBRARIES_DLL})
-    add_custom_command(TARGET semsim-tests POST_BUILD        # Adds a post-build event to MyTest
+    add_custom_command(TARGET OmexMeta-tests POST_BUILD        # Adds a post-build event to MyTest
             COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
             "${lib}"      # <--this is in-file
             "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 endforeach ()
 
 
-target_include_directories(semsim-tests PRIVATE
+target_include_directories(OmexMeta-tests PRIVATE
         ${GOOGLETEST_SOURCE}/googletest/include
         ${INCLUDE_DIRECTORIES}
         ${WRAPPER_SOURCE_DIR}
         )
 
-add_dependencies(semsim-tests semsim-static)
+add_dependencies(OmexMeta-tests OmexMeta-static)
 
 install(
-        TARGETS semsim-tests
-        EXPORT semsim-tests
+        TARGETS OmexMeta-tests
+        EXPORT OmexMeta-tests
         RUNTIME
         DESTINATION bin
 )
