@@ -91,5 +91,7 @@ Build variables
     INCLUDE_DIRECTORIES                      ${INCLUDE_DIRECTORIES}
     LINK_LIBRARIES                           ${LINK_LIBRARIES}
 
+End Summary
+########################################################################################
 ")
 endmacro()

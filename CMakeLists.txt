@@ -211,8 +211,8 @@ elseif (PLATFORM STREQUAL "linux")
     # for strange and unusual reasons which are explainable only
     # by the programming gods.
     set(LINK_LIBRARIES
-            ${LIBXSLT_LIBRARY} # dynamic
             ${LIBXML2_LIBRARY} # dynamic
+            ${LIBXSLT_LIBRARY} # dynamic
             # flag for including whole archive, not just the function used.
             -Wl,--whole-archive
             ${ZLIB_STATIC_LIBRARY}
