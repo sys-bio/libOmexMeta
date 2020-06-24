@@ -433,48 +433,48 @@ if (${BUILD_TESTS})
     add_subdirectory(RedlandAPIWrapper/test)
 endif ()
 
-# Its not yet clear whether we need to build the shared version. It
-# seems the static does what we need, so keep it like this for now.
-# However, best to keep commented for now.
-#
-#if (BUILD_SHARED_LIBS)
-#
-#    add_library(redland-combined SHARED
-#            ${RAPTOR_SOURCES}
-#            ${RASQAL_SOURCES}
-#            ${LIBRDF_SOURCES}
-#            ${WRAPPER_SOURCES}
-#            )
-#
-#    set_target_properties(redland-combined PROPERTIES POSITION_INDEPENDENT_CODE ON)
-#    if (PLATFORM STREQUAL "Debug")
-#        set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDll")
-#    elseif (PLATFORM STREQUAL "Release")
-#        set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDll")
-#    endif ()
-#
-#    target_include_directories(redland-combined PUBLIC
-#            ${INCLUDE_DIRECTORIES}
-#            D:/vcpkg/installed/x64-windows/include
-#            )
-#
-#    if (PLATFORM STREQUAL "windows-msvc")
-#        if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-#            set(RUNTIME "ucrtd")
-#        elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-#            set(RUNTIME "ucrt")
-#        endif ()
-#    endif ()
-#
-#    target_link_libraries(redland-combined PUBLIC
-#            ${LINK_LIBRARIES}
-#            #            ${RUNTIME}
-#            )
-#
-#    #    set_target_properties(redland-combined PROPERTIES PUBLIC_HEADER
-#    #            )
-#
-#
-#    install(TARGETS redland-combined)
-#
-#endif ()
+# On windows I run into trouble trying to link to
+# static redland-combined. Its easier on windows
+# to build a dynamic library and link that
+
+if (BUILD_SHARED_LIBS)
+
+    add_library(redland-combined SHARED
+            ${RAPTOR_SOURCES}
+            ${RASQAL_SOURCES}
+            ${LIBRDF_SOURCES}
+            ${WRAPPER_SOURCES}
+            )
+
+    set_target_properties(redland-combined PROPERTIES POSITION_INDEPENDENT_CODE ON)
+    if (PLATFORM STREQUAL "Debug")
+        set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDll")
+    elseif (PLATFORM STREQUAL "Release")
+        set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDll")
+    endif ()
+
+    target_include_directories(redland-combined PUBLIC
+            ${INCLUDE_DIRECTORIES}
+            D:/vcpkg/installed/x64-windows/include
+            )
+
+    if (PLATFORM STREQUAL "windows-msvc")
+        if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+            set(RUNTIME "ucrtd")
+        elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+            set(RUNTIME "ucrt")
+        endif ()
+    endif ()
+
+    target_link_libraries(redland-combined PUBLIC
+            ${LINK_LIBRARIES}
+            #            ${RUNTIME}
+            )
+
+    #    set_target_properties(redland-combined PROPERTIES PUBLIC_HEADER
+    #            )
+
+
+    install(TARGETS redland-combined)
+
+endif ()

@@ -113,14 +113,19 @@ if (${BUILD_SHARED_LIBS})
             ${INCLUDE_DIRECTORIES}
             )
 
+    # msvc, linux, macos values
+    # On msvc this is the lib file counterpart to the redland-combined dll
+    # on linux simply the .a file
+    SetCrossPlatform(REDLAND_LINK_LIBRARY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/redland-combined.lib $<TARGET_FILE:redland-combined-static> $<TARGET_FILE:redland-combined-static>)
+
     # links
     target_link_libraries(OmexMeta PUBLIC
-            $<TARGET_FILE:redland-combined-static>
+            ${REDLAND_LINK_LIBRARY}
             ${LINK_LIBRARIES}
             )
 
-    # deps
-    add_dependencies(OmexMeta redland-combined-static)
+    # Technically linux version depends on static version and windows depends on the dynamic library
+    add_dependencies(OmexMeta redland-combined redland-combined-static)
 
     # install target
     install(TARGETS OmexMeta
