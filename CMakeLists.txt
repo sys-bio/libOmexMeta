@@ -1,3 +1,8 @@
+
+#A note on the build system. Occasionally you will
+#see "_CMakeLists.txt". This is an old version of the
+#build system. This will be deleted in due course.
+
 cmake_minimum_required(VERSION 3.15)
 
 

@@ -179,7 +179,7 @@ TEST_F(PredicateTests, TestBqModelGetPrefixFromPtrToBaseClassvsdf) {
 TEST_F(PredicateTests, TestSemsimPredicatePrefix) {
     std::shared_ptr<Predicate> term_ptr =
             std::make_unique<Predicate>(SemSim("hasSourceParticipant"));
-    std::string expected = "omexmeta";
+    std::string expected = "semsim";
     std::string actual = term_ptr->getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     term_ptr->freeNode();
