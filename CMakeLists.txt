@@ -31,6 +31,9 @@ include(${CMAKE_SOURCE_DIR}/cmake/FindDependencies.cmake)
 # defines a macro that allows easily setting of platform dependent values for a variable
 include(${CMAKE_SOURCE_DIR}/cmake/SetCrossPlatform.cmake)
 
+# defines a macro that prints out configuration summary
+include(${CMAKE_SOURCE_DIR}/cmake/ConfigurationSummary.cmake)
+
 ######################################################
 #   Set some variables
 #
@@ -71,6 +74,8 @@ if (BUILD_SHARED_LIBS)
     add_definitions("-DBUILD_SHARED_LIBS=ON")
 endif ()
 
+option(DEBUG_DEPENDENCIES "Catch missing libraries by throwing error message if they do not exist" OFF)
+
 option(BUILD_DOCS "Build libomexmeta documentation" ON)
 
 # build tests?
@@ -91,46 +96,46 @@ endif ()
 
 ############################################################3
 # configure some paths relative to vcpkg root
-
 set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its D:\\vcpkg")
+if (NOT EXISTS ${VCPKG_ROOT})
+    message(FATAL_ERROR "vcpkg root not found (${VCPKG_ROOT}). Remember to \
+add /mnt/<driveletter> on wsl (like \"/mnt/d/vcpkg\")")
+endif()
+
 set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Path to vcpkg toolchain file")
 
-# determine which triplet we need to use for finding shared libraries and include dirs.
-if (PLATFORM STREQUAL "windows-msvc")
-    set(VCPKG_ARCH "x64-windows")
-elseif (PLATFORM STREQUAL "linux")
-    set(VCPKG_ARCH "x64-linux")
-elseif (PLATFORM STREQUAL "macos")
-    set(VCPKG_ARCH "x64-osx")
+# ensure the toolchain file exists and user has provided it.
+if (NOT EXISTS ${CMAKE_TOOLCHAIN_FILE})
+    message(FATAL_ERROR "No vcpkg toolchain installed, got \"${CMAKE_TOOLCHAIN_FILE}\".
+Have you passed in the root to vcpkg? i.e. -DVCPKG_ROOT=\"D:/vcpkg\"")
 endif ()
+
+# determine which triplet we need to use for finding shared libraries and include dirs.
+SetCrossPlatform(VCPKG_ARCH "x64-windows" "x64-linux" "x64-osx")
 
 # location of installed libraries in vcpkg
 set(VCPKG_X64_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/${VCPKG_ARCH}")
 
 # location of installed static packages in vcpkg
-if (PLATFORM STREQUAL "windows-msvc")
-    set(VCPKG_X64_STATIC_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/x64-windows-static")
-elseif (PLATFORM STREQUAL "linux")
-    # note: this is the same as for shared on linux
-    set(VCPKG_X64_STATIC_INSTALLED_PACKAGES "${VCPKG_ROOT}/installed/x64-linux") # note: on linux, this is same for shared and static
-elseif (PLATFORM STREQUAL "macos")
-    message(FATAL_ERROR "Not yet")
-endif ()
+SetCrossPlatform(VCPKG_X64_STATIC_INSTALLED_PACKAGES
+        "${VCPKG_ROOT}/installed/x64-windows-static"
+        "${VCPKG_ROOT}/installed/x64-linux" # note: on linux, this is same for shared and static
+        "${VCPKG_ROOT}/installed/x64-osx"
+        )
 
 # Path to static libraries
 set(VCPKG_X64_STATIC_LIB_DIR "${VCPKG_X64_STATIC_INSTALLED_PACKAGES}/lib")
 # Path to shared libraries
 set(VCPKG_X64_LIB_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/lib")
 # Path to binaries
-set(VCPKG_X64_BIN_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/bin")
+SetCrossPlatform(VCPKG_X64_BIN_DIR
+        "${VCPKG_X64_INSTALLED_PACKAGES}/bin" # windows
+        "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # linux
+        "${VCPKG_X64_INSTALLED_PACKAGES}/lib" # mac
+        )
 # include directories (should be the same for static and dynamic)
 set(VCPKG_X64_INCLUDE_DIR "${VCPKG_X64_INSTALLED_PACKAGES}/include")
 
-# ensure the toolchain file exists and user has provided it.
-if (NOT EXISTS ${CMAKE_TOOLCHAIN_FILE})
-    message(FATAL_ERROR "No vcpkg toolchain installed. Have you configured vcpkg yet? If so,
-pass in -DCMAKE_TOOLCHAIN_FILE=\"C:/full/path/to/vcpkg.cmake\"")
-endif ()
 
 set(_VCPKG_DIRECTORIES
         ${VCPKG_X64_STATIC_LIB_DIR}
@@ -138,6 +143,8 @@ set(_VCPKG_DIRECTORIES
         ${VCPKG_X64_BIN_DIR}
         ${VCPKG_X64_INCLUDE_DIR}
         )
+
+ConfigurationSummary()
 
 # ensure the directories we've located exist
 foreach (d ${_VCPKG_DIRECTORIES})
@@ -203,13 +210,13 @@ elseif (PLATFORM STREQUAL "linux")
             ${LIBXML2_LIBRARY} # dynamic
             # flag for including whole archive, not just the function used.
             -Wl,--whole-archive
-            ${ZLIB2_STATIC_LIBRARY}
+            ${ZLIB_STATIC_LIBRARY}
             ${LZMA_STATIC_LIBRARY}
             -Wl,--no-whole-archive
             ${ICONV_LIBRARY} # We use dynamic for now.
             ltdl
             -Wl,--whole-archive
-            ${LIBCURL_STATIC_LIBRARY}
+            ${CURL_STATIC_LIBRARY}
             ${SSL_STATIC_LIBRARY}
             ${CRYPTO_STATIC_LIBRARY}
             ${YAJL_STATIC_LIBRARY}
@@ -279,8 +286,8 @@ if (BUILD_DOCS)
 endif ()
 
 
-
-
+# print out config summary
+ConfigurationSummary()
 
 
 

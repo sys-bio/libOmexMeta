@@ -116,6 +116,7 @@ if (${BUILD_SHARED_LIBS})
     # msvc, linux, macos values
     # On msvc this is the lib file counterpart to the redland-combined dll
     # on linux simply the .a file
+    # only for shared lib
     SetCrossPlatform(REDLAND_LINK_LIBRARY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/redland-combined.lib $<TARGET_FILE:redland-combined-static> $<TARGET_FILE:redland-combined-static>)
 
     # links
@@ -141,12 +142,16 @@ if (${BUILD_SHARED_LIBS})
             )
 
     # install the shared library dependencies
+
     if (PLATFORM STREQUAL "linux")
         # On linux we only need a few dynamic libraries due to static linking the rest.
+        message("LIBXML2_LIBRARY ${LIBXML2_LIBRARY}")
+        message("LIBCURL_LIBRARY ${LIBCURL_LIBRARY}")
+        message("PYOMEXMETA_DIR ${PYOMEXMETA_DIR}")
         install(FILES
-                "$<TARGET_FILE:OmexMeta>"
+                $<TARGET_FILE:OmexMeta>
                 "${LIBXML2_LIBRARY}"
-                "${LIBCURL_LIBRARY}"
+                "${CURL_LIBRARY}"
                 DESTINATION ${PYOMEXMETA_DIR}
                 )
     elseif (PLATFORM STREQUAL "windows-msvc")

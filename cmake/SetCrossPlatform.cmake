@@ -5,6 +5,8 @@ macro(SetCrossPlatform name msvc_val linux_val macos_val)
         set(${name} ${linux_val})
     elseif (PLATFORM STREQUAL "macos")
         set(${name} ${macos_val})
+    else ()
+        message(FATAL_ERROR "Unknown operating system")
     endif ()
 
 endmacro()
