@@ -4,6 +4,8 @@ import ctypes as ct
 import os
 import sys
 from typing import List
+import win32api
+import win32con
 
 _WORKING_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
@@ -14,12 +16,15 @@ class Util:
     def load_lib() -> ct.CDLL:
         if sys.platform == "linux":
             lib_path = os.path.join(_WORKING_DIRECTORY, "libOmexMeta.so")
+            lib = ct.CDLL(lib_path)
         elif sys.platform == "win32":
+            # windows has to be difficult
             lib_path = os.path.join(_WORKING_DIRECTORY, "OmexMeta.dll")
+            dll_handle = win32api.LoadLibraryEx(lib_path, 0, win32con.LOAD_WITH_ALTERED_SEARCH_PATH)
+            lib = ct.WinDLL(lib_path, handle=dll_handle)
         else:
-            raise ValueError("Currently only implemented for windows or linux systems. Platofrm is " + sys.platform)
+            raise ValueError("Currently only implemented for windows or linux systems. Platform is " + sys.platform)
 
-        lib = ct.CDLL(lib_path)
         if not lib:
             raise ValueError("libomexmeta.so not found")
         return lib

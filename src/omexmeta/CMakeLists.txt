@@ -145,9 +145,6 @@ if (${BUILD_SHARED_LIBS})
 
     if (PLATFORM STREQUAL "linux")
         # On linux we only need a few dynamic libraries due to static linking the rest.
-        message("LIBXML2_LIBRARY ${LIBXML2_LIBRARY}")
-        message("LIBCURL_LIBRARY ${LIBCURL_LIBRARY}")
-        message("PYOMEXMETA_DIR ${PYOMEXMETA_DIR}")
         install(FILES
                 $<TARGET_FILE:OmexMeta>
                 "${LIBXML2_LIBRARY}"
@@ -156,14 +153,11 @@ if (${BUILD_SHARED_LIBS})
                 )
     elseif (PLATFORM STREQUAL "windows-msvc")
         # Just take all of them on windows, since we've linked dynamically to everything
-        install(FILES ${LIBRARIES}
-                DESTINATION bin
-                )
+        install(FILES ${LIBRARIES} DESTINATION bin)
 
         # Remember to copy dependency dlls to pyomexmeta directory
-        install(FILES ${LIBRARIES}
-                DESTINATION ${PYOMEXMETA_DIR}
-                )
+        install(FILES ${LIBRARIES} DESTINATION ${PYOMEXMETA_DIR})
+        install(FILES $<TARGET_FILE:redland-combined> DESTINATION ${PYOMEXMETA_DIR})
 
     elseif (PLATFORM STREQUAL "macos")
         message(STATUS "macos == sad face =[")

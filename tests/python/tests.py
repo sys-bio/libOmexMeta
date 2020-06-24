@@ -153,7 +153,7 @@ class TestRDF(unittest.TestCase):
         rdf = RDF.from_string(self.rdf_str, "rdfxml")
         rdf.set_base_uri("ABaseUri.rdf")
         uri = rdf.get_base_uri()
-        expected = "file:///mnt/d/libomexmeta/tests/python/ABaseUri.rdf"
+        expected = "file:///mnt/d/libOmexMeta/tests/python/ABaseUri.rdf"
         self.assertEqual(expected, uri)
 
     def test_query(self):
@@ -590,7 +590,7 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
         self.gold_standard_test(self.gold_standard_url1, self.gold_standard_filename1, expected, "html")
 
     def test_gold_standard2(self):
-        expected = """@base <file:///mnt/d/libomexmeta/tests/python/goldstandard2.omex> .
+        expected = """@base <file:///mnt/d/libOmexMeta/tests/python/goldstandard2.omex> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -611,7 +611,7 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
    xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
    xmlns:dcterms="http://purl.org/dc/terms/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xml:base="file:///mnt/d/libomexmeta/tests/python/goldstandard3.omex">
+   xml:base="file:///mnt/d/libOmexMeta/tests/python/goldstandard3.omex">
   <rdf:Description rdf:about="aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#Ca_handling_by_the_SR.Ca_i">
     <bqbiol:isPropertyOf rdf:resource="aslanidi_a"""
         self.gold_standard_test(self.gold_standard_url3, self.gold_standard_filename3, expected, "rdfxml-abbrev")

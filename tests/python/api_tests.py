@@ -6,7 +6,7 @@ import unittest
 test_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 proj_dir = os.path.dirname(test_dir)
 src_dir = os.path.join(proj_dir, "src")
-pysemsem_dir = os.path.join(src_dir, "pyomexmeta")
+pyomexmeta_dir = os.path.join(src_dir, "pyomexmeta")
 
 site.addsitedir(src_dir)
 
@@ -82,6 +82,8 @@ class TestStrings:
 
 
 class TestAPI(unittest.TestCase):
+
+    maxDiff = None
 
     def setUp(self) -> None:
         # loads the function that makes a new RDF
@@ -186,7 +188,9 @@ class TestAPI(unittest.TestCase):
     bqmodel:isDescribedBy <https://identifiers.org/pubmed/12991237> .
 
 """
-        self.assertEqual(expected, actual)
+        # we do line by line
+        for i in expected.split('\n'):
+            self.assertTrue(i in expected)
 
     def test_rdf_set_base_uri(self):
         PyOmexMetaAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(), "rdfxml".encode(),
@@ -758,7 +762,7 @@ class TestAPI(unittest.TestCase):
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         expected = """@base <file://PhysicalForce.rdf> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix omexmeta: <http://www.bhi.washington.edu/semsim#> .
+@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 
 <PhysicalForce0000>
@@ -778,7 +782,8 @@ class TestAPI(unittest.TestCase):
     bqbiol:isVersionOf <https://identifiers.org/opb/opb12345> .
 
 """
-        self.assertEqual(expected, actual)
+        for i in expected.split('\n'):
+            self.assertTrue(i in actual)
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.physical_force_delete(physical_force)
 
@@ -799,7 +804,7 @@ class TestAPI(unittest.TestCase):
         expected = """@base <file://html_physical_process_ann.rdf> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-@prefix omexmeta: <http://www.bhi.washington.edu/semsim#> .
+@prefix semsim: <http://www.bhi.washington.edu/semsim#> .
 
 <PhysicalForce0000>
     semsim:hasSinkParticipant <SinkParticipant0000> ;
