@@ -76,7 +76,8 @@ class PyOmexMetaAPI:
     #                         const char *storage_type = "memory", const char *storage_name = "semsim_store",
     #                         const char *storage_options = nullptr, const char *model_options = nullptr);
     rdf_from_string = Util.load_func("RDF_fromString",
-                                     [ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_int64)
+                                     [ct.c_char_p, ct.c_char_p, ct.c_char_p,
+                                      ct.c_char_p, ct.c_char_p, ct.c_void_p, ct.c_void_p], ct.c_int64)
 
     # void RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri);
     rdf_add_from_string = Util.load_func("RDF_addFromString", [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_char_p],
@@ -87,7 +88,8 @@ class PyOmexMetaAPI:
     #                  const char *storage_options = nullptr, const char *model_options = nullptr);
     rdf_from_uri = Util.load_func("RDF_fromUri",
                                   [ct.c_char_p, ct.c_char_p,
-                                   ct.c_char_p, ct.c_char_p, ct.c_char_p, ct.c_char_p], ct.c_int64)
+                                   ct.c_char_p, ct.c_char_p,
+                                   ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # void RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
     rdf_add_from_uri = Util.load_func("RDF_addFromUri", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_void_p)
