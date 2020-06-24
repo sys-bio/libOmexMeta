@@ -230,11 +230,11 @@ class EditorTests(unittest.TestCase):
     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0000">
-    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
     <omexmeta:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
   </rdf:Description>
   <rdf:Description rdf:about="SourceParticipant0000">
-    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
     <omexmeta:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
   </rdf:Description>
 </rdf:RDF>
@@ -265,11 +265,11 @@ class EditorTests(unittest.TestCase):
     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0000">
-    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
     <omexmeta:hasPhysicalEntityReference rdf:resource="PhysicalEntity7"/>
   </rdf:Description>
   <rdf:Description rdf:about="SourceParticipant0000">
-    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
     <omexmeta:hasPhysicalEntityReference rdf:resource="physicalEntity4"/>
   </rdf:Description>
 </rdf:RDF>
@@ -472,11 +472,11 @@ class AnnotateAModelTest(unittest.TestCase):
     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00237"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0000">
-    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
     <omexmeta:hasPhysicalEntityReference rdf:resource="SemsimMetaid0002"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0001">
-    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
     <omexmeta:hasPhysicalEntityReference rdf:resource="SemsimMetaid0003"/>
   </rdf:Description>
   <rdf:Description rdf:about="SmadNuclearTransport">
@@ -484,11 +484,11 @@ class AnnotateAModelTest(unittest.TestCase):
        rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#string">Ciaran Welsh</ns1:author>
   </rdf:Description>
   <rdf:Description rdf:about="SourceParticipant0000">
-    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
     <omexmeta:hasPhysicalEntityReference rdf:resource="SemsimMetaid0003"/>
   </rdf:Description>
   <rdf:Description rdf:about="SourceParticipant0001">
-    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
     <omexmeta:hasPhysicalEntityReference rdf:resource="SemsimMetaid0002"/>
   </rdf:Description>
 </rdf:RDF>

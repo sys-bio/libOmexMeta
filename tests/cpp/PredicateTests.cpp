@@ -189,7 +189,7 @@ TEST_F(PredicateTests, TestSemsimPredicatePrefix) {
 TEST_F(PredicateTests, TestSemsimPredicateNamespace) {
     std::shared_ptr<Predicate> term_ptr =
             std::make_unique<Predicate>(SemSim("hasSourceParticipant"));
-    std::string expected = "http://www.bhi.washington.edu/omexmeta#";
+    std::string expected = "http://www.bhi.washington.edu/semsim#";
     std::string actual = term_ptr->getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     term_ptr->freeNode();

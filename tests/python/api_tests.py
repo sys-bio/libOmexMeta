@@ -714,11 +714,11 @@ class TestAPI(unittest.TestCase):
     <omexmeta:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0000">
-    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
     <omexmeta:hasPhysicalEntityReference rdf:resource="Entity2"/>
   </rdf:Description>
   <rdf:Description rdf:about="SourceParticipant0000">
-    <omexmeta:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</omexmeta:hasMultiplier>
+    <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
     <omexmeta:hasPhysicalEntityReference rdf:resource="Entity1"/>
   </rdf:Description>
   <rdf:Description rdf:about="cytosol">
@@ -766,11 +766,11 @@ class TestAPI(unittest.TestCase):
     omexmeta:hasSourceParticipant <SourceParticipant0000> .
 
 <SinkParticipant0000>
-    omexmeta:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
+    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
     omexmeta:hasPhysicalEntityReference <Entity2> .
 
 <SourceParticipant0000>
-    omexmeta:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
+    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
     omexmeta:hasPhysicalEntityReference <Entity1> .
 
 <cytosol>
@@ -806,11 +806,11 @@ class TestAPI(unittest.TestCase):
     omexmeta:hasSourceParticipant <SourceParticipant0000> .
 
 <SinkParticipant0000>
-    omexmeta:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
+    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
     omexmeta:hasPhysicalEntityReference <Entity2> .
 
 <SourceParticipant0000>
-    omexmeta:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
+    semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
     omexmeta:hasPhysicalEntityReference <Entity1> .
 
 <cytosol>

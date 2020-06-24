@@ -121,10 +121,24 @@ if (${BUILD_SHARED_LIBS})
             ${INCLUDE_DIRECTORIES}
             )
 
+    set(D D:/vcpkg/installed/x64-windows-static/lib)
+    set(E D:/vcpkg/installed/x64-windows/lib)
     target_link_libraries(OmexMeta PUBLIC
-#            ${CMAKE_BINARY_DIR}/lib/redland-combined
-            ${CMAKE_BINARY_DIR}/lib/redland-combined-static.a
-            ${LINK_LIBRARIES}
+            #            ${CMAKE_BINARY_DIR}/lib/redland-combined
+            $<TARGET_FILE:redland-combined-static>
+            ${D}/libcharset.lib
+            ${E}/libcurl.lib
+            ${D}/libiconv.lib
+            ${D}/libexslt.lib
+            ${D}/libxslt.lib
+            ${D}/libxml2.lib
+            ${D}/lzma.lib
+            ${D}/zlib.lib
+            ${D}/libssl.lib
+            ${D}/libcrypto.lib
+            ${D}/yajl_s.lib
+            ws2_32 # needed for libxml2 on windows to statically link
+            #            ${LINK_LIBRARIES}
             )
     add_dependencies(OmexMeta redland-combined-static)
 
@@ -150,7 +164,7 @@ if (${BUILD_SHARED_LIBS})
 
 
     if (PLATFORM STREQUAL "linux")
-        install(FILES ${LIBXML2_LIBRARY} ${LIBCURL_LIBRARY}
+        install(FILES "$<TARGET_FILE:OmexMeta>" ${LIBXML2_LIBRARY} ${LIBCURL_LIBRARY}
                 DESTINATION ${PYSEMSIM_DIR})
     elseif (PLATFORM STREQUAL "windows-msvc")
     endif ()

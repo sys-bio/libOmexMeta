@@ -420,16 +420,18 @@ this when you have MSVC working. Same true for zlib. ")
                 -Wl,--whole-archive
                 ${DIR}/libz.a
                 ${DIR}/liblzma.a
+                -Wl,--no-whole-archive
                 /usr/local/lib/libiconv.so.2
                 ltdl
+                -Wl,--whole-archive
                 ${DIR}/libcurl.a
                 ${DIR}/libssl.a
                 ${DIR}/libcrypto.a
                 ${DIR}/libyajl_s.a
                 ${DIR}/libpcre.a
+                -Wl,--no-whole-archive
                 m
                 dl
-                -Wl,--no-whole-archive
                 # order matters: top of the dependency chain first
                 # i.e. if A depends on B, A should come before B in this list
 #                xslt

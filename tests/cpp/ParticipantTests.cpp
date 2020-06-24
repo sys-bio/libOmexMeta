@@ -37,7 +37,7 @@ TEST_F(ParticipantTests, TestCreateParticipant) {
     SemSim ss(participant.getPredicate());
     std::string actual = ss.str();
     std::cout << actual << std::endl;
-    std::string expected = "http://www.bhi.washington.edu/omexmeta#hasSourceParticipant";
+    std::string expected = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     participant.free();
     ss.freeNode();
@@ -49,7 +49,7 @@ TEST_F(ParticipantTests, TestSinkParticipant1) {
     SemSim ss(sink.getPredicate());
     std::string actual = ss.str();
     std::cout << actual << std::endl;
-    std::string expected = "http://www.bhi.washington.edu/omexmeta#hasSinkParticipant";
+    std::string expected = "http://www.bhi.washington.edu/semsim#hasSinkParticipant";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     sink.free();
     ss.freeNode();
@@ -75,7 +75,7 @@ TEST_F(ParticipantTests, TestCreateTripleFromParticipantInfo) {
     // triple assumes responsibility for freeing subject, resource and preicate
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/omexmeta#\"\n"
+                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"SinkParticipant\">\n"
                            "    <omexmeta:hasSinkParticipant rdf:resource=\"MetaId0015\"/>\n"
@@ -100,7 +100,7 @@ TEST_F(ParticipantTests, TestCreateTripleVector) {
     // triple assumes responsibility for freeing subject, resource and preicate
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/omexmeta#\"\n"
+                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"SinkParticipant\">\n"
                            "    <omexmeta:hasSinkParticipant rdf:resource=\"MetaId0015\"/>\n"
@@ -120,10 +120,10 @@ TEST_F(ParticipantTests, TestToTriples1) {
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/omexmeta#\"\n"
+                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
-                           "    <omexmeta:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</omexmeta:hasMultiplier>\n"
+                           "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <omexmeta:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"metaid\">\n"
@@ -142,7 +142,7 @@ TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/omexmeta#\"\n"
+                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
                            "    <omexmeta:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
@@ -163,7 +163,7 @@ TEST_F(ParticipantTests, TestToTriplesMediator) {
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/omexmeta#\"\n"
+                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"MediatorParticipant0000\">\n"
                            "    <omexmeta:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
