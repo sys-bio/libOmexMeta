@@ -1,4 +1,4 @@
-# raptor/tests/grddl/CMakeLists.txt
+# raptor/tests/grddl/_CMakeLists.txt
 #
 # Original listfile by Daniel Richard G. <skunk@iSKUNK.ORG>
 # This file is in the public domain.
@@ -14,4 +14,4 @@ IF (RAPTOR_PARSER_GRDDL)
 
 ENDIF (RAPTOR_PARSER_GRDDL)
 
-# end raptor/tests/grddl/CMakeLists.txt
+# end raptor/tests/grddl/_CMakeLists.txt

@@ -1,4 +1,4 @@
-# raptor/utils/CMakeLists.txt
+# raptor/utils/_CMakeLists.txt
 #
 # Original listfile by Daniel Richard G. <skunk@iSKUNK.ORG>
 # This file is in the public domain.
@@ -23,4 +23,4 @@ TARGET_LINK_LIBRARIES(rdfdiff PRIVATE raptor2 ${LIBXML2_EXTRA_LIBS})
 INSTALL(FILES rapper.1 DESTINATION share/man/man1)
 INSTALL(TARGETS rapper DESTINATION bin)
 
-# end raptor/utils/CMakeLists.txt
+# end raptor/utils/_CMakeLists.txt

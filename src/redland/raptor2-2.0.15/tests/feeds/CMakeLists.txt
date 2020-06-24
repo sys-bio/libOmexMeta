@@ -1,4 +1,4 @@
-# raptor/tests/feeds/CMakeLists.txt
+# raptor/tests/feeds/_CMakeLists.txt
 #
 # Original listfile by Daniel Richard G. <skunk@iSKUNK.ORG>
 # This file is in the public domain.
@@ -72,4 +72,4 @@ IF (HAVE_JING)
     ADD_TEST(feeds.jing-test05.atom ${JING} ${CMAKE_CURRENT_SOURCE_DIR}/atom.rng ${CMAKE_CURRENT_SOURCE_DIR}/test05.atom)
 ENDIF (HAVE_JING)
 
-# end raptor/tests/feeds/CMakeLists.txt
+# end raptor/tests/feeds/_CMakeLists.txt

@@ -1,9 +1,6 @@
-# Note: This is the only cmakelists.txt for the redland combined that is used
-# in the libOmexMeta project. The individual redland packages do have their
-# own cmake script, but these are for building the package alone. This
-# cmake script puts all these libraries together and treats them as a single module.
-
 project(redland-libraries-combined)
+
+message(STATUS "Building redland-combind")
 
 ##################################################################################
 #       definitions, configuations
@@ -34,7 +31,7 @@ add_definitions(-DHAVE_CONFIG_H
         -DPKGDATADIR="${PKGDATADIR}"
         -DLIBRDFA_IN_RAPTOR=1
         -DRAPTOR_INTERNAL=1
-        #        -DRAPTOR_DEBUG=0 # sometimes useful. Comment out but don't delete.
+        #        -DRAPTOR_DEBUG=0
         )
 
 # files to configure - This overwrites the configuration generated from automate system
@@ -429,14 +426,13 @@ INSTALL(
         RUNTIME DESTINATION bin
 )
 
-if (${BUILD_TESTS})
+option(BUILD_WRAPPER_TESTS "Build the tests for the redland api wrapper" OFF)
+
+if (${BUILD_WRAPPER_TESTS})
     add_subdirectory(RedlandAPIWrapper/test)
 endif ()
 
-# Its not yet clear whether we need to build the shared version. It
-# seems the static does what we need, so keep it like this for now.
-# However, best to keep commented for now.
-#
+
 #if (BUILD_SHARED_LIBS)
 #
 #    add_library(redland-combined SHARED

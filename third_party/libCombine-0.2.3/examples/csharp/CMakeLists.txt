@@ -1,4 +1,4 @@
-## @file    CMakeLists.txt
+## @file    _CMakeLists.txt
 ## @brief   CMake build script for example .net programs
 ## @author  Frank T. Bergmann
 ##

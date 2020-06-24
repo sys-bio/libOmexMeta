@@ -1,4 +1,4 @@
-# raptor/CMakeLists.txt
+# raptor/_CMakeLists.txt
 #
 # This file allows building Raptor2 with the CMake configuration tool.
 # Download CMake in source or binary form from http://www.cmake.org/
@@ -368,7 +368,7 @@ SUBDIRS(tests/rdfxml)
 SUBDIRS(tests/trig)
 #SUBDIRS(tests/turtle) // no cmake in turtle
 
-# end raptor/CMakeLists.txt
+# end raptor/_CMakeLists.txt
 
 message(STATUS "
 

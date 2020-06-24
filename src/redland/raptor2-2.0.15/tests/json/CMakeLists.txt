@@ -1,4 +1,4 @@
-# raptor/tests/json/CMakeLists.txt
+# raptor/tests/json/_CMakeLists.txt
 #
 # Original listfile by Daniel Richard G. <skunk@iSKUNK.ORG>
 # This file is in the public domain.
@@ -66,4 +66,4 @@ IF (RAPTOR_PARSER_JSON)
 
 ENDIF (RAPTOR_PARSER_JSON)
 
-# end raptor/tests/json/CMakeLists.txt
+# end raptor/tests/json/_CMakeLists.txt

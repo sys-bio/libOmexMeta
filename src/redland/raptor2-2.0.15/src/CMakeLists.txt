@@ -1,4 +1,4 @@
-# raptor/src/CMakeLists.txt
+# raptor/src/_CMakeLists.txt
 #
 # Original listfile by Daniel Richard G. <skunk@iSKUNK.ORG>
 # This file is in the public domain.
@@ -496,7 +496,7 @@ INSTALL(
 
 INSTALL(EXPORT Raptor2Config DESTINATION lib/cmake)
 
-# end raptor/src/CMakeLists.txt
+# end raptor/src/_CMakeLists.txt
 
 
 message(STATUS "

@@ -1,7 +1,5 @@
-##########################################################################
-#   Set libOmexMeta sources
-#
-set(OMEXMETA_HEADERS
+
+set(SEMSIM_HEADERS
         "SemsimUtils.h"
         "CurlGet.h"
         "RDF.h"
@@ -23,10 +21,18 @@ set(OMEXMETA_HEADERS
         "PhysicalForce.h"
         "AnnotationType.h"
         "Editor.h"
+        #        "TripleWriter.h"
         "SemsimCApi.h"
+        #        "HERE.h"
+        #        Log.h
+        #        RedlandAPIWrapper/RaptorIOStream.cpp
+        #        RedlandAPIWrapper/RaptorIOStream.h
+        #        "_Reader.h"
+        #        "Writer.h"
+        #                "SemSim.h"
         )
 
-set(OMEXMETA_SOURCES
+set(SEMSIM_SOURCES
         "SemsimUtils.cpp"
         "RDF.cpp"
         "Query.cpp"
@@ -50,53 +56,56 @@ set(OMEXMETA_SOURCES
         )
 
 
-#####################################################################3
-#
-#
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+set(SEMSIM_STATIC_LIBRARY OmexMeta-static)
+set(SEMSIM_LIBRARY semsim)
+
 
 # static library
-add_library(OmexMeta-static STATIC ${OMEXMETA_HEADERS} ${OMEXMETA_SOURCES})
+add_library(OmexMeta-static STATIC ${SEMSIM_HEADERS} ${SEMSIM_SOURCES})
+
+
+# add target headers so they install correctly
+set_target_properties(OmexMeta-static PROPERTIES PUBLIC_HEADER "${SEMSIM_HEADERS}")
 
 # set runtime static for windows (ignored on other systems)
 set_target_properties(OmexMeta-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
-# add redland-combined as dependency
 add_dependencies(OmexMeta-static redland-combined-static)
-
-#includes
-target_include_directories(OmexMeta-static PRIVATE
+target_include_directories(OmexMeta-static PUBLIC # make public so include dirs propagate into test binaries
         ${INCLUDE_DIRECTORIES}
+        ${WRAPPER_SOURCE_DIR}
         )
 
-# links
-target_link_libraries(OmexMeta-static PRIVATE
+
+target_link_libraries(OmexMeta-static PUBLIC # make public so libraries propagate into test binaries
         $<TARGET_FILE:redland-combined-static>
         ${LINK_LIBRARIES}
         )
 
-# install
+
 install(TARGETS OmexMeta-static
         EXPORT OmexMeta-static
         LIBRARY
         DESTINATION lib
-        PUBLIC_HEADER DESTINATION include/omexmeta
+        PUBLIC_HEADER DESTINATION include/semsim
         )
 
 
 if (${BUILD_SHARED_LIBS})
 
-    # FIXME some redundancy here.
-    # RPATH: on linux determines where shared libraries look for other shared library dependencies.
     set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)
     set(CMAKE_INSTALL_RPATH
             "${CMAKE_INSTALL_PREFIX}/lib"   # probs not needed, but for good measure
-            "${PYOMEXMETA_DIR}"               # python test package
+            "${PYSEMSIM_DIR}"               # python test package
             "$ORIGIN"                       # current directory (for when in site-packages)
             )
 
+    set(CMAKE_VERBOSE_MAKEFILE ON)
 
     # shared library
-    add_library(OmexMeta SHARED "${OMEXMETA_HEADERS}" "${OMEXMETA_SOURCES}" Preproc.h)
+    add_library(OmexMeta SHARED "${SEMSIM_HEADERS}" "${SEMSIM_SOURCES}" Preproc.h)
     set_target_properties(OmexMeta PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
 
     # set runtime shared for windows (ignored on other systems)
@@ -108,57 +117,60 @@ if (${BUILD_SHARED_LIBS})
                 MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDLL")
     endif ()
 
-    # includes
     target_include_directories(OmexMeta PUBLIC
             ${INCLUDE_DIRECTORIES}
             )
 
-    # links
+    set(D D:/vcpkg/installed/x64-windows-static/lib)
+    set(E D:/vcpkg/installed/x64-windows/lib)
     target_link_libraries(OmexMeta PUBLIC
+            #            ${CMAKE_BINARY_DIR}/lib/redland-combined
             $<TARGET_FILE:redland-combined-static>
-            ${LINK_LIBRARIES}
+            ${D}/libcharset.lib
+            ${E}/libcurl.lib
+            ${D}/libiconv.lib
+            ${D}/libexslt.lib
+            ${D}/libxslt.lib
+            ${D}/libxml2.lib
+            ${D}/lzma.lib
+            ${D}/zlib.lib
+            ${D}/libssl.lib
+            ${D}/libcrypto.lib
+            ${D}/yajl_s.lib
+            ws2_32 # needed for libxml2 on windows to statically link
+            #            ${LINK_LIBRARIES}
             )
-
-    # deps
     add_dependencies(OmexMeta redland-combined-static)
 
-    # install target
     install(TARGETS OmexMeta
-            LIBRARY DESTINATION lib
-            ARCHIVE DESTINATION lib
-            RUNTIME DESTINATION bin
+            LIBRARY
+            ARCHIVE
+            RUNTIME
             PUBLIC_HEADER DESTINATION include/OmexMeta
+            )
+
+    install(FILES ${LIBRARIES_DLL}
+            DESTINATION bin
             )
 
     # for automatically installing to folder containing python api
     install(TARGETS OmexMeta
-            RUNTIME DESTINATION ${PYOMEXMETA_DIR}
+            RUNTIME DESTINATION ${PYSEMSIM_DIR}
+            )
+    # and remember we need the dll's in the python src dir as well
+    install(FILES ${LIBRARIES_DLL}
+            DESTINATION ${PYSEMSIM_DIR}
             )
 
-    # install the shared library dependencies
+
     if (PLATFORM STREQUAL "linux")
-        # On linux we only need a few dynamic libraries due to static linking the rest.
-        install(FILES
-                "$<TARGET_FILE:OmexMeta>"
-                "${LIBXML2_LIBRARY}"
-                "${LIBCURL_LIBRARY}"
-                DESTINATION ${PYOMEXMETA_DIR}
-                )
+        install(FILES "$<TARGET_FILE:OmexMeta>" ${LIBXML2_LIBRARY} ${LIBCURL_LIBRARY}
+                DESTINATION ${PYSEMSIM_DIR})
     elseif (PLATFORM STREQUAL "windows-msvc")
-        # Just take all of them on windows, since we've linked dynamically to everything
-        install(FILES ${LIBRARIES}
-                DESTINATION bin
-                )
-
-        # Remember to copy dependency dlls to pyomexmeta directory
-        install(FILES ${LIBRARIES}
-                DESTINATION ${PYOMEXMETA_DIR}
-                )
-
-    elseif (PLATFORM STREQUAL "macos")
-        message(STATUS "macos == sad face =[")
     endif ()
 
+    # An alternative command that copies on configuration, not install
+    #    file(COPY ${LIBXML2_LIBRARY} DESTINATION ${PYSEMSIM_DIR})
 
 endif ()
 

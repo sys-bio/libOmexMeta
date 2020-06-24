@@ -58,7 +58,7 @@ set(PACKAGE_CONFIG_DIR lib/cmake CACHE PATH
 
 # PACKAGE_VERSION gets overridden by using other packages, so setting
 # the PROJECT_VERSION, which will be used when exporting targets in
-# src/CMakeLists.txt
+# src/_CMakeLists.txt
 set(PROJECT_VERSION ${LIBCOMBINE_VERSION})
 
 # add make dist and make check target as they are already familiar for

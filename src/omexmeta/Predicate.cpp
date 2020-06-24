@@ -102,7 +102,7 @@ namespace semsim {
                 {"http://purl.org/dc/terms/",                "dcterms"},
                 {"http://biomodels.net/biology-qualifiers/", "bqbiol"},
                 {"http://biomodels.net/model-qualifiers/",   "bqmodel"},
-                {"http://www.bhi.washington.edu/semsim#",    "omexmeta"},
+                {"http://www.bhi.washington.edu/semsim#",    "semsim"},
         };
     }
 
@@ -238,7 +238,7 @@ namespace semsim {
 //    }
 
     SemSim::SemSim(const std::string &term) :
-            Predicate("http://www.bhi.washington.edu/omexmeta#", term, "omexmeta") {
+            Predicate("http://www.bhi.washington.edu/semsim#", term, "semsim") {
         verify();
     }
 
@@ -297,12 +297,12 @@ namespace semsim {
             predicatePtr = std::make_unique<DCTerm>(
                     DCTerm(term)
             );
-        } else if (namespace_ == "ss" || namespace_ == "omexmeta") {
+        } else if (namespace_ == "ss" || namespace_ == "semsim") {
             predicatePtr = std::make_unique<SemSim>(
                     SemSim(term)
             );
         } else {
-            throw std::invalid_argument("Invalid argument: PredicateFactory(): \"" + term + "\"");
+            throw std::invalid_argument("Invalid term argument: PredicateFactory(): \"" + term + "\"");
         }
         return predicatePtr;
     }

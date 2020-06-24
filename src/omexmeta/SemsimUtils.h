@@ -9,8 +9,6 @@
 #include "omexmeta/CurlGet.h"
 #include "omexmeta/MetaID.h"
 
-
-
 #include "LibrdfQuery.h"
 
 #include <librdf.h>

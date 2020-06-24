@@ -1,4 +1,4 @@
-# raptor/tests/trig/CMakeLists.txt
+# raptor/tests/trig/_CMakeLists.txt
 #
 # Original listfile by Daniel Richard G. <skunk@iSKUNK.ORG>
 # This file is in the public domain.
@@ -34,4 +34,4 @@ RAPPER_TEST(trig.bug451
         ${CMAKE_CURRENT_SOURCE_DIR}/bug451.out
         )
 
-# end raptor/tests/trig/CMakeLists.txt
+# end raptor/tests/trig/_CMakeLists.txt

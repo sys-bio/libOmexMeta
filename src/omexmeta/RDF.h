@@ -28,12 +28,7 @@ namespace semsim {
 
         // todo remove this field and replace with the one
         //  in Predicate. Should be a simple swap.
-        NamespaceMap default_namespaces_ = {
-                {"http://purl.org/dc/terms/",                "dcterms"},
-                {"http://biomodels.net/biology-qualifiers/", "bqbiol"},
-                {"http://biomodels.net/model-qualifiers/",   "bqmodel"},
-                {"http://www.bhi.washington.edu/omexmeta#",    "omexmeta"},
-        };
+        NamespaceMap default_namespaces_ = Predicate::namespaceMap();
 
         explicit RDF(const std::string &storage_type = "memory",
                      const std::string &storage_name = "SemsimStore",

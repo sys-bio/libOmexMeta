@@ -1,4 +1,4 @@
-## @file    CMakeLists.txt
+## @file    _CMakeLists.txt
 ## @brief   CMake build script
 ## @author  Frank T. Bergmann
 ##

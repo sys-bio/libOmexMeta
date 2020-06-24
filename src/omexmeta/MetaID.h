@@ -24,7 +24,7 @@ namespace semsim {
     public:
         /*
          * @brief an ID generator used when creating IDs in the Editor.
-         * @param base_ the constant portion of the id. Like omexmeta in semsim00001
+         * @param base_ the constant portion of the id. Like semsim in semsim00001
          * @param number_ the number portion of the id, like 1 in semsim00001
          * @param num_digits specifies the number of digits to use in the id. So semsim00001 has 5 digits.
          *

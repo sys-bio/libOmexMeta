@@ -703,23 +703,23 @@ class TestAPI(unittest.TestCase):
         expected = """<?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:omexmeta="http://www.bhi.washington.edu/semsim#"
+   xmlns:semsim="http://www.bhi.washington.edu/semsim#"
    xml:base="file://PhysicalProcess.rdf">
   <rdf:Description rdf:about="MediatorParticipant0000">
-    <omexmeta:hasPhysicalEntityReference rdf:resource="Entity3"/>
+    <semsim:hasPhysicalEntityReference rdf:resource="Entity3"/>
   </rdf:Description>
   <rdf:Description rdf:about="PhysicalProcess0000">
-    <omexmeta:hasMediatorParticipant rdf:resource="MediatorParticipant0000"/>
-    <omexmeta:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
-    <omexmeta:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
+    <semsim:hasMediatorParticipant rdf:resource="MediatorParticipant0000"/>
+    <semsim:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
+    <semsim:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0000">
     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <omexmeta:hasPhysicalEntityReference rdf:resource="Entity2"/>
+    <semsim:hasPhysicalEntityReference rdf:resource="Entity2"/>
   </rdf:Description>
   <rdf:Description rdf:about="SourceParticipant0000">
     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <omexmeta:hasPhysicalEntityReference rdf:resource="Entity1"/>
+    <semsim:hasPhysicalEntityReference rdf:resource="Entity1"/>
   </rdf:Description>
   <rdf:Description rdf:about="cytosol">
     <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
@@ -762,16 +762,16 @@ class TestAPI(unittest.TestCase):
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 
 <PhysicalForce0000>
-    omexmeta:hasSinkParticipant <SinkParticipant0000> ;
-    omexmeta:hasSourceParticipant <SourceParticipant0000> .
+    semsim:hasSinkParticipant <SinkParticipant0000> ;
+    semsim:hasSourceParticipant <SourceParticipant0000> .
 
 <SinkParticipant0000>
     semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
-    omexmeta:hasPhysicalEntityReference <Entity2> .
+    semsim:hasPhysicalEntityReference <Entity2> .
 
 <SourceParticipant0000>
     semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
-    omexmeta:hasPhysicalEntityReference <Entity1> .
+    semsim:hasPhysicalEntityReference <Entity1> .
 
 <cytosol>
     bqbiol:isPropertyOf <PhysicalForce0000> ;
@@ -802,16 +802,16 @@ class TestAPI(unittest.TestCase):
 @prefix omexmeta: <http://www.bhi.washington.edu/semsim#> .
 
 <PhysicalForce0000>
-    omexmeta:hasSinkParticipant <SinkParticipant0000> ;
-    omexmeta:hasSourceParticipant <SourceParticipant0000> .
+    semsim:hasSinkParticipant <SinkParticipant0000> ;
+    semsim:hasSourceParticipant <SourceParticipant0000> .
 
 <SinkParticipant0000>
     semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
-    omexmeta:hasPhysicalEntityReference <Entity2> .
+    semsim:hasPhysicalEntityReference <Entity2> .
 
 <SourceParticipant0000>
     semsim:hasMultiplier "1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double> ;
-    omexmeta:hasPhysicalEntityReference <Entity1> .
+    semsim:hasPhysicalEntityReference <Entity1> .
 
 <cytosol>
     bqbiol:isPropertyOf <PhysicalForce0000> ;

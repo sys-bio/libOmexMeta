@@ -2,7 +2,7 @@ set(EXE_NAME curl)
 
 if(USE_MANUAL)
   # Use the C locale to ensure that only ASCII characters appear in the
-  # embedded text. NROFF and MANOPT are set in the parent CMakeLists.txt
+  # embedded text. NROFF and MANOPT are set in the parent _CMakeLists.txt
   add_custom_command(
     OUTPUT tool_hugehelp.c
     COMMAND ${CMAKE_COMMAND} -E echo "#include \"tool_setup.h\"" > tool_hugehelp.c

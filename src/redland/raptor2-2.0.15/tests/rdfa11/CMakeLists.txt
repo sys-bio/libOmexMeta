@@ -1,4 +1,4 @@
-# raptor/tests/rdfa11/CMakeLists.txt
+# raptor/tests/rdfa11/_CMakeLists.txt
 #
 # Original listfile by Daniel Richard G. <skunk@iSKUNK.ORG>
 # This file is in the public domain.
@@ -1214,4 +1214,4 @@ IF (RAPTOR_PARSER_RDFA)
 
 ENDIF (RAPTOR_PARSER_RDFA)
 
-# end raptor/tests/rdfa11/CMakeLists.txt
+# end raptor/tests/rdfa11/_CMakeLists.txt

@@ -1,4 +1,4 @@
-# raptor/tests/rdfxml/CMakeLists.txt
+# raptor/tests/rdfxml/_CMakeLists.txt
 #
 # Original listfile by Daniel Richard G. <skunk@iSKUNK.ORG>
 # This file is in the public domain.
@@ -502,4 +502,4 @@ RAPPER_TEST(rdfxml.ex-60
         ${CMAKE_CURRENT_SOURCE_DIR}/ex-60.rdf
         )
 
-# end raptor/tests/rdfxml/CMakeLists.txt
+# end raptor/tests/rdfxml/_CMakeLists.txt

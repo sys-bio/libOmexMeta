@@ -19,7 +19,7 @@ public:
 
     void SetUp() override {
         url_str1 = "http://www.example.com/";
-        url_str2 = "https://github.com/sys-bio/sbnw/blob/master/CMakeLists.txt";
+        url_str2 = "https://github.com/sys-bio/sbnw/blob/master/_CMakeLists.txt";
         url_str3 = "http://192.168.1.102:95";
         url_str4 = "www.yoursite.com?myparam1=id1&myparam2=id2";
         url_str5 = "http://example.com/?color=#ffff&amp;shape=circle";
@@ -86,7 +86,7 @@ TEST_F(UrlTests, TestPath
 ) {
 Uri u2(url_str2);
 const string &actual = u2.path();
-string expected = "/sys-bio/sbnw/blob/master/CMakeLists.txt";
+string expected = "/sys-bio/sbnw/blob/master/_CMakeLists.txt";
 ASSERT_STREQ(expected
 .
 

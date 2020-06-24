@@ -1,4 +1,4 @@
-# raptor/tests/ntriples/CMakeLists.txt
+# raptor/tests/ntriples/_CMakeLists.txt
 #
 # Original listfile by Daniel Richard G. <skunk@iSKUNK.ORG>
 # This file is in the public domain.
@@ -50,4 +50,4 @@ RAPPER_TEST(ntriples.bug-481
         ${CMAKE_CURRENT_SOURCE_DIR}/bug-481.out
         )
 
-# end raptor/tests/ntriples/CMakeLists.txt
+# end raptor/tests/ntriples/_CMakeLists.txt

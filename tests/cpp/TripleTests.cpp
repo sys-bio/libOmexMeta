@@ -266,10 +266,10 @@ TEST_F(TripleTests, TestBuilderPatternWithSemSimPredicate) {
     std::string actual = triple.str();
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:omexmeta=\"http://www.bhi.washington.edu/semsim#\"\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"metaid1\">\n"
-                           "    <omexmeta:hasSourceParticipant rdf:resource=\"https://identifiers.org/uniprot/PD4034\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"https://identifiers.org/uniprot/PD4034\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     std::cout << actual << std::endl;
