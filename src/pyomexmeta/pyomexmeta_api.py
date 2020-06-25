@@ -4,8 +4,9 @@ import ctypes as ct
 import os
 import sys
 from typing import List
-import win32api
-import win32con
+if sys.platform == "win32":
+    import win32api
+    import win32con
 
 _WORKING_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
@@ -109,12 +110,6 @@ class PyOmexMetaAPI:
 
     # void RDF_delete(RDF *rdf_ptr);
     rdf_delete = Util.load_func("RDF_delete", [ct.c_int64], None)
-
-    # char *RDF_getBaseUri(RDF *rdf_ptr);
-    rdf_get_base_uri = Util.load_func("RDF_getBaseUri", [ct.c_int64], ct.c_int64)
-
-    # void RDF_setBaseUri(RDF *rdf_ptr, const char *uri);
-    rdf_set_base_uri = Util.load_func("RDF_setBaseUri", [ct.c_int64, ct.c_char_p], None)
 
     # char *RDF_queryResultsAsStr(RDF *rdf_ptr, const char *query_str, const char *results_format);
     rdf_query_results_as_str = Util.load_func("RDF_queryResultsAsStr", [ct.c_int64, ct.c_char_p, ct.c_char_p],

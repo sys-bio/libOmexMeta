@@ -166,9 +166,15 @@ file://./source_0,http://www.bhi.washington.edu/semsim#hasPhysicalEntityReferenc
         actual = rdf.query(q, "csv")
         self.assertEqual(expected, actual)
 
+    def test_use_sqlite_storage(self):
+        fname = os.path.join(os.path.dirname(__file__), "sqlite_test.db")
+        print(fname)
+        rdf = RDF("sqlite", fname, "new='yes'")
+        rdf.add_from_string(self.rdf_str, "rdfxml", "sqlite_test")
+        self.assertTrue(os.path.isfile(fname))
+
 
 class EditorTests(unittest.TestCase):
-
     maxDiff = None
 
     def setUp(self) -> None:
@@ -275,7 +281,6 @@ class EditorTests(unittest.TestCase):
 
 
 class AnnotateAModelTest(unittest.TestCase):
-
     maxDiff = None
 
     def setUp(self) -> None:
@@ -560,11 +565,11 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
 
         # serialize to html, because why not?
         actual = rdf.to_string(format, gold_standard_filename)[:500]  # shorten
-
+        print(actual)
         self.assertEqual(expected_output, actual)
 
     def gold_standard_test_by_line(self, gold_standard_url: str, gold_standard_filename: str,
-                           expected_output: str, format: str):
+                                   expected_output: str, format: str):
         """
         Same as gold_standard_test but matched line by line.
         :param gold_standard_url:
@@ -632,7 +637,8 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   <rdf:Description rdf:about="aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#Ca_handling_by_the_SR.Ca_i">
     <bqbiol:isPropertyOf rdf:resource="aslanidi_a"""
-        self.gold_standard_test_by_line(self.gold_standard_url3, self.gold_standard_filename3, expected, "rdfxml-abbrev")
+        self.gold_standard_test_by_line(self.gold_standard_url3, self.gold_standard_filename3, expected,
+                                        "rdfxml-abbrev")
 
     def test_gold_standard4(self):
         expected = """<gerard_2009.cellml#Mdi.time> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/opb/OPB_01023> .

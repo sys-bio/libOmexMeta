@@ -224,6 +224,7 @@ elseif (PLATFORM STREQUAL "linux")
             ${LIBXML2_LIBRARY} # dynamic
             ${LIBXSLT_LIBRARY} # dynamic
             ${SQLITE3_LIBRARY}
+            ${BERKELY_LIBRARY}
             # flag for including whole archive, not just the function used.
             -Wl,--whole-archive
             ${ZLIB_STATIC_LIBRARY}
@@ -237,7 +238,6 @@ elseif (PLATFORM STREQUAL "linux")
             ${CRYPTO_STATIC_LIBRARY}
             ${YAJL_STATIC_LIBRARY}
             ${PCRE_STATIC_LIBRARY}
-            ${BERKELY_STATIC_LIBRARY}
             -Wl,--no-whole-archive
             m
             dl

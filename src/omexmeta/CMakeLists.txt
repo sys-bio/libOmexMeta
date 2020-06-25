@@ -148,6 +148,9 @@ if (${BUILD_SHARED_LIBS})
                 $<TARGET_FILE:OmexMeta>
                 "${LIBXML2_LIBRARY}"
                 "${CURL_LIBRARY}"
+                "${LIBXSLT_LIBRARY}"
+                "${SQLITE3_LIBRARY}"
+                "${BERKELY_LIBRARY}"
                 DESTINATION ${PYOMEXMETA_DIR}
                 )
     elseif (PLATFORM STREQUAL "windows-msvc")

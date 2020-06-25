@@ -61,7 +61,8 @@ TEST_F(LibrdfUriTests, TestIsEmpty2) {
     ASSERT_TRUE(uri.isNull());
 }
 
-TEST_F(LibrdfUriTests, TestFromFilename) {
+#ifdef __linux__
+TEST_F(LibrdfUriTests, TestFromFilenameLinux) {
     LibrdfUri uri = LibrdfUri::fromFilename("./local_filename");
     bool contains_file_prefix = false;
     bool contains_local_filename = false;
@@ -74,7 +75,8 @@ TEST_F(LibrdfUriTests, TestFromFilename) {
     ASSERT_TRUE((contains_local_filename && contains_file_prefix));
     uri.freeUri();
 }
-
+#endif
+#ifdef WIN32
 TEST_F(LibrdfUriTests, TestFromFilenameWithWindowsFormattedFile) {
     LibrdfUri uri = LibrdfUri::fromFilename("D:\\libOmexMeta\\tests\\cpp");
     std::cout << uri.str() << std::endl;
@@ -89,7 +91,7 @@ TEST_F(LibrdfUriTests, TestFromFilenameWithWindowsFormattedFile) {
     ASSERT_TRUE((contains_local_filename && contains_file_prefix));
     uri.freeUri();
 }
-
+#endif
 TEST_F(LibrdfUriTests, TestConcatonate) {
     LibrdfUri uri = LibrdfUri("./local_filename");
     LibrdfUri uri2 = uri.concatonate("new_uri");

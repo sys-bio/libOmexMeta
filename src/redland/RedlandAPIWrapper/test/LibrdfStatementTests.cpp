@@ -122,7 +122,6 @@ TEST_F(LibrdfStatementTests, TestPartial1) {
 }
 
 TEST(LibrdfStatementTestsNoFixture, PayingAttentionToResourceURIUsageCounts) {
-
     LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
             LibrdfNode::fromUriString("subject").get(),
             LibrdfNode::fromUriString("predicate").get(),

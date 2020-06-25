@@ -194,15 +194,6 @@ class TestAPI(unittest.TestCase):
         for i in expected.split('\n'):
             self.assertTrue(i in expected)
 
-    def test_rdf_set_base_uri(self):
-        PyOmexMetaAPI.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(), "rdfxml".encode(),
-                                        "test_rdf_set_base.rdf".encode())
-        PyOmexMetaAPI.rdf_set_base_uri(self.rdf, "new_base_uri.rdf".encode())
-        ptr = PyOmexMetaAPI.rdf_get_base_uri(self.rdf)
-        actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
-        expected = "file://new_base_uri.rdf"
-        self.assertEqual(expected, actual)
-
     def test_rdf_to_editor(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         self.assertIsInstance(editor_ptr, int)
