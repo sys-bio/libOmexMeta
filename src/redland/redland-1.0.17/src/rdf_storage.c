@@ -187,8 +187,10 @@ librdf_free_storage_factory(librdf_storage_factory *factory) {
 
 static int
 ltdl_module_callback(const char *filename, void *data) {
+    printf("Filename arg: %s\n", filename);
     librdf_world *world = (librdf_world *) data;
     const char *name = librdf_basename(filename);
+    printf("name: %s\n", name);
     size_t name_len = strlen(name);
     lt_dlhandle module;
 
@@ -268,6 +270,7 @@ librdf_storage_load_all_modules(librdf_world *world) {
         /* If path not defined in env, use libtool user-specified paths (install dir) */
     else if (!path)
         path = lt_dlgetsearchpath();
+    printf( "REDLAND_STORAGE_PATH is %s\n", path);
 
     lt_dlforeachfile(path, ltdl_module_callback, world);
 }
@@ -285,6 +288,7 @@ static lt_dlhandle
 librdf_storage_load_module(librdf_world *world,
                            const char *lib_name,
                            const char *init_func_name) {
+    printf("akjsdhfalksdjfhalksdjf: lib_name: %s, init_func_name: %s\n", lib_name, init_func_name);
     typedef void init_func_t(librdf_world *);
     init_func_t *init;
 
@@ -452,7 +456,6 @@ librdf_get_storage_factory(librdf_world *world, const char *name) {
 
     /* search for factory */
     for (i = 0; (factory = (librdf_storage_factory *) raptor_sequence_get_at(world->storages, i)); i++) {
-        printf("factory: %s\n", factory->name);
         if (!strcmp(factory->name, name))
             break;
     }
@@ -465,7 +468,17 @@ librdf_get_storage_factory(librdf_world *world, const char *name) {
     return factory;
 }
 
+void print_available_storages(librdf_world* world){
+    int i;
 
+    librdf_storage_factory *factory;
+
+    librdf_world_open(world);
+        /* search for factory */
+    for (i = 0; (factory = (librdf_storage_factory *) raptor_sequence_get_at(world->storages, i)); i++) {
+        printf("%s\n", factory->name);
+    }
+}
 /**
  * librdf_storage_enumerate:
  * @world: redland world object

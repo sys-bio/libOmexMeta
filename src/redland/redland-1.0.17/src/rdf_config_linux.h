@@ -28,50 +28,50 @@
 /* Define to 1 if you have the `argz_stringify' function. */
 #define HAVE_ARGZ_STRINGIFY 1
 
+#if defined(WITH_BDB)
 /* BDB has close method with 2 args */
-/* #undef HAVE_BDB_CLOSE_2_ARGS 1
+#define HAVE_BDB_CLOSE_2_ARGS 1
 
 /* BDB defines DBC */
-/* #undef HAVE_BDB_CURSOR 1*/
+#define HAVE_BDB_CURSOR 1
 
 /* BDB cursor method has 4 arguments */
-/* #undef HAVE_BDB_CURSOR_4_ARGS */
+#define HAVE_BDB_CURSOR_4_ARGS 1
 
 /* BDB defines DB_TXN */
-/* #undef HAVE_BDB_DB_TXN */
+#define HAVE_BDB_DB_TXN 1
 
 /* BDB has fd method with 2 args */
-/* #undef HAVE_BDB_FD_2_ARGS */
+#define HAVE_BDB_FD_2_ARGS 1
 
 /* Have BDB hash support */
-/* #undef HAVE_BDB_HASH */
+#define HAVE_BDB_HASH 1
 
 /* BDB has open method with 6 args */
-/* #undef HAVE_BDB_OPEN_6_ARGS */
+//#define HAVE_BDB_OPEN_6_ARGS */
 
 /* BDB has open method with 7 args */
-/* #undef HAVE_BDB_OPEN_7_ARGS */
+#define HAVE_BDB_OPEN_7_ARGS
 
 /* BDB has set_flags method */
-/* #undef HAVE_BDB_SET_FLAGS */
+#define HAVE_BDB_SET_FLAGS 1
+
+/* BDB has dbopen method */
+//#define HAVE_DBOPEN */
+
+/* BDB has db_create method */
+#define HAVE_DB_CREATE  1
+
+/* Define to 1 if you have the <db.h> header file. */
+#define HAVE_DB_H 1
+
+#endif
 
 /* Define to 1 if the system has the type `byte'. */
 /* #undef HAVE_BYTE */
 
 /* Define to 1 if you have the `closedir' function. */
 #define HAVE_CLOSEDIR 1
-
-/* BDB has dbopen method */
-/* #undef HAVE_DBOPEN */
-
-/* BDB has db_create method */
-/* #define HAVE_DB_CREATE /*
-
-/* Define to 1 if you have the <db.h> header file. */
-/* #define HAVE_DB_H /*
-
-/* BDB has db_open method */
-/* #undef HAVE_DB_OPEN */
 
 /* Define to 1 if you have the declaration of `cygwin_conv_path', and to 0 if
    you don't. */

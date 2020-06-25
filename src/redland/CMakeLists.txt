@@ -23,15 +23,26 @@ SET(WRAPPER_TEST_DIR ${WRAPPER_DIR}/test)
 
 # set directory for librdf storage/cache. only used when not specified by user
 #  which it is in the context of libomexmeta
-set(PKGDATADIR $ENV{HOME}/.librdf)
-file(MAKE_DIRECTORY ${PKGDATADIR})
+set(PKGDATADIR $ENV{HOME}/.librdf_package_data_dir)
+#file(MAKE_DIRECTORY ${PKGDATADIR})
+
+# used by redland to store storage modules - still experimental
+#  and not exactly sure how to use
+#set(REDLAND_MODULE_PATH "$ENV{HOME}/.redland_modules")
+set(REDLAND_MODULE_PATH "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+add_definitions(
+        -DREDLAND_MODULE_PATH="${REDLAND_MODULE_PATH}"
+        -DPKGDATADIR="${PKGDATADIR}"
+)
+# COMMENTED OUT FOR NOW
+#file(MAKE_DIRECTORY ${PKGDATADIR})
+#file(MAKE_DIRECTORY ${REDLAND_MODULE_PATH})
+
 
 #definitions needed to compile librdf/rptor/rasqal
 add_definitions(-DHAVE_CONFIG_H
         -DRASQAL_INTERNAL=1
         -DLIBRDF_INTERNAL=1
-        -DREDLAND_MODULE_PATH="${CMAKE_CURRENT_BINARY_DIR}"
-        -DPKGDATADIR="${PKGDATADIR}"
         -DLIBRDFA_IN_RAPTOR=1
         -DRAPTOR_INTERNAL=1
         #        -DRAPTOR_DEBUG=0 # sometimes useful. Comment out but don't delete.
@@ -268,7 +279,7 @@ set(LIBRDF_SOURCES
         ${LIBRDF_SOURCE_DIR}/rdf_files.h
         ${LIBRDF_SOURCE_DIR}/rdf_hash.c
         ${LIBRDF_SOURCE_DIR}/rdf_hash.h
-        #        ${LIBRDF_SOURCE_DIR}/rdf_hash_bdb.c
+        ${LIBRDF_SOURCE_DIR}/rdf_hash_bdb.c
         ${LIBRDF_SOURCE_DIR}/rdf_hash_cursor.c
         ${LIBRDF_SOURCE_DIR}/rdf_hash_internal.h
         ${LIBRDF_SOURCE_DIR}/rdf_hash_memory.c

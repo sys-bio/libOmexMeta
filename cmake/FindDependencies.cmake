@@ -7,6 +7,9 @@ macro(FindDependencies)
             "mnt/d/usr/lib/x86_64-linux-gnu"
             "mnt/c/usr/lib/x86_64-linux-gnu"
             # include dirs
+            "/usr/include"
+            "/mnt/d/usr/include"
+            "/mnt/c/usr/include"
             "/usr/local/include"
             "/mnt/d/usr/local/include"
             "/mnt/c/usr/local/include"
@@ -287,6 +290,7 @@ macro(FindDependencies)
             NAMES sqlite3.dll sqlite3.so sqlite3.so.2 libsqlite3.so
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
+            NO_DEFAULT_PATH
             REQUIRED
             )
 
@@ -296,6 +300,30 @@ macro(FindDependencies)
             /usr/local/include # linux
             /mnt/d/usr/local/include # wsl
             /mnt/c/usr/local/include # wsl
+            NO_DEFAULT_PATH
+            )
+
+
+    # berkely
+    find_library(BERKELY_STATIC_LIBRARY
+            NAMES libdb48.lib libdb.a
+            PATHS
+            ${VCPKG_X64_LIB_DIR}
+            ${DEFAULT_LINUX_LOCATIONS}
+            NO_DEFAULT_PATH
+            )
+
+    find_file(BERKELY_LIBRARY
+            NAMES libdb48.dll libdb.so
+            PATHS ${VCPKG_X64_BIN_DIR}
+            ${DEFAULT_LINUX_LOCATIONS}
+            REQUIRED
+            )
+
+    find_path(BERKELY_INCLUDE_DIR
+            NAMES db.h
+            PATHS ${VCPKG_X64_INCLUDE_DIR}
+            ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
             )
 
@@ -316,6 +344,7 @@ macro(FindDependencies)
             "${ICONV_STATIC_LIBRARY}"
             "${PCRE_STATIC_LIBRARY}"
             "${SQLITE3_STATIC_LIBRARY}"
+            "${BERKELY_STATIC_LIBRARY}"
 
             )
     SET(LIBRARIES
@@ -331,6 +360,7 @@ macro(FindDependencies)
             "${ICONV_LIBRARY}"
             "${PCRE_LIBRARY}"
             "${SQLITE3_LIBRARY}"
+            "${BERKELY_LIBRARY}"
             )
 
     set(INCLUDES
@@ -345,6 +375,7 @@ macro(FindDependencies)
             "${PCRE_INCLUDE_DIR}"
             "${ICONV_INCLUDE_DIR}"
             "${SQLITE3_INCLUDE_DIR}"
+            "${BERKELY_INCLUDE_DIR}"
             )
 
     if (DEBUG_DEPENDENCIES)

@@ -28,7 +28,6 @@ namespace semsim {
 
 
     RDF::RDF(RDF &&rdf) noexcept {
-        base_uri_ = std::move(rdf.base_uri_);
         namespaces_ = std::move(rdf.namespaces_);
         seen_namespaces_ = std::move(rdf.seen_namespaces_);
         default_namespaces_ = std::move(rdf.default_namespaces_);
@@ -38,7 +37,6 @@ namespace semsim {
 
     RDF &RDF::operator=(RDF &&rdf) noexcept {
         if (this != &rdf) {
-            base_uri_ = std::move(rdf.base_uri_);
             namespaces_ = std::move(rdf.namespaces_);
             seen_namespaces_ = std::move(rdf.seen_namespaces_);
             default_namespaces_ = std::move(rdf.default_namespaces_);
@@ -52,25 +50,15 @@ namespace semsim {
         return model_.size();
     }
 
-    void RDF::setBaseUri(std::string baseUri) {
-        base_uri_ = SemsimUtils::addFilePrefixToString(std::move(baseUri));
-    }
-
     bool RDF::empty() const {
         return size() == 0;
     }
 
     RDF RDF::fromString(const std::string &str, const std::string &format, const std::string &base_uri) {
         std::string base_uri_used;
-        if (base_uri.empty())
-            base_uri_used = SemsimUtils::addFilePrefixToString("Annotations.rdf");
-        else
-            base_uri_used = base_uri;
-
         RDF rdf;
         LibrdfParser parser(format);
-
-        LibrdfUri u(base_uri_used);
+        LibrdfUri u = LibrdfUri::fromFilename(base_uri);
         parser.parseString(str, rdf.model_, u);
         u.freeUri();
 

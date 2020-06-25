@@ -46,6 +46,7 @@ include(${CMAKE_SOURCE_DIR}/cmake/ConfigurationSummary.cmake)
 # global settings
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CXX_STANDARD_REQUIRED ON)
 
 # pic - needed on linux ignored on other platofrms
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -55,7 +56,6 @@ set(PYOMEXMETA_DIR "${CMAKE_SOURCE_DIR}/src/pyomexmeta")
 
 # location of googletesting framework
 set(GOOGLETEST_SOURCE ${CMAKE_SOURCE_DIR}/third_party/googletest)
-
 
 # put all runtime targets (exe and dll) into bin
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
@@ -99,13 +99,17 @@ if (WITH_SANITIZER)
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ADDRESS_SANITIZER_FLAGS}")
 endif ()
 
+option(WITH_BDB "build user suport for berkely database" ON)
+if (${WITH_BDB})
+    add_definitions(-DWITH_BDB)
+endif ()
 ############################################################3
 # configure some paths relative to vcpkg root
 set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its D:\\vcpkg")
 if (NOT EXISTS ${VCPKG_ROOT})
     message(FATAL_ERROR "vcpkg root not found (${VCPKG_ROOT}). Remember to \
 add /mnt/<driveletter> on wsl (like \"/mnt/d/vcpkg\")")
-endif()
+endif ()
 
 set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Path to vcpkg toolchain file")
 
@@ -192,7 +196,9 @@ if (PLATFORM STREQUAL "windows-msvc")
             "${ZLIB_STATIC_LIBRARY}"
             "${ICONV_STATIC_LIBRARY}"
             "${PCRE_STATIC_LIBRARY}"
+#            "D:/vcpkg/installed/x64-windows-static/lib/sqlite3.lib"
             "${SQLITE3_STATIC_LIBRARY}"
+            "${BERKELY_STATIC_LIBRARY}"
             ws2_32 # needed on windows to statically link libxml2
             )
     # moreover, on windows it was much easier to just
@@ -217,6 +223,7 @@ elseif (PLATFORM STREQUAL "linux")
     set(LINK_LIBRARIES
             ${LIBXML2_LIBRARY} # dynamic
             ${LIBXSLT_LIBRARY} # dynamic
+            ${SQLITE3_LIBRARY}
             # flag for including whole archive, not just the function used.
             -Wl,--whole-archive
             ${ZLIB_STATIC_LIBRARY}
@@ -230,7 +237,7 @@ elseif (PLATFORM STREQUAL "linux")
             ${CRYPTO_STATIC_LIBRARY}
             ${YAJL_STATIC_LIBRARY}
             ${PCRE_STATIC_LIBRARY}
-            ${SQLITE3_STATIC_LIBRARY}
+            ${BERKELY_STATIC_LIBRARY}
             -Wl,--no-whole-archive
             m
             dl

@@ -57,6 +57,8 @@ namespace redland {
         int size();
 
         int commit();
+
+        void printAvailableStorages();
     };
 }
 

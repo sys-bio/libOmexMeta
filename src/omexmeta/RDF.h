@@ -22,7 +22,6 @@ namespace semsim {
         typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
     public:
-        std::string base_uri_;
         NamespaceMap namespaces_;
         std::vector<std::string> seen_namespaces_;
 
@@ -48,8 +47,6 @@ namespace semsim {
 
         int size() const;
 
-        void setBaseUri(std::string baseUri);
-
         bool empty() const;
 
         /*
@@ -65,7 +62,7 @@ namespace semsim {
          */
         static RDF fromString(const std::string &str,
                               const std::string &format = "guess",
-                              const std::string &base_uri = std::string());
+                              const std::string &base_uri = "Annotations.rdf");
 
         /*
          * @brief non-static variant of RDF::fromString(). Reads rdf into

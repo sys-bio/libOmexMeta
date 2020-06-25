@@ -75,6 +75,7 @@ extern "C" {
  * Defines that come from rdf_config.h
  */
 
+#if defined(WITH_BDB)
 /* BDB has close method with 2 args */
 #define HAVE_BDB_CLOSE_2_ARGS 1
 
@@ -91,25 +92,27 @@ extern "C" {
 #define HAVE_BDB_FD_2_ARGS 1
 
 /* Have BDB hash support */
-//#define HAVE_BDB_HASH 1
+#define HAVE_BDB_HASH 1
 
 /* BDB has open method with 6 args */
-/* #undef HAVE_BDB_OPEN_6_ARGS */
+//#define HAVE_BDB_OPEN_6_ARGS */
 
 /* BDB has open method with 7 args */
-#define HAVE_BDB_OPEN_7_ARGS 1
+#define HAVE_BDB_OPEN_7_ARGS
 
 /* BDB has set_flags method */
 #define HAVE_BDB_SET_FLAGS 1
 
 /* BDB has dbopen method */
-/* #undef HAVE_DBOPEN */
+//#define HAVE_DBOPEN */
 
 /* BDB has db_create method */
-#define HAVE_DB_CREATE 1
+#define HAVE_DB_CREATE  1
 
 /* Define to 1 if you have the <db.h> header file. */
 #define HAVE_DB_H 1
+
+#endif
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
 /* undef HAVE_DLFCN_H */
@@ -276,6 +279,13 @@ extern "C" {
 
 /* Use POSIX threads */
 #undef WITH_THREADS
+
+/* Build storage backends as modules */
+/*
+ * This option seems to prevent librdf from loading
+ * database storage modules.
+ */
+//#define MODULAR_LIBRDF 1
 
 /* Define to 1 if your processor stores words with the most significant byte
    first (like Motorola and SPARC, unlike Intel and VAX). */

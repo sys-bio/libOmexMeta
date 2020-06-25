@@ -75,6 +75,21 @@ TEST_F(LibrdfUriTests, TestFromFilename) {
     uri.freeUri();
 }
 
+TEST_F(LibrdfUriTests, TestFromFilenameWithWindowsFormattedFile) {
+    LibrdfUri uri = LibrdfUri::fromFilename("D:\\libOmexMeta\\tests\\cpp");
+    std::cout << uri.str() << std::endl;
+    bool contains_file_prefix = false;
+    bool contains_local_filename = false;
+    if (uri.str().find("file://") != std::string::npos) {
+        contains_file_prefix = true;
+    }
+    if (uri.str().find("libOmexMeta/tests/cpp") != std::string::npos) {
+        contains_local_filename = true;
+    }
+    ASSERT_TRUE((contains_local_filename && contains_file_prefix));
+    uri.freeUri();
+}
+
 TEST_F(LibrdfUriTests, TestConcatonate) {
     LibrdfUri uri = LibrdfUri("./local_filename");
     LibrdfUri uri2 = uri.concatonate("new_uri");
@@ -99,13 +114,6 @@ TEST_F(LibrdfUriTests, TestEqualityOperator) {
     uri2.freeUri();
 }
 
-//TEST_F(LibrdfUriTests, TestToFilenameuri) {
-//    LibrdfUri uri1 = LibrdfUri::fromFilename("./local_filename.rdf");
-//    std::string actual = uri1.toFilenameString();
-//    std::string expected = "/mnt/d/libomexmeta/cmake-build-debug-wsl2/src/redland/RedlandAPIWrapper/test/local_filename.rdf";
-//    ASSERT_STREQ(actual.c_str(), expected.c_str());
-//    uri1.freeUri();
-//}
 
 /*
  * Both uri's refer to the same block of memory.

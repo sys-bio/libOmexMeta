@@ -26,6 +26,8 @@
 #ifndef LIBRDF_HASH_INTERNAL_H
 #define LIBRDF_HASH_INTERNAL_H
 
+#include "rdf_config.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif

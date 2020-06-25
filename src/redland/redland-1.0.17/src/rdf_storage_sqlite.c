@@ -2820,7 +2820,6 @@ librdf_storage_module_register_factory(librdf_world *world) {
  */
 void
 librdf_init_storage_sqlite(librdf_world *world) {
-    printf("inside librdf_init_storage_sqlite\n");
     librdf_storage_register_factory(world, "sqlite", "SQLite",
                                     &librdf_storage_sqlite_register_factory);
 }

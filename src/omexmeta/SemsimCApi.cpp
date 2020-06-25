@@ -125,17 +125,6 @@ namespace semsim {
         return cstr;
     }
 
-    char *RDF_getBaseUri(RDF *rdf_ptr) {
-        std::string str = rdf_ptr->base_uri_;
-        char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
-        strcpy(cstr, str.c_str());
-        return cstr;
-    }
-
-    void RDF_setBaseUri(RDF *rdf_ptr, const char *uri) {
-        rdf_ptr->setBaseUri(uri);
-    }
-
     char *RDF_queryResultsAsStr(RDF *rdf_ptr, const char *query_str, const char *results_format) {
         Query query(rdf_ptr->getModel(), query_str);
         std::string results = query.resultsAsStr(results_format);

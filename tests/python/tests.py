@@ -149,13 +149,6 @@ class TestRDF(unittest.TestCase):
         RDF.add_from_file(rdf, self.sbml_file, "rdfxml")
         self.assertEqual(6, len(rdf))
 
-    def test_set_base_uri(self):
-        rdf = RDF.from_string(self.rdf_str, "rdfxml")
-        rdf.set_base_uri("ABaseUri.rdf")
-        uri = rdf.get_base_uri()
-        expected = "file:///mnt/d/libOmexMeta/tests/python/ABaseUri.rdf"
-        self.assertEqual(expected, uri)
-
     def test_query(self):
         rdf = RDF.from_string(self.rdf_str, "rdfxml")
         q = """SELECT ?x ?y ?z 

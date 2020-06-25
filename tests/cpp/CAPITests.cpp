@@ -60,19 +60,6 @@ TEST_F(CAPITests, RDFToString) {
     RDF_delete(rdf_ptr);
 }
 
-
-TEST_F(CAPITests, RDFsetBaseUri) {
-    RDF *rdf_ptr = RDF_fromString(samples.singular_annotation1.c_str(), "rdfxml");
-    RDF_setBaseUri(rdf_ptr, "ANewBaseUri.rdf");
-    char *actual = RDF_getBaseUri(rdf_ptr);
-    std::cout << actual << std::endl;
-    const char *expected = "file://ANewBaseUri.rdf";
-    ASSERT_STREQ(expected, actual);
-    free(actual); // necessary because we allocated on heap.
-    RDF_delete(rdf_ptr);
-
-}
-
 TEST_F(CAPITests, RDF_fromString) {
     RDF *rdf_ptr = RDF_fromString(samples.composite_annotation_pf.c_str(), "rdfxml", "RDF_fromStringTest.rdf");
     int expected = 6;

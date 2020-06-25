@@ -75,8 +75,8 @@ void librdf_init_storage_postgresql(librdf_world *world);
 void librdf_init_storage_tstore(librdf_world *world);
 #endif
 
-void librdf_init_storage_sqlite(librdf_world *world);
 #ifdef STORAGE_SQLITE
+void librdf_init_storage_sqlite(librdf_world *world);
 #endif
 
 
@@ -89,6 +89,11 @@ void librdf_finish_storage(librdf_world *world);
 /* class methods */
 librdf_storage_factory *librdf_get_storage_factory(librdf_world *world, const char *name);
 
+/*
+ * prints out the list of storages available
+ * added by ciaran welsh.
+ */
+void print_available_storages(librdf_world* world);
 
 /* rdf_storage_sql.c */
 typedef struct {

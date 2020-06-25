@@ -14,6 +14,9 @@ CMake variables and options
     CMAKE_INSTALL_PREFIX               ${CMAKE_INSTALL_PREFIX}
     CMAKE_VERBOSE_MAKEFILE             ${CMAKE_VERBOSE_MAKEFILE}
     CMAKE_BUILD_TYPE                   ${CMAKE_BUILD_TYPE}
+    CMAKE_RUNTIME_OUTPUT_DIRECTORY     ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+    CMAKE_LIBRARY_OUTPUT_DIRECTORY     ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}
+    CMAKE_ARCHIVE_OUTPUT_DIRECTORY     ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}
     MSVC_RUNTIME_LIBRARY               ${MSVC_RUNTIME_LIBRARY}
 
     WITH_SANITIZER                     ${WITH_SANITIZER}
@@ -82,9 +85,13 @@ Dependencies
         ICONV_LIBRARY                       ${ICONV_LIBRARY}
         ICONV_INCLUDE_DIR                   ${ICONV_INCLUDE_DIR}
     SQLITE
-        SQLITE3_STATIC_LIBRARY                ${SQLITE3_STATIC_LIBRARY}
-        SQLITE3_LIBRARY                       ${SQLITE3_LIBRARY}
-        SQLITE3_INCLUDE_DIR                   ${SQLITE3_INCLUDE_DIR}
+        SQLITE3_STATIC_LIBRARY              ${SQLITE3_STATIC_LIBRARY}
+        SQLITE3_LIBRARY                     ${SQLITE3_LIBRARY}
+        SQLITE3_INCLUDE_DIR                 ${SQLITE3_INCLUDE_DIR}
+    Berkerly
+        BERKELY_STATIC_LIBRARY              ${BERKELY_STATIC_LIBRARY}
+        BERKELY_lIBRARY                     ${BERKELY_LIBRARY}
+        BERKELY_INCLUDE_DIR                 ${BERKELY_INCLUDE_DIR}
     All Static Libraries
         STATIC_LIBRARIES                    ${STATIC_LIBRARIES}
     All Libraries
