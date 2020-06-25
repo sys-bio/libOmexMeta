@@ -36,20 +36,25 @@ class RDF:
                 None if storage_options is None else storage_options.encode(),
                 None if model_options is None else model_options.encode(),
             )
+
         else:
             self._obj = rdf_ptr
+
 
     def __len__(self):
         """Returns the number of individual Triples stored in the rdf model"""
         return PyOmexMetaAPI.rdf_size(self._obj)
 
+
     def __str__(self):
         """Defaults to rdfxml-abbrev syntax"""
         return self.to_string("rdfxml-abbrev")
 
+
     def __del__(self):
         """deletes the RDF instance"""
         self.delete()
+
 
     def _set_rdf_ptr(self, ptr: ct.c_int64):
         """
@@ -64,6 +69,7 @@ class RDF:
         self.delete()
         # then do the switch
         self._obj = ptr
+
 
     @staticmethod
     def from_string(rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf",
@@ -80,8 +86,10 @@ class RDF:
         rdf._set_rdf_ptr(rdf_ptr)
         return rdf
 
+
     def add_from_string(self, rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf") -> None:
         PyOmexMetaAPI.rdf_add_from_string(self._obj, rdf_string.encode(), format.encode(), base_uri.encode())
+
 
     @staticmethod
     def from_uri(uri_string: str, format: str, storage_type: str = "hashes", storage_name: str = "semsim_storage",
@@ -97,8 +105,10 @@ class RDF:
         rdf._set_rdf_ptr(rdf_ptr)
         return rdf
 
+
     def add_from_uri(self, uri_string: str, format: str) -> None:
         PyOmexMetaAPI.rdf_add_from_uri(self._obj, uri_string.encode(), format.encode())
+
 
     @staticmethod
     def from_file(filename: str, format: str, storage_type: str = "hashes", storage_name: str = "semsim_storage",
@@ -113,25 +123,31 @@ class RDF:
         rdf._set_rdf_ptr(rdf_ptr)
         return rdf
 
+
     def add_from_file(self, filename: str, format: str) -> None:
         PyOmexMetaAPI.rdf_add_from_file(self._obj, filename.encode(), format.encode())
+
 
     def delete(self) -> None:
         """destructor. Delete the dynamically allocated rdf object"""
         PyOmexMetaAPI.rdf_delete(self._obj)
+
 
     def to_string(self, format: str, base_uri: str = "./Annotations.rdf") -> str:
         str_ptr = PyOmexMetaAPI.rdf_to_string(self._obj, format.encode(), base_uri.encode())
         thestring = PyOmexMetaAPI.get_and_free_c_str(str_ptr)
         return thestring
 
+
     def get_base_uri(self) -> str:
         return PyOmexMetaAPI.get_and_free_c_str(PyOmexMetaAPI.rdf_get_base_uri(self._obj))
+
 
     def set_base_uri(self, uri: str) -> None:
         if not os.path.isfile(uri):
             uri = os.path.join(os.path.realpath(os.getcwd()), uri)
         PyOmexMetaAPI.rdf_set_base_uri(self._obj, uri.encode())
+
 
     def query(self, query_str: str, results_format: str) -> str:
         results_crlf = PyOmexMetaAPI.get_and_free_c_str(
@@ -141,9 +157,11 @@ class RDF:
         results_lf = PyOmexMetaAPI.crlf_to_lr(results_crlf)
         return results_lf
 
+
     def to_editor(self, xml: str, xmltype: str) -> Editor:
         return Editor(PyOmexMetaAPI.rdf_to_editor(self._obj, xml.encode(),
-                                                _xml_type_factory(xml_type=xmltype)))
+                                                  _xml_type_factory(xml_type=xmltype)))
+
 
     def draw(self, filename: str):
         """
@@ -314,7 +332,8 @@ class PhysicalEntity:
         return self
 
     def set_physical_property(self, about: str, property: str) -> PhysicalEntity:
-        self._obj = PyOmexMetaAPI.physical_entity_set_physical_property(self.get_ptr(), about.encode(), property.encode())
+        self._obj = PyOmexMetaAPI.physical_entity_set_physical_property(self.get_ptr(), about.encode(),
+                                                                        property.encode())
         return self
 
     def set_identity(self, identity: str) -> PhysicalEntity:
@@ -372,7 +391,7 @@ class PhysicalProcess:
 
     def add_source(self, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
         self._obj = PyOmexMetaAPI.physical_process_add_source(self._obj, multiplier,
-                                                            physical_entity_reference.encode())
+                                                              physical_entity_reference.encode())
         return self
 
     def add_sink(self, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
@@ -380,7 +399,8 @@ class PhysicalProcess:
         return self
 
     def add_mediator(self, multiplier: float, physical_entity_reference: str) -> PhysicalProcess:
-        self._obj = PyOmexMetaAPI.physical_process_add_mediator(self._obj, multiplier, physical_entity_reference.encode())
+        self._obj = PyOmexMetaAPI.physical_process_add_mediator(self._obj, multiplier,
+                                                                physical_entity_reference.encode())
         return self
 
     def to_string(self, format: str, base_uri: str = "./Annotations.rdf"):
@@ -419,7 +439,7 @@ class PhysicalForce:
 
     def add_sink(self, multiplier: float, physical_entity_reference: str) -> PhysicalForce:
         self._obj = PyOmexMetaAPI.physical_force_add_sink(self._obj, multiplier,
-                                                        physical_entity_reference.encode())
+                                                          physical_entity_reference.encode())
         return self
 
     def to_string(self, format: str, base_uri: str = "./Annotations.rdf"):

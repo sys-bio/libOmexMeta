@@ -70,12 +70,11 @@ namespace semsim {
 
     RDF *RDF_new(const char *storage_type, const char *storage_name,
                  const char *storage_options, const char *model_options) {
-        RDF *rdf_ptr = new RDF();
+        RDF *rdf_ptr = new RDF(storage_type, storage_name, storage_options, model_options);
         if (!rdf_ptr) {
             throw NullPointerException("NullPointerException: RDF_fromString(): \"rdf_ptr\" is nullptr");
         }
         return rdf_ptr;
-
     }
 
     void RDF_delete(RDF *rdf_ptr) {

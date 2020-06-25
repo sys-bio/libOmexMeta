@@ -167,11 +167,11 @@ file://./source_0,http://www.bhi.washington.edu/semsim#hasPhysicalEntityReferenc
         self.assertEqual(expected, actual)
 
     def test_use_sqlite_storage(self):
-        fname = os.path.join(os.path.dirname(__file__), "sqlite_test.db")
-        print(fname)
+        fname = "/mnt/d/libOmexMeta/tests/python/sqlite_db_from_python.db";
         rdf = RDF("sqlite", fname, "new='yes'")
-        rdf.add_from_string(self.rdf_str, "rdfxml", "sqlite_test")
+        rdf.add_from_uri(self.sbml_uri, "rdfxml")
         self.assertTrue(os.path.isfile(fname))
+        os.remove(fname)
 
 
 class EditorTests(unittest.TestCase):
@@ -778,6 +778,10 @@ class DrawTests(unittest.TestCase):
         rdf.draw(fname)
         self.assertTrue(os.path.isfile(fname))
         os.remove(fname)
+
+
+class TestHorrendouslyLargeRDFFile(unittest.TestCase):
+    pass
 
 
 if __name__ == "__main__":

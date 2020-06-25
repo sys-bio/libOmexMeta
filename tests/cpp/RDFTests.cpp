@@ -156,6 +156,18 @@ TEST_F(RDFTests, TestParseFromUriNonStatic) {
     ASSERT_EQ(expected, actual);
 }
 
+TEST_F(RDFTests, TestSqliteStorageWithUriParse) {
+    const char* fname = "/mnt/d/libOmexMeta/tests/cpp/sqlite_db.db";
+    RDF rdf("sqlite", fname, "new='yes'");
+    rdf.addFromUri(samples.sbml_url1, "rdfxml");
+    int expected = 277;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+    ASSERT_TRUE(std::filesystem::exists(fname));
+    // clean up after ourselves
+    std::filesystem::remove(fname);
+}
+
 TEST_F(RDFTests, TestParseFromFile) {
     // first create a file containing annotations
     std::string fname = std::filesystem::current_path().string() + "/TestParseFromFile.rdf";

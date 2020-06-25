@@ -110,6 +110,18 @@ TEST_F(CAPITests, RDF_addFromUri) {
     RDF_delete(rdf_ptr);
 }
 
+TEST_F(CAPITests, RDF_addFromUriSqliteStorage) {
+    const char* fname = "/mnt/d/libOmexMeta/tests/cpp/CAPITestSqlite.db";
+    RDF *rdf_ptr = RDF_new("sqlite", fname, "new='yes'");
+    RDF_addFromUri(rdf_ptr, samples.sbml_url1.c_str(), "rdfxml");
+    int expected = 277;
+    int actual = RDF_size(rdf_ptr);
+    ASSERT_EQ(expected, actual);
+    ASSERT_TRUE(std::filesystem::exists(fname));
+    RDF_delete(rdf_ptr);
+    std::filesystem::remove(fname);
+}
+
 TEST_F(CAPITests, RDF_fromFile) {
     // we can cheat and use C++ to write the file we need - who's counting
     std::string fname = std::filesystem::current_path().string() + "/TestParseFromFile.rdf";
