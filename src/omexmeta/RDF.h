@@ -70,7 +70,7 @@ namespace semsim {
          */
         void addFromString(const std::string &str,
                            const std::string &format = "guess",
-                           const std::string &base_uri = std::string());
+                           const std::string &base_uri = "Annotations.rdf");
 
         /*
          * @brief parse RDF directly from a uri

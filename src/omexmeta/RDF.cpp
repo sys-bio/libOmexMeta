@@ -94,16 +94,9 @@ namespace semsim {
                             const std::string &format, const std::string &base_uri) {
         std::string base_uri_used;
 
-        // some logic for allowing users to not need to manually input a base_uri
-        // when parsing from a string
-        if (base_uri.empty())
-            base_uri_used = SemsimUtils::addFilePrefixToString("Annotations.rdf");
-        else
-            base_uri_used = base_uri;
-
         LibrdfParser parser(format);
 
-        LibrdfUri u(base_uri_used);
+        LibrdfUri u = LibrdfUri::fromFilename(base_uri_used);
         parser.parseString(str, model_, u);
         u.freeUri();
 
