@@ -26,6 +26,7 @@
 #ifndef LIBRDF_STORAGE_INTERNAL_H
 #define LIBRDF_STORAGE_INTERNAL_H
 
+#include "librdf.h"
 #include "rdf_config.h"
 #include "rdf_storage_module.h"
 
@@ -74,8 +75,8 @@ void librdf_init_storage_postgresql(librdf_world *world);
 void librdf_init_storage_tstore(librdf_world *world);
 #endif
 
-#ifdef STORAGE_SQLITE
 void librdf_init_storage_sqlite(librdf_world *world);
+#ifdef STORAGE_SQLITE
 #endif
 
 

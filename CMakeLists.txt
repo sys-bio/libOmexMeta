@@ -94,7 +94,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 option(WITH_SANITIZER "link with address sanitizer for memory debugging" OFF)
 if (WITH_SANITIZER)
-    SET(ADDRESS_SANITIZER_FLAGS "-fsatize=address")
+    SET(ADDRESS_SANITIZER_FLAGS "-fsanitize=address")
     SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${ADDRESS_SANITIZER_LINK_FLAGS}")
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ADDRESS_SANITIZER_FLAGS}")
 endif ()
@@ -177,6 +177,9 @@ FindDependencies()
 
 if (PLATFORM STREQUAL "windows-msvc")
     # On windows, order seems less important
+
+    # fixme
+    #Note these "static" libraries are not actually static.
     set(LINK_LIBRARIES
             "${LIBXML2_STATIC_LIBRARY}"
             "${LIBXSLT_STATIC_LIBRARY}"
@@ -189,6 +192,7 @@ if (PLATFORM STREQUAL "windows-msvc")
             "${ZLIB_STATIC_LIBRARY}"
             "${ICONV_STATIC_LIBRARY}"
             "${PCRE_STATIC_LIBRARY}"
+            "${SQLITE3_STATIC_LIBRARY}"
             ws2_32 # needed on windows to statically link libxml2
             )
     # moreover, on windows it was much easier to just
@@ -226,6 +230,7 @@ elseif (PLATFORM STREQUAL "linux")
             ${CRYPTO_STATIC_LIBRARY}
             ${YAJL_STATIC_LIBRARY}
             ${PCRE_STATIC_LIBRARY}
+            ${SQLITE3_STATIC_LIBRARY}
             -Wl,--no-whole-archive
             m
             dl

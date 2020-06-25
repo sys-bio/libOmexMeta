@@ -325,7 +325,7 @@ set(LIBRDF_SOURCES
         ${LIBRDF_SOURCE_DIR}/rdf_storage_module.h
         #        ${LIBRDF_SOURCE_DIR}/rdf_storage_postgresql.c
         ${LIBRDF_SOURCE_DIR}/rdf_storage_sql.c
-        #        ${LIBRDF_SOURCE_DIR}/rdf_storage_sqlite.c
+        ${LIBRDF_SOURCE_DIR}/rdf_storage_sqlite.c
         ${LIBRDF_SOURCE_DIR}/rdf_storage_trees.c
         #        ${LIBRDF_SOURCE_DIR}/rdf_storage_virtuoso.c
         #        ${LIBRDF_SOURCE_DIR}/rdf_storage_virtuoso_internal.h

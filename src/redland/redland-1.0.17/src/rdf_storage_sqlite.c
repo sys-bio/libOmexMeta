@@ -29,9 +29,9 @@
 
 #endif
 
-#ifdef WIN32
-#include <win32_rdf_config.h>
-#endif
+//#ifdef WIN32
+//#include <win32_rdf_config.h>
+//#endif
 
 #include <stdio.h>
 #include <string.h>
@@ -2819,10 +2819,10 @@ librdf_storage_module_register_factory(librdf_world *world) {
  * INTERNAL - Initialise the built-in storage_sqlite module.
  */
 void
-librdf_init_storage_sqlite(librdf_world *world)
-{
-  librdf_storage_register_factory(world, "sqlite", "SQLite",
-                                  &librdf_storage_sqlite_register_factory);
+librdf_init_storage_sqlite(librdf_world *world) {
+    printf("inside librdf_init_storage_sqlite\n");
+    librdf_storage_register_factory(world, "sqlite", "SQLite",
+                                    &librdf_storage_sqlite_register_factory);
 }
 
 //#endif

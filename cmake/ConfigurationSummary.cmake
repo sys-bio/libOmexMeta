@@ -81,6 +81,10 @@ Dependencies
         ICONV_STATIC_LIBRARY                ${ICONV_STATIC_LIBRARY}
         ICONV_LIBRARY                       ${ICONV_LIBRARY}
         ICONV_INCLUDE_DIR                   ${ICONV_INCLUDE_DIR}
+    SQLITE
+        SQLITE3_STATIC_LIBRARY                ${SQLITE3_STATIC_LIBRARY}
+        SQLITE3_LIBRARY                       ${SQLITE3_LIBRARY}
+        SQLITE3_INCLUDE_DIR                   ${SQLITE3_INCLUDE_DIR}
     All Static Libraries
         STATIC_LIBRARIES                    ${STATIC_LIBRARIES}
     All Libraries

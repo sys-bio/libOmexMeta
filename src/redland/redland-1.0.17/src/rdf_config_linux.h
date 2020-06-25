@@ -283,7 +283,11 @@
 /* #undef LT_SHARED_LIB_MEMBER */
 
 /* Build storage backends as modules */
-#define MODULAR_LIBRDF 1
+/*
+ * This option seems to prevent librdf from loading
+ * database storage modules.
+ */
+//#define MODULAR_LIBRDF 1
 
 /* Define if dlsym() requires a leading underscore in symbol names. */
 /* #undef NEED_USCORE */

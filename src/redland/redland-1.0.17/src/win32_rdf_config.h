@@ -263,7 +263,7 @@ extern "C" {
 /*#undef STORAGE_POSTGRESQL*/
 
 /* Building SQLite storage */
-//#define STORAGE_SQLITE 1
+#define STORAGE_SQLITE 1
 
 /* Building 3store storage */
 /*#undef STORAGE_TSTORE*/

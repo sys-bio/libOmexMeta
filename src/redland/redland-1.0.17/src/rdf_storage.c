@@ -30,7 +30,9 @@
 #endif
 
 #ifdef WIN32
+
 #include <win32_rdf_config.h>
+
 #endif
 
 #include <stdio.h>
@@ -135,6 +137,7 @@ librdf_init_storage(librdf_world *world) {
 #ifdef STORAGE_TSTORE
     librdf_init_storage_tstore(world);
 #endif
+
 #ifdef STORAGE_SQLITE
     librdf_init_storage_sqlite(world);
 #endif

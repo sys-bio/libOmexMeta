@@ -142,7 +142,6 @@ if (${BUILD_SHARED_LIBS})
             )
 
     # install the shared library dependencies
-
     if (PLATFORM STREQUAL "linux")
         # On linux we only need a few dynamic libraries due to static linking the rest.
         install(FILES

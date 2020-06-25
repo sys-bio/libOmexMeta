@@ -24,6 +24,10 @@ namespace redland {
         storage_ = librdf_new_storage(
                 World::getWorld(), storage_name.c_str(),
                 name.c_str(), options);
+        if (storage_ == nullptr){
+            throw RedlandNullPointerException("RedlandNullPointerException: LibrdfStorage::LibrdfStorage(): librdf_storage* "
+                                              "type:\"" + storage_name + "\" was not created. Nullptr.");
+        }
     }
 
     LibrdfStorage::LibrdfStorage(LibrdfStorage &&storage) noexcept {
@@ -58,6 +62,24 @@ namespace redland {
             storage_ = nullptr;
         }
     }
+
+    int LibrdfStorage::addStatement(librdf_statement* statement){
+        return librdf_storage_add_statement(storage_, statement);
+    }
+
+    int LibrdfStorage::addStatement(const LibrdfStatement& statement){
+        return librdf_storage_add_statement(storage_, statement.get());
+    }
+
+    int LibrdfStorage::size(){
+        return librdf_storage_size(storage_);
+    }
+
+    int LibrdfStorage::commit(){
+        return librdf_storage_transaction_commit(storage_);
+    }
+
+
 }
 
 

@@ -10,6 +10,7 @@
 #include <memory>
 #include "World.h"
 #include "sstream"
+#include "LibrdfStatement.h"
 
 namespace redland {
 
@@ -49,6 +50,13 @@ namespace redland {
 
         LibrdfStorage &operator=(LibrdfStorage &&storage) noexcept;
 
+        int addStatement(librdf_statement *statement);
+
+        int addStatement(const LibrdfStatement &statement);
+
+        int size();
+
+        int commit();
     };
 }
 

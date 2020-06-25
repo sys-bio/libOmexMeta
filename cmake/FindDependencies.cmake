@@ -65,6 +65,7 @@ macro(FindDependencies)
             )
 
     # curl
+    message(STATUS "VCPKG_X64_LIB_DIR ${VCPKG_X64_LIB_DIR}")
     find_library(CURL_STATIC_LIBRARY
             NAMES libcurl.lib libcurl.a
             PATHS ${VCPKG_X64_LIB_DIR}
@@ -247,13 +248,15 @@ macro(FindDependencies)
 
 
     # ICONV
-    find_library(ICONV_STATIC_LIBRARY
-            NAMES libiconv.lib libiconv.a
-            PATHS
-            ${VCPKG_X64_LIB_DIR}
-            ${DEFAULT_LINUX_LOCATIONS}
-            NO_DEFAULT_PATH
-            )
+    if (PLATFORM STREQUAL "windows-msvc")
+        find_library(ICONV_STATIC_LIBRARY
+                NAMES libiconv.lib libiconv.a
+                PATHS
+                ${VCPKG_X64_LIB_DIR}
+                ${DEFAULT_LINUX_LOCATIONS}
+                NO_DEFAULT_PATH
+                )
+    endif ()
 
     find_file(ICONV_LIBRARY
             NAMES libiconv.dll libiconv.so libiconv.so.2
@@ -264,6 +267,31 @@ macro(FindDependencies)
 
     find_path(ICONV_INCLUDE_DIR
             NAMES iconv.h
+            PATHS ${VCPKG_X64_INCLUDE_DIR}
+            /usr/local/include # linux
+            /mnt/d/usr/local/include # wsl
+            /mnt/c/usr/local/include # wsl
+            NO_DEFAULT_PATH
+            )
+
+    # sqlite3
+    find_library(SQLITE3_STATIC_LIBRARY
+            NAMES sqlite3.lib sqlite3.a libsqlite3.a
+            PATHS
+            ${VCPKG_X64_LIB_DIR}
+            ${DEFAULT_LINUX_LOCATIONS}
+            NO_DEFAULT_PATH
+            )
+
+    find_file(SQLITE3_LIBRARY
+            NAMES sqlite3.dll sqlite3.so sqlite3.so.2 libsqlite3.so
+            PATHS ${VCPKG_X64_BIN_DIR}
+            ${DEFAULT_LINUX_LOCATIONS}
+            REQUIRED
+            )
+
+    find_path(SQLITE3_INCLUDE_DIR
+            NAMES sqlite3.h
             PATHS ${VCPKG_X64_INCLUDE_DIR}
             /usr/local/include # linux
             /mnt/d/usr/local/include # wsl
@@ -287,6 +315,8 @@ macro(FindDependencies)
             "${ZLIB_STATIC_LIBRARY}"
             "${ICONV_STATIC_LIBRARY}"
             "${PCRE_STATIC_LIBRARY}"
+            "${SQLITE3_STATIC_LIBRARY}"
+
             )
     SET(LIBRARIES
             "${ZLIB_LIBRARY}"
@@ -300,6 +330,7 @@ macro(FindDependencies)
             "${LZMA_LIBRARY}"
             "${ICONV_LIBRARY}"
             "${PCRE_LIBRARY}"
+            "${SQLITE3_LIBRARY}"
             )
 
     set(INCLUDES
@@ -313,6 +344,7 @@ macro(FindDependencies)
             "${ZLIB_INCLUDE_DIR}"
             "${PCRE_INCLUDE_DIR}"
             "${ICONV_INCLUDE_DIR}"
+            "${SQLITE3_INCLUDE_DIR}"
             )
 
     if (DEBUG_DEPENDENCIES)
