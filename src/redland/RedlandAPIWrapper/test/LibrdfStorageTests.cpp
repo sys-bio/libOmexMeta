@@ -66,10 +66,11 @@ TEST_F(LibrdfStorageTests, TestMoveAssignment) {
 
 
 TEST_F(LibrdfStorageTests, TestMemoryStorage) {
-    LibrdfStorage storage = LibrdfStorage("sqlite", "StorageName", "new='yes'");
+    LibrdfStorage storage = LibrdfStorage("sqlite", "/mnt/d/libOmexMeta/tests/cpp/StorageName.db", "new='yes'");
     LibrdfModel model(storage.get());
     model.addStatement(statement);
     storage.commit();
+    librdf_storage_sync(storage.get());
     int actual = model.size();
     int expected = 1;
     ASSERT_EQ(expected, actual);
