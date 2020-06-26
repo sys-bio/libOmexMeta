@@ -54,21 +54,21 @@ namespace semsim {
     }
 
 
-    void Editor::extractNamespacesFromTriplesVector(Triples &triples) {
-        /*
-         * Note: if this oesn't work, move the logic of this function
-         * into where its needed. Since its only used once, we
-         * do not need a specialized function
-         */
-        for (int i = 0; i < triples.size(); i++) {
-            // create new reference to triple at i
-            Triple triple = triples[i];
-            addNamespaceFromAnnotation(triple.getPredicateStr());
-            // remember to free the new reference (should still exist but
-            // internal raptor reference count will decrease)
-            triple.freeStatement();
-        }
-    }
+//    void Editor::extractNamespacesFromTriplesVector(Triples &triples) {
+//        /*
+//         * Note: if this oesn't work, move the logic of this function
+//         * into where its needed. Since its only used once, we
+//         * do not need a specialized function
+//         */
+//        for (int i = 0; i < triples.size(); i++) {
+//            // create new reference to triple at i
+//            Triple triple = triples[i];
+//            addNamespaceFromAnnotation(triple.getPredicateStr());
+//            // remember to free the new reference (should still exist but
+//            // internal raptor reference count will decrease)
+//            triple.freeStatement();
+//        }
+//    }
 
     void Editor::extractNamespacesFromTriplesVector(PhysicalPhenomenon* pp) {
         // here we create our own localized Triples object

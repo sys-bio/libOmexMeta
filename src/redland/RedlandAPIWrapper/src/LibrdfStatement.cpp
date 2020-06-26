@@ -114,43 +114,43 @@ namespace redland {
         }
     }
 
-    /*
-     *
-     *
-     * If I support a copy constructor, it might work
-     * if add to the underlying reference counter myself?
-     * Bad idea. but loads of allocation bugs when you delete
-     * these constructors. So instead, finish making everything move
-     * not copy then delete them!
-     */
-    LibrdfStatement::LibrdfStatement(const LibrdfStatement &statement) {
-        std::cout << "LibrdfStatement copy constructor called" <<std::endl;
-        if (this != &statement) {
-            if (statement.statement_ != nullptr) {
-                if (statement_ != nullptr) {
-                    librdf_free_statement(statement_);
-                    statement_ = nullptr;
-                }
-                statement_ = statement.statement_;
-                statement.statement_->usage++;
-            }
-        }
-    }
+//    /*
+//     *
+//     *
+//     * If I support a copy constructor, it might work
+//     * if add to the underlying reference counter myself?
+//     * Bad idea. but loads of allocation bugs when you delete
+//     * these constructors. So instead, finish making everything move
+//     * not copy then delete them!
+//     */
+//    LibrdfStatement::LibrdfStatement(const LibrdfStatement &statement) {
+//        std::cout << "LibrdfStatement copy constructor called" <<std::endl;
+//        if (this != &statement) {
+//            if (statement.statement_ != nullptr) {
+//                if (statement_ != nullptr) {
+//                    librdf_free_statement(statement_);
+//                    statement_ = nullptr;
+//                }
+//                statement_ = statement.statement_;
+//                statement.statement_->usage++;
+//            }
+//        }
+//    }
 
-    LibrdfStatement &LibrdfStatement::operator=(const LibrdfStatement &statement) {
-        std::cout << "LibrdfStatement copy assignment operator called" <<std::endl;
-        if (this != &statement) {
-            if (statement.statement_ != nullptr) {
-                if (statement_ != nullptr) {
-                    librdf_free_statement(statement_);
-                    statement_ = nullptr;
-                }
-                statement_ = statement.statement_;
-                statement.statement_->usage++;
-            }
-        }
-        return *this;
-    }
+//    LibrdfStatement &LibrdfStatement::operator=(const LibrdfStatement &statement) {
+//        std::cout << "LibrdfStatement copy assignment operator called" <<std::endl;
+//        if (this != &statement) {
+//            if (statement.statement_ != nullptr) {
+//                if (statement_ != nullptr) {
+//                    librdf_free_statement(statement_);
+//                    statement_ = nullptr;
+//                }
+//                statement_ = statement.statement_;
+//                statement.statement_->usage++;
+//            }
+//        }
+//        return *this;
+//    }
 
 
     LibrdfStatement::LibrdfStatement(LibrdfStatement &&statement) noexcept {

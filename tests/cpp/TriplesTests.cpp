@@ -127,36 +127,36 @@ TEST_F(TriplesTests, TestEmplaceBack6) {
     triples.freeTriples();
 }
 
-TEST(TriplesTestsNoFixture, TestGetterOperator) {
-    Triples triples;
-    triples.emplace_back(LibrdfNode::fromUriString("subject1").get(),
-                         SemSim("hasSinkParticipant").getNode(),
-                         LibrdfNode::fromLiteral("literal node1").get());
-    triples.emplace_back(LibrdfNode::fromUriString("subject2").get(),
-                         SemSim("hasSourceParticipant").getNode(),
-                         LibrdfNode::fromLiteral("literal node2").get());
-    // make sure we have 2 triples
-    ASSERT_EQ(2, triples.size());
-
-    // get by copy
-    Triple triple = triples[1];
-
-    // make sure we still have two Triple objects in Triples
-    ASSERT_EQ(2, triples.size());
-
-    // do checks for raptors internal reference counter
-    ASSERT_EQ(1, triples[0].getStatement()->usage);
-    ASSERT_EQ(2, triples[1].getStatement()->usage);
-    ASSERT_EQ(2, triple.getStatement()->usage);
-
-    // free the triple and reduce count to 1
-    triple.freeStatement();
-    ASSERT_EQ(1, triples[1].getStatement()->usage);
-
-    // finally free the triples. All is accounted for.
-    triples.freeTriples();
-
-}
+//TEST(TriplesTestsNoFixture, TestGetterOperator) {
+//    Triples triples;
+//    triples.emplace_back(LibrdfNode::fromUriString("subject1").get(),
+//                         SemSim("hasSinkParticipant").getNode(),
+//                         LibrdfNode::fromLiteral("literal node1").get());
+//    triples.emplace_back(LibrdfNode::fromUriString("subject2").get(),
+//                         SemSim("hasSourceParticipant").getNode(),
+//                         LibrdfNode::fromLiteral("literal node2").get());
+//    // make sure we have 2 triples
+//    ASSERT_EQ(2, triples.size());
+//
+//    // get by copy
+//    Triple triple = triples[1];
+//
+//    // make sure we still have two Triple objects in Triples
+//    ASSERT_EQ(2, triples.size());
+//
+//    // do checks for raptors internal reference counter
+//    ASSERT_EQ(1, triples[0].getStatement()->usage);
+//    ASSERT_EQ(2, triples[1].getStatement()->usage);
+//    ASSERT_EQ(2, triple.getStatement()->usage);
+//
+//    // free the triple and reduce count to 1
+//    triple.freeStatement();
+//    ASSERT_EQ(1, triples[1].getStatement()->usage);
+//
+//    // finally free the triples. All is accounted for.
+//    triples.freeTriples();
+//
+//}
 
 TEST(TriplesTestsNoFixture, TestPop) {
     Triples triples;
