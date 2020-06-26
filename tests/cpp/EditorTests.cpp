@@ -473,9 +473,9 @@ TEST_F(EditorTests, TestRemovePhysicalForce) {
             .addSink( 1.0, "PhysicalEntity2");
 
     editor.addPhysicalForce(physicalForce);
-
-    std::cout << rdf.toString("rdfxml-abbrev", "base") << std::endl;
-
+//
+//    std::cout << rdf.toString("rdfxml-abbrev", "base") << std::endl;
+//
 //    ASSERT_EQ(8, rdf.size());
 //    editor.removePhysicalForce(physicalForce);
 //    std::cout << rdf.toString("rdfxml-abbrev", "base") << std::endl;

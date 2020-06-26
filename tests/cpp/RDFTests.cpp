@@ -168,6 +168,54 @@ TEST_F(RDFTests, TestSqliteStorageWithUriParse) {
     std::filesystem::remove(fname);
 }
 
+
+/*
+ * Will take some effort to learn how to use
+ * postgresql.
+ */
+//TEST_F(RDFTests, TestPostgresStorageWithUriParse) {
+//    const char* fname = "/mnt/d/libOmexMeta/tests/cpp/sqlite_db.db";
+//    RDF rdf("postgresql", "postgresdb",
+//            "new='yes',host='localhost',database='ATestDB',user='ciaran',password=''");
+//    rdf.addFromUri(samples.sbml_url1, "rdfxml");
+//    int expected = 277;
+//    int actual = rdf.size();
+//    ASSERT_EQ(expected, actual);
+//    ASSERT_TRUE(std::filesystem::exists(fname));
+//    // clean up after ourselves
+//    std::filesystem::remove(fname);
+//}
+
+/*
+ * This test takes too long. No use. Must use a different database.
+ */
+//TEST_F(RDFTests, TestSqliteStorageLarseFile) {
+//    const char* xmlf = "/mnt/d/libOmexMeta/tests/cpp/brenda_parameters_1.xml";
+//    const char* fname = "/mnt/d/libOmexMeta/tests/cpp/sqlite_db.db";
+//    RDF rdf("sqlite", fname, "new='yes'");
+//    rdf.addFromFile(xmlf, "rdfxml");
+//    int expected = 277;
+//    int actual = rdf.size();
+//    ASSERT_EQ(expected, actual);
+//    ASSERT_TRUE(std::filesystem::exists(fname));
+//    // clean up after ourselves
+////    std::filesystem::remove(fname);
+//}
+
+//TEST_F(RDFTests, TestBDBStorageLarseFile) {
+//    const char* xmlf = "/mnt/d/libOmexMeta/tests/cpp/brenda_parameters_1.xml";
+//    const char* fname = "/mnt/d/libOmexMeta/tests/cpp/sqlite_db.db";
+//    RDF rdf("hashes", "BdbLargeFileTest.db",
+//                             "new='yes',hash-type='bdb',dir='/mnt/d/libOmexMeta/tests/cpp'");
+//    rdf.addFromFile(xmlf, "rdfxml");
+//    int expected = 277;
+//    int actual = rdf.size();
+//    ASSERT_EQ(expected, actual);
+//    ASSERT_TRUE(std::filesystem::exists(fname));
+//    // clean up after ourselves
+////    std::filesystem::remove(fname);
+//}
+
 TEST_F(RDFTests, TestParseFromFile) {
     // first create a file containing annotations
     std::string fname = std::filesystem::current_path().string() + "/TestParseFromFile.rdf";

@@ -66,6 +66,7 @@ namespace semsim {
         std::unordered_map<std::string, std::string> &namespaces_;
 
         void extractNamespacesFromTriplesVector(Triples &triples);
+        void extractNamespacesFromTriplesVector(PhysicalPhenomenon* pp);
 
     public:
 

@@ -327,6 +327,31 @@ macro(FindDependencies)
             NO_DEFAULT_PATH
             )
 
+
+    # berkely
+    find_library(POSTGRESQL_STATIC_LIBRARY
+            NAMES libpq.a libpq.lib pq.lib
+            PATHS
+            ${VCPKG_X64_LIB_DIR}
+            #            ${DEFAULT_LINUX_LOCATIONS}
+            NO_DEFAULT_PATH
+            )
+
+    find_file(POSTGRESQL_LIBRARY
+            NAMES libpq.so libpq.dll
+            PATHS ${VCPKG_X64_BIN_DIR}
+            #            ${DEFAULT_LINUX_LOCATIONS}
+            NO_DEFAULT_PATH
+            REQUIRED
+            )
+
+    find_path(POSTGRESQL_INCLUDE_DIR
+            NAMES postgresql/server/pg_config.h
+            PATHS ${VCPKG_X64_INCLUDE_DIR}
+            #            ${DEFAULT_LINUX_LOCATIONS}
+            #            NO_DEFAULT_PATH
+            )
+
     # Note: on windows these are note actually static libraries,
     # but the *.lib files which contain stubs that need filling with dll
     # at runtime.
@@ -345,6 +370,7 @@ macro(FindDependencies)
             "${PCRE_STATIC_LIBRARY}"
             "${SQLITE3_STATIC_LIBRARY}"
             "${BERKELY_STATIC_LIBRARY}"
+            "${POSTGRESQL_STATIC_LIBRARY}"
 
             )
     SET(LIBRARIES
@@ -361,6 +387,7 @@ macro(FindDependencies)
             "${PCRE_LIBRARY}"
             "${SQLITE3_LIBRARY}"
             "${BERKELY_LIBRARY}"
+            "${POSTGRESQL_LIBRARY}"
             )
 
     set(INCLUDES
@@ -376,6 +403,7 @@ macro(FindDependencies)
             "${ICONV_INCLUDE_DIR}"
             "${SQLITE3_INCLUDE_DIR}"
             "${BERKELY_INCLUDE_DIR}"
+            "${POSTGRESQL_INCLUDE_DIR}"
             )
 
     if (DEBUG_DEPENDENCIES)

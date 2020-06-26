@@ -151,6 +151,7 @@ if (${BUILD_SHARED_LIBS})
                 "${LIBXSLT_LIBRARY}"
                 "${SQLITE3_LIBRARY}"
                 "${BERKELY_LIBRARY}"
+                "${POSTGRESQL_LIBRARY}"
                 DESTINATION ${PYOMEXMETA_DIR}
                 )
     elseif (PLATFORM STREQUAL "windows-msvc")

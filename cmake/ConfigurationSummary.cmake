@@ -92,6 +92,10 @@ Dependencies
         BERKELY_STATIC_LIBRARY              ${BERKELY_STATIC_LIBRARY}
         BERKELY_lIBRARY                     ${BERKELY_LIBRARY}
         BERKELY_INCLUDE_DIR                 ${BERKELY_INCLUDE_DIR}
+    Postgresql
+        POSTGRESQL_STATIC_LIBRARY           ${POSTGRESQL_STATIC_LIBRARY}
+        POSTGRESQL_LIBRARY                  ${POSTGRESQL_LIBRARY}
+        POSTGRESQL_INCLUDE_DIR              ${POSTGRESQL_INCLUDE_DIR}
     All Static Libraries
         STATIC_LIBRARIES                    ${STATIC_LIBRARIES}
     All Libraries

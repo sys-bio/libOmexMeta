@@ -55,6 +55,11 @@ namespace semsim {
 
 
     void Editor::extractNamespacesFromTriplesVector(Triples &triples) {
+        /*
+         * Note: if this oesn't work, move the logic of this function
+         * into where its needed. Since its only used once, we
+         * do not need a specialized function
+         */
         for (int i = 0; i < triples.size(); i++) {
             // create new reference to triple at i
             Triple triple = triples[i];
@@ -65,12 +70,19 @@ namespace semsim {
         }
     }
 
-
-//    void Editor::toRDF() {
-//        for (auto &triple : triples_) {
-//            model_.addStatement(triple);
-//        }
-//    }
+    void Editor::extractNamespacesFromTriplesVector(PhysicalPhenomenon* pp) {
+        // here we create our own localized Triples object
+        // and deplete it during the while loop. This
+        // is preferable to passing in a Triples object
+        // as argument because that would take copies and
+        // mess with cleaning up the triples later.
+        Triples triples = pp->toTriples();
+        while(!triples.isEmpty()){
+            Triple triple = triples.pop_front();
+            addNamespaceFromAnnotation(triple.getPredicateStr());
+            triple.freeStatement();
+        }
+    }
 
 
     void Editor::addNamespace(const std::string &ns, std::string prefix) {
@@ -109,11 +121,13 @@ namespace semsim {
     }
 
     void Editor::addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr) {
+//        extractNamespacesFromTriplesVector(phenomenonPtr);
         Triples triples = phenomenonPtr->toTriples();
-        extractNamespacesFromTriplesVector(triples);
         while (!triples.isEmpty()) {
             // remove a Triple off the front of triples
             Triple triple = triples.pop_front();
+            // collect the namespace from the triple
+            addNamespaceFromAnnotation(triple.getPredicateStr());
             // add to the model
             model_.addStatement(triple.getStatement());
             // remember to free it.
@@ -196,10 +210,21 @@ namespace semsim {
 //    }
 //
     void Editor::removePhysicalForce(PhysicalForce &physicalForce) const {
+        /*
+         * Can I manipulate the count to get this done? ? ?
+         *  - No, if a uri is used elsewhere, we need to keep it.
+         * Where is the statement being copied? ? ?
+         */
         int count = 0;
         for (auto &it: physicalForce.toTriples()) {
-            std::cout << "count: " << count << ": " << it.str("ntriples", "base") << std::endl;
-            model_.removeStatement(it.getStatement());
+            std::cout << "count: " << count << ": " << it.str("ntriples", "base")
+            << ", usage count: " << it.get()->usage
+            << ", Subject usage: " << it.getSubject()->usage
+            << ", Predicate usage: " << it.getPredicate()->usage
+            << ", resource usage: " << it.getResource()->usage
+            << "\n" << std::endl;
+            librdf_statement* triple = it.getStatement();
+            model_.removeStatement(triple);
             count++;
         }
     }

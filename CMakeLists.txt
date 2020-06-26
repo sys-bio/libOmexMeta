@@ -196,9 +196,10 @@ if (PLATFORM STREQUAL "windows-msvc")
             "${ZLIB_STATIC_LIBRARY}"
             "${ICONV_STATIC_LIBRARY}"
             "${PCRE_STATIC_LIBRARY}"
-#            "D:/vcpkg/installed/x64-windows-static/lib/sqlite3.lib"
+            #            "D:/vcpkg/installed/x64-windows-static/lib/sqlite3.lib"
             "${SQLITE3_STATIC_LIBRARY}"
             "${BERKELY_STATIC_LIBRARY}"
+            "${POSTGRESQL_STATIC_LIBRARY}"
             ws2_32 # needed on windows to statically link libxml2
             )
     # moreover, on windows it was much easier to just
@@ -225,6 +226,7 @@ elseif (PLATFORM STREQUAL "linux")
             ${LIBXSLT_LIBRARY} # dynamic
             ${SQLITE3_LIBRARY}
             ${BERKELY_LIBRARY}
+            ${POSTGRESQL_LIBRARY}
             # flag for including whole archive, not just the function used.
             -Wl,--whole-archive
             ${ZLIB_STATIC_LIBRARY}
