@@ -125,7 +125,7 @@ namespace semsim {
         return librdf_query_results_get_bindings_count(query_results_);
     }
 
-    std::string Query::resultsAsStr(const std::string &output_format) {
+    std::string Query::resultsAsStr(const std::string &output_format, std::string baseuri) const {
         if (std::find(valid_output_formats_.begin(), valid_output_formats_.end(), output_format) ==
             valid_output_formats_.end()) {
             std::ostringstream err;
@@ -137,10 +137,12 @@ namespace semsim {
             err << std::endl;
             throw std::invalid_argument(err.str());
         }
+        baseuri = SemsimUtils::addFilePrefixToString(baseuri);
+        LibrdfUri uri(baseuri);
         unsigned char *s = librdf_query_results_to_string2(
                 query_results_, output_format.c_str(),
-                nullptr, nullptr,
-                nullptr);
+                nullptr, nullptr, uri.get());
+        uri.freeUri();
         std::string res = (const char *) s; // makes a copy
         free(s);
         return res;

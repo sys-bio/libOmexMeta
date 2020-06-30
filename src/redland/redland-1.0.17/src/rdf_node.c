@@ -509,6 +509,25 @@ librdf_new_node_from_node(librdf_node *node) {
     return raptor_term_copy(node);
 }
 
+/**
+ * librdf_new_node_from_node2:
+ * @node: #librdf_node object to copy
+ *
+ * Copy constructor - create a new librdf_node object from an existing librdf_node object.
+ *
+ * Return value: a new #librdf_node object or NULL on failure
+ *
+ * Notes: Written by ciaran welsh to overcome a bug where if a node has a
+ * uri, the uri is not also "copied" i.e. the usage count does not get incremented.
+ **/
+librdf_node *
+librdf_new_node_from_node2(librdf_node *node) {
+    LIBRDF_ASSERT_OBJECT_POINTER_RETURN_VALUE(node, librdf_node, NULL);
+
+
+    return raptor_term_copy(node);
+}
+
 
 /**
  * librdf_free_node:
@@ -521,8 +540,22 @@ void
 librdf_free_node(librdf_node *node) {
     if (!node)
         return;
-
     raptor_free_term(node);
+}
+
+/**
+ * librdf_free_node:
+ * @node: #librdf_node object
+ *
+ * Destructor - destroy an #librdf_node object.
+ *
+ **/
+void
+librdf_free_node2(librdf_node *node) {
+    if (!node)
+        return;
+
+    raptor_free_term2(node);
 }
 
 

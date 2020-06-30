@@ -281,6 +281,33 @@ TEST_F(LibrdfNodeTests, TestCopyNodeUri) {
     subject2.freeNode(); // ref count to 0
 }
 
+/*
+ * Uri works as expected.
+ */
+TEST_F(LibrdfNodeTests, TestCopyNodeUriNoWrapper) {
+    librdf_uri* uri1 = librdf_new_uri(World::getWorld(), (const unsigned char*)"https://uri.com");
+    librdf_uri* uri2 = librdf_new_uri_from_uri(uri1);
+    int expected = 2;
+    int uri1_count = librdf_uri_get_usage(uri1);
+    int uri2_count = librdf_uri_get_usage(uri2);
+    ASSERT_EQ(uri1_count, uri2_count);
+    ASSERT_EQ(expected, uri1_count);
+    librdf_free_uri(uri1);
+    ASSERT_EQ(1, librdf_uri_get_usage(uri2));
+    librdf_free_uri(uri2);
+}
+
+TEST_F(LibrdfNodeTests, TestCopyNodeNoWrapper) {
+    /*
+     * This test does not work because of bug in raptor.
+     * If you copy a node with a uri, you should increment
+     * the uri usage count. But it does not.
+     */
+    librdf_node* n1 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char*)"https://uri1.com");
+    librdf_node* n2 = librdf_new_node_from_node(n1);
+//    ASSERT_TRUE(librdf_node_equals(n1, n2));
+}
+
 TEST_F(LibrdfNodeTests, TestCopyNodeLiteral) {
     LibrdfNode subject1 = LibrdfNode::fromLiteral("subject1");
     LibrdfNode subject2 = LibrdfNode::copyNode(subject1);
@@ -292,6 +319,16 @@ TEST_F(LibrdfNodeTests, TestCopyNodeLiteral) {
     subject1.freeNode(); // ref count to 1
     subject2.freeNode(); // ref count to 0
 }
+
+
+
+//TEST_F(LibrdfNodeTests, TestRelativeUri) {
+//    LibrdfNode node = LibrdfNode::fromRelativeUri("subject1", "file://mnt/d/libOmexMeta");
+//    std::string actual = node.str();
+//    std::string expected = "file://mnt/d/libOmexMeta/myModel.xml#subject1";
+//    ASSERT_STREQ(expected.c_str(), actual.c_str());
+//    node.freeNode();
+//}
 
 
 

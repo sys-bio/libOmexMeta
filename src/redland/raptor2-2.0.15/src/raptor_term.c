@@ -34,6 +34,7 @@
 #ifdef HAVE_STDLIB_H
 
 #include <stdlib.h>
+#include <assert.h>
 
 #endif
 
@@ -495,21 +496,62 @@ void raptor_free_term(raptor_term *term) {
     RAPTOR_FREE(term, term);
 }
 
-void raptor_free_term_wrapper(raptor_term *term) {
+/**
+ * raptor_free_term:
+ * @term: #raptor_term object
+ *
+ * Destructor - destroy a raptor_term object.
+ *
+ **/
+void raptor_free_term2(raptor_term *term) {
     if (!term)
         return;
 
-//    if (term->usage == 0) // access violation when term is null?
-//        return;
+    /*
+     * If term usage is 1 or greater we return void before freeing,
+     * having reduced the term ref counter by 1. BUT this
+     * neglects to reduce any uri counts in use by 1. The difference
+     * between raptor_free_term and raptor_free_term2 is that the latter
+     * will call raptor_free_uri once its established that a term is still
+     * in play and the ref count is decrements.
+     * Implementes by ciaran welsh. Not original raptor2 code.
+     */
+    if (--term->usage) {
+        switch (term->type) {
+            case RAPTOR_TERM_TYPE_URI:
+                if (term->value.uri) {
+                    // the uri count has to be greater than 1, or there is a very weird bug.
+                    assert(raptor_uri_get_usage_count(term->value.uri) >= 1);
+                    raptor_free_uri(term->value.uri);
+                    term->value.uri = NULL;
+                }
+                break;
 
-    if (--term->usage)
+            case RAPTOR_TERM_TYPE_BLANK:
+                // blanks do not have ref counts that need decrementing
+                break;
+
+            case RAPTOR_TERM_TYPE_LITERAL:
+                if (term->value.literal.datatype) {
+                    // the uri count has to be greater than 1, or there is a very weird bug.
+                    assert(raptor_uri_get_usage_count(term->value.literal.datatype) >= 1);
+                    raptor_free_uri(term->value.literal.datatype);
+                    term->value.literal.datatype = NULL;
+                }
+                break;
+
+            case RAPTOR_TERM_TYPE_UNKNOWN:
+            default:
+                break;
+        }
         return;
+    }
 
     switch (term->type) {
         case RAPTOR_TERM_TYPE_URI:
             if (term->value.uri) {
-//        raptor_free_uri(term->value.uri);
-//                term->value.uri = NULL;
+                raptor_free_uri(term->value.uri);
+                term->value.uri = NULL;
             }
             break;
 
@@ -527,8 +569,8 @@ void raptor_free_term_wrapper(raptor_term *term) {
             }
 
             if (term->value.literal.datatype) {
-//                raptor_free_uri(term->value.literal.datatype);
-//                term->value.literal.datatype = NULL;
+                raptor_free_uri(term->value.literal.datatype);
+                term->value.literal.datatype = NULL;
             }
 
             if (term->value.literal.language) {
@@ -834,8 +876,8 @@ main(int argc, char *argv[])
   raptor_uri* uri1;
   unsigned char* uri_str;
   size_t uri_len;
-  
-  
+
+
   world = raptor_new_world();
   if(!world || raptor_world_open(world))
     exit(1);
@@ -888,7 +930,7 @@ main(int argc, char *argv[])
     goto tidy;
   }
 
-  
+
   /* check an empty literal is created from a NULL literal pointer succeeds */
   term2 = raptor_new_term_from_counted_literal(world, NULL, 0, NULL, NULL, 0);
   if(!term2) {
@@ -917,7 +959,7 @@ main(int argc, char *argv[])
     goto tidy;
   }
   term2 = raptor_new_term_from_counted_literal(world, literal_string1,
-                                               literal_string1_len, 
+                                               literal_string1_len,
                                                uri1, language1, 0);
   raptor_free_uri(uri1); uri1 = NULL;
   if(term2) {
@@ -925,7 +967,7 @@ main(int argc, char *argv[])
     rc = 1;
     goto tidy;
   }
-  
+
   /* check a literal with no language and no datatype succeeds */
   term2 = raptor_new_term_from_counted_literal(world, literal_string1,
                                                literal_string1_len, NULL, NULL, 0);
@@ -941,7 +983,7 @@ main(int argc, char *argv[])
     rc = 1;
     goto tidy;
   }
-  
+
 
   /* check a blank node term with NULL id generates a new identifier */
   term3 = raptor_new_term_from_counted_blank(world, NULL, 0);
@@ -1031,14 +1073,14 @@ main(int argc, char *argv[])
     rc = 1;
     goto tidy;
   }
-  
+
   if(raptor_term_equals(term1, term4)) {
     fprintf(stderr, "%s: raptor_term_equals (URI %s, URI %s) returned equal, expected not-equal\n",
             program, uri_string1, uri_string2);
     rc = 1;
     goto tidy;
   }
-  
+
   if(!raptor_term_equals(term1, term5)) {
     fprintf(stderr, "%s: raptor_term_equals (URI %s, URI %s) returned not-equal, expected equal\n",
             program, uri_string1, uri_string1);
@@ -1051,13 +1093,13 @@ main(int argc, char *argv[])
             program);
     /* This is not necessarily a failure if the raptor_uri module has had
      * the URI interning disabled with
-     *   raptor_world_set_flag(world, RAPTOR_WORLD_FLAG_URI_INTERNING, 0) 
+     *   raptor_world_set_flag(world, RAPTOR_WORLD_FLAG_URI_INTERNING, 0)
      * however this test suite does not do that, so it is a failure here.
      */
     rc = 1;
     goto tidy;
   }
-  
+
 
   tidy:
   if(term1)
@@ -1070,7 +1112,7 @@ main(int argc, char *argv[])
     raptor_free_term(term4);
   if(term5)
     raptor_free_term(term5);
-  
+
   raptor_free_world(world);
 
   return rc;

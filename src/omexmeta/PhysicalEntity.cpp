@@ -34,10 +34,10 @@ namespace semsim {
     }
 
 
-    PhysicalEntity &PhysicalEntity::setAbout(const std::string& metaid) {
-        physical_property_.setSubject(metaid);
-        return *this;
-    }
+//    PhysicalEntity &PhysicalEntity::setAbout(const std::string& metaid) {
+//        physical_property_.setSubject(metaid);
+//        return *this;
+//    }
 
     PhysicalEntity &PhysicalEntity::setPhysicalProperty(PhysicalProperty physicalProperty) {
         physical_property_ = std::move(physicalProperty);
@@ -121,10 +121,12 @@ namespace semsim {
 
         // preallocate for efficiency
         Triples triples(getLocationResources().size() + 3);
-
-        for (auto &it : physical_property_.toTriples(property_metaid)){
-            triples.move_back(it);
+        Triples physical_property_triples = physical_property_.toTriples(property_metaid);
+        for (auto &it : physical_property_triples ){
+            triples.move_back(it); // moves the statement
         }
+        physical_property_triples.freeTriples();
+        assert(physical_property_triples.size() == 0);
 
         // the "what" part of physical entity triple
         triples.emplace_back(
@@ -141,9 +143,7 @@ namespace semsim {
                     locationResource.getNode()
             );
         }
-
-
-        return triples;
+        return std::move(triples);
     }
 
     [[maybe_unused]] int PhysicalEntity::getNumLocations() const {

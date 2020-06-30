@@ -127,6 +127,11 @@ TEST_F(TriplesTests, TestEmplaceBack6) {
     triples.freeTriples();
 }
 
+
+
+/*
+ * deleted test. It copies and we removed ability to copy tripels.
+ */
 //TEST(TriplesTestsNoFixture, TestGetterOperator) {
 //    Triples triples;
 //    triples.emplace_back(LibrdfNode::fromUriString("subject1").get(),
@@ -209,19 +214,22 @@ TEST(TriplesTestsNoFixture, TestPreallocate) {
 
 }
 
-TEST(TriplesTestsNoFixture, TestPopFront) {
-    Triples triples;
+TEST(TriplesTestsNoFixture, TestPopFrontUrisDifferent) {
+    // create a triples object containing 2 triple objects
+    Triples triples(2);
     triples.emplace_back(LibrdfNode::fromUriString("subject1").get(),
                          SemSim("hasSinkParticipant").getNode(),
-                         LibrdfNode::fromLiteral("literal node1").get());
+                         LibrdfNode::fromUriString("UriNode1").get());
     triples.emplace_back(LibrdfNode::fromUriString("subject2").get(),
                          SemSim("hasSourceParticipant").getNode(),
-                         LibrdfNode::fromLiteral("literal node2").get());
+                         LibrdfNode::fromUriString("UriNode2").get());
+    std::cout << triples.str("ntriples", "base") << std::endl;
     // make sure we have 2 triples
     ASSERT_EQ(2, triples.size());
 
     // get by move
     Triple triple = triples.pop_front();
+    std::cout << triple.str("ntriples", "base") << std::endl;
 
     // make sure we still have 1 Triple objects in Triples
     ASSERT_EQ(1, triples.size());
@@ -235,12 +243,59 @@ TEST(TriplesTestsNoFixture, TestPopFront) {
     ASSERT_STREQ("subject2", triples[0].getSubjectStr().c_str());
     ASSERT_STREQ("subject1", triple.getSubjectStr().c_str());
 
-    // free the triple and reduce count to 1
+    // now check the URI ref counts
+    ASSERT_EQ(1, librdf_uri_get_usage(triple.getSubject()->value.uri));
+    ASSERT_EQ(1, librdf_uri_get_usage(triple.getPredicate()->value.uri));
+    ASSERT_EQ(1, librdf_uri_get_usage(triple.getResource()->value.uri));
+
+    // free the triple
     triple.freeStatement();
 
     // free the triples. All is accounted for.
     triples.freeTriples();
 
+}
+
+TEST(TriplesTestsNoFixture, TestPopFrontSubjectUriTheSame) {
+    // create a triples object containing 2 triple objects
+    Triples triples(2);
+    triples.emplace_back(LibrdfNode::fromUriString("subject").get(),
+                         SemSim("hasSinkParticipant").getNode(),
+                         LibrdfNode::fromUriString("UriNode1").get());
+    triples.emplace_back(LibrdfNode::fromUriString("subject").get(),
+                         SemSim("hasSourceParticipant").getNode(),
+                         LibrdfNode::fromUriString("UriNode2").get());
+    std::cout << triples.str("ntriples", "base") << std::endl;
+    // make sure we have 2 triples
+    ASSERT_EQ(2, triples.size());
+
+    // get by move
+    Triple triple = triples.pop_front();
+    std::cout << triple.str("ntriples", "base") << std::endl;
+
+    // make sure we still have 1 Triple objects in Triples
+    ASSERT_EQ(1, triples.size());
+
+    // do checks for raptors internal reference counter
+    ASSERT_EQ(1, triples[0].getStatement()->usage);
+    ASSERT_EQ(1, triple.getStatement()->usage);
+
+
+    // make sure we have the right triple left
+    ASSERT_STREQ("UriNode2", triples[0].getResourceStr().c_str());
+    ASSERT_STREQ("UriNode1", triple.getResourceStr().c_str());
+
+    // now check the URI ref counts
+    ASSERT_EQ(2, librdf_uri_get_usage(triple.getSubject()->value.uri));
+    ASSERT_EQ(1, librdf_uri_get_usage(triple.getPredicate()->value.uri));
+    ASSERT_EQ(1, librdf_uri_get_usage(triple.getResource()->value.uri));
+
+    // free the triples.
+    triples.freeTriples();
+
+    ASSERT_EQ(1, librdf_uri_get_usage(triple.getSubject()->value.uri));
+    // free the triple
+    triple.freeStatement();
 }
 
 TEST(TriplesTestsNoFixture, TestStr) {
@@ -343,6 +398,193 @@ TEST(TriplesTestsNoFixture, TestEquality) {
     triples1.freeTriples();
     triples2.freeTriples();
 }
+
+
+TEST(TriplesTestsNoFixture, TestUsages1) {
+    Triples triples1(1);
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
+            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+    );
+
+    Triple triple = triples1.pop_front();
+    auto m = triple.getUsages();
+    ASSERT_EQ(1, m["statement"]);
+    ASSERT_EQ(1, m["subject"]);
+    ASSERT_EQ(1, m["predicate"]);
+    ASSERT_EQ(1, m["resource"]);
+    ASSERT_EQ(1, m["subject_uri"]);
+    ASSERT_EQ(1, m["predicate_uri"]);
+    ASSERT_EQ(1, m["resource_uri"]);
+    triple.printUsages();
+
+}
+
+TEST(TriplesTestsNoFixture, TestUsages2) {
+    Triples triples1(2);
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
+            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+    );
+
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("http://subject1.com/subject2").get(),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate2").get(),
+            LibrdfNode::fromUriString("http://resource1.com/resource2").get()
+    );
+
+    Triple triple = triples1.pop_front();
+    auto m1 = triple.getUsages();
+    ASSERT_EQ(1, m1["statement"]);
+    ASSERT_EQ(1, m1["subject"]);
+    ASSERT_EQ(1, m1["predicate"]);
+    ASSERT_EQ(1, m1["resource"]);
+    ASSERT_EQ(1, m1["subject_uri"]);
+    ASSERT_EQ(1, m1["predicate_uri"]);
+    ASSERT_EQ(1, m1["resource_uri"]);
+
+    Triple triple2 = triples1.pop_front();
+    auto m2 = triple2.getUsages();
+    ASSERT_EQ(1, m2["statement"]);
+    ASSERT_EQ(1, m2["subject"]);
+    ASSERT_EQ(1, m2["predicate"]);
+    ASSERT_EQ(1, m2["resource"]);
+    ASSERT_EQ(1, m2["subject_uri"]);
+    ASSERT_EQ(1, m2["predicate_uri"]);
+    ASSERT_EQ(1, m2["resource_uri"]);
+    triple.printUsages();
+
+    triple.freeTriple();
+    triple2.freeTriple();
+
+}
+
+TEST(TriplesTestsNoFixture, TestUsages3) {
+    Triples triples1(2);
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
+            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+    );
+
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("http://resource1.com/resource1").get(),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate2").get(),
+            LibrdfNode::fromUriString("http://resource1.com/resource2").get()
+    );
+
+    Triple triple = triples1.pop_front();
+    auto m1 = triple.getUsages();
+    ASSERT_EQ(1, m1["statement"]);
+    ASSERT_EQ(1, m1["subject"]);
+    ASSERT_EQ(1, m1["predicate"]);
+    ASSERT_EQ(1, m1["resource"]);
+    ASSERT_EQ(1, m1["subject_uri"]);
+    ASSERT_EQ(1, m1["predicate_uri"]);
+    ASSERT_EQ(2, m1["resource_uri"]);
+
+    Triple triple2 = triples1.pop_front();
+    auto m2 = triple2.getUsages();
+    ASSERT_EQ(1, m2["statement"]);
+    ASSERT_EQ(1, m2["subject"]);
+    ASSERT_EQ(1, m2["predicate"]);
+    ASSERT_EQ(1, m2["resource"]);
+    ASSERT_EQ(2, m2["subject_uri"]);
+    ASSERT_EQ(1, m2["predicate_uri"]);
+    ASSERT_EQ(1, m2["resource_uri"]);
+    triple.printUsages();
+
+    triple.freeTriple();
+    triple2.freeTriple();
+
+}
+
+TEST(TriplesTestsNoFixture, TestUsagesPhysicalForce) {
+    // replicate physical force without actually using physical force
+    Triples triples1(6);
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("./MyModel.sbml#parameter_metaid_0").get(),
+            LibrdfNode::fromUriString("isPropertyOf").get(),
+            LibrdfNode::fromUriString("./MyModel.sbml#force_0").get()
+    );
+
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("./MyModel.sbml#parameter_metaid_0").get(),
+            LibrdfNode::fromUriString("isVersionOf").get(),
+            LibrdfNode::fromUriString("https://identifiers.org/opb/OPB_01058").get()
+    );
+
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("./MyModel.sbml#force_0").get(),
+            LibrdfNode::fromUriString("hasSourceParticipant").get(),
+            LibrdfNode::fromUriString("./MyModel.sbml#source_0").get()
+    );
+
+
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("./MyModel.sbml#force_0").get(),
+            LibrdfNode::fromUriString("hasSinkParticipant").get(),
+            LibrdfNode::fromUriString("./MyModel.sbml#sink_0").get()
+    );
+
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("./MyModel.sbml#source_0").get(),
+            LibrdfNode::fromUriString("hasPhysicalEntityReference").get(),
+            LibrdfNode::fromUriString("./MyModel.sbml#species_metaid_0").get()
+    );
+
+    triples1.emplace_back(
+            LibrdfNode::fromUriString("./MyModel.sbml#sink_0").get(),
+            LibrdfNode::fromUriString("hasPhysicalEntityReference").get(),
+            LibrdfNode::fromUriString("./MyModel.sbml#species_metaid_1").get()
+    );
+
+    Triple triple1 = triples1.pop_front();
+    auto m1 = triple1.getUsages();
+    ASSERT_EQ(2, m1["subject_uri"]);
+    ASSERT_EQ(1, m1["predicate_uri"]);
+    ASSERT_EQ(3, m1["resource_uri"]);
+
+    Triple triple2 = triples1.pop_front();
+    auto m2 = triple2.getUsages();
+    ASSERT_EQ(2, m2["subject_uri"]);
+    ASSERT_EQ(1, m2["predicate_uri"]);
+    ASSERT_EQ(1, m2["resource_uri"]);
+
+    Triple triple3 = triples1.pop_front();
+    auto m3 = triple3.getUsages();
+    ASSERT_EQ(3, m3["subject_uri"]);
+    ASSERT_EQ(1, m3["predicate_uri"]);
+    ASSERT_EQ(2, m3["resource_uri"]);
+
+    Triple triple4 = triples1.pop_front();
+    auto m4 = triple4.getUsages();
+    ASSERT_EQ(3, m4["subject_uri"]);
+    ASSERT_EQ(1, m4["predicate_uri"]);
+    ASSERT_EQ(2, m4["resource_uri"]);
+
+    Triple triple5 = triples1.pop_front();
+    auto m5 = triple5.getUsages();
+    ASSERT_EQ(2, m5["subject_uri"]);
+    ASSERT_EQ(2, m5["predicate_uri"]);
+    ASSERT_EQ(1, m5["resource_uri"]);
+
+    Triple triple6 = triples1.pop_front();
+    auto m6 = triple6.getUsages();
+    ASSERT_EQ(2, m6["subject_uri"]);
+    ASSERT_EQ(2, m6["predicate_uri"]);
+    ASSERT_EQ(1, m6["resource_uri"]);
+
+    triple1.freeTriple();
+    triple2.freeTriple();
+    triple3.freeTriple();
+    triple4.freeTriple();
+    triple5.freeTriple();
+    triple6.freeTriple();
+}
+
 
 /*
  * Collection of tests to try and debug the

@@ -317,11 +317,6 @@ namespace semsim {
         delete physical_entity_ptr;
     }
 
-    PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about) {
-        physical_entity_ptr->setAbout(about);
-        return physical_entity_ptr;
-    }
-
     PhysicalEntity *PhysicalEntity_setPhysicalProperty(
             PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property) {
         physical_entity_ptr->setPhysicalProperty(subject_metaid, physical_property);
@@ -397,10 +392,6 @@ namespace semsim {
         delete physicalProcess;
     }
 
-    PhysicalProcess *PhysicalProcess_setAbout(PhysicalProcess *physical_process, const char *about) {
-        physical_process->setAbout(about);
-        return physical_process;
-    }
 
     PhysicalProcess *
     PhysicalProcess_setPhysicalProperty(PhysicalProcess *physical_process, const char *subject_metaid,
@@ -450,13 +441,6 @@ namespace semsim {
         return cstr;
     }
 
-//    char *PhysicalProcess_getPhysicalProperty(PhysicalProcess *physical_process_ptr) {
-//        std::string pp = physical_process_ptr->getPhysicalProperty().str();
-//        char *cstr = (char *) malloc((pp.size() + 1) * sizeof(char));
-//        strcpy(cstr, pp.c_str());
-//        return cstr;
-//    }
-
     int PhysicalProcess_getNumSources(PhysicalProcess *physicalProcess) {
         return physicalProcess->getNumSources();
     }
@@ -488,10 +472,6 @@ namespace semsim {
     }
 
 
-    PhysicalForce *PhysicalForce_setAbout(PhysicalForce *physical_force_ptr, const char *about) {
-        physical_force_ptr->setAbout(about);
-        return physical_force_ptr;
-    }
 
     PhysicalForce *PhysicalForce_addSource(PhysicalForce *physical_force_ptr, double multiplier,
                                            const char *physical_entity_reference) {
@@ -537,13 +517,6 @@ namespace semsim {
         return cstr;
     }
 
-
-//    char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr) {
-//        std::string pp = physical_force_ptr->getPhysicalProperty().str();
-//        char *cstr = (char *) malloc((pp.size() + 1) * sizeof(char));
-//        strcpy(cstr, pp.c_str());
-//        return cstr;
-//    }
 
 
 }

@@ -420,6 +420,86 @@ TEST(TestTripleTwice, WithRawNodesWithMovingTheFirst) {
     triple3.freeStatement();
 }
 
+TEST(TestTripleTwice, TestUsageSimple) {
+    Triple triple1(
+            LibrdfNode::fromUriString("subject").get(),
+            LibrdfNode::fromUriString("predicate").get(),
+            LibrdfNode::fromUriString("resource").get()
+    );
+
+    auto usage = triple1.getUsages();
+    ASSERT_EQ(1, usage["statement"]);
+    ASSERT_EQ(1, usage["subject"]);
+    ASSERT_EQ(1, usage["predicate"]);
+    ASSERT_EQ(1, usage["resource"]);
+    ASSERT_EQ(1, usage["subject_uri"]);
+    ASSERT_EQ(1, usage["predicate_uri"]);
+    ASSERT_EQ(1, usage["resource_uri"]);
+//    for (auto &it: usage){
+//        std::cout << it.first << ": " << it.second << std::endl;
+//    }
+
+    triple1.freeTriple();
+}
+
+TEST(TestTripleTwice, TestUsageTwoUrisTheSame) {
+    Triple triple1(
+            LibrdfNode::fromUriString("subject").get(),
+            LibrdfNode::fromUriString("predicate").get(),
+            LibrdfNode::fromUriString("subject").get()
+    );
+
+    auto usage = triple1.getUsages();
+    ASSERT_EQ(1, usage["statement"]);
+    ASSERT_EQ(1, usage["subject"]);
+    ASSERT_EQ(1, usage["predicate"]);
+    ASSERT_EQ(1, usage["resource"]);
+    ASSERT_EQ(2, usage["subject_uri"]);
+    ASSERT_EQ(1, usage["predicate_uri"]);
+    ASSERT_EQ(2, usage["resource_uri"]);
+    triple1.freeTriple();
+}
+
+TEST(TestTripleTwice, TestUsageWhenTripleSimple) {
+    Triple triple1(
+            LibrdfNode::fromUriString("subject").get(),
+            LibrdfNode::fromUriString("predicate").get(),
+            LibrdfNode::fromUriString("resource").get()
+    );
+
+    Triple triple2 = std::move(triple1);
+
+    auto usage = triple2.getUsages();
+    ASSERT_EQ(1, usage["statement"]);
+    ASSERT_EQ(1, usage["subject"]);
+    ASSERT_EQ(1, usage["predicate"]);
+    ASSERT_EQ(1, usage["resource"]);
+    ASSERT_EQ(1, usage["subject_uri"]);
+    ASSERT_EQ(1, usage["predicate_uri"]);
+    ASSERT_EQ(1, usage["resource_uri"]);
+    triple2.freeTriple();
+}
+
+TEST(TestTripleTwice, TestUsageWhenTripleMoved) {
+    Triple triple1(
+            LibrdfNode::fromUriString("subject").get(),
+            LibrdfNode::fromUriString("predicate").get(),
+            LibrdfNode::fromUriString("subject").get()
+    );
+
+    Triple triple2 = std::move(triple1);
+
+    auto usage = triple2.getUsages();
+    ASSERT_EQ(1, usage["statement"]);
+    ASSERT_EQ(1, usage["subject"]);
+    ASSERT_EQ(1, usage["predicate"]);
+    ASSERT_EQ(1, usage["resource"]);
+    ASSERT_EQ(2, usage["subject_uri"]);
+    ASSERT_EQ(1, usage["predicate_uri"]);
+    ASSERT_EQ(2, usage["resource_uri"]);
+    triple2.freeTriple();
+}
+
 
 
 

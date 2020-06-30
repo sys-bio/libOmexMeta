@@ -158,8 +158,6 @@ namespace semsim {
 
     SEMSIM_API void PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);
 
-    SEMSIM_API PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about);
-
     SEMSIM_API PhysicalEntity *PhysicalEntity_setPhysicalProperty(
             PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property);
 
@@ -171,8 +169,6 @@ namespace semsim {
 
 
     SEMSIM_API char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);
-
-//    char *PhysicalEntity_getPhysicalProperty(PhysicalEntity *physical_entity_ptr);
 
     SEMSIM_API char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr);
 
@@ -191,9 +187,6 @@ namespace semsim {
 
     SEMSIM_API void PhysicalProcess_freeAll(PhysicalProcess *physicalProcess);
 
-    SEMSIM_API PhysicalProcess *PhysicalProcess_setAbout(
-            PhysicalProcess *physical_process, const char *about);
-
     SEMSIM_API PhysicalProcess *PhysicalProcess_setPhysicalProperty(
             PhysicalProcess *physical_process, const char *subject_metaid, const char *physical_property);
 
@@ -211,9 +204,6 @@ namespace semsim {
 
     SEMSIM_API char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
 
-    SEMSIM_API char *PhysicalProcess_getAbout(PhysicalProcess *physical_process_ptr);
-
-//    char *PhysicalProcess_getPhysicalProperty(PhysicalProcess *physical_process_ptr);
 
 /*********************************************************************
  * PhysicalForce class methods
@@ -232,9 +222,6 @@ namespace semsim {
      * nodes associated with it.
      */
     SEMSIM_API void PhysicalForce_freeAll(PhysicalForce *physical_force_ptr);
-
-    SEMSIM_API PhysicalForce *PhysicalForce_setAbout(
-            PhysicalForce *physical_force_ptr, const char *about);
 
     SEMSIM_API PhysicalForce *PhysicalForce_addSource(
             PhysicalForce *physical_force_ptr, double multiplier,
@@ -255,7 +242,6 @@ namespace semsim {
 
     SEMSIM_API char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
 
-//    char *PhysicalForce_getPhysicalProperty(PhysicalForce *physical_force_ptr);
 
 
 #ifdef __cplusplus

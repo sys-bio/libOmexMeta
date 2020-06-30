@@ -125,6 +125,8 @@ namespace semsim {
     }
 
     librdf_statement *Triple::getStatement() const {
+//        std::cout << "experimental add 1 to stmt count "<< std::endl;
+//        statement_->usage++;
         return statement_;
     }
 

@@ -66,8 +66,8 @@ TEST_F(EditorTests, TestAddSingleAnnotationToEditor) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
     Triple triple(LibrdfNode::fromUriString("SemsimMetaid0009").get(),
-            BiomodelsBiologyQualifier("is").getNode(),
-            Resource(LibrdfNode::fromUriString("uniprot:P0DP23")).getNode());
+                  BiomodelsBiologyQualifier("is").getNode(),
+                  Resource(LibrdfNode::fromUriString("uniprot:P0DP23")).getNode());
     editor.addSingleAnnotation(triple);
     int expected = 1;
     int actual = editor.size();
@@ -121,8 +121,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
                            "<SemsimMetaid0008>\n"
                            "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n"
                            "\n";
-    std::cout << actual <<
-              std::endl;
+    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -182,7 +181,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
             SEMSIM_TYPE_SBML);
 
     SingularAnnotation singularAnnotation;
-    singularAnnotation.setAbout("SemsimMetaid0001")
+    singularAnnotation
             .setPredicate("bqb", "isVersionOf")
             .setResourceUri("uniprot:PD02635");
 
@@ -294,20 +293,20 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
             SEMSIM_TYPE_SBML);
 
     PhysicalForce force = PhysicalForce(
-                    model.get(),
-                    PhysicalProperty("metaid", "OPB:OPB1234"),
-                    std::vector<SourceParticipant>(
-                            {SourceParticipant(model.get(),
-                                                       1.0,
-                                               "PhysicalEntityReference1"
-                            )}
-                    ),
-                    std::vector<SinkParticipant>(
-                            {SinkParticipant(model.get(),
-                                                     1.0,
-                                             "PhysicalEntityReference2"
-                            )}
-                    )
+            model.get(),
+            PhysicalProperty("metaid", "OPB:OPB1234"),
+            std::vector<SourceParticipant>(
+                    {SourceParticipant(model.get(),
+                                       1.0,
+                                       "PhysicalEntityReference1"
+                    )}
+            ),
+            std::vector<SinkParticipant>(
+                    {SinkParticipant(model.get(),
+                                     1.0,
+                                     "PhysicalEntityReference2"
+                    )}
+            )
     );
 
     editor.addCompositeAnnotation(&force);
@@ -352,7 +351,6 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
 
     SingularAnnotation singularAnnotation;
     singularAnnotation
-            .setAbout("SemsimMetaid0000")
             .setPredicate("bqb", "is")
             .setResourceLiteral("resource");
 
@@ -395,8 +393,8 @@ TEST_F(EditorTests, TestPhysicalForceBuilder) {
     PhysicalForce physicalForce = editor.createPhysicalForce();
     physicalForce
             .setPhysicalProperty("SemsimMetaid0000", "OPB:OPB1234")
-            .addSource( 1.0, "PhysicalEntity1")
-            .addSink( 1.0, "PhysicalEntity2");
+            .addSource(1.0, "PhysicalEntity1")
+            .addSink(1.0, "PhysicalEntity2");
 
     editor.addPhysicalForce(physicalForce);
 
@@ -415,9 +413,9 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
     PhysicalProcess physicalProcess = editor.createPhysicalProcess();
     physicalProcess
             .setPhysicalProperty("SemsimMetaid0000", "OPB:OPB1234")
-            .addSource( 1.0, "PhysicalEntity1")
-            .addSink( 1.0, "PhysicalEntity2")
-            .addMediator( 1.0, "PhysicalEntity3");
+            .addSource(1.0, "PhysicalEntity1")
+            .addSink(1.0, "PhysicalEntity2")
+            .addMediator(1.0, "PhysicalEntity3");
 
     editor.addPhysicalProcess(physicalProcess);
 
@@ -435,7 +433,6 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
 
     SingularAnnotation singularAnnotation;
     singularAnnotation
-            .setAbout("SemsimMetaid0000")
             .setPredicate("bqb", "is")
             .setResourceLiteral("resource");
 
@@ -469,12 +466,13 @@ TEST_F(EditorTests, TestRemovePhysicalForce) {
     PhysicalForce physicalForce = editor.createPhysicalForce();
     physicalForce
             .setPhysicalProperty("SemsimMetaid0002", "OPB:OPB1234")
-            .addSource( 1.0, "PhysicalEntity1")
-            .addSink( 1.0, "PhysicalEntity2");
+            .addSource(1.0, "PhysicalEntity1")
+            .addSink(1.0, "PhysicalEntity2");
 
-    editor.addPhysicalForce(physicalForce);
+
+//    editor.addPhysicalForce(physicalForce);
 //
-//    std::cout << rdf.toString("rdfxml-abbrev", "base") << std::endl;
+////    std::cout << rdf.toString("rdfxml-abbrev", "base") << std::endl;
 //
 //    ASSERT_EQ(8, rdf.size());
 //    editor.removePhysicalForce(physicalForce);
@@ -492,7 +490,6 @@ TEST_F(EditorTests, TestRemovePhysicalForce) {
 //
 //    PhysicalProcess physicalProcess = editor.createPhysicalProcess();
 //    physicalProcess
-//            .setAbout("SemsimMetaid0000")
 //            .setPhysicalProperty("metaid", "OPB:OPB1234")
 //            .addSource( 1.0, "PhysicalEntity1")
 //            .addSink( 1.0, "PhysicalEntity2")
@@ -526,7 +523,6 @@ public:
 
     EditorTestsPhysicalEntityMemory() {
         physicalEntity
-                .setAbout("SemsimMetaid0000")
                 .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
                 .setIdentity("uniprot:PD12345")
                 .addLocation("fma:fma:1234");
@@ -610,44 +606,128 @@ public:
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
 
     EditorTestsDeletePhysicalEntity() {
-        physicalEntity
-                .setAbout("SemsimMetaid0000")
-                .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
-                .setIdentity("uniprot:PD12345")
-                .addLocation("fma:fma:1234");
-        editor.addPhysicalEntity(physicalEntity);
+
     }
 
 };
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestRDFSizeBeforeRemovingAndNoMemoryLeaks) {
+    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    physicalEntity
+            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setIdentity("uniprot:PD12345")
+            .addLocation("fma:fma:1234");
+    editor.addPhysicalEntity(physicalEntity);
     ASSERT_EQ(4, rdf.size());
     Triples triples = physicalEntity.toTriples();
     ASSERT_EQ(4, triples.size());
+    triples.freeTriples();
 }
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteFirstTriple) {
+    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    physicalEntity
+            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setIdentity("uniprot:PD12345")
+            .addLocation("fma:fma:1234");
+    editor.addPhysicalEntity(physicalEntity);
+
+    /* Take and delete triple number 1
+     * 1) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
+     * 2) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
+     * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
+     * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
+     */
+
+    /*
+     * Mayb I should keep the addition to ref count on getStatement? ? ?
+     */
+
     Triples triples = physicalEntity.toTriples();
-//    Triple triple = triples.pop_front();
-//    std::cout << triple.str("ntriples", "base") << std::endl;
-//    triple.freeTriple();
-//    triples.freeTriples();
-//
-//    triples.freeTriples();
-////
-//    ASSERT_EQ(3, triples.size());
-//
-//    editor.removeSingleAnnotation(triple);
-//    ASSERT_EQ(3, rdf.size());
-//    triples.freeTriples();
-//    triple.freeTriple();
-//physicalEntity.free();
+    std::cout << triples.str("ntriples", "base") << std::endl;
+    Triple triple = triples.pop_front();
 
+    editor.removeSingleAnnotation(triple);
+    ASSERT_EQ(3, rdf.size());
 
+//    ASSERT_EQ(2, librdf_uri_get_usage(triple.getSubject()->value.uri));
+//    ASSERT_EQ(1, librdf_uri_get_usage(triple.getPredicate()->value.uri));
+//    ASSERT_EQ(1, librdf_uri_get_usage(triple.getResource()->value.uri));
+
+    triples.freeTriples();
+    triple.freeTriple();
 }
+
+TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteFirstToSecond) {
+    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    physicalEntity
+            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setIdentity("uniprot:PD12345")
+            .addLocation("fma:fma:1234");
+    editor.addPhysicalEntity(physicalEntity);
+
+    // get triples
+    Triples triples = physicalEntity.toTriples();
+    ASSERT_EQ(4, rdf.size());
+    std::cout << triples.str("rdfxml-abbrev", "base") << std::endl;
+
+    Triple triple = triples.pop_front();
+    std::cout << triple.str("ntriples", "base") << std::endl;
+    editor.removeSingleAnnotation(triple);
+    triple.freeTriple();
+    ASSERT_EQ(3, rdf.size());
+
+    Triple triple2 = triples.pop_front();
+    std::cout << triple2.str("ntriples", "base") << std::endl;
+    editor.removeSingleAnnotation2(triple2);
+    triple2.freeTriple();
+    ASSERT_EQ(2, rdf.size());
+
+
+    /* Take and delete triple number 1
+     * 1) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
+     * 2) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
+     * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
+     * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
+     */
+
+//    librdf_uri *u = librdf_new_uri(World::getWorld(), (const unsigned char *) "SemsimMetaid0000");
+//    std::cout << "usage: "<<librdf_uri_get_usage(u) << std::endl;
+}
+//
+//    Triples triples = physicalEntity.toTriples();
+//
+//    std::cout << triples.str("ntriples", "base") << std::endl;
+//
+//    // <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
+//    Triple triple1 = triples.pop_front();
+//    auto m1 = triple1.getUsages();
+//    std::cout << triple1.str("ntriples", "base") << std::endl;
+//
+//    ASSERT_EQ(2, m1["subject_uri"]);
+//    ASSERT_EQ(1, m1["predicate_uri"]);
+//    ASSERT_EQ(1, m1["resource_uri"]);
+//
+//    editor.removeSingleAnnotation(triple1);
+//
+//    // <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
+//    Triple triple2 = triples.pop_front();
+//    std::cout << triple2.str("ntriples", "base") << std::endl;
+//    editor.removeSingleAnnotation(triple2);
+//    ASSERT_EQ(2, rdf.size());
+//    triples.freeTriples();
+//    triple1.freeTriple();
+//    triple2.freeTriple();
+//}
+//
+//TEST_F(EditorTestsDeletePhysicalEntity, TestDelete) {
+//    ASSERT_EQ(4, rdf.size());
+//    editor.removePhysicalEntity(physicalEntity);
+//    ASSERT_EQ(0, rdf.size());
+//
+//}
 
 
 

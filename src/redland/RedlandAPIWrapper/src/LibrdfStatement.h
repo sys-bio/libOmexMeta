@@ -82,9 +82,11 @@ namespace redland {
         void setPredicate(librdf_node *node);
 
         bool isComplete();
+
+        std::unordered_map<std::string, int> getUsages();
+
+        void printUsages();
     };
-
-
 }
 
 #endif //LIBOMEXMETA_LIBRDFSTATEMENT_H

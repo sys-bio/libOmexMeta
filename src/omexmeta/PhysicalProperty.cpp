@@ -75,29 +75,6 @@ namespace semsim {
         return !(rhs == *this);
     }
 
-//    Triples PhysicalProperty::toTriples(Subject subject_metaid) {
-//        Triple v = isVersionOfTriple(subject_metaid);
-//        Triple p = isPropertyOfTriple(subject_metaid);
-//
-//        /*
-//         * Here we have used subject_metaid twice. Both times
-//         * the same node is being used but this is happening
-//         * outside the scope of librdf functions (i.e. in this function)
-//         * The librdf functinos would add 1 to the internal reference
-//         * counter of the node.
-//         * While a bit of a hack, here we add 1 to the node usage
-//         * manually so that we do not get a access violation error
-//         * later.
-//         * todo: find a better solution to this problem.
-//         */
-//        subject_metaid.getNode()->usage++;
-//
-//        Triples triples;
-//        triples.move_back(v);
-//        triples.move_back(p);
-//        return triples;
-//    }
-
 
 
 }

@@ -220,6 +220,21 @@ librdf_free_statement(librdf_statement *statement) {
     raptor_free_statement(statement);
 }
 
+/**
+ * librdf_free_statement:
+ * @statement: #librdf_statement object
+ *
+ * Destructor - destroy a #librdf_statement.
+ *
+ **/
+void
+librdf_free_statement2(librdf_statement *statement) {
+    if (!statement)
+        return;
+
+    raptor_free_statement2(statement);
+}
+
 
 
 /* methods */

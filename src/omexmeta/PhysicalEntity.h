@@ -16,6 +16,7 @@
 #include "omexmeta/Query.h"
 #include "omexmeta/SemsimUtils.h"
 #include "memory"
+#include <cassert>     /* assert */
 
 using namespace redland;
 
@@ -119,7 +120,7 @@ namespace semsim {
          * This method is a part of the PhysicalEntity builder interface
          *
          */
-        PhysicalEntity &setAbout(const std::string& metaid);
+//        PhysicalEntity &setAbout(const std::string& metaid);
 
         /*
          * @brief sets the physical property for a PhysicalEntity instance.

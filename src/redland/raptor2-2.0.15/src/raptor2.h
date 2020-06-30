@@ -1127,7 +1127,7 @@ RAPTOR_API
 void raptor_free_term(raptor_term *term);
 
 RAPTOR_API
-void raptor_free_term_wrapper(raptor_term *term);
+void raptor_free_term2(raptor_term *term);
 
 RAPTOR_API
 unsigned char *raptor_term_to_counted_string(raptor_term *term, size_t *len_p);
@@ -1170,6 +1170,9 @@ RAPTOR_API
 void raptor_statement_clear(raptor_statement *statement);
 
 RAPTOR_API
+void raptor_statement_clear2(raptor_statement *statement);
+
+RAPTOR_API
 raptor_statement *raptor_new_statement(raptor_world *world);
 
 RAPTOR_API
@@ -1184,7 +1187,8 @@ RAPTOR_API
 void raptor_free_statement(raptor_statement *statement);
 
 RAPTOR_API
-void raptor_free_statement_wrapper(raptor_statement *statement);
+void raptor_free_statement2(raptor_statement *statement);
+
 
 RAPTOR_API
 int raptor_statement_print(const raptor_statement *statement, FILE *stream);

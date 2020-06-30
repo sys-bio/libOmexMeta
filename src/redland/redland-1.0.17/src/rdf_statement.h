@@ -88,6 +88,8 @@ void librdf_statement_clear(librdf_statement *statement);
 /* destructor */
 REDLAND_API
 void librdf_free_statement(librdf_statement *statement);
+REDLAND_API
+void librdf_free_statement2(librdf_statement *statement);
 
 
 /* functions / methods */

@@ -35,6 +35,14 @@ namespace redland {
         return LibrdfNode(n);
     }
 
+    LibrdfNode LibrdfNode::fromRelativeUri(const std::string &uri_string, const std::string& base_uri) {
+        LibrdfUri uri(base_uri);
+        librdf_uri* u = librdf_new_uri_relative_to_base(uri.get(), (const unsigned char*) uri_string.c_str());
+        uri.freeUri();
+        librdf_node *n = librdf_new_node_from_uri(World::getWorld(), u);
+        return LibrdfNode(n);
+    }
+
     LibrdfNode LibrdfNode::fromBlank(const std::string &blank) {
         return LibrdfNode(librdf_new_node_from_blank_identifier(
                 World::getWorld(), (const unsigned char *) blank.c_str()

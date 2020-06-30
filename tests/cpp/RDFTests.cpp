@@ -47,27 +47,6 @@ TEST_F(RDFTests, TestFromStringSingularAnnotationSqlite) {
     ASSERT_EQ(expected, actual);
 }
 
-TEST_F(RDFTests, TestFromStringSingularAnnotation2) {
-    /*
-     * hashes
-     * trees
-     * memory
-     * file
-     * uri
-     */
-//    librdf_new_storage_from_factory()
-//    librdf_storage_factory* factory =
-//    librdf_storage* storage = librdf_new_storage_from_factory(World::getWorld(),
-//            "sqlite", "SQLite", nullptr);
-    librdf_storage* storage = librdf_new_storage(World::getWorld(), "sqlite", "db", "new='yes'");
-//    RDF *rdf = new RDF();
-//    RDF::fromString(rdf, samples.singular_annotation1, "rdfxml", "singular_annotation1_base");
-//    int expected = 1;
-//    int actual = rdf->size();
-//    ASSERT_EQ(expected, actual);
-//    delete rdf;
-}
-
 TEST_F(RDFTests, TestFromStringTurtleBag) {
     RDF rdf = RDF::fromString(samples.rdf_turtle_bag_example, "turtle");
     int expected = 7;

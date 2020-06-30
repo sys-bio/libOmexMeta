@@ -157,6 +157,7 @@ namespace semsim {
          * @param singularAnnotation An instance of SingularAnnotation to remove from the model
          */
         void removeSingleAnnotation(const SingularAnnotation &singularAnnotation) const;
+        void removeSingleAnnotation2(const SingularAnnotation &singularAnnotation) const;
 
         /*
          * @brief add a composite annotation to the rdf graph.

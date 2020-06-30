@@ -30,13 +30,13 @@ TEST_F(LibrdfStatementTests, TestCreate) {
 
 }
 
-TEST_F(LibrdfStatementTests, TestCopyConstructor) {
-    redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate, resource);
-    redland::LibrdfStatement statement2 = statement1;
-    std::string actual1 = statement1.getSubjectStr();
-    std::string actual2 = statement2.getSubjectStr();
-    ASSERT_STREQ(actual1.c_str(), actual2.c_str());
-}
+//TEST_F(LibrdfStatementTests, TestCopyConstructor) {
+//    redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate, resource);
+//    redland::LibrdfStatement statement2 = statement1;
+//    std::string actual1 = statement1.getSubjectStr();
+//    std::string actual2 = statement2.getSubjectStr();
+//    ASSERT_STREQ(actual1.c_str(), actual2.c_str());
+//}
 
 TEST_F(LibrdfStatementTests, TestMoveConstructor) {
     redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate, resource);
@@ -46,14 +46,25 @@ TEST_F(LibrdfStatementTests, TestMoveConstructor) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(LibrdfStatementTests, TestCopyAssignment) {
-    redland::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate),
-                                                          std::move(resource));
-    redland::LibrdfStatement statement2 = statement1;
-    std::string actual1 = statement1.getSubjectStr();
-    std::string actual2 = statement2.getSubjectStr();
-    ASSERT_STREQ(actual1.c_str(), actual2.c_str());
+TEST_F(LibrdfStatementTests, TestMoveConstructor2) {
+    redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate, resource);
+    redland::LibrdfStatement statement2 = LibrdfStatement(subject, predicate, resource);
+    redland::LibrdfStatement statement3 = std::move(statement1);
+    std::string expected = "subject";
+    std::string actual = statement2.getSubjectStr();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    statement2.printUsages();
+    statement3.printUsages();
 }
+
+//TEST_F(LibrdfStatementTests, TestCopyAssignment) {
+//    redland::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate),
+//                                                          std::move(resource));
+//    redland::LibrdfStatement statement2 = statement1;
+//    std::string actual1 = statement1.getSubjectStr();
+//    std::string actual2 = statement2.getSubjectStr();
+//    ASSERT_STREQ(actual1.c_str(), actual2.c_str());
+//}
 
 TEST_F(LibrdfStatementTests, TestMoveAssignment) {
     redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate,

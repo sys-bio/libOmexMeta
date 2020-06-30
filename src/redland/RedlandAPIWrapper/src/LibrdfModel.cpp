@@ -53,18 +53,27 @@ namespace redland {
 
 
     void LibrdfModel::addStatement(const LibrdfStatement &statement) const {
+//        std::cout << "Experimental free statement here2" << std::endl;
         librdf_model_add_statement(get(), statement.get());
+//        librdf_free_statement(statement.get());
     }
 
     void LibrdfModel::addStatement(librdf_statement *statement) const {
+//        std::cout << "Experimental free statement here1" << std::endl;
         librdf_model_add_statement(get(), statement);
+        /*
+         * Try and frere the extr uri's here
+         */
+//        librdf_free_uri(librdf_node_get_uri(statement->subject));
+
+//        librdf_free_statement(statement);
     }
 
     librdf_model *LibrdfModel::get() const {
         return model_;
     }
 
-    LibrdfQueryResults LibrdfModel::query(LibrdfQuery query) {
+    LibrdfQueryResults LibrdfModel::query(const LibrdfQuery& query) const {
         librdf_query_results *results = librdf_query_execute(query.get(), model_);
         return LibrdfQueryResults(results);
     }

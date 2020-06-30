@@ -154,7 +154,6 @@ namespace redland {
 
 
     LibrdfStatement::LibrdfStatement(LibrdfStatement &&statement) noexcept {
-        std::cout << "LibrdfStatement move constructor called" <<std::endl;
         if (statement.statement_ != nullptr) {
             if (statement_ != nullptr) {
                 librdf_free_statement(statement_);
@@ -166,7 +165,6 @@ namespace redland {
     }
 
     LibrdfStatement &LibrdfStatement::operator=(LibrdfStatement &&statement) noexcept {
-        std::cout << "LibrdfStatement move assignment called" <<std::endl;
         if (this != &statement) {
             if (statement.statement_ != nullptr) {
                 if (statement_ != nullptr) {
@@ -197,5 +195,26 @@ namespace redland {
 
     bool LibrdfStatement::operator!=(const LibrdfStatement &rhs) const {
         return !(rhs == *this);
+    }
+
+    std::unordered_map<std::string, int> LibrdfStatement::getUsages() {
+        std::unordered_map<std::string, int> map;
+        map["statement"] = statement_->usage;
+        map["subject"] = getSubject()->usage;
+        map["predicate"] = getPredicate()->usage;
+        map["resource"] = getResource()->usage;
+        map["subject_uri"] = librdf_uri_get_usage(getSubject()->value.uri);
+        map["predicate_uri"] = librdf_uri_get_usage(getPredicate()->value.uri);
+        map["resource_uri"] = librdf_uri_get_usage(getResource()->value.uri);
+//        map["subject_literal_datatype"] = librdf_uri_get_usage(getResource()->value.literal.datatype);
+//        map["resource_literal_datatype"] = librdf_uri_get_usage(getResource()->value.literal.datatype);
+        return map;
+    }
+
+    void LibrdfStatement::printUsages() {
+        auto usages = getUsages();
+        for (auto &it : usages){
+            std::cout << it.first << ": " << it.second << std::endl;
+        }
     }
 }

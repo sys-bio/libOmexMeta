@@ -224,7 +224,7 @@ namespace semsim {
          * want the results to be presented.
          * Options are xml, json, table, csv, mkr, tsv, html, turtle and rdfxml.
          */
-        std::string resultsAsStr(const std::string &output_format);
+        [[nodiscard]] std::string resultsAsStr(const std::string &output_format, std::string baseuri = "query_results") const;
 
         /*
          * @brief Run a query.

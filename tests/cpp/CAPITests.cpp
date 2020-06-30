@@ -450,7 +450,6 @@ TEST_F(CAPITests, TestPhysicalEntity) {
     );
 
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
-    physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "metaid87");
     physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "metaid87", "opb/OPB007");
     physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot:PD58736");
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "fma:FMA_8764");
@@ -480,49 +479,6 @@ TEST_F(CAPITests, TestPhysicalEntity) {
     RDF_delete(rdf_ptr);
 }
 
-TEST_F(CAPITests, TestPhysicalEntityAbout) {
-    RDF *rdf_ptr = RDF_new();
-    Editor *editor_ptr = rdf_ptr->toEditorPtr(
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-            SEMSIM_TYPE_SBML
-    );
-    PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
-    physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "metaid87");
-    char *actual = PhysicalEntity_getAbout(physical_entity_ptr);
-    const char *expected = "metaid87";
-    std::cout << actual << std::endl;
-    ASSERT_STREQ(expected, actual);
-
-    Editor_delete(editor_ptr);
-    free_c_char_star(actual);
-    // we need to free the node inside get about manually here because
-    // we are not using the str() method
-    PhysicalEntity_freeAll(physical_entity_ptr);
-    RDF_delete(rdf_ptr);
-}
-
-
-//TEST_F(CAPITests, TestPhysicalEntityPhysicalProperty) {
-//    RDF *rdf_ptr = RDF_new();
-//    Editor *editor_ptr = rdf_ptr->toEditorPtr(
-//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-//            SEMSIM_TYPE_SBML
-//    );
-//    PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
-//    physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "opb/opb_465");
-//    char *actual = PhysicalEntity_getPhysicalProperty(physical_entity_ptr);
-//    const char *expected = "https://identifiers.org/opb/opb_465";
-//    std::cout << actual <<
-//              std::endl;
-//    ASSERT_STREQ(expected, actual);
-//
-//    Editor_delete(editor_ptr);
-//    // we must free this node manually here. Cannot be incorporated into
-//    // delete function because it'll clash with the main use case (i.e. str method)
-//    PhysicalEntity_freeAll(physical_entity_ptr);
-//    free_c_char_star(actual);
-//    RDF_delete(rdf_ptr);
-//}
 
 TEST_F(CAPITests, TestPhysicalEntityGetIdentity) {
     RDF *rdf_ptr = RDF_new();
@@ -602,7 +558,6 @@ TEST_F(CAPITests, TestPhysicalEntityStr) {
     );
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
     physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "metaid87", "opb/opb_465");
-    physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "metaid87");
     physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot/PD7363");
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8376");
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8377");
@@ -641,7 +596,6 @@ TEST_F(CAPITests, TestPhysicalProcess) {
     );
     PhysicalProcess *physical_process_ptr = PhysicalProcess_new(editor_ptr);
 
-    physical_process_ptr = PhysicalProcess_setAbout(physical_process_ptr, "Metaid0937");
     physical_process_ptr = PhysicalProcess_setPhysicalProperty(physical_process_ptr, "Metaid0937", "opb/opb93864");
     physical_process_ptr = PhysicalProcess_addSink(
             physical_process_ptr, 1.0, "Entity8");
@@ -695,7 +649,6 @@ TEST_F(CAPITests, TestPhysicalForce) {
     );
     PhysicalForce *physical_force_ptr = PhysicalForce_new(editor_ptr);
 
-    physical_force_ptr = PhysicalForce_setAbout(physical_force_ptr, "Metaid0937");
     physical_force_ptr = PhysicalForce_setPhysicalProperty(physical_force_ptr, "Metaid0937", "opb/opb93864");
     physical_force_ptr = PhysicalForce_addSink(
             physical_force_ptr, 1.0, "Entity8");
@@ -743,7 +696,6 @@ TEST_F(CAPITests, TestEditorToRDF) {
     );
     PhysicalProcess *physical_process_ptr = PhysicalProcess_new(editor_ptr);
 
-    physical_process_ptr = PhysicalProcess_setAbout(physical_process_ptr, "SemsimMetaid0006");
     physical_process_ptr = PhysicalProcess_setPhysicalProperty(physical_process_ptr, "SemsimMetaid0006",
                                                                "opb/opb93864");
     physical_process_ptr = PhysicalProcess_addSink(
@@ -755,7 +707,6 @@ TEST_F(CAPITests, TestEditorToRDF) {
 
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
     physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "SemsimMetaid0007", "opb/opb_465");
-    physical_entity_ptr = PhysicalEntity_setAbout(physical_entity_ptr, "SemsimMetaid0007");
     physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot/PD7363");
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8376");
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8377");
@@ -763,7 +714,6 @@ TEST_F(CAPITests, TestEditorToRDF) {
 
     PhysicalForce *physical_force_ptr = PhysicalForce_new(editor_ptr);
 
-    physical_force_ptr = PhysicalForce_setAbout(physical_force_ptr, "SemsimMetaid0008");
     physical_force_ptr = PhysicalForce_setPhysicalProperty(physical_force_ptr, "SemsimMetaid0008", "opb/opb93864");
     physical_force_ptr = PhysicalForce_addSink(
             physical_force_ptr, 1.0, "Entity8");

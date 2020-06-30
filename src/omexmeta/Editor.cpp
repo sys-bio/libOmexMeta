@@ -5,6 +5,7 @@
 #include "omexmeta/Editor.h"
 
 #include <utility>
+#include "filesystem"
 
 namespace semsim {
     Editor::Editor(const std::string &xml, SemsimXmlType type,
@@ -70,14 +71,14 @@ namespace semsim {
 //        }
 //    }
 
-    void Editor::extractNamespacesFromTriplesVector(PhysicalPhenomenon* pp) {
+    void Editor::extractNamespacesFromTriplesVector(PhysicalPhenomenon *pp) {
         // here we create our own localized Triples object
         // and deplete it during the while loop. This
         // is preferable to passing in a Triples object
         // as argument because that would take copies and
         // mess with cleaning up the triples later.
         Triples triples = pp->toTriples();
-        while(!triples.isEmpty()){
+        while (!triples.isEmpty()) {
             Triple triple = triples.pop_front();
             addNamespaceFromAnnotation(triple.getPredicateStr());
             triple.freeStatement();
@@ -121,18 +122,43 @@ namespace semsim {
     }
 
     void Editor::addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr) {
+        /*
+         * This method is adding to the reference count of created Triples URI's
+         * and not removing them
+         *
+         * Should pop_front be adding to ref count? Or is it adding
+         * where it shouldn't?
+         */
 //        extractNamespacesFromTriplesVector(phenomenonPtr);
         Triples triples = phenomenonPtr->toTriples();
         while (!triples.isEmpty()) {
             // remove a Triple off the front of triples
             Triple triple = triples.pop_front();
+            std::cout << "before: " << triple.str("ntriples", "base") << std::endl;
+            triple.printUsages();
+
             // collect the namespace from the triple
             addNamespaceFromAnnotation(triple.getPredicateStr());
             // add to the model
-            model_.addStatement(triple.getStatement());
+            librdf_statement *stmt = triple.getStatement();
+            model_.addStatement(stmt);
+            std::cout << "after: " << triple.str("ntriples", "base") << std::endl;
+            triple.printUsages();
+
+//            librdf_free_uri(triple.getSubject()->value.uri);
+//            triple.getSubject()->value.uri = nullptr;
+//            librdf_free_uri(triple.getPredicate()->value.uri);
+//            librdf_free_uri(triple.getResource()->value.uri);
+
+            librdf_free_statement(stmt);
             // remember to free it.
             triple.freeStatement();
         }
+
+        /*
+         * Perhaps these intermediate operations are adding to the
+         * usage count?
+         */
 
     }
 
@@ -141,6 +167,9 @@ namespace semsim {
             throw NullPointerException(
                     "NullPointerException: Editor::addPhysicalEntity() physicalEntity::subject_ (i.e. about) node is empty");
         }
+        /*
+         * look at result of commenting out the check stateent?
+         */
         checkValidMetaid(physicalEntity.getAbout());
         addCompositeAnnotation(&physicalEntity);
     }
@@ -168,10 +197,44 @@ namespace semsim {
 
     }
 
-
     void Editor::removeSingleAnnotation(const SingularAnnotation &singularAnnotation) const {
         librdf_statement *stmt = singularAnnotation.getStatement();
         model_.removeStatement(stmt);
+        /*
+         * Do I need to free the statement ascertained from getStatement?
+         */
+//        librdf_free_statement(stmt);
+    }
+
+    void Editor::removeSingleAnnotation2(const SingularAnnotation &singularAnnotation) const {
+        /*
+         * Is the problem related to the strings being modified for storage?
+         * Perhaps the format of the metaid is wrong, as it must be normalized
+         * to the base uri. What is the base uri?
+         */
+        std::string s = singularAnnotation.getSubjectStr();
+        std::string p = singularAnnotation.getPredicateStr();
+        std::string r = singularAnnotation.getResourceStr();
+
+        std::cout << std::filesystem::current_path() << std::endl;
+
+        std::string q =
+                "SELECT ?predicate ?resource\n"
+                "WHERE { \n"
+                "   <SemsimMetaid0000> ?predicate ?resource .\n"
+                "}";
+        Query query(model_.get(), q);
+        std::string str = query.resultsAsStr("csv", "query_results_base");
+        std::cout << "query result: " << str << std::endl;
+
+
+
+//        librdf_statement *stmt = singularAnnotation.getStatement();
+//        model_.removeStatement(stmt);
+        /*
+         * Do I need to free the statement ascertained from getStatement?
+         */
+//        librdf_free_statement(stmt);
     }
 
     void Editor::removePhysicalEntity(PhysicalEntity &physicalEntity) {
@@ -218,12 +281,15 @@ namespace semsim {
         int count = 0;
         for (auto &it: physicalForce.toTriples()) {
             std::cout << "count: " << count << ": " << it.str("ntriples", "base")
-            << ", usage count: " << it.get()->usage
-            << ", Subject usage: " << it.getSubject()->usage
-            << ", Predicate usage: " << it.getPredicate()->usage
-            << ", resource usage: " << it.getResource()->usage
-            << "\n" << std::endl;
-            librdf_statement* triple = it.getStatement();
+                      //            << ", usage count: " << it.get()->usage
+                      //            << ", Subject usage: " << it.getSubject()->usage
+                      //            << ", Predicate usage: " << it.getPredicate()->usage
+                      //            << ", resource usage: " << it.getResource()->usage
+                      << ", subject uri usage: " << librdf_uri_get_usage(it.getResource()->value.uri)
+                      << ", predicate uri usage: " << librdf_uri_get_usage(it.getResource()->value.uri)
+                      << ", resource uri usage: " << librdf_uri_get_usage(it.getResource()->value.uri)
+                      << "\n" << std::endl;
+            librdf_statement *triple = it.getStatement();
             model_.removeStatement(triple);
             count++;
         }

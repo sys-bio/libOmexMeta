@@ -50,7 +50,8 @@ namespace redland {
 
         [[nodiscard]] librdf_model *get() const;
 
-        LibrdfQueryResults query(LibrdfQuery query);
+//        LibrdfQueryResults query(LibrdfQuery query);
+        [[nodiscard]] LibrdfQueryResults query(const LibrdfQuery& query) const;
 
         LibrdfStream toStream();
 
@@ -77,6 +78,8 @@ namespace redland {
         int startTransactionWithHandle(void *handle) const;
 
         int getTransactionRollback() const;
+
+        void addStatement(const librdf_statement &statement) const;
     };
 }
 

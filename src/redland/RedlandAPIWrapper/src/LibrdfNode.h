@@ -111,6 +111,8 @@ namespace redland {
          * @brief shallow copy a node. Internal ref count incremented by 1
          */
         static LibrdfNode copyNode(const LibrdfNode &node);
+
+        static LibrdfNode fromRelativeUri(const std::string &uri_string, const std::string &base_uri);
     };
 }
 

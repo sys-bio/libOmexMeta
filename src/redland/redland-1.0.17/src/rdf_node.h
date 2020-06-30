@@ -132,6 +132,8 @@ librdf_node *librdf_new_node_from_node(librdf_node *node);
 /* destructor */
 REDLAND_API
 void librdf_free_node(librdf_node *node);
+REDLAND_API
+void librdf_free_node2(librdf_node *node);
 
 
 
