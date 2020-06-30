@@ -208,9 +208,6 @@ class PyOmexMetaAPI:
     # PhysicalEntity methods
     #
 
-    # PhysicalEntity *PhysicalEntity_setAbout(PhysicalEntity *physical_entity_ptr, const char *about);
-    physical_entity_set_about = Util.load_func("PhysicalEntity_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
-
     # PhysicalEntity *PhysicalEntity_setPhysicalProperty(
     #      PhysicalEntity *physical_entity_ptr, const char *subject_metaid, const char *physical_property);
     physical_entity_set_physical_property = Util.load_func("PhysicalEntity_setPhysicalProperty",
@@ -222,9 +219,6 @@ class PyOmexMetaAPI:
     # PhysicalEntity *PhysicalEntity_addLocation(
     #         PhysicalEntity *physical_entity_ptr, const char *location_resource);
     physical_entity_add_location = Util.load_func("PhysicalEntity_addLocation", [ct.c_int64, ct.c_char_p], ct.c_int64)
-
-    # char *PhysicalEntity_getAbout(PhysicalEntity *physical_entity_ptr);
-    physical_entity_get_about = Util.load_func("PhysicalEntity_getAbout", [ct.c_int64], ct.c_int64)
 
     # char *PhysicalEntity_getIdentity(PhysicalEntity *physical_entity_ptr);
     physical_entity_get_identity = Util.load_func("PhysicalEntity_getIdentity", [ct.c_int64], ct.c_int64)
@@ -248,10 +242,6 @@ class PyOmexMetaAPI:
     #################################################################
     # PhysicalProcess methods
     #
-
-    # PhysicalProcess *PhysicalProcess_setAbout(
-    #         PhysicalProcess *physical_process, const char *about);
-    physical_process_set_about = Util.load_func("PhysicalProcess_setAbout", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_setPhysicalProperty(
     #         PhysicalProcess *physical_process, const char *subject_metaid, const char *physical_property);
@@ -280,9 +270,6 @@ class PyOmexMetaAPI:
     physical_process_str = Util.load_func("PhysicalProcess_str",
                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
-    # char *PhysicalProcess_getAbout(PhysicalProcess *physical_process_ptr);
-    physical_process_get_about = Util.load_func("PhysicalProcess_getAbout", [ct.c_int64], ct.c_int64)
-
     # void PhysicalProcess_delete(PhysicalProcess *physicalProcess);
     physical_process_delete = Util.load_func("PhysicalProcess_delete", [ct.c_int64], None)
 
@@ -292,11 +279,6 @@ class PyOmexMetaAPI:
     #################################################################
     # PhysicalForce Methods
     #
-
-    # PhysicalForce *PhysicalForce_setAbout(
-    #         PhysicalForce *physical_force_ptr, const char *about);
-    physical_force_set_about = Util.load_func("PhysicalForce_setAbout", [ct.c_int64, ct.c_char_p],
-                                              ct.c_int64)
 
     # PhysicalForce *PhysicalForce_setPhysicalProperty(
     #         PhysicalForce *physical_force_ptr, const char *subject_metaid, const char *physical_property);
@@ -318,9 +300,6 @@ class PyOmexMetaAPI:
     # char *PhysicalForce_str(PhysicalForce *physical_force_ptr, const char *format, const char *base_uri);
     physical_force_str = Util.load_func("PhysicalForce_str",
                                         [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
-
-    # char *PhysicalForce_getAbout(PhysicalForce *physical_force_ptr);
-    physical_force_get_about = Util.load_func("PhysicalForce_getAbout", [ct.c_int64], ct.c_int64)
 
     # void PhysicalForce_delete(PhysicalForce *physicalForce);
     physical_force_delete = Util.load_func("PhysicalForce_delete", [ct.c_int64], None)

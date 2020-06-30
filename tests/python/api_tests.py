@@ -451,17 +451,6 @@ class TestAPI(unittest.TestCase):
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.singular_annotation_delete(singular_annotation)
 
-    def test_physical_entity_about(self):
-        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        physical_entity = PyOmexMetaAPI.editor_new_physical_entity(editor_ptr)
-        PyOmexMetaAPI.physical_entity_set_about(physical_entity, "cytosol".encode())
-        ptr = PyOmexMetaAPI.physical_entity_get_about(physical_entity)
-        actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
-        expected = "cytosol"
-        self.assertEqual(expected, actual)
-        PyOmexMetaAPI.editor_delete(editor_ptr)
-        PyOmexMetaAPI.physical_entity_delete(physical_entity)
-
     def test_physical_entity_set_identity(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         physical_entity = PyOmexMetaAPI.editor_new_physical_entity(editor_ptr)
@@ -579,17 +568,6 @@ class TestAPI(unittest.TestCase):
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.physical_entity_delete(physical_entity)
 
-    def test_physical_process_about(self):
-        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        physical_process = PyOmexMetaAPI.editor_new_physical_process(editor_ptr)
-        PyOmexMetaAPI.physical_process_set_about(physical_process, "cytosol".encode())
-        ptr = PyOmexMetaAPI.physical_process_get_about(physical_process)
-        actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
-        expected = "cytosol"
-        self.assertEqual(expected, actual)
-        PyOmexMetaAPI.editor_delete(editor_ptr)
-        PyOmexMetaAPI.physical_process_delete(physical_process)
-
     def test_physical_process_str(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         physical_process = PyOmexMetaAPI.editor_new_physical_process(editor_ptr)
@@ -622,13 +600,13 @@ class TestAPI(unittest.TestCase):
     </tr>
     <tr class="triple">
       <td><span class="uri"><a href="cytosol">cytosol</a></span></td>
-      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isVersionOf">http://biomodels.net/biology-qualifiers/isVersionOf</a></span></td>
-      <td><span class="uri"><a href="https://identifiers.org/opb/opb12345">https://identifiers.org/opb/opb12345</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isPropertyOf">http://biomodels.net/biology-qualifiers/isPropertyOf</a></span></td>
+      <td><span class="uri"><a href="PhysicalProcess0000">PhysicalProcess0000</a></span></td>
     </tr>
     <tr class="triple">
       <td><span class="uri"><a href="cytosol">cytosol</a></span></td>
-      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isPropertyOf">http://biomodels.net/biology-qualifiers/isPropertyOf</a></span></td>
-      <td><span class="uri"><a href="PhysicalProcess0000">PhysicalProcess0000</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/isVersionOf">http://biomodels.net/biology-qualifiers/isVersionOf</a></span></td>
+      <td><span class="uri"><a href="https://identifiers.org/opb/opb12345">https://identifiers.org/opb/opb12345</a></span></td>
     </tr>
     <tr class="triple">
       <td><span class="uri"><a href="PhysicalProcess0000">PhysicalProcess0000</a></span></td>
@@ -727,17 +705,6 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(expected, actual)
         PyOmexMetaAPI.editor_delete(editor_ptr)
         PyOmexMetaAPI.physical_process_delete(physical_process)
-
-    def test_physical_force_about(self):
-        editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
-        physical_force = PyOmexMetaAPI.editor_new_physical_force(editor_ptr)
-        PyOmexMetaAPI.physical_force_set_about(physical_force, "cytosol".encode())
-        ptr = PyOmexMetaAPI.physical_force_get_about(physical_force)
-        actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
-        expected = "cytosol"
-        self.assertEqual(expected, actual)
-        PyOmexMetaAPI.editor_delete(editor_ptr)
-        PyOmexMetaAPI.physical_force_delete(physical_force)
 
     def test_editor_add_physical_force(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)

@@ -780,33 +780,35 @@ class DrawTests(unittest.TestCase):
         self.assertTrue(os.path.isfile(fname))
         os.remove(fname)
 
-
-class TestHorrendouslyLargeRDFFile(unittest.TestCase):
-
-    def setUp(self) -> None:
-        self.zip_fname = os.path.join(
-            os.path.dirname(__file__), "BrendaParameters.zip"
-        )
-        if not os.path.isfile(self.zip_fname):
-            raise FileNotFoundError(self.zip_fname)
-
-        with zipfile.ZipFile(self.zip_fname, 'r') as zip_ref:
-            zip_ref.extractall(os.path.dirname(self.zip_fname))
-
-        self.fname = os.path.join(os.path.dirname(__file__), "brenda_parameters_1.xml")
-        if not os.path.isfile(self.fname):
-            raise FileNotFoundError(self.fname)
-
-    def test_sqlite(self):
-        db_file = os.path.join(os.path.dirname(__file__), "BrendaAnnotDatabaseSQLite.db")
-        rdf = RDF("sqlite", db_file, "new='yes'")
-        rdf.add_from_file(self.fname, "rdfxml")
-        print(len(rdf))
-
-    def test_bdb(self):
-        rdf = RDF("hashes", "BrendaAnnotDatabaseBDB.db", "hash-type='bdb',dir='{}'".format(os.path.dirname(__file__)))
-        rdf.add_from_file(self.fname, "rdfxml")
-        print(len(rdf))
+"""
+The test below takes too long to run. It works. 
+"""
+# class TestHorrendouslyLargeRDFFile(unittest.TestCase):
+#
+#     def setUp(self) -> None:
+#         self.zip_fname = os.path.join(
+#             os.path.dirname(__file__), "BrendaParameters.zip"
+#         )
+#         if not os.path.isfile(self.zip_fname):
+#             raise FileNotFoundError(self.zip_fname)
+#
+#         with zipfile.ZipFile(self.zip_fname, 'r') as zip_ref:
+#             zip_ref.extractall(os.path.dirname(self.zip_fname))
+#
+#         self.fname = os.path.join(os.path.dirname(__file__), "brenda_parameters_1.xml")
+#         if not os.path.isfile(self.fname):
+#             raise FileNotFoundError(self.fname)
+#
+#     def test_sqlite(self):
+#         db_file = os.path.join(os.path.dirname(__file__), "BrendaAnnotDatabaseSQLite.db")
+#         rdf = RDF("sqlite", db_file, "new='yes'")
+#         rdf.add_from_file(self.fname, "rdfxml")
+#         print(len(rdf))
+#
+#     def test_bdb(self):
+#         rdf = RDF("hashes", "BrendaAnnotDatabaseBDB.db", "hash-type='bdb',dir='{}'".format(os.path.dirname(__file__)))
+#         rdf.add_from_file(self.fname, "rdfxml")
+#         print(len(rdf))
 
 if __name__ == "__main__":
     unittest.main()
