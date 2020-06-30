@@ -231,6 +231,14 @@ namespace semsim {
         void freeTriples();
 
         void addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr);
+
+        void addSingleAnnotationNoValidation(SingularAnnotation &singularAnnotation);
+
+        void addCompositeAnnotation2(PhysicalPhenomenon *phenomenonPtr);
+
+        void removePhysicalEntity2(PhysicalEntity &physicalEntity) const;
+
+        void addTriples(Triples &triples);
     };
 
 }

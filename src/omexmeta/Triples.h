@@ -118,6 +118,10 @@ namespace semsim {
         Triple pop_front();
 
         int capacity();
+
+        void freeTriplesAndUris();
+
+        void freeTriples2();
     };
 
 }

@@ -134,5 +134,9 @@ namespace semsim {
         freeStatement();
     }
 
+    void Triple::freeTripleAndUris() {
+        freeStatementAndUris();
+    }
+
 }
 

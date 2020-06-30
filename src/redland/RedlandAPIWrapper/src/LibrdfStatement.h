@@ -86,6 +86,8 @@ namespace redland {
         std::unordered_map<std::string, int> getUsages();
 
         void printUsages();
+
+        void freeStatementAndUris();
     };
 }
 

@@ -182,6 +182,42 @@ namespace redland {
         if (statement_ != nullptr) {
             librdf_free_statement(statement_);
             statement_ = nullptr;
+
+        }
+    }
+
+    void LibrdfStatement::freeStatementAndUris() {
+        /*
+         * It looks like URIs do not get freed with librdf_statement.
+         * So we do it here
+         */
+        if (statement_ != nullptr) {
+            librdf_node *subject = getSubject();
+            if (subject != nullptr) {
+                if (subject->type == RAPTOR_TERM_TYPE_URI && subject->value.uri != nullptr) {
+                    librdf_free_uri(subject->value.uri);
+                } else if(subject->type == RAPTOR_TERM_TYPE_LITERAL && subject->value.literal.datatype != nullptr) {
+                    librdf_free_uri(subject->value.literal.datatype);
+                }
+            }
+            librdf_node *predicate = getPredicate();
+            if (predicate != nullptr) {
+                if (predicate->type == RAPTOR_TERM_TYPE_URI && predicate->value.uri != nullptr) {
+                    librdf_free_uri(predicate->value.uri);
+                } else if(predicate->type == RAPTOR_TERM_TYPE_LITERAL && predicate->value.literal.datatype != nullptr) {
+                    librdf_free_uri(predicate->value.literal.datatype);
+                }
+            }
+            librdf_node *resource = getResource();
+            if (resource != nullptr) {
+                if (resource->type == RAPTOR_TERM_TYPE_URI && resource->value.uri != nullptr) {
+                    librdf_free_uri(resource->value.uri);
+                } else if(resource->type == RAPTOR_TERM_TYPE_LITERAL && resource->value.literal.datatype != nullptr) {
+                    librdf_free_uri(resource->value.literal.datatype);
+                }
+            }
+            librdf_free_statement(statement_);
+            statement_ = nullptr;
         }
     }
 
@@ -213,7 +249,7 @@ namespace redland {
 
     void LibrdfStatement::printUsages() {
         auto usages = getUsages();
-        for (auto &it : usages){
+        for (auto &it : usages) {
             std::cout << it.first << ": " << it.second << std::endl;
         }
     }

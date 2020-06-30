@@ -75,6 +75,8 @@ namespace semsim {
         bool isEmpty();
 
         Triple &setPredicate(const std::string &uri);
+
+        void freeTripleAndUris();
     };
 
     typedef Triple SingularAnnotation;

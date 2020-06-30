@@ -140,6 +140,57 @@ TEST_F(LibrdfUriTests, TestInequality) {
     uri2.freeUri();
 }
 
+TEST_F(LibrdfUriTests, TestUriTwiceWithLibrdfConstructsOnlyWhenDifferent) {
+
+    librdf_uri* uri1 = librdf_new_uri(World::getWorld(), (const unsigned char*)"https://uri1.com");
+    librdf_uri* uri2 = librdf_new_uri(World::getWorld(), (const unsigned char*)"https://uri2.com");
+
+    ASSERT_EQ(1, librdf_uri_get_usage(uri1));
+    ASSERT_EQ(1, librdf_uri_get_usage(uri2));
+
+    librdf_free_uri(uri1);
+    librdf_free_uri(uri2);
+}
+
+TEST_F(LibrdfUriTests, TestUriTwiceWithMyConstructsWhenDifferent) {
+    // parallel to previous test using LibrdfUri wrapper.
+    LibrdfUri uri1("https://uri1.com");
+    LibrdfUri uri2("https://uri2.com");
+
+    ASSERT_EQ(1, uri1.getUsage());
+    ASSERT_EQ(1, uri2.getUsage());
+
+    uri1.freeUri();
+    uri2.freeUri();
+}
+
+TEST_F(LibrdfUriTests, TestUriTwiceWithLibrdfConstructsOnlyWhenSameUri) {
+    /*
+     * This is how my LibrdfUri should behave.
+     */
+    librdf_uri* uri1 = librdf_new_uri(World::getWorld(), (const unsigned char*)"https://uri.com");
+    librdf_uri* uri2 = librdf_new_uri(World::getWorld(), (const unsigned char*)"https://uri.com");
+
+    ASSERT_EQ(2, librdf_uri_get_usage(uri1));
+
+    // free first uri
+    librdf_free_uri(uri1);
+
+    // Should be 1 left
+    ASSERT_EQ(1, librdf_uri_get_usage(uri2));
+    librdf_free_uri(uri2);
+}
+
+TEST_F(LibrdfUriTests, TestUriTwiceWithMyConstructsWhenSameUri) {
+    LibrdfUri uri1("https://uri.com");
+    LibrdfUri uri2("https://uri.com");
+
+    ASSERT_EQ(2, uri1.getUsage());
+    ASSERT_EQ(2, uri2.getUsage());
+    uri1.freeUri();
+    ASSERT_EQ(1, uri2.getUsage());
+    uri2.freeUri();
+}
 TEST_F(LibrdfUriTests, TestUriTwice) {
     LibrdfUri uri1 = LibrdfUri("https://uri.com");
     LibrdfUri uri2 = LibrdfUri("https://uri.com");

@@ -45,8 +45,8 @@ namespace semsim {
                 LibrdfNode::fromUriString(property_metaid).get()
         );
         Triples triples;
-        triples.move_back(is_version_of_triple);
         triples.move_back(is_property_of_triple);
+        triples.move_back(is_version_of_triple);
         return triples;
     }
 

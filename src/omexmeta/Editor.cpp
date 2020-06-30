@@ -110,7 +110,11 @@ namespace semsim {
         checkValidMetaid(singularAnnotation.getSubjectStr());
         addNamespaceFromAnnotation(singularAnnotation.getPredicateStr());
         model_.addStatement(singularAnnotation);
-//        singularAnnotation.freeStatement();
+    }
+
+    void Editor::addSingleAnnotationNoValidation(SingularAnnotation &singularAnnotation) {
+        addNamespaceFromAnnotation(singularAnnotation.getPredicateStr());
+        model_.addStatement(singularAnnotation);
     }
 
     void Editor::addNamespaceFromAnnotation(const std::string &predicate_string) {
@@ -129,7 +133,6 @@ namespace semsim {
          * Should pop_front be adding to ref count? Or is it adding
          * where it shouldn't?
          */
-//        extractNamespacesFromTriplesVector(phenomenonPtr);
         Triples triples = phenomenonPtr->toTriples();
         while (!triples.isEmpty()) {
             // remove a Triple off the front of triples
@@ -162,6 +165,16 @@ namespace semsim {
 
     }
 
+    void Editor::addCompositeAnnotation2(PhysicalPhenomenon *phenomenonPtr) {
+        Triples triples = phenomenonPtr->toTriples();
+        for (auto &triple: triples){
+            // collect the namespace from the triple
+            addNamespaceFromAnnotation(triple.getPredicateStr());
+            addSingleAnnotationNoValidation(triple);
+        }
+        triples.freeTriples();
+    }
+
     void Editor::addPhysicalEntity(PhysicalEntity &physicalEntity) {
         if (physicalEntity.getAbout().empty()) {
             throw NullPointerException(
@@ -171,7 +184,22 @@ namespace semsim {
          * look at result of commenting out the check stateent?
          */
         checkValidMetaid(physicalEntity.getAbout());
-        addCompositeAnnotation(&physicalEntity);
+        Triples triples = physicalEntity.toTriples();
+        for (auto &triple: triples){
+            std::cout << "inside: " << triple.str("ntriples", "base") << std::endl;
+            // collect the namespace from the triple
+            addNamespaceFromAnnotation(triple.getPredicateStr());
+            addSingleAnnotationNoValidation(triple);
+        }
+        triples.freeTriples();
+    }
+
+    void Editor::addTriples(Triples &triples) {
+        for (auto &triple: triples){
+            // collect the namespace from the triple
+            addNamespaceFromAnnotation(triple.getPredicateStr());
+            addSingleAnnotationNoValidation(triple);
+        }
     }
 
     void Editor::addPhysicalProcess(const PhysicalProcess &physicalProcess) {
@@ -200,10 +228,6 @@ namespace semsim {
     void Editor::removeSingleAnnotation(const SingularAnnotation &singularAnnotation) const {
         librdf_statement *stmt = singularAnnotation.getStatement();
         model_.removeStatement(stmt);
-        /*
-         * Do I need to free the statement ascertained from getStatement?
-         */
-//        librdf_free_statement(stmt);
     }
 
     void Editor::removeSingleAnnotation2(const SingularAnnotation &singularAnnotation) const {
@@ -238,31 +262,20 @@ namespace semsim {
     }
 
     void Editor::removePhysicalEntity(PhysicalEntity &physicalEntity) {
-        /*
-         * This strategy causes a seg sault because toTriples
-         * passes ownership of the nodes inside statement to the Triples
-         * object which has its own destructor while removeStatement also
-         * calls the destructor for librdf_stement.
-         *
-         * 1) make LibrdfStatement free up resources itself,
-         * rather than having a destructor.
-         *
-         * 2) do not use the toTriples here. Instead try to reconstruct
-         * the physical entity.
-         *
-         * option 1 is probably better
-         */
-
         Triples triples = physicalEntity.toTriples();
-
         while (!triples.isEmpty()) {
             Triple triple = triples.pop();
-//            std::cout << triples[i].str("ntriples") << std::endl;
             model_.removeStatement(triple.getStatement());
-//            triple.freeStatement();
-
         }
-//        triples.freeTriples(); // seg fault
+        triples.freeTriples();
+    }
+
+    void Editor::removePhysicalEntity2(PhysicalEntity &physicalEntity) const {
+        Triples triples = physicalEntity.toTriples();
+        for (auto &triple: triples){
+            removeSingleAnnotation(triple);
+        }
+        triples.freeTriples();
     }
 
 //

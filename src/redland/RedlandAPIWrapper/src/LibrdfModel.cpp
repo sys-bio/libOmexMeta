@@ -59,14 +59,9 @@ namespace redland {
     }
 
     void LibrdfModel::addStatement(librdf_statement *statement) const {
-//        std::cout << "Experimental free statement here1" << std::endl;
+        std::cout << "Experimental free statement here1. Raptor "
+                     "increments the ref count of nodes in the statement by 1" << std::endl;
         librdf_model_add_statement(get(), statement);
-        /*
-         * Try and frere the extr uri's here
-         */
-//        librdf_free_uri(librdf_node_get_uri(statement->subject));
-
-//        librdf_free_statement(statement);
     }
 
     librdf_model *LibrdfModel::get() const {

@@ -320,6 +320,67 @@ TEST_F(LibrdfNodeTests, TestCopyNodeLiteral) {
     subject2.freeNode(); // ref count to 0
 }
 
+TEST_F(LibrdfNodeTests, TestTwoNodesUriCountDifferentContentUsingRaptor) {
+    // n1 and n2 are two different nodes
+    librdf_node* n1 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char*)"node1");
+    librdf_node* n2 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char*)"node2");
+
+    ASSERT_EQ(1, n1->usage);
+    ASSERT_EQ(1, n2->usage);
+    ASSERT_EQ(1, librdf_uri_get_usage(n1->value.uri));
+    ASSERT_EQ(1, librdf_uri_get_usage(n2->value.uri));
+    librdf_free_node(n1);
+    librdf_free_node(n2);
+}
+
+TEST_F(LibrdfNodeTests, TestTwoNodesUriCountSameContentUsingRaptor) {
+    // n1 and n2 are different nodes but they share the same uri
+    librdf_node* n1 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char*)"node1");
+    librdf_node* n2 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char*)"node1");
+
+    ASSERT_EQ(1, n1->usage);
+    ASSERT_EQ(1, n2->usage);
+    // same uri is used twice
+    ASSERT_EQ(2, librdf_uri_get_usage(n1->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(n2->value.uri));
+
+    // uri count decreases by 1 when we free the node
+    librdf_free_node(n1);
+    ASSERT_EQ(1, librdf_uri_get_usage(n2->value.uri));
+    librdf_free_node(n2);
+}
+
+
+TEST_F(LibrdfNodeTests, TestTwoNodesUriCountDifferentContentUsingMyCode) {
+    // n1 and n2 are two different nodes
+    LibrdfNode n1 = LibrdfNode::fromUriString("node1");
+    LibrdfNode n2 = LibrdfNode::fromUriString("node2");
+
+    ASSERT_EQ(1, n1.get()->usage);
+    ASSERT_EQ(1, n2.get()->usage);
+    ASSERT_EQ(1, librdf_uri_get_usage(n1.get()->value.uri));
+    ASSERT_EQ(1, librdf_uri_get_usage(n2.get()->value.uri));
+
+    n1.freeNode();
+    n2.freeNode();
+}
+
+TEST_F(LibrdfNodeTests, TestTwoNodesUriCountSameContentUsingMyCode) {
+    // n1 and n2 are two different nodes
+    LibrdfNode n1 = LibrdfNode::fromUriString("node1");
+    LibrdfNode n2 = LibrdfNode::fromUriString("node1");
+
+    ASSERT_EQ(1, n1.get()->usage);
+    ASSERT_EQ(1, n2.get()->usage);
+    // same uri is used twice
+    ASSERT_EQ(2, librdf_uri_get_usage(n1.get()->value.uri));
+    ASSERT_EQ(2, librdf_uri_get_usage(n2.get()->value.uri));
+
+    // uri count decreases by 1 when we free the node
+    n1.freeNode();
+    ASSERT_EQ(1, librdf_uri_get_usage(n2.get()->value.uri));
+    n2.freeNode();
+}
 
 
 //TEST_F(LibrdfNodeTests, TestRelativeUri) {
