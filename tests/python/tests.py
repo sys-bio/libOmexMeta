@@ -208,7 +208,7 @@ class EditorTests(unittest.TestCase):
         with self.rdf.to_editor(xml, "sbml") as editor:
             with editor.new_physical_process() as physical_process:
                 physical_process \
-                    .set_physical_property("SemsimMetaid0001", "opb/opb_275") \
+                    .set_physical_property("OmexMetaId0001", "opb/opb_275") \
                     .add_source(1.0, "physicalEntity4") \
                     .add_sink(1.0, "PhysicalEntity7") \
                     .add_mediator(1.0, "PhysicalEntity8")
@@ -225,7 +225,7 @@ class EditorTests(unittest.TestCase):
     <semsim:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
     <semsim:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
   </rdf:Description>
-  <rdf:Description rdf:about="SemsimMetaid0001">
+  <rdf:Description rdf:about="OmexMetaId0001">
     <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
   </rdf:Description>
@@ -248,7 +248,7 @@ class EditorTests(unittest.TestCase):
         with self.rdf.to_editor(xml, "sbml") as editor:
             with editor.new_physical_force() as physical_force:
                 physical_force \
-                    .set_physical_property("SemsimMetaid0004", "opb/opb_275") \
+                    .set_physical_property("OmexMetaId0004", "opb/opb_275") \
                     .add_source(1.0, "physicalEntity4") \
                     .add_sink(1.0, "PhysicalEntity7")
         expected = """<?xml version="1.0" encoding="utf-8"?>
@@ -260,7 +260,7 @@ class EditorTests(unittest.TestCase):
     <semsim:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
     <semsim:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
   </rdf:Description>
-  <rdf:Description rdf:about="SemsimMetaid0004">
+  <rdf:Description rdf:about="OmexMetaId0004">
     <bqbiol:isPropertyOf rdf:resource="PhysicalForce0000"/>
     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
   </rdf:Description>
@@ -307,14 +307,14 @@ class AnnotateAModelTest(unittest.TestCase):
             metaids = editor.get_metaids()
 
         expected = ['SmadNuclearTransport',
-                    'SemsimMetaid0000',
-                    'SemsimMetaid0001',
-                    'SemsimMetaid0002',
-                    'SemsimMetaid0003',
-                    'SemsimMetaid0004',
-                    'SemsimMetaid0005',
-                    'SemsimMetaid0006',
-                    'SemsimMetaid0007']
+                    'OmexMetaId0000',
+                    'OmexMetaId0001',
+                    'OmexMetaId0002',
+                    'OmexMetaId0003',
+                    'OmexMetaId0004',
+                    'OmexMetaId0005',
+                    'OmexMetaId0006',
+                    'OmexMetaId0007']
         actual = metaids
         self.assertEqual(expected, actual)
 
@@ -328,26 +328,26 @@ class AnnotateAModelTest(unittest.TestCase):
 <sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
   <model metaid="SmadNuclearTransport" id="SmadNuclearTransport">
     <listOfCompartments>
-      <compartment id="cytosol" spatialDimensions="3" constant="true" metaid="SemsimMetaid0000"/>
-      <compartment id="nucleus" spatialDimensions="3" constant="true" metaid="SemsimMetaid0001"/>
+      <compartment id="cytosol" spatialDimensions="3" constant="true" metaid="OmexMetaId0000"/>
+      <compartment id="nucleus" spatialDimensions="3" constant="true" metaid="OmexMetaId0001"/>
     </listOfCompartments>
     <listOfSpecies>
-      <species id="Smad3Cyt" compartment="cytosol" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="SemsimMetaid0002"/>
-      <species id="Smad3Nuc" compartment="nucleus" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="SemsimMetaid0003"/>
+      <species id="Smad3Cyt" compartment="cytosol" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="OmexMetaId0002"/>
+      <species id="Smad3Nuc" compartment="nucleus" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="OmexMetaId0003"/>
     </listOfSpecies>
     <listOfParameters>
       <parameter id="k1" value="0.1" constant="true"/>
       <parameter id="k2" value="1" constant="true"/>
     </listOfParameters>
     <listOfReactions>
-      <reaction id="r1" reversible="false" fast="false" metaid="SemsimMetaid0004">
+      <reaction id="r1" reversible="false" fast="false" metaid="OmexMetaId0004">
         <listOfReactants>
           <speciesReference species="Smad3Nuc" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="Smad3Cyt" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw metaid="SemsimMetaid0005">
+        <kineticLaw metaid="OmexMetaId0005">
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
@@ -357,14 +357,14 @@ class AnnotateAModelTest(unittest.TestCase):
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r2" reversible="false" fast="false" metaid="SemsimMetaid0006">
+      <reaction id="r2" reversible="false" fast="false" metaid="OmexMetaId0006">
         <listOfReactants>
           <speciesReference species="Smad3Cyt" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="Smad3Nuc" stoichiometry="1" constant="true"/>
         </listOfProducts>
-        <kineticLaw metaid="SemsimMetaid0007">
+        <kineticLaw metaid="OmexMetaId0007">
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
@@ -402,7 +402,7 @@ class AnnotateAModelTest(unittest.TestCase):
             # annotate Smad3nuc
             with editor.new_physical_entity() as smad3nuc:
                 smad3nuc \
-                    .set_physical_property("SemsimMetaid0002", "OPB:OPB_00340") \
+                    .set_physical_property("OmexMetaId0002", "OPB:OPB_00340") \
                     .set_identity("uniprot:P84022") \
                     .add_location("obo/FMA_7163") \
                     .add_location("obo/FMA_264020")
@@ -410,7 +410,7 @@ class AnnotateAModelTest(unittest.TestCase):
             # annotate Smad3nuc
             with editor.new_physical_entity() as smad3nuc:
                 smad3nuc \
-                    .set_physical_property("SemsimMetaid0003", "OPB:OPB_00340") \
+                    .set_physical_property("OmexMetaId0003", "OPB:OPB_00340") \
                     .set_identity("uniprot:P84022") \
                     .add_location("obo/FMA_7163") \
                     .add_location("obo/FMA_63877") \
@@ -419,16 +419,16 @@ class AnnotateAModelTest(unittest.TestCase):
             # annotate r1 (Smad3Nuc -> Smad3Cyt)
             with editor.new_physical_process() as export_reaction:
                 export_reaction \
-                    .set_physical_property("SemsimMetaid0004", "OPB:OPB_00237") \
-                    .add_source(1, "SemsimMetaid0003") \
-                    .add_sink(1, "SemsimMetaid0002")
+                    .set_physical_property("OmexMetaId0004", "OPB:OPB_00237") \
+                    .add_source(1, "OmexMetaId0003") \
+                    .add_sink(1, "OmexMetaId0002")
 
             # annotate r2 (Smad3Cyt -> Smad3Nuc)
             with editor.new_physical_process() as export_reaction:
                 export_reaction \
-                    .set_physical_property("SemsimMetaid0005", "OPB:OPB_00237") \
-                    .add_source(1, "SemsimMetaid0002") \
-                    .add_sink(1, "SemsimMetaid0003")
+                    .set_physical_property("OmexMetaId0005", "OPB:OPB_00237") \
+                    .add_source(1, "OmexMetaId0002") \
+                    .add_sink(1, "OmexMetaId0003")
 
         expected = """<?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
@@ -454,29 +454,29 @@ class AnnotateAModelTest(unittest.TestCase):
     <semsim:hasSinkParticipant rdf:resource="SinkParticipant0001"/>
     <semsim:hasSourceParticipant rdf:resource="SourceParticipant0001"/>
   </rdf:Description>
-  <rdf:Description rdf:about="SemsimMetaid0002">
+  <rdf:Description rdf:about="OmexMetaId0002">
     <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0000"/>
     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00340"/>
   </rdf:Description>
-  <rdf:Description rdf:about="SemsimMetaid0003">
+  <rdf:Description rdf:about="OmexMetaId0003">
     <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0001"/>
     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00340"/>
   </rdf:Description>
-  <rdf:Description rdf:about="SemsimMetaid0004">
+  <rdf:Description rdf:about="OmexMetaId0004">
     <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00237"/>
   </rdf:Description>
-  <rdf:Description rdf:about="SemsimMetaid0005">
+  <rdf:Description rdf:about="OmexMetaId0005">
     <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0001"/>
     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00237"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0000">
     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="SemsimMetaid0002"/>
+    <semsim:hasPhysicalEntityReference rdf:resource="OmexMetaId0002"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0001">
     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="SemsimMetaid0003"/>
+    <semsim:hasPhysicalEntityReference rdf:resource="OmexMetaId0003"/>
   </rdf:Description>
   <rdf:Description rdf:about="SmadNuclearTransport">
     <ns1:author xmlns:ns1="https://unknownpredicate.com/changeme#"
@@ -484,11 +484,11 @@ class AnnotateAModelTest(unittest.TestCase):
   </rdf:Description>
   <rdf:Description rdf:about="SourceParticipant0000">
     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="SemsimMetaid0003"/>
+    <semsim:hasPhysicalEntityReference rdf:resource="OmexMetaId0003"/>
   </rdf:Description>
   <rdf:Description rdf:about="SourceParticipant0001">
     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
-    <semsim:hasPhysicalEntityReference rdf:resource="SemsimMetaid0002"/>
+    <semsim:hasPhysicalEntityReference rdf:resource="OmexMetaId0002"/>
   </rdf:Description>
 </rdf:RDF>
 """
@@ -741,7 +741,7 @@ aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
         with rdf.to_editor(sbml1, "sbml") as editor:
             print(editor.get_xml())
             with editor.new_singular_annotation() as singular_annotation:
-                singular_annotation.set_about("SemsimMetaid0000") \
+                singular_annotation.set_about("OmexMetaId0000") \
                     .set_predicate("bqb", "is") \
                     .set_resource_uri("fma/FMA_66835")
 
@@ -772,7 +772,7 @@ class DrawTests(unittest.TestCase):
         rdf = RDF()
         with rdf.to_editor(self.sbml, "sbml") as editor:
             with editor.new_singular_annotation() as s:
-                s.set_about("SemsimMetaid0000") \
+                s.set_about("OmexMetaId0000") \
                     .set_predicate("bqb", "is") \
                     .set_resource_uri("fma/FMA_66835")
         fname = os.path.join(os.path.realpath("."), "test_draw.png")

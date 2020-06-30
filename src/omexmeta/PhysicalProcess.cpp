@@ -12,7 +12,7 @@
 namespace semsim {
 
     PhysicalProcess::PhysicalProcess(librdf_model *model,
-                                     const PhysicalProperty& physicalProperty, Sources sources, Sinks sinks,
+                                     const PhysicalProperty &physicalProperty, Sources sources, Sinks sinks,
                                      Mediators mediators)
             : PhysicalPhenomenon(model, physicalProperty, PHYSICAL_PROCESS),
               sources_(std::move(sources)), sinks_(std::move(sinks)), mediators_(std::move(std::move(mediators))) {
@@ -35,7 +35,7 @@ namespace semsim {
         return mediators_;
     }
 
-    PhysicalProcess &PhysicalProcess::setAbout(const std::string& metaid) {
+    PhysicalProcess &PhysicalProcess::setAbout(const std::string &metaid) {
         physical_property_.setSubject(metaid);
         return (*this);
     }
@@ -47,7 +47,8 @@ namespace semsim {
 
 //todo turn this into a factory whereby user enters string of PhysicalProperty
 //  and we automatically pick out the correct OPB identifier
-    PhysicalProcess &PhysicalProcess::setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty) {
+    PhysicalProcess &
+    PhysicalProcess::setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty) {
         physical_property_ = PhysicalProperty(subject_metaid, physicalProperty);
         return (*this);
     }
@@ -139,23 +140,26 @@ namespace semsim {
         }
 
 
-        std::string process_metaid = SemsimUtils::generateUniqueMetaid(model_, "PhysicalProcess",
-                                                                       std::vector<std::string>());
+        if (physical_property_id_.empty()) {
+            physical_property_id_ = SemsimUtils::generateUniqueMetaid(
+                    model_, "PhysicalProcess",
+                    std::vector<std::string>());
+        }
 
-        Triples triples = physical_property_.toTriples(process_metaid);
+        Triples triples = physical_property_.toTriples(physical_property_id_);
 
         for (auto &source: sources_) {
-            for (auto &triple: source.toTriples(process_metaid)) {
+            for (auto &triple: source.toTriples(physical_property_id_)) {
                 triples.move_back(triple);
             }
         }
         for (auto &sink: sinks_) {
-            for (auto &triple: sink.toTriples(process_metaid)) {
+            for (auto &triple: sink.toTriples(physical_property_id_)) {
                 triples.move_back(triple);
             }
         }
         for (auto &mediator: mediators_) {
-            for (auto &triple: mediator.toTriples(process_metaid)) {
+            for (auto &triple: mediator.toTriples(physical_property_id_)) {
                 triples.move_back(triple);
             }
         }

@@ -59,8 +59,6 @@ namespace redland {
     }
 
     void LibrdfModel::addStatement(librdf_statement *statement) const {
-        std::cout << "Experimental free statement here1. Raptor "
-                     "increments the ref count of nodes in the statement by 1" << std::endl;
         librdf_model_add_statement(get(), statement);
     }
 

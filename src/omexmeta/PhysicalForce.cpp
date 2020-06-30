@@ -47,19 +47,22 @@ namespace semsim {
             );
         }
 
-        std::string force_metaid = SemsimUtils::generateUniqueMetaid(
-                model_, "PhysicalForce",
-                std::vector<std::string>());
+        if (physical_property_id_.empty()) {
+            physical_property_id_ = SemsimUtils::generateUniqueMetaid(
+                    model_, "PhysicalForce",
+                    std::vector<std::string>());
 
-        Triples triples = physical_property_.toTriples(force_metaid);
+        }
+
+        Triples triples = physical_property_.toTriples(physical_property_id_);
 
         for (auto &source : sources_) {
-            for (auto &triple : source.toTriples(force_metaid)) {
+            for (auto &triple : source.toTriples(physical_property_id_)) {
                 triples.move_back(triple);
             }
         }
         for (auto &sink : sinks_) {
-            for (auto &triple : sink.toTriples(force_metaid)) {
+            for (auto &triple : sink.toTriples(physical_property_id_)) {
                 triples.move_back(triple);
             }
         }
@@ -81,7 +84,7 @@ namespace semsim {
         return *this;
     }
 
-    PhysicalForce &PhysicalForce::addSource(double multiplier,const std::string& physical_entity_reference) {
+    PhysicalForce &PhysicalForce::addSource(double multiplier, const std::string &physical_entity_reference) {
         sources_.push_back(
                 std::move(SourceParticipant(
                         model_,
@@ -91,7 +94,7 @@ namespace semsim {
         return (*this);
     }
 
-    PhysicalForce &PhysicalForce::addSink(double multiplier, const std::string& physical_entity_reference) {
+    PhysicalForce &PhysicalForce::addSink(double multiplier, const std::string &physical_entity_reference) {
         sinks_.push_back(
                 SinkParticipant(model_, multiplier, physical_entity_reference)
         );

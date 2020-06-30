@@ -26,7 +26,7 @@ namespace semsim {
 
     void SemsimXmlAssistant::addMetaIdsRecursion(xmlNode *a_node, std::vector<std::string> &seen_metaids) {
         //todo make private if not already
-        MetaID metaId("SemsimMetaid", 0, 4);
+        MetaID metaId("OmexMetaId", 0, 4);
         xmlNode *cur_node;
         cur_node = a_node;
         long count = 0;

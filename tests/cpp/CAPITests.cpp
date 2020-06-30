@@ -80,7 +80,7 @@ TEST_F(CAPITests, RDF_addFromString) {
 TEST_F(CAPITests, RDF_addFromStringOutput) {
     RDF *rdf_ptr = RDF_new();
     RDF_addFromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml", "RDF_addFromStringTest.rdf");
-    std::string actual = RDF_toString(rdf_ptr, "turtle", "Basey.rdf");
+    char* actual = RDF_toString(rdf_ptr, "turtle", "Basey.rdf");
     std::string expected = "@base <file://Basey.rdf> .\n"
                            "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -88,9 +88,10 @@ TEST_F(CAPITests, RDF_addFromStringOutput) {
                            "<file://./metaid_1>\n"
                            "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n"
                            "\n";
-    std::cout << actual.c_str() << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual);
     RDF_delete(rdf_ptr);
+    free(actual);
 }
 
 TEST_F(CAPITests, RDF_fromUri) {
@@ -189,7 +190,7 @@ TEST_F(CAPITests, TestCheckValidMetaid) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML
     );
-    Editor_checkValidMetaid(editor_ptr, "SemsimMetaid0000");
+    Editor_checkValidMetaid(editor_ptr, "OmexMetaId0000");
 
     Editor_delete(editor_ptr);
     RDF_delete(rdf_ptr);
@@ -204,7 +205,7 @@ TEST_F(CAPITests, TestGetMetaID) {
     );
     char *actual = Editor_getMetaId(editor_ptr, 0);
     std::cout << actual << std::endl;
-    const char *expected = "SemsimMetaid0000";
+    const char *expected = "OmexMetaId0000";
     ASSERT_STREQ(expected, actual);
 
     free(actual);
@@ -238,12 +239,12 @@ TEST_F(CAPITests, TestEditorGetXml) {
     char *actual = Editor_getXml(editor_ptr);
     const char *expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                            "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\">\n"
-                           "  <model id=\"TestModelNotAnnotated\" metaid=\"SemsimMetaid0000\">\n"
+                           "  <model id=\"TestModelNotAnnotated\" metaid=\"OmexMetaId0000\">\n"
                            "    <listOfUnitDefinitions>\n"
                            "      <unitDefinition id=\"molar\">\n"
                            "        <listOfUnits>\n"
-                           "          <unit kind=\"mole\" exponent=\"1\" scale=\"1\" multiplier=\"1\" metaid=\"SemsimMetaid0001\"/>\n"
-                           "          <unit kind=\"litre\" exponent=\"-1\" scale=\"1\" multiplier=\"1\" metaid=\"SemsimMetaid0002\"/>\n"
+                           "          <unit kind=\"mole\" exponent=\"1\" scale=\"1\" multiplier=\"1\" metaid=\"OmexMetaId0001\"/>\n"
+                           "          <unit kind=\"litre\" exponent=\"-1\" scale=\"1\" multiplier=\"1\" metaid=\"OmexMetaId0002\"/>\n"
                            "        </listOfUnits>\n"
                            "      </unitDefinition>\n"
                            "    </listOfUnitDefinitions>\n"
@@ -252,15 +253,15 @@ TEST_F(CAPITests, TestEditorGetXml) {
                            "    </listOfCompartments>\n"
                            "    <listOfSpecies>\n"
                            "      <species metaid=\"Meta00001\" id=\"X\" compartment=\"cytosol\" initialConcentration=\"10\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
-                           "      <species id=\"Y\" compartment=\"cytosol\" initialConcentration=\"20\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"SemsimMetaid0003\"/>\n"
-                           "      <species id=\"Y\" compartment=\"cytosol\" initialConcentration=\"15\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"SemsimMetaid0004\"/>\n"
+                           "      <species id=\"Y\" compartment=\"cytosol\" initialConcentration=\"20\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"OmexMetaId0003\"/>\n"
+                           "      <species id=\"Y\" compartment=\"cytosol\" initialConcentration=\"15\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"OmexMetaId0004\"/>\n"
                            "    </listOfSpecies>\n"
                            "    <listOfReactions>\n"
-                           "      <reaction id=\"X2Y\" reversible=\"false\" metaid=\"SemsimMetaid0005\">\n"
+                           "      <reaction id=\"X2Y\" reversible=\"false\" metaid=\"OmexMetaId0005\">\n"
                            "        <listOfProducts>\n"
                            "          <speciesReference species=\"Y\" constant=\"false\"/>\n"
                            "        </listOfProducts>\n"
-                           "        <kineticLaw metaid=\"SemsimMetaid0006\">\n"
+                           "        <kineticLaw metaid=\"OmexMetaId0006\">\n"
                            "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
                            "            <apply>\n"
                            "              <times/>\n"
@@ -269,16 +270,16 @@ TEST_F(CAPITests, TestEditorGetXml) {
                            "            </apply>\n"
                            "          </math>\n"
                            "          <listOfLocalParameters>\n"
-                           "            <localParameter id=\"kx2y\" value=\"1\" metaid=\"SemsimMetaid0007\"/>\n"
-                           "            <localParameter id=\"ky2z\" value=\"1\" metaid=\"SemsimMetaid0008\"/>\n"
+                           "            <localParameter id=\"kx2y\" value=\"1\" metaid=\"OmexMetaId0007\"/>\n"
+                           "            <localParameter id=\"ky2z\" value=\"1\" metaid=\"OmexMetaId0008\"/>\n"
                            "          </listOfLocalParameters>\n"
                            "        </kineticLaw>\n"
                            "      </reaction>\n"
-                           "      <reaction id=\"y2z\" reversible=\"false\" metaid=\"SemsimMetaid0009\">\n"
+                           "      <reaction id=\"y2z\" reversible=\"false\" metaid=\"OmexMetaId0009\">\n"
                            "        <listOfProducts>\n"
                            "          <speciesReference species=\"Z\" constant=\"false\"/>\n"
                            "        </listOfProducts>\n"
-                           "        <kineticLaw metaid=\"SemsimMetaid0010\">\n"
+                           "        <kineticLaw metaid=\"OmexMetaId0010\">\n"
                            "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
                            "            <apply>\n"
                            "              <times/>\n"
@@ -696,7 +697,7 @@ TEST_F(CAPITests, TestEditorToRDF) {
     );
     PhysicalProcess *physical_process_ptr = PhysicalProcess_new(editor_ptr);
 
-    physical_process_ptr = PhysicalProcess_setPhysicalProperty(physical_process_ptr, "SemsimMetaid0006",
+    physical_process_ptr = PhysicalProcess_setPhysicalProperty(physical_process_ptr, "OmexMetaId0006",
                                                                "opb/opb93864");
     physical_process_ptr = PhysicalProcess_addSink(
             physical_process_ptr, 1.0, "Entity8");
@@ -706,7 +707,7 @@ TEST_F(CAPITests, TestEditorToRDF) {
             physical_process_ptr, 1.0, "Entity8");
 
     PhysicalEntity *physical_entity_ptr = PhysicalEntity_new(editor_ptr);
-    physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "SemsimMetaid0007", "opb/opb_465");
+    physical_entity_ptr = PhysicalEntity_setPhysicalProperty(physical_entity_ptr, "OmexMetaId0007", "opb/opb_465");
     physical_entity_ptr = PhysicalEntity_setIdentity(physical_entity_ptr, "uniprot/PD7363");
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8376");
     physical_entity_ptr = PhysicalEntity_addLocation(physical_entity_ptr, "FMA:fma:8377");
@@ -714,7 +715,7 @@ TEST_F(CAPITests, TestEditorToRDF) {
 
     PhysicalForce *physical_force_ptr = PhysicalForce_new(editor_ptr);
 
-    physical_force_ptr = PhysicalForce_setPhysicalProperty(physical_force_ptr, "SemsimMetaid0008", "opb/opb93864");
+    physical_force_ptr = PhysicalForce_setPhysicalProperty(physical_force_ptr, "OmexMetaId0008", "opb/opb93864");
     physical_force_ptr = PhysicalForce_addSink(
             physical_force_ptr, 1.0, "Entity8");
     physical_force_ptr = PhysicalForce_addSource(
@@ -734,11 +735,11 @@ TEST_F(CAPITests, TestEditorToRDF) {
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./Annot.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"SemsimMetaid0006\">\n"
+                           "  <rdf:Description rdf:about=\"OmexMetaId0006\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/opb93864\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SemsimMetaid0007\">\n"
+                           "  <rdf:Description rdf:about=\"OmexMetaId0007\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalForce0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/opb93864\"/>\n"
                            "  </rdf:Description>\n"
@@ -769,7 +770,7 @@ TEST_F(CAPITests, TestEditorToRDF) {
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"Entity8\"/>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"Entity9\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SemsimMetaid0008\">\n"
+                           "  <rdf:Description rdf:about=\"OmexMetaId0008\">\n"
                            "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalEntity0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/opb_465\"/>\n"
                            "  </rdf:Description>\n"

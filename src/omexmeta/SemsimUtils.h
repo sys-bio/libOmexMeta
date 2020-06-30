@@ -38,8 +38,8 @@ namespace semsim {
         static std::vector<std::string> splitStringBy(const std::string &str, char delimiter);
 
         static std::string generateUniqueMetaid(
-                librdf_model *model, std::string metaid_base,
-                std::vector<std::string> exclusions = std::vector<std::string>()
+                librdf_model *model, const std::string& metaid_base,
+                const std::vector<std::string>& exclusions = std::vector<std::string>()
         );
 
         static std::string addFilePrefixToString(std::string str);

@@ -30,17 +30,16 @@ public:
 
 };
 
-
 TEST_F(EditorTests, TestMetaIds) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
     const auto &metaids = editor.getMetaids();
-    std::vector<std::string> expected = {"SemsimMetaid0000", "SemsimMetaid0001", "SemsimMetaid0002",
-                                         "cytosol", "Meta00001", "SemsimMetaid0003", "SemsimMetaid0004",
-                                         "SemsimMetaid0005", "SemsimMetaid0006", "SemsimMetaid0007",
-                                         "SemsimMetaid0008", "SemsimMetaid0009", "SemsimMetaid0010"};
+    std::vector<std::string> expected = {"OmexMetaId0000", "OmexMetaId0001", "OmexMetaId0002",
+                                         "cytosol", "Meta00001", "OmexMetaId0003", "OmexMetaId0004",
+                                         "OmexMetaId0005", "OmexMetaId0006", "OmexMetaId0007",
+                                         "OmexMetaId0008", "OmexMetaId0009", "OmexMetaId0010"};
     ASSERT_EQ(expected, metaids);
 }
 
@@ -52,7 +51,7 @@ TEST_F(EditorTests, TestAddAnnotation) {
     PredicatePtr predicatePtr = std::make_shared<Predicate>(
             BiomodelsBiologyQualifier("is"));
     editor.addSingleAnnotation(
-            Subject(LibrdfNode::fromUriString("SemsimMetaid0004")),
+            Subject(LibrdfNode::fromUriString("OmexMetaId0004")),
             predicatePtr,
             Resource(LibrdfNode::fromUriString("uniprot:P0DP23"))
     );
@@ -65,7 +64,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToEditor) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
-    Triple triple(LibrdfNode::fromUriString("SemsimMetaid0009").get(),
+    Triple triple(LibrdfNode::fromUriString("OmexMetaId0009").get(),
                   BiomodelsBiologyQualifier("is").getNode(),
                   Resource(LibrdfNode::fromUriString("uniprot:P0DP23")).getNode());
     editor.addSingleAnnotation(triple);
@@ -81,7 +80,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
-    Subject subject = Subject(LibrdfNode::fromUriString("SemsimMetaid0009"));
+    Subject subject = Subject(LibrdfNode::fromUriString("OmexMetaId0009"));
     BiomodelsBiologyQualifier predicate("is");
     Resource resource = Resource(LibrdfNode::fromUriString("uniprot:P0DP23"));
     Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
@@ -93,7 +92,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
               std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://MyModel.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"SemsimMetaid0009\">\n"
+                           "  <rdf:Description rdf:about=\"OmexMetaId0009\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
@@ -108,7 +107,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
     editor.addSingleAnnotation(
-            Subject(LibrdfNode::fromUriString("SemsimMetaid0008")),
+            Subject(LibrdfNode::fromUriString("OmexMetaId0008")),
             std::make_shared<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
             Resource(LibrdfNode::fromUriString("pubmed:12991237"))
     );
@@ -118,7 +117,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
                            "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "\n"
-                           "<SemsimMetaid0008>\n"
+                           "<OmexMetaId0008>\n"
                            "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n"
                            "\n";
     std::cout << actual << std::endl;
@@ -132,7 +131,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
             SEMSIM_TYPE_SBML);
     editor.
             addSingleAnnotation(
-            Subject(LibrdfNode::fromUriString("SemsimMetaid0008")),
+            Subject(LibrdfNode::fromUriString("OmexMetaId0008")),
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
             Resource(LibrdfNode::fromUriString("pubmed:12991237"))
     );
@@ -140,7 +139,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
     std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"SemsimMetaid0008\">\n"
+                           "  <rdf:Description rdf:about=\"OmexMetaId0008\">\n"
                            "    <bqbiol:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
@@ -157,7 +156,7 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
             SEMSIM_TYPE_SBML);
     editor.
             addSingleAnnotation(
-            Subject(LibrdfNode::fromUriString("SemsimMetaid0008")),
+            Subject(LibrdfNode::fromUriString("OmexMetaId0008")),
             std::make_unique<Predicate>(DCTerm("Description")),
             Resource(LibrdfNode::fromLiteral("Cardiomyocyte cytosolic ATP concentration"))
     );
@@ -165,7 +164,7 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"SemsimMetaid0008\">\n"
+                           "  <rdf:Description rdf:about=\"OmexMetaId0008\">\n"
                            "    <dcterms:Description rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">Cardiomyocyte cytosolic ATP concentration</dcterms:Description>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
@@ -182,7 +181,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
 
     SingularAnnotation singularAnnotation;
     singularAnnotation
-            .setAbout("SemsimMetaid0001")
+            .setAbout("OmexMetaId0001")
             .setPredicate("bqb", "isVersionOf")
             .setResourceUri("uniprot:PD02635");
 
@@ -192,7 +191,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://MyModel.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"SemsimMetaid0001\">\n"
+                           "  <rdf:Description rdf:about=\"OmexMetaId0001\">\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/uniprot/PD02635\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
@@ -352,7 +351,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
 
     SingularAnnotation singularAnnotation;
     singularAnnotation
-            .setAbout("SemsimMetaid0000")
+            .setAbout("OmexMetaId0000")
             .setPredicate("bqb", "is")
             .setResourceLiteral("resource");
 
@@ -373,7 +372,7 @@ TEST_F(EditorTests, TestPhysicalEntityBuilder) {
 
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
 
@@ -394,7 +393,7 @@ TEST_F(EditorTests, TestPhysicalForceBuilder) {
 
     PhysicalForce physicalForce = editor.createPhysicalForce();
     physicalForce
-            .setPhysicalProperty("SemsimMetaid0000", "OPB:OPB1234")
+            .setPhysicalProperty("OmexMetaId0000", "OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2");
 
@@ -414,7 +413,7 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
 
     PhysicalProcess physicalProcess = editor.createPhysicalProcess();
     physicalProcess
-            .setPhysicalProperty("SemsimMetaid0000", "OPB:OPB1234")
+            .setPhysicalProperty("OmexMetaId0000", "OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2")
             .addMediator(1.0, "PhysicalEntity3");
@@ -435,7 +434,7 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
 
     SingularAnnotation singularAnnotation;
     singularAnnotation
-            .setAbout("SemsimMetaid0000")
+            .setAbout("OmexMetaId0000")
             .setPredicate("bqb", "is")
             .setResourceLiteral("resource");
 
@@ -450,16 +449,6 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
     singularAnnotation.freeStatement();
 }
 
-
-/*
- * Question: Is the autogenerated ID field causng this problem?
- * When we automatically generate an ID, we take the next numerical
- * id. When we generate a statement, we create a new id. If we then
- * try to generate another statement from the same compositite annotation
- * We autoamtically generate a new ID for it, even though we need the old one.
- * BUUUUG.
- *
- */
 TEST_F(EditorTests, TestRemovePhysicalForce) {
     RDF rdf;
     Editor editor = rdf.toEditor(
@@ -468,46 +457,39 @@ TEST_F(EditorTests, TestRemovePhysicalForce) {
 
     PhysicalForce physicalForce = editor.createPhysicalForce();
     physicalForce
-            .setPhysicalProperty("SemsimMetaid0002", "OPB:OPB1234")
+            .setPhysicalProperty("OmexMetaId0002", "OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2");
-
-
-//    editor.addPhysicalForce(physicalForce);
-//
-////    std::cout << rdf.toString("rdfxml-abbrev", "base") << std::endl;
-//
-//    ASSERT_EQ(8, rdf.size());
-//    editor.removePhysicalForce(physicalForce);
-//    std::cout << rdf.toString("rdfxml-abbrev", "base") << std::endl;
-//    int expected = 0;
-//    int actual = rdf.size();
-//    ASSERT_EQ(expected, actual);
+    editor.addPhysicalForce(physicalForce);
+    ASSERT_EQ(8, rdf.size());
+    editor.removePhysicalForce(physicalForce);
+    int expected = 0;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
 }
 
-//TEST_F(EditorTests, TestRemovePhysicalProcess) {
-//    RDF rdf;
-//    Editor editor = rdf.toEditor(
-//            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-//            SEMSIM_TYPE_SBML);
-//
-//    PhysicalProcess physicalProcess = editor.createPhysicalProcess();
-//    physicalProcess
-//            .setPhysicalProperty("metaid", "OPB:OPB1234")
-//            .addSource( 1.0, "PhysicalEntity1")
-//            .addSink( 1.0, "PhysicalEntity2")
-//            .addSink( 1.0, "PhysicalEntity3");
-//
-//    editor.addPhysicalProcess(physicalProcess);
-//    
-//
-//    ASSERT_EQ(10, rdf.size());
-//    editor.removePhysicalProcess(physicalProcess);
-//    int expected = 0;
-//    int actual = rdf.size();
-//    ASSERT_EQ(expected, actual);
-//}
-//
+
+TEST_F(EditorTests, TestRemovePhysicalProcess) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    PhysicalProcess physicalProcess = editor.createPhysicalProcess();
+    physicalProcess
+            .setPhysicalProperty("OmexMetaId0004", "OPB:OPB1234")
+            .addSource(1.0, "PhysicalEntity1")
+            .addMediator(1.0, "PhysicalEntity1")
+            .addSink(1.0, "PhysicalEntity2");
+    editor.addPhysicalProcess(physicalProcess);
+    ASSERT_EQ(10, rdf.size());
+    editor.removePhysicalProcess(physicalProcess);
+    int expected = 0;
+    int actual = rdf.size();
+    ASSERT_EQ(expected, actual);
+}
+
+
 
 
 
@@ -526,7 +508,7 @@ public:
 
     EditorTestsPhysicalEntityMemory() {
         physicalEntity
-                .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+                .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
                 .setIdentity("uniprot:PD12345")
                 .addLocation("fma:fma:1234");
 
@@ -598,10 +580,20 @@ TEST_F(EditorTestsPhysicalEntityMemory, TestUnpackTriplesAndAccountForTerms) {
 
 }
 
+
+
 /**********************************************
  * Tests for deleting PhysicalEntity
  */
 
+/*
+ * Note: This was way harder than it should have been because I neglected to
+ * remember that the toTriples() method autogenerates some subject portions of
+ * some triples. Therefore calling it twice would generate a new metaid and
+ * it wouldn't be equal to the originally generated annotation.
+ *
+ * Took me a while to figure this out, hence why there are loads of remove* tests.
+ */
 class EditorTestsDeletePhysicalEntity : public ::testing::Test {
 public:
     RDF rdf;
@@ -617,7 +609,7 @@ public:
 TEST_F(EditorTestsDeletePhysicalEntity, TestRDFSizeBeforeRemovingAndNoMemoryLeaks) {
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     editor.addPhysicalEntity(physicalEntity);
@@ -628,14 +620,8 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestRDFSizeBeforeRemovingAndNoMemoryLeak
 }
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveSingleTriple1) {
-    /* Take and delete triple number 1
- * 1) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
- * 2) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
- * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
- * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
- */
     Triple triple(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
@@ -648,13 +634,13 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveSingleTriple1) {
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveSingleTriple2) {
     /* Take and delete triple number 1
- * 1) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
- * 2) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
+ * 1) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
+ * 2) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
  * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
  */
     Triple triple(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString("PhysicalEntity0001")
     );
@@ -667,8 +653,8 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveSingleTriple2) {
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveSingleTriple3) {
     /* Take and delete triple number 1
- * 1) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
- * 2) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
+ * 1) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
+ * 2) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
  * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
  */
@@ -686,8 +672,8 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveSingleTriple3) {
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveSingleTriple4) {
     /* Take and delete triple number 1
- * 1) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
- * 2) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
+ * 1) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
+ * 2) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
  * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
  */
@@ -951,25 +937,6 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesSamePr
 
 }
 
-TEST_F(EditorTestsDeletePhysicalEntity, TestSameTripleUsingRaptorStatement) {
-    librdf_statement *statement1 = librdf_new_statement_from_nodes(World::getWorld(),
-                                                                   librdf_new_node_from_uri_string(World::getWorld(),
-                                                                                                   (const unsigned char *) "cytosol"),
-                                                                   librdf_new_node_from_uri_string(World::getWorld(),
-                                                                                                   (const unsigned char *) "http://biomodels.net/biology-qualifiers/isPartOf"),
-                                                                   librdf_new_node_from_uri_string(World::getWorld(),
-                                                                                                   (const unsigned char *) "https://identifiers.org/fma/fma:1234"));
-
-    librdf_statement *statement2 = librdf_new_statement_from_nodes(World::getWorld(),
-                                                                   librdf_new_node_from_uri_string(World::getWorld(),
-                                                                                                   (const unsigned char *) "cytosol"),
-                                                                   librdf_new_node_from_uri_string(World::getWorld(),
-                                                                                                   (const unsigned char *) "http://biomodels.net/biology-qualifiers/isPartOf"),
-                                                                   librdf_new_node_from_uri_string(World::getWorld(),
-                                                                                                   (const unsigned char *) "https://identifiers.org/fma/fma:1234"));
-    ASSERT_EQ(2, 2);
-}
-
 TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesSameEverything) {
     /*
      * When trying to add a duplicate triple to the model,
@@ -1074,13 +1041,13 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveTwoTripleObjsFromTriplesWithFr
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveDoubleTriple1And2Sequential) {
     /* Take and delete triple number 1
- * 1) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
- * 2) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
+ * 1) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
+ * 2) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
  * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
  */
     Triple triple(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
@@ -1091,7 +1058,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveDoubleTriple1And2Sequential) {
     triple.freeTriple();
 
     Triple triple2(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString("PhysicalEntity0001")
     );
@@ -1104,13 +1071,13 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveDoubleTriple1And2Sequential) {
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtEnd) {
     /* Take and delete triple number 1
- * 1) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
- * 2) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
+ * 1) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
+ * 2) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
  * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
  */
     Triple triple(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
@@ -1120,7 +1087,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveDoubleTriple1And2SequentialAnd
     ASSERT_EQ(0, rdf.size());
 
     Triple triple2(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString("PhysicalEntity0001")
     );
@@ -1134,12 +1101,12 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestRemoveDoubleTriple1And2SequentialAnd
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysicalPropertyWithoutDeletingItInMiddle) {
     /* Take and delete triple number 1
- * 1) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
- * 2) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
+ * 1) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
+ * 2) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
  * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
  */
-    PhysicalProperty property("SemsimMetaid0001", "https://identifiers.org/opb/opb_1234");
+    PhysicalProperty property("OmexMetaId0001", "https://identifiers.org/opb/opb_1234");
     Triples triples = property.toTriples("Entity1234");
     std::cout << triples.str() << std::endl;
     for (auto &it: triples) {
@@ -1155,12 +1122,12 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysica
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysicalPropertyWithFreeInMiddle) {
     /* Take and delete triple number 1
- * 1) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
- * 2) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
+ * 1) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
+ * 2) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
  * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
  */
-    PhysicalProperty property("SemsimMetaid0001", "https://identifiers.org/opb/opb_1234");
+    PhysicalProperty property("OmexMetaId0001", "https://identifiers.org/opb/opb_1234");
     Triples triples = property.toTriples("Entity1234");
     std::cout << rdf.toString() << std::endl;
     for (auto &it: triples) {
@@ -1184,14 +1151,14 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysica
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntity) {
     /* Take and delete triple number 1
- * 1) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
- * 2) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
+ * 1) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
+ * 2) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
  * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
  */
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -1211,7 +1178,7 @@ TEST_F(EditorTestsDeletePhysicalEntity,
        TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithNamespaceHandling) {
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -1231,7 +1198,7 @@ TEST_F(EditorTestsDeletePhysicalEntity,
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithFreeInMiddle) {
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -1256,7 +1223,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropert
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1) {
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -1278,12 +1245,12 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
     );
     Triple triple3(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString("PhysicalEntity0000")
     );
     Triple triple4(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
@@ -1300,7 +1267,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove2) {
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -1322,12 +1289,12 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
     );
     Triple triple3(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString("PhysicalEntity0000")
     );
     Triple triple4(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
@@ -1344,7 +1311,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove3) {
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -1366,12 +1333,12 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
     );
     Triple triple3(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString("PhysicalEntity0000")
     );
     Triple triple4(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
@@ -1388,7 +1355,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove4) {
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -1410,12 +1377,12 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
     );
     Triple triple3(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString("PhysicalEntity0000")
     );
     Triple triple4(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
@@ -1432,7 +1399,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1And2) {
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     Triples triples = physicalEntity.toTriples();
@@ -1454,12 +1421,12 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
     );
     Triple triple3(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
             LibrdfNode::fromUriString("PhysicalEntity0000")
     );
     Triple triple4(
-            LibrdfNode::fromUriString("SemsimMetaid0000"),
+            LibrdfNode::fromUriString("OmexMetaId0000"),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
@@ -1478,12 +1445,12 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 TEST_F(EditorTestsDeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     editor.addPhysicalEntity(physicalEntity);
     ASSERT_EQ(4, rdf.size());
-    editor.removePhysicalEntity2(physicalEntity);
+    editor.removePhysicalEntity(physicalEntity);
     ASSERT_EQ(0, rdf.size());
 
 
@@ -1493,14 +1460,14 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
 TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteFirstTriple) {
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     editor.addPhysicalEntity(physicalEntity);
 
     /* Take and delete triple number 1
-     * 1) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
-     * 2) <SemsimMetaid0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
+     * 1) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/opb_1234> .
+     * 2) <OmexMetaId0000> <http://biomodels.net/biology-qualifiers/isPropertyOf> <PhysicalEntity0001> .
      * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
      * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
      */
@@ -1516,35 +1483,57 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteFirstTriple) {
     triple.freeTriple();
 }
 
-TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteFirstToSecond) {
+TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteOneByOne) {
     PhysicalEntity physicalEntity = editor.createPhysicalEntity();
     physicalEntity
-            .setPhysicalProperty("SemsimMetaid0000", "opb:opb_1234")
+            .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
             .addLocation("fma:fma:1234");
     editor.addPhysicalEntity(physicalEntity);
 
-    // get triples
     Triples triples = physicalEntity.toTriples();
-//    editor.addTriples(triples);
 
     ASSERT_EQ(4, rdf.size());
     std::cout << "trip: "<<triples.str("rdfxml-abbrev", "base") << std::endl;
     std::cout << "rdf"<<rdf.toString("rdfxml-abbrev", "base") << std::endl;
 
-    Triple triple = triples.pop_front();
-    std::cout << triple.str("ntriples", "base") << std::endl;
-    editor.removeSingleAnnotation(triple);
+    Triple triple4 = triples.pop_front();
+    std::cout << triple4.str("ntriples", "base") << std::endl;
+    editor.removeSingleAnnotation(triple4);
     int s = rdf.size();
     ASSERT_EQ(3, rdf.size());
-    triple.freeTriple();
+    triple4.freeTriple();
+
+    Triple triple3 = triples.pop_front();
+    std::cout << triple3.str("ntriples", "base") << std::endl;
+    editor.removeSingleAnnotation(triple3);
+    ASSERT_EQ(2, rdf.size());
+    triple3.freeTriple();
 
     Triple triple2 = triples.pop_front();
     std::cout << triple2.str("ntriples", "base") << std::endl;
-    editor.removeSingleAnnotation2(triple2);
+    editor.removeSingleAnnotation(triple2);
+    ASSERT_EQ(1, rdf.size());
     triple2.freeTriple();
-    ASSERT_EQ(2, rdf.size());
 
+    Triple triple1 = triples.pop_front();
+    std::cout << triple1.str("ntriples", "base") << std::endl;
+    editor.removeSingleAnnotation(triple1);
+    ASSERT_EQ(0, rdf.size());
+    triple1.freeTriple();
+
+}
+
+TEST_F(EditorTestsDeletePhysicalEntity, TestRemovePhysicalEntityInLoop) {
+    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    physicalEntity
+            .setPhysicalProperty("OmexMetaId0000", "opb:opb_1234")
+            .setIdentity("uniprot:PD12345")
+            .addLocation("fma:fma:1234");
+    editor.addPhysicalEntity(physicalEntity);
+    ASSERT_EQ(4, rdf.size());
+    editor.removePhysicalEntity(physicalEntity);
+    ASSERT_EQ(0, rdf.size());
 }
 
 

@@ -81,7 +81,7 @@ TEST_F(LibrdfParserTests, TestParseFromAFile) {
                              "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                              "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                              "   xml:base=\"file://./Annotation.rdf\">\n"
-                             "  <rdf:Description rdf:about=\"SemsimMetaid0000\">\n"
+                             "  <rdf:Description rdf:about=\"OmexMetaId0000\">\n"
                              "    <bqbiol:is rdf:resource=\"https://identifiers.org/fma/FMA_66835\"/>\n"
                              "  </rdf:Description>\n"
                              "</rdf:RDF>\n";

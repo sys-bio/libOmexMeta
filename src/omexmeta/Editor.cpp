@@ -126,34 +126,14 @@ namespace semsim {
     }
 
     void Editor::addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr) {
-        /*
-         * This method is adding to the reference count of created Triples URI's
-         * and not removing them
-         *
-         * Should pop_front be adding to ref count? Or is it adding
-         * where it shouldn't?
-         */
         Triples triples = phenomenonPtr->toTriples();
         while (!triples.isEmpty()) {
             // remove a Triple off the front of triples
             Triple triple = triples.pop_front();
-            std::cout << "before: " << triple.str("ntriples", "base") << std::endl;
-            triple.printUsages();
-
             // collect the namespace from the triple
             addNamespaceFromAnnotation(triple.getPredicateStr());
             // add to the model
-            librdf_statement *stmt = triple.getStatement();
-            model_.addStatement(stmt);
-            std::cout << "after: " << triple.str("ntriples", "base") << std::endl;
-            triple.printUsages();
-
-//            librdf_free_uri(triple.getSubject()->value.uri);
-//            triple.getSubject()->value.uri = nullptr;
-//            librdf_free_uri(triple.getPredicate()->value.uri);
-//            librdf_free_uri(triple.getResource()->value.uri);
-
-            librdf_free_statement(stmt);
+            model_.addStatement(triple.getStatement());
             // remember to free it.
             triple.freeStatement();
         }
@@ -167,7 +147,7 @@ namespace semsim {
 
     void Editor::addCompositeAnnotation2(PhysicalPhenomenon *phenomenonPtr) {
         Triples triples = phenomenonPtr->toTriples();
-        for (auto &triple: triples){
+        for (auto &triple: triples) {
             // collect the namespace from the triple
             addNamespaceFromAnnotation(triple.getPredicateStr());
             addSingleAnnotationNoValidation(triple);
@@ -184,18 +164,11 @@ namespace semsim {
          * look at result of commenting out the check stateent?
          */
         checkValidMetaid(physicalEntity.getAbout());
-        Triples triples = physicalEntity.toTriples();
-        for (auto &triple: triples){
-            std::cout << "inside: " << triple.str("ntriples", "base") << std::endl;
-            // collect the namespace from the triple
-            addNamespaceFromAnnotation(triple.getPredicateStr());
-            addSingleAnnotationNoValidation(triple);
-        }
-        triples.freeTriples();
+        addCompositeAnnotation((PhysicalPhenomenon *) &physicalEntity);
     }
 
     void Editor::addTriples(Triples &triples) {
-        for (auto &triple: triples){
+        for (auto &triple: triples) {
             // collect the namespace from the triple
             addNamespaceFromAnnotation(triple.getPredicateStr());
             addSingleAnnotationNoValidation(triple);
@@ -230,82 +203,26 @@ namespace semsim {
         model_.removeStatement(stmt);
     }
 
-    void Editor::removeSingleAnnotation2(const SingularAnnotation &singularAnnotation) const {
-        /*
-         * Is the problem related to the strings being modified for storage?
-         * Perhaps the format of the metaid is wrong, as it must be normalized
-         * to the base uri. What is the base uri?
-         */
-        std::string s = singularAnnotation.getSubjectStr();
-        std::string p = singularAnnotation.getPredicateStr();
-        std::string r = singularAnnotation.getResourceStr();
-
-        std::cout << std::filesystem::current_path() << std::endl;
-
-        std::string q =
-                "SELECT ?predicate ?resource\n"
-                "WHERE { \n"
-                "   <SemsimMetaid0000> ?predicate ?resource .\n"
-                "}";
-        Query query(model_.get(), q);
-        std::string str = query.resultsAsStr("csv", "query_results_base");
-        std::cout << "query result: " << str << std::endl;
-
-
-
-//        librdf_statement *stmt = singularAnnotation.getStatement();
-//        model_.removeStatement(stmt);
-        /*
-         * Do I need to free the statement ascertained from getStatement?
-         */
-//        librdf_free_statement(stmt);
-    }
-
-    void Editor::removePhysicalEntity(PhysicalEntity &physicalEntity) {
-        Triples triples = physicalEntity.toTriples();
+    void Editor::removePhysicalPhenomenon(PhysicalPhenomenon *physicalPhenomenon) const {
+        Triples triples = physicalPhenomenon->toTriples();
         while (!triples.isEmpty()) {
             Triple triple = triples.pop();
             model_.removeStatement(triple.getStatement());
+            triple.freeTriple();
         }
-        triples.freeTriples();
     }
 
-    void Editor::removePhysicalEntity2(PhysicalEntity &physicalEntity) const {
-        Triples triples = physicalEntity.toTriples();
-        for (auto &triple: triples){
-            removeSingleAnnotation(triple);
-        }
-        triples.freeTriples();
+    void Editor::removePhysicalEntity(PhysicalEntity &physicalEntity) const {
+        removePhysicalPhenomenon(&physicalEntity);
     }
 
-//
-//    void Editor::removePhysicalProcess(PhysicalProcess physicalProcess) {
-//        for (auto &it: physicalProcess.toTriples()) {
-//            model_.removeStatement(it.getStatement());
-//        }
-//    }
-//
+
     void Editor::removePhysicalForce(PhysicalForce &physicalForce) const {
-        /*
-         * Can I manipulate the count to get this done? ? ?
-         *  - No, if a uri is used elsewhere, we need to keep it.
-         * Where is the statement being copied? ? ?
-         */
-        int count = 0;
-        for (auto &it: physicalForce.toTriples()) {
-            std::cout << "count: " << count << ": " << it.str("ntriples", "base")
-                      //            << ", usage count: " << it.get()->usage
-                      //            << ", Subject usage: " << it.getSubject()->usage
-                      //            << ", Predicate usage: " << it.getPredicate()->usage
-                      //            << ", resource usage: " << it.getResource()->usage
-                      << ", subject uri usage: " << librdf_uri_get_usage(it.getResource()->value.uri)
-                      << ", predicate uri usage: " << librdf_uri_get_usage(it.getResource()->value.uri)
-                      << ", resource uri usage: " << librdf_uri_get_usage(it.getResource()->value.uri)
-                      << "\n" << std::endl;
-            librdf_statement *triple = it.getStatement();
-            model_.removeStatement(triple);
-            count++;
-        }
+        removePhysicalPhenomenon(&physicalForce);
+    }
+
+    void Editor::removePhysicalProcess(PhysicalProcess &physicalProcess) const {
+        removePhysicalPhenomenon(&physicalProcess);
     }
 
     PhysicalEntity Editor::createPhysicalEntity() {

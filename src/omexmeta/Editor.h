@@ -157,7 +157,6 @@ namespace semsim {
          * @param singularAnnotation An instance of SingularAnnotation to remove from the model
          */
         void removeSingleAnnotation(const SingularAnnotation &singularAnnotation) const;
-        void removeSingleAnnotation2(const SingularAnnotation &singularAnnotation) const;
 
         /*
          * @brief add a composite annotation to the rdf graph.
@@ -183,7 +182,7 @@ namespace semsim {
          * @brief remove triples associated with a a PhysicalEntity object from the rdf graph
          * @param physicalEntity the PhysicalEntityto remove
          */
-        void removePhysicalEntity(PhysicalEntity &physicalEntity);
+        void removePhysicalEntity(PhysicalEntity &physicalEntity) const;
 
         /*
          * @brief add a composite annotation of type PhysicalProcess to the rdf graph
@@ -195,7 +194,7 @@ namespace semsim {
          * @brief remove triples associated with a PhysicalProcess object from the rdf graph
          * @param physicalProcess the PhysicalProcessto remove
          */
-        void removePhysicalProcess(PhysicalProcess physicalProcess);
+        void removePhysicalProcess(PhysicalProcess& physicalProcess) const;
 
         /*
          * @brief add a composite annotation of type PhysicalForce to the rdf graph
@@ -239,6 +238,8 @@ namespace semsim {
         void removePhysicalEntity2(PhysicalEntity &physicalEntity) const;
 
         void addTriples(Triples &triples);
+
+        void removePhysicalPhenomenon(PhysicalPhenomenon *physicalPhenomenon) const;
     };
 
 }
