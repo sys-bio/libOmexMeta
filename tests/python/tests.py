@@ -675,61 +675,34 @@ file:///mnt/d/libOmexMeta/tests/python/as"""
 
         self.assertEqual(expected, actual)
 
-    def test_query2(self):
-        self.download_file(self.gold_standard_url3, self.gold_standard_filename3)
-        s = self.extract_rdf_from_combine_archive(self.gold_standard_filename3)[0]
-        rdf = RDF.from_string(s, "guess")
-        query_str = """
-        PREFIX semsim: <http://www.bhi.washington.edu/semsim#>
-        SELECT ?x ?z
-        WHERE {
-            ?x semsim:hasPhysicalEntityReference ?z
-        }"""
-        actual = rdf.query(query_str, "csv")
-
-    #         expected = """x,z
-    # aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#sodium_current_i_Na,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_0
-    # aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#intracellular_ion_concentrations.i_up,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_13
-    # aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#T_type_Ca_channel_f_T_gate.V,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#entity_0
-    # aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
-
-    #         self.assertEqual(expected, actual)
-
-    def test_to_triples(self):
-        self.download_file(self.gold_standard_url3, self.gold_standard_filename3)
-        s = self.extract_rdf_from_combine_archive(self.gold_standard_filename3)[0]
-        rdf = RDF.from_string(s, "guess")
-
-        print(rdf)
-
     def test(self):
         ant1 = """
-        model SBML1
-            compartment cytosol = 1.0;
-            A in cytosol;
-            B in cytosol
-            A = 10; 
-            B = 0;
-            k1 = 0.1;
-            k2 = 0.1;
-            r1: A => B; k1*A
-            r1: B => A; k2*B
-        end
-        """
+            model SBML1
+                compartment cytosol = 1.0;
+                A in cytosol;
+                B in cytosol
+                A = 10; 
+                B = 0;
+                k1 = 0.1;
+                k2 = 0.1;
+                r1: A => B; k1*A
+                r1: B => A; k2*B
+            end
+            """
 
         ant2 = """
-        model SBML1
-            compartment cytosol = 1.0;
-            C in cytosol;
-            D in cytosol
-            C = 10; 
-            D = 0;
-            k1 = 0.1;
-            k2 = 0.1;
-            r1: C => D; k1*C
-            r1: D => C; k2*D
-        end
-        """
+            model SBML1
+                compartment cytosol = 1.0;
+                C in cytosol;
+                D in cytosol
+                C = 10; 
+                D = 0;
+                k1 = 0.1;
+                k2 = 0.1;
+                r1: C => D; k1*C
+                r1: D => C; k2*D
+            end
+            """
         sbml1 = te.antimonyToSBML(ant1)
         sbml2 = te.antimonyToSBML(ant2)
 
@@ -775,6 +748,7 @@ class DrawTests(unittest.TestCase):
         rdf.draw(fname)
         self.assertTrue(os.path.isfile(fname))
         os.remove(fname)
+
 
 """
 The test below takes too long to run. It works. 
