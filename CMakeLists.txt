@@ -109,11 +109,12 @@ endif ()
 # Too late now...
 message(WARNING "Removing optimization. You will want to comment these
  lines out once finished with debugging")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
-set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
-set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_DEBUG} -O0")
-set(CMAKE_C_FLAGS_RELEASE  "${CMAKE_C_FLAGS_DEBUG} -O0")
-
+if (PLATFORM STREQUAL "linux")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
+    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_DEBUG} -O0")
+    set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_DEBUG} -O0")
+endif ()
 ############################################################3
 # configure some paths relative to vcpkg root
 set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its D:\\vcpkg")

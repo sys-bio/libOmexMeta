@@ -6,9 +6,10 @@
 #define LIBOMEXMETA_LIBRDFSTATEMENT_H
 
 
-#include <librdf.h>
 #include <memory>
 #include <iostream>
+#include <librdf.h>
+#include <unordered_map>
 #include "LibrdfNode.h"
 
 namespace redland {
