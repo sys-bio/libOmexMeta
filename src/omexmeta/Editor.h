@@ -65,7 +65,6 @@ namespace semsim {
         const LibrdfModel &model_;
         std::unordered_map<std::string, std::string> &namespaces_;
 
-        void extractNamespacesFromTriplesVector(Triples &triples);
         void extractNamespacesFromTriplesVector(PhysicalPhenomenon* pp);
 
     public:
@@ -170,7 +169,7 @@ namespace semsim {
          * For developers. Consider removing this function in favour of using the
          * add* functions.
          */
-        [[maybe_unused]] void addCompositeAnnotation(PhysicalPhenomenonPtr phenomenonPtr);
+        void addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr);
 
         /*
          * @brief add a composite annotation of type PhysicalEntity to the rdf graph
@@ -227,9 +226,6 @@ namespace semsim {
 
         PhysicalProcess createPhysicalProcess();
 
-        void freeTriples();
-
-        void addCompositeAnnotation(PhysicalPhenomenon *phenomenonPtr);
 
         void addSingleAnnotationNoValidation(SingularAnnotation &singularAnnotation);
 
