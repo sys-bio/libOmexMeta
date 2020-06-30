@@ -26,6 +26,7 @@ namespace semsim {
         PhysicalProperty physical_property_;
         AnnotationType type_ = AnnotationType::UNKNOWN;
 
+        std::string physical_property_id_;
 
         [[nodiscard]] std::string generateMetaId(const std::string& id_base) const;
 

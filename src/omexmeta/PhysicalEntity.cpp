@@ -44,23 +44,24 @@ namespace semsim {
         return *this;
     }
 
-    PhysicalEntity &PhysicalEntity::setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty) {
+    PhysicalEntity &
+    PhysicalEntity::setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty) {
         physical_property_ = PhysicalProperty(subject_metaid, physicalProperty);
         return *this;
     }
 
 
-    PhysicalEntity &PhysicalEntity::setIdentity(const std::string& resource) {
+    PhysicalEntity &PhysicalEntity::setIdentity(const std::string &resource) {
         // todo implement second argument which defaults to RDFUriNode
         //  and controls whether we use literal/blank/uri node
         identity_resource_ = Resource(LibrdfNode::fromUriString(resource));
         return *this;
     }
 
-    PhysicalEntity &PhysicalEntity::addLocation(const std::string& where) {
+    PhysicalEntity &PhysicalEntity::addLocation(const std::string &where) {
         location_resources_.push_back(std::move(
                 Resource(LibrdfNode::fromUriString(where))
-                )
+                                      )
         );
         return *this;
     }
@@ -113,16 +114,21 @@ namespace semsim {
             }
         }
 
-        // no exclusions needed here - we only generate 1 process metaid before comiting the triples
-        // to the model.
-        std::string property_metaid = SemsimUtils::generateUniqueMetaid(
-                model_, "PhysicalEntity",
-                std::vector<std::string>());
+        // when physical_property_id_ is empty it means we have not
+        // called the toTriples() method before and an ID needs to be generated.
+        // When it is not empty - we have called toTriples before and we can skip ID generation
+        if (physical_property_id_.empty()) {
+            // no exclusions needed here - we only generate 1 process metaid before comiting the triples
+            // to the model.
+            physical_property_id_ = SemsimUtils::generateUniqueMetaid(
+                    model_, "PhysicalEntity",
+                    std::vector<std::string>());
+        }
 
         // preallocate for efficiency
         Triples triples(getLocationResources().size() + 3);
-        Triples physical_property_triples = physical_property_.toTriples(property_metaid);
-        for (auto &it : physical_property_triples ){
+        Triples physical_property_triples = physical_property_.toTriples(physical_property_id_);
+        for (auto &it : physical_property_triples) {
             triples.move_back(it); // moves the statement
         }
         physical_property_triples.freeTriples();
@@ -130,7 +136,7 @@ namespace semsim {
 
         // the "what" part of physical entity triple
         triples.emplace_back(
-                LibrdfNode::fromUriString(property_metaid).get(),
+                LibrdfNode::fromUriString(physical_property_id_).get(),
                 BiomodelsBiologyQualifier("is").getNode(),
                 identity_resource_.getNode()
         );
@@ -138,7 +144,7 @@ namespace semsim {
         // the "where" part of the physical entity
         for (auto &locationResource : location_resources_) {
             triples.emplace_back(
-                    LibrdfNode::fromUriString(property_metaid).get(),
+                    LibrdfNode::fromUriString(physical_property_id_).get(),
                     BiomodelsBiologyQualifier("isPartOf").getNode(),
                     locationResource.getNode()
             );
