@@ -27,16 +27,9 @@ TEST_F(LibrdfStatementTests, TestCreate) {
     );
 
     ASSERT_NE(statement.get(), nullptr);
+    statement.freeStatement();
 
 }
-
-//TEST_F(LibrdfStatementTests, TestCopyConstructor) {
-//    redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate, resource);
-//    redland::LibrdfStatement statement2 = statement1;
-//    std::string actual1 = statement1.getSubjectStr();
-//    std::string actual2 = statement2.getSubjectStr();
-//    ASSERT_STREQ(actual1.c_str(), actual2.c_str());
-//}
 
 TEST_F(LibrdfStatementTests, TestMoveConstructor) {
     redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate, resource);
@@ -44,6 +37,7 @@ TEST_F(LibrdfStatementTests, TestMoveConstructor) {
     std::string expected = "subject";
     std::string actual = statement2.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    statement2.freeStatement();
 }
 
 TEST_F(LibrdfStatementTests, TestMoveConstructor2) {
@@ -53,18 +47,9 @@ TEST_F(LibrdfStatementTests, TestMoveConstructor2) {
     std::string expected = "subject";
     std::string actual = statement2.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    statement2.printUsages();
-    statement3.printUsages();
+    statement2.freeStatement();
+    statement3.freeStatement();
 }
-
-//TEST_F(LibrdfStatementTests, TestCopyAssignment) {
-//    redland::LibrdfStatement statement1 = LibrdfStatement(std::move(subject), std::move(predicate),
-//                                                          std::move(resource));
-//    redland::LibrdfStatement statement2 = statement1;
-//    std::string actual1 = statement1.getSubjectStr();
-//    std::string actual2 = statement2.getSubjectStr();
-//    ASSERT_STREQ(actual1.c_str(), actual2.c_str());
-//}
 
 TEST_F(LibrdfStatementTests, TestMoveAssignment) {
     redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate,
@@ -73,6 +58,7 @@ TEST_F(LibrdfStatementTests, TestMoveAssignment) {
     std::string actual = statement2.getSubjectStr();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    statement2.freeStatement();
 }
 
 
@@ -82,6 +68,7 @@ TEST_F(LibrdfStatementTests, TestGetPredicateStr) {
     std::string expected = "predicate";
     std::string actual = statement1.getPredicateStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    statement1.freeStatement();
 }
 
 TEST(LibrdfStatementTestsNoFixture, TestInequality) {
@@ -96,6 +83,8 @@ TEST(LibrdfStatementTestsNoFixture, TestInequality) {
             LibrdfNode::fromUriString("resource2")
     );
     ASSERT_NE(statement1, statement2);
+    statement1.freeStatement();
+    statement2.freeStatement();
 }
 
 TEST(LibrdfStatementTestsNoFixture, TestEquality) {
@@ -110,6 +99,8 @@ TEST(LibrdfStatementTestsNoFixture, TestEquality) {
             LibrdfNode::fromUriString("resource")
     );
     ASSERT_EQ(statement1, statement2);
+    statement1.freeStatement();
+    statement2.freeStatement();
 }
 
 
@@ -119,6 +110,7 @@ TEST_F(LibrdfStatementTests, TestToStatementSubject) {
     std::string actual = statement.getSubjectStr();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    statement.freeStatement();
 }
 
 
@@ -130,27 +122,9 @@ TEST_F(LibrdfStatementTests, TestPartial1) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     predicate.freeNode();
     resource.freeNode();
+    statement.freeStatement();
 }
 
-TEST(LibrdfStatementTestsNoFixture, PayingAttentionToResourceURIUsageCounts) {
-    LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromUriString("subject").get(),
-            LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get()
-    );
-
-    LibrdfStatement statement2 = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromUriString("subject").get(),
-            LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get()
-    );
-    int usage1 = librdf_uri_get_usage(statement1.getResource()->value.uri);
-    int usage2 = librdf_uri_get_usage(statement2.getResource()->value.uri);
-    ASSERT_EQ(2, usage1);
-    ASSERT_EQ(2, usage2);
-    statement1.freeStatement();
-    statement2.freeStatement();
-}
 
 
 

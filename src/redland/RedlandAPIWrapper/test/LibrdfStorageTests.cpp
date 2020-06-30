@@ -52,6 +52,7 @@ TEST_F(LibrdfStorageTests, TestMoveConstructor) {
     redland::LibrdfStorage storage2 = std::move(storage1);
     auto storage2_int_ptr = reinterpret_cast<std::uintptr_t>(storage2.get());
     ASSERT_EQ(storage1_int_ptr, storage2_int_ptr);
+    storage2.freeStorage();
 }
 
 TEST_F(LibrdfStorageTests, TestMoveAssignment) {

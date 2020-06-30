@@ -60,6 +60,7 @@ TEST_F(LibrdfSerializerTests, TestToString) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    statement.freeStatement();
     model.freeModel();
     storage.freeStorage();
 }

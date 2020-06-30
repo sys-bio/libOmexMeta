@@ -60,11 +60,12 @@ TEST_F(LibrdfQueryResultsTests, TestInstantiateQueryResults) {
 //
 
 TEST_F(LibrdfQueryResultsTests, TestMoveConstructor) {
-    LibrdfQueryResults results1 = model.query(std::move(query1));
+    LibrdfQueryResults results1 = model.query(query1);
     auto query_int_ptr1 = reinterpret_cast<std::uintptr_t>(results1.get());
     LibrdfQueryResults results2 = std::move(results1);
     auto query_int_ptr2 = reinterpret_cast<std::uintptr_t>(results2.get());
     ASSERT_EQ(query_int_ptr1, query_int_ptr2);
+
 }
 
 TEST_F(LibrdfQueryResultsTests, TestMoveAssignment) {

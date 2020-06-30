@@ -51,7 +51,7 @@ TEST_F(LibrdfModelTests, TestMoveAssignment) {
 
 
 TEST_F(LibrdfModelTests, TestAddStatement) {
-    LibrdfModel model1 = LibrdfModel(storage1.get());
+    auto model1 = LibrdfModel(storage1.get());
     LibrdfStatement statement = LibrdfStatement::fromRawNodePtrs(
             LibrdfNode::fromUriString("subject").get(),
             LibrdfNode::fromUriString("predicate").get(),
@@ -62,6 +62,7 @@ TEST_F(LibrdfModelTests, TestAddStatement) {
     int actual = model1.size();
     ASSERT_EQ(expected, actual);
     model1.freeModel();
+    statement.freeStatement();
 }
 
 TEST_F(LibrdfModelTests, TestRemoveStatement) {
@@ -85,6 +86,8 @@ TEST_F(LibrdfModelTests, TestRemoveStatement) {
     int actual = model1.size();
     ASSERT_EQ(expected, actual);
     model1.freeModel();
+    statement1.freeStatement();
+    statement2.freeStatement();
 }
 
 

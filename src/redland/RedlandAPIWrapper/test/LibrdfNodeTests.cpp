@@ -274,8 +274,6 @@ TEST_F(LibrdfNodeTests, TestCopyNodeUri) {
     LibrdfNode subject2 = LibrdfNode::copyNode(subject1);
     ASSERT_EQ(subject1, subject2);
     ASSERT_EQ(subject1.getUri(), subject2.getUri());
-    ASSERT_EQ(2, subject1.getUri().getUsage());
-    ASSERT_EQ(2, subject2.getUri().getUsage());
 
     subject1.freeNode(); // ref count to 1
     subject2.freeNode(); // ref count to 0
@@ -297,24 +295,12 @@ TEST_F(LibrdfNodeTests, TestCopyNodeUriNoWrapper) {
     librdf_free_uri(uri2);
 }
 
-TEST_F(LibrdfNodeTests, TestCopyNodeNoWrapper) {
-    /*
-     * This test does not work because of bug in raptor.
-     * If you copy a node with a uri, you should increment
-     * the uri usage count. But it does not.
-     */
-    librdf_node* n1 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char*)"https://uri1.com");
-    librdf_node* n2 = librdf_new_node_from_node(n1);
-//    ASSERT_TRUE(librdf_node_equals(n1, n2));
-}
 
 TEST_F(LibrdfNodeTests, TestCopyNodeLiteral) {
     LibrdfNode subject1 = LibrdfNode::fromLiteral("subject1");
     LibrdfNode subject2 = LibrdfNode::copyNode(subject1);
     ASSERT_EQ(subject1, subject2);
     ASSERT_EQ(subject1.getLiteralDatatype(), subject2.getLiteralDatatype());
-    ASSERT_EQ(2, subject1.getLiteralDatatype().getUsage());
-    ASSERT_EQ(2, subject2.getLiteralDatatype().getUsage());
 
     subject1.freeNode(); // ref count to 1
     subject2.freeNode(); // ref count to 0
