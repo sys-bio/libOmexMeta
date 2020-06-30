@@ -7,6 +7,7 @@
 #include "AnnotationSamples.h"
 #include <filesystem>
 #include <fstream>
+#include <thread>
 
 using namespace semsim;
 
@@ -136,7 +137,14 @@ TEST_F(RDFTests, TestParseFromUriNonStatic) {
 }
 
 TEST_F(RDFTests, TestSqliteStorageWithUriParse) {
+#ifdef WIN32
+    const char *fname = "D:\\libOmexMeta\\tests\\cpp\\sqlite_db.db";
+#else
     const char* fname = "/mnt/d/libOmexMeta/tests/cpp/sqlite_db.db";
+#endif
+    if (std::filesystem::exists(fname)) {
+        std::filesystem::remove(fname);
+    }
     RDF rdf("sqlite", fname, "new='yes'");
     rdf.addFromUri(samples.sbml_url1, "rdfxml");
     int expected = 277;
@@ -144,7 +152,14 @@ TEST_F(RDFTests, TestSqliteStorageWithUriParse) {
     ASSERT_EQ(expected, actual);
     ASSERT_TRUE(std::filesystem::exists(fname));
     // clean up after ourselves
-    std::filesystem::remove(fname);
+    // but windows holds the sqlite db file open so we can't delete
+    // on windows so on this instance we have to deal with test databases clogging up
+    // the test folder.
+    try {
+        std::filesystem::remove(fname);
+    } catch (std::exception &e) {
+        //
+    }
 }
 
 
@@ -200,7 +215,7 @@ TEST_F(RDFTests, TestParseFromFile) {
     std::string fname = std::filesystem::current_path().string() + "/TestParseFromFile.rdf";
     std::cout << fname << std::endl;
     std::ofstream f(fname);
-    if (f.is_open()){
+    if (f.is_open()) {
         f << samples.composite_annotation_pe << std::endl;
         f.flush();
         f.close();
@@ -223,7 +238,7 @@ TEST_F(RDFTests, TestParseFromFileNonStatic) {
     std::string fname = std::filesystem::current_path().string() + "/TestParseFromFile.rdf";
     std::cout << fname << std::endl;
     std::ofstream f(fname);
-    if (f.is_open()){
+    if (f.is_open()) {
         f << samples.composite_annotation_pe << std::endl;
         f.flush();
         f.close();

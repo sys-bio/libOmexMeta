@@ -115,6 +115,7 @@ if (PLATFORM STREQUAL "linux")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_DEBUG} -O0")
     set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_DEBUG} -O0")
 endif ()
+
 ############################################################3
 # configure some paths relative to vcpkg root
 set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its D:\\vcpkg")
