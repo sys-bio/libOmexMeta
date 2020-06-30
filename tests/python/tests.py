@@ -2,7 +2,6 @@ import os
 import site
 import typing
 import unittest
-
 import libcombine
 import requests
 import zipfile
@@ -220,14 +219,14 @@ class EditorTests(unittest.TestCase):
   <rdf:Description rdf:about="MediatorParticipant0000">
     <semsim:hasPhysicalEntityReference rdf:resource="PhysicalEntity8"/>
   </rdf:Description>
+  <rdf:Description rdf:about="OmexMetaId0001">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
+  </rdf:Description>
   <rdf:Description rdf:about="PhysicalProcess0000">
     <semsim:hasMediatorParticipant rdf:resource="MediatorParticipant0000"/>
     <semsim:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
     <semsim:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="OmexMetaId0001">
-    <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0000">
     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
@@ -256,13 +255,13 @@ class EditorTests(unittest.TestCase):
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:semsim="http://www.bhi.washington.edu/semsim#"
    xml:base="file://./Annotations.rdf">
-  <rdf:Description rdf:about="PhysicalForce0000">
-    <semsim:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
-    <semsim:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
-  </rdf:Description>
   <rdf:Description rdf:about="OmexMetaId0004">
     <bqbiol:isPropertyOf rdf:resource="PhysicalForce0000"/>
     <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/opb_275"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="PhysicalForce0000">
+    <semsim:hasSinkParticipant rdf:resource="SinkParticipant0000"/>
+    <semsim:hasSourceParticipant rdf:resource="SourceParticipant0000"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0000">
     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
@@ -435,6 +434,22 @@ class AnnotateAModelTest(unittest.TestCase):
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:semsim="http://www.bhi.washington.edu/semsim#"
    xml:base="file://./Annotations.rdf">
+  <rdf:Description rdf:about="OmexMetaId0002">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0000"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00340"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="OmexMetaId0003">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0001"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00340"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="OmexMetaId0004">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00237"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="OmexMetaId0005">
+    <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0001"/>
+    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00237"/>
+  </rdf:Description>
   <rdf:Description rdf:about="PhysicalEntity0000">
     <bqbiol:is rdf:resource="https://identifiers.org/uniprot/P84022"/>
     <bqbiol:isPartOf rdf:resource="https://identifiers.org/obo/FMA_264020"/>
@@ -453,22 +468,6 @@ class AnnotateAModelTest(unittest.TestCase):
   <rdf:Description rdf:about="PhysicalProcess0001">
     <semsim:hasSinkParticipant rdf:resource="SinkParticipant0001"/>
     <semsim:hasSourceParticipant rdf:resource="SourceParticipant0001"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="OmexMetaId0002">
-    <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0000"/>
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00340"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="OmexMetaId0003">
-    <bqbiol:isPropertyOf rdf:resource="PhysicalEntity0001"/>
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00340"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="OmexMetaId0004">
-    <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0000"/>
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00237"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="OmexMetaId0005">
-    <bqbiol:isPropertyOf rdf:resource="PhysicalProcess0001"/>
-    <bqbiol:isVersionOf rdf:resource="https://identifiers.org/OPB/OPB_00237"/>
   </rdf:Description>
   <rdf:Description rdf:about="SinkParticipant0000">
     <semsim:hasMultiplier rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double">1</semsim:hasMultiplier>
@@ -610,7 +609,7 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
       <th>Object</th>
     </tr>
     <tr class="triple">
-      <td><span class="uri"><a href="BIOMD0000000204_new.sbml#metaid15">BIOMD0000000204_new.sbml#m"""
+      <td><span class="uri"><a href="file:///mnt/d/libOmexMeta/tests/python/BIOMD0000000204_new.sb"""
         self.gold_standard_test(self.gold_standard_url1, self.gold_standard_filename1, expected, "html")
 
     def test_gold_standard2(self):
@@ -642,11 +641,9 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
                                         "rdfxml-abbrev")
 
     def test_gold_standard4(self):
-        expected = """<gerard_2009.cellml#Mdi.time> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/opb/OPB_01023> .
-<gerard_2009.cellml#BC.time> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/opb/OPB_01023> .
-<gerard_2009.cellml#Cb.Cb> <http://biomodels.net/biology-qualifiers/isPropertyOf> <gerard_2009.cellml#entity_34> .
-<gerard_2009.cellml#Cb.Cb> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/OPB_00340> .
-<gerard_2009.cellml#p27.Md> <"""
+        expected = """<file:///mnt/d/libOmexMeta/tests/python/gerard_2009.cellml#Mdi.time> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/opb/OPB_01023> .
+<file:///mnt/d/libOmexMeta/tests/python/gerard_2009.cellml#BC.time> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/opb/OPB_01023> .
+<file:///mnt/d/libOmexMeta/tests/python/gerard_2009.cellml#Cb.Cb> <http://biomodels.net/biology-qualifiers/isPropertyOf> <file:///mnt/d/libOmexMeta/tests/python/gerard_2009.cellml#entity_34"""
         self.gold_standard_test(self.gold_standard_url4, self.gold_standard_filename4, expected, "ntriples")
 
     def test_gold_standard5(self):
@@ -654,16 +651,15 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
 	rankdir = LR;
 	charset="utf-8";
 
-	"RBIOMD0000000498.sbml#process_1" -> "RBIOMD0000000498.sbml#mediator_1" [ label="http://www.bhi.washington.edu/SemSim#hasMediatorParticipant" ];
-	"RBIOMD0000000498.sbml#process_1" -> "RBIOMD0000000498.sbml#sink_1" [ label="http://www.bhi.washington.edu/SemSim#hasSinkParticipant" ];
-	"RBIOMD0000000498.sbml#process_1" -> "RBIOMD0000000498.sbml#source_1" [ label="http://www.bhi.washington.edu/SemSim#hasSourceParticipant" ];
-	"RBIOMD0000000498.sbml#proces"""
+	"Rfile:///mnt/d/libOmexMeta/tests/python/BIOMD0000000498.sbml#process_1" -> "Rfile:///mnt/d/libOmexMeta/tests/python/BIOMD0000000498.sbml#mediator_1" [ label="http://www.bhi.washington.edu/SemSim#hasMediatorParticipant" ];
+	"Rfile:///mnt/d/libOmexMeta/tests/python/BIOMD0000000498.sbml#process_1" -> "Rfile:///mnt/d/libOmexMeta/tests/python/BIOMD0000000498.sbml#sink_1" [ label="http://www.bhi.washington.edu/SemSim#hasSinkParticipant" ];
+	"Rfile:///mnt/d"""
         self.gold_standard_test(self.gold_standard_url5, self.gold_standard_filename5, expected, "dot")
 
     def test_query(self):
         self.download_file(self.gold_standard_url3, self.gold_standard_filename3)
         s = self.extract_rdf_from_combine_archive(self.gold_standard_filename3)[0]
-        rdf = RDF.from_string(s, "guess")
+        rdf = RDF.from_string(s, "rdfxml")
         query_str = """
         PREFIX bqbiol: <http://biomodels.net/biology-qualifiers/>
         SELECT ?x ?z
@@ -671,11 +667,11 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
             ?x bqbiol:isPropertyOf ?z
         }"""
         actual = rdf.query(query_str, "csv")[:500]
+        print(actual)
         expected = """x,z
-aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#sodium_current_i_Na,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_0
-aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#intracellular_ion_concentrations.i_up,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_13
-aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#T_type_Ca_channel_f_T_gate.V,aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#entity_0
-aslanidi_atrial_model_2009_LindbladCa_corrected.c"""
+file:///mnt/d/libOmexMeta/tests/python/aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#sodium_current_i_Na,file:///mnt/d/libOmexMeta/tests/python/aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_0
+file:///mnt/d/libOmexMeta/tests/python/aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#intracellular_ion_concentrations.i_up,file:///mnt/d/libOmexMeta/tests/python/aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_13
+file:///mnt/d/libOmexMeta/tests/python/as"""
 
         self.assertEqual(expected, actual)
 
