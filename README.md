@@ -21,7 +21,7 @@ and macos is a work in progress.
 You can get up and running quickly using pip
 
     $ sudo apt install libxslt1-dev libltdl-dev  yajl-tools
-    $ pip install --index-url https://test.pypi.org/simple pyomexmeta
+    $ pip install --index-url https://test.pypi.org/simple/ pyomexmeta
     # verify its worked
     $ ipython -c "import pyomexmeta"
 

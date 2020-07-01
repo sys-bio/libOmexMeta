@@ -87,17 +87,20 @@ if (${BUILD_SHARED_LIBS})
 
     # FIXME some redundancy here.
     # RPATH: on linux determines where shared libraries look for other shared library dependencies.
-    set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)
-    set(CMAKE_INSTALL_RPATH
-            "${CMAKE_INSTALL_PREFIX}/lib"   # probs not needed, but for good measure
-            "${PYOMEXMETA_DIR}"               # python test package
-            "$ORIGIN"                       # current directory (for when in site-packages)
-            )
+#    set(CMAKE_BUILD_RPATH_USE_ORIGIN ON)
+#    set(CMAKE_INSTALL_RPATH "")
+#    set(CMAKE_INSTALL_RPATH ".")
+#    set(CMAKE_BUILD_RPATH "$ORIGIN:1")
+#    set(CMAKE_INSTALL_RPATH "$ORIGIN:2")
 
-
+    
     # shared library
     add_library(OmexMeta SHARED "${OMEXMETA_HEADERS}" "${OMEXMETA_SOURCES}" Preproc.h)
-    set_target_properties(OmexMeta PROPERTIES INSTALL_RPATH_USE_LINK_PATH TRUE)
+    set_target_properties(OmexMeta PROPERTIES INSTALL_RPATH "$ORIGIN")
+    set_target_properties(OmexMeta PROPERTIES BUILD_RPATH "$ORIGIN")
+#    set_target_properties(OmexMeta PROPERTIES BUILD_RPATH_USE_ORIGIN TRUE)
+    GET_TARGET_PROPERTY(V OmexMeta INSTALL_RPATH)
+    MESSAGE(V ${V})
 
     # set runtime shared for windows (ignored on other systems)
     if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
@@ -144,16 +147,16 @@ if (${BUILD_SHARED_LIBS})
     # install the shared library dependencies
     if (PLATFORM STREQUAL "linux")
         # On linux we only need a few dynamic libraries due to static linking the rest.
-        install(FILES
-                $<TARGET_FILE:OmexMeta>
-                "${LIBXML2_LIBRARY}"
-                "${CURL_LIBRARY}"
-                "${LIBXSLT_LIBRARY}"
-                "${SQLITE3_LIBRARY}"
-                "${BERKELY_LIBRARY}"
-                "${POSTGRESQL_LIBRARY}"
-                DESTINATION ${PYOMEXMETA_DIR}
-                )
+        install(FILES $<TARGET_FILE:OmexMeta> DESTINATION ${PYOMEXMETA_DIR})
+#        install(FILES "${LIBXML2_LIBRARY}" DESTINATION ${PYOMEXMETA_DIR} RENAME libxml2.so.2)
+#        install(FILES "${LIBXSLT_LIBRARY}" DESTINATION ${PYOMEXMETA_DIR} RENAME libxslt.so.1)
+#        install(FILES "${SQLITE3_LIBRARY}" DESTINATION ${PYOMEXMETA_DIR} RENAME libsqlite3.so.0)
+#        install(FILES "${BERKELY_LIBRARY}" DESTINATION ${PYOMEXMETA_DIR} RENAME libdb-5.3.so)
+#        install(FILES "${POSTGRESQL_LIBRARY}" DESTINATION ${PYOMEXMETA_DIR} RENAME libpq.so.5)
+
+        # curl was statically linked in the end
+#        install(FILES "${CURL_LIBRARY}" DESTINATION ${PYOMEXMETA_DIR} RENAME libsqlite.so.0)
+
     elseif (PLATFORM STREQUAL "windows-msvc")
         # Just take all of them on windows, since we've linked dynamically to everything
         install(FILES ${LIBRARIES} DESTINATION bin)

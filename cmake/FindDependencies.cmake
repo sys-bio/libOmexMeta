@@ -26,7 +26,7 @@ macro(FindDependencies)
             )
 
     find_file(LIBXML2_LIBRARY
-            NAMES libxml2.dll libxml2.so xml2 xml2.dll libxml2
+            NAMES libxml2.dll libxml2.so.2.9.4 libxml2.so xml2 xml2.dll libxml2
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
@@ -54,7 +54,7 @@ macro(FindDependencies)
     endif ()
 
     find_file(LIBXSLT_LIBRARY
-            NAMES libxslt.dll libxslt.so
+            NAMES libxslt.dll libxslt.so.1.1.29 libxslt.so
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
@@ -76,7 +76,7 @@ macro(FindDependencies)
             )
 
     find_file(CURL_LIBRARY
-            NAMES libcurl.dll curl.dll libcurl.so
+            NAMES libcurl.dll libcurl.so.4.5.0 curl.dll libcurl.so
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
@@ -262,7 +262,7 @@ macro(FindDependencies)
     endif ()
 
     find_file(ICONV_LIBRARY
-            NAMES libiconv.dll libiconv.so libiconv.so.2
+            NAMES libiconv.dll libiconv.so.2.6.1.hidden libiconv.so libiconv.so.2
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             REQUIRED
@@ -287,7 +287,7 @@ macro(FindDependencies)
             )
 
     find_file(SQLITE3_LIBRARY
-            NAMES sqlite3.dll sqlite3.so sqlite3.so.2 libsqlite3.so
+            NAMES sqlite3.dll libsqlite3.so.0.8.6 sqlite3.so sqlite3.so.2 libsqlite3.so
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
@@ -314,7 +314,7 @@ macro(FindDependencies)
             )
 
     find_file(BERKELY_LIBRARY
-            NAMES libdb48.dll libdb.so
+            NAMES libdb48.dll libdb-5.3.so libdb.so
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             REQUIRED
@@ -333,12 +333,12 @@ macro(FindDependencies)
             NAMES libpq.a libpq.lib pq.lib
             PATHS
             ${VCPKG_X64_LIB_DIR}
-            #            ${DEFAULT_LINUX_LOCATIONS}
+#                        ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
             )
 
     find_file(POSTGRESQL_LIBRARY
-            NAMES libpq.so libpq.dll
+            NAMES libpq.so.5.12 libpq.so libpq.dll
             PATHS ${VCPKG_X64_BIN_DIR}
             #            ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH

@@ -43,9 +43,7 @@ TEST_F(LibrdfStorageTests, TestInstantiateStorage) {
     storage1.freeStorage();
 }
 
-
 TEST_F(LibrdfStorageTests, TestMoveConstructor) {
-
     redland::LibrdfStorage storage1 = LibrdfStorage();
     // get ptr as int before we move it to compare with storage 2
     auto storage1_int_ptr = reinterpret_cast<std::uintptr_t>(storage1.get());
