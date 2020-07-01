@@ -16,6 +16,7 @@ macro(FindDependencies)
             "/usr/include/x86_64-linux-gnu"
             "/mnt/d/usr/include/x86_64-linux-gnu"
             "/mnt/c/usr/include/x86_64-linux-gnu"
+
             )
 
     # libxml2
@@ -26,7 +27,7 @@ macro(FindDependencies)
             )
 
     find_file(LIBXML2_LIBRARY
-            NAMES libxml2.dll libxml2.so.2.9.4 libxml2.so xml2 xml2.dll libxml2
+            NAMES libxml2.dll libxml2.so xml2 xml2.dll libxml2
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
@@ -54,7 +55,7 @@ macro(FindDependencies)
     endif ()
 
     find_file(LIBXSLT_LIBRARY
-            NAMES libxslt.dll libxslt.so.1.1.29 libxslt.so
+            NAMES libxslt.dll libxslt.so
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
@@ -208,13 +209,8 @@ macro(FindDependencies)
     find_file(ZLIB_LIBRARY
             NAMES zlib1.dll zlib libz libz.so
             PATHS
-            "${VCPKG_X64_BIN_DIR}"
-            "/usr/local/lib"
-            "/mnt/d/usr/local/lib"
-            "/mnt/c/usr/local/lib"
-            "/usr/lib/x86_64-linux-gnu"
-            "mnt/d/usr/lib/x86_64-linux-gnu"
-            "mnt/c/usr/lib/x86_64-linux-gnu"
+            ${VCPKG_X64_BIN_DIR}
+            ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
             REQUIRED
             )
@@ -287,7 +283,7 @@ macro(FindDependencies)
             )
 
     find_file(SQLITE3_LIBRARY
-            NAMES sqlite3.dll libsqlite3.so.0.8.6 sqlite3.so sqlite3.so.2 libsqlite3.so
+            NAMES sqlite3.dll sqlite3.so sqlite3.so.2 libsqlite3.so
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
@@ -333,7 +329,7 @@ macro(FindDependencies)
             NAMES libpq.a libpq.lib pq.lib
             PATHS
             ${VCPKG_X64_LIB_DIR}
-#                        ${DEFAULT_LINUX_LOCATIONS}
+            #                        ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
             )
 
@@ -350,6 +346,17 @@ macro(FindDependencies)
             PATHS ${VCPKG_X64_INCLUDE_DIR}
             #            ${DEFAULT_LINUX_LOCATIONS}
             #            NO_DEFAULT_PATH
+            )
+
+    # Bit of an odd one. I've build the libomexmeta on linux gcc 10.1 which
+    # corresponds to libstdc++.6.0.28. However the latest you can get on
+    # apt (ubuntu18.04), it seems, is libstdc++6.0.25.
+    # Consequently, I either downgrade compilers, or manually link the correct libstdc++
+    #version and distribute the so. For now I choose the latter.
+    find_file(LIBSTDCXX6_LIBRARY
+            NAMES libstdc++.so.6.0.28
+            PATHS
+            ${DEFAULT_LINUX_LOCATIONS}
             )
 
     # Note: on windows these are note actually static libraries,
@@ -388,6 +395,7 @@ macro(FindDependencies)
             "${SQLITE3_LIBRARY}"
             "${BERKELY_LIBRARY}"
             "${POSTGRESQL_LIBRARY}"
+            "${LIBSTDCXX6_LIBRARY}"
             )
 
     set(INCLUDES

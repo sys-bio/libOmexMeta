@@ -50,7 +50,6 @@ binaries = [
     os.path.join(PYOMEXMETA_DIR, "libcharset.dll"),
     os.path.join(PYOMEXMETA_DIR, "libcrypto-1_1-x64.dll"),
     os.path.join(PYOMEXMETA_DIR, "libcurl.dll"),
-    os.path.join(PYOMEXMETA_DIR, "libdb-5.3.so"),
     os.path.join(PYOMEXMETA_DIR, "libdb48.dll"),
     os.path.join(PYOMEXMETA_DIR, "libiconv.dll"),
     os.path.join(PYOMEXMETA_DIR, "libOmexMeta.so"),
@@ -66,10 +65,6 @@ binaries = [
     os.path.join(PYOMEXMETA_DIR, "yajl.dll"),
     os.path.join(PYOMEXMETA_DIR, "zlib1.dll"),
     # linux dependencies
-    os.path.join(PYOMEXMETA_DIR, "libpq.so.5"),
-    os.path.join(PYOMEXMETA_DIR, "libsqlite3.so.0"),
-    os.path.join(PYOMEXMETA_DIR, "libxml2.so.2"),
-    os.path.join(PYOMEXMETA_DIR, "libxslt.so.1"),
 ]
 
 for i in binaries:

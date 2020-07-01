@@ -1,17 +1,25 @@
 FROM ubuntu:18.04
-# update apt and get miniconda
+# update apt and collect a few essential tools
+# then add the gcc repository before updating apt again.
+# now we can install gcc 10 compiler.
+# we also download miniconda.
 RUN apt-get update \
-	&& apt-get install -y wget lsb-release binutils \
-	&& wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-
+	&& apt-get install -y wget lsb-release binutils software-properties-common \
+	&& wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+	&& add-apt-repository -y ppa:ubuntu-toolchain-r/test \
+	&& apt-get update
 
 # install miniconda
 ENV PATH="/root/miniconda3/bin:$PATH"
+ENV DEBIAN_FRONTEND noninteractive
 ENV site_packages /root/miniconda3/envs/pyomexmeta-test/lib/python3.7/site-packages
 ENV pyomexmeta_dir ${site_packages}/pyomexmeta
 RUN mkdir /root/.conda && bash Miniconda3-latest-Linux-x86_64.sh -b
 
-#SHELL ["/bin/bash", "-c"]
+# install the dependency shared libraries for pyomexmeta
+RUN apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
+                      libxslt1-dev postgresql postgresql-contrib  \
+                      libdb-dev gcc-10 g++-10
 
 # create conda environment
 RUN conda init bash \
@@ -21,7 +29,8 @@ RUN conda init bash \
     && pip install ipython \
     && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
 
-RUN apt-get install -y install sqlite3 libsqlite3-dev libxml2 libxml2dev libxslt1-dev postgresql postgresql-contrib  libdb6.0-dev
+
+
 #RUN
 
 #RUN . ~/.bashrc

@@ -8,8 +8,8 @@ cmake_minimum_required(VERSION 3.15)
 
 # Set version.
 set(VERSION_MAJOR 0)
-set(VERSION_MINOR 0)
-set(VERSION_MICRO 13)
+set(VERSION_MINOR 1)
+set(VERSION_MICRO 0)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 
@@ -262,7 +262,6 @@ endif ()
 
 
 set(INCLUDE_DIRECTORIES
-        # fixme lots of redundancy here at the moment.
         # raptor includes
         ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/src
         ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15/utils

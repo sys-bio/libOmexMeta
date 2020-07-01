@@ -87,18 +87,23 @@ if (${BUILD_SHARED_LIBS})
 
     # FIXME some redundancy here.
     # RPATH: on linux determines where shared libraries look for other shared library dependencies.
-#    set(CMAKE_BUILD_RPATH_USE_ORIGIN ON)
-#    set(CMAKE_INSTALL_RPATH "")
-#    set(CMAKE_INSTALL_RPATH ".")
-#    set(CMAKE_BUILD_RPATH "$ORIGIN:1")
-#    set(CMAKE_INSTALL_RPATH "$ORIGIN:2")
+    #    set(CMAKE_BUILD_RPATH_USE_ORIGIN ON)
+    #    set(CMAKE_INSTALL_RPATH "")
+    #    set(CMAKE_INSTALL_RPATH ".")
+    #    set(CMAKE_BUILD_RPATH "$ORIGIN:1")
+    #    set(CMAKE_INSTALL_RPATH "$ORIGIN:2")
 
-    
+
     # shared library
     add_library(OmexMeta SHARED "${OMEXMETA_HEADERS}" "${OMEXMETA_SOURCES}" Preproc.h)
-    set_target_properties(OmexMeta PROPERTIES INSTALL_RPATH "$ORIGIN")
+
+    #    SET (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath,'$ORIGIN'" )
+    #
+    #    SET (CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-rpath,'$ORIGIN'" )
+
+    set_target_properties(OmexMeta PROPERTIES INSTALL_RPATH "$ORIGIN")#:$ORIGIN:/home/ciaran/vcpkg/installed/x64-linux/lib")
     set_target_properties(OmexMeta PROPERTIES BUILD_RPATH "$ORIGIN")
-#    set_target_properties(OmexMeta PROPERTIES BUILD_RPATH_USE_ORIGIN TRUE)
+    #    set_target_properties(OmexMeta PROPERTIES BUILD_RPATH_USE_ORIGIN TRUE)
     GET_TARGET_PROPERTY(V OmexMeta INSTALL_RPATH)
     MESSAGE(V ${V})
 
@@ -141,21 +146,39 @@ if (${BUILD_SHARED_LIBS})
 
     # for automatically installing to folder containing python api
     install(TARGETS OmexMeta
-            RUNTIME DESTINATION ${PYOMEXMETA_DIR}
+            LIBRARY DESTINATION ${PYOMEXMETA_DIR}
             )
+
 
     # install the shared library dependencies
     if (PLATFORM STREQUAL "linux")
+
         # On linux we only need a few dynamic libraries due to static linking the rest.
         install(FILES $<TARGET_FILE:OmexMeta> DESTINATION ${PYOMEXMETA_DIR})
-#        install(FILES "${LIBXML2_LIBRARY}" DESTINATION ${PYOMEXMETA_DIR} RENAME libxml2.so.2)
-#        install(FILES "${LIBXSLT_LIBRARY}" DESTINATION ${PYOMEXMETA_DIR} RENAME libxslt.so.1)
-#        install(FILES "${SQLITE3_LIBRARY}" DESTINATION ${PYOMEXMETA_DIR} RENAME libsqlite3.so.0)
-#        install(FILES "${BERKELY_LIBRARY}" DESTINATION ${PYOMEXMETA_DIR} RENAME libdb-5.3.so)
-#        install(FILES "${POSTGRESQL_LIBRARY}" DESTINATION ${PYOMEXMETA_DIR} RENAME libpq.so.5)
+
+        # I had issues installing a few of the dynamic libraries, namely:
+        #       - ${LIBXML2_LIBRARY}
+        #       - ${LIBXSLT_LIBRARY}
+        #       - ${SQLITE3_LIBRARY}
+        #       - ${BERKELY_LIBRARY}
+        #       - ${POSTGRESQL_LIBRARY}
+        # Checkout the LINK_LIBRARIES variable for details on which were statically
+        # and which were dynamically linked. I later realized that in order to use these at run time you need both a smbolic
+        # link link libx.so.1 which points to the actual library libx.so.1.0.15. Both
+        # need to be copied into the pyomexmeta src directory which will then be incorporated
+        # into the python build.
+        # This is a viable strategy, and should probably be implemented soon so users do not
+        # need to manually install packages from apt. However, for now, we rely on users
+        # installing these dependencies manually.
+
+        # The exception is the libstdc++ library. Since ive build
+        # using a later version than is easily obtainably
+        # using apt-get, I just distribute along with python
+        install(FILES ${LIBSTDCXX6_LIBRARY} DESTINATION ${PYOMEXMETA_DIR})
+
 
         # curl was statically linked in the end
-#        install(FILES "${CURL_LIBRARY}" DESTINATION ${PYOMEXMETA_DIR} RENAME libsqlite.so.0)
+        #        install(FILES "${CURL_LIBRARY}" DESTINATION ${PYOMEXMETA_DIR} RENAME libsqlite.so.0)
 
     elseif (PLATFORM STREQUAL "windows-msvc")
         # Just take all of them on windows, since we've linked dynamically to everything

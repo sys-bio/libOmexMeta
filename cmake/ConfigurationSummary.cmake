@@ -96,6 +96,8 @@ Dependencies
         POSTGRESQL_STATIC_LIBRARY           ${POSTGRESQL_STATIC_LIBRARY}
         POSTGRESQL_LIBRARY                  ${POSTGRESQL_LIBRARY}
         POSTGRESQL_INCLUDE_DIR              ${POSTGRESQL_INCLUDE_DIR}
+    libstdc++
+        LIBSTDCXX6_LIBRARY                  ${LIBSTDCXX6_LIBRARY}
     All Static Libraries
         STATIC_LIBRARIES                    ${STATIC_LIBRARIES}
     All Libraries

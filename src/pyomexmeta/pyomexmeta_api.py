@@ -17,7 +17,26 @@ class Util:
     def load_lib() -> ct.CDLL:
         if sys.platform == "linux":
             lib_path = os.path.join(_WORKING_DIRECTORY, "libOmexMeta.so")
-            lib = ct.CDLL(lib_path)
+            try:
+                lib = ct.CDLL(lib_path)
+            except OSError as e:
+                if str(e) == "libxml2.so.2: cannot open shared object file: No such file or directory":
+                    raise FileNotFoundError("Dependency library libxml2.so was not found. Run "
+                                            "\"$ sudo apt install -y libxml2 libxml2-dev\"")
+
+                elif str(e) == "libxslt.so.1: cannot open shared object file: No such file or directory":
+                    raise FileNotFoundError("Dependency library libxsl2.so was not found. Run "
+                                            "\"$ sudo apt install -y libxslt1-dev\"")
+
+                elif str(e) == "libpq.so.5: cannot open shared object file: No such file or directory":
+                    raise FileNotFoundError("Dependency library libpq.so was not found. Run "
+                                            "\"$ sudo apt install -y libpq-dev\"")
+
+                elif "libstdc++.so.6: version `GLIBCXX_3.4.26' not found" in str(e):
+                    raise FileNotFoundError("Dependency library libstdc++.so.6 was not found. Run "
+                                            "\"$ sudo apt install -y g++-10\"")
+
+
         elif sys.platform == "win32":
             # windows has to be difficult
             lib_path = os.path.join(_WORKING_DIRECTORY, "OmexMeta.dll")
