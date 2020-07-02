@@ -36,15 +36,15 @@ before_install:
 #    && pip install ipython sphinx breathe
 #    && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
   - cd ${HOME} && git clone https://github.com/sys-bio/libOmexMeta.git && cd libOmexMeta
-  script:
-    - mkdir build && cd build
-    - cmake -DVCPKG_ROOT=${HOME}/vcpkg -DCMAKE_INSTALL_PREFIX=${HOME}/install -DBUILD_TESTS=ON ..
-    - make -j 8
-    - make install
-    - bash ${HOME}/bin/OmexMeta-tests
-    - bash ${HOME}/bin/redland-wrapper-tests
-    - pip install nose
-    - nosetests ${HOME}/libOmexMeta
+script:
+  - mkdir build && cd build
+  - cmake -DVCPKG_ROOT=${HOME}/vcpkg -DCMAKE_INSTALL_PREFIX=${HOME}/install -DBUILD_TESTS=ON ..
+  - make -j 8
+  - make install
+  - bash ${HOME}/bin/OmexMeta-tests
+  - bash ${HOME}/bin/redland-wrapper-tests
+  - pip install nose
+  - nosetests ${HOME}/libOmexMeta
 
 
 
