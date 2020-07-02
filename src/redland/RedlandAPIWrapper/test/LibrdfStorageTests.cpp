@@ -65,11 +65,7 @@ TEST_F(LibrdfStorageTests, TestMoveAssignment) {
 
 
 TEST_F(LibrdfStorageTests, TestSQLiteStorage) {
-#ifdef WIN32
-    const char* fname = "D:\\libOmexMeta\\tests\\cpp\\StorageName.db";
-#elif defined(__linux__)
-    const char* fname = "/mnt/d/libOmexMeta/tests/cpp/StorageName.db";
-#endif
+    std::filesystem::path fname = std::filesystem::current_path() += "StorageName.db";
     raptor_world* raptor_world_ptr = librdf_world_get_raptor(world);
     LibrdfStorage storage = LibrdfStorage("sqlite", fname, "new='yes'");
     LibrdfModel model(storage.get());

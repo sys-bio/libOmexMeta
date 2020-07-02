@@ -137,11 +137,7 @@ TEST_F(RDFTests, TestParseFromUriNonStatic) {
 }
 
 TEST_F(RDFTests, TestSqliteStorageWithUriParse) {
-#ifdef WIN32
-    const char *fname = "D:\\libOmexMeta\\tests\\cpp\\sqlite_db.db";
-#else
-    const char* fname = "/mnt/d/libOmexMeta/tests/cpp/sqlite_db.db";
-#endif
+    std::filesystem::path fname = std::filesystem::current_path() += "sqlite_db";
     if (std::filesystem::exists(fname)) {
         std::filesystem::remove(fname);
     }
@@ -212,7 +208,7 @@ TEST_F(RDFTests, TestSqliteStorageWithUriParse) {
 
 TEST_F(RDFTests, TestParseFromFile) {
     // first create a file containing annotations
-    std::string fname = std::filesystem::current_path().string() + "/TestParseFromFile.rdf";
+    std::string fname = std::filesystem::current_path().string() += "TestParseFromFile.rdf";
     std::cout << fname << std::endl;
     std::ofstream f(fname);
     if (f.is_open()) {

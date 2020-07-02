@@ -112,12 +112,8 @@ TEST_F(CAPITests, RDF_addFromUri) {
 }
 
 TEST_F(CAPITests, RDF_addFromUriSqliteStorage) {
-#ifdef WIN32
-    const char* fname = "D:\\libOmexMeta\\tests\\cpp\\CAPITestSqlite.db";
-#else
-    const char* fname = "/mnt/d/libOmexMeta/tests/cpp/CAPITestSqlite.db";
-#endif
-    RDF *rdf_ptr = RDF_new("sqlite", fname, "new='yes'");
+    std::filesystem::path fname = std::filesystem::current_path() += "SqliteStorageTest.db";
+    RDF *rdf_ptr = RDF_new("sqlite", fname.string().c_str(), "new='yes'");
     RDF_addFromUri(rdf_ptr, samples.sbml_url1.c_str(), "rdfxml");
     int expected = 277;
     int actual = RDF_size(rdf_ptr);
