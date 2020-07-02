@@ -15,8 +15,7 @@ before_install:
   - wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz
     && tar -xvf cmake-3.15.7-Linux-x86_64.tar.gz
   - cd ${HOME}
-  - if [ ! -f "${HOME}/vcpkg" ]; then
-    && git clone https://github.com/microsoft/vcpkg.git
+  - if [ ! -f "${HOME}/vcpkg" ]; then git clone https://github.com/microsoft/vcpkg.git
     && bash ${HOME}/vcpkg/bootstrap-vcpkg.sh
     && ${HOME}/vcpkg/vcpkg integrate install
     && ${HOME}/vcpkg/vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
