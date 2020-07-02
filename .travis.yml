@@ -3,6 +3,8 @@ compiler:
   - gcc
 sudo: false
 dist: bionic
+git:
+  clone: false
 before_install:
   - sudo apt-get update
   - DEBIAN_FRONTEND=noninteractive
@@ -31,8 +33,19 @@ before_install:
     && . ~/.bashrc
     && conda create -y --name pyomexmeta-test python=3.7
     && conda activate pyomexmeta-test
-    && pip install ipython sphinx breathe
-    && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
+#    && pip install ipython sphinx breathe
+#    && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
+  - cd ${HOME} && git clone https://github.com/sys-bio/libOmexMeta.git && cd libOmexMeta
+  script:
+    - mkdir build && cd build
+    - cmake -DVCPKG_ROOT=${HOME}/vcpkg -DCMAKE_INSTALL_PREFIX=${HOME}/install -DBUILD_TESTS=ON ..
+    - make -j 8
+    - make install
+    - bash ${HOME}/bin/OmexMeta-tests
+    - bash ${HOME}/bin/redland-wrapper-tests
+    - pip install nose
+    - nosetests ${HOME}/libOmexMeta
+
 
 
 
