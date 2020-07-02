@@ -263,6 +263,7 @@ elseif (PLATFORM STREQUAL "linux")
             -Wl,--no-whole-archive
             m
             dl
+            ldap
             )
 
 elseif (PLATFORM STREQUAL "macos")
