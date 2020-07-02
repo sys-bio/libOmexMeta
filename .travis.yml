@@ -10,11 +10,14 @@ git:
   clone: false
 before_install:
   - sudo apt-get update
+  - cd ${HOME}
   - DEBIAN_FRONTEND=noninteractive
   - sudo apt-get install -y wget lsb-release binutils software-properties-common
   - wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz
     && tar -xvf cmake-3.15.7-Linux-x86_64.tar.gz
-  - cd ${HOME}
+  
+  - cmake=${HOME}/cmake-3.15.7-Linux-x86_64/bin/cmake
+
   - if [ ! -d "${HOME}/vcpkg" ]; then git clone https://github.com/microsoft/vcpkg.git
     && bash ${HOME}/vcpkg/bootstrap-vcpkg.sh
     && ${HOME}/vcpkg/vcpkg integrate install

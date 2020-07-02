@@ -39,7 +39,7 @@ class Util:
                     raise FileNotFoundError("Dependency library libstdc++.so.6 was not found. Run "
                                             "\"$ sudo apt install -y g++-10\"")
                 else:
-                    raise ValueError from e
+                    raise e
 
         elif sys.platform == "win32":
             # windows has to be difficult
