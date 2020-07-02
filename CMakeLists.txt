@@ -70,6 +70,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
 
+
 ####################################################################
 # User options
 #
@@ -115,6 +116,12 @@ if (PLATFORM STREQUAL "linux")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_DEBUG} -O0")
     set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_DEBUG} -O0")
 endif ()
+
+option(WITH_COVERAGE OFF)
+
+if (WITH_COVERAGE)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
+    endif()
 
 ############################################################3
 # configure some paths relative to vcpkg root
