@@ -3,9 +3,9 @@ compiler:
   - gcc
 sudo: false
 dist: bionic
-#cache:
-#  directories:
-#    - ${HOME}/vcpkg
+cache:
+  directories:
+    - ${HOME}/vcpkg
 git:
   clone: false
 before_install:
@@ -30,8 +30,8 @@ before_install:
   - PATH=~/miniconda3/bin:$PATH
   - sudo apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev
     libxslt1-dev postgresql postgresql-contrib libdb-dev
-    libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx slapd libldap-dev
-    libpthread-stubs0-dev libltdl-dev git
+    libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx libldap-dev
+    libpthread-stubs0-dev libltdl-dev git slapd ldap-utils
     && sudo apt-get install -y curl unzip tar
     && sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
   - conda init bash
