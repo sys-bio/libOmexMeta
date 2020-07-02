@@ -1,14 +1,14 @@
 language: cpp
-dist: bionic
-services: docker
+#services: docker
 matrix:
   include:
-    - env:
-      - PATH=/root/miniconda3/bin:$PATH
-      DEBIAN_FRONTEND=noninteractive
-      site_packages=/root/miniconda3/envs/pyomexmeta-test/lib/python3.7/site-packages
-      pyomexmeta_dir=${site_packages}/pyomexmeta
-      PATH=$PATH:/cmake-3.15.7-Linux-x86_64/bin
+    - os: linux
+    - dist: bionic
+#    - env:
+#      DEBIAN_FRONTEND=noninteractive
+#      site_packages=/root/miniconda3/envs/pyomexmeta-test/lib/python3.7/site-packages
+#      pyomexmeta_dir=${site_packages}/pyomexmeta
+#      PATH=$PATH:/cmake-3.15.7-Linux-x86_64/bin
     - before_install:
       - apt-get update
       - apt-get install -y wget lsb-release binutils software-properties-common wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -16,6 +16,8 @@ matrix:
       - apt-get update
       - mkdir /root/.conda
       - bash Miniconda3-latest-Linux-x86_64.sh -b
+      - ls
+      - PATH=~/miniconda3/bin:$PATH
       - apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
         libxslt1-dev postgresql postgresql-contrib  \
         libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
