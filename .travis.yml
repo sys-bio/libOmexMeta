@@ -9,6 +9,7 @@ cache:
 git:
   clone: false
 before_install:
+  - echo "TRAVIS_BUILD_DIR $TRAVIS_BUILD_DIR"
   - sudo apt-get update
   - cd ${HOME}
   - DEBIAN_FRONTEND=noninteractive
@@ -40,14 +41,15 @@ before_install:
     && . ~/.bashrc
     && conda create -y --name pyomexmeta-test python=3.7
     && conda activate pyomexmeta-test
-#    && pip install ipython sphinx breathe
+    && pip install ipython sphinx breathe python-libcombine tellurium
 #    && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
   - cd ${HOME} && git clone https://github.com/sys-bio/libOmexMeta.git && cd libOmexMeta
-script:
+install:
   - mkdir build && cd build
   - cmake_ -DVCPKG_ROOT=${HOME}/vcpkg -DCMAKE_INSTALL_PREFIX=${HOME}/install -DBUILD_TESTS=ON ..
   - make -j 8
   - make install
+script:
   - bash ${HOME}/bin/OmexMeta-tests
   - bash ${HOME}/bin/redland-wrapper-tests
   - python ${HOME}/setup.py install
