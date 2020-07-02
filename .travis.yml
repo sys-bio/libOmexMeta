@@ -46,8 +46,7 @@ script:
   - make install
   - bash ${HOME}/bin/OmexMeta-tests
   - bash ${HOME}/bin/redland-wrapper-tests
-  - pip install nose
-  - nosetests python -m unittest discover -s ${HOME}/libOmexMeta/tests/python/ -p '*_tests.py'
+  - python -m unittest discover -s ${HOME}/libOmexMeta/tests/python/ -p '*_tests.py'
 
 
 

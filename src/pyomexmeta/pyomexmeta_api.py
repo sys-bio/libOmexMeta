@@ -38,7 +38,8 @@ class Util:
                 elif "libstdc++.so.6: version `GLIBCXX_3.4.26' not found" in str(e):
                     raise FileNotFoundError("Dependency library libstdc++.so.6 was not found. Run "
                                             "\"$ sudo apt install -y g++-10\"")
-
+                else:
+                    raise ValueError from e
 
         elif sys.platform == "win32":
             # windows has to be difficult
