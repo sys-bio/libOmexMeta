@@ -258,7 +258,7 @@ macro(FindDependencies)
     endif ()
 
     find_file(ICONV_LIBRARY
-            NAMES libiconv.dll libiconv.so.2.6.1.hidden libiconv.so libiconv.so.2 libicuuc.so.60
+            NAMES libiconv.dll libiconv.so.2.6.1.hidden libiconv.so libiconv.so.2 #libicuuc.so.60
             PATHS ${VCPKG_X64_BIN_DIR}
             ${DEFAULT_LINUX_LOCATIONS}
             REQUIRED
