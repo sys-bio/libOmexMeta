@@ -31,8 +31,8 @@ before_install:
   - git clone https://github.com/microsoft/vcpkg.git
   - cd vcpkg
   - ./bootstrap-vcpkg.sh
-  - vcpkg/vcpkg integrate install
-  - vcpkg/vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
+  - vcpkg integrate install
+  - vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
 
 
 #matrix:
