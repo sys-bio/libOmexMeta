@@ -265,6 +265,7 @@ elseif (PLATFORM STREQUAL "linux")
             dl
             ldap
             slapd
+            lber
             )
 
 elseif (PLATFORM STREQUAL "macos")
