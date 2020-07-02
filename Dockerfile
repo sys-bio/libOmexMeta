@@ -19,15 +19,17 @@ RUN mkdir /root/.conda && bash Miniconda3-latest-Linux-x86_64.sh -b
 # install the dependency shared libraries for pyomexmeta
 RUN apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
                       libxslt1-dev postgresql postgresql-contrib  \
-                      libdb-dev gcc-10 g++-10 flex bison doxygen \
-    apt-get install -y apt-get install -y curl unzip tar
+                      libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
+    && apt-get install -y apt-get install -y curl unzip tar \
+    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
+
 
 # create conda environment
 RUN conda init bash \
     && . ~/.bashrc \
     && conda create --name pyomexmeta-test python=3.7 \
     && conda activate pyomexmeta-test \
-    && pip install ipython \
+    && pip install ipython sphinx breathe\
     && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
 
 # install cmake

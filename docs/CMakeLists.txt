@@ -38,8 +38,14 @@ add_custom_target(libomexmeta-docs-doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
 #Look for an executable called sphinx-build
 find_program(SPHINX_EXECUTABLE
         NAMES sphinx-build
-        PATHS /home/ciaran/miniconda3/envs/py37/bin/
-        DOC "Path to sphinx-build executable"
+        PATHS
+        /home/ciaran/miniconda3/envs/py37/bin/
+        D:/miniconda3/bin
+        C:/miniconda3/bin
+        /mnt/d/miniconda3/bin
+        /mnt/c/miniconda3/bin
+        /root/miniconda3/bin
+        DOC "Path to sphinx-build executable bin directory"
         )
 
 set(SPHINX_SOURCE ${CMAKE_SOURCE_DIR}/docs/source)
@@ -50,7 +56,6 @@ set(SPHINX_INDEX_FILE ${SPHINX_BUILD}/index.html)
 # - Doxygen has rerun
 # - Our doc files have been updated
 # - The Sphinx config has been updated
-message(STATUS "SPHINX_INDEX_FILE ${SPHINX_INDEX_FILE}")
 add_custom_command(
         OUTPUT ${SPHINX_INDEX_FILE}
         COMMAND

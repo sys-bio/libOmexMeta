@@ -82,7 +82,7 @@ endif ()
 
 option(DEBUG_DEPENDENCIES "Catch missing libraries by throwing error message if they do not exist" OFF)
 
-option(BUILD_DOCS "Build libomexmeta documentation" ON)
+option(BUILD_DOCS "Build libomexmeta documentation" OFF)
 
 # build tests?
 SET(BUILD_TESTS OFF CACHE BOOL "build the tests")
