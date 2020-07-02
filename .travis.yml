@@ -1,9 +1,9 @@
 language: cpp
 #services: docker
-#matrix:
-#  include:
-#    - os: linux
-#    - dist: bionic
+matrix:
+  include:
+    - os: linux
+    - dist: bionic
 ##    - env:
 ##      DEBIAN_FRONTEND=noninteractive
 ##      site_packages=/root/miniconda3/envs/pyomexmeta-test/lib/python3.7/site-packages
