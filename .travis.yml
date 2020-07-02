@@ -3,6 +3,9 @@ compiler:
   - gcc
 sudo: false
 dist: bionic
+cache:
+  directories:
+    - ${HOME}/vcpkg
 git:
   clone: false
 before_install:
@@ -44,7 +47,7 @@ script:
   - bash ${HOME}/bin/OmexMeta-tests
   - bash ${HOME}/bin/redland-wrapper-tests
   - pip install nose
-  - nosetests ${HOME}/libOmexMeta
+  - nosetests python -m unittest discover -s ${HOME}/libOmexMeta/tests/python/ -p '*_tests.py'
 
 
 
