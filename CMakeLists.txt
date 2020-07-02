@@ -264,7 +264,6 @@ elseif (PLATFORM STREQUAL "linux")
             m
             dl
             ldap
-            slapd
             lber
             )
 
