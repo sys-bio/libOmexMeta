@@ -1,7 +1,7 @@
 language: cpp
 services: docker
 before_install:
-  - docker pull ciaranwelsh/libomexmeta
+  - docker pull ciaranwelsh/libomexmeta:v0.1.10
 #cache:
 #  directories:
 #    -
