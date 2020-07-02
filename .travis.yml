@@ -28,11 +28,11 @@ before_install:
     && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
   - wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz
     && tar -xvf cmake-3.15.7-Linux-x86_64.tar.gz
+  - cd ${HOME}
   - git clone https://github.com/microsoft/vcpkg.git
-  - cd vcpkg
-  - ./bootstrap-vcpkg.sh
-  - vcpkg integrate install
-  - vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
+  - bash ${HOME}/bootstrap-vcpkg.sh
+  - ${HOME}/vcpkg/vcpkg integrate install
+  - ${HOME}/vcpkg/vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
 
 
 #matrix:
