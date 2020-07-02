@@ -267,9 +267,7 @@ macro(FindDependencies)
     find_path(ICONV_INCLUDE_DIR
             NAMES iconv.h
             PATHS ${VCPKG_X64_INCLUDE_DIR}
-            /usr/local/include # linux
-            /mnt/d/usr/local/include # wsl
-            /mnt/c/usr/local/include # wsl
+            ${DEFAULT_LINUX_LOCATIONS}
             NO_DEFAULT_PATH
             )
 
