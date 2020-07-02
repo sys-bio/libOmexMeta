@@ -20,7 +20,7 @@ RUN mkdir /root/.conda && bash Miniconda3-latest-Linux-x86_64.sh -b
 # we also install the gcc 10.1 compilers, and documentation libraries
 # and set gcc-10.1 to default.
 RUN apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
-                      libxslt1-dev postgresql postgresql-contrib  \
+                      libxslt1-dev postgresql postgresql-contrib  libdb-dev \
                       libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
                       libpthread-stubs0-dev libltdl-dev git \
     && apt-get install -y curl unzip tar \
