@@ -1,6 +1,7 @@
 from setuptools import setup
 import os
 import glob
+import sys
 
 version_file = os.path.join(os.path.dirname(__file__), "VERSION.txt")
 if not os.path.isfile(version_file):
@@ -83,7 +84,8 @@ setup(
     author_email='cwelsh2@uw.edu',
     url='https://github.com/sys-bio/libomexmeta',
     keywords=['annotation', 'rdf'],
-    install_requires=open('requirements.txt').read(),
+    # install_requires=open('requirements.txt').read().split('\n'),
+    # install_requires=["pypiwin32"] if sys.platform.startswith("win") else [],
     packages=['pyomexmeta'],
     package_dir={'pyomexmeta': 'src/pyomexmeta'},
     package_data={'pyomexmeta': [

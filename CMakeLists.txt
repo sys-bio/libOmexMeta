@@ -1,4 +1,3 @@
-
 #A note on the build system. Occasionally you will
 #see "_CMakeLists.txt". This is an old version of the
 #build system. This will be deleted in due course.
@@ -9,7 +8,7 @@ cmake_minimum_required(VERSION 3.15)
 # Set version.
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 1)
-set(VERSION_MICRO 1)
+set(VERSION_MICRO 10)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 

@@ -22,8 +22,8 @@ RUN mkdir /root/.conda && bash Miniconda3-latest-Linux-x86_64.sh -b
 RUN apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
                       libxslt1-dev postgresql postgresql-contrib  \
                       libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
-                      libpthread-stubs0-dev libltdl-dev
-    && apt-get install -y apt-get install -y curl unzip tar \
+                      libpthread-stubs0-dev libltdl-dev git \
+    && apt-get install -y curl unzip tar \
     && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
 
 
@@ -43,69 +43,19 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7
 
 # get vcpkg and install some dependencies
 ENV vcpkg /vcpkg/vcpkg
+ENV install_dir /libOmexMeta/install-docker
 RUN git clone https://github.com/microsoft/vcpkg.git \
     && cd vcpkg \
-    && ./boostrap-vcpkg.sh \
-    && vcpkg integrate install \
-    && vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3 \
+    && ./bootstrap-vcpkg.sh \
+    && /vcpkg/vcpkg integrate install \
+    && /vcpkg/vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
+
+
+# get the libOmexMeta source and build
+RUN git clone https://github.com/sys-bio/libOmexMeta.git \
+    && cd libOmexMeta \
     && mkdir build && cd build \
-    && cmake -DVCPKG_ROOT=/vcpkg .. \
+    && cmake -DVCPKG_ROOT=/vcpkg -DCMAKE_INSTALL_PREFIX=$install_dir -DBUILD_TESTS=ON .. \
     && make -j 8 \
     && make install
-
-# get the libOmexMeta source
-RUN apt-get install -y git \
-    && git clone https://github.com/sys-bio/libOmexMeta.git
-    && cd libOmexMeta
-#RUN
-
-#RUN . ~/.bashrc
-#	&& pip install -y ipython
-
-## install pyomexmeta
-#	&& site_packages="/usr/local/envs/pyomexmeta-test/lib/python3.7/site-packages"
-
-
-
-#RUN apt update && apt install -y wget libxslt1-dev libltdl-dev yajl-tools
-#RUN pip install ipython
-#RUN pip install --index-url https://test.pypi.org/simple pyomexmeta
-
-
-
-
-
-
-
-
-
-#RUN wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz \
-#    && tar -xf cmake-3.15.7-Linux-x86_64.tar.gz \
-#    && export PATH="$PATH:$(pwd)/cmake-3.15.7-Linux-x86_64/bin" \
-#    && apt install -y make build-essential \
-#    && build-essential checkinstall zlib1g-dev \
-#    && sudo wget https://www.openssl.org/source/openssl-1.1.1g.tar.gz
-#    && tar -xf openssl-1.1.1g.tar.gz \
-#    && ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib \
-#    && make
-
-
-
-
-## install miniconda
-#RUN wget \
-#    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
-#    && mkdir /root/.conda \
-#    && bash Miniconda3-latest-Linux-x86_64.sh -b \
-#    && rm -f Miniconda3-latest-Linux-x86_64.sh \
-#    && conda --version \
-#    && conda create -y --name py38 python=3.8
-
-
-# create an environment and install pyomexmeta version 0.0.5
-#RUN conda init bash
-#RUN conda create --name py38 -y python=3.8 \
-#    && conda activate py38 \
-#    && pip install ipython \
-#    && pip install --index-url https://test.pypi.org/simple pyomexmeta
 

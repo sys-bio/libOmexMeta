@@ -5,7 +5,10 @@ import os
 import sys
 from typing import List
 if sys.platform == "win32":
-    import win32api
+    try:
+        import win32api
+    except ImportError:
+        raise ImportError("win32api not found. Please run `pip install pywin32`")
     import win32con
 
 _WORKING_DIRECTORY = os.path.dirname(os.path.realpath(__file__))

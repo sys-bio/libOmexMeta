@@ -1,60 +1,88 @@
 language: cpp
-compiler: gcc
+services: docker
+before_install:
+  - docker pull ciaranwelsh/libomexmeta
+#cache:
+#  directories:
+#    -
 
-matrix:
-  include:
-    - os: linux
-      sudo: false
-      dist: bionic
-      compiler: gcc
-      env:
-          - CMAKE_CMD_OPTION="-DHAVE_DEPENDENCIES=OFF -DBUILD_TESTS=ON -DBUILD_SHARED=ON -DBUILD_WRAPPER_TESTS=ON -DBUILD_DOCS=OFF -DWITH_ADDRESS_SANITIZER=OFF"
-          - CURRENT_DIR=$(pwd)
-          - INSTALL_DIR=$CURRENT_DIR/install-ubuntu
-    - before_install:
-        # install cmake
-        - sudo apt update
-        - sudo apt install -y wget
-        - wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz
-        - tar -xvf cmake-3.15.7-Linux-x86_64.tar.gz
-        - PATH=$PATH:/cmake-3.15.7-Linux-x86_64/bin/ # add cmake bin directory to path
-        # test that it works
-        - cmake
-        - sudo apt-get update
-        - sudo apt install -y dialog apt-utils make build-essential checkinstall zlib1g-dev libltdl-dev lzma libpcre3 libpcre3-dev uuid-dev libxml2 libxml2-dev libxslt1-dev yajl-tools libgss-dev libmpfr-dev idn2 libpthread-stubs0-dev curl mysql-server
-    - install:
-        - mkdir build && cd build
-        - cmake $CMAKE_CMD_OPTION -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR ..
-        - make
-        - sudo make install
-    - script:
-      -
-
-#    - os: osx
-#      compiler: xcode6.4
-
-#    - os: osx
-#      compiler: xcode8
-
-
-
-script:
-  - mkdir build
-  - cd build
-  - cmake .. $CMAKE_CMD_OPTION
-  - make -j 2
-  - make test
-
-# Hook code coverage report with codecov.io
-after_success:
-    # Creating report
-  - cd ${TRAVIS_BUILD_DIR}
-  - lcov --directory . --capture --output-file coverage.info # capture coverage info
-  - lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter out system
-  - lcov --list coverage.info #debug info
-  # Uploading report to CodeCov
-  - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
-
-# Disable notifications
-notifications:
-  email: false
+#matrix:
+#  include:
+#    - os: linux
+#      sudo: false
+#      dist: bionic
+#      compiler:
+#        - gcc
+##        - clang
+#      env:
+#          - PATH="/root/miniconda3/bin:$PATH"
+#          - DEBIAN_FRONTEND=noninteractive
+#          - site_packages=/root/miniconda3/envs/pyomexmeta-test/lib/python3.7/site-packages
+#          - pyomexmeta_dir=${site_packages}/pyomexmeta
+#          - PATH="$PATH:/cmake-3.15.7-Linux-x86_64/bin"
+#
+#    - before_install:
+#        - apt-get update
+#        - apt-get install -y wget lsb-release binutils software-properties-common wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+#        - add-apt-repository -y ppa:ubuntu-toolchain-r/test
+#        - apt-get update
+#        - mkdir /root/.conda
+#        - bash Miniconda3-latest-Linux-x86_64.sh -b
+#        - apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
+#          libxslt1-dev postgresql postgresql-contrib  \
+#          libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
+#          libpthread-stubs0-dev libltdl-dev git \
+#          && apt-get install -y curl unzip tar \
+#          && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
+#        - conda init bash \
+#          && . ~/.bashrc \
+#          && conda create --name pyomexmeta-test python=3.7 \
+#          && conda activate pyomexmeta-test \
+#          && pip install ipython sphinx breathe\
+#          && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
+#        - wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz \
+#          && tar -xvf cmake-3.15.7-Linux-x86_64.tar.gz
+#        - git clone https://github.com/microsoft/vcpkg.git \
+#          && cd vcpkg \
+#          && ./bootstrap-vcpkg.sh \
+#          && /vcpkg/vcpkg integrate install \
+#          && /vcpkg/vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
+#
+#    - install:
+#        - git clone https://github.com/sys-bio/libOmexMeta.git \
+#          && cd libOmexMeta \
+#          && mkdir build && cd build \
+#          && cmake -DVCPKG_ROOT=/vcpkg -DCMAKE_INSTALL_PREFIX=$install_dir -DBUILD_TESTS=ON .. \
+#          && make -j 8 \
+#          && make install
+#    - script:
+#      -
+#
+##    - os: osx
+##      compiler: xcode6.4
+#
+##    - os: osx
+##      compiler: xcode8
+#
+#
+#
+#script:
+#  - mkdir build
+#  - cd build
+#  - cmake .. $CMAKE_CMD_OPTION
+#  - make -j 2
+#  - make test
+#
+## Hook code coverage report with codecov.io
+#after_success:
+#    # Creating report
+#  - cd ${TRAVIS_BUILD_DIR}
+#  - lcov --directory . --capture --output-file coverage.info # capture coverage info
+#  - lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter out system
+#  - lcov --list coverage.info #debug info
+#  # Uploading report to CodeCov
+#  - bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+#
+## Disable notifications
+#notifications:
+#  email: false
