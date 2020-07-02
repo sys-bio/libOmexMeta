@@ -9,7 +9,7 @@ before_install:
   - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
   - sudo apt-get update
-  - mkdir /root/.conda
+  - mkdir ~/.conda
   - bash Miniconda3-latest-Linux-x86_64.sh -b
   - ls
   - PATH=~/miniconda3/bin:$PATH
