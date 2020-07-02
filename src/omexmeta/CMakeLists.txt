@@ -97,12 +97,9 @@ if (${BUILD_SHARED_LIBS})
     # shared library
     add_library(OmexMeta SHARED "${OMEXMETA_HEADERS}" "${OMEXMETA_SOURCES}" Preproc.h)
 
-    #    SET (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath,'$ORIGIN'" )
-    #
-    #    SET (CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-rpath,'$ORIGIN'" )
-
-    set_target_properties(OmexMeta PROPERTIES INSTALL_RPATH "$ORIGIN")#:$ORIGIN:/home/ciaran/vcpkg/installed/x64-linux/lib")
-    set_target_properties(OmexMeta PROPERTIES BUILD_RPATH "$ORIGIN")
+    # configure RPATH
+    set_target_properties(OmexMeta PROPERTIES INSTALL_RPATH ${RPATH})#:$ORIGIN:/home/ciaran/vcpkg/installed/x64-linux/lib")
+    set_target_properties(OmexMeta PROPERTIES BUILD_RPATH ${RPATH})
     #    set_target_properties(OmexMeta PROPERTIES BUILD_RPATH_USE_ORIGIN TRUE)
     GET_TARGET_PROPERTY(V OmexMeta INSTALL_RPATH)
     MESSAGE(V ${V})

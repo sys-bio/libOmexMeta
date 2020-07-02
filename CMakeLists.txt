@@ -70,7 +70,6 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
 
-
 ####################################################################
 # User options
 #
@@ -121,7 +120,11 @@ option(WITH_COVERAGE OFF)
 
 if (WITH_COVERAGE)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
-    endif()
+endif ()
+
+# set RPATH for libraries and executables.
+set(RPATH "$ORIGIN:$ORIGIN/../lib")
+
 
 ############################################################3
 # configure some paths relative to vcpkg root

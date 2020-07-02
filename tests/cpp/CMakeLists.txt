@@ -31,7 +31,8 @@ set(TEST_SOURCES
 
 # build googletest executable
 add_executable(OmexMeta-tests ${TEST_SOURCES})
-
+set_target_properties(OmexMeta-tests PROPERTIES INSTALL_RPATH ${RPATH})#:$ORIGIN:/home/ciaran/vcpkg/installed/x64-linux/lib")
+set_target_properties(OmexMeta-tests PROPERTIES BUILD_RPATH ${RPATH})
 
 if (NOT ${PLATFORM} STREQUAL "window-msvc")
     target_compile_options(OmexMeta-tests PRIVATE -g)
@@ -51,7 +52,7 @@ foreach (lib ${LIBRARIES_DLL})
     add_custom_command(TARGET OmexMeta-tests POST_BUILD        # Adds a post-build event to MyTest
             COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
             "${lib}"      # <--this is in-file
-            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ")
 endforeach ()
 
 

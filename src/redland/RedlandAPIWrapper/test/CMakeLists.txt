@@ -14,6 +14,8 @@ set(REDLAND_WRAPPER_TEST_SOURCES
 
 
 add_executable(redland-wrapper-tests ${REDLAND_WRAPPER_TEST_SOURCES})
+set_target_properties(redland-wrapper-tests PROPERTIES INSTALL_RPATH ${RPATH})#:$ORIGIN:/home/ciaran/vcpkg/installed/x64-linux/lib")
+set_target_properties(redland-wrapper-tests PROPERTIES BUILD_RPATH ${RPATH})
 
 #ignored on other platforms
 set_target_properties(redland-wrapper-tests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")

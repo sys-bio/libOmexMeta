@@ -17,14 +17,17 @@ ENV pyomexmeta_dir ${site_packages}/pyomexmeta
 RUN mkdir /root/.conda && bash Miniconda3-latest-Linux-x86_64.sh -b
 
 # install the dependency shared libraries for pyomexmeta
+# we also install the gcc 10.1 compilers, and documentation libraries
+# and set gcc-10.1 to default.
 RUN apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
                       libxslt1-dev postgresql postgresql-contrib  \
                       libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
+                      libpthread-stubs0-dev libltdl-dev
     && apt-get install -y apt-get install -y curl unzip tar \
     && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
 
 
-# create conda environment
+# create conda environment, install some python deps and pyomexmeta
 RUN conda init bash \
     && . ~/.bashrc \
     && conda create --name pyomexmeta-test python=3.7 \
@@ -36,9 +39,9 @@ RUN conda init bash \
 ENV PATH="$PATH:/cmake-3.15.7-Linux-x86_64/bin"
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz \
     && tar -xvf cmake-3.15.7-Linux-x86_64.tar.gz
-    &&
 
-# get vcpkg and install deps
+
+# get vcpkg and install some dependencies
 ENV vcpkg /vcpkg/vcpkg
 RUN git clone https://github.com/microsoft/vcpkg.git \
     && cd vcpkg \
