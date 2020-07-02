@@ -30,7 +30,7 @@ before_install:
   - PATH=~/miniconda3/bin:$PATH
   - sudo apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev
     libxslt1-dev postgresql postgresql-contrib libdb-dev
-    libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx
+    libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx slapd ldap-utils
     libpthread-stubs0-dev libltdl-dev git
     && sudo apt-get install -y curl unzip tar
     && sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
