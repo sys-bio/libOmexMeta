@@ -19,7 +19,8 @@ RUN mkdir /root/.conda && bash Miniconda3-latest-Linux-x86_64.sh -b
 # install the dependency shared libraries for pyomexmeta
 RUN apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
                       libxslt1-dev postgresql postgresql-contrib  \
-                      libdb-dev gcc-10 g++-10
+                      libdb-dev gcc-10 g++-10 flex bison doxygen \
+    apt-get install -y apt-get install -y curl unzip tar
 
 # create conda environment
 RUN conda init bash \
@@ -29,8 +30,28 @@ RUN conda init bash \
     && pip install ipython \
     && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
 
+# install cmake
+ENV PATH="$PATH:/cmake-3.15.7-Linux-x86_64/bin"
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz \
+    && tar -xvf cmake-3.15.7-Linux-x86_64.tar.gz
+    &&
 
+# get vcpkg and install deps
+ENV vcpkg /vcpkg/vcpkg
+RUN git clone https://github.com/microsoft/vcpkg.git \
+    && cd vcpkg \
+    && ./boostrap-vcpkg.sh \
+    && vcpkg integrate install \
+    && vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3 \
+    && mkdir build && cd build \
+    && cmake -DVCPKG_ROOT=/vcpkg .. \
+    && make -j 8 \
+    && make install
 
+# get the libOmexMeta source
+RUN apt-get install -y git \
+    && git clone https://github.com/sys-bio/libOmexMeta.git
+    && cd libOmexMeta
 #RUN
 
 #RUN . ~/.bashrc

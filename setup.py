@@ -83,7 +83,7 @@ setup(
     author_email='cwelsh2@uw.edu',
     url='https://github.com/sys-bio/libomexmeta',
     keywords=['annotation', 'rdf'],
-    install_requires=[],
+    install_requires=open('requirements.txt').read(),
     packages=['pyomexmeta'],
     package_dir={'pyomexmeta': 'src/pyomexmeta'},
     package_data={'pyomexmeta': [
