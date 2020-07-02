@@ -48,12 +48,12 @@ target_link_libraries(OmexMeta-tests PUBLIC
         gtest gtest_main
         )
 
-foreach (lib ${LIBRARIES_DLL})
-    add_custom_command(TARGET OmexMeta-tests POST_BUILD        # Adds a post-build event to MyTest
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
-            "${lib}"      # <--this is in-file
-            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ")
-endforeach ()
+#foreach (lib ${LIBRARIES_DLL})
+#    add_custom_command(TARGET OmexMeta-tests POST_BUILD        # Adds a post-build event to MyTest
+#            COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
+#            "${lib}"      # <--this is in-file
+#            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ")
+#endforeach ()
 
 
 target_include_directories(OmexMeta-tests PRIVATE

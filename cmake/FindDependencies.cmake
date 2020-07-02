@@ -347,17 +347,6 @@ macro(FindDependencies)
             #            NO_DEFAULT_PATH
             )
 
-    # Bit of an odd one. I've build the libomexmeta on linux gcc 10.1 which
-    # corresponds to libstdc++.6.0.28. However the latest you can get on
-    # apt (ubuntu18.04), it seems, is libstdc++6.0.25.
-    # Consequently, I either downgrade compilers, or manually link the correct libstdc++
-    #version and distribute the so. For now I choose the latter.
-    find_file(LIBSTDCXX6_LIBRARY
-            NAMES libstdc++.so.6.0.28
-            PATHS
-            ${DEFAULT_LINUX_LOCATIONS}
-            )
-
     # Note: on windows these are note actually static libraries,
     # but the *.lib files which contain stubs that need filling with dll
     # at runtime.
@@ -394,7 +383,6 @@ macro(FindDependencies)
             "${SQLITE3_LIBRARY}"
             "${BERKELY_LIBRARY}"
             "${POSTGRESQL_LIBRARY}"
-            "${LIBSTDCXX6_LIBRARY}"
             )
 
     set(INCLUDES
