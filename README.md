@@ -23,9 +23,11 @@ Libsemsim is a C++ library for annotating models in systems biology. Libsemsim u
 
 
 # Platform
-Due to the Redland library dependencies being linux only, libomexmeta has been 
-developed on Ubuntu 18.04 and is presently still linux only. Support for Windows 
-and macos is a work in progress. 
+  - Windows
+  - Linux Ubuntu 18.04, untested on other flavours. 
+  
+libOmexMeta has not been tested on a Mac.  
+
 
 # Installation
 ## Python front end
