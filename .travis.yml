@@ -54,6 +54,6 @@ script:
   - conda activate pyomexmeta-test
   - ${HOME}/install/bin/OmexMeta-tests
   - ${HOME}/install/bin/redland-wrapper-tests
-  - nosetests ${HOME}/tests/python
+  - nosetests ${HOME}/libOmexMeta/tests/python
 after_success:
   - codecov # submit coverage
