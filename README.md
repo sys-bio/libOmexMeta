@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/sys-bio/libOmexMeta.svg?branch=master)](https://travis-ci.org/sys-bio/libOmexMeta)
+[![Build Status](https://travis-ci.org/sys-bio/libOmexMeta.svg?branch=master)](https://travis-ci.org/sys-bio/libOmexMeta) 
+[![codecov](https://codecov.io/gh/sys-bio/libomexmeta/branch/master/graph/badge.svg)](https://codecov.io/gh/sys-bio/libomexmeta)
 # libOmexMeta
 Libsemsim is a C++ library for annotating models in systems biology. Libsemsim uses [RDF](https://www.w3.org/RDF/) as a framework for representing these annotations. At the core of libOmexMeta are the [Redland libraries](http://librdf.org/):
     - [raptor2](http://librdf.org/raptor/) for parsing RDF syntax into RDF graphs and serializing the output
