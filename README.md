@@ -1,15 +1,26 @@
-# libomexmeta (aka libOmexMeta)
-Libsemsim is a C++ library for annotating models in systems biology that 
-use xml for serialization. Libsemsim uses RDF as a framework for
-representing these annotations. 
+[![Build Status](https://travis-ci.org/sys-bio/libOmexMeta.svg?branch=master)](https://travis-ci.org/sys-bio/libOmexMeta)
+# libOmexMeta
+Libsemsim is a C++ library for annotating models in systems biology. Libsemsim uses [RDF](https://www.w3.org/RDF/) as a framework for representing these annotations. At the core of libOmexMeta are the [Redland libraries](http://librdf.org/):
+    - [raptor2](http://librdf.org/raptor/) for parsing RDF syntax into RDF graphs and serializing the output
+    - [rasqal](http://librdf.org/rasqal/) for querying RDF graphs
+    - [librdf](http://librdf.org/) as a front end to raptor2 and rasqal and for triple stores. 
 
-In addition to the C++ backend there is a C API, which facilitates importing libomexmeta into other languages and a Python front end for a nice user interface. 
 
-This is a pre-release version of libomexmeta and should be considered as such. 
-Its primary purpose is to get feedback from collaborators on how to 
-improve the software. Please convert any suggestions/improvements into coherent github issues. 
+## Features
+### [Parsers](http://librdf.org/raptor/api-1.4/raptor-parsers.html)
+  - rdfxml, ntriples, turtle, trig, rss-tag-soup, grddl, guess, rdfa, nquads, guess
+### [Serializers](http://librdf.org/raptor/api-1.4/raptor-serializers.html)
+  - ntriples, turtle, rdfxml-xmp, rdfxml-abbrev, rdfxml, rss-1.0, atom, dot, json-triples, json, nquads, html
+  
+### [Querying](http://librdf.org/rasqal/docs/api/)
+  - Languages
+    - [SPARQL](https://www.w3.org/TR/sparql11-query/), [LAQRS](https://www.dajobe.org/2007/04/laqrs/) 
+  - Query result formats: 
+    - xml, json, table, csv, mkr, tsv, html, turtle, rdfxml,
 
-As a side note, the name `libomexmeta` is due to change to `libOmexMeta` before release. 
+### [Storages modules](http://librdf.org/docs/api/redland-storage-modules.html)
+  - hashes, memory, file, mysql, sqlite, uri, tstore (may be supported on request), postgresql (supported but not tested), virtuoso (may be supported on request), 
+
 
 # Platform
 Due to the Redland library dependencies being linux only, libomexmeta has been 
