@@ -28,96 +28,84 @@ Libsemsim is a C++ library for annotating models in systems biology. Libsemsim u
   
 libOmexMeta has not been tested on a Mac.  
 
-
-# Installation
-## Python front end
-You can get up and running quickly using pip
-
-    $ sudo apt install libxslt1-dev libltdl-dev  yajl-tools
-    $ pip install --index-url https://test.pypi.org/simple/ pyomexmeta
-    # verify its worked
-    $ ipython -c "import pyomexmeta"
-
-Note that "pyomexmeta" is only available on pypi test. It has been tested with Python
-version 3.8, but should work on other Python 3 versions. 
-
-## Downloading Binaries
-You can download binaries from the [releases tab](https://github.com/sys-bio/libomexmeta/releases/tag/v0.0.2)
-
-## Building from source
-**tl;dr**
-
-Optionally become `sudo`er.
-```
-$ sudo -i
-```
-You will be prompted for password and will then need to `cd` back into the directory
-where you downloded libomexmeta. If you do not do this, then the cmake 
-script will ask for a password during install. 
-
-```
-$ git clone https://github.com/sys-bio/libomexmeta.git
-$ cd libomexmeta
-$ mkdir build && cd build
-$ cmake -DHAVE_DEPENDENCIES=OFF -DBUILD_TESTS=ON -DBUILD_SHARED=ON -DBUILD_WRAPPER_TESTS=ON -DBUILD_DOCS=OFF -DWITH_ADDRESS_SANITIZER=OFF ..
-$ make -j 8 #or however may processes you want to yse
-# sudo make install
-```
-
-Remember you can set
-```
--DCMAKE_INSTALL_PREFIX="/path/to/install/location"  
-```
-i.e. 
-```
--DCMAKE_INSTALL_PREFIX=install-ubuntu  
-```
-to install to somewhere non-standard. 
-
-Disclaimer: The build system for me but is untested on other computers. Expect some turbulence 
-to begin with. Feedback on build errors will help stablize the build system. 
-
-### The superbuild
-libomexmeta uses a "superbuild" system to fully automate the acquisition of dependencies. The main dependencies of 
-libomexmeta is are the Redland libraries: raptor2, rasqal and librdf. For convenience, the sources of these packages 
-are distributed with libomexmeta and are pulled into a single binary called `redland-combined-static.a` for linking. Furthermore, 
-included in the superbuild are both `libsbml` and `libcombine`. These dependencies are deliberately not 
-used and will soon become optional in the libomexmeta build that is set to `OFF` by default.  
-
-To control the superbuild, there is a CMake variable called `HAVE_DEPENDENCIES`. 
-The first time you run cmake, you will probably want to have the `HAVE_DEPENDENCIES=ON` 
-but if you rebuild you can set `HAVE_DEPENDENCIES=OFF`. 
-
 # Documentation
 
 https://sys-bio.github.io/libomexmeta-docs/
 
 Note: documentation is currently out of date but being updated presently 
 
-# Manually install dependencies
-The superbuild tries to run the following command for you automatically. This 
-feature is experimental, so if it doesn't work you will need to run it yourself: 
+# Installation
+## Python
 
+Use pip. At this time I've only uploaded to test pypi so you'll have to download it from test pypi as well. On linux:
+    $ pip install --index-url https://test.pypi.org/simple/ pyomexmeta
+    # verify its worked
+    $ ipython -c "import pyomexmeta"
+    
+On Windows: 
+    > pip install pywin32
+    > pip install --index-url https://test.pypi.org/simple/ pyomexmeta
+
+The additionally dependencency on windows needs to be handled manually for now since it breaks the pip installation when I add it to the `install_requires` field - very annoying. 
+
+Python 3 only - if you're not using Python 3, I recommend you upgrade. 
+
+## Docker
+You can get a docker image using 
+
+    $ docker pull ciaranwelsh/libomexmeta:v0.1.10
+    
+This is an Ubunut 18.04 based container that has libOmexMeta prebuilt and installed under `/libOmexMeta/install-docker`. See [dockerfile](https://github.com/sys-bio/libOmexMeta/blob/master/Dockerfile) for full set of commands to build libOmexMeta on ubuntu. 
+
+## Downloading Binaries
+You can download binaries from the [releases tab](https://github.com/sys-bio/libOmexMeta/releases/tag/v0.1.10)
+
+## Building from source
+See above for docker image which does this for you already on linux builds. The build process is similar on both windows and linux, but linux has some additional dependencies installed via `apt-get`. 
+
+### On Linux only, install some dependencies using apt
+Note, the build process is not yet fully optimized for linux and will be improved
+
+Pick up some dependencies
 ```
-$ sudo apt install -y icu-devtools dialog apt-utils make build-essential checkinstall zlib1g-dev libltdl-dev lzma libpcre3 libpcre3-dev uuid-dev libxml2 libxml2-dev libxslt1-dev yajl-tools libgss-dev libmpfr-dev idn2 libpthread-stubs0-dev curl mysql-server
+$ sudo apt-get install -y sqlite3 libsqlite3-dev libxml2 libxml2-dev \
+                      libxslt1-dev postgresql postgresql-contrib  libdb-dev \
+                      libdb-dev gcc-10 g++-10 flex bison doxygen python3-sphinx\
+                      libpthread-stubs0-dev libltdl-dev git
+                      
 ```
-and then proceed with the build instructions. 
+Switch default gcc to version 10.1: 
+```
+update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
+```
 
-# Still to do
-- Support for modifying existing annotations 
-    - deleting a triple works but memory related problems when
-      removing a set of triples like a physical entity
-- documentation
-- support for removing triples based on metaid (sparql?)
-- Bug in multiplier of participants, when 0, it should not default to x^-315. Use integers instead??
-- Remove second namespace map in RDF class in favour of the one in Predicate class
-- Double check Predicate.cpp. Do we have everything that we want to include? (my guess is no)
-- Statically link all dependency libraries. 
+### On both Linux and Windows
+Get `vcpkg`
+```
+$ git clone https://github.com/microsoft/vcpkg.git 
+$ cd vcpkg 
+```
+#### Configure vcpkg and install dependencies on Linux
+```
+$ ./bootstrap-vcpkg.sh 
+$ vcpkg integrate install 
+$ vcpkg install libxml2 curl libiconv pcre openssl yajl libpq sqlite3
+```
+Note: this is where the linux build is not optimized. 
+#### Configure vcpkg and install dependencies on Windows
+```
+> bootstrap-vcpkg.bat 
+> vcpkg integrate install 
+> vcpkg install libxml2:x64-windows curl:x64-windows libiconv:x64-windows pcre:x64-windows openssl:x64-windows yajl:x64-windows libpq:x64-windows sqlite3:x64-windows
+```
+# Build `libOmexMeta`
+Use `[CMake > 15.7](https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz)`
+```
+git clone https://github.com/sys-bio/libOmexMeta.git 
+cd libOmexMeta 
+mkdir build && cd build 
+cmake -DVCPKG_ROOT=/vcpkg -DCMAKE_INSTALL_PREFIX=../install-linux -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release .. 
+make -j 8 
+make install # or sudo if installing to default location (i.e. omit the `-DCMAKE_INSTALL_PREFIX`)
+```
 
-
-Things that could (and maybe should) change in future versions
---------------------------------------------------------------
-- Redland package could be reintegrated with the rest of libomexmeta code. 
-  The original plan was to write a full C++ wrapper around the three redland libraries. 
-  Due to difficulties, this didn't really materialize so it might make more sense to 
-  pull that code back into the semsim folder. 
