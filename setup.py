@@ -67,12 +67,17 @@ binaries = [
     os.path.join(PYOMEXMETA_DIR, "zlib1.dll"),
     # linux dependencies
 ]
+if sys.platform == "win32":
+    binaries = [j for j in binaries if j.endswith(".dll")]
+elif sys.platform == 'linux':
+    binaries = [j for j in binaries if j.endswith(".so")]
+else:
+    raise ValueError("whoops")
 
 for i in binaries:
+    print(i)
     if not os.path.isfile(i):
         raise FileNotFoundError(f"Dependency \"{i}\" not found.")
-for i in binaries:
-    print(i)
 
 setup(
     name='pyomexmeta',
