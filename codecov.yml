@@ -1,8 +1,12 @@
-
+codecov:
+  token: 03230181-dc42-4e8c-b1f6-46699ee5d066
+  ci:
+    - "https://travis-ci.org/github/sys-bio/libOmexMeta"
+  strict_yaml_branch: "master"
 coverage:
   precision: 2
   round: nearest
-  range: "60...90"
+  range: "70...100"
   status:
     project:
       default:
@@ -10,6 +14,12 @@ coverage:
     patch:
       default:
         target: 80%
+ gcov:
+    branch_detection:
+      conditional: yes
+      loop: yes
+      method: no
+      macro: no
   ignore:
     - "test"  # ignore folders and all its contents
     - "src/raptor2-2.0.15"
@@ -27,11 +37,6 @@ coverage:
     - "Design"
     - "dist"
     - "docs"
-    -
-
-codecov:
-  branch: master
-
 comment:
   layout: "diff"
 

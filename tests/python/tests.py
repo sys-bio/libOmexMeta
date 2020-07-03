@@ -815,7 +815,10 @@ end"""
                     .set_resource_literal("Ciaran Welsh")
                 # note: not sure which predicate to use.
 
-        print(rdf.to_string("turtle", "file://myOMEXLib.com"))
+        # print(rdf.to_string("seria", "file://myOMEXLib.com"))
+        q = """SELECT * 
+        WHERE { ?x ?y ?z }"""
+        rdf.query(q, "res")
 
 
 

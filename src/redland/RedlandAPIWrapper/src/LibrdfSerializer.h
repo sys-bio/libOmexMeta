@@ -25,6 +25,8 @@ namespace redland {
             void operator()(librdf_serializer *serializer);
         };
 
+        std::vector<std::string> validateSerializerName();
+
         librdf_serializer *serializer_ = nullptr;
 
         explicit LibrdfSerializer(librdf_serializer *serializer);
@@ -57,6 +59,8 @@ namespace redland {
         std::string toString(const std::string &uri, const LibrdfModel &model);
 
         void freeSerializer();
+
+        void validateSerializerName(std::string name);
     };
 }
 

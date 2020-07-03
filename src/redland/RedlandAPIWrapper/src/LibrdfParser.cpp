@@ -178,6 +178,7 @@ namespace redland {
                                       "guess",
                                       "rdfa",
                                       "nquads",
+                                      "guess",
                                       "", // empty string is allowed
         };
         if (std::find(v.begin(), v.end(), getName()) != v.end()) {

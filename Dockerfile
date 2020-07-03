@@ -55,7 +55,7 @@ RUN git clone https://github.com/microsoft/vcpkg.git \
 RUN git clone https://github.com/sys-bio/libOmexMeta.git \
     && cd libOmexMeta \
     && mkdir build && cd build \
-    && cmake -DVCPKG_ROOT=/vcpkg -DCMAKE_INSTALL_PREFIX=$install_dir -DBUILD_TESTS=ON .. \
+    && cmake -DVCPKG_ROOT=/vcpkg -DCMAKE_INSTALL_PREFIX=$install_dir -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release .. \
     && make -j 8 \
     && make install
 

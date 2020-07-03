@@ -21,6 +21,10 @@ TEST_F(LibrdfSerializerTests, TestInstantiateSerializer) {
     ASSERT_NE(serializer1.get(), nullptr);
 }
 
+TEST_F(LibrdfSerializerTests, TestInstantiateWrongSerializerName) {
+    ASSERT_THROW(LibrdfSerializer("rdfxmj"), std::invalid_argument);
+}
+
 TEST_F(LibrdfSerializerTests, TestMoveConstructor) {
     LibrdfSerializer serializer1 = LibrdfSerializer("rdfxml");
     auto serializer1_int_ptr = reinterpret_cast<std::uintptr_t>(serializer1.get());

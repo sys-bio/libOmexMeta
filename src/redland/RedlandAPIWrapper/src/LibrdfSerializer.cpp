@@ -11,6 +11,7 @@ namespace redland {
             serializer_(serializer) {}
 
     LibrdfSerializer::LibrdfSerializer(const char *format, const char *mime_type, const char *type_uri) {
+        validateSerializerName(format);
         librdf_uri *type_uri_ = nullptr;
         if (type_uri)
             type_uri_ = librdf_new_uri(World::getWorld(), (const unsigned char *) type_uri);
@@ -89,6 +90,35 @@ namespace redland {
 
     LibrdfSerializer LibrdfSerializer::fromRawPtr(librdf_serializer *serializer) {
         return LibrdfSerializer(serializer);
+    }
+
+    void LibrdfSerializer::validateSerializerName(std::string name) {
+        std::vector<std::string> v = {
+                "ntriples",
+                "turtle",
+                "rdfxml-xmp",
+                "rdfxml-abbrev",
+                "rdfxml",
+                "rss-1.0",
+                "atom",
+                "dot",
+                "json-triples",
+                "json",
+                "nquads",
+                "html",
+        };
+        if (std::find(v.begin(), v.end(), name) != v.end()) {
+            // string accepted return
+            return;
+        }
+        // error
+        std::ostringstream os;
+        os << "std::invalid_argument: Serializer Format \"" << name
+           << "\" is not a valid option. These are your options: ";
+        for (auto &it : v) {
+            os << it << ", ";
+        }
+        throw std::invalid_argument(os.str());
     }
 
     int toIOStream(const LibrdfUri &uri, const LibrdfModel *model, const RaptorIOStream &stream);
