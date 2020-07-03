@@ -100,7 +100,7 @@ Note: this is where the linux build is not optimized.
 > vcpkg install libxml2:x64-windows curl:x64-windows libiconv:x64-windows pcre:x64-windows openssl:x64-windows yajl:x64-windows libpq:x64-windows sqlite3:x64-windows
 ```
 ### Build `libOmexMeta`
-Use `[CMake > 15.7](https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz)`
+Use [CMake > 15.7](https://github.com/Kitware/CMake/releases/download/v3.15.7/cmake-3.15.7-Linux-x86_64.tar.gz)
 ```
 git clone https://github.com/sys-bio/libOmexMeta.git 
 cd libOmexMeta 
