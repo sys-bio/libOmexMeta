@@ -15,17 +15,14 @@ coverage:
     email:
       default:
         to:
-          - cwelsh2@uw.edu
-          - &author
+          - "cwelsh2@uw.edu"
         threshold: 1%
         only_pulls: false
-        layout: header, diff, trends
         flags: null
         paths: null
   status:
     project:
       default:
-        against: parent
         target: auto
         threshold: 1%
         branches:
@@ -41,7 +38,6 @@ coverage:
 
     patch:
       default:
-        against: parent
         target: 80%
         branches: null
         if_no_uploads: success
@@ -55,7 +51,6 @@ coverage:
 
     changes:
       default:
-        against: parent
         branches: null
         if_no_uploads: error
         if_not_found: success
@@ -68,8 +63,6 @@ coverage:
 
   flags:
     integration:
-      branches:
-        - master
       ignore:
         - app/ui
 
@@ -82,7 +75,7 @@ coverage:
     - third_party/**/*
 
 comment:
-  layout: header, diff, trends, uncovered
+  layout: header
   branches:
     - master
   behavior: default # defualt = posts once then update, posts new if delete
