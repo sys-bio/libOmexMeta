@@ -782,43 +782,43 @@ The test below takes too long to run. It works.
 
 
 
-class OtherTests(unittest.TestCase):
-
-    def setUp(self) -> None:
-        pass
-
-    def test(self):
-        import tellurium as te
-        from pyomexmeta import RDF, Editor
-        ant = """
-model SBML1
-    compartment cytosol = 1.0;
-    A in cytosol;
-    B in cytosol
-    A = 10; 
-    B = 0;
-    k1 = 0.1;
-    k2 = 0.1;
-    r1: A => B; k1*A
-    r1: B => A; k2*B
-end"""
-        sbml = te.antimonyToSBML(ant)
-
-        rdf = RDF()
-        with rdf.to_editor(sbml, "sbml") as editor:
-            print(editor.get_metaids()) # prints out model metaids
-
-            with editor.new_singular_annotation() as author_annotation:
-                author_annotation\
-                    .set_about('SBML1') \
-                    .set_predicate("bqb", "is")\
-                    .set_resource_literal("Ciaran Welsh")
-                # note: not sure which predicate to use.
-
-        # print(rdf.to_string("seria", "file://myOMEXLib.com"))
-        q = """SELECT * 
-        WHERE { ?x ?y ?z }"""
-        rdf.query(q, "res")
+# class OtherTests(unittest.TestCase):
+#
+#     def setUp(self) -> None:
+#         pass
+#
+#     def test(self):
+#         import tellurium as te
+#         from pyomexmeta import RDF, Editor
+#         ant = """
+# model SBML1
+#     compartment cytosol = 1.0;
+#     A in cytosol;
+#     B in cytosol
+#     A = 10;
+#     B = 0;
+#     k1 = 0.1;
+#     k2 = 0.1;
+#     r1: A => B; k1*A
+#     r1: B => A; k2*B
+# end"""
+#         sbml = te.antimonyToSBML(ant)
+#
+#         rdf = RDF()
+#         with rdf.to_editor(sbml, "sbml") as editor:
+#             print(editor.get_metaids()) # prints out model metaids
+#
+#             with editor.new_singular_annotation() as author_annotation:
+#                 author_annotation\
+#                     .set_about('SBML1') \
+#                     .set_predicate("bqb", "is")\
+#                     .set_resource_literal("Ciaran Welsh")
+#                 # note: not sure which predicate to use.
+#
+#         # print(rdf.to_string("seria", "file://myOMEXLib.com"))
+#         q = """SELECT *
+#         WHERE { ?x ?y ?z }"""
+#         rdf.query(q, "res")
 
 
 
