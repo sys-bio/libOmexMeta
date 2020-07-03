@@ -41,7 +41,7 @@ before_install:
     && . ~/.bashrc
     && conda create -y --name pyomexmeta-test python=3.7
     && conda activate pyomexmeta-test
-    && pip install ipython coverage sphinx breathe python-libcombine tellurium
+    && pip install ipython codecov coverage sphinx breathe python-libcombine tellurium
 #    && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
   - cd ${HOME} && git clone https://github.com/sys-bio/libOmexMeta.git && cd libOmexMeta
   - g++ --version
@@ -54,8 +54,9 @@ script:
   - conda activate pyomexmeta-test
   - ${HOME}/install/bin/OmexMeta-tests
   - ${HOME}/install/bin/redland-wrapper-tests
-  - coverage run -m python -m unittest discover -s ${HOME}/libOmexMeta/tests/python/ -p '*_tests.py'
-  - bash <(curl -s https://codecov.io/bash)
+  - python -m unittest discover -s ${HOME}/libOmexMeta/tests/python/ -p '*_tests.py'
+- after_success:
+    - codecov # submit coverage
 
 
 
