@@ -34,6 +34,9 @@ before_install:
     libpthread-stubs0-dev libltdl-dev git slapd ldap-utils
     && sudo apt-get install -y curl unzip tar
     && sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10  100
+    && sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-10 100
+    && sudo update-alternatives --install /usr/bin/gcov-dump gcov-dump /usr/bin/gcov-dump-10 100
+    && sudo update-alternatives --install /usr/bin/gcov-tool gcov-tool /usr/bin/gcov-tool-10 100
   - conda init bash
     && . ~/.bashrc
     && conda create -y --name pyomexmeta-test python=3.7
@@ -51,7 +54,8 @@ script:
   - conda activate pyomexmeta-test
   - ${HOME}/install/bin/OmexMeta-tests
   - ${HOME}/install/bin/redland-wrapper-tests
-  - python -m unittest discover -s ${HOME}/libOmexMeta/tests/python/ -p '*_tests.py'
+  - coverage run -m python -m unittest discover -s ${HOME}/libOmexMeta/tests/python/ -p '*_tests.py'
+  - bash <(curl -s https://codecov.io/bash)
 
 
 
