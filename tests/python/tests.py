@@ -570,7 +570,7 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
         rdf = RDF.from_string(rdf_strings[0])
 
         # serialize to html, because why not?
-        actual = rdf.to_string(format, gold_standard_filename)[:500]  # shorten
+        actual = rdf.to_string(format, os.path.split(gold_standard_filename)[1])[:500]  # shorten
         print(actual)
         self.assertEqual(expected_output, actual)
 
@@ -647,20 +647,21 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
                                         "rdfxml-abbrev")
 
     def test_gold_standard4(self):
-        expected = """<file:///mnt/d/libOmexMeta/tests/python/gerard_2009.cellml#Mdi.time> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/opb/OPB_01023> .
-<file:///mnt/d/libOmexMeta/tests/python/gerard_2009.cellml#BC.time> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/opb/OPB_01023> .
-<file:///mnt/d/libOmexMeta/tests/python/gerard_2009.cellml#Cb.Cb> <http://biomodels.net/biology-qualifiers/isPropertyOf> <file:///mnt/d/libOmexMeta/tests/python/gerard_2009.cellml#entity_34"""
-        # self.gold_standard_test(self.gold_standard_url4, self.gold_standard_filename4, expected, "ntriples")
+        expected = """<file:///gerard_2009.cellml#Mdi.time> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/opb/OPB_01023> .
+<file:///gerard_2009.cellml#BC.time> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/opb/OPB_01023> .
+<file:///gerard_2009.cellml#Cb.Cb> <http://biomodels.net/biology-qualifiers/isPropertyOf> <file:///gerard_2009.cellml#entity_34> .
+<file:///gerard_2009.cellml#Cb.Cb> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/opb/OP"""
+        self.gold_standard_test(self.gold_standard_url4, self.gold_standard_filename4, expected, "ntriples")
 
     def test_gold_standard5(self):
         expected = """digraph {
 	rankdir = LR;
 	charset="utf-8";
 
-	"Rfile:///mnt/d/libOmexMeta/tests/python/BIOMD0000000498.sbml#process_1" -> "Rfile:///mnt/d/libOmexMeta/tests/python/BIOMD0000000498.sbml#mediator_1" [ label="http://www.bhi.washington.edu/SemSim#hasMediatorParticipant" ];
-	"Rfile:///mnt/d/libOmexMeta/tests/python/BIOMD0000000498.sbml#process_1" -> "Rfile:///mnt/d/libOmexMeta/tests/python/BIOMD0000000498.sbml#sink_1" [ label="http://www.bhi.washington.edu/SemSim#hasSinkParticipant" ];
-	"Rfile:///mnt/d"""
-        # self.gold_standard_test(self.gold_standard_url5, self.gold_standard_filename5, expected, "dot")
+	"Rfile:///BIOMD0000000498.sbml#process_1" -> "Rfile:///BIOMD0000000498.sbml#mediator_1" [ label="http://www.bhi.washington.edu/SemSim#hasMediatorParticipant" ];
+	"Rfile:///BIOMD0000000498.sbml#process_1" -> "Rfile:///BIOMD0000000498.sbml#sink_1" [ label="http://www.bhi.washington.edu/SemSim#hasSinkParticipant" ];
+	"Rfile:///BIOMD0000000498.sbml#process_1" -> "Rfile:///BIOMD0000000498.sbml#source_1" [ label="http://www.bhi.washington.edu/SemSim#hasSour"""
+        self.gold_standard_test(self.gold_standard_url5, self.gold_standard_filename5, expected, "dot")
 
     def test_query(self):
         self.download_file(self.gold_standard_url3, self.gold_standard_filename3)
@@ -674,12 +675,12 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
         }"""
         actual = rdf.query(query_str, "csv")[:500]
         print(actual)
-#         expected = """x,z
-# file:///mnt/d/libOmexMeta/tests/python/aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#sodium_current_i_Na,file:///mnt/d/libOmexMeta/tests/python/aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_0
-# file:///mnt/d/libOmexMeta/tests/python/aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#intracellular_ion_concentrations.i_up,file:///mnt/d/libOmexMeta/tests/python/aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_13
-# file:///mnt/d/libOmexMeta/tests/python/as"""
-#
-#         self.assertEqual(expected, actual)
+        expected = """x,z
+file:///aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#sodium_current_i_Na,file:///aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_0
+file:///aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#intracellular_ion_concentrations.i_up,file:///aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#process_13
+file:///aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#T_type_Ca_channel_f_T_gate.V,file:///aslanidi_atrial_model_2009_LindbladCa_corrected.cellml#entity_0
+f"""
+        self.assertEqual(expected, actual)
 
     def test(self):
         ant1 = """
