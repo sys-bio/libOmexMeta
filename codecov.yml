@@ -4,76 +4,34 @@ codecov:
   bot: CiaranWelsh  # set user whom will be the consumer of oauth requests
   ci:  # Custom CI domains if Codecov does not identify them automatically
     - travis.org
+  require_ci_to_pass: yes
 
 coverage:
-  precision: 2  # 2 = xx.xx%, 0 = xx%
-  round: nearest # default down
-  range: 60...95 # default 70...90. red...green
+  precision: 2
+  round: down
+  range: "70...100"
 
-  notify:
+parsers:
+  gcov:
+    branch_detection:
+      conditional: yes
+      loop: yes
+      method: no
+      macro: no
 
-    email:
-      default:
-        to:
-          - "cwelsh2@uw.edu"
-        threshold: 1%
-        only_pulls: false
-        flags: null
-        paths: null
-  status:
-    project:
-      default:
-        target: auto
-        threshold: 1%
-        branches:
-          - master
-        if_no_uploads: error
-        if_not_found: success
-        if_ci_failed: error
-        only_pulls: false
-        flags:
-          - integration
-        paths:
-          - folder
-
-    patch:
-      default:
-        target: 80%
-        branches: null
-        if_no_uploads: success
-        if_not_found: success
-        if_ci_failed: error
-        only_pulls: false
-        flags:
-          - integration
-        paths:
-          - folder
-
-    changes:
-      default:
-        branches: null
-        if_no_uploads: error
-        if_not_found: success
-        if_ci_failed: error
-        only_pulls: false
-        flags:
-          - integration
-        paths:
-          - folder
-
-  flags:
-    integration:
-      ignore:
-        - app/ui
-
-  ignore: # files and folders for processing
-    - tests/*
-    - src/redland/raptor2-2.0.15/**/*
-    - src/redland/rasqal-0.9.33/**/*
-    - src/redland/redland-1.0.17/**/*
-    - src/redland/RedlandAPIWrapper/test/*
-    - third_party/**/*
-
+ignore: # files and folders for processing
+  - tests/*
+  - src/redland/raptor2-2.0.15/**/*
+  - src/redland/rasqal-0.9.33/**/*
+  - src/redland/redland-1.0.17/**/*
+  - src/redland/RedlandAPIWrapper/test/*
+  - cmake-build-release-wsl-ubuntu1804//**/*
+  - third_party/**/*
+  - cmake-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/raptor2-2.0.15**/*
+  - cmake-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/rasqal-0.9.33**/*
+  - cmake-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/redland-1.0.17**/*
+  - cmake-build-release-wsl-ubuntu1804/tests/**/*
+  - cmake-build-release-wsl-ubuntu1804/third_party/**/*
 comment:
   layout: header
   branches:
