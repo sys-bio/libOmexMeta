@@ -41,7 +41,7 @@ before_install:
     && . ~/.bashrc
     && conda create -y --name pyomexmeta-test python=3.7
     && conda activate pyomexmeta-test
-    && pip install ipython codecov nosetests coverage sphinx breathe python-libcombine tellurium
+    && pip install ipython codecov nose coverage sphinx breathe python-libcombine tellurium
 #    && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
   - cd ${HOME} && git clone https://github.com/sys-bio/libOmexMeta.git && cd libOmexMeta
   - g++ --version
