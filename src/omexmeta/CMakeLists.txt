@@ -171,7 +171,7 @@ if (${BUILD_SHARED_LIBS})
         # The exception is the libstdc++ library. Since ive build
         # using a later version than is easily obtainably
         # using apt-get, I just distribute along with python
-        install(FILES ${LIBSTDCXX6_LIBRARY} DESTINATION ${PYOMEXMETA_DIR})
+#        install(FILES ${LIBSTDCXX6_LIBRARY} DESTINATION ${PYOMEXMETA_DIR})
 
 
         # curl was statically linked in the end
