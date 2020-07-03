@@ -20,23 +20,23 @@ coverage:
       loop: yes
       method: no
       macro: no
-  ignore:
-    - "test"  # ignore folders and all its contents
-    - "src/raptor2-2.0.15"
-    - "src/rasqal-0.9.33"
-    - "src/redland-1.0.17"
-    - "src/redland-wrapper-tests/test"
-    - "materials"
-    - "install-msvc"
-    - "install_ubuntu"
-    - "third_party"
-    - "build"
-    - "cmake"
-    - "cmake-build-release-visual-studio"
-    - "cmake-build-release-wsl-ubuntu1804-gcc101"
-    - "Design"
-    - "dist"
-    - "docs"
+ignore:
+  - "test"  # ignore folders and all its contents
+  - "src/raptor2-2.0.15"
+  - "src/rasqal-0.9.33"
+  - "src/redland-1.0.17"
+  - "src/redland-wrapper-tests/test"
+  - "materials"
+  - "install-msvc"
+  - "install_ubuntu"
+  - "third_party"
+  - "build"
+  - "cmake"
+  - "cmake-build-release-visual-studio"
+  - "cmake-build-release-wsl-ubuntu1804-gcc101"
+  - "Design"
+  - "dist"
+  - "docs"
 comment:
   layout: "diff"
 
