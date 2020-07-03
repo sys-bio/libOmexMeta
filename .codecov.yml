@@ -75,10 +75,11 @@ coverage:
 
   ignore: # files and folders for processing
     - tests/*
-    - src/redland/raptor2-2.0.15/*
-    - src/redland/rasqal-0.9.33/*
-    - src/redland/redland-1.0.17/*
+    - src/redland/raptor2-2.0.15/**/*
+    - src/redland/rasqal-0.9.33/**/*
+    - src/redland/redland-1.0.17/**/*
     - src/redland/RedlandAPIWrapper/test/*
+    - third_party/**/*
 
 comment:
   layout: header, diff, trends, uncovered
