@@ -56,4 +56,5 @@ script:
   - ${HOME}/install/bin/redland-wrapper-tests
 #  - nosetests ${HOME}/libOmexMeta/tests/python
 after_success:
-  - codecov # submit coverage
+#  - codecov # submit coverage : for python. No work. 
+  - bash <(curl -s https://codecov.io/bash)
