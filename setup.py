@@ -90,7 +90,7 @@ setup(
     url='https://github.com/sys-bio/libomexmeta',
     keywords=['annotation', 'rdf'],
     # install_requires=open('requirements.txt').read().split('\n'),
-    # install_requires=["pypiwin32"] if sys.platform.startswith("win") else [],
+    install_requires=["graphviz", "pydot"],#["pypiwin32"] if sys.platform.startswith("win") else [],
     packages=['pyomexmeta'],
     package_dir={'pyomexmeta': 'src/pyomexmeta'},
     package_data={'pyomexmeta': [
