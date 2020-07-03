@@ -55,4 +55,4 @@ script:
   - ${HOME}/install/bin/OmexMeta-tests
   - ${HOME}/install/bin/redland-wrapper-tests
   - nosetests ${HOME}/tests/python
-    - codecov # submit coverage
+  - codecov # submit coverage
