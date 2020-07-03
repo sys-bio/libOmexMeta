@@ -34,6 +34,13 @@ add_executable(OmexMeta-tests ${TEST_SOURCES})
 set_target_properties(OmexMeta-tests PROPERTIES INSTALL_RPATH ${RPATH})#:$ORIGIN:/home/ciaran/vcpkg/installed/x64-linux/lib")
 set_target_properties(OmexMeta-tests PROPERTIES BUILD_RPATH ${RPATH})
 
+#if (CMAKE_COMPILER_IS_GNUCXX)
+#    setup_target_for_coverage_gcovr_html(
+#            NAME OmexMetaCoverage
+#            EXECUTABLE $<TARGET_FILE:OmexMeta-tests>
+#            DEPENDENCIES $<TARGET_FILE:OmexMeta-tests>)
+#endif ()
+
 if (NOT ${PLATFORM} STREQUAL "window-msvc")
     target_compile_options(OmexMeta-tests PRIVATE -g)
 endif ()

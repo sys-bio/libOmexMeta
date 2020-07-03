@@ -38,6 +38,8 @@ include(${CMAKE_SOURCE_DIR}/cmake/SetCrossPlatform.cmake)
 # defines a macro that prints out configuration summary
 include(${CMAKE_SOURCE_DIR}/cmake/ConfigurationSummary.cmake)
 
+# for coverage
+#include(${CMAKE_SOURCE_DIR}/cmake/CodeCoverage.cmake)
 ######################################################
 #   Set some variables
 #
@@ -118,7 +120,12 @@ endif ()
 option(WITH_COVERAGE OFF)
 
 if (WITH_COVERAGE)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
+    if (PLATFORM STREQUAL "linux")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
+#        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")# --exclude-directory ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15 ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33 ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17 ${CMAKE_SOURCE_DIR}/tests ${CMAKE_SOURCE_DIR}/third_party")
+#        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --coverage")# --exclude-directory ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15 ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33 ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17 ${CMAKE_SOURCE_DIR}/tests ${CMAKE_SOURCE_DIR}/third_party")
+    endif ()
+    # need different code for windows.
 endif ()
 
 # set RPATH for libraries and executables.
