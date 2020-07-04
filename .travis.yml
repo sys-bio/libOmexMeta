@@ -60,7 +60,8 @@ install:
   - make install
 script:
 #  - conda activate pyomexmeta-test
-  - cd ${HOME}/libOmexmeta/build/ && make test
+  - cd ${HOME}/libOmexmeta/build
+  - make test
 #  - ${HOME}/install/bin/OmexMetaTests
 #  - ${HOME}/install/bin/redland-wrapper-tests
 #  - nosetests ${HOME}/libOmexMeta/tests/python
