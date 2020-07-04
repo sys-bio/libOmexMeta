@@ -46,9 +46,10 @@ before_install:
   - cd ${HOME} && git clone https://github.com/sys-bio/libOmexMeta.git && cd libOmexMeta
   - g++ --version
   - GCOVR_COMMAND=$(which gcovr)
+  - echo "$GCOVR_COMMAND"
 install:
   - cd ${HOME}/libOmexMeta && mkdir build && cd build
-  - ${HOME}/cmake-3.15.7-Linux-x86_64/bin/cmake -DVCPKG_ROOT=${HOME}/vcpkg -DCMAKE_INSTALL_PREFIX=${HOME}/install -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DWITH_COVERAGE=ON -DCMAKE_BUILD_TYPE=Release ..
+  - ${HOME}/cmake-3.15.7-Linux-x86_64/bin/cmake -DVCPKG_ROOT=${HOME}/vcpkg -DCMAKE_INSTALL_PREFIX=${HOME}/install -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DWITH_COVERAGE=ON -DCMAKE_BUILD_TYPE=Release -DGCOVR_PATH=$GCOVR_COMMAND ..
   - make -j 8
   - make install
 script:
