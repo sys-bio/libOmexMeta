@@ -350,9 +350,9 @@ if (BUILD_TESTS)
                     ${CMAKE_BINARY_DIR}/src/redland/rasqal-0.9.33
                     ${CMAKE_BINARY_DIR}/src/redland/redland-1.0.17
                     ${CMAKE_BINARY_DIR}/src/redland/RedlandAPIWrapper/test
-                    tests
-                    test
-                    third_party
+                    ${CMAKE_SOURCE_DIR}/tests
+                    ${CMAKE_SOURCE_DIR}/test
+                    ${CMAKE_SOURCE_DIR}/third_party
                     )
 
             # importantly, set the path to the gcovr executable that you downladed

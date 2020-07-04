@@ -6,14 +6,14 @@ dist: bionic
 cache:
   directories:
     - ${HOME}/vcpkg
-git:
-  clone: false
+#git:
+#  clone: false
 branches:
   only:
   - master
   - develop
 before_install:
-  - echo "TRAVIS_BUILD_DIR $TRAVIS_BUILD_DIR"
+  - echo "TRAVIS_BUILD_DIR $TRAVIS_BUILD_DIR ${TRAVIS_BUILD_DIR}"
   - sudo apt-get update
   - cd ${HOME}
   - DEBIAN_FRONTEND=noninteractive
@@ -47,14 +47,14 @@ before_install:
     && conda activate pyomexmeta-test
     && pip install gcovr ipython codecov nose graphviz coverage sphinx breathe python-libcombine tellurium
 #    && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
-  - cd ${HOME} && git clone https://github.com/sys-bio/libOmexMeta.git && cd libOmexMeta
+#  - cd ${HOME} && git clone https://github.com/sys-bio/libOmexMeta.git && cd libOmexMeta
   - g++ --version
   - GCOVR_COMMAND=$(which gcovr)
   - echo "$GCOVR_COMMAND"
   - pwd
   - ls
 install:
-  - cd ${HOME}/libOmexMeta && mkdir build && cd build
+  - cd ${TRAVIS_BUILD_DIR} && mkdir build && cd build
   - ${HOME}/cmake-3.15.7-Linux-x86_64/bin/cmake -DVCPKG_ROOT=${HOME}/vcpkg -DCMAKE_INSTALL_PREFIX=${HOME}/install -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DWITH_COVERAGE=ON -DCMAKE_BUILD_TYPE=Release -DGCOVR_PATH=$GCOVR_COMMAND ..
   - make -j 8
   - make install
@@ -67,6 +67,7 @@ script:
   - ${HOME}/install/bin/redland-wrapper-tests
   - make TestCoverageHtml
   - make TestCoverageXml
+  -
 #  - nosetests ${HOME}/libOmexMeta/tests/python
 after_success:
 #  - codecov # submit coverage : for python. No work.
