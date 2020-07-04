@@ -14,7 +14,7 @@ branches:
   - develop
 before_install:
   - echo "TRAVIS_BUILD_DIR $TRAVIS_BUILD_DIR ${TRAVIS_BUILD_DIR}"
-  - $TRAVIS_BUILD_DIR
+  - ${TRAVIS_BUILD_DIR}
   - sudo apt-get update
   - cd ${HOME}
   - DEBIAN_FRONTEND=noninteractive
