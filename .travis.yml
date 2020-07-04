@@ -75,4 +75,4 @@ script:
 after_success:
 #  - codecov # submit coverage : for python. No work.
   - bash <(curl -s https://codecov.io/bash) -t 03230181-dc42-4e8c-b1f6-46699ee5d066
-  - coveralls --exclude tests --gcov-options '\-lp' -r ${TRAVIS_BUILD_DIR} -B ${TRAVIS_BUILD_DIR}/build -i ${TRAVIS_BUILD_DIR}/build/src/omexmeta/ -i ${TRAVIS_BUILD_DIR}/build/src/redland/RedlandAPIWrapper -e ${TRAVIS_BUILD_DIR}/build/src/redland/RedlandAPIWrapper/test -t LIcCj7cYF1DBxqHO80fauUQCiKkSsfBfC
+  - coveralls --exclude tests --gcov-options '\-lp' -r ${TRAVIS_BUILD_DIR} -b ${TRAVIS_BUILD_DIR}/build -i ${TRAVIS_BUILD_DIR}/build/src/omexmeta/ -i ${TRAVIS_BUILD_DIR}/build/src/redland/RedlandAPIWrapper -e ${TRAVIS_BUILD_DIR}/build/src/redland/RedlandAPIWrapper/test -t LIcCj7cYF1DBxqHO80fauUQCiKkSsfBfC
