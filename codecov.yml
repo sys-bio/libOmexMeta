@@ -20,12 +20,12 @@ parsers:
       macro: no
 
 ignore: # files and folders for processing
-  - tests/*
+  - tests/**/*
   - src/redland/raptor2-2.0.15/**/*
   - src/redland/rasqal-0.9.33/**/*
   - src/redland/redland-1.0.17/**/*
   - src/redland/RedlandAPIWrapper/test/*
-  - cmake-build-release-wsl-ubuntu1804//**/*
+  - cmake-build-release-wsl-ubuntu1804/**/*
   - third_party/**/*
   - cmake-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/raptor2-2.0.15**/*
   - cmake-build-release-wsl-ubuntu1804/src/redland/CMakeFiles/redland-combined-static.dir/rasqal-0.9.33**/*
@@ -40,46 +40,3 @@ comment:
                     # once = post once then updates
                     # new = delete old, post new
                     # spammy = post new
-
-  #codecov:
-#  token: 03230181-dc42-4e8c-b1f6-46699ee5d066
-#  ci:
-#    - "https://travis-ci.org/github/sys-bio/libOmexMeta"
-#  strict_yaml_branch: "master"
-#coverage:
-#  precision: 2
-#  round: nearest
-#  range: "70...100"
-#  status:
-#    project:
-#      default:
-#        threshold: 2%
-#    patch:
-#      default:
-#        target: 80%
-# gcov:
-#    branch_detection:
-#      conditional: yes
-#      loop: yes
-#      method: no
-#      macro: no
-#ignore:
-#  - "test"  # ignore folders and all its contents
-#  - "src/raptor2-2.0.15"
-#  - "src/rasqal-0.9.33"
-#  - "src/redland-1.0.17"
-#  - "src/redland-wrapper-tests/test"
-#  - "materials"
-#  - "install-msvc"
-#  - "install_ubuntu"
-#  - "third_party"
-#  - "build"
-#  - "cmake"
-#  - "cmake-build-release-visual-studio"
-#  - "cmake-build-release-wsl-ubuntu1804-gcc101"
-#  - "Design"
-#  - "dist"
-#  - "docs"
-#comment:
-#  layout: "diff"
-#
