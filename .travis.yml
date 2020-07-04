@@ -69,6 +69,7 @@ script:
   - ${HOME}/install/bin/redland-wrapper-tests
   - make TestCoverageHtml
   - make TestCoverageXml
+  - cp /home/travis/build/sys-bio/libOmexMeta/build/TestCoverageXml.xml /home/travis/build/sys-bio/libOmexMeta/build/coverage.xml
   -
 #  - nosetests ${HOME}/libOmexMeta/tests/python
 after_success:
