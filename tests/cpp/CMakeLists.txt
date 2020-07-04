@@ -1,6 +1,8 @@
 ###########################################################################
 #   Sources for tests
 #
+enable_testing()
+
 set(TEST_SOURCES
         SBMLFactory.h
         SemsimUtilsTests.cpp
@@ -30,24 +32,29 @@ set(TEST_SOURCES
         )
 
 # build googletest executable
-add_executable(OmexMeta-tests ${TEST_SOURCES})
-set_target_properties(OmexMeta-tests PROPERTIES INSTALL_RPATH ${RPATH})#:$ORIGIN:/home/ciaran/vcpkg/installed/x64-linux/lib")
-set_target_properties(OmexMeta-tests PROPERTIES BUILD_RPATH ${RPATH})
+add_executable(OmexMetaTests ${TEST_SOURCES})
+set_target_properties(OmexMetaTests PROPERTIES INSTALL_RPATH ${RPATH})#:$ORIGIN:/home/ciaran/vcpkg/installed/x64-linux/lib")
+set_target_properties(OmexMetaTests PROPERTIES BUILD_RPATH ${RPATH})
+add_test(
+        NAME OmexMetaTests
+        COMMAND $<TARGET_FILE:OmexMetaTests>
+)
+set_tests_properties(OmexMetaTests PROPERTIES DEPENDS OmexMeta)
 
 #if (CMAKE_COMPILER_IS_GNUCXX)
 #    setup_target_for_coverage_gcovr_html(
 #            NAME OmexMetaCoverage
-#            EXECUTABLE $<TARGET_FILE:OmexMeta-tests>
-#            DEPENDENCIES $<TARGET_FILE:OmexMeta-tests>)
+#            EXECUTABLE $<TARGET_FILE:OmexMetaTests>
+#            DEPENDENCIES $<TARGET_FILE:OmexMetaTests>)
 #endif ()
 
 if (NOT ${PLATFORM} STREQUAL "window-msvc")
-    target_compile_options(OmexMeta-tests PRIVATE -g)
+    target_compile_options(OmexMetaTests PRIVATE -g)
 endif ()
 
-add_dependencies(OmexMeta-tests OmexMeta-static)
+add_dependencies(OmexMetaTests OmexMeta-static)
 
-target_link_libraries(OmexMeta-tests PUBLIC
+target_link_libraries(OmexMetaTests PUBLIC
         # Order matters!
         $<TARGET_FILE:OmexMeta-static>
         $<TARGET_FILE:redland-combined-static>
@@ -56,24 +63,24 @@ target_link_libraries(OmexMeta-tests PUBLIC
         )
 
 #foreach (lib ${LIBRARIES_DLL})
-#    add_custom_command(TARGET OmexMeta-tests POST_BUILD        # Adds a post-build event to MyTest
+#    add_custom_command(TARGET OmexMetaTests POST_BUILD        # Adds a post-build event to MyTest
 #            COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
 #            "${lib}"      # <--this is in-file
 #            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ")
 #endforeach ()
 
 
-target_include_directories(OmexMeta-tests PRIVATE
+target_include_directories(OmexMetaTests PRIVATE
         ${GOOGLETEST_SOURCE}/googletest/include
         ${INCLUDE_DIRECTORIES}
         ${WRAPPER_SOURCE_DIR}
         )
 
-add_dependencies(OmexMeta-tests OmexMeta-static)
+add_dependencies(OmexMetaTests OmexMeta-static)
 
 install(
-        TARGETS OmexMeta-tests
-        EXPORT OmexMeta-tests
+        TARGETS OmexMetaTests
+        EXPORT OmexMetaTests
         RUNTIME DESTINATION bin
 )
 

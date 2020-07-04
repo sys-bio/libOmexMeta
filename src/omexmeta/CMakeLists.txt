@@ -279,8 +279,8 @@ endif ()
 #-- Installing: /home/travis/install/lib/libgtest_main.a
 #-- Installing: /home/travis/install/lib/pkgconfig/gtest.pc
 #-- Installing: /home/travis/install/lib/pkgconfig/gtest_main.pc
-#-- Installing: /home/travis/install/bin/OmexMeta-tests
-#-- Set runtime path of "/home/travis/install/bin/OmexMeta-tests" to "$ORIGIN:$ORIGIN/../lib"
+#-- Installing: /home/travis/install/bin/OmexMetaTests
+#-- Set runtime path of "/home/travis/install/bin/OmexMetaTests" to "$ORIGIN:$ORIGIN/../lib"
 
 
 

@@ -41,10 +41,11 @@ before_install:
     && . ~/.bashrc
     && conda create -y --name pyomexmeta-test python=3.7
     && conda activate pyomexmeta-test
-    && pip install ipython codecov nose graphviz coverage sphinx breathe python-libcombine tellurium
+    && pip install gcovr ipython codecov nose graphviz coverage sphinx breathe python-libcombine tellurium
 #    && pip install --index-url https://test.pypi.org/simple/ pyomexmeta
   - cd ${HOME} && git clone https://github.com/sys-bio/libOmexMeta.git && cd libOmexMeta
   - g++ --version
+  - GCOVR_COMMAND=$(which gcovr)
 install:
   - cd ${HOME}/libOmexMeta && mkdir build && cd build
   - ${HOME}/cmake-3.15.7-Linux-x86_64/bin/cmake -DVCPKG_ROOT=${HOME}/vcpkg -DCMAKE_INSTALL_PREFIX=${HOME}/install -DBUILD_TESTS=ON -DBUILD_SHARED_LIBS=ON -DWITH_COVERAGE=ON -DCMAKE_BUILD_TYPE=Release ..
@@ -52,8 +53,9 @@ install:
   - make install
 script:
   - conda activate pyomexmeta-test
-  - ${HOME}/install/bin/OmexMeta-tests
-  - ${HOME}/install/bin/redland-wrapper-tests
+  - make test
+#  - ${HOME}/install/bin/OmexMetaTests
+#  - ${HOME}/install/bin/redland-wrapper-tests
 #  - nosetests ${HOME}/libOmexMeta/tests/python
 after_success:
 #  - codecov # submit coverage : for python. No work.

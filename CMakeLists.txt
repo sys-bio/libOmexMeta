@@ -38,6 +38,9 @@ include(${CMAKE_SOURCE_DIR}/cmake/SetCrossPlatform.cmake)
 # defines a macro that prints out configuration summary
 include(${CMAKE_SOURCE_DIR}/cmake/ConfigurationSummary.cmake)
 
+# dashboard: https://gitlab.kitware.com/cmake/community/-/wikis/doc/ctest/Testing-With-CTest
+include(CTest)
+
 # for coverage
 #include(${CMAKE_SOURCE_DIR}/cmake/CodeCoverage.cmake)
 ######################################################
@@ -69,6 +72,9 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 # export all on windows. Ignored on other.
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+
+# set the module path
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 
 ####################################################################
@@ -105,6 +111,11 @@ if (${WITH_BDB})
     add_definitions(-DWITH_BDB)
 endif ()
 
+option(SUPPRESS_CMAKE_WARNINGS ON)
+if (SUPPRESS_CMAKE_WARNINGS)
+    cmake_policy(SET CMP0022 OLD)
+endif ()
+
 # these flags prevent debugger from optimizing out information.
 # predumably this is a result of the fact I'm developing in release mode.
 # Too late now...
@@ -119,15 +130,6 @@ endif ()
 
 option(WITH_COVERAGE OFF)
 
-if (WITH_COVERAGE)
-    if (PLATFORM STREQUAL "linux")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
-        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --coverage")
-        #        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")# --exclude-directory ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15 ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33 ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17 ${CMAKE_SOURCE_DIR}/tests ${CMAKE_SOURCE_DIR}/third_party")
-        #        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --coverage")# --exclude-directory ${CMAKE_SOURCE_DIR}/src/redland/raptor2-2.0.15 ${CMAKE_SOURCE_DIR}/src/redland/rasqal-0.9.33 ${CMAKE_SOURCE_DIR}/src/redland/redland-1.0.17 ${CMAKE_SOURCE_DIR}/tests ${CMAKE_SOURCE_DIR}/third_party")
-    endif ()
-    # need different code for windows.
-endif ()
 
 # set RPATH for libraries and executables.
 set(RPATH "$ORIGIN:$ORIGIN/../lib")
@@ -325,8 +327,49 @@ add_subdirectory(src)
 # test directories
 if (BUILD_TESTS)
     enable_testing()
+    add_custom_target(ctest COMMAND ${CMAKE_CTEST_COMMAND})
+
     add_subdirectory(${GOOGLETEST_SOURCE})
     add_subdirectory(tests/cpp)
+
+    if (WITH_COVERAGE)
+        set(GCOVR_PATH "/home/ciaran/miniconda3/bin/gcovr" CACHE FILEPATH "Full path to gcovr")
+        if (NOT GCOVR_PATH)
+            message(FATAL_ERROR "gcovr variable GCOVR_PATH (${GCOVR_PATH}) is empty")
+        endif ()
+
+        if (CMAKE_COMPILER_IS_GNUCXX)
+            include(CodeCoverage)
+            append_coverage_compiler_flags()
+
+            # we need to turn off optimization for non-skewed coverage reports
+            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
+            set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0")
+
+            # optional excludes - None needed here
+            set(COVERAGE_EXCLUDES
+                    ${CMAKE_BINARY_DIR}/src/redland/raptor2-2.0.15
+                    ${CMAKE_BINARY_DIR}/src/redland/rasqal-0.9.33
+                    ${CMAKE_BINARY_DIR}/src/redland/redland-1.0.17
+                    ${CMAKE_BINARY_DIR}/src/redland/RedlandWrapper/test
+                    ${CMAKE_BINARY_DIR}/tests
+                    )
+
+            # importantly, set the path to the gcovr executable that you downladed
+            #  https://github.com/bilke/cmake-modules/issues/8
+            setup_target_for_coverage_gcovr_html(
+                    NAME TestCoverageOmexMetaTestsHtml
+                    EXECUTABLE ctest
+                    DEPENDENCIES ctest
+            )
+            setup_target_for_coverage_gcovr_xml(
+                    NAME TestCoverageOmexMetaTestsXml
+                    EXECUTABLE ctest
+                    DEPENDENCIES ctest
+            )
+        endif ()
+        # need different code for windows.
+    endif ()
 endif (BUILD_TESTS)
 
 if (BUILD_DOCS)

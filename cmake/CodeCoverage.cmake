@@ -301,7 +301,7 @@ function(setup_target_for_coverage_gcovr_xml)
     cmake_parse_arguments(Coverage "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
 
     if(NOT GCOVR_PATH)
-        message(FATAL_ERROR "gcovr not found! Aborting...")
+        message(FATAL_ERROR "GCOVR_PATH (${GCOVR_PATH}) not found! Aborting...")
     endif() # NOT GCOVR_PATH
 
     # Set base directory (as absolute path), or default to PROJECT_SOURCE_DIR
