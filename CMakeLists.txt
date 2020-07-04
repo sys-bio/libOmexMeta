@@ -38,8 +38,6 @@ include(${CMAKE_SOURCE_DIR}/cmake/SetCrossPlatform.cmake)
 # defines a macro that prints out configuration summary
 include(${CMAKE_SOURCE_DIR}/cmake/ConfigurationSummary.cmake)
 
-# dashboard: https://gitlab.kitware.com/cmake/community/-/wikis/doc/ctest/Testing-With-CTest
-include(CTest)
 
 # for coverage
 #include(${CMAKE_SOURCE_DIR}/cmake/CodeCoverage.cmake)
@@ -351,20 +349,22 @@ if (BUILD_TESTS)
                     ${CMAKE_BINARY_DIR}/src/redland/raptor2-2.0.15
                     ${CMAKE_BINARY_DIR}/src/redland/rasqal-0.9.33
                     ${CMAKE_BINARY_DIR}/src/redland/redland-1.0.17
-                    ${CMAKE_BINARY_DIR}/src/redland/RedlandWrapper/test
-                    ${CMAKE_BINARY_DIR}/tests
+                    ${CMAKE_BINARY_DIR}/src/redland/RedlandAPIWrapper/test
+                    tests
+                    test
+                    third_party
                     )
 
             # importantly, set the path to the gcovr executable that you downladed
             #  https://github.com/bilke/cmake-modules/issues/8
             setup_target_for_coverage_gcovr_html(
                     NAME TestCoverageOmexMetaTestsHtml
-                    EXECUTABLE ctest
+                    EXECUTABLE ctest -j 8
                     DEPENDENCIES ctest
             )
             setup_target_for_coverage_gcovr_xml(
                     NAME TestCoverageOmexMetaTestsXml
-                    EXECUTABLE ctest
+                    EXECUTABLE ctest -j 8
                     DEPENDENCIES ctest
             )
         endif ()
