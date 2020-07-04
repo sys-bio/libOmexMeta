@@ -61,10 +61,10 @@ install:
 script:
 #  - conda activate pyomexmeta-test
 #  - cd ${HOME}/libOmexmeta/build
-  - ctest
-#  - make test
-#  - ${HOME}/install/bin/OmexMetaTests
-#  - ${HOME}/install/bin/redland-wrapper-tests
+#  - ctest
+  - make ctest 
+  - ${HOME}/install/bin/OmexMetaTests
+  - ${HOME}/install/bin/redland-wrapper-tests
 #  - nosetests ${HOME}/libOmexMeta/tests/python
 after_success:
 #  - codecov # submit coverage : for python. No work.
