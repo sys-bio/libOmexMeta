@@ -358,12 +358,12 @@ if (BUILD_TESTS)
             # importantly, set the path to the gcovr executable that you downladed
             #  https://github.com/bilke/cmake-modules/issues/8
             setup_target_for_coverage_gcovr_html(
-                    NAME TestCoverageOmexMetaTestsHtml
+                    NAME TestCoverageHtml
                     EXECUTABLE ctest -j 8
                     DEPENDENCIES ctest
             )
             setup_target_for_coverage_gcovr_xml(
-                    NAME TestCoverageOmexMetaTestsXml
+                    NAME TestCoverageXml
                     EXECUTABLE ctest -j 8
                     DEPENDENCIES ctest
             )
