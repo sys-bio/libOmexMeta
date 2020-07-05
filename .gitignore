@@ -11,7 +11,6 @@ build-*
 build*
 build2
 build2-*
-docs/build
 *.tar.gz
 *.zip
 # some files in libxml2/test were breaking git. They are not essential and are ignored
@@ -30,7 +29,6 @@ build-macos
 .deps
 dist
 pyomexmeta.egg-info
-docs/cpp
 install-ubuntu
 brenda_parameters_1.xml
 third_party/curl-7.69.1/docs
