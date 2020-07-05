@@ -11,6 +11,9 @@ coverage:
   round: down
   range: "70...100"
 
+#- <files in coverage report>::<corresponding paths in git/hg project>
+fixes:
+  - "/home/travis/build/sys-bio/libOmexMeta"
 #parsers:
 #  gcov:
 #    branch_detection:
