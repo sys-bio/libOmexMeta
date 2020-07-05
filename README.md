@@ -42,11 +42,13 @@ Note: documentation is currently out of date but being updated presently
 ## Python
 
 Use pip. At this time I've only uploaded to test pypi so you'll have to download it from test pypi as well. On linux:
+
     $ pip install --index-url https://test.pypi.org/simple/ pyomexmeta
     # verify its worked
     $ ipython -c "import pyomexmeta"
     
 On Windows: 
+
     > pip install pywin32
     > pip install --index-url https://test.pypi.org/simple/ pyomexmeta
 
