@@ -32,7 +32,8 @@ release = '0.0.1'
 # ones.
 extensions = [
     "breathe",
-    "sphinxcontrib.bibtex"
+    "sphinxcontrib.bibtex",
+    # "sphinxcontrib-inlinesyntaxhighlight",
 ]
 
 # Breathe Configuration
