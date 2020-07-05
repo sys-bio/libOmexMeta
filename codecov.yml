@@ -14,13 +14,13 @@ coverage:
 #- <files in coverage report>::<corresponding paths in git/hg project>
 #fixes:
 #  - "/home/travis/build/sys-bio/libOmexMeta"
-#parsers:
-#  gcov:
-#    branch_detection:
-#      conditional: yes
-#      loop: yes
-#      method: no
-#      macro: no
+parsers:
+  gcov:
+    branch_detection:
+      conditional: yes
+      loop: yes
+      method: no
+      macro: no
 
 #ignore: # files and folders for processing
 #  - tests/**/*
