@@ -14,23 +14,10 @@ Reading from a string
     from pyomexmeta import RDF
     rdf_str = """<?xml version="1.0" encoding="utf-8"?>
     <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-       xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-       xmlns:semsim="http://www.bhi.washington.edu/semsim#"
-       xml:base="file://./annotations.rdf">
-      <rdf:Description rdf:about="force_0">
-        <semsim:hasSinkParticipant rdf:resource="sink_0"/>
-        <semsim:hasSourceParticipant rdf:resource="source_0"/>
-      </rdf:Description>
-      <rdf:Description rdf:about="parameter_metaid_0">
-        <bqbiol:isPropertyOf rdf:resource="force_0"/>
-        <bqbiol:isVersionOf rdf:resource="https://identifiers.org/opb/OPB_01058"/>
-      </rdf:Description>
-      <rdf:Description rdf:about="sink_0">
-        <semsim:hasPhysicalEntityReference rdf:resource="species_metaid_1"/>
-      </rdf:Description>
-      <rdf:Description rdf:about="source_0">
-        <semsim:hasPhysicalEntityReference rdf:resource="species_metaid_0"/>
+       xml:base="file://./Annotations.rdf">
+      <rdf:Description rdf:about="OmexMetaId0000">
+        <bqbiol:is rdf:resource="https://identifiers.org/uniprot/PD12345"/>
       </rdf:Description>
     </rdf:RDF>"""
 

@@ -817,13 +817,13 @@ end"""
 
             with editor.new_singular_annotation() as author_annotation:
                 author_annotation\
-                    .set_about('SBML1') \
+                    .set_about('OmexMetaId0000') \
                     .set_predicate("bqb", "is")\
-                    .set_resource_literal("Ciaran Welsh")
+                    .set_resource_uri("uniprot:PD12345")
                 # note: not sure which predicate to use.
 
-        rdf2 = RDF.from_string(rdf)
-        print(rdf2)
+        rdf2 = RDF.from_string(str(rdf))
+        print(rdf2.to_string("turtle", "turtle_syntax.rdf"))
 
 
 

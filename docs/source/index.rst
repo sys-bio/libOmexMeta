@@ -6,11 +6,19 @@
 libOmexMeta documentation!
 =====================================
 
+
+# todo put badges here
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   background
    python/python.rst
+   cpp/cpp.rst
+   APIReference
+   DevelopersCorner/developers_corner.rst
+
 
 
 
