@@ -13,12 +13,10 @@ libOmexMeta documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   background
+   background.rst
    python/python.rst
    cpp/cpp.rst
-   APIReference
-   DevelopersCorner/developers_corner.rst
-
+   APIReference/api_reference.rst
 
 
 

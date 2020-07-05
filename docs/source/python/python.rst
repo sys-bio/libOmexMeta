@@ -5,4 +5,6 @@ PyOmexMeta Examples
 .. toctree::
     :maxdepth: 2
 
-    ReadingRDF
+    reading_rdf.rst
+    quickstart.rst
+    Examples/examples.rst

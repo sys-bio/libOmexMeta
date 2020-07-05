@@ -12,6 +12,7 @@ into a set of differential equations (for deterministic simulations) or master e
 This, the following would be a valid SBML model (using `Antimony <http://antimony.sourceforge.net/>`_ syntax):
 
 .. code-block:: python
+
   # a reaction J0 converts A to B
   var species A, B, C
   J0: A -> B; k*A*B*C
@@ -55,3 +56,14 @@ In both projects (Java/C++), the main goal is to provide a tool for working with
 are "super-structures" composed on multiple RDF triples. Composite annotations are designed to address the
 limitations of current annotation systems in CellML and SBML. We have previously described the benefits and
 use cases of composite annotations :cite:`gennari2011multiple,neal2018harmonizing`.
+
+
+
+References
+==========
+
+.. bibliography:: refs.bib
+   :cited:
+   :style: plain
+
+
