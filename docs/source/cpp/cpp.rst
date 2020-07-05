@@ -6,6 +6,7 @@ libOmexMeta C++ Documentation
    :caption: Contents:
 
    background
+   quickstart
    python/python.rst
    cpp/cpp.rst
    APIReference
