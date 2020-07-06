@@ -55,7 +55,6 @@ namespace semsim {
     }
 
     RDF RDF::fromString(const std::string &str, const std::string &format, const std::string &base_uri) {
-        std::string base_uri_used;
         RDF rdf;
         LibrdfParser parser(format);
         LibrdfUri u = LibrdfUri::fromFilename(base_uri);
@@ -72,15 +71,12 @@ namespace semsim {
         return rdf;
     }
 
-    void RDF::fromString(RDF *rdf, const std::string &str, const std::string &format, const std::string &base_uri) {
-        std::string base_uri_used;
-        if (base_uri.empty())
-            base_uri_used = SemsimUtils::addFilePrefixToString("Annotations.rdf");
-        else
-            base_uri_used = base_uri;
+    void RDF::fromString(RDF *rdf, const std::string &str, const std::string &format, std::string base_uri) {
+        // if the base_uri is a web uri we leave it alone
+        base_uri = SemsimUtils::addFilePrefixToString(base_uri);
 
         LibrdfParser parser(format);
-        parser.parseString(str, rdf->model_, LibrdfUri(base_uri_used));
+        parser.parseString(str, rdf->model_, LibrdfUri(base_uri));
 
         // update the list of "seen" namespaces
         rdf->seen_namespaces_ = parser.getSeenNamespaces();

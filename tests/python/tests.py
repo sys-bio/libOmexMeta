@@ -815,12 +815,11 @@ end"""
         with rdf.to_editor(sbml, "sbml") as editor:
             print(editor.get_metaids()) # prints out model metaids
 
-            with editor.new_singular_annotation() as author_annotation:
-                author_annotation\
-                    .set_about('OmexMetaId0000') \
+            with editor.new_singular_annotation() as identity:
+                identity\
+                    .set_about('#OmexMetaId0000') \
                     .set_predicate("bqb", "is")\
                     .set_resource_uri("uniprot:PD12345")
-                # note: not sure which predicate to use.
         print(rdf)
 
 

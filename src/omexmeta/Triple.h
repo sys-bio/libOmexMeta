@@ -54,7 +54,7 @@ namespace semsim {
          * a triple only.
          */
         std::string
-        str(const std::string &format = "rdfxml-abbrev", const std::string &base = "file://./annotations.rdf") const;
+        str(const std::string &format = "rdfxml-abbrev", const std::string &base = "annotations.rdf") const;
 
         void freeTriple();
 

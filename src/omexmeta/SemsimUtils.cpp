@@ -78,12 +78,25 @@ namespace semsim {
 
     std::string SemsimUtils::addFilePrefixToString(std::string str) {
         std::string file_prefix = "file://";
+        std::string http_protocol = "http://";
+        std::string https_protocol = "https://";
+
+        // if the base_uri is a web_uri, we leave it alone
+        if (str.rfind(https_protocol, 0) == 0 || str.rfind(http_protocol, 0) == 0 ) {
+            // str already starts with "http://" or "https:// do nothing
+            return str;
+        }
+
+        // Same if it already starts with a "file:/"
         if (str.rfind(file_prefix, 0) == 0) {
             // str already starts with "file://" do nothing
             return str;
         }
-        return file_prefix + str;
 
+        // otherwise we use the current working directory as an absolute path
+        std::string out = std::filesystem::current_path() /= str;
+        std::cout << "Note that we might have problems on windows here. Keep this message until you've dealt with these" << std::endl;
+        return out;
     }
 
     std::string SemsimUtils::getNamespaceFromUri(const std::string &uri) {

@@ -72,7 +72,7 @@ class RDF:
 
 
     @staticmethod
-    def from_string(rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf",
+    def from_string(rdf_string: str, format: str = "guess", base_uri: str = "Annotations.rdf",
                     storage_type: str = "hashes", storage_name: str = "semsim_storage", storage_options: str = None,
                     model_options: str = None) -> RDF:
         """read rdf from a string"""
@@ -87,7 +87,7 @@ class RDF:
         return rdf
 
 
-    def add_from_string(self, rdf_string: str, format: str = "guess", base_uri: str = "./Annotations.rdf") -> None:
+    def add_from_string(self, rdf_string: str, format: str = "guess", base_uri: str = "Annotations.rdf") -> None:
         PyOmexMetaAPI.rdf_add_from_string(self._obj, rdf_string.encode(), format.encode(), base_uri.encode())
 
 
@@ -133,7 +133,7 @@ class RDF:
         PyOmexMetaAPI.rdf_delete(self._obj)
 
 
-    def to_string(self, format: str, base_uri: str = "./Annotations.rdf") -> str:
+    def to_string(self, format: str, base_uri: str = "Annotations.rdf") -> str:
         str_ptr = PyOmexMetaAPI.rdf_to_string(self._obj, format.encode(), base_uri.encode())
         thestring = PyOmexMetaAPI.get_and_free_c_str(str_ptr)
         return thestring
@@ -303,7 +303,7 @@ class SingularAnnotation:
     def __str__(self):
         return self.to_string("rdfxml-abbrev")
 
-    def to_string(self, format: str, base_uri: str = "./Annotations.rdf") -> str:
+    def to_string(self, format: str, base_uri: str = "Annotations.rdf") -> str:
         return PyOmexMetaAPI.get_and_free_c_str(
             PyOmexMetaAPI.singular_annotation_str(self._obj, format.encode(), base_uri.encode()))
 
@@ -361,7 +361,7 @@ class PhysicalEntity:
             PyOmexMetaAPI.physical_entity_get_location(self.get_ptr(), i)
         ) for i in range(self.get_num_locations())]
 
-    def to_string(self, format: str, base_uri: str = "./Annotations.rdf") -> str:
+    def to_string(self, format: str, base_uri: str = "Annotations.rdf") -> str:
         return PyOmexMetaAPI.get_and_free_c_str(
             PyOmexMetaAPI.physical_entity_str(self.get_ptr(), format.encode(), base_uri.encode())
         )
@@ -403,7 +403,7 @@ class PhysicalProcess:
                                                                 physical_entity_reference.encode())
         return self
 
-    def to_string(self, format: str, base_uri: str = "./Annotations.rdf"):
+    def to_string(self, format: str, base_uri: str = "Annotations.rdf"):
         return PyOmexMetaAPI.get_and_free_c_str(
             PyOmexMetaAPI.physical_process_str(self._obj, format.encode(), base_uri.encode()))
 
@@ -442,7 +442,7 @@ class PhysicalForce:
                                                           physical_entity_reference.encode())
         return self
 
-    def to_string(self, format: str, base_uri: str = "./Annotations.rdf"):
+    def to_string(self, format: str, base_uri: str = "Annotations.rdf"):
         return PyOmexMetaAPI.get_and_free_c_str(
             PyOmexMetaAPI.physical_force_str(self._obj, format.encode(), base_uri.encode()))
 

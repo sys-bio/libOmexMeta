@@ -94,8 +94,7 @@ TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
                               "  </rdf:Description>\n"
                               "</rdf:RDF>\n";
 
-    RDF rdf;// = RDF::fromString(rdf_string1);
-    rdf.fromString(rdf_string2);
+    RDF rdf = RDF::fromString(rdf_string2);
     std::cout << rdf.toString() << std::endl;
 
 

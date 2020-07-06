@@ -119,7 +119,7 @@ namespace semsim {
          *
          */
         static void
-        fromString(RDF *rdf, const std::string &str, const std::string &format, const std::string &base_uri);
+        fromString(RDF *rdf, const std::string &str, const std::string &format, std::string base_uri = "Annotations.rdf");
 
         /*
          * @brief compared namespaces seen with namespaces
