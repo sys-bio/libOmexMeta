@@ -203,5 +203,14 @@ TEST_F(LibrdfUriTests, TestUriTwice) {
 }
 
 
+TEST_F(LibrdfUriTests, TestFromExample4) {
+    LibrdfUri uri1 = LibrdfUri("file:../uri.com");
+
+    std::cout << uri1.str() << std::endl;
+
+    uri1.freeUri();
+}
+
+
 
 

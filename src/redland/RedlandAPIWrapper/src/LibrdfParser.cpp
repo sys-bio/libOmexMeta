@@ -5,15 +5,10 @@
 
 namespace redland {
 
-    void LibrdfParser::deleter::operator()(librdf_parser *parser) {
-        if (parser)
-            librdf_free_parser(parser);
-    }
-
     LibrdfParser::LibrdfParser(librdf_parser *parser) :
             parser_(parser) {}
 
-    LibrdfParser::LibrdfParser(std::string format, std::string mime_type, std::string type_uri) :
+    LibrdfParser::LibrdfParser(std::string format, std::string mime_type, const std::string& type_uri) :
             format_(std::move(format)), mime_type_(std::move(mime_type)) {
         setTypeUri(type_uri);
         validateParserName();
@@ -38,7 +33,6 @@ namespace redland {
                     "std::invalid_argument: LibrdfParser::makeParser(): Need at "
                     "least one of format, mime_type or type_uri arguments"
             );
-
         librdf_parser *parser = librdf_new_parser(World::getWorld(), name_used, mime_type_used, type_uri_);
         // must set options each time we create new parser
         // i.e. when we change a parameter, like format

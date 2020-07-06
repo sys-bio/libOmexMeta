@@ -18,10 +18,6 @@ namespace redland {
 
     class LibrdfParser {
 
-        struct deleter {
-            void operator()(librdf_parser *parser);
-        };
-
         librdf_parser *parser_ = nullptr;
 
         void validateParserName() const;
@@ -46,7 +42,7 @@ namespace redland {
         explicit LibrdfParser(librdf_parser *parser);
 
         explicit LibrdfParser(std::string format, std::string mime_type = std::string(),
-                              std::string type_uri = std::string());
+                              const std::string& type_uri = std::string());
 
         [[nodiscard]] librdf_parser *get() const;
 

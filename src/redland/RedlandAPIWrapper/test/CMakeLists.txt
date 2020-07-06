@@ -1,3 +1,4 @@
+# set varibale to hold wrapper sources.
 set(REDLAND_WRAPPER_TEST_SOURCES
                 LibrdfWorldTests.cpp
                 LibrdfUriTests.cpp
@@ -12,33 +13,50 @@ set(REDLAND_WRAPPER_TEST_SOURCES
                 LibrdfStreamTests.cpp
         )
 
-
+# add test executable
 add_executable(redland-wrapper-tests ${REDLAND_WRAPPER_TEST_SOURCES})
-set_target_properties(redland-wrapper-tests PROPERTIES INSTALL_RPATH ${RPATH})#:$ORIGIN:/home/ciaran/vcpkg/installed/x64-linux/lib")
-set_target_properties(redland-wrapper-tests PROPERTIES BUILD_RPATH ${RPATH})
-#ignored on other platforms
-set_target_properties(redland-wrapper-tests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
-add_dependencies(redland-wrapper-tests redland-combined-static)
+
+# tell cmake about the test so we can run with $ctest or $ make test
 add_test(
         NAME redland-wrapper-tests
         COMMAND $<TARGET_FILE:redland-wrapper-tests>
 )
-set_tests_properties(redland-wrapper-tests PROPERTIES DEPENDS redland-combined-static)
+# tests_properties is apparently different to target properties
+set_tests_properties(redland-wrapper-tests PROPERTIES DEPENDS redland-wrapper-tests)
 
+# set the RPATH for both install and build builds
+set_target_properties(redland-wrapper-tests PROPERTIES INSTALL_RPATH ${RPATH})
+set_target_properties(redland-wrapper-tests PROPERTIES BUILD_RPATH ${RPATH})
 
+#ignored on other platforms
+set_target_properties(redland-wrapper-tests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
+# setup dependencies
+add_dependencies(redland-wrapper-tests redland-combined-static)
+
+# includes
 target_include_directories(redland-wrapper-tests PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${GOOGLETEST_SOURCE}/googletest/include
         ${INCLUDE_DIRECTORIES}
         )
 
+# links
 target_link_libraries(redland-wrapper-tests PRIVATE
         gtest gtest_main
         $<TARGET_FILE:redland-combined-static>
         ${LINK_LIBRARIES}
         )
 
+# install tests.
+install(
+        TARGETS redland-wrapper-tests
+        EXPORT redland-wrapper-tests
+        RUNTIME DESTINATION bin
+)
+
+
+# copies dependencies into build directory. Commented out for now, delete in future if definately not needed.
 #foreach (lib ${LIBRARIES})
 #    message(STATUS "copying ${lib} to ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 #    add_custom_command(TARGET redland-wrapper-tests POST_BUILD        # Adds a post-build event to MyTest
@@ -48,13 +66,6 @@ target_link_libraries(redland-wrapper-tests PRIVATE
 #endforeach ()
 
 
-add_dependencies(redland-wrapper-tests redland-combined-static)
-
-install(
-        TARGETS redland-wrapper-tests
-        EXPORT redland-wrapper-tests
-        RUNTIME DESTINATION bin
-)
 
 
 

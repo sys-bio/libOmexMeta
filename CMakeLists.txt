@@ -20,27 +20,30 @@ project(libOmexMeta VERSION "${LIBOMEXMETA_VERSION}")
 ######################################################
 # Load stuff
 
+# set the module path
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+
 # load the ExternalProject functions for superbuild
 include(ExternalProject)
 
 # load a custom function for determining the current platform
-include(${CMAKE_SOURCE_DIR}/cmake/DeterminePlatform.cmake)
+include(DeterminePlatform)
 
 # defines ${PLATFORM}
 DeterminePlatform()
 
 # defines a macro for locating the dependencies
-include(${CMAKE_SOURCE_DIR}/cmake/FindDependencies.cmake)
+include(FindDependencies)
 
 # defines a macro that allows easily setting of platform dependent values for a variable
-include(${CMAKE_SOURCE_DIR}/cmake/SetCrossPlatform.cmake)
+include(SetCrossPlatform)
 
 # defines a macro that prints out configuration summary
-include(${CMAKE_SOURCE_DIR}/cmake/ConfigurationSummary.cmake)
+include(ConfigurationSummary)
 
+# include some code for coverage configuration
+#include(CodeCoverage)
 
-# for coverage
-#include(${CMAKE_SOURCE_DIR}/cmake/CodeCoverage.cmake)
 ######################################################
 #   Set some variables
 #
@@ -71,10 +74,6 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 # export all on windows. Ignored on other.
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
-# set the module path
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
-
-
 ####################################################################
 # User options
 #
@@ -91,14 +90,14 @@ option(BUILD_DOCS "Build libomexmeta documentation" OFF)
 # build tests?
 SET(BUILD_TESTS OFF CACHE BOOL "build the tests")
 
-# number processes
-SET(N 8 CACHE STRING "number of cores to use for build. Passed onto -j for make")
-
 # verbose
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 option(WITH_SANITIZER "link with address sanitizer for memory debugging" OFF)
 if (WITH_SANITIZER)
+    if (NOT ${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+        message(FATAL_ERROR "The \"WITH_SANITIZER=ON\" option must be used in debug mode (an optimization issue)")
+    endif ()
     SET(ADDRESS_SANITIZER_FLAGS "-fsanitize=address")
     SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${ADDRESS_SANITIZER_LINK_FLAGS}")
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ADDRESS_SANITIZER_FLAGS}")
@@ -109,25 +108,18 @@ if (${WITH_BDB})
     add_definitions(-DWITH_BDB)
 endif ()
 
-option(SUPPRESS_CMAKE_WARNINGS ON)
-if (SUPPRESS_CMAKE_WARNINGS)
-    cmake_policy(SET CMP0022 OLD)
-endif ()
+# remove optimizations for Debug builds.
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
 
-# these flags prevent debugger from optimizing out information.
-# predumably this is a result of the fact I'm developing in release mode.
-# Too late now...
-message(WARNING "Removing optimization. You will want to comment these
- lines out once finished with debugging")
-if (PLATFORM STREQUAL "linux")
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
-    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_DEBUG} -O0")
-    set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_DEBUG} -O0")
-endif ()
+# set optimizations to highest level for Release builds
+#  and add -g -> instructs compiler to generate and retain
+#  source level debug information.
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Os -g")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Os -g")
 
+# run the tests and generate coverage output
 option(WITH_COVERAGE OFF)
-
 
 # set RPATH for libraries and executables.
 set(RPATH "$ORIGIN:$ORIGIN/../lib")
@@ -135,10 +127,9 @@ set(RPATH "$ORIGIN:$ORIGIN/../lib")
 
 ############################################################3
 # configure some paths relative to vcpkg root
-set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its D:\\vcpkg")
+set(VCPKG_ROOT "D:/vcpkg" CACHE STRING "Absolute path to root vcpkg directory. On mine its \"D:\\vcpkg\" on windows and \"/home/ciaran/vcpkg\" on WSL (Ubuntu)")
 if (NOT EXISTS ${VCPKG_ROOT})
-    message(FATAL_ERROR "vcpkg root not found (${VCPKG_ROOT}). Remember to \
-add /mnt/<driveletter> on wsl (like \"/mnt/d/vcpkg\")")
+    message(FATAL_ERROR "vcpkg root not found (${VCPKG_ROOT})")
 endif ()
 
 set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Path to vcpkg toolchain file")
@@ -230,7 +221,7 @@ if (PLATFORM STREQUAL "windows-msvc")
             "${POSTGRESQL_STATIC_LIBRARY}"
             ws2_32 # needed on windows to statically link libxml2
             )
-    # moreover, on windows it was much easier to just
+    # on windows it was much easier to just
     # set up to link to dynamic versions of libraries.
     # I tried to pull all into a single static library
     # but this proved too faffy.
@@ -243,12 +234,12 @@ if (PLATFORM STREQUAL "windows-msvc")
     endif ()
 
 elseif (PLATFORM STREQUAL "linux")
-    # But on linux, order is essential.
+    # On linux, order is essential.
     # if A depends on B, A must come before B in this list.
     # On linux, I pulled as many libraries as possible
     # into a static library. This was not possible with a few
-    # for strange and unusual reasons which are explainable only
-    # by the programming gods.
+    # for strange and unusual reasons which only the programming gods
+    # can explain.
     set(LINK_LIBRARIES
             ${LIBXML2_LIBRARY} # dynamic
             ${LIBXSLT_LIBRARY} # dynamic
@@ -317,20 +308,31 @@ set(INCLUDE_DIRECTORIES
         )
 
 #############################################
-# add src directory to include targets and tests
+# Build libOmexMeta targets and tests
 
 # source directories
 add_subdirectory(src)
 
 # test directories
 if (BUILD_TESTS)
+    # allows collecting tests using add_test
     enable_testing()
+
+    # collected tests can be run conveniently together using the command `ctest` from terminal
+    # but we create a custom target which does the same.
     add_custom_target(ctest COMMAND ${CMAKE_CTEST_COMMAND})
 
+    # include googletest as source
     add_subdirectory(${GOOGLETEST_SOURCE})
+
+    # add the tests
     add_subdirectory(tests/cpp)
 
     if (WITH_COVERAGE)
+        if (NOT ${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+            message(FATAL_ERROR "\"WITH_COVERAGE=ON\" must only be used in debug mode because compiler optimizations in release mode will bias coverage results")
+        endif ()
+
         set(GCOVR_PATH "/home/ciaran/miniconda3/bin/gcovr" CACHE FILEPATH "Full path to gcovr")
         if (NOT GCOVR_PATH)
             message(FATAL_ERROR "gcovr variable GCOVR_PATH (${GCOVR_PATH}) is empty")
@@ -367,11 +369,14 @@ if (BUILD_TESTS)
                     EXECUTABLE ctest -j 8
                     DEPENDENCIES ctest
             )
-        endif ()
+        else ()
+            message(FATAL_ERROR "Coverage only available using gcov with gcc compilers")
+        endif (CMAKE_COMPILER_IS_GNUCXX)
         # need different code for windows.
-    endif ()
+    endif (WITH_COVERAGE)
 endif (BUILD_TESTS)
 
+# build documentation.
 if (BUILD_DOCS)
     add_subdirectory(docs)
 endif ()

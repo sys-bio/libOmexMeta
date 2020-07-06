@@ -1,34 +1,36 @@
 # Note: This is the only cmakelists.txt for the redland combined that is used
 # in the libOmexMeta project. The individual redland packages do have their
-# own cmake script, but these are for building the package alone. This
-# cmake script puts all these libraries together and treats them as a single module.
+# own cmake script, but these are for building each of the redland libraries alone. In this
+# cmake script we pull the redland libraries into a single library along with some
+# C++ wrapper code, which I wrote myself.
+# todo: consider moving the wrapper code to the main repository.
 
 project(redland-libraries-combined)
 
 ##################################################################################
-#       definitions, configuations
+#    set some variables
 #
 
 SET(RAPTOR_DIR ${CMAKE_CURRENT_SOURCE_DIR}/raptor2-2.0.15)
 SET(RASQAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/rasqal-0.9.33)
 SET(LIBRDF_DIR ${CMAKE_CURRENT_SOURCE_DIR}/redland-1.0.17)
+SET(WRAPPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RedlandAPIWrapper)
 
 SET(RAPTOR_SOURCE_DIR ${RAPTOR_DIR}/src)
 SET(RASQAL_SOURCE_DIR ${RASQAL_DIR}/src)
 SET(LIBRDF_SOURCE_DIR ${LIBRDF_DIR}/src)
-
-SET(WRAPPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/RedlandAPIWrapper)
 SET(WRAPPER_SOURCE_DIR ${WRAPPER_DIR}/src)
+
+# directory of the wrapper tests
 SET(WRAPPER_TEST_DIR ${WRAPPER_DIR}/test)
 
 # set directory for librdf storage/cache. only used when not specified by user
-#  which it is in the context of libomexmeta
+#  which it is in the context of libomexmeta. I'm not sure about this.
 set(PKGDATADIR $ENV{HOME}/.librdf_package_data_dir)
 #file(MAKE_DIRECTORY ${PKGDATADIR})
 
 # used by redland to store storage modules - still experimental
 #  and not exactly sure how to use
-#set(REDLAND_MODULE_PATH "$ENV{HOME}/.redland_modules")
 set(REDLAND_MODULE_PATH "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 add_definitions(
         -DREDLAND_MODULE_PATH="${REDLAND_MODULE_PATH}"
@@ -50,7 +52,6 @@ add_definitions(-DHAVE_CONFIG_H
 
 # files to configure - This overwrites the configuration generated from automate system
 #  which I have modified manually. Do not uncomment but keep as a record of what was done.
-#note: the copasi-dependencies configures a cmake script to do this. Kind of.
 #configure_file(${RAPTOR_DIR}/src/raptor_config_cmake.h.in raptor2-2.0.15/src/raptor_config.h @ONLY)
 #configure_file(${RAPTOR_DIR}/src/raptor2.h.in ${RAPTOR_DIR}/src/raptor2.h @ONLY)
 #configure_file(${RASQAL_DIR}/src/rasqal_config.h.in ${RASQAL_DIR}/src/rasqal_config.h)
@@ -61,11 +62,15 @@ add_definitions(-DHAVE_CONFIG_H
 #       Sources
 #
 
-# There is some redundancy regarding which files implement certain features
-#  Sometimes I've commented out a feature in favour of one that does the same job.
-#  Best to leave these commented out.
+# The redland libraries are highly modular. Sometimes there are redundancies
+# in these modules. For instance, there are 3 libraries that can be used to implement
+# integer types or 2 libraries that can be used for regexes.
+# Sometimes I've commented out a feature in favour of one that does the same job.
+# Best to leave these commented out incase we want to change later.
 
 
+# I'm not sure whether these sources are actually used but they are
+# not causing any harm where they are.
 set(RAPTOR_LIBRDFA_SOURCES
         ${RAPTOR_DIR}/librdfa/config.h
         ${RAPTOR_DIR}/librdfa/context.c
@@ -84,6 +89,7 @@ set(RAPTOR_LIBRDFA_SOURCES
         ${RAPTOR_DIR}/librdfa/triple.c
         )
 
+# define raptor_sources
 set(RAPTOR_SOURCES
         ${RAPTOR_LIBRDFA_SOURCES}
         ${RAPTOR_SOURCE_DIR}/raptor.h
@@ -395,14 +401,18 @@ add_library(redland-combined-static STATIC
         ${WRAPPER_SOURCES}
         )
 
+# ensure PIC is on for linux builds. Ignored on windows
 set_target_properties(redland-combined-static PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+# set runtime to MultiThreaded for static .lib build on windows. Ignored on other systems.
 set_target_properties(redland-combined-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
+# includes
 target_include_directories(redland-combined-static PUBLIC
         ${INCLUDE_DIRECTORIES}
-        D:/vcpkg/installed/x64-windows/include
         )
 
+# set runtime library on windows, which is different between debug and release.
 if (PLATFORM STREQUAL "windows-msvc")
     if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
         set(RUNTIME "libucrtd")
@@ -411,20 +421,11 @@ if (PLATFORM STREQUAL "windows-msvc")
     endif ()
 endif ()
 
+# link libraries
 target_link_libraries(redland-combined-static PUBLIC
         ${LINK_LIBRARIES}
         ${RUNTIME}# best here so no clash with dynamic
         )
-
-
-#set_target_properties(redland-combined-static PROPERTIES PUBLIC_HEADER
-#        "${RAPTOR_DIR}/src/raptor2.h"
-#        "${RASQAL_DIR}/src/rasqal.h"
-#        "${LIBRDF_DIR}/src/librdf.h"
-#        )
-
-# copy to build/bin after build
-#add_custom_command(TARGET redland-combined-static)
 
 # install redland headers
 install(FILES
@@ -433,6 +434,7 @@ install(FILES
         "${LIBRDF_DIR}/src/librdf.h"
         DESTINATION include/redland)
 
+# install redland static target
 INSTALL(
         TARGETS redland-combined-static
         ARCHIVE DESTINATION lib
@@ -440,16 +442,19 @@ INSTALL(
         RUNTIME DESTINATION bin
 )
 
-if (${BUILD_TESTS})
+# When BUILD_TESTS is on, add the tests
+if (BUILD_TESTS)
     add_subdirectory(RedlandAPIWrapper/test)
 endif ()
 
 # On windows I run into trouble trying to link to
 # static redland-combined. Its easier on windows
-# to build a dynamic library and link that
+# to build a dynamic library and link that. Its not used
+# on linux, (but certainly could be)
 
 if (BUILD_SHARED_LIBS)
 
+    # add the shared library
     add_library(redland-combined SHARED
             ${RAPTOR_SOURCES}
             ${RASQAL_SOURCES}
@@ -457,35 +462,32 @@ if (BUILD_SHARED_LIBS)
             ${WRAPPER_SOURCES}
             )
 
+    # ensure pic is on for linux builds
     set_target_properties(redland-combined PROPERTIES POSITION_INDEPENDENT_CODE ON)
-    if (PLATFORM STREQUAL "Debug")
-        set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDll")
-    elseif (PLATFORM STREQUAL "Release")
-        set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDll")
-    endif ()
 
-    target_include_directories(redland-combined PUBLIC
-            ${INCLUDE_DIRECTORIES}
-            D:/vcpkg/installed/x64-windows/include
-            )
-
+    # set runtime library
     if (PLATFORM STREQUAL "windows-msvc")
         if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+            set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDll")
             set(RUNTIME "ucrtd")
         elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
             set(RUNTIME "ucrt")
+            set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDll")
         endif ()
     endif ()
 
-    target_link_libraries(redland-combined PUBLIC
-            ${LINK_LIBRARIES}
-            #            ${RUNTIME}
+    # includes
+    target_include_directories(redland-combined PUBLIC
+            ${INCLUDE_DIRECTORIES}
             )
 
-    #    set_target_properties(redland-combined PROPERTIES PUBLIC_HEADER
-    #            )
+    # links
+    target_link_libraries(redland-combined PUBLIC
+            ${LINK_LIBRARIES}
+            # ${RUNTIME} # I'm not sure why is isn't needed, but I've been building without it.
+            )
 
-
+    # install shared library into standard locations.
     install(TARGETS redland-combined)
 
 endif ()

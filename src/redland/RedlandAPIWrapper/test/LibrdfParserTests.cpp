@@ -7,7 +7,7 @@
 #include "LibrdfParser.h"
 #include "iostream"
 #include "filesystem"
-
+#include "filesystem"
 //#include "AnnotationSamples.h"
 
 using namespace redland;
@@ -132,8 +132,40 @@ TEST_F(LibrdfParserTests, TestParserFromUrl) {
     model.freeModel();
 
     // parser releases itself
-
 }
+
+TEST_F(LibrdfParserTests, TestBaseUri) {
+    std::string input = "<?xml version=\"1.0\"?>\n"
+                        "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                        "     xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
+                        "     xml:base=\"https://www.dajobe.org/net/this/is/the/base\">\n"
+                        "  <rdf:Description rdf:about=\"#dajobe\">\n"
+                        "    <dc:title>Dave Beckett's Home Page</dc:title>\n"
+                        "    <dc:creator>Dave Beckett</dc:creator>\n"
+                        "    <dc:description>The generic home page of Dave Beckett.</dc:description>\n"
+                        "  </rdf:Description> \n"
+                        "</rdf:RDF>";
+    std::filesystem::path storage_fname = std::filesystem::current_path() /= "LibrdfParserTests_TestBaseUri.db";
+    LibrdfStorage storage("sqlite", storage_fname.string(), "new='yes'");
+    LibrdfModel model(storage.get());
+    LibrdfParser parser("rdfxml");
+    parser.parseString(input, model, "LibrdfParserTests_TestBaseUri");
+    std::cout << storage_fname << std::endl;
+
+    std::string expected = "https://www.dajobe.org/net/this/is/the/base#dajobe";
+    librdf_stream* stream = librdf_model_as_stream(model.get());
+    LibrdfStatement stmt = LibrdfStatement::fromRawStatementPtr(librdf_stream_get_object(stream));
+    auto s = LibrdfNode(stmt.getSubject());
+    std::string actual = s.str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+
+    librdf_free_stream(stream);
+    stmt.freeStatement();
+    s.freeNode();
+    model.freeModel();
+    storage.freeStorage();
+}
+
 
 
 

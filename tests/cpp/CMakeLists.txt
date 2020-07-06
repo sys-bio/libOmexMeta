@@ -1,7 +1,6 @@
 ###########################################################################
 #   Sources for tests
 #
-enable_testing()
 
 set(TEST_SOURCES
         SBMLFactory.h
@@ -31,29 +30,21 @@ set(TEST_SOURCES
         CAPITests.cpp
         )
 
-# build googletest executable
+# build test executable
 add_executable(OmexMetaTests ${TEST_SOURCES})
-set_target_properties(OmexMetaTests PROPERTIES INSTALL_RPATH ${RPATH})#:$ORIGIN:/home/ciaran/vcpkg/installed/x64-linux/lib")
+# set RPATH for both install and build builds
+set_target_properties(OmexMetaTests PROPERTIES INSTALL_RPATH ${RPATH})
 set_target_properties(OmexMetaTests PROPERTIES BUILD_RPATH ${RPATH})
+
+# add test so it can be run with $ctest or $make test
 add_test(
         NAME OmexMetaTests
         COMMAND $<TARGET_FILE:OmexMetaTests>
 )
 set_tests_properties(OmexMetaTests PROPERTIES DEPENDS OmexMeta)
-
-#if (CMAKE_COMPILER_IS_GNUCXX)
-#    setup_target_for_coverage_gcovr_html(
-#            NAME OmexMetaCoverage
-#            EXECUTABLE $<TARGET_FILE:OmexMetaTests>
-#            DEPENDENCIES $<TARGET_FILE:OmexMetaTests>)
-#endif ()
-
-if (NOT ${PLATFORM} STREQUAL "window-msvc")
-    target_compile_options(OmexMetaTests PRIVATE -g)
-endif ()
-
 add_dependencies(OmexMetaTests OmexMeta-static)
 
+# links
 target_link_libraries(OmexMetaTests PUBLIC
         # Order matters!
         $<TARGET_FILE:OmexMeta-static>
@@ -62,14 +53,7 @@ target_link_libraries(OmexMetaTests PUBLIC
         gtest gtest_main
         )
 
-#foreach (lib ${LIBRARIES_DLL})
-#    add_custom_command(TARGET OmexMetaTests POST_BUILD        # Adds a post-build event to MyTest
-#            COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
-#            "${lib}"      # <--this is in-file
-#            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ")
-#endforeach ()
-
-
+#includes
 target_include_directories(OmexMetaTests PRIVATE
         ${GOOGLETEST_SOURCE}/googletest/include
         ${INCLUDE_DIRECTORIES}
@@ -84,6 +68,12 @@ install(
         RUNTIME DESTINATION bin
 )
 
+#foreach (lib ${LIBRARIES_DLL})
+#    add_custom_command(TARGET OmexMetaTests POST_BUILD        # Adds a post-build event to MyTest
+#            COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
+#            "${lib}"      # <--this is in-file
+#            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ")
+#endforeach ()
 
 
 

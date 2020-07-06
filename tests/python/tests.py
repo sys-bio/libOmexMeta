@@ -821,9 +821,12 @@ end"""
                     .set_predicate("bqb", "is")\
                     .set_resource_uri("uniprot:PD12345")
                 # note: not sure which predicate to use.
+        print(rdf)
 
-        rdf2 = RDF.from_string(str(rdf))
-        print(rdf2.to_string("turtle", "turtle_syntax.rdf"))
+
+
+        # rdf2 = RDF.from_string(str(rdf))
+        # print(rdf2.to_string("turtle", "turtle_syntax.rdf"))
 
 
 
