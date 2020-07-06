@@ -99,8 +99,8 @@ if (WITH_SANITIZER)
         message(FATAL_ERROR "The \"WITH_SANITIZER=ON\" option must be used in debug mode (an optimization issue)")
     endif ()
     SET(ADDRESS_SANITIZER_FLAGS "-fsanitize=address")
-    SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${ADDRESS_SANITIZER_LINK_FLAGS}")
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ADDRESS_SANITIZER_FLAGS}")
+    SET(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG} ${ADDRESS_SANITIZER_LINK_FLAGS}")
+    SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${ADDRESS_SANITIZER_FLAGS}")
 endif ()
 
 option(WITH_BDB "build user suport for berkely database" ON)
@@ -343,8 +343,9 @@ if (BUILD_TESTS)
             append_coverage_compiler_flags()
 
             # we need to turn off optimization for non-skewed coverage reports
-            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
-            set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0")
+            # we've done this in debug mode so we do not need to do it ehere
+#            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
+#            set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0")
 
             # optional excludes - None needed here
             set(COVERAGE_EXCLUDES

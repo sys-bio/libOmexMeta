@@ -41,7 +41,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSubjectMetaidNode) {
             {SourceParticipant(
                     model.get(),
                     1.0,
-                    "PhysicalEntityReference1"
+                    "#PhysicalEntityReference1"
             )}
     );
     std::vector<SinkParticipant> sink_participants(
@@ -84,7 +84,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessSource) {
             {SourceParticipant(
                     model.get(),
                     1.0,
-                    "PhysicalEntityReference1"
+                    "#PhysicalEntityReference1"
             )}
     );
     std::vector<SinkParticipant> sink_participants(
@@ -129,7 +129,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessNumTriples) {
                     {SourceParticipant(
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference1"
+                            "#PhysicalEntityReference1"
                     )}
             ),
             std::vector<SinkParticipant>(
@@ -167,7 +167,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessTrips) {
                     {SourceParticipant(
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference1"
+                            "#PhysicalEntityReference1"
                     )}
             ),
             std::vector<SinkParticipant>(
@@ -203,7 +203,7 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
 
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference1"
+                            "#PhysicalEntityReference1"
                     )}
             ),
             std::vector<SinkParticipant>(
@@ -231,24 +231,24 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessToTriplesStr) {
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"MediatorParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"#MediatorParticipant0000\">\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference3\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"PhysicalProcess0000\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorParticipant0000\"/>\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceParticipant0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"#PhysicalProcess0000\">\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"#MediatorParticipant0000\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"#SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"#SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"#SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SourceParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"#SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"#PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"metaid\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"#PhysicalProcess0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
@@ -274,26 +274,26 @@ TEST_F(PhysicalProcessTests, TestPhysicalProcessBuilder1) {
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"MediatorParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"#MediatorParticipant0000\">\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid2\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"PhysicalProcess0000\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorParticipant0000\"/>\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceParticipant0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"#PhysicalProcess0000\">\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"#MediatorParticipant0000\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"#SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"#SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"#SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid2\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SourceParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"#SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">2</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid0\"/>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"species_metaid1\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"property_metaid_0\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalProcess0000\"/>\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"#PhysicalProcess0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/opb/OPB_00592\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"

@@ -59,7 +59,7 @@ TEST_F(ParticipantTests, TestSinkParticipantMakMetaid) {
     SinkParticipant sink(model.get(), 1.0, "MetaId0015");
     std::string actual = sink.createMetaid("SinkParticipant");
     std::cout << actual << std::endl;
-    std::string expected = "SinkParticipant0000";
+    std::string expected = "#SinkParticipant0000";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     sink.free();
 }
@@ -122,12 +122,12 @@ TEST_F(ParticipantTests, TestToTriples1) {
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"#SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"metaid\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"#SinkParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -144,11 +144,11 @@ TEST_F(ParticipantTests, TestToTriplesWhenMultiplierIs0) {
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"#SinkParticipant0000\">\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"metaid\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"#SinkParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -165,11 +165,11 @@ TEST_F(ParticipantTests, TestToTriplesMediator) {
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"MediatorParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"#MediatorParticipant0000\">\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"MetaId0015\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"metaid\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"MediatorParticipant0000\"/>\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"#MediatorParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());

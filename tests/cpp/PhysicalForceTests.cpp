@@ -40,7 +40,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceSubjectMetaidNode) {
             {SourceParticipant(
                     model.get(),
                     1.0,
-                    "PhysicalEntityReference1"
+                    "#PhysicalEntityReference1"
             )}
     );
     std::vector<SinkParticipant> sink_participants(
@@ -81,7 +81,7 @@ TEST_F(PhysicalForceTests, TestPhysicalProperty1) {
     std::vector<SourceParticipant> source_participants({SourceParticipant(
             model.get(),
             1.0,
-            "PhysicalEntityReference1"
+            "#PhysicalEntityReference1"
     )});
     std::vector<SinkParticipant> sink_participants(
             {SinkParticipant(
@@ -111,7 +111,7 @@ TEST_F(PhysicalForceTests, TestPhysicalProperty2) {
     std::vector<SourceParticipant> source_participants({SourceParticipant(
             model.get(),
             1.0,
-            "PhysicalEntityReference1"
+            "#PhysicalEntityReference1"
     )});
     std::vector<SinkParticipant> sink_participants(
             {SinkParticipant(
@@ -145,7 +145,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceNumTriples) {
                     {SourceParticipant(
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference1"
+                            "#PhysicalEntityReference1"
                     )}
             ),
             std::vector<SinkParticipant>(
@@ -174,7 +174,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTrips) {
                     {SourceParticipant(
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference1"
+                            "#PhysicalEntityReference1"
                     )}
             ),
             std::vector<SinkParticipant>(
@@ -202,7 +202,7 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
                     {SourceParticipant(
                             model.get(),
                             1.0,
-                            "PhysicalEntityReference1"
+                            "#PhysicalEntityReference1"
                     )}
             ),
             std::vector<SinkParticipant>(
@@ -221,20 +221,20 @@ TEST_F(PhysicalForceTests, TestPhysicalForceTriples) {
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"PhysicalForce0000\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceParticipant0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"#PhysicalForce0000\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"#SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"#SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"#SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SourceParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"#SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"#PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
                            "  <rdf:Description rdf:about=\"metaid\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalForce0000\"/>\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"#PhysicalForce0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n"
@@ -251,7 +251,7 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
     //todo considering implementing the builder as a composite builder
     force
             .setPhysicalProperty("Force5", "OPB:OPB_00340")
-            .addSource(1, "PhysicalEntityReference1")
+            .addSource(1, "#PhysicalEntityReference1")
             .addSink(2, "PhysicalEntityReference2")
             .addSink(1, "PhysicalEntityReference3");
 
@@ -263,26 +263,25 @@ TEST(PhysicalForceTestsNoFixture, TestPhysicalForceBuilder) {
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
                            "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"Force5\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"PhysicalForce0000\"/>\n"
-                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
+                           "  <rdf:Description rdf:about=\"#PhysicalForce0000\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"#SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"#SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"PhysicalForce0000\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"SinkParticipant0000\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"SourceParticipant0000\"/>\n"
-                           "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SinkParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"#SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">2</semsim:hasMultiplier>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference2\"/>\n"
                            "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference3\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"SourceParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"#SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"PhysicalEntityReference1\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"#PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
-                           "";
+                           "  <rdf:Description rdf:about=\"Force5\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"#PhysicalForce0000\"/>\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB_00340\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triples.freeTriples();
@@ -294,7 +293,7 @@ TEST(PhysicalForceTestsNoFixture, TestGenerateTheSamePhysicalForceTwice) {
     PhysicalForce force(rdf.getModel());
     //todo considering implementing the builder as a composite builder
     force.setPhysicalProperty("Force5", "OPB:OPB_00340")
-            .addSource(1, "PhysicalEntityReference1")
+            .addSource(1, "#PhysicalEntityReference1")
             .addSink(2, "PhysicalEntityReference2")
             .addSink(1, "PhysicalEntityReference3");
 

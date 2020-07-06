@@ -17,6 +17,13 @@ semsim::MetaID::MetaID(std::string base, long number, int num_digits) :
                    " is " << maxNumber() << ". Please increase the num_digits_ argument." << std::endl;
         throw std::invalid_argument(err_stream.str());
     }
+
+    // Uri's relative to base uri, like the ones were generating with these
+    // metaids should start with a hash symbol #. Raptor then interprets them
+    // as relative to the base uri.
+    if (base_.at(0) != '#'){
+        base_ = "#" + base_;
+    }
 }
 
 bool semsim::MetaID::operator==(const semsim::MetaID &rhs) const {
