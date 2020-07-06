@@ -90,6 +90,10 @@ TEST_F(LibrdfModelTests, TestRemoveStatement) {
     statement2.freeStatement();
 }
 
+TEST_F(LibrdfModelTests, TestContext) {
+    LibrdfModel model(LibrdfStorage("file").get());
+    ASSERT_FALSE(model.supportsContexts());
+}
 
 
 

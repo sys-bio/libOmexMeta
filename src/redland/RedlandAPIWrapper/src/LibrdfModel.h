@@ -80,6 +80,8 @@ namespace redland {
         int getTransactionRollback() const;
 
         void addStatement(const librdf_statement &statement) const;
+
+        int supportsContexts() const;
     };
 }
 

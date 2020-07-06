@@ -17,10 +17,6 @@ namespace redland {
             : model_(model) {
     }
 
-//    LibrdfModel::~LibrdfModel() {
-//        freeModel();
-//    }
-
     LibrdfModel::LibrdfModel(LibrdfModel &&model) noexcept {
         if (model.model_ != nullptr) {
             if (model_ != nullptr)
@@ -53,9 +49,7 @@ namespace redland {
 
 
     void LibrdfModel::addStatement(const LibrdfStatement &statement) const {
-//        std::cout << "Experimental free statement here2" << std::endl;
         librdf_model_add_statement(get(), statement.get());
-//        librdf_free_statement(statement.get());
     }
 
     void LibrdfModel::addStatement(librdf_statement *statement) const {
@@ -131,6 +125,10 @@ namespace redland {
 
     int LibrdfModel::getTransactionRollback() const {
         return librdf_model_transaction_rollback(get());
+    }
+
+    int LibrdfModel::supportsContexts() const {
+        return librdf_model_supports_contexts(get());
     }
 
 }
