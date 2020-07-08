@@ -22,7 +22,7 @@
 
 using namespace redland;
 
-namespace semsim {
+namespace omexmeta {
 
     class SemsimUtils {
     public:

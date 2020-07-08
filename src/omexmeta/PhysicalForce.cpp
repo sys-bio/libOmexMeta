@@ -9,7 +9,7 @@
 #include <utility>
 
 
-namespace semsim {
+namespace omexmeta {
 
     PhysicalForce::PhysicalForce(librdf_model *model,
                                  PhysicalProperty physicalProperty,
@@ -124,8 +124,8 @@ namespace semsim {
     }
 
     bool PhysicalForce::operator==(const PhysicalForce &rhs) const {
-        return static_cast<const semsim::PhysicalPhenomenon &>(*this) ==
-               static_cast<const semsim::PhysicalPhenomenon &>(rhs) &&
+        return static_cast<const omexmeta::PhysicalPhenomenon &>(*this) ==
+               static_cast<const omexmeta::PhysicalPhenomenon &>(rhs) &&
                sources_ == rhs.sources_ &&
                sinks_ == rhs.sinks_;
     }

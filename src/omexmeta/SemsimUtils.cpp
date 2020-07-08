@@ -3,7 +3,7 @@
 //
 #include "SemsimUtils.h"
 
-namespace semsim {
+namespace omexmeta {
 
     bool SemsimUtils::exists(const std::string &filename) {
         struct stat buffer{};

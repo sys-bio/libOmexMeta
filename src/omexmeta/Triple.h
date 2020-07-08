@@ -26,7 +26,7 @@ using namespace redland;
  * should inherit from librdf_statement?
  */
 
-namespace semsim {
+namespace omexmeta {
 
     class Triple : public LibrdfStatement {
 
@@ -54,7 +54,8 @@ namespace semsim {
          * a triple only.
          */
         std::string
-        str(const std::string &format = "rdfxml-abbrev", const std::string &base = "annotations.rdf") const;
+        str(const std::string &format = "rdfxml-abbrev",
+                const std::string &base = std::filesystem::current_path() /=  "annotations.rdf") const;
 
         void freeTriple();
 

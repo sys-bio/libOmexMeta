@@ -3,7 +3,7 @@
 //
 #include "Triples.h"
 
-namespace semsim {
+namespace omexmeta {
 
 
     Triples::Triples() = default;
@@ -132,8 +132,8 @@ namespace semsim {
             Predicate::addSeenNamespaceToSerializer(world, serializer, it.getPredicate());
         }
 
+        librdf_uri *base_uri = librdf_new_uri(world,(const unsigned char*) SemsimUtils::addFilePrefixToString(base).c_str());
         // do the serializing
-        librdf_uri *base_uri = librdf_new_uri(world, (const unsigned char *) base.c_str());
         unsigned char *string = librdf_serializer_serialize_model_to_string(serializer, base_uri, model);
         std::string str = (const char *) string;
 

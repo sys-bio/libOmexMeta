@@ -8,7 +8,7 @@
 
 #include "RedlandAPIWrapper.h"
 
-using namespace semsim;
+using namespace omexmeta;
 
 class ResourceTests : public ::testing::Test {
 public:

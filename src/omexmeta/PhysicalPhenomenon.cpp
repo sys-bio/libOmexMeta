@@ -7,7 +7,7 @@
 #include <utility>
 
 
-namespace semsim {
+namespace omexmeta {
 
     PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, PhysicalProperty propertyResource, AnnotationType type)
             : model_(model), physical_property_(std::move(propertyResource)), type_(type) {}

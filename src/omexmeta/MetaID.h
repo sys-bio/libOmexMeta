@@ -11,7 +11,7 @@
 #include <utility>
 #include <iostream>
 
-namespace semsim {
+namespace omexmeta {
     /*
      * @brief an ID generator
      */

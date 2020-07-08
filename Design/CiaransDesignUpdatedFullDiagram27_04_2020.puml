@@ -6,7 +6,7 @@
 
 /' Objects '/
 
-namespace semsim {
+namespace omexmeta {
 
 	class BiomodelsBiologyQualifier {
 		+BiomodelsBiologyQualifier()
@@ -63,7 +63,7 @@ namespace semsim {
 
 
 	class Editor {
-		+Editor(const std::string& xml, SemsimXmlType type, librdf_world* world, librdf_model* model, semsim::NamespaceMap ns_map)
+		+Editor(const std::string& xml, SemsimXmlType type, librdf_world* world, librdf_model* model, omexmeta::NamespaceMap ns_map)
 		+getNamespaces() : NamespaceMap& {query}
 		-triples_ : NestedTriples
 		+getTripleList() : NestedTriples& {query}
@@ -86,7 +86,7 @@ namespace semsim {
 		+checkValidMetaid(const std::string& metaid) : void
 		-extractNamespacesFromTriplesVector(Triples triples) : void
 		+removeAnnotation() : void
-		+setNamespaces(semsim::NamespaceMap namespaces) : void
+		+setNamespaces(omexmeta::NamespaceMap namespaces) : void
 		+toRDF() : void
 	}
 
@@ -186,7 +186,7 @@ namespace semsim {
 		+getLocationResources() : Resources& {query}
 		+what() : Triple {query}
 		+toTriples() : Triples {query}
-		+where() : semsim::Triples {query}
+		+where() : omexmeta::Triples {query}
 		-{static} metaid_ : static std::vector<MetaID>
 		+createMetaId(librdf_model* model, std::string base_metaid) : std::string {query}
 	}
@@ -310,10 +310,10 @@ namespace semsim {
 		-world_ : librdf_world*
 		+getRaptorWorld() : raptor_world* {query}
 		-raptor_world_ : raptor_world*
-		-namespaces_ : semsim::NamespaceMap
-		+{static} fromXML(const std::string& filename, std::string format) : semsim::RDF
-		+query(std::string query_str, std::string query_format, std::string results_mime_type) : semsim::RDF
-		-makeWriter(const std::string& format) : semsim::Writer
+		-namespaces_ : omexmeta::NamespaceMap
+		+{static} fromXML(const std::string& filename, std::string format) : omexmeta::RDF
+		+query(std::string query_str, std::string query_format, std::string results_mime_type) : omexmeta::RDF
+		-makeWriter(const std::string& format) : omexmeta::Writer
 		+{static} listOptions() : std::ostringstream
 		+getBaseUriAsString() : std::string {query}
 		+toString(const std::string& format, std::string base_uri) : std::string
@@ -444,7 +444,7 @@ namespace semsim {
 
 	class SemsimCombineArchive {
 		+{static} fromFile(const std::string& file) : SemsimCombineArchive
-		+{static} fromUrl(const std::string& url, const std::string& output_filename) : semsim::SemsimCombineArchive
+		+{static} fromUrl(const std::string& url, const std::string& output_filename) : omexmeta::SemsimCombineArchive
 		+CombineArchive : using CombineArchive::
 	}
 

@@ -50,7 +50,7 @@ using namespace redland;
  * Any questions, just lemme know.
  */
 
-namespace semsim {
+namespace omexmeta {
 
     typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
@@ -63,6 +63,7 @@ namespace semsim {
         std::string xml_;
         std::vector<std::string> metaids_;
         const LibrdfModel &model_;
+        bool create_ids_ = false;
         std::unordered_map<std::string, std::string> &namespaces_;
 
         void extractNamespacesFromTriplesVector(PhysicalPhenomenon* pp);
@@ -86,7 +87,7 @@ namespace semsim {
          * the user chooses cellml the elements returned by CellMLAssistant::getValidElements()
          * are used. If the type is unknown, then all elements are given metaids.
          */
-        explicit Editor(const std::string &xml, SemsimXmlType type,
+        explicit Editor(const std::string &xml, SemsimXmlType type, bool create_ids,
                         const LibrdfModel &model, NamespaceMap &ns_map);
 
         /*
@@ -226,7 +227,6 @@ namespace semsim {
 
         PhysicalProcess createPhysicalProcess();
 
-
         void addSingleAnnotationNoValidation(SingularAnnotation &singularAnnotation);
 
         void addCompositeAnnotation2(PhysicalPhenomenon *phenomenonPtr);
@@ -236,6 +236,10 @@ namespace semsim {
         void addTriples(Triples &triples);
 
         void removePhysicalPhenomenon(PhysicalPhenomenon *physicalPhenomenon) const;
+
+        void addAuthor(const std::string& orcid_id);
+
+        void addCurator(const std::string &orcid_id);
     };
 
 }

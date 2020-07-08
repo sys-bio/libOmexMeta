@@ -16,12 +16,12 @@ class QueryTests : public ::testing::Test {
 public:
 
     AnnotationSamples samples;
-    semsim::RDF rdf;
+    omexmeta::RDF rdf;
 
     std::string q;
 
     QueryTests() {
-        rdf = semsim::RDF::fromString(
+        rdf = omexmeta::RDF::fromString(
                 samples.singular_annotation2
         );
 
@@ -39,7 +39,7 @@ public:
 
 
 TEST_F(QueryTests, TestStr) {
-    semsim::Query query(rdf.getModel(), q);
+    omexmeta::Query query(rdf.getModel(), q);
     std::string actual = query.resultsAsStr("csv");
     std::string expected = "x,y,z\r\n"
                            "file://./MyModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\r\n";
@@ -48,7 +48,7 @@ TEST_F(QueryTests, TestStr) {
 }
 
 TEST_F(QueryTests, TestRunQueryTwice) {
-    semsim::Query query(rdf.getModel(), q);
+    omexmeta::Query query(rdf.getModel(), q);
     query.runQuery();
     std::string actual = query.resultsAsStr("csv");
     std::string expected = "x,y,z\r\n"
@@ -58,8 +58,8 @@ TEST_F(QueryTests, TestRunQueryTwice) {
 }
 
 TEST_F(QueryTests, TestgetResultsAsMap) {
-    semsim::Query query(rdf.getModel(), q);
-    semsim::ResultsMap resultsMap = query.resultsAsMap();
+    omexmeta::Query query(rdf.getModel(), q);
+    omexmeta::ResultsMap resultsMap = query.resultsAsMap();
     std::string expected = "http://biomodels.net/model-qualifiers/isDescribedBy";
     std::string actual = resultsMap["y"][0];
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -67,9 +67,9 @@ TEST_F(QueryTests, TestgetResultsAsMap) {
 }
 
 TEST_F(QueryTests, TestgetResultsAsMapTwice) {
-    semsim::Query query(rdf.getModel(), q);
-    semsim::ResultsMap resultsMap = query.resultsAsMap();
-    semsim::ResultsMap resultsMap2 = query.resultsAsMap();
+    omexmeta::Query query(rdf.getModel(), q);
+    omexmeta::ResultsMap resultsMap = query.resultsAsMap();
+    omexmeta::ResultsMap resultsMap2 = query.resultsAsMap();
     std::string expected = "http://biomodels.net/model-qualifiers/isDescribedBy";
     std::string actual = resultsMap["y"][0];
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -77,7 +77,7 @@ TEST_F(QueryTests, TestgetResultsAsMapTwice) {
 }
 
 TEST_F(QueryTests, TestResultsAsStream) {
-    semsim::Query query(rdf.getModel(), q);
+    omexmeta::Query query(rdf.getModel(), q);
     librdf_stream *stream = query.resultsAsLibRdfStream();
     ASSERT_TRUE(stream); // aka not null
     librdf_free_stream(stream);

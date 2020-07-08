@@ -20,7 +20,7 @@
 
 using namespace redland;
 
-namespace semsim {
+namespace omexmeta {
     /*
      * The PhysicalEntity type of PhysicalPhenomenon
      */

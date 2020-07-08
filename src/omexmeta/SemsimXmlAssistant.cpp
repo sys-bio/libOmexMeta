@@ -5,7 +5,7 @@
 #include "SemsimXmlAssistant.h"
 #include "HERE.h"
 
-namespace semsim {
+namespace omexmeta {
     SemsimXmlAssistant::SemsimXmlAssistant(std::string xml, std::string base, int metaid_num_digits) :
             xml_(std::move(xml)), metaid_base(std::move(base)), metaid_num_digits_(metaid_num_digits) {
     }

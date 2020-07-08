@@ -8,6 +8,7 @@
 #include "iostream"
 #include "filesystem"
 #include "filesystem"
+#include "raptor2.h"
 //#include "AnnotationSamples.h"
 
 using namespace redland;
@@ -153,7 +154,7 @@ TEST_F(LibrdfParserTests, TestRelativeBaseUriResolvesCorrectly) {
     std::cout << storage_fname << std::endl;
 
     std::string expected = "https://www.dajobe.org/net/this/is/the/base#dajobe";
-    librdf_stream* stream = librdf_model_as_stream(model.get());
+    librdf_stream *stream = librdf_model_as_stream(model.get());
     LibrdfStatement stmt = LibrdfStatement::fromRawStatementPtr(librdf_stream_get_object(stream));
     auto s = LibrdfNode(stmt.getSubject());
     std::string actual = s.str();
@@ -185,7 +186,7 @@ TEST_F(LibrdfParserTests, TestRelativeBaseUriResolvesCorrectly2) {
     std::cout << storage_fname << std::endl;
 
     std::string expected = "https://www.dajobe.org/net/this/is/the/base#dajobe";
-    librdf_stream* stream = librdf_model_as_stream(model.get());
+    librdf_stream *stream = librdf_model_as_stream(model.get());
     LibrdfStatement stmt = LibrdfStatement::fromRawStatementPtr(librdf_stream_get_object(stream));
     auto s = LibrdfNode(stmt.getSubject());
     std::string actual = s.str();
@@ -197,6 +198,75 @@ TEST_F(LibrdfParserTests, TestRelativeBaseUriResolvesCorrectly2) {
     model.freeModel();
     storage.freeStorage();
 }
+
+TEST_F(LibrdfParserTests, TestFeatures) {
+    LibrdfStorage storage;
+    LibrdfModel model(storage.get());
+    LibrdfParser parser("turtle");
+
+    LibrdfUri scanForRDFUri("http://feature.librdf.org/raptor-scanForRDF");
+    LibrdfNode scanForRDFNode = LibrdfNode(librdf_parser_get_feature(parser.get(), scanForRDFUri.get()));
+
+    LibrdfUri allowNonNsAttributesUri("http://feature.librdf.org/raptor-allowNonNsAttributes");
+    LibrdfNode allowNonNsAttributesNode = LibrdfNode(
+            librdf_parser_get_feature(parser.get(), allowNonNsAttributesUri.get()));
+
+    LibrdfUri allowOtherParsetypesUri("http://feature.librdf.org/raptor-allowOtherParsetypes");
+    LibrdfNode allowOtherParsetypesNode = LibrdfNode(
+            librdf_parser_get_feature(parser.get(), allowOtherParsetypesUri.get()));
+
+    LibrdfUri allowBagIDUri("http://feature.librdf.org/raptor-allowBagID");
+    LibrdfNode allowBagIDNode = LibrdfNode(librdf_parser_get_feature(parser.get(), allowBagIDUri.get()));
+
+    LibrdfUri allowRDFtypeRDFlistUri("http://feature.librdf.org/raptor-allowRDFtypeRDFlist");
+    LibrdfNode allowRDFtypeRDFlistNode = LibrdfNode(
+            librdf_parser_get_feature(parser.get(), allowRDFtypeRDFlistUri.get()));
+
+    LibrdfUri normalizeLanguageUri("http://feature.librdf.org/raptor-normalizeLanguage");
+    LibrdfNode normalizeLanguageNode = LibrdfNode(librdf_parser_get_feature(parser.get(), normalizeLanguageUri.get()));
+
+    LibrdfUri nonNFCfatalUri("http://feature.librdf.org/raptor-nonNFCfatal");
+    LibrdfNode nonNFCfatalNode = LibrdfNode(librdf_parser_get_feature(parser.get(), nonNFCfatalUri.get()));
+
+    LibrdfUri warnOtherParseTypesUri("http://feature.librdf.org/raptor-warnOtherParseTypes");
+    LibrdfNode warnOtherParseTypesNode = LibrdfNode(
+            librdf_parser_get_feature(parser.get(), warnOtherParseTypesUri.get()));
+
+    LibrdfUri checkRdfIDUri("http://feature.librdf.org/raptor-checkRdfID");
+    LibrdfNode checkRdfIDNode = LibrdfNode(librdf_parser_get_feature(parser.get(), checkRdfIDUri.get()));
+
+    ASSERT_EQ("1", scanForRDFNode.str());
+    ASSERT_EQ("0", allowNonNsAttributesNode.str());
+    ASSERT_EQ("1", allowOtherParsetypesNode.str());
+    ASSERT_EQ("1", allowBagIDNode.str());
+    ASSERT_EQ("1", allowRDFtypeRDFlistNode.str());
+    ASSERT_EQ("1", normalizeLanguageNode.str());
+    ASSERT_EQ("0", nonNFCfatalNode.str());
+    ASSERT_EQ("1", warnOtherParseTypesNode.str());
+    ASSERT_EQ("1", checkRdfIDNode.str());
+
+    scanForRDFNode.freeNode();
+    allowNonNsAttributesNode.freeNode();
+    allowOtherParsetypesNode.freeNode();
+    allowBagIDNode.freeNode();
+    allowRDFtypeRDFlistNode.freeNode();
+    normalizeLanguageNode.freeNode();
+    nonNFCfatalNode.freeNode();
+    warnOtherParseTypesNode.freeNode();
+    checkRdfIDNode.freeNode();
+    scanForRDFUri.freeUri();
+    allowNonNsAttributesUri.freeUri();
+    allowOtherParsetypesUri.freeUri();
+    allowBagIDUri.freeUri();
+    allowRDFtypeRDFlistUri.freeUri();
+    normalizeLanguageUri.freeUri();
+    nonNFCfatalUri.freeUri();
+    warnOtherParseTypesUri.freeUri();
+    checkRdfIDUri.freeUri();
+    model.freeModel();
+    storage.freeStorage();
+}
+
 
 //TEST_F(LibrdfParserTests, TestParserWithContexts) {
 //    std::string input = "<?xml version=\"1.0\"?>\n"

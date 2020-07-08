@@ -849,6 +849,7 @@ librdf_serializer_get_feature(librdf_serializer *serializer, librdf_uri *feature
     return NULL;
 }
 
+
 /**
  * librdf_serializer_set_feature:
  * @serializer: serializer object

@@ -15,7 +15,7 @@
 #include <utility>
 #include "SemsimUtils.h"
 
-namespace semsim {
+namespace omexmeta {
     enum SemsimXmlType {
         SEMSIM_TYPE_SBML,
         SEMSIM_TYPE_CELLML,

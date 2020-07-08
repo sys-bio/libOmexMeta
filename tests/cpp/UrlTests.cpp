@@ -7,7 +7,7 @@
 #include "gtest/gtest.h"
 
 using namespace std;
-using namespace semsim;
+using namespace omexmeta;
 
 class UrlTests : public ::testing::Test {
 public:

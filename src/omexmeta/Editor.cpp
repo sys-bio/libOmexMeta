@@ -7,10 +7,10 @@
 #include <utility>
 #include "filesystem"
 
-namespace semsim {
-    Editor::Editor(const std::string &xml, SemsimXmlType type,
+namespace omexmeta {
+    Editor::Editor(const std::string &xml, SemsimXmlType type, bool create_ids,
                    const LibrdfModel &model, NamespaceMap &nsmap)
-            : model_(model), namespaces_(nsmap) {
+            : model_(model), namespaces_(nsmap) , create_ids_(create_ids){
         XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type);
         std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
         xml_ = xml_and_metaids.first;
@@ -53,23 +53,6 @@ namespace semsim {
             throw std::invalid_argument(err.str());
         }
     }
-
-
-//    void Editor::extractNamespacesFromTriplesVector(Triples &triples) {
-//        /*
-//         * Note: if this oesn't work, move the logic of this function
-//         * into where its needed. Since its only used once, we
-//         * do not need a specialized function
-//         */
-//        for (int i = 0; i < triples.size(); i++) {
-//            // create new reference to triple at i
-//            Triple triple = triples[i];
-//            addNamespaceFromAnnotation(triple.getPredicateStr());
-//            // remember to free the new reference (should still exist but
-//            // internal raptor reference count will decrease)
-//            triple.freeStatement();
-//        }
-//    }
 
     void Editor::extractNamespacesFromTriplesVector(PhysicalPhenomenon *pp) {
         // here we create our own localized Triples object
@@ -235,6 +218,29 @@ namespace semsim {
 
     PhysicalProcess Editor::createPhysicalProcess() {
         return PhysicalProcess(model_.get());
+    }
+
+    void Editor::addAuthor(const std::string &orcid_id) {
+        // Note, this mechanism of retrieving the model level metaid
+        // is very likely to be brittle since it assumes its the first
+        // element in the metaid list.
+        Triple triple(
+                LibrdfNode::fromUriString(getMetaids()[0]).get(),
+                PredicateFactory("dc", "creator")->getNode(),
+                LibrdfNode::fromUriString(orcid_id).get()
+                );
+        model_.addStatement(triple);
+    }
+    void Editor::addCurator(const std::string &orcid_id) {
+        // Note, this mechanism of retrieving the model level metaid
+        // is very likely to be brittle since it assumes its the first
+        // element in the metaid list.
+        Triple triple(
+                LibrdfNode::fromUriString(getMetaids()[0]).get(),
+                PredicateFactory("dc", "creator")->getNode(),
+                LibrdfNode::fromUriString(orcid_id).get()
+                );
+        model_.addStatement(triple);
     }
 
 

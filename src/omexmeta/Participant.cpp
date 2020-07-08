@@ -7,7 +7,7 @@
 #include <utility>
 
 
-namespace semsim {
+namespace omexmeta {
 
 
     Participant::Participant(librdf_model *model, std::string base_metaid, std::string semsim_predicate_term,

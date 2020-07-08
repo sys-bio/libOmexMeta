@@ -9,7 +9,7 @@
 #include <fstream>
 #include <thread>
 
-using namespace semsim;
+using namespace omexmeta;
 
 class RDFTests : public ::testing::Test {
 
@@ -79,12 +79,15 @@ TEST_F(RDFTests, TestToString) {
 TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
     std::string rdf_string1 = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                               "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                              "   xmlns:local=\"http://myOmexLibrary.org/MyModel.rdf#\"\n"
+                              "   xmlns:myOMEX=\"http://myOmexLibrary.org/MyModel.omex\"\n"
+                              "   xmlns:myOMEXlib=\"http://myOmexLibrary.org/\"\n"
                               "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                              "   xml:base=\"file://./Annotation.rdf\">\n"
-                              "  <rdf:Description rdf:about=\"OmexMetaId0000\">\n"
-                              "    <bqbiol:is rdf:resource=\"https://identifiers.org/fma/FMA_66836\"/>\n"
+                              "   xml:base=\"/mnt/d/libOmexMeta/cmake-build-debug-wsl-ubuntu1804-gcc101/bin/\">\n"
+                              "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyModel.omex#OmexMetaId0000\">\n"
+                              "    <bqbiol:is rdf:resource=\"https://identifiers.org/fma/FMA_66835\"/>\n"
                               "  </rdf:Description>\n"
-                              "</rdf:RDF>\n";
+                              "</rdf:RDF>";
     std::string rdf_string2 = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                               "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                               "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -94,7 +97,7 @@ TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
                               "  </rdf:Description>\n"
                               "</rdf:RDF>\n";
 
-    RDF rdf = RDF::fromString(rdf_string2);
+    RDF rdf = RDF::fromString(rdf_string1);
     std::cout << rdf.toString() << std::endl;
 
 
@@ -207,6 +210,7 @@ TEST_F(RDFTests, TestSqliteStorageWithUriParse) {
 
 TEST_F(RDFTests, TestParseFromFile) {
     // first create a file containing annotations
+//    raptor_option_uri_prefix;
     std::string fname = std::filesystem::current_path().string() += "TestParseFromFile.rdf";
     std::cout << fname << std::endl;
     std::ofstream f(fname);

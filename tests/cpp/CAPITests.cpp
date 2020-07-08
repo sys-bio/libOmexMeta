@@ -14,7 +14,7 @@
 #include <filesystem>
 #include <fstream>
 
-using namespace semsim;
+using namespace omexmeta;
 
 class CAPITests : public ::testing::Test {
 public:
@@ -331,7 +331,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
 
     SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_setPredicate(singularAnnotation,
-                                    "bqb", "is");
+                                    "bqbiol", "is");
     char *actual = SingularAnnotation_getPredicate(singularAnnotation);
     const char *expected = "http://biomodels.net/biology-qualifiers/is";
     ASSERT_STREQ(expected, actual);

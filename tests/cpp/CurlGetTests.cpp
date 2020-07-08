@@ -47,7 +47,7 @@ public:
 
     static void downloadAndCheckSizeRange(std::string url, std::string filename, int expected_size_lower,
                                           int expected_size_higher) {
-        semsim::CurlGet::download(url, filename);
+        omexmeta::CurlGet::download(url, filename);
         int size = getFileSize(filename);
         ASSERT_LE(expected_size_lower, size);
         ASSERT_GE(expected_size_higher, size);

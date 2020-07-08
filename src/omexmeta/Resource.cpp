@@ -5,7 +5,7 @@
 #include "Resource.h"
 #include "Error.h"
 
-namespace semsim {
+namespace omexmeta {
 
     Resource::Resource(librdf_node *node)
             : node_(node) {

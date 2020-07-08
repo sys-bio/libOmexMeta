@@ -827,7 +827,7 @@ class RDF-->
         <rect fill="#F24D5C" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="920" y="346.2031"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="397"
               x="932" y="353.6221">makeWriter(const std::string&amp; format, const std::string&amp; base_uri_) :
-            semsim::Writer
+            omexmeta::Writer
         </text>
         <ellipse cx="923" cy="363.0391" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
@@ -861,7 +861,7 @@ class RDF-->
         <ellipse cx="923" cy="459.8906" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
               text-decoration="underline" textLength="338" x="932" y="464.3096">fromXML(const std::string&amp; filename,
-            std::string format) : semsim::RDF
+            std::string format) : omexmeta::RDF
         </text>
         <ellipse cx="923" cy="473.7266" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
@@ -1041,7 +1041,7 @@ class SemsimCombineArchive-->
         <ellipse cx="17" cy="1056.1719" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
               text-decoration="underline" textLength="480" x="26" y="1060.5908">fromUrl(const std::string&amp; url,
-            const std::string&amp; output_filename) : semsim::SemsimCombineArchive
+            const std::string&amp; output_filename) : omexmeta::SemsimCombineArchive
         </text><!--MD5=[8eeaa74abbf9682858b38bcaff2be6c3]
 class SemsimUtils-->
         <rect fill="#FEFECE" filter="url(#f1pade0lt0jcgx)" height="117.1797" id="SemsimUtils"

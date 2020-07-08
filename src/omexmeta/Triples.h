@@ -11,13 +11,13 @@
 #include "omexmeta/Resource.h"
 #include "RedlandAPIWrapper.h"
 #include "omexmeta/Error.h"
-//#include "omexmeta/TripleWriter.h"
-
 #include <vector>
+
+#include "filesystem"
 
 using namespace redland;
 
-namespace semsim {
+namespace omexmeta {
 
 //    class Triple;
 
@@ -82,7 +82,8 @@ namespace semsim {
 
         TripleVector::iterator end();
 
-        std::string str(const std::string &format = "rdfxml-abbrev", std::string base = "file://./annotations.rdf");
+        std::string str(const std::string &format = "rdfxml-abbrev",
+                std::string base = std::filesystem::current_path() /= "annotations.rdf");
 
         void freeTriples();
 

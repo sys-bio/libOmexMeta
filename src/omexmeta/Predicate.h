@@ -18,7 +18,7 @@
 
 using namespace redland;
 
-namespace semsim {
+namespace omexmeta {
 
     typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
@@ -269,8 +269,14 @@ namespace semsim {
     class DCTerm : public Predicate {
     public:
         std::vector<std::string> valid_terms_{
-                "Description"
-        };
+                "abstract", "accessRights", "accrualMethod", "accrualPeriodicity", "accrualPolicy", "alternative",
+                "audience", "available", "bibliographicCitation", "conformsTo", "contributor", "coverage", "created",
+                "creator", "date", "dateAccepted", "dateCopyrighted", "dateSubmitted", "description", "educationLevel",
+                "extent", "format", "hasFormat", "hasPart", "hasVersion", "identifier", "instructionalMethod",
+                "isFormatOf", "isPartOf", "isReferencedBy", "isReplacedBy", "isRequiredBy", "issued", "isVersionOf",
+                "language", "license", "mediator", "medium", "modified", "provenance", "publisher", "references",
+                "relation", "replaces", "requires", "rights", "rightsHolder", "source", "spatial", "subject",
+                "tableOfContents", "temporal", "title", "type", "valid",};
 
         DCTerm() = default;
 
@@ -313,6 +319,39 @@ namespace semsim {
 
         void verify();
 
+    };
+
+    /*
+     * @class Subclass of Predicate specifically for predicates from the
+     * Foaf set of predicates. All
+     *  predicates have the namespace
+     * `http://www.bhi.washington.edu/semsim#` and a `bqmodel` prefix.
+     *
+     * @example
+     * @code
+     * SemSim hasSourceParticipant("hasSourceParticipant");
+     * std::cout << hasSourceParticipant.str() << std::endl;
+     * @endcode
+     * will output
+     *   "http://www.bhi.washington.edu/semsim#hasSourceParticipant"
+     * to console.
+     */
+    class Foaf : public Predicate {
+    public:
+        std::vector<std::string> valid_terms_{
+                "Agent", "Person", "name", "title", "img", "depiction", "familyName", "givenName", "knows",
+                "based_near", "age", "made", "primaryTopic", "Project", "Organization", "Group", "member",
+                "Document", "Image", "nick", "mbox", "homepage", "weblog", "openid", "jabberID", "mbox_sha1sum",
+                "interest", "topic_interest", "topic", "workplaceHomepage", "workInfoHomepage", "schoolHomepage",
+                "publications", "currentProject", "pastProject", "account", "OnlineAccount", "accountName",
+                "accountServiceHomepage", "PersonalProfileDocument", "tipjar", "sha1", "thumbnail", "logo",};
+
+        Foaf() = default;
+
+        explicit Foaf(const std::string &term);
+
+        void verify();
+
 //        std::shared_ptr<SemSim> makeShared() ;
 
     };
@@ -328,7 +367,7 @@ namespace semsim {
      * @param term the term portion of the predicate
      *
      * @details namespace_ argument is:
-     *  - bqb or BiomodelsBiologyQualifier for BiomodelsBiologyQualifier
+     *  - bqbiol or BiomodelsBiologyQualifier for BiomodelsBiologyQualifier
      *  - bqm or BiomodelsModelQualifier for BiomodelsModelQualifier
      *  - ss or SemSim for SemSim
      *  - dc or DCTerm for DCTerm

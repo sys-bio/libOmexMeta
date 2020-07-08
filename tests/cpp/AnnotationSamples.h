@@ -241,7 +241,7 @@ public:
 
     void removeAllFilesIfTheyExist() {
         for (auto &file : this->all_files) {
-            semsim::SemsimUtils::removeIfExists(file);
+            omexmeta::SemsimUtils::removeIfExists(file);
         }
     }
 

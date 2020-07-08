@@ -9,7 +9,7 @@
 #include "omexmeta/PhysicalEntity.h"
 #include "vector"
 
-using namespace semsim;
+using namespace omexmeta;
 
 class PhysicalEntityTests : public ::testing::Test {
 

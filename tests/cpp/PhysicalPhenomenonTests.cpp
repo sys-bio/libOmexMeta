@@ -12,7 +12,7 @@
 #include "omexmeta/PhysicalEntity.h"
 #include "omexmeta/AnnotationType.h"
 
-using namespace semsim;
+using namespace omexmeta;
 
 class PhysicalPhenomenonTests : public ::testing::Test {
 

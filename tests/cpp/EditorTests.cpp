@@ -10,7 +10,7 @@
 #include "omexmeta/PhysicalForce.h"
 #include "omexmeta/RDF.h"
 
-using namespace semsim;
+using namespace omexmeta;
 
 class EditorTests : public ::testing::Test {
 
@@ -157,7 +157,7 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     editor.
             addSingleAnnotation(
             Subject(LibrdfNode::fromUriString("#OmexMetaId0008")),
-            std::make_unique<Predicate>(DCTerm("Description")),
+            std::make_unique<Predicate>(DCTerm("description")),
             Resource(LibrdfNode::fromLiteral("Cardiomyocyte cytosolic ATP concentration"))
     );
 
@@ -182,7 +182,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
     SingularAnnotation singularAnnotation;
     singularAnnotation
             .setAbout("#OmexMetaId0001")
-            .setPredicate("bqb", "isVersionOf")
+            .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot:PD02635");
 
     editor.addSingleAnnotation(singularAnnotation);
@@ -352,7 +352,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
     SingularAnnotation singularAnnotation;
     singularAnnotation
             .setAbout("#OmexMetaId0000")
-            .setPredicate("bqb", "is")
+            .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
 
     editor.addSingleAnnotation(singularAnnotation);
@@ -435,7 +435,7 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
     SingularAnnotation singularAnnotation;
     singularAnnotation
             .setAbout("#OmexMetaId0000")
-            .setPredicate("bqb", "is")
+            .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
 
     editor.addSingleAnnotation(singularAnnotation);

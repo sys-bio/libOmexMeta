@@ -5,7 +5,7 @@
 #include "Triple.h"
 
 
-namespace semsim {
+namespace omexmeta {
 
     Triple::Triple(const Subject &subject, const PredicatePtr &predicate_ptr, const Resource &resource)
             : LibrdfStatement(subject.getNode(),
@@ -49,8 +49,9 @@ namespace semsim {
         // deal with namespaces
         Predicate::addSeenNamespaceToSerializer(world, serializer, getPredicate());
 
+        // run the base uri through func that adds file:// if it needs to
+        librdf_uri *base_uri = librdf_new_uri(world,(const unsigned char*) SemsimUtils::addFilePrefixToString(base).c_str());
         // do the serializing
-        librdf_uri *base_uri = librdf_new_uri(world, (const unsigned char *) base.c_str());
         unsigned char *string = librdf_serializer_serialize_model_to_string(serializer, base_uri, model);
         std::string str = (const char *) string;
 
@@ -65,15 +66,15 @@ namespace semsim {
 
     }
 
-    semsim::Triple &semsim::Triple::setAbout(const std::string &about) {
+    omexmeta::Triple &omexmeta::Triple::setAbout(const std::string &about) {
         if (getSubject() != nullptr)
             LibrdfNode::freeNode(getSubject());
         setSubject(LibrdfNode::fromUriString(about).get());
         return *this;
     }
 
-    semsim::Triple &
-    semsim::Triple::setPredicate(const std::string &namespace_, const std::string &term) {
+    omexmeta::Triple &
+    omexmeta::Triple::setPredicate(const std::string &namespace_, const std::string &term) {
         if (getPredicate() != nullptr)
             LibrdfNode::freeNode(getPredicate());
         // ive implemented the logic here rather then using LibrdfStatement::setPredicate
@@ -83,8 +84,8 @@ namespace semsim {
         return *this;
     }
 
-    semsim::Triple &
-    semsim::Triple::setPredicate(const std::string &uri) {
+    omexmeta::Triple &
+    omexmeta::Triple::setPredicate(const std::string &uri) {
         if (getPredicate() != nullptr)
             LibrdfNode::freeNode(getPredicate());
         LibrdfNode node = LibrdfNode::fromUriString(uri);
@@ -94,7 +95,7 @@ namespace semsim {
     }
 
 
-    semsim::Triple &semsim::Triple::setResourceLiteral(const std::string &literal) {
+    omexmeta::Triple &omexmeta::Triple::setResourceLiteral(const std::string &literal) {
         // if getResource() node alredy exists, free before resetting
         if (getResource() != nullptr)
             LibrdfNode::freeNode(getResource());
@@ -102,21 +103,21 @@ namespace semsim {
         return *this;
     }
 
-    semsim::Triple &semsim::Triple::setResourceUri(const std::string &identifiers_uri) {
+    omexmeta::Triple &omexmeta::Triple::setResourceUri(const std::string &identifiers_uri) {
         if (getResource() != nullptr)
             LibrdfNode::freeNode(getResource());
         setResource(LibrdfNode::fromUriString(identifiers_uri).get());
         return *this;
     }
 
-    semsim::Triple &semsim::Triple::setResourceBlank(const std::string &blank_id) {
+    omexmeta::Triple &omexmeta::Triple::setResourceBlank(const std::string &blank_id) {
         if (getResource() != nullptr)
             LibrdfNode::freeNode(getResource());
         setResource(LibrdfNode::fromBlank(blank_id).get());
         return *this;
     }
 
-    std::string semsim::Triple::getAbout() const {
+    std::string omexmeta::Triple::getAbout() const {
         return LibrdfNode::str(getSubject());
     }
 

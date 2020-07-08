@@ -9,7 +9,7 @@
  * AnnotationType enum for indicating the type of annotation.
  * For developers: Possibly not needed.
  */
-namespace semsim {
+namespace omexmeta {
     /*
      * Denotes the type of composite annotation in use.
      */

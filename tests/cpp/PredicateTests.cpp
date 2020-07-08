@@ -7,7 +7,7 @@
 
 #include "RedlandAPIWrapper.h"
 
-using namespace semsim;
+using namespace omexmeta;
 
 class PredicateTests : public ::testing::Test {
 public:
@@ -81,15 +81,15 @@ TEST_F(PredicateTests, TestGetNodebqqPrefix) {
 }
 
 TEST_F(PredicateTests, TestDCTermPrefix) {
-    DCTerm predicate("Description");
+    DCTerm predicate("description");
     std::string expected = "dcterms";
     ASSERT_STREQ(expected.c_str(), predicate.getPrefix().c_str());
     predicate.freeNode();
 }
 
 TEST_F(PredicateTests, TestDCTermUri) {
-    DCTerm predicate("Description");
-    std::string expected = "http://purl.org/dc/terms/Description";
+    DCTerm predicate("description");
+    std::string expected = "http://purl.org/dc/terms/description";
     std::string actual = predicate.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     predicate.freeNode();
@@ -97,7 +97,7 @@ TEST_F(PredicateTests, TestDCTermUri) {
 
 
 TEST_F(PredicateTests, TestDCTermGetNamespace) {
-    DCTerm predicate("Description");
+    DCTerm predicate("description");
     std::string expected = "http://purl.org/dc/terms/";
     std::string actual = predicate.getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -105,7 +105,7 @@ TEST_F(PredicateTests, TestDCTermGetNamespace) {
 }
 
 TEST_F(PredicateTests, TestDCTermGetPrefix) {
-    DCTerm predicate("Description");
+    DCTerm predicate("description");
     std::string expected = "dcterms";
     std::string actual = predicate.getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -281,7 +281,7 @@ TEST_F(PredicateTests, TestNamespaceKnownWhenNamespaceIsNotKnown) {
 }
 
 TEST_F(PredicateTests, TestPredicateFactory) {
-    PredicatePtr predicatePtr = PredicateFactory("bqb", "is");
+    PredicatePtr predicatePtr = PredicateFactory("bqbiol", "is");
     std::string actual = predicatePtr->str();
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -294,9 +294,9 @@ TEST_F(PredicateTests, TestPredicateFactory) {
 //}
 
 TEST_F(PredicateTests, TestPredicateFactory2) {
-    PredicatePtr predicatePtr = PredicateFactory("dc", "Description");
+    PredicatePtr predicatePtr = PredicateFactory("dc", "description");
     std::string actual = predicatePtr->str();
-    std::string expected = "http://purl.org/dc/terms/Description";
+    std::string expected = "http://purl.org/dc/terms/description";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     predicatePtr->freeNode();
 }

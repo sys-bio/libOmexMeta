@@ -12,8 +12,7 @@
 
 using namespace redland;
 
-namespace semsim {
-
+namespace omexmeta {
 
     class RDF {
         LibrdfStorage storage_;
@@ -24,6 +23,7 @@ namespace semsim {
     public:
         NamespaceMap namespaces_;
         std::vector<std::string> seen_namespaces_;
+        const std::string myomexlib_ = "http://myOmexLibrary.org/";
 
         // todo remove this field and replace with the one
         //  in Predicate. Should be a simple swap.
@@ -119,7 +119,8 @@ namespace semsim {
          *
          */
         static void
-        fromString(RDF *rdf, const std::string &str, const std::string &format, std::string base_uri = "Annotations.rdf");
+        fromString(RDF *rdf, const std::string &str, const std::string &format,
+                   std::string base_uri = "Annotations.rdf");
 
         /*
          * @brief compared namespaces seen with namespaces
@@ -131,8 +132,13 @@ namespace semsim {
         std::unordered_map<std::string, std::string>
         propagateNamespacesFromParser(const std::vector<std::string> &seen_namespaces);
 
-        std::string toString(const std::string &format = "rdfxml-abbrev", std::string base_uri = std::string(),
+//        std::string toString(const std::string &format = "rdfxml-abbrev", std::string base_uri = std::string(),
+//                             const char *mime_type = nullptr, const char *type_uri = nullptr);
+
+        std::string toString(const std::string &format = "rdfxml-abbrev", const std::string& model_name = "MyModel",
+                             std::string base_uri = std::string(),
                              const char *mime_type = nullptr, const char *type_uri = nullptr);
+
 
         Editor toEditor(const std::string &xml, SemsimXmlType type);
 

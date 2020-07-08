@@ -8,7 +8,7 @@ namespace redland {
     LibrdfParser::LibrdfParser(librdf_parser *parser) :
             parser_(parser) {}
 
-    LibrdfParser::LibrdfParser(std::string format, std::string mime_type, const std::string& type_uri) :
+    LibrdfParser::LibrdfParser(std::string format, std::string mime_type, const std::string &type_uri) :
             format_(std::move(format)), mime_type_(std::move(mime_type)) {
         setTypeUri(type_uri);
         validateParserName();
@@ -87,17 +87,20 @@ namespace redland {
     }
 
 
-    void LibrdfParser::setFeature(librdf_parser *parser, const std::string &feature_uri, librdf_node *node) {
-        LibrdfUri u(feature_uri);
-        librdf_parser_set_feature(parser, u.get(), node);
-        u.freeUri();
-    }
-
     void LibrdfParser::setOption(librdf_parser *parser, const std::string &option, const std::string &value) {
         // prefix for option uri's. Append with desired option for full uri.
         std::string feature_uri_base = "http://feature.librdf.org/raptor-";
         LibrdfNode node = LibrdfNode::fromLiteral(value);
-        setFeature(parser, feature_uri_base + option, node.get());
+        LibrdfUri u(feature_uri_base + option);
+        int failed = librdf_parser_set_feature(parser, u.get(), node.get());
+        if (failed < 0 ){
+            throw std::invalid_argument("No such feature: " + feature_uri_base);
+        }
+        if (failed) {
+            throw std::invalid_argument(
+                    "Trying to set parser option " + option + " to value " + value + "but couldn't");
+        }
+        u.freeUri();
         node.freeNode();
     }
 

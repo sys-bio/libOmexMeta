@@ -7,7 +7,7 @@
 
 #include "World.h"
 
-using namespace semsim;
+using namespace omexmeta;
 
 class SubjectTests : public ::testing::Test {
 public:

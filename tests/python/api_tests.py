@@ -355,7 +355,7 @@ class TestAPI(unittest.TestCase):
     def test_singular_annotation_predicate(self):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
-        PyOmexMetaAPI.singular_annotation_set_predicate(singular_annotation, "bqb".encode(), "is".encode())
+        PyOmexMetaAPI.singular_annotation_set_predicate(singular_annotation, "bqbiol".encode(), "is".encode())
         ptr = PyOmexMetaAPI.singular_annotation_get_predicate(singular_annotation)
         actual = PyOmexMetaAPI.get_and_free_c_str(ptr)
         expected = "http://biomodels.net/biology-qualifiers/is"
@@ -412,7 +412,7 @@ class TestAPI(unittest.TestCase):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
         PyOmexMetaAPI.singular_annotation_set_about(singular_annotation, "cytosol".encode())
-        PyOmexMetaAPI.singular_annotation_set_predicate(singular_annotation, "bqb".encode(), "is".encode())
+        PyOmexMetaAPI.singular_annotation_set_predicate(singular_annotation, "bqbiol".encode(), "is".encode())
         PyOmexMetaAPI.singular_annotation_set_resource_uri(singular_annotation, "uniprot:PD12345".encode())
         ptr = PyOmexMetaAPI.singular_annotation_str(
             singular_annotation, "rdfxml-abbrev".encode(), "singular_annotation.rdf".encode())
@@ -434,7 +434,7 @@ class TestAPI(unittest.TestCase):
         editor_ptr = PyOmexMetaAPI.rdf_to_editor(self.rdf, TestStrings.xml.encode(), 0)
         singular_annotation = PyOmexMetaAPI.editor_new_singular_annotation(editor_ptr)
         PyOmexMetaAPI.singular_annotation_set_about(singular_annotation, "cytosol".encode())
-        PyOmexMetaAPI.singular_annotation_set_predicate(singular_annotation, "bqb".encode(), "is".encode())
+        PyOmexMetaAPI.singular_annotation_set_predicate(singular_annotation, "bqbiol".encode(), "is".encode())
         PyOmexMetaAPI.singular_annotation_set_resource_uri(singular_annotation, "uniprot:PD12345".encode())
         PyOmexMetaAPI.editor_add_single_annotation(editor_ptr, singular_annotation)
         ptr = PyOmexMetaAPI.rdf_to_string(self.rdf, "turtle".encode(), "turtled_singular_annotation.rdf".encode())

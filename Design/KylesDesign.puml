@@ -6,7 +6,7 @@
 
 /' Objects '/
 
-namespace semsim {
+namespace omexmeta {
 	class Accessor {
 		+{static} hasCompartmentWithMetaId(const std::string& metaid, libsbml::Model* m) : bool
 		+{static} findCompartment(const std::string& sid, libsbml::Model* m) : libsbml::Compartment*
@@ -15,7 +15,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class Annotation {
 		+{static} stripAnnotations(libsbml::SBMLDocument* d) : void
 		+{static} stripAnnotationsFromElement(libsbml::SBase* x) : void
@@ -23,7 +23,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	abstract class AnnotationBase {
 		+~AnnotationBase()
 		+{abstract} clone() : AnnotationBase* {query}
@@ -37,21 +37,21 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class CHEBI {
 		+{static} get(OntologyTerm t) : Resource
 	}
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class CL {
 		+{static} get(OntologyTerm t) : Resource
 	}
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class Component {
 		+Component()
 		+Component(const SingularAnnotation& annotation)
@@ -87,7 +87,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class CompositeAnnotation {
 		+CompositeAnnotation(const std::string& metaid, const PhysicalProperty& property, const Entity& entity)
 		+CompositeAnnotation(const std::string& metaid, PhysicalProperty&& property, Entity&& entity)
@@ -114,7 +114,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	abstract class Condition {
 		+~Condition()
 		+{abstract} matches(const Component& component) : bool
@@ -122,7 +122,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class DescriptorTerm {
 		+DescriptorTerm(const Relation& relation, const Resource& resource)
 		+DescriptorTerm(Relation&& relation, Resource&& resource)
@@ -130,7 +130,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class Entity {
 		+Entity(const std::string& metaid)
 		+Entity(const std::string& metaid, const Resource& definition)
@@ -155,7 +155,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class EntityBase {
 		+EntityBase(std::string metaid, const Resource& definition)
 		+EntityBase(EntityBase&& other) noexcept: metaid_(std::move(othermetaid_)), definitions_(std::move(otherdefinitions_)), terms_(std::move(otherterms_))
@@ -185,7 +185,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class EntityDescriptor {
 		+EntityDescriptor()
 		+EntityDescriptor(const EntityDescriptor& other)
@@ -204,7 +204,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class Exception {
 		+Exception(const char* message)
 		+Exception(std::string message)
@@ -215,14 +215,14 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class GO {
 		+{static} get(OntologyTerm t) : Resource
 	}
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class IdentityCondition {
 		+IdentityCondition(Resource resource)
 		#resource_ : Resource
@@ -232,7 +232,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class Mediator {
 		+Mediator(const std::string& id, Component* component, double multiplier)
 		#component_ : Component*
@@ -244,7 +244,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class MetaID {
 		+{static} contains(libsbml::Model* m, const std::string& metaid) : bool
 		+{static} assignMetaIds(libsbml::Model* m) : void
@@ -258,35 +258,35 @@ class ModelStrings {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class NullPointerException {
 		-Exception : using Exception::
 	}
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class OPB {
 		+{static} get(OntologyTerm t) : Resource
 	}
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class Ontology {
 		+{static} resolve(const std::string& root, unsigned int t, int n_digits) : Resource
 	}
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class Participant {
 		+~Participant()
 	}
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class PhysicalProperty {
 		+PhysicalProperty(const Resource& resource)
 		+PhysicalProperty(Resource&& resource)
@@ -300,7 +300,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class Process {
 		+Process()
 		+Process(const SingularAnnotation& annotation)
@@ -323,7 +323,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	abstract class Query {
 		+~Query()
 		+{abstract} run(SemsimModel& model) : QueryResults {query}
@@ -331,7 +331,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class QueryResults {
 		#refs_ : ComponentRefs
 		+begin() : iterator
@@ -340,7 +340,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class RDFReader {
 		+{static} RaptorTermToURI(raptor_term* t) : URI
 		+{static} isMetaId(const std::string& uri) : bool
@@ -359,7 +359,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class RasqalQuery {
 		+RasqalQuery(const std::string& rdf, const std::string& format, bool is_file)
 		+~RasqalQuery()
@@ -377,7 +377,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class RasqalQueryResult {
 		+RasqalQueryResult(rasqal_query_results* results)
 		+~RasqalQueryResult()
@@ -390,7 +390,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class Relation {
 		+Relation(const URI& uri)
 		+Relation(URI&& uri)
@@ -403,7 +403,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class Resource {
 		+Resource(const URI& uri)
 		+Resource(URI&& uri)
@@ -419,7 +419,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class SBMLImporter {
 		+SBMLImporter(libsbml::SBMLDocument* sbmlDocument)
 		+SBMLImporter(const std::string& sbml)
@@ -448,7 +448,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class SBMLSpecies {
 		+{static} GetSpeciesPhysicalProperty(libsbml::Species* s, libsbml::Model* m) : PhysicalProperty
 		+{static} SubstanceUnitsAreConc(libsbml::Species* s, libsbml::Model* m) : bool
@@ -457,14 +457,14 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class SBO {
 		+{static} get(OntologyTerm t) : Resource
 	}
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class SelectQuery {
 		+SelectQuery(ConditionPtr&& where)
 		#where_ : ConditionPtr
@@ -472,7 +472,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class SemSimObject {
 		+SemSimObject(SemSimTypes type)
 		#semsimtype : SemSimTypes
@@ -493,7 +493,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class SemSimSBMLModel {
 		+SemSimSBMLModel(libsbml::SBMLDocument* d)
 		+SemSimSBMLModel(SemSimSBMLModel&& other) noexcept: SemsimModel(std::move(other)), element_map_(std::move(otherelement_map_)), element_id_map_(std::move(otherelement_id_map_)), d_(otherd_)
@@ -520,7 +520,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	abstract class SemsimModel {
 		+SemsimModel()
 		+SemsimModel(const SemsimModel& other)
@@ -536,7 +536,7 @@ namespace semsim {
 		+addComponent(Process&& component) : Process*
 		+containsMetaId(const std::string& metaid) : bool {query}
 		+hasComponentWithMetaId(const std::string& metaid) : bool {query}
-		#components_ : semsim::Components
+		#components_ : omexmeta::Components
 		+getNumComponents() : std::size_t {query}
 		+{abstract} encodeXML() : std::string {query}
 		+{abstract} getFormat() : std::string {query}
@@ -546,7 +546,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class SingularAnnotation {
 		+SingularAnnotation(const std::string& metaid, const Resource& definition)
 		+SingularAnnotation(const std::string& metaid)
@@ -565,7 +565,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class Sink {
 		+Sink(const std::string& id, Component* component, double multiplier)
 		#component_ : Component*
@@ -577,7 +577,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class Source {
 		+Source(const std::string& id, Component* component, double multiplier)
 		#component_ : Component*
@@ -589,7 +589,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class Term {
 		+Term(const Relation& relation, const Resource& resource)
 		+Term(Relation&& relation, Resource&& resource)
@@ -607,7 +607,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class URI {
 		+URI()
 		+URI(const std::string& uri)
@@ -623,7 +623,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class bqb {
 		+{static} encodes : const static Relation
 		+{static} hasPart : const static Relation
@@ -644,7 +644,7 @@ namespace semsim {
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	class semsim {
 		+{static} hasMediatorParticipant : const static Relation
 		+{static} hasMultiplier : const static Relation
@@ -663,82 +663,82 @@ namespace semsim {
 
 /' Inheritance relationships '/
 
-namespace semsim {
+namespace omexmeta {
 	AnnotationBase <|-- CompositeAnnotation
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	AnnotationBase <|-- SingularAnnotation
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Component <|-- Process
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	EntityBase <|-- Entity
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	EntityBase <|-- SingularAnnotation
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Exception <|-- NullPointerException
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Ontology <|-- CHEBI
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Ontology <|-- CL
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Ontology <|-- GO
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Ontology <|-- OPB
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Ontology <|-- SBO
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Participant <|-- Mediator
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Participant <|-- Sink
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Participant <|-- Source
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	SemsimModel <|-- SemSimSBMLModel
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Term <|-- DescriptorTerm
 }
 
@@ -748,92 +748,92 @@ namespace semsim {
 
 /' Aggregation relationships '/
 
-namespace semsim {
+namespace omexmeta {
 	CompositeAnnotation *-- Entity
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	CompositeAnnotation *-- PhysicalProperty
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	IdentityCondition *-- Resource
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Mediator o-- Component
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	NullPointerException *-- Exception
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	PhysicalProperty *-- Resource
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Relation *-- URI
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Resource o-- Component
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Resource *-- URI
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	SBMLImporter *-- SemSimSBMLModel
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	SemSimSBMLModel "2" o-- Component
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	SemsimModel *-- semsim
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Sink o-- Component
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Source o-- Component
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Term *-- Relation
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	Term *-- Resource
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	bqb "13" *-- Relation
 }
 
 
-namespace semsim {
+namespace omexmeta {
 	semsim "7" *-- Relation
 }
 

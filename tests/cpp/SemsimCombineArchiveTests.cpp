@@ -25,7 +25,7 @@ public:
 
 TEST_F(SemsimCombineArchiveTests, TestThatUrlIsNotFile
 ) {
-semsim::SemsimCombineArchive combineArchive = semsim::SemsimCombineArchive::fromUrl(
+omexmeta::SemsimCombineArchive combineArchive = omexmeta::SemsimCombineArchive::fromUrl(
         samples.gold_standard_url2, samples.gold_standard_filename2);
 combineArchive.
 
@@ -77,7 +77,7 @@ std::endl;
 
 TEST_F(SemsimCombineArchiveTests, Testz
 ) {
-semsim::SemsimCombineArchive archive;
+omexmeta::SemsimCombineArchive archive;
 archive.
 initializeFromArchive(samples
 .gold_standard_filename2);

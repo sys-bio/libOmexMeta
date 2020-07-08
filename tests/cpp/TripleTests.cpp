@@ -9,7 +9,7 @@
 #include "gtest/gtest.h"
 #include "AnnotationSamples.h"
 
-using namespace semsim;
+using namespace omexmeta;
 
 class TripleTests : public ::testing::Test {
 public:
@@ -157,7 +157,7 @@ TEST(TripleTestsNoFixture, TestAbout) {
 
 TEST(TripleTestsNoFixture, TestSetPredicate) {
     Triple triple;
-    triple.setPredicate("bqb", "is");
+    triple.setPredicate("bqbiol", "is");
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     ASSERT_STREQ(expected.c_str(), triple.getPredicateStr().c_str());
     triple.freeStatement();
@@ -208,7 +208,7 @@ TEST_F(TripleTests, TestStatementSubject) {
 TEST_F(TripleTests, TestBuilderPattern1) {
     Triple triple;
     triple.setAbout("metaid1")
-            .setPredicate("bqb", "is")
+            .setPredicate("bqbiol", "is")
             .setResourceUri("uniprot/PD4034");
 
     std::string actual = triple.str();
@@ -234,14 +234,14 @@ TEST_F(TripleTests, TestBuilderPattern2) {
     Triple triple;
 
     triple.setAbout("metaid1")
-            .setPredicate("bqb", "is")
+            .setPredicate("bqbiol", "is")
             .setResourceBlank("Blank");
 
     std::string actual = triple.str();
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "   xml:base=\"annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"metaid1\">\n"
                            "    <bqbiol:is rdf:nodeID=\"Blank\"/>\n"
                            "  </rdf:Description>\n"
@@ -260,7 +260,7 @@ TEST_F(TripleTests, TestBuilderPatternWithSemSimPredicate) {
     Triple triple;
 
     triple.setAbout("metaid1")
-            .setPredicate("SemSim", "hasSourceParticipant")
+            .setPredicate("semsim", "hasSourceParticipant")
             .setResourceUri("uniprot/PD4034");
 
     std::string actual = triple.str();

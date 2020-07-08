@@ -7,7 +7,7 @@
 #include <utility>
 
 
-namespace semsim {
+namespace omexmeta {
 
 
     RDF::RDF(const std::string &storage_type, const std::string &storage_name,
@@ -163,16 +163,34 @@ namespace semsim {
         return keep_map;
     }
 
-    std::string RDF::toString(const std::string &format, std::string base_uri,
-                              const char *mime_type, const char *type_uri) {
+//    std::string RDF::toString(const std::string &format, std::string base_uri,
+//                              const char *mime_type, const char *type_uri) {
+//        base_uri = SemsimUtils::addFilePrefixToString(base_uri);
+//        LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
+//        // remember to add namespaces taken from parser
+//        for (auto &it: namespaces_) {
+//            serializer.setNamespace(it.first, it.second);
+//        }
+//        return serializer.toString(base_uri, model_);
+//    }
+
+
+    std::string
+    RDF::toString(const std::string &format, const std::string& model_name, std::string base_uri, const char *mime_type,
+                  const char *type_uri) {
         base_uri = SemsimUtils::addFilePrefixToString(base_uri);
         LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
         // remember to add namespaces taken from parser
         for (auto &it: namespaces_) {
             serializer.setNamespace(it.first, it.second);
         }
+
+        serializer.setNamespace(myomexlib_, "myOMEXlib");
+        serializer.setNamespace(myomexlib_+model_name+".omex", "myOMEX");
+        serializer.setNamespace(myomexlib_+model_name+".rdf#", "local");
         return serializer.toString(base_uri, model_);
     }
+
 
     librdf_model *RDF::getModel() const {
         return model_.get();
@@ -200,18 +218,17 @@ namespace semsim {
         return librdf_model_transaction_start(getModel());
     }
 
-    void* RDF::getTransactionHandle() const {
+    void *RDF::getTransactionHandle() const {
         return librdf_model_transaction_get_handle(getModel());
     }
 
-    int RDF::startTransactionWithHandle(void* handle) const {
+    int RDF::startTransactionWithHandle(void *handle) const {
         return librdf_model_transaction_start_with_handle(getModel(), handle);
     }
 
     int RDF::getTransactionRollback() const {
         return librdf_model_transaction_rollback(getModel());
     }
-
 
 
 }

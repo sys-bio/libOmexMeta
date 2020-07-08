@@ -8,7 +8,7 @@
 #include <librdf.h>
 #include <gtest/gtest.h>
 
-using namespace semsim;
+using namespace omexmeta;
 
 class TriplesTests : public ::testing::Test {
 
@@ -109,8 +109,7 @@ TEST_F(TriplesTests, TestEmplaceBack4) {
 TEST_F(TriplesTests, TestEmplaceBack5) {
     Triples triples;
     triples.emplace_back(subject,
-                         DCTerm("Description"),
-
+                         DCTerm("description"),
                          resource);
     ASSERT_EQ(1, triples.size());
     predicate.freeNode();

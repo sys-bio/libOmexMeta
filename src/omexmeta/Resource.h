@@ -14,7 +14,7 @@
 
 using namespace redland;
 
-namespace semsim {
+namespace omexmeta {
     class Resource {
 
         explicit Resource(librdf_node *node);

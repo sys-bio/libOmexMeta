@@ -5,7 +5,7 @@
 
 #include "omexmeta/MetaID.h"
 
-semsim::MetaID::MetaID(std::string base, long number, int num_digits) :
+omexmeta::MetaID::MetaID(std::string base, long number, int num_digits) :
         base_(std::move(base)),
         number_(number),
         num_digits_(num_digits) {
@@ -26,15 +26,15 @@ semsim::MetaID::MetaID(std::string base, long number, int num_digits) :
     }
 }
 
-bool semsim::MetaID::operator==(const semsim::MetaID &rhs) const {
+bool omexmeta::MetaID::operator==(const omexmeta::MetaID &rhs) const {
     return this->generate().c_str() == rhs.generate().c_str();
 }
 
-bool semsim::MetaID::operator!=(const semsim::MetaID &rhs) const {
+bool omexmeta::MetaID::operator!=(const omexmeta::MetaID &rhs) const {
     return !(rhs == *this);
 }
 
-int semsim::MetaID::maxNumber() const {
+int omexmeta::MetaID::maxNumber() const {
     std::ostringstream os;
     for (int i = 0; i < num_digits_; i++) {
         os << "9";
@@ -42,7 +42,7 @@ int semsim::MetaID::maxNumber() const {
     return std::stoi(os.str());
 }
 
-int semsim::MetaID::countDigits(long long int n) {
+int omexmeta::MetaID::countDigits(long long int n) {
     if (n == 0) {
         return 1;
     }
@@ -54,11 +54,11 @@ int semsim::MetaID::countDigits(long long int n) {
     return count;
 }
 
-std::string semsim::MetaID::generate() const {
+std::string omexmeta::MetaID::generate() const {
     return generate(number_);
 }
 
-std::string semsim::MetaID::generate(long n) const {
+std::string omexmeta::MetaID::generate(long n) const {
     // work out how many 0's we need to pad the ID
     int number_of_digits_in_number = countDigits(n);
     if (number_of_digits_in_number > num_digits_) {

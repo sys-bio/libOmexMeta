@@ -18,7 +18,7 @@
 
 using namespace redland;
 
-namespace semsim {
+namespace omexmeta {
     class PhysicalPhenomenon {
     protected:
 

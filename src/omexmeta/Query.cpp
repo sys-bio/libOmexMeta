@@ -7,7 +7,7 @@
 
 // todo: Is laqrs a valid query language?
 
-namespace semsim {
+namespace omexmeta {
 
     Query::Query(librdf_model *model, std::string query)
             : model_(model), query_(std::move(query)) {

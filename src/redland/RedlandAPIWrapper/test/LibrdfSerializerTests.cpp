@@ -111,7 +111,69 @@ TEST_F(LibrdfSerializerTests, TestToStringNTriples) {
     storage.freeStorage();
 }
 
+TEST_F(LibrdfSerializerTests, TestBaseUri) {
+    LibrdfStorage storage;
+    LibrdfModel model(storage.get());
+    LibrdfStatement statement = LibrdfStatement(
+            LibrdfNode::fromUriString("https://subject.com"),
+            LibrdfNode::fromUriString("https://predicate.com"),
+            LibrdfNode::fromUriString("https://resource.com")
+    );
+    model.addStatement(statement);
+    LibrdfSerializer serializer1 = LibrdfSerializer("turtle");
+    std::string actual = serializer1.toString("base_uri", model);
+    std::string expected = "<https://subject.com> <https://predicate.com> <https://resource.com> .\n";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    model.freeModel();
+    storage.freeStorage();
+}
 
+
+TEST_F(LibrdfSerializerTests, TestFeatures) {
+    LibrdfStorage storage;
+    LibrdfModel model(storage.get());
+    LibrdfStatement statement = LibrdfStatement(
+            LibrdfNode::fromUriString("https://subject.com"),
+            LibrdfNode::fromUriString("https://predicate.com"),
+            LibrdfNode::fromUriString("https://resource.com")
+    );
+    model.addStatement(statement);
+    LibrdfSerializer serializer("turtle");
+    serializer.setOption("writeBaseURI", "1");
+//    librdf_serializer_get_feature()
+
+//    LibrdfUri writerAutoIndentUri("http://feature.librdf.org/raptor-writerAutoIndent");
+//    LibrdfNode writerAutoIndentNode = LibrdfNode(
+//            librdf_serializer_get_feature(
+//                    serializer.get(), writerAutoIndentUri.get())
+//    );
+//    LibrdfUri writerAutoEmptyUri("http://feature.librdf.org/raptor-writerAutoEmpty");
+//    LibrdfNode writerAutoEmptyNode = LibrdfNode(
+//            librdf_serializer_get_feature(
+//                    serializer.get(), writerAutoIndentUri.get())
+//    );
+    LibrdfUri writeBaseUriUri("http://feature.librdf.org/raptor-writeBaseURI");
+    LibrdfNode writeBaseUriNode = LibrdfNode(
+            librdf_serializer_get_feature(
+                    serializer.get(), writeBaseUriUri.get())
+    );
+
+
+//    ASSERT_EQ("1", writerAutoIndentNode.str());
+//    ASSERT_EQ("1", writerAutoEmptyNode.str());
+    ASSERT_EQ("0", writeBaseUriNode.str());
+
+//    writerAutoIndentNode.freeNode();
+//    writerAutoIndentUri.freeUri();
+//    writerAutoEmptyNode.freeNode();
+//    writerAutoEmptyUri.freeUri();
+//    writeBaseUriNode.freeNode();
+//    writeBaseUriUri.freeUri();
+
+    model.freeModel();
+    storage.freeStorage();
+}
 
 
 

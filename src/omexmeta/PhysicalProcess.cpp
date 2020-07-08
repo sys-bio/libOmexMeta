@@ -9,7 +9,7 @@
 #include <utility>
 
 
-namespace semsim {
+namespace omexmeta {
 
     PhysicalProcess::PhysicalProcess(librdf_model *model,
                                      const PhysicalProperty &physicalProperty, Sources sources, Sinks sinks,
@@ -111,8 +111,8 @@ namespace semsim {
     }
 
     bool PhysicalProcess::operator==(const PhysicalProcess &rhs) const {
-        return static_cast<const semsim::PhysicalPhenomenon &>(*this) ==
-               static_cast<const semsim::PhysicalPhenomenon &>(rhs) &&
+        return static_cast<const omexmeta::PhysicalPhenomenon &>(*this) ==
+               static_cast<const omexmeta::PhysicalPhenomenon &>(rhs) &&
                sources_ == rhs.sources_ &&
                sinks_ == rhs.sinks_ &&
                mediators_ == rhs.mediators_;

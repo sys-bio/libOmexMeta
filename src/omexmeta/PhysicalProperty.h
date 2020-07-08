@@ -17,7 +17,7 @@
 
 using namespace redland;
 
-namespace semsim {
+namespace omexmeta {
 
     /*
      * PhysicalProperty is a subclass of the Resource

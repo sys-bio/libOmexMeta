@@ -8,7 +8,7 @@
 #include <thread>
 #include "omexmeta/HERE.h"
 
-using namespace semsim;
+using namespace omexmeta;
 
 class SemsimXmlAssistantTests : public ::testing::Test {
 

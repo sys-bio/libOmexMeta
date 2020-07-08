@@ -7,7 +7,7 @@
 #include "omexmeta/RDF.h"
 #include "omexmeta/Participant.h"
 
-using namespace semsim;
+using namespace omexmeta;
 
 class ParticipantTests : public ::testing::Test {
 

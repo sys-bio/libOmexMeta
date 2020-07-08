@@ -195,7 +195,7 @@ class EditorTests(unittest.TestCase):
             with editor.new_singular_annotation() as singular_annotation:
                 singular_annotation \
                     .set_about("cytosol") \
-                    .set_predicate("bqb", "is") \
+                    .set_predicate("bqbiol", "is") \
                     .set_resource_uri("uniprot:PD88776")
         expected = """<?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
@@ -718,7 +718,7 @@ f"""
             print(editor.get_xml())
             with editor.new_singular_annotation() as singular_annotation:
                 singular_annotation.set_about("OmexMetaId0000") \
-                    .set_predicate("bqb", "is") \
+                    .set_predicate("bqbiol", "is") \
                     .set_resource_uri("fma/FMA_66835")
 
         print(rdf)
@@ -749,7 +749,7 @@ class DrawTests(unittest.TestCase):
         with rdf.to_editor(self.sbml, "sbml") as editor:
             with editor.new_singular_annotation() as s:
                 s.set_about("OmexMetaId0000") \
-                    .set_predicate("bqb", "is") \
+                    .set_predicate("bqbiol", "is") \
                     .set_resource_uri("fma/FMA_66835")
         fname = os.path.join(os.path.realpath("."), "test_draw.png")
         rdf.draw(fname)
@@ -818,7 +818,7 @@ end"""
             with editor.new_singular_annotation() as identity:
                 identity\
                     .set_about('#OmexMetaId0000') \
-                    .set_predicate("bqb", "is")\
+                    .set_predicate("bqbiol", "is")\
                     .set_resource_uri("uniprot:PD12345")
         print(rdf)
 

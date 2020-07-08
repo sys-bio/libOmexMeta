@@ -4,7 +4,7 @@
 #include "exception"
 #include "iostream"
 
-namespace semsim {
+namespace omexmeta {
     /// https://stackoverflow.com/questions/8152720/correct-way-to-inherit-from-stdexception
     class Exception : public std::exception {
     public:

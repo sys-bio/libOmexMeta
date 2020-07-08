@@ -5,7 +5,7 @@
 #include "omexmeta/Subject.h"
 
 
-namespace semsim {
+namespace omexmeta {
 
     Subject::Subject(librdf_node *node)
             : node_(node) {

@@ -7,7 +7,7 @@
 #include <utility>
 
 
-namespace semsim {
+namespace omexmeta {
 
     PhysicalProperty::PhysicalProperty(std::string subject_str, std::string resource_str)
             : subject_(std::move(subject_str)),
@@ -28,7 +28,7 @@ namespace semsim {
             err << __FILE__ << ":" << __LINE__ << ": The uri generated (";
             err << uri << ") is not a OPB resource. Physical properties "
                           "must be OPB resources.";
-            throw semsim::InappropriateResourceException(err.str());
+            throw omexmeta::InappropriateResourceException(err.str());
         }
     }
 

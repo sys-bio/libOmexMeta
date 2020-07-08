@@ -7,7 +7,7 @@
 #include "omexmeta/Triple.h"
 #include "omexmeta/PhysicalProperty.h"
 
-using namespace semsim;
+using namespace omexmeta;
 
 
 class PhysicalPropertyTests : public ::testing::Test {

@@ -22,7 +22,7 @@
 
 using namespace redland;
 
-namespace semsim {
+namespace omexmeta {
 
     typedef std::unordered_map<std::string, std::vector<std::string>> ResultsMap;
 

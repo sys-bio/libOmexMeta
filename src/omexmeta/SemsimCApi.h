@@ -15,7 +15,7 @@
 #include "omexmeta/SemsimUtils.h"
 #include "omexmeta/Preproc.h"
 
-namespace semsim {
+namespace omexmeta {
 
 #ifdef __cplusplus
     extern "C" {

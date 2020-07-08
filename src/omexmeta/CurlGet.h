@@ -10,7 +10,7 @@
 #include "curl/curl.h"
 #include <stdexcept>
 
-namespace semsim {
+namespace omexmeta {
 
     /*
      * @brief Use libcurl to download from url

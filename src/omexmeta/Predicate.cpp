@@ -8,7 +8,7 @@
 
 #include <utility>
 
-namespace semsim {
+namespace omexmeta {
 
     Predicate::Predicate(const std::string &namespace_,
                          std::string term, std::string prefix)
@@ -105,7 +105,6 @@ namespace semsim {
                 {"http://xmlns.com/foaf/0.1/",                                    "foaf"},
                 {"https://dublincore.org/specifications/dublin-core/dcmi-terms/", "dc"},
                 {"https://orcid.org/",                                            "orcid"},
-
                 {"http://biomodels.net/model-qualifiers/",                        "bqmodel"},
                 {"http://biomodels.net/biology-qualifiers/",                      "bqbiol"},
                 {"https:identifiers.org/pubmed/",                                 "pubmed"},
@@ -117,6 +116,7 @@ namespace semsim {
                 {"http://identifiers.org/opb/",                                   "opb"},
                 {"http://identifiers.org/fma/",                                   "fma"},
                 {"http://purl.org/dc/terms/",                                     "dcterms"},
+                {"http://myOmexLibrary.org/",                                     "myOMEXlib"},
 
         };
     }
@@ -221,10 +221,6 @@ namespace semsim {
         Predicate::verify(valid_terms_, term_);
     }
 
-//    std::shared_ptr<BiomodelsBiologyQualifier> BiomodelsBiologyQualifier::makeShared()  {
-//        return std::shared_ptr<BiomodelsBiologyQualifier>(this);
-//    }
-
     BiomodelsModelQualifier::BiomodelsModelQualifier(const std::string &term) :
             Predicate("http://biomodels.net/model-qualifiers/", term, "bqmodel") {
         verify();
@@ -233,10 +229,6 @@ namespace semsim {
     void BiomodelsModelQualifier::verify() {
         Predicate::verify(valid_terms_, term_);
     }
-
-//    std::shared_ptr<BiomodelsModelQualifier> BiomodelsModelQualifier::makeShared() {
-//        return std::shared_ptr<BiomodelsModelQualifier>(this);
-//    }
 
     DCTerm::DCTerm(const std::string &term) :
             Predicate("http://purl.org/dc/terms/", term, "dcterms") {
@@ -247,10 +239,6 @@ namespace semsim {
         Predicate::verify(valid_terms_, term_);
     }
 
-//    std::shared_ptr<DCTerm> DCTerm::makeShared() {
-//        return std::shared_ptr<DCTerm>(this);
-//    }
-
     SemSim::SemSim(const std::string &term) :
             Predicate("http://www.bhi.washington.edu/semsim#", term, "semsim") {
         verify();
@@ -260,9 +248,14 @@ namespace semsim {
         Predicate::verify(valid_terms_, term_);
     }
 
-//    std::shared_ptr<SemSim> SemSim::makeShared() {
-//        return std::shared_ptr<SemSim>(this);
-//    }
+    Foaf::Foaf(const std::string &term) :
+            Predicate("http://xmlns.com/foaf/0.1/", term, "foaf") {
+        verify();
+    }
+
+    void Foaf::verify() {
+        Predicate::verify(valid_terms_, term_);
+    }
 
     /*
      * A factory function for creating PredicatePtr objects.
@@ -270,13 +263,13 @@ namespace semsim {
     PredicatePtr PredicateFactory(std::string namespace_, const std::string &term) {
 
         std::vector<std::string> valid_namespace_strings = {
-                "bqb",
-                "bqm",
+                "bqbiol",
+                "bqmodel",
                 "dc",
-                "ss",
+                "semsim",
+                "foaf",
                 "BiomodelsBiologyQualifier",
                 "BiomodelsModelQualifier",
-                "SemSim",
                 "DCTerm"
         };
 
@@ -299,11 +292,11 @@ namespace semsim {
         });
 
         PredicatePtr predicatePtr;
-        if (namespace_ == "bqb" || namespace_ == "biomodelsbiologyqualifier") {
+        if (namespace_ == "bqbiol" || namespace_ == "biomodelsbiologyqualifier") {
             predicatePtr = std::make_unique<BiomodelsBiologyQualifier>(
                     BiomodelsBiologyQualifier(term)
             );
-        } else if (namespace_ == "bqm" || namespace_ == "biomodelsmodelqualifier") {
+        } else if (namespace_ == "bqmodel" || namespace_ == "biomodelsmodelqualifier") {
             predicatePtr = std::make_unique<BiomodelsModelQualifier>(
                     BiomodelsModelQualifier(term)
             );
@@ -311,9 +304,13 @@ namespace semsim {
             predicatePtr = std::make_unique<DCTerm>(
                     DCTerm(term)
             );
-        } else if (namespace_ == "ss" || namespace_ == "semsim") {
+        } else if (namespace_ == "semsim") {
             predicatePtr = std::make_unique<SemSim>(
                     SemSim(term)
+            );
+        } else if (namespace_ == "foaf") {
+            predicatePtr = std::make_unique<Foaf>(
+                    Foaf(term)
             );
         } else {
             throw std::invalid_argument("Invalid term argument: PredicateFactory(): \"" + term + "\"");

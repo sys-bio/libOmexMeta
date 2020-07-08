@@ -61,6 +61,11 @@ namespace redland {
         void freeSerializer();
 
         void validateSerializerName(std::string name);
+
+        void setOption(const std::string &option, const std::string &value) const;
+
+        void setOptions() const;
+
     };
 }
 

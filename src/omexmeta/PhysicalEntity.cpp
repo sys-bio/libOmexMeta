@@ -6,7 +6,7 @@
 
 #include <utility>
 
-namespace semsim {
+namespace omexmeta {
 
     PhysicalEntity::PhysicalEntity(librdf_model *model,
                                    PhysicalProperty physicalProperty,
@@ -157,8 +157,8 @@ namespace semsim {
     }
 
     bool PhysicalEntity::operator==(const PhysicalEntity &rhs) const {
-        return static_cast<const semsim::PhysicalPhenomenon &>(*this) ==
-               static_cast<const semsim::PhysicalPhenomenon &>(rhs) &&
+        return static_cast<const omexmeta::PhysicalPhenomenon &>(*this) ==
+               static_cast<const omexmeta::PhysicalPhenomenon &>(rhs) &&
                identity_resource_ == rhs.identity_resource_ &&
                location_resources_ == rhs.location_resources_;
     }

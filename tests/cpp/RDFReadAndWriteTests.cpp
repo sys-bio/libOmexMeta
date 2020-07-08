@@ -26,7 +26,7 @@ public:
 
     static void assertReadAndWrite(const std::string &input_annot, const std::string &input_format,
                                    const std::string &expected_output) {
-        semsim::RDF rdf = semsim::RDF::fromString(input_annot, "rdfxml");
+        omexmeta::RDF rdf = omexmeta::RDF::fromString(input_annot, "rdfxml");
         std::string actual = rdf.toString(input_format, "file://./annotations.rdf");
         std::cout << actual << std::endl;
         ASSERT_STREQ(expected_output.c_str(), actual.c_str());
@@ -36,7 +36,7 @@ public:
             const std::string &input_annot,
             const std::string &input_format,
             const std::string &regular_expression_that_matches) {
-        semsim::RDF rdf = semsim::RDF::fromString(input_annot, "rdfxml");
+        omexmeta::RDF rdf = omexmeta::RDF::fromString(input_annot, "rdfxml");
         std::string actual = rdf.toString(input_format, "file://./annotations.rdf");
         std::cout << actual << std::endl;
         std::regex r(regular_expression_that_matches);
@@ -52,9 +52,9 @@ public:
             const std::string &input_annot,
             const std::string &input_format,
             const std::string &regular_expression_that_matches) {
-        semsim::RDF rdf = semsim::RDF::fromString(input_annot, "rdfxml");
+        omexmeta::RDF rdf = omexmeta::RDF::fromString(input_annot, "rdfxml");
         std::string actual = rdf.toString(input_format, "file://./annotations.rdf");
-        std::vector<std::string> vec = semsim::SemsimUtils::splitStringBy(regular_expression_that_matches, '\n');
+        std::vector<std::string> vec = omexmeta::SemsimUtils::splitStringBy(regular_expression_that_matches, '\n');
         // we do search line by line
         for (auto &i : vec) {
             std::regex r(i);
@@ -74,7 +74,7 @@ public:
 
 
 TEST_F(ReadAndWriteTests, TestDefaultConstructor) {
-    semsim::RDF rdf;
+    omexmeta::RDF rdf;
     ASSERT_TRUE(true); // If we get this far we've passed
 }
 

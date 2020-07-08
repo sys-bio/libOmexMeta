@@ -12,7 +12,7 @@
 #include "omexmeta/Participant.h"
 #include "omexmeta/SemsimUtils.h"
 
-using namespace semsim;
+using namespace omexmeta;
 
 class PhysicalProcessTests : public ::testing::Test {
 

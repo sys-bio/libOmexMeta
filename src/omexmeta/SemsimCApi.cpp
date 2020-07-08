@@ -5,7 +5,7 @@
 #include "omexmeta/SemsimCApi.h"
 
 
-namespace semsim {
+namespace omexmeta {
     void free_c_char_star(char *c) {
         if (c != nullptr)
             free(c);

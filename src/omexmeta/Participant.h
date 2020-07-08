@@ -16,7 +16,7 @@
 
 using namespace redland;
 
-namespace semsim {
+namespace omexmeta {
 
 
     class Participant {

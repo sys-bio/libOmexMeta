@@ -2484,7 +2484,7 @@
 											"top": 495,
 											"width": 409.638671875,
 											"height": 20,
-											"text": "bqb"
+											"text": "bqbiol"
 										},
 										{
 											"_type": "LabelView",
@@ -8361,7 +8361,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFw5HgGh26aCr8="
 					},
-					"name": "bqb",
+					"name": "bqbiol",
 					"operations": [
 						{
 							"_type": "UMLOperation",
@@ -31361,7 +31361,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFw7eXxX4XUmy8="
 							},
-							"name": "bqb",
+							"name": "bqbiol",
 							"visibility": "package",
 							"operations": [
 								{
@@ -45850,7 +45850,7 @@
 											"top": 263,
 											"width": 338.52685546875,
 											"height": 13,
-											"text": "bqb"
+											"text": "bqbiol"
 										},
 										{
 											"_type": "LabelView",

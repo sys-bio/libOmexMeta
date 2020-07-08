@@ -2,11 +2,6 @@
 
 
 namespace redland {
-    void LibrdfSerializer::deleter::operator()(librdf_serializer *serializer) {
-        if (serializer)
-            librdf_free_serializer(serializer);
-    }
-
     LibrdfSerializer::LibrdfSerializer(librdf_serializer *serializer) :
             serializer_(serializer) {}
 
@@ -18,6 +13,7 @@ namespace redland {
         serializer_ = librdf_new_serializer(World::getWorld(),
                                             format, mime_type, type_uri_
         );
+        setOptions();
     }
 
     void LibrdfSerializer::freeSerializer() {
@@ -77,16 +73,17 @@ namespace redland {
                 World::getRaptor(), (void **) &buffer_to_hold_string, nullptr, malloc);
         if (!ios)
             throw RedlandNullPointerException("Writer::toString(): raptor_iostream");
-        librdf_uri *u = librdf_new_uri(World::getWorld(), (const unsigned char *) uri.c_str());
+        LibrdfUri u(uri);
         librdf_serializer_serialize_model_to_iostream(
-                serializer_, u, model.get(), ios
+                serializer_, u.get(), model.get(), ios
         );
-        librdf_free_uri(u);
+        u.freeUri();
         const char *s = (const char *) buffer_to_hold_string;
         std::string output(s);
         free(buffer_to_hold_string);
         return output;
     }
+
 
     LibrdfSerializer LibrdfSerializer::fromRawPtr(librdf_serializer *serializer) {
         return LibrdfSerializer(serializer);
@@ -121,6 +118,41 @@ namespace redland {
         throw std::invalid_argument(os.str());
     }
 
+    void LibrdfSerializer::setOption(const std::string &option, const std::string &value) const {
+        // valid options : http://librdf.org/raptor/api-1.4/raptor-section-feature.html
+        std::cout << "setting option: " << option << " to: " << value << std::endl;
+        std::string feature_uri_base = "http://feature.librdf.org/raptor-";
+        LibrdfUri feature_uri(feature_uri_base + option);
+        LibrdfNode node = LibrdfNode::fromUriString(value);
+        int failure = librdf_serializer_set_feature(get(), feature_uri.get(), node.get());
+        std::cout << failure << std::endl;
+        if (failure < 0) {
+            throw std::invalid_argument(
+                    "std::invalid_argument: LibrdfSerializer::setOption: Invalid feature: " + option);
+        }
+        if (failure) {
+            throw std::logic_error(
+                    "std::logic_error: LibrdfSerializer::setOption. Failed to ser serializer option: " + option);
+        }
+        node.freeNode();
+        feature_uri.freeUri();
+    }
+
+    void LibrdfSerializer::setOptions() const {
+        // These options do not work and I do not know
+        // how to find the names of the options that do work
+        // for turning off serialization of the base uri.
+        // This is a low priority problem - fix later.
+//        setOption("RAPTOR_FEATURE_WRITER_AUTO_INDENT", "1");
+//        setOption("RAPTOR_FEATURE_WRITER_AUTO_EMPTY", "1");
+//        setOption("RAPTOR_FEATURE_WRITE_BASE_URI", "0");
+//        setOption("writerAutoIndent", "1");
+//        setOption("writerAutoEmpty", "1");
+//        setOption("writeBaseUri", "0");
+    }
+
+
     int toIOStream(const LibrdfUri &uri, const LibrdfModel *model, const RaptorIOStream &stream);
+
 }
 

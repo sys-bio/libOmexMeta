@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.15)
 # Set version.
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 1)
-set(VERSION_MICRO 10)
+set(VERSION_MICRO 11)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 
@@ -108,15 +108,17 @@ if (${WITH_BDB})
     add_definitions(-DWITH_BDB)
 endif ()
 
-# remove optimizations for Debug builds.
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
-set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
-
-# set optimizations to highest level for Release builds
-#  and add -g -> instructs compiler to generate and retain
-#  source level debug information.
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Os -g")
-set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Os -g")
+#if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+#    #  remove optimizations for Debug builds.
+#    #  and add -g -> instructs compiler to generate and retain
+#    #  source level debug information.
+#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g")
+#    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0 -g")
+#elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+#    # set optimizations to highest level for Release builds
+#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Os")
+#    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Os")
+#endif ()
 
 # run the tests and generate coverage output
 option(WITH_COVERAGE OFF)
@@ -344,8 +346,8 @@ if (BUILD_TESTS)
 
             # we need to turn off optimization for non-skewed coverage reports
             # we've done this in debug mode so we do not need to do it ehere
-#            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
-#            set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0")
+            #            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
+            #            set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0")
 
             # optional excludes - None needed here
             set(COVERAGE_EXCLUDES
