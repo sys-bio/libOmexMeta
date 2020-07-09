@@ -43,6 +43,120 @@ TEST_F(EditorTests, TestMetaIds) {
     ASSERT_EQ(expected, metaids);
 }
 
+TEST_F(EditorTests, TestRepositoryName1) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    std::string expected = "http://myOmexLibrary.org/";
+    std::string actual = editor.getOmexRepository();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(EditorTests, TestepositoryName2) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    std::string expected = "http://myCustomOmexLibrary.org/";
+    editor.setOmexRepository(expected);
+    std::string actual = editor.getOmexRepository();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(EditorTests, TestArchiveName) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    std::string expected = "http://myOmexLibrary.org/myomex.omex";
+    editor.setArchiveName("myomex");
+    std::string actual = editor.getArchiveName();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(EditorTests, TestArchiveName2) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    std::string expected = "http://myOmexLibrary.org/myomex.omex";
+    editor.setArchiveName("myomex.omex");
+    std::string actual = editor.getArchiveName();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(EditorTests, TestArchiveName3) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    std::string expected = "http://myOmexLibrary.org/myomex.omex";
+    editor.setArchiveName("http://myOmexLibrary.org/myomex.omex");
+    std::string actual = editor.getArchiveName();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(EditorTests, TestSetModelNameErrorNoArchiveName) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    std::string expected = "http://myOmexLibrary.org/myomex.omex/Smad.sbml";
+    ASSERT_THROW(
+            editor.setModelName("Smad.sbml"),
+            std::logic_error
+    );
+}
+
+TEST_F(EditorTests, TestSetModelName) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    editor.setArchiveName("MyOmexArchive");
+    editor.setModelName("smad.sbml");
+
+    std::string expected = "http://myOmexLibrary.org/MyOmexArchive.omex/smad.sbml";
+    ASSERT_STREQ(expected.c_str(), editor.getModelName().c_str());
+}
+
+TEST_F(EditorTests, TestSetLocalName) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    editor.setArchiveName("MyOmexArchive");
+    editor.setModelName("smad.sbml");
+    editor.setLocalName("smad");
+
+    std::string expected = "http://myOmexLibrary.org/MyOmexArchive.omex/smad.rdf";
+    ASSERT_STREQ(expected.c_str(), editor.getLocalName().c_str());
+}
+
+TEST_F(EditorTests, TestSetLocalNam) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    editor.setArchiveName("MyOmexArchive");
+    editor.setModelName("smad.sbml");
+    editor.setLocalName("smad.rdf");
+
+    std::string expected = "http://myOmexLibrary.org/MyOmexArchive.omex/smad.rdf";
+    ASSERT_STREQ(expected.c_str(), editor.getLocalName().c_str());
+}
+
+
 TEST_F(EditorTests, TestAddAnnotation) {
     RDF rdf;
     Editor editor = rdf.toEditor(
@@ -80,6 +194,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
+    editor.createLocalUri("#OmexMetaId0009");
     Subject subject = Subject(LibrdfNode::fromUriString("#OmexMetaId0009"));
     BiomodelsBiologyQualifier predicate("is");
     Resource resource = Resource(LibrdfNode::fromUriString("uniprot:P0DP23"));
@@ -87,9 +202,8 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
     editor.addSingleAnnotation(triple);
 
 
-    std::string actual = rdf.toString("rdfxml", "MyModel.rdf");
-    std::cout << actual <<
-              std::endl;
+    std::string actual = rdf.toString("rdfxml", "MyModel");
+    std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://MyModel.rdf\">\n"
                            "  <rdf:Description rdf:about=\"#OmexMetaId0009\">\n"
@@ -488,10 +602,6 @@ TEST_F(EditorTests, TestRemovePhysicalProcess) {
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
 }
-
-
-
-
 
 
 /*****************************************************************
@@ -1494,8 +1604,8 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteOneByOne) {
     Triples triples = physicalEntity.toTriples();
 
     ASSERT_EQ(4, rdf.size());
-    std::cout << "trip: "<<triples.str("rdfxml-abbrev", "base") << std::endl;
-    std::cout << "rdf"<<rdf.toString("rdfxml-abbrev", "base") << std::endl;
+    std::cout << "trip: " << triples.str("rdfxml-abbrev", "base") << std::endl;
+    std::cout << "rdf" << rdf.toString("rdfxml-abbrev", "base") << std::endl;
 
     Triple triple4 = triples.pop_front();
     std::cout << triple4.str("ntriples", "base") << std::endl;

@@ -39,8 +39,8 @@ namespace omexmeta {
         static std::vector<std::string> splitStringBy(const std::string &str, char delimiter);
 
         static std::string generateUniqueMetaid(
-                librdf_model *model, const std::string& metaid_base,
-                const std::vector<std::string>& exclusions = std::vector<std::string>()
+                librdf_model *model, const std::string &metaid_base,
+                const std::vector<std::string> &exclusions = std::vector<std::string>()
         );
 
         static std::string addFilePrefixToString(std::string str);
@@ -53,6 +53,26 @@ namespace omexmeta {
          * turn into www.uri.com/identifier/
          */
         static std::string getNamespaceFromUri(const std::string &uri);
+
+        /*
+         * @brief helper function that returns true when
+         * uri starts with either `https://` `http://` or `file://`
+         * @param uri the uri to test.
+         */
+        static bool isFormattedUri(std::string uri);
+
+        /*
+         * @brief test to see whether a string ends with another string
+         * @param fullString the string to test
+         * @param ending the ending to test for
+         */
+        static bool hasEnding(std::string const &full_string, std::string const &ending) {
+            if (full_string.length() >= ending.length()) {
+                return (0 == full_string.compare(full_string.length() - ending.length(), ending.length(), ending));
+            } else {
+                return false;
+            }
+        }
 
     };
 }

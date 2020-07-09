@@ -53,8 +53,7 @@ namespace omexmeta {
          * to the users annotations. This method is for visualizing
          * a triple only.
          */
-        std::string
-        str(const std::string &format = "rdfxml-abbrev",
+        std::string str(const std::string &format = "rdfxml-abbrev",
                 const std::string &base = std::filesystem::current_path() /=  "annotations.rdf") const;
 
         void freeTriple();

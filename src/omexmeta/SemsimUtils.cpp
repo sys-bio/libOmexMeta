@@ -50,8 +50,8 @@ namespace omexmeta {
     }
 
     std::string SemsimUtils::generateUniqueMetaid(
-            librdf_model *model, const std::string& metaid_base,
-            const std::vector<std::string>& exclusions) {
+            librdf_model *model, const std::string &metaid_base,
+            const std::vector<std::string> &exclusions) {
 
         std::string q = "SELECT ?subject ?predicate ?object\n"
                         "WHERE {?subject ?predicate ?object}";
@@ -82,7 +82,7 @@ namespace omexmeta {
         std::string https_protocol = "https://";
 
         // if the base_uri is a web_uri, we leave it alone
-        if (str.rfind(https_protocol, 0) == 0 || str.rfind(http_protocol, 0) == 0 ) {
+        if (str.rfind(https_protocol, 0) == 0 || str.rfind(http_protocol, 0) == 0) {
             // str already starts with "http://" or "https:// do nothing
             return str;
         }
@@ -95,7 +95,8 @@ namespace omexmeta {
 
         // otherwise we use the current working directory as an absolute path
         std::string out = std::filesystem::current_path() /= str;
-        std::cout << "Note that we might have problems on windows here. Keep this message until you've dealt with these" << std::endl;
+        std::cout << "Note that we might have problems on windows here. Keep this message until you've dealt with these"
+                  << std::endl;
         return out;
     }
 
@@ -128,6 +129,16 @@ namespace omexmeta {
 //            os << vec[last_index];
         }
         return os.str();
+    }
+
+    bool SemsimUtils::isFormattedUri(std::string uri) {
+        std::string file_prefix = "file://";
+        std::string http_protocol = "http://";
+        std::string https_protocol = "https://";
+
+        return uri.rfind(https_protocol, 0) == 0
+            || uri.rfind(http_protocol, 0) == 0
+            || uri.rfind(file_prefix, 0) == 0;
     }
 
 }

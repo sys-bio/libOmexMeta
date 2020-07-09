@@ -67,3 +67,33 @@ TEST_F(SemsimUtilsTests, TestGEtNamespacesFromUriSemsim) {
     std::string actual = omexmeta::SemsimUtils::getNamespaceFromUri(uri);
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
+
+TEST_F(SemsimUtilsTests, TestIsFormattedUri1) {
+    std::string uri = "http://www.bhi.washington.edu/semsim#hasSourceParticipant";
+    ASSERT_TRUE(omexmeta::SemsimUtils::isFormattedUri(uri));
+}
+
+TEST_F(SemsimUtilsTests, TestIsFormattedUri2) {
+    std::string uri = "https://www.bhi.washington.edu/semsim#hasSourceParticipant";
+    ASSERT_TRUE(omexmeta::SemsimUtils::isFormattedUri(uri));
+}
+
+TEST_F(SemsimUtilsTests, TestIsFormattedUri3) {
+    std::string uri = "file://www.bhi.washington.edu/semsim#hasSourceParticipant";
+    ASSERT_TRUE(omexmeta::SemsimUtils::isFormattedUri(uri));
+}
+
+TEST_F(SemsimUtilsTests, TestIsFormattedUri4) {
+    std::string uri = "hasSourceParticipant";
+    ASSERT_FALSE(omexmeta::SemsimUtils::isFormattedUri(uri));
+}
+
+TEST_F(SemsimUtilsTests, TestHasEndingTrue) {
+    std::string s = "IAmAStringWithAnEnding.omex";
+    ASSERT_TRUE(omexmeta::SemsimUtils::hasEnding(s, ".omex"));
+}
+
+TEST_F(SemsimUtilsTests, TestHasEndingFalse) {
+    std::string s = "IAmAStringWithAnEndingomex";
+    ASSERT_FALSE(omexmeta::SemsimUtils::hasEnding(s, ".omex"));
+}

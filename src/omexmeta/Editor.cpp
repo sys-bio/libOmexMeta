@@ -10,7 +10,7 @@
 namespace omexmeta {
     Editor::Editor(const std::string &xml, SemsimXmlType type, bool create_ids,
                    const LibrdfModel &model, NamespaceMap &nsmap)
-            : model_(model), namespaces_(nsmap) , create_ids_(create_ids){
+            : model_(model), namespaces_(nsmap), create_ids_(create_ids) {
         XmlAssistantPtr xmlAssistantPtr = SemsimXmlAssistantFactory::generate(xml, type);
         std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
         xml_ = xml_and_metaids.first;
@@ -68,15 +68,13 @@ namespace omexmeta {
         }
     }
 
-
     void Editor::addNamespace(const std::string &ns, std::string prefix) {
         namespaces_[ns] = std::move(prefix);
     }
 
-
     void Editor::addSingleAnnotation(
-            Subject subject, PredicatePtr predicate_ptr,
-            Resource resource) {
+            Subject subject, const PredicatePtr &predicate_ptr,
+            const Resource &resource) {
         if (!predicate_ptr) {
             std::ostringstream err;
             err << __FILE__ << ":" << __LINE__ << ":PredicatePtr argument is null" << std::endl;
@@ -120,12 +118,6 @@ namespace omexmeta {
             // remember to free it.
             triple.freeStatement();
         }
-
-        /*
-         * Perhaps these intermediate operations are adding to the
-         * usage count?
-         */
-
     }
 
     void Editor::addCompositeAnnotation2(PhysicalPhenomenon *phenomenonPtr) {
@@ -228,9 +220,10 @@ namespace omexmeta {
                 LibrdfNode::fromUriString(getMetaids()[0]).get(),
                 PredicateFactory("dc", "creator")->getNode(),
                 LibrdfNode::fromUriString(orcid_id).get()
-                );
+        );
         model_.addStatement(triple);
     }
+
     void Editor::addCurator(const std::string &orcid_id) {
         // Note, this mechanism of retrieving the model level metaid
         // is very likely to be brittle since it assumes its the first
@@ -239,13 +232,117 @@ namespace omexmeta {
                 LibrdfNode::fromUriString(getMetaids()[0]).get(),
                 PredicateFactory("dc", "creator")->getNode(),
                 LibrdfNode::fromUriString(orcid_id).get()
-                );
+        );
         model_.addStatement(triple);
+    }
+
+    std::string Editor::getLocalName() const {
+        return local_name_;
+    }
+
+    std::string Editor::getModelName() const {
+        return model_name_;
+    }
+
+    std::string Editor::getArchiveName() const {
+        return archive_name_;
+    }
+
+    std::string Editor::getOmexRepository() const {
+        return repository_name_;
+    }
+
+    void Editor::setArchiveName(std::string archive_name) {
+        // archives end in .omex
+        if (!SemsimUtils::hasEnding(archive_name, ".omex")) {
+            archive_name = archive_name + ".omex";
+        }
+        // Check if model_name is already a valid uri
+        if (SemsimUtils::isFormattedUri(archive_name)) {
+            // if so, also check that its relative to
+            // the repository name, otherwise it does not
+            // make sense
+            if (archive_name.rfind(getOmexRepository(), 0) != 0) {
+                std::ostringstream os;
+                os << "std::invalid_argument: Editor::setArchiveName: "
+                   << "A full uri has been given as the archive_name "
+                      "attribute (\"" + archive_name + "\") but this does not "
+                   << "match the uri given for the repository name : \"" + getOmexRepository() + "\"";
+                throw std::invalid_argument(os.str());
+            }
+            archive_name_ = std::move(archive_name);
+        } else {
+            archive_name_ = getOmexRepository() + archive_name;
+        }
+    }
+
+    void Editor::setModelName(std::string model_name) {
+        // Check if model_name is already a valid uri
+        if (SemsimUtils::isFormattedUri(model_name)) {
+            // if so, also check that its relative to
+            // the archive name, otherwise it does not
+            // make sense
+            if (model_name.rfind(getArchiveName(), 0) != 0) {
+                std::ostringstream os;
+                os << "std::invalid_argument: Editor::setModelName: "
+                   << "A full uri has been given as the model_name "
+                      "attribute (\"" + model_name + "\") but this does not "
+                   << "match the uri given for the archive name : \"" + getModelName() + "\"";
+                throw std::invalid_argument(os.str());
+            }
+            model_name_ = std::move(model_name);
+        } else {
+            if (getArchiveName().empty()) {
+                throw std::logic_error("std::logic_error: Editor::setModelName: "
+                                       "Trying to set a model name without an archive name. Please"
+                                       " first use setArchiveName. ");
+            }
+            model_name_ = getArchiveName() + "/" + model_name;
+        }
+    }
+
+    void Editor::setLocalName(std::string local_name) {
+        // local names have the .rdf suffix
+        if (!SemsimUtils::hasEnding(local_name, ".rdf")) {
+            local_name = local_name + ".rdf";
+        }
+        // Check if model_name is already a valid uri
+        if (SemsimUtils::isFormattedUri(local_name)) {
+            // if so, also check that its relative to
+            // the archive name, otherwise it does not
+            // make sense
+            if (local_name.rfind(getArchiveName(), 0) != 0) {
+                std::ostringstream os;
+                os << "std::invalid_argument: Editor::setLocalName: "
+                   << "A full uri has been given as the local_name "
+                      "attribute (\"" + local_name + "\") but this does not "
+                   << "match the uri given for the archive name : \"" + getModelName() + "\"";
+                throw std::invalid_argument(os.str());
+            }
+            local_name_ = std::move(local_name);
+        } else {
+            if (getArchiveName().empty()) {
+                throw std::logic_error("std::logic_error: Editor::setModelName: "
+                                       "Trying to set a model name without an archive name. Please"
+                                       " first use setArchiveName. ");
+            }
+            local_name_ = getArchiveName() + "/" + local_name;
+        }
+    }
+
+    void Editor::setOmexRepository(std::string repository_name) {
+        if (SemsimUtils::isFormattedUri(repository_name)) {
+            repository_name_ = std::move(repository_name);
+        } else {
+            throw std::invalid_argument("std::invalid_argument: Editor::setOmexRepository "
+                                        "repository_name"
+                                        " argument \"" + repository_name + "\" is not formatted like a "
+                                                                           "proper url. ");
+        }
     }
 
 
 }
-
 
 
 

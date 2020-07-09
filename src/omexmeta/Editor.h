@@ -65,8 +65,13 @@ namespace omexmeta {
         const LibrdfModel &model_;
         bool create_ids_ = false;
         std::unordered_map<std::string, std::string> &namespaces_;
+        std::string repository_name_ = "http://myOmexLibrary.org/";
+        std::string archive_name_;
+        std::string model_name_;
+        std::string local_name_;
 
-        void extractNamespacesFromTriplesVector(PhysicalPhenomenon* pp);
+    private:
+        void extractNamespacesFromTriplesVector(PhysicalPhenomenon *pp);
 
     public:
 
@@ -74,6 +79,7 @@ namespace omexmeta {
         /*
          * @brief constructor for Editor.
          * @param xml The valid xml content for annotation
+         * @param create_ids. Autogenerate metaids for xml element that do not already have them
          * @param SemsimXmlType indicated which type of xml is being annotated. SEMSIM_TYPE_SBML, SEMSIM_TYPE_CELLML or SEMSIM_TYPE_UNKNOWN.
          * @param model a reference to the current model (owned by RDF).
          * @param nm_map a set of namespaces for current xml
@@ -144,7 +150,7 @@ namespace omexmeta {
          * @param pointer to the predicate the predicate portion of the triple. Ths is a pointer to support polymorphic calls.
          * @param resource the resource portion of the triple
          */
-        void addSingleAnnotation(Subject subject, PredicatePtr predicate_ptr, Resource resource);
+        void addSingleAnnotation(Subject subject, const PredicatePtr &predicate_ptr, const Resource &resource);
 
         /*
          * @brief Add a SingleAnnotation (aka Triple) to the rdf graph.
@@ -194,7 +200,7 @@ namespace omexmeta {
          * @brief remove triples associated with a PhysicalProcess object from the rdf graph
          * @param physicalProcess the PhysicalProcessto remove
          */
-        void removePhysicalProcess(PhysicalProcess& physicalProcess) const;
+        void removePhysicalProcess(PhysicalProcess &physicalProcess) const;
 
         /*
          * @brief add a composite annotation of type PhysicalForce to the rdf graph
@@ -237,9 +243,73 @@ namespace omexmeta {
 
         void removePhysicalPhenomenon(PhysicalPhenomenon *physicalPhenomenon) const;
 
-        void addAuthor(const std::string& orcid_id);
+        void addAuthor(const std::string &orcid_id);
 
         void addCurator(const std::string &orcid_id);
+
+        /*
+         * @brief Set the url for repository (myOmexlib).
+         * @param repository_name the name. Default is "https://myOmexLibrary.org/".
+         *
+         * This is the namespace attached to the `myOMEXlib`
+         * prefix.
+         */
+        void setOmexRepository(std::string repository_name);
+
+        /*
+         * @brief setter for the archive_name_ attribute.
+         *
+         * If @param archive_name already begins with "http",
+         * "https://: or "file://", the archive_name is assumed
+         * properly formatted and used without modification. If
+         * @param archive_name does not begin with one of these
+         * three prefixes, the current repository_name_ (which
+         * defaults to `https://myOmexLibrary.org/`) is used as the namespace. For example
+         * setting archive_name_ to "myOmex" becomes "https://myOmexLibrary.org/myOmex.omex".
+         */
+        void setArchiveName(std::string archive_name);
+
+        /*
+         * @brief get the current value of archive_name_
+         */
+        [[nodiscard]] std::string getArchiveName() const;
+
+        /*
+         * @brief Set the models name (myOMEX)
+         * @param The value of model_name. This is
+         * by definition relative to the repository_name attribute.
+         */
+        void setModelName(std::string model_name);
+
+        /*
+         * @brief get the current value of local_name_
+         */
+        std::string getLocalName() const;
+
+        /*
+         * @brief get the current value of model_name_
+         */
+        [[nodiscard]] std::string getModelName() const;
+
+
+        /*
+         * @brief get the current value of archive_name_
+         */
+        [[nodiscard]] std::string getOmexRepository() const;
+
+        /*
+         * @brief set the name local to the current rdf document.
+         * @param local_name the string to use for local
+         *
+         * The local_name string should contain the omex
+         * repository and the model name. For example:
+         * "http://myOmexLibrary.org/myOmex.omex/myModel.rdf".
+         * Note that the corresponsing model should be:
+         * "http://myOmexLibrary.org/myOmex.omex/myModel.sbml" or
+         * "http://myOmexLibrary.org/myOmex.omex/myModel.xml" or
+         * "http://myOmexLibrary.org/myOmex.omex/myModel.cellml".
+         */
+        void setLocalName(std::string local_name);
     };
 
 }

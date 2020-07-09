@@ -25,7 +25,7 @@ namespace omexmeta {
     }
 
     void SemsimXmlAssistant::addMetaIdsRecursion(xmlNode *a_node, std::vector<std::string> &seen_metaids) {
-        //todo make private if not already
+        //todo make OmexMetaId sting
         MetaID metaId("OmexMetaId", 0, 4);
         xmlNode *cur_node;
         cur_node = a_node;
@@ -44,6 +44,7 @@ namespace omexmeta {
                         // if not, we add one and give it a unique value
                         std::string id;
                         SemsimXmlAssistant::generateMetaId(seen_metaids, count, metaId, id);
+                        //todo make the metaid string a parameter so we can call it cmeta in cellml
                         xmlNewProp(cur_node, (const xmlChar *) "metaid", (const xmlChar *) id.c_str());
                         seen_metaids.push_back(id);
                         count += 1;

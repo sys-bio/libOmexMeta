@@ -184,10 +184,10 @@ namespace omexmeta {
         for (auto &it: namespaces_) {
             serializer.setNamespace(it.first, it.second);
         }
-
-        serializer.setNamespace(myomexlib_, "myOMEXlib");
-        serializer.setNamespace(myomexlib_+model_name+".omex", "myOMEX");
-        serializer.setNamespace(myomexlib_+model_name+".rdf#", "local");
+//
+//        serializer.setNamespace(myomexlib_, "myOMEXlib");
+//        serializer.setNamespace(myomexlib_+model_name+".omex", "myOMEX");
+//        serializer.setNamespace(myomexlib_+model_name+".rdf#", "local");
         return serializer.toString(base_uri, model_);
     }
 
@@ -197,11 +197,11 @@ namespace omexmeta {
     }
 
     Editor RDF::toEditor(const std::string &xml, SemsimXmlType type) {
-        return Editor(xml, type, model_, namespaces_);
+        return Editor(xml, type, false, model_, namespaces_);
     }
 
     Editor *RDF::toEditorPtr(const std::string &xml, SemsimXmlType type) {
-        auto *editor = new Editor(xml, type, model_, namespaces_);
+        auto *editor = new Editor(xml, type, false, model_, namespaces_);
         return editor;
     }
 
