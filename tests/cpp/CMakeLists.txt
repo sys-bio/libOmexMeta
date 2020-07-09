@@ -42,7 +42,14 @@ add_test(
         COMMAND $<TARGET_FILE:OmexMetaTests>
 )
 set_tests_properties(OmexMetaTests PROPERTIES DEPENDS OmexMeta)
-add_dependencies(OmexMetaTests OmexMeta-static)
+add_dependencies(OmexMetaTests OmexMeta-static gtest gtest_main)
+
+#if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+#    set_target_properties(OmexMetaTests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+#elseif (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+#    set_target_properties(OmexMetaTests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
+#endif()
+
 
 # links
 target_link_libraries(OmexMetaTests PUBLIC
@@ -50,6 +57,7 @@ target_link_libraries(OmexMetaTests PUBLIC
         $<TARGET_FILE:OmexMeta-static>
         $<TARGET_FILE:redland-combined-static>
         ${LINK_LIBRARIES}
+        ${RUNTIME}# best here so no clash with dynamic
         gtest gtest_main
         )
 
@@ -60,7 +68,7 @@ target_include_directories(OmexMetaTests PRIVATE
         ${WRAPPER_SOURCE_DIR}
         )
 
-add_dependencies(OmexMetaTests OmexMeta-static)
+add_dependencies(OmexMetaTests OmexMeta-static gtest gtest_main)
 
 install(
         TARGETS OmexMetaTests
@@ -68,13 +76,14 @@ install(
         RUNTIME DESTINATION bin
 )
 
-#foreach (lib ${LIBRARIES_DLL})
-#    add_custom_command(TARGET OmexMetaTests POST_BUILD        # Adds a post-build event to MyTest
-#            COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
-#            "${lib}"      # <--this is in-file
-#            "${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ")
-#endforeach ()
-
+#if (PLATFORM STREQUAL "windows-msvc")
+#    foreach (lib ${LIBRARIES_DLL})
+#        add_custom_command(TARGET OmexMetaTests POST_BUILD        # Adds a post-build event to MyTest
+#                COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
+#                "${lib}"      # <--this is in-file
+#                "${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ")
+#    endforeach ()
+#endif ()
 
 
 

@@ -120,7 +120,7 @@ TEST_F(LibrdfSerializerTests, TestBaseUri) {
             LibrdfNode::fromUriString("https://resource.com")
     );
     model.addStatement(statement);
-    LibrdfSerializer serializer1 = LibrdfSerializer("turtle");
+    LibrdfSerializer serializer1 = LibrdfSerializer("ntriples");
     std::string actual = serializer1.toString("base_uri", model);
     std::string expected = "<https://subject.com> <https://predicate.com> <https://resource.com> .\n";
     std::cout << actual << std::endl;
@@ -139,8 +139,8 @@ TEST_F(LibrdfSerializerTests, TestFeatures) {
             LibrdfNode::fromUriString("https://resource.com")
     );
     model.addStatement(statement);
-    LibrdfSerializer serializer("turtle");
-    serializer.setOption("writeBaseURI", "1");
+    LibrdfSerializer serializer("rdfxml-abbrev");
+    serializer.setOption("writeBaseURI", "0");
 //    librdf_serializer_get_feature()
 
 //    LibrdfUri writerAutoIndentUri("http://feature.librdf.org/raptor-writerAutoIndent");

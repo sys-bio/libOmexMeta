@@ -405,21 +405,16 @@ add_library(redland-combined-static STATIC
 set_target_properties(redland-combined-static PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 # set runtime to MultiThreaded for static .lib build on windows. Ignored on other systems.
-set_target_properties(redland-combined-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+#if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+#    set_target_properties(redland-combined-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+#elseif (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+#    set_target_properties(redland-combined-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
+#endif()
 
 # includes
 target_include_directories(redland-combined-static PUBLIC
         ${INCLUDE_DIRECTORIES}
         )
-
-# set runtime library on windows, which is different between debug and release.
-if (PLATFORM STREQUAL "windows-msvc")
-    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-        set(RUNTIME "libucrtd")
-    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-        set(RUNTIME "libucrt")
-    endif ()
-endif ()
 
 # link libraries
 target_link_libraries(redland-combined-static PUBLIC
@@ -441,6 +436,17 @@ INSTALL(
         LIBRARY DESTINATION lib
         RUNTIME DESTINATION bin
 )
+
+if (PLATFORM STREQUAL "windows-msvc")
+    foreach (lib ${LIBRARIES})
+        add_custom_command(TARGET redland-combined-static POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different  "${lib}"
+                "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+        add_custom_command(TARGET redland-combined-static POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${lib}" "${PYOMEXMETA_DIR}")
+    endforeach ()
+endif ()
 
 # When BUILD_TESTS is on, add the tests
 if (BUILD_TESTS)
@@ -466,15 +472,15 @@ if (BUILD_SHARED_LIBS)
     set_target_properties(redland-combined PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
     # set runtime library
-    if (PLATFORM STREQUAL "windows-msvc")
-        if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-            set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDll")
-            set(RUNTIME "ucrtd")
-        elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-            set(RUNTIME "ucrt")
-            set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDll")
-        endif ()
-    endif ()
+#    if (PLATFORM STREQUAL "windows-msvc")
+#        if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+#            set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDll")
+#            set(RUNTIME "ucrtd")
+#        elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+#            set(RUNTIME "ucrt")
+#            set_target_properties(redland-combined PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDll")
+#        endif ()
+#    endif ()
 
     # includes
     target_include_directories(redland-combined PUBLIC

@@ -132,7 +132,7 @@ namespace redland {
         }
         if (failure) {
             throw std::logic_error(
-                    "std::logic_error: LibrdfSerializer::setOption. Failed to ser serializer option: " + option);
+                    "std::logic_error: LibrdfSerializer::setOption. Failed to set serializer option: " + option);
         }
         node.freeNode();
         feature_uri.freeUri();

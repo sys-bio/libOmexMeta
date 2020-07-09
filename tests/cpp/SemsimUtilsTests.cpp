@@ -46,7 +46,7 @@ TEST_F(SemsimUtilsTests, TestRemoveIfExists2) {
 
 TEST_F(SemsimUtilsTests, TestPrefixFile) {
 
-    std::string fname = std::filesystem::current_path() /= "cheese_biscuits.blue";
+    std::string fname = (std::filesystem::current_path() /= "cheese_biscuits.blue").string();
     fname = omexmeta::SemsimUtils::addFilePrefixToString(fname);
 
 //    std::string expected = "file://" + fname;

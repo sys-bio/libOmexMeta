@@ -230,5 +230,41 @@ namespace omexmeta {
         return librdf_model_transaction_rollback(getModel());
     }
 
+    std::ostringstream RDF::listOptions() {
+    raptor_world *raptor_world_ptr = raptor_new_world();
+    int num_raptor_options = (int) raptor_option_get_count() - 1;
+    std::ostringstream os;
+    os << "option, name, label, domain, value type, uri" << std::endl;
+    int i = 0;
+    while (i != num_raptor_options) {
+        raptor_option_description *parser_opt = raptor_world_get_option_description(
+                raptor_world_ptr,
+                RAPTOR_DOMAIN_PARSER,
+                (raptor_option) i
+        );
+        if (parser_opt) {
+            os << parser_opt->option << "," << parser_opt->name << "," << parser_opt->label << ","
+               << parser_opt->domain
+               << "," << parser_opt->value_type << "," << raptor_uri_to_string(parser_opt->uri) << std::endl;
+        } else {
+            raptor_option_description *serializer_opt = raptor_world_get_option_description(
+                    raptor_world_ptr,
+
+                    RAPTOR_DOMAIN_SERIALIZER,
+                    (raptor_option) i
+            );
+            if (serializer_opt) {
+                os << serializer_opt->option << "," << serializer_opt->name << "," << serializer_opt->label
+                   << ","
+                   << serializer_opt->domain
+                   << "," << serializer_opt->value_type << "," << raptor_uri_to_string(serializer_opt->uri)
+                   << std::endl;
+            }
+        }
+        i++;
+    };
+    return os;
+}
+
 
 }

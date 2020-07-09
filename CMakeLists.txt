@@ -53,10 +53,15 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CXX_STANDARD_REQUIRED ON)
 
+# on msvc CMAKE_CXX_STANDARD doesnt work so we must set manually
+if (MSVC)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17")
+endif (MSVC)
+
 # pic - needed on linux ignored on other platofrms
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-# location of pyomexmeta development pacakge.
+# location of pyomexmeta development package.
 set(PYOMEXMETA_DIR "${CMAKE_SOURCE_DIR}/src/pyomexmeta")
 
 # location of googletesting framework
@@ -108,23 +113,42 @@ if (${WITH_BDB})
     add_definitions(-DWITH_BDB)
 endif ()
 
-#if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-#    #  remove optimizations for Debug builds.
-#    #  and add -g -> instructs compiler to generate and retain
-#    #  source level debug information.
-#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g")
-#    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0 -g")
-#elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
-#    # set optimizations to highest level for Release builds
-#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Os")
-#    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Os")
-#endif ()
+if (NOT PLATFORM STREQUAL "windows-msvc")
+    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+        #  remove optimizations for Debug builds.
+        #  and add -g -> instructs compiler to generate and retain
+        #  source level debug information.
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0 -g")
 
+    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+        # set optimizations to highest level for Release builds
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Os")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Os")
+    endif ()
+endif (NOT PLATFORM STREQUAL "windows-msvc")
 # run the tests and generate coverage output
 option(WITH_COVERAGE OFF)
 
 # set RPATH for libraries and executables.
 set(RPATH "$ORIGIN:$ORIGIN/../lib")
+
+# set runtime library on windows, which is different between debug and release.
+if (PLATFORM STREQUAL "windows-msvc")
+    if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+        set(RUNTIME "libucrtd")
+    elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+        set(RUNTIME "libucrt")
+    endif ()
+endif ()
+
+# set gtest libraries which are different between debug and release.
+#if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+set(GTEST_LIBS $<TARGET_FILE:gtest> $<TARGET_FILE:gtest_main>)
+#elseif (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+#    set(GTEST_LIBS gtest gtest_main)
+#endif ()
+
 
 
 ############################################################3

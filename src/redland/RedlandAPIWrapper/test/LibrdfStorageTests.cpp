@@ -67,7 +67,7 @@ TEST_F(LibrdfStorageTests, TestMoveAssignment) {
 TEST_F(LibrdfStorageTests, TestSQLiteStorage) {
     std::filesystem::path fname = std::filesystem::current_path() += "StorageName.db";
     raptor_world* raptor_world_ptr = librdf_world_get_raptor(world);
-    LibrdfStorage storage = LibrdfStorage("sqlite", fname, "new='yes'");
+    LibrdfStorage storage = LibrdfStorage("sqlite", fname.string(), "new='yes'");
     LibrdfModel model(storage.get());
     model.addStatement(statement);
     raptor_iostream* iostr = raptor_new_iostream_to_file_handle(raptor_world_ptr, stdout);

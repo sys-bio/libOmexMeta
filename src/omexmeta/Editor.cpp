@@ -43,15 +43,26 @@ namespace omexmeta {
     }
 
     void Editor::checkValidMetaid(const std::string &metaid) {
-        if (std::find(metaids_.begin(), metaids_.end(), metaid) == metaids_.end()) {
+        // Check is metaid is a substring of one of the metaids.
+        // throw error if not
+        bool found = false;
+        for (auto &it : metaids_) {
+            if (metaid.find(it) != std::string::npos) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
             std::ostringstream err;
-            err << "std::invalid_argument(): metaid \"" << metaid << "\" not found. ";
+            err << "std::invalid_argument(): metaid \"" << metaid << "\" is not equal to or a substring ";
+            err << "of any of your metaids. ";
             err << "These are your available metaids: ";
             for (auto &it: metaids_) {
                 err << it << ", ";
             }
             throw std::invalid_argument(err.str());
         }
+
     }
 
     void Editor::extractNamespacesFromTriplesVector(PhysicalPhenomenon *pp) {
@@ -306,28 +317,29 @@ namespace omexmeta {
         if (!SemsimUtils::hasEnding(local_name, ".rdf")) {
             local_name = local_name + ".rdf";
         }
-        // Check if model_name is already a valid uri
-        if (SemsimUtils::isFormattedUri(local_name)) {
-            // if so, also check that its relative to
-            // the archive name, otherwise it does not
-            // make sense
-            if (local_name.rfind(getArchiveName(), 0) != 0) {
-                std::ostringstream os;
-                os << "std::invalid_argument: Editor::setLocalName: "
-                   << "A full uri has been given as the local_name "
-                      "attribute (\"" + local_name + "\") but this does not "
-                   << "match the uri given for the archive name : \"" + getModelName() + "\"";
-                throw std::invalid_argument(os.str());
-            }
-            local_name_ = std::move(local_name);
-        } else {
-            if (getArchiveName().empty()) {
-                throw std::logic_error("std::logic_error: Editor::setModelName: "
-                                       "Trying to set a model name without an archive name. Please"
-                                       " first use setArchiveName. ");
-            }
-            local_name_ = getArchiveName() + "/" + local_name;
+        if (getArchiveName().empty()) {
+            throw std::logic_error("std::logic_error: Editor::setModelName: "
+                                   "Trying to set a model name without an archive name. Please"
+                                   " first use setArchiveName. ");
         }
+        local_name_ = getArchiveName() + "/" + local_name;
+        // Check if model_name is already a valid uri
+//        if (SemsimUtils::isFormattedUri(local_name)) {
+//            // if so, also check that its relative to
+//            // the archive name, otherwise it does not
+//            // make sense
+//            if (local_name.rfind(getArchiveName(), 0) != 0) {
+//                std::ostringstream os;
+//                os << "std::invalid_argument: Editor::setLocalName: "
+//                   << "A full uri has been given as the local_name "
+//                      "attribute (\"" + local_name + "\") but this does not "
+//                   << "match the uri given for the archive name : \"" + getModelName() + "\"";
+//                throw std::invalid_argument(os.str());
+//            }
+//            local_name_ = std::move(local_name);
+//        } else {
+//
+//        }
     }
 
     void Editor::setOmexRepository(std::string repository_name) {
@@ -339,6 +351,16 @@ namespace omexmeta {
                                         " argument \"" + repository_name + "\" is not formatted like a "
                                                                            "proper url. ");
         }
+    }
+
+    LibrdfNode Editor::createNodeWithLocalUri(const std::string &string) const {
+        if (getLocalName().empty()) {
+            throw std::logic_error("std::logic_error: Editor::createNodeWithLocalUri: "
+                                   "Trying to create a node with a uri relative to "
+                                   "the local namespace without previously setting the local "
+                                   "namespace. Please use the setLocalName() method. ");
+        }
+        return LibrdfNode::fromUriString(getLocalName() + string);
     }
 
 

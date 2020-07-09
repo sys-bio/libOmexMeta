@@ -58,7 +58,12 @@ set(OMEXMETA_SOURCES
 add_library(OmexMeta-static STATIC ${OMEXMETA_HEADERS} ${OMEXMETA_SOURCES})
 
 # set runtime static for windows (ignored on other systems)
-set_target_properties(OmexMeta-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+#if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+#    set_target_properties(OmexMeta-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+#elseif (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+#    set_target_properties(OmexMeta-static PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
+#endif()
+
 
 # add redland-combined as dependency
 add_dependencies(OmexMeta-static redland-combined-static)
@@ -206,81 +211,6 @@ endif ()
 
 
 
-
-#Install the project...
-#/home/travis/cmake-3.15.7-Linux-x86_64/bin/cmake -P cmake_install.cmake
-#-- Install configuration: ""
-#-- Installing: /home/travis/install/include/redland/raptor2.h
-#-- Installing: /home/travis/install/include/redland/rasqal.h
-#-- Installing: /home/travis/install/include/redland/librdf.h
-#-- Installing: /home/travis/install/lib/libredland-combined-static.a
-#-- Installing: /home/travis/install/bin/redland-wrapper-tests
-#-- Set runtime path of "/home/travis/install/bin/redland-wrapper-tests" to "$ORIGIN:$ORIGIN/../lib"
-#-- Installing: /home/travis/install/lib/libOmexMeta-static.a
-#-- Up-to-date: /home/travis/install/include
-#-- Installing: /home/travis/install/include/gmock
-#-- Installing: /home/travis/install/include/gmock/gmock-more-actions.h
-#-- Installing: /home/travis/install/include/gmock/gmock-matchers.h
-#-- Installing: /home/travis/install/include/gmock/gmock-cardinalities.h
-#-- Installing: /home/travis/install/include/gmock/gmock.h
-#-- Installing: /home/travis/install/include/gmock/gmock-generated-actions.h.pump
-#-- Installing: /home/travis/install/include/gmock/gmock-nice-strict.h
-#-- Installing: /home/travis/install/include/gmock/gmock-function-mocker.h
-#-- Installing: /home/travis/install/include/gmock/internal
-#-- Installing: /home/travis/install/include/gmock/internal/gmock-pp.h
-#-- Installing: /home/travis/install/include/gmock/internal/gmock-port.h
-#-- Installing: /home/travis/install/include/gmock/internal/gmock-internal-utils.h
-#-- Installing: /home/travis/install/include/gmock/internal/custom
-#-- Installing: /home/travis/install/include/gmock/internal/custom/gmock-port.h
-#-- Installing: /home/travis/install/include/gmock/internal/custom/gmock-matchers.h
-#-- Installing: /home/travis/install/include/gmock/internal/custom/gmock-generated-actions.h.pump
-#-- Installing: /home/travis/install/include/gmock/internal/custom/README.md
-#-- Installing: /home/travis/install/include/gmock/internal/custom/gmock-generated-actions.h
-#-- Installing: /home/travis/install/include/gmock/gmock-generated-actions.h
-#-- Installing: /home/travis/install/include/gmock/gmock-actions.h
-#-- Installing: /home/travis/install/include/gmock/gmock-spec-builders.h
-#-- Installing: /home/travis/install/include/gmock/gmock-more-matchers.h
-#-- Installing: /home/travis/install/lib/libgmock.a
-#-- Installing: /home/travis/install/lib/libgmock_main.a
-#-- Installing: /home/travis/install/lib/pkgconfig/gmock.pc
-#-- Installing: /home/travis/install/lib/pkgconfig/gmock_main.pc
-#-- Installing: /home/travis/install/lib/cmake/GTest/GTestTargets.cmake
-#-- Installing: /home/travis/install/lib/cmake/GTest/GTestTargets-noconfig.cmake
-#-- Installing: /home/travis/install/lib/cmake/GTest/GTestConfigVersion.cmake
-#-- Installing: /home/travis/install/lib/cmake/GTest/GTestConfig.cmake
-#-- Up-to-date: /home/travis/install/include
-#-- Installing: /home/travis/install/include/gtest
-#-- Installing: /home/travis/install/include/gtest/gtest-test-part.h
-#-- Installing: /home/travis/install/include/gtest/gtest.h
-#-- Installing: /home/travis/install/include/gtest/gtest-message.h
-#-- Installing: /home/travis/install/include/gtest/gtest-param-test.h
-#-- Installing: /home/travis/install/include/gtest/gtest_prod.h
-#-- Installing: /home/travis/install/include/gtest/gtest-spi.h
-#-- Installing: /home/travis/install/include/gtest/gtest-typed-test.h
-#-- Installing: /home/travis/install/include/gtest/gtest-printers.h
-#-- Installing: /home/travis/install/include/gtest/gtest_pred_impl.h
-#-- Installing: /home/travis/install/include/gtest/gtest-matchers.h
-#-- Installing: /home/travis/install/include/gtest/internal
-#-- Installing: /home/travis/install/include/gtest/internal/gtest-internal.h
-#-- Installing: /home/travis/install/include/gtest/internal/gtest-string.h
-#-- Installing: /home/travis/install/include/gtest/internal/gtest-type-util.h
-#-- Installing: /home/travis/install/include/gtest/internal/gtest-port.h
-#-- Installing: /home/travis/install/include/gtest/internal/gtest-death-test-internal.h
-#-- Installing: /home/travis/install/include/gtest/internal/gtest-filepath.h
-#-- Installing: /home/travis/install/include/gtest/internal/custom
-#-- Installing: /home/travis/install/include/gtest/internal/custom/gtest.h
-#-- Installing: /home/travis/install/include/gtest/internal/custom/gtest-port.h
-#-- Installing: /home/travis/install/include/gtest/internal/custom/gtest-printers.h
-#-- Installing: /home/travis/install/include/gtest/internal/custom/README.md
-#-- Installing: /home/travis/install/include/gtest/internal/gtest-port-arch.h
-#-- Installing: /home/travis/install/include/gtest/internal/gtest-param-util.h
-#-- Installing: /home/travis/install/include/gtest/gtest-death-test.h
-#-- Installing: /home/travis/install/lib/libgtest.a
-#-- Installing: /home/travis/install/lib/libgtest_main.a
-#-- Installing: /home/travis/install/lib/pkgconfig/gtest.pc
-#-- Installing: /home/travis/install/lib/pkgconfig/gtest_main.pc
-#-- Installing: /home/travis/install/bin/OmexMetaTests
-#-- Set runtime path of "/home/travis/install/bin/OmexMetaTests" to "$ORIGIN:$ORIGIN/../lib"
 
 
 

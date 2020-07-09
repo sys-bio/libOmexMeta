@@ -66,15 +66,14 @@ namespace omexmeta {
         bool create_ids_ = false;
         std::unordered_map<std::string, std::string> &namespaces_;
         std::string repository_name_ = "http://myOmexLibrary.org/";
-        std::string archive_name_;
-        std::string model_name_;
-        std::string local_name_;
+        std::string archive_name_ = "http://myOmexLibrary.org/MyOmex.omex";
+        std::string model_name_ = "http://myOmexLibrary.org/MyOmex.omex/mymodel.xml";
+        std::string local_name_ = "http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf";
 
     private:
         void extractNamespacesFromTriplesVector(PhysicalPhenomenon *pp);
 
     public:
-
 
         /*
          * @brief constructor for Editor.
@@ -310,6 +309,10 @@ namespace omexmeta {
          * "http://myOmexLibrary.org/myOmex.omex/myModel.cellml".
          */
         void setLocalName(std::string local_name);
+
+        void createLocalUri(std::string string);
+
+        LibrdfNode createNodeWithLocalUri(const std::string& string) const;
     };
 
 }

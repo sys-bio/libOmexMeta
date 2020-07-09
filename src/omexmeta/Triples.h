@@ -83,7 +83,7 @@ namespace omexmeta {
         TripleVector::iterator end();
 
         std::string str(const std::string &format = "rdfxml-abbrev",
-                std::string base = std::filesystem::current_path() /= "annotations.rdf");
+                std::string base = (std::filesystem::current_path() /= "annotations.rdf").string());
 
         void freeTriples();
 

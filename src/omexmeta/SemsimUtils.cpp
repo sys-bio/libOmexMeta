@@ -94,10 +94,9 @@ namespace omexmeta {
         }
 
         // otherwise we use the current working directory as an absolute path
-        std::string out = std::filesystem::current_path() /= str;
-        std::cout << "Note that we might have problems on windows here. Keep this message until you've dealt with these"
-                  << std::endl;
-        return out;
+        std::filesystem::path out = std::filesystem::current_path() /= str;
+        std::cout << "Note that we might have problems on windows here. Keep this message until you've dealt with these"<< std::endl;
+        return out.string();
     }
 
     std::string SemsimUtils::getNamespaceFromUri(const std::string &uri) {

@@ -102,18 +102,6 @@ TEST_F(EditorTests, TestArchiveName3) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(EditorTests, TestSetModelNameErrorNoArchiveName) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-            SEMSIM_TYPE_SBML);
-
-    std::string expected = "http://myOmexLibrary.org/myomex.omex/Smad.sbml";
-    ASSERT_THROW(
-            editor.setModelName("Smad.sbml"),
-            std::logic_error
-    );
-}
 
 TEST_F(EditorTests, TestSetModelName) {
     RDF rdf;
@@ -186,7 +174,21 @@ TEST_F(EditorTests, TestAddSingleAnnotationToEditor) {
     int actual = editor.size();
     ASSERT_EQ(expected, actual);
     triple.freeStatement();
+}
 
+TEST_F(EditorTests, TestEditorCreateUriRelativeToLocalUri) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+    editor.setArchiveName("MyOmexArchive");
+    editor.setModelName("mymodel.sbml");
+    editor.setLocalName("mymodel.rdf");
+    LibrdfNode node = editor.createNodeWithLocalUri("#OmexMetaId0009");
+    std::string actual = node.str();
+    std::string expected = "http://myOmexLibrary.org/MyOmexArchive.omex/mymodel.rdf#OmexMetaId0009";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    node.freeNode();
 }
 
 TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
@@ -194,23 +196,15 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
-    editor.createLocalUri("#OmexMetaId0009");
-    Subject subject = Subject(LibrdfNode::fromUriString("#OmexMetaId0009"));
+    Subject subject = Subject(editor.createNodeWithLocalUri("#OmexMetaId0009"));
     BiomodelsBiologyQualifier predicate("is");
     Resource resource = Resource(LibrdfNode::fromUriString("uniprot:P0DP23"));
     Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
     editor.addSingleAnnotation(triple);
 
-
     std::string actual = rdf.toString("rdfxml", "MyModel");
     std::cout << actual << std::endl;
-    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://MyModel.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"#OmexMetaId0009\">\n"
-                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
-                           "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
-                           "";
+    std::string expected = "";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triple.freeStatement();
 }
@@ -243,8 +237,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
-    editor.
-            addSingleAnnotation(
+    editor.addSingleAnnotation(
             Subject(LibrdfNode::fromUriString("#OmexMetaId0008")),
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
             Resource(LibrdfNode::fromUriString("pubmed:12991237"))
@@ -252,14 +245,12 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
 
     std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"#OmexMetaId0008\">\n"
-                           "    <bqbiol:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\"/>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"/mnt/d/libOmexMeta/cmake-build-debug-wsl-ubuntu1804-gcc101/bin/\">\n"
+                           "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#OmexMetaId0009\">\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
-                           "";
-    std::cout << actual <<
-              std::endl;
+                           "</rdf:RDF>";
+    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 

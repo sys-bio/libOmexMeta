@@ -29,10 +29,16 @@ set_target_properties(redland-wrapper-tests PROPERTIES INSTALL_RPATH ${RPATH})
 set_target_properties(redland-wrapper-tests PROPERTIES BUILD_RPATH ${RPATH})
 
 #ignored on other platforms
-set_target_properties(redland-wrapper-tests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+# set runtime static for windows (ignored on other systems)
+#if (${CMAKE_BUILD_TYPE} STREQUAL "Release")
+#    set_target_properties(redland-wrapper-tests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded")
+#elseif (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+#    set_target_properties(redland-wrapper-tests PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
+#endif()
+
 
 # setup dependencies
-add_dependencies(redland-wrapper-tests redland-combined-static)
+add_dependencies(redland-wrapper-tests redland-combined-static gtest gtest_main)
 
 # includes
 target_include_directories(redland-wrapper-tests PRIVATE
@@ -41,11 +47,14 @@ target_include_directories(redland-wrapper-tests PRIVATE
         ${INCLUDE_DIRECTORIES}
         )
 
+
+
 # links
 target_link_libraries(redland-wrapper-tests PRIVATE
         gtest gtest_main
         $<TARGET_FILE:redland-combined-static>
         ${LINK_LIBRARIES}
+        ${RUNTIME}# best here so no clash with dynamic
         )
 
 # install tests.

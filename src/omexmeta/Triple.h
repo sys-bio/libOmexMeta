@@ -54,7 +54,7 @@ namespace omexmeta {
          * a triple only.
          */
         std::string str(const std::string &format = "rdfxml-abbrev",
-                const std::string &base = std::filesystem::current_path() /=  "annotations.rdf") const;
+                const std::string &base = (std::filesystem::current_path() /=  "annotations.rdf").string()) const;
 
         void freeTriple();
 

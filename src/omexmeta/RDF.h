@@ -157,6 +157,8 @@ namespace omexmeta {
         int startTransactionWithHandle(void *handle) const;
 
         int getTransactionRollback() const;
+
+        static std::ostringstream listOptions();
     };
 }
 
