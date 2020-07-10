@@ -286,7 +286,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
 
     SingularAnnotation singularAnnotation;
     singularAnnotation
-            .setAbout("#OmexMetaId0001")
+            .setAbout("myomex", "mymodel.xml", "#OmexMetaId0001")
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot:PD02635");
 
@@ -456,7 +456,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
 
     SingularAnnotation singularAnnotation;
     singularAnnotation
-            .setAbout("#OmexMetaId0000")
+            .setAbout("myomex", "mymodel.xml", "#OmexMetaId0000")
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
 
@@ -539,7 +539,7 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
 
     SingularAnnotation singularAnnotation;
     singularAnnotation
-            .setAbout("#OmexMetaId0000")
+            .setAbout("myomex", "mymodel.xml", "#OmexMetaId0000")
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
 

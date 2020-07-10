@@ -310,8 +310,11 @@ TEST(TriplesTestsNoFixture, TestStr) {
             LibrdfNode::fromUriString("http://resource2.com/resource2").get()
     );
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xml:base=\"file://./annotations.rdf\">\n"
+                           "<rdf:RDF xmlns:local=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/MyOmex.omex/MyModel.xml\"\n"
+                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/MyOmex.omex\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+//                           "   xml:base=\"file:///mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/bin/annotations.rdf\">\n"
                            "  <rdf:Description rdf:about=\"http://subject1.com/subject1\">\n"
                            "    <ns1:predicate1 xmlns:ns1=\"http://predicate1.com/\"\n"
                            "       rdf:resource=\"http://resource1.com/resource1\"/>\n"
@@ -396,27 +399,6 @@ TEST(TriplesTestsNoFixture, TestEquality) {
     ASSERT_EQ(triples1, triples2);
     triples1.freeTriples();
     triples2.freeTriples();
-}
-
-
-TEST(TriplesTestsNoFixture, TestUsages1) {
-    Triples triples1(1);
-    triples1.emplace_back(
-            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
-            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
-            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
-    );
-
-    Triple triple = triples1.pop_front();
-    auto m = triple.getUsages();
-    ASSERT_EQ(1, m["statement"]);
-    ASSERT_EQ(1, m["subject"]);
-    ASSERT_EQ(1, m["predicate"]);
-    ASSERT_EQ(1, m["resource"]);
-    ASSERT_EQ(1, m["subject_uri"]);
-    ASSERT_EQ(1, m["predicate_uri"]);
-    ASSERT_EQ(1, m["resource_uri"]);
-    triple.freeTriple();
 }
 
 TEST(TriplesTestsNoFixture, TestUsagesPhysicalForce) {

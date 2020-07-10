@@ -47,7 +47,7 @@ TEST_F(SemsimUtilsTests, TestRemoveIfExists2) {
 TEST_F(SemsimUtilsTests, TestPrefixFile) {
 
     std::string fname = (std::filesystem::current_path() /= "cheese_biscuits.blue").string();
-    fname = omexmeta::SemsimUtils::addFilePrefixToString(fname);
+    fname = omexmeta::SemsimUtils::prepareBaseUri(fname);
 
 //    std::string expected = "file://" + fname;
     std::string expected = fname;
@@ -96,4 +96,11 @@ TEST_F(SemsimUtilsTests, TestHasEndingTrue) {
 TEST_F(SemsimUtilsTests, TestHasEndingFalse) {
     std::string s = "IAmAStringWithAnEndingomex";
     ASSERT_FALSE(omexmeta::SemsimUtils::hasEnding(s, ".omex"));
+}
+
+TEST_F(SemsimUtilsTests, configureSelfStrings) {
+    std::vector<std::string> vec = omexmeta::SemsimUtils::configureSelfStrings("OmexLibrary.omex", "model.sbml");
+    ASSERT_STREQ("http://MyOmexLibrary.org/OmexLibrary.omex", vec[0].c_str());
+    ASSERT_STREQ("http://MyOmexLibrary.org/OmexLibrary.omex/model.sbml", vec[1].c_str());
+    ASSERT_STREQ("http://MyOmexLibrary.org/OmexLibrary.omex/model.rdf#", vec[2].c_str());
 }

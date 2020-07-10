@@ -140,37 +140,28 @@ TEST_F(LibrdfSerializerTests, TestFeatures) {
     );
     model.addStatement(statement);
     LibrdfSerializer serializer("rdfxml-abbrev");
-    serializer.setOption("writeBaseURI", "0");
-//    librdf_serializer_get_feature()
 
-//    LibrdfUri writerAutoIndentUri("http://feature.librdf.org/raptor-writerAutoIndent");
-//    LibrdfNode writerAutoIndentNode = LibrdfNode(
-//            librdf_serializer_get_feature(
-//                    serializer.get(), writerAutoIndentUri.get())
-//    );
-//    LibrdfUri writerAutoEmptyUri("http://feature.librdf.org/raptor-writerAutoEmpty");
-//    LibrdfNode writerAutoEmptyNode = LibrdfNode(
-//            librdf_serializer_get_feature(
-//                    serializer.get(), writerAutoIndentUri.get())
-//    );
+    serializer.setOption("relativeURIs", "0");
+    LibrdfUri relativeURIsUri("http://feature.librdf.org/raptor-relativeURIs");
+    LibrdfNode relativeURIsNode = LibrdfNode(
+            librdf_serializer_get_feature(
+                    serializer.get(), relativeURIsUri.get())
+    );
+    ASSERT_EQ("0", relativeURIsNode.str());
+
+    serializer.setOption("writeBaseURI", "0");
     LibrdfUri writeBaseUriUri("http://feature.librdf.org/raptor-writeBaseURI");
     LibrdfNode writeBaseUriNode = LibrdfNode(
             librdf_serializer_get_feature(
                     serializer.get(), writeBaseUriUri.get())
     );
-
-
-//    ASSERT_EQ("1", writerAutoIndentNode.str());
-//    ASSERT_EQ("1", writerAutoEmptyNode.str());
     ASSERT_EQ("0", writeBaseUriNode.str());
-
-//    writerAutoIndentNode.freeNode();
-//    writerAutoIndentUri.freeUri();
-//    writerAutoEmptyNode.freeNode();
-//    writerAutoEmptyUri.freeUri();
-//    writeBaseUriNode.freeNode();
-//    writeBaseUriUri.freeUri();
-
+    serializer.freeSerializer();
+    relativeURIsUri.freeUri();
+    relativeURIsNode.freeNode();
+    writeBaseUriUri.freeUri();
+    writeBaseUriNode.freeNode();
+    statement.freeStatement();
     model.freeModel();
     storage.freeStorage();
 }

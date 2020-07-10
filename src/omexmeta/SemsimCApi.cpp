@@ -232,11 +232,10 @@ namespace omexmeta {
         free(singularAnnotationPtr);
     }
 
-    SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about) {
-        singular_annotation->setAbout(about);
+    SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char* omex_name, const char* model_name, const char *about) {
+        singular_annotation->setAbout(omex_name, model_name, about);
         return singular_annotation;
     };
-
 
     SingularAnnotation *SingularAnnotation_setPredicate(
             SingularAnnotation *singular_annotation, const char *namespace_, const char *term) {

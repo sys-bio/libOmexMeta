@@ -137,7 +137,7 @@ namespace omexmeta {
             err << std::endl;
             throw std::invalid_argument(err.str());
         }
-        baseuri = SemsimUtils::addFilePrefixToString(baseuri);
+        baseuri = SemsimUtils::prepareBaseUri(baseuri);
         LibrdfUri uri(baseuri);
         unsigned char *s = librdf_query_results_to_string2(
                 query_results_, output_format.c_str(),

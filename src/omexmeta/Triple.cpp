@@ -22,7 +22,7 @@ namespace omexmeta {
 
     Triple::Triple(librdf_statement *statement) : LibrdfStatement(statement) {}
 
-    std::string Triple::str(const std::string &format, const std::string &base) const {
+    std::string Triple::str(const std::string &format, const std::string &base, std::string omex_name, std::string model_name) const {
         // ensure we have three nodes and a statement
         if (!getSubject()) {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: subject is null");
@@ -37,8 +37,6 @@ namespace omexmeta {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: statement is null");
         }
 
-        // Here we create temporary set of tools for serializing a simple
-        // triple.
         librdf_world *world = librdf_new_world();
         librdf_storage *storage = librdf_new_storage(world, "memory", "SemsimMemoryStore", nullptr);
         librdf_model *model = librdf_new_model(world, storage, nullptr);
@@ -46,11 +44,34 @@ namespace omexmeta {
         librdf_model_add_statement(model, statement_);
         librdf_serializer *serializer = librdf_new_serializer(world, format.c_str(), nullptr, nullptr);
 
+        // turn off base uri
+        LibrdfUri write_base_uri_uri = LibrdfUri("http://feature.librdf.org/raptor-writeBaseURI");
+        LibrdfNode write_base_uri_node = LibrdfNode::fromLiteral("0");
+        librdf_serializer_set_feature(serializer, write_base_uri_uri.get(), write_base_uri_node.get());
+        write_base_uri_uri.freeUri();
+        write_base_uri_node.freeNode();
+
         // deal with namespaces
         Predicate::addSeenNamespaceToSerializer(world, serializer, getPredicate());
 
+        std::vector<std::string> nsvec = SemsimUtils::configureSelfStrings(omex_name, model_name);
+
+        // make uri's for the namespaces
+        librdf_uri* myomexlib = librdf_new_uri(World::getWorld(), (const unsigned char*) nsvec[0].c_str());
+        librdf_uri* myomex = librdf_new_uri(World::getWorld(), (const unsigned char*) nsvec[1].c_str());
+        librdf_uri* local = librdf_new_uri(World::getWorld(), (const unsigned char*) nsvec[2].c_str());
+
+        librdf_serializer_set_namespace(serializer, myomexlib, "myOMEXlib");
+        librdf_serializer_set_namespace(serializer, myomex, "myOMEX");
+        librdf_serializer_set_namespace(serializer, local, "local");
+
+        // free the uri's now that we're done with them.
+        librdf_free_uri(myomexlib);
+        librdf_free_uri(myomex);
+        librdf_free_uri(local);
+
         // run the base uri through func that adds file:// if it needs to
-        librdf_uri *base_uri = librdf_new_uri(world,(const unsigned char*) SemsimUtils::addFilePrefixToString(base).c_str());
+        librdf_uri *base_uri = librdf_new_uri(world,(const unsigned char*) SemsimUtils::prepareBaseUri(base).c_str());
         // do the serializing
         unsigned char *string = librdf_serializer_serialize_model_to_string(serializer, base_uri, model);
         std::string str = (const char *) string;
@@ -66,10 +87,13 @@ namespace omexmeta {
 
     }
 
-    omexmeta::Triple &omexmeta::Triple::setAbout(const std::string &about) {
+    omexmeta::Triple &omexmeta::Triple::setAbout(const std::string& omex_name, const std::string& model_name, const std::string &metaid) {
         if (getSubject() != nullptr)
             LibrdfNode::freeNode(getSubject());
-        setSubject(LibrdfNode::fromUriString(about).get());
+
+        setSubject(LibrdfNode::fromUriString(
+                "http://MyOmexLibrary/" + omex_name + "/" + model_name + "/" + metaid
+                ).get());
         return *this;
     }
 

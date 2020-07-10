@@ -123,9 +123,8 @@ namespace redland {
         std::cout << "setting option: " << option << " to: " << value << std::endl;
         std::string feature_uri_base = "http://feature.librdf.org/raptor-";
         LibrdfUri feature_uri(feature_uri_base + option);
-        LibrdfNode node = LibrdfNode::fromUriString(value);
+        LibrdfNode node = LibrdfNode::fromLiteral(value);
         int failure = librdf_serializer_set_feature(get(), feature_uri.get(), node.get());
-        std::cout << failure << std::endl;
         if (failure < 0) {
             throw std::invalid_argument(
                     "std::invalid_argument: LibrdfSerializer::setOption: Invalid feature: " + option);
@@ -139,16 +138,9 @@ namespace redland {
     }
 
     void LibrdfSerializer::setOptions() const {
-        // These options do not work and I do not know
-        // how to find the names of the options that do work
-        // for turning off serialization of the base uri.
-        // This is a low priority problem - fix later.
-//        setOption("RAPTOR_FEATURE_WRITER_AUTO_INDENT", "1");
-//        setOption("RAPTOR_FEATURE_WRITER_AUTO_EMPTY", "1");
-//        setOption("RAPTOR_FEATURE_WRITE_BASE_URI", "0");
-//        setOption("writerAutoIndent", "1");
-//        setOption("writerAutoEmpty", "1");
-//        setOption("writeBaseUri", "0");
+        setOption("relativeURIs", "1");
+        setOption("writeBaseURI", "0");
+        setOption("xmlDeclaration", "1");
     }
 
 

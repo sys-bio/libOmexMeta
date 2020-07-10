@@ -18,7 +18,7 @@
 #include <stdexcept>
 #include <sstream>
 #include <filesystem>
-
+#include <assert.h>
 
 using namespace redland;
 
@@ -38,12 +38,28 @@ namespace omexmeta {
 
         static std::vector<std::string> splitStringBy(const std::string &str, char delimiter);
 
+        /*
+         * @brief utility for generating unique metaids given an xml document
+         * @brief model a librdf_model* pointer
+         * @brief a string that will be used for the ID. There will be 4 digits, though this can be changed.
+         * @brief exclusions. Mostly needed internally for dealing with metaids that already exist.
+         */
         static std::string generateUniqueMetaid(
                 librdf_model *model, const std::string &metaid_base,
                 const std::vector<std::string> &exclusions = std::vector<std::string>()
         );
 
-        static std::string addFilePrefixToString(std::string str);
+        /*
+         * @brief process a string intended to be a base uri.
+         * @param str The string that will become a base uri
+         * @param absolute_path automatically make str an absolute path to the current
+         * working directory.
+         *
+         * Base uri's are important in redland libraries. If they do not begin with `file://`
+         * `http` or `https`, sparql querying will break down. This is a helper function
+         * to ensure the base uri is properly formatted.
+         */
+        static std::string prepareBaseUri(std::string str, bool absolute_path = false);
 
         /*
          * @brief takes a uri as std::string and returns the string
@@ -66,14 +82,13 @@ namespace omexmeta {
          * @param fullString the string to test
          * @param ending the ending to test for
          */
-        static bool hasEnding(std::string const &full_string, std::string const &ending) {
-            if (full_string.length() >= ending.length()) {
-                return (0 == full_string.compare(full_string.length() - ending.length(), ending.length(), ending));
-            } else {
-                return false;
-            }
-        }
+        static bool hasEnding(std::string const &full_string, std::string const &ending) ;
 
+        static bool assertRegexMatchSplitByNewLine(const std::string &expected_string, const std::string &actual_string);
+
+        static bool assertMatchByNewLine(const std::string &expected_string, const std::string &actual_string);
+
+        static std::vector<std::string> configureSelfStrings(std::string omex_name, std::string model_name);
     };
 }
 

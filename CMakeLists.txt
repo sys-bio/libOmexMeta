@@ -100,10 +100,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 option(WITH_SANITIZER "link with address sanitizer for memory debugging" OFF)
 if (WITH_SANITIZER)
-    if (NOT ${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-        message(FATAL_ERROR "The \"WITH_SANITIZER=ON\" option must be used in debug mode (an optimization issue)")
-    endif ()
-    SET(ADDRESS_SANITIZER_FLAGS "-fsanitize=address")
+    SET(ADDRESS_SANITIZER_FLAGS "-g -fsanitize=address")
     SET(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG} ${ADDRESS_SANITIZER_LINK_FLAGS}")
     SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${ADDRESS_SANITIZER_FLAGS}")
 endif ()
@@ -141,6 +138,10 @@ if (PLATFORM STREQUAL "windows-msvc")
         set(RUNTIME "libucrt")
     endif ()
 endif ()
+
+if (${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
+    message(FATAL_ERROR "In source builds are disabled")
+endif()
 
 # set gtest libraries which are different between debug and release.
 #if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
@@ -241,7 +242,6 @@ if (PLATFORM STREQUAL "windows-msvc")
             "${ZLIB_STATIC_LIBRARY}"
             "${ICONV_STATIC_LIBRARY}"
             "${PCRE_STATIC_LIBRARY}"
-            #            "D:/vcpkg/installed/x64-windows-static/lib/sqlite3.lib"
             "${SQLITE3_STATIC_LIBRARY}"
             "${BERKELY_STATIC_LIBRARY}"
             "${POSTGRESQL_STATIC_LIBRARY}"

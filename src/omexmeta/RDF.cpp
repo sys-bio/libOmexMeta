@@ -73,7 +73,7 @@ namespace omexmeta {
 
     void RDF::fromString(RDF *rdf, const std::string &str, const std::string &format, std::string base_uri) {
         // if the base_uri is a web uri we leave it alone
-        base_uri = SemsimUtils::addFilePrefixToString(base_uri);
+        base_uri = SemsimUtils::prepareBaseUri(base_uri);
 
         LibrdfParser parser(format);
         parser.parseString(str, rdf->model_, LibrdfUri(base_uri));
@@ -165,7 +165,7 @@ namespace omexmeta {
 
 //    std::string RDF::toString(const std::string &format, std::string base_uri,
 //                              const char *mime_type, const char *type_uri) {
-//        base_uri = SemsimUtils::addFilePrefixToString(base_uri);
+//        base_uri = SemsimUtils::prepareBaseUri(base_uri);
 //        LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
 //        // remember to add namespaces taken from parser
 //        for (auto &it: namespaces_) {
@@ -178,7 +178,7 @@ namespace omexmeta {
     std::string
     RDF::toString(const std::string &format, const std::string& model_name, std::string base_uri, const char *mime_type,
                   const char *type_uri) {
-        base_uri = SemsimUtils::addFilePrefixToString(base_uri);
+        base_uri = SemsimUtils::prepareBaseUri(base_uri);
         LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
         // remember to add namespaces taken from parser
         for (auto &it: namespaces_) {
@@ -231,7 +231,7 @@ namespace omexmeta {
     }
 
     std::ostringstream RDF::listOptions() {
-    raptor_world *raptor_world_ptr = raptor_new_world();
+    raptor_world *raptor_world_ptr = World::getRaptor();
     int num_raptor_options = (int) raptor_option_get_count() - 1;
     std::ostringstream os;
     os << "option, name, label, domain, value type, uri" << std::endl;

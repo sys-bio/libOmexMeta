@@ -147,8 +147,8 @@ TEST_F(TripleTests, TestStatementResource) {
 
 TEST(TripleTestsNoFixture, TestAbout) {
     Triple triple;
-    triple.setAbout("metaid2");
-    std::string expected = "metaid2";
+    triple.setAbout("myomex", "mymodel.xml", "metaid2");
+    std::string expected = "http://MyOmexLibrary/myomex/mymodel.xml/metaid2";
     std::string actual = triple.getAbout();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triple.freeStatement();
@@ -207,21 +207,24 @@ TEST_F(TripleTests, TestStatementSubject) {
 
 TEST_F(TripleTests, TestBuilderPattern1) {
     Triple triple;
-    triple.setAbout("metaid1")
+    triple.setAbout("myomex.omex", "mymodel.xml", "#metaid1")
             .setPredicate("bqbiol", "is")
             .setResourceUri("uniprot/PD4034");
 
     std::string actual = triple.str();
+    std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:local=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.xml\"\n"
+                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"metaid1\">\n"
+//                           "   xml:base=\"file:///mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/bin/annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary/myomex.omex/mymodel.xml/#metaid1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/PD4034\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
-    std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_TRUE(SemsimUtils::assertMatchByNewLine(expected, actual));
     triple.freeStatement();
 
     // Aaand free the excess nodes
@@ -233,21 +236,25 @@ TEST_F(TripleTests, TestBuilderPattern1) {
 TEST_F(TripleTests, TestBuilderPattern2) {
     Triple triple;
 
-    triple.setAbout("metaid1")
+    triple.setAbout("myomex.omex", "mymodel.sbml", "#metaid00001")
             .setPredicate("bqbiol", "is")
             .setResourceBlank("Blank");
 
     std::string actual = triple.str();
+    std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:local=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.xml\"\n"
+                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myOmex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xml:base=\"annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"metaid1\">\n"
+//                           "   xml:base=\"file:///mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/bin/annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary/myomex.omex/mymodel.sbml/#metaid00001\">\n"
                            "    <bqbiol:is rdf:nodeID=\"Blank\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    ASSERT_TRUE(SemsimUtils::assertMatchByNewLine(expected, actual));
     triple.freeStatement();
 
     // Aaand free the excess nodes
@@ -259,22 +266,25 @@ TEST_F(TripleTests, TestBuilderPattern2) {
 TEST_F(TripleTests, TestBuilderPatternWithSemSimPredicate) {
     Triple triple;
 
-    triple.setAbout("metaid1")
+    triple.setAbout("myomex", "mymodel.xml", "metaid1")
             .setPredicate("semsim", "hasSourceParticipant")
             .setResourceUri("uniprot/PD4034");
 
     std::string actual = triple.str();
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                           "<rdf:RDF xmlns:local=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/myOmex.omex/myOmexModel.xml\"\n"
+                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myOmex.omex\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                            "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
-                           "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"metaid1\">\n"
+//                           "   xml:base=\"file:///mnt/d/libOmexMeta/cmake-build-release-wsl-ubuntu1804-gcc101/bin/annotations.rdf\">\n"
+                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary/myomex/mymodel.xml/metaid1\">\n"
                            "    <semsim:hasSourceParticipant rdf:resource=\"https://identifiers.org/uniprot/PD4034\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-    triple.freeStatement();
+ASSERT_TRUE(SemsimUtils::assertMatchByNewLine(expected, actual));
+triple.freeStatement();
 
     // Aaand free the excess nodes
     predicate.freeNode();

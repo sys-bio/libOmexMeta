@@ -308,12 +308,10 @@ TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
     );
 
     SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
-    SingularAnnotation_setAbout(singularAnnotation,
-                                "metaid6");
+    SingularAnnotation_setAbout(singularAnnotation, "myomex", "mymodel.xml", "metaid6");
     char *actual = SingularAnnotation_getAbout(singularAnnotation);
     const char *expected = "metaid6";
     ASSERT_STREQ(expected, actual);
-
 
     Editor_delete(editor_ptr);
     SingularAnnotation_delete(singularAnnotation);

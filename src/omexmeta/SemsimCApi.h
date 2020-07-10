@@ -124,7 +124,7 @@ namespace omexmeta {
 
     SEMSIM_API void SingularAnnotation_delete(SingularAnnotation *singularAnnotation);
 
-    SEMSIM_API SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *about);
+    SEMSIM_API SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char* omex_name, const char* model_name, const char *about);
 
     SEMSIM_API SingularAnnotation *
     SingularAnnotation_setPredicate(SingularAnnotation *singular_annotation, const char *namespace_, const char *term);

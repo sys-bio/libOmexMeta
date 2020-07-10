@@ -19,6 +19,8 @@
 #include <utility>
 #include <algorithm>
 #include <cstring>
+#include <assert.h>
+
 
 using namespace redland;
 
@@ -54,11 +56,13 @@ namespace omexmeta {
          * a triple only.
          */
         std::string str(const std::string &format = "rdfxml-abbrev",
-                const std::string &base = (std::filesystem::current_path() /=  "annotations.rdf").string()) const;
+                const std::string &base = (std::filesystem::current_path() /=  "annotations.rdf").string(),
+                std::string omex_name = "myOmex.omex",
+                std::string model_name = "myOmexModel.xml") const;
 
         void freeTriple();
 
-        Triple &setAbout(const std::string &about);
+        Triple &setAbout(const std::string& omex_name, const std::string& model_name, const std::string &metaid);
 
         std::string getAbout() const;
 

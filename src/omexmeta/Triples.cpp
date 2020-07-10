@@ -104,8 +104,8 @@ namespace omexmeta {
         return triples_.end();
     }
 
-    std::string Triples::str(const std::string &format, std::string base) {
-        base = SemsimUtils::addFilePrefixToString(base);
+    std::string Triples::str(const std::string &format, std::string base, std::string omex_name, std::string model_name) {
+        base = SemsimUtils::prepareBaseUri(base);
         // Here we create temporary set of tools for serializing a simple
         // triple.
         librdf_world *world = librdf_new_world();
@@ -132,7 +132,30 @@ namespace omexmeta {
             Predicate::addSeenNamespaceToSerializer(world, serializer, it.getPredicate());
         }
 
-        librdf_uri *base_uri = librdf_new_uri(world,(const unsigned char*) SemsimUtils::addFilePrefixToString(base).c_str());
+        // turn off base uri
+        LibrdfUri write_base_uri_uri = LibrdfUri("http://feature.librdf.org/raptor-writeBaseURI");
+        LibrdfNode write_base_uri_node = LibrdfNode::fromLiteral("0");
+        librdf_serializer_set_feature(serializer, write_base_uri_uri.get(), write_base_uri_node.get());
+        write_base_uri_uri.freeUri();
+        write_base_uri_node.freeNode();
+
+        std::vector<std::string> nsvec = SemsimUtils::configureSelfStrings(omex_name, model_name);
+
+        // make uri's for the namespaces
+        librdf_uri* myomexlib = librdf_new_uri(World::getWorld(), (const unsigned char*) nsvec[0].c_str());
+        librdf_uri* myomex = librdf_new_uri(World::getWorld(), (const unsigned char*) nsvec[1].c_str());
+        librdf_uri* local = librdf_new_uri(World::getWorld(), (const unsigned char*) nsvec[2].c_str());
+
+        librdf_serializer_set_namespace(serializer, myomexlib, "myOMEXlib");
+        librdf_serializer_set_namespace(serializer, myomex, "myOMEX");
+        librdf_serializer_set_namespace(serializer, local, "local");
+
+        // free the uri's now that we're done with them.
+        librdf_free_uri(myomexlib);
+        librdf_free_uri(myomex);
+        librdf_free_uri(local);
+
+        librdf_uri *base_uri = librdf_new_uri(world,(const unsigned char*) SemsimUtils::prepareBaseUri(base).c_str());
         // do the serializing
         unsigned char *string = librdf_serializer_serialize_model_to_string(serializer, base_uri, model);
         std::string str = (const char *) string;

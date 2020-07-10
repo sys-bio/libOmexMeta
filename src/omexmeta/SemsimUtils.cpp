@@ -76,7 +76,7 @@ namespace omexmeta {
         return metaid;
     }
 
-    std::string SemsimUtils::addFilePrefixToString(std::string str) {
+    std::string SemsimUtils::prepareBaseUri(std::string str, bool absolute_path) {
         std::string file_prefix = "file://";
         std::string http_protocol = "http://";
         std::string https_protocol = "https://";
@@ -93,10 +93,15 @@ namespace omexmeta {
             return str;
         }
 
-        // otherwise we use the current working directory as an absolute path
-        std::filesystem::path out = std::filesystem::current_path() /= str;
-        std::cout << "Note that we might have problems on windows here. Keep this message until you've dealt with these"<< std::endl;
-        return out.string();
+        // swap any backslashes with forward slashes
+        std::replace(str.begin(), str.end(), '\\', '/');
+        if (absolute_path) {
+            // otherwise we use the current working directory as an absolute path
+            std::filesystem::path out = std::filesystem::current_path() /= str;
+            return "file://" + out.string();
+        } else {
+            return "file://" + str;
+        }
     }
 
     std::string SemsimUtils::getNamespaceFromUri(const std::string &uri) {
@@ -136,8 +141,119 @@ namespace omexmeta {
         std::string https_protocol = "https://";
 
         return uri.rfind(https_protocol, 0) == 0
-            || uri.rfind(http_protocol, 0) == 0
-            || uri.rfind(file_prefix, 0) == 0;
+               || uri.rfind(http_protocol, 0) == 0
+               || uri.rfind(file_prefix, 0) == 0;
     }
+
+    bool SemsimUtils::hasEnding(const std::string &full_string, const std::string &ending) {
+        if (full_string.length() >= ending.length()) {
+            return (0 == full_string.compare(full_string.length() - ending.length(), ending.length(), ending));
+        } else {
+            return false;
+        }
+
+    }
+
+    /*
+     * @brief test that expected_string matches actual_string when
+     * split by new lines and matched as a regex
+     */
+    bool
+    SemsimUtils::assertRegexMatchSplitByNewLine(const std::string &expected_string, const std::string &actual_string) {
+        bool all_lines_match = true;
+        // split the expected string into lines
+        std::vector<std::string> vec = omexmeta::SemsimUtils::splitStringBy(expected_string, '\n');
+        // we do search line by line
+        for (auto &i : vec) {
+            std::regex r(i);
+            bool truth = false;
+            if (std::regex_search(actual_string, r)) {
+                truth = true;
+            }
+            if (!truth) {
+                all_lines_match = false;
+                std::cerr << "actual is:\n " << actual_string << "\n" << std::endl;
+                std::cerr << "Failed on line\n: \"" << i << "\"" << std::endl;
+            }
+        }
+        return all_lines_match;
+//        if (!all_lines_match){
+//            throw std::logic_error("std::logic_error: assertRegexMatchSplitByNewLine: The "
+//                                   "input string \n\n "
+//                                   "" + actual_string +
+//                                   " does not match the expected string "
+//                                   "line for line");
+//        }
+    }
+
+    bool
+    SemsimUtils::assertMatchByNewLine(const std::string &expected_string, const std::string &actual_string) {
+        bool all_lines_match = true;
+        // split the expected string into lines
+        std::vector<std::string> vec = omexmeta::SemsimUtils::splitStringBy(expected_string, '\n');
+        // we do search line by line
+        for (auto &i : vec) {
+            if (actual_string.find(i) == std::string::npos){
+                // not found.
+                all_lines_match = false;
+                std::cout << "actual is:\n " << actual_string << "\n" << std::endl;
+                std::cout << "Failed on line:\n \"" << i << "\"" << std::endl;
+            }
+        }
+        return all_lines_match;
+    }
+
+    std::vector<std::string>
+    SemsimUtils::configureSelfStrings(std::string omex_name, std::string model_name) {
+        std::vector<std::string> vec;
+        // create the default namespaces.
+        std::string myomexlib_string = "http://MyOmexLibrary.org/" + omex_name;
+        vec.push_back(myomexlib_string);
+
+        // we make myomex_string relative to myomexlib_string
+        // logic for adding appropriate extension if not exist
+        std::vector<std::string> suffixes = {".xml", ".cellml", ".sbml"};
+        bool has_appropriate_extension = false;
+        for (auto &it : suffixes){
+            if (SemsimUtils::hasEnding(model_name, it)){
+                has_appropriate_extension = true;
+                break;
+            }
+        }
+
+        std::string myomex_string;
+        if (has_appropriate_extension){
+            myomex_string = myomexlib_string + + "/" + model_name;
+        } else {
+            myomex_string = myomexlib_string +"/" + model_name + ".xml";
+        }
+        vec.push_back(myomex_string);
+        assert(!myomex_string.empty());
+
+        // now we know we have a string that definitely contains a suffux like .xml
+        // we need to remove it so we can add .rdf.
+        // We do this in a way that enables multiple "." in a model_name
+        std::vector<std::string> split = SemsimUtils::splitStringBy(model_name, '.');
+        if (split.size() <= 1){
+            throw std::logic_error("std::logic_error: Triple::str: You should never get a "
+                                   "a value less than 2 here because you are splitting a string. "
+                                   "If you are seeing this message this is a bug. Please report "
+                                   "it as a github issue (https://github.com/sys-bio/libOmexMeta/issues)");
+        }
+        // remove the last element which should contain the extension.
+        split.erase(split.end());
+        std::ostringstream os;
+        for (auto &it : split){
+            os << it << ".";
+        }
+
+        // Now we can build up the local string
+        std::string local_string = myomexlib_string + "/" + os.str() + "rdf#";
+        vec.push_back(local_string);
+        assert(vec.size() == 3);
+        return vec;
+
+    }
+
 
 }
