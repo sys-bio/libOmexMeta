@@ -113,6 +113,8 @@ namespace redland {
         static LibrdfNode copyNode(const LibrdfNode &node);
 
         static LibrdfNode fromRelativeUri(const std::string &uri_string, const std::string &base_uri);
+
+        LibrdfNode fromUriString(const std::string &uri_string, const std::string &local_prefix);
     };
 }
 

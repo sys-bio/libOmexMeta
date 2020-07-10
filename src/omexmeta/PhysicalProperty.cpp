@@ -9,9 +9,10 @@
 
 namespace omexmeta {
 
-    PhysicalProperty::PhysicalProperty(std::string subject_str, std::string resource_str)
-            : subject_(std::move(subject_str)),
-              resource_(std::move(resource_str)) {
+    PhysicalProperty::PhysicalProperty(std::string subject_str, std::string resource_str, std::string local_uri)
+            : subject_(std::move(SemsimUtils::addLocalPrefixToMetaid(subject_str, local_uri))),
+              resource_(std::move(resource_str)),
+              local_uri_(local_uri){
         validate();
     }
 
@@ -33,7 +34,8 @@ namespace omexmeta {
     }
 
 
-    Triples PhysicalProperty::toTriples(const std::string &property_metaid) const {
+    Triples PhysicalProperty::toTriples(std::string property_metaid) const {
+        property_metaid = SemsimUtils::addLocalPrefixToMetaid(property_metaid, getLocalUri());
         Triple is_version_of_triple(
                 LibrdfNode::fromUriString(subject_).get(),
                 BiomodelsBiologyQualifier("isVersionOf").getNode(),
@@ -55,7 +57,7 @@ namespace omexmeta {
     }
 
     void PhysicalProperty::setSubject(const std::string &subject) {
-        subject_ = subject;
+        subject_ = SemsimUtils::addLocalPrefixToMetaid(subject, getLocalUri());
     }
 
     const std::string &PhysicalProperty::getResourceStr() const {
@@ -75,6 +77,21 @@ namespace omexmeta {
         return !(rhs == *this);
     }
 
+    const std::string &PhysicalProperty::getSubject() const {
+        return subject_;
+    }
+
+    const std::string &PhysicalProperty::getResource() const {
+        return resource_;
+    }
+
+    const std::string &PhysicalProperty::getLocalUri() const {
+        return local_uri_;
+    }
+
+    void PhysicalProperty::setLocalUri(const std::string &localUri) {
+        local_uri_ = localUri;
+    }
 
 
 }

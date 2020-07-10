@@ -82,13 +82,22 @@ namespace omexmeta {
          * @param fullString the string to test
          * @param ending the ending to test for
          */
-        static bool hasEnding(std::string const &full_string, std::string const &ending) ;
+        static bool stringHasEnding(std::string const &full_string, std::string const &ending) ;
 
         static bool assertRegexMatchSplitByNewLine(const std::string &expected_string, const std::string &actual_string);
 
         static bool assertMatchByNewLine(const std::string &expected_string, const std::string &actual_string);
 
+        /*
+         * @brief configures the "myOMEXlib", "myOMEX" and "local"
+         * prefixes
+         * @ param omex_name the name of the omex container your model is in
+         * @param model_name the name of the model your are annotating. Extension should
+         * be included or it will be given the ".xml" suffix.
+         */
         static std::vector<std::string> configureSelfStrings(std::string omex_name, std::string model_name);
+
+        static std::string addLocalPrefixToMetaid(std::string metaid, const std::string& local);
     };
 }
 

@@ -141,18 +141,6 @@ namespace omexmeta {
         triples.freeTriples();
     }
 
-    void Editor::addPhysicalEntity(PhysicalEntity &physicalEntity) {
-        if (physicalEntity.getAbout().empty()) {
-            throw NullPointerException(
-                    "NullPointerException: Editor::addPhysicalEntity() physicalEntity::subject_ (i.e. about) node is empty");
-        }
-        /*
-         * look at result of commenting out the check stateent?
-         */
-        checkValidMetaid(physicalEntity.getAbout());
-        addCompositeAnnotation((PhysicalPhenomenon *) &physicalEntity);
-    }
-
     void Editor::addTriples(Triples &triples) {
         for (auto &triple: triples) {
             // collect the namespace from the triple
@@ -161,25 +149,55 @@ namespace omexmeta {
         }
     }
 
-    void Editor::addPhysicalProcess(const PhysicalProcess &physicalProcess) {
+    void Editor::addPhysicalEntity(PhysicalEntity &physicalEntity) {
+        if (physicalEntity.getAbout().empty()) {
+            throw NullPointerException(
+                    "NullPointerException: Editor::addPhysicalEntity() physicalEntity::subject_ (i.e. about) node is empty");
+        }
+        /*
+         * Because we now want to use @prefix local for the
+         * about section, we need to inject it here,
+         * if not already formatted properly.
+         */
+        physicalEntity.setAbout(
+                SemsimUtils::addLocalPrefixToMetaid(physicalEntity.getAbout(), getLocalName())
+        );
+        checkValidMetaid(physicalEntity.getAbout());
+        addCompositeAnnotation((PhysicalPhenomenon *) &physicalEntity);
+    }
+
+    void Editor::addPhysicalProcess(PhysicalProcess &physicalProcess) {
         if (physicalProcess.getAbout().empty()) {
             throw NullPointerException(
                     "NullPointerException: Editor::addPhysicalProcess() PhysicalProcess::subject_ (i.e. about) node is empty");
         }
         checkValidMetaid(physicalProcess.getAbout());
         /*
-         * object slicing???
+         * Because we now want to use @prefix local for the
+         * about section, we need to inject it here,
+         * if not already formatted properly.
          */
+        physicalProcess.setAbout(
+                SemsimUtils::addLocalPrefixToMetaid(physicalProcess.getAbout(), getLocalName())
+        );
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalProcess);
 
     }
 
-    void Editor::addPhysicalForce(const PhysicalForce &physicalForce) {
+    void Editor::addPhysicalForce(PhysicalForce &physicalForce) {
         if (physicalForce.getAbout().empty()) {
             throw NullPointerException(
                     "NullPointerException: Editor::addPhysicalForce() PhysicalForce::subject_ (i.e. about) node is empty");
         }
         checkValidMetaid(physicalForce.getAbout());
+        /*
+         * Because we now want to use @prefix local for the
+         * about section, we need to inject it here,
+         * if not already formatted properly.
+         */
+        physicalForce.setAbout(
+                SemsimUtils::addLocalPrefixToMetaid(physicalForce.getAbout(), getLocalName())
+        );
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalForce);
 
     }
@@ -212,15 +230,15 @@ namespace omexmeta {
     }
 
     PhysicalEntity Editor::createPhysicalEntity() {
-        return PhysicalEntity(model_.get());
+        return PhysicalEntity(model_.get(), getLocalName());
     }
 
     PhysicalForce Editor::createPhysicalForce() {
-        return PhysicalForce(model_.get());
+        return PhysicalForce(model_.get(), getLocalName());
     }
 
     PhysicalProcess Editor::createPhysicalProcess() {
-        return PhysicalProcess(model_.get());
+        return PhysicalProcess(model_.get(), getLocalName());
     }
 
     void Editor::addAuthor(const std::string &orcid_id) {
@@ -265,7 +283,7 @@ namespace omexmeta {
 
     void Editor::setArchiveName(std::string archive_name) {
         // archives end in .omex
-        if (!SemsimUtils::hasEnding(archive_name, ".omex")) {
+        if (!SemsimUtils::stringHasEnding(archive_name, ".omex")) {
             archive_name = archive_name + ".omex";
         }
         // Check if model_name is already a valid uri
@@ -314,7 +332,7 @@ namespace omexmeta {
 
     void Editor::setLocalName(std::string local_name) {
         // local names have the .rdf suffix
-        if (!SemsimUtils::hasEnding(local_name, ".rdf")) {
+        if (!SemsimUtils::stringHasEnding(local_name, ".rdf")) {
             local_name = local_name + ".rdf";
         }
         if (getArchiveName().empty()) {
@@ -323,23 +341,6 @@ namespace omexmeta {
                                    " first use setArchiveName. ");
         }
         local_name_ = getArchiveName() + "/" + local_name;
-        // Check if model_name is already a valid uri
-//        if (SemsimUtils::isFormattedUri(local_name)) {
-//            // if so, also check that its relative to
-//            // the archive name, otherwise it does not
-//            // make sense
-//            if (local_name.rfind(getArchiveName(), 0) != 0) {
-//                std::ostringstream os;
-//                os << "std::invalid_argument: Editor::setLocalName: "
-//                   << "A full uri has been given as the local_name "
-//                      "attribute (\"" + local_name + "\") but this does not "
-//                   << "match the uri given for the archive name : \"" + getModelName() + "\"";
-//                throw std::invalid_argument(os.str());
-//            }
-//            local_name_ = std::move(local_name);
-//        } else {
-//
-//        }
     }
 
     void Editor::setOmexRepository(std::string repository_name) {

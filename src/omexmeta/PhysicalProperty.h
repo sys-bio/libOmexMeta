@@ -36,6 +36,7 @@ namespace omexmeta {
 
         std::string subject_;
         std::string resource_;
+        std::string local_uri_;
         void validate();
 
     public:
@@ -49,7 +50,15 @@ namespace omexmeta {
          * @brief constructor for PhysicalProperty
          * @param physical_property_string is used to create a URI node representing the physical property
          */
-        explicit PhysicalProperty(std::string subject_str, std::string resource_str);
+        explicit PhysicalProperty(std::string subject_str, std::string resource_str, std::string local_uri);
+
+        const std::string &getSubject() const;
+
+        const std::string &getResource() const;
+
+        const std::string &getLocalUri() const;
+
+        void setLocalUri(const std::string &localUri);
 
         [[nodiscard]] const std::string &getSubjectStr() const;
 
@@ -66,9 +75,9 @@ namespace omexmeta {
          *
          * The metaid will be coverted into a RDF URI node
          */
-        [[nodiscard]] Triple isVersionOfTriple() const;
-
-        Triple isVersionOfTriple(const Subject &subject_metaid);
+//        [[nodiscard]] Triple isVersionOfTriple() const;
+//
+//        Triple isVersionOfTriple(const Subject &subject_metaid);
 
         /*
          * @brief make the triple that has the "isPropertyOf" predicate
@@ -77,16 +86,16 @@ namespace omexmeta {
          * @return a Triple with the isPropertyOf predicate for this PhysicalProperty
          *
          */
-        [[nodiscard]] Triple isPropertyOfTriple(const std::string& property_metaid) const;
-
-        [[maybe_unused]] static Triple isPropertyOfTriple(const Subject &subject_metaid, const std::string& property_metaid) ;
+//        [[nodiscard]] Triple isPropertyOfTriple(const std::string& property_metaid) const;
+//
+//        [[maybe_unused]] static Triple isPropertyOfTriple(const Subject &subject_metaid, const std::string& property_metaid) ;
         /*
          * @brief creates a Triples object using the information in the PhysicalProperty
          * @return a Triples object containing the set of Triple object used to represent this PhysicalProperty
          */
-        [[nodiscard]] Triples toTriples(const std::string& property_metaid) const;
+        [[nodiscard]] Triples toTriples(std::string property_metaid) const;
 
-        Triples toTriples(Subject subject_metaid);
+//        Triples toTriples(Subject subject_metaid);
 
     };
 }

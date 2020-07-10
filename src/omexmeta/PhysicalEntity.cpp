@@ -8,13 +8,10 @@
 
 namespace omexmeta {
 
-    PhysicalEntity::PhysicalEntity(librdf_model *model,
-                                   PhysicalProperty physicalProperty,
-                                   Resource is,
-                                   Resources is_part_of)
-            : PhysicalPhenomenon(model, std::move(physicalProperty), PHYSICAL_ENTITY),
+    PhysicalEntity::PhysicalEntity(librdf_model *model, std::string local_uri, PhysicalProperty physicalProperty,
+                                   Resource is, Resources is_part_of)
+            : PhysicalPhenomenon(model, local_uri, std::move(physicalProperty), PHYSICAL_ENTITY),
               identity_resource_(std::move(is)), location_resources_(std::move(is_part_of)) {}
-
 
     void PhysicalEntity::free() {
         if (identity_resource_.getNode() != nullptr) {
@@ -30,14 +27,10 @@ namespace omexmeta {
         }
     }
 
-    PhysicalEntity::PhysicalEntity(librdf_model *model) : PhysicalPhenomenon(model) {
-    }
+    PhysicalEntity::PhysicalEntity(librdf_model *model) : PhysicalPhenomenon(model) {}
 
-
-//    PhysicalEntity &PhysicalEntity::setAbout(const std::string& metaid) {
-//        physical_property_.setSubject(metaid);
-//        return *this;
-//    }
+    PhysicalEntity::PhysicalEntity(librdf_model *model, const std::string& local_uri)
+        : PhysicalPhenomenon(model, local_uri) {}
 
     PhysicalEntity &PhysicalEntity::setPhysicalProperty(PhysicalProperty physicalProperty) {
         physical_property_ = std::move(physicalProperty);
@@ -45,8 +38,9 @@ namespace omexmeta {
     }
 
     PhysicalEntity &
-    PhysicalEntity::setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty) {
-        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty);
+    PhysicalEntity::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
+        subject_metaid = SemsimUtils::addLocalPrefixToMetaid(subject_metaid, getLocalUri());
+        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getLocalUri());
         return *this;
     }
 
@@ -102,7 +96,6 @@ namespace omexmeta {
         int count = 0;
         for (auto &i : getLocationResources()) {
             if (i.getNode() == nullptr) {
-
                 std::ostringstream err;
                 err << "PhysicalEntity::toTriples(): Cannot create"
                        " triples because item ";
@@ -124,6 +117,10 @@ namespace omexmeta {
                     model_, "PhysicalEntity",
                     std::vector<std::string>());
         }
+
+        // now we add the local uri on to the metaid - If it already
+        // properly formatted it will be left alone
+        physical_property_id_ = SemsimUtils::addLocalPrefixToMetaid(physical_property_id_, getLocalUri());
 
         // preallocate for efficiency
         Triples triples(getLocationResources().size() + 3);

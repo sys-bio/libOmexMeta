@@ -32,7 +32,7 @@ namespace omexmeta {
     public:
 
         /*
-         * @breif default constructor for PhysicalEntity
+         * @brief default constructor for PhysicalEntity
          * @details deliberately deleted. If you try using the
          * builder interface (chaining setter methods) from a default
          * instantiated PhysicalEntity you will get an error, because there
@@ -54,9 +54,8 @@ namespace omexmeta {
          * builder interface. The @param is_part_of parameter is actually a std::vector of
          * Resource objects. It can be as long as needed.
          */
-        PhysicalEntity(librdf_model *model,
-                       PhysicalProperty physicalProperty, Resource is,
-                       Resources is_part_of);
+        PhysicalEntity(librdf_model *model, std::string local_uri, PhysicalProperty physicalProperty,
+                       Resource is, Resources is_part_of);
 
         ~PhysicalEntity() = default;
 
@@ -80,6 +79,23 @@ namespace omexmeta {
          * from the user.
          */
         explicit PhysicalEntity(librdf_model *model);
+
+
+        /*
+         * @brief constructor for PhysicalEntity object.
+         * @param model the librdf_model object in use. Passed down from Editor class during
+         * instantiation.
+         * @param local_uri the current localName argument. Passed down from Editor
+         *
+         * This alternative constructor is used when users use the builder interface
+         * (which should actually be most of the time). The PhysicalEntity is instantiated
+         * with only the model to allow for a better way of collecting necessary information
+         * from the user. The PhysicalEntity also needs access to the local_uri, which we pass
+         * here.
+         */
+        explicit PhysicalEntity(librdf_model *model, const std::string& local_uri);
+
+
 
         /*
          * @brief convert PhysicalEntity to a Triples object, which can then be
@@ -120,7 +136,7 @@ namespace omexmeta {
          * This method is a part of the PhysicalEntity builder interface
          *
          */
-//        PhysicalEntity &setAbout(const std::string& metaid);
+//        PhysicalEntity &setAbout(std::string metaid);
 
         /*
          * @brief sets the physical property for a PhysicalEntity instance.
@@ -130,7 +146,7 @@ namespace omexmeta {
          * The OBP argument requires a string of the form "obp:opbxxx" where "xxx" is the id for the OPB term.
          * An instance of PhysicalProperty is instantiated with @param physicalProperty as its value.
          */
-        PhysicalEntity &setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty);
+        PhysicalEntity &setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty);
 
         /*
          * @brief sets the physical property for a PhysicalEntity instance

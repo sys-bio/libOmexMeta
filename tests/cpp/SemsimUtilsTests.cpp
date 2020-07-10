@@ -90,12 +90,12 @@ TEST_F(SemsimUtilsTests, TestIsFormattedUri4) {
 
 TEST_F(SemsimUtilsTests, TestHasEndingTrue) {
     std::string s = "IAmAStringWithAnEnding.omex";
-    ASSERT_TRUE(omexmeta::SemsimUtils::hasEnding(s, ".omex"));
+    ASSERT_TRUE(omexmeta::SemsimUtils::stringHasEnding(s, ".omex"));
 }
 
 TEST_F(SemsimUtilsTests, TestHasEndingFalse) {
     std::string s = "IAmAStringWithAnEndingomex";
-    ASSERT_FALSE(omexmeta::SemsimUtils::hasEnding(s, ".omex"));
+    ASSERT_FALSE(omexmeta::SemsimUtils::stringHasEnding(s, ".omex"));
 }
 
 TEST_F(SemsimUtilsTests, configureSelfStrings) {
@@ -104,3 +104,23 @@ TEST_F(SemsimUtilsTests, configureSelfStrings) {
     ASSERT_STREQ("http://MyOmexLibrary.org/OmexLibrary.omex/model.sbml", vec[1].c_str());
     ASSERT_STREQ("http://MyOmexLibrary.org/OmexLibrary.omex/model.rdf#", vec[2].c_str());
 }
+
+TEST_F(SemsimUtilsTests, TestAddLocalPrefixToMetaid) {
+    std::string actual = omexmeta::SemsimUtils::addLocalPrefixToMetaid("Metaid00001", "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#");
+    std::string expected = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#Metaid00001";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(SemsimUtilsTests, TestAddLocalPrefixToMetaid2) {
+    std::string actual = omexmeta::SemsimUtils::addLocalPrefixToMetaid("http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#Metaid00001", "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#");
+    std::string expected = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#Metaid00001";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(SemsimUtilsTests, TestAddLocalPrefixToMetaid3) {
+    std::string actual = omexmeta::SemsimUtils::addLocalPrefixToMetaid("#Metaid00001", "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#");
+    std::string expected = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#Metaid00001";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+

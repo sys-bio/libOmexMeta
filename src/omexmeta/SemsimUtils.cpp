@@ -145,7 +145,7 @@ namespace omexmeta {
                || uri.rfind(file_prefix, 0) == 0;
     }
 
-    bool SemsimUtils::hasEnding(const std::string &full_string, const std::string &ending) {
+    bool SemsimUtils::stringHasEnding(const std::string &full_string, const std::string &ending) {
         if (full_string.length() >= ending.length()) {
             return (0 == full_string.compare(full_string.length() - ending.length(), ending.length(), ending));
         } else {
@@ -215,7 +215,7 @@ namespace omexmeta {
         std::vector<std::string> suffixes = {".xml", ".cellml", ".sbml"};
         bool has_appropriate_extension = false;
         for (auto &it : suffixes){
-            if (SemsimUtils::hasEnding(model_name, it)){
+            if (SemsimUtils::stringHasEnding(model_name, it)){
                 has_appropriate_extension = true;
                 break;
             }
@@ -253,6 +253,26 @@ namespace omexmeta {
         assert(vec.size() == 3);
         return vec;
 
+    }
+
+    std::string SemsimUtils::addLocalPrefixToMetaid(std::string metaid, const std::string& local) {
+        // if metaid already has local in the string, we just return
+        if (metaid.find(local) != std::string::npos){
+            return metaid;
+        }
+        // Otherwise we concatonate:
+        // first we check if local has the # at the end. It should do.
+        if (!SemsimUtils::stringHasEnding(local, "#")){
+            throw std::invalid_argument("std::invalid_argument: addLocalPrefixToMetaid: "
+                                        "Was expecting a local prefix to end with a '#' "
+                                        "character, like http://MyOmexLibrary.org/myomexarchive.omex/mymodel.rdf#. "
+                                        "Recieved: " + local);
+        }
+        // if metaid also begins with '#' character, remove it.
+        if (metaid.rfind('#', 0) == 0 ){
+            metaid = metaid.substr(1, metaid.size());
+        }
+        return local + metaid;
     }
 
 

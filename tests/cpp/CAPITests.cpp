@@ -54,7 +54,7 @@ TEST_F(CAPITests, RDFToString) {
                            "   xmlns:myOMEX=\"http://MyOmexLibrary.org/annotation.rdf/mymodel.xml\"\n"
                            "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/annotation.rdf\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
-                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.rdf#metaid_1\">\n"
+                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid_1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
@@ -83,13 +83,15 @@ TEST_F(CAPITests, RDF_addFromStringOutput) {
     RDF *rdf_ptr = RDF_new();
     RDF_addFromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml", "RDF_addFromStringTest.rdf");
     char* actual = RDF_toString(rdf_ptr, "turtle", "Basey.rdf");
-    std::string expected = "@base <file://Basey.rdf> .\n"
-                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/Basey.rdf> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/Basey.rdf/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/Basey.rdf/mymodel.rdf#> .\n"
                            "\n"
-                           "<file://./metaid_1>\n"
+                           "<http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid_1>\n"
                            "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n"
-                           "\n";
+                           "";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual);
     RDF_delete(rdf_ptr);
@@ -312,7 +314,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetAbout) {
     SingularAnnotation *singularAnnotation = SingularAnnotation_new(editor_ptr);
     SingularAnnotation_setAbout(singularAnnotation, "myomex", "mymodel.xml", "metaid6");
     char *actual = SingularAnnotation_getAbout(singularAnnotation);
-    const char *expected = "metaid6";
+    const char *expected = "http://MyOmexLibrary/myomex/mymodel.xml/metaid6";
     ASSERT_STREQ(expected, actual);
 
     Editor_delete(editor_ptr);
@@ -433,7 +435,6 @@ TEST_F(CAPITests, TestSingularAnnotationSetResourceBlank) {
     char *actual = SingularAnnotation_getResource(singularAnnotation);
     const char *expected = "Nothing";
     ASSERT_STREQ(expected, actual);
-
 
     Editor_delete(editor_ptr);
     SingularAnnotation_delete(singularAnnotation);

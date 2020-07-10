@@ -22,6 +22,7 @@ public:
 
     LibrdfStorage storage;
     LibrdfModel model;
+    std::string local_uri = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#";
 
     PhysicalPhenomenonTests() {
         model = LibrdfModel(storage.get());
@@ -39,13 +40,14 @@ public:
  */
 TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
-    PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345");
+    PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345", local_uri);
     PhysicalPhenomenon phenomenon(
             model.get(),
+            local_uri,
             resource,
             PHYSICAL_ENTITY
     );
-    std::string expected = "metaid004";
+    std::string expected = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid004";
     std::string actual = phenomenon.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
@@ -54,13 +56,14 @@ TEST_F(PhysicalPhenomenonTests, TestSubjectStr) {
 
 TEST_F(PhysicalPhenomenonTests, TestSubjectNodeToStr) {
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
-    PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345");
+    PhysicalProperty resource = PhysicalProperty("metaid004", "OPB:OPB_12345", local_uri);
     PhysicalPhenomenon phenomenon(
             model.get(),
+            local_uri,
             resource,
             PHYSICAL_ENTITY
     );
-    std::string expected = "metaid004";
+    std::string expected = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#metaid004";
     std::string actual = phenomenon.getSubjectStr();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     subject.free();
@@ -72,9 +75,10 @@ TEST_F(PhysicalPhenomenonTests, TestPhysicalProperty) {
      * todo Weak test - improve
      */
     Subject subject = Subject::fromRawPtr(LibrdfNode::fromUriString("metaid004").get());
-    PhysicalProperty resource = PhysicalProperty("metaid", "OPB:OPB_12345");
+    PhysicalProperty resource = PhysicalProperty("metaid", "OPB:OPB_12345", local_uri);
     PhysicalPhenomenon phenomenon(
             model.get(),
+            local_uri,
             resource,
             PHYSICAL_ENTITY
     );

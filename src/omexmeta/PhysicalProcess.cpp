@@ -11,17 +11,17 @@
 
 namespace omexmeta {
 
-    PhysicalProcess::PhysicalProcess(librdf_model *model,
-                                     const PhysicalProperty &physicalProperty, Sources sources, Sinks sinks,
-                                     Mediators mediators)
-            : PhysicalPhenomenon(model, physicalProperty, PHYSICAL_PROCESS),
+    PhysicalProcess::PhysicalProcess(librdf_model *model, std::string local_uri,
+                                     const PhysicalProperty &physicalProperty,
+                                     Sources sources, Sinks sinks, Mediators mediators)
+            : PhysicalPhenomenon(model, local_uri, physicalProperty, PHYSICAL_PROCESS),
               sources_(std::move(sources)), sinks_(std::move(sinks)), mediators_(std::move(std::move(mediators))) {
-
     }
 
-    PhysicalProcess::PhysicalProcess(librdf_model *model) : PhysicalPhenomenon(model) {
+    PhysicalProcess::PhysicalProcess(librdf_model *model) : PhysicalPhenomenon(model) {}
 
-    }
+    PhysicalProcess::PhysicalProcess(librdf_model *model, std::string local_uri)
+        : PhysicalPhenomenon(model, local_uri) {}
 
     const std::vector<SourceParticipant> &PhysicalProcess::getSources() const {
         return sources_;
@@ -35,10 +35,10 @@ namespace omexmeta {
         return mediators_;
     }
 
-    PhysicalProcess &PhysicalProcess::setAbout(const std::string &metaid) {
-        physical_property_.setSubject(metaid);
-        return (*this);
-    }
+//    PhysicalProcess &PhysicalProcess::setAbout(std::string metaid) {
+//        physical_property_.setSubject(metaid);
+//        return (*this);
+//    }
 
     PhysicalProcess &PhysicalProcess::setPhysicalProperty(PhysicalProperty physicalProperty) {
         physical_property_ = std::move(physicalProperty);
@@ -48,8 +48,9 @@ namespace omexmeta {
 //todo turn this into a factory whereby user enters string of PhysicalProperty
 //  and we automatically pick out the correct OPB identifier
     PhysicalProcess &
-    PhysicalProcess::setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty) {
-        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty);
+    PhysicalProcess::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
+        subject_metaid = SemsimUtils::addLocalPrefixToMetaid(subject_metaid, getLocalUri());
+        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getLocalUri());
         return (*this);
     }
 
@@ -57,7 +58,8 @@ namespace omexmeta {
         sources_.push_back(
                 std::move(SourceParticipant(model_,
                                             multiplier,
-                                            std::move(physical_entity_reference)
+                                            std::move(physical_entity_reference),
+                                            getLocalUri()
                           )
                 )
         );
@@ -68,7 +70,8 @@ namespace omexmeta {
         sinks_.push_back(
                 std::move(SinkParticipant(
                         model_,
-                        multiplier, std::move(physical_entity_reference)
+                        multiplier, std::move(physical_entity_reference),
+                        getLocalUri()
                 ))
         );
 
@@ -79,7 +82,8 @@ namespace omexmeta {
         mediators_.push_back(
                 std::move(MediatorParticipant(
                         model_,
-                        std::move(physical_entity_reference)
+                        std::move(physical_entity_reference),
+                        getLocalUri()
                 ))
         );
 
@@ -145,6 +149,11 @@ namespace omexmeta {
                     model_, "PhysicalProcess",
                     std::vector<std::string>());
         }
+
+
+        // now we add the local uri on to the metaid - If it already
+        // properly formatted it will be left alone
+        physical_property_id_ = SemsimUtils::addLocalPrefixToMetaid(physical_property_id_, getLocalUri());
 
         Triples triples = physical_property_.toTriples(physical_property_id_);
 

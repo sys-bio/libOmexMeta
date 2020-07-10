@@ -68,7 +68,7 @@ namespace omexmeta {
         std::string repository_name_ = "http://myOmexLibrary.org/";
         std::string archive_name_ = "http://myOmexLibrary.org/MyOmex.omex";
         std::string model_name_ = "http://myOmexLibrary.org/MyOmex.omex/mymodel.xml";
-        std::string local_name_ = "http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf";
+        std::string local_name_ = "http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#";
 
     private:
         void extractNamespacesFromTriplesVector(PhysicalPhenomenon *pp);
@@ -193,7 +193,7 @@ namespace omexmeta {
          * @brief add a composite annotation of type PhysicalProcess to the rdf graph
          * @param physicalProcess An instance of a PhysicalProcess object to add to the rdf graph.
          */
-        void addPhysicalProcess(const PhysicalProcess &physicalProcess);
+        void addPhysicalProcess(PhysicalProcess &physicalProcess);
 
         /*
          * @brief remove triples associated with a PhysicalProcess object from the rdf graph
@@ -205,7 +205,7 @@ namespace omexmeta {
          * @brief add a composite annotation of type PhysicalForce to the rdf graph
          * @param physicalForce An instance of a PhysicalForce objec to add to the rdf graph.
          */
-        void addPhysicalForce(const PhysicalForce &physicalForce);
+        void addPhysicalForce(PhysicalForce &physicalForce);
 
 /*
          * @brief remove triples associated with a a PhysicalForce object from the rdf graph

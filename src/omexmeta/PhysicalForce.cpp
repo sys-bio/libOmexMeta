@@ -11,10 +11,10 @@
 
 namespace omexmeta {
 
-    PhysicalForce::PhysicalForce(librdf_model *model,
-                                 PhysicalProperty physicalProperty,
-                                 Sources sources, Sinks sinks)
-            : PhysicalPhenomenon(model, std::move(physicalProperty), PHYSICAL_PROCESS),
+    PhysicalForce::PhysicalForce(librdf_model *model, std::string local_uri, PhysicalProperty physicalProperty,
+                                 Sources sources,
+                                 Sinks sinks)
+            : PhysicalPhenomenon(model, local_uri, std::move(physicalProperty), PHYSICAL_PROCESS),
               sources_(std::move(sources)), sinks_(std::move(sinks)) {
 
     }
@@ -56,6 +56,10 @@ namespace omexmeta {
 
         Triples triples = physical_property_.toTriples(physical_property_id_);
 
+        // now we add the local uri on to the metaid - If it already
+        // properly formatted it will be left alone
+        physical_property_id_ = SemsimUtils::addLocalPrefixToMetaid(physical_property_id_, getLocalUri());
+
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(physical_property_id_)) {
                 triples.move_back(triple);
@@ -69,10 +73,10 @@ namespace omexmeta {
         return triples;
     }
 
-    PhysicalForce &PhysicalForce::setAbout(const std::string &metaid) {
-        physical_property_.setSubject(metaid);
-        return (*this);
-    }
+//    PhysicalForce &PhysicalForce::setAbout(std::string metaid) {
+//        physical_property_.setSubject(metaid);
+//        return (*this);
+//    }
 
     PhysicalForce &PhysicalForce::setPhysicalProperty(PhysicalProperty physicalProperty) {
         physical_property_ = std::move(physicalProperty);
@@ -80,15 +84,15 @@ namespace omexmeta {
     }
 
     PhysicalForce &PhysicalForce::setPhysicalProperty(std::string subject_metaid, std::string physical_property) {
-        physical_property_ = PhysicalProperty(std::move(subject_metaid), std::move(physical_property));
+        subject_metaid = SemsimUtils::addLocalPrefixToMetaid(subject_metaid, getLocalUri());
+        physical_property_ = PhysicalProperty(std::move(subject_metaid), std::move(physical_property), getLocalUri());
         return *this;
     }
 
     PhysicalForce &PhysicalForce::addSource(double multiplier, const std::string &physical_entity_reference) {
         sources_.push_back(
                 std::move(SourceParticipant(
-                        model_,
-                        multiplier, physical_entity_reference
+                        model_, multiplier, physical_entity_reference, getLocalUri()
                 ))
         );
         return (*this);
@@ -96,7 +100,7 @@ namespace omexmeta {
 
     PhysicalForce &PhysicalForce::addSink(double multiplier, const std::string &physical_entity_reference) {
         sinks_.push_back(
-                SinkParticipant(model_, multiplier, physical_entity_reference)
+                SinkParticipant(model_, multiplier, physical_entity_reference, getLocalUri())
         );
 
         return (*this);
@@ -104,6 +108,9 @@ namespace omexmeta {
 
     PhysicalForce::PhysicalForce(librdf_model *model)
             : PhysicalPhenomenon(model) {}
+
+    PhysicalForce::PhysicalForce(librdf_model *model, const std::string& local_uri)
+            : PhysicalPhenomenon(model, local_uri) {}
 
     int PhysicalForce::getNumSources() {
         return sources_.size();

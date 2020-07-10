@@ -202,9 +202,14 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
     Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
     editor.addSingleAnnotation(triple);
 
-    std::string actual = rdf.toString("rdfxml", "MyModel");
+    std::string actual = rdf.toString("rdfxml");
     std::cout << actual << std::endl;
-    std::string expected = "";
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#\" xmlns:myOMEX=\"http://MyOmexLibrary.org/myomex.omex/mymodel.xml\" xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myomex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf##OmexMetaId0009\">\n"
+                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     triple.freeStatement();
 }
@@ -220,10 +225,12 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
             Resource(LibrdfNode::fromUriString("pubmed:12991237"))
     );
 
-    std::string actual = rdf.toString("turtle", "file://./annotations.rdf");
-    std::string expected = "@base <file://./annotations.rdf> .\n"
-                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    std::string actual = rdf.toString("turtle");
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/myomex.omex> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/myomex.omex/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#> .\n"
                            "\n"
                            "<#OmexMetaId0008>\n"
                            "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n"
@@ -238,18 +245,18 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
     editor.addSingleAnnotation(
-            Subject(LibrdfNode::fromUriString("#OmexMetaId0008")),
+            Subject(editor.createNodeWithLocalUri("#OmexMetaId0008")),
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
             Resource(LibrdfNode::fromUriString("pubmed:12991237"))
     );
 
-    std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
+    std::string actual = rdf.toString("rdfxml");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"/mnt/d/libOmexMeta/cmake-build-debug-wsl-ubuntu1804-gcc101/bin/\">\n"
-                           "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#OmexMetaId0009\">\n"
-                           "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#\" xmlns:myOMEX=\"http://MyOmexLibrary.org/myomex.omex/mymodel.xml\" xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myomex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf##OmexMetaId0008\">\n"
+                           "    <bqbiol:isDescribedBy rdf:resource=\"https://identifiers.org/pubmed/12991237\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>";
+                           "</rdf:RDF>\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -259,22 +266,20 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
-    editor.
-            addSingleAnnotation(
-            Subject(LibrdfNode::fromUriString("#OmexMetaId0008")),
+    editor.addSingleAnnotation(
+            Subject(editor.createNodeWithLocalUri("#OmexMetaId0008")),
             std::make_unique<Predicate>(DCTerm("description")),
             Resource(LibrdfNode::fromLiteral("Cardiomyocyte cytosolic ATP concentration"))
     );
 
-    std::string actual = rdf.toString("rdfxml", "file://./annotations.rdf");
+    std::string actual = rdf.toString("rdfxml");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"#OmexMetaId0008\">\n"
-                           "    <dcterms:Description rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">Cardiomyocyte cytosolic ATP concentration</dcterms:Description>\n"
+                           "<rdf:RDF xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:local=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#\" xmlns:myOMEX=\"http://MyOmexLibrary.org/myomex.omex/mymodel.xml\" xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myomex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf##OmexMetaId0008\">\n"
+                           "    <dcterms:description rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#string\">Cardiomyocyte cytosolic ATP concentration</dcterms:description>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
-    std::cout << actual <<
-              std::endl;
+    std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -292,11 +297,11 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
 
     editor.addSingleAnnotation(singularAnnotation);
 
-    std::string actual = rdf.toString("rdfxml", "MyModel.rdf");
+    std::string actual = rdf.toString("rdfxml");
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"file://MyModel.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"#OmexMetaId0001\">\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#\" xmlns:myOMEX=\"http://MyOmexLibrary.org/myomex.omex/mymodel.xml\" xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myomex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary/myomex/mymodel.xml/#OmexMetaId0001\">\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/uniprot/PD02635\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
@@ -313,12 +318,12 @@ TEST_F(EditorTests, TestAddPhysicalEntityToEditor) {
             SEMSIM_TYPE_SBML
     );
 
-    PhysicalProperty ppr("metaid", "OPB:OPB_00154");
+    PhysicalProperty ppr("metaid", "OPB:OPB_00154", editor.getLocalName());
     Resource r(LibrdfNode::fromUriString("fma:FMA:9670")); // is smad3
     std::vector<Resource> resources;
     resources.emplace_back(std::move(LibrdfNode::fromUriString("fma/FMA:9697")));
     PhysicalEntity physicalEntity = PhysicalEntity(
-            rdf.getModel(), ppr, r, resources
+            rdf.getModel(), editor.getLocalName(), ppr, r, resources
     );
 //    std::shared_ptr<PhysicalEntity> ptr = std::make_shared<PhysicalEntity>(physicalEntity);
     editor.addCompositeAnnotation(&physicalEntity);
@@ -337,56 +342,61 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalProcess) {
 
     PhysicalProcess process = PhysicalProcess(
             model.get(),
-            PhysicalProperty("#MetaId004", "OPB:OPB1234"),
+            editor.getLocalName(),
+            PhysicalProperty("#MetaId004", "OPB:OPB1234", editor.getLocalName()),
             std::vector<SourceParticipant>(
                     {SourceParticipant(model.get(),
                                        1.0,
-                                       "#PhysicalEntityReference1"
+                                       "#PhysicalEntityReference1",
+                                       editor.getLocalName()
                     )}
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(model.get(),
                                      1.0,
-                                     "#PhysicalEntityReference2"
+                                     "#PhysicalEntityReference2",
+                                     editor.getLocalName()
                     )}
             ),
             std::vector<MediatorParticipant>(
                     {MediatorParticipant(model.get(),
-                                         "#PhysicalEntityReference3"
+                                         "#PhysicalEntityReference3",
+                                         editor.getLocalName()
                     )}
             )
     );
 
     editor.addCompositeAnnotation(&process);
 
-    std::string actual = rdf.toString("rdfxml-abbrev", "file://./annotations.rdf");
+    std::string actual = rdf.toString("rdfxml-abbrev");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:local=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/myomex.omex/mymodel.xml\"\n"
+                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myomex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
-                           "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"#MediatorParticipant0000\">\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"#PhysicalEntityReference3\"/>\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
+                           "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#MediatorParticipant0000\">\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#PhysicalEntityReference3\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"#MetaId004\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"#PhysicalProcess0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#MetaId004\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#PhysicalProcess0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB1234\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"#PhysicalProcess0000\">\n"
-                           "    <semsim:hasMediatorParticipant rdf:resource=\"#MediatorParticipant0000\"/>\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"#SinkParticipant0000\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"#SourceParticipant0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#PhysicalProcess0000\">\n"
+                           "    <semsim:hasMediatorParticipant rdf:resource=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#MediatorParticipant0000\"/>\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"#SinkParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"#PhysicalEntityReference2\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"#SourceParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"#PhysicalEntityReference1\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
-                           "";
+                           "</rdf:RDF>\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
@@ -399,17 +409,19 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
 
     PhysicalForce force = PhysicalForce(
             model.get(),
-            PhysicalProperty("#metaid", "OPB:OPB1234"),
+            editor.getLocalName(),
+            PhysicalProperty("#metaid", "OPB:OPB1234", editor.getLocalName()),
             std::vector<SourceParticipant>(
                     {SourceParticipant(model.get(),
                                        1.0,
-                                       "#PhysicalEntityReference1"
+                                       "#PhysicalEntityReference1", editor.getLocalName()
+
                     )}
             ),
             std::vector<SinkParticipant>(
                     {SinkParticipant(model.get(),
                                      1.0,
-                                     "#PhysicalEntityReference2"
+                                     "#PhysicalEntityReference2", editor.getLocalName()
                     )}
             )
     );
@@ -417,28 +429,29 @@ TEST_F(EditorTests, TestAddAnnotationCompositeTypePhysicalForce) {
     editor.addCompositeAnnotation(&force);
 
 
-    std::string actual = rdf.toString("rdfxml-abbrev", "file://./annotations.rdf");
-    std::cout << actual <<
-              std::endl;
+    std::string actual = rdf.toString("rdfxml-abbrev");
+    std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                           "   xmlns:local=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/myomex.omex/mymodel.xml\"\n"
+                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myomex.omex\"\n"
                            "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\"\n"
-                           "   xml:base=\"file://./annotations.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"#PhysicalForce0000\">\n"
-                           "    <semsim:hasSinkParticipant rdf:resource=\"#SinkParticipant0000\"/>\n"
-                           "    <semsim:hasSourceParticipant rdf:resource=\"#SourceParticipant0000\"/>\n"
+                           "   xmlns:semsim=\"http://www.bhi.washington.edu/semsim#\">\n"
+                           "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#PhysicalForce0000\">\n"
+                           "    <semsim:hasSinkParticipant rdf:resource=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#SinkParticipant0000\"/>\n"
+                           "    <semsim:hasSourceParticipant rdf:resource=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#SourceParticipant0000\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"#SinkParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#SinkParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"#PhysicalEntityReference2\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#PhysicalEntityReference2\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"#SourceParticipant0000\">\n"
+                           "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#SourceParticipant0000\">\n"
                            "    <semsim:hasMultiplier rdf:datatype=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#http://www.w3.org/2001/XMLSchema#double\">1</semsim:hasMultiplier>\n"
-                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"#PhysicalEntityReference1\"/>\n"
+                           "    <semsim:hasPhysicalEntityReference rdf:resource=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#PhysicalEntityReference1\"/>\n"
                            "  </rdf:Description>\n"
-                           "  <rdf:Description rdf:about=\"#metaid\">\n"
-                           "    <bqbiol:isPropertyOf rdf:resource=\"#PhysicalForce0000\"/>\n"
+                           "  <rdf:Description rdf:about=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#metaid\">\n"
+                           "    <bqbiol:isPropertyOf rdf:resource=\"http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#PhysicalForce0000\"/>\n"
                            "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/OPB/OPB1234\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
@@ -482,7 +495,6 @@ TEST_F(EditorTests, TestPhysicalEntityBuilder) {
             .addLocation("fma:fma:1234");
 
     editor.addPhysicalEntity(physicalEntity);
-
 
     int expected = 4;
     int actual = rdf.size();
@@ -702,6 +714,7 @@ public:
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
+    std::string local_uri = "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#";
 
     EditorTestsDeletePhysicalEntity() = default;
 
@@ -1207,7 +1220,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysica
  * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
  */
-    PhysicalProperty property("#OmexMetaId0001", "https://identifiers.org/opb/opb_1234");
+    PhysicalProperty property("#OmexMetaId0001", "https://identifiers.org/opb/opb_1234", local_uri);
     Triples triples = property.toTriples("Entity1234");
     std::cout << triples.str() << std::endl;
     for (auto &it: triples) {
@@ -1228,7 +1241,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPhysica
  * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
  */
-    PhysicalProperty property("#OmexMetaId0001", "https://identifiers.org/opb/opb_1234");
+    PhysicalProperty property("#OmexMetaId0001", "https://identifiers.org/opb/opb_1234", editor.getLocalName());
     Triples triples = property.toTriples("Entity1234");
     std::cout << rdf.toString() << std::endl;
     for (auto &it: triples) {

@@ -47,9 +47,8 @@ namespace omexmeta {
          * @param mediator a vector of Sink objects representing the energetic modulators for the PhysicalProcess
          *
          */
-        PhysicalProcess(librdf_model *model,
-                        const PhysicalProperty& physicalProperty, Sources sources, Sinks sinks,
-                        Mediators mediators);
+        PhysicalProcess(librdf_model *model, std::string local_uri, const PhysicalProperty &physicalProperty,
+                        Sources sources, Sinks sinks, Mediators mediators);
 
         /*
          * @brief free the node resources used by PhysicalProcess.
@@ -67,6 +66,13 @@ namespace omexmeta {
          * @param model the currently active RDF model.
          */
         explicit PhysicalProcess(librdf_model *model);
+
+        /*
+         * @brief constructor for the builder interface of PhysicalProcess instantiation
+         * @param model the currently active RDF model.
+         * @param local_uri the local uri in current use.
+         */
+        explicit PhysicalProcess(librdf_model *model, std::string local_uri);
 
         /*
          * @brief getter for sources
@@ -97,16 +103,10 @@ namespace omexmeta {
         Triples toTriples() override;
 
         /*
-         * @brief setter for the about portion of the PhysicalProcess.
-         * @return a reference to this PhysicalProcess to enable chaining setter commands
-         */
-        PhysicalProcess &setAbout(const std::string& metaid);
-
-        /*
          * @brief setter for the physical property portion of the PhysicalProcess.
          * @return a reference to this PhysicalProcess to enable chaining setter commands
          */
-        PhysicalProcess &setPhysicalProperty(const std::string &subject_metaid, const std::string &physicalProperty);
+        PhysicalProcess &setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty);
 
         /*
          * @brief setter for the physical property portion of the PhysicalProcess.

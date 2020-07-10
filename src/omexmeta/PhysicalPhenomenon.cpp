@@ -9,14 +9,19 @@
 
 namespace omexmeta {
 
-    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, PhysicalProperty propertyResource, AnnotationType type)
-            : model_(model), physical_property_(std::move(propertyResource)), type_(type) {}
+    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, std::string local_uri,
+                                           PhysicalProperty propertyResource, AnnotationType type)
+            : model_(model), physical_property_(std::move(propertyResource)), type_(type),
+            local_uri_(local_uri){}
 
     PhysicalPhenomenon::~PhysicalPhenomenon() = default;
 
 
     PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model)
             : model_(model) {}
+
+    PhysicalPhenomenon::PhysicalPhenomenon(librdf_model *model, std::string local_uri)
+        : model_(model), local_uri_(local_uri) {}
 
     const std::string & PhysicalPhenomenon::getSubjectStr() const {
         return physical_property_.getSubjectStr();
@@ -60,12 +65,18 @@ namespace omexmeta {
         return physical_property_.getSubjectStr();
     }
 
+    PhysicalPhenomenon& PhysicalPhenomenon::setAbout(std::string about) {
+        physical_property_.setSubject(about);
+        return *this;
+    }
+
 
     PhysicalPhenomenon::PhysicalPhenomenon(PhysicalPhenomenon &&phenomenon) noexcept {
         model_ = phenomenon.model_;
         phenomenon.model_ = nullptr; // not sure if this is right.
         physical_property_ = std::move(phenomenon.physical_property_);
         type_ = phenomenon.type_;
+        local_uri_ = phenomenon.local_uri_;
     }
 
     PhysicalPhenomenon &PhysicalPhenomenon::operator=(PhysicalPhenomenon &&phenomenon) noexcept {
@@ -74,6 +85,7 @@ namespace omexmeta {
             phenomenon.model_ = nullptr; // not sure if this is right.
             physical_property_ = std::move(phenomenon.physical_property_);
             type_ = phenomenon.type_;
+        local_uri_ = phenomenon.local_uri_;
         }
         return *this;
     }
@@ -85,6 +97,36 @@ namespace omexmeta {
     bool PhysicalPhenomenon::operator!=(const PhysicalPhenomenon &rhs) const {
         return !(rhs == *this);
     }
+
+    void PhysicalPhenomenon::setPhysicalProperty(const PhysicalProperty &physicalProperty) {
+        physical_property_ = physicalProperty;
+    }
+
+    void PhysicalPhenomenon::setType(AnnotationType type) {
+        type_ = type;
+    }
+
+    const std::string &PhysicalPhenomenon::getPhysicalPropertyId() const {
+        return physical_property_id_;
+    }
+
+    void PhysicalPhenomenon::setPhysicalPropertyId(const std::string &physicalPropertyId) {
+        physical_property_id_ = physicalPropertyId;
+    }
+
+    const std::string &PhysicalPhenomenon::getLocalUri() const {
+        if (local_uri_.empty()){
+            throw std::invalid_argument("std::invalid_argument: local_uri_ is empty. "
+                                        "Please use setLocalUri or pass to the constructor a "
+                                        "local uri. ");
+        }
+        return local_uri_;
+    }
+
+    void PhysicalPhenomenon::setLocalUri(const std::string &localUri) {
+        local_uri_ = localUri;
+    }
+
 
 }
 

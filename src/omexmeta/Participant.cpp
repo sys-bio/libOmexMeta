@@ -10,22 +10,32 @@
 namespace omexmeta {
 
 
-    Participant::Participant(librdf_model *model, std::string base_metaid, std::string semsim_predicate_term,
+    Participant::Participant(librdf_model *model, std::string base_metaid,
+                             std::string local_uri, std::string semsim_predicate_term,
                              double multiplier,
                              std::string physicalEntityReference)
-            : model_(model), metaid_template_str_(std::move(base_metaid)),
+
+            : model_(model),
+              // add the local uri prefix to the metaid here. This will also
+              // work for Participant subclasses.
+//              metaid_template_str_(SemsimUtils::addLocalPrefixToMetaid(std::move(base_metaid), local_uri)),
+              metaid_template_str_(std::move(base_metaid)),
+              local_uri_(std::move(local_uri)),
               semsim_predicate_term_(std::move(semsim_predicate_term)),
               multiplier_(multiplier),
               physicalEntityReference_(std::move(physicalEntityReference)) {}
 
-    std::string Participant::createMetaid(const std::string& base) const{
+    std::string Participant::createMetaid(const std::string &base) const {
         return SemsimUtils::generateUniqueMetaid(model_, base);
     }
 
-    Triples Participant::toTriples(const std::string &process_metaid) {
+    Triples Participant::toTriples(std::string process_metaid) {
         if (unique_participant_metaid_.empty()) {
             unique_participant_metaid_ = SemsimUtils::generateUniqueMetaid(model_, metaid_template_str_);
         }
+        process_metaid = SemsimUtils::addLocalPrefixToMetaid(process_metaid, local_uri_);
+        unique_participant_metaid_ = SemsimUtils::addLocalPrefixToMetaid(unique_participant_metaid_, local_uri_);
+
         // todo preallocate num triples needed
         Triples triples;
 
@@ -57,7 +67,9 @@ namespace omexmeta {
             throw NullPointerException("NullPointerException: Participant::toTriples: pred2");
         }
 
-        librdf_node *res2 = LibrdfNode::fromUriString(physicalEntityReference_).get();
+        librdf_node *res2 = LibrdfNode::fromUriString(
+                SemsimUtils::addLocalPrefixToMetaid(physicalEntityReference_, getLocalUri())
+        ).get();
         if (res2 == nullptr) {
             throw NullPointerException("NullPointerException: Participant::toTriples: res2");
         }
@@ -129,20 +141,45 @@ namespace omexmeta {
         return !(rhs == *this);
     }
 
-    SourceParticipant::SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference)
-            : Participant(model, "SourceParticipant", "hasSourceParticipant",
+    void Participant::setMultiplier(double multiplier) {
+        multiplier_ = multiplier;
+    }
+
+    void Participant::setPhysicalEntityReference(const std::string &physicalEntityReference) {
+        physicalEntityReference_ = physicalEntityReference;
+    }
+
+    const std::string &Participant::getUniqueParticipantMetaid() const {
+        return unique_participant_metaid_;
+    }
+
+    void Participant::setUniqueParticipantMetaid(const std::string &uniqueParticipantMetaid) {
+        unique_participant_metaid_ = uniqueParticipantMetaid;
+    }
+
+    const std::string &Participant::getLocalUri() const {
+        return local_uri_;
+    }
+
+    void Participant::setLocalUri(const std::string &localUri) {
+        local_uri_ = localUri;
+    }
+
+    SourceParticipant::SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference,
+                                         std::string local_uri)
+            : Participant(model, "SourceParticipant", std::move(local_uri), "hasSourceParticipant",
                           multiplier, std::move(physicalEntityReference)) {}
 
     SinkParticipant::SinkParticipant(librdf_model *model, double multiplier,
-                                     std::string physicalEntityReference)
-            : Participant(model, "SinkParticipant",
+                                     std::string physicalEntityReference, std::string local_uri)
+            : Participant(model, "SinkParticipant", std::move(local_uri),
                           "hasSinkParticipant",
                           multiplier,
                           std::move(physicalEntityReference)) {}
 
     MediatorParticipant::MediatorParticipant(
-            librdf_model *model, std::string physicalEntityReference)
-            : Participant(model, "MediatorParticipant",
+            librdf_model *model, std::string physicalEntityReference, std::string local_uri)
+            : Participant(model, "MediatorParticipant", std::move(local_uri),
                           "hasMediatorParticipant",
                           0.0, std::move(physicalEntityReference)) {
     }

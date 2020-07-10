@@ -41,8 +41,9 @@ public:
 TEST_F(QueryTests, TestStr) {
     omexmeta::Query query(rdf.getModel(), q);
     std::string actual = query.resultsAsStr("csv");
-    std::string expected = "x,y,z\r\n"
-                           "file://./MyModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\r\n";
+    std::cout << actual << std::endl;
+    std::string expected = "x,y,z\n"
+                           "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     query.freeQuery();
 }
@@ -51,8 +52,9 @@ TEST_F(QueryTests, TestRunQueryTwice) {
     omexmeta::Query query(rdf.getModel(), q);
     query.runQuery();
     std::string actual = query.resultsAsStr("csv");
-    std::string expected = "x,y,z\r\n"
-                           "file://./MyModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\r\n";
+    std::cout << actual << std::endl;
+    std::string expected = "x,y,z\n"
+                           "file://./MyModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     query.freeQuery();
 }

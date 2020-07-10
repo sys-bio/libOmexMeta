@@ -25,8 +25,8 @@ namespace omexmeta {
         librdf_model *model_ = nullptr; // should be cleaned up by the LibrdfModel inside RDF.
         PhysicalProperty physical_property_;
         AnnotationType type_ = AnnotationType::UNKNOWN;
-
         std::string physical_property_id_;
+        std::string local_uri_;
 
         [[nodiscard]] std::string generateMetaId(const std::string& id_base) const;
 
@@ -63,10 +63,15 @@ namespace omexmeta {
          * @brief Constructor for builder interface.
          *
          * Shouldn't be needed by users.
-         *
-         * Developers. Re-evaluate requirement for this constructor and remove if unnecessary
          */
         [[maybe_unused]] explicit PhysicalPhenomenon(librdf_model *model);
+
+        /*
+         * @brief Constructor for builder interface.
+         *
+         * Shouldn't be needed by users directly.
+         */
+        [[maybe_unused]] explicit PhysicalPhenomenon(librdf_model *model, std::string local_uri);
 
         /*
          * @brief constructor for PhysicalPhenomenon object.
@@ -75,9 +80,12 @@ namespace omexmeta {
          * @param propertyResource The PhysicalProperty assocaited with a composite annotation
          * @param type An AnnotationType to distinguish composite annotations.
          */
-        PhysicalPhenomenon(librdf_model *model,
-                           PhysicalProperty propertyResource,
-                           AnnotationType type);
+        PhysicalPhenomenon(librdf_model *model, std::string local_uri,
+                           PhysicalProperty propertyResource, AnnotationType type);
+
+        [[nodiscard]] const std::string &getLocalUri() const;
+
+        void setLocalUri(const std::string &localUri);
 
         /*
          * @brief get the subject portion of the PhysicalPhenomenon
@@ -118,6 +126,16 @@ namespace omexmeta {
 //        virtual void free();
 
         const std::string &getSubjectStr() const;
+
+        PhysicalPhenomenon& setAbout(std::string about);
+
+        void setPhysicalProperty(const PhysicalProperty &physicalProperty);
+
+        void setType(AnnotationType type);
+
+        const std::string &getPhysicalPropertyId() const;
+
+        void setPhysicalPropertyId(const std::string &physicalPropertyId);
     };
 
     typedef std::shared_ptr<PhysicalPhenomenon> PhysicalPhenomenonPtr;

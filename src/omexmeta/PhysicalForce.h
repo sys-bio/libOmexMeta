@@ -43,8 +43,8 @@ namespace omexmeta {
         ~PhysicalForce() = default;
 
 
-        PhysicalForce(librdf_model *model, PhysicalProperty physicalProperty,
-                      Sources sources, Sinks sinks);
+        PhysicalForce(librdf_model *model, std::string local_uri, PhysicalProperty physicalProperty, Sources sources,
+                      Sinks sinks);
 
         /*
          * @brief Free nodes associated with PhysicalForce.
@@ -70,6 +70,18 @@ namespace omexmeta {
          *
          */
         explicit PhysicalForce(librdf_model *model);
+
+        /*
+         * @brief constructor for instantiating a PhysicalForce type composite annotation
+         * @param model. A librdf_model pass down by Editor.
+         * @param local_uri. String passed down by Editor. The local uri to use for metaids
+         *
+         * Users do not need to instantiate PhysicalForce manually, since it is done
+         * by Editor. This constructor instantiates an empty PhysicalForce
+         * object which is filled by
+         *
+         */
+        explicit PhysicalForce(librdf_model *model, const std::string& local_uri);
 
         /*
          * @brief create a metaid for the physical force annotation
@@ -108,7 +120,7 @@ namespace omexmeta {
          *
          * See Resource for more information about input format for @param metaid
          */
-        PhysicalForce &setAbout(const std::string &metaid);
+//        PhysicalForce &setAbout(std::string metaid);
 
         /*
          * @brief sets the physical property of the PhysicalForce
