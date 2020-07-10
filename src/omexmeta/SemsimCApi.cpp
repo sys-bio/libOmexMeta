@@ -301,7 +301,7 @@ namespace omexmeta {
  * PhysicalEntity class methods
  */
     PhysicalEntity *PhysicalEntity_new(Editor *editor_ptr) {
-        return new PhysicalEntity(editor_ptr->getModel());
+        return new PhysicalEntity(editor_ptr->getModel(), editor_ptr->getLocalName());
     }
 
     void PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr) {
@@ -379,7 +379,7 @@ namespace omexmeta {
  * PhysicalProcess class methods
  */
     PhysicalProcess *PhysicalProcess_new(Editor *editor_ptr) {
-        return new PhysicalProcess(editor_ptr->getModel());
+        return new PhysicalProcess(editor_ptr->getModel(), editor_ptr->getLocalName());
     }
 
     void PhysicalProcess_delete(PhysicalProcess *physicalProcess) {
@@ -457,7 +457,7 @@ namespace omexmeta {
  * PhysicalForce class methods
  */
     PhysicalForce *PhysicalForce_new(Editor *editor_ptr) {
-        return new PhysicalForce(editor_ptr->getModel());
+        return new PhysicalForce(editor_ptr->getModel(), editor_ptr->getLocalName());
     }
 
     void PhysicalForce_delete(PhysicalForce *physicalForce) {

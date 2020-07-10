@@ -31,7 +31,7 @@ public:
             "}\n";
     };
 
-    ~QueryTests(){
+    ~QueryTests() {
 //        model.freeModel();
 
     }
@@ -49,12 +49,12 @@ TEST_F(QueryTests, TestStr) {
 }
 
 TEST_F(QueryTests, TestRunQueryTwice) {
-    omexmeta::Query query(rdf.getModel(), q);
-    query.runQuery();
+    omexmeta::Query query(rdf.getModel(), q); // runs the first time automatically
+    query.runQuery(); // now run again
     std::string actual = query.resultsAsStr("csv");
     std::cout << actual << std::endl;
     std::string expected = "x,y,z\n"
-                           "file://./MyModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\n";
+                           "http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     query.freeQuery();
 }

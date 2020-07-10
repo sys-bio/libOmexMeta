@@ -193,7 +193,7 @@ namespace omexmeta {
         std::vector<std::string> vec = omexmeta::SemsimUtils::splitStringBy(expected_string, '\n');
         // we do search line by line
         for (auto &i : vec) {
-            if (actual_string.find(i) == std::string::npos){
+            if (actual_string.find(i) == std::string::npos) {
                 // not found.
                 all_lines_match = false;
                 std::cout << "actual is:\n " << actual_string << "\n" << std::endl;
@@ -214,18 +214,18 @@ namespace omexmeta {
         // logic for adding appropriate extension if not exist
         std::vector<std::string> suffixes = {".xml", ".cellml", ".sbml"};
         bool has_appropriate_extension = false;
-        for (auto &it : suffixes){
-            if (SemsimUtils::stringHasEnding(model_name, it)){
+        for (auto &it : suffixes) {
+            if (SemsimUtils::stringHasEnding(model_name, it)) {
                 has_appropriate_extension = true;
                 break;
             }
         }
 
         std::string myomex_string;
-        if (has_appropriate_extension){
-            myomex_string = myomexlib_string + + "/" + model_name;
+        if (has_appropriate_extension) {
+            myomex_string = myomexlib_string + +"/" + model_name;
         } else {
-            myomex_string = myomexlib_string +"/" + model_name + ".xml";
+            myomex_string = myomexlib_string + "/" + model_name + ".xml";
         }
         vec.push_back(myomex_string);
         assert(!myomex_string.empty());
@@ -234,7 +234,7 @@ namespace omexmeta {
         // we need to remove it so we can add .rdf.
         // We do this in a way that enables multiple "." in a model_name
         std::vector<std::string> split = SemsimUtils::splitStringBy(model_name, '.');
-        if (split.size() <= 1){
+        if (split.size() <= 1) {
             throw std::logic_error("std::logic_error: Triple::str: You should never get a "
                                    "a value less than 2 here because you are splitting a string. "
                                    "If you are seeing this message this is a bug. Please report "
@@ -243,7 +243,7 @@ namespace omexmeta {
         // remove the last element which should contain the extension.
         split.erase(split.end());
         std::ostringstream os;
-        for (auto &it : split){
+        for (auto &it : split) {
             os << it << ".";
         }
 
@@ -255,24 +255,34 @@ namespace omexmeta {
 
     }
 
-    std::string SemsimUtils::addLocalPrefixToMetaid(std::string metaid, const std::string& local) {
+    std::string SemsimUtils::addLocalPrefixToMetaid(std::string metaid, const std::string &local) {
         // if metaid already has local in the string, we just return
-        if (metaid.find(local) != std::string::npos){
+        if (metaid.find(local) != std::string::npos) {
             return metaid;
         }
         // Otherwise we concatonate:
         // first we check if local has the # at the end. It should do.
-        if (!SemsimUtils::stringHasEnding(local, "#")){
+        if (!SemsimUtils::stringHasEnding(local, "#")) {
             throw std::invalid_argument("std::invalid_argument: addLocalPrefixToMetaid: "
                                         "Was expecting a local prefix to end with a '#' "
                                         "character, like http://MyOmexLibrary.org/myomexarchive.omex/mymodel.rdf#. "
                                         "Recieved: " + local);
         }
         // if metaid also begins with '#' character, remove it.
-        if (metaid.rfind('#', 0) == 0 ){
+        if (metaid.rfind('#', 0) == 0) {
             metaid = metaid.substr(1, metaid.size());
         }
         return local + metaid;
+    }
+
+    std::string
+    SemsimUtils::stringReplace(std::string str, const std::string &string_to_replace, const std::string &replacement) {
+        size_t start_pos = 0;
+        while ((start_pos = str.find(string_to_replace, start_pos)) != std::string::npos) {
+            str.replace(start_pos, string_to_replace.length(), replacement);
+            start_pos += replacement.length();
+        }
+        return str;
     }
 
 

@@ -144,9 +144,8 @@ namespace omexmeta {
                 nullptr, nullptr, uri.get());
         uri.freeUri();
         std::string res = (const char *) s; // makes a copy
-        // the above string using \r\n for line endings. Convert to \n
-        res = std::regex_replace(res, std::regex(R"(\\r\\n)"), std::string("\n"));
-
+        // the above string using \r\n for line endings. Convert to \n like any sane program should.
+        res = SemsimUtils::stringReplace(res, "\r\n", "\n");
         free(s);
         return res;
     }

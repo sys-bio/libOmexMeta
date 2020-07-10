@@ -1349,22 +1349,32 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
     triples.freeTriples();
 
     Triple triple1(
-            LibrdfNode::fromUriString("#PhysicalEntity0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/is"),
             LibrdfNode::fromUriString("https://identifiers.org/uniprot/PD12345")
     );
     Triple triple2(
-            LibrdfNode::fromUriString("#PhysicalEntity0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
     );
     Triple triple3(
-            LibrdfNode::fromUriString("#OmexMetaId0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#OmexMetaId0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
-            LibrdfNode::fromUriString("#PhysicalEntity0000")
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            )
     );
     Triple triple4(
-            LibrdfNode::fromUriString("#OmexMetaId0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#OmexMetaId0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
@@ -1393,22 +1403,32 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
     triples.freeTriples();
 
     Triple triple1(
-            LibrdfNode::fromUriString("#PhysicalEntity0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/is"),
             LibrdfNode::fromUriString("https://identifiers.org/uniprot/PD12345")
     );
     Triple triple2(
-            LibrdfNode::fromUriString("#PhysicalEntity0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
     );
     Triple triple3(
-            LibrdfNode::fromUriString("#OmexMetaId0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#OmexMetaId0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
-            LibrdfNode::fromUriString("PhysicalEntity0000")
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            )
     );
     Triple triple4(
-            LibrdfNode::fromUriString("#OmexMetaId0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#OmexMetaId0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
@@ -1437,22 +1457,32 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
     triples.freeTriples();
 
     Triple triple1(
-            LibrdfNode::fromUriString("#PhysicalEntity0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/is"),
             LibrdfNode::fromUriString("https://identifiers.org/uniprot/PD12345")
     );
     Triple triple2(
-            LibrdfNode::fromUriString("#PhysicalEntity0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
     );
     Triple triple3(
-            LibrdfNode::fromUriString("#OmexMetaId0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#OmexMetaId0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
-            LibrdfNode::fromUriString("#PhysicalEntity0000")
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            )
     );
     Triple triple4(
-            LibrdfNode::fromUriString("#OmexMetaId0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#OmexMetaId0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
@@ -1481,22 +1511,32 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
     triples.freeTriples();
 
     Triple triple1(
-            LibrdfNode::fromUriString("PhysicalEntity0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/is"),
             LibrdfNode::fromUriString("https://identifiers.org/uniprot/PD12345")
     );
     Triple triple2(
-            LibrdfNode::fromUriString("PhysicalEntity0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
     );
     Triple triple3(
-            LibrdfNode::fromUriString("#OmexMetaId0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#OmexMetaId0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
-            LibrdfNode::fromUriString("PhysicalEntity0000")
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            )
     );
     Triple triple4(
-            LibrdfNode::fromUriString("#OmexMetaId0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#OmexMetaId0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
@@ -1525,22 +1565,32 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
     triples.freeTriples();
 
     Triple triple1(
-            LibrdfNode::fromUriString("#PhysicalEntity0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/is"),
             LibrdfNode::fromUriString("https://identifiers.org/uniprot/PD12345")
     );
     Triple triple2(
-            LibrdfNode::fromUriString("#PhysicalEntity0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPartOf"),
             LibrdfNode::fromUriString("https://identifiers.org/fma/fma:1234")
     );
     Triple triple3(
-            LibrdfNode::fromUriString("#OmexMetaId0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#OmexMetaId0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isPropertyOf"),
-            LibrdfNode::fromUriString("PhysicalEntity0000")
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#PhysicalEntity0000", physicalEntity.getLocalUri())
+            )
     );
     Triple triple4(
-            LibrdfNode::fromUriString("#OmexMetaId0000"),
+            LibrdfNode::fromUriString(
+                    SemsimUtils::addLocalPrefixToMetaid("#OmexMetaId0000", physicalEntity.getLocalUri())
+            ),
             LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/isVersionOf"),
             LibrdfNode::fromUriString("https://identifiers.org/opb/opb_1234")
     );
