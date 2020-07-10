@@ -135,7 +135,9 @@ namespace omexmeta {
 //        std::string toString(const std::string &format = "rdfxml-abbrev", std::string base_uri = std::string(),
 //                             const char *mime_type = nullptr, const char *type_uri = nullptr);
 
-        std::string toString(const std::string &format = "rdfxml-abbrev", const std::string& model_name = "MyModel",
+        std::string toString(const std::string &format = "rdfxml-abbrev",
+                             const std::string& omex_name = "myomex.omex",
+                             const std::string& model_name = "mymodel.xml",
                              std::string base_uri = std::string(),
                              const char *mime_type = nullptr, const char *type_uri = nullptr);
 

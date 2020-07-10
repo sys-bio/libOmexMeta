@@ -120,7 +120,6 @@ namespace redland {
 
     void LibrdfSerializer::setOption(const std::string &option, const std::string &value) const {
         // valid options : http://librdf.org/raptor/api-1.4/raptor-section-feature.html
-        std::cout << "setting option: " << option << " to: " << value << std::endl;
         std::string feature_uri_base = "http://feature.librdf.org/raptor-";
         LibrdfUri feature_uri(feature_uri_base + option);
         LibrdfNode node = LibrdfNode::fromLiteral(value);

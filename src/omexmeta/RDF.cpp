@@ -26,7 +26,6 @@ namespace omexmeta {
         freeRDF();
     }
 
-
     RDF::RDF(RDF &&rdf) noexcept {
         namespaces_ = std::move(rdf.namespaces_);
         seen_namespaces_ = std::move(rdf.seen_namespaces_);
@@ -176,7 +175,7 @@ namespace omexmeta {
 
 
     std::string
-    RDF::toString(const std::string &format, const std::string& model_name, std::string base_uri, const char *mime_type,
+    RDF::toString(const std::string &format, const std::string& omex_name, const std::string& model_name, std::string base_uri, const char *mime_type,
                   const char *type_uri) {
         base_uri = SemsimUtils::prepareBaseUri(base_uri);
         LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
@@ -184,10 +183,10 @@ namespace omexmeta {
         for (auto &it: namespaces_) {
             serializer.setNamespace(it.first, it.second);
         }
-//
-//        serializer.setNamespace(myomexlib_, "myOMEXlib");
-//        serializer.setNamespace(myomexlib_+model_name+".omex", "myOMEX");
-//        serializer.setNamespace(myomexlib_+model_name+".rdf#", "local");
+        std::vector<std::string> vec = SemsimUtils::configureSelfStrings(omex_name, model_name);
+        serializer.setNamespace(vec[0],  "myOMEXlib");
+        serializer.setNamespace(vec[1], "myOMEX");
+        serializer.setNamespace(vec[2], "local");
         return serializer.toString(base_uri, model_);
     }
 

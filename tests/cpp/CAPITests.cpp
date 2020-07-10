@@ -50,9 +50,11 @@ TEST_F(CAPITests, RDFToString) {
     std::cout << actual << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xml:base=\"file://annotation.rdf\">\n"
-                           "  <rdf:Description rdf:about=\"file://./metaid_1\">\n"
+                           "   xmlns:local=\"http://MyOmexLibrary.org/annotation.rdf/mymodel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/annotation.rdf/mymodel.xml\"\n"
+                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/annotation.rdf\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary.org/myomex.rdf#metaid_1\">\n"
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";

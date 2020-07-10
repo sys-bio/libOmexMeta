@@ -103,8 +103,10 @@ TEST_F(RDFTests, TestFromStringTurtleBag) {
 TEST_F(RDFTests, TestToString) {
     RDF rdf = RDF::fromString(samples.rdf_xml_example7, "rdfxml");
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-                           "   xml:base=\"file://\">\n"
+                           "<rdf:RDF xmlns:local=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#\"\n"
+                           "   xmlns:myOMEX=\"http://MyOmexLibrary.org/myomex.omex/mymodel.xml\"\n"
+                           "   xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myomex.omex\"\n"
+                           "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"http://www.w3.org/TR/rdf-syntax-grammar\">\n"
                            "    <ns1:editor xmlns:ns1=\"http://example.org/stuff/1.0/\">\n"
                            "      <rdf:Description>\n"
@@ -114,8 +116,7 @@ TEST_F(RDFTests, TestToString) {
                            "    </ns1:editor>\n"
                            "    <ns2:title xmlns:ns2=\"http://purl.org/dc/elements/1.1/\">RDF1.1 XML Syntax</ns2:title>\n"
                            "  </rdf:Description>\n"
-                           "</rdf:RDF>\n"
-                           "";
+                           "</rdf:RDF>\n";
     std::string actual = rdf.toString();
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
