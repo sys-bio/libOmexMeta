@@ -4,6 +4,8 @@
 
 #include "omexmeta/SemsimCApi.h"
 
+#include <utility>
+
 
 namespace omexmeta {
     void free_c_char_star(char *c) {
@@ -150,8 +152,23 @@ namespace omexmeta {
     }
 
     void Editor_addSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation) {
-
         editor_ptr->addSingleAnnotation(*singularAnnotation);
+    }
+
+    void removeSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation) {
+        editor_ptr->removeSingleAnnotation(*singularAnnotation);
+    }
+
+    void removePhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity) {
+        editor_ptr->removePhysicalEntity(*physicalEntity);
+    }
+
+    void removePhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess) {
+        editor_ptr->removePhysicalProcess(*physicalProcess);
+    }
+
+    void removePhysicalForce(Editor *editor_ptr, PhysicalForce &physicalForce) {
+        editor_ptr->removePhysicalForce(*physicalForce);
     }
 
     void Editor_addPhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity) {
@@ -199,16 +216,90 @@ namespace omexmeta {
         delete editor_ptr;
     }
 
-//    void Editor_toRDF(Editor *editor_ptr) {
-//        editor_ptr->toRDF();
-//    }
+    char *Editor_getArchiveName(Editor *editor_ptr) {
+        std::string str = editor_ptr->getArchiveName();
+        char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
+        strcpy(cstr, str.c_str());
+        return cstr;
+    }
+
+    char *Editor_getLocalName(Editor *editor_ptr) {
+        std::string str = editor_ptr->getLocalName();
+        char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
+        strcpy(cstr, str.c_str());
+        return cstr;
+    }
+
+    char *Editor_getModelName(Editor *editor_ptr) {
+        std::string str = editor_ptr->getModelName();
+        char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
+        strcpy(cstr, str.c_str());
+        return cstr;
+    }
+
+    char *Editor_getOmexRepository(Editor *editor_ptr) {
+        std::string str = editor_ptr->getOmexRepository();
+        char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
+        strcpy(cstr, str.c_str());
+        return cstr;
+    }
+
+    void Editor_setOmexRepository(Editor *editor_ptr, std::string repository_name) {
+        editor_ptr->setOmexRepository(std::move(repository_name));
+    }
+
+    void Editor_setArchiveName(Editor *editor_ptr, std::string archive_name) {
+        editor_ptr->setArchiveName(std::move(archive_name));
+    }
+
+    void Editor_setModelName(Editor *editor_ptr, std::string model_name) {
+        editor_ptr->setModelName(std::move(model_name));
+    }
+
+    void Editor_setLocalName(Editor *editor_ptr, std::string local_name) {
+        editor_ptr->setLocalName(std::move(local_name));
+    }
+
+    void Editor_addCreator(Editor *editor_ptr, std::string orcid_id) {
+        editor_ptr->addCreator(std::move(orcid_id));
+    }
+
+    void Editor_addCurator(Editor *editor_ptr, std::string orcid_id) {
+        editor_ptr->addCurator(std::move(orcid_id));
+    }
+
+    void Editor_taxon(Editor *editor_ptr, const std::string &taxon_id) {
+        editor_ptr->taxon(taxon_id);
+    }
+
+    void Editor_pubmed(Editor *editor_ptr, const std::string &pubmedid) {
+        editor_ptr->pubmed(pubmedid);
+    }
+
+    void Editor_addDescription(Editor *editor_ptr, const std::string &date) {
+        editor_ptr->addDescription(date);
+    }
+
+    void Editor_addDateCreated(Editor *editor_ptr, const std::string &date) {
+        editor_ptr->addDateCreated(date);
+    }
+
+    void Editor_addPersonalInformation(Editor *editor_ptr, const PersonalInformation &personalInformation) {
+        editor_ptr->addPersonalInformation(personalInformation);
+    }
+
+    void Editor_addParentModel(Editor *editor_ptr, const std::string &biomod_id) {
+        editor_ptr->addParentModel(biomod_id);
+    }
 
 
 /*********************************************************************
  * SingularAnnotation class methods
  */
-    SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr) {
-        return new SingularAnnotation();
+    SingularAnnotation *SingularAnnotation_new(Editor *editor_ptr, std::string metaid) {
+        auto *singularAnnotation = new SingularAnnotation();
+        singularAnnotation->setAbout(OmexMetaUtils::addLocalPrefixToMetaid(metaid, editor_ptr->getLocalName()));
+        return singularAnnotation;
     }
 
     void SingularAnnotation_delete(SingularAnnotation *singularAnnotation) {
@@ -232,7 +323,9 @@ namespace omexmeta {
         free(singularAnnotationPtr);
     }
 
-    SingularAnnotation *SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char* omex_name, const char* model_name, const char *about) {
+    SingularAnnotation *
+    SingularAnnotation_setAbout(SingularAnnotation *singular_annotation, const char *omex_name, const char *model_name,
+                                const char *about) {
         singular_annotation->setAbout(omex_name, model_name, about);
         return singular_annotation;
     };
@@ -471,7 +564,6 @@ namespace omexmeta {
     }
 
 
-
     PhysicalForce *PhysicalForce_addSource(PhysicalForce *physical_force_ptr, double multiplier,
                                            const char *physical_entity_reference) {
         physical_force_ptr->addSource(multiplier, physical_entity_reference);
@@ -515,7 +607,6 @@ namespace omexmeta {
         strcpy(cstr, about.c_str());
         return cstr;
     }
-
 
 
 }

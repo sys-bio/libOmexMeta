@@ -425,14 +425,9 @@ namespace omexmeta {
         return LibrdfNode::fromUriString(getLocalName() + string);
     }
 
-    SingularAnnotation Editor::newSingularAnnotation(std::string metaid) {
-        HERE();
+    SingularAnnotation Editor::newSingularAnnotation(std::string metaid) const {
         SingularAnnotation singularAnnotation;
-        HERE();
-        std::cout << getLocalName() << std::endl;
-        HERE();
-        singularAnnotation.setAbout(OmexMetaUtils::addLocalPrefixToMetaid(metaid, getLocalName()));
-        HERE();
+        singularAnnotation.setAbout(OmexMetaUtils::addLocalPrefixToMetaid(std::move(metaid), getLocalName()));
         return singularAnnotation;
     }
 

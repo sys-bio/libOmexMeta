@@ -238,8 +238,6 @@ namespace omexmeta {
 
         void addCompositeAnnotation2(PhysicalPhenomenon *phenomenonPtr);
 
-        void removePhysicalEntity2(PhysicalEntity &physicalEntity) const;
-
         void addTriples(Triples &triples);
 
         void removePhysicalPhenomenon(PhysicalPhenomenon *physicalPhenomenon) const;
@@ -326,7 +324,7 @@ namespace omexmeta {
 
         void addPersonalInformation(const PersonalInformation &personalInformation) const;
 
-        SingularAnnotation newSingularAnnotation(std::string metaid);
+        SingularAnnotation newSingularAnnotation(std::string metaid) const;
 
         void addParentModel(const std::string &biomod_id);
     };
