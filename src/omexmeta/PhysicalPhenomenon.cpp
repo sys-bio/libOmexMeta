@@ -32,24 +32,8 @@ namespace omexmeta {
     }
 
     std::string PhysicalPhenomenon::generateMetaId(const std::string& id_base) const {
-        std::string q = "SELECT ?subject ?predicate ?object\n"
-                        "WHERE {?subject ?predicate ?object}";
-        Query query(model_, q);
-        ResultsMap results_map = query.resultsAsMap();
-        std::vector<std::string> subjects = results_map["subject"];
-        int count = 0;
-        std::string metaid;
-        while (true) {
-            MetaID metaId(id_base, count, 4);
-            metaid = metaId.generate();
-            if (std::find(subjects.begin(), subjects.end(), metaId.generate()) == subjects.end()) {
-                break;
-            }
-            count++;
-        }
-        return metaid;
+        return SemsimUtils::generateUniqueMetaid(model_, id_base);
     }
-
 
     PhysicalProperty PhysicalPhenomenon::getPhysicalProperty() const {
         return physical_property_;

@@ -24,7 +24,7 @@ set(OMEXMETA_HEADERS
         "AnnotationType.h"
         "Editor.h"
         "SemsimCApi.h"
-        )
+        PersonalInformation.cpp PersonalInformation.h)
 
 set(OMEXMETA_SOURCES
         "SemsimUtils.cpp"
@@ -47,7 +47,7 @@ set(OMEXMETA_SOURCES
         "PhysicalProcess.cpp"
         "PhysicalForce.cpp"
         "SemsimCApi.cpp"
-        )
+        PersonalInformation.cpp PersonalInformation.h)
 
 
 #####################################################################3

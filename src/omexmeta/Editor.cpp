@@ -199,8 +199,16 @@ namespace omexmeta {
                 SemsimUtils::addLocalPrefixToMetaid(physicalForce.getAbout(), getLocalName())
         );
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalForce);
-
     }
+
+//    void Editor::addPersonalInformation(const PersonalInformation &personalInformation) const {
+//        std::unique_ptr<Triples> triples = personalInformation.getTriples();
+//        for (auto &triple : *triples) {
+//            model_.addStatement(triple);
+//        }
+//        std::cout << __FILE__ << ":" << __LINE__ << "warning: experimental free: " << std::endl;
+//        triples->freeTriples();
+//    }
 
     void Editor::removeSingleAnnotation(const SingularAnnotation &singularAnnotation) const {
         librdf_statement *stmt = singularAnnotation.getStatement();
@@ -242,11 +250,8 @@ namespace omexmeta {
     }
 
     void Editor::addAuthor(const std::string &orcid_id) {
-        // Note, this mechanism of retrieving the model level metaid
-        // is very likely to be brittle since it assumes its the first
-        // element in the metaid list.
         Triple triple(
-                LibrdfNode::fromUriString(getMetaids()[0]).get(),
+                LibrdfNode::fromUriString(getModelName()).get(),
                 PredicateFactory("dc", "creator")->getNode(),
                 LibrdfNode::fromUriString(orcid_id).get()
         );
@@ -254,13 +259,46 @@ namespace omexmeta {
     }
 
     void Editor::addCurator(const std::string &orcid_id) {
-        // Note, this mechanism of retrieving the model level metaid
-        // is very likely to be brittle since it assumes its the first
-        // element in the metaid list.
         Triple triple(
-                LibrdfNode::fromUriString(getMetaids()[0]).get(),
+                LibrdfNode::fromUriString(getModelName()).get(),
                 PredicateFactory("dc", "creator")->getNode(),
                 LibrdfNode::fromUriString(orcid_id).get()
+        );
+        model_.addStatement(triple);
+    }
+
+    void Editor::addDateCreated(const std::string &date) {
+        Triple triple(
+                LibrdfNode::fromUriString(getModelName()).get(),
+                PredicateFactory("dc", "created")->getNode(),
+                LibrdfNode::fromLiteral(date).get()
+        );
+        model_.addStatement(triple);
+    }
+
+    void Editor::addDescription(const std::string &date) {
+        Triple triple(
+                LibrdfNode::fromUriString(getModelName()).get(),
+                PredicateFactory("dc", "description")->getNode(),
+                LibrdfNode::fromLiteral(date).get()
+        );
+        model_.addStatement(triple);
+    }
+
+    void Editor::pubmed(const std::string &pubmedid) {
+        Triple triple(
+                LibrdfNode::fromUriString(getModelName()).get(),
+                PredicateFactory("bqmodel", "isDescribedBy")->getNode(),
+                LibrdfNode::fromUriString("pubmed:" + pubmedid).get()
+        );
+        model_.addStatement(triple);
+    }
+
+    void Editor::taxon(const std::string &taxon_id) {
+        Triple triple(
+                LibrdfNode::fromUriString(getModelName()).get(),
+                PredicateFactory("bqbiol", "hasTaxon")->getNode(),
+                LibrdfNode::fromUriString("NCBI_Taxon:" + taxon_id).get()
         );
         model_.addStatement(triple);
     }

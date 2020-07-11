@@ -1,5 +1,5 @@
-libOmexMeta C++ Documentation
-=============================
+The Redland C++ API
+===================
 
 .. toctree::
    :maxdepth: 2

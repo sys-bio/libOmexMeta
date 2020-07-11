@@ -110,7 +110,7 @@ namespace omexmeta {
         // Uri's we want all begin with http.
         if (vec[0].rfind("http", 0) != 0)
             throw std::invalid_argument("std::invalid_argument: SemsimUtils::getNamespaceFromUri: \"" + vec[0]
-                                        + "\". Predicate arguments are URI's, they should begin with \"http\"");
+                                        + R"(". Predicate arguments are URI's, they should begin with "http")");
 
         os << vec[0] + "//"; // we keep the first part and add back the missing '/'
 
@@ -177,13 +177,6 @@ namespace omexmeta {
             }
         }
         return all_lines_match;
-//        if (!all_lines_match){
-//            throw std::logic_error("std::logic_error: assertRegexMatchSplitByNewLine: The "
-//                                   "input string \n\n "
-//                                   "" + actual_string +
-//                                   " does not match the expected string "
-//                                   "line for line");
-//        }
     }
 
     bool
@@ -284,6 +277,5 @@ namespace omexmeta {
         }
         return str;
     }
-
 
 }

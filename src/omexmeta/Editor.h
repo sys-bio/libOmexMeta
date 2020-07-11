@@ -18,10 +18,12 @@
 #include "RedlandAPIWrapper.h"
 #include "omexmeta/Error.h"
 #include "omexmeta/SemsimUtils.h"
+#include "omexmeta/PersonalInformation.h"
 
 #include "librdf.h"
 
 #include <utility>
+
 
 using namespace redland;
 
@@ -310,9 +312,19 @@ namespace omexmeta {
          */
         void setLocalName(std::string local_name);
 
-        void createLocalUri(std::string string);
-
         LibrdfNode createNodeWithLocalUri(const std::string& string) const;
+
+        void addModelLevelAnnotation(std::string, const LibrdfNode *node);
+
+        void taxon(const std::string &taxon_id);
+
+        void pubmed(const std::string &pubmedid);
+
+        void addDescription(const std::string &date);
+
+        void addDateCreated(const std::string &date);
+
+        void addPersonalInformation(const PersonalInformation &personalInformation) const;
     };
 
 }
