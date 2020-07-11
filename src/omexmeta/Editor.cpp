@@ -201,14 +201,14 @@ namespace omexmeta {
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalForce);
     }
 
-//    void Editor::addPersonalInformation(const PersonalInformation &personalInformation) const {
-//        std::unique_ptr<Triples> triples = personalInformation.getTriples();
-//        for (auto &triple : *triples) {
-//            model_.addStatement(triple);
-//        }
-//        std::cout << __FILE__ << ":" << __LINE__ << "warning: experimental free: " << std::endl;
-//        triples->freeTriples();
-//    }
+    void Editor::addPersonalInformation(PersonalInformation& personalInformation) const {
+        Triples triples = personalInformation.getTriples();
+        for (auto &triple : triples) {
+            model_.addStatement(triple);
+        }
+        std::cout << __FILE__ << ":" << __LINE__ << "warning: experimental free: " << std::endl;
+        triples.freeTriples();
+    }
 
     void Editor::removeSingleAnnotation(const SingularAnnotation &singularAnnotation) const {
         librdf_statement *stmt = singularAnnotation.getStatement();
@@ -296,7 +296,7 @@ namespace omexmeta {
         triple.freeTriple();
     }
 
-    void Editor::pubmed(const std::string &pubmedid) {
+    void Editor::addPubmed(const std::string &pubmedid) {
         Triple triple(
                 LibrdfNode::fromUriString(getModelName()).get(),
                 PredicateFactory("bqmodel", "isDescribedBy")->getNode(),
@@ -316,7 +316,7 @@ namespace omexmeta {
         triple.freeTriple();
     }
 
-    void Editor::taxon(const std::string &taxon_id) {
+    void Editor::addTaxon(const std::string &taxon_id) {
         Triple triple(
                 LibrdfNode::fromUriString(getModelName()).get(),
                 PredicateFactory("bqbiol", "hasTaxon")->getNode(),

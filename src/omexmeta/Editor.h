@@ -314,15 +314,15 @@ namespace omexmeta {
 
         void addCurator(std::string orcid_id);
 
-        void taxon(const std::string &taxon_id);
+        void addTaxon(const std::string &taxon_id);
 
-        void pubmed(const std::string &pubmedid);
+        void addPubmed(const std::string &pubmedid);
 
         void addDescription(const std::string &date);
 
         void addDateCreated(const std::string &date);
 
-        void addPersonalInformation(const PersonalInformation &personalInformation) const;
+        void addPersonalInformation(PersonalInformation &personalInformation) const;
 
         SingularAnnotation newSingularAnnotation(std::string metaid) const;
 

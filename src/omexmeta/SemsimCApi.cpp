@@ -155,19 +155,19 @@ namespace omexmeta {
         editor_ptr->addSingleAnnotation(*singularAnnotation);
     }
 
-    void removeSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation) {
+    void Editor_removeSingleAnnotation(Editor *editor_ptr, SingularAnnotation *singularAnnotation) {
         editor_ptr->removeSingleAnnotation(*singularAnnotation);
     }
 
-    void removePhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity) {
+    void Editor_removePhysicalEntity(Editor *editor_ptr, PhysicalEntity *physicalEntity) {
         editor_ptr->removePhysicalEntity(*physicalEntity);
     }
 
-    void removePhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess) {
+    void Editor_removePhysicalProcess(Editor *editor_ptr, PhysicalProcess *physicalProcess) {
         editor_ptr->removePhysicalProcess(*physicalProcess);
     }
 
-    void removePhysicalForce(Editor *editor_ptr, PhysicalForce &physicalForce) {
+    void Editor_removePhysicalForce(Editor *editor_ptr, PhysicalForce *physicalForce) {
         editor_ptr->removePhysicalForce(*physicalForce);
     }
 
@@ -268,12 +268,12 @@ namespace omexmeta {
         editor_ptr->addCurator(std::move(orcid_id));
     }
 
-    void Editor_taxon(Editor *editor_ptr, const std::string &taxon_id) {
-        editor_ptr->taxon(taxon_id);
+    void Editor_addTaxon(Editor *editor_ptr, const std::string &taxon_id) {
+        editor_ptr->addTaxon(taxon_id);
     }
 
-    void Editor_pubmed(Editor *editor_ptr, const std::string &pubmedid) {
-        editor_ptr->pubmed(pubmedid);
+    void Editor_addPubmed(Editor *editor_ptr, const std::string &pubmedid) {
+        editor_ptr->addPubmed(pubmedid);
     }
 
     void Editor_addDescription(Editor *editor_ptr, const std::string &date) {
@@ -284,7 +284,7 @@ namespace omexmeta {
         editor_ptr->addDateCreated(date);
     }
 
-    void Editor_addPersonalInformation(Editor *editor_ptr, const PersonalInformation &personalInformation) {
+    void Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation &personalInformation) {
         editor_ptr->addPersonalInformation(personalInformation);
     }
 
@@ -606,6 +606,101 @@ namespace omexmeta {
         char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
         strcpy(cstr, about.c_str());
         return cstr;
+    }
+
+
+/*********************************************************************
+ * PersonalInformation class methods
+ */
+    PersonalInformation *PersonalInformation_new(Editor *editor_ptr) {
+        return new PersonalInformation(editor_ptr->getModel(), editor_ptr->getLocalName(), editor_ptr->getModelName());
+    }
+
+    char *PersonalInformation_getLocalUri(PersonalInformation *information) {
+        std::string about = information->getLocalUri();
+        char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
+        strcpy(cstr, about.c_str());
+        return cstr;
+    }
+
+    void PersonalInformation_setLocalUri(PersonalInformation *information, const std::string &localUri) {
+        information->setLocalUri(localUri);
+    }
+
+    PersonalInformation *PersonalInformation_addCreator(PersonalInformation *information, const std::string &value) {
+        information->addCreator(value);
+        return information;
+    }
+
+    PersonalInformation *PersonalInformation_addCurator(PersonalInformation *information, const std::string &value) {
+        information->addCurator(value);
+        return information;
+    }
+
+    PersonalInformation *PersonalInformation_addName(PersonalInformation *information, const std::string &value) {
+        information->addName(value);
+        return information;
+    }
+
+    PersonalInformation *PersonalInformation_addMbox(PersonalInformation *information, const std::string &value) {
+        information->addMbox(value);
+        return information;
+    }
+
+    PersonalInformation *PersonalInformation_addAccountName(PersonalInformation *information, const std::string &value) {
+        information->addAccountName(value);
+        return information;
+    }
+
+    PersonalInformation *PersonalInformation_addAccountServiceHomepage(PersonalInformation *information, const std::string &value) {
+        information->addAccountServiceHomepage(value);
+        return information;
+    }
+
+    PersonalInformation *
+    PersonalInformation_addFoafBlank(PersonalInformation *information, const std::string &predicate, const std::string &blank_value) {
+        information->addFoafBlank(predicate, blank_value);
+        return information;
+    }
+
+    PersonalInformation *
+    PersonalInformation_addFoafUri(PersonalInformation *information, const std::string &predicate, const std::string &uri_value) {
+        information->addFoafBlank(predicate, uri_value);
+        return information;
+    }
+
+    PersonalInformation *
+    PersonalInformation_addFoafLiteral(PersonalInformation *information, const std::string &predicate, const std::string &literal_value) {
+        information->addFoafBlank(predicate, literal_value);
+        return information;
+    }
+
+    PersonalInformation *
+    PersonalInformation_addFoaf(PersonalInformation *information, const std::string &predicate, const LibrdfNode &value_node) {
+        information->addFoaf(predicate, value_node);
+        return information;
+    }
+
+    char *PersonalInformation_getMetaid(PersonalInformation *information) {
+        std::string about = information->getMetaid();
+        char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
+        strcpy(cstr, about.c_str());
+        return cstr;
+    }
+
+    void PersonalInformation_setMetaid(PersonalInformation *information, const std::string &metaid) {
+        information->setMetaid(metaid);
+    }
+
+    char *PersonalInformation_getModelName(PersonalInformation *information) {
+        std::string about = information->getModelName();
+        char *cstr = (char *) malloc((about.size() + 1) * sizeof(char));
+        strcpy(cstr, about.c_str());
+        return cstr;
+    }
+
+    void PersonalInformation_setModelName(PersonalInformation *information, const std::string &modelName) {
+        information->setModelName(modelName);
     }
 
 

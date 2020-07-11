@@ -82,7 +82,7 @@ TEST_F(CAPITests, RDF_addFromString) {
 TEST_F(CAPITests, RDF_addFromStringOutput) {
     RDF *rdf_ptr = RDF_new();
     RDF_addFromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml", "RDF_addFromStringTest.rdf");
-    char* actual = RDF_toString(rdf_ptr, "turtle", "Basey.rdf");
+    char *actual = RDF_toString(rdf_ptr, "turtle", "Basey.rdf");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix myOMEXlib: <http://MyOmexLibrary.org/Basey.rdf> .\n"
@@ -825,13 +825,509 @@ TEST_F(CAPITests, TestRDFTwice3) {
     RDF_delete(rdf_ptr2);
 }
 
+TEST_F(CAPITests, EditorgetArchiveName) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    char *actual = Editor_getArchiveName(editor_ptr);
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
 
+TEST_F(CAPITests, EditorgetLocalName) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    char *actual = Editor_getLocalName(editor_ptr);
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
 
+TEST_F(CAPITests, EditorgetModelName) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    char *actual = Editor_getModelName(editor_ptr);
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
 
+TEST_F(CAPITests, EditorgetOmexRepository) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    char *actual = Editor_getOmexRepository(editor_ptr);
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
 
+TEST_F(CAPITests, EditorsetOmexRepository) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    Editor_setOmexRepository(editor_ptr, "newOmexRepo");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    char *actual = Editor_getOmexRepository(editor_ptr);
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
 
+TEST_F(CAPITests, EditorsetArchiveName) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    Editor_setArchiveName(editor_ptr, "newArchive");
+    char *actual = Editor_getArchiveName(editor_ptr);
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
 
+}
 
+TEST_F(CAPITests, EditorsetModelName) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    Editor_setModelName(editor_ptr, "newModelName");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    char *actual = Editor_getModelName(editor_ptr);
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, EditorsetLocalName) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    Editor_setLocalName(editor_ptr, "newLocalName");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    char *actual = Editor_getLocalName(editor_ptr);
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, EditoraddCreator) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    Editor_addCreator(editor_ptr, "1234-1234-1234-1234");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, EditoraddCurator) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    Editor_addCurator(editor_ptr, "1234-1234-1234-1234");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, Editortaxon) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    Editor_addTaxon(editor_ptr, "9898");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, Editorpubmed) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    Editor_addCreator(editor_ptr, "12345678");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, EditoraddDescription) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    Editor_addDescription(editor_ptr, "A model");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, EditoraddDateCreated) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    Editor_addDateCreated(editor_ptr, "14/01/1991");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, EditoraddPersonalInformation) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+
+//    Editor_addPersonalInformation(editor_ptr, p);
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, EditoraddParentModel) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    Editor_addParentModel(editor_ptr, "BIOMD000001.xml");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, PersonalInformationgetLocalUri) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    char *actual = PersonalInformation_getLocalUri(information);
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, PersonalInformationsetLocalUri) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation_setLocalUri(information, "localUri");
+    char *actual = PersonalInformation_getLocalUri(information);
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, PersonalInformationaddCreator) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation_addCreator(information, "2134-1234-1234-1234");
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, PersonalInformationaddCurator) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation_addCurator(information, "2134-1234-1234-1234");
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, PersonalInformationaddName) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation_addName(information, "Ciaran Welsh");
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, PersonalInformationaddMbox) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation_addCreator(information, "cwelsh2@ue.edu");
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, PersonalInformationaddAccountName) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation_addAccountName(information, "2134-1234-1234-1234");
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, PersonalInformationaddAccountServiceHomepage) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation_addAccountServiceHomepage(information, "https://github.com/sys-bio/libOmexMeta");
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, PersonalInformationaddFoafUri) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation_addFoafUri(information, "accountServiceHomepage", "https://github.com/sys-bio/libOmexMeta");
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, PersonalInformationaddFoafLiteral) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation_addFoafLiteral(information, "name", "Ciaran Welsh");
+    char *actual = RDF_toString(rdf_ptr, "turtle", "base");
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, PersonalInformationgetMetaid) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    char *actual = PersonalInformation_getMetaid(information);
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, PersonalInformationsetMetaid) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation_setMetaid(information, "NewMEtaid");
+    char *actual = PersonalInformation_getMetaid(information);
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, PersonalInformationgetModelName) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    char *actual = PersonalInformation_getModelName(information);
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+
+}
+
+TEST_F(CAPITests, PersonalInformationsetModelName) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = rdf_ptr->toEditorPtr(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML
+    );
+    PersonalInformation *information = PersonalInformation_new(editor_ptr);
+    PersonalInformation_setModelName(information, "newModelName");
+    char *actual = PersonalInformation_getModelName(information);
+    const char *expected = "https://identifiers.org/uniprot/PD7363";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
 
 
 

@@ -104,8 +104,6 @@ namespace omexmeta {
         Triples getTriples();
 
         void freeTriples();
-
-        void toTriples();
     };
 }
 

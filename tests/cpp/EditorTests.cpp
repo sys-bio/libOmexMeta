@@ -604,7 +604,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationPubmed) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    editor.pubmed("27887851");
+    editor.addPubmed("27887851");
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix myOMEXlib: <http://MyOmexLibrary.org/myomex.omex> .\n"
