@@ -26,13 +26,12 @@ namespace omexmeta {
      * to get a unique ptr to the triples.
      */
     class PersonalInformation {
-        PersonalInformation(librdf_model *model, std::string local_uri);
 
         librdf_model *model_;
         Triples triples_;
         std::string local_uri_;
         std::string metaid_;
-        std::string model_name;
+        std::string model_name_;
 
     private:
         [[nodiscard]] std::string generateMetaId() const;
@@ -44,6 +43,7 @@ namespace omexmeta {
 
         ~PersonalInformation() = default;
 
+        PersonalInformation(librdf_model *model, std::string local_uri, std::string model_name);
 
         /*
          * @brief Copy constructor for PersonalInformation
@@ -73,17 +73,17 @@ namespace omexmeta {
 
         bool operator!=(const PersonalInformation &rhs) const;
 
-        PersonalInformation &addCreator(std::string value);
+        PersonalInformation &addCreator(const std::string& value);
 
-        PersonalInformation &addCurator(std::string value);
+        PersonalInformation &addCurator(const std::string& value);
 
-        PersonalInformation &addName(std::string value);
+        PersonalInformation &addName(const std::string& value);
 
-        PersonalInformation &addMbox(std::string value);
+        PersonalInformation &addMbox(const std::string& value);
 
-        PersonalInformation &addAccountName(std::string value);
+        PersonalInformation &addAccountName(const std::string& value);
 
-        PersonalInformation &addAccountServiceHomepage(std::string value);
+        PersonalInformation &addAccountServiceHomepage(const std::string& value);
 
         PersonalInformation &addFoafBlank(const std::string &predicate, const std::string &blank_value);
 
@@ -91,7 +91,7 @@ namespace omexmeta {
 
         PersonalInformation &addFoafLiteral(const std::string &predicate, const std::string &literal_value);
 
-        PersonalInformation &addFoaf(const std::string &predicate, LibrdfNode value_node);
+        PersonalInformation &addFoaf(const std::string &predicate, const LibrdfNode& value_node);
 
         const std::string &getMetaid() const;
 
@@ -104,6 +104,8 @@ namespace omexmeta {
         Triples getTriples();
 
         void freeTriples();
+
+        void toTriples();
     };
 }
 

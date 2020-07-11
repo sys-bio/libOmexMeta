@@ -7,11 +7,12 @@
 
 namespace omexmeta {
 
-    PersonalInformation::PersonalInformation(librdf_model *model, std::string local_uri)
-            : model_(model), local_uri_(local_uri) {
+    PersonalInformation::PersonalInformation(librdf_model *model, std::string local_uri, std::string model_name)
+            : model_(model), local_uri_(local_uri), model_name_(model_name) {
         metaid_ = generateMetaId();
         createSubject();
     }
+
 
     /*
      * @brief move constructor
@@ -21,7 +22,7 @@ namespace omexmeta {
         information.model_ = nullptr;
         local_uri_ = information.local_uri_;
         triples_ = std::move(information.triples_);
-        model_name = information.model_name;
+        model_name_ = information.model_name_;
     }
 
     /*
@@ -33,8 +34,9 @@ namespace omexmeta {
             information.model_ = nullptr;
             local_uri_ = information.local_uri_;
             triples_ = std::move(information.triples_);
-            model_name = information.model_name;
+            model_name_ = information.model_name_;
         }
+        return *this;
     }
 
     bool PersonalInformation::operator==(const PersonalInformation &rhs) const {
@@ -52,7 +54,7 @@ namespace omexmeta {
     }
 
     PersonalInformation &
-    PersonalInformation::addFoaf(const std::string &predicate, LibrdfNode value_node) {
+    PersonalInformation::addFoaf(const std::string &predicate, const LibrdfNode& value_node) {
         LibrdfNode subject = LibrdfNode::fromUriString(metaid_);
         Foaf foaf(predicate);
         Triple triple(subject.get(), foaf.getNode(), value_node.get());
@@ -65,15 +67,15 @@ namespace omexmeta {
     PersonalInformation &
     PersonalInformation::addFoafBlank(const std::string &predicate, const std::string &blank_value) {
         LibrdfNode blank_node = LibrdfNode::fromBlank(blank_value);
-        addFoaf(predicate, std::move(blank_node));
+        addFoaf(predicate, blank_node);
         return *this;
     }
 
     PersonalInformation &
     PersonalInformation::addFoafUri(const std::string &predicate, const std::string &uri_value) {
         Foaf foaf(predicate);
-        LibrdfNode uri_node = LibrdfNode::fromBlank(uri_value);
-        addFoaf(predicate, std::move(uri_node));
+        LibrdfNode uri_node = LibrdfNode::fromUriString(uri_value);
+        addFoaf(predicate, uri_node);
         return *this;
     }
 
@@ -81,36 +83,31 @@ namespace omexmeta {
     PersonalInformation::addFoafLiteral(const std::string &predicate, const std::string &literal_value) {
         Foaf foaf(predicate);
         LibrdfNode literal_node = LibrdfNode::fromLiteral(literal_value);
-        addFoaf(predicate, std::move(literal_node));
+        addFoaf(predicate, literal_node);
         return *this;
     }
 
-    PersonalInformation &PersonalInformation::addCreator(std::string value) {
-        addFoafLiteral("creator", value);
-        return *this;
-    }
-
-    PersonalInformation &PersonalInformation::addCurator(std::string value) {
+    PersonalInformation &PersonalInformation::addCurator(const std::string& value) {
         addFoafLiteral("curator", value);
         return *this;
     }
 
-    PersonalInformation &PersonalInformation::addName(std::string value) {
+    PersonalInformation &PersonalInformation::addName(const std::string& value) {
         addFoafLiteral("name", value);
         return *this;
     }
 
-    PersonalInformation &PersonalInformation::addMbox(std::string value) {
+    PersonalInformation &PersonalInformation::addMbox(const std::string& value) {
         addFoafLiteral("mbox", value);
         return *this;
     }
 
-    PersonalInformation &PersonalInformation::addAccountName(std::string value) {
-        addFoafUri("accountName", value); // orchid id
+    PersonalInformation &PersonalInformation::addAccountName(const std::string& value) {
+        addFoafUri("accountName", "https://orcid.org/" + value); // orchid id
         return *this;
     }
 
-    PersonalInformation &PersonalInformation::addAccountServiceHomepage(std::string value) {
+    PersonalInformation &PersonalInformation::addAccountServiceHomepage(const std::string& value) {
         addFoafUri("accountServiceHomepage", value);
         return *this;
     }
@@ -124,7 +121,12 @@ namespace omexmeta {
     }
 
     void PersonalInformation::createSubject() {
-        LibrdfNode n = LibrdfNode::fromUriString(model_name);
+        if (model_name_.empty()) {
+            throw std::invalid_argument("std::invalid_argument: PersonalInformation::createSubject:"
+                                        "Trying to create a PersonalInformation composite annotation triples without"
+                                        "a `model_name`. Please use setModelName() and try again.");
+        }
+        LibrdfNode n = LibrdfNode::fromUriString(model_name_);
         DCTerm creator("creator");
         LibrdfNode r = LibrdfNode::fromUriString(metaid_);
         Triple triple(n.get(), creator.getNode(), r.get());
@@ -144,15 +146,16 @@ namespace omexmeta {
     }
 
     const std::string &PersonalInformation::getModelName() const {
-        return model_name;
+        return model_name_;
     }
 
     void PersonalInformation::setModelName(const std::string &modelName) {
-        model_name = modelName;
+        model_name_ = modelName;
     }
 
-    void PersonalInformation::freeTriples(){
+    void PersonalInformation::freeTriples() {
         triples_.freeTriples();
     }
+
 
 }

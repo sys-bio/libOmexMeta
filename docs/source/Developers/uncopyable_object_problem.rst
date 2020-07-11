@@ -24,4 +24,5 @@ The solution, which isn't ideal but a compromise, is to enforce the objects in t
 to be unique by disabling the copy constructor and copy assignment constructor. Note, this is the same strategy employed
 by `std::unique_ptr`. Practically, this means that objects must be moved using `std::move` instead of copied. This
 is quite a restriction on what is possible and sometimes the most straight forward design needs to be modified
-to account for this.
+to account for this. In fact, its a bit like programming with both arms tied behind your back, and you certainly feel
+like mashing your face against the keyboard sometimes.
