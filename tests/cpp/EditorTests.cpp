@@ -607,6 +607,42 @@ TEST_F(EditorTests, TestRemovePhysicalProcess) {
 }
 
 
+class EditorTestsModifyExisting : public ::testing::Test {
+
+public:
+
+    LibrdfStorage storage;
+    LibrdfModel model;
+
+    EditorTestsModifyExisting() {
+        model = LibrdfModel(storage.get());
+    };
+
+    ~EditorTestsModifyExisting() override {
+        model.freeModel();
+        storage.freeStorage();
+    }
+
+};
+
+TEST_F(EditorTestsModifyExisting, SingleAnnotation){
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    /*
+     * If I build an api around creating objects directly from the editor,
+     * I can pass down objects that are needed behind the scenes
+     */
+
+    SingularAnnotation singularAnnotation;
+    singularAnnotation
+            .setAbout("myomex", "mymodel.xml", "#OmexMetaId0000")
+            .setPredicate("bqbiol", "is")
+            .setResourceLiteral("resource");}
+
+
 /*****************************************************************
  * Test PhysicalEntity memory accountability
  */
