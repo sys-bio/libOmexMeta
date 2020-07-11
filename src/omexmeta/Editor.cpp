@@ -228,7 +228,6 @@ namespace omexmeta {
         removePhysicalPhenomenon(&physicalEntity);
     }
 
-
     void Editor::removePhysicalForce(PhysicalForce &physicalForce) const {
         removePhysicalPhenomenon(&physicalForce);
     }
@@ -237,34 +236,44 @@ namespace omexmeta {
         removePhysicalPhenomenon(&physicalProcess);
     }
 
-    PhysicalEntity Editor::createPhysicalEntity() {
+    PhysicalEntity Editor::newPhysicalEntity() {
         return PhysicalEntity(model_.get(), getLocalName());
     }
 
-    PhysicalForce Editor::createPhysicalForce() {
+    PhysicalForce Editor::newPhysicalForce() {
         return PhysicalForce(model_.get(), getLocalName());
     }
 
-    PhysicalProcess Editor::createPhysicalProcess() {
+    PhysicalProcess Editor::newPhysicalProcess() {
         return PhysicalProcess(model_.get(), getLocalName());
     }
 
-    void Editor::addAuthor(const std::string &orcid_id) {
+    void Editor::addCreator(std::string orcid_id) {
+        std::string orcid_namespace = "https://orchid.org/";
+        if (orcid_id.rfind(orcid_namespace, 0) != 0) {
+            orcid_id = orcid_namespace + orcid_id;
+        }
         Triple triple(
                 LibrdfNode::fromUriString(getModelName()).get(),
                 PredicateFactory("dc", "creator")->getNode(),
                 LibrdfNode::fromUriString(orcid_id).get()
         );
         model_.addStatement(triple);
+        triple.freeTriple();
     }
 
-    void Editor::addCurator(const std::string &orcid_id) {
+    void Editor::addCurator(std::string orcid_id) {
+        std::string orcid_namespace = "https://orchid.org/";
+        if (orcid_id.rfind(orcid_namespace, 0) != 0) {
+            orcid_id = orcid_namespace + orcid_id;
+        }
         Triple triple(
-                LibrdfNode::fromUriString(getModelName()).get(),
+                LibrdfNode::fromUriString(getArchiveName()).get(),
                 PredicateFactory("dc", "creator")->getNode(),
                 LibrdfNode::fromUriString(orcid_id).get()
         );
         model_.addStatement(triple);
+        triple.freeTriple();
     }
 
     void Editor::addDateCreated(const std::string &date) {
@@ -274,6 +283,7 @@ namespace omexmeta {
                 LibrdfNode::fromLiteral(date).get()
         );
         model_.addStatement(triple);
+        triple.freeTriple();
     }
 
     void Editor::addDescription(const std::string &date) {
@@ -283,6 +293,7 @@ namespace omexmeta {
                 LibrdfNode::fromLiteral(date).get()
         );
         model_.addStatement(triple);
+        triple.freeTriple();
     }
 
     void Editor::pubmed(const std::string &pubmedid) {
@@ -292,6 +303,17 @@ namespace omexmeta {
                 LibrdfNode::fromUriString("pubmed:" + pubmedid).get()
         );
         model_.addStatement(triple);
+        triple.freeTriple();
+    }
+
+    void Editor::addParentModel(const std::string &biomod_id) {
+        Triple triple(
+                LibrdfNode::fromUriString(getModelName()).get(),
+                PredicateFactory("bqmodel", "isDerivedFrom")->getNode(),
+                LibrdfNode::fromUriString("biomod:" + biomod_id).get()
+        );
+        model_.addStatement(triple);
+        triple.freeTriple();
     }
 
     void Editor::taxon(const std::string &taxon_id) {
@@ -301,6 +323,7 @@ namespace omexmeta {
                 LibrdfNode::fromUriString("NCBI_Taxon:" + taxon_id).get()
         );
         model_.addStatement(triple);
+        triple.freeTriple();
     }
 
     std::string Editor::getLocalName() const {
@@ -403,8 +426,13 @@ namespace omexmeta {
     }
 
     SingularAnnotation Editor::newSingularAnnotation(std::string metaid) {
+        HERE();
         SingularAnnotation singularAnnotation;
+        HERE();
+        std::cout << getLocalName() << std::endl;
+        HERE();
         singularAnnotation.setAbout(OmexMetaUtils::addLocalPrefixToMetaid(metaid, getLocalName()));
+        HERE();
         return singularAnnotation;
     }
 

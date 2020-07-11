@@ -58,7 +58,7 @@ TEST_F(LibrdfSerializerTests, TestToString) {
 //    LibrdfUri uri("base_uri");
     std::string actual = serializer1.toString("base_uri", model);
     std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xml:base=\"base_uri\">\n"
+                           "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
                            "  <rdf:Description rdf:about=\"https://subject.com\">\n"
                            "    <ns0:predicate.com xmlns:ns0=\"https://\" rdf:resource=\"https://resource.com\"/>\n"
                            "  </rdf:Description>\n"
@@ -81,8 +81,7 @@ TEST_F(LibrdfSerializerTests, TestToStringTurtle) {
     model.addStatement(statement);
     LibrdfSerializer serializer1 = LibrdfSerializer("turtle");
     std::string actual = serializer1.toString("base_uri", model);
-    std::string expected = "@base <base_uri> .\n"
-                           "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "\n"
                            "<https://subject.com>\n"
                            "    <https://predicate.com> <https://resource.com> .\n\n";

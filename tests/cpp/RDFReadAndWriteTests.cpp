@@ -287,24 +287,16 @@ TEST_F(ReadAndWriteTests, singularannotation2rdfxml) {
 }
 
 TEST_F(ReadAndWriteTests, singularannotation2dot) {
-    std::string expected = "digraph {\n"
+    std::string expected = "digraph .*\n"
                            "\trankdir = LR;\n"
                            "\tcharset=\"utf-8\";\n"
-                           "\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#modelmeta1\" -> \"Rhttps://identifiers.org/pubmed/12991237\" [ label=\"bqmodel:isDescribedBy\" ];\n"
-                           "\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#modelmeta1\" -> \"Rhttps://identifiers.org/pubmed/12991237\" .* label=\"bqmodel:isDescribedBy\" .*;\n"
                            "\t// Resources\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#modelmeta1\" [ label=\"myOMEXlib:/mymodel.rdf#modelmeta1\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttps://identifiers.org/pubmed/12991237\" [ label=\"https://identifiers.org/pubmed/12991237\", shape = ellipse, color = blue ];\n"
-                           "\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#modelmeta1\" .* label=\"myOMEXlib:/mymodel.rdf#modelmeta1\", shape = ellipse, color = blue .*;\n"
+                           "\t\"Rhttps://identifiers.org/pubmed/12991237\" .* label=\"https://identifiers.org/pubmed/12991237\", shape = ellipse, color = blue .*;\n"
                            "\t// Anonymous nodes\n"
-                           "\n"
-                           "\t// Literals\n"
-                           "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nbqmodel: http://biomodels.net/model-qualifiers/\\nmyOMEXlib: http://MyOmexLibrary.org/myomex.omex\\nmyOMEX: http://MyOmexLibrary.org/myomex.omex/mymodel.xml\\nlocal: http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#\\n\";\n"
-                           "}\n";
-
-    assertReadAndWrite(samples.singular_annotation2, "dot", expected);
+                           "\t// Literals\n";
+    assertReadAndWriteRegularExpressionSplitByNewline(samples.singular_annotation2, "dot", expected);
 }
 
 TEST_F(ReadAndWriteTests, singularannotation2jsontriples) {
@@ -1087,41 +1079,34 @@ TEST_F(ReadAndWriteTests, compositeannotationpprdfxml) {
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationppdot) {
-    std::string expected = "digraph {\n"
+    std::string expected = "digraph .*\n"
                            "\trankdir = LR;\n"
                            "\tcharset=\"utf-8\";\n"
-                           "\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#property_metaid_0\" -> \"RmyOMEXlib:/mymodel.rdf#process_metaid_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#property_metaid_0\" -> \"Rhttps://identifiers.org/opb/OPB_00592\" [ label=\"bqbiol:isVersionOf\" ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#process_metaid_0\" -> \"RmyOMEXlib:/mymodel.rdf#source_0\" [ label=\"semsim:hasSourceParticipant\" ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#process_metaid_0\" -> \"RmyOMEXlib:/mymodel.rdf#sink_0\" [ label=\"semsim:hasSinkParticipant\" ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#process_metaid_0\" -> \"RmyOMEXlib:/mymodel.rdf#mediator_0\" [ label=\"semsim:hasMediatorParticipant\" ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#source_0\" -> \"L1.0\" [ label=\"semsim:hasMultiplier\" ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#source_0\" -> \"RmyOMEXlib:/mymodel.rdf#special_metaid_0\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#sink_0\" -> \"L2.0\" [ label=\"semsim:hasMultiplier\" ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#sink_0\" -> \"RmyOMEXlib:/mymodel.rdf#special_metaid_1\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#mediator_0\" -> \"RmyOMEXlib:/mymodel.rdf#special_metaid_2\" [ label=\"semsim:hasPhysicalEntityReference\" ];\n"
-                           "\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#property_metaid_0\" -> \"RmyOMEXlib:/mymodel.rdf#process_metaid_0\" .* label=\"bqbiol:isPropertyOf\" .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#property_metaid_0\" -> \"Rhttps://identifiers.org/opb/OPB_00592\" .* label=\"bqbiol:isVersionOf\" .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#process_metaid_0\" -> \"RmyOMEXlib:/mymodel.rdf#source_0\" .* label=\"semsim:hasSourceParticipant\" .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#process_metaid_0\" -> \"RmyOMEXlib:/mymodel.rdf#sink_0\" .* label=\"semsim:hasSinkParticipant\" .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#process_metaid_0\" -> \"RmyOMEXlib:/mymodel.rdf#mediator_0\" .* label=\"semsim:hasMediatorParticipant\" .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#source_0\" -> \"L1.0\" .* label=\"semsim:hasMultiplier\" .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#source_0\" -> \"RmyOMEXlib:/mymodel.rdf#special_metaid_0\" .* label=\"semsim:hasPhysicalEntityReference\" .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#sink_0\" -> \"L2.0\" .* label=\"semsim:hasMultiplier\" .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#sink_0\" -> \"RmyOMEXlib:/mymodel.rdf#special_metaid_1\" .* label=\"semsim:hasPhysicalEntityReference\" .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#mediator_0\" -> \"RmyOMEXlib:/mymodel.rdf#special_metaid_2\" .* label=\"semsim:hasPhysicalEntityReference\" .*;\n"
                            "\t// Resources\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#property_metaid_0\" [ label=\"myOMEXlib:/mymodel.rdf#property_metaid_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#process_metaid_0\" [ label=\"myOMEXlib:/mymodel.rdf#process_metaid_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttps://identifiers.org/opb/OPB_00592\" [ label=\"https://identifiers.org/opb/OPB_00592\", shape = ellipse, color = blue ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#source_0\" [ label=\"myOMEXlib:/mymodel.rdf#source_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#sink_0\" [ label=\"myOMEXlib:/mymodel.rdf#sink_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#mediator_0\" [ label=\"myOMEXlib:/mymodel.rdf#mediator_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#special_metaid_0\" [ label=\"myOMEXlib:/mymodel.rdf#special_metaid_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#special_metaid_1\" [ label=\"myOMEXlib:/mymodel.rdf#special_metaid_1\", shape = ellipse, color = blue ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#special_metaid_2\" [ label=\"myOMEXlib:/mymodel.rdf#special_metaid_2\", shape = ellipse, color = blue ];\n"
-                           "\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#property_metaid_0\" .* label=\"myOMEXlib:/mymodel.rdf#property_metaid_0\", shape = ellipse, color = blue .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#process_metaid_0\" .* label=\"myOMEXlib:/mymodel.rdf#process_metaid_0\", shape = ellipse, color = blue .*;\n"
+                           "\t\"Rhttps://identifiers.org/opb/OPB_00592\" .* label=\"https://identifiers.org/opb/OPB_00592\", shape = ellipse, color = blue .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#source_0\" .* label=\"myOMEXlib:/mymodel.rdf#source_0\", shape = ellipse, color = blue .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#sink_0\" .* label=\"myOMEXlib:/mymodel.rdf#sink_0\", shape = ellipse, color = blue .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#mediator_0\" .* label=\"myOMEXlib:/mymodel.rdf#mediator_0\", shape = ellipse, color = blue .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#special_metaid_0\" .* label=\"myOMEXlib:/mymodel.rdf#special_metaid_0\", shape = ellipse, color = blue .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#special_metaid_1\" .* label=\"myOMEXlib:/mymodel.rdf#special_metaid_1\", shape = ellipse, color = blue .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#special_metaid_2\" .* label=\"myOMEXlib:/mymodel.rdf#special_metaid_2\", shape = ellipse, color = blue .*;\n"
                            "\t// Anonymous nodes\n"
-                           "\n"
                            "\t// Literals\n"
-                           "\t\"L1.0\" [ label=\"1.0\", shape = record ];\n"
-                           "\t\"L2.0\" [ label=\"2.0\", shape = record ];\n"
-                           "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nsemsim: http://www.bhi.washington.edu/semsim#\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nmyOMEXlib: http://MyOmexLibrary.org/myomex.omex\\nmyOMEX: http://MyOmexLibrary.org/myomex.omex/mymodel.xml\\nlocal: http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#\\n\";\n"
-                           "}\n";
-    assertReadAndWrite(samples.composite_annotation_pp, "dot", expected);
+                           "\t\"L1.0\" .* label=\"1.0\", shape = record .*;\n"
+                           "\t\"L2.0\" .* label=\"2.0\", shape = record .*;\n";
+    assertReadAndWriteRegularExpressionSplitByNewline(samples.composite_annotation_pp, "dot", expected);
 }
 
 TEST_F(ReadAndWriteTests, compositeannotationppjsontriples) {
@@ -1874,29 +1859,22 @@ TEST_F(ReadAndWriteTests, tabulardatardfxml) {
 }
 
 TEST_F(ReadAndWriteTests, tabulardatadot) {
-    std::string expected = "digraph {\n"
+    std::string expected = "digraph .*\n"
                            "\trankdir = LR;\n"
                            "\tcharset=\"utf-8\";\n"
-                           "\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#VleftCorArt\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"bqbiol:isVersionOf\" ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#VleftCorArt\" -> \"RmyOMEXlib:/mymodel.rdf#entity_0\" [ label=\"bqbiol:isPropertyOf\" ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"bqbiol:is\" ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"bqbiol:isPartOf\" ];\n"
-                           "\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#VleftCorArt\" -> \"Rhttp://identifiers.org/opb/OPB_00154\" .* label=\"bqbiol:isVersionOf\" .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#VleftCorArt\" -> \"RmyOMEXlib:/mymodel.rdf#entity_0\" .* label=\"bqbiol:isPropertyOf\" .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:9670\" .* label=\"bqbiol:is\" .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#entity_0\" -> \"Rhttp://identifiers.org/fma/FMA:18228\" .* label=\"bqbiol:isPartOf\" .*;\n"
                            "\t// Resources\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#VleftCorArt\" [ label=\"myOMEXlib:/mymodel.rdf#VleftCorArt\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttp://identifiers.org/opb/OPB_00154\" [ label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue ];\n"
-                           "\t\"RmyOMEXlib:/mymodel.rdf#entity_0\" [ label=\"myOMEXlib:/mymodel.rdf#entity_0\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttp://identifiers.org/fma/FMA:9670\" [ label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue ];\n"
-                           "\t\"Rhttp://identifiers.org/fma/FMA:18228\" [ label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue ];\n"
-                           "\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#VleftCorArt\" .* label=\"myOMEXlib:/mymodel.rdf#VleftCorArt\", shape = ellipse, color = blue .*;\n"
+                           "\t\"Rhttp://identifiers.org/opb/OPB_00154\" .* label=\"http://identifiers.org/opb/OPB_00154\", shape = ellipse, color = blue .*;\n"
+                           "\t\"RmyOMEXlib:/mymodel.rdf#entity_0\" .* label=\"myOMEXlib:/mymodel.rdf#entity_0\", shape = ellipse, color = blue .*;\n"
+                           "\t\"Rhttp://identifiers.org/fma/FMA:9670\" .* label=\"http://identifiers.org/fma/FMA:9670\", shape = ellipse, color = blue .*;\n"
+                           "\t\"Rhttp://identifiers.org/fma/FMA:18228\" .* label=\"http://identifiers.org/fma/FMA:18228\", shape = ellipse, color = blue .*;\n"
                            "\t// Anonymous nodes\n"
-                           "\n"
-                           "\t// Literals\n"
-                           "\n"
-                           "\tlabel=\"\\n\\nModel:\\nfile://\\n\\nNamespaces:\\nbqmodel: http://biomodels.net/model-qualifiers/\\nbqbiol: http://biomodels.net/biology-qualifiers/\\nsemsim: http://www.bhi.washington.edu/semsim#\\nmyOMEXlib: http://MyOmexLibrary.org/myomex.omex\\nmyOMEX: http://MyOmexLibrary.org/myomex.omex/mymodel.xml\\nlocal: http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#\\n\";\n"
-                           "}\n";
-    assertReadAndWrite(samples.tabular_data1, "dot", expected);
+                           "\t// Literals\n";
+    assertReadAndWriteRegularExpressionSplitByNewline(samples.tabular_data1, "dot", expected);
 }
 
 TEST_F(ReadAndWriteTests, tabulardatajsontriples) {

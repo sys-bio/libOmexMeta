@@ -98,7 +98,7 @@ namespace omexmeta {
     }
 
     Triple &Triple::setAbout(const std::string &metaid) {
-        if (metaid.rfind("http", 0) == 0){
+        if (metaid.rfind("http", 0) != 0){
             throw std::invalid_argument("std::invalid_argument Triple::setAbout: metaid does not "
                                         "begin with \"http\" which suggests that it is not properly"
                                         "formatted. Metaid's should look like: "

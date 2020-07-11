@@ -310,6 +310,42 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
 
 }
 
+TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPattern) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    SingularAnnotation singularAnnotation;
+    singularAnnotation
+            .setAbout("myomex", "mymodel.xml", "#OmexMetaId0001")
+            .setPredicate("bqbiol", "isVersionOf")
+            .setResourceUri("uniprot:PD02635");
+
+    editor.addSingleAnnotation(singularAnnotation);
+    editor.removeSingleAnnotation(singularAnnotation);
+
+    SingularAnnotation singularAnnotation2;
+    singularAnnotation2
+            .setAbout("myomex", "mymodel.xml", "#OmexMetaId0001")
+            .setPredicate("bqbiol", "isVersionOf")
+            .setResourceUri("uniprot:PD02636");
+
+    editor.addSingleAnnotation(singularAnnotation2);
+
+    std::string actual = rdf.toString("rdfxml");
+    std::cout << actual << std::endl;
+    std::string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                           "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\" xmlns:local=\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#\" xmlns:myOMEX=\"http://MyOmexLibrary.org/myomex.omex/mymodel.xml\" xmlns:myOMEXlib=\"http://MyOmexLibrary.org/myomex.omex\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
+                           "  <rdf:Description rdf:about=\"http://MyOmexLibrary/myomex/mymodel.xml/#OmexMetaId0001\">\n"
+                           "    <bqbiol:isVersionOf rdf:resource=\"https://identifiers.org/uniprot/PD02636\"/>\n"
+                           "  </rdf:Description>\n"
+                           "</rdf:RDF>\n";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    singularAnnotation.freeStatement();
+
+}
+
 
 TEST_F(EditorTests, TestAddPhysicalEntityToEditor) {
     RDF rdf;
@@ -481,6 +517,129 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
     singularAnnotation.freeStatement();
 }
 
+TEST_F(EditorTests, TestModelLevelAnnotationAddCreator) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    editor.addCreator("0000-1111-2222-3333");
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/myomex.omex> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/myomex.omex/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#> .\n"
+                           "\n"
+                           "<http://myOmexLibrary.org/MyOmex.omex/mymodel.xml>\n"
+                           "    <http://purl.org/dc/terms/creator> <https://orchid.org/0000-1111-2222-3333> .\n\n";
+    std::string actual = rdf.toString("turtle");
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(EditorTests, TestModelLevelAnnotationAddCurator) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    editor.addCurator("0000-1111-2222-3333");
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/myomex.omex> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/myomex.omex/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#> .\n"
+                           "\n"
+                           "<http://myOmexLibrary.org/MyOmex.omex>\n"
+                           "    <http://purl.org/dc/terms/creator> <https://orchid.org/0000-1111-2222-3333> .\n\n";
+    std::string actual = rdf.toString("turtle");
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(EditorTests, TestModelLevelAnnotationAddDateCreated) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    editor.addDateCreated("14/01/1991");
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/myomex.omex> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/myomex.omex/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#> .\n"
+                           "\n"
+                           "<http://myOmexLibrary.org/MyOmex.omex/mymodel.xml>\n"
+                           "    <http://purl.org/dc/terms/created> \"14/01/1991\"^^rdf:string .\n\n";
+    std::string actual = rdf.toString("turtle");
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(EditorTests, TestModelLevelAnnotationAddDescription) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    editor.addDescription("Predictive model of chip butty consumer's risk of "
+                          "heart failure.");
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/myomex.omex> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/myomex.omex/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#> .\n"
+                           "\n"
+                           "<http://myOmexLibrary.org/MyOmex.omex/mymodel.xml>\n"
+                           "    <http://purl.org/dc/terms/description> \"Predictive model of chip butty consumer's risk of heart failure.\"^^rdf:string .\n\n";
+    std::string actual = rdf.toString("turtle");
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(EditorTests, TestModelLevelAnnotationPubmed) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    editor.pubmed("27887851");
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/myomex.omex> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/myomex.omex/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#> .\n"
+                           "\n"
+                           "<http://myOmexLibrary.org/MyOmex.omex/mymodel.xml>\n"
+                           "    <http://biomodels.net/model-qualifiers/isDescribedBy> <https://identifiers.org/pubmed/27887851> .\n"
+                           "\n";
+    std::string actual = rdf.toString("turtle");
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(EditorTests, TestModelLevelAnnotationAddParentModel) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(
+            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
+            SEMSIM_TYPE_SBML);
+
+    editor.addParentModel("BIOMD0000011");
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix myOMEXlib: <http://MyOmexLibrary.org/myomex.omex> .\n"
+                           "@prefix myOMEX: <http://MyOmexLibrary.org/myomex.omex/mymodel.xml> .\n"
+                           "@prefix local: <http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#> .\n"
+                           "\n"
+                           "<http://myOmexLibrary.org/MyOmex.omex/mymodel.xml>\n"
+                           "    <http://biomodels.net/model-qualifiers/isDerivedFrom> <https://identifiers.org/biomod/BIOMD0000011> .\n"
+                           "\n";
+    std::string actual = rdf.toString("turtle");
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
 
 TEST_F(EditorTests, TestPhysicalEntityBuilder) {
     RDF rdf;
@@ -488,7 +647,7 @@ TEST_F(EditorTests, TestPhysicalEntityBuilder) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
@@ -508,15 +667,13 @@ TEST_F(EditorTests, TestPhysicalForceBuilder) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    PhysicalForce physicalForce = editor.createPhysicalForce();
+    PhysicalForce physicalForce = editor.newPhysicalForce();
     physicalForce
             .setPhysicalProperty("#OmexMetaId0000", "OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
             .addSink(1.0, "PhysicalEntity2");
 
     editor.addPhysicalForce(physicalForce);
-
-
     int expected = 8;
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
@@ -528,7 +685,7 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    PhysicalProcess physicalProcess = editor.createPhysicalProcess();
+    PhysicalProcess physicalProcess = editor.newPhysicalProcess();
     physicalProcess
             .setPhysicalProperty("#OmexMetaId0000", "OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
@@ -541,7 +698,6 @@ TEST_F(EditorTests, TestPhysicalProcessBuilder) {
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
 }
-
 
 TEST_F(EditorTests, TestSingularAnnotationBuilderAlternativeInterface) {
     RDF rdf;
@@ -560,9 +716,8 @@ TEST_F(EditorTests, TestSingularAnnotationBuilderAlternativeInterface) {
                            "@prefix myOMEX: <http://MyOmexLibrary.org/myOmex.omex/myOmexModel.xml> .\n"
                            "@prefix local: <http://MyOmexLibrary.org/myOmex.omex/myOmexModel.rdf#> .\n"
                            "\n"
-                           "<http://MyOmexLibrary.org/MyOmex.omex/mymodel.xml/#OmexMetaId0000>\n"
-                           "    bqbiol:is \"resource\"^^rdf:string .\n"
-                           "\n";
+                           "<http://myOmexLibrary.org/MyOmex.omex/mymodel.rdf#OmexMetaId0000>\n"
+                           "    bqbiol:is \"resource\"^^rdf:string .\n\n";
     std::string actual = singularAnnotation.str("turtle");
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -597,7 +752,7 @@ TEST_F(EditorTests, TestRemovePhysicalForce) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    PhysicalForce physicalForce = editor.createPhysicalForce();
+    PhysicalForce physicalForce = editor.newPhysicalForce();
     physicalForce
             .setPhysicalProperty("#OmexMetaId0002", "OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
@@ -617,7 +772,7 @@ TEST_F(EditorTests, TestRemovePhysicalProcess) {
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
 
-    PhysicalProcess physicalProcess = editor.createPhysicalProcess();
+    PhysicalProcess physicalProcess = editor.newPhysicalProcess();
     physicalProcess
             .setPhysicalProperty("#OmexMetaId0004", "OPB:OPB1234")
             .addSource(1.0, "PhysicalEntity1")
@@ -632,46 +787,6 @@ TEST_F(EditorTests, TestRemovePhysicalProcess) {
 }
 
 
-class EditorTestsModifyExisting : public ::testing::Test {
-
-public:
-
-    LibrdfStorage storage;
-    LibrdfModel model;
-
-    EditorTestsModifyExisting() {
-        model = LibrdfModel(storage.get());
-    };
-
-    ~EditorTestsModifyExisting() override {
-        model.freeModel();
-        storage.freeStorage();
-    }
-
-};
-
-TEST_F(EditorTestsModifyExisting, SingleAnnotation){
-    RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
-            SEMSIM_TYPE_SBML);
-
-    /*
-     * If I build an api around creating objects directly from the editor,
-     * I can pass down objects that are needed behind the scenes
-     */
-
-    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#OmexMetaId0000");
-    singularAnnotation
-            .setPredicate("bqbiol", "is")
-            .setResourceLiteral("resource");
-
-    std::string expected = "";
-    std::string actual = singularAnnotation.str("turtle");
-    std::cout << actual << std::endl;
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-}
-
 
 /*****************************************************************
  * Test PhysicalEntity memory accountability
@@ -683,7 +798,7 @@ public:
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBMLString(SBML_NOT_ANNOTATED),
             SEMSIM_TYPE_SBML);
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
 
     EditorTestsPhysicalEntityMemory() {
         physicalEntity
@@ -787,7 +902,7 @@ public:
 };
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestRDFSizeBeforeRemovingAndNoMemoryLeaks) {
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
@@ -1336,7 +1451,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropert
  * 3) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
  * 4) <PhysicalEntity0001> <http://biomodels.net/biology-qualifiers/isPartOf> <https://identifiers.org/fma/fma:1234> .
  */
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
@@ -1356,7 +1471,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropert
 
 TEST_F(EditorTestsDeletePhysicalEntity,
        TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithNamespaceHandling) {
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
@@ -1376,7 +1491,7 @@ TEST_F(EditorTestsDeletePhysicalEntity,
 }
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithFreeInMiddle) {
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
@@ -1401,7 +1516,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropert
 }
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1) {
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
@@ -1455,7 +1570,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 }
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove2) {
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
@@ -1509,7 +1624,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 }
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove3) {
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
@@ -1563,7 +1678,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 }
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove4) {
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
@@ -1617,7 +1732,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 }
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsingSingleTripleObjsRemove1And2) {
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
@@ -1673,7 +1788,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestCreateAddAndRemovePhysicalEntityUsin
 
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
@@ -1688,7 +1803,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestAddAndRemovePhysicalEntity) {
 
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteFirstTriple) {
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
@@ -1714,7 +1829,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteFirstTriple) {
 }
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteOneByOne) {
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")
@@ -1755,7 +1870,7 @@ TEST_F(EditorTestsDeletePhysicalEntity, TestDeleteOneByOne) {
 }
 
 TEST_F(EditorTestsDeletePhysicalEntity, TestRemovePhysicalEntityInLoop) {
-    PhysicalEntity physicalEntity = editor.createPhysicalEntity();
+    PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
             .setPhysicalProperty("#OmexMetaId0000", "opb:opb_1234")
             .setIdentity("uniprot:PD12345")

@@ -228,11 +228,11 @@ namespace omexmeta {
          */
         void addNamespaceFromAnnotation(const std::string &predicate_string);
 
-        PhysicalEntity createPhysicalEntity();
+        PhysicalEntity newPhysicalEntity();
 
-        PhysicalForce createPhysicalForce();
+        PhysicalForce newPhysicalForce();
 
-        PhysicalProcess createPhysicalProcess();
+        PhysicalProcess newPhysicalProcess();
 
         void addSingleAnnotationNoValidation(SingularAnnotation &singularAnnotation);
 
@@ -243,10 +243,6 @@ namespace omexmeta {
         void addTriples(Triples &triples);
 
         void removePhysicalPhenomenon(PhysicalPhenomenon *physicalPhenomenon) const;
-
-        void addAuthor(const std::string &orcid_id);
-
-        void addCurator(const std::string &orcid_id);
 
         /*
          * @brief Set the url for repository (myOmexlib).
@@ -316,6 +312,10 @@ namespace omexmeta {
 
         void addModelLevelAnnotation(std::string, const LibrdfNode *node);
 
+        void addCreator(std::string orcid_id);
+
+        void addCurator(std::string orcid_id);
+
         void taxon(const std::string &taxon_id);
 
         void pubmed(const std::string &pubmedid);
@@ -327,6 +327,8 @@ namespace omexmeta {
         void addPersonalInformation(const PersonalInformation &personalInformation) const;
 
         SingularAnnotation newSingularAnnotation(std::string metaid);
+
+        void addParentModel(const std::string &biomod_id);
     };
 
 }

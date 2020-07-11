@@ -159,7 +159,8 @@ namespace omexmeta {
      * split by new lines and matched as a regex
      */
     bool
-    OmexMetaUtils::assertRegexMatchSplitByNewLine(const std::string &expected_string, const std::string &actual_string) {
+    OmexMetaUtils::assertRegexMatchSplitByNewLine(const std::string &expected_string,
+                                                  const std::string &actual_string) {
         bool all_lines_match = true;
         // split the expected string into lines
         std::vector<std::string> vec = omexmeta::OmexMetaUtils::splitStringBy(expected_string, '\n');
@@ -202,7 +203,6 @@ namespace omexmeta {
         // create the default namespaces.
         std::string myomexlib_string = "http://MyOmexLibrary.org/" + omex_name;
         vec.push_back(myomexlib_string);
-
         // we make myomex_string relative to myomexlib_string
         // logic for adding appropriate extension if not exist
         std::vector<std::string> suffixes = {".xml", ".cellml", ".sbml"};
@@ -211,18 +211,17 @@ namespace omexmeta {
             if (OmexMetaUtils::stringHasEnding(model_name, it)) {
                 has_appropriate_extension = true;
                 break;
-            }
+                }
         }
 
         std::string myomex_string;
         if (has_appropriate_extension) {
             myomex_string = myomexlib_string + +"/" + model_name;
-        } else {
+            } else {
             myomex_string = myomexlib_string + "/" + model_name + ".xml";
-        }
+            }
         vec.push_back(myomex_string);
         assert(!myomex_string.empty());
-
         // now we know we have a string that definitely contains a suffux like .xml
         // we need to remove it so we can add .rdf.
         // We do this in a way that enables multiple "." in a model_name
@@ -234,7 +233,7 @@ namespace omexmeta {
                                    "it as a github issue (https://github.com/sys-bio/libOmexMeta/issues)");
         }
         // remove the last element which should contain the extension.
-        split.erase(split.end());
+        split.pop_back();
         std::ostringstream os;
         for (auto &it : split) {
             os << it << ".";
@@ -269,7 +268,8 @@ namespace omexmeta {
     }
 
     std::string
-    OmexMetaUtils::stringReplace(std::string str, const std::string &string_to_replace, const std::string &replacement) {
+    OmexMetaUtils::stringReplace(std::string str, const std::string &string_to_replace,
+                                 const std::string &replacement) {
         size_t start_pos = 0;
         while ((start_pos = str.find(string_to_replace, start_pos)) != std::string::npos) {
             str.replace(start_pos, string_to_replace.length(), replacement);
