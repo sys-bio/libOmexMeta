@@ -137,7 +137,7 @@ namespace omexmeta {
             err << std::endl;
             throw std::invalid_argument(err.str());
         }
-        baseuri = SemsimUtils::prepareBaseUri(baseuri);
+        baseuri = OmexMetaUtils::prepareBaseUri(baseuri);
         LibrdfUri uri(baseuri);
         unsigned char *s = librdf_query_results_to_string2(
                 query_results_, output_format.c_str(),
@@ -145,7 +145,7 @@ namespace omexmeta {
         uri.freeUri();
         std::string res = (const char *) s; // makes a copy
         // the above string using \r\n for line endings. Convert to \n like any sane program should.
-        res = SemsimUtils::stringReplace(res, "\r\n", "\n");
+        res = OmexMetaUtils::stringReplace(res, "\r\n", "\n");
         free(s);
         return res;
     }

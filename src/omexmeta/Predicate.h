@@ -6,7 +6,7 @@
 #define LIBOMEXMETA_PREDICATE_H
 
 #include "World.h"
-#include "omexmeta/SemsimUtils.h"
+#include "omexmeta/OmexMetaUtils.h"
 #include <librdf.h>
 
 #include <vector>

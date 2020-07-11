@@ -21,7 +21,7 @@
 //#include "LibrdfQuery.h"
 
 
-//#include "redland/SemsimUtils.h"
+//#include "redland/OmexMetaUtils.h"
 //#include "redland/Subject.h"
 //#include "redland/Predicate.h"
 

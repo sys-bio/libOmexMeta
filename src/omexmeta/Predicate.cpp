@@ -31,7 +31,7 @@ namespace omexmeta {
         std::string val = LibrdfNode::str(node_);
 
         // split the uri by '/'
-        std::vector<std::string> v = SemsimUtils::splitStringBy(val, '/');
+        std::vector<std::string> v = OmexMetaUtils::splitStringBy(val, '/');
         std::ostringstream os;
         // add protocol portion which should always be the first bit
         os << v[0] << "//";
@@ -43,7 +43,7 @@ namespace omexmeta {
         // When predicate ends in '#' we need different logic to when the predicate ends in '/'
         if (v[v.size() - 1].find('#') != std::string::npos) {
             // split last portion by '#' such as .../omexmeta#hasSourceParticipant
-            std::vector<std::string> last_bit = SemsimUtils::splitStringBy(v[v.size() - 1], '#');
+            std::vector<std::string> last_bit = OmexMetaUtils::splitStringBy(v[v.size() - 1], '#');
             if (last_bit.size() != 2) {
                 throw std::logic_error("Predicate::Predicate(): For developers. Should never have more than two "
                                        "strings in this vector of strings");
@@ -180,7 +180,7 @@ namespace omexmeta {
         // retrieve the namespace that we want to check
         unsigned char *s = librdf_uri_as_string(pred_uri);
         std::string pred_string((const char *) s);
-        std::string pred_namespace = SemsimUtils::getNamespaceFromUri(pred_string);
+        std::string pred_namespace = OmexMetaUtils::getNamespaceFromUri(pred_string);
 
         // get the namespacs to check against
         NamespaceMap ns_map = Predicate::namespaceMap();

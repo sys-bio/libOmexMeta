@@ -54,7 +54,7 @@ namespace omexmeta {
         // deal with namespaces
         Predicate::addSeenNamespaceToSerializer(world, serializer, getPredicate());
 
-        std::vector<std::string> nsvec = SemsimUtils::configureSelfStrings(omex_name, model_name);
+        std::vector<std::string> nsvec = OmexMetaUtils::configureSelfStrings(omex_name, model_name);
 
         // make uri's for the namespaces
         librdf_uri* myomexlib = librdf_new_uri(World::getWorld(), (const unsigned char*) nsvec[0].c_str());
@@ -71,7 +71,7 @@ namespace omexmeta {
         librdf_free_uri(local);
 
         // run the base uri through func that adds file:// if it needs to
-        librdf_uri *base_uri = librdf_new_uri(world,(const unsigned char*) SemsimUtils::prepareBaseUri(base).c_str());
+        librdf_uri *base_uri = librdf_new_uri(world,(const unsigned char*) OmexMetaUtils::prepareBaseUri(base).c_str());
         // do the serializing
         unsigned char *string = librdf_serializer_serialize_model_to_string(serializer, base_uri, model);
         std::string str = (const char *) string;
@@ -87,7 +87,7 @@ namespace omexmeta {
 
     }
 
-    omexmeta::Triple &omexmeta::Triple::setAbout(const std::string& omex_name, const std::string& model_name, const std::string &metaid) {
+    Triple & Triple::setAbout(const std::string& omex_name, const std::string& model_name, const std::string &metaid) {
         if (getSubject() != nullptr)
             LibrdfNode::freeNode(getSubject());
 
@@ -97,8 +97,20 @@ namespace omexmeta {
         return *this;
     }
 
-    omexmeta::Triple &
-    omexmeta::Triple::setPredicate(const std::string &namespace_, const std::string &term) {
+    Triple &Triple::setAbout(const std::string &metaid) {
+        if (metaid.rfind("http", 0) == 0){
+            throw std::invalid_argument("std::invalid_argument Triple::setAbout: metaid does not "
+                                        "begin with \"http\" which suggests that it is not properly"
+                                        "formatted. Metaid's should look like: "
+                                        "\"http://MyOmexLibrary.org/myomex.omex/mymodel.rdf#MetaId0000\"");
+        }
+        setSubject(LibrdfNode::fromUriString(metaid).get());
+
+        return *this;
+    }
+
+    Triple &
+    Triple::setPredicate(const std::string &namespace_, const std::string &term) {
         if (getPredicate() != nullptr)
             LibrdfNode::freeNode(getPredicate());
         // ive implemented the logic here rather then using LibrdfStatement::setPredicate
@@ -108,8 +120,8 @@ namespace omexmeta {
         return *this;
     }
 
-    omexmeta::Triple &
-    omexmeta::Triple::setPredicate(const std::string &uri) {
+    Triple &
+    Triple::setPredicate(const std::string &uri) {
         if (getPredicate() != nullptr)
             LibrdfNode::freeNode(getPredicate());
         LibrdfNode node = LibrdfNode::fromUriString(uri);
@@ -119,7 +131,7 @@ namespace omexmeta {
     }
 
 
-    omexmeta::Triple &omexmeta::Triple::setResourceLiteral(const std::string &literal) {
+    Triple &Triple::setResourceLiteral(const std::string &literal) {
         // if getResource() node alredy exists, free before resetting
         if (getResource() != nullptr)
             LibrdfNode::freeNode(getResource());
@@ -127,21 +139,21 @@ namespace omexmeta {
         return *this;
     }
 
-    omexmeta::Triple &omexmeta::Triple::setResourceUri(const std::string &identifiers_uri) {
+    Triple &Triple::setResourceUri(const std::string &identifiers_uri) {
         if (getResource() != nullptr)
             LibrdfNode::freeNode(getResource());
         setResource(LibrdfNode::fromUriString(identifiers_uri).get());
         return *this;
     }
 
-    omexmeta::Triple &omexmeta::Triple::setResourceBlank(const std::string &blank_id) {
+    Triple &Triple::setResourceBlank(const std::string &blank_id) {
         if (getResource() != nullptr)
             LibrdfNode::freeNode(getResource());
         setResource(LibrdfNode::fromBlank(blank_id).get());
         return *this;
     }
 
-    std::string omexmeta::Triple::getAbout() const {
+    std::string Triple::getAbout() const {
         return LibrdfNode::str(getSubject());
     }
 

@@ -72,7 +72,7 @@ namespace omexmeta {
 
     void RDF::fromString(RDF *rdf, const std::string &str, const std::string &format, std::string base_uri) {
         // if the base_uri is a web uri we leave it alone
-        base_uri = SemsimUtils::prepareBaseUri(base_uri);
+        base_uri = OmexMetaUtils::prepareBaseUri(base_uri);
 
         LibrdfParser parser(format);
         parser.parseString(str, rdf->model_, LibrdfUri(base_uri));
@@ -164,7 +164,7 @@ namespace omexmeta {
 
 //    std::string RDF::toString(const std::string &format, std::string base_uri,
 //                              const char *mime_type, const char *type_uri) {
-//        base_uri = SemsimUtils::prepareBaseUri(base_uri);
+//        base_uri = OmexMetaUtils::prepareBaseUri(base_uri);
 //        LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
 //        // remember to add namespaces taken from parser
 //        for (auto &it: namespaces_) {
@@ -177,13 +177,13 @@ namespace omexmeta {
     std::string
     RDF::toString(const std::string &format, const std::string& omex_name, const std::string& model_name, std::string base_uri, const char *mime_type,
                   const char *type_uri) {
-        base_uri = SemsimUtils::prepareBaseUri(base_uri);
+        base_uri = OmexMetaUtils::prepareBaseUri(base_uri);
         LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
         // remember to add namespaces taken from parser
         for (auto &it: namespaces_) {
             serializer.setNamespace(it.first, it.second);
         }
-        std::vector<std::string> vec = SemsimUtils::configureSelfStrings(omex_name, model_name);
+        std::vector<std::string> vec = OmexMetaUtils::configureSelfStrings(omex_name, model_name);
         serializer.setNamespace(vec[0],  "myOMEXlib");
         serializer.setNamespace(vec[1], "myOMEX");
         serializer.setNamespace(vec[2], "local");

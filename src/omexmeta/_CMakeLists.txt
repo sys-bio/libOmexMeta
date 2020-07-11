@@ -1,6 +1,6 @@
 
 set(SEMSIM_HEADERS
-        "SemsimUtils.h"
+        "OmexMetaUtils.h"
         "CurlGet.h"
         "RDF.h"
         "SemsimXmlAssistant.h"
@@ -33,7 +33,7 @@ set(SEMSIM_HEADERS
         )
 
 set(SEMSIM_SOURCES
-        "SemsimUtils.cpp"
+        "OmexMetaUtils.cpp"
         "RDF.cpp"
         "Query.cpp"
         "CurlGet.cpp"

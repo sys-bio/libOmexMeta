@@ -451,8 +451,8 @@ namespace omexmeta {
 
 
 
-	class SemsimUtils {
-		+SemsimUtils()
+	class OmexMetaUtils {
+		+OmexMetaUtils()
 		+{static} exists(const std::string& filename) : bool
 		+{static} removeFile(const std::string& filename) : int
 		+splitStringBy(const std::string& str, char delimiter) : std::vector<std::string>

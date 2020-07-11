@@ -111,7 +111,7 @@ namespace omexmeta {
 
     void Editor::addNamespaceFromAnnotation(const std::string &predicate_string) {
         // store namespaces for later
-        std::string ns = SemsimUtils::getNamespaceFromUri(predicate_string);
+        std::string ns = OmexMetaUtils::getNamespaceFromUri(predicate_string);
         if (Predicate::namespaceKnown(ns)) {
             namespaces_[ns] = Predicate::namespaceMap()[ns];
         };
@@ -160,7 +160,7 @@ namespace omexmeta {
          * if not already formatted properly.
          */
         physicalEntity.setAbout(
-                SemsimUtils::addLocalPrefixToMetaid(physicalEntity.getAbout(), getLocalName())
+                OmexMetaUtils::addLocalPrefixToMetaid(physicalEntity.getAbout(), getLocalName())
         );
         checkValidMetaid(physicalEntity.getAbout());
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalEntity);
@@ -178,7 +178,7 @@ namespace omexmeta {
          * if not already formatted properly.
          */
         physicalProcess.setAbout(
-                SemsimUtils::addLocalPrefixToMetaid(physicalProcess.getAbout(), getLocalName())
+                OmexMetaUtils::addLocalPrefixToMetaid(physicalProcess.getAbout(), getLocalName())
         );
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalProcess);
 
@@ -196,7 +196,7 @@ namespace omexmeta {
          * if not already formatted properly.
          */
         physicalForce.setAbout(
-                SemsimUtils::addLocalPrefixToMetaid(physicalForce.getAbout(), getLocalName())
+                OmexMetaUtils::addLocalPrefixToMetaid(physicalForce.getAbout(), getLocalName())
         );
         addCompositeAnnotation((PhysicalPhenomenon *) &physicalForce);
     }
@@ -321,11 +321,11 @@ namespace omexmeta {
 
     void Editor::setArchiveName(std::string archive_name) {
         // archives end in .omex
-        if (!SemsimUtils::stringHasEnding(archive_name, ".omex")) {
+        if (!OmexMetaUtils::stringHasEnding(archive_name, ".omex")) {
             archive_name = archive_name + ".omex";
         }
         // Check if model_name is already a valid uri
-        if (SemsimUtils::isFormattedUri(archive_name)) {
+        if (OmexMetaUtils::isFormattedUri(archive_name)) {
             // if so, also check that its relative to
             // the repository name, otherwise it does not
             // make sense
@@ -345,7 +345,7 @@ namespace omexmeta {
 
     void Editor::setModelName(std::string model_name) {
         // Check if model_name is already a valid uri
-        if (SemsimUtils::isFormattedUri(model_name)) {
+        if (OmexMetaUtils::isFormattedUri(model_name)) {
             // if so, also check that its relative to
             // the archive name, otherwise it does not
             // make sense
@@ -370,7 +370,7 @@ namespace omexmeta {
 
     void Editor::setLocalName(std::string local_name) {
         // local names have the .rdf suffix
-        if (!SemsimUtils::stringHasEnding(local_name, ".rdf")) {
+        if (!OmexMetaUtils::stringHasEnding(local_name, ".rdf")) {
             local_name = local_name + ".rdf";
         }
         if (getArchiveName().empty()) {
@@ -382,7 +382,7 @@ namespace omexmeta {
     }
 
     void Editor::setOmexRepository(std::string repository_name) {
-        if (SemsimUtils::isFormattedUri(repository_name)) {
+        if (OmexMetaUtils::isFormattedUri(repository_name)) {
             repository_name_ = std::move(repository_name);
         } else {
             throw std::invalid_argument("std::invalid_argument: Editor::setOmexRepository "
@@ -400,6 +400,12 @@ namespace omexmeta {
                                    "namespace. Please use the setLocalName() method. ");
         }
         return LibrdfNode::fromUriString(getLocalName() + string);
+    }
+
+    SingularAnnotation Editor::newSingularAnnotation(std::string metaid) {
+        SingularAnnotation singularAnnotation;
+        singularAnnotation.setAbout(OmexMetaUtils::addLocalPrefixToMetaid(metaid, getLocalName()));
+        return singularAnnotation;
     }
 
 

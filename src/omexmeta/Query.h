@@ -7,7 +7,7 @@
 
 #include "RedlandAPIWrapper.h"
 #include "omexmeta/Error.h"
-#include "omexmeta/SemsimUtils.h"
+#include "omexmeta/OmexMetaUtils.h"
 //#include "omexmeta/Triple.h"
 //#include "omexmeta/Triples.h"
 

@@ -7,7 +7,7 @@
 
 #include <unordered_map>
 #include "RedlandAPIWrapper.h"
-#include "omexmeta/SemsimUtils.h"
+#include "omexmeta/OmexMetaUtils.h"
 #include "Editor.h"
 
 using namespace redland;

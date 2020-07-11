@@ -12,7 +12,7 @@
 #include "omexmeta/PhysicalProcess.h"
 #include "omexmeta/PhysicalForce.h"
 #include <cstring>
-#include "omexmeta/SemsimUtils.h"
+#include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta/Preproc.h"
 
 namespace omexmeta {

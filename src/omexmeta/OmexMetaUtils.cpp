@@ -1,16 +1,16 @@
 //
 // Created by Ciaran on 4/13/2020.
 //
-#include "SemsimUtils.h"
+#include "OmexMetaUtils.h"
 
 namespace omexmeta {
 
-    bool SemsimUtils::exists(const std::string &filename) {
+    bool OmexMetaUtils::exists(const std::string &filename) {
         struct stat buffer{};
         return (stat(filename.c_str(), &buffer) == 0);
     }
 
-    int SemsimUtils::removeFile(const std::string &filename) {
+    int OmexMetaUtils::removeFile(const std::string &filename) {
         if (!exists(filename)) {
             std::ostringstream os;
             os << "Filename \"" << filename << "\" does not exist, so can't be removed";
@@ -19,9 +19,9 @@ namespace omexmeta {
         return remove(filename.c_str());
     }
 
-    void SemsimUtils::removeIfExists(const std::string &filename) {
-        if (SemsimUtils::exists(filename)) {
-            SemsimUtils::removeFile(filename);
+    void OmexMetaUtils::removeIfExists(const std::string &filename) {
+        if (OmexMetaUtils::exists(filename)) {
+            OmexMetaUtils::removeFile(filename);
         }
     }
 
@@ -29,11 +29,11 @@ namespace omexmeta {
  * wrapper around the CurlGet function, as the utils
  * class seems like a good place for the download features.
  */
-    void SemsimUtils::download(const std::string &url, const std::string filename) {
+    void OmexMetaUtils::download(const std::string &url, const std::string filename) {
         CurlGet::download(url, filename);
     }
 
-    std::vector<std::string> SemsimUtils::splitStringBy(const std::string &str, char delimiter) {
+    std::vector<std::string> OmexMetaUtils::splitStringBy(const std::string &str, char delimiter) {
         std::vector<std::string> tokens;
         if (str.find(delimiter) == std::string::npos) {
             // return the string in the vector
@@ -49,7 +49,7 @@ namespace omexmeta {
         return tokens;
     }
 
-    std::string SemsimUtils::generateUniqueMetaid(
+    std::string OmexMetaUtils::generateUniqueMetaid(
             librdf_model *model, const std::string &metaid_base,
             const std::vector<std::string> &exclusions) {
 
@@ -76,7 +76,7 @@ namespace omexmeta {
         return metaid;
     }
 
-    std::string SemsimUtils::prepareBaseUri(std::string str, bool absolute_path) {
+    std::string OmexMetaUtils::prepareBaseUri(std::string str, bool absolute_path) {
         std::string file_prefix = "file://";
         std::string http_protocol = "http://";
         std::string https_protocol = "https://";
@@ -104,12 +104,12 @@ namespace omexmeta {
         }
     }
 
-    std::string SemsimUtils::getNamespaceFromUri(const std::string &uri) {
+    std::string OmexMetaUtils::getNamespaceFromUri(const std::string &uri) {
         std::vector<std::string> vec = splitStringBy(uri, '/');
         std::ostringstream os;
         // Uri's we want all begin with http.
         if (vec[0].rfind("http", 0) != 0)
-            throw std::invalid_argument("std::invalid_argument: SemsimUtils::getNamespaceFromUri: \"" + vec[0]
+            throw std::invalid_argument("std::invalid_argument: OmexMetaUtils::getNamespaceFromUri: \"" + vec[0]
                                         + R"(". Predicate arguments are URI's, they should begin with "http")");
 
         os << vec[0] + "//"; // we keep the first part and add back the missing '/'
@@ -127,7 +127,7 @@ namespace omexmeta {
             frag_in_ns = true;
         }
         if (frag_in_ns) {
-            std::vector<std::string> split_on_hash = SemsimUtils::splitStringBy(vec[last_index], '#');
+            std::vector<std::string> split_on_hash = OmexMetaUtils::splitStringBy(vec[last_index], '#');
             os << split_on_hash[0] << "#"; // remember to put it back
         } else {
 //            os << vec[last_index];
@@ -135,7 +135,7 @@ namespace omexmeta {
         return os.str();
     }
 
-    bool SemsimUtils::isFormattedUri(std::string uri) {
+    bool OmexMetaUtils::isFormattedUri(std::string uri) {
         std::string file_prefix = "file://";
         std::string http_protocol = "http://";
         std::string https_protocol = "https://";
@@ -145,7 +145,7 @@ namespace omexmeta {
                || uri.rfind(file_prefix, 0) == 0;
     }
 
-    bool SemsimUtils::stringHasEnding(const std::string &full_string, const std::string &ending) {
+    bool OmexMetaUtils::stringHasEnding(const std::string &full_string, const std::string &ending) {
         if (full_string.length() >= ending.length()) {
             return (0 == full_string.compare(full_string.length() - ending.length(), ending.length(), ending));
         } else {
@@ -159,10 +159,10 @@ namespace omexmeta {
      * split by new lines and matched as a regex
      */
     bool
-    SemsimUtils::assertRegexMatchSplitByNewLine(const std::string &expected_string, const std::string &actual_string) {
+    OmexMetaUtils::assertRegexMatchSplitByNewLine(const std::string &expected_string, const std::string &actual_string) {
         bool all_lines_match = true;
         // split the expected string into lines
-        std::vector<std::string> vec = omexmeta::SemsimUtils::splitStringBy(expected_string, '\n');
+        std::vector<std::string> vec = omexmeta::OmexMetaUtils::splitStringBy(expected_string, '\n');
         // we do search line by line
         for (auto &i : vec) {
             std::regex r(i);
@@ -180,10 +180,10 @@ namespace omexmeta {
     }
 
     bool
-    SemsimUtils::assertMatchByNewLine(const std::string &expected_string, const std::string &actual_string) {
+    OmexMetaUtils::assertMatchByNewLine(const std::string &expected_string, const std::string &actual_string) {
         bool all_lines_match = true;
         // split the expected string into lines
-        std::vector<std::string> vec = omexmeta::SemsimUtils::splitStringBy(expected_string, '\n');
+        std::vector<std::string> vec = omexmeta::OmexMetaUtils::splitStringBy(expected_string, '\n');
         // we do search line by line
         for (auto &i : vec) {
             if (actual_string.find(i) == std::string::npos) {
@@ -197,7 +197,7 @@ namespace omexmeta {
     }
 
     std::vector<std::string>
-    SemsimUtils::configureSelfStrings(std::string omex_name, std::string model_name) {
+    OmexMetaUtils::configureSelfStrings(std::string omex_name, std::string model_name) {
         std::vector<std::string> vec;
         // create the default namespaces.
         std::string myomexlib_string = "http://MyOmexLibrary.org/" + omex_name;
@@ -208,7 +208,7 @@ namespace omexmeta {
         std::vector<std::string> suffixes = {".xml", ".cellml", ".sbml"};
         bool has_appropriate_extension = false;
         for (auto &it : suffixes) {
-            if (SemsimUtils::stringHasEnding(model_name, it)) {
+            if (OmexMetaUtils::stringHasEnding(model_name, it)) {
                 has_appropriate_extension = true;
                 break;
             }
@@ -226,7 +226,7 @@ namespace omexmeta {
         // now we know we have a string that definitely contains a suffux like .xml
         // we need to remove it so we can add .rdf.
         // We do this in a way that enables multiple "." in a model_name
-        std::vector<std::string> split = SemsimUtils::splitStringBy(model_name, '.');
+        std::vector<std::string> split = OmexMetaUtils::splitStringBy(model_name, '.');
         if (split.size() <= 1) {
             throw std::logic_error("std::logic_error: Triple::str: You should never get a "
                                    "a value less than 2 here because you are splitting a string. "
@@ -248,14 +248,14 @@ namespace omexmeta {
 
     }
 
-    std::string SemsimUtils::addLocalPrefixToMetaid(std::string metaid, const std::string &local) {
+    std::string OmexMetaUtils::addLocalPrefixToMetaid(std::string metaid, const std::string &local) {
         // if metaid already has local in the string, we just return
         if (metaid.find(local) != std::string::npos) {
             return metaid;
         }
         // Otherwise we concatonate:
         // first we check if local has the # at the end. It should do.
-        if (!SemsimUtils::stringHasEnding(local, "#")) {
+        if (!OmexMetaUtils::stringHasEnding(local, "#")) {
             throw std::invalid_argument("std::invalid_argument: addLocalPrefixToMetaid: "
                                         "Was expecting a local prefix to end with a '#' "
                                         "character, like http://MyOmexLibrary.org/myomexarchive.omex/mymodel.rdf#. "
@@ -269,7 +269,7 @@ namespace omexmeta {
     }
 
     std::string
-    SemsimUtils::stringReplace(std::string str, const std::string &string_to_replace, const std::string &replacement) {
+    OmexMetaUtils::stringReplace(std::string str, const std::string &string_to_replace, const std::string &replacement) {
         size_t start_pos = 0;
         while ((start_pos = str.find(string_to_replace, start_pos)) != std::string::npos) {
             str.replace(start_pos, string_to_replace.length(), replacement);

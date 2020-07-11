@@ -12,7 +12,7 @@
 #include "curl/curl.h"
 #include "SBMLFactory.h"
 #include <regex>
-#include "omexmeta/SemsimUtils.h"
+#include "omexmeta/OmexMetaUtils.h"
 
 typedef std::string string;
 
@@ -54,7 +54,7 @@ public:
             const std::string &regular_expression_that_matches) {
         omexmeta::RDF rdf = omexmeta::RDF::fromString(input_annot, "rdfxml");
         std::string actual = rdf.toString(input_format);
-        std::vector<std::string> vec = omexmeta::SemsimUtils::splitStringBy(regular_expression_that_matches, '\n');
+        std::vector<std::string> vec = omexmeta::OmexMetaUtils::splitStringBy(regular_expression_that_matches, '\n');
         // we do search line by line
         for (auto &i : vec) {
             std::regex r(i);
@@ -2056,7 +2056,7 @@ TEST_F(ReadAndWriteTests, tabulardatanquads) {
  */
 
 //TEST_F(ReadAndWriteTests, SBML1) {
-//    omexmeta::SemsimUtils::download(samples
+//    omexmeta::OmexMetaUtils::download(samples
 //                                          .sbml_url1, samples.sbml_filename1);
 //    omexmeta::RDF rdf = omexmeta::RDF::fromXML(samples.sbml_filename1, "rdfxml");
 //    std::string extracted = rdf.toString("rdfxml", "file://./annotations.rdf");
@@ -2072,7 +2072,7 @@ TEST_F(ReadAndWriteTests, tabulardatanquads) {
 
 
 //TEST_F(ReadAndWriteTests, CELLML1) {
-//    omexmeta::SemsimUtils::download(samples.cellml_url1, samples.cellml_filename1);
+//    omexmeta::OmexMetaUtils::download(samples.cellml_url1, samples.cellml_filename1);
 //    omexmeta::RDF rdf = omexmeta::RDF::fromXML(samples.cellml_filename1, "turtle");
 //    std::string extracted = rdf.toString("rdfxml");
 //    std::cout << extracted << std::endl;

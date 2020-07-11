@@ -1043,19 +1043,19 @@ class SemsimCombineArchive-->
               text-decoration="underline" textLength="480" x="26" y="1060.5908">fromUrl(const std::string&amp; url,
             const std::string&amp; output_filename) : omexmeta::SemsimCombineArchive
         </text><!--MD5=[8eeaa74abbf9682858b38bcaff2be6c3]
-class SemsimUtils-->
-        <rect fill="#FEFECE" filter="url(#f1pade0lt0jcgx)" height="117.1797" id="SemsimUtils"
+class OmexMetaUtils-->
+        <rect fill="#FEFECE" filter="url(#f1pade0lt0jcgx)" height="117.1797" id="OmexMetaUtils"
               style="stroke: #A80036; stroke-width: 1.5;" width="338" x="547" y="964"/>
         <ellipse cx="675.75" cy="980" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
         <path d="M678.5156,975.875 Q678.6719,975.6563 678.8594,975.5469 Q679.0469,975.4375 679.2656,975.4375 Q679.6406,975.4375 679.875,975.6953 Q680.1094,975.9531 680.1094,976.5625 L680.1094,978.0156 Q680.1094,978.625 679.875,978.8906 Q679.6406,979.1563 679.2656,979.1563 Q678.9219,979.1563 678.7188,978.9531 Q678.5156,978.7656 678.4063,978.25 Q678.3594,977.8906 678.1719,977.7031 Q677.8438,977.3281 677.2344,977.1094 Q676.625,976.8906 676,976.8906 Q675.2344,976.8906 674.6016,977.2188 Q673.9688,977.5469 673.4766,978.2969 Q672.9844,979.0469 672.9844,980.0781 L672.9844,981.1719 Q672.9844,982.4063 673.875,983.2266 Q674.7656,984.0469 676.3594,984.0469 Q677.2969,984.0469 677.9531,983.7969 Q678.3438,983.6406 678.7656,983.2031 Q679.0313,982.9375 679.1797,982.8594 Q679.3281,982.7813 679.5313,982.7813 Q679.8594,982.7813 680.1172,983.0391 Q680.375,983.2969 680.375,983.6406 Q680.375,983.9844 680.0313,984.3906 Q679.5313,984.9688 678.7344,985.2969 Q677.6563,985.75 676.3594,985.75 Q674.8438,985.75 673.6406,985.125 Q672.6563,984.625 671.9688,983.5547 Q671.2813,982.4844 671.2813,981.2031 L671.2813,980.0469 Q671.2813,978.7188 671.8984,977.5703 Q672.5156,976.4219 673.6094,975.8047 Q674.7031,975.1875 675.9375,975.1875 Q676.6719,975.1875 677.3203,975.3516 Q677.9688,975.5156 678.5156,975.875 Z "/>
         <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="72"
-              x="696.25" y="984.9102">SemsimUtils
+              x="696.25" y="984.9102">OmexMetaUtils
         </text>
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="548" x2="884" y1="996" y2="996"/>
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="548" x2="884" y1="1004" y2="1004"/>
         <ellipse cx="558" cy="1015" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="65"
-              x="567" y="1019.4189">SemsimUtils()
+              x="567" y="1019.4189">OmexMetaUtils()
         </text>
         <ellipse cx="558" cy="1028.8359" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
@@ -1330,9 +1330,9 @@ reverse link MetaIdAssistant to CellMLMetaIdAssistant--><path d="M2505.74,470.26
 reverse link RDF to Writer--><path d="M1166,692.26 C1166,766.32 1166,841.48 1166,901.25 " fill="none" id="RDF&lt;-Writer" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#FFFFFF" points="1166,678.93,1162,684.93,1166,690.93,1170,684.93,1166,678.93" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="67" x="1167" y="819.4951">aggregation</text><!--MD5=[3e75a076fba04e7781cd357ff71a17d8]
 reverse link RDF to Reader--><path d="M1388.8,689.4 C1430.92,745.54 1473.61,802.43 1511.47,852.88 " fill="none" id="RDF&lt;-Reader" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#FFFFFF" points="1380.94,678.93,1381.34,686.13,1388.14,688.53,1387.74,681.33,1380.94,678.93" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="67" x="1487" y="819.4951">aggregation</text><!--MD5=[900fe02fcbbffcd0852a468e2d78a834]
 reverse link RDF to Editor--><path d="M1431.58,540.18 C1565.03,621.96 1724.04,731.55 1847,853 C1878.04,883.66 1906.16,923.56 1927.05,956.84 " fill="none" id="RDF&lt;-Editor" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#FFFFFF" points="1420.39,533.35,1423.429,539.8895,1430.6343,539.5994,1427.5953,533.0599,1420.39,533.35" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="67" x="1817" y="819.4951">aggregation</text><!--MD5=[876ab017321b4c309978a04aee43b830]
-reverse link RDF to SemsimUtils--><path d="M953.412,689.65 C878.897,793.81 802.561,900.51 757.228,963.87 " fill="none" id="RDF&lt;-SemsimUtils" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="961.081,678.93,954.3378,681.4853,954.103,688.6926,960.8462,686.1373,961.081,678.93" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="70" x="863" y="819.4951">composition</text><!--MD5=[d36ee6a3c3cdd5512a296b8a5d40d8df]
+reverse link RDF to OmexMetaUtils--><path d="M953.412,689.65 C878.897,793.81 802.561,900.51 757.228,963.87 " fill="none" id="RDF&lt;-OmexMetaUtils" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="961.081,678.93,954.3378,681.4853,954.103,688.6926,960.8462,686.1373,961.081,678.93" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="70" x="863" y="819.4951">composition</text><!--MD5=[d36ee6a3c3cdd5512a296b8a5d40d8df]
 reverse link RDF to SemsimCombineArchive--><path d="M901.157,576.17 C701.005,714.97 441.19,895.15 322.805,977.25 " fill="none" id="RDF&lt;-SemsimCombineArchive" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="911.842,568.76,904.6322,568.8953,901.984,575.6025,909.1938,575.4673,911.842,568.76" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="72" x="554" y="819.4951">Composition</text><!--MD5=[b3bf4fafee2fb641b8af7e7efe2ebe53]
-reverse link SemsimUtils to CurlGet--><path d="M716,1094.44 C716,1177.111 716,1311.183 716,1380.252 " fill="none" id="SemsimUtils&lt;-CurlGet" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="716,1081.381,712,1087.381,716,1093.381,720,1087.381,716,1081.381" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="72" x="717" y="1236.4951">Composition</text><!--MD5=[daf2b4d5ab0f6e7055c6dc1cfeddabcf]
+reverse link OmexMetaUtils to CurlGet--><path d="M716,1094.44 C716,1177.111 716,1311.183 716,1380.252 " fill="none" id="OmexMetaUtils&lt;-CurlGet" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="716,1081.381,712,1087.381,716,1093.381,720,1087.381,716,1081.381" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="72" x="717" y="1236.4951">Composition</text><!--MD5=[daf2b4d5ab0f6e7055c6dc1cfeddabcf]
 reverse link CombineArchive to SemsimCombineArchive--><path d="M259,435.85 C259,550.56 259,861.2 259,977.1 " fill="none" id="CombineArchive&lt;-SemsimCombineArchive" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="252,435.63,259,415.63,266,435.63,252,435.63" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="56" x="260" y="819.4951">extension</text><!--MD5=[e7e540cf1c686691bddbee13ee4317bc]
 link PredicateNamespaces to RaptorUtils--><!--MD5=[dce6774b9d398d7155d46117f7058058]
 link PredicateNamespaces to KeyGen--><!--MD5=[83a350ef1ccdf71b537e9c50985fc42d]
@@ -1615,8 +1615,8 @@ class SemsimCombineArchive {
     +CombineArchive : using CombineArchive::
 }
 
-class SemsimUtils {
-    +SemsimUtils()
+class OmexMetaUtils {
+    +OmexMetaUtils()
     +{static} exists(const std::string& filename) : bool
     +{static} removeFile(const std::string& filename) : int
     +{static} download(const std::string& url, const std::string filename) : void
@@ -1691,9 +1691,9 @@ end note
 RDF o- - Writer : aggregation
 RDF o- - Reader : aggregation
 RDF o- - Editor : aggregation
-RDF *- - SemsimUtils: composition
+RDF *- - OmexMetaUtils: composition
 RDF *- - SemsimCombineArchive : Composition
-SemsimUtils *- - CurlGet: Composition
+OmexMetaUtils *- - CurlGet: Composition
 
 
 CombineArchive <|- - SemsimCombineArchive :extension

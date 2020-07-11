@@ -177,7 +177,7 @@ namespace Legend {
 	class CurlGet
 
 
-	class SemsimUtils
+	class OmexMetaUtils
 
 
 	class Writer
@@ -231,8 +231,8 @@ namespace Legend {
     RDF *-- Reader
     RDF *-- Writer
 
-    SemsimUtils --* Reader
-    SemsimUtils *-- CurlGet
+    OmexMetaUtils --* Reader
+    OmexMetaUtils *-- CurlGet
 
     note bottom of CurlGet
         Downloads from URL

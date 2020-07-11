@@ -7,7 +7,7 @@
 
 
 #include <string>
-#include "omexmeta/SemsimUtils.h"
+#include "omexmeta/OmexMetaUtils.h"
 
 class AnnotationSamples {
 public:
@@ -256,7 +256,7 @@ public:
 
     void removeAllFilesIfTheyExist() {
         for (auto &file : this->all_files) {
-            omexmeta::SemsimUtils::removeIfExists(file);
+            omexmeta::OmexMetaUtils::removeIfExists(file);
         }
     }
 

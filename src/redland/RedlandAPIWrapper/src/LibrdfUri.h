@@ -41,7 +41,7 @@ namespace redland {
          * The string "file://" is prepended onto any string that doesn't already have it
          * at the begining of the string. This indicates to librdf that its a path on system
          *
-         * For developers: Note this function should really replace SemsimUtils::prepareBaseUri
+         * For developers: Note this function should really replace OmexMetaUtils::prepareBaseUri
          */
         static LibrdfUri fromFilename(const std::string &filename);
 

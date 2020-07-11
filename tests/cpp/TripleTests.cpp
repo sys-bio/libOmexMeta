@@ -224,7 +224,7 @@ TEST_F(TripleTests, TestBuilderPattern1) {
                            "    <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/PD4034\"/>\n"
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
-    ASSERT_TRUE(SemsimUtils::assertMatchByNewLine(expected, actual));
+    ASSERT_TRUE(OmexMetaUtils::assertMatchByNewLine(expected, actual));
     triple.freeStatement();
 
     // Aaand free the excess nodes
@@ -254,7 +254,7 @@ TEST_F(TripleTests, TestBuilderPattern2) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     std::cout << actual << std::endl;
-    ASSERT_TRUE(SemsimUtils::assertMatchByNewLine(expected, actual));
+    ASSERT_TRUE(OmexMetaUtils::assertMatchByNewLine(expected, actual));
     triple.freeStatement();
 
     // Aaand free the excess nodes
@@ -283,7 +283,7 @@ TEST_F(TripleTests, TestBuilderPatternWithSemSimPredicate) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     std::cout << actual << std::endl;
-ASSERT_TRUE(SemsimUtils::assertMatchByNewLine(expected, actual));
+ASSERT_TRUE(OmexMetaUtils::assertMatchByNewLine(expected, actual));
 triple.freeStatement();
 
     // Aaand free the excess nodes

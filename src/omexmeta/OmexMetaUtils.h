@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/13/2020.
 //
 
-#ifndef LIBOMEXMETA_SEMSIMUTILS_H
-#define LIBOMEXMETA_SEMSIMUTILS_H
+#ifndef LIBOMEXMETA_OMEXMETAUTILS_H
+#define LIBOMEXMETA_OMEXMETAUTILS_H
 
 #include "omexmeta/Query.h"
 #include "omexmeta/CurlGet.h"
@@ -24,9 +24,9 @@ using namespace redland;
 
 namespace omexmeta {
 
-    class SemsimUtils {
+    class OmexMetaUtils {
     public:
-        SemsimUtils() = default;
+        OmexMetaUtils() = default;
 
         static bool exists(const std::string &filename);
 
@@ -104,4 +104,4 @@ namespace omexmeta {
     };
 }
 
-#endif //LIBOMEXMETA_SEMSIMUTILS_H
+#endif //LIBOMEXMETA_OMEXMETAUTILS_H

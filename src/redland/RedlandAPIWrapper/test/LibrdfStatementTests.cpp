@@ -5,7 +5,7 @@
 #include "gtest/gtest.h"
 #include "World.h"
 #include "LibrdfStatement.h"
-//#include "redland/SemsimUtils.h"
+//#include "redland/OmexMetaUtils.h"
 
 using namespace redland;
 

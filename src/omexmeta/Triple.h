@@ -81,6 +81,8 @@ namespace omexmeta {
         Triple &setPredicate(const std::string &uri);
 
         void freeTripleAndUris();
+
+        Triple &setAbout(const std::string &metaid);
     };
 
     typedef Triple SingularAnnotation;

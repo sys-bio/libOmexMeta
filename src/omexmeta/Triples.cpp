@@ -108,7 +108,7 @@ namespace omexmeta {
 
     std::string
     Triples::str(const std::string &format, std::string base, std::string omex_name, std::string model_name) {
-        base = SemsimUtils::prepareBaseUri(base);
+        base = OmexMetaUtils::prepareBaseUri(base);
         // Here we create temporary set of tools for serializing a simple
         // triple.
         librdf_world *world = librdf_new_world();
@@ -141,7 +141,7 @@ namespace omexmeta {
         write_base_uri_uri.freeUri();
         write_base_uri_node.freeNode();
 
-        std::vector<std::string> nsvec = SemsimUtils::configureSelfStrings(std::move(omex_name), std::move(model_name));
+        std::vector<std::string> nsvec = OmexMetaUtils::configureSelfStrings(std::move(omex_name), std::move(model_name));
 
         // make uri's for the namespaces
         librdf_uri *myomexlib = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[0].c_str());
@@ -156,7 +156,7 @@ namespace omexmeta {
         librdf_free_uri(myomex);
         librdf_free_uri(local);
 
-        librdf_uri *base_uri = librdf_new_uri(world, (const unsigned char *) SemsimUtils::prepareBaseUri(base).c_str());
+        librdf_uri *base_uri = librdf_new_uri(world, (const unsigned char *) OmexMetaUtils::prepareBaseUri(base).c_str());
         // do the serializing
         unsigned char *string = librdf_serializer_serialize_model_to_string(serializer, base_uri, model);
         std::string str = (const char *) string;

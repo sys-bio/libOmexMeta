@@ -5,7 +5,7 @@
 #include "gtest/gtest.h"
 #include "World.h"
 #include "LibrdfUri.h"
-//#include "redland/SemsimUtils.h"
+//#include "redland/OmexMetaUtils.h"
 #include "raptor2.h"
 #include <filesystem>
 

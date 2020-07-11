@@ -2,7 +2,7 @@
 #   Set libOmexMeta sources
 #
 set(OMEXMETA_HEADERS
-        "SemsimUtils.h"
+        "OmexMetaUtils.h"
         "CurlGet.h"
         "RDF.h"
         "SemsimXmlAssistant.h"
@@ -27,7 +27,7 @@ set(OMEXMETA_HEADERS
         PersonalInformation.cpp PersonalInformation.h)
 
 set(OMEXMETA_SOURCES
-        "SemsimUtils.cpp"
+        "OmexMetaUtils.cpp"
         "RDF.cpp"
         "Query.cpp"
         "CurlGet.cpp"

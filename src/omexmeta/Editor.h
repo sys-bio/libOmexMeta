@@ -17,7 +17,7 @@
 #include "omexmeta/PhysicalForce.h"
 #include "RedlandAPIWrapper.h"
 #include "omexmeta/Error.h"
-#include "omexmeta/SemsimUtils.h"
+#include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta/PersonalInformation.h"
 
 #include "librdf.h"
@@ -325,6 +325,8 @@ namespace omexmeta {
         void addDateCreated(const std::string &date);
 
         void addPersonalInformation(const PersonalInformation &personalInformation) const;
+
+        SingularAnnotation newSingularAnnotation(std::string metaid);
     };
 
 }

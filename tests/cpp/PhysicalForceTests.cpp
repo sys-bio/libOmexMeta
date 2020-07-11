@@ -9,7 +9,7 @@
 #include "librdf.h"
 #include "omexmeta/PhysicalForce.h"
 #include "omexmeta/Participant.h"
-#include "omexmeta/SemsimUtils.h"
+#include "omexmeta/OmexMetaUtils.h"
 
 using namespace omexmeta;
 

@@ -32,7 +32,7 @@ namespace omexmeta {
     }
 
     std::string PhysicalPhenomenon::generateMetaId(const std::string& id_base) const {
-        return SemsimUtils::generateUniqueMetaid(model_, id_base);
+        return OmexMetaUtils::generateUniqueMetaid(model_, id_base);
     }
 
     PhysicalProperty PhysicalPhenomenon::getPhysicalProperty() const {

@@ -278,8 +278,8 @@ class SemsimCombineArchive {
     +CombineArchive : using CombineArchive::
 }
 
-class SemsimUtils {
-    +SemsimUtils()
+class OmexMetaUtils {
+    +OmexMetaUtils()
     +{static} exists(const std::string& filename) : bool
     +{static} removeFile(const std::string& filename) : int
     +{static} download(const std::string& url, const std::string filename) : void
@@ -354,9 +354,9 @@ end note
 RDF o-- Writer : aggregation
 RDF o-- Reader : aggregation
 RDF o-- Editor : aggregation
-RDF *-- SemsimUtils: composition
+RDF *-- OmexMetaUtils: composition
 RDF *-- SemsimCombineArchive : Composition
-SemsimUtils *-- CurlGet: Composition
+OmexMetaUtils *-- CurlGet: Composition
 
 
 CombineArchive <|-- SemsimCombineArchive :extension

@@ -49,8 +49,8 @@ namespace omexmeta {
     }
 
     std::string PersonalInformation::generateMetaId() const {
-        std::string metaid = SemsimUtils::generateUniqueMetaid(model_, "PersonalInfo");
-        return SemsimUtils::addLocalPrefixToMetaid(metaid, local_uri_);
+        std::string metaid = OmexMetaUtils::generateUniqueMetaid(model_, "PersonalInfo");
+        return OmexMetaUtils::addLocalPrefixToMetaid(metaid, local_uri_);
     }
 
     PersonalInformation &

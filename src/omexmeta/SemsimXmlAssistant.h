@@ -13,7 +13,7 @@
 #include <memory>
 #include "MetaID.h"
 #include <utility>
-#include "SemsimUtils.h"
+#include "OmexMetaUtils.h"
 
 namespace omexmeta {
     enum SemsimXmlType {

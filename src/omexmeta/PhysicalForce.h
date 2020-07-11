@@ -18,7 +18,7 @@
 #include "Participant.h"
 #include "PhysicalProperty.h"
 #include "PhysicalPhenomenon.h"
-#include "SemsimUtils.h"
+#include "OmexMetaUtils.h"
 
 using namespace redland;
 

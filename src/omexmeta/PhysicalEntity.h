@@ -14,7 +14,7 @@
 #include <utility>
 #include "omexmeta/Triple.h"
 #include "omexmeta/Query.h"
-#include "omexmeta/SemsimUtils.h"
+#include "omexmeta/OmexMetaUtils.h"
 #include "memory"
 #include <cassert>     /* assert */
 

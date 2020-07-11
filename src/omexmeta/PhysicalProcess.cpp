@@ -49,7 +49,7 @@ namespace omexmeta {
 //  and we automatically pick out the correct OPB identifier
     PhysicalProcess &
     PhysicalProcess::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
-        subject_metaid = SemsimUtils::addLocalPrefixToMetaid(subject_metaid, getLocalUri());
+        subject_metaid = OmexMetaUtils::addLocalPrefixToMetaid(subject_metaid, getLocalUri());
         physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getLocalUri());
         return (*this);
     }
@@ -145,7 +145,7 @@ namespace omexmeta {
 
 
         if (physical_property_id_.empty()) {
-            physical_property_id_ = SemsimUtils::generateUniqueMetaid(
+            physical_property_id_ = OmexMetaUtils::generateUniqueMetaid(
                     model_, "PhysicalProcess",
                     std::vector<std::string>());
         }
@@ -153,7 +153,7 @@ namespace omexmeta {
 
         // now we add the local uri on to the metaid - If it already
         // properly formatted it will be left alone
-        physical_property_id_ = SemsimUtils::addLocalPrefixToMetaid(physical_property_id_, getLocalUri());
+        physical_property_id_ = OmexMetaUtils::addLocalPrefixToMetaid(physical_property_id_, getLocalUri());
 
         Triples triples = physical_property_.toTriples(physical_property_id_);
 
